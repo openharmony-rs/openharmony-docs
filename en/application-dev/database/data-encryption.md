@@ -1,19 +1,20 @@
 # Database Encryption (ArkTS)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
 <!--Designer: @widecode; @htt1997; @dboy190-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d995619613c5a0ea556fde817ece4c1ff6754f94 translatedAt=2026-06-02T08:37:28.013Z pushedAt=2026-06-03T05:43:58.436Z -->
 
 ## When to Use
 
 OpenHarmony provides the database encryption capability to effectively protect the data stored in a database. Database encryption allows data to be stored and used in ciphertext, ensuring data confidentiality and integrity.
 
-The encrypted database can be accessed only using an API, and the database file cannot be opened in other ways. Whether a database is encrypted is set when the database is created, and the setting cannot be changed.
+The encryption attribute of a KV store is determined upon creation and cannot be changed. Starting from API version 22, an RDB store supports adjusting its encryption attribute through the [rekeyEx](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#rekeyex22) API.
 
 Both KV stores and RDB stores support database encryption. For RDB stores, you can customize the encryption/decryption keys and other parameters.
-
 
 ## Encrypting a KV Store
 
@@ -40,8 +41,9 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
    export class KvInterface {
    }
    ```
+
    <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public CreateKvManager = (() => {
      Logger.info('CreateKvManager start');
@@ -62,8 +64,9 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
      }
    })
    ```
+
    <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public GetKvStore = (() => {
      Logger.info('GetKvStore start');
@@ -120,7 +123,7 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
    })
    ```
 
-## Encrypting an RDB Store 
+## Encrypting an RDB Store
 
 The **encrypt** property in [StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig) specifies whether to encrypt the RDB store. The value **true** means to encrypt the RDB store, and **false** means the opposite.
 
@@ -129,7 +132,6 @@ If **encrypt** is **true**, you can set parameters such as the key and algorithm
 The **cryptoParam** setting involves the following scenarios:
 
 If **cryptoParam** is not set, the default configuration is used for database encryption and decryption.
-
 
 <!-- @[encryption_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
@@ -140,8 +142,6 @@ import { hilog } from '@kit.PerformanceAnalysisKit'
 import { UIContext } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 ```
-
-
 
 <!-- @[defaultConfigRdbStoreTs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/encryption/Encryption.ets) -->
 
@@ -163,8 +163,6 @@ try {
   hilog.error(DOMAIN, 'Encryption', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
 }
 ```
-
-
 
 If **cryptoParam** is set, the specified key and algorithm are used for database encryption and decryption.
 
@@ -212,7 +210,5 @@ try {
   hilog.error(DOMAIN, 'Encryption', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
 }
 ```
-
-
 
 If you do not care about the algorithm and other parameters used for encryption, leave **cryptoParam** unspecified. In this case, the default encryption configuration is used. If you want to customize the encryption configuration or open an encrypted database that is not configured by default, set **cryptoParam**.

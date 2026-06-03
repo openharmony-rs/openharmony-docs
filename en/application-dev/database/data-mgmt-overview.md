@@ -5,6 +5,7 @@
 <!--Designer: @widecode-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d995619613c5a0ea556fde817ece4c1ff6754f94 translatedAt=2026-06-02T08:38:07.583Z pushedAt=2026-06-03T05:43:55.067Z -->
 
 
 ## Function
@@ -43,3 +44,5 @@ The data management module includes preferences, KV data management (KV-Store), 
 - UDMF: defines the data standards for cross-application and cross-device data interaction, improving data interaction efficiency. The UDMF provides secure and standard data transmission channels and supports different levels of data access permissions and lifecycle management policies. It helps implement efficient data sharing across applications and devices.
 
 - **DatamgrService**: implements sync and cross-application sharing for other components, including cross-device sync of **RelationalStore** and **KV-Store**, <!--RP1--><!--RP1End-->silent access to provider data of **DataShare**, and temporary storage of **DataObject** data.
+<!--RP2-->
+<!--RP2End-->
