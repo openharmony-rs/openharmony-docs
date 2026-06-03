@@ -38,7 +38,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
 | 名称    | 值   | 说明   |
 | ------- | ---- | -------- |
-| HUKS_EXT_CRYPTO_TAG_UKEY_PIN | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200001    | 表示PIN码的TAG。 |
+| HUKS_EXT_CRYPTO_TAG_UKEY_PIN | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200001    | 表示PIN码的Tag。 |
 | HUKS_EXT_CRYPTO_TAG_ABILITY_NAME | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200002    | 表示[CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md)的名称。 |
 | HUKS_EXT_CRYPTO_TAG_EXTRA_DATA | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200003    | 外部数据，在通用查询场景，表示返回的数据。 |
 | HUKS_EXT_CRYPTO_TAG_UID | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200004    | 表示调用方的uid。 |
@@ -101,7 +101,7 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
 
     - Action：string参数类型，在拉起自定义弹窗时want传输的Action为"UkeyPINAuth"。
     - appUid：number参数类型，通过want.parameters传输。"appUid"字段为应用id，开发者可以通过该字段完成应用隔离。
-    - keyUri：string参数类型其值为resourceId，通过want.parameters传输，表示Ukey证书的索引。
+    - keyUri：string参数类型，其值为resourceId，通过want.parameters传输，表示Ukey证书的索引。
   
 4. 开发者实现UIExtensionAbility时，应用需根据指定场景返回对应的错误码：
 
@@ -118,7 +118,7 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
 
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ------- | ---- | -------|
-| providerName | string | 是   | provider名称，最大长度为128。建议包含厂商信息，全局唯一，不要包含个人联系方式等敏感数据。<br>最多支持注册10个provider。 |
+| providerName | string | 是   | provider名称，最大长度为128字节。建议包含厂商信息，全局唯一，不要包含个人联系方式等敏感数据。<br>最多支持注册10个provider。 |
 | params  | Array<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 是  | 操作时需传入的参数，必选TAG：[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](#huksexternalcryptotag)，表示ability的名字，根据业务自己内部定义按照实际填写。<br>从API版本26.0.0开始，可选TAG：[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](#huksexternalcryptotag)，以JSON列表的形式传入PIN码认证自定义弹窗UIExtensionAbility的名字以及包名。 |
 
 **返回值：**
@@ -165,7 +165,7 @@ const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
 ];
 huksExternalCrypto.registerProvider(providerName, extProperties)
     .then((data) => {
-        console.info(`promise: registerProvider success`);
+        console.info('promise: registerProvider success.');
     });
 ```
 
@@ -183,7 +183,7 @@ unregisterProvider(providerName: string, params?: Array\<HuksExternalCryptoParam
 
 | 参数名   | 类型 | 必填 | 说明  |
 | -------- | ------| ---- | -----|
-| providerName | string | 是   | provider名称，最大长度为128。建议包含厂商信息，全局唯一，不要包含个人联系方式等敏感数据。如果provider注册了多个扩展能力，则该provider下的扩展能力都会被注销。 |
+| providerName | string | 是   | provider名称，最大长度为128字节。建议包含厂商信息，全局唯一，不要包含个人联系方式等敏感数据。如果provider注册了多个扩展能力，则该provider下的扩展能力都会被注销。 |
 | params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否 | 操作时需传入的参数。<br>可以在param参数中指定[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](#huksexternalcryptotag)，将根据“包名 + providerName + abilityName”注销对应的cryptoExtensionAbility。<br>如果未在params参数中指定[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](#huksexternalcryptotag)，或者未传入params参数，则注销对应的providerName下的所有Provider。|
 
 **返回值：**
@@ -228,7 +228,7 @@ const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
 ];
 huksExternalCrypto.unregisterProvider(providerName, extProperties)
     .then((data) => {
-        console.info(`promise: unregisterProvider success`);
+        console.info('promise: unregisterProvider success.');
     });
 ```
 
@@ -245,7 +245,7 @@ getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ------- | ---- | ----------|
 | resourceId | string | 是   | 资源ID，可通过[openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取，其结果中附带资源ID。 |
-| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 操作的属性。非系统应用传入[HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag)是非法参数。 |
+| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 操作的属性。不传入时，不向Extension Ability传递额外参数。非系统应用传入[HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag)是非法参数。 |
 
 **返回值：**
 
@@ -273,14 +273,6 @@ getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
-
-function StringToUint8Array(str: string) {
-  let arr: number[] = [];
-  for (let i = 0, j = str.length; i < j; ++i) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
-}
 
 const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
@@ -315,7 +307,7 @@ propertyId表示查询属性的ID信息，推荐使用GMT 0016-2023中定义的S
 | -------- | ------- | ---- | ----------|
 | resourceId | string | 是   | 资源ID，可通过[openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取，该接口的返回结果中附带resourceId。 |
 | propertyId | string | 是   | 查找操作的属性名称，是GMT 0016-2023中定义的SKF接口名，应用开发者需要针对接口名进行适配。 |
-| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 需要传递给[CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md)的输入参数。非系统应用传入[HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag)是非法参数。 |
+| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 否   | 需要传递给[CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md)的输入参数。不传入时，不向Extension Ability传递额外参数。非系统应用传入[HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag)是非法参数。 |
 
 **返回值：**
 
@@ -358,7 +350,7 @@ const testResourceId = JSON.stringify({
 let propertyId = "SKF_EnumDev";
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 
-console.info(`promise: await huksExternalCrypto getProperty`);
+console.info('promise: await huksExternalCrypto getProperty.');
 async function testFunction() : Promise<void>
 {
   try {
@@ -376,7 +368,7 @@ async function testFunction() : Promise<void>
 
 clearUkeyPinAuthState(resourceId: string): Promise&lt;void&gt;
 
-清除指定资源ID的PIN码认证状态。使用Promise异步回调。
+清除指定资源ID的PIN码认证状态，清除后PIN认证状态变为HUKS_EXT_CRYPTO_PIN_NO_AUTH（未认证）。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -388,7 +380,7 @@ clearUkeyPinAuthState(resourceId: string): Promise&lt;void&gt;
 
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ------- | ---- | ----------|
-| resourceId | string | 是   | 资源ID。 |
+| resourceId | string | 是   | 资源ID，可通过[openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取，其结果中附带资源ID。 |
 
 **返回值：**
 
@@ -449,7 +441,7 @@ getResourceId(providerName: string, params: HuksExternalCryptoParam[]): Promise&
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ------- | ---- | ----------|
 | providerName | string | 是   | 提供者名称，建议包含厂商信息，全局唯一，长度最大为128字节。 |
-| params | [HuksExternalCryptoParam](#huksexternalcryptoparam)[] | 是   | 获取资源ID所需的属性参数。必选TAG包括：[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](#huksexternalcryptotag)、[HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](#huksexternalcryptotag)、[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](#huksexternalcryptotag)。 |
+| params | [HuksExternalCryptoParam](#huksexternalcryptoparam)[] | 是   | 获取资源ID所需的属性参数。必选TAG包括：[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](#huksexternalcryptotag)、[HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME](#huksexternalcryptotag)、[HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO](#huksexternalcryptotag)。非系统应用传入[HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag)是非法参数。 |
 
 **返回值：**
 
@@ -464,7 +456,7 @@ getResourceId(providerName: string, params: HuksExternalCryptoParam[]): Promise&
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 801 | API is not supported. |
-| 12000002 | The ability name or bundle name parameter is missing. |
+| 12000002 | The ability name, bundle name parameter or resource information is missing. |
 | 12000005 | IPC communication failed. |
 | 12000011 | The provider is not found. |
 | 12000012 | Device environment or input parameters are abnormal. This error may occur if the process function is not found, or due to other issues. |
@@ -586,7 +578,7 @@ closeResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise&l
 
 关闭指定资源ID的资源。使用Promise异步回调。
 
-该接口会回调[onClearUkeyPinAuthState](js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonclearukeypinauthstate)清理该资源关联的PIN认证状态，以及会回调[onFinishSession](js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonfinishsession)清理该资源关联的会话handle。
+该接口会回调[onClearUkeyPinAuthState](js-apis-CryptoExtensionAbility.md#onclearukeypinauthstate)清理该资源关联的PIN认证状态，以及会回调[onFinishSession](js-apis-CryptoExtensionAbility.md#onfinishsession)清理该资源关联的会话handle。
 
 **起始版本：** 26.0.0
 
