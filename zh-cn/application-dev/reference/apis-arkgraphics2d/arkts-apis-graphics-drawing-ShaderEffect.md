@@ -334,7 +334,7 @@ static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt
 | pos | Array\<number> \| null | 否   | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起始圆和结束圆之间。|
 | matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | 否   | 矩阵对象，用于对着色器做矩阵变换。默认为null，表示单位矩阵。 |
 
-![ConicalGradient](figures/chcreateConicalGradient.png)
+![ConicalGradient](figures/createConicalGradient.png)
 
 如上图所示，设置颜色数组为红绿蓝，位置数组为0.0、0.5和1.0的绘制结果。左侧为起始圆不在结束圆内的绘制结果，右侧为起始圆在结束圆内的绘制结果。
 

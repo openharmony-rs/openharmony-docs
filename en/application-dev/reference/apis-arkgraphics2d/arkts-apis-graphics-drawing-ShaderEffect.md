@@ -334,7 +334,7 @@ Creates a **ShaderEffect** object that generates a conical gradient between two 
 | pos | Array\<number> \| null | No  | Relative position of each color in the color array. The array length must be the same as that of **colors**. The first element in the array must be 0.0, the last element must be 1.0, and the middle elements must be between 0.0 and 1.0 and increase by index. The default value is null, indicating that colors are evenly distributed between the two circles.|
 | matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | No  | **Matrix** object used to perform matrix transformation on the shader effect. The default value is null, indicating the identity matrix.|
 
-![ConicalGradient](figures/image_createConicalGradient.png)
+![ConicalGradient](figures/createConicalGradient.png)
 
 The preceding figure shows the display effect when the **colors** array is set to red, green, and blue and the **pos** array is set to 0.0, 0.5, and 1.0. The left part shows the drawing result when the start circle is not in the end circle, and the right part shows the drawing result when the start circle is in the end circle.
 
