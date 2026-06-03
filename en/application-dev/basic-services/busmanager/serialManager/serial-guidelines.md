@@ -313,3 +313,4 @@ The following table describes the main APIs for serial port communication.
 2. Run the preceding sample code on the OpenHarmony device.
 3. If the `success` log is returned, the related API is successfully called and the serial port communication capability of the device is normal. If the `failed` or `error` log is returned, the API fails to be called. In this case, check the hardware connection and parameter settings.
 4. You can perform a loopback test (short-circuit the TX and RX of the serial port) to check whether the self-sending and self-receiving function of the data is normal.
+<!--no_check-->
