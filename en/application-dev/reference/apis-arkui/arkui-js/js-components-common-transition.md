@@ -41,7 +41,7 @@
 
 4. During the transition of a shared element, the page element is hidden. Therefore, the animation style and function set for the page element are invalid.
 
-5. During the dynamic change of shareid<sup>5+</sup>, if the **shareid** value in component A is overwritten by that in component B, the shared element effect of component A becomes ineffective and will not be restored even if the **shareid** value is changed in component B.
+5. During the dynamic change of **shareid**<sup>5+</sup>, if the **shareid** value in component A is overwritten by that in component B, the shared element effect of component A becomes ineffective and will not be restored even if the **shareid** value is changed in component B.
 
 
 ### Example

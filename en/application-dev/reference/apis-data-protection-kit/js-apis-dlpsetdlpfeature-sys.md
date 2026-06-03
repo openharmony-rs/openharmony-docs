@@ -64,7 +64,7 @@ This API is used to enable or disable the DLP function in enterprise policies.
 | -------- | -------- |
 | Promise&lt;[StatusInfoResult](#statusinforesult)&gt; | Promise used to return the DLP status. If the operation is successful, a **StatusInfoResult** object is returned. If the operation fails, a **BusinessError** error code is thrown.|
 
-**Error Codes**
+**Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 

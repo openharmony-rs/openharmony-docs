@@ -47,7 +47,7 @@
 
 场景1：访问受保护资源前申请授权。
 
-场景说明：应用访问相机、麦克风、位置等受保护资源前，可通过[AtManager](#atmanager)校验权限状态，并在未授权时请求用户授权。
+场景说明：应用访问相机、麦克风、位置等受保护资源前，可通过[AtManager](#atmanager)校验权限状态，等待返回授权状态后再判断是否需要请求用户授权。
 
 典型使用流程如下：
 
@@ -134,7 +134,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 
 createAtManager(): AtManager
 
-创建程序访问控制管理实例，用于权限校验、运行时权限申请、设置页授权引导和权限状态变化监听等场景。
+创建程序访问控制管理实例，用于权限校验、运行时权限申请、设置页授权引导和权限状态变化监听等场景。调用成功后返回AtManager实例，可用于后续的权限管理操作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -273,16 +273,14 @@ console.info(`Result: ${data}`);
 on(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, callback: Callback&lt;PermissionStateChangeInfo&gt;): void
 
 订阅本应用的指定权限列表的权限授权状态变化事件，使用callback异步回调。可在需要根据权限状态实时更新UI或业务逻辑、监听用户授权行为等场景中使用。不再需要监听时，调用[off](#off18)取消订阅。
-
 - 多次调用本订阅接口时，如果订阅的权限列表相同，callback不同，允许订阅成功。
-
 - 多次调用本订阅接口时，如果订阅的权限列表间有相同的子集，callback相同时，订阅失败。
 
 权限状态由“已授权”变更为“未授权”可能存在两种场景：
-
 - 用户主动撤销：系统会终止对应应用进程。
-
 - 系统主动回收：应用进程不会终止。典型场景如安全控件的单次授权，在授权周期结束后由系统自动回收。
+
+该接口通常与[off](#off18)配套使用，当不再需要监听时应调用off取消订阅。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -334,11 +332,13 @@ try {
 
 off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, callback?: Callback&lt;PermissionStateChangeInfo&gt;): void
 
-取消订阅自身指定权限列表的权限状态变更事件。
+取消订阅自身指定权限列表的权限状态变更事件。取消订阅成功后，将不再接收指定权限列表的状态变化通知。
 
-若无需监听权限变化、应用退出或切换页面等场景，可以直接使用该接口。
+在无需继续监听权限变化、应用退出或切换页面等场景下，可调用该接口取消订阅。
 
 当不传入callback参数时，将批量删除与permissionList相关联的所有回调函数。
+
+该接口通常与[on](#on18)配套使用，用于取消通过on创建的监听关系。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -350,7 +350,7 @@ off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;,
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string         | 是   | 取消订阅事件类型，固定为'selfPermissionStateChange'，权限状态变更事件。  |
 | permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | 是   | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与[on](#on18)订阅时的权限列表匹配（不区分顺序）。 |
-| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | 否 | 回调函数。取消订阅指定权限名状态变更事件的回调。|
+| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | 否 | 回调函数。取消订阅指定权限名状态变更事件的回调。不传入此参数时，将批量删除与permissionList相关联的所有回调函数。|
 
 **错误码：**
 
@@ -537,7 +537,7 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | context | [Context](js-apis-inner-application-context.md) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
-| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 是 | 权限名列表。该数组不能为空，仅支持传入已声明且用户已撤销授权的user_grant权限，且传入权限需属于同一[权限组](../../security/AccessToken/app-permission-group-list.md)。 |
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 是 | 权限名列表。该数组不能为空，仅支持传入已声明且用户已撤销授权的user_grant权限，且传入权限需属于同一[权限组](../../security/AccessToken/app-permission-group-list.md)。权限名长度不能超过256个字符。 |
 
 **返回值：**
 
@@ -580,7 +580,7 @@ atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((
 
 requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 
-用于UIAbility/UIExtensionAbility拉起全局开关设置弹窗，调用成功后，返回对应全局开关的当前状态。使用Promise异步回调。
+用于UIAbility/UIExtensionAbility拉起全局开关设置弹窗。调用成功后，若全局开关处于关闭状态，则弹出全局开关设置界面供用户操作；若全局开关已开启，则不拉起弹窗并返回true。使用Promise异步回调。
 
 适用于依赖系统级全局开关（如相机、麦克风、定位）开启的场景。
 
@@ -632,7 +632,7 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 // 请在组件内获取context
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 // 拉起全局开关设置弹窗
-atManager.requestGlobalSwitch(context, abilityAccessCtrl.SwitchType.CAMERA).then((data: Boolean) => {
+atManager.requestGlobalSwitch(context, abilityAccessCtrl.SwitchType.CAMERA).then((data: boolean) => {
   console.info(`requestGlobalSwitch success, result: ${data}`);
 }).catch((err: BusinessError): void => {
   console.error(`requestGlobalSwitch fail, code: ${err.code}, message: ${err.message}`);
@@ -694,9 +694,9 @@ try {
 
 openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;SelectedResult&gt;
 
-用于[UIAbility](js-apis-app-ability-uiAbility.md#uiability)/[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability)拉起权限设置页面，返回用户在设置页面中的选择结果。使用Promise异步回调。
+用于[UIAbility](js-apis-app-ability-uiAbility.md#uiability)/[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability)拉起权限设置页面。调用成功后会打开权限设置页面，用户在页面中操作后，返回用户在设置页面中的选择结果。使用Promise异步回调。
 
-适用于 [manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权) 类型权限无法通过普通授权弹窗申请、必须引导用户进入系统设置完成授权的场景。
+适用于 [manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权) 类型权限无法通过普通授权弹窗申请、必须引导用户进入系统设置完成授权的场景。manual_settings类型权限是指只能由用户在系统设置中手动开启的权限，无法通过普通授权弹窗直接申请。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -707,7 +707,7 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;S
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | context | [Context](js-apis-inner-application-context.md) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法打开设置页面。 |
-| permission | [Permissions](../../security/AccessToken/app-permissions.md) | 是 | 需要跳转设置页处理的权限名。传入无效或未在module.json中声明的权限时返回错误码12100001；仅支持授权方式为[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限，传入其他类型权限时返回错误码12100014。 |
+| permission | [Permissions](../../security/AccessToken/app-permissions.md) | 是 | 需要跳转设置页处理的权限名。权限名长度不能超过256个字符。传入无效或未在module.json中声明的权限时返回错误码12100001；仅支持授权方式为[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限，传入其他类型权限时返回错误码12100014。 |
 
 **返回值：**
 

@@ -108,7 +108,7 @@
 // 案例：使用沙箱路径调用deleteAssets导致报错。
 // 错误码： 14000002 - Invalid URI。
 
-const TAG = 'Case15_URIFormat';
+const TAG = 'Case_URIFormat';
 
 async triggerURIFormatError(context: common.Context): Promise<void> {
   const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -152,8 +152,13 @@ async triggerURIFormatError(context: common.Context): Promise<void> {
 
 
 ```log
-E     Case15_URIFormat Test1 Error code: 14000002
-E     Case15_URIFormat Test1 Error message: operation not support
+I     Case_URIFormat Test1: delete assets with sandbox path
+E     Case_URIFormat Test1 Error code: 14000002
+E     Case_URIFormat Test1 Error message: Invalid uri, uri must start with file://media/Photo/
+I     Case_URIFormat Test2: delete assets with media library URI
+I     Case_URIFormat Valid URI format: file://media/Photo/xxx/xxx.jpg
+I     Case_URIFormat Actual asset URI: file://media/Photo/9/IMG_1780494343_008/IMG_20260603_214403.jpg
+I     Case_URIFormat Test2 success
 ```
 
 ### 常见易错代码

@@ -101,7 +101,7 @@
 
 import fs from '@ohos.file.fs';
 
-const TAG = 'Case12_StorageIO';
+const TAG = 'Case_StorageIO';
 
 async triggerStorageIOError(context: common.Context): Promise<void> {
   const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -172,11 +172,14 @@ async triggerStorageIOError(context: common.Context): Promise<void> {
 ### 日志信息
 
 ```log
-I     Case12_StorageIO Test1 Asset uri: file://media/Photo/220/IMG_1779157664_125/IMG_20260519_102604_3.jpg
-I     Case12_StorageIO Test1 stat success
-I     Case12_StorageIO Test2: fs.statSync with non-existent file
-E     Case12_StorageIO Test2 fs.statSync Error code: 13900002
-E     Case12_StorageIO Test2 fs.statSync Error message: No such file or directory
+I     Case_StorageIO Test1: get asset then access with fs
+I     Case_StorageIO Test1 Asset uri: file://media/Photo/220/IMG_1779157664_125/IMG_20260519_102604_3.jpg
+I     Case_StorageIO Test1 stat success
+I     Case_StorageIO Test2: fs.statSync with non-existent file
+E     Case_StorageIO Test2 fs.statSync Error code: 13900002
+E     Case_StorageIO Test2 fs.statSync Error message: No such file or directory
+I     Case_StorageIO Correct: use media library API
+I     Case_StorageIO Correct Count: 4
 ```
 
 ### 常见易错代码

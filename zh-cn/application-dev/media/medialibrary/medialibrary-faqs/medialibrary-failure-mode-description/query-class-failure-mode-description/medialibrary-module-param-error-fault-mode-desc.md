@@ -116,6 +116,8 @@ indexSet参数错误导致操作失败。
 ### 复现代码
 
 ```typescript
+const TAG = 'Case_GetObjectsByIndexSet';
+
 async triggerMediaParamError(context: common.Context): Promise<void> {
   const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
 
@@ -179,16 +181,23 @@ async triggerMediaParamError(context: common.Context): Promise<void> {
 
 
 ```log
-E     FetchResultNapi:{ProcessIndexSet:1361} JSGetObjectsByIndexSet indexSet.size exceeds MAX_SIZE
-E     Common:{ThrowError:80} {JSGetObjectsByIndexSet:<private>} ThrowError errCode:13900020 errMsg:ProcessIndexSet failed
-E     Case00 Test1 Error code: 238000151
-E     Case00 Test1 Error message: indexSet.size exceeds MAX_SIZE
+I     Case_GetObjectsByIndexSet Query asset count: 1
+I     Case_GetObjectsByIndexSet Test1: indexSet size > 500
+E     Case_GetObjectsByIndexSet Test1 Error code: 23800151
+E     Case_GetObjectsByIndexSet Test1 Error message: indexSet.size exceeds MAX_SIZE
+I     Case_GetObjectsByIndexSet Test2: indexSet is empty
+E     Case_GetObjectsByIndexSet Test2 Error code: 23800151
+E     Case_GetObjectsByIndexSet Test2 Error message: indexSet is empty
+I     Case_GetObjectsByIndexSet Test3: index exceeds range
+E     Case_GetObjectsByIndexSet Test3 Error code: 23800151
+E     Case_GetObjectsByIndexSet Test3 Error message: Index exceeds range of objects
+I     Case_GetObjectsByIndexSet Not enough assets for valid indexSet, need more than 500 assets
 ```
 
 ### 常见易错代码
 
 ```typescript
-const TAG = 'Case03_GetObjectsByIndexSet';
+const TAG = 'Case_GetObjectsByIndexSet';
 
 // 错误：indexSet超过限制。
 const largeIndexSet: number[] = [];

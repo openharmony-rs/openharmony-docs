@@ -64,6 +64,7 @@ The key management service specifications include mandatory specifications and o
 | SM4 | 128 | 9+ | Yes|
 | DES | 64 | 18+ | Yes|
 | 3DES | 128, 192| 18+ | Yes|
+| ML-DSA | Security parameter set: 44, 65, and 87| 26.0.0+ | Yes|
 
 > **NOTE**
 >

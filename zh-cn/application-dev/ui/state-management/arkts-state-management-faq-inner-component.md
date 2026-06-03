@@ -76,7 +76,7 @@ struct Index {
 
 上面示例的渲染过程为：
 
-1. 创建第一个Text组件，触发this.message改变，[标脏](./arkts-state-management-glossary.md#标脏mark-dirty)第一个Text组件。
+1. 创建第一个Text组件，触发this.message改变，[标脏](./arkts-state-management-glossary.md#mark-dirty标脏)第一个Text组件。
 2. 创建第二个Text组件，触发this.message改变，标脏两个Text组件。
 3. 下一帧到来时，刷新脏系统组件。
 4. 刷新第一个Text组件，触发this.message改变，不会标脏自己，仅标脏第二个Text组件。
@@ -581,7 +581,7 @@ struct Parent {
 
 ## 状态变量关联的组件数过多导致性能下降
 
-建议每个状态变量关联的组件数少于20个。精准控制状态变量关联的组件数量可减少不必要的组件刷新，提升刷新效率。有时开发者会将同一状态变量绑定于多个同级组件属性，状态变化时将导致这些组件同步更新，产生不必要的刷新，当组件复杂度较高时会显著影响整体性能。相反，将该状态变量绑定在这些组件的父组件上，可以减少需要刷新的组件数，提高性能。在应用开发中，可以通过HiDumper查看状态变量关联的组件数。具体可参考[状态变量组件定位工具实践](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/performance/state_variable_dfx_pratice.md)。
+建议每个状态变量关联的组件数少于20个。精准控制状态变量关联的组件数量可减少不必要的组件刷新，提升刷新效率。有时开发者会将同一状态变量绑定于多个同级组件属性，状态变化时将导致这些组件同步更新，产生不必要的刷新，当组件复杂度较高时会显著影响整体性能。相反，将该状态变量绑定在这些组件的父组件上，可以减少需要刷新的组件数，提高性能。在应用开发中，可以通过HiDumper查看状态变量关联的组件数。具体可参考[状态变量组件定位工具实践](../../performance/state_variable_dfx_pratice.md)。
 
 【反例】
 

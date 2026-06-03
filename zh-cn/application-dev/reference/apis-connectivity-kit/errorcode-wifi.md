@@ -18,7 +18,7 @@ Operation failed.
 
 **错误描述**
 
-WIFI服务内部执行STA相关操作时出现未知错误。
+调用syscap为SystemCapability.Communication.WiFi.Core的接口时，Wi-Fi服务内部出现未知错误。
 
 **可能原因**
 

@@ -112,7 +112,7 @@
 // 案例：ResourceType与photoType不匹配。
 // 错误码： 401 - Failed to check resourceType。
 
-const TAG = 'Case17_ResourceTypeMismatch';
+const TAG = 'Case_ResourceTypeMismatch';
 
 async trigger401Error17(context: common.Context): Promise<void> {
   const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -152,11 +152,11 @@ async trigger401Error17(context: common.Context): Promise<void> {
 ### 日志信息
 
 ```log
-I Case17_ResourceTypeMismatch Error: create IMAGE with VIDEO_RESOURCE (type mismatch)
-E Case17_ResourceTypeMismatch Error code: 401
-E Case17_ResourceTypeMismatch Error message: Failed to check resourceType
-I Case17_ResourceTypeMismatch Correct: create IMAGE with IMAGE_RESOURCE
-I Case17_ResourceTypeMismatch Correct: succeed
+I Case_ResourceTypeMismatch Error: create IMAGE with VIDEO_RESOURCE (type mismatch)
+E Case_ResourceTypeMismatch Error code: 401
+E Case_ResourceTypeMismatch Error message: Failed to check resourceType
+I Case_ResourceTypeMismatch Correct: create IMAGE with IMAGE_RESOURCE
+I Case_ResourceTypeMismatch Correct: succeed
 ```
 
 ### 常见易错代码

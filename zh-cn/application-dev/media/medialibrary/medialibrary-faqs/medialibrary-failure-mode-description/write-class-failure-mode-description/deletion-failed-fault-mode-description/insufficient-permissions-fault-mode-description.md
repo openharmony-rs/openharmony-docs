@@ -80,7 +80,7 @@
 
      ```typescript
      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-     let context: Context = getContext(this) as common.UIAbilityContext;
+     let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      atManager.requestPermissionsFromUser(context, ['ohos.permission.READ_IMAGEVIDEO'], (err: BusinessError, data:  PermissionRequestResult) => {
        if (err) {
          console.error(TAG + `requestPermissionsFromUser fail, err->${JSON.stringify(err)}`);
@@ -117,7 +117,7 @@
 // 案例：用户拒绝授权导致权限不足。
 // 错误码： 201 - 权限不足。
 
-const TAG = 'Case19_PermissionDenied';
+const TAG = 'Case_PermissionDenied';
 
 async triggerPermissionDeniedError(context: common.Context): Promise<void> {
   const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -147,8 +147,12 @@ async triggerPermissionDeniedError(context: common.Context): Promise<void> {
 
 
 ```log
-E Case19_PermissionDenied Error code: 201
-E Case19_PermissionDenied Error message: Permission denied
+I     Case_PermissionDenied Test1: delete asset without permission
+E     Case_PermissionDenied Error code: 201
+E     Case_PermissionDenied Error message: Permission denied
+// 申请权限后。
+I     Case_PermissionDenied Test1: delete asset without permission
+I     Case_PermissionDenied Delete success
 ```
 
 ### 常见易错代码
@@ -159,7 +163,7 @@ const fetchResult = await phAccessHelper.getAssets({...});
 
 // 正确：先申请权限再调用受保护API。
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let context: Context = getContext(this) as common.UIAbilityContext;
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestPermissionsFromUser(context, ['ohos.permission.READ_IMAGEVIDEO'], (err: BusinessError, data: PermissionRequestResult) => {
   if (err) {
     console.error(TAG + `requestPermissionsFromUser fail, err->${JSON.stringify(err)}`);

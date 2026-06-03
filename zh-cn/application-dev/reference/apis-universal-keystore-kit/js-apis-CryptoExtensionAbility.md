@@ -680,7 +680,7 @@ onGenerateKeyItem(handle: string, params: huks.HuksParam[]): Promise&lt;HuksCryp
 
 | 类型    | 说明   |
 | -------- | -----------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，表示生成密钥成功。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 UKey不存在。<br>34800002 UKey驱动错误。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，表示生成密钥成功。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800002 Ukey驱动错误。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
 
 **示例：**
 
@@ -741,7 +741,7 @@ onExportKeyItem(handle: string, params: huks.HuksParam[]): Promise&lt;HuksCrypto
 
 | 类型    | 说明   |
 | -------- | -----------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，outData携带导出的公钥数据。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 UKey不存在。<br>34800002 UKey驱动错误。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，outData携带导出的公钥数据。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800002 Ukey驱动错误。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
 
 **示例：**
 
@@ -796,7 +796,7 @@ onImportWrappedKeyItem(handle: string, wrappedHandle: string, params: huks.HuksP
 
 | 类型    | 说明   |
 | -------- | -----------|
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，表示导入密钥成功。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 UKey不存在。<br>34800002 UKey驱动错误。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，表示导入密钥成功。调用失败时，resultCode携带错误码信息，errInfo携带详细错误信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800002 Ukey驱动错误。<br>34800004 句柄不存在。<br>34800005 句柄不可用。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
 
 **示例：**
 
