@@ -12,7 +12,7 @@
 
 ## 接口介绍
 
-机械体设备控制器API的接口使用指导请参见[MechanicManager API参考](../reference/apis-mechanic-kit/js-apis-mechanicManager.md)。
+机械体设备控制器API的接口使用指导请参见[@ohos.distributedHardware.mechanicManager (机械体控制模块)](../reference/apis-mechanic-kit/js-apis-mechanicManager.md)。
 
 | 接口名                                                               | 描述                       |
 | -------------------------------------------------------------------- | -------------------------- |
