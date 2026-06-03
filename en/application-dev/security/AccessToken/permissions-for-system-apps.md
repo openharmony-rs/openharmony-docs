@@ -6258,3 +6258,17 @@ Allows an application to query the space optimization effect.
 **Supported devices**: Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
 **Valid since**: 26.0.0
+
+## ohos.permission.ARKWEBCORE_SYS_CAP
+
+Allows a system application to invoke ArkWebCore extended capabilities.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.0.0
