@@ -1546,7 +1546,7 @@ struct ReusableChild {
 @Entry
 @ComponentV2({ 
   reusePool: 'shared', // Declare the shared global reuse pool.
-  poolAccepts: ['ReusableChild'], // The global reuse pool accepts the child component type ReusableChild.
+  poolAccepts: [ReusableChild], // The global reuse pool accepts the child component type ReusableChild.
   freezeWhenInactive: false // Disable the component freezing feature. This parameter must be provided when reusePools is declared. You can also enable the component freezing feature.
 })
 struct Index {
@@ -2211,7 +2211,7 @@ struct ReusableChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct PoolOwner {
   checkPool() {
     const context = UIUtils.getCustomComponentContext(this);
@@ -2295,7 +2295,7 @@ struct ReusableChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct PoolOwner {
   @Local showChild: boolean = true;
 
@@ -2406,7 +2406,7 @@ function preRenderBuilder() {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'shared', poolAccepts: ['ReusableComponent'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableComponent], freezeWhenInactive: false })
 struct Index {
   @Local onUIFullyLoaded: boolean = false;
 
@@ -2489,7 +2489,7 @@ struct TestChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['TestChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [TestChild], freezeWhenInactive: false })
 struct PoolOwner {
   @Local showA: boolean = true;
   @Local showB: boolean = true;

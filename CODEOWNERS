@@ -1006,7 +1006,7 @@ zh-cn/application-dev/napi/napi-faq-about-stability.md @xliu-huanwei @shilei123 
 zh-cn/application-dev/napi/napi-guidelines.md @xliu-huanwei @shilei123 @huanghello @fang-jinxu
 zh-cn/application-dev/napi/napi-introduction.md @xliu-huanwei @shilei123 @huanghello @fang-jinxu
 zh-cn/application-dev/napi/napi_status_introduction.md @xliu-huanwei @shilei123 @huanghello @fang-jinxu
-zh-cn/application-dev/napi/native-bundle-guidelines.md @wanghang904 @hanfeng6 @Brilliantry_Rui
+zh-cn/application-dev/napi/native-bundle-guidelines.md @wanghang904 @hanfeng6 @HelloCrease
 zh-cn/application-dev/napi/ndk-development-overview.md @liyiming13 @huang_huijin @fang-jinxu
 zh-cn/application-dev/napi/neon-guide.md @liyiming13 @fang-jinxu
 zh-cn/application-dev/napi/ohos-abi.md @huang_huijin @fang-jinxu
@@ -5106,7 +5106,7 @@ zh-cn/application-dev/tools/anm-tool.md @michael_woo888 @dongqingran @wulong158 
 zh-cn/application-dev/tools/app-check-tool.md @jsjzju @Brilliantry_Rui
 zh-cn/application-dev/tools/atm-tool.md @xia-bubai @linshuqing @hehehe-li @zengyawen
 zh-cn/application-dev/tools/binary-sign-tool.md @zhanganxiang @renzehua @huangjieliang @zengyawen
-zh-cn/application-dev/tools/bm-tool.md @wanghang904 @hanfeng6 @Brilliantry_Rui
+zh-cn/application-dev/tools/bm-tool.md @wanghang904 @hanfeng6 @HelloCrease
 zh-cn/application-dev/tools/cem-tool.md @peixu @dongqingran @wulong158 @fang-jinxu
 zh-cn/application-dev/tools/command-line-tools-overview.md @jinqiuheng @lingminghw
 zh-cn/application-dev/tools/devicedebug-tool.md @wangfenging @zl_startup @jinqiuheng

@@ -867,7 +867,7 @@ showDefaultSelectedIcon(show: boolean)
 
 ### textModifier<sup>20+</sup>
 
-textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)>)
+textModifier(modifier: Optional\<TextModifier>)
 
 定制Select按钮文本样式的方法，在应用了textModifier之后，Select按钮的文本样式将完全由开发者自定义。
 
@@ -911,7 +911,7 @@ arrowModifier(modifier: Optional\<SymbolGlyphModifier>)
 
 ### optionTextModifier<sup>20+</sup>
 
-optionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)>)
+optionTextModifier(modifier: Optional\<TextModifier>)
 
 定制Select下拉菜单未选中项文本样式的方法，在应用optionTextModifier之后，下拉菜单未选中项的文本样式将完全由开发者自定义。
 
@@ -1052,6 +1052,26 @@ menuBackgroundEffect(effect: Optional\<BackgroundEffectOptions>)
 | 参数名  | 类型                                                         | 必填 | 说明                                       |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
 | effect | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)> | 是   | 设置Select组件的背景属性，包括：模糊半径、亮度、饱和度和颜色。 |
+
+### menuSystemMaterial
+
+menuSystemMaterial(material:Optional\<SystemUiMaterial>)
+
+设置Select下拉菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响下拉菜单背景色[menuBackgroundColor](#menubackgroundcolor18)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)等参数，不建议与上述接口一起使用。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| material | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial)> | 是 | 设置下拉菜单系统材质。材质设置为非法值、undefined时，按照不设置系统材质处理。 |
 
 ## ArrowPosition<sup>10+</sup>枚举说明
 
@@ -1729,3 +1749,43 @@ struct Index {
 ```
 
 ![select-menu-keyboard-avoid](figures/selectKeyboardAvoid.gif)
+
+### 示例11（设置Select和下拉菜单系统材质）
+
+该示例通过调用[menuSystemMaterial](#menusystemmaterial)接口实现下拉菜单系统材质效果，通过[SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial)接口实现select组件系统材质效果。
+
+从API版本26.0.0开始，新增menuSystemMaterial接口。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Select([{ value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' },
+        { value: 'SelectOption' }])
+        .value('Click Show Options')
+        .systemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+          }))
+        .menuSystemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.THICK
+          }))
+    }
+    // $r('app.media.img')需要替换为开发者所需的图像资源文件。
+    .backgroundImage($r('app.media.img'))
+  }
+}
+```
+未设置系统材质时：
+
+![select-without-menu-new-material](figures/selectWithoutNewMaterial.PNG)
+
+设置系统材质后：
+
+![select-menu-new-material](figures/selectNewMaterial.PNG)

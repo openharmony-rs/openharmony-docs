@@ -44,7 +44,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | HUKS_EXT_CRYPTO_TAG_UID | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200004    | 表示调用方的uid。 |
 | HUKS_EXT_CRYPTO_TAG_PURPOSE | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200005    | 表示证书链对应密钥的使用类型，具体类型详见[CertificatePurpose](../apis-device-certificate-kit/js-apis-certManager.md#certificatepurpose22)。 |
 | HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200007    | 表示获取资源ID所需的信息，格式和内容由厂商自定义。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| HUKS_EXT_CRYPTO_TAG_ABILITY_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200008    | 表示密钥管理扩展自定义PIN码弹窗相关Ability列表信息，在注册密钥管理扩展时，同步注册，详见[provider注册示例](../../security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-arkts.md)。注册了自定义弹窗，则在PIN码认证时允许拉起自定义弹窗，进行PIN码认证等操作。<br>HUKS_EXT_CRYPTO_TAG_ABILITY_NAME中的JSON列表由多个JSON对象组成，每个JSON对象包含两个字段：AbilityName和index。字段应遵循以下要求：<br> 1.AbilityName：长度范围为1~128字节。<br> 2.index：其值为resourceId，最大长度为512字节。允许单个CryptoExtension下该字段为空，为空时传输空字符串，该字段不允许重复。在搜索时优先匹配index对应的UIExtensionAbility，当不存在时返回index为空的UIExtensionAbility。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| HUKS_EXT_CRYPTO_TAG_ABILITY_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200008    | 表示密钥管理扩展自定义PIN码弹窗相关Ability列表信息，在注册密钥管理扩展时，同步注册，详见[provider注册示例](../../security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-arkts.md)。注册了自定义弹窗，则在PIN码认证时允许拉起自定义弹窗，进行PIN码认证等操作。<br>HUKS_EXT_CRYPTO_TAG_ABILITY_NAME中的JSON列表由多个JSON对象组成，每个JSON对象包含两个字段：abilityName和index。字段应遵循以下要求：<br> 1.abilityName：长度范围为1~128字节。<br> 2.index：其值为resourceId，最大长度为512字节。该字段不允许重复，允许单个CryptoExtension下该字段为空，为空时传输空字符串。在搜索时优先匹配index对应的UIExtensionAbility，当不存在时返回index为空的UIExtensionAbility。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 | HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200009    | 表示CryptoExtensionAbility所属的HAP Bundle名称。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## HuksExternalCryptoParam
@@ -57,6 +57,21 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | ------ | ----------------------------------- | ---- | ---- | ------------ |
 | tag    | [HuksExternalCryptoTag](#huksexternalcryptotag)  | 否   | 否   | 参数标签，用于区分参数。 |
 | value  | boolean\|number\|bigint\|Uint8Array | 否   | 否   | 标签对应值。 |
+
+## HuksExternalErrorInfo
+
+表示外部密钥操作时，密钥管理扩展返回的详细错误信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此结构体仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| errno | number | 否 | 否 | 密钥管理扩展返回的错误码。<br>- 非0值：密钥管理扩展返回了详细错误信息，errno为具体错误码。<br>- 0值：密钥管理扩展未返回详细错误信息，errno为默认值0，开发者应通过接口异常的错误码判断错误原因。 |
+| errorDesc | string | 否 | 否 | 密钥管理扩展返回的错误描述。该字段的值与errno关联：<br>- errno非0时：密钥管理扩展返回的描述，可能为空字符串（由扩展决定）。<br>- errno为0时：空字符串。 |
 
 ## HuksExternalPinAuthState
 
@@ -78,7 +93,7 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
 
 若需使用自定义PIN码弹窗，在注册provider时需要同步注册UIExtensionAbility，注意事项如下：
 
-1. 自定义ability通过UIExtensionAbility扩展实现。
+1. 自定义弹窗通过UIExtensionAbility扩展实现。
 
 2. 注册的UIExtensionAbility可以通过证书管理kit提供的[openUKeyAuthDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenukeyauthdialog22)接口统一拉起。
 
@@ -90,10 +105,10 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
   
 4. 开发者实现UIExtensionAbility时，应用需根据指定场景返回对应的错误码：
 
-    - 用户取消操作时，返回-1001。
-    - keyUri指定的证书/密钥不存在时，返回-1008。
-    - 参数格式错误时，返回-1014。
-    - 其余失败场景返回错误码-1000，成功时返回0。
+    - 用户取消操作时，返回[ERROR_OPERATION_CANCELED](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode)。
+    - keyUri指定的证书/密钥不存在时，返回[ERROR_OPERATION_FAILED](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode)。
+    - 参数格式错误时，返回[ERROR_PARAMETER_VALIDATION_FAILED](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode)。
+    - 其余失败场景返回错误码[ERROR_GENERIC](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode)，成功时返回0。
 
 **需要权限：** ohos.permission.CRYPTO_EXTENSION_REGISTER
 
@@ -281,12 +296,14 @@ getProperty(resourceId: string, propertyId: string, params?: Array\<HuksExternal
 
 调用此接口获取属性值并返回结果。使用Promise异步回调。
 
-propertyId表示查询属性的ID信息，当前仅支持GMT 0016-2023中定义的SKF接口名作为属性ID，支持的ID包括如下：
+propertyId表示查询属性的ID信息，推荐使用GMT 0016-2023中定义的SKF接口名作为属性ID，支持的ID包括如下：
 
-- SKF_EnumDev
-- SKF_GetDevInfo
-- SKF_EnumApplication
+- SKF_EnumDev 
+- SKF_GetDevInfo 
+- SKF_EnumApplication 
 - SKF_EnumContainer
+
+从API版本26.0.0开始，属性ID放开限制，支持自定义属性ID，由[CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md)实现方提供。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -623,4 +640,131 @@ huksExternalCrypto.closeResource(testResourceId)
     .then(() => {
       console.info('promise: closeResource success.');
     });
+```
+
+## huksExternalCrypto.setProperty
+
+setProperty(resourceId: string, propertyId: string, params?: HuksExternalCryptoParam[]): Promise&lt;void&gt;
+
+调用此接口设置由resourceId标识的UKey资源的属性值。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明  |
+| -------- | ------- | ---- | ----------|
+| resourceId | string | 是   | 资源ID。可通过[openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](#huksexternalcryptogetresourceid)获取外部密钥管理扩展的资源ID。 |
+| propertyId | string | 是   | 设置操作的属性名称。由[CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md)实现方提供，推荐使用GMT 0016-2023中定义的SKF接口名作为属性ID。 |
+| params  | [HuksExternalCryptoParam](#huksexternalcryptoparam)[] | 否   | 需要传递给[CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md)的输入参数，包含与propertyId相关的操作参数。不传入时，不向Extension Ability传递额外参数。 |
+
+**返回值：**
+
+| 类型   | 说明   |
+| -------- | ------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 801 | API is not supported. |
+| 12000005 | IPC communication failed. |
+| 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
+| 12000011 | The cached resource ID not found. |
+| 12000012 | Device environment or input parameters are abnormal. This may occur if the process function is null, or due to other issues. |
+| 12000014 | The memory is insufficient. |
+| 12000018 | The input parameters are invalid. Possible causes: 1. The resourceId or propertyId length is invalid. 2. The parameters contain invalid tags or invalid value types. |
+| 12000020 | The provider operation failed. This means an error occurred in the crypto extension before calling the UKey driver interface. |
+| 12000021 | The UKey PIN is locked. |
+| 12000023 | The UKey PIN is not authenticated. |
+| 12000024 | The provider or UKey is busy. |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+
+const testResourceId = JSON.stringify({
+  providerName: "testProviderName",
+  bundleName: "com.example.cryptoapplication",
+  abilityName: "CryptoExtension",
+  index: {
+    key: "testKey"
+  } as ESObject
+});
+
+const propertyId = "SKF_SetDevInfo";
+const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
+
+async function testFunction() : Promise<void>
+{
+  try {
+    await huksExternalCrypto.setProperty(testResourceId, propertyId, extProperties)
+      .then(() => {
+        console.info('promise: setProperty success.');
+      });
+  } catch (error) {
+    console.error(`promise: setProperty failed, errCode : ${error.code}, errMsg : ${error.message}`);
+  }
+}
+```
+
+
+## huksExternalCrypto.getErrorInfo
+
+getErrorInfo(): HuksExternalErrorInfo
+
+以同步方式获取最近一次外部密钥操作的详细错误信息，该错误信息由密钥管理扩展返回。
+
+> **说明：**
+>
+> 1. 此接口返回密钥管理扩展的详细错误信息（errno和errorDesc），HUKS内部错误通过接口异常抛出。
+> 2. 当密钥管理扩展未返回详细错误信息时（errno为0），errorDesc为空字符串，开发者应通过接口异常的错误码判断错误原因。
+> 3. 建议在操作失败后立即调用此接口获取详细错误信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [HuksExternalErrorInfo](#huksexternalerrorinfo) | 返回最近一次操作的错误信息。 |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+
+const resourceId = JSON.stringify({
+  providerName: "testProviderName",
+  bundleName: "com.example.cryptoapplication",
+  abilityName: "CryptoExtension",
+  index: "testKey"
+});
+
+const params: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
+  {
+    tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN,
+    value: StringToUint8Array(pin)
+  }
+];
+
+try {
+  await huksExternalCrypto.authUkeyPin(resourceId, params);
+} catch (error) {
+  const errorInfo = huksExternalCrypto.getErrorInfo();
+  console.info(`errno: ${errorInfo.errno}`);
+  console.info(`errorDesc: ${errorInfo.errorDesc}`);
+}
 ```

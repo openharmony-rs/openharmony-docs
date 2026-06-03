@@ -60,15 +60,16 @@
 
 2. 配置module.json5文件。
 
-   在`entry/src/main/module.json5`的`module`标签下新增[skillProfiles标签](module-configuration-file.md#skillprofiles标签)，将Skill注册到模块。
+   在`entry/src/main/module.json5`的`module`标签下新增[skillProfiles标签](../quick-start/module-configuration-file.md#skillprofiles标签)，将Skill注册到模块。
 
    示例Skill运行时需要添加网络权限访问云端音乐列表，在`module`标签下的requestPermissions标签配置。
 
-   <!-- @[module.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/src/main/module.json5) -->
-
-   ```json5
+   <!-- @[module_skill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/src/main/module.json5) -->
+   
+   ``` JSON5
    {
      "module": {
+       // ...
        "skillProfiles": [
          {
            "name": "music-assistant", // Skill名，需与SKILL.md的name一致
@@ -78,10 +79,11 @@
            ]
          }
        ],
-
+   
        "requestPermissions": [  // Skill运行需要的权限列表
          { "name": "ohos.permission.INTERNET" }
-       ]
+       ],
+       // ...
      }
    }
    ```
@@ -94,10 +96,12 @@
 
    入口脚本需要从`@kit.AbilityKit`引入`scriptManager`，同时引入待桥接的应用内业务模块。
 
-   <!-- @[MusicSkill.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
-
-   ```typescript
+   <!-- @[music_skill_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   
+   ``` TypeScript
+   
    import { scriptManager } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
    // 应用既有业务模块
    import { MusicPlayer, Track, PlayResult } from '../../../src/main/ets/service/MusicPlayer';
    ```
@@ -109,16 +113,23 @@
    - **方法名约定**：必须与SKILL.md中的`functionName`严格一致（本例为`playMusicByName`、`controlPlayback`）。
    - **方法签名约定**：第一个参数类型固定为[ArkTSScriptInfo](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#arktsscriptinfo)。
 
-   <!-- @[MusicSkill.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
-
-   ```typescript
+   <!-- @[music_skill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   
+   ``` TypeScript
    export default class MusicSkill {
+     // ...
      public async playMusicByName(info: scriptManager.ArkTSScriptInfo, ...argv: string[]): Promise<void> {
        /* 见 3.3 ~ 3.5 */
+       // ...
      }
+   
+     // ...
      public async controlPlayback(info: scriptManager.ArkTSScriptInfo, ...argv: string[]): Promise<void> {
        /* 同上模式 */
+       // ...
      }
+   
+     // ...
    }
    ```
 
@@ -126,22 +137,25 @@
 
    每个能力方法的第一项任务是从`argv`中按位置获取参数，对照SKILL.md的`args` Schema完成前置校验。
 
-   <!-- @[MusicSkill.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
-
-   ```typescript
+   <!-- @[music_skill_verify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   
+   ``` TypeScript
    // 例1：playMusicByName 的两个可选参数，至少一个非空
    const songName: string = argv.length > 0 ? argv[0].trim() : '';
-   const singer: string   = argv.length > 1 ? argv[1].trim() : '';
+   const singer: string = argv.length > 1 ? argv[1].trim() : '';
    if (songName.length === 0 && singer.length === 0) {
      // 走 ERR_INVALID_PARAMS 分支回包（见 3.5），不再进入业务
+         // ...
      return;
    }
-
+       // ...
+   
    // 例2：controlPlayback 的枚举值参数，需用白名单二次校验
    const action: string = argv.length > 0 ? argv[0].trim() : '';
    const validActions: string[] = ['pause', 'resume', 'next', 'previous'];
    if (!validActions.includes(action)) {
      // 走 ERR_INVALID_PARAMS 分支回包
+         // ...
      return;
    }
    ```
@@ -151,47 +165,48 @@
    校验通过后，调用既有业务接口完成实际任务。入口脚本不承载业务逻辑，仅充当“参数适配器”，读取业务返回值与运行时异常，分别映射到SKILL.md声明的不同结果分支。
 
 
-   <!-- @[MusicSkill.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
-
-   ```typescript
-   try {
-     // 直接调用应用内已有业务API
-     const playResult: PlayResult | null = MusicPlayer.searchAndPlay(songName, singer);
-     // 业务返回值 → 映射到"成功"或"未命中"分支（见 3.5）
-   } catch (e) {
-     // 业务异常 → 统一映射到 ERR_INTERNAL 分支（见 3.5）
-     const err = e as BusinessError;
-   }
-   ```
+   <!-- @[music_skill_try](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
 
    3.5 按契约构造ExecuteResult并回传。
 
    业务执行完成后，需将结果封装为[ExecuteResult](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#executeresult)，并通过调用[completeArkTSScriptInApp](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#scriptmanagercompletearktsscriptinapp)回传给系统智能体，回包内容应与SKILL.md中“执行返回值”声明的分支保持一致。
 
-   <!-- @[MusicSkill.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
-
-   ```typescript
+   <!-- @[music_skill_branch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   
+   ``` TypeScript
    // 成功分支示例
+   const first: Track = playResult.tracks[0];     
+   const playingTrack: Record<string, Object> = {     
+     'name': first.name,     
+     'singer': first.singer,     
+     'duration': first.duration     
+   };
+   const data: Record<string, Object> = {     
+     'playingTrack': playingTrack,     
+     'matchedCount': playResult.tracks.length     
+   };
    const payload: Record<string, Object> = {
      'type': 'result',
      'status': 'success',
-     'data': {
-       'playingTrack': { 'name': first.name, 'singer': first.singer, 'duration': first.duration },
-       'matchedCount': playResult.tracks.length
-     }
+     'data': data
    };
    await this.report(info, { code: 0, result: payload });
-
+         // ...
+   
    // 失败分支示例（以 ERR_NOT_FOUND 为例）
+   const payloadData: Record<string, Object> = {     
+     'searchedKeywords': [] 
+   };
    const payload: Record<string, Object> = {
      'type': 'result',
      'status': 'failed',
      'errCode': 'ERR_NOT_FOUND',
-     'data': { 'searchedKeywords': keywords },
+     'data': payloadData,
      'suggestion': `没有找到${singer}${songName.length > 0 ? `的《${songName}》` : '相关歌曲'}`
    };
    await this.report(info, { code: -1, result: payload });
-
+   // ...
+   
    // 唯一的回包出口：只封装API调用与异常打印，不参与结果构造
    private async report(info: scriptManager.ArkTSScriptInfo, result: scriptManager.ExecuteResult): Promise<void> {
      try {
