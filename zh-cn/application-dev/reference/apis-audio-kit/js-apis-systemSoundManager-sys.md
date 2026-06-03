@@ -1173,7 +1173,7 @@ GetMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise&lt
 > **说明：**
 >
 > - 调用该接口前，请确保传入的hapticUri在系统中存在，否则会出现异常和错误。例如无法播放匹配的触觉声音文件。
-> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的[release](js-apis-inner-multimedia-ringtonePlayer-sys.md#release11)方法释放播放器资源。
+> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的[release](js-apis-inner-multimedia-ringtonePlayer-sys.md#release)方法释放播放器资源。
 
 **起始版本：** 26.0.0
 
@@ -1237,7 +1237,7 @@ GetMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUr
 > **说明：**
 >
 > - 调用该接口前，请确保传入的ringtoneUri在系统中存在，否则会出现异常和错误。例如无法播放匹配的触觉声音文件。
-> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的[release](js-apis-inner-multimedia-ringtonePlayer-sys.md#release11)方法释放播放器资源。
+> - 通过该接口获取实例后，在服务终止时需主动调用RingtonePlayer的[release](js-apis-inner-multimedia-ringtonePlayer-sys.md#release)方法释放播放器资源。
 
 **起始版本：** 26.0.0
 
