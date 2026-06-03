@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @jayleehw-->
 <!--Designer: @jayleehw-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 
 - [About This Kit](abilitykit-overview.md)
@@ -25,6 +25,7 @@
       - [UIAbility Backup and Restore](ability-recover-guideline.md)
     - [ExtensionAbility Component](extensionability-overview.md)
       <!--Del-->
+      - [Using the Agent Service Provided by the AgentExtensionAbility Component (System Applications Only)](agent-manager-sys.md)
       - [ServiceExtensionAbility (for System Applications Only)](serviceextensionability-sys.md)
       - [UIServiceExtensionAbility (for System Applications Only)](uiserviceextension-sys.md)
       - [UIExtensionAbility (for System Applications Only)](uiextensionability-sys.md)
@@ -43,6 +44,7 @@
     - [Component Startup Rules (Stage Model)](component-startup-rules.md)
     - [AppStartup](app-startup.md)
     - [Application Preloading](preload-application.md)
+    - [Application Restart](app-restart.md)
     - [Obtaining Reasons for Abnormal Application Exits](ability-exit-info-record.md)
     <!--Del-->
     - Inter-Device Application Component Interaction (Hopping)<!--hop-->
@@ -56,6 +58,7 @@
     - Starting a Specified Application<!--directional-redirection-->
       - [Overview of Starting a Specified Application](app-startup-overview.md)
       - [(Optional) Using canOpenLink to Check Application Accessibility](canopenlink.md)
+      - [Obtaining the URL of the Target Application](obtaining-target-app-url-info.md)
       - [Using Deep Linking for Application Redirection](deep-linking-startup.md)
       - [Using App Linking for Application Redirection](app-linking-startup.md)
       - [Switching from Explicit Want Redirection to Linking Redirection](uiability-startup-adjust.md)
@@ -70,7 +73,7 @@
       - [Using startAbilityByType to Start an Express Delivery Application](start-express-apps.md)
       - [Using startAbilityByType to Start an Image Editing Application](photoEditorExtensionAbility.md)
       - [Using startAbility to Start a File Application](file-processing-apps-startup.md)
-    - [Starting a System Application](system-app-startup.md)
+    - [Starting a System Application](system-app-startup.md)<!--RP1--><!--RP1End-->
   - [Process Model (Stage Model)](process-model-stage.md)
   - [Thread Model (Stage Model)](thread-model-stage.md)
   <!--Del-->
@@ -89,6 +92,9 @@
       - [Developing Intents Using Decorators](insight-intent-decorator-development.md)
       - [Appendix: Standard Intent Access Specifications](insight-intent-access-specifications.md)
     - [Debugging Intents](insight-intent-debug.md)
+  - Agent Development Guidelines Based on AgentExtensionAbility <!--agent-->
+    - [Using AgentExtensionAbility for Agent Services](agent-extension-ability.md)
+    - [AgentExtensionAbility Configuration File Description](agent-extension-configuration.md)
 - FA Model Development<!--fa-model-development-->
   - [FA Model Development Overview](fa-model-development-overview.md)
   - FA Model Application Components<!--fa-model-application-components-->

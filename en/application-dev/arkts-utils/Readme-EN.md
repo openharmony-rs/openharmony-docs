@@ -4,7 +4,7 @@
 <!--Owner: @flyingwolf-->
 <!--Designer: @flyingwolf-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 - [About This Kit](arkts-overview.md)
 - ArkTS Common Library<!--arkts-utils-->
@@ -20,6 +20,7 @@
     - [Overview of the ArkTS Container Library](container-overview.md)
     - [Linear Containers](linear-container.md)
     - [Nonlinear Containers](nonlinear-container.md)
+  - [Common Library FAQs](commonlibrary-faq.md)
 - ArkTS Concurrency<!--arkts-concurrency-->
   - [Overview of Concurrency](concurrency-overview.md)
   - [Asynchronous Concurrency](async-concurrency-overview.md)
@@ -48,8 +49,8 @@
         - [Freezing Sendable Objects](sendable-freeze.md)
         - [Use Scenarios of Sendable](sendable-guide.md)
     - Communication Between Threads<!--interthread-communication-guide-->
-      - [Using TaskPool for Independent Time-consuming Tasks](independent-time-consuming-task.md)
-      - [Using TaskPool for Multiple Time-consuming Tasks](multi-time-consuming-tasks.md)
+      - [Using TaskPool for Independent Time-Consuming Tasks](independent-time-consuming-task.md)
+      - [Using TaskPool for Multiple Time-Consuming Tasks](multi-time-consuming-tasks.md)
       - [Communication Between the TaskPool Task and Host Thread](taskpool-communicates-with-mainthread.md)
       - [Real-Time Communication Between the Worker Thread and Host Thread](worker-communicates-with-mainthread.md)
       - [Synchronous Calls to Host Thread Interfaces from Worker](worker-invoke-mainthread-interface.md)
