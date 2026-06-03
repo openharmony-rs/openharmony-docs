@@ -46,10 +46,11 @@ enable(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息          |
-| -------- | -----------------|
-| 401 | Parameter error.      |
 
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -109,9 +110,11 @@ enable(enable: boolean): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息          |
-| -------- | -----------------|
-| 401 | Parameter error.      |
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -161,11 +164,13 @@ start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback: AsyncCal
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[键鼠穿越管理错误码](errorcode-cooperator.md)。
 
+
 | 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |
-| 401      | Parameter error.    |
-| 4400001  | Incorrect descriptor for the target device.                |
-| 4400002  | Screen hop failed.   |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 4400001  | Incorrect descriptor for the target device. |
+| 4400002  | Screen hop failed. |
 
 **示例**：
 
@@ -230,11 +235,13 @@ start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise\<void>
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[键鼠穿越管理错误码](errorcode-cooperator.md)。
 
+
 | 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |
-| 401      | Parameter error.    |
-| 4400001  | Incorrect descriptor for the target device.          |
-| 4400002  | Screen hop failed.              |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 4400001  | Incorrect descriptor for the target device. |
+| 4400002  | Screen hop failed. |
 
 **示例**：
 
@@ -284,9 +291,11 @@ stop(callback: AsyncCallback\<void>): void
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息           |
-| -------- | ----------------- |
-| 401      | Parameter error.  |
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -336,6 +345,15 @@ stop(): Promise\<void>
 | --------             | ----------------------------   |
 | Promise\<void>       |  Promise对象，无返回结果。      |
 
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+
 **示例**：
 
 ```ts
@@ -383,9 +401,11 @@ getState(deviceDescriptor: string, callback: AsyncCallback<{ state: boolean }>):
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 401      | Parameter error.  |
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 **示例**：
@@ -447,9 +467,11 @@ getState(deviceDescriptor: string): Promise<{ state: boolean }>
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 401      | Parameter error.  |
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 **示例**：
@@ -500,9 +522,11 @@ on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, even
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 401      | Parameter error.  |
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 **示例**：
@@ -555,9 +579,11 @@ off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 401      | Parameter error.  |
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 **示例**：

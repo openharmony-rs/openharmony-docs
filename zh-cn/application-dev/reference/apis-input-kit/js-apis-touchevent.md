@@ -91,7 +91,7 @@ import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 | 名称          | 类型   | 只读   | 可选   | 说明                                  |
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
 | id          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 触屏输入事件ID。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
-| pressedTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否    | 否    | 按下时间戳，单位：μs。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
+| pressedTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否    | 否    | 按下时间戳，表示系统启动运行至今逝去的微秒数，单位为微秒（μs）。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
 | screenX     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 该触屏输入事件以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
 | screenY     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 该触屏输入事件以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |
 | windowX     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 触屏所在窗口左上角为原点的相对坐标系的X坐标。当前仅支持整数。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23 |

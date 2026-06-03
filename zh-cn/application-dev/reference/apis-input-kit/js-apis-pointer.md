@@ -46,7 +46,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801  | Capability not supported. |
 
 **示例**：
@@ -144,7 +144,7 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801  | Capability not supported. |
 
 **示例**：
@@ -232,7 +232,7 @@ setPointerVisibleSync(visible: boolean): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -311,7 +311,7 @@ isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -554,7 +554,7 @@ ArkTS-Sta: getPointerStyle(windowId: int, callback: AsyncCallback&lt;PointerStyl
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -660,7 +660,7 @@ ArkTS-Sta: getPointerStyle(windowId: int): Promise&lt;PointerStyle&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -768,7 +768,7 @@ ArkTS-Sta: getPointerStyleSync(windowId: int): PointerStyle
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -854,7 +854,7 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202 | Permission denied, non-system app called system api. When the windowId value is -1, the system permission is required to set the global style.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -962,7 +962,7 @@ ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise&l
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202 | Permission denied, non-system app called system api. When the windowId value is -1, the system permission is required to set the global style.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1068,7 +1068,7 @@ ArkTS-Sta: setPointerStyleSync(windowId: int, pointerStyle: PointerStyle): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202 | Permission denied, non-system app called system api. When the windowId value is -1, the system permission is required to set the global style.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。 |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1274,7 +1274,7 @@ ArkTS-Sta: setCustomCursor(windowId: int, pixelMap: image.PixelMap, focusX?: int
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1562,7 +1562,7 @@ ArkTS-Sta: setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?:
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
