@@ -61,6 +61,8 @@
   - [Audio Creation Overview (C/C++)](audio-suite.md)
   - [Offline Editing (C/C++)](audio-suite-manual-rendering.md)
   - [Real-Time Rendering (C/C++)](audio-suite-real-time-rendering.md)
+- MIDI<!--midi-->
+  - [OH_MIDI Overview (C/C++)](midi-overview.md)
 - OpenSL ES Development (Not Recommended)<!--not-recommended-->
   - [Switching from OpenSL ES to OHAudio (C/C++)](replace-opensles-by-ohaudio.md)
   - [Using OpenSL ES for Audio Playback (C/C++)](using-opensl-es-for-playback.md)
