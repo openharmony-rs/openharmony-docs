@@ -151,7 +151,7 @@ crossAppSharedConfig字段配置说明：
   
   ``` TypeScript
   function publishSharedConfig(): void {
-    console.info('publishSharedConfig start');
+    console.info('ttt publishSharedConfig start');
     dataShare.createDataProxyHandle().then((dataProxyHandle: dataShare.DataProxyHandle) => {
       const newConfigData: dataShare.ProxyData[] = [
         {
@@ -176,13 +176,13 @@ crossAppSharedConfig字段配置说明：
       };
       dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
         results.forEach((result) => {
-          console.info(`URI: ${result.uri}, Result: ${result.result}`);
+          console.info(`ttt URI: ${result.uri}, Result: ${result.result}`);
         });
       }).catch((error: Error) => {
-        console.info('Error publishing config:', error);
+        console.info('ttt Error publishing config:', error);
       });
     }).catch((error: Error) => {
-      console.info('Error creating DataProxyHandle:', error);
+      console.info('ttt Error creating DataProxyHandle:', error);
     });
   }
   ```
