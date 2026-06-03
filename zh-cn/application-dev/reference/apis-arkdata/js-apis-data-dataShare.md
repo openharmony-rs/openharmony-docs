@@ -60,7 +60,7 @@ export default class EntryAbility extends UIAbility {
     dataShare.createDataProxyHandle().then((dataProxyHandle) => {
       console.info("createDataProxyHandle succeed");
     }).catch((err: BusinessError) => {
-      console.error(`createDataProxyHandle error: code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to create DataProxyHandle. Code: ${err.code}, message: ${err.message}`);
     });
   }
 }
@@ -111,7 +111,7 @@ export default class EntryAbility extends UIAbility {
 | 名称       | 类型                                                         | 只读 | 可选 | 说明           |
 | ---------- | ----------------------------------------------------------- | ----| ---- | -------------- |
 | type       | [ChangeType](#changetype20)                                | 否 | 否    | 通知变更的类型。 |
-| uri       | string                                                        | 否 | 否    | 通知变更指定URI。|
+| uri       | string                                                        | 否 | 否    | 通知变更指定URI。固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。|
 | value     | [ValueType](js-apis-data-valuesBucket.md#valuetype)             | 否 | 否     | 更新的数据。     |
 
 ## DataProxyErrorCode<sup>20+</sup>
@@ -211,6 +211,8 @@ export default class EntryAbility extends UIAbility {
 
 数据代理操作句柄的实例，可使用此实例访问或管理共享配置信息。在调用DataProxyHandle提供的方法前，需要先通过[createDataProxyHandle](#datasharecreatedataproxyhandle20)构建一个实例。
 
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
 ### on('dataChange')<sup>20+</sup>
 
 on(event: 'dataChange', uris: string[], config: DataProxyConfig, callback: AsyncCallback&lt;DataProxyChangeInfo[]&gt;): DataProxyResult[]
@@ -234,7 +236,7 @@ on(event: 'dataChange', uris: string[], config: DataProxyConfig, callback: Async
 | event     | string                        | 是   | 订阅的事件/回调类型，支持的事件为'dataChange'，当配置发布方修改配置时，触发该事件。 |
 | uris     | string\[]             | 是   | 表示要订阅的共享配置对应的URI数组。<br/>**说明：** <br/>1. API版本26.0.0之前，数组最大长度为32；从API版本26.0.0开始，数组最大长度为64。<br/>2. URI固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
 | config      | [DataProxyConfig](#dataproxyconfig20)               | 是   | 表示数据代理操作的配置。从API版本26.0.0开始，当变更的共享配置内容长度超过[DataProxyConfig](#dataproxyconfig20)中maxValueLength字段配置的最大长度限制时，该共享配置内容会被截断。 |
-| callback | AsyncCallback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | 是   | 回调函数。当配置发布方修改配置时会回调该函数。|
+| callback | AsyncCallback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | 是   | 回调函数。当订阅成功时，err为undefined，data为获取到的DataProxyChangeInfo数组，包含变更类型、URI和变更的共享配置内容；否则为错误对象。|
 
 **返回值：**
 
@@ -261,7 +263,7 @@ const config: dataShare.DataProxyConfig = {
 };
 const callback = (err: BusinessError<void>, changes: dataShare.DataProxyChangeInfo[]): void => {
   if (err) {
-    console.error(`callback error: code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to receive data change notification. Code: ${err.code}, message: ${err.message}`);
   } else {
     changes.forEach((change) => {
       console.info(`Change Type: ${change.type}, URI: ${change.uri}, Value: ${change.value}`);
@@ -357,7 +359,7 @@ off(event: 'dataChange', uris: string[], config: DataProxyConfig, callback?: Asy
 | event     | string                        | 是   | 订阅的事件/回调类型，支持的事件为'dataChange'。 |
 | uris     | string\[]             | 是   | 表示要取消订阅的共享配置对应的URI数组。<br/>**说明：** <br/>1. API版本26.0.0之前，数组最大长度为32；从API版本26.0.0开始，数组最大长度为64。<br/>2. URI固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
 | config      | [DataProxyConfig](#dataproxyconfig20)               | 是   | 表示数据代理操作的配置。 |
-| callback | AsyncCallback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | 否   | 回调函数。表示指定取消订阅的callback通知，如果为空、undefined或null，则取消订阅这些URI下所有的通知事件。|
+| callback | AsyncCallback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | 否   | 需要取消的回调函数。不填写则取消所有已注册的回调函数。|
 
 **返回值：**
 
@@ -384,7 +386,7 @@ const config: dataShare.DataProxyConfig = {
 };
 const callback = (err: BusinessError<void>, changes: dataShare.DataProxyChangeInfo[]): void => {
   if (err) {
-    console.error(`callback error: code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to receive data change notification. Code: ${err.code}, message: ${err.message}`);
   } else {
     changes.forEach((change) => {
       console.info(`Change Type: ${change.type}, URI: ${change.uri}, Value: ${change.value}`);
@@ -610,7 +612,7 @@ dataProxyHandle.deleteMyPublishedData(config).then((results: dataShare.DataProxy
     console.info(`URI: ${result.uri}, Result: ${result.result}`);
   });
 }).catch((error: BusinessError) => {
-  console.error('Error deleting config:', error);
+  console.error(`Failed to delete all configs. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
