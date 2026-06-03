@@ -11,7 +11,7 @@
 
 ## 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
 
 2. 基于现有的p12文件数据，调用[cert.createTrustAnchorsWithKeyStore](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatetrustanchorswithkeystore12)创建[X509TrustAnchor](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509trustanchor11)数组对象，并返回结果。
 

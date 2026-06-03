@@ -11,7 +11,7 @@
 
 ## 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
