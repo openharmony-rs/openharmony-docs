@@ -2,9 +2,9 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
+<!--Owner: @chuchihtung-->
 <!--Designer: @zhanglu161-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
 
 ## C
