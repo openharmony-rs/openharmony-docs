@@ -1408,7 +1408,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle).then(() => {
-    console.info(`Succeeded to report `);
+    console.info(`Succeeded to report`);
   });
 });
 ```
