@@ -92,7 +92,7 @@
 // 案例：文件从回收站恢复后URI已失效。
 // 错误码： 13900002 - 文件不存在。
 
-const TAG = 'Case21_FileNotExist';
+const TAG = 'Case_FileNotExist';
 
 async trigger13900002Error21(context: common.Context): Promise<void> {
   const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -158,8 +158,12 @@ async trigger13900002Error21(context: common.Context): Promise<void> {
 
 
 ```log
-E Case21_FileNotExist Test1 Error code: 13900002
-E Case21_FileNotExist Test1 Error message: no such file
+I     Case_FileNotExist Test file created successfully
+I     Case_FileNotExist Test1: add non-existent resource
+E     Case_FileNotExist Test1 Error code: 13900002
+E     Case_FileNotExist Test1 Error message: no such file
+I     Case_FileNotExist Test2: add existing resource correctly
+I     Case_FileNotExist Test2: add resource success
 ```
 
 ### 常见易错代码
