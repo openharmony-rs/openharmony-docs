@@ -215,8 +215,7 @@ OH_AVErrCode OH_VideoEncoder_CreatePrimaryWithPreproc(const char *mime, OH_AVCod
 创建支持前处理的主视频编码器实例。该编码器支持以下能力：
 1. 前处理功能（降采样、裁剪、丢帧）。
 2. 从该主编码器创建副编码器实现一入二出双路编码。
-通过该接口创建的编码器仅支持Surface模式，不支持Buffer模式和同步模式。创建成功后需通过[OH_VideoEncoder_Destroy](#oh_videoencoder_destroy)销毁。<br>
-详情请参见：[视频编码前处理](../../media/avcodec/video-encoding-preproc.md)和[编码支持一入二出](../../media/avcodec/video-encoding-preproc-one-in-dual-out.md)。
+通过该接口创建的编码器仅支持Surface模式，不支持Buffer模式和同步模式。创建成功后需通过[OH_VideoEncoder_Destroy](#oh_videoencoder_destroy)销毁。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
@@ -250,8 +249,7 @@ OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_
 4. 可独立启动/停止（不依赖主编码器的启停状态）。
 5. 生命周期必须短于主编码器。
 6. 一个主编码器同时只能拥有一个副编码器。
-必须在主编码器创建成功之后才能创建。创建成功后需通过[OH_VideoEncoder_Destroy](#oh_videoencoder_destroy)销毁。销毁顺序建议先Destroy Secondary再Destroy Primary。<br>
-详情请参见：[编码支持一入二出](../../media/avcodec/video-encoding-preproc-one-in-dual-out.md)。
+必须在主编码器创建成功之后才能创建。创建成功后需通过[OH_VideoEncoder_Destroy](#oh_videoencoder_destroy)销毁。销毁顺序建议先Destroy Secondary再Destroy Primary。
 
 **系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
