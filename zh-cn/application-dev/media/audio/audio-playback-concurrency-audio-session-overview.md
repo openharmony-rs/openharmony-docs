@@ -57,7 +57,7 @@
 |  | 应用A | 应用B | 打断效果 | 备注 |
 |--|-------|-------|---------|------|
 | 默认场景 | 播放媒体类音频（音乐） | 播放媒体类音频（短视频） | 默认焦点策略是停止，B播放后A被打断，不恢复 | 需要应用A继续播放，参考如下方案 |
-| 方案一 | 使用音频渲染接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | B抢占焦点后，A会继续静音播放，B完成播放后A恢复 | 复播后会跳过之前静音的内容，对进度条敏感的场景，不建议使用 |
+| 方案一 | 使用音频渲染接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | B抢占焦点后，A会继续静音播放，B完成播放后A恢复 | 复播后会跳过之前静音的内容，对进度条敏感的场景不建议使用 |
 | 方案二 | 使用音频渲染接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 无需适配 | 应用B音频打断应用A时使用暂停策略，B播放完成后，A收到RESUME消息后继续播放 | 进度条敏感应用推荐使用该方案 |
 | 方案三 | 无需适配 | 使用音频会话，在启动时使用CONCURRENCY_PAUSE_OTHERS，打断时使用PAUSE策略。当应用B释放焦点时，会给A发送RESUME事件 | B播放完成后，会发送RESUME，A继续播放 | |
 | 方案四 | 应用A提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 无需适配 | 应用A提供设置开关，用户手动开启生效，B播放后与A同时播放 | 参考系统音乐 |
