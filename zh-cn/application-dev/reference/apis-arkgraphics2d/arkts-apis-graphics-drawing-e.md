@@ -328,10 +328,10 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称   | 值 | 说明               | 示意图   |
 | ------ | - | ------------------ | -------- |
-| NORMAL | 0 | 全面模糊，外圈边缘和内部实体一起模糊。 | ![NORMAL](figures/BlueType-Normal.png) |
-| SOLID  | 1 | 内部实体不变，只模糊外圈边缘部分。 | ![SOLID](figures/BlueType-Solid.png) |
-| OUTER  | 2 | 只有外圈边缘模糊，内部实体完全透明。 | ![OUTER](figures/BlueType-Outer.png) |
-| INNER  | 3 | 只有内部实体模糊，外圈边缘清晰。 | ![INNER](figures/BlueType-Inner.png) |
+| NORMAL | 0 | 全面模糊，外圈边缘和内部实体一起模糊。 | ![NORMAL](figures/BlurType-Normal.png) |
+| SOLID  | 1 | 内部实体不变，只模糊外圈边缘部分。 | ![SOLID](figures/BlurType-Solid.png) |
+| OUTER  | 2 | 只有外圈边缘模糊，内部实体完全透明。 | ![OUTER](figures/BlurType-Outer.png) |
+| INNER  | 3 | 只有内部实体模糊，外圈边缘清晰。 | ![INNER](figures/BlurType-Inner.png) |
 
 ## ScaleToFit<sup>12+</sup>
 
