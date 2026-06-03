@@ -32,7 +32,7 @@ ArkTS-Dyn: aboutToAppear?(): void
 
 ArkTS-Sta: default aboutToAppear(): void
 
-aboutToAppear函数在创建自定义组件的新实例后，在其build()函数执行前调用。允许在aboutToAppear函数中改变[状态变量](../../../ui/state-management/arkts-state-management-glossary.md#状态变量state-variables)，更改将在后续执行build()函数中生效。实现[自定义布局](./ts-custom-component-layout.md)的自定义组件的aboutToAppear生命周期在布局过程中触发。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。
+aboutToAppear函数在创建自定义组件的新实例后，在其build()函数执行前调用。允许在aboutToAppear函数中改变[状态变量](../../../ui/state-management/arkts-state-management-glossary.md#state-variables状态变量)，更改将在后续执行build()函数中生效。实现[自定义布局](./ts-custom-component-layout.md)的自定义组件的aboutToAppear生命周期在布局过程中触发。具体使用说明，详见[自定义组件生命周期指南](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。
 
 > **说明：**
 >
