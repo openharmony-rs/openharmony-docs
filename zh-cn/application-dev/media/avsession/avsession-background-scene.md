@@ -106,3 +106,49 @@ AVSession的接入开发请参考指南[应用接入AVSession场景介绍](avses
 2. 创建AVSession后，应用在退至后台前应调用[setBackgroundPlayMode](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setbackgroundplaymode24)接口设置准确的后台播放模式。
 
  <!-- @[setBackgroundPlayMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SetBackgroundPlayMode.ets) -->
+ 
+ ``` TypeScript
+ import { avSession } from '@kit.AVSessionKit';
+ import { BusinessError } from '@kit.BasicServicesKit';
+ // ...
+ 
+ @Entry
+ @Component
+ struct Index {
+   @State message: string = 'hello world';
+   // ...
+ 
+   build() {
+     Column() {
+       // ...
+       Text(this.message)
+         .onClick(async () => {
+           let currentAVSession: avSession.AVSession | undefined = undefined;
+           let tag = 'createNewSession';
+           let context: Context = this.getUIContext().getHostContext() as Context;
+           // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+           avSession.createAVSession(context, tag, 'audio', (err: BusinessError, data: avSession.AVSession) => {
+             if (err) {
+               console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+             } else {
+               currentAVSession = data;
+             }
+           });
+           // 设置后台播放模式
+           if (currentAVSession !== undefined) {
+             try {
+               (currentAVSession as avSession.AVSession)
+                 .setBackgroundPlayMode(avSession.BackgroundPlayMode.ENABLE_BACKGROUND_PLAY);
+               // ...
+             } catch (err) {
+               console.error(`setBackgroundPlayMode BusinessError: code: ${err.code}, message: ${err.message}`);
+               // ...
+             }
+           }
+         })
+     }
+     .width('100%')
+     .height('100%')
+   }
+ }
+ ```
