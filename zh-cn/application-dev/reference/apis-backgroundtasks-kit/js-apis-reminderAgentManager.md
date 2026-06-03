@@ -1412,13 +1412,13 @@ reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => 
 
 时区类型。用于时区变更时，按照变更后的时区重新计算提醒的目标时间。
 
-**系统能力：** SystemCapability.Notification.ReminderAgent
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Notification.ReminderAgent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1480,13 +1480,13 @@ reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => 
 
 通知请求信息。
 
-**系统能力：** SystemCapability.Notification.ReminderAgent
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Notification.ReminderAgent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
