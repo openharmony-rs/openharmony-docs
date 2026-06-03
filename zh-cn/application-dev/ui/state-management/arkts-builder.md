@@ -77,9 +77,8 @@ struct BuilderDemo {
 
 **ArkTS-Sta:**
 <!-- @[BuilderPrivate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderPrivate.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Text, Builder, FontWeight } from '@kit.ArkUI';
 
 @Entry
@@ -109,7 +108,6 @@ struct BuilderDemo {
     }
   }
 }
-
 ```
 示例效果图：
 
@@ -152,9 +150,8 @@ struct BuilderSample {
 
 **ArkTS-Sta:**
 <!-- @[BuilderGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderGlobal.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Text, Builder, FontWeight } from '@kit.ArkUI';
 
 @Builder
@@ -247,9 +244,8 @@ struct ParameterMakeBinding {
 
 **ArkTS-Sta:**
 <!-- @[BuilderMakeBinding](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderMakeBinding.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Binding, MutableBinding, UIUtils, Builder, Row, Column, Text, Button,
          Entry, ComponentV2, Local } from '@kit.ArkUI';
 
@@ -330,9 +326,8 @@ struct ParameterReference {
 
 **ArkTS-Sta:**
 <!-- @[BuilderByReference](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderByReference.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, State, FontWeight, TextAlign } from '@kit.ArkUI';
 
 // 引用传递类型是interface才能触发UI刷新。
@@ -403,9 +398,8 @@ struct ParameterValue {
 
 **ArkTS-Sta:**
 <!-- @[BuilderByValue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderByValue.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Row, Text, Builder, State } from '@kit.ArkUI';
 
 @Builder
@@ -505,9 +499,8 @@ struct PrivateBuilder {
 
 **ArkTS-Sta:**
 <!-- @[BuilderInCustomComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderInCustomComponent.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, State } from '@kit.ArkUI';
 
 @Entry
@@ -661,9 +654,8 @@ struct ParentDemo {
 
 **ArkTS-Sta:**
 <!-- @[BuilderGlobalScene](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderGlobalScene.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, State, Observed } from '@kit.ArkUI';
 
 interface ChildTmp {
@@ -823,9 +815,8 @@ struct ParentSample {
 
 **ArkTS-Sta:**
 <!-- @[BuilderDecoratorRefresh](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderDecoratorRefresh.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, State, Observed } from '@kit.ArkUI';
 
 interface Tmp {
@@ -949,9 +940,8 @@ struct customBuilderDemo {
 
 **ArkTS-Sta:**
 <!-- @[BuilderAsCustomBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderAsCustomBuilder.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List, State } from '@kit.ArkUI';
 
 @Builder
@@ -1156,9 +1146,8 @@ struct ParentExample {
 
 **ArkTS-Sta:**
 <!-- @[BuilderNested](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderNested.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State, PropRef } from '@kit.ArkUI';
 
 // 引用传递类型是interface时才能触发UI刷新。
@@ -1400,9 +1389,8 @@ struct ParentPage {
 
 **ArkTS-Sta:**
 <!-- @[BuilderCombinedV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderCombinedV2.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Column, Text, Builder, Button, ClickEvent, ComponentV2, ObservedV2, Trace, Require, Param } from '@kit.ArkUI';
 
 @ObservedV2
@@ -1590,9 +1578,8 @@ struct ParentLocalPage {
 
 **ArkTS-Sta:**
 <!-- @[BuilderCombinedLocal](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderCombinedLocal.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, ComponentV2, Column, Text, Builder, Button, Flex, Require, Param, Local } from '@kit.ArkUI';
 
 interface Info {
@@ -1786,9 +1773,8 @@ struct ReusableChildTwoPage {
 
 **ArkTS-Sta:**
 <!-- @[BuilderAcrossComponents](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderAcrossComponents.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State, Reusable, ReuseObject } from '@kit.ArkUI';
 
 // 引用传递类型是interface才能触发UI刷新。
@@ -1893,9 +1879,8 @@ struct ReusableChildTwoPage {
 
 **ArkTS-Sta**
 <!-- @[BuilderVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderVariable.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Builder, Component, Column, Color, Entry, ForEach, Text, State } from '@kit.ArkUI';
 
 @Builder
@@ -1936,9 +1921,8 @@ Builder函数可以支持泛型声明。
 
 **ArkTS-Sta:**
 <!-- @[BuilderGeneric](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderGeneric.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Column, Component, Text, Resource, Color, ForEach, Builder, Row, TextAlign, Observed } from '@kit.ArkUI';
 
 type ItemBuilder<T> = @Builder (item: T) => void;
@@ -2112,9 +2096,8 @@ struct Single {
 
 **ArkTS-Sta:**
 <!-- @[BuilderStateRefresh](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderStateRefresh.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Text, TextAttribute, Column, ComponentV2, Button, ButtonAttribute, ClickEvent, Row, Color, CommonMethod, Margin, HorizontalAlign, Builder, TextAlign, FlexAlign, applyStyles, UIUtils, Binding, MutableBinding, State, ObservedV2, Trace, Local } from '@kit.ArkUI';
 
 @ObservedV2
@@ -2440,9 +2423,8 @@ struct Parent3 {
 
 **ArkTS-Sta:**
 <!-- @[BuilderOneParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderOneParam.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line, State, Observed } from '@kit.ArkUI';
 
 interface GlobalTmp {
@@ -2681,9 +2663,8 @@ struct PageBuilderCorrectUsage {
 
 **ArkTS-Sta:**
 <!-- @[BuilderComponentV2Refresh](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderComponentV2Refresh.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Column, Text, Builder, ComponentV2, FontWeight, Trace, ObservedV2, Local } from '@kit.ArkUI';
 
 @ObservedV2
@@ -2891,9 +2872,8 @@ struct Parent {
 
 **ArkTS-Sta:**
 <!-- @[BuilderModifyParamPositive](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderModifyParamPositive.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ListItem, FontWeight, State } from '@kit.ArkUI';
 
 // 引用传递类型是interface时才能触发UI刷新。
@@ -3114,9 +3094,8 @@ struct ParentPage2 {
 
 **ArkTS-Sta:**
 <!-- @[BuilderComponentParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderComponentParam.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State, PropRef } from '@kit.ArkUI';
 
 // 引用传递类型是interface时才能触发UI刷新。

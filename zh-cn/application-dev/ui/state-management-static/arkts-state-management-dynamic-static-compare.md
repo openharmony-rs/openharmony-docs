@@ -22,43 +22,42 @@
 例如：
 
 <!-- @[static_no_mutable_builder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaCompare/entry/src/main/ets/pages/StaticNoMutableBuilder.ets) -->
-  ```typescript
-  'use static'
 
-  import { Entry, Builder, ComponentV2, Local, Text, Button, Column } from '@kit.ArkUI';
+``` TypeScript
+import { Entry, Builder, ComponentV2, Local, Text, Button, Column } from '@kit.ArkUI';
 
-  @Builder
-  function textBuilder(p: { text: string }) {
-    Text(p.text)
-  }
+@Builder
+function textBuilder(p: { text: string }) {
+  Text(p.text)
+}
 
-  @Builder
-  function buttonBuilder(p: { text: string }) {
-    Button(p.text)
-  }
+@Builder
+function buttonBuilder(p: { text: string }) {
+  Button(p.text)
+}
 
-  @Entry
-  @ComponentV2
-  struct Index {
-    @Local useText: boolean = true;
-    @Local message: string = 'init';
+@Entry
+@ComponentV2
+struct Index {
+  @Local useText: boolean = true;
+  @Local message: string = 'init';
 
-    build() {
-      Column() {
-        // 直接通过条件判断切换@Builder
-        if (this.useText) {
-          textBuilder({ text: this.message })
-        } else {
-          buttonBuilder({ text: this.message })
-        }
-        Button('Switch Builder')
-          .onClick(() => {
-            this.useText = !this.useText;
-          })
+  build() {
+    Column() {
+      // 直接通过条件判断切换@Builder
+      if (this.useText) {
+        textBuilder({ text: this.message })
+      } else {
+        buttonBuilder({ text: this.message })
       }
+      Button('Switch Builder')
+        .onClick(() => {
+          this.useText = !this.useText;
+        })
     }
   }
-  ```
+}
+```
 
 ## 双向绑定语法差异
 
@@ -155,6 +154,7 @@ ArkTS-Sta中，状态管理框架使用Vsync（渲染同步信号）异步触发
 ArkTS-Dyn示例：
 
 <!-- @[monitor_trigger_dyn](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynCompare/entry/src/main/ets/pages/MonitorTriggerDyn.ets) -->
+
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
@@ -179,7 +179,7 @@ struct Page {
 
   aboutToAppear(): void {
     // 会再次触发onMessageChange回调，打印`message change from initialized to Index aboutToAppear`
-    this.info.message = 'Index aboutToAppear'; 
+    this.info.message = 'Index aboutToAppear';
   }
 
   build() {
@@ -194,9 +194,8 @@ ArkTS-Sta示例：
 
 
 <!-- @[monitor_trigger_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaCompare/entry/src/main/ets/pages/MonitorTriggerSta.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { ObservedV2, Trace, Local, IMonitor, IMonitorDecoratedVariable, UIUtils,
          ComponentV2, Column, Entry, Button, Text } from '@kit.ArkUI';
 
@@ -263,6 +262,7 @@ PersistenceV2的globalConnect接口在ArkTS-Dyn和ArkTS-Sta上存在API层面的
 ArkTS-Dyn示例：
 
 <!-- @[global_connect_dyn](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynCompare/entry/src/main/ets/pages/GlobalConnectDyn.ets) -->
+
 ``` TypeScript
 import { PersistenceV2, UIUtils, Type } from '@kit.ArkUI';
 
@@ -336,9 +336,8 @@ struct Index {
 ArkTS-Sta示例：
 
 <!-- @[global_connect_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaCompare/entry/src/main/ets/pages/GlobalConnectSta.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 // 迁移步骤1：移除Type的导入，新增StorageDefaultSubCreators的导入
 import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local,
   Column, Text, Button, ForEach, List, ListItem, StorageDefaultSubCreators } from '@kit.ArkUI';

@@ -58,9 +58,8 @@ let builderArr: WrappedBuilder<@Builder (p1: string, p2: number) => void>[] = [w
 使用`@Builder`装饰器装饰的方法`MyBuilder`作为`wrapBuilder`的参数，再将`wrapBuilder`函数的返回值赋值给变量`globalBuilder`，以解决`@Builder`方法赋值给变量后无法使用的问题。
 
 <!-- @[WrapBuilderVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/WrapBuilder/entry/src/main/ets/pages/WrapBuilderVariable.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Builder, Component, Column, Entry, Row, Text, WrappedBuilder, wrapBuilder, State } from '@kit.ArkUI';
 
 @Builder
@@ -99,9 +98,8 @@ struct Index {
 自定义组件Index使用[ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach-sta.md)进行不同`@Builder`函数的渲染，可以使用`builderArr`声明的`wrapBuilder`数组来实现不同的`@Builder`函数效果。整体代码会更加整洁。
 
 <!-- @[WrapBuilderForEach](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/WrapBuilder/entry/src/main/ets/pages/WrapBuilderForEach.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Builder, Color, Column, Component, Entry, ForEach, Row, Text, WrappedBuilder, wrapBuilder, State } from '@kit.ArkUI';
 
 @Builder
@@ -124,7 +122,7 @@ const builderArr: WrappedBuilder<@Builder (p1: string, p2: number) => void>[] = 
 @Entry
 @Component
 struct Index {
-  @Builder 
+  @Builder
   testBuilder() {
     // 使用ForEach展开WrappedBuilder列表
     ForEach(builderArr, (item: WrappedBuilder<@Builder (p1: string, p2: number) => void>) => {
@@ -153,16 +151,15 @@ struct Index {
 按引用传递参数时，传递的状态变量的改变会引起`@Builder`方法内的UI刷新。
 
 <!-- @[WrapBuilderReference](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/WrapBuilder/entry/src/main/ets/pages/WrapBuilderReference.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Builder, Button, ClickEvent, Column, Component, Entry, Text, WrappedBuilder, wrapBuilder, Observed, State } from '@kit.ArkUI';
 
 interface Tmp {
   paramA2: string;
 }
 
-@Builder 
+@Builder
 function overBuilder(param: Tmp) {
   Column() {
     Text(`wrapBuilder value: ${param.paramA2}`)
@@ -196,9 +193,8 @@ struct Parent{
 使用`wrapBuilder`封装全局`@Builder`，实现全局`@Builder`的动态切换。
 
 <!-- @[WrapBuilderDynamicSwitch](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/WrapBuilder/entry/src/main/ets/pages/WrapBuilderDynamicSwitch.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Builder, Button, Column, ComponentV2, Entry, Text, WrappedBuilder, wrapBuilder, Local } from '@kit.ArkUI';
 
 class TextContent {

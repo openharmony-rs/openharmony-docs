@@ -98,26 +98,25 @@ import { BuilderParam } from '@kit.ArkUI';
 
   **ArkTS-Sta:**
   <!-- @[BuilderParamInitMethod](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamInitMethod.ets) -->
+  
   ``` TypeScript
-  'use static'
-
   import { Entry, Component, Column, Builder, BuilderParam, Text } from '@kit.ArkUI';
-
+  
   @Component
   struct Child {
     @Builder
     customBuilder() {
     }
-
+  
     @BuilderParam customBuilderParam: () => void = this.customBuilder;
-
+  
     build() {
       Column() {
         this.customBuilderParam()
       }
     }
   }
-
+  
   @Entry
   @Component
   struct Parent {
@@ -125,7 +124,7 @@ import { BuilderParam } from '@kit.ArkUI';
     componentBuilder() {
       Text(`Parent builder `)
     }
-
+  
     build() {
       Column() {
         Child({ customBuilderParam: this.componentBuilder })
@@ -204,26 +203,25 @@ import { BuilderParam } from '@kit.ArkUI';
 
   **ArkTS-Sta:**
   <!-- @[BuilderParamThis](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamThis.ets) -->
+  
   ``` TypeScript
-  'use static'
-
   import { Entry, Component, Column, Builder, BuilderParam, Text } from '@kit.ArkUI';
-
+  
   @Component
   struct Child {
     label: string = 'Child';
-
+  
     @Builder
     customBuilder() {
     }
-
+  
     @Builder
     customChangeThisBuilder() {
     }
-
+  
     @BuilderParam customBuilderParam: () => void = this.customBuilder;
     @BuilderParam customChangeThisBuilderParam: () => void = this.customChangeThisBuilder;
-
+  
     build() {
       Column() {
         this.customBuilderParam()
@@ -231,17 +229,17 @@ import { BuilderParam } from '@kit.ArkUI';
       }
     }
   }
-
+  
   @Entry
   @Component
   struct Parent {
     label: string = 'Parent';
-
+  
     @Builder
     componentBuilder() {
       Text(`${this.label}`)
     }
-
+  
     build() {
       Column() {
         // 调用this.componentBuilder()时，this指向当前@Entry所装饰的Parent组件，即label变量的值为'Parent'。
@@ -335,9 +333,8 @@ struct Parent {
 
 **ArkTS-Sta:**
 <!-- @[BuilderParamSceneInit](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamSceneInit.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Builder, BuilderParam, Text, Color } from '@kit.ArkUI';
 
 interface Tmp {
@@ -473,9 +470,8 @@ struct CustomContainerUser {
 
 **ArkTS-Sta:**
 <!-- @[BuilderParamTrailingClosure01](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamTrailingClosure01.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Builder, BuilderParam, Text, Color, ClickEvent, State, PropRef } from '@kit.ArkUI';
 
 @Component
@@ -620,9 +616,8 @@ struct ParentPage {
 
 **ArkTS-Sta:**
 <!-- @[BuilderParamTrailingClosure02](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamTrailingClosure02.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Text, Row, Column, ComponentV2, Builder, Line, BuilderParam, Local, Require, Param, FontWeight } from '@kit.ArkUI';
 
 @ComponentV2
@@ -853,9 +848,8 @@ struct HelloWorldPage {
 
 **ArkTS-Sta:**
 <!-- @[BuilderParamJumpLogic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamJumpLogic.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Builder, BuilderParam, Text, Color, Navigation, NavigationMode, Button, NavPathStack, ButtonType, NavPathInfo, NavDestination, State, FontWeight, NavDestinationContext } from '@kit.ArkUI';
 
 class NavigationParams {
@@ -1067,9 +1061,8 @@ struct ParentPage {
 
 **ArkTS-Sta:**
 <!-- @[BuilderParamGlobalLocalInit](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamGlobalLocalInit.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Builder, Line, BuilderParam, Text, Row, FontWeight } from '@kit.ArkUI';
 
 @Component
@@ -1242,9 +1235,8 @@ struct ParentPage {
 
 **ArkTS-Sta:**
 <!-- @[BuilderParamInComponentV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamInComponentV2.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Text, Row, Column, ComponentV2, Builder, Line, BuilderParam, Local, Param, FontWeight } from '@kit.ArkUI';
 
 @ComponentV2
@@ -1545,9 +1537,8 @@ struct ChildPage {
 
 **ArkTS-Sta:**
 <!-- @[BuilderParamRequirePositive](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamRequirePositive.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Builder, Text, BuilderParam, Require } from '@kit.ArkUI';
 
 @Builder
@@ -1693,9 +1684,8 @@ struct ChildPage {
 
 **ArkTS-Sta:**
 <!-- @[BuilderParamMustBuilderPositive](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamMustBuilderPositive.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Entry, Component, Column, Builder, BuilderParam, Text } from '@kit.ArkUI';
 
 @Builder function globalBuilder() {

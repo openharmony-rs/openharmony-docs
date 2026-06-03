@@ -79,32 +79,11 @@
 通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
 
 <!-- @[LifecycleNest](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NewLifecycleSample/entry/src/main/ets/pages/LifecycleNest.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { ComponentAppear, ComponentBuilt, ComponentDisappear, Entry, Component, State, Column, Button, Text } from '@kit.ArkUI';
 
-@Entry
-@Component
-struct Index {
-  @State show: boolean = true; // 控制Parent的创建和删除
-  @State btnColor: string = '#FF007DFF';
-  build() {
-    Column() {
-      // 按下按钮修改show的值，可以控制Parent的创建和删除
-      Button('delete Parent And Child')
-        .margin(20)
-        .backgroundColor(this.btnColor)
-        .onClick(() => {
-          this.show = !this.show;
-        })
-      if (this.show) {
-        Parent()
-      }
-    }
-  }
-}
 @Component
 struct Parent {
   @State showChild: boolean = true;
@@ -171,6 +150,27 @@ struct Child {
       })
   }
 }
+
+@Entry
+@Component
+struct LifecycleNestIndex {
+  @State show: boolean = true; // 控制Parent的创建和删除
+  @State btnColor: string = '#FF007DFF';
+  build() {
+    Column() {
+      // 按下按钮修改show的值，可以控制Parent的创建和删除
+      Button('delete Parent And Child')
+        .margin(20)
+        .backgroundColor(this.btnColor)
+        .onClick(() => {
+          this.show = !this.show;
+        })
+      if (this.show) {
+        Parent()
+      }
+    }
+  }
+}
 ```
 
 以上示例中，Index页面包含两个自定义组件，一个是Parent，一个是Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期装饰器装饰的函数（myAppear / myBuilt / myDisappear）。
@@ -218,47 +218,73 @@ struct Child {
 通过以下示例，来详细说明自定义组件在使用时，回收复用的生命周期调用时序：
 
 <!-- @[LifecycleReuse](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NewLifecycleSample/entry/src/main/ets/pages/LifecycleReuse.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { ComponentInit, ComponentAppear, ComponentBuilt, ComponentDisappear, ComponentReuse, ComponentRecycle, Entry, Component, State, Column, Button, Reusable, Text, ReuseObject } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-export class Message {
+export class ReuseMessage {
   value: string | undefined;
   constructor(value: string) {
     this.value = value;
   }
 }
-@Entry
+
+@Reusable
 @Component
-struct Index {
+struct GrandChild {
+  @State message: ReuseMessage = new ReuseMessage('GrandChild');
+  @State label: string = 'HelloWorld';
   @State switchReuse: boolean = true;
+  // 组件生命周期ComponentInit，在GrandChild初始化执行完成之后回调myInit
+  @ComponentInit
+  myInit() {
+    hilog.info(0x0000, 'testTag', 'GrandChild myInit');
+  }
+  // 组件生命周期ComponentAppear，在GrandChild创建实例后，执行build函数之前回调myAppear
+  @ComponentAppear
+  myAppear() {
+    this.label = 'myAppear';
+    hilog.info(0x0000, 'testTag', 'GrandChild myAppear');
+  }
+  // 组件生命周期ComponentBuilt，在GrandChild首次渲染触发的build函数执行完成之后回调myBuilt
+  @ComponentBuilt
+  myBuilt() {
+    this.label = 'myBuilt';
+    hilog.info(0x0000, 'testTag', 'GrandChild myBuilt');
+  }
+  // 组件生命周期ComponentRecycle，在GrandChild触发回收时回调myRecycle
+  @ComponentRecycle
+  myRecycle() {
+    this.label = 'myRecycle';
+    hilog.info(0x0000, 'testTag', 'GrandChild myRecycle');
+  }
+  // 组件生命周期ComponentDisappear，在GrandChild析构销毁之前回调myDisappear
+  @ComponentDisappear
+  myDisappear() {
+    this.label = 'myDisappear';
+    hilog.info(0x0000, 'testTag', 'GrandChild myDisappear');
+  }
+  // 组件生命周期ComponentReuse，在GrandChild触发复用时回调myReuse
+  @ComponentReuse
+  myReuse(params?: ReuseObject) {
+    this.label = 'myReuse';
+    hilog.info(0x0000, 'testTag', 'GrandChild myReuse');
+  }
 
   build() {
     Column() {
-      Button('Hello')
+      Text(this.message.value)
         .fontSize(30)
-        .onClick(() => {
-          this.switchReuse = !this.switchReuse;
-        })
-      // 通过改变switchReuse，实现Child的回收和复用
-      // 更改this.switchReuse为false，回收Child子组件，执行Child myRecycle
-      // 更改this.switchReuse为true，复用Child子组件，执行Child myReuse
-      if (this.switchReuse) {
-        // 如果只有一个复用的组件，可以不用设置reuseId。
-        Child({ message: new Message('Child') })
-      }
     }
-    .height('100%')
-    .width('100%')
+    .borderWidth(1)
   }
 }
 
 @Reusable
 @Component
-struct Child {
-  @State message: Message = new Message('Child');
+struct ChildReuse {
+  @State message: ReuseMessage = new ReuseMessage('Child');
   @State label: string = 'HelloWorld';
   @State switchReuse: boolean = true;
   // 组件生命周期ComponentInit，在Child初始化执行完成之后回调myInit
@@ -307,61 +333,35 @@ struct Child {
           this.switchReuse = !this.switchReuse;
         })
       if (this.switchReuse) {
-        GrandChild({ message: new Message('GrandChild') })
+        GrandChild({ message: new ReuseMessage('GrandChild') })
       }
     }
     .borderWidth(1)
   }
 }
 
-@Reusable
+@Entry
 @Component
-struct GrandChild {
-  @State message: Message = new Message('GrandChild');
-  @State label: string = 'HelloWorld';
+struct LifecycleReuseIndex {
   @State switchReuse: boolean = true;
-  // 组件生命周期ComponentInit，在GrandChild初始化执行完成之后回调myInit
-  @ComponentInit
-  myInit() {
-    hilog.info(0x0000, 'testTag', 'GrandChild myInit');
-  }
-  // 组件生命周期ComponentAppear，在GrandChild创建实例后，执行build函数之前回调myAppear
-  @ComponentAppear
-  myAppear() {
-    this.label = 'myAppear';
-    hilog.info(0x0000, 'testTag', 'GrandChild myAppear');
-  }
-  // 组件生命周期ComponentBuilt，在GrandChild首次渲染触发的build函数执行完成之后回调myBuilt
-  @ComponentBuilt
-  myBuilt() {
-    this.label = 'myBuilt';
-    hilog.info(0x0000, 'testTag', 'GrandChild myBuilt');
-  }
-  // 组件生命周期ComponentRecycle，在GrandChild触发回收时回调myRecycle
-  @ComponentRecycle
-  myRecycle() {
-    this.label = 'myRecycle';
-    hilog.info(0x0000, 'testTag', 'GrandChild myRecycle');
-  }
-  // 组件生命周期ComponentDisappear，在GrandChild析构销毁之前回调myDisappear
-  @ComponentDisappear
-  myDisappear() {
-    this.label = 'myDisappear';
-    hilog.info(0x0000, 'testTag', 'GrandChild myDisappear');
-  }
-  // 组件生命周期ComponentReuse，在GrandChild触发复用时回调myReuse
-  @ComponentReuse
-  myReuse(params?: ReuseObject) {
-    this.label = 'myReuse';
-    hilog.info(0x0000, 'testTag', 'GrandChild myReuse');
-  }
 
   build() {
     Column() {
-      Text(this.message.value)
+      Button('Hello')
         .fontSize(30)
+        .onClick(() => {
+          this.switchReuse = !this.switchReuse;
+        })
+      // 通过改变switchReuse，实现Child的回收和复用
+      // 更改this.switchReuse为false，回收Child子组件，执行Child myRecycle
+      // 更改this.switchReuse为true，复用Child子组件，执行Child myReuse
+      if (this.switchReuse) {
+        // 如果只有一个复用的组件，可以不用设置reuseId。
+        ChildReuse({ message: new ReuseMessage('Child') })
+      }
     }
-    .borderWidth(1)
+    .height('100%')
+    .width('100%')
   }
 }
 ```
@@ -391,46 +391,57 @@ struct GrandChild {
 [CustomComponentLifecycleObserver](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecycleobserver)用于监听自定义组件的生命周期，开发者可以根据自己的需求重写CustomComponentLifecycleObserver中的回调函数。
 
 <!-- @[LifecycleObserver](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NewLifecycleSample/entry/src/main/ets/pages/LifecycleObserver.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { ComponentInit, ComponentDisappear, UIUtils, CustomComponentLifecycleObserver, CustomComponentLifecycle, Entry, Component, State, Column, Button, FontWeight, Reusable, Text, ReuseObject } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-export class Message {
+export class ObserverMessage {
   value: string | undefined;
   constructor(value: string) {
     this.value = value;
   }
 }
 
-@Entry
-@Component
-struct Index {
-  @State switchReuse: boolean = true;
-
-  build() {
-    Column() {
-      Button('Hello')
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-        .onClick(() => {
-          this.switchReuse = !this.switchReuse;
-        })
-      if (this.switchReuse) {
-        // 如果只有一个复用的组件，可以不用设置reuseId。
-        Child({ message: new Message('Child') })
-      }
-    }
-    .height('100%')
-    .width('100%')
+export class MyObserver implements CustomComponentLifecycleObserver {
+  // 重写CustomComponentLifecycleObserver中的生命周期事件
+  // 被监听的自定义组件创建实例后，执行build函数之前回调aboutToAppear
+  aboutToAppear(): void {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToAppear');
   }
+  // 被监听的自定义组件首次渲染触发的build函数执行完成之后回调onDidBuild
+  onDidBuild(): void {
+    hilog.info(0x0000, 'testTag', 'MyObserver onDidBuild');
+  }
+  // 被监听的自定义组件触发复用时回调aboutToReuse
+  aboutToReuse(params?: ReuseObject): void {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToReuse');
+  }
+  // 被监听的自定义组件触发回收时回调aboutToRecycle
+  aboutToRecycle(): void {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToRecycle');
+  }
+  // 被监听的自定义组件析构销毁之前回调aboutToDisappear
+  aboutToDisappear(): void {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToDisappear');
+  }
+}
+
+// 创建Observer对象
+const observer = new MyObserver();
+export function registerObserver(lifeCycle: CustomComponentLifecycle): void {
+  // 向lifeCycle注册监听
+  lifeCycle.addObserver(observer);
+}
+export function unRegisterObserver(lifeCycle: CustomComponentLifecycle): void {
+  // 向lifeCycle取消注册监听
+  lifeCycle.removeObserver(observer);
 }
 
 @Reusable
 @Component
-struct Child {
-  @State message: Message = new Message('AboutToReuse');
+struct ObserverChild {
+  @State message: ObserverMessage = new ObserverMessage('AboutToReuse');
   @State label: string = 'HelloWorld';
   // 组件生命周期ComponentInit，在Child初始化执行完成之后回调myInit
   @ComponentInit
@@ -451,40 +462,27 @@ struct Child {
   }
 }
 
-export class MyObserver implements CustomComponentLifecycleObserver {
-  // 重写CustomComponentLifecycleObserver中的生命周期事件
-  // 被监听的自定义组件创建实例后，执行build函数之前回调aboutToAppear
-  aboutToAppear(): void {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToAppear');
-  }
-  // 被监听的自定义组件首次渲染触发的build函数执行完成之后回调onDidBuild
-  onDidBuild(): void {
-    hilog.info(0x0000, 'testTag', 'MyObserver onDidBuild');
-  }
-  // 被监听的自定义组件触发复用时回调aboutToReuse
-  aboutToReuse(params?: ReuseObject): void {
-    // params存在时，为V1的复用；
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToReuse');
-  }
-  // 被监听的自定义组件触发回收时回调aboutToRecycle
-  aboutToRecycle(): void {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToRecycle');
-  }
-  // 被监听的自定义组件析构销毁之前回调myDisappear
-  aboutToDisappear(): void {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToDisappear');
-  }
-}
+@Entry
+@Component
+struct LifecycleObserverIndex {
+  @State switchReuse: boolean = true;
 
-// 创建Observer对象
-const observer = new MyObserver();
-export function registerObserver(lifeCycle: CustomComponentLifecycle): void {
-  // 向lifeCycle注册监听
-  lifeCycle.addObserver(observer);
-}
-export function unRegisterObserver(lifeCycle: CustomComponentLifecycle): void {
-  // 向lifeCycle取消注册监听
-  lifeCycle.removeObserver(observer);
+  build() {
+    Column() {
+      Button('Hello')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.switchReuse = !this.switchReuse;
+        })
+      if (this.switchReuse) {
+        // 如果只有一个复用的组件，可以不用设置reuseId。
+        ObserverChild({ message: new ObserverMessage('Child') })
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
 }
 ```
 
@@ -543,202 +541,201 @@ Column() {
 以下示例展示了Navigation和TabContent混用场景下，`@ComponentActive`和`@ComponentInactive`生命周期装饰器的触发时机：
 
 <!-- @[LifecycleActiveInactive](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NewLifecycleSample/entry/src/main/ets/pages/LifecycleActiveInactive.ets) -->
-``` TypeScript
-'use static'
 
- import { BarMode, BarPosition, ComponentActive, ComponentInactive, Builder, Button, ButtonType, Color, Column, ComponentV2, Consumer, Entry, IMonitor, Local, Margin, Monitor, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, Param, Provider, Require, TabContent, Tabs, TabsController, Text } from '@kit.ArkUI';
- 
- @ComponentV2
- struct ChildOfParamComponent {
-   @Require @Param child_val: int;
-   // 处于激活状态的ChildOfParamComponent才可以立刻触发@Monitor
-   @Monitor(['child_val']) onMessageUpdated(m: IMonitor) {
-     console.info(`Appmonitor ChildOfParamComponent: changed ${m.dirty[0]}: ${m.value<int>()?.before} -> ${m.value<int>()?.now}`);
-   }
- 
-   build() {
-     Column() {
-       Text(`Child Param： ${this.child_val}`)
-     }
-   }
- }
- 
- @ComponentV2
- struct ParamComponent {
-   @Require @Param val: int;
-   // 处于激活状态的ParamComponent才可以立刻触发@Monitor
-   @Monitor(['val']) onMessageUpdated(m: IMonitor) {
-     console.info(`Appmonitor ParamComponent: changed ${m.dirty[0]}: ${m.value<int>()?.before} -> ${m.value<int>()?.now}`);
-   }
-   @ComponentActive
-   myActive() {
-     // 从非激活态切换至激活态时触发
-     console.info(`ParamComponent myActive, val: ${this.val}`);
-   }
-   @ComponentInactive
-   myInactive() {
-     // 从激活态切换至非激活态时触发
-     console.info(`ParamComponent myInactive, val: ${this.val}`);
-   }
-   build() {
-     Column() {
-       Text(`val： ${this.val}`)
-       ChildOfParamComponent({child_val: this.val})
-     }
-   }
- }
- 
- @ComponentV2
- struct DelayComponent {
-   @Require @Param delayVal1: int;
-   // 处于激活状态的DelayComponent才可以立刻触发@Monitor
-   @Monitor(['delayVal1']) onMessageUpdated(m: IMonitor) {
-     console.info(`Appmonitor DelayComponent: changed ${m.dirty[0]}: ${m.value<int>()?.before} -> ${m.value<int>()?.now}`);
-   }
-   @ComponentActive
-   myActive() {
-     // 从非激活态切换至激活态时触发
-     console.info(`DelayComponent myActive, val: ${this.delayVal1}`);
-   }
-   @ComponentInactive
-   myInactive() {
-     // 从激活态切换至非激活态时触发
-     console.info(`DelayComponent myInactive, val: ${this.delayVal1}`);
-   }
-   build() {
-     Column() {
-       Text(`Delay Param： ${this.delayVal1}`);
-     }
-   }
- }
- 
- @ComponentV2
- struct TabsComponent {
-   private controller: TabsController = new TabsController();
-   @Local tabState: int = 47;
- 
-   // 监听tabState的变化
-   @Monitor(['tabState']) onMessageUpdated(m: IMonitor) {
-     console.info(`Appmonitor TabsComponent: changed ${m.dirty[0]}: ${m.value<int>()?.before} -> ${m.value<int>()?.now}`);
-   }
- 
-   build() {
-     Column() {
-       Button(`Incr state ${this.tabState}`)
-         .fontSize(25)
-         .onClick(() => {
-           console.info('Button increment state value');
-           this.tabState = this.tabState + 1;
-         })
- 
-       // 定义Tabs组件
-       Tabs({ barPosition: BarPosition.Start, index: 0, controller: this.controller}) {
-         TabContent() {
-           ParamComponent({val: this.tabState})
-         }
-         .tabBar('Update')
-         TabContent() {
-           DelayComponent({delayVal1: this.tabState})
-         }
-         .tabBar('DelayUpdate')
-       }
-       .vertical(false)
-       .scrollable(true)
-       .barMode(BarMode.Fixed)
-       .barWidth(400)
-       .barHeight(150)
-       .animationDuration(400)
-       .width('100%')
-       .height(200)
-       .backgroundColor(0xF5F5F5)
-     }
-   }
- }
- 
- @Entry
- @ComponentV2
- struct MyNavigationTestStack {
-   @Provider('pageInfo') pageInfo: NavPathStack = new NavPathStack();
- 
-   @Builder
-   PageMap(name: string) {
-     if (name === 'pageOne') {
-       PageOneStack()
-     } else if (name === 'pageTwo') {
-       PageTwoStack()
-     }
-   }
- 
-   build() {
-     Column() {
-       Navigation(this.pageInfo) {
-         Column() {
-           Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-             .width('80%')
-             .height(40)
-             .margin(20)
-             .onClick(() => {
-               // 跳转到pageOne
-               let info: NavPathInfo = new NavPathInfo('pageOne', undefined);
-               this.pageInfo.pushPath(info);
-             })
-         }
-       }
-       .title('NavIndex')
-       .navDestination(this.PageMap)
-       .mode(NavigationMode.Stack)
-     }
-   }
- }
- 
- @ComponentV2
- struct PageOneStack {
-   @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
- 
-   build() {
-     NavDestination() {
-       Column() {
-         TabsComponent();
- 
-         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-           .width('80%')
-           .height(40)
-           .margin(20)
-           .onClick(() => {
-             // 跳转到pageTwo
-             let info: NavPathInfo = new NavPathInfo('pageTwo', undefined);
-             this.pageInfo.pushPath(info);
-           })
-       }
-       .width('100%')
-       .height('100%')
-     }
-     .title('pageOne')
-   }
- }
- 
- @ComponentV2
- struct PageTwoStack {
-   @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
- 
-   build() {
-     NavDestination() {
-       Column() {
-         Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
-           .width('80%')
-           .height(40)
-           .margin(20)
-           .onClick(() => {
-             // 返回上一个页面后仅解冻可见的TabContent
-             this.pageInfo.pop();
-           })
-       }
-       .width('100%')
-       .height('100%')
-     }
-     .title('pageTwo')
-   }
- }
+``` TypeScript
+import { BarMode, BarPosition, Button, ButtonType, Color, Column, ComponentActive, ComponentInactive, ComponentV2, Consumer, Entry, FontWeight, IMonitor, Local, Margin, Monitor, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, Param, Provider, Require, Row, TabContent, Tabs, TabsController, Text } from '@kit.ArkUI';
+
+@ComponentV2
+struct ChildOfParamComponent {
+  @Require @Param child_val: int;
+  // 处于激活状态的ChildOfParamComponent才可以立刻触发@Monitor
+  @Monitor(['child_val']) onMessageUpdated(m: IMonitor) {
+    console.info(`Appmonitor ChildOfParamComponent: changed ${m.dirty[0]}: ${m.value<int>()?.before} -> ${m.value<int>()?.now}`);
+  }
+
+  build() {
+    Column() {
+      Text(`Child Param： ${this.child_val}`)
+    }
+  }
+}
+
+@ComponentV2
+struct ParamComponent {
+  @Require @Param val: int;
+  // 处于激活状态的ParamComponent才可以立刻触发@Monitor
+  @Monitor(['val']) onMessageUpdated(m: IMonitor) {
+    console.info(`Appmonitor ParamComponent: changed ${m.dirty[0]}: ${m.value<int>()?.before} -> ${m.value<int>()?.now}`);
+  }
+  @ComponentActive
+  myActive() {
+    // 从非激活态切换至激活态时触发
+    console.info(`ParamComponent myActive, val: ${this.val}`);
+  }
+  @ComponentInactive
+  myInactive() {
+    // 从激活态切换至非激活态时触发
+    console.info(`ParamComponent myInactive, val: ${this.val}`);
+  }
+  build() {
+    Column() {
+      Text(`val： ${this.val}`)
+      ChildOfParamComponent({child_val: this.val})
+    }
+  }
+}
+
+@ComponentV2
+struct DelayComponent {
+  @Require @Param delayVal1: int;
+  // 处于激活状态的DelayComponent才可以立刻触发@Monitor
+  @Monitor(['delayVal1']) onMessageUpdated(m: IMonitor) {
+    console.info(`Appmonitor DelayComponent: changed ${m.dirty[0]}: ${m.value<int>()?.before} -> ${m.value<int>()?.now}`);
+  }
+  @ComponentActive
+  myActive() {
+    // 从非激活态切换至激活态时触发
+    console.info(`DelayComponent myActive, val: ${this.delayVal1}`);
+  }
+  @ComponentInactive
+  myInactive() {
+    // 从激活态切换至非激活态时触发
+    console.info(`DelayComponent myInactive, val: ${this.delayVal1}`);
+  }
+  build() {
+    Column() {
+      Text(`Delay Param： ${this.delayVal1}`);
+    }
+  }
+}
+
+@ComponentV2
+struct TabsComponent {
+  private controller: TabsController = new TabsController();
+  @Local tabState: int = 47;
+
+  // 监听tabState的变化
+  @Monitor(['tabState']) onTabStateChanged(m: IMonitor) {
+    console.info(`Appmonitor TabsComponent: changed ${m.dirty[0]}: ${m.value<int>()?.before} -> ${m.value<int>()?.now}`);
+  }
+
+  build() {
+    Column() {
+      Button(`Incr state ${this.tabState}`)
+        .fontSize(25)
+        .onClick(() => {
+          console.info('Button increment state value');
+          this.tabState = this.tabState + 1;
+        })
+
+      // 定义Tabs组件
+      Tabs({ barPosition: BarPosition.Start, index: 0, controller: this.controller}) {
+        TabContent() {
+          ParamComponent({val: this.tabState})
+        }
+        .tabBar('Update')
+        TabContent() {
+          DelayComponent({delayVal1: this.tabState})
+        }
+        .tabBar('DelayUpdate')
+      }
+      .vertical(false)
+      .scrollable(true)
+      .barMode(BarMode.Fixed)
+      .barWidth(400)
+      .barHeight(150)
+      .animationDuration(400)
+      .width('100%')
+      .height(200)
+      .backgroundColor(0xF5F5F5)
+    }
+  }
+}
+
+@ComponentV2
+struct PageOneStack {
+  @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Column() {
+        TabsComponent();
+
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            // 跳转到pageTwo
+            let info: NavPathInfo = new NavPathInfo('pageTwo', undefined);
+            this.pageInfo.pushPath(info);
+          })
+        }
+      .width('100%')
+      .height('100%')
+    }
+    .title('pageOne')
+  }
+}
+
+@ComponentV2
+struct PageTwoStack {
+  @Consumer('pageInfo') pageInfo: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Column() {
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            // 返回上一个页面后仅解冻可见的TabContent
+            this.pageInfo.pop();
+          })
+        }
+      .width('100%')
+      .height('100%')
+    }
+    .title('pageTwo')
+  }
+}
+
+@Entry
+@ComponentV2
+struct LifecycleActiveInactiveIndex {
+  @Provider('pageInfo') pageInfo: NavPathStack = new NavPathStack();
+
+  @Builder
+  PageMap(name: string) {
+    if (name === 'pageOne') {
+      PageOneStack()
+    } else if (name === 'pageTwo') {
+      PageTwoStack()
+    }
+  }
+
+  build() {
+    Column() {
+      Navigation(this.pageInfo) {
+        Column() {
+          Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
+            .width('80%')
+            .height(40)
+            .margin(20)
+            .onClick(() => {
+              // 跳转到pageOne
+              let info: NavPathInfo = new NavPathInfo('pageOne', undefined);
+              this.pageInfo.pushPath(info);
+            })
+        }
+      }
+      .title('NavIndex')
+      .navDestination(this.PageMap)
+      .mode(NavigationMode.Stack)
+    }
+  }
+}
 ```
 
 上述代码建议按以下步骤执行。
@@ -779,16 +776,14 @@ Column() {
 aboutToAppear是自定义组件build之前执行，aboutToDisappear是自定义组件销毁前执行。但有时自定义组件没有build，就被销毁。为了执行一个完整的生命周期，aboutToDisappear会判断，该组件是否执行了aboutToAppear，如果没有执行便强制触发一次aboutToAppear。\@ComponentAppear装饰的函数和\@ComponentDisappear装饰的函数受状态机约束，\@ComponentDisappear装饰的函数不会误调用\@ComponentAppear装饰的函数。例子如下所示：
 
 <!-- @[LifecycleSwiper](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NewLifecycleSample/entry/src/main/ets/pages/LifecycleSwiper.ets) -->
-``` TypeScript
-// Index.ets
-'use static'
 
+``` TypeScript
 import { SwiperExample } from './SwiperPage';
 import { Entry, Component, State, RelativeContainer, Text, Button } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct Index {
+struct LifecycleSwiperIndex {
   @State message: string = 'Hello World';
   @State show: boolean = false;
   @State currentTabIndex: number = 0;
@@ -969,65 +964,10 @@ SwiperPage:aboutToDisappear 4
 自定义组件在BUILT状态时，即将转化为RECYCLED时，先调用aboutToRecycle后调用\@ComponentRecycle装饰的函数。
 
 <!-- @[LifecycleReuseDiff](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NewLifecycleSample/entry/src/main/ets/pages/LifecycleReuseDiff.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { ComponentAppear, ComponentBuilt, ComponentReuse, Entry, Component, State, Column, Button, Reusable, Require, PropRef, ReuseObject, Text } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-
-@Entry
-@Component
-struct ReusableTest {
-  // 程序开始时，ReusableComp1和ReusableComp2已创建，ReusableComp3并未创建
-  @State flag1: boolean = true;
-  @State flag2: boolean = false;
-  build() {
-    Column() {
-      // this.flag1为true时，创建ReusableComp1和ReusableComp2
-      // this.flag1为false时，删除已创建的ReusableComp1和ReusableComp2
-      Button('a')
-        .onClick(() => {
-          this.flag1 = !this.flag1;
-        })
-      // this.flag2为true时，创建ReusableComp1和ReusableComp3
-      // this.flag2为false时，删除已创建的ReusableComp1和ReusableComp3
-      Button('b')
-        .onClick(() => {
-          this.flag2 = !this.flag2;
-        })
-      if (this.flag1) {
-        ReusableComp1({ flag: true })
-      }
-      if (this.flag2) {
-        ReusableComp1({ flag: false })
-      }
-    }
-  }
-}
-
-@Reusable
-@Component
-struct ReusableComp1 {
-  @Require @PropRef flag: boolean = true;
-  build() {
-    // flag为true时，创建ReusableComp2
-    // flag为false时，创建ReusableComp3
-    if (this.flag) {
-      ReusableComp2()
-    } else {
-      ReusableComp3()
-    }
-  }
-}
-
-// 可复用的自定义组件ReusableComp2
-@Reusable
-@Component
-struct ReusableComp2 {
-  build() {
-    Text('A')
-  }
-}
 
 // 可复用的自定义组件ReusableComp3
 @Reusable
@@ -1059,6 +999,60 @@ struct ReusableComp3 {
 
   build() {
     Text('B')
+  }
+}
+
+// 可复用的自定义组件ReusableComp2
+@Reusable
+@Component
+struct ReusableComp2 {
+  build() {
+    Text('A')
+  }
+}
+
+@Reusable
+@Component
+struct ReusableComp1 {
+  @Require @PropRef flag: boolean = true;
+  build() {
+    // flag为true时，创建ReusableComp2
+    // flag为false时，创建ReusableComp3
+    if (this.flag) {
+      ReusableComp2()
+    } else {
+      ReusableComp3()
+    }
+  }
+}
+
+@Entry
+@Component
+struct LifecycleReuseDiffIndex {
+  // 程序开始时，ReusableComp1和ReusableComp2已创建，ReusableComp3并未创建
+  @State flag1: boolean = true;
+  @State flag2: boolean = false;
+  build() {
+    Column() {
+      // this.flag1为true时，创建ReusableComp1和ReusableComp2
+      // this.flag1为false时，删除已创建的ReusableComp1和ReusableComp2
+      Button('a')
+        .onClick(() => {
+          this.flag1 = !this.flag1;
+        })
+      // this.flag2为true时，创建ReusableComp1和ReusableComp3
+      // this.flag2为false时，删除已创建的ReusableComp1和ReusableComp3
+      Button('b')
+        .onClick(() => {
+          this.flag2 = !this.flag2;
+        })
+      if (this.flag1) {
+        ReusableComp1({ flag: true })
+      }
+      if (this.flag2) {
+        ReusableComp1({ flag: false })
+      }
+    }
   }
 }
 ```

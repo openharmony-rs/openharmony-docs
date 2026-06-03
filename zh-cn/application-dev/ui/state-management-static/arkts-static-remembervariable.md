@@ -63,13 +63,13 @@ rememberVariable支持以下类型的变量：
 基础类型初始值可以直接传入rememberVariable用于在@Builder函数内创建状态变量，建议不要使用回调传入基础类型的初始值，避免创建回调本身带来的性能损耗。
 
 <!-- @[RememberBasicType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberBasicType.ets) -->
+
 ``` TypeScript
-'use static'
 import { rememberVariable, MutableVariable, Entry, Component, Column, Text,
          Builder, Button, ColumnOptions } from '@kit.ArkUI';
 
 @Builder
-function MyBuilder() {
+function BasicTypeBuilder() {
   let message: MutableVariable<string> = rememberVariable<string>('Hello world'); // 声明基础类型的状态变量，直接传入初始值。
   Text(`message: ${message.value}`) // 通过.value获取状态变量的值，绑定UI组件。
   Button('Change message in builder')
@@ -79,10 +79,10 @@ function MyBuilder() {
 }
 @Entry
 @Component
-struct Index {
+struct BasicTypePage {
   build() {
     Column({space: '10px'} as ColumnOptions) {
-      MyBuilder()
+      BasicTypeBuilder()
     }.width('100%')
   }
 }
@@ -95,13 +95,13 @@ struct Index {
 内置类型（Array、Map、Set和Date）需要通过[UIUtils.makeObserved](./arkts-static-new-makeObserved.md)封装后，再传给rememberVariable创建状态变量，才具有观察能力。推荐使用回调初始化rememberVariable，避免在UI刷新时重复创建实例。
 
 <!-- @[RememberBuiltinType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberBuiltinType.ets) -->
+
 ``` TypeScript
-'use static'
 import { rememberVariable, MutableVariable, UIUtils, Entry, Component, Column,
          Text, Builder, Button, ColumnOptions } from '@kit.ArkUI';
 
 @Builder
-function MyBuilder() {
+function BuiltinTypeBuilder() {
   let messages: MutableVariable<string[]> = rememberVariable<string[]>(
     () => UIUtils.makeObserved(['Hello world']));
   Text(`messages: ${messages.value}`)
@@ -112,10 +112,10 @@ function MyBuilder() {
 }
 @Entry
 @Component
-struct Index {
+struct BuiltinTypePage {
   build() {
     Column({space: '10px'} as ColumnOptions) {
-      MyBuilder()
+      BuiltinTypeBuilder()
     }.width('100%')
   }
 }
@@ -128,8 +128,8 @@ struct Index {
 interface字面量需要通过makeObserved封装后，再传给rememberVariable创建状态变量，才具有观察能力。推荐使用回调初始化rememberVariable，避免在UI刷新时重复创建实例。
 
 <!-- @[RememberInterfaceType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberInterfaceType.ets) -->
+
 ``` TypeScript
-'use static'
 import { rememberVariable, MutableVariable, UIUtils, Entry, Component, Column,
          Text, Builder, Button, ColumnOptions } from '@kit.ArkUI';
 
@@ -138,7 +138,7 @@ interface Person {
 }
 
 @Builder
-function MyBuilder() {
+function InterfaceTypeBuilder() {
   let person: MutableVariable<Person> = rememberVariable<Person>(
     () => UIUtils.makeObserved({name: 'ArkTS'} as Person));
   Text(`My name is ${person.value.name}`)
@@ -149,10 +149,10 @@ function MyBuilder() {
 }
 @Entry
 @Component
-struct Index {
+struct InterfaceTypePage {
   build() {
     Column({space: '10px'} as ColumnOptions) {
-      MyBuilder()
+      InterfaceTypeBuilder()
     }.width('100%')
   }
 }
@@ -165,8 +165,8 @@ struct Index {
 class需要被@Observed或@ObservedV2装饰才具有观测能力。推荐使用回调初始化rememberVariable，避免在UI刷新时重复创建实例。
 
 <!-- @[RememberClassType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberClassType.ets) -->
+
 ``` TypeScript
-'use static'
 import { rememberVariable, MutableVariable, UIUtils, Entry, Component, Column,
          Text, Builder, Observed, Button, ColumnOptions } from '@kit.ArkUI';
 
@@ -179,7 +179,7 @@ class Person {
 }
 
 @Builder
-function MyBuilder() {
+function ClassTypeBuilder() {
   let person: MutableVariable<Person> = rememberVariable<Person>(new Person('ArkTS'));
   Text(`My name is ${person.value.name}`)
   Button('Change name in builder')
@@ -189,10 +189,10 @@ function MyBuilder() {
 }
 @Entry
 @Component
-struct Index {
+struct ClassTypePage {
   build() {
     Column({space: '10px'} as ColumnOptions) {
-      MyBuilder()
+      ClassTypeBuilder()
     }.width('100%')
   }
 }
@@ -205,13 +205,13 @@ struct Index {
 在@Builder函数中声明的MutableVariable类型的状态变量，能传递给其他@Builder函数，同样支持状态变量的同步和UI刷新功能。
 
 <!-- @[RememberPassVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberPassVariable.ets) -->
+
 ``` TypeScript
-'use static'
 import { rememberVariable, MutableVariable, UIUtils, Entry, Component, Column,
          Text, Builder, Button, ColumnOptions } from '@kit.ArkUI';
 
 @Builder
-function MyChildBuilder(message: MutableVariable<string>) {
+function PassChildBuilder(message: MutableVariable<string>) {
   Text(`My Child builder is: ${message.value}`)
   Button('Change message in child builder')
     .onClick(() => {
@@ -220,18 +220,18 @@ function MyChildBuilder(message: MutableVariable<string>) {
 }
 
 @Builder
-function MyBuilder() {
+function PassParentBuilder() {
   let message: MutableVariable<string> = rememberVariable<string>('Hello world');
   Text(`My parent builder is ${message.value}`)
-  MyChildBuilder(message)
+  PassChildBuilder(message)
 }
 
 @Entry
 @Component
-struct Index {
+struct PassVariablePage {
   build() {
     Column({space: '10px'} as ColumnOptions) {
-      MyBuilder()
+      PassParentBuilder()
     }.width('100%')
   }
 }
@@ -244,8 +244,8 @@ struct Index {
 使用rememberVariable可以存储Function类型的状态变量，对Function状态变量赋值修改后能触发UI刷新。
 
 <!-- @[RememberFunctionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberFunctionType.ets) -->
+
 ``` TypeScript
-'use static'
 import { rememberVariable, MutableVariable, Entry, Component, Column,
          Text, Builder, Button, ColumnOptions } from '@kit.ArkUI';
 
@@ -257,7 +257,7 @@ function GetValueB() {
 }
 
 @Builder
-function MyBuilder() {
+function FunctionTypeBuilder() {
   // 声明Function类型的状态变量
   let getValueFunction: MutableVariable<Function> = rememberVariable<Function>(() => GetValueA);
   Text(`My value is ${ getValueFunction.value.unsafeCall() }`) // 使用unsafeCall调用Function
@@ -273,10 +273,10 @@ function MyBuilder() {
 }
 @Entry
 @Component
-struct Index {
+struct FunctionTypePage {
   build() {
     Column({ space: 10 } as ColumnOptions) {
-      MyBuilder()
+      FunctionTypeBuilder()
     }
     .width('100%')
   }
@@ -292,14 +292,14 @@ struct Index {
 在build()内使用rememberVariable封装已有的状态变量只能记录状态变量初始值，不能同步状态变量的改动。
 
 <!-- @[RememberInitFromState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RememberVariable/entry/src/main/ets/pages/RememberInitFromState.ets) -->
+
 ``` TypeScript
-'use static'
 import { rememberVariable, MutableVariable, Entry, Component, Column, Text,
          Button, Builder, State, ColumnOptions } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct Index {
+struct InitFromStatePage {
   @State source: string = 'Hello world';
   build() {
     Column({space: '10px'} as ColumnOptions) {

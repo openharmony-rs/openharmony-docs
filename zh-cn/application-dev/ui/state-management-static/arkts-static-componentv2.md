@@ -21,11 +21,10 @@
 - 一个简单的\@ComponentV2装饰的自定义组件应具有以下部分：
 
     <!-- @[ComponentV2Basic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentV2Sample/entry/src/main/ets/pages/ComponentV2Basic.ets) -->
+    
     ``` TypeScript
-    'use static'
-
     import { ComponentV2, Entry, Local, Column, Text, Button } from '@kit.ArkUI';
-
+    
     @ComponentV2 // 装饰器
     struct ComponentDemo { // struct声明的数据结构
       @Local local: number = 1; // 声明为@Local的装饰器变量
@@ -52,9 +51,8 @@
 示例如下。
 
 <!-- @[ComponentV2Extend](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentV2Sample/entry/src/main/ets/pages/ComponentV2Extend.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Color, ColorMetrics, Column, ComponentV2, Consumer, Entry, Local, Provider, ResourceColor, Text } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';
 

@@ -25,9 +25,8 @@ V2自定义组件冻结支持场景为：[页面路由](#页面路由)、[TabCon
 页面1：
 
 <!-- @[FreezePageRouter1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezePage1.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -44,11 +43,11 @@ export class Book {
 export struct Page1 {
   @Local bookTest: Book = new Book(`A Midsummer Night's Dream`);
 
-  @Monitor(['bookTest.name']) onMessageUpdated(mon: IMonitor) {
+  @Monitor(['bookTest.name']) onMessageUpdated(mon: IMonitor): void {
     console.info(`The book name change from ${mon.value<string>()?.before} to ${mon.value<string>()?.now}`);
   }
 
-  build() {
+  build(): void {
     Column() {
       Text(`Book name is  ${this.bookTest.name}`).fontSize(25)
       Button('changeBookName').fontSize(25)
@@ -70,9 +69,8 @@ export struct Page1 {
 页面2：
 
 <!-- @[FreezePageRouter2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezePage2.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
 @Entry
 @ComponentV2
@@ -104,9 +102,8 @@ struct Page2 {
 ![freezeWithTab](../state-management/figures/freezewithTabs.png)
 
 <!-- @[FreezeTabContent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezeTabContent.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, FontWeight, ForEach, IMonitor, Local, Monitor, Param, Repeat, Row, TabContent, Tabs, Text } from '@kit.ArkUI';
 
 @Entry
@@ -151,7 +148,6 @@ struct FreezeChild {
       .fontWeight(FontWeight.Bold)
   }
 }
-
 ```
 
 在上面的示例中：
@@ -167,9 +163,8 @@ struct FreezeChild {
 当[NavDestination](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)不可见时，会将其子自定义组件设置成非激活态，不会触发组件的刷新。当返回该页面时，其子自定义组件重新恢复成激活态，触发@Monitor回调进行刷新。
 
 <!-- @[FreezeNavigation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezeNavigation.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Builder, Button, ButtonType, ClickEvent, Column, ComponentV2, Consumer, Entry, IMonitor, Local, Monitor, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, Param, Provider, Text } from '@kit.ArkUI';
 
 @Entry
@@ -340,9 +335,8 @@ struct NavigationContentMsgStack {
 ### Navigation和TabContent的混用
 
 <!-- @[FreezeMixNavigationTab](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentFreezeV2/entry/src/main/ets/pages/FreezeMixNavigationTab.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { BarMode, BarPosition, Builder, Button, ButtonType, Color, Column, ComponentV2, Consumer, Entry, IMonitor, Local, Margin, Monitor, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, Param, Provider, Require, TabContent, Tabs, TabsController, Text } from '@kit.ArkUI';
 
 @ComponentV2

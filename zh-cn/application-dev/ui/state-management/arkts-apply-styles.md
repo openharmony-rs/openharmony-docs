@@ -76,6 +76,7 @@ function applyStyles<T extends CommoMethod>(this: T, styleMethod: (instance: Com
 ### 组件内Styles方法和全局Styles方法的用法
 
 <!-- @[ApplyStylesFancy](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ApplyStyles/entry/src/main/ets/pages/ApplyStylesFancy.ets) -->
+
 ``` TypeScript
 import { ClickEvent, Color, Column, CommonMethod, Component, Entry, Text, applyStyles } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
