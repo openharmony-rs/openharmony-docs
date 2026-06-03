@@ -682,9 +682,7 @@ if (currWindow) {
 
 ### 销毁未完成导致createSubWindow创建同名子窗失败
 
-开发者在[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9
-)创建窗口对象后，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)，在窗口还未销毁的情况下，再次调用[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9
-)，且使用相同名称，导致窗口创建失败，报错1300002。
+开发者在[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9)创建窗口对象后，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)，在窗口还未销毁的情况下，再次调用[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9)，且使用相同名称，导致窗口创建失败，报错1300002。
 
 **典型日志信息**
 
