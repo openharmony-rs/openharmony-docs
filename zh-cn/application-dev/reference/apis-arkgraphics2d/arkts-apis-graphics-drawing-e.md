@@ -241,7 +241,7 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 | INVERSE_EVEN_ODD  | 3    | EVEN_ODD涂色规则取反。 |
 
 > **说明：**<br>
-> ![WINDING&EVEN_ODD](figures/PathFillType_Winding_Even_Odd.png)<br>
+> ![WINDING&EVEN_ODD](figures/PathFillType-Winding-Even-Odd.png)<br>
 > 如图所示圆环为路径，箭头指示路径的方向，p为区域内任意一点，蓝色线条为点p出发的射线，黑色箭头所指为对应填充规则下使用蓝色填充路径的结果。WINDING填充规则下，射线与路径的交点计数为2，不为0，点p被涂色；EVEN_ODD填充规则下，射线与路径的相交次数为2，是偶数，点p不被涂色。
 
 ## PointMode<sup>12+</sup>
@@ -398,9 +398,9 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称        | 值   | 说明                                                         | 示意图   |
 | ---------- | ---- | ----------------------------------------------------------- | -------- |
-| FLAT_CAP   | 0    | 没有线帽样式，线条头尾端点处横切。 | ![FLAT_CAP](figures/CapStyle_Flat_Cap.jpg) |
+| FLAT_CAP   | 0    | 没有线帽样式，线条头尾端点处横切。 | ![FLAT_CAP](figures/CapStyle-Flat-Cap.jpg) |
 | SQUARE_CAP | 1    | 线帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度是线段宽度的一半。 | ![SQUARE_CAP](figures/CapStyle-Square-Cap.jpg) |
-| ROUND_CAP  | 2    | 线帽的样式为圆弧，线条的头尾端点处多出一个半圆弧，半圆的直径与线段宽度一致。 | ![ROUND_CAP](figures/CapStyle-Round_Cap.jpg) |
+| ROUND_CAP  | 2    | 线帽的样式为圆弧，线条的头尾端点处多出一个半圆弧，半圆的直径与线段宽度一致。 | ![ROUND_CAP](figures/CapStyle-Round-Cap.jpg) |
 
 ## BlurType<sup>12+</sup>
 

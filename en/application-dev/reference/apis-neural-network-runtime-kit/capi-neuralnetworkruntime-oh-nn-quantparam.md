@@ -26,7 +26,7 @@ where, **s** and **z** are quantization parameters, which are stored by **scale*
 
 The **clamp** function is defined as follows:
 
-![Clamp-Function7](figures/Clamp-Function7.png)
+![Clamp-Function7](figures/Clamp-Function.png)
 
 **Since**: 9
 

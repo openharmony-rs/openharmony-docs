@@ -82,7 +82,7 @@ class DrawingRenderNode extends RenderNode {
   }
 }
 ```
-![zh-ch_Lattice.png](figures/zh-ch_Lattice.png)
+![Lattice.png](figures/Lattice.png)
 
 ArkTS-Sta示例：
 ```ts

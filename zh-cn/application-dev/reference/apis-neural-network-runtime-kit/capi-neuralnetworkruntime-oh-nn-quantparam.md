@@ -26,7 +26,7 @@ typedef struct OH_NN_QuantParam {...} OH_NN_QuantParam
 
 clamp函数定义如下：
 
-![Clamp-Function7](figures/Clamp-Function7.png)
+![Clamp-Function7](figures/Clamp-Function.png)
 
 **起始版本：** 9
 
