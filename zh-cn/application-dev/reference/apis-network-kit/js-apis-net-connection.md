@@ -363,7 +363,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
-  console.error(`Failed to get request. Code:${error.code}, message:${error.message} `);
+     console.error(`Failed to get request. Code:${error.code}, message:${error.message} `);
 });
 ```
 
@@ -570,7 +570,7 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
   if (error) {
-    console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
+       console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
   }
 });
 
@@ -669,7 +669,7 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
   if (error) {
-     console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
+       console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
   }
 });
 
@@ -1874,7 +1874,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.removeCustomDnsRule("xxxx").then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
+      console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
 })
 ```
 
