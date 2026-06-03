@@ -784,48 +784,6 @@ When the device exits the hibernation mode, the event notification service is tr
 
 **Value**: usual.event.EXIT_HIBERNATE
 
-### COMMON_EVENT_VOLUME_DECRYPTED
-
-Indicates that specific volumes on the device have been decrypted.
-
-When specific volumes on the device have been decrypted, the event notification service is triggered to publish this event.
-
-**Since**: 26.0.0
-
-**System capability**: SystemCapability.Notification.CommonEvent
-
-**Required permissions**: none
-
-**Value**: "usual.event.VOLUME_DECRYPTED"
-
-### COMMON_EVENT_VOLUME_ENCRYPTED
-
-Indicates that specific volumes on the device have been encrypted.
-
-When specific volumes on the device have been encrypted, the event notification service is triggered to publish this event.
-
-**Since**: 26.0.0
-
-**System capability**: SystemCapability.Notification.CommonEvent
-
-**Required permissions**: none
-
-**Value**: "usual.event.VOLUME_ENCRYPTED"
-
-### COMMON_EVENT_VOLUME_ENCRYPTION_POLICY_SET
-
-Indicates that specific volumes on the device have had their encryption policy set.
-
-When specific volumes on the device have had their encryption policy set, the event notification service is triggered to publish this event.
-
-**Since**: 26.0.0
-
-**System capability**: SystemCapability.Notification.CommonEvent
-
-**Required permissions**: ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
-
-**Value**: "usual.event.VOLUME_ENCRYPTION_POLICY_SET"
-
 
 ## Connectivity Kit
 
