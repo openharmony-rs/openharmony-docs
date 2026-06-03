@@ -53,7 +53,6 @@
 | [typedef void (\*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg, void *userData)](#oh_avplayeronerrorcallback) | OH_AVPlayerOnErrorCallback | 发生错误时被调用。如果应用成功设置该回调，则不会调用OH_AVPlayerOnError函数。 |
 | [typedef void (\*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double *amplitudes, uint32_t size, void *userData)](#oh_avplayeronamplitudeupdatecallback) | OH_AVPlayerOnAmplitudeUpdateCallback | 当计算出最大音频电平值时调用。 |
 | [typedef void (\*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_AVSeiMessageArray *message, int32_t playbackPosition, void *userData)](#oh_avplayeronseimessagereceivedcallback) | OH_AVPlayerOnSeiMessageReceivedCallback | 用于获取SEI消息的回调处理函数。在订阅SEI消息事件时使用，回调返回详细的SEI信息。 |
-| [typedef void (\*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)](#oh_avplayerpcmoutputcallback) | OH_AVPlayerPCMOutputCallback | 用于获取音频PCM数据输出的回调处理函数。 |
 
 ### 变量
 
@@ -441,25 +440,4 @@ typedef void (*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_
 | OH_AVSeiMessageArray \*message | SEI消息数组。注意：SEI消息数组会在回调后自动释放，如有需要，用户需自行拷贝数据以供后续使用。 |
 | int32_t playbackPosition | 播放位置。 |
 | void \*userData | 指向用户特定数据的指针。 |
-
-### OH_AVPlayerPCMOutputCallback()
-
-```c
-typedef void (*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)
-```
-
-**描述**
-
-用于获取音频PCM数据输出的回调处理函数。
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | 指向OH_AVPlayer实例的指针。 |
-| OH_AVBuffer \*pcmBuffer | 音频PCM数据。音频PCM数据仅在此回调期间有效，回调返回后由播放器释放。 |
-| void \*userData | 指向用户指定数据的指针。 |
-
 
