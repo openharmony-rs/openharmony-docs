@@ -179,7 +179,7 @@ crossAppSharedConfig字段配置说明：
           console.info(`ttt URI: ${result.uri}, Result: ${result.result}`);
         });
       }).catch((error: Error) => {
-        console.info('ttt Error publishing config:', error);
+        console.info('Error publishing config:', error);
       });
     }).catch((error: Error) => {
       console.info('ttt Error creating DataProxyHandle:', error);
