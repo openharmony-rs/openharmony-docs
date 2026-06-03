@@ -611,7 +611,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
             }, (embedId: string) => embedId)
             // Web组件加载本地test2.html页面。
             Web({src: $rawfile('test2.html'), controller: this.browserTabController})
-            // 注册同层标签为'object'，类型为'test'前缀
+              // 注册同层标签为'object'，类型为'test'前缀
               .registerNativeEmbedRule('object', 'test')
               // 配置同层渲染开关开启。
               .enableNativeEmbedMode(true)
@@ -636,7 +636,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                     top: `${embed.info?.position?.y as number}px`
                   };
                   nodeController.setDestroy(false);
-                  //根据Web传入的embed的id属性作为key，将nodeController存入Map。
+                  // 根据Web传入的embed的id属性作为key，将nodeController存入Map。
                   this.nodeControllerMap.set(componentId, nodeController);
                   this.widthMap.set(componentId, this.uiContext.px2vp(embed.info?.width));
                   this.heightMap.set(componentId, this.uiContext.px2vp(embed.info?.height));
@@ -871,7 +871,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                 .width(this.widthMap.get(componentId))
                 .height(this.heightMap.get(componentId))
             }, (embedId: string) => embedId)
-            // Web组件加载本地test.html页面。
+            // Web组件加载本地test3.html页面。
             Web({ src: $rawfile('test3.html'), controller: this.browserTabController })
               // 配置同层渲染开关开启。
               .enableNativeEmbedMode(true)
@@ -891,12 +891,12 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                     width : this.uiContext.px2vp(embed.info?.width), height : this.uiContext.px2vp(embed.info?.height)});
                   this.edges = {left: `${embed.info?.position?.x as number}px`, top: `${embed.info?.position?.y as number}px`};
                   nodeController.setDestroy(false);
-                  // 根据Web传入的embed的id属性作为key，将nodeController存入Map。
+                  // 根据web传入的embed的id属性作为key，将nodeController存入map。
                   this.nodeControllerMap.set(componentId, nodeController);
                   this.widthMap.set(componentId,  this.uiContext.px2vp(embed.info?.width));
                   this.heightMap.set(componentId,  this.uiContext.px2vp(embed.info?.height));
                   this.positionMap.set(componentId, this.edges);
-                  // 将Web传入的embed的id属性存入@State状态数组变量中，用于动态创建nodeContainer节点容器，需要将push动作放在set之后。
+                  // 将web传入的embed的id属性存入@State状态数组变量中，用于动态创建nodeContainer节点容器，需要将push动作放在set之后。
                   this.componentIdArr.push(componentId);
                 } else if (embed.status === NativeEmbedStatus.UPDATE) {
                   let nodeController = this.nodeControllerMap.get(componentId);
@@ -977,7 +977,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
   
   ``` TypeScript
   import { media } from '@kit.MediaKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   export class AVPlayerDemo {
     private count: number = 0;
@@ -985,7 +985,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
     private isSeek: boolean = true; // 用于区分模式是否支持seek操作。
   
     setSurfaceID(id: string){
-      console.info('setSurfaceID : ' + id);
+      console.log('setSurfaceID : ' + id);
       this.surfaceId = id;
     }
     // 注册avplayer回调函数。
@@ -1034,7 +1034,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
             console.info('AVPlayer state paused called.');
             avPlayer.play(); // 再次播放接口开始播放。
             break;
-          case 'completed': // 播放接口后触发该状态机上报。
+          case 'completed': //播放接口后触发该状态机上报。
             console.info('AVPlayer state completed called.');
             avPlayer.stop(); // 调用播放接口。
             break;
@@ -1042,7 +1042,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
             console.info('AVPlayer state stopped called.');
             avPlayer.reset(); // 调用reset接口初始化avplayer状态。
             break;
-          case 'released': // 播放接口后触发该状态机上报。
+          case 'released': //播放接口后触发该状态机上报。
             console.info('AVPlayer state released called.');
             break;
           default:
