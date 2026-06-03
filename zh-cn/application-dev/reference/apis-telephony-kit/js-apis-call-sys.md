@@ -6126,3 +6126,19 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 | MARK_TYPE_OTHERS | 9 | 其他。 |
 | MARK_TYPE_YELLOW_PAGE | 10 | 黄页。 |
 | MARK_TYPE_ENTERPRISE<sup>14+</sup> | 11 | 企业联系人。 |
+
+## XCallType
+
+表示XCall的类型
+
+**起始版本**: 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+| 名称                           | 值     | 说明     |
+| ------------------------------ | ------ | --------|
+| XCALL_ECALL_TYPE | 0      | 表示XCall是Ecall。 |
+| XCALL_BCALL_TYPE | 1      | 表示XCall是Bcall。 |
+| XCALL_ICALL_TYPE | 2      | 表示XCall是Icall。 |
