@@ -47,10 +47,9 @@
 
 ## 音频渲染、录制和会话使用场景概述
 
-### 系统渲染、录制和会话使用场景概述
 如果系统默认策略不满足场景需求，建议使用音频渲染、录制和会话相关能力进行处理，典型场景如下：
 
-#### 场景1：音乐被后启动应用打断后，无法恢复
+### 场景1：音乐被后启动应用打断后，无法恢复
 
 先打开应用A播放音乐，然后打开应用B，应用B有音频播放。默认焦点策略是STOP，应用A被应用B打断后，当B停止播放时，A不能恢复播放；要使A重新播放，系统当前有如下方案供选择：
 
@@ -60,11 +59,11 @@
 | 默认场景 | 播放媒体类音频（音乐） | 播放媒体类音频（短视频） | 默认焦点策略是停止，B播放后A被打断，不恢复 | 需要应用A继续播放，参考如下方案 |
 | 方案一 | 使用音频渲染接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | B抢占焦点后，A会继续静音播放，B完成播放后A恢复 | 复播后会跳过之前静音的内容，对进度条敏感的场景，不建议使用 |
 | 方案二 | 无需适配 | 使用音频会话，在启动时使用CONCURRENCY_PAUSE_OTHERS，打断时使用PAUSE策略。当应用B释放焦点时，会给A发送RESUME事件 | B播放完成后，会发送RESUME，A继续播放 | |
-| 方案三 | 应用A提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 无需适配 | 应用A提供设置开关，用户手动开启生效，B播放后与A同时播放 | 参考华为音乐 |
-| 方案四 | 无需适配 | 应用B提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 应用B提供设置开关，用户手动开启生效，B播放后与A同时播放 | 参考华为音乐 |
+| 方案三 | 应用A提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 无需适配 | 应用A提供设置开关，用户手动开启生效，B播放后与A同时播放 | 参考系统音乐 |
+| 方案四 | 无需适配 | 应用B提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 应用B提供设置开关，用户手动开启生效，B播放后与A同时播放 | 参考系统音乐 |
 | 方案五 | 使用音频会话接口[setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | A静音播放，效果同方案一 |  |
 
-#### 场景2：录音被通话应用打断后，无法恢复
+### 场景2：录音被通话应用打断后，无法恢复
 
 <!--Table: 6%; 30%; 30%; 17%; 17% -->
 |  | 应用A | 应用B | 打断效果 | 备注 |
