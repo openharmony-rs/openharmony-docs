@@ -1407,8 +1407,8 @@ function controlTransfer() {
 | ------------- | ------------------------------------------- | ---- | ---- |------------- |
 | address       | number                                      | 否   | 否 |端点地址。         |
 | attributes    | number                                      | 否   | 否 |端点属性。         |
-| interval      | number                                      | 否   | 否 |端点间隔。         |
-| maxPacketSize | number                                      | 否   | 否 |端点最大数据包大小。    |
+| interval      | number                                      | 否   | 否 |端点间隔，单位：毫秒         |
+| maxPacketSize | number                                      | 否   | 否 |端点最大数据包大小，单位：字节    |
 | direction     | [USBRequestDirection](#usbrequestdirection) | 否   | 否 |端点的方向。        |
 | number        | number                                      | 否   | 否 |端点号。          |
 | type          | number                                      | 否   | 否 |端点类型。取值见[UsbEndpointTransferType](#usbendpointtransfertype18)         |
