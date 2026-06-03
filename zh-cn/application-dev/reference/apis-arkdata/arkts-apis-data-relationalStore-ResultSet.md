@@ -1439,7 +1439,7 @@ if (resultSet !== undefined) {
 
 close(): void
 
-关闭结果集，若不关闭可能会引起FD（File Descriptor）泄露和内存泄露。
+关闭结果集，若不关闭可能会引起FD（File Descriptor）泄漏和内存泄漏。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
