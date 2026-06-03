@@ -111,6 +111,26 @@ void OnUserSpeedChanged(OH_AVCodec *vdec, double targetSpeed) {
 - **物理显示瓶颈限制**：当视频解码帧率远超设备播放刷新上限时。应用层可直接计算比例下发 `UNIFORM` 模式。在不依赖智能算法的前提下，精准且均匀地削减解码与渲染功耗。
 - **温控降级与极端省电**：当设备触发高温严重告警时，此时流畅度让位于设备生存。应用层可无视当前播放状态，强切 `UNIFORM` 模式并下发极低比例（如 0.3），强行削减算力消耗，为系统提供最可靠的灾备降温。
 
+**业务逻辑代码示例（以应对温控告警为例）：**
+
+```c++
+// 假设 vdec 为已处于 Running 状态的 OH_AVCodec 实例
+void OnThermalWarningReceived(OH_AVCodec *vdec) {
+    OH_AVFormat *param = OH_AVFormat_Create();
+
+    // 强切为 UNIFORM 平滑定比模式，不再依赖智能感知算法
+    OH_AVFormat_SetIntValue(param, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE, 
+                            OH_FRAME_RETENTION_MODE_UNIFORM);
+                            
+    // 强制削减算力消耗：设定保留比例为 0.3（仅保留 30% 的解码帧输出）
+    OH_AVFormat_SetDoubleValue(param, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_RATIO, 0.3);
+
+    // 实时下发生效，底层将执行绝对均匀的抽帧剔除，快速降低整机负载
+    OH_VideoDecoder_SetParameter(vdec, param);
+    OH_AVFormat_Destroy(param);
+}
+```
+
 ## 6. 约束和限制与行为细节
 
 - **格式支持**：本特性属于视频解码专属能力，**仅支持 H.264、H.265 及 H.266 视频码流格式**。
