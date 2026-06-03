@@ -390,6 +390,8 @@ struct Index {
 从API版本26.0.0开始，新增systemMaterial属性。
 
 ```ts
+import { uiMaterial } from '@kit.ArkUI';
+
 // xxx.ets
 @Entry
 @Component

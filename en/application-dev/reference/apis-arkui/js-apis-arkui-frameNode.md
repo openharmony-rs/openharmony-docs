@@ -114,19 +114,18 @@ Describes the binding state of interaction events on components. When querying r
 
 Enumerates polymorphic style states, which are used to process polymorphic styles.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
 **Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| NORMAL | 0 | Normal state.|
-| PRESSED | 1 << 0 | Pressed state.|
-| FOCUSED | 1 << 1 | Focused state.|
-| DISABLED | 1 << 2 | Disabled state.|
-| SELECTED | 1 << 3 | Selected state.<br>Only supported by specific components: **Checkbox**, **Radio**, **Toggle**, **List**, **Grid**, **MenuItem**.|
+| NORMAL | 0 | Normal state.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| PRESSED | 1 << 0 | Pressed state.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| FOCUSED | 1 << 1 | Focused state.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| DISABLED | 1 << 2 | Disabled state.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| SELECTED | 1 << 3 | Selected state.<br>Only supported by specific components: **Checkbox**, **Radio**, **Toggle**, **List**, **Grid**, **MenuItem**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| HOVERED | 1 << 4 | Hovered state.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## UIStatesChangeHandler<sup>20+</sup>
 
@@ -11079,6 +11078,8 @@ struct Index {
 
 ## Example of Setting and Deleting a Polymorphic Style State
 
+Since API version 26.0.0, the **HOVERED** enumeration is added to [UIState](#uistate20).
+
 ```ts
 import { NodeController, FrameNode, typeNode, UIState } from '@kit.ArkUI';
 
@@ -11086,7 +11087,7 @@ import { NodeController, FrameNode, typeNode, UIState } from '@kit.ArkUI';
 class MyNodeController extends NodeController {
   private isEnable: boolean = true;
   private theStatesToBeSupported =
-    UIState.NORMAL | UIState.PRESSED | UIState.FOCUSED | UIState.DISABLED | UIState.SELECTED;
+    UIState.NORMAL | UIState.PRESSED | UIState.FOCUSED | UIState.DISABLED | UIState.SELECTED | UIState.HOVERED;
 
   makeNode(uiContext: UIContext): FrameNode | null {
     // Create and organize node relationships.
@@ -11124,6 +11125,11 @@ class MyNodeController extends NodeController {
         node.commonAttribute.backgroundColor(Color.Green)
         node.commonAttribute.borderWidth(2)
         node.commonAttribute.borderColor(Color.Black)
+      }
+      if ((currentState & UIState.HOVERED) == UIState.HOVERED) {
+        // HOVERED state: Apply hovered UI effects.
+        console.info('Callback UIState.HOVERED')
+        node.commonAttribute.backgroundColor(Color.Blue)
       }
       if ((currentState & UIState.PRESSED) == UIState.PRESSED) {
         // PRESSED state: Apply pressed UI effects.
@@ -11192,6 +11198,8 @@ struct FrameNodeTypeTest {
   }
 }
 ```
+
+![frameNode_stateStyles](./figures/frameNode_stateStyles.gif)
 
 ## Example of Creating and Canceling an Animation
 

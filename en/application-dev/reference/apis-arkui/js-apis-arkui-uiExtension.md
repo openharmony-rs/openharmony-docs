@@ -274,7 +274,7 @@ Subscribes to position and size change events of the component (**EmbeddedCompon
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -324,7 +324,7 @@ Unsubscribes from position and size change events of the component (**EmbeddedCo
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 

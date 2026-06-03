@@ -2,7 +2,7 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @yhf-->
+<!--Owner: @HarMonkey-->
 <!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
@@ -65,6 +65,8 @@ Asset Store Kit（关键资产存储服务，简称ASSET）包含了一系列开
   - [IS_PERSISTENT](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)属性设置为True的关键资产，不允许设置为群组共享。
 
 - 关键资产删除时机
+
+  关键资产有且仅有以下删除时机：
   - 业务主动调用remove删除关键资产时，删除符合条件的数据。详见删除关键资产[ArkTS](asset-js-remove.md)、[C/C++](asset-native-remove.md)开发指导。
   - 应用卸载时，会清除对应的数据。[IS_PERSISTENT](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)属性设置为true的数据将保留。
      - 从API 21开始：清除存储在ASSET中的非群组数据。群组数据仅在群组内所有应用卸载时清除。

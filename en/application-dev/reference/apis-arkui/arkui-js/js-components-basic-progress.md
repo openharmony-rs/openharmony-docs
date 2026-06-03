@@ -3,14 +3,13 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
-<!--Tester:@jiaoaozihao-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
->
->  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
+>  Supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
-The **\<Progress>** component is used to provide a progress bar that displays the progress of content loading or an operation.
+The **progress** component is used to provide a progress bar that displays the progress of content loading or an operation.
 
 ## Required Permissions
 
@@ -28,7 +27,7 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 
 | Name  | Type    | Default Value       | Mandatory  | Description                                      |
 | ---- | ------ | ---------- | ---- | ---------------------------------------- |
-| type | string | horizontal | No   | Type of the progress bar, which cannot be changed dynamically. Available values are as follows:<br>- **horizontal**: linear progress bar.<br>- **circular**: loading progress bar.<br>- **ring**: ring progress bar.<br>- **scale-ring**: ring progress bar with a scale.<br>- **arc**: arc progress bar.<br>- **eclipse**<sup>5+</sup>: eclipse progress bar.|
+| type | string | horizontal | No   | Type of the progress bar, which cannot be changed dynamically. Available values are as follows:<br>- **horizontal**: linear progress bar.<br>- **circular**: loading progress bar.<br>- **ring**: ring progress bar.<br>- **scale-ring**: ring progress bar with a scale.<br>- **arc**: arc progress bar.<br>- **eclipse**<sup>5+</sup>: eclipse progress bar, which displays the progress in a way similar to the waxing and waning of the moon.|
 
 Different types of progress bars support different attributes.
 
@@ -38,12 +37,12 @@ Different types of progress bars support different attributes.
   | percent          | number | 0    | No   | Current progress. The value ranges from 0 to 100.|
   | secondarypercent | number | 0    | No   | Secondary progress. The value ranges from 0 to 100.|
 
-- When the type is **ring** or **scale-ring**, the following attributes are supported.
+- When the type is **ring** or **scale-ring**, the following attribute is supported.
   | Name       | Type     | Default Value | Mandatory  | Description            |
   | --------- | ------- | ---- | ---- | -------------- |
-  | clockwise | boolean | true | No   | Whether the ring progress bar uses clockwise.|
+  | clockwise | boolean | true | No   | Whether the ring progress bar uses clockwise.<br>Default value: **true**, indicating that the ring progress bar uses clockwise.|
 
-- When the type is **arc** or **eclipse**<sup>5+</sup>, the following attributes are supported.
+- When the type is **arc** or **eclipse**<sup>5+</sup>, the following attribute is supported.
   | Name     | Type    | Default Value | Mandatory  | Description              |
   | ------- | ------ | ---- | ---- | ---------------- |
   | percent | number | 0    | No   | Current progress. The value ranges from 0 to 100.|
@@ -68,11 +67,11 @@ Circular progress bar, of which **type** is **circular**
 | ----- | ------------- | ---- | ---- | ----------------- |
 | color | &lt;color&gt; | -    | No   | Color of the dot on the loading progress bar.|
 
-Ring or scale-ring progress bar, of which **type** is **scale-ring**
+Ring or scale-ring progress bar, of which **type** is **ring** or **scale-ring**
 
 | Name              | Type                                      | Default Value | Mandatory  | Description                                      |
 | ---------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
-| color            | &lt;color&gt; \| &lt;linear-gradient&gt; | -    | No   | Color of the ring progress bar. The **ring** type supports the linear gradient color.<br>The linear gradient color supports only two color attribute formats, for example, **color = linear-gradient(\#ff0000, \#00ff00)**.|
+| color            | &lt;color&gt;&nbsp;\|&nbsp;&lt;linear-gradient&gt; | -    | No   | Color of the ring progress bar. The **ring** type supports the linear gradient color.<br>The linear gradient color supports only two color parameter formats, for example, **color = linear-gradient(#ff0000, #00ff00)**.|
 | background-color | &lt;color&gt;                            | -    | No   | Background color of the ring progress bar.                              |
 | secondary-color  | &lt;color&gt;                            | -    | No   | Color of the secondary ring progress bar.                             |
 | stroke-width     | &lt;length&gt;                           | 10px | No   | Width of the ring progress bar.                               |
@@ -85,12 +84,12 @@ Arc progress bar, of which **type** is **arc**
 | ---------------- | -------------- | ------------- | ---- | ---------------------------------------- |
 | color            | &lt;color&gt;  | -             | No   | Color of the arc progress bar.                               |
 | background-color | &lt;color&gt;  | -             | No   | Background color of the arc progress bar.                              |
-| stroke-width     | &lt;length&gt; | 4px           | No   | Width of the arc progress bar, which is always within the radius area.<br>The wider the progress bar is, the closer the progress bar is to the center of the circle. The progress bar is always within the radius.|
+| stroke-width     | &lt;length&gt; | 4px           | No   | Width of the arc progress bar, which is always within the radius area.<br>A larger width value means that the progress bar is closer to the center of the circle.|
 | start-angle      | &lt;deg&gt;    | 240           | No   | Start angle of the arc progress bar, which starts from zero o'clock clockwise. The value ranges from 0 to 360 degrees.     |
 | total-angle      | &lt;deg&gt;    | 240           | No   | Total length of the arc progress bar. The value ranges from –360 to 360. A negative number indicates anticlockwise.     |
-| center-x         | &lt;length&gt; | Half of the width of the arc progress bar   | No   | Center of the arc progress bar (with the upper left corner of the component as the coordinate origin). This style must be used together with **center-y** and **radius**.|
-| center-y         | &lt;length&gt; | Half of the height of the arc progress bar   | No   | Center of the arc progress bar (with the upper left corner of the component as the coordinate origin). This style must be used together with **center-x** and **radius**.|
-| radius           | &lt;length&gt; | Half of the minimum width and height of the arc progress bar| No   | Radius of the arc progress bar. This style must be used together with **center-x** and **center-y**.    |
+| center-x         | &lt;length&gt; | Half of the width of the arc progress bar   | No   | Center of the arc progress bar (with the upper left corner of this component as the coordinate origin). This attribute must be used together with **center-y** and **radius**.|
+| center-y         | &lt;length&gt; | Half of the height of the arc progress bar   | No   | Center of the arc progress bar (with the upper left corner of this component as the coordinate origin). This attribute must be used together with **center-x** and **radius**.|
+| radius           | &lt;length&gt; | Half of the minimum width and height of the arc progress bar| No   | Radius of the arc progress bar. This attribute must be used together with **center-x** and **center-y**.    |
 
 Eclipse progress bar, of which **type** is **eclipse**<sup>5+</sup>
 
@@ -135,4 +134,4 @@ The [universal methods](js-components-common-methods.md) are supported.
 }
 ```
 
-![progress](figures/progress.png)
+![en-usimage_0000001180339632](figures/en-us_image_0000001180339632.png)

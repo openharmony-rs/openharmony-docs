@@ -36,7 +36,7 @@ getFreeSize(path:string): Promise&lt;number&gt;
 
   | 类型                  | 说明           |
   | --------------------- | -------------- |
-  | Promise&lt;number&gt; | Promise对象，返回空闲字节数。 |
+  | Promise&lt;number&gt; | Promise对象，返回空闲字节数，单位为Byte。 |
 
 **错误码：**
 
@@ -69,9 +69,9 @@ getFreeSize(path:string): Promise&lt;number&gt;
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
   statfs.getFreeSize(path).then((number: number) => {
-    console.info("getFreeSize succeed, Size: " + number);
+    console.info("Succeeded in getting free size: " + number);
   }).catch((err: BusinessError) => {
-    console.error("getFreeSize failed with error message: " + err.message + ", error code: " + err.code);
+    console.error("Failed to get free size. Code: " + err.code + ", message: " + err.message);
   });
   ```
 
@@ -88,7 +88,7 @@ getFreeSize(path:string, callback:AsyncCallback&lt;number&gt;): void
   | 参数名   | 类型                        | 必填 | 说明                         |
   | -------- | --------------------------- | ---- | ---------------------------- |
   | path     | string                      | 是   | 需要查询的文件系统的文件路径。 |
-  | callback | AsyncCallback&lt;number&gt; | 是   | 异步获取空闲字节数之后的回调。 |
+  | callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回空闲字节数，单位为Byte。 |
 
 **错误码：**
 
@@ -122,9 +122,9 @@ getFreeSize(path:string, callback:AsyncCallback&lt;number&gt;): void
   let path = context.filesDir;
   statfs.getFreeSize(path, (err: BusinessError, number: number) => {
     if (err) {
-      console.error("getFreeSize failed with error message: " + err.message + ", error code: " + err.code);
+      console.error("Failed to get free size. Code: " + err.code + ", message: " + err.message);
     } else {
-      console.info("getFreeSize succeed, Size: " + number);
+      console.info("Succeeded in getting free size: " + number);
     }
   });
   ```
@@ -147,7 +147,7 @@ getFreeSizeSync(path:string): number
 
   | 类型                  | 说明           |
   | --------------------- | -------------- |
-  | number | 返回空闲字节数。 |
+  | number | 返回空闲字节数，单位为Byte。 |
 
 **错误码：**
 
@@ -179,7 +179,7 @@ getFreeSizeSync(path:string): number
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
   let number = statfs.getFreeSizeSync(path);
-  console.info("getFreeSizeSync succeed, Size: " + number);
+  console.info("Succeeded in getting free size: " + number);
   ```
 
 ## statfs.getTotalSize
@@ -200,7 +200,7 @@ getTotalSize(path: string): Promise&lt;number&gt;
 
   | 类型                  | 说明         |
   | --------------------- | ------------ |
-  | Promise&lt;number&gt; | Promise对象，返回总字节数。 |
+  | Promise&lt;number&gt; | Promise对象，返回总字节数，单位为Byte。 |
 
 **错误码：**
 
@@ -233,9 +233,9 @@ getTotalSize(path: string): Promise&lt;number&gt;
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
   statfs.getTotalSize(path).then((number: number) => {
-    console.info("getTotalSize succeed, Size: " + number);
+    console.info("Succeeded in getting total size: " + number);
   }).catch((err: BusinessError) => {
-    console.error("getTotalSize failed with error message: " + err.message + ", error code: " + err.code);
+    console.error("Failed to get total size. Code: " + err.code + ", message: " + err.message);
   });
   ```
 
@@ -252,7 +252,7 @@ getTotalSize(path: string, callback: AsyncCallback&lt;number&gt;): void
   | 参数名   | 类型                        | 必填 | 说明                         |
   | -------- | --------------------------- | ---- | ---------------------------- |
   | path     | string                      | 是   | 需要查询的文件系统的文件路径。 |
-  | callback | AsyncCallback&lt;number&gt; | 是   | 异步获取总字节数之后的回调。   |
+  | callback | AsyncCallback&lt;number&gt; | 是   | 回调函数，返回总字节数，单位为Byte。   |
 
 **错误码：**
 
@@ -286,9 +286,9 @@ getTotalSize(path: string, callback: AsyncCallback&lt;number&gt;): void
   let path = context.filesDir;
   statfs.getTotalSize(path, (err: BusinessError, number: number) => {
     if (err) {
-      console.error("getTotalSize failed with error message: " + err.message + ", error code: " + err.code);
+      console.error("Failed to get total size. Code: " + err.code + ", message: " + err.message);
     } else {
-      console.info("getTotalSize succeed, Size: " + number);
+      console.info("Succeeded in getting total size: " + number);
     }
   });
   ```
@@ -311,7 +311,7 @@ getTotalSizeSync(path: string): number
 
   | 类型                  | 说明         |
   | --------------------- | ------------ |
-  | number | 返回总字节数。 |
+  | number | 返回总字节数，单位为Byte。 |
 
 **错误码：**
 
@@ -343,5 +343,5 @@ getTotalSizeSync(path: string): number
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let path = context.filesDir;
   let number = statfs.getTotalSizeSync(path);
-  console.info("getTotalSizeSync succeed, Size: " + number);
+  console.info("Succeeded in getting total size: " + number);
   ```

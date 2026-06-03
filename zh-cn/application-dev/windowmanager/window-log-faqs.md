@@ -445,3 +445,174 @@ onWindowStageDestroy() {
     this.cleanupResources(); // 只做资源清理，不调用getLastWindow
 }
 ```
+
+### 子窗口调用setResizeByDragEnabled接口失败
+
+开发者在子窗口上调用[setResizeByDragEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setresizebydragenabled14)接口设置窗口可拖拽缩放时，返回错误码1300002，无法实现拖拽缩放功能。
+
+**典型日志信息**
+
+通过DevEco Studio或hdc查看错误日志：
+
+```bash
+hdc shell hilog | grep -i -E "1300002|setResizeByDragEnabled"
+```
+
+典型日志示例：
+
+``` text
+SetResizeByDragEnabled: This is not main window or decor enabled sub window
+```
+
+关键信息：
+- 错误码：1300002（窗口状态异常）
+- 错误信息：This is not main window or decor enabled sub window
+- 原因：子窗口未启用装饰栏，不支持拖拽缩放
+
+**分析定位及解决**
+
+检查创建子窗口时是否在SubWindowOptions中将`decorEnabled`设置为`true`。
+
+对于调用该接口的子窗口，要保证子窗口已开启窗口装饰栏。
+
+**正反案例**
+
+错误示例
+
+```ts
+windowStage.createSubWindowWithOptions('mySubWindow', {
+  title: "",
+  decorEnabled: false,    // 错误：未开启装饰栏
+  isModal: false,
+  maximizeSupported: true
+});
+```
+
+正确示例
+
+```ts
+let options: window.SubWindowOptions = {
+  title: "",
+  decorEnabled: true,   // 开启窗口装饰栏
+  isModal: false,
+  maximizeSupported: true
+};
+windowStage.createSubWindowWithOptions('mySubWindow', options).then((windowClass) => {
+  // decorEnabled=true时可正常调用
+  windowClass.setResizeByDragEnabled(true, (err: BusinessError) => {
+    console.error("setResizeByDragEnabled failed.", ` code: ${err.code}, message: ${err.message}`)
+  })
+})
+```
+
+## 1300012 画中画窗口状态异常
+
+错误码1300012表示画中画窗口状态异常。
+
+### 可能原因
+
+- 画中画窗口已被销毁，但代码仍在尝试访问该窗口。
+
+- 画中画窗口处于无效状态（如尚未创建、已关闭、正在销毁）。
+
+- 在画中画窗口销毁后，异步任务或回调中访问了窗口对象。
+
+- 画中画窗口已经启动或正在启动中，但代码仍在尝试重复启动画中画窗口。
+
+### 画中画窗口销毁后访问导致崩溃
+
+开发者在画中画窗口销毁后（如用户退出画中画、窗口生命周期结束等）调用画中画窗口[stopPiP()](../reference/apis-arkui/js-apis-pipWindow.md#stoppip)接口，触发错误码1300012。
+
+**典型日志信息**
+
+```text
+Error Name: Error
+Error Message: [PiPWindow][stopPiP]msg: The window is not created or destroyed.
+Error code: 1300012
+```
+
+**分析定位及解决**
+
+- 是否在画中画生命周期状态为`ABOUT_TO_STOP`或`STOPPED`时调用stopPiP()接口。
+
+  在以上状态时，代表画中画窗口即将停止或已经停止，此时不可调用stopPiP()接口。
+
+- 是否在`setTimeout`、`Promise`等异步回调中调用stopPiP()，且回调执行时窗口可能已销毁。
+
+  在异步回调中，画中画窗口可能已被销毁，代码中没有对画中画窗口状态进行校验，此时调用stopPiP()接口会导致错误。
+
+**正反案例**
+
+错误示例
+
+```ts
+// 错误：异步任务在窗口销毁后调用stopPiP()接口
+stopPiPTimer() {
+    setTimeout(() => {
+        this.pipController?.stopPiP();
+    }, 1000);
+}
+```
+
+正确示例
+```ts
+async stopPiPSafely(pipController: PiPController) {
+  let state: string = 'undefined';
+  
+  pipController.on('stateChange', (newState: string, reason: string) => {
+    state = newState;
+    if (state === 'STARTED') {
+      pipController?.stopPiP();
+    }
+  });
+}
+```
+
+### 画中画窗口重复启动导致崩溃
+
+开发者在画中画窗口处于已经启动或正在启动中的状态时，调用画中画窗口[startPiP()](../reference/apis-arkui/js-apis-pipWindow.md#startpip)接口，触发错误码1300012。
+
+**典型日志信息**
+
+```text
+Error Name: Error
+Error Message: [PiPWindow][startPiP]msg: The window is already started or is about to start.
+Error code: 1300012
+```
+
+**分析定位及解决**
+
+- 是否在画中画生命周期状态为`ABOUT_TO_START`或`STARTED`时调用startPiP()接口。
+
+  在该状态时，代表画中画窗口即将启动或已经启动，此时不可调用startPiP()接口。
+
+- 是否在`setTimeout`、`Promise`等异步回调中调用startPiP()，且回调执行时窗口可能已启动。
+
+  在异步回调中，画中画窗口可能已经启动或正在启动中，代码中没有对画中画窗口状态进行校验，此时调用startPiP()接口会导致错误。
+
+**正反案例**
+
+错误示例
+
+```ts
+// 错误：异步任务在窗口已创建后调用startPiP()接口
+startPiPTimer() {
+    setTimeout(() => {
+        this.pipController?.startPiP();
+    }, 1000);
+}
+```
+
+正确示例
+```ts
+async startPiPSafely(pipController: PiPController) {
+  let state: string = 'undefined';
+  
+  pipController.on('stateChange', (newState: string, reason: string) => {
+    state = newState;
+    if (state === 'STOPPED') {
+      pipController?.startPiP();
+    }
+  });
+}
+```
