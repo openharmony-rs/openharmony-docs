@@ -6,7 +6,7 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-continueManager提供了应用跨端迁移的管理能力，如获取应用跨端迁移过程中快速拉起目标应用的结果。跨端迁移是通过在源端和目标端之间建立数据传输通道，将应用状态和数据从源端迁移到目标端。详细的设计逻辑和实现机制请参见[跨端迁移开发指南](../../application-models/hop-cross-device-migration.md)。
+continueManager提供了应用跨端迁移的管理能力，例如获取应用跨端迁移过程中快速拉起目标应用的结果。跨端迁移是指在源端和目标端之间建立数据传输通道，将应用状态和数据从源端迁移到目标端。详细的设计逻辑和实现机制请参见[跨端迁移开发指南](../../application-models/hop-cross-device-migration.md)。
 
 > **说明：**
 > 
@@ -24,7 +24,9 @@ import { continueManager } from '@kit.AbilityKit';
 
 on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
 
-在应用被快速拉起时，通过注册回调函数获取快速拉起结果。使用callback异步回调。适用于跨设备应用迁移场景，如游戏进度从手机迁移到平板、视频播放跨端同步、文档编辑协作等需要保持应用连续的场景。
+在应用被快速拉起时，通过注册回调函数获取快速拉起结果。使用callback异步回调。
+
+适用于跨设备应用迁移场景，如游戏进度从手机迁移到平板、视频播放跨端同步、文档编辑协作等需要保持应用状态连续的场景。
 
 > **说明：**
 >
@@ -91,7 +93,9 @@ export default class MigrationAbility extends UIAbility {
 
 off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;ContinueResultInfo&gt;): void
 
-在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。用于跨设备应用迁移完成或取消迁移后的回调清理场景，如应用迁移成功后清理监听、用户取消迁移操作时释放资源等。
+在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。
+
+适用于跨设备应用迁移完成或取消迁移后的回调清理场景，如应用迁移成功后清理监听、用户取消迁移操作时释放资源等。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -103,7 +107,7 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 | -------- |------------------------------------| -------- |--------------------------------------|
 | type | string                             | 是 | 固定值：prepareContinue。                 |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-baseContext.md)                            | 是 | Ability的Context。                     |
-| callback | AsyncCallback&lt;[ContinueResultInfo](js-apis-app-ability-continueManager.md#continueresultinfo)&gt; | 否 | 回调函数。当回调函数注销成功，err为undefined，ContinueResultInfo为获取到的回调函数注销结果。否则为错误对象。若callback参数未填写，则注销所有已注册的回调；若callback参数已填写，则注销指定的回调函数。 |
+| callback | AsyncCallback&lt;[ContinueResultInfo](js-apis-app-ability-continueManager.md#continueresultinfo)&gt; | 否 | 回调函数。当回调函数注销成功，err为undefined，ContinueResultInfo为获取到的回调函数注销结果。否则为错误对象。若未填写，则注销所有已注册的回调；若已填写，则注销指定的回调函数。 |
 
 **错误码：**
 
