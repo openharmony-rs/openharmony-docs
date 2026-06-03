@@ -147,6 +147,21 @@
 | model<sup>22+</sup>           | string                     | 是   | 是 | 设备的具体型号类别。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
 | capabilities<sup>22+</sup>    | Array&lt;[AudioStreamInfo](#audiostreaminfo8)&gt;| 是   | 是 | 设备支持的音频流能力。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
 
+## AudioDevicePair
+
+描述返听使用的音频设备对，包含输入设备和输出设备。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+| 名称              | 类型                                              | 只读 | 可选 | 说明               |
+| :---------------- | :------------------------------------------------ | :--- |---| :----------------- |
+| inputDevice | [AudioDeviceDescriptor](#audiodevicedescriptor) | 否 | 否 | 输入音频设备描述。 |
+| outputDevice | [AudioDeviceDescriptor](#audiodevicedescriptor) | 否 | 否 | 输出音频设备描述。 |
+
 ## VolumeEvent<sup>9+</sup>
 
 音量改变时，应用接收到的事件。

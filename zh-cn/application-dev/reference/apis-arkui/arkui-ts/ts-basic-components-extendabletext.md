@@ -1,4 +1,4 @@
-# ExtendableText（可扩展的Text）
+# ExtendableText (可扩展的Text)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-[Text](./ts-basic-components-text.md)的扩展组件的基类。开发者可以自定义扩展组件继承ExtendableText，支持重写Text中的[属性](./ts-basic-components-text.md#属性)和[通用属性](./ts-component-general-attributes.md)，同时支持自定义属性。在阅读本文档前，建议提前阅读[Text](./ts-basic-components-text.md)。
+[Text](./ts-basic-components-text.md)的扩展组件的基类。开发者可以自定义扩展组件继承ExtendableText，支持重写Text中的[属性](./ts-basic-components-text.md#属性)和[通用属性](./ts-component-general-attributes.md)，同时支持自定义属性。在阅读本文档前，建议提前阅读[Text](./ts-basic-components-text.md)。开发指南请参考[内置组件扩展](../../../ui/state-management-static/arkts-static-extendable-inner-component.md)。
 
 **起始版本：** 26.0.0
 

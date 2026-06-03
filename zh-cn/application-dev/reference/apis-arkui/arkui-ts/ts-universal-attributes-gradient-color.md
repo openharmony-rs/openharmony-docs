@@ -1,8 +1,8 @@
 # 颜色渐变
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -58,6 +58,8 @@ linearGradient(options: Optional\<LinearGradientOptions>): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -80,7 +82,7 @@ linearGradient(options: Optional\<LinearGradientOptions>): T
 
 ## linearGradient<sup>23+</sup>
 
-linearGradient(value: LinearGradientOptions | undefined): this
+linearGradient(value: LinearGradientOptions | undefined)
 
 线性渐变。
 
@@ -98,12 +100,6 @@ linearGradient(value: LinearGradientOptions | undefined): this
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value | [LinearGradientOptions](#lineargradientoptions18对象说明) \| undefined | 是   | 线性渐变。<br/>当value的值为undefined时，恢复为无线性渐变的效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## LinearGradientOptions<sup>18+</sup>对象说明
 
 线性渐变的参数。
@@ -113,6 +109,8 @@ linearGradient(value: LinearGradientOptions | undefined): this
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,6 +162,8 @@ sweepGradient(options: Optional\<SweepGradientOptions>): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
@@ -188,7 +188,7 @@ sweepGradient(options: Optional\<SweepGradientOptions>): T
 
 ## sweepGradient<sup>23+</sup>
 
-sweepGradient(value: SweepGradientOptions | undefined): this
+sweepGradient(value: SweepGradientOptions | undefined)
 
 角度渐变。
 
@@ -206,12 +206,6 @@ sweepGradient(value: SweepGradientOptions | undefined): this
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | options | [SweepGradientOptions](#sweepgradientoptions18对象说明) \| undefined | 是   | 角度渐变。<br/>当options的值为undefined时，恢复为无角度渐变的效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## SweepGradientOptions<sup>18+</sup>对象说明
 
 角度渐变参数。
@@ -221,6 +215,8 @@ sweepGradient(value: SweepGradientOptions | undefined): this
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -284,6 +280,8 @@ radialGradient(options: Optional\<RadialGradientOptions>): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
@@ -309,7 +307,7 @@ radialGradient(options: Optional\<RadialGradientOptions>): T
 
 ## radialGradient<sup>23+</sup>
 
-radialGradient(value: RadialGradientOptions | undefined): this
+radialGradient(value: RadialGradientOptions | undefined)
 
 角度渐变。
 
@@ -327,12 +325,6 @@ radialGradient(value: RadialGradientOptions | undefined): this
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | options | [RadialGradientOptions](#radialgradientoptions18对象说明) \| undefined | 是   | 角度渐变。<br/>当options的值为undefined时，恢复为无角度渐变的效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## RadialGradientOptions<sup>18+</sup>对象说明
 
 径向渐变参数。
@@ -342,6 +334,8 @@ radialGradient(value: RadialGradientOptions | undefined): this
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

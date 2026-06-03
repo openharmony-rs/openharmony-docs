@@ -1,4 +1,4 @@
-# class (XMPMetadata)
+# Class (XMPMetadata)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->

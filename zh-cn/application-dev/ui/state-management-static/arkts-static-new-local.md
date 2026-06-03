@@ -9,7 +9,7 @@
 \@Local装饰器具有以下能力：
 
 - \@Local装饰的变量变化时，会刷新使用该变量的组件。
-- \@Local支持观察Object、class、string、number、boolean、enum、interface等基本类型以及[Array](#装饰array类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内置类型。
+- \@Local支持观察Object、class、string、int、double、long、boolean、enum、interface等基本类型以及[Array](#装饰array类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内置类型。
 - \@Local支持null、undefined以及[联合类型](#联合类型)。
 
 在静态语言上下文中使用时，需要导入装饰器：
@@ -23,7 +23,7 @@ import { Local } from '@kit.ArkUI';
 | \@Local变量装饰器  | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
 | 装饰器参数         | 无                                                           |
-| 允许装饰的变量类型 | Object、class、string、number、boolean、enum、interface等基本类型以及[Array](#装饰array类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。支持null、undefined以及[联合类型](#联合类型)。 |
+| 允许装饰的变量类型 | Object、class、string、int、double、long、boolean、enum、interface等基本类型以及[Array](#装饰array类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。支持null、undefined以及[联合类型](#联合类型)。 |
 | 初始化规则         | 仅能本地初始化，不支持从父组件传入初始化。                   |
 | 同步规则           | **在子组件使用时：**<br>不与父组件中的任何类型变量同步。<br/>**在父组件使用时：**<br/>- 可以初始化子组件的[\@Param](./arkts-static-new-param.md)变量。<br/>- \@Local变量的变化会同步给子组件的\@Param变量。 |
 
@@ -31,18 +31,20 @@ import { Local } from '@kit.ArkUI';
 
 \@Local装饰的变量能够观察变量变化，当变量变化时，触发绑定的UI组件刷新。
 
-- 当装饰boolean、string、number时，可以观察到对变量赋值的变化。
+- 当装饰boolean、string、int时，可以观察到对变量赋值的变化。
 
-  ```ts
-  'use static'
+  <!-- @[LocalBasicTypes](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalBasicTypes.ets) -->
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
+  
   @Entry
   @ComponentV2
   struct Index {
-    @Local count: number = 0;
+    @Local count: int = 0;
     @Local message: string = 'Hello';
     @Local flag: boolean = false;
+  
     build() {
       Column() {
         Text(`${this.count}`)
@@ -54,7 +56,7 @@ import { Local } from '@kit.ArkUI';
             this.count++;
             this.message += ' World';
             this.flag = !this.flag;
-        })
+          })
       }
     }
   }
@@ -62,9 +64,9 @@ import { Local } from '@kit.ArkUI';
 
 - 当装饰类对象时，仅能观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化。对类成员属性的观察依赖[\@ObservedV2与\@Trace](./arkts-static-new-observedV2-and-trace.md)装饰器。
 
-  ```ts
-  'use static'
+  <!-- @[LocalClassObject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalClassObject.ets) -->
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, ObservedV2, Text, Trace } from '@kit.ArkUI';
   class RawObject {
     name: string;
@@ -79,11 +81,13 @@ import { Local } from '@kit.ArkUI';
       this.name = name;
     }
   }
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local rawObject: RawObject = new RawObject('rawObject');
     @Local observedObject: ObservedObject = new ObservedObject('observedObject');
+  
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
@@ -93,14 +97,14 @@ import { Local } from '@kit.ArkUI';
             // 对类对象整体的修改均能观察到
             this.rawObject = new RawObject('new rawObject');
             this.observedObject = new ObservedObject('new observedObject');
-        })
+          })
         Button('change name')
           .onClick((e: ClickEvent) => {
             // @Local不具备观察类对象属性的能力，因此对rawObject.name的修改无法观察到
             this.rawObject.name = 'new rawObject name';
             // 由于ObservedObject的name属性被@Trace装饰，因此对observedObject.name的修改能被观察到
             this.observedObject.name = 'new observedObject name';
-        })
+          })
       }
     }
   }
@@ -108,15 +112,17 @@ import { Local } from '@kit.ArkUI';
 
 - 当装饰简单类型数组时，可以观察到数组整体或数组项的变化。
 
-  ```ts
-  'use static'
+  <!-- @[LocalArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalArray.ets) -->
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
+  
   @Entry
   @ComponentV2
   struct Index {
-    @Local numArr: number[] = [1, 2, 3, 4, 5];
-    @Local dimensionTwo: number[][] = [[1, 2, 3], [4, 5, 6]];
+    @Local numArr: int[] = [1, 2, 3, 4, 5];
+    @Local dimensionTwo: int[][] = [[1, 2, 3], [4, 5, 6]];
+  
     build() {
       Column() {
         Text(`${this.numArr[0]}`)
@@ -152,19 +158,21 @@ import { Local } from '@kit.ArkUI';
 
 - 当装饰interface字面量类型时，仅能观察到字面量整体的变化，无法观察到属性的变化，可以使用[makeObserved接口](./arkts-static-new-makeObserved.md)实现对字面量属性的观察。
 
-  ```ts
-  'use static'
+  <!-- @[LocalInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalInterface.ets) -->
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
   interface Info {
     name: string;
-    age: number;
+    age: int;
   }
+  
   @Entry
   @ComponentV2
   struct Index {
     // 装饰字面量
     @Local info: Info = { name: 'Jack', age: 25 } as Info;
+    
     build() {
       Column() {
         Text(`info.name: ${this.info.name}`)
@@ -242,150 +250,237 @@ import { Local } from '@kit.ArkUI';
 ### 观察对象整体变化
 
 被\@ObservedV2与\@Trace装饰的类对象实例，具有深度观察对象属性的能力。但当类对象整体赋值时，UI却无法刷新。使用\@Local装饰对象，可以达到观察对象本身变化的效果。
-```ts
-'use static'
 
-import { Button, ClickEvent, Column, ComponentV2, Entry, Local, ObservedV2, Text, Trace } from '@kit.ArkUI';
+<!-- @[LocalObservedObject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalObservedObject.ets) -->
+
+``` TypeScript
+import { Button, Column, ComponentV2, Entry, Local, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
+
 @ObservedV2
 class Info {
   @Trace name: string;
-  @Trace age: number;
-  constructor(name: string, age: number) {
+  @Trace age: int;
+
+  constructor(name: string, age: int) {
     this.name = name;
     this.age = age;
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   info: Info = new Info('Tom', 25);
   @Local localInfo: Info = new Info('Tom', 25);
+
   build() {
-    Column() {
-      Text(`info: ${this.info.name}-${this.info.age}`) // Text1
-      Text(`localInfo: ${this.localInfo.name}-${this.localInfo.age}`) // Text2
-      Button('change info&localInfo')
-        .onClick((e: ClickEvent) => {
-          this.info = new Info('Lucy', 18); // Text1不会刷新
-          this.localInfo = new Info('Lucy', 18); // Text2会刷新
-        })
+    Row() {
+      Column() {
+        Text(`info: ${this.info.name}-${this.info.age}`) // Text1
+          .margin(10)
+        Text(`localInfo: ${this.localInfo.name}-${this.localInfo.age}`) // Text2
+          .margin(10)
+        Button('change info&localInfo')
+          .onClick(() => {
+            this.info = new Info('Lucy', 18); // Text1不会刷新
+            this.localInfo = new Info('Lucy', 18); // Text2会刷新
+          })
+          .margin(10)
+      }
+      .width('100%')
     }
+    .height('100%')
   }
 }
 ```
+
+![local-object](../figures/local-object.gif)
 
 ### 装饰Array类型变量
 
 当装饰Array类型时，可以观察到Array整体及其元素的变化。通过API操作更改数组内容也能被观察到。
 
-```ts
-'use static'
+<!-- @[LocalArrayVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalArrayVariable.ets) -->
 
-import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
+``` TypeScript
+import { Button, Column, ComponentV2, Entry, ForEach, Local, Row, Text } from '@kit.ArkUI';
+
+class Fruit {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
 @Entry
 @ComponentV2
 struct Index {
-  @Local arr: int[] = [0, 1, 2];
+  @Local fruits: Fruit[] = [new Fruit('apple'), new Fruit('banana')]; // 使用@Local装饰Array类型变量
+
   build() {
-    Column() {
-      Text(`${this.arr}`)
-      Button(`change arr[0]: ${this.arr[0]}`).onClick((e: ClickEvent) => {
-        this.arr[0]++;
-      })
-      Button(`push item: ${this.arr.length}`).onClick((e: ClickEvent) => {
-        this.arr.push(Double.toInt(this.arr.length));
-      })
-      Button(`pop item`).onClick((e: ClickEvent) => {
-        this.arr.pop();
-      })
-      Button(`reverse`).onClick((e: ClickEvent) => {
-        this.arr.reverse();
-      })
-      Button(`reset`).onClick((e: ClickEvent) => {
-        this.arr = [0, 1, 2];
-      })
+    Row() {
+      Column() {
+        ForEach(this.fruits, (item: Fruit) => {
+          Text(`${item.name}`)
+            .fontSize(20)
+            .margin(10)
+        })
+        // 对数组整体重新赋值，触发UI刷新
+        Button('Reset array')
+          .onClick(() => {
+            this.fruits = [new Fruit('strawberry'), new Fruit('blueberry')];
+          })
+          .width(300)
+          .margin(10)
+        // 新增数组元素，触发UI刷新
+        Button('Push element')
+          .onClick(() => {
+            this.fruits.push(new Fruit('cherry'));
+          })
+          .width(300)
+          .margin(10)
+        // 翻转数组元素，触发UI刷新
+        Button('Reverse array')
+          .onClick(() => {
+            this.fruits.reverse();
+          })
+          .width(300)
+          .margin(10)
+        // 使用同一元素填充数组，触发UI刷新
+        Button('Fill array')
+          .onClick(() => {
+            this.fruits.fill(new Fruit('apple'));
+          })
+          .width(300)
+          .margin(10)
+      }
+      .width('100%')
     }
+    .height('100%')
   }
 }
 ```
+
+![local-array](../figures/local-array.gif)
 
 ### 装饰Date类型变量
 
 当装饰Date类型时，可以观察到Date整体及其API操作的变化。
 
-```ts
-'use static'
+<!-- @[LocalDateVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalDateVariable.ets) -->
 
-import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
+``` TypeScript
+import { Button, Column, ComponentV2, DatePicker, Entry, Local, Row } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
-struct DateExample {
-  @Local selectedDate: Date = new Date('2021-08-08');
+struct DatePickerExample {
+  @Local selectedDate: Date = new Date('2021-08-08'); // 使用@Local装饰Date类型变量
 
   build() {
-    Column() {
-      Text(`${this.selectedDate}`)
-      Button('set selectedDate to 2023-07-08')
-        .margin(10)
-        .onClick((e: ClickEvent) => {
-          this.selectedDate = new Date('2023-07-08');
-        })
-      Button('increase the year by 1')
-        .margin(10)
-        .onClick((e: ClickEvent) => {
-          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
-        })
-      Button('increase the month by 1')
-        .margin(10)
-        .onClick((e: ClickEvent) => {
-          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
-        })
-      Button('increase the day by 1')
-        .margin(10)
-        .onClick((e: ClickEvent) => {
-          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-        })
-    }.width('100%')
+    Row() {
+      Column() {
+        // 通过给selectedDate重新赋值新的Date实例，触发UI刷新
+        Button('set selectedDate to 2023-07-08')
+          .onClick(() => {
+            this.selectedDate = new Date('2023-07-08');
+          })
+          .margin(10)
+          .width(300)
+        // 调用Date的setFullYear接口修改年份，触发UI刷新
+        Button('increase the year by 1')
+          .onClick(() => {
+            this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
+          })
+          .margin(10)
+          .width(300)
+        // 调用Date的setMonth接口修改月份，触发UI刷新
+        Button('increase the month by 1')
+          .onClick(() => {
+            this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
+          })
+          .margin(10)
+          .width(300)
+        // 调用Date的setDate接口修改日期，触发UI刷新
+        Button('increase the day by 1')
+          .onClick(() => {
+            this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+          })
+          .margin(10)
+          .width(300)
+        DatePicker({
+          start: new Date('1970-1-1'),
+          end: new Date('2100-1-1'),
+          selected: this.selectedDate
+        }).margin(20)
+      }
+      .width('100%')
+    }
+    .height('100%')
   }
 }
 ```
+
+![local-date](../figures/local-date.gif)
 
 ### 装饰Map类型变量
 
 当装饰Map类型时，可以观察到Map整体及其API操作带来的变化。
 
-```ts
-'use static'
+<!-- @[LocalMapVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalMapVariable.ets) -->
 
-import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, ForEach, Local, Row, Text } from '@kit.ArkUI';
+``` TypeScript
+import { Button, Column, ComponentV2, Entry, ForEach, Local, Row, Text } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct MapSample {
-  @Local message: Map<number, string> = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
+  @Local fruits: Map<string, int> = new Map<string, int>([['apple', 1], ['banana', 2]]); // 使用@Local装饰Map类型变量
 
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-          Text(`${item[0]}`).fontSize(30)
-          Text(`${item[1]}`).fontSize(30)
-          Divider()
+        ForEach(Array.from(this.fruits.entries()), (item: [string, int]) => {
+          Text(`key: ${item[0]}, value: ${item[1]}`)
+            .fontSize(20)
+            .margin(10)
         })
-        Button('init map').onClick((e: ClickEvent) => {
-          this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
-        })
-        Button('set new one').onClick((e: ClickEvent) => {
-          this.message.set(4, 'd');
-        })
-        Button('clear').onClick((e: ClickEvent) => {
-          this.message.clear();
-        })
-        Button('replace the first one').onClick((e: ClickEvent) => {
-          this.message.set(0, 'aa');
-        })
-        Button('delete the first one').onClick((e: ClickEvent) => {
-          this.message.delete(0);
-        })
+        // 新增键值对，触发UI刷新
+        Button('Set entry cherry')
+          .onClick(() => {
+            this.fruits.set('cherry', 3);
+          })
+          .width(300)
+          .margin(10)
+        // 更新键值对，触发UI刷新
+        Button('Update entry apple')
+          .onClick(() => {
+            this.fruits.set('apple', 4);
+          })
+          .width(300)
+          .margin(10)
+        // 删除键值对，触发UI刷新
+        Button('Delete entry apple')
+          .onClick(() => {
+            this.fruits.delete('apple');
+          })
+          .width(300)
+          .margin(10)
+        // 对Map整体重新赋值，触发UI刷新
+        Button('Reset map')
+          .onClick(() => {
+            this.fruits = new Map<string, int>([['strawberry', 9], ['blueberry', 8]]);
+          })
+          .width(300)
+          .margin(10)
+        // 清空Map，触发UI刷新
+        Button('Clear map')
+          .onClick(() => {
+            this.fruits.clear();
+          })
+          .width(300)
+          .margin(10)
       }
       .width('100%')
     }
@@ -393,39 +488,59 @@ struct MapSample {
   }
 }
 ```
+
+![local-map](../figures/local-map.gif)
 
 ### 装饰Set类型变量
 
 当装饰Set类型时，可以观察到Set整体及其API操作带来的变化。
 
-```ts
-'use static'
+<!-- @[LocalSetVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalSetVariable.ets) -->
 
-import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, ForEach, Local, Row, Text } from '@kit.ArkUI';
+``` TypeScript
+import { Button, Column, ComponentV2, Entry, ForEach, Local, Row, Text } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct SetSample {
-  @Local message: Set<number> = new Set<number>([0, 1, 2, 3, 4]);
+  @Local fruits: Set<string> = new Set<string>(['apple', 'banana']); // 使用@Local装饰Set类型变量
 
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-          Text(`${item[0]}`).fontSize(30)
-          Divider()
+        ForEach(Array.from(this.fruits.entries()), (item: [string, string]) => {
+          Text(`${item[0]}`)
+            .fontSize(20)
+            .margin(10)
         })
-        Button('init set').onClick((e: ClickEvent) => {
-          this.message = new Set<number>([0, 1, 2, 3, 4]);
-        })
-        Button('set new one').onClick((e: ClickEvent) => {
-          this.message.add(5);
-        })
-        Button('clear').onClick((e: ClickEvent) => {
-          this.message.clear();
-        })
-        Button('delete the first one').onClick((e: ClickEvent) => {
-          this.message.delete(0);
-        })
+        // 新增元素，触发UI刷新
+        Button('Add element')
+          .onClick(() => {
+            this.fruits.add('cherry');
+          })
+          .width(300)
+          .margin(10)
+        // 删除元素，触发UI刷新
+        Button('Delete element apple')
+          .onClick(() => {
+            this.fruits.delete('apple');
+          })
+          .width(300)
+          .margin(10)
+        // 对Set整体重新赋值，触发UI刷新
+        Button('Reset set')
+          .onClick(() => {
+            this.fruits = new Set<string>(['strawberry', 'blueberry']);
+          })
+          .width(300)
+          .margin(10)
+        // 清空Set，触发UI刷新
+        Button('Clear set')
+          .onClick(() => {
+            this.fruits.clear();
+          })
+          .width(300)
+          .margin(10)
       }
       .width('100%')
     }
@@ -434,31 +549,46 @@ struct SetSample {
 }
 ```
 
+![local-set](../figures/local-set.gif)
+
 ### 联合类型
 
-\@Local支持null、undefined以及联合类型。在下面的示例中，count类型为number | undefined，点击改变count的类型，UI会随之刷新。
+\@Local支持null、undefined以及联合类型。在下面的示例中，count类型为int | undefined，点击改变count的类型，UI会随之刷新。
 
-```ts
-'use static'
+<!-- @[LocalUnionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalUnionType.ets) -->
 
-import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
+``` TypeScript
+import { Button, Column, ComponentV2, Entry, Local, Row, Text } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct Index {
-  @Local count: number | undefined = 10;
+  @Local count: int | undefined = 10; // 使用@Local装饰联合类型变量
 
   build() {
-    Column() {
-      Text(`count(${this.count})`)
-      Button('change to undefined')
-        .onClick((e: ClickEvent) => {
-          this.count = undefined;
-        })
-      Button('change to number')
-        .onClick((e: ClickEvent) => {
-          this.count = 10;
-      })
+    Row() {
+      Column() {
+        Text(`count: ${this.count}`)
+        // 将联合类型变量从int切换为undefined，触发UI刷新
+        Button('change to undefined')
+          .onClick(() => {
+            this.count = undefined;
+          })
+          .width(300)
+          .margin(10)
+        // 将联合类型变量从undefined切换为int，触发UI刷新
+        Button('change to int')
+          .onClick(() => {
+            this.count = 10;
+          })
+          .width(300)
+          .margin(10)
+      }
+      .width('100%')
     }
+    .height('100%')
   }
 }
 ```
+
+![local-union](../figures/local-union.gif)

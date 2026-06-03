@@ -13,7 +13,7 @@ struct OH_Huks_KeyMaterialRsa {...}
 
 ## 概述
 
-定义RSA密钥的结构体类型。
+定义Rsa密钥的结构体类型。
 
 **起始版本：** 9
 

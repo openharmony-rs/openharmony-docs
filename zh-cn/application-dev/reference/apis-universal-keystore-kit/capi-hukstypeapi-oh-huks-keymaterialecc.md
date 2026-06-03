@@ -13,7 +13,7 @@ struct OH_Huks_KeyMaterialEcc {...}
 
 ## 概述
 
-定义ECC密钥的结构体类型。
+定义Ecc密钥的结构体类型。
 
 **起始版本：** 9
 

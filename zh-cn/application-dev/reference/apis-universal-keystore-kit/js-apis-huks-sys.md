@@ -36,14 +36,14 @@ generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions
 | 参数名   | 类型                        | 必填 | 说明                     |
 | -------- | --------------------------- | ---- | ------------------------ |
 | userId   | number                      | 是   | 用户ID。                 |
-| keyAlias | string                      | 是   | 密钥别名。密钥别名的长度范围为1~128字节，建议不包含个人信息等敏感词汇。               |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于存放生成key所需的[属性标签枚举](capi-native-huks-type-h.md#枚举)。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
+| keyAlias | string                      | 是   | 密钥别名。密钥别名的最大长度为128字节，建议不包含个人信息等敏感词汇。               |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于存放生成key所需的[属性标签](capi-native-huks-type-h.md#枚举)。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
 
 **返回值：**
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -146,7 +146,7 @@ deleteKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -252,14 +252,14 @@ importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 | 参数名   | 类型                        | 必填 | 说明                                |
 | -------- | --------------------------- | ---- | ----------------------------------- |
 | userId   | number                      | 是   | 用户ID。                 |
-| keyAlias | string                      | 是   | 密钥别名。密钥别名的长度范围为1~128字节，建议不包含个人信息等敏感词汇。                          |
+| keyAlias | string                      | 是   | 密钥别名。密钥别名的最大长度为128字节，建议不包含个人信息等敏感词汇。                          |
 | huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于导入时所需TAG和需要导入的密钥。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
 
 **返回值：**
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -365,7 +365,7 @@ attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 | 类型                                           | 说明                                          |
 | ---------------------------------------------- | --------------------------------------------- |
-| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的certChains成员非空，为获取到的证书链，否则为失败。 |
+| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象。当调用成功时，HuksReturnResult的certChains成员非空，为获取到的证书链，否则为失败。 |
 
 **错误码：**
 
@@ -521,7 +521,7 @@ anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptio
 
 | 类型                                           | 说明                                          |
 | ---------------------------------------------- | --------------------------------------------- |
-| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的certChains成员非空，为获取到的证书链，否则为失败。 |
+| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象。当调用成功时，HuksReturnResult的certChains成员非空，为获取到的证书链，否则为失败。 |
 
 **错误码：**
 
@@ -654,7 +654,7 @@ export default function HuksAsUserTest() {
 
 ## huks.anonAttestKeyItemOfflineAsUser
 
-anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksParam[]) : Promise\<HuksReturnResult>
+anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params[]: HuksParam) : Promise\<HuksReturnResult>
 
 离线模式下，指定用户身份并获取匿名化密钥证书。使用Promise异步回调。
 
@@ -662,8 +662,6 @@ anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksPar
 >
 > - 离线密钥证明依赖网络，需要定期联网使用该接口以更新离线证书。
 > - 离线匿名密钥证明需保证本地时间是准确的，否则可能导致对端校验证书超期失败。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **起始版本：** 26.0.0
 
@@ -685,7 +683,7 @@ anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksPar
 
 | 类型                                           | 说明                                          |
 | ---------------------------------------------- | --------------------------------------------- |
-| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的certChains成员为获取到的证书链，失败时为空。 |
+| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象。当调用成功时，HuksReturnResult的certChains成员为获取到的证书链，失败时为空。 |
 
 **错误码：**
 
@@ -693,20 +691,20 @@ anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksPar
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | The app does not have sufficient permissions. Possible causes: The cross-account permission is not granted, the system is not unlocked by the user, or the user does not exist. |
-| 202 | Non-system apps use system APIs. |
-| 801 | The API is not supported. |
-| 12000001 | The function is not supported. Possible causes: <br>1. The algorithm mode is not supported. <br>2. The group key is not supported. <br>3. The extended encryption key is not supported. |
+| 201 | the app permission is not sufficient permissions, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| 202 | non-system applications are not allowed to use system APIs. |
+| 801 | api is not supported. |
+| 12000001 | algorithm mode is not supported. |
 | 12000002 | The algorithm parameter is missing. |
 | 12000003 | The algorithm parameter is invalid. |
-| 12000004 | The file operation failed. |
-| 12000005 | The IPC communication failed. |
-| 12000006 | The encryption engine is faulty. |
-| 12000011 | The queried entity does not exist. |
-| 12000012 | The device environment or input parameter is abnormal. |
-| 12000014 | The memory is insufficient. |
-| 12000018 | The parameter is incorrect. Possible causes: <br>1. A mandatory parameter is left empty. <br>2. The parameter type is incorrect. <br>3. The parameter verification failed. |
-| 12000024 | The operation times out. This may be caused by network jitter. You can try again later. |
+| 12000004 | operating file failed. |
+| 12000005 | IPC communication failed. |
+| 12000006 | error occurred in crypto engine. |
+| 12000011 | queried entity does not exist. |
+| 12000012 | Device environment or input parameter abnormal. |
+| 12000014 | memory is insufficient. |
+| 12000018 | group id specified by the access group tag is invalid. |
+| 12000024 | The operation times out. This may be caused by network jitter. |
 | 12000027 | The network is unavailable. Check network connections. |
 
 **示例：**
@@ -822,7 +820,7 @@ importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: s
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1488,7 +1486,7 @@ exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 | 类型                                           | 说明                                                         |
 | ---------------------------------------------- | ------------------------------------------------------------ |
-| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象，返回调用接口的结果。 当调用成功时，HuksReturnResult的outData成员非空，为从密钥中导出的公钥，否则为失败。 |
+| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象。 当调用成功时，HuksReturnResult的outData成员非空，为从密钥中导出的公钥，否则为失败。 |
 
 **错误码：**
 
@@ -1608,7 +1606,7 @@ getKeyItemPropertiesAsUser(userId: number, keyAlias: string, huksOptions: HuksOp
 
 | 类型                                            | 说明                                                         |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的properties成员非空，为生成密钥时所需参数。 |
+| Promise\<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象。当调用成功时，HuksReturnResult的properties成员非空，为生成密钥时所需参数。 |
 
 **错误码：**
 
@@ -1725,7 +1723,7 @@ hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : P
 
 | 类型              | 说明                                    |
 | ----------------- | --------------------------------------- |
-| Promise\<boolean> | Promise对象。返回值为true表示密钥存在，返回值为false表示密钥不存在。 |
+| Promise\<boolean> | Promise对象。若密钥存在，返回值为true，若密钥不存在，返回值为false。 |
 
 **错误码：**
 
@@ -1841,7 +1839,7 @@ initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : 
 
 | 类型                                | 说明                                               |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksSessionHandle](js-apis-huks.md#hukssessionhandle9)> | Promise对象，返回HuksSessionHandle。HuksSessionHandle的handle返回initSessionAsUser生成的handle。 |
+| Promise\<[HuksSessionHandle](js-apis-huks.md#hukssessionhandle9)> | Promise对象。将initSessionAsUser操作返回的handle添加到密钥管理系统的回调。 |
 
 **错误码：**
 

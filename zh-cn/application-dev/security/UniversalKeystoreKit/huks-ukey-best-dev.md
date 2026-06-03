@@ -59,7 +59,7 @@
      certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
        /* 需要记录选择证书弹窗中获取到的keyUri，方便后续使用 */
        let keyUri = certReference.keyUri;
-       console.info('Succeeded in opening authorize dialog.');
+       console.info(`Succeeded in opening authorize dialog.`);
      }).catch((err: BusinessError) => {
        console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
      });
@@ -307,7 +307,7 @@
    try {
      certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest)
        .then(() => {
-         console.info('Succeeded in opening ukey authorization dialog.');
+         console.info(`Succeeded in opening ukey authorization dialog.`);
        }).catch((err: BusinessError) => {
          console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
        });

@@ -29,7 +29,7 @@ ArkTS-Dyn: installFont(path: string): Promise&lt;number&gt;
 
 ArkTS-Sta: installFont(path: string): Promise&lt;int&gt;
 
-安装指定路径下的字体，使用Promise异步回调。
+安装指定路径下的字体。使用Promise异步回调。
 
 **需要权限:** ohos.permission.UPDATE_FONT
 
@@ -68,24 +68,17 @@ ArkTS-Sta: installFont(path: string): Promise&lt;int&gt;
 
 **示例：**
 ```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fontManager } from '@kit.LocalizationKit';
+  import { fontManager } from '@kit.LocalizationKit';
 
-class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    this.installFont();
-  }
-
-  async installFont() {
+  async function installFont() {
     try {
       let res = await fontManager.installFont('fontPath');
       console.info('installFont suc. res is ' + res);
     } catch (error) {
-      console.error('installFont err.' + (error as BusinessError).code);
+      console.error('installFont err.' + error.code);
     }
+    return;
   }
-}
 ```
 
 ## uninstallFont<sup>19+</sup>
@@ -94,7 +87,7 @@ ArkTS-Dyn: uninstallFont(fullName: string): Promise&lt;number&gt;
 
 ArkTS-Sta: uninstallFont(fullName: string): Promise&lt;int&gt;
 
-卸载指定名称的字体，使用Promise异步回调。
+卸载指定名称的字体。使用Promise异步回调。
 
 **需要权限:** ohos.permission.UPDATE_FONT
 
@@ -130,23 +123,17 @@ ArkTS-Sta: uninstallFont(fullName: string): Promise&lt;int&gt;
 
 **示例：**
 ```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fontManager } from '@kit.LocalizationKit';
+  import { fontManager } from '@kit.LocalizationKit';
 
-class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    this.uninstallFont();
-  }
-  async uninstallFont() {
+  async function uninstallFont() {
     try {
       let res = await fontManager.uninstallFont('fontName');
       console.info('uninstallFont suc. res is ' + res);
     } catch (error) {
-      console.error('uninstallFont err.' + (error as BusinessError).code);
+      console.error('uninstallFont err.' + error.code);
     }
+    return;
   }
-}
 ```
 
 ## dataMigration<sup>23+</sup>
@@ -190,33 +177,27 @@ ArkTS-Sta: dataMigration(callback: DataMigrationCallback): int
 
 **示例：**
 ```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { fontManager } from '@kit.LocalizationKit';
 
-class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    this.dataMigration();
+class DataMigrationCallbackImpl implements fontManager.DataMigrationCallback {
+  onHeartBeat(): void {
+    console.info('onHeartBeat callback');
   }
+  onProgress(progress : fontManager.DataMigrationProgress): void {
+    console.info('onProgress callback');
+  }
+  onResult(result : int): void {
+    console.info('onResult callback');
+  }
+}
 
-  dataMigration() {
-    const callback: fontManager.DataMigrationCallback = {
-      onHeartBeat: () => {
-        console.info('onHeartBeat callback');
-      },
-      onProgress(progress : fontManager.DataMigrationProgress) => {
-        console.info('onProgress callback');
-      },
-      onResult(result : int) => {
-        console.info('onResult callback');
-      }
-    }
-    try {
-      let res = await fontManager.dataMigration(callback);
-      console.info('dataMigration suc. res is ' + res);
-    } catch (error) {
-      console.error('dataMigration err.' + (error as BusinessError).code);
-    }
+async function dataMigration() {
+  const callback = new DataMigrationCallbackImpl;
+  try {
+    let res: int = fontManager.dataMigration(callback);
+    console.info('dataMigration suc. res is ' + res);
+  } catch (error) {
+    console.error('dataMigration err.' + error.code);
   }
 }
 ```
@@ -239,33 +220,27 @@ onHeartBeat(): void
 
 **示例：**
 ```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { fontManager } from '@kit.LocalizationKit';
 
-class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    this.dataMigration();
+class DataMigrationCallbackImpl implements fontManager.DataMigrationCallback {
+  onHeartBeat(): void {
+    console.info('onHeartBeat callback');
   }
+  onProgress(progress : fontManager.DataMigrationProgress): void {
+    console.info('onProgress callback');
+  }
+  onResult(result : int): void {
+    console.info('onResult callback');
+  }
+}
 
-  dataMigration() {
-    const callback: fontManager.DataMigrationCallback = {
-      onHeartBeat: () => {
-        console.info('onHeartBeat callback');
-      },
-      onProgress(progress : fontManager.DataMigrationProgress) => {
-        console.info('onProgress callback');
-      },
-      onResult(result : int) => {
-        console.info('onResult callback');
-      }
-    }
-    try {
-      let res = await fontManager.dataMigration(callback);
-      console.info('dataMigration suc. res is ' + res);
-    } catch (error) {
-      console.error('dataMigration err.' + (error as BusinessError).code);
-    }
+async function dataMigration() {
+  const callback = new DataMigrationCallbackImpl;
+  try {
+    let res: int = fontManager.dataMigration(callback);
+    console.info('dataMigration suc. res is ' + res);
+  } catch (error) {
+    console.error('dataMigration err.' + error.code);
   }
 }
 ```
@@ -290,33 +265,27 @@ onProgress(progress : DataMigrationProgress): void
 
 **示例：**
 ```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { fontManager } from '@kit.LocalizationKit';
 
-class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    this.dataMigration();
+class DataMigrationCallbackImpl implements fontManager.DataMigrationCallback {
+  onHeartBeat(): void {
+    console.info('onHeartBeat callback');
   }
+  onProgress(progress : fontManager.DataMigrationProgress): void {
+    console.info('onProgress callback');
+  }
+  onResult(result : int): void {
+    console.info('onResult callback');
+  }
+}
 
-  dataMigration() {
-    const callback: fontManager.DataMigrationCallback = {
-      onHeartBeat: () => {
-        console.info('onHeartBeat callback');
-      },
-      onProgress(progress : fontManager.DataMigrationProgress) => {
-        console.info('onProgress callback');
-      },
-      onResult(result : int) => {
-        console.info('onResult callback');
-      }
-    }
-    try {
-      let res = await fontManager.dataMigration(callback);
-      console.info('dataMigration suc. res is ' + res);
-    } catch (error) {
-      console.error('dataMigration err.' + (error as BusinessError).code);
-    }
+async function dataMigration() {
+  const callback = new DataMigrationCallbackImpl;
+  try {
+    let res: int = fontManager.dataMigration(callback);
+    console.info('dataMigration suc. res is ' + res);
+  } catch (error) {
+    console.error('dataMigration err.' + error.code);
   }
 }
 ```
@@ -343,33 +312,27 @@ ArkTS-Sta: onResult(result : int): void
 
 **示例：**
 ```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { fontManager } from '@kit.LocalizationKit';
 
-class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    this.dataMigration();
+class DataMigrationCallbackImpl implements fontManager.DataMigrationCallback {
+  onHeartBeat(): void {
+    console.info('onHeartBeat callback');
   }
+  onProgress(progress : fontManager.DataMigrationProgress): void {
+    console.info('onProgress callback');
+  }
+  onResult(result : int): void {
+    console.info('onResult callback');
+  }
+}
 
-  dataMigration() {
-    const callback: fontManager.DataMigrationCallback = {
-      onHeartBeat: () => {
-        console.info('onHeartBeat callback');
-      },
-      onProgress(progress : fontManager.DataMigrationProgress) => {
-        console.info('onProgress callback');
-      },
-      onResult(result : int) => {
-        console.info('onResult callback');
-      }
-    }
-    try {
-      let res = await fontManager.dataMigration(callback);
-      console.info('dataMigration suc. res is ' + res);
-    } catch (error) {
-      console.error('dataMigration err.' + (error as BusinessError).code);
-    }
+async function dataMigration() {
+  const callback = new DataMigrationCallbackImpl;
+  try {
+    let res: int = fontManager.dataMigration(callback);
+    console.info('dataMigration suc. res is ' + res);
+  } catch (error) {
+    console.error('dataMigration err.' + error.code);
   }
 }
 ```

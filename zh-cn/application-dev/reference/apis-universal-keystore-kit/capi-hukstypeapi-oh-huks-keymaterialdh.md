@@ -31,6 +31,6 @@ struct OH_Huks_KeyMaterialDh {...}
 | uint32_t keySize | DH密钥的长度。 |
 | uint32_t pubKeySize | 公钥的长度。 |
 | uint32_t priKeySize | 私钥的长度。 |
-| uint32_t reserved | 保留字段。 |
+| uint32_t reserved | 保留。 |
 
 

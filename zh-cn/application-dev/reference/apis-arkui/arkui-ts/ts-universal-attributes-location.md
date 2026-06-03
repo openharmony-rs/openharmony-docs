@@ -20,9 +20,9 @@ align(value: Alignment): T
 
 设置当前组件绘制区域内的子组件的对齐方式，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,9 +51,11 @@ align(alignment: Alignment | LocalizedAlignment): T
 
 设置当前组件绘制区域内的子组件的对齐方式，增加支持镜像的能力，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
-**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,9 +112,9 @@ ArkTS-Sta: direction(value: Direction | undefined): this
 
 设置当前组件绘制区域内主轴方向上的布局，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,9 +152,9 @@ ArkTS-Sta: position(value: Position | Edges | LocalizedEdges | undefined): this
 > - 当父组件为[RelativeContainer](ts-container-relativecontainer.md)，且子组件设置了alignRules属性时，子组件的position属性不生效。
 > - 若本属性所在组件的父组件未设置固定宽高，那么本组件会参考第一个设置固定宽高的祖先组件进行绝对定位。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,9 +182,9 @@ ArkTS-Sta: markAnchor(value: Position | LocalizedPosition | undefined): this
 
 设置元素在位置定位时的锚点，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -210,9 +212,9 @@ ArkTS-Sta: offset(value: Position | Edges | LocalizedEdges | undefined): this
 
 相对偏移，组件相对原本的布局位置进行偏移。和position一起使用时，position生效，offset不生效，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -238,9 +240,9 @@ alignRules(value: AlignRuleOption): T
 
 指定设置在相对布局组件中子组件的对齐规则，仅当父组件为[RelativeContainer](ts-container-relativecontainer.md)时生效，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -266,9 +268,11 @@ alignRules(alignRule: LocalizedAlignRuleOptions): T
 
 指定设置在相对布局组件中子组件的对齐规则，仅当父组件为[RelativeContainer](ts-container-relativecontainer.md)时生效。该方法水平方向上以start和end分别替代原方法的left和right，以便在RTL模式下能镜像显示，建议使用该方法指定设置在相对布局组件中子组件的对齐规则，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -322,9 +326,11 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 
 单独设置Stack组件中子组件的对齐规则，仅当父组件为Stack时生效。与align属性同时使用时，layoutGravity优先级更高，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
-**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -346,23 +352,19 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 
 ## AlignRuleOption<sup>9+</sup>对象说明
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| left   | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置左对齐参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| right  | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置右对齐参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| middle | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置横向居中对齐方式的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| top    | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置顶部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| bottom | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置底部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| center | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置纵向居中对齐方式的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
-| bias<sup>11+</sup>   | [Bias](./ts-types.md#bias对象说明) |否|是| 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| left   | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置左对齐参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| right  | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置右对齐参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
+| middle | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置横向居中对齐方式的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| top    | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置顶部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| bottom | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置底部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| center | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置纵向居中对齐方式的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                 |
+| bias<sup>11+</sup>   | [Bias](./ts-types.md#bias对象说明) |否|是| 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## HorizontalAlignParam<sup>23+</sup>对象说明
 
@@ -372,9 +374,11 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 >
 > 为规范匿名对象的定义，从API version 23开始，修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -384,8 +388,8 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| anchor<sup>9+</sup>  | string  |否|否| 设置作为锚点的组件的id值。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| align<sup>9+</sup>   | [HorizontalAlign](ts-appendix-enums.md#horizontalalign)  |否|否| 设置相对于锚点组件的横向对齐方式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| anchor<sup>9+</sup>  | string  |否|否| 设置作为锚点的组件的id值。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| align<sup>9+</sup>   | [HorizontalAlign](ts-appendix-enums.md#horizontalalign)  |否|否| 设置相对于锚点组件的横向对齐方式。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## VerticalAlignParam<sup>23+</sup>对象说明
 
@@ -395,9 +399,11 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 >
 > 为规范匿名对象的定义，从API version 23开始，修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -407,12 +413,14 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| anchor<sup>9+</sup>  | string |否|否| 设置作为锚点的组件的id值。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| align<sup>9+</sup>   | [VerticalAlign](ts-appendix-enums.md#verticalalign)  |否|否| 设置相对于锚点组件的纵向对齐方式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| anchor<sup>9+</sup>  | string |否|否| 设置作为锚点的组件的id值。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| align<sup>9+</sup>   | [VerticalAlign](ts-appendix-enums.md#verticalalign)  |否|否| 设置相对于锚点组件的纵向对齐方式。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## LocalizedAlignRuleOptions<sup>12+</sup>对象说明
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -432,7 +440,9 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 
 ## LocalizedHorizontalAlignParam<sup>12+</sup>对象说明
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -447,7 +457,9 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 
 ## LocalizedVerticalAlignParam<sup>12+</sup>对象说明
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -470,7 +482,9 @@ ArkTS-Sta: chainMode(direction: Axis | undefined, style: ChainStyle | undefined)
 
 详细用法请参考[RelativeContainer示例7（设置链）](ts-container-relativecontainer.md#示例7设置链)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -497,7 +511,9 @@ ArkTS-Sta: chainMode(direction: Axis | undefined, style: ChainStyle | undefined)
 
 定义链的风格，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -527,9 +543,11 @@ ArkTS-Sta: chainWeight(chainWeight: ChainWeightOptions | undefined): this
 >
 > 从API version 23开始，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 14
 

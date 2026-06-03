@@ -14,6 +14,8 @@ UIContext实例对象。
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
 > - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的[getUIContext()](arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定义组件内置方法[getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](#getcallingscopeuicontext22)获取UIContext实例。本文中UIContext对象以uiContext表示。
@@ -76,7 +78,7 @@ constructor()
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **示例：**
 
@@ -823,7 +825,9 @@ getOverlayManagerOptions(): OverlayManagerOptions
 
 ## animateToImmediately<sup>23+</sup>
 
-animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
+ArkTS-Dyn: animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
+
+ArkTS-Sta: animateToImmediately(param: AnimateParam, processor: VoidCallback): void
 
 通过UIContext对象指定明确的动画主实例上下文，并触发显式动画立即下发。避免由于找不到实例或实例不对，导致的动画不执行或动画结束回调不执行问题。使用callback异步回调。
 
@@ -831,16 +835,18 @@ animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
 
-| 参数名   | 类型                                       | 必填   | 说明                                    |
+| 参数名   | 类型                                   | 必填  |    说明                          |
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
 | param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam对象说明) | 是    | 设置动画效果相关参数。                           |
-| processor | Callback&lt;void&gt;                              | 是    | 回调函数。指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+| processor | ArkTS-Dyn: Callback&lt;void&gt;<br/>ArkTS-Sta: [VoidCallback](arkui-ts/ts-types.md#voidcallback12) | 是    | 回调函数。指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
 
 **示例：**
 
@@ -913,6 +919,8 @@ animateTo(value: AnimateParam, event: () => void): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1946,9 +1954,11 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -2015,6 +2025,8 @@ createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -2283,6 +2295,8 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array&lt;KeyframeState
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -3470,7 +3484,7 @@ struct Frame {
 
 ArkTS-Dyn: openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOptions?: SheetOptions, targetId?: number): Promise&lt;void&gt;
 
-ArkTS-Sta: openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOptions?: SheetOptions, targetId?: int): Promise&lt;void&gt;
+ArkTS-Sta: openBindSheet(bindSheetContent: ComponentContentBase, sheetOptions?: SheetOptions, targetId?: int): Promise&lt;void&gt;
 
 创建并弹出以bindSheetContent作为内容的半模态页面，使用Promise异步回调。通过该接口弹出的半模态页面样式完全按照bindSheetContent中设置的样式显示。
 
@@ -3487,6 +3501,8 @@ ArkTS-Sta: openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -3495,9 +3511,9 @@ ArkTS-Sta: openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<
 
 | 参数名     | 类型                                       | 必填   | 说明      |
 | ------- | ---------------------------------------- | ---- | ------- |
-| bindSheetContent | [ComponentContent\<T>](js-apis-arkui-ComponentContent.md) | 是 | 半模态页面中显示的组件内容。 |
+| bindSheetContent | ArkTS-Dyn: [ComponentContent\<T>](js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: ComponentContentBase | 是 | 半模态页面中显示的组件内容。 |
 | sheetOptions | [SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) | 否    |   半模态页面样式。<br/>**说明：** <br/>1. 不支持设置SheetOptions.uiContext，该属性的值固定为当前实例的UIContext。<br/>2. 若不传递targetId，则不支持设置SheetOptions.preferType为POPUP样式，若设置了POPUP样式则使用CENTER样式替代。<br/>3. 若不传递targetId，则不支持设置SheetOptions.mode为EMBEDDED模式，默认为OVERLAY模式。<br/>4. 其余属性的默认值参考[SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)文档。 |
-| targetId | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    |   需要绑定组件的ID，若不指定则不绑定任何组件。id不存在时返回错误码120004。在传入undefined时返回错误码401。 |
+| targetId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    |   需要绑定组件的ID，若不指定则不绑定任何组件。id不存在时返回错误码120004。在传入undefined时返回错误码401。 |
 
 **返回值：**
 
@@ -3609,7 +3625,9 @@ struct UIContextBindSheet {
 
 ## updateBindSheet<sup>12+</sup>
 
-updateBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOptions: SheetOptions, partialUpdate?: boolean ): Promise&lt;void&gt;
+ArkTS-Dyn: updateBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOptions: SheetOptions, partialUpdate?: boolean ): Promise&lt;void&gt;
+
+ArkTS-Sta: updateBindSheet(bindSheetContent: ComponentContentBase, sheetOptions: SheetOptions, partialUpdate?: boolean): Promise&lt;void&gt;
 
 更新bindSheetContent对应的半模态页面的样式，使用Promise异步回调。
 
@@ -3622,6 +3640,8 @@ updateBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheet
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -3630,7 +3650,7 @@ updateBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheet
 
 | 参数名     | 类型                                       | 必填   | 说明      |
 | ------- | ---------------------------------------- | ---- | ------- |
-| bindSheetContent | [ComponentContent\<T>](js-apis-arkui-ComponentContent.md) | 是 | 半模态页面中显示的组件内容。 |
+| bindSheetContent | ArkTS-Dyn: [ComponentContent\<T>](js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: ComponentContentBase | 是 | 半模态页面中显示的组件内容。 |
 | sheetOptions | [SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) | 是    |   半模态页面样式。<br/>**说明：** <br/>不支持更新SheetOptions.uiContext、SheetOptions.mode、回调函数。 |
 | partialUpdate | boolean | 否    |   半模态页面更新方式, 默认值为false。<br/>**说明：** <br/>1. true为增量更新，保留当前值，更新SheetOptions中的指定属性。 <br/>2. false为全量更新，除SheetOptions中的指定属性，其他属性恢复默认值。 |
 
@@ -3741,7 +3761,9 @@ struct UIContextBindSheet {
 
 ## closeBindSheet<sup>12+</sup>
 
-closeBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>): Promise&lt;void&gt;
+ArkTS-Dyn: closeBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>): Promise&lt;void&gt;
+
+ArkTS-Sta: closeBindSheet(bindSheetContent: ComponentContentBase): Promise&lt;void&gt;
 
 关闭bindSheetContent对应的半模态页面，使用Promise异步回调。
 
@@ -3754,6 +3776,8 @@ closeBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>): Promi
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -3762,7 +3786,7 @@ closeBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>): Promi
 
 | 参数名     | 类型                                       | 必填   | 说明      |
 | ------- | ---------------------------------------- | ---- | ------- |
-| bindSheetContent | [ComponentContent\<T>](js-apis-arkui-ComponentContent.md) | 是 | 半模态页面中显示的组件内容。 |
+| bindSheetContent | ArkTS-Dyn: [ComponentContent\<T>](js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: ComponentContentBase | 是 | 半模态页面中显示的组件内容。 |
 
 **返回值：**
 
@@ -3879,6 +3903,8 @@ isFollowingSystemFontScale(): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 13
 
 **ArkTS-Sta起始版本：** 23
@@ -3917,6 +3943,8 @@ ArkTS-Sta: getMaxFontScale(): double
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 13
 
@@ -4302,6 +4330,65 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## setUIStates<sup>23+</sup>
+
+setUIStates(callback: VoidCallback): void
+
+提供在非UI线程中安全更新状态变量的能力。在UI线程调用该接口会同步执行回调函数更新状态变量，在非UI线程中调用时，会将回调函数分发到UI线程队列异步执行。使用callback异步回调。
+
+在debug模式下，若检测到未通过setUIStates在非UI线程更新状态变量，系统将输出错误日志（需要使用try-catch捕获异常）。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12) | 是 | 用于更新状态变量的回调函数。 |
+
+**示例：**
+
+```ts
+import { taskpool } from '@kit.ArkTS';
+import { Entry, Component, Column, Text, Button, UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State stateVar: string = 'state var';
+  message: string = 'var';
+
+  build() {
+    Column() {
+      Text('Hello World').fontSize(20)
+      Button(this.message)
+        .backgroundColor('#FFFF00FF')
+        .onClick(() => {
+          let uiContext: UIContext = this.getUIContext();
+          taskpool.execute(() => {
+            uiContext.setUIStates(() => {
+              this.stateVar += '~';
+            });
+          });
+
+          // 在非UI线程未使用setUIStates更新状态变量，debug模式下会输出错误日志。
+          taskpool.execute(() => {
+            this.stateVar += '~';
+          }).then(() => {
+          }).catch((err: Error) => {
+            console.error('Illegal update detected: ' + err.message);
+          });
+        })
+      Text(this.stateVar).fontSize(20)
+    }
+  }
+}
+```
+
 ## dispatchKeyEvent<sup>15+</sup>
 
 ArkTS-Dyn: dispatchKeyEvent(node: number | string, event: KeyEvent): boolean
@@ -4465,6 +4552,10 @@ static setResourceManagerCacheMaxCountForHSP(count: number): void
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 21
 
 **参数：**
 

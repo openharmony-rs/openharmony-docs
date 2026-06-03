@@ -1,8 +1,8 @@
 # 路径动画 (motionPath)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -16,7 +16,9 @@
 
 ## motionPath
 
-motionPath(value: MotionPathOptions): T
+ArkTS-Dyn: motionPath(value: MotionPathOptions): T
+
+ArkTS-Sta: motionPath(value: MotionPathOptions | undefined): this
 
 设置组件的路径动画。
 
@@ -24,35 +26,7 @@ motionPath(value: MotionPathOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[motionPath<sup>23+</sup>](#motionpath23)。
-
 **ArkTS-Dyn起始版本：** 7
-
-**参数：**
-
-| 参数名    | 类型                                | 必填 | 说明                                    |
-| ----- | --------------------------------- | ---- | ------------------------------------- |
-| value | [MotionPathOptions](#motionpathoptions) | 是    | 设置组件的运动路径。             |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| T | 返回当前组件。 |
-
-## motionPath<sup>23+</sup>
-
-motionPath(value: MotionPathOptions | undefined): this
-
-设置组件的路径动画。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[motionPath](#motionpath)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -60,13 +34,13 @@ motionPath(value: MotionPathOptions | undefined): this
 
 | 参数名    | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| value | [MotionPathOptions](#motionpathoptions) \| undefined | 是    | 设置组件的运动路径。<br/>当value的值为undefined时，使用默认值{ MotionPathOptions: { path: " ", from: 0, to: 1, rotatable: false } }。             |
+| value | ArkTS-Dyn: [MotionPathOptions](#motionpathoptions)<br/>ArkTS-Sta: MotionPathOptions \| undefined | 是    | 设置组件的运动路径。<br/>当value的值为undefined时，使用默认值{ MotionPathOptions: { path: " ", from: 0, to: 1, rotatable: false } }。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## MotionPathOptions
 

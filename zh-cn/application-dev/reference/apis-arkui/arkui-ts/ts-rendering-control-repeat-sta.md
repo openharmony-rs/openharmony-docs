@@ -3,7 +3,9 @@
 > **说明：**
 >
 > - 本模块仅适用于ArkTS-Sta。
-> 
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 Repeat基于数组类型数据来进行循环渲染，一般与容器组件配合使用。
@@ -173,6 +175,23 @@ List() {
 }
 ```
 
+### debugLine<sup>24+</sup>
+
+debugLine(sourceLine: string, moduleName?: string)
+
+设置组件源码重定向信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| sourceLine | string | 是 | 源码行号。 |
+| moduleName | string | 否 | 组件所属模块名。 |
+
 ## RepeatArray\<T\>
 
 type RepeatArray\<T\> = Array\<T\> | ReadonlyArray\<T\> | Readonly\<Array\<T\>\>
@@ -228,7 +247,7 @@ onTotalCount?(): int
 
 可选方法，计算期望加载的数据项总数。需要开发者给定计算方法，其返回值可以不等于数据源长度（实际传入Repeat的数组的长度）。
 
-[totalCount](#virtualscrolloptions)和onTotalCount()的返回值都表示期望加载的数据项总数。开发者可直接设置totolCount属性，给出期望加载的数据项总数，也可以通过onTotalCount()设定自定义方法，计算期望加载的数据项总数。totalCount与onTotalCount()最多设置一个。如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略totalCount。
+[totalCount](#属性-1)和onTotalCount()的返回值都表示期望加载的数据项总数。开发者可直接设置totalCount属性，给出期望加载的数据项总数，也可以通过onTotalCount()设定自定义方法，计算期望加载的数据项总数。totalCount与onTotalCount()最多设置一个。如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略totalCount。
 
 onTotalCount()不同返回值的数据加载处理规则与totalCount一致，具体如下：
 

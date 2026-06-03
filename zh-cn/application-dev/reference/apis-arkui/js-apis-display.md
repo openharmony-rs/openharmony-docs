@@ -324,7 +324,7 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 | name      | string   | 否   | 否   | 指定虚拟屏幕的名称，用户可自行定义。<br/>**ArkTS-Dyn起始版本：** 16 <br/> **ArkTS-Sta起始版本：** 23 |
 | width     | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 否   | 否   | 指定虚拟屏幕的宽度，单位为px，该参数应为正整数。<br/>**ArkTS-Dyn起始版本：** 16 <br/> **ArkTS-Sta起始版本：** 23 |
 | height    | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为正整数。<br/>**ArkTS-Dyn起始版本：** 16 <br/> **ArkTS-Sta起始版本：** 23 |
-| density   | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 指定虚拟屏幕的密度，单位为px，该参数为浮点数。<br/>**ArkTS-Dyn起始版本：** 16 <br/> **ArkTS-Sta起始版本：** 23 |
+| density   | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 指定虚拟屏幕的密度，该参数为浮点数。<br/>**ArkTS-Dyn起始版本：** 16 <br/> **ArkTS-Sta起始版本：** 23 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId，用户可自行定义，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。  <br/>**ArkTS-Dyn起始版本：** 16 <br/> **ArkTS-Sta起始版本：** 23      |
 | supportsFocus<sup>22+</sup> | boolean   | 否   | 是   | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。   <br/>**ArkTS-Dyn起始版本：** 22 <br/> **ArkTS-Sta起始版本：** 23     |
 
@@ -1186,7 +1186,7 @@ getFoldDisplayMode(): FoldDisplayMode
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在2in1设备、非折叠设备中返回0，在其他设备中可正常调用。
+**设备行为差异：** 该接口在PC/2in1设备、非折叠设备中返回0，在其他设备中可正常调用。
 
 **返回值：**
 
@@ -2112,7 +2112,7 @@ onFoldDisplayModeChange(callback: Callback&lt;FoldDisplayMode&gt;): void
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在2in1设备、非折叠设备中不生效也不报错，在其他设备中可正常调用。
+**设备行为差异：** 该接口在PC/2in1设备、非折叠设备中不生效也不报错，在其他设备中可正常调用。
 
 **参数：**
 
@@ -2204,7 +2204,7 @@ offFoldDisplayModeChange(callback?: Callback&lt;FoldDisplayMode&gt;): void
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在2in1设备、非折叠设备中不生效也不报错，在其他设备中可正常调用。
+**设备行为差异：** 该接口在PC/2in1设备、非折叠设备中不生效也不报错，在其他设备中可正常调用。
 
 **参数：**
 
@@ -2883,8 +2883,8 @@ promise.then((data: Array<display.Display>) => {
 | yDPI | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 否 | y轴方向中每英寸屏幕的确切物理像素值，该参数为浮点数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。     <br/> **ArkTS-Dyn起始版本：** 7   <br/>  **ArkTS-Sta起始版本：** 23                                 |
 | colorSpaces<sup>11+</sup> | Array<[colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace)> | 是 | 否 | 显示设备支持的所有色域类型。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。    <br/> **ArkTS-Dyn起始版本：** 11   <br/>  **ArkTS-Sta起始版本：** 23                  |
 | hdrFormats<sup>11+</sup> | Array<[hdrCapability.HDRFormat](../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat)> | 是 | 否 | 显示设备支持的所有HDR格式。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。    <br/> **ArkTS-Dyn起始版本：** 11   <br/>  **ArkTS-Sta起始版本：** 23                          |
-| availableWidth<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 否 | 显示设备的可用区域宽度，单位为px，该参数为大于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：**  API version 26.0.0之前，该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过width属性获取当前设备屏幕的可用区域宽度；从API version 26.0.0开始，所有设备可正常调用。  <br/> **ArkTS-Dyn起始版本：** 12   <br/>  **ArkTS-Sta起始版本：** 23              |
-| availableHeight<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 否 | 显示设备的可用区域高度，单位为px，该参数为大于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：**  API version 26.0.0之前，该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过width属性获取当前设备屏幕的可用区域高度；从API version 26.0.0开始，所有设备可正常调用。  <br/> **ArkTS-Dyn起始版本：** 12   <br/>  **ArkTS-Sta起始版本：** 23          |
+| availableWidth<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 否 | 显示设备的可用区域宽度，单位为px，该参数为大于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：**  API version 26.0.0之前，该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过width属性获取当前设备屏幕的可用区域宽度；从API version 26.0.0开始，所有设备可正常调用。  <br/> **ArkTS-Dyn起始版本：** 12   <br/>  **ArkTS-Sta起始版本：** 23              |
+| availableHeight<sup>12+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 否 | 显示设备的可用区域高度，单位为px，该参数为大于0的整数。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **设备行为差异：**  API version 26.0.0之前，该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过height属性获取当前设备屏幕的可用区域高度；从API version 26.0.0开始，所有设备可正常调用。  <br/> **ArkTS-Dyn起始版本：** 12   <br/>  **ArkTS-Sta起始版本：** 23          |
 | screenShape<sup>18+</sup> | [ScreenShape](#screenshape18) | 是 | 是 | 显示设备的屏幕形状，默认值为RECTANGLE。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18   <br/>  **ArkTS-Sta起始版本：** 23 |
 | sourceMode<sup>19+</sup> | [DisplaySourceMode](#displaysourcemode19) | 是 | 是 | 显示设备的显示模式枚举，默认值为DisplaySourceMode.NONE。<br/>**系统能力：** SystemCapability.Window.SessionManager <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。      <br/> **ArkTS-Dyn起始版本：** 19   <br/>  **ArkTS-Sta起始版本：** 23                 |
 | x<sup>19+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 是 | 显示设备左上角相对于原点的x轴坐标，原点为主屏左上角，单位为px，该参数为整数，默认值为0。仅DisplaySourceMode为MAIN和EXTEND时返回实际值，其余返回默认值0。<br/>**系统能力：** SystemCapability.Window.SessionManager<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 19   <br/>  **ArkTS-Sta起始版本：** 23           |
@@ -3069,7 +3069,7 @@ getAvailableArea(): Promise&lt;Rect&gt;
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过[Display属性](#属性)中的width、height属性获取当前设备屏幕的可用区域。
+**设备行为差异：** 该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过[Display属性](#属性)中的width、height属性获取当前设备屏幕的可用区域。
 
 **返回值：**
 
@@ -3143,7 +3143,7 @@ on(type: 'availableAreaChange', callback: Callback&lt;Rect&gt;): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+**设备行为差异：** 该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
 **参数：**
 
@@ -3192,7 +3192,7 @@ onAvailableAreaChange(callback: Callback&lt;Rect&gt;): void
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+**设备行为差异：** 该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
 **参数：**
 
@@ -3244,7 +3244,7 @@ off(type: 'availableAreaChange', callback?: Callback&lt;Rect&gt;): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+**设备行为差异：** 该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
 **参数：**
 
@@ -3294,7 +3294,7 @@ offAvailableAreaChange(callback?: Callback&lt;Rect&gt;): void
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+**设备行为差异：** 该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
 **参数：**
 

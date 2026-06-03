@@ -20,7 +20,9 @@ import { vcard } from '@kit.TelephonyKit';
 
 ## vcard.importVCard
 
-importVCard\(context: Context, filePath: string, accountId: number, callback: AsyncCallback\<void\>\): void
+ArkTS-Dyn: importVCard\(context: Context, filePath: string, accountId: number, callback: AsyncCallback\<void\>\): void
+
+ArkTS-Sta:  importVCard\(context: Context, filePath: string, accountId: int, callback: AsyncCallback\<void\>\): void
 
 将VCard文件导入联系人数据库。使用callback异步回调。
 
@@ -28,13 +30,17 @@ importVCard\(context: Context, filePath: string, accountId: number, callback: As
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)   | 是   | 应用上下文。 |
 | filePath   | string                      | 是   | VCF(vcard file)文件地址。 |
-| accountId | number | 是                  | 联系人账户ID。|
+| accountId | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是                  | 联系人账户ID。|
 | callback | AsyncCallback&lt;void&gt; | 是   |回调函数，返回导入成功或失败的状态码。   |
 
 **错误码：**
@@ -50,6 +56,8 @@ importVCard\(context: Context, filePath: string, accountId: number, callback: As
 | 8300999  | Unknown error.                               |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -69,9 +77,31 @@ class EntryAbility extends UIAbility {
 
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { vcard } from '@kit.TelephonyKit';
+
+class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+        let filePath: string = "/data/storage/vcf/contacts.vcf";
+        let accountId: int = 0;
+        vcard.importVCard(this.context, filePath, accountId, (err: BusinessError) => {
+            console.error(`callback: err->${JSON.stringify(err)}`);
+        });
+    }
+}
+
+```
+
 ## vcard.importVCard
 
-importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<void\>
+ArkTS-Dyn: importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<void\>
+
+ArkTS-Sta:  importVCard\(context: Context, filePath: string, accountId?: int\): Promise\<void\>
 
 将VCard文件导入联系人数据库。使用Promise异步回调。
 
@@ -79,13 +109,17 @@ importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)      | 是   | 应用上下文。 |
 | filePath   | string                      | 是   | VCF(vcard file)文件地址。 |
-| accountId   | number                      | 否   | 联系人账户ID。 |
+| accountId   | ArkTS-Dyn: number <br/>ArkTS-Sta: int                      | 否   | 联系人账户ID。 |
 
 **返回值：**
 
@@ -107,6 +141,8 @@ importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { window } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
@@ -126,6 +162,27 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { vcard } from '@kit.TelephonyKit';
+
+class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+        let filePath: string = "/data/storage/vcf/contacts.vcf";
+        let accountId: int = 0;
+        vcard.importVCard(this.context, filePath, accountId).then(() => {
+            console.info(`importVCard success.`);
+        }).catch((err: BusinessError) => {
+            console.error(`importVCard failed, promise: err->${JSON.stringify(err)}`);
+        });
+    }
+}
+```
+
 ## vcard.importVCard
 importVCard\(context: Context, filePath: string, callback: AsyncCallback\<void\>\): void
 
@@ -134,6 +191,10 @@ importVCard\(context: Context, filePath: string, callback: AsyncCallback\<void\>
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -183,6 +244,10 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -239,6 +304,10 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -301,6 +370,10 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

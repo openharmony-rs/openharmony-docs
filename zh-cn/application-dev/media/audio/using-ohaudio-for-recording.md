@@ -12,6 +12,8 @@ OHAudio音频录制状态变化示意图：
 
 ![OHAudioCapturer status change](figures/ohaudiocapturer-status-change.png)
 
+当音频流处于工作状态（非released状态）时，需要占用系统的音频流资源。由于系统对音频流数量有限制，所以当客户端暂时不使用音频流时，调用OH_AudioCapturer_Release()回收音频资源，做好资源利用，避免后续创建音频流失败。
+
 ## 使用入门
 
 开发者要使用OHAudio提供的录制能力，需要添加对应的头文件。
