@@ -508,7 +508,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     Data_Asset **assets = OH_Data_Asset_CreateMultiple(2); // The number of created Data_Assets is 2
     ret = OH_Data_Asset_SetName(assets[0], "name1");
     ret = OH_Data_Asset_SetName(assets[1], "name2");
-    ret = OH_Values_PutAssets(values, assets, 2); // The number of Data_ Assets is 2
+ret = OH_Values_PutAssets(values, assets, 2); // The number of Data_Assets is 2
     ret = OH_Data_Asset_DestroyMultiple(assets, 2); // The number of destroyed Data_Assets is 2
     
     uint64_t bigInt[] = {1, 2, 3, 4, 5};
