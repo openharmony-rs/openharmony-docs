@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 UIAbility is an application component that has the UI. It inherits from [Ability](js-apis-app-ability-ability.md) and provides [lifecycle](#uiability-lifecycle-states) callbacks such as component creation, destruction, and foreground/background switching. It also provides the [background communication capability](#background-communication-capability).
 
