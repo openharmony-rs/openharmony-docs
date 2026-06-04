@@ -5163,4 +5163,4 @@ Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t di
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | OH_Input_BindInputDeviceToDisplay函数返回值：<br>  [INPUT_SUCCESS](#input_result)表示操作成功。<br>  [INPUT_PERMISSION_DENIED](#input_result)表示权限校验失败。<br>  [INPUT_PARAMETER_ERROR](#input_result)表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result)表示服务异常，请重试。 |
+| [Input_Result](#input_result) | OH_Input_BindInputDeviceToDisplay函数返回值：<br>  [INPUT_SUCCESS](#input_result)表示操作成功。<br>  [INPUT_PERMISSION_DENIED](#input_result)表示权限校验失败。<br>  [INPUT_PARAMETER_ERROR](#input_result)表示参数检查失败（输入设备不存在，显示屏设备不存在，或者输入设备不是手写笔设备）。<br>  [INPUT_SERVICE_EXCEPTION](#input_result)表示服务异常，请重试。 |
