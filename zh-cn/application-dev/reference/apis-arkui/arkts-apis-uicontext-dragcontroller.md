@@ -14,6 +14,8 @@
 >
 > - 本Class首批接口从API version 11开始支持。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 以下API需先使用UIContext中的[getDragController()](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取DragController实例，再通过此实例调用对应方法。
 
 ## executeDrag<sup>11+</sup>

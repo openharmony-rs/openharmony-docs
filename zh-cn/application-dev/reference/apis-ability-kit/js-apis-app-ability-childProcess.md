@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 开发者自定义子进程的基类。通过[childProcessManager](js-apis-app-ability-childProcessManager.md)启动子进程时，需要继承此类并重写入口方法。

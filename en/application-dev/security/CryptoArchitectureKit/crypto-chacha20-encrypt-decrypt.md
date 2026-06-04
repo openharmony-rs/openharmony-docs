@@ -23,7 +23,7 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
 
 1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) and specify the string parameter **'ChaCha20'** to create a **Cipher** instance of the symmetric key for encryption.
 
-2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. In the **Cipher.init** API, set **opMode** to **CryptoMode.ENCRYPT_MODE** (encryption), **key** to **SymKey** (the key for encryption), and **params** to **IvParamsSpec**.
+2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption), key to **SymKey** (the key for encryption), and parameter to **IvParamsSpec**.
 
 3. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to pass in the data to be encrypted (plaintext).
 
@@ -39,7 +39,7 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
 
 1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) and specify the string parameter **'ChaCha20'** to create a **Cipher** instance of the symmetric key for decryption.
 
-2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. In the **Cipher.init** API, set **opMode** to **CryptoMode.DECRYPT_MODE** (decryption), **key** to **SymKey** (the key for decryption), and **params** to **IvParamsSpec**.
+2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.DECRYPT_MODE** (decryption), key to **SymKey** (the key for decryption), and parameter to **IvParamsSpec**.
 
 3. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to pass in the data to be decrypted (ciphertext).
 
@@ -47,128 +47,142 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
 
 - Example (using asynchronous APIs):
 
-  ```ts
+  <!-- @[encrypt_decrypt_chacha20_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20EncryptionDecryptionAsync.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genIvParamsSpec() {
     let ivBlob = generateRandom(16);
     let ivParamsSpec: cryptoFramework.IvParamsSpec = {
-      algName: "IvParamsSpec",
+      algName: 'IvParamsSpec',
       iv: ivBlob
     };
     return ivParamsSpec;
   }
   let ivSpec = genIvParamsSpec();
-
+  
   // Encrypt the message.
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('ChaCha20');
     await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, ivSpec);
-    let encryptUpdata = await cipher.doFinal(plainText);
-    return encryptUpdata;
+    let encryptData = await cipher.doFinal(plainText);
+    return encryptData;
   }
+  
   // Decrypt the message.
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20');
     await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, ivSpec);
-    let decryptUpdata = await decoder.doFinal(cipherText);
-    return decryptUpdata;
+    let decryptData = await decoder.doFinal(cipherText);
+    return decryptData;
   }
+  
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
     let symKey = await chacha20Generator.convertKey(symKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return symKey;
   }
+  
   async function main() {
     try {
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159, 83,
         217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
       let symKey = await genSymKeyByData(keyData);
-      let message = "This is a test";
+      let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       let encryptText = await encryptMessagePromise(symKey, plainText);
       let decryptText = await decryptMessagePromise(symKey, encryptText);
       if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
-        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
-      } else {
-        console.error('decrypt failed');
-      }
-    } catch (error) {
-      console.error(`decrypt failed, error info is ${error}, error code: ${error.code}`);
-    }
-  }
-  ```
-
-- Example (using synchronous APIs):
-
-  ```ts
-  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-  import { buffer } from '@kit.ArkTS';
-
-  function generateRandom(len: number) {
-    let rand = cryptoFramework.createRandom();
-    let generateRandSync = rand.generateRandomSync(len);
-    return generateRandSync;
-  }
-
-  function genIvParamsSpec() {
-    let ivBlob = generateRandom(16);
-    let ivParamsSpec: cryptoFramework.IvParamsSpec = {
-      algName: "IvParamsSpec",
-      iv: ivBlob
-    };
-    return ivParamsSpec;
-  }
-  let ivSpec = genIvParamsSpec();
-
-  // Encrypt the message.
-  function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
-    let cipher = cryptoFramework.createCipher('ChaCha20');
-    cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, ivSpec);
-    let encryptUpdata = cipher.doFinalSync(plainText);
-    return encryptUpdata;
-  }
-  // Decrypt the message.
-  function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
-    let decoder = cryptoFramework.createCipher('ChaCha20');
-    decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, ivSpec);
-    let decryptdata = decoder.updateSync(cipherText);
-    return decryptdata;
-  }
-  function genSymKeyByData(symKeyData: Uint8Array) {
-    let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
-    let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
-    let symKey = chacha20Generator.convertKeySync(symKeyBlob);
-    console.info('convertKeySync success');
-    return symKey;
-  }
-  async function main() {
-    try {
-      let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159, 83,
-        217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
-      let symKey = genSymKeyByData(keyData);
-      let message = "This is a test";
-      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-      let encryptText = encryptMessage(symKey, plainText);
-      let decryptText = decryptMessage(symKey, encryptText);
-      if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
+        console.info('decrypt ok.');
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
       }
     } catch (error) {
-      console.error(`decrypt failed, error info is ${error}, error code: ${error.code}`);
+      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
+    }
+  }
+  ```
+
+
+- Example (using synchronous APIs):
+
+  <!-- @[encrypt_decrypt_chacha20_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20EncryptionDecryptionSync.ets) -->
+  
+  ``` TypeScript
+  
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
+  
+  function generateRandom(len: number) {
+    let rand = cryptoFramework.createRandom();
+    let generateRandSync = rand.generateRandomSync(len);
+    return generateRandSync;
+  }
+  
+  function genIvParamsSpec() {
+    let ivBlob = generateRandom(16);
+    let ivParamsSpec: cryptoFramework.IvParamsSpec = {
+      algName: 'IvParamsSpec',
+      iv: ivBlob
+    };
+    return ivParamsSpec;
+  }
+  
+  let ivSpec = genIvParamsSpec();
+  
+  // Encrypt the message.
+  function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
+    let cipher = cryptoFramework.createCipher('ChaCha20');
+    cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, ivSpec);
+    let encryptData = cipher.doFinalSync(plainText);
+    return encryptData;
+  }
+  
+  // Decrypt the message.
+  function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
+    let decoder = cryptoFramework.createCipher('ChaCha20');
+    decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, ivSpec);
+    let decryptData = decoder.updateSync(cipherText);
+    return decryptData;
+  }
+  
+  function genSymKeyByData(symKeyData: Uint8Array) {
+    let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
+    let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
+    let symKey = chacha20Generator.convertKeySync(symKeyBlob);
+    console.info('convertKeySync result: success.');
+    return symKey;
+  }
+  
+  function main() {
+    try {
+      let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159, 83,
+        217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
+      let symKey = genSymKeyByData(keyData);
+      let message = 'This is a test';
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = encryptMessage(symKey, plainText);
+      let decryptText = decryptMessage(symKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed.');
+      }
+    } catch (error) {
+      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
     }
   }
   ```

@@ -30,7 +30,7 @@
 | begin | &lt;time&gt; | 0 | 否 | 设置动效的延迟时间。<br/>支持输入ms(毫秒)、s（秒）、m（分），默认为s(秒)，其他格式不支持。 |
 | dur | &lt;time&gt; | 0 | 否 | 设置动效持续时间，如果dur没设置，按照end-begin的结果作为持续时间，小于等于0时，动效不触发。<br/>支持输入ms(毫秒)、s（秒）、m（分），默认为s(秒)，其他格式不支持。 |
 | end | &lt;time&gt; | 0 | 否 | 设置动效多久时间后结束。支持输入ms(毫秒)、s（秒）、m（分），默认为s(秒)，其他格式不支持。 |
-| repeatCount | &lt;number&nbsp;\|&nbsp;indefinite&gt; | 1 | 否 | 设置动画播放的次数，默认无限次播放(indefinite)，可通过设置为数值1仅播放一次。 |
+| repeatCount | &lt;number&nbsp;\|&nbsp;indefinite&gt; | indefinite | 否 | 设置动画播放的次数，默认无限次播放(indefinite)，可通过设置为数值1仅播放一次。 |
 | fill | &lt;freeze&nbsp;\|&nbsp;remove&gt; | remove | 否 | 设置动画结束时的状态。 |
 | calcMode | &lt;discrete&nbsp;\|&nbsp;linear&nbsp;\|&nbsp;paced&nbsp;\|&nbsp;spline&gt; | linear | 否 | 设置动画的插值模式。<br/>discrete：阶跃，from值直接跳转到to的值；<br/>linear：线性；<br/>paced：线性，设置此项后keyTimes和keyPoints值无效；<br/>spline：自定义贝塞尔曲线，spline点定义在keyTimes属性中，每个时间间隔控制点由keySplines定义。 |
 | keyTimes | string | - | 否 | 设置关键帧动画的开始时间，值为0~1之间的数值用分号隔开，比如0;0.3;0.8;1。keyTimes、keySplines、values组合设置关键帧动画。keyTimes和values的个数保持一致。keySplines个数为keyTimes个数减一。 |
@@ -87,7 +87,7 @@
 ```
 
 
-![zh-cn_image_0000001127284938](figures/zh-cn_image_0000001127284938.gif)
+![example-1](figures/example-1.gif)
 
 
 ```html

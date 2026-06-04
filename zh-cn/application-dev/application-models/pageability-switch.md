@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 [FA模型](ability-terminology.md#fa模型)中PageAbility对应[Stage模型](ability-terminology.md#stage模型)中的UIAbility，PageAbility切换为UIAbility的方法如下。

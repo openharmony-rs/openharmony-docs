@@ -1,7 +1,7 @@
 # TextInput
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -364,6 +364,8 @@ textDirection(direction: TextDirection | undefined)
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -380,6 +382,8 @@ selectedBackgroundColor(value: ResourceColor)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -395,6 +399,8 @@ caretStyle(value: CaretStyle)
 设置光标风格。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -418,6 +424,8 @@ caretPosition(value: number)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -433,6 +441,8 @@ showUnit(value: CustomBuilder)
 设置控件作为文本框单位。需搭配[showUnderline](#showunderline10)使用，当showUnderline为true时生效。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -452,6 +462,8 @@ showError(value?: ResourceStr | undefined)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -467,6 +479,8 @@ showUnderline(value: boolean)
 设置是否开启下划线。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -490,6 +504,8 @@ passwordIcon(value: PasswordIcon)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -508,6 +524,8 @@ enableKeyboardOnFocus(value: boolean)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -523,6 +541,8 @@ selectionMenuHidden(value: boolean)
 设置是否隐藏系统文本选择菜单。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -540,6 +560,8 @@ barState(value: BarState)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -555,6 +577,8 @@ maxLines(value: number)
 设置内联输入风格编辑态时文本可显示的最大行数。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -590,6 +614,8 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -606,6 +632,8 @@ enableAutoFill(value: boolean)
 设置是否启用自动填充。<!--RP6--><!--RP6End-->
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -627,6 +655,8 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -642,6 +672,8 @@ passwordRules(value: string)
 定义生成密码的规则。在触发自动填充时，所设置的密码规则会透传给密码保险箱，用于新密码的生成。<!--RP1--><!--RP1End-->
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -659,6 +691,8 @@ cancelButton(options: CancelButtonOptions)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -674,6 +708,8 @@ selectAll(value: boolean)
 设置初始状态时，是否全选文本。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -703,6 +739,8 @@ showCounter(value: boolean, options?: InputCounterOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -719,6 +757,8 @@ contentType(value: ContentType)
 设置自动填充类型。<!--RP7--><!--RP7End-->
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -737,6 +777,8 @@ underlineColor(value: ResourceColor|UnderlineColor|undefined)
 开启输入框下划线[showUnderline](#showunderline10)时，支持配置下划线颜色。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -762,6 +804,8 @@ lineHeight(value: number | string | Resource)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -777,6 +821,8 @@ decoration(value: TextDecorationOptions)
 设置文本装饰线类型样式及其颜色。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -806,6 +852,8 @@ letterSpacing(value: number | string | Resource)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -829,6 +877,8 @@ fontFeature(value: string)
 例如，使用等宽数字的输入格式为："ss01" on。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -856,6 +906,8 @@ wordBreak(value: WordBreak)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -880,6 +932,8 @@ textOverflow(value: TextOverflow)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -900,6 +954,8 @@ textIndent(value: Dimension)
 设置首行文本缩进。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -923,6 +979,8 @@ minFontSize小于或等于0时，自适应字号不生效，此时按照[fontSiz
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -944,6 +1002,8 @@ maxFontSize(value: number | string | Resource)
 maxFontSize小于等于0或者maxFontSize小于minFontSize时，自适应字号不生效，此时按照[fontSize](#fontsize)属性的值生效，未设置时按照其默认值生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -973,6 +1033,8 @@ heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -993,6 +1055,8 @@ showPassword(visible: boolean)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -1008,6 +1072,8 @@ lineBreakStrategy(strategy: LineBreakStrategy)
 设置折行规则。该属性在wordBreak不等于breakAll的时候生效，不支持连词符。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1027,6 +1093,8 @@ editMenuOptions(editMenu: EditMenuOptions)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -1044,6 +1112,8 @@ enablePreviewText(enable: boolean)
 预上屏内容定义为文字暂存态，目前不支持文字拦截功能。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1075,6 +1145,8 @@ enableHapticFeedback(isEnabled: boolean)
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -1090,6 +1162,8 @@ autoCapitalizationMode(mode: AutoCapitalizationMode)
 设置自动大小写模式的文本模式，只提供接口能力，具体实现以输入法应用为主。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1107,6 +1181,8 @@ keyboardAppearance(appearance: Optional\<KeyboardAppearance>)
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1123,13 +1199,15 @@ strokeWidth(width: Optional\<LengthMetrics>)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。当LengthMetrics的单位为px时，<br/>若设置值小于0，显示实心字；若大于0，显示空心字。<br/>默认值为0，不做描边处理。 |
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br/>若设置值小于0，显示实心字；若大于0，显示空心字。<br/>默认值为0，不做描边处理。 |
 
 ### strokeColor<sup>20+</sup>
 
@@ -1138,6 +1216,8 @@ strokeColor(color: Optional\<ResourceColor>)
 设置文本描边的颜色。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1155,6 +1235,8 @@ stopBackPress(isStopped: Optional\<boolean>)
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1170,6 +1252,8 @@ halfLeading(halfLeading: Optional\<boolean>)
 设置文本在行内垂直居中，将行间距平分至行的顶部与底部。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1187,6 +1271,8 @@ minFontScale(scale: Optional\<number | Resource>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -1203,6 +1289,8 @@ maxFontScale(scale: Optional\<number | Resource>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -1218,6 +1306,8 @@ cancelButton(symbolOptions: CancelButtonSymbolOptions)
 设置右侧清除按钮样式，仅支持symbol图标。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。示例请参考[示例15（设置symbol类型清除按钮）](#示例15设置symbol类型清除按钮)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1237,6 +1327,8 @@ ellipsisMode(mode: Optional\<EllipsisMode>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -1253,6 +1345,8 @@ enableAutoFillAnimation(enabled: Optional\<boolean>)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -1268,6 +1362,8 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 设置是否开启中文与西文的自动间距。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1290,6 +1386,8 @@ compressLeadingPunctuation(enabled: Optional\<boolean>)
 > - 支持压缩的标点符号，请参考[ParagraphStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)的行首压缩的标点范围。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1365,6 +1463,26 @@ shaderStyle(shader: ShaderStyle | undefined)
 | ---------------- | ------- | ---- | ----------------------------------------------- |
 | shader         | [ShaderStyle](ts-text-common.md#shaderstyle20) \| undefined | 是 | 文本着色器效果。<br/>值为undefined时，无渐变效果。 |
 
+### punctuationOverflow
+
+punctuationOverflow(enabled: Optional\<boolean>)
+
+设置是否启用行尾标点符号悬挂。不通过该接口设置，默认标点符号不悬挂。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ----- | ---- | ---- |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是 | 是否启用行尾标点符号悬挂。<br/>true表示启用行尾标点符号悬挂，false表示不启用行尾标点符号悬挂。设置为undefined或null时，不启用标点符号悬挂。|
+
 ### includeFontPadding<sup>23+</sup>
 
 includeFontPadding(include: Optional\<boolean>)
@@ -1372,6 +1490,8 @@ includeFontPadding(include: Optional\<boolean>)
 设置是否在首行和尾行增加间距以避免文字截断。不通过该接口设置，默认不增加间距。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1389,6 +1509,8 @@ fallbackLineSpacing(enabled: Optional\<boolean>)
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1404,6 +1526,8 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 设置文本输入框内文本拖拽时的背板样式。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1427,16 +1551,18 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 | PhoneNumber<sup>9+</sup>      | 3 | 电话号码输入模式。<br/>支持输入数字、空格、+ 、-、*、#、(、)，长度不限。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Email                         | 5 | 邮箱地址输入模式。<br/>支持数字、字母、下划线、小数点、!、#、$、%、&、'、"、*、+、-、/、=、?、^、`、\{、\|、\}、~，以及@字符（只能存在一个@字符）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Password                      | 7 | 密码输入模式。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>密码输入模式中，[decoration](#decoration12)、[showUnderline](#showunderline10)、[lineHeight](#lineheight12)不生效。<br/>在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| NUMBER_PASSWORD<sup>11+</sup> | 8 | 纯数字密码输入模式。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>密码输入模式不支持下划线样式。在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| USER_NAME<sup>11+</sup>       | 10 | 用户名输入模式，无特殊限制。<br/>在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| NEW_PASSWORD<sup>11+</sup>    | 11 | 新密码输入模式，无特殊限制。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>在已启用密码保险箱的情况下，支持自动生成新密码。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| NUMBER_DECIMAL<sup>11+</sup>  | 12 | 带小数点的数字输入模式。<br/>支持数字，小数点（只能存在一个小数点）。不支持负数小数，负数小数的数字输入模式请使用inputFilter实现。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| URL<sup>12+</sup>  | 13 | 带URL的输入模式，无特殊限制。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式，无特殊限制。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| NUMBER_PASSWORD<sup>11+</sup> | 8 | 纯数字密码输入模式。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>密码输入模式不支持下划线样式。在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| USER_NAME<sup>11+</sup>       | 10 | 用户名输入模式，无特殊限制。<br/>在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| NEW_PASSWORD<sup>11+</sup>    | 11 | 新密码输入模式，无特殊限制。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>在已启用密码保险箱的情况下，支持自动生成新密码。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| NUMBER_DECIMAL<sup>11+</sup>  | 12 | 带小数点的数字输入模式。<br/>支持数字，小数点（只能存在一个小数点）。不支持负数小数，负数小数的数字输入模式请使用inputFilter实现。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| URL<sup>12+</sup>  | 13 | 带URL的输入模式，无特殊限制。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式，无特殊限制。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ContentType<sup>12+</sup>枚举说明
 
 自动填充类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1492,6 +1618,8 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型  | 只读 | 可选   | 说明 |
@@ -1512,8 +1640,8 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 | Send                   | 4 | 显示为发送样式。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
 | Next                   | 5 | 显示为下一步样式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Done                   | 6 | 显示为完成样式。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| PREVIOUS<sup>11+</sup> | 7 | 显示为上一步样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| NEW_LINE<sup>11+</sup> | 8 | 显示为换行样式。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| PREVIOUS<sup>11+</sup> | 7 | 显示为上一步样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| NEW_LINE<sup>11+</sup> | 8 | 显示为换行样式。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。  |
 
 ## 事件
 
@@ -1684,6 +1812,8 @@ onTextSelectionChange(callback: OnTextSelectionChangeCallback)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -1699,6 +1829,8 @@ onContentScroll(callback: OnContentScrollCallback)
 文本内容滚动时，触发该回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1720,13 +1852,15 @@ onSecurityStateChange(callback: Callback\<boolean>)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名       | 类型   | 必填 | 说明                               |
 | ------------ | ------ | ---- | ---------------------------------- |
-| callback | Callback\<boolean> | 是   | 回调函数。<br/>true表示状态切换；false表示状态未切换。|
+| callback | Callback\<boolean> | 是   | 回调函数。<br/>true表示密码显示；false表示密码隐藏。|
 
 ### onWillInsert<sup>12+</sup>
 
@@ -1735,6 +1869,8 @@ onWillInsert(callback: Callback\<InsertValue, boolean>)
 在将要输入时，触发该回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1752,6 +1888,8 @@ onDidInsert(callback: Callback\<InsertValue>)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1768,6 +1906,8 @@ onWillDelete(callback: Callback\<DeleteValue, boolean>)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1783,6 +1923,8 @@ onDidDelete(callback: Callback\<DeleteValue>)
 在删除完成时，触发该回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1805,6 +1947,8 @@ onWillChange(callback: Callback\<EditableTextChangeValue, boolean>)
 onWillChange的回调时序晚于onWillInsert、onWillDelete，早于onDidInsert、onDidDelete。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1832,6 +1976,8 @@ IMEClient仅在onWillAttachIME执行期间有效，不可进行异步调用。
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1862,6 +2008,8 @@ TextInputController的构造函数。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### caretPosition<sup>8+</sup>
@@ -1871,6 +2019,8 @@ caretPosition(value:&nbsp;number): void
 设置输入光标的位置。当取值小于0时，取0，大于文本长度时，显示在文本末尾。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1886,6 +2036,8 @@ setTextSelection(selectionStart:&nbsp;number, selectionEnd:&nbsp;number, options
 设置文本选择区域并高亮显示。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1913,11 +2065,15 @@ stopEditing(): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## UnderlineColor<sup>12+</sup>对象说明
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1934,11 +2090,15 @@ stopEditing(): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### 属性
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1954,6 +2114,8 @@ keepEditableState(): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## OnPasteCallback<sup>18+</sup>
@@ -1963,6 +2125,8 @@ type OnPasteCallback = (content: string, event: PasteEvent) => void
 粘贴回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1981,6 +2145,8 @@ type OnSubmitCallback = (enterKey: EnterKeyType, event: SubmitEvent) => void
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -1998,6 +2164,8 @@ type OnTextSelectionChangeCallback = (selectionStart: number, selectionEnd: numb
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -2014,6 +2182,8 @@ type OnContentScrollCallback = (totalOffsetX: number, totalOffsetY: number) => v
 文本内容滚动回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3550,35 +3720,55 @@ struct demo {
 
 ![textInput_barState](figures/textInput_barState.gif)
 
-### 示例26（设置行首标点压缩）
+### 示例26（设置行首标点符号压缩和行尾标点符号悬挂）
 
-该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+本示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点符号压缩，通过[punctuationOverflow](#punctuationoverflow)设置行尾标点符号悬挂。
 
-从API version 23开始，支持compressLeadingPunctuation接口。
+左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+
+文本自动换行后，剩余内容（含标点符号）需要能够放入上一行，标点符号悬挂才生效。
+
+从API版本23开始，新增compressLeadingPunctuation接口。
+
+从API版本26.0.0开始，新增punctuationOverflow接口。
 
 ```ts
-// xxx.ets
 @Entry
 @Component
-struct Index {
+struct PunctuationDemo {
+  @State compressLeadingPunctuation: boolean = false;
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「123456789！\n『123456789：';
+
   build() {
-    Column(){
-      TextInput({ text: "\u300C行首标点压缩打开" })
-        .compressLeadingPunctuation(true)
-        .margin(5)
+    Column() {
+      TextInput({ text: this.text })
+        .compressLeadingPunctuation(this.compressLeadingPunctuation)
+        .punctuationOverflow(this.punctuationOverflow)
+        .fontSize('20fp')
         .style(TextInputStyle.Inline)
-        .fontSize(30)
-        .width("90%")
-      TextInput({ text: "\u300C行首标点压缩关闭" })
-        .compressLeadingPunctuation(false)
-        .style(TextInputStyle.Inline)
-        .fontSize(30)
-        .width("90%")
-    }
+        .align(Alignment.Center)
+        .width('45%')
+
+      Column() {
+        Button('开启行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = true
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = false
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = false
+        }).margin(5)
+      }
+    }.width('100%').padding(20)
   }
 }
 ```
-![textInputCompressLeadingPunctuation](figures/textInputCompressLeadingPunctuation.gif)
+![textInputPunctuation](figures/textInputPunctuation.gif)
 
 ### 示例27（设置自适应间距）
 
@@ -3823,3 +4013,72 @@ struct TextExample {
 开启孤字优化：
 
 ![textInputOrphanCharOptimization2](figures/textInputOrphanCharOptimization2.png)
+
+### 示例33（设置文本着色器效果）
+
+该示例通过[shaderStyle](#shaderstyle)接口实现对TextInput组件内文本着色效果。
+
+从API版本26.0.0开始，新增shaderStyle接口。
+
+```ts
+@Entry
+@Component
+struct ShaderColorStyle {
+  @State message: string = 'Hello World';
+  @State linearGradientOptions1: LinearGradientOptions =
+    {
+      angle: 45,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]]
+    };
+  @State linearGradientOptions2: LinearGradientOptions =
+    {
+      direction: GradientDirection.LeftTop,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State radialGradientOptions: RadialGradientOptions =
+    {
+      center: [50, 50],
+      radius: 20,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State colorShaderStyle: ColorShaderStyle =
+    {
+      color: Color.Blue
+    };
+  build() {
+    Column({ space: 5 }) {
+      Text('angle为45°的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      TextInput({ text: this.message })
+        .fontSize(20)
+        .width('80%')
+        .height(50)
+        .shaderStyle(this.linearGradientOptions1)
+      Text('direction为LeftTop的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      TextInput({ text: this.message })
+        .fontSize(20)
+        .width('80%')
+        .height(50)
+        .shaderStyle(this.linearGradientOptions2)
+      Text('径向渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      TextInput({ text: this.message })
+        .fontSize(20)
+        .width('80%')
+        .height(50)
+        .shaderStyle(this.radialGradientOptions)
+      Text('纯色').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      TextInput({ text: this.message })
+        .fontSize(20)
+        .width('80%')
+        .height(50)
+        .shaderStyle(this.colorShaderStyle)
+    }
+  }
+}
+```
+![TextInputShaderStyle](figures/textInputShaderStyle.png)

@@ -357,7 +357,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001127125264](figures/zh-cn_image_0000001127125264.png)
+   ![gauge](figures/gauge.png)
 
 4. 进度类、加载类、占比类圆形图表
    ```html

@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType (Animation and Visual Effect Attributes)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -322,7 +322,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
-**Parameters:**
+**Parameters**
 
 1. Rectangle<br>
 
@@ -481,7 +481,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0]?.f32 | Blur radius of the shadow, in px.|
-| .value[1]?.i32 | Whether to enable the the coloring strategy. The value **1** means to enable the coloring strategy, and **0** means the opposite. The default value is **0**.|
+| .value[1]?.i32 | Whether to enable the coloring strategy. The value **1** means to enable the coloring strategy, and **0** means the opposite. The default value is **0**.|
 | .value[2]?.f32 | Offset of the shadow along the x-axis, in px.|
 | .value[3]?.f32 | Offset of the shadow along the y-axis, in px.|
 | .value[4]?.i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**.|
@@ -1097,7 +1097,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Two components bound to the shared element. The value is **1** or **0**. The default value is **false**. By default, the out component does not continue to participate in the shared element animation when not yet deleted, which means that it stays in its original position.|
+| .value[0].i32 | Two components bound to the shared element. The value is **1** or **0**. By default, the out component does not continue to participate in the shared element animation when not yet deleted, which means that it stays in its original position.|
 | .string | ID used to set up a binding relationship. If this attribute is set to an empty string **""**, the binding relationship is cleared. The value can be dynamically changed to refresh the binding relationship. One ID can be bound to only two components, which function as in and out components.|
 
 ## NODE_RENDER_FIT
@@ -1380,3 +1380,31 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .object | Pixel rounding policy of the component. The parameter type is [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md).|
+
+## NODE_SYSTEM_MATERIAL
+
+```c
+NODE_SYSTEM_MATERIAL = 127
+```
+
+System material attribute, which can be set, reset, and obtained as required through APIs.
+
+This attribute is available only for devices that support system materials. Otherwise, the error code [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](./capi-native-type-h.md#arkui_errorcode) will be returned when this attribute is set. You can call [OH_ArkUI_NativeModule_GetSystemMaterialSupported](./capi-native-material-h.md#oh_arkui_nativemodule_getsystemmaterialsupported) to check whether the device supports system materials.
+
+The material effect varies depending on device computing power. A material level corresponding to a computing power level is defined by [ArkUI_MaterialLevel](./capi-native-material-h.md#arkui_materiallevel) and can be obtained through [OH_ArkUI_NativeModule_GetGlobalMaterialLevel](./capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel). On devices related to the material level [ARKUI_MATERIAL_LEVEL_SMOOTH](./capi-native-material-h.md#arkui_materiallevel), attributes such as the background color, border width, border color, and shadow are affected. On devices related to the material level [ARKUI_MATERIAL_LEVEL_EXQUISITE](./capi-native-material-h.md#arkui_materiallevel) or [ARKUI_MATERIAL_LEVEL_GENTLE](./capi-native-material-h.md#arkui_materiallevel), the shadow attribute is affected and a filter effect is added to the system material layer, generating a glass-like effect.
+
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .object | System material object. The parameter type is [ArkUI_ImmersiveMaterialHandle](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .object | System material object. The parameter type is [ArkUI_ImmersiveMaterialHandle](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md). The **ArkUI_ImmersiveMaterialHandle** object in the return value is a pointer to a static member. Therefore, you do not need to and are not allowed to release the returned object using [OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_destroy).|

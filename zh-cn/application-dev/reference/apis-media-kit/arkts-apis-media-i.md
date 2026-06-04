@@ -1,8 +1,8 @@
 # Interfaces (其他)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -120,7 +120,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 ## WatermarkConfiguration
 
-视频录制添加水印的配置参数。水印位置以视频左上角为原点计算。
+添加水印的配置参数。水印位置以视频左上角为原点计算。
 
 **起始版本：** 26.0.0
 
@@ -150,7 +150,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | profile         | [AVRecorderProfile](#avrecorderprofile9) | 否   | 否   | 录制的profile，必要参数。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。|
 | url             | string                                   | 否   | 否   | 录制输出URL：fd://xx (fd number) ![img](figures/zh-cn_image_url.png)，必要参数。 <br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
 |fileGenerationMode<sup>12+</sup> | [FileGenerationMode](arkts-apis-media-e.md#filegenerationmode12)  | 否   |  是   |  创建媒体文件的模式，配合[on('photoAssetAvailable')](arkts-apis-media-AVRecorder.md#onphotoassetavailable12)监听使用。|
-| rotation<sup>(deprecated)</sup>        | number                                   | 否   | 是   | 录制的视频旋转角度，mp4格式支持0、90、180和270，默认值为0。<br>从API version 6开始支持，从API version 12开始废弃。建议使用[AVMetadata](#avmetadata11).videoOrientation替代。<br>如果同时设置两个值，将会采用[AVMetadata](#avmetadata11).videoOrientation。     |
+| rotation<sup>(deprecated)</sup>        | number                                   | 否   | 是   | 录制的视频旋转角度，单位为度（°）。mp4格式支持0°、90°、180°和270°，默认值为0°。<br>从API version 6开始支持，从API version 12开始废弃。建议使用[AVMetadata](#avmetadata11).videoOrientation替代。<br>如果同时设置两个值，将会采用[AVMetadata](#avmetadata11).videoOrientation。     |
 | location<sup>(deprecated)</sup>        | [Location](#location)                    | 否   | 是   | 录制的地理位置，默认不记录地理位置信息。<br>从API version 6开始支持，从API version 12开始废弃。建议使用 [AVMetadata](#avmetadata11).location。<br>如果同时设置两个值，将会采用[AVMetadata](#avmetadata11).location。 |
 | metadata<sup>12+</sup>        | [AVMetadata](#avmetadata11)              | 否   | 是   | 设置元数据信息。详细内容请参考 [AVMetadata](#avmetadata11)。                  |
 | maxDuration<sup>18+</sup>        | number             | 否   | 是   | 设置录制的最大时长，单位为秒，有效值取值范围[1, 2^31-1]，无效输入会重置为最大值。录制到达设定时长后，录制会自动停止，并通过stateChange回调录制状态，[AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) = 'stopped'，[StateChangeReason](arkts-apis-media-e.md#statechangereason9) = BACKGROUND。|
@@ -240,6 +240,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | --------------- | ---------------------------------------- |---- | ---- | ------------------------------------------------------------ |
 | audioBitrate | number     | 否 | 是 | 输出音频的码率，单位为比特率（bps），支持范围[1, 500000]。默认设置为48Kbps。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | 否 | 是  | 输出音频的编码格式，当前仅支持AAC。默认设置为AAC。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| audioCodecV2 | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | 否 | 是  | 输出音频的编码格式。<br>如果指定的编码格式不被支持，prepare会失败。默认设置为AAC。<br> **起始版本：** 26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 <br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否 | 否   | 输出视频文件的封装格式，当前视频文件仅支持MP4。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | videoBitrate         | number | 否 |  是  | 输出视频的码率，单位为比特率（bps）。默认码率按输出视频的分辨率设置，[240p, 480P]默认码率值为1Mbps，(480P, 720P]默认码率值为2Mbps，(720P, 1080P]默认码率值为4Mbps，1080P及以上默认值为8Mbps。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | 否 | 是   | 输出视频的编码格式，当前仅支持AVC和HEVC。若源视频编码格式为HEVC，则默认设置为HEVC，否则默认设置为AVC。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |

@@ -147,8 +147,8 @@ The following provides examples of HMAC operations with different data passing m
     // Convert the string into a Uint8Array in UTF-8 format and use it as the private key, which is 128 bits (16 bytes).
     let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
     let key = await genSymKeyByData(keyData);
-    let macAlgName = 'SHA256'; // MD algorithm
-    let message = 'hmacTestMessgae'; // Message to be HMACed.
+    let macAlgName = 'SHA256'; // MD algorithm.
+    let message = 'hmacTestMessage'; // Message used to generate an HMAC.
     let mac = cryptoFramework.createMac(macAlgName);
     await mac.init(key);
     // If there is a small amount of data to be processed, call update() to pass in all the data at a time. The data to be passed in by a single update() call is not limited.
@@ -182,7 +182,7 @@ The following provides examples of HMAC operations with different data passing m
     let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
     let key = genSymKeyByData(keyData);
     let macAlgName = 'SHA256'; // MD algorithm.
-    let message = 'hmacTestMessgae'; // Message to be HMACed.
+    let message = 'hmacTestMessage'; // Message used to generate an HMAC.
     let mac = cryptoFramework.createMac(macAlgName);
     mac.initSync(key);
     // If there is a small amount of data to be processed, call update() to pass in all the data at a time. The data to be passed in by a single update() call is not limited.
@@ -212,11 +212,12 @@ The following provides examples of HMAC operations with different data passing m
 6. Call [Mac.getMacLength](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getmaclength) to obtain the length of the MAC, in bytes.
 
 - Example: Pass in the full data to generate a MAC using **await**.
-
-  ```ts
+  <!-- @[hmac_spec_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/HMACSingleTime/Spec.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let aesGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
@@ -226,11 +227,11 @@ The following provides examples of HMAC operations with different data passing m
   }
   async function doHmac() {
     // Convert the string into a Uint8Array in UTF-8 format and use it as the private key, which is 128 bits (16 bytes).
-    let keyData = new Uint8Array(buffer.from("12345678abcdefgh", 'utf-8').buffer);
+    let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
     let key = await genSymKeyByData(keyData);
     let spec: cryptoFramework.HmacSpec = {
-        algName: "HMAC",
-        mdName: "SHA256",
+        algName: 'HMAC',
+        mdName: 'SHA256',
     };
     let message = 'hmacTestMessage'; // Message to be HMACed.
     let mac = cryptoFramework.createMac(spec);

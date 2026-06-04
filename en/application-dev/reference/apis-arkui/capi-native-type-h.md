@@ -114,6 +114,8 @@ Defines the common types for the native module.
 | [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | OH_ArkUI_FontWeightConfigs | Defines the font weight configuration of text. [OH_ArkUI_FontWeightConfigs_Create](#oh_arkui_fontweightconfigs_create) can be used to create a text font weight configuration object. [OH_ArkUI_FontWeightConfigs_Destroy](#oh_arkui_fontweightconfigs_destroy) can be used to destroy the text font weight configuration object. [OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight](#oh_arkui_fontweightconfigs_setenablevariablefontweight) can be used to set whether to enable variable font weight adjustment after the object is created. [OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight](#oh_arkui_fontweightconfigs_getenablevariablefontweight) can be used to check whether variable font weight adjustment is enabled after the object is created. [OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory](#oh_arkui_fontweightconfigs_setenabledevicefontweightcategory) can be used to set whether the text font weight is updated with the font weight level of the device after the object is created. [OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory](#oh_arkui_fontweightconfigs_getenabledevicefontweightcategory) can be used to check whether the text font weight is updated with the font weight level of the device after the object is created.|
 | [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | OH_ArkUI_FontConfigs | Defines the font configuration of text. [OH_ArkUI_FontConfigs_Create](#oh_arkui_fontconfigs_create) can be used to create a text font configuration object. [OH_ArkUI_FontConfigs_Destroy](#oh_arkui_fontconfigs_destroy) can be used to destroy the text font configuration object. [OH_ArkUI_FontConfigs_SetFontWeightConfigs](#oh_arkui_fontconfigs_setfontweightconfigs) can be used to set the text font weight after the object is created. [OH_ArkUI_FontConfigs_GetFontWeightConfigs](#oh_arkui_fontconfigs_getfontweightconfigs) can be used to view the text font weight after the object is created.|
 | [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | OH_ArkUI_TextController | Defines a text component controller. [OH_ArkUI_TextController_Create](#oh_arkui_textcontroller_create) can be used to create a text component controller object. [OH_ArkUI_TextController_Destroy](#oh_arkui_textcontroller_destroy) can be used to destroy the text component controller object. After the object is created, [OH_ArkUI_TextController_SetStyledString](#oh_arkui_textcontroller_setstyledstring) can be used to set a styled string for the text component.|
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) | OH_ArkUI_LinearGradientOptions | Defines the options for a linear gradient effect.|
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) | OH_ArkUI_RadialGradientOptions | Defines the options for a radial gradient effect.|
 
 ### Enums
 
@@ -809,6 +811,7 @@ Defines the common types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledString(const OH_ArkUI_TextEditorStyledStringController* controller, const ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_setstyledstring) | - | Sets the styled string displayed using the styled string controller.|
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetStyledString(const OH_ArkUI_TextEditorStyledStringController* controller, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_getstyledstring) | - | Obtains the styled string displayed using the styled string controller.|
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledPlaceholder(const OH_ArkUI_TextEditorStyledStringController* controller, const ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_setstyledplaceholder) | - | Sets the placeholder text in the styled string style using the styled string controller.|
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_ScrollToVisible(const OH_ArkUI_TextEditorStyledStringController* controller, int32_t start, int32_t end)](#oh_arkui_texteditorstyledstringcontroller_scrolltovisible) | -    | Scrolls the content within the range from the specified start index to the end index to the visible area using the styled string controller.|
 | [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()](#oh_arkui_fontweightconfigs_create) | - | Creates a text font weight configuration object.|
 | [void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_destroy) | - | Destroys the text font weight configuration object.|
 | [void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenablevariablefontweight) | - | Sets whether to enable variable font weight adjustment.|
@@ -822,6 +825,28 @@ Defines the common types for the native module.
 | [OH_ArkUI_TextController* OH_ArkUI_TextController_Create()](#oh_arkui_textcontroller_create) | - | Creates a text component controller object.|
 | [void OH_ArkUI_TextController_Destroy(OH_ArkUI_TextController* controller)](#oh_arkui_textcontroller_destroy) | - | Destroys the text component controller object.|
 | [ArkUI_ErrorCode OH_ArkUI_TextController_SetStyledString(OH_ArkUI_TextController* controller, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_textcontroller_setstyledstring) | - | Sets a styled string for the text component.|
+| [OH_ArkUI_LinearGradientOptions* OH_ArkUI_LinearGradientOptions_Create()](#oh_arkui_lineargradientoptions_create) | - | Creates an object for linear gradient effect options.|
+| [void OH_ArkUI_LinearGradientOptions_Destroy(OH_ArkUI_LinearGradientOptions* options)](#oh_arkui_lineargradientoptions_destroy) | - | Destroys the object for linear gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetAngle(OH_ArkUI_LinearGradientOptions* options, float angle)](#oh_arkui_lineargradientoptions_setangle) | - | Sets the angle in linear gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetAngle(const OH_ArkUI_LinearGradientOptions* options, float* angle)](#oh_arkui_lineargradientoptions_getangle) | - | Obtains the angle in linear gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetDirection(OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection direction)](#oh_arkui_lineargradientoptions_setdirection) | - | Sets the direction in linear gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetDirection(const OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection* direction)](#oh_arkui_lineargradientoptions_getdirection) | - | Obtains the direction in linear gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetRepeating(OH_ArkUI_LinearGradientOptions* options, bool repeating)](#oh_arkui_lineargradientoptions_setrepeating) | - | Sets whether the color is repeated in linear gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetRepeating(const OH_ArkUI_LinearGradientOptions* options, bool* repeating)](#oh_arkui_lineargradientoptions_getrepeating) | - | Obtains whether the color is repeated in linear gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetColorStop(OH_ArkUI_LinearGradientOptions* options, const uint32_t* colors, const float* stops, int32_t colorsAndStopsSize)](#oh_arkui_lineargradientoptions_setcolorstop) | - | Sets the color stop in linear gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetColorStop(const OH_ArkUI_LinearGradientOptions* options, uint32_t* colors, float* stops, int32_t colorsAndStopsSize, int32_t* writeLength)](#oh_arkui_lineargradientoptions_getcolorstop) | - | Obtains the color stop in linear gradient effect options.|
+| [OH_ArkUI_RadialGradientOptions* OH_ArkUI_RadialGradientOptions_Create()](#oh_arkui_radialgradientoptions_create) | - | Creates an object for radial gradient effect options.|
+| [void OH_ArkUI_RadialGradientOptions_Destroy(OH_ArkUI_RadialGradientOptions* options)](#oh_arkui_radialgradientoptions_destroy) | - | Destroys the object for radial gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterX(OH_ArkUI_RadialGradientOptions* options, float centerX)](#oh_arkui_radialgradientoptions_setcenterx) | - | Sets the X coordinate of the center point in radial gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterX(const OH_ArkUI_RadialGradientOptions* options, float* centerX)](#oh_arkui_radialgradientoptions_getcenterx) | - | Obtains the X coordinate of the center point in radial gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterY(OH_ArkUI_RadialGradientOptions* options, float centerY)](#oh_arkui_radialgradientoptions_setcentery) | - | Sets the Y coordinate of the center point in radial gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterY(const OH_ArkUI_RadialGradientOptions* options, float* centerY)](#oh_arkui_radialgradientoptions_getcentery) | - | Obtains the Y coordinate of the center point in radial gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRadius(OH_ArkUI_RadialGradientOptions* options, float radius)](#oh_arkui_radialgradientoptions_setradius) | - | Sets the radius in radial gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRadius(const OH_ArkUI_RadialGradientOptions* options, float* radius)](#oh_arkui_radialgradientoptions_getradius) | - | Obtains the radius in radial gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRepeating(OH_ArkUI_RadialGradientOptions* options, bool repeating)](#oh_arkui_radialgradientoptions_setrepeating) | - | Sets whether the color is repeated in radial gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRepeating(const OH_ArkUI_RadialGradientOptions* options, bool* repeating)](#oh_arkui_radialgradientoptions_getrepeating) | - | Obtains whether the color is repeated in radial gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetColorStop(OH_ArkUI_RadialGradientOptions* options, const uint32_t* colors, const float* stops, int32_t colorsAndStopsSize)](#oh_arkui_radialgradientoptions_setcolorstop) | - | Sets the color stop in radial gradient effect options.|
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetColorStop(const OH_ArkUI_RadialGradientOptions* options, uint32_t* colors, float* stops, int32_t colorsAndStopsSize, int32_t* writeLength)](#oh_arkui_radialgradientoptions_getcolorstop) | - | Obtains the color stop in radial gradient effect options.|
 
 ## Enum Description
 
@@ -2162,8 +2187,8 @@ Enumerates the dynamic range modes (for example, SDR/HDR) for images, controllin
 | Value| Description|
 | -- | -- |
 | ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | High dynamic range (HDR), representing the range between minimum and maximum brightness values in an image. A wider range makes image brightness closer to real-world conditions, preventing overexposure (all white) in bright environments and loss of detail (all black) in dark environments.|
-| ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT | Constrained high dynamic range, offering richer brightness and color than SDR while maintaining SDR compatibility. Typically used in scenarios requiring SDR backward compatibility.|
-| ARKUI_DYNAMIC_RANGE_MODE_STANDARD | Standard dynamic range (SDR), featuring a limited brightness range (typically 0-100 nits) with reduced contrast between bright and dark areas. Dark areas may lose detail to black, while bright areas may become overexposed to white.|
+| ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT = 1 | Constrained high dynamic range, offering richer brightness and color than SDR while maintaining SDR compatibility. Typically used in scenarios requiring SDR backward compatibility.|
+| ARKUI_DYNAMIC_RANGE_MODE_STANDARD = 2 | Standard dynamic range (SDR), featuring a limited brightness range (typically 0-100 nits) with reduced contrast between bright and dark areas. Dark areas may lose detail to black, while bright areas may become overexposed.|
 
 ### ArkUI_ImageRotateOrientation
 
@@ -2181,14 +2206,14 @@ Enumerates image rotation directions.
 | Value| Description|
 | -- | -- |
 | ARKUI_ORIENTATION_AUTO = 0 | Use EXIF metadata for display orientation, with support for rotation and mirroring. EXIF is a file format dedicated for photos taken by digital cameras and is used to record attributes and shooting data of the photos.|
-| ARKUI_ORIENTATION_UP | Display original pixel data without transformation.|
-| ARKUI_ORIENTATION_RIGHT | Display the image after rotating it 90 degrees clockwise.|
-| ARKUI_ORIENTATION_DOWN  | Display the image after rotating it 180 degrees clockwise.|
-| ARKUI_ORIENTATION_LEFT | Display the image after rotating it 270 degrees clockwise.|
-| ARKUI_ORIENTATION_UP_MIRRORED | Display the image after flipping it horizontally.|
-| ARKUI_ORIENTATION_RIGHT_MIRRORED  | Display the image after flipping it horizontally and then rotating it 90 degrees clockwise.|
-| ARKUI_ORIENTATION_DOWN_MIRRORED | Display the image after flipping it vertically.|
-| ARKUI_ORIENTATION_LEFT_MIRRORED | Display the image after flipping it horizontally and then rotating it 270 degrees clockwise.|
+| ARKUI_ORIENTATION_UP = 1 | Display original pixel data without transformation.|
+| ARKUI_ORIENTATION_RIGHT = 2 | Display the image after rotating it 90 degrees clockwise.|
+| ARKUI_ORIENTATION_DOWN = 3 | Display the image after rotating it 180 degrees clockwise.|
+| ARKUI_ORIENTATION_LEFT = 4 | Display the image after rotating it 270 degrees clockwise.|
+| ARKUI_ORIENTATION_UP_MIRRORED = 5 | Display the image after flipping it horizontally.|
+| ARKUI_ORIENTATION_RIGHT_MIRRORED = 6 | Display the image after flipping it horizontally and then rotating it 90 degrees clockwise.|
+| ARKUI_ORIENTATION_DOWN_MIRRORED = 7 | Display the image after flipping it vertically.|
+| ARKUI_ORIENTATION_LEFT_MIRRORED = 8 | Display the image after flipping it horizontally and then rotating it 270 degrees clockwise.|
 
 ### ArkUI_BlendMode
 
@@ -3258,6 +3283,7 @@ Enumerates the UI states of a component, used for handling state-specific styles
 | UI_STATE_FOCUSED = 1 << 1 | Focused state.|
 | UI_STATE_DISABLED = 1 << 2 | Disabled state.|
 | UI_STATE_SELECTED = 1 << 3 | Selected state. This state is supported only by specific component types: **Checkbox**, **Radio**, **Toggle**, **List**, **Grid**, and **MenuItem**.|
+| UI_STATE_HOVERED = 1 << 4 | Hovered state.<br>**Since**: 26.0.0|
 
 ### ArkUI_FocusWrapMode
 
@@ -14903,7 +14929,7 @@ Obtains whether the line spacing is evenly distributed to the top and bottom of 
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | Pointer to the text style of the **TextEditor** component.|
-| bool* halfLeading | Pointer to the **halfLeading** parameter indicating whether to enable half leading.<br>                    **true** means to enable, and **false** means the opposite. The default value is **false**.|
+| bool* halfLeading | Pointer to the **halfLeading** parameter indicating whether half leading is enabled.<br>                    **true** means half leading is enabled, and **false** means the opposite. The default value is **false**.|
 
 **Returns**
 
@@ -15579,6 +15605,32 @@ Sets the placeholder text in the styled string style using the styled string con
 
 | Type| Description|
 | -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextEditorStyledStringController_ScrollToVisible()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_ScrollToVisible(const OH_ArkUI_TextEditorStyledStringController* controller, int32_t start, int32_t end)
+```
+
+**Description**
+
+Scrolls the content within the range from the specified start index to the end index to the visible area using the styled string controller.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name                                                      | Description                                                        |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| const [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | Pointer to the [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md) object.|
+| int32_t start                                                | Start index.<br>     The start index must be less than or equal to the end index. Otherwise, the API call is invalid. The value range is [0, Total length of the content in the **TextEditor** component]. If the start index is less than 0, 0 is used. If the start index is greater than the total length, the total length is used.|
+| int32_t end                                                  | End index.<br>     The end index must be greater than or equal to the start index. Otherwise, the API call is invalid. The value range is [0, Total length of the content in the **TextEditor** component]. If the end index is less than 0, 0 is used. If the end index is greater than the total length, the total length is used.|
+
+**Returns**
+
+| Type                                                    | Description                                                        |
+| -------------------------------------------------------- | ------------------------------------------------------------ |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_Matrix4ScaleOptions_Create()
@@ -17302,3 +17354,535 @@ Sets a styled string for the text component.
 | Type| Description|
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_LinearGradientOptions_Create()
+
+```c
+OH_ArkUI_LinearGradientOptions* OH_ArkUI_LinearGradientOptions_Create()
+```
+
+**Description**
+
+Creates an object for linear gradient effect options.
+
+**Since**: 26.0.0
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_ArkUI_LinearGradientOptions*](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) | Pointer to the [OH_ArkUI_LinearGradientOptions*](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object.|
+
+### OH_ArkUI_LinearGradientOptions_Destroy()
+
+```c
+void OH_ArkUI_LinearGradientOptions_Destroy(OH_ArkUI_LinearGradientOptions* options)
+```
+
+**Description**
+
+Destroys the object for linear gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object.|
+
+### OH_ArkUI_LinearGradientOptions_SetAngle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetAngle(OH_ArkUI_LinearGradientOptions* options, float angle)
+```
+
+**Description**
+
+Sets the angle in linear gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object.|
+| float angle | Angle in linear gradient effect options.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_LinearGradientOptions_GetAngle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetAngle(const OH_ArkUI_LinearGradientOptions* options, float* angle)
+```
+
+**Description**
+
+Obtains the angle in linear gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object.|
+| float* angle | Pointer to the angle in linear gradient effect options.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_LinearGradientOptions_SetDirection()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetDirection(OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection direction)
+```
+
+**Description**
+
+Sets the direction in linear gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object.|
+| [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection) direction | Direction in linear gradient effect options.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_LinearGradientOptions_GetDirection()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetDirection(const OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection* direction)
+```
+
+**Description**
+
+Obtains the direction in linear gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object.|
+| [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)* direction | Pointer to the direction in linear gradient effect options.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_LinearGradientOptions_SetRepeating()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetRepeating(OH_ArkUI_LinearGradientOptions* options, bool repeating)
+```
+
+**Description**
+
+Sets whether the color is repeated in linear gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object.|
+| bool repeating | Whether the color is repeated in linear gradient options. The value **false** indicates that the color is not repeated, and the value **true** indicates that the color is repeated. The default value is **false**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_LinearGradientOptions_GetRepeating()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetRepeating(const OH_ArkUI_LinearGradientOptions* options, bool* repeating)
+```
+
+**Description**
+
+Obtains whether the color is repeated in linear gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object.|
+| bool* repeating | Pointer to the **repeating** parameter indicating whether the color is repeated in linear gradient effect options.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_LinearGradientOptions_SetColorStop()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetColorStop(OH_ArkUI_LinearGradientOptions* options, const uint32_t* colors, const float* stops, int32_t colorsAndStopsSize)
+```
+
+**Description**
+
+Sets the color stop in linear gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object.|
+| const uint32_t* colors | Pointer to the color array.|
+| const float* stops | Pointer to the color stop array.|
+| int32_t colorsAndStopsSize | Number of elements in the color and color stop arrays. The number of elements in the color array must be the same as that in the color stop array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_LinearGradientOptions_GetColorStop()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetColorStop(const OH_ArkUI_LinearGradientOptions* options, uint32_t* colors, float* stops, int32_t colorsAndStopsSize, int32_t* writeLength)
+```
+
+**Description**
+
+Obtains the color stop in linear gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object.|
+| uint32_t* colors | Pointer to the color array.|
+| float* stops | Pointer to the color stop array.|
+| int32_t colorsAndStopsSize | Number of elements in the color and color stop arrays. The number of elements in the color array must be the same as that in the color stop array.|
+| int32_t* writeLength | Pointer to the number of colors and color stops that are actually written.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_RadialGradientOptions_Create()
+
+```c
+OH_ArkUI_RadialGradientOptions* OH_ArkUI_RadialGradientOptions_Create()
+```
+
+**Description**
+
+Creates an object for radial gradient effect options.
+
+**Since**: 26.0.0
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_ArkUI_RadialGradientOptions*](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object.|
+
+### OH_ArkUI_RadialGradientOptions_Destroy()
+
+```c
+void OH_ArkUI_RadialGradientOptions_Destroy(OH_ArkUI_RadialGradientOptions* options)
+```
+
+**Description**
+
+Destroys the object for radial gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object.|
+
+### OH_ArkUI_RadialGradientOptions_SetCenterX()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterX(OH_ArkUI_RadialGradientOptions* options, float centerX)
+```
+
+**Description**
+
+Sets the X coordinate of the center point in radial gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object.|
+| float centerX | X coordinate of the center point in radial gradient effect options.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_RadialGradientOptions_GetCenterX()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterX(const OH_ArkUI_RadialGradientOptions* options, float* centerX)
+```
+
+**Description**
+
+Obtains the X coordinate of the center point in radial gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object.|
+| float* centerX | Pointer to the X coordinate of the center point in radial gradient effect options.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_RadialGradientOptions_SetCenterY()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterY(OH_ArkUI_RadialGradientOptions* options, float centerY)
+```
+
+**Description**
+
+Sets the Y coordinate of the center point in radial gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object.|
+| float centerY | Y coordinate of the center point in radial gradient effect options.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_RadialGradientOptions_GetCenterY()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterY(const OH_ArkUI_RadialGradientOptions* options, float* centerY)
+```
+
+**Description**
+
+Obtains the Y coordinate of the center point in radial gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object.|
+| float* centerY | Pointer to the Y coordinate of the center point in radial gradient effect options.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_RadialGradientOptions_SetRadius()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRadius(OH_ArkUI_RadialGradientOptions* options, float radius)
+```
+
+**Description**
+
+Sets the radius in radial gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object.|
+| float radius | Radius in radial gradient effect options.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_RadialGradientOptions_GetRadius()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRadius(const OH_ArkUI_RadialGradientOptions* options, float* radius)
+```
+
+**Description**
+
+Obtains the radius in radial gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object.|
+| float* radius | Pointer to the radius in radial gradient effect options.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_RadialGradientOptions_SetRepeating()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRepeating(OH_ArkUI_RadialGradientOptions* options, bool repeating)
+```
+
+**Description**
+
+Sets whether the color is repeated in radial gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object.|
+| bool repeating | Whether the color is repeated in radial gradient options. The value **false** indicates that the color is not repeated, and the value **true** indicates that the color is repeated. The default value is **false**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_RadialGradientOptions_GetRepeating()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRepeating(const OH_ArkUI_RadialGradientOptions* options, bool* repeating)
+```
+
+**Description**
+
+Obtains whether the color is repeated in radial gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object.|
+| bool* repeating | Pointer to the **repeating** parameter indicating whether the color is repeated in radial gradient effect options.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_RadialGradientOptions_SetColorStop()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetColorStop(OH_ArkUI_RadialGradientOptions* options, const uint32_t* colors, const float* stops, int32_t colorsAndStopsSize)
+```
+
+**Description**
+
+Sets the color stop in radial gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object.|
+| const uint32_t* colors | Pointer to the color array.|
+| const float* stops | Pointer to the color stop array.|
+| int32_t colorsAndStopsSize | Number of elements in the color and color stop arrays. The number of elements in the color array must be the same as that in the color stop array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_RadialGradientOptions_GetColorStop()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetColorStop(const OH_ArkUI_RadialGradientOptions* options, uint32_t* colors, float* stops, int32_t colorsAndStopsSize, int32_t* writeLength)
+```
+
+**Description**
+
+Obtains the color stop in radial gradient effect options.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object.|
+| uint32_t* colors | Pointer to the buffer of the color array.|
+| float* stops | Pointer to the color stop array.|
+| int32_t colorsAndStopsSize | Number of elements in the color and color stop arrays. The number of elements in the color array must be the same as that in the color stop array.|
+| int32_t* writeLength | Pointer to the number of color stops that are actually written.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|

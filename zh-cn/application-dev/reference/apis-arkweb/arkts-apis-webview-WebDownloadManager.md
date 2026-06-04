@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-可以通过该类提供的接口来恢复失败的下载任务。
+可以通过该类提供的接口来设置下载委托或恢复失败的下载任务。
 
 > **说明：**
 >
@@ -30,7 +30,7 @@ static setDownloadDelegate(delegate: WebDownloadDelegate): void
 
 > **说明：**
 >
->在调用本接口前，若尚未创建Web组件且未执行initializeWebEngine方法完成Web内核初始化，必须先调用initializeWebEngine方法进行初始化，否则接口调用无效。
+>在调用本接口前，若尚未创建Web组件且未执行[initializeWebEngine](./arkts-apis-webview-WebviewController.md#initializewebengine)方法完成Web内核初始化，必须先调用initializeWebEngine方法进行初始化，否则接口调用无效。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

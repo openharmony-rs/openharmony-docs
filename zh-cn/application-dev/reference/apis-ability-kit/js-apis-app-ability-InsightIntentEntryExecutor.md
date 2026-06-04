@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供[@InsightIntentEntry](js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器的意图执行基类，必须与@InsightIntentEntry装饰器联合使用。

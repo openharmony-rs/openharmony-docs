@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @liusu23-->
 <!--Designer: @ccllee1; @xukeke-->
-<!--Tester: @lixueqing513; @lusq-->
+<!--Tester: @liangchengguang; @lusq-->
 <!--Adviser: @HelloCrease-->
 
 ## uris标签说明

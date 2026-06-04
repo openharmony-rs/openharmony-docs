@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wendel-->
 <!--Designer: @wendel-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 定义分身应用在运行态的结构信息。

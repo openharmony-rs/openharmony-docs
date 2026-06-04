@@ -381,7 +381,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_IMAGE_IMAGE_MATRIX = 4014
 ```
 
-Transformation matrix of the image. This attribute can be set, reset, and obtained as required through APIs. Affine image transformation can be implemented using floating-point numbers or matrix objects.<br>
+Transformation matrix of the image. This attribute can be set, reset, and obtained as required through APIs. Affine image transformation can be implemented using floating-point numbers.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 21
@@ -392,14 +392,12 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0...15].f32 | 4 x 4 matrix represented by a floating-point array with a length of 16. If the number of parameters is less than 16, the attribute setting fails, and [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned, indicating a parameter error. If the number of parameters exceeds 16, only the first 16 data entries are used.|
-| .object | The parameter type is [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | .value[0...15].f32 | 4 x 4 matrix represented by a floating-point array with a length of 16.|
-| .object | The parameter type is [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md).|
 
 ## NODE_IMAGE_MATCH_TEXT_DIRECTION
 

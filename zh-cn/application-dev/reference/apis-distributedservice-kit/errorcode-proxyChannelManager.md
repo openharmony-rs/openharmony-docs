@@ -1,8 +1,8 @@
 # 代理通道管理错误码
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
-<!--Owner: @wangJE-->
-<!--Designer: @lee_jet520-->
+<!--Owner: @jzy_123-->
+<!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
 

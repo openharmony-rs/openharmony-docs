@@ -104,6 +104,7 @@
     - [使用SM2密钥对签名验签(C/C++)](crypto-sm2-sign-sig-verify-pkcs1-ndk.md)
     - [SM2签名数据格式转换(ArkTS)](crypto-sm2-sign-data-format-conversion.md)
     - [SM2签名数据格式转换(C/C++)](crypto-sm2-sign-data-format-conversion-ndk.md)
+    - [使用ML-DSA密钥对签名验签(ArkTS)](crypto-ml-dsa-sign-sig-verify.md)
 - 密钥协商<!--crypto-key-agreement-->
   - [密钥协商介绍及算法规格](crypto-key-agreement-overview.md)
   - 密钥协商开发指导<!--crypto-key-agreement-dev-->
@@ -113,6 +114,8 @@
     - [使用X25519进行密钥协商(C/C++)](crypto-key-agreement-using-x25519-ndk.md)
     - [使用DH进行密钥协商(ArkTS)](crypto-key-agreement-using-dh.md)
     - [使用DH进行密钥协商(C/C++)](crypto-key-agreement-using-dh-ndk.md)
+- 密钥封装解封装<!--crypto-kem-->
+  - [使用KEM进行密钥封装解封装(ArkTS)](crypto-kem-encapsulate-decapsulate.md)
 - 消息摘要计算<!--crypto-generate-message-->
   - [消息摘要计算介绍及算法规格](crypto-generate-message-digest-overview.md)
   - 消息摘要计算开发指导<!--crypto-generate-message-digest-dev-->

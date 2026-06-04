@@ -19,6 +19,8 @@
 > - 当前多态样式实现依赖于组件自定义节点的刷新机制。因Builder不具备独立的自定义父节点，无法直接触发刷新，致使多态样式无法直接在Builder中生效。解决方法是将多态样式封装至自定义组件内部，再将此组件置于@Builder中，以此来间接实现多态样式。示例代码可参考[示例3（设置Builder多态样式）](#示例3设置builder多态样式)。
 >  
 > - 多态样式的焦点态只有在[焦点激活态](../../../ui/arkts-common-events-focus-event.md#基础概念)开启时生效。
+>
+> - 如果组件同时处于多种状态，并且分别在各自的状态里设置了一样的属性，那么最终样式生效的顺序由开发者设置的顺序决定，样式生效的顺序为后设置的生效。
 
 ## stateStyles
 
@@ -50,18 +52,17 @@ stateStyles(value: StateStyles): T
 
 ## StateStyles
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| normal | any | 否 | 是 | 组件无状态时的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| pressed | any | 否 | 是 | 组件按下状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| disabled | any | 否 | 是 | 组件禁用状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| focused | any | 否 | 是 | 组件获焦状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| clicked | any | 否 | 是 | 组件点击状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| selected<sup>10+</sup> | object | 否 | 是 | 组件选中状态的样式。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| normal | any | 否 | 是 | 组件无状态时的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| pressed | any | 否 | 是 | 组件按下状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| disabled | any | 否 | 是 | 组件禁用状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| focused | any | 否 | 是 | 组件获焦状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| clicked | any | 否 | 是 | 组件点击状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| selected<sup>10+</sup> | object | 否 | 是 | 组件选中状态的样式。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| hovered | object | 否 | 是 | 组件悬浮状态的样式。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **selected选中状态说明**
 
@@ -87,7 +88,9 @@ stateStyles(value: StateStyles): T
 
 ### 示例1（设置Text多态样式）
 
-该示例展示了状态为pressed和disabled时Text组件的样式变化。
+该示例展示了[stateStyles](#statestyles)设置状态为hovered、pressed和disabled时Text组件的样式变化。
+
+从API版本26.0.0开始，[stateStyles](#statestyles)新增hovered属性。
 
 ```ts
 // xxx.ets
@@ -97,12 +100,24 @@ struct StyleExample {
   @State isEnable: boolean = true
 
   @Styles
-  pressedStyles(): void {
-    .backgroundColor("#ED6F21")
+  hoveredStyles(): void {
+    .backgroundColor('#12db70')
     .borderRadius(10)
     .borderStyle(BorderStyle.Dashed)
     .borderWidth(2)
-    .borderColor("#33000000")
+    .borderColor('#33000000')
+    .width(120)
+    .height(30)
+    .opacity(1)
+  }
+
+  @Styles
+  pressedStyles(): void {
+    .backgroundColor('#ED6F21')
+    .borderRadius(10)
+    .borderStyle(BorderStyle.Dashed)
+    .borderWidth(2)
+    .borderColor('#33000000')
     .width(120)
     .height(30)
     .opacity(1)
@@ -110,11 +125,11 @@ struct StyleExample {
 
   @Styles
   disabledStyles(): void {
-    .backgroundColor("#E5E5E5")
+    .backgroundColor('#E5E5E5')
     .borderRadius(10)
     .borderStyle(BorderStyle.Solid)
     .borderWidth(2)
-    .borderColor("#2a4c1919")
+    .borderColor('#2a4c1919')
     .width(90)
     .height(25)
     .opacity(1)
@@ -122,11 +137,11 @@ struct StyleExample {
 
   @Styles
   normalStyles(): void {
-    .backgroundColor("#0A59F7")
+    .backgroundColor('#0A59F7')
     .borderRadius(10)
     .borderStyle(BorderStyle.Solid)
     .borderWidth(2)
-    .borderColor("#33000000")
+    .borderColor('#33000000')
     .width(100)
     .height(25)
     .opacity(1)
@@ -134,7 +149,7 @@ struct StyleExample {
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
-      Text("normal")
+      Text('normal')
         .fontSize(14)
         .fontColor(Color.White)
         .opacity(0.5)
@@ -144,8 +159,25 @@ struct StyleExample {
         })
         .margin({ bottom: 20 })
         .textAlign(TextAlign.Center)
-      Text("pressed")
-        .backgroundColor("#0A59F7")
+      Text('hovered')
+        .backgroundColor('#0A59F7')
+        .borderRadius(20)
+        .borderStyle(BorderStyle.Dotted)
+        .borderWidth(2)
+        .borderColor(Color.Red)
+        .width(100)
+        .height(25)
+        .opacity(1)
+        .fontSize(14)
+        .fontColor(Color.White)
+        // stateStyles设置组件鼠标悬浮状态时的样式
+        .stateStyles({
+          hovered: this.hoveredStyles,
+        })
+        .margin({ bottom: 20 })
+        .textAlign(TextAlign.Center)
+      Text('pressed')
+        .backgroundColor('#0A59F7')
         .borderRadius(20)
         .borderStyle(BorderStyle.Dotted)
         .borderWidth(2)
@@ -161,8 +193,8 @@ struct StyleExample {
         })
         .margin({ bottom: 20 })
         .textAlign(TextAlign.Center)
-      Text(this.isEnable == true ? "effective" : "disabled")
-        .backgroundColor("#0A59F7")
+      Text(this.isEnable == true ? 'effective' : 'disabled')
+        .backgroundColor('#0A59F7')
         .borderRadius(20)
         .borderStyle(BorderStyle.Solid)
         .borderWidth(2)
@@ -178,7 +210,7 @@ struct StyleExample {
           disabled: this.disabledStyles,
         })
         .textAlign(TextAlign.Center)
-      Text("control disabled")
+      Text('control disabled')
         .onClick(() => {
           this.isEnable = !this.isEnable
           console.info(`${this.isEnable}`)

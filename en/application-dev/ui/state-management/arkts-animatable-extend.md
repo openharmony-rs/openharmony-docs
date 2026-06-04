@@ -1,8 +1,8 @@
 # \@AnimatableExtend Decorator: Defining Animatable Properties
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @yangfan229-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @zhang_yixin13-->
 

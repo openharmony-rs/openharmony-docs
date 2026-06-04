@@ -45,11 +45,11 @@
 
 - Anti-aliasing disabled
 
-  ![en-us_image_0000001214837333](figures/en-us_image_0000001214837333.png)
+  ![disabled-anti-aliasing](figures/disabled-anti-aliasing.png)
 
 - Anti-aliasing enabled
 
-  ![en-us_image_0000001127125162](figures/en-us_image_0000001127125162.png)
+  ![enabled-anti-aliasing](figures/enabled-anti-aliasing.png)
 
 
 ## Properties
@@ -173,7 +173,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001214837127](figures/en-us_image_0000001214837127.png)
+![example-lineCap](figures/example-lineCap.png)
 
 ### lineJoin
 
@@ -201,7 +201,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001214717247](figures/en-us_image_0000001214717247.png)
+![example-lineJoin](figures/example-lineJoin.png)
 
 ### miterLimit
 
@@ -431,7 +431,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001213192781](figures/en-us_image_0000001213192781.png)
+![red-blue-matrix](figures/red-blue-matrix.png)
 
   In the above example, the blue rectangle represents the new drawing, and the red rectangle represents the existing drawing.
 
@@ -536,7 +536,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001213193285](figures/en-us_image_0000001213193285.png)
+![red-shadowOffsetY](figures/red-shadowOffsetY.png)
 
 ### imageSmoothingEnabled
 
@@ -607,7 +607,7 @@ Fills a rectangle.
   }
   ```
 
-  ![en-us_image_0000001214811029](figures/en-us_image_0000001214811029.png)
+  ![example-fillRect](figures/example-fillRect.png)
 
 ### clearRect
 
@@ -647,7 +647,7 @@ Clears the content in a rectangle on the canvas.
   }
   ```
 
-  ![en-us_image_0000001214619417](figures/en-us_image_0000001214619417.png)
+  ![example-clearRect](figures/example-clearRect.png)
 
 
 ### strokeRect
@@ -686,7 +686,7 @@ Draws a rectangle stroke on the canvas.
   }
   ```
 
-  ![en-us_image_0000001214822091](figures/en-us_image_0000001214822091.png)
+  ![example2-strokeRect](figures/example2-strokeRect.png)
 
 
 ### fillText
@@ -725,7 +725,7 @@ Draws filled text on the canvas.
   }
   ```
 
-  ![en-us_image_0000001214469787](figures/en-us_image_0000001214469787.png)
+  ![example-fillText](figures/example-fillText.png)
 
 ### strokeText
 
@@ -763,7 +763,7 @@ Draws a text stroke on the canvas.
   }
   ```
 
-  ![en-us_image_0000001214460669](figures/en-us_image_0000001214460669.png)
+  ![example-strokeText](figures/example-strokeText.png)
 
 ### measureText
 
@@ -874,7 +874,7 @@ Creates a drawing path.
   }
   ```
 
-  ![en-us_image_0000001214629745](figures/en-us_image_0000001214629745.png)
+  ![example-beginPath](figures/example-beginPath.png)
 
 
 ### moveTo
@@ -1076,7 +1076,7 @@ Creates a path for a cubic Bezier curve.
   }
   ```
 
-  ![en-us_image_0000001214621177](figures/en-us_image_0000001214621177.png)
+  ![example-bezierCurveTo](figures/example-bezierCurveTo.png)
 
 ### quadraticCurveTo
 
@@ -1244,7 +1244,7 @@ Draws an ellipse in the specified rectangular region on the canvas.
   }
   ```
 
-  ![en-us_image_0000001214823665](figures/en-us_image_0000001214823665.png)
+  ![example-ellipse](figures/example-ellipse.png)
 
 
 ### rect
@@ -1283,7 +1283,7 @@ Creates a rectangle.
   }
   ```
 
-  ![en-us_image_0000001214630783](figures/en-us_image_0000001214630783.png)
+  ![example-rect](figures/example-rect.png)
 
 ### fill
 
@@ -1313,7 +1313,7 @@ Fills the area inside a closed path.
   }
   ```
 
-  ![en-us_image_0000001214703717](figures/en-us_image_0000001214703717.png)
+  ![example-fill](figures/example-fill.png)
 
 ### clip
 
@@ -1421,7 +1421,7 @@ Scales a canvas based on scale factors.
   }
   ```
 
-  ![en-us_image_0000001214463281](figures/en-us_image_0000001214463281.png)
+  ![example-strokeRect](figures/example-strokeRect.png)
 
 ### transform
 
@@ -1475,7 +1475,7 @@ Defines a transformation matrix. To transform a graph, you only need to set para
   }
   ```
 
-  ![en-us_image_0000001214623227](figures/en-us_image_0000001214623227.png)
+  ![example-transform](figures/example-transform.png)
 
 ### setTransform
 
@@ -1606,7 +1606,7 @@ Creates a **Path2D** object.
   }
   ```
 
-  ![en-us_image_0000001214824709](figures/en-us_image_0000001214824709.png)
+  ![example-createPath2D](figures/example-createPath2D.png)
 
 ### drawImage
 
@@ -1652,7 +1652,7 @@ Draws an image.
   }
   ```
 
-  ![en-us_image_0000001214704759](figures/en-us_image_0000001214704759.png)
+  ![example-drawImage](figures/example-drawImage.png)
 
 ### restore
 
@@ -2027,7 +2027,7 @@ Puts the **ImageData** onto a rectangular area on the canvas.
   }
   ```
 
-  ![en-us_image_0000001214463283](figures/en-us_image_0000001214463283.png)
+  ![example-putImageData](figures/example-putImageData.png)
 
 ### getPixelMap<sup>9+</sup>
 
@@ -2107,7 +2107,7 @@ Sets the dash line style.
   }
   ```
 
-  ![en-us_image_0000001214623229](figures/en-us_image_0000001214623229.png)
+  ![example-setLineDash](figures/example-setLineDash.png)
 
 ### getLineDash
 

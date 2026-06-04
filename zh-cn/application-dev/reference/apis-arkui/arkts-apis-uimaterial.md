@@ -47,7 +47,7 @@ import { uiMaterial } from '@kit.ArkUI';
 | 名称     | 值 | 说明              |
 | ------ | --- | --------------- |
 | DEFAULT | 0 | 默认模式。[弹出框Dialog](../../ui/arkts-base-dialog-overview.md)、[即时反馈（Toast）](../../ui/arkts-create-toast.md)、[AlphabetIndexer](arkui-ts/ts-container-alphabet-indexer.md)在组件本身未设置背景颜色、模糊参数和阴影参数时默认开启沉浸式系统材质；[Text](arkui-ts/ts-basic-components-text.md)设置[copyOption](arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单默认开启沉浸式系统材质；其他组件由应用主动设置。 |
-| ENABLE | 1 | 使能模式。[弹出框Dialog](../../ui/arkts-base-dialog-overview.md)、[即时反馈（Toast）](../../ui/arkts-create-toast.md)、[AlphabetIndexer](arkui-ts/ts-container-alphabet-indexer.md)、[ChipGroup](arkui-ts/ohos-arkui-advanced-ChipGroup.md)、[Chip](arkui-ts/ohos-arkui-advanced-Chip.md)、[Select](arkui-ts/ts-basic-components-select.md)、[菜单控制](arkui-ts/ts-universal-attributes-menu.md)、[Toggle](arkui-ts/ts-basic-components-toggle.md)、[SegmentButton](arkui-ts/ohos-arkui-advanced-SegmentButton.md)、[SegmentButtonV2](arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)、[bindSheet](arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)组件默认开启沉浸式系统材质；[Text](arkui-ts/ts-basic-components-text.md)设置[copyOption](arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单默认开启沉浸式系统材质。此模式下，沉浸式系统材质样式生效的优先级高于组件本身设置的背景色、模糊、阴影和边框样式。其他组件需开发者主动设置。|
+| ENABLE | 1 | 使能模式。[弹出框Dialog](../../ui/arkts-base-dialog-overview.md)、[即时反馈（Toast）](../../ui/arkts-create-toast.md)、[AlphabetIndexer](arkui-ts/ts-container-alphabet-indexer.md)、[ChipGroup](arkui-ts/ohos-arkui-advanced-ChipGroup.md)、[Chip](arkui-ts/ohos-arkui-advanced-Chip.md)、[Select](arkui-ts/ts-basic-components-select.md)、[菜单控制](arkui-ts/ts-universal-attributes-menu.md)、[Toggle](arkui-ts/ts-basic-components-toggle.md)、[SegmentButton](arkui-ts/ohos-arkui-advanced-SegmentButton.md)、[SegmentButtonV2](arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)、[Slider](arkui-ts/ts-basic-components-slider.md)、[bindSheet](arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)、[SelectionMenu](arkui-ts/ohos-arkui-advanced-SelectionMenu.md)组件默认开启沉浸式系统材质；[Text](arkui-ts/ts-basic-components-text.md)设置[copyOption](arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单默认开启沉浸式系统材质。此模式下，沉浸式系统材质样式生效的优先级高于组件本身设置的背景色、模糊、阴影和边框样式。其他组件需开发者主动设置。|
 | DISABLE | 2 | 禁用模式。所有组件禁止开启沉浸式系统材质，即使主动为组件设置沉浸式系统材质参数也不会生效。 |
 
 ## MaterialInfo
@@ -67,7 +67,7 @@ import { uiMaterial } from '@kit.ArkUI';
 | state   | [MaterialState](#materialstate)                                   | 否 | 否   | 材质使能状态配置。 |
 | type   | [MaterialType](#materialtype)                                   | 否 | 否   | 材质类型标识，表示当前配置对应的材质类型。该值仅用于类型标识，不映射到底层功能。 |
 
-## getMaterialInfo
+## uiMaterial.getMaterialInfo
 
 getMaterialInfo(): MaterialInfo
 
@@ -86,28 +86,6 @@ getMaterialInfo(): MaterialInfo
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | [MaterialInfo](#materialinfo) | 返回当前应用的材质配置信息，包含材质使能状态和材质类型。 |
-
-## empty
-
-static get empty(): Material
-
-返回空材质对象，用于组件单独关闭沉浸式系统材质效果。使用方式为`uiMaterial.Material.empty`。
-
-在enable模式下，可通过设置`systemMaterial(uiMaterial.Material.empty)`来单独关闭某个组件的沉浸式系统材质效果。如果组件未支持组件级沉浸式系统材质接口，则无法通过此方法关闭材质效果。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| [Material](#material) | 返回空材质对象，表示无材质效果。 |
 
 ## ImmersiveStyle
 
@@ -168,7 +146,7 @@ static get empty(): Material
 
 ## Material
 
-UI侧的系统材质对象基类。
+系统材质对象基类。
 
 **起始版本：** 26.0.0
 
@@ -179,6 +157,28 @@ UI侧的系统材质对象基类。
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### empty
+
+static get empty(): Material
+
+返回空材质对象，用于组件单独关闭沉浸式系统材质效果。使用方式为`uiMaterial.Material.empty`。
+
+在enable模式下，可通过设置`systemMaterial(uiMaterial.Material.empty)`来单独关闭某个组件的沉浸式系统材质效果。如果组件未支持组件级沉浸式系统材质接口，则无法通过此方法关闭材质效果。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| [Material](#material) | 返回空材质对象，表示无材质效果。 |
 
 ## ImmersiveMaterial
 
@@ -315,12 +315,12 @@ struct SystemMaterialPage {
 
 ### 示例2（获取材质配置信息并使用空材质关闭沉浸式系统材质）
 
-本示例介绍如何通过[getMaterialInfo](#getmaterialinfo)获取当前应用的材质配置信息，并根据配置状态使用[empty](#empty)关闭特定组件的沉浸式系统材质效果。
+本示例介绍如何通过[uiMaterial.getMaterialInfo](#uimaterialgetmaterialinfo)获取当前应用的材质配置信息，并根据配置状态使用[empty](#empty)关闭特定组件的沉浸式系统材质效果。
 
-从API版本26.0.0开始，新增getMaterialInfo方法和empty方法。
+从API版本26.0.0开始，新增uiMaterial.getMaterialInfo方法和empty方法。
 
 首先在[module.json5](../../quick-start/module-configuration-file.md)文件中配置开关信息，需注意只有在entry类型的module中配置才会生效。
-``` ts
+``` json5
 {
   "module": {
     // ···

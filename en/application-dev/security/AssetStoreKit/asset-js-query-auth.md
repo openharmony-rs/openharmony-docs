@@ -2,8 +2,8 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -56,7 +56,7 @@ The following table describes the attributes of **AssetMap** used for querying a
   | ALIAS                 | Type: Uint8Array<br>Length: 1-256 bytes                           | Yes    | Asset alias, which uniquely identifies an asset.      |
   | AUTH_CHALLENGE        | Type: Uint8Array<br>Length: 32 bytes                              | Yes    | Challenge for the user authentication.                             |
   | AUTH_TOKEN            | Type: Uint8Array<br>Length: 1-1024 bytes since API version 20<br>Length: 148 bytes for API versions 11-19      | Yes    | Authorization token obtained after the user authentication is successful.                        |
-  | RETURN_TYPE           | Type: number                          | Yes    | Type of the asset query result to return.                   |
+  | RETURN_TYPE           | Type: number<br>Value: asset.ReturnType.ALL                          | Yes    | Type of the asset query result to return.                   |
   | ACCESSIBILITY         | Type: number<br>Value range: see [Accessibility](../../reference/apis-asset-store-kit/js-apis-asset.md#accessibility)| No    | Access control based on the lock screen status.                                    |
   | REQUIRE_PASSWORD_SET  | Type: Boolean                                                  | No    | Whether the asset is accessible only when a lock screen password is set. The value **true** means the asset is accessible only when a lock screen password is set. The value **false** means that the asset can be accessed regardless of whether a lock screen password is set.    |
   | AUTH_TYPE             | Type: number<br>Value range: see [AuthType](../../reference/apis-asset-store-kit/js-apis-asset.md#authtype)| No    | Type of user authentication required for accessing the asset.                 |

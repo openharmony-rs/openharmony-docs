@@ -496,7 +496,7 @@
 <!--Del-->
 **是否支持证书授权**：true<!--DelEnd-->
 
-**支持设备**：PC/2in1
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：12
 
@@ -527,6 +527,8 @@
 
 <!--Del-->
 **是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：14
 
@@ -824,5 +826,39 @@
 **是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
+
+允许企业MDM应用管理本地账号。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.ENTERPRISE_INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+允许企业MDM应用进行多用户操作。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：Phone | Tablet
 
 **起始版本**：26.0.0

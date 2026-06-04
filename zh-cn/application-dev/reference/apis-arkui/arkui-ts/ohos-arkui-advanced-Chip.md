@@ -10,8 +10,9 @@ Chip用于搜索框历史记录、邮件发送列表等场景。
 
 > **说明：**
 >
-> 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -86,6 +87,7 @@ ChipOptions定义Chip的样式及具体式样参数。
 >
 > 4. prefixIcon的fillColor默认值为：`$r('sys.color.ohos_id_color_secondary')`，suffixIcon的fillColor默认值为：`$r('sys.color.ohos_id_color_primary')`。fillColor对颜色的解析与Image组件保持一致。
 >5. prefixIcon和suffixIcon的activatedFillColor默认值均为：`$r('sys.color.ohos_id_color_text_primary_contrary')`。activatedFillColor对颜色的解析与Image组件保持一致。
+> 6. 从API版本26.0.0开始，当配置backgroundSystemMaterial为自动反色材质时，prefixIcon和suffixIcon的填充色以及prefixSymbol和suffixSymbol在非激活状态下的文字颜色会使用支持反色的系统资源，这些颜色会根据背景材质自动匹配反色效果；当设置activatedBackgroundSystemMaterial为自动反色材质时，prefixIcon和suffixIcon的激活态填充色以及prefixSymbol和suffixSymbol在激活状态下的文字颜色同样采用支持反色的系统资源，实现与背景材质反色的自动适配。
 
 ## ChipSize
 
@@ -240,6 +242,10 @@ LabelOptions定义文本属性。
 | fontFamily  | string                                     | 否  | 是  | 文字字体。<br/>默认值："HarmonyOS Sans"<br>值为undefined时，按默认值处理。 |
 | labelMargin | [LabelMarginOptions](#labelmarginoptions)  | 否  | 是  | 文本与左右侧图标之间间距。<br>默认值：<br>size为ChipSize.SMALL时，默认值：{ left: 4, right: 4 }<br>size为ChipSize.NORMAL时，默认值：{ left: 6, right: 6 }<br>单位：vp<br>值为undefined时，按默认值处理。 |
 | localizedLabelMargin<sup>12+</sup> | [LocalizedLabelMarginOptions](#localizedlabelmarginoptions12) | 否 | 是 | 本地化文本与左右侧图标之间间距。<br/>默认值：<br>size为ChipSize.SMALL时，默认值：<br>`{  start: LengthMetrics.resource($r('sys.float.chip_small_text_margin')),  end: LengthMetrics.resource($r('sys.float.chip_small_text_margin')) }`<br>size为ChipSize.NORMAL时，默认值：<br>`{  start: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')),  end: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')) }`<br>值为undefined时，按默认值处理。 |
+
+> **说明：**
+>
+> 从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的新材质时，fontColor使用支持反色的特殊系统资源，文字颜色自动适配到材质背景色的反色；activatedBackgroundSystemMaterial设置自动反色的新材质时，activatedFontColor使用支持反色的特殊系统资源，操作块激活时的文字颜色自动适配到材质背景色的反色。
 
 ## CloseOptions<sup>14+</sup>
 
@@ -934,56 +940,57 @@ struct ChipAccessibilityExample {
 
 ### 示例10（设置系统材质样式）
 
-该示例通过配置backgroundSystemMaterial和activatedBackgroundSystemMaterial实现系统材质样式。
+该示例通过配置backgroundSystemMaterial和activatedBackgroundSystemMaterial实现系统材质样式，启用自动反色功能适配标签文本颜色。
 
 从API版本26.0.0开始，[ChipOptions](#chipoptions)新增backgroundSystemMaterial和activatedBackgroundSystemMaterial属性。
 
 ```ts
-import { Chip, uiMaterial } from '@kit.ArkUI';
+import { Chip, ChipOptions, uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct ChipMaterialExample {
-  @State isActivated: boolean = false;
+  private chipOptions: ChipOptions = {
+    label: {
+      text: '操作块',
+      // 将fontColor设置为特殊系统资源值，启用自动反色能力。
+      fontColor: $r('sys.color.font_primary'),
+      activatedFontColor: $r('sys.color.font_primary')
+    },
+    allowClose: false,
+    // 设置普通状态下的背景颜色为透明，否则会和系统材质冲突。
+    backgroundColor: Color.Transparent,
+    // 设置普通状态下的系统材质样式为ULTRA_THIN，并开启自动反色。
+    backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      colorInvert: true
+    }),
+    // 设置激活状态下的背景颜色为透明，否则会和系统材质冲突。
+    activatedBackgroundColor: Color.Transparent,
+    // 设置激活状态下的系统材质样式。
+    activatedBackgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+    })
+  }
 
   build() {
-    Column({ space: 10 }) {
-      Chip({
-        label: { text: '操作块' },
-        activated: this.isActivated,
-        // 设置普通状态下的背景颜色为透明，否则会和系统材质冲突
-        backgroundColor: Color.Transparent,
-        // 设置普通状态下的系统材质样式
-        backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
-          style: uiMaterial.ImmersiveStyle.REGULAR
-        }),
-        // 设置激活状态下的背景颜色为透明，否则会和系统材质冲突
-        activatedBackgroundColor: Color.Transparent,
-        // 设置激活状态下的系统材质样式
-        activatedBackgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
-          style: uiMaterial.ImmersiveStyle.THICK
-        })
-      })
-
-      Button('改变激活状态')
-        .onClick(() => {
-          // 切换Chip的激活状态，演示不同材质效果
-          this.isActivated = !this.isActivated;
-        })
+    Column({ space: 50 }) {
+      Chip(this.chipOptions)
+      Chip(this.chipOptions)
     }
     .linearGradient({
-      angle: 135, // 渐变角度，135度是从左上到右下
+      angle: 0, // 渐变角度，0度是从左到右。
       colors: [
-        ['#FF9A9E', 0.0], // 起始颜色及位置 (0.0表示起点)
-        ['#FECFEF', 0.5], // 中间颜色及位置
-        ['#A18CD1', 1.0]  // 结束颜色及位置 (1.0表示终点)
+        ['#FF9A9E', 0.0], // 起始颜色及位置（0.0表示起点）。
+        ['#FECFEF', 0.5], // 中间颜色及位置。
+        ['#3B324C', 1.0] // 结束颜色及位置（1.0表示终点）。
       ]
     })
     .padding(12)
     .width('100%')
-    .height('100%')
+    .height(150)
   }
 }
 ```
 
-![](figures/zh-cn_chip_material.png)
+![](figures/chip_material.png)

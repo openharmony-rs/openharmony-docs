@@ -1,8 +1,8 @@
 # @ohos.window (窗口)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -248,8 +248,8 @@ import { window } from '@kit.ArkUI';
 | currentLayoutMode             | string               | 否   | 是   | 子窗当前布局模式，用于控制应用定制的UI效果。若不传，则默认为空字符串。|
 | parentWindowSizeChangeCallback             |     Callback&lt;[Size](arkts-apis-window-i.md#size7)&gt;           | 否   | 是   | 父窗大小变化的回调。绑定后立即回调一次，后续父窗大小变化时通知。默认不传，无法收到父窗大小变化通知。|
 | parentWindowStatusChangeCallback             |     Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt;           | 否   | 是   | 父窗模式变化的回调。绑定后立即回调一次，后续父窗模式变化时通知。默认不传，无法收到父窗模式变化通知。|
-| isIntersectedWidthLimit | boolean | 否 | 是 | 子窗与绑定主窗的宽度是否互相限制。<br>true表示子窗与绑定主窗的宽度不能超过两个窗口宽度限制的交集；若两者宽度限制无交集，则不互相限制。当多个子窗同时设置此参数为true时，所有参与互限的窗口（包括主窗）的宽度受全部窗口宽度限制的交集约束。<br>false表示子窗与绑定主窗的宽度不会互相限制。<br>默认为false。 |
-| isIntersectedHeightLimit | boolean | 否 | 是 | 子窗与绑定主窗的高度是否互相限制。<br>true表示子窗与绑定主窗的高度不能超过两个窗口高度限制的交集；若两者高度限制无交集，则不互相限制。当多个子窗同时设置此参数为true时，所有参与互限的窗口（包括主窗）的高度受全部窗口高度限制的交集约束。<br>false表示子窗与绑定主窗的高度不会互相限制。<br>默认为false。 |
+| isIntersectedWidthLimit | boolean | 否 | 是 | 子窗与绑定主窗的宽度是否互相限制。<br>true表示子窗与绑定主窗的宽度不能超过两个窗口宽度限制的交集；若两者宽度限制无交集，则不互相限制。当多个子窗同时设置此参数为true时，所有参与互限的窗口（包括主窗）的宽度受全部窗口宽度限制的交集约束。<br>false表示子窗与绑定主窗的宽度不会互相限制。<br>默认为false。<br>**起始版本：** 26.0.0 |
+| isIntersectedHeightLimit | boolean | 否 | 是 | 子窗与绑定主窗的高度是否互相限制。<br>true表示子窗与绑定主窗的高度不能超过两个窗口高度限制的交集；若两者高度限制无交集，则不互相限制。当多个子窗同时设置此参数为true时，所有参与互限的窗口（包括主窗）的高度受全部窗口高度限制的交集约束。<br>false表示子窗与绑定主窗的高度不会互相限制。<br>默认为false。<br>**起始版本：** 26.0.0 |
 
 ## WindowLayoutMode<sup>(deprecated)</sup>
 
@@ -1336,7 +1336,7 @@ moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;v
 将指定的主窗口迁移到指定的屏幕上。使用Promise异步回调。
 
 - 对于[主屏](../../displaymanager/display-terminology.md#主屏)/[扩展屏](../../displaymanager/display-terminology.md#扩展屏)与[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)之间以及虚拟屏与虚拟屏之间的窗口迁移，仅主窗及其子窗会一起被迁移到对应屏幕上且被抬升，如果存在子窗，最上层可获焦子窗会获取焦点，否则主窗口获焦。
-- 对于主屏与扩展屏之间的窗口迁移，只会将主窗口迁移到对应屏幕，抬升并获取焦点。
+- 对于主屏与扩展屏之间的窗口迁移，只会将主窗口迁移到对应屏幕并抬升层级。
 
 <!--RP3--><!--RP3End-->
 
@@ -1897,7 +1897,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 
 该相对位置通过子窗与主窗之间的锚点偏移量表示，子窗和主窗使用的窗口锚点相同。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口时，将返回1300004错误码。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口时，将返回1300004错误码。
 
 > **说明：**
 >
@@ -1995,7 +1995,7 @@ detachLayoutToParentWindow(): Promise&lt;void&gt;
 
 解除一级子窗与主窗保持相对位置不变的协同关系。使用Promise异步回调。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口时，将返回1300004错误码。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口时，将返回1300004错误码。
 
 > **说明：**
 >
@@ -2854,7 +2854,7 @@ raiseToAppTop(callback: AsyncCallback&lt;void&gt;): void
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3072,7 +3072,7 @@ raiseAboveTarget(windowId: number, callback: AsyncCallback&lt;void&gt;): void
 
 使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3149,7 +3149,7 @@ raiseAboveTarget(windowId: number): Promise&lt;void&gt;
 
 使用该接口需要确保要抬升的子窗口和目标子窗口都已创建完成，分别调用[showWindow()](arkts-apis-window-Window.md#showwindow9)并执行完毕。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3539,7 +3539,7 @@ hideNonSystemFloatingWindows(shouldHide: boolean, callback: AsyncCallback&lt;voi
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、其他设备的电脑模式中调用不生效也不报错，在其他设备和其他模式中可正常调用。
+**设备行为差异：** 该接口在PC/2in1设备、其他设备的电脑模式中调用不生效也不报错，在其他设备和其他模式中可正常调用。
 
 **参数：**
 
@@ -3618,7 +3618,7 @@ hideNonSystemFloatingWindows(shouldHide: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、其他设备的电脑模式中调用不生效也不报错，在其他设备和其他模式中可正常调用。
+**设备行为差异：** 该接口在PC/2in1设备、其他设备的电脑模式中调用不生效也不报错，在其他设备和其他模式中可正常调用。
 
 **参数：**
 
@@ -3876,7 +3876,7 @@ setTopmost(isTopmost: boolean): Promise&lt;void&gt;
 
 **设备行为差异：**
 
-在<!--RP2-->OpenHarmony 6.1<!--RP2End-->之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+在<!--RP2-->OpenHarmony 6.1<!--RP2End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 从<!--RP2-->OpenHarmony 6.1<!--RP2End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
@@ -3987,7 +3987,7 @@ setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, is
 
 设置标题栏上的最大化、最小化、分屏按钮是否可见。
 
-仅支持主窗和[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口，其他窗口调用时将返回1300004错误码。
+仅支持主窗和[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口，其他窗口调用时将返回1300004错误码。
 
 仅对在当前场景下可见的标题栏按钮（最大化、最小化、分屏）生效。
 
@@ -4059,7 +4059,7 @@ export default class EntryAbility extends UIAbility {
 
 setRotationLocked(locked: boolean): Promise&lt;void&gt;
 
-仅支持[系统窗口](../../windowmanager/window-terminology.md#系统窗口)设置旋转锁定，锁定后系统窗口显示方向不变，未锁定时系统窗口显示方向受主窗口显示方向、旋转锁定按钮、sensor旋转影响。非系统窗口调用返回1300029错误码。使用Promise异步回调。
+仅支持[系统窗口](../../windowmanager/window-type-overview.md#系统窗口)设置旋转锁定，锁定后系统窗口显示方向不变，未锁定时系统窗口显示方向受主窗口显示方向、旋转锁定按钮、sensor旋转影响。非系统窗口调用返回1300029错误码。使用Promise异步回调。
 
 > **说明：**
 >
@@ -4123,7 +4123,7 @@ promise.then(() => {
 
 getRotationLocked(): boolean
 
-仅支持[系统窗口](../../windowmanager/window-terminology.md#系统窗口)获取当前旋转锁定状态。非系统窗口调用返回1300029错误码。
+仅支持[系统窗口](../../windowmanager/window-type-overview.md#系统窗口)获取当前旋转锁定状态。非系统窗口调用返回1300029错误码。
 
 **系统接口：** 此接口为系统接口。
 

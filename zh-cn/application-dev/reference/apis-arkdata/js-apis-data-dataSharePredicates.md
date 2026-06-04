@@ -15,7 +15,7 @@
 - 用于在媒体文件管理服务作为检索条件使用，参考相册管理模块检索条件[FetchOptions](../apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#fetchoptions)。此种场景下，开发者无需关注数据库类型。
 
 <!--Del-->
-- 用于调用[关系型数据库](js-apis-data-relationalStore-sys.md)和[键值型数据库](js-apis-distributedKVStore-sys.md)系统接口时的检索条件使用。此种场景下，开发者根据使用的数据库类型参考对应的谓词使用方法。
+- 用于调用[关系型数据库](js-apis-data-relationalStore-sys.md)和[分布式键值数据库](js-apis-distributedKVStore-sys.md)系统接口时的检索条件使用。此种场景下，开发者根据使用的数据库类型参考对应的谓词使用方法。
 <!--DelEnd-->
 
 > **说明：** 
@@ -35,7 +35,9 @@ import { dataSharePredicates } from '@kit.ArkData';
 ## DataSharePredicates
 提供用于不同实现不同查询方法的数据共享谓词。该类型不是多线程安全的，如果应用中存在多线程同时操作该类派生出的实例，注意加锁保护。
 
-### equalTo<sup>10+</sup>
+**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+
+### equalTo
 
 equalTo(field: string, value: ValueType): DataSharePredicates
 
@@ -68,7 +70,7 @@ predicates.equalTo("NAME", "Rose");
 ```
 
 
-### and<sup>10+</sup>
+### and
 
 and(): DataSharePredicates
 
@@ -95,7 +97,7 @@ predicates.equalTo("NAME", "lisi")
     .equalTo("SALARY", 200.5);
 ```
 
-### orderByAsc<sup>10+</sup>
+### orderByAsc
 
 orderByAsc(field: string): DataSharePredicates
 
@@ -126,7 +128,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.orderByAsc("AGE");
 ```
 
-### orderByDesc<sup>10+</sup>
+### orderByDesc
 
 orderByDesc(field: string): DataSharePredicates
 
@@ -157,7 +159,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.orderByDesc("AGE");
 ```
 
-### limit<sup>10+</sup>
+### limit
 
 limit(total: number, offset: number): DataSharePredicates
 
@@ -189,7 +191,7 @@ let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Rose").limit(10, 3);
 ```
 
-### in<sup>10+</sup>
+### in
 
 in(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 

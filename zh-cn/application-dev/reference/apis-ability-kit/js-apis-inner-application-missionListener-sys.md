@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 定义系统任务状态监听，可以通过[on](js-apis-app-ability-missionManager-sys.md#missionmanageronmission)注册。

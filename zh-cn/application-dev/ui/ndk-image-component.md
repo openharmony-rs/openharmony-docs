@@ -847,4 +847,4 @@ nativeNodeApi->unregisterNodeEventReceiver();
 
 5. 效果预览
 
-    ![capiImageExmaple](figures/imageCapiExample.png)
+    ![capiImageExample](figures/imageCapiExample.png)

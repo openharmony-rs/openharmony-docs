@@ -43,6 +43,7 @@
       - [Class (OverlayManager)](arkts-apis-uicontext-overlaymanager.md)
       - [Class (PromptAction)](arkts-apis-uicontext-promptaction.md)
       - [Class (Router)](arkts-apis-uicontext-router.md)
+      - [Class (SmartGestureController)](arkts-apis-uicontext-smartgesturecontroller.md)
       - [Class (SwiperDynamicSyncScene)](arkts-apis-uicontext-swiperdynamicsyncscene.md)
       - [Class (TextMenuController)](arkts-apis-uicontext-textmenucontroller.md)
       - [Class (UIContext)](arkts-apis-uicontext-uicontext.md)
@@ -103,6 +104,9 @@
   - 窗口管理<!--window-manager-api-->
     - [@ohos.window.floatView (标准悬浮窗)](js-apis-floatView.md)
     - [@ohos.PiPWindow (画中画窗口)](js-apis-pipWindow.md)
+    <!--Del-->
+    - [@ohos.PiPWindow (画中画窗口)(系统接口)](js-apis-pipWindow-sys.md)
+    <!--DelEnd-->
     - [@ohos.window.floatingBall (闪控球窗口)](js-apis-floatingBall.md)
     - @ohos.window (窗口)<!--js-apis-window-->
       - [模块描述](arkts-apis-window.md)
@@ -202,8 +206,8 @@
       - [点击回弹效果](arkui-ts/ts-universal-attributes-click-effect.md)
       - [特效绘制合并](arkui-ts/ts-universal-attributes-use-effect.md)
       - [组件内容填充方式](arkui-ts/ts-universal-attributes-renderfit.md)
-      - [空间效果](arkui-ts/ts-universal-attributes-spatial-effect.md)
       <!--Del-->
+      - [空间效果 (系统接口)](arkui-ts/ts-universal-attributes-spatial-effect-sys.md)
       - [点光源设置 (系统接口)](arkui-ts/ts-universal-attributes-point-light-style-sys.md)
       - [图像效果 (系统接口)](arkui-ts/ts-universal-attributes-image-effect-sys.md)
       - [融合效果 (系统接口)](arkui-ts/ts-universal-attributes-use-union-effect-sys.md)
@@ -215,6 +219,7 @@
       - [拖拽排序](arkui-ts/ts-universal-attributes-drag-sorting.md)
       - [悬浮态效果](arkui-ts/ts-universal-attributes-hover-effect.md)
       - [点击音效](arkui-ts/ts-universal-attributes-click-sound.md)
+      - [智慧手势响应](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md)
       - 触摸交互控制<!--touch-interactions-->
         - [触摸热区设置](arkui-ts/ts-universal-attributes-touch-target.md)
         - [触摸测试控制](arkui-ts/ts-universal-attributes-hit-test-behavior.md)
@@ -242,6 +247,7 @@
       - [自定义内容](arkui-ts/ts-universal-attributes-content-modifier.md)
       - [自定义属性设置](arkui-ts/ts-universal-attributes-custom-property.md)
       - [动态SymbolGlyphModifier属性设置](arkui-ts/ts-universal-attributes-attribute-symbolglyphmodifier.md)
+      - [属性操作工具](arkui-ts/ts-universal-attributes-modifierutils.md)
     - 其他<!--other-property-->
       - [复用标识](arkui-ts/ts-universal-attributes-reuse-id.md)
       - [复用选项](arkui-ts/ts-universal-attributes-reuse.md)
@@ -284,6 +290,8 @@
     - [SideBarContainer](arkui-ts/ts-container-sidebarcontainer.md)
   - 动态布局<!--dynamic-layout-->
     - [DynamicLayout](arkui-ts/ts-container-dynamiclayout.md)
+  - 容器断点<!--container-reader-->
+    - [ContainerReader](arkui-ts/ts-container-containerreader.md)
   - 滚动与滑动<!--scroll-and-swipe-->
     - [List](arkui-ts/ts-container-list.md)
     - [ListItem](arkui-ts/ts-container-listitem.md)
@@ -345,6 +353,7 @@
     - [Span](arkui-ts/ts-basic-components-span.md)
     - [ImageSpan](arkui-ts/ts-basic-components-imagespan.md)
     - [ContainerSpan](arkui-ts/ts-basic-components-containerspan.md)
+    - [SelectionContainer](arkui-ts/ts-basic-components-selectioncontainer.md)
     - [SymbolSpan](arkui-ts/ts-basic-components-symbolSpan.md)
     - [SymbolGlyph](arkui-ts/ts-basic-components-symbolGlyph.md)
     - [Hyperlink](arkui-ts/ts-container-hyperlink.md)
@@ -417,8 +426,6 @@
     <!--Del-->
     - [XComponent (系统接口)](arkui-ts/ts-basic-components-xcomponent-sys.md)
     <!--DelEnd-->
-  - 景深效果<!--depth-of-field -->
-    - [DepthComponent](arkui-ts/ts-basic-components-depthcomponent.md)
     <!--Del-->
     - [DepthComponent (系统接口)](arkui-ts/ts-basic-components-depthcomponent-sys.md)
     <!--DelEnd-->
@@ -534,7 +541,8 @@
     - [ToolBarV2](arkui-ts/ohos-arkui-advanced-ToolBarV2.md)
     - [TreeView](arkui-ts/ohos-arkui-advanced-TreeView.md)
     - [advanced.Counter](arkui-ts/ohos-arkui-advanced-Counter.md)
-    <!--DelEnd-->
+    - [CounterV2](arkui-ts/ohos-arkui-advanced-CounterV2.md)
+    - [DatePickerComponent](arkui-ts/ohos-arkui-advanced-DatePickerComponent.md)
   - 状态管理与渲染控制<!--state-management-and-rendering-control-->
     - [应用级变量的状态管理](arkui-ts/ts-state-management.md)
     - [状态管理V1装饰器参数](arkui-ts/ts-state-management-v1-parameter.md)
@@ -549,6 +557,7 @@
   - 响应式环境变量<!--responsive-env-system-property-->
     - [\@Env：环境变量](arkui-ts/ts-env-system-property.md)
     - [WithEnv：环境变量容器](arkui-ts/ts-container-with-env.md)
+    - [\@CustomEnv：自定义环境变量](arkui-ts/ts-custom-env-property.md)
   - 公共定义<!--common-definitions-->
     - [基础类型定义](arkui-ts/ts-types.md)
     - [像素单位](arkui-ts/ts-pixel-units.md)
@@ -605,6 +614,7 @@
     - [native_interface_focus.h](capi-native-interface-focus-h.md)
     - [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md)
     - [native_key_event.h](capi-native-key-event-h.md)
+    - [native_material.h](capi-native-material-h.md)
     - [native_node.h](capi-native-node-h.md)
       - [ArkUI_NodeAttributeType（基础属性）](capi-native-node-h-nodeattributetype-base.md)
       - [ArkUI_NodeAttributeType（通用属性）](capi-native-node-h-nodeattributetype-common.md)
@@ -818,6 +828,10 @@
     - [ArkUI_CommandPathOption](capi-arkui-nativemodule-arkui-commandpathoption.md)
     - [ArkUI_FloatAnimatablePropertyHandle](capi-arkui-nativemodule-arkui-floatanimatablepropertyhandle.md)
     - [ArkUI_FloatPropertyHandle](capi-arkui-nativemodule-arkui-floatpropertyhandle.md)
+    - [ArkUI_ImmersiveMaterial](./capi-arkui-nativemodule-arkui-immersivematerial.md)
+    - [ArkUI_ImmersiveMaterial*](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md)
+    - [ArkUI_LightEffectOptions](./capi-arkui-nativemodule-arkui-lighteffectoptions.md)
+    - [ArkUI_LightEffectOptions*](./capi-arkui-nativemodule-arkui-lighteffectoptionshandle.md)
     - [ArkUI_NodeBorderColorOption](capi-arkui-nativemodule-arkui-nodebordercoloroption.md)
     - [ArkUI_NodeBorderRadiusOption](capi-arkui-nativemodule-arkui-nodeborderradiusoption.md)
     - [ArkUI_NodeBorderStyleOption](capi-arkui-nativemodule-arkui-nodeborderstyleoption.md)

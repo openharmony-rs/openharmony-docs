@@ -99,7 +99,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_DATE_PICKER_SELECTED = 13003
 ```
 
-Selected date of the date picker. This attribute can be set, reset, and obtained as required through APIs.<br>
+Date of the selected item in the date picker. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -267,7 +267,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TIME_PICKER_SELECTED = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TIME_PICKER = 14000
 ```
 
-Selected time of the timer picker. This attribute can be set, reset, and obtained as required through APIs.<br>
+Time of the selected item in the timer picker. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -849,6 +849,54 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .object | Picker indicator style. The parameter type is [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md).|
 
+## NODE_PICKER_DISPLAYED_ITEM_COUNT
+
+```c
+NODE_PICKER_DISPLAYED_ITEM_COUNT = 1018004
+```
+
+Number of displayed items in the **Picker** container. The semantics is the same as that of [displayedItemCount](arkui-ts/ts-container-ui-picker-component.md#displayeditemcount) in [UIPickerComponent](arkui-ts/ts-container-ui-picker-component.md) on the ArkTS side. If this attribute is not set, the value **7** is used. When **Picker** is in a three-dimensional wheel style, all items except the selected ones rotate at an angle, and the actual visible height is less than the item line height. To increase the number of visible lines or the line height, increase the container height accordingly. For details, see [UIPickerComponent](arkui-ts/ts-container-ui-picker-component.md). This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Number of displayed items. The value is an integer within the range of [2, 9]. If a number with a decimal is passed, it is rounded down. If an even number is passed, it is rounded up to the nearest odd number (for example, 2 becomes 3 and 8 becomes 9). If a number is not within the range, the default value **7** is used.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Number of displayed items.|
+
+## NODE_PICKER_ITEM_HEIGHT
+
+```c
+NODE_PICKER_ITEM_HEIGHT = 1018005
+```
+
+Height of each item in the **Picker** container. The semantics is the same as that of [itemHeight](arkui-ts/ts-container-ui-picker-component.md#itemheight) in [UIPickerComponent](arkui-ts/ts-container-ui-picker-component.md) on the ArkTS side. If this attribute is not set, the height of each item is 40 vp. C APIs pass the height value in vp. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].f32 | Item height, in vp. The valid range is [40, 64]. If the value is less than 40 vp or greater than 64 vp, the default value **40** vp is used. The value cannot be in percentage.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].f32 | Item height, in vp.|
+
 ## NODE_CALENDAR_PICKER_HINT_RADIUS
 
 ```c
@@ -1052,3 +1100,5 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Whether the current system date is highlighted in the calendar picker.|
+
+<!--no_check-->

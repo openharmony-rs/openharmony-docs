@@ -146,7 +146,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     }
     ```
 
-2. 当成员变量被public访问限定符和\@StorageLink/\@StorageProp/\@LocalStorageLink/\@LocalStorageProp/\@Consume装饰器同时修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
+2. 当成员变量被public访问限定符和\@StorageLink/\@StorageProp/\@LocalStorageLink/\@LocalStorageProp/\@Consume装饰器同时修饰时，ArkTS会进行校验并产生告警日志。
 
    【反例】
     <!-- @[PublicWithStorageProp_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/publicWithStorageProp/PublicWithStoragePropErrorCase.ets) -->
@@ -234,7 +234,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     }
     ```
 
-3. 当成员变量被private访问限定符和\@Link/\@ObjectLink装饰器同时修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
+3. 当成员变量被private访问限定符和\@Link/\@ObjectLink装饰器同时修饰时，ArkTS会进行校验并产生告警日志。
 
    【反例】
     <!-- @[PrivateWithLink_EerrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithLink/PrivateWithLinkEerrorCase.ets) -->
@@ -321,7 +321,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     }
     ```
 
-4. 当成员变量被protected访问限定符修饰，并且通过父组件进行初始化赋值，ArkTS会进行校验并产生告警日志。
+4. 当成员变量被protected访问限定符修饰时，ArkTS会进行校验并产生告警日志。
 
    【反例】
    <!-- @[ProtectedInStruct_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/protectedInStruct/ProtectedInStructErrorCase.ets) -->
@@ -390,7 +390,7 @@ ArkTS会对自定义组件的成员变量使用的访问限定符private/public/
     ```
 
 
-5. 当成员变量被private访问限定符、\@Require和@State/@Prop/@Provide/@BuilderParam装饰器同时修饰，并且通过父组件初始化赋值时，ArkTS会进行校验并产生告警日志。
+5. 当成员变量被private访问限定符、\@Require和@State/@Prop/@Provide/@BuilderParam装饰器同时修饰时，ArkTS会进行校验并产生告警日志。
 
    【反例】
     <!-- @[PrivateWithRequire_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithRequire/PrivateWithRequireErrorCase.ets) -->

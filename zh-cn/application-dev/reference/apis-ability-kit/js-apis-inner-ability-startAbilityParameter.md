@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 定义启动Ability参数，可以作为入参，调用[startAbility](js-apis-ability-featureAbility.md#featureabilitystartability)启动指定的Ability。

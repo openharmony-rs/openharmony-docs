@@ -1496,7 +1496,8 @@ screen.stopExpand(expandScreenIds).then(() => {
 | activeModeIndex   | number                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。 |
 | orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。       |
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。     |
-| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。 |       
+| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。 |
+| densityDpi | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### setOrientation
 
@@ -1630,6 +1631,73 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
   });
 }).catch((err: BusinessError) => {
   console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
+});
+```
+
+### setOrientation
+
+setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions): Promise\<void>
+
+设置屏幕方向，使用Promise异步回调。
+
+可通过orientationOptions参数指定旋转时是否带有动画、是否忽略系统窗口的旋转锁定。
+
+当设置的方向符合应用旋转策略（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛出异常。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**参数：**
+
+| 参数名      | 类型                        | 必填 | 说明       |
+| ----------- | --------------------------- | ---- | ---------- |
+| orientation | [Orientation](#orientation) | 是   | 屏幕方向。 |
+| orientationOptions | [OrientationOptions](#orientationoptions) | 否 | 设置屏幕旋转时的可选参数。默认带动画旋转屏幕，不忽略旋转锁定。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+| 1400003 | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let orientationOptions : screen.OrientationOptions = {
+  needAnimation: true,
+  ignoreRotationLock: false,
+};
+
+let screenClass: screen.Screen | null = null;
+let screensPromise: Promise<Array<screen.Screen>> = screen.getAllScreens();
+screensPromise.then((data: Array<screen.Screen>) => {
+  if (data.length > 0) {
+    screenClass = data[0];
+    let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL, orientationOptions);
+    promise.then(() => {
+      console.info('Succeeded in setting the vertical orientation with orientationOptions.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set the vertical orientation with orientationOptions. Code:${err.code}, message is ${err.message}`);
+    });
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get all screens. Code:${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -1966,3 +2034,20 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 | top     | number   | 否   | 否   | 矩形左上角顶点的Y轴坐标，单位为px，该参数应为整数。 |
 | width   | number   | 否   | 否   | 矩形的宽度，单位为px，该参数应为整数。             |
 | height  | number   | 否   | 否   | 矩形的高度，单位为px，该参数应为整数。             |
+
+## OrientationOptions
+
+设置屏幕方向的可选参数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此字段仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+| 名称        | 类型 | 只读 | 可选 | 说明                                               |
+| ----------- | -------- | ---- | ---- | -------------------------------------------------- |
+| needAnimation          | boolean   | 否   | 是   |  是否带动画旋转。true表示带动画旋转屏幕，false表示不带动画旋转屏幕。默认值为true。 | 
+| ignoreRotationLock     | boolean   | 否   | 是   |  是否忽略旋转锁定。true表示即使某些系统窗口锁定屏幕旋转，也允许屏幕旋转；false表示当系统窗口锁定屏幕旋转时，不允许屏幕旋转。默认值为false。<br> **设备行为差异：** 该字段仅在PC/2in1设备（非折叠PC）和其他设备的电脑模式下生效，在其他设备中调用不生效不报错。|

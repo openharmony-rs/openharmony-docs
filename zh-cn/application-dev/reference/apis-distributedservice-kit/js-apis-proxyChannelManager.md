@@ -1,8 +1,8 @@
 # @ohos.distributedsched.proxyChannelManager (代理通道管理)
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
-<!--Owner: @huangkai71-->
-<!--Designer: @lee_jet520-->
+<!--Owner: @jzy_123-->
+<!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
 

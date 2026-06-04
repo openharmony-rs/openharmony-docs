@@ -1019,7 +1019,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 
 Obtains the display position, that is, the x-coordinate and y-coordinate relative to the original point (the upper left corner of the main screen).
 
-The actual value is returned only when the current display source mode is **DISPLAY_SOURCE_MODE_MAIN** or **DISPLAY_SOURCE_MODE_EXTEND**. For other display source modes, **0** is returned by default.
+The actual value is returned only when the current display source mode is **DISPLAY_SOURCE_MODE_MAIN** or **DISPLAY_SOURCE_MODE_EXTEND**.
 
 You can obtain the display source mode by calling [OH_NativeDisplayManager_GetDisplaySourceMode()](#oh_nativedisplaymanager_getdisplaysourcemode).
 

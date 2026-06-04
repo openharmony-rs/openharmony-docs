@@ -629,7 +629,7 @@ Unknown resource type \'xxx\'.
 This error code is reported when the resource type fails verification.
 
 **Possible Cause**<br>
-The provided resource name is incorrect.
+The provided resource type is incorrect.
 
 **Solution**<br>
 Make sure the resource type is correct.
@@ -678,13 +678,13 @@ Make sure the resource name and path used match those specified using **\$rawfil
 The wrapBuilder\'s parameter should be a \'@Builder\' function.
 
 **Description**<br>
-This error code is reported when the parameter of **wrapBuilder** is not an @Builder decorated method.
+This error code is reported when the parameter of **wrapBuilder** is not a global function decorated with @Builder.
 
 **Possible Cause**<br>
-a variable of another type or a regular function is used as the parameter of **wrapBuilder**.
+The parameter of **wrapBuilder** is not an @Builder decorated function.
 
 **Solution**<br>
-Change the parameter of **wrapBuilder** to an @Builder decorated method.
+Change the parameter of **wrapBuilder** to a global function decorated with @Builder.
 
 ## 10905110 @Styles Verification Exception
 **Error Message**<br>
@@ -1439,3 +1439,16 @@ This error code is reported when **reuseId** is used for custom components decor
 
 **Solution**<br>
 Use the **reuseId** attribute in the correct scenario.
+
+## 10905363 V1 Decorator Cannot Decorate Variables of the Function or () => void Type
+**Error Message**<br>
+The V1 decorator \'xxx\' cannot be applied to a Function-type variable \'yyy\'.
+
+**Description**<br>
+This error code is reported at runtime when the ArkUI state management V1 decorator is used for variables of the **Function** or **() => void** type. Since API version 23, this issue is intercepted in the compilation phase to avoid potential runtime exceptions. The ArkUI state management V1 decorators include [\@State](../../../application-dev/ui/state-management/arkts-state.md), [\@Prop](../../../application-dev/ui/state-management/arkts-prop.md), [\@Link](../../../application-dev/ui/state-management/arkts-link.md), [\@Provide](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@Consume](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink), [\@StorageProp](../../../application-dev/ui/state-management/arkts-appstorage.md#storageprop), [\@LocalStorageLink](../../../application-dev/ui/state-management/arkts-localstorage.md#localstoragelink), [\@LocalStorageProp](../../../application-dev/ui/state-management/arkts-localstorage.md#localstorageprop), [\@ObjectLink](../../../application-dev/ui/state-management/arkts-observed-and-objectlink.md).
+
+**Possible Cause**<br>
+The V1 decorator is used for a variable of the **Function** or **() => void** type.
+
+**Solution**<br>
+Delete the V1 decorator used for the variable of the **Function** or **() => void** type based on the error description.

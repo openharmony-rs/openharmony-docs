@@ -26,14 +26,17 @@ Misc devices refer to LED lights and vibrators on devices. LED lights are mainly
 ```ts
 import { Vibrator } from '@kit.SensorServiceKit';
 ```
+## Vibrator
 
-## Vibrator.vibrate
+### Vibrator.vibrate
 
- vibrate(options?: VibrateOptions): void
+ static vibrate(options?: VibrateOptions): void
 
 Triggers device vibration.
 
-Except for lite wearables, you are advised to use [vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9) since API version 8.
+> **NOTE**
+>
+> For devices other than lite wearables, you are advised to use [vibrator.startVibration()](js-apis-vibrator.md#vibratorstartvibration9) since API version 8.
 
 **Required permissions**: ohos.permission.VIBRATE
 
@@ -45,7 +48,7 @@ Except for lite wearables, you are advised to use [vibrator.startVibration()](js
 | ------- | --------------------------------- | ---- | ---------- |
 | options | [VibrateOptions](#vibrateoptions) | No  | Vibration options.|
 
-**Example**
+**ArkTS example**
 
 ```ts
 import { Vibrator, VibrateOptions } from '@kit.SensorServiceKit';
@@ -59,10 +62,82 @@ let vibrateOptions: VibrateOptions = {
     console.error(`Failed to vibrate. Data: ${data}, code: ${code}`);
   },
   complete: () => {
-    console.info('completed in vibrating');
+    console.info('vibration completed');
   }
 };
 Vibrator.vibrate(vibrateOptions);
+```
+
+**JS example**
+
+```js
+import vibrator from '@system.vibrator';
+
+export default {
+  data: {
+    TAG: "WearLiteSample:",
+    result: ''
+  },
+  vibrate() {
+    try {
+      let vibrateOptions = {
+        mode: 'short',
+        success: () => {
+          console.info('Succeeded in vibrating');
+          this.result = 'Succeeded in vibrating';
+        },
+        fail: (data, code) => {
+          console.error(`Failed to vibrate. Data: ${data}, code: ${code}`);
+          this.result = `Failed to vibrate. Data: ${data}, code: ${code}`;
+        },
+        complete: () => {
+          console.info('vibration completed');
+        }
+      };
+      vibrator.vibrate(vibrateOptions);
+    } catch (e) {
+      console.error(this.TAG + 'vibrate exception occurred, message:' + JSON.stringify(e))
+    }
+  }
+};
+```
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title">
+    {{ result }}
+  </text>
+  <input class="buttonText" type="button" onclick="vibrate">Tap to vibrate</input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+.buttonText {
+  background-color: blue;
+  radius: 30px;
+  text-color: white;
+  font-size: 25px;
+  width: 150px;
+  height:50px;
+  margin-top: 20px;
+  font-weight: bolder;
+  align-items: center;
+}
 ```
 
 ## VibrateOptions
@@ -73,9 +148,9 @@ Defines the vibration options.
 
 **System capability**: SystemCapability.Sensors.MiscDevice.Lite
 
-| Name    | Type    | Mandatory| Description                                                        |
-| -------- | -------- | ---- | ------------------------------------------------------------ |
-| mode     | string   | No  | Vibration mode. The value **long** indicates long vibration, and **short** indicates short vibration. The default value is **long**.|
-| success  | Function | No  | Called when the vibrator data changes.                            |
-| fail     | Function | No  | Called when the API call fails.                                    |
-| complete | Function | No  | Called when the API call is complete.                                    |
+| Name    | Type    | Read-Only| Optional| Description                                                        |
+| -------- | -------- | ---- | ---- | ------------------------------------------------------------ |
+| mode     | string   | No  | Yes  | Vibration mode. The value **long** indicates long vibration, and **short** indicates short vibration. The default value is **long**.|
+| success  | Function | No  | No  | Called when the vibrator data changes.                            |
+| fail     | Function | No  | Yes  | Called when the API call fails.                                    |
+| complete | Function | No  | Yes  | Called when the API call is complete.                                    |

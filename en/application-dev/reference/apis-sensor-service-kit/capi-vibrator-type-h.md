@@ -71,7 +71,7 @@ Enumerates the vibration scenarios.
 
 | Enum Item| Description|
 | -- | -- |
-| VIBRATOR_USAGE_UNKNOWN = 0 | Unknown scenario|
+| VIBRATOR_USAGE_UNKNOWN = 0 | Unknown scenario, with the lowest priority|
 | VIBRATOR_USAGE_ALARM = 1 | Alarming|
 | VIBRATOR_USAGE_RING = 2 | Ringing|
 | VIBRATOR_USAGE_NOTIFICATION = 3 | Notification|
