@@ -13533,5 +13533,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/using-ohaudio-for-recording.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp",
+				"functions":[
+					{
+						"end_line":340,
+						"name":"SetCapturerLoopbackEffectEnabled",
+						"start_line":336
+					}
+				]
+			}
+		]
 	}
 ]
