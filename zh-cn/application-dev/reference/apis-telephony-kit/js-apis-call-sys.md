@@ -4826,6 +4826,7 @@ function testSendUssdResponse() {
 | videoState <sup>9+</sup> | [VideoStateType](#videostatetype7) | 否   | 视频状态类型。                               |
 | dialScene <sup>9+</sup>  | [DialScene](#dialscene8)           | 否   | 拨号场景。                                   |
 | dialType <sup>9+</sup>   | [DialType](#dialtype8)             | 否   | 拨号类型。                                   |
+| xCallType                | [xCallType](#xcalltype)            | 否   | XCALL类型。 <br>**起始版本:** 26.0.0         |
 
 
 ## ImsCallMode<sup>8+</sup>
@@ -4981,7 +4982,7 @@ IP多媒体系统调用模式。
 | originalCallType<sup>11+</sup> | number                    | 是   | 视频彩振原始呼叫类型。|
 | numberLocation<sup>12+</sup> | string | 否 | 号码归属地信息 |
 | numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 否 | 号码标记信息。 |
-| xCallType | XCallType | 否 | XCALL类型。 <br>**起始版本:** 26.0.0|
+| xCallType | [xCallType](#xcalltype) | 否 | XCALL类型。 <br>**起始版本:** 26.0.0|
 
 ## VoipCallAttribute<sup>11+</sup>
 
