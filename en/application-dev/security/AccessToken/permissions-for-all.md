@@ -747,9 +747,9 @@ With this permission, the application can obtain custom EDM configuration files,
 
 ## ohos.permission.ACCESS_CAR_AUDIO
 
-Allows an application to access and manage in-car audio.
+Allows an application to access and manage in-vehicle audio.
 
-With this permission, the application can set audio effects, manage audio zones, etc.
+With this permission, the application can set audio sound effects and manage audio zones.
 
 **Permission level**: normal
 
