@@ -492,7 +492,7 @@ getPrivateCertificate(keyUri: string, callback: AsyncCallback\<CMResult>): void
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
-| 17500002 | The certificate does not exist. Possible causes: 1. The certificate URI is incorrect; 2. The certificate has been uninstalled. Please check the certificate URI. |
+| 17500002 | The certificate does not exist. |
 
 **示例**：
 ```ts
@@ -861,7 +861,7 @@ init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>)
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
-| 17500005 | The application is not authorized by the user. Please call [openAuthorizeDialog](./js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog20) method to request user authorization for the certificate or credential.<br>适用版本：12+ |
+| 17500005 | The application is not authorized by the user.<br>适用版本：12+ |
 
 **示例**：
 ```ts
@@ -1879,7 +1879,7 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 801 | Capability not supported. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
-| 17500002 | The certificate identified by keyuri does not exist. |
+| 17500002 | Indicates that the certificate does not exist. |
 | 17500010 | Indicates that access USB key service failed. |
 | 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
 
