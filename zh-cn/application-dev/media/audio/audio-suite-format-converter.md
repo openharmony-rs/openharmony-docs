@@ -109,6 +109,42 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    > - `AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA`和`AUDIOCONVERTER_INPUT_DATA_FINISHED`状态下，`OH_AudioConverter_Process()`会返回[AUDIOCONVERTER_SUCCESS](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_result)和`outputSize = 0`。因此，不能仅凭`outputSize = 0`或`result = AUDIOCONVERTER_SUCCESS`判断数据处理已经完成，还需要调用方确保所有数据已经输入结束。
 
    <!-- @[converter_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
+   
+   ``` C++
+   // 分配处理缓冲区。
+   const int32_t processBufferSize = 4096 * 4; // 16KB。
+   uint8_t *processBuffer = new uint8_t[processBufferSize];
+   int32_t outputSize = 0;
+   int32_t totalOutputSize = 0;
+   OH_AudioConverter_Result result;
+   
+   do {
+       result = OH_AudioConverter_Process(converter, processBuffer, processBufferSize, &outputSize);
+       if (result != AUDIOCONVERTER_SUCCESS) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, GLOBAL_RESMGR, TAG, "Audio data processing failed: %{public}d", result);
+           delete[] processBuffer;
+           SafeCloseConverterFile(outputFile, outputFilePath);
+           return false;
+       }
+           
+       if (outputSize > 0) {
+           // 用户可以根据自己的业务要求做相应的处理。
+           size_t written = fwrite(processBuffer, 1, outputSize, outputFile);
+           if (written != static_cast<size_t>(outputSize)) {
+               OH_LOG_Print(LOG_APP, LOG_ERROR, GLOBAL_RESMGR, TAG, "Failed to write output data");
+               delete[] processBuffer;
+               SafeCloseConverterFile(outputFile, outputFilePath);
+               return false;
+           }
+           totalOutputSize += outputSize;
+       }
+       // outputSize返回0，且用户写入数据完成。
+   } while (outputSize > 0 || !dataInfo->readDataFinish);
+   
+   delete[] processBuffer;
+   processBuffer = nullptr;
+   SafeCloseConverterFile(outputFile, outputFilePath);
+   ```
 
 ###  销毁格式转换器
 
