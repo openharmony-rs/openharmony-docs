@@ -53,7 +53,7 @@ Peer-to-Peer。[WLAN](#wlan-无线局域网)直连技术，允许设备间不通
 
 ### Portal; 强制门户认证
 Captive Portal。公共WLAN网络的Web页面认证机制，用于酒店、机场、咖啡厅等场所的身份验证。
-Portable Interactive Optical Access Redirector。公共WLAN网络的Web页面认证机制，用于酒店、机场、咖啡厅等场所的身份验证。
+Captive Portal。公共WLAN网络的Web页面认证机制，用于酒店、机场、咖啡厅等场所的身份验证。
 
 ### PSK; 预共享密钥
 Pre-shared Key。[WLAN](#wlan-无线局域网) WPA/WPA2个人版使用的对称密钥，用户预先在设备和无线路由器上配置相同密码。
