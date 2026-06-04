@@ -1018,13 +1018,16 @@ async function ExampleFunction() {
   dlpFile = await dlpPermission.openDLPFile(file, appId); // 打开DLP文件。
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // 添加link文件。
   await dlpFile.stopFuseLink(); // 暂停link读写。
-  await dlpFile.replaceDLPLinkFile('test_new.txt.dlp.link'); // 替换link文件。
-  await dlpFile.resumeFuseLink(); // 恢复link读写。
-  
-  await dlpFile?.closeDLPFile(); // 关闭DLP对象。
-  if (file) {
+  dlpFile.replaceDLPLinkFile('test_new.txt.dlp.link', async (err, res) => { // 替换link文件。
+    if (err !== undefined) {
+      console.error('replaceDLPLinkFile error,', err.code, err.message);
+    } else {
+      console.info('res', JSON.stringify(res));
+      await dlpFile?.resumeFuseLink(); // 恢复link读写。
+    }
+    await dlpFile?.closeDLPFile(); // 关闭DLP对象。
     fileIo.closeSync(file);
-  }
+  });
 }
 
 ExampleFunction();
