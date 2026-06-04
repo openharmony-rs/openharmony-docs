@@ -29,7 +29,6 @@
 下方是不同状态下是否可以调用接口的情况概览，√表示可以调用，×表示不可调用。
 
 | 接口 | Initialized | Configured | Prepared | Flushed | Running | EndOfStream | Error | Released |
-
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | OH_VideoEncoder_CreateByMime<sup>9+</sup> | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
 | OH_VideoEncoder_CreateByName<sup>9+</sup> | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
