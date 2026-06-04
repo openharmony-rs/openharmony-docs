@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 Bundle Manager（包管理工具，简称bm）是实现应用安装、卸载、更新、查询等功能的工具，bm为开发者提供基本的应用安装包的调试能力。
 
@@ -45,11 +45,11 @@ bm help
 
 ### userId
 
-表示当前系统账号的编号，系统账号的相关接口请参考[系统账号管理模块](../reference/apis-basic-services-kit/js-apis-osAccount.md)，下面给出几种常见的系统账号。
+表示当前系统账号的编号，系统账号的相关接口请参考[@ohos.account.osAccount (系统账号管理)](../reference/apis-basic-services-kit/js-apis-osAccount.md)，下面给出几种常见的系统账号。
 
 - userId = 100，表示编号为100的系统账号，系统默认账号，在设备出厂首次启动时由系统账号管理模块创建，且创建完成后会在100账号下安装所有的预置应用。
 
-- userId = 102，表示编号为102的系统账号，由系统账号管理模块创建，<!--Del-->可以使用[createOsAccountForDomain接口](../reference/apis-basic-services-kit/js-apis-osAccount-sys.md)创建账号，<!--DelEnd-->仅支持系统应用创建账号。在100账号下安装的应用，在102账号下不会显示，如有需求，需要在102账号下重新安装。在创建102账号过程中，系统会在102账号下安装预置系统应用。
+- userId = 102，表示编号为102的系统账号，由系统账号管理模块创建，<!--Del-->可以使用[createOsAccountForDomain](../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#createosaccountfordomain8)接口创建账号，<!--DelEnd-->仅支持系统应用创建账号。在100账号下安装的应用，在102账号下不会显示，如有需求，需要在102账号下重新安装。在创建102账号过程中，系统会在102账号下安装预置系统应用。
 
 - userId = 0，表示共有系统账号，也叫账号0，该共有系统账号和系统账号编号不同，不是系统账号管理模块创建的。在账号0下安装的应用，所有系统账号共享，会在每个系统账号下都会显示。所有三方应用都不能安装到账号0下。
 
@@ -609,6 +609,11 @@ HAP/HSP包没有签名。
 **处理步骤**
 
 请开发者根据实际场景选择自动签名或者手动签名，例如无法连接互联网的情况下推荐使用手动签名方式，详情参考[使用场景说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section54361623194519)。
+
+> **说明：**
+>
+> 在工程级build-profile.json5文件下的products标签中，signingConfig字段为非必填字段，若该字段缺失，将导致签名失效。详情请参考[products](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section45865492619)标签下的字段说明。
+>
 
 方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
 
@@ -1276,7 +1281,7 @@ SysCap不一致导致安装失败。
 
 **可能原因**
 
-多个HAP/HSP中配置的[SysCap](./../reference/syscap.md)不一致。
+多个HAP/HSP中配置的[SysCap](./../reference/syscap.md#syscap的用途)不一致。
 
 **处理步骤**
 
@@ -3105,7 +3110,7 @@ error: install parse syscap error.
 
 **错误描述**
 
-安装过程中，解析安装包获取[SysCap](./../reference/syscap.md)信息失败。
+安装过程中，解析安装包获取[SysCap](./../reference/syscap.md#syscap的用途)信息失败。
 
 **可能原因**
 

@@ -1,16 +1,16 @@
 # Persisting KV Store Data (ArkTS)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @ding_dong_dong-->
 <!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=d995619613c5a0ea556fde817ece4c1ff6754f94 translatedAt=2026-06-02T08:37:34.686Z pushedAt=2026-06-03T05:43:52.660Z -->
 
 ## When to Use
 
 The key-value (KV) database stores data in the form of KV pairs. You can use KV stores to store data organized in a simple model, for example, product names and prices or employee IDs and daily attendance. The simple data structure allows higher compatibility with different database versions and device types.
-
 
 ## Constraints
 
@@ -22,10 +22,9 @@ The key-value (KV) database stores data in the form of KV pairs. You can use KV 
 
 - Blocking operations, for example, modifying UI components, are not allowed in the KV store event callbacks.
 
-
 ## Available APIs
 
-The following table lists the APIs used for KV data persistence. Most of the APIs are executed asynchronously, using a callback or promise to return the result. The following table uses the callback-based APIs as an example. For more information about the APIs, see [Distributed KV Store](../reference/apis-arkdata/js-apis-distributedKVStore.md).
+The following are APIs related to the KV store persistence feature. For more APIs and their usage, see [@ohos.data.distributedKVStore (Distributed KV Store)](../reference/apis-arkdata/js-apis-distributedKVStore.md).
 
 | API| Description| 
 | -------- | -------- |
@@ -36,7 +35,6 @@ The following table lists the APIs used for KV data persistence. Most of the API
 | delete(key: string, callback: AsyncCallback&lt;void&gt;): void | Deletes a KV pair based on the specified key.| 
 | closeKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt;): void | Closes the distributed KV store of the given **storeId**.| 
 | deleteKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt;): void | Deletes the distributed KV store of the given **storeId**.| 
-
 
 ## How to Develop
 
@@ -68,8 +66,9 @@ The following table lists the APIs used for KV data persistence. Most of the API
    export class KvInterface {
    }
    ```
+
    <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public CreateKvManager = (() => {
      Logger.info('CreateKvManager start');
@@ -94,7 +93,7 @@ The following table lists the APIs used for KV data persistence. Most of the API
 2. Use the **getKVStore()** method to create and obtain a KV store. <br>Example:
 
    <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public GetKvStore = (() => {
      Logger.info('GetKvStore start');
@@ -154,7 +153,7 @@ The following table lists the APIs used for KV data persistence. Most of the API
 3. Use the **on()** method to subscribe to distributed data changes. To unsubscribe from the data changes, call [off('dataChange')](../reference/apis-arkdata/js-apis-distributedKVStore.md#offdatachange). <br>Example:
 
    <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public On = (() =>{
      Logger.info('On start');
@@ -176,7 +175,7 @@ The following table lists the APIs used for KV data persistence. Most of the API
 4. Use **put()** to add data to the KV store. <br>Example:
 
    <!-- @[kv_store4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public Put = (() => {
      Logger.info('Put start');
@@ -209,7 +208,7 @@ The following table lists the APIs used for KV data persistence. Most of the API
 5. Use **get()** to obtain the value of a key. <br>Example:
 
    <!-- @[kv_store5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public Get = (() => {
      Logger.info('Get start');
@@ -236,7 +235,7 @@ The following table lists the APIs used for KV data persistence. Most of the API
 6. Use **delete()** to delete the data of the specified key. <br>Example:
 
    <!-- @[kv_store6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public Delete = (() => {
      Logger.info('DeleteData start');
@@ -263,7 +262,7 @@ The following table lists the APIs used for KV data persistence. Most of the API
 7. Use **closeKVStore()** to close the specified distributed KV store by **storeId**. <br>Example:
 
     <!-- @[kv_store10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-    
+
     ``` TypeScript
     public CloseKVStore = (()=>{
       Logger.info('CloseKVStore start');
@@ -291,7 +290,7 @@ The following table lists the APIs used for KV data persistence. Most of the API
 8. Use **deleteKVStore()** to delete the specified distributed KV store by **storeId**. <br>Example:
 
     <!-- @[kv_store11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-    
+
     ``` TypeScript
     public DeleteKvStore = (()=>{
       Logger.info('DeleteKvStore start');

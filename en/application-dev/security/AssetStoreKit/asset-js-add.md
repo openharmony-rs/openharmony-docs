@@ -2,14 +2,15 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4c605d27e0af7c49e44095d77dd99bf8c13d3e25 translatedAt=2026-06-03T09:08:19.385Z pushedAt=2026-06-03T09:19:05.754Z -->
 
 ## Available APIs
 
-You can use [add(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetadd), an asynchronous API, or [addSync(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetaddsync12), a synchronous API, to add an asset.
+You can refer to the API documentation for detailed instructions on the critical asset addition APIs: [add(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetadd) and the sync API [addSync(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetaddsync12).
 
 The following table describes the attributes of **AssetMap** for adding an asset.
 
@@ -59,15 +60,16 @@ The following table describes the attributes of **AssetMap** for adding an asset
 
 > **NOTE**
 >
-> The **asset** module provides an asynchronous API and a synchronous API for adding an asset. The following uses the asynchronous API as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
+> This module provides both asynchronous and synchronous APIs. The following is an example of using the asynchronous API. For details about the synchronous API, see the [@ohos.security.asset (Asset Store Kit)](../../reference/apis-asset-store-kit/js-apis-asset.md) API documentation.
 >
-> For details about how to add an asset to a group, see [Adding an Asset to a Group](asset-js-group-access-control.md#adding-an-asset-to-a-group).
+> For an example of adding a critical asset in a specified group, see [Adding an Asset to a Group](asset-js-group-access-control.md#adding-an-asset-to-a-group).
 
 Add an asset that is accessible when the user unlocks the device for the first time. The asset includes password **demo_pwd**, alias **demo_alias**, and additional information **demo_label**.
 
 1. Include the header file and define the tool function.
+
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
-   
+
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
    import { util } from '@kit.ArkTS';
@@ -80,8 +82,9 @@ Add an asset that is accessible when the user unlocks the device for the first t
    ```
 
 2. Develop the desired feature.
+
    <!-- @[add_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
-   
+
    ``` TypeScript
    let attr: asset.AssetMap = new Map();
    attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));

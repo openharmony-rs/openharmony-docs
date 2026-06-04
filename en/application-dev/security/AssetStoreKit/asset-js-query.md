@@ -2,20 +2,21 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4c605d27e0af7c49e44095d77dd99bf8c13d3e25 translatedAt=2026-06-03T09:08:14.841Z pushedAt=2026-06-03T09:45:13.459Z -->
 
 ## Available APIs
 
-You can use [query(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetquery), an asynchronous API, and [querySync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetquerysync12), a synchronous API, to query assets.
+You can refer to the API documentation for detailed descriptions of the asset query API [query(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetquery) and the synchronous API [querySync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetquerysync12).
 
-The following table describes the attributes of **AssetMap** for querying an asset.
+When querying an asset, the content (**AssetMap**) parameter for the asset attribute are as shown in the following table:
 > **NOTE**
 >
-> In the following table, the attributes **ALIAS** and those starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
-> It takes a long time to query the plaintext of the asset attribute **SECRET** due to the need of decryption. Therefore, **RETURN_TYPE** must be set to **ALL**. For other asset attributes, decryption is not required, so the query takes a short time. Therefore, **RETURN_TYPE** must be set to **ATTRIBUTES**.
+> In the following table, the asset attributes **ALIAS** and those with names containing **DATA_LABEL** are used to store service-defined information. Their content is not encrypted, so do not store sensitive personal data in them.
+> Querying the plaintext SECRET of an asset requires decryption. Currently, batch query is not supported, and the query time is long. You need to set **RETURN_TYPE** to **ALL**. Querying only other asset attributes does not require decryption, supports batch query, and the query time is short. You need to set **RETURN_TYPE** to **ATTRIBUTES**.
 
 | Attribute Name (Tag)       | Value                                            | Mandatory | Description                                                        |
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
@@ -52,19 +53,20 @@ Assets queried in batches need to be transmitted to services through the IPC cha
 
 > **NOTE**
 >
-> The **asset** module provides an asynchronous API and a synchronous API for querying assets. The following uses the asynchronous API as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
+> This module provides both asynchronous and synchronous APIs. The following is an example of using the asynchronous API. For details about the synchronous API, see [@ohos.security.asset (Asset Store Service)](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
-> For details about how to query the plaintext of an asset in a group, see [Querying the Plaintext of an Asset in a Group](asset-js-group-access-control.md#querying-the-plaintext-of-an-asset-in-a-group). For details about how to query the attributes of an asset in a group, see [Querying the Attributes of an Asset in a Group](asset-js-group-access-control.md#querying-the-attributes-of-an-asset-in-a-group).
+> For a usage example of querying the plaintext of a single asset in a specified group, see [Querying the Plaintext of an Asset in a Group](asset-js-group-access-control.md#querying-the-plaintext-of-an-asset-in-a-group). For a usage example of querying the attributes of a single asset in a specified group, see [Querying the Attributes of an Asset in a Group](asset-js-group-access-control.md#querying-the-attributes-of-an-asset-in-a-group).
 > 
-> Before querying an asset, ensure that the asset exists. For details about how to add an asset, see [Adding an Asset](asset-js-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
+> Before querying, ensure that an asset already exists. If it does not exist, [add it](asset-js-add.md). Otherwise, a NOT_FOUND error (error code 24000002) will be thrown.
 
 ### Querying the Plaintext of an Asset
 
 Query the plaintext of asset **demo_alias**.
 
 1. Include the header file and define the tool function.
+
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_plaintext.ets) -->
-   
+
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
    import { util } from '@kit.ArkTS';
@@ -83,8 +85,9 @@ Query the plaintext of asset **demo_alias**.
    ```
 
 2. Develop the desired feature.
+
    <!-- @[query_single_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_plaintext.ets) -->
-   
+
    ``` TypeScript
    let query: asset.AssetMap = new Map();
    query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the alias of the asset to query.
@@ -109,14 +112,14 @@ Query the plaintext of asset **demo_alias**.
    }
    ```
 
-
 ### Querying Attributes of an Asset
 
 Query attributes of asset **demo_alias**.
 
 1. Include the header file and define the tool function.
+
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_attr.ets) -->
-   
+
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
    import { util } from '@kit.ArkTS';
@@ -129,8 +132,9 @@ Query attributes of asset **demo_alias**.
    ```
 
 2. Develop the desired feature.
+
    <!-- @[query_single_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_attr.ets) -->
-   
+
    ``` TypeScript
    let query: asset.AssetMap = new Map();
    query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the alias of the asset to query.
@@ -154,14 +158,14 @@ Query attributes of asset **demo_alias**.
    }
    ```
 
-
 ### Querying Attributes of Assets
 
 Query attributes of assets whose label is **demo_label** in batches. A total of 10 records that meet the conditions are returned. The results are sorted by the content of the **DATA_LABEL_NORMAL_1** attribute.
 
 1. Include the header file and define the tool function.
+
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_batch_attrs.ets) -->
-   
+
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
    import { util } from '@kit.ArkTS';
@@ -174,8 +178,9 @@ Query attributes of assets whose label is **demo_label** in batches. A total of 
    ```
 
 2. Develop the desired feature.
+
    <!-- @[query_batch_attributes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_batch_attrs.ets) -->
-   
+
    ``` TypeScript
    let query: asset.AssetMap = new Map();
    query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ATTRIBUTES); // Return only the attributes of the asset, that is, the result does not include the asset plaintext.
