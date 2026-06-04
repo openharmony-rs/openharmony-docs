@@ -121,7 +121,7 @@ cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStr
 
 onAutoSyncTrigger(observer: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
-在已打开端云同步且应用关闭自动同步的条件下，注册自动同步触发事件通知，回调在自动同步触发时被调用。使用callback异步回调。
+在已打开端云同步且应用关闭自动同步的条件下，注册自动同步触发事件通知，回调在自动同步触发时被调用。
 
 **起始版本：** 26.0.0
 
@@ -157,7 +157,7 @@ cloudData.onAutoSyncTrigger(autoSyncTriggerObserver);
 
 offAutoSyncTrigger(observer?: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
-取消订阅自动同步触发事件通知。使用callback异步回调。
+取消订阅自动同步触发事件通知。
 
 **起始版本：** 26.0.0
 

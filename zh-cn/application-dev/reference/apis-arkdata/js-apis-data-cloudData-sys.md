@@ -10,7 +10,7 @@
 
 端云协同提供结构化数据（RDB Store，关系型数据库）端云同步的能力。即：云作为数据的中心节点，通过与华为云空间的数据同步，实现数据云备份、同账号设备间的数据一致性。
 
-端云共享是在端云协同能力基础上，实现跨账号的数据共享。其中，端云共享资源标识是指：对于应用发起共享的每一条数据记录，该条数据在进行端云同步时会生成唯一的共享资源标识（字符串类型的值），此标识则作为该条数据记录共享时的识别标识。
+端云共享是在端云协同能力基础上，实现跨账号的数据共享。其中，端云共享资源标识是指：对于应用发起共享的每一条数据记录，该条数据在进行端云同步时会生成唯一的共享资源标识（字符串类型的值），此标识作为该条数据记录共享时的识别标识。
 
 端云共享参与者是指：共享发起者根据好友列表选中的参与当前数据共享的所有人员。
 
@@ -82,8 +82,8 @@ let extraData: cloudData.ExtraData = {
 | 名称      | 类型   | 只读 | 可选 | 说明                                                  |
 | --------- | ------ | ---- | ---- |-----------------------------------------------------|
 | table   | string | 否   | 否   | 查询的表名。如返回值为"cloud_notes"，表示查询结果是表名为"cloud_notes"的同步信息。 |
-| inserted   | number | 否   | 否   | 本地新增且未同步到云端的数据条数，如返回值为2，表示本地新增2条数据且云端还未同步。          |
-| updated   | number | 否   | 否   | 云端同步之后,本地或云端修改还未同步的数据条数，如返回值为2，表示本地或云端修改还有2条数据未同步。     |
+| inserted   | number | 否   | 否   | 本地新增且未同步到云端的数据条数，如返回值为2，表示本地新增2条数据且还未同步到云端。          |
+| updated   | number | 否   | 否   | 云端同步之后，本地或云端修改还未同步的数据条数，如返回值为2，表示本地或云端修改还有2条数据未同步。     |
 | normal | number | 否   | 否   | 端云一致的数据。如返回值为2，表示本地与云端一致的数据为2条。                     |
 
 ## SyncStatus<sup>18+</sup>
@@ -99,7 +99,7 @@ let extraData: cloudData.ExtraData = {
 
 ## SyncInfo<sup>12+</sup>
 
-返回数据，最近一次端云同步的信息。
+端云同步信息，包含最近一次端云同步的时间、结果和状态。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -663,7 +663,7 @@ static notifyDataChange(extInfo: ExtraData, callback: AsyncCallback&lt;void&gt;)
 | 参数名   | 类型                      | 必填 | 说明                                    |
 | -------- | ------------------------- | ---- | --------------------------------------- |
 | extInfo  | [ExtraData](#extradata11)   | 是   | 透传数据，包含通知数据变更后的应用信息。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当通知云端的数据变更成功，err为undefined，否则为错误对象。|
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当数据变更通知成功，err为undefined，否则为错误对象。|
 
 **错误码：**
 
@@ -933,7 +933,7 @@ static batchQueryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInf
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
 | accountId  | string | 是   | 已登录的云账号ID。                                         |
-| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 批量查询的应用信息数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。 | // TODO
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 批量查询的应用信息数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。 |
 
 **返回值：**
 
@@ -994,7 +994,7 @@ static onSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress: Callbac
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
 | bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 订阅的应用信息数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。 |
-| progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | 是   | 回调函数。返回应用包名以及对应数据库的同步信息结果集。 |
+| progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | 是   | 回调函数。返回应用包名以及对应数据库的同步信息结果集。外层Record的键为应用包名，内层Record的键为数据库名。 |
 
 **错误码：**
 
@@ -1113,7 +1113,7 @@ static setGlobalCloudStrategy(strategy: StrategyType, param?: Array&lt;commonTyp
 | 参数名     | 类型                                                                     | 必填 | 说明                |
 | ---------- |------------------------------------------------------------------------| ---- |-------------------|
 | strategy  | [StrategyType](js-apis-data-cloudData.md#strategytype)    | 是   | 配置的策略类型。          |
-| param | Array&lt;[commonType.ValueType](js-apis-data-commonType.md#valuetype)&gt; | 否   | 策略参数。不填写默认为空，默认取消所有配置。 |
+| param | Array&lt;[commonType.ValueType](js-apis-data-commonType.md#valuetype)&gt; | 否   | 策略参数。不填写时默认为空，默认取消所有配置。 |
 
 **返回值：**
 
@@ -1216,7 +1216,7 @@ static clear(accountId: string, appActions: Record<string, ClearAction>, callbac
 | ---------- | --------------------------------------------------- | ---- | -------------------------------- |
 | accountId  | string                                              | 是   | 已登录的云账号ID。             |
 | appActions | Record<string, [ClearAction](#clearaction)>         | 是   | 要清除数据的应用信息及清除规则。 |
-| callback   | AsyncCallback&lt;void&gt;                           | 是   | 回调函数。当清除本地下载的云端数据成功，err为undefined，否则为错误对象。 |
+| callback   | AsyncCallback&lt;void&gt;                           | 是   | 回调函数。 |
 
 **错误码：**
 
@@ -1387,7 +1387,7 @@ try {
 
 static cloudSyncEx(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConfig, progress: Callback&lt;relationalStore.ProgressDetails&gt;): Promise&lt;void&gt;
 
-对指定应用的数据按照云同步配置信息进行端云同步，当[CloudSyncConfig](js-apis-data-relationalStore-sys.md#cloudsyncconfig)中的downloadOnly为true时，端云同步仅把云侧数据下行到本地，使用Promise异步回调。
+对指定应用的数据按照云同步配置信息进行端云同步，当[CloudSyncConfig](js-apis-data-relationalStore-sys.md#cloudsyncconfig)中的downloadOnly为true时，端云同步仅把云侧数据同步到本地，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -1404,7 +1404,7 @@ static cloudSyncEx(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConf
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
 | bundleInfo | [BundleInfo](#bundleinfo) | 是 | 应用包信息配置。BundleInfo的实例对象。 |
-| config | [relationalStore.CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig) | 是 | 云同步配置。 | // TODO资料确认
+| config | [relationalStore.CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig) | 是 | 云同步配置。 |
 | progress | Callback&lt;[relationalStore.ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是 | 进度回调函数。返回ProgressDetails实例对象。 |
 
 **返回值：**
@@ -1995,7 +1995,7 @@ unshare(sharingResource: string, participants: Array&lt;Participant&gt;, callbac
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | sharingResource  | string                                     | 是   | 端云共享数据的资源标识。 |
 | participants     | Array&lt;[Participant](#participant11)&gt; | 是   | 共享参与者。 |
-| callback         | AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Result](#resultt11)&lt;[Participant](#participant11)&gt;&gt;&gt;&gt;  | 是   | 回调函数。当取消共享成功，err为undefined，data为获取到的取消共享的结果；否则为错误对象。 |
+| callback         | AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Result](#resultt11)&lt;[Participant](#participant11)&gt;&gt;&gt;&gt;  | 是   | 回调函数。返回取消共享的结果。 |
 
 **错误码：**
 
@@ -2092,7 +2092,7 @@ exit(sharingResource: string, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;)
 | 参数名    | 类型                            | 必填 | 说明                         |
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | sharingResource  | string                | 是   | 端云共享数据的资源标识。 |
-| callback         | AsyncCallback&lt;[Result](#resultt11)&lt;void&gt;&gt;  | 是   | 回调函数。当退出共享成功，err为undefined，data为获取到的退出共享的结果；否则为错误对象。 |
+| callback         | AsyncCallback&lt;[Result](#resultt11)&lt;void&gt;&gt;  | 是   | 回调函数。返回退出共享的结果。 |
 
 **错误码：**
 
