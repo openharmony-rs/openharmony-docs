@@ -41,6 +41,6 @@
       - [用户文件管理器模块参数错误故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/deletion-failed-fault-mode-description/user-file-manager-param-error-fault-mode-desc.md)
       - [权限不足故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/deletion-failed-fault-mode-description/insufficient-permissions-fault-mode-description.md)
     - 修改元数据失败故障模式说明<!--metadata-modify-failure-mode-description-->
-      - [操作的文件不存在故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/metadata-modify-failure-mode-description/file-not-exist-operate-failure-mode-description.md)
+      - [操作的文件不存在故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/metadata-modify-failure-mode-description/file-not-exist-operate-failure-mode-description.md)<!--RP3--><!--RP3End-->
 - [Media Library Kit术语](mediaLibrary-glossary.md)
 
