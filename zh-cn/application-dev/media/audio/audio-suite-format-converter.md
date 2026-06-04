@@ -219,8 +219,6 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    
 ## 完整示例
 
-以48kHz双声道16-bit PCM音频转换为192kHz六声道24-bit PCM音频为例。
-
-   - [音频格式转换示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp)
+- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
    
   
