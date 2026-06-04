@@ -225,7 +225,7 @@
       - [模态转场](arkts-modal-transition.md)
       - [共享元素转场 (一镜到底)](arkts-shared-element-transition.md)
       - [旋转屏动画](arkts-rotation-transition-animation.md)    
-      - [页面转场动画 (不推荐)](arkts-page-transition-animation.md)
+      - [页面转场动画 (不推荐)](arkts-page-transition-animation.md)<!--RP11--><!--RP11End-->
     - [粒子动画](arkts-particle-animation.md)
     - [组件动画](arkts-component-animation.md)
     - 动画曲线<!--arkts-animation-curve-->
@@ -237,7 +237,7 @@
       - [模糊](arkts-blur-effect.md)
       - [阴影](arkts-shadow-effect.md)
       - [色彩](arkts-color-effect.md)
-    - [帧动画（ohos.animator）](arkts-animator.md)
+    - [帧动画（ohos.animator）](arkts-animator.md)<!--RP10--><!--RP10End-->
   - 使用自定义能力<!--arkts-user-defined-capabilities-->
     - [自定义能力概述](arkts-user-defined.md)
     - [自定义组合](arkts-user-defined-composition.md)
