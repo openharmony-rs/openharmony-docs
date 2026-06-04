@@ -95,6 +95,16 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
    设置输入数据回调。
    <!-- @[set_input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
+   
+   ``` C++
+   // 设置输入回调。
+   result = OH_AudioConverter_SetInputCallback(converter, AudioConverterRequestDataCallback, dataInfo);
+   if (result != AUDIOCONVERTER_SUCCESS) {
+       OH_LOG_Print(LOG_APP, LOG_ERROR, GLOBAL_RESMGR, TAG, "Failed to set input callback: %{public}d", result);
+       OH_AudioConverter_Destroy(converter);
+       return false;
+   }
+   ```
 
 ###  执行格式转换
 
