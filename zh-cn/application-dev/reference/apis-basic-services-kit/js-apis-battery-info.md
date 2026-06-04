@@ -84,7 +84,7 @@ import batteryInfo from '@ohos.batteryInfo';
 
 batterySOC(): int
 
-表示当前设备剩余电池电量百分比，取值范围是[0，100]。
+表示当前设备剩余电池电量百分比，取值范围是[0, 100]。
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
