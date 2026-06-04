@@ -275,59 +275,59 @@
      }
      ```
 
-    * 发送break信号
+   * 发送break信号
 
-      <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-      
-      ``` TypeScript
-      try {
-        if (!this.port) {
-          console.error(`${TAG} No serial port found, please call getSerialPortList first`);
-          return;
-        }
-        await this.port.sendBrk();
-        console.info(`${TAG} sendBrk success`);
-      } catch (err) {
-        const e = err as BusinessError;
-        console.error(`${TAG} sendBrk failed, code: ${e.code}, message: ${e.message}`);
-      }
-      ```
+     <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     try {
+       if (!this.port) {
+         console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+         return;
+       }
+       await this.port.sendBrk();
+       console.info(`${TAG} sendBrk success`);
+     } catch (err) {
+       const e = err as BusinessError;
+       console.error(`${TAG} sendBrk failed, code: ${e.code}, message: ${e.message}`);
+     }
+     ```
 
-    * 设置DTR信号为高电平
+   * 设置DTR信号为高电平
 
-      <!-- @[setDtr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-      
-      ``` TypeScript
-      try {
-        if (!this.port) {
-          console.error(`${TAG} No serial port found, please call getSerialPortList first`);
-          return;
-        }
-        await this.port.setDtr(true);
-        console.info(`${TAG} setDtr(true) success`);
-      } catch (err) {
-        const e = err as BusinessError;
-        console.error(`${TAG} setDtr failed, code: ${e.code}, message: ${e.message}`);
-      }
-      ```
+     <!-- @[setDtr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     try {
+       if (!this.port) {
+         console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+         return;
+       }
+       await this.port.setDtr(true);
+       console.info(`${TAG} setDtr(true) success`);
+     } catch (err) {
+       const e = err as BusinessError;
+       console.error(`${TAG} setDtr failed, code: ${e.code}, message: ${e.message}`);
+     }
+     ```
 
-    * 获取DSR信号状态
+   * 获取DSR信号状态
 
-      <!-- @[getDsr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-      
-      ``` TypeScript
-      try {
-        if (!this.port) {
-          console.error(`${TAG} No serial port found, please call getSerialPortList first`);
-          return;
-        }
-        const dsrStatus = await this.port.getDsr();
-        console.info(`${TAG} getDsr success, DSR: ${dsrStatus}`);
-      } catch (err) {
-        const e = err as BusinessError;
-        console.error(`${TAG} getDsr failed, code: ${e.code}, message: ${e.message}`);
-      }
-      ```
+     <!-- @[getDsr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     try {
+       if (!this.port) {
+         console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+         return;
+       }
+       const dsrStatus = await this.port.getDsr();
+       console.info(`${TAG} getDsr success, DSR: ${dsrStatus}`);
+     } catch (err) {
+       const e = err as BusinessError;
+       console.error(`${TAG} getDsr failed, code: ${e.code}, message: ${e.message}`);
+     }
+     ```
 
  8. 监听串口断开事件。
 
