@@ -327,7 +327,7 @@ combine(transitionEffect: TransitionEffect): TransitionEffect
 | [TransitionEffect](#transitioneffect10对象说明) | 组合过渡效应。 |
 
 ### animation<sup>10+</sup>
-
+ 
 animation(value: AnimateParam): TransitionEffect
 
 指定该TransitionEffect的动画参数。
@@ -357,7 +357,7 @@ animation(value: AnimateParam): TransitionEffect
 
 type TransitionFinishCallback = (transitionIn: boolean) => void
 
-组件转场动画的结束回调类型。
+表示该回调是出现还是消失动画的结束回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
