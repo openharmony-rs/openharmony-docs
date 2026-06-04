@@ -4794,7 +4794,7 @@ function testSendUssdResponse() {
         call.sendUssdResponse(slotId, content);
     } catch (error) {
         const err = error as BusinessError;
-        hilog.error(0x0000, 'testTag', 'Failed to send USSD response. Code: ${err.code}, Message: ${err.message}');
+        hilog.error(0x0000, 'testTag', `Failed to send USSD response. Code: ${err.code}, Message: ${err.message}`);
     }
 }
 ```
@@ -6140,6 +6140,6 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 | 名称                           | 值     | 说明     |
 | ------------------------------ | ------ | --------|
-| XCALL_ECALL_TYPE | 0      | 表示XCall是Ecall。 |
-| XCALL_BCALL_TYPE | 1      | 表示XCall是Bcall。 |
-| XCALL_ICALL_TYPE | 2      | 表示XCall是Icall。 |
+| XCALL_ECALL_TYPE | 0      | 表示XCall是ECall。 |
+| XCALL_BCALL_TYPE | 1      | 表示XCall是BCall。 |
+| XCALL_ICALL_TYPE | 2      | 表示XCall是ICall。 |
