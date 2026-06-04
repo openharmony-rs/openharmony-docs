@@ -26,7 +26,7 @@ For details about the API, see [@ohos.multimedia.camera (Camera Management)](../
 
 > **NOTE**
 >
-> - The permission ohos.permission.MICROPHONE is required for taking motion photos. For details about how to apply for and verify the permission, see [Preparations](camera-preparation.md). Otherwise, the photos taken will have no sound.
+> - The permission ohos.permission.MICROPHONE is required for taking moving photos. For details about how to apply for and verify the permission, see [Preparations](camera-preparation.md). Otherwise, the photos taken will have no sound.
 
 1. Import dependencies. Specifically, import the camera, image, and mediaLibrary modules.
 
@@ -68,7 +68,7 @@ For details about the API, see [@ohos.multimedia.camera (Camera Management)](../
 
    > **NOTE**
    >
-   > Before checking whether motion photo is supported, you must configure, commit, and start a camera session. For details about the development procedure, see [Session Management](camera-session-management.md).
+   > Before checking whether moving photo is supported, you must configure, commit, and start a camera session. For details about the development procedure, see [Session Management](camera-session-management.md).
 
    <!-- @[camera_moving_photo_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
@@ -90,7 +90,7 @@ For details about the API, see [@ohos.multimedia.camera (Camera Management)](../
 
    > **NOTE**
    >
-   > Before enabling motion photo, you must enable the [Deferred Photo Delivery (ArkTS)](camera-deferred-capture.md) capability.
+   > Before enabling moving photo, you must enable the [Deferred Photo Delivery (ArkTS)](camera-deferred-capture.md) capability.
 
    <!-- @[camera_moving_photo_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
@@ -145,17 +145,17 @@ During camera application development, you can listen for the output stream stat
    }
    ```
 
-## HDR Motion Photo
+## HDR Moving Photo
 
-Starting from API version 23, the camera provides the HDR motion photo capability. That is, both the static image and the dynamic short video that make up a motion photo are high dynamic range (HDR) content, which can outperform SDR results in highlight and shadow details, color gradation, and overall texture.
+Starting from API version 23, the camera provides the HDR moving photo capability. That is, both the static image and the dynamic short video that make up a moving photo are high dynamic range (HDR) content, which can outperform SDR results in highlight and shadow details, color gradation, and overall texture.
 
-You can flexibly determine whether to output SDR or HDR motion photos by configuring the preview output format (Profile.format) and color space (ColorSpace). The specific mapping is shown in the table below. All capabilities must be queried before use. The supported preview output formats can be queried through the [getSupportedFullOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23) API, and the supported color spaces can be queried through the [getSupportedColorSpaces](../../reference/apis-camera-kit/arkts-apis-camera-ColorManagementQuery.md#getsupportedcolorspaces12) API.
+You can flexibly determine whether to output SDR or HDR moving photos by configuring the preview output format (Profile.format) and color space (ColorSpace). The specific mapping is shown in the table below. All capabilities must be queried before use. The supported preview output formats can be queried through the [getSupportedFullOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23) API, and the supported color spaces can be queried through the [getSupportedColorSpaces](../../reference/apis-camera-kit/arkts-apis-camera-ColorManagementQuery.md#getsupportedcolorspaces12) API.
 
 | Static Image Dynamic Range | Short Video Dynamic Range | Preview Output Format | Color Space |
 |----------------|------------|------------|------------|
 | SDR       | SDR       | CAMERA_FORMAT_YUV_420_SP       | SRGB |
 | HDR       | SDR       | CAMERA_FORMAT_YUV_420_SP       | DISPLAY_P3 |
-| HDR       | HDR       | CAMERA_FORMAT_YCRCB_P010、<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG |
+| HDR       | HDR       | CAMERA_FORMAT_YCRCB_P010, <br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG |
 
 **HDR Configuration Notes**
 
