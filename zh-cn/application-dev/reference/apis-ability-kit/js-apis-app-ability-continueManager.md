@@ -152,7 +152,7 @@ export default class MigrationAbility extends UIAbility {
             }
             console.info('register finished, ' + JSON.stringify(continueResultInfo));
           });
-      } catch (e:Error) {
+      } catch (e) {
         console.error('register failed, cause: ' + JSON.stringify(e));
       }
     }
@@ -296,7 +296,7 @@ export default class MigrationAbility extends UIAbility {
             }
             console.info('unregister finished, ' + JSON.stringify(continueResultInfo));
           });
-      } catch (e:Error) {
+      } catch (e) {
         console.error('unregister failed, cause: ' + JSON.stringify(e));
       }
     }

@@ -245,7 +245,7 @@ try {
     deviceId,
     parm).then(() => {
     console.info('registerMissionListener finished. ');
-  }).catch((error: BusinessError) :void=> {
+  }).catch((error) :void=> {
     console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
   })
 } catch (error) {
