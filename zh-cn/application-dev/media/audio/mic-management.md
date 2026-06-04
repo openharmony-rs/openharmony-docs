@@ -40,7 +40,7 @@
    <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/MacManager.ets) -->
    
    ``` TypeScript
-   import { audio } from '@kit.AudioKit'; // 导入audio模块。
+   import audio from '@ohos.multimedia.audio';
    import {
      Entry, Component, State, Scroll, Column, Row, Text, Color, FlexAlign, HorizontalAlign, TextOverflow, ClickEvent
    } from '@kit.ArkUI';

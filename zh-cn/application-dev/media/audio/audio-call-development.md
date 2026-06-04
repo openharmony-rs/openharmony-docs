@@ -206,7 +206,7 @@ ArkTS-Sta示例：
 <!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit'; // 导入audio模块。
+import audio from '@ohos.multimedia.audio'; // 导入audio模块。
 import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit'; // 导入文件操作模块。
 import { common } from '@kit.AbilityKit'; // 导入UIAbilityContext。
 import {
@@ -220,10 +220,10 @@ import {
   Row,
   Scroll,
   Text
-} from '@kit.ArkUI';
-import { State } from '@kit.ArkUI';
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
-// 与使用AudioRenderer开发音频播放功能过程相似，关键区别在于audioRendererInfo参数和音频数据来源。
+// 与使用AudioRenderer开发音频播放功能过程相似,关键区别在于audioRendererInfo参数和音频数据来源。
 const TAG = 'VoIPDemoForAudioRenderer';
 const SAMPLE_RATE_48000: int = 48000;
 
@@ -258,7 +258,7 @@ function createAudioRendererOptions(): audio.AudioRendererOptions {
 // ...
 async function initArguments(context: common.UIAbilityContext) {
   let path = context.cacheDir;
-  // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
+  // 此处仅作示例,实际使用时需要将文件替换为应用要播放的PCM文件。
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
   file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   bufferSize = 0;
@@ -275,18 +275,18 @@ async function initArguments(context: common.UIAbilityContext) {
     try {
       let bufferLength = fs.readSync(openedFile.fd, buffer, options);
       bufferSize += buffer.byteLength.toLong();
-      // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充，否则会导致播放出现杂音。
+      // 如果当前回调传入的数据不足一帧,空白区域需要使用静音数据填充,否则会导致播放出现杂音。
       if (bufferLength < buffer.byteLength.toLong()) {
         let view = new DataView(buffer);
         let startIndex = bufferLength.toInt();
         let endIndex = buffer.byteLength.toInt();
         for (let i: int = startIndex; i < endIndex; i++) {
-          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时，0x7F为静音数据；使用其他采样格式时，0为静音数据。
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据,使用其他采样格式时0为静音数据。
           view.setUint8(i, 0);
         }
       }
-      // API version 12之前不支持返回回调结果，API version 12及以后支持返回回调结果。
-      // 如果开发者不希望播放某段buffer，返回audio.AudioDataCallbackResult.INVALID即可。
+      // API version 11不支持返回回调结果,从API version 12开始支持返回回调结果。
+      // 如果开发者不希望播放某段buffer,返回audio.AudioDataCallbackResult.INVALID即可。
       return audio.AudioDataCallbackResult.VALID;
     } catch (error) {
       console.error('Error reading file:', error);
@@ -294,13 +294,13 @@ async function initArguments(context: common.UIAbilityContext) {
       if (globalLogUpdate) {
         globalLogUpdate(`Error reading file: ${error}`, true);
       }
-      // API version 12之前不支持返回回调结果，API version 12及以后支持返回回调结果。
+      // API version 11不支持返回回调结果,从API version 12开始支持返回回调结果。
       return audio.AudioDataCallbackResult.INVALID;
     }
   };
 }
 
-// 初始化，创建实例，设置监听事件。
+// 初始化,创建实例,设置监听事件。
 async function init() {
   try {
     let renderer = await audio.createAudioRenderer(createAudioRendererOptions()); // 创建AudioRenderer实例。
@@ -400,13 +400,13 @@ async function stop() {
   }
 }
 
-// 销毁实例，释放资源。
+// 销毁实例,释放资源。
 async function release() {
   const renderer = audioRenderer;
   if (renderer === undefined) {
     return;
   }
-  // 渲染器状态不是released状态，才能release。
+  // 渲染器状态不是released状态,才能release。
   if (renderer.state === audio.AudioState.STATE_RELEASED) {
     console.info('Renderer already released');
     // ...
@@ -582,7 +582,7 @@ ArkTS-Sta示例：
 <!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit'; // 导入audio模块。
+import audio from '@ohos.multimedia.audio'; // 导入audio模块。
 import { Callback } from '@kit.BasicServicesKit';
 import { fileIo as fs, WriteOptions } from '@kit.CoreFileKit'; // 导入文件操作模块。
 import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit'; // 导入UIAbilityContext。
@@ -597,9 +597,9 @@ import {
   Row,
   Scroll,
   Text
-} from '@kit.ArkUI';
-import { State } from '@kit.ArkUI';
-// 与使用AudioCapturer开发音频录制功能过程相似，关键区别在于audioCapturerInfo参数和音频数据流向。
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+// 与使用AudioCapturer开发音频录制功能过程相似,关键区别在于audioCapturerInfo参数和音频数据流向。
 const TAG = 'VoIPDemoForAudioCapturer';
 const SAMPLE_RATE_48000: int = 48000;
 
@@ -653,7 +653,7 @@ async function initArguments(context: common.UIAbilityContext) {
   }
 }
 
-// 初始化，创建实例，设置监听事件。
+// 初始化,创建实例,设置监听事件。
 async function init() {
   try {
     let capturer = await audio.createAudioCapturer(createAudioCapturerOptions()); // 创建AudioCapturer实例。
@@ -709,7 +709,7 @@ async function stop() {
     return;
   }
   const state = capturer.state;
-  // 只有采集器状态为STATE_RUNNING或STATE_PAUSED时才可以停止。
+  // 只有采集器状态为STATE_RUNNING或STATE_PAUSED的时候才可以停止。
   if (state !== audio.AudioState.STATE_RUNNING &&
     state !== audio.AudioState.STATE_PAUSED) {
     console.info('Capturer is not running or paused');
@@ -733,14 +733,14 @@ async function stop() {
   }
 }
 
-// 销毁实例，释放资源。
+// 销毁实例,释放资源。
 async function release() {
   const capturer = audioCapturer;
   if (capturer === undefined) {
     return;
   }
   const state = capturer.state;
-  // 采集器状态不是STATE_RELEASED或STATE_NEW状态，才能release。
+  // 采集器状态不是STATE_RELEASED或STATE_NEW状态,才能release。
   if (state === audio.AudioState.STATE_RELEASED ||
     state === audio.AudioState.STATE_NEW) {
     console.info('Capturer already released');
