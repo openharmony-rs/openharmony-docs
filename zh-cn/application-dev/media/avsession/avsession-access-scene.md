@@ -302,6 +302,9 @@ struct Index {
    - 播放广告时，单独设置广告的时长 duration。
    - 当进入到正片播放的时候，则重新设置一次新的时长，以与广告进行区分。
 
+<!--RP1-->
+<!--RP1End-->
+
 ### 媒体资源金标
 
 元数据信息[AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10)中提供了displayTags字段用于展示媒体资源金标（应用音频音源的标识）。应用设置displayTags字段信息后，系统的播控中心界面会同步展示，当前系统只支持展示Audio Vivid标识。
