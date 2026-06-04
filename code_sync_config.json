@@ -49877,7 +49877,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceECIES/entry/src/main/ets/pages/Await.ets",
 				"functions":[
 					{
-						"end_line":118,
+						"end_line":120,
 						"name":"use_sample_await_test",
 						"start_line":16
 					}
@@ -49887,7 +49887,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceECIES/entry/src/main/ets/pages/Sync.ets",
 				"functions":[
 					{
-						"end_line":118,
+						"end_line":120,
 						"name":"use_sample_sync_test",
 						"start_line":16
 					}
