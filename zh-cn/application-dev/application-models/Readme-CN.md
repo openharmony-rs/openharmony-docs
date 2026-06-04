@@ -96,9 +96,14 @@
     - [使用装饰器开发意图](insight-intent-decorator-development.md)
     - [附录：标准意图接入规范](insight-intent-access-specifications.md)
   - [调试意图](insight-intent-debug.md)
-- 基于AgentExtensionAbility的智能体开发指导<!--agent-->
-  - [使用AgentExtensionAbility组件实现智能体服务](agent-extension-ability.md)
-  - [AgentExtensionAbility配置文件说明](agent-extension-configuration.md)
+- 端侧A2A框架开发指导<!--agent-guideline-->
+  - [端侧A2A框架概述](agent-overview.md)
+  - 开发端侧智能体<!--agent-development-->
+    - [使用AgentExtensionAbility组件实现智能体服务](agent-extension-ability.md)
+    - [AgentExtensionAbility配置文件说明](agent-extension-configuration.md)
+    <!--Del-->
+    - [使用AgentExtensionAbility组件提供的智能体服务（仅对系统应用开放）](agent-manager-sys.md)
+    <!--DelEnd-->
 - [基于ArkTS脚本开发应用Skill](arkts-skill-development-guide.md)
 - 基于ModularObjectExtensionAbility的模块化对象开发指导 (C/C++)<!--modular-object-extension-ability-->
   - [模块化对象模型概述 (C/C++)](modular-object-extension-overview.md)
