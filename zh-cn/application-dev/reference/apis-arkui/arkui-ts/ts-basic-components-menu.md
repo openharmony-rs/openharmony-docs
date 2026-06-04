@@ -465,3 +465,64 @@ struct Index {
 ```
 
 ![dividerStyleMode](figures/MenudividerStyleMode.png)
+
+### 示例5（设置自定义菜单项的多级菜单）
+
+该示例通过设置subMenuBuilder属性为自定义菜单项添加多级菜单。
+
+从API版本26.0.0开始，新增[subMenuBuilder](ts-basic-components-menuitem.md#submenubuilder)属性。
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State select: boolean = true;
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r("app.media.startIcon");
+  private iconStr2: ResourceStr = $r("app.media.startIcon");
+
+  @Builder
+  SubMenu() {
+    Menu() {
+      MenuItem({ content: "复制", labelInfo: "Ctrl+C" })
+      MenuItem({ content: "粘贴", labelInfo: "Ctrl+V" })
+    }
+  }
+
+  @Builder
+  SubMenuContent() {
+    Row() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      Image($r("app.media.startIcon")).width(20).height(20)
+      Text('Custom Menu Item').margin({start: LengthMetrics.vp(5)})
+    }.padding(20)
+  }
+
+  @Builder
+  MyMenu(){
+    Menu() {
+      MenuItem(this.SubMenuContent)
+      MenuItem(this.SubMenuContent)
+        .enabled(false)
+      MenuItem(this.SubMenuContent).subMenuBuilder(this.SubMenu)
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text('click to show menu')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .bindMenu(this.MyMenu)
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![subMenuBuilder](figures/subMenuBuilder.jpg)
