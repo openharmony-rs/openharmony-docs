@@ -56,88 +56,22 @@
 
    通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建全局悬浮窗类型（TYPE_FLOAT）的窗口。
 
-   ```ts
-   let float_windowClass: window.Window | undefined = undefined;
-   let config: window.Configuration = {
-     name: "floatWindow", windowType: window.WindowType.TYPE_FLOAT, ctx: getContext(this)
-   };
-   window.createWindow(config, (err, data) => {
-     let errCode: number = err.code;
-     if (errCode) {
-       console.error('Failed to create the floatWindow. Cause: ' + JSON.stringify(err));
-       return;
-     }
-     float_windowClass = data;
-     if (!float_windowClass) {
-       console.error('float_windowClass is null');
-       return;
-     }
-     console.info('Succeeded in creating the floatWindow. Data: ' + JSON.stringify(data));
-   });
-   ```
+   <!-- @[floating_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
 
 2. 对全局悬浮窗进行属性设置等操作。  
 
    全局悬浮窗创建成功后，可以改变其大小、位置等，还可以根据应用需要设置全局悬浮窗的背景色、亮度等属性。
 
-   ```ts
-   float_windowClass.moveWindowTo(700, 100, (err) => {
-     let errCode: number = err.code;
-     if (errCode) {
-       console.error('Failed to move the window. Cause:' + JSON.stringify(err));
-       return;
-     }
-     console.info('Succeeded in moving the window.');
-     if (!float_windowClass) {
-       console.error('float_windowClass is null');
-       return;
-     }
-     float_windowClass.resize(600, 900, (err) => {
-       let errCode: number = err.code;
-       if (errCode) {
-         console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
-         return;
-       }
-       console.info('Succeeded in changing the window size.');
-     });
-   });
-   ```
+   <!-- @[floating_window_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
 
 3. 加载显示全局悬浮窗的具体内容。
 
    通过[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9-1)和[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)接口加载显示全局悬浮窗的具体内容。
 
-   ```ts
-   float_windowClass.setUIContent("pages/FloatWindow", (err) => {
-     let errCode: number = err.code;
-     if (errCode) {
-       console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-       return;
-     }
-     console.info('Succeeded in loading the content.');
-     // 显示全局悬浮窗。
-     (float_windowClass as window.Window).showWindow((err) => {
-       let errCode: number = err.code;
-       if (errCode) {
-         console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
-         return;
-       }
-       console.info('Succeeded in showing the window.');
-     });
-   });
-   ```
+   <!-- @[floating_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
 
 4. 销毁全局悬浮窗。  
 
    当不再需要全局悬浮窗时，可根据具体实现逻辑，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9-1)接口销毁全局悬浮窗。
 
-   ```ts
-   float_windowClass.destroyWindow((err: BusinessError) => {
-     let errCode: number = err.code;
-     if (errCode) {
-       console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
-       return;
-     }
-     console.info('Succeeded in destroying the window.');
-   });
-   ```
+   <!-- @[destroy_floating_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
