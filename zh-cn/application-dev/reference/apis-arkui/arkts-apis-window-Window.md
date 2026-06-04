@@ -8542,7 +8542,7 @@ try {
 
 keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 
-当前窗口获焦时是否保留由其他窗口创建的软键盘，支持系统窗口、应用子窗口、模态窗和全局悬浮窗。
+当前窗口获焦时是否保留由其他窗口创建的软键盘，支持系统窗口和应用子窗口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8558,12 +8558,12 @@ keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息 |
-| ------- | ---------------------------------------- |
+| 错误码ID | 错误信息                                                                                                         |
+| ------- |--------------------------------------------------------------------------------------------------------------|
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.           |
-| 1300004 | Unauthorized operation.                  |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.                         |
+| 1300002 | This window state is abnormal. possible cause: The window is not created or destroyed.                       |
+| 1300004 | Unauthorized operation. Possible cause: The window type is not system window or app subwindow. |
 
 **示例：**
 
