@@ -66,9 +66,9 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | 名称        | 类型   | 只读 | 可选 | 说明           |
 | ----------- | ------ | ---- | ---- |--------------|
 | uniformDataType | 'general.hyperlink'| 是   | 否   | 统一数据类型标识为超链接类型数据，固定为“general.hyperlink”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
-| url         | string | 否   | 否   | 链接URL地址，支持http、https等协议，需符合标准URL格式。例如：https://www.example.com 或 file:///path/to/file。|
+| url         | string | 否   | 否   | 链接URL地址，支持http、https等协议，需符合标准URL格式。例如：`https://www.example.com`或`file:///path/to/file`。|
 | description | string | 否   | 是   | 链接内容描述，非必填字段。当需要为超链接提供文字描述时传入此参数（如用于可访问性、链接预览等场景），不传入时默认值为空字符串，不提供描述信息。 |
-| details | Record<string, string> | 否   | 是  | 字典类型对象，key和value均为string类型，用于描述Hyperlink的详细属性内容。非必填字段，默认值为空字典对象。例如，可生成一个details内容为<br />{<br />"title":"标题",<br />"content":"内容"<br />}<br />的数据对象。当需要存储额外的超链接属性信息时传入此参数，不传入时默认值为空字典对象，不提供额外属性。 |
+| details | Record<string, string> | 否   | 是  | 字典类型对象，key和value均为string类型，用于描述Hyperlink的详细属性内容。非必填字段，默认值为空字典对象。例如，可生成一个details内容为<br/>{<br/>"title":"标题",<br/>"content":"内容"<br/>}<br/>的数据对象。当需要存储额外的超链接属性信息时传入此参数，不传入时默认值为空字典对象，不提供额外属性。 |
 
 **示例：**
 
@@ -98,9 +98,9 @@ HTML类型数据，用于描述超文本标记语言数据。创建HTML对象后
 | ------------ | ------ | ---- | ---- |-----------------------|
 | uniformDataType | 'general.html'| 是   | 否   | 统一数据类型标识为html类型数据，固定为“general.html”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
 | htmlContent  | string | 否   | 否   | HTML格式的内容文本，支持标准HTML标签。可以是完整的HTML文档或HTML片段。长度限制为20MB。建议使用UTF-8编码。例如：\<div>\<p>标题<\/p><\/div>。|
-| plainContent | string | 否   | 是   | 去除html标签后的纯文本内容，非必填字段。当需要提供HTML内容的纯文本版本时传入此参数（如用于文本搜索、无HTML渲染环境的展示等场景），不传入时默认值为空字符串，不提供纯文本版本。 |
-| details | Record<string, string> | 否   | 是   | 字典类型对象，key和value均为string类型，用于描述HTML的详细属性内容。非必填字段，默认值为空字典对象。|
-| uriAuthorizationPolicies | Array<number\> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为[READ]（仅读授权），仅在img标签等场景下生效，其他场景下不生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](js-apis-data-unifiedDataChannel.md#uripermission)。<br/>**起始版本**：26.0.0 |
+| plainContent | string | 否   | 是   | 去除HTML标签后的纯文本内容，非必填字段。当需要提供HTML内容的纯文本版本时传入此参数（如用于文本搜索、无HTML渲染环境的展示等场景），不传入时默认值为空字符串，不提供纯文本版本。 |
+| details | Record<string, string> | 否   | 是   | 字典类型对象，key和value均为string类型，用于描述HTML的详细属性内容。例如，可生成一个details内容为<br/>{<br/>"title":"标题",<br/>"content":"内容"<br/>}<br/>的数据对象。非必填字段，默认值为空字典对象。|
+| uriAuthorizationPolicies | Array<number\> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](js-apis-data-unifiedDataChannel.md#uripermission)。<br/>**起始版本**：26.0.0 |
 
 **示例：**
 
@@ -126,7 +126,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 ## OpenHarmonyAppItem
 
-系统定义的桌面图标类型数据，用于跨应用共享桌面图标信息。典型使用场景包括：桌面启动器拖拽图标、应用商店分享应用图标、快捷方式创建等。
+系统定义的桌面图标类型数据，用于跨应用共享桌面图标信息。典型使用场景包括：桌面启动器拖拽图标、应用商店分享应用图标或创建快捷方式等。
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -138,8 +138,8 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | appIconId   | string | 否   | 否   | 图标的图片id。        |
 | appLabelId  | string | 否   | 否   | 图标名称对应的标签id。    |
 | bundleName  | string | 否   | 否   | 图标对应的应用bundle名，格式需符合应用包名规范。 |
-| abilityName | string | 否   | 否   | 图标对应的应用ability名，格式需符合Ability组件命名规范。 |
-| details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 字典类型对象，key为string类型，value可包含number、string或Uint8Array类型数据。非必填字段，默认值为空字典对象。|
+| abilityName | string | 否   | 否   | 图标对应的应用ability名。建议遵循Ability组件命名规范：取值为长度不超过127字节的字符串，以字母开头，可包含字母、数字、下划线（_）或点号（.）；确保该名称在整个应用中唯一。推荐使用"包名.Ability名"格式（如"com.example.myapplication.MainAbility"）。 |
+| details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 字典类型对象，key为string类型，value可包含number（数值类型）、string（字符串类型）或Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 
 **示例：**
@@ -214,9 +214,9 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | formId     | number | 否   | 否  | 卡片id。|
 | formName   | string | 否   | 否  | 卡片名。|
 | bundleName | string | 否   | 否  | 卡片所属的bundle名，格式需符合应用包名规范。|
-| abilityName| string | 否   | 否  | 卡片对应的ability名，格式需符合Ability组件命名规范。|
+| abilityName| string | 否   | 否  | 卡片对应的ability名。建议遵循Ability组件命名规范：取值为长度不超过127字节的字符串，以字母开头，可包含字母、数字、下划线（_）或点号（.）；确保该名称在整个应用中唯一。推荐使用"包名.Ability名"格式（如"com.example.myapplication.MainAbility"）。|
 | module     | string | 否   | 否  | 卡片所属的module名。|
-| details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 字典类型对象，key为string类型，value可包含number、string或Uint8Array类型数据。非必填字段，默认值为空字典对象。|
+| details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 字典类型对象，key为string类型，value可包含number（数值类型）、string（字符串类型）或Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 
 **示例：**
@@ -251,10 +251,10 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
 | uniformDataType | 'general.file-uri'| 是   | 否  | 统一数据类型标识为文件地址类型数据，固定为“general.file-uri”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
-| oriUri     | string | 否   | 否  | 文件的原始URI路径。支持本地文件绝对路径、file://协议和http/https网络URL格式。长度限制为4096字节。例如：/data/local/tmp/test.txt、file:///data/local/tmp/test.txt或http://example.com/file.txt。|
-| fileType   | string | 否   | 否  | 文件类型（必须是UTD类型，详情参考[UTD预置列表](../../database/uniform-data-type-list.md)）。fileType最大长度限制为1024个字节，超出限制时抛出异常。|
-| details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 字典类型对象，key为string类型，value可包含number、string或Uint8Array类型数据。非必填字段，默认值为空字典对象。|
-| uriAuthorizationPolicies | Array<number\> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为[READ, WRITE, PERSIST]（读+写+持久化授权），仅在特定场景下生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](js-apis-data-unifiedDataChannel.md#uripermission)。<br/>**起始版本**：26.0.0|
+| oriUri     | string | 否   | 否  | 文件的原始URI路径。支持本地文件绝对路径、file://协议和http/https网络URL格式。长度限制为4096字节。例如：`/data/local/tmp/test.txt`、`file:///data/local/tmp/test.txt`或`http://example.com/file.txt`。|
+| fileType   | string | 否   | 否  | 文件类型（必须是预置或自定义UTD类型，详情参考[UTD预置列表](../../database/uniform-data-type-list.md)）。fileType最大长度限制为1024个字节，超出限制时抛出异常。|
+| details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 字典类型对象，key为string类型，value可包含number（数值类型）、string（字符串类型）或Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
+| uriAuthorizationPolicies | Array<number\> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST（读+写+持久化授权）。只针对单个record使用，优先级最高，具体策略见[UriPermission](js-apis-data-unifiedDataChannel.md#uripermission)。<br/>**起始版本**：26.0.0|
 
 
 **示例：**
@@ -290,9 +290,9 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 | 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
-| uniformDataType | 'openharmony.pixel-map'| 是   | 否  | 统一数据类型标识为像素图类型数据，固定为“openharmony.pixel-map”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
+| uniformDataType | 'openharmony.pixel-map'| 是   | 否  | 统一数据类型标识为像素图类型数据，固定为"openharmony.pixel-map"，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
 | pixelMap     | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 否  | 像素图对象。 |
-| details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 字典类型对象，key为string类型，value可包含number、string或Uint8Array类型数据。非必填字段，默认值为空字典对象。|
+| details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 字典类型对象，key为string类型，value可包含number（数值类型）、string（字符串类型）或Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 
 **示例：**

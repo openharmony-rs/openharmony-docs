@@ -380,7 +380,7 @@ char** OH_UdmfDataLoadInfo_GetTypes(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)* dataLoadInfo | 表示指向数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)实例的指针。 |
-| unsigned int* count | 该参数是输出参数，数据类型数量会写入该变量。 |
+| unsigned int* count | 返回的数据类型数量。 |
 
 **返回：**
 
@@ -876,7 +876,7 @@ int OH_UdmfRecord_AddGeneralEntry(OH_UdmfRecord* pThis, const char* typeId, unsi
 | [OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)* pThis | 表示指向统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)实例的指针。 |
 | const char* typeId | 表示数据类型标识，为和系统定义的类型进行区分，建议以'ApplicationDefined'开头。 |
 | unsigned char* entry | 表示用户自定义数据。 |
-| unsigned int count | 表示用户自定义数据的大小。数据大小不超过4KB。若数据大小超过4KB，将返回错误码UDMF_E_INVALID_PARAM。 |
+| unsigned int count | 表示用户自定义数据的大小。数据大小不超过4KB，否则返回错误码UDMF_E_INVALID_PARAM。 |
 
 **返回：**
 
@@ -1479,7 +1479,7 @@ OH_UdmfRecord* OH_UdmfData_GetRecord(OH_UdmfData* data, unsigned int index)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdmfData](capi-udmf-oh-udmfdata.md)* data | 表示指向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)实例的指针。 |
-| unsigned int index | 表示要获取的统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)在统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中的下标。取值范围：[0, recordCount-1]，其中0表示第一个数据记录，recordCount-1表示最后一个数据记录，recordCount可通过[OH_UdmfData_GetRecordCount](#oh_udmfdata_getrecordcount)获取。若index超出有效范围，返回nullptr。 |
+| unsigned int index | 表示要获取的统一数据记录[OH_UdmfRecord](capi-udmf-oh-udmfrecord.md)在统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)中的索引。取值范围：[0, recordCount-1]，其中0表示第一个数据记录的索引，recordCount-1表示最后一个数据记录的索引，recordCount可通过[OH_UdmfData_GetRecordCount](#oh_udmfdata_getrecordcount)获取。若index超出有效范围，返回nullptr。 |
 
 **返回：**
 
