@@ -331,24 +331,24 @@
 
  8. 监听串口断开事件。
 
-    <!-- @[onDisconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
-    
-    ``` TypeScript
-    try {
-      if (!this.port) {
-        console.error(`${TAG} No serial port found, please call getSerialPortList first`);
-        return;
-      }
-      this.disconnectedCallback = () => {
-        console.info(`${TAG} serial port disconnected`);
-      };
-      this.port.onDisconnect(this.disconnectedCallback);
-      console.info(`${TAG} onDisconnect registered`);
-    } catch (err) {
-      const e = err as BusinessError;
-      console.error(`${TAG} onDisconnect failed, code: ${e.code}, message: ${e.message}`);
-    }
-    ```
+   <!-- @[onDisconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   try {
+     if (!this.port) {
+       console.error(`${TAG} No serial port found, please call getSerialPortList first`);
+       return;
+     }
+     this.disconnectedCallback = () => {
+       console.info(`${TAG} serial port disconnected`);
+     };
+     this.port.onDisconnect(this.disconnectedCallback);
+     console.info(`${TAG} onDisconnect registered`);
+   } catch (err) {
+     const e = err as BusinessError;
+     console.error(`${TAG} onDisconnect failed, code: ${e.code}, message: ${e.message}`);
+   }
+   ```
 
  9. 注销数据接收回调和关闭串口设备。
 
