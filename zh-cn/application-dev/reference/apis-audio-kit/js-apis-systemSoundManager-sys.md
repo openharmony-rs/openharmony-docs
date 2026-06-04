@@ -1164,9 +1164,9 @@ systemSoundManagerInstance.getRingtonePlayer(context, type).then((value: systemS
 });
 ```
 
-### GetMockHapticRingtonePlayer
+### getMockHapticRingtonePlayer
 
-GetMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise&lt;RingtonePlayer | null&gt;
+getMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise&lt;RingtonePlayer | null&gt;
 
 获取模拟触觉铃声播放器，根据指定的触觉文件URI播放振动文件及其对应的模拟触觉声音文件。使用Promise异步回调。
 
@@ -1218,19 +1218,19 @@ let systemRingtonePlayer: systemSoundManager.RingtonePlayer | null = null;
 let hapticUri = 'file://data/test.json'; // 需更改为目标触觉文件URI。
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-systemSoundManagerInstance.GetMockHapticRingtonePlayer(context, hapticUri).then((value: systemSoundManager.RingtonePlayer | null) => {
+systemSoundManagerInstance.getMockHapticRingtonePlayer(context, hapticUri).then((value: systemSoundManager.RingtonePlayer | null) => {
   if (value != null) {
-    console.info('Succeeded in doing GetMockHapticRingtonePlayer.');
+    console.info('Succeeded in doing getMockHapticRingtonePlayer.');
     systemRingtonePlayer = value;
   }
 }).catch((err: BusinessError) => {
-  console.error(`Failed to GetMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to getMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
-### GetMockHapticRingtonePlayer
+### getMockHapticRingtonePlayer
 
-GetMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise&lt;RingtonePlayer | null&gt;
+getMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise&lt;RingtonePlayer | null&gt;
 
 获取模拟触觉铃声播放器，根据指定的铃声类型和铃音文件URI播放该铃音文件对应的振动文件及其模拟触觉声音文件。使用Promise异步回调。
 
@@ -1284,13 +1284,13 @@ let systemRingtonePlayer: systemSoundManager.RingtonePlayer | null = null;
 let ringtoneUri = 'file://data/test.json'; // 需更改为目标铃音文件URI。
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-systemSoundManagerInstance.GetMockHapticRingtonePlayer(context, type, ringtoneUri).then((value: systemSoundManager.RingtonePlayer | null) => {
+systemSoundManagerInstance.getMockHapticRingtonePlayer(context, type, ringtoneUri).then((value: systemSoundManager.RingtonePlayer | null) => {
   if (value != null) {
-    console.info('Succeeded in doing GetMockHapticRingtonePlayer.');
+    console.info('Succeeded in doing getMockHapticRingtonePlayer.');
     systemRingtonePlayer = value;
   }
 }).catch((err: BusinessError) => {
-  console.error(`Failed to GetMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to getMockHapticRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
