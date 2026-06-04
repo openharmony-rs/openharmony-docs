@@ -8,7 +8,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要支持如点击、双击、长按、滑动等UI操作能力。
+UiTest提供UI自动化测试能力，供开发者在测试场景使用，主要支持控件查找与操作、坐标点击/滑动、按键注入、截图、窗口管理、多指操作、鼠标/手写笔/触摸板操作等能力。
 
 该模块提供以下功能：
 
@@ -73,8 +73,8 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 <!--Table: 10%; 10%; 10%; 70%-->
 | 名称 | 类型   | 只读 |  可选 | 说明        |
 | ---- | ------ | ---- | ---- |-----------|
-| x    | number |  否   | 否   | 坐标点的横坐标，取值大于等于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
-| y    | number |  否   | 否   | 坐标点的纵坐标，取值大于等于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
+| x    | number |  否   | 否   | 坐标点的横坐标，取值大于等于0的整数，单位：px。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
+| y    | number |  否   | 否   | 坐标点的纵坐标，取值大于等于0的整数，单位：px。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
 | displayId<sup>20+</sup>    | number | 否    | 是   | 坐标点所属的屏幕ID，取值范围：大于等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## Rect<sup>9+</sup>
@@ -86,10 +86,10 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 <!--Table: 20%; 10%; 10%; 60%-->
 | 名称   | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | ---- | ---- | ------------------------- |
-| left   | number |  否   | 否 |控件边框的左上角的X坐标，取值大于等于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
-| top    | number |  否   | 否 |控件边框的左上角的Y坐标，取值大于等于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
-| right  | number |  否   | 否 |控件边框的右下角的X坐标，取值大于等于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
-| bottom | number |  否   | 否 |控件边框的右下角的Y坐标，取值大于等于0的整数。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
+| left   | number |  否   | 否 |控件边框的左上角的X坐标，取值大于等于0的整数，单位：px。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。 |
+| top    | number |  否   | 否 |控件边框的左上角的Y坐标，取值大于等于0的整数，单位：px。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
+| right  | number |  否   | 否 |控件边框的右下角的X坐标，取值大于等于0的整数，单位：px。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
+| bottom | number |  否   | 否 |控件边框的右下角的Y坐标，取值大于等于0的整数，单位：px。<br> **说明：** 从API version 20开始，该属性不再为只读属性。<br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。  |
 | displayId<sup>20+</sup> | number |  否   | 是 |控件边框所属的屏幕ID，取值大于或等于0的整数。默认值为设备默认屏幕ID。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
 
 ## WindowMode<sup>9+</sup>
@@ -131,8 +131,8 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 <!--Table: 20%; 10%; 10%; 60%-->
 | 名称                 | 类型    | 只读 | 可选 | 说明                                                                                     |
 | -------------------- | ------- | ---- | ---- |----------------------------------------------------------------------------------------|
-| bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| title                | string  | 否  | 是  | 窗口的标题信息，默认值为空。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                          |
+| bundleName           | string  | 否  | 是  | 窗口归属应用的包名，默认值为空，用于在多窗口场景下根据应用包名筛选目标窗口。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| title                | string  | 否  | 是  | 窗口的标题信息，默认值为空，用于在多窗口场景下根据窗口标题筛选目标窗口。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                          |
 | focused              | boolean | 否  | 是   | 窗口是否处于获焦状态，true：获焦状态，false：未获焦状态，默认值为false。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | actived(deprecated)  | boolean | 否   | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br>从API version 9开始支持，从API version 11开始废弃，建议使用[active<sup>11+</sup>](#windowfilter9)替代。                                                |
 | active<sup>11+</sup> | boolean | 否  | 是  | 窗口是否正与用户进行交互，true：交互状态，false：未交互状态，默认值为false。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
@@ -212,7 +212,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | number | 否   | 是   | 监听超时时间，取值范围：大于等于0的整数，默认值为10000，单位：ms。      |
+| timeout | number | 否   | 是   | 监听超时时间，取值范围：大于等于0的整数，默认值为10000，单位：ms。传入负数时抛出17000007错误码。      |
 | bundleName       | string | 否   | 是   | 监听窗口对应包名，缺省时默认监听所有窗口。       |
 
 
@@ -282,7 +282,7 @@ UI事件的相关信息。
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -297,7 +297,7 @@ UI事件的相关信息。
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -313,7 +313,7 @@ UI事件的相关信息。
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -329,7 +329,7 @@ UI事件的相关信息。
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -344,7 +344,7 @@ UI事件的相关信息。
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -359,7 +359,7 @@ UI事件的相关信息。
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -385,7 +385,7 @@ text(txt: string, pattern?: MatchPattern): On
 
 指定目标控件文本属性，支持多种匹配模式，返回On对象自身。
 
-> **说明**
+> **说明：**
 >
 > 如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，无法使用本接口指定目标控件的文本属性用于查找控件，可以使用[On.originalText()](#originaltext20)接口实现。
 
@@ -941,7 +941,7 @@ isBefore(com: Component): On
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -973,8 +973,8 @@ import { Component, Driver, On, ON } from '@kit.TestKit';
 
 async function demo() {
   let driver = Driver.create();
-  let com: Component = await driver.findComponent(ON.type('Text'));
-  let on: On = ON.text('123').isBefore(com); // 查找第一个Text组件之前的text为123的组件
+  let component: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').isBefore(component); // 查找第一个Text组件之前的text为123的组件
 }
 ```
 
@@ -1026,7 +1026,7 @@ isAfter(com: Component): On
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -1058,8 +1058,8 @@ import { Component, Driver, On, ON } from '@kit.TestKit';
 
 async function demo() {
   let driver = Driver.create();
-  let com: Component = await driver.findComponent(ON.type('Text'));
-  let on: On = ON.text('123').isAfter(com); // 查找第一个Text组件之后的text为123的组件
+  let component: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').isAfter(component); // 查找第一个Text组件之后的text为123的组件
 }
 ```
 
@@ -1111,7 +1111,7 @@ within(com: Component): On
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -1143,8 +1143,8 @@ import { Component, Driver, On, ON } from '@kit.TestKit';
 
 async function demo() {
   let driver = Driver.create();
-  let com: Component = await driver.findComponent(ON.type('Text'));
-  let on: On = ON.text('123').within(com); // 查找第一个Text组件内部的text为123的组件
+  let component: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').within(component); // 查找第一个Text组件内部的text为123的组件
 }
 ```
 
@@ -1312,7 +1312,7 @@ originalText(text: string, pattern?: MatchPattern): On
 
 指定控件的文本内容和文本匹配模式，返回On对象自身。
 
-> **说明**
+> **说明：**
 >
 > 如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口指定目标控件的文本属性用于查找控件，使用[On.text()](#text9)接口不生效。
 
@@ -1354,7 +1354,7 @@ let on: On = ON.originalText('123'); // 使用静态构造器ON创建On对象，
 
 UiTest框架从API version 9开始，Component类代表UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。
 
-该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。
+该类提供的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
 ### click<sup>9+</sup>
 
@@ -2040,8 +2040,11 @@ inputText(text: string): Promise\<void>
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 查找text为'hello world'的控件
   let text: Component = await driver.findComponent(ON.text('hello world'));
+  // 清空原有文本并输入'123'
   await text.inputText('123');
 }
 ```
@@ -2169,8 +2172,11 @@ scrollSearch(on: On): Promise\<Component>
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 获取可滑动的Scroll控件
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
+  // 在Scroll控件上滑动查找text为'next page'的控件
   let button = await scrollBar.scrollSearch(ON.text('next page'));
 }
 ```
@@ -2191,7 +2197,7 @@ scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 |------------------------| ---------- | ---- |-----------------------------------|
 | on                     | [On](#on9) | 是   | 目标控件的属性要求。                        |
 | vertical |    boolean | 否 | 默认为true，表示查找方向是纵向。false表示查找方向为横向。 |
-| offset   | number| 否 | 滑动起点/终点到组件边框的偏移，默认80，单位：px，取值范围：大于等于0的整数。    |
+| offset   | number| 否 | 滑动起点/终点到组件边框的偏移，默认80，单位：px，取值范围：大于等于0的整数。为负数时抛出401错误码。    |
 
 **返回值：**
 
@@ -2374,7 +2380,7 @@ pinchOut(scale: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| scale  | number | 是   | 指定放大的比例。取值范围大于1。 |
+| scale  | number | 是   | 指定放大的比例。取值范围大于1。传入小于等于1的值时抛出401错误码。 |
 
 **返回值：**
 
@@ -2419,7 +2425,7 @@ pinchIn(scale: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| scale  | number | 是   | 指定缩小的比例。取值范围大于等于0且小于1。 |
+| scale  | number | 是   | 指定缩小的比例。取值范围为(0, 1]，不包含0，包含1。传入0或负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -2602,7 +2608,7 @@ async function demo() {
 
 ## Driver<sup>9+</sup>
 
-Driver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。
+Driver类为UiTest测试框架的总入口。提供控件匹配/查找、按键注入、坐标点击/滑动、截图等能力。
 
 该类提供的方法除Driver.create()和Driver.createUIEventObserver()以外的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
@@ -2655,7 +2661,7 @@ delayMs(duration: number): Promise\<void>
 
 | 参数名   | 类型   | 必填 | 说明                            |
 | -------- | ------ | ---- | ------------------------------- |
-| duration | number | 是   | 给定的时间，单位：ms，取值范围：大于等于0的整数。 |
+| duration | number | 是   | 给定的时间，单位：ms，取值范围：大于等于0的整数。传入负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -2722,7 +2728,9 @@ findComponent(on: On): Promise\<Component>
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 查找text为'next page'的控件
   let button: Component = await driver.findComponent(ON.text('next page'));
 }
 ```
@@ -2984,7 +2992,7 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-传入key值实现模拟点击对应按键的效果。使用Promise异步回调。
+传入键码值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2994,7 +3002,7 @@ triggerKey(keyCode: number): Promise\<void>
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | 是   | 指定的key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
+| keyCode | number | 是   | 指定的键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
 
 **返回值：**
 
@@ -3028,7 +3036,7 @@ async function demo() {
 
 triggerKey(keyCode: number, displayId: number): Promise\<void>
 
-在指定屏幕，传入key值实现模拟点击对应按键的效果。使用Promise异步回调。
+在指定屏幕，传入键码值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3038,7 +3046,7 @@ triggerKey(keyCode: number, displayId: number): Promise\<void>
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | 是   | 指定的key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
+| keyCode | number | 是   | 指定的键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
 | displayId | number | 是   | 指定的屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。  |
 
 **返回值：**
@@ -3073,7 +3081,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
 
-通过给定的key值，找到对应组合键并点击。使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
+通过给定的键码值，找到对应组合键并点击。使用Promise异步回调。例如，键码值为(2072, 2019)时，找到键码值对应的组合键并点击，如Ctrl+c。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3083,9 +3091,9 @@ triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | number | 是   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key1   | number | 是   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key2   | number | 否   | 指定的第三个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key0   | number | 是   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key1   | number | 是   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key2   | number | 否   | 指定的第三个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
@@ -3110,6 +3118,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
+  // 注入Ctrl+Alt+Delete组合键
   await driver.triggerCombineKeys(2072, 2047, 2035);
 }
 ```
@@ -3118,7 +3127,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number): Promise\<void>
 
-通过给定的key值，找到对应组合键，并在指定屏幕下进行点击。使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
+通过给定的键码值，找到对应组合键，并在指定屏幕下进行点击。使用Promise异步回调。例如，键码值为(2072, 2019)时，找到键码值对应的组合键并点击，如Ctrl+c。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3128,9 +3137,9 @@ triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number
 
 | 参数名 | 类型   | 必填 | 说明                           |
 | ------ | ------ | ---- | ------------------------------ |
-| key0   | number | 是   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key1   | number | 是   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
-| key2   | number | 否   | 指定的第三个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key0   | number | 是   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key1   | number | 是   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。            |
+| key2   | number | 否   | 指定的第三个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 | displayId | number | 否  | 指定的屏幕ID，取值范围：大于等于0的整数，默认值为设备默认屏幕ID。传入displayId不存在时，将抛出17000007异常。 |
 
 **返回值：**
@@ -3164,7 +3173,7 @@ async function demo() {
 
 click(x: number, y: number): Promise\<void>
 
-在目标坐标点单击。使用Promise异步回调。
+在目标坐标点单击。仅支持在设备默认屏幕上操作，如需指定屏幕请使用[clickAt](#clickat20)。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3255,7 +3264,7 @@ clickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -3301,7 +3310,7 @@ async function demo() {
 
 doubleClick(x: number, y: number): Promise\<void>
 
-在目标坐标点双击。使用Promise异步回调。
+在目标坐标点双击。仅支持在设备默认屏幕上操作，如需指定屏幕请使用[doubleClickAt](#doubleclickat20)。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3388,7 +3397,7 @@ async function demo() {
 
 longClick(x: number, y: number): Promise\<void>
 
-在目标坐标点长按。使用Promise异步回调。
+在目标坐标点长按。仅支持在设备默认屏幕上操作且不支持自定义长按时长，如需指定屏幕或长按时长请使用[longClickAt](#longclickat20)。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3480,7 +3489,7 @@ longClickAt(point: Point, options?: TouchOptions): Promise\<void>
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -3527,7 +3536,7 @@ async function demo() {
 
 swipe(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
 
-从起始坐标点滑向目的坐标点。使用Promise异步回调。
+从起始坐标点滑向目的坐标点。仅支持在设备默认屏幕上操作，如需指定屏幕请使用[swipeBetween](#swipebetween20)。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3565,7 +3574,9 @@ swipe(startx: number, starty: number, endx: number, endy: number, speed?: number
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 从坐标(100,100)滑动到坐标(200,200)，滑动速率为600px/s
   await driver.swipe(100, 100, 200, 200, 600);
 }
 ```
@@ -3772,7 +3783,7 @@ dragBetween(from: Point, to: Point, options?: TouchOptions): Promise\<void>
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -3910,11 +3921,11 @@ async function demo() {
 
 dumpLayout(savePath: string, displayId?: number): Promise\<boolean>
 
-获取当前布局信息并保存为JSON格式的文件。使用Promise异步回调。
+获取当前布局信息并保存为JSON格式的文件，适用于需要分析UI控件层级结构或调试控件定位问题的测试场景。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -3923,7 +3934,7 @@ dumpLayout(savePath: string, displayId?: number): Promise\<boolean>
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
 | savePath | string | 是   | JSON文件保存路径。路径需为当前应用的沙箱目录。 |
-| displayId     | number | 否  | 指定设备屏幕ID，取值范围：大于等于0的整数。默认为主屏幕的displayId。 |
+| displayId     | number | 否  | 指定设备屏幕ID，取值范围：大于等于0的整数。默认为主屏幕的displayId。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。 |
 
 **返回值：**
 
@@ -4403,7 +4414,7 @@ async function demo() {
 
 waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
-判断当前界面的所有控件是否已经空闲。使用Promise异步回调。
+判断当前界面的所有控件是否已经空闲，适用于在页面跳转、动画播放或加载等场景后，等待UI界面完全稳定再执行后续测试操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4459,8 +4470,8 @@ fling(from: Point, to: Point, stepLen: number, speed: number): Promise\<void>
 | ------- | ---------------- | ---- |------------------------------------------------------|
 | from    | [Point](#point9) | 是   | 手指接触屏幕的起始点坐标。                                        |
 | to      | [Point](#point9) | 是   | 手指离开屏幕时的坐标点。                                         |
-| stepLen | number           | 是   | 间隔距离，取值大于等于0的整数，单位：px。                                         |
-| speed   | number           | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
+| stepLen | number           | 是   | 间隔距离，取值大于等于0的整数，单位：px。为负数时抛出401错误码。                                         |
+| speed     | number                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -4493,7 +4504,7 @@ async function demo() {
 
 injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<boolean>
 
-向设备注入多指操作。使用Promise异步回调。
+向设备注入多指操作，适用于需要模拟多指手势的测试场景，如双指捏合缩放图片、多指滑动切换页面等。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4528,18 +4539,23 @@ injectMultiPointerAction(pointers: PointerMatrix, speed?: number): Promise\<bool
 import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 创建2指5步的滑动轨迹矩阵
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
+  // 设置第一根手指的滑动轨迹
   pointers.setPoint(0, 0, { x: 250, y: 480 });
   pointers.setPoint(0, 1, { x: 250, y: 440 });
   pointers.setPoint(0, 2, { x: 250, y: 400 });
   pointers.setPoint(0, 3, { x: 250, y: 360 });
   pointers.setPoint(0, 4, { x: 250, y: 320 });
+  // 设置第二根手指的滑动轨迹
   pointers.setPoint(1, 0, { x: 250, y: 480 });
   pointers.setPoint(1, 1, { x: 250, y: 440 });
   pointers.setPoint(1, 2, { x: 250, y: 400 });
   pointers.setPoint(1, 3, { x: 250, y: 360 });
   pointers.setPoint(1, 4, { x: 250, y: 320 });
+  // 注入双指滑动操作
   await driver.injectMultiPointerAction(pointers);
 }
 ```
@@ -4559,7 +4575,7 @@ fling(direction: UiDirection, speed: number): Promise\<void>
 | 参数名    | 类型                          | 必填 | 说明                                                     |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | 是   | 进行抛滑的方向。                                               |
-| speed     | number                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
+| speed     | number                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -4603,7 +4619,7 @@ fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 | 参数名    | 类型                          | 必填 | 说明                                                     |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | 是   | 进行抛滑的方向。                                               |
-| speed     | number                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数时设为默认值600。为负数时抛出401错误码。 |
+| speed     | number                        | 是   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 | displayId     | number | 是  | 指定设备屏幕ID，取值范围：大于等于0的整数。 <br> **说明：** 传入displayId不存在时，将抛出17000007异常。                  |
 
 **返回值：**
@@ -4637,7 +4653,7 @@ async function demo() {
 
 screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
-捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。
+捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中。使用Promise异步回调。适用于支持截屏的场景。与[screenCap](#screencap9)的区别在于本接口支持通过rect参数指定截图区域，而非截取全屏。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4686,7 +4702,7 @@ async function demo() {
 
 mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标点击动作。
+在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，键码值为2072时，按下Ctrl并进行鼠标点击动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4696,10 +4712,10 @@ mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\
 
 | 参数名 | 类型                          | 必填 | 说明                           |
 | ------ | ----------------------------- | ---- | ------------------------------ |
-| p      | [Point](#point9)              | 是   | 鼠标滚轮操作的目标坐标。               |
+| p      | [Point](#point9)              | 是   | 鼠标点击操作的目标坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | number                        | 否   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2   | number                        | 否   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1   | number                        | 否   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2   | number                        | 否   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
@@ -4732,7 +4748,7 @@ async function demo() {
 
 mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
+在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，键码值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4744,9 +4760,9 @@ mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): P
 | ------ | ---------------- | ---- | ----------------------------------------------------------- |
 | p      | [Point](#point9) | 是   | 鼠标滚轮操作的目标坐标。                                         |
 | down   | boolean          | 是   | 滚轮滑动方向是否向下。true表示向下滚动。false表示向上滚动。 |
-| d      | number           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。         |
-| key1   | number           | 否   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
-| key2   | number           | 否   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
+| d      | number           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。为负数时抛出401错误码。         |
+| key1   | number           | 否   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
+| key2   | number           | 否   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                              |
 
 **返回值：**
 
@@ -4870,10 +4886,10 @@ mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number, sp
 | ------ | ---------------- | ---- | ------------------------------------------------------------ |
 | p      | [Point](#point9) | 是   | 鼠标滚轮操作的目标坐标。                                              |
 | down   | boolean          | 是   | 滚轮滑动方向是否向下。true表示向下滚动。false表示向上滚动。  |
-| d      | number           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。          |
-| key1   | number           | 否   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
-| key2   | number           | 否   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
-| speed  | number           | 否   | 鼠标滚轮滚动的速度，范围：1-500的整数，单位：格/s。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出401错误码。 |
+| d      | number           | 是   | 鼠标滚轮滚动的格数，取值大于等于0的整数，每格对应目标点位移120px。为负数时抛出401错误码。          |
+| key1   | number           | 否   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
+| key2   | number           | 否   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。                               |
+| speed  | number           | 否   | 鼠标滚轮滚动的速度，范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -4906,7 +4922,7 @@ async function demo() {
 
 mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标双击动作。
+在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，键码值为2072时，按下Ctrl并进行鼠标双击动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4918,8 +4934,8 @@ mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Pr
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标双击的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | number                        | 否   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
-| key2   | number                        | 否   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
+| key1   | number                        | 否   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
+| key2   | number                        | 否   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值0。 |
 
 **返回值：**
 
@@ -4952,7 +4968,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
+在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键。使用Promise异步回调。例如，键码值为2072时，按下Ctrl并进行鼠标长按动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4964,8 +4980,8 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Prom
 | ------ | ----------------------------- | ---- | ------------------------------ |
 | p      | [Point](#point9)              | 是   | 鼠标长按的坐标。               |
 | btnId  | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1   | number                        | 否   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2   | number                        | 否   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1   | number                        | 否   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2   | number                        | 否   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 
 **返回值：**
 
@@ -4990,6 +5006,7 @@ import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
+  // 键码值为2072时，按下Ctrl并进行鼠标长按动作
   await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
@@ -4998,7 +5015,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise\<void>
 
-在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长。使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
+在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长。使用Promise异步回调。例如，键码值为2072时，按下Ctrl并进行鼠标长按动作。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -5010,8 +5027,8 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, durat
 | -------- | ----------------------------- | ---- | ------------------------------ |
 | p        | [Point](#point9)              | 是   | 鼠标长按的坐标。               |
 | btnId    | [MouseButton](#mousebutton10) | 是   | 按下的鼠标按钮。               |
-| key1     | number                        | 否   | 指定的第一个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
-| key2     | number                        | 否   | 指定的第二个key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key1     | number                        | 否   | 指定的第一个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
+| key2     | number                        | 否   | 指定的第二个键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)，默认值为0。 |
 | duration | number | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
 
 **返回值：**
@@ -5037,6 +5054,7 @@ import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
+  // 键码值为2072时，按下Ctrl并进行鼠标长按动作，长按时长2000ms
   await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072, 0, 2000);
 }
 ```
@@ -5045,7 +5063,7 @@ async function demo() {
 
 mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
 
-鼠标从起始坐标点滑向终点坐标点。使用Promise异步回调。
+鼠标从起始坐标点滑向终点坐标点，带有可见移动轨迹。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5189,7 +5207,7 @@ mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyO
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5279,9 +5297,13 @@ inputText(p: Point, text: string): Promise\<void>
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 查找TextInput类型的目标控件
   let text: Component = await driver.findComponent(ON.type('TextInput'));
+  // 获取控件中心点坐标
   let point = await text.getBoundsCenter();
+  // 在坐标点处输入文本'123'
   await driver.inputText(point, '123');
 }
 ```
@@ -5333,7 +5355,7 @@ async function demo() {
   await driver.inputText(point, '123', { paste: true, addition: false });
 }
 
-async function demo_Chinese() {
+async function demoChinese() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.type('TextInput'));
   let point = await text.getBoundsCenter();
@@ -5358,9 +5380,9 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 | 参数名 | 类型                                            | 必填 | 说明                    |
 | ------ |-----------------------------------------------|----|-----------------------|
-| fingers      | number                                        | 是  | 触摸板多指滑动的手指数。取值为3或者4。 |
+| fingers      | number                                        | 是  | 触摸板多指滑动的手指数。取值为3或者4。为不在范围内的非负数时设为默认值。为负数时抛出401错误码。 |
 | direction | [UiDirection](#uidirection10)                 | 是  | 触摸板多指滑动的方向。           |
-| options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | 否  | 触摸板多指滑动手势附加选项，默认取TouchPadSwipeOptions中各属性的默认值。        |
+| options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | 否  | 触摸板多指滑动手势附加选项，默认取TouchPadSwipeOptions中各属性的默认值，用于设置触摸板多指滑动结束是否停留以及滑动速率，适用于在触摸板上模拟多指滑动手势的场景，如三指上滑切换任务视图等。        |
 
 **返回值：**
 
@@ -5408,8 +5430,8 @@ touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?
 | ------ |-----------------------------------------------|----|-----------------------|
 | point       | [Point](#point9) | 是   | 触摸板双指滚动时鼠标光标的位置。                                            |
 | direction   | [UiDirection](#uidirection10)                 | 是  | 触摸板双指滚动的方向。           |
-| d           | number           | 是   | 触摸板双指滚动的格数，取值为大于等于0的整数，每格对应目标点位移120px。         |
-| speed       | number           | 否   | 触摸板双指滚动的速度，范围：1-500的整数，单位：格/s。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。 |
+| d           | number           | 是   | 触摸板双指滚动的格数，取值为大于等于0的整数，每格对应目标点位移120px。为负数时抛出401错误码。         |
+| speed       | number           | 否   | 触摸板双指滚动的速度，范围：1-500的整数，单位：格/秒。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。 |
 
 **返回值：**
 
@@ -5497,7 +5519,7 @@ penLongClick(point: Point, pressure?: number): Promise\<void>
 | 参数名 | 类型                                            | 必填 | 说明                            |
 | ------ |-----------------------------------------------|----|-------------------------------|
 | point      | [Point](#point9) | 是  | 长按的坐标点。                       |
-| pressure      | number | 否  | 手写笔长按操作的压力，默认为1.0，取值范围为0.0到1.0。 |
+| pressure      | number | 否  | 手写笔长按操作的压力，默认为1.0，取值范围为0.0到1.0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出401错误码。 |
 
 **返回值：**
 
@@ -5632,7 +5654,7 @@ injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: numbe
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明**：当前仅支持单指操作，[PointerMatrix](#pointermatrix9)中的操作手指个数fingers必须设置为1。 |
 | speed      | number| 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。            |
-| pressure      | number | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为0.0到1.0。                                 |
+| pressure      | number | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为[0.0, 1.0]，包含0.0和1.0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出401错误码。 |
 
 
 **返回值：**
@@ -5658,10 +5680,13 @@ import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
+  // 创建单指8步的滑动轨迹矩阵
   let pointer = PointerMatrix.create(1, 8);
+  // 循环设置每步坐标点，模拟从下向上的滑动
   for (let step = 0; step < 8; step++) {
     pointer.setPoint(0, step, { x: 500, y: 1100 - 100 * step });
   }
+  // 以600px/s速率和0.5压力值注入手写笔滑动操作
   await driver.injectPenPointerAction(pointer, 600, 0.5);
 }
 ```
@@ -5674,7 +5699,7 @@ triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: 
 
 **起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
@@ -5741,7 +5766,7 @@ crownRotate(d: number, speed?: number): Promise\<void>
 
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| d      | number   | 是   | 手表表冠旋转的格数，正值表示顺时针旋转，负值表示逆时针旋转，取值需为整数。         |
+| d      | number   | 是   | 手表表冠旋转的格数，正值表示顺时针旋转，负值表示逆时针旋转，取值需为整数。为非整数时抛出401错误码。         |
 | speed  | number   | 否   | 手表表冠旋转的速度，取值范围：1-500的整数，单位：格/s。为不在范围内的非负数或为null/undefined时设为默认值20。为负数时抛出17000007错误码。<br> **说明：** 参数取值超出合法范围时，设为默认值20。 |
 
 **返回值：**
@@ -5795,8 +5820,8 @@ knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
 
 | 参数名 | 类型                                         | 必填 | 说明                                                             |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers  | Array<[Point](#point9)>   | 是   | 指关节敲击屏幕坐标点的数组，数组长度取值为1或2。         |
-| times     | number   | 是   | 指关节连续敲击屏幕的次数，取值为1或2。 |
+| pointers  | Array<[Point](#point9)>   | 是   | 指关节敲击屏幕坐标点的数组，数组长度取值为1或2。为非正整数时抛出401错误码。         |
+| times     | number   | 是   | 指关节连续敲击屏幕的次数，取值为1或2。为非正整数时抛出401错误码。 |
 
 **返回值：**
 
@@ -5891,7 +5916,7 @@ async function demo() {
 
 isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promise\<boolean>
 
-在坐标点长按，并查找目标控件是否存在。使用Promise异步回调。
+在坐标点长按，并查找目标控件是否存在，适用于验证长按操作后动态出现的UI元素，例如长按后弹出的上下文菜单或编辑按钮等。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -5936,7 +5961,7 @@ async function demo() {
 
 isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, duration?: number): Promise\<boolean>
 
-从起始点拖拽至终止点，并查找目标控件是否存在。使用Promise异步回调。
+从起始点拖拽至终止点，并查找目标控件是否存在，适用于验证拖拽过程中动态出现的UI元素，例如拖拽文件到目标文件夹时验证文件夹高亮效果等。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -5983,7 +6008,7 @@ async function demo() {
 
 isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Promise\<boolean>
 
-从起始点滑向终止点，并查找目标控件是否存在。使用Promise异步回调。
+从起始点滑向终止点，并查找目标控件是否存在，适用于验证滑动操作过程中动态出现的UI元素，例如滑动删除列表项时验证删除按钮出现等。使用Promise异步回调。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -6027,7 +6052,7 @@ async function demo() {
 
 ## PointerMatrix<sup>9+</sup>
 
-存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。
+存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。通过[create](#create9)构造对象后，使用[setPoint](#setpoint9)设置每个手指每步操作的坐标值，再作为参数传给[injectMultiPointerAction](#injectmultipointeaction9)执行多指操作。
 
 ### create<sup>9+</sup>
 
@@ -6156,8 +6181,11 @@ getBundleName(): Promise\<string>
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 查找当前活跃窗口
   let window: UiWindow = await driver.findWindow({ active: true });
+  // 获取窗口归属应用的包名
   let name: string = await window.getBundleName();
 }
 ```
@@ -7361,7 +7389,7 @@ let by: By = BY.type('Text').isAfter(BY.text('123')); // 查找 text为123之后
 
 UiTest中，UiComponent类代表了UI界面上的一个控件，提供控件属性获取，控件点击，滑动查找，文本注入等API。
 
-该类提供的所有方法都使用Promise方式作为异步方法，需使用await调用。
+该类提供的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
 > **说明：**
 >
@@ -7768,7 +7796,7 @@ inputText(text: string): Promise\<void>
 向控件中输入文本，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 > **说明：**
->
+
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[inputText<sup>9+</sup>](#inputtext9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
@@ -7839,7 +7867,7 @@ async function demo() {
 
 UiDriver类为uitest测试框架的总入口，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等API。
 
-该类提供的方法除UiDriver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await调用。
+该类提供的方法除UiDriver.create()以外的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
 
 > **说明：**
 >
@@ -8062,7 +8090,7 @@ async function demo() {
 
 triggerKey(keyCode: number): Promise\<void>
 
-UiDriver对象采取如下操作：通过key值找到对应键并点击。使用Promise异步回调。
+传入键码值实现模拟点击对应按键的效果。使用Promise异步回调。
 
 > **说明：**
 >
@@ -8074,7 +8102,7 @@ UiDriver对象采取如下操作：通过key值找到对应键并点击。使用
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ------------- |
-| keyCode | number | 是   | 指定的key值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
+| keyCode | number | 是   | 指定的键码值，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
 
 **返回值：**
 
