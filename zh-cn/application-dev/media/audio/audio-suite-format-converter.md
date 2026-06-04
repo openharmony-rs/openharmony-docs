@@ -84,31 +84,6 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 ### 创建格式转换器
 
    <!-- @[converter_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
-   
-   ``` C++
-   // 设置输入格式。
-   OH_AudioConverter_Format inputFormat = {
-       .encodingType = OH_Audio_EncodingType::AUDIO_ENCODING_TYPE_RAW,
-       .samplingRate = OH_Audio_SampleRate::SAMPLE_RATE_48000,
-       .channelLayout = OH_AudioChannelLayout::CH_LAYOUT_STEREO,
-       .sampleFormat = OH_Audio_SampleFormat::AUDIO_SAMPLE_S16LE
-   };
-   
-   // 设置输出格式。
-   OH_AudioConverter_Format outputFormat = {
-       .encodingType = OH_Audio_EncodingType::AUDIO_ENCODING_TYPE_RAW,
-       .samplingRate = OH_Audio_SampleRate::SAMPLE_RATE_192000,
-       .channelLayout = OH_AudioChannelLayout::CH_LAYOUT_6POINT0_FRONT,
-       .sampleFormat = OH_Audio_SampleFormat::AUDIO_SAMPLE_S24LE
-   };
-   
-   // 创建转换器。
-   OH_AudioConverter_Result result = OH_AudioConverter_Create(&inputFormat, &outputFormat, &testData->converter);
-   if (result != AUDIOCONVERTER_SUCCESS) {
-       OH_LOG_Print(LOG_APP, LOG_ERROR, GLOBAL_RESMGR, TAG, "创建转换器失败: %{public}d", result);
-       return false;
-   }
-   ```
 
 ### 设置输入数据回调函数
 
@@ -116,58 +91,9 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
    输入数据回调函数。
    <!-- @[input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
-   
-   ``` C++
-   int32_t AudioConverterRequestDataCallback(
-       void *userData, const void **outInputData, OH_AudioConverter_InputStatus *outStatus)
-   {
-       if ((userData == nullptr) || (outInputData == nullptr) || (outStatus == nullptr)) {
-           return -1;
-       }
-   
-       AudioConverterTestData *testData = static_cast<AudioConverterTestData *>(userData);
-   
-       // 设置输出数据指针。
-       // 注意：数据指针的值并不一定要从userData中获取，也可以是存储数据的缓存地址。
-       // 例如：从文件中读取数据放入缓存，然后将该缓存地址赋值给输出数据指针。
-       // 只要确保数据指针在OH_AudioConverter_Process()返回前保持有效即可。
-       *outInputData = testData->inputAudioInfo.buffer + testData->inputAudioInfo.totalReadSize;
-   
-       // 计算本次可提供的数据大小（单次回调最多返回400KB）。
-       // bufferSize：文件的总字节数（在ReadPcmFile中赋值）。
-       // totalReadSize：已读取的字节数（每次回调递增）。
-       int32_t maxDataSize = 400 * 1024;
-       int32_t remainingSize = testData->inputAudioInfo.bufferSize - testData->inputAudioInfo.totalReadSize;
-       int32_t actualDataSize = (remainingSize < maxDataSize) ? remainingSize : maxDataSize;
-   
-       // 更新已读取位置。
-       testData->inputAudioInfo.totalReadSize += actualDataSize;
-   
-       // 设置输入数据状态。
-       if (actualDataSize == 0) {
-           *outStatus = OH_AudioConverter_InputStatus::AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA;
-       } else if (testData->inputAudioInfo.totalReadSize >= testData->inputAudioInfo.bufferSize) {
-           *outStatus = OH_AudioConverter_InputStatus::AUDIOCONVERTER_INPUT_DATA_FINISHED;
-       } else {
-           *outStatus = OH_AudioConverter_InputStatus::AUDIOCONVERTER_INPUT_HAVE_DATA;
-       }
-   
-       return actualDataSize;
-   }
-   ```
 
    设置输入数据回调。
    <!-- @[set_input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
-   
-   ``` C++
-   // 设置输入回调。
-   result = OH_AudioConverter_SetInputCallback(testData->converter, AudioConverterRequestDataCallback, testData);
-   if (result != AUDIOCONVERTER_SUCCESS) {
-       OH_LOG_Print(LOG_APP, LOG_ERROR, GLOBAL_RESMGR, TAG, "设置输入回调失败: %{public}d", result);
-       OH_AudioConverter_Destroy(testData->converter);
-       return false;
-   }
-   ```
 
 ###  执行格式转换
 
@@ -182,66 +108,10 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    > - `AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA`和`AUDIOCONVERTER_INPUT_DATA_FINISHED`状态下，`OH_AudioConverter_Process()`会返回`SUCCESS`和`outputSize = 0`。因此，不能仅凭`outputSize = 0`或`result = SUCCESS`判断数据处理已经完成，还需要调用方确保所有数据已经输入结束。
 
    <!-- @[converter_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
-   
-   ``` C++
-   // 处理音频数据。
-   bool ProcessAudioData(AudioConverterTestData *testData, int32_t estimatedOutputSize)
-   {
-       OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_RESMGR, TAG, "开始处理音频数据...");
-       
-       // 分配输出缓冲区。
-       const int32_t processBufferSize = 4096 * 4; // 16KB。
-       uint8_t *processBuffer = new uint8_t[processBufferSize];
-       // 标记是否所有输入数据已结束。
-       bool allInputDataFinished = false;
-       int32_t outputSize = 0;
-       OH_AudioConverter_Result result;
-   
-       do {
-           result = OH_AudioConverter_Process(testData->converter, processBuffer, processBufferSize, &outputSize);
-           if (result != AUDIOCONVERTER_SUCCESS) {
-               OH_LOG_Print(LOG_APP, LOG_ERROR, GLOBAL_RESMGR, TAG, "处理音频数据失败: %{public}d", result);
-               delete[] processBuffer;
-               return false;
-           }
-   
-           if (outputSize > 0) { // processBuffer是转换后的音频数据，数据长度为outputSize，开发者根据业务场景自行使用或者保存。
-               // 将输出数据复制到输出缓冲区。
-               if (testData->outputAudioInfo.bufferSize + outputSize <= estimatedOutputSize) {
-                   std::copy(processBuffer, processBuffer + outputSize,
-                             testData->outputAudioInfo.buffer + testData->outputAudioInfo.bufferSize);
-                   testData->outputAudioInfo.bufferSize += outputSize;
-               } else {
-                   OH_LOG_Print(LOG_APP, LOG_ERROR, GLOBAL_RESMGR, TAG, "输出缓冲区溢出");
-                   delete[] processBuffer;
-                   return false;
-               }
-           }
-   
-           // 检查是否所有输入数据已结束，当totalReadSize >= bufferSize时，表示已读取完所有输入数据。
-           if (testData->inputAudioInfo.totalReadSize >= testData->inputAudioInfo.bufferSize) {
-               allInputDataFinished = true;
-           }
-       } while (outputSize > 0 || !allInputDataFinished);
-   
-       delete[] processBuffer;
-       processBuffer = nullptr;
-   
-       OH_LOG_Print(LOG_APP, LOG_INFO, GLOBAL_RESMGR, TAG,
-                    "格式转换完成: 输入 %{public}d 字节, 输出 %{public}d 字节",
-                    testData->inputAudioInfo.bufferSize, testData->outputAudioInfo.bufferSize);
-   
-       return true;
-   }
-   ```
 
 ###  销毁格式转换器
 
    <!-- @[converter_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
-   
-   ``` C++
-   OH_AudioConverter_Destroy(testData->converter);
-   ```
    
 **错误码说明**：详见API文档[OH_AudioConverter_Result](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_result)。
    
