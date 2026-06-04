@@ -224,8 +224,8 @@
       - [出现/消失转场](arkts-enter-exit-transition.md)
       - [模态转场](arkts-modal-transition.md)
       - [共享元素转场 (一镜到底)](arkts-shared-element-transition.md)
-      - [旋转屏动画](arkts-rotation-transition-animation.md)    
-      - [页面转场动画 (不推荐)](arkts-page-transition-animation.md)<!--RP11--><!--RP11End-->
+      - [旋转屏动画](arkts-rotation-transition-animation.md)<!--RP11--><!--RP11End-->
+      - [页面转场动画 (不推荐)](arkts-page-transition-animation.md)
     - [粒子动画](arkts-particle-animation.md)
     - [组件动画](arkts-component-animation.md)
     - 动画曲线<!--arkts-animation-curve-->
