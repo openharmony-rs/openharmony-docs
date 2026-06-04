@@ -347,7 +347,7 @@ Obtains the preview rotation angle.
 
 - Device' natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural orientation. For example, the rear camera sensor of a bar-type phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural orientation.
-- [Screen Rotation](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-device-window-direction#section737072712182): indicates the clockwise rotation angle of the device screen.
+- [Screen rotation](https://developer.huawei.com/consumer/en/doc/harmonyos-references/js-apis-display#display): indicates the clockwise rotation angle of the device screen.
 
 **Model restriction**: This API can be used only in the stage model.
 
