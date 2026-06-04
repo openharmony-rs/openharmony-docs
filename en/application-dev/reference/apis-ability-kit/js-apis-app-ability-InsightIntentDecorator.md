@@ -145,7 +145,7 @@ Common properties for intent decorators, used to define basic information about 
 | Name              | Type           | Read-Only        | Optional| Description                                                        |
 | ------------------ | ----------------| ---------- | ---- | ------------------------------------------------------------ |
 | intentName         | string          | No      | No  | Intent name, which is the unique identifier of an intent.|
-| domain             | string          | No      | No  | Vertical domain of the intent. It is used to categorize intents by vertical fields (for example, video, music, and games). For details about the value range, see the vertical domain fields.   |
+| domain             | string          | No      | No  | Vertical domain of the intent. It is used to categorize intents by vertical fields (for example, video, music, and games). For details about the value range, see the vertical domain fields in smart distribution features in different vertical domains.   |
 | intentVersion      | string          | No      | No  | Version number of the intent. It is used to distinguish and manage intents when their capabilities evolve.                       |
 | displayName        | string          | No      | No  | Name of the intent displayed to users.                                      |
 | displayDescription | string         | No       | Yes  | Description of the intent displayed to users.                                      |
