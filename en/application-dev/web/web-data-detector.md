@@ -112,7 +112,7 @@ If [copyOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.
 
 ![web-data-detector-preview-drag](figures/web-data-detector-preview-drag.gif)
 
-The [custom menu](web_menu.md#custom-menu) bound by [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) does not affect the long-press preview menu of text segmentation. Long-pressing the highlighted text segmentation hyperlink does not display the custom hyperlink menu, and long-pressing a common hyperlink does not display the text segmentation preview menu.
+The [custom menu](web-menu.md#custom-menu) bound by [bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13) does not affect the long-press preview menu of text segmentation. Long-pressing the highlighted text segmentation hyperlink does not display the custom hyperlink menu, and long-pressing a common hyperlink does not display the text segmentation preview menu.
 
 
 ## Text Selection Menu Extension
