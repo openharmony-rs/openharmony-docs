@@ -2,7 +2,7 @@
 
 在应用播放或录制声音时，会遇到与其他应用或本应用内的其他音频流发生焦点冲突。本章节概括了该场景的处理方式，帮助开发者了解如何使用系统的音频焦点冲突管理能力来解决各类音频打断问题。
 
-当前系统音频提供两种能力来管理音频冲突：音频焦点和音频会话。
+当前系统音频推荐两种能力来管理音频冲突：音频焦点和音频会话。
 
 音频焦点是系统预置策略，可以管理相对简单的场景，选择正确的音频流类型后，由系统进行管理，不需要应用参与。
 
@@ -45,21 +45,21 @@
 
 焦点特点：利用音频焦点的自动恢复机制，`INTERRUPT_TYPE_END`事件携带RESUME提示，应用被动响应恢复播放，适合应用保持播放状态。
 
-## 音频渲染、录制和会话使用场景概述
+## 音频会话使用场景概述
 
-如果系统默认策略不满足场景需求，建议使用音频渲染、录制和会话相关能力进行处理，典型场景如下。
+如果系统默认策略不满足场景需求，建议使用音频渲染、录制和会话相关接口进行处理，典型场景如下。
 
 ### 场景1：音乐被后启动应用打断后，无法恢复
 
 先打开应用A播放音乐，然后打开应用B，应用B有音频播放。默认焦点策略是STOP，应用A被应用B打断后，当B停止播放时，A不能恢复播放；要使A重新播放，系统当前有如下方案供选择：
 
 <!--Table: 6%; 30%; 30%; 17%; 17% -->
-|  | 应用A | 应用B | 打断效果 | 备注 |
+| - | 应用A | 应用B | 打断效果 | 备注 |
 |--|-------|-------|---------|------|
 | 默认场景 | 播放媒体类音频（音乐） | 播放媒体类音频（短视频） | 默认焦点策略是停止，B播放后A被打断，不恢复 | 需要应用A继续播放，参考如下方案 |
 | 方案一 | 使用音频渲染接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需适配 | B抢占焦点后，A会继续静音播放，B完成播放后A恢复 | 复播后会跳过之前静音的内容，对进度条敏感的场景，不建议使用 |
 | 方案二 | 使用音频渲染接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 无需适配 | 应用B音频打断应用A时使用暂停策略，B播放完成后，A收到RESUME消息后继续播放 | 进度条敏感应用推荐使用该方案 |
-| 方案三 | 无需适配 | 使用音频会话，在启动时使用CONCURRENCY_PAUSE_OTHERS，打断时使用PAUSE策略。当应用B释放焦点时，会给A发送RESUME事件 | B播放完成后，会发送RESUME，A继续播放 | |
+| 方案三 | 无需适配 | 使用音频会话，在启动时使用CONCURRENCY_PAUSE_OTHERS，打断时使用PAUSE策略。当应用B释放焦点时，会给A发送RESUME事件 | B播放完成后，会发送RESUME，A继续播放 | - |
 | 方案四 | 应用A提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 无需适配 | 应用A提供设置开关，用户手动开启生效，B播放后与A同时播放 | 参考系统音乐 |
 | 方案五 | 无需适配 | 应用B提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 应用B提供设置开关，用户手动开启生效，B播放后与A同时播放 | 参考系统音乐 |
 | 方案六 | 使用音频会话接口[setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 应用B提供开关，音频会话并发策略使用`CONCURRENCY_MIX_WITH_OTHERS` | 应用提供设置开关，用户手动开启生效，B播放后与A同时播放 | 参考系统音乐 |
@@ -67,22 +67,22 @@
 ### 场景2：录音被通话应用打断后，无法恢复
 
 <!--Table: 6%; 30%; 30%; 17%; 17% -->
-|  | 应用A | 应用B | 打断效果 | 备注 |
+| - | 应用A | 应用B | 打断效果 | 备注 |
 |--|-------|-------|---------|------|
-| 默认场景 | 启动音频录制 | 蜂窝通话、视频通话 | 通话和VoIP通话出于安全考虑，禁止录音 |  |
-| 方案一 | 使用[setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20)接口，设置录制静音打断 | 无需配置 | 应用B音频播放或录制时，应用A可以持续录制，录制为静音流 | |
+| 默认场景 | 启动音频录制 | 蜂窝通话、视频通话 | 通话和VoIP通话出于安全考虑，禁止录音 | - |
+| 方案一 | 使用[setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20)接口，设置录制静音打断 | 无需配置 | 应用B音频播放或录制时，应用A可以持续录制，录制为静音流 | - |
 | 方案二 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 无需配置 | 应用B打断A录制时，应用A录制静音数据，应用B动作完成后恢复有声数据 | 与方案一效果相当，推荐方案二 |
-| 方案三 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 无需配置 | 应用B打断A录制时，应用A录制暂停，应用B动作完成后，应用A收到RESUME事件恢复录制 | |
+| 方案三 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 无需配置 | 应用B打断A录制时，应用A录制暂停，应用B动作完成后，应用A收到RESUME事件恢复录制 | - |
 
 ### 场景3：通话过程中开启录制失败
 
 <!--Table: 6%; 30%; 30%; 17%; 17% -->
-|  | 应用A | 应用B | 打断效果 | 备注 |
+| - | 应用A | 应用B | 打断效果 | 备注 |
 |--|-------|-------|---------|------|
-| 默认场景 | 启动通话 | 开启录制 | 录制失败 | |
-| 方案一 | 无需配置 | 使用[setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20)接口 | 录制可以启动，录制数据为静音流 | |
+| 默认场景 | 启动通话 | 开启录制 | 录制失败 | - |
+| 方案一 | 无需配置 | 使用[setWillMuteWhenInterrupted](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setwillmutewheninterrupted20)接口 | 录制可以启动，录制数据为静音流 | - |
 | 方案二 | 无需配置 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 录制可以启动，录制数据为静音流 | 与方案一效果相当，推荐方案二 |
-| 方案三 | 无需配置 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 录制被暂停，应用A通话结束后，应用B收到RESUME事件恢复录制 | |
+| 方案三 | 无需配置 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 录制被暂停，应用A通话结束后，应用B收到RESUME事件恢复录制 | - |
 
 ## 同应用内不同音频流之间的焦点管理
 应用内默认相同焦点模型，如果需要对不同流进行差异管理，需要应用通过设置[焦点模式](./audio-playback-concurrency.md#焦点模式)为独立焦点模式，再为每条流设置不同的焦点策略。
