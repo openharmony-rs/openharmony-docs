@@ -159,7 +159,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    }
    ```
 
-###  执行格式转换
+### 执行格式转换
 
    调用[OH_AudioConverter_Process()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_process)接口执行格式转换。
 
@@ -209,7 +209,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    SafeCloseConverterFile(outputFile, outputFilePath);
    ```
 
-###  销毁格式转换器
+### 销毁格式转换器
 
    <!-- @[converter_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
    
