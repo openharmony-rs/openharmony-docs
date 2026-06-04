@@ -85,6 +85,31 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 ### 创建格式转换器
 
    <!-- @[converter_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
+   
+   ``` C++
+   // 用户需按照实际情况设置输入格式。
+   OH_AudioConverter_Format inputFormat = {
+       .encodingType = OH_Audio_EncodingType::AUDIO_ENCODING_TYPE_RAW,
+       .samplingRate = OH_Audio_SampleRate::SAMPLE_RATE_48000,
+       .channelLayout = OH_AudioChannelLayout::CH_LAYOUT_STEREO,
+       .sampleFormat = OH_Audio_SampleFormat::AUDIO_SAMPLE_S16LE
+   };
+   
+   // 用户需按照实际情况设置输出格式。
+   OH_AudioConverter_Format outputFormat = {
+       .encodingType = OH_Audio_EncodingType::AUDIO_ENCODING_TYPE_RAW,
+       .samplingRate = OH_Audio_SampleRate::SAMPLE_RATE_192000,
+       .channelLayout = OH_AudioChannelLayout::CH_LAYOUT_6POINT0_FRONT,
+       .sampleFormat = OH_Audio_SampleFormat::AUDIO_SAMPLE_S24LE
+   };
+   
+   // 创建转换器。
+   OH_AudioConverter_Result result = OH_AudioConverter_Create(&inputFormat, &outputFormat, &converter);
+   if (result != AUDIOCONVERTER_SUCCESS) {
+       OH_LOG_Print(LOG_APP, LOG_ERROR, GLOBAL_RESMGR, TAG, "Failed to create converter: %{public}d", result);
+       return false;
+   }
+   ```
 
 ### 设置输入数据回调函数
 
