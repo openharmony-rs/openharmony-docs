@@ -4750,7 +4750,7 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 
 sendUssdResponse\(slotId: number, content: string\): void
 
-用于向运营商发送USSD业务（Unstructured Supplementary Service Datam，非结构化补充数据业务）的响应消息。
+用于向运营商发送USSD业务（Unstructured Supplementary Service Data，非结构化补充数据业务）的响应消息。
 
 **起始版本**: 26.0.0
 
