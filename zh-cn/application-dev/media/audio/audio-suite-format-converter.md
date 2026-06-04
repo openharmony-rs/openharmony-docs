@@ -82,7 +82,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 - 采样格式：[AUDIO_SAMPLE_U8](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)、[AUDIO_SAMPLE_S16LE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)、[AUDIO_SAMPLE_S24LE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)、[AUDIO_SAMPLE_S32LE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)、[AUDIO_SAMPLE_F32LE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)。
 
-**接口返回值**：详见API文档[OH_AudioConverter_Result](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_result)。
+**错误码说明**：详见API文档[OH_AudioConverter_Result](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_result)。
 
 ### 创建格式转换器
 
