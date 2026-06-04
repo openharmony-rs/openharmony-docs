@@ -23,6 +23,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 ```cpp
 #include <ohaudiosuite/native_audio_converter.h>
 ```
+音频格式转换相关接口返回值请参考：[OH_AudioConverter_Result](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_result)。
 
 详细的API说明请参考：[AudioConverter](../../reference/apis-audio-kit/capi-audioconverter.md)。
 
@@ -105,7 +106,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    >   - `OH_AudioConverter_Process()`返回`AUDIOCONVERTER_SUCCESS`。
    >   - `outputSize`为0。
    >   - 所有输入数据已经结束（回调函数已经返回了`AUDIOCONVERTER_INPUT_DATA_FINISHED`）。
-   > - `AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA`和`AUDIOCONVERTER_INPUT_DATA_FINISHED`状态下，`OH_AudioConverter_Process()`会返回`SUCCESS`和`outputSize = 0`。因此，不能仅凭`outputSize = 0`或`result = SUCCESS`判断数据处理已经完成，还需要调用方确保所有数据已经输入结束。
+   > - `AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA`和`AUDIOCONVERTER_INPUT_DATA_FINISHED`状态下，`OH_AudioConverter_Process()`会返回[AUDIOCONVERTER_SUCCESS](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_result)和`outputSize = 0`。因此，不能仅凭`outputSize = 0`或`result = AUDIOCONVERTER_SUCCESS`判断数据处理已经完成，还需要调用方确保所有数据已经输入结束。
 
    <!-- @[converter_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
 
