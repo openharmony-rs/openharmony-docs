@@ -245,5 +245,5 @@ struct Index {
 }
 ```
 
-![zh_image_useeffect_effecttype](figures/zh_image_useeffect_effecttype.png)
+![zh_image_useeffect_effecttype](figures/image-useeffect-effecttype.png)
 <!--DelEnd-->

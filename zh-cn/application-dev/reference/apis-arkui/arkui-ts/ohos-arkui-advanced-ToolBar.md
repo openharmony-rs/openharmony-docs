@@ -417,8 +417,82 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Column, Stack, Alignment, $r, Row, State } from '@kit.ArkUI';
+import { ToolBar, ToolBarOptions, ItemState } from '@ohos.arkui.advanced.ToolBar';
 
-![zh-cn_image_toolbar_example01](figures/zh-cn_image_toolbar_example01.png)
+@Entry
+@Component
+struct Index {
+  @State toolbarList: ToolBarOptions = new ToolBarOptions();
+
+  aboutToAppear() {
+    this.toolbarList.push({
+      content: '剪贴我是超超超超超超超超超长样式',
+      // 系统分享图片资源
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+    })
+    this.toolbarList.push({
+      content: '拷贝',
+      // 系统复制图片资源
+      icon: $r('sys.media.ohos_ic_public_copy'),
+      action: () => {
+      },
+      state: ItemState.DISABLE
+    })
+    this.toolbarList.push({
+      content: '粘贴',
+      // 系统粘贴图片资源
+      icon: $r('sys.media.ohos_ic_public_paste'),
+      action: () => {
+      },
+      state: ItemState.ACTIVATE
+    })
+    this.toolbarList.push({
+      content: '全选',
+      // 系统全选图片资源
+      icon: $r('sys.media.ohos_ic_public_select_all'),
+      action: () => {
+      },
+    })
+    this.toolbarList.push({
+      content: '分享',
+      // 系统分享图片资源
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+    })
+    this.toolbarList.push({
+      content: '分享',
+      // 系统分享图片资源
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+    })
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          ToolBar({
+            activateIndex: 2,
+            toolBarList: this.toolbarList,
+          })
+        }
+      }
+      .align(Alignment.Bottom)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+![zh-cn_image_toolbar_example01](figures/image-toolbar-example01.png)
 
 ### 示例2（设置工具栏自定义样式）
 从API version 13开始，该示例通过设置属性ToolBarModifier自定义工具栏高度、背景色、按压效果等样式。
@@ -616,8 +690,107 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, Component, Column, Stack, Alignment, $r, Row, SymbolGlyphModifier, LengthMetrics, Color, State
+} from '@kit.ArkUI';
+import { DividerModifier } from '@ohos.arkui.modifier';
+import { ToolBar, ToolBarOptions, ItemState, ToolBarModifier } from '@ohos.arkui.advanced.ToolBar';
 
-![zh-cn_image_toolbar_example02](figures/zh-cn_image_toolbar_example02.png)
+@Entry
+@Component
+struct Index {
+  @State toolbarList: ToolBarOptions = new ToolBarOptions();
+  // 自定义工具栏样式
+  private toolBarModifier: ToolBarModifier =
+    new ToolBarModifier().height(LengthMetrics.vp(52)).backgroundColor(Color.Transparent).stateEffect(false);
+  @State dividerModifier: DividerModifier = new DividerModifier().height(0);
+
+  aboutToAppear() {
+    // 添加工具栏子项
+    this.toolbarList.push({
+      content: 'Long long long long long long long long text',
+      // 系统分享图片资源
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+      state: ItemState.ACTIVATE,
+      toolBarSymbolOptions: {
+        // 系统星型符号资源
+        normal: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontColor([Color.Green]), // 普通态symbol图标
+        // 系统分享图片资源
+        activated: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontColor([Color.Red]), // 激活态symbol图标
+      },
+      // 系统主标题颜色资源
+      activatedTextColor: $r('sys.color.font_primary'),
+    })
+    this.toolbarList.push({
+      content: 'Copy',
+      // 系统复制图片资源
+      icon: $r('sys.media.ohos_ic_public_copy'),
+      action: () => {
+      },
+      state: ItemState.DISABLE,
+      iconColor: '#ff18cb53',
+      activatedIconColor: '#ffec5d5d', // 激活态icon颜色
+      activatedTextColor: '#ffec5d5d', // 激活态文本颜色
+    })
+    this.toolbarList.push({
+      content: 'Paste',
+      // 系统粘贴图片资源
+      icon: $r('sys.media.ohos_ic_public_paste'),
+      action: () => {
+      },
+      state: ItemState.ACTIVATE,
+      textColor: '#ff18cb53',
+    })
+    this.toolbarList.push({
+      content: 'All',
+      // 系统全选图片资源
+      icon: $r('sys.media.ohos_ic_public_select_all'),
+      action: () => {
+      },
+      state: ItemState.ACTIVATE,
+    })
+    this.toolbarList.push({
+      content: '分享',
+      // 系统分享图片资源
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+    })
+    this.toolbarList.push({
+      content: '分享',
+      // 系统分享图片资源
+      icon: $r('sys.media.ohos_ic_public_share'),
+      action: () => {
+      },
+    })
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          ToolBar({
+            toolBarModifier: this.toolBarModifier,
+            dividerModifier: this.dividerModifier,
+            activateIndex: 0,
+            toolBarList: this.toolbarList,
+          })
+            .height(52)
+        }
+      }
+      .align(Alignment.Bottom)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+![zh-cn_image_toolbar_example02](figures/image-toolbar-example02.png)
 
 
 ### 示例3（设置工具栏自定义播报）

@@ -550,7 +550,7 @@ struct ListItemGroupExample {
 }
 ```
 
-![zh-cn_image_listitemgroup_example03](figures/zh-cn_image_listitemgroup_example03.gif)
+![zh-cn_image_listitemgroup_example03](figures/image-listitemgroup-example03.gif)
 
 ### 示例4（设置多列布局）
 

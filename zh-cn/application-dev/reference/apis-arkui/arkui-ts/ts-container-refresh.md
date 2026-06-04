@@ -499,7 +499,7 @@ struct RefreshExample {
 }
 ```
 
-![zh-cn_image_refresh_default](figures/zh-cn_image_refresh_default.gif)
+![zh-cn_image_refresh_default](figures/image-refresh-default.gif)
 
 ### 示例2（设置刷新区域显示文本）
 
@@ -622,7 +622,7 @@ struct RefreshExample {
 }
 ```
 
-![zh-cn_image_refresh_prompttext](figures/zh-cn_image_refresh_prompttext.gif)
+![zh-cn_image_refresh_prompttext](figures/image-refresh-prompttext.gif)
 
 ### 示例3（自定义刷新区域显示内容-builder）
 
@@ -768,7 +768,7 @@ struct RefreshExample {
 }
 ```
 
-![zh-cn_image_refresh_builder](figures/zh-cn_image_refresh_builder.gif)
+![zh-cn_image_refresh_builder](figures/image-refresh-builder.gif)
 
 ### 示例4（自定义刷新区域显示内容-refreshingContent）
 
@@ -1127,7 +1127,7 @@ struct RefreshExample {
 }
 ```
 
-![zh-cn_image_refresh_maxrefreshingheight](figures/zh-cn_image_refresh_maxrefreshingheight.gif)
+![zh-cn_image_refresh_maxrefreshingheight](figures/image-refresh-maxrefreshingheight.gif)
 
 ### 示例6（实现下拉刷新上拉加载更多）
 

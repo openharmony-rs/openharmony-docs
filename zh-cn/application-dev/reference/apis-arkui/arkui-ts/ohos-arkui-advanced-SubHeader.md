@@ -193,8 +193,34 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, $r, Column } from '@kit.ArkUI';
+import { SubHeader, OperationType } from '@ohos.arkui.advanced.SubHeader';
 
-![zh-cn_image_subheader_example01](figures/zh-cn_image_subheader_example01.png)
+@Entry
+@Component
+struct SubHeaderExample {
+  build() {
+    Column() {
+      SubHeader({
+        // 系统邮件图片资源
+        icon: $r('sys.media.ohos_ic_public_email'),
+        secondaryTitle: '二级标题',
+        operationType: OperationType.BUTTON,
+        operationItem: [{
+          value: '操作',
+          action: () => {
+            this.getUIContext().getPromptAction().showToast({ message: 'demo' });
+          }
+        }]
+      })
+    }
+  }
+}
+```
+
+![zh-cn_image_subheader_example01](figures/image-subheader-example01.png)
 
 ### 示例2（双行文本内容型子标题）
 该示例主要演示子标题左侧为primaryTitle、secondaryTitle，右侧operationType类型为TEXT_ARROW。
@@ -248,8 +274,33 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, $r, Column } from '@kit.ArkUI';
+import { SubHeader, OperationType } from '@ohos.arkui.advanced.SubHeader';
 
-![子标题2](figures/zh-cn_image_subheader_example02.png)
+@Entry
+@Component
+struct SubHeaderExample {
+  build() {
+    Column() {
+      SubHeader({
+        primaryTitle: '一级标题',
+        secondaryTitle: '二级标题',
+        operationType: OperationType.TEXT_ARROW,
+        operationItem: [{
+          value: '更多',
+          action: () => {
+            this.getUIContext().getPromptAction().showToast({ message: 'demo' });
+          }
+        }]
+      })
+    }
+  }
+}
+```
+
+![子标题2](figures/image-subheader-example02.png)
 
 ### 示例3（spinner型内容型子标题）
 该示例主要演示子标题左侧为select，右侧operationType类型为ICON_GROUP。
@@ -342,8 +393,54 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, $r, Column } from '@kit.ArkUI';
+import { SubHeader, OperationType } from '@ohos.arkui.advanced.SubHeader';
 
-![zh-cn_image_subheader_example03](figures/zh-cn_image_subheader_example03.png)
+@Entry
+@Component
+struct SubHeaderExample {
+  build() {
+    Column() {
+      SubHeader({
+        // 左侧为select选择器
+        select: {
+          options: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }],
+          value: 'selectDemo',
+          selected: 2,
+          onSelect: () => {
+            this.getUIContext().getPromptAction().showToast({ message: 'demo' });
+          }
+        },
+        operationType: OperationType.ICON_GROUP,
+        // 右侧为三个icon图标
+        operationItem: [{
+          // 系统邮件图片资源
+          value: $r('sys.media.ohos_ic_public_email'),
+          action: () => {
+            this.getUIContext().getPromptAction().showToast({ message: 'demo' })
+          }
+        }, {
+          // 系统邮件图片资源
+          value: $r('sys.media.ohos_ic_public_email'),
+          action: () => {
+            this.getUIContext().getPromptAction().showToast({ message: 'demo' });
+          }
+        }, {
+          // 系统邮件图片资源
+          value: $r('sys.media.ohos_ic_public_email'),
+          action: () => {
+            this.getUIContext().getPromptAction().showToast({ message: 'demo' });
+          }
+        }]
+      })
+    }
+  }
+}
+```
+
+![zh-cn_image_subheader_example03](figures/image-subheader-example03.png)
 
 ### 示例4（设置左侧symbol图标）
 该示例主要演示子标题左侧icon设置symbol图标。
@@ -406,8 +503,37 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, $r, Column, SymbolEffectStrategy } from '@kit.ArkUI';
+import { SubHeader, OperationType } from '@ohos.arkui.advanced.SubHeader';
 
-![子标题4](figures/zh-cn_image_subheader_example04.gif)
+@Entry
+@Component
+struct SubHeaderExample {
+  build() {
+    Column() {
+      SubHeader({
+        // 系统WiFi符号资源
+        icon: $r('sys.symbol.ohos_wifi'),
+        iconSymbolOptions: {
+          effectStrategy: SymbolEffectStrategy.HIERARCHICAL,
+        },
+        secondaryTitle: '标题',
+        operationType: OperationType.BUTTON,
+        operationItem: [{
+          value: '操作',
+          action: () => {
+            this.getUIContext().getPromptAction().showToast({ message: 'demo' });
+          }
+        }]
+      })
+    }
+  }
+}
+```
+
+![子标题4](figures/image-subheader-example04.gif)
 
 ### 示例5（设置右侧symbol图标）
 该示例主要演示子标题operationType设置为OperationType.ICON_GROUP，operationItem的value设置为symbol图标。
@@ -522,8 +648,66 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, Component, $r, Column, SymbolEffectStrategy, SymbolRenderingStrategy, Color, FontWeight
+} from '@kit.ArkUI';
+import { SubHeader, OperationType } from '@ohos.arkui.advanced.SubHeader';
 
-![zh-cn_image_subheader_example05](figures/zh-cn_image_subheader_example05.png)
+@Entry
+@Component
+struct SubHeaderExample {
+  build() {
+    Column() {
+      SubHeader({
+        // 设置左侧select
+        select: {
+          options: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }],
+          value: 'selectDemo',
+          selected: 2,
+          onSelect: () => {
+            this.getUIContext().getPromptAction().showToast({ message: 'demo' });
+          }
+        },
+        operationType: OperationType.ICON_GROUP,
+        // 设置右侧icon
+        operationItem: [{
+          // 系统肺符号资源
+          value: $r('sys.symbol.ohos_lungs'),
+          action: () => {
+            this.getUIContext().getPromptAction().showToast({ message: 'icon1' });
+          }
+        }, {
+          // 系统肺符号资源
+          value: $r('sys.symbol.ohos_lungs'),
+          action: () => {
+            this.getUIContext().getPromptAction().showToast({ message: 'icon2' });
+          }
+        }, {
+          // 系统肺符号资源
+          value: $r('sys.symbol.ohos_lungs'),
+          action: () => {
+            this.getUIContext().getPromptAction().showToast({ message: 'icon3' });
+          }
+        }],
+        // 设置右侧icon图标symbol样式
+        operationSymbolOptions: [{
+          fontWeight: FontWeight.Lighter,
+        }, {
+          renderingStrategy: SymbolRenderingStrategy.MULTIPLE_COLOR,
+          fontColor: [Color.Blue, Color.Grey, Color.Green],
+        }, {
+          renderingStrategy: SymbolRenderingStrategy.MULTIPLE_OPACITY,
+          fontColor: [Color.Blue, Color.Grey, Color.Green],
+        }]
+      })
+    }
+  }
+}
+```
+
+![zh-cn_image_subheader_example05](figures/image-subheader-example05.png)
 
 ### 示例6（自定义标题内容）
  该示例主要演示SubHeader设置titleBuilder自定义标题内容的效果。
@@ -566,6 +750,7 @@ struct SubHeaderExample {
   }
 }
 ```
+![zh-cn_image_subheader_example06](figures/image-subheader-example06.png)
 ArkTS-Sta示例：
 ```ts
 import { Entry, Component, $r, Column, Builder, Text, Color, FontWeight } from '@kit.ArkUI';
@@ -679,8 +864,42 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, $r, Column, TextModifier, Text, Color, LengthMetrics, State } from '@kit.ArkUI';
+import { SubHeader, OperationType } from '@ohos.arkui.advanced.SubHeader';
 
-![子标题7](figures/zh-cn_image_subheader_example07.png)
+@Entry
+@Component
+struct SubHeaderExample {
+  // 设置主副标题文本颜色
+  @State primaryModifier: TextModifier = new TextModifier().fontColor(Color.Blue);
+  @State secondaryModifier: TextModifier = new TextModifier().fontColor(Color.Blue);
+
+  build() {
+    Column() {
+      SubHeader({
+        primaryTitle: 'primaryTitle',
+        secondaryTitle: 'secondaryTitle',
+        primaryTitleModifier: this.primaryModifier,
+        secondaryTitleModifier: this.secondaryModifier,
+        operationType: OperationType.TEXT_ARROW,
+        operationItem: [{
+          value: '更多信息',
+          action: () => {
+            this.getUIContext().getPromptAction().showToast({ message: 'demo' });
+          }
+        }],
+        // 标题内外间距
+        contentMargin: { start: LengthMetrics.vp(20), end: LengthMetrics.vp(20) },
+        contentPadding: { start: LengthMetrics.vp(20), end: LengthMetrics.vp(20) }
+      })
+    }
+  }
+}
+```
+
+![子标题7](figures/image-subheader-example07.png)
 
 
 ### 示例8（右侧按钮自定义播报）

@@ -242,6 +242,7 @@ struct Index {
   }
 }
 ```
+![zh-cn_image_progressbutton_example02](figures/image-progressbutton-example02.png)
 ArkTS-Sta示例：
 ```ts
 import { Entry, Component, Column, Scroll, ColumnOptions, HorizontalAlign, Margin, Color, State } from '@kit.ArkUI';
