@@ -1366,7 +1366,7 @@ The **audioSourceType** and **videoSourceType** parameters are used to distingui
 | profile         | [VideoRecorderProfile](#videorecorderprofile9) | No  | No  | Video recording profile.                                         |
 | rotation        | number                                         | No  | Yes  | Rotation angle of the recorded video. The value can only be 0 (default), 90, 180, or 270.      |
 | location        | [Location](arkts-apis-media-i.md#location)                          | No  | Yes  | Geographical location of the recorded video. By default, the geographical location information is not recorded.                |
-| url             | string                                         | No  | No  | Video output URL. Supported: fd://xx (fd number)<br>![](figures/image_url.png) |
+| url             | string                                         | No  | No  | Video output URL. Supported: fd://xx (fd number)<br>![](figures/image-url.png) |
 
 ## VideoRecorderProfile<sup>9+</sup>
 
