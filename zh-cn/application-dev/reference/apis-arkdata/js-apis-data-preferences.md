@@ -1386,7 +1386,7 @@ getAll(callback: AsyncCallback&lt;Object&gt;): void
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.                       |
+| 401      | Parameter error. Mandatory parameters are left unspecified.|
 | 15500000 | Inner error.                   |
 
 **示例：**
