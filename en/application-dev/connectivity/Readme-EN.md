@@ -29,6 +29,10 @@
 
     - [GATT-based Connection and Data Transmission](bluetooth/gatt-development-guide.md)
 
+  - Bluetooth FAQs<!--bluetooth-faq-->
+
+    - [2900099 Bluetooth API Call Error](bluetooth/bluetooth-faq-2900099-errorcode.md)
+
 - NFC<!--nfc-->
 
   - [NFC Service Development Overview](nfc/nfc-overview.md)
