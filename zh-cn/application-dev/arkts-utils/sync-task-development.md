@@ -179,6 +179,9 @@ struct Index {
           console.info("worker: num is " + num);
           workerPort.postMessage({'message': 'the result of syncGet() is ' + num, 'isTerminate': true});
           break;
+        default:
+          workerPort.postMessage({ type: 'message', value: 'send message is invalid' });
+          break;
       }
     }
     ```
