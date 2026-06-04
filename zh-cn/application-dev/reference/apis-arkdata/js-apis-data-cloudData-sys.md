@@ -83,8 +83,8 @@ let extraData: cloudData.ExtraData = {
 | --------- | ------ | ---- | ---- |-----------------------------------------------------|
 | table   | string | 否   | 否   | 查询的表名。如返回值为"cloud_notes"，表示查询结果是表名为"cloud_notes"的同步信息。 |
 | inserted   | number | 否   | 否   | 本地新增且未同步到云端的数据条数，如返回值为2，表示本地新增2条数据且还未同步到云端。          |
-| updated   | number | 否   | 否   | 云端同步之后，本地或云端修改还未同步的数据条数，如返回值为2，表示本地或云端修改还有2条数据未同步。     |
-| normal | number | 否   | 否   | 端云一致的数据。如返回值为2，表示本地与云端一致的数据为2条。                     |
+| updated   | number | 否   | 否   | 云端同步之后，本地或云端修改还未同步的数据条数，如返回值为2，表示本地或云端修改还有2条数据未同步。 |
+| normal | number | 否   | 否   | 端云一致的数据。如返回值为2，表示本地与云端一致的数据为2条。 |
 
 ## SyncStatus<sup>18+</sup>
 
@@ -899,9 +899,9 @@ static queryLastSyncInfo(accountId: string, bundleName: string, storeId?: string
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const accountId:string = "accountId";
-const bundleName:string = "bundleName";
-const storeId:string = "storeId";
+const accountId: string = "accountId";
+const bundleName: string = "bundleName";
+const storeId: string = "storeId";
 try {
   cloudData.Config.queryLastSyncInfo(accountId, bundleName, storeId).then((result) => {
     console.info(`Succeeded in querying last syncinfo. Info is ${JSON.stringify(result)}`);
@@ -1674,7 +1674,6 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, [
 }).catch((err: BusinessError) => {
   console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### allocResourceAndShare<sup>11+</sup>
@@ -1741,7 +1740,6 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, [
   console.info(`sharing resource: ${res}`);
   sharingResource = res;
 })
-
 ```
 
 ### allocResourceAndShare<sup>11+</sup>
@@ -1807,7 +1805,6 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, (
   console.info(`sharing resource: ${res}`);
   sharingResource = res;
 })
-
 ```
 
 ### share<sup>11+</sup>
@@ -1865,7 +1862,6 @@ cloudData.sharing.share('sharing_resource_test', participants).then((result) => 
 }).catch((err: BusinessError) => {
   console.error(`share failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### share<sup>11+</sup>
@@ -1920,7 +1916,6 @@ cloudData.sharing.share('sharing_resource_test', participants, ((err: BusinessEr
   }
   console.info(`share succeeded, result: ${result}`);
 }))
-
 ```
 
 ### unshare<sup>11+</sup>
@@ -1978,7 +1973,6 @@ cloudData.sharing.unshare('sharing_resource_test', participants).then((result) =
 }).catch((err: BusinessError) => {
   console.error(`unshare failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### unshare<sup>11+</sup>
@@ -2033,7 +2027,6 @@ cloudData.sharing.unshare('sharing_resource_test', participants, ((err: Business
   }
   console.info(`unshare succeeded, result: ${result}`);
 }))
-
 ```
 
 ### exit<sup>11+</sup>
@@ -2076,7 +2069,6 @@ cloudData.sharing.exit('sharing_resource_test').then((result) => {
 }).catch((err: BusinessError) => {
   console.error(`exit share failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### exit<sup>11+</sup>
@@ -2116,7 +2108,6 @@ cloudData.sharing.exit('sharing_resource_test', ((err: BusinessError, result) =>
   }
   console.info(`exit share succeeded, result: ${result}`);
 }))
-
 ```
 
 ### changePrivilege<sup>11+</sup>
@@ -2175,7 +2166,6 @@ cloudData.sharing.changePrivilege('sharing_resource_test', participants).then((r
 }).catch((err: BusinessError) => {
   console.error(`change privilege failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### changePrivilege<sup>11+</sup>
@@ -2231,7 +2221,6 @@ cloudData.sharing.changePrivilege('sharing_resource_test', participants, ((err: 
   }
   console.info(`change privilege succeeded, result: ${result}`);
 }))
-
 ```
 
 ### queryParticipants<sup>11+</sup>
@@ -2274,7 +2263,6 @@ cloudData.sharing.queryParticipants('sharing_resource_test').then((result) => {
 }).catch((err: BusinessError) => {
   console.error(`query participants failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### queryParticipants<sup>11+</sup>
@@ -2314,7 +2302,6 @@ cloudData.sharing.queryParticipants('sharing_resource_test', ((err: BusinessErro
   }
   console.info(`query participants succeeded, result: ${result}`);
 }))
-
 ```
 
 ### queryParticipantsByInvitation<sup>11+</sup>
@@ -2357,7 +2344,6 @@ cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test').
 }).catch((err: BusinessError) => {
   console.error(`query participants by invitation failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### queryParticipantsByInvitation<sup>11+</sup>
@@ -2397,7 +2383,6 @@ cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test', 
   }
   console.info(`query participants by invitation succeeded, result: ${result}`);
 }))
-
 ```
 
 ### confirmInvitation<sup>11+</sup>
@@ -2443,7 +2428,6 @@ cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sh
 }).catch((err: BusinessError) => {
   console.error(`confirm invitation failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### confirmInvitation<sup>11+</sup>
@@ -2486,7 +2470,6 @@ cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sh
   console.info(`confirm invitation succeeded, result: ${result}`);
   shareResource = result.value;
 }))
-
 ```
 
 ### changeConfirmation<sup>11+</sup>
@@ -2530,7 +2513,6 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
 }).catch((err: BusinessError) => {
   console.error(`change confirmation failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### changeConfirmation<sup>11+</sup>
@@ -2571,6 +2553,5 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
   }
   console.info(`change confirmation succeeded, result: ${result}`);
 }))
-
 ```
 <!--no_check-->

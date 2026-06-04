@@ -183,7 +183,7 @@ import { cloudExtension } from '@kit.ArkData';
 | colName  | string                    | 否   | 否   | 列名。                 |
 | type     | [FieldType](#fieldtype)   | 否   | 否   | 字段类型。             |
 | primary  | boolean                   | 否   | 否   | 当前列是否为主键。true表示是主键，false表示不是主键。 |
-| nullable | boolean                   | 否   | 否   | 当前列是否允许为空值，true表示允许为空，false表示不允许为空。      |
+| nullable | boolean                   | 否   | 否   | 当前列是否允许为空值。true表示允许为空，false表示不允许为空。      |
 
 ## Table
 
