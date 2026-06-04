@@ -32,7 +32,9 @@ TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的
 
 除上述注意事项外，使用TaskPool时还需注意[并发注意事项](multi-thread-concurrency-overview.md#并发注意事项)。
 
-  ```ts
+<!-- @[concurrent_taskpool_notes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/notes.ets) --> 
+
+  ``` TypeScript
   import { taskpool } from '@kit.ArkTS';
   import { BusinessError } from '@kit.BasicServicesKit';
   
