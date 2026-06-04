@@ -37137,6 +37137,11 @@
 						"end_line":260,
 						"name":"callbackNullptr_Capture",
 						"start_line":54
+					},
+					{
+						"end_line":340,
+						"name":"SetCapturerLoopbackEffectEnabled",
+						"start_line":336
 					}
 				]
 			}
