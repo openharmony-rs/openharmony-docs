@@ -580,7 +580,7 @@ import { LocalStorage, window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   para: Record<string, Any> = {
-    'PropA': 47
+    'MultiPage': 47
   };
   storage: LocalStorage = new LocalStorage(this.para);
 
@@ -596,12 +596,11 @@ export default class EntryAbility extends UIAbility {
 >
 > this.getUIContext().getSharedLocalStorage()只在模拟器或者实机上才有效，在Previewer预览器中使用不生效。
 
-在下面的用例中，Index页面中的propA通过使用共享的LocalStorage实例,数值为loadContent传入的storage实例中的'PropA'。
+在下面的用例中，LocalStorageSharedUIAbility页面中的propA通过使用共享的LocalStorage实例，数值为loadContent传入的storage实例中的'MultiPage'。
 
-```ts
-// index.ets
-'use static'
+<!-- @[localStorage_page_five_share](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalStorageDecorator/entry/src/main/ets/pages/LocalStorageSharedUIAbility.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStorageLink, Row, Text } from '@kit.ArkUI';
 
 // 预览器上不支持获取页面共享的LocalStorage实例。
@@ -609,10 +608,10 @@ import { Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStorag
 @Component
 struct Index {
   // 可以使用@LocalStorageLink/LocalStoragePropRef与LocalStorage实例中的变量建立联系
-  @LocalStorageLink('PropA') propA: int = 1;
+  @LocalStorageLink('MultiPage') propA: int = 1;
 
   build() {
-    Row(){
+    Row() {
       Column() {
         Text(`${this.propA}`)
           .fontSize(50)
