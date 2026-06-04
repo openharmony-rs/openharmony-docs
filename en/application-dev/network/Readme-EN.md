@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=444d4b7458e1317b3c2f1a471488b9c4b8344c2e translatedAt=2026-06-03T07:17:33.638Z pushedAt=2026-06-03T10:18:58.709Z -->
 
 - [About This Kit](net-mgmt-overview.md)
 
@@ -17,6 +18,8 @@
     - [Using WebSocket for Network Access (C/C++)](native-websocket-guidelines.md)
     - [Using Socket for Network Access](socket-connection.md)
     - [Using MDNS for LAN Access](net-mdns.md)
+    - [Using DNS for Domain Name Resolution](net-dns.md)
+    - [Using HTTP Global Interceptor (C/C++)](native-httpinterceptor-guidelines.md)
 
 - Network Connection<!--network-kit-network-connection-->
     - [Network Connection Management](net-connection-manager.md)
@@ -27,7 +30,7 @@
     - [Collecting Network Statistics](net-statistics.md)
     - [Using the Network Firewall](net-netfirewall.md)
     - [Extensible Authentication](net-eap.md)
-  
+
     <!--Del-->
     - [Network Sharing (for System Applications Only)](net-sharing-sys.md)
     - [Ethernet Connection Management (for System Applications Only)](net-ethernet-sys.md)  

@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=444d4b7458e1317b3c2f1a471488b9c4b8344c2e translatedAt=2026-06-03T06:23:42.362Z pushedAt=2026-06-03T10:06:50.227Z -->
 
 - [About This Kit](camera-overview.md)
 - [Requesting Camera Development Permissions](camera-preparation.md)
@@ -34,7 +35,8 @@
   - [Pressure Management (ArkTS)](camera-system-pressure.md)
   - [Camera Controller (ArkTS)](camera-control-center.md)
   - [Macro Photography Settings (ArkTS)](camera-macro.md)
-  - [Multi-Camera Concurrent Mode (ArkTS)](camera-concurrent-open.md)<!--RP1--><!--RP1End-->
+  - [Multi-Camera Concurrent Mode (ArkTS)](camera-concurrent-open.md)
+  - [YUV Photo Capture (ArkTS)](camera-yuv-shooting.md)<!--RP1--><!--RP1End-->
   <!--Del-->
   - [High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo-sys.md)
   - [Practices for High-Performance Photo Capture (for System Applications Only) (ArkTS)](camera-deferred-photo-case-sys.md)
@@ -57,4 +59,5 @@
   - [Using the Flashlight (C/C++)](native-camera-torch-use.md)
   - [Pressure Management (C/C++)](native-camera-system-pressure.md)
   - [Macro Photography Settings (C/C++)](native-camera-macro.md)
-  - [Multi-Camera Concurrent Mode (C/C++)](native-camera-concurrent-open.md)<!--RP2--><!--RP2End-->
+  - [Multi-Camera Concurrent Mode (C/C++)](native-camera-concurrent-open.md)
+  - [YUV Photo Capture (C/C++)](native-camera-yuv-shooting.md)<!--RP2--><!--RP2End-->
