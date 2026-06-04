@@ -1198,7 +1198,7 @@ GetMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise&lt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[Ringtone错误码](./errorcode-audio-ringtone-sys.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Ringtone错误码](./errorcode-audio-ringtone-sys.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1263,12 +1263,12 @@ GetMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[Ringtone错误码](./errorcode-audio-ringtone-sys.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Ringtone错误码](./errorcode-audio-ringtone-sys.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
 | 202 |Caller is not a system application.|
-| 20700002 |Parameter verification failed. Possible causes: 1.The type exceeds the valid range, please use the RingtoneType enum for input. 2.The ringtoneUri does not exist or is incorrectly formatted, please use the ringtoneUri returned by the [addCustomizedTone](#addcustomizedtone12).|
+| 20700002 |Parameter verification failed. Possible causes: 1. The type exceeds the valid range, please use the RingtoneType enum for input. 2. The ringtoneUri does not exist or is incorrectly formatted, please use the ringtoneUri returned by the [addCustomizedTone](#addcustomizedtone12).|
 | 5400103  |I/O error. The ringtone database access timed out or encountered an error. It is recommended to restart your phone.|
 
 **示例：**
