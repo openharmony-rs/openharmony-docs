@@ -294,44 +294,29 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **ArkTS-Sta示例：**
 
   <!-- @[sta_abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/ArkTS-Sta/StaticCollabSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { AppStorage } from '@kit.ArkUI';
-
-  function registerSessionEvent(sessionId: int): void {
-    hilog.info(0x0000, 'testTag', 'registerSessionEvent called');
+  
+  ``` TypeScript
+  registerSessionEvent(sessionId: int): void {
+    hilog.info(0x0000, TAG, 'registerSessionEvent called');
     abilityConnectionManager.onConnect(sessionId, (callbackInfo: abilityConnectionManager.EventCallbackInfo) => {
-      hilog.info(0x0000, 'testTag', 'onConnect called');
-      AppStorage.setOrCreate('receiveMessage', 'connect success');
-      hilog.info(0x0000, 'testTag', 'Session connected');
+      hilog.info(0x0000, TAG, 'onConnect called');
+      hilog.info(0x0000, TAG, 'Session connected');
     });
-
+  
     abilityConnectionManager.onDisconnect(sessionId, (callbackInfo: abilityConnectionManager.EventCallbackInfo) => {
-      hilog.info(0x0000, 'testTag', 'onDisconnect called');
+      hilog.info(0x0000, TAG, 'onDisconnect called');
       abilityConnectionManager.destroyAbilityConnectionSession(sessionId);
-      try {
-        AppStorage.setOrCreate('isConnected', false);
-        AppStorage.setOrCreate('receiveMessage', 'session disconnect');
-      } catch (err) {
-        hilog.error(0x0000, 'testTag', 'Error in onDisconnect');
-      }
-      hilog.info(0x0000, 'testTag', 'Session disconnected');
+      hilog.info(0x0000, TAG, 'Session disconnected');
     });
-
+  
     abilityConnectionManager.onReceiveMessage(sessionId, (callbackInfo: abilityConnectionManager.EventCallbackInfo) => {
-      hilog.info(0x0000, 'testTag', 'onReceiveMessage called');
+      hilog.info(0x0000, TAG, 'onReceiveMessage message called');
       const msg = callbackInfo.msg !== undefined && callbackInfo.msg !== null ? callbackInfo.msg : '';
-      try {
-        AppStorage.setOrCreate('receiveMessage', msg);
-      } catch (err) {
-        hilog.error(0x0000, 'testTag', 'Error in onReceiveMessage');
-      }
-      hilog.info(0x0000, 'testTag', 'Received message: ' + msg);
+      hilog.info(0x0000, TAG, 'Received message: ' + msg);
     });
-
+  
     abilityConnectionManager.onReceiveData(sessionId, (callbackInfo: abilityConnectionManager.EventCallbackInfo) => {
-      hilog.info(0x0000, 'testTag', 'Received data');
+      hilog.info(0x0000, TAG, 'Received data');
     });
   }
   ```
