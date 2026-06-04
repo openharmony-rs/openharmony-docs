@@ -344,7 +344,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 
 创建该WindowStage实例下的子窗口，使用Promise异步回调。
 
-非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
+非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#subwindowoptions11)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
@@ -1301,9 +1301,9 @@ on(eventType: 'windowStageClose', callback: Callback&lt;void&gt;): void
 
 **设备行为差异：**
 
-在<!--RP4-->OpenHarmony 6.1<!--RP4End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+在<!--RP4-->OpenHarmony 6.1<!--RP4End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
-从<!--RP4-->OpenHarmony 6.1<!--RP4End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+从<!--RP4-->OpenHarmony 6.1<!--RP4End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -1360,9 +1360,9 @@ off(eventType: 'windowStageClose', callback?: Callback&lt;void&gt;): void
 
 **设备行为差异：**
 
-在<!--RP4-->OpenHarmony 6.1<!--RP4End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+在<!--RP4-->OpenHarmony 6.1<!--RP4End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
-从<!--RP4-->OpenHarmony 6.1<!--RP4End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+从<!--RP4-->OpenHarmony 6.1<!--RP4End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -1591,7 +1591,7 @@ setWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备中可正常调用；在支持但不处于自由窗口状态的设备中返回801错误码；在不支持自由窗口状态的设备中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备中可正常调用；在支持但不处于自由窗口状态的设备中返回801错误码；在不支持自由窗口状态的设备中返回801错误码。
 
 **参数：**
 
@@ -1729,7 +1729,7 @@ setWindowRectAutoSave(enabled: boolean): Promise&lt;void&gt;
 
 在<!--RP4-->OpenHarmony 6.1<!--RP4End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
-从<!--RP4-->OpenHarmony 6.1<!--RP4End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+从<!--RP4-->OpenHarmony 6.1<!--RP4End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -1810,7 +1810,7 @@ setWindowRectAutoSave(enabled: boolean, isSaveBySpecifiedFlag: boolean): Promise
 
 在<!--RP4-->OpenHarmony 6.1<!--RP4End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
-从<!--RP4-->OpenHarmony 6.1<!--RP4End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+从<!--RP4-->OpenHarmony 6.1<!--RP4End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -1879,7 +1879,7 @@ isWindowRectAutoSave(): Promise&lt;boolean&gt;
 
 在<!--RP4-->OpenHarmony 6.1<!--RP4End-->之前，该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
-从<!--RP4-->OpenHarmony 6.1<!--RP4End-->开始，该接口在支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错，返回false。
+从<!--RP4-->OpenHarmony 6.1<!--RP4End-->开始，该接口在支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错，返回false。
 
 **返回值：**
 
@@ -2097,7 +2097,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 **设备行为差异：**
 
-在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备中可正常调用；在支持但不处于自由窗口状态的设备中返回801错误码；在不支持自由窗口状态的设备中返回801错误码。
+在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备中可正常调用；在支持但不处于自由窗口状态的设备中返回801错误码；在不支持自由窗口状态的设备中返回801错误码。
 
 从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，该接口在支持并处于自由窗口状态的设备中可正常调用且立即生效；在支持但不处于自由窗口状态的设备中可正常调用，切换为自由窗口状态时生效；在不支持自由窗口状态的设备中返回801错误码。
 
@@ -2165,7 +2165,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 **设备行为差异：**
 
-在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备中可正常调用；在支持但不处于自由窗口状态的设备中返回801错误码；在不支持自由窗口状态的设备中返回801错误码。
+在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备中可正常调用；在支持但不处于自由窗口状态的设备中返回801错误码；在不支持自由窗口状态的设备中返回801错误码。
 
 从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，该接口在支持并处于自由窗口状态的设备中可正常调用且立即生效；在支持但不处于自由窗口状态的设备中可正常调用，切换为自由窗口状态时生效；在不支持自由窗口状态的设备中返回801错误码。
 

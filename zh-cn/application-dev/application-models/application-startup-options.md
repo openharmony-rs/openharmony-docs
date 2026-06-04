@@ -345,7 +345,7 @@ struct ControlStartupAnimation {
 
 ## 启动应用时设置窗口位置
 
-在[自由窗口](../windowmanager/window-terminology.md#自由窗口)状态下，开发者可能需要指定UIAbility窗口的初始位置。例如：
+在[自由窗口](../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，开发者可能需要指定UIAbility窗口的初始位置。例如：
 
 - 在多窗口场景下，让新窗口出现在特定位置，避免遮挡其他重要内容。
 - 在大屏设备上，为内容展示类应用设置较大的窗口尺寸。
@@ -418,7 +418,7 @@ struct SetWindowPosition {
 
 ## 启动应用时设置窗口尺寸限制
 
-在[自由窗口](../windowmanager/window-terminology.md#自由窗口)状态下，开发者可能需要限制UIAbility窗口的尺寸范围，防止用户将窗口调整得过大或过小。例如：
+在[自由窗口](../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，开发者可能需要限制UIAbility窗口的尺寸范围，防止用户将窗口调整得过大或过小。例如：
 
 - 设置最小窗口尺寸，确保UI内容不会因为窗口太小而无法正常显示。
 - 设置最大窗口尺寸，避免窗口在大屏设备上过大而影响使用体验。
