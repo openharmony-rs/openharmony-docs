@@ -1504,8 +1504,6 @@ struct SearchExample {
 }
 ```
 
-![searchEnterKeyType](figures/searchEnterKey.gif)
-
 ### Example 5: Setting the Text Style
 
 This example showcases various text styles by using the [lineHeight](#lineheight12), [letterSpacing](#letterspacing12), and [decoration](#decoration12) attributes, which are supported since API version 12.

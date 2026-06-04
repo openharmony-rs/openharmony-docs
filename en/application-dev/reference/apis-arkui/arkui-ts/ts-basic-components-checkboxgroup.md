@@ -620,8 +620,6 @@ struct Index {
 }
 ```
 
-![checkboxGroup](figures/checkboxGroup3.gif)
-
 ### Example 4: Implementing the Select-All Functionality
 
 This example demonstrates select-all implementation for check boxes used with caching components like **List**, handling items not yet created during initial rendering.
