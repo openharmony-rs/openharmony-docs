@@ -429,7 +429,7 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;ConnectResult&gt; | 以Promise形式返回[连接结果](#connectresult)。 |
+| Promise&lt;ConnectResult&gt; | 以Promise形式返回连接结果。 |
 
 **错误码：**
 
