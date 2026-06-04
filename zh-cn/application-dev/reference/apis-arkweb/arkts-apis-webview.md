@@ -22,6 +22,7 @@
 该模块提供以下Web控制相关的常用功能：
 
 - [AdsBlockManager](./arkts-apis-webview-AdsBlockManager.md)：广告过滤配置。
+- [AIPageCommand](./arkts-apis-webview-AIPageCommand.md)：[executeAIPageCommand](./arkts-apis-webview-WebviewController.md#executeaipagecommand)支持的JSON命令协议。
 - [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md)：前进后退缓存配置。
 - [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md)：设置前进后退缓存配置所支持的特性。
 - [GeolocationPermissions](./arkts-apis-webview-GeolocationPermissions.md)：地理位置权限配置。
