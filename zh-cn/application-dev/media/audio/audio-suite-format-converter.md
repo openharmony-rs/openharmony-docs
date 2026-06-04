@@ -217,8 +217,6 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    OH_AudioConverter_Destroy(converter);
    ```
    
-**错误码说明**：详见API文档[OH_AudioConverter_Result](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_result)。
-   
 ## 完整示例
 
 以48kHz双声道16-bit PCM音频转换为192kHz六声道24-bit PCM音频为例。
