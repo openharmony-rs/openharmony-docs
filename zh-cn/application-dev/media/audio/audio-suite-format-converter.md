@@ -114,6 +114,10 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
    <!-- @[converter_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
    
+   ``` C++
+   OH_AudioConverter_Destroy(converter);
+   ```
+   
 **错误码说明**：详见API文档[OH_AudioConverter_Result](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_result)。
    
 ## 完整示例
