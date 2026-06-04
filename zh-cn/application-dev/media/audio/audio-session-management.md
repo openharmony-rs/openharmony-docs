@@ -640,6 +640,98 @@ ArkTS-Sta示例：
 
 <!-- @[audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioSessionSampleJS-Sta/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@ohos.base';
+// ...
+
+  // 应用根据业务场景设置适合自己的音频会话场景，激活AudioSession时，系统会根据应用选择的音频会话场景申请对应的音频焦点。
+  audioSessionManager.setAudioSessionScene(audio.AudioSessionScene.AUDIO_SESSION_SCENE_MEDIA);
+  // ...
+
+  // 设置音频会话策略。
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+  };
+
+  // 激活AudioSession。
+  audioSessionManager.activateAudioSession(strategy).then(() => {
+    console.info('Succeeded in activating audio session.');
+    // ...
+  }).catch((err) => {
+    console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+
+  // 监听AudioSession焦点和状态变化事件。
+  let audioSessionStateChangedCallback = (audioSessionStateChangedEvent: audio.AudioSessionStateChangedEvent) => {
+    // ...
+    console.info(`hint of audioSessionStateChanged: ${audioSessionStateChangedEvent.stateChangeHint} `);
+
+    switch (audioSessionStateChangedEvent.stateChangeHint) {
+      case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE:
+        // 此分支表示系统已将音频流暂停，应用需切换至音频暂停状态。
+        // 临时失去焦点：AudioSession会停用并释放焦点，同时停止应用所有音频流的播放。因此，当应用收到Resume回调后，需要重新激活AudioSession并恢复需要继续播放的音频流。
+        break;
+      case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_RESUME:
+        // 此分支表示系统解除AudioSession焦点的暂停操作。
+        break;
+      case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_STOP:
+        // 此分支表示系统已将音频流停止（永久失去焦点），为保持状态一致，应用需切换至音频暂停状态。
+        // 永久失去焦点：AudioSession会停用并释放焦点，同时停止应用所有音频流的播放。后续不会再收到音频焦点事件，恢复播放需用户主动触发。
+        break;
+      case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP:
+        // 此分支表示由于长时间无音频流播放，系统已将AudioSession停止（永久失去焦点），应用需切换至音频停止状态。
+        // 永久失去焦点：后续不会再收到音频焦点事件，恢复播放需用户主动触发。
+        break;
+      case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_DUCK:
+        // 此分支表示系统已将应用所有播放音频流音量降低（默认降到正常音量的20%）。
+        break;
+      case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
+        // 此分支表示系统已将应用所有播放音频流音量恢复正常。
+      case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
+        // 此分支表示其他应用开始播放非混音音频，系统可自行决定是否静音。
+        break;
+      case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION:
+        // 此分支表示其他应用的非混音音频播放结束，系统可自行决定是否取消静音。
+        break;
+      case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE:
+        // 此分支表示系统已将应用所有播放音频流静音。
+        break;
+      case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE:
+        // 此分支表示系统已将应用所有播放音频流解除静音。
+        break;
+      default:
+        break;
+    }
+  };
+
+  audioSessionManager.onAudioSessionStateChanged(audioSessionStateChangedCallback);
+
+  // 查询音频会话是否已激活。
+  let isActivated = audioSessionManager.isAudioSessionActivated();
+
+  if (isActivated) {
+    // 音频会话激活后，应用在此处正常执行音频播放、暂停、停止、释放等操作即可。
+    // 根据实际业务，应用可以启动多个AudioRenderer音频播放流。此处启动的音频播放流不再持有焦点，统一由AudioSession管理。
+    // 如果存在多条音频流同时播放，需要特别注意AudioSession停用时机（停用AudioSession时会同时释放应用所有音频播放流）。
+  }
+  // ...
+
+  // 业务结束，取消监听AudioSession焦点和状态变化事件。
+  audioSessionManager.offAudioSessionStateChanged();
+  // ...
+
+  // 停用AudioSession，即释放焦点并停用该应用正在播放的所有音频流。
+  audioSessionManager.deactivateAudioSession().then(() => {
+    console.info('Succeeded in deactivating audio session.');
+    // ...
+  }).catch((err) => {
+    console.error(`Failed to deactivate audio session. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+```
+
 ## 启用混音播放下静音建议通知
 
 从API version 23开始，当本应用在并发模式为CONCURRENCY_MIX_WITH_OTHERS下进行播放时，如果有其他应用的音频同时播放，此时两者会混合播放。部分场景下（如游戏或广播），应用可以通过启用静音建议通知，以给用户提供更好的体验。
