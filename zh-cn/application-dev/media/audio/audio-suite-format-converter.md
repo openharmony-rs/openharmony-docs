@@ -123,22 +123,22 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    // 注意：数据指针的值并不一定要从userData中获取，也可以是存储数据的缓存地址。
    // 例如：从文件中读取数据放入缓存，然后将该缓存地址赋值给输出数据指针。
    // 只要确保数据指针在OH_AudioConverter_Process()返回前保持有效即可。
-   *outInputData = dataInfo->buffer + dataInfo->readDataOffSet;
+   *outInputData = dataInfo->buffer + dataInfo->readDataOffset;
    
    // 计算本次可提供的数据大小（单次回调最多返回400KB）。
    // bufferSize：文件的总字节数。
-   // readDataOffSet：已读取的字节数偏移量。
-   int32_t remainingSize = dataInfo->bufferSize - dataInfo->readDataOffSet;
+   // readDataOffset：已读取的字节数偏移量。
+   int32_t remainingSize = dataInfo->bufferSize - dataInfo->readDataOffset;
    if (remainingSize < 0) {
        return -1;
    }
    int32_t actualDataSize = (remainingSize < MAX_DATA_SIZE) ? remainingSize : MAX_DATA_SIZE;
    
    // 更新已读取位置。
-   dataInfo->readDataOffSet += actualDataSize;
+   dataInfo->readDataOffset += actualDataSize;
    
    // 设置输入数据状态。
-   if (dataInfo->readDataOffSet >= dataInfo->bufferSize) {
+   if (dataInfo->readDataOffset >= dataInfo->bufferSize) {
        *outStatus = OH_AudioConverter_InputStatus::AUDIOCONVERTER_INPUT_DATA_FINISHED;
        dataInfo->readDataFinish = true;
    } else {
@@ -219,4 +219,4 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    
 ## 完整示例
 
-- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
+- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample)
