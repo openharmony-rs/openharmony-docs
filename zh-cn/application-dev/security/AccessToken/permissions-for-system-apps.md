@@ -5931,20 +5931,6 @@
 
 **起始版本**：26.0.0
 
-## ohos.permission.MANAGE_VOLUME_ENCRYPTION_POLICY
-
-允许应用配置卷加密策略。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**支持设备**：PC/2in1
-
-**起始版本**：26.0.0
-
 ## ohos.permission.SUBSCRIBE_OUTDOOR_EXPLORATION_SERVICE
 
 允许应用使用户外模式服务提供海拔订阅能力。
