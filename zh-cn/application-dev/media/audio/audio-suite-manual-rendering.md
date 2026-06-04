@@ -599,7 +599,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    ```
 
 ## 完整示例代码
-- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
+- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample)
 
 <!--RP1-->
 <!--RP1End-->
