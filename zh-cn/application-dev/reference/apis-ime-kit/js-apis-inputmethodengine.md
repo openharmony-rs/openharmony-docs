@@ -3246,7 +3246,8 @@ startMoving(): void
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 801 | capability not supported. [since 18] |
+| 801 | capability not supported. [since 18]<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/>|
+| 801 | capability not supported.<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Sta。<br/>|
 | 12800002 | input method engine error. Possible causes: 1.input method panel not created. 2.the input method application does not subscribe to related events. |
 | 12800013 | window manager service error. |
 | 12800017 | invalid panel type or panel flag. |
@@ -3600,6 +3601,12 @@ updatePanelRect(flag: PanelFlag, rect: PanelRect): Promise\<void>
 | flag | [PanelFlag](#panelflag10) | 是 | 目标面板状态类型。类型为FLG_FIXED或FLG_FLOATING。 |
 | rect | [PanelRect](#panelrect12) | 是   | 目标面板横屏状态及竖屏状态的横坐标，纵坐标，宽度以及高度。固定态：高度不能超过屏幕高度的70%，宽度不能超过屏幕宽度；悬浮态：高度不能超过屏幕高度，宽度不能超过屏幕宽度。|
 
+**返回值：**
+
+| 类型   | 说明                             |
+| ------- | ------------------------------ |
+| Promise\<void> | 无返回结果的Promise对象。  |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
@@ -3665,6 +3672,12 @@ updatePanelRect(flag: PanelFlag, rect: EnhancedPanelRect): Promise\<void>
 | ------ | ----------------------------------------- | ---- | ---------------------------------------------------------- |
 | flag   | [PanelFlag](#panelflag10)                 | 是   | 目标面板状态类型。类型为FLG_FIXED或FLG_FLOATING。          |
 | rect   | [EnhancedPanelRect](#enhancedpanelrect15) | 是   | 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。 |
+
+**返回值：**
+
+| 类型   | 说明                             |
+| ------- | ------------------------------ |
+| Promise\<void> | 无返回结果的Promise对象。  |
 
 **错误码：**
 
@@ -3885,55 +3898,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
 
 let inputRegion: Array<window.Rect> = [{left:300, top:650, width:2000, height:500}];
-panel.updateRegion(inputRegion);
-```
-
-### updateRegion<sup>15+</sup>
-
-updateRegion(inputRegion: Array&lt;window.Rect&gt;): void
-
-更新当前状态下输入法面板内的热区。
-
-> **说明:**
->
-> 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。
->
-> 此接口为同步接口，接口返回仅代表系统侧收到更新热区的请求，不代表已完成热区更新。
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名      | 类型                                                         | 必填 | 说明                                                         |
-| ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| inputRegion | Array&lt;[window.Rect](../apis-arkui/arkts-apis-window-i.md#rect7)&gt; | 是   | 面板内接收输入事件的区域。<br/>- 数组大小限制为[1, 4]。<br/>- 传入的热区位置是相对于输入法面板窗口左顶点的位置。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 401      | parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 12800013 | window manager service error.                                |
-| 12800017 | invalid panel type or panel flag.                            |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
-
-let inputRegion: Array<window.Rect> = [{
-  left: 300,
-  top: 650,
-  width: 2000,
-  height: 500
-}];
 panel.updateRegion(inputRegion);
 ```
 
@@ -4393,7 +4357,7 @@ ArkTS-Sta: getSystemPanelCurrentInsets(displayId: long): Promise\<SystemPanelIns
 
 | 类型   | 说明                             |
 | ------- | ------------------------------ |
-| Promise\<[SystemPanelInsets](#systempanelinsets21)> | Promise对象。输入法键盘与系统面板的偏移区域。 |
+| ArkTS-Dyn: Promise\<[SystemPanelInsets](#systempanelinsets21)> <br>ArkTS-Sta: Promise\<[SystemPanelInsets](#systempanelinsets21) \| null>   | Promise对象。输入法键盘与系统面板的偏移区域。 |
 
 **错误码：**
 
@@ -6676,7 +6640,7 @@ ArkTS-Sta: getTextIndexAtCursor(): Promise&lt;int&gt;
 
 | 类型                  | 说明                                    |
 | --------------------- | --------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回光标所在处的文本索引。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回光标所在处的文本索引。 |
 
 **错误码：**
 
@@ -7262,7 +7226,7 @@ ArkTS-Sta: getAttachOptions(): AttachOptions | null
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
-| 801 | Capability not supported. [since 19 - 19]. |
+| 801 | Capability not supported. [since 19 - 19].<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/> |
 
 > **注意：**
 >
