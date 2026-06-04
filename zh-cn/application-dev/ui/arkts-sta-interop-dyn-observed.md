@@ -1,4 +1,11 @@
 # 在ArkTS-Sta中使用ArkTS-Dyn的@Observed和@ObjectLink（嵌套类对象属性变化）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
 
 ## 概述
 
@@ -31,14 +38,19 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets    # 使用动态@Observed装饰的数据
+│                   ├── StaDynObserved.ets       # 使用动态@Observed装饰的数据
+│                   ├── StaDynObjectLink.ets     # ArkTS-Sta中@ObjectLink接收动态@Observed装饰的数据
+│                   ├── StaDynObservedMap.ets    # 使用动态@Observed装饰的Map类型数据
+│                   └── StaDynObservedSet.ets    # 使用动态@Observed装饰的Set类型数据
 │
 └── dynamic_module/                  # ArkTS-Dyn子模块
     └── src/
         └── main/
             └── ets/
                 └── components/
-                    └── MainPage.ets  # 导出动态@Observed装饰的数据
+                    ├── ObservedClass.ets    # 导出动态@Observed装饰的类
+                    ├── ObservedMapInfo.ets  # 导出动态@Observed装饰的Map类型数据
+                    └── ObservedSetInfo.ets  # 导出动态@Observed装饰的Set类型数据
 
 ```
 
@@ -46,8 +58,10 @@ project/
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，在`src/main/ets/components`目录创建并导出动态@Observed装饰的数据。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
+<!-- @[StaDynObservedMainPageClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/dynamic_module/src/main/ets/components/ObservedClass.ets) -->
+
 ```TypeScript
-// dynamic_module/src/main/ets/components/MainPage.ets
+// dynamic_module/src/main/ets/components/ObservedClass.ets
 
 @Observed
 export class MyClassA { // 定义动态@Observed装饰的类并导出
@@ -57,13 +71,15 @@ export class MyClassA { // 定义动态@Observed装饰的类并导出
 ```
 
 ### 在ArkTS-Sta中使用ArkTS-Dyn的@Observed装饰的类
-ArkTS-Dyn中@Observed装饰的数据被ArkTS-Sta的状态管理V1相关装饰器使用时支持整体监听和一层监听，状态管理V1相关装饰器包括[@State](../ui/state-management-static/arkts-static-state.md)，[@Link](../ui/state-management-static/arkts-static-link.md)，[@PropRef](../ui/state-management-static/arkts-static-propref.md)，[@Provide](../ui/state-management-static/arkts-static-provide-and-consume.md)，[@Consume](../ui/state-management-static/arkts-static-provide-and-consume.md)，[@LocalStorageLink](../ui/state-management-static/arkts-static-localstorage.md#localstoragelink)，[@StroageLink](../ui/state-management-static/arkts-static-appstorage.md#storagelink)，[@LocalStoragePropRef](../ui/state-management-static/arkts-static-localstorage.md#localstoragepropref)，[@StoragePropRef](../ui/state-management-static/arkts-static-appstorage.md#storagepropref)，[@ObjectLink](../ui/state-management-static/arkts-static-observed-and-objectlink.md)。下面以@State装饰器为示例，展示在ArkTS-Sta中使用ArkTS-Dyn的@Observed装饰的类的用法。
+ArkTS-Dyn中@Observed装饰的数据被ArkTS-Sta的状态管理V1相关装饰器使用时支持整体监听和一层监听，状态管理V1相关装饰器包括[@State](../ui/state-management-static/arkts-static-state.md)，[@Link](../ui/state-management-static/arkts-static-link.md)，[@PropRef](../ui/state-management-static/arkts-static-propref.md)，[@Provide](../ui/state-management-static/arkts-static-provide-and-consume.md)，[@Consume](../ui/state-management-static/arkts-static-provide-and-consume.md)，[@LocalStorageLink](../ui/state-management-static/arkts-static-localstorage.md#localstoragelink)，[@StorageLink](../ui/state-management-static/arkts-static-appstorage.md#storagelink)，[@LocalStoragePropRef](../ui/state-management-static/arkts-static-localstorage.md#localstoragepropref)，[@StoragePropRef](../ui/state-management-static/arkts-static-appstorage.md#storagepropref)，[@ObjectLink](../ui/state-management-static/arkts-static-observed-and-objectlink.md)。下面以@State装饰器为示例，展示在ArkTS-Sta中使用ArkTS-Dyn的@Observed装饰的类的用法。
 - 在ArkTS-Dyn子模块`dynamic_module`的`Index.ets`文件中导出动态@Observed装饰的数据。
+
+<!-- @[StaDynObservedDynIndexClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/dynamic_module/Index.ets) -->
 
 ```TypeScript
 // dynamic_module/Index.ets
 
-export { MyClassA } from './src/main/ets/components/MainPage'; // 导出动态@Observed装饰的类
+export { MyClassA } from './src/main/ets/components/ObservedClass'; // 导出动态@Observed装饰的类
 ```
 
 - 在主模块`entry`的`oh-package.json5`文件的`dependencies`字段中添加子模块依赖。如何导入和使用子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
@@ -78,19 +94,19 @@ export { MyClassA } from './src/main/ets/components/MainPage'; // 导出动态@O
 
 - 在ArkTS-Sta主模块中使用import语句导入ArkTS-Dyn组件。
 
-```TypeScript
-'use static'
+<!-- @[StaDynObserved](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/entry/src/main/ets/pages/StaDynObserved.ets) -->
 
-// entry/src/main/ets/pages/Index.ets
+```TypeScript
+// entry/src/main/ets/pages/StaDynObserved.ets
 import { Entry, Component, Row, Column, Scroll, Button, ClickEvent, Text } from '@ohos.arkui.component';
-import { State} from '@ohos.arkui.stateManagement';
+import { State } from '@ohos.arkui.stateManagement';
 
 // 引用ArkTS-Dyn中@Observed装饰的数据
 import { MyClassA } from 'dynamic_module';
 
 @Entry
 @Component
-export struct Index { // ArkTS-Sta组件
+struct Index { // ArkTS-Sta组件
   @State state: MyClassA = new MyClassA();
 
   build() {
@@ -124,10 +140,11 @@ export struct Index { // ArkTS-Sta组件
 
 ### ArkTS-Sta中@ObjectLink装饰的变量仅支持一层监听
 ArkTS-Dyn中@Observed装饰的数据被ArkTS-Sta中@ObjectLink装饰的变量使用时支持一层监听，以下示例展示了@ObjectLink装饰的变量的用法。
-```TypeScript
-'use static'
 
-// entry/src/main/ets/pages/Index.ets
+<!-- @[StaDynObjectLink](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/entry/src/main/ets/pages/StaDynObjectLink.ets) -->
+
+```TypeScript
+// entry/src/main/ets/pages/StaDynObjectLink.ets
 import { Entry, Component, Row, Column, Button, ClickEvent, Text } from '@ohos.arkui.component';
 import { State, ObjectLink} from '@ohos.arkui.stateManagement';
 
@@ -135,7 +152,7 @@ import { State, ObjectLink} from '@ohos.arkui.stateManagement';
 import { MyClassA } from 'dynamic_module';
 
 @Component
-export struct Index { // ArkTS-Sta组件
+struct Index { // ArkTS-Sta组件
   @ObjectLink objectLink: MyClassA;
 
   build() {
@@ -154,7 +171,7 @@ export struct Index { // ArkTS-Sta组件
 
 @Entry
 @Component
-export struct objectLinkSample {
+struct objectLinkSample {
   @State state: MyClassA = new MyClassA();
 
   build() {
@@ -174,18 +191,24 @@ export struct objectLinkSample {
 > 从API version 23开始，在ArkTS-Sta中支持使用ArkTS-Dyn中\@Observed装饰的类中Map类型的成员变量。
 
 在下面示例中，memberMap类型为Map\<number, string\>，点击Button改变memberMap的值，视图会随之刷新。
+<!-- @[StaDynObservedMainPageMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/dynamic_module/src/main/ets/components/ObservedMapInfo.ets) -->
+
 ```TypeScript
-// dynamic_module/src/main/ets/components/MainPage.ets
+// dynamic_module/src/main/ets/components/ObservedMapInfo.ets
+import st, { STValue } from 'static.@ohos.lang.interop';
+
 @Observed
-export class Info {
-  memberMap: Map<number, string> = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
+export class MapInfo {
+  memberMap: st.Map<number, string> = STValue.newSTMap();
 }
 ```
+
+<!-- @[StaDynObservedDynIndexMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/dynamic_module/Index.ets) -->
 
 ```TypeScript
 // dynamic_module/Index.ets
 
-export { Info } from './src/main/ets/components/MainPage.ets';
+export { MapInfo } from './src/main/ets/components/ObservedMapInfo';
 ```
 
 ```json
@@ -196,25 +219,26 @@ export { Info } from './src/main/ets/components/MainPage.ets';
 }
 ```
 
+<!-- @[StaDynObservedMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/entry/src/main/ets/pages/StaDynObservedMap.ets) -->
+
 ```TypeScript
-'use static'
-// entry/src/main/ets/pages/Index.ets
+// entry/src/main/ets/pages/StaDynObservedMap.ets
 import { Entry, Component, Row, Column, Scroll, Button, ClickEvent, Text, ColumnOptions, RowOptions, Color, Margin, Divider, ForEach } from '@ohos.arkui.component';
 import { State, Link, PropRef, Provide, Consume, LocalStorageLink, StorageLink, LocalStoragePropRef, StoragePropRef, Observed, Track } from '@ohos.arkui.stateManagement';
   
 // 引用ArkTS-Dyn中@Observed装饰的数据
-import { Info } from 'dynamic_module';
+import { MapInfo } from 'dynamic_module';
 
 @Entry
 @Component
 struct MapSample {
   // 接收ArkTS-Dyn中@Observed装饰的数据
-  @State stateInfo: Info = new Info();
-  @Provide provideInfo: Info = new Info();
-  @LocalStorageLink('a') localStorageLinkInfo: Info = new Info();
-  @StorageLink('b') storageLinkInfo: Info = new Info();
-  @LocalStoragePropRef('c') localStoragePropRefInfo: Info = new Info();
-  @StoragePropRef('d') storagePropRefInfo: Info = new Info();
+  @State stateInfo: MapInfo = new MapInfo();
+  @Provide provideInfo: MapInfo = new MapInfo();
+  @LocalStorageLink('mapA') localStorageLinkInfo: MapInfo = new MapInfo();
+  @StorageLink('mapB') storageLinkInfo: MapInfo = new MapInfo();
+  @LocalStoragePropRef('mapC') localStoragePropRefInfo: MapInfo = new MapInfo();
+  @StoragePropRef('mapD') storagePropRefInfo: MapInfo = new MapInfo();
 
   build() {
     Row({ space: 5 } as RowOptions) {
@@ -247,7 +271,7 @@ struct MapSample {
         // 创建新的对象整体为动态@Observed装饰的类中的成员赋值
         Button('map whole')
           .onClick(() => {
-            let data = new Info();
+            let data = new MapInfo();
             data.memberMap = new Map<number, string>([[0, 'c'], [1, 'a'], [3, 'b']]);
             this.stateInfo = data;
             this.provideInfo = data;
@@ -298,18 +322,24 @@ struct MapSample {
 > 从API version 23开始，在ArkTS-Sta中支持使用ArkTS-Dyn中\@Observed装饰的类中Set类型的成员变量。
 
 在下面示例中，memberSet类型为Set\<number\>，点击Button改变memberSet的值，视图会随之刷新。
+<!-- @[StaDynObservedMainPageSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/dynamic_module/src/main/ets/components/ObservedSetInfo.ets) -->
+
 ```TypeScript
-// dynamic_module/src/main/ets/components/MainPage.ets
+// dynamic_module/src/main/ets/components/ObservedSetInfo.ets
+import st, { STValue } from 'static.@ohos.lang.interop';
+
 @Observed
-export class Info {
-  memberSet: Set<number> = new Set<number>([0, 1, 2, 3, 4]);
+export class SetInfo {
+  memberSet: st.Set<number> = STValue.newSTSet();
 }
 ```
+
+<!-- @[StaDynObservedDynIndexSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/dynamic_module/Index.ets) -->
 
 ```TypeScript
 // dynamic_module/Index.ets
 
-export { Info } from './src/main/ets/components/MainPage.ets';
+export { SetInfo } from './src/main/ets/components/ObservedSetInfo';
 ```
 
 ```json
@@ -320,24 +350,25 @@ export { Info } from './src/main/ets/components/MainPage.ets';
 }
 ```
 
+<!-- @[StaDynObservedSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/entry/src/main/ets/pages/StaDynObservedSet.ets) -->
+
 ```TypeScript
-'use static'
-// entry/src/main/ets/pages/Index.ets
+// entry/src/main/ets/pages/StaDynObservedSet.ets
 import { Entry, Component, Row, Column, Scroll, Button, ClickEvent, Text, ColumnOptions, RowOptions, Color, Margin, Divider, ForEach } from '@ohos.arkui.component';
 import { State, Link, PropRef, Provide, Consume, LocalStorageLink, StorageLink, LocalStoragePropRef, StoragePropRef, Observed, Track } from '@ohos.arkui.stateManagement';
 
 // 引用ArkTS-Dyn中@Observed装饰的数据
-import { Info } from 'dynamic_module';
+import { SetInfo } from 'dynamic_module';
 
 @Entry
 @Component
 struct SetSample {
-  @State stateInfo: Info = new Info();
-  @Provide provideInfo: Info = new Info();
-  @LocalStorageLink('a') localStorageLinkInfo: Info = new Info();
-  @StorageLink('b') storageLinkInfo: Info = new Info();
-  @LocalStoragePropRef('c') localStoragePropRefInfo: Info = new Info();
-  @StoragePropRef('d') storagePropRefInfo: Info = new Info();
+  @State stateInfo: SetInfo = new SetInfo();
+  @Provide provideInfo: SetInfo = new SetInfo();
+  @LocalStorageLink('setA') localStorageLinkInfo: SetInfo = new SetInfo();
+  @StorageLink('setB') storageLinkInfo: SetInfo = new SetInfo();
+  @LocalStoragePropRef('setC') localStoragePropRefInfo: SetInfo = new SetInfo();
+  @StoragePropRef('setD') storagePropRefInfo: SetInfo = new SetInfo();
 
   build() {
     Row({ space: 5 } as RowOptions) {
@@ -370,7 +401,7 @@ struct SetSample {
         // new新的对象整体为动态@Observed装饰的类中的成员赋值
         Button('set whole')
           .onClick(() => {
-            let data = new Info();
+            let data = new SetInfo();
             data.memberSet = new Set<number>([1, 2, 3, 5, 4]);
             this.stateInfo = data;
             this.provideInfo = data;

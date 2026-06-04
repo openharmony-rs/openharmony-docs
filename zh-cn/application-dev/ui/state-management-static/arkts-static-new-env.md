@@ -20,7 +20,11 @@
 
 ## \@Env支持参数
 
-@Env支持的参数请参考[SystemProperties枚举类型说明](../../reference/apis-arkui/arkui-ts/ts-state-management-env-static.md#systemproperties)。
+\@Env装饰器的参数为环境变量的key值，支持以下形式：
+
+- 从API version 24起，支持使用[SystemProperties](../../reference/apis-arkui/arkui-ts/ts-state-management-env-static.md#systemproperties)的枚举值作为key，具体请参考[SystemProperties枚举类型说明](../../reference/apis-arkui/arkui-ts/ts-state-management-env-static.md#systemproperties)。
+- 从API版本26.0.0起，额外支持使用字符串字面量作为key，格式为`'ReadonlyEnvKey.<keyName>'`或`'WritableEnvKey.<keyName>'`。其中`<keyName>`必须为[ReadonlyEnvKey](../../reference/apis-arkui/arkui-ts/ts-state-management-env-static.md#readonlyenvkey)或[WritableEnvKey](../../reference/apis-arkui/arkui-ts/ts-state-management-env-static.md#writableenvkey)中声明的成员变量，不支持任意字符串。
+
 
 ## \@Env和Environment能力对比
 
@@ -646,7 +650,7 @@ struct Comp {
 ```
 
 ### 通过BuilderNode切换窗口 
-\@Env用于展示\@Component/\@ComponentV2所在[窗口](../../reference/apis-arkui/arkts-apis-window-Window.md)的环境变量信息。开发者通过BuilderNode切换@Component/\@ComponentV2所在的窗口实例时，\@Env会根据新的窗口获取对应的环境变量信息，并触发关联的UI组件刷新。以`SystemProperties.BREAK_POINT`为例。
+\@Env用于展示\@Component/\@ComponentV2所在窗口的环境变量信息。开发者通过BuilderNode切换@Component/\@ComponentV2所在的窗口实例时，\@Env会根据新的窗口获取对应的环境变量信息，并触发关联的UI组件刷新。以`SystemProperties.BREAK_POINT`为例。
 
 在下面的示例中：
 1. 点击```Button('add node to tree')```，创建BuilderNode节点挂载到`NodeContainer`下。

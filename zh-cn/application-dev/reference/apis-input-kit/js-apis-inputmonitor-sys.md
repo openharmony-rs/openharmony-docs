@@ -55,7 +55,7 @@ on(type: 'touch', receiver: TouchEventReceiver): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.   |
+| 202  | Permission denied, non-system app called system api.   |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -115,7 +115,7 @@ onTouch(receiver: TouchEventReceiver): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.   |
+| 202  | Permission denied, non-system app called system api.   |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -178,7 +178,7 @@ on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.   |
+| 202  | Permission denied, non-system app called system api.   |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -238,7 +238,7 @@ onMouse(receiver: Callback&lt;MouseEvent&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.   |
+| 202  | Permission denied, non-system app called system api.   |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -454,7 +454,7 @@ off(type: 'touch', receiver?: TouchEventReceiver): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.  |
+| 202  | Permission denied, non-system app called system api.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -550,7 +550,7 @@ offTouch(receiver?: TouchEventReceiver): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.   |
+| 202  | Permission denied, non-system app called system api.   |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -621,7 +621,7 @@ off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.   |
+| 202  | Permission denied, non-system app called system api.   |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -717,7 +717,7 @@ offMouse(receiver?: Callback&lt;MouseEvent&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.   |
+| 202  | Permission denied, non-system app called system api.   |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -2714,7 +2714,7 @@ onTouchscreenSwipe(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.  |
+| 202  | Caller is not a system application.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -2873,7 +2873,7 @@ offTouchscreenSwipe(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.  |
+| 202  | Caller is not a system application.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -3005,7 +3005,7 @@ onTouchscreenPinch(fingers: int, receiver: Callback&lt;TouchGestureEvent&gt;): v
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.  |
+| 202  | Caller is not a system application.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -3164,7 +3164,7 @@ offTouchscreenPinch(fingers: int, receiver?: Callback&lt;TouchGestureEvent&gt;):
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.  |
+| 202  | Caller is not a system application.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -3235,7 +3235,7 @@ on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEven
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 202      | SystemAPI permit error.         |
+| 202      | Permission denied, non-system app called system api.         |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 4100001  | Event listening not supported for the key.                   |
 
@@ -3296,7 +3296,7 @@ onKeyPressed(keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEvent&gt;): vo
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 202      | SystemAPI permit error.         |
+| 202      | Permission denied, non-system app called system api.         |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 4100001  | Event listening not supported for the key.                   |
 
@@ -3360,7 +3360,7 @@ off(type: 'keyPressed', receiver?: Callback&lt;KeyEvent&gt;): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 202      | SystemAPI permit error.         |
+| 202      | Permission denied, non-system app called system api.         |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -3451,7 +3451,7 @@ offKeyPressed(receiver?: Callback&lt;KeyEvent&gt;): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 202      | SystemAPI permit error.         |
+| 202      | Permission denied, non-system app called system api.         |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -3496,7 +3496,7 @@ ArkTS-Dyn: queryTouchEvents(count: number): Promise&lt;Array&lt;TouchEvent&gt;&g
 
 ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
-查询最近的触屏输入事件，最多支持查询 100 条事件，使用Promise异步回调。
+查询最近的触屏输入事件，最多支持查询100条事件，从API版本26.0.0开始，最多支持查询60条事件，使用Promise异步回调。
 
 **需要权限：** ohos.permission.INPUT_MONITORING
 
@@ -3510,7 +3510,7 @@ ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 | 参数名   | 类型                                                      | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| count     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                    | 是   | 需要查询的触屏输入事件数量，取值范围为0到100的整数。小于0时取值为0、大于100时取值为100。如果实际触屏输入事件只有30个，但该参数取值为50 ，则仅支持查询到30个触屏输入事件。 |
+| count     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                    | 是   | 需要查询的触屏输入事件数量，取值范围为0到100的整数。小于0时取值为0、大于100时取值为100。从API版本26.0.0开始，大于60时取值为60。如果实际触屏输入事件只有30个，但该参数取值为50 ，则仅支持查询到30个触屏输入事件。 |
 
 **返回值：**
 
@@ -3525,7 +3525,7 @@ ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 202      | SystemAPI permit error.         |
+| 202      | Permission denied, non-system app called system api.         |
 
 **示例：**
 
@@ -3612,7 +3612,7 @@ on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | SystemAPI permit error.         |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. |
 
 **示例：**
 
@@ -3671,7 +3671,7 @@ onSwipeInward(receiver: Callback&lt;SwipeInward&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | SystemAPI permit error.         |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. |
 
 **示例：**
 
@@ -3732,7 +3732,7 @@ off(type: 'swipeInward', receiver?: Callback&lt;SwipeInward&gt;): void
 | ---- | --------------------- |
 | 201  | Permission denied.   |
 | 202  | SystemAPI permit error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. |
 
 **示例：**
 
@@ -3826,7 +3826,7 @@ offSwipeInward(receiver?: Callback&lt;SwipeInward&gt;): void
 | ---- | --------------------- |
 | 201  | Permission denied.   |
 | 202  | SystemAPI permit error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. |
 
 **示例：**
 

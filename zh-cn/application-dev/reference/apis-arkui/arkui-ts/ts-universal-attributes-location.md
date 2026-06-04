@@ -356,19 +356,15 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| left   | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置左对齐参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| right  | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置右对齐参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| middle | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置横向居中对齐方式的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| top    | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置顶部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| bottom | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置底部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| center | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置纵向居中对齐方式的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
-| bias<sup>11+</sup>   | [Bias](./ts-types.md#bias对象说明) |否|是| 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| left   | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置左对齐参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| right  | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置右对齐参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
+| middle | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置横向居中对齐方式的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| top    | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置顶部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| bottom | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置底部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| center | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置纵向居中对齐方式的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                 |
+| bias<sup>11+</sup>   | [Bias](./ts-types.md#bias对象说明) |否|是| 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## HorizontalAlignParam<sup>23+</sup>对象说明
 

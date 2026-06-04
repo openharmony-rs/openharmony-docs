@@ -10,6 +10,7 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 部分参数返回值为default的，会在正式发布的版本中配置。
 > 本模块接口返回设备常量信息，建议应用只调用一次，不需要频繁调用。
@@ -52,14 +53,14 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | incrementalVersion | string | 是 | 差异版本号。<br/>示例：default <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | osReleaseType | string | 是 | 系统的发布类型，取值为：<br/>-&nbsp;Canary：面向特定开发者发布的早期预览版本，不承诺API稳定性。<br/>-&nbsp;Beta：面向开发者公开发布的Beta版本，不承诺API稳定性。<br/>-&nbsp;Release：面向开发者公开发布的正式版本，承诺API稳定性。<br/>示例：<!--RP9-->Canary/Beta/Release<!--RP9End--> <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | osFullName | string | 是 | 系统版本，版本格式<!--RP12-->OpenHarmony-x.x.x.x,x为数值。<!--RP12End--><br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本11开始，该接口支持在原子化服务中使用。<br/>示例：<!--RP10-->OpenHarmony-5.0.0.1<!--RP10End--> <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
-| majorVersion | number | 是 | Major版本号，随主版本更新增加，值为osFullName中的第一位数值，建议直接使用deviceInfo.majorVersion获取，可提升效率，不建议开发者解析osFullName获取。<br/>示例：5 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
-| seniorVersion | number | 是 | Senior版本号，随局部架构、重大特性增加，值为osFullName中的第二位数值，建议直接使用deviceInfo.seniorVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：0 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
-| featureVersion | number | 是 | Feature版本号，标识规划的新特性版本，值为osFullName中的第三位数值，建议直接使用deviceInfo.featureVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：0 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
-| buildVersion | number | 是 | Build版本号，标识编译构建的版本号，值为osFullName中的第四位数值，建议直接使用deviceInfo.buildVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：1 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
-| sdkApiVersion | number | 是 | 系统软件API版本。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本14开始，该接口支持在原子化服务中使用。<br/>示例：12 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
+| majorVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | Major版本号，随主版本更新增加，值为osFullName中的第一位数值，建议直接使用deviceInfo.majorVersion获取，可提升效率，不建议开发者解析osFullName获取。<br/>示例：5 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
+| seniorVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | Senior版本号，随局部架构、重大特性增加，值为osFullName中的第二位数值，建议直接使用deviceInfo.seniorVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：0 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
+| featureVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | Feature版本号，标识规划的新特性版本，值为osFullName中的第三位数值，建议直接使用deviceInfo.featureVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：0 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
+| buildVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | Build版本号，标识编译构建的版本号，值为osFullName中的第四位数值，建议直接使用deviceInfo.buildVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：1 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
+| sdkApiVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统软件API版本。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本14开始，该接口支持在原子化服务中使用。<br/>示例：12 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | sdkMinorApiVersion | number | 是 | 系统软件Minor API版本。**从**API 26.0.0版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/> **模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：0<br/> **ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0|
 | sdkPatchApiVersion | number | 是 | 系统软件Patch API版本。**从**API 26.0.0版本开始，系统API版本格式：sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion。<br/> **模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>示例：0<br/> **ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0|
-| firstApiVersion | number | 是 | 首个版本系统软件API版本。<br/>示例：3 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
+| firstApiVersion | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 首个版本系统软件API版本。<br/>示例：3 <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | versionId | string | 是 | 版本ID。由deviceType、manufacture、brand、productSeries、osFullName、productModel、softwareModel、sdkApiVersion、incrementalVersion、buildType拼接组成。<br/>示例：wearable/HUAWEI/HUAWEI/TAS/OpenHarmony-5.0.0.1/TAS-AL00/TAS-AL00/12/default/release:nolog <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | buildType | string | 是 | 构建类型。<br/>示例：default <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
 | buildUser | string | 是 | 构建用户。<br/>示例：default <br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 24|
@@ -69,14 +70,14 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | udid<sup>7+</sup> | string | 是 | 设备Udid。<br/>**说明**：数据长度为65字节。可作为设备唯一识别码。<br/>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业类应用申请)<br/>示例：9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412  <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 24|
 | distributionOSName<sup>10+</sup> | string | 是 | 发行版系统名称<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：OpenHarmony <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 24|
 | distributionOSVersion<sup>10+</sup> | string | 是 | 发行版系统版本号<!--Del-->，由发行方定义<!--DelEnd-->。<!--RP11--><!--RP11End--><br/>示例：5.0.0  <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 24|
-| distributionOSApiVersion<sup>10+</sup> | number| 是 | 发行版系统api版本<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：50001 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 24|
+| distributionOSApiVersion<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 发行版系统api版本<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：50001 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 24|
 | distributionOSApiName<sup>13+</sup> | string | 是 | 发行版系统api版本名称<!--Del-->，由发行方定义<!--DelEnd-->。 <br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 24|
 | distributionOSReleaseType<sup>10+</sup> | string | 是 | 发行版系统类型<!--Del-->，由发行方定义<!--DelEnd-->。<br/>示例：Release <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 24|
 | ODID<sup>12+</sup> | string | 是 |开发者匿名设备标识符。<br/>**ODID值会在以下场景重新生成**：<br/>手机恢复出厂设置。<br/>同一设备上同一个开发者(developerId相同)的应用全部卸载后重新安装时。<br/>**ODID生成规则**：<br/>根据签名信息里developerId解析出的groupId生成，developerId规则为groupId.developerId，若无groupId则取整个developerId作为groupId。<br/>同一设备上运行的同一个开发者(developerId相同)的应用，ODID相同。<br/>同一个设备上不同开发者(developerId不同)的应用，ODID不同。<br/>不同设备上同一个开发者(developerId相同)的应用，ODID不同。<br/>不同设备上不同开发者(developerId不同)的应用，ODID不同。<br/>**说明**：数据长度为37字节(包含结束符)。<br/>示例：1234a567-XXXX-XXXX-XXXX-XXXXXXXXXXXX <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 24|
 | diskSN<sup>15+</sup> | string | 是 | 硬盘序列号。<br/> **说明** ：该字段只能在2in1上设备进行查询，其他设备查询结果为空。<br/> **需要权限**：ohos.permission.ACCESS_DISK_PHY_INFO <br/> 示例：2502EM400567 <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 24|
 | performanceClass<sup>19+</sup> | [PerformanceClassLevel](#performanceclasslevel19) | 是 | 描述设备能力等级，基于CPU、内存、存储读写性能和屏幕分辨率等因素综合评估。 <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 24|
 | chipType<sup>21+</sup> | string | 是 | 当前设备CPU芯片型号<br/> 示例：xxxxx <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 24|
-| bootCount<sup>21+</sup> | number | 是 | 当前设备重启次数，获取失败时返回-1<br/> 示例：100 <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 24|
+| bootCount<sup>21+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 当前设备重启次数，获取失败时返回-1<br/> 示例：100 <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 24|
 | deviceColor | string | 是 | 当前设备颜色。如果无法获取，则返回空字符串<br/> **模型约束：** 此接口仅可在Stage模型下使用。<br/> 示例：gold<br/> **ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 **错误码：**
@@ -336,7 +337,7 @@ apiAvailable(version: string | number): boolean;
 
 **起始版本**：26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）**：从API版本26开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口Stage模型和FA模型下皆可使用。
 
@@ -355,13 +356,13 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 // Check API 26.0.0 (String format for API 26+ represents both OpenHarmony and Distribution OS)
 if (deviceInfo.apiAvailable("26.0.0")) {
-   ...
+   // 需要版本隔离的方法
 }
 
 
 // Check API 5.0.1 (Distribution OS version, API 26-)
 if (deviceInfo.apiAvailable("5.0.1")) {
-   ...
+   // 需要版本隔离的方法
 }
 
 
@@ -369,7 +370,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 // Check API 13 (OpenHarmony SDK version, API 26-)
 if (deviceInfo.apiAvailable(13)) {
-   ...
+   // 需要版本隔离的方法
 }
 
 ```

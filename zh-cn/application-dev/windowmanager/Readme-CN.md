@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -40,6 +40,7 @@
   - [截图与隐私模式 (ArkTS)](screenshot-and-privacy-mode.md)
   - [控制亮度与常亮 (ArkTS)](brightness-control.md)
   - [设置窗口动效 (ArkTS)](window-animation.md)
+  - [控制窗口外观 (ArkTS)](window-appearance.md)
   - [管理应用窗口 (FA模型)](application-window-fa.md)
   - [使用WindowManager管理多模输入事件 (C/C++)](native-window-event-filter.md)
 - 应用启动页的配置与使用<!--launch-page-->

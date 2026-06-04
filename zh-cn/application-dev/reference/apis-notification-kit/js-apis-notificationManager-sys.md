@@ -385,7 +385,6 @@ notificationManager.addSlot(notificationSlot).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 通知slot对象
 let notificationSlot: notificationManager.NotificationSlot = {
@@ -393,7 +392,7 @@ let notificationSlot: notificationManager.NotificationSlot = {
 };
 notificationManager.addSlot(notificationSlot).then(() => {
     console.info("addSlot success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -549,7 +548,6 @@ notificationManager.addSlots(notificationSlotArray).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 通知slot对象
 let notificationSlot: notificationManager.NotificationSlot = {
@@ -562,7 +560,7 @@ let notificationSlotArray: notificationManager.NotificationSlot[] = [
 
 notificationManager.addSlots(notificationSlotArray).then(() => {
     console.info("addSlots success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -709,7 +707,7 @@ let bundle: notificationManager.BundleOption = {
 };
 notificationManager.setNotificationEnable(bundle, false).then(() => {
   console.info("setNotificationEnable success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`setNotificationEnable failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -767,7 +765,6 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getAllNotificationEnabledBundles().then((data: Array<notificationManager.BundleOption>) => {
     console.info(`Enable bundle data is ${JSON.stringify(data)}`);
@@ -775,7 +772,7 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
         console.info(`Enable uid is ${JSON.stringify(element.uid)}`);
         console.info(`Enable bundle is ${JSON.stringify(element.bundle)}`);
     });
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`getAllNotificationEnabledBundles failed, code is ${err.code}, message is ${err.message}`);
 })
 ```
@@ -844,13 +841,12 @@ notificationManager.getAllNotificationEnabledBundles(userId).then((data: Array<n
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId : int = 100;
 
 notificationManager.getAllNotificationEnabledBundles(userId).then((data: Array<notificationManager.BundleOption> | undefined): void => {
   console.info(`Enable bundle data is ${JSON.stringify(data)}`);
-}).catch((err: BusinessError | undefined): void => {
+}).catch((err: Error | undefined): void => {
   console.error(`getAllNotificationEnabledBundles error, code: ${err?.code}, message: ${err?.message}`);
 });
 ```
@@ -993,7 +989,6 @@ notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -1001,7 +996,7 @@ let bundle: notificationManager.BundleOption = {
 };
 notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
     console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1145,14 +1140,13 @@ notificationManager.isNotificationEnabled(userId).then((data: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
 let userId: int = 1;
 
 notificationManager.isNotificationEnabled(userId).then((data: boolean) => {
     console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1299,7 +1293,6 @@ notificationManager.displayBadge(bundle, false).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -1307,7 +1300,7 @@ let bundle: notificationManager.BundleOption = {
 };
 notificationManager.displayBadge(bundle, false).then(() => {
     console.info("displayBadge success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`displayBadge failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1453,7 +1446,6 @@ notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -1462,7 +1454,7 @@ let bundle: notificationManager.BundleOption = {
 
 notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
     console.info(`isBadgeDisplayed success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`isBadgeDisplayed failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1536,7 +1528,6 @@ notificationManager.setSlotFlagsByBundle(bundle, slotFlags).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -1547,7 +1538,7 @@ let slotFlags: long = 1;
 
 notificationManager.setSlotFlagsByBundle(bundle, slotFlags).then(() => {
     console.info("setSlotFlagsByBundle success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`setSlotFlagsByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1709,7 +1700,6 @@ notificationManager.setSlotByBundle(bundle, notificationSlot).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -1722,7 +1712,7 @@ let notificationSlot: notificationManager.NotificationSlot = {
 
 notificationManager.setSlotByBundle(bundle, notificationSlot).then(() => {
     console.info("setSlotByBundle success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`setSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1792,7 +1782,6 @@ notificationManager.getSlotFlagsByBundle(bundle).then((data : number) => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -1800,7 +1789,7 @@ let bundle: notificationManager.BundleOption = {
 };
 notificationManager.getSlotFlagsByBundle(bundle).then((data: long) => {
     console.info(`getSlotFlagsByBundle success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`getSlotFlagsByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1946,7 +1935,6 @@ notificationManager.getSlotsByBundle(bundle).then((data: Array<notificationManag
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -1955,7 +1943,7 @@ let bundle: notificationManager.BundleOption = {
 
 notificationManager.getSlotsByBundle(bundle).then((data: Array<notificationManager.NotificationSlot>) => {
     console.info(`getSlotsByBundle success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`getSlotsByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -2109,7 +2097,6 @@ notificationManager.getSlotNumByBundle(bundle).then((data: number) => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -2118,7 +2105,7 @@ let bundle: notificationManager.BundleOption = {
 
 notificationManager.getSlotNumByBundle(bundle).then((data: long) => {
     console.info(`getSlotNumByBundle success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`getSlotNumByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -2239,11 +2226,10 @@ notificationManager.getAllActiveNotifications().then((data: Array<notificationMa
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getAllActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
     console.info(`getAllActiveNotifications success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`getAllActiveNotifications failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -2412,7 +2398,6 @@ notificationManager.getActiveNotificationByFilter(filter).then((data: notificati
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe } from '@kit.NotificationKit';
 
 let bundleOption: notificationManager.BundleOption = {
@@ -2432,7 +2417,7 @@ let filter: notificationManager.NotificationFilter = {
 }
 notificationManager.getActiveNotificationByFilter(filter).then((data: notificationManager.NotificationRequest | null | undefined) => {
     console.info(`getActiveNotificationByFilter success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`getActiveNotificationByFilter failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -2574,7 +2559,6 @@ notificationManager.removeGroupByBundle(bundleOption, groupName).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 需根据实际情况进行替换
 let bundleOption: notificationManager.BundleOption = { bundle: "bundleName1" };
@@ -2583,7 +2567,7 @@ let groupName: string = "GroupName";
 
 notificationManager.removeGroupByBundle(bundleOption, groupName).then(() => {
     console.info("removeGroupByBundle success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`removeGroupByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -2738,7 +2722,6 @@ notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
     type: notificationManager.DoNotDisturbType.TYPE_ONCE,
@@ -2747,7 +2730,7 @@ let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
 };
 notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
     console.info("setDoNotDisturbDate success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -2919,7 +2902,6 @@ notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
     type: notificationManager.DoNotDisturbType.TYPE_ONCE,
@@ -2932,7 +2914,7 @@ let userId: int = 1;
 
 notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
     console.info("setDoNotDisturbDate success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -3061,11 +3043,10 @@ notificationManager.getDoNotDisturbDate().then((data: notificationManager.DoNotD
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getDoNotDisturbDate().then((data: notificationManager.DoNotDisturbDate) => {
   console.info(`getDoNotDisturbDate success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -3217,14 +3198,13 @@ notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
 let userId: int = 1;
 
 notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.DoNotDisturbDate) => {
     console.info(`getDoNotDisturbDate success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -3351,11 +3331,10 @@ notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
     console.info(`isSupportDoNotDisturbMode success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`isSupportDoNotDisturbMode failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -3497,12 +3476,11 @@ notificationManager.setDistributedEnable(enable).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
 notificationManager.setDistributedEnable(enable).then(() => {
     console.info("setDistributedEnable success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -3658,7 +3636,6 @@ notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -3667,7 +3644,7 @@ let bundle: notificationManager.BundleOption = {
 let enable: boolean = true;
 notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
     console.info("setDistributedEnableByBundle success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`setDistributedEnableByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -3818,7 +3795,6 @@ notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) =>
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -3826,7 +3802,7 @@ let bundle: notificationManager.BundleOption = {
 };
 notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) => {
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`isDistributedEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -3951,11 +3927,10 @@ notificationManager.getDeviceRemindType().then((data: notificationManager.Device
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getDeviceRemindType().then((data: notificationManager.DeviceRemindType) => {
     console.info(`getDeviceRemindType success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`getDeviceRemindType failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -4169,7 +4144,6 @@ notificationManager.publishAsBundle(request, representativeBundle, userId).then(
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
 let representativeBundle: string = "bundleName1";
@@ -4189,7 +4163,7 @@ let request: notificationManager.NotificationRequest = {
 };
 notificationManager.publishAsBundle(request, representativeBundle, userId).then(() => {
     console.info("publishAsBundle success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -4282,7 +4256,6 @@ notificationManager.publishAsBundle(representativeBundle, request).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包信息
 let representativeBundle: notificationManager.BundleOption = {
@@ -4302,7 +4275,7 @@ let request: notificationManager.NotificationRequest = {
 };
 notificationManager.publishAsBundle(representativeBundle, request).then(() => {
     console.info("publishAsBundle success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -4456,7 +4429,6 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 被代理应用的包名
 let representativeBundle: string = "bundleName1";
@@ -4464,7 +4436,7 @@ let representativeBundle: string = "bundleName1";
 let userId: int = 1;
 notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
     console.info("cancelAsBundle success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -4536,7 +4508,6 @@ notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let representativeBundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -4544,7 +4515,7 @@ let representativeBundle: notificationManager.BundleOption = {
 };
 notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
     console.info("cancelAsBundle success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -4614,7 +4585,6 @@ notificationManager.cancel(bundle, id).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -4623,7 +4593,7 @@ let bundle: notificationManager.BundleOption = {
 let id: int = 1;
 notificationManager.cancel(bundle, id).then(() => {
   console.info("cancel success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
   console.error(`cancel failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -4855,29 +4825,23 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // setNotificationEnableSlot
-notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
-    notificationManager.SlotType.SOCIAL_COMMUNICATION,
-    true).then(() => {
-        console.info("setNotificationEnableSlot success");
-    }).catch((err: BusinessError) => {
-        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
-    });
+notificationManager.setNotificationEnableSlot({ bundle: "ohos.samples.notification"},
+    notificationManager.SlotType.SOCIAL_COMMUNICATION, true).then(() => {
+    console.info("setNotificationEnableSlot success");
+}).catch((err: BusinessError) => {
+    console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.setNotificationEnableSlot(
-    // 需根据实际情况进行替换
-    { bundle: "bundleName1", },
-    notificationManager.SlotType.SOCIAL_COMMUNICATION,
-    true).then(() => {
-        console.info("setNotificationEnableSlot success");
-    }).catch((err: BusinessError): void => {
-        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
-    });
+notificationManager.setNotificationEnableSlot({ bundle: "ohos.samples.notification"},
+    notificationManager.SlotType.SOCIAL_COMMUNICATION, true).then(() => {
+    console.info("setNotificationEnableSlot success");
+}).catch((err: Error) => {
+    console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.isNotificationSlotEnabled
@@ -5024,12 +4988,11 @@ notificationManager.isNotificationSlotEnabled({ bundle: "ohos.samples.notificati
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.isNotificationSlotEnabled({ bundle: "bundleName1", },
     notificationManager.SlotType.SOCIAL_COMMUNICATION).then((data: boolean) => {
     console.info(`isNotificationSlotEnabled success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`isNotificationSlotEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -5179,14 +5142,13 @@ notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(()
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
 let userId: int = 1;
 let enable: boolean = true;
 notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(() => {
     console.info('setSyncNotificationEnabledWithoutApp success');
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`setSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -5329,13 +5291,12 @@ notificationManager.getSyncNotificationEnabledWithoutApp(userId).then((data: boo
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 用户ID，使用时需替换为真实的userId。
 let userId: int = 1;
 notificationManager.getSyncNotificationEnabledWithoutApp(userId).then((data: boolean) => {
   console.info(`getSyncNotificationEnabledWithoutApp, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`getSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -5761,7 +5722,6 @@ notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions)
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 包信息
 let bundle: notificationManager.BundleOption = {
@@ -5777,7 +5737,7 @@ let buttonOptions: notificationManager.ButtonOptions = {
 }
 notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions).then(() => {
   console.info("triggerSystemLiveView success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
   console.error(`triggerSystemLiveView failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -5845,7 +5805,6 @@ notificationManager.subscribeSystemLiveView(subscriber).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let onResponseCallback = (id: int, option: notificationManager.ButtonOptions) => {
     console.info(`notificationId: ${id},onResponseCallback: ${JSON.stringify(option)}`);
@@ -5855,7 +5814,7 @@ let subscriber: notificationManager.SystemLiveViewSubscriber  = {
 };
 notificationManager.subscribeSystemLiveView(subscriber).then(() => {
     console.info("subscribeSystemLiveView success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`subscribeSystemLiveView failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -5930,7 +5889,6 @@ notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).th
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -5941,7 +5899,7 @@ let enable: boolean = true;
 let deviceType: string = "phone";
 notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).then(() => {
     console.info("setDistributedEnabledByBundle success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`setDistributedEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -6023,7 +5981,6 @@ notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() =
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle1: notificationManager.DistributedBundleEnableInfo = {
     bundleName: "bundleName1",
@@ -6115,7 +6072,6 @@ notificationManager.isDistributedEnabledByBundle(bundle, deviceType).then((data:
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -6125,7 +6081,7 @@ let bundle: notificationManager.BundleOption = {
 let deviceType: string = "phone";
 notificationManager.isDistributedEnabledByBundle(bundle, deviceType).then((data: boolean) => {
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`isDistributedEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -6195,13 +6151,12 @@ notificationManager.setSmartReminderEnabled(deviceType, enable).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let deviceType: string = "phone";
 let enable: boolean = true;
 notificationManager.setSmartReminderEnabled(deviceType, enable).then(() => {
     console.info("setSmartReminderEnabled success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`setSmartReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -6269,12 +6224,11 @@ notificationManager.isSmartReminderEnabled(deviceType).then((data: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let deviceType: string = "phone";
 notificationManager.isSmartReminderEnabled(deviceType).then((data: boolean) => {
     console.info(`isSmartReminderEnabled success， data:${data}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`isSmartReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -6348,7 +6302,6 @@ notificationManager.setBadgeNumberByBundle(bundle, badgeNumber).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -6358,7 +6311,7 @@ let badgeNumber: int = 10;
 
 notificationManager.setBadgeNumberByBundle(bundle, badgeNumber).then(() => {
     console.info('setBadgeNumberByBundle success');
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`setBadgeNumberByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -6435,7 +6388,6 @@ notificationManager.getSlotByBundle(bundle, slotType).then((data: notificationMa
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     // 需根据实际情况进行替换
@@ -6446,7 +6398,7 @@ let slotType = notificationManager.SlotType.LIVE_VIEW;
 
 notificationManager.getSlotByBundle(bundle, slotType).then((data: notificationManager.NotificationSlot|null|undefined) => {
     console.info(`getSlotByBundle success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`getSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -6529,7 +6481,6 @@ notificationManager.addDoNotDisturbProfile(templates).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let trustlist: Array<notificationManager.BundleOption> = [
   {
@@ -6553,7 +6504,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
 
 notificationManager.addDoNotDisturbProfile(templates).then(() => {
   console.info("addDoNotDisturbProfile success.");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
   console.error(`addDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -6644,7 +6595,6 @@ notificationManager.addDoNotDisturbProfile(templates, userId).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId : int = 100;
 let trustlist: Array<notificationManager.BundleOption> = [
@@ -6669,7 +6619,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
 
 notificationManager.addDoNotDisturbProfile(templates, userId).then(() => {
   console.info(`addDoNotDisturbProfile success, ${JSON.stringify(templates)}`);
-}).catch((err: BusinessError| undefined): void => {
+}).catch((err: Error| undefined): void => {
   console.info(`addDoNotDisturbProfile error, code: ${err?.code}, message: ${err?.message}`);
 });
 ```
@@ -6740,7 +6690,6 @@ notificationManager.removeDoNotDisturbProfile(templates).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let templates: Array<notificationManager.DoNotDisturbProfile> = [
   {
@@ -6750,7 +6699,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
 ]
 notificationManager.removeDoNotDisturbProfile(templates).then(() => {
   console.info("removeDoNotDisturbProfile success.");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
   console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -6827,7 +6776,6 @@ notificationManager.removeDoNotDisturbProfile(templates, userId).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let userId : int = 100;
 let templates: Array<notificationManager.DoNotDisturbProfile> = [
@@ -6838,7 +6786,7 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
 ]
 notificationManager.removeDoNotDisturbProfile(templates, userId).then(() => {
   console.info(`removeDoNotDisturbProfile success. userId: ${userId}, templates: ${JSON.stringify(templates)}`);
-}).catch((err: BusinessError | undefined): void => {
+}).catch((err: Error | undefined): void => {
   console.info(`removeDoNotDisturbProfile error, code: ${err?.code}, message: ${err?.message}`);
 });
 ```
@@ -6905,12 +6853,10 @@ notificationManager.setAdditionalConfig('RING_TRUSTLIST_PKG','[bundleName1,bundl
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setAdditionalConfig('RING_TRUSTLIST_PKG','[bundleName1,bundleName2]').then((data: int) => {
   console.info(`setAdditionalConfig success, data: ${JSON.stringify(data)}`);
-}).catch((e: Error): void => {
-  let err = e as BusinessError
+}).catch((err: Error): void => {
   console.error(`setAdditionalConfig failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -6977,11 +6923,10 @@ notificationManager.getDoNotDisturbProfile(1).then((data: notificationManager.Do
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.getDoNotDisturbProfile(1).then((data: notificationManager.DoNotDisturbProfile) => {
   console.info(`getDoNotDisturbProfile success: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
   console.error(`getDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -7055,14 +7000,13 @@ notificationManager.getDoNotDisturbProfile(id, userId).then((data: notificationM
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let id : long = 101;
 let userId : int = 100;
 
 notificationManager.getDoNotDisturbProfile(id, userId).then((data: notificationManager.DoNotDisturbProfile | undefined): void => {
   console.info(`getDoNotDisturbProfile success. data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError | undefined): void => {
+}).catch((err: Error | undefined): void => {
   console.error(`getDoNotDisturbProfile error, code: ${err?.code}, message: ${err?.message}`);
 });
 ```
@@ -7133,20 +7077,14 @@ try {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let disabled: boolean = true;
 let bundleList: Array<string> = ["com.example.myapplication"];
-try {
-  notificationManager.disableNotificationFeature(disabled, bundleList).then(() => {
-    console.info('disableNotificationFeature success.');
-  }).catch((err: BusinessError): void => {
-    console.error(`disableNotificationFeature failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
-    let error: BusinessError = err as BusinessError;
-    console.error(`testTag failed, code is ${error.code}, message is ${error.message}`);
-}
+notificationManager.disableNotificationFeature(disabled, bundleList).then(() => {
+  console.info('disableNotificationFeature success.');
+}).catch((err: Error): void => {
+  console.error(`disableNotificationFeature failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.disableNotificationFeature<sup>20+</sup>
@@ -7217,16 +7155,15 @@ try {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let disabled: boolean = true;
 let bundleList: Array<string> = ["com.example.myapplication"];
-let userId: int = 100;
-try {
-  notificationManager.disableNotificationFeature(disabled, bundleList, userId);
-} catch (err) {
-    console.error(`DisableNotificationFeature failed, code is ${err.code}, message is ${err.message}`);
-}
+let userId: int = 1;
+notificationManager.disableNotificationFeature(disabled, bundleList, userId).then(() => {
+  console.info(`DisableNotificationFeature success.`);
+}).catch((err: Error) => {
+  console.error(`DisableNotificationFeature failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.setTargetDeviceStatus<sup>18+</sup>
@@ -7285,11 +7222,10 @@ notificationManager.setTargetDeviceStatus("current", 1).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setTargetDeviceStatus("current", 1).then(() => {
   console.info('Succeeded in setting target device status.');
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
   console.error(`Failed to set target device status. Code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -7354,7 +7290,6 @@ notificationManager.setDistributedEnabledBySlot(slot, deviceType, enabled).then(
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let slot: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
 let deviceType: string = 'wearable';
@@ -7362,7 +7297,7 @@ let enabled: boolean = true;
 
 notificationManager.setDistributedEnabledBySlot(slot, deviceType, enabled).then(() => {
     console.info('setDistributedEnabledBySlot success.');
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`setDistributedEnabledBySlot failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -7425,14 +7360,13 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let slot: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
 let deviceType: string = 'wearable';
 
 notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boolean) => {
     console.info('isDistributedEnabledBySlot success.');
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`isDistributedEnabledBySlot failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -7586,6 +7520,167 @@ try {
 } catch (err) {
     console.info(`isSilentReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
 }
+```
+
+## notificationManager.setNotificationSwitch
+
+ArkTS-Dyn: setNotificationSwitch(switchName: string, switchState: boolean, userId: number): Promise\<void\>
+
+ArkTS-Sta: setNotificationSwitch(switchName: string, switchState: boolean, userId: int): Promise\<void\>
+
+设置通知开关状态。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| switchName | string | 是 | 通知开关名称。取值为：DEAL（交易类通知聚合开关）、LOGISTICS（物流类通知聚合开关）。 |
+| switchState | boolean | 是 | 是否开启通知开关。<br> - true：表示开启。<br> - false：表示关闭。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 用户ID。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. Database operation failed. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
+| 1600012  | No memory space. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let switchName: string = 'DEAL';
+let switchState: boolean = true;
+let userId: number = 100;
+
+notificationManager.setNotificationSwitch(switchName, switchState, userId).then(() => {
+    console.info('setNotificationSwitch success');
+}).catch((err: BusinessError) => {
+    console.error(`setNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let switchName: string = 'DEAL';
+let switchState: boolean = true;
+let userId: int = 100;
+
+notificationManager.setNotificationSwitch(switchName, switchState, userId).then(() => {
+    console.info('setNotificationSwitch success');
+}).catch((err: Error): void => {
+    console.error(`setNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getNotificationSwitch
+
+ArkTS-Dyn: getNotificationSwitch(switchName: string, userId: number): Promise\<SwitchState\>
+
+ArkTS-Sta: getNotificationSwitch(switchName: string, userId: int): Promise\<SwitchState\>
+
+获取通知开关状态。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| switchName | string | 是 | 通知开关名称。取值为：DEAL（交易类通知聚合开关）、LOGISTICS（物流类通知聚合开关）。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 用户ID。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<[SwitchState](#switchstate20)\> | Promise对象，返回通知开关状态。 | 
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. Database operation failed. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
+| 1600012  | No memory space. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let switchName: string = 'DEAL';
+let userId: number = 100;
+
+notificationManager.getNotificationSwitch(switchName, userId).then((data: notificationManager.SwitchState) => {
+    console.info(`getNotificationSwitch success, switchState: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let switchName: string = 'DEAL';
+let userId: int = 100;
+
+notificationManager.getNotificationSwitch(switchName, userId).then((data: notificationManager.SwitchState) => {
+    console.info(`getNotificationSwitch success, switchState: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    console.error(`getNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.isDistributedEnabled<sup>20+</sup>
@@ -7743,7 +7838,6 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -7921,36 +8015,22 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 ```ts
-import Want from '@ohos.app.ability.Want';
-import AbilityConstant from '@ohos.app.ability.AbilityConstant';
-import UIAbility from '@ohos.app.ability.UIAbility';
 
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-      try {
-        let bundle: notificationManager.BundleOption = {
-          bundle: "bundleName",
-        };
-        let ringtoneInfo: notificationManager.RingtoneInfo = {
-          ringtoneType: notificationManager.RingtoneType.RINGTONE_TYPE_SYSTEM,
-          ringtoneTitle: "ringtoneName",
-          ringtoneFileName: "ringtonePath",
-          ringtoneUri: "ringtoneUri",
-        }
-        notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
-          console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
-        }).catch((err: Error) => {
-            let error = err as BusinessError;
-            console.error(`setRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
-          });
-      } catch (err) {
-        let error = err as BusinessError;
-        console.error(`setRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
-      }
-    }
+let bundle: notificationManager.BundleOption = {
+  bundle: "bundleName",
+};
+let ringtoneInfo: notificationManager.RingtoneInfo = {
+  ringtoneType: notificationManager.RingtoneType.RINGTONE_TYPE_SYSTEM,
+  ringtoneTitle: "ringtoneName",
+  ringtoneFileName: "ringtonePath",
+  ringtoneUri: "ringtoneUri",
 }
+notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
+  console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
+}).catch((err: Error) => {
+  console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+
 ```
 
 ## notificationManager.getRingtoneInfoByBundle<sup>21+</sup>
@@ -8025,32 +8105,15 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 ```ts
-import Want from '@ohos.app.ability.Want';
-import AbilityConstant from '@ohos.app.ability.AbilityConstant';
-import UIAbility from '@ohos.app.ability.UIAbility';
 
-import { BusinessError } from '@kit.BasicServicesKit';
-
-class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-      try {
-        let bundle: notificationManager.BundleOption = {
-          bundle: "bundleName",
-        };
-        notificationManager.getRingtoneInfoByBundle(bundle)
-          .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
-            console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
-          })
-          .catch((err: Error) => {
-            let error = err as BusinessError;
-            console.error(`getRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
-          });
-      } catch (err) {
-        let error = err as BusinessError;
-        console.error(`getRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
-      }
-    }
-}
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName",
+};
+notificationManager.getRingtoneInfoByBundle(bundle).then((ringtoneInfo: notificationManager.RingtoneInfo) => {
+    console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
+}).catch((err: Error) => {
+    console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.setBadgeDisplayStatusByBundles<sup>21+</sup>
@@ -8196,7 +8259,6 @@ notificationManager.getBadgeDisplayStatusByBundles(bundles).then((data: Map<noti
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundles: Array<notificationManager.BundleOption> = [
     {
@@ -8206,14 +8268,22 @@ let bundles: Array<notificationManager.BundleOption> = [
         bundle: 'bundleName1',
     }
 ];
-try{
-    notificationManager.getBadgeDisplayStatusByBundles(bundles).then((data: Map<notificationManager.BundleOption, boolean>) => {
+
+let bundles: Array<notificationManager.BundleOption> = [
+    {
+        bundle: 'bundleName',
+    },
+    {
+        bundle: 'bundleName1',
+    }
+];
+notificationManager.getBadgeDisplayStatusByBundles(bundles).then((data: Map<notificationManager.BundleOption, boolean>) => {
     data.forEach((value, key) => {
         console.info(`Bundle is ${key.bundle}, uid is ${key.uid}, badge status is ${value}.`);
-    })});
-} catch (err) {
-    console.info(`GetBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
-};
+    });
+}).catch((err: Error) => {
+    console.error(`GetBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.setReminderInfoByBundles<sup>21+</sup>
@@ -8282,7 +8352,6 @@ notificationManager.setReminderInfoByBundles(reminderInfos).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundle: notificationManager.BundleOption = {
     bundle: "bundleName",
@@ -8295,11 +8364,11 @@ let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
     }
 ];
 
-try{
-    notificationManager.setReminderInfoByBundles(reminderInfos);
-} catch (err) {
-    console.info(`setBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
-};
+notificationManager.setReminderInfoByBundles(reminderInfos).then(() => {
+    console.info('SetReminderInfoByBundles success.');
+}).catch((err: Error) => {
+    console.error(`SetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.getReminderInfoByBundles<sup>21+</sup>
@@ -8366,8 +8435,6 @@ notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notifica
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let bundles: Array<notificationManager.BundleOption> = [
     {
         bundle: 'bundleName',
@@ -8376,13 +8443,11 @@ let bundles: Array<notificationManager.BundleOption> = [
         bundle: 'bundleName1',
     }
 ];
-try{
-    notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notificationManager.NotificationReminderInfo>) => {
-        console.info(`Reminder data is ${JSON.stringify(data)}`);
-    });
-} catch (err) {
-    console.info(`GetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
-};
+notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notificationManager.NotificationReminderInfo>) => {
+    console.info(`Reminder data is ${JSON.stringify(data)}`);
+}).catch((err: Error) => {
+    console.error(`GetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.isPriorityEnabled<sup>23+</sup>
@@ -8434,12 +8499,9 @@ notificationManager.isPriorityEnabled().then((result : boolean) => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationManager.isPriorityEnabled().then((result: boolean) => {
   console.info(`isPriorityEnabled result is ${result}`);
-}).catch((e: Error) => {
-  let err = e as BusinessError
+}).catch((err: Error) => {
   console.error(`isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -8500,12 +8562,9 @@ notificationManager.setPriorityEnabled(false).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 notificationManager.setPriorityEnabled(false).then(() => {
   console.info(`setPriorityEnabled success`);
-}).catch((e: Error) => {
-  let err = e as BusinessError
+}).catch((err: Error) => {
   console.error(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -8568,13 +8627,11 @@ notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notif
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
 notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notificationManager.PriorityEnableStatus) => {
   console.info(`isPriorityEnabledByBundle result is ${result}`);
-}).catch((e: Error) => {
-  let err = e as BusinessError
+}).catch((err: Error) => {
   console.error(`isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -8638,19 +8695,12 @@ notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
-try {
-  notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager.PriorityEnableStatus.ENABLE).then(() => {
-    console.info(`setPriorityEnabledByBundle success`);
-  }).catch((e: Error) => {
-    let err = e as BusinessError
-    console.error(`setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
-  console.error(`setPriorityEnabledByBundle failed, err is ${err}`);
-}
+notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager.PriorityEnableStatus.ENABLE).then(() => {
+  console.info(`setPriorityEnabledByBundle success`);
+}).catch((err: Error) => {
+  console.error(`setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.getBundlePriorityConfig<sup>23+</sup>
@@ -8711,13 +8761,11 @@ notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) =
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
 notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) => {
   console.info(`getBundlePriorityConfig value is ${value}`);
-}).catch((e: Error) => {
-  let err = e as BusinessError
+}).catch((err: Error) => {
   console.error(`getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -8781,19 +8829,12 @@ notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').t
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
-try {
-  notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
+notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
     console.info(`setBundlePriorityConfig success`);
-  }).catch((e: Error) => {
-    let err = e as BusinessError
+}).catch((err: Error) => {
     console.error(`setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
-  console.error(`setBundlePriorityConfig failed, err is ${err}`);
-}
+});
 ```
 
 ## notificationManager.isPriorityIntelligentEnabled<sup>23+</sup>
@@ -8848,19 +8889,11 @@ notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-  notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
-    hilog.info(0x0000, 'testTag', `isPriorityIntelligentEnabled result: ${result}`);
-  }).catch((e: Error) => {
-    let err = e as BusinessError
-    hilog.error(0x0000, 'testTag', `isPriorityIntelligentEnabled failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
-  console.error(`isPriorityIntelligentEnabled failed, err is ${err}`);
-}
+notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
+  console.info(`isPriorityIntelligentEnabled result: ${result}`);
+}).catch((err: Error) => {
+  console.error(`isPriorityIntelligentEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.setPriorityIntelligentEnabled<sup>23+</sup>
@@ -8921,19 +8954,11 @@ notificationManager.setPriorityIntelligentEnabled(false).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-  notificationManager.setPriorityIntelligentEnabled(false).then(() => {
-    hilog.info(0x0000, 'testTag', `setPriorityIntelligentEnabled success`);
-  }).catch((e: Error) => {
-    let err = e as BusinessError
-    hilog.error(0x0000, 'testTag', `setPriorityIntelligentEnabled failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
-  console.error(`setPriorityIntelligentEnabled failed, err is ${err}`);
-}
+notificationManager.setPriorityIntelligentEnabled(false).then(() => {
+    console.info(`setPriorityIntelligentEnabled success`);
+}).catch((err: Error) => {
+    console.error(`setPriorityIntelligentEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.getPriorityEnabledByBundles<sup>23+</sup>
@@ -8999,23 +9024,15 @@ notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<not
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
-  let bundles: Array<notificationManager.BundleOption> = [bundleOption];
-  notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<notificationManager.BundleOption, boolean>) => {
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
+let bundles: Array<notificationManager.BundleOption> = [bundleOption];
+notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<notificationManager.BundleOption, boolean>) => {
     switches.forEach((value, key) => {
-      hilog.info(0x0000, 'testTag', `getPriorityEnabledByBundles switches: ${key.bundle} ${key.uid}, ${value}`);
+        console.info(`getPriorityEnabledByBundles switches: ${key.bundle} ${key.uid}, ${value}`);
     })
-  }).catch((e: Error) => {
-    let err = e as BusinessError
-    hilog.error(0x0000, 'testTag', `getPriorityEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
-  console.error(`getPriorityEnabledByBundles failed, err is ${err}`);
-}
+}).catch((err: Error) => {
+    console.error(`getPriorityEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.setPriorityEnabledByBundles<sup>23+</sup>
@@ -9079,21 +9096,13 @@ notificationManager.setPriorityEnabledByBundles(switches).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
-  let switches: Map<notificationManager.BundleOption, boolean> = new Map<notificationManager.BundleOption, boolean>([[bundleOption, false]]);
-  notificationManager.setPriorityEnabledByBundles(switches).then(() => {
-    hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundles success`);
-  }).catch((e: Error) => {
-    let err = e as BusinessError
-    hilog.error(0x0000, 'testTag', `setPriorityEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
-  console.error(`setPriorityEnabledByBundles failed, err is ${err}`);
-}
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
+let switches: Map<notificationManager.BundleOption, boolean> = new Map<notificationManager.BundleOption, boolean>([[bundleOption, false]]);
+notificationManager.setPriorityEnabledByBundles(switches).then(() => {
+    console.info(`setPriorityEnabledByBundles success`);
+}).catch((err: Error) => {
+    console.error(`setPriorityEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.getPriorityStrategyByBundles<sup>23+</sup>
@@ -9161,23 +9170,15 @@ notificationManager.getPriorityStrategyByBundles(bundles).then((strategies: Map<
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
-  let bundles: Array<notificationManager.BundleOption> = [bundleOption];
-  notificationManager.getPriorityStrategyByBundles(bundles).then((strategies: Map<notificationManager.BundleOption, long>) => {
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
+let bundles: Array<notificationManager.BundleOption> = [bundleOption];
+notificationManager.getPriorityStrategyByBundles(bundles).then((strategies: Map<notificationManager.BundleOption, long>) => {
     strategies.forEach((value, key) => {
-      hilog.info(0x0000, 'testTag', `getPriorityStrategyByBundles strategies: ${key.bundle} ${key.uid}, ${value}`);
+        console.info(`getPriorityStrategyByBundles strategies: ${key.bundle} ${key.uid}, ${value}`);
     })
-  }).catch((e: Error) => {
-    let err = e as BusinessError
-    hilog.error(0x0000, 'testTag', `getPriorityStrategyByBundles failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
-  console.error(`getPriorityStrategyByBundles failed, err is ${err}`);
-}
+}).catch((err: Error) => {
+    console.error(`getPriorityStrategyByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.setPriorityStrategyByBundles<sup>23+</sup>
@@ -9243,21 +9244,14 @@ notificationManager.setPriorityStrategyByBundles(strategies).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-try {
-  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
-  let strategies: Map<notificationManager.BundleOption, long> = new Map<notificationManager.BundleOption, long>([[bundleOption, notificationManager.PriorityStrategyStatus.STATUS_APPLICATION_DEFINED]]);
-  notificationManager.setPriorityStrategyByBundles(strategies).then(() => {
-    hilog.info(0x0000, 'testTag', `setPriorityStrategyByBundles success`);
-  }).catch((e: Error) => {
-    let err = e as BusinessError
-    hilog.error(0x0000, 'testTag', `setPriorityStrategyByBundles failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (err) {
-  console.error(`setPriorityStrategyByBundles failed, err is ${err}`);
-}
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
+let strategies: Map<notificationManager.BundleOption, long> =
+    new Map<notificationManager.BundleOption, long>([[bundleOption, notificationManager.PriorityStrategyStatus.STATUS_APPLICATION_DEFINED]]);
+notificationManager.setPriorityStrategyByBundles(strategies).then(() => {
+    console.info(`setPriorityStrategyByBundles success`);
+}).catch((err: Error) => {
+    console.error(`setPriorityStrategyByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.onBadgeNumberQuery<sup>22+</sup>
@@ -9433,14 +9427,10 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
 notificationManager.setGeofenceEnabled(true).then(() => {
-  hilog.info(0x0000, 'testTag', '%{public}s', "setGeofenceEnabled success");
-}).catch((e: Error) => {
-  let err = e as BusinessError
-  hilog.error(0x0000, 'testTag', '%{public}s',`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+    console.info("setGeofenceEnabled success");
+}).catch((err: Error) => {
+    console.error(`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 

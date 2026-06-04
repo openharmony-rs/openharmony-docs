@@ -2929,7 +2929,6 @@ offTabChange(config: observer.ObserverOptions, callback?: Callback<observer.TabC
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件。 |
 | config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12)        | 是   | 指定监听的[Tabs](arkui-ts/ts-container-tabs.md)组件的id。 |
 | callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销config指定的[Tabs](arkui-ts/ts-container-tabs.md)组件下注册的所有的回调函数。<br/>默认值：undefined |
 
@@ -4070,6 +4069,10 @@ on(type: 'windowSizeLayoutBreakpointChange', callback: Callback<observer.WindowS
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 22
+
 **参数：** 
 
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
@@ -4139,6 +4142,10 @@ off(type: 'windowSizeLayoutBreakpointChange', callback?: Callback\<observer.Wind
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：** 
 
@@ -4495,7 +4502,7 @@ ArkTS-Sta: offNavDestinationSizeChangeByUniqueId(navigationUniqueId: int, callba
 | navigationUniqueId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 希望监听的NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。 |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 否   | 需要被移除的回调函数。不传参数时，移除所有指定了相同navigationUniqueId的回调函数。 |
 
-## onWindowSizeLayoutBreakpointChange<sup>23+</sup>
+## onWindowSizeLayoutBreakpointChange<sup>24+</sup>
 
 onWindowSizeLayoutBreakpointChange(callback: Callback<observer.WindowSizeLayoutBreakpointInfo\>): void
 
@@ -4505,7 +4512,7 @@ onWindowSizeLayoutBreakpointChange(callback: Callback<observer.WindowSizeLayoutB
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
   
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -4584,7 +4591,7 @@ struct Index {
 }
 ```
 
-## offWindowSizeLayoutBreakpointChange<sup>23+</sup>
+## offWindowSizeLayoutBreakpointChange<sup>24+</sup>
 
 offWindowSizeLayoutBreakpointChange(callback?: Callback\<observer.WindowSizeLayoutBreakpointInfo>): void
 
@@ -4594,7 +4601,7 @@ offWindowSizeLayoutBreakpointChange(callback?: Callback\<observer.WindowSizeLayo
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -4604,4 +4611,4 @@ offWindowSizeLayoutBreakpointChange(callback?: Callback\<observer.WindowSizeLayo
 
 **示例：**
 
-参考[onWindowSizeLayoutBreakpointChange](#onwindowsizelayoutbreakpointchange23)接口示例。
+参考[onWindowSizeLayoutBreakpointChange](#onwindowsizelayoutbreakpointchange24)接口示例。

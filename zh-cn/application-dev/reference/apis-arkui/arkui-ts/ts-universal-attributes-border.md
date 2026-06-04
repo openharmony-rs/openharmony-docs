@@ -193,7 +193,7 @@ ArkTS-Sta: borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses
 | 参数名 | 类型                                                         | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | value  | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12)<sup>12+</sup><br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12) \| undefined | 是   | 设置元素的边框圆角半径，支持百分比，百分比依据组件宽度。设置圆角后，可搭配[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性进行裁剪，避免子组件超出组件自身。<br/>取值为undefined时，与不设置表现一致。|
-| type  | [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否   |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST|
+| type  | ArkTS-Dyn: [RenderStrategy](ts-appendix-enums.md#renderstrategy22)<br/>ArkTS-Sta: [RenderStrategy](ts-appendix-enums.md#renderstrategy22) \| undefined | 否   |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST<br/>取值为undefined时，按默认值处理。|
 
 **返回值：**
 

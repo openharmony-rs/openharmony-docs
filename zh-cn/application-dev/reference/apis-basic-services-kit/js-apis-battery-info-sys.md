@@ -187,7 +187,7 @@ isBatteryConfigSupported(sceneName: string): boolean
 
 描述电池信息。
 
-**系统能力：**SystemCapability.PowerManager.BatteryManager.Core
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 | 名称      | 类型        | 只读 |  说明     |
 | --------------- | ------------------- | ---- | ---------------------|

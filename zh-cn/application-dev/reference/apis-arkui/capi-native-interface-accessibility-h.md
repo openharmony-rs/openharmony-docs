@@ -284,7 +284,7 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvid
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)* provider | 表示指向ArkUI_AccessibilityProvider实例的指针。 |
-| [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md)* callbacks | 表示指向GetAccessibilityNodeCursorPosition实例的指针。 |
+| [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md)* callbacks | 表示指向ArkUI_AccessibilityProviderCallbacks实例的指针。 |
 
 **返回：**
 

@@ -248,5 +248,5 @@ struct Index {
 | 名称      | 类型                                       |只读   | 可选  |说明                    |
 | --------  | ------------------------                  |-------|------ |--------               |
 | action    | [FingerprintAction](#fingerprintaction12)   | 否    |  否   | 指纹手势事件类型的枚举。           |
-| distanceX | ArkTS-Dyn: number<br/>ArkTS-Sta: double      | 否    |  否   | 相对于侧边指纹器件短轴偏移量（正数表示向右移动，负数表示向左移动）。 |
-| distanceY | ArkTS-Dyn: number<br/>ArkTS-Sta: double     | 否    |  否   | 相对于侧边指纹器件长轴偏移量（正数表示向上移动，负数表示向下移动）。 |
+| distanceX | ArkTS-Dyn: number<br/>ArkTS-Sta: double      | 否    |  否   | 相对于侧边指纹器件短轴偏移量（正数表示向右移动，负数表示向左移动），单位为像素（px）。 |
+| distanceY | ArkTS-Dyn: number<br/>ArkTS-Sta: double     | 否    |  否   | 相对于侧边指纹器件长轴偏移量（正数表示向上移动，负数表示向下移动），单位为像素（px）。 |

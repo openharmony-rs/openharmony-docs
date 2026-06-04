@@ -329,7 +329,7 @@ struct Child {
 
 当装饰interface字面量类型时，仅可以观察到字面量整体的变化，无法观察到属性的变化，可以使用[makeObserved接口](./arkts-static-new-makeObserved.md)实现对字面量属性的观察。
 
-<!-- @[ProviderConsumerInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerInterface.ets) -->
+<!-- @[ProviderConsumerInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerInterface.ets) --> 
 
 ``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Provider, Text } from '@kit.ArkUI';
@@ -347,16 +347,23 @@ struct Parent {
   build() {
     Column() {
       Text(`parent name: ${this.info.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('parent change whole interface')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.info = { name: 'Tom' } as Info; // 变化可观察
         })
       Button('parent change interface name')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.info.name += '~'; // 变化无法观察
         })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -368,18 +375,27 @@ struct Child {
   build() {
     Column() {
       Text(`child name: ${this.info.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('child change whole interface')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.info = { name: 'Jerry' } as Info; // 变化可观察
         })
       Button('child change interface name')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.info.name += '*'; // 变化无法观察
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![ProviderConsumer_2](../figures/Provider_Consumer_2.gif)
 
 ### 装饰数组类型变量
 
@@ -598,7 +614,7 @@ struct Child {
 
 \@Provider和\@Consumer支持装饰箭头函数。
 
-<!-- @[ProviderConsumerArrowFunction](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerArrowFunction.ets) -->
+<!-- @[ProviderConsumerArrowFunction](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerArrowFunction.ets) --> 
 
 ``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Local, Provider, Text } from '@kit.ArkUI';
@@ -608,6 +624,7 @@ import { Button, ClickEvent, Column, ComponentV2, Consumer, Entry, Local, Provid
 struct Parent {
   @Local childSub: number = 0;
   @Local childSum: number = 1;
+  // 父组件通过@Provider向下传递箭头函数。
   @Provider() onChange: (axisX: number, axisY: number) => void = (axisX: number, axisY: number): void => {
     this.childSub = axisX - axisY;
     this.childSum = axisX + axisY;
@@ -616,8 +633,11 @@ struct Parent {
   build() {
     Column() {
       Text(`childSub: ${this.childSub}, childSum: ${this.childSum}`)
+        .fontSize(20)
+        .margin(10)
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -630,22 +650,40 @@ struct Child {
 
   build() {
     Button('changed')
+      .width(300)
+      .margin(10)
       .onClick((e: ClickEvent) => {
+        // 子组件中调用该箭头函数，会修改父组件中childSub与childSum变量的值。
         this.onChange(this.axisX, this.axisY);
       })
   }
 }
 ```
 
+![ProviderConsumer_3](../figures/Provider_Consumer_3.gif)
+
 ### \@Provider和\@Consumer装饰复杂类型
 
 1. \@Provider和\@Consumer仅能观察到数据本身的变化。若需观察其装饰的复杂数据类型的属性变化，必须配合\@Trace一起使用。
 2. 装饰内置类型Array、Map、Set、Date时，可以观察到某些API的变化，观察能力同\@Trace。
 
-<!-- @[ProviderConsumerComplexType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerComplexType.ets) -->
+<!-- @[ProviderConsumerComplexType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerComplexType.ets) --> 
 
 ``` TypeScript
-import { Button, ClickEvent, Column, ComponentV2, Consumer, Divider, Entry, ForEach, ObservedV2, Provider, Text, Trace } from '@kit.ArkUI';
+import {
+  Button,
+  ClickEvent,
+  Column,
+  ComponentV2,
+  Consumer,
+  Divider,
+  Entry,
+  ForEach,
+  ObservedV2,
+  Provider,
+  Text,
+  Trace
+} from '@kit.ArkUI';
 
 @ObservedV2
 class User {
@@ -668,23 +706,32 @@ struct Parent {
   build() {
     Column() {
       Button('add new user')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.users.push(new User('Molly', 18));
         })
       Button('age++')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.users[0].age++;
         })
       Button('change name')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.users[0].name = 'Shelly';
         })
       Button('reset users')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.users = [new User('Json', 10), new User('Eric', 15)];
-        })       
+        })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -696,15 +743,23 @@ struct Child {
     Column() {
       ForEach(this.users, (item: User) => {
         Column() {
-          Text(`name: ${item.name}`).fontSize(30)
-          Text(`age: ${item.age}`).fontSize(30)
+          Text(`name: ${item.name}`)
+            .fontSize(20)
+            .margin(10)
+          Text(`age: ${item.age}`)
+            .fontSize(20)
+            .margin(10)
           Divider()
         }
+        .width('100%')
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![ProviderConsumer_4](../figures/Provider_Consumer_4.gif)
 
 ### \@Provider重名时，\@Consumer向上查找其最近的\@Provider
 

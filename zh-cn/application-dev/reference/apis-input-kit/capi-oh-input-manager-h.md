@@ -720,7 +720,7 @@ void OH_Input_SetKeyCode(struct Input_KeyState* keyState, int32_t keyCode)
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_KeyState](capi-input-input-keystate.md)* keyState | 按键状态的枚举对象，具体请参考[Input_KeyStateAction](#input_keystateaction)。 |
-| int32_t keyCode | 按键键值。 |
+| int32_t keyCode | 按键键值，具体请参考[KeyCode](js-apis-keycode.md#keycode)。 |
 
 ### OH_Input_GetKeyCode()
 
@@ -990,7 +990,7 @@ void OH_Input_SetKeyEventKeyCode(struct Input_KeyEvent* keyEvent, int32_t keyCod
 | 参数项 | 描述 |
 | -- | -- |
 | struct [Input_KeyEvent](capi-input-input-keyevent.md)* keyEvent | 按键事件对象，通过[OH_Input_CreateKeyEvent](#oh_input_createkeyevent)接口可以创建按键事件对象。<br>使用完需使用[OH_Input_DestroyKeyEvent](#oh_input_destroykeyevent)接口销毁按键事件对象。 |
-| int32_t keyCode | 按键的键值。 |
+| int32_t keyCode | 按键键值，具体请参考[KeyCode](js-apis-keycode.md#keycode)。 |
 
 ### OH_Input_GetKeyEventKeyCode()
 
@@ -1352,7 +1352,7 @@ int32_t OH_Input_GetMouseEventDisplayY(const struct Input_MouseEvent* mouseEvent
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t displayY | 鼠标事件以指定屏幕左上角为原点的相对坐标系的Y坐标，单位为像素（px）。 |
+| int32_t | 鼠标事件以指定屏幕左上角为原点的相对坐标系的Y坐标，单位为像素（px）。 |
 
 ### OH_Input_SetMouseEventButton()
 
@@ -1548,7 +1548,7 @@ int64_t OH_Input_GetMouseEventActionTime(const struct Input_MouseEvent* mouseEve
 
 | 类型 | 说明 |
 | -- | -- |
-| int64_t | 返回鼠标事件发生的时间。 |
+| int64_t | 返回鼠标事件发生的时间，单位为微秒。 |
 
 ### OH_Input_SetMouseEventWindowId()
 
@@ -1905,7 +1905,7 @@ int64_t OH_Input_GetTouchEventActionTime(const struct Input_TouchEvent* touchEve
 
 | 类型 | 说明 |
 | -- | -- |
-| int64_t | 返回触屏输入事件发生的时间。 |
+| int64_t | 返回触屏输入事件发生的时间，单位为微秒。 |
 
 ### OH_Input_SetTouchEventWindowId()
 
@@ -3907,7 +3907,7 @@ int32_t OH_Input_InjectMouseEvent(const struct Input_MouseEvent* mouseEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectMouseEvent 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。 |
+| int32_t | OH_Input_InjectMouseEvent 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         [INPUT_PERMISSION_DENIED](#input_result) 表示缺少权限。 |
 
 ### OH_Input_GetMouseEventDisplayId()
 
@@ -3987,7 +3987,7 @@ int32_t OH_Input_InjectMouseEventGlobal(const struct Input_MouseEvent* mouseEven
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectMouseEventGlobal 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。 |
+| int32_t | OH_Input_InjectMouseEventGlobal 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         [INPUT_PERMISSION_DENIED](#input_result) 表示缺少权限。 |
 
 ### OH_Input_SetMouseEventGlobalX()
 ```c
@@ -4102,7 +4102,7 @@ int32_t OH_Input_InjectTouchEventGlobal(const struct Input_TouchEvent* touchEven
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_Input_InjectTouchEventGlobal 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。 |
+| int32_t | OH_Input_InjectTouchEventGlobal 函数返回值。<br>         [INPUT_SUCCESS](#input_result) 表示注入成功。<br>         [INPUT_PARAMETER_ERROR](#input_result) 表示参数错误。<br>         [INPUT_PERMISSION_DENIED](#input_result) 表示缺少权限。 |
 
 ### OH_Input_SetTouchEventGlobalX()
 
@@ -4484,7 +4484,7 @@ Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t windowId | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br> 仅支持传入当前窗口和全局窗口的ID，传入其他ID返回全局窗口的默认光标样式，当前窗口ID可以通过[getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取。 |
-| int32_t* pointerStyle | 鼠标光标样式的指针。 |
+| int32_t* pointerStyle | 鼠标光标样式，取值为[Input_PointerStyle](capi-oh-pointer-style-h.md#input_pointerstyle)的枚举值。 |
 
 **返回：**
 

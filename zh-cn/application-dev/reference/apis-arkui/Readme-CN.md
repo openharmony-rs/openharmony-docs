@@ -586,6 +586,7 @@
     - [状态变量变化监听](arkui-ts/ts-state-management-watch-monitor.md)
     - [组件双向绑定 (ArkTS-Sta)](js-apis-twoWayBinding-static.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
+    - [WithEnv：环境变量容器](arkui-ts/ts-container-with-env.md)
     - [If (ArkTS-Sta)](arkui-ts/ts-rendering-control-ifelse-sta.md)
     - [ForEach (ArkTS-Dyn)](arkui-ts/ts-rendering-control-foreach.md)
     - [ForEach (ArkTS-Sta)](arkui-ts/ts-rendering-control-foreach-sta.md)
@@ -652,6 +653,7 @@
         - [@Env](arkui-ts/ts-state-management-env-static.md)
   - 响应式环境变量<!--responsive-env-system-property-->
     - [\@Env：环境变量](arkui-ts/ts-env-system-property.md)
+    - [\@CustomEnv：自定义环境变量](arkui-ts/ts-custom-env-property.md)
   - 公共定义<!--common-definitions-->
     - [基础类型定义](arkui-ts/ts-types.md)
     - [像素单位](arkui-ts/ts-pixel-units.md)
