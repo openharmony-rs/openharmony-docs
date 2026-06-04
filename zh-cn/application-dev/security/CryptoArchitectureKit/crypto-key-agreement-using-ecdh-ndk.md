@@ -46,7 +46,7 @@ static OH_Crypto_ErrCode compareSecrets(const Crypto_DataBlob *secret1, const Cr
     return CRYPTO_OPERTION_ERROR;
 }
 
-static OH_Crypto_ErrCode CovertKeyPairByBlob(OH_CryptoAsymKeyGenerator *eccGen, OH_CryptoKeyPair **keyPair)
+static OH_Crypto_ErrCode ConvertKeyPairByBlob(OH_CryptoAsymKeyGenerator *eccGen, OH_CryptoKeyPair **keyPair)
 {
     uint8_t pubKeyArray[] = {48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7,
         3, 66, 0, 4, 83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246,
@@ -75,7 +75,7 @@ OH_Crypto_ErrCode doTestEcdhKeyAgreement()
         return ret;
     }
 
-    ret = CovertKeyPairByBlob(eccGen, &keyPairA);
+    ret = ConvertKeyPairByBlob(eccGen, &keyPairA);
     if (ret != CRYPTO_SUCCESS) {
         goto goto_cleanup;
     }

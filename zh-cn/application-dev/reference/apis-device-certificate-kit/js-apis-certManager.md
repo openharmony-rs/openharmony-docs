@@ -9,6 +9,8 @@
 
 证书管理主要提供系统级的证书管理能力，实现证书全生命周期（安装，存储，使用，销毁）的管理和安全使用。
 
+可用于校验应用服务器的HTTPS证书链、通过双向HTTPS登录网站或应用服务器。
+
 > **说明：**
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -38,7 +40,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| CM_DIGEST_NONE | 0      | 不需要摘要算法，选用此项时，需要业务传入已经计算过摘要的数据进行签名、验签。 |
+| CM_DIGEST_NONE | 0      | 选用此项时，需要应用程序传入已经计算过摘要的数据进行签名、验签。 |
 | CM_DIGEST_MD5 | 1      | MD5摘要算法。 |
 | CM_DIGEST_SHA1 | 2      | SHA1摘要算法。 |
 | CM_DIGEST_SHA224 | 3      | SHA224摘要算法。 |
@@ -68,8 +70,8 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | purpose          | [CmKeyPurpose](#cmkeypurpose)                       | 否  | 否  | 表示密钥使用目的的枚举。 |
-| padding        | [CmKeyPadding](#cmkeypadding)                       | 否   | 是  | 表示填充方式的枚举。 |
-| digest        | [CmKeyDigest](#cmkeydigest)                       | 否   | 是  | 表示摘要算法的枚举。 |
+| padding        | [CmKeyPadding](#cmkeypadding)                       | 否   | 是  | 表示填充方式的枚举。默认值：CM_PADDING_PSS，表示使用PSS填充方式。 |
+| digest        | [CmKeyDigest](#cmkeydigest)                       | 否   | 是  | 表示摘要算法的枚举。默认值：CM_DIGEST_SHA256，表示使用SHA256摘要算法。 |
 
 
 ## CertInfo
@@ -176,7 +178,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | 表示应用未经用户授权。 |
 | CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。 |
 | CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | 表示不支持指定的证书存储路径。   |
-| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | 表示访问USB凭据服务失败。   |
+| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | 表示访问USB Key服务失败。   |
 | CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | 表示输入参数校验失败。<br>例如：参数格式不正确、参数范围无效。   |
 
 ## CertType<sup>18+</sup>
@@ -210,7 +212,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | 名称            | 值 | 说明                       |
 |---------------| ------ |--------------------------|
 | INTERNATIONAL | 1      | 表示国际密码算法，如RSA、NIST ECC等。 |
-| SM            | 2      | 表示商用密码算法，如SM2、SM4等。      |
+| SM            | 2      | 表示商用密码算法，如SM2、SM4等。海外设备不支持使用该算法的证书。      |
 
 ## CertStoreProperty<sup>18+</sup>
 
@@ -222,7 +224,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 |-----------|-----------------------------------| ---- | ------------------------------------------------------------ |---------------------------------------------|
 | certType  | [CertType](#certtype18)           | 否  | 否  | 表示证书的类型。                                    |
 | certScope | [CertScope](#certscope18)         | 否   | 是  | 表示证书的存储位置。当证书类型为CA_CERT_USER时，此项为必选项。       |
-| certAlg<sup>20+</sup>   | [CertAlgorithm](#certalgorithm20) | 否   | 是  | 表示证书算法类型。仅当certType为CA_CERT_SYSTEM时有效，默认值为INTERNATIONAL。 |
+| certAlg<sup>20+</sup>   | [CertAlgorithm](#certalgorithm20) | 否   | 是  | 表示证书算法类型。仅当certType为CA_CERT_SYSTEM时有效，默认值为INTERNATIONAL。海外设备不支持SM算法。 |
 
 ## AuthStorageLevel<sup>18+</sup>
 
@@ -251,7 +253,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 ## UkeyInfo<sup>22+</sup>
 
-提供USB凭据属性信息。
+提供USB Key证书凭据属性信息。
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -263,7 +265,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, callback: AsyncCallback\<CMResult>): void
 
-表示安装私有凭据，使用Callback回调异步返回结果。
+安装私有凭据。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -317,7 +319,7 @@ try {
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string): Promise\<CMResult>
 
-表示安装私有凭据。使用Promise异步回调。
+安装私有凭据。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -376,7 +378,7 @@ try {
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, level: AuthStorageLevel): Promise\<CMResult>
 
-表示安装私有凭据并指定凭据的存储级别。使用Promise异步回调。
+安装私有凭据并指定凭据的存储级别。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -438,7 +440,7 @@ try {
 
 getPrivateCertificate(keyUri: string, callback: AsyncCallback\<CMResult>): void
 
-表示获取私有凭据的详细信息，使用Callback回调异步返回结果。
+获取私有凭据的详细信息，使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -460,7 +462,7 @@ getPrivateCertificate(keyUri: string, callback: AsyncCallback\<CMResult>): void
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
-| 17500002 | The certificate does not exist. |
+| 17500002 | The certificate does not exist. Possible causes: 1. The certificate URI is incorrect; 2. The certificate has been uninstalled. Please check the certificate URI. |
 
 **示例**：
 ```ts
@@ -489,7 +491,7 @@ try {
 
 getPrivateCertificate(keyUri: string): Promise\<CMResult>
 
-表示获取私有凭据详情。使用Promise异步回调。
+获取私有凭据详情。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -544,7 +546,7 @@ try {
 
 uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback\<void>): void
 
-表示卸载指定的私有凭据，使用Callback回调异步返回结果。
+卸载指定的私有凭据，使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -590,7 +592,7 @@ try {
 
 uninstallPrivateCertificate(keyUri: string): Promise\<void>
 
-表示卸载指定的私有凭据。使用Promise异步回调。
+卸载指定的私有凭据。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -638,9 +640,9 @@ try {
 
 ## certificateManager.installUserTrustedCertificateSync<sup>18+</sup>
 
-installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope) : CMResult
+installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope): CMResult
 
-表示安装用户CA证书。
+安装用户CA证书。
 
 **需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
 
@@ -698,7 +700,7 @@ try {
 
 uninstallUserTrustedCertificateSync(certUri: string) : void
 
-表示删除用户CA证书。
+卸载用户CA证书。
 
 **需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
 
@@ -708,7 +710,7 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 
 | 参数名       | 类型                         | 必填 | 说明           |
 |-----------|----------------------------|----|--------------|
-| certUri     | string                 | 是  | 表示待卸删除证书的唯一标识符，长度限制256字节以内。    |
+| certUri     | string                 | 是  | 表示待卸载证书的唯一标识符，长度限制256字节以内。    |
 
 **错误码：**
 
@@ -738,7 +740,7 @@ try {
 
 init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>): void
 
-表示使用凭据进行签名、验签的初始化操作，使用Callback回调异步返回结果。
+使用凭据进行签名、验签的初始化操作，是签名验签流程的第一步，后续需依次调用update和finish接口完成操作。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -762,7 +764,7 @@ init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>)
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
-| 17500005 | The application is not authorized by the user. |
+| 17500005 | The application is not authorized by the user. Please call [openAuthorizeDialog](./js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog20) method to request user authorization for the certificate or credential.<br>适用版本：12+ |
 
 **示例**：
 ```ts
@@ -791,7 +793,7 @@ try {
 
 init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 
-表示使用凭据进行签名、验签的初始化操作。使用Promise异步回调。
+使用凭据进行签名、验签的初始化操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -848,7 +850,7 @@ try {
 
 update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): void
 
-表示签名、验签的数据更新操作，使用Callback回调异步返回结果。
+签名、验签的数据更新操作，需要在init操作之后调用，用于传入待签名、验签的数据。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -858,7 +860,7 @@ update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): vo
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
 | data | Uint8Array                   | 是   | 表示待签名、验签的数据。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当签名、验签的数据更新操作成功时，err为null，否则为错误对象。 |
 
@@ -900,7 +902,7 @@ try {
 
 update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 
-表示签名、验签的数据更新操作。使用Promise异步回调。
+签名、验签的数据更新操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -910,7 +912,7 @@ update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
 | data | Uint8Array                   | 是   | 表示待签名、验签的数据。 |
 
 **返回值**：
@@ -956,7 +958,7 @@ try {
 
 finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
-表示完成签名的操作，Callback回调异步返回结果。
+完成签名的操作，是签名流程的最后一步，需要先调用init和update接口。使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -966,7 +968,7 @@ finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
 | callback | AsyncCallback\<[CMResult](#cmresult)> | 是   | 回调函数。当签名成功时，err为null，data为[CMResult](#cmresult)对象中的outData属性，表示签名数据；否则为错误对象。 |
 
 **错误码：**
@@ -1009,7 +1011,7 @@ try {
 
 finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
-表示完成验签的操作，使用Callback回调异步返回结果。
+完成验签的操作，使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1019,7 +1021,7 @@ finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMRes
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
 | signature | Uint8Array                   | 是   | 表示签名数据。 |
 | callback | AsyncCallback\<[CMResult](#cmresult)> | 是   | 回调函数。当验签成功时，err为null；否则为错误对象。 |
 
@@ -1061,7 +1063,7 @@ try {
 
 finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
-表示完成签名、验签的操作。使用Promise异步回调。
+完成签名、验签的操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1071,8 +1073,8 @@ finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
-| signature | Uint8Array                   | 否   | 表示用于验签操作的签名数据，仅验签操作需要指定。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用[init](#certificatemanagerinit)方法获得。 |
+| signature | Uint8Array                   | 否   | 表示用于验签操作的签名数据。签名操作时无需传入此参数。 |
 
 **返回值**：
 
@@ -1131,7 +1133,7 @@ try {
 
 abort(handle: Uint8Array, callback: AsyncCallback\<void>): void
 
-表示中止签名、验签的操作，使用Callback回调异步返回结果。
+中止签名、验签的操作，使用Callback异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1179,7 +1181,7 @@ try {
 
 abort(handle: Uint8Array): Promise\<void>
 
-表示中止签名、验签的操作。使用Promise异步回调。
+中止签名、验签的操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1231,7 +1233,7 @@ try {
 
 getPublicCertificate(keyUri: string): Promise\<CMResult>
 
-表示获取用户公共凭据的详细信息。使用Promise异步回调。
+获取用户公共凭据的详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1287,7 +1289,7 @@ try {
 
 isAuthorizedApp(keyUri: string): Promise\<boolean>
 
-表示当前应用是否由指定的用户凭据授权。使用Promise异步回调。
+当前应用是否由指定的用户凭据授权。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1340,7 +1342,7 @@ try {
 
 getAllUserTrustedCertificates(): Promise\<CMResult>
 
-表示获取当前用户和设备公共位置的所有用户根CA证书列表。使用Promise异步回调。
+获取当前用户和设备公共位置的所有用户根CA证书列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1388,7 +1390,7 @@ try {
 
 getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 
-表示根据证书的位置获取用户根CA证书列表。使用Promise异步回调。
+根据证书的位置获取用户根CA证书列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1446,7 +1448,7 @@ try {
 
 getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 
-表示获取用户根CA证书的详细信息。使用Promise异步回调。
+获取用户根CA证书的详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1500,7 +1502,7 @@ try {
 
 getPrivateCertificates(): Promise\<CMResult>
 
-表示获取应用安装的凭据列表。使用Promise异步回调。
+获取应用安装的凭据列表。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1545,9 +1547,9 @@ try {
 ```
 ## certificateManager.getCertificateStorePath<sup>18+</sup>
 
-getCertificateStorePath(property: CertStoreProperty): string;
+getCertificateStorePath(property: CertStoreProperty): string
 
-表示获取证书的存储路径。
+获取证书的存储路径。
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -1616,26 +1618,26 @@ try {
 
 getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
-表示获取USB凭据详细信息。使用Promise异步回调。
+获取USB Key证书凭据详细信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1设备可正常调用，在其他设备中返回801错误码。
 
 **参数**：
 
 | 参数名   | 类型   | 必填 | 说明    |
 | -------- | ------- | ---- | ------ |
-| keyUri | string | 是   | 表示USB凭据的唯一标识符，长度限制256字节以内。 |
-| ukeyInfo | [UkeyInfo](#ukeyinfo22)  | 是   | 表示USB凭据的属性信息。 |
+| keyUri | string | 是   | 表示USB Key证书凭据的唯一标识符，长度限制256字节以内。 |
+| ukeyInfo | [UkeyInfo](#ukeyinfo22)  | 是   | 表示USB Key证书凭据的属性信息。 |
 
 **返回值**：
 
 | 类型  | 说明  |
 | ----- | ----- |
-| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取到的USB凭据详情的结果。 |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取到的USB Key证书凭据详情的结果，返回值为[CMResult](#cmresult)对象中的credentialDetailList属性。 |
 
 **错误码：**
 
