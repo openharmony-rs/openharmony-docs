@@ -190,7 +190,7 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
-import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import DistributedExtensionAbility from '@ohos.application.DistributedExtensionAbility';
 
 export default class DistributedExtension extends DistributedExtensionAbility {
 
