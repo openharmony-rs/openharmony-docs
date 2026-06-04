@@ -854,6 +854,137 @@ focusBox(style: FocusBoxStyle): T
 | -------- | -------- |
 | T | 返回安全控件的属性。 |
 
+## fallbackLineSpacing
+
+fallbackLineSpacing(enabled: boolean): T
+
+针对多行文字叠加，支持行高基于文字实际高度自适应。
+
+fallbackLineSpacing属性和[RichEditorTextStyle](ts-basic-components-richeditor.md#richeditortextstyle)的lineHeight属性强相关。当设置的 lineHeight 值小于文本在当前字号下的实际渲染高度时，将根据fallbackLineSpacing 属性值来确定行高是否要基于文字实际高度自适应。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| enabled | boolean | 是   | 行高是否基于文字实际高度自适应。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回安全控件的属性。 |
+
+## accessibilityRole 
+
+accessibilityRole(role: SecurityComponentRoleType): T
+
+设置无障碍组件类型，特定组件类型有特定的朗读方式，可以根据应用诉求，修改组件类型，用于控制无障碍模式下对组件的朗读方式和朗读内容。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                                                         |
+| -------- | ------- | ---- | ------------------------------------------------------------ |
+| role | [SecurityComponentRoleType](#securitycomponentroletype) | 是   | 屏幕朗读播报的组件类型，如按钮、图表。具体类型可由开发者自定义。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前对象。 |
+
+## accessibilityDefaultFocus
+
+accessibilityDefaultFocus(focus: boolean): T
+
+设置页面的屏幕朗读初始焦点，用于指定页面加载后屏幕朗读首次播报的焦点组件。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| focus  | boolean | 是   | 为页面设置屏幕朗读初始焦点。值为true则表示该组件为当前页默认首焦点，值为false或其他值无效。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前对象。 |
+
+## accessibilityNextFocusId
+
+accessibilityNextFocusId(nextId: string): T
+
+支持在屏幕朗读过程中，指定朗读的下一个焦点组件。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| nextId | string | 是   | 下一个被指定聚焦组件的[唯一标识id](ts-universal-attributes-component-id.md#id)。若唯一标识id无对应组件，则设置无效。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前对象。 |
+
+## accessibilityDescription
+
+accessibilityDescription(description: string | Resource): T
+
+该属性用于为控件提供无障碍描述。开发人员可通过设置详细的文字说明，帮助用户理解组件的功能及即将执行的操作。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| description  | string \| [Resource](ts-types.md#resource) | 是   | 控件的无障碍说明。用于补充组件的详细操作解释，帮助用户理解当前操作的具体内容及其潜在后果。控件被选中时，若组件同时包含文本属性和无障碍说明，优先播报文本内容，再播报无障碍说明。该参数的默认值为空字符串。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前对象。 |
 
 
 ## SecurityComponentLayoutDirection
@@ -893,6 +1024,23 @@ focusBox(style: FocusBoxStyle): T
 | Capsule | 1 | 胶囊型按钮（圆角半径为高度的一半）。 |
 | Circle  | 2 | 圆形按钮。              |
 | ROUNDED_RECTANGLE<sup>16+</sup> | 8 | 圆角矩形按钮（默认值：圆角半径大小20vp）。 |
+
+## SecurityComponentRoleType 
+
+定义组件的屏幕朗读功能角色类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值  | 说明             |
+| ---- | ---- | ------------------ |
+| ROLE_NONE | 0 | NULL。 |
+| BUTTON | 1 | 按钮。 |
 
 ## 示例
 
@@ -1443,3 +1591,47 @@ struct Index {
 ```
 
 ![security_component_focus_box.gif](figures/security_component_focus_box.gif)
+
+### 示例5
+
+设置安全控件是否支持文字实际高度自适应及屏幕朗读模式下相关表现。
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column({ space: 10 }) {
+        // 设置保存控件的fallbackLineSpacing为true。
+        SaveButton()
+          .fallbackLineSpacing(true)
+          .id('btn1')
+
+        // 设置该保存控件为页面设置屏幕朗读初始焦点。
+        SaveButton()
+          .accessibilityDefaultFocus(true)
+          .id('btn2')
+
+        // 指定屏幕朗读扫动走焦过程中该保存控件的下一个焦点为btn1。
+        SaveButton()
+          .accessibilityDefaultFocus(true)
+          .id('btn3')
+          .accessibilityNextFocusId('btn1')
+
+        // 指定该保存控件的无障碍组件类型为null。
+        SaveButton()
+          .accessibilityRole(SecurityComponentRoleType.ROLE_NONE)
+          .id('btn4')
+
+        // 指定该保存控件的无障碍组件描述为测试文本。
+        SaveButton()
+          .accessibilityDescription("test text for description")
+          .id('btn5')
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
