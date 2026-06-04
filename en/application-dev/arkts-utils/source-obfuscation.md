@@ -92,7 +92,7 @@ You should be aware of these differences and use unique names to achieve better 
 
 Similar to other source code obfuscation tools, ArkGuard increases reverse engineering difficulty but cannot prevent it entirely.
 
-You should not rely solely on ArkGuard for security. For higher security requirements, consider [application encryption](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/code-protect) and hardening measures.
+You should not rely solely on ArkGuard for security. For higher security requirements, consider application encryption and hardening measures.
 
 ## Obfuscation Mechanism and Process
 
