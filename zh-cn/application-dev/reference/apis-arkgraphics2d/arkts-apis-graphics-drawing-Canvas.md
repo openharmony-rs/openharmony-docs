@@ -2,7 +2,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -2088,7 +2088,7 @@ ArkTS-Sta: drawTextBlob(blob: TextBlob, x: double, y: double): void
 | x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double             | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。 |
 | y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double             | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。 |
 
-![zh-ch_image_Text_Blob.png](figures/zh-ch_image_Text_Blob.png)
+![Text-Blob.png](figures/Text-Blob.png)
 
 **错误码：**
 
@@ -2166,7 +2166,7 @@ ArkTS-Sta: drawSingleCharacter(text: string, font: Font, x: double, y: double): 
 | x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。 |
 | y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。 |
 
-![zh-ch_image_Text_Blob.png](figures/zh-ch_image_Text_Blob.png)
+![Text-Blob.png](figures/Text-Blob.png)
 
 **错误码：**
 

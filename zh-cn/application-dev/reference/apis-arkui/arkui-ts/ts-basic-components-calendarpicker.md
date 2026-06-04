@@ -56,15 +56,17 @@ edgeAlign(alignType: CalendarAlign, offset?: Offset)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[edgeAlign<sup>23+</sup>](#edgealign23)。
-
 **ArkTS-Dyn起始版本：** 10
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[edgeAlign<sup>23+</sup>](#edgealign23)。
 
 **参数：**
 
@@ -80,6 +82,8 @@ edgeAlign(alignType: Optional\<CalendarAlign>, offset?: Offset)
 设置选择器与入口组件的对齐方式。与[edgeAlign](#edgealign)相比，alignType参数新增了对undefined类型的支持。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +108,8 @@ edgeAlign(alignType: CalendarAlign | undefined, offset?: Offset)
 
 设置选择器与入口组件的对齐方式。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -127,15 +133,17 @@ textStyle(value: PickerTextStyle)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle<sup>23+</sup>](#textstyle23)。
-
 **ArkTS-Dyn起始版本：** 10
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle<sup>23+</sup>](#textstyle23)。
 
 **参数：**
 
@@ -150,6 +158,8 @@ textStyle(style: Optional\<PickerTextStyle>)
 入口区的文本颜色、字号、字体粗细。与[textStyle](#textstyle)相比，style参数新增了对undefined类型的支持。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,6 +183,8 @@ textStyle(value: PickerTextStyle | undefined)
 
 入口区的文本颜色、字号、字体粗细。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -194,6 +206,8 @@ markToday(enabled: boolean)
 设置日历选择器中系统当前日期是否保持高亮显示。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -217,6 +231,8 @@ markToday(enabled: boolean | undefined)
 
 设置日历选择器中系统当前日期是否保持高亮显示。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -236,6 +252,8 @@ markToday(enabled: boolean | undefined)
 attributeModifier(modifier: AttributeModifier\<CalendarPickerAttribute> | AttributeModifier\<CommonMethod> | undefined)
 
 设置属性修改器。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -261,15 +279,17 @@ onChange(callback: Callback\<Date>)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
-
 **ArkTS-Dyn起始版本：** 10
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
 
 **参数：**
 
@@ -288,6 +308,8 @@ onChange(callback: Optional\<Callback\<Date>>)
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -311,6 +333,8 @@ onChange(callback: Callback\<Date> | undefined)
 
 选择日期时触发该事件。不能通过双向绑定的状态变量触发。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -325,11 +349,13 @@ onChange(callback: Callback\<Date> | undefined)
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | [Callback](ts-types.md#callback12)\<Date> \| undefined | 是   | 选中的日期值。<br>当callback的值为undefined时，不使用回调函数。 |
 
-##  CalendarOptions对象说明
+## CalendarOptions对象说明
 
 日历选择器组件的参数说明。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -359,6 +385,8 @@ onChange(callback: Callback\<Date> | undefined)
 对齐方式类型。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,7 +1,7 @@
 # @ohos.graphics.text (文本模块)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -1307,6 +1307,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | fontStyle     | [FontStyle](#fontstyle)                              | 否 | 是 | 字体样式，默认为常规样式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
 | baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
 | fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| fontTypefaces | Array\<[drawing.Typeface](arkts-apis-graphics-drawing-Typeface.md)> | 否 | 是 | 指定排版字体对象数组，用于优先使用指定的字体对象进行文本塑形，跳过字体匹配流程。当数组中某个字体对象无法塑形部分文字时，未能塑形的文字将使用系统字体进行塑形。默认为空数组，表示不指定字体对象，使用默认字体匹配流程。<br/>当fontTypefaces与[fontFamilies](#textstyle)同时设置时，fontTypefaces优先级更高。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 | fontSize      | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 否 | 是 | 字体大小，浮点数，默认为14.0，单位为px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
 | letterSpacing | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 否 | 是 | 字符间距，正数拉开字符距离，若是负数则拉近字符距离，浮点数，默认为0.0，单位为物理像素px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
 | wordSpacing   | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 否 | 是 | 单词间距，浮点数，默认为0.0，单位为px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                 |
@@ -2360,13 +2361,13 @@ struct Index {
 | CENTER_OF_ROW_BOX   | 5 | 居中对齐。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
 | FOLLOW_PARAGRAPH<sup>20+</sup> | 6 | 跟随文本排版对齐。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
 
-![zh-ch_image_PlaceholderAlignment.png](figures/zh-ch_image_PlaceholderAlignment.png)
+![PlaceholderAlignment.png](figures/PlaceholderAlignment.png)
 
 > **说明：**
 >
 > 示意图展示了后三种对齐方式，前三种对齐方式类似，比较位置是文本基线，即绿色线条部分。
 >
->![zh-ch_image_Baseline.png](figures/zh-ch_image_Baseline.png)
+>![Baseline.png](figures/Baseline.png)
 
 ## PlaceholderSpan
 
@@ -2669,7 +2670,7 @@ struct Index {
 >
 >示意图展示了点击按钮后layout接口示例代码的运行结果。
 >
->![zh-ch_image_layout.png](figures/zh-ch_image_layout.png)
+>![layout.png](figures/layout.png)
 
 ### layoutWithConstraints<sup>24+</sup>
 
@@ -5254,15 +5255,15 @@ struct Index {
 >
 >示意图展示了ascent、descent、leading、top、baseline、bottom、next line top的含义。width为文本行排版包括左右空格的宽度。ascent为文本行上升高度最高点，descent为文本行下降高度最低点，leading为文本行间距，top为文本行的最高点，baseline为字符基线，bottom为文本行的最低点，next line top为下一个文本行的最高点。
 >
->![zh-ch_image_Typographic.png](figures/zh-ch_image_Typographic.png)
+>![Typographic.png](figures/Typographic.png)
 >
 >示意图展示了字符串为" a b "的排版边界。
 >
->![zh-ch_image_TypographicBounds.png](figures/zh-ch_image_TypographicBounds.png)
+>![TypographicBounds.png](figures/TypographicBounds.png)
 >
 >示意图展示了字符串为"j"或"E"的排版边界。
 >
->![zh-ch_image_TypographicBounds_Character.png](figures/zh-ch_image_TypographicBounds_Character.png)
+>![TypographicBounds-Character.png](figures/TypographicBounds-Character.png)
 
 ## CaretOffsetsCallback<sup>18+</sup>
 
@@ -5619,11 +5620,11 @@ getTypographicBounds(): TypographicBounds
 >
 >示意图展示了字符串为" a b "的排版边界。
 >
->![zh-ch_image_TypographicBounds.png](figures/zh-ch_image_TypographicBounds.png)
+>![TypographicBounds.png](figures/TypographicBounds.png)
 >
 >示意图展示了字符串为"j"或"E"的排版边界。
 >
->![zh-ch_image_TypographicBounds_Character.png](figures/zh-ch_image_TypographicBounds_Character.png)
+>![TypographicBounds-Character.png](figures/TypographicBounds-Character.png)
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -5656,11 +5657,11 @@ getImageBounds(): common2D.Rect
 >
 >示意图展示了字符串为" a b "的图像边界。
 >
->![zh-ch_image_ImageBounds.png](figures/zh-ch_image_ImageBounds.png)
+>![ImageBounds.png](figures/ImageBounds.png)
 >
 >示意图展示了字符串为"j"或"E"的图像边界。
 >
->![zh-ch_image_ImageBounds_Character.png](figures/zh-ch_image_ImageBounds_Character.png)
+>![ImageBounds-Character.png](figures/ImageBounds-Character.png)
 
 
 **系统能力**：SystemCapability.Graphics.Drawing
@@ -6457,11 +6458,11 @@ getImageBounds(): common2D.Rect
 >
 >示意图展示了字符串为" a b "的图像边界。
 >
->![zh-ch_image_ImageBounds.png](figures/zh-ch_image_ImageBounds.png)
+>![ImageBounds.png](figures/ImageBounds.png)
 >
 >示意图展示了字符串为"j"或"E"的图像边界。
 >
->![zh-ch_image_ImageBounds_Character.png](figures/zh-ch_image_ImageBounds_Character.png)
+>![ImageBounds-Character.png](figures/ImageBounds-Character.png)
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -6493,11 +6494,11 @@ getTypographicBounds(): TypographicBounds
 >
 >示意图展示了字符串为" a b "的排版边界。
 >
->![zh-ch_image_TypographicBounds.png](figures/zh-ch_image_TypographicBounds.png)
+>![TypographicBounds.png](figures/TypographicBounds.png)
 >
 >示意图展示了字符串为"j"或"E"的排版边界。
 >
->![zh-ch_image_TypographicBounds_Character.png](figures/zh-ch_image_TypographicBounds_Character.png)
+>![TypographicBounds-Character.png](figures/TypographicBounds-Character.png)
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -6745,15 +6746,15 @@ struct Index {
 
 alignment为CENTER，location为200，文本为"12/t345"：
 
-![zh-ch_image_AlignmentCenter.png](figures/zh-ch_image_AlignmentCenter.png)
+![AlignmentCenter.png](figures/AlignmentCenter.png)
 
 alignment为LEFT，location为100，文本为"abccccccccc/tdef"：
 
-![zh-ch_image_AlignmentLeft.png](figures/zh-ch_image_AlignmentLeft.png)
+![AlignmentLeft.png](figures/AlignmentLeft.png)
 
 alignment为RIGHT，location为100，文本为"aabcdef/tg hi/tjkl/tmno/tp qr"：
 
-![zh-ch_image_AlignmentRight.png](figures/zh-ch_image_AlignmentRight.png)
+![AlignmentRight.png](figures/AlignmentRight.png)
 
 ## SystemFontType<sup>14+</sup>
 

@@ -15,7 +15,7 @@
 > 本模块接口仅可在Stage模型下使用。  
 > 本模块接口为系统接口。
 
-##  属性
+## CustomData
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 

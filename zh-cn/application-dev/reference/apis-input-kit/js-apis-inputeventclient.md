@@ -155,6 +155,8 @@ createTouchController(): Promise&lt;TouchController&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+
 **返回值：**
 
 | 类型                   | 说明       |
@@ -728,6 +730,8 @@ touchDown(touch: TouchPoint): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -820,6 +824,8 @@ touchMove(touch: TouchPoint): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -861,6 +867,8 @@ touchUp(touch: TouchPoint): Promise&lt;void&gt;
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 

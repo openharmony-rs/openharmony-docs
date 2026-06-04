@@ -211,6 +211,8 @@ ArkTS-Sta: scrollSnap(value: ScrollSnapOptions | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -244,7 +246,7 @@ ArkTS-Sta: edgeEffect(edgeEffect: EdgeEffect | undefined, options?: EdgeEffectOp
 | 参数名                | 类型                                              | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | edgeEffect            | ArkTS-Dyn: [EdgeEffect](ts-appendix-enums.md#edgeeffect)<br/>ArkTS-Sta: [EdgeEffect](ts-appendix-enums.md#edgeeffect) \| undefined     | 是   | Scroll组件的边缘滑动效果，支持弹簧效果和阴影效果。<br/>默认值：EdgeEffect.None<br/>取值为undefined时，按默认值处理。 |
-| options<sup>11+</sup> | ArkTS-Dyn: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明)<br/>ArkTS-Sta: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明) \| undefined | 否   | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：{ alwaysEnabled: true }<br/>取值为undefined时，按默认值处理。 |
+| options<sup>11+</sup> | ArkTS-Dyn: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明)<br/>ArkTS-Sta: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明) \| undefined | 否   | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：{ alwaysEnabled: true }<br/>取值为undefined时，按默认值处理。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### enableScrollInteraction<sup>10+</sup>
 
@@ -255,6 +257,8 @@ ArkTS-Sta: enableScrollInteraction(value: boolean | undefined)
 设置是否支持滚动手势。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -282,6 +286,8 @@ ArkTS-Sta: nestedScroll(value: NestedScrollOptions | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -303,6 +309,8 @@ ArkTS-Sta: friction(value: double | Resource | undefined)
 设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -326,6 +334,8 @@ ArkTS-Sta: enablePaging(value: boolean | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -347,6 +357,8 @@ ArkTS-Sta: initialOffset(value: OffsetOptions | undefined)
 设置初始滚动偏移量。只在首次布局时生效，后续动态修改该属性值不生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -388,6 +400,8 @@ ArkTS-Sta: maxZoomScale(scale: double | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
@@ -409,6 +423,8 @@ ArkTS-Sta: minZoomScale(scale: double | undefined)
 设置Scroll组件内容的最小手势缩放比例。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -460,6 +476,8 @@ ArkTS-Sta: enableBouncesZoom(enable: boolean | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
@@ -484,7 +502,7 @@ ArkTS-Sta: enableBouncesZoom(enable: boolean | undefined)
 | Horizontal | 1  | 仅支持水平方向滚动。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
 | Free<sup>(deprecated) </sup> | 2 | 支持竖直或水平方向滚动。<br/> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用FREE替代。FREE枚举值从API version 20开始支持。|
 | None       | ArkTS-Dyn: 3<br/>ArkTS-Sta: 2 | 不可滚动。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
-| FREE<sup>20+</sup>   | 4 | 自由滚动。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 24 |
+| FREE<sup>20+</sup>   | 4 | 自由滚动。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 24 |
 
 FREE（自由滚动）模式下支持的能力：
 
@@ -512,6 +530,8 @@ FREE（自由滚动）模式下支持的能力：
 限位滚动模式对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -628,6 +648,8 @@ ArkTS-Sta: onWillScroll(handler: ScrollOnWillScrollCallback | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -659,6 +681,8 @@ ArkTS-Sta: onDidScroll(handler: ScrollOnScrollCallback | undefined)
 3、越界回弹。 
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -784,6 +808,8 @@ ArkTS-Sta: onDidZoom(event: ScrollOnDidZoomCallback | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
@@ -805,6 +831,8 @@ ArkTS-Sta: onZoomStart(event: VoidCallback | undefined)
 手势缩放开始触发。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -828,6 +856,8 @@ ArkTS-Sta: onZoomStop(event: VoidCallback | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
@@ -849,6 +879,8 @@ ArkTS-Sta: type ScrollOnScrollCallback = (xOffset: double, yOffset: double, scro
 Scroll滚动时触发的回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -877,6 +909,8 @@ ArkTS-Sta: type ScrollOnWillScrollCallback = (xOffset: double, yOffset: double, 
 Scroll滚动前触发的回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -907,6 +941,8 @@ type OnScrollEdgeCallback = (side: Edge) => void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 18
@@ -928,6 +964,8 @@ ArkTS-Sta: type OnScrollFrameBeginCallback = (offset: double, state: ScrollState
 Scroll每帧滚动前触发的回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -958,6 +996,8 @@ Scroll每帧滚动前触发的回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 类型  | 只读 | 可选 | 说明  |
@@ -973,6 +1013,8 @@ ArkTS-Sta: type ScrollOnDidZoomCallback = (scale: double) => void
 Scroll每帧缩放完成时触发的回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1026,6 +1068,18 @@ ArkTS-Sta: scrollTo(options: ScrollOptions): void
 
 滑动到指定位置。
 
+>  **说明：**
+>
+> - scrollTo动画速度大于200vp/s时，滚动组件区域内的组件不响应点击事件。
+>
+> - 各组件行为存在差异：
+>
+>   - [ArcList](ts-container-arclist.md)和[List](ts-container-list.md)组件会对所有经过的item进行加载和布局。
+>
+>   - Grid组件和[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的[WaterFlow](ts-container-waterflow.md)组件在跳转距离较大（大于2倍组件主轴高度）时，会直接估算出要显示的item。
+>
+>   - [ALWAYS_TOP_DOWN](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的WaterFlow组件向后跳转（即dx或dy为正值时）会加载和布局所有经过的item，向前跳转（即dx或dy为负值时）会直接跳转到对应位置。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1039,11 +1093,6 @@ ArkTS-Sta: scrollTo(options: ScrollOptions): void
 | 参数名   | 类型 | 必填   | 说明      |
 | ----- | ---- | ---- | --------- |
 | options | [ScrollOptions](#scrolloptions18对象说明) | 是    | 滑动到指定位置的参数。 |
-
->  **说明：**
->
-> ScrollTo动画速度大于200vp/s时，滚动组件区域内的组件不响应点击事件。
->
 
 ### scrollEdge
 
@@ -1068,7 +1117,7 @@ Scroll组件默认有动画，Grid、List、WaterFlow组件默认无动画。
 | 参数名   | 类型 | 必填   | 说明      |
 | ----- | ---- | ---- | --------- |
 | value | [Edge](ts-appendix-enums.md#edge) | 是    | 滚动到的边缘位置。|
-| options<sup>12+</sup>&nbsp; | [ScrollEdgeOptions](#scrolledgeoptions12对象说明) | 否    | 设置滚动到边缘位置的模式。 |
+| options<sup>12+</sup>&nbsp; | [ScrollEdgeOptions](#scrolledgeoptions12对象说明) | 否    | 设置滚动到边缘位置的模式。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### fling<sup>12+</sup>
 
@@ -1079,6 +1128,8 @@ ArkTS-Sta: fling(velocity: double): void
 滚动类组件根据传入的初始速度进行惯性滚动。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1170,7 +1221,7 @@ ArkTS-Sta: currentOffset() : OffsetResult | undefined
 
 | 类型  | 说明 |
 | -------- | -------- |
-|  ArkTS-Dyn: [OffsetResult<sup>11+</sup>](#offsetresult11对象说明)<br/>ArkTS-Sta: [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) \| undefined | 返回当前的滚动总偏移量。<br/>**说明：**<br/>当scroller控制器未绑定容器组件或者容器组件被异常释放时，currentOffset的返回值为空。|
+|  ArkTS-Dyn: [OffsetResult<sup>11+</sup>](#offsetresult11对象说明)<br/>ArkTS-Sta: [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) \| undefined | 返回当前的滚动总偏移量。<br/>**说明：**<br/>当scroller控制器未绑定容器组件或者容器组件被异常释放时，currentOffset的返回值为空。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### offset<sup>23+</sup>
 
@@ -1179,6 +1230,8 @@ offset(): OffsetResult | undefined
 获取当前的滚动总偏移量。除接口声明有undefined以外，其他与[currentOffset](#currentoffset)接口保持一致。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1229,7 +1282,7 @@ ArkTS-Sta: scrollToIndex(value: int, smooth?: boolean, align?: ScrollAlign, opti
 | value | ArkTS-Dyn: number<br/> ArkTS-Sta: int   | 是   | 要滑动到的目标元素在当前容器中的索引值。      <br/>**说明：** <br/>value值设置成负值或者大于当前容器子组件的最大索引值，视为异常值，本次跳转不生效。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23                     |
 | smooth | boolean  | 否   | 设置滑动到列表项在列表中的索引值时是否有动效，true表示有动效，false表示没有动效。<br/>默认值：false。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23|
 | align | [ScrollAlign](#scrollalign10枚举说明)  | 否   | 指定滑动到的元素与当前容器的对齐方式。<br/>List中的默认值为：ScrollAlign.START。Grid中默认值为：ScrollAlign.AUTO。WaterFlow中的默认值为：ScrollAlign.START。<br/>**说明：** <br/>仅List、Grid、WaterFlow组件支持该参数。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
-| options<sup>12+</sup> | [ScrollToIndexOptions](#scrolltoindexoptions12对象说明)  | 否   | 设置滑动到指定Index的选项，如额外偏移量。<br/>默认值：0，单位：vp。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| options<sup>12+</sup> | [ScrollToIndexOptions](#scrolltoindexoptions12对象说明)  | 否   | 设置滑动到指定Index的选项，如额外偏移量。<br/>默认值：0，单位：vp。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ### scrollBy<sup>9+</sup>
 
@@ -1239,11 +1292,21 @@ ArkTS-Sta: scrollBy(dx: Length, dy: Length): void
 
 滑动指定距离。
 
->  **说明：**
+> **说明：**
 >
->  支持ArcList、Scroll、List、Grid、WaterFlow组件。
+> - 支持ArcList、Scroll、List、Grid、WaterFlow组件。
+>
+> - 各组件行为存在差异：
+>
+>   - [ArcList](ts-container-arclist.md)和[List](ts-container-list.md)组件会对所有经过的item进行加载和布局。
+>
+>   - Grid组件和[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的WaterFlow组件在跳转距离较大（大于2倍组件主轴高度）时，会直接估算出要显示的item。
+>
+>   - [ALWAYS_TOP_DOWN](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的WaterFlow组件向后跳转（即dx或dy为正值时）会加载和布局所有经过的item，向前跳转（即dx或dy为负值时）会直接跳转到对应位置。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1296,6 +1359,8 @@ ArkTS-Sta: getItemRect(index: int): RectResult
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -1340,6 +1405,8 @@ ArkTS-Sta: getItemIndex(x: double, y: double): int
 >  支持List、Grid、WaterFlow组件。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1395,6 +1462,8 @@ contentSize(): SizeResult
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 22
@@ -1423,6 +1492,8 @@ getFrameNode(): FrameNode | undefined
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -1438,6 +1509,8 @@ getFrameNode(): FrameNode | undefined
 滑动偏移量对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1456,6 +1529,8 @@ getFrameNode(): FrameNode | undefined
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1473,6 +1548,8 @@ getFrameNode(): FrameNode | undefined
 对齐方式枚举。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1493,6 +1570,8 @@ getFrameNode(): FrameNode | undefined
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1508,6 +1587,8 @@ getFrameNode(): FrameNode | undefined
 翻页模式的参数选项。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1526,6 +1607,8 @@ getFrameNode(): FrameNode | undefined
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1542,6 +1625,8 @@ getFrameNode(): FrameNode | undefined
 滚动到边缘位置的参数选项。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1563,6 +1648,8 @@ getFrameNode(): FrameNode | undefined
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 类型                                                     | 只读 | 可选 | 说明                                                     |
@@ -1573,7 +1660,7 @@ getFrameNode(): FrameNode | undefined
 | canOverScroll<sup>20+</sup>   | boolean                                   | 否   | 是 | 滚动目标位置是否可以超出边界停留。仅当组件的edgeEffect设置为EdgeEffect.Spring时，滚动能够越界停留。<br/>设置为true时滚动可以在过界后停留，设置为false时滚动无法在过界后停留。<br/>默认值：false <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 24|
 
 ## UIScrollEvent<sup>19+</sup>
-frameNode中[getEvent('Scroll')](../js-apis-arkui-frameNode.md#geteventscroll19)方法的返回值，可用于给Scroll节点设置滚动事件。
+typeNode中[getEvent('Scroll')](../js-apis-arkui-typeNode.md#geteventscroll19)方法的返回值，可用于给Scroll节点设置滚动事件。
 
 UIScrollEvent继承于[UIScrollableCommonEvent](./ts-container-scrollable-common.md#uiscrollablecommonevent19)。
 
@@ -1586,6 +1673,8 @@ setOnWillScroll(callback:  ScrollOnWillScrollCallback | undefined): void
 方法入参为undefined时，会重置事件回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1608,6 +1697,8 @@ setOnDidScroll(callback: ScrollOnScrollCallback | undefined): void
 方法入参为undefined时，会重置事件回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2345,7 +2436,7 @@ struct ScrollExample1 {
 
 ### 示例13（设置滚动事件）
 
-该示例通过FrameNode中的[getEvent('Scroll')](../js-apis-arkui-frameNode.md#geteventscroll19)获取[UIScrollEvent](#uiscrollevent19)，并为Scroll设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
+该示例通过typeNode中的[getEvent('Scroll')](../js-apis-arkui-typeNode.md#geteventscroll19)获取[UIScrollEvent](#uiscrollevent19)，并为Scroll设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
 
 从API version 19开始，新增UIScrollEvent接口。
 

@@ -102,3 +102,21 @@ import { bundleManager } from '@kit.AbilityKit';
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | bundleName | string         | 是   | 否   | 应用的bundleName。          |
 | appIndex | number | 是   | 否   | 应用包的分身索引信息。 |
+
+## AlternateIconInfo
+
+描述应用备用图标信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称      | 类型           | 只读 | 可选 | 说明                        |
+| --------- | --------------| ---- | ---- | ---------------------------|
+| iconName | string         | 是   | 否   | 备用图标的名称。         |
+| iconId   | ArkTS-Dyn: number<br>ArkTS-Sta: long        | 是   | 否   | 备用图标的资源id，是编译构建时根据应用配置的icon自动生成的资源id。      |
+| enabled  | boolean        | 是   | 否   | 备用图标是否启用。<br/>true：表示当前备用图标启用。<br/>false：表示当前备用图标未启用。<br/>**说明：** 应用最多只能启用一个备用图标。       |

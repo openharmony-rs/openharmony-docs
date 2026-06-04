@@ -10,15 +10,17 @@
 
 UIExtensionAbility组件是带界面的ExtensionAbility组件，继承自[ExtensionAbility](js-apis-app-ability-extensionAbility.md)，提供了组件创建、销毁、前后台切换等基础生命周期。和UIAbility组件不同，UIExtensionAbility组件不会作为单独的任务在任务视图中体现。UIExtensionAbility组件被宿主窗口启动，该组件的前后台切换状态、以及是否可见均跟随宿主窗口。
 
-开发者不可以直接继承UIExtensionAbility组件，但可以根据实际业务场景选择使用继承自UIExtensionAbility组件的其他组件。例如，开发者处理其他应用分享的数据时，可以使用[ShareExtensionAbility组件](./js-apis-app-ability-shareExtensionAbility.md)；开发者提供卡片编辑功能时，可以使用[FormEditExtensionAbility组件](../apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)。
+开发者不可以直接继承UIExtensionAbility组件，但可以根据实际业务场景选择使用继承自UIExtensionAbility组件的其他组件。例如，开发者处理其他应用分享的数据时，可以使用[@ohos.app.ability.ShareExtensionAbility (支持分享详情页接入的ExtensionAbility组件)](./js-apis-app-ability-shareExtensionAbility.md)；开发者提供卡片编辑功能时，可以使用[@ohos.app.form.FormEditExtensionAbility (FormEditExtensionAbility)](../apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)。
 
 各类Ability组件的继承关系详见[继承关系说明](./js-apis-app-ability-ability.md#ability的继承关系说明)。
 
 > **说明：**
 >
-> 本模块首批接口从API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块首批接口从API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -34,6 +36,10 @@ import { UIExtensionAbility } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | context | [UIExtensionContext](js-apis-inner-application-uiExtensionContext.md) | 否 | 否 | UIExtensionAbility组件的上下文。 |
@@ -45,6 +51,10 @@ onCreate(launchParam: AbilityConstant.LaunchParam): void
 当UIExtensionAbility组件实例完成创建时，系统会触发该回调。开发者可在该回调中执行初始化逻辑（如定义变量、加载资源等）。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -74,6 +84,10 @@ onSessionCreate(want: Want, session: UIExtensionContentSession): void
 当[UIExtensionContentSession](js-apis-app-ability-uiExtensionContentSession.md)实例创建完成后，系统会触发该回调。开发者可在该回调中通过UIExtensionContentSession实例加载页面。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -113,6 +127,10 @@ onSessionDestroy(session: UIExtensionContentSession): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -142,6 +160,10 @@ onForeground(): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 ```ts
@@ -164,6 +186,10 @@ onBackground(): void
 当UIExtensionAbility组件从前台转入到后台时，系统触发该回调。开发者可在该回调中实现UI不可见时的资源释放操作。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -189,6 +215,10 @@ onDestroy(): void | Promise&lt;void&gt;
 在执行完onDestroy生命周期回调后，应用可能会退出，从而可能导致onDestroy中的异步函数未能正确执行，比如异步写入数据库。推荐使用Promise异步回调，避免因应用退出导致onDestroy中的异步函数（比如异步写入数据库）未能正确执行。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
 
 **返回值：**
 
@@ -237,3 +267,40 @@ onDestroy(): void | Promise&lt;void&gt;
     }
   }
   ```
+
+### onDestroy<sup>23+</sup>
+
+onDestroy(): Promise\<void> | undefined
+
+UIExtensionAbility生命周期回调，在销毁时回调，执行资源清理等操作。
+
+在执行完onDestroy生命周期回调后，应用可能会退出，从而可能导致onDestroy中的异步函数未能正确执行，比如异步写入数据库。可以使用异步生命周期，以确保异步onDestroy完成后再继续后续的生命周期。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型                        | 说明                                 |
+| --------------------------- | ------------------------------------ |
+| Promise\<void> \| undefined | 以Promise形式返回或返回未定义。 |
+
+**示例：**
+
+```ts
+// ArkTS-Sta示例
+// UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
+import { ShareExtensionAbility } from '@kit.AbilityKit';
+
+const TAG: string = '[testTag] ShareExtAbility';
+
+export default class ShareExtAbility extends ShareExtensionAbility {
+  onDestroy(): Promise<void> | undefined {
+    console.info(TAG, `onDestroy`);
+    return undefined;
+  }
+}
+```

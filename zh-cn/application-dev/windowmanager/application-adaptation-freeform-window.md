@@ -407,7 +407,7 @@
         this.topAreaHeight = this.mainWindow.getWindowDecorHeight();
         this.mainWindow.on("windowSizeChange", (data) => {
           this.windowSize = data;
-          this.topAreaWidth = px2vp(this.windowSize.width) - this.titleButtonRect.width;
+          this.topAreaWidth = this.getUIContext().px2vp(this.windowSize.width) - this.titleButtonRect.width;
         })
       }
 
@@ -420,7 +420,7 @@
           this.windowSize.width = WindowProperties.drawableRect.width;
           this.titleButtonRect = this.mainWindow.getTitleButtonRect();
           this.topAreaHeight = this.titleButtonRect.height;
-          this.topAreaWidth = px2vp(this.windowSize.width) - this.titleButtonRect.width;
+          this.topAreaWidth = this.getUIContext().px2vp(this.windowSize.width) - this.titleButtonRect.width;
           console.info(`titleButtonRect: ${JSON.stringify(this.titleButtonRect)}`);
         } catch (exception) {
           console.error(`Failed to get the area of title buttons. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -490,7 +490,7 @@
 
 ## 自由窗口状态下窗口进入全屏显示
 
-在2in1设备或开启电脑模式的Tablet设备上，点击窗口最大化按钮，窗口默认以最大化显示，且不会自动隐藏标题栏、Dock栏。如果应用需要进入沉浸式全屏显示，隐藏标题栏、Dock栏，则需要进行适配。
+在PC/2in1设备或开启电脑模式的Tablet设备上，点击窗口最大化按钮，窗口默认以最大化显示，且不会自动隐藏标题栏、Dock栏。如果应用需要进入沉浸式全屏显示，隐藏标题栏、Dock栏，则需要进行适配。
 
 典型场景及对应方案如下：
 

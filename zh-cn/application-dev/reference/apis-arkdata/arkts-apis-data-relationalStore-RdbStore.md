@@ -6751,9 +6751,9 @@ if (store != undefined) {
 };
 ```
 
-## cloudSync
+## cloudSyncEx
 
-cloudSync(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
+cloudSyncEx(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
 
 主动执行端云同步，根据云同步配置信息进行同步，使用Promise异步回调。使用该接口需要实现云服务功能。
 
@@ -6821,7 +6821,7 @@ let config: relationalStore.CloudSyncConfig = {
   predicate: predicates
 };
 if (store != undefined) {
-  (store as relationalStore.RdbStore).cloudSync(config, (progressDetails: relationalStore.ProgressDetails) => {
+  (store as relationalStore.RdbStore).cloudSyncEx(config, (progressDetails: relationalStore.ProgressDetails) => {
       console.info(`progress: ${progressDetails.schedule}`);
   }).then(() => {
       console.info('cloud sync succeeded');
@@ -6857,8 +6857,8 @@ stopCloudSync(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 801       | Capability not supported because the device does not support the device-cloud capability. |
-| 14800000  | Inner error. |
+| 801       | Capability not supported because the device does not support the cloud synchronization capability. |
+| 14800000  | Internal error. |
 | 14800014  | The target instance is already closed. |
 
 **示例：**
@@ -7184,7 +7184,7 @@ on(event: 'autoSyncProgress', progress: Callback&lt;ProgressDetails&gt;): void
 | 参数名       | 类型                              | 必填 | 说明                                |
 | ------------ |---------------------------------| ---- |-----------------------------------|
 | event        | string                          | 是   | 取值为'autoSyncProgress'，表示自动同步进度通知。 |
-| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 回调函数。                             |
+| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 用于返回[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)结果的回调函数。                             |
 
 **错误码：**
 
@@ -9170,6 +9170,7 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // 示例1：使用默认的加密参数
@@ -9207,6 +9208,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // 示例2：使用自定义的加密参数
@@ -9380,6 +9382,7 @@ rekeyEx(cryptoParam: CryptoParam): Promise\<void>
 **示例1：原数据库为默认参数加密数据库，更换密钥和加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -9425,6 +9428,7 @@ export default class EntryAbility extends UIAbility {
 **示例2：原数据库为自定义参数加密数据库，更换自定义密钥和加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -9480,6 +9484,7 @@ export default class EntryAbility extends UIAbility {
 **示例3：原数据库为默认参数加密库，更换自定义密钥和加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -9526,6 +9531,7 @@ export default class EntryAbility extends UIAbility {
 **示例4：原数据库为自定义参数加密数据库，更换数据库生成密钥和自定义加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -9581,6 +9587,7 @@ export default class EntryAbility extends UIAbility {
 **示例5：原数据库为自定义参数加密数据库，更换为非加密数据库**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -9632,6 +9639,7 @@ export default class EntryAbility extends UIAbility {
 **示例6：原数据库为非加密数据库，更换为自定义参数加密数据库**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

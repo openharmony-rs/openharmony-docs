@@ -7,13 +7,13 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API 23开始，支持证书链校验时下载缺失的中间CA证书。
+从API version 23开始，支持证书链校验时下载缺失的中间CA证书。
 
 以创建X509证书链为例，完成证书链对象的创建，创建过程校验时允许下载缺失的中间证书。
 
 ## 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';

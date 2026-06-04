@@ -22,6 +22,8 @@
 
 2. 从PixelMap位图对象中获取信息。
 
+   ArkTS-Dyn示例：
+
    ```ts
    import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -33,25 +35,46 @@
    let density: number = pixelMap.getDensity();
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[pixelmap_get_pixelmap_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 获取图像像素的总字节数。
+   let pixelBytesNumber: int = this.pixelMap!.getPixelBytesNumber();
+   Logger.info('Total bytes: ', pixelBytesNumber.toString());
+   // 获取图像像素的每行字节数。
+   let rowBytes: int = this.pixelMap!.getBytesNumberPerRow();
+   Logger.info('Row bytes: ', rowBytes.toString());
+   // 获取当前图像的像素密度。像素密度是指每英寸图片所拥有的像素数量，像素密度越大，图片越精细。
+   let getDensity: int = this.pixelMap!.getDensity();
+   Logger.info('Density: ', getDensity.toString());
+   ```
+
 3. 读取并修改目标区域像素数据，写回原图。
+
    > **说明：**
+   >
    > 建议readPixelsToBuffer和writeBufferToPixels成对使用，readPixels和writePixels成对使用，避免因图像像素格式不一致，造成PixelMap图像出现异常。
+
+   ArkTS-Dyn示例：
 
    ```ts
    import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+
    // 场景一：读取并修改整张图片数据。
    // 按照PixelMap的像素格式，读取PixelMap的图像像素数据，并写入缓冲区中。
    const buffer = new ArrayBuffer(pixelBytesNumber);
    pixelMap.readPixelsToBuffer(buffer).then(() => {
      console.info('Succeeded in reading image pixel data.');
-   }).catch((error : BusinessError) => {
+   }).catch((error: BusinessError) => {
      console.error('Failed to read image pixel data. The error is: ' + error);
    })
    // 按照PixelMap的像素格式，读取缓冲区中的图像像素数据，并写入PixelMap。
    pixelMap.writeBufferToPixels(buffer).then(() => {
      console.info('Succeeded in writing image pixel data.');
-   }).catch((error : BusinessError) => {
+   }).catch((error: BusinessError) => {
      console.error('Failed to write image pixel data. The error is: ' + error);
    })
 
@@ -65,14 +88,70 @@
    }
    pixelMap.readPixels(area).then(() => {
      console.info('Succeeded in reading the image data in the area.');
-   }).catch((error : BusinessError) => {
+   }).catch((error: BusinessError) => {
      console.error('Failed to read the image data in the area. The error is: ' + error);
    })
    // 固定按照BGRA_8888格式，读取PositionArea.pixels缓冲区中的图像像素数据，并写入PixelMap指定区域内，该区域由PositionArea.region指定。
    pixelMap.writePixels(area).then(() => {
      console.info('Succeeded in writing the image data in the area.');
-   }).catch((error : BusinessError) => {
+   }).catch((error: BusinessError) => {
      console.error('Failed to write the image data in the area. The error is: ' + error);
+   })
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[pixelmap_bitmap_operation_all](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 场景一：读取并修改整张图像数据。
+   // 读取整个PixelMap的像素数据，并按照PixelMap的像素格式写入缓冲区。
+   const buffer = new ArrayBuffer(pixelBytesNumber);
+   await this.pixelMap!.readPixelsToBuffer(buffer).then(() => {
+     Logger.info('Succeeded in reading image pixel data.');
+   }).catch((error) => {
+     Logger.error('Failed to read image pixel data. The error is: ' + String(error));
+   })
+   // ...
+   // 按照PixelMap的像素格式，读取缓冲区内的图像像素数据，并将其写入整个PixelMap。
+   this.pixelMap!.writeBufferToPixels(buffer).then(() => {
+     Logger.info('Succeeded in writing image pixel data.');
+     this.updateImageInfo();
+   }).catch((error) => {
+     Logger.error('Failed to write image pixel data. The error is: ' + String(error));
+   })
+   ```
+
+   <!-- @[pixelmap_bitmap_operation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 场景二：读取并修改指定区域内的图像数据。
+   // 读取PixelMap指定区域内的像素数据，并按照BGRA_8888像素格式写入PositionArea.pixels缓冲区，该区域由PositionArea.region指定。
+   const regionWidth: int = 200;
+   const regionHeight: int = 100;
+   const area: image.PositionArea = {
+     pixels: new ArrayBuffer(regionWidth * regionHeight * 4), // BGRA_8888格式的每个像素占4字节。
+     offset: 0,
+     stride: regionWidth * 4, // 指定区域的行跨距。
+     region: {
+       x: 0,
+       y: 0,
+       size: { width: regionWidth, height: regionHeight }
+     }
+   }
+   
+   await this.pixelMap!.readPixels(area).then(() => {
+     Logger.info('Succeeded in reading the image data from the area.');
+     // ...
+   }).catch((error) => {
+     Logger.error('Failed to read the image data in the area. The error is: ' + String(error));
+   })
+   // 读取PositionArea.pixels缓冲区内的图像像素数据，并按照BGRA_8888像素格式将其写入PixelMap的指定区域，该区域由PositionArea.region指定。
+   await this.pixelMap!.writePixels(area).then(() => {
+     this.updateImageInfo();
+     Logger.info('Succeeded in writing image data into the specified area.');
+   }).catch((error) => {
+     Logger.error('Failed to write image data into the specified area. The error is: ' + String(error));
    })
    ```
 
@@ -88,6 +167,8 @@
 1. 完成[图片解码](image-decoding.md)，获取PixelMap位图对象。
 
 2. 参考以下代码对PixelMap进行深拷贝。
+
+   ArkTS-Dyn示例：
 
    ```ts
    /**
@@ -116,6 +197,43 @@
        size: imageInfo.size
      };
 
+     // 根据像素数据和初始化选项，创建新PixelMap。
+     return await image.createPixelMap(buffer, options);
+   }
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[pixelmap_clone](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   /**
+    * 复制（深拷贝）PixelMap并改变像素格式。
+    *
+    * @param pixelMap - 被复制的原PixelMap。
+    * @param desiredPixelFormat - 新PixelMap的像素格式。如果不指定，则仍使用原PixelMap的像素格式。
+    * @returns 新PixelMap的Promise。
+    */
+   async clonePixelMap(pixelMap: image.PixelMap, desiredPixelFormat?: image.PixelMapFormat): Promise<image.PixelMap> {
+     // 获取原PixelMap的图片信息。
+     const imageInfo = pixelMap.getImageInfoSync();
+     // 读取原PixelMap的像素数据，并按照原PixelMap的像素格式写入缓冲区。
+     const buffer = new ArrayBuffer(pixelMap.getPixelBytesNumber());
+     await pixelMap.readPixelsToBuffer(buffer);
+   
+     // 根据原PixelMap的图片信息，生成初始化选项。
+     const options: image.InitializationOptions = {
+       // 数据源的像素格式：必须匹配原PixelMap的像素格式，否则新PixelMap的图像会出现异常。
+       srcPixelFormat: imageInfo.pixelFormat,
+       // 新PixelMap的像素格式。
+       pixelFormat: desiredPixelFormat || imageInfo.pixelFormat,
+       // 新PixelMap的透明度类型。
+       alphaType: imageInfo.alphaType,
+       // 新PixelMap的尺寸：必须匹配原PixelMap的尺寸，不支持传入其他尺寸以进行缩放。
+       size: imageInfo.size,
+       editable: pixelMap.isEditable
+     };
+   
      // 根据像素数据和初始化选项，创建新PixelMap。
      return await image.createPixelMap(buffer, options);
    }
