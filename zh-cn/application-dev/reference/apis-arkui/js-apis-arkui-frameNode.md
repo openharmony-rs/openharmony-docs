@@ -114,19 +114,18 @@ import { FrameNode, LayoutConstraint, ExpandMode, ChildrenCountMode, typeNode, N
 
 多态样式状态枚举，用于处理多态样式。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| NORMAL | 0 | 正常状态。 |
-| PRESSED | 1 << 0 | 按下状态。 |
-| FOCUSED | 1 << 1 | 获焦状态。 |
-| DISABLED | 1 << 2 | 禁用状态。 |
-| SELECTED | 1 << 3 | 选中状态。<br/>仅特定的组件支持此状态：Checkbox、Radio、Toggle、List、Grid、MenuItem。 |
+| NORMAL | 0 | 正常状态。 <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| PRESSED | 1 << 0 | 按下状态。 <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| FOCUSED | 1 << 1 | 获焦状态。 <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| DISABLED | 1 << 2 | 禁用状态。 <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| SELECTED | 1 << 3 | 选中状态。 <br/>仅特定的组件支持此状态：Checkbox、Radio、Toggle、List、Grid、MenuItem。 <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| HOVERED | 1 << 4 | 悬浮状态。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## UIStatesChangeHandler<sup>20+</sup>
 
@@ -5359,7 +5358,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API 15 and will not be threw above API 24. [since 15 - 24] |
 
 **示例：**
 
@@ -6234,7 +6233,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'List'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24] |
 
 **示例：**
 
@@ -6939,7 +6938,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'WaterFlow'): vo
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24]|
 
 **示例：** 
 
@@ -7554,7 +7553,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Grid'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24] |
 
 **示例：** 
 
@@ -11079,6 +11078,8 @@ struct Index {
 
 ## 组件设置和删除多态样式状态示例
 
+从API版本26.0.0开始，[UIState](#uistate20)新增HOVERED枚举。
+
 ```ts
 import { NodeController, FrameNode, typeNode, UIState } from '@kit.ArkUI';
 
@@ -11086,7 +11087,7 @@ import { NodeController, FrameNode, typeNode, UIState } from '@kit.ArkUI';
 class MyNodeController extends NodeController {
   private isEnable: boolean = true;
   private theStatesToBeSupported =
-    UIState.NORMAL | UIState.PRESSED | UIState.FOCUSED | UIState.DISABLED | UIState.SELECTED;
+    UIState.NORMAL | UIState.PRESSED | UIState.FOCUSED | UIState.DISABLED | UIState.SELECTED | UIState.HOVERED;
 
   makeNode(uiContext: UIContext): FrameNode | null {
     // 创建并组织节点关系
@@ -11119,31 +11120,36 @@ class MyNodeController extends NodeController {
     // 为Text组件添加多态样式处理能力
     styleText.addSupportedUIStates(this.theStatesToBeSupported, (node: FrameNode, currentState: number) => {
       if (currentState == UIState.NORMAL) { // 判断是否normal要使用等于
-        // normal状态，刷normal的UI效果
+        // normal状态，刷新普通状态的UI效果
         console.info('Callback UIState.NORMAL')
         node.commonAttribute.backgroundColor(Color.Green)
         node.commonAttribute.borderWidth(2)
         node.commonAttribute.borderColor(Color.Black)
       }
+      if ((currentState & UIState.HOVERED) == UIState.HOVERED) {
+        // hovered状态，刷新悬浮状态的UI效果
+        console.info('Callback UIState.HOVERED')
+        node.commonAttribute.backgroundColor(Color.Blue)
+      }
       if ((currentState & UIState.PRESSED) == UIState.PRESSED) {
-        // press状态，刷press的UI效果
+        // pressed状态，刷新按压状态的UI效果
         console.info('Callback UIState.PRESSED')
         node.commonAttribute.backgroundColor(Color.Brown)
       }
       if ((currentState & UIState.FOCUSED) == UIState.FOCUSED) {
-        // focused状态，刷focused的UI效果
+        // focused状态，刷新获焦状态的UI效果
         console.info('Callback UIState.FOCUSED')
         node.commonAttribute.borderWidth(5)
         node.commonAttribute.borderColor(Color.Yellow)
       }
       if ((currentState & UIState.DISABLED) == UIState.DISABLED) {
-        // disabled状态，刷disabled的UI效果
+        // disabled状态，刷新禁用状态的UI效果
         console.info('Callback UIState.DISABLED')
         node.commonAttribute.backgroundColor(Color.Gray)
         node.commonAttribute.borderWidth(0)
       }
       if ((currentState & UIState.SELECTED) == UIState.SELECTED) {
-        // selected状态，刷selected的UI效果
+        // selected状态，刷新选中状态的UI效果
         console.info('Callback UIState.SELECTED')
         node.commonAttribute.backgroundColor(Color.Pink)
       }
@@ -11192,6 +11198,8 @@ struct FrameNodeTypeTest {
   }
 }
 ```
+
+![frameNode_stateStyles](./figures/frameNode_stateStyles.gif)
 
 ## 动画创建与取消示例
 

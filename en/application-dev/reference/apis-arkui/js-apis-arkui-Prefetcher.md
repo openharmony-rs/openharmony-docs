@@ -12,6 +12,8 @@ Used in conjunction with **LazyForEach**, the **Prefetcher** module provides con
 >
 >  - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
+>  - The APIs of this module can be used only in the stage model.
+>
 >  - The APIs of this module cannot be used in the Previewer.
 
 ## Modules to Import

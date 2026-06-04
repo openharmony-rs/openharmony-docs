@@ -48,7 +48,7 @@ The file declares the common enums and definitions of the window manager.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | Callback for frame metrics.|
+| [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | Callback for frame metrics.|
 | [typedef void (\*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfocallback) | OH_WindowManager_DensityInfoCallback | Callback for the window scale factor information.|
 
 ## Enum Description
@@ -126,7 +126,8 @@ Enumerates the window types.
 ### OH_WindowManager_FrameMetricsMeasuredCallback()
 
 ```c
-typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, OH_WindowManager_FrameMetrics* metrics)
+typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(
+    int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)
 ```
 
 **Description**

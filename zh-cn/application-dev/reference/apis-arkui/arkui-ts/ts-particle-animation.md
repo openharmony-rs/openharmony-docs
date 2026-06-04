@@ -1,8 +1,8 @@
 # 粒子动画 (Particle)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -490,7 +490,7 @@ interface Particles<
 
 | 名称    | 类型                           | 只读 | 可选 | 说明                                                                                                                     |
 | ------ | ------------------------------ | ---- | ------------------------------------------ | ----------------------------------------------------------------------------- |
-| particles<sup>10+</sup>  | Array<<br/>&nbsp;&nbsp;ParticleOptions<<br/>&nbsp;&nbsp;&nbsp;&nbsp;PARTICLE,<br/>&nbsp;&nbsp;&nbsp;&nbsp;COLOR_UPDATER,<br/>&nbsp;&nbsp;&nbsp;&nbsp;OPACITY_UPDATER,<br/>&nbsp;&nbsp;&nbsp;&nbsp;SCALE_UPDATER,<br/>&nbsp;&nbsp;&nbsp;&nbsp;ACC_SPEED_UPDATER,<br/>&nbsp;&nbsp;&nbsp;&nbsp;ACC_ANGLE_UPDATER,<br/>&nbsp;&nbsp;&nbsp;&nbsp;SPIN_UPDATER<br/>&nbsp;&nbsp;><br/>>  | 否 | 否   | 粒子动画的集合。每一个的粒子动画（[ParticleOptions](#particleoptions)）包含粒子发射，同时可配置粒子的颜色、透明度、大小、速度、加速度与旋转速度，旋转速度，详见[ParticleOptions](#particleoptions)属性说明。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| particles<sup>10+</sup>  | Array<<br/>&nbsp;&nbsp;ParticleOptions<<br/>&nbsp;&nbsp;&nbsp;&nbsp;PARTICLE,<br/>&nbsp;&nbsp;&nbsp;&nbsp;COLOR_UPDATER,<br/>&nbsp;&nbsp;&nbsp;&nbsp;OPACITY_UPDATER,<br/>&nbsp;&nbsp;&nbsp;&nbsp;SCALE_UPDATER,<br/>&nbsp;&nbsp;&nbsp;&nbsp;ACC_SPEED_UPDATER,<br/>&nbsp;&nbsp;&nbsp;&nbsp;ACC_ANGLE_UPDATER,<br/>&nbsp;&nbsp;&nbsp;&nbsp;SPIN_UPDATER<br/>&nbsp;&nbsp;><br/>>  | 否 | 否   | 粒子动画的集合。每个粒子动画（[ParticleOptions](#particleoptions)）包含粒子发射，同时可配置粒子的颜色、透明度、大小、速度、加速度与旋转速度，详见[ParticleOptions](#particleoptions)属性说明。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 
 ## VelocityOptions<sup>18+</sup>
 
@@ -612,7 +612,7 @@ interface ParticleColorUpdaterOptions<UPDATER extends ParticleUpdater> {
 | 名称    | 类型                                                | 只读 | 可选 | 说明                                                       |
 | ------ | --------------------------------------------------- | ---- | ---------- | ----------------------------------------------- |
 | type<sup>10+</sup>  | UPDATER  | 否 | 否   | 表示颜色属性变化类型。<br>默认值：type默认为 ParticleUpdater.NONE。     <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| config<sup>10+</sup>  | [ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[UPDATER]  | 否 | 否   | 颜色属性变化类型type有三类：<br>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.NONE]。 <br>2、type为ParticleUpdater.RANDOM，表示随机变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.RANDOM]。 <br>3、type为ParticleUpdater.CURVE,表示按动画曲线变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.CURVE]。 <br>**说明**：<br>当type为ParticleUpdater.RANDOM或者ParticleUpdater.CURVE时，updater中颜色配置的优先级高于range中的颜色配置。在updater配置的动画时间周期内，以updater中的颜色配置来变化；在updater配置的动画时间周期前，以range中的颜色配置来变化。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| config<sup>10+</sup>  | [ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[UPDATER]  | 否 | 否   | 颜色属性变化类型type有三类：<br>1、当type为ParticleUpdater.NONE，表示无变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.NONE]。 <br>2、type为ParticleUpdater.RANDOM，表示随机变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.RANDOM]。 <br>3、type为ParticleUpdater.CURVE,表示按动画曲线变化，则config类型为[ParticleColorPropertyUpdaterConfigs](#particlecolorpropertyupdaterconfigs)[ParticleUpdater.CURVE]。 <br>**说明**：<br>当type为ParticleUpdater.RANDOM或者ParticleUpdater.CURVE时，updater中颜色配置的优先级高于range中的颜色配置。在updater配置的动画时间周期内，以updater中的颜色配置来变化；在updater配置的动画时间周期外，以range中的颜色配置来变化。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## ParticleColorOptions<sup>18+</sup>
 
@@ -1077,7 +1077,7 @@ struct ParticleExample {
                     {
                       from: 50,
                       to: -50,
-                      startMillis: 0,
+                      startMillis: 1000,
                       endMillis: 3000,
                       curve: Curve.EaseIn
                     },
@@ -1477,8 +1477,8 @@ struct ParticleExample5 {
               shape: ParticleEmitterShape.ANNULUS, // 环形发射器
               annulusRegion:{
                 center:{x:LengthMetrics.percent(0.5),y:LengthMetrics.percent(0.5)}, // 圆环的圆心坐标
-                innerRadius:LengthMetrics.vp(100), // 圆环的外圆半径
-                outerRadius:LengthMetrics.vp(120), // 圆环的内圆半径
+                innerRadius:LengthMetrics.vp(100), // 圆环的内圆半径
+                outerRadius:LengthMetrics.vp(120), // 圆环的外圆半径
                 startAngle:0, // 圆环的起始角度
                 endAngle:360 // 圆环的结束角度
               }

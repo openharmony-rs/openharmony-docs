@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -45,7 +45,7 @@ function drawRenderNode(canvas: drawing.Canvas) {
   canvas.attachBrush(brushCircle);
   canvas.drawCircle(500, 500, 200);
   const brush = new drawing.Brush();
-  //  设置混合模式
+  // 设置混合模式
   brush.setBlendMode(drawing.BlendMode.SRC_IN);
   canvas.saveLayer(null, brush);
 

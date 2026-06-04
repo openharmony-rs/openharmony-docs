@@ -35,6 +35,8 @@ Sets the dynamic dimming degree of the component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**System API**: This is a system API.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
@@ -72,6 +74,8 @@ freezeUINode(id: string, isFrozen: boolean): void
 Sets whether to freeze a specific component by **id** to prevent it from being marked as dirty and triggering layout updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,6 +194,8 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 Sets whether to freeze a specific component by **uniqueId** to prevent it from being marked as dirty and triggering layout updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -439,6 +445,50 @@ Obtains the [LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md) col
 
 For details, see the example of [offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23).
 
+### recycleInvisibleImageMemory<sup>23+</sup>
+
+recycleInvisibleImageMemory(enabled: boolean): void
+
+Sets the memory reclamation switch for invisible **Image** components. ([Component visibility](../../../application-dev/ui/arkts-manage-components-visibility.md) refers to the display status of a component on the screen.) After this feature is enabled, the image memory resources held by the **Image** component will be automatically reclaimed when the system is idle (for example, when the application is running in the background) if the component is not involved in rendering. This reduces the memory usage of the application. When the component is involved in rendering again, the related image resources will be reloaded as required.
+
+This API is mainly used for optimization in memory-sensitive scenarios, such as scenarios where there are a large number of images, pages are frequently switched between the foreground and background, or the component visibility changes significantly.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type   | Mandatory| Description|
+| -------- | ------- | ---- | ---- |
+| enabled  | boolean | Yes  | Whether to enable memory reclamation for invisible **Image** components.<br>The value **true** means to enable memory reclamation and the image memory resources are automatically released when the **Image** component is invisible;<br>**false** means to disable memory reclamation and the image memory resources are still retained when the **Image** component is invisible.<br>The default value is **false**. If **undefined** is passed, the default value is used.|
+
+**Example**
+
+```ts
+@Entry
+@Component
+struct ImageRecycleSample {
+  build() {
+    Column({ space: 12 }) {
+      Button('Enable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(true)
+        })
+
+      Button('Disable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(false)
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
 ## ComponentSnapshot<sup>12+</sup>
 
 In the following API examples, you must first use [getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) in **UIContext** to obtain a **ComponentSnapshot** instance, and then call the APIs using the obtained instance.
@@ -457,6 +507,8 @@ Captures a snapshot of the area between two specified components. This API uses 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -558,47 +610,3 @@ struct SnapshotExample {
 ```
 
 ![en-us_image_getWithRange](figures/en-us_image_getWithRange.gif)
-
-### recycleInvisibleImageMemory<sup>23+</sup>
-
-recycleInvisibleImageMemory(enabled: boolean): void
-
-Sets the memory reclamation switch for invisible **Image** components. ([Component visibility](../../../application-dev/ui/arkts-manage-components-visibility.md) refers to the display status of a component on the screen.) After this feature is enabled, the image memory resources held by the **Image** component will be automatically reclaimed when the system is idle (for example, when the application is running in the background) if the component is not involved in rendering. This reduces the memory usage of the application. When the component is involved in rendering again, the related image resources will be reloaded as required.
-
-This API is mainly used for optimization in memory-sensitive scenarios, such as scenarios where there are a large number of images, pages are frequently switched between the foreground and background, or the component visibility changes significantly.
-
-**Model restriction**: This API can be used only in the stage model.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name  | Type   | Mandatory| Description|
-| -------- | ------- | ---- | ---- |
-| enabled  | boolean | Yes  | Whether to enable memory reclamation for invisible **Image** components.<br>The value **true** means to enable memory reclamation and the image memory resources are automatically released when the **Image** component is invisible;<br>**false** means to disable memory reclamation and the image memory resources are still retained when the **Image** component is invisible.<br>The default value is **false**. If **undefined** is passed, the default value is used.|
-
-**Example**
-
-```ts
-@Entry
-@Component
-struct ImageRecycleSample {
-  build() {
-    Column({ space: 12 }) {
-      Button('Enable recycle invisible image memory')
-        .onClick(() => {
-          this.getUIContext().recycleInvisibleImageMemory(true)
-        })
-
-      Button('Disable recycle invisible image memory')
-        .onClick(() => {
-          this.getUIContext().recycleInvisibleImageMemory(false)
-        })
-    }
-    .width('100%')
-    .padding(16)
-  }
-}
-```

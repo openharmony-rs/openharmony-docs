@@ -15,40 +15,40 @@
 
 - 授予/撤销指定应用的权限，批量查询权限授权状态。
 - 订阅指定应用的指定权限的状态变化。
-- 基于窗口发起用户权限请求弹框。
-- 对CLI命令进行权限弹框预判、权限映射查询和授权结果生成。
+- 基于窗口发起用户权限请求弹窗。
+- 对CLI命令进行权限弹窗预判、权限映射查询和授权结果生成。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 当前页面仅包含本模块的系统接口，其他公开接口参见[abilityAccessCtrl](js-apis-abilityAccessCtrl.md)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.abilityAccessCtrl (程序访问控制管理)](js-apis-abilityAccessCtrl.md)。
 
 ## 关键Class/Interface介绍
 
 ### 核心枚举类型
 
-- **[GrantStatus](js-apis-abilityAccessCtrl.md#grantstatus)**：权限授权状态枚举，用于表示权限是否已授权。
-- **[PermissionStatus](js-apis-abilityAccessCtrl.md#permissionstatus20)**：权限状态枚举，用于表示当前权限状态。
-- **[PermissionStateChangeType](js-apis-abilityAccessCtrl.md#permissionstatechangetype18)**：权限状态变化类型枚举，用于表示授权、取消授权等变化。
-- **[PermissionRequestToggleStatus](#permissionrequesttogglestatus12)**：权限申请开关状态枚举，用于表示指定权限的弹窗开关状态。
-- **[PermissionDecisionStatus](#permissiondecisionstatus)**：CLI权限决策状态枚举，用于表示命令权限的判定结果。
+- **[GrantStatus](js-apis-abilityAccessCtrl.md#grantstatus)：** 权限授权状态枚举，用于表示权限是否已授权。
+- **[PermissionStatus](js-apis-abilityAccessCtrl.md#permissionstatus20)：** 权限状态枚举，用于表示当前权限状态。
+- **[PermissionStateChangeType](js-apis-abilityAccessCtrl.md#permissionstatechangetype18)：** 权限状态变化类型枚举，用于表示授权、取消授权等变化。
+- **[PermissionRequestToggleStatus](#permissionrequesttogglestatus12)：** 权限申请开关状态枚举，用于表示指定权限的弹窗开关状态。
+- **[PermissionDecisionStatus](#permissiondecisionstatus)：** CLI权限决策状态枚举，用于表示命令权限的判定结果。
 
 ### 核心接口类型
 
-- **[PermissionStatusInfo](#permissionstatusinfo)**：权限状态信息对象，用于返回应用权限的授权状态、标志位和时间戳。
-- **[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)**：权限状态变化事件对象，用于返回变化类型、应用身份标识和权限名。
-- **[CliInfo](#cliinfo)**：CLI命令信息对象，用于描述命令名称和子命令名称。
-- **[PermissionDialogDetail](#permissiondialogdetail)**：权限弹窗明细对象，用于描述单个CLI权限弹窗的状态和未满足权限。
-- **[PermissionDialogResult](#permissiondialogresult)**：权限弹窗查询结果对象，用于返回命令对应的弹窗信息。
-- **[CliPermissionDetail](#clipermissiondetail)**：CLI权限明细对象，用于描述命令权限、决策状态和映射出的运行时权限。
-- **[CliCommandPermissionResult](#clicommandpermissionresult)**：CLI命令权限结果对象，用于返回单个命令依赖的权限信息。
-- **[CliPermissionsResult](#clipermissionsresult)**：CLI权限查询结果对象，用于返回命令所需权限的映射结果。
-- **[CliAuthInfo](#cliauthinfo)**：CLI授权信息对象，用于描述待生成授权结果的命令授权状态。
-- **[ToolAuthResult](#toolauthresult)**：工具授权结果对象，用于返回生成后的授权结果。
+- **[PermissionStatusInfo](#permissionstatusinfo)：** 权限状态信息对象，用于返回应用权限的授权状态、标志位和时间戳。
+- **[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)** 权限状态变化事件对象，用于返回变化类型、应用身份标识和权限名。
+- **[CliInfo](#cliinfo)：** CLI命令信息对象，用于描述命令名称和子命令名称。
+- **[PermissionDialogDetail](#permissiondialogdetail)：** 权限弹窗明细对象，用于描述单个CLI权限弹窗的状态和未满足权限。
+- **[PermissionDialogResult](#permissiondialogresult)：** 权限弹窗查询结果对象，用于返回命令对应的弹窗信息。
+- **[CliPermissionDetail](#clipermissiondetail)：** CLI权限明细对象，用于描述命令权限、决策状态和映射出的运行时权限。
+- **[CliCommandPermissionResult](#clicommandpermissionresult)：** CLI命令权限结果对象，用于返回单个命令依赖的权限信息。
+- **[CliPermissionsResult](#clipermissionsresult)：** CLI权限查询结果对象，用于返回命令所需权限的映射结果。
+- **[CliAuthInfo](#cliauthinfo)：** CLI授权信息对象，用于描述待生成授权结果的命令授权状态。
+- **[ToolAuthResult](#toolauthresult)：** 工具授权结果对象，用于返回生成后的授权结果。
 
 ### 核心类
 
-- **[AtManager](#atmanager)**：程序访问控制管理类，提供跨应用权限授予、撤销、查询、监听和CLI权限管理等能力。
+- **[AtManager](#atmanager)：** 程序访问控制管理类，提供跨应用权限授予、撤销、查询、监听和CLI权限管理等能力。
 
 ![](figures/accessAccessCtrl-sys.png)
 
@@ -73,15 +73,12 @@ await atManager.grantPermission(tokenID, permissionName, permissionFlags);
 await atManager.revokePermission(tokenID, permissionName, permissionFlags);
 
 // 2. 查询授权标记和状态明细。
-let flags: number = await atManager.getPermissionFlags(tokenID, permissionName);
-let statusList: Array<abilityAccessCtrl.PermissionStatus> =
-  await atManager.getPermissionsStatus(tokenID, [permissionName]);
+await atManager.getPermissionFlags(tokenID, permissionName);
+await atManager.getPermissionsStatus(tokenID, [permissionName]);
 
 // 3. 按应用或按权限进行批量查询。
-let statusListByTokenID: Array<abilityAccessCtrl.PermissionStatusInfo> =
-  await atManager.queryStatusByTokenID([tokenID]);
-let statusListByPermission: Array<abilityAccessCtrl.PermissionStatusInfo> =
-  await atManager.queryStatusByPermission([permissionName]);
+await atManager.queryStatusByTokenID([tokenID]);
+await atManager.queryStatusByPermission([permissionName]);
 ```
 
 场景2：监听目标应用权限状态变化。
@@ -136,17 +133,14 @@ let authInfoList: Array<abilityAccessCtrl.CliAuthInfo> = [{
   authorizationResults: [true]
 }];
 
-// 1. 判断命令是否需要权限弹框。
-let dialogResult: abilityAccessCtrl.PermissionDialogResult =
-  await atManager.getCliPermissionRequestInfo(agentID, cliInfoList);
+// 1. 判断命令是否需要权限弹窗。
+await atManager.getCliPermissionRequestInfo(agentID, cliInfoList);
 
 // 2. 查询命令依赖的CLI权限和运行时权限。
-let permissionResult: abilityAccessCtrl.CliPermissionsResult =
-  await atManager.getCliPermissions(hostTokenID, agentID, cliInfoList);
+await atManager.getCliPermissions(hostTokenID, agentID, cliInfoList);
 
 // 3. 基于用户选择生成授权结果。
-let authResult: abilityAccessCtrl.ToolAuthResult =
-  await atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList);
+await atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList);
 ```
 
 ## 导入模块
@@ -157,7 +151,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 
 ## AtManager
 
-管理访问控制模块的实例。
+管理访问控制模块的实例。该类作为本模块的核心管理类，提供跨应用权限授予、撤销、查询、状态监听和CLI权限管理等能力。
 
 AtManager接口调用依赖于tokenID，系统应用可通过[bundleManager.getBundleInfoSync](js-apis-bundleManager.md#bundlemanagergetbundleinfosync14)或[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取tokenID。
 
@@ -165,7 +159,9 @@ AtManager接口调用依赖于tokenID，系统应用可通过[bundleManager.getB
 
 grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permissionFlags: number): Promise&lt;void&gt;
 
-授予应用user_grant权限。使用Promise异步回调。
+授予应用user_grant权限。调用成功后，应用获得该user_grant权限，可以访问相应的受保护资源。使用Promise异步回调。
+
+本接口仅支持授予user_grant类型的权限。若需要授予user_grant或manual_settings类型权限，建议使用[grantPermission](#grantpermission21)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -179,7 +175,7 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
 | tokenID      | number              | 是   | 目标应用的身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。该参数必须为大于0的整数，传入0时返回错误码12100001。 |
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md)              | 是   | 被授予的权限名称。权限名长度不能超过256个字符，超过限制时返回错误码12100001。 |
-| permissionFlags  | number | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗。用户需要在系统设置的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
+| permissionFlags  | number | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在系统设置的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
 
 **返回值：**
 
@@ -276,7 +272,11 @@ atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', perm
 
 revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permissionFlags: number): Promise&lt;void&gt;
 
-撤销应用user_grant权限。使用Promise异步回调。
+撤销应用user_grant权限。调用成功后，应用失去该user_grant权限，无法访问相应的受保护资源。使用Promise异步回调。
+
+本接口仅支持撤销user_grant类型的权限，且不支持控制是否终止应用进程。若需要撤销user_grant或manual_settings类型权限，或需要控制撤销权限后是否终止应用进程，建议使用[revokePermission](#revokepermission21)。
+
+当权限状态从“已授权”变为“未授权”时，应用进程会被终止。
 
 **系统接口：** 此接口为系统接口。
 
@@ -387,7 +387,7 @@ atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', per
 
 getPermissionFlags(tokenID: number, permissionName: Permissions): Promise&lt;number&gt;
 
-获取指定应用的指定权限的flag。使用Promise异步回调。
+获取指定应用的指定权限的标志。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -406,7 +406,7 @@ getPermissionFlags(tokenID: number, permissionName: Permissions): Promise&lt;num
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回查询结果。 |
+| Promise&lt;number&gt; | Promise对象，返回查询到的权限标记值。标记值的含义请参见[PermissionStatusInfo](#permissionstatusinfo)中的grantFlags字段说明。 |
 
 **错误码：**
 
@@ -442,7 +442,7 @@ atManager.getPermissionFlags(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIO
 
 setPermissionRequestToggleStatus(permissionName: Permissions, status: PermissionRequestToggleStatus): Promise&lt;void&gt;
 
-设置当前用户指定权限的弹窗开关状态。使用Promise异步回调。调用成功后，该权限的弹窗开关状态将被设置为指定值。当状态为CLOSED时，应用请求该权限时不会弹出权限弹窗；当状态为OPEN时，应用请求该权限时会正常弹出权限弹窗。
+设置当前用户指定权限的弹窗开关状态。调用成功后，该权限的弹窗开关状态将被设置为指定值。当状态为CLOSED时，应用请求该权限时不会弹出权限弹窗；当状态为OPEN时，应用请求该权限时会正常弹出权限弹窗。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -455,7 +455,7 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 | 参数名    | 类型                | 必填 | 说明                          |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md)              | 是   | 待设置弹窗开关状态的权限名称。权限名长度不能超过256个字符，超过限制时返回错误码12100001。 |
-| status | [PermissionRequestToggleStatus](#permissionrequesttogglestatus12)    | 是   | 指定权限的弹窗开关状态值。             |
+| status | [PermissionRequestToggleStatus](#permissionrequesttogglestatus12)    | 是   | 指定权限的弹窗开关状态值。 |
 
 **返回值：**
 
@@ -483,7 +483,7 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let atManager = abilityAccessCtrl.createAtManager();
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let permission: Permissions = 'ohos.permission.CAMERA';
 
 atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED).then(() => {
@@ -536,10 +536,10 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise&lt;Permis
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let atManager = abilityAccessCtrl.createAtManager();
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let permission: Permissions = 'ohos.permission.CAMERA';
 
-atManager.getPermissionRequestToggleStatus(permission).then((res) => {
+atManager.getPermissionRequestToggleStatus(permission).then((res: abilityAccessCtrl.PermissionRequestToggleStatus) => {
   if (res == abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED) {
     console.info('getPermissionRequestToggleStatus: The toggle status is close');
   } else {
@@ -554,7 +554,7 @@ atManager.getPermissionRequestToggleStatus(permission).then((res) => {
 
 getVersion(): Promise&lt;number&gt;
 
-获取当前权限管理的数据版本。使用Promise异步回调。
+获取当前权限管理的数据版本号。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -578,6 +578,7 @@ getVersion(): Promise&lt;number&gt;
 
 ```ts
 import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let promise = atManager.getVersion();
@@ -649,7 +650,9 @@ on(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionLi
 
 允许指定tokenID列表与权限列表订阅多个callback。
 
-不允许存在交集的tokenID列表与权限列表订阅相同callback。
+若新的订阅与已有订阅在tokenID列表和权限列表上存在交集，不允许使用相同的callback进行订阅。
+
+该接口通常与[off](#off9)配套使用，当不再需要监听时应调用off取消订阅。
 
 **系统接口：** 此接口为系统接口。
 
@@ -662,8 +665,8 @@ on(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionLi
 | 参数名             | 类型                   | 必填 | 说明                                                          |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | 是   | 订阅事件类型，固定为'permissionStateChange'，权限状态变更事件。  |
-| tokenIDList        | Array&lt;number&gt;   | 是   | 订阅的tokenID列表，为空时表示订阅所有的应用的权限状态变化。该数组长度不能超过1024，超出限制时返回错误码12100001。 |
-| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | 是   | 订阅的权限名列表，为空时表示订阅所有的权限状态变化。权限名长度不能超过256个字符，该数组长度不能超过1024，超出限制时返回错误码12100001。|
+| tokenIDList        | Array&lt;number&gt;   | 是   | 订阅的tokenID列表，为空时表示订阅所有的应用的权限状态变化。应用的身份标识可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。列表中的tokenID必须为大于0的整数，该数组长度不能超过1024，超出限制时返回错误码12100001。 |
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | 是   | 订阅的权限名列表，为空时表示订阅所有的权限状态变化。<br/>列表中的权限名需为有效权限名，权限名长度不能超过256个字符，当列表中所有权限名均无效时返回错误码12100001。<br/>该数组长度不能超过1024，超出限制时返回错误码12100001。 |
 | callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | 是 | 回调函数。订阅指定tokenID与指定权限名状态变更事件的回调。|
 
 **错误码：**
@@ -684,10 +687,11 @@ on(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionLi
 
 ```ts
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+  let bundleInfo: bundleManager.BundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
   let tokenIDList: Array<number> = [bundleInfo.appInfo.accessTokenId];
   let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
 
@@ -695,8 +699,9 @@ try {
     console.info('receive permission state change');
     console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
     });
-} catch(err) {
-  console.error(`catch errcode: ${err.code}, message: ${err.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`catch errcode: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -707,6 +712,8 @@ off(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionL
 取消订阅指定tokenID列表与权限列表的权限状态变更事件。使用callback异步回调。
 
 取消订阅时，若不传入callback，则批量取消与tokenIDList和permissionList完全匹配的所有监听回调。
+
+该接口通常与[on](#on9)配套使用，用于取消通过on创建的监听关系。
 
 **系统接口：** 此接口为系统接口。
 
@@ -719,9 +726,9 @@ off(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionL
 | 参数名             | 类型                   | 必填 | 说明                                                          |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string         | 是   | 订阅事件类型，固定为'permissionStateChange'，权限状态变更事件。  |
-| tokenIDList        | Array&lt;number&gt;   | 是   | 取消订阅的tokenID列表，为空时表示取消订阅所有的应用的权限状态变化，必须与[on](#on9)的输入一致。 |
+| tokenIDList        | Array&lt;number&gt;   | 是   | 取消订阅的tokenID列表，为空时表示取消订阅所有的应用的权限状态变化，必须与[on](#on9)的输入一致。应用的身份标识可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。列表中的tokenID必须为大于0的整数。该数组长度不能超过1024，超出限制时返回错误码12100001。 |
 | permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | 是   | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与[on](#on9)的输入一致。权限名长度不能超过256个字符，超过限制时返回错误码12100001。 |
-| callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | 否 | 回调函数。返回取消订阅指定tokenID与指定权限名状态变更事件的对象。不传入此参数时，将取消与tokenIDList和permissionList完全匹配的所有监听回调。|
+| callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | 否 | 回调函数。返回取消订阅指定tokenID与指定权限名状态变更事件的对象，需与[on](#on9)注册时的callback一致。不传入此参数时，将取消与tokenIDList和permissionList完全匹配的所有监听回调。|
 
 **错误码：**
 
@@ -739,15 +746,17 @@ off(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionL
 
 ```ts
 import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-  let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+  let bundleInfo: bundleManager.BundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
   let tokenIDList: Array<number> = [bundleInfo.appInfo.accessTokenId];
   let permissionList: Array<Permissions> = ['ohos.permission.DISTRIBUTED_DATASYNC'];
   atManager.off('permissionStateChange', tokenIDList, permissionList);
-} catch(err) {
-  console.error(`catch errcode: ${err.code}, message: ${err.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`catch errcode: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -804,7 +813,7 @@ atManager.requestPermissionOnApplicationSetting(tokenID).then(() => {
 
 grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: number): Promise&lt;void&gt;
 
-授予应用权限。使用Promise异步回调。调用成功后，指定应用获得该权限，可以访问相应的受保护资源。
+授予应用权限。调用成功后，指定应用获得该权限，可以访问相应的受保护资源。与[grantUserGrantedPermission](#grantusergrantedpermission)仅支持user_grant类型权限不同，该接口同时支持user_grant和manual_settings类型的权限授予。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -818,7 +827,7 @@ grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: n
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
 | tokenID      | number              | 是   | 目标应用的身份标识。可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。该参数必须为大于0的整数，传入0时返回错误码12100001。 |
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md)              | 是   | 被授予的权限名称。权限名长度不能超过256个字符，超过限制时返回错误码12100001。 |
-| permissionFlags  | number | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗。用户需要在系统设置的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
+| permissionFlags  | number | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在系统设置的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
 
 **返回值：**
 
@@ -861,7 +870,9 @@ atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags
 
 revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: number, killProcess?: boolean): Promise&lt;void&gt;
 
-撤销应用权限。使用Promise异步回调。调用成功后，应用失去该权限，无法访问相应的受保护资源。根据killProcess参数的值，可能会终止应用进程。
+撤销应用权限。调用成功后，应用失去该权限，无法访问相应的受保护资源。根据killProcess参数的值决定是否终止应用进程。使用Promise异步回调。
+
+当killProcess参数为true且权限状态从“已授权”变为“未授权”时，应用进程会被终止。
 
 **系统接口：** 此接口为系统接口。
 
@@ -926,11 +937,11 @@ atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlag
 
 requestPermissionsFromUserWithWindowId(context: Context, windowId: number, permissionList: Array&lt;Permissions&gt;): Promise&lt;PermissionRequestResult&gt;
 
-基于窗口ID弹出弹框请求用户授权，调用成功后，返回本次权限申请结果对象，开发者可根据权限申请结果继续窗口级授权后的业务流程。使用Promise异步回调。
+基于窗口ID弹出弹窗请求用户授权，调用成功后，返回本次权限申请结果对象，开发者可根据权限申请结果继续窗口级授权后的业务流程。使用Promise异步回调。
 
-适用于系统应用需要将权限申请弹框明确附着到指定窗口的场景。
+适用于系统应用需要将权限申请弹窗明确附着到指定窗口的场景。
 
-如果用户拒绝授权，将无法再次拉起弹框，需要用户在系统应用“设置”界面中，手动授予权限，或是调用[requestPermissionOnSetting](js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)，拉起权限设置弹框，引导用户授权。
+如果用户拒绝授权，将无法再次拉起弹窗，可通过以下方式重新获取权限：1. 在系统设置界面中手动授权；2. 调用[requestPermissionOnSetting](js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)，拉起权限设置弹窗引导用户授权。
 
 **系统接口：** 此接口为系统接口。
 
@@ -942,15 +953,15 @@ requestPermissionsFromUserWithWindowId(context: Context, windowId: number, permi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| context | [Context](js-apis-inner-application-context.md#context) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹框。 |
+| context | [Context](js-apis-inner-application-context.md#context) | 是 | 请求权限的UIAbility/UIExtensionAbility的Context。若传入其他应用、无效页面或非Stage模型的Context，接口可能报错或无法拉起弹窗。 |
 | windowId | number | 是 | 应用窗口的ID。可通过[window.findWindow](../apis-arkui/arkts-apis-window-f.md#windowfindwindow9)(窗口名).[getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9).id获取。该参数必须对应当前有效窗口，传入已销毁、不可见或无效窗口ID时将返回12100001。 |
-| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 是 | 权限名列表。该数组不能为空，权限名长度不能超过256个字符，超过限制时返回错误码12100001。建议仅传入当前窗口场景下真正需要的敏感权限。|
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 是 | 权限名列表。该数组不能为空，权限名长度不能超过256个字符。建议仅传入当前窗口场景下真正需要的敏感权限。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Promise对象，返回本次权限申请结果，包含权限数组、授权结果、是否展示弹框以及失败原因等信息。 |
+| Promise&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Promise对象，返回本次权限申请结果，包含权限数组、授权结果、是否展示弹窗以及失败原因等信息。 |
 
 **错误码：**
 
@@ -976,6 +987,7 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 // 请在组件内获取context
 let context: Context = this.getUIContext().getHostContext() as Context;
 let windowId = 0; // 获取方式 let windowId = window.findWindow(窗口名).getWindowProperties().id;
+// 基于窗口ID请求用户授权指定权限
 atManager.requestPermissionsFromUserWithWindowId(context, windowId, ['ohos.permission.CAMERA']).then((data: PermissionRequestResult) => {
   console.info(`requestPermissionsFromUserWithWindowId success, result: ${data}`);
   console.info('requestPermissionsFromUserWithWindowId data permissions:' + data.permissions);
@@ -1063,7 +1075,7 @@ queryStatusByTokenID(tokenIDList: Array&lt;number&gt;): Promise&lt;Array&lt;Perm
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenIDList | Array&lt;number&gt;   | 是   | 待查询的应用tokenID列表。应用的身份标识可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。该数组不能为空，且数组长度不能超过1024。超出限制时返回错误码12100001。 |
+| tokenIDList | Array&lt;number&gt;   | 是   | 待查询的应用tokenID列表。应用的身份标识可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。列表中的tokenID必须为大于0的整数。该数组不能为空，且数组长度不能超过1024。超出限制时返回错误码12100001。 |
 
 **返回值：**
 
@@ -1120,13 +1132,13 @@ getCliPermissionRequestInfo(agentID: string, cliInfoList: Array&lt;CliInfo&gt;):
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | agentID | string | 是 | 智能体标识，用于标识发起CLI相关操作的智能体，长度不能超过48个字符。超出限制时返回错误码12100001。 |
-| cliInfoList | Array&lt;[CliInfo](#cliinfo)&gt; | 是 | 待查询的CLI信息列表。数组长度必须在1到99之间，每项包含一条主命令及其子命令信息；建议按实际即将执行的命令集合传入，避免无关命令扩大判定范围。 |
+| cliInfoList | Array&lt;[CliInfo](#cliinfo)&gt; | 是 | 待查询的CLI信息列表。数组长度必须在1到99之间，每项包含一条命令及其子命令信息；建议按实际即将执行的命令集合传入，避免无关命令扩大判定范围。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[PermissionDialogResult](#permissiondialogresult)&gt; | Promise对象，返回CLI权限弹窗查询结果。 |
+| Promise&lt;[PermissionDialogResult](#permissiondialogresult)&gt; | Promise对象，返回每条CLI命令的权限弹窗判定结果，包含是否需要弹窗、未满足的权限列表及决策状态等信息。 |
 
 **错误码：**
 
@@ -1163,7 +1175,7 @@ atManager.getCliPermissionRequestInfo(agentID, cliInfoList).then((data: abilityA
 
 getCliPermissions(hostTokenID: number, agentID: string, cliInfoList: Array&lt;CliInfo&gt;): Promise&lt;CliPermissionsResult&gt;
 
-查询指定应用的CLI权限信息。使用Promise异步回调。
+查询指定应用使用的CLI命令依赖的CLI权限及映射的运行时权限。调用成功后返回每条命令的CLI权限决策状态和运行时权限映射列表。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -1181,13 +1193,13 @@ getCliPermissions(hostTokenID: number, agentID: string, cliInfoList: Array&lt;Cl
 | -------- | -------- | -------- | -------- |
 | hostTokenID | number | 是 | 访问CLI指令的应用的tokenID，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。该参数必须为大于0的整数，传入0时返回错误码12100001。 |
 | agentID | string | 是 | 智能体标识，用于标识发起CLI相关操作的智能体，长度不能超过48个字符。超出限制时返回错误码12100001。 |
-| cliInfoList | Array&lt;[CliInfo](#cliinfo)&gt; | 是 | 待查询的CLI信息列表，该参数的数组长度不能为0，且不能超过99。 |
+| cliInfoList | Array&lt;[CliInfo](#cliinfo)&gt; | 是 | 待查询的CLI信息列表。数组长度必须在1到99之间，每项包含一条命令及其子命令信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[CliPermissionsResult](#clipermissionsresult)&gt; | Promise对象，返回CLI权限查询结果。 |
+| Promise&lt;[CliPermissionsResult](#clipermissionsresult)&gt; | Promise对象，返回每条CLI命令依赖的CLI权限及其对应的运行时权限映射信息。 |
 
 **错误码：**
 
@@ -1244,13 +1256,13 @@ generateCliAuthResult(hostTokenID: number, agentID: string, authInfoList: Array&
 | -------- | -------- | -------- | -------- |
 | hostTokenID | number | 是 | 访问CLI指令的应用的tokenID，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。该参数必须为大于0的整数，传入0时返回错误码12100001。 |
 | agentID | string | 是 | 智能体标识，用于标识发起CLI相关操作的智能体，长度不能超过48个字符。超出限制时返回错误码12100001。 |
-| authInfoList | Array&lt;[CliAuthInfo](#cliauthinfo)&gt; | 是 | CLI授权信息列表，该参数的数组长度不能为0，且不能超过99。超出限制时返回错误码12100001。 |
+| authInfoList | Array&lt;[CliAuthInfo](#cliauthinfo)&gt; | 是 |  CLI授权信息列表，每项包含CLI信息（主命令和子命令名称）、待授权的权限名称列表和对应的授权结果列表。数组长度不能为0，且不能超过99。超出限制时返回错误码12100001。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[ToolAuthResult](#toolauthresult)&gt; | Promise对象，返回生成的授权结果。 |
+| Promise&lt;[ToolAuthResult](#toolauthresult)&gt; | Promise对象，返回生成的授权结果，包含授权结果字符串列表，可用于传递给CLI工具执行命令。 |
 
 **错误码：**
 
@@ -1305,11 +1317,11 @@ atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList).then((data: 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | NEED_PERMISSION_DIALOG | 0 | 表示需要弹出权限对话框。 |
-| NO_DIALOG_DENIED | 1 | 表示无需弹框，权限已被用户拒绝。 |
-| NO_DIALOG_RESTRICTED | 2 | 表示无需弹框，权限受系统或策略限制。 |
-| NO_DIALOG_GRANTED | 3 | 表示无需弹框，权限已授予。 |
-| NO_DIALOG_NOT_DECLARED | 4 | 表示无需弹框，但权限未声明。 |
-| NO_DIALOG_CLI_PERMISSION_RESOLVED | 5 | 表示无需弹框，CLI权限已完成运行时权限解析。 |
+| NO_DIALOG_DENIED | 1 | 表示无需弹窗，权限已被用户拒绝。 |
+| NO_DIALOG_RESTRICTED | 2 | 表示无需弹窗，权限受系统或策略限制。 |
+| NO_DIALOG_GRANTED | 3 | 表示无需弹窗，权限已授予。 |
+| NO_DIALOG_NOT_DECLARED | 4 | 表示无需弹窗，但权限未声明。 |
+| NO_DIALOG_CLI_PERMISSION_RESOLVED | 5 | 表示无需弹窗，CLI权限已完成运行时权限解析。 |
 
 ## CliInfo
 
@@ -1477,5 +1489,5 @@ atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList).then((data: 
 
 | 名称               |    值 | 说明        |
 | ------------------ | ----- | ----------- |
-| CLOSED  | 0    | 表示关闭状态。 |
-| OPEN | 1     | 表示开启状态。 |
+| CLOSED  | 0    | 表示关闭指定权限的弹窗开关。应用调用[requestPermissionsFromUser](js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)等接口请求该权限时，不会弹出权限弹窗。 |
+| OPEN | 1     | 表示开启指定权限的弹窗开关。应用调用[requestPermissionsFromUser](js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)等接口请求该权限时，会正常弹出权限弹窗。 |
