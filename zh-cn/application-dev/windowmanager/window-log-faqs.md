@@ -657,11 +657,7 @@ Stack trace:
 
 **分析定位及解决**
 
-根据日志堆栈定位off('avoidAreaChange')调用位置，检查是否在销毁流程中（onWindowStageDestroy或aboutToDisappear等）。
-
-解决要点：
-
-- off('avoidAreaChange')调用位置不在onWindowStageDestroy、aboutToDisappear或onDestroy等销毁回调中
+- 根据日志堆栈定位off('avoidAreaChange')调用位置不在onWindowStageDestroy或onDestroy等销毁回调中
 - 异步任务不会在销毁后执行off('avoidAreaChange')
 
 **正反案例**
