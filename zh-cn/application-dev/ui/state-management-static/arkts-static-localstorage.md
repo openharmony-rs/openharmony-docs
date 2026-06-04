@@ -608,10 +608,10 @@ import { Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStorag
 @Component
 struct Index {
   // 可以使用@LocalStorageLink/LocalStoragePropRef与LocalStorage实例中的变量建立联系
-  @LocalStorageLink('PropA') propA: int = 1;
+  @LocalStorageLink('MultiPage') propA: int = 1;
 
   build() {
-    Row(){
+    Row() {
       Column() {
         Text(`${this.propA}`)
           .fontSize(50)
