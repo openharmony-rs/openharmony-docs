@@ -58,7 +58,7 @@ All child components except **list** are supported.
 | background-color | &lt;color&gt; | - | No| Background color.|
 | opacity<sup>5+</sup> | number | 1 | No| Opacity of an element. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent.|
 | display | string | flex | No| Whether to display a box containing the element and the layout for its child elements. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
-| [left\|top] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>6+</sup> | - | No| Offset of the element.<br>The **left** attribute specifies the left edge position of the element. This attribute defines the offset between the left edge of a positioned element and that of a block included in the element.<br>The **top** attribute specifies the top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element.|
+| [left\|top] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>6+</sup> | - | No| Edge of the element.<br>The **left** attribute specifies the left edge position of the element. This attribute defines the offset between the left edge of a positioned element and that of a block included in the element.<br>The **top** attribute specifies the top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element.|
 
 ## Methods
 
