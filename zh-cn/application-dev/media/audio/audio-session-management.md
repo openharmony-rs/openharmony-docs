@@ -266,6 +266,58 @@ ArkTS-Sta示例：
 
 <!-- @[audio_session_v1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioSessionSampleJS-Sta/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@ohos.base';
+// ...
+
+let audioManager = audio.getAudioManager();
+// 创建音频会话管理器。
+let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
+// ...
+  // 设置音频并发模式。
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+  };
+
+  // 激活音频会话。
+  audioSessionManager.activateAudioSession(strategy).then(() => {
+    console.info('Succeeded in activating audio session.');
+    // ...
+  }).catch((err) => {
+    console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+
+  // 查询音频会话是否已激活。
+  let isActivated = audioSessionManager.isAudioSessionActivated();
+
+  // 监听音频会话停用事件。
+  audioSessionManager.onAudioSessionDeactivated((audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
+    // ...
+    console.info(`Succeeded in using on function. AudioSessionDeactivatedEvent: ${JSON.stringify(audioSessionDeactivatedEvent)}`);
+  });
+
+  if (isActivated) {
+    // 音频会话激活后，应用在此处正常执行音频播放、暂停、停止、释放等操作即可。
+  }
+  // ...
+
+  // 取消监听音频会话停用事件。
+  audioSessionManager.offAudioSessionDeactivated();
+
+  // ...
+  // 停用音频会话。
+  // ...
+  audioSessionManager.deactivateAudioSession().then(() => {
+    console.info('Succeeded in deactivating audio session.');
+    // ...
+  }).catch((err) => {
+    console.error(`Failed to deactivate audio session. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+```
+
 ## 使用音频会话申请焦点策略
 
 当应用需要启动多个音频流并保证流程连续性时，可通过AudioSession申请焦点，确保多音频流播放的连续性。
