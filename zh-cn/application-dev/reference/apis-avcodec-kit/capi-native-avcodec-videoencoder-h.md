@@ -22,40 +22,7 @@
 
 **相关示例：** [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
 
-接口在每个版本、每种模式和状态下的支持情况说明如下表所示。
-
-### 接口状态矩阵
-
-下方是不同状态下是否可以调用接口的情况概览，√表示可以调用，×表示不可调用。
-
-| 接口 | Initialized | Configured | Prepared | Flushed | Running | EndOfStream | Error | Released |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| OH_VideoEncoder_CreateByMime<sup>9+</sup> | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
-| OH_VideoEncoder_CreateByName<sup>9+</sup> | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
-| OH_VideoEncoder_CreatePrimaryWithPreproc | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
-| OH_VideoEncoder_CreateSecondaryFromPrimary | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
-| OH_VideoEncoder_RegisterCallback<sup>11+</sup> | √ | √ | × | × | × | × | × | × |
-| OH_VideoEncoder_RegisterParameterCallback<sup>12+</sup> | √ | × | × | × | × | × | × | × |
-| OH_VideoEncoder_OnNeedInputParameter<sup>12+</sup> | × | × | × | × | √ | × | × | × |
-| OH_VideoEncoder_Configure<sup>9+</sup> | √ | × | × | × | × | × | × | × |
-| OH_VideoEncoder_Prepare<sup>9+</sup> | × | √ | × | × | × | × | × | × |
-| OH_VideoEncoder_SetParameter<sup>9+</sup> | × | × | × | √ | √ | √ | × | × |
-| OH_VideoEncoder_GetSurface<sup>9+</sup> | × | √ | × | × | × | × | × | × |
-| OH_VideoEncoder_GetInputDescription<sup>10+</sup> | × | √ | √ | √ | √ | √ | × | × |
-| OH_VideoEncoder_PushInputBuffer<sup>11+</sup> | × | × | × | × | √ | × | × | × |
-| OH_VideoEncoder_PushInputParameter<sup>12+</sup> | × | × | × | × | √ | × | × | × |
-| OH_VideoEncoder_NotifyEndOfStream<sup>9+</sup> | × | × | × | × | √ | × | × | × |
-| OH_VideoEncoder_GetOutputDescription<sup>9+</sup> | √ | √ | √ | √ | √ | √ | × | × |
-| OH_VideoEncoder_FreeOutputBuffer<sup>11+</sup> | × | × | × | × | √ | √ | × | × |
-| OH_VideoEncoder_Start<sup>9+</sup> | × | × | √ | √ | × | × | × | × |
-| OH_VideoEncoder_Stop<sup>9+</sup> | × | × | × | √ | √ | √ | × | × |
-| OH_VideoEncoder_Flush<sup>9+</sup> | × | × | × | × | √ | √ | × | × |
-| OH_VideoEncoder_Reset<sup>9+</sup> | √ | √ | √ | √ | √ | √ | √ | × |
-| OH_VideoEncoder_Destroy<sup>9+</sup> | √ | √ | √ | √ | √ | √ | √ | × |
-| OH_VideoEncoder_QueryInputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
-| OH_VideoEncoder_GetInputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
-| OH_VideoEncoder_QueryOutputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
-| OH_VideoEncoder_GetOutputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
+接口在每个版本，对每种模式的支持情况说明，如下图所示。
 
 ## 汇总
 

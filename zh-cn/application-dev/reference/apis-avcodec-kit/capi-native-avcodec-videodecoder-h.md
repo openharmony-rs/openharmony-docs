@@ -22,36 +22,11 @@
 
 **相关示例：** [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
 
-接口在每个版本的支持情况以及在解码过程中可以调用的情况，如下表所示：
+接口在每个版本的支持情况以及在解码过程中可以调用的情况，如下图所示：
 
-### 接口状态矩阵
+![meaning](figures/meaning.PNG)
 
-下方是不同状态下是否可以调用接口的情况概览，√表示可以调用，×表示不可调用。
-
-| 接口 | Initialized | Configured | Prepared | Flushed | Running | EndOfStream | Error | Released |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| OH_VideoDecoder_CreateByMime<sup>9+</sup> | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
-| OH_VideoDecoder_CreateByName<sup>9+</sup> | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
-| OH_VideoDecoder_RegisterCallback<sup>10+</sup> | √ | √ | × | × | × | × | × | × |
-| OH_VideoDecoder_Configure<sup>9+</sup> | √ | × | × | × | × | × | × | × |
-| OH_VideoDecoder_Prepare<sup>9+</sup> | × | √ | × | × | × | × | × | × |
-| OH_VideoDecoder_SetParameter<sup>9+</sup> | × | × | × | √ | √ | √ | × | × |
-| OH_VideoDecoder_SetSurface<sup>9+</sup> | × | √ | √ | √ | √ | √ | × | × |
-| OH_VideoDecoder_PushInputBuffer<sup>11+</sup> | × | × | × | × | √ | × | × | × |
-| OH_VideoDecoder_RenderOutputBuffer<sup>11+</sup> | × | × | × | × | √ | √ | × | × |
-| OH_VideoDecoder_SetDecryptionConfig<sup>10+</sup> | √ | √ | × | × | × | × | × | × |
-| OH_VideoDecoder_GetOutputDescription<sup>9+</sup> | √ | √ | √ | √ | √ | √ | × | × |
-| OH_VideoDecoder_FreeOutputBuffer<sup>11+</sup> | × | × | × | × | √ | √ | × | × |
-| OH_VideoDecoder_RenderOutputBufferAtTime<sup>12+</sup> | × | × | × | × | √ | √ | × | × |
-| OH_VideoDecoder_Start<sup>9+</sup> | × | × | √ | √ | × | × | × | × |
-| OH_VideoDecoder_Stop<sup>9+</sup> | × | × | × | √ | √ | √ | × | × |
-| OH_VideoDecoder_Flush<sup>9+</sup> | × | × | × | × | √ | √ | × | × |
-| OH_VideoDecoder_Reset<sup>9+</sup> | √ | √ | √ | √ | √ | √ | √ | × |
-| OH_VideoDecoder_Destroy<sup>9+</sup> | √ | √ | √ | √ | √ | √ | √ | × |
-| OH_VideoDecoder_QueryInputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
-| OH_VideoDecoder_GetInputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
-| OH_VideoDecoder_QueryOutputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
-| OH_VideoDecoder_GetOutputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
+![description of decode api history](figures/video-decode-api.PNG)
 
 ## 汇总
 
