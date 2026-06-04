@@ -965,7 +965,7 @@ struct Comp {
 
 ``` TypeScript
 // SubWindow.ets
-import { MyNodeController } from './EnvBuilderNode.ets';
+import { MyNodeController } from './EnvBuilderNode';
 import { Entry, Text, Column, Component, Button, ClickEvent, NodeContainer, ColumnOptions } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 import window from '@ohos.window';
