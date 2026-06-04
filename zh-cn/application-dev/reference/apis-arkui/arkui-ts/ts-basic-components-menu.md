@@ -231,7 +231,7 @@ ArkTS-Sta: subMenuExpandSymbol(symbol: SymbolGlyphModifier | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明           |
 | ------ | ---------------------------- | ---- |--------------|
-| symbol | ArkTS-Dyn: [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) <br/>ArkTS-Sta: [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) \| undefined | 是   | Menu子菜单展开符号。<br/>1、子菜单的展开样式为SubMenuExpandingMode.SIDE_EXPAND时，不显示展开符号。<br/>2、子菜单的展开样式为SubMenuExpandingMode.EMBEDDED_EXPAND时，展开时展开符号会顺时针旋转180°。<br/>默认值：`$r('sys.symbol.chevron_down').fontSize('24vp')` <br/>3、子菜单的展开样式为SubMenuExpandingMode.STACK_EXPAND时，展开时展开符号会顺时针旋转90°。<br/>默认值：`$r('sys.symbol.chevron_forward').fontSize('20vp').padding('2vp')` <br/>4、取值为undefined时，按默认值处理。  |
+| symbol | ArkTS-Dyn: [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) <br/>ArkTS-Sta: [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) \| undefined | 是   | Menu子菜单展开符号。<br/>1、子菜单的展开样式为SubMenuExpandingMode.SIDE_EXPAND时，不显示展开符号。<br/>2、子菜单的展开样式为SubMenuExpandingMode.EMBEDDED_EXPAND时，展开时展开符号会顺时针旋转180°。展开符号默认使用`new SymbolGlyphModifier($r('sys.symbol.chevron_down')).fontSize('24vp')`。<br/>3、子菜单的展开样式为SubMenuExpandingMode.STACK_EXPAND时，展开时展开符号会顺时针旋转90°。展开符号默认使用`new SymbolGlyphModifier($r('sys.symbol.chevron_forward')).fontSize('20vp').padding(2)`。 <br/>4、取值为undefined时，按默认值处理。  |
 
 ### fontSize<sup>(deprecated)</sup>
 
