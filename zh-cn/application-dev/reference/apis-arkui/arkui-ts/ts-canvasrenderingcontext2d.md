@@ -147,7 +147,7 @@ struct FillStyleExample {
 }
 ```
 
-![zh-cn_image_0000001238712411](figures/zh-cn_image_0000001238712411.png)
+![fillStyle2](figures/fillStyle2.png)
 
 
 ### lineWidth
@@ -189,7 +189,7 @@ struct LineWidthExample {
 }
 ```
 
-![zh-cn_image_0000001194192432](figures/zh-cn_image_0000001194192432.png)
+![lineWidth](figures/lineWidth.png)
 
 
 ### strokeStyle
@@ -234,7 +234,7 @@ struct StrokeStyleExample {
 ```
 
 
-![zh-cn_image_0000001194352432](figures/zh-cn_image_0000001194352432.png)
+![strokeStyle](figures/strokeStyle.png)
 
 
 ### lineCap
@@ -280,7 +280,7 @@ struct LineCapExample {
 }
 ```
 
-![zh-cn_image_0000001238952373](figures/zh-cn_image_0000001238952373.png)
+![lineCap2](figures/lineCap2.png)
 
 
 ### lineJoin
@@ -328,7 +328,7 @@ struct LineJoinExample {
 }
 ```
 
-![zh-cn_image_0000001194032454](figures/zh-cn_image_0000001194032454.png)
+![lineJoin](figures/lineJoin.png)
 
 
 ### miterLimit
@@ -375,7 +375,7 @@ struct MiterLimit {
 }
 ```
 
-![zh-cn_image_0000001239032409](figures/zh-cn_image_0000001239032409.png)
+![miterLimit2](figures/miterLimit2.png)
 
 
 ### font
@@ -484,7 +484,7 @@ struct CanvasExample {
 }
 ```
 
-![zh-cn_image_0000001238832385](figures/zh-cn_image_0000001238832385.png)
+![textAlign](figures/textAlign.png)
 
 
 ### textBaseline
@@ -585,7 +585,7 @@ struct GlobalAlpha {
 }
 ```
 
-![zh-cn_image_0000001194192434](figures/zh-cn_image_0000001194192434.png)
+![globalAlpha](figures/globalAlpha.png)
 
 
 ### lineDashOffset
@@ -830,7 +830,7 @@ struct GlobalCompositeOperation {
 }
 ```
 
-![zh-cn_image_0000001238952375](figures/zh-cn_image_0000001238952375.png)
+![globalCompositeOperation2](figures/globalCompositeOperation2.png)
 
 
 ### shadowBlur
@@ -874,7 +874,7 @@ struct ShadowBlur {
 }
 ```
 
-![zh-cn_image_0000001194032456](figures/zh-cn_image_0000001194032456.png)
+![shadowBlur](figures/shadowBlur.png)
 
 
 ### shadowColor
@@ -918,7 +918,7 @@ struct ShadowColor {
 }
 ```
 
-![zh-cn_image_0000001239032411](figures/zh-cn_image_0000001239032411.png)
+![shadowColor](figures/shadowColor.png)
 
 
 ### shadowOffsetX
@@ -963,7 +963,7 @@ struct ShadowOffsetX {
 }
 ```
 
-![zh-cn_image_0000001193872490](figures/zh-cn_image_0000001193872490.png)
+![shadowOffsetX](figures/shadowOffsetX.png)
 
 
 ### shadowOffsetY
@@ -1008,7 +1008,7 @@ struct ShadowOffsetY {
 }
 ```
 
-![zh-cn_image_0000001238832387](figures/zh-cn_image_0000001238832387.png)
+![shadowOffsetY](figures/shadowOffsetY.png)
 
 
 ### imageSmoothingEnabled
@@ -1056,7 +1056,7 @@ struct ImageSmoothingEnabled {
 }
 ```
 
-![zh-cn_image_0000001238712415](figures/zh-cn_image_0000001238712415.png)
+![imageSmoothingEnabled2](figures/imageSmoothingEnabled2.png)
 
 
 ### height
@@ -1588,7 +1588,7 @@ strokeRect(x: number, y: number, w: number, h: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194352436](figures/zh-cn_image_0000001194352436.png)
+  ![strokeRect](figures/strokeRect.png)
 
 
 ### clearRect
@@ -1641,7 +1641,7 @@ clearRect(x: number, y: number, w: number, h: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238952377](figures/zh-cn_image_0000001238952377.png)
+  ![clearRect](figures/clearRect.png)
 
 
 ### fillText
@@ -1693,7 +1693,7 @@ fillText(text: string, x: number, y: number, maxWidth?: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194032458](figures/zh-cn_image_0000001194032458.png)
+  ![fillText](figures/fillText.png)
 
 
 ### strokeText
@@ -1846,7 +1846,7 @@ stroke(): void
   }
   ```
 
-  ![zh-cn_image_0000001238832389](figures/zh-cn_image_0000001238832389.png)
+  ![stroke](figures/stroke.png)
 
 ### stroke
 
@@ -1898,7 +1898,7 @@ stroke(path: Path2D): void
   }
   ```
 
-  ![zh-cn_image_0000001238832389](figures/zh-cn_image_0000001238832390.png)
+  ![stroke2](figures/stroke2.png)
 
 ### beginPath
 
@@ -1946,7 +1946,7 @@ beginPath(): void
   }
   ```
 
-  ![zh-cn_image_0000001238712417](figures/zh-cn_image_0000001238712417.png)
+  ![beginPath](figures/beginPath.png)
 
 
 ### moveTo
@@ -2003,7 +2003,7 @@ moveTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194192438](figures/zh-cn_image_0000001194192438.png)
+  ![moveTo2](figures/moveTo2.png)
 
 
 ### lineTo
@@ -2054,7 +2054,7 @@ lineTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194352438](figures/zh-cn_image_0000001194352438.png)
+  ![lineTo](figures/lineTo.png)
 
 
 ### closePath
@@ -2100,7 +2100,7 @@ closePath(): void
   }
   ```
 
-  ![zh-cn_image_0000001238952379](figures/zh-cn_image_0000001238952379.png)
+  ![closePath3](figures/closePath3.png)
 
 
 ### createPattern
@@ -2164,7 +2164,7 @@ createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | nu
   }
   ```
 
-  ![zh-cn_image_0000001194032460](figures/zh-cn_image_0000001194032460.png)
+  ![createPattern](figures/createPattern.png)
 
 
 ### bezierCurveTo
@@ -2241,7 +2241,7 @@ struct BezierCurveTo {
 }
 ```
 
-![zh-cn_image_0000001239032415](figures/zh-cn_image_0000001239032415.png)
+![bezierCurveTo2](figures/bezierCurveTo2.png)
 
 
 ### quadraticCurveTo
@@ -2368,7 +2368,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
   }
   ```
 
-  ![zh-cn_image_0000001238832391](figures/zh-cn_image_0000001238832391.jpeg)
+  ![arc](figures/arc.jpeg)
 
 
 ### arcTo
@@ -2447,7 +2447,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238712419](figures/zh-cn_image_0000001238712419.png)
+  ![arcTo3](figures/arcTo3.png)
 
   > 此示例中，arcTo()创建的圆弧为黑色，圆弧的两条切线为灰色。控制点为红色，起始点为绿色。
   >
@@ -2510,7 +2510,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
   }
   ```
 
-  ![zh-cn_image_0000001194192440](figures/zh-cn_image_0000001194192440.jpeg)
+  ![ellipse](figures/ellipse.jpeg)
 
 
 ### rect
@@ -2561,7 +2561,7 @@ rect(x: number, y: number, w: number, h: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194352440](figures/zh-cn_image_0000001194352440.jpeg)
+  ![rect](figures/rect.jpeg)
 
 ### roundRect<sup>20+</sup>
 
@@ -2704,7 +2704,7 @@ fill(fillRule?: CanvasFillRule): void
   }
   ```
 
-  ![zh-cn_image_0000001238952381](figures/zh-cn_image_0000001238952381.png)
+  ![fill2](figures/fill2.png)
 
 ### fill
 
@@ -2812,7 +2812,7 @@ clip(fillRule?: CanvasFillRule): void
   }
   ```
 
-  ![zh-cn_image_0000001194032462](figures/zh-cn_image_0000001194032462.png)
+  ![clip](figures/clip.png)
 
 ### clip
 
@@ -2910,7 +2910,7 @@ reset(): void
   }
   ```
 
-  ![zh-cn_image_0000001239032460](figures/zh-cn_image_0000001239032460.png)
+  ![reset](figures/reset.png)
 
 
 ### saveLayer<sup>12+</sup>
@@ -3058,7 +3058,7 @@ rotate(angle: number): void
   }
   ```
 
-  ![zh-cn_image_0000001239032417](figures/zh-cn_image_0000001239032417.png)
+  ![rotat3](figures/rotate3.png)
 
 
 ### scale
@@ -3109,7 +3109,7 @@ scale(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001193872498](figures/zh-cn_image_0000001193872498.png)
+  ![scale](figures/scale.png)
 
 
 ### transform
@@ -3247,7 +3247,7 @@ setTransform方法使用的参数和transform()方法相同，但setTransform()�
   }
   ```
 
-  ![zh-cn_image_0000001238712421](figures/zh-cn_image_0000001238712421.png)
+  ![setTransform2](figures/setTransform2.png)
 
 ### setTransform
 
@@ -3308,7 +3308,7 @@ setTransform(transform?: Matrix2D): void
   }
   ```
 
-  ![zh-cn_image_0000001238712422.jpeg](figures/zh-cn_image_0000001238712422.jpeg)
+  ![setTransform2](figures/setTransform2.jpeg)
 
 ### getTransform
 
@@ -3370,7 +3370,7 @@ getTransform(): Matrix2D
   }
   ```
 
-  ![zh-cn_image_0000001219982726.png](figures/zh-cn_image_0000001219982726.png)
+  ![getTransform](figures/getTransform.png)
 
 ### translate
 
@@ -3419,7 +3419,7 @@ translate(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194192446](figures/zh-cn_image_0000001194192446.png)
+  ![translate](figures/translate.png)
 
 
 ### drawImage
@@ -3950,7 +3950,7 @@ setLineDash(segments: number[]): void
   }
   ```
 
-  ![zh-cn_image_000000127777771](figures/zh-cn_image_000000127777771.png)
+  ![setLineDash](figures/setLineDash.png)
 
 
 ### getLineDash
@@ -4120,7 +4120,7 @@ toDataURL(type?: string, quality?: any): string
     }
   }
   ```
-  ![zh-cn_image_0000001238952387](figures/zh-cn_image_0000001194192441.png)  
+  ![toDataURL](figures/toDataURL.png)  
 
 
 ### restore
@@ -4275,7 +4275,7 @@ createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGrad
   }
   ```
 
-  ![zh-cn_image_0000001194032516](figures/zh-cn_image_0000001194032516.png)
+  ![createLinearGradient](figures/createLinearGradient.png)
 
 
 ### createRadialGradient
@@ -4338,7 +4338,7 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
   }
   ```
 
-  ![zh-cn_image_0000001238952407](figures/zh-cn_image_0000001238952407.png)
+  ![createRadialGradient](figures/createRadialGradient.png)
 
 ### createConicGradient<sup>10+</sup>
 
@@ -4395,7 +4395,7 @@ struct CanvasExample {
 }
 ```
 
-![zh-cn_image_0000001239032419](figures/zh-cn_image_0000001239032420.png)
+![createConicGradient](figures/createConicGradient.png)
 
 ### on('onAttach')<sup>13+</sup>
 
