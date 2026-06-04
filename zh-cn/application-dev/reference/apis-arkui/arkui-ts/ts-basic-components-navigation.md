@@ -2259,7 +2259,7 @@ struct NavigationExample {
 }
 ```
 
-![zh-cn_image_navigation](figures/zh-cn_image_navigation.png)
+![zh-cn_image_navigation](figures/image-navigation.png)
 
 
 
