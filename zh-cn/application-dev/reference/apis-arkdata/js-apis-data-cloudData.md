@@ -6,10 +6,9 @@
 <!--Tester: @ltttjs; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-端云服务提供端云协同、端云共享和端云策略。
+端云服务提供端云策略能力。
 
-端云协同提供结构化数据（RDB Store）端云同步的能力。即：云作为数据的中心节点，通过与云的数据同步，实现数据云备份、同账号设备间的数据一致性。
-端云配置提供端云同步策略配置的能力。
+端云策略提供端云同步策略配置的能力。
 
 > **说明：**
 >
@@ -75,6 +74,7 @@ import { cloudData } from '@kit.ArkData';
 | mode | [AutoSyncTriggerMode](#autosynctriggermode) | 否 | 否 | 自动同步触发模式。 |
 
 ## cloudData.setCloudStrategy
+
 setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&gt;): Promise&lt;void&gt;
 
 设置应用自身的云同步策略，使用Promise异步回调。
@@ -92,7 +92,7 @@ setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&g
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -103,16 +103,16 @@ setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&g
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported.|
 
-**样例：**
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 仅WIFI同步
 cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.WIFI]).then(() => {
-    console.info('Succeeded in setting the cloud strategy');
+  console.info('Succeeded in setting the cloud strategy');
 }).catch((err: BusinessError) => {
-    console.error(`Failed to set cloud strategy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set cloud strategy. Code: ${err.code}, message: ${err.message}`);
 });
 
 ```
@@ -121,7 +121,7 @@ cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStr
 
 onAutoSyncTrigger(observer: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
-在已打开端云同步，并且应用关闭自动同步条件下，注册自动同步触发事件通知，自动同步进行时调用回调。
+在已打开端云同步且应用关闭自动同步的条件下，注册自动同步触发事件通知，回调在自动同步触发时被调用。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -133,7 +133,7 @@ onAutoSyncTrigger(observer: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | 是 | 自动同步触发的回调函数。 |
+| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | 是 | 回调函数。返回自动同步触发信息对象。 |
 
 **错误码：**
 
@@ -146,8 +146,6 @@ onAutoSyncTrigger(observer: Callback&lt;AutoSyncTriggerInfo&gt;): void
 **示例：**
 
 ```ts
-import { cloudData } from '@kit.ArkData';
-
 function autoSyncTriggerObserver(info: cloudData.AutoSyncTriggerInfo) {
   console.info(`Auto sync triggered, mode: ${info.mode}`);
 }
@@ -159,7 +157,7 @@ cloudData.onAutoSyncTrigger(autoSyncTriggerObserver);
 
 offAutoSyncTrigger(observer?: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
-取消订阅自动同步触发事件通知。
+取消订阅自动同步触发事件通知。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
@@ -171,7 +169,7 @@ offAutoSyncTrigger(observer?: Callback&lt;AutoSyncTriggerInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | 否 | 自动同步触发的回调函数。如果不传参数，则取消所有已注册的回调。 |
+| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo)&gt; | 否 | 回调函数。返回自动同步触发信息对象。 |
 
 **错误码：**
 
@@ -184,8 +182,6 @@ offAutoSyncTrigger(observer?: Callback&lt;AutoSyncTriggerInfo&gt;): void
 **示例：**
 
 ```ts
-import { cloudData } from '@kit.ArkData';
-
 function autoSyncTriggerObserver(info: cloudData.AutoSyncTriggerInfo) {
   console.info(`Auto sync triggered, mode: ${info.mode}`);
 }
