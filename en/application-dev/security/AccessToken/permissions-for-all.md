@@ -749,7 +749,7 @@ With this permission, the application can obtain custom EDM configuration files,
 
 Allows an application to access and manage in-car audio.
 
-With this permission, the application can set audio effects, manager audio zones, etc.
+With this permission, the application can set audio effects, manage audio zones, etc.
 
 **Permission level**: normal
 
