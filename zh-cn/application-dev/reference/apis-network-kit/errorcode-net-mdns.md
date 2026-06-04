@@ -60,7 +60,7 @@ Callback not found.
 
 **错误描述**
 
-callback 未找到。
+未找到目标服务。
 
 **可能原因**
 
