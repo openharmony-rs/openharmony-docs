@@ -1198,7 +1198,7 @@ GetMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise&lt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[Ringtone错误码](./errorcode-audio-ringtone-sys.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Ringtone错误码](./errorcode-audio-ringtone-sys.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1232,7 +1232,7 @@ systemSoundManagerInstance.GetMockHapticRingtonePlayer(context, hapticUri).then(
 
 GetMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise&lt;RingtonePlayer | null&gt;
 
-获取模拟触觉铃声播放器，根据指定的铃声类型和铃音文件URI，播放该铃音文件对应的振动文件及其模拟触觉声音文件。使用Promise异步回调。
+获取模拟触觉铃声播放器，根据指定的铃声类型和铃音文件URI播放该铃音文件对应的振动文件及其模拟触觉声音文件。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1243,7 +1243,7 @@ GetMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUr
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。F
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -1253,7 +1253,7 @@ GetMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUr
 | -------- | --------------------------------| ---- | --------------------------- |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。            |
 | type     | [RingtoneType](#ringtonetype)   | 是   | 待获取播放器的铃声类型。 |
-| ringtoneUri     | string  | 是   | 铃音文件的URI, 需确保在系统文件中真实存在。<br>如果为自定义铃声需使用[addCustomizedTone](#addcustomizedtone12)接口返回的ringtoneUri，确保铃音文件URI在铃音库中存在。 |
+| ringtoneUri     | string  | 是   | 铃音文件的URI,需确保在系统文件中真实存在。<br>如果为自定义铃声需使用[addCustomizedTone](#addcustomizedtone12)接口返回的ringtoneUri，确保铃音文件URI在铃音库中存在。 |
 
 **返回值：**
 
@@ -1263,12 +1263,12 @@ GetMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[Ringtone错误码](./errorcode-audio-ringtone-sys.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Ringtone错误码](./errorcode-audio-ringtone-sys.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
 | 202 |Caller is not a system application.|
-| 20700002 |Parameter verification failed. Possible causes: 1.The type exceeds the valid range, please use the RingtoneType enum for input. 2.The ringtoneUri does not exist or is incorrectly formatted, please use the ringtoneUri returned by the [addCustomizedTone](#addcustomizedtone12).|
+| 20700002 |Parameter verification failed. Possible causes: 1. The type exceeds the valid range, please use the RingtoneType enum for input. 2. The ringtoneUri does not exist or is incorrectly formatted, please use the ringtoneUri returned by the [addCustomizedTone](#addcustomizedtone12).|
 | 5400103  |I/O error. The ringtone database access timed out or encountered an error. It is recommended to restart your phone.|
 
 **示例：**
