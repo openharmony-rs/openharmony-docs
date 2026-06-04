@@ -609,7 +609,7 @@ query(table: string, fields: Array&lt;string&gt;, queryCount: number, queryCurso
 | ----------- | ------------- | ---- | ------------------------ |
 | table       | string        | 是   | 表名。                   |
 | fields      | Array&lt;string&gt; | 是   | 表示要查询的字段名数组。 |
-| queryCount  | number        | 是   | 表示要查询的数据记录数。 |
+| queryCount  | number        | 是   | 表示要查询的数据记录条数。 |
 | queryCursor | string        | 是   | 表示要查询的游标。 |
 
 **返回值：**

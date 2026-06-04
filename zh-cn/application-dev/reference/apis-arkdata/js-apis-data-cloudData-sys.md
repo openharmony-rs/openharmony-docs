@@ -84,7 +84,7 @@ let extraData: cloudData.ExtraData = {
 | table   | string | 否   | 否   | 查询的表名。如返回值为"cloud_notes"，表示查询结果是表名为"cloud_notes"的同步信息。 |
 | inserted   | number | 否   | 否   | 本地新增且未同步到云端的数据条数，如返回值为2，表示本地新增2条数据且还未同步到云端。          |
 | updated   | number | 否   | 否   | 云端同步之后，本地或云端修改还未同步的数据条数，如返回值为2，表示本地或云端修改还有2条数据未同步。 |
-| normal | number | 否   | 否   | 端云一致的数据。如返回值为2，表示本地与云端一致的数据为2条。 |
+| normal | number | 否   | 否   | 端云一致的数据条数。如返回值为2，表示本地与云端一致的数据为2条。 |
 
 ## SyncStatus<sup>18+</sup>
 
