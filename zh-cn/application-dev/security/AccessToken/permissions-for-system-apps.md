@@ -6277,7 +6277,7 @@
 
 ## ohos.permission.ARKWEBCORE_SYS_CAP
 
-允许系统应用调用ArkWebCore扩展功能。
+允许系统应用调用ArkWebCore的扩展功能。
 
 **权限级别**：system_basic
 
