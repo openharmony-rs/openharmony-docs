@@ -54,9 +54,9 @@
 
 ### 接入AVSession
 
-当创建的音频流类型为STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_AUDIOBOOK或STREAM_USAGE_GAME时，无论是将应用退至后台继续播放，还是在后台启动播放，都必须接入AVSession。<br>
+当创建的音频流类型为STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_AUDIOBOOK或STREAM_USAGE_GAME时，无论是将应用退至后台继续播放，还是在后台启动播放，都必须接入AVSession。
 
-建议在应用启动或开始播放业务前创建AVSession，在应用进程结束或退出播放业务时释放，避免频繁创建和释放影响播放连续性。后台播放期间需确保AVSession对象实例一直存在，避免被系统回收，例如使用类成员变量而非局部变量保存。<br>
+建议在应用启动或开始播放业务前创建AVSession，在应用进程结束或退出播放业务时释放，避免频繁创建和释放影响播放连续性。后台播放期间需确保AVSession对象实例一直存在，避免被系统回收，例如使用类成员变量而非局部变量保存。
 
 创建AVSession后，为了保证接入体验，要求设置以下元数据并注册以下控制命令。
 
