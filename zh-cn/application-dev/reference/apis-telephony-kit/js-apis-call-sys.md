@@ -6130,7 +6130,7 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 
 ## XCallType
 
-表示XCall的类型
+表示XCall的类型。
 
 **起始版本**: 26.0.0
 
