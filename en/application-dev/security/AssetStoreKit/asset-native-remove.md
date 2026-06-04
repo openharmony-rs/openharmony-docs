@@ -2,14 +2,15 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4c605d27e0af7c49e44095d77dd99bf8c13d3e25 translatedAt=2026-06-03T09:11:39.664Z pushedAt=2026-06-03T09:52:38.305Z -->
 
 ## Available APIs
 
-You can use [OH_Asset_Remove](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_remove) to remove an asset.
+You can refer to the API documentation for detailed instructions on the asset removal API [OH_Asset_Remove](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_remove).
 
 The following table describes the asset attributes.
 
@@ -51,13 +52,15 @@ Remove asset **demo_alias**.
 For details about how to remove an asset in a group, see [Removing an Asset from a Group](asset-native-group-access-control.md#removing-an-asset-from-a-group).
 
 1. Link the dynamic libraries in the CMake script.
+
    ```txt
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
 2. Include header files.
+
    <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    #include "napi/native_api.h"
    #include <string.h>
@@ -65,8 +68,9 @@ For details about how to remove an asset in a group, see [Removing an Asset from
    ```
 
 3. Remove an asset.
+
    <!-- @[remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    static napi_value RemoveAsset(napi_env env, napi_callback_info info)
    {

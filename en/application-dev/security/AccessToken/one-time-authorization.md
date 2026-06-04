@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4c605d27e0af7c49e44095d77dd99bf8c13d3e25 translatedAt=2026-06-03T09:09:04.127Z pushedAt=2026-06-03T09:16:29.257Z -->
 
 To comply with the minimum authorization principle and protect user data against unauthorized access from applications and abuse, the **Allow this time only** option is added to the user authorization dialog box for certain sensitive permissions.
 
@@ -28,8 +29,11 @@ Path: **Settings** > **Privacy** > **Permission manager** > **Apps** > *Target a
 Currently, the **Allow this time only** option is available only for the following permissions. When an application requests any of these permissions, the user authorization dialog box displayed contains the **Allow this time only** option, and permission settings dialog box contains the **Ask each time** option.
 
 - [ohos.permission.READ_PASTEBOARD](restricted-permissions.md#ohospermissionread_pasteboard)
+
 - [ohos.permission.APPROXIMATELY_LOCATION](permissions-for-all-user.md#ohospermissionapproximately_location)
+
 - [ohos.permission.LOCATION](permissions-for-all-user.md#ohospermissionlocation)
+
 - [ohos.permission.LOCATION_IN_BACKGROUND](permissions-for-all-user.md#ohospermissionlocation_in_background)
 
 ## Constraints
@@ -40,8 +44,8 @@ Currently, the **Allow this time only** option is available only for the followi
 
      In other cases, the permission will be revoked after a 10-second timer has expired. If the application needs the permission again, you need to request the permission.
 
-  - When an application with the temporary permission is switched to the background, a 10-second timer starts. During the 10 seconds, if the application widget is visible on the home screen or the application has a continuous task, the timer stops.
-  
+  - When the application switches to the background, a 10-second timer starts. If the application is in the widget visibility state or has set a background continuous task during the process, the timer stops.
+
       When the application widget is invisible on the home screen or the continuous task is complete, the timer starts again. The temporary permission will be revoked when the timer has expired.
 
       <!--RP2-->
