@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @zcdqs; @rongShao-Z-->
+<!--Owner: @yylong; @rongShao-Z-->
 <!--Designer: @yylong; @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
