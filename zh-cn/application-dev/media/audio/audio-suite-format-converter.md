@@ -23,7 +23,6 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 ```cpp
 #include <ohaudiosuite/native_audio_converter.h>
 ```
-音频格式转换相关接口返回值请参考：[OH_AudioConverter_Result](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_result)。
 
 详细的API说明请参考：[AudioConverter](../../reference/apis-audio-kit/capi-audioconverter.md)。
 
@@ -80,12 +79,11 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 - 采样率：[SAMPLE_RATE_8000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)、[SAMPLE_RATE_11025](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)、[SAMPLE_RATE_12000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)、[SAMPLE_RATE_16000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)、[SAMPLE_RATE_22050](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)、[SAMPLE_RATE_24000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)、[SAMPLE_RATE_32000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)、[SAMPLE_RATE_44100](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)、[SAMPLE_RATE_48000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)、[SAMPLE_RATE_64000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)、[SAMPLE_RATE_88200](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)、[SAMPLE_RATE_96000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)、[SAMPLE_RATE_176400](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)、[SAMPLE_RATE_192000](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_samplerate)。
 
 - 声道布局：[CH_LAYOUT_MONO](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_STEREO](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_STEREO_DOWNMIX](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_2POINT1](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_3POINT0](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_SURROUND](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_3POINT1](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_4POINT0](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_QUAD_SIDE](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_QUAD](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_2POINT0POINT2](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_4POINT1](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_5POINT0](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_5POINT0_BACK](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_2POINT1POINT2](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_3POINT0POINT2](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_5POINT1](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_5POINT1_BACK](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_6POINT0](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_3POINT1POINT2](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_6POINT0_FRONT](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_HEXAGONAL](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_6POINT1](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_6POINT1_BACK](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_6POINT1_FRONT](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_7POINT0](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_7POINT0_FRONT](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_7POINT1](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_OCTAGONAL](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_5POINT1POINT2](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_7POINT1_WIDE](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)、[CH_LAYOUT_7POINT1_WIDE_BACK](../../reference/apis-avcodec-kit/capi-native-audio-channel-layout-h.md#oh_audiochannellayout)。
-
 - 采样格式：[AUDIO_SAMPLE_U8](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)、[AUDIO_SAMPLE_S16LE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)、[AUDIO_SAMPLE_S24LE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)、[AUDIO_SAMPLE_S32LE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)、[AUDIO_SAMPLE_F32LE](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audio_sampleformat)。
 
 ### 创建格式转换器
 
-   <!-- @[converter_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_converter_test.cpp) -->
+   <!-- @[converter_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
    
    ``` C++
    // 设置输入格式。
@@ -117,7 +115,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    创建输入数据回调函数`RequestDataCallback`，函数类型为[OH_AudioConverter_RequestDataCallback()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_requestdatacallback)，调用[OH_AudioConverter_SetInputCallback()](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_setinputcallback)接口设置回调函数。
 
    输入数据回调函数。
-   <!-- @[input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_converter_test.cpp) -->
+   <!-- @[input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
    
    ``` C++
    int32_t AudioConverterRequestDataCallback(
@@ -159,7 +157,7 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    ```
 
    设置输入数据回调。
-   <!-- @[set_input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_converter_test.cpp) -->
+   <!-- @[set_input_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
    
    ``` C++
    // 设置输入回调。
@@ -181,9 +179,9 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
    >   - `OH_AudioConverter_Process()`返回`AUDIOCONVERTER_SUCCESS`。
    >   - `outputSize`为0。
    >   - 所有输入数据已经结束（回调函数已经返回了`AUDIOCONVERTER_INPUT_DATA_FINISHED`）。
-   > - `AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA`和`AUDIOCONVERTER_INPUT_DATA_FINISHED`状态下，`OH_AudioConverter_Process()`会返回[AUDIOCONVERTER_SUCCESS](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_result)和`outputSize = 0`。因此，不能仅凭`outputSize = 0`或`result = AUDIOCONVERTER_SUCCESS`判断数据处理已经完成，还需要调用方确保所有数据已经输入结束。
+   > - `AUDIOCONVERTER_INPUT_NO_AVAILABLE_DATA`和`AUDIOCONVERTER_INPUT_DATA_FINISHED`状态下，`OH_AudioConverter_Process()`会返回`SUCCESS`和`outputSize = 0`。因此，不能仅凭`outputSize = 0`或`result = SUCCESS`判断数据处理已经完成，还需要调用方确保所有数据已经输入结束。
 
-   <!-- @[converter_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_converter_test.cpp) -->
+   <!-- @[converter_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
    
    ``` C++
    // 处理音频数据。
@@ -239,16 +237,18 @@ target_link_libraries(sample PUBLIC libohaudiosuite.so)
 
 ###  销毁格式转换器
 
-   <!-- @[converter_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_converter_test.cpp) -->
+   <!-- @[converter_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp) -->
    
    ``` C++
    OH_AudioConverter_Destroy(testData->converter);
    ```
    
+**错误码说明**：详见API文档[OH_AudioConverter_Result](../../reference/apis-audio-kit/capi-native-audio-converter-h.md#oh_audioconverter_result)。
+   
 ## 完整示例
 
 以48kHz双声道16-bit PCM音频转换为192kHz六声道24-bit PCM音频为例。
 
-   - [音频格式转换示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_converter_test.cpp)
+   - [音频格式转换示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp)
    
   
