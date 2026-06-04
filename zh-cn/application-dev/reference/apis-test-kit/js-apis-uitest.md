@@ -5934,7 +5934,7 @@ isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promis
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<boolean> | Promise对象。返回长按操作期间目标控件是否存在。true：存在。false：不存在 |
 
 **错误码：**
 
