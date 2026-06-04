@@ -726,76 +726,80 @@ async function preview(cameraManager: camera.CameraManager, cameraInfo: camera.C
 }
 ```
 
- ## isLogViewAssistSupported<sup>25+</sup>
- 	 
- 	 isLogViewAssistSupported(): boolean
- 	 
- 	 LOG视频下，查询是否支持辅助监看功能
- 	 
- 	 **原子化服务API：**从API version 26开始，该接口支持在原子化服务中使用。
- 	 
- 	 **系统能力：** SystemCapability.Multimedia.Camera.Core
- 	 
- 	 **示例：**
- 	 
- 	 ```ts
- 	 import { BusinessError } from '@kit.BasicServicesKit';
- 	 
- 	 function isLogViewAssistSupported(previewOutput: camera.PreviewOutput): boolean {
- 	   let supported: boolean = false;
- 	   try {
- 	     supported = previewOutput.isLogViewAssistSupported();
- 	   } catch (error) {
- 	     // 失败返回错误码error.code并处理。
- 	     let err = error as BusinessError;
- 	     console.error(`The previewOutput.isLogViewAssistSupportedcall failed. error code: ${err.code}`);
- 	   }
- 	   return supported;
- 	 }
- 	 ```
- 	 
- 	 ## setLogViewAssistEnable<sup>26+</sup>
- 	 
- 	 setLogViewAssistEnable(enable: boolean): void
- 	 
- 	 LOG视频下，使能预览监看开关
- 	 使能之前，可先使用方法[isLogViewAssistSupported](#isLogViewAssistSupported25)对设备是否支持预览带宽压缩进行检查。
- 	 
- 	 > **说明：**
- 	 > 该接口只能在使用[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11)接口之后调用
- 	 
- 	 **原子化服务API：**从API version 26开始，该接口支持在原子化服务中使用。
- 	 
- 	 **系统能力：** SystemCapability.Multimedia.Camera.Core
- 	 
- 	 **参数：**
- 	 
- 	 | 参数名      | 类型                    | 必填 | 说明                                       |
- 	 | -------- | ---------------------- | ---- | ------------------------------------------ |
- 	 | enable  | boolean | 是  | 是否使能辅助监看。true表示使能，false表示不使能。 |
- 	 
- 	 **错误码：**
- 	 
- 	 以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
- 	 
- 	 | 错误码ID    | 错误信息                                           |
- 	 | -------- |----------------------------------------------- |
- 	 | 801  | Capability not supported. |
- 	 | 7400103  | Session not config. |
- 	 | 7400201  | Camera service fatal error. |
- 	 
- 	 **示例：**
- 	 
- 	 ```ts
- 	 import { BusinessError } from '@kit.BasicServicesKit';
- 	    
- 	 function setLogViewAssistEnable(previewOutput: camera.PreviewOutput, enable: boolean): void {
- 	   try {
- 	     previewOutput.setLogViewAssistEnable(enable);
- 	   } catch (error) {
- 	     // 失败返回错误码error.code并处理。
- 	     let err = error as BusinessError;
- 	     console.error(`The previewOutput.setLogViewAssistEnable call failed. error code: ${err.code}`);
- 	   }
- 	 }
- 	 ```
+## isLogViewAssistSupported<sup>26+</sup>
+
+isLogViewAssistSupported(): boolean
+
+LOG视频下，查询是否支持预览辅助监看功能。
+
+> **说明：**
+> 预览辅助监看效果仅支持 1080P 及以下分辨率。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isLogViewAssistSupported(previewOutput: camera.PreviewOutput): boolean {
+let supported: boolean = false;
+try {
+    supported = previewOutput.isLogViewAssistSupported();
+} catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The previewOutput.isLogViewAssistSupportedcall failed. error code: ${err.code}`);
+}
+return supported;
+}
+```
+
+## setLogViewAssistEnable<sup>26+</sup>
+
+setLogViewAssistEnable(enable: boolean): void
+
+LOG视频下，使能预览监看开关之前，可先使用方法[isLogViewAssistSupported](#isLogViewAssistSupported26)查询设备是否支持预览辅助监看。
+
+> **说明：**
+> 
+>- 该接口只能在使用[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11)接口之后调用。
+>- 预览辅助监看效果仅支持 1080P 及以下分辨率。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| enable  | boolean | 是  | 是否使能辅助监看。true表示使能，false表示不使能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID    | 错误信息                                           |
+| -------- |----------------------------------------------- |
+| 801  | Capability not supported. |
+| 7400103  | Session not config. |
+| 7400201  | Camera service fatal error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setLogViewAssistEnable(previewOutput: camera.PreviewOutput, enable: boolean): void {
+try {
+    previewOutput.setLogViewAssistEnable(enable);
+} catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The previewOutput.setLogViewAssistEnable call failed. error code: ${err.code}`);
+}
+}
+```
