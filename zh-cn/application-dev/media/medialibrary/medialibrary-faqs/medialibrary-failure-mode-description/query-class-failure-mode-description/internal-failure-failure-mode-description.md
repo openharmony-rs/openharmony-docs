@@ -116,7 +116,7 @@
 // 案例：FetchResult内部数据异常时报错14000011。
 // 错误码： 14000011 - 内部错误。
 
-const TAG = 'Case05_InnerFail';
+const TAG = 'Case_InnerFail';
 
 async trigger14000011Error(context: common.Context): Promise<void> {
   const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -158,8 +158,10 @@ async trigger14000011Error(context: common.Context): Promise<void> {
 ### 日志信息
 
 ```log
-E Case05_InnerFail Test1 Error code: 14000011
-E Case05_InnerFail Test1 Error message: system inner fail
+E     Case_InnerFail Test1 Error code: 14000011
+E     Case_InnerFail Test1 Error message: System inner fail
+I     Case_InnerFail Test2: query with valid URI
+I     Case_InnerFail Assets count: 1
 ```
 
 ### 常见易错代码

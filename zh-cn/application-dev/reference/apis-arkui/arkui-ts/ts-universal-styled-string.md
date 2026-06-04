@@ -196,7 +196,7 @@ ArkTS-Dyn: static fromHtml(html: string): Promise\<StyledString>
 
 ArkTS-Sta: static fromHtml(html: string): Promise\<StyledString | undefined>
 
-将HTML格式字符串转换成属性字符串，当前支持转换的HTML标签范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>、\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>。支持将标签中的style属性样式转换成对应的属性字符串样式。
+将HTML格式字符串转换成属性字符串，当前支持转换的HTML标签范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>、\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>、\<ol>、\<ul>、\<li>。支持将标签中的style属性样式转换成对应的属性字符串样式。
 
 使用方法参考[示例12（fromHtml和toHtml互相转换）](#示例12fromhtml和tohtml互相转换)和[示例18（fromHtml转换）](#示例18fromhtml转换)。
 
@@ -225,6 +225,9 @@ ArkTS-Sta: static fromHtml(html: string): Promise\<StyledString | undefined>
 | \<h4\>      | 四级标题。<br/>**起始版本：** 26.0.0        |
 | \<h5\>      | 五级标题。<br/>**起始版本：** 26.0.0        |
 | \<h6\>      | 六级标题。<br/>**起始版本：** 26.0.0        |
+| \<ol\>      | 有序列表。<br/>**起始版本：** 26.0.0        |
+| \<ul\>      | 无序列表。<br/>**起始版本：** 26.0.0        |
+| \<li\>      | 列表项。<br/>**起始版本：** 26.0.0          |
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1522,6 +1525,7 @@ invalidate(): void
 | leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 是    | 是   | 获取属性字符串文本段落的自定义缩进信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
 | textDirection<sup>23+</sup>  | [TextDirection](ts-text-common.md#textdirection22) |  是  |  是  | 获取文本方向。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23|
 | shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  是  |  是  | 获取文本着色器效果。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| tailIndents | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<double>   | 是    | 是    | 获取属性字符串文本段落的文本尾部缩进距离。<br/>单位：vp <br/>取值范围：[0, INT32_MAX]<br/>值为0时不做尾部缩进。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 >  **说明：**
 >
@@ -1568,6 +1572,7 @@ constructor(value?: ParagraphStyleInterface)
 | leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 否  | 是    | 设置文本段落的自定义缩进。不支持百分比。<br/>默认值：0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
 | textDirection<sup>23+</sup>  | [TextDirection](ts-text-common.md#textdirection22) |  否  | 是 | 设置文本方向。<br/>默认值：TextDirection.DEFAULT<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 | shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  否  |  是  | 设置文本着色器效果。<br/>该接口与[TextStyleInterface](#textstyleinterface对象说明)的strokeWidth同时设置时，该接口不生效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| tailIndents | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| Array&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt;   | 否  | 是    | 设置文本段落的文本尾部缩进。当提供一个单独的LengthMetrics值时，所有行共享相同的尾部缩进；当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。<br/>默认值：0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0|
 
 ## UserDataSpan
 
@@ -3521,16 +3526,16 @@ struct StyledStringFontConfigsDemo {
 
 ### 示例18（fromHtml转换）
 
-该示例通过[fromHtml](#fromhtml)接口，将HTML中\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>标签转换为属性字符串。
+该示例通过[fromHtml](#fromhtml)接口，将HTML中\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>、\<ol>、\<ul>、\<li>标签转换为属性字符串。
  
-从API版本26.0.0开始，fromHtml新增支持\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>标签。
+从API版本26.0.0开始，fromHtml新增支持\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>、\<ol>、\<ul>、\<li>标签。
 
 ArkTS-Dyn示例：
 ```ts
 @Entry
 @Component
 struct html_convert_demo {
-  @State html: string = '<p><cite>cite</cite><dfn>dfn</dfn></p><p>normal<small>small<small>smaller</small></small></p><h1>一级标题</h1><h2>二级标题</h2><h3>三级标题</h3><h4>四级标题</h4><h5>五级标题</h5><h6>六级标题</h6>';
+  @State html: string = '<p><cite>cite</cite><dfn>dfn</dfn></p><p>normal<small>small<small>smaller</small></small></p><h1>一级标题</h1><h2>二级标题</h2><h3>三级标题</h3><h4>四级标题</h4><h5>五级标题</h5><h6>六级标题</h6><ol><li>Item 1</li><li>Item 2</li></ol><ul><li>Item A</li><li>Item B</li></ul>';
   @State spanString: StyledString | undefined = undefined;
   controller: TextController = new TextController;
 
@@ -3812,3 +3817,179 @@ struct ShaderColorStyle {
 }
 ```
 ![StyledStringShaderStyle](figures/styledStringShaderStyle.png)
+
+### 示例21（设置文本尾部缩进）
+
+该示例通过[ParagraphStyle](#paragraphstyle)中的tailIndents属性，为属性字符串设置文本尾部缩进。
+
+从API版本26.0.0开始，ParagraphStyle接口新增tailIndents属性。
+
+ArkTS-Dyn示例：
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  styledString1:StyledString =
+    new StyledString('未设置tailIndents\n未设置tailIndents\n未设置tailIndents\n未设置tailIndents\n未设置tailIndents', [
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(20) }),
+      },
+    ])
+
+  styledString2:StyledString =
+    new StyledString('设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值', [
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: new ParagraphStyle({
+          tailIndents: LengthMetrics.vp(100),
+        }),
+      },
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(20) }),
+      },
+    ])
+
+  styledString3:StyledString =
+    new StyledString('设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组', [
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: new ParagraphStyle({
+          tailIndents: [LengthMetrics.vp(100), LengthMetrics.vp(50), LengthMetrics.vp(20)],
+        }),
+      },
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(20) }),
+      },
+    ])
+
+  txtController1 = new TextController();
+  txtController2 = new TextController();
+  txtController3 = new TextController();
+
+  build() {
+    Column() {
+      Text(undefined, { controller: this.txtController1 })
+        .onAppear(() => {
+          this.txtController1.setStyledString(this.styledString1);
+        })
+        .textAlign(TextAlign.End)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+        .width('100%')
+
+      Text(undefined, { controller: this.txtController2 })
+        .onAppear(() => {
+          this.txtController2.setStyledString(this.styledString2);
+        })
+        .textAlign(TextAlign.End)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+
+      Text(undefined, { controller: this.txtController3 })
+        .onAppear(() => {
+          this.txtController3.setStyledString(this.styledString3);
+        })
+        .textAlign(TextAlign.End)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Column,Component, Entry, LengthMetrics, Text, StyledString,
+  TextController, ParagraphStyle, StyledStringKey, ParagraphStyleInterface, TextAlign } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  styledString1:StyledString =
+    new StyledString('未设置tailIndents\n未设置tailIndents\n未设置tailIndents\n未设置tailIndents\n未设置tailIndents', [
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: new ParagraphStyle({
+          tailIndents: LengthMetrics.vp(0),
+        } as ParagraphStyleInterface),
+      },
+    ])
+
+  styledString2:StyledString =
+    new StyledString('设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值', [
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: new ParagraphStyle({
+          tailIndents: LengthMetrics.vp(100),
+        } as ParagraphStyleInterface),
+      },
+    ])
+
+  styledString3:StyledString =
+    new StyledString('设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组', [
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: new ParagraphStyle({
+          tailIndents: [LengthMetrics.vp(100), LengthMetrics.vp(50), LengthMetrics.vp(20)],
+        } as ParagraphStyleInterface),
+      },
+    ])
+
+  txtController1 : TextController = new TextController();
+  txtController2 : TextController = new TextController();
+  txtController3 : TextController = new TextController();
+
+  build() {
+    Column(undefined) {
+      Text(undefined, { controller: this.txtController1 })
+        .onAppear(() => {
+          this.txtController1.setStyledString(this.styledString1);
+        })
+        .borderWidth(1)
+        .textAlign(TextAlign.End)
+        .width('100%')
+
+      Text(undefined, { controller: this.txtController2 })
+        .onAppear(() => {
+          this.txtController2.setStyledString(this.styledString2);
+        })
+        .borderWidth(1)
+        .textAlign(TextAlign.End)
+        .width('100%')
+
+      Text(undefined, { controller: this.txtController3 })
+        .onAppear(() => {
+          this.txtController3.setStyledString(this.styledString3);
+        })
+        .borderWidth(1)
+        .textAlign(TextAlign.End)
+        .width('100%')
+    }
+  }
+}
+```
+
+![styledStringTailIndents](figures/styledStringTailIndents.png)

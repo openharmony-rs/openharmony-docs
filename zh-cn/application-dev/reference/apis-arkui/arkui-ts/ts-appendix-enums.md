@@ -412,15 +412,11 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
 |名称                | 值 | 说明                                   |
 |-------------------| -- | ------------------------------------- |
-| BEGIN<sup>(deprecated) </sup>             | 0  | 表冠开始转动。<br/> **说明：** 从API version 18 开始支持，从API version 24 开始废弃。                          |
-| UPDATE            | 1  | 表冠转动中。                            |
-| END                | 2  | 表冠停止转动。                          |
+| BEGIN<sup>(deprecated) </sup>             | 0  | 表冠开始转动。<br/> **说明：** 从API version 18 开始支持，从API version 24 开始废弃。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 18                          |
+| UPDATE            | 1  | 表冠转动中。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23                            |
+| END                | 2  | 表冠停止转动。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23                          |
 
 ## CrownSensitivity<sup>18+</sup>
 
@@ -1467,6 +1463,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型 | 说明                       |
 | ---- | -------------------------- |
 |  T   | 表示该类型声明的对象是自定义类型。 |
@@ -2041,6 +2041,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值 | 说明           |
 | ------ | ------ | ------------ |

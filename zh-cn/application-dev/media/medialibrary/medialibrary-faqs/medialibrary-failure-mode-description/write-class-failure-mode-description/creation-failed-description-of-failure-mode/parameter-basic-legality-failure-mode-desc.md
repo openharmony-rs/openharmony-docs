@@ -100,7 +100,7 @@
 
    - 结果：photoCreationConfigs为空数组，参数类型不正确。
 
-3. 检查配置正确性，确认photoCreationConfigs配置是否正确。
+3. 检查配置正确性，确认photoCreationConfigs配置是否正确，module.json是否缺少label和icon配置项。
 
    - 检查photoCreationConfigs的配置项。
 
@@ -139,7 +139,7 @@
 // 案例：调用showAssetsCreationDialog保存图片时报错401。
 // 错误码： 401 - 参数错误。
 
-const TAG = 'Case13_ParamInvalid';
+const TAG = 'Case_ParamInvalid';
 
 async triggerParamInvalidError(context: common.Context): Promise<void> {
   const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -199,14 +199,14 @@ async triggerParamInvalidError(context: common.Context): Promise<void> {
 
 
 ```log
-I     Case13_ParamInvalid Test1: empty srcFileUris
-E     Case13_ParamInvalid Test1 Error code: 401
-E     Case13_ParamInvalid Test1 Error message: input parameter invalid
-I     Case13_ParamInvalid Test2: empty photoCreationConfigs
-E     Case13_ParamInvalid Test2 Error code: 401
-E     Case13_ParamInvalid Test2 Error message: input parameter invalid
-I     Case13_ParamInvalid Test3: valid parameters
-I     Case13_ParamInvalid Test3 success
+I     Case_ParamInvalid Test1: empty srcFileUris
+E     Case_ParamInvalid Test1 Error code: 401
+E     Case_ParamInvalid Test1 Error message: srcFileUris must be an array with size between 1 and 100.
+I     Case_ParamInvalid Test2: empty photoCreationConfigs
+E     Case_ParamInvalid Test2 Error code: 401
+E     Case_ParamInvalid Test2 Error message: photoCreationConfigs must be an array with size between 1 and 100.
+I     Case_ParamInvalid Test3: valid parameters
+I     Case_ParamInvalid Test3 success
 ```
 
 ### 常见易错代码

@@ -203,7 +203,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
          let sessionId =
          abilityConnectionManager.createAbilityConnectionSession("collabTest", context, peerInfo, connectOptions);
          hilog.info(0x0000, 'testTag', 'createSession sessionId is', sessionId);
-       } catch (error: Error) {
+       } catch (error) {
          hilog.error(0x0000, 'testTag', error.message);
        }
      }
@@ -296,7 +296,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
          AppStorage.setOrCreate<common.UIAbilityContext>('sessionId', this.context);
          hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
-       } catch (error:Error) {
+       } catch (error) {
          hilog.error(0x0000, 'testTag', error.message);
        }
        return sessionId;
@@ -429,7 +429,7 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;ConnectResult&gt; | 以Promise形式返回[连接结果](#connectresult)。 |
+| Promise&lt;ConnectResult&gt; | 以Promise形式返回连接结果。 |
 
 **错误码：**
 
@@ -616,7 +616,7 @@ export default class EntryAbility extends UIAbility {
       sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
       AppStorage.setOrCreate('sessionId', sessionId);
       hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
-    } catch (error:Error) {
+    } catch (error) {
       hilog.error(0x0000, 'testTag', error.message);
     }
     return sessionId;

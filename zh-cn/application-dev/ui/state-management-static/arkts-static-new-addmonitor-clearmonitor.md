@@ -24,9 +24,9 @@
 
 * addMonitor可以在一次调用中为一个状态变量或多个状态变量（以数组形式）添加回调函数。
 
-```typescript
-'use static'
+<!-- @[AddMonitorBasic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorBasic.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
@@ -88,9 +88,9 @@ struct Page {
 
 * addMonitor支持重复监听：即使状态变量和回调函数相同，每次调用都会返回一个唯一的句柄，代表独立的监听关系。
 
-```typescript
-'use static'
+<!-- @[AddMonitorDuplicated](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorDuplicated.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
@@ -143,9 +143,9 @@ struct Page {
 
 * addMonitor可以添加同步模式不同但状态变量与回调函数相同的监听关系，同步模式会在状态变量修改时立即触发回调函数，而异步模式的回调函数调用会推迟到下一次UI更新时调用。
 
-```typescript
-'use static'
+<!-- @[AddMonitorSyncMode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorSyncMode.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
@@ -200,9 +200,9 @@ struct Page {
 
 * 如果监听的是组件的状态变量，那么建议将组件作为`owner`传递给`addMonitor`。
 
-```typescript
-'use static'
+<!-- @[AddMonitorOwner](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorOwner.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, Text, UIUtils } from '@kit.ArkUI';
 
 @Entry
@@ -241,9 +241,9 @@ struct Page {
 
 * 开发者向`addMonitor`传递`MonitorOptions.path`时，函数内部会优先使用开发者传递的`path`，若传入路径数少于状态变量数则自动生成，若传入路径多于状态变量数，则多余部分忽略不计。
 
-```typescript
-'use static'
+<!-- @[AddMonitorPath](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorPath.ets) -->
 
+``` TypeScript
 import { UIUtils, IMonitor, IMonitorDecoratedVariable, Local, Entry, ComponentV2,
          Row, Column, Text, Button, UIUtils } from '@kit.ArkUI';
 
@@ -324,9 +324,9 @@ struct Page {
 
 * 通过向`addMonitor`传递[MonitorOptions.owner](../../reference/apis-arkui/js-apis-stateManagement-static.md#monitoroptions23)参数，可为`addMonitor`启用组件冻结功能。启用组件冻结后，被监听的状态变量修改后回调函数的触发会被推迟，直到包含该状态变量的组件从`inactive`状态变为`active`时才会触发。`MonitorOptions.owner`参数仅支持为`@ObservedV2`类中属性的监听器添加组件冻结能力。如果监听的属性是组件里的状态变量，如`@Local`等状态变量装饰器修饰的属性，则该状态变量默认继承组件的冻结能力，调用`addMonitor`时无需传递`MonitorOptions.owner`参数。
 
-```typescript
-'use static'
+<!-- @[AddMonitorFreeze](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorFreeze.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, DatePicker, Divider, Entry, FontWeight, ForEach, IMonitor, IMonitorDecoratedVariable, Local, LocalStorageLink, ObservedV2, Param, Require, Row, Scroll, TabContent, Tabs, Text, TextAlign, Trace, UIUtils } from '@kit.ArkUI';
 
 @Entry
@@ -391,9 +391,9 @@ struct FreezeChild {
 
 * 对于可选参数`MonitorOptions.owner`，若其被[@Component](./arkts-static-create-component.md)而非@ComponentV2装饰，则在运行时抛出130000错误。
 
-```typescript
-'use static'
+<!-- @[add_monitor_owner_error](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorOwnerError.ets) -->
 
+``` TypeScript
 import { Button, Column, Component, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, State, Text, UIUtils } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -433,7 +433,7 @@ struct Test {
 
 @Entry
 @ComponentV2
-struct Page {
+struct AddMonitorOwnerErrorExample {
   build() {
     Column() {
       Test()
@@ -444,9 +444,10 @@ struct Page {
 
 * addMonitor监听的变量类型与在回调函数中访问的类型必须匹配，否则会抛出异常，且无法通过`dirty`获取状态变量的新值与旧值，但仍能触发回调函数。
 
-```typescript
-'use static'
 
+<!-- @[add_monitor_type_mismatch](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorTypeMismatch.ets) -->
+
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
@@ -478,7 +479,7 @@ export class Test {
 
 @Entry
 @ComponentV2
-struct Page {
+struct AddMonitorTypeMismatchExample {
   @Local obj: Test = new Test();
 
   aboutToAppear(): void {
@@ -500,8 +501,9 @@ struct Page {
 
 * addMonitor添加对容器的监听时，修改容器内的元素不会触发回调函数，必须修改对象本身才会触发监听。对于数组内元素的监听请参考[对数组内的元素及其长度的监听](#对数组内的元素及其长度的监听)的使用场景。
 
-```typescript
-'use static'
+<!-- @[add_monitor_container](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorContainer.ets) -->
+
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Text, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
@@ -535,11 +537,11 @@ export class Test {
 
 @Entry
 @ComponentV2
-struct Page {
+struct AddMonitorContainerExample {
   @Local obj: Test = new Test();
 
   aboutToAppear(): void {
-    console.info(`[DynamicMonitor] Test case begin.`);
+    console.info('[DynamicMonitor] Test case begin.');
   }
 
   build() {
@@ -565,9 +567,9 @@ struct Page {
 
 * clearMonitor 无法删除 [@Monitor](./arkts-static-new-monitor.md) 注册的监听关系，且只会影响传入句柄所指代的监听关系，对于相同状态变量与回调函数的监听关系互不影响。
 
-```typescript
-'use static'
+<!-- @[add_monitor_clear_monitor_with_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorClearMonitorWithMonitor.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, Monitor, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
@@ -593,7 +595,7 @@ export class Test {
 
 @Entry
 @ComponentV2
-struct Page {
+struct AddMonitorClearMonitorWithMonitorExample {
   @Local obj: Test = new Test();
 
   aboutToAppear(): void {
@@ -625,8 +627,9 @@ struct Page {
 
 若要使用addMonitor对状态变量进行监听，需要使用@Local/@Trace来修饰被监听的变量，且被监听的变量所在的struct/class需要有@ComponentV2/@ObservedV2修饰。
 
-```typescript
-'use static'
+<!-- @[AddMonitorObservedV2Local](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorObservedV2Local.ets) -->
+
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Text, Trace, UIUtils } from '@kit.ArkUI';
 
 // class使用@ObservedV2修饰
@@ -702,9 +705,9 @@ struct Page {
 
 对数组内的元素和数组的长度监听与对普通状态变量的监听方法是一样的。
 
-```typescript
-'use static'
+<!-- @[AddMonitorArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorArray.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Text, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
@@ -765,9 +768,9 @@ struct Page {
 
 相比于异步模式，同步模式在每一次被监听的变量改变时都会立即触发一次回调函数。
 
-```typescript
-'use static'
+<!-- @[AddMonitorSyncCallback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorSyncCallback.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, Text, UIUtils } from '@kit.ArkUI';
 
 @Entry
@@ -816,9 +819,9 @@ message change from initialized to Index click to change message
 >
 > 在ArkTS-Dyn中，如果在`Index`组件的`aboutToAppear`中修改`message`，会额外触发`onMessageChange`回调；ArkTS-Sta中，由于对[@Monitor回调触发机制更改](./arkts-state-management-dynamic-static-compare.md#修改状态变量后monitor回调的触发机制不同)，导致`aboutToAppear`中修改`message`会覆盖`construtor`里的修改，只会触发一次`onMessageChange`回调。
 
-```typescript
-'use static'
+<!-- @[AddMonitorConstructor](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorConstructor.ets) -->
 
+``` TypeScript
 import { ObservedV2, Trace, Local, IMonitor, IMonitorDecoratedVariable, UIUtils,
          ComponentV2, Column, Entry, Button } from '@kit.ArkUI';
 
@@ -863,9 +866,9 @@ struct Page {
 
 和@Monitor不同，addMonitor/clearMonitor可以对不同的@ObservedV2/@ComponentV2实例动态添加监听函数。
 
-```typescript
-'use static'
+<!-- @[AddMonitorDynamicCancel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorDynamicCancel.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Param, Require, Text, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
@@ -963,9 +966,9 @@ UIUtils.addMonitor({ valueCallback: () => this.obj, path: 'obj.*'}, this.onChang
 
 使用新addMonitor方法观察对象属性变化的用例如下。
 
-```ts
-'use static'
+<!-- @[AddMonitorObjectProperty](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AddMonitorDecorator/entry/src/main/ets/pages/AddMonitorObjectProperty.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, ComponentV2, Button,
   ObservedV2, Trace, Local, Monitor, IMonitor, UIUtils, IMonitorDecoratedVariable } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';

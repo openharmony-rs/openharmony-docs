@@ -87,7 +87,7 @@
      ```typescript
      // 动态申请权限（正确方式）。
      let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-     let context: Context = getContext(this) as common.UIAbilityContext;
+     let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      atManager.requestPermissionsFromUser(context, ['ohos.permission.READ_IMAGEVIDEO'], (err: BusinessError, data:  PermissionRequestResult) => {
        if (err) {
          console.error(TAG + `requestPermissionsFromUser fail, err->${JSON.stringify(err)}`);
@@ -124,7 +124,7 @@
 // 案例：调用createAssetRequest创建资产时无权限。
 // 错误码： 201 - Permission denied
 
-const TAG = 'Case11_AuthFailed';
+const TAG = 'Case_AuthFailed';
 
 async triggerAuthFailedError(context: common.Context): Promise<void> {
   const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -150,8 +150,11 @@ async triggerAuthFailedError(context: common.Context): Promise<void> {
 ### 日志信息
 
 ```log
-E     Case11_AuthFailed Error code: 201
-E     Case11_AuthFailed Error message: Permission denied
+E     Case_AuthFailed Error code: 201
+E     Case_AuthFailed Error message: Permission denied
+// 申请权限后。
+I     Case_AuthFailed Test1: create asset without permission
+I     Case_AuthFailed Create success
 ```
 
 ### 常见易错代码

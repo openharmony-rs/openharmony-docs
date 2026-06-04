@@ -59,7 +59,6 @@
     - [状态管理概述](state-management/arkts-state-management-overview.md)
       - [MVVM模式（V1）](state-management/arkts-mvvm.md)
       - [MVVM模式（V2）](state-management/arkts-mvvm-v2.md)
-    - [状态管理术语](state-management/arkts-state-management-glossary.md)
     - [状态管理原理介绍](state-management/arkts-state-management-introduce.md)
     - [状态管理V1和V2更新机制差异](state-management/arkts-v1-v2-update-difference.md)
     - 动态ArkTS的状态管理<!--arkts-state-management-v1-dynamic-->
@@ -163,6 +162,7 @@
         - [状态管理V1V2混用指导（ArkTS-Sta）](state-management-static/arkts-static-v1-v2-mixusage.md)
       - [状态管理优秀实践（ArkTS-Sta）](state-management-static/arkts-static-state-management-best-practices.md)
     - [状态管理动静态差异](state-management-static/arkts-state-management-dynamic-static-compare.md)
+    - [状态管理术语](state-management/arkts-state-management-glossary.md)
   - 学习UI范式渲染控制<!--arkts-rendering-control-->
     - [渲染控制概述](rendering-control/arkts-rendering-control-overview.md)
     - [if/else：条件渲染](rendering-control/arkts-rendering-control-ifelse.md)
@@ -369,7 +369,7 @@
       - [在ArkTS-Dyn中使用ArkTS-Sta的矩阵变换（matrix4）](arkts-dyn-interop-sta-matrix4.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的资源（Resource）](arkts-dyn-interop-sta-resource.md)
       - 状态管理（V1）互操作<!--ui-arkts-sta-interop-dyn-state-management-->
-        - [在ArkTS-Sta中使用ArkTS-Dyn管理组件拥有的状态](arkts-sta-interop-dyn-statemanager-v1.md)
+        - [在ArkTS-Sta中使用ArkTS-Dyn管理组件拥有的状态](arkts-sta-interop-dyn-statemanagement-v1.md)
         - [在ArkTS-Sta中使用ArkTS-Dyn的@Observed和@ObjectLink（嵌套类对象属性变化）](arkts-sta-interop-dyn-observed.md)
         - [在ArkTS-Sta中使用ArkTS-Dyn管理应用拥有的状态](arkts-sta-interop-dyn-storages.md)
         - [在ArkTS-Dyn中使用ArkTS-Sta管理组件拥有的状态](arkts-dyn-interop-sta-statemanagement-v1.md)
@@ -387,8 +387,8 @@
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)
   - [接入ArkTS页面](ndk-access-the-arkts-page.md)
-  - [添加事件监听](ndk-add-component-events.md)
-  - 添加交互事件<!--arkts-add-event-->
+  - [添加事件响应](ndk-add-event-response.md)
+    - [添加事件监听](ndk-add-component-events.md)
     - [绑定基础输入事件](ndk-bind-input-events.md)
     - [绑定手势事件](ndk-bind-gesture-events.md)
     - [绑定拖拽事件](ndk-drag-event.md)
@@ -407,7 +407,7 @@
       - [使用属性字符串](ndk-styled-string.md)
       - [添加输入框文本事件监听](ndk-textarea-event.md)
   - 使用选择类组件<!--arkts-build-picker-ndk-->
-      - [使用滑动选择器Picker](ndk-picker.md)
+      - [使用滑动选择器 (Picker)](ndk-picker.md)
   - [显示图片（Image）](ndk-image-component.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
   - [构建表单组件](ndk-build-form-components.md)

@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -24,6 +26,10 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 跟踪标志组合类型枚举。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -42,6 +48,10 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | CS       | 0 | 客户端发送。       |
@@ -56,6 +66,10 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | DEFAULT  | 0 | 缺省通信类型。    |
@@ -69,16 +83,22 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | chainId      | bigint | 否 | 否 | 跟踪链标识。 |
-| spanId      | number | 否 | 是 | 分支标识，默认值为0。 |
-| parentSpanId | number | 否 | 是 | 父分支标识，默认值为0。 |
-| flags        | number | 否 | 是 | 跟踪标志位，默认值为0。 |
+| spanId      | ArkTS-Dyn: number <br/> ArkTS-Sta: int | 否 | 是 | 分支标识，默认值为0。 |
+| parentSpanId | ArkTS-Dyn: number <br/> ArkTS-Sta: int | 否 | 是 | 父分支标识，默认值为0。 |
+| flags        | ArkTS-Dyn: number <br/> ArkTS-Sta: int | 否 | 是 | 跟踪标志位，默认值为0。 |
 
 ## hiTraceChain.begin
 
-begin(name: string, flags?: number): HiTraceId
+ArkTS-Dyn: begin(name: string, flags?: number): HiTraceId
+
+ArkTS-Sta: begin(name: string, flags?: int): HiTraceId
 
 开始跟踪，同步接口。
 
@@ -88,12 +108,16 @@ begin(name: string, flags?: number): HiTraceId
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                                             |
 | -------- | -------- | -------- |------------------------------------------------|
 | name  | string | 是 | 跟踪业务名。<br/>建议该参数的长度不要超过63Byte，超出部分将被截断。    |
-| flags | number | 否 | 跟踪标志组合，具体可参考[HiTraceFlag](#hitraceflag)，默认值为0。 |
+| flags | ArkTS-Dyn: number <br/> ArkTS-Sta: int | 否 | 跟踪标志组合，具体可参考[HiTraceFlag](#hitraceflag)，默认值为0。 |
 
 **返回值：**
 
@@ -122,6 +146,10 @@ end(id: HiTraceId): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -146,6 +174,10 @@ getId(): HiTraceId
 获取当前线程TLS中的HiTraceId。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -178,6 +210,10 @@ setId(id: HiTraceId): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -203,6 +239,10 @@ clearId(): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **示例：**
 
 ```ts
@@ -223,6 +263,10 @@ createSpan(): HiTraceId
 创建一个HiTraceId，使用当前线程TLS中的chainId、spanId初始化HiTraceId的chainId、parentSpanId，并为HiTraceId生成一个新的spanId，返回该HiTraceId。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -257,6 +301,10 @@ type为客户端发送CS和客户端接收CR的信息埋点需配套使用；typ
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -284,6 +332,10 @@ isValid(id: HiTraceId): boolean
 判断HiTraceId是否有效，同步接口。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -319,6 +371,10 @@ isFlagEnabled(id: HiTraceId, flag: HiTraceFlag): boolean
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -353,6 +409,10 @@ enableFlag(id: HiTraceId, flag: HiTraceFlag): void
 启用HiTraceId中指定的跟踪标志，同步接口。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 

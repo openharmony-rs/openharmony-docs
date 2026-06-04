@@ -55,13 +55,25 @@ init(): void
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
+**错误码：**
+
+以下错误码的详细介绍请参见[应用灰度错误码](errorcode-hiviewdfx-hiretrieval.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| 36000002 | Multi-instance applications not supported error. Possibly caused by invoking this function in a multi-instance application.         |
+
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
+try {
+  hiRetrieval.init();
+} catch (err) {
+  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
+}
 // 后续可以完成其他的灰度接口调用
 ```
 
@@ -99,13 +111,13 @@ participate(config: HiRetrievalConfig): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
 let config: hiRetrieval.HiRetrievalConfig = {
   'userType': "testUserType",
   'deviceType': "deviceType",
   'deviceModel': "deviceModel"
 }
 try {
+  hiRetrieval.init();
   hiRetrieval.participate(config);
 } catch (err) {
   console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
@@ -140,8 +152,8 @@ quit(): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
 try {
+  hiRetrieval.init();
   hiRetrieval.quit();
 } catch (err) {
   console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
@@ -236,8 +248,8 @@ run(): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
 try {
+  hiRetrieval.init();
   hiRetrieval.run();
 } catch (err) {
   console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);

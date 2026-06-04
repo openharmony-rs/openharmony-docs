@@ -108,7 +108,7 @@
 // 案例：访问PhotoAsset不存在的属性成员。
 // 错误码： 14000014。
 
-const TAG = 'Case16_MemberNotExist';
+const TAG = 'Case_MemberNotExist';
 
 async trigger14000014Error(context: common.Context): Promise<void> {
   const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -155,9 +155,11 @@ async trigger14000014Error(context: common.Context): Promise<void> {
 
 
 ```log
-E Case16_MemberNotExist Test1 Error code: 14000014
-E Case16_MemberNotExist Test1 Error message: member not exist
-I Case16_MemberNotExist Display name: xxx.jpg
+I     Case_MemberNotExist Test1: access property not in fetchColumns
+E     Case_MemberNotExist Test1 Error code: 14000014
+E     Case_MemberNotExist Test1 Error message: member not exist
+I     Case_MemberNotExist Test2: access property in fetchColumns
+I     Case_MemberNotExist Display name: xxx.jpg
 ```
 
 ### 常见易错代码
