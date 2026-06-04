@@ -202,7 +202,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 ### 采集回环音效数据
 
-从API版本26.0.0开始，当应用已在同一进程中通过[硬件回环能力](audio-ear-monitor-loopback.md#开发步骤及注意事项)开启耳返并配置混响等耳返音效时，可以在创建录制流时调用[OH_AudioStreamBuilder_SetCapturerLoopbackEffectEnabled](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerloopbackeffectenabled)接口，使录制流采集经过耳返音效处理后的音频数据。该能力适用于需要录制耳返音效处理结果的K歌、直播等场景。
+从API版本26.0.0开始，当应用已在同一进程中通过[硬件返听模式](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_sta_20260331/zh-cn/application-dev/media/audio/audio-ear-monitor-loopback.md#L55)开启耳返并配置混响等耳返音效时，可以在创建录制流时调用[OH_AudioStreamBuilder_SetCapturerLoopbackEffectEnabled](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setcapturerloopbackeffectenabled)接口，设置录制流采集受耳返音效影响后的音频数据。该能力适用于需要录制耳返音效处理结果的K歌、直播等场景。
 
 需要在调用[OH_AudioStreamBuilder_GenerateCapturer](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)生成录制流前设置该接口，且目标录制流需配置为[AUDIOSTREAM_LATENCY_MODE_FAST](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)低时延模式。
 
