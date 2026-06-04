@@ -3058,7 +3058,7 @@ rotate(angle: number): void
   }
   ```
 
-  ![rotat3](figures/rotate3.png)
+  ![rotate3](figures/rotate3.png)
 
 
 ### scale
