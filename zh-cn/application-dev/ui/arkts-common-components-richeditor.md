@@ -1191,7 +1191,6 @@ ArkTS-Sta示例：
 <!-- @[richEditor_eventPaste](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
 ``` TypeScript
-import { Entry, Text, Column, ColumnOptions, Component, $r, RichEditorController, NavDestination, Color, RichEditor, RichEditorRange, RichEditorInsertValue, PasteEvent, TextRange, RichEditorChangeValue, RichEditorOptions, HorizontalAlign, Scroll, Scroller, RichEditorTextSpanOptions, RichEditorSelection } from '@kit.ArkUI';
 import pasteboard from '@ohos.pasteboard';
 // ...
 @Component
@@ -1214,7 +1213,7 @@ struct on_cut_copy_paste {
     }
     let moveOffset: int = 0;
     let sysBoard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-    sysBoard.getData().then((pasteData: pasteboard.PasteData) => {
+    sysBoard.getData().then((pasteData: pasteboard.PasteData): void => {
       if (!pasteData) {
         return;
       }
@@ -1240,10 +1239,7 @@ struct on_cut_copy_paste {
 
   build(): void {
     Column() {
-      // 请将$r('app.string.Add_Event_title_5')替换为实际资源文件，在本示例中该资源文件的value值为"添加完成粘贴前可触发的回调"
-      Text($r('app.string.Add_Event_title_5'))
-        .fontSize(14)
-        .fontColor('#666')
+      // ...
       Column({ space: 3 } as ColumnOptions) {
         RichEditor(this.options)
           .onReady(() => {
@@ -1269,14 +1265,7 @@ struct on_cut_copy_paste {
           .height(70);
       }.width('100%').alignItems(HorizontalAlign.Start);
 
-      // 请将$r('app.string.Add_Event_title_5_desc')替换为实际资源文件，在本示例中该资源文件的value值为"通过onPaste回调，来添加粘贴前要处理的流程"
-      Text($r('app.string.Add_Event_title_5_desc'))
-        .backgroundColor('#eee')
-        .borderRadius(4)
-        .padding(4)
-        .fontSize(12)
-        .fontColor('#999')
-        .width('100%')
+      // ...
     }
     .alignItems(HorizontalAlign.Start)
     .backgroundColor('#fff')
