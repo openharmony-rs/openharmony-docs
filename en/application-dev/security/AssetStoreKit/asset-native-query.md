@@ -10,7 +10,7 @@
 
 ## Available APIs
 
-Developers can refer to the API documentation for detailed description of the critical asset query API [OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query).
+You can refer to the API documentation for the asset query API [OH_Asset_Query](../../reference/apis-asset-store-kit/capi-asset-api-h.md#oh_asset_query) details.
 
 The following table describes the attributes for querying an asset.
 

@@ -53,7 +53,7 @@ Click **UpdateReport** on the toolbar to view the report.
 
 1. **Total** in the lower part of the report is the total number of problems that occur in the application due to the SDK update. You can evaluate the modification workload from this number.
 2. You can sort each column by clicking the title header in the report.
-3. You can select a update type reason from the **Select Type** drop-down list. The value of **Total** changes accordingly.
+3. You can select an update type reason from the **Select Type** drop-down list. The value of **Total** changes accordingly.
 4. **Modified** helps you record the problems that have been modified.
 5. You can double-click a cell in the **Code Location** column to locate the code in the application.
 6. You can find modification suggestions in the **Prompt Information** column.

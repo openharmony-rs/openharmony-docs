@@ -44,7 +44,7 @@ Currently, the **Allow this time only** option is available only for the followi
 
      In other cases, the permission will be revoked after a 10-second timer has expired. If the application needs the permission again, you need to request the permission.
 
-  - When the application switches to the background, a 10-second timer starts. If the application is in the widget visibility state or has set a background continuous task during the timing, the timer stops.
+  - When the application switches to the background, a 10-second timer starts. If the application is in the widget visibility state or has set a background continuous task during the process, the timer stops.
 
       When the application widget is invisible on the home screen or the continuous task is complete, the timer starts again. The temporary permission will be revoked when the timer has expired.
 
