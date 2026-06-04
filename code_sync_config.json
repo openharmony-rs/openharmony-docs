@@ -4826,9 +4826,9 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/ArkTS-Sta/StaticCollabSample/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":150,
+						"end_line":135,
 						"name":"sta_abilityconnectionmanager_on",
-						"start_line":113
+						"start_line":111
 					}
 				]
 			},
