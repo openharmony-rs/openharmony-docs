@@ -1253,7 +1253,7 @@ GetMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUr
 | -------- | --------------------------------| ---- | --------------------------- |
 | context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。            |
 | type     | [RingtoneType](#ringtonetype)   | 是   | 待获取播放器的铃声类型。 |
-| ringtoneUri     | string  | 是   | 铃音文件的URI,需确保在系统文件中真实存在。<br>如果为自定义铃声需使用[addCustomizedTone](#addcustomizedtone12)接口返回的ringtoneUri，确保铃音文件URI在铃音库中存在。 |
+| ringtoneUri     | string  | 是   | 铃音文件的URI，需确保在系统文件中真实存在。<br>如果为自定义铃声需使用[addCustomizedTone](#addcustomizedtone12)接口返回的ringtoneUri，确保铃音文件URI在铃音库中存在。 |
 
 **返回值：**
 
