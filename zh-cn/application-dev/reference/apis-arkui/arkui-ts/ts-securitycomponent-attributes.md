@@ -953,7 +953,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_0000001643038221](figures/zh-cn_image_0000001643038221.png)
+![SaveButton-Basic-demo](figures/SaveButton-Basic-demo.png)
 
 ### 示例2
 
