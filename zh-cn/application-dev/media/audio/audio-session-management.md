@@ -466,6 +466,57 @@ AudioSession申请的焦点和AudioRenderer申请的焦点是同等地位。
    ArkTS-Sta示例：
 
    <!-- @[on_audio_session_state_changed](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioSessionSampleJS-Sta/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
+   import { BusinessError } from '@ohos.base';
+   // ...
+   
+     // 监听AudioSession焦点和状态变化事件。
+     let audioSessionStateChangedCallback = (audioSessionStateChangedEvent: audio.AudioSessionStateChangedEvent) => {
+       // ...
+       console.info(`hint of audioSessionStateChanged: ${audioSessionStateChangedEvent.stateChangeHint} `);
+   
+       switch (audioSessionStateChangedEvent.stateChangeHint) {
+         case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE:
+           // 此分支表示系统已将音频流暂停，应用需切换至音频暂停状态。
+           // 临时失去焦点：AudioSession会停用并释放焦点，同时停止应用所有音频流的播放。因此，当应用收到Resume回调后，需要重新激活AudioSession并恢复需要继续播放的音频流。
+           break;
+         case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_RESUME:
+           // 此分支表示系统解除AudioSession焦点的暂停操作。
+           break;
+         case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_STOP:
+           // 此分支表示系统已将音频流停止（永久失去焦点），为保持状态一致，应用需切换至音频暂停状态。
+           // 永久失去焦点：AudioSession会停用并释放焦点，同时停止应用所有音频流的播放。后续不会再收到音频焦点事件，恢复播放需用户主动触发。
+           break;
+         case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP:
+           // 此分支表示由于长时间无音频流播放，系统已将AudioSession停止（永久失去焦点），应用需切换至音频停止状态。
+           // 永久失去焦点：后续不会再收到音频焦点事件，恢复播放需用户主动触发。
+           break;
+         case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_DUCK:
+           // 此分支表示系统已将应用所有播放音频流音量降低（默认降到正常音量的20%）。
+           break;
+         case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
+           // 此分支表示系统已将应用所有播放音频流音量恢复正常。
+         case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
+           // 此分支表示其他应用开始播放非混音音频，系统可自行决定是否静音。
+           break;
+         case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION:
+           // 此分支表示其他应用的非混音音频播放结束，系统可自行决定是否取消静音。
+           break;
+         case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE:
+           // 此分支表示系统已将应用所有播放音频流静音。
+           break;
+         case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE:
+           // 此分支表示系统已将应用所有播放音频流解除静音。
+           break;
+         default:
+           break;
+       }
+     };
+   
+     audioSessionManager.onAudioSessionStateChanged(audioSessionStateChangedCallback);
+   ```
 
 4. 停用音频会话。
 
