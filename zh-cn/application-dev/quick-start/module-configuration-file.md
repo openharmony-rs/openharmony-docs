@@ -565,7 +565,7 @@ extensionAbilities示例：
 |adsService|广告业务的ExtensionAbility，提供广告业务框架，三方应用配置不生效，当前配置仅在系统应用中有效。|
 |embeddedCashier<sup>23+</sup>|支付业务的ExtensionAbility，与CashierComponent控件组合使用，将支付页面展示到其他应用中。三方应用配置不生效，当前配置仅在系统应用中有效，仅支持TV设备使用，其他设备配置不生效。|
 |embeddedUI|嵌入式UI扩展能力，提供跨进程界面嵌入的能力。|
-|insightIntentUI|为开发者提供能被小艺意图调用，以窗口形态呈现内容的扩展能力。|
+|insightIntentUI|为开发者提供能被系统入口调用，以窗口形态呈现内容的扩展能力。|
 |ads|广告业务的ExtensionAbility，与AdComponent控件组合使用，将广告页面展示到其他应用中。仅支持设备厂商使用。|
 |photoEditor|图片编辑业务的ExtensionAbility，为开发者提供基于UIExtension的图片编辑业务模板。|
 |appAccountAuthorization|应用账号授权扩展能力的ExtensionAbility，用于处理账号授权请求，比如账号登录授权。|
@@ -598,7 +598,7 @@ extensionAbilities示例：
 |distributed|分布式扩展的ExtensionAbility。|
 |liveForm<sup>20+</sup>|互动卡片的[ExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)。|
 |appService<sup>20+</sup>|为应用提供后台服务相关扩展能力[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)，包括后台服务的创建、销毁、连接、断开等生命周期回调。|
-|webNativeMessaging<sup>21+</sup>|为开发者提供Web原生消息通信能力的[ExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)。|
+|webNativeMessaging<sup>21+</sup>|为开发者提供Web消息通信能力的[ExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)。|
 |faultLog<sup>21+</sup>|故障延迟通知的[ExtensionAbility](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md)。|
 |notificationSubscriber<sup>22+</sup>|提供通知订阅相关功能的[ExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)。|
 |crypto<sup>22+</sup>|外部密钥管理扩展的[ExtensionAbility](../security/UniversalKeystoreKit/huks-extension-ability-support-dev.md)。|
