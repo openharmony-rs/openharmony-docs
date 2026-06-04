@@ -19131,7 +19131,6 @@ executeAIPageCommand(command: string): Promise\<string\>
 ArkTS-Dyn示例：
 ```ts
 // xxx.ets
-import { Button, Column, Component, Entry, Web } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
