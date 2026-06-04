@@ -1046,7 +1046,7 @@ getCallTransferInfo\(type: CallTransferType, number: string\): Promise\<CallTran
 
 ```ts
 import { call } from '@kit.TelephonyKit';
-import { BusinessError } from '@kit.BasicServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let type: call.CallTransferType = call.CallTransferType.TRANSFER_TYPE_UNCONDITIONAL;
 let number: string = "138xxxxxxxx";
