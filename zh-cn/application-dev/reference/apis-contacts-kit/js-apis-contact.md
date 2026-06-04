@@ -4610,7 +4610,7 @@ import { common } from '@kit.AbilityKit';
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let mode = contact.ContactSyncMode.MODE_INCREMENTAL;
 const totalBatches: number = 3;
-const syncId: number = Date.now();
+const syncId: number = Date.now() / 1000;
 const totalCount = 300;
 const batchSize = 100;
 for (let batch: number = 1; batch <= totalBatches; batch++) {
