@@ -126,7 +126,7 @@ async function getHighResolutionAsset(
     console.info(`Open source file successfully. fd: ${srcFile.fd}`);
   } catch (error) {
     const err = error as BusinessError;
-    console.error(`Failed get high resolution asset: code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to get high resolution asset: code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -376,7 +376,7 @@ import { image } from '@kit.ImageKit';
 
 const decodingOptions: image.DecodingOptions = {
   desiredSize: { width: 0, height: 0 }, // 这是desiredSize的默认值，在该配置下会按照原图尺寸解码。
-  desiredPixelFormat: image.PixelMapFormat.RGB_565  //可根据具体需求配置不同解码格式
+  desiredPixelFormat: image.PixelMapFormat.RGB_565 // 可根据具体需求配置不同解码格式
 };
 ```
 
