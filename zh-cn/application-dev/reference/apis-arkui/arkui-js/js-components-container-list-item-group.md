@@ -183,4 +183,4 @@ export default {
 
 ```
 
-![zh-cn_image_0000001127284978](figures/zh-cn_image_0000001127284978.gif)
+![list-item-group](figures/list-item-group.gif)

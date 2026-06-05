@@ -53,4 +53,4 @@ export default {
 ```
 
 
-![zh-cn_image_0000001198530395](figures/zh-cn_image_0000001198530395.png)
+![Image](figures/Image.png)
