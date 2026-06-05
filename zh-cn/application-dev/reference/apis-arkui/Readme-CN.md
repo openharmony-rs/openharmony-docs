@@ -575,6 +575,7 @@
     - [TreeView](arkui-ts/ohos-arkui-advanced-TreeView.md)
     - [advanced.Counter](arkui-ts/ohos-arkui-advanced-Counter.md)
     - [CounterV2](arkui-ts/ohos-arkui-advanced-CounterV2.md)
+    - [DatePickerComponent](arkui-ts/ohos-arkui-advanced-DatePickerComponent.md)
     <!--Del-->
     - [SegmentButton(系统接口)](arkui-ts/ohos-arkui-advanced-SegmentButton-sys.md)
     - [SegmentButtonV2(系统接口)](arkui-ts/ohos-arkui-advanced-SegmentButtonV2-sys.md)
