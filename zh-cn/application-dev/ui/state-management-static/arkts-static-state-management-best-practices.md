@@ -7,6 +7,7 @@
 【反例】
 
 <!-- @[force_update_counterexample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/ForceUpdateCounterexample.ets) --> 
+
 ``` TypeScript
 import { Button, ClickEvent, Color, Column, ComponentV2, Entry, ForEach, Local, Text } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -94,6 +95,7 @@ struct CompA {
 【反例】
 
 <!-- @[precise_control_counterexamples](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/PreciseControlCounterexamples.ets) --> 
+
 ``` TypeScript
 import { $r, Button, ClickEvent, Color, Column, ComponentV2, Entry, ForEach, Image, Local, ObservedV2, Param, Require, Row, Stack, Text, Trace } from '@kit.ArkUI';
 
@@ -220,6 +222,7 @@ struct Page1 {
 【反例】
 
 <!-- @[object_control_counterexample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/ObjectControlCounterexample.ets) --> 
+
 ``` TypeScript
 import { Button, ClickEvent, Color, Column, Component, Entry, ForEach, ObjectLink, Observed, Row, Stack, State, Text } from '@kit.ArkUI';
 
@@ -344,6 +347,7 @@ struct Page {
 【反例】
 
 <!-- @[loop_state_inefficient](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/LoopStateInefficient.ets) --> 
+
 ``` TypeScript
 import { Button, ClickEvent, Color, Column, ComponentV2, Entry, FlexAlign, ForEach, HorizontalAlign, Local, Row, Stack, Text } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -374,6 +378,7 @@ struct Index {
 【正例】
 
 <!-- @[loop_state_optimized](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/LoopStateOptimized.ets) --> 
+
 ``` TypeScript
 import { Button, ClickEvent, Color, Column, ComponentV2, Entry, FlexAlign, ForEach, HorizontalAlign, Local, Row, Stack, Text } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -411,6 +416,7 @@ struct Index {
 【反例】
 
 <!-- @[calculation_direct_state](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/CalculationDirectState.ets) --> 
+
 ``` TypeScript
 import { Button, ClickEvent, Color, Column, ComponentV2, Entry, FlexAlign, ForEach, HorizontalAlign, Local, Row, Stack, Text } from '@kit.ArkUI';
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
@@ -448,6 +454,7 @@ struct Index {
 【正例】
 
 <!-- @[calculation_temp_variable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateManagementBestPractice/entry/src/main/ets/pages/CalculationTempVariable.ets) --> 
+
 ``` TypeScript
 import { Button, ClickEvent, Color, Column, ComponentV2, Entry, FlexAlign, ForEach, HorizontalAlign, Local, Row, Stack, Text } from '@kit.ArkUI';
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';

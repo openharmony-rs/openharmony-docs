@@ -155,6 +155,7 @@ ArkTS-Sta中，状态管理框架使用Vsync（渲染同步信号）异步触发
 ArkTS-Dyn示例：
 
 <!-- @[monitor_trigger_dyn](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynCompare/entry/src/main/ets/pages/MonitorTriggerDyn.ets) --> 
+
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
