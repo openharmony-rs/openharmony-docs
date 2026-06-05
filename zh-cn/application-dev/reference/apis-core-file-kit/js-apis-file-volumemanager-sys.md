@@ -611,7 +611,7 @@ vfat和exfat。
   | 参数名       | 类型   | 必填 | 说明 |
   | ----------- | ------ | ---- | ---- |
   | volumeId    | string | 是   | 卷设备ID。 |
-  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat和ext4（ext4从API版本26.0.0开始支持）。 |
+  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat。<br>**说明**：从API版本26.0.0开始，支持ext4。 |
 
 **返回值：**
 
@@ -672,7 +672,7 @@ vfat和exfat。
   | 参数名   | 类型                      | 必填 | 说明                          |
   | -------- | ------------------------- | ---- | ----------------------------- |
   | volumeId | string                    | 是   | 卷设备ID。                |
-  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat和ext4（ext4从API版本26.0.0开始支持）。 |
+  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat。<br>**说明**：从API版本26.0.0开始，支持ext4。 |
   | callback | AsyncCallback&lt;void&gt;  | 是   | 对指定卷设备格式化后的回调。  |
 
 **错误码：**
@@ -1217,7 +1217,7 @@ getDiskById(diskId: string): Promise&lt;Disk&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号} |
+| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
 
 **返回值：**
 
@@ -1270,7 +1270,7 @@ getPartitionTable(diskId: string): Promise&lt;PartitionTableInfo&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号} |
+| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
 
 **返回值：**
 
@@ -1324,7 +1324,7 @@ createPartition(diskId: string, params: PartitionParams): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号} |
+| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
 | params | [PartitionParams](#partitionparams) | 是   | 分区创建参数。 |
 
 **返回值：**
@@ -1387,7 +1387,7 @@ deletePartition(diskId: string, partitionNum: number): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号} |
+| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
 | partitionNum | number | 是   | 分区号。 |
 
 **返回值：**
@@ -1444,7 +1444,7 @@ formatPartition(diskId: string, partitionNum: number, params: FormatParams): Pro
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号} |
+| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
 | partitionNum | number | 是   | 分区号。 |
 | params | [FormatParams](#formatparams) | 是   | 格式化参数。 |
 
@@ -1490,11 +1490,13 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 ## Volume
 
+卷信息详情。
+
+### 属性
+
 **系统接口**：此接口为系统接口。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.FileManagement.StorageService.Volume。
-
-### 属性
 
 | 名称         | 类型    | 只读   | 可选   | 说明                 |
 | ----------- | ------- | ------- | ----- | -------------------- |
@@ -1512,6 +1514,8 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 ## DiskType
 
 磁盘类型的枚举。
+
+### 属性
 
 **起始版本**：26.0.0
 
@@ -1540,7 +1544,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume。
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口**：此接口为系统接口。
 
@@ -1563,7 +1567,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume。
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口**：此接口为系统接口。
 
@@ -1586,7 +1590,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume。
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口**：此接口为系统接口。
 
@@ -1610,7 +1614,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume。
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口**：此接口为系统接口。
 
@@ -1631,12 +1635,12 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume。
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口**：此接口为系统接口。
 
 | 名称         | 类型    | 只读   | 可选   | 说明                 |
 | ----------- | ------- | ------- | ----- | -------------------- |
 | fsType      | string  | 否 | 否 | 文件系统类型，当前支持格式化为ext4、vfat和exfat。                 |
-| quickFormat | boolean | 否 | 是 | 是否执行快速格式化。true是快速格式化；false不是快速格式化。默认值为true。               |
+| quickFormat | boolean | 否 | 是 | 是否执行快速格式化。当前仅支持快速格式化，因此该参数只支持传true。传false时将返回参数非法错误，错误码13600010。默认值为true。               |
 | volumeName  | string  | 否 | 是 | 格式化后的卷名称。        |
