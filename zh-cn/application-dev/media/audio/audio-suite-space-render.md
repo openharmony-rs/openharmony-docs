@@ -36,19 +36,19 @@
 
 固定摆位示意图
 
-![固定.png](https://raw.gitcode.com/user-images/assets/9860003/07e503e8-3355-460c-9c7b-e942fc5ff7ab/固定.png '固定.png')
+![space_render_position](figures/space_render_position.png)
 
 旋转模式：旋转模式让音频源在指定位置设定单周环绕时间与时针方向进行动态渲染，用户可通过调用[oh_audiosuiteengine_setspacerenderrotationparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderrotationparams)对空间渲染节点进行设置。
 
 旋转模式示意图
 
-![旋转.png](https://raw.gitcode.com/user-images/assets/9860003/10cff5ce-191c-4610-84b0-96a984e83e7e/旋转.png '旋转.png')
+![space_render_rotation](figures/space_render_rotation.png)
 
-扩展模式：扩展模式将音频源按照半径和角度进行声场扩展，用户可通过调用[oh_audiosuiteengine_setspacerenderpositionparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderpositionparams)对空间渲染节点进行设置。
+扩展模式：扩展模式将音频源按照半径和角度进行声场扩展，用户可通过调用[oh_audiosuiteengine_setspacerenderextensionparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderextensionparams)对空间渲染节点进行设置。
 
 扩展模式示意图
 
-![扩展.png](https://raw.gitcode.com/user-images/assets/9860003/9c56ad46-efb7-402b-b5d5-b1a2b9f246a5/扩展.png '扩展.png')
+![space_render_extension](figures/space_render_extension.png)
 
 ## 开发基础配置
 
