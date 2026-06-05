@@ -55,6 +55,13 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 <!-- @[audioSuite_SpaceRenderEffectInclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.h) -->
 
+``` C
+#include <ohaudiosuite/native_audio_suite_base.h>
+#include <ohaudiosuite/native_audio_suite_engine.h>
+#include <ohaudio/native_audiorenderer.h>
+#include <ohaudio/native_audiostreambuilder.h>
+```
+
 ## 开发步骤
 
 ### 接口调用
