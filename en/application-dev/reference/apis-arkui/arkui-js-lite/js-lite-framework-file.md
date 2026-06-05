@@ -1,10 +1,12 @@
 # File Organization
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:27:11.233Z pushedAt=2026-06-05T12:07:34.892Z -->
 
 ## Directory Structure
 
@@ -25,8 +27,11 @@ Functions of the files are as follows:
 Functions of the folders are as follows:
 
 - The **app.js** file manages global JS logics and application lifecycle.
+
 - The **pages** directory stores all component pages.
+
 - The **common** directory stores public resource files, such as media resources and **.js** files.
+
 - The **i18n** folder stores resources in different languages, for example, UI strings and image paths.
 
 >  **NOTE**
@@ -35,7 +40,6 @@ Functions of the folders are as follows:
 >
 >
 >  - The folders marked as optional in the directory structure can be created as needed after you create the project in DevEco Studio.
-
 
 ## File Access Rules
 
@@ -58,7 +62,6 @@ Application resources can be accessed via an absolute or relative path. In this 
 >  - If code files A and B are in different directories, you must use an absolute path in code file B to reference resource files, because the directory of code file B changes during Webpack packaging.
 >
 
-
 ## Media File Formats
 
   **Table 1** Supported image formats
@@ -71,7 +74,7 @@ Application resources can be accessed via an absolute or relative path. In this 
 
 ## Storage Directory
 
-Since API version 5, the [\<image>](js-lite-components-basic-image.md) component supports access to images in the private directory of an application.
+Since API version 5, the [image](js-lite-components-basic-image.md) component supports access to images in the private directory of an application.
 
 | Directory Type  | Prefix           | Access Visibility | Description                         |
 | ------ | --------------- | ------ | --------------------------- |

@@ -1,10 +1,12 @@
 # chart
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:27:54.413Z pushedAt=2026-06-05T12:07:46.173Z -->
 
 The **\<chart>** component displays line charts, gauge charts, and bar charts.
 
@@ -16,7 +18,6 @@ The **\<chart>** component displays line charts, gauge charts, and bar charts.
 
 Not supported
 
-
 ## Attributes
 
 In addition to the [universal attributes](js-service-widget-common-attributes.md), the following attributes are supported.
@@ -26,7 +27,7 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | type              | string                             | line   | No  | Chart type. Dynamic modification is not supported. Available values include:<br>- **bar**: bar chart.<br>- **line**: line chart.<br>- **gauge**: gauge chart.<br>- **progress**: circle chart of progresses<br>- **loading**: circle chart of loading processes<br>- **rainbow**: circle chart of proportions.|
 | options           | ChartOptions                       | -      | No  | Chart parameters. Parameter settings for gauge charts do not take effect. You can set the minimum value, maximum value, scale, and line width of the x-axis or y-axis, whether to display the x-axis and y-axis, and whether the line is smooth. Dynamic modification is not supported.|
 | datasets          | Array\<ChartDataset>               | -      | No  | Data sets. Data sets for a gauge chart do not take effect. You can set multiple datasets and their background colors.      |
-| segments          | DataSegment \| Array\<DataSegment> | -      | No  | Data structures used by **progress**, **loading**, and **rainbow** charts.<br>The **DataSegment** type is applicable to **progress** and **loading** charts. The **Array\<DataSegment>** type is applicable to **rainbow** charts. A maximum of nine **DataSegment**s are supported.|
+| segments          | DataSegment \| Array\<DataSegment> | -      | No   | Data structures used by **progress**, **loading**, and **rainbow** charts.<br/>The **DataSegment** type is applicable to **progress** and **loading** charts. The **Array\<DataSegment>** type is applicable to **rainbow** charts. A maximum of nine **DataSegmentb** are supported.|
 | effects           | boolean                            | true   | No  | Whether to enable the effects for **progress** and **rainbow** charts.                        |
 | animationduration | number                             | 3000   | No  | Animation duration for expanding a **rainbow** chart, in milliseconds.                  |
 
@@ -100,7 +101,7 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | description  | string        | -        | No   | Description of the point.                             |
 | textLocation | string        | -        | No   | Location of the description. Available values are as follows:<br>- **"top"**: The description is above the point.<br>- **"bottom"**: The description is below the point.<br>- **"none"**: The description is not displayed.|
 | textColor    | &lt;color&gt; | \#000000 | No   | Color of the description text.                              |
-| lineDash     | string        | solid    | No   | Dashed line pattern. You can set the dash length and space length between the dashes.<br>- **"dashed, 5, 5"**: dashed line with each dash in 5 px and a 5 px space between dashes.<br>- **"solid"**: solid line.|
+| lineDash     | string        | solid    | No    | Dashed line pattern. You can set the dash length and space length between the dashes.<br>- **dashed,&nbsp;5,&nbsp;5**: dashed line with each dash in 5 px and a 5 px space between each two dashes.<br>- **solid**: solid line.|
 | lineColor    | &lt;color&gt; | \#000000 | No   | Line color. If this attribute is not set, the value of **strokeColor** is used.  |
 
 **Table 9** DataSegment
@@ -130,7 +131,6 @@ For the **gauge** charts, the following attributes are also supported.
 | ------- | ------ | ---- | ---- | ---------------------- |
 | percent | number | 0    | No   | Percentage of the current value to the total value. The value ranges from 0 to 100.|
 
-
 ## Styles
 
 In addition to the [universal styles](js-service-widget-common-styles.md), the following styles are supported.
@@ -148,16 +148,14 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 | font-family  | Array          | -                          | No   | Font style of the description text. You can use a [custom font](js-service-widget-common-customizing-font.md).|
 | font-size    | &lt;length&gt; | -                          | No   | Font size of the description text.                           |
 
-
 ## Events
 
 The [universal events](js-service-widget-common-events.md) are supported.
 
-
 ## Example
 
 1. Line chart
-   
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -167,7 +165,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      </stack>
    </div>
    ```
-   
+
    ```css
    /* xxx.css */
    .container {
@@ -187,7 +185,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      height: 600px;
    }
    ```
-   
+
    ```json
    // xxx.json
    {
@@ -254,11 +252,11 @@ The [universal events](js-service-widget-common-events.md) are supported.
      }
    }
    ```
-   
+
    ![en-us_image_0000001185652902](figures/en-us_image_0000001185652902.png)
 
 2. Bar chart
-   
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -268,7 +266,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      </stack>
    </div>
    ```
-   
+
    ```css
    /* xxx.css */
    .container {
@@ -288,7 +286,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      height: 400px;
    }
    ```
-   
+
    ```json
    {
      "data": {
@@ -322,11 +320,11 @@ The [universal events](js-service-widget-common-events.md) are supported.
      }
    }
    ```
-   
+
    ![barchart](figures/barchart.PNG)
 
 3. Gauge chart
-   
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -335,7 +333,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      </div>
    </div>
    ```
-   
+
    ```css
    /* xxx.css */
    .container {
@@ -352,5 +350,5 @@ The [universal events](js-service-widget-common-events.md) are supported.
      weights: 4, 2, 1;
    }
    ```
-   
+
    ![gauge](figures/gauge.PNG)
