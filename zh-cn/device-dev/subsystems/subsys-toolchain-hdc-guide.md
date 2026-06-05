@@ -139,6 +139,7 @@ hdc -t connect-key shell echo "Hello world"
 | [fport rm](#删除端口转发任务) | 删除指定的端口转发任务。 |
 | [start](#启动服务) | 启动hdc服务进程。 |
 | [kill](#终止服务) | 终止hdc服务进程。 |
+| [reconnect](#重连usb设备) | 对已连接的USB设备重置会话并触发USB重新枚举。<br/>**说明**：从API版本26.0.0开始，支持该命令。 |
 | [hilog](#打印设备端日志) | 打印设备端的日志信息。 |
 | [jpid](#显示设备已打开应用的进程pid) | 显示设备上已打开应用的进程pid。 |
 | [track-jpid](#实时显示设备已打开应用的进程pid和应用名) | 实时显示设备上已打开应用的进程pid和应用名。 |
@@ -1013,6 +1014,7 @@ Remove forward ruler success, ruler:tcp:1234 tcp:1080
 | -------- | -------- |
 | start [-r] | 启动hdc服务进程，使用-r参数触发服务进程重新启动。 |
 | kill [-r] | 终止hdc服务进程，使用-r参数触发服务进程重新启动。 |
+| reconnect connect-key | 对已通过USB连接且由本机服务进程管理的目标设备重置会话并触发USB重新枚举。<br>connect-key为设备USB标识符，可通过`hdc list targets`查询。 |
 | -p | 绕过对服务进程的查询步骤，用于快速执行客户端命令。 |
 | -m | 使用前台启动模式启动服务进程。<br/>前台启动模式（添加-m参数）：实时打印服务日志到客户端窗口。<br/>后台启动模式（不添加-m参数）：客户端不打印服务日志，日志内容写入本地磁盘文件，具体文件存放路径可参考[服务器进程日志](#服务器进程日志)。 |
 | -e |  指定在TCP端口转发时，本地监听的IP地址，默认是127.0.0.1。该参数必须和-m一起使用。|
@@ -1064,6 +1066,41 @@ Kill server finish
 
 $ hdc kill # 终止服务进程。
 Kill server finish
+```
+
+### 重连USB设备
+
+对已连接且由本机hdc服务进程管理的USB目标设备，重置会话并触发USB重新枚举。
+
+命令格式如下：
+
+```shell
+hdc reconnect connect-key
+```
+
+**参数**：
+
+| 参数 | 说明 |
+| -------- | -------- |
+| connect-key | 目标设备的USB连接标识符，可通过`hdc list targets`查询。 |
+
+**返回信息**：
+
+| 返回信息 | 说明 |
+| -------- | -------- |
+| Reconnecting connect-key ... | 已开始重连指定设备。 |
+| Usage: reconnect \<target-key\> | 未指定connect-key。 |
+| Target device connect-key not available | 目标不存在或未处于已连接状态。 |
+| Reconnect only supports USB devices | 当前目标非USB连接，不支持重连。 |
+
+**使用方法**：
+
+```shell
+$ hdc list targets
+connect-key
+
+$ hdc reconnect connect-key
+Reconnecting connect-key ...
 ```
 
 ### 快速执行命令
