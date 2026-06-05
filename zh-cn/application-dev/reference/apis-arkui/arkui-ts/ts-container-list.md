@@ -782,7 +782,7 @@ enableEditMode(enabled: boolean | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| enabled  | boolean \| undefined | 是   | 是否启用编辑模式。<br/>设置为true时启用编辑模式，可以滑动多选；设置为false或undefined时关闭编辑模式，不可滑动多选。 |
+| enabled  | boolean \| undefined | 是   | 是否启用编辑模式，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。<br/>设置为true时启用编辑模式，可以滑动多选；设置为false或undefined时关闭编辑模式，不可滑动多选。 |
 
 ## ListItemAlign<sup>9+</sup>枚举说明
 
@@ -2842,11 +2842,11 @@ struct ListExample {
 
 ### 示例18（设置滑动多选）
 
-该示例通过使用[enableEditMode](#enableeditmode)接口，实现了在List上通过在热区中滑动改变ListItem的选中状态。
+该示例通过使用[enableEditMode](#enableeditmode)接口和[onEditModeChange](#oneditmodechange)事件，在List上实现了手指滑动多选的效果。
+
+从API版本26.0.0开始，List组件新增enableEditMode接口和onEditModeChange事件。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
-
-从API版本26.0.0开始，新增enableEditMode接口。
 
 <!--code_no_check-->
 ```ts
@@ -2856,14 +2856,25 @@ import { ListDataSource } from './ListDataSource';
 @Entry
 @Component
 struct ListExample {
-  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4]);
+  private arr: ListDataSource = new ListDataSource([]);
+  @State @Watch('onEditModeChanged') enableEditMode: boolean = false;
   @State isSelected: boolean[] = [];
+  @State selectedIndexes: number[] = [];
 
-  onPageShow(): void {
-    let i: number = 0;
-    for (i = 0; i < 5; i++) {
-      this.isSelected.push(false);
+  onEditModeChanged() {
+    console.info(`enableEditMode changed to: ${this.enableEditMode}`);
+    if (!this.enableEditMode) {
+      console.info('enableEditMode changed to false, clearing selectedIndexes');
+      this.selectedIndexes = [];
     }
+  }
+
+  aboutToAppear() {
+    let list: string[] = [];
+    for (let i = 0; i < 10; i++) {
+        list.push(i);
+    }
+    this.arr = new ListDataSource(list);
   }
 
   build() {
@@ -2878,13 +2889,18 @@ struct ListExample {
               .height(50)
               .textAlign(TextAlign.Center)
           }
-          .selected(this.isSelected[item])
+          .selected(this.selectedIndexes.includes(index))
         }, (item: number) => item.toString())
       }
-      .enableEditMode(true)
       .width('90%')
       .height(300)
       .scrollBar(BarState.Off)
+      .enableEditMode(this.enableEditMode!!)
+      .onEditModeChange((data: boolean) => {
+        // 在此处也可实现onEditModeChanged中的业务逻辑
+        console.info(`onEditModeChange:${data}`)
+      })
+      .editModeOptions({ useDefaultMultiSelectStyle: true, enableTwoFingerMultiSelect: true })
     }.width('100%').padding({ top: 10 }).backgroundColor('#FFDCDCDC')
   }
 }
