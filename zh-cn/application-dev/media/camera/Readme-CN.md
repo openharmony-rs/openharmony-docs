@@ -15,11 +15,11 @@
 - 开发相机应用基础能力(ArkTS)<!--camera-dev-arkts-->
   - [通过系统相机拍照和录像(CameraPicker)](camera-picker.md)
   - [预览(ArkTS)](camera-preview.md)
-  - [双路预览(ArkTS)](camera-dual-channel-preview.md)
+  - [双路预览(ArkTS)](camera-dual-channel-preview.md)<!--RP3--><!--RP3End-->
   - [拍照(ArkTS)](camera-shooting.md)
-  - [拍照实践(ArkTS)](camera-shooting-case.md)
+  - [拍照实践(ArkTS)](camera-shooting-case.md)<!--RP4--><!--RP4End-->
   - [录像(ArkTS)](camera-recording.md)
-  - [录像实践(ArkTS)](camera-recording-case.md)
+  - [录像实践(ArkTS)](camera-recording-case.md)<!--RP5--><!--RP5End-->
   - [元数据(ArkTS)](camera-metadata.md)
   - [手电筒使用(ArkTS)](camera-torch-use.md)
   - [适配不同折叠状态的摄像头变更(ArkTS)](camera-foldable-display.md)
