@@ -817,7 +817,7 @@ The following shows how the example is represented with left-to-right scripts.
 
 The following shows how the example is represented with right-to-left scripts.
 
-![en-us_sheet](figures/en-us_sheet7_rtl.png)
+![en-us_sheet](figures/sheet7-rtl.png)
 
 ### Example 8: Implementing a Side Sheet
 
@@ -920,7 +920,7 @@ struct SheetSideExample {
 }
 ```
 
-![en-us_sheet](figures/sheet8_side.gif)
+![en-us_sheet](figures/sheet8-side.gif)
 
 ### Example 9: Implementing a Full-Screen Content Cover Sheet
 

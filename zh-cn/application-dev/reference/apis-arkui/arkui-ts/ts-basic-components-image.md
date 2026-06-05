@@ -1287,7 +1287,7 @@ struct ImageExample2 {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/image_view2.png)
+![zh-cn_image_0000001607845173](figures/image-view2.png)
 
 ### 示例3（下载与显示网络gif图片）
 

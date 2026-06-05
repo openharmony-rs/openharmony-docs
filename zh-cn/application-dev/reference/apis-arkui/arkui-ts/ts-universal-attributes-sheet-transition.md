@@ -821,7 +821,7 @@ struct SheetTransitionExample {
 
 从右至左显示语言模式示例图
 
-![zh-cn_sheet](figures/zh-cn_sheet7_rtl.png)
+![zh-cn_sheet](figures/sheet7-rtl.png)
 
 ### 示例8（半模态Side侧边样式）
 
@@ -924,7 +924,7 @@ struct SheetSideExample {
 }
 ```
 
-![zh-cn_sheet](figures/sheet8_side.gif)
+![zh-cn_sheet](figures/sheet8-side.gif)
 
 ### 示例9（半模态ContentCover全屏样式）
 
