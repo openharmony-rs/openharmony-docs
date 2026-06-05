@@ -394,7 +394,7 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS模式：** 本接口仅适用于ArkTs-Dyn
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn
 
 **参数**：
 
@@ -455,7 +455,7 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS模式：** 本接口仅适用于ArkTs-Dyn
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn
 
 **参数**：
 
@@ -638,7 +638,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS模式：** 本接口仅适用于ArkTs-Dyn
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn
 
 ### onContinuousTaskStart<sup>23+</sup>
 
@@ -654,7 +654,7 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS模式：** 本接口仅适用于ArkTs-Dyn
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn
 
 **参数**：
 
@@ -694,7 +694,7 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS模式：** 本接口仅适用于ArkTs-Dyn
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn
 
 **参数**：
 
@@ -734,7 +734,7 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS模式：** 本接口仅适用于ArkTs-Dyn
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn
 
 **参数**：
 
