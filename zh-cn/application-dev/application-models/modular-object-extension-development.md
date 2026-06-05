@@ -115,7 +115,7 @@ ModularObjectExtensionAbility支持灵活的进程、线程模型以及其他属
     }
     ```
 
-4. 实现IPC Stub。在cpp目录下分别创建icalculator.h、calculator_stub.h和calculator_stub.cpp文件，以下以实现一个计算器接口（Add方法）为例说明。推荐使用Taihe编译器工具生成，请参考[使用Taihe实现ModularObjectExtensionAbility的IPC通信](./modular-object-extension-ability-taihe.md)生成。
+4. 实现IPC Stub。在cpp目录下分别创建icalculator.h、calculator_stub.h和calculator_stub.cpp文件，以下以实现一个计算器接口（Add方法）为例说明。推荐使用Taihe编译器工具生成，请参考[使用Taihe实现ModularObjectExtensionAbility的IPC通信](./modular-object-extension-ability-taihe.md)。
 
     icalculator.h定义了接口类ICalculator，包含接口描述符、命令码和方法业务声明。服务端和客户端都需要包含此头文件。
 
@@ -366,7 +366,7 @@ static napi_value TestConnect(napi_env env, napi_callback_info info)
 
 ### 通过Proxy与服务端通信
 
-1. 创建calculator_proxy.h和calculator_proxy.cpp文件，实现CalculatorProxy类。CalculatorProxy继承服务端提供的ICalculator接口，并封装OHIPCRemoteProxy。同时在Add方法中将参数序列化并通过OHIPCRemoteProxy发送给服务端，接收服务端返回的结果并反序列化。推荐使用Taihe编译器工具生成，请参考[使用Taihe实现ModularObjectExtensionAbility的IPC通信](./modular-object-extension-ability-taihe.md)生成。
+1. 创建calculator_proxy.h和calculator_proxy.cpp文件，实现CalculatorProxy类。CalculatorProxy继承服务端提供的ICalculator接口，并封装OHIPCRemoteProxy。同时在Add方法中将参数序列化并通过OHIPCRemoteProxy发送给服务端，接收服务端返回的结果并反序列化。推荐使用Taihe编译器工具生成，请参考[使用Taihe实现ModularObjectExtensionAbility的IPC通信](./modular-object-extension-ability-taihe.md)。
 
     <!-- @[modular_object_extension_proxy_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionClient/entry/src/main/cpp/calculator_proxy.h) -->
     

@@ -62,7 +62,7 @@ example/Easy.ohidl
 
 <!-- @[example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampletwo/ITestInterface.ohidl) -->
 
-``` 
+```ohipc
 @!namespace("OHOS", "IPC")
 
 interface ICalculator {
@@ -144,278 +144,270 @@ interface ITestCallbackService {
 ## 开发步骤
 
 1. 创建example文件夹，在example文件夹下新建Easy.ohidl文件。
-<!-- @[easy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/example/Easy.ohidl) -->
 
-``` 
-@!namespace("OHOS", "IPC")
+   <!-- @[easy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/example/Easy.ohidl) -->
+   
+   ```ohipc
+   @!namespace("OHOS", "IPC")
+   
+   @main_service(version = "1.0.0")
+   interface ICalculator {
+       Add(a: i32, b: i32): i32;
+   }
+   ```
 
-@main_service(version = "1.0.0")
-interface ICalculator {
-    Add(a: i32, b: i32): i32;
-}
-```
-```
+2. 使用taihec命令生成代码。
 
-2. 使用taihec命令生成代码
+   ``` bash
+   ./taihec 
+   -G modobj-ipc 
+   -O ./example/generated
+   ./example/Easy.ohidl
+   ```
 
-```bash
-./taihec 
--G modobj-ipc 
--O ./example/generated
-./example/Easy.ohidl
-```
+3. 生成的代码文件解析。
 
-3. 生成的代码文件解析
+   | 文件名 | 说明 |
+   | --- | --- |
+   | `icalculator.h` | 接口定义头文件。 |
+   | `calculator_proxy.h` | 客户端代理类声明。 |
+   | `calculator_proxy.cpp` | 代理实现，负责参数序列化、发送IPC请求、解析返回值。 |
+   | `calculator_stub.h` | 服务端Stub类声明。 |
+   | `calculator_stub.cpp` | Stub实现，负责反序列化请求、调用业务实现、写回响应。 |
+   | `calculator.typelib.json` | 类型库信息文件。 |
 
-| 文件名 | 说明 |
-| --- | --- |
-| `icalculator.h` | 接口定义头文件。 |
-| `calculator_proxy.h` | 客户端代理类声明。 |
-| `calculator_proxy.cpp` | 代理实现，负责参数序列化、发送IPC请求、解析返回值。 |
-| `calculator_stub.h` | 服务端Stub类声明。 |
-| `calculator_stub.cpp` | Stub实现，负责反序列化请求、调用业务实现、写回响应。 |
-| `calculator.typelib.json` | 类型库信息文件。 |
+   - icalculator.h
 
-- icalculator.h
+     `GetDescriptor()`返回接口描述符字符串，`IpcCode`枚举为每个方法分配唯一命令码，从1001开始。
 
-  `GetDescriptor()`返回接口描述符字符串，`IpcCode`枚举为每个方法分配唯一命令码，从1001开始。
+   <!-- @[ICalculator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/icalculator.h) -->
+   
+   ``` C
+   class ICalculator {
+   public:
+       virtual ~ICalculator() = default;
+       static const char* GetDescriptor() { return "OHOS.IPC.ICalculator"; }
+   
+       virtual ErrCode WriteRemoteObject(OHIPCParcel* parcel) const = 0;
+   
+       enum class IpcCode : uint32_t {
+           COMMAND_ADD = 1001,
+           COMMAND_GET_TYPE_LIB_INFO = 1,
+           COMMAND_GET_VERSION = 2,
+           COMMAND_GET_TAIHE_VERSION = 3,
+       };
+   
+       virtual ErrCode Add(int32_t a, int32_t b, int32_t& result) = 0;
+       virtual ErrCode GetTypeLibInfo(int32_t fd) = 0;
+       virtual ErrCode GetVersion(std::string& result) = 0;
+       virtual ErrCode GetTaiheVersion(std::string& result) = 0;
+   };
+   ```
 
-  仅声明接口，不包含实现。
+   - calculator_proxy.h
 
-<!-- @[ICalculator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/icalculator.h) -->
+     `CalculatorProxy`继承`ICalculator`，并包含了远端代理对象`remoteProxy_`。
 
-``` C
-class ICalculator {
-public:
-    virtual ~ICalculator() = default;
-    static const char* GetDescriptor() { return "OHOS.IPC.ICalculator"; }
+   <!-- @[CalculatorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_proxy.h) -->
+   
+   ``` C
+   class CalculatorProxy : public ICalculator {
+   public:
+       explicit CalculatorProxy(OHIPCRemoteProxy* remote) : remoteProxy_(remote) {}
+       ~CalculatorProxy() override = default;
+   // ...
+       ErrCode WriteRemoteObject(OHIPCParcel* parcel) const override;
+   
+       ErrCode Add(int32_t a, int32_t b, int32_t& result) override;
+   // ...
+   private:
+       OHIPCRemoteProxy* remoteProxy_ = nullptr;
+   };
+   ```
 
-    virtual ErrCode WriteRemoteObject(OHIPCParcel* parcel) const = 0;
+   - calculator_proxy.cpp
 
-    enum class IpcCode : uint32_t {
-        COMMAND_ADD = 1001,
-        COMMAND_GET_TYPE_LIB_INFO = 1,
-        COMMAND_GET_VERSION = 2,
-        COMMAND_GET_TAIHE_VERSION = 3,
-    };
+     创建`OHIPCParcel`请求包和响应包，写入接口描述符和序列化参数。
 
-    virtual ErrCode Add(int32_t a, int32_t b, int32_t& result) = 0;
-    virtual ErrCode GetTypeLibInfo(int32_t fd) = 0;
-    virtual ErrCode GetVersion(std::string& result) = 0;
-    virtual ErrCode GetTaiheVersion(std::string& result) = 0;
-};
-```
+     调用`OH_IPCRemoteProxy_SendRequest()`发起同步IPC，并读取`reply`中的错误码与返回值。
 
-- calculator_proxy.h
+   <!-- @[CalculatorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_proxy.cpp) -->
+   
+   ``` C++
+   ErrCode CalculatorProxy::WriteRemoteObject(OHIPCParcel* parcel) const
+   {
+       if (parcel == nullptr || remoteProxy_ == nullptr) {
+           return OH_IPC_CHECK_PARAM_ERROR;
+       }
+       if (OH_IPCParcel_WriteRemoteProxy(parcel, remoteProxy_) != OH_IPC_SUCCESS) {
+           return OH_IPC_PARCEL_WRITE_ERROR;
+       }
+       return OH_IPC_SUCCESS;
+   }
+   
+   ErrCode CalculatorProxy::Add(int32_t a, int32_t b, int32_t& result)
+   {
+   // ...
+       std::unique_ptr<OHIPCParcel, ParcelDeleter> parcelData(OH_IPCParcel_Create());
+       std::unique_ptr<OHIPCParcel, ParcelDeleter> parcelReply(OH_IPCParcel_Create());
+   // ...
+       if (OH_IPCParcel_WriteInterfaceToken(parcelData.get(),
+           ICalculator::GetDescriptor()) != OH_IPC_SUCCESS) {
+           return OH_IPC_PARCEL_WRITE_ERROR;
+       }
+   
+       if (OH_IPCParcel_WriteInt32(parcelData.get(), a) != OH_IPC_SUCCESS) {
+           return OH_IPC_PARCEL_WRITE_ERROR;
+       }
+       if (OH_IPCParcel_WriteInt32(parcelData.get(), b) != OH_IPC_SUCCESS) {
+           return OH_IPC_PARCEL_WRITE_ERROR;
+       }
+   // ...
+       int32_t errCode = OH_IPC_SUCCESS;
+       if (OH_IPCParcel_ReadInt32(parcelReply.get(), &errCode) != OH_IPC_SUCCESS) {
+           return OH_IPC_PARCEL_READ_ERROR;
+       }
+   
+       int32_t resultValue = 0;
+       if (OH_IPCParcel_ReadInt32(parcelReply.get(), &resultValue) != OH_IPC_SUCCESS) {
+           return OH_IPC_PARCEL_READ_ERROR;
+       }
+       result = resultValue;
+   
+       return errCode;
+   }
+   ```
 
-  `CalculatorProxy`继承`ICalculator`，并包含了远端代理对象`remoteProxy_`。
+   - calculator_stub.h
 
-  每个接口方法都对应一个代理实现。
+     `CalculatorStub`继承`ICalculator`。
 
-<!-- @[CalculatorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_proxy.h) -->
+     `OnRemoteRequest`作为IPC调用入口，`OnRemoteRequestInner`根据`code`分发到具体`HandleXXX`方法。
 
-``` C
-class CalculatorProxy : public ICalculator {
-public:
-    explicit CalculatorProxy(OHIPCRemoteProxy* remote) : remoteProxy_(remote) {}
-    ~CalculatorProxy() override = default;
-// ...
-    ErrCode WriteRemoteObject(OHIPCParcel* parcel) const override;
+   <!-- @[CalculatorStub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_stub.h) -->
+   
+   ``` C
+   class CalculatorStub : public ICalculator {
+   public:
+   // ...
+       ErrCode WriteRemoteObject(OHIPCParcel* parcel) const override;
+   
+       static int32_t OnRemoteRequest(
+           uint32_t code,
+           const OHIPCParcel* data,
+           OHIPCParcel* reply,
+           void* userData);
+   // ...
+   private:
+       int32_t OnRemoteRequestInner(uint32_t code, const OHIPCParcel* data, OHIPCParcel* reply);
+       int32_t HandleAdd(const OHIPCParcel* data, OHIPCParcel* reply);
+   // ...
+   };
+   ```
 
-    ErrCode Add(int32_t a, int32_t b, int32_t& result) override;
-// ...
-private:
-    OHIPCRemoteProxy* remoteProxy_ = nullptr;
-};
-```
+   - calculator_stub.cpp
 
-- calculator_proxy.cpp
+     `OnRemoteRequestInner`方法中先校验接口描述符，再调用`HandleAdd`从`data`中读取参数，调用真实`Add`业务实现，并将`errCode`和结果写回`reply`。
 
-  创建`OHIPCParcel`请求包和响应包，写入接口描述符和序列化参数。
+   <!-- @[CalculatorStub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_stub.cpp) -->
+   
+   ``` C++
+   int32_t CalculatorStub::OnRemoteRequestInner(uint32_t code, const OHIPCParcel* data, OHIPCParcel* reply)
+   {
+   // ...
+       if (OH_IPCParcel_ReadInterfaceToken(data, &remoteDescriptor,
+           &remoteDescriptorLen, OhipcReadInterfaceTokenAllocator) != OH_IPC_SUCCESS) {
+           return OH_IPC_CHECK_PARAM_ERROR;
+       }
+   // ...
+       switch (static_cast<ICalculator::IpcCode>(code)) {
+           case ICalculator::IpcCode::COMMAND_ADD:
+               return HandleAdd(data, reply);
+   // ...
+           default:
+               return OH_IPC_CHECK_PARAM_ERROR;
+       }
+   }
+   
+   int32_t CalculatorStub::HandleAdd(const OHIPCParcel* data, OHIPCParcel* reply)
+   {
+       int32_t aValue = 0;
+       if (OH_IPCParcel_ReadInt32(data, &aValue) != OH_IPC_SUCCESS) {
+           return OH_IPC_PARCEL_READ_ERROR;
+       }
+       int32_t a = aValue;
+   // ...
+       int32_t result = 0;
+       ErrCode errCode = Add(a, b, result);
+       if (OH_IPCParcel_WriteInt32(reply, errCode) != OH_IPC_SUCCESS) {
+           return OH_IPC_PARCEL_WRITE_ERROR;
+       }
+   
+       if (OH_IPCParcel_WriteInt32(reply, result) != OH_IPC_SUCCESS) {
+           return OH_IPC_PARCEL_WRITE_ERROR;
+       }
+   
+       return OH_IPC_SUCCESS;
+   }
+   ```
 
-  调用`OH_IPCRemoteProxy_SendRequest()`发起同步IPC，并读取`reply`中的错误码与返回值。
+   - calculator.typelib.json
 
-  读取`reply`中的错误码与返回值。
+     保存接口名称、描述符、方法名、IPC code、参数与返回类型。
 
-<!-- @[CalculatorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_proxy.cpp) -->
+     用于运行时查询方法元数据和动态路由。
 
-``` C++
-ErrCode CalculatorProxy::WriteRemoteObject(OHIPCParcel* parcel) const
-{
-    if (parcel == nullptr || remoteProxy_ == nullptr) {
-        return OH_IPC_CHECK_PARAM_ERROR;
-    }
-    if (OH_IPCParcel_WriteRemoteProxy(parcel, remoteProxy_) != OH_IPC_SUCCESS) {
-        return OH_IPC_PARCEL_WRITE_ERROR;
-    }
-    return OH_IPC_SUCCESS;
-}
+   ```json
+   {
+     "version": "1.0",
+     "taihe_version": "1.0.0",
+     "enums": [],
+     "structs": [],
+     "interfaces": [
+       {
+         "memberId": 1,
+         "name": "ICalculator",
+         "descriptor": "OHOS.IPC.ICalculator",
+         "interface_type": 1,
+         "methods": [
+           {
+             "memberId": 4,
+             "name": "Add",
+             "code": 1001,
+             "oneway": false,
+             "return_type": {
+               "type": "i32"
+             },
+             "parameters": [
+               {
+                 "memberId": 2,
+                 "name": "a",
+                 "type_info": {
+                   "type": "i32"
+                 }
+               },
+               {
+                 "memberId": 3,
+                 "name": "b",
+                 "type_info": {
+                   "type": "i32"
+                 }
+               }
+             ]
+           }
+         ]
+       }
+     ]
+   }
+   ```
+   除开发者自定义的接口外，还会自动生成`GetTypeLibInfo`、`GetVersion`、`GetTaiheVersion`等方法。
 
-ErrCode CalculatorProxy::Add(int32_t a, int32_t b, int32_t& result)
-{
-// ...
-    std::unique_ptr<OHIPCParcel, ParcelDeleter> parcelData(OH_IPCParcel_Create());
-    std::unique_ptr<OHIPCParcel, ParcelDeleter> parcelReply(OH_IPCParcel_Create());
-// ...
-    if (OH_IPCParcel_WriteInterfaceToken(parcelData.get(),
-        ICalculator::GetDescriptor()) != OH_IPC_SUCCESS) {
-        return OH_IPC_PARCEL_WRITE_ERROR;
-    }
+   | 方法              | 默认行为                                                                         | 常量                        |
+   | :---              | :---                                                                            |:-----                       |
+   | `GetTypeLibInfo`  | 类型库信息文件，供系统调用，开发者无需关注。                                        | COMMAND_GET_TYPE_LIB_INFO = 1 |
+   | `GetVersion`      | 返回`@main_service`注解中 version 声明的版本号。                                 |COMMAND_GET_VERSION = 2      |
+   | `GetTaiheVersion` | 返回Taihe编译器的版本，供系统调用，开发者无需关注。                                 |COMMAND_GET_TAIHE_VERSION = 3|
 
-    if (OH_IPCParcel_WriteInt32(parcelData.get(), a) != OH_IPC_SUCCESS) {
-        return OH_IPC_PARCEL_WRITE_ERROR;
-    }
-    if (OH_IPCParcel_WriteInt32(parcelData.get(), b) != OH_IPC_SUCCESS) {
-        return OH_IPC_PARCEL_WRITE_ERROR;
-    }
-// ...
-    int32_t errCode = OH_IPC_SUCCESS;
-    if (OH_IPCParcel_ReadInt32(parcelReply.get(), &errCode) != OH_IPC_SUCCESS) {
-        return OH_IPC_PARCEL_READ_ERROR;
-    }
+4. Proxy和Stub源码的使用。
 
-    int32_t resultValue = 0;
-    if (OH_IPCParcel_ReadInt32(parcelReply.get(), &resultValue) != OH_IPC_SUCCESS) {
-        return OH_IPC_PARCEL_READ_ERROR;
-    }
-    result = resultValue;
-
-    return errCode;
-}
-```
-
-- calculator_stub.h
-
-  `CalculatorStub`继承`ICalculator`。
-
-  `OnRemoteRequest`作为IPC调用入口，`OnRemoteRequestInner`根据`code`分发到具体`HandleXXX`方法。
-
-<!-- @[CalculatorStub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_stub.h) -->
-
-``` C
-class CalculatorStub : public ICalculator {
-public:
-// ...
-    ErrCode WriteRemoteObject(OHIPCParcel* parcel) const override;
-
-    static int32_t OnRemoteRequest(
-        uint32_t code,
-        const OHIPCParcel* data,
-        OHIPCParcel* reply,
-        void* userData);
-// ...
-private:
-    int32_t OnRemoteRequestInner(uint32_t code, const OHIPCParcel* data, OHIPCParcel* reply);
-    int32_t HandleAdd(const OHIPCParcel* data, OHIPCParcel* reply);
-// ...
-};
-```
-
-- calculator_stub.cpp
-
-  先校验接口令牌，确保请求目标正确。
-
-  `OnRemoteRequestInner`方法中先校验接口描述符，再调用`HandleAdd`从`data`中读取参数，调用真实`Add`业务实现，并将`errCode`和结果写回`reply`。
-
-<!-- @[CalculatorStub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_stub.cpp) -->
-
-``` C++
-int32_t CalculatorStub::OnRemoteRequestInner(uint32_t code, const OHIPCParcel* data, OHIPCParcel* reply)
-{
-// ...
-    if (OH_IPCParcel_ReadInterfaceToken(data, &remoteDescriptor,
-        &remoteDescriptorLen, OhipcReadInterfaceTokenAllocator) != OH_IPC_SUCCESS) {
-        return OH_IPC_CHECK_PARAM_ERROR;
-    }
-// ...
-    switch (static_cast<ICalculator::IpcCode>(code)) {
-        case ICalculator::IpcCode::COMMAND_ADD:
-            return HandleAdd(data, reply);
-// ...
-        default:
-            return OH_IPC_CHECK_PARAM_ERROR;
-    }
-}
-
-int32_t CalculatorStub::HandleAdd(const OHIPCParcel* data, OHIPCParcel* reply)
-{
-    int32_t aValue = 0;
-    if (OH_IPCParcel_ReadInt32(data, &aValue) != OH_IPC_SUCCESS) {
-        return OH_IPC_PARCEL_READ_ERROR;
-    }
-    int32_t a = aValue;
-// ...
-    int32_t result = 0;
-    ErrCode errCode = Add(a, b, result);
-    if (OH_IPCParcel_WriteInt32(reply, errCode) != OH_IPC_SUCCESS) {
-        return OH_IPC_PARCEL_WRITE_ERROR;
-    }
-
-    if (OH_IPCParcel_WriteInt32(reply, result) != OH_IPC_SUCCESS) {
-        return OH_IPC_PARCEL_WRITE_ERROR;
-    }
-
-    return OH_IPC_SUCCESS;
-}
-```
-
-- calculator.typelib.json
-
-  保存接口名称、描述符、方法名、IPC code、参数与返回类型。
-
-  用于运行时查询方法元数据和动态路由。
-
-```json
-{
-  "version": "1.0",
-  "taihe_version": "1.0.0",
-  "enums": [],
-  "structs": [],
-  "interfaces": [
-    {
-      "memberId": 1,
-      "name": "ICalculator",
-      "descriptor": "OHOS.IPC.ICalculator",
-      "interface_type": 1,
-      "methods": [
-        {
-          "memberId": 4,
-          "name": "Add",
-          "code": 1001,
-          "oneway": false,
-          "return_type": {
-            "type": "i32"
-          },
-          "parameters": [
-            {
-              "memberId": 2,
-              "name": "a",
-              "type_info": {
-                "type": "i32"
-              }
-            },
-            {
-              "memberId": 3,
-              "name": "b",
-              "type_info": {
-                "type": "i32"
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
-除开发者自定义的接口外，还会自动生成`GetTypeLibInfo`、`GetVersion`、`GetTaiheVersion`等方法。
-
-| 方法              | 默认行为                                                                         | 常量                        |
-| :---              | :---                                                                            |:-----                       |
-| `GetTypeLibInfo`  | 类型库信息文件，供系统调用，开发者无需关注。                                        | COMMAND_GET_TYPE_LIB_INFO = 1 |
-| `GetVersion`      | 返回`@main_service`注解中 version 声明的版本号。                                 |COMMAND_GET_VERSION = 2      |
-| `GetTaiheVersion` | 返回Taihe编译器的版本，供系统调用，开发者无需关注。                                 |COMMAND_GET_TAIHE_VERSION = 3|
-
-4. Proxy和Stub源码的使用
-
-请参考[使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](./modular-object-extension-development.md)部分。
+   请参考[使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](./modular-object-extension-development.md)部分。
