@@ -38,7 +38,7 @@
 
 1. 如果业务只需要全图展示，使用降采样解码。
 2. 如果业务需要放大查看细节，在降采样全图预览基础上结合区域解码。
-3. 如果业务需要上传、备份或编辑高像素原图，可在页面里用[网盘类应用设置支持高像素](#网盘类应用设置支持高像素)声明具备高像素原图处理能力。因高像素图片处理时间相对较长，需设计相应的内存、网络和存储策略。
+3. 如果业务需要上传、备份或编辑高像素原图，可在页面里用声明具备高像素原图处理能力。因高像素图片处理时间相对较长，需设计相应的内存、网络和存储策略。
 
 ### 上传、分享等场景使用高像素图片失败或异常退出
 
@@ -89,7 +89,6 @@ async function pickerExample(): Promise<void> {
   }
 }
 ```
-网盘类应用设置支持高像素{#网盘类应用设置支持高像素}
 
 对于网盘、备份等需要按高像素原图处理媒体文件的应用，可使用[setAssetCompatibleCapability](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md)接口配置[AssetCompatibleCapability](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-i.md)。
 
