@@ -24,6 +24,7 @@
   - [如何正确管理媒体库资产](medialibrary-faqs/medialibrary-asset-management-faq.md)
   - [如何正确判断媒体资源类型](medialibrary-faqs/medialibrary-asset-judgment-faq.md)
   - [查看的媒体图片未包含地理位置信息](medialibrary-faqs/medialibrary-asset-hidesensitive-faq.md)
+  - [如何正确处理高像素图片](multimedia-high-resolution-image.md)
   - 查询类失败故障模式说明<!--query-class-failure-mode-description-->
     - [参数的基本合法性错误故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/query-class-failure-mode-description/parameter-basic-legality-failure-mode-description.md)
     - [媒体库模块参数错误故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/query-class-failure-mode-description/medialibrary-module-param-error-fault-mode-desc.md)
