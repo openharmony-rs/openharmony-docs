@@ -80,6 +80,12 @@
 | [typedef void (\*OH_AVScreenCapture_OnUserSelected)(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectionInfo* selections, void *userData)](#oh_avscreencapture_onuserselected) | OH_AVScreenCapture_OnUserSelected | 当用户在授权界面（选择界面）选择参数时，功能接口将参数返回给应用程序。 |
 | [typedef void (\*OH_AVScreenCapture_OnPrivacyProtect)(OH_AVScreenCapture* capture, OH_PrivacyProtectInfo* privacyProtect, void *userData)](#oh_avscreencapture_onprivacyprotect) | OH_AVScreenCapture_OnPrivacyProtect | 当OH_AVScreenCapture实例在运行过程中发生隐私保护事件时，函数指针将被调用。 |
 
+### 变量
+
+| 名称 | 描述 |
+| -- | -- |
+| const char * OH_SCREEN_CAPTURE_CONTENT_RECT | 获取录屏图像帧中有效内容区域信息的key。<br>返回值是一个int32_t数组，单位为像素（px）。数组长度为4。数组元素定义为[top, left, width, height]，分别表示矩形窗口的左上角坐标、窗口的宽度和高度。数组元素可以从[OH_AVFormat_GetIntBuffer](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_getintbuffer)中获取。<br>**起始版本：** 26.0.0 |
+
 ## 枚举类型说明
 
 ### OH_CaptureMode
