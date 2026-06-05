@@ -145,7 +145,9 @@ async function getHighResolutionAsset(
 2. 避免仅根据URI后缀、文件名或媒体库记录判断图片文件属性。
 3. 对上传、分享、编辑等关键链路，使用最终拿到的图片文件重新校验格式、尺寸和元数据。
 
-**获取真实MIMEType ArkTS示例**
+**示例（ArkTS）：**
+
+解决获取图片格式异常问题，获取真实MIMEType。 
 
 ```typescript
 import { image } from '@kit.ImageKit';
