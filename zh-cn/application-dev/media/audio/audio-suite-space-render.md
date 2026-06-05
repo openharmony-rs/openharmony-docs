@@ -79,6 +79,82 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
    <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
    <!-- @[audioSuite_SpaceRenderRotationInputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
    <!-- @[audioSuite_CreateSpaceRenderRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
+   
+   ``` C++
+   // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
+   // 创建节点构造器。
+   OH_AudioNodeBuilder *nodeBuilder = nullptr;
+   OH_AudioSuiteNodeBuilder_Create(&nodeBuilder);
+   
+   // 配置音频数据格式，开发者根据要处理的音频数据格式设置采样率、声道分布、声道数、位深、编码格式参数。
+   OH_AudioFormat audioFormatInput;
+   ConfigureAudioFormat(audioFormatInput);
+   OH_AudioSuiteNodeBuilder_SetFormat(nodeBuilder, audioFormatInput);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::INPUT_NODE_TYPE_DEFAULT);
+   // 用户可根据自己的音频源情况设置一个或者多个输入节点。
+   // 设置第一个音频流的回调。
+   void *userData = static_cast<void *>(audioInfoForVocals);
+   OH_AudioSuiteNodeBuilder_SetRequestDataCallback(nodeBuilder, InputNodeWriteDataCallBack, userData);
+   // 创建第一个输入节点。
+   OH_AudioSuiteEngine_CreateNode(g_audioSuitePipeline, nodeBuilder, &g_inputNodeForVocals);
+   
+   // 重置构造器配置并设置为输入节点类型。
+   OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::INPUT_NODE_TYPE_DEFAULT);
+   OH_AudioSuiteNodeBuilder_SetFormat(nodeBuilder, audioFormatInput);
+   // 设置第二个音频流的回调。
+   userData = static_cast<void *>(audioInfoForAccompaniment);
+   OH_AudioSuiteNodeBuilder_SetRequestDataCallback(nodeBuilder, InputNodeWriteDataCallBack, userData);
+   // 创建第二个输入节点。
+   OH_AudioSuiteEngine_CreateNode(g_audioSuitePipeline, nodeBuilder, &g_inputNodeForAccompaniment);
+   
+   // 用户设置空间渲染固定摆位的空间音频后也可实时更新空间音频的位置，来实现周期性的变化。
+   // 重置构造器配置并设置为空间渲染节点类型。
+   OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::EFFECT_NODE_TYPE_SPACE_RENDER);
+   // 创建第一个空间渲染节点。
+   OH_AudioSuiteEngine_CreateNode(g_audioSuitePipeline, nodeBuilder, &g_spaceNodeForVocals);
+   // 设置空间渲染节点为固定摆位。
+   OH_AudioSuiteEngine_SetSpaceRenderPositionParams(
+       g_spaceNodeForVocals,
+       OH_AudioSuite_SpaceRenderPositionParams{-SPACE_RENDER_RADIUS, POSITION_ORIGIN, -SPACE_RENDER_RADIUS});
+   
+   // 重置构造器配置并设置为空间渲染节点类型。
+   OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::EFFECT_NODE_TYPE_SPACE_RENDER);
+   // 创建第二个空间渲染节点。
+   OH_AudioSuiteEngine_CreateNode(g_audioSuitePipeline, nodeBuilder, &g_spaceNodeForAccompaniment);
+   // 设置空间渲染节点为固定摆位。
+   OH_AudioSuiteEngine_SetSpaceRenderPositionParams(
+       g_spaceNodeForAccompaniment,
+       OH_AudioSuite_SpaceRenderPositionParams{SPACE_RENDER_RADIUS, POSITION_ORIGIN, SPACE_RENDER_RADIUS});
+   
+   // 重置构造器配置并设置为混音节点类型。
+   OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::EFFECT_NODE_TYPE_AUDIO_MIXER);
+   // 创建混音节点。
+   OH_AudioSuiteEngine_CreateNode(g_audioSuitePipeline, nodeBuilder, &g_mixerNode);
+   
+   // 重置构造器配置并设置为输出节点类型。
+   OH_AudioSuiteNodeBuilder_Reset(nodeBuilder);
+   OH_AudioSuiteNodeBuilder_SetNodeType(nodeBuilder, OH_AudioNode_Type::OUTPUT_NODE_TYPE_DEFAULT);
+   // 配置音频数据格式，开发者根据预期输出的音频格式设置采样率、声道分布、声道数、位深、编码格式参数。
+   OH_AudioFormat audioFormatOutput;
+   ConfigureAudioFormat(audioFormatOutput);
+   OH_AudioSuiteNodeBuilder_SetFormat(nodeBuilder, audioFormatOutput);
+   // 创建输出节点。
+   OH_AudioSuiteEngine_CreateNode(g_audioSuitePipeline, nodeBuilder, &g_outputNode);
+   
+   // 销毁节点构造器。
+   OH_AudioSuiteNodeBuilder_Destroy(nodeBuilder);
+   
+   // 连接各个节点组成组网。
+   OH_AudioSuiteEngine_ConnectNodes(g_inputNodeForVocals, g_spaceNodeForVocals);
+   OH_AudioSuiteEngine_ConnectNodes(g_spaceNodeForVocals, g_mixerNode);
+   OH_AudioSuiteEngine_ConnectNodes(g_inputNodeForAccompaniment, g_spaceNodeForAccompaniment);
+   OH_AudioSuiteEngine_ConnectNodes(g_spaceNodeForAccompaniment, g_mixerNode);
+   OH_AudioSuiteEngine_ConnectNodes(g_mixerNode, g_outputNode);
+   ```
 
 3. 在播放器的回调函数中，将处理后的数据复制到OH_AudioRenderer实例的缓冲区中，实现音频播放过程中实时预览。
 
