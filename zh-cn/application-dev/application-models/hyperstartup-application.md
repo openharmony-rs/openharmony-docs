@@ -45,7 +45,7 @@
 
 ![image](./figures/hyperstartup-application-process.png)
 
-包含在快启点内的流程有：AbilityStage模块加载、[AbilityStage.onCreate](/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)和UIAbility模块加载。其中，在[模块加载](/zh-cn/application-dev/arkts-utils/arkts-module-side-effects.md)过程中将执行部分代码，包括顶层代码（top level）、so的constructor和类静态变量初始化等。
+包含在快启点内的流程有：AbilityStage模块加载、[AbilityStage.onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)和UIAbility模块加载。其中，在[模块加载](../arkts-utils/arkts-module-side-effects.md)过程中将执行部分代码，包括顶层代码（top level）、so的constructor和类静态变量初始化等。
 
 ## 接口说明
 
@@ -53,10 +53,10 @@
 
 | 接口名 | 功能描述 |
 | --- | --- |
-| [onLaunchFromHyperSnap](/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onlaunchfromhypersnap24) | 生命周期回调接口，仅在快启启动时，系统会回调该接口执行。 |
-| [onAboutToCreateAbility](/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24) | 生命周期回调接口，在AbilityStage创建第一个Ability前回调，普通启动和快启启动都会执行该回调。 |
-| [setHyperSnapEnabled](/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagersethypersnapenabled) | 普通调用接口，用于设置快启能力开启或关闭。设置关闭时会立即清理快启相关初始化结果；设置开启时，系统会择机完成快启初始化，并在后续启动时生效快启启动。 |
-| [requestRebuildHyperSnap](/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagerrequestrebuildhypersnap) | 普通调用接口，用于请求重新完成一次快启初始化。 |
+| [onLaunchFromHyperSnap](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onlaunchfromhypersnap24) | 生命周期回调接口，仅在快启启动时，系统会回调该接口执行。 |
+| [onAboutToCreateAbility](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24) | 生命周期回调接口，在AbilityStage创建第一个Ability前回调，普通启动和快启启动都会执行该回调。 |
+| [setHyperSnapEnabled](../reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagersethypersnapenabled) | 普通调用接口，用于设置快启能力开启或关闭。设置关闭时会立即清理快启相关初始化结果；设置开启时，系统会择机完成快启初始化，并在后续启动时生效快启启动。 |
+| [requestRebuildHyperSnap](../reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagerrequestrebuildhypersnap) | 普通调用接口，用于请求重新完成一次快启初始化。 |
 
 ## 快启启动适配
 
@@ -84,9 +84,9 @@
 
 	示例：快启初始化中，建立了长时TCP连接以接收云端信息；快启初始化完成后，该连接不会持续响应，超时导致连接失败。
 
-* 进程间通讯（IPC）
+* 进程间通信（IPC）
 
-	快启初始化中，禁止有状态的进程间通讯，例如保存应用状态和数据持久化（允许参数获取等无状态的进程间通讯），否则会触发保护机制导致快启初始化失败。
+	快启初始化中，禁止有状态的进程间通信，例如保存应用状态和数据持久化（允许参数获取等无状态的进程间通信），否则会触发保护机制导致快启初始化失败。
 
 ### 将快启风险操作后置到快启点之外
 
@@ -94,7 +94,7 @@
 
 **示例1：** AbilityStage.onCreate中存在快启风险操作。
 
-```
+```TypeScript
 export class AppAbilityStage extends AbilityStage {
 	onCreate() {
 		this.readFile();
@@ -109,7 +109,7 @@ export class AppAbilityStage extends AbilityStage {
 
 1. 将快启风险操作后置到AbilityStage.onAboutToCreateAbility。
 
-	```
+	```TypeScript
 	export class AppAbilityStage extends AbilityStage {
 		onAboutToCreateAbility() {
 			this.readFile();
@@ -125,7 +125,7 @@ export class AppAbilityStage extends AbilityStage {
 
 以下示例在顶层代码中实例化类，并最终导致文件访问：
 
-```
+```TypeScript
 class ClassA {
 	constructor() {
 		this.readFile();
@@ -141,13 +141,13 @@ let tmp = new ClassA();
 
 建议：
 
-1. 顶层代码会随import该模块而执行，在顶层代码中编写业务逻辑不符合推荐实践。由于顶层代码在时序上与第一个import该模块的调用者绑定，属于隐式且不可控的调用，修改时容易造成调用时序混乱。
+1. 顶层代码会随import该模块而执行，所以在时序上顶层代码与首个调用者绑定，属于隐式且不可控的调用，修改时容易造成调用时序混乱，所以建议在非顶层代码中实现业务逻辑。
 
 2. 具体到快启启动特性，系统要求应用模块不可以在顶层代码执行快启风险操作，而是要根据业务逻辑调整到生命周期回调中执行。
 
 **示例3：** C++的构造函数中存在快启风险操作。
 
-```
+```TypeScript
 static napi_module OpenPlatformModule = {
 	.nm_version = 1,
 	.nm_flags = 100,
@@ -178,7 +178,7 @@ extern "C" __attribute__((constructor)) void RegisterOpenPlatformModule(void) {
 
 以下示例中存在两类静态初始化：一是静态变量初始化，会读取文件；二是静态代码块执行，会进行网络访问。
 
-```
+```TypeScript
 export class AppAbilityStage extends AbilityStage {
 	private a = 1;
 	static data = AppAbilityStage.readFile();
@@ -200,7 +200,7 @@ export class AppAbilityStage extends AbilityStage {
 
 考虑到实际调整业务逻辑的困难，部分对外数据交互难以剥离。快启机制为开发者提供新的回调接口AbilityStage.onLaunchFromHyperSnap()，该回调接口仅在快启启动流程（而不是快启初始化流程）中执行，正常冷启动不执行该回调。开发者可以在该回调接口中重新请求外部数据进行同步，保证数据一致性。
 
-```
+```TypeScript
 export class AppAbilityStage extends AbilityStage {
 	onCreate() {
 		this.initLanguage(language);
@@ -214,7 +214,7 @@ export class AppAbilityStage extends AbilityStage {
 }
 ```
 
-```
+```TypeScript
 export class AppAbilityStage extends AbilityStage {
 	onLaunchFromHyperSnap() {
 		this.updateLanguage(); // 在onLaunchFromHyperSnap中进行更新
@@ -225,7 +225,7 @@ export class AppAbilityStage extends AbilityStage {
 }
 ```
 
-## 通过云推开关关闭或开启快启功能
+## 通过应用侧云推开关开启或关闭快启功能
 
 云推开关是一种通过云端在线配置、动态开启或关闭应用特定功能的机制。
 
@@ -246,10 +246,10 @@ export class AppAbilityStage extends AbilityStage {
 
 通过上述实现，可保障应用更新后继续使用快启启动特性。
 
-```
+```TypeScript
 export class LauncherAbility extends UIAbility {
 	onCreate() {
-		...
+		// ...
 	}
 
 	onConfigChange(key: string, value: string) {
@@ -283,16 +283,16 @@ export class AppAbilityStage extends AbilityStage {
 
 系统对外提供了requestRebuildHyperSnap接口，该接口支持应用在自己的业务逻辑中主动调用，清理当前快启初始化结果，在满足条件时重新进行快启初始化。
 
-```
+```TypeScript
 export class LauncherAbility extends UIAbility {
 	onCreate() {
-		...
+		// ...
 		try {
-			...
+			// ...
 		} catch (error) {
-			...
+			// ...
 			requestRebuildHyperSnap(); // 开发者可根据业务在报错时重新生成快启初始化结果
-			...
+			// ...
 		}
 	}
 }
@@ -301,7 +301,7 @@ export class LauncherAbility extends UIAbility {
 ## 通过调整业务逻辑提升快启加速收益
 
 纳入快启点的启动逻辑越多，快启收益通常越明显。
-开发者可以对整个启动流程进行梳理和分析，将适合纳入快启点的启动逻辑（即不含快启风险操作），在保障业务逻辑正确性的条件下前置到快启点内，扩大应用快启技术提升启动性能的收益。
+开发者可以对整个启动流程进行梳理和分析，将适合纳入快启点的启动逻辑（即不含[快启风险操作](#快启风险操作)），在保障业务逻辑正确性的条件下前置到快启点内，扩大应用快启技术提升启动性能的收益。
 
 * **将启动过程中的时序无关且无快启风险操作的逻辑前置到快启点内**
 
@@ -309,9 +309,7 @@ export class LauncherAbility extends UIAbility {
 
 * **将启动过程中的加载依赖库逻辑前置到快启点内**
 
-  import动作前置存在适用范围，系统建议将冷启动过程中的import动作尽可能放到快启初始化流程内，以扩大收益。如下图所示，通过trace工具扫描关键词“Evaluate”，获取启动过程中的import动作。
-
-  ![image](./figures/hyperstartup-application-file-import.png)
+  import动作前置存在适用范围，系统建议将冷启动过程中的import动作尽可能放到快启初始化流程内，以扩大收益。通过[DevEco Profiler调优工具](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-profiler)扫描关键词“Evaluate”，获取启动过程中的import动作。
 
   不建议将启动后的import动作前置到启动流程甚至快启初始化流程中，否则可能导致以下问题。
 
@@ -321,18 +319,18 @@ export class LauncherAbility extends UIAbility {
 
   建议采用动态import的方式在AbilityStage.onCreate中执行import动作。
 
-  ```
+  ```TypeScript
   export class AppAbilityStage extends AbilityStage {
     onCreate() {
-      ...
+      // ...
       this.preLoadKit();
-      ...
+      // ...
     }
 
     async preLoadKit() {
       await import('@ohos/common/src/..../1');
       await import('@ohos/common/src/..../2');
-      ...
+      // ...
       await import('@ohos/common/src/..../N');
     }
   }
@@ -341,6 +339,10 @@ export class LauncherAbility extends UIAbility {
 
 ## 快启接入的辅助工具
 
-为帮助开发者定位需要适配和修改的内容，系统提供了[配套插件工具](https://gitcode.com/LYZ-H/HyperSnapshot/blob/master/tools/hyperstartupcheck-user-manual.md)。该工具基于代码扫描，识别具有快启风险的代码，并报告给开发者进行修正，节省人工排查工作量，提升应用适配快启的效率。
+为帮助开发者定位需要适配和修改的内容，系统提供了[配套插件工具](https://gitcode.com/HarmonyOS_Samples/HyperStartup/blob/dev/tools/hyperstartupcheck-user-manual.md)。该工具基于代码扫描，识别具有快启风险的代码，并报告给开发者进行修正，节省人工排查工作量，提升应用适配快启的效率。
 
+## 相关实例
 
+针对应用快启启动开发，可参考以下相关实例：
+
+- [应用快启技术实现的应用加速启动](https://gitcode.com/HarmonyOS_Samples/HyperStartup/tree/dev)
