@@ -1,4 +1,4 @@
-# 高如何正确处理高像素图片
+# 如何正确处理高像素图片
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @AiShangyou-->
