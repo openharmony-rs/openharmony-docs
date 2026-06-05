@@ -1,4 +1,4 @@
-# 空间渲染效果节点(C/C++)
+# 空间渲染(C/C++)
  <!--Kit: Audio Kit-->
  <!--Subsystem: Multimedia-->
  <!--Owner: @xxngwang-->
@@ -6,7 +6,7 @@
  <!--Tester: @Filger-->
  <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，OHAudioSuite给开发者提供空间渲染效果节点[EFFECT_NODE_TYPE_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_typ)，用于实现三维空间音频渲染能力。空间渲染效果节点可以将音频源在三维空间中进行定位、旋转和扩展处理，为用户营造沉浸式的三维听觉体验。
+从API version 23开始，[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)给开发者提供空间渲染效果节点[EFFECT_NODE_TYPE_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_typ)，用于实现三维空间音频渲染能力。空间渲染效果节点可以将音频源在三维空间中进行定位、旋转和扩展处理，为用户营造沉浸式的三维听觉体验。
 
 ## 功能概述
 
