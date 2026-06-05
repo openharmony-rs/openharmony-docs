@@ -947,13 +947,13 @@ ArkTS-Dyn: onItemDragStart(event: OnItemDragStartCallback)
 
 ArkTS-Sta: onItemDragStart(event: OnItemDragStartCallback | undefined)
 
-开始拖拽网格元素时触发。
+开始拖拽GridItem时触发。
 
 手指长按GridItem时触发该事件。
 
 由于拖拽检测也需要长按，且事件处理机制优先触发子组件事件，GridItem上绑定[LongPressGesture](ts-basic-gestures-longpressgesture.md#longpressgesture-1)时无法触发拖拽。如有长按和拖拽同时使用的需求可以使用通用拖拽事件。
 
-拖拽浮起的网格元素可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](#示例16实现griditem自定义拖拽)。
+拖拽浮起的GridItem可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](#示例16实现griditem自定义拖拽)。
 
 不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现griditem拖拽）](#示例17通过拖拽事件实现griditem拖拽)。
 
@@ -971,7 +971,7 @@ ArkTS-Sta: onItemDragStart(event: OnItemDragStartCallback | undefined)
 
 | 参数名    | 类型                                  | 必填 | 说明                   |
 | --------- | ------------------------------------- | ---- | ---------------------- |
-| event     | ArkTS-Dyn: [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23)<br/>ArkTS-Sta: [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) \| undefined | 是   | 网格元素拖拽开始时触发的回调。<br>API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) => (() => any) \| void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23)。 |
+| event     | ArkTS-Dyn: [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23)<br/>ArkTS-Sta: [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) \| undefined | 是   | GridItem拖拽开始时触发的回调。<br>API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) => (() => any) \| void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23)。 |
 
 ### onItemDragEnter<sup>8+</sup>
 
@@ -979,7 +979,7 @@ ArkTS-Dyn: onItemDragEnter(event: (event: ItemDragInfo) => void)
 
 ArkTS-Sta: onItemDragEnter(event: ((event: ItemDragInfo) => void) | undefined)
 
-拖拽进入网格元素范围内时触发。
+拖拽进入GridItem范围内时触发。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1003,7 +1003,7 @@ ArkTS-Dyn: onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insert
 
 ArkTS-Sta: onItemDragMove(event: ((event: ItemDragInfo, itemIndex: int, insertIndex: int) => void) | undefined)
 
-拖拽在网格元素范围内移动时触发。
+拖拽在GridItem范围内移动时触发。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1023,7 +1023,7 @@ ArkTS-Dyn: onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => vo
 
 ArkTS-Sta: onItemDragLeave(event: ((event: ItemDragInfo, itemIndex: int) => void) | undefined)
 
-拖拽离开网格元素时触发。
+拖拽离开GridItem时触发。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1037,7 +1037,7 @@ ArkTS-Sta: onItemDragLeave(event: ((event: ItemDragInfo, itemIndex: int) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| event | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: number) => void <br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: int) => void) \|&nbsp;undefined | 是 | 拖拽离开网格元素时触发的回调。<br/>event：拖拽点的信息。<br/>itemIndex：拖拽离开的网格元素索引值。<br/>undefined：不使用该回调函数。 |
+| event | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: number) => void <br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: int) => void) \|&nbsp;undefined | 是 | 拖拽离开GridItem时触发的回调。<br/>event：拖拽点的信息。<br/>itemIndex：拖拽离开的GridItem索引值。<br/>undefined：不使用该回调函数。 |
 
 ### onItemDrop<sup>8+</sup>
 
@@ -1045,9 +1045,9 @@ ArkTS-Dyn: onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertInde
 
 ArkTS-Sta: onItemDrop(event: ((event: ItemDragInfo, itemIndex: int, insertIndex: int, isSuccess: boolean) => void) | undefined)
 
-绑定该事件的网格元素可作为拖拽释放目标，当GridItem停止拖拽时触发。
+绑定该事件的GridItem可作为拖拽释放目标，当GridItem停止拖拽时触发。
 
-当拖拽释放位置在网格元素之内时，isSuccess会返回true；在网格元素之外时，isSuccess会返回false。
+当拖拽释放位置在GridItem之内时，isSuccess会返回true；在GridItem之外时，isSuccess会返回false。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1063,7 +1063,7 @@ ArkTS-Sta: onItemDrop(event: ((event: ItemDragInfo, itemIndex: int, insertIndex:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| event | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: number, insertIndex: number, isSuccess: boolean) => void <br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: int, insertIndex: int, isSuccess: boolean) => void) \|&nbsp;undefined | 是 | 当GridItem停止拖拽时触发的回调。<br/>event：拖拽点的信息。<br/>itemIndex：拖拽起始位置。<br/>insertIndex：拖拽插入位置。<br/>isSuccess：拖拽释放位置是否在设置了onItemDrop的网格元素之内。true表示拖拽释放位置在设置了onItemDrop的网格元素之内；false表示拖拽释放位置在设置了onItemDrop的网格元素之外。<br/>undefined：不使用该回调函数。 |
+| event | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: number, insertIndex: number, isSuccess: boolean) => void <br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: int, insertIndex: int, isSuccess: boolean) => void) \|&nbsp;undefined | 是 | 当GridItem停止拖拽时触发的回调。<br/>event：拖拽点的信息。<br/>itemIndex：拖拽起始位置。<br/>insertIndex：拖拽插入位置。<br/>isSuccess：拖拽释放位置是否在设置了onItemDrop的GridItem之内。true表示拖拽释放位置在设置了onItemDrop的GridItem之内；false表示拖拽释放位置在设置了onItemDrop的GridItem之外。<br/>undefined：不使用该回调函数。 |
 
 ### onScrollBarUpdate<sup>10+</sup>
 
@@ -3499,7 +3499,7 @@ struct GridExample {
 
 ### 示例20（设置多选聚拢动画）
 
-该示例通过打开Grid多选聚拢动画开关，实现了通过[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)在GridItem上长按弹出菜单时聚拢显示范围内被选中的GridItem。
+该示例通过打开Grid多选聚拢动画开关，实现了在GridItem上长按弹出菜单时，通过[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)聚拢显示范围内被选中的GridItem的效果。
 
 从API version 23开始，Grid组件新增[editModeOptions](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
 
