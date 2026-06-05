@@ -3450,9 +3450,51 @@ getApkFileHandle(path: string, fileName: string): Promise&lt;[FileData](#filedat
   import { fileIo } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let generalCallbacks: backup.GeneralCallbacks = {
+    onFileReady: (err: BusinessError, file: backup.File) => {
+      if (err) {
+        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onFileReady success');
+    },
+    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+      if (err) {
+        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onBundleBegin success');
+    },
+    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+      if (err) {
+        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onBundleEnd success');
+    },
+    onAllBundlesEnd: (err: BusinessError) => {
+      if (err) {
+        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onAllBundlesEnd success');
+    },
+    onBackupServiceDied: () => {
+      console.info(`service died`);
+    },
+    onMigrateResult: (err: BusinessError<string|void>, bundleName: string) => {
+      if (err) {
+        console.error(`onMigrateResult failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onMigrateResult success, bundleName: ' + bundleName);
+    }
+  };
+
   async function testGetApkFileHandle() {
+    let sessionRestore = new backup.SessionRestore(generalCallbacks);
     try {
-      let fileData: backup.FileData = await backup.getApkFileHandle("/data/storage/el1/base/files", "app.apk");
+      let fileData: backup.FileData = await sessionRestore.getApkFileHandle("/data/storage/el1/base/files", "app.apk");
       console.info("getApkFileHandle success, fd: " + fileData.fd);
       // 使用完毕后关闭文件描述符
       fileIo.closeSync(fileData.fd);
