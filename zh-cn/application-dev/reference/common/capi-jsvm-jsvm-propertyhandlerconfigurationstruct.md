@@ -14,7 +14,17 @@ typedef struct {...} JSVM_PropertyHandlerConfigurationStruct
 
 当执行对象的getter、setter、deleter和enumerator操作时，该结构体中对应的函数回调将会触发。
 
+**使用场景：** 需要拦截和处理JavaScript对象属性操作的场景，实现动态属性访问控制，构建代理对象或属性监听机制。
+
+**解决的问题：** 提供了一种机制来拦截和自定义对象的属性操作行为，允许在属性读写删除等操作时执行自定义逻辑。
+
+**收益：** 增强对象操作的灵活性和可控性，简化属性拦截的实现逻辑。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 12
+
+**支持设备类型：** Phone | PC/2in1 | Tablet | Wearable。具体支持情况可通过对应的API接口进行判断。
 
 **相关模块：** [JSVM](capi-jsvm.md)
 
@@ -30,7 +40,7 @@ typedef struct {...} JSVM_PropertyHandlerConfigurationStruct
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) indexedPropertyData   | 索引属性回调使用的数据。 |
 
 
-### 成员函数
+### 回调函数成员
 
 | 名称 | 描述 |
 | -- | -- |
@@ -43,7 +53,7 @@ typedef struct {...} JSVM_PropertyHandlerConfigurationStruct
 | [JSVM_Value (JSVM_CDECL* genericIndexedPropertyDeleterCallback)(JSVM_Env env,JSVM_Value index,JSVM_Value thisArg,JSVM_Value indexedPropertyData)](#genericindexedpropertydeletercallback) | 通过删除实例对象的索引属性而触发的回调函数。 |
 | [JSVM_Value (JSVM_CDECL* genericIndexedPropertyEnumeratorCallback)(JSVM_Env env,JSVM_Value thisArg,JSVM_Value indexedPropertyData)](#genericindexedpropertyenumeratorcallback) | 通过获取对象上的所有索引属性而触发的回调函数。 |
 
-## 成员函数说明
+## 回调函数成员说明
 
 ### genericNamedPropertyGetterCallback()
 
