@@ -20,7 +20,7 @@
 
 **相关模块：** [ArkUI_EventModule](capi-arkui-eventmodule.md)
 
-**相关示例：** <!--RP1-->[NdkInputEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkInputEvent)<!--RP1End-->、<!--RP2-->[CoastingAxisEventNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/CoastingAxisEventNDK)<!--RP2End-->
+**相关示例：** <!--RP1-->[NdkInputEvent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkInputEvent)<!--RP1End-->、<!--RP2-->[CoastingAxisEventNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/CoastingAxisEventNDK)<!--RP2End-->
 
 ## 汇总
 

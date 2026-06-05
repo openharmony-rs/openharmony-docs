@@ -54,7 +54,6 @@ ArkTS-Sta: onMouse(event: ((event: MouseEvent) => void) | undefined): this
 
 | 名称                    | 类型                    | 只读    |  可选   |     说明                          |
 | ---------------------- | -------------------------------------- |-------------- |------------- |  --------------------------- |
-<<<<<<< HEAD
 | x                      | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                  | 否           |  否     |鼠标位置在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。<br/>单位：vp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
 | y                      | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                    |  否         |  否     |鼠标位置在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br/>单位：vp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
 | button                 | [MouseButton](ts-appendix-enums.md#mousebutton8)      |  否     |  否     |鼠标按键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                        |
@@ -69,8 +68,8 @@ ArkTS-Sta: onMouse(event: ((event: MouseEvent) => void) | undefined): this
 | rawDeltaX<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double      |  否   |  是     |鼠标设备在二维平面X轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | rawDeltaY<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double      |  否     |  是    |鼠标设备在二维平面Y轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | pressedButtons<sup>15+</sup> | MouseButton[]      |  否      | 是     |当前按下的鼠标按键集合。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
-| globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double       |  否    |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
-| globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double      | 否      |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double       |  否    |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double      | 否      |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 | eventHandleId<sup>24+</sup> | ArkTS-Dyn：number<br/>ArkTS-Sta：int | 否 | 是 | 用于事件处理的唯一标识。<br/> 取值范围：[0, +∞)<br/> **说明：** 在使用[postInputEventWithStrategy](../js-apis-arkui-builderNode.md#postinputeventwithstrategy24)接口分发事件时会使用该字段，事件每分发一次字段会增加100000。<br/> 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
 
 ### stopPropagation<sup>23+</sup>
@@ -84,25 +83,6 @@ stopPropagation(): void
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23 
-=======
-| x                      | number                                  | 否           |  否     |鼠标位置在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| y                      | number                                    |  否         |  否     |鼠标位置在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| button                 | [MouseButton](ts-appendix-enums.md#mousebutton8)      |  否     |  否     |鼠标按键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| action                 | [MouseAction](ts-appendix-enums.md#mouseaction8)       |  否   |  否     |鼠标动作。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| stopPropagation        | () => void                            |  否          |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
-| windowX<sup>10+</sup> | number                           |  否          |  否     |鼠标位置在当前应用窗口坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| windowY<sup>10+</sup> | number                           |  否         |  否     |鼠标位置在当前应用窗口坐标系中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| displayX<sup>10+</sup> | number                          |  否         |  否     |鼠标位置在当前应用屏幕坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| displayY<sup>10+</sup> | number                         |  否          |  否     |鼠标位置在当前应用屏幕坐标系中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| screenX<sup>(deprecated)</sup> | number                 |  否         |  否     |鼠标位置在当前应用窗口坐标系中的X坐标。<br>单位：vp<br/>**说明：** 从API version 8开始支持，从API version 10开始废弃，建议使用windowX替代。 |
-| screenY<sup>(deprecated)</sup> | number                 |  否          |  否     |鼠标位置在当前应用窗口坐标系中的Y坐标。<br>单位：vp<br/>**说明：** 从API version 8开始支持，从API version 10开始废弃，建议使用windowY替代。 |
-| rawDeltaX<sup>15+</sup> | number      |  否   |  是     |鼠标设备在二维平面X轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**说明：** API版本26.0.0之前，rawDeltaX的返回值并非鼠标硬件的原始移动数据，而是原始数据缩小了X倍，X为系统的显示大小比例。API版本26.0.0开始，rawDeltaX的返回值为鼠标硬件的原始移动数据。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| rawDeltaY<sup>15+</sup> | number      |  否     |  是    |鼠标设备在二维平面Y轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**说明：** API版本26.0.0之前，rawDeltaY的返回值并非鼠标硬件的原始移动数据，而是原始数据缩小了X倍，X为系统的显示大小比例。API版本26.0.0开始，rawDeltaY的返回值为鼠标硬件的原始移动数据。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| pressedButtons<sup>15+</sup> | MouseButton[]      |  否      | 是     |当前按下的鼠标按键集合。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| globalDisplayX<sup>20+</sup> | number       |  否    |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| globalDisplayY<sup>20+</sup> | number      | 否      |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| eventHandleId<sup>24+</sup> | number | 否 | 是 | 用于事件处理的唯一标识。<br/> 取值范围：[0, +∞)<br/> **说明：** 在使用[postInputEventWithStrategy](../js-apis-arkui-builderNode.md#postinputeventwithstrategy24)接口分发事件时会使用该字段，事件每分发一次字段会增加100000。<br/> 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
->>>>>>> fd01c351bbf (change links)
 
 ### getCurrentLocalPosition
 
