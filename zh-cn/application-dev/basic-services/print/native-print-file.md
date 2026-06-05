@@ -3,7 +3,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
 <!--Owner: @guoshengbang-->
-<!--Designer: @gcw_4D6e0BBd-->
+<!--Designer: @baozewei-->
 <!--Tester: @guoshengbang-->
 <!--Adviser: @fang-jinxu-->
 
