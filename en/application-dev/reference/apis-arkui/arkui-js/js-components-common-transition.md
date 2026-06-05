@@ -36,7 +36,7 @@
 2. The exchange effect of shared elements is similar to the transition shown below.
 
    **Figure 1** Default transition effect of shared elements
-   ![en-us_image_0000001238424309](figures/en-us_image_0000001238424309.png)
+   ![transition-page](figures/transition-page.png)
 
 3. The animation of a shared element does not take effect for the border and background color of the element.
 
@@ -248,7 +248,7 @@ export default {
    ![en-us_image_0000001193704354](figures/en-us_image_0000001193704354.png)
 
    b. In the back scenario, the animation defined by **transition-enter** is used for exiting the **Page2.js** in the page stack, with the animation played in reverse sequence; the animation defined by **transition-exit** is used for exiting the **Page1.js** in the page stack, with the animation played in reverse sequence.
-   ![en-us_image_0000001238184345](figures/en-us_image_0000001238184345.png)
+   ![transition-enter](figures/transition-enter.png)
 
 ### Example
 

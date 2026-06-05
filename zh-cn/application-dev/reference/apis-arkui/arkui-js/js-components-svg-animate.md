@@ -121,4 +121,4 @@
 ```
 
 
-![zh-cn_image_0000001127125126](figures/zh-cn_image_0000001127125126.gif)
+![Repeating-image](figures/Repeating-image.gif)

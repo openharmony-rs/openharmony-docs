@@ -2670,7 +2670,7 @@ struct Fill {
 }
 ```
 
- ![en-us_image_000000127777774](figures/en-us_image_000000127777774.jpg)
+ ![Yellowtrapezoid-01](figures/Yellowtrapezoid-01.jpg)
 
 ### clip
 
@@ -2777,7 +2777,7 @@ Sets a specified path as the clipping path.
   }
   ```
 
-  ![en-us_image_000000127777779](figures/en-us_image_000000127777779.jpg)
+  ![Yellowtrapezoid](figures/Yellowtrapezoid.jpg)
 
 
 ### reset<sup>12+</sup>
@@ -3599,7 +3599,7 @@ Obtains the [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) object
   }
   ```
 
-  ![en-us_image_000000127777782](figures/en-us_image_000000127777782.png)
+  ![Yellowithsky](figures/Yellowithsky.png)
 
 ### setPixelMap
 
@@ -3675,7 +3675,7 @@ Obtains the [ImageData](ts-components-canvas-imagedata.md) object created with t
   }
   ```
 
-  ![en-us_image_000000127777780](figures/en-us_image_000000127777780.png)
+  ![Yellow-lemon](figures/Yellow-lemon.png)
 
 
 ### putImageData
@@ -3898,7 +3898,7 @@ Obtains the dash line style.
     }
   }
   ```
-![en-us_image_000000127777778](figures/en-us_image_000000127777778.png) 
+![Dottedcircle-01](figures/Dottedcircle-01.png) 
 
 
 ### transferFromImageBitmap
@@ -4061,7 +4061,7 @@ Restores the saved drawing context.
     }
   }
   ```
-  ![en-us_image_000000127777781](figures/en-us_image_000000127777781.png)
+  ![Yellow-with-GreenandBlack](figures/Yellow-with-GreenandBlack.png)
 
 
 ### save
@@ -4105,7 +4105,7 @@ Saves all states of the canvas in the stack. This API is usually called when the
     }
   }
   ```
-  ![en-us_image_000000127777781](figures/en-us_image_000000127777781.png)
+  ![Yellow-with-GreenandBlack](figures/Yellow-with-GreenandBlack.png)
 
 
 ### createLinearGradient

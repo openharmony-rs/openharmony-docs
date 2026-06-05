@@ -1090,7 +1090,7 @@ struct ImageExample1 {
 }
 ```
 
-![en-us_image_0000001592882500](figures/en-us_image_0000001592882500.gif)
+![Image-of-png-gif-jpg-svg](figures/Image-of-png-gif-jpg-svg.gif)
 
 ### Example 2: Downloading and Displaying Static Online Images
 
@@ -1237,7 +1237,7 @@ struct ImageExample3 {
 }
 ```
 
-![en-us_image_0000001607845173](figures/en-us_image_0000001607845173.gif)
+![skychange](figures/skychange.gif)
 
 ### Example 5: Enabling the AI Image Analyzer
 

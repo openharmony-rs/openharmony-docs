@@ -123,7 +123,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001127125202](figures/zh-cn_image_0000001127125202.png)
+![Yellow-Triangle](figures/Yellow-Triangle.png)
 
 
 ## moveTo
