@@ -166,7 +166,9 @@ function getImageMimeType(filePath: string): string {
 }
 ```
 
-**获取真实MIMEType C/C++示例**
+**示例（C/C++）：**
+
+解决获取图片格式异常问题，获取真实MIMEType。
 
 在`target_link_libraries`依赖中添加`libimage_source.so`和`libimage_common.so`。
 
