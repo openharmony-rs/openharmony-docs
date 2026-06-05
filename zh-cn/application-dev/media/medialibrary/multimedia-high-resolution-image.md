@@ -369,7 +369,7 @@ static bool IsHighPixelImage(int32_t fd)
 3. 进入相机、视频、算法或某些硬件编解码链路时，可优先选择NV21或NV12，避免不必要的RGBA与YUV转换。
 4. 在指定目标像素格式时，需要确认目标处理链路和显示链路是否支持对应格式，做好充分验证。
 
-**示例（ArkTS）：**
+**示例：**
 
 ```typescript
 import { image } from '@kit.ImageKit';
