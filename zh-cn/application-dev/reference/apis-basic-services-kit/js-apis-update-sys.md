@@ -3148,7 +3148,7 @@ try {
 | innerVersion    | string                              | 只读:否, 可选:否 | 版本号。      |
 | size            | int                              | 只读:否, 可选:否 | 升级包大小，单位为B，取值范围[0, +∞]。超出范围时抛出异常。 |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | 只读:否, 可选:否 | 生效模式，用于指定升级生效的方式。详见EffectiveMode定义。 |
-| otaMode | [OtaMode<sup>20+</sup>](#otamode20)                 | 只读:否, 可选:是 | 升级模式。详见OtaMode定义。 |
+| otaMode | [OtaMode](#otamode)                 | 只读:否, 可选:是 | 升级模式。详见OtaMode定义。 |
 
 ## DescriptionOptions
 
@@ -3513,7 +3513,7 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 | LIVE          | 2    | 热升级，无需重启即可生效，适用于应用层组件升级或需要保持设备运行的场景。 |
 | LIVE_AND_COLD | 3    | 融合升级，结合两者特性，适用于同时包含热升级和冷升级组件的场景。 |
 
-## OtaMode<sup>20+</sup>
+## OtaMode
 
 升级模式。
 
