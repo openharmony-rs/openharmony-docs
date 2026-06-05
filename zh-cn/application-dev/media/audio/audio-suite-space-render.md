@@ -51,7 +51,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 ### 添加头文件
 
-开发者通过引入头文件使用音频编创相关API。
+通过引入头文件使用音频编创相关API。
 
 <!-- @[audioSuite_SpaceRenderEffectInclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.h) -->
 
