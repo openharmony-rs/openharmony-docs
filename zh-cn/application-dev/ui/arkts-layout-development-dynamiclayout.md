@@ -19,6 +19,8 @@
 
 通过传入[LayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1)类型入参，创建[DynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md#接口)组件并设置布局算法。[LayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1)类型变量支持赋值具体的布局算法类对象，包括[内置布局算法](#内置布局算法)和[自定义布局算法](#自定义布局算法)。
 
+ArkTs-Dyn示例:
+
 <!-- @[CreateDynamicLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/basic/CreateDynamicLayout.ets) -->
 
 ``` TypeScript
@@ -63,6 +65,10 @@ struct CreateDynamicLayout {
 }
 ```
 
+ArkTs-Sta示例:
+
+<!-- @[CreateDynamicLayout](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynamicLayout/entry/src/main/ets/pages/basic/CreateDynamicLayout.ets) -->
+
 ![](figures/dynamiclayout_basic.gif)
 
 ## 内置布局算法
@@ -74,6 +80,8 @@ struct CreateDynamicLayout {
 [RowLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)是水平方向线性布局算法，子组件沿水平方向依次排列。该算法支持设置子组件间距、子组件在主轴（水平方向）上的对齐方式、在交叉轴（垂直方向）上的对齐方式，以及是否反转子组件的排列方向。该布局算法与[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)组件布局效果一致，详细效果说明请参考[线性布局（Row/Column）](./arkts-layout-development-linear.md)。下述示例通过修改RowLayoutAlgorithm对象的space、justifyContent、alignItems和isReverse成员变量，调整子组件间距、主轴（水平方向）对齐方式、交叉轴（竖直方向）对齐方式和排列方向。
 
 从API version 24开始，新增[RowLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm)的[space](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性)、[justifyContent](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性)、[alignItems](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性)、[isReverse](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性)属性。
+
+ArkTs-Dyn示例:
 
 <!-- @[RowLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/linearlayout/RowLayoutAlgorithm.ets) -->
 
@@ -145,6 +153,11 @@ struct RowLayoutExample {
   }
 }
 ```
+
+ArkTs-Sta示例:
+
+<!-- @[RowLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynamicLayout/entry/src/main/ets/pages/linearlayout/RowLayoutAlgorithm.ets) -->
+
 ![dynamiclayout_column](figures/dynamiclayout_row.gif)
 
 ### ColumnLayoutAlgorithm
@@ -152,6 +165,8 @@ struct RowLayoutExample {
 [ColumnLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)是垂直方向线性布局算法，子组件沿垂直方向依次排列。该算法支持设置子组件间距、子组件在主轴（垂直方向）上的对齐方式、在交叉轴（水平方向）上的对齐方式，以及是否反转子组件的排列方向。该布局算法与[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)组件布局效果一致，详细效果说明请参考[线性布局（Row/Column）](./arkts-layout-development-linear.md)。下述示例通过修改ColumnLayoutAlgorithm的space、justifyContent、alignItems和isReverse属性，调整子组件间距、主轴（竖直方向）对齐方式、交叉轴（水平方向）对齐方式和排列方向。
 
 从API version 24开始，新增[ColumnLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm)的[space](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性-1)、[justifyContent](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性-1)、[alignItems](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性-1)、[isReverse](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性-1)属性。
+
+ArkTs-Dyn示例:
 
 <!-- @[ColumnLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/linearlayout/ColumnLayoutAlgorithm.ets) -->
 
@@ -223,6 +238,11 @@ struct ColumnLayoutExample {
   }
 }
 ```
+
+ArkTs-Sta示例:
+
+<!-- @[ColumnLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynamicLayout/entry/src/main/ets/pages/linearlayout/ColumnLayoutAlgorithm.ets) -->
+
 ![dynamiclayout_column](figures/dynamiclayout_column.gif)
 
 ### StackLayoutAlgorithm
@@ -230,6 +250,8 @@ struct ColumnLayoutExample {
 [StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)是堆叠布局算法，子组件堆叠排列，后添加的子组件覆盖先添加的子组件。该算法支持通过alignContent设置子组件在容器中的九宫格对齐位置，子组件可以通过[layoutGravity](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#layoutgravity20)属性单独设置自己的对齐方式，优先级高于容器的alignContent。该布局算法与[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)组件布局效果一致，详细效果说明请参考[堆叠布局](./arkts-layout-development-stack-layout.md)。下述示例通过修改[StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)的[alignContent](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性-2)属性，调整子组件在容器中的九宫格对齐位置。
 
 从API version 24开始，新增[StackLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm)的[alignContent](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性-2)属性。
+
+ArkTs-Dyn示例:
 
 <!-- @[StackLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/stacklayout/StackLayoutAlgorithm.ets) -->
 
@@ -295,6 +317,11 @@ struct StackLayoutExample {
   }
 }
 ```
+
+ArkTs-Sta示例:
+
+<!-- @[StackLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynamicLayout/entry/src/main/ets/pages/stacklayout/StackLayoutAlgorithm.ets) -->
+
 ![dynamiclayout_stack](figures/dynamiclayout_stack.gif)
 
 ### GridLayoutAlgorithm
@@ -302,6 +329,8 @@ struct StackLayoutExample {
 [GridLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)是垂直方向网格布局算法。该算法支持通过[columnsTemplate](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#columnstemplate)或[ItemFillPolicy](../reference/apis-arkui/arkui-ts/ts-types.md#itemfillpolicy22)设置列数，设置[ItemFillPolicy](../reference/apis-arkui/arkui-ts/ts-types.md#itemfillpolicy22)为BREAKPOINT_DEFAULT时行为与[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)一致，行数由子节点数量和列数决定。该算法支持通过[LengthMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#lengthmetrics12)设置行间距和列间距，通过[align](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#align20)设置组件在网格中的对齐方式。下述示例修改GridLayoutAlgorithm的columnsTemplate属性调整网格列数。
 
 从API version 24开始，新增[GridLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm)的[columnsTemplate](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#属性-3)属性。
+
+ArkTs-Dyn示例:
 
 <!-- @[GridLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/gridlayout/GridLayoutAlgorithm.ets) -->
 
@@ -402,6 +431,11 @@ struct GridLayoutExample {
   }
 }
 ```
+
+ArkTs-Sta示例:
+
+<!-- @[GridLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynamicLayout/entry/src/main/ets/pages/gridlayout/GridLayoutAlgorithm.ets) -->
+
 ![](figures/dynamiclayout-grid.gif)
 
 ## 自定义布局算法
@@ -411,6 +445,8 @@ struct GridLayoutExample {
 ### 自定义布局算法实现指导
 
 通过调用[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)的[getChildrenCount()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchildrencount12)和[getChild()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild12)方法，开发者可以获取所有子组件FrameNode。在onMeasure方法中，调用[measure()](../reference/apis-arkui/js-apis-arkui-frameNode.md#measure12)方法可以自定义测量子组件大小。在onLayout方法中，调用[getMeasuredSize()](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12)可以获取子组件测量后的尺寸，调用[layout()](../reference/apis-arkui/js-apis-arkui-frameNode.md#layout12)方法可以自定义排列子组件位置。下述示例展示如何重写[onMeasure](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onmeasure)和[onLayout](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#onlayout)方法，调用[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)的相关方法实现水平方向线性布局的效果。
+
+ArkTs-Dyn示例:
 
 <!-- @[CustomLayoutBasic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/customlayout/CustomLayoutBasic.ets) -->
 
@@ -505,11 +541,18 @@ struct CustomLayoutBasic {
   }
 }
 ```
+
+ArkTs-Sta示例:
+
+<!-- @[CustomLayoutBasic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynamicLayout/entry/src/main/ets/pages/customlayout/CustomLayoutBasic.ets) -->
+
 ![](./figures/CustomBasic.png)
 
 ### 瀑布流布局
 
 下述示例实现了自定义瀑布流布局算法，将子组件按列排列，每列中的子组件依次堆叠，适用于商品展示的场景。
+
+ArkTs-Dyn示例:
 
 <!-- @[WaterFlowLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/customlayout/WaterFlowLayout.ets) -->
 
@@ -670,11 +713,17 @@ interface Product {
 }
 ```
 
+ArkTs-Sta示例:
+
+<!-- @[WaterFlowLayout](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynamicLayout/entry/src/main/ets/pages/customlayout/WaterFlowLayout.ets) -->
+
 ![dynamiclayout_stack](figures/dynamiclayout_water_flow.gif)
 
 ### 网格布局
 
 下述示例实现一个自定义网格布局算法，将子组件按网格排列，同一行的子组件高度保持一致。
+
+ArkTs-Dyn示例:
 
 <!-- @[GridLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/customlayout/GridLayout.ets) -->
 
@@ -827,11 +876,17 @@ struct GridLayoutExample {
 }
 ```
 
+ArkTs-Sta示例:
+
+<!-- @[GridLayout](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynamicLayout/entry/src/main/ets/pages/customlayout/GridLayout.ets) -->
+
 ![](figures/dynamiclayout_gridlayout_custom.png)
 
 ### 标签云布局
 
 下述示例实现一个自定义标签云布局，标签自动换行排列，适合展示搜索历史、热门标签、技能标签等不规则布局的场景。
+
+ArkTs-Dyn示例:
 
 <!-- @[TagCloudLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/customlayout/TagCloudLayout.ets) -->
 
@@ -978,11 +1033,17 @@ struct TagCloudExample {
 }
 ```
 
+ArkTs-Sta示例:
+
+<!-- @[TagCloudLayout](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynamicLayout/entry/src/main/ets/pages/customlayout/TagCloudLayout.ets) -->
+
 ![](figures/dynamiclayout_label_cloud.png)
 
 ## 切换布局算法
 
 DynamicLayout在切换布局算法时会保持子组件的状态不变，比如输入框内容、开关状态、进度条值等。下述示例展示[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#接口)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#接口)、[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#接口)和[CheckBox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md#checkbox-1)组件在布局切换过程中保持状态，同时使用[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)为布局切换添加平滑的动画效果。
+
+ArkTs-Dyn示例:
 
 <!-- @[ReserveChildState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ReserveChildState.ets) -->
 
@@ -1119,6 +1180,10 @@ struct StatePreservationExample {
 }
 ```
 
+ArkTs-Sta示例:
+
+<!-- @[ReserveChildState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ReserveChildState.ets) -->
+
 ![](figures/dynamiclayout_state_reserve.gif)
 
 DynamicLayout支持以下几种方式触发重新布局：
@@ -1126,6 +1191,8 @@ DynamicLayout支持以下几种方式触发重新布局：
 - 通过状态变量切换布局算法。
 
   开发者使用[@Local](./state-management/arkts-new-local.md)装饰器修饰布局算法变量，可以实现运行时动态切换布局。
+
+  ArkTs-Dyn示例:
 
   <!-- @[ChangeLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutAlgorithm.ets) -->
 
@@ -1237,11 +1304,17 @@ DynamicLayout支持以下几种方式触发重新布局：
   }
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[ChangeLayoutAlgorithm](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutAlgorithm.ets) -->
+
   ![](figures/dynamiclayout_change_layoutalgorithm.gif)
 
 - 通过条件运算符切换布局算法。
 
   开发者可以使用条件运算符，根据状态变量的值选择合适的布局算法。
+
+  ArkTs-Dyn示例:
 
   <!-- @[ChangeLayoutWithConditionVariable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutWithConditionVariable.ets) -->
 
@@ -1293,11 +1366,17 @@ DynamicLayout支持以下几种方式触发重新布局：
   }
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[ChangeLayoutWithConditionVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutWithConditionVariable.ets) -->
+
   ![](figures/dynamiclayout_change_flag.gif)
 
 - 通过修改算法属性触发重新布局。
 
   布局算法类使用[@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰，布局算法成员属性使用[@Trace](./state-management/arkts-new-observedV2-and-trace.md)装饰，修改属性值可以触发DynamicLayout组件重新布局。
+
+  ArkTs-Dyn示例:
 
   <!-- @[ChangeAlgorithmProperties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeAlgorithmProperties.ets) -->
 
@@ -1364,6 +1443,10 @@ DynamicLayout支持以下几种方式触发重新布局：
   }
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[ChangeAlgorithmProperties](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeAlgorithmProperties.ets) -->
+
   ![](figures/dynamiclayout_change_property.gif)
 
 - 响应式布局算法切换。
@@ -1371,6 +1454,8 @@ DynamicLayout支持以下几种方式触发重新布局：
   开发者可以结合[mediaquery](../reference/apis-arkui/arkts-apis-uicontext-mediaquery.md)接口监听屏幕方向变化，自动切换商品列表的布局方式。竖屏时使用列表视图（每行一个商品），横屏时使用网格视图（2x2网格布局）。
 
   此示例在运行前需要在工程配置文件[module.json5](../quick-start/module-configuration-file.md)中的abilities字段里配置"orientation": "auto_rotation"。
+
+  ArkTs-Dyn示例:
 
   <!-- @[ChangeLayoutWithMediaQuery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutWithMediaQuery.ets) -->
 
@@ -1517,6 +1602,10 @@ DynamicLayout支持以下几种方式触发重新布局：
     }
   }
   ```
+
+  ArkTs-Sta示例:
+
+  <!-- @[ChangeLayoutWithMediaQuery](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ChangeLayoutWithMediaQuery.ets) -->
 
   ![](figures/dynamiclayout_mediaquery.gif)
 

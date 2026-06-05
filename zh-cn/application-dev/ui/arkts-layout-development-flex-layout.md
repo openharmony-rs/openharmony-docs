@@ -38,6 +38,8 @@
 - FlexDirection.Row（默认值）：主轴为水平方向，子元素从起始端沿着水平方向开始排布。
 
 
+  ArkTs-Dyn示例:
+
   <!-- @[FlexDirectionRow_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionRow.ets) -->
   
   ``` TypeScript
@@ -52,10 +54,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexDirectionRow_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionRow.ets) -->
+
+
   ![zh-cn_image_0000001562820817](figures/zh-cn_image_0000001562820817.png)
 
 - FlexDirection.RowReverse：主轴为水平方向，子元素从终点端沿着FlexDirection.Row相反的方向开始排布。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexDirectionRowReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionRowReverse.ets) -->
   
@@ -71,10 +80,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexDirectionRowReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionRowReverse.ets) -->
+
+
   ![zh-cn_image_0000001511900464](figures/zh-cn_image_0000001511900464.png)
 
 - FlexDirection.Column：主轴为垂直方向，子元素从起始端沿着垂直方向开始排布。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexDirectionColumn_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionColumn.ets) -->
   
@@ -90,10 +106,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexDirectionColumn_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionColumn.ets) -->
+
+
   ![zh-cn_image_0000001511580884](figures/zh-cn_image_0000001511580884.png)
 
 - FlexDirection.ColumnReverse：主轴为垂直方向，子元素从终点端沿着FlexDirection.Column相反的方向开始排布。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexDirectionColumnReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionColumnReverse.ets) -->
   
@@ -109,6 +132,11 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexDirectionColumnReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionColumnReverse.ets) -->
+
+
   ![zh-cn_image_0000001562940541](figures/zh-cn_image_0000001562940541.png)
 
 
@@ -118,6 +146,8 @@
 
 - FlexWrap.NoWrap（默认值）：不换行。如果子元素的宽度总和大于父元素的宽度，则子元素会被压缩宽度。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexWrapNoWrap_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapNoWrap.ets) -->
   
@@ -132,10 +162,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexWrapNoWrap_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapNoWrap.ets) -->
+
+
   ![zh-cn_image_0000001562700425](figures/zh-cn_image_0000001562700425.png)
 
 - FlexWrap.Wrap：换行，每一行子元素按照主轴方向排列。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexWrapWrap_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrap.ets) -->
   
@@ -150,10 +187,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexWrapWrap_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrap.ets) -->
+
+
   ![zh-cn_image_0000001511740468](figures/zh-cn_image_0000001511740468.png)
 
 - FlexWrap.WrapReverse：换行，每一行子元素按照主轴反方向排列。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexWrapWrapReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrapReverse.ets) -->
   
@@ -168,6 +212,11 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexWrapWrapReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrapReverse.ets) -->
+
+
   ![zh-cn_image_0000001562940521](figures/zh-cn_image_0000001562940521.png)
 
 
@@ -180,6 +229,8 @@
 
 - FlexAlign.Start（默认值）：子元素在主轴方向起始端对齐， 第一个子元素与父元素边沿对齐，其他元素与前一个元素对齐。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignStart.ets) -->
   
@@ -194,10 +245,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignStart.ets) -->
+
+
   ![zh-cn_image_0000001511421280](figures/zh-cn_image_0000001511421280.png)
 
 - FlexAlign.Center：子元素在主轴方向居中对齐。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenter.ets) -->
   
@@ -212,10 +270,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenter.ets) -->
+
+
   ![zh-cn_image_0000001563060681](figures/zh-cn_image_0000001563060681.png)
 
 - FlexAlign.End：子元素在主轴方向终点端对齐，最后一个子元素与父元素边沿对齐，其他元素与后一个元素对齐。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignEnd.ets) -->
   
@@ -230,10 +295,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignEnd.ets) -->
+
+
   ![zh-cn_image_0000001562820809](figures/zh-cn_image_0000001562820809.png)
 
 - FlexAlign.SpaceBetween：Flex主轴方向均匀分配弹性元素，相邻子元素之间距离相同。第一个子元素和最后一个子元素与父元素边沿对齐。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSpaceBetween.ets) -->
   
@@ -248,10 +320,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSpaceBetween.ets) -->
+
+
   ![zh-cn_image_0000001511421288](figures/zh-cn_image_0000001511421288.png)
 
 - FlexAlign.SpaceAround：Flex主轴方向均匀分配弹性元素，相邻子元素之间距离相同。第一个子元素到主轴起始端的距离和最后一个子元素到主轴终点端的距离是相邻元素之间距离的一半。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexAlignSpaceAround_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSpaceAround.ets) -->
   
@@ -266,10 +345,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexAlignSpaceAround_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSpaceAround.ets) -->
+
+
   ![zh-cn_image_0000001511900436](figures/zh-cn_image_0000001511900436.png)
 
 - FlexAlign.SpaceEvenly：Flex主轴方向元素等间距布局，相邻子元素之间的间距、第一个子元素与主轴起始端的间距、最后一个子元素到主轴终点端的间距均相等。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexAlignSpaceEvenly_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSpaceEvenly.ets) -->
   
@@ -283,6 +369,11 @@
   .padding({ top: 10, bottom: 10 })
   .backgroundColor('#AFEEEE')
   ```
+
+  ArkTs-Sta示例:
+
+  <!-- @[FlexAlignSpaceEvenly_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSpaceEvenly.ets) -->
+
 
   ![zh-cn_image_0000001563060713](figures/zh-cn_image_0000001563060713.png)
 
@@ -300,6 +391,8 @@
 - ItemAlign.Auto：使用Flex容器中默认配置。
 
 
+  ArkTs-Dyn示例:
+
   <!-- @[FlexItemAlignAuto_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignAuto.ets) -->
   
   ``` TypeScript
@@ -313,10 +406,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexItemAlignAuto_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignAuto.ets) -->
+
+
   ![zh-cn_image_0000001563060677](figures/zh-cn_image_0000001563060677.png)
 
 - ItemAlign.Start：交叉轴方向首部对齐。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexItemAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignStart.ets) -->
   
@@ -331,10 +431,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexItemAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignStart.ets) -->
+
+
   ![zh-cn_image_0000001562700453](figures/zh-cn_image_0000001562700453.png)
 
 - ItemAlign.Center：交叉轴方向居中对齐。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexItemAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignCenter.ets) -->
   
@@ -349,10 +456,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexItemAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignCenter.ets) -->
+
+
   ![zh-cn_image_0000001511740484](figures/zh-cn_image_0000001511740484.png)
 
 - ItemAlign.End：交叉轴方向底部对齐。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexItemAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignEnd.ets) -->
   
@@ -367,10 +481,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexItemAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignEnd.ets) -->
+
+
   ![zh-cn_image_0000001511580876](figures/zh-cn_image_0000001511580876.png)
 
 - ItemAlign.Stretch：交叉轴方向拉伸填充，在未设置尺寸时，拉伸到容器尺寸。元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置[FlexWrap](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#flexwrap)为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行或列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexItemAlignStretch_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignStretch.ets) -->
   
@@ -385,10 +506,17 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexItemAlignStretch_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignStretch.ets) -->
+
+
   ![zh-cn_image_0000001511421252](figures/zh-cn_image_0000001511421252.png)
 
 - ItemAlign.Baseline：交叉轴方向文本基线对齐。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexItemAlignBaseline_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignBaseline.ets) -->
   
@@ -403,12 +531,19 @@
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexItemAlignBaseline_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignBaseline.ets) -->
+
+
   ![zh-cn_image_0000001511900440](figures/zh-cn_image_0000001511900440.png)
 
 
 ### 子元素设置交叉轴对齐
 
 子元素的[alignSelf](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#alignself)属性也可以设置子元素在父容器交叉轴的对齐方式，且会覆盖Flex布局容器中alignItems配置。如下例所示：
+
+ArkTs-Dyn示例:
 
 <!-- @[FlexAlignSelf_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSelf.ets) -->
 
@@ -433,6 +568,11 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 }.width('90%').height(220).backgroundColor('#AFEEEE')
 ```
 
+ArkTs-Sta示例:
+
+<!-- @[FlexAlignSelf_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSelf.ets) -->
+
+
 
 ![zh-cn_image_0000001562940533](figures/zh-cn_image_0000001562940533.png)
 
@@ -446,6 +586,8 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 
 - FlexAlign.Start：子元素各行与交叉轴起点对齐。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexAlignCenterFlexAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignStart.ets) -->
   
@@ -462,10 +604,17 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexAlignCenterFlexAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignStart.ets) -->
+
+
   ![zh-cn_image_0000001511900460](figures/zh-cn_image_0000001511900460.png)
 
 - FlexAlign.Center：子元素各行在交叉轴方向居中对齐。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexAlignCenterFlexAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignCenter.ets) -->
   
@@ -482,10 +631,17 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexAlignCenterFlexAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignCenter.ets) -->
+
+
   ![zh-cn_image_0000001511421256](figures/zh-cn_image_0000001511421256.png)
 
 - FlexAlign.End：子元素各行与交叉轴终点对齐。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexAlignCenterFlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignEnd.ets) -->
   
@@ -502,10 +658,17 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexAlignCenterFlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignEnd.ets) -->
+
+
   ![zh-cn_image_0000001562820801](figures/zh-cn_image_0000001562820801.png)
 
 - FlexAlign.SpaceBetween：子元素各行与交叉轴两端对齐，各行间垂直间距平均分布。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexAlignCenterFlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceBetween.ets) -->
   
@@ -522,10 +685,17 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexAlignCenterFlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceBetween.ets) -->
+
+
   ![zh-cn_image_0000001511900448](figures/zh-cn_image_0000001511900448.png)
 
 - FlexAlign.SpaceAround：子元素各行间距相等，是元素首尾行与交叉轴两端距离的两倍。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexAlignCenterFlexAlignSpaceAround_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceAround.ets) -->
   
@@ -542,10 +712,17 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexAlignCenterFlexAlignSpaceAround_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceAround.ets) -->
+
+
   ![zh-cn_image_0000001562700445](figures/zh-cn_image_0000001562700445.png)
 
 - FlexAlign.SpaceEvenly:  子元素各行间距，子元素首尾行与交叉轴两端距离都相等。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexAlignCenterFlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceEvenly.ets) -->
   
@@ -562,6 +739,11 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   .backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexAlignCenterFlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceEvenly.ets) -->
+
+
   ![zh-cn_image_0000001511580864](figures/zh-cn_image_0000001511580864.png)
 
 
@@ -571,6 +753,8 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 
 - [flexBasis](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)：设置子元素在父容器主轴方向上的基准尺寸。如果设置了该属性，则子项占用的空间为该属性所设置的值；如果没设置该属性，那子项的空间为width/height的值。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexBasis_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexBasis.ets) -->
   
@@ -599,9 +783,16 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   }.width('90%').height(120).padding(10).backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexBasis_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexBasis.ets) -->
+
+
   ![zh-cn_image_0000001562940505](figures/zh-cn_image_0000001562940505.png)
 
 - [flexGrow](../reference/apis-arkui//arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow)：设置父容器的剩余空间分配给此属性所在组件的比例，用于分配父组件的剩余空间。
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexGrow_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexGrow.ets) -->
   
@@ -624,6 +815,11 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
       .backgroundColor('#F5DEB3')
   }.width(360).height(120).padding(10).backgroundColor('#AFEEEE')
   ```
+
+  ArkTs-Sta示例:
+
+  <!-- @[FlexGrow_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexGrow.ets) -->
+
   
   ![zh-cn_image_0000001562700449](figures/zh-cn_image_0000001562700449.png)
   
@@ -633,6 +829,8 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   
 - [flexShrink](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink): 当父容器空间不足时，子元素的压缩比例。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[FlexShrink_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexShrink.ets) -->
   
@@ -657,6 +855,11 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   }.width(400).height(120).padding(10).backgroundColor('#AFEEEE')
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[FlexShrink_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexShrink.ets) -->
+
+
   ![zh-cn_image_0000001562820813](figures/zh-cn_image_0000001562820813.png)
 
   父容器宽度400vp，三个子元素原始宽度为200vp，左右padding为20vp，父容器给子元素的布局空间为380vp，超出父容器空间220vp。
@@ -668,6 +871,8 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 
 使用弹性布局，可以实现子元素沿水平方向排列，两端对齐，子元素间距平分，垂直方向上子元素居中的效果。
 
+
+ArkTs-Dyn示例:
 
 <!-- @[FlexExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexExample.ets) -->
 
@@ -696,6 +901,11 @@ struct FlexExample {
   }
 }
 ```
+
+ArkTs-Sta示例:
+
+<!-- @[FlexExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexExample.ets) -->
+
 
 ![zh-cn_image_0000001511900452](figures/zh-cn_image_0000001511900452.png)
 

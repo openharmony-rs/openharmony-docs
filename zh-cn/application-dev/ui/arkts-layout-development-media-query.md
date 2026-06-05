@@ -23,14 +23,23 @@
 首先导入媒体查询模块。
 
 
+ArkTs-Dyn示例:
+
 <!-- @[obtain_mediaquery_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { mediaquery } from '@kit.ArkUI';
 ```
 
+ArkTs-Sta示例:
+
+<!-- @[obtain_mediaquery_import](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+
+
 通过matchMediaSync接口设置媒体查询条件，保存返回的条件监听句柄listener。例如监听横屏事件：
 
+
+ArkTs-Dyn示例:
 
 <!-- @[obtain_mediaquery_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
 
@@ -38,8 +47,15 @@ import { mediaquery } from '@kit.ArkUI';
 listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
 ```
 
+ArkTs-Sta示例:
+
+<!-- @[obtain_mediaquery_listener](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+
+
 给条件监听句柄listener绑定回调函数onPortrait，当listener检测设备状态变化时执行回调函数。在回调函数内，根据不同设备状态更改页面布局或者实现业务逻辑。
 
+
+ArkTs-Dyn示例:
 
 <!-- @[obtain_mediaquery_Portrait](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
 
@@ -58,6 +74,11 @@ listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().mat
     });
     // ···
 ```
+
+ArkTs-Sta示例:
+
+<!-- @[obtain_mediaquery_Portrait](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+
 
 
 ## 媒体查询条件
@@ -162,6 +183,8 @@ listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().mat
 示例一使用媒体查询，实现屏幕横竖屏切换时，为页面文本应用添加不同的内容和样式。
 
 <!--deprecated_code_no_check-->
+ArkTs-Dyn示例:
+
 <!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -227,6 +250,11 @@ struct MediaQueryExample {
   }
 }
 ```
+
+ArkTs-Sta示例:
+
+<!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+
 
   **图1** 竖屏  
 

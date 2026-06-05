@@ -18,6 +18,8 @@
 
 **示例：**
 
+ArkTs-Dyn示例:
+
 <!-- @[CustomLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentsLayout/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -84,5 +86,10 @@ struct CustomLayout {
   }
 }
 ```
+
+ArkTs-Sta示例:
+
+<!-- @[CustomLayout](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentsLayout/entry/src/main/ets/pages/Index.ets) -->
+
 
 ![custom-component-custom-layout](figures/custom-component-custom-layout.png)

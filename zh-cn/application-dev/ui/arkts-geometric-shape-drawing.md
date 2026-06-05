@@ -22,6 +22,8 @@
 
   该接口用于创建带有父组件的绘制组件，其中value用于设置绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则在当前绘制目标中进行绘制。
 
+  ArkTs-Dyn示例:
+
   <!-- @[shape_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Shape.ets) -->
   
   ``` TypeScript
@@ -29,6 +31,10 @@
     Rect().width(300).height(50)
   }
   ```
+
+  ArkTs-Sta示例:
+
+  <!-- @[shape_one](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/Shape.ets) -->
 
 
 - 绘制组件单独使用，用于在页面上绘制指定的图形。有7种绘制类型，分别为[Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md)（圆形）、[Ellipse](../reference/apis-arkui/arkui-ts/ts-drawing-components-ellipse.md)（椭圆形）、[Line](../reference/apis-arkui/arkui-ts/ts-drawing-components-line.md)（直线）、[Polyline](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md)（折线）、[Polygon](../reference/apis-arkui/arkui-ts/ts-drawing-components-polygon.md)（多边形）、[Path](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md)（路径）、[Rect](../reference/apis-arkui/arkui-ts/ts-drawing-components-rect.md)（矩形）。以Circle的接口调用为例：
@@ -39,11 +45,17 @@
 
     该接口用于在页面绘制圆形，其中width用于设置圆形的宽度，height用于设置圆形的高度，圆形直径由宽高最小值确定。
 
+  ArkTs-Dyn示例:
+
   <!-- @[shape_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Shape.ets) -->
   
   ``` TypeScript
   Circle({ width: 150, height: 150 })
   ```
+
+  ArkTs-Sta示例:
+
+  <!-- @[shape_two](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/Shape.ets) -->
 
 
   ![创建2](figures/创建2.jpg)
@@ -61,6 +73,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 以下三个示例说明如何使用viewPort：
 
 - 通过形状视口对图形进行放大与缩小。
+
+  ArkTs-Dyn示例:
 
   <!-- @[view_port_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ViewPort1.ets) -->
   
@@ -130,9 +144,15 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[view_port_one](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/ViewPort1.ets) -->
+
   ![2023032401632](figures/2023032401632.png)
 
 - 创建一个宽高都为300的shape组件，背景色为黄色，创建一个宽高都为300的viewPort。用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个半径为75的圆。
+
+  ArkTs-Dyn示例:
 
   <!-- @[view_port_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ViewPort2.ets) -->
   
@@ -164,9 +184,15 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[view_port_two](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/ViewPort2.ets) -->
+
   ![viewport（2）](figures/viewport（2）.jpg)
 
 - 创建一个宽高都为300的shape组件，背景色为黄色，创建一个宽高都为300的viewPort。用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个半径为75的圆，将viewPort向右方和下方各平移150。
+
+  ArkTs-Dyn示例:
 
   <!-- @[view_port_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ViewPort3.ets) -->
   
@@ -198,6 +224,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[view_port_three](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/ViewPort3.ets) -->
+
   ![viewport（3）](figures/viewport（3）.jpg)
 
 
@@ -211,6 +241,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 - 通过[fill](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#fill)可以设置组件填充区域颜色。
 
+  ArkTs-Dyn示例:
+
   <!-- @[fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Fill.ets) -->
   
   ``` TypeScript
@@ -222,9 +254,15 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .strokeWidth(0)
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[fill](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/Fill.ets) -->
+
   ![2023022792216](figures/2023022792216.jpg)
 
 - 通过[stroke](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#stroke)可以设置组件边框颜色。
+
+  ArkTs-Dyn示例:
 
   <!-- @[stroke](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Stroke.ets) -->
   
@@ -237,9 +275,15 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .stroke(Color.Red)
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[stroke](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/Stroke.ets) -->
+
   ![stroke](figures/stroke.jpg)
 
 - 通过[strokeOpacity](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#strokeopacity)可以设置边框透明度。
+
+  ArkTs-Dyn示例:
 
   <!-- @[stroke_opacity](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeOpacity.ets) -->
   
@@ -254,9 +298,15 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .strokeOpacity(0.2)
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[stroke_opacity](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/StrokeOpacity.ets) -->
+
   ![strokeopacity](figures/strokeopacity.jpg)
 
 - 通过[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)可以设置线条拐角绘制样式。拐角绘制样式分为Bevel(使用斜角连接路径段)、Miter(使用尖角连接路径段)、Round(使用圆角连接路径段)。
+
+  ArkTs-Dyn示例:
 
   <!-- @[stroke_line_join](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeLineJoin.ets) -->
   
@@ -272,6 +322,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .strokeLineJoin(LineJoinStyle.Round)
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[stroke_line_join](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/StrokeLineJoin.ets) -->
+
   ![strokeLineJoin](figures/strokeLineJoin.jpg)
 
 - 通过[strokeMiterLimit](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokemiterlimit)设置斜接长度与边框宽度比值的极限值。
@@ -279,6 +333,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   斜接长度表示外边框外边交点到内边交点的距离，边框宽度即[strokeWidth](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokewidth)属性的值。
   
   strokeMiterLimit取值需大于等于1，且在[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)属性取值LineJoinStyle.Miter时生效。
+
+  ArkTs-Dyn示例:
 
   <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) -->
   
@@ -305,9 +361,15 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .strokeMiterLimit(1.42)
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) -->
+
   ![2023032405917](figures/2023032405917.jpg)
 
 - 通过[antiAlias](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md#antialias)设置是否开启抗锯齿，默认值为true（开启抗锯齿）。
+
+  ArkTs-Dyn示例:
 
   <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
   
@@ -321,7 +383,13 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .stroke(Color.Black)
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) -->
+
   ![无标题](figures/无标题.png)
+
+  ArkTs-Dyn示例:
 
   <!-- @[antialias_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
   
@@ -336,6 +404,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .antiAlias(false)
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[antialias_close](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) -->
+
   ![2023032411518](figures/2023032411518.jpg)
 
 - 通过[mesh](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#mesh8)设置网格效果，实现图像局部扭曲。
@@ -343,6 +415,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   > **说明：**
   >
   > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+
+  ArkTs-Dyn示例:
 
   <!-- @[mesh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Mesh.ets) -->
   
@@ -498,6 +572,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[mesh](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/Mesh.ets) -->
+
   ![ShapeMeshDemo](figures/ShapeMeshDemo.png)
 
 ## 场景示例
@@ -509,6 +587,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   > **说明：**
   >
   > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+
+  ArkTs-Dyn示例:
 
   <!-- @[shape_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ShapeExample.ets) -->
   
@@ -537,6 +617,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[shape_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/ShapeExample.ets) -->
+
   ![场景1](figures/场景1.png)
 
 ### 绘制圆和圆环
@@ -546,6 +630,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   > **说明：**
   >
   > 本示例通过strokeDashArray属性设置边框间隙来实现红色虚线的圆环，strokeDashArray属性参考[strokeDashArray](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#strokedasharray)。  
+
+  ArkTs-Dyn示例:
 
   <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 
   
@@ -571,6 +657,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+
   ![场景2](figures/场景2.jpg)
 
 ### UI视觉属性作用效果
@@ -579,6 +669,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 >
 > [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient)等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
 
+
+  ArkTs-Dyn示例:
 
   <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 
   
@@ -598,5 +690,9 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     }
   }
   ```
+
+  ArkTs-Sta示例:
+
+  <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
 
   ![场景3](figures/VirtualEffect.jpg)

@@ -64,6 +64,8 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 - RelativeContainer父组件为锚点，__container__代表父容器的组件标识（id）。
 
+  ArkTs-Dyn示例:
+
   <!-- @[RelativeContainerParentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerParentComponentId.ets) -->
   
   ``` TypeScript
@@ -109,9 +111,16 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[RelativeContainerParentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerParentComponentId.ets) -->
+
+
   ![zh-cn_image_0000001562820901](figures/zh-cn_image_0000001562820901.png)
 
 - 以兄弟元素为锚点。
+
+  ArkTs-Dyn示例:
 
   <!-- @[RelativeContainerSiblingComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerSiblingComponentId.ets) -->
   
@@ -158,9 +167,16 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[RelativeContainerSiblingComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerSiblingComponentId.ets) -->
+
+
   ![zh-cn_image_0000001562940613](figures/zh-cn_image_0000001562940613.png)
 
 - 子组件锚点可以任意选择，但需注意不要相互依赖。
+
+  ArkTs-Dyn示例:
 
   <!-- @[RelativeContainerChildComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentId.ets) -->
   
@@ -231,6 +247,11 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[RelativeContainerChildComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentId.ets) -->
+
+
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image1.png)
 
 ### 设置相对于锚点的对齐位置
@@ -248,6 +269,8 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 ### 子组件位置偏移
 
 子组件经过相对位置对齐后，可能尚未达到目标位置。开发者可根据需要设置额外偏移（offset）。当使用offset调整位置的组件作为锚点时，对齐位置为设置offset之前的位置。从API Version 11开始，新增了[Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias对象说明)对象，建议API Version 11及以后的版本使用bias来设置额外偏移。使用bias的示例可以参考[示例4（设置偏移）](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md#示例4设置偏移)。
+
+  ArkTs-Dyn示例:
 
   <!-- @[RelativeContainerChildComponentOffset_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentOffset.ets) -->
   
@@ -367,11 +390,18 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[RelativeContainerChildComponentOffset_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentOffset.ets) -->
+
+
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image2.png)
 
 ## 多种组件的对齐布局
 
 [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)、[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)、[Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md)、[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)等多种布局组件，可按照RelativeContainer组件规则进行对齐排布。
+
+  ArkTs-Dyn示例:
 
   <!-- @[RelativeContainerDifferentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerDifferentComponentId.ets) -->
   
@@ -446,6 +476,11 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
+  ArkTs-Sta示例:
+
+  <!-- @[RelativeContainerDifferentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerDifferentComponentId.ets) -->
+
+
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image3.png)
 
 ## 组件尺寸
@@ -456,6 +491,8 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 >
 > * 根据约束条件和子组件自身的size属性无法确定子组件的大小，此时，不绘制该子组件。
 > * 在同一方向上设置两个或更多锚点时，若这些锚点的位置顺序有误，该子组件将被视为大小为0而不予绘制。
+ArkTs-Dyn示例:
+
 <!-- @[RelativeContainerComponentSize_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentSize.ets) -->
 
 ``` TypeScript
@@ -552,6 +589,11 @@ struct RelativeAlignRulesExample {
 }
 ```
 
+ArkTs-Sta示例:
+
+<!-- @[RelativeContainerComponentSize_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentSize.ets) -->
+
+
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image4.png)
 
 
@@ -562,6 +604,8 @@ struct RelativeAlignRulesExample {
 * 如果链内所有元素的size超出链的锚点约束，超出部分将被均匀分配到链的两侧。在[PACKED](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainstyle12)链中，可以通过[Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias对象说明)设置超出部分的分布。
 
 在以下示例代码中，通过alignRules和chainMode将九个在容器内的Row组件分为三组水平链式排列。组件row1、组件row2和组件row3顶部对齐，水平方向成SPREAD链，链内组件在锚点间均匀分布。组件row4、组件row5、组件row6垂直方向基于容器居中，水平方向成SPREAD_INSIDE链，链内除首尾2个组件对齐锚点外，其他组件在链中均匀分布。组件row7、组件row8、组件row9底部对齐，水平方向组成PACKED链，链内组件无间隙。
+
+ArkTs-Dyn示例:
 
 <!-- @[RelativeContainerMultipleComponentsChainMode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerMultipleComponentsChainMode.ets) -->
 
@@ -710,6 +754,11 @@ struct RelativeChainModeExample {
 }
 ```
 
+ArkTs-Sta示例:
+
+<!-- @[RelativeContainerMultipleComponentsChainMode_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerMultipleComponentsChainMode.ets) -->
+
+
 ![relative container](figures/relativecontainer6.png)
 
 ## 使用辅助线辅助定位子组件
@@ -721,6 +770,8 @@ struct RelativeChainModeExample {
 * 若容器在某个方向的尺寸被声明为"auto"，则该方向上的guideLine位置只能使用start属性声明（不允许使用百分比）。
 
 在以下示例代码中，定义了一条垂直辅助线guideline1，距离容器左侧50vp，以及另一条水平辅助线guideline2，距离容器顶部50vp。组件row1通过这两条辅助线来定位自身位置，无需设置bias。
+
+ArkTs-Dyn示例:
 
 <!-- @[RelativeContainerComponentGuideLine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentGuideLine.ets) -->
 
@@ -753,6 +804,11 @@ struct RelativeGuideLineExample {
 }
 ```
 
+ArkTs-Sta示例:
+
+<!-- @[RelativeContainerComponentGuideLine_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentGuideLine.ets) -->
+
+
 ![relative container](figures/relativecontainer4.png)
 
 ## 多个组件的屏障
@@ -764,6 +820,8 @@ struct RelativeGuideLineExample {
 与静态的guideline不同，barrier会随参照组件位置变化而自动更新，只需定义实际需要的方向即可。
 
 在下列示例代码中，item1，item2，item3三个组件可以视为由一个隐形的矩形区域包围着，outer1基于这个“隐形区域”的底部边界进行布局，位于该区域的下方；outer2基于这个“隐形区域”的右侧边界进行布局，位于该区域的右侧。
+
+ArkTs-Dyn示例:
 
 <!-- @[testRelativeContainerComponentBarrier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentBarrier.ets) -->
 
@@ -882,5 +940,10 @@ struct Index {
   }
 }
 ```
+
+ArkTs-Sta示例:
+
+<!-- @[testRelativeContainerComponentBarrier_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentBarrier.ets) -->
+
 
 ![relative container](figures/relativecontainer10.png)

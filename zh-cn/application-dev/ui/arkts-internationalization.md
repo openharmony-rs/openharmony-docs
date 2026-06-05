@@ -62,8 +62,7 @@ ArkUI 如下能力已默认适配镜像：
 尺寸设置：[padding](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#padding)、[margin](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)
 
 以position为例，需要把绝对方向x、y描述改为新入参类型start、end的描述，其他属性类似。
-
-**ArkTS-Dyn示例：**
+  ArkTS-Dyn示例：
 
   <!-- @[Interface_Layout_Border_Settings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/InterfaceLayoutBorderSettings.ets) -->
   
@@ -92,32 +91,9 @@ ArkUI 如下能力已默认适配镜像：
   }
   ```
   
-**ArkTS-Sta示例：**
+  ArkTS-Sta示例：
 
-``` TypeScript
-import { Entry,Stack,Column,Alignment,LengthMetrics,Component,Color } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct InterfaceLayoutBorderSettings {
-  build() {
-    Stack({ alignContent: Alignment.TopStart }) {
-      Stack({ alignContent: Alignment.TopStart }) {
-        Column()
-          .width(100)
-          .height(100)
-          .backgroundColor(Color.Red)
-          .position({ 
-            start: LengthMetrics.px(200), 
-            top: LengthMetrics.px(200) 
-          }) //需要同时支持LTR和RTL时使用API12新增的LocalizedEdges入参类型,
-        //仅支持LTR时等同于.position({ x: '200px', y: '200px' })
-
-      }.backgroundColor(Color.Blue)
-    }.width("100%").height("100%").border({ color: '#880606' })
-  }
-}
-```
+  <!-- @[Interface_Layout_Border_Settings](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/internationalization/entry/src/main/ets/homePage/InterfaceLayoutBorderSettings.ets) -->
 
 ### 自定义绘制Canvas组件
 
@@ -128,6 +104,8 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
 1. 优先级：CanvasRenderingContext2D的direction属性 > Canvas组件通用属性direction > 系统语言决定的水平显示方向。
 2. Canvas组件本身不会自动跟随系统语言切换镜像效果，需要应用监听到系统语言切换后自行重新绘制。
 3. CanvasRenderingContext2D绘制文本时，只有符号等文本会对绘制方向生效，英文字母和数字不响应绘制方向的变化。
+
+  ArkTs-Dyn示例:
 
   <!-- @[Customize_Canvas_Component_Drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/CustomizeCanvasComponentDrawing.ets) -->
   
@@ -193,6 +171,9 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
   }
   ```
   
+  ArkTs-Sta示例:
+
+  <!-- @[Customize_Canvas_Component_Drawing](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/internationalization/entry/src/main/ets/homePage/CustomizeCanvasComponentDrawing.ets) -->
   
 | 镜像前          | 镜像后                                  |
 | ----------- | ----------------------------------- |
