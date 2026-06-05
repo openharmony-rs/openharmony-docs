@@ -47,7 +47,7 @@
    - 系统调用对应的恢复方法，执行数据擦除操作。
 
 4. **重启设备**
-   - 设备自动重启，完成初始化并恢复至出厂初始状态（即设备首次开机时的状态）。
+   - 系统自动重启设备，恢复至出厂初始状态。
 
 > **说明**：
 >
@@ -408,6 +408,7 @@ try {
     }
   };
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // 获取新版本信息，通过回调函数接收版本详情
   onlineUpdater.getNewVersionInfo((checkError: BusinessError, newInfo: update.NewVersionInfo) => {
     if (checkError) {
       console.error(`getNewVersionInfo error: ${JSON.stringify(checkError)}`);
@@ -554,7 +555,7 @@ try {
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   onlineUpdater.getNewVersionDescription(versionDigestInfo, descriptionOptions, (descriptionErr, descriptionInfo) => {
     console.info(`getNewVersionDescription info ${JSON.stringify(descriptionInfo)}`);
-    console.info(`getNewVersionDescriptiotions error ${JSON.stringify(descriptionErr)}`);
+    console.info(`getNewVersionDescription error ${JSON.stringify(descriptionErr)}`);
   });
 } catch(error) {
   console.error(`Fail to get updater error: ${error}`);
@@ -583,7 +584,7 @@ try {
 | 参数名                | 类型                                       | 必填   | 说明     |
 | ------------------ | ---------------------------------------- | ---- | ------ |
 | versionDigestInfo  | [VersionDigestInfo](#versiondigestinfo)  | 是    |  版本摘要信息，从版本检查结果(checkNewVersion)中获取，用于标识具体版本。详见VersionDigestInfo定义。 |
-| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项，用于指定描述文件的格式和语言。对象包含format（描述文件格式，可选STANDARD或SIMPLIFIED）和language（语言代码，如'zh-cn'）字段。取值原则：STANDARD适合需要完整描述信息的场景，SIMPLIFIED适合仅需精简描述信息的场景。 |
+| descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项，用于指定描述文件的格式和语言。对象包含format（描述文件格式，可选STANDARD或SIMPLIFIED）和language（语言代码，如'zh-cn'）字段。STANDARD适合需要完整描述信息的场景，SIMPLIFIED适合仅需精简描述信息的场景。 |
 
 **返回值**：
 
@@ -1864,6 +1865,7 @@ try {
     }
   };
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // 获取升级策略，通过回调函数接收策略配置
   onlineUpdater.getUpgradePolicy((upgradePolicyError: BusinessError, policy: update.UpgradePolicy) => {
     if (upgradePolicyError) {
       console.error(`getUpgradePolicy error: ${JSON.stringify(upgradePolicyError)}`);
@@ -1897,7 +1899,7 @@ getUpgradePolicy(): Promise\<UpgradePolicy>
 
 | 类型                                       | 说明                    |
 | ---------------------------------------- | --------------------- |
-| Promise\<[UpgradePolicy](#upgradepolicy)> | Promise对象。成功时resolve返回升级策略信息对象，用于查询自动下载和自动升级配置；失败时reject返回错误信息。 |
+| Promise\<[UpgradePolicy](#upgradepolicy)> | Promise对象。成功时resolve返回升级策略信息对象，用于查询自动下载、自动升级、升级时间段等策略配置；失败时reject返回错误信息。 |
 
 **错误码**：
 
@@ -1923,6 +1925,7 @@ try {
     }
   };
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // 获取升级策略
   onlineUpdater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
     console.info(`policy downloadStrategy = ${policy.downloadStrategy}`);
     console.info(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
@@ -1985,6 +1988,7 @@ try {
     }
   };
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // 设置升级策略，通过回调函数处理设置结果 
   onlineUpdater.setUpgradePolicy(upgradePolicy, (upgradePolicyError: BusinessError) => {
     console.info(`setUpgradePolicy result: ${upgradePolicyError}`);
   });
@@ -2049,6 +2053,7 @@ try {
     }
   };
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // 设置升级策略 
   onlineUpdater.setUpgradePolicy(upgradePolicy).then(() => {
     console.info(`setUpgradePolicy success`);
   }).catch((upgradePolicyError: BusinessError) => {
@@ -2116,6 +2121,7 @@ try {
     }
   };
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // 终止升级任务，通过回调函数处理终止结果
   onlineUpdater.terminateUpgrade((terminateUpgradeError: BusinessError) => {
     console.info(`terminateUpgrade error ${JSON.stringify(terminateUpgradeError)}`);
   });
@@ -2181,6 +2187,7 @@ try {
     }
   };
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
+  // 终止升级任务
   onlineUpdater.terminateUpgrade().then(() => {
     console.info(`terminateUpgrade success`);
   }).catch((terminateUpgradeError: BusinessError) => {
@@ -3135,7 +3142,7 @@ try {
 | 名称              | 类型                              | 属性         | 说明   |
 | --------------- | ----------------------------------- | --------- | -------- |
 | componentId     | string                              | 只读:否, 可选:否 | 组件标识，用于唯一标识升级包中的组件。从版本检查结果的versionComponents数组中获取，用于后续描述信息查询或组件信息展示等场景。 |
-| componentType   | [ComponentType](#componenttype)     | 只读:否, 可选:否 | 组件类型。不同设备类型的支持情况可能不同。OTA升级包在A/B分区设备（指拥有两个系统分区用于无缝升级的设备）和非A/B分区设备上的使用方式有差异：A/B分区设备支持无缝升级（升级过程中设备仍可使用），非A/B分区设备升级时需重启设备。 |
+| componentType   | [ComponentType](#componenttype)     | 只读:否, 可选:否 | 组件类型。不同设备类型的支持情况可能不同。OTA升级包在A/B分区设备（指拥有两个系统分区用于无缝升级的设备）和非A/B分区设备上的使用方式有差异：A/B分区设备支持无缝升级（升级过程中设备仍可使用），非A/B分区设备升级时需重启设备。可通过getCurrentVersionInfo接口查询设备版本信息判断设备类型。 |
 | upgradeAction   | [UpgradeAction](#upgradeaction)     | 只读:否, 可选:否 | 升级方式。用于指定升级包的应用方式。详见UpgradeAction定义。|
 | displayVersion  | string                              | 只读:否, 可选:否 | 显示版本号。    |
 | innerVersion    | string                              | 只读:否, 可选:否 | 版本号。      |
