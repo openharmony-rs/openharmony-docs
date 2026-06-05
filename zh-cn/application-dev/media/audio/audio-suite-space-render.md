@@ -6,14 +6,14 @@
  <!--Tester: @Filger-->
  <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，OHAudioSuite给开发者提供空间渲染效果节点[EFFECT_NODE_TYPE_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_typ)），用于实现三维空间音频渲染能力。空间渲染效果节点可以将音频源在三维空间中进行定位、旋转和扩展处理，为用户营造沉浸式的三维听觉体验。
+从API version 23开始，OHAudioSuite给开发者提供空间渲染效果节点[EFFECT_NODE_TYPE_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_typ)，用于实现三维空间音频渲染能力。空间渲染效果节点可以将音频源在三维空间中进行定位、旋转和扩展处理，为用户营造沉浸式的三维听觉体验。
 
 ## 功能概述
 
 ### 工作模式
 
 - **固定摆位模式**：将音频源固定在特定空间的指定位置。
--  **旋转模式**：让音频源在指定位置设定单周环绕时间与时针方向进行动态渲染。
+- **旋转模式**：让音频源在指定位置设定单周环绕时间与时针方向进行动态渲染。
 - **扩展模式**：将音频源按照半径和角度进行声场扩展。
 
 ### 坐标系说明
@@ -32,21 +32,15 @@
 
 ## 工作模式详解
 
-固定摆位模式：固定摆位模式用于将音频源放置在特定空间的固定位置，适用于需要固定音源位置的场景，用户可通过调用[oh_audiosuiteengine_setspacerenderpositionparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderpositionparams)对空间渲染节点进行设置。
-
-固定摆位示意图
+固定摆位模式：固定摆位模式用于将音频源放置在特定空间的固定位置，适用于需要固定音源位置的场景，用户可通过调用[oh_audiosuiteengine_setspacerenderpositionparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderpositionparams)对空间渲染节点进行设置。固定摆位示意图如下：
 
 ![space_render_position](figures/space_render_position.png)
 
-旋转模式：旋转模式让音频源在指定位置设定单周环绕时间与时针方向进行动态渲染，用户可通过调用[oh_audiosuiteengine_setspacerenderrotationparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderrotationparams)对空间渲染节点进行设置。
-
-旋转模式示意图
+旋转模式：旋转模式让音频源在指定位置设定单周环绕时间与时针方向进行动态渲染，用户可通过调用[oh_audiosuiteengine_setspacerenderrotationparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderrotationparams)对空间渲染节点进行设置。旋转模式示意图如下：
 
 ![space_render_rotation](figures/space_render_rotation.png)
 
-扩展模式：扩展模式将音频源按照半径和角度进行声场扩展，用户可通过调用[oh_audiosuiteengine_setspacerenderextensionparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderextensionparams)对空间渲染节点进行设置。
-
-扩展模式示意图
+扩展模式：扩展模式将音频源按照半径和角度进行声场扩展，用户可通过调用[oh_audiosuiteengine_setspacerenderextensionparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderextensionparams)对空间渲染节点进行设置。扩展模式示意图如下：
 
 ![space_render_extension](figures/space_render_extension.png)
 
