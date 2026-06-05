@@ -378,6 +378,154 @@ try {
 }
 ```
 
+## backgroundTaskManager.subscribeContinuousTaskState<sup>23+</sup>
+
+subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
+
+注册长时任务变化回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**: ohos.permission.GET_BACKGROUND_TASK_INFO
+
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**系统API**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数**：
+
+| 参数名     | 类型      | 必填   | 说明                    |
+| ------- | ------- | ---- |-----------------------|
+| subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | 是    | 后台任务监听对象，包含长时任务开始，长时任务更新，长时任务结束。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID   | 错误信息 |
+|---------| ------- |
+| 201     | Permission denied. |
+| 202     | Not System App. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**示例**：
+
+ArkTS-Dyn示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
+}
+
+try {
+  backgroundTaskManager.subscribeContinuousTaskState(this.backgroundTaskSubscriber);
+  console.info('Operation subscribeContinuousTaskState succeeded');
+} catch (error) {
+  console.error(`Operation subscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
+} as backgroundTaskManager.BackgroundTaskSubscriber
+
+try {
+  backgroundTaskManager.subscribeContinuousTaskState(this.backgroundTaskSubscriber);
+  console.info('Operation subscribeContinuousTaskState succeeded');
+} catch (error) {
+  console.error(`Operation subscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
+## backgroundTaskManager.unsubscribeContinuousTaskState<sup>23+</sup>
+
+unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
+
+解注册长时任务变化回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**: ohos.permission.GET_BACKGROUND_TASK_INFO
+
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**系统API**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数**：
+
+| 参数名     | 类型      | 必填   | 说明                    |
+| ------- | ------- | ---- |-----------------------|
+| subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | 是    | 后台任务监听对象，包含长时任务开始，长时任务更新，长时任务结束。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID   | 错误信息 |
+|---------| ------- |
+| 201     | Permission denied. |
+| 202     | Not System App. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**示例**：
+
+ArkTS-Dyn示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
+}
+
+try {
+  backgroundTaskManager.unsubscribeContinuousTaskState(this.backgroundTaskSubscriber);
+  console.info('Operation unsubscribeContinuousTaskState succeeded');
+} catch (error) {
+  console.error(`Operation unsubscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
 ## BackgroundMode
 
 长时任务模式。
@@ -503,3 +651,135 @@ try {
 | bundleName | string                              | 否    | 否  | 应用包名。   |
 | appIndex | ArkTS-Dyn: number <br> ArkTS-Sta: int                               | 否    | 否  | 应用分身ID。 |
 | authResult | [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | 否    | 是  | 授权结果。   |
+
+## BackgroundTaskSubscriber<sup>23+</sup>
+
+后台任务监听。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**系统API**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+### onContinuousTaskStart<sup>23+</sup>
+
+onContinuousTaskStart(info: ContinuousTaskInfo): void
+
+长时任务开始回调接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**系统API**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数**：
+
+| 参数名  | 类型      | 必填   | 说明                |
+|------| ------- | ---- |-------------------|
+| info | [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
+
+**示例**：
+
+ArkTS-Dyn示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+
+let backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
+}
+```
+
+### onContinuousTaskUpdate<sup>23+</sup>
+
+onContinuousTaskUpdate(info: ContinuousTaskInfo): void
+
+长时任务更新回调接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**系统API**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数**：
+
+| 参数名  | 类型      | 必填   | 说明                |
+|------| ------- | ---- |-------------------|
+| info | [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
+
+**示例**：
+
+ArkTS-Dyn示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+
+let backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
+}
+```
+
+### onContinuousTaskStop<sup>23+</sup>
+
+onContinuousTaskStop(info: ContinuousTaskInfo): void
+
+长时任务结束回调接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**系统API**: 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数**：
+
+| 参数名  | 类型      | 必填   | 说明                |
+|------| ------- | ---- |-------------------|
+| info | [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
+
+**示例**：
+
+ArkTS-Dyn示例：
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+
+let backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
+  },
+  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
+    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
+  }
+}
+```
