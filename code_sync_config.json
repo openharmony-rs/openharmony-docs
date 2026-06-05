@@ -13573,5 +13573,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/audio-suite-format-converter.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/audio_format_converter.cpp",
+				"functions":[
+					{
+						"end_line":185,
+						"name":"converter_create",
+						"start_line":162
+					},
+					{
+						"end_line":64,
+						"name":"input_callback",
+						"start_line":38
+					},
+					{
+						"end_line":197,
+						"name":"set_input_callback",
+						"start_line":189
+					},
+					{
+						"end_line":249,
+						"name":"converter_process",
+						"start_line":215
+					},
+					{
+						"end_line":263,
+						"name":"converter_destroy",
+						"start_line":261
+					}
+				]
+			}
+		]
 	}
 ]
