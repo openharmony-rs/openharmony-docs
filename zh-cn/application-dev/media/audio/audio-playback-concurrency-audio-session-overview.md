@@ -1,5 +1,11 @@
 # 音频焦点和音频会话开发概述
-
+ <!--Kit: Audio Kit-->	 
+ <!--Subsystem: Multimedia-->	 
+ <!--Owner: @funny_sunix-->	 
+ <!--Designer: @hao-liangfei-->	 
+ <!--Tester: @Filger-->	 
+ <!--Adviser: @w_Machine_cc-->
+ 
 在应用播放或录制声音时，会遇到与其他应用或本应用内的其他音频流发生焦点冲突。本章节概括了该场景的处理方式，帮助开发者了解如何使用系统的音频焦点冲突管理能力来解决各类音频打断问题。
 
 当前系统音频推荐两种能力来管理音频冲突：音频焦点和音频会话。
