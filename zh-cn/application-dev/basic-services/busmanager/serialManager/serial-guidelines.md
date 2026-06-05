@@ -329,7 +329,7 @@
      }
      ```
 
- 8. 监听串口断开事件。
+8. 监听串口断开事件。
 
    <!-- @[onDisconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
@@ -350,7 +350,7 @@
    }
    ```
 
- 9. 注销数据接收回调和关闭串口设备。
+9. 注销数据接收回调和关闭串口设备。
 
    <!-- @[close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
