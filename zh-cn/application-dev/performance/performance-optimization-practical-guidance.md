@@ -352,6 +352,7 @@ import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 
 @Component
 struct CounterOfOnDidScroll {
+  
   private arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   build() {
@@ -372,6 +373,7 @@ struct CounterOfOnDidScroll {
       hiTraceMeter.finishTrace("ScrollSlide", 1002);
     })
   }
+}
 ```
 **正例**
 
