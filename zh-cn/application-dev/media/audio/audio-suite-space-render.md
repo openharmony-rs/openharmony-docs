@@ -10,11 +10,7 @@
 
 ## 功能概述
 
-### 工作模式
-
-- **固定摆位模式**：将音频源固定在特定空间的指定位置。
-- **旋转模式**：让音频源在指定位置设定单周环绕时间与时针方向进行动态渲染。
-- **扩展模式**：将音频源按照半径和角度进行扩展。
+空间渲染[工作模式](audio-suite-space-render.md#工作模式)包括固定摆位模式、旋转模式和扩展模式。
 
 ### 坐标系说明
 
@@ -29,7 +25,7 @@
 - Y坐标：上下方向，负值表示下方，正值表示上方。取值范围为[-5.0, 5.0]，单位为米（m）。
 - Z坐标：前后方向，负值表示后方，正值表示前方。取值范围为[-5.0, 5.0]，单位为米（m）。
 
-## 工作模式详解
+## 工作模式
 
 固定摆位模式：固定摆位模式用于将音频源放置在特定空间的固定位置，适用于需要固定音源位置的场景，用户可通过调用[oh_audiosuiteengine_setspacerenderpositionparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderpositionparams)对空间渲染节点进行设置。固定摆位示意图如下：
 
@@ -57,7 +53,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 开发者通过引入头文件使用音频编创相关API：
 
-<!-- @[audioSuite_SpaceRenderEffectInclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
+<!-- @[audioSuite_SpaceRenderEffectInclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.h) -->
 
 ## 开发步骤
 
@@ -68,7 +64,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 ### 空间渲染固定摆位效果
 
 
-1.  创建引擎和管线。
+1. 创建引擎和管线。
 
    <!-- @[audioSuite_CreateSpaceRenderRotationEngineAndPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
    
@@ -261,7 +257,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 4. 资源销毁。
 
-   <!-- @[audioSuite_DestroySpaceRenderRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
+   <!-- @[audioSuite_DestroySpaceRenderRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
 
 ## 完整示例代码
 
