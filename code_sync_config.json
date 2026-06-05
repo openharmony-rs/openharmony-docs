@@ -18402,6 +18402,26 @@
 						"start_line":120
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets",
+				"functions":[
+					{
+						"end_line":231,
+						"name":"Add_list_select",
+						"start_line":196
+					},
+					{
+						"end_line":246,
+						"name":"Add_list_GestureRecognizerJudgeBegin",
+						"start_line":232
+					},
+					{
+						"end_line":209,
+						"name":"Add_list_item_select",
+						"start_line":200
+					}
+				]
 			}
 		]
 	},
@@ -18590,6 +18610,21 @@
 						"end_line":49,
 						"name":"long_list",
 						"start_line":41
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSwipeSelect.ets",
+				"functions":[
+					{
+						"end_line":220,
+						"name":"Add_grid_select",
+						"start_line":185
+					},
+					{
+						"end_line":198,
+						"name":"Add_grid_item_select",
+						"start_line":189
 					}
 				]
 			}
