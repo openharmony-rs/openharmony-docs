@@ -258,6 +258,26 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 4. 资源销毁。
 
    <!-- @[audioSuite_DestroySpaceRenderRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
+   
+   ``` C++
+   // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
+   // 销毁流构造器。
+   OH_AudioStreamBuilder_Destroy(g_rendererBuilder);
+   
+   // 销毁节点。
+   OH_AudioSuiteEngine_DestroyNode(g_inputNodeForVocals);
+   OH_AudioSuiteEngine_DestroyNode(g_inputNodeForAccompaniment);
+   OH_AudioSuiteEngine_DestroyNode(g_spaceNodeForVocals);
+   OH_AudioSuiteEngine_DestroyNode(g_spaceNodeForAccompaniment);
+   OH_AudioSuiteEngine_DestroyNode(g_mixerNode);
+   OH_AudioSuiteEngine_DestroyNode(g_outputNode);
+   
+   // 销毁管线。
+   OH_AudioSuiteEngine_DestroyPipeline(g_audioSuitePipeline);
+   
+   // 销毁引擎。
+   OH_AudioSuiteEngine_Destroy(g_audioSuiteEngine);
+   ```
 
 ## 完整示例代码
 
