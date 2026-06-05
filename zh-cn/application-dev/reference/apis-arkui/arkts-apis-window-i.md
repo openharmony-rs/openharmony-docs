@@ -320,7 +320,7 @@
 
 ## DecorButtonStyle<sup>14+</sup>
 
-系统装饰栏按钮样式。
+系统标题栏按钮样式。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
