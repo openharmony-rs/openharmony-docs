@@ -1958,7 +1958,7 @@ setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 | 参数名      | 类型                              | 必填   | 说明            |
 | -------- | ------------------------------- | ---- | ------------- |
 | policy   | [UpgradePolicy](#upgradepolicy) | 是    | 升级策略对象，用于控制升级行为。包含自动下载策略、自动升级策略、升级时间段等配置。详见UpgradePolicy定义。 |
-| callback | AsyncCallback<void> | 是 | 回调函数。当设置升级策略成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是 | 回调函数。当设置升级策略成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
