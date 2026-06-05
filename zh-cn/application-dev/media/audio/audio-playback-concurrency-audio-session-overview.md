@@ -1,10 +1,10 @@
 # 音频焦点和音频会话开发概述
- <!--Kit: Audio Kit-->	 
- <!--Subsystem: Multimedia-->	 
- <!--Owner: @funny_sunix-->	 
- <!--Designer: @hao-liangfei-->	 
- <!--Tester: @Filger-->	 
- <!--Adviser: @w_Machine_cc-->
+<!--Kit: Audio Kit-->	 
+<!--Subsystem: Multimedia-->	 
+<!--Owner: @funny_sunix-->	 
+<!--Designer: @hao-liangfei-->	 
+<!--Tester: @Filger-->	 
+<!--Adviser: @w_Machine_cc-->
  
 在应用播放或录制声音时，会遇到与其他应用或本应用内的其他音频流发生焦点冲突。本章节概括了该场景的处理方式，帮助开发者了解如何使用系统的音频焦点冲突管理能力来解决各类音频打断问题。
 
@@ -91,4 +91,4 @@
 | 方案三 | 无需配置 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用PAUSE_WHEN_INTERRUPTED | 录制被暂停，应用A通话结束后，应用B收到RESUME事件恢复录制 | -  |
 
 ## 同应用内不同音频流之间的焦点管理
-同应用内不同音频流默认使用相同焦点策略，如果需要对不同流进行差异化管理，需要应用通过设置[焦点模式](./audio-playback-concurrency.md#焦点模式)为独立焦点模式，再为每条流设置不同的焦点策略。
+同应用内不同音频流默认使用相同的焦点策略，如需对各音频流进行差异化管理，应用需先将[焦点模式](./audio-playback-concurrency.md#焦点模式)设置为独立焦点模式，再分别为每条流设置对应的焦点策略。
