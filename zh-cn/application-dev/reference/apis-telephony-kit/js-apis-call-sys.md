@@ -6131,11 +6131,11 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 ## XCallType
 
 表示XCall的类型。
-	 
+
 **起始版本**: 26.0.0
-	 
+
 **系统接口：** 此接口为系统接口。
-	 
+
 **系统能力**：SystemCapability.Telephony.CallManager
 
 | 名称                           | 值     | 说明     |
