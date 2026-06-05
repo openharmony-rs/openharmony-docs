@@ -14,21 +14,20 @@
 
 - **固定摆位模式**：将音频源固定在特定空间的指定位置。
 - **旋转模式**：让音频源在指定位置设定单周环绕时间与时针方向进行动态渲染。
-- **扩展模式**：将音频源按照半径和角度进行声场扩展。
+- **扩展模式**：将音频源按照半径和角度进行扩展。
 
 ### 坐标系说明
 
-空间渲染采用左手坐标系：
+空间渲染采用左手坐标系，即伸出左手，用拇指和食指形成一个"L"形。
 
-伸出左手，用拇指和食指形成一个"L"形：
-- 拇指指向右侧 → X轴正方向
-- 食指向上 → Y轴正方向
-- 其余手指指向前 → Z轴正方向
+- 拇指指向右侧表示：X轴正方向。
+- 食指向上表示：Y轴正方向。
+- 其余手指指向前表示：Z轴正方向。
 
 坐标系参数说明：
-- **X坐标**：左右方向，负值表示左侧，正值表示右侧，取值范围[-5.0, 5.0]米
-- **Y坐标**：上下方向，负值表示下方，正值表示上方，取值范围[-5.0, 5.0]米
-- **Z坐标**：前后方向，负值表示后方，正值表示前方，取值范围[-5.0, 5.0]米
+- X坐标：左右方向。负值表示左侧，正值表示右侧。取值范围为[-5.0, 5.0]，单位为米（m）。
+- Y坐标：上下方向，负值表示下方，正值表示上方。取值范围为[-5.0, 5.0]，单位为米（m）。
+- Z坐标：前后方向，负值表示后方，正值表示前方。取值范围为[-5.0, 5.0]，单位为米（m）。
 
 ## 工作模式详解
 
@@ -40,7 +39,7 @@
 
 ![audiosuite-space-render-rotation](figures/audiosuite-space-render-rotation.png)
 
-扩展模式：扩展模式将音频源按照半径和角度进行声场扩展，用户可通过调用[oh_audiosuiteengine_setspacerenderextensionparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderextensionparams)对空间渲染节点进行设置。扩展模式示意图如下：
+扩展模式：扩展模式将音频源按照半径和角度进行扩展，用户可通过调用[oh_audiosuiteengine_setspacerenderextensionparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderextensionparams)对空间渲染节点进行设置。扩展模式示意图如下：
 
 ![audiosuite-space-render-extension](figures/audiosuite-space-render-extension.png)
 
