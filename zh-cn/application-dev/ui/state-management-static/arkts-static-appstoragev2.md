@@ -96,23 +96,31 @@ struct Index {
         .onClick((e: ClickEvent) => {
           this.message.userID += 1;
         })
+        .width(300)
+        .margin(10)
       // 修改非@Trace装饰的类属性，UI不会同步刷新，但修改的类属性已同步回AppStorageV2
       Button(`Index userName: ${this.message.userName}`)
         .onClick((e: ClickEvent) => {
           this.message.userName += 'suf';
         })
+        .width(300)
+        .margin(10)
       // remove keyOrType IMessageType, 会从AppStorageV2中删除keyOrType为Message的Class的对象
       // remove之后，修改父组件的userId，子组件能同步变化，因为remove只是从AppStorageV2删除，不会影响组件中已存在的数据
       Button('remove keyOrType: IMessageType')
         .onClick((e: ClickEvent) => {
           AppStorageV2.remove(IMessageType);
         })
+        .width(300)
+        .margin(10)
       // connect ttype IMessageType, 会从AppStorageV2中添加ttype为Message的Class的对象
       // remove之后，重新添加，修改父子组件的userID，可以发现数据已经不同步，子组件重新connect之后，数据一致
       Button('connect ttype: IMessageType')
         .onClick((e: ClickEvent) => {
           this.message = AppStorageV2.connect<Message>(IMessageType, () => new Message(5, 'Rose'))!;
         })
+        .width(300)
+        .margin(10)
       Divider()
       Child()
     }
@@ -134,21 +142,29 @@ struct Child {
         .onClick((e: ClickEvent) => {
           this.message.userID += 5;
         })
+        .width(300)
+        .margin(10)
       // 修改父组件中的userName属性，点击name可以同步父组件的类属性修改
       Button(`Child name: ${this.name}`)
         .onClick((e: ClickEvent) => {
           this.name = this.message.userName;
         })
+        .width(300)
+        .margin(10)
       // remove keyOrType IMessageType，会从AppStorageV2中删除keyOrType为Message的Class的对象
       Button('remove keyOrType: IMessageType')
         .onClick((e: ClickEvent) => {
           AppStorageV2.remove(IMessageType);
         })
+        .width(300)
+        .margin(10)
       // connect ttype IMessageType，会从AppStorageV2中添加ttype为Message的Class的对象
       Button('connect ttype: IMessageType')
         .onClick((e: ClickEvent) => {
           this.message = AppStorageV2.connect<Message>(IMessageType, () => new Message(10, 'Lucy'))!;
         })
+        .width(300)
+        .margin(10)
     }
     .width('100%')
     .height('100%')
@@ -203,45 +219,57 @@ struct Page1 {
             let info: NavPathInfo = new NavPathInfo('Page2', new Object());
             this.pageStack.pushPath(info, true);
           })
+          .width(300)
+          .margin(10)
 
         Button('Page1 connect key Sample')
           .onClick((e: ClickEvent) => {
             // 在AppStorageV2中创建一个key为Sample的键值对（如果存在，则返回AppStorageV2中对应的数据），并且和prop关联
             this.prop = AppStorageV2.connect<Sample>(ISampleType, 'Sample', () => new Sample())!;
           })
+          .width(300)
+          .margin(10)
 
         Button('Page1 connect key Samplex')
           .onClick((e: ClickEvent) => {
             // 在AppStorageV2中创建一个key为Samplex的键值对（如果存在，则返回AppStorageV2中对应的数据），并且和prop关联
             this.prop = AppStorageV2.connect<Sample>(ISampleType, 'Samplex', () => new Sample())!;
           })
+          .width(300)
+          .margin(10)
 
         Button('Page1 remove keyOrType ISampleType')
           .onClick((e: ClickEvent) => {
             // 从AppStorageV2中删除后，AppStorageV2中不存在ttype为Sample的Class的对象，但prop关联的对象并没有被删除，所以点击下方的Text组件修改prop.p1，其值仍然会变化。
             AppStorageV2.remove(ISampleType);
           })
+          .width(300)
+          .margin(10)
 
-        Text(`Page1 add 1 to prop.p1: ${this.prop.p1}`)
-          .fontSize(30)
+        Button(`Page1 add 1 to prop.p1: ${this.prop.p1}`)
           .onClick((e: ClickEvent) => {
             this.prop.p1++;
           })
+          .width(300)
+          .margin(10)
 
-        Text(`Page1 add 1 to prop.p2: ${this.prop.p2}`)
-          .fontSize(30)
+        Button(`Page1 add 1 to prop.p2: ${this.prop.p2}`)
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // 页面不刷新，但p2的值已改变
             this.prop.p2++;
           })
 
         // 获取当前AppStorageV2里面的所有key
-        Text(`all keys in AppStorage: ${AppStorageV2.keys()}`)
+        Button(`all keys in AppStorage: ${AppStorageV2.keys()}`)
           .onClick((e: ClickEvent) => {
             console.info(`${AppStorageV2.keys()}`)
           })
-          .fontSize(30)
+          .width(300)
+          .margin(10)
       }
+      .width('100%')
     }.navDestination(this.PageBuilder)
   }
 }
@@ -273,21 +301,26 @@ export struct Page2 {
             // 在AppStorageV2中创建一个key为Sample的键值对（如果存在，则返回AppStorageV2中对应的数据），并且和prop关联
             this.prop = AppStorageV2.connect<Sample>(ISampleType, 'Sample', () => new Sample())!;
           })
+          .width(300)
+          .margin(10)
 
-        Text(`Page2 add 1 to prop.p1: ${this.prop.p1}`)
-          .fontSize(30)
+        Button(`Page2 add 1 to prop.p1: ${this.prop.p1}`)
           .onClick((e: ClickEvent) => {
             this.prop.p1++;
           })
+          .width(300)
+          .margin(10)
 
-        Text(`Page2 add 1 to prop.p2: ${this.prop.p2}`)
-          .fontSize(30)
+        Button(`Page2 add 1 to prop.p2: ${this.prop.p2}`)
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // 页面不刷新，但p2的值已改变
             this.prop.p2++;
           })
 
       }
+      .width('100%')
     }
   }
 }
