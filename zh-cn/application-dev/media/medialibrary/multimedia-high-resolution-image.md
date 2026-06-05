@@ -47,12 +47,12 @@
 1. 应用直接按照高像素图片的原始分辨率解码，解码峰值内存占用过高。
 2. 解码后生成的PixelMap对象内存占用较大，或同一页面同时持有多个高像素PixelMap对象。
 3. 应用将高像素图片直接送显，超出渲染链路可承载的内存范围，导致应用异常退出或页面卡顿。
-4. 应用在上传、分享前额外进行压缩、旋转、水印、滤镜等处理，导致短时间内同时存在高像素原图、解码结果（PixelMap）和处理中间图。
+4. 应用在上传、分享前进行了压缩、旋转、水印、滤镜等处理，导致短时间内同时存在高像素原图、解码结果（PixelMap）和处理中间图，峰值内存占用过高导致异常。
 
 **解决措施**
 
 1. 仅用于预览、列表、封面等场景时，使用降采样解码，按实际显示尺寸生成PixelMap。需要查看局部细节时，使用区域解码，仅解码当前可视区域或用户放大后的目标区域。
-2. 避免在同一页面长期持有多个高像素PixelMap对象；不再使用时及时释放图片资源。
+2. 避免在同一页面长期持有多个高像素PixelMap对象；不再使用PixelMap对象时及时释放图片资源。
 3. 上传或分享场景按业务需要选择高像素原图或降采样图。若业务不要求保留原始分辨率，建议上传或分享降采样后的图片。
 4. 对编辑、压缩、加水印等链路，尽量串行处理并复用中间结果，避免同时持有多份大图数据。
 
@@ -66,7 +66,7 @@
 
 如果应用需要获取高像素原图，应显式声明应用具备处理高像素图片的能力，并在后续处理流程中做好降采样、区域解码和内存管理。
 
-通过PhotoPicker获取图片时，可在[PhotoSelectOptions](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-class.md)中配置`assetCompatibleCapability`以声明具备高像素原图的处理能力。
+通过PhotoPicker获取图片时，可在[PhotoSelectOptions](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-class.md)中配置`assetCompatibleCapability`以声明具备高像素原图的处理能力。
 
 ```typescript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -89,13 +89,14 @@ async function pickerExample(): Promise<void> {
   }
 }
 ```
-<a id="网盘类应用设置支持高像素"></a>
-对于网盘、备份等需要按高像素原图处理媒体文件的应用，可使用[setAssetCompatibleCapability](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md)接口配置[AssetCompatibleCapability](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-i.md)。
+网盘类应用设置支持高像素{#网盘类应用设置支持高像素}
+
+对于网盘、备份等需要按高像素原图处理媒体文件的应用，可使用[setAssetCompatibleCapability](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md)接口配置[AssetCompatibleCapability](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-i.md)。
 
 ```typescript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
-import fs from '@ohos.file.fs';
+import { fileIo as fs } from '@kit.CoreFileKit';
 
 async function enableHighResolution(
   phAccessHelper: photoAccessHelper.PhotoAccessHelper
@@ -125,7 +126,8 @@ async function getHighResolutionAsset(
     // 获取到fd后，可按业务需要进行解码、上传或备份。
     console.info(`Open source file successfully. fd: ${srcFile.fd}`);
   } catch (error) {
-    console.error(`Failed get high resolution asset: ${JSON.stringify(error)}`);
+    const err = error as BusinessError;
+    console.error(`Failed get high resolution asset: code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -152,13 +154,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function getImageMimeType(filePath: string): string {
   try {
-    const source: image.ImageSource = image.createImageSource(filePath)
-    const info: image.ImageInfo = source.getImageInfoSync()
-    const mime: string = info.mimeType
-    source.release()
-    return mime
+    const source: image.ImageSource = image.createImageSource(filePath);
+    const info: image.ImageInfo = source.getImageInfoSync();
+    const mime: string = info.mimeType;
+    source.release();
+    return mime;
   } catch (error) {
-    return ""
+    return "";
   }
 }
 ```
@@ -240,7 +242,7 @@ static char* GetImageMimeType(int32_t fd)
 
 应用可通过图片宽高计算像素总数，并结合业务阈值判断图片是否属于高像素图片。本文示例以`width * height >= 100000000`作为高像素图片判断条件，即图片像素总数不小于1亿。
 
-该阈值不是固定标准，主要用于识别可能带来较高解码和渲染内存压力的图片。应用可根据目标设备内存、页面显示尺寸、性能指标和业务体验要求调整阈值。
+该阈值不是固定标准，主要用于识别带来较高解码和渲染内存压力的图片。应用可根据目标设备内存、页面显示尺寸、性能指标和业务体验要求调整阈值。
 
 需要注意，只有接入高像素原图获取后拿到的图片宽高才是原始图片的宽高，否则获取到的是转换后兼容性文件的宽高。接入方式可参考[为什么通过PhotoPicker或URI获取高像素图片时得到约1200万像素或约1250万像素的JPEG图片？](#为什么通过PhotoPicker或URI获取高像素图片时得到约1200万像素或约1250万像素的JPEG图片？)。
 
@@ -392,7 +394,7 @@ const decodingOptions: image.DecodingOptions = {
 
 ## 高像素图片处理总结
 
-为尽可能减少内存等资源占用，降低高像素图片处理过程中的[内存风险](#上传、分享等场景使用高像素图片失败或异常退出怎么办？)，以下是高像素图片处理推荐的方式：
+为尽可能减少内存等资源占用，降低高像素图片处理过程中的[内存风险](#上传、分享等场景使用高像素图片失败或异常退出)，以下是高像素图片处理推荐的方式：
 
 1. 读取图片后先获取真实宽高，估算解码后内存，再决定处理策略。
 2. 仅全图展示时请使用降采样解码，不建议直接按原始尺寸解码送显。
