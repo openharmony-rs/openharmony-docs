@@ -249,7 +249,7 @@ static char* GetImageMimeType(int32_t fd)
 
 需要注意，只有接入高像素原图获取后拿到的图片宽高才是原始图片的宽高，否则获取到的是转换后兼容性文件的宽高。接入方式可参考[为什么通过PhotoPicker或URI获取高像素图片时得到约1200万像素或约1250万像素的JPEG图片](#为什么通过photopicker或uri获取高像素图片时得到约1200万像素或约1250万像素的jpeg图片)。
 
-**ArkTS示例**
+**示例（ArkTS）：**
 
 ```typescript
 import { image } from '@kit.ImageKit';
