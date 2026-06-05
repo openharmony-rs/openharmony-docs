@@ -87,7 +87,7 @@
 | indigo               | \#4b0082 | ![indigo](figures/indigo.png) |
 | ivory                | \#fffff0 | ![ivory](figures/ivory.png) |
 | khaki                | \#f0e68c | ![khaki](figures/khaki.png) |
-| lavender             | \#e6e6fa | ![elavender](figures/elavender.png) |
+| lavender             | \#e6e6fa | ![lavender](figures/lavender.png) |
 | lavenderblush        | \#fff0f5 | ![lavenderblush](figures/lavenderblush.png) |
 | lawngreen            | \#7cfc00 | ![lawngreen](figures/lawngreen.png) |
 | lemonchiffon         | \#fffacd | ![lemonchiffon](figures/lemonchiffon.png) |
