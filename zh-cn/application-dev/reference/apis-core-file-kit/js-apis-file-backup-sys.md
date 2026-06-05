@@ -3347,30 +3347,37 @@ migrateFile(pathInfo: [PathInfo](#pathinfo), fileMeta: [FileMeta](#filemeta)): P
         return;
       }
       console.info(`onFileReady succeeded.`);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
-      console.info('onBundleBegin success');
+      console.info(`onBundleBegin succeeded.`);
     },
     onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
-      console.info('onBundleEnd success');
+      console.info(`onBundleEnd succeeded.`);
     },
     onAllBundlesEnd: (err: BusinessError) => {
       if (err) {
         console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
-      console.info('onAllBundlesEnd success');
+      console.info(`onAllBundlesEnd success`);
     },
     onBackupServiceDied: () => {
       console.info(`service died`);
+    },
+    onResultReport: (bundleName: string, result: string) => {
+      console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+    },
+    onProcess: (bundleName: string, process: string) => {
+      console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     },
     onMigrateResult: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
@@ -3456,31 +3463,38 @@ getApkFileHandle(path: string, fileName: string): Promise&lt;[FileData](#filedat
         console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
-      console.info('onFileReady success');
+      console.info(`onFileReady succeeded.`);
+      fileIo.closeSync(file.fd);
     },
     onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
         console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
-      console.info('onBundleBegin success');
+      console.info(`onBundleBegin succeeded.`);
     },
     onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
         console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
-      console.info('onBundleEnd success');
+      console.info(`onBundleEnd succeeded.`);
     },
     onAllBundlesEnd: (err: BusinessError) => {
       if (err) {
         console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
         return;
       }
-      console.info('onAllBundlesEnd success');
+      console.info(`onAllBundlesEnd success`);
     },
     onBackupServiceDied: () => {
       console.info(`service died`);
+    },
+    onResultReport: (bundleName: string, result: string) => {
+      console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+    },
+    onProcess: (bundleName: string, process: string) => {
+      console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     },
     onMigrateResult: (err: BusinessError<string|void>, bundleName: string) => {
       if (err) {
