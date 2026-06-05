@@ -296,5 +296,5 @@
 
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |
-| DLNA_CURRENT_URI_METADATA      | 'CurrentURIMetadata'    | 作为[setExtras](arkts-apis-avsession-AVSession.md#setextras10)接口传入的键，值传入string类型。<br>用于DLNA投播场景下，在发送给对端的报文中，为CurrentURIMetaData标签添加内容。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
-| DLNA_DIDL_LITE      | 'DIDL-Lite'    | 作为[setExtras](arkts-apis-avsession-AVSession.md#setextras10)接口传入的键，值传入string类型。<br>用于DLNA投播场景下，在发送给对端的报文中，为DIDL-Lite标签添加内容。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DLNA_CURRENT_URI_METADATA      | 'CurrentURIMetadata'    | [AVMediaDescription](arkts-apis-avsession-i.md#avmediadescription10)中extras属性可传入的键，值传入string类型。<br>用于DLNA投播场景下，在发送给对端的报文中，为CurrentURIMetaData标签添加内容。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DLNA_DIDL_LITE      | 'DIDL-Lite'    | [AVMediaDescription](arkts-apis-avsession-i.md#avmediadescription10)中extras属性可传入的键，值传入string类型。<br>用于DLNA投播场景下，在发送给对端的报文中，为DIDL-Lite标签添加内容。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
