@@ -59,7 +59,7 @@ User Authentication Kit（用户认证服务）提供了基于用户在设备本
 
 统一用户认证框架架构如下图所示。
 
-![zh-cn_image_0000001742473256](figures/zh-cn_image_0000001742473256.png)
+![unified-user-authentication-framework](figures/unified-user-authentication-framework.png)
 
 用户认证框架主要包括四个部分：
 

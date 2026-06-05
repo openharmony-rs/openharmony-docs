@@ -47,7 +47,7 @@
 
   当前仅系统应用可以选择和使用全屏类型的认证界面。
 
-  ![zh-cn_image_0000001742032002](figures/zh-cn_image_0000001742032002.png)
+  ![popup-authentication](figures/popup-authentication.png)
 <!--DelEnd-->
 
 当前支持使用认证控件的认证类型包括：
