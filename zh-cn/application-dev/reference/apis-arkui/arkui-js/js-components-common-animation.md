@@ -227,4 +227,4 @@ export default {
 >
 >  steps函数的end和start含义如下图所示。
 >
->  ![zh-cn_image_0000001127125220](figures/zh-cn_image_0000001127125220.png)
+>  ![steps](figures/steps.png)

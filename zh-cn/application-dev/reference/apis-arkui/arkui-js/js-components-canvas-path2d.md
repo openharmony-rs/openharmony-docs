@@ -89,7 +89,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001127125208](figures/zh-cn_image_0000001127125208.png)
+![Yellow-Triangle-01](figures/Yellow-Triangle-01.png)
 
 
 ## closePath
@@ -373,7 +373,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001127125204](figures/zh-cn_image_0000001127125204.png)
+![yellow-curve](figures/yellow-curve.png)
 
 
 ## ellipse
@@ -457,4 +457,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001127125212](figures/zh-cn_image_0000001127125212.png)
+![Yellow-square](figures/Yellow-square.png)
