@@ -97,76 +97,15 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
    
    导入所需依赖：
 
-   ArkTS-Dyn:
    <!-- @[TestHiTraceMeter_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { hiTraceMeter, hilog} from '@kit.PerformanceAnalysisKit';
    ```
 
-   ArkTS-Sta:   
-   <!-- @[TestHiTraceMeter_Import](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS_Sta/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   import { hiTraceMeter, hilog } from '@kit.PerformanceAnalysisKit';
-   ```
-
    定义测试方法：   
    
-   ArkTS-Dyn:
    <!-- @[TestHiTraceMeter_FUNC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   function testHiTraceMeterASync() {
-     const COMMERCIAL = hiTraceMeter.HiTraceOutputLevel.COMMERCIAL;
-     hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1001, 'categoryTest', 'key=value');
-     hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1002, 'categoryTest', 'key=value');
-   
-     setTimeout(() => {
-       // 结束taskId为1001的异步跟踪任务
-       hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1001);
-     }, 2000);
-   
-     setTimeout(() => {
-       // 结束taskId为1002的异步跟踪任务
-       hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1002);
-     }, 1000);
-   }
-   
-   function testHiTraceMeterSync() {
-     const COMMERCIAL = hiTraceMeter.HiTraceOutputLevel.COMMERCIAL;
-     // 开始同步跟踪任务
-     hiTraceMeter.startSyncTrace(COMMERCIAL, 'myTestSyncTrace', 'key=value');
-     // 业务流程
-     hilog.info(0x0000, 'testTrace', 'myTraceTest running, synchronizing trace');
-     // 结束同步跟踪任务
-     hiTraceMeter.finishSyncTrace(COMMERCIAL);
-   }
-   
-   function testHiTraceMeterValue() {
-     const COMMERCIAL = hiTraceMeter.HiTraceOutputLevel.COMMERCIAL;
-     let traceCount = 0;
-     // trace计数初始值
-     hiTraceMeter.traceByValue(COMMERCIAL, 'myTestCountTrace', traceCount);
-     traceCount++;
-     // trace打点变化后的值
-     hiTraceMeter.traceByValue(COMMERCIAL, 'myTestCountTrace', traceCount);
-   }
-   
-   function testHiTraceMeter() {
-     // 在未开启应用trace捕获时，避免该部分性能损耗
-     if (hiTraceMeter.isTraceEnabled()) {
-       testHiTraceMeterASync();
-       testHiTraceMeterSync();
-       testHiTraceMeterValue();
-     } else {
-       hilog.info(0x0000, 'testTrace', 'myTraceTest running, trace is not enabled');
-     }
-   }
-   ```
-
-   ArkTS-Sta:   
-   <!-- @[TestHiTraceMeter_FUNC](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS_Sta/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    function testHiTraceMeterASync() {
@@ -219,7 +158,6 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
 
    添加按钮以触发接口调用：
 
-   ArkTS-Dyn:   
    <!-- @[TestHiTraceMeter_BUTTON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -227,13 +165,12 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
      .onClick(testHiTraceMeter)
    ```
 
-   ArkTS-Sta:
-   <!-- @[TestHiTraceMeter_BUTTON](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS_Sta/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   Button("testHiTraceMeter").backgroundColor('#FFFF00FF')
-     .onClick(testHiTraceMeter)
-   ```
+   详情请参考以下工程：
+
+   ArkTS-Dyn：[HitraceMeter_ArkTS](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS?_fb=blob)
+
+   ArkTS-Sta：[HitraceMeter_ArkTS_Sta](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS_Sta?_fb=blob)
+
 ### 步骤二：采集trace信息并查看
 
 1. 在DevEco Studio Terminal窗口中执行以下命令，开启应用的trace捕获。
