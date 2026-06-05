@@ -1098,7 +1098,7 @@ struct HeightExample {
 }
 ```
 
-![zh-cn_image_canvas_height](figures/zh-cn_image_canvas_height.png)
+![image-canvas-height](figures/zh-cn_image_canvas_height.png)
 
 
 ### width
@@ -1140,7 +1140,7 @@ struct WidthExample {
 }
 ```
 
-![zh-cn_image_canvas_width](figures/zh-cn_image_canvas_width.png)
+![image-canvas-width](figures/image-canvas-width.png)
 
 
 ### canvas<sup>13+</sup>
@@ -1195,7 +1195,7 @@ struct CanvasExample {
 }
 ```
 
-![zh-cn_image_canvas](figures/zh-cn_image_canvas.png)
+![image-canvas](figures/image-canvas.png)
 
 
 ### imageSmoothingQuality
@@ -2958,7 +2958,7 @@ saveLayer(): void
   }
 
   ```
-   ![zh-cn_image_CanvasSavelayer](figures/zh-cn_image_CanvasSavelayer.png)
+   ![image-CanvasSavelayer](figures/image-CanvasSavelayer.png)
 
 ### restoreLayer<sup>12+</sup>
 
@@ -4859,7 +4859,7 @@ struct Index {
 }
 ```
 
-![](figures/zh-cn_image_canvas_fill_rule_example.png)
+![](figures/image-canvas-fill-rule-example.png)
 
 ## CanvasLineCap类型说明
 

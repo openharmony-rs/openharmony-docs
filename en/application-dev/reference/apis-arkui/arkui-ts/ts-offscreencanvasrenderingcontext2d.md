@@ -2958,7 +2958,7 @@ Saves this layer.
     }
   }
   ```
-  ![en-us_image_CanvasSavelayer](figures/en-us_image_CanvasSavelayer.png)
+  ![image-CanvasSavelayer](figures/image-CanvasSavelayer.png)
 
 ### restoreLayer<sup>12+</sup>
 

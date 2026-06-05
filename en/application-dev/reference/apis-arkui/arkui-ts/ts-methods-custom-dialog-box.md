@@ -332,7 +332,7 @@ struct CustomDialogUser {
 }
 ```
 
-![en-us_image_custom](figures/en-us_image_custom.gif)
+![image-custom](figures/image-custom.gif)
 
 ### Example 2: Opening a Dialog Box Outside the Main Window
 
@@ -421,7 +421,7 @@ struct CustomDialogUser {
 }
 ```
 
-![en-us_image_custom-showinsubwindow](figures/en-us_image_custom-showinsubwindow.jpg)
+![image-custom-showinsubwindow](figures/image-custom-showinsubwindow.jpg)
 
 ### Example 3: Setting the Dialog Box Style
 This example demonstrates how to set styles of a custom dialog box, including the width, height, background color, and shadow.
@@ -1108,7 +1108,7 @@ struct Example3 {
 }
 ```
 
-![en-us_image_custom_lifecycle](figures/en-us_image_custom_lifecycle.gif)
+![image-custom-lifecycle](figures/image-custom-lifecycle.gif)
 
 ### Example 10: Implementing Dialog Boxes with Different customStyle Values
 
@@ -1255,7 +1255,7 @@ struct CustomDialogUser {
 }
 ```
 
-![en-us_image_custom-backgroundBlurStyleOptions](figures/en-us_image_custom-backgroundBlurStyleOptions.png)
+![image-custom-backgroundBlurStyleOptions](figures/image-custom-backgroundBlurStyleOptions.png)
 
 ### Example 12: Customizing the Background Effect
 
@@ -1318,7 +1318,7 @@ struct CustomDialogUser {
 }
 ```
 
-![en-us_image_custom-backgroundEffect](figures/en-us_image_custom-backgroundEffect.png)
+![image-custom-backgroundEffect](figures/image-custom-backgroundEffect.png)
 
 ### Example 13: Dynamically Updating the Custom Dialog Box Width
 
@@ -1385,4 +1385,4 @@ struct CustomDialogUser {
 }
 ```
 
-![en-us_image_custom-backgroundEffect](figures/en-us_image_dynamicRefreshwidth.gif)
+![en-us_image_custom-backgroundEffect](figures/image-dynamicRefreshwidth.gif)

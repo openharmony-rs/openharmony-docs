@@ -1319,7 +1319,7 @@ struct Index {
 }
 ```
 
-![en-us_image_effect_blendMode2](figures/en-us_image_effect_blendMode.png)
+![en-us_image_effect_blendMode2](figures/image-effect-blendMode.png)
 
 ### Example 5: Inverting the Foreground Color
 

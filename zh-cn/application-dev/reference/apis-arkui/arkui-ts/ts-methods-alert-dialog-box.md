@@ -506,7 +506,7 @@ struct AlertDialogExample {
 }
 ```
 
-![zh-cn_image_alert](figures/zh-cn_image_alert.gif)
+![image-alert](figures/image-alert.gif)
 
 ### 示例2（可在主窗外弹出的弹窗）
 
@@ -576,7 +576,7 @@ struct AlertDialogExample {
 }
 ```
 
-![zh-cn_image_alert_showinsubwindow](figures/zh-cn_image_alert_showinsubwindow.jpg)
+![image-alert-showinsubwindow](figures/image-alert-showinsubwindow.jpg)
 
 ### 示例3（设置弹窗的动画）
 
@@ -623,7 +623,7 @@ struct AlertDialogExample {
 }
 ```
 
-![zh-cn_image_alert_animation](figures/zh-cn_image_alert_animation.gif)
+![image-alert-animation](figures/image-alert-animation.gif)
 
 ### 示例4（设置弹窗的样式）
 
@@ -688,7 +688,7 @@ struct AlertDialogExample {
 }
 ```
 
-![zh-cn_image_alert_style](figures/zh-cn_image_alert_style.gif)
+![image-alert-style](figures/image-alert-style.gif)
 
 ### 示例5（悬停态弹窗）
 
@@ -796,7 +796,7 @@ struct Example2 {
 }
 ```
 
-![zh-cn_image_alert_lifecycle](figures/zh-cn_image_alert_lifecycle.gif)
+![image-alert-lifecycle](figures/image-alert-lifecycle.gif)
 
 ### 示例7（自定义背景模糊效果参数）
 
@@ -847,7 +847,7 @@ struct AlertDialogExample {
 }
 ```
 
-![zh-cn_image_alert_backgroundBlurStyleOptions](figures/zh-cn_image_alert_backgroundBlurStyleOptions.png)
+![image-alert-animation](figures/image-alert-animation.png)
 
 ### 示例8（自定义背景效果参数）
 
@@ -899,4 +899,4 @@ struct AlertDialogExample {
 }
 ```
 
-![zh-cn_image_alert_backgroundEffect](figures/zh-cn_image_alert_backgroundEffect.png)
+![image-alert-backgroundEffect](figures/image-alert-backgroundEffect.png)
