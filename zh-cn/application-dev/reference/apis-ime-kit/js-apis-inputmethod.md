@@ -230,7 +230,7 @@ switchInputMethod(target: InputMethodProperty, callback: AsyncCallback&lt;boolea
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10].        |
+| 201 | permissions check fails. [since 9 - 10].<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/> |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -313,7 +313,7 @@ switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10]       |
+| 201 | permissions check fails. [since 9 - 10]<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/> |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -414,7 +414,7 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype, callback: AsyncCallb
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10]       |
+| 201 | permissions check fails. [since 9 - 10]<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/>  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -520,7 +520,7 @@ switchCurrentInputMethodSubtype(target: InputMethodSubtype): Promise&lt;boolean&
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10]       |
+| 201 | permissions check fails. [since 9 - 10]<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/> |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -642,7 +642,7 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10].        |
+| 201 | permissions check fails. [since 9 - 10].<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/>  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -732,7 +732,7 @@ switchCurrentInputMethodAndSubtype(inputMethodProperty: InputMethodProperty, inp
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. [since 9 - 10].        |
+| 201 | permissions check fails. [since 9 - 10].<br>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。<br/> |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error.        |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -4955,6 +4955,8 @@ offGetTextIndexAtCursor(callback?:GetTextIndexAtCursorCallback): void
 
 取消订阅输入法应用获取光标处文本索引事件。使用callback异步回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('getTextIndexAtCursor')](#offgettextindexatcursor10)。
@@ -5140,6 +5142,8 @@ console.info(`All callbacks unsubscribed from setPreviewText`);
 offSetPreviewText(callback?:SetPreviewTextCallback): void
 
 取消订阅输入法应用操作文本预览内容的事件。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
