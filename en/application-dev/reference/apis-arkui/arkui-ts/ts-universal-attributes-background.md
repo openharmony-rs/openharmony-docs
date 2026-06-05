@@ -764,7 +764,7 @@ struct BackgroundBlurStyleDemo {
 }
 ```
 
-![image-background-blur-style](figures/eimage-background-blur-style.png)
+![image-background-blur-style](figures/image-background-blur-style.png)
 
 ### Example 3: Setting the Component Background
 
