@@ -6,7 +6,7 @@
  <!--Tester: @Filger-->
  <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，OHAudioSuite给开发者提供空间渲染效果节点（[EFFECT_NODE_TYPE_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_typ)），用于实现三维空间音频渲染能力。空间渲染效果节点可以将音频源在三维空间中进行定位、旋转和扩展处理，为用户营造沉浸式的三维听觉体验。
+从API version 23开始，OHAudioSuite给开发者提供空间渲染效果节点[EFFECT_NODE_TYPE_SPACE_RENDER](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audionode_typ)），用于实现三维空间音频渲染能力。空间渲染效果节点可以将音频源在三维空间中进行定位、旋转和扩展处理，为用户营造沉浸式的三维听觉体验。
 
 ## 功能概述
 
@@ -32,41 +32,19 @@
 
 ## 工作模式详解
 
-###  [固定摆位模式](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderpositionparams)
-
-固定摆位模式用于将音频源放置在三维空间的固定位置，适用于需要固定音源位置的场景，如：
-- 背景音乐固定在某个方位
-- 对话声音固定在前方
-- 环境音效固定在特定位置
-
- [配置参数结构体](../../reference/apis-audio-kit/capi-ohaudiosuite-oh-audiosuite-spacerenderpositionparams.md#oh_audiosuite_spacerenderpositionparams)
+固定摆位模式：固定摆位模式用于将音频源放置在三维空间的固定位置，适用于需要固定音源位置的场景，用户可通过调用[oh_audiosuiteengine_setspacerenderpositionparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderpositionparams)对空间渲染节点进行设置。
 
 固定摆位示意图
 
 ![固定.png](https://raw.gitcode.com/user-images/assets/9860003/07e503e8-3355-460c-9c7b-e942fc5ff7ab/固定.png '固定.png')
 
-###  [旋转模式](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderrotationparams)
-
-旋转模式让音频源在三维空间中按照设定的轨迹进行旋转环绕，适用于：
-- 环绕音效（如直升机声音）
-- 动态背景音乐
-- 游戏中的移动音效
-
- [配置参数结构体](../../reference/apis-audio-kit/capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md#oh_audiosuite_spacerenderrotationparams)
- [环绕方向枚举](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_surrounddirection)
+旋转模式：旋转模式让音频源在三维空间中按照设定的轨迹进行旋转环绕，用户可通过调用[oh_audiosuiteengine_setspacerenderrotationparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderrotationparams)对空间渲染节点进行设置。
 
 旋转模式示意图
 
 ![旋转.png](https://raw.gitcode.com/user-images/assets/9860003/10cff5ce-191c-4610-84b0-96a984e83e7e/旋转.png '旋转.png')
 
-###  [扩展模式](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderpositionparams)
-
-扩展模式将音频源从点源扩展为一定范围内的空间区域，适用于：
-- 大型乐器（如钢琴、管弦乐）
-- 环境氛围音效（如雷声、海浪）
-- 群体声源（如人群、合唱）
-
-[配置参数结构体](../../reference/apis-audio-kit/capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md#oh_audiosuite_spacerenderextensionparams)
+扩展模式：扩展模式将音频源从点源扩展为一定范围内的空间区域，用户可通过调用[oh_audiosuiteengine_setspacerenderpositionparams](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderpositionparams)对空间渲染节点进行设置。
 
 扩展模式示意图
 
@@ -120,5 +98,4 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 ## 完整示例代码
 
-完整的示例代码请参考：
 - [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
