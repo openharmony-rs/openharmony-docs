@@ -1,4 +1,10 @@
 # 高像素图片处理指南
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -10,56 +16,55 @@
 
 1. **先判断业务是否需要高像素原图**。仅用于列表、封面、聊天消息、分享预览等场景时，优先使用降采样图或缩略图。
 2. **以最终获取到的文件为准**。通过PhotoPicker、URI或媒体库接口获取图片后，应重新读取真实宽高、编码格式和元数据，不要仅依赖文件名、URI后缀或设备型号获取图像信息。
-3. **解码时控制输出规模**。根据显示尺寸设置`desiredSize`，根据可视区域设置`desiredRegion`，根据业务链路设置`desiredPixelFormat`。
-4. **及时释放图片资源**。PixelMap占用内存较大，切换图片、重新解码或页面销毁时应释放不再使用的[PixelMap](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-pixelmap-native-h#oh_pixelmapnative_release)或[ImageSource](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/capi-image-source-native-h#oh_imagesourcenative_release)。
+3. **解码时控制输出规模**。根据显示尺寸设置[desiredSize](../image/image-region-and-downsampling-c.md)，根据可视区域设置[desiredRegion](../image/image-region-and-downsampling.md)，根据业务链路设置[desiredPixelFormat](../image/image-allocator-type.md#rgba_8888和yuv格式的区别)。
+4. **及时释放图片资源**。图片占用内存较大，切换图片、重新解码或页面销毁时应释放不再使用的PixelMap或ImageSource。
 
 ## 常见问题
 
 ### 哪些场景需要支持高像素原图？
 
-#### 适用场景
+**适用场景**
 
 1. 图库、相册、影像查看器等需要放大查看高像素原图细节的应用。
 2. 网盘、备份、文件传输等需要保存或同步高像素原图的应用。
 3. 图片编辑、裁剪、打印、专业创作等对原始分辨率有要求的应用。
 4. 文档扫描、工业质检等需要查看局部纹理、文字或缺陷细节的应用。
 
-#### 通常不需要直接使用高像素原图的场景
+**通常不需要直接使用高像素原图的场景**
 
 1. 聊天消息、头像、信息流、商品列表等仅需做小尺寸预览的场景。
 2. 分享封面、列表卡片、普通页面配图等只需要适配屏幕显示尺寸的场景。
 3. 对上传耗时、流量消耗或存储空间敏感，且业务不要求保留原始分辨率的场景。
 
-#### 处理方式
+**处理方式**
 
 1. 如果业务只需要全图展示，使用降采样解码。
 2. 如果业务需要放大查看细节，在降采样全图预览基础上结合区域解码。
-3. 如果业务需要上传、备份或编辑高像素原图，可在页面里用[适当方式](#declare-support-high-resolution)声明具备高像素原图处理能力。因高像素图片处理时间相对较长，需设计相应的内存、网络和存储策略。
+3. 如果业务需要上传、备份或编辑高像素原图，可在页面里用[适当方式](#网盘类应用设置支持高像素)声明具备高像素原图处理能力。因高像素图片处理时间相对较长，需设计相应的内存、网络和存储策略。
 
 ### 上传、分享等场景使用高像素图片失败或异常退出怎么办？
 
-#### 可能原因
+**可能原因**
 
 1. 应用直接按照高像素图片的原始分辨率解码，解码峰值内存占用过高。
 2. 解码后生成的PixelMap对象内存占用较大，或同一页面同时持有多个高像素PixelMap对象。
 3. 应用将高像素图片直接送显，超出渲染链路可承载的内存范围，导致应用异常退出或页面卡顿。
 4. 应用在上传、分享前额外进行压缩、旋转、水印、滤镜等处理，导致短时间内同时存在高像素原图、解码结果（PixelMap）和处理中间图。
 
-#### 解决措施
+**解决措施**
 
-1. 仅用于预览、列表、封面等场景时，使用降采样解码，按实际显示尺寸生成PixelMap。
-2. 需要查看局部细节时，使用区域解码，仅解码当前可视区域或用户放大后的目标区域。
+1. 仅用于预览、列表、封面等场景时，使用降采样解码，按实际显示尺寸生成PixelMap。需要查看局部细节时，使用区域解码，仅解码当前可视区域或用户放大后的目标区域。
+2. 避免在同一页面长期持有多个高像素PixelMap对象；不再使用时及时释放图片资源。
 3. 上传或分享场景按业务需要选择高像素原图或降采样图。若业务不要求保留原始分辨率，建议上传或分享降采样后的图片。
-4. 避免在同一页面长期持有多个高像素PixelMap对象；不再使用时及时释放图片资源。
-5. 对编辑、压缩、加水印等链路，尽量串行处理并复用中间结果，避免同时持有多份大图数据。
+4. 对编辑、压缩、加水印等链路，尽量串行处理并复用中间结果，避免同时持有多份大图数据。
 
 ### 为什么通过PhotoPicker或URI获取高像素图片时得到约1200万像素或约1250万像素的JPEG图片？
 
-#### 可能原因
+**可能原因**
 
 系统在部分访问链路中会将高像素图片转换为兼容性更好的JPEG图片，以降低应用处理成本并提升兼容性。转换后的图片通常约为1200万像素或约1250万像素，实际结果以系统实现和图片来源为准。
 
-#### 解决措施
+**解决措施**
 
 如果应用需要获取高像素原图，应显式声明应用具备处理高像素图片的能力，并在后续处理流程中做好降采样、区域解码和内存管理。
 
@@ -86,7 +91,7 @@ async function pickerExample(): Promise<void> {
   }
 }
 ```
-<a id="declare-support-high-resolution"></a>
+<a id="网盘类应用设置支持高像素"></a>
 对于网盘、备份等需要按高像素原图处理媒体文件的应用，可使用[setAssetCompatibleCapability](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md)接口配置[AssetCompatibleCapability](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-i.md)。
 
 ```typescript
@@ -129,19 +134,19 @@ async function getHighResolutionAsset(
 
 ### 获取到图片后，为什么格式、尺寸或元数据判断异常？
 
-#### 可能原因
+**可能原因**
 
 1. 应用根据URI后缀判断图片格式，但URI后缀不一定等同于图片真实编码格式。
 2. 应用直接使用媒体库记录的文件属性进行业务判断，但最终获取到的图片文件可能经过兼容性转换。
 3. 应用假定获取前后的文件格式、分辨率或元数据完全一致，导致上传校验、格式分支、尺寸判断等逻辑异常。
 
-#### 解决措施
+**解决措施**
 
 1. 获取图片URI或fd后，使用Image Kit接口读取真实的图片格式、宽高等信息。
 2. 避免仅根据URI后缀、文件名或媒体库记录判断图片文件属性。
 3. 对上传、分享、编辑等关键链路，使用最终拿到的图片文件重新校验格式、尺寸和元数据。
 
-#### ArkTS示例
+**获取真实MIMEType ArkTS示例**
 
 ```typescript
 import { image } from '@kit.ImageKit';
@@ -160,7 +165,7 @@ function getImageMimeType(filePath: string): string {
 }
 ```
 
-#### C/C++示例
+**获取真实MIMEType C/C++示例**
 
 在`target_link_libraries`依赖中添加`libimage_source.so`和`libimage_common.so`。
 
@@ -233,15 +238,15 @@ static char* GetImageMimeType(int32_t fd)
 ```
 ### 如何判断图片是否为高像素图片？
 
-#### 判断方式
+**判断方式**
 
 应用可通过图片宽高计算像素总数，并结合业务阈值判断图片是否属于高像素图片。本文示例以`width * height >= 100000000`作为高像素图片判断条件，即图片像素总数不小于1亿。
 
 该阈值不是固定标准，主要用于识别可能带来较高解码和渲染内存压力的图片。应用可根据目标设备内存、页面显示尺寸、性能指标和业务体验要求调整阈值。
 
-需要注意，只有接入高像素原图获取后拿到的图片宽高才是原始图片的宽高，否则获取到的是转换后兼容性文件的宽高。接入方式可参考[为什么通过PhotoPicker或URI获取高像素图片时得到约1200万像素或约1250万像素的JPEG图片？](#为什么通过PhotoPicker或URI获取高像素图片时得到约1200万像素或约1250万像素的JPEG图片？)
+需要注意，只有接入高像素原图获取后拿到的图片宽高才是原始图片的宽高，否则获取到的是转换后兼容性文件的宽高。接入方式可参考[为什么通过PhotoPicker或URI获取高像素图片时得到约1200万像素或约1250万像素的JPEG图片？](#为什么通过PhotoPicker或URI获取高像素图片时得到约1200万像素或约1250万像素的JPEG图片？)。
 
-#### ArkTS示例
+**ArkTS示例**
 
 ```typescript
 import { image } from '@kit.ImageKit';
@@ -265,7 +270,7 @@ function isHighPixelImage(fd: number): boolean {
 }
 ```
 
-#### C/C++示例
+**C/C++示例**
 
 在`target_link_libraries`依赖中添加`libimage_source.so`。
 
@@ -342,7 +347,7 @@ static bool IsHighPixelImage(int32_t fd)
 
 ### 如何选择解码像素格式？
 
-#### 适用场景
+**适用场景**
 
 图片解码接口在未指定`desiredPixelFormat`时，默认会按RGBA_8888显示链路生成PixelMap。RGBA_8888适合图片显示、编辑和通用图像处理，但高像素图片按RGBA_8888解码时，内存通常按`width * height * 4`估算。
 
@@ -354,7 +359,7 @@ static bool IsHighPixelImage(int32_t fd)
 | `image.PixelMapFormat.RGB_565` | 无透明通道需求且色彩精度要求较低的预览、缩略图、列表图片等场景 | 约 2 字节/像素 |
 | `image.PixelMapFormat.NV21`、`image.PixelMapFormat.NV12` | 无透明通道需求，且后续需接入相机、视频、算法或硬件编解码等 YUV 处理链路的场景 | 约 2 字节/像素 |
 
-#### 处理方式
+**处理方式**
 
 1. 用于常规显示或编辑时，优先使用RGBA_8888，兼容性和处理便利性更好。
 2. 仅用于无透明度预览，且可以接受较低色彩精度时，可选择RGB_565降低内存。
@@ -370,103 +375,30 @@ const decodingOptions: image.DecodingOptions = {
 };
 ```
 
-### 什么时候使用降采样解码？
+### 使用降采样或区域解码优化高像素图片内存占用
 
-#### 适用场景
+**适用场景**
 
-当应用只需要在屏幕内展示全图，例如列表预览、详情页首屏、分享预览、普通图片查看等场景，建议针对高像素图使用降采样解码。降采样后生成的PixelMap尺寸更接近实际显示尺寸，可显著降低解码内存、渲染内存和加载耗时。
+针对列表预览、详情页首屏、分享预览等仅需屏幕展示的场景，建议优先使用降采样解码；若业务涉及大图浏览、手势缩放或局部细节查看（如自定义图片查看器），则应在降采样基础上叠加区域解码，以兼顾显示效果与内存安全。
 
-#### 处理方式
+**处理方式**
 
-1. 根据目标显示尺寸、屏幕分辨率和业务体验要求设计目标尺寸，例如8K、4K或2K。
-2. 解码时设置`desiredSize`，按目标尺寸生成PixelMap。注意，建议按照等比缩放原则配置该参数，避免图片变形；原图尺寸较小时，建议不配置该参数，避免冗余的缩放性能开销。
-3. （可选）如果业务需要控制内存或接入特定处理链路，可同时设置`desiredPixelFormat`。
-4. （可选）用户进入放大查看场景时，再按需使用区域解码加载局部细节。
+1. 使用降采样解码根据目标显示尺寸、屏幕分辨率和业务体验要求设计目标尺寸，例如8K、4K或2K。
+2. 使用降采样解码解码时设置`desiredSize`，按目标尺寸生成PixelMap。注意，建议按照等比缩放原则配置该参数，避免图片变形；原图尺寸较小时，建议不配置该参数，避免冗余的缩放性能开销。
+3. 用户放大或拖动图片时，区域解码根据当前交互状态计算需要显示的原图区域。
+4. 区域解码使用`desiredRegion`只加载目标区域，并在交互状态变化后更新解码区域。
+5. 区域解码会释放不再显示的区域图，避免缓存过多PixelMap对象。
+6. （可选）如果业务需要控制内存或接入特定处理链路，可同时设置`desiredPixelFormat`。
 
-```typescript
-import { image } from '@kit.ImageKit';
-
-async function createDownsampledPixelMap(
-  imageSource: image.ImageSource | undefined
-): Promise<image.PixelMap | undefined> {
-  if (!imageSource) {
-    console.error('imageSource is undefined.');
-    return undefined;
-  }
-
-  const decodingOptions: image.DecodingOptions = {
-    desiredSize: { width: 3840, height: 2160 },
-    desiredPixelFormat: image.PixelMapFormat.RGBA_8888
-  };
-
-  try {
-    const pixelMap = await imageSource.createPixelMapUsingAllocator(
-      decodingOptions,
-      image.AllocatorType.AUTO
-    );
-    console.info('Create downsampled PixelMap succeeded.');
-    return pixelMap;
-  } catch (error) {
-    console.error(`Failed to create downsampled PixelMap: ${JSON.stringify(error)}`);
-    return undefined;
-  }
-}
-```
-
-### 什么时候使用区域解码？
-
-#### 适用场景
-
-区域解码指应用只解码当前需要显示的图片区域，而不是一次性解码整张高像素图片。当应用需要支持大图浏览、手势缩放、局部细节查看或自定义图片查看器时，建议在降采样解码的基础上，配合使用区域解码。这样既能让用户查看局部高清细节，又能降低内存消耗。
-
-#### 处理方式
-
-1. 缩略图或全图预览使用降采样方式显示。
-2. 用户放大或拖动图片时，根据当前交互状态计算需要显示的原图区域。
-3. 使用`desiredRegion`只加载目标区域，并在交互状态变化后更新解码区域。
-4. 释放不再显示的区域图，避免缓存过多PixelMap对象。
-
-```typescript
-import { image } from '@kit.ImageKit';
-
-async function createRegionPixelMap(
-  imageSource: image.ImageSource | undefined
-): Promise<image.PixelMap | undefined> {
-  if (!imageSource) {
-    console.error('imageSource is undefined.');
-    return undefined;
-  }
-
-  const decodingOptions: image.DecodingOptions = {
-    desiredRegion: {
-      x: 1000,
-      y: 1000,
-      size: { width: 1536, height: 2048 }
-    },
-    desiredPixelFormat: image.PixelMapFormat.RGBA_8888
-  };
-
-  try {
-    const pixelMap = await imageSource.createPixelMapUsingAllocator(
-      decodingOptions,
-      image.AllocatorType.AUTO
-    );
-    console.info('Create region PixelMap succeeded.');
-    return pixelMap;
-  } catch (error) {
-    console.error(`Failed to create region PixelMap: ${JSON.stringify(error)}`);
-    return undefined;
-  }
-}
-```
+降采样解码与区域解码示例参考[图片区域解码与下采样(C/C++)](../image/image-region-and-downsampling-c.md)或[图片区域解码与下采样(ArkTS)](../image/image-region-and-downsampling.md)。
 
 ## 高像素图片处理总结
 
-### 为尽可能减少内存等资源占用，降低高像素图片处理过程中的[内存风险](#上传、分享等场景使用高像素图片失败或异常退出怎么办？)，以下是高像素图片处理推荐的最佳实践方式
+为尽可能减少内存等资源占用，降低高像素图片处理过程中的[内存风险](#上传、分享等场景使用高像素图片失败或异常退出怎么办？)，以下是高像素图片处理推荐的最佳实践方式：
 
 1. 读取图片后先获取真实宽高，估算解码后内存，再决定处理策略。
-2. 仅全图展示时使用降采样，不要直接按原始尺寸解码送显。
-3. 需要局部高清时使用区域解码，不要为了查看局部细节一次性解码整张原图。
+2. 仅全图展示时请使用降采样解码，不建议直接按原始尺寸解码送显。
+3. 需要局部高清时使用区域解码，建议避免因为查看局部细节一次性解码整张原图。
 4. 根据业务选择像素格式。无透明度预览可考虑RGB_565；YUV处理链路可考虑NV21或NV12。
 5. 控制同一页面同时存在的PixelMap数量；切换图片、重新解码或页面销毁时释放资源。
 6. 对上传、编辑、压缩、滤镜等链路，及时释放资源，避免同时保留多份大尺寸中间图。
