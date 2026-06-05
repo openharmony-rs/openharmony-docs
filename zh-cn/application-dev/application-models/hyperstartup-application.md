@@ -68,25 +68,25 @@
 
 * 磁盘数据访问
 
-	快启初始化过程中发生的磁盘数据读取操作，不会在快启启动中执行，因此会导致数据不一致问题。
+    快启初始化过程中发生的磁盘数据读取操作，不会在快启启动中执行，因此会导致数据不一致问题。
 
-	示例：快启初始化过程中，应用业务读取存储在数据库中的字体属性（宋体）。应用快启启动后，用户将字体调整为楷体，该属性被持久化到数据库文件，随后应用退出；下次应用快启启动时，由于没有再次读取数据库（该流程已被跳过），导致字体仍为宋体，而不是更新后的楷体。
+    示例：快启初始化过程中，应用业务读取存储在数据库中的字体属性（宋体）。应用快启启动后，用户将字体调整为楷体，该属性被持久化到数据库文件，随后应用退出；下次应用快启启动时，由于没有再次读取数据库（该流程已被跳过），导致字体仍为宋体，而不是更新后的楷体。
 
 * 事件监听回调注册
 
-	快启初始化过程中建立的回调事件监听，不会在快启启动前持续响应，可能导致事件丢失。
+    快启初始化过程中建立的回调事件监听，不会在快启启动前持续响应，可能导致事件丢失。
 
-	示例：快启初始化过程中，应用业务注册了颜色模式监听，初始为深色模式；在应用未被用户启动的情况下，系统颜色模式发生变化，切换为浅色模式。由于该监听不会在快启启动前持续响应，因此无法接收到切换颜色模式的广播消息。下次用户通过快启方式启动应用时，应用仍会显示为深色模式。
+    示例：快启初始化过程中，应用业务注册了颜色模式监听，初始为深色模式；在应用未被用户启动的情况下，系统颜色模式发生变化，切换为浅色模式。由于该监听不会在快启启动前持续响应，因此无法接收到切换颜色模式的广播消息。下次用户通过快启方式启动应用时，应用仍会显示为深色模式。
 
 * 网络访问
 
-	快启初始化中建立的网络连接不可控，可能出现连接中断等问题。
+    快启初始化中建立的网络连接不可控，可能出现连接中断等问题。
 
-	示例：快启初始化中，建立了长时TCP连接以接收云端信息；快启初始化完成后，该连接不会持续响应，超时导致连接失败。
+    示例：快启初始化中，建立了长时TCP连接以接收云端信息；快启初始化完成后，该连接不会持续响应，超时导致连接失败。
 
 * 进程间通信（IPC）
 
-	快启初始化中，禁止有状态的进程间通信，例如保存应用状态和数据持久化（允许参数获取等无状态的进程间通信），否则会触发保护机制导致快启初始化失败。
+    快启初始化中，禁止有状态的进程间通信，例如保存应用状态和数据持久化（允许参数获取等无状态的进程间通信），否则会触发保护机制导致快启初始化失败。
 
 ### 将快启风险操作后置到快启点之外
 
@@ -96,12 +96,12 @@
 
 ```TypeScript
 export class AppAbilityStage extends AbilityStage {
-	onCreate() {
-		this.readFile();
-	}
-	readFile() {
-		// 从磁盘读取文件
-	}
+    onCreate() {
+        this.readFile();
+    }
+    readFile() {
+        // 从磁盘读取文件
+    }
 }
 ```
 
@@ -109,13 +109,13 @@ export class AppAbilityStage extends AbilityStage {
 
 1. 将快启风险操作后置到AbilityStage.onAboutToCreateAbility。
 
-	```TypeScript
-	export class AppAbilityStage extends AbilityStage {
-		onAboutToCreateAbility() {
-			this.readFile();
-		}
-	}
-	```
+    ```TypeScript
+    export class AppAbilityStage extends AbilityStage {
+        onAboutToCreateAbility() {
+            this.readFile();
+        }
+    }
+    ```
 
 2. 调整业务逻辑时，需要考虑时序依赖，保障业务逻辑正确性。
 
@@ -127,13 +127,13 @@ export class AppAbilityStage extends AbilityStage {
 
 ```TypeScript
 class ClassA {
-	constructor() {
-		this.readFile();
-	}
+    constructor() {
+        this.readFile();
+    }
 
-	readFile() {
-		// 从磁盘读取文件
-	}
+    readFile() {
+        // 从磁盘读取文件
+    }
 }
 
 let tmp = new ClassA();
@@ -149,22 +149,22 @@ let tmp = new ClassA();
 
 ```TypeScript
 static napi_module OpenPlatformModule = {
-	.nm_version = 1,
-	.nm_flags = 100,
-	.nm_filename = nullptr,
-	.nm_register_func = Init,
-	.nm_modname = "openplatform",
-	.nm_priv = ((void *)0),
-	.reserved = {0}
+    .nm_version = 1,
+    .nm_flags = 100,
+    .nm_filename = nullptr,
+    .nm_register_func = Init,
+    .nm_modname = "openplatform",
+    .nm_priv = ((void *)0),
+    .reserved = {0}
 };
 
 void read_file() {
-	// 从磁盘读取文件
+    // 从磁盘读取文件
 }
 
 extern "C" __attribute__((constructor)) void RegisterOpenPlatformModule(void) {
-	napi_module_register(&OpenPlatformModule);
-	read_file();
+    napi_module_register(&OpenPlatformModule);
+    read_file();
 }
 ```
 
@@ -180,17 +180,17 @@ extern "C" __attribute__((constructor)) void RegisterOpenPlatformModule(void) {
 
 ```TypeScript
 export class AppAbilityStage extends AbilityStage {
-	private a = 1;
-	static data = AppAbilityStage.readFile();
-	static {
-		AppAbilityStage.netAccess();
-	}
-	static readFile() {
-		// 从磁盘读取文件
-	}
-	static netAccess() {
-		// 网络访问
-	}
+    private a = 1;
+    static data = AppAbilityStage.readFile();
+    static {
+        AppAbilityStage.netAccess();
+    }
+    static readFile() {
+        // 从磁盘读取文件
+    }
+    static netAccess() {
+        // 网络访问
+    }
 }
 ```
 
@@ -202,26 +202,26 @@ export class AppAbilityStage extends AbilityStage {
 
 ```TypeScript
 export class AppAbilityStage extends AbilityStage {
-	onCreate() {
-		this.initLanguage(language);
-	}
-	initLanguage(language) {
-		readFile(); // AbilityStage.onCreate中存在快启风险操作
-	}
-	readFile() {
-		// 从磁盘读取文件
-	}
+    onCreate() {
+        this.initLanguage(language);
+    }
+    initLanguage(language) {
+        readFile(); // AbilityStage.onCreate中存在快启风险操作
+    }
+    readFile() {
+        // 从磁盘读取文件
+    }
 }
 ```
 
 ```TypeScript
 export class AppAbilityStage extends AbilityStage {
-	onLaunchFromHyperSnap() {
-		this.updateLanguage(); // 在onLaunchFromHyperSnap中进行更新
-	}
-	updateLanguage() {
-		readFile();
-	}
+    onLaunchFromHyperSnap() {
+        this.updateLanguage(); // 在onLaunchFromHyperSnap中进行更新
+    }
+    updateLanguage() {
+        readFile();
+    }
 }
 ```
 
@@ -248,34 +248,34 @@ export class AppAbilityStage extends AbilityStage {
 
 ```TypeScript
 export class LauncherAbility extends UIAbility {
-	onCreate() {
-		// ...
-	}
+    onCreate() {
+        // ...
+    }
 
-	onConfigChange(key: string, value: string) {
-		if (key == "enable_hyper_snap") {
-			if (value == "true") {
-				setHyperSnapEnabled(true);
-			} else {
-				setHyperSnapEnabled(false);
-			}
-		}
-	}
+    onConfigChange(key: string, value: string) {
+        if (key == "enable_hyper_snap") {
+            if (value == "true") {
+                setHyperSnapEnabled(true);
+            } else {
+                setHyperSnapEnabled(false);
+            }
+        }
+    }
 }
 
 export class AppAbilityStage extends AbilityStage {
-	onCreate() {
-		const hyperSnapConfig = this.readConfigFromDB();
-		if (hyperSnapConfig === "true") {
-			setHyperSnapEnabled(true);
-		} else {
-			setHyperSnapEnabled(false);
-		}
-	}
+    onCreate() {
+        const hyperSnapConfig = this.readConfigFromDB();
+        if (hyperSnapConfig === "true") {
+            setHyperSnapEnabled(true);
+        } else {
+            setHyperSnapEnabled(false);
+        }
+    }
 
-	readConfigFromDB() {
-		// 从数据库读取setHyperSnapEnabled参数
-	}
+    readConfigFromDB() {
+        // 从数据库读取setHyperSnapEnabled参数
+    }
 }
 ```
 
@@ -285,23 +285,22 @@ export class AppAbilityStage extends AbilityStage {
 
 ```TypeScript
 export class LauncherAbility extends UIAbility {
-	onCreate() {
-		// ...
-		try {
-			// ...
-		} catch (error) {
-			// ...
-			requestRebuildHyperSnap(); // 开发者可根据业务在报错时重新生成快启初始化结果
-			// ...
-		}
-	}
+    onCreate() {
+        // ...
+        try {
+            // ...
+        } catch (error) {
+            // ...
+            requestRebuildHyperSnap(); // 开发者可根据业务在报错时重新生成快启初始化结果
+            // ...
+        }
+    }
 }
 ```
 
 ## 通过调整业务逻辑提升快启加速收益
 
-纳入快启点的启动逻辑越多，快启收益通常越明显。
-开发者可以对整个启动流程进行梳理和分析，将适合纳入快启点的启动逻辑（即不含[快启风险操作](#快启风险操作)），在保障业务逻辑正确性的条件下前置到快启点内，扩大应用快启技术提升启动性能的收益。
+纳入快启点的启动逻辑越多，快启收益通常越明显。开发者可以对整个启动流程进行梳理和分析，将适合纳入快启点的启动逻辑（即不含[快启风险操作](#快启风险操作)），在保障业务逻辑正确性的条件下前置到快启点内，扩大应用快启技术提升启动性能的收益。
 
 * **将启动过程中的时序无关且无快启风险操作的逻辑前置到快启点内**
 
@@ -341,8 +340,4 @@ export class LauncherAbility extends UIAbility {
 
 为帮助开发者定位需要适配和修改的内容，系统提供了[配套插件工具](https://gitcode.com/HarmonyOS_Samples/HyperStartup/blob/dev/tools/hyperstartupcheck-user-manual.md)。该工具基于代码扫描，识别具有快启风险的代码，并报告给开发者进行修正，节省人工排查工作量，提升应用适配快启的效率。
 
-## 相关实例
-
-针对应用快启启动开发，可参考以下相关实例：
-
-- [应用快启技术实现的应用加速启动](https://gitcode.com/HarmonyOS_Samples/HyperStartup/tree/dev)
+<!--RP2--><!--RP2End-->
