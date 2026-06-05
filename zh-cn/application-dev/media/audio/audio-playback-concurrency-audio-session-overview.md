@@ -1,5 +1,11 @@
 # 音频焦点和音频会话开发概述
-
+ <!--Kit: Audio Kit-->	 
+ <!--Subsystem: Multimedia-->	 
+ <!--Owner: @funny_sunix-->	 
+ <!--Designer: @hao-liangfei-->	 
+ <!--Tester: @Filger-->	 
+ <!--Adviser: @w_Machine_cc-->
+ 
 在应用播放或录制声音时，会遇到与其他应用或本应用内的其他音频流发生焦点冲突。本章节概括了该场景的处理方式，帮助开发者了解如何使用系统的音频焦点冲突管理能力来解决各类音频打断问题。
 
 当前系统音频推荐两种能力来管理音频冲突：音频焦点和音频会话。
@@ -33,7 +39,7 @@
 
 后台音乐播放器正在播放，前台应用（如短视频）开始播放音频。
 
-解决方案：后台应用请求音频焦点（通过会话机制或焦点机制），后台播放器收到中断回调，根据 [`InterruptHint`](../../reference/apis-audio-kit/arkts-apis-audio-e.md#interrupthint) 判断执行`INTERRUPT_HINT_PAUSE`或`INTERRUPT_HINT_DUCK`。当前台应用释放焦点后，后台播放器收到`INTERRUPT_HINT_RESUME`，继续播放。
+解决方案：后台应用请求音频焦点（通过会话机制或焦点机制），后台播放器收到中断回调，根据[`InterruptHint`](../../reference/apis-audio-kit/arkts-apis-audio-e.md#interrupthint)判断执行`INTERRUPT_HINT_PAUSE`或`INTERRUPT_HINT_DUCK`。当前台应用释放焦点后，后台播放器收到`INTERRUPT_HINT_RESUME`，继续播放。
 
 焦点特点：后台应用被动接收中断事件，根据`InterruptHint`响应（暂停/停止/压低音量），应用无法主动声明策略，适用于传统应用或简单播放场景。
 
@@ -41,7 +47,7 @@
 
 用户听音乐时接到来电，希望通话结束后音乐自动恢复播放。
 
-解决方案：音乐播放器收到来电的 `INTERRUPT_HINT_PAUSE` 提示后暂停播放，来电结束时收到 `INTERRUPT_HINT_RESUME` 提示，自动恢复播放。
+解决方案：音乐播放器收到来电的`INTERRUPT_HINT_PAUSE`提示后暂停播放，来电结束时收到`INTERRUPT_HINT_RESUME`提示，自动恢复播放。
 
 焦点特点：利用音频焦点的自动恢复机制，`INTERRUPT_TYPE_END`事件携带RESUME提示，应用被动响应恢复播放，适合应用保持播放状态。
 
@@ -82,4 +88,4 @@
 | 方案二 | 无需配置 | 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED | 录制可以启动，录制数据为静音流 | 与方案一效果相当，推荐方案二 |
 
 ## 同应用内不同音频流之间的焦点管理
-应用内默认相同焦点模型，如果需要对不同流进行差异管理，需要应用通过设置[焦点模式](./audio-playback-concurrency.md#焦点模式)为独立焦点模式，再为每条流设置不同的焦点策略。
+同应用内不同音频流默认使用相同的焦点策略，如需对各音频流进行差异化管理，应用需先将[焦点模式](./audio-playback-concurrency.md#焦点模式)设置为独立焦点模式，再分别为每条流设置对应的焦点策略。
