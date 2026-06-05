@@ -9,10 +9,9 @@
 
 
 - [Ability Kit简介](abilitykit-overview.md)
-- [应用模型](application-models.md)
-- Stage模型开发指导<!--stage-model-development-->
-  - [Stage模型开发概述](stage-model-development-overview.md)
-  - Stage模型应用组件<!--stage-model-application-components-->
+- [应用模型]<!--application-models-->
+  - [应用模型概述](stage-model-development-overview.md)
+  - 应用组件<!--stage-model-application-components-->
     - [应用/组件级配置](application-component-configuration-stage.md)
     - UIAbility组件<!--uiability-->
       - [UIAbility组件概述](uiability-overview.md)
@@ -41,43 +40,14 @@
       - [显式Want与隐式Want匹配规则](explicit-implicit-want-mappings.md)
       - [使用显式Want启动应用组件](ability-startup-with-explicit-want.md)
       - [常见action与entities（不推荐使用）](actions-entities.md)
-    - [组件启动规则（Stage模型）](component-startup-rules.md)
-    - [应用启动](application-startup-options.md)
-    - [应用启动框架AppStartup](app-startup.md)
-    - [应用预加载](preload-application.md)
-    - [应用快启启动](hyperstartup-application.md)
-    - [应用重启](app-restart.md)
-    - [应用退出](app-stop.md)
-    - [获取应用异常退出原因](ability-exit-info-record.md)
-    - [应用生命周期](application-lifecycle.md)
+    - [组件启动规则](component-startup-rules.md)
+    - [获取/设置环境变量](subscribe-system-environment-variable-changes.md)
     <!--Del-->
     - 应用组件跨设备交互（流转）<!--hop-->
       - [流转概述](inter-device-interaction-hop-overview.md)
       - [跨端迁移](hop-cross-device-migration.md)
       - [多端协同](hop-multi-device-collaboration.md)
-    <!--DelEnd-->
-    - [获取/设置环境变量](subscribe-system-environment-variable-changes.md)
-  - 应用间跳转<!--inter-app-redirection-->
-    - [应用间跳转概述](link-between-apps-overview.md)
-    - 拉起指定应用<!--directional-redirection-->
-      - [拉起指定应用概述](app-startup-overview.md)
-      - [（可选）使用canOpenLink判断应用是否可访问](canopenlink.md)
-      - [获取目标应用的URL信息](obtaining-target-app-url-info.md)
-      - [使用Deep Linking实现应用间跳转](deep-linking-startup.md)
-      - [使用App Linking实现应用间跳转](app-linking-startup.md)
-      - [显式Want跳转切换应用链接跳转适配指导](uiability-startup-adjust.md)
-      - [应用链接说明](app-uri-config.md)
-    - 拉起指定类型的应用<!--specified-type-app-redirection-->
-      - [拉起指定类型的应用概述](start-intent-panel.md)
-      - [拉起导航类应用（startAbilityByType）](start-navigation-apps.md)
-      - [拉起邮件类应用（startAbilityByType）](start-email-apps.md)
-      - [拉起邮件类应用（mailto方式）](start-email-apps-by-mailto.md)
-      - [拉起金融类应用（startAbilityByType）](start-finance-apps.md)
-      - [拉起航班类应用（startAbilityByType）](start-flight-apps.md)
-      - [拉起快递类应用（startAbilityByType）](start-express-apps.md)
-      - [拉起图片编辑类应用（startAbilityByType）](photoEditorExtensionAbility.md)
-      - [拉起文件处理类应用（startAbility）](file-processing-apps-startup.md)
-    - [拉起系统应用](system-app-startup.md)<!--RP1--><!--RP1End-->
+    <!--DelEnd-->  
   - [进程模型](process-model-stage.md)
   - [线程模型](thread-model-stage.md)
   <!--Del-->
@@ -87,94 +57,55 @@
     - [页面栈及任务链（仅对系统应用开放）](page-mission-stack-sys.md)
     - [设置任务快照的图标和名称（仅对系统应用开放）](mission-set-icon-name-for-task-snapshot-sys.md)
   <!--DelEnd-->
-  - [Stage模型应用配置文件](config-file-stage.md)
-  - 意图框架开发指导<!--insight-intent-->
-    - [意图框架概述](insight-intent-overview.md)
-    - 开发意图<!--insight-intent-development-->
-      - [意图开发概述](insight-intent-definition.md)
-      - [使用配置文件开发意图](insight-intent-config-development.md)
-      - [使用装饰器开发意图](insight-intent-decorator-development.md)
-      - [附录：标准意图接入规范](insight-intent-access-specifications.md)
-    - [调试意图](insight-intent-debug.md)
-  - 基于AgentExtensionAbility的智能体开发指导<!--agent-->
+  - [应用配置文件](config-file-stage.md)
+- 应用生命周期<!--app-lifecycle-->
+  - [应用生命周期概述](application-lifecycle.md)
+  - 应用启动<!--app-start-->
+    - [应用启动设置](application-startup-options.md)
+    - [应用启动框架AppStartup](app-startup.md)
+    - [应用预加载](preload-application.md)
+    - [应用快启启动](hyperstartup-application.md)
+  - [应用退出](app-stop.md)
+  - [应用重启](app-restart.md)
+  - [获取应用异常退出原因](ability-exit-info-record.md)
+- 应用间跳转<!--inter-app-redirection-->
+  - [应用间跳转概述](link-between-apps-overview.md)
+  - 拉起指定应用<!--directional-redirection-->
+    - [拉起指定应用概述](app-startup-overview.md)
+    - [（可选）使用canOpenLink判断应用是否可访问](canopenlink.md)
+    - [获取目标应用的URL信息](obtaining-target-app-url-info.md)
+    - [使用Deep Linking实现应用间跳转](deep-linking-startup.md)
+    - [使用App Linking实现应用间跳转](app-linking-startup.md)
+    - [显式Want跳转切换应用链接跳转适配指导](uiability-startup-adjust.md)
+    - [应用链接说明](app-uri-config.md)
+  - 拉起指定类型的应用<!--specified-type-app-redirection-->
+    - [拉起指定类型的应用概述](start-intent-panel.md)
+    - [拉起导航类应用（startAbilityByType）](start-navigation-apps.md)
+    - [拉起邮件类应用（startAbilityByType）](start-email-apps.md)
+    - [拉起邮件类应用（mailto方式）](start-email-apps-by-mailto.md)
+    - [拉起金融类应用（startAbilityByType）](start-finance-apps.md)
+    - [拉起航班类应用（startAbilityByType）](start-flight-apps.md)
+    - [拉起快递类应用（startAbilityByType）](start-express-apps.md)
+    - [拉起图片编辑类应用（startAbilityByType）](photoEditorExtensionAbility.md)
+    - [拉起文件处理类应用（startAbility）](file-processing-apps-startup.md)
+  - [拉起系统应用](system-app-startup.md)<!--RP1--><!--RP1End-->
+- 意图框架开发指导<!--insight-intent-->
+  - [意图框架概述](insight-intent-overview.md)
+  - 开发意图<!--insight-intent-development-->
+    - [意图开发概述](insight-intent-definition.md)
+    - [使用配置文件开发意图](insight-intent-config-development.md)
+    - [使用装饰器开发意图](insight-intent-decorator-development.md)
+    - [附录：标准意图接入规范](insight-intent-access-specifications.md)
+  - [调试意图](insight-intent-debug.md)
+- 端侧A2A框架开发指导<!--agent-guideline-->
+  - [端侧A2A框架概述](agent-overview.md)
+  - 开发端侧智能体<!--agent-development-->
     - [使用AgentExtensionAbility组件实现智能体服务](agent-extension-ability.md)
     - [AgentExtensionAbility配置文件说明](agent-extension-configuration.md)
-- FA模型开发指导<!--fa-model-development-->
-  - [FA模型开发概述](fa-model-development-overview.md)
-  - FA模型应用组件<!--fa-model-application-components-->
-    - [应用/组件级配置](application-component-configuration-fa.md)
-    - PageAbility组件开发指导<!--pageability-->
-      - [PageAbility组件概述](pageability-overview.md)
-      - [PageAbility组件配置](pageability-configuration.md)
-      - [PageAbility的生命周期](pageability-lifecycle.md)
-      - [PageAbility的启动模式](pageability-launch-type.md)
-      - [创建PageAbility](create-pageability.md)
-      - [启动本地PageAbility](start-local-pageability.md)
-      - [停止PageAbility](stop-pageability.md)
-      <!--Del-->
-      - [启动远程PageAbility（仅对系统应用开放）](start-remote-pageability-sys.md)
-      <!--DelEnd-->
-      - [启动指定页面](start-page.md)
-      - [窗口属性](window-properties.md)
-      - [申请授权](request-permissions.md)
-      - [跳转规则](redirection-rules.md)
-    - ServiceAbility组件开发指导<!--serviceability-->
-      - [ServiceAbility组件概述](serviceability-overview.md)
-      - [ServiceAbility组件配置](serviceability-configuration.md)
-      - [ServiceAbility的生命周期](serviceability-lifecycle.md)
-      - [创建ServiceAbility](create-serviceability.md)
-      - [启动ServiceAbility](start-serviceability.md)
-      - [连接ServiceAbility](connect-serviceability.md)
-    - DataAbility组件开发指导<!--dataability-->
-      - [DataAbility组件概述](dataability-overview.md)
-      - [DataAbility组件配置](dataability-configuration.md)
-      - [DataAbility的生命周期](dataability-lifecycle.md)
-      - [创建DataAbility](create-dataability.md)
-      - [启动DataAbility](start-dataability.md)
-      - [访问DataAbility](access-dataability.md)
-      - [DataAbility权限控制](dataability-permission-control.md)
-    - [FA模型的Context](application-context-fa.md)
-    - [信息传递载体Want](want-fa.md)
-    - [组件启动规则（FA模型）](component-startup-rules-fa.md)
-  - [进程模型](process-model-fa.md)
-  - [线程模型](thread-model-fa.md)
-  <!--Del-->
-  - [任务管理（仅对系统应用开放）](mission-management-fa-sys.md)
-  <!--DelEnd-->
-  - [FA模型应用配置文件](config-file-fa.md)
-<!--Del-->
-- FA模型与Stage模型应用组件互通指导<!--fa-stage-interaction-->
-  - [FA模型与Stage模型应用组件互通综述](fa-stage-interaction-overview.md)
-  - [FA模型启动Stage模型UIAbility](start-uiability-from-fa.md)
-  - [FA模型绑定Stage模型ServiceExtensionAbility](bind-serviceextensionability-from-fa.md)
-  - [FA模型访问Stage模型DataShareExtensionAbility](access-datashareextensionability-from-fa.md)
-  - [Stage模型启动FA模型PageAbility](start-pageability-from-stage.md)
-  - [Stage模型绑定FA模型ServiceAbility](bind-serviceability-from-stage.md)
-- FA模型切换Stage模型指导<!--fa-to-stage-switch-->
-  - [模型切换概述](model-switch-overview.md)
-  - 配置文件切换<!--configuration-file-switch-->
-    - [配置文件的差异](configuration-file-diff.md)
-    - [app和deviceConfig的切换](app-deviceconfig-switch.md)
-    - [module的切换](module-switch.md)
-  - 组件切换<!--component-switch-->
-    - [PageAbility切换](pageability-switch.md)
-    - [ServiceAbility切换](serviceability-switch.md)
-    - [DataAbility切换](dataability-switch.md)
-  - [卡片切换](widget-switch.md)
-  - API切换<!--api-switch-->
-    - [API切换概述](api-switch-overview.md)
-    - [Context接口切换](context-switch.md)
-    - [featureAbility接口切换](featureability-switch.md)
-    - [particleAbility接口切换](particleability-switch.md)
-    - [LifecycleForm接口切换](lifecycleform-switch.md)
-    - [LifecycleApp接口切换](lifecycleapp-switch.md)
-    - [LifecycleService接口切换](lifecycleservice-switch.md)
-    - [LifecycleData接口切换](lifecycledata-switch.md)
-    - [DataAbilityHelper接口切换](dataabilityhelper-switch.md)
-    - [request接口切换](request-switch.md)
-    - [resourceManager接口切换](resourcemanager-switch.md)
-    - [window接口切换](window-switch.md)
-    - [Storage接口切换](storage-switch.md)
+    <!--Del-->
+    - [使用AgentExtensionAbility组件提供的智能体服务（仅对系统应用开放）](agent-manager-sys.md)
+    <!--DelEnd-->
+- [基于ArkTS脚本开发应用Skill](arkts-skill-development-guide.md)
 <!--DelEnd-->
 - Native子进程开发指导<!--native-childprocess-development-->
     - [创建Native子进程](capi-nativechildprocess-development-guideline.md)
