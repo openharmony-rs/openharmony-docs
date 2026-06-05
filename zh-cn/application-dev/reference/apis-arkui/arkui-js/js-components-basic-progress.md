@@ -134,6 +134,6 @@ type=eclipse<sup>5+</sup>
 }
 ```
 
-![progress](figures/progress.png)
+![progress01](figures/progress01.png)
 
 

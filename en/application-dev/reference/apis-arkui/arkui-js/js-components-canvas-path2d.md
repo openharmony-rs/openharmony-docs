@@ -289,7 +289,7 @@ export default {
 }
 ```
 
-  ![quadraticCurveTo01](figures/quadraticCurveTo01.png)
+  ![quadraticCurveTo-01](figures/quadraticCurveTo-01.png)
 
 
 ## arc
