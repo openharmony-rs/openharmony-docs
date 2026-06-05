@@ -285,7 +285,7 @@ Common error code for Bluetooth API calling failures. The possible causes are as
 
 **Solution**
 
-1. Check the prerequisites for calling the API. For details, see [2900099 Bluetooth API Call Error](../../connectivity/bluetooth/bluetooth-faq-2900099-errorcode.md#2900099-bluetooth-api-call-error).
+1. Check the prerequisites for calling the API. For details, see [2900099 Bluetooth API Call Error](../../connectivity/bluetooth/bluetooth-faq-2900099-errorcode.md).
 
 ## 2900100
 
