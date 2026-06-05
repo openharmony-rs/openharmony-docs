@@ -340,7 +340,7 @@
        return;
      }
      this.disconnectedCallback = () => {
-       console.info(`${TAG} serial port disconnected`);
+       console.info(`${TAG} onDisconnect: serial port disconnected`);
      };
      this.port.onDisconnect(this.disconnectedCallback);
      console.info(`${TAG} onDisconnect registered`);
