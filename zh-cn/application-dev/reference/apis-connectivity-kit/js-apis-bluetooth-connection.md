@@ -2033,7 +2033,7 @@ onAclStateChange(callback: Callback&lt;AclStateResult&gt;): void
 
 **起始版本：** 26.0.0
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -2052,8 +2052,8 @@ onAclStateChange(callback: Callback&lt;AclStateResult&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|801 | Capability not supported.          |
-|2900099 | Operation failed.              |
+|801 | Capability not supported.<br>Failed to call the API when the short-range chip is not inserted on 2in1 device.       |
+|2900099 | Operation failed.<br>For example, IPC error. Detailed error messages can be used to assist in locating the problem.              |
 
 **示例：**
 
@@ -2076,7 +2076,7 @@ offAclStateChange(callback?: Callback&lt;AclStateResult&gt;): void
 
 **起始版本：** 26.0.0
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -2095,8 +2095,8 @@ offAclStateChange(callback?: Callback&lt;AclStateResult&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|801 | Capability not supported.          |
-|2900099 | Operation failed.                        |
+|801 | Capability not supported.<br>Failed to call the API when the short-range chip is not inserted on 2in1 device.|
+|2900099 | Operation failed.<br>For example, IPC error. Detailed error messages can be used to assist in locating the problem.                        |
 
 **示例：**
 
