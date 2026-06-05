@@ -2838,7 +2838,7 @@ struct Fill {
 }
 ```
 
- ![zh-cn_image_000000127777775](figures/zh-cn_image_000000127777775.jpg)
+ ![Yellow-trapezoid-01](figures/Yellow-trapezoid-01.jpg)
 
 ### clip
 
@@ -2953,7 +2953,7 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
   }
   ```
 
-  ![zh-cn_image_000000127777779](figures/zh-cn_image_000000127777779.jpg)
+  ![Yellow-trapezoid-02](figures/Yellow-trapezoid-02.jpg)
 
 
 ### reset<sup>12+</sup>
@@ -3845,7 +3845,7 @@ getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
   }
   ```
 
-  ![zh-cn_image_000000127777783](figures/zh-cn_image_000000127777783.png)
+  ![Yellow-with-sky-01](figures/Yellow-with-sky-01.png)
 
 ### setPixelMap
 
@@ -3930,7 +3930,7 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
   }
   ```
 
-  ![zh-cn_image_000000127777780](figures/zh-cn_image_000000127777780.png)
+  ![Yellow-lemon](figures/Yellow-lemon.png)
 
 
 ### putImageData
@@ -4104,7 +4104,7 @@ setLineDash(segments: number[]): void
     }
   }
   ```
-  ![zh-cn_image_000000127777772](figures/zh-cn_image_000000127777772.png)
+  ![Dotted-circle](figures/Dotted-circle.png)
 
 
 ### getLineDash
@@ -4162,7 +4162,7 @@ getLineDash(): number[]
     }
   }
   ```
-![zh-cn_image_000000127777778](figures/zh-cn_image_000000127777778.png) 
+![Dotted-circle-01](figures/Dotted-circle-01.png) 
 
 
 
@@ -4332,7 +4332,7 @@ restore(): void
     }
   }
   ```
-![zh-cn_image_000000127777781](figures/zh-cn_image_000000127777781.png) 
+![Yellow-with-green-and-black](figures/Yellow-with-green-and-black.png) 
 
 
 ### save
@@ -4380,7 +4380,7 @@ save(): void
     }
   }
   ```
-![zh-cn_image_000000127777781](figures/zh-cn_image_000000127777781.png) 
+![Yellow-with-green-and-black](figures/Yellow-with-green-and-black.png) 
 
 
 ### createLinearGradient

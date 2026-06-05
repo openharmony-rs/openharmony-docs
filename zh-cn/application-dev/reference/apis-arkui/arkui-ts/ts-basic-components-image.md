@@ -1222,7 +1222,7 @@ struct ImageExample1 {
 }
 ```
 
-![zh-cn_image_0000001592882500](figures/zh-cn_image_0000001592882500.gif)
+![Image-with-gif-png-jpg-svg](figures/Image-with-gif-png-jpg-svg.gif)
 
 ### 示例2（下载与显示静态网络图片）
 
@@ -1369,7 +1369,7 @@ struct ImageExample3 {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/zh-cn_image_0000001607845173.gif)
+![Dyn-sky](figures/Dyn-sky.gif)
 
 ### 示例5（开启图像AI分析）
 

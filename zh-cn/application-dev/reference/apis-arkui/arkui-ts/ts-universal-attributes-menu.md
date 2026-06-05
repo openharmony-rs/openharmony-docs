@@ -754,7 +754,7 @@ struct DirectiveMenuExample {
 }
 ```
 
-![zh-cn_image_0000001689126950](figures/zh-cn_image_0000001689126950.png)
+![DirectiveMenuExample](figures/DirectiveMenuExample.png)
 
 ### 示例5（长按弹出菜单的截图预览样式）
 
