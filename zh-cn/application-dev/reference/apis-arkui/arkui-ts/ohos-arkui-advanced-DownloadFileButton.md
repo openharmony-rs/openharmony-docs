@@ -5,7 +5,7 @@
 <!--Owner: @yaoyao1798--> 
 <!--Designer: @yaoyao1798-->  
 <!--Tester: @yangjiayong2686--> 
-<!--Adviser: @yaoyao1798-->
+<!--Adviser: @Brilliantry_Rui-->
 
 下载文件按钮，通过点击该下载按钮，可以获取到当前应用在Download公共目录中所属的存储路径。
 
@@ -31,6 +31,8 @@ import { DownloadFileButton } from '@kit.ArkUI';
 支持[通用属性](ts-component-general-attributes.md)。
 
 ## DownloadFileButton
+
+DownloadFileButton{( contentOptions: DownloadContentOptions, styleOptions: DownloadStyleOptions )}
 
 下载文件按钮组件，默认显示图标和文字。
 
