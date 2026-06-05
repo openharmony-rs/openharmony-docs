@@ -31,7 +31,7 @@
 认证控件的样式如图所示，通过[WidgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10)配置对应参数。
 
 <!--RP1-->
-![zh-cn_image_0000001789150921](figures/zh-cn_image_0000001789150921.png)
+![unified-UI-component-authentication](figures/unified-UI-component-authentication.png)
 <!--RP1End-->
 
 - 标注1：用户认证界面的标题（WidgetParam.title），不支持传空字串，最大长度为500字符。应用可在此配置符合场景的字符串，建议传入认证目的，例如用于支付、登录应用等。
