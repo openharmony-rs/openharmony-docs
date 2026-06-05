@@ -12,9 +12,9 @@
 
 ### 工作模式：
 
-- **[固定摆位模式](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderpositionparams)**：将音频源固定在三维空间的指定位置
--  **[旋转模式](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderrotationparams)**：让音频源在三维空间中按照设定的轨迹旋转环绕
-- **[扩展模式](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_setspacerenderpositionparams)**：将音频源扩展为一定范围内的空间区域
+- **[固定摆位模式](audio-suite-space-render.md#固定摆位模式)**：将音频源固定在三维空间的指定位置
+-  **[旋转模式](audio-suite-space-render.md#旋转模式)**：让音频源在三维空间中按照设定的轨迹旋转环绕
+- **[扩展模式](audio-suite-space-render.md#扩展模式)**：将音频源扩展为一定范围内的空间区域
 
 ### 坐标系说明
 
