@@ -13818,5 +13818,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-user-defined-arktsNode-frameNode.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeCanvas.ets",
+				"functions":[
+					{
+						"end_line":169,
+						"name":"frameNodeCanvas_start_sta",
+						"start_line":18
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-user-defined-extension-drawModifier.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/samples/DrawFrontDrawContentDrawBehind.ets",
+				"functions":[
+					{
+						"end_line":230,
+						"name":"drawFront_drawContent_drawBehind_start_sta",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/samples/DrawForeground.ets",
+				"functions":[
+					{
+						"end_line":78,
+						"name":"drawForeground_start_sta",
+						"start_line":17
+					}
+				]
+			}
+		]
 	}
 ]
