@@ -14,7 +14,7 @@
 
 1. **判断业务是否需要高像素原图**。当用于列表、封面、聊天消息、分享预览等场景时，优先使用降采样图或缩略图。
 2. **以最终获取到的文件为准**。通过PhotoPicker、URI或媒体库接口获取图片后，应重新读取真实宽高、编码格式和元数据，不要仅依赖文件名、URI后缀或设备型号获取图像信息。
-3. **解码时控制输出规模**。根据显示尺寸设置[desiredSize](../image/image-region-and-downsampling-c.md)，根据可视区域设置[desiredRegion](../image/image-region-and-downsampling.md)，根据业务链路设置[desiredPixelFormat](../image/image-allocator-type.md#rgba_8888和yuv格式的区别)。
+3. **解码时控制输出规模**。根据显示尺寸设置desiredSize，根据可视区域设置desiredRegion，根据业务链路设置desiredPixelFormat。
 4. **及时释放图片资源**。图片占用内存较大，切换图片、重新解码或页面销毁时应释放不再使用的PixelMap或ImageSource。
 
 ## 常见问题
