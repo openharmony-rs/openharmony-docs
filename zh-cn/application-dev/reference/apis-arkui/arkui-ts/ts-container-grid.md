@@ -730,13 +730,13 @@ onScrollIndex(event: (first: number, last: number) => void)
 
 onItemDragStart(event: OnItemDragStartCallback)
 
-开始拖拽网格元素时触发。
+开始拖拽GridItem时触发。
 
 手指长按GridItem时触发该事件。
 
 由于拖拽检测也需要长按，且事件处理机制优先触发子组件事件，GridItem上绑定[LongPressGesture](ts-basic-gestures-longpressgesture.md#longpressgesture-1)时无法触发拖拽。如有长按和拖拽同时使用的需求可以使用通用拖拽事件。
 
-拖拽浮起的网格元素可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](#示例16实现griditem自定义拖拽)。
+拖拽浮起的GridItem可在应用窗口内移动，若需限制移动范围，可通过自定义手势实现，具体参考[示例16（实现GridItem自定义拖拽）](#示例16实现griditem自定义拖拽)。
 
 不支持拖动到Grid边缘时自动滚动，可使用通用拖拽实现，具体参考[示例17（通过拖拽事件实现griditem拖拽）](#示例17通过拖拽事件实现griditem拖拽)。
 
@@ -748,13 +748,13 @@ onItemDragStart(event: OnItemDragStartCallback)
 
 | 参数名    | 类型                                  | 必填 | 说明                   |
 | --------- | ------------------------------------- | ---- | ---------------------- |
-| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | 是   | 网格元素拖拽开始时触发的回调。<br>API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) => (() => any) \| void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23)。 |
+| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | 是   | GridItem拖拽开始时触发的回调。<br>API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) => (() => any) \| void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23)。 |
 
 ### onItemDragEnter<sup>8+</sup>
 
 onItemDragEnter(event: (event: ItemDragInfo) => void)
 
-拖拽进入网格元素范围内时触发。
+拖拽进入GridItem范围内时触发。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -770,7 +770,7 @@ onItemDragEnter(event: (event: ItemDragInfo) => void)
 
 onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number) => void)
 
-拖拽在网格元素范围内移动时触发。
+拖拽在GridItem范围内移动时触发。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -788,7 +788,7 @@ onItemDragMove(event: (event: ItemDragInfo, itemIndex: number, insertIndex: numb
 
 onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
 
-拖拽离开网格元素时触发。
+拖拽离开GridItem时触发。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -799,15 +799,15 @@ onItemDragLeave(event: (event: ItemDragInfo, itemIndex: number) => void)
 | 参数名    | 类型                                  | 必填 | 说明                       |
 | --------- | ------------------------------------- | ---- | -------------------------- |
 | event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。             |
-| itemIndex | number                                | 是   | 拖拽离开的网格元素索引值。 |
+| itemIndex | number                                | 是   | 拖拽离开的GridItem索引值。 |
 
 ### onItemDrop<sup>8+</sup>
 
 onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, isSuccess: boolean) => void)
 
-绑定该事件的网格元素可作为拖拽释放目标，当GridItem停止拖拽时触发。
+绑定该事件的GridItem可作为拖拽释放目标，当GridItem停止拖拽时触发。
 
-当拖拽释放位置在网格元素之内时，isSuccess会返回true；在网格元素之外时，isSuccess会返回false。
+当拖拽释放位置在GridItem之内时，isSuccess会返回true；在GridItem之外时，isSuccess会返回false。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -820,7 +820,7 @@ onItemDrop(event: (event: ItemDragInfo, itemIndex: number, insertIndex: number, 
 | event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
 | itemIndex   | number                                | 是   | 拖拽起始位置。 |
 | insertIndex | number                                | 是   | 拖拽插入位置。 |
-| isSuccess   | boolean                               | 是   | 拖拽释放位置是否在设置了onItemDrop的网格元素之内。<br/>true：表示拖拽释放位置在设置了onItemDrop的网格元素之内；false：表示拖拽释放位置在设置了onItemDrop的网格元素之外。  |
+| isSuccess   | boolean                               | 是   | 拖拽释放位置是否在设置了onItemDrop的GridItem之内。<br/>true：表示拖拽释放位置在设置了onItemDrop的GridItem之内；false：表示拖拽释放位置在设置了onItemDrop的GridItem之外。  |
 
 ### onScrollBarUpdate<sup>10+</sup>
 
@@ -3124,7 +3124,7 @@ struct GridExample {
 
 ### 示例20（设置多选聚拢动画）
 
-该示例通过打开Grid多选聚拢动画开关，实现了通过[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)在GridItem上长按弹出菜单时聚拢显示范围内被选中的GridItem。
+该示例通过打开Grid多选聚拢动画开关，实现了在GridItem上长按弹出菜单时，通过[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)聚拢显示范围内被选中的GridItem的效果。
 
 从API version 23开始，Grid组件新增[editModeOptions](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
 
