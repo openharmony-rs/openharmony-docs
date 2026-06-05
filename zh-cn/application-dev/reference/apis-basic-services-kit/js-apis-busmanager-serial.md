@@ -538,13 +538,13 @@ setDtr(enable: boolean): Promise&lt;void&gt;
 
 | 参数名 | 类型     | 必填 | 说明                                       |
 | ------ | -------- | ---- | ------------------------------------------ |
-| enable | boolean  | 是   | DTR信号状态，true表示数据终端就绪，false表示数据终端未就绪。 |
+| enable | boolean  | 是   | DTR信号状态，true表示数据终端就绪；false表示数据终端未就绪。 |
 
 **返回值：**
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回值结果。 |
 
 **错误码：**
 
@@ -585,7 +585,7 @@ getDsr(): Promise&lt;boolean&gt;
 
 | 类型                     | 说明                                             |
 | ------------------------ | ------------------------------------------------ |
-| Promise&lt;boolean&gt;   | Promise对象，返回DSR信号状态，返回true表示数据设备就绪，返回false表示数据设备未就绪。 |
+| Promise&lt;boolean&gt;   | Promise对象，返回DSR信号状态；true表示数据设备就绪；false表示数据设备未就绪。 |
 
 **错误码：**
 

@@ -7,7 +7,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-## 简介
+## 场景介绍
 
 串口通信模块（`@ohos.busManager.serial`）提供面向对象的串口管理能力，支持获取设备可用串口列表、打开/关闭串口、数据读写、硬件信号控制（RTS/CTS、DTR/DSR）、断开事件监听以及流控配置等功能。该模块适用于工业自动化、物联网设备互联、嵌入式设备调试、GPS模块通信等需要通过串口进行数据交换的场景。
 
@@ -239,7 +239,7 @@
 
 7. 硬件信号控制。
 
-   * 设置RTS信号为高电平
+   * 设置RTS信号为高电平。
 
      <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
@@ -257,7 +257,7 @@
      }
      ```
 
-   * 获取CTS信号状态
+   * 获取CTS信号状态。
 
      <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
@@ -275,7 +275,7 @@
      }
      ```
 
-   * 发送break信号
+   * 发送break信号。
 
      <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
@@ -293,7 +293,7 @@
      }
      ```
 
-   * 设置DTR信号为高电平
+   * 设置DTR信号为高电平。
 
      <!-- @[setDtr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
@@ -311,7 +311,7 @@
      }
      ```
 
-   * 获取DSR信号状态
+   * 获取DSR信号状态。
 
      <!-- @[getDsr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
