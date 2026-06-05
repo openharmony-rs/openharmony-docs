@@ -226,7 +226,7 @@ import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeD
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| timeout | number | 否   | 是   | 监听超时时间，取值范围：大于等于0的整数，默认值为10000，单位：ms。      |
+| timeout | number | 否   | 是   | 监听超时时间，取值范围：大于等于0的整数，默认值为10000，单位：ms。传入负数时抛出17000007错误码。 |
 | on       | [On](#on9) | 否   | 是   | 监听目标控件的属性要求，默认监听所有控件。<br> **说明：** 仅支持监听指定属性要求的控件，不支持监听指定On.isBefore、On.isAfter、On.within等相对位置的控件。       |
 
 ## UIElementInfo<sup>10+</sup>
@@ -882,7 +882,7 @@ checkable(b?: boolean): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2 Parameter verification failed. |
 
 **示例：**
 
@@ -5934,7 +5934,7 @@ isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promis
 
 | 类型             | 说明              |
 |----------------|-----------------|
-| Promise\<boolean> | Promise对象。返回长按操作期间目标控件是否存在。true：存在。false：不存在 |
+| Promise\<boolean> | Promise对象。返回长按操作期间目标控件是否存在。true：存在；false：不存在。 |
 
 **错误码：**
 
