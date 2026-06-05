@@ -48,7 +48,7 @@
 
 样例CRL文件：
 
-![sample-cRL-file](figures/sample-cRL-file.png)
+![sample-CRL-file](figures/sample-CRL-file.png)
 
 ## 约束与限制
 
