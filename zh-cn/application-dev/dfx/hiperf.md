@@ -298,7 +298,7 @@ Supported events for hardware:
 | --pipe_output | 在设备开发中，该参数用于客户端进程调用hiperf时建立响应输出通道，开发者可参考[hiperf_client接口](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，无需使用该参数。 |
 | --append-smo-data | 开启此参数后增加打包的so中原始so的名称。<br>**说明**：从API version 23开始，支持该参数。|
 | --add-counter | 采集该参数指定事件的性能计数器值，多个事件以逗号分隔。该参数必须和--no-inherit一起使用。<br>**说明**：从API版本26.0.0开始，支持该参数。|
-| --raw-data | 采集trace event的rawData数据，当前仅tracepoint事件能够采集到rawData数据。<br>**说明**：从API版本26.0.0开始，支持该参数。|
+| --raw-data | 采集trace事件的rawData数据，当前仅tracepoint事件能够采集到rawData数据。<br>**说明**：从API版本26.0.0开始，支持该参数。|
 <!--RP1End-->
 
 **命令行示例**：
