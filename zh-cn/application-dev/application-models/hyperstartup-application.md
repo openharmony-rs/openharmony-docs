@@ -10,7 +10,7 @@
 
 随着应用功能不断丰富，启动阶段往往需要完成进程创建、运行时初始化、模块加载、资源解析、首屏构建等一系列操作。当冷启动链路较长或启动阶段资源、模块加载占比较高时，用户可感知到首屏等待时间变长，进而影响应用体验和留存表现。
 
-从 API version 24 开始，系统提供应用快启机制。该机制通过提前完成启动阶段中可复用流程的初始化工作，在用户再次启动应用时，复用相关启动初始化结果，减少重复初始化和加载开销，缩短启动链路耗时，有助于提升应用启动速度和稳定性。
+从API version 24开始，系统提供应用快启机制。该机制通过提前完成启动阶段中可复用流程的初始化工作，在用户再次启动应用时，复用相关启动初始化结果，减少重复初始化和加载开销，缩短启动链路耗时，有助于提升应用启动速度和稳定性。
 
 应用快启机制的特点：
 
@@ -20,8 +20,8 @@
 
 开发者可以从以下维度判断应用是否适合接入快启能力：
 
-1. 应用冷启动性能较差，启动时延高于1.6s，或已存在启动体验相关舆情问题。
-2. 资源加载、模块加载在启动过程中的耗时占比超过25%。
+- 应用冷启动性能较差，启动时延高于1.6s，或已存在启动体验相关舆情问题。
+- 资源加载、模块加载在启动过程中的耗时占比超过25%。
 
 ## 基本概念
 
@@ -34,18 +34,16 @@
 * 快启风险操作：不适合在快启初始化过程中执行的操作，例如依赖磁盘数据实时读取、注册需要持续响应的事件监听、建立长时网络连接、执行有状态的进程间通信等。此类操作需要后置到快启点之外，或在快启启动后的回调中重新同步。
 
 ## 约束限制
-
+* 当前仅支持手机设备。
 * 在开发者模式下，使用debug签名的应用不受系统侧管控限制，开发者可自主进行快启特性的接入、调试与本地测试。
-* 应用接入快启后，会占用一定资源。因此，每个用户同时生效的快启启动应用有限，系统会根据用户偏好动态启用。
-* 接入快启的应用会对资源产生占用，为防止资源滥用，系统会管控接入的应用。因此开发者需要和系统侧对接，完成测试后发布上线。
+<!--RP1--><!--RP1End-->
+* 应用配置快启后，实际是否进行快启以及具体的快启时机，均由系统根据用户习惯等信息来综合决定。开发者无法对此进行干预。
 
 ## 实现原理
 
 快启技术会提前完成启动流程中可复用部分的初始化工作。应用启动时，可复用相关初始化结果，从而跳过这部分启动流程，达到启动加速的目标。如下图所示，快启启动相较于普通启动可跳过启动过程中的部分阶段，从而减少启动时延：
 
 ![image](./figures/hyperstartup-application-process.png)
-
-**快启覆盖的启动流程**
 
 包含在快启点内的流程有：AbilityStage模块加载、[AbilityStage.onCreate](/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)和UIAbility模块加载。其中，在[模块加载](/zh-cn/application-dev/arkts-utils/arkts-module-side-effects.md)过程中将执行部分代码，包括顶层代码（top level）、so的constructor和类静态变量初始化等。
 
@@ -55,14 +53,14 @@
 
 | 接口名 | 功能描述 |
 | --- | --- |
-| [onLaunchFromHyperSnap](/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onlaunchfromhypersnap24) | 生命周期回调接口，仅在快启启动时，系统会回调该接口执行 |
-| [onAboutToCreateAbility](/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24) | 生命周期回调接口，在AbilityStage创建第一个Ability前回调，普通启动和快启启动都会执行该回调 |
-| [setHyperSnapEnabled](/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagersethypersnapenabled) | 普通调用接口，用于设置快启能力开启或关闭。设置关闭时会立即清理快启相关初始化结果；设置开启时，系统会择机完成快启初始化，并在后续启动时生效快启启动 |
-| [requestRebuildHyperSnap](/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagerrequestrebuildhypersnap) | 普通调用接口，用于请求重新完成一次快启初始化 |
+| [onLaunchFromHyperSnap](/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onlaunchfromhypersnap24) | 生命周期回调接口，仅在快启启动时，系统会回调该接口执行。 |
+| [onAboutToCreateAbility](/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24) | 生命周期回调接口，在AbilityStage创建第一个Ability前回调，普通启动和快启启动都会执行该回调。 |
+| [setHyperSnapEnabled](/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagersethypersnapenabled) | 普通调用接口，用于设置快启能力开启或关闭。设置关闭时会立即清理快启相关初始化结果；设置开启时，系统会择机完成快启初始化，并在后续启动时生效快启启动。 |
+| [requestRebuildHyperSnap](/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagerrequestrebuildhypersnap) | 普通调用接口，用于请求重新完成一次快启初始化。 |
 
-## 快启启动适配说明
+## 快启启动适配
 
-### 快启风险操作说明
+### 快启风险操作
 
 快启启动会跳过部分启动流程。为了保证数据一致性和状态正确，开发者需要消除快启初始化流程中的风险操作，才能保障快启启动后应用数据的正确性。
 
@@ -94,7 +92,7 @@
 
 系统为开发者提供了新的回调接口AbilityStage.onAboutToCreateAbility。该接口在AbilityStage.onCreate()执行完毕后触发，但不参与快启初始化过程。无论是否开启应用快启功能，该回调均会被调用。
 
-**示例1：**AbilityStage.onCreate中存在快启风险操作。
+**示例1：** AbilityStage.onCreate中存在快启风险操作。
 
 ```
 export class AppAbilityStage extends AbilityStage {
@@ -123,7 +121,7 @@ export class AppAbilityStage extends AbilityStage {
 
 3. AbilityStage.onCreate()是首个包含较多业务逻辑的生命周期回调。若该回调中的业务不易拆分，建议开发者在首次适配时，将AbilityStage.onCreate()的内容整体移至AbilityStage.onAboutToCreateAbility()。后续可通过业务前移扩大收益。
 
-**示例2：**顶层代码中存在快启风险操作。
+**示例2：** 顶层代码中存在快启风险操作。
 
 以下示例在顶层代码中实例化类，并最终导致文件访问：
 
@@ -147,7 +145,7 @@ let tmp = new ClassA();
 
 2. 具体到快启启动特性，系统要求应用模块不可以在顶层代码执行快启风险操作，而是要根据业务逻辑调整到生命周期回调中执行。
 
-**示例3：**C++的构造函数中存在快启风险操作。
+**示例3：** C++的构造函数中存在快启风险操作。
 
 ```
 static napi_module OpenPlatformModule = {
@@ -176,7 +174,7 @@ extern "C" __attribute__((constructor)) void RegisterOpenPlatformModule(void) {
 
 2. 存在风险操作constructor的so，需要放到UIAbility等快启点之外的生命周期中调用。
 
-**示例4：**类静态变量初始化中存在快启风险操作。
+**示例4：** 类静态变量初始化中存在快启风险操作。
 
 以下示例中存在两类静态初始化：一是静态变量初始化，会读取文件；二是静态代码块执行，会进行网络访问。
 
@@ -196,9 +194,7 @@ export class AppAbilityStage extends AbilityStage {
 }
 ```
 
-建议：
-
-根据业务逻辑进行调整，将快启风险操作移出快启点。
+建议：根据业务逻辑进行调整，将快启风险操作移出快启点。
 
 ### 在更新回调接口中更新数据
 
@@ -307,41 +303,41 @@ export class LauncherAbility extends UIAbility {
 纳入快启点的启动逻辑越多，快启收益通常越明显。
 开发者可以对整个启动流程进行梳理和分析，将适合纳入快启点的启动逻辑（即不含快启风险操作），在保障业务逻辑正确性的条件下前置到快启点内，扩大应用快启技术提升启动性能的收益。
 
-### 将启动过程中的时序无关且无快启风险操作的逻辑前置到快启点内
+* **将启动过程中的时序无关且无快启风险操作的逻辑前置到快启点内**
 
-* 如果存在可前置且无时序依赖的任务，建议评估是否将其放到快启点内以扩大收益。同时，需要确保该任务不会引入快启风险操作。
+  如果存在可前置且无时序依赖的任务，建议评估是否将其放到快启点内以扩大收益。同时，需要确保该任务不会引入快启风险操作。
 
-### 将启动过程中的加载依赖库逻辑前置到快启点内
+* **将启动过程中的加载依赖库逻辑前置到快启点内**
 
-import动作前置存在适用范围，系统建议将冷启动过程中的import动作尽可能放到快启初始化流程内，以扩大收益。如下图所示，通过trace工具扫描关键词“Evaluate”，获取启动过程中的import动作。
+  import动作前置存在适用范围，系统建议将冷启动过程中的import动作尽可能放到快启初始化流程内，以扩大收益。如下图所示，通过trace工具扫描关键词“Evaluate”，获取启动过程中的import动作。
 
-![image](./figures/hyperstartup-application-file-import.png)
+  ![image](./figures/hyperstartup-application-file-import.png)
 
-不建议将启动后的import动作前置到启动流程甚至快启初始化流程中，否则可能导致以下问题。
+  不建议将启动后的import动作前置到启动流程甚至快启初始化流程中，否则可能导致以下问题。
 
-（1）劣化普通冷启动性能。
+  （1）劣化普通冷启动性能。
 
-（2）导致启动流程的资源占用不必要地增加。
+  （2）导致启动流程的资源占用不必要地增加。
 
-建议采用动态import的方式在AbilityStage.onCreate中执行import动作。
+  建议采用动态import的方式在AbilityStage.onCreate中执行import动作。
 
-```
-export class AppAbilityStage extends AbilityStage {
-	onCreate() {
-		...
-		this.preLoadKit();
-		...
-	}
+  ```
+  export class AppAbilityStage extends AbilityStage {
+    onCreate() {
+      ...
+      this.preLoadKit();
+      ...
+    }
 
-	async preLoadKit() {
-		await import('@ohos/common/src/..../1');
-		await import('@ohos/common/src/..../2');
-		...
-		await import('@ohos/common/src/..../N');
-	}
-}
+    async preLoadKit() {
+      await import('@ohos/common/src/..../1');
+      await import('@ohos/common/src/..../2');
+      ...
+      await import('@ohos/common/src/..../N');
+    }
+  }
 
-```
+  ```
 
 ## 快启接入的辅助工具
 
