@@ -71,6 +71,16 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 1.  创建引擎和管线。
 
    <!-- @[audioSuite_CreateSpaceRenderRotationEngineAndPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
+   
+   ``` C++
+   // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
+   // 创建引擎。
+   OH_AudioSuiteEngine_Create(&g_audioSuiteEngine);
+   
+   // 创建实时播放空间渲染的管线。
+   OH_AudioSuiteEngine_CreatePipeline(g_audioSuiteEngine, &g_audioSuitePipeline,
+                                      OH_AudioSuite_PipelineWorkMode::AUDIOSUITE_PIPELINE_REALTIME_MODE);
+   ```
 
 2. 创建输入、输出、空间渲染等节点并连接组网。
 
