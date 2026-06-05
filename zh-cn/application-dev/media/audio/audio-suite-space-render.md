@@ -83,6 +83,28 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 3. 在播放器的回调函数中，将处理后的数据复制到OH_AudioRenderer实例的缓冲区中，实现音频播放过程中实时预览。
 
    <!-- @[audioSuite_SpaceRenderRotationAudioRendererOnWriteData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
+   
+   ``` C++
+   // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
+   static OH_AudioData_Callback_Result AudioRendererOnWriteData(OH_AudioRenderer *renderer, void *userData,
+                                                                void *audioData, int32_t audioDataSize)
+   {
+       bool finishedFlag = false;
+       int32_t writeSize = 0;
+       OH_AudioSuite_Result result = OH_AudioSuiteEngine_RenderFrame(static_cast<OH_AudioSuitePipeline *>(userData),
+                                                                     audioData, audioDataSize, &writeSize, &finishedFlag);
+       if (result != OH_AudioSuite_Result::AUDIOSUITE_SUCCESS) {
+           // 音频编创渲染失败。
+           return AUDIO_DATA_CALLBACK_RESULT_INVALID;
+       }
+       // 音频编创渲染完成。
+       if (finishedFlag) {
+           // 开发者自定义的行为。
+       }
+   
+       return AUDIO_DATA_CALLBACK_RESULT_VALID;
+   }
+   ```
    <!-- @[audioSuite_StartSpaceRenderRotationPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/space_render_rotation.cpp) -->
    
    ``` C++
