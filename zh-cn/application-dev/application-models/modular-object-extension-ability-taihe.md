@@ -61,7 +61,8 @@ example/Easy.ohidl
 **文件示例**
 
 <!-- @[example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampletwo/ITestInterface.ohidl) -->
-```ohidl
+
+``` 
 @!namespace("OHOS", "IPC")
 
 interface ICalculator {
