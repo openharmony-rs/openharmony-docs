@@ -439,32 +439,6 @@ try {
 }
 ```
 
-ArkTS-Sta示例：
-
-```ts
-import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
-  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
-  },
-  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
-  },
-  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
-  }
-} as backgroundTaskManager.BackgroundTaskSubscriber
-
-try {
-  backgroundTaskManager.subscribeContinuousTaskState(this.backgroundTaskSubscriber);
-  console.info('Operation subscribeContinuousTaskState succeeded');
-} catch (error) {
-  console.error(`Operation subscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-}
-```
-
 ## backgroundTaskManager.unsubscribeContinuousTaskState<sup>23+</sup>
 
 unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
