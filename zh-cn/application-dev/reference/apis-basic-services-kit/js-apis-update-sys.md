@@ -2230,7 +2230,7 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息，用于指定要监听的升级事件类型。详见EventClassifyInfo定义。 |
-| taskCallback | [UpgradeTaskCallback<sup>23+</sup>](#upgradetaskcallback23) | 是    | 事件回调，用于处理升级任务事件。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId（事件ID）和taskBody（任务数据）字段。|
+| taskCallback | [UpgradeTaskCallback](#upgradetaskcallback) | 是    | 事件回调，用于处理升级任务事件。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId（事件ID）和taskBody（任务数据）字段。|
 
 **错误码**：
 
@@ -2288,7 +2288,7 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息，包含事件类型，用于指定要取消监听的升级事件类型。对象包含eventClassify(事件类型)和extraInfo(额外信息)字段，需根据监听的类型构造。注意事项：通常传入空字符串即可（表示无额外信息）。当需要传递自定义扩展数据或业务标识时，可传入非空字符串。 |
-| taskCallback | [UpgradeTaskCallback<sup>23+</sup>](#upgradetaskcallback23) | 否    | 事件回调。用于处理升级任务事件。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId（事件ID）和taskBody（任务数据）字段。当需要取消特定回调监听时传入此参数，不传入时取消该事件类型的所有监听。 |
+| taskCallback | [UpgradeTaskCallback](#upgradetaskcallback) | 否    | 事件回调。用于处理升级任务事件。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId（事件ID）和taskBody（任务数据）字段。当需要取消特定回调监听时传入此参数，不传入时取消该事件类型的所有监听。 |
 
 **错误码**：
 
@@ -2980,7 +2980,7 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是    | 事件信息，用于指定要监听的升级事件类型。详见EventClassifyInfo定义。 |
-| taskCallback | [UpgradeTaskCallback<sup>23+</sup>](#upgradetaskcallback23) | 是    | 事件回调，用于接收升级任务事件通知。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId（事件ID）和taskBody（任务数据）字段。|
+| taskCallback | [UpgradeTaskCallback](#upgradetaskcallback) | 是    | 事件回调，用于接收升级任务事件通知。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId（事件ID）和taskBody（任务数据）字段。|
 
 **错误码**：
 
@@ -3036,7 +3036,7 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 | 参数名               | 类型                                       | 必填   | 说明   |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | 是   | 事件信息对象，用于指定要取消监听的升级事件类型。详见EventClassifyInfo定义。 |
-| taskCallback | [UpgradeTaskCallback](#upgradetaskcallback23) | 否    | 事件回调，用于取消指定回调监听。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId和taskBody字段。当需要取消特定回调监听时传入此参数，不传入时取消该事件类型的所有监听。 |
+| taskCallback | [UpgradeTaskCallback](#upgradetaskcallback) | 否    | 事件回调，用于取消指定回调监听。回调签名：(eventInfo: EventInfo) => void，其中eventInfo为事件信息对象，包含eventId和taskBody字段。当需要取消特定回调监听时传入此参数，不传入时取消该事件类型的所有监听。 |
 
 **错误码**：
 
@@ -3384,7 +3384,7 @@ try {
 | fileType | [ComponentType](#componenttype) | 只读:否, 可选:否 | 文件类型，用于指定升级包类型。可选值：OTA（OTA升级包）。 |
 | filePath | string                          | 只读:否, 可选:否 | 文件路径，支持绝对路径或相对路径。取值原则：路径长度范围1-255字符，文件必须为有效的升级包文件格式。超出范围时抛出异常。 |
 
-## FactoryResetStrategy<sup>26+</sup>
+## FactoryResetStrategy
 
 恢复出厂设置策略，包含scope(重置范围)和strategy(重置策略描述)字段。
 
@@ -3401,7 +3401,7 @@ try {
 | scope | [FactoryResetScope](#factoryresetscope) | 只读:否, 可选:否 | 重置范围。DATA仅清除用户数据分区；DATA_AND_OS同时清除用户数据分区和操作系统分区，恢复更彻底。 |
 | strategy | string                          | 只读:否, 可选:否 | 重置策略，用于记录重置操作的具体策略信息。为重置操作的自定义描述文本，如quick erase表示快速擦除、deep erase表示深度擦除等。使用场景：在执行深度恢复出厂设置时填写此字段，用于标识重置操作的原因（如设备报废、数据销毁）或擦除方式，便于后续审计和追踪。 |
 
-## FactoryResetInfo<sup>26+</sup>
+## FactoryResetInfo
 
 恢复出厂设置信息。
 
@@ -3417,7 +3417,7 @@ try {
 | ------------ | ----------------------------- | -------- | ------ |
 | duration | int                          | 只读: 否, 可选: 否 | 恢复出厂设置所需持续时间。单位为min。取值范围[0, +∞]。|
 
-## FactoryResetScope<sup>26+</sup>
+## FactoryResetScope
 
 恢复出厂设置范围。
 
@@ -3434,7 +3434,7 @@ try {
 | DATA | 1    | 用户数据。|
 | DATA_AND_OS | 2    | 用户数据和操作系统。|
 
-## UpgradeTaskCallback<sup>23+</sup>
+## UpgradeTaskCallback
 
 type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
