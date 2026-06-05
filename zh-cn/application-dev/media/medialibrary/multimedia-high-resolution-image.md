@@ -354,9 +354,9 @@ static bool IsHighPixelImage(int32_t fd)
 
 | 解码像素格式 | 适用场景 | 内存估算（受硬件对齐影响，实际内存占用可能更高） |
 | --- | --- | --- |
-| `image.PixelMapFormat.RGBA_8888` | 通用显示、编辑，或需要透明通道与高色彩精度的场景。 | 约4字节/像素 |
-| `image.PixelMapFormat.RGB_565` | 无透明通道需求且色彩精度要求较低的预览、缩略图、列表图片等场景。 | 约2字节/像素 |
-| `image.PixelMapFormat.NV21`、`image.PixelMapFormat.NV12` | 无透明通道需求，且后续需接入相机、视频、算法或硬件编解码等 YUV 处理链路的场景。 | 约2字节/像素 |
+| `image.PixelMapFormat.RGBA_8888` | 通用显示、编辑，或需要透明通道与高色彩精度的场景。 | 约4字节/像素。 |
+| `image.PixelMapFormat.RGB_565` | 无透明通道需求且色彩精度要求较低的预览、缩略图、列表图片等场景。 | 约2字节/像素。 |
+| `image.PixelMapFormat.NV21`、`image.PixelMapFormat.NV12` | 无透明通道需求，且后续需接入相机、视频、算法或硬件编解码等 YUV 处理链路的场景。 | 约2字节/像素。 |
 
 **处理方式**
 
