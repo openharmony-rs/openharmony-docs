@@ -389,7 +389,7 @@ const decodingOptions: image.DecodingOptions = {
 5. 区域解码会释放不再显示的区域图像，避免缓存过多PixelMap对象。
 6. （可选）如果业务需要控制内存或接入特定处理链路，可同时设置`desiredPixelFormat`。
 
-降采样解码与区域解码示例参考[图片区域解码与下采样(C/C++)](../image/image-region-and-downsampling-c.md)或[图片区域解码与下采样(ArkTS)](../image/image-region-and-downsampling.md)。
+降采样解码与区域解码示例请参考[图片区域解码与下采样(C/C++)](../image/image-region-and-downsampling-c.md)或[图片区域解码与下采样(ArkTS)](../image/image-region-and-downsampling.md)。
 
 ## 高像素图片处理总结
 
