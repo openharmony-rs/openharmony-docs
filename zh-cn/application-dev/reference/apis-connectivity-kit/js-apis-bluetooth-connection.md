@@ -2053,7 +2053,7 @@ onAclStateChange(callback: Callback&lt;AclStateResult&gt;): void
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.<br>Failed to call the API when the short-range chip is not inserted on 2in1 device.       |
-|2900099 | Operation failed.<br>For example, IPC error. Detailed error messages can be used to assist in locating the problem.              |
+|2900099 | Internal system error.<br>For example, IPC error. Detailed error messages can be used to assist in locating the problem.              |
 
 **示例：**
 
@@ -2096,7 +2096,7 @@ offAclStateChange(callback?: Callback&lt;AclStateResult&gt;): void
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.<br>Failed to call the API when the short-range chip is not inserted on 2in1 device.|
-|2900099 | Operation failed.<br>For example, IPC error. Detailed error messages can be used to assist in locating the problem.                        |
+|2900099 | Internal system error.<br>For example, IPC error. Detailed error messages can be used to assist in locating the problem.                        |
 
 **示例：**
 
