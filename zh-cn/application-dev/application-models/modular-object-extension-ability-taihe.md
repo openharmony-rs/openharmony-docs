@@ -144,15 +144,16 @@ interface ITestCallbackService {
 ## 开发步骤
 
 1. 创建example文件夹，在example文件夹下新建Easy.ohidl文件。
-
 <!-- @[easy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/example/Easy.ohidl) -->
-```ohidl
+
+``` 
 @!namespace("OHOS", "IPC")
 
 @main_service(version = "1.0.0")
 interface ICalculator {
     Add(a: i32, b: i32): i32;
 }
+```
 ```
 
 2. 使用taihec命令生成代码
