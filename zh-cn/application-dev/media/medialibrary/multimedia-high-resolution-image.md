@@ -273,7 +273,7 @@ function isHighPixelImage(fd: number): boolean {
 }
 ```
 
-**C/C++示例**
+**示例（C/C++）：**
 
 在`target_link_libraries`依赖中添加`libimage_source.so`。
 
