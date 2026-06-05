@@ -143,13 +143,7 @@ import { backup } from '@kit.CoreFileKit';
 
 文件迁移的路径信息。
 
-**起始版本：** 26.0.0
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
-
-**系统接口**：此接口为系统接口。
 
 | 名称       | 类型   | 只读 | 可选 | 说明                                     |
 | ---------- | ------ | ---- | --- | ---------------------------------------- |
