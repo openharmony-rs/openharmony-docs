@@ -394,6 +394,8 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **ArkTS-Dyn起始版本：** 23
 
+**ArkTS模式：** 本接口仅适用于ArkTs-Dyn
+
 **参数**：
 
 | 参数名     | 类型      | 必填   | 说明                    |
@@ -412,8 +414,6 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 | 9800005 | Continuous task verification failed. |
 
 **示例**：
-
-ArkTS-Dyn示例：
 
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -455,6 +455,8 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **ArkTS-Dyn起始版本：** 23
 
+**ArkTS模式：** 本接口仅适用于ArkTs-Dyn
+
 **参数**：
 
 | 参数名     | 类型      | 必填   | 说明                    |
@@ -473,8 +475,6 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 | 9800005 | Continuous task verification failed. |
 
 **示例**：
-
-ArkTS-Dyn示例：
 
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -638,6 +638,8 @@ try {
 
 **ArkTS-Dyn起始版本：** 23
 
+**ArkTS模式：** 本接口仅适用于ArkTs-Dyn
+
 ### onContinuousTaskStart<sup>23+</sup>
 
 onContinuousTaskStart(info: ContinuousTaskInfo): void
@@ -652,6 +654,8 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 
 **ArkTS-Dyn起始版本：** 23
 
+**ArkTS模式：** 本接口仅适用于ArkTs-Dyn
+
 **参数**：
 
 | 参数名  | 类型      | 必填   | 说明                |
@@ -659,8 +663,6 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 | info | [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
 
 **示例**：
-
-ArkTS-Dyn示例：
 
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -692,6 +694,8 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 
 **ArkTS-Dyn起始版本：** 23
 
+**ArkTS模式：** 本接口仅适用于ArkTs-Dyn
+
 **参数**：
 
 | 参数名  | 类型      | 必填   | 说明                |
@@ -699,8 +703,6 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 | info | [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
 
 **示例**：
-
-ArkTS-Dyn示例：
 
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -732,6 +734,8 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 
 **ArkTS-Dyn起始版本：** 23
 
+**ArkTS模式：** 本接口仅适用于ArkTs-Dyn
+
 **参数**：
 
 | 参数名  | 类型      | 必填   | 说明                |
@@ -739,8 +743,6 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 | info | [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
 
 **示例**：
-
-ArkTS-Dyn示例：
 
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
