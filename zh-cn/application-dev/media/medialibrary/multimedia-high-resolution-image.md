@@ -184,8 +184,8 @@ target_link_libraries(entry PUBLIC libimage_source.so libimage_common.so)
  *
  * 返回的字符串由调用者负责释放（使用 free()）。
  *
- * @param fd 图片文件描述符，调用者负责打开和关闭 fd。
- * @return 成功时返回动态分配的 MIME 类型字符串；失败时返回 nullptr。
+ * @param fd 图片文件描述符，调用者负责打开和关闭fd。
+ * @return 成功时返回动态分配的MIME类型字符串；失败时返回nullptr。
  */
 static char* GetImageMimeType(int32_t fd)
 {
