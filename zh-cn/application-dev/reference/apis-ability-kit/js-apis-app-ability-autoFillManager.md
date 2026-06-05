@@ -57,7 +57,7 @@ type OnFillSuccessFn = (viewData: ViewData) => void
 
 当填充请求成功时，会触发该回调。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 

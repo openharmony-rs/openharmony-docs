@@ -318,8 +318,10 @@ emit(event: string, ...args: (Object|null|undefined)[]): void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

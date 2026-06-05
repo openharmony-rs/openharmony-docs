@@ -115,7 +115,7 @@ getApplicationContext(): ApplicationContext
 
 重复调用该接口，将生成新的ApplicationContext对象。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在元服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -164,7 +164,7 @@ getApplicationContextInstance(): ApplicationContext
 
 重复调用该接口，将获取同一个ApplicationContext实例。
 
-**原子化服务API**：从API version 23开始，该接口支持在元服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

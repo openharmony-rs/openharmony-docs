@@ -172,6 +172,7 @@ let startAbilityParameter: ability.StartAbilityParameter;
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { ability } from '@kit.AbilityKit';
 
 let pacMap: ability.PacMap;

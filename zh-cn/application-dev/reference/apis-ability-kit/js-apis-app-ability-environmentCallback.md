@@ -132,6 +132,7 @@ export default class MyAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIAbility, EnvironmentCallback, Configuration, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

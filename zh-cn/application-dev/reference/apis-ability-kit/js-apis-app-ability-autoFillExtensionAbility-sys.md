@@ -127,6 +127,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager, common } from '@kit.AbilityKit';
 import { LocalStorage } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -218,6 +219,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager, common } from '@kit.AbilityKit';
 import { LocalStorage } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -413,7 +415,10 @@ onDestroy(): Promise\<void\> | undefined
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
+'use static'
 import { AutoFillExtensionAbility } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 

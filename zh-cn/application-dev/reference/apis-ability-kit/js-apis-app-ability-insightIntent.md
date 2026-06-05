@@ -91,8 +91,8 @@ import { insightIntent } from '@kit.AbilityKit';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| CALLBACK | 0 | 表示意图执行结果将由[意图执行基类](./js-apis-app-ability-insightIntentExecutor.md)中的[onExecuteInUIAbilityForegroundMode](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode)接口或[onExecuteInUIExtensionAbility](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiextensionability)接口返回。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
-| FUNCTION | 1 | 表示意图执行结果会延迟返回，直到开发者主动调用[意图提供方管理能力](./js-apis-app-ability-insightIntentProvider.md)中的[sendExecuteResult](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendexecuteresult)接口或[sendIntentResult](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendintentresult)接口返回意图执行结果。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| CALLBACK | 0 | 表示意图执行结果将由[意图执行基类](./js-apis-app-ability-insightIntentExecutor.md)中的[onExecuteInUIAbilityForegroundMode](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode)接口或[onExecuteInUIExtensionAbility](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiextensionability)接口返回。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| FUNCTION | 1 | 表示意图执行结果会延迟返回，直到开发者主动调用[意图提供方管理能力](./js-apis-app-ability-insightIntentProvider.md)中的[sendExecuteResult](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendexecuteresult)接口或[sendIntentResult](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendintentresult)接口返回意图执行结果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## QueryType
 

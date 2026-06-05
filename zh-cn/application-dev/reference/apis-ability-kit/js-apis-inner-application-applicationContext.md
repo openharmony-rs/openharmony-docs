@@ -141,8 +141,10 @@ onAbilityLifecycle(callback: AbilityLifecycleCallback): int
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility, AbilityLifecycleCallback } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -287,8 +289,10 @@ offAbilityLifecycle(callbackId: int, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility, AbilityLifecycleCallback } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -445,8 +449,10 @@ offAbilityLifecycle(callbackId: int): Promise\<void>
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility, AbilityLifecycleCallback } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -622,8 +628,10 @@ onEnvironment(callback: EnvironmentCallback): int
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility, EnvironmentCallback, Configuration, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -733,8 +741,10 @@ offEnvironment(callbackId: int, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility, EnvironmentCallback, Configuration, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -855,8 +865,10 @@ offEnvironment(callbackId: int): Promise\<void>
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility, EnvironmentCallback, Configuration, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -970,8 +982,10 @@ onApplicationStateChange(callback: ApplicationStateChangeCallback): void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1088,8 +1102,10 @@ offApplicationStateChange(callback?: ApplicationStateChangeCallback): void
 
 假定已使用[ApplicationContext.onApplicationStateChange](#applicationcontextonapplicationstatechange23)方法注册名为applicationStateChangeCallback回调，下面示例展示如何取消对应的事件监听。
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1129,7 +1145,7 @@ onSystemConfigurationUpdated(callback: systemConfiguration.UpdatedCallback): voi
 >
 > 应用自定义的设置不影响回调函数的触发。例如：应用自定义设置了深浅色模式，当系统深浅色模式变化后，注册的回调函数依然会触发。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1199,7 +1215,7 @@ offSystemConfigurationUpdated(callback?: systemConfiguration.UpdatedCallback): v
 
 取消监听系统环境[Configuration](js-apis-app-ability-configuration.md#configuration)的变化。仅支持主线程调用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1919,6 +1935,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common } from '@kit.AbilityKit';
 import { Entry, Text, Column, Row, Component, State } from '@kit.ArkUI';
 
@@ -2164,7 +2181,7 @@ getAllWindowStages(): Promise\<Array\<window.WindowStage>>
 
 该接口主要用于包含多个UIAbility的应用进行多窗口管理，例如管理多个WindowStage的状态、同一应用的多个窗口间的状态或数据同步等。
 
- **原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+ **原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2214,7 +2231,7 @@ enableDelayedProcessExit(): Promise\<void>
 
 **起始版本**：26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2273,7 +2290,7 @@ disableDelayedProcessExit(): Promise\<void>
 
 **起始版本**：26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2330,7 +2347,7 @@ startSelfUIAbility(want: Want): Promise\<void>
 
 **起始版本**：26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
