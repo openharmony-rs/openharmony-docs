@@ -5726,6 +5726,31 @@
 						"start_line":26
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioSessionSampleJS-Sta/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":284,
+						"name":"on_audio_session_deactivated",
+						"start_line":21
+					},
+					{
+						"end_line":473,
+						"name":"audio_session_v1",
+						"start_line":22
+					},
+					{
+						"end_line":384,
+						"name":"on_audio_session_state_changed",
+						"start_line":24
+					},
+					{
+						"end_line":475,
+						"name":"audio_session_v2",
+						"start_line":25
+					}
+				]
 			}
 		]
 	},
