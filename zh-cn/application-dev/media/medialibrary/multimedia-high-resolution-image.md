@@ -1,7 +1,7 @@
 # 高像素图片处理指南
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @yixiaoff-->
+<!--Owner: @AiShangyou-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -84,7 +84,7 @@ async function pickerExample(): Promise<void> {
     const photoPicker = new photoAccessHelper.PhotoViewPicker();
     const photoSelectResult: photoAccessHelper.PhotoSelectResult =
       await photoPicker.select(photoSelectOptions);
-    console.info(`PhotoViewPicker.select succeeded: ${JSON.stringify(photoSelectResult)}`);
+    console.info(`PhotoViewPicker.select successfully: ${JSON.stringify(photoSelectResult)}`);
   } catch (error) {
     const err = error as BusinessError;
     console.error(`PhotoViewPicker.select failed. code: ${err.code}, message: ${err.message}`);
@@ -125,9 +125,9 @@ async function getHighResolutionAsset(
     const srcFile = fs.openSync(asset.uri, fs.OpenMode.READ_ONLY);
 
     // 获取到fd后，可按业务需要进行解码、上传或备份。
-    console.info(`Open source file succeeded. fd: ${srcFile.fd}`);
+    console.info(`Open source file successfully. fd: ${srcFile.fd}`);
   } catch (error) {
-    console.error(`Failed to get high resolution asset: ${JSON.stringify(error)}`);
+    console.error(`Failed get high resolution asset: ${JSON.stringify(error)}`);
   }
 }
 ```
