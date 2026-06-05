@@ -2830,7 +2830,7 @@ struct Fill {
 }
 ```
 
- ![en-us_image_000000127777775](figures/en-us_image_000000127777775.jpg)
+ ![Yellowtrapezoid-01](figures/Yellowtrapezoid-01.jpg)
 
 ### clip
 
@@ -2945,7 +2945,7 @@ Sets a specified path as the clipping path.
   }
   ```
 
-  ![en-us_image_000000127777779](figures/en-us_image_000000127777779.jpg)
+  ![Yellowtrapezoid-02](figures/Yellowtrapezoid-02.jpg)
 
 
 ### reset<sup>12+</sup>
@@ -3834,7 +3834,7 @@ Obtains the [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) object
   }
   ```
 
-  ![en-us_image_000000127777783](figures/en-us_image_000000127777783.png)
+  ![Yellowithsky-01](figures/Yellowithsky-01.png)
 
 ### setPixelMap
 
@@ -3919,7 +3919,7 @@ Obtains the [ImageData](ts-components-canvas-imagedata.md) object created with t
   }
   ```
 
-  ![en-us_image_000000127777780](figures/en-us_image_000000127777780.png)
+  ![Yellow-lemon](figures/Yellow-lemon.png)
 
 
 ### putImageData
@@ -4093,7 +4093,7 @@ Sets the dash line style.
     }
   }
   ```
-  ![en-us_image_000000127777772](figures/en-us_image_000000127777772.png)
+  ![Dottedcircle](figures/Dottedcircle.png)
 
 
 ### getLineDash
@@ -4151,7 +4151,7 @@ Obtains the dash line style.
     }
   }
   ```
-![en-us_image_000000127777778](figures/en-us_image_000000127777778.png) 
+![Dottedcircle-01](figures/Dottedcircle-01.png) 
 
 
 
@@ -4321,7 +4321,7 @@ Restores the saved drawing context.
     }
   }
   ```
-![en-us_image_000000127777781](figures/en-us_image_000000127777781.png) 
+![Yellow-with-GreenandBlack](figures/Yellow-with-GreenandBlack.png) 
 
 
 ### save
@@ -4369,7 +4369,7 @@ Saves the current drawing context.
     }
   }
   ```
-![en-us_image_000000127777781](figures/en-us_image_000000127777781.png) 
+![Yellow-with-GreenandBlack](figures/Yellow-with-GreenandBlack.png) 
 
 
 ### createLinearGradient

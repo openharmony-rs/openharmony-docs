@@ -1090,7 +1090,7 @@ struct ImageExample1 {
 }
 ```
 
-![en-us_image_0000001592882500](figures/en-us_image_0000001592882500.gif)
+![Image-of-png-gif-jpg-svg](figures/Image-of-png-gif-jpg-svg.gif)
 
 ### Example 2: Downloading and Displaying Static Online Images
 
@@ -1155,7 +1155,7 @@ struct ImageExample2 {
 }
 ```
 
-![en-us_image_0000001607845173](figures/en-us_image_view2.png)
+![en-us-image-view-02](figures/en-us-image-view-02.png)
 
 ### Example 3: Downloading and Displaying Online GIF Images
 
@@ -1237,7 +1237,7 @@ struct ImageExample3 {
 }
 ```
 
-![en-us_image_0000001607845173](figures/en-us_image_0000001607845173.gif)
+![skychange](figures/skychange.gif)
 
 ### Example 5: Enabling the AI Image Analyzer
 
@@ -1289,7 +1289,7 @@ struct ImageExample4 {
 }
 ```
 
-![en-us_image_0000001607845173](figures/en-us_image_view4.gif)
+![en-us-image-view4](figures/en-us-image-view4.gif)
 <!--RP2End-->
 ### Example 6: Stretching an Image Using slice
 
@@ -1483,7 +1483,7 @@ struct ImageExample {
 }
 ```
 
-![en-us_image_0000001607845173](figures/en-us_image_view6.gif)
+![image-view6](figures/image-view6.gif)
 
 ### Example 9: Setting a Color Filter for an Image
 

@@ -799,7 +799,7 @@ struct BackgroundExample {
 }
 ```
 
-![en-us_image_background](figures/en-us_image_background.png)
+![image-background](figures/image-background.png)
 
 ### Example 4: Setting Component Background Brightness
 

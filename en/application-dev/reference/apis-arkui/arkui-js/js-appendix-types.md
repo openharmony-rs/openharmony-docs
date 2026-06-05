@@ -89,10 +89,10 @@
 | khaki                | \#f0e68c | ![khaki](figures/khaki.png) |
 | lavender             | \#e6e6fa | ![elavender](figures/elavender.png) |
 | lavenderblush        | \#fff0f5 | ![lavenderblush](figures/lavenderblush.png) |
-| lawngreen            | \#7cfc00 | ![en-us_image_0000001127125224](figures/en-us_image_0000001127125224.png) |
+| lawngreen            | \#7cfc00 | ![lawngreen](figures/lawngreen.png) |
 | lemonchiffon         | \#fffacd | ![lemonchiffon](figures/lemonchiffon.png) |
 | lightblue            | \#add8e6 | ![lightblue](figures/lightblue.png) |
-| lightcoral           | \#f08080 | ![en-us_image_0000001127125228](figures/en-us_image_0000001127125228.png) |
+| lightcoral           | \#f08080 | ![lightcoral](figures/lightcoral.png) |
 | lightcyan            | \#e0ffff | ![lightcyan](figures/lightcyan.png) |
 | lightgoldenrodyellow | \#fafad2 | ![lightgoldenrodyellow](figures/lightgoldenrodyellow.png) |
 | lightgray            | \#d3d3d3 | ![lightgray](figures/lightgray.png) |
@@ -101,8 +101,8 @@
 | lightsalmon          | \#ffa07a | ![lightsalmon](figures/lightsalmon.png) |
 | lightseagreen        | \#20b2aa | ![lightseagreen](figures/lightseagreen.png) |
 | lightskyblue         | \#87cefa | ![lightskyblue](figures/lightskyblue.png) |
-| lightslategray       | \#778899 | ![en-us_image_0000001127125226](figures/en-us_image_0000001127125226.png) |
-| lightslategrey       | \#778899 | ![en-us_image_0000001127125222](figures/en-us_image_0000001127125222.png) |
+| lightslategray       | \#778899 | ![lightslategray](figures/lightslategray.png) |
+| lightslategrey       | \#778899 | ![lightslategrey](figures/lightslategrey.png) |
 | lightsteelblue       | \#b0c4de | ![lightsteelblue](figures/lightsteelblue.png) |
 | lightyellow          | \#ffffe0 | ![lightyellow](figures/lightyellow.png) |
 | lime                 | \#00ff00 | ![lime](figures/lime.png) |
@@ -114,7 +114,7 @@
 | mediumblue           | \#0000cd | ![mediumblue](figures/mediumblue.png) |
 | mediumorchid         | \#ba55d3 | ![mediumorchid](figures/mediumorchid.png) |
 | mediumpurple         | \#9370db | ![mediumpurple](figures/mediumpurple.png) |
-| mediumseagreen       | \#3cb371 | ![en-us_image_0000001127125230](figures/en-us_image_0000001127125230.png) |
+| mediumseagreen       | \#3cb371 | ![mediumseagreen](figures/mediumseagreen.png) |
 | mediumslateblue      | \#7b68ee | ![mediumslateblue](figures/mediumslateblue.png) |
 | mediumspringgreen    | \#00fa9a | ![mediumspringgreen](figures/mediumspringgreen.png) |
 | mediumturquoise      | \#48d1cc | ![mediumturquoise](figures/mediumturquoise.png) |
