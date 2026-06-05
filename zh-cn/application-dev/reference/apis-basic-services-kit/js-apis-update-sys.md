@@ -564,6 +564,8 @@ try {
 
 ### getNewVersionDescription
 
+getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>
+
 获取新版本描述信息。本方法为在线升级功能，依赖设备厂商部署的升级包管理服务器。调用成功后，返回新版本描述信息数组，包含各组件的版本说明内容。使用Promise异步回调。
 
 使用场景：适用于向用户展示版本更新内容、确认是否升级等场景。解决用户无法了解版本更新内容、无法确认升级价值等问题，帮助用户了解新版本的功能改进和修复内容，辅助用户做出升级决策。
@@ -3310,7 +3312,7 @@ try {
 | 名称       | 类型                            | 属性 | 说明   |
 | ------------ | ----------------------------- | -------- | ------ |
 | existTask |  boolean                  | 只读:否, 可选:否 | 是否存在升级任务，用于判断当前是否有进行中的升级任务。<br>使用场景：在执行升级操作前查询任务状态，避免重复操作;在升级流程中监控任务状态变化。true表示存在进行中的升级任务(如下载或安装任务)，需要等待任务完成或取消后再执行新任务。false表示当前无任务，可以开始新的升级流程。 |
-| taskBody  | [TaskBody](#taskbody) | 只读:否, 可选:否 | 任务数据。   |
+| taskBody  | [TaskBody](#taskbody) | 只读:否, 可选:否 | 任务数据。 |
 
 ## EventInfo
 
