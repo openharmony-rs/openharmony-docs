@@ -25,19 +25,19 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称                                          | 值         | 说明                                                         |
 | --------------------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_BUNDLE_INFO_DEFAULT                       | 0x00000000 | 获取默认包信息，不包含signatureInfo、applicationInfo、hapModuleInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_APPLICATION              | 0x00000001 | 用于获取包含applicationInfo的bundleInfo，获取的bundleInfo不包含signatureInfo、hapModuleInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_HAP_MODULE               | 0x00000002 | 用于获取包含hapModuleInfo的bundleInfo，获取的bundleInfo不包含signatureInfo、applicationInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_ABILITY                  | 0x00000004 | 用于获取包含ability的bundleInfo，获取的bundleInfo不包含signatureInfo、applicationInfo、extensionAbility和permission的信息。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY        | 0x00000008 | 用于获取包含extensionAbility的bundleInfo，获取的bundleInfo不包含signatureInfo、applicationInfo、ability 和permission的信息。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION     | 0x00000010 | 用于获取包含permission的bundleInfo。获取的bundleInfo不包含signatureInfo、applicationInfo、hapModuleInfo、extensionAbility和ability的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_METADATA                 | 0x00000020 | 用于获取applicationInfo、moduleInfo、abilityInfo和extensionAbilityInfo中包含的metadata。单独使用不生效，它需要与GET_BUNDLE_INFO_WITH_APPLICATION、GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY配合使用，其中：<br/>-&nbsp;获取applicationInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。<br/>-&nbsp;获取moduleInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>-&nbsp;获取abilityInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY一起使用。<br/>-&nbsp;获取extensionAbilityInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_DISABLE                  | 0x00000040 | 用于获取application被禁用的BundleInfo和被禁用的Ability信息。获取的bundleInfo不包含signatureInfo、applicationInfo、hapModuleInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_SIGNATURE_INFO           | 0x00000080 | 用于获取包含signatureInfo的bundleInfo。获取的bundleInfo不包含applicationInfo、hapModuleInfo、extensionAbility、ability和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_MENU<sup>11+</sup>       | 0x00000100 | 用于获取包含fileContextMenuConfig的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_ROUTER_MAP<sup>12+</sup> | 0x00000200 | 用于获取包含routerMap的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_SKILL<sup>12+</sup>      | 0x00000800 | 用于获取包含skills的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_ENTRY_MODULE<sup>23+</sup>      | 0x00010000 | 用于获取包含hapModuleInfo的bundleInfo，仅支持entry模块对应的bundleInfo.hapModulesInfo，如果entry模块不存在，bundleInfo.hapModulesInfo列表为空。获取的bundleInfo不包含signatureInfo、applicationInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_DEFAULT                       | 0x00000000 | 获取默认包信息，不包含signatureInfo、applicationInfo、hapModuleInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_WITH_APPLICATION              | 0x00000001 | 用于获取包含applicationInfo的bundleInfo，获取的bundleInfo不包含signatureInfo、hapModuleInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_WITH_HAP_MODULE               | 0x00000002 | 用于获取包含hapModuleInfo的bundleInfo，获取的bundleInfo不包含signatureInfo、applicationInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_WITH_ABILITY                  | 0x00000004 | 用于获取包含ability的bundleInfo，获取的bundleInfo不包含signatureInfo、applicationInfo、extensionAbility和permission的信息。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY        | 0x00000008 | 用于获取包含extensionAbility的bundleInfo，获取的bundleInfo不包含signatureInfo、applicationInfo、ability 和permission的信息。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION     | 0x00000010 | 用于获取包含permission的bundleInfo。获取的bundleInfo不包含signatureInfo、applicationInfo、hapModuleInfo、extensionAbility和ability的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_WITH_METADATA                 | 0x00000020 | 用于获取applicationInfo、moduleInfo、abilityInfo和extensionAbilityInfo中包含的metadata。单独使用不生效，它需要与GET_BUNDLE_INFO_WITH_APPLICATION、GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY配合使用，其中：<br/>-&nbsp;获取applicationInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。<br/>-&nbsp;获取moduleInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>-&nbsp;获取abilityInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY一起使用。<br/>-&nbsp;获取extensionAbilityInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_WITH_DISABLE                  | 0x00000040 | 用于获取application被禁用的BundleInfo和被禁用的Ability信息。获取的bundleInfo不包含signatureInfo、applicationInfo、hapModuleInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_WITH_SIGNATURE_INFO           | 0x00000080 | 用于获取包含signatureInfo的bundleInfo。获取的bundleInfo不包含applicationInfo、hapModuleInfo、extensionAbility、ability和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_WITH_MENU<sup>11+</sup>       | 0x00000100 | 用于获取包含fileContextMenuConfig的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_WITH_ROUTER_MAP<sup>12+</sup> | 0x00000200 | 用于获取包含routerMap的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_WITH_SKILL<sup>12+</sup>      | 0x00000800 | 用于获取包含skills的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_WITH_ENTRY_MODULE<sup>23+</sup>      | 0x00010000 | 用于获取包含hapModuleInfo的bundleInfo，仅支持entry模块对应的bundleInfo.hapModulesInfo，如果entry模块不存在，bundleInfo.hapModulesInfo列表为空。获取的bundleInfo不包含signatureInfo、applicationInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 ## ExtensionAbilityType
 
@@ -48,43 +48,43 @@ import { bundleManager } from '@kit.AbilityKit';
 <!--Table: 30%; 10%; 60%-->
 | 名称 | 值 | 说明 |
 |:----------------:|:---:|-----|
-| FORM             | 0   | [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)：卡片扩展能力，提供卡片开发能力。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| WORK_SCHEDULER   | 1   | [WorkSchedulerExtensionAbility](../apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md)：延时任务扩展能力，允许应用在系统闲时执行实时性不高的任务。 |
-| INPUT_METHOD     | 2   | [InputMethodExtensionAbility](../apis-ime-kit/js-apis-inputmethod-extension-ability.md)：输入法扩展能力，用于开发输入法应用。 |
-|<!--DelRow--> SERVICE          | 3   | [ServiceExtensionAbility](js-apis-app-ability-serviceExtensionAbility-sys.md)：后台服务扩展能力，提供后台运行并对外提供相应能力。|
-| ACCESSIBILITY    | 4   | <!--RP1-->[AccessibilityExtensionAbility](../apis-accessibility-kit/js-apis-application-accessibilityExtensionAbility.md)<!--RP1End-->：无障碍服务扩展能力，支持访问与操作前台界面。 |
-|<!--DelRow--> DATA_SHARE       | 5   | [DataShareExtensionAbility](../apis-arkdata/js-apis-application-dataShareExtensionAbility-sys.md)：数据共享扩展能力，用于对外提供数据读写服务。 |
-|<!--DelRow--> FILE_SHARE       | 6   | FileShareExtensionAbility：文件共享扩展能力，用于应用间的文件分享。预留能力，仅系统应用支持。 |
-|<!--DelRow--> STATIC_SUBSCRIBER| 7   | [StaticSubscriberExtensionAbility](../apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md)：静态广播扩展能力，用于处理静态事件，比如开机事件。 |
-|<!--DelRow--> WALLPAPER        | 8   | WallpaperExtensionAbility：壁纸扩展能力，用于实现桌面壁纸。预留能力，仅系统应用支持。 |
-| BACKUP           |  9  | [BackupExtensionAbility](../apis-core-file-kit/js-apis-application-backupExtensionAbility.md)：数据备份扩展能力，提供应用数据的备份恢复能力。 |
-|<!--DelRow--> WINDOW     |  10 | [WindowExtensionAbility](../apis-arkui/js-apis-application-windowExtensionAbility-sys.md)：界面组合扩展能力，允许系统应用进行跨应用的界面拉起和嵌入。 |
-| ENTERPRISE_ADMIN |  11 | [EnterpriseAdminExtensionAbility](../apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md)：企业设备管理扩展能力，提供企业管理时处理管理事件的能力。 |
-|<!--DelRow--> THUMBNAIL        | 13  | ThumbnailExtensionAbility：文件缩略图扩展能力，用于为文件提供图标缩略图的能力。预留能力，仅系统应用支持。 |
-|<!--DelRow--> PREVIEW          | 14  | PreviewExtensionAbility：文件预览扩展能力，提供文件预览的能力，其他应用可以直接在应用中嵌入显示。预留能力，仅系统应用支持。 |
-|<!--DelRow--> PRINT<sup>10+</sup> | 15 | PrintExtensionAbility：文件打印扩展能力，提供应用打印照片、文档等办公场景。仅系统应用支持。 |
-| SHARE<sup>10+</sup> | 16 | [ShareExtensionAbility](js-apis-app-ability-shareExtensionAbility.md)：提供分享业务能力，为开发者提供基于UIExtension的分享业务模板。 |
-|<!--DelRow--> PUSH<sup>10+</sup> | 17 | PushExtensionAbility：推送扩展能力，提供推送场景化消息能力。预留能力，仅系统应用支持。 |
-| DRIVER<sup>10+</sup> | 18 | [DriverExtensionAbility](../apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)：驱动扩展能力，提供外设驱动扩展能力。应用配置了driver类型的ExtensionAbility后会被视为驱动应用，驱动应用在安装、卸载和恢复时不会区分用户，且创建新用户时也会安装设备上已有的驱动应用。例如，创建子用户时会默认安装主用户已有的驱动应用，在子用户上卸载驱动应用时，主用户上对应的驱动应用也会同时被卸载。 |
-| ACTION<sup>10+</sup> | 19 | [ActionExtensionAbility](js-apis-app-ability-actionExtensionAbility.md)：自定义服务扩展能力，为开发者提供基于UIExtension的自定义操作业务模板。 |
-|<!--DelRow--> ADS_SERVICE<sup>11+</sup> | 20 | AdsServiceExtensionAbility：广告服务扩展能力，对外提供后台自定义广告业务服务，仅系统应用支持。 |
-| EMBEDDED_UI<sup>12+</sup> | 21 | [EmbeddedUIExtensionAbility](js-apis-app-ability-embeddedUIExtensionAbility.md)：嵌入式UI扩展能力，提供跨进程界面嵌入的能力。 |
-| INSIGHT_INTENT_UI<sup>12+</sup> | 22 | InsightIntentUIExtensionAbility：为开发者提供能被小艺意图调用，以窗口形态呈现内容的扩展能力。 |
-| FENCE<sup>18+</sup> | 24 | [FenceExtensionAbility](../apis-location-kit/js-apis-app-ability-FenceExtensionAbility.md)：为开发者提供地理围栏相关的能力，继承自ExtensionAbility。 |
-| ASSET_ACCELERATION<sup>18+</sup> | 26 | AssetAccelerationExtensionAbility：资源预下载扩展能力，提供在设备闲时状态，进行后台资源预下载的能力。 |
-| FORM_EDIT<sup>18+</sup> | 27 | [FormEditExtensionAbility](../apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)：为开发者提供卡片编辑的能力，继承自UIExtensionAbility。 |
-| DISTRIBUTED<sup>20+</sup> | 28 | [DistributedExtensionAbility](../apis-distributedservice-kit/js-apis-distributedExtensionAbility.md)：提供分布式相关扩展能力，提供分布式创建、销毁、连接的生命周期回调。 |
-| APP_SERVICE<sup>20+</sup> | 29 | [AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)：为企业普通应用提供后台服务能力。 |
-| LIVE_FORM<sup>20+</sup> | 30 | [LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)：互动卡片相关扩展能力，提供互动卡片创建、销毁的生命周期回调。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。|
-| SELECTION<sup>24+</sup> | 31 | [SelectionExtensionAbility](../apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)：为开发者提供划词弹窗能力的ExtensionAbility。<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| WEB_NATIVE_MESSAGING<sup>21+</sup> | 32 | [WebNativeMessagingExtensionAbility](../apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)：为开发者提供Web原生消息通信能力的ExtensionAbility。|
-| FAULT_LOG<sup>21+</sup> | 33 | [FaultLogExtensionAbility](../apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md)：提供故障延迟通知的能力。|
-| NOTIFICATION_SUBSCRIBER<sup>22+</sup> | 34 | [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)：提供通知订阅的相关功能。|
-| CRYPTO<sup>22+</sup> | 35 | [CryptoExtensionAbility](../../security/UniversalKeystoreKit/huks-extension-ability-support-dev.md)：提供外部密钥管理扩展的相关功能。|
-| PARTNER_AGENT<sup>23+</sup> | 36 | [PartnerAgentExtensionAbility](../apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)：基于蓝牙通信技术，提供设备发现与设备下线的通知功能。<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| AGENT<sup>24+</sup> | 37 | [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| AGENT_UI<sup>24+</sup> | 38 | [AgentUIExtensionAbility](js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| UNSPECIFIED      | 255 | 不指定类型<!--Del-->，配合[queryExtensionAbilityInfo接口](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo)可以查询所有类型的ExtensionAbility<!--DelEnd-->。 |
+| FORM             | 0   | [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)：卡片扩展能力，提供卡片开发能力。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| WORK_SCHEDULER   | 1   | [WorkSchedulerExtensionAbility](../apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md)：延时任务扩展能力，允许应用在系统闲时执行实时性不高的任务。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| INPUT_METHOD     | 2   | [InputMethodExtensionAbility](../apis-ime-kit/js-apis-inputmethod-extension-ability.md)：输入法扩展能力，用于开发输入法应用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+|<!--DelRow--> SERVICE          | 3   | [ServiceExtensionAbility](js-apis-app-ability-serviceExtensionAbility-sys.md)：后台服务扩展能力，提供后台运行并对外提供相应能力。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| ACCESSIBILITY    | 4   | <!--RP1-->[AccessibilityExtensionAbility](../apis-accessibility-kit/js-apis-application-accessibilityExtensionAbility.md)<!--RP1End-->：无障碍服务扩展能力，支持访问与操作前台界面。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+|<!--DelRow--> DATA_SHARE       | 5   | [DataShareExtensionAbility](../apis-arkdata/js-apis-application-dataShareExtensionAbility-sys.md)：数据共享扩展能力，用于对外提供数据读写服务。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+|<!--DelRow--> FILE_SHARE       | 6   | FileShareExtensionAbility：文件共享扩展能力，用于应用间的文件分享。预留能力，仅系统应用支持。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+|<!--DelRow--> STATIC_SUBSCRIBER| 7   | [StaticSubscriberExtensionAbility](../apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md)：静态广播扩展能力，用于处理静态事件，比如开机事件。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+|<!--DelRow--> WALLPAPER        | 8   | WallpaperExtensionAbility：壁纸扩展能力，用于实现桌面壁纸。预留能力，仅系统应用支持。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| BACKUP           |  9  | [BackupExtensionAbility](../apis-core-file-kit/js-apis-application-backupExtensionAbility.md)：数据备份扩展能力，提供应用数据的备份恢复能力。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+|<!--DelRow--> WINDOW     |  10 | [WindowExtensionAbility](../apis-arkui/js-apis-application-windowExtensionAbility-sys.md)：界面组合扩展能力，允许系统应用进行跨应用的界面拉起和嵌入。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| ENTERPRISE_ADMIN |  11 | [EnterpriseAdminExtensionAbility](../apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md)：企业设备管理扩展能力，提供企业管理时处理管理事件的能力。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+|<!--DelRow--> THUMBNAIL        | 13  | ThumbnailExtensionAbility：文件缩略图扩展能力，用于为文件提供图标缩略图的能力。预留能力，仅系统应用支持。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+|<!--DelRow--> PREVIEW          | 14  | PreviewExtensionAbility：文件预览扩展能力，提供文件预览的能力，其他应用可以直接在应用中嵌入显示。预留能力，仅系统应用支持。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+|<!--DelRow--> PRINT<sup>10+</sup> | 15 | PrintExtensionAbility：文件打印扩展能力，提供应用打印照片、文档等办公场景。仅系统应用支持。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| SHARE<sup>10+</sup> | 16 | [ShareExtensionAbility](js-apis-app-ability-shareExtensionAbility.md)：提供分享业务能力，为开发者提供基于UIExtension的分享业务模板。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+|<!--DelRow--> PUSH<sup>10+</sup> | 17 | PushExtensionAbility：推送扩展能力，提供推送场景化消息能力。预留能力，仅系统应用支持。 <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| DRIVER<sup>10+</sup> | 18 | [DriverExtensionAbility](../apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)：驱动扩展能力，提供外设驱动扩展能力。应用配置了driver类型的ExtensionAbility后会被视为驱动应用，驱动应用在安装、卸载和恢复时不会区分用户，且创建新用户时也会安装设备上已有的驱动应用。例如，创建子用户时会默认安装主用户已有的驱动应用，在子用户上卸载驱动应用时，主用户上对应的驱动应用也会同时被卸载。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| ACTION<sup>10+</sup> | 19 | [ActionExtensionAbility](js-apis-app-ability-actionExtensionAbility.md)：自定义服务扩展能力，为开发者提供基于UIExtension的自定义操作业务模板。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+|<!--DelRow--> ADS_SERVICE<sup>11+</sup> | 20 | AdsServiceExtensionAbility：广告服务扩展能力，对外提供后台自定义广告业务服务，仅系统应用支持。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| EMBEDDED_UI<sup>12+</sup> | 21 | [EmbeddedUIExtensionAbility](js-apis-app-ability-embeddedUIExtensionAbility.md)：嵌入式UI扩展能力，提供跨进程界面嵌入的能力。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| INSIGHT_INTENT_UI<sup>12+</sup> | 22 | InsightIntentUIExtensionAbility：为开发者提供能被小艺意图调用，以窗口形态呈现内容的扩展能力。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| FENCE<sup>18+</sup> | 24 | [FenceExtensionAbility](../apis-location-kit/js-apis-app-ability-FenceExtensionAbility.md)：为开发者提供地理围栏相关的能力，继承自ExtensionAbility。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| ASSET_ACCELERATION<sup>18+</sup> | 26 | AssetAccelerationExtensionAbility：资源预下载扩展能力，提供在设备闲时状态，进行后台资源预下载的能力。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| FORM_EDIT<sup>18+</sup> | 27 | [FormEditExtensionAbility](../apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)：为开发者提供卡片编辑的能力，继承自UIExtensionAbility。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
+| DISTRIBUTED<sup>20+</sup> | 28 | [DistributedExtensionAbility](../apis-distributedservice-kit/js-apis-distributedExtensionAbility.md)：提供分布式相关扩展能力，提供分布式创建、销毁、连接的生命周期回调。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| APP_SERVICE<sup>20+</sup> | 29 | [AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)：为企业普通应用提供后台服务能力。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| LIVE_FORM<sup>20+</sup> | 30 | [LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)：互动卡片相关扩展能力，提供互动卡片创建、销毁的生命周期回调。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| SELECTION<sup>24+</sup> | 31 | [SelectionExtensionAbility](../apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)：为开发者提供划词弹窗能力的ExtensionAbility。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
+| WEB_NATIVE_MESSAGING<sup>21+</sup> | 32 | [WebNativeMessagingExtensionAbility](../apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)：为开发者提供Web原生消息通信能力的ExtensionAbility。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
+| FAULT_LOG<sup>21+</sup> | 33 | [FaultLogExtensionAbility](../apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md)：提供故障延迟通知的能力。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
+| NOTIFICATION_SUBSCRIBER<sup>22+</sup> | 34 | [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)：提供通知订阅的相关功能。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23 |
+| CRYPTO<sup>22+</sup> | 35 | [CryptoExtensionAbility](../../security/UniversalKeystoreKit/huks-extension-ability-support-dev.md)：提供外部密钥管理扩展的相关功能。<br>**ArkTS-Dyn起始版本：** 22 |
+| PARTNER_AGENT<sup>23+</sup> | 36 | [PartnerAgentExtensionAbility](../apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)：基于蓝牙通信技术，提供设备发现与设备下线的通知功能。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| AGENT<sup>24+</sup> | 37 | [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
+| AGENT_UI<sup>24+</sup> | 38 | [AgentUIExtensionAbility](js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
+| UNSPECIFIED      | 255 | 不指定类型<!--Del-->，配合[queryExtensionAbilityInfo接口](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo)可以查询所有类型的ExtensionAbility<!--DelEnd-->。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 <!--RP2--><!--RP2End-->
 
 ## PermissionGrantState
@@ -94,6 +94,10 @@ import { bundleManager } from '@kit.AbilityKit';
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 |:----------------:|:---:|:---:|
@@ -107,6 +111,10 @@ import { bundleManager } from '@kit.AbilityKit';
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 |:----------------:|:---:|:---:|
@@ -122,6 +130,10 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 |:----------------:|:---:|:---:|
 | SINGLETON        | 0   | UIAbility的启动模式，表示单实例。 |
@@ -135,6 +147,10 @@ import { bundleManager } from '@kit.AbilityKit';
 **模型约束：** 仅可在FA模型下使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 |  名称   | 值   |                            说明                            |
 | :-----: | ---- | :--------------------------------------------------------: |
@@ -151,21 +167,21 @@ import { bundleManager } from '@kit.AbilityKit';
 <!--Table: 40%; 10%; 50%-->
 | 名称                               |值 |说明 |
 |:----------------------------------|---|---|
-| UNSPECIFIED                        |0 |表示未定义方向模式，由系统判定。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| LANDSCAPE                          |1 |表示横屏显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| PORTRAIT                           |2 |表示竖屏显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| FOLLOW_RECENT                      |3 |表示跟随上一个显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| LANDSCAPE_INVERTED                 |4 |表示反向横屏显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| PORTRAIT_INVERTED                  |5 |表示反向竖屏显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| AUTO_ROTATION                      |6 |表示传感器在旋转到横向和竖向时，页面会自动旋转。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| AUTO_ROTATION_LANDSCAPE            |7 |表示传感器在旋转到横向时，页面会自动旋转。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| AUTO_ROTATION_PORTRAIT             |8 |表示传感器在旋转到竖向时，页面会自动旋转。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| AUTO_ROTATION_RESTRICTED           |9 |表示受开关控制的自动旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| AUTO_ROTATION_LANDSCAPE_RESTRICTED |10|表示受开关控制的自动横向旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| AUTO_ROTATION_PORTRAIT_RESTRICTED  |11|表示受开关控制的自动竖向旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| LOCKED                             |12|表示锁定模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| AUTO_ROTATION_UNSPECIFIED<sup>12+</sup> |13|受开关控制和由系统判定的自动旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| FOLLOW_DESKTOP<sup>12+</sup> |14|跟随桌面的旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| UNSPECIFIED                        |0 |表示未定义方向模式，由系统判定。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| LANDSCAPE                          |1 |表示横屏显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| PORTRAIT                           |2 |表示竖屏显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| FOLLOW_RECENT                      |3 |表示跟随上一个显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| LANDSCAPE_INVERTED                 |4 |表示反向横屏显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| PORTRAIT_INVERTED                  |5 |表示反向竖屏显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| AUTO_ROTATION                      |6 |表示传感器在旋转到横向和竖向时，页面会自动旋转。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| AUTO_ROTATION_LANDSCAPE            |7 |表示传感器在旋转到横向时，页面会自动旋转。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| AUTO_ROTATION_PORTRAIT             |8 |表示传感器在旋转到竖向时，页面会自动旋转。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| AUTO_ROTATION_RESTRICTED           |9 |表示受开关控制的自动旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| AUTO_ROTATION_LANDSCAPE_RESTRICTED |10|表示受开关控制的自动横向旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| AUTO_ROTATION_PORTRAIT_RESTRICTED  |11|表示受开关控制的自动竖向旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| LOCKED                             |12|表示锁定模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| AUTO_ROTATION_UNSPECIFIED<sup>12+</sup> |13|受开关控制和由系统判定的自动旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| FOLLOW_DESKTOP<sup>12+</sup> |14|跟随桌面的旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 ## CompatiblePolicy<sup>10+</sup>
 
@@ -174,6 +190,10 @@ import { bundleManager } from '@kit.AbilityKit';
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   | 值   | 说明                             |
 | ---------------------- | ---- | -------------------------------- |
@@ -186,6 +206,10 @@ import { bundleManager } from '@kit.AbilityKit';
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值   | 说明                 |
 | ------- | ---- | -------------------- |
@@ -201,6 +225,10 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 值   | 说明            |
 | -------------- | ---- | --------------- |
 | APP            | 0    | 该Bundle是应用。    |
@@ -210,6 +238,10 @@ import { bundleManager } from '@kit.AbilityKit';
 标识应用多开的模式类型。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 |:----------------:|:---:|:---:|
@@ -225,6 +257,10 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                              | 值         | 说明                                                         |
 | --------------------------------- | ---------- | ------------------------------------------------------------ |
 | GET_ABILITY_INFO_DEFAULT          | 0x00000000 | 获取默认[AbilityInfo](js-apis-bundleManager-abilityInfo.md)，获取的AbilityInfo不包含permissions、metadata、被禁用Ability对应的AbilityInfo。<!--Del-->通过[setAbilityEnabled接口](./js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled)可设置Ability禁用状态、通过[isAbilityEnabled接口](./js-apis-bundleManager-sys.md#bundlemanagerisabilityenabled-1)可获取Ability禁用状态。<!--DelEnd-->|
@@ -238,7 +274,9 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 ## bundleManager.getBundleInfoForSelf
 
-getBundleInfoForSelf(bundleFlags: number): Promise\<BundleInfo>
+ArkTS-Dyn: getBundleInfoForSelf(bundleFlags: number): Promise\<BundleInfo>
+
+ArkTS-Sta: getBundleInfoForSelf(bundleFlags: int): Promise\<BundleInfo>
 
 根据给定的bundleFlags获取当前应用的BundleInfo。使用Promise异步回调。
 
@@ -246,11 +284,15 @@ getBundleInfoForSelf(bundleFlags: number): Promise\<BundleInfo>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
-| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。 |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](#bundleflag)。 |
 
 **返回值：**
 
@@ -268,6 +310,7 @@ getBundleInfoForSelf(bundleFlags: number): Promise\<BundleInfo>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 // 获取bundleInfo，包含带有metadataArray信息的appInfo信息
 import { bundleManager } from '@kit.AbilityKit';
@@ -288,10 +331,35 @@ try {
   hilog.error(0x0000, 'testTag', 'getBundleInfoForSelf failed: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+// 获取bundleInfo，包含带有metadataArray信息的appInfo信息
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleFlags =
+  bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION | bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_METADATA;
+
+try {
+  bundleManager.getBundleInfoForSelf(bundleFlags).then((data: bundleManager.BundleInfo) => {
+    hilog.info(0x0000, 'testTag', 'getBundleInfoForSelf successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getBundleInfoForSelf failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInfoForSelf failed: %{public}s', message);
+}
+```
 
 ## bundleManager.getBundleInfoForSelf
 
-getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
+ArkTS-Dyn: getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
+
+ArkTS-Sta: getBundleInfoForSelf(bundleFlags: int, callback: AsyncCallback\<BundleInfo>): void
 
 根据给定的bundleFlags获取当前应用的BundleInfo。使用callback异步回调。
 
@@ -299,11 +367,15 @@ getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback\<BundleInfo>):
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
-| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。 |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](#bundleflag)。 |
 | callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的当前应用的BundleInfo；否则为错误对象。 |
 
 **错误码：**
@@ -352,6 +424,10 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName: strin
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -412,6 +488,10 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName?: stri
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型   | 必填 | 说明                       |
@@ -440,6 +520,7 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName?: stri
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -482,6 +563,53 @@ try {
   hilog.error(0x0000, 'testTag', 'getProfileByAbility failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新moduleName和abilityName。
+let moduleName = 'entry';
+let abilityName = 'EntryAbility';
+
+try {
+  // 通过模块名称和ability名称获取相应配置文件的json格式字符串信息
+  bundleManager.getProfileByAbility(moduleName, abilityName).then((data: Array<string>) => {
+    hilog.info(0x0000, 'testTag', 'getProfileByAbility successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getProfileByAbility failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getProfileByAbility failed. Cause: %{public}s', message);
+}
+```
+
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新moduleName、abilityName和metadataName。
+let moduleName = 'entry';
+let abilityName = 'EntryAbility';
+let metadataName = 'ability_metadata';
+
+try {
+  // 通过模块名称，ability名称和UIAbility组件的元信息名称获取自身相应配置文件的json格式字符串信息
+  bundleManager.getProfileByAbility(moduleName, abilityName, metadataName).then((data: Array<string>) => {
+    hilog.info(0x0000, 'testTag', 'getProfileByAbility successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getProfileByAbility failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getProfileByAbility failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getProfileByAbilitySync<sup>10+</sup>
 
@@ -494,6 +622,10 @@ getProfileByAbilitySync(moduleName: string, abilityName: string, metadataName?: 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -572,6 +704,10 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                 | 类型                          | 必填 | 说明                                                         |
@@ -629,6 +765,10 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                 | 类型   | 必填 | 说明                               |
@@ -656,6 +796,7 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -687,6 +828,40 @@ try {
   hilog.error(0x0000, 'testTag', 'getProfileByExtensionAbility failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新moduleName、extensionAbilityName和metadataName。
+let moduleName = 'entry';
+let extensionAbilityName = 'com.example.myapplication.extension';
+let metadataName = 'ability_metadata';
+
+try {
+  bundleManager.getProfileByExtensionAbility(moduleName, extensionAbilityName).then((data: Array<string>) => {
+    hilog.info(0x0000, 'testTag', 'getProfileByExtensionAbility successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getProfileByExtensionAbility failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getProfileByExtensionAbility failed. Cause: %{public}s', message);
+}
+
+try {
+  bundleManager.getProfileByExtensionAbility(moduleName, extensionAbilityName, metadataName).then((data: Array<string>) => {
+    hilog.info(0x0000, 'testTag', 'getProfileByExtensionAbility successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getProfileByExtensionAbility failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getProfileByExtensionAbility failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getProfileByExtensionAbilitySync<sup>10+</sup>
 
@@ -699,6 +874,10 @@ getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityName: strin
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -757,7 +936,9 @@ try {
 
 ## bundleManager.getBundleInfoForSelfSync<sup>10+</sup>
 
-getBundleInfoForSelfSync(bundleFlags: number): BundleInfo
+ArkTS-Dyn: getBundleInfoForSelfSync(bundleFlags: number): BundleInfo
+
+ArkTS-Sta: getBundleInfoForSelfSync(bundleFlags: int): BundleInfo
 
 以同步方法根据给定的bundleFlags获取当前应用的BundleInfo。
 
@@ -765,11 +946,15 @@ getBundleInfoForSelfSync(bundleFlags: number): BundleInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
-| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。 |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](#bundleflag)。 |
 
 **返回值：**
 
@@ -812,6 +997,10 @@ canOpenLink(link: string): boolean
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -862,6 +1051,10 @@ getLaunchWant(): Want
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                | 说明                                        |
@@ -895,7 +1088,9 @@ try {
 
 ## bundleManager.getBundleInfo<sup>14+</sup>
 
-getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback: AsyncCallback\<BundleInfo>): void
+ArkTS-Dyn: getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback: AsyncCallback\<BundleInfo>): void
+
+ArkTS-Sta: getBundleInfo(bundleName: string, bundleFlags: int, userId: int, callback: AsyncCallback\<BundleInfo>): void
 
 根据给定的bundleName、bundleFlags和userId获取[BundleInfo](./js-apis-bundleManager-bundleInfo.md)。使用callback异步回调。
 
@@ -908,13 +1103,17 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback:
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
-| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。|
-| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](#bundleflag)。|
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
 | callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的bundleInfo；否则为错误对象。 |
 
 **错误码：**
@@ -983,7 +1182,9 @@ try {
 
 ## bundleManager.getBundleInfo<sup>14+</sup>
 
-getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
+ArkTS-Dyn: getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
+
+ArkTS-Sta: getBundleInfo(bundleName: string, bundleFlags: int, callback: AsyncCallback\<BundleInfo>): void
 
 根据给定的bundleName和bundleFlags获取BundleInfo。使用callback异步回调。
 
@@ -996,12 +1197,16 @@ getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
-| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。|
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](#bundleflag)。|
 | callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
 **错误码：**
@@ -1043,7 +1248,9 @@ try {
 
 ## bundleManager.getBundleInfo<sup>14+</sup>
 
-getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise\<BundleInfo>
+ArkTS-Dyn: getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise\<BundleInfo>
+
+ArkTS-Sta: getBundleInfo(bundleName: string, bundleFlags: int, userId?: int): Promise\<BundleInfo>
 
 根据给定的bundleName、bundleFlags和userId获取BundleInfo。使用Promise异步回调。
 
@@ -1056,13 +1263,17 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
-| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。       |
-| userId      | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。  |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](#bundleflag)。 |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。  |
 
 **返回值：**
 
@@ -1084,6 +1295,7 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 // 额外获取ApplicationInfo和SignatureInfo
 import { bundleManager } from '@kit.AbilityKit';
@@ -1126,10 +1338,61 @@ try {
   hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+// 额外获取ApplicationInfo和SignatureInfo
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 代码中使用的bundleName、useId需为应用实际的包名、用户ID。
+let bundleName = 'com.example.myapplication';
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+let userId = 100;
+
+try {
+  bundleManager.getBundleInfo(bundleName, bundleFlags, userId).then((data: bundleManager.BundleInfo) => {
+    hilog.info(0x0000, 'testTag', 'getBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', message);
+}
+```
+
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 代码中使用的bundleName需为应用实际的包名。
+let bundleName = 'com.example.myapplication';
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
+
+try {
+  bundleManager.getBundleInfo(bundleName, bundleFlags).then((data: bundleManager.BundleInfo) => {
+    hilog.info(0x0000, 'testTag', 'getBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getBundleInfoSync<sup>14+</sup>
 
-getBundleInfoSync(bundleName: string, bundleFlags: number, userId: number): BundleInfo
+ArkTS-Dyn: getBundleInfoSync(bundleName: string, bundleFlags: number, userId: number): BundleInfo
+
+ArkTS-Sta: getBundleInfoSync(bundleName: string, bundleFlags: int, userId: int): BundleInfo
 
 以同步方法根据给定的bundleName、bundleFlags和userId获取BundleInfo。
 
@@ -1142,13 +1405,17 @@ getBundleInfoSync(bundleName: string, bundleFlags: number, userId: number): Bund
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型   | 必填 | 说明                                                     |
 | ----------- | ------ | ---- | -------------------------------------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。                                 |
-| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。 |
-| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。              |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](#bundleflag)。 |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。              |
 
 **返回值：**
 
@@ -1190,7 +1457,9 @@ try {
 
 ## bundleManager.getBundleInfoSync<sup>14+</sup>
 
-getBundleInfoSync(bundleName: string, bundleFlags: number): BundleInfo
+ArkTS-Dyn: getBundleInfoSync(bundleName: string, bundleFlags: number): BundleInfo
+
+ArkTS-Sta: getBundleInfoSync(bundleName: string, bundleFlags: int): BundleInfo
 
 以同步方法根据给定的bundleName、bundleFlags获取调用方所在用户下的BundleInfo。
 
@@ -1203,12 +1472,16 @@ getBundleInfoSync(bundleName: string, bundleFlags: number): BundleInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                                                   |
 | ----------- | --------------------- | ---- | ------------------------------------------------------ |
 | bundleName  | string                | 是   | 表示要查询的应用Bundle名称。                             |
-| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。 |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](#bundleflag)。 |
 
 **返回值：**
 
@@ -1247,7 +1520,9 @@ try {
 
 ## bundleManager.getBundleNameByUid<sup>14+</sup>
 
-getBundleNameByUid(uid: number, callback: AsyncCallback\<string>): void
+ArkTS-Dyn: getBundleNameByUid(uid: number, callback: AsyncCallback\<string>): void
+
+ArkTS-Sta: getBundleNameByUid(uid: int, callback: AsyncCallback\<string>): void
 
 根据给定的uid获取对应应用的bundleName。使用callback异步回调。
 
@@ -1258,11 +1533,15 @@ getBundleNameByUid(uid: number, callback: AsyncCallback\<string>): void
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| uid      | number                 | 是   | 表示应用程序的UID。                                            |
+| uid      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示应用程序的UID。                                            |
 | callback | AsyncCallback\<string> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleName；否则为错误对象。 |
 
 **错误码：**
@@ -1299,7 +1578,9 @@ try {
 
 ## bundleManager.getBundleNameByUid<sup>14+</sup>
 
-getBundleNameByUid(uid: number): Promise\<string>
+ArkTS-Dyn: getBundleNameByUid(uid: number): Promise\<string>
+
+ArkTS-Sta: getBundleNameByUid(uid: int): Promise\<string>
 
 根据给定的uid获取对应应用的bundleName。使用Promise异步回调。
 
@@ -1310,11 +1591,15 @@ getBundleNameByUid(uid: number): Promise\<string>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                |
 | ---- | ------ | ---- | ------------------ |
-| uid  | number | 是   | 表示应用程序的UID。 |
+| uid  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示应用程序的UID。 |
 
 **返回值：**
 
@@ -1334,6 +1619,7 @@ getBundleNameByUid(uid: number): Promise\<string>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1351,10 +1637,33 @@ try {
   hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 代码中使用的uid需为应用实际uid。
+let uid = 20010005;
+try {
+  bundleManager.getBundleNameByUid(uid).then((data: string) => {
+    hilog.info(0x0000, 'testTag', 'getBundleNameByUid successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleNameByUid failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getBundleNameByUidSync<sup>14+</sup>
 
-getBundleNameByUidSync(uid: number): string
+ArkTS-Dyn: getBundleNameByUidSync(uid: number): string
+
+ArkTS-Sta: getBundleNameByUidSync(uid: int): string
 
 以同步方法根据给定的uid获取对应应用的bundleName。
 
@@ -1365,11 +1674,15 @@ getBundleNameByUidSync(uid: number): string
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                |
 | ---- | ------ | ---- | ------------------ |
-| uid  | number | 是   | 表示应用程序的UID。 |
+| uid  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示应用程序的UID。 |
 
 **返回值：**
 
@@ -1406,7 +1719,9 @@ try {
 
 ## bundleManager.getAppCloneIdentity<sup>14+</sup>
 
-getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>;
+ArkTS-Dyn: getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>
+
+ArkTS-Sta: getAppCloneIdentity(uid: int): Promise\<AppCloneIdentity>
 
 根据uid查询分身应用的包名和分身索引。使用Promise异步回调。
 
@@ -1417,11 +1732,15 @@ getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>;
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------|
-|    uid     | number |  是  |     表示应用程序的UID。      |
+|    uid     | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  |     表示应用程序的UID。      |
 
 **返回值：**
 
@@ -1441,6 +1760,7 @@ getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>;
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1459,10 +1779,34 @@ try {
   hilog.error(0x0000, 'testTag', 'getAppCloneIdentity failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 代码中使用的uid需为应用实际的uid。
+let uid = 20010005;
+
+try {
+  bundleManager.getAppCloneIdentity(uid).then((res: bundleManager.AppCloneIdentity) => {
+    hilog.info(0x0000, 'testTag', 'getAppCloneIdentity res = %{public}s', JSON.stringify(res));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAppCloneIdentity failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAppCloneIdentity failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getSignatureInfo<sup>18+</sup>
 
-getSignatureInfo(uid: number): SignatureInfo
+ArkTS-Dyn: getSignatureInfo(uid: number): SignatureInfo
+
+ArkTS-Sta: getSignatureInfo(uid: int): SignatureInfo
 
 根据给定的uid获取对应应用的[签名信息](./js-apis-bundleManager-bundleInfo.md#signatureinfo)。
 
@@ -1470,11 +1814,15 @@ getSignatureInfo(uid: number): SignatureInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                |
 | ---- | ------ | ---- | ------------------ |
-| uid  | number | 是   | 表示应用程序的UID。 |
+| uid  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示应用程序的UID。 |
 
 **返回值：**
 
@@ -1511,7 +1859,9 @@ try {
 
 ## bundleManager.getAbilityInfo<sup>20+</sup>
 
-getAbilityInfo(uri: string, abilityFlags: number): Promise\<Array\<AbilityInfo>>
+ArkTS-Dyn: getAbilityInfo(uri: string, abilityFlags: number): Promise\<Array\<AbilityInfo>>
+
+ArkTS-Sta: getAbilityInfo(uri: string, abilityFlags: int): Promise\<Array\<AbilityInfo>>
 
 获取指定资源标识符和组件信息标志对应的Ability信息。使用Promise异步回调。
 
@@ -1523,12 +1873,16 @@ getAbilityInfo(uri: string, abilityFlags: number): Promise\<Array\<AbilityInfo>>
 
 **设备行为差异：** 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回201错误码。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
 | uri         | string   | 是   | 表示统一资源标识符URI，取值与[module.json5配置文件中skills下的uris字段](../../quick-start/module-configuration-file.md#skills标签)相对应。                   |
-| abilityFlags  | number | 是   | 表示[Ability组件信息标志](js-apis-bundleManager.md#abilityflag20)，指示需要获取的Ability组件信息的内容。 |
+| abilityFlags  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示[Ability组件信息标志](js-apis-bundleManager.md#abilityflag20)，指示需要获取的Ability组件信息的内容。 |
 
 **返回值：**
 
@@ -1547,6 +1901,7 @@ getAbilityInfo(uri: string, abilityFlags: number): Promise\<Array\<AbilityInfo>>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1567,6 +1922,30 @@ try {
   hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 代码中使用的uri需为应用实际设置的资源标识符URI。
+let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_WITH_APPLICATION;
+let uri = "https://www.example.com";
+
+try {
+  bundleManager.getAbilityInfo(uri, abilityFlags).then((data: Array<bundleManager.AbilityInfo>) => {
+    hilog.info(0x0000, 'testTag', 'getAbilityInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Cause: %{public}s', message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAbilityInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.cleanBundleCacheFilesForSelf<sup>21+</sup>
 
@@ -1577,6 +1956,10 @@ cleanBundleCacheFilesForSelf(): Promise\<void>
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1602,6 +1985,10 @@ getPluginBundlePathForSelf(pluginBundleName: string): string
 获取指定插件在当前[应用沙箱](../../file-management/app-sandbox-directory.md)内的安装路径。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1643,7 +2030,9 @@ try {
 
 ## bundleManager.getLaunchWantForBundleSync<sup>24+</sup>
 
-getLaunchWantForBundleSync(bundleName: string, userId?: number): Want
+ArkTS-Dyn: getLaunchWantForBundleSync(bundleName: string, userId?: number): Want
+
+ArkTS-Sta: getLaunchWantForBundleSync(bundleName: string, userId?: int): Want
 
 根据给定的包名和用户ID，获取用于启动应用程序的Want参数。
 
@@ -1655,12 +2044,16 @@ getLaunchWantForBundleSync(bundleName: string, userId?: number): Want
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ------------------------- |
 | bundleName | string | 是   | 表示应用的包名。 |
-| userId     | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br/>默认值：调用方所在用户。<br/>取值范围：大于等于0。 |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br/>默认值：调用方所在用户。<br/>取值范围：大于等于0。 |
 
 **返回值：**
 
@@ -1721,11 +2114,11 @@ try {
 
 ## bundleManager.getApplicationLabel
 
-getApplicationLabel(bundleName: string, appIndex: number): Promise\<string>
+ArkTS-Dyn: getApplicationLabel(bundleName: string, appIndex: number): Promise\<string>
+
+ArkTS-Sta: getApplicationLabel(bundleName: string, appIndex: int): Promise\<string>
 
 获取指定包名和分身索引的应用名称。使用Promise异步回调。
-
-**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1733,12 +2126,16 @@ getApplicationLabel(bundleName: string, appIndex: number): Promise\<string>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名        | 类型                                                | 必填 | 说明                    |
 | ------------ | --------------------------------------------------- | ---- | ----------------------- |
 | bundleName  | string |是 | 应用的包名。 |
-| appIndex   | number  | 是   | 表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。  |
+| appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。           |
 
 **返回值：**
 
@@ -1800,7 +2197,7 @@ ArkTS-Sta: getInstalledBundleList(bundleFlags: int): Promise<Array\<BundleInfo>>
 
 | 参数名     | 类型   | 必填 | 说明                                             |
 | ----------- | ------ | ---- | -------------------------------------------------- |
-| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。                |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](#bundleflag)。 |
 
 **返回值：**
 
@@ -1952,6 +2349,10 @@ type ApplicationInfo = _ApplicationInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1) | 应用程序信息。 |
@@ -1965,6 +2366,10 @@ type ModuleMetadata = _ModuleMetadata
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -1980,13 +2385,19 @@ type Metadata = _Metadata
 
 **系统能力**: SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_Metadata](js-apis-bundleManager-metadata.md#metadata-1) | 元数据信息。 |
 
 ## BundleInfo
 
-type BundleInfo = _BundleInfo.BundleInfo
+ArkTS-Dyn: type BundleInfo = _BundleInfo.BundleInfo
+
+ArkTS-Sta: type BundleInfo = _BundleInfo
 
 应用包信息。
 
@@ -1994,14 +2405,20 @@ type BundleInfo = _BundleInfo.BundleInfo
 
 **系统能力**: SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_BundleInfo.BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1) | 应用包信息。 |
+| ArkTS-Dyn: [_BundleInfo.BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1)<br>ArkTS-Sta: [_BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1) | 应用包信息。 |
 
 
 ## UsedScene
 
-type UsedScene = _BundleInfo.UsedScene
+ArkTS-Dyn: type UsedScene = _BundleInfo.UsedScene
+
+ArkTS-Sta: type UsedScene = _UsedScene
 
 权限使用的场景和时机。
 
@@ -2009,13 +2426,19 @@ type UsedScene = _BundleInfo.UsedScene
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_BundleInfo.UsedScene](js-apis-bundleManager-bundleInfo.md#usedscene) | 权限使用的场景和时机。 |
+| ArkTS-Dyn: [_BundleInfo.UsedScene](js-apis-bundleManager-bundleInfo.md#usedscene)<br>ArkTS-Sta: [_UsedScene](js-apis-bundleManager-bundleInfo.md#usedscene) | 权限使用的场景和时机。 |
 
 ## ReqPermissionDetail
 
-type ReqPermissionDetail = _BundleInfo.ReqPermissionDetail
+ArkTS-Dyn: type ReqPermissionDetail = _BundleInfo.ReqPermissionDetail
+
+ArkTS-Sta: type ReqPermissionDetail = _ReqPermissionDetail
 
 应用运行时需向系统申请的权限集合的详细信息。
 
@@ -2023,13 +2446,19 @@ type ReqPermissionDetail = _BundleInfo.ReqPermissionDetail
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_BundleInfo.ReqPermissionDetail](js-apis-bundleManager-bundleInfo.md#reqpermissiondetail) | 应用运行时需向系统申请的权限集合的详细信息。 |
+| ArkTS-Dyn: [_BundleInfo.ReqPermissionDetail](js-apis-bundleManager-bundleInfo.md#reqpermissiondetail)<br>ArkTS-Sta: [_ReqPermissionDetail](js-apis-bundleManager-bundleInfo.md#reqpermissiondetail) | 应用运行时需向系统申请的权限集合的详细信息。 |
 
 ## SignatureInfo
 
-type SignatureInfo = _BundleInfo.SignatureInfo
+ArkTS-Dyn: type SignatureInfo = _BundleInfo.SignatureInfo
+
+ArkTS-Sta: type SignatureInfo = _SignatureInfo
 
 应用包的签名信息。
 
@@ -2037,13 +2466,19 @@ type SignatureInfo = _BundleInfo.SignatureInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_BundleInfo.SignatureInfo](js-apis-bundleManager-bundleInfo.md#signatureinfo) | 应用包的签名信息。 |
+| ArkTS-Dyn: [_BundleInfo.SignatureInfo](js-apis-bundleManager-bundleInfo.md#signatureinfo)<br>ArkTS-Sta: [_SignatureInfo](js-apis-bundleManager-bundleInfo.md#signatureinfo) | 应用包的签名信息。 |
 
 ## HapModuleInfo
 
-type HapModuleInfo = _HapModuleInfo.HapModuleInfo
+ArkTS-Dyn: type HapModuleInfo = _HapModuleInfo.HapModuleInfo
+
+ArkTS-Sta: type HapModuleInfo = _HapModuleInfo
 
 模块信息。
 
@@ -2051,13 +2486,19 @@ type HapModuleInfo = _HapModuleInfo.HapModuleInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_HapModuleInfo.HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md#hapmoduleinfo-1) | 模块信息。 |
+| ArkTS-Dyn: [_HapModuleInfo.HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md#hapmoduleinfo-1)<br>ArkTS-Sta: [_HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md#hapmoduleinfo-1) | 模块信息。 |
 
 ## PreloadItem
 
-type PreloadItem = _HapModuleInfo.PreloadItem
+ArkTS-Dyn: type PreloadItem = _HapModuleInfo.PreloadItem
+
+ArkTS-Sta: type PreloadItem = _PreloadItem
 
 原子化服务中模块的预加载模块信息。
 
@@ -2065,13 +2506,19 @@ type PreloadItem = _HapModuleInfo.PreloadItem
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_HapModuleInfo.PreloadItem](js-apis-bundleManager-hapModuleInfo.md#preloaditem) | 原子化服务中模块的预加载模块信息。 |
+| ArkTS-Dyn: [_HapModuleInfo.PreloadItem](js-apis-bundleManager-hapModuleInfo.md#preloaditem)<br>ArkTS-Sta: [_PreloadItem](js-apis-bundleManager-hapModuleInfo.md#preloaditem) | 原子化服务中模块的预加载模块信息。 |
 
 ## Dependency
 
-type Dependency = _HapModuleInfo.Dependency
+ArkTS-Dyn: type Dependency = _HapModuleInfo.Dependency
+
+ArkTS-Sta: type Dependency = _Dependency
 
 模块所依赖的动态共享库信息。
 
@@ -2079,13 +2526,19 @@ type Dependency = _HapModuleInfo.Dependency
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_HapModuleInfo.Dependency](js-apis-bundleManager-hapModuleInfo.md#dependency) | 模块所依赖的动态共享库信息。 |
+| ArkTS-Dyn: [_HapModuleInfo.Dependency](js-apis-bundleManager-hapModuleInfo.md#dependency)<br>ArkTS-Sta: [_Dependency](js-apis-bundleManager-hapModuleInfo.md#dependency) | 模块所依赖的动态共享库信息。 |
 
 ## RouterItem<sup>12+</sup>
 
-type RouterItem = _HapModuleInfo.RouterItem
+ArkTS-Dyn: type RouterItem = _HapModuleInfo.RouterItem
+
+ArkTS-Sta: type RouterItem = _RouterItem
 
 模块配置的路由表信息。
 
@@ -2093,13 +2546,19 @@ type RouterItem = _HapModuleInfo.RouterItem
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_HapModuleInfo.RouterItem](js-apis-bundleManager-hapModuleInfo.md#routeritem12) | 模块配置的路由表信息。 |
+| ArkTS-Dyn: [_HapModuleInfo.RouterItem](js-apis-bundleManager-hapModuleInfo.md#routeritem12)<br>ArkTS-Sta: [_RouterItem](js-apis-bundleManager-hapModuleInfo.md#routeritem12) | 模块配置的路由表信息。 |
 
 ## DataItem<sup>12+</sup>
 
-type DataItem = _HapModuleInfo.DataItem
+ArkTS-Dyn: type DataItem = _HapModuleInfo.DataItem
+
+ArkTS-Sta: type DataItem = _DataItem
 
 模块配置的路由表中的自定义数据。
 
@@ -2107,13 +2566,19 @@ type DataItem = _HapModuleInfo.DataItem
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_HapModuleInfo.DataItem](js-apis-bundleManager-hapModuleInfo.md#dataitem12) | 模块配置的路由表中的自定义数据。 |
+| ArkTS-Dyn: [_HapModuleInfo.DataItem](js-apis-bundleManager-hapModuleInfo.md#dataitem12)<br>ArkTS-Sta: [_DataItem](js-apis-bundleManager-hapModuleInfo.md#dataitem12) | 模块配置的路由表中的自定义数据。 |
 
 ## AbilityInfo
 
-type AbilityInfo = _AbilityInfo.AbilityInfo
+ArkTS-Dyn: type AbilityInfo = _AbilityInfo.AbilityInfo
+
+ArkTS-Sta: type AbilityInfo = _AbilityInfo
 
 Ability信息。
 
@@ -2121,13 +2586,19 @@ Ability信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_AbilityInfo.AbilityInfo](js-apis-bundleManager-abilityInfo.md#abilityinfo-1) |Ability信息。 |
+| ArkTS-Dyn: [_AbilityInfo.AbilityInfo](js-apis-bundleManager-abilityInfo.md#abilityinfo-1)<br>ArkTS-Sta: [_AbilityInfo](js-apis-bundleManager-abilityInfo.md#abilityinfo-1) |Ability信息。 |
 
 ## WindowSize
 
-type WindowSize = _AbilityInfo.WindowSize
+ArkTS-Dyn: type WindowSize = _AbilityInfo.WindowSize
+
+ArkTS-Sta: type WindowSize = _WindowSize
 
 窗口尺寸。
 
@@ -2135,14 +2606,20 @@ type WindowSize = _AbilityInfo.WindowSize
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_AbilityInfo.WindowSize](js-apis-bundleManager-abilityInfo.md#windowsize) |窗口尺寸。 |
+| ArkTS-Dyn: [_AbilityInfo.WindowSize](js-apis-bundleManager-abilityInfo.md#windowsize)<br>ArkTS-Sta: [_WindowSize](js-apis-bundleManager-abilityInfo.md#windowsize) |窗口尺寸。 |
 
 
 ## ExtensionAbilityInfo
 
-type ExtensionAbilityInfo = _ExtensionAbilityInfo.ExtensionAbilityInfo
+ArkTS-Dyn: type ExtensionAbilityInfo = _ExtensionAbilityInfo.ExtensionAbilityInfo
+
+ArkTS-Sta: type ExtensionAbilityInfo = _ExtensionAbilityInfo
 
 ExtensionAbility信息。
 
@@ -2150,9 +2627,13 @@ ExtensionAbility信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_ExtensionAbilityInfo.ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md#extensionabilityinfo-1) |ExtensionAbility信息。 |
+| ArkTS-Dyn: [_ExtensionAbilityInfo.ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md#extensionabilityinfo-1)<br>ArkTS-Sta: [_ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md#extensionabilityinfo-1) |ExtensionAbility信息。 |
 
 ## ElementName
 
@@ -2164,13 +2645,19 @@ ElementName信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_ElementName](js-apis-bundleManager-elementName.md#elementname-1) |ElementName信息。 |
 
 ## Skill<sup>12+</sup>
 
-type Skill = _Skill.Skill
+ArkTS-Dyn: type Skill = _Skill.Skill
+
+ArkTS-Sta: type Skill = _Skill
 
 skill信息。
 
@@ -2178,13 +2665,19 @@ skill信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1) |skill信息。 |
+| ArkTS-Dyn: [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1)<br>ArkTS-Sta: [_Skill](js-apis-bundleManager-skill.md#skill-1) |skill信息。 |
 
 ## SkillUrl<sup>12+</sup>
 
-type SkillUrl = _Skill.SkillUri
+ArkTS-Dyn: type SkillUrl = _Skill.SkillUri
+
+ArkTS-Sta: type SkillUrl = _SkillUri
 
 SkillUri信息。
 
@@ -2192,21 +2685,31 @@ SkillUri信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_Skill.SkillUri](js-apis-bundleManager-skill.md#skilluri) |SkillUri信息。 |
+| ArkTS-Dyn: [_Skill.SkillUri](js-apis-bundleManager-skill.md#skilluri)<br>ArkTS-Sta: [_SkillUri](js-apis-bundleManager-skill.md#skilluri) |SkillUri信息。 |
 
 ## AppCloneIdentity<sup>15+</sup>
 
-type AppCloneIdentity = _BundleInfo.AppCloneIdentity
+ArkTS-Dyn: type AppCloneIdentity = _BundleInfo.AppCloneIdentity
+
+ArkTS-Sta: type AppCloneIdentity = _AppCloneIdentity
 
 描述应用包的身份信息。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_BundleInfo.AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14) |应用包的身份信息。 |
+| ArkTS-Dyn: [_BundleInfo.AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)<br>ArkTS-Sta: [_AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14) |应用包的身份信息。 |
 
 ## AlternateIconInfo
 
