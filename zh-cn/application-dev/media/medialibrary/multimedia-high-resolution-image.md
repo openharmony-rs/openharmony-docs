@@ -369,12 +369,14 @@ static bool IsHighPixelImage(int32_t fd)
 3. 进入相机、视频、算法或某些硬件编解码链路时，可优先选择NV21或NV12，避免不必要的RGBA与YUV转换。
 4. 在指定目标像素格式时，需要确认目标处理链路和显示链路是否支持对应格式，做好充分验证。
 
+**示例（ArkTS）：**
+
 ```typescript
 import { image } from '@kit.ImageKit';
 
 const decodingOptions: image.DecodingOptions = {
   desiredSize: { width: 0, height: 0 }, // 这是desiredSize的默认值，在该配置下会按照原图尺寸解码。
-  desiredPixelFormat: image.PixelMapFormat.RGB_565
+  desiredPixelFormat: image.PixelMapFormat.RGB_565  //可根据具体需求配置不同解码格式
 };
 ```
 
@@ -396,8 +398,6 @@ const decodingOptions: image.DecodingOptions = {
 降采样解码与区域解码示例请参考[图片区域解码与下采样(C/C++)](../image/image-region-and-downsampling-c.md)或[图片区域解码与下采样(ArkTS)](../image/image-region-and-downsampling.md)。
 
 ## 高像素图片处理总结
-
-为尽可能减少内存等资源占用，降低高像素图片处理过程中的内存风险[上传、分享等场景使用高像素图片失败或异常退出](#上传分享等场景使用高像素图片失败或异常退出)，以下是高像素图片处理推荐的方式：
 
 1. 读取图片后先获取真实宽高，估算解码后内存，再决定处理策略。
 2. 仅全图展示时请使用降采样解码，不建议直接按原始尺寸解码送显。
