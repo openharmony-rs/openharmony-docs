@@ -991,7 +991,7 @@ struct MenuExample {
 }
 ```
 
-![preview-builder](figures/en-us_image_backgroundEffect.png)
+![preview-builder](figures/image-backgroundEffect.png)
 
 ### Sample 13: Configuring Lift-Finger Interruption for a Shared Element Transition
 

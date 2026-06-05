@@ -75,7 +75,7 @@ export default {
 }
 ```
 
-![zh-cn_image_js_offsetscreencanvas_rendering](figures/zh-cn_image_js_offsetscreencanvas_rendering.png)
+![image-js-offsetscreencanvas-rendering](figures/image-js-offsetscreencanvas-rendering.png)
 
 ## 方法
 

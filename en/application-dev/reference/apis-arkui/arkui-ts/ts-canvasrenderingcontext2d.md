@@ -1095,7 +1095,7 @@ struct HeightExample {
 }
 ```
 
-![en-us_image_canvas_height](figures/en-us_image_canvas_height.png)
+![image-canvas-height](figures/image-canvas-height.png)
 
 
 ### width
@@ -1137,7 +1137,7 @@ struct WidthExample {
 }
 ```
 
-![en-us_image_canvas_width](figures/en-us_image_canvas_width.png)
+![image-canvas-width](figures/image-canvas-width.png)
 
 
 ### canvas<sup>13+</sup>
@@ -1192,7 +1192,7 @@ struct CanvasExample {
 }
 ```
 
-![en-us_image_canvas](figures/en-us_image_canvas.png)
+![image-canvas](figures/image-canvas.png)
 
 
 ### imageSmoothingQuality
@@ -2948,7 +2948,7 @@ Saves this layer.
   }
 
   ```
-   ![en-us_image_CanvasSavelayer](figures/en-us_image_CanvasSavelayer.png)
+   ![image-CanvasSavelayer](figures/image-CanvasSavelayer.png)
 
 ### restoreLayer<sup>12+</sup>
 
@@ -4849,7 +4849,7 @@ struct Index {
 }
 ```
 
-![](figures/en-us_image_canvas_fill_rule_example.png)
+![image-canvas-fill-rule-example](figures/image-canvas-fill-rule-example.png)
 
 ## CanvasLineCap
 

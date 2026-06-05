@@ -317,11 +317,11 @@ struct BorderExample {
 
 从左至右显示语言示例图
 
-![zh-cm_image_border_ltr](figures/zh-cn_image_border_ltr.png)
+![zh-cm_image_border_ltr](figures/image-border-ltr.png)
 
 从右至左显示语言示例图
 
-![zh-cm_image_border_rtl](figures/zh-cn_image_border_rtl.png)
+![zh-cm_image_border_rtl](figures/image-border-rtl.png)
 
 ### 示例3（设置离屏圆角）
 
