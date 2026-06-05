@@ -122,7 +122,7 @@ export default {
 }
 ```
 
-  ![Yellow-triangle-01](figures/Yellow-triangle.png)
+  ![Yellow-triangle-01](figures/Yellow-triangle-01.png)
 
 
 ## moveTo
