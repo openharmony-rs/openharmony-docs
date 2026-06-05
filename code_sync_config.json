@@ -52744,6 +52744,21 @@
 						"end_line":321,
 						"name":"close",
 						"start_line":308
+					},
+					{
+						"end_line":337,
+						"name":"setDtr",
+						"start_line":325
+					},
+					{
+						"end_line":353,
+						"name":"getDsr",
+						"start_line":341
+					},
+					{
+						"end_line":372,
+						"name":"onDisconnect",
+						"start_line":357
 					}
 				]
 			}
