@@ -180,7 +180,7 @@ target_link_libraries(entry PUBLIC libimage_source.so libimage_common.so)
 #include <multimedia/image_framework/image_common.h>
 
 /**
- * @brief 通过文件描述符获取图片 MIME 类型。
+ * @brief 通过文件描述符获取图片MIME类型。
  *
  * 返回的字符串由调用者负责释放（使用 free()）。
  *
