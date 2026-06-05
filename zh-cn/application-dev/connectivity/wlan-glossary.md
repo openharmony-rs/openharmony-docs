@@ -39,7 +39,7 @@ Enhanced Multi-link Single Radio。[MLO](#mlo-多链路操作)技术中的一种
 Multi-link Single Radio。[MLO](#mlo-多链路操作)技术中的一种连接类型，设备在多个频段上共享单根天线进行数据传输。
 
 ### MLO; 多链路操作
-Multi-Link Operation。[Wi-Fi](#wi-fi) 7（802.11be）引入的多频段并发技术，允许设备同时在多个频段上进行数据传输，通过聚合多个链路的带宽提升传输速率和可靠性。
+Multi-Link Operation。Wi-Fi7（802.11be）引入的多频段并发技术，允许设备同时在多个频段上进行数据传输，通过聚合多个链路的带宽提升传输速率和可靠性。
 
 ## O
 
