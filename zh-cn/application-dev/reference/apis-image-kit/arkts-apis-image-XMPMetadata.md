@@ -1,4 +1,4 @@
-# class (XMPMetadata)
+# Class (XMPMetadata)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
@@ -69,7 +69,7 @@ async function RegisterNamespacePrefix() {
   try {
     let xmpMetadata = new image.XMPMetadata();
     // 注册自定义命名空间，注册后方可使用该前缀创建标签。
-    let xmpNamespace: image.XMPNamespace = {uri: "http://mybook.com/story/1.0/", prefix: "book"};
+    let xmpNamespace: image.XMPNamespace = {uri: "urn:example:book:1.0", prefix: "book"};
     await xmpMetadata.registerXMPNamespace(xmpNamespace);
     console.info('Succeeded in registering namespace prefix.');
   } catch (error) {

@@ -344,6 +344,7 @@
           SelectionModel.getInstance().setSelectionContent(content);
         } catch (error) {
           hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to get selection content: ${JSON.stringify(error)}`);
+          return;
         }
         if (!this.panel_) {
           hilog.info(0x0000, 'SelectionExtensionAbility', 'Panel is not created yet.');

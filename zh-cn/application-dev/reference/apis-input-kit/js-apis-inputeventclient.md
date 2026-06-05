@@ -155,6 +155,8 @@ createTouchController(): Promise&lt;TouchController&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+
 **返回值：**
 
 | 类型                   | 说明       |
@@ -354,8 +356,8 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 | 参数名      | 类型                   | 必填  | 说明       |
 | -------- | --------------------- | ---- | --------- |
 | displayId |ArkTS-Dyn: number <br>ArkTS-Sta: int| 是   | 目标显示器ID。|
-| displayX |ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 目标位置相对于显示器左边缘的X坐标，单位:px。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器宽度-1]。|
-| displayY | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 目标位置相对于显示器上边缘的Y坐标，单位:px。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器高度-1]。|
+| displayX |ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 目标位置相对于显示器左边缘的X坐标，单位为像素（px）。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器宽度-1]。|
+| displayY | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 目标位置相对于显示器上边缘的Y坐标，单位为像素（px）。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器高度-1]。|
 
 **返回值：**
 
@@ -702,8 +704,8 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 | --------- | ------ | ---- | ---- | ------- |
 | id | number | 否 | 否 | 触点唯一标识。取值范围为[0, 9]，且必须为整数。 |
 | displayId | number | 否 | 否 | 触点所在屏幕的唯一标识，必须为整数。 |
-| displayX | number | 否 | 否 | 触点相对于屏幕左边缘的X坐标，单位为px，必须为整数。 |
-| displayY | number | 否 | 否 | 触点相对于屏幕上边缘的Y坐标，单位为px，必须为整数。 |
+| displayX | number | 否 | 否 | 触点相对于屏幕左边缘的X坐标，单位为像素（px），必须为整数。 |
+| displayY | number | 否 | 否 | 触点相对于屏幕上边缘的Y坐标，单位为像素（px），必须为整数。 |
 
 ## TouchController
 
@@ -727,6 +729,8 @@ touchDown(touch: TouchPoint): Promise&lt;void&gt;
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 
@@ -820,6 +824,8 @@ touchMove(touch: TouchPoint): Promise&lt;void&gt;
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -861,6 +867,8 @@ touchUp(touch: TouchPoint): Promise&lt;void&gt;
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
 
 **参数：**
 

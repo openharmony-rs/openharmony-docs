@@ -224,9 +224,9 @@ link2!.get() // == 49
 
 @StorageLink与AppStorage配合使用，通过AppStorage中的属性创建双向数据同步。
 
-```ts
-'use static'
+<!-- @[AppStorageUI](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageDecorator/entry/src/main/ets/pages/AppStorageUI.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStorageLink, StorageLink, Text } from '@kit.ArkUI';
 
 class Data {
@@ -240,35 +240,43 @@ class Data {
 @Entry
 @Component
 struct Index {
-  @StorageLink('PropA') storageLink: number = 1;
-  @LocalStorageLink('LinkA') localStorageLink: number = 1;
-  @StorageLink('PropB') storageLinkObject: Data = new Data(1);
-  @LocalStorageLink('LinkB') localStorageLinkObject: Data = new Data(1);
+  @StorageLink('StorageLinkBasic') storageLink: number = 1;
+  @LocalStorageLink('LocalStorageLinkBasic') localStorageLink: number = 1;
+  @StorageLink('StorageLinkObject') storageLinkObject: Data = new Data(1);
+  @LocalStorageLink('LocalStorageLinkObject') localStorageLinkObject: Data = new Data(1);
   static {
-    AppStorage.setOrCreate<Double>('PropA', 47);
-    AppStorage.setOrCreate<Data>('PropB', new Data(50));
+    AppStorage.setOrCreate<number>('StorageLinkBasic', 47);
+    AppStorage.setOrCreate<Data>('StorageLinkObject', new Data(50));
   }
 
   build() {
     Column() {
       Button(`From AppStorage ${this.storageLink}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.storageLink += 1;
         })
 
       Button(`From LocalStorage ${this.localStorageLink}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.localStorageLink += 1;
         })
 
       // class属性监听需要使用@Observed装饰才能观察变化
       Button(`From AppStorage ${this.storageLinkObject.code}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.storageLinkObject.code += 1;
         })
 
       // class属性监听需要使用@Observed装饰才能观察变化
       Button(`From LocalStorage ${this.localStorageLinkObject.code}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.localStorageLinkObject.code += 1;
         })
@@ -279,13 +287,15 @@ struct Index {
 }
 ```
 
+![appstorage-withlocalstorage](../figures/appstorage_1.gif)
+
 ### \@StoragePropRef获得AppStorage中数据源的引用
 
 \@StoragePropRef会获得数据源的引用，对于复杂类型，修改属性将在AppStorage中体现。若希望不影响AppStorage中的数据源，则需重新赋值对象。
 
-```ts
-'use static'
+<!-- @[AppStoragePropRefDataRef](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageDecorator/entry/src/main/ets/pages/AppStoragePropRefDataRef.ets) -->
 
+``` TypeScript
 import { 
   Entry, 
   Text, 
@@ -311,39 +321,48 @@ class Data {
 @Entry
 @Component
 struct Index {
-  @StoragePropRef('PropA') data: Data = new Data(100);
+  @StoragePropRef('PropRefA') data: Data = new Data(100);
   static {
-    AppStorage.setOrCreate<Data>('PropA', new Data(50));
+    AppStorage.setOrCreate<Data>('PropRefA', new Data(50));
   }
 
   build() {
     Column() {
       Text(`data property code is ${this.data.code}`)
+        .fontSize(20)
+        .margin(10)
       Button('modify data property code')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.data.code += 10;
           // 如果只点击该Button，由于data是AppStorage中数据源的引用，则AppStorage中数据源的属性也会修改。
-          console.info(`PropA in AppStorage ${AppStorage.get<Data>('PropA')!.code}`);
+          console.info(`PropRefA in AppStorage ${AppStorage.get<Data>('PropRefA')!.code}`);
         })
 
       Button('replace data')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.data = new Data(200);
           // 如果点击该Button，本地的data变量会引用新的对象，所以不会影响AppStorage中的数据源。
-          console.info(`PropA in AppStorage ${AppStorage.get<Data>('PropA')!.code}`);
+          console.info(`PropRefA in AppStorage ${AppStorage.get<Data>('PropRefA')!.code}`);
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![appstorage-storageref](../figures/appstorage_2.gif)
 
 ### AppStorage支持联合类型
 
 在下面的示例中，变量A的类型为number | null，变量B的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
-```ts
-'use static'
+<!-- @[AppStorageUnionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageDecorator/entry/src/main/ets/pages/AppStorageUnionType.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Row, StorageLink, StoragePropRef, Text } from '@kit.ArkUI';
 
 @Component
@@ -405,9 +424,9 @@ struct Index {
 
 以下示例中，@StorageLink装饰的selectedDate类型为Date。点击Button改变selectedDate的值，视图会随之刷新。
 
-```ts
-'use static'
+<!-- @[AppStorageDate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageDecorator/entry/src/main/ets/pages/AppStorageDate.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
@@ -447,9 +466,9 @@ struct DateSample {
 
 在下面的示例中，@StorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
 
-```ts
-'use static'
+<!-- @[AppStorageMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageDecorator/entry/src/main/ets/pages/AppStorageMap.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Row, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
@@ -489,9 +508,9 @@ struct MapSample {
 
 在下面的示例中，@StorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，视图会随之刷新。
 
-```ts
-'use static'
+<!-- @[AppStorageSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageDecorator/entry/src/main/ets/pages/AppStorageSet.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Row, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry

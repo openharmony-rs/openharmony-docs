@@ -38,7 +38,7 @@
 
 ### V1->V2
 - V1的状态变量传递给V2的[\@Param](./arkts-static-new-param.md)，V1的状态变量在\@ComponentV2中有观察能力。完整示例见[常见场景](#常见场景)。
-```ts
+``` TypeScript
 @Observed
 class ObservedClass {
 }
@@ -82,7 +82,7 @@ struct CompV2 {
 
 在V2->V1时，V2的状态变量传递给V1的\@ObjectLink，V2的状态变量在\@Component中有观察能力。完整示例见[常见场景](#常见场景)。
 
-```ts
+``` TypeScript
 'use static'
 import { Entry, Column, Component, ComponentV2, Local, ObjectLink, Observed } from '@kit.ArkUI';
 
@@ -123,14 +123,14 @@ struct CompV1 {
 
 - ArkTS-Sta中V1->V2传递复杂类型数据，由于@Component和@ComponentV2天然支持V1/V2状态变量的传递，因此无需调用`UIUtils.enableV2Compatibility`，即可实现V1和V2的数据联动。
 
-```ts
+``` TypeScript
 // 无需调用enableV2Compatibility
 SubComponentV2({param: this.state})
 ```
 
 - ArkTS-Sta中V2->V1传递复杂类型数据，由于@Component和@ComponentV2天然支持V1/V2状态变量的传递，因此无需调用`UIUtils.enableV2Compatibility`，即可实现V2和V1的数据联动。
 
-```ts
+``` TypeScript
 // 无需调用enableV2Compatibility与makeV1Observed
 SubComponentV2({objectLink: this.local})
 ```
@@ -143,7 +143,8 @@ SubComponentV2({objectLink: this.local})
 在ArkTS-Sta中，普通class（无@Observed/@ObservedV2）不可观察。
 
 **V1->V2**
-```ts
+<!-- @[MixCommonV1ToV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixCommonV1ToV2.ets) -->
+``` TypeScript
 'use static'
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, State, Param } from '@kit.ArkUI';
 
@@ -188,7 +189,8 @@ struct CompV2 {
 
 **V2->V1**
 
-```ts
+<!-- @[MixCommonV2ToV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixCommonV2ToV1.ets) -->
+``` TypeScript
 'use static'
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, Local, ObjectLink } from '@kit.ArkUI';
 
@@ -241,7 +243,8 @@ struct CompV1 {
     - 在V1中，如果将非`@Track`装饰的属性使用在UI中，是非法行为，会有运行时报错。
     - 在V2中，非`@Track`装饰的属性使用在UI不会有运行时报错，但不会响应更新。
 
-```ts
+<!-- @[MixObservedV1ToV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixObservedV1ToV2.ets) -->
+``` TypeScript
 'use static'
 import { Entry, Text, Column, Component, ComponentV2, ClickEvent, State, Param, Observed, Track } from '@kit.ArkUI';
 
@@ -284,7 +287,8 @@ struct CompV2 {
 **V2->V1**
 - `ObservedClass`是\@Observed装饰的class，该类的状态变量传递给V1可观察。
 - 只有[\@Track](./arkts-static-track.md)装饰的变量在V1和V2中可观察。非\@Track的变量在V1中使用在UI上会有运行时报错，在V2中不会报错，但不会响应刷新。
-```ts
+<!-- @[MixObservedV2ToV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixObservedV2ToV1.ets) -->
+``` TypeScript
 'use static'
 import { Entry, Text, Column, Component, ComponentV2, ClickEvent, Local, ObjectLink, Observed, Track } from '@kit.ArkUI';
 
@@ -335,7 +339,8 @@ struct CompV1 {
 ### 内置类型
 以Array为例。
 **V1->V2**
-```ts
+<!-- @[MixArrayV1ToV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixArrayV1ToV2.ets) -->
+``` TypeScript
 'use static'
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, State, Param } from '@kit.ArkUI';
 
@@ -378,7 +383,8 @@ struct ArrayCompV2 {
 
 
 **V2->V1**
-```ts
+<!-- @[MixArrayV2ToV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixArrayV2ToV1.ets) -->
+``` TypeScript
 'use static'
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, Local, ObjectLink } from '@kit.ArkUI';
 
@@ -427,7 +433,8 @@ struct ArrayCompV1 {
 下面的示例中：
 - ArkTS-Sta状态变量已默认具有V2的观察能力，因此可直接传递至V2子组件。
 
-```ts
+<!-- @[MixTwoDimV1ToV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixTwoDimV1ToV2.ets) -->
+``` TypeScript
 'use static'
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, Divider, ForEach, Row, Require, Param, State } from '@kit.ArkUI';
 
@@ -490,7 +497,8 @@ struct CompV1 {
 下面的示例中：
 - V2中的二维数组已具有V2观察能力，在V1中使用\@ObjectLink接收二维数组的内层数组，点击`Button('@ObjectLink push')`，会正常响应刷新。
 
-```ts
+<!-- @[MixTwoDimV2ToV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixTwoDimV2ToV1.ets) -->
+``` TypeScript
 'use static'
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, Divider, ForEach, Row, ObjectLink, Local } from '@kit.ArkUI';
 
@@ -558,7 +566,8 @@ struct IndexPage {
 - \@ObjectLink和\@Param是同一个对象的引用，其属性改变也会带来其他引用的刷新。
 
 完整示例如下。
-```ts
+<!-- @[MixNestedV1ToV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixNestedV1ToV2.ets) -->
+``` TypeScript
 'use static'
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, ForEach, Observed, State, Track, ObjectLink, Require, Param } from '@kit.ArkUI';
 
@@ -686,7 +695,8 @@ struct NestedClassV2 {
 **V2->V1**
 - V1中仅能观察第一层的变化，所以需要多层自定义组件，且每层都配合使用\@ObjectLink来接收，从而实现深度观察能力。
 
-```ts
+<!-- @[MixNestedV2ToV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixNestedV2ToV1.ets) -->
+``` TypeScript
 'use static'
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, ForEach, Observed, Track, ObjectLink, Local } from '@kit.ArkUI';
 

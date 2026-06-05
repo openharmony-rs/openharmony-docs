@@ -141,19 +141,25 @@ The specified device ID is not found.
 Failed to install the HAP because the HAP fails to be parsed.
 
 **错误描述**<br/>
-调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，传入的HAP解析失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
+调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，传入的HAP或APP解析失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
 
 **可能原因**<br/>
-1. HAP的格式不是zip格式。
+1. HAP或APP的格式不是zip格式。
 2. HAP的配置文件不满足json格式。
 3. HAP的配置文件缺少必要的字段。
 4. HAP中配置了可执行二进制文件（即module.json5中配置了[executableBinaryPaths标签](../../quick-start/module-configuration-file.md#executablebinarypaths标签)），但是没有配置解压模式，或当前设备不支持安装配置了该标签的HAP。
+5. 传入的安装路径中或目录下存在多个APP。
+6. APP中不包含适合在当前设备类型上安装的HAP。
+7. 应用配置了skill，但配置的skill名称、skill目录名与SKILL.md中frontmatter的name不一致。
 
 **处理步骤**<br/>
-1. 确认hap的格式是zip。
-2. 确认hap的配置文件满足[配置文件json格式](../../quick-start/application-configuration-file-overview-stage.md)。
-3. 检查DevEco Studio编译hap时是否有错误提示，缺省字段时会有相应的报错。
+1. 确认HAP或APP的格式是zip。
+2. 确认HAP的配置文件满足[配置文件json格式](../../quick-start/application-configuration-file-overview-stage.md)。
+3. 检查DevEco Studio编译HAP或APP时是否有错误提示，缺省字段时会有相应的报错。
 4. 配置应用为解压模式，即在应用的[module.json5配置文件](../../quick-start/module-configuration-file.md#配置文件标签)中设置compressNativeLibs标签为true；或更换为PC/2in1设备。
+5. 检查传入的路径下是否包含多个APP。
+6. 确认APP内是否存在支持当前设备类型的HAP。
+7. 检查module.json中skillProfiles下skill的name、skills目录下的子目录名称、SKILL.md中frontmatter的name，确保三者一致。
 
 ## 17700011 签名校验失败导致应用安装失败
 
@@ -165,16 +171,16 @@ Failed to install the HAP because the HAP signature fails to be verified.
 
 **可能原因**<br/>
 
-1. HAP没有签名。
-2. hap签名信息来源不可靠。
+1. HAP或APP没有签名。
+2. HAP或APP签名信息来源不可靠。
 3. 升级的HAP与已安装的HAP签名信息不一致。
-4. 多个hap的签名信息不一致。
+4. 多个HAP的签名信息不一致。
 
 **处理步骤**<br/>
-1. 确认hap包是否签名成功。
-2. 确认hap包的签名证书是从应用市场申请。
-3. 确认多个hap包签名时使用的证书相同。
-4. 确认升级的hap包签名证书与已安装的hap包相同。
+1. 确认HAP包或APP包是否签名成功。
+2. 确认HAP包或APP包的签名证书是从应用市场申请。
+3. 确认多个HAP包签名时使用的证书相同。
+4. 确认升级的HAP包签名证书与已安装的HAP包相同。
 
 ## 17700012 安装包路径无效或者文件过大导致应用安装失败
 
@@ -185,13 +191,13 @@ Failed to install the HAP because the HAP path is invalid or the HAP is too larg
 调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，安装包路径无效或者文件过大导致应用安装失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
 
 **可能原因**<br/>
-1. 输入错误，HAP的文件路径不存在。
-2. HAP的路径无法访问。
+1. 输入错误，HAP或APP的文件路径不存在。
+2. HAP或APP的路径无法访问。
 3. HAP的大小超过最大限制4G。
 
 **处理步骤**<br/>
-1. 确认HAP是否存在。
-2. 查看HAP的可执行权限，是否可读。
+1. 确认HAP或APP是否存在。
+2. 查看HAP或APP的可执行权限，是否可读。
 3. 查看HAP的大小是否超过4G。
 
 ## 17700015 多个HAP配置信息不同导致应用安装失败
@@ -254,7 +260,7 @@ Failed to install the HAP since the version of the HAP to install is too early.
 Failed to install the HAP or HSP because the dependent module does not exist.
 
 **错误描述**<br/>
-安装hap或者hsp时，依赖的模块不存在。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
+安装HAP或HSP时，依赖的模块不存在。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
 
 **可能原因**<br/>
 依赖的模块没有安装。
@@ -693,10 +699,10 @@ Failed to install the HAP because the bundleName is different from the bundleNam
 企业mdm应用自升级时，安装的应用与调用方包名不同。
 
 **可能原因**<br/>
-要安装的hap或hsp不属于当前应用。
+要安装的HAP或HSP不属于当前应用。
 
 **处理步骤**<br/>
-检查要安装的hap或hsp是否属于当前应用。
+检查要安装的HAP或HSP是否属于当前应用。
 
 ## 17700050 企业MDM应用/普通企业应用不允许安装
 **错误信息**<br/>
@@ -906,7 +912,7 @@ ShortcutInfo结构体中的want指定的ability不存在，ShortcutInfo结构体
 Failed to install the HAP because installing the native package failed.
 
 **错误描述**<br/>
-安装hap时，native软件包安装失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
+安装HAP时，native软件包安装失败。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
 
 **可能原因**<br/>native软件包配置信息有误。
 
@@ -1355,10 +1361,10 @@ Failed to add extended resources.
 扩展资源添加失败。
 
 **可能原因**<br/>
-hsp文件不存在或者不可信。
+HSP文件不存在或不可信。
 
 **处理步骤**<br/>
-请传递正确且可信hsp文件路径。
+请传递正确且可信HSP文件路径。
 
 ## 17700302 扩展资源删除失败
 **错误信息**<br/>
@@ -1368,7 +1374,7 @@ Failed to remove extended resources.
 扩展资源删除失败。
 
 **可能原因**<br/>
-moduleName对应的hsp不存在。
+moduleName对应的HSP不存在。
 
 **处理步骤**<br/>
 请传递有效的moduleName。
@@ -1381,7 +1387,7 @@ Failed to obtain extended resources.
 扩展资源查询失败。
 
 **可能原因**<br/>
-bundleName没有hsp。
+bundleName没有HSP。
 
 **处理步骤**<br/>
 请传递有效的bundleName。
@@ -1394,10 +1400,10 @@ Failed to enable the dynamic icon.
 动态图标使能失败。
 
 **可能原因**<br/>
-hsp包没有正确的图标资源。
+HSP包没有正确的图标资源。
 
 **处理步骤**<br/>
-使能动态图标前确保moduleName对应的hsp有效且包含图标资源。
+使能动态图标前确保moduleName对应的HSP有效且包含图标资源。
 
 ## 17700305 动态图标去使能失败
 **错误信息**<br/>

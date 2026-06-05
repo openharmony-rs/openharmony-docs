@@ -74,7 +74,7 @@ clickEffect(effect: Optional\<ClickEffect | null>): T
 
 ## clickEffect<sup>23+</sup>
 
-clickEffect(value: ClickEffect | null | undefined): this
+clickEffect(value: ClickEffect | null | undefined)
 
 设置当前组件的点击回弹效果。
 
@@ -91,12 +91,6 @@ clickEffect(value: ClickEffect | null | undefined): this
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | effect | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ClickEffect](#clickeffect对象说明)&nbsp;\|&nbsp;null> | 是   | 设置当前组件的点击回弹效果。<br/>**说明：**<br/>可通过undefined或者null取消点击回弹效果。<br/>不建议在组件大小动态变化的场景中使用该功能。<br/>当组件无法触发通用事件时，不支持该属性。<br/>回弹触发缩放后可能造成触摸点不在控件上，控件上无法响应手势事件。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
 
 ## ClickEffect对象说明
 

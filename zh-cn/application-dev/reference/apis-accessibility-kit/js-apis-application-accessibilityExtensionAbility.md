@@ -434,7 +434,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ## AccessibilityExtensionAbility.onKeyEvent<sup>(deprecated)</sup>
 
-onKeyEvent(keyEvent: KeyEvent): boolean;
+onKeyEvent(keyEvent: KeyEvent): boolean
 
 在物理按键按下时回调此方法，可以在该方法中根据业务判断是否对事件进行拦截。
 

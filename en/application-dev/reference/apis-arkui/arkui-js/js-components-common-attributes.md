@@ -109,7 +109,7 @@ export default {
 }
 ```
 
-![en-us-attributes](figures/en-us-attributes.gif)
+![us-attributes](figures/us-attributes.gif)
 
 ### Example 2
 
@@ -147,4 +147,4 @@ export default {
 }
 ```
 
-![en-us_image1](figures/en-us_image1.png)
+![us-image](figures/us-image.png)

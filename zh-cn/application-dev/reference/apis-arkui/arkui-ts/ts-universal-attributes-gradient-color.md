@@ -82,7 +82,7 @@ linearGradient(options: Optional\<LinearGradientOptions>): T
 
 ## linearGradient<sup>23+</sup>
 
-linearGradient(value: LinearGradientOptions | undefined): this
+linearGradient(value: LinearGradientOptions | undefined)
 
 线性渐变。
 
@@ -99,12 +99,6 @@ linearGradient(value: LinearGradientOptions | undefined): this
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value | [LinearGradientOptions](#lineargradientoptions18对象说明) \| undefined | 是   | 线性渐变。<br/>当value的值为undefined时，恢复为无线性渐变的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## LinearGradientOptions<sup>18+</sup>对象说明
 
@@ -194,7 +188,7 @@ sweepGradient(options: Optional\<SweepGradientOptions>): T
 
 ## sweepGradient<sup>23+</sup>
 
-sweepGradient(value: SweepGradientOptions | undefined): this
+sweepGradient(value: SweepGradientOptions | undefined)
 
 角度渐变。
 
@@ -211,12 +205,6 @@ sweepGradient(value: SweepGradientOptions | undefined): this
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | options | [SweepGradientOptions](#sweepgradientoptions18对象说明) \| undefined | 是   | 角度渐变。<br/>当options的值为undefined时，恢复为无角度渐变的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## SweepGradientOptions<sup>18+</sup>对象说明
 
@@ -319,7 +307,7 @@ radialGradient(options: Optional\<RadialGradientOptions>): T
 
 ## radialGradient<sup>23+</sup>
 
-radialGradient(value: RadialGradientOptions | undefined): this
+radialGradient(value: RadialGradientOptions | undefined)
 
 角度渐变。
 
@@ -336,12 +324,6 @@ radialGradient(value: RadialGradientOptions | undefined): this
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | options | [RadialGradientOptions](#radialgradientoptions18对象说明) \| undefined | 是   | 角度渐变。<br/>当options的值为undefined时，恢复为无角度渐变的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## RadialGradientOptions<sup>18+</sup>对象说明
 

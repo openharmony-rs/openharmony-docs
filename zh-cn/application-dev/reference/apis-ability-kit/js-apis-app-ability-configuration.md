@@ -40,18 +40,22 @@ import { Configuration } from '@kit.AbilityKit';
 | mnc<sup>12+<sup> | string | 否  | 是 | 表示移动设备网络代码。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | locale<sup>20+<sup> | [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | 否  | 是 | 表示区域设置。<br>应用会根据当前的区域设置自动调整其行为，以符合用户的本地化需求。该属性可以通过设置系统语言、设置系统地区和设置应用偏好语言等方式设置。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
+> **说明：**
+> 
+> - Configuration对象中每个属性的“只读”列值为“否”，表示开发者可以在代码中对这些属性进行赋值操作，但这仅是修改Configuration对象实例的属性值，并不会改变应用的运行环境或系统设置。若需设置应用的语言、深浅色模式、字体大小等环境变量，应使用对应的API接口（如[setLanguage](js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11)、[setColorMode](js-apis-inner-application-applicationContext.md#applicationcontextsetcolormode11)、[setFontSizeScale](js-apis-inner-application-applicationContext.md#applicationcontextsetfontsizescale13)等）。
+
 **示例：**
 
 ArkTS-Dyn示例：
 
 ```ts
-import { UIAbility, AbilityConstant, EnvironmentCallback, Want } from '@kit.AbilityKit';
+import { UIAbility, AbilityConstant, EnvironmentCallback, Want, Configuration } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     let envCallback: EnvironmentCallback = {
-      onConfigurationUpdated(config) {
+      onConfigurationUpdated(config: Configuration): void {
         console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
         let language = config.language;
         let colorMode = config.colorMode;
