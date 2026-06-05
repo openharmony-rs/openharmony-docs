@@ -432,7 +432,7 @@ let backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
 }
 
 try {
-  backgroundTaskManager.subscribeContinuousTaskState(this.backgroundTaskSubscriber);
+  backgroundTaskManager.subscribeContinuousTaskState(backgroundTaskSubscriber);
   console.info('Operation subscribeContinuousTaskState succeeded');
 } catch (error) {
   console.error(`Operation subscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
@@ -493,7 +493,7 @@ let backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
 }
 
 try {
-  backgroundTaskManager.unsubscribeContinuousTaskState(this.backgroundTaskSubscriber);
+  backgroundTaskManager.unsubscribeContinuousTaskState(backgroundTaskSubscriber);
   console.info('Operation unsubscribeContinuousTaskState succeeded');
 } catch (error) {
   console.error(`Operation unsubscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
