@@ -82,6 +82,15 @@ Progress有5种可选类型，通过[ProgressType](../reference/apis-arkui/arkui
   ArkTS-Sta示例：
 
   <!-- @[progress_style_2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  // 从左往右，1号环形进度条，默认前景色为蓝色渐变，默认strokeWidth进度条宽度为2.0vp
+  Progress({ value: 40, total: 150, type: ProgressType.Ring } as ProgressOptions).width(100).height(100)
+  // 从左往右，2号环形进度条
+  Progress({ value: 40, total: 150, type: ProgressType.Ring } as ProgressOptions).width(100).height(100)
+    .color(Color.Grey)  // 进度条前景色为灰色
+    .style({ strokeWidth: 15 } as ProgressStyleOptions) // 设置strokeWidth进度条宽度为15.0vp
+  ```
 
   ![progress_ring](figures/progress_ring.png)
 
