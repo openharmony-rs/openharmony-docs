@@ -724,7 +724,7 @@ struct Example2 {
 }
 ```
 
-![imag-alert-lifecycle](figures/imag-alert-lifecycle.gif)
+![image-alert-lifecycle](figures/image-alert-lifecycle.gif)
 
 ### 示例7（自定义背景模糊效果参数）
 
