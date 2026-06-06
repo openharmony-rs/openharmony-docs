@@ -920,6 +920,57 @@ import {
   ArkTS-Sta示例：
 
   <!-- @[shadow_color_1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
+  
+  ``` TypeScript
+  import {
+    $r,
+    Button,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    EffectFillStyle,
+    Entry,
+    HierarchicalSymbolEffect,
+    NavDestination,
+    RadialGradientOptions,
+    RadialGradientStyle,
+    Scroll,
+    Scroller,
+    ShadowOptions,
+    SymbolGlyph,
+    Text,
+    TextAlign
+  } from '@kit.ArkUI';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { ComponentCard } from '../../common/Card';
+  
+  @Entry
+  @Component
+  export struct SymbolShadowAndColor {
+    scroller: Scroller = new Scroller();
+    @State isActive: boolean = true;
+    options: ShadowOptions = {
+      radius: 10.0,
+      color: Color.Blue,
+      offsetX: 10,
+      offsetY: 10,
+    };
+    // ...
+              Column() {
+                // 请将$r('app.string.shadow_ability')替换为实际资源文件，在本示例中该资源文件的value值为"阴影能力"
+                Text($r('app.string.shadow_ability'));
+                SymbolGlyph($r('sys.symbol.ohos_wifi'))
+                  .fontSize(96)
+                  .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), !this.isActive)
+                  .symbolShadow(this.options)
+                // 请将$r('app.string.off')替换为实际资源文件，在本示例中该资源文件的value值为"关闭"
+                // 请将$r('app.string.on')替换为实际资源文件，在本示例中该资源文件的value值为"播放"
+                Button(!this.isActive ? $r('app.string.off') : $r('app.string.on')).onClick(() => {
+                  this.isActive = !this.isActive;
+                })
+              }
+  ```
 
   ![SymbolShadowSymbolEffect](figures/symbolGlyph_symbolShadow.gif)
 
