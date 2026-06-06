@@ -345,6 +345,47 @@ ArkTS-Sta示例：
 
 <!-- @[requestFocus_CloseKeyBoard](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusCloseKeyBoard.ets) -->
 
+``` TypeScript
+import {
+  $r,
+  Button,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  FlexAlign,
+  NavDestination,
+  TextInput,
+  TextInputController
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct requestFocusCloseKeyBoard {
+  controller: TextInputController = new TextInputController();
+  @State inputValue: string = '';
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 20 } as ColumnOptions) {
+        // 请将$r('app.string.button_get_focus')替换为实际资源文件，在本示例中该资源文件的value值为"按钮获得焦点"
+        Button($r('app.string.button_get_focus')).onClick(() => {
+          this.getUIContext().getFocusController().requestFocus('button')
+        }).id('button')
+        TextInput({ controller: this.controller, text: this.inputValue })
+      }
+      .justifyContent(FlexAlign.Center)
+      .height('100%')
+      .width('80%')
+      .margin('10%')
+
+    }
+
+  }
+}
+```
+
 ![changeFocus](figures/changeFocus.gif)
 
 以下示例展示了滚动容器在开始滚动时收起键盘的场景。[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)开始滚动时，调用[clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)方法清理焦点，焦点转移到页面根容器节点，页面根容器节点不需要软键盘，从而收起软键盘。
