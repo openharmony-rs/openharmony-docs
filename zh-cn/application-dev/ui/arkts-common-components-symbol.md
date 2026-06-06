@@ -828,6 +828,55 @@ import {
   ArkTS-Sta示例：
 
   <!-- @[symbol_quick_replacement](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
+  import {
+    $r,
+    BounceSymbolEffect,
+    Button,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    EffectDirection,
+    EffectFillStyle,
+    EffectScope,
+    Entry,
+    HierarchicalSymbolEffect,
+    NavDestination,
+    ReplaceEffectType,
+    ReplaceSymbolEffect,
+    SymbolRenderingStrategy,
+    Scroll,
+    Scroller,
+    SymbolGlyph,
+    Text
+  } from '@kit.ArkUI';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { ComponentCard } from '../../common/Card';
+  
+  @Entry
+  @Component
+  export struct SymbolGlyphSpanCustomIconAnimation {
+    scroller: Scroller = new Scroller();
+    @State isActive: boolean = true;
+    @State triggerValueReplace: int = 0;
+    replaceFlag: boolean = true;
+  
+    // ...
+              Column() {
+                // 请将$r('app.string.quick_replacement_animation')替换为实际资源文件，在本示例中该资源文件的value值为"快速替换动效"
+                Text($r('app.string.quick_replacement_animation'));
+                SymbolGlyph(this.replaceFlag ? $r('sys.symbol.checkmark_circle') : $r('sys.symbol.repeat_1'))
+                  .fontSize(96)
+                  .symbolEffect(new ReplaceSymbolEffect(EffectScope.WHOLE, ReplaceEffectType.CROSS_FADE),
+                    this.triggerValueReplace)
+                Button('trigger').onClick(() => {
+                  this.replaceFlag = !this.replaceFlag;
+                  this.triggerValueReplace = this.triggerValueReplace + 1;
+                })
+              }
+  ```
 
   ![symbolGlyph_symbolEffect_quick_replace](figures/symbolGlyph_symbolEffect_quick_replace.gif)
 
