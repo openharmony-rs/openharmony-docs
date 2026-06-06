@@ -202,7 +202,7 @@ struct CanvasExample {
   }
 }
 ```
-  ![zh-cn_image_0000001194032666](figures/zh-cn_image_0000001194032666.png)
+  ![canvas](figures/canvas.png)
 
 ### 示例2（使用DrawingRenderingContext中的方法）
 

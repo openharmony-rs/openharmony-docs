@@ -168,7 +168,7 @@ struct TapGestureExample {
 }
 ```
 
-![zh-cn_image_0000001174422900](figures/zh-cn_image_0000001174422900.gif)
+![tapGesture1](figures/tapGesture1.gif)
 
 ### 示例2（获取单击手势坐标）
 

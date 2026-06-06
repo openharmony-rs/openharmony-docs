@@ -249,7 +249,7 @@ struct StyleExample {
 }
 ```
 
-![zh-cn_image_0000001188742468](figures/zh-cn_image_0000001188742468.gif)
+![stateStyles](figures/stateStyles.gif)
 
 ### 示例2（设置Radio多态样式）
 

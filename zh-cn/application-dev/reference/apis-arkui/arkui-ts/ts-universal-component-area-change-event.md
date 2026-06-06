@@ -156,7 +156,7 @@ struct AreaExample {
 }
 ```
 
-![zh-cn_image_0000001189634870](figures/zh-cn_image_0000001189634870.gif)
+![areaChangeOptions](figures/areaChangeOptions.gif)
 
 ### 示例2（使用onAreaChange自定义间隔监听区域变化）
 

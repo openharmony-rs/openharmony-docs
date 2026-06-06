@@ -280,4 +280,4 @@ struct Example {
 }
 ```
 
-![en-us_image_0000001169582302](figures/en-us_image_0000001169582302.png)
+![pixelUnits](figures/pixelUnits.png)

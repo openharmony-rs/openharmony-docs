@@ -221,7 +221,34 @@ struct ColumnSplitExample {
 }
 ```
 
-![zh-cn_image_0000001219982708](figures/zh-cn_image_0000001219982708.gif)
+**ArkTS-Sta示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Column, ColumnSplit, TextAlign } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ColumnSplitExample {
+  build() {
+    Column(){
+      Text('The dividing line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      ColumnSplit() {
+        Text('1').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('2').width('100%').height(50).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('3').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('4').width('100%').height(50).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('5').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+      }
+      .borderWidth(1)
+      .resizeable(true) // 可拖动
+      .width('90%').height('60%')
+    }.width('100%')
+  }
+}
+```
+
+![columnSplitDividerStyle](figures/columnSplitDividerStyle.gif)
 
 ### 示例2（设置带有间隔的ColumnSplit组件）
 
