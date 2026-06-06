@@ -85,8 +85,138 @@ struct StartWithSpecifiedWindowModeAbility {
 ```
 
 > **说明：**
-> 
+>
 > 如果未指定windowMode，UIAbility将以系统默认的窗口展示形态启动。
+
+
+## 设置窗口显示模式
+
+在某些场景下，开发者需要指定UIAbility窗口标题栏显示哪些窗口模式。例如：
+
+- 需要控制窗口是否支持全屏模式。
+- 需要控制窗口是否支持悬浮窗模式。
+- 需要控制窗口是否支持分屏模式。
+
+**开发步骤如下：**
+
+1. 在启动UIAbility之前，需要先导入相关的模块。
+2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
+3. 配置StartOptions的supportWindowModes，设置窗口显示模式。supportWindowModes的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。
+4. 调用startAbility接口，启动目标UIAbility。
+
+<!-- @[startOptions_supportWindowModes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SupportWindowModes/src/main/ets/pages/Index.ets) --> 
+
+
+``` TypeScript
+import { common, Want, StartOptions, bundleManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const TAG: string = '[StartAbility]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+@Entry
+@Component
+struct SetWindowDisplayModeAbility {
+
+  build() {
+    Row() {
+      Column() {
+        Button("设置窗口显示模式")
+          .onClick(() => {
+            // context为调用方UIAbility的UIAbilityContext
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+            let want: Want = {
+              deviceId: '', // deviceId为空表示本设备
+              bundleName: 'com.example.startoptions',
+              abilityName: 'EntryAbility',
+              parameters: {
+                // 自定义信息
+                info: '从EntryAbility启动'
+              }
+            };
+
+            let options: StartOptions = {
+              supportWindowModes: [
+                bundleManager.SupportWindowMode.FULL_SCREEN,  // 支持全屏模式
+              ]
+            };
+
+            context.startAbility(want, options).then(() => {
+              hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in starting ability.');
+            }).catch((err: BusinessError) => {
+              hilog.error(DOMAIN_NUMBER, TAG, `Failed to start ability. Code is ${err.code}, message is ${err.message}`);
+            });
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+## 设置窗口分配比例
+
+在某些场景下，开发者需要指定UIAbility在分屏模式下的窗口比例分配。例如，根据应用内容的重要程度，设置不同的分屏比例。
+
+**开发步骤如下：**
+
+1. 在启动UIAbility之前，需要先导入相关的模块。
+2. 创建Want对象，指定要启动的UIAbility信息。UIAbilityContext的获取方式参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
+3. 从API版本26.0.0开始，支持通过StartOptions的splitRatio字段设置窗口分配比例。splitRatio的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)和[SplitRatioPreference](../reference/apis-arkui/arkts-apis-window-e.md#splitratiopreference)。
+4. 调用startAbility接口，启动目标UIAbility。
+
+<!-- @[startOptions_setSplitRatioAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SetSplitRatioAbility/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+import { common, Want, StartOptions, AbilityConstant } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const TAG: string = '[StartAbility]';
+const DOMAIN_NUMBER: number = 0xFF00;
+
+@Entry
+@Component
+struct SetSplitRatioAbility {
+
+  build() {
+    Row() {
+      Column() {
+        Button("以比例分屏启动")
+          .onClick(() => {
+            // context为调用方UIAbility的UIAbilityContext
+            let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+            let want: Want = {
+              deviceId: '', // deviceId为空表示本设备
+              bundleName: 'com.example.startoptions',
+              abilityName: 'EntryAbility',
+              parameters: {
+                // 自定义信息
+                info: '从EntryAbility启动'
+              }
+            };
+
+            let options: StartOptions = {
+              windowMode: AbilityConstant.WindowMode.WINDOW_MODE_SPLIT_SECONDARY, // 以分屏模式拉起
+            };
+
+            context.startAbility(want, options).then(() => {
+              hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in starting ability.');
+            }).catch((err: BusinessError) => {
+              hilog.error(DOMAIN_NUMBER, TAG, `Failed to start ability. Code is ${err.code}, message is ${err.message}`);
+            });
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
 
 
 ## 指定显示屏幕启动应用
@@ -103,7 +233,7 @@ struct StartWithSpecifiedWindowModeAbility {
 3. 配置StartOptions的displayId，指定要显示的屏幕。displayId的说明参见[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)。
 4. 调用startAbility接口，启动目标UIAbility。
 
-<!-- @[startOptions_dispalyId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SpecifyDisplayScreen/src/main/ets/pages/Index.ets) -->
+<!-- @[startOptions_displayId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SpecifyDisplayScreen/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { common, Want, StartOptions } from '@kit.AbilityKit';

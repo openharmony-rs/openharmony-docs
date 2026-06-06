@@ -62,6 +62,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV
+
 **起始版本**：10
 
 ## ohos.permission.DISCOVER_BLUETOOTH
@@ -85,6 +87,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -155,6 +159,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -247,6 +253,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -736,3 +744,17 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：20
+
+## ohos.permission.ACCESS_CAR_AUDIO
+
+允许应用访问和管理车载音频。
+
+获取该权限后，应用可以设置音频音效、管理音区等。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Car
+
+**起始版本**：26.0.0

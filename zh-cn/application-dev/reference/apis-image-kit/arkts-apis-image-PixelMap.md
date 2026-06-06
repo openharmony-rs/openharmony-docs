@@ -1780,8 +1780,8 @@ extractAlphaPixelMap(): Promise\<PixelMap\>
 | 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
-| 7600105 | The PixelMap has been released. |
-| 7600106 | The PixelMap has been passed to another thread. |
+| 7600105 | The current PixelMap has been released. |
+| 7600106 | The current PixelMap has been passed across threads. |
 | 7600305 | Failed to create the PixelMap. Possible cause: Current PixelMap data is corrupted. |
 | 7600306 | Failed to convert the data. Possible causes: 1. Failed to perform pixel format conversion. 2. The system is out of memory. |
 
@@ -1834,8 +1834,8 @@ extractAlphaPixelMapSync(): PixelMap
 | 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
-| 7600105 | The PixelMap has been released. |
-| 7600106 | The PixelMap has been passed to another thread. |
+| 7600105 | The current PixelMap has been released. |
+| 7600106 | The current PixelMap has been passed across threads. |
 | 7600305 | Failed to create the PixelMap. Possible cause: Current PixelMap data is corrupted. |
 | 7600306 | Failed to convert the data. Possible causes: 1. Failed to perform pixel format conversion. 2. The system is out of memory. |
 
@@ -3964,7 +3964,7 @@ setMetadata(key: HdrMetadataKey, value: HdrMetadataValue): Promise\<void>
 
 **示例：**
 
-创建DMA_ALLOC内存的PixelMap方法请参考: [系统默认的内存分配方式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/image-allocator-type#系统默认的内存分配方式)。
+创建DMA_ALLOC内存的PixelMap方法请参考: [系统默认的内存分配方式](../../media/image/image-allocator-type.md#系统默认的内存分配方式)。
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import {image} from '@kit.ImageKit';
@@ -4013,6 +4013,7 @@ pixelmap在跨线程传输时，断开原线程的引用。适用于需立即释
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { common } from '@kit.AbilityKit';
 import { taskpool } from '@kit.ArkTS';
 
@@ -4085,6 +4086,7 @@ marshalling(sequence: rpc.MessageSequence): void
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { rpc } from '@kit.IPCKit';
 
 class MySequence implements rpc.Parcelable {
@@ -4171,6 +4173,7 @@ unmarshalling(sequence: rpc.MessageSequence): Promise\<PixelMap>
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { rpc } from '@kit.IPCKit';
 
 class MySequence implements rpc.Parcelable {
@@ -4462,7 +4465,7 @@ isReleased(): boolean
 **示例：**
 
 ```ts
-async function DemoIsReleased(pixelMap: PixelMap) { // 未释放的PixelMap。
+async function IsReleased(pixelMap: PixelMap) { // 未释放的PixelMap。
   pixelMap.isReleased(); // 返回false。
   await pixelMap.release();
   pixelMap.isReleased(); // 返回true。

@@ -24,3 +24,5 @@
   - [如何正确管理媒体库资产](medialibrary-faqs/medialibrary-asset-management-faq.md)
   - [如何正确判断媒体资源类型](medialibrary-faqs/medialibrary-asset-judgment-faq.md)
   - [查看的媒体图片未包含地理位置信息](medialibrary-faqs/medialibrary-asset-hidesensitive-faq.md)
+- [Media Library Kit术语](mediaLibrary-glossary.md)
+

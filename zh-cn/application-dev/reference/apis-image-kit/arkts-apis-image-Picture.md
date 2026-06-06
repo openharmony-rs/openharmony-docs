@@ -141,6 +141,7 @@ getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise\<PixelMa
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -201,6 +202,7 @@ hdrComposeToMainPixelmap(): Promise\<void>
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

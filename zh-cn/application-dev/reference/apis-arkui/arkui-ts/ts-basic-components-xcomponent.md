@@ -1,7 +1,7 @@
 # XComponent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -249,17 +249,15 @@ hdrBrightness(brightness: number, type?: HdrType)
 
 HDR视频的高动态范围渲染类型。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 值 | 说明 |
 | ---- | -- | ---- |
-| DEFAULT | 0 | 默认HDR类型，使用标准高动态范围渲染模式。 |
-| AIHDR | 1 | AI HDR类型，使用AI算法对非HDR内容进行智能动态范围扩展，实现HDR的显示效果。|
-| EDR | 2 | EDR类型，应用完成HDR色调映射后，与SDR内容混合至SDR色彩空间。通过对混合后的EDR图层设置提亮系数，实现自绘制图层HDR提亮效果。|
+| DEFAULT | 0 | 默认HDR类型，使用标准高动态范围渲染模式。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| AIHDR | 1 | AI HDR类型，使用AI算法对非HDR内容进行智能动态范围扩展，实现HDR的显示效果。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。|
+| EDR | 2 | EDR类型，应用完成HDR色调映射后，与SDR内容混合至SDR色彩空间。通过对混合后的EDR图层设置提亮系数，实现自绘制图层HDR提亮效果。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 ## 事件
 
 从API version 12开始，type为SURFACE或TEXTURE时，支持[通用事件](ts-component-general-events.md)。

@@ -38,7 +38,7 @@ export default class EntryAbility extends UIAbility {
     let context = this.context;
     dataShare.createDataShareHelper(context, uri, (err:BusinessError, data:dataShare.DataShareHelper) => {
       if (err != undefined) {
-        console.error("createDataShareHelper fail, error message : " + err);
+        console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info("createDataShareHelper end, data : " + data);
         dataShareHelper = data;
@@ -52,7 +52,7 @@ export default class EntryAbility extends UIAbility {
           console.info("query end, data : " + data);
           resultSet = data;
         }).catch((err: BusinessError) => {
-          console.error("query fail, error message : " + err);
+          console.error(`Failed to query. Code: ${err.code}, message: ${err.message}`);
         });
       }
     });

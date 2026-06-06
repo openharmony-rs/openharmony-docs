@@ -42,9 +42,9 @@ import { LayoutAlgorithm, CustomLayoutAlgorithm, RowLayoutAlgorithm, ColumnLayou
 
 > **说明：**
 >
-> CustomLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
+> CustomLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 ### onMeasure
 onMeasure(self: FrameNode, constraint: LayoutConstraint): void
@@ -55,7 +55,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint): void
 >
 > 在此函数中，开发者可以调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[getChild()](js-apis-arkui-frameNode.md#getchild12)方法获取子组件FrameNode，调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[measure()](js-apis-arkui-frameNode.md#measure12)方法测量子组件大小，参考DynamicLayout组件[示例1（自定义布局算法实现瀑布流布局）](./arkui-ts/ts-container-dynamiclayout.md#示例1自定义布局算法实现瀑布流布局)。
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -81,7 +81,7 @@ onLayout(self: FrameNode, position: Position): void
 >
 > 在此函数中，开发者可以调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[getChild()](js-apis-arkui-frameNode.md#getchild12)方法获取子组件FrameNode，调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[layout()](js-apis-arkui-frameNode.md#layout12)方法设置子组件位置，参考DynamicLayout组件[示例1（自定义布局算法实现瀑布流布局）](./arkui-ts/ts-container-dynamiclayout.md#示例1自定义布局算法实现瀑布流布局)。
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
   
@@ -108,13 +108,13 @@ onLayout(self: FrameNode, position: Position): void
 
 > **说明：**
 >
-> RowLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
+> RowLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 ### 属性
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -126,10 +126,10 @@ onLayout(self: FrameNode, position: Position): void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| space | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 横向布局元素水平方向间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| alignItems | [VerticalAlign](./arkui-ts/ts-appendix-enums.md#verticalalign) | 否 | 是 | 所有子组件在垂直方向上的对齐格式。<br/> 默认值：VerticalAlign.Center <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| justifyContent | [FlexAlign](./arkui-ts/ts-appendix-enums.md#flexalign) | 否 | 是 | 所有子组件在水平方向上的对齐格式。<br/> 默认值：FlexAlign.Start <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| isReverse | boolean | 否 | 是 | 子组件在水平方向上的排列是否反转。取值为true表示子组件在水平方向上反转排列，由于水平方向受通用属性[direction](./arkui-ts/ts-universal-attributes-location.md#direction)影响，如果[direction](./arkui-ts/ts-universal-attributes-location.md#direction)属性生效，再做一次反转。取值为false表示子组件在水平方向上正序排列。<br/>默认值：false <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
+| space | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 横向布局元素水平方向间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。<br/>装饰器类型：[@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md) |
+| alignItems | [VerticalAlign](./arkui-ts/ts-appendix-enums.md#verticalalign) | 否 | 是 | 所有子组件在垂直方向上的对齐格式。<br/> 默认值：VerticalAlign.Center <br/> 非法值：按默认值处理。<br/>装饰器类型：[@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md) |
+| justifyContent | [FlexAlign](./arkui-ts/ts-appendix-enums.md#flexalign) | 否 | 是 | 所有子组件在水平方向上的对齐格式。<br/> 默认值：FlexAlign.Start <br/> 非法值：按默认值处理。<br/>装饰器类型：[@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md) |
+| isReverse | boolean | 否 | 是 | 子组件在水平方向上的排列是否反转。取值为true表示子组件在水平方向上反转排列，由于水平方向受通用属性[direction](./arkui-ts/ts-universal-attributes-location.md#direction)影响，如果[direction](./arkui-ts/ts-universal-attributes-location.md#direction)属性生效，再做一次反转。取值为false表示子组件在水平方向上正序排列。<br/>默认值：false <br/> 非法值：按默认值处理。<br/>装饰器类型：[@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md) |
 
 ### constructor
 
@@ -137,7 +137,7 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 水平方向线性布局算法类的构造函数。
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -182,13 +182,13 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 > **说明：**
 >
-> ColumnLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
+> ColumnLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 ### 属性
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -200,10 +200,10 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| space | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 纵向布局元素垂直方向间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| alignItems | [HorizontalAlign](./arkui-ts/ts-appendix-enums.md#horizontalalign) | 否 | 是 | 所有子组件在水平方向上的对齐格式。<br/> 默认值：HorizontalAlign.Center <br/>  非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| justifyContent | [FlexAlign](./arkui-ts/ts-appendix-enums.md#flexalign) | 否 | 是 | 所有子组件在垂直方向上的对齐格式。<br/> 默认值：FlexAlign.Start <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| isReverse | boolean | 否 | 是 | 子组件在垂直方向上的排列是否反转。取值为true表示子组件在垂直方向上反转排列。取值为false表示子组件在垂直方向上正序排列。<br/>默认值：false <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
+| space | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 纵向布局元素垂直方向间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。<br/>装饰器类型：[@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md) |
+| alignItems | [HorizontalAlign](./arkui-ts/ts-appendix-enums.md#horizontalalign) | 否 | 是 | 所有子组件在水平方向上的对齐格式。<br/> 默认值：HorizontalAlign.Center <br/>  非法值：按默认值处理。<br/>装饰器类型：[@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md) |
+| justifyContent | [FlexAlign](./arkui-ts/ts-appendix-enums.md#flexalign) | 否 | 是 | 所有子组件在垂直方向上的对齐格式。<br/> 默认值：FlexAlign.Start <br/> 非法值：按默认值处理。<br/>装饰器类型：[@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md) |
+| isReverse | boolean | 否 | 是 | 子组件在垂直方向上的排列是否反转。取值为true表示子组件在垂直方向上反转排列。取值为false表示子组件在垂直方向上正序排列。<br/>默认值：false <br/> 非法值：按默认值处理。<br/>装饰器类型：[@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md) |
 
 ### constructor 
 
@@ -211,7 +211,7 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 垂直方向线性布局算法类的构造函数。
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -256,14 +256,14 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 > **说明：**
 >
-> StackLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
+> StackLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 ### 属性
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -275,7 +275,7 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| alignContent | [LocalizedAlignment](./arkui-ts/ts-appendix-enums.md#localizedalignment20) | 否 | 是 | 设置子组件在堆叠布局算法中对齐格式。 <br/> 默认值：LocalizedAlignment.CENTER <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
+| alignContent | [LocalizedAlignment](./arkui-ts/ts-appendix-enums.md#localizedalignment20) | 否 | 是 | 设置子组件在堆叠布局算法中对齐格式。 <br/> 默认值：LocalizedAlignment.CENTER <br/> 非法值：按默认值处理。<br/>装饰器类型：[@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md) |
 
 ### constructor
 
@@ -283,7 +283,7 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 堆叠布局算法类的构造函数。
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -325,13 +325,13 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 > **说明：**
 >
-> GridLayoutAlgorithm类对象可以赋值给LayoutAlgorithm类型变量，作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
+> GridLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 ### 属性
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -341,9 +341,9 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| columnsTemplate | string \| [ItemFillPolicy](./arkui-ts/ts-types.md#itemfillpolicy22) | 否 | 是 | 设置当前网格布局的列数。<br/> 默认值：'1fr' <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| columnsGap | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 列与列之间的间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
-| rowsGap | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 行与行之间的间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。<br/>装饰器类型：@Trace |
+| columnsTemplate | string \| [ItemFillPolicy](./arkui-ts/ts-types.md#itemfillpolicy22) | 否 | 是 | 设置当前网格布局的列数。<br/> 默认值：'1fr' <br/> 非法值：按默认值处理。<br/>装饰器类型：[@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md) |
+| columnsGap | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 列与列之间的间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。<br/>装饰器类型：[@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md) |
+| rowsGap | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 行与行之间的间距。<br/> 默认值：LengthMetrics.vp(0) <br/> 非法值：按默认值处理。<br/>装饰器类型：[@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md) |
 
 ### constructor
 
@@ -351,7 +351,7 @@ constructor(option?: GridLayoutAlgorithmOptions)
 
 网格布局算法类的构造函数。
 
-**装饰器类型：** \@ObservedV2
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

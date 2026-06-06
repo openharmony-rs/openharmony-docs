@@ -272,7 +272,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_INPUT_TYPE = 7010
 ```
 
-Text box type. This attribute can be set, reset, and obtained as required through APIs.<br>
+Text input type. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -282,13 +282,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Text box type, specified using the [ArkUI_TextInputType](capi-native-type-h.md#arkui_textinputtype) enum. The default value is **ARKUI_TEXTINPUT_TYPE_NORMAL**.|
+| .value[0].i32 | Text input type, specified using the [ArkUI_TextInputType](capi-native-type-h.md#arkui_textinputtype) enum. The default value is **ARKUI_TEXTINPUT_TYPE_NORMAL**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Text box type, specified using the [ArkUI_TextInputType](capi-native-type-h.md#arkui_textinputtype) enum.|
+| .value[0].i32 | Text input type, specified using the [ArkUI_TextInputType](capi-native-type-h.md#arkui_textinputtype) enum.|
 
 ## NODE_TEXT_INPUT_SELECTED_BACKGROUND_COLOR
 
@@ -344,8 +344,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_INPUT_EDITING = 7013
 ```
 
-Editable state for the single-line text box. This attribute can be set as required through APIs.<br>
-The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
+Editable state for the single-line text box. This attribute can be set and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
 
@@ -354,7 +354,12 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to remain in the editable state. **true** means to remain in the editable state, and **false** means to exit the editable state.<br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for obtaining the attribute is as follows.|
+| .value[0].i32 | Whether to remain in the editable state. **true** means to remain in the editable state, and **false** means to exit the editable state.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
 | .value[0].i32 | Whether to remain in the editable state. **true** means to remain in the editable state, and **false** means to exit the editable state.|
 
 ## NODE_TEXT_INPUT_CANCEL_BUTTON
@@ -1460,7 +1465,7 @@ NODE_TEXT_AREA_EDITING = 8006
 ```
 
 Editable state for the multi-line text box. This attribute can be set and obtained as required through APIs.<br>
-The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
 
@@ -1469,7 +1474,12 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to remain in the editable state. **true** means to remain in the editable state, and **false** means to exit the editable state.<br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for obtaining the attribute is as follows.|
+| .value[0].i32 | Whether to remain in the editable state. **true** means to remain in the editable state, and **false** means to exit the editable state.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
 | .value[0].i32 | Whether to remain in the editable state. **true** means to remain in the editable state, and **false** means to exit the editable state.|
 
 ## NODE_TEXT_AREA_TYPE

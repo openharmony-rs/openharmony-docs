@@ -212,7 +212,7 @@ getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 
 | 参数名           | 类型             | 必填 | 说明                                                         |
 | ---------------- | ---------------- | ---- | ------------------------------------------------------------ |
-| columnIdentifier | number \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。列名必须是属性columnNames内的名称。 |
+| columnIdentifier | number \| string | 是   | 表示结果集中指定列的索引或名称。索引必须是非负整数，最大不能超过属性columnNames的长度。名称必须是属性columnNames内的名称。 |
 
 **返回值：**
 
@@ -1439,7 +1439,7 @@ if (resultSet !== undefined) {
 
 close(): void
 
-关闭结果集，若不关闭可能会引起fd泄露和内存泄露。
+关闭结果集，若不关闭可能会引起FD（File Descriptor）泄漏和内存泄漏。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

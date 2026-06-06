@@ -62,13 +62,15 @@ Allows an application to obtain the print framework capability.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
 **Valid since**: 10
 
 ## ohos.permission.DISCOVER_BLUETOOTH
 
 Allows an application to configure Bluetooth on a device, initiate or cancel a scan for Bluetooth devices, and pair with Bluetooth devices.
 
- 
+
 
 **Permission level**: normal
 
@@ -78,13 +80,15 @@ Allows an application to configure Bluetooth on a device, initiate or cancel a s
 
 ## ohos.permission.ACCELEROMETER
 
-Allows an application to read data from an acceleration sensor, uncalibrated acceleration sensor, or linear acceleration sensor.
+Allows an application to read data from an acceleration sensor.
 
- 
+Acceleration sensors include normal, uncalibrated, and linear acceleration sensors.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
@@ -148,13 +152,15 @@ With this permission, the application can obtain Wi-Fi information, including th
 
 ## ohos.permission.GYROSCOPE
 
-Allows an application to read data from a gyroscope sensor or uncalibrated gyroscope sensor.
+Allows an application to read data from a gyroscope sensor.
 
- 
+Gyroscope sensors include normal and uncalibrated gyroscope sensors.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
@@ -240,13 +246,15 @@ including scanning, enabling/disabling, connecting, and disabling Wi-Fi, modifyi
 
 ## ohos.permission.VIBRATE
 
-Allows an application to control vibration,
+Allows an application to control vibration.
 
-including one-time vibration, preset vibration, or custom vibration.
+Vibration includes one-time vibration, preset vibration, or custom vibration.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
@@ -736,3 +744,17 @@ With this permission, the application can obtain custom EDM configuration files,
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
+
+## ohos.permission.ACCESS_CAR_AUDIO
+
+Allows an application to access and manage in-vehicle audio.
+
+With this permission, the application can set audio sound effects and manage audio zones.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.0

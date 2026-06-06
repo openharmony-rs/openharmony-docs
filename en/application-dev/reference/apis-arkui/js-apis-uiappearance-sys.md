@@ -10,9 +10,11 @@ The **uiAppearance** module provides basic capabilities for managing the system 
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.uiAppearance (UI Appearance)](js-apis-uiappearance.md).
+> - The APIs of this module can be used only in the stage model.
+>
+> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.uiAppearance (UI Appearance)](js-apis-uiappearance.md).
 
 
 ## Modules to Import

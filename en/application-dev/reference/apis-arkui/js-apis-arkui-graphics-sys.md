@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sun-xinyan-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,6 +11,9 @@ The **Graphics** module provides APIs for defining attributes of a custom node.
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
+>
 > - This topic describes only system APIs provided by the module. For details about other public APIs, see [Graphics](js-apis-arkui-graphics.md).
 
 ## ColorMetrics

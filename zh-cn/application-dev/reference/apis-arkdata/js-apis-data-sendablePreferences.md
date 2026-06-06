@@ -44,6 +44,8 @@ getPreferences(context: Context, options: Options): Promise&lt;Preferences&gt;
 
 获取Preferences实例，使用Promise异步回调。
 
+应用首次调用该接口获取某个Preferences实例后，该实例会被缓存起来，后续再次调用时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
@@ -59,7 +61,7 @@ getPreferences(context: Context, options: Options): Promise&lt;Preferences&gt;
 
 | 类型                                    | 说明                               |
 | --------------------------------------- | ---------------------------------- |
-| Promise&lt;[Preferences](#preferences)&gt; | Promise对象，返回Preferences实例。<br>该实例继承[ISendable](../../arkts-utils/arkts-sendable.md#isendable)，可以在ArkTS并发实例间（包括主线程、TaskPool&Worker工作线程）传递，传递的行为是引用传递，参考[Sendable使用场景](../../arkts-utils/sendable-guide.md)。 |
+| Promise&lt;[Preferences](#preferences)&gt; | Promise对象，返回Preferences实例。 |
 
 **错误码：**
 
@@ -102,6 +104,8 @@ getPreferencesSync(context: Context, options: Options): Preferences
 
 获取Preferences实例，此为同步接口。
 
+应用首次调用该接口获取某个Preferences实例后，该实例会被缓存起来，后续再次调用时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
@@ -117,7 +121,7 @@ getPreferencesSync(context: Context, options: Options): Preferences
 
 | 类型                        | 说明                  |
 | --------------------------- | --------------------- |
-| [Preferences](#preferences) | 返回Preferences实例。<br>该实例继承[ISendable](../../arkts-utils/arkts-sendable.md#isendable)，可以在ArkTS并发实例间（包括主线程、TaskPool&Worker工作线程）传递，传递的行为是引用传递，参考[Sendable使用场景](../../arkts-utils/sendable-guide.md)。 |
+| [Preferences](#preferences) | 返回Preferences实例。 |
 
 **错误码：**
 
@@ -348,7 +352,7 @@ get(key: string, defValue: lang.ISendable): Promise&lt;lang.ISendable&gt;
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-| Promise&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | Promise对象，返回键对应的值。 <br>该实例继承[ISendable](../../arkts-utils/arkts-sendable.md#isendable)，可以在ArkTS并发实例间（包括主线程、TaskPool&Worker工作线程）传递，传递的行为是引用传递，参考[Sendable使用场景](../../arkts-utils/sendable-guide.md)。|
+| Promise&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | Promise对象，返回键对应的值。|
 
 **错误码：**
 
@@ -395,7 +399,7 @@ getSync(key: string, defValue: lang.ISendable): lang.ISendable
 
 | 类型                                | 说明                          |
 | ----------------------------------- | ----------------------------- |
-| [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | 返回键对应的值。 <br>该实例继承[ISendable](../../arkts-utils/arkts-sendable.md#isendable)，可以在ArkTS并发实例间（包括主线程、TaskPool&Worker工作线程）传递，传递的行为是引用传递，参考[Sendable使用场景](../../arkts-utils/sendable-guide.md)。|
+| [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | 返回键对应的值。|
 
 **错误码：**
 
@@ -410,6 +414,7 @@ getSync(key: string, defValue: lang.ISendable): lang.ISendable
 
 ```ts
 import { lang } from '@kit.ArkTS';
+
 let value: lang.ISendable = preferences.getSync('startup', 'default');
 ```
 
@@ -427,7 +432,7 @@ getAll(): Promise&lt;lang.ISendable&gt;
 
 | 类型                  | 说明                                        |
 | --------------------- | ------------------------------------------- |
-| Promise&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | Promise对象，返回所有包含的键值数据。 <br>该对象继承[ISendable](../../arkts-utils/arkts-sendable.md#isendable)，可以在ArkTS并发实例间（包括主线程、TaskPool&Worker工作线程）传递，传递的行为是引用传递，参考[Sendable使用场景](../../arkts-utils/sendable-guide.md)。  |
+| Promise&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | Promise对象，返回所有包含的键值数据。 |
 
 **错误码：**
 
@@ -467,7 +472,7 @@ getAllSync(): lang.ISendable
 
 | 类型                  | 说明                                        |
 | --------------------- | ------------------------------------------- |
-| [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | 返回所有包含的键值数据。<br>该对象继承[ISendable](../../arkts-utils/arkts-sendable.md#isendable)，可以在ArkTS并发实例间（包括主线程、TaskPool&Worker工作线程）传递，传递的行为是引用传递，参考[Sendable使用场景](../../arkts-utils/sendable-guide.md)。 |
+| [lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable) | 返回所有包含的键值数据。 |
 
 **错误码：**
 
@@ -591,13 +596,13 @@ has(key: string): Promise&lt;boolean&gt;
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
+| key    | string | 是   | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise对象。返回Preferences实例是否包含给定key的存储键值对，true表示存在，false表示不存在。 |
+| Promise&lt;boolean&gt; | Promise对象。返回Preferences实例是否包含给定Key的存储键值对，true表示存在，false表示不存在。 |
 
 **错误码：**
 
@@ -618,7 +623,7 @@ promise.then((val: boolean) => {
   if (val) {
     console.info("The key 'startup' is contained.");
   } else {
-    console.error("The key 'startup' does not contain.");
+    console.info("The key 'startup' does not contain.");
   }
 }).catch((err: BusinessError) => {
   console.error(`Failed to check the key 'startup'. code: ${err.code}, message: ${err.message}`);
@@ -639,13 +644,13 @@ hasSync(key: string): boolean
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
+| key    | string | 是   | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| boolean | 返回Preferences实例是否包含给定key的存储键值对，true表示存在，false表示不存在。 |
+| boolean | 返回Preferences实例是否包含给定Key的存储键值对，true表示存在，false表示不存在。 |
 
 **错误码：**
 
@@ -663,7 +668,7 @@ let isExist: boolean = preferences.hasSync('startup');
 if (isExist) {
   console.info("The key 'startup' is contained.");
 } else {
-  console.error("The key 'startup' does not contain.");
+  console.info("The key 'startup' does not contain.");
 }
 ```
 
@@ -681,7 +686,7 @@ delete(key: string): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要删除的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
+| key    | string | 是   | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
@@ -725,7 +730,7 @@ deleteSync(key: string): void
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要删除的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
+| key    | string | 是   | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **错误码：**
 
@@ -876,7 +881,13 @@ preferences.clearSync();
 
 on(type: 'change', callback: Callback&lt;string&gt;): void
 
-订阅数据变更，订阅的Key的值发生变更后，在执行[flush](#flush)方法后，触发callback回调。
+订阅数据变更，订阅的Key的值发生变更后，在执行flush方法后，触发callback回调。
+
+> **不同订阅方法的对比：**
+> - on('change')：订阅所有Key变化，适合全局数据变化感知需求。
+> - on('dataChange')：精确订阅指定Key的变化，适合关注特定数据场景，可回调返回具体值。
+> 
+> **选取建议：** 需要监听所有数据变更时使用on('change')；需要精确知道特定Key变化并获取新值时使用on('dataChange')。
 
   > **说明：**
   >
@@ -975,7 +986,7 @@ preferences.flush().then(() => {
 
 on(type: 'dataChange', keys: Array&lt;string&gt;, callback: Callback&lt;lang.ISendable&gt;): void
 
-精确订阅数据变更，只有被订阅的key值发生变更后，在执行[flush](#flush)方法后，触发callback回调。
+精确订阅数据变更，只有被订阅的Key值发生变更后，在执行[flush](#flush)方法后，触发callback回调。
 
   > **说明：**
   >
@@ -990,8 +1001,8 @@ on(type: 'dataChange', keys: Array&lt;string&gt;, callback: Callback&lt;lang.ISe
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件类型，固定值'dataChange'，表示精确的数据变更。           |
-| keys     | Array&lt;string&gt;                                          | 是   | 需要订阅的key集合。                                          |
-| callback | Callback&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | 是   | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅key，值为变更后的数据：支持number、string、boolean、bigint以及可序列化的object。 |
+| keys     | Array&lt;string&gt;                                          | 是   | 需要订阅的Key集合。                                          |
+| callback | Callback&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | 是   | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅Key，值为变更后的数据：支持number、string、boolean、bigint以及可序列化的object。 |
 
 **错误码：**
 
@@ -1028,6 +1039,13 @@ off(type: 'change', callback?: Callback&lt;string&gt;): void
 
 取消订阅数据变更。
 
+**配对调用：**
+- 与on('change')成对使用，用于取消数据变更订阅。
+- 如果不需要监听数据变更，建议及时调用off取消订阅。
+
+**相关方法：**
+- on('change')：订阅数据变更
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
@@ -1037,7 +1055,7 @@ off(type: 'change', callback?: Callback&lt;string&gt;): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件类型，固定值'change'，表示数据变更。                     |
-| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，不填写则全部取消。 |
+| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 
@@ -1083,7 +1101,7 @@ off(type: 'multiProcessChange', callback?: Callback&lt;string&gt;): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件类型，固定值'multiProcessChange'，表示多进程间的数据变更。 |
-| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，不填写则全部取消。 |
+| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 
@@ -1117,6 +1135,13 @@ off(type: 'dataChange', keys: Array&lt;string&gt;, callback?: Callback&lt;lang.I
 
 取消精确订阅数据变更。
 
+**配对调用：**
+- 与on('dataChange')成对使用，用于取消精确数据变更订阅。
+- 如果不需要监听特定Key的数据变更，建议及时调用off取消订阅。
+
+**相关方法：**
+- on('dataChange')：精确订阅数据变更
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
@@ -1126,8 +1151,8 @@ off(type: 'dataChange', keys: Array&lt;string&gt;, callback?: Callback&lt;lang.I
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件类型，固定值'dataChange'，表示精确的数据变更。           |
-| keys     | Array&lt;string&gt;                                          | 是   | 需要取消订阅的key集合，当keys为空数组时，表示取消订阅全部key；当keys为非空数组时，表示只取消订阅key集合中的key。 |
-| callback | Callback&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | 否   | 需要取消的回调函数，若callback不填写，表示所有的callback都需要处理；若callback填写，表示只处理该callback。 |
+| keys     | Array&lt;string&gt;                                          | 是   | 需要取消订阅的Key集合，当Keys为空数组时，表示取消订阅全部Key；当Keys为非空数组时，表示只取消订阅Key集合中的Key。 |
+| callback | Callback&lt;[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)&gt; | 否   | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 

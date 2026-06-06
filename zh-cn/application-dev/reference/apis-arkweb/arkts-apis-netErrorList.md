@@ -57,7 +57,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_BLOCKED_BY_RESPONSE | -27 | 请求失败，因为响应不满足要求（例如“X-Frame-Options”和“Content Security Policy”检查以及“Cross Origin Resource Policy”）。|
 |ERR_CLEARTEXT_NOT_PERMITTED | -29 | 该请求被系统策略阻止，不允许部分或全部明文请求。|
 |ERR_BLOCKED_BY_CSP | -30 | 请求被内容安全策略阻止。 |
-|ERR_H2_OR_QUIC_REQUIRED | -31 |  由于没有H/2或QUIC会话，请求被阻止。|
+|ERR_H2_OR_QUIC_REQUIRED | -31 |  由于没有HTTP/2或QUIC会话，请求被阻止。|
 |ERR_BLOCKED_BY_ORB | -32 | 请求被 CORB 或 ORB 阻止。 |
 |ERR_CONNECTION_CLOSED | -100 |  连接已关闭（对应于TCP FIN）。|
 |ERR_CONNECTION_RESET | -101 |  连接被重置（对应于TCP RST）。|
@@ -178,7 +178,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_MISSING_AUTH_CREDENTIALS | -341 | 缺少身份验证凭据。 |
 |ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS | -342 | 意外的安全库状态。 |
 |ERR_MISCONFIGURED_AUTH_ENVIRONMENT | -343 | 配置错误的身份验证环境。 |
-|ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS | -344 | 取消文档安全库状态。 |
+|ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS | -344 | 未记录的SSPI或GSSAPI状态码。 |
 |ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN | -345 | 响应体太大。|
 |ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH | -346 | 响应 headers 多个内容长度。 |
 |ERR_INCOMPLETE_HTTP2_HEADERS | -347 | 不完整的 HTTP/2 headers。 |

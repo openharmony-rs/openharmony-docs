@@ -19,7 +19,7 @@
 
 添加builder的偏移位置和builder样式信息。
 
-**系统能力：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -32,7 +32,7 @@
 
 用户行为回调。
 
-**系统能力：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,7 +44,7 @@
 
 图文变化信息。
 
-**系统能力：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

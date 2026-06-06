@@ -16,7 +16,8 @@
 
 ## 概述
 \@Env是响应式系统环境变量装饰器，其功能包括：
-- 根据入参读取相应的环境变量信息，详情见[\@Env支持参数](#env支持参数)。目前支持以下几种环境变量：
+
+根据入参读取相应的环境变量信息，详情见[\@Env支持参数](#env支持参数)。目前支持以下几种环境变量：
   - [SystemProperties.BREAK_POINT](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口不同宽高阈值下对应的断点值信息。
   - [SystemProperties.WINDOW_SIZE<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的大小信息，单位为vp。
   - [SystemProperties.WINDOW_SIZE_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的大小信息，单位为px。
@@ -27,7 +28,9 @@
   - [WritableSystemEnvKey.FONT_SCALE](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#属性-1)，用于为后代组件提供局部字体缩放比例，从API版本26.0.0开始支持。
   - [WritableSystemEnvKey.DIRECTION](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#属性-1)，用于获取窗口所在屏幕的布局方向，从API版本26.0.0开始支持。
   - 系统环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新，\@Env的参数为WritableSystemEnvKey.FONT_SCALE和WritableSystemEnvKey.DIRECTION时，父组件可通过WithEnv中的.env()方法向子组件中的\@Env传值。
-  - \@Env装饰的变量不允许开发者初始化。\@Env会返回给开发者可观察的环境变量类（由[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰，且其由属性[\@Trace](./state-management/arkts-new-observedV2-and-trace.md)装饰）的实例。开发者如果想监听环境变量的变化，可以使用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)，具体示例见[在\@ComponentV2中使用\@Env](#在componentv2中使用env)。
+  - \@Env装饰的变量不允许开发者初始化。
+    - 当\@Env装饰的类型是复杂类型时，\@Env会返回给开发者可观察的环境变量类（由[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰，且其由属性[\@Trace](./state-management/arkts-new-observedV2-and-trace.md)装饰）的实例。开发者如果想监听环境变量的变化，可以使用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)，具体示例见[在\@ComponentV2中使用\@Env](#在componentv2中使用env)。
+    - 当\@Env装饰的类型是简单类型时，开发者可以在\@Component中使用[\@Watch](state-management/arkts-watch.md)，在\@ComponentV2中使用\@Monitor监听变化，具体示例见[\@Watch与\@Monitor监听\@Env装饰的变量](#watch与monitor监听env装饰的变量)。
 
 ## \@Env支持参数
 
@@ -121,7 +124,7 @@
     }
   }
   ```
-- \@Env只能单独使用，不能和其他V1V2状态变量装饰器或@Require联用，否则会有编译时报错。
+- \@Env只能单独使用，不能和其他V1V2状态变量装饰器或@Require联用，否则会有编译时报错。从API版本26.0.0开始，在\@Component中，可通过[\@Watch](state-management/arkts-watch.md)监听\@Env装饰变量的变化，具体示例见[\@Watch与\@Monitor监听\@Env装饰的变量](#watch与monitor监听env装饰的变量)。
   ```ts
   @Env(SystemProperties.BREAK_POINT) breakpoint1: uiObserver.WindowSizeLayoutBreakpointInfo; // 正确写法
   @State @Env(SystemProperties.BREAK_POINT) breakpoint2: uiObserver.WindowSizeLayoutBreakpointInfo; // 错误写法，编译时报错
@@ -282,7 +285,6 @@ struct GrandChild2 {
     }
   }
 }
-
 ```
 
 ## 使用场景
@@ -290,8 +292,6 @@ struct GrandChild2 {
 
 下面的例子中：
 - 在\@ComponentV2中声明\@Env，获取当前\@ComponentV2组件创建时所在窗口尺寸的布局断点信息，并用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)监听`this.breakpoint`的属性的变化。
-- 在\@ComponentV2中声明\@Env，获取当前\@ComponentV2组件创建时所在窗口的大小信息，单位为vp，并用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)监听`this.sizeInVP`的属性的变化。
-- 在\@ComponentV2中声明\@Env，获取当前\@ComponentV2组件创建时所在窗口的大小信息，单位为px，并用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)监听`this.sizeInPX`的属性的变化。
 - 将\@Env装饰的变量传递给`CompV2`中[\@Param](./state-management/arkts-new-param.md)装饰的变量和`Comp`中的常规变量。
 - 点击`Button('Landscape')`和`Button('Portrait')`切换横竖屏，`Index`、`CompV2`和`Comp`关联组件进行对应的刷新，`orientationChange`被触发监听回调。
 
@@ -303,8 +303,6 @@ import { common } from '@kit.AbilityKit';
 @ComponentV2
 struct Index {
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Env(SystemProperties.WINDOW_SIZE) sizeInVP: window.SizeInVP;
-  @Env(SystemProperties.WINDOW_SIZE_PX) sizeInPX: window.Size;
 
   private changeOrientation(isLandscape: boolean) {
     const context = this.getUIContext()?.getHostContext() as common.UIAbilityContext;
@@ -322,18 +320,12 @@ struct Index {
   aboutToAppear(): void {
     // @Env返回的对象实际上是@ObservedV2装饰的对象（其属性是@Trace装饰的），所以其属性的改变可以通过addMonitor监听
     UIUtils.addMonitor(this.breakpoint, ['widthBreakpoint', 'heightBreakpoint'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInVP, ['width', 'height'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInPX, ['width', 'height'], this.orientationChange);
   }
 
   build() {
     Column() {
       Text(`Index breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Index breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Index sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Index sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Index sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Index sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
 
       Button('Landscape').onClick(() => {
         this.changeOrientation(true);
@@ -343,8 +335,8 @@ struct Index {
         this.changeOrientation(false);
       })
 
-      CompV2({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
-      Comp({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
+      CompV2({ breakpoint: this.breakpoint })
+      Comp({ breakpoint: this.breakpoint })
     }
   }
 }
@@ -352,17 +344,11 @@ struct Index {
 @ComponentV2
 struct CompV2 {
   @Require @Param breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require @Param sizeInVP: window.SizeInVP;
-  @Require @Param sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`CompV2 breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`CompV2 breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`CompV2 sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`CompV2 sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`CompV2 sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`CompV2 sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -370,17 +356,11 @@ struct CompV2 {
 @Component
 struct Comp {
   @Require breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require sizeInVP: window.SizeInVP;
-  @Require sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`Comp breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Comp breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Comp sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Comp sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Comp sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Comp sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -398,8 +378,6 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct Index {
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Env(SystemProperties.WINDOW_SIZE) sizeInVP: window.SizeInVP;
-  @Env(SystemProperties.WINDOW_SIZE_PX) sizeInPX: window.Size;
 
   private changeOrientation(isLandscape: boolean) {
     const context = this.getUIContext()?.getHostContext() as common.UIAbilityContext;
@@ -417,18 +395,12 @@ struct Index {
   aboutToAppear(): void {
     // @Env返回的对象实际上是@ObservedV2装饰的对象（其属性是@Trace装饰的），所以其属性的改变可以通过addMonitor监听
     UIUtils.addMonitor(this.breakpoint, ['widthBreakpoint', 'heightBreakpoint'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInVP, ['width', 'height'], this.orientationChange);
-    UIUtils.addMonitor(this.sizeInPX, ['width', 'height'], this.orientationChange);
   }
 
   build() {
     Column() {
       Text(`Index breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Index breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Index sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Index sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Index sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Index sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
 
       Button('Landscape').onClick(() => {
         this.changeOrientation(true);
@@ -438,8 +410,8 @@ struct Index {
         this.changeOrientation(false);
       })
 
-      CompV2({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
-      Comp({ breakpoint: this.breakpoint, sizeInVP: this.sizeInVP, sizeInPX: this.sizeInPX })
+      CompV2({ breakpoint: this.breakpoint })
+      Comp({ breakpoint: this.breakpoint })
     }
   }
 }
@@ -447,17 +419,11 @@ struct Index {
 @ComponentV2
 struct CompV2 {
   @Require @Param breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require @Param sizeInVP: window.SizeInVP;
-  @Require @Param sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`CompV2 breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`CompV2 breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`CompV2 sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`CompV2 sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`CompV2 sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`CompV2 sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -465,17 +431,11 @@ struct CompV2 {
 @Component
 struct Comp {
   @Require breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
-  @Require sizeInVP: window.SizeInVP;
-  @Require sizeInPX: window.Size;
 
   build() {
     Column() {
       Text(`Comp breakpoint width: ${this.breakpoint.widthBreakpoint}`).fontSize(20)
       Text(`Comp breakpoint height: ${this.breakpoint.heightBreakpoint}`).fontSize(20)
-      Text(`Comp sizeInVP width: ${this.sizeInVP.width}`).fontSize(20)
-      Text(`Comp sizeInVP height: ${this.sizeInVP.height}`).fontSize(20)
-      Text(`Comp sizeInPX width: ${this.sizeInPX.width}`).fontSize(20)
-      Text(`Comp sizeInPX height: ${this.sizeInPX.height}`).fontSize(20)
     }
   }
 }
@@ -493,7 +453,7 @@ struct Comp {
    - `ComponentUnderBuilderNode`在被挂载到新的窗口下时，会触发\@Env重新获取新的环境变量。
    - \@Env重新获取新的环境变量后，触发其关联组件的刷新。其中`ComponentUnderBuilderNode`中`@Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo`会通知`CompV2`内的`@Param breakpoint`刷新，但是并不会通知`Comp`内的常规变量`breakpoint`触发UI刷新。所以在切换窗口，\@Env重新获取环境变量的场景下，建议开发者不要将\@Env传递给常规变量，以避免常规变量不能被通知UI刷新的问题。
 
-下面的示例包含了创建子窗的流程，具体可参考[管理应用窗口（Stage模型）](../windowmanager/application-window-stage.md)。
+下面的示例包含了创建子窗的流程，具体可参考[子窗口开发指导](../windowmanager/subwindow-guide.md)。
 
 ```Typescript
 // EntryAbility.ets
@@ -971,26 +931,26 @@ struct Comp {
 
 ![gif](./figures/env_switch_instance2.gif)
 
-### 通过WithEnv向DIRECTION和FONT_SCALE传值以及响应式更新
-当点击更新按钮导致\@Local装饰的变量值发生变化时，WithEnv组件中通过.env()方法设置的值也会通知\@Env，此时子组件中\@Env装饰的变量将更新最新值并触发界面重新渲染，实现了完整的响应式更新链路。
+### \@Watch与\@Monitor监听\@Env装饰的变量
+从API版本26.0.0开始，在\@Component中，可通过[\@Watch](state-management/arkts-watch.md)监听\@Env装饰变量的变化。需要注意的是，仅当\@Env装饰的变量被整体赋值时才会触发\@Watch监听回调，其内部属性的变化不会触发回调。
 ```ts
 import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
-
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
-@ComponentV2
+@Component
 struct Index {
-  @Local fontScaleNum: number = 1;
+  @State fontScaleNum: number = 1;
 
   build() {
     Column() {
       Button('update').onClick(() => {
         this.fontScaleNum++;
       })
+
       WithEnv() {
-        Child()
+        ChildV1()
       }
-      .env(WritableEnvKey.DIRECTION, Direction.Ltr)
       .env(WritableEnvKey.FONT_SCALE, this.fontScaleNum)
     }
     .height('100%')
@@ -998,14 +958,16 @@ struct Index {
   }
 }
 
-@ComponentV2
-struct Child {
-  @Env(WritableEnvKey.DIRECTION) directionVal: Direction;
-  @Env(WritableEnvKey.FONT_SCALE) fontScaleVal: number;
+@Component
+struct ChildV1 {
+  @Env(WritableEnvKey.FONT_SCALE) @Watch('onEnvUpdate') fontScaleVal: number;
+
+  onEnvUpdate(){
+    hilog.info(0x0000, 'testTag',`Env value has changed Watched`);
+  }
 
   build() {
     Column() {
-      Text('Direction val is:'  + this.directionVal)
       Text('FontScale val is:'  + this.fontScaleVal)
     }
     .height('100%')
@@ -1015,4 +977,57 @@ struct Child {
 ```
 运行效果图如下。
 
-![gif](./figures/env_m.gif)
+![png](./figures/env-f.png)
+
+在\@ComponentV2中，可通过\@Monitor监听\@Env装饰变量的变化。需要注意的是，仅当\@Env装饰的变量被整体赋值时才会触发\@Monitor监听回调，其内部属性的变化不会触发回调。
+```ts
+import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+
+@Entry
+@ComponentV2
+struct MonitorTest {
+  @Local message: number = 20;
+
+  build() {
+    Row() {
+      Column() {
+        Button('change message').onClick(() => {
+          this.message++;
+        })
+        WithEnv() {
+          Child()
+        }.env(WritableEnvKey.FONT_SCALE, this.message)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Env(WritableEnvKey.FONT_SCALE) message: number;
+
+  @Monitor('message')
+  onStrChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      hilog.info(0x0000, 'testTag',
+        `${path} changed from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text('message' + `${this.message}`)
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+  }
+}
+```
+
+运行效果图如下。
+
+![image](./figures/env-m.png)

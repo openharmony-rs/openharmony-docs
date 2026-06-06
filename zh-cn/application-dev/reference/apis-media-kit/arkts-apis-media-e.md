@@ -173,6 +173,8 @@ Codec MIME类型枚举。
 | TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | 表示总的加载大小，单位为字节（Byte）。<br> **模型约束：** 此接口仅可在Stage模型下使用。             |
 | STALLING_COUNT                     | 'stalling_count'                     | 表示总的卡顿次数。                         |
 | TOTAL_STALLING_TIME                | 'total_stalling_time'                | 表示总的卡顿时长，单位为毫秒（ms）。       |
+| LIP_ASYNC_COUNT                    | 'lip_async_count'                    | 表示总的音画不同步的次数。<br>**起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。       |
+| TOTAL_LIP_ASYNC_TIME               | 'total_lip_async_time'               | 表示总的音画不同步时长，单位为毫秒（ms）。<br>**起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。       |
 
 ## BufferingInfoType<sup>8+</sup>
 

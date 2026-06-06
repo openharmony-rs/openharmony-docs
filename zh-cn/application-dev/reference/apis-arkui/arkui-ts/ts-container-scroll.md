@@ -123,8 +123,6 @@ scrollBarWidth(value: number | string)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -165,6 +163,8 @@ scrollSnap(value: ScrollSnapOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -180,8 +180,6 @@ edgeEffect(edgeEffect: EdgeEffect, options?: EdgeEffectOptions)
 设置边缘滑动效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,6 +237,8 @@ friction(value: number | Resource)
 设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -838,8 +838,19 @@ Scroller的构造函数。
 
 scrollTo(options: ScrollOptions)
 
-
 滑动到指定位置。
+
+>  **说明：**
+>
+> - scrollTo动画速度大于200vp/s时，滚动组件区域内的组件不响应点击事件。
+>
+> - 各组件行为存在差异：
+>
+>   - [ArcList](ts-container-arclist.md)和[List](ts-container-list.md)组件会对所有经过的item进行加载和布局。
+>
+>   - Grid组件和[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的[WaterFlow](ts-container-waterflow.md)组件在跳转距离较大（大于2倍组件主轴高度）时，会直接估算出要显示的item。跳转指一帧滑动。
+>
+>   - [ALWAYS_TOP_DOWN](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的WaterFlow组件向后跳转（即dx或dy为正值时）会加载和布局所有经过的item，向前跳转（即dx或dy为负值时）会直接跳转到对应位置。跳转指一帧滑动。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -850,11 +861,6 @@ scrollTo(options: ScrollOptions)
 | 参数名   | 类型 | 必填   | 说明      |
 | ----- | ---- | ---- | --------- |
 | options | [ScrollOptions](#scrolloptions18对象说明) | 是    | 滑动到指定位置的参数。 |
-
->  **说明：**
->
-> ScrollTo动画速度大于200vp/s时，滚动组件区域内的组件不响应点击事件。
->
 
 ### scrollEdge
 
@@ -1019,13 +1025,19 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 
 scrollBy(dx: Length, dy: Length)
 
-
 滑动指定距离。
 
-
->  **说明：**
+> **说明：**
 >
->  支持ArcList、Scroll、List、Grid、WaterFlow组件。
+> - 支持ArcList、Scroll、List、Grid、WaterFlow组件。
+>
+> - 各组件行为存在差异：
+>
+>   - [ArcList](ts-container-arclist.md)和[List](ts-container-list.md)组件会对所有经过的item进行加载和布局。
+>
+>   - Grid组件和[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的WaterFlow组件在跳转距离较大（大于2倍组件主轴高度）时，会直接估算出要显示的item。跳转指一帧滑动。
+>
+>   - [ALWAYS_TOP_DOWN](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的WaterFlow组件向后跳转（即dx或dy为正值时）会加载和布局所有经过的item，向前跳转（即dx或dy为负值时）会直接跳转到对应位置。跳转指一帧滑动。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1190,6 +1202,8 @@ getFrameNode(): FrameNode | undefined
 获取与当前Scroller绑定的FrameNode。
 
 **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
