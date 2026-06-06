@@ -2423,7 +2423,7 @@ struct Index {
 }
 ```
 
-![en-us_image_disposeTree](figures/image-disposeTree.gif)
+![en-us_image_disposeTree](figures/en-us_image_disposeTree.gif)
 
 ### setCrossLanguageOptions<sup>15+</sup>
 

@@ -920,7 +920,7 @@ struct SheetSideExample {
 }
 ```
 
-![en-us_sheet](figures/sheet8-side.gif)
+![en-us_sheet](figures/sheet8-side.png)
 
 ### Example 9: Implementing a Full-Screen Content Cover Sheet
 
