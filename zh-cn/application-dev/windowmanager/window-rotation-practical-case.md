@@ -23,6 +23,68 @@
 
 <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { window } from '@kit.ArkUI'
+import common from '@ohos.app.ability.common';
+import { Callback } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State currentOrientation: string = 'UNSPECIFIED';
+  private stage: window.WindowStage = (this.getUIContext().getHostContext() as common.UIAbilityContext).windowStage;
+
+  aboutToAppear() {
+    let ret: boolean = false;
+    ret = display.isFoldable();
+    if (ret) {
+      let callback: Callback<display.FoldDisplayMode> = (data: display.FoldDisplayMode) => {
+        console.info(`Listening enabled. Data: ${data}`);
+        this.getBreakPointAndSetOrientation();
+      };
+      display.on('foldDisplayModeChange', callback);
+    } else {
+      this.getBreakPointAndSetOrientation();
+    }
+  }
+
+  private getBreakPointAndSetOrientation(): void {
+    let displayInfo = display.getDefaultDisplaySync();
+    let displayWidth = displayInfo.width;
+    let displayHeight = displayInfo.height;
+    let heightBp = displayHeight / displayWidth;
+    if(displayWidth > displayHeight) {
+      let temp = displayWidth;
+      displayWidth = displayHeight;
+      displayHeight = temp;
+    }
+    // 建议使用单一策略如"FOLLOW_DESKTOP"来应对设备的差异化，如单一策略无法满足需求，可参考断点机制，屏蔽设备差异
+    // 此处是举的特殊示例，原则上支持横屏的应用，旋转策略应该是支持4个方向可旋转，此处是为了说明断点的使用方式，才举此例
+    // 600为宽度断点枚举值其中的边界值， 0.8为高宽比断点枚举值其中的边界值
+    if (displayWidth >= 600 && heightBp < 0.8) {
+      this.stage.getMainWindowSync().setPreferredOrientation(window.Orientation.LANDSCAPE);
+      this.currentOrientation = 'LANDSCAPE';
+    } else {
+      this.stage.getMainWindowSync().setPreferredOrientation(window.Orientation.PORTRAIT);
+      this.currentOrientation = 'PORTRAIT';
+    }
+  }
+  build() {
+    RelativeContainer() {
+      Text(this.currentOrientation)
+        .fontWeight(600)
+        .fontSize(30)
+        .textAlign(TextAlign.Center)
+        .position({y: 300})
+        .width('100%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## 视频类应用横竖屏切换
 
 视频类应用横竖屏切换是指在视频类应用中，播放界面的详情页采用竖屏方式显示，用户可通过全屏按钮将页面切换至横屏方式显示，从而提供更佳的观看体验。
