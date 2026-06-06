@@ -20,7 +20,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - 本模块订阅RDB(Relational Database，关系型数据库)数据变更的接口on('rdbDataChange')的回调支持不大于10M数据的传输。
+> - 本模块订阅RDB(RelationalStore，关系型数据库)变更的接口on('rdbDataChange')的回调支持不大于10M数据的传输。
 
 
 ## 导入模块
@@ -29,7 +29,7 @@
 import { dataShare } from '@kit.ArkData';
 ```
 
-## dataShare.createDataShareHelper<sup>9+</sup>
+## dataShare.createDataShareHelper
 
 createDataShareHelper(context: Context, uri: string, callback: AsyncCallback&lt;DataShareHelper&gt;): void
 
@@ -88,7 +88,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## dataShare.createDataShareHelper<sup>9+</sup><sup>10+</sup>
+## dataShare.createDataShareHelper<sup>10+</sup>
 createDataShareHelper(context: Context, uri: string, options: DataShareHelperOptions, callback: AsyncCallback&lt;DataShareHelper&gt;): void 
 
 创建DataShareHelper实例，通过DataShareHelperOptions指定是否通过代理访问。使用callback异步回调。
@@ -145,7 +145,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-## dataShare.createDataShareHelper<sup>9+</sup>
+## dataShare.createDataShareHelper
 
 createDataShareHelper(context: Context, uri: string, options?: DataShareHelperOptions): Promise&lt;DataShareHelper&gt;
 
@@ -759,7 +759,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let onCallback: (err: BusinessError, node: dataShare.RdbDataChangeNode) => void = (err: BusinessError, node:dataShare.RdbDataChangeNode): void => {
   if (!node.data.length) {
-    console.info("node.data.length is empty");
+    console.info("node.data is empty");
     return;
   }
   console.info("onCallback " + JSON.stringify(node.uri));
@@ -939,8 +939,6 @@ if (dataShareHelper != undefined) {
 publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version: number, callback: AsyncCallback&lt;Array&lt;OperationResult&gt;&gt;): void
 
 发布数据，将数据更新至数据库。需传入要发布的数据版本，当传入版本号高于当前数据库记录的版本时成功。仅支持静默访问。使用callback异步回调。
-
-静默场景下，调用此接口时，传入的data和bundleName参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 静默场景下，调用此接口时，传入的data和bundleName参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 

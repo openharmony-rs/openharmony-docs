@@ -207,7 +207,7 @@ in(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 
 | 参数名  | 类型             | 必填 | 说明                                    |
 | ------- | ---------------- | ---- | --------------------------------------- |
-| field   | string           | 是 | 数据库表中的列名。</br>field为undefined或null时，此次调用接口配置的谓词无效。</br>当field为字符串'null'或'undefined'时，键值型数据库和关系型数据库接口使用该谓词时，可能匹配结果非预期或抛出异常。</br>field为undefined或null时，此次调用接口配置的谓词无效。                   |
+| field   | string           | 是 | 数据库表中的列名。</br>field为undefined或null时，此次调用接口配置的谓词无效。</br>当field为字符串'null'或'undefined'时，键值型数据库和关系型数据库接口使用该谓词时，可能匹配结果非预期或抛出异常。                   |
 | value | Array<[ValueType](js-apis-data-valuesBucket.md#valuetype)> | 是   | 以ValueType型数组形式指定的要匹配的值。</br>value为undefined或null时，此次调用接口配置的谓词无效。 |
 
 **返回值：**

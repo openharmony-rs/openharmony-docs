@@ -46,9 +46,9 @@ export default class EntryAbility extends UIAbility {
       let columns = ["*"];
       let predicates = new dataSharePredicates.DataSharePredicates();
       let resultSet: DataShareResultSet | undefined = undefined;
-      da.equalTo("name0", "ZhangSan");
+      predicates.equalTo("name0", "ZhangSan");
       if (dataShareHelper != undefined) {
-        (dataShareHelper as dataShare.DataShareHelper).query(uri, da, columns).then((data: DataShareResultSet) => {
+        (dataShareHelper as dataShare.DataShareHelper).query(uri, predicates, columns).then((data: DataShareResultSet) => {
           console.info("query end, data : " + data);
           resultSet = data;
         }).catch((err: BusinessError) => {
@@ -211,7 +211,7 @@ goToRow(position: number): boolean
 
 | **参数名** | **类型** | **必填** | 说明                                    |
 | ---------- | -------- | -------- | --------------------------------------- |
-| position   | number   | 是       | 表示要移动到的指定位置，从0开始，取值范围[0, rowCount-1]。超出范围时返回false。 |
+| position   | number   | 是       | 表示要移动到的指定位置，从0开始，取值范围[0, rowCount-1]。 |
 
 **返回值：**
 
@@ -243,7 +243,7 @@ getBlob(columnIndex: number): Uint8Array
 
 | **参数名**  | **类型** | **必填** | 说明                    |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | 是       | 指定的列索引，从0开始，取值范围[0, columnCount-1]。超出范围时的表现由使用方确定。 |
+| columnIndex | number   | 是       | 指定的列索引，从0开始，取值范围[0, columnCount-1]。 |
 
 **返回值：**
 
@@ -280,7 +280,7 @@ getString(columnIndex: number): string
 
 | **参数名**  | **类型** | **必填** | 说明                    |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | 是       | 指定的列索引，从0开始，取值范围[0, columnCount-1]。超出范围时的表现由使用方确定。 |
+| columnIndex | number   | 是       | 指定的列索引，从0开始，取值范围[0, columnCount-1]。 |
 
 **返回值：**
 
@@ -317,7 +317,7 @@ getLong(columnIndex: number): number
 
 | **参数名**  | **类型** | **必填** | 说明                    |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | 是       | 指定的列索引，从0开始，取值范围[0, columnCount-1]。超出范围时的表现由使用方确定。 |
+| columnIndex | number   | 是       | 指定的列索引，从0开始，取值范围[0, columnCount-1]。 |
 
 **返回值：**
 
@@ -354,7 +354,7 @@ getDouble(columnIndex: number): number
 
 | **参数名**  | **类型** | **必填** | 说明                    |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | 是       | 指定的列索引，从0开始，取值范围[0, columnCount-1]。超出范围时的表现由使用方确定。 |
+| columnIndex | number   | 是       | 指定的列索引，从0开始，取值范围[0, columnCount-1]。 |
 
 **返回值：**
 
@@ -441,7 +441,7 @@ getColumnName(columnIndex: number): string
 
 | **参数名**  | **类型** | **必填** | 说明                       |
 | ----------- | -------- | -------- | -------------------------- |
-| columnIndex | number   | 是       | 表示结果集中指定列的索引，从0开始，取值范围[0, columnCount-1]。超出范围时的表现由使用方确定。 |
+| columnIndex | number   | 是       | 表示结果集中指定列的索引，从0开始，取值范围[0, columnCount-1]。 |
 
 **返回值：**
 
@@ -473,7 +473,7 @@ getDataType(columnIndex: number): DataType
 
 | **参数名**  | **类型** | **必填** | 说明                       |
 | ----------- | -------- | -------- | -------------------------- |
-| columnIndex | number   | 是       | 表示结果集中指定列的索引，从0开始，取值范围[0, columnCount-1]。超出范围时的表现由使用方确定。 |
+| columnIndex | number   | 是       | 表示结果集中指定列的索引，从0开始，取值范围[0, columnCount-1]。 |
 
 **返回值：**
 

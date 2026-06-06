@@ -182,7 +182,7 @@ int OH_Preferences_GetBool(OH_Preferences *preference, const char *key, bool *va
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。<br>若错误码为PREFERENCES_ERROR_KEY_NOT_FOUND，表示查询的key不存在。 |
+| int  | 返回执行的错误码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。<br>若错误码为PREFERENCES_ERROR_STORAGE，表示存储异常。<br>若错误码为PREFERENCES_ERROR_MALLOC，表示内存分配失败。<br>若错误码为PREFERENCES_ERROR_KEY_NOT_FOUND，表示查询的Key不存在。 |
 
 ### OH_Preferences_GetString()
 

@@ -177,7 +177,7 @@ export default class EntryAbility extends UIAbility {
 
 on(event: 'dataChange', uris: string[], config: DataProxyConfig, callback: AsyncCallback&lt;DataProxyChangeInfo[]&gt;): DataProxyResult[]
 
-订阅指定URI对应共享配置变更事件。
+订阅指定URI对应共享配置变更事件。若订阅者已注册变更通知，当配置发布方修改配置时，订阅者将会接收到callback通知，通知携带数据变更类型、变化的URI、变更的共享配置内容。使用callback异步回调。该功能不允许跨用户订阅通知，不允许订阅未发布的配置。订阅成功后若权限被收回，则后续不再通知订阅者。
 
 **配对调用：**
 - 订阅后必须在不需要时调用off('dataChange')取消订阅
@@ -401,8 +401,6 @@ dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyR
 deleteMyPublishedData(config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt;
 
 删除当前发布者发布的所有共享配置项。使用Promise异步回调。只有配置发布方能删除共享配置项。
-
-**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 

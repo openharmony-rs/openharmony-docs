@@ -78,7 +78,7 @@ let dataPreferences: preferences.Preferences | null = null;
 
 preferences.getPreferences(context, 'myStore', (err: BusinessError, val: preferences.Preferences) => {
   if (err) {
-    console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
     return;
   }
   dataPreferences = val;
@@ -99,7 +99,7 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     preferences.getPreferences(this.context, 'myStore', (err: BusinessError, val: preferences.Preferences) => {
       if (err) {
-        console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
         return;
       }
       dataPreferences = val;
@@ -161,7 +161,7 @@ sp.then((object: preferences.Preferences) => {
   dataPreferences = object;
   console.info("Succeeded in getting preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
 })
 ```
 
@@ -181,7 +181,7 @@ class EntryAbility extends UIAbility {
       dataPreferences = object;
       console.info("Succeeded in getting preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
     })
   }
 }
@@ -235,7 +235,7 @@ let dataPreferences: preferences.Preferences | null = null;
 let options: preferences.Options = { name: 'myStore' };
 preferences.getPreferences(context, options, (err: BusinessError, val: preferences.Preferences) => {
   if (err) {
-    console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
     return;
   }
   dataPreferences = val;
@@ -258,7 +258,7 @@ class EntryAbility extends UIAbility {
     let options: preferences.Options = { name: 'myStore' };
     preferences.getPreferences(this.context, options, (err: BusinessError, val: preferences.Preferences) => {
       if (err) {
-        console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
         return;
       }
       dataPreferences = val;
@@ -324,7 +324,7 @@ sp.then((object: preferences.Preferences) => {
   dataPreferences = object;
   console.info("Succeeded in getting preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
 })
 ```
 
@@ -345,7 +345,7 @@ class EntryAbility extends UIAbility {
       dataPreferences = object;
       console.info("Succeeded in getting preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
     })
   }
 }
@@ -466,7 +466,7 @@ let context = featureAbility.getContext();
 
 preferences.deletePreferences(context, 'myStore', (err: BusinessError) => {
   if (err) {
-    console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to delete preferences. Code = " + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in deleting preferences.");
@@ -484,7 +484,7 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     preferences.deletePreferences(this.context, 'myStore', (err: BusinessError) => {
       if (err) {
-        console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to delete preferences. Code = " + err.code + ", message = " + err.message);
         return;
       }
       console.info("Succeeded in deleting preferences.");
@@ -546,7 +546,7 @@ let sp = preferences.deletePreferences(context, 'myStore');
 sp.then(() => {
   console.info("Succeeded in deleting preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to delete preferences. Code = " + err.code + ", message = " + err.message);
 })
 ```
 
@@ -563,7 +563,7 @@ class EntryAbility extends UIAbility {
     sp.then(() => {
       console.info("Succeeded in deleting preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
     })
   }
 }
@@ -619,7 +619,7 @@ let context = featureAbility.getContext();
 let options: preferences.Options = { name: 'myStore' };
 preferences.deletePreferences(context, options, (err: BusinessError) => {
   if (err) {
-    console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in deleting preferences.");
@@ -638,7 +638,7 @@ class EntryAbility extends UIAbility {
     let options: preferences.Options = { name: 'myStore' };
     preferences.deletePreferences(this.context, options, (err: BusinessError) => {
       if (err) {
-        console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
         return;
       }
       console.info("Succeeded in deleting preferences.");
@@ -705,7 +705,7 @@ let sp = preferences.deletePreferences(context, options);
 sp.then(() => {
   console.info("Succeeded in deleting preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -723,7 +723,7 @@ class EntryAbility extends UIAbility {
     sp.then(() => {
       console.info("Succeeded in deleting preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
     })
   }
 }
@@ -776,7 +776,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let context = featureAbility.getContext();
 preferences.removePreferencesFromCache(context, 'myStore', (err: BusinessError) => {
   if (err) {
-    console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in removing preferences.");
@@ -794,7 +794,7 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     preferences.removePreferencesFromCache(this.context, 'myStore', (err: BusinessError) => {
       if (err) {
-        console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
         return;
       }
       console.info("Succeeded in removing preferences.");
@@ -856,7 +856,7 @@ let sp = preferences.removePreferencesFromCache(context, 'myStore');
 sp.then(() => {
   console.info("Succeeded in removing preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -873,7 +873,7 @@ class EntryAbility extends UIAbility {
     sp.then(() => {
       console.info("Succeeded in removing preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
     })
   }
 }
@@ -987,7 +987,7 @@ let context = featureAbility.getContext();
 let options: preferences.Options = { name: 'myStore' };
 preferences.removePreferencesFromCache(context, options, (err: BusinessError) => {
   if (err) {
-    console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in removing preferences.");
@@ -1006,7 +1006,7 @@ class EntryAbility extends UIAbility {
     let options: preferences.Options = { name: 'myStore' };
     preferences.removePreferencesFromCache(this.context, options, (err: BusinessError) => {
       if (err) {
-        console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
         return;
       }
       console.info("Succeeded in removing preferences.");
@@ -1072,7 +1072,7 @@ let sp = preferences.removePreferencesFromCache(context, options);
 sp.then(() => {
   console.info("Succeeded in removing preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1090,7 +1090,7 @@ class EntryAbility extends UIAbility {
     sp.then(() => {
       console.info("Succeeded in removing preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
     })
   }
 }
@@ -1273,7 +1273,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.get('startup', 'default', (err: BusinessError, val: preferences.ValueType) => {
   if (err) {
-    console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to get value of 'startup'. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in getting value of 'startup'. val: " + val);
@@ -1321,7 +1321,7 @@ let data = dataPreferences.get('startup', 'default');
 data.then((data: preferences.ValueType) => {
   console.info("Succeeded in getting value of 'startup'. Data: " + data);
 }).catch((err: BusinessError) => {
-  console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to get value of 'startup'. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1385,7 +1385,7 @@ getAll(callback: AsyncCallback&lt;Object&gt;): void
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.                       |
+| 401      | Parameter error. Mandatory parameters are left unspecified.|
 | 15500000 | Inner error.                   |
 
 **示例：**
@@ -1402,7 +1402,7 @@ function getObjKeys(obj: Object): string[] {
 
 dataPreferences.getAll((err: BusinessError, value: Object) => {
   if (err) {
-    console.error("Failed to get all key-values. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to get all key-values. code =" + err.code + ", message = " + err.message);
     return;
   }
   let allKeys = getObjKeys(value);
@@ -1454,7 +1454,7 @@ allData.then((value: Object) => {
   console.info('getAll keys = ' + allKeys);
   console.info("getAll object = " + JSON.stringify(value));
 }).catch((err: BusinessError) => {
-  console.error("Failed to get all key-values. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to get all key-values. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1538,7 +1538,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.put('startup', 'auto', (err: BusinessError) => {
   if (err) {
-    console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to put value of 'startup'. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in putting value of 'startup'.");
@@ -1593,7 +1593,7 @@ let putStartupPref = dataPreferences.put('startup', 'auto');
 putStartupPref.then(() => {
   console.info("Succeeded in putting value of 'startup'.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to put value of 'startup'. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1670,7 +1670,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.has('startup', (err: BusinessError, val: boolean) => {
   if (err) {
-    console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to check the key 'startup'. code =" + err.code + ", message = " + err.message);
     return;
   }
   if (val) {
@@ -1726,7 +1726,7 @@ isStartupSet.then((val: boolean) => {
     console.info("The key 'startup' does not contain.");
   }
 }).catch((err: BusinessError) => {
-  console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to check the key 'startup'. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1807,7 +1807,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.delete('startup', (err: BusinessError) => {
   if (err) {
-    console.error("Failed to delete the key 'startup'. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to delete the key 'startup'. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in deleting the key 'startup'.");
@@ -1855,7 +1855,7 @@ let deleteStartupPromise = dataPreferences.delete('startup');
 deleteStartupPromise.then(() => {
   console.info("Succeeded in deleting the key 'startup'.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to delete the key 'startup'. code =" + err.code +", message =" + err.message);
+  console.error("Failed to delete the key 'startup'. code =" + err.code +", message = " + err.message);
 })
 ```
 
@@ -1930,7 +1930,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -1977,7 +1977,7 @@ let flushResult = dataPreferences.flush();
 flushResult.then(() => {
   console.info("Succeeded in flushing.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -2041,7 +2041,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.clear((err: BusinessError) =>{
   if (err) {
-    console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to clear. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in clearing.");
@@ -2082,7 +2082,7 @@ let promise = dataPreferences.clear();
 promise.then(() => {
   console.info("Succeeded in clearing.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to clear. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -2153,7 +2153,7 @@ dataPreferences.on('change', observer);
 dataPreferences.putSync('startup', 'manual');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2207,7 +2207,7 @@ dataPreferences.on('multiProcessChange', observer);
 dataPreferences.putSync('startup', 'manual');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2262,7 +2262,7 @@ dataPreferences.putSync('name', 'xiaohong');
 dataPreferences.putSync('weight', 125);
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2307,7 +2307,7 @@ dataPreferences.on('change', observer);
 dataPreferences.putSync('startup', 'auto');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2355,7 +2355,7 @@ dataPreferences.on('multiProcessChange', observer);
 dataPreferences.putSync('startup', 'auto');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2413,7 +2413,7 @@ dataPreferences.putSync('name', 'xiaohong');
 dataPreferences.putSync('weight', 125);
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
