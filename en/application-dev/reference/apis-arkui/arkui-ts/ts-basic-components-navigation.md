@@ -4774,7 +4774,7 @@ struct NavigationExample {
 }
 ```
 
-![navigation_navbarwidthrange](figures/navigation_navbarwidthrange.gif)
+![navigation_navbarwidthrange](figures/navigation-navbarwidthrange.gif)
 
 ### Example 15: Enabling and Disabling Navigation Toolbar Adaptation
 
@@ -4842,7 +4842,7 @@ struct NavigationExample {
 }
 ```
 
-![zh-cn_image_navigation_toolbar_adaptation_landscape](figures/zh-cn_image_navigation_toolbar_adaptation_landscape.gif)
+![zh-cn_image_navigation_toolbar_adaptation_landscape](figures/image-adaptation-landscape.gif)
 
 ### Example 16: Using NavDestination as a Navigation Page in Navigation
 
@@ -4925,7 +4925,7 @@ Configure **"routerMap": "$profile:router_map"** in the **module** field of the 
 }
 ```
 
-![zh-cn_image_navigation_home_NavDestination](figures/zh-cn_image_navigation_home_NavDestination.gif)
+![zh-cn_image_navigation_home_NavDestination](figures/image-home-NavDestination.gif)
 
 ### Example 17: Using New Navigation Controller APIs
 
@@ -5362,4 +5362,4 @@ Configure **"routerMap": "$profile:router_map"** in the **module** field of the 
 >
 > 5. Click the application. The displayed page is still the page after the jump button is clicked.
 
-![navigation_recoverable.gif](figures/navigation_recoverable.gif)
+![navigation_recoverable.gif](figures/navigation-recoverable.gif)

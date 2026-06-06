@@ -333,121 +333,6 @@ struct Index {
 }
 ```
 
-ArkTS-Sta示例：
-```ts
-import { Entry, Component, $r, Row, Column, Divider } from '@kit.ArkUI';
-import { SelectTitleBar, SelectTitleBarMenuItem } from '@ohos.arkui.advanced.SelectTitleBar';
-
-@Entry
-@Component
-struct Index {
-  // 定义右侧菜单项目列表
-  private menuItems: Array<SelectTitleBarMenuItem> =
-    [
-      {
-        // 系统保存图片资源
-        value: $r('sys.media.ohos_save_button_filled'),
-        // 启用图片
-        isEnabled: true,
-        // 点击菜单时触发事件
-        action: () => this.getUIContext().getPromptAction().showToast({ message: 'show toast index 1' }),
-      } as SelectTitleBarMenuItem,
-      {
-        // 系统复制图片资源
-        value: $r('sys.media.ohos_ic_public_copy'),
-        isEnabled: true,
-        action: () => this.getUIContext().getPromptAction().showToast({ message: 'show toast index 2' }),
-      } as SelectTitleBarMenuItem,
-      {
-        // 系统编辑图片资源
-        value: $r('sys.media.ohos_ic_public_edit'),
-        isEnabled: true,
-        action: () => this.getUIContext().getPromptAction().showToast({ message: 'show toast index 3' }),
-      } as SelectTitleBarMenuItem,
-      {
-        // 系统删除图片资源
-        value: $r('sys.media.ohos_ic_public_remove'),
-        isEnabled: true,
-        action: () => this.getUIContext().getPromptAction().showToast({ message: 'show toast index 4' }),
-      } as SelectTitleBarMenuItem,
-    ]
-
-  build() {
-    Row() {
-      Column() {
-        Divider().height(2).color(0xCCCCCC)
-        SelectTitleBar({
-          // 定义下拉列表选项
-          options: [
-            { value: '所有照片' },
-            { value: '本地（设备）' },
-            { value: '本地本地本地本地本地（储存卡）' }
-          ],
-          // 初始选择第一个下拉选项
-          selected: 0,
-          // 选中时触发函数
-          onSelected: (index: int) => this.getUIContext().getPromptAction().showToast({ message: 'page index ' + index }),
-          // 隐藏左侧返回箭头
-          hidesBackButton: true,
-        })
-        Divider().height(2).color(0xCCCCCC)
-        SelectTitleBar({
-          options: [
-            { value: '所有照片' },
-            { value: '本地（设备）' },
-            { value: '本地本地本地本地本地（储存卡）' },
-          ],
-          selected: 0,
-          onSelected: (index: int) => this.getUIContext().getPromptAction().showToast({ message: 'page index ' + index }),
-          hidesBackButton: false,
-        })
-        Divider().height(2).color(0xCCCCCC)
-        SelectTitleBar({
-          options: [
-            { value: '所有照片' },
-            { value: '本地（设备）' },
-            { value: '本地本地本地本地本地（储存卡）' },
-          ],
-          selected: 1,
-          onSelected: (index: int) => this.getUIContext().getPromptAction().showToast({ message: 'page index ' + index }),
-          subtitle: 'example@example.com',
-        })
-        Divider().height(2).color(0xCCCCCC)
-        SelectTitleBar({
-          options: [
-            { value: '所有照片' },
-            { value: '本地（设备）' },
-            { value: '本地本地本地本地本地（储存卡）' },
-          ],
-          selected: 1,
-          onSelected: (index: int) => this.getUIContext().getPromptAction().showToast({ message: 'page index ' + index }),
-          subtitle: 'example@example.com',
-          // 系统保存图片资源
-          menuItems: [{ isEnabled: true, value: $r('sys.media.ohos_save_button_filled'),
-            action: () => this.getUIContext().getPromptAction().showToast({ message: 'show toast index 1' }),
-          }],
-        })
-        Divider().height(2).color(0xCCCCCC)
-        SelectTitleBar({
-          options: [
-            { value: '所有照片' },
-            { value: '本地（设备）' },
-            { value: '本地本地本地本地本地（储存卡）' },
-          ],
-          selected: 0,
-          onSelected: (index: int) => this.getUIContext().getPromptAction().showToast({ message: 'page index ' + index }),
-          subtitle: 'example@example.com',
-          menuItems: this.menuItems,
-          badgeValue: 99,
-          hidesBackButton: true,
-        })
-        Divider().height(2).color(0xCCCCCC)
-      }.width('100%')
-    }.height('100%')
-  }
-}
-```
-
 ![zh-cn_image_selecttitlebar_example01](figures/image-selecttitlebar-example01.png)
 
 ### 示例2（右侧自定义按钮播报）
@@ -710,7 +595,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_selecttitlebar_example02](figures/zh-cn_image_selecttitlebar_example02.png)
+![zh-cn_image_selecttitlebar_example02](figures/image-selecttitlebar-example02.png)
 
 ### 示例3（设置Symbol类型图标）
 从API version 18开始，该示例通过设置SelectTitleBarMenuItem的属性symbolStyle，展示了自定义Symbol类型图标。
@@ -987,4 +872,4 @@ struct Index {
 }
 ```
 
-![zh-cn_image_selecttitlebar_example03](figures/zh-cn_image_selecttitlebar_example03.png)
+![zh-cn_image_selecttitlebar_example03](figures/image-selecttitlebar-example03.png)
