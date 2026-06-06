@@ -31,6 +31,10 @@ Text可通过以下两种方式来创建：
   ArkTS-Sta示例：
 
   <!-- @[create_a_text_in_one_way](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
+  
+  ``` TypeScript
+  Text('我是一段文本')
+  ```
 
 ![zh-cn_image_0000001563060685](figures/zh-cn_image_0000001563060685.png)
 
