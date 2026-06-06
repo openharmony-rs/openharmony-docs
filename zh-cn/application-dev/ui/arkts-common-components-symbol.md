@@ -1007,6 +1007,62 @@ import {
   ArkTS-Sta示例：
 
   <!-- @[shadow_color_2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
+  
+  ``` TypeScript
+  import {
+    $r,
+    Button,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    EffectFillStyle,
+    Entry,
+    HierarchicalSymbolEffect,
+    NavDestination,
+    RadialGradientOptions,
+    RadialGradientStyle,
+    Scroll,
+    Scroller,
+    ShadowOptions,
+    SymbolGlyph,
+    Text,
+    TextAlign
+  } from '@kit.ArkUI';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { ComponentCard } from '../../common/Card';
+  
+  @Entry
+  @Component
+  export struct SymbolShadowAndColor {
+    scroller: Scroller = new Scroller();
+    @State isActive: boolean = true;
+    options: ShadowOptions = {
+      radius: 10.0,
+      color: Color.Blue,
+      offsetX: 10,
+      offsetY: 10,
+    };
+  
+    radialGradientOptions: RadialGradientOptions = {
+      center: ['50%', '50%'],
+      radius: '20%',
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  
+    // ...
+              Column() {
+                // 请将$r('app.string.radial_gradient')替换为实际资源文件，在本示例中该资源文件的value值为"径向渐变"
+                Text($r('app.string.radial_gradient'))
+                  .fontSize(18)
+                  .fontColor(0xCCCCCC)
+                  .textAlign(TextAlign.Center)
+                SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+                  .fontSize(96)
+                  .shaderStyle([new RadialGradientStyle(this.radialGradientOptions)])
+              }
+  ```
 
   ![ShaderStyleSymbolEffect](figures/symbolGlyph_shaderStyle.jpg)
 
