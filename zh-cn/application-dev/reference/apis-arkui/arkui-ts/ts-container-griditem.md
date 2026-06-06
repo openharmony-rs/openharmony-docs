@@ -358,4 +358,4 @@ struct GridItemExample {
 }
 ```
 
-![zh-cn_image_griditem_griditemoptions](figures/zh-cn_image_griditem_griditemoptions.png)
+![zh-cn_image_griditem_griditemoptions](figures/griditem-griditemoptions.png)

@@ -219,7 +219,7 @@ struct Index {
 
 ![zh-cn_image_setDefaultTheme_light](figures/zh-cn_image_setDefaultTheme_lights.png)
 
-![zh-cn_image_setDefaultTheme_night](figures/zh-cn_image_setDefaultTheme_nights.png)
+![zh-cn_image_setDefaultTheme_night](figures/image-setDefaultTheme-lights.png)
 
 ### 示例2（设置组件主题色）
 

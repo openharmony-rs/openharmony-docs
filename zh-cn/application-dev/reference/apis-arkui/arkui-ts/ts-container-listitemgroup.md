@@ -308,7 +308,7 @@ struct ListItemGroupExample {
 }
 ```
 
-![zh-cn_image_0000001219864159](figures/zh-cn_image_listitemgroup.gif)
+![zh-cn_image_0000001219864159](figures/image-listitemgroup.gif)
 
 ### 示例2（设置卡片样式）
 
