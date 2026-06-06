@@ -124,4 +124,4 @@
 ```
 **4*4卡片**
 
-![zh-cn_image_0000001231370803](figures/zh-cn_image_0000001231370803.png)
+![zh-cn_image_0000001231370803](figures/list-example.png)

@@ -2063,7 +2063,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_effect_blendMode2](figures/zh-cn_image_effect_blendMode.png)
+![zh-cn_image_effect_blendMode2](figures/image-effect-blendMode.png)
 
 ### 示例5（前景智能取反色）
 

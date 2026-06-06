@@ -235,7 +235,16 @@ struct MyStateSample {
 }
 ```
 
-ArkTS-Sta示例：
+![zh-cn_image_setDefaultTheme_light](figures/image-setDefaultTheme-lights.png)
+
+![zh-cn_image_setDefaultTheme_night](figures/image-setDefaultTheme-nights.png)
+
+### 示例2（设置组件主题色）
+
+该示例主要演示使用[Colors](#colors)中的brand、primary、onPrimary和container设置组件主题色。
+
+从API版本26.0.0开始，Colors新增primary、onPrimary和container属性。
+
 ```ts
 import { Text, Column, Component, $r, Entry, Color } from '@kit.ArkUI';
 import { CustomColors, CustomDarkColors, ThemeControl, CustomTheme } from '@ohos.arkui.theme';

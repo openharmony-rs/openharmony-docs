@@ -593,7 +593,7 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom_style](figures/zh-cn_image_custom_style.gif)
+![zh-cn_image_custom_style](figures/image-custom-style.gif)
 
 ### 示例4（悬停态弹窗）
 
@@ -1262,7 +1262,7 @@ struct Example3 {
 }
 ```
 
-![zh-cn_image_custom_lifecycle](figures/zh-cn_image_custom_lifecycle.gif)
+![zh-cn_image_custom_lifecycle](figures/image-custom-lifecycle.gif)
 
 ### 示例10（不同customStyle下的弹窗示例）
 
@@ -1539,4 +1539,62 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom-backgroundEffect](figures/zh-cn_image_dynamicRefreshwidth.gif)
+![zh-cn_image_custom-backgroundEffect](figures/image-dynamicRefreshwidth.gif)
+
+### 示例14（设置弹窗的系统材质）
+
+该示例通过配置[systemMaterial](#customdialogcontrolleroptions对象说明)，实现系统材质效果。
+
+从API版本26.0.0开始，在[CustomDialogControllerOptions](#customdialogcontrolleroptions对象说明)中新增了systemMaterial属性。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController;
+
+  build() {
+    Column() {
+      Text('这是自定义弹窗')
+        .fontSize(30)
+        .height(100)
+      Button('点我关闭弹窗')
+        .onClick(() => {
+          if (this.controller != undefined) {
+            this.controller.close();
+          }
+        })
+        .margin(20)
+    }
+  }
+}
+
+@Entry
+@Component
+struct CustomDialogUser {
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample(),
+    systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK })
+  })
+
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      Column() {
+        Button('CustomDialog')
+          .margin(20)
+          .onClick(() => {
+            if (this.dialogController != null) {
+              this.dialogController.open();
+            }
+          })
+      }
+      .height('100%')
+      .width('100%')
+      .backgroundColor(Color.Gray)
+    }
+  }
+}
+```
+
+![zh-cn_image_custom_systemMaterial](figures/zh-cn_image_custom-systemMaterial.png)
