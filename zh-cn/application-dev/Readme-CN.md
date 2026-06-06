@@ -1,92 +1,46 @@
-# 应用开发
-<!--Kit: Common-->
-<!--Subsystem: Common-->
-<!--Owner: @zhang_yixin13-->
-<!--Designer: @lingminghw-->
-<!--Tester: @RayShih-->
-<!--Adviser: @zhang_yixin13-->
+# 窗口管理<!--window-manager-->
 
-- [应用开发导读](application-dev-guide.md)
-- 了解OpenHarmony<!--about-openharmony-->
-  - [了解OpenHarmony开源项目](../OpenHarmony-Overview_zh.md)
-  - [术语](../glossary.md)
-  - [版本说明](../release-notes/Readme.md)
-- [入门](quick-start/Readme-CN.md)
-- 开发<!--development-->
-  - 应用框架<!--app-framework-->
-    - [Ability Kit（程序框架服务）](application-models/Readme-CN.md)
-    - [ArkData（方舟数据管理）](database/Readme-CN.md)
-    - [ArkTS（方舟编程语言）](arkts-utils/Readme-CN.md)
-    - [ArkUI（方舟UI框架）](ui/Readme-CN.md)
-    - [ArkWeb（方舟Web）](web/Readme-CN.md)
-    - [Background Tasks Kit（后台任务开发服务）](task-management/Readme-CN.md)
-    - [Content Embed Kit（内容嵌入服务）](content-embed/Readme-CN.md)
-    - [Core File Kit（文件基础服务）](file-management/Readme-CN.md)
-    - [Form Kit（卡片开发服务）](form/Readme-CN.md)
-    - [IME Kit（输入法开发服务）](inputmethod/Readme-CN.md)
-    - [IPC Kit（进程间通信服务）](ipc/Readme-CN.md)
-    - [Localization Kit（本地化开发服务）](internationalization/Readme-CN.md)
-  - 系统<!--system-->
-    - 安全<!--system-security-->
-      - [程序访问控制](security/AccessToken/Readme-CN.md)
-      - [Asset Store Kit（关键资产存储服务）](security/AssetStoreKit/Readme-CN.md)
-      - [Crypto Architecture Kit（加解密算法框架服务）](security/CryptoArchitectureKit/Readme-CN.md)
-      - [Data Protection Kit（数据保护服务）](security/DataProtectionKit/Readme-CN.md)
-      - [Device Certificate Kit（设备证书服务）](security/DeviceCertificateKit/Readme-CN.md)
-      - [Universal Keystore Kit（密钥管理服务）](security/UniversalKeystoreKit/Readme-CN.md)
-      - [User Authentication Kit（用户认证服务）](security/UserAuthenticationKit/Readme-CN.md)
-    - 网络<!--system-network-->
-      - [Connectivity Kit（短距通信服务）](connectivity/Readme-CN.md)
-      - [Distributed Service Kit（分布式管理服务）](distributedservice/Readme-CN.md)
-      - [Network Kit（网络服务）](network/Readme-CN.md)
-      - [Telephony Kit（蜂窝通信服务）](telephony/Readme-CN.md)
-    - 基础功能<!--system-basicfun-->
-      - [Basics Service Kit（基础服务）](basic-services/Readme-CN.md)
-      - [Function Flow Runtime Kit（任务并发调度服务）](ffrt/Readme-CN.md)
-      - [Input Kit（多模输入服务）](device/input/Readme-CN.md)
-      - [MDM Kit（企业设备管理服务）](mdm/Readme-CN.md)
-      - [Kernel Enhance Kit（内核增强能力）](kernel-enhance/Readme-CN.md)
-    - 硬件<!--system-hardware-->
-      - [Driver Development Kit（驱动开发服务）](device/driver/Readme-CN.md)
-      - [Multimodal Awareness Kit（多模态融合感知服务）](device/stationary/Readme-CN.md)
-      - [Sensor Service Kit（传感器服务）](device/sensor/Readme-CN.md)
-    - 调测调优<!--system-debug-optimize-->
-       - [Performance Analysis Kit（性能分析服务）](dfx/Readme-CN.md)
-       - [Test Kit（应用测试服务）](application-test/Readme-CN.md)
-       - [调试命令](tools/Readme-CN.md)
-  - 媒体<!--media-->
-    - [Audio Kit（音频服务）](media/audio/Readme-CN.md)
-    - [AVCodec Kit（音视频编解码服务）](media/avcodec/Readme-CN.md)
-    - [AVSession Kit（音视频播控服务）](media/avsession/Readme-CN.md)
-    - [Camera Kit（相机服务）](media/camera/Readme-CN.md)
-    - [DRM Kit（数字版权保护服务）](media/drm/Readme-CN.md)
-    - [Image Kit（图片处理服务）](media/image/Readme-CN.md)
-    - [Media Kit（媒体服务）](media/media/Readme-CN.md)
-    - [Media Library Kit（媒体文件管理服务）](media/medialibrary/Readme-CN.md)
-  - 图形<!--graphics-->
-    - [ArkGraphics 2D（方舟2D图形服务）](graphics/Readme-CN.md)
-    - [ArkGraphics 3D（方舟3D图形）](graphics3d/Readme-CN.md)
-  - 应用服务<!--gapp-service-->
-    - [Ads Kit（广告服务）](ads-service/Readme-CN.md)
-    - [Calendar Kit（日历服务）](calendarmanager/Readme-CN.md)
-    - [Contacts Kit（联系人服务）](contacts/Readme-CN.md)
-    - [Location Kit（位置服务）](device/location/Readme-CN.md)
-    - [Notification Kit（用户通知服务）](notification/Readme-CN.md)
-  - AI<!--ai-->
-    - [MindSpore Lite Kit（昇思推理框架服务）](ai/mindspore/Readme-CN.md)
-    - [Neural Network Runtime Kit（Neural Network运行时服务）](ai/nnrt/Readme-CN.md)
-  - Game<!--game-->
-    - [Game Controller Kit（游戏控制器服务）](game-controller/Readme-CN.md)
-  - [IDL工具规格及使用说明书](IDL/idl-guidelines.md)
-  - [Native API的相关指导](napi/Readme-CN.md)
-  - [性能](performance/Readme-CN.md)
-- 工具<!--tools-->
-  - [DevEco Studio（OpenHarmony）使用指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)
-  - [调试工具](tools/Readme-CN.md)
-- 示例教程<!--example-tutorial-->
-  - [示例代码](https://gitcode.com/openharmony/applications_app_samples/blob/master/README_zh.md)
-  - [Codelabs](https://gitcode.com/openharmony/codelabs/blob/master/README.md)
-- [API参考](reference/Readme-CN.md)
-- [常见问题](faqs/Readme-CN.md)
-- 贡献<!--contribution-->
-  - [参与贡献](../contribute/贡献文档.md)
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
+
+- [窗口开发概述](window-overview.md)
+- 窗口类型<!--window-type-->
+  - [窗口类型开发概述](window-type-overview.md)
+  - [子窗口开发指导](subwindow-guide.md)
+  - [全局悬浮窗开发指导](global-floating-window-guide.md)<!--RP2--><!--RP2End-->
+  - [模态窗口开发指导](dialog-window-guide.md)<!--RP1--><!--RP1End-->
+  <!--Del-->
+  - [管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)](system-window-stage-sys.md)
+  <!--DelEnd-->
+- 窗口模式<!--window-mode-->
+  - [窗口模式简介](window-mode-overview.md)<!--RP3--><!--RP3End-->
+  - 自由窗口<!--freeform-window-->
+    - [自由窗口简介](freeform-window-overview.md)
+    - [应用适配自由窗口](application-adaptation-freeform-window.md)
+- 窗口基础能力<!--window-basic-capabilities-->
+  - [窗口生命周期](window-lifecycle.md)
+  - 窗口旋转<!--rotation-->
+    - [窗口旋转](window-rotation.md)
+    - [窗口旋转场景实例](window-rotation-practical-case.md)
+  - [窗口布局](window-layout.md)
+  - [窗口焦点](window-focus-guide.md)
+  - [窗口层级](window-zorder-guide.md)
+  - [窗口沉浸式](immersive-window-feature.md)
+- 其他开发场景<!--other-scenarios-->
+  - [截图与隐私模式 (ArkTS)](screenshot-and-privacy-mode.md)
+  - [控制亮度与常亮 (ArkTS)](brightness-control.md)
+  - [设置窗口动效 (ArkTS)](window-animation.md)
+  - [控制窗口外观 (ArkTS)](window-appearance.md)
+  - [使用WindowManager管理多模输入事件 (C/C++)](native-window-event-filter.md)
+- 应用启动页的配置与使用<!--launch-page-->
+  - [应用启动页简介](launch-page-overview.md)
+  - [配置应用启动页](launch-page-config.md)
+  - [启动页资源分类配置](launch-page-resource-config.md)
+- [窗口元数据配置](window-config-m.md)
+- [窗口开发术语](window-terminology.md)
+- [窗口开发常见问题](window-faqs.md)
+- [窗口开发常见日志问题与定位](window-log-faqs.md)
