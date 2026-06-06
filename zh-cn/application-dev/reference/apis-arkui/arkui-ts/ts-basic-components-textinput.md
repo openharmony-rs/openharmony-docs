@@ -1695,8 +1695,6 @@ onCut(callback: Callback\<string>)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -1733,8 +1731,6 @@ onPaste(callback: OnPasteCallback)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -1749,6 +1745,8 @@ onTextSelectionChange(callback: OnTextSelectionChangeCallback)
 文本选择的位置或编辑状态下光标位置发生变化时，触发该回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1765,6 +1763,8 @@ onContentScroll(callback: OnContentScrollCallback)
 文本内容滚动时，触发该回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1794,7 +1794,7 @@ onSecurityStateChange(callback: Callback\<boolean>)
 
 | 参数名       | 类型   | 必填 | 说明                               |
 | ------------ | ------ | ---- | ---------------------------------- |
-| callback | Callback\<boolean> | 是   | 回调函数。<br/>true表示状态切换；false表示状态未切换。|
+| callback | Callback\<boolean> | 是   | 回调函数。<br/>true表示密码显示；false表示密码隐藏。|
 
 ### onWillInsert<sup>12+</sup>
 
@@ -1942,6 +1942,8 @@ TextInputController的构造函数。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### caretPosition<sup>8+</sup>
@@ -1968,6 +1970,8 @@ setTextSelection(selectionStart:&nbsp;number, selectionEnd:&nbsp;number, options
 设置文本选择区域并高亮显示。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2027,6 +2031,8 @@ stopEditing(): void
 ### 属性
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

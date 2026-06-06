@@ -34,7 +34,7 @@ import { SegmentButton, SegmentButtonOptions, SegmentButtonItemOptionsArray } fr
 
 ## SegmentButton
 
-SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked: Callback\<number\>, maxFontScale: number \| Resource, enableStateAnimation: boolean })
+SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItemClicked?: Callback\<number\>, maxFontScale: number \| Resource, enableStateAnimation: boolean })
 
 **装饰器类型：**@Component
 

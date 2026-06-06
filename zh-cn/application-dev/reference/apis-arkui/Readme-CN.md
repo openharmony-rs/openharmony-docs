@@ -205,8 +205,8 @@
       - [点击回弹效果](arkui-ts/ts-universal-attributes-click-effect.md)
       - [特效绘制合并](arkui-ts/ts-universal-attributes-use-effect.md)
       - [组件内容填充方式](arkui-ts/ts-universal-attributes-renderfit.md)
-      - [空间效果](arkui-ts/ts-universal-attributes-spatial-effect.md)
       <!--Del-->
+      - [空间效果 (系统接口)](arkui-ts/ts-universal-attributes-spatial-effect-sys.md)
       - [点光源设置 (系统接口)](arkui-ts/ts-universal-attributes-point-light-style-sys.md)
       - [图像效果 (系统接口)](arkui-ts/ts-universal-attributes-image-effect-sys.md)
       - [融合效果 (系统接口)](arkui-ts/ts-universal-attributes-use-union-effect-sys.md)
@@ -287,6 +287,8 @@
     - [SideBarContainer](arkui-ts/ts-container-sidebarcontainer.md)
   - 动态布局<!--dynamic-layout-->
     - [DynamicLayout](arkui-ts/ts-container-dynamiclayout.md)
+  - 容器断点<!--container-reader-->
+    - [ContainerReader](arkui-ts/ts-container-containerreader.md)
   - 滚动与滑动<!--scroll-and-swipe-->
     - [List](arkui-ts/ts-container-list.md)
     - [ListItem](arkui-ts/ts-container-listitem.md)
@@ -420,8 +422,6 @@
     <!--Del-->
     - [XComponent (系统接口)](arkui-ts/ts-basic-components-xcomponent-sys.md)
     <!--DelEnd-->
-  - 景深效果<!--depth-of-field -->
-    - [DepthComponent](arkui-ts/ts-basic-components-depthcomponent.md)
     <!--Del-->
     - [DepthComponent (系统接口)](arkui-ts/ts-basic-components-depthcomponent-sys.md)
     <!--DelEnd-->
@@ -498,9 +498,9 @@
     - [自定义组件的自定义布局](arkui-ts/ts-custom-component-layout.md)
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
     - [自定义组件参数](arkui-ts/ts-custom-component-parameter.md)
+    - [@Entry：页面入口](arkui-ts/ts-universal-entry.md)
     - 组件扩展装饰器<!--arkts-extend-component-decorator-->
       - [定义可动画属性 (@AnimatableExtend)](arkui-ts/ts-animatable-extend.md)
-      - [@Entry：页面入口](arkui-ts/ts-universal-entry.md)
       - [wrapBuilder: 封装全局@Builder](arkui-ts/ts-universal-wrapBuilder.md)
       - [mutableBuilder: 实现全局@Builder动态更新](arkui-ts/ts-universal-mutableBuilder.md)
   - 组件预览<!--component-preview-->
@@ -550,7 +550,6 @@
     <!--DelEnd-->
   - 响应式环境变量<!--responsive-env-system-property-->
     - [\@Env：环境变量](arkui-ts/ts-env-system-property.md)
-    - [WithEnv：环境变量容器](arkui-ts/ts-container-with-env.md)
   - 公共定义<!--common-definitions-->
     - [基础类型定义](arkui-ts/ts-types.md)
     - [像素单位](arkui-ts/ts-pixel-units.md)
@@ -827,7 +826,6 @@
     - [ArkUI_RenderNodeClipOption](capi-arkui-nativemodule-arkui-rendernodeclipoption.md)
     - [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md)
     - [ArkUI_RenderNodeMaskOption](capi-arkui-nativemodule-arkui-rendernodemaskoption.md)
-    - [ArkUI_RenderBlurStyleOption](capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)
     - [ArkUI_RoundRectShapeOption](capi-arkui-nativemodule-arkui-roundrectshapeoption.md)
     - [ArkUI_Vector2AnimatablePropertyHandle](capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md)
     - [ArkUI_Vector2PropertyHandle](capi-arkui-nativemodule-arkui-vector2propertyhandle.md)

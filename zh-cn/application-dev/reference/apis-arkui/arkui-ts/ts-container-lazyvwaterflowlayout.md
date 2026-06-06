@@ -69,12 +69,6 @@ columnsTemplate(value: string | ItemFillPolicy | undefined)
 | ------ | ------ | ---- | ---------------------------------- |
 | value  | string \| [ItemFillPolicy](./ts-types.md#itemfillpolicy22) \| undefined | 是   | 当前瀑布流布局列的数量或最小列宽值。<br/>方法入参为undefined时，恢复为默认值（1列）。 |
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| T | 返回当前组件。 |
-
 ### columnsGap
 
 columnsGap(value: LengthMetrics | undefined): T
@@ -133,7 +127,7 @@ rowsGap(value: LengthMetrics | undefined): T
 
 ### onVisibleIndexesChange
 
-onVisibleIndexesChange(callback: onVisibleIndexesChangeCallback | undefined): T
+onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T
 
 当前瀑布流显示的起始位置或终止位置的子组件发生变化时触发。瀑布流初始化时会触发一次。
 
@@ -149,39 +143,13 @@ onVisibleIndexesChange(callback: onVisibleIndexesChangeCallback | undefined): T
 
 | 参数名 | 类型   | 必填 | 说明                                  |
 | ------ | ------ | ---- | ------------------------------------- |
-| callback  | [onVisibleIndexesChangeCallback](#onvisibleindexeschangecallback) \| undefined | 是   | 回调函数，当可见区域内的子组件索引发生变化时触发。<br/>方法入参为undefined时，取消监听。 |
+| callback  | [OnVisibleIndexesChangeCallback](./ts-container-scrollable-common.md#onvisibleindexeschangecallback) \| undefined | 是   | 回调函数，当可见区域内的子组件索引发生变化时触发。<br/>方法入参为undefined时，取消监听。 |
 
 **返回值：**
 
 | 类型 | 说明           |
 | --- | -------------- |
 | T | 返回当前组件。 |
-
-## onVisibleIndexesChangeCallback
-
-type onVisibleIndexesChangeCallback = (start: number, end: number) => void
-
-当前瀑布流显示的子组件索引发生变化时的回调类型。
-
-> **说明：**
->
-> - 当LazyVWaterFlowLayout没有子组件时，start和end都返回-1。
-> - 当LazyVWaterFlowLayout完全在显示区域内无可见子组件时，start和end都返回-1。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型   | 必填 | 说明                                  |
-| ------ | ------ | ---- | ------------------------------------- |
-| start  | number | 是   | 可见区域起始位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
-| end    | number | 是   | 可见区域终止位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
 
 ## 示例
 

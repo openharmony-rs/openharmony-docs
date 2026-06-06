@@ -1365,21 +1365,19 @@ httpRequest.off("dataSendProgress");
 
 HTTP 请求方法。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.NetStack
 
 | 名称    | 值      | 说明                |
 | :------ | ------- | :------------------ |
-| OPTIONS | "OPTIONS" | OPTIONS方法描述了目标资源的通信选项。 |
-| GET     | "GET"     | GET方法请求指定资源的表示。使用GET的请求应该只检索数据，不应该包含请求内容。 |
-| HEAD    | "HEAD"    | HEAD方法请求与GET请求相同的响应，但没有响应主体。 |
-| POST    | "POST"    | POST方法将实体提交给指定的资源，通常会导致服务器上的状态更改。 |
-| PUT     | "PUT"     | PUT方法将目标资源的所有当前表示替换为请求内容。 |
-| DELETE  | "DELETE"  | DELETE方法用于删除指定的资源。 |
-| TRACE   | "TRACE"   | TRACE方法沿到达目标资源的路径执行消息环回测试。 |
-| CONNECT | "CONNECT" | CONNECT方法建立到由目标资源标识的服务器的隧道。 |
-| PATCH   | "PATCH"   | PATCH方法对资源进行部分修改。 <br/>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| OPTIONS | "OPTIONS" | OPTIONS方法描述了目标资源的通信选项。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| GET     | "GET"     | GET方法请求指定资源的表示。使用GET的请求应该只检索数据，不应该包含请求内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| HEAD    | "HEAD"    | HEAD方法请求与GET请求相同的响应，但没有响应主体。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| POST    | "POST"    | POST方法将实体提交给指定的资源，通常会导致服务器上的状态更改。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| PUT     | "PUT"     | PUT方法将目标资源的所有当前表示替换为请求内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DELETE  | "DELETE"  | DELETE方法用于删除指定的资源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| TRACE   | "TRACE"   | TRACE方法沿到达目标资源的路径执行消息环回测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| CONNECT | "CONNECT" | CONNECT方法建立到由目标资源标识的服务器的隧道。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| PATCH   | "PATCH"   | PATCH方法对资源进行部分修改。 <br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## ResponseCode
 
@@ -1875,12 +1873,9 @@ type QueryParamObject = Record\<string, QueryParamValue \| QueryParamValue[]\>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-> **说明：**
->
-> (1) 每个属性名作为QueryParamObject参数的key，对应属性值可以是单个QueryParamValue，也可以是QueryParamValue数组。<br>
-> (2) 数组会展开为同名多参数，例如`{ tag: ['a', 'b'] }`会序列化为`tag=a&tag=b`。<br>
-> (3) key和value由系统自动进行URL编码，开发者应传入原始未编码内容。<br>
-> (4) 如需严格控制参数顺序或重复键顺序，建议直接使用queryParams的string形式。
+| 类型 | 说明 |
+| ---------------- | --------------------------- |
+| Record\<string, [QueryParamValue](#queryparamvalue) \| [QueryParamValue](#queryparamvalue)[]\> | 键值对象类型，用于构造URL查询参数。每个属性名作为URL参数的key，属性值作为参数值。<br>**说明：**<br>(1) 对象的每个属性名作为URL参数的key，属性值作为参数值。例如`{ scene: 'demo', page: 1 }`会序列化为`scene=demo&page=1`。<br>(2) 当属性值为数组时，会展开为同名多参数。例如`{ tag: ['a', 'b'] }`会序列化为`tag=a&tag=b`。<br>(3) key和value由系统自动进行URL编码，开发者应传入原始未编码内容。<br>(4) 如需严格控制参数顺序或重复键顺序，建议直接使用queryParams的string形式。 |
 
 ## AddressFamily<sup>15+</sup>
 

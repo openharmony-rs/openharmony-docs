@@ -57,7 +57,7 @@ import { Want } from '@kit.AbilityKit';
 
 class InputMethodExt extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    console.info('onCreate, want:' + want.abilityName);
+    console.info('onCreate, want:' + want?.abilityName);
   }
 }
 ```

@@ -100,12 +100,12 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | action         | [Action](#action)      | 否    | 否    | 鼠标事件类型。                         |
-| screenX        | number      | 否    | 否    | 该鼠标事件以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数。 |
-| screenY        | number      | 否    | 否    | 该鼠标事件以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数。 |
-| windowX        | number      | 否    | 否    | 鼠标所在窗口左上角为原点的相对坐标系的X坐标。当前仅支持整数。  |
-| windowY        | number      | 否    | 否    | 鼠标所在窗口左上角为原点的相对坐标系的Y坐标。当前仅支持整数。  |
-| rawDeltaX      | number      | 否    | 否    | 鼠标当前事件相对于上次事件的X坐标偏移值。当前仅支持整数。 |
-| rawDeltaY      | number      | 否    | 否    | 鼠标当前事件相对于上次事件的Y坐标偏移值。当前仅支持整数。 |
+| screenX        | number      | 否    | 否    | 该鼠标事件以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数，单位为像素（px）。 |
+| screenY        | number      | 否    | 否    | 该鼠标事件以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数，单位为像素（px）。 |
+| windowX        | number      | 否    | 否    | 鼠标所在窗口左上角为原点的相对坐标系的X坐标。当前仅支持整数，单位为像素（px）。 |
+| windowY        | number      | 否    | 否    | 鼠标所在窗口左上角为原点的相对坐标系的Y坐标。当前仅支持整数，单位为像素（px）。|
+| rawDeltaX      | number      | 否    | 否    | 鼠标当前事件相对于上次事件的X坐标偏移值。当前仅支持整数，单位为像素（px）。 |
+| rawDeltaY      | number      | 否    | 否    | 鼠标当前事件相对于上次事件的Y坐标偏移值。当前仅支持整数，单位为像素（px）。 |
 | button         | [Button](#button)      | 否    | 否    | 鼠标按键。                       |        
 | pressedButtons | [Button](#button)[]    | 否    | 否    | 当前处于按下状态的鼠标按键。                              |
 | axes           | [AxisValue](#axisvalue)[] | 否    | 否    | 鼠标轴类型和轴的值。                               |

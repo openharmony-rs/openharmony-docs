@@ -2,7 +2,7 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @chenkun-->
+<!--Owner: @chenkun613227-->
 <!--Designer: @yxc2-->
 <!--Tester: @zengxi_3007-->
 <!--Adviser: @w_Machine_cc-->
@@ -26,7 +26,7 @@
   - 视频转码<!--media-transcoder-arkts-->
     - [使用AVTranscoder实现视频转码(ArkTS)](using-avtranscoder-for-transcodering.md)
     - [创建异步线程执行AVTranscoder视频转码(ArkTS)](avtranscoder-practice.md)
-    - [转码常见问题](avtranscoder-faq.md)
+    - [转码常见问题](avtranscoder-faq.md)<!--RP2--><!--RP2End-->
 - 媒体开发指导(C/C++)<!--media-kit-dev--c-->
   - 播放<!--media-playback-c-->
     - [使用AVPlayer播放音频(C/C++)](using-ndk-avplayer-for-playback.md)
@@ -48,3 +48,4 @@
     - [使用AVImageGenerator获取视频帧(C/C++)](using-ndk-avimagegenerator-for-video.md)
   - 视频转码<!--media-transcoder-c-->
     - [使用AVTranscoder实现视频转码(C/C++)](using-ndk-avtranscoder-for-transcodering.md)<!--RP1--><!--RP1End-->
+- [Media Kit术语](media-glossary.md)

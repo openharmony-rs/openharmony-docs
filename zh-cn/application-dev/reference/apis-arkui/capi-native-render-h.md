@@ -46,7 +46,6 @@
 | [ArkUI_CommandPath](./capi-arkui-nativemodule-arkui-commandpathoption.md)               | ArkUI_CommandPathOption                                | 自定义路径配置项。       |
 | [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)               | ArkUI_RenderNodeMaskOption                                | 节点遮罩配置项。       |
 | [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)               | ArkUI_RenderNodeClipOption                                | 节点裁剪配置项。       |
-| [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)               | ArkUI_RenderBlurStyleOption                                | 定义模糊样式结构体。       |
 
 ### 函数
 
@@ -192,15 +191,6 @@
 | [void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption(ArkUI_RenderNodeClipOption* option)](#oh_arkui_rendernodeutils_disposerendernodeclipoption) | - | 释放渲染节点裁剪。|
 | [void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue(ArkUI_RectShapeOption* option, float x, float y, float width, float height)](#oh_arkui_rendernodeutils_setrectshapeoptionvalue) | - | 为矩形形状选项设置边框矩形范围。该函数通过指定位置和尺寸来定义矩形的几何框架。|
 | [void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeOption* option, float x, float y, float width, float height)](#oh_arkui_rendernodeutils_setroundrectshapeoptionvalue) | - | 为圆角矩形形状选项设置边框矩形范围。该函数通过指定位置和尺寸来定义圆角矩形的几何框架。|
-| [ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()](#oh_arkui_rendernodeutils_createblurstyleoption) | - | 创建一个模糊样式对象。|
-| [void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_disposeblurstyleoption) | - | 销毁一个模糊样式对象。|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleOption* option, float radius)](#oh_arkui_rendernodeutils_setblurstyleoptionradius) | - | 为目标模糊样式设置模糊半径。|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setbackgroundbluroption) | - | 为渲染节点设置背景模糊样式。|
-| [int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_resetbackgroundbluroption) | - | 为渲染节点重置背景模糊样式。|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setforegroundbluroption) | - | 为渲染节点设置前景模糊样式。|
-| [int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_resetforegroundbluroption) | - | 为渲染节点重置前景模糊样式。|
-| [int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setcontentbluroption) | - | 为渲染节点设置内容模糊样式。|
-| [int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_resetcontentbluroption) | - | 为渲染节点重置内容模糊样式。|
 
 
 ## 函数说明
@@ -2768,7 +2758,7 @@ void OH_ArkUI_RenderNodeUtils_SetCommandPathOptionCommands(ArkUI_CommandPathOpti
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CommandPathOption](./capi-arkui-nativemodule-arkui-commandpathoption.md)* option | 指向自定义绘制路径的指针。 |
-| char* commands | 命令值。入参格式为SVG的[\<path>形状标签](./arkui-ts/ts-basic-svg.md#基础形状)。 |
+| char* commands | 命令值。入参格式为SVG的[\<path>基础形状标签](./arkui-ts/ts-basic-svg.md#基础形状)。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRectShape()
 
@@ -3124,211 +3114,3 @@ void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeO
 | float y | 矩形左上角的Y坐标，用于确定上边界位置。 |
 | float width | 矩形宽度，表示从X坐标起的水平跨度，用于确定右侧边界的位置，即矩形右下角的X坐标 = x + width。 |
 | float height | 矩形高度，表示从Y坐标起的垂直跨度，用于确定底部边界的位置，即矩形右下角的Y坐标 = y + height。 |
-
-### OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()
-
-```c
-ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()
-```
-
-**描述：**
-
-创建一个模糊样式对象。
-
-**起始版本：** 26.0.0
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* | 模糊样式对象的指针。模糊半径默认值是0.0。 |
-
-### OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption()
-
-```c
-void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption* option)
-```
-
-**描述：**
-
-销毁一个模糊样式对象。
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)指针，待销毁的目标模糊样式对象的指针。 |
-
-### OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius()
-
-```c
-int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleOption* option, float radius)
-```
-
-**描述：**
-
-为目标模糊样式设置模糊半径。
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)指针，要设置模糊半径的目标模糊样式的指针。 |
-| float radius | 要设置的模糊半径。取值范围：[0, +∞)。单位：px。模糊半径用于控制模糊的密度，即半径越大，模糊处理的密度越大。设置0即表示不进行模糊处理。对于背景模糊处理，半径达到80，即可实现良好的磨砂玻璃效果。应避免使用超过200像素的模糊半径，否则将导致性能下降。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
-
-### OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption()
-
-```c
-int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)
-```
-
-**描述：**
-
-为渲染节点设置背景模糊样式。
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_RenderNodeHandle指针，要设置背景模糊样式的目标渲染节点。 |
-| [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)指针，要设置的模糊样式的指针。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化失败。 |
-
-### OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption()
-
-```c
-int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandle node)
-```
-
-**描述：**
-
-为渲染节点重置背景模糊样式。重置后无背景模糊样式。
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_RenderNodeHandle指针，要重置背景模糊样式的目标渲染节点。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化失败。 |
-
-### OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption()
-
-```c
-int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)
-```
-
-**描述：**
-
-为渲染节点设置前景模糊样式。
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_RenderNodeHandle指针，要设置前景模糊样式的目标渲染节点。 |
-| [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)指针，要设置的模糊样式的指针。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化失败。 |
-
-### OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption()
-
-```c
-int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandle node)
-```
-
-**描述：**
-
-为渲染节点重置前景模糊样式。重置后无前景模糊样式。
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_RenderNodeHandle指针，要重置前景模糊样式的目标渲染节点。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化失败。 |
-
-### OH_ArkUI_RenderNodeUtils_SetContentBlurOption()
-
-```c
-int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)
-```
-
-**描述：**
-
-为渲染节点设置内容模糊样式。
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_RenderNodeHandle指针，要设置内容模糊样式的目标渲染节点。 |
-| [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)指针，要设置的模糊样式的指针。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化失败。 |
-
-### OH_ArkUI_RenderNodeUtils_ResetContentBlurOption()
-
-```c
-int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle node)
-```
-
-**描述：**
-
-为渲染节点重置内容模糊样式。重置后无内容模糊样式。
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_RenderNodeHandle指针，要重置内容模糊样式的目标渲染节点。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) CAPI初始化失败。 |

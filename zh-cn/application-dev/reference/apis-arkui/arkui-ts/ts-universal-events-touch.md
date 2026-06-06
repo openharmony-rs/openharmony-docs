@@ -90,12 +90,12 @@ getHistoricalPoints(): Array&lt;HistoricalPoint&gt;
 | ------- | ----------------------------------|-----| -------------- | ------------------------------------- |
 | type    | [TouchType](ts-appendix-enums.md#touchtype) | 否 | 否 | 触摸事件的类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
 | id      | number                                      | 否 | 否 | 手指唯一标识符。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
-| x       | number                                      | 否 | 否 | 触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| y       | number                                      | 否 | 否 | 触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| x       | number                                      | 否 | 否 | 触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| y       | number                                      | 否 | 否 | 触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | windowX<sup>10+</sup>  | number                       | 否 | 否 | 触摸点在当前应用窗口坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。   |
 | windowY<sup>10+</sup>  | number                       | 否 | 否 | 触摸点在当前应用窗口坐标系中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。   |
-| displayX<sup>10+</sup> | number                       | 否 | 否 | 触摸点在当前应用屏幕坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。   |
-| displayY<sup>10+</sup> | number                       | 否 | 否 | 触摸点在当前应用屏幕坐标系中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。   |
+| displayX<sup>10+</sup> | number                       | 否 | 否 | 触摸点在当前应用屏幕坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| displayY<sup>10+</sup> | number                       | 否 | 否 | 触摸点在当前应用屏幕坐标系中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | screenX<sup>(deprecated)</sup> | number               | 否 | 否 | 触摸点在当前应用窗口坐标系中的X坐标。<br/>单位：vp <br>**说明：** 从API version 7开始支持，从API version 10开始废弃，建议使用windowX替代。   |
 | screenY<sup>(deprecated)</sup> | number               | 否 | 否 | 触摸点在当前应用窗口坐标系中的Y坐标。<br/>单位：vp <br>**说明：** 从API version 7开始支持，从API version 10开始废弃，建议使用windowY替代。   |
 | pressedTime<sup>15+</sup> | number | 否 | 是 | 当前手指按下的时间。<br>单位：ns<br />**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |

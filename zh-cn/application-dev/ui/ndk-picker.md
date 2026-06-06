@@ -1,4 +1,4 @@
-# 使用滑动选择器Picker
+# 使用滑动选择器 (Picker)
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->

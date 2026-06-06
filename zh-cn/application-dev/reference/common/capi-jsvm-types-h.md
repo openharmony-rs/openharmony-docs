@@ -18,6 +18,8 @@
 
 **起始版本：** 11
 
+**支持设备类型：** Phone | PC/2in1 | Tablet | Wearable。具体支持情况可通过对应的API接口进行判断。
+
 **相关模块：** [JSVM](capi-jsvm.md)
 
 ## 汇总
@@ -92,8 +94,9 @@
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------| -- | -- |
 | [typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env,void* finalizeData,void* finalizeHint)](#jsvm_finalize)                                                     | JSVM_CDECL* JSVM_Finalize | 函数指针类型，当native类型对象或数据与JS对象被关联时，传入该指针。该函数将会在关联的JS对象被GC回收时被调用，用以执行native的清理动作。 |
 | [typedef void (JSVM_CDECL* JSVM_FinalizeArrayBuffer)(JSVM_Env env,void* finalizeData,void* finalizeHint,bool copied)](#jsvm_finalizearraybuffer)                   | JSVM_CDECL* JSVM_FinalizeArrayBuffer | 函数指针类型，在调用[OH_JSVM_CreateArrayBufferFromExternalMemory](capi-jsvm-h.md#oh_jsvm_createarraybufferfromexternalmemory)接口时，可传入该类型的函数调用。回调函数将会在接口创建的ArrayBuffer对象被GC回收时被调用，用以执行native的清理动作（必须先定义JSVM_EXPERIMENTAL宏才能使用此接口）。 |
-| [typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data,int size,void* streamData)](#jsvm_outputstream)                                                     | JSVM_CDECL* JSVM_OutputStream | ASCII输出流回调的函数指针类型。参数data是指输出的数据指针。参数size是指输出的数据大小。空数据指针指示流的结尾。参数streamData是指与回调一起传递给API函数的指针，该API函数向输出流生成数据。 |
+| [typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data,int size,void* streamData)](#jsvm_outputstream)                                                     | JSVM_CDECL* JSVM_OutputStream | 输出流回调的函数指针类型。参数data是指输出的数据指针。参数size是指输出的数据大小。空数据指针指示流的结尾。参数streamData是指与回调一起传递给API函数的指针，该API函数向输出流生成数据。 |
 | [typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)](#jsvm_handlerforgc)                         | JSVM_CDECL* JSVM_HandlerForGC | GC回调的函数指针类型。 |
+| [typedef void (JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t threshold, void* data)](#jsvm_handlerforheapthreshold)                         | JSVM_CDECL* JSVM_HandlerForHeapThreshold | 堆内存阈值回调的函数指针类型。 |
 | [typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location,const char* detail,bool isHeapOOM)](#jsvm_handlerforoomerror)                             | JSVM_CDECL* JSVM_HandlerForOOMError | OOM-Error回调的函数指针类型。 |
 | [typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location,const char* message)](#jsvm_handlerforfatalerror)                                       | JSVM_CDECL* JSVM_HandlerForFatalError | Fatal-Error回调的函数指针类型。 |
 | [typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)](#jsvm_handlerforpromisereject) | JSVM_CDECL* JSVM_HandlerForPromiseReject | Promise-Reject回调的函数指针类型。 |
@@ -637,7 +640,7 @@ typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data,int size,void* str
 
 **描述**
 
-ASCII输出流回调的函数指针类型。参数data是指输出的数据指针。参数size是指输出的数据大小。空数据指针指示流的结尾。参数streamData是指与回调一起传递给API函数的指针，该API函数向输出流生成数据。
+输出流回调的函数指针类型。参数data是指输出的数据指针。参数size是指输出的数据大小。空数据指针指示流的结尾。参数streamData是指与回调一起传递给API函数的指针，该API函数向输出流生成数据。
 
 **起始版本：** 12
 
@@ -658,6 +661,18 @@ typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSV
 GC回调的函数指针类型。
 
 **起始版本：** 18
+
+### JSVM_HandlerForHeapThreshold()
+
+```c
+typedef void(JSVM_CDECL* JSVM_HandlerForHeapThreshold)(JSVM_VM vm, uint64_t threshold, void* data)
+```
+
+**描述**
+
+堆内存阈值回调的函数指针类型。
+
+**起始版本：** 26.0.0
 
 ### JSVM_HandlerForOOMError()
 

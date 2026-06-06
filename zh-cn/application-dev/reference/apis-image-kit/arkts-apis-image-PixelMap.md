@@ -1753,10 +1753,6 @@ extractAlphaPixelMap(): Promise\<PixelMap\>
 
 提取PixelMap的Alpha通道数据，并生成一个仅包含Alpha通道信息的ALPHA_U8格式的PixelMap。生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。使用Promise异步回调。
 
-> **说明：**
->
-> 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
-
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1780,8 +1776,8 @@ extractAlphaPixelMap(): Promise\<PixelMap\>
 | 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
-| 7600105 | The PixelMap has been released. |
-| 7600106 | The PixelMap has been passed to another thread. |
+| 7600105 | The current PixelMap has been released. |
+| 7600106 | The current PixelMap has been passed across threads. |
 | 7600305 | Failed to create the PixelMap. Possible cause: Current PixelMap data is corrupted. |
 | 7600306 | Failed to convert the data. Possible causes: 1. Failed to perform pixel format conversion. 2. The system is out of memory. |
 
@@ -1807,10 +1803,6 @@ extractAlphaPixelMapSync(): PixelMap
 
 提取PixelMap的Alpha通道数据，并生成一个仅包含Alpha通道信息的ALPHA_U8格式的PixelMap。生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。
 
-> **说明：**
->
-> 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
-
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1834,8 +1826,8 @@ extractAlphaPixelMapSync(): PixelMap
 | 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
-| 7600105 | The PixelMap has been released. |
-| 7600106 | The PixelMap has been passed to another thread. |
+| 7600105 | The current PixelMap has been released. |
+| 7600106 | The current PixelMap has been passed across threads. |
 | 7600305 | Failed to create the PixelMap. Possible cause: Current PixelMap data is corrupted. |
 | 7600306 | Failed to convert the data. Possible causes: 1. Failed to perform pixel format conversion. 2. The system is out of memory. |
 
@@ -1860,10 +1852,6 @@ function DemoExtractAlphaPixelMapSync(pixelMap: image.PixelMap) {
 createAlphaPixelmap(): Promise\<PixelMap>
 
 根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的ALPHA_8格式的PixelMap，生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。使用Promise异步回调。
-
-> **说明：**
->
-> 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
 
 从API版本26.0.0开始，建议使用[extractAlphaPixelMap](#extractalphapixelmap)代替，以获得更完善的异常处理能力。
 
@@ -1900,10 +1888,6 @@ async function CreateAlphaPixelmap(pixelMap:image.PixelMap) {
 createAlphaPixelmap(callback: AsyncCallback\<PixelMap>): void
 
 根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的ALPHA_8格式的PixelMap，生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。使用callback异步回调。
-
-> **说明：**
->
-> 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
 
 从API版本26.0.0开始，建议使用[extractAlphaPixelMap](#extractalphapixelmap)代替，以获得更完善的异常处理能力。
 
@@ -1943,10 +1927,6 @@ async function CreateAlphaPixelmap(pixelMap:image.PixelMap) {
 createAlphaPixelmapSync(): PixelMap
 
 根据Alpha通道的信息，生成一个仅包含Alpha通道信息的ALPHA_8格式的PixelMap，生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。同步返回PixelMap类型的结果。
-
-> **说明：**
->
-> 若原PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
 
 从API版本26.0.0开始，建议使用[extractAlphaPixelMapSync](#extractalphapixelmapsync)代替，以获得更完善的异常处理能力。
 
@@ -3964,7 +3944,7 @@ setMetadata(key: HdrMetadataKey, value: HdrMetadataValue): Promise\<void>
 
 **示例：**
 
-创建DMA_ALLOC内存的PixelMap方法请参考: [系统默认的内存分配方式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/image-allocator-type#系统默认的内存分配方式)。
+创建DMA_ALLOC内存的PixelMap方法请参考: [系统默认的内存分配方式](../../media/image/image-allocator-type.md#系统默认的内存分配方式)。
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import {image} from '@kit.ImageKit';
@@ -4013,6 +3993,7 @@ pixelmap在跨线程传输时，断开原线程的引用。适用于需立即释
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { common } from '@kit.AbilityKit';
 import { taskpool } from '@kit.ArkTS';
 
@@ -4085,6 +4066,7 @@ marshalling(sequence: rpc.MessageSequence): void
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { rpc } from '@kit.IPCKit';
 
 class MySequence implements rpc.Parcelable {
@@ -4171,6 +4153,7 @@ unmarshalling(sequence: rpc.MessageSequence): Promise\<PixelMap>
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { rpc } from '@kit.IPCKit';
 
 class MySequence implements rpc.Parcelable {
@@ -4462,7 +4445,7 @@ isReleased(): boolean
 **示例：**
 
 ```ts
-async function DemoIsReleased(pixelMap: PixelMap) { // 未释放的PixelMap。
+async function IsReleased(pixelMap: PixelMap) { // 未释放的PixelMap。
   pixelMap.isReleased(); // 返回false。
   await pixelMap.release();
   pixelMap.isReleased(); // 返回true。

@@ -1396,6 +1396,14 @@ static checkLeapMonth(gregorianYear: number, cyclicalYear: number, month: number
 | ---------------------- | ----- |
 | boolean | 是否存在闰月。true表示该月存在闰月，false表示该月不存在闰月。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 8900001   | Invalid parameter. Possible causes: Parameter verification failed. |
+
 **示例：**
 ```ts
 let isExist = i18n.ChineseCalendar.checkLeapMonth(2026, 43, 2);

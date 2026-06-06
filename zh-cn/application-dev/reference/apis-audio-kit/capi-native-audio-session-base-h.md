@@ -52,8 +52,7 @@ enum OH_AudioSession_BehaviorFlags
 | 枚举项 | 描述 |
 | -- | -- |
 | DEFAULT_BEHAVIOR = 0x00000000 | 默认行为，用于清除会话行为标记。<br>**起始版本：** 24 |
-| VOIP_PRIVACY_TYPE_PUBLIC = 0x00000001 | 非隐私VoIP，允许被录音。允许VoIP录音流与其他应用的录音流共同录音。<br>**起始版本：** 26.0.0 |
-| MUTE_WHEN_INTERRUPTED = 0x00000002 | 当音频流被打断时，使用静音替代。通过接口[OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)设置该行为的同时，也需要调用接口[OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)使其生效。当播放被静音时，应用将收到[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_INTERRUPT_HINT_MUTE通知，并且在恢复时会收到[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_INTERRUPT_HINT_UNMUTE通知。<br>**起始版本：** 24 |
+| MUTE_WHEN_INTERRUPTED = 0x00000002 | 当系统需要停止或暂停音频流时，执行强制静音替代。<br>调用[OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)接口配置该行为时，必须同步调用[OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene)接口，否则配置将无法生效。<br>在音频会话场景下，当音频流静音或恢复时，应用将分别收到[OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint).AUDIO_SESSION_STATE_CHANGE_HINT_MUTE与[OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint).AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE的通知。<br>在OH_AudioRenderer和OH_AudioCapturer场景下，当音频流静音或恢复时，应用将分别收到[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint).AUDIOSTREAM_INTERRUPT_HINT_MUTE与[OH_AudioInterrupt_Hint](capi-native-audiostream-base-h.md#oh_audiointerrupt_hint).AUDIOSTREAM_INTERRUPT_HINT_UNMUTE的通知。<br>**起始版本：** 24 |
 
 ### OH_AudioSession_ConcurrencyMode
 

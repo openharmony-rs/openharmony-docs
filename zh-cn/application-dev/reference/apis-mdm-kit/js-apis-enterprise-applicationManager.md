@@ -2332,38 +2332,40 @@ import { connection, statistics } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
-let wantTemp: Want = {
+async function queryTrafficStats() {
+  let wantTemp: Want = {
+    // 需根据实际情况进行替换
+    bundleName: 'com.example.myapplication',
+    abilityName: 'EnterpriseAdminAbility'
+  };
   // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// 需根据实际情况进行替换
-let bundleName: string = 'com.example.test';
-let appIndex: number = 0;
-let accountId: number = 100;
-// 示例代码使用sim.getSimAccountInfo获取simId
-let slotId: number = 0;
-let simId: number = 0;
-await sim.getSimAccountInfo(slotId).then((data: sim.IccAccountInfo) => {
-  simId = data.simId;
-}).catch((err: BusinessError) => {
-  console.error(`getSimAccountInfo failed, promise: err->${JSON.stringify(err)}`);
-});
-let networkInfo: statistics.NetworkInfo = {
-  // 需根据实际情况进行替换
-  type: connection.NetBearType.BEARER_CELLULAR,
-  // 查询2026/4/15 00:00:00.000 ~ 2026/4/16 00:00:00.000的数据（月份从0开始计算）
-  startTime: Math.floor(new Date(2026, 3, 15, 0, 0, 0, 0).getTime() / 1000),
-  endTime: Math.floor(new Date(2026, 3, 16, 0, 0, 0, 0).getTime() / 1000),
-  // 网络类型为BEARER_CELLULAR时，需要传simId；网络类型为BEARER_WIFI时，不需要传simId；
-  simId: simId
+  let bundleName: string = 'com.example.test';
+  let appIndex: number = 0;
+  let accountId: number = 100;
+  // 示例代码使用sim.getSimAccountInfo获取simId
+  let slotId: number = 0;
+  let simId: number = 0;
+  await sim.getSimAccountInfo(slotId).then((data: sim.IccAccountInfo) => {
+    simId = data.simId;
+  }).catch((err: BusinessError) => {
+    console.error(`getSimAccountInfo failed, promise: err->${JSON.stringify(err)}`);
+  });
+  let networkInfo: statistics.NetworkInfo = {
+    // 需根据实际情况进行替换
+    type: connection.NetBearType.BEARER_CELLULAR,
+    // 查询2026/4/15 00:00:00.000 ~ 2026/4/16 00:00:00.000的数据（月份从0开始计算）
+    startTime: Math.floor(new Date(2026, 3, 15, 0, 0, 0, 0).getTime() / 1000),
+    endTime: Math.floor(new Date(2026, 3, 16, 0, 0, 0, 0).getTime() / 1000),
+    // 网络类型为BEARER_CELLULAR时，需要传simId；网络类型为BEARER_WIFI时，不需要传simId；
+    simId: simId
+  }
+  await applicationManager.queryTrafficStats(wantTemp, bundleName, appIndex, accountId, networkInfo)
+    .then(result => {
+      console.info('Succeeded in querying traffic stats.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to query traffic stats. Code is ${error.code}, message is ${error.message}`);
+    })
 }
-await applicationManager.queryTrafficStats(wantTemp, bundleName, appIndex, accountId, networkInfo)
-  .then(result => {
-    console.info('Succeeded in querying traffic stats.');
-  }).catch((error: BusinessError) => {
-  console.error(`Failed to query traffic stats. Code is ${error.code}, message is ${error.message}`);
-})
 ```
 ## KioskFeature<sup>20+</sup>
 

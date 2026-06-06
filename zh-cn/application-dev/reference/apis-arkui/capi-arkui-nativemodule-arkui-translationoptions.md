@@ -1,8 +1,8 @@
 # ArkUI_TranslationOptions
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -28,6 +28,5 @@ typedef struct {...} ArkUI_TranslationOptions
 | -- | -- |
 | float x | 横向的平移距离，单位为vp。 |
 | float y | 纵向的平移距离，单位为vp。 |
-| float z | 竖向的平移距离，单位为vp。 |
-
+| float z | 深度方向的平移距离，单位为vp。 |
 
