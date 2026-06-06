@@ -3531,3 +3531,199 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+## formHost.onUpdateFormsConfigCallback
+
+onUpdateFormsConfigCallback(callback: formInfo.UpdateFormsConfigCallback): void
+
+订阅更新卡片配置事件。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| callback | [formInfo.UpdateFormsConfigCallback](js-apis-app-form-formInfo-sys.md#updateformsconfigcallback) | 是   | 回调函数，返回卡片配置更新信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const callback = (configInfo: formInfo.FormCustomConfig[]): void => {
+    console.info(`onUpdateFormsConfigCallback configInfo length: ${configInfo.length}`);
+    for (let config of configInfo) {
+      console.info(`bundleName: ${config.bundleName}, moduleName: ${config.moduleName}`);
+    }
+  };
+  formHost.onUpdateFormsConfigCallback(callback);
+  console.info(`onUpdateFormsConfigCallback success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.offUpdateFormsConfigCallback
+
+offUpdateFormsConfigCallback(callback?: formInfo.UpdateFormsConfigCallback): void
+
+取消订阅更新卡片配置事件。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| callback | [formInfo.UpdateFormsConfigCallback](js-apis-app-form-formInfo-sys.md#updateformsconfigcallback) | 否   | 回调函数，返回卡片配置更新信息。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.offUpdateFormsConfigCallback();
+  console.info(`offUpdateFormsConfigCallback success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.onDeleteFormsCallback
+
+onDeleteFormsCallback(callback: formInfo.DeleteFormsCallback): void
+
+订阅删除卡片事件。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| callback | [formInfo.DeleteFormsCallback](js-apis-app-form-formInfo-sys.md#deleteformscallback) | 是   | 回调函数，返回被删除的卡片标识列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const callback = (formIds: string[]): void => {
+    console.info(`onDeleteFormsCallback formIds length: ${formIds.length}`);
+    for (let formId of formIds) {
+      console.info(`deleted formId: ${formId}`);
+    }
+  };
+  formHost.onDeleteFormsCallback(callback);
+  console.info(`onDeleteFormsCallback success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.offDeleteFormsCallback
+
+offDeleteFormsCallback(callback?: formInfo.DeleteFormsCallback): void
+
+取消订阅删除卡片事件。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| callback | [formInfo.DeleteFormsCallback](js-apis-app-form-formInfo-sys.md#deleteformscallback) | 否   | 回调函数，返回被删除的卡片标识列表。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.offDeleteFormsCallback();
+  console.info(`offDeleteFormsCallback success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
