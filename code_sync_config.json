@@ -50228,6 +50228,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/AgentExtAbility/AgentExtAbility.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/agentextability/AgentExtAbility.ets",
 				"functions":[
 					{
 						"end_line":79,
