@@ -42,6 +42,51 @@ ArkTS-Sta示例：
 
 <!-- @[textImage_component](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textImageMixedLayout/TextImageComponent.ets) -->
 
+``` TypeScript
+import {
+  $r,
+  Color,
+  Component,
+  Entry,
+  ImageSpan,
+  ImageSpanAlignment,
+  NavDestination,
+  Span,
+  Text,
+  TextDecorationStyle,
+  TextDecorationType,
+  TextVerticalAlign
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct TextImageComponent {
+  build(): void {
+    NavDestination() {
+      Text() {
+        ImageSpan($r('app.media.hot_sale'))
+          .width(50)
+          .height(30)
+          .borderRadius(5)
+          .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)
+        Span($r('app.string.surprise_price'))
+          .fontSize(25)
+          .fontColor(Color.Red)
+        Span('1599')
+          .decoration({
+            type: TextDecorationType.LineThrough,
+            color: Color.Grey,
+            style: TextDecorationStyle.SOLID
+          })
+          .fontSize(16)
+      }.textVerticalAlign(TextVerticalAlign.CENTER)
+    }
+    .backgroundColor('#f1f2f3')
+    .title($r('app.string.TextImage_MixedLayout_Text_1'))
+  }
+}
+```
+
 ![span_imagespan_composition](figures/span_imagespan_composition.png)
 
 ## 使用属性字符串实现图文混排
