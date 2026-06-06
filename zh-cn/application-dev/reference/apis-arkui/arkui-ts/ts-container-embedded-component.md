@@ -124,7 +124,7 @@ onError(callback: ErrorCallback)
 
 ## 示例（加载EmbeddedComponent）
 
-本示例展示`EmbeddedComponent`组件和`EmbeddedUIExtensionAbility`的基础使用方式，示例应用的`bundleName`为"com.example.embeddeddemo", 同应用下被拉起的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。本示例仅支持在拥有多进程权限的设备上运行，如2in1。
+本示例展示`EmbeddedComponent`组件和`EmbeddedUIExtensionAbility`的基础使用方式，示例应用的`bundleName`为"com.example.embeddedComponent", 同应用下被拉起的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。本示例仅支持在拥有多进程权限的设备上运行，如2in1。
 
 - 示例应用中的`EntryAbility(UIAbility)`加载首页文件`ets/pages/Index.ets`，其中内容如下：
 
@@ -136,7 +136,7 @@ onError(callback: ErrorCallback)
   struct Index {
     @State message: string = 'Message: ';
     private want: Want = {
-      bundleName: "com.example.embeddeddemo",
+      bundleName: "com.example.embeddedComponent",
       abilityName: "ExampleEmbeddedAbility",
     };
 
