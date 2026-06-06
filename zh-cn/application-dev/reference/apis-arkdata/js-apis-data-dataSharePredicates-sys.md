@@ -37,20 +37,20 @@ import { dataSharePredicates } from '@kit.ArkData';
 
 contains(field: string, value: string): DataSharePredicates
 
-该接口用于配置谓词以匹配值包含指定字段的字段。
+该接口用于配置谓词以匹配字段包含指定值的字段。
 
 目前仅关系型数据库支持该谓词。
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
 | field  | string | 是   | 数据库表中的列名。   |
-| value  | string | 是   | 指示值中包含该字段。 |
+| value  | string | 是   | 指示字段值中包含的字符串。 |
 
 **返回值：**
 
@@ -75,7 +75,7 @@ beginsWith(field: string, value: string): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -107,7 +107,7 @@ endsWith(field: string, value: string): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -139,7 +139,7 @@ isNull(field: string): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -170,7 +170,7 @@ isNotNull(field: string): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -201,14 +201,14 @@ unlike(field: string, value: string): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
 | field  | string | 是   | 数据库表中的列名。     |
-| value  | string | 是   | 指示要与谓词匹配的通配符表达式。<br>表达式中'%'代表零个、一个或多个数字或字符，'_'代表一个单一的数字或字符，不区分大小写。 |
+| value  | string | 是   | 指示用于不匹配筛选的通配符表达式。<br>表达式中\'%\'代表零个、一个或多个数字或字符，\'_\'代表一个单一的数字或字符，不区分大小写。 |<br>表达式中'%'代表零个、一个或多个数字或字符，'_'代表一个单一的数字或字符，不区分大小写。 |
 
 **返回值：**
 
@@ -233,14 +233,14 @@ glob(field: string, value: string): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
 | field  | string | 是   | 数据库表中的列名。     |
-| value  | string | 是   | 指示要与谓词匹配的通配符表达式。<br>表达式中'*'代表零个、一个或多个数字或字符，'?'代表一个单一的数字或字符，区分大小写。|
+| value  | string | 是   | 指示用于不匹配筛选的通配符表达式。<br>表达式中\'%\'代表零个、一个或多个数字或字符，\'_\'代表一个单一的数字或字符，不区分大小写。 |<br>表达式中'*'代表零个、一个或多个数字或字符，'?'代表一个单一的数字或字符，区分大小写。|
 
 **返回值：**
 
@@ -265,7 +265,7 @@ distinct(): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **返回值：**
 
@@ -290,7 +290,7 @@ groupBy(fields: Array&lt;string&gt;): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -321,7 +321,7 @@ indexedBy(field: string): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -348,11 +348,11 @@ prefixKey(prefix: string): DataSharePredicates
 
 该接口用于配置谓词以匹配键前缀的指定字段。
 
-目前仅KVDB支持该谓词。
+目前仅键值型数据库支持该谓词。
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -379,11 +379,11 @@ inKeys(keys: Array&lt;string&gt;): DataSharePredicates
 
 该接口用于配置谓词以匹配键在指定范围内的字段。
 
-目前仅KVDB支持该谓词。
+目前仅键值型数据库支持该谓词。
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 

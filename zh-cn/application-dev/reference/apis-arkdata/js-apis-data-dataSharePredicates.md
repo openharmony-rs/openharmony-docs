@@ -35,7 +35,7 @@ import { dataSharePredicates } from '@kit.ArkData';
 ## DataSharePredicates
 提供用于不同实现不同查询方法的数据共享谓词。该类型不是多线程安全的，如果应用中存在多线程同时操作该类派生出的实例，注意加锁保护。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 ### equalTo
 
@@ -45,7 +45,7 @@ equalTo(field: string, value: ValueType): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **原子化服务API：**  从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -53,8 +53,8 @@ equalTo(field: string, value: ValueType): DataSharePredicates
 
 | 参数名 | 类型                                                | 必填 | 说明                   |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| field  | string                                              | 是   | 数据库表中的列名。</br>field为undefined或者null时，此次调用接口配置的谓词无效。     |
-| value  | [ValueType](js-apis-data-valuesBucket.md#valuetype) | 是   | 指示要与谓词匹配的值。</br>value为undefined或者null时，此次调用接口配置的谓词无效。  |
+| field  | string                                              | 是   | 数据库表中的列名。</br>field为undefined或null时，此次调用接口配置的谓词无效。     |
+| value  | [ValueType](js-apis-data-valuesBucket.md#valuetype) | 是   | 指示要与谓词匹配的值。</br>value为undefined或null时，此次调用接口配置的谓词无效。  |
 
 **返回值：**
 
@@ -78,7 +78,7 @@ and(): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **原子化服务API：**  从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -105,7 +105,7 @@ orderByAsc(field: string): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **原子化服务API：**  从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -113,7 +113,7 @@ orderByAsc(field: string): DataSharePredicates
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| field  | string | 是   | 数据库表中的列名。 </br>field为undefined或者null时，此次调用接口配置的谓词无效。 |
+| field  | string | 是   | 数据库表中的列名。 </br>field为undefined或null时，此次调用接口配置的谓词无效。 |
 
 **返回值：**
 
@@ -136,7 +136,7 @@ orderByDesc(field: string): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **原子化服务API：**  从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -144,7 +144,7 @@ orderByDesc(field: string): DataSharePredicates
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| field  | string | 是   | 数据库表中的列名。</br>field为undefined或者null时，此次调用接口配置的谓词无效。  |
+| field  | string | 是   | 数据库表中的列名。</br>field为undefined或null时，此次调用接口配置的谓词无效。  |
 
 **返回值：**
 
@@ -167,7 +167,7 @@ limit(total: number, offset: number): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **原子化服务API：**  从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -199,7 +199,7 @@ in(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **原子化服务API：**  从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -207,8 +207,8 @@ in(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 
 | 参数名  | 类型             | 必填 | 说明                                    |
 | ------- | ---------------- | ---- | --------------------------------------- |
-| field   | string           | 是 | 数据库表中的列名。</br>field为undefined或者null时，此次调用接口配置的谓词无效。                   |
-| value | Array&lt;[ValueType](js-apis-data-valuesBucket.md#valuetype)&gt; | 是   | 以ValueType型数组形式指定的要匹配的值。 |
+| field   | string           | 是 | 数据库表中的列名。</br>field为undefined或null时，此次调用接口配置的谓词无效。</br>当field为字符串'null'或'undefined'时，键值型数据库和关系型数据库接口使用该谓词时，可能匹配结果非预期或抛出异常。</br>field为undefined或null时，此次调用接口配置的谓词无效。                   |
+| value | Array<[ValueType](js-apis-data-valuesBucket.md#valuetype)> | 是   | 以ValueType型数组形式指定的要匹配的值。</br>value为undefined或null时，此次调用接口配置的谓词无效。 |
 
 **返回值：**
 
@@ -231,7 +231,7 @@ notEqualTo(field: string, value: ValueType): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -257,11 +257,11 @@ predicates.notEqualTo("NAME", "Rose");
 
 beginWrap(): DataSharePredicates
 
-该接口用于向谓词添加左括号，相当于sql语句的“(”，必须和右括号一起使用。
+该接口用于向谓词添加左括号，相当于SQL语句的“(”，必须和右括号一起使用。
 
 目前仅关系型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **返回值：**
 
@@ -285,11 +285,11 @@ predicates.equalTo("NAME", "lisi")
 
 endWrap(): DataSharePredicates
 
-该接口用于向谓词添加右括号，相当于sql语句的“)”，必须和左括号一起使用。
+该接口用于向谓词添加右括号，相当于SQL语句的“)”，必须和左括号一起使用。
 
 目前仅关系型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **返回值：**
 
@@ -317,7 +317,7 @@ or(): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **返回值：**
 
@@ -342,7 +342,7 @@ like(field: string, value: string): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -372,7 +372,7 @@ between(field: string, low: ValueType, high: ValueType): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -403,7 +403,7 @@ notBetween(field: string, low: ValueType, high: ValueType): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -434,7 +434,7 @@ greaterThan(field: string, value: ValueType): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -464,7 +464,7 @@ lessThan(field: string, value: ValueType): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -494,7 +494,7 @@ greaterThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -524,7 +524,7 @@ lessThanOrEqualTo(field: string, value: ValueType): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -554,7 +554,7 @@ notIn(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
