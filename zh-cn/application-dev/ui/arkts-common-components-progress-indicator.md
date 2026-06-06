@@ -193,6 +193,47 @@ ArkTS-Sta示例：
 
 <!-- @[progress_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InfoComponent/ProgressProject/entry/src/main/ets/pages/ProgressCase1.ets) -->
 
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Column,
+  Progress,
+  ProgressOptions,
+  ProgressType,
+  Button,
+  Row,
+  $r
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct ProgressCase1 {
+  @State progressValue: number = 0; // 设置进度条初始值为0
+
+  build(): void {
+    Column() {
+      Column() {
+        Progress({ value: 0, total: 100, type: ProgressType.Capsule } as ProgressOptions)
+          .width(200)
+          .height(50)
+          .value(this.progressValue)
+        Row().width('100%').height(5)
+        // 请将$r('app.string.progress_add')替换为实际资源文件，在本示例中该资源文件的value值为"进度条+5"
+        Button($r('app.string.progress_add'))
+          .onClick(() => {
+            this.progressValue += 5;
+            if (this.progressValue > 100) {
+              this.progressValue = 0;
+            }
+          })
+      }
+    }.width('100%').height('100%')
+  }
+}
+```
+
 ![progress](figures/progress.gif)
 
 ## 相关实例
