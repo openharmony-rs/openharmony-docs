@@ -89,19 +89,19 @@ Progress有5种可选类型，通过[ProgressType](../reference/apis-arkui/arkui
   // 从左往右，2号环形进度条
   Progress({ value: 40, total: 150, type: ProgressType.Ring } as ProgressOptions).width(100).height(100)
     .color(Color.Grey)  // 进度条前景色为灰色
-    .style({ strokeWidth: 15 } as ProgressStyleOptions) // 设置strokeWidth进度条宽度为15.0vp
-  ```
-
-  ![progress_ring](figures/progress_ring.png)
-
-- 环形有刻度样式进度条
-
-  ArkTS-Dyn示例：
-
   <!-- @[progress_style_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   Progress({ value: 20, total: 150, type: ProgressType.ScaleRing }).width(100).height(100)
+    .backgroundColor(Color.Black)
+    .style({ scaleCount: 20, scaleWidth: 5 })    // 设置环形有刻度进度条总刻度数为20，刻度宽度为5vp
+  Progress({ value: 20, total: 150, type: ProgressType.ScaleRing }).width(100).height(100)
+    .backgroundColor(Color.Black)
+    .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 5 })    // 设置环形有刻度进度条宽度15，总刻度数为20，刻度宽度为5vp
+  Progress({ value: 20, total: 150, type: ProgressType.ScaleRing }).width(100).height(100)
+    .backgroundColor(Color.Black)
+    .style({ strokeWidth: 15, scaleCount: 20, scaleWidth: 3 })    // 设置环形有刻度进度条宽度15，总刻度数为20，刻度宽度为3vp
+  ```
     .backgroundColor(Color.Black)
     .style({ scaleCount: 20, scaleWidth: 5 })    // 设置环形有刻度进度条总刻度数为20，刻度宽度为5vp
   Progress({ value: 20, total: 150, type: ProgressType.ScaleRing }).width(100).height(100)
