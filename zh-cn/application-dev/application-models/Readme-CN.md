@@ -99,7 +99,7 @@
 - 基于AgentExtensionAbility的智能体开发指导<!--agent-->
   - [使用AgentExtensionAbility组件实现智能体服务](agent-extension-ability.md)
   - [AgentExtensionAbility配置文件说明](agent-extension-configuration.md)
-- [基于ArkTS脚本开发应用Skill](arkts-skill-development-guide.md)
+- [基于ArkTS脚本开发应用Skill（ArkTS-Dyn）](arkts-skill-development-guide.md)
 - 基于ModularObjectExtensionAbility的模块化对象开发指导 (C/C++)<!--modular-object-extension-ability-->
   - [模块化对象模型概述 (C/C++)](modular-object-extension-overview.md)
   - [使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](modular-object-extension-development.md)
