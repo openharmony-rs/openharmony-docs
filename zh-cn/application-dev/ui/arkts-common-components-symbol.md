@@ -294,6 +294,56 @@ import {
   ArkTS-Sta示例：
 
   <!-- @[symbol_span_font_weight](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
+  import {
+    $r,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    Entry,
+    FontWeight,
+    NavDestination,
+    Row,
+    Scroll,
+    Scroller,
+    SymbolEffectStrategy,
+    SymbolGlyph,
+    SymbolRenderingStrategy,
+    SymbolSpan,
+    Text
+  } from '@kit.ArkUI';
+  // ...
+              Row() {
+                Column() {
+                  Text('Light')
+                  Text() {
+                    SymbolSpan($r('sys.symbol.ohos_trash'))
+                      .fontWeight(FontWeight.Lighter)
+                      .fontSize(96)
+                  }
+                }
+  
+                Column() {
+                  Text('Normal')
+                  Text() {
+                    SymbolSpan($r('sys.symbol.ohos_trash'))
+                      .fontWeight(FontWeight.Normal)
+                      .fontSize(96)
+                  }
+                }
+  
+                Column() {
+                  Text('Bold')
+                  Text() {
+                    SymbolSpan($r('sys.symbol.ohos_trash'))
+                      .fontWeight(FontWeight.Bold)
+                      .fontSize(96)
+                  }
+                }
+              }
+  ```
 
   ![symbolSpan_multi_fontWeight_trash](figures/symbol_multi_fontweight_trash.png)
 
