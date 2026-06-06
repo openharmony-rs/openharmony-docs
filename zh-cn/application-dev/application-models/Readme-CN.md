@@ -9,7 +9,7 @@
 
 
 - [Ability Kit简介](abilitykit-overview.md)
-- [应用模型]<!--application-models-->
+- 应用模型<!--application-models-->
   - [应用模型概述](stage-model-development-overview.md)
   - 应用组件<!--stage-model-application-components-->
     - [应用/组件级配置](application-component-configuration-stage.md)
