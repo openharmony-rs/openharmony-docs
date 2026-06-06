@@ -274,11 +274,7 @@ decompressFile(inFile: string, outFile: string, options: Options, callback: Asyn
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 900001   | The input source file is invalid.      |
 | 900002   | The input destination file is invalid. |
-<<<<<<< HEAD
 | 900003 | The input source file is not in ZIP format or is damaged. <br>适用版本：10+ |
-=======
-| 900003 | The input source file is not in ZIP format or is damaged.[since 10] |
->>>>>>> d5c862ee72c (support zlib.compressFile keep top folder)
 
 **示例：**
 
@@ -347,11 +343,7 @@ decompressFile(inFile: string, outFile: string, options?: Options): Promise\<voi
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 900001 | The input source file is invalid.      |
 | 900002 | The input destination file is invalid. |
-<<<<<<< HEAD
 | 900003 | The input source file is not in ZIP format or is damaged. <br>适用版本：10+ |
-=======
-| 900003 | The input source file is not in ZIP format or is damaged.[since 10]|
->>>>>>> d5c862ee72c (support zlib.compressFile keep top folder)
 
 **示例：**
 
@@ -3762,7 +3754,7 @@ Options用于指定在压缩或解压Zip文件时的选项。
 | strategy | [CompressStrategy](#compressstrategy) | 否   | 是  | 压缩时指定的压缩策略。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
 | parallel<sup>18+</sup> | [ParallelStrategy](#parallelstrategy18) | 否   | 是  | 压缩或解压时指定的串行或并行策略。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
 | pathSeparatorStrategy<sup>21+</sup> | [PathSeparatorStrategy](#pathseparatorstrategy21) | 否   | 是  | 解压时指定的压缩包内文件路径中分隔符的处理策略。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。        |
-| keepTopLevelFolder | boolean | 否   | 是  | 压缩文件夹时，是否在压缩包中保留顶层文件夹。true表示保留顶层文件夹；false表示不保留顶层文件夹。默认值为false。<br/>**起始版本：** 26.1.0 <br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。        |
+| keepTopLevelFolder | boolean | 否   | 是  | 压缩文件夹时，是否在压缩包中保留顶层文件夹。true表示保留顶层文件夹；false表示不保留顶层文件夹。默认值为false。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。        |
 
 ## CompressLevel
 
