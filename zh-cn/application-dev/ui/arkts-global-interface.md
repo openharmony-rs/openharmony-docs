@@ -36,7 +36,7 @@
 
 UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确识别UI实例的问题。
 
-当前的系统支持两种[应用模型](../application-models/application-models.md)——[FA模型](../application-models/ability-terminology.md#fa模型)和Stage模型。在FA模型中，每个UI实例拥有独立的ArkTS引擎，全局接口可以通过ArkTS引擎跟踪到对应的UI实例上，因此不存在UI上下文不明确的问题。
+当前的系统支持两种[应用模型概述](../application-models/stage-model-development-overview.md)——[FA模型](../application-models/ability-terminology.md#fa模型)和Stage模型。在FA模型中，每个UI实例拥有独立的ArkTS引擎，全局接口可以通过ArkTS引擎跟踪到对应的UI实例上，因此不存在UI上下文不明确的问题。
 
 在[Stage模型](../application-models/ability-terminology.md#stage模型)中，一个ArkTS引擎中可运行多个ArkUI实例。全局接口通过分析调用链中的上下文信息来确定当前UI上下文，异步接口和非UI接口可能导致UI上下文跟踪失败。
 
