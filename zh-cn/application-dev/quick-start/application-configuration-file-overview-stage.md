@@ -1,4 +1,4 @@
-# 应用配置文件概述（Stage模型）
+# 应用配置文件概述
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->

@@ -1,4 +1,4 @@
-# 管理应用窗口（FA模型）
+# FA模型的应用窗口管理
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
