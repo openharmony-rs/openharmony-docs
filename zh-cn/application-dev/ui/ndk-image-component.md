@@ -153,15 +153,12 @@
     <!-- @[apply_internet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ImageCAPIGuild/entry/src/main/module.json5) -->
     
     ``` JSON5
-    {
-      "module": {
-        "requestPermissions": [
-          {
-            "name": "ohos.permission.INTERNET"
-          }
-        ],
-      }
-    }
+    "module": {
+      "requestPermissions": [
+        {
+          "name": "ohos.permission.INTERNET"
+        }
+      ],
     ```
 
     <!-- @[network_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ImageCAPIGuild/entry/src/main/cpp/ImageExample.cpp) -->
