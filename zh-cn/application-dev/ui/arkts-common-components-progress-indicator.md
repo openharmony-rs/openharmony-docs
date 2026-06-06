@@ -179,6 +179,19 @@ Progress有5种可选类型，通过[ProgressType](../reference/apis-arkui/arkui
     ArkTS-Sta示例：
 
     <!-- @[progress_style_5](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    Progress({ value: 10, total: 150, type: ProgressType.Capsule } as ProgressOptions).width(100).height(50)
+    Progress({ value: 20, total: 150, type: ProgressType.Capsule } as ProgressOptions)
+      .width(50)
+      .height(100)
+      .color(Color.Grey)
+    Progress({ value: 50, total: 150, type: ProgressType.Capsule } as ProgressOptions)
+      .width(50)
+      .height(100)
+      .color(Color.Blue)
+      .backgroundColor(Color.Black)
+    ```
 
   ![progress_capsule](figures/progress_capsule.png)
 
