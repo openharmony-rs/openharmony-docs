@@ -200,6 +200,15 @@ Text可通过以下两种方式来创建：
   ArkTS-Sta示例：
 
   <!-- @[create_span_with_upper_case](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
+  
+  ``` TypeScript
+  Text() {
+    Span('I am Upper-span').fontSize(12)
+      .textCase(TextCase.UpperCase)
+  }
+  .borderWidth(1)
+  .padding(10)
+  ```
 
   ![zh-cn_image_0000001562940525](figures/zh-cn_image_0000001562940525.png)
 
