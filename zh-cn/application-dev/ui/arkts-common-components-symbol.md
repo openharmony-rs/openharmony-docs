@@ -145,6 +145,59 @@ import {
   ArkTS-Sta示例：
 
   <!-- @[symbol_span_font_size](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
+  import {
+    $r,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    Entry,
+    FontWeight,
+    NavDestination,
+    Row,
+    Scroll,
+    Scroller,
+    SymbolEffectStrategy,
+    SymbolGlyph,
+    SymbolRenderingStrategy,
+    SymbolSpan,
+    Text
+  } from '@kit.ArkUI';
+  // ...
+              Row() {
+                Column() {
+                  Text('48')
+                  Text() {
+                    SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+                      .fontSize(48)
+                      .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+                      .fontColor([Color.Black, Color.Green, Color.White])
+                  }
+                }
+  
+                Column() {
+                  Text('72')
+                  Text() {
+                    SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+                      .fontSize(72)
+                      .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+                      .fontColor([Color.Black, Color.Green, Color.White])
+                  }
+                }
+  
+                Column() {
+                  Text('96')
+                  Text() {
+                    SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+                      .fontSize(96)
+                      .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+                      .fontColor([Color.Black, Color.Green, Color.White])
+                  }
+                }
+              }
+  ```
 
   ![symbolSpan_multi_fontSize](figures/symbolspan_multi_fontsize.png)
 
