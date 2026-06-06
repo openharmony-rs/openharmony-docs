@@ -18,7 +18,7 @@
     
 - [Stage模型](ability-terminology.md#stage模型)：从API 9开始新增的模型，是目前主推且会长期演进的模型。Stage模型支持多个应用组件共享同一个ArkTS引擎实例，以及应用组件间的状态共享与对象调用，可以降低内存开销、提升开发效率，适用于复杂应用的开发。
     
-FA模型当前主要用于Lite Wearable设备。其他场景推荐使用Stage模型，详见[应用模型概述](stage-model-development-overview.md)。
+FA模型当前主要用于Lite Wearable设备。其他场景推荐使用Stage模型，详见[应用模型](stage-model-development-overview.md)。
 
 
 ## 应用模型构成要素
