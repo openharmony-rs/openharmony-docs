@@ -109,6 +109,16 @@ Text可通过以下两种方式来创建：
   ArkTS-Sta示例：
 
   <!-- @[create_span](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
+  
+  ``` TypeScript
+  // 请将$r('app.string.TextSpan_textContent_text')替换为实际资源文件，在本示例中该资源文件的value值为"我是Text"
+  Text($r('app.string.TextSpan_textContent_text')) {
+    // 请将$r('app.string.TextSpan_textContent_span')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span"
+    Span($r('app.string.TextSpan_textContent_span'))
+  }
+  .padding(10)
+  .borderWidth(1)
+  ```
 
   ![zh-cn_image_0000001562700441](figures/zh-cn_image_0000001562700441.png)
 
