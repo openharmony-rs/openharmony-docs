@@ -386,8 +386,6 @@ get area(): contextConstant.AreaMode
 
 获取文件分区信息。
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
@@ -402,8 +400,10 @@ get area(): contextConstant.AreaMode
 
  **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { common, UIAbility, contextConstant } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -422,8 +422,6 @@ set area(mode: contextConstant.AreaMode)
 
 设置文件分区信息。
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
@@ -438,8 +436,10 @@ set area(mode: contextConstant.AreaMode)
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { common, UIAbility, contextConstant } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 

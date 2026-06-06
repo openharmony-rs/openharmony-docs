@@ -235,6 +235,7 @@ export default class AppServiceExtension extends AppServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { AppServiceExtensionAbility, Want, common, bundleManager } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -315,6 +316,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { AppServiceExtensionAbility } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
 import { BusinessError } from '@kit.BasicServicesKit';

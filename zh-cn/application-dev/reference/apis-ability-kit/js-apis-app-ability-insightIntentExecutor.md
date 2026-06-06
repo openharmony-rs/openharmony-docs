@@ -195,10 +195,12 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record\<string, RecordDa
 
 **示例：**
 
+ArkTS-Sta示例：
+
 直接返回意图调用的结果，示例如下：
 
   ```ts
-  // ArkTS-Sta示例  
+  'use static'
   import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -240,10 +242,12 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record\<string, RecordDa
   }
   ```
 
+ArkTS-Sta示例：
+
 使用Promise异步返回意图调用的结果，示例如下：
 
   ```ts
-  // ArkTS-Sta示例  
+  'use static'
   import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -394,10 +398,12 @@ onExecuteInUIAbilityBackgroundMode(name: string, param: Record\<string, RecordDa
 
 **示例：**
 
+ArkTS-Sta示例：
+
 直接返回意图调用的结果，示例如下：
 
   ```ts
-  // ArkTS-Sta示例  
+  'use static'
   import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
   import { RecordData } from '@kit.BasicServicesKit';
   
@@ -414,10 +420,12 @@ onExecuteInUIAbilityBackgroundMode(name: string, param: Record\<string, RecordDa
   }
   ```
 
+ArkTS-Sta示例：
+
 使用Promise异步返回意图调用的结果，示例如下：
 
   ```ts
-  // ArkTS-Sta示例  
+  'use static'
   import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
   import { RecordData } from '@kit.BasicServicesKit';
   
@@ -580,10 +588,12 @@ onExecuteInUIExtensionAbility(name: string, param: Record\<string, RecordData>, 
 
 **示例：**
 
+ArkTS-Sta示例：
+
 直接返回意图调用的结果，示例如下：
 
   ```ts
-  // ArkTS-Sta示例 
+  'use static'
   import { InsightIntentExecutor, insightIntent, UIExtensionContentSession } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { RecordData } from '@kit.BasicServicesKit';
@@ -618,10 +628,12 @@ onExecuteInUIExtensionAbility(name: string, param: Record\<string, RecordData>, 
   }
   ```
 
+ArkTS-Sta示例：
+
 使用Promise异步返回意图调用的结果，示例如下：
 
   ```ts
-  // ArkTS-Sta示例  
+  'use static'
   import { InsightIntentExecutor, insightIntent, UIExtensionContentSession } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { RecordData } from '@kit.BasicServicesKit';
@@ -792,10 +804,12 @@ onExecuteInServiceExtensionAbility(name: string, param: Record\<string, RecordDa
 
 **示例：**
 
+ArkTS-Sta示例：
+
 直接返回意图调用的结果，示例如下：
 
   ```ts
-  // ArkTS-Sta示例 
+  'use static'
   import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { RecordData } from '@kit.BasicServicesKit';
@@ -828,10 +842,12 @@ onExecuteInServiceExtensionAbility(name: string, param: Record\<string, RecordDa
   }
   ```
 
+ArkTS-Sta示例：
+
 使用Promise异步返回意图调用的结果，示例如下：
 
   ```ts
-   // ArkTS-Sta示例   
+  'use static'
    import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { RecordData } from '@kit.BasicServicesKit';

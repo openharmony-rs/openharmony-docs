@@ -365,6 +365,7 @@ let toolEventCallback: common.ToolEventCallback;
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common } from '@kit.AbilityKit';
 
 let uiAbilityContext: common.UIAbilityContext;

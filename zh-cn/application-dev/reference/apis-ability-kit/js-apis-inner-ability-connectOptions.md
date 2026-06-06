@@ -204,8 +204,10 @@ type OnConnectFn = (elementName: ElementName, remote: rpc.IRemoteObject) => void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility, common, Want, AbilityConstant } from '@kit.AbilityKit';
 import { bundleManager } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
@@ -254,8 +256,10 @@ type OnDisconnectFn = (elementName: ElementName) => void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility, common, Want, AbilityConstant } from '@kit.AbilityKit';
 import { bundleManager } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
@@ -304,8 +308,10 @@ type OnFailedFn = (code: int) => void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility, common, Want, AbilityConstant } from '@kit.AbilityKit';
 import { bundleManager } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';

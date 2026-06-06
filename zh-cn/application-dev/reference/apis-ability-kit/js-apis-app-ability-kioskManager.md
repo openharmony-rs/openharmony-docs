@@ -98,6 +98,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common, kioskManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -206,6 +207,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common, kioskManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';

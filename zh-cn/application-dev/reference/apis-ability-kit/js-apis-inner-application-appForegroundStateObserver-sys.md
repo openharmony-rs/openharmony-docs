@@ -62,6 +62,7 @@ appManager.on('appForegroundState', observer);
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { appManager } from '@kit.AbilityKit';
 
 class MyObserver implements appManager.AppForegroundStateObserver {

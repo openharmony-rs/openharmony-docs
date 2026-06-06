@@ -228,6 +228,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 
   ```ts
+  'use static'
   import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
   import rpc from '@ohos.rpc';
   import { hilog } from '@kit.PerformanceAnalysisKit';

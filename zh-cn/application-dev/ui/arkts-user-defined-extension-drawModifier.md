@@ -272,7 +272,7 @@ struct DrawModifierExample {
 ```
 
 ArkTS-Sta示例：
-<!-- @[drawFront_drawContent_drawBehind_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/DrawFrontDrawContentDrawBehind.ets) -->
+<!-- @[drawFront_drawContent_drawBehind_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/samples/DrawFrontDrawContentDrawBehind.ets) -->
 
 ``` TypeScript
 import {
@@ -559,7 +559,7 @@ struct DrawModifierExample {
 ```
 
 ArkTS-Sta示例：
-<!-- @[drawForeground_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/DrawForeground.ets) -->
+<!-- @[drawForeground_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/samples/DrawForeground.ets) -->
 
 ``` TypeScript
 import { $r, Column, Component, DrawContext, DrawModifier, Entry, Text, TextAlign, UIContext } from '@kit.ArkUI';

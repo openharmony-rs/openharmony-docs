@@ -35,7 +35,7 @@ import { common } from '@kit.AbilityKit';
 | -------- | -------- | -------- | -------- | -------- |
 | currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | 否 | 否 | AbilityStage对应的ModuleInfo对象。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | config | [Configuration](js-apis-app-ability-configuration.md) | 否 | 否 | 环境变量。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| launchElement<sup>24+</sup> | [ElementName](js-apis-bundleManager-elementName.md) | 否 | 是 | 创建AbilityStage时的ElementName。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
+| launchElement<sup>24+</sup> | [ElementName](js-apis-bundleManager-elementName.md) | 否 | 是 | 创建AbilityStage时的ElementName。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
 
 **示例：**
 

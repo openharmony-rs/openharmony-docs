@@ -573,7 +573,6 @@ struct Parent {
 
 ```ts
 // EntryAbility.ets
-'use static'
 
 import { UIAbility } from '@kit.AbilityKit';
 import { LocalStorage, window } from '@kit.ArkUI';
