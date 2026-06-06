@@ -29,6 +29,9 @@
 设置[wordBreak](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#wordbreak11)属性为`WordBreak.BREAK_ALL`，任意2个字符间断行使文本内容尽量占满组件区域。
 
 示例代码如下：
+
+ArkTS-Dyn示例：
+
   <!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
   
   ``` TypeScript
@@ -64,6 +67,10 @@
   }
   ```
 
+ArkTS-Sta示例：
+
+<!-- @[Word_Break](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/text/WordBreakd.ets) -->
+
 ![](figures/text_faq_Word_Break.gif)
 
 ### Text组件如何实现行末展开样式
@@ -83,6 +90,9 @@
 设置[heightAdaptivePolicy](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#heightadaptivepolicy10)为TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST，该模式会删除超过布局约束的行，从而实现类似设置maxLines的效果。
 
 示例代码如下：
+
+ArkTS-Dyn示例：
+
   <!-- @[Height_AdaptivePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/HeightAdaptivePolicy.ets) --> 
   
   ``` TypeScript
@@ -126,6 +136,10 @@
   }
   ```
 
+ArkTS-Sta示例：
+
+<!-- @[Height_AdaptivePolicy](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/text/HeightAdaptivePolicy.ets) -->
+
 ![](figures/EllipsisDemo2.gif)
 
 ### 在文本前后添加自定义标签
@@ -160,7 +174,7 @@
 
 4.设置后标签相对于Stack左上角的偏移量。
 
-示例：
+ArkTS-Dyn示例：
 
   <!-- @[Length_Metric](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/LengthMetric.ets) --> 
   
@@ -259,6 +273,10 @@
   }
   ```
 
+ArkTS-Sta示例：
+
+<!-- @[Length_Metric](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/text/LengthMetric.ets) -->
+
 ![](figures/text_tag_case_2.png)
 
 ### Text组件如何实现表情与文字一起显示
@@ -270,6 +288,8 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
 **解决措施**
 
 使用正则表达式解析表情符号，再将表情符号与图片资源建立映射，通过[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)和[ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)同时展示表情和文字。
+
+ArkTS-Dyn示例：
 
   <!-- @[Displayed_Together](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets) -->
   
@@ -374,6 +394,10 @@ emoji表情有时以表情符号的形式表示，如何将表情符号转换为
   }
   ```
 
+ArkTS-Sta示例：
+
+<!-- @[Displayed_Together](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets) -->
+
 ![](figures/text-emoji.png)
 
 ### 文本超长时如何展示
@@ -387,6 +411,8 @@ Text组件中内容过多，超出父组件容器[Column](../reference/apis-arku
 Text文本是自动折行的，当没有限制Text高度[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)时，Text高度在文本的行数增加时自动调整。可以通过设置[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)属性限制文本的最大行数，如果有多余的文本默认会被截断。也可以通过[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)属性来指定截断方式。
 
 以下示例展示了限制Text组件不超过三行的场景。
+
+ArkTS-Dyn示例：
 
   <!-- @[Text_Long](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLong.ets) -->
   
@@ -418,11 +444,17 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
   }
   ```
 
+ArkTS-Sta示例：
+
+<!-- @[Text_Long](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/text/TextLong.ets) -->
+
 ![](figures/text_too_long_maxLines.png)
 
 **解决措施二**
 
 上述方法会导致部分文本被裁剪掉，如果需要保留全部文本，可以把Text组件放在滚动容器[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)内，再通过手势滑动来浏览全部文本，具体示例如下：
+
+ArkTS-Dyn示例：
 
   <!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
   
@@ -454,6 +486,10 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
     }
   }
   ```
+
+ArkTS-Sta示例：
+
+<!-- @[Text_Long_Tow](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/text/TextLongTow.ets) -->
 
 ![](figures/text_too_long_scroll.gif)
 
@@ -587,6 +623,8 @@ TextInput被遮挡时，如果通过[TextInputController](../reference/apis-arku
 
 以下示例展示了一个典型的问题场景，存在一个内容为“TextInput被遮挡不显示”的TextInput组件被隐藏，但点击按钮后，图片上会出现TextInput操作手柄。此时，开发者需要检查应用代码，确保在输入框被遮挡时没有设置选中区域。移除设置输入框选中区域的代码逻辑，即可解决操作手柄出现的问题。
 
+ArkTS-Dyn示例：
+
 <!--@[Cursor_Persists_When_TextInput_Is_Covered](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/CursorPersistsWhenTextInputIsCovered.ets)-->
 
 ``` TypeScript
@@ -629,5 +667,9 @@ export struct CursorPersistsWhenTextInputIsCoveredExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[Cursor_Persists_When_TextInput_Is_Covered](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/faq/CursorPersistsWhenTextInputIsCovered.ets) -->
 
 ![textInput_faq_show_handle](figures/textInput_faq_show_handle.gif)
