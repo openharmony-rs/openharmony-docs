@@ -163,7 +163,7 @@ struct ScrollBarExample {
 }
 ```
 
-![en-us_image_0000001232775585](figures/en-us_image_0000001232775585.gif)
+![scrollBar1](figures/scrollBar1.gif)
 
 ## Example 2: Implementing a ScrollBar Component Without Child Components
 

@@ -390,7 +390,7 @@ struct RectExample {
 }
 ```
 
-![zh-cn_image_0000001174264386](figures/zh-cn_image_0000001174264386.png)
+![rect](figures/rect.png)
 
 ### 示例2（绘制渐变色矩形）
 
@@ -431,7 +431,7 @@ struct RectExample {
 }
 ```
 
-![zh-cn_image_0000001174264386](figures/zh-cn_image_0000001174264387.jpeg)
+![rect2](figures/rect2.jpeg)
 
 ### 示例3（使用不同参数类型绘制矩形）
 

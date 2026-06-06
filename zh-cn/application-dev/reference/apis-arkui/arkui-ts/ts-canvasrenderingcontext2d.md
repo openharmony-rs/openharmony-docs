@@ -4275,7 +4275,7 @@ createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGrad
   }
   ```
 
-  ![zh-cn_image_0000001194032516](figures/zh-cn_image_0000001194032516.png)
+  ![createLinearGradient](figures/createLinearGradient.png)
 
 
 ### createRadialGradient

@@ -188,7 +188,7 @@ struct GestureSettingsExample {
 }
 ```
 
-![zh-cn_image_0000001210195016](figures/zh-cn_image_0000001210195016.gif)
+![parallelGesture](figures/parallelGesture.gif)
 
 ### 示例2（实时监测参与滑动手势的有效触点数量）
 
@@ -259,4 +259,4 @@ struct PanGestureWithFingerCount {
 }
 ```
 
-![zh-cn_image_0000001210195017](figures/zh-cn_image_0000001210195017.gif)
+![parallelGesture2](figures/parallelGesture2.gif)

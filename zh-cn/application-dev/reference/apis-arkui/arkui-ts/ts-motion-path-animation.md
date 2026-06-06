@@ -79,4 +79,4 @@ struct MotionPathExample {
 }
 ```
 
-![zh-cn_image_0000001174104400](figures/zh-cn_image_0000001174104400.gif)
+![motionPath](figures/motionPath.gif)

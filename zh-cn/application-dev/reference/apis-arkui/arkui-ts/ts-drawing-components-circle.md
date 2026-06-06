@@ -281,7 +281,7 @@ struct CircleExample {
 }
 ```
 
-![zh-cn_image_0000001219744191](figures/zh-cn_image_0000001219744191.png)
+![circle1](figures/circle1.png)
 
 ### 示例2（宽和高使用不同参数类型绘制圆）
 

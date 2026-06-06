@@ -1346,7 +1346,7 @@ struct ListExample {
 }
 ```
 
-![en-us_image_0000001174264378](figures/en-us_image_0000001174264378.gif)
+![list1](figures/list1.gif)
 
 ### Example 2: Setting Edge Fading
 This example demonstrates how to use [fadingEdge](ts-container-scrollable-common.md#fadingedge14) to implement a [List](ts-container-list.md) component with an edge fading effect and set the length of the fading edge.

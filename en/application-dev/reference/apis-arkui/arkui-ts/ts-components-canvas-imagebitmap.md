@@ -144,7 +144,7 @@ This example demonstrates how to load a local image using the **ImageBitmap** ob
   }
   ```
 
-  ![en-us_image_0000001194352442](figures/en-us_image_0000001194352442.png)
+  ![imageBitmap1](figures/imageBitmap1.png)
 
 ### Example 2: Creating an ImageBitmap Object
 
@@ -183,7 +183,7 @@ struct Demo {
 }
 ```
 
-  ![en-us_image_0000001194352442](figures/en-us_image_0000001194352444.png)
+  ![imageBitmap2](figures/imageBitmap2.png)
 
 
 ### Example 3: Supporting Concurrent Thread Drawing
@@ -246,4 +246,4 @@ workerPort.onmessage = (e: MessageEvents) => {
 }
 ```
 
-  ![en-us_image_0000001194352442](figures/en-us_image_0000001194352442.png)
+  ![imageBitmap1](figures/imageBitmap1.png)

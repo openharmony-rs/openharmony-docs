@@ -125,10 +125,10 @@ struct AspectRatioExample {
 ```
 
 **Figure 1** Portrait display<br>
-![en-us_image_0000001219744205](figures/en-us_image_0000001219744205.PNG)
+![layoutConstraints2](figures/layoutConstraints2.PNG)
 
 **Figure 2** Landscape display<br>
-![en-us_image_0000001174264382](figures/en-us_image_0000001174264382.PNG)
+![layoutConstraints1](figures/layoutConstraints1.PNG)
 
 ### Example 2: Setting the Component Display Priority
 

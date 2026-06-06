@@ -318,7 +318,7 @@ struct PolygonExample {
 }
 ```
 
-![zh-cn_image_0000001174582856](figures/zh-cn_image_0000001174582856.png)
+![polygon](figures/polygon.png)
 
 ### 示例2（宽和高使用不同参数类型绘制多边形）
 

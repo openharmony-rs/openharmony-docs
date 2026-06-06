@@ -385,7 +385,7 @@ struct PathExample {
 }
 ```
 
-![zh-cn_image_0000001219744193](figures/zh-cn_image_0000001219744193.png)
+![path1](figures/path1.png)
 
 ### 示例2（使用不同参数类型绘制路径）
 

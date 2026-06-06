@@ -136,7 +136,7 @@ struct OverlayExample {
 }
 ```
 
-![zh-cn_image_0000001205769446](figures/zh-cn_image_0000001205769446.png)
+![floatingLayer](figures/floatingLayer.png)
 
 ### 示例2（通过builder设置浮层）
 
@@ -171,7 +171,7 @@ struct OverlayExample {
   }
 }
 ```
-![zh-cn_image_0000001210111632](figures/zh-cn_image_0000001210111632.png)
+![floatingLayer2](figures/floatingLayer2.png)
 
 ### 示例3（通过ComponentContent设置浮层）
 

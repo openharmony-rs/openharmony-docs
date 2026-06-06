@@ -115,7 +115,7 @@ struct GridContainerExample1 {
 
 **图1** 设备宽度为SM
 
-![zh-cn_image_0000001174582872](figures/zh-cn_image_0000001174582872.png)
+![SM](figures/SM.png)
 
 **图2** 设备宽度为MD
 
@@ -123,7 +123,7 @@ struct GridContainerExample1 {
 
 **图3** 设备宽度为LG
 
-![zh-cn_image_0000001219982727](figures/zh-cn_image_0000001219982727.png)
+![LG](figures/LG.png)
 
 **图4** 单独设置gridSpan和gridOffset在特定屏幕大小下的效果与useSizeType效果一致
 

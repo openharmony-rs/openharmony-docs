@@ -185,7 +185,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001229677045](figures/zh-cn_image_0000001229677045.gif)
+![animate](figures/animate.gif)
 
 ## getBoundingClientRect
 

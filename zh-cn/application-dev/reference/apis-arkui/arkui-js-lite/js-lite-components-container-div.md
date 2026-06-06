@@ -108,7 +108,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001381108420](figures/zh-cn_image_0000001381108420.png)
+   ![div](figures/div.png)
 
 2. Flex Wrap样式
   
@@ -157,4 +157,4 @@
    }
    ```
 
-   ![zh-cn_image_0000001431148457](figures/zh-cn_image_0000001431148457.png)
+   ![div2](figures/div2.png)

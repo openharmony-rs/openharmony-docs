@@ -472,7 +472,7 @@ struct ShapeExample {
 }
 ```
 
-![zh-cn_image_0000001184628104](figures/zh-cn_image_0000001184628104.png)
+![shape](figures/shape.png)
 
 ### 示例2（使用不同参数类型绘制图形）
 
