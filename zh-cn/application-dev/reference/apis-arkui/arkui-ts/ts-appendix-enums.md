@@ -803,12 +803,12 @@
 
 | 名称    |   值   |  说明   |
 | ------- | ----- |----------- |
-| Lighter | - |100字重，字体较细。 |
-| Normal  | - |400字重，字体粗细正常。 |
-| Regular | - |400字重，字体粗细正常，与Normal效果相同。 |
-| Medium  | - |500字重，字体粗细适中。 |
-| Bold    | - |700字重，字体较粗。   |
-| Bolder  | - |900字重，字体非常粗。 |
+| Lighter | ArkTS-Dyn: - <br/>ArkTS-Sta: 0 |100字重，字体较细。 |
+| Normal  | ArkTS-Dyn: - <br/>ArkTS-Sta: 1 |400字重，字体粗细正常。 |
+| Regular | ArkTS-Dyn: - <br/>ArkTS-Sta: 2 |400字重，字体粗细正常，与Normal效果相同。 |
+| Medium  | ArkTS-Dyn: - <br/>ArkTS-Sta: 3 |500字重，字体粗细适中。 |
+| Bold    | ArkTS-Dyn: - <br/>ArkTS-Sta: 4 |700字重，字体较粗。   |
+| Bolder  | ArkTS-Dyn: - <br/>ArkTS-Sta: 5 |900字重，字体非常粗。 |
 
 FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参value的类型之一。value是FontWeight、number、[ResourceStr](./ts-types.md#resourcestr)类型时，映射关系如下。
 
@@ -1950,6 +1950,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                      | 值 | 说明                       |
 | ----------------------- | ----------- | ------------------------ |
 | MAX_LINES_FIRST         | 0 | 设置文本高度自适应方式为以[maxLines](ts-basic-components-textarea.md#maxlines10)优先。 |
@@ -1972,8 +1976,8 @@ type Nullable\<T> = T | undefined
 
 | 名称    | 值 | 说明                                                         |
 | ------- | ----------- | ------------------------------------------------------------ |
-| DEFAULT | - | 默认风格。光标宽度为1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
-| INLINE  | - | 内联输入风格。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>内联模式下，不支持拖入文本。 |
+| DEFAULT | ArkTS-Dyn: - <br/>ArkTS-Sta: 0| 默认风格。光标宽度为1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
+| INLINE  | ArkTS-Dyn: - <br/>ArkTS-Sta: 1 | 内联输入风格。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>内联模式下，不支持拖入文本。 |
 
 ## TextSelectableMode<sup>12+</sup>
 
@@ -1984,6 +1988,10 @@ type Nullable\<T> = T | undefined
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 值 | 说明                                                         |
 | ------------ | --- | ------------------------------------------------------------ |
@@ -2126,10 +2134,10 @@ type Nullable\<T> = T | undefined
 
 | 名称  | 值 | 说明                                   |
 | ----- | --- | -------------------------------------- |
-| NORMAL  | 0 | CJK(中文、日文、韩文)文本可以在任意2个字符间断行，而Non-CJK文本（如英文等）只能在空白符处断行。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| BREAK_ALL | 1 | 对于Non-CJK的文本，可在任意2个字符间断行。对于CJK文本，效果与NORMAL一致。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| BREAK_WORD | 2 | 与BREAK_ALL相同，对于Non-CJK的文本可在任意2个字符间断行，一行文本中有断行破发点（如空白符）时，优先按破发点换行，保障单词优先完整显示。若整一行文本均无断行破发点，则在任意2个字符间断行。对于CJK文本，效果与NORMAL一致。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| HYPHENATION<sup>18+</sup> | 3 | 每行末尾单词尝试通过连字符“-”进行断行，若无法添加连字符“-”，则跟BREAK_WORD保持一致。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| NORMAL  | 0 | CJK(中文、日文、韩文)文本可以在任意2个字符间断行，而Non-CJK文本（如英文等）只能在空白符处断行。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| BREAK_ALL | 1 | 对于Non-CJK的文本，可在任意2个字符间断行。对于CJK文本，效果与NORMAL一致。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| BREAK_WORD | 2 | 与BREAK_ALL相同，对于Non-CJK的文本可在任意2个字符间断行，一行文本中有断行破发点（如空白符）时，优先按破发点换行，保障单词优先完整显示。若整一行文本均无断行破发点，则在任意2个字符间断行。对于CJK文本，效果与NORMAL一致。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| HYPHENATION<sup>18+</sup> | 3 | 每行末尾单词尝试通过连字符“-”进行断行，若无法添加连字符“-”，则跟BREAK_WORD保持一致。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## XComponentType<sup>10+</sup>
 

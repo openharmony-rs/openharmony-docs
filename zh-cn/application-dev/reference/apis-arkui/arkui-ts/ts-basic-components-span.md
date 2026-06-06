@@ -203,9 +203,7 @@ ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 ### fontWeight
 
-ArkTS-Dyn: fontWeight(value: number | FontWeight | ResourceStr)
-
-ArkTS-Sta: fontWeight(value: int | FontWeight | ResourceStr | undefined)
+fontWeight(value: number | FontWeight | ResourceStr)
 
 设置文本的字体粗细，设置过大可能会在不同字体下有截断。
 
@@ -217,21 +215,21 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | ResourceStr | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta接口是[fontWeight](#fontweight23)。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) \| undefined | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br>值为undefined时，保持FontWeight.Normal效果。 <br/>默认值：FontWeight.Normal <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br>值为undefined时，保持FontWeight.Normal效果。 <br/>默认值：FontWeight.Normal <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
 
 ### fontWeight<sup>24+</sup>
 
-ArkTS-Dyn: fontWeight(weight: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs)
-
-ArkTS-Sta: fontWeight(weight: int | FontWeight | ResourceStr | undefined, fontWeightConfigs?: FontWeightConfigs)
+fontWeight(weight: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs)
 
 设置文本的字体粗细。
 
@@ -243,11 +241,40 @@ ArkTS-Sta: fontWeight(weight: int | FontWeight | ResourceStr | undefined, fontWe
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[fontWeight](#fontweight23)。
+
+**ArkTS-Dyn起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| weight  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) <br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) \| undefined| 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br/>默认值：FontWeight.Normal <br/>取值undefined时，按默认值处理。|
+| weight  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br/>默认值：FontWeight.Normal <br/>取值undefined时，按默认值处理。|
+| fontWeightConfigs  | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明) | 否   | 字体粗细配置。默认值继承[FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明)。 |
+
+### fontWeight<sup>23+</sup>
+
+fontWeight(weight: int | FontWeight | ResourceStr | undefined, fontWeightConfigs?: FontWeightConfigs)
+
+设置文本的字体粗细。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[fontWeight](#fontweight)和[fontWeight](#fontweight24)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| weight  | int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) \| undefined| 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br/>默认值：FontWeight.Normal <br/>取值undefined时，按默认值处理。|
 | fontWeightConfigs  | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明) | 否   | 字体粗细配置。默认值继承[FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明)。 |
 
 ### fontFamily
@@ -306,9 +333,7 @@ ArkTS-Sta: lineHeight(value: Length | undefined)
 
 ### font<sup>10+</sup>
 
-ArkTS-Dyn: font(value: Font)
-
-ArkTS-Sta: font(value: Font | undefined)
+font(value: Font)
 
 设置文本样式。包括字体大小、字体粗细、字体族和字体风格。
 
@@ -318,21 +343,21 @@ ArkTS-Sta: font(value: Font | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta接口是[font](#font23)。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：** 
 
 | 参数名 | 类型                     | 必填 | 说明       |
 | ------ | ------------------------ | ---- | ---------- |
-| value  | ArkTS-Dyn: [Font](ts-types.md#font)<br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined | 是   | 文本样式。 <br/>默认值继承[Font](ts-types.md#font)<br/>取值为undefined时，按默认值处理。|
+| value  | [Font](ts-types.md#font) | 是   | 文本样式。 <br/>默认值继承[Font](ts-types.md#font)|
 
 ### font<sup>24+</sup>
 
-ArkTS-Dyn: font(value: Font, fontConfigs?: FontConfigs)
-
-ArkTS-Sta: font(value: Font | undefined, fontConfigs?: FontConfigs)
+font(value: Font, fontConfigs?: FontConfigs)
 
 设置文本样式。
 
@@ -342,11 +367,40 @@ ArkTS-Sta: font(value: Font | undefined, fontConfigs?: FontConfigs)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[font](#font23)。
+
+**ArkTS-Dyn起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型                     | 必填 | 说明       |
 | ------ | ------------------------ | ---- | ---------- |
-| value  |ArkTS-Dyn: [Font](ts-types.md#font) <br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined | 是   | 文本样式，包括字体大小、字体粗细、字体族和字体风格。<br/>默认值：[Font](ts-types.md#font) <br/>取值undefined时，按默认值处理。 |
+| value  |[Font](ts-types.md#font) | 是   | 文本样式，包括字体大小、字体粗细、字体族和字体风格。<br/>默认值：[Font](ts-types.md#font) |
+| fontConfigs  | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) | 否   | 字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。 |
+
+### font<sup>23+</sup>
+
+font(value: Font | undefined, fontConfigs?: FontConfigs)
+
+设置文本样式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[font](#font10)和[font](#font24)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                     | 必填 | 说明       |
+| ------ | ------------------------ | ---- | ---------- |
+| value  |[Font](ts-types.md#font) \| undefined | 是   | 文本样式，包括字体大小、字体粗细、字体族和字体风格。<br/>默认值：[Font](ts-types.md#font) <br/>取值undefined时，按默认值处理。 |
 | fontConfigs  | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) | 否   | 字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。 |
 
 ### textShadow<sup>11+</sup>
@@ -599,6 +653,10 @@ ArkTS-Sta: baselineOffset(value: LengthMetrics | undefined): this
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

@@ -86,7 +86,7 @@ ArkTS-Sta: fontColor(value: Array&lt;ResourceColor&gt; | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -265,6 +265,26 @@ ArkTS-Sta: effectStrategy(value: SymbolEffectStrategy | undefined)
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
 | value  | ArkTS-Dyn: [SymbolEffectStrategy](#symboleffectstrategy11枚举说明)<br/>ArkTS-Sta: [SymbolEffectStrategy](#symboleffectstrategy11枚举说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：SymbolEffectStrategy.NONE<br/>取值为undefined时，按默认值处理。 |
+
+### symbolEffect<sup>23+</sup>
+
+symbolEffect(symbolEffect: SymbolEffect | undefined)
+
+设置SymbolGlyph组件动效策略。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------ | ---- | ---- | ----- |
+| symbolEffect  | [SymbolEffect](#symboleffect12对象说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：[SymbolEffect](#symboleffect12对象说明)<br/>取值为undefined时，按默认值处理。 |
 
 ### symbolEffect<sup>12+</sup>
 
@@ -484,6 +504,16 @@ HierarchicalSymbolEffect继承自父类SymbolEffect。
 
 ### 属性
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明  |
 | ---- | ---- | ---- | ---- | ---- |
 | fillStyle | [EffectFillStyle](#effectfillstyle12枚举说明) | 否   | 是 | 动效模式。<br/>默认值：EffectFillStyle.CUMULATIVE |
@@ -526,6 +556,16 @@ AppearSymbolEffect继承自父类SymbolEffect。
 
 ### 属性
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明  |
 | ---- | ---- | ---- | ---- | ---- |
 | scope | [EffectScope](#effectscope12枚举说明) | 否   | 是 | 动效范围。<br/>默认值：EffectScope.LAYER |
@@ -567,6 +607,16 @@ DisappearSymbolEffect继承自父类SymbolEffect。
 **ArkTS-Sta起始版本：** 23
 
 ### 属性
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明  |
 | ---- | ---- | ---- | ---- | ---- |
@@ -645,10 +695,6 @@ ReplaceSymbolEffect继承自父类SymbolEffect。
 ### 属性
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明  |
 | ---- | ---- | ---- | ---- | ---- |
