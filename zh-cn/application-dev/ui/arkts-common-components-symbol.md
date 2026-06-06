@@ -28,6 +28,25 @@ ArkTS-Sta示例：
 
 <!-- @[creat_symbol_glyph](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/CreatSymbolGlyph.ets) -->
 
+``` TypeScript
+import {
+  $r,
+  Color,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  NavDestination,
+  SymbolGlyph,
+  SymbolRenderingStrategy
+} from '@kit.ArkUI';
+// ...
+          SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
+            .fontSize(96)
+            .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+            .fontColor([Color.Black, Color.Green, Color.White])
+```
+
   ![symbol_folder_badge_plus](figures/symbol_ohos_folder_badge_plus.png)
 
 ## 添加到文本中
