@@ -662,6 +662,53 @@ import {
   ArkTS-Sta示例：
 
   <!-- @[symbol_bouncing_effect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
+  
+  ``` TypeScript
+  import {
+    $r,
+    BounceSymbolEffect,
+    Button,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    EffectDirection,
+    EffectFillStyle,
+    EffectScope,
+    Entry,
+    HierarchicalSymbolEffect,
+    NavDestination,
+    ReplaceEffectType,
+    ReplaceSymbolEffect,
+    SymbolRenderingStrategy,
+    Scroll,
+    Scroller,
+    SymbolGlyph,
+    Text
+  } from '@kit.ArkUI';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { ComponentCard } from '../../common/Card';
+  
+  @Entry
+  @Component
+  export struct SymbolGlyphSpanCustomIconAnimation {
+    scroller: Scroller = new Scroller();
+    @State isActive: boolean = true;
+    @State triggerValueReplace: int = 0;
+    // ...
+              Column() {
+                // 请将$r('app.string.bounce_animation')替换为实际资源文件，在本示例中该资源文件的value值为"弹跳动效"
+                Text($r('app.string.bounce_animation'));
+                SymbolGlyph($r('sys.symbol.ellipsis_message_1'))
+                  .fontSize(96)
+                  .fontColor([Color.Gray])
+                  .symbolEffect(new BounceSymbolEffect(EffectScope.WHOLE, EffectDirection.UP),
+                    this.triggerValueReplace)
+                Button('trigger').onClick(() => {
+                  this.triggerValueReplace = this.triggerValueReplace + 1;
+                })
+              }
+  ```
 
   ![BounceSymbolEffect](figures/symbolGlyph_bounceSymbolEffect_trigger.gif)
 
