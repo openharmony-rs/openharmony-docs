@@ -70,3 +70,72 @@
 4. 调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置旋转策略锁定显示方向。
 
 <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { display, window } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SpecificSceneSetOrientationIndex {
+  mainWindow: window.Window = AppStorage.get('mainWindow_SetOrientation') as window.Window;
+  setOrientationByDisplay() {
+    try {
+      // 1.获取当前默认Display
+      const disp = display.getDefaultDisplaySync();
+      const displayOrientation = disp.orientation; // 当前屏幕方向（0/1/2/3）
+
+      console.info('Current display orientation = ' + displayOrientation);
+      // 2.将displayOrientation转换为windowOrientation
+      let windowOrientation: number =
+        this.mainWindow.convertOrientationAndRotation(
+          window.RotationInfoType.DISPLAY_ORIENTATION,
+          window.RotationInfoType.WINDOW_ORIENTATION,
+          displayOrientation
+        );
+      // 3.根据windowOrientation映射到window.Orientation
+      let orientation: window.Orientation = window.Orientation.UNSPECIFIED;
+
+      switch (windowOrientation) {
+        case 0:
+          orientation = window.Orientation.PORTRAIT;
+          break;
+        case 1:
+          orientation = window.Orientation.LANDSCAPE_INVERTED;
+          break;
+        case 2:
+          orientation = window.Orientation.PORTRAIT_INVERTED;
+          break;
+        case 3:
+          orientation = window.Orientation.LANDSCAPE;
+          break;
+        default:
+          throw new Error('Invalid orientation value');
+      }
+      // 4.设置旋转策略锁定窗口方向
+      this.mainWindow.setPreferredOrientation(orientation, (err) => {
+        if (err && err.code) {
+          console.error('setPreferredOrientation failed: ' + JSON.stringify(err));
+        }
+      });
+    } catch (exception) {
+      console.error('Exception in setOrientationByDisplay: ' + JSON.stringify(exception));
+    }
+  }
+  build() {
+    Column() {
+      Text('Lock the display orientation')
+        .fontSize(17)
+      Button('Set orientation from display')
+        .onClick(() => {
+          console.info('Click: Set orientation from display');
+          this.setOrientationByDisplay();
+        })
+        .margin({ top: 20 })
+    }
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .height('100%')
+    .width('100%')
+  }
+}
+```
