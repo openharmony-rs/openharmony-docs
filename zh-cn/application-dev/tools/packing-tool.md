@@ -52,14 +52,14 @@
 - 出于运行时性能等考量，--lib-path指定目录外的文件不会进行压缩。
 
 示例：
-- [Stage模型](../../application-dev/application-models/application-models.md#应用模型概况)示例：
+- Stage模型示例：
 
 
     ```bash
     java -jar app_packing_tool.jar --mode hap --json-path <path> [--resources-path <path>] [--ets-path <path>] [--index-path <path>] [--pack-info-path <path>] [--lib-path <path>] --out-path <path> [--force true] [--compress-level 5] [--pkg-context-path <path>] [--hnp-path <path>] [--pkg-sdk-info-path <path>] [--skills-path <path>]
     ```
 
-- [FA模型](../../application-dev/application-models/application-models.md#应用模型概况)示例：
+- FA模型示例：
 
 
     ```bash
