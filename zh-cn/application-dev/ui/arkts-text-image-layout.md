@@ -43,20 +43,7 @@ ArkTS-Sta示例：
 <!-- @[textImage_component](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textImageMixedLayout/TextImageComponent.ets) -->
 
 ``` TypeScript
-import {
-  $r,
-  Color,
-  Component,
-  Entry,
-  ImageSpan,
-  ImageSpanAlignment,
-  NavDestination,
-  Span,
-  Text,
-  TextDecorationStyle,
-  TextDecorationType,
-  TextVerticalAlign
-} from '@kit.ArkUI';
+import { $r, Color, Component, Entry, ImageSpan, ImageSpanAlignment, NavDestination, Span, Text, TextDecorationStyle, TextDecorationType, TextVerticalAlign } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -149,11 +136,11 @@ struct styled_string_demo {
     overflow: TextOverflow.Ellipsis,
     textVerticalAlign: TextVerticalAlign.BASELINE
   });
-  //行高样式对象
+  // 行高样式对象
   lineHeightStyle1: LineHeightStyle = new LineHeightStyle(new LengthMetrics(24));
-  //Bold样式
+  // Bold样式
   boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
-  //创建含段落样式的对象paragraphStyledString1
+  // 创建含段落样式的对象paragraphStyledString1
   paragraphStyledString1: MutableStyledString =
     // 请将$r('app.string.print_photo')替换为实际资源文件，在本示例中该资源文件的value值为"\n高质量冲洗照片，高清冲印3/4/5/6寸包邮塑封，品质保证，"
     new MutableStyledString(resourceGetString.resourceToString($r('app.string.print_photo')), [
@@ -291,38 +278,7 @@ ArkTS-Sta示例：
 <!-- @[textImage_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textImageMixedLayout/TextImageAttribute.ets) -->
 
 ``` TypeScript
-import {
-  $r,
-  Button,
-  Builder,
-  Color,
-  Column,
-  ColumnOptions,
-  Component,
-  CopyOptions,
-  DecorationStyle,
-  Entry,
-  FontWeight,
-  ImageAttachment,
-  ImageFit,
-  ImageSpanAlignment,
-  LengthMetrics,
-  LineHeightStyle,
-  MutableStyledString,
-  NavDestination,
-  ParagraphStyle,
-  Resource,
-  Row,
-  StyledStringKey,
-  Text,
-  TextController,
-  TextDecorationStyle,
-  TextDecorationType,
-  TextOverflow,
-  TextStyle,
-  TextVerticalAlign,
-  ImageAttachmentInterface,
-} from '@kit.ArkUI';
+import { $r, Button, Builder, Color, Column, ColumnOptions, Component, CopyOptions, DecorationStyle, Entry, FontWeight, ImageAttachment, ImageFit, ImageSpanAlignment, LengthMetrics, LineHeightStyle, MutableStyledString, NavDestination, ParagraphStyle, Resource, Row, StyledStringKey, Text, TextController, TextDecorationStyle, TextDecorationType, TextOverflow, TextStyle, TextVerticalAlign, ImageAttachmentInterface } from '@kit.ArkUI';
 import { State } from '@ohos.arkui.stateManagement';
 import { UIContext } from '@ohos.arkui.UIContext';
 import resourceManager from '@ohos.resourceManager';
