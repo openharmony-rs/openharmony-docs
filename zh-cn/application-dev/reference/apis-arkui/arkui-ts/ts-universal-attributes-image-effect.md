@@ -20,9 +20,9 @@ blur(value: number, options?: BlurOptions): T
 
 为组件添加内容模糊效果。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,9 +51,9 @@ blur(blurRadius: Optional\<number>, options?: BlurOptions): T
 
 为组件添加内容模糊效果。与[blur](#blur)相比，blurRadius参数新增了对undefined类型的支持。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -88,15 +88,15 @@ blur(blurRadius: Optional\<number>, options?: BlurOptions, sysOptions?: SystemAd
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[blur<sup>23+</sup>](#blur23)。
 
 **ArkTS-Sta起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
@@ -114,7 +114,7 @@ blur(blurRadius: Optional\<number>, options?: BlurOptions, sysOptions?: SystemAd
 
 ## blur<sup>23+</sup>
 
-blur(blurRadius: double | undefined, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions): this
+blur(blurRadius: double | undefined, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions)
 
 为组件添加内容模糊效果。
 
@@ -134,21 +134,15 @@ blur(blurRadius: double | undefined, options?: BlurOptions, sysOptions?: SystemA
 | options | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) | 否   | 灰阶模糊参数。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。<br/>默认值：grayscale: [0,0]  |
 | sysOptions   |  [SystemAdaptiveOptions](ts-universal-attributes-background.md#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## shadow
 
 shadow(value: ShadowOptions | ShadowStyle): T
 
 为组件添加阴影效果。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用，ArkTS卡片上不支持参数为 [ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明)类型。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -176,9 +170,9 @@ shadow(options: Optional\<ShadowOptions | ShadowStyle>): T
 
 为组件添加阴影效果。与[shadow](#shadow)相比，options参数新增了对undefined类型的支持。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用，ArkTS卡片上不支持参数为[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明)类型。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -204,7 +198,7 @@ shadow(options: Optional\<ShadowOptions | ShadowStyle>): T
 
 ## shadow<sup>23+</sup>
 
-shadow(value: ShadowOptions | ShadowStyle | undefined): this
+shadow(value: ShadowOptions | ShadowStyle | undefined)
 
 为组件添加阴影效果。
 
@@ -222,21 +216,15 @@ shadow(value: ShadowOptions | ShadowStyle | undefined): this
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ShadowOptions](#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle<sup>10+</sup>](#shadowstyle10枚举说明) \| undefined | 是   | 为当前组件添加阴影效果。<br/>入参类型为ShadowOptions时，可以指定模糊半径、阴影的颜色、X轴和Y轴的偏移量。<br/>入参类型为ShadowStyle时，可指定不同阴影样式。<br/>当value的值为undefined时，恢复为无样式的阴影效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## grayscale
 
 grayscale(value: number): T
 
 为组件添加灰度效果。上层渲染灰度会覆盖下层子组件渲染。不通过该接口设置时，默认无变化。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,9 +252,9 @@ grayscale(grayscale: Optional\<number>): T
 
 为组件添加灰度效果。上层渲染灰度会覆盖下层子组件渲染。不通过该接口设置时，默认无变化。与[grayscale](#grayscale)相比，grayscale参数新增了对undefined类型的支持。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -292,7 +280,7 @@ grayscale(grayscale: Optional\<number>): T
 
 ## grayscale<sup>23+</sup>
 
-grayscale(value: double | undefined): this
+grayscale(value: double | undefined)
 
 为组件添加灰度效果。
 
@@ -310,21 +298,15 @@ grayscale(value: double | undefined): this
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 为当前组件添加灰度效果。值定义为灰度转换的比例，入参1.0则完全转为灰度图像，入参0.0则图像无变化，入参在0.0和1.0之间时，效果呈线性变化。<br/>取值范围：[0.0, 1.0]<br/>**说明：**<br/>设置小于0.0的值时，按值为0.0处理，设置大于1.0的值时，按值为1.0处理。<br/>当grayscale的值为undefined时，取默认值0.0。恢复为无灰度效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## brightness
 
 brightness(value: number): T
 
 为组件添加高光效果。不通过该接口设置时，默认无变化。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -352,9 +334,9 @@ brightness(brightness: Optional\<number>): T
 
 为组件添加高光效果。不通过该接口设置时，默认无变化。与[brightness](#brightness)相比，brightness参数新增了对undefined类型的支持。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -380,7 +362,7 @@ brightness(brightness: Optional\<number>): T
 
 ## brightness<sup>23+</sup>
 
-brightness(value: double | undefined): this
+brightness(value: double | undefined)
 
 为组件添加高光效果。
 
@@ -398,21 +380,15 @@ brightness(value: double | undefined): this
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 为当前组件添加高光效果，入参为高光比例，值为1时没有效果，小于1时亮度变暗，小于或等于0为全黑，大于1时亮度增加，数值越大亮度越大，亮度大于或等于2时会变为全白。<br/>取值范围：[0, +∞)<br/>推荐取值范围：[0, 2]<br/>**说明：**<br/>设置小于0的值时，按值为0处理。<br/>当brightness的值为undefined时，恢复为亮度为1的高光效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## saturate
 
 saturate(value: number): T
 
 为组件添加饱和度效果。不通过该接口设置时，默认无变化。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -440,9 +416,9 @@ saturate(saturate: Optional\<number>): T
 
 为组件添加饱和度效果。不通过该接口设置时，默认无变化。与[saturate](#saturate)相比，saturate参数新增了对undefined类型的支持。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -468,7 +444,7 @@ saturate(saturate: Optional\<number>): T
 
 ## saturate<sup>23+</sup>
 
-saturate(value: double | undefined): this
+saturate(value: double | undefined)
 
 为组件添加饱和度效果。不通过该接口设置时，默认无变化。
 
@@ -486,21 +462,15 @@ saturate(value: double | undefined): this
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 为当前组件添加饱和度效果，饱和度为颜色中的含色成分和消色成分(灰)的比例，入参为1时，显示原图像，大于1时含色成分越大，饱和度越大，小于1时消色成分越大，饱和度越小。<br/>推荐取值范围：[0, 50)<br/>**说明：**<br/>设置小于0的值时，按值为0处理。<br/>当saturate的值为undefined时。恢复为饱和度为1的效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## contrast
 
 contrast(value: number): T
 
 为组件添加对比度效果。不通过该接口设置时，默认无变化。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -528,9 +498,9 @@ contrast(contrast: Optional\<number>): T
 
 为组件添加对比度效果。不通过该接口设置时，默认无变化。与[contrast](#contrast)相比，contrast参数新增了对undefined类型的支持。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -556,7 +526,7 @@ contrast(contrast: Optional\<number>): T
 
 ## contrast<sup>23+</sup>
 
-contrast(value: double | undefined): this
+contrast(value: double | undefined)
 
 为组件添加对比度效果。不通过该接口设置时，默认无变化。
 
@@ -574,21 +544,15 @@ contrast(value: double | undefined): this
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 为当前组件添加对比度效果，入参为对比度的值。值为1时，显示原图，大于1时，值越大对比度越高，图像越清晰醒目，小于1时，值越小对比度越低，当对比度为0时，图像变为全灰。<br/>推荐取值范围：[0, 10)<br/>**说明：**<br/>设置小于0的值时，按值为0处理。<br/>当contrast的值为undefined时，恢复为对比度为1的效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## invert
 
 invert(value: number | InvertOptions): T
 
 反转输入的图像。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -616,9 +580,9 @@ invert(options: Optional\<number | InvertOptions>): T
 
 反转输入的图像。与[invert](#invert)相比，options参数新增了对undefined类型的支持。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -644,7 +608,7 @@ invert(options: Optional\<number | InvertOptions>): T
 
 ## invert<sup>23+</sup>
 
-invert(value: double | InvertOptions | undefined): this
+invert(value: double | InvertOptions | undefined)
 
 反转输入的图像。
 
@@ -662,21 +626,15 @@ invert(value: double | InvertOptions | undefined): this
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | double \| &nbsp;[InvertOptions](#invertoptions11对象说明)<sup>11+</sup><br/> \| undefined | 是   | 反转输入的图像。<br/>入参对象为number时,入参为图像反转的比例，值为1时完全反转，值为0则图像无变化。（百分比）<br/>取值范围：[0, 1]。<br/>设置小于0的值时，按值为0处理。设置大于1的值时，按值为1处理。<br/>入参对象为 InvertOptions时，对比背景颜色灰度值和阈值区间，背景颜色灰度值小于阈值区间时反色取high值，当背景颜色灰度值大于阈值区间时反色取low值，背景颜色灰度值在阈值区间内取值由high线性渐变到low。<br/>当value的值为undefined时，恢复为图像无变化的效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## sepia
 
 sepia(value: number): T
 
 将图像转换为深褐色。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -704,9 +662,9 @@ sepia(sepia: Optional\<number>): T
 
 将图像转换为深褐色。与[sepia](#sepia)相比，sepia参数新增了对undefined类型的支持。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -732,7 +690,7 @@ sepia(sepia: Optional\<number>): T
 
 ## sepia<sup>23+</sup>
 
-sepia(value: double | undefined): this
+sepia(value: double | undefined)
 
 将图像转换为深褐色。
 
@@ -750,21 +708,15 @@ sepia(value: double | undefined): this
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 将图像转换为深褐色，降低色彩度，产生温暖复古的图像风格。入参为褐色滤镜强度，值为1则完全是深褐色的，值小于等于0则图像无变化，值大于1会进一步放大色彩偏移比例，图像整体会变得更亮且色彩更加偏黄/偏红，但不属于标准sepia效果。（百分比）<br/>当value的值为undefined时，恢复为图像无变化的效果。<br/>取值范围：[0, +∞)，推荐取值范围：(0, 1]。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## hueRotate
 
 hueRotate(value: number | string): T
 
 色相旋转效果。不通过该接口设置时，默认无变化。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -792,9 +744,9 @@ hueRotate(rotation: Optional\<number | string>): T
 
 色相旋转效果。不通过该接口设置时，默认无变化。与[hueRotate](#huerotate)相比，rotation参数新增了对undefined类型的支持。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -820,7 +772,7 @@ hueRotate(rotation: Optional\<number | string>): T
 
 ## hueRotate<sup>23+</sup>
 
-hueRotate(value: double | string | undefined): this
+hueRotate(value: double | string | undefined)
 
 色相旋转效果。
 
@@ -838,23 +790,17 @@ hueRotate(value: double | string | undefined): this
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
 | value  | double&nbsp;\|&nbsp;string \| undefined | 是   | 色相旋转效果，输入参数为旋转角度。<br/>默认值：'0deg'<br/>取值范围：(-∞, +∞)<br/>**说明：**<br/>色调旋转360度会显示原始颜色。先将色调旋转180 度，然后再旋转-180度会显示原始颜色。数据类型为number时，值为90和'90deg'效果一致。<br/>当value的值为undefined时，恢复为无色相旋转的效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## colorBlend
 
 colorBlend(value: Color | string | Resource): T
 
 为组件添加颜色叠加效果。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -880,13 +826,13 @@ colorBlend(color: Optional\<Color | string | Resource>): T
 
 为组件添加颜色叠加效果。与[colorBlend](#colorblend)相比，color参数新增了对undefined类型的支持。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -908,7 +854,7 @@ colorBlend(color: Optional\<Color | string | Resource>): T
 
 ## colorBlend<sup>23+</sup>
 
-colorBlend(value: Color | string | Resource | undefined): this
+colorBlend(value: Color | string | Resource | undefined)
 
 为组件添加颜色叠加效果。
 
@@ -925,12 +871,6 @@ colorBlend(value: Color | string | Resource | undefined): this
 | 参数名 | 类型                                                         | 必填 | 说明                                           |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
 | value  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 为当前组件添加颜色叠加效果，入参为叠加的颜色字符串。<br/>当value的值为undefined时，恢复为无颜色叠加的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## linearGradientBlur<sup>12+</sup> 
 
@@ -996,7 +936,7 @@ linearGradientBlur(blurRadius: Optional\<number>, options: Optional\<LinearGradi
 
 ## linearGradientBlur<sup>23+</sup> 
 
-linearGradientBlur(value: double | undefined, options: LinearGradientBlurOptions | undefined): this
+linearGradientBlur(value: double | undefined, options: LinearGradientBlurOptions | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1013,12 +953,6 @@ linearGradientBlur(value: double | undefined, options: LinearGradientBlurOptions
 | value   | double \| undefined                                            | 是   | 为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>取值范围：[0, 1000]<br/>当value的值为undefined时，恢复为渐变模糊为0的效果。 |
 | options | [LinearGradientBlurOptions](#lineargradientbluroptions12) \| undefined | 是   | 设置线性渐变模糊效果。<br/>当options的值为undefined时，恢复为渐变模糊为0的效果。<br/>线性渐变参数，包含模糊程度和模糊位置数组fractionStops，及渐变模糊方向direction。  |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## renderGroup<sup>10+</sup>
 
 renderGroup(value: boolean): T
@@ -1029,11 +963,11 @@ renderGroup(value: boolean): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1091,13 +1025,15 @@ renderGroup(isGroup: Optional\<boolean>): T
 
 ## renderGroup<sup>23+</sup>
 
-renderGroup(value: boolean | undefined): this
+renderGroup(value: boolean | undefined)
 
 设置是否组成节点组。节点组表示当前组件和子组件组成的子树先在离屏画布中渲染，再与父组件融合绘制。设置为节点组后，系统会缓存绘制结果，提升性能。但如果节点组内的组件频繁更新，缓存失效，可能导致性能下降。此外，设置为节点组后，当前组件的不透明度不为1时，绘制效果可能有差异。
 
 不设置该属性时，默认不组成节点组。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1110,12 +1046,6 @@ renderGroup(value: boolean | undefined): this
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean \| undefined | 是   | 设置当前控件和子控件是否先整体离屏渲染绘制后再与父控件融合绘制。当前控件的不透明度不为1时绘制效果可能有差异。<br/>默认值：false <br/> false表示不进行离屏渲染直接绘制。<br/>当value的值为undefined时，按照不组成节点组处理。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-|  this | 返回当前组件。 |
 
 ## blendMode<sup>11+</sup>
 
@@ -1184,11 +1114,14 @@ blendMode(mode: Optional\<BlendMode>, type?: BlendApplyType): T
 | T | 返回当前组件。 |
 
 ## blendMode<sup>23+</sup> 
-blendMode(value: BlendMode | undefined, type?: BlendApplyType): this
+
+blendMode(value: BlendMode | undefined, type?: BlendApplyType)
 
 将当前控件的内容（包含子节点内容）与下方画布（可能为离屏画布）已有内容进行混合。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1202,12 +1135,6 @@ blendMode(value: BlendMode | undefined, type?: BlendApplyType): this
 | ------ | ----------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [BlendMode](#blendmode11枚举说明) \| undefined   | 是   | 混合模式。<br/>默认值：BlendMode.NONE<br/>当mode的值为undefined时，恢复为内容不进行混合的效果。<br/>**说明：**<br/>混合模式设置为BlendMode.NONE时，blend效果实际为默认的BlendMode.SRC_OVER，且BlendApplyType不生效。 |
 | type   | [BlendApplyType](#blendapplytype11枚举说明) | 否   | blendMode实现方式是否离屏。<br/>默认值：BlendApplyType.FAST<br/>**说明：**<br/>1. 设置BlendApplyType.FAST时，不离屏。<br/>2. 设置BlendApplyType.OFFSCREEN时，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。使用该实现方式时，将导致[linearGradientBlur<sup>12+</sup>](#lineargradientblur12)，[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)，[brightness](#brightness)等需要截屏的接口无法截取到正确的画面。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## BlendApplyType<sup>11+</sup>枚举说明
 
@@ -1296,11 +1223,13 @@ useShadowBatching(use: Optional\<boolean>): T
 
 ## useShadowBatching<sup>23+</sup> 
 
-useShadowBatching(value: boolean | undefined): this
+useShadowBatching(value: boolean | undefined)
 
 控件内部子节点的阴影进行同层绘制，同层元素阴影重叠。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1313,12 +1242,6 @@ useShadowBatching(value: boolean | undefined): this
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean \| undefined | 是   | 控件内部子节点的阴影进行同层绘制，同层元素阴影重叠。<br/>默认值：false<br/>**说明：**<br/>1. 默认不开启，如果子节点的阴影半径较大，节点各自的阴影会互相重叠。 当开启时，元素的阴影将不会重叠。<br/>2. 不推荐useShadowBatching嵌套使用，如果嵌套使用，只会对当前的子节点生效，无法递推。<br/>当value的值为undefined时，恢复为不使用元素阴影重叠的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## sphericalEffect<sup>12+</sup>
 
@@ -1382,11 +1305,13 @@ sphericalEffect(effect: Optional\<number>): T
 
 ## sphericalEffect<sup>23+</sup>
 
-sphericalEffect(value: double | undefined): this
+sphericalEffect(value: double | undefined)
 
 设置组件的图像球面化程度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1399,12 +1324,6 @@ sphericalEffect(value: double | undefined): this
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 设置组件的图像球面化程度。<br/>取值范围：[0,1]。<br/>**说明：**<br/>1. 如果value等于0则图像保持原样，如果value等于1则图像为完全球面化效果。在0和1之间，数值越大，则球面化程度越高。<br/>`value < 0 `或者` value > 1`为异常情况，`value < 0`按0处理，`value > 1`按1处理。<br/>2. 组件阴影和外描边不支持球面效果。<br>3. 设置value大于0时，组件冻屏不更新并且把组件内容绘制到透明离屏buffer上，如果要更新组件属性则需要把value设置为0。<br/>当value的值为undefined时，恢复为图像球面化程度为0的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## lightUpEffect<sup>12+</sup> 
 
@@ -1468,11 +1387,13 @@ lightUpEffect(degree: Optional\<number>): T
 
 ## lightUpEffect<sup>23+</sup> 
 
-lightUpEffect(value: double | undefined): this
+lightUpEffect(value: double | undefined)
 
 设置组件图像亮起程度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1485,12 +1406,6 @@ lightUpEffect(value: double | undefined): this
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 设置组件图像亮起程度。<br/>取值范围：[0,1]。<br/>如果value等于0则图像为全黑，如果value等于1则图像为全亮效果。0到1之间数值越大，表示图像亮度越高。`value < 0` 或者 `value > 1`为异常情况，`value < 0`按0处理，`value > 1`按1处理。<br/>当value的值为undefined时，恢复为亮起为1的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## pixelStretchEffect<sup>12+</sup> 
 
@@ -1555,11 +1470,13 @@ pixelStretchEffect(options: Optional\<PixelStretchEffectOptions>): T
 
 ## pixelStretchEffect<sup>23+</sup> 
 
-pixelStretchEffect(options: PixelStretchEffectOptions | undefined): this
+pixelStretchEffect(options: PixelStretchEffectOptions | undefined)
 
 设置组件的图像边缘像素扩展距离。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1572,12 +1489,6 @@ pixelStretchEffect(options: PixelStretchEffectOptions | undefined): this
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | options | [PixelStretchEffectOptions](#pixelstretcheffectoptions10) \| undefined | 是   | 设置组件的图像边缘像素扩展距离。<br/>参数`options`包括上下左右四个方向的边缘像素扩展距离。<br/>**说明：**<br/>1. 如果距离为正值，表示向外扩展，放大原来图像大小。上下左右四个方向分别用边缘像素填充，填充的距离即为设置的边缘扩展的距离。<br/>2. 如果距离为负值，表示内缩，但是最终图像大小不变。<br/>内缩方式：<br/>图像根据`options`的设置缩小，缩小大小为四个方向边缘扩展距离的绝对值。<br/>图像用边缘像素扩展到原来大小。<br/>3. 对`options`的输入约束：<br/>上下左右四个方向的扩展统一为非正值或者非负值。即四个边同时向外扩或者内缩，方向一致。<br/>所有方向的输入均为百分比或者具体值，不支持百分比和具体值混用。<br/>所有异常情况下，显示为{0, 0, 0, 0}效果，即跟原图保持一致。<br/>当options的值为undefined时，恢复为无像素扩展效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## PixelStretchEffectOptions<sup>10+</sup>
 

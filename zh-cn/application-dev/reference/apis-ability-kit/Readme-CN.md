@@ -207,6 +207,7 @@
       - [AutoFillType (系统接口)](js-apis-inner-application-autoFillType-sys.md)
       - [AutoStartupCallback (系统接口)](js-apis-inner-application-autoStartupCallback-sys.md)
       - [AutoStartupInfo (系统接口)](js-apis-inner-application-autoStartupInfo-sys.md)
+      - [CliToolEvent (系统接口)](js-apis-inner-application-cliToolEvent-sys.md)
       - [Context (系统接口)](js-apis-inner-application-context-sys.md)
       - [ContinueDeviceInfo (系统接口)](js-apis-inner-application-continueDeviceInfo-sys.md)
       - [CustomData (系统接口)](js-apis-inner-application-customData-sys.md)
@@ -220,6 +221,8 @@
       - [RunningMultiAppInfo (系统接口)](js-apis-inner-application-runningMultiAppInfo-sys.md)
       - [RunningMultiInstanceInfo (系统接口)](js-apis-inner-application-runningMultiInstanceInfo-sys.md)
       - [ServiceExtensionContext (系统接口)](js-apis-inner-application-serviceExtensionContext-sys.md)
+      - [ToolEventCallback (系统接口)](js-apis-inner-application-toolEventCallback-sys.md)
+      - [ToolInfo (系统接口)](js-apis-inner-application-ToolInfo-sys.md)
       - [UIServiceExtensionContext (系统接口)](js-apis-inner-application-uiserviceExtensionContext-sys.md)
       - [UIServiceHostProxy (系统接口)](js-apis-inner-application-uiservicehostproxy-sys.md)
       - [UIAbilityContext (系统接口)](js-apis-inner-application-uiAbilityContext-sys.md)
@@ -227,7 +230,6 @@
       - [ViewData (系统接口)](js-apis-inner-application-viewData-sys.md)
       - [AgentExtensionConnectCallback (系统接口)](js-apis-inner-application-agentExtensionConnectCallback-sys.md)
       - [AgentProxy (系统接口)](js-apis-inner-application-agentProxy-sys.md)
-      - [ToolInfo (系统接口)](js-apis-inner-application-ToolInfo-sys.md)
       <!--DelEnd-->
     - bundleManager<!--bundlemanager-->
       - [abilityInfo](js-apis-bundleManager-abilityInfo.md)

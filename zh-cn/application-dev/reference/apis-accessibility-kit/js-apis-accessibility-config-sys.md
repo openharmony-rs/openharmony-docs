@@ -47,7 +47,7 @@ import { config } from '@kit.AccessibilityKit';
 | ignoreRepeatClick<sup>11+</sup>    | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示忽略重复点击功能启用状态。配合repeatClickInterval使用。true表示已启用忽略重复点击功能，false表示未启用忽略重复点击功能，默认值为false。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23    |
 | repeatClickInterval<sup>11+</sup>  | [Config](#config)&lt;[RepeatClickInterval](#repeatclickinterval11)&gt;                     | 否 | 否 | 表示忽略重复点击功能配置。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23          |
 
-## enableAbility
+## config.enableAbility
 
 enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): Promise&lt;void&gt;
 
@@ -104,9 +104,9 @@ config.enableAbility(name, capability).then(() => {
 });
 ```
 
-## enableAbility
+## config.enableAbility
 
-enableAbility(name: string, capability: Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt;, callback: AsyncCallback&lt;void&gt;): void
+enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 启用辅助扩展。使用callback异步回调。
 
@@ -178,7 +178,7 @@ config.enableAbility(name, capability, (err: BusinessError | null) => {
 });
 ```
 
-## enableAbilityWithCallback<sup>23+</sup>
+## config.enableAbilityWithCallback<sup>23+</sup>
 
 enableAbilityWithCallback(name: string, capability: Array&lt;accessibility.Capability&gt;, connectCallback: ConnectCallback): Promise&lt;void&gt;
 
@@ -242,7 +242,7 @@ config.enableAbilityWithCallback(name, capability, connectCallback).then(() => {
 });
 ```
 
-## disableAbility
+## config.disableAbility
 
 disableAbility(name: string): Promise&lt;void&gt;
 
@@ -296,7 +296,7 @@ config.disableAbility(name).then(() => {
 })
 ```
 
-## disableAbility
+## config.disableAbility
 
 disableAbility(name: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -366,7 +366,7 @@ config.disableAbility(name, (err: BusinessError | null) => {
 });
 ```
 
-## on('enabledAccessibilityExtensionListChange')
+## config.on('enabledAccessibilityExtensionListChange')
 
 on(type: 'enabledAccessibilityExtensionListChange', callback: Callback&lt;void&gt;): void
 
@@ -378,7 +378,7 @@ on(type: 'enabledAccessibilityExtensionListChange', callback: Callback&lt;void&g
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onEnabledAccessibilityExtensionListChange](#onenabledaccessibilityextensionlistchange23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[config.onEnabledAccessibilityExtensionListChange](#configonenabledaccessibilityextensionlistchange23)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -411,7 +411,7 @@ config.on('enabledAccessibilityExtensionListChange', () => {
 });
 ```
 
-## onEnabledAccessibilityExtensionListChange<sup>23+</sup>
+## config.onEnabledAccessibilityExtensionListChange<sup>23+</sup>
 
 onEnabledAccessibilityExtensionListChange(callback: Callback&lt;void&gt;): void
 
@@ -423,7 +423,7 @@ onEnabledAccessibilityExtensionListChange(callback: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('enabledAccessibilityExtensionListChange')](#onenabledaccessibilityextensionlistchange)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[config.on('enabledAccessibilityExtensionListChange')](#configonenabledaccessibilityextensionlistchange)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -468,7 +468,7 @@ struct Index {
 }
 ```
 
-## off('enabledAccessibilityExtensionListChange')
+## config.off('enabledAccessibilityExtensionListChange')
 
 off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback&lt;void&gt;): void
 
@@ -480,7 +480,7 @@ off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback&lt;void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offEnabledAccessibilityExtensionListChange](#offenabledaccessibilityextensionlistchange23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[config.offEnabledAccessibilityExtensionListChange](#configoffenabledaccessibilityextensionlistchange23)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -513,7 +513,7 @@ config.off('enabledAccessibilityExtensionListChange', () => {
 });
 ```
 
-## offEnabledAccessibilityExtensionListChange<sup>23+</sup>
+## config.offEnabledAccessibilityExtensionListChange<sup>23+</sup>
 
 offEnabledAccessibilityExtensionListChange(callback?: Callback&lt;void&gt;): void
 
@@ -525,7 +525,7 @@ offEnabledAccessibilityExtensionListChange(callback?: Callback&lt;void&gt;): voi
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('enabledAccessibilityExtensionListChange')](#offenabledaccessibilityextensionlistchange)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[config.off('enabledAccessibilityExtensionListChange')](#configoffenabledaccessibilityextensionlistchange)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -574,7 +574,7 @@ struct Index {
 }
 ```
 
-## on('installedAccessibilityListChange')<sup>12+</sup>
+## config.on('installedAccessibilityListChange')<sup>12+</sup>
 
 on(type: 'installedAccessibilityListChange', callback: Callback&lt;void&gt;): void
 
@@ -586,7 +586,7 @@ on(type: 'installedAccessibilityListChange', callback: Callback&lt;void&gt;): vo
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onInstalledAccessibilityListChange](#oninstalledaccessibilitylistchange23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[config.onInstalledAccessibilityListChange](#configoninstalledaccessibilitylistchange23)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -619,7 +619,7 @@ config.on('installedAccessibilityListChange', () => {
 });
 ```
 
-## onInstalledAccessibilityListChange<sup>23+</sup>
+## config.onInstalledAccessibilityListChange<sup>23+</sup>
 
 onInstalledAccessibilityListChange(callback: Callback&lt;void&gt;): void
 
@@ -631,7 +631,7 @@ onInstalledAccessibilityListChange(callback: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('installedAccessibilityListChange')](#oninstalledaccessibilitylistchange12)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[config.on('installedAccessibilityListChange')](#configoninstalledaccessibilitylistchange12)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -676,7 +676,7 @@ struct Index {
 }
 ```
 
-## off('installedAccessibilityListChange')<sup>12+</sup>
+## config.off('installedAccessibilityListChange')<sup>12+</sup>
 
 off(type: 'installedAccessibilityListChange', callback?: Callback&lt;void&gt;): void
 
@@ -688,7 +688,7 @@ off(type: 'installedAccessibilityListChange', callback?: Callback&lt;void&gt;): 
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offInstalledAccessibilityListChange](#offinstalledaccessibilitylistchange23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[config.offInstalledAccessibilityListChange](#configoffinstalledaccessibilitylistchange23)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -721,7 +721,7 @@ config.off('installedAccessibilityListChange', () => {
 });
 ```
 
-## offInstalledAccessibilityListChange<sup>23+</sup>
+## config.offInstalledAccessibilityListChange<sup>23+</sup>
 
 offInstalledAccessibilityListChange(callback?: Callback&lt;void&gt;): void
 
@@ -733,7 +733,7 @@ offInstalledAccessibilityListChange(callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('installedAccessibilityListChange')](#offinstalledaccessibilitylistchange12)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[config.off('installedAccessibilityListChange')](#configoffinstalledaccessibilitylistchange12)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -782,7 +782,7 @@ struct Index {
 }
 ```
 
-## setMagnificationState<sup>20+</sup>
+## config.setMagnificationState<sup>20+</sup>
 
 setMagnificationState(state: boolean): void
 
@@ -827,7 +827,7 @@ try {
 }
 ```
 
-## setSeniorModeStateForApp
+## config.setSeniorModeStateForApp
 
 setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Promise&lt;void&gt;
 
@@ -887,9 +887,11 @@ config.setSeniorModeStateForApp(infos).then(() => {
 });
 ```
 
-## getSeniorModeStateForApp
+## config.getSeniorModeStateForApp
 
-getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;boolean&gt;
+ArkTS-Dyn: getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;boolean&gt;
+
+ArkTS-Sta: getSeniorModeStateForApp(bundleName: string, appIndex?: int): Promise&lt;boolean&gt;
 
 查询应用“长辈模式”的状态。使用Promise异步回调。
 
@@ -910,7 +912,7 @@ getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;bool
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
 | bundleName | string | 是 | 查询“长辈模式”的应用包名。 |
-| appIndex | number | 否 | 应用包的分身索引标识。<br>取值范围：大于等于0的整数。缺省时，appIndex默认为0。 |
+| appIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 应用包的分身索引标识。<br>取值范围：大于等于0的整数。缺省时，appIndex默认为0。 |
 
 **返回值：**
 
@@ -942,7 +944,7 @@ config.getSeniorModeStateForApp("com.example.myapplication", 0).then((data: bool
 });
 ```
 
-## onSeniorModeStateChangeForApp
+## config.onSeniorModeStateChangeForApp
 
 onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 
@@ -951,7 +953,7 @@ onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 > **说明：**
 >
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
-> - 调用此方法后，务必在对象生命周期结束前使用[offSeniorModeStateChangeForApp](#offseniormodestatechangeforapp)取消监听，否则可能会导致崩溃。
+> - 调用此方法后，务必在对象生命周期结束前使用[config.offSeniorModeStateChangeForApp](#configoffseniormodestatechangeforapp)取消监听，否则可能会导致崩溃。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1003,7 +1005,7 @@ struct Index {
 }
 ```
 
-## offSeniorModeStateChangeForApp
+## config.offSeniorModeStateChangeForApp
 
 offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
 
@@ -1025,7 +1027,7 @@ offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是   | 回调函数。返回被修改的应用“长辈模式”信息。需与[onSeniorModeStateChangeForApp](#onseniormodestatechangeforapp)的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是   | 回调函数。返回被修改的应用“长辈模式”信息。需与[config.onSeniorModeStateChangeForApp](#configonseniormodestatechangeforapp)的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
@@ -1376,7 +1378,7 @@ config.highContrastText.off((data: boolean) => {
 
 ## ConnectCallback<sup>23+</sup>
 
-通过[enableAbilityWithCallback](#enableabilitywithcallback23)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。
+通过[config.enableAbilityWithCallback](#configenableabilitywithcallback23)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -1490,5 +1492,5 @@ type OnDisconnectCallback = () => void
 | 参数名         | 类型                                         | 只读 | 可选 | 描述                                     |
 | ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
 | bundleName | string | 否   | 否   | 应用包名。 |
-| appIndex | number | 否   | 是   | 应用包的分身索引标识。<br>取值大于等于0的整数，缺省时默认为0。|
+| appIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 应用包的分身索引标识。<br>取值大于等于0的整数，缺省时默认为0。|
 | seniorModeState | boolean | 否   | 否   | 应用是否开启状态为“长辈模式”，true表示开启，false表示未开启。|

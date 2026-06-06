@@ -118,6 +118,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 
   ```ts
+  'use static'
   import { common, OpenLinkOptions, wantConstant, CompletionHandler, bundleManager } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError, RecordData } from '@kit.BasicServicesKit';

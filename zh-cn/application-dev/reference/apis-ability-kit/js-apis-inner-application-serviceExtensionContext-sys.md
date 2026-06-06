@@ -52,6 +52,7 @@ class EntryAbility extends ServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { ServiceExtensionAbility } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
 
@@ -1750,6 +1751,7 @@ class EntryAbility extends ServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { ServiceExtensionAbility, Want, common, bundleManager } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1899,6 +1901,7 @@ class EntryAbility extends ServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { ServiceExtensionAbility, Want, common, bundleManager } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2014,6 +2017,7 @@ class EntryAbility extends ServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { ServiceExtensionAbility } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2121,6 +2125,7 @@ class EntryAbility extends ServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { ServiceExtensionAbility } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2285,6 +2290,7 @@ ArkTS-Sta示例：
 后台启动：
 
 ```ts
+'use static'
 import { ServiceExtensionAbility, Caller, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2739,6 +2745,7 @@ class EntryAbility extends ServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { ServiceExtensionAbility, Want, Caller } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 
@@ -2864,6 +2871,7 @@ class ServiceExtension extends ServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 
@@ -2982,6 +2990,7 @@ class ServiceExtension extends ServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 

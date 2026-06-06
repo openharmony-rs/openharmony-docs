@@ -2350,38 +2350,101 @@ import { connection, statistics } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { sim } from '@kit.TelephonyKit';
 
+async function queryTrafficStats() {
+  let wantTemp: Want = {
+    // 需根据实际情况进行替换
+    bundleName: 'com.example.myapplication',
+    abilityName: 'EnterpriseAdminAbility'
+  };
+  // 需根据实际情况进行替换
+  let bundleName: string = 'com.example.test';
+  let appIndex: number = 0;
+  let accountId: number = 100;
+  // 示例代码使用sim.getSimAccountInfo获取simId
+  let slotId: number = 0;
+  let simId: number = 0;
+  await sim.getSimAccountInfo(slotId).then((data: sim.IccAccountInfo) => {
+    simId = data.simId;
+  }).catch((err: BusinessError) => {
+    console.error(`getSimAccountInfo failed, promise: err->${JSON.stringify(err)}`);
+  });
+  let networkInfo: statistics.NetworkInfo = {
+    // 需根据实际情况进行替换
+    type: connection.NetBearType.BEARER_CELLULAR,
+    // 查询2026/4/15 00:00:00.000 ~ 2026/4/16 00:00:00.000的数据（月份从0开始计算）
+    startTime: Math.floor(new Date(2026, 3, 15, 0, 0, 0, 0).getTime() / 1000),
+    endTime: Math.floor(new Date(2026, 3, 16, 0, 0, 0, 0).getTime() / 1000),
+    // 网络类型为BEARER_CELLULAR时，需要传simId；网络类型为BEARER_WIFI时，不需要传simId；
+    simId: simId
+  }
+  await applicationManager.queryTrafficStats(wantTemp, bundleName, appIndex, accountId, networkInfo)
+    .then(result => {
+      console.info('Succeeded in querying traffic stats.');
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to query traffic stats. Code is ${error.code}, message is ${error.message}`);
+    })
+}
+```
+
+## applicationManager.getApplicationWindowStates
+
+getApplicationWindowStates(admin: Want, bundleName: string, appIndex: number): Array\<WindowStateInfo\>
+
+查询指定应用的窗口状态信息列表。可以查询到应用是否在底部Dock栏，以及当前应用窗口是否在前台显示等信息。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| bundleName   | string                                                  | 是   | 应用的包名。 |
+| appIndex | number                                                    | 是   | 应用分身索引，取值范围：大于等于0的整数。<br> appIndex可以通过@ohos.bundle.bundleManager中的[getAppCloneIdentity](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetappcloneidentity14)等接口来获取。|
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[WindowStateInfo](#windowstateinfo)&gt; | 返回应用窗口状态信息的数组。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-// 需根据实际情况进行替换
-let bundleName: string = 'com.example.test';
+// 被查询的应用包名，需根据实际情况进行替换
+let bundleName: string = 'com.example.myapplication';
+// 被查询应用的分身索引，需根据实际情况进行替换
 let appIndex: number = 0;
-let accountId: number = 100;
-// 示例代码使用sim.getSimAccountInfo获取simId
-let slotId: number = 0;
-let simId: number = 0;
-await sim.getSimAccountInfo(slotId).then((data: sim.IccAccountInfo) => {
-  simId = data.simId;
-}).catch((err: BusinessError) => {
-  console.error(`getSimAccountInfo failed, promise: err->${JSON.stringify(err)}`);
-});
-let networkInfo: statistics.NetworkInfo = {
-  // 需根据实际情况进行替换
-  type: connection.NetBearType.BEARER_CELLULAR,
-  // 查询2026/4/15 00:00:00.000 ~ 2026/4/16 00:00:00.000的数据（月份从0开始计算）
-  startTime: Math.floor(new Date(2026, 3, 15, 0, 0, 0, 0).getTime() / 1000),
-  endTime: Math.floor(new Date(2026, 3, 16, 0, 0, 0, 0).getTime() / 1000),
-  // 网络类型为BEARER_CELLULAR时，需要传simId；网络类型为BEARER_WIFI时，不需要传simId；
-  simId: simId
+try {
+  let result: Array<applicationManager.WindowStateInfo> = applicationManager.getApplicationWindowStates(wantTemp, bundleName, appIndex);
+  console.info(`Succeeded in getting application window states, result: ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get application window states. Code: ${err.code}, message: ${err.message}`);
 }
-await applicationManager.queryTrafficStats(wantTemp, bundleName, appIndex, accountId, networkInfo)
-  .then(result => {
-    console.info('Succeeded in querying traffic stats.');
-  }).catch((error: BusinessError) => {
-  console.error(`Failed to query traffic stats. Code is ${error.code}, message is ${error.message}`);
-})
 ```
 
 ## KioskFeature<sup>20+</sup>
@@ -2429,6 +2492,23 @@ Kiosk模式的特征。
 | appIndex                | number | 否    | 否   | 应用分身索引，取值范围：大于等于0的整数。<br> appIndex可以通过@ohos.bundle.bundleManager中的[getAppCloneIdentity](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetappcloneidentity14)等接口来获取。 |
 | abilityInFgTotalTime    | number | 否    | 否   | Ability在前台运行的总时长，单位：毫秒。 |
 
+## WindowStateInfo
+
+应用窗口状态信息。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 类型     | 只读 | 可选 | 说明                            |
+| ----------- | --------| ----- | ---- | ------------------------------- |
+| windowId | number | 否 | 否 | 应用窗口ID。 |
+| state | [WindowState](#windowstate) | 否 | 否 | 应用窗口状态。|
+| isOnDock | boolean | 否 | 否 | 表示应用窗口是否在底部Dock栏上显示。PC/2in1设备和Tablet设备的PC模式的应用在底部Dock栏上返回true，其他设备返回false。 |
+| name | string | 否 | 否 | 应用窗口名称。|
+
 ## ServiceType
 
 分布式业务类型。
@@ -2442,6 +2522,25 @@ Kiosk模式的特征。
 | 名称         | 值   | 说明  |
 | ----------- | ------ |------ |
 | COLLABORATION_SERVICE  | 0 | 协同业务。允许使用协同业务的应用，可以通过使用[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)中的API或[跨设备连接UIAbility开发指南](../../distributedservice/abilityconnectmanager-guidelines.md)中的方式，跨设备拉起其他应用的页面并向其传输数据。 |
+
+## WindowState
+
+应用窗口状态。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| DISCONNECT | 0 | 表示窗口已创建，但是暂不可用状态。 |
+| CONNECT | 1 | 表示窗口已创建完成，可正常使用状态。 |
+| FOREGROUND | 2 | 前台状态，表示当前窗口进入前台显示，是一个过渡状态。 |
+| ACTIVE | 3 | 前台激活状态，表示当前窗口已前台显示。 |
+| INACTIVE | 4 | 前台非激活状态，表示当前窗口即将进入后台，是一个过渡状态。 |
+| BACKGROUND | 5 | 后台状态，表示当前窗口退到后台，不可见状态。 |
 
 ## applicationManager.queryBundleStatsInfos
 

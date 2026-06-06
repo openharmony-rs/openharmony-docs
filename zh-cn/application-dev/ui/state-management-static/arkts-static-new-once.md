@@ -59,18 +59,23 @@ import { Once } from '@kit.ArkUI';
 
 \@Once用于变量仅初始化同步数据源一次，之后不再继续同步变化的场景。
 
-```ts
-'use static'
+<!-- @[OnceInitSync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/OnceDecorator/entry/src/main/ets/pages/OnceInitSync.ets) --> 
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Once, Param, Text } from '@kit.ArkUI';
 
 @ComponentV2
 struct ChildComponent {
   @Param @Once onceParam: string = '';
+
   build() {
     Column() {
+      // onceParam变量只在初始化时接收父组件传值。
       Text(`onceParam: ${this.onceParam}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 
@@ -78,31 +83,54 @@ struct ChildComponent {
 @ComponentV2
 struct MyComponent {
   @Local message: string = 'Hello World';
+
   build() {
     Column() {
-      Text(`Parent message: ${this.message}`)
       Button('change message')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 修改message变量，并不会同步给子组件。
           this.message = 'Hello Tomorrow';
         })
+      Text(`Parent message: ${this.message}`)
+        .fontSize(20)
+        .margin(10)
       ChildComponent({ onceParam: this.message })
     }
+    .width('100%')
   }
 }
 ```
+
+![Once_1](../figures/once_1.gif)
 
 ### 本地修改\@Param变量
 
 当\@Once与\@Param结合使用时，可以解除\@Param本地不可修改的限制，并能够触发UI刷新。此时，使用\@Param和\@Once的效果类似于[\@Local](./arkts-static-new-local.md)，但\@Param和\@Once还能接收外部传入的初始值。
 
-```ts
-'use static'
+<!-- @[OnceLocalModify](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/OnceDecorator/entry/src/main/ets/pages/OnceLocalModify.ets) --> 
 
-import { Button, ClickEvent, Column, ComponentV2, Entry, Local, ObservedV2, Once, Param, Require, Text, Trace } from '@kit.ArkUI';
+``` TypeScript
+import {
+  Button,
+  ClickEvent,
+  Column,
+  ComponentV2,
+  Entry,
+  Local,
+  ObservedV2,
+  Once,
+  Param,
+  Require,
+  Text,
+  Trace
+} from '@kit.ArkUI';
 
 @ObservedV2
 class Info {
   @Trace name: string;
+
   constructor(name: string) {
     this.name = name;
   }
@@ -115,17 +143,27 @@ struct Child {
 
   build() {
     Column() {
+      // 子组件内可修改onceParamNum与onceParamInfo变量，并能触发UI刷新。
       Text(`Child onceParamNum: ${this.onceParamNum}`)
+        .fontSize(20)
+        .margin(10)
       Text(`Child onceParamInfo: ${this.onceParamInfo.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('changeOnceParamNum')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.onceParamNum++;
         })
       Button('changeParamInfo')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.onceParamInfo = new Info('Cindy');
         })
     }
+    .width('100%')
   }
 }
 
@@ -138,20 +176,32 @@ struct Index {
   build() {
     Column() {
       Text(`Parent localNum: ${this.localNum}`)
+        .fontSize(20)
+        .margin(10)
       Text(`Parent localInfo: ${this.localInfo.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('changeLocalNum')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.localNum++;
         })
       Button('changeLocalInfo')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.localInfo = new Info('Cindy');
         })
+      // 首次渲染时把当前本地值传给子组件。
       Child({
         onceParamNum: this.localNum,
         onceParamInfo: this.localInfo
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![Once_2](../figures/once_2.gif)

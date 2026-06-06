@@ -158,8 +158,10 @@ struct UIServiceExtensionAbility {
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 import { Entry, Component, Scroll, Column, Button, ButtonType } from '@kit.ArkUI';
@@ -336,6 +338,7 @@ struct UIServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 import { Entry, Component, Scroll, Column, Button, ButtonType } from '@kit.ArkUI';

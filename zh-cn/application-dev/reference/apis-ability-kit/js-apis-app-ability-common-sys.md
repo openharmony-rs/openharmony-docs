@@ -249,6 +249,86 @@ AgentExtensionConnectCallback二级模块。
 | --- | --- |
 | [_AgentExtensionConnectCallback](../apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md) | 提供回调接口给开发者来接收服务端发送的数据和安全认证请求，以及感知AgentExtensionAbility服务端的断开连接操作。 |
 
+## ToolInfo
+
+type ToolInfo = _ToolInfo
+
+[ToolInfo](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolinfo)用于描述系统命令行工具（CLI）的基本信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_ToolInfo](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolinfo) | 用于描述系统命令行工具（CLI）的基本信息。 |
+
+## ToolSummary
+
+type ToolSummary = _ToolSummary
+
+[ToolSummary](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolsummary)用于描述系统命令行工具（CLI）的摘要信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_ToolSummary](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolsummary) | 用于描述系统命令行工具（CLI）的摘要信息。 |
+
+## CliToolEvent
+
+type CliToolEvent = _CliToolEvent
+
+[CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md)用于描述CLI工具进程运行期间产生的会话事件信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md) | 用于描述CLI工具进程运行期间产生的会话事件信息。 |
+
+## ToolEventCallback
+
+type ToolEventCallback = _ToolEventCallback
+
+[ToolEventCallback](../apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md)用于接收CLI工具进程运行期间产生的会话事件。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_ToolEventCallback](../apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md) | 用于接收CLI工具进程运行期间产生的会话事件。 |
+
 **示例：**
 
 ArkTS-Dyn示例：
@@ -276,11 +356,16 @@ let autoStartupInfo: common.AutoStartupInfo;
 let autoStartupCallback: common.AutoStartupCallback;
 let agentProxy: common.AgentProxy;
 let agentExtensionConnectCallback: common.AgentExtensionConnectCallback;
+let toolInfo: common.ToolInfo;
+let toolSummary: common.ToolSummary;
+let cliToolEvent: common.CliToolEvent;
+let toolEventCallback: common.ToolEventCallback;
 ```
 
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common } from '@kit.AbilityKit';
 
 let uiAbilityContext: common.UIAbilityContext;

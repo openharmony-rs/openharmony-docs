@@ -33,16 +33,18 @@ import { Local } from '@kit.ArkUI';
 
 - 当装饰boolean、string、int时，可以观察到对变量赋值的变化。
 
-  ```ts
-  'use static'
+  <!-- @[LocalBasicTypes](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalBasicTypes.ets) -->
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local count: int = 0;
     @Local message: string = 'Hello';
     @Local flag: boolean = false;
+  
     build() {
       Column() {
         Text(`${this.count}`)
@@ -54,7 +56,7 @@ import { Local } from '@kit.ArkUI';
             this.count++;
             this.message += ' World';
             this.flag = !this.flag;
-        })
+          })
       }
     }
   }
@@ -62,9 +64,9 @@ import { Local } from '@kit.ArkUI';
 
 - 当装饰类对象时，仅能观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化。对类成员属性的观察依赖[\@ObservedV2与\@Trace](./arkts-static-new-observedV2-and-trace.md)装饰器。
 
-  ```ts
-  'use static'
+  <!-- @[LocalClassObject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalClassObject.ets) -->
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, ObservedV2, Text, Trace } from '@kit.ArkUI';
   class RawObject {
     name: string;
@@ -79,11 +81,13 @@ import { Local } from '@kit.ArkUI';
       this.name = name;
     }
   }
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local rawObject: RawObject = new RawObject('rawObject');
     @Local observedObject: ObservedObject = new ObservedObject('observedObject');
+  
     build() {
       Column() {
         Text(`${this.rawObject.name}`)
@@ -93,14 +97,14 @@ import { Local } from '@kit.ArkUI';
             // 对类对象整体的修改均能观察到
             this.rawObject = new RawObject('new rawObject');
             this.observedObject = new ObservedObject('new observedObject');
-        })
+          })
         Button('change name')
           .onClick((e: ClickEvent) => {
             // @Local不具备观察类对象属性的能力，因此对rawObject.name的修改无法观察到
             this.rawObject.name = 'new rawObject name';
             // 由于ObservedObject的name属性被@Trace装饰，因此对observedObject.name的修改能被观察到
             this.observedObject.name = 'new observedObject name';
-        })
+          })
       }
     }
   }
@@ -108,15 +112,17 @@ import { Local } from '@kit.ArkUI';
 
 - 当装饰简单类型数组时，可以观察到数组整体或数组项的变化。
 
-  ```ts
-  'use static'
+  <!-- @[LocalArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalArray.ets) -->
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local numArr: int[] = [1, 2, 3, 4, 5];
     @Local dimensionTwo: int[][] = [[1, 2, 3], [4, 5, 6]];
+  
     build() {
       Column() {
         Text(`${this.numArr[0]}`)
@@ -152,19 +158,21 @@ import { Local } from '@kit.ArkUI';
 
 - 当装饰interface字面量类型时，仅能观察到字面量整体的变化，无法观察到属性的变化，可以使用[makeObserved接口](./arkts-static-new-makeObserved.md)实现对字面量属性的观察。
 
-  ```ts
-  'use static'
+  <!-- @[LocalInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalInterface.ets) -->
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Text } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: int;
   }
+  
   @Entry
   @ComponentV2
   struct Index {
     // 装饰字面量
     @Local info: Info = { name: 'Jack', age: 25 } as Info;
+    
     build() {
       Column() {
         Text(`info.name: ${this.info.name}`)
@@ -243,9 +251,9 @@ import { Local } from '@kit.ArkUI';
 
 被\@ObservedV2与\@Trace装饰的类对象实例，具有深度观察对象属性的能力。但当类对象整体赋值时，UI却无法刷新。使用\@Local装饰对象，可以达到观察对象本身变化的效果。
 
-```ts
-'use static'
+<!-- @[LocalObservedObject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalObservedObject.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, Local, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -292,9 +300,9 @@ struct Index {
 
 当装饰Array类型时，可以观察到Array整体及其元素的变化。通过API操作更改数组内容也能被观察到。
 
-```ts
-'use static'
+<!-- @[LocalArrayVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalArrayVariable.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, ForEach, Local, Row, Text } from '@kit.ArkUI';
 
 class Fruit {
@@ -360,9 +368,9 @@ struct Index {
 
 当装饰Date类型时，可以观察到Date整体及其API操作的变化。
 
-```ts
-'use static'
+<!-- @[LocalDateVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalDateVariable.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, DatePicker, Entry, Local, Row } from '@kit.ArkUI';
 
 @Entry
@@ -420,9 +428,9 @@ struct DatePickerExample {
 
 当装饰Map类型时，可以观察到Map整体及其API操作带来的变化。
 
-```ts
-'use static'
+<!-- @[LocalMapVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalMapVariable.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, ForEach, Local, Row, Text } from '@kit.ArkUI';
 
 @Entry
@@ -487,9 +495,9 @@ struct MapSample {
 
 当装饰Set类型时，可以观察到Set整体及其API操作带来的变化。
 
-```ts
-'use static'
+<!-- @[LocalSetVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalSetVariable.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, ForEach, Local, Row, Text } from '@kit.ArkUI';
 
 @Entry
@@ -547,9 +555,9 @@ struct SetSample {
 
 \@Local支持null、undefined以及联合类型。在下面的示例中，count类型为int | undefined，点击改变count的类型，UI会随之刷新。
 
-```ts
-'use static'
+<!-- @[LocalUnionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalDecorator/entry/src/main/ets/pages/LocalUnionType.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, Local, Row, Text } from '@kit.ArkUI';
 
 @Entry

@@ -1050,9 +1050,9 @@ try {
 }
 ```
 
-### queryLastSyncInfo
+### batchQueryLastSyncInfo
 
-static queryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;
+static batchQueryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;
 
 批量查询上一次端云同步的信息，使用Promise异步回调。
 
@@ -1102,7 +1102,7 @@ const bundleInfos: Array<cloudData.BundleInfo> = [
 ];
 
 try {
-  cloudData.Config.queryLastSyncInfo(accountId, bundleInfos).then((result) => {
+  cloudData.Config.batchQueryLastSyncInfo(accountId, bundleInfos).then((result) => {
     console.info(`Succeeded in querying last sync info. Result is ${JSON.stringify(result)}`);
   }).catch((err) => {
     console.error(`Failed to query last sync info. Error code is ${err.code}, message is ${err.message}`);
@@ -1544,9 +1544,9 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 ```
 
-### cloudSync
+### cloudSyncEx
 
-static cloudSync(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConfig, progress: Callback&lt;relationalStore.ProgressDetails&gt;): Promise&lt;void&gt;
+static cloudSyncEx(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConfig, progress: Callback&lt;relationalStore.ProgressDetails&gt;): Promise&lt;void&gt;
 
 对指定应用的数据按照云同步配置信息进行端云同步，当[CloudSyncConfig](js-apis-data-relationalStore-sys.md#cloudsyncconfig)中的downloadOnly为true时，端云同步仅把云侧数据下行到本地，使用Promise异步回调。
 
@@ -1606,7 +1606,7 @@ let config: relationalStore.CloudSyncConfig = {
 };
 
 try {
-  cloudData.Config.cloudSync(bundleInfo, config, (progressDetails: relationalStore.ProgressDetails) => {
+  cloudData.Config.cloudSyncEx(bundleInfo, config, (progressDetails: relationalStore.ProgressDetails) => {
     console.info(`Cloud sync progress: ${progressDetails.schedule}, code: ${progressDetails.code}`);
   }).then(() => {
     console.info('Succeeded in cloud sync');

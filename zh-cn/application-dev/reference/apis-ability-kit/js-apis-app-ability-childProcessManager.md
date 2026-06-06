@@ -113,6 +113,7 @@ export default class DemoProcess extends ChildProcess {
 ```
 ArkTS-Sta示例：
 ```ts
+'use static'
 // 在entry模块的src/main/ets/process下创建StaticDemoProcess.ets子进程类:
 // entry/src/main/ets/process/StaticDemoProcess.ets
 import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
@@ -186,6 +187,7 @@ struct Index {
 ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
+'use static'
 // 使用childProcessManager.startChildProcess方法启动子进程:
 // entry/src/main/ets/pages/Index.ets
 import { Entry, Text, Column, Component, Button } from '@ohos.arkui.component';
@@ -295,6 +297,7 @@ export default class DemoProcess extends ChildProcess {
 ```
 ArkTS-Sta示例：
 ```ts
+'use static'
 // 在entry模块的src/main/ets/process下创建StaticDemoProcess.ets子进程类:
 // entry/src/main/ets/process/StaticDemoProcess.ets
 import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
@@ -368,6 +371,7 @@ struct Index {
 ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
+'use static'
 // 使用childProcessManager.startChildProcess方法启动子进程:
 // entry/src/main/ets/pages/Index.ets
 import { Entry, Text, Column, Component, Button} from '@ohos.arkui.component';
@@ -484,6 +488,7 @@ export default class DemoProcess extends ChildProcess {
 ```
 ArkTS-Sta示例：
 ```ts
+'use static'
 // 在module1模块的src/main/ets/process下创建StaticDemoProcess.ets子进程类:
 // module1/src/main/ets/process/StaticDemoProcess.ets
 import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
@@ -580,6 +585,7 @@ struct Index {
 ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
+'use static'
 // 使用childProcessManager.startArkChildProcess方法启动子进程:
 // module1/src/main/ets/pages/Index.ets
 import { Entry, Text, Column, Component, Button } from '@ohos.arkui.component';
@@ -822,6 +828,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { childProcessManager } from '@kit.AbilityKit';
 
 @Entry
@@ -904,6 +911,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { childProcessManager } from '@kit.AbilityKit';
 
 @Entry

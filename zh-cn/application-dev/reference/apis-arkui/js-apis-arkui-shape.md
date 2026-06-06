@@ -139,45 +139,19 @@ constructor(options?: PathShapeOptions)
 
 ### commands
 
-commands(commands: string): PathShape
+ArkTS-Dyn: commands(commands: string): PathShape
+
+ArkTS-Sta: commands(commands: string): this
 
 设置路径的绘制指令。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[commands<sup>23+</sup>](#commands23)。
 
 **ArkTS-Dyn起始版本：** 12
-
-**参数：** 
-
-| 参数名         | 类型                                               | 必填 | 说明                                         |
-| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| commands | string | 是 | 路径的绘制指令。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| [PathShape](#pathshape) | 返回PathShape对象。 |
-
-### commands<sup>23+</sup>
-
-commands(commands: string): this
-
-设置路径的绘制指令。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[commands](#commands)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -191,7 +165,7 @@ commands(commands: string): this
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| this | 返回当前对象。 |
+| ArkTS-Dyn: [PathShape](#pathshape)<br/>ArkTS-Sta: this | 返回PathShape对象。 |
 
 ## RectShape
 

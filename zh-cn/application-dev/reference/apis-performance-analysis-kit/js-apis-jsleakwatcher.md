@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -27,6 +29,10 @@ enable(isEnable: boolean): void
 使能ArkTS对象泄漏检测，默认关闭。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：26.1.0
 
 **参数：**
 
@@ -48,6 +54,10 @@ watch(obj: object, msg: string): void
 注册待检测泄漏的对象。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：26.1.0
 
 **参数：**
 
@@ -72,6 +82,10 @@ check(): string
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：26.1.0
+
 **返回值：**
 
 | 类型    | 说明                                                       |
@@ -91,6 +105,10 @@ dump(filePath: string): Array&lt;string&gt;
 导出泄漏列表和虚拟机内存快照。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：26.1.0
 
 **参数：**
 
@@ -122,6 +140,10 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：26.1.0
 
 **参数：**
 
@@ -165,6 +187,10 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 此接口通过一次调用即可检测ArkTS对象的内存泄漏，比之前需要调用四个函数（enable、watch、check、dump）的方法更加简洁；通过configs可配置项参数，自定义设置监测项各属性，相比较之前极大提升了泄漏检测性能。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：26.1.0
 
 **参数：**
 
@@ -214,6 +240,10 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：26.1.0
+
 | 名称 | 类型 | 只读 | 可选 | 说明 | 
 | ------- | ------- | ------- | ------- | ------- | 
 | monitorObjectTypes | [MonitorObjectType](#monitorobjecttype24) | 否 | 否 | 被监测对象类型。<br>默认监测所有组件类型。 |
@@ -231,6 +261,10 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 需要监控的组件对象类型枚举。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：26.1.0
 
 | 名称 | 值 | 说明 |
 | ------- | ------- | ------- |

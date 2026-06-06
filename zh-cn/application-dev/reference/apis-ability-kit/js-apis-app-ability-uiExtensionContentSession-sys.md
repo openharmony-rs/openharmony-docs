@@ -126,8 +126,10 @@ sendData(data: Record\<string, RecordData>): void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import { RecordData } from '@kit.BasicServicesKit';
 import { Entry, Text, Column, Component, Button, RelativeContainer, LocalStorage } from '@kit.ArkUI';
@@ -249,8 +251,10 @@ setReceiveDataCallback(callback: OnReceiveDataCallback): void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import { Entry, RelativeContainer, Button, Component, LocalStorage } from '@kit.ArkUI';
 import { RecordData } from '@kit.BasicServicesKit';
@@ -370,8 +374,10 @@ setReceiveDataForResultCallback(callback: OnReceiveDataForResultCallback): void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import { Entry, RelativeContainer, Button, Component, LocalStorage } from '@kit.ArkUI';
 import { RecordData } from '@kit.BasicServicesKit';
@@ -956,6 +962,7 @@ export default class UIExtAbility extends UIExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIExtensionContentSession, UIExtensionAbility, Want } from '@kit.AbilityKit';
 import { LocalStorage } from '@kit.ArkUI';
 
@@ -1299,6 +1306,7 @@ export default class UIExtAbility extends UIExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { uiExtensionHost, LocalStorage } from '@kit.ArkUI';
 

@@ -7,7 +7,20 @@
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
 
-提供用户认证能力，可应用于设备解锁、支付、应用登录等身份认证场景。
+## 模块简介
+
+**userAuth**模块是OpenHarmony系统中用于用户身份认证的核心模块，提供了设备解锁、支付验证、应用登录等场景下的身份认证能力。
+
+当前页面仅包含本模块中面向系统应用和认证组件开发者的高级能力。这些API提供了认证组件管理、自定义通知发送、认证结果复用查询、隐私密码认证等系统级功能。
+
+主要用于以下场景：
+
+- 系统应用需要管理自定义认证组件的生命周期。
+- 认证组件需要与认证框架进行双向通信。
+- 需要发送认证组件相关的系统通知。
+- 需要查询可复用的认证结果以实现无感认证。
+- 需要使用隐私密码进行认证。
+- 需要指定特定用户或特定凭据进行认证。
 
 > **说明：**
 >
@@ -24,14 +37,14 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 ## AuthParam<sup>10+</sup>
 
-用户认证相关参数。
+用户认证相关参数。该接口用于配置用户认证的各项参数，包括挑战值、认证类型列表、认证信任等级等。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 | 名称           | 类型                               | 只读 | 可选 | 说明                                                         |
 | -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| userId<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   |要认证的目标用户ID，值为大于等于0的正整数。默认值为当前用户的ID。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：** 此接口为系统接口。|
-| credentialIdList<sup>23+</sup> | Uint8Array[] | 否 | 是 |凭据ID列表。若凭据ID列表不为空，则会认证指定的凭据ID。<br>**ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：**:此接口为系统接口。<br>**模型约束：**此接口仅可在Stage模型下使用。|
+| userId<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   |待认证的目标用户ID，值为大于等于0的正整数，用于指定需要认证的用户。默认值为当前用户的ID。<br>**ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：** 此接口为系统接口。|
+| credentialIdList<sup>23+</sup> | Uint8Array[] | 否 | 是 |凭据ID列表。若凭据ID列表不为空，则会认证指定的凭据ID，而非用户的所有凭据。适用于需要精确控制认证凭据的场景。<br>**ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：**此接口为系统接口。<br>**模型约束：**此接口仅可在Stage模型下使用。|
 
 ## WindowModeType<sup>10+</sup>
 
@@ -47,12 +60,12 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
-| DIALOG_BOX | 1    | 弹框类型。 |
-| FULLSCREEN | 2    | 全屏类型。 |
+| DIALOG_BOX | 1    | 对话框类型。身份认证界面以对话框形式显示，适用于大多数认证场景，用户体验较好。 |
+| FULLSCREEN | 2    | 全屏类型。身份认证界面以全屏形式显示，适用于需要沉浸式认证体验或认证信息较多需要更大展示空间的场景。 |
 
 ## WidgetParam<sup>10+</sup>
 
-用户认证界面配置相关参数。
+用户认证界面配置相关参数。该接口用于配置认证界面的显示样式和交互方式，包括标题、导航按钮文本、窗口模式等。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -62,11 +75,11 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 | 名称                 | 类型                                | 只读 | 可选 | 说明                                                         |
 | -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| windowMode           | [WindowModeType](#windowmodetype10) | 否   | 是   | 代表用户认证界面的显示类型，默认值为WindowModeType.DIALOG_BOX。<br>**系统接口**: 此接口为系统接口。 |
+| windowMode           | [WindowModeType](#windowmodetype10) | 否   | 是   | 用户认证界面的显示类型。用于控制系统身份认证组件的窗口样式，可选择对话框模式（DIALOG_BOX）或全屏模式（FULLSCREEN）。默认值为WindowModeType.DIALOG_BOX。<br>**系统接口：** 此接口为系统接口。 |
 
 ## NoticeType<sup>10+</sup>
 
-用户身份认证的通知类型。
+用户身份认证的通知类型枚举。该枚举定义了系统支持的通知类型，用于标识通知的来源。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -78,13 +91,13 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 | 名称          | 值   | 说明                 |
 | ------------- | ---- | -------------------- |
-| WIDGET_NOTICE | 1    | 表示来自组件的通知。 |
+| WIDGET_NOTICE | 1    | 表示该通知由系统统一身份认证控件发出，用于通知用户认证框架相关事件。 |
 
 ## userAuth.sendNotice<sup>10+</sup>
 
 sendNotice(noticeType: NoticeType, eventData: string): void
 
-在使用统一身份认证控件进行用户身份认证时，用于接收来自统一身份认证控件的通知。
+发送来自身份认证组件的通知。在使用统一身份认证控件进行用户身份认证时，该接口用于接收来自统一身份认证组件的通知，并将通知发送给用户认证框架。
 
 **需要权限：** ohos.permission.SUPPORT_USER_AUTH
 
@@ -100,8 +113,8 @@ sendNotice(noticeType: NoticeType, eventData: string): void
 
 | 参数名     | 类型                        | 必填 | 说明       |
 | ---------- | --------------------------- | ---- | ---------- |
-| noticeType | [NoticeType](#noticetype10) | 是   | 通知类型。 |
-| eventData  | string                | 是   | 事件数据。数据长度限制为0-65536。    |
+| noticeType | [NoticeType](#noticetype10) | 是   | 通知类型。用于标识通知的来源，当前支持WIDGET_NOTICE（1），表示来自身份认证组件的通知。 |
+| eventData  | string                | 是   | 事件数据。JSON格式的字符串，包含通知的具体内容，如认证类型就绪事件等。数据长度范围为(0, 65536)字节。 |
 
 **错误码：**
 
@@ -150,13 +163,13 @@ try {
 
 ## UserAuthWidgetMgr<sup>10+</sup>
 
-组件管理接口，可将用身份认证控件注册到UserAuthWidgetMgr中，由UserAuthWidgetMgr进行管理、调度。
+身份认证组件管理器。用于将自定义身份认证控件注册到UserAuthWidgetMgr中，由UserAuthWidgetMgr进行统一管理和调度。通过该接口，自定义身份认证控件可以接收来自用户认证框架的命令并执行相应操作。
 
 ### on<sup>10+</sup>
 
 on(type: 'command', callback: IAuthWidgetCallback): void
 
-身份认证控件订阅来自用户认证框架的命令。
+订阅来自用户认证框架的命令事件。身份认证控件通过此接口订阅来自用户认证框架的命令，以便根据命令执行相应的认证操作。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -172,8 +185,8 @@ on(type: 'command', callback: IAuthWidgetCallback): void
 
 | 参数名   | 类型                                          | 必填 | 说明                                                         |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | 'command'                                     | 是   | 订阅事件类型，表明该事件用于用户认证框架向身份认证控件发送命令。 |
-| callback | [IAuthWidgetCallback](#iauthwidgetcallback10) | 是   | 组件管理接口的回调函数，用于用户认证框架向身份认证控件发送命令。 |
+| type     | 'command'                                     | 是   | 订阅事件类型。值为'command'，表明该事件用于用户认证框架向身份认证控件发送命令。 |
+| callback | [IAuthWidgetCallback](#iauthwidgetcallback10) | 是   | 回调函数。用于接收来自用户认证框架的命令，身份认证控件需在回调中解析命令并执行相应操作。 |
 
 **错误码：**
 
@@ -263,7 +276,7 @@ try {
 
 off(type: 'command', callback?: IAuthWidgetCallback): void
 
-身份认证控件取消订阅来自用户认证框架的命令。
+取消订阅来自用户认证框架的命令事件。身份认证控件通过此接口取消对用户认证框架命令的订阅。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -279,8 +292,8 @@ off(type: 'command', callback?: IAuthWidgetCallback): void
 
 | 参数名   | 类型                                          | 必填 | 说明                                                         |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | 'command'                                     | 是   | 订阅事件类型，表明该事件用于用户认证框架向身份认证控件发送命令。 |
-| callback | [IAuthWidgetCallback](#iauthwidgetcallback10) | 否   | 组件管理接口的回调函数，用于用户认证框架向身份认证控件发送命令。 |
+| type     | 'command'                                     | 是   | 订阅事件类型。值为'command'，表明取消订阅用户认证框架向身份认证控件发送命令的事件。 |
+| callback | [IAuthWidgetCallback](#iauthwidgetcallback10) | 否   | 回调函数。指定取消注册的回调函数，若不传入此参数，则取消所有已注册的回调。 |
 
 **错误码：**
 
@@ -372,11 +385,11 @@ ArkTS-Dyn: getUserAuthWidgetMgr(version: number): UserAuthWidgetMgr
 
 ArkTS-Sta: getUserAuthWidgetMgr(version: int): UserAuthWidgetMgr
 
-获取UserAuthWidgetMgr对象，用于执行用户身份认证。
+获取身份认证组件管理器对象。用于获取UserAuthWidgetMgr实例，通过该实例可将自定义身份认证控件注册到系统进行统一管理。
 
 > **说明：**
 >
-> 每个UserAuthInstance只能进行一次认证，若需要再次进行认证则需重新获取UserAuthInstance。
+> 每个UserAuthWidgetMgr实例可管理一个身份认证控件，若需要管理多个控件则需获取多个实例。
 
 **需要权限：** ohos.permission.SUPPORT_USER_AUTH
 
@@ -392,13 +405,13 @@ ArkTS-Sta: getUserAuthWidgetMgr(version: int): UserAuthWidgetMgr
 
 | 参数名  | 类型   | 必填 | 说明                 |
 | ------- | ------ | ---- | -------------------- |
-| version | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示认证组件的版本。 |
+| version | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 身份认证组件的版本号。用于指定组件的版本，目前支持版本1。组件版本决定了组件与框架之间的通信协议和功能支持范围。 |
 
 **返回值：**
 
 | 类型                                      | 说明         |
 | ----------------------------------------- | ------------ |
-| [UserAuthWidgetMgr](#userauthwidgetmgr10) | 认证器对象。 |
+| [UserAuthWidgetMgr](#userauthwidgetmgr10) | 身份认证组件管理器对象。可用于订阅和取消订阅来自用户认证框架的命令。 |
 
 **错误码：**
 
@@ -447,7 +460,7 @@ type AuthWidgetCallbackSendCommandFunc = (cmdData: string) => void
 
 ## IAuthWidgetCallback<sup>10+</sup>
 
-认证组件通过该回调获取用户认证框架发送的命令。
+身份认证组件回调接口。认证组件通过该回调接口获取用户认证框架发送的命令，并根据命令内容执行相应的认证操作。
 
 ### 属性
 
@@ -465,7 +478,7 @@ type AuthWidgetCallbackSendCommandFunc = (cmdData: string) => void
 
 sendCommand(cmdData: string): void
 
-回调函数，用于用户认证框架向组件发送命令。
+回调函数，用于接收来自用户认证框架的命令。用户认证框架通过此回调向身份认证组件发送命令，控件需解析命令内容并执行相应操作。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -479,7 +492,7 @@ sendCommand(cmdData: string): void
 
 | 参数名  | 类型   | 必填 | 说明                               |
 | ------- | ------ | ---- | ---------------------------------- |
-| cmdData | string | 是   | 用户身份认证框架向控件发送的命令。 |
+| cmdData | string | 是   | 命令数据。JSON格式的字符串，包含用户认证框架向身份认证控件发送的具体命令内容，如认证类型切换、认证结果返回等指令。控件需解析此数据并执行相应操作。 |
 
 **示例：**
 
@@ -529,7 +542,7 @@ try {
 
 ## UserAuthType<sup>8+</sup>
 
-表示身份认证的凭据类型枚举。
+表示身份认证的凭据类型枚举。该枚举定义了系统支持的认证类型，包括生物特征认证（人脸、指纹）和密码认证（PIN）等。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -539,7 +552,7 @@ try {
 
 | 名称        | 值   | 说明       |
 | ----------- | ---- | ---------- |
-| PRIVATE_PIN<sup>14+</sup>  | 16   | 隐私口令。<br> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：** 此接口为系统接口。 |
+| PRIVATE_PIN<sup>14+</sup>  | 16   | 隐私密码。一种特殊的PIN认证类型，一般用于解锁后的用户二次访问控制。例如用户可以选择使用隐私密码保护应用锁，从而阻止知道锁屏密码的家人访问自己的某些应用。<br> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 23 <br>**系统接口：** 此接口为系统接口。 |
 
 **示例：**
 
@@ -623,7 +636,7 @@ try {
 
 queryReusableAuthResult(authParam: AuthParam): Uint8Array
 
-查询是否有可复用的身份认证结果。
+查询是否有可复用的身份认证结果。该接口用于在发起认证前查询是否存在满足复用条件的认证结果，若存在则直接返回可复用的AuthToken，无需用户再次进行认证交互。
 
 **需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
@@ -639,13 +652,13 @@ queryReusableAuthResult(authParam: AuthParam): Uint8Array
 
 | 参数名  | 类型   | 必填 | 说明                 |
 | ------- | ------ | ---- | -------------------- |
-| authParam | [AuthParam](js-apis-useriam-userauth.md#authparam10) | 是 | 用户认证相关参数。|
+| authParam | [AuthParam](js-apis-useriam-userauth.md#authparam10) | 是 | 用户认证相关参数。包含挑战值（challenge）、认证类型列表（authType）、认证信任等级（authTrustLevel）以及认证结果复用配置（reuseUnlockResult）。系统会根据这些参数判断是否存在满足条件的可复用认证结果。|
 
 **返回值：**
 
 | 类型        | 说明                                 |
 | ---------- | ------------------------------------ |
-| Uint8Array | 可复用的AuthToken。最大长度为1024B。|
+| Uint8Array | 可复用的认证令牌（AuthToken）。若存在满足条件的可复用认证结果，返回AuthToken数据，最大长度为1024字节；若不存在，则抛出相应错误码。|
 
 **错误码：**
 
@@ -690,7 +703,7 @@ try {
 
 ## UserAuthResultCode<sup>9+</sup>
 
-表示返回码的枚举。
+表示返回码的枚举。该枚举定义了用户认证操作可能返回的所有结果码，包括成功码和各类错误码。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -702,6 +715,6 @@ try {
 
 | 名称                    |   值   | 说明                 |
 | ----------------------- | ------ | -------------------- |
-| AUTH_TOKEN_CHECK_FAILED<sup>18+</sup> | 12500015      | verifyAuthToken系统接口错误码，表示验证的AuthToken无效。<br/> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
-| AUTH_TOKEN_EXPIRED<sup>18+</sup>       | 12500016      | verifyAuthToken系统接口错误码，AuthToken的签发时间至发起验证时的时间间隔超过传入的最大有效时长。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
-| REUSE_AUTH_RESULT_FAILED<sup>20+</sup>| 12500017      | queryReusableAuthResult系统接口错误码，表示复用身份认证结果失败。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
+| AUTH_TOKEN_CHECK_FAILED<sup>18+</sup> | 12500015      | AuthToken校验失败。verifyAuthToken系统接口错误码，表示验证的AuthToken完整性校验失败，令牌可能被篡改或损坏。<br/> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
+| AUTH_TOKEN_EXPIRED<sup>18+</sup>       | 12500016      | AuthToken已过期。verifyAuthToken系统接口错误码，表示AuthToken的签发时间至发起验证时的时间间隔超过传入的最大有效时长（allowableDuration）。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23|
+| REUSE_AUTH_RESULT_FAILED<sup>20+</sup>| 12500017      | 复用认证结果失败。queryReusableAuthResult系统接口错误码，表示查询可复用的身份认证结果失败，可能原因包括：不存在满足复用条件的认证结果、认证结果已失效或凭据已变更。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|

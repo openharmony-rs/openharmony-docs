@@ -80,7 +80,7 @@ WaterFlow(options?:  WaterFlowOptions)
 
 > **说明：**
 >
-> 使用splice、push、update修改分组信息后需要保证所有分组子节点总数与瀑布流实际子节点总数一致，否则会出现瀑布流因为不能正常布局而无法滑动的问题。
+> 使用splice、push、update修改分组信息后需要保证所有分组子组件总数与瀑布流实际子组件总数一致，否则会出现瀑布流因为不能正常布局而无法滑动的问题。
 
 ### constructor
 
@@ -89,6 +89,8 @@ constructor()
 创建一个瀑布流分组。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -280,7 +282,7 @@ ArkTS-Sta: type GetItemMainSizeByIndex = (index: int) => double
 
 | 参数名   | 类型                            | 必填   | 说明                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| index | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是    | FlowItem在WaterFlow中的索引。<br/>取值范围：[0, 子节点总数-1] |
+| index | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是    | FlowItem在WaterFlow中的索引。<br/>取值范围：[0, 子组件总数-1] |
 
 **返回值：** 
 
@@ -689,7 +691,7 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
-| supported  | boolean \| undefined | 是   | 当前WaterFlow组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示显示空分支后的FlowItem；false表示不显示空分支后的FlowItem。</br>值为undefined时，按false处理。 |
+| supported  | boolean \| undefined | 是   | 当前WaterFlow组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子组件的空分支节点。</br>true表示显示空分支后的FlowItem；false表示不显示空分支后的FlowItem。</br>值为undefined时，按false处理。 |
 
 ## 事件
 
@@ -803,7 +805,7 @@ ArkTS-Sta: onScrollIndex(event: ((first: int, last: int) => void) | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| event | ArkTS-Dyn: (first: number, last: number) => void <br/>ArkTS-Sta: ((first: int, last: int) => void) \|&nbsp;undefined | 是 | 当前瀑布流显示的起始位置/终止位置的子组件发生变化时触发的回调。<br/>first：当前显示的瀑布流起始位置的索引值。取值范围：[0, 子节点总数-1]<br/>last：当前显示的瀑布流终止位置的索引值。取值范围：[0, 子节点总数-1]<br/>undefined：不使用该回调函数。 |
+| event | ArkTS-Dyn: (first: number, last: number) => void <br/>ArkTS-Sta: ((first: int, last: int) => void) \|&nbsp;undefined | 是 | 当前瀑布流显示的起始位置/终止位置的子组件发生变化时触发的回调。<br/>first：当前显示的瀑布流起始位置的索引值。取值范围：[0, 子组件总数-1]<br/>last：当前显示的瀑布流终止位置的索引值。取值范围：[0, 子组件总数-1]<br/>undefined：不使用该回调函数。 |
 
 通过`last`参数可以判断是否“继续加载数据”，参考[示例3（使用分组）](#示例3使用分组)中“即将触底时提前增加数据”的处理逻辑。
 

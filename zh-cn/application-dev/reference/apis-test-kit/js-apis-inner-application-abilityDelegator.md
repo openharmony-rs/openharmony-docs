@@ -1313,6 +1313,7 @@ abilityDelegator.executeShellCommand(cmd, timeout).then((data) => {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
@@ -1915,7 +1916,7 @@ addInteropAbilityMonitorSync(monitor: InteropAbilityMonitor): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1985,7 +1986,7 @@ removeInteropAbilityMonitorSync(monitor: InteropAbilityMonitor): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

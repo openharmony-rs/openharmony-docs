@@ -86,6 +86,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
 import { UIExtensionContentSession, ShareExtensionAbility, Want } from '@kit.AbilityKit';
 import { LocalStorage } from '@kit.ArkUI';
@@ -193,6 +194,7 @@ ArkTS-Sta示例：
 UIExtensionAbility的实现：
 
 ```ts
+'use static'
 // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
 import { UIExtensionContentSession, ShareExtensionAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -313,6 +315,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Entry, Component, Button, RelativeContainer, LocalStorage } from '@kit.ArkUI';
@@ -402,6 +405,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Entry, Component, Button, RelativeContainer, LocalStorage } from '@kit.ArkUI';
@@ -511,6 +515,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIExtensionContentSession, common } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 import { Entry, Component, Button, RelativeContainer, LocalStorage } from '@kit.ArkUI';
@@ -634,6 +639,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIExtensionContentSession, common } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 import { Entry, Column, Component, Button, RelativeContainer, LocalStorage } from '@kit.ArkUI';
@@ -902,8 +908,10 @@ startAbilityByType(type: string, wantParam: Record\<string, RecordData>, ability
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
 import { UIExtensionContentSession, ShareExtensionAbility, Want, common } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
@@ -1047,8 +1055,10 @@ startAbilityByType(type: string, wantParam: Record\<string, RecordData>, ability
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
 import { UIExtensionContentSession, ShareExtensionAbility, Want, common } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
@@ -1155,6 +1165,7 @@ struct Extension {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // Index.ets
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import uiExtension from '@ohos.arkui.uiExtension';
