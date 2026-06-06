@@ -12984,6 +12984,11 @@
 						"end_line":216,
 						"name":"gridExample_onDragStart",
 						"start_line":204
+					},
+					{
+						"end_line":232,
+						"name":"gridExample_start",
+						"start_line":17
 					}
 				]
 			},
@@ -13324,6 +13329,36 @@
 						"end_line":196,
 						"name":"builtIn_gestureDisable",
 						"start_line":186
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/GestureConflictSta/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets",
+				"functions":[
+					{
+						"end_line":86,
+						"name":"custom_gestures",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/GestureConflictSta/entry/src/main/ets/Component/GestureAndMotionControl/GestureAndMotionControl.ets",
+				"functions":[
+					{
+						"end_line":155,
+						"name":"gesture_motioncontrol",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/GestureConflictSta/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets",
+				"functions":[
+					{
+						"end_line":260,
+						"name":"gesture_recognition",
+						"start_line":17
 					}
 				]
 			}
@@ -13999,6 +14034,121 @@
 						"end_line":28,
 						"name":"audioSuite_AudioDataInfo",
 						"start_line":21
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-gesture-events-combined-gestures.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/GestureGroupSta/entry/src/main/ets/pages/Sequence.ets",
+				"functions":[
+					{
+						"end_line":88,
+						"name":"sequence_identification",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/GestureGroupSta/entry/src/main/ets/pages/Parallel.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"parallel_recognition",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/GestureGroupSta/entry/src/main/ets/pages/Exclusive.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"mutual_exclusion",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/GestureGroupSta/entry/src/main/ets/pages/SceneExample.ets",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"scene_example",
+						"start_line":17
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-uicontext-component-snapshot.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentSnapshotSta/entry/src/main/ets/view/ScrollSnapshot.ets",
+				"functions":[
+					{
+						"end_line":365,
+						"name":"scroll_snapshot",
+						"start_line":37
+					},
+					{
+						"end_line":197,
+						"name":"scroll_snapand_merge",
+						"start_line":154
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentSnapshotSta/entry/src/main/ets/common/CommonUtils.ets",
+				"functions":[
+					{
+						"end_line":42,
+						"name":"scroll_animation",
+						"start_line":28
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentSnapshotSta/entry/src/main/ets/common/ImageUtils.ets",
+				"functions":[
+					{
+						"end_line":150,
+						"name":"merge_image",
+						"start_line":107
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentSnapshotSta/entry/src/main/ets/view/SnapshotPreview.ets",
+				"functions":[
+					{
+						"end_line":256,
+						"name":"save_button",
+						"start_line":237
+					},
+					{
+						"end_line":124,
+						"name":"save_snapshot1",
+						"start_line":85
+					},
+					{
+						"end_line":83,
+						"name":"close_and_clean_snapshot",
+						"start_line":70
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentSnapshotSta/entry/src/main/ets/view/GlobalScreenshot.ets",
+				"functions":[
+					{
+						"end_line":61,
+						"name":"global_snapshot",
+						"start_line":18
 					}
 				]
 			}
