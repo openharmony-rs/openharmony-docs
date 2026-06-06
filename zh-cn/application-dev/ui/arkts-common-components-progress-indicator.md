@@ -56,6 +56,11 @@ Progress有5种可选类型，通过[ProgressType](../reference/apis-arkui/arkui
   ArkTS-Sta示例：
 
   <!-- @[progress_style_1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  Progress({ value: 20, total: 100, type: ProgressType.Linear } as ProgressOptions).width(200).height(50)
+  Progress({ value: 20, total: 100, type: ProgressType.Linear } as ProgressOptions).width(50).height(200)
+  ```
 
   ![zh-cn_image_0000001562700417](figures/zh-cn_image_0000001562700417.png)
 
