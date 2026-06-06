@@ -302,6 +302,36 @@ ArkTS-Sta示例：
 
 <!-- @[textInputController_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TextInputControllerCloseKeyboard.ets) -->
 
+``` TypeScript
+import { $r, Button, Column, ColumnOptions, Component, Entry, FlexAlign, NavDestination, TextInput, TextInputController } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct textInputControllerCloseKeyboard {
+  controller: TextInputController = new TextInputController();
+  @State inputValue: string = '';
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 30 } as ColumnOptions) {
+        // 请将$r('app.string.close_keyboard')替换为实际资源文件，在本示例中该资源文件的value值为"close keyboard"
+        Button($r('app.string.close_keyboard')).onClick(() => {
+          this.controller.stopEditing()
+        })
+        TextInput({ controller: this.controller, text: this.inputValue })
+      }
+      .width('80%')
+      .height('100%')
+      .margin('10%')
+      .justifyContent(FlexAlign.Center)
+
+    }
+
+  }
+}
+```
+
 ![stopEditing](figures/stopEditing.gif)
 
 ### 焦点转移到不需要软键盘的组件
@@ -346,18 +376,7 @@ ArkTS-Sta示例：
 <!-- @[requestFocus_CloseKeyBoard](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusCloseKeyBoard.ets) -->
 
 ``` TypeScript
-import {
-  $r,
-  Button,
-  Column,
-  ColumnOptions,
-  Component,
-  Entry,
-  FlexAlign,
-  NavDestination,
-  TextInput,
-  TextInputController
-} from '@kit.ArkUI';
+import { $r, Button, Column, ColumnOptions, Component, Entry, FlexAlign, NavDestination, TextInput, TextInputController } from '@kit.ArkUI';
 import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
