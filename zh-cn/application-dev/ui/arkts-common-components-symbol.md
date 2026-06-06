@@ -72,6 +72,33 @@ import {
   ArkTS-Sta示例：
 
   <!-- @[creat_symbol_span](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
+  import {
+    $r,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    Entry,
+    FontWeight,
+    NavDestination,
+    Row,
+    Scroll,
+    Scroller,
+    SymbolEffectStrategy,
+    SymbolGlyph,
+    SymbolRenderingStrategy,
+    SymbolSpan,
+    Text
+  } from '@kit.ArkUI';
+  // ...
+              Text() {
+                SymbolSpan($r('sys.symbol.ohos_trash'))
+                  .fontWeight(FontWeight.Normal)
+                  .fontSize(96)
+              }
+  ```
 
   ![symbol_trash](figures/symbolspan_trash.png)
 
