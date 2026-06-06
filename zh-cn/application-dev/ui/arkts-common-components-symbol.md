@@ -1095,6 +1095,34 @@ ArkTS-Sta示例：
 
 <!-- @[symbol_glyph_span_add_event_up](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddEvent.ets) -->
 
+``` TypeScript
+import {
+  $r,
+  Color,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  NavDestination,
+  ResourceColor,
+  SymbolGlyph
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+import { ComponentCard } from '../../common/Card';
+
+@Entry
+@Component
+export struct SymbolGlyphSpanAddEvent {
+  @State wifiColor: ResourceColor = Color.Black;
+  // ...
+          SymbolGlyph($r('sys.symbol.ohos_wifi'))
+            .fontSize(96)
+            .fontColor([this.wifiColor])
+            .onClick(() => {
+              this.wifiColor = Color.Gray;
+            })
+```
+
 ![symbolGlyph_onClick](figures/symbolGlyph_onClick.gif)
 
 ## 场景示例
