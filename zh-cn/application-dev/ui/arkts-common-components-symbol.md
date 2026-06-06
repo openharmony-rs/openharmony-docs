@@ -486,6 +486,62 @@ import {
   ArkTS-Sta示例：
 
   <!-- @[symbol_span_rendering_strategy](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
+  
+  ``` TypeScript
+  import {
+    $r,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    Entry,
+    FontWeight,
+    NavDestination,
+    Row,
+    Scroll,
+    Scroller,
+    SymbolEffectStrategy,
+    SymbolGlyph,
+    SymbolRenderingStrategy,
+    SymbolSpan,
+    Text
+  } from '@kit.ArkUI';
+  // ...
+              Row() {
+                Column() {
+                  // 请将$r('app.string.single_color')替换为实际资源文件，在本示例中该资源文件的value值为"单色"
+                  Text($r('app.string.single_color'));
+                  Text() {
+                    SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+                      .fontSize(96)
+                      .renderingStrategy(SymbolRenderingStrategy.SINGLE)
+                      .fontColor([Color.Black, Color.Green, Color.White])
+                  }
+                }
+  
+                Column() {
+                  // 请将$r('app.string.multi_color')替换为实际资源文件，在本示例中该资源文件的value值为"多色"
+                  Text($r('app.string.multi_color'));
+                  Text() {
+                    SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+                      .fontSize(96)
+                      .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+                      .fontColor([Color.Black, Color.Green, Color.White])
+                  }
+                }
+  
+                Column() {
+                  // 请将$r('app.string.hierarchical')替换为实际资源文件，在本示例中该资源文件的value值为"分层"
+                  Text($r('app.string.hierarchical'));
+                  Text() {
+                    SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
+                      .fontSize(96)
+                      .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
+                      .fontColor([Color.Black, Color.Green, Color.White])
+                  }
+                }
+              }
+  ```
 
   ![symbolSpan_multi_renderingStrategy](figures/symbolspan_multi_renderingStrategy.png)
 
