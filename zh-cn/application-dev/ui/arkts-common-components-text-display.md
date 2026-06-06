@@ -71,6 +71,16 @@ Text可通过以下两种方式来创建：
   ArkTS-Sta示例：
 
   <!-- @[create_a_text_in_another_way](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
+  
+  ``` TypeScript
+  // 请将$r('app.string.module_desc')替换为实际资源文件，在本示例中该资源文件的value值为"模块描述"
+  Text($r('app.string.module_desc'))
+    .baselineOffset(0)
+    .fontSize(30)
+    .border({ width: 1 })
+    .padding(10)
+    .width(300)
+  ```
 
   ![zh-cn_image_0000001511580872](figures/zh-cn_image_0000001511580872.png)
 
