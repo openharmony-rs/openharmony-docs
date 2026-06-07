@@ -8,14 +8,14 @@
 
 从API版本26.0.0开始，新增沉浸光感。沉浸光感是ArkUI提供的一套高品质视觉与动效体系，通过沉浸式系统材质（[ImmersiveMaterial](../reference/apis-arkui/arkts-apis-uimaterial.md#immersivematerial)）与空间动效的结合，为应用组件带来通透、精致的视觉表现。沉浸光感包含两部分能力：
 
-- 沉浸式系统材质：通过影响组件的背景色[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)和材质层滤镜，让组件呈现具有层次感和通透感的视觉表现。
+- 沉浸式系统材质：通过影响组件的背景色[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)和阴影[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)，让组件呈现具有层次感和通透感的视觉表现。
 - 空间动效：为组件的弹出过程增添形变、流光等动态表现，使动画更加灵动流畅。
 
 沉浸光感能够自动根据设备的算力档位和用户在系统设置中配置的沉浸光感强弱，自适应地调整沉浸式系统材质和动效的表现程度，使应用在不同档位的设备上都能呈现最佳效果。
 
 ## 沉浸式系统材质
 
-沉浸式系统材质（[ImmersiveMaterial](../reference/apis-arkui/arkts-apis-uimaterial.md#immersivematerial)）是ArkUI提供的一种新型材质对象，可以通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)接口、传入[ImmersiveOptions](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数，设置组件的系统材质，设置后会自动影响组件的背景色、边框颜色、边框宽度、阴影和材质层滤镜视觉效果。
+沉浸式系统材质（[ImmersiveMaterial](../reference/apis-arkui/arkts-apis-uimaterial.md#immersivematerial)）是ArkUI提供的一种新型材质对象，可以通过[systemMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)接口、传入[ImmersiveOptions](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)参数，设置组件的系统材质，设置后会自动影响组件的背景色、边框颜色、边框宽度和阴影视觉效果。
 
 沉浸式系统材质提供了五种材质样式[ImmersiveStyle](../reference/apis-arkui/arkts-apis-uimaterial.md#immersivestyle)，从薄到厚分别为：
 
@@ -29,7 +29,7 @@
 
 此外，沉浸式材质对象还支持配置以下属性：
 
-- [materialColor](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)：材质层赋色，该参数会为材质滤镜再混合一层纯色效果。该颜色需要带一定的透明度值，不能为纯不透明的颜色，否则会将材质滤镜效果完全遮挡。
+- [materialColor](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)：材质层赋色，该参数会为材质再混合一层纯色效果。该颜色需要带一定的透明度值，不能为纯不透明的颜色，否则会将材质效果完全遮挡。
 - [colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)：设置了材质对象的节点的子树是否自动适配材质到背景色的反色。只有材质参数足够薄时才会自动反色。
 - [applyShadow](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)：是否添加材质的阴影效果。当该参数为true时，材质中的阴影效果固定生效，优先于[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性。当该参数为false时，[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性生效，材质的阴影效果不生效。
 - [interactive](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)：是否为设置材质的组件设置交互形变效果，启用后组件在按压时产生弹性形变。
@@ -37,7 +37,7 @@
 
 ## 亮点特征
 
-- **高端精致的视觉品质**：沉浸光感通过材质滤镜、高光、阴影等多层效果叠加，为组件带来远超纯色背景的高端视觉表现，让应用界面更具质感。
+- **高端精致的视觉品质**：沉浸光感通过材质、高光、阴影等多层效果叠加，为组件带来远超纯色背景的高端视觉表现，让应用界面更具质感。
 
 - **自适应设备能力**：沉浸光感会根据设备算力自动调整效果表现，高档设备呈现完整效果，中低档设备自动降级，无需开发者手动适配，确保应用在各类设备上流畅运行。
 
@@ -511,8 +511,8 @@ struct MaterialInfoPage {
 
 沉浸式系统材质的效果会自动根据以下两个维度进行分档适配：
 
-1. **设备算力档位**：设备算力的高、中、低档由芯片决定。在高档和中档算力设备上，影响材质层滤镜效果和阴影[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)效果。在低档算力设备上，影响背景色[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)效果。
-2. **系统沉浸光感配置**：用户可以在设备的系统设置中选择沉浸光感的强弱，支持强、均衡和弱三档配置。配置为"强"时，材质的光感最为明亮，材质层的模糊、高光、阴影等效果最为丰富，组件呈现最佳的通透感和质感；配置为"均衡"时，效果在视觉品质与性能之间取得平衡；配置为"弱"时，效果最为精简，仅保留基础的背景色和边框表现。
+1. **设备算力档位**：设备算力的高、中、低档由芯片决定。在高档和中档算力设备上，影响材质层效果和阴影[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)效果。在低档算力设备上，影响背景色[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)效果。
+2. **系统沉浸光感配置**：用户可以在设备的系统设置中选择沉浸光感的强弱，支持强、弱和均衡三档配置。配置为"强"时，材质的光感最为明亮，材质层的模糊、高光、阴影等效果最为丰富，组件呈现最佳的通透感和质感；配置为"弱"时，效果最为精简，仅保留基础的背景色和边框表现；配置为"均衡"时，效果在视觉品质与性能之间取得平衡。
 
 为组件设置了沉浸式系统材质后，在高档算力设备上，组件的弹出和消失过程会自动附带形变、流光等动效，使动画更加灵动流畅。动效无需开发者额外配置，由系统根据设备算力自动生效。
 
@@ -656,13 +656,17 @@ struct Index {
 
 ![systemMaterial](../reference/apis-arkui/figures/material_strong.PNG)
 
+沉浸光感设置为弱的效果：
+
+![systemMaterial](../reference/apis-arkui/figures/material_weak.PNG)
+
 沉浸光感设置为均衡的效果：
 
 ![systemMaterial](../reference/apis-arkui/figures/material_middle.png)
 
-沉浸光感设置为弱的效果：
+## 沉浸光感支持的组件
 
-![systemMaterial](../reference/apis-arkui/figures/material_weak.PNG)
+沉浸光感为ArkUI组件提供沉浸式系统材质和空间动效能力。当前支持沉浸光感的组件包括：[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)、[bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)、[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)/[ChipGroup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)、[Dialog](./arkts-base-dialog-overview.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[菜单控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md)、[Popup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)、[Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md)、[SegmentButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md)、[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)、[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md)、[Toast](./arkts-create-toast.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)。
 
 ## 约束和限制
 
@@ -692,11 +696,11 @@ Column() {
 
 浅色模式下材质效果：
 
-![materialLight](../reference/apis-arkui/arkui-ts/figures/materialLight.png)
+![materialLight](../reference/apis-arkui/figures/materialLight.png)
 
 深色模式下材质效果：
 
-![materialDark](../reference/apis-arkui/arkui-ts/figures/materialDark.png)
+![materialDark](../reference/apis-arkui/figures/materialDark.png)
 
 ### 自动反色
 
@@ -764,3 +768,5 @@ struct ColorInvertDemo {
 反色开启前后对比：
 
 ![colorInvert](../reference/apis-arkui/arkui-ts/figures/colorInvert.png)
+
+<!--RP1--><!--RP1End-->
