@@ -257,31 +257,32 @@ struct DepthComponentInstanceExample {
             occlusionWeight: 0.5
           })
       }
-        .width('100%')
-        .height('100%')
-        .depthMap($r('app.media.depth_map')) // 请开发者替换为实际的资源文件
-        .camera({
-          position: { x: 0, y: 0, z: 0 },
-          quaternion: { x: 0, y: 0, z: 0, w: 1 },
-          yFov: 1.05,
-          zNear: 0.1,
-          zFar: 100
-        })
-        .light({
-          direction: { x: 0, y: 0, z: -1 },
-          color: { red: 255, green: 255, blue: 255 },
-          intensity: 1
-        })
+      .width('100%')
+      .height('100%')
+      .depthMap($r('app.media.depth_map')) // 请开发者替换为实际的资源文件
+      .camera({
+        position: { x: 0, y: 0, z: 0 },
+        quaternion: { x: 0, y: 0, z: 0, w: 1 },
+        yFov: 1.05,
+        zNear: 0.1,
+        zFar: 100
+      })
+      .light({
+        direction: { x: 0, y: 0, z: -1 },
+        color: { red: 255, green: 255, blue: 255 },
+        intensity: 1
+      })
     }
     .width('100%')
     .padding(16)
   }
 }
 ```
+![toggle](figures/DepthComponent_position_1.png)
 
-### 示例2（实现文字部分内容被图片完全遮挡）
+### 示例2（实现文字部分仅设置深度遮挡效果）
 
-该示例通过配置子组件[SpatialEffectParams](ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)中的深度信息，配合深度图实现文字部分内容被图片完全遮挡。
+该示例通过配置子组件[SpatialEffectParams](ts-universal-attributes-spatial-effect-sys.md#spatialeffectparams)中的深度信息，配合深度图实现文字部分内容被图片遮挡。
 
 从API版本26.0.0开始，新增SpatialEffectParams。
 
@@ -297,31 +298,32 @@ struct DepthComponentInstanceExample {
         Text('Spatial Effect')
           .fontSize(100)
           .spatialEffect({
-            position: -10.0,  // 设置子组件深度信息
+            position: -2.0,  // 设置子组件深度信息
             occlusionWeight: 1.0
           })
       }
-        .width('100%')
-        .height('100%')
-        .depthMap($r('app.media.depth_map')) // 请开发者替换为实际的资源文件
-        .camera({
-          position: { x: 0, y: 0, z: 0 },
-          quaternion: { x: 0, y: 0, z: 0, w: 1 },
-          yFov: 1.05,
-          zNear: 0.1,
-          zFar: 100
-        })
-        .light({
-          direction: { x: 0, y: 0, z: -1 },
-          color: { red: 255, green: 255, blue: 255 },
-          intensity: 1
-        })
+      .width('100%')
+      .height('100%')
+      .depthMap($r('app.media.depth_map')) // 请开发者替换为实际的资源文件
+      .camera({
+        position: { x: 0, y: 0, z: 0 },
+        quaternion: { x: 0, y: 0, z: 0, w: 1 },
+        yFov: 1.05,
+        zNear: 0.1,
+        zFar: 100
+      })
+      .light({
+        direction: { x: 0, y: 0, z: -1 },
+        color: { red: 255, green: 255, blue: 255 },
+        intensity: 1
+      })
     }
     .width('100%')
     .padding(16)
   }
 }
 ```
+![toggle](figures/DepthComponent_position_2.png)
 
 ### 示例3（实现截取部分渲染内容）
 
@@ -334,41 +336,42 @@ struct DepthComponentInstanceExample {
 @Entry
 @Component
 struct DepthComponentInstanceExample {
-    build() {
-        Column() {
-            // 请开发者替换为实际的资源文件
-            DepthComponent($r('app.media.rgb1')) {
-                Text('Spatial Effect')
-                    .fontSize(100)
-                    .spatialEffect({
-                        position: -10.0,      // 设置子组件深度信息
-                        occlusionWeight: 1.0
-                    })
-            }
-            .width('100%')
-            .height('100%')
-            .depthMap($r('app.media.disp1')) // 请开发者替换为实际的资源文件
-            .camera({
-                position: { x: 0, y: 0, z: 0 },
-                quaternion: { x: 0, y: 0, z: 0, w: 1 },
-                yFov: 1.05,
-                zNear: 0.1,
-                zFar: 100,
-                cameraBufferCrop: {
-                    bufferWidth: 944,       // 背景图 background 宽度
-                    bufferHeight: 2048,     // 背景图 background 高度
-                    cropOffset: {x: 0.0, y: 0.0} as CropOffset,
-                    cropScale: 1.0
-                }
-            })
-            .light({
-                direction: { x: 0, y: 0, z: -1 },
-                color: { red: 255, green: 255, blue: 255 },
-                intensity: 1
-            })
+  build() {
+    Column() {
+      // 请开发者替换为实际的资源文件
+      DepthComponent($r('app.media.background')) {
+        Text('Spatial Effect')
+          .fontSize(100)
+          .spatialEffect({
+            position: -10.0,      // 设置子组件深度信息
+            occlusionWeight: 1.0
+          })
+      }
+      .width('100%')
+      .height('100%')
+      .depthMap($r('app.media.depth_map')) // 请开发者替换为实际的资源文件
+      .camera({
+        position: { x: 0, y: 0, z: 0 },
+        quaternion: { x: 0, y: 0, z: 0, w: 1 },
+        yFov: 1.05,
+        zNear: 0.1,
+        zFar: 100,
+        cameraBufferCrop: {
+          bufferWidth: 1262,       // 背景图 background 宽度
+          bufferHeight: 2560,      // 背景图 background 高度
+          cropOffset: {x: 100.0, y: 100.0} as CropOffset,
+          cropScale: 0.65
         }
-        .width('100%')
-        .padding(16)
+      })
+      .light({
+        direction: { x: 0, y: 0, z: -1 },
+        color: { red: 255, green: 255, blue: 255 },
+        intensity: 1
+      })
     }
+    .width('100%')
+    .padding(16)
+  }
 }
 ```
+![toggle](figures/DepthComponent_cameraBufferCrop_1.png)
