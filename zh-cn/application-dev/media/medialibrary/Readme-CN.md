@@ -25,6 +25,5 @@
   - [如何正确判断媒体资源类型](medialibrary-faqs/medialibrary-asset-judgment-faq.md)
   - [查看的媒体图片未包含地理位置信息](medialibrary-faqs/medialibrary-asset-hidesensitive-faq.md)
   - [如何正确处理高像素图片](multimedia-high-resolution-image.md)
-
 - [Media Library Kit术语](mediaLibrary-glossary.md)
 
