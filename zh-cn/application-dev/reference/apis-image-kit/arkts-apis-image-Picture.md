@@ -449,7 +449,7 @@ class MySequence implements rpc.Parcelable {
   marshalling(messageSequence: rpc.MessageSequence) {
     if(this.picture != null) {
       this.picture.marshalling(messageSequence);
-      console.info('Succceed in marshalling.');
+      console.info('Succeed in marshalling.');
       return true;
     } else {
       console.error('Failed to marshall.');
