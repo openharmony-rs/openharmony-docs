@@ -174,9 +174,9 @@ PixelMap的初始化选项。
 
 | 名称 | 类型          | 只读 | 可选| 说明         |
 | ---- | ------------- | ---- | ---- | ------------ |
-| size<sup>7+</sup> | [Size](#size) | 否   | 否   | 区域大小。   |
-| x<sup>7+</sup>    | number        | 否   | 否  | 区域左上角横坐标。单位为像素（px）。 |
-| y<sup>7+</sup>    | number        | 否  | 否  | 区域左上角纵坐标。单位为像素（px）。 |
+| size<sup>8+</sup> | [Size](#size) | 否   | 否   | 区域大小。   |
+| x<sup>8+</sup>    | number        | 否   | 否  | 区域左上角横坐标。单位为像素（px）。 |
+| y<sup>8+</sup>    | number        | 否  | 否  | 区域左上角纵坐标。单位为像素（px）。 |
 
 ## PackingOption
 
