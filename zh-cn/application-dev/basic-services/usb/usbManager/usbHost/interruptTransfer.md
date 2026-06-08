@@ -84,7 +84,7 @@
 
    ArkTS-Dyn示例：
    <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // 获取设备列表。
    let deviceList: usbManager.USBDevice[] = [];
