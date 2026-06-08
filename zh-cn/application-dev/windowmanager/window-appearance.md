@@ -303,17 +303,17 @@ struct Index {
     this.applyWindowBackgroundColor();
   }
 
-  // 将 0~255 的通道值转换成两位十六进制字符串，用于拼接 #AARRGGBB。
+  // 将0~255的通道值转换成两位十六进制字符串，用于拼接 #AARRGGBB。
   private toHex(value: number): string {
     return Math.round(value).toString(16).padStart(2, '0').toUpperCase();
   }
 
-  // 按 ARGB 顺序生成当前窗口背景色的十六进制字符串。
+  // 按ARGB顺序生成当前窗口背景色的十六进制字符串。
   private getColorValue(): string {
     return `#${this.toHex(this.alpha)}${this.toHex(this.red)}${this.toHex(this.green)}${this.toHex(this.blue)}`;
   }
  // ...
-  // 直接用 ColorMetrics.rgba(...) 设置窗口背景色。
+  // 直接用ColorMetrics.rgba(...)设置窗口背景色。
   private applyByColorMetrics(): void {
     if (!this.mainWindow) {
       this.statusText = 'Current window is unavailable.';
