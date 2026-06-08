@@ -253,7 +253,7 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001219744181](figures/h-cn_image_0000001219744185.png)
+![matrix4-copy](figures/matrix4-copy.png)
 
 ### combine
 
