@@ -1,4 +1,4 @@
-# 基于ArkTS脚本开发应用Skill
+# 基于ArkTS脚本的应用Skill开发指导
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -372,4 +372,4 @@
 
 针对应用Skill开发，可参考以下相关实例：
 
-- [音乐助手Skill示例工程（music-assistant）](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide)
+- [音乐助手Skill示例工程（music-assistant）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide)
