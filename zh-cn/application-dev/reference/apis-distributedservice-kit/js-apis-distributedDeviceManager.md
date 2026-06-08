@@ -34,6 +34,8 @@ createDeviceManager(bundleName: string): DeviceManager
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
 | 参数名     | 类型                                                 | 必填 | 说明                                                        |
@@ -114,6 +116,8 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 | 名称           | 类型  | 只读| 可选              |  说明    |
 | ---------------------- | ------------------------- | --- | ---- | -------- |
 | deviceId               | string                    | 否 | 否  | 设备标识符。实际值为udid-hash与appid和盐值基于sha256方式进行混淆后的值。|
@@ -127,6 +131,8 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 | 名称         | 值  | 说明              |
 | ----------- | ---- | --------------- |
 | UNKNOWN     | 0    | 设备物理上线，此时状态未知，在状态更改为可用之前，分布式业务无法使用。           |
@@ -139,6 +145,8 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 ### getAvailableDeviceListSync
 
 getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;
@@ -148,6 +156,8 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
 
 **返回值：**
 
@@ -189,6 +199,8 @@ getAvailableDeviceList(callback:AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                    |
@@ -197,12 +209,12 @@ getAvailableDeviceList(callback:AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 11600101 | Failed to execute the function.                                 |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 11600101 | Failed to execute the function.                                 |
 
 **示例：**
 
@@ -235,6 +247,8 @@ getAvailableDeviceList(): Promise&lt;Array&lt;DeviceBasicInfo&gt;&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **返回值：**
 
   | 类型                                                       | 说明                               |
@@ -243,12 +257,12 @@ getAvailableDeviceList(): Promise&lt;Array&lt;DeviceBasicInfo&gt;&gt;
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 11600101 | Failed to execute the function.                                 |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 11600101 | Failed to execute the function.                                 |
 
 **示例：**
 
@@ -274,6 +288,8 @@ getLocalDeviceNetworkId(): string
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **返回值：**
 
   | 类型                      | 说明              |
@@ -282,12 +298,12 @@ getLocalDeviceNetworkId(): string
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 11600101 | Failed to execute the function.                                 |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 11600101 | Failed to execute the function.                                 |
 
 **示例：**
 
@@ -315,6 +331,8 @@ getLocalDeviceName(): string
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **返回值：**
 
   | 类型                      | 说明              |
@@ -323,12 +341,12 @@ getLocalDeviceName(): string
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 11600101 | Failed to execute the function.                                 |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 11600101 | Failed to execute the function.                                 |
 
 **示例：**
 
@@ -356,6 +374,8 @@ getLocalDeviceType(): number
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **返回值：**
 
   | 类型                      | 说明              |
@@ -364,12 +384,12 @@ getLocalDeviceType(): number
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 11600101 | Failed to execute the function.                                 |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 11600101 | Failed to execute the function.                                 |
 
 **示例：**
 
@@ -397,6 +417,8 @@ getLocalDeviceId(): string
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **返回值：**
 
   | 类型                      | 说明              |
@@ -405,12 +427,12 @@ getLocalDeviceId(): string
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 11600101 | Failed to execute the function.                                 |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 11600101 | Failed to execute the function.                                 |
 
 **示例：**
 
@@ -438,6 +460,8 @@ getDeviceName(networkId: string): string
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明        |
@@ -452,13 +476,13 @@ getDeviceName(networkId: string): string
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified networkId is greater than 255. |
-| 11600101 | Failed to execute the function.                                 |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified networkId is greater than 255. |
+  | 11600101 | Failed to execute the function.                                 |
 
 **示例：**
 
@@ -488,6 +512,8 @@ getDeviceType(networkId: string): number
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明        |
@@ -502,13 +528,13 @@ getDeviceType(networkId: string): number
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified networkId is greater than 255. |
-| 11600101 | Failed to execute the function.                                 |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified networkId is greater than 255. |
+  | 11600101 | Failed to execute the function.                                 |
 
 **示例：**
 
@@ -538,6 +564,8 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名            | 类型                        | 必填   | 说明    |
@@ -547,14 +575,14 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
-| 11600101 | Failed to execute the function.                                 |
-| 11600104 | Discovery unavailable.                                          |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
+  | 11600101 | Failed to execute the function.                                 |
+  | 11600104 | Discovery unavailable.                                          |
 
 **示例：**
 
@@ -599,14 +627,16 @@ stopDiscovering(): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 11600101 | Failed to execute the function.                                 |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 11600101 | Failed to execute the function.                                 |
 
 **示例：**
 
@@ -633,6 +663,8 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名     | 类型                                                | 必填  | 说明         |
@@ -643,14 +675,14 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息                                                         |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified deviceId is greater than 255.  |
-| 11600101 | Failed to execute the function.                                 |
-| 11600103 | Authentication unavailable.                                     |
+  | 错误码ID | 错误信息                                                         |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified deviceId is greater than 255.  |
+  | 11600101 | Failed to execute the function.                                 |
+  | 11600103 | Authentication unavailable.                                     |
 
 **示例：**
 
@@ -697,6 +729,8 @@ unbindTarget(deviceId: string): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名   | 类型                      | 必填 | 说明       |
@@ -705,13 +739,13 @@ unbindTarget(deviceId: string): void
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified deviceId is greater than 255.  |
-| 11600101 | Failed to execute the function.                                 |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified deviceId is greater than 255.  |
+  | 11600101 | Failed to execute the function.                                 |
 
 **示例：**
 
@@ -739,6 +773,8 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                             |
@@ -748,12 +784,12 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
 
 **示例：**
 
@@ -792,6 +828,8 @@ off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChang
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                          |
@@ -801,12 +839,12 @@ off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChang
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
 
 **示例：**
 
@@ -845,6 +883,8 @@ on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&g
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                         |
@@ -854,12 +894,12 @@ on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&g
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
 
 **示例：**
 
@@ -897,6 +937,8 @@ off(type: 'discoverSuccess', callback?: Callback&lt;{ device: DeviceBasicInfo; }
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                          |
@@ -906,12 +948,12 @@ off(type: 'discoverSuccess', callback?: Callback&lt;{ device: DeviceBasicInfo; }
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
 
 **示例：**
 
@@ -949,6 +991,8 @@ on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;):
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                             |
@@ -958,12 +1002,12 @@ on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;):
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
 
 **示例：**
 
@@ -996,6 +1040,8 @@ off(type: 'deviceNameChange', callback?: Callback&lt;{ deviceName: string; }&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                             |
@@ -1005,12 +1051,12 @@ off(type: 'deviceNameChange', callback?: Callback&lt;{ deviceName: string; }&gt;
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
 
 **示例：**
 
@@ -1043,6 +1089,8 @@ on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                             |
@@ -1052,12 +1100,12 @@ on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
 
 **示例：**
 
@@ -1090,6 +1138,8 @@ off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): vo
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明                |
@@ -1099,12 +1149,12 @@ off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): vo
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
 
 **示例：**
 
@@ -1137,6 +1187,8 @@ on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+
 **参数：**
 
   | 参数名       | 类型                    | 必填   | 说明                                       |
@@ -1146,12 +1198,12 @@ on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
 **错误码：**
 
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
+  | 错误码ID | 错误信息                                                        |
+  | -------- | --------------------------------------------------------------- |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255.  |
 
 **示例：**
 
@@ -1179,6 +1231,8 @@ off(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
 
 **参数：**
 
