@@ -1,7 +1,7 @@
 # 剪贴板术语表
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @yang-yinghua-->
+<!--Owner: @yangxiaodong41-->
 <!--Designer: @guo867-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
