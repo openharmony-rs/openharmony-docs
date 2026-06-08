@@ -40,6 +40,7 @@ import { hichecker } from '@kit.PerformanceAnalysisKit';
 addCheckRule(rule: bigint): void
 
 添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈，当有相应规则触发时可在hilog中grep HiChecker查看运行信息。
+如果传入的规则级别为线程级别，则仅在当前线程中生效。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
@@ -47,13 +48,13 @@ addCheckRule(rule: bigint): void
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| rule   | bigint | 是   | 需要添加的规则。 |
+| rule   | bigint | 是   | 需要添加的规则。支持使用或运算组合多个规则。可选值包括：<br>RULE_CAUTION_PRINT_LOG（记录日志）、RULE_CAUTION_TRIGGER_CRASH（应用退出）、RULE_THREAD_CHECK_SLOW_PROCESS（检测耗时函数调用）等，详见常量定义。 |
 
 **错误码：**
 
-| 错误码ID | 错误信息 |
-| ------- | ----------------------------------------------------------------- |
-| 401 | the parameter check failed, only one bigint type parameter is needed  |
+| 错误码ID | 错误信息 | 说明 |
+| ------- | ----------- | ---------------- |
+| 401 | the parameter check failed, only one bigint type parameter is needed  | 参数检查失败，需要传入一个bigint类型参数。请检查参数类型、参数数量和参数值是否正确。 |
 
 **示例：**
 
@@ -75,7 +76,7 @@ try {
 
 removeCheckRule(rule: bigint): void
 
-删除一条或多条规则，删除的规则后续将不再生效。
+删除一条或多条规则，删除的规则后续将不再生效。如果传入的规则级别为线程级别，则仅从当前线程中删除。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
@@ -87,9 +88,9 @@ removeCheckRule(rule: bigint): void
 
 **错误码：**
 
-| 错误码ID | 错误信息 |
-| ------- | ----------------------------------------------------------------- |
-| 401 | the parameter check failed, only one bigint type parameter is needed  |
+| 错误码ID | 错误信息 | 说明 |
+| ------- | ------------------------------ | ------------------------------ |
+| 401 | the parameter check failed, only one bigint type parameter is needed  | 参数检查失败，需要传入一个bigint类型参数。请检查参数类型、参数数量和参数值是否正确。 |
 
 **示例：**
 
@@ -129,9 +130,9 @@ containsCheckRule(rule: bigint): boolean
 
 **错误码：**
 
-| 错误码ID | 错误信息 |
-| ------- | ----------------------------------------------------------------- |
-| 401 | the parameter check failed, only one bigint type parameter is needed  |
+| 错误码ID | 错误信息 | 说明 |
+| ------- | ------------------ | ------------------ |
+| 401 | the parameter check failed, only one bigint type parameter is needed  | 参数检查失败，需要传入一个bigint类型参数。请检查参数类型、参数数量和参数值是否正确。 |
 
 **示例：**
 
@@ -260,7 +261,7 @@ contains(rule: bigint): boolean
 
 ```ts
 // 添加一条规则
-hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
+hichecker.addCheckRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
 
 // 查询是否包含
 hichecker.contains(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS); // return true;
