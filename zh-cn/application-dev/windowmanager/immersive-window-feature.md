@@ -173,9 +173,16 @@ interface Rect {
         }
   
         try {
-     <!--@[ImmersiveLayout_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayout/entry/src/main/ets/entryability/EntryAbility.ets) -->
-     
-     ``` TypeScript
+          const mainWindow: window.Window = windowStage.getMainWindowSync();  //获取应用主窗口
+          await mainWindow.setWindowLayoutFullScreen(true);  //设置窗口进入沉浸式
+          await mainWindow.setSpecificSystemBarEnabled('status', false);  //设置状态栏隐藏
+        } catch (e) {
+          console.error(`Failed to set status bar to invisible`);
+        }
+      });
+    }
+    // ...
+  ```
      import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
      import { hilog } from '@kit.PerformanceAnalysisKit';
      import { window } from '@kit.ArkUI';
