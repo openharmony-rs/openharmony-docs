@@ -63,11 +63,11 @@ enum OH_AudioConverter_Result
 | 枚举项 | 描述 |
 | -- | -- |
 | AUDIOCONVERTER_SUCCESS = 0 |  调用成功。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_INVALID_PARAM = 1 |  函数输入参数无效。<br>**起始版本：** 26.0.0 |
+| AUDIOCONVERTER_ERROR_INVALID_PARAM = 1 |  函数输入参数无效，例如格式转换器指针为空。<br>**起始版本：** 26.0.0 |
 | AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT = 2 |  不支持的音频格式。例如不支持的编码类型、采样格式等。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_SYSTEM = 3 |  系统通用错误。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED = 4 |  内存分配失败。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL = 5 |  缓冲容量不足。<br>**起始版本：** 26.0.0 |
+| AUDIOCONVERTER_ERROR_SYSTEM = 3 |  系统通用错误，例如使用已销毁的格式转换器执行格式转换。<br>**起始版本：** 26.0.0 |
+| AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED = 4 |  内存分配失败，例如内部输出数据缓冲区内存分配失败。<br>**起始版本：** 26.0.0 |
+| AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL = 5 |  设置的存储输出数据的容量不足以存储一帧输出数据量。<br>**起始版本：** 26.0.0 |
 | AUDIOCONVERTER_ERROR_NOT_INITIALIZED = 6 |  音频转换器实例未初始化。<br>**起始版本：** 26.0.0 |
 | AUDIOCONVERTER_ERROR_CALLBACK_INVALID = 7 |  回调函数无效。<br>**起始版本：** 26.0.0 |
 | AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET = 8 |  未设置回调函数。<br>**起始版本：** 26.0.0 |
