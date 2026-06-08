@@ -214,13 +214,13 @@ replyUiAction(action: number, actionResult: string): void
 
 **错误码：**
 
-  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-  | 错误码ID | 错误信息                                                        |
-  | -------- | --------------------------------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-  | 202 | Permission verification failed. A non-system application calls a system API.                              |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified actionResult is greater than 255. |
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified actionResult is greater than 255. |
 
 **示例：**
 
@@ -270,13 +270,13 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
 **错误码：**
 
-  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-  | 错误码ID | 错误信息                                                        |
-  | -------- | --------------------------------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API.    |
-  | 202 | Permission verification failed. A non-system application calls a system API.                            |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.    |
+| 202 | Permission verification failed. A non-system application calls a system API.                            |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
 
 **示例：**
 
@@ -330,13 +330,13 @@ off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 
 **错误码：**
 
-  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-  | 错误码ID | 错误信息                                                        |
-  | -------- | --------------------------------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API.    |
-  | 202 | Permission verification failed. A non-system application calls a system API.                              |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.    |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
 
 **示例：**
 
@@ -377,14 +377,14 @@ setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: number): void
 
 **错误码：**
 
-  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-  | 错误码ID | 错误信息                                                        |
-  | -------- | --------------------------------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-  | 202 | Permission verification failed. A non-system application calls a system API.                              |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-  | 11600102 | Failed to obtain service.                                 |
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 11600102 | Failed to obtain service.                                 |
 
 **示例：**
 
@@ -432,16 +432,16 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 **错误码：**
 
-  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-  | 错误码ID | 错误信息                                                        |
-  | -------- | --------------------------------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-  | 202 | Permission verification failed. A non-system application calls a system API.                              |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 500. |
-  | 11600102 | Failed to obtain service.                                 |
-  | 11600106 | Get data from cloud fail. |
-  | 11600107 | A login account is required.  |
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 500. |
+| 11600102 | Failed to obtain service.                                 |
+| 11600106 | Get data from cloud fail. |
+| 11600107 | A login account is required.  |
 
 **示例：**
 
@@ -490,14 +490,14 @@ putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfileInfo&gt;):
 
 **错误码：**
 
-  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-  | 错误码ID | 错误信息                                                        |
-  | -------- | --------------------------------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-  | 202 | Permission verification failed. A non-system application calls a system API.                              |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 500. |
-  | 11600102 | Failed to obtain service.                                 |
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 500. |
+| 11600102 | Failed to obtain service.                                 |
 
 **示例：**
 
@@ -547,15 +547,15 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;Device
 
 **错误码：**
 
-  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-  | 错误码ID | 错误信息                                                        |
-  | -------- | --------------------------------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-  | 202 | Permission verification failed. A non-system application calls a system API.                              |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
-  | 11600102 | Failed to obtain service.                                 |
-  | 11600106 | Get data from cloud fail. |
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
+| 11600102 | Failed to obtain service.                                 |
+| 11600106 | Get data from cloud fail. |
 
 **示例：**
 
@@ -615,14 +615,14 @@ getLocalDisplayDeviceName(maxNameLength: number): Promise&lt;string&gt;
 
 **错误码：**
 
-  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-  | 错误码ID | 错误信息                                                        |
-  | -------- | --------------------------------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-  | 202 | Permission verification failed. A non-system application calls a system API.                              |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
-  | 11600102 | Failed to obtain service.                                 |
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
+| 11600102 | Failed to obtain service.                                 |
 
 **示例：**
 
@@ -672,17 +672,17 @@ setLocalDeviceName(deviceName: string): Promise&lt;number&gt;
 
 **错误码：**
 
-  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-  | 错误码ID | 错误信息                                                        |
-  | -------- | --------------------------------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-  | 202 | Permission verification failed. A non-system application calls a system API.                              |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
-  | 11600102 | Failed to obtain service.                                 |
-  | 11600106 | Failed to get data from the cloud. |
-  | 11600107 | A login account is required.  |
-  | 11600108 | The device name contains non-compliant content. |
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
+| 11600102 | Failed to obtain service.                                 |
+| 11600106 | Failed to get data from the cloud. |
+| 11600107 | A login account is required.  |
+| 11600108 | The device name contains non-compliant content. |
 
 **示例：**
 
@@ -733,17 +733,17 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt;number&gt;
 
 **错误码：**
 
-  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-  | 错误码ID | 错误信息                                                        |
-  | -------- | --------------------------------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-  | 202 | Permission verification failed. A non-system application calls a system API.                              |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
-  | 11600102 | Failed to obtain service.                                 |
-  | 11600106 | Failed to get data from the cloud. |
-  | 11600107 | A login account is required.  |
-  | 11600108 | The device name contains non-compliant content. |
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; |
+| 11600102 | Failed to obtain service.                                 |
+| 11600106 | Failed to get data from the cloud. |
+| 11600107 | A login account is required.  |
+| 11600108 | The device name contains non-compliant content. |
 
 **示例：**
 
@@ -794,15 +794,15 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
 
 **错误码：**
 
-  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-  | 错误码ID | 错误信息                                                        |
-  | -------- | --------------------------------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-  | 202 | Permission verification failed. A non-system application calls a system API.                              |
-  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Parameter verification failed; |
-  | 11600102 | Failed to obtain service.                                 |
-  | 11600107 | A login account is required.  |
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Parameter verification failed; |
+| 11600102 | Failed to obtain service.                                 |
+| 11600107 | A login account is required.  |
 
 **示例：**
 
@@ -856,14 +856,14 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
 **错误码：**
 
-  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-  | 错误码ID    | 错误信息                                                                                                              |
-  |----------|-------------------------------------------------------------------------------------------------------------------|
-  | 201      | User permission verify failed.            |
-  | 202      | The caller is not a system application.                                    |
-  | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed; |
-  | 11600101 | Failed to execute the function.                                                                        |
+| 错误码ID    | 错误信息                                                                                                              |
+|----------|-------------------------------------------------------------------------------------------------------------------|
+| 201      | User permission verify failed.            |
+| 202      | The caller is not a system application.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed; |
+| 11600101 | Failed to execute the function.                                                                        |
 
 **示例：**
 
@@ -910,13 +910,13 @@ restoreLocalDeviceName(): void
 
 **错误码：**
 
-  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-  | 错误码ID | 错误信息                                                        |
-  | -------- | --------------------------------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-  | 202 | Permission verification failed. A non-system application calls a system API.                              |
-  | 11600102 | Failed to obtain the service.                                 |
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 11600102 | Failed to obtain the service.                                 |
 
 **示例：**
 
@@ -953,13 +953,13 @@ restoreLocalDeivceName(): void
 
 **错误码：**
 
-  以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
 
-  | 错误码ID | 错误信息                                                        |
-  | -------- | --------------------------------------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-  | 202 | Permission verification failed. A non-system application calls a system API.                              |
-  | 11600102 | Failed to obtain the service.                                 |
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 11600102 | Failed to obtain the service.                                 |
 
 **示例：**
 
