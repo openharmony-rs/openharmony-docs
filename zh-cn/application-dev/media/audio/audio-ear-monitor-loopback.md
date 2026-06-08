@@ -758,7 +758,7 @@ async function enable(updateCallback?: (msg: string, isError: boolean) => void):
         statusChangeCallback(status);
       }
     } catch (err) {
-      console.error(`Failed to use enable function. code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to use enable function. Code: ${err.code}, message: ${err.message}`);
       // ...
     }
   } else {
