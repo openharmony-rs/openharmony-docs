@@ -213,23 +213,30 @@
     // ...
   }
   ```
-  import { display, screenshot, window } from '@kit.ArkUI';
-  import { common, abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { image } from '@kit.ImageKit';
-  
-  const DOMAIN = 0x0000;
-  
-  @Entry
-  @Component
-  struct Index {
-    @State statusText: string = 'Tap a button to run the snapshot sample.';
-    @State logText: string = 'ready\n';
-    @State imageWidth: number = 0;
-    @State imageHeight: number = 0;
-    @State previewPixelMap?: image.PixelMap = undefined;
-    @State displayIdText: string = '0';
-    @State displayInfoText: string = '-';
+
+### 多窗口截图
+可通过调用[getMainWindowSnapshot()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetmainwindowsnapshot21)接口，针对一个或多个主窗（通过windowId指定）进行截图。  
+
+  <!--@[SnapshotMore_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
+
+## 屏幕截图
+
+屏幕截图是指对当前屏幕进行截屏。
+
+屏幕截图相关接口的使用及示例如下所示：
+
+- [screenshot.pick()](../reference/apis-arkui/js-apis-screenshot.md#screenshotpick)接口仅支持获取主屏的屏幕截图，允许区域截屏，用户通过手势交互选择屏幕任意区域。
+
+- [screenshot.capture()](../reference/apis-arkui/js-apis-screenshot.md#screenshotcapture14)接口可以通过设置不同的displayId针对不同屏幕进行截图，且只能截取全屏。
+
+- 监听屏幕截图：注册屏幕截图监听后，每当有截屏发生时，都会触发注册的回调函数。
+
+  - [on('screenshot')](../reference/apis-arkui/arkts-apis-window-Window.md#onscreenshot9)接口只能监听截屏动作，无法区分具体的截屏事件类型。对控制中心截屏、hdc命令截屏、整屏截屏接口等生效。
+
+  - [on('screenshotAppEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#onscreenshotappevent20)接口可以监听截屏动作，并能返回触发的截屏事件类型[ScreenshotEventType](../reference/apis-arkui/arkts-apis-window-e.md#screenshoteventtype20)。比如系统截屏成功或中止、滚动截屏开始或结束等。
+
+  - 当不需要再对进行屏幕截图进行监听时，可通过对应off接口（[off('screenshot')](../reference/apis-arkui/arkts-apis-window-Window.md#offscreenshot9)/[off('screenshotAppEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#offscreenshotappevent20)）关闭监听。
+
 <!--@[SnapshotScreen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -358,291 +365,6 @@ struct Index {
   // ...
 }
 ```
-  
-    private currentWindow?: window.Window = undefined;
-  
-    aboutToAppear(): void {
-      void this.initWindow();
-      this.initDisplayInfo();
-    }
-    // 在页面中记录接口调用结果，同时输出到 hilog，便于调试。
-    private appendLog(message: string): void {
-      this.statusText = message;
-      hilog.info(DOMAIN, 'snapshotSample', message);
-  
-      const line = `${Date.now()}: ${message}`;
-      this.logText += `${line}\n`;
-      hilog.info(DOMAIN, 'snapshotSample', line);
-    }
-  
-    // 获取当前应用窗口。window.snapshot 系列接口需要通过 Window 对象调用。
-    private async initWindow(): Promise<void> {
-      try {
-        const hostContext = this.getUIContext().getHostContext();
-        if (!hostContext) {
-          throw new Error('Host context is unavailable.');
-        }
-  
-        const context = hostContext as common.UIAbilityContext;
-        this.currentWindow = await window.getLastWindow(context);
-  
-        const windowId = this.currentWindow.getWindowProperties().id;
-        this.statusText = `windowId=${windowId}`;
-        this.appendLog(`window initialized, windowId=${windowId}`);
-      } catch (err) {
-        this.statusText = `Initialization failed: ${JSON.stringify(err)}`;
-        this.appendLog(`Initialization failed: ${JSON.stringify(err)}`);
-        this.appendLog(this.statusText);
-      }
-    }
-    // ...
-    // getMainWindowSnapshot 需要使用 ohos.permission.CUSTOM_SCREEN_CAPTURE 权限。
-    private async requestCapturePermission(): Promise<boolean> {
-      try {
-        const hostContext = this.getUIContext().getHostContext();
-        if (!hostContext) {
-          this.statusText = 'permission request failed: hostContext is unavailable';
-          this.appendLog('permission request failed: hostContext is unavailable');
-          return false;
-        }
-  
-        const context = hostContext as common.UIAbilityContext;
-        const atManager = abilityAccessCtrl.createAtManager();
-        const result = await atManager.requestPermissionsFromUser(context, [
-          'ohos.permission.CUSTOM_SCREEN_CAPTURE' as Permissions
-        ]);
-  
-        const granted = result.authResults.length > 0 && result.authResults[0] === 0;
-        this.statusText = `permission granted=${granted}`;
-        this.appendLog(`permission granted=${granted}`);
-        return granted;
-      } catch (err) {
-        this.statusText = `permission request failed: ${JSON.stringify(err)}`;
-        this.appendLog(`permission request failed: ${JSON.stringify(err)}`);
-        return false;
-      }
-    }
-  
-    // 通过当前主窗口 ID 获取主窗口截图。
-    private async takeMainWindowSnapshot(): Promise<void> {
-      if (!this.currentWindow) {
-        await this.initWindow();
-      }
-  
-      if (!this.currentWindow) {
-        this.appendLog('Current window is unavailable.');
-        return;
-      }
-  
-      const granted = await this.requestCapturePermission();
-      if (!granted) {
-        this.appendLog('CUSTOM_SCREEN_CAPTURE permission denied or unavailable.');
-        return;
-      }
-  
-      try {
-        const windowId = this.currentWindow.getWindowProperties().id;
-        const pixelMaps = await window.getMainWindowSnapshot([windowId], {
-          useCache: false
-        });
-  
-        const pixelMap = pixelMaps[0];
-        if (!pixelMap) {
-          this.appendLog(`getMainWindowSnapshot(${windowId}) returned undefined.`);
-          return;
-        }
-  
-        await this.updatePreview(pixelMap, 'window.getMainWindowSnapshot');
-      } catch (err) {
-        this.appendLog(`getMainWindowSnapshot failed: ${JSON.stringify(err)}`);
-      }
-    }
-    // ...
-  
-    build() {
-    // ...
-  }
-  ```
-  import { image } from '@kit.ImageKit';
-  
-  const DOMAIN = 0x0000;
-  
-  @Entry
-  @Component
-  struct Index {
-    @State statusText: string = 'Tap a button to run the snapshot sample.';
-    @State logText: string = 'ready\n';
-    @State imageWidth: number = 0;
-    @State imageHeight: number = 0;
-    @State previewPixelMap?: image.PixelMap = undefined;
-    @State displayIdText: string = '0';
-    @State displayInfoText: string = '-';
-    @State pickRectText: string = '-';
-  
-    private currentWindow?: window.Window = undefined;
-  
-    aboutToAppear(): void {
-      void this.initWindow();
-      this.initDisplayInfo();
-    }
-    // 在页面中记录接口调用结果，同时输出到 hilog，便于调试。
-    private appendLog(message: string): void {
-      this.statusText = message;
-      hilog.info(DOMAIN, 'snapshotSample', message);
-  
-      const line = `${Date.now()}: ${message}`;
-      this.logText += `${line}\n`;
-      hilog.info(DOMAIN, 'snapshotSample', line);
-    }
-  
-    // 获取当前应用窗口。window.snapshot 系列接口需要通过 Window 对象调用。
-    private async initWindow(): Promise<void> {
-      try {
-        const hostContext = this.getUIContext().getHostContext();
-        if (!hostContext) {
-          throw new Error('Host context is unavailable.');
-        }
-  
-        const context = hostContext as common.UIAbilityContext;
-        this.currentWindow = await window.getLastWindow(context);
-  
-        const windowId = this.currentWindow.getWindowProperties().id;
-        this.statusText = `windowId=${windowId}`;
-        this.appendLog(`window initialized, windowId=${windowId}`);
-      } catch (err) {
-        this.statusText = `Initialization failed: ${JSON.stringify(err)}`;
-        this.appendLog(`Initialization failed: ${JSON.stringify(err)}`);
-        this.appendLog(this.statusText);
-      }
-    }
-    // 获取当前设备可用的 displayId，供 screenshot.capture 使用。
-    private async initDisplayInfo(): Promise<void> {
-      try {
-        const defaultDisplay = display.getDefaultDisplaySync();
-        this.displayIdText = `${defaultDisplay.id}`;
-  
-        const displays = await display.getAllDisplays();
-        this.displayInfoText = displays.map((item) => `${item.id}`).join(', ');
-        this.statusText = `available displayIds=${this.displayInfoText}`;
-      } catch (err) {
-        this.statusText = `init display info failed: ${JSON.stringify(err)}`;
-        hilog.error(DOMAIN, 'screenshotSample', this.statusText);
-      }
-    }
-  
-    // 截图前确认当前窗口已初始化。
-    private async ensureWindow(): Promise<boolean> {
-      if (!this.currentWindow) {
-        await this.initWindow();
-      }
-  
-      if (!this.currentWindow) {
-        this.statusText = 'Current window is unavailable.';
-        this.appendLog(this.statusText);
-        return false;
-      }
-  
-      return true;
-    }
-  
-    // 将截图结果展示到页面预览区域，并读取 PixelMap 宽高。
-    private updatePreview(pixelMap: image.PixelMap, source: string): void {
-      this.previewPixelMap = pixelMap;
-  
-      try {
-        const imageInfo = pixelMap.getImageInfoSync();
-        this.imageWidth = imageInfo.size.width;
-        this.imageHeight = imageInfo.size.height;
-        this.statusText = `${source} success, size=${this.imageWidth}x${this.imageHeight}`;
-        this.appendLog(`${source} success, size=${this.imageWidth}x${this.imageHeight}`);
-      } catch (err) {
-        this.imageWidth = 0;
-        this.imageHeight = 0;
-        this.statusText = `${source} success, but getImageInfoSync failed: ${JSON.stringify(err)}`;
-        this.appendLog(`${source} success, but getImageInfoSync failed: ${JSON.stringify(err)}`);
-      }
-  
-      hilog.info(DOMAIN, 'screenshotSample', this.statusText);
-      this.appendLog(this.statusText);
-    }
-  
-    // 异步截取当前窗口。隐私窗口场景下，截图结果会受到隐私模式保护。
-    private async takeWindowSnapshot(): Promise<void> {
-      if (!await this.ensureWindow()) {
-        return;
-      }
-  
-      try {
-        const pixelMap = await this.currentWindow!.snapshot();
-        await this.updatePreview(pixelMap, 'window.snapshot');
-      } catch (err) {
-        this.statusText = `window.snapshot failed: ${JSON.stringify(err)}`;
-        this.appendLog(this.statusText);
-      }
-    }
-  
-    // 同步截取当前窗口。调用方式更直接，但会同步返回 PixelMap。
-    private takeWindowSnapshotSync(): void {
-      if (!this.currentWindow) {
-        this.statusText = 'window.snapshotSync failed: current window is unavailable.';
-        this.appendLog(this.statusText);
-        return;
-      }
-  
-      try {
-        const pixelMap = this.currentWindow.snapshotSync();
-        void this.updatePreview(pixelMap, 'window.snapshotSync');
-      } catch (err) {
-        this.statusText = `window.snapshotSync failed: ${JSON.stringify(err)}`;
-        this.appendLog(this.statusText);
-      }
-    }
-  
-    // 忽略隐私模式截取当前窗口。仅在业务明确需要且设备支持时使用。
-    private async takeWindowSnapshotIgnorePrivacy(): Promise<void> {
-      if (!await this.ensureWindow()) {
-        return;
-      }
-  
-      try {
-        const pixelMap = await this.currentWindow!.snapshotIgnorePrivacy();
-        await this.updatePreview(pixelMap, 'window.snapshotIgnorePrivacy');
-      } catch (err) {
-        this.statusText = `window.snapshotIgnorePrivacy failed: ${JSON.stringify(err)}`;
-        this.appendLog(this.statusText);
-      }
-    }
-    // ...
-  
-    build() {
-    // ...
-  }
-  ```
-
-### 多窗口截图
-可通过调用[getMainWindowSnapshot()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetmainwindowsnapshot21)接口，针对一个或多个主窗（通过windowId指定）进行截图。  
-
-  <!--@[SnapshotMore_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
-
-## 屏幕截图
-
-屏幕截图是指对当前屏幕进行截屏。
-
-屏幕截图相关接口的使用及示例如下所示：
-
-- [screenshot.pick()](../reference/apis-arkui/js-apis-screenshot.md#screenshotpick)接口仅支持获取主屏的屏幕截图，允许区域截屏，用户通过手势交互选择屏幕任意区域。
-
-- [screenshot.capture()](../reference/apis-arkui/js-apis-screenshot.md#screenshotcapture14)接口可以通过设置不同的displayId针对不同屏幕进行截图，且只能截取全屏。
-
-- 监听屏幕截图：注册屏幕截图监听后，每当有截屏发生时，都会触发注册的回调函数。
-
-  - [on('screenshot')](../reference/apis-arkui/arkts-apis-window-Window.md#onscreenshot9)接口只能监听截屏动作，无法区分具体的截屏事件类型。对控制中心截屏、hdc命令截屏、整屏截屏接口等生效。
-
-  - [on('screenshotAppEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#onscreenshotappevent20)接口可以监听截屏动作，并能返回触发的截屏事件类型[ScreenshotEventType](../reference/apis-arkui/arkts-apis-window-e.md#screenshoteventtype20)。比如系统截屏成功或中止、滚动截屏开始或结束等。
-
-  - 当不需要再对进行屏幕截图进行监听时，可通过对应off接口（[off('screenshot')](../reference/apis-arkui/arkts-apis-window-Window.md#offscreenshot9)/[off('screenshotAppEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#offscreenshotappevent20)）关闭监听。
- 
-<!--@[SnapshotScreen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
 
 ## 组件截图
 
