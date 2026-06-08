@@ -392,37 +392,37 @@
 
    ArkTS-Dyn示例：
    <!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
-    // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
-    try {
-      let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
-      if (claimInterfaceResult !== 0) {
-        console.error(`claimInterface error = ${claimInterfaceResult}`)
-        this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
-        return;
-      }
-    } catch (error) {
-      console.error(`USB claimInterface failed: ${error}`);
-      this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
-      return;
-    }
-
-    // 传输类型为“实时传输”时，需设置设备接口。设置成功返回0，注册失败返回其他错误码。
-    if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
-      try {
-        let setInterfaceResult = usbManager.setInterface(devicePipe, usbInterface);
-        if (setInterfaceResult !== 0) {
-          console.error(`setInterfaceResult error = ${setInterfaceResult}`)
-          this.logInfo_ += '\n[ERROR] setInterfaceResult error = ' + JSON.stringify(setInterfaceResult);
-          return;
-        }
-      } catch (error) {
-        console.error(`USB setInterface failed: ${error}`);
-        this.logInfo_ += '\n[ERROR] USB setInterface failed: ' + JSON.stringify(error);
-        return;
-      }
-    }
+   // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
+   try {
+     let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
+     if (claimInterfaceResult !== 0) {
+       console.error(`claimInterface error = ${claimInterfaceResult}`)
+       this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+       return;
+     }
+   } catch (error) {
+     console.error(`USB claimInterface failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
+     return;
+   }
+   
+   // 传输类型为“实时传输”时，需设置设备接口。设置成功返回0，注册失败返回其他错误码。
+   if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
+     try {
+       let setInterfaceResult = usbManager.setInterface(devicePipe, usbInterface);
+       if (setInterfaceResult !== 0) {
+         console.error(`setInterfaceResult error = ${setInterfaceResult}`)
+         this.logInfo_ += '\n[ERROR] setInterfaceResult error = ' + JSON.stringify(setInterfaceResult);
+         return;
+       }
+     } catch (error) {
+       console.error(`USB setInterface failed: ${error}`);
+       this.logInfo_ += '\n[ERROR] USB setInterface failed: ' + JSON.stringify(error);
+       return;
+     }
+   }
    ```
 
    ArkTS-Sta示例：   
