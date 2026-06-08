@@ -612,8 +612,12 @@ struct Parent {
   build() {
     Column() {
       Text(`父组件的sourceNumber：` + this.sourceNumber)
+        .fontSize(20)
+        .margin(10)
       Child({ sourceNumber: this.sourceNumber })
       Button('父组件更改sourceNumber')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.sourceNumber++;
         })
@@ -635,15 +639,24 @@ struct Child {
   build() {
     Column() {
       Text(this.memberMessage)
+        .fontSize(20)
+        .margin(10)
       Text(`子组件的sourceNumber：` + this.sourceNumber.toString())
+        .fontSize(20)
+        .margin(10)
       Button('子组件更改memberMessage')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.memberMessage = 'Hello memberMessage';
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![link-watch](../figures/link1.gif)
 
 ### \@Link支持联合类型
 
