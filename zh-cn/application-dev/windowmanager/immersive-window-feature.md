@@ -155,6 +155,34 @@ interface Rect {
 2. 调用[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)隐藏状态栏。  
 
   <!--@[SystemBarEnabled_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/SystemBarEnabled/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { window } from '@kit.ArkUI';
+  
+  const DOMAIN = 0x0000;
+  
+  export default class EntryAbility extends UIAbility {
+      // ...
+  
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      windowStage.loadContent('pages/Index', async (err) => {
+        if (err.code) {
+          return;
+        }
+  
+        try {
+          const mainWindow: window.Window = windowStage.getMainWindowSync();  //获取应用主窗口
+          await mainWindow.setWindowLayoutFullScreen(true);  //设置窗口进入沉浸式
+          await mainWindow.setSpecificSystemBarEnabled('status', false);  //设置状态栏隐藏
+        } catch (e) {
+          console.error(`Failed to set status bar to invisible`);
+        }
+      });
+    }
+    // ...
+  ```
 
 ## 适配沉浸式布局实现沉浸式效果
 
