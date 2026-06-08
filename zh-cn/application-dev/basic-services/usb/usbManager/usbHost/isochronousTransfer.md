@@ -472,7 +472,7 @@
 
    ArkTS-Sta示例：   
    <!-- @[interruptTransfer_interruptTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    let transferParams: usbManager.UsbDataTransferParams | undefined = undefined;
    try {
@@ -490,7 +490,7 @@
        buffer: new Uint8Array(10),
        isoPacketCount: 2,
      };
-
+   
      transferParams.callback = (err: BusinessError | null, callBackData: usbManager.SubmitTransferCallback | undefined) => {
        console.info(`callBackData = ${callBackData}`);
        this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
