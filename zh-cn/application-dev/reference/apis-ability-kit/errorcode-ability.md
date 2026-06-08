@@ -844,7 +844,7 @@ Failed to obtain the target application information.
 
 **错误描述**
 
-调用[URI授权相关接口](js-apis-uripermissionmanager-sys.md)时，无法根据应用包名和分身索引获取到目标应用的相关信息。
+调用[URI权限管理](js-apis-uripermissionmanager-sys.md)相关接口时，无法根据应用包名和分身索引获取到目标应用的相关信息。
 
 **可能原因**
 
@@ -1361,7 +1361,7 @@ Failed to send request to system service.
 
 **可能原因** 
 
-设置快照使能状态或者重建快照时，发送请求失败。 
+设置快启使能状态或者重新初始化快启时，发送请求失败。
 
 **处理步骤** 
 
