@@ -463,7 +463,6 @@ struct Index {
   }
 }
 ```
-![zh-cn_image_selecttitlebar_example02](figures/image-selecttitlebar-example02.png)
 ArkTS-Sta示例：
 ```ts
 import { Entry, Component, $r, Row, Column, Divider } from '@kit.ArkUI';
@@ -731,7 +730,6 @@ struct Index {
   }
 }
 ```
-![zh-cn_image_selecttitlebar_example03](figures/image-selecttitlebar-example03.png)
 ArkTS-Sta示例：
 ```ts
 import { Entry, Component, $r, Row, Column, Divider, SymbolGlyphModifier } from '@kit.ArkUI';
