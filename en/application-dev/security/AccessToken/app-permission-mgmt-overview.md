@@ -23,7 +23,7 @@ Determine the permissions required by your application based on the use cases of
 
 - All the permissions required by your application (including third-party libraries referenced by your application) must be declared one by one in the application's configuration file. For details, see [Declaring Permissions](declare-permissions.md).
 
-- Request only the least required permissions for your application. Do not apply for unnecessary or obsolete permissions. Excess permission requests can harm user experience. If users worry about application security, they avoid installing or using the application.
+- Request only the least required permissions for your application. Do not apply for unnecessary or obsolete permissions. Excess permission requests can cause users to worry about application security and degrade user experience, thereby affecting the application's installation rate and retention rate.
 
 - When requesting a sensitive permission, also specify the reason why this permission is required. Sensitive permissions are permissions closely related to user privacy, including those related to the location, camera, microphone, Calendar, fitness, body sensors, media, files, images and videos. For details, see [Requesting User Authorization](request-user-authorization.md).
 
@@ -69,11 +69,11 @@ The relationship between a permission group and its permissions is not fixed. Fo
 
   Token identity (token ID or **TokenID**) uniquely identifies an application in the system. The AccessTokenManager (ATM) service manages the application Access Token (AT) information based on the token ID. The AT information includes the application ID, sub-user ID, twin index, Ability Privilege Level (APL), and permission grant status. When resources are required, the system uses the token ID as the unique identifier to obtain the application's permission grant status and performs authentication based on the information to control the resource access behavior of the application.
 
-  In addition, the system supports the multi-user feature and the App Twin feature. Different users and the twin applications of the same application have their own AT information with different token IDs.
+  In addition, the system supports the multi-user feature and the App Twin feature. Different sub-users and twin applications of the same application have their own AT information with different token IDs.
 
 - APL
 
-  Both the applications and permissions are assigned with different APLs to prevent abuse of permissions.
+  To prevent applications from excessively requesting and abusing permissions, the system configures different permission scopes based on the APLs.
 
   The APL defines the priority of an application's permission request. Applications at different APLs can request different permissions.
 
@@ -85,7 +85,7 @@ The relationship between a permission group and its permissions is not fixed. Fo
   | -------- | -------- |
   | normal | Default APL of an application.|
   | system_basic | Application that provides basic system services.|
-  | system_core | Application that provides OS core abilities. <br>Only the APL of a system application or Mobile Device Management (MDM) application can be system_core.|
+  | system_core | Application that provides OS core abilities. <br>The APL of an application cannot be system_core.|
 
 - Permission APL
 
@@ -94,8 +94,8 @@ The relationship between a permission group and its permissions is not fixed. Fo
   | APL| Description| Available To|
   | -------- | -------- | -------- |
   | normal | Allows an application to access common system resources beyond the default rules, such as configuring Wi-Fi and invoking the camera to take photos.<br>Access to these resources (including data and functions) has minor risks on user privacy and other applications.| Applications with the normal or higher APL.|
-  | system_basic | Allows an application to access resources related to basic OS services (basic functions provided or preset by the system), such as system settings and identity authentication.<br>Access to these resources imposes low risks to user privacy and other applications.| - Applications with the system_basic or system_core APL.<br>- [Restricted permissions](restricted-permissions.md), which are some system_basic permissions that can be granted to normal applications via ACL.|
-  | system_core | Allows an application to access OS core resources, These resources are underlying core services of the system. If these resources are corrupted, the OS cannot run properly.| - Applications with the system_core APL.<br>- System applications only.|
+  | system_basic | Allows an application to access resources related to basic OS services (basic functions provided or preset by the system), such as system settings and identity authentication.<br>Access to these resources imposes high risks to user privacy and other applications.| - Applications with the system_basic or system_core APL.<br>- [Restricted permissions](restricted-permissions.md), which are some system_basic permissions that can be granted to normal applications via ACL.|
+  | system_core | Allows an application to access OS core resources. These resources are underlying core services of the system. If these resources are corrupted, the OS cannot run properly.| - Applications with the system_core APL.<br>- System applications only.|
 
 - ACL
 

@@ -159,7 +159,7 @@
 
 以下示例中，当@State装饰的变量message改变时，Father组件会刷新。由于Son组件使用@Prop接收了该变量，因此Father组件刷新的过程中会使用message的最新值去更新@Prop的值。@Prop更新后，会触发Son组件的刷新。
 
-<!-- @[prop_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageOne.ets) -->
+<!-- @[prop_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageOne.ets) --> 
 
 ``` TypeScript
 @Component
@@ -184,6 +184,7 @@ struct Father {
       Button(`father click`).onClick(() => {
         this.message += '*';
       })
+      // 父组件@State装饰的message传给子组件的message
       Son({ message: this.message })
     }
   }
@@ -194,12 +195,13 @@ struct Father {
 
 - \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了基本类型、Map、Set、Date、Array外，都会丢失类型。例如，对于通过NAPI提供的复杂类型（如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)），由于其部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据；同样，RegExp类型在拷贝过程中会丢失原类型，导致被\@Prop装饰后无法调用正则相关函数。
 
-- \@Prop不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
-  从API version 23开始，添加对\@Prop装饰Function类型变量的校验，编译期会报错。
+- \@Prop不支持装饰Function类型的变量，API version 23之前，应用在运行时会出现错误。
+
+   从API version 23开始，在应用编译时添加了相关校验，\@Prop装饰Function类型变量会提示ERROR，应在代码中删除Function类型变量的\@Prop装饰器。
 
 - 父组件传入undefined时，\@Prop装饰的变量仍使用本地默认值进行初始化。
   
-  <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwenty.ets) -->
+  <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwenty.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -219,6 +221,7 @@ struct Father {
   
   @Component
   struct Child {
+    // 父组件传入undefined时，@Prop装饰的变量仍使用本地默认值进行初始化
     @Prop count: number | undefined = 0;
   
     build() {
@@ -389,7 +392,7 @@ struct Index {
 
 在此示例中，图书类可以使用\@Observed装饰器，但不是必须的，只有在嵌套结构时需要此装饰器。这一点会在[从父组件中的\@State数组项到\@Prop class类型的同步](#从父组件中的state数组项到prop-class类型的同步)说明。
 
-<!-- @[prop_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFive.ets) -->
+<!-- @[prop_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFive.ets) --> 
 
 ``` TypeScript
 class Book {
@@ -405,6 +408,7 @@ class Book {
 
 @Component
 struct ReaderComp {
+  // 父组件@State装饰的book传入子组件@Prop装饰的book
   @Prop book: Book = new Book('', 0);
 
   build() {
@@ -424,6 +428,7 @@ struct Library {
 
   build() {
     Column() {
+      // 父组件将同一book分别传给两个ReaderComp
       ReaderComp({ book: this.book })
       ReaderComp({ book: this.book })
     }
@@ -435,7 +440,7 @@ struct Library {
 
 以下示例中，更改了\@State装饰的allBooks数组中Book对象的属性，但点击“Mark read for everyone”时，没有触发UI更新。这是因为该属性是第二层的嵌套属性，\@State装饰器只能观察到第一层属性，不会观察到此属性更改，所以框架不会更新ReaderComp。
 
-<!-- @[prop_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSix.ets) -->
+<!-- @[prop_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSix.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -530,6 +535,7 @@ struct Library {
           if (this.allBooks.length > 0) {
             this.allBooks.shift();
           } else {
+            // allBooks为空时输出提示信息
             hilog.info(DOMAIN, TAG, 'length <= 0');
           }
         })
@@ -835,7 +841,7 @@ struct Child {
 
 在下面的示例中，value类型为Map\<number, string\>，点击Button改变value的值，视图会随之刷新。
 
-<!-- @[prop_ten_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTen.ets) -->
+<!-- @[prop_ten_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTen.ets) --> 
 
 ``` TypeScript
 @Component
@@ -849,6 +855,7 @@ struct Child {
         Text(`${item[1]}`).fontSize(30)
         Divider()
       })
+      // value被@Prop装饰，可以被观察到Map整体的赋值以及调用Map接口带来的变化
       Button('child init map').onClick(() => {
         this.value = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
       })
@@ -894,7 +901,7 @@ struct MapSample {
 
 在下面的示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 
-<!-- @[prop_eleven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageEleven.ets) -->
+<!-- @[prop_eleven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageEleven.ets) --> 
 
 ``` TypeScript
 @Component
@@ -907,6 +914,7 @@ struct Child {
         Text(`${item[0]}`).fontSize(30)
         Divider()
       })
+      // message被@Prop装饰，可以被观察到Set整体的赋值以及调用Set接口带来的变化
       Button('init set').onClick(() => {
         this.message = new Set([0, 1, 2, 3, 4]);
       })
@@ -946,7 +954,7 @@ struct SetSample {
 
 在下面的示例中，selectedDate类型为Date，点击Button改变Date的值，视图会随之刷新。
 
-<!-- @[prop_twelve_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwelve.ets) -->
+<!-- @[prop_twelve_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwelve.ets) --> 
 
 ``` TypeScript
 @Component
@@ -955,6 +963,7 @@ struct DateComponent {
 
   build() {
     Column() {
+      // selectedDate被@Prop装饰，可以被观察到Date整体的赋值以及调用Date接口带来的变化
       Button('child update the new date')
         .margin(10)
         .onClick(() => {

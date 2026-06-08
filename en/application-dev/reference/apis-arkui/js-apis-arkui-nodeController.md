@@ -12,6 +12,8 @@ The **NodeController** module provides APIs for managing custom nodes, such as c
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
+> - The APIs of this module can be used only in the stage model.
+>
 > - NodeController objects do not support JSON serialization.
 
 ## Modules to Import
@@ -38,7 +40,7 @@ This callback can also be invoked through the **rebuild()** method of **NodeCont
 
 > **NOTE**
 >
-> [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) does not support cross-instance reuse. If [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) is reused across instances and [NodeController] (#nodecontroller-1) of [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) triggers the [makeNode] (#makenode) callback method, the [UIContext](./arkts-apis-uicontext-uicontext.md) object in the input parameter may be undefined. In this case, you need to check whether the [UIContext](./arkts-apis-uicontext-uicontext.md) object in the input parameter is undefined, which prevents the [invalid UIContext](../../ui/arkts-wrong-uicontext-debug.md#identifying-uicontext-errors) when the input parameter is used.
+> [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) does not support cross-instance reuse. If [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) is reused across instances and [NodeController](#nodecontroller-1) of [NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md) triggers the [makeNode](#makenode) callback method, the [UIContext](./arkts-apis-uicontext-uicontext.md) object in the input parameter may be undefined. In this case, you need to check whether the [UIContext](./arkts-apis-uicontext-uicontext.md) object in the input parameter is undefined, which prevents the [invalid UIContext](../../ui/arkts-wrong-uicontext-debug.md#identifying-uicontext-errors) when the input parameter is used.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

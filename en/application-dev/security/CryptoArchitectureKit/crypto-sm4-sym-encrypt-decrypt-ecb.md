@@ -17,7 +17,7 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'SM4_128|ECB|PKCS7'** to create a **Cipher** instance for encryption. The symmetric key type is **SM4_128**, block cipher mode is **ECB**, and the padding mode is **PKCS7**.
 
-3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. In **Cipher.init**, set **opMode** to **CryptoMode.ENCRYPT_MODE** (encryption) and **key** to **SymKey** (the key used for encryption).
+3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption) and key to **SymKey** (the key used for encryption).
    
    When ECB mode is used, pass in **null** in **params**.
 
@@ -35,7 +35,7 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
 
 1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'SM4_128|ECB|PKCS7'** to create a **Cipher** instance for decryption. The symmetric key type is **SM4_128**, block cipher mode is **ECB**, and the padding mode is **PKCS7**.
 
-2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. In **Cipher.init**, set **opMode** to **CryptoMode.DECRYPT_MODE** (decryption) and **key** to **SymKey** (the key used for decryption). When ECB mode is used, pass in **null** in **params**.
+2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.DECRYPT_MODE** (decryption) and key to **SymKey** (the key used for decryption). When ECB mode is used, pass in **null** in **params**.
 
 3. Call [Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1) to pass in the data to be decrypted (ciphertext).
 

@@ -43,7 +43,7 @@
 | [int OH_Preferences_SetBool(OH_Preferences *preference, const char *key, bool value)](#oh_preferences_setbool) | -                          | 根据Key设置Preferences实例对象中的布尔值。                   |
 | [int OH_Preferences_SetString(OH_Preferences *preference, const char *key, const char *value)](#oh_preferences_setstring) | -                          | 根据Key设置Preferences实例对象中的字符串。                   |
 | [int OH_Preferences_Delete(OH_Preferences *preference, const char *key)](#oh_preferences_delete) | -                          | 在Preferences实例对象中删除Key对应的KV数据。                 |
-| [int OH_Preferences_RegisterDataObserver(OH_Preferences *preference, void *context,OH_PreferencesDataObserver observer, const char *keys[], uint32_t keyCount)](#oh_preferences_registerdataobserver) | -                          | 对选取的Key注册数据变更订阅。订阅的Key的值发生变更后，在调用OH_Preferences_Close()后触发回调。 |
+| [int OH_Preferences_RegisterDataObserver(OH_Preferences *preference, void *context,OH_PreferencesDataObserver observer, const char *keys[], uint32_t keyCount)](#oh_preferences_registerdataobserver) | -                          | 对选取的Key注册数据变更订阅。订阅的Key的值发生变更后，并且在调用OH_Preferences_Close()后触发回调。 |
 | [int OH_Preferences_UnregisterDataObserver(OH_Preferences *preference, void *context,OH_PreferencesDataObserver observer, const char *keys[], uint32_t keyCount)](#oh_preferences_unregisterdataobserver) | -                          | 取消注册选取Key的数据变更订阅。                              |
 | [int OH_Preferences_IsStorageTypeSupported(Preferences_StorageType type, bool *isSupported)](#oh_preferences_isstoragetypesupported) | -                          | 校验当前平台是否支持对应存储模式。                           |
 | [int OH_Preferences_DeletePreferences(OH_PreferencesOption *option)](#oh_preferences_deletepreferences) | - | 删除指定的Preferences对象。 |
@@ -147,7 +147,7 @@ int OH_Preferences_GetInt(OH_Preferences *preference, const char *key, int *valu
 
 | 参数项                                               | 描述                                                         |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | 指向目标[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
 | const char *key                                      | 需要获取的Key的指针。                                        |
 | int *value                                           | 该参数作为出参使用，表示指向获取到的整型值的指针。           |
 
@@ -174,7 +174,7 @@ int OH_Preferences_GetBool(OH_Preferences *preference, const char *key, bool *va
 
 | 参数项                                               | 描述                                                         |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | 指向目标[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
 | const char *key                                      | 需要获取的Key的指针。                                        |
 | bool *value                                          | 该参数作为出参使用，表示指向获取到的布尔值的指针。           |
 
@@ -201,7 +201,7 @@ int OH_Preferences_GetString(OH_Preferences *preference, const char *key, char *
 
 | 参数项                                               | 描述                                                         |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | 指向目标[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
 | const char *key                                      | 需要获取的Key的指针。                                        |
 | char **value                                         | 该参数作为出参使用，表示指向获取到的字符串的二级指针，使用完毕后需要调用释放函数[OH_Preferences_FreeString](capi-oh-preferences-h.md#oh_preferences_freestring)释放内存。 |
 | uint32_t *valueLen                                   | 该参数作为出参使用，表示获取到的字符串长度的指针。           |
@@ -248,7 +248,7 @@ int OH_Preferences_SetInt(OH_Preferences *preference, const char *key, int value
 
 | 参数项                                               | 描述                                                         |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | 指向目标[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
 | const char *key                                      | 指向需要设置的Key的指针。                                    |
 | int value                                            | 需要设置的整型值。                                           |
 
@@ -275,7 +275,7 @@ int OH_Preferences_SetBool(OH_Preferences *preference, const char *key, bool val
 
 | 参数项                                               | 描述                                                         |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | 指向目标[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
 | const char *key                                      | 指向需要设置的Key的指针。                                    |
 | bool value                                           | 需要设置的布尔值。                                           |
 
@@ -302,7 +302,7 @@ int OH_Preferences_SetString(OH_Preferences *preference, const char *key, const 
 
 | 参数项                                               | 描述                                                         |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | 指向目标[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
 | const char *key                                      | 指向需要设置的Key的指针。                                    |
 | const char *value                                    | 指向需要设置的字符串指针。                                   |
 
@@ -329,7 +329,7 @@ int OH_Preferences_Delete(OH_Preferences *preference, const char *key)
 
 | 参数项                                               | 描述                                                         |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference | 指向目标[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
 | const char *key                                      | 指向需要删除的Key的指针。                                    |
 
 **返回：**
@@ -346,7 +346,7 @@ int OH_Preferences_RegisterDataObserver(OH_Preferences *preference, void *contex
 
 **描述**
 
-对选取的Key注册数据变更订阅。订阅的Key的值发生变更后，在调用OH_Preferences_Close()后触发回调。
+对选取的Key注册数据变更订阅。订阅的Key的值发生变更后，并且在调用OH_Preferences_Close()后触发回调。
 
 **起始版本：** 13
 
@@ -355,7 +355,7 @@ int OH_Preferences_RegisterDataObserver(OH_Preferences *preference, void *contex
 
 | 参数项                                                       | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | 指向目标[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
 | void *context                                                | 应用上下文的指针。                                           |
 | [OH_PreferencesDataObserver](#oh_preferencesdataobserver) observer | 订阅数据变更关联的回调函数[OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdataobserver)。 |
 | const char *keys[]                                           | 需要订阅的Key数组。                                          |
@@ -384,7 +384,7 @@ int OH_Preferences_UnregisterDataObserver(OH_Preferences *preference, void *cont
 
 | 参数项                                                       | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | 指向目标Preferences[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
+| [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | 指向目标[OH_Preferences](capi-preferences-oh-preferences.md)实例对象的指针。 |
 | void *context                                                | 应用上下文的指针。                                           |
 | [OH_PreferencesDataObserver](#oh_preferencesdataobserver) observer | 订阅数据变更关联的回调函数[OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdataobserver)。 |
 | const char *keys[]                                           | 需要取消订阅的Key数组。                                      |
@@ -402,6 +402,9 @@ int OH_Preferences_UnregisterDataObserver(OH_Preferences *preference, void *cont
 int OH_Preferences_IsStorageTypeSupported(Preferences_StorageType type, bool *isSupported)
 ```
 
+**描述**
+
+校验当前平台是否支持对应存储模式。
 
 **起始版本：** 18
 
@@ -417,7 +420,7 @@ int OH_Preferences_IsStorageTypeSupported(Preferences_StorageType type, bool *is
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回接口操作执行的状态码。<br>PREFERENCES_OK，表示操作成功。<br>PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
+| int  | 返回接口操作执行的状态码。<br>返回结果为PREFERENCES_OK，表示操作成功。<br>返回结果为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
 
 ### OH_Preferences_DeletePreferences()
 

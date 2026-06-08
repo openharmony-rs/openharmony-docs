@@ -2236,7 +2236,7 @@ setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise\<vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151 | The scenario parameter verification fails, Invalid tokenId.|
+| 23800151 | The capability is invalid. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -2347,25 +2347,30 @@ onMediaLibraryAvailability(callback: Callback&lt;MediaLibraryAvailability&gt;): 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-private handleMediaLibraryChange?: (
-  changeData: photoAccessHelper.MedialibraryAvailability
-) => void;
+class MediaLibraryExample {
+  private helper: photoAccessHelper.PhotoAccessHelper;
+  private handleMediaLibraryChange?: (changeData: photoAccessHelper.MediaLibraryAvailability) => void;
 
-onMedialibraryAvailability = async () => {
-  try {
-    this.handleMediaLibraryChange = (
-      changeData: photoAccessHelper.MedialibraryAvailability
-    ) => {
-      const availabilityStatus = changeData.availabilityStatus;
-      const unavailabilityReason = changeData.unavailabilityReason;
-      console.info(`媒体库状态变化：状态=${availabilityStatus}，原因=${unavailabilityReason}`);
-    };
-    await this.helper.onMedialibraryAvailability(this.handleMediaLibraryChange);
-    console.info('媒体库监听注册成功');
-  } catch (err) {
-    console.error(`onMedialibraryAvailability failed::${err.code}, ${err.message} !`);
+  constructor(context: common.Context) {
+    this.helper = photoAccessHelper.getPhotoAccessHelper(context);
   }
-};
+
+  onMediaLibraryAvailability = async () => {
+    try {
+      this.handleMediaLibraryChange = (
+        changeData: photoAccessHelper.MediaLibraryAvailability
+      ) => {
+        const availabilityStatus = changeData.availabilityStatus;
+        const unavailabilityReason = changeData.unavailabilityReason;
+        console.info(`媒体库状态变化：状态=${availabilityStatus}，原因=${unavailabilityReason}`);
+      };
+      this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
+      console.info('媒体库监听注册成功');
+    } catch (err) {
+      console.error(`onMediaLibraryAvailability failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
+    }
+  };
+}
 ```
 
 ## offMediaLibraryAvailability
@@ -2402,17 +2407,22 @@ offMediaLibraryAvailability(callback?: Callback&lt;MediaLibraryAvailability&gt;)
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-private handleMediaLibraryChange?: (
-  changeData: photoAccessHelper.MedialibraryAvailability
-) => void;
+class MediaLibraryExample {
+  private helper: photoAccessHelper.PhotoAccessHelper;
+  private handleMediaLibraryChange?: (changeData: photoAccessHelper.MediaLibraryAvailability) => void;
 
-offMedialibraryAvailability1 = async () => {
-  try {
-    await this.helper.onMedialibraryAvailability(this.handleMediaLibraryChange);
-    await this.helper.offMedialibraryAvailability(this.handleMediaLibraryChange);
-    console.info('媒体库监听解除成功');
-  } catch (err) {
-    console.error(`offMedialibraryAvailability failed::${err.code}, ${err.message} !`);
+  constructor(context: common.Context) {
+    this.helper = photoAccessHelper.getPhotoAccessHelper(context);
   }
-};
+
+  offMediaLibraryAvailability = async () => {
+    try {
+      this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
+      this.helper.offMediaLibraryAvailability(this.handleMediaLibraryChange);
+      console.info('媒体库监听解除成功');
+    } catch (err) {
+      console.error(`offMediaLibraryAvailability failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
+    }
+  };
+}
 ```

@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#企业设备管理扩展能力)。
+本模块提供[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#enterpriseadminextensionability企业设备管理扩展能力)。
 
 设备管理应用需要存在一个EnterpriseAdminExtensionAbility并重写相关接口，以此具备模块提供的各项能力，比如接收由系统发送的该应用被激活或者解除激活的通知。
 
@@ -54,7 +54,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAdminEnabled() {
   }
-};
+}
 ```
 
 ### onAdminDisabled
@@ -76,7 +76,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAdminDisabled() {
   }
-};
+}
 ```
 
 ### onBundleAdded
@@ -105,7 +105,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onBundleAdded(bundleName: string) {
     console.info(`Succeeded in calling onBundleAdded callback, added bundle name : ${bundleName}`);
   }
-};
+}
 ```
 
 ### onBundleAdded<sup>14+</sup>
@@ -136,7 +136,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onBundleAdded(bundleName: string, accountId?: number) {
     console.info(`Succeeded in calling onBundleAdded callback, added bundle name : ${bundleName}, accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onBundleRemoved
@@ -165,7 +165,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onBundleRemoved(bundleName: string) {
     console.info(`Succeeded in calling onBundleRemoved callback, removed bundle name : ${bundleName}`);
   }
-};
+}
 ```
 
 ### onBundleRemoved<sup>14+</sup>
@@ -196,7 +196,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onBundleRemoved(bundleName: string, accountId?: number) {
     console.info(`Succeeded in calling onBundleRemoved callback, removed bundle name : ${bundleName}, accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onAppStart
@@ -225,7 +225,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAppStart(bundleName: string) {
     console.info(`Succeeded in calling onAppStart callback, started bundle name : ${bundleName}`);
   }
-};
+}
 ```
 
 ### onAppStop
@@ -254,7 +254,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAppStop(bundleName: string) {
     console.info(`Succeeded in calling onAppStop callback, stopped bundle name : ${bundleName}`);
   }
-};
+}
 ```
 ### onSystemUpdate
 
@@ -283,7 +283,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onSystemUpdate(systemUpdateInfo: systemManager.SystemUpdateInfo) {
     console.info(`Succeeded in calling onSystemUpdate callback, version name  : ${systemUpdateInfo.versionName}`);
   }
-};
+}
 ```
 
 ### onStart
@@ -306,7 +306,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onStart() {
     console.info(`Succeeded in calling onStart callback.`);
   }
-};
+}
 ```
 
 ### onAccountAdded<sup>18+</sup>
@@ -334,7 +334,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAccountAdded(accountId: number) {
     console.info(`Succeeded in calling onAccountAdded callback, added accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onAccountSwitched<sup>18+</sup>
@@ -362,7 +362,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAccountSwitched(accountId: number) {
     console.info(`Succeeded in calling onAccountSwitched callback, switched accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onAccountRemoved<sup>18+</sup>
@@ -390,7 +390,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onAccountRemoved(accountId: number) {
     console.info(`Succeeded in calling onAccountRemoved callback, removed accountId: ${accountId}`);
   }
-};
+}
 ```
 
 ### onKioskModeEntering<sup>20+</sup>
@@ -421,7 +421,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onKioskModeEntering(bundleName: string, accountId: number): void {
     console.info(`Succeeded in calling onKioskModeEntering callback, bundleName:${bundleName}, accountId:${accountId}`);
   }
-};
+}
 ```
 
 ### onKioskModeExiting<sup>20+</sup>
@@ -450,7 +450,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onKioskModeExiting(bundleName: string, accountId: number): void {
     console.info(`Succeeded in calling onKioskModeExiting callback, bundleName:${bundleName}, accountId:${accountId}`);
   }
-};
+}
 ```
 
 ### onMarketAppInstallResult<sup>22+</sup>
@@ -479,7 +479,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void {
     console.info(`Succeeded in calling onMarketAppInstallResult callback, bundleName:${bundleName}, result:${result}`);
   }
-};
+}
 ```
 
 ### onDeviceAdminEnabled<sup>23+</sup>
@@ -506,7 +506,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onDeviceAdminEnabled(bundleName: string) {
   }
-};
+}
 ```
 
 ### onDeviceAdminDisabled<sup>23+</sup>
@@ -533,14 +533,14 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onDeviceAdminDisabled(bundleName: string) {
   }
-};
+}
 ```
 
 ### onKeyEvent<sup>23+</sup>
 
 onKeyEvent(keyEvent: systemManager.KeyEvent): void
 
-[系统按键事件](./js-apis-enterprise-systemManager.md#keyevent23)回调。MDM应用需要通过[systemManager.addKeyEventPolicies](./js-apis-enterprise-systemManager.md#systemmanageraddkeyeventpolicies23)接口下发按键事件处理策略，当系统按键事件触发时，如果事件与已下发的策略匹配，则触发该回调。回调信息[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中包含当前发生的按键事件信息。
+[按键事件](./js-apis-enterprise-systemManager.md#keyevent23)回调。MDM应用需要通过[systemManager.addKeyEventPolicies](./js-apis-enterprise-systemManager.md#systemmanageraddkeyeventpolicies23)接口下发按键事件处理策略，当系统按键事件触发时，如果事件与已下发的策略匹配，则触发该回调。回调信息[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中包含当前发生的按键事件信息。
 
 单按键事件响应。设备单按键被触发时，[onKeyEvent](#onkeyevent23)会在按下和抬起时触发两次回调事件，可由[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyAction属性进行判断。[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyItems属性在单按键事件中可忽略。
 
@@ -654,7 +654,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onKeyEvent(keyEvent: systemManager.KeyEvent): void {
     console.info(`Succeeded in calling onKeyEvent callback, key event:${JSON.stringify(keyEvent)}`);
   }
-};
+}
 ```
 
 ### onLogCollected<sup>23+</sup>
@@ -697,26 +697,26 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
       // 应用沙箱路径，需根据实际情况进行替换
       let targetPath = this.context.tempDir;
       try {
-          let files: string[] = fs.listFileSync(filesDir);
-          // 从/data/edm/log沙箱目录取走日志
-          files.forEach(value => {
-             fs.copyFileSync(filesDir + '/' + value, targetPath + '/' + value);
-          });
-          let wantTemp: Want = {
-              // 需根据实际情况进行替换
-              bundleName: 'com.example.myapplication',
-              abilityName: 'EnterpriseAdminAbility'
-          };
-          systemManager.finishLogCollected(wantTemp);
+        let files: string[] = fs.listFileSync(filesDir);
+        // 从/data/edm/log沙箱目录取走日志
+        files.forEach(value => {
+          fs.copyFileSync(filesDir + '/' + value, targetPath + '/' + value);
+        });
+        let wantTemp: Want = {
+          // 需根据实际情况进行替换
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EnterpriseAdminAbility'
+        };
+        systemManager.finishLogCollected(wantTemp);
       } catch (error) {
-          console.info("onLogCollected", "error: " + JSON.stringify(error))
+        console.info("onLogCollected", "error: " + JSON.stringify(error))
       }
     }
     if (result === common.Result.FAIL) {
       console.error("onLogCollected", "Failed to collect log.")
     }
   }
-};
+}
 ```
 
 ### onStartupGuideCompleted<sup>24+</sup>
@@ -750,7 +750,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
       console.info('onStartupGuideCompleted scene is DEVICE_PROVISION');
     }
   }
-};
+}
 ```
 
 ### onDeviceBootCompleted<sup>24+</sup>
@@ -772,7 +772,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onDeviceBootCompleted() {
     console.info("EnterpriseAdminExtensionAbility onDeviceBootCompleted");
   }
-};
+}
 ```
 
 ### onBundleUpdated
@@ -804,5 +804,65 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   onBundleUpdated(bundleName: string, accountId: number) {
     console.info(`Succeeded in calling onBundleUpdated callback, update bundle name : ${bundleName}, accountId: ${accountId}`);
   }
-};
+}
 ```
+
+### onAdminPolicyChanged
+
+onAdminPolicyChanged(event: common.PolicyChangedEvent): void
+
+策略变更事件回调。超级设备管理应用可以通过接口[adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_POLICIES_CHANGED事件后可接收此回调。企业设备管理场景下，当任意MDM应用调用表1中的接口时，系统会通知当前用户下的超级设备管理应用。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填   | 说明      |
+| ----- | ----------------------------------- | ---- | ------- |
+| event | [common.PolicyChangedEvent](./js-apis-enterprise-common.md#policychangedevent) | 是    | 策略变更事件。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility, common } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onAdminPolicyChanged(event: common.PolicyChangedEvent) {
+    // 例如当MDM应用调用setPasswordPolicy接口设置密码策略时，输出示例为: Policy changed, bundleName : com.example.test, functionName: setPasswordPolicy, parameters: {"policy":{"complexityRegex":"^(?=.*[a-zA-Z])(?=.*\\d).{8},$","validityPeriod":1808309786000,"additionalDescription":"至少8个字符，且包含数字和字母。"}}, time: 1776773305379.
+    console.info(`Policy changed, bundleName : ${event.bundleName}, functionName: ${event.functionName}, parameters: ${event.parameters}, time: ${event.time}.`);
+  }
+}
+```
+
+**表1 策略变更事件：**
+|接口名称|策略变更事件[PolicyChangedEvent](./js-apis-enterprise-common.md#policychangedevent)中parameters参数返回示例|
+| --- | --- |
+|[setDomainAccountPolicy](./js-apis-enterprise-accountManager.md#accountmanagersetdomainaccountpolicy19)|{"domainAccountInfo":{"domain":"","accountName":"test"},"policy":{"authenticationValidityPeriod":300,"passwordValidityPeriod":420,"passwordExpirationNotification":60}}|
+|[setAllowedKioskApps](./js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20)|{"appIdentifiers":["6917****3569"]}|
+|[setPolicySync](./js-apis-enterprise-browser.md#browsersetpolicysync)|{"appId":"com.example.******_******/******5t5CoBM=","policyName":"InsecurePrivateNetworkRequestsAllowed","policyValue":"1"}|
+|[setValue](./js-apis-enterprise-deviceSettings.md#devicesettingssetvalue)|{"item":"screenOff","value":"30000"}|
+|[setHomeWallpaper](./js-apis-enterprise-deviceSettings.md#devicesettingssethomewallpaper20)|""|
+|[setUnlockWallpaper](./js-apis-enterprise-deviceSettings.md#devicesettingssetunlockwallpaper20)|""|
+|[setSwitchStatus](./js-apis-enterprise-deviceSettings.md#devicesettingssetswitchstatus)|{"key":1,"value":0}|
+|[addFirewallRule](./js-apis-enterprise-networkManager.md#networkmanageraddfirewallrule)|{"firewallRule":{"srcAddr":"192.168.1.1-192.168.22.66","destAddr":"10.1.1.1","srcPort":"8080","destPort":"8080","appUid":"9696","direction":1,"action":1,"protocol":2,"family": 1,"logType":0}}|
+|[removeFirewallRule](./js-apis-enterprise-networkManager.md#networkmanagerremovefirewallrule)|{"firewallRule":{"srcAddr":"192.168.1.1-192.168.22.66","destAddr":"10.1.1.1","srcPort":"8080","destPort":"8080","appUid":"9696","direction":1,"action":1,"protocol":2,"family": 1,"logType":0}}|
+|[addDomainFilterRule](./js-apis-enterprise-networkManager.md#networkmanageradddomainfilterrule)|{"domainFilterRule":{"domainName":"www.example.com","appUid":"9696","action":1,"direction":1,"family":1,"logType":0}}|
+|[removeDomainFilterRule](./js-apis-enterprise-networkManager.md#networkmanagerremovedomainfilterrule)|{"domainFilterRule":{"domainName":"www.example.com","appUid":"9696","action":1,"direction":1,"family":1,"logType":0}}|
+|[setGlobalProxySync](./js-apis-enterprise-networkManager.md#networkmanagersetglobalproxysync)|{"httpProxy":{"host":"192.168.xx.xxx","port":8080,"exclusionList":["192.168"]}}|
+|[setGlobalProxyForAccount](./js-apis-enterprise-networkManager.md#networkmanagersetglobalproxyforaccount15)|{"httpProxy":{"host":"192.168.xx.xx","port":8080,"exclusionList":["192.168"]},"accountId":100}|
+|[addApn](./js-apis-enterprise-networkManager.md#networkmanageraddapn20)|{"apnId":"3","apnName":"CTENT"}|
+|[deleteApn](./js-apis-enterprise-networkManager.md#networkmanagerdeleteapn20)|{"apnId":"3","apnName":"CTENT"}|
+|[updateApn](./js-apis-enterprise-networkManager.md#networkmanagerupdateapn20)|{"apnInfo":{"apn":"CTENT","apnName":"CTENT","mcc":"460","mnc":"11"},"apnId":"1"}|
+|[setPreferredApn](./js-apis-enterprise-networkManager.md#networkmanagersetpreferredapn20)|{"apnId":"3","apnName":"CTENT"}|
+|[setEthernetConfig](./js-apis-enterprise-networkManager.md#networkmanagersetethernetconfig23)|{"networkInterface":"eth0"}|
+|[setPasswordPolicy](./js-apis-enterprise-securityManager.md#securitymanagersetpasswordpolicy)|{"policy":{"complexityRegex":"^(?=.\*[a-zA-Z])(?=.\*\\\\d).{8},$","validityPeriod":1808309786000,"additionalDescription":"至少8个字符，且包含数字和字母。"}}|
+|[uninstallEnterpriseReSignatureCertificate](./js-apis-enterprise-securityManager.md#securitymanageruninstallenterpriseresignaturecertificate24)|{"certificateAlias":"test.cer","accountId":100}|
+|[installEnterpriseReSignatureCertificate](./js-apis-enterprise-securityManager.md#securitymanagerinstallenterpriseresignaturecertificate24)|{"certificateAlias":"test.cer","accountId":100}|
+|[setNTPServer](./js-apis-enterprise-systemManager.md#systemmanagersetntpserver)|{"server":"ntpserver.com"}|
+|[setActivationLockDisabled](./js-apis-enterprise-systemManager.md#systemmanagersetactivationlockdisabled24)|{"isAllowed":true}|
+|[setWifiProfileSync](./js-apis-enterprise-wifiManager.md#wifimanagersetwifiprofilesync)|{"profile":{"ssid":"guest-Wi-Fi","bssid":"AA:BB:CC:DD:EE:FF"}}|

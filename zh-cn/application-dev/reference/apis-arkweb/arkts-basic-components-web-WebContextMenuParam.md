@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-实现长按页面元素或鼠标右键弹出来的菜单信息。示例代码参考[onContextMenuShow事件](./arkts-basic-components-web-events.md#oncontextmenushow9)。
+实现长按页面元素或鼠标右键弹出的菜单信息。示例代码参考[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)。
 
 > **说明：**
 >
@@ -36,7 +36,7 @@ x(): number
 
 | 类型     | 说明                                 |
 | ------ |------------------------------------|
-| number | 显示正常返回非负整数，否则返回-1。<br>单位：vp（虚拟像素）。 |
+| number | 显示正常返回非负整数，否则返回-1。<br>单位：px（物理像素）。 |
 
 ## y<sup>9+</sup>
 
@@ -50,7 +50,7 @@ y(): number
 
 | 类型     | 说明                 |
 | ------ | ------------------ |
-| number | 显示正常返回非负整数，否则返回-1。<br>单位：vp（虚拟像素）。 |
+| number | 显示正常返回非负整数，否则返回-1。<br>单位：px（物理像素）。 |
 
 ## getLinkUrl<sup>9+</sup>
 
@@ -168,7 +168,7 @@ getInputFieldType(): ContextMenuInputFieldType
 
 isEditable(): boolean
 
-获取网页元素是否可编辑状态。
+判断网页元素是否可编辑。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -204,7 +204,7 @@ getPreviewWidth(): number
 
 | 类型     | 说明       |
 | ------ | ----------- |
-| number | 预览图的宽。<br>单位：vp（虚拟像素）。 |
+| number | 预览图的宽。<br>单位：px（物理像素）。 |
 
 ## getPreviewHeight<sup>13+</sup>
 
@@ -218,7 +218,7 @@ getPreviewHeight(): number
 
 | 类型     | 说明       |
 | ------ | ----------  |
-| number | 预览图的高。<br>单位：vp（虚拟像素）。 |
+| number | 预览图的高。<br>单位：px（物理像素）。 |
 
 ## getContextMenuMediaType<sup>22+</sup>
 

@@ -219,7 +219,7 @@ class B {
 function callFunction(fn: () => void) {
   fn();
 }
-// ...
+  // ...
   let a: A = new A();
   let b: B = new B();
 

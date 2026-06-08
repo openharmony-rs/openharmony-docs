@@ -46,6 +46,8 @@ createEffect(): VisualEffect
 
 创建VisualEffect实例用于给组件添加多种effect效果。
 
+**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -109,7 +111,7 @@ struct UIEffectFilterExample {
     }
 }
 ```
-![zh-ch_image_UIEffect_blur.png](figures/zh-ch_image_UIEffect_blur.png)
+![UIEffect-blur.png](figures/UIEffect-blur.png)
 
 ### hdrBrightnessRatio<sup>24+</sup>
 hdrBrightnessRatio(ratio: number): Filter

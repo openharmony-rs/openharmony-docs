@@ -160,7 +160,7 @@ export default {
 
 isPointInStroke(path?: Path2D, x: number, y: number): boolean
 
-判断指定点是否在路径的边缘线上。
+判断指定点是否位于路径描边区域内。
 
 **参数：** 
 | 参数名  | 参数类型   | 必填   | 描述                            |
@@ -172,7 +172,7 @@ isPointInStroke(path?: Path2D, x: number, y: number): boolean
 **返回值：** 
 | 类型      | 说明            |
 | ------- | ------------- |
-| boolean | 指定点是否在路径的区域内。 |
+| boolean | 指定点是否位于路径描边区域内。返回true时，指定点在路径描边区域内。返回false时，指定点不在路径描边区域内。 |
 
 **示例：** 
 ```html
@@ -228,11 +228,13 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001178875308](figures/zh-cn_image_0000001178875308.png)
+![isPointInStroke](figures/isPointInStroke.png)
 
 ### resetTransform
 
 resetTransform(): void
+
+重置当前变换矩阵为单位矩阵。
 
 **示例：** 
 ```html
@@ -295,4 +297,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001179035242](figures/zh-cn_image_0000001179035242.png)
+![resetTransform](figures/resetTransform.png)

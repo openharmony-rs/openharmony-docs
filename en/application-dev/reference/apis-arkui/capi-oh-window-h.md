@@ -1,8 +1,8 @@
 # oh_window.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -26,9 +26,9 @@ The file declares the window management APIs. You can use the APIs to set and ob
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindowstatusbarenabled) | - | Sets whether to display the status bar in a window.|
-| [int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)](#oh_windowmanager_setwindowstatusbarcolor) | - | Sets the color of the status bar in a window.|
-| [int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindownavigationbarenabled) | - | Sets whether to display the navigation bar in a window.|
+| [int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindowstatusbarenabled) | - | Sets whether the main window displays the status bar.|
+| [int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)](#oh_windowmanager_setwindowstatusbarcolor) | - | Sets the color of the status bar in the main window.|
+| [int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindownavigationbarenabled) | - | Sets whether the main window displays the navigation bar.|
 | [int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_AvoidAreaType type, WindowManager_AvoidArea* avoidArea)](#oh_windowmanager_getwindowavoidarea) | - | Obtains the avoid area of a window.|
 | [int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)](#oh_windowmanager_iswindowshown) | - | Checks whether a window is displayed.|
 | [int32_t OH_WindowManager_ShowWindow(int32_t windowId)](#oh_windowmanager_showwindow) | - | Shows a window.|
@@ -56,6 +56,13 @@ The file declares the window management APIs. You can use the APIs to set and ob
 | [int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_FrameMetrics* metrics, uint64_t* timestamp)](#oh_windowmanager_framemetrics_getvsynctimestamp) | - | Obtains the timestamp when this frame starts.|
 | [int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_registerframemetricsmeasuredcallback) | - | Registers a callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> The callback is triggered only when the client UI content is redrawn (for example, page switching, interaction with responsive components, or background color and opacity setting).<br> To cancel the registration, call the [OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback) API.|
 | [int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_unregisterframemetricsmeasuredcallback) | - | Unregisters the callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> To register such a callback, call the [OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback) API.|
+| [int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getdefaultdensity) | - | Obtains the scale factor of the system default display size of the screen where the window is located.|
+| [int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getsystemdensity) | - | Obtains the scale factor of the system display size of the screen where the window is located.|
+| [int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getcustomdensity) | - | Obtains the scale factor of the custom display size of the window.|
+| [int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowManager_DensityInfo** info)](#oh_windowmanager_getdensityinfocopy) | - | Obtains window scale factor information, including the scale factors of the system display size, system default display size, and custom display size. The priorities in descending order are as follows:<br> Scale factor of the custom display size: window-level display scale factor, which affects only a single window.<br> Scale factor of the system display size: display size scale factor set in the current system.<br> Scale factor of the system default display size: default reference scale factor of the system.<br>|
+| [int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_registerdensityinfochangecallback) | - | Registers a callback for listening to window scale factor changes.<br> This callback will be triggered when any of the following changes: the scale factor of the system display size of the screen where the window is located, the scale factor of the system default display size, or the scale factor of the custom display size.<br> To unregister this callback, use [OH_WindowManager_UnregisterDensityInfoChangeCallback](capi-oh-window-h.md#oh_windowmanager_unregisterdensityinfochangecallback).|
+| [int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_unregisterdensityinfochangecallback) | - | Unregisters the callback for listening to window scale factor changes.<br> This callback will not be triggered after being unregistered even if any of the following changes: the scale factor of the system display size of the screen where the window is located, the scale factor of the system default display size, or the scale factor of the custom display size.<br>|
+| [int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfo_release) | - | Releases the memory occupied by the window scale factor object.|
 
 ## Function Description
 
@@ -67,16 +74,21 @@ int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enable
 
 **Description**
 
-Sets whether to display the status bar in a window.
+Sets whether the main window displays the status bar.
+
+The return value obtained after the call takes effect does not indicate that the visibility changes of the status bar have been fully executed. The setting does not take effect when the main window is in non-full-screen or non-maximized mode (such as the floating window or split-screen of Multi-Window). It takes effect once the main window enters full-screen or maximized mode.
 
 **Since**: 15
 
+**Device behavior differences**:
+
+Calls to this API do not take effect or return an error on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. On a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows, this API can be properly called.
 
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| int32_t windowId | Window ID. The default value is **0**. The value is an integer.|
+| int32_t windowId | ID of the main window. Calls to this API with a non-main window ID do not take effect or return an error. If the window ID does not exist, the error code **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL** is returned when this API is called.|
 | bool enabled | Whether to display the status bar. **true** to display, **false** otherwise.|
 | bool enableAnimation | Whether to enable the show/hide animation of the status bar. **true** to enable, **false** otherwise.|
 
@@ -94,16 +106,21 @@ int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color
 
 **Description**
 
-Sets the color of the status bar in a window.
+Sets the color of the status bar in the main window.
+
+The return value obtained after the call takes effect does not indicate that the color updates of the status bar have been fully executed. The setting does not take effect when the main window is in non-full-screen or non-maximized mode (such as the floating window or split-screen of Multi-Window). It takes effect once the main window enters full-screen or maximized mode.
 
 **Since**: 15
 
+**Device behavior differences**:
+
+Calls to this API do not take effect or return an error on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. On a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows, this API can be properly called.
 
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| int32_t windowId | Window ID. The default value is **0**. The value is an integer.|
+| int32_t windowId | ID of the main window. Calls to this API with a non-main window ID do not take effect or return an error. If the window ID does not exist, the error code **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL** is returned when this API is called.|
 | int32_t color | Color to set, in ARGB format.|
 
 **Return value**
@@ -120,7 +137,7 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 
 **Description**
 
-Sets whether to display the navigation bar in a window.
+Sets whether the main window displays the navigation bar.<!--RP2--><!--RP2End-->
 
 **Since**: 15
 
@@ -129,7 +146,7 @@ Sets whether to display the navigation bar in a window.
 
 | Parameter| Description|
 | -- | -- |
-| int32_t windowId | Window ID. The default value is **0**. The value is an integer.|
+| int32_t windowId | ID of the main window. Calls to this API with a non-main window ID do not take effect or return an error. If the window ID does not exist, the error code **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL** is returned when this API is called.|
 | bool enabled | Whether to display the navigation bar. **true** to display, **false** otherwise.|
 | bool enableAnimation | Whether to enable the show/hide animation of the navigation bar. **true** to enable, **false** otherwise.|
 
@@ -311,13 +328,14 @@ If the input parameter is **-1**, the window brightness reverts to the system br
 
 When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys. You are not advised to call this API when the window is in the background, as it may cause timing issues.
 
-> **NOTE**
-> - For non-2-in-1 devices:
->   - Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, if a window has custom brightness, Control Panel cannot change the system brightness.
->   - Starting from <!--RP1-->OpenHarmony 6.1<!--RP1End-->, Control Panel can adjust system brightness even when a window has custom brightness. Doing so will automatically reset that window's brightness to match the new system brightness.
-> - For 2-in-1 devices:
->   - Before OpenHarmony 5.0.2, if a window has custom brightness, system brightness controls (Control Panel or shortcut keys) are disabled.
->   - Starting from OpenHarmony 5.0.2, window brightness is always synchronized with system brightness. Brightness can be adjusted through this API, Control Panel, or shortcut keys.
+**Device behavior differences**:
+- For TVs: This API does not take effect or report an error.
+- For non-2-in-1 devices (excluding TVs):
+  - Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, when the window brightness of the current window is active, adjusting the system screen brightness from the Control Panel does not take effect.
+  - Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, Control Panel can adjust system brightness even when the window brightness of the current window is active. Doing so will automatically reset that window's brightness to match the new system brightness.
+- For 2-in-1 devices:
+  - Before OpenHarmony 5.0.2, when the screen brightness set by a window is active, adjusting the system screen brightness from the Control Panel or a shortcut key does not take effect.
+  - Since OpenHarmony 5.0.2, window brightness is always synchronized with system brightness. Brightness can be adjusted through this API, Control Panel, or shortcut keys.
 
 **Since**: 15
 
@@ -523,7 +541,7 @@ int32_t OH_WindowManager_GetAllMainWindowInfo(WindowManager_MainWindowInfo** inf
 
 Obtains the information about all main windows.
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Required permissions**: ohos.permission.CUSTOM_SCREEN_CAPTURE
 
@@ -589,7 +607,7 @@ int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t win
 
 Obtains the screenshots of one or more main windows specified by **windowId**.
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Required permissions**: ohos.permission.CUSTOM_SCREEN_CAPTURE
 
@@ -804,7 +822,7 @@ Registers a callback for window frame metric change events.<br> This API depends
 
 | Type| Description|
 | -- | -- |
-| int32_t | One of the following result codes:<br> **OK**: The function is successfully called.<br> **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes:<br> 1. The window is not created or has been destroyed.<br> 2. The window status is abnormal.<br> **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: The parameter is incorrect. The value range of the parameter is improper.<br> For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+| int32_t | One of the following result codes:<br> **OK**: The function is successfully called.<br> **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes:<br> 1. The window has not been created or has been destroyed.<br> 2. The window status is abnormal.<br> **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: The parameter is incorrect. The value range of the parameter is improper.<br> For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
 
 ### OH_WindowManager_UnregisterFrameMetricsMeasuredCallback()
 
@@ -829,4 +847,190 @@ Unregisters the callback for window frame metric change events.<br> This API dep
 
 | Type| Description|
 | -- | -- |
-| int32_t | One of the following result codes:<br> **OK**: The function is successfully called.<br> **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes:<br> 1. The window is not created or has been destroyed.<br> 2. The window status is abnormal.<br> **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: The parameter is incorrect. The value range of the parameter is improper.<br> For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+| int32_t | One of the following result codes:<br> **OK**: The function is successfully called.<br> **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes:<br> 1. The window has not been created or has been destroyed.<br> 2. The window status is abnormal.<br> **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: The parameter is incorrect. The value range of the parameter is improper.<br> For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_DensityInfo_GetDefaultDensity()
+
+```c
+int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)
+```
+
+**Description**
+
+Obtains the scale factor of the system default display size of the screen where the window is located.
+
+**Since:** 24
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Pointer to the window scale factor information, which can be obtained through [OH_WindowManager_GetDensityInfoCopy](capi-oh-window-h.md#oh_windowmanager_getdensityinfocopy).|
+| float* density | Pointer to the scale factor of the system default display size. The value ranges from 0.5 to 4.0. This parameter is used as an output parameter.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_DensityInfo_GetSystemDensity()
+
+```c
+int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_DensityInfo* info, float* density)
+```
+
+**Description**
+
+Obtains the scale factor of the system display size of the screen where the window is located.
+
+**Since:** 24
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Pointer to the window scale factor information, which can be obtained through [OH_WindowManager_GetDensityInfoCopy](capi-oh-window-h.md#oh_windowmanager_getdensityinfocopy).|
+| float* density | Pointer to the scale factor of the system display size. The value ranges from 0.5 to 4.0. This parameter is used as an output parameter.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_DensityInfo_GetCustomDensity()
+
+```c
+int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_DensityInfo* info, float* density)
+```
+
+**Description**
+
+Obtains the scale factor of the custom display size of the window.
+
+**Since:** 24
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Pointer to the window scale factor information, which can be obtained through [OH_WindowManager_GetDensityInfoCopy](capi-oh-window-h.md#oh_windowmanager_getdensityinfocopy).|
+| float* density | Pointer to the scale factor of the custom display size of the window. The value ranges from 0.5 to 4.0. This parameter is used as an output parameter.<br>If this parameter is not set, the scale factor of the system display size is used. For a child window, global floating window, modal window, or system window, the scale factor of the custom display size is equal to the scale factor of the system display size (**systemDensity**).|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_GetDensityInfoCopy()
+
+```c
+int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowManager_DensityInfo** info)
+```
+
+**Description**
+
+Obtains window scale factor information, including the scale factors of the system display size, system default display size, and custom display size. The priorities in descending order are as follows:
+
+- Scale factor of the custom display size: window-level display scale factor, which affects only a single window.
+
+- Scale factor of the system display size: display size scale factor set in the current system.
+
+- Scale factor of the system default display size: default reference scale factor of the system.
+
+**Since:** 24
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| int32_t windowId | Window ID when the window is created.|
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)** info | Double pointer to the window scale factor information, which is used as an output parameter.<br>If the return value is **NULL**, the device does not support this API.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes: 1. The window has not been created or has been destroyed. 2. The window status is abnormal.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_RegisterDensityInfoChangeCallback()
+
+```c
+int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)
+```
+
+**Description**
+
+Registers a callback for listening to window scale factor changes.
+
+This callback will be triggered when any of the following changes: the scale factor of the system display size of the screen where the window is located, the scale factor of the system default display size, or the scale factor of the custom display size.
+
+To unregister this callback, use [OH_WindowManager_UnregisterDensityInfoChangeCallback](capi-oh-window-h.md#oh_windowmanager_unregisterdensityinfochangecallback).
+
+**Since:** 24
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| int32_t windowId | Window ID when the window is created.|
+| [OH_WindowManager_DensityInfoCallback](capi-oh-window-comm-h.md#oh_windowmanager_densityinfocallback) callback | Callback used to return the window scale factor.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes: 1. The window has not been created or has been destroyed. 2. The window status is abnormal.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_UnregisterDensityInfoChangeCallback()
+
+```c
+int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)
+```
+
+**Description**
+
+Unregisters the callback for listening to window scale factor changes.
+
+This callback will not be triggered after being unregistered even if any of the following changes: the scale factor of the system display size of the screen where the window is located, the scale factor of the system default display size, or the scale factor of the custom display size.
+
+**Since:** 24
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| int32_t windowId | Window ID when the window is created.|
+| [OH_WindowManager_DensityInfoCallback](capi-oh-window-comm-h.md#oh_windowmanager_densityinfocallback) callback | Callback used to return the window scale factor.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes: 1. The window has not been created or has been destroyed. 2. The window status is abnormal.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_DensityInfo_Release()
+
+```c
+int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)
+```
+
+**Description**
+
+Releases the memory occupied by the window scale factor object.
+
+**Since:** 24
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Pointer to the window scale factor information. This parameter is used as an output parameter.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|

@@ -1,8 +1,8 @@
 # @ohos.animator (Animator)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -107,6 +107,8 @@ Creates an **AnimatorResult** object for animations. Compared with[create](#crea
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -199,10 +201,10 @@ Defines the animator result.
 
 | Name      | Type                                                       | Read-Only| Optional| Description                                                        |
 | ---------- | ------------------------------ | ---- | ------- | ----------------------------------------------------- |
-| onFrame<sup>12+</sup>   | (progress: number) => void                    | No| No  | Called when a frame is received.<br>**progress**: current value of the animation. Value range: [begin, end] defined in [AnimatorOptions](#animatoroptions). Default value range: [0, 1]<br>**Atomic service API**: This API can be used in atomic services since API version 12.                       |
-| onFinish<sup>12+</sup>   | () => void                    | No| No  | Called when this animation is finished.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                       |
-| onCancel<sup>12+</sup>   | () => void                    | No| No  | Called when this animation is canceled.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                       |
-| onRepeat<sup>12+</sup>   | () => void                    | No| No  | Called when this animation repeats.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                       |
+| onFrame<sup>12+</sup>   | (progress: number) => void                    | No| No  | Called when a frame is received.<br>**progress**: current value of the animation. Value range: [begin, end] defined in [AnimatorOptions](#animatoroptions). Default value range: [0, 1]<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.                       |
+| onFinish<sup>12+</sup>   | () => void                    | No| No  | Called when this animation is finished.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.                       |
+| onCancel<sup>12+</sup>   | () => void                    | No| No  | Called when this animation is canceled.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.                       |
+| onRepeat<sup>12+</sup>   | () => void                    | No| No  | Called when this animation repeats.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.                       |
 | onframe<sup>(deprecated)</sup>   | (progress: number) => void                   | No| No  | Called when a frame is received.<br>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use **onFrame** instead.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
 | onfinish<sup>(deprecated)</sup>   | () => void                 | No| No  | Called when this animation is finished.<br>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use **onFinish** instead.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
 | oncancel<sup>(deprecated)</sup>   | () => void                 | No| No  | Called when this animation is canceled.<br>Note: This API is supported since API version 6 and deprecated since API version 12. You are advised to use **onCancel** instead.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                       |
@@ -280,6 +282,8 @@ reset(options: AnimatorOptions \| SimpleAnimatorOptions): void
 Resets the animation parameters of this animator. Compared with [reset](#reset9), this API accepts parameters of the [SimpleAnimatorOptions](#simpleanimatoroptions18) type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -422,6 +426,8 @@ Sets the expected frame rate range.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -536,7 +542,7 @@ Animator options.
 | "smooth" | The animation uses the smooth cubic-bezier curve (0.4, 0.0, 0.4, 1.0).|
 | "cubic-bezier(x1, y1, x2, y2)" | The animation uses the cubic Bézier curve, where the values of **x1** and **x2** must be between 0 and 1. Example: **"cubic-bezier(0.42, 0.0, 0.58, 1.0)"**.|
 | "steps(number, step-position)" | The animation uses the steps curve. The number must be set to a positive integer. The **step-position** parameter is optional. The value can be **start** or **end**. The default value is **end**. Example: **"steps(3, start)"**.|
-| interpolating-spring(velocity, mass, stiffness, damping) | The animation uses the interpolating spring curve.<br>The **velocity**, **mass**, **stiffness**, and **damping** parameters are of the numeric type, and the values of **mass**, **stiffness**, and **damping** must be greater than 0. For details about the parameters, see [Curves.interpolatingSpring](./js-apis-curve.md#curvesinterpolatingspring10).<br>When an interpolating spring curve is used, settings for the **duration**, **fill**, **direction**, and **iterations** do not take effect. Rather, the value of **duration** is subject to the spring settings, **fill** is fixed at **forwards**, **direction** at **normal**, and **iterations** at **1**. In addition, invoking [reverse](#reverse) of **animator** is not effective. In other words, when using an interpolating spring curve, the animation can play only once in forward mode.<br>Supported since API version 11 and can be used only in ArkTS.|
+| interpolating-spring(velocity, mass, stiffness, damping) | The animation uses the interpolating spring curve.<br>The **velocity**, **mass**, **stiffness**, and **damping** parameters are of the numeric type, and the values of **mass**, **stiffness**, and **damping** must be greater than 0. For details about the parameters, see [curves.interpolatingSpring](./js-apis-curve.md#curvesinterpolatingspring10).<br>When an interpolating spring curve is used, settings for the **duration**, **fill**, **direction**, and **iterations** do not take effect. Rather, the value of **duration** is subject to the spring settings, **fill** is fixed at **forwards**, **direction** at **normal**, and **iterations** at **1**. In addition, invoking [reverse](#reverse) of **animator** is not effective. In other words, when using an interpolating spring curve, the animation can play only once in forward mode.<br>Supported since API version 11 and can be used only in ArkTS.|
 
 ## SimpleAnimatorOptions<sup>18+</sup>
 
@@ -549,6 +555,8 @@ constructor(begin: number, end: number)
 A constructor used to create a **SimpleAnimatorOptions** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -589,6 +597,8 @@ duration(duration: number): SimpleAnimatorOptions
 Sets the animation duration.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -635,6 +645,8 @@ Sets the interpolation curve for this animation.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -679,6 +691,8 @@ delay(delay: number): SimpleAnimatorOptions
 Sets the playback delay for this animation.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -725,6 +739,8 @@ Sets the fill mode for this animation.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -770,6 +786,8 @@ Sets the playback direction for this animator animation.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -814,6 +832,8 @@ iterations(iterations: number): SimpleAnimatorOptions
 Sets the number of times that this animation is played.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

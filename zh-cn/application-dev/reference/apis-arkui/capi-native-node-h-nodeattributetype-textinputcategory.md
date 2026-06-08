@@ -344,8 +344,8 @@ NODE_TEXT_INPUT_SHOW_PASSWORD_ICON = 7012
 NODE_TEXT_INPUT_EDITING = 7013
 ```
 
-控制单行文本输入框编辑态属性，支持属性设置。<br>
-作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+控制单行文本输入框编辑态属性，支持属性设置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
 
@@ -354,7 +354,12 @@ NODE_TEXT_INPUT_EDITING = 7013
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | false表示退出编辑态，true表示维持现状。<br>属性获取方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： |
+| .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
 | .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
 
 ## NODE_TEXT_INPUT_CANCEL_BUTTON
@@ -1190,6 +1195,69 @@ NODE_TEXT_INPUT_SELECTED_DRAG_PREVIEW_STYLE = 7048
 | -- | -- |
 | .object | 文本选中状态下的拖拽预览样式。参数类型为[ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)。 |
 
+## NODE_TEXT_INPUT_LINEAR_GRADIENT
+
+```c
+NODE_TEXT_INPUT_LINEAR_GRADIENT = 7051
+```
+
+设置文本输入框内文本线性渐变效果，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 线性渐变的起始角度。当线性渐变的方向为[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，线性渐变的起始角度属性生效，否则按线性渐变的方向属性为主要布局方式。取值范围为(-∞,+∞)，0点方向顺时针旋转为正向角度，当超过360时，是按照360取余处理，默认值：180。 |
+| .value[1].i32 | 线性渐变的方向。取值为[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)中的枚举。设置除[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM之外的线性渐变方向后，线性渐变的起始角度不生效。默认值：[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM |
+| .value[2].i32 | 渐变的颜色是否重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
+| .object | 指定位置处的渐变色颜色。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。<br> colors：渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 <br> stops：stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。想要实现多个颜色渐变效果时，数组元素建议递增设置，如后一个数组元素比前一个数组元素小的话，按照等于前一个数组元素的值处理。 <br> size：颜色个数，若小于colors数组长度则仅生效前size个颜色，不建议设置大于colors数组长度或小于等于0的值以及异常值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 线性渐变的起始角度。当线性渐变的方向为[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，线性渐变的起始角度为设置值，其他情况均为默认值0。 |
+| .value[1].i32 | 线性渐变的方向。对应取值及含义请参考[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)。 |
+| .value[2].i32 | 渐变的颜色是否重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
+| .object | 指定位置处的渐变色颜色。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。<br> colors：渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 <br> stops：stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。 <br> size：生效后渐变色的颜色个数。 |
+
+## NODE_TEXT_INPUT_RADIAL_GRADIENT
+
+```c
+NODE_TEXT_INPUT_RADIAL_GRADIENT = 7052
+```
+
+设置文本输入框的文本径向渐变效果，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0]?.f32 | 径向渐变的中心点X轴坐标，即相对于当前文本输入框左上角的X轴坐标。 |
+| .value[1]?.f32 | 径向渐变的中心点Y轴坐标，即相对于当前文本输入框左上角的Y轴坐标。 |
+| .value[2]?.f32 | 径向渐变的半径，默认值0。 |
+| .value[3]?.i32 | 渐变的颜色是否重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
+| .object | 指定位置处的渐变色颜色。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。<br> colors：渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 <br> stops：stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。想要实现多个颜色渐变效果时，数组元素建议递增设置，如后一个数组元素比前一个数组元素小的话，按照等于前一个数组元素的值处理。 <br> size：颜色个数，若小于colors数组长度则仅生效前size个颜色，不建议设置大于colors数组长度或小于等于0的值以及异常值。 |
+
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0]?.f32 | 径向渐变的中心点X轴坐标，即相对于当前文本输入框左上角的X轴坐标。 |
+| .value[1]?.f32 | 径向渐变的中心点Y轴坐标，即相对于当前文本输入框左上角的Y轴坐标。 |
+| .value[2]?.f32 | 径向渐变的半径，默认值0。 |
+| .value[3]?.i32 | 渐变的颜色是否重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
+| .object | 指定位置处的渐变色颜色。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。<br> colors：渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 <br> stops：stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。 <br> size：生效后渐变色的颜色个数。 |
+
 ## NODE_TEXT_INPUT_TEXT_OVERFLOW
 
 ```c
@@ -1237,6 +1305,30 @@ NODE_TEXT_INPUT_DECORATION = 7050
 | 类型 | 说明 |
 | -- | -- |
 | .object | 装饰样式配置项。参数类型为[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)。 |
+
+## NODE_TEXT_INPUT_PUNCTUATION_OVERFLOW
+
+```c
+NODE_TEXT_INPUT_PUNCTUATION_OVERFLOW = 7053
+```
+
+设置TextInput组件是否启用行尾标点符号悬挂，支持属性设置，属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。1表示启用标点符号悬挂，0表示不启用标点符号悬挂。默认值为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。 |
 
 
 ## NODE_TEXT_AREA_PLACEHOLDER
@@ -1396,7 +1488,7 @@ NODE_TEXT_AREA_EDITING = 8006
 ```
 
 控制多行文本输入框编辑态属性，支持属性设置，属性获取接口。<br>
-作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
 
@@ -1405,7 +1497,12 @@ NODE_TEXT_AREA_EDITING = 8006
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | false表示退出编辑态，true表示维持现状。<br>属性获取方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： |
+| .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
 | .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
 
 ## NODE_TEXT_AREA_TYPE
@@ -2372,3 +2469,90 @@ NODE_TEXT_AREA_DECORATION = 8047
 | 类型 | 说明 |
 | -- | -- |
 | .object | 装饰样式配置项。参数类型为[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)。 |
+
+## NODE_TEXT_AREA_LINEAR_GRADIENT
+
+```c
+NODE_TEXT_AREA_LINEAR_GRADIENT = 8048
+```
+
+设置多行文本输入框的文本线性渐变效果，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 线性渐变的起始角度。当线性渐变的方向为[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，线性渐变的起始角度属性生效，否则按线性渐变的方向属性为主要布局方式。取值范围为(-∞,+∞)，0点方向顺时针旋转为正向角度，当超过360时，是按照360取余处理，默认值：180。 |
+| .value[1].i32 | 线性渐变的方向。取值为[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)中的枚举。设置除[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM之外的线性渐变方向后，线性渐变的起始角度不生效。默认值：[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM |
+| .value[2].i32 | 渐变的颜色是否重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
+| .object | 指定位置处的渐变色颜色。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。<br> colors：渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 <br> stops：stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。想要实现多个颜色渐变效果时，数组元素建议递增设置，如后一个数组元素比前一个数组元素小的话，按照等于前一个数组元素的值处理。 <br> size：颜色个数，若小于colors数组长度则仅生效前size个颜色，不建议设置大于colors数组长度或小于等于0的值以及异常值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 线性渐变的起始角度。当线性渐变的方向为[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)的ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，线性渐变的起始角度为设置值，其他情况均为默认值0。 |
+| .value[1].i32 | 线性渐变的方向。对应取值及含义请参考[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)。 |
+| .value[2].i32 | 渐变的颜色是否重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
+| .object | 指定位置处的渐变色颜色。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。<br> colors：渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 <br> stops：stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。 <br> size：生效后渐变色的颜色个数。 |
+
+## NODE_TEXT_AREA_RADIAL_GRADIENT
+
+```c
+NODE_TEXT_AREA_RADIAL_GRADIENT = 8049
+```
+
+设置多行文本输入框的文本径向渐变效果，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0]?.f32 | 径向渐变的中心点X轴坐标，即相对于当前多行输入框左上角的X轴坐标。 |
+| .value[1]?.f32 | 径向渐变的中心点Y轴坐标，即相对于当前多行输入框左上角的Y轴坐标。 |
+| .value[2]?.f32 | 径向渐变的半径，默认值0。 |
+| .value[3]?.i32 | 渐变的颜色是否重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
+| .object | 指定位置处的渐变色颜色。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。<br> colors：渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 <br> stops：stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。想要实现多个颜色渐变效果时，数组元素建议递增设置，如后一个数组元素比前一个数组元素小的话，按照等于前一个数组元素的值处理。 <br> size：颜色个数，若小于colors数组长度则仅生效前size个颜色，不建议设置大于colors数组长度或小于等于0的值以及异常值。 |
+
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0]?.f32 | 径向渐变的中心点X轴坐标，即相对于当前多行输入框左上角的X轴坐标。 |
+| .value[1]?.f32 | 径向渐变的中心点Y轴坐标，即相对于当前多行输入框左上角的Y轴坐标。 |
+| .value[2]?.f32 | 径向渐变的半径，默认值0。 |
+| .value[3]?.i32 | 渐变的颜色是否重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
+| .object | 指定位置处的渐变色颜色。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。<br> colors：渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 <br> stops：stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。 <br> size：生效后渐变色的颜色个数。 |
+
+## NODE_TEXT_AREA_PUNCTUATION_OVERFLOW
+
+```c
+NODE_TEXT_AREA_PUNCTUATION_OVERFLOW = 8050
+```
+
+设置TextArea组件是否启用行尾标点符号悬挂，支持属性设置，属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。1表示启用标点符号悬挂，0表示不启用标点符号悬挂。默认值为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。 |

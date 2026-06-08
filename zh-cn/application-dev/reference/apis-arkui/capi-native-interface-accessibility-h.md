@@ -1,7 +1,7 @@
 # native_interface_accessibility.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -284,7 +284,7 @@ int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvid
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)* provider | 表示指向ArkUI_AccessibilityProvider实例的指针。 |
-| [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md)* callbacks | 表示指向GetAccessibilityNodeCursorPosition实例的指针。 |
+| [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md)* callbacks | 表示指向ArkUI_AccessibilityProviderCallbacks实例的指针。 |
 
 **返回：**
 
@@ -602,7 +602,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_Accessibility
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | 表示指向ArkUI_AccessibilityElementInfo的指针。 |
-| int32_t* operationCount | 组件支持的action数量。 |
+| int32_t operationCount | 组件支持的action数量。 |
 | [ArkUI_AccessibleAction](capi-arkui-accessibility-arkui-accessibleaction.md)* operationActions | 组件支持的action。 |
 
 
@@ -676,6 +676,10 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementIn
 
 
 为ArkUI_AccessibilityElementInfo设置是否被检查。
+
+> **说明：** 
+>
+> 本接口仅设置是否被检查，不会设置是否可查。若需要设置是否可查，需调用[OH_ArkUI_AccessibilityElementInfoSetCheckable](#oh_arkui_accessibilityelementinfosetcheckable)。
 
 **起始版本：** 13
 

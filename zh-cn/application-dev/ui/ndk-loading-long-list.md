@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ArkUI开发框架在NDK接口提供了列表组件，使用列表可以轻松高效地显示结构化、可滚动的信息。列表组件支持控制滚动位置、支持分组显示内容、支持使用[NodeAdapter](#nodeadapter介绍)实现懒加载以提升列表创建性能。
@@ -24,7 +24,7 @@ NDK提供了NodeAdapter对象替代ArkTS侧的[LazyForEach](../reference/apis-ar
 
 - 设置了NodeAdapter属性的节点，不支持直接通过[addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)等接口添加子组件。子组件完全由NodeAdapter管理，使用属性方法设置NodeAdapter时，会判断父组件是否已经存在子节点，如果父组件已经存在子节点，则设置NodeAdapter操作失败，返回错误码。
 
-- NodeAdapter通过相关事件通知开发者按需生成组件，类似组件事件机制，开发者使用NodeAdapter时要注册[事件监听器](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_registereventreceiver)，在监听器事件中处理逻辑，相关事件通过[ArkUI_NodeAdapterEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype)定义。另外NodeAdapter不会主动释放不在屏幕内显示的组件对象，开发者需要在[NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype)事件中进行组件对象的释放，或者进行缓存复用。下图展示了典型列表滑动场景下的事件触发机制：
+- NodeAdapter通过相关事件通知开发者按需生成组件，类似组件事件机制，开发者使用NodeAdapter时要通过[OH_ArkUI_NodeAdapter_RegisterEventReceiver](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_registereventreceiver)注册事件监听器，在监听器事件中处理逻辑，相关事件通过[ArkUI_NodeAdapterEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype)定义。另外NodeAdapter不会主动释放不在屏幕内显示的组件对象，开发者需要在[NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype)事件中进行组件对象的释放，或者进行缓存复用。下图展示了典型列表滑动场景下的事件触发机制：
 
   ![zh-cn_image_0000001949769409](figures/zh-cn_image_0000001949769409.png)
 
@@ -289,7 +289,7 @@ private:
 
 ### 在列表中应用懒加载适配器 
 
-1. 在ArkUIListNode中添加SetLazyAdapter函数，给列表节点设置[NODE_LIST_NODE_ADAPTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)属性，并将NodeAdapter作为属性入参传入。
+1. 在ArkUIListNode中添加SetLazyAdapter函数，给列表节点设置[NODE_LIST_NODE_ADAPTER](../reference/apis-arkui/capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_node_adapter)属性，并将NodeAdapter作为属性入参传入。
    <!-- @[List_encapsulated_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListNode.h) -->
    
    ``` C
@@ -544,7 +544,7 @@ private:
    ```
 ## ListItem横划删除 
 
-1. [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)设置[NODE_LIST_ITEM_SWIPE_ACTION](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)属性，将[ArkUI_ListItemSwipeActionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)对象作为属性参数传入。
+1. [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)设置[NODE_LIST_ITEM_SWIPE_ACTION](../reference/apis-arkui/capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_item_swipe_action)属性，将[ArkUI_ListItemSwipeActionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)对象作为属性参数传入。
    <!-- @[Provide_wrapper_class_list_items](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList/entry/src/main/cpp/ArkUIListItemNode.h) -->
    
    ``` C

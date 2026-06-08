@@ -1,10 +1,10 @@
 # hid_ddk_types.h
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## Overview
 
@@ -179,7 +179,7 @@ Enumerates the key codes.
 | HID_KEY_RIGHT_BRACKET = 27 | Key ]|
 | HID_KEY_ENTER = 28 | Key Enter|
 | HID_KEY_LEFT_SHIFT = 42 | Left Shift|
-| HID_KEY_BACKSLASH = 43 | Key \|
+| HID_KEY_BACKSLASH = 43 | Key \ |
 | HID_KEY_SEMICOLON = 39 | Key ;|
 | HID_KEY_APOSTROPHE = 40 | Key '|
 | HID_KEY_SPACE = 57 | Key Space|
@@ -202,7 +202,7 @@ Enumerates the key codes.
 | HID_KEY_NUMPAD_SUBTRACT = 74 | Minus key (-) on the numeric keypad|
 | HID_KEY_NUMPAD_ADD = 78 | Plus key (+) on the numeric keypad|
 | HID_KEY_NUMPAD_DOT = 83 | Decimal point (.) on the numeric keypad|
-| HID_KEY_SYSRQ = 99 | Key print screen|
+| HID_KEY_SYSRQ = 99 | Key Print Screen|
 | HID_KEY_DELETE = 111 | Delete key|
 | HID_KEY_MUTE = 113 | Mute key|
 | HID_KEY_VOLUME_DOWN = 114 | Volume Down key|

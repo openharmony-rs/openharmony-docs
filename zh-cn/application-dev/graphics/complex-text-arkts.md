@@ -1,7 +1,7 @@
 # 复杂文本绘制与显示（ArkTS）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -243,6 +243,12 @@
 
 - **行间距调整：** 通过调整行间距的方式可以实现行高调整一样的效果，优化阅读体验。
 
+- **省略号样式设置：** 在文本内容超出显示区域时，可以使用省略号截断文本，支持头部、中部、尾部以及多行省略模式。
+
+- **文字换行方式设置：** 文本排版时支持不同的断行策略，可根据场景选择合适的换行方式。
+
+- **行首标点压缩：** 在排版中，通过开启行首标点压缩功能，将行首标点符号进行挤压处理，避免标点占用行首空间，提升排版紧凑度。
+
 ### 装饰线
 
 装饰线（[Decoration](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#decoration)）是指在文本上方、下方或中间添加的装饰性线条，当前支持上划线、下划线、删除线。
@@ -290,6 +296,7 @@
 ### 自动间距
 
 使能自动间距，则会在文本排版时自动调整CJK（中文字符、日文字符、韩文字符）与西文（拉丁字母、西里尔字母、希腊字母）、CJK与数字、CJK与版权符号、版权符号与数字、版权符号与西文之间的间距。例如，在中英文混排场景中，使能自动间距即可在中英文切换的地方自动添加额外间距，提升阅读体验。
+
 关键示例如下：
 ```ts
 let myParagraphStyle: text.ParagraphStyle = {
@@ -380,8 +387,33 @@ let myParagraphStyle: text.ParagraphStyle = {
 
 具体使用效果可参见下文[示例八](#示例八行间距调整)。
 
+### 省略号样式设置
+
+从API version 22开始，支持设置省略号样式，在文本内容超出显示区域时截断文本。从API version 24开始，支持多行省略模式。
+
+通过[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的textStyle属性设置省略号模式，可选的省略号模式可见[EllipsisMode](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#ellipsismode)。
+
+需要注意，省略号相关属性需要在ParagraphStyle的textStyle中设置才生效，通过pushStyle设置的省略号属性不会生效。
+
+具体使用效果可参见下文[示例九](#示例九省略号样式)。
+
+### 文字换行方式设置
+
+从API version 22开始，支持在文本排版时设置断行策略，断行策略决定了文本如何在行尾进行换行处理。
+
+通过设置[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的breakStrategy属性可以控制断行策略，可选的断行策略可见[BreakStrategy](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#breakstrategy)。
+
+具体使用效果可参见下文[示例十](#示例十文字换行方式)。
+
+### 行首标点压缩
+
+从API version 23开始，在文本排版中支持行首标点压缩功能。通过启用行首标点压缩功能，可以将行首标点符号进行挤压处理，提升排版紧凑度。
+
+通过设置[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的compressHeadPunctuation属性设置是否启用行首标点压缩。
+
+具体使用效果可参见下文[示例十一](#示例十一行首标点压缩)。
+
 ### 示例一（装饰线、字体特征）
-这里以文本样式中的装饰线和字体特征为例，呈现多样式文本的绘制与显示。
 
 <!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) -->
 
@@ -605,7 +637,7 @@ class MyRenderNode extends RenderNode {
     // 绘制文本
     paragraph.paint(canvas, 0, 0);
 
-    //获取全部占位符的数组
+    // 获取全部占位符的数组
     let placeholderRects = paragraph.getRectsForPlaceholders();
     // 获取第一个占位符的左边界
     let left = placeholderRects[0].rect.left;
@@ -1555,3 +1587,84 @@ struct Font08 {
 | -------- | -------- |
 | DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
 | ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+
+### 示例九（省略号样式）
+以下示例展示了开启尾部省略号模式的文本截断效果。
+
+<!-- @[arkts_ellipsis_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample9.ets) -->
+
+``` TypeScript
+// 设置文本样式，包含省略号字符串和省略号模式
+let myTextStyle: text.TextStyle = {
+  color: {
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 0
+  },
+  fontSize: 40,
+  // 设置省略号字符串
+  ellipsis: '...',
+  // 设置省略号模式为尾部省略
+  ellipsisMode: text.EllipsisMode.END
+};
+// 设置段落样式，包含最大行数
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  // 设置最大显示行数为2
+  maxLines: 2
+};
+```
+
+具体效果如下所示：
+
+| 省略号模式 | 示意效果 |
+| -------- | -------- |
+| 不开启省略号 | ![zh-cn_image_complexArkTsDemo9_1](figures/zh-cn_image_complexArkTsDemo9_1.png) |
+| 开启头部省略号 | ![zh-cn_image_complexArkTsDemo9_2](figures/zh-cn_image_complexArkTsDemo9_2.png) |
+| 开启中部省略号 | ![zh-cn_image_complexArkTsDemo9_3](figures/zh-cn_image_complexArkTsDemo9_3.png) |
+| 开启尾部省略号 | ![zh-cn_image_complexArkTsDemo9_4](figures/zh-cn_image_complexArkTsDemo9_4.png) |
+| 开启多行头部省略号 | ![zh-cn_image_complexArkTsDemo9_5](figures/zh-cn_image_complexArkTsDemo9_5.png) |
+| 开启多行中部省略号 | ![zh-cn_image_complexArkTsDemo9_6](figures/zh-cn_image_complexArkTsDemo9_6.png) |
+
+### 示例十（文字换行方式）
+以下示例展示了BALANCED断行策略对文本排版的影响。
+
+<!-- @[arkts_break_strategy_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample10.ets) -->
+
+``` TypeScript
+// 设置断行策略为均衡策略（BALANCED）
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  // 设置断行策略为均衡策略，各行宽度尽量均衡
+  breakStrategy: text.BreakStrategy.BALANCED
+};
+```
+
+具体效果如下所示：
+
+| 断行策略 | 示意效果 |
+| -------- | -------- |
+| GREEDY | ![zh-cn_image_complexArkTsDemo10_1](figures/zh-cn_image_complexArkTsDemo10_1.png) |
+| BALANCED | ![zh-cn_image_complexArkTsDemo10_2](figures/zh-cn_image_complexArkTsDemo10_2.png) |
+| HIGH_QUALITY | ![zh-cn_image_complexArkTsDemo10_3](figures/zh-cn_image_complexArkTsDemo10_3.png) |
+
+### 示例十一（行首标点压缩）
+以下示例展示了开启行首标点压缩的排版对比效果。
+
+<!-- @[arkts_punctuation_compress_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample11.ets) -->
+
+``` TypeScript
+// 开启行首标点压缩
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  compressHeadPunctuation: true
+};
+```
+
+具体效果如下所示：
+
+| 标点压缩设置 | 示意效果 |
+| -------- | -------- |
+| 未开启标点压缩 | ![zh-cn_image_complexArkTsDemo11_1](figures/zh-cn_image_complexArkTsDemo11_1.png) |
+| 开启标点压缩 | ![zh-cn_image_complexArkTsDemo11_2](figures/zh-cn_image_complexArkTsDemo11_2.png) |

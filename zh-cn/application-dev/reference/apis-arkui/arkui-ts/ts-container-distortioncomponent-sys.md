@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-空间扭曲组件，提供空间扭曲感的形变视效能力。
+空间形变组件，提供空间扭曲感的形变视效能力。
 
 >  **说明：**
 >
@@ -18,13 +18,13 @@
 
 ## 子组件
 
-可以包含单个子组件，需要通过[ComponentContent](../js-apis-arkui-ComponentContent.md)传入。
+可以包含子组件。
 
 ## 接口
 
 ### DistortionComponent
 
-DistortionComponent(content: ComponentContent, options?: DistortionComponentOptions)
+DistortionComponent(options?: DistortionComponentOptions)
 
 创建提供空间扭曲形变视效的组件。
 
@@ -40,7 +40,6 @@ DistortionComponent(content: ComponentContent, options?: DistortionComponentOpti
 
 | 参数名  | 类型                                             | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| content | [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)  | 是   | 内容构建函数。                                               |
 | options | [DistortionComponentOptions](#distortioncomponentoptions)  | 否  | 空间扭曲形变选项。                                           |
 
 ## DistortionComponentOptions
@@ -66,7 +65,7 @@ DistortionComponent(content: ComponentContent, options?: DistortionComponentOpti
 > **说明：**
 > - 四个角的坐标可以按照如下坐标系设置。一个组件，左上角位置为[0, 0]，右上角位置为[1, 0]，左下角位置为[0, 1]，右下角位置为[1, 1]。
 > - 如bottomLeft属性设置为[0.5, 0.5]，则表示左下角形变到组件中心点的位置，产生对应的形变效果。
-> - 设置四个角坐标位置时请符合空间感逻辑。如topLeft = [0.7, 0]，bottomLeft = [0.2, 0]，左上角的位置低于左下角的位置，违背空间感的逻辑，可能导致渲染异常。
+> - 设置四个角坐标位置时请符合空间感逻辑。如topLeft = [0, 0.7]，bottomLeft = [0, 0.2]，左上角的位置低于左下角的位置，违背空间感的逻辑，可能导致渲染异常。
 
 **起始版本：** 26.0.0
 
@@ -125,7 +124,7 @@ type Vector4 = Vector4
 
 ## 属性
 
-支持[通用属性](ts-component-general-attributes.md)，支持宽高设置（[width](ts-universal-attributes-size.md#width)、[height](ts-universal-attributes-size.md#height)），支持系统材质属性[systemMaterial](ts-universal-attributes-image-effect-sys.md#systemmaterial23)。
+仅支持系统材质属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)。
 
 ## 示例
 
@@ -136,63 +135,52 @@ type Vector4 = Vector4
 从API版本26.0.0开始，新增系统组件DistortionComponent。
 
 ```ts
-// 示例：动态更新扭曲效果
-import { FrameNode, ComponentContent } from '@kit.ArkUI';
-
-class Params {
-  text: string = '';
-
-  constructor(text:string) {
-    this.text = text;
-  }
-}
-
-let contentNode: ComponentContent<Params>;
-
-// 形变的前景内容（自定义组件）
-@Builder
-function buildText(params: Params) {
-  Column() {
-    Text(params.text)
-    Text('content2')
-  }
-}
-
+// 示例：动态更新扭曲效果，自定义组件的前景内容会发生形变
 @Entry
 @Component
 struct DistortionExample {
   @State distortionParam: DistortionParam = {
-    topLeft: {x:0.8, y:0.8},
-    topRight: {x:1, y:0.8},
-    bottomLeft: {x:0.8, y:1},
-    bottomRight: {x:1, y:1},
-    barrelDistortion: {x:0, y:0, z:0, w:0},
-  }
-
-  aboutAppear() {
-    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params('Hello World'));
+    topLeft: { x: 0.8, y: 0.8 },
+    topRight: { x: 1, y: 0.8 },
+    bottomLeft: { x: 0.8, y: 1 },
+    bottomRight: { x: 1, y: 1 },
+    barrelDistortion: {
+      x: 0,
+      y: 0,
+      z: 0,
+      w: 0
+    },
   }
 
   build() {
     Column() {
-      DistortionComponent(contentNode, {
+      DistortionComponent({
         distortion: this.distortionParam
-      })
-      .width(200)
-      .height(200)
-      .backgroundColor(Color.Pink)
-      
+      }) {
+        Column() {
+        }
+          .width(100)
+          .height(100)
+          .backgroundColor(Color.Pink)
+      }
+
       Button('Change Distortion')
         .onClick(() => {
           this.distortionParam = {
-              topLeft: {x:0, y:0},
-              topRight: {x:1, y:0},
-              bottomLeft: {x:0.8, y:1},
-              bottomRight: {x:1, y:1},
-              barrelDistortion: {x:0, y:0, z:0, w:0},
+            topLeft: { x: 0, y: 0 },
+            topRight: { x: 1, y: 0 },
+            bottomLeft: { x: 0.8, y: 1 },
+            bottomRight: { x: 1, y: 1 },
+            barrelDistortion: {
+              x: 0,
+              y: 0,
+              z: 0,
+              w: 0
+            },
           }
         })
     }
   }
 }
 ```
+![distortionComponent](figures/distortionComponent.gif)

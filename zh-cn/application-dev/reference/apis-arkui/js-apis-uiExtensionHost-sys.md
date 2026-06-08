@@ -1,7 +1,7 @@
 # @ohos.uiExtensionHost (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
+<!--Owner: @Pakoo007-->
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
@@ -28,6 +28,8 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -41,6 +43,8 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 获取宿主应用窗口内容避让的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与宿主窗口内容重叠时，需要宿主窗口内容避让的区域。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -88,6 +92,8 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -99,9 +105,12 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 
 **错误码：** 
 
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br/> 1. The listening type is not supported. <br/> 2. The listener has been registered. <br/> 3. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -128,6 +137,8 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -139,9 +150,12 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 
 **错误码：** 
 
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br/> 1. The listening type is not supported. <br/> 2. The listening type is not registered. <br/> 3. The listener has not been registered. <br/> 4. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -166,6 +180,8 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -177,9 +193,12 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
 **错误码：** 
 
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br/> 1. The listening type is not supported. <br/> 2. The listener has been registered. <br/> 3. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -206,6 +225,8 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -217,9 +238,12 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
 **错误码：** 
 
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br/> 1. Mandatory parameters are left unspecified.<br/> 2. Incorrect parameters types.<br/> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br/> 1. The listening type is not supported. <br/> 2. The listening type is not registered. <br/> 3. The listener has not been registered. <br/> 4. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -250,6 +274,8 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 **需要权限**：ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -485,6 +511,8 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -548,6 +576,8 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -597,6 +627,8 @@ export default class EntryAbility extends UIExtensionAbility {
 用于表示宿主应用窗口和UIExtensionComponent组件的信息。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 

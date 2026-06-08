@@ -1,12 +1,12 @@
 # 后台播放
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
-实际应用中，大多数音视频都有后台播放的需求，本指南将详细讲解如何实现后台长时间播放的方法。
+在实际应用场景中，大多数音视频应用都有后台播放的需求，本指南将详细介绍如何实现后台长时间播放。
 
 ## 基本概念
 
@@ -19,7 +19,7 @@
 
 - AVSession：请参考[AVSession Kit简介](../avsession/avsession-overview.md)。
 
-  AVSession Kit（音视频播控服务）是系统提供的音视频管控服务，用于统一管理系统中音视频行为，帮助开发者快速构建音视频统一展示和控制能力。音视频类应用接入AVSession后，可以设置应用的数据（如正在播放的歌曲、歌曲的播放状态等）。用户可以通过系统播控中心来展示和控制不同应用的播放。AVSession会对后台的媒体播放有约束行为，所以通常来说，音频应用、听书类应用、视频应用等都需要接入AVSession。如果应用在没有创建AVSession的情况进行上述业务，系统会在检测到应用退至后台时，停止对应的音视频播放，以达到约束应用行为的目的。
+  AVSession Kit（音视频播控服务）是系统提供的音视频管控服务，用于统一管理系统中音视频行为，帮助开发者快速构建音视频统一展示和控制能力。音视频类应用接入AVSession后，可以设置应用的数据（如正在播放的歌曲、歌曲的播放状态等）。用户可以通过系统播控中心来展示和控制不同应用的播放。AVSession会对后台的媒体播放有约束行为，因此，音频应用、听书类应用、视频应用等都需要接入AVSession。如果应用在没有创建AVSession的情况下进行上述业务，系统会在检测到应用退至后台时，停止对应的音视频播放，以达到约束应用行为的目的。
 
 - AVPlayer：参考[AVPlayer](../media/media-kit-intro.md#avplayer)说明。
 
@@ -54,8 +54,10 @@
 
 ### 接入AVSession
 
-当创建的音频流类型为STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_AUDIOBOOK或STREAM_USAGE_GAME时，无论是将应用退至后台继续播放，还是在后台启动播放，都必须接入AVSession。<br>
-关于AVSession的创建和释放时机，建议在应用启动或开始播放业务之前进行创建，并在应用进程结束或完全退出播放业务且不再播放时予以释放，以避免频繁创建和释放AVSession，从而保证应用播放业务的连续性和稳定性。应用后台播放时，需要确保AVSession对象实例在应用后台活动期间一直存在，避免被系统回收、释放，比如不要使用局部变量保存AVSession对象等。<br>
+当创建的音频流类型为STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_AUDIOBOOK或STREAM_USAGE_GAME时，无论是将应用退至后台继续播放，还是在后台启动播放，都必须接入AVSession。
+
+建议在应用启动或开始播放业务前创建AVSession，在应用进程结束或退出播放业务时释放，避免频繁创建和释放影响播放连续性。后台播放期间需确保AVSession对象实例一直存在，避免被系统回收，例如使用类成员变量而非局部变量保存。
+
 创建AVSession后，为了保证接入体验，要求设置以下元数据并注册以下控制命令。
 
 - 元数据：标题、副标题/歌手、封面图。具体操作请参考[设置元数据](avsession-access-scene.md#设置元数据)。
@@ -66,12 +68,12 @@ AVSession的接入开发请参考指南[应用接入AVSession场景介绍](avses
 
 ### 申请长时任务
 
-在长时任务中可以申请多种类型的任务。例如：当后台播音的任务类型为AUDIO_PLAYBACK时，应用在后台播放音频、视频或通过AVSession投播组件投播，都可申请类型为AUDIO_PLAYBACK的长时任务。
+在长时任务中可以申请多种类型的任务。例如：当后台播放音频的任务类型为AUDIO_PLAYBACK时，应用在后台播放音频、视频或通过AVSession投播组件投播，都可申请类型为AUDIO_PLAYBACK的长时任务。
 - 播放时申请长时任务，如果应用明确有后台播放业务（例如：视频应用开启后台放音选项），可以在前台播放时申请长时任务。
 - 暂停或停止时主动取消长时任务。（例如：用户主动点击音乐暂停播放时，应用需及时取消对应的长时任务；用户再次点击音乐播放时，需重新申请长时任务。）
-- 若音频在后台播放时被打断（例如：焦点打断），系统会自行检测，冻结或者取消长时任务。当应用重启音频播放时，需要再次申请长时任务。
-- 应用收到AVSession播控指令，收到音频设备变更等需要做出对应播放和暂停操作时，都需要在暂停时取消长时任务，播放时重新申请长时任务。
-- 通过AVSession投播组件后台投播，开始投播时申请长时任务，断开投播时取消长时任务。投播过程中音频暂停，无须对长时任务做处理。
+- 若音频在后台播放时被打断（例如：焦点打断），系统会自行检测并冻结或者取消长时任务。当应用重启音频播放时，需要再次申请长时任务。
+- 当应用收到AVSession播控指令或收到音频设备变更等需要做出对应播放和暂停操作时，都需要在暂停时取消长时任务，播放时重新申请长时任务。
+- 通过AVSession投播组件后台投播，开始投播时申请长时任务，断开投播时取消长时任务。投播过程中音频暂停，无需对长时任务进行处理。
 
 具体操作请参考长时任务(ArkTS)中的[开发步骤](../../task-management/continuous-task.md#开发步骤)。
 
@@ -79,4 +81,76 @@ AVSession的接入开发请参考指南[应用接入AVSession场景介绍](avses
 
 如果应用本身没有后台播放业务，可以通过监听生命周期函数[onBackground](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackground)来判断应用是否已进入后台并主动停止播放。否则会受到AVSession与长时任务模块管控，对应用正常的播放业务造成影响。如需在应用回到前台时重启播放，可以通过监听生命周期函数[onForeground](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground)来判断应用是否回到前台。
 
-<!--RP1--><!--RP1End-->
+## 设置后台播放模式
+
+应用在退至后台前，可以通过[setBackgroundPlayMode](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setbackgroundplaymode24)设置后台播放模式，告知系统当应用退至后台时是否具有播放行为。针对音视频类型应用设置后台播放模式，系统会根据应用设置的值来决定应用退后台时是否展示系统实况窗。
+
+### 播放模式说明
+
+当前系统支持设置两种播放模式：
+- **ENABLE_BACKGROUND_PLAY（支持后台播放）**：表示应用退至后台时仍继续进行播放。
+- **DISABLE_BACKGROUND_PLAY（不支持后台播放）**：表示应用退至后台时不会再继续播放。
+
+> **注意事项**
+>
+> 1. 对于[AVSessionType](../../reference/apis-avsession-kit/arkts-apis-avsession-t.md#avsessiontype10)为audio类型的应用，系统默认值为ENABLE_BACKGROUND_PLAY，[AVSessionType](../../reference/apis-avsession-kit/arkts-apis-avsession-t.md#avsessiontype10)为video类型的应用，系统默认值为DISABLE_BACKGROUND_PLAY。
+>
+> 2. 音视频应用在退至后台前应设置正确的后台播放模式，以确保退至后台时系统实况窗展示正确。如果应用内提供了类似“是否支持后台播放”的开关，应用设置的后台播放模式务必与应用内的开关状态保持一致。
+
+### 开发步骤
+
+音视频应用进行后台播放的开发步骤如下所示。
+
+1. 设置后台播放模式之前，需要先创建AVSession会话。建议在应用启动或开始播放业务时创建会话，具体操作请参考[接入AVSession](#接入avsession)。
+
+2. 创建AVSession后，应用在退至后台前应调用[setBackgroundPlayMode](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setbackgroundplaymode24)接口设置准确的后台播放模式。
+
+ <!-- @[setBackgroundPlayMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SetBackgroundPlayMode.ets) -->
+ 
+ ``` TypeScript
+ import { avSession } from '@kit.AVSessionKit';
+ import { BusinessError } from '@kit.BasicServicesKit';
+ // ...
+ 
+ @Entry
+ @Component
+ struct Index {
+   @State message: string = 'hello world';
+   // ...
+ 
+   build() {
+     Column() {
+       // ...
+       Text(this.message)
+         .onClick(async () => {
+           let currentAVSession: avSession.AVSession | undefined = undefined;
+           let tag = 'createNewSession';
+           let context: Context = this.getUIContext().getHostContext() as Context;
+           // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+           avSession.createAVSession(context, tag, 'audio', (err: BusinessError, data: avSession.AVSession) => {
+             if (err) {
+               console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+             } else {
+               currentAVSession = data;
+             }
+           });
+           // 设置后台播放模式
+           if (currentAVSession !== undefined) {
+             try {
+               (currentAVSession as avSession.AVSession)
+                 .setBackgroundPlayMode(avSession.BackgroundPlayMode.ENABLE_BACKGROUND_PLAY);
+               // ...
+             } catch (err) {
+               console.error(`setBackgroundPlayMode BusinessError: code: ${err.code}, message: ${err.message}`);
+               // ...
+             }
+           }
+         })
+     }
+     .width('100%')
+     .height('100%')
+   }
+ }
+ ```
+ 
+ <!--RP1--><!--RP1End-->

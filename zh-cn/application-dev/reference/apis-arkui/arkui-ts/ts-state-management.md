@@ -1,7 +1,7 @@
 # 应用级变量的状态管理
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
+<!--Owner: @zhushilin0206-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
@@ -29,7 +29,7 @@ static ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;|&nbsp;undefined
 
 如果给定的propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，则返回AppStorage中propName对应属性的引用。否则，返回undefined。
 
-与[link](#link10)的功能基本一致，但不需要手动释放返回的[AbstractProperty](#abstractproperty12)类型的变量。
+与[link](#link10)的功能基本一致，但不需要手动释放返回的[AbstractProperty\<T\>](#abstractpropertyt12)类型的变量。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -45,7 +45,7 @@ static ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;|&nbsp;undefined
 
 | 类型                                   | 说明                                                         |
 | -------------------------------------- | ------------------------------------------------------------ |
-| [AbstractProperty&lt;T&gt;](#abstractproperty12) \| undefined | AppStorage中propName对应属性的引用，如果AppStorage中不存在对应的propName，则返回undefined。 |
+| [AbstractProperty&lt;T&gt;](#abstractpropertyt12) \| undefined | AppStorage中propName对应属性的引用，如果AppStorage中不存在对应的propName，则返回undefined。 |
 
 **示例：**
 
@@ -62,7 +62,7 @@ static setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&l
 
 与[ref](#ref12)接口类似，如果给定的propName在[AppStorage](../../../ui/state-management/arkts-appstorage.md)中存在，则返回AppStorage中propName对应属性的引用。如果不存在，则使用defaultValue在AppStorage中创建和初始化propName对应的属性，并返回其引用。
 
-与[setAndLink](#setandlink10)的功能基本一致，但不需要手动释放返回的[AbstractProperty](#abstractproperty12)类型的变量。
+与[setAndLink](#setandlink10)的功能基本一致，但不需要手动释放返回的[AbstractProperty\<T\>](#abstractpropertyt12)类型的变量。
 
 > **说明：**
 >
@@ -83,7 +83,7 @@ static setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&l
 
 | 类型                      | 说明                                                         |
 | ------------------------- | ------------------------------------------------------------ |
-| [AbstractProperty&lt;T&gt;](#abstractproperty12) | AbstractProperty&lt;T&gt;的实例，为AppStorage中propName对应属性的引用。 |
+| [AbstractProperty&lt;T&gt;](#abstractpropertyt12) | AbstractProperty&lt;T&gt;的实例，为AppStorage中propName对应属性的引用。 |
 
 **示例：**
 
@@ -1080,7 +1080,7 @@ ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;|&nbsp;undefined
 
 如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中存在，则返回LocalStorage中propName对应属性的引用。否则，返回undefined。
 
-与[link](#link9)的功能基本一致，但不需要手动释放返回的[AbstractProperty](#abstractproperty12)类型的变量。
+与[link](#link9)的功能基本一致，但不需要手动释放返回的[AbstractProperty\<T\>](#abstractpropertyt12)类型的变量。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1096,7 +1096,7 @@ ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;|&nbsp;undefined
 
 | 类型                                   | 说明                                                         |
 | -------------------------------------- | ------------------------------------------------------------ |
-| [AbstractProperty&lt;T&gt;](#abstractproperty12) \| undefined | LocalStorage中propName对应属性的引用，如果LocalStorage中不存在对应的propName，则返回undefined。 |
+| [AbstractProperty&lt;T&gt;](#abstractpropertyt12) \| undefined | LocalStorage中propName对应属性的引用，如果LocalStorage中不存在对应的propName，则返回undefined。 |
 
 **示例：**
 
@@ -1114,7 +1114,7 @@ setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&lt;T&gt;
 
 与[ref](#ref12-1)接口类似，如果给定的propName在[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中存在，则返回LocalStorage中propName对应属性的引用。如果不存在，则使用defaultValue在LocalStorage中创建和初始化propName对应的属性，并返回其引用。
 
-与[setAndLink](#setandlink9)的功能基本一致，但不需要手动释放返回的[AbstractProperty](#abstractproperty12)类型的变量。
+与[setAndLink](#setandlink9)的功能基本一致，但不需要手动释放返回的[AbstractProperty\<T\>](#abstractpropertyt12)类型的变量。
 
 > **说明：**
 >
@@ -1135,7 +1135,7 @@ setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&lt;T&gt;
 
 | 类型                      | 说明                                                         |
 | ------------------------- | ------------------------------------------------------------ |
-| [AbstractProperty&lt;T&gt;](#abstractproperty12) | AbstractProperty&lt;T&gt;的实例，为LocalStorage中propName对应属性的引用。 |
+| [AbstractProperty&lt;T&gt;](#abstractpropertyt12) | AbstractProperty&lt;T&gt;的实例，为LocalStorage中propName对应属性的引用。 |
 
 **示例：**
 
@@ -1451,7 +1451,7 @@ static GetShared(): LocalStorage
 let storage: LocalStorage = LocalStorage.GetShared();
 ```
 
-## AbstractProperty<sup>12+</sup>
+## AbstractProperty\<T\><sup>12+</sup>
 
 AbstractProperty是[AppStorage](../../../ui/state-management/arkts-appstorage.md)/[LocalStorage](../../../ui/state-management/arkts-localstorage.md)中属性的引用。
 

@@ -7,6 +7,7 @@
 <!--Adviser: @jinqiuheng-->
 
 - [SDK命令行工具简介](command-line-tools-overview.md)
+- [hdc](../dfx/hdc.md)
 - [aa工具](aa-tool.md)
 - [bm工具](bm-tool.md)
 - 打包拆包工具<!--packing-unpacking-->
@@ -27,7 +28,16 @@
 <!--DelEnd-->
 - [atm工具](atm-tool.md)
 - [network-cfg工具](network-cfg.md)
+- [hilog](../dfx/hilog.md)<!--RP2--><!--RP2End-->
+- hidumper<!--hidumper-tool-->
+  - [hidumper](../dfx/hidumper.md)
+  - [PrivacyManagerService](../dfx/hidumper-PrivacyManagerService.md)
+- [hitrace](../dfx/hitrace.md)
+- [hiperf](../dfx/hiperf.md)
+- [hiprofiler](../dfx/hiprofiler.md)
+- [uinput](../dfx/uinput.md)
 <!--Del-->
+- [hisysevent（仅对系统应用开放）](../dfx/hisysevent-sys.md)
 - [acm工具](acm-tool.md)
 <!--DelEnd-->
 - 命令行工具<!--command-line-utilities-->
@@ -35,5 +45,6 @@
   - [mediatool工具](mediatool.md)
   - [devicedebug工具](devicedebug-tool.md)
   - [rawheap-translator工具](rawheap-translator.md)
+  - [js-rawheap-translator工具](js-rawheap-translator.md)
   <!--RP1--><!--RP1End-->
 - [二进制签名工具](binary-sign-tool.md)

@@ -4,7 +4,7 @@
 <!--Owner: @wangchen965-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -482,7 +482,7 @@ console.info("har Utils.ets execute.");
 <!-- @[export_numberString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/components/NumberString.ets) -->
 
 ``` TypeScript
-// har/src/main/ets/NumberString.ets
+// staticLibrary/src/main/ets/NumberString.ets
 export const One: string = '1';
 console.info('har NumberString.ets execute.');
 ```
@@ -506,7 +506,7 @@ console.info('One is ', One);
 <!-- @[export_numberString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/components/NumberString.ets) -->
 
 ``` TypeScript
-// har/src/main/ets/NumberString.ets
+// staticLibrary/src/main/ets/NumberString.ets
 export const One: string = '1';
 console.info('har NumberString.ets execute.');
 ```
@@ -538,7 +538,7 @@ export { serviceManager }
 <!-- @[export_serviceManagerPartOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartOne.ets) -->
 
 ``` TypeScript
-// har/src/main/ets/ServiceManagerPartOne.ets
+// staticLibrary/src/main/ets/ServiceManagerPartOne.ets
 class ServiceManager {
   public inited: boolean = false;
 
@@ -576,7 +576,7 @@ serviceManager.print();
 <!-- @[export_serviceManagerPartTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartTwo.ets) -->
 
 ``` TypeScript
-// har/src/main/ets/ServiceManagerPartTwo.ets
+// staticLibrary/src/main/ets/ServiceManagerPartTwo.ets
 class ServiceManager {
   public inited: boolean = false;
 
@@ -622,7 +622,7 @@ serviceManager.print();
 <!-- @[export_serviceManagerPartThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/staticLibrary/src/main/ets/ServiceManagerPartThree.ets) -->
 
 ``` TypeScript
-// har/src/main/ets/ServiceManagerPartThree.ets
+// staticLibrary/src/main/ets/ServiceManagerPartThree.ets
 class ServiceManager {
   public inited: boolean = false;
 

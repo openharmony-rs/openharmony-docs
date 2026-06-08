@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **ListItemGroup** component is used to display list item groups. It must be used with the [List](ts-container-list.md) component. Unless specified otherwise, it spans the entire width of the **List** component.
@@ -59,10 +59,9 @@ Creates a **ListItemGroup** component.
 
 Describes the **ListItemGroup** component parameter.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name             | Type                                           | Read-Only| Optional  | Description                                                    |
 | ------------------- | --------------------------------------------------- | ---- | -- | ------------------------------------------------------------ |
 | header              | [CustomBuilder](ts-types.md#custombuilder8) &nbsp;   | No  | Yes| Header of the list item group.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
@@ -70,7 +69,10 @@ Describes the **ListItemGroup** component parameter.
 | footer              | [CustomBuilder](ts-types.md#custombuilder8) &nbsp;     | No  | Yes| Footer of the list item group.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
 | footerComponent<sup>13+</sup>              | [ComponentContent](../js-apis-arkui-ComponentContent.md)       | No  | Yes| Footer of the list item group, in the type of ComponentContent.<br>**NOTE**<br>One child component, or no child component at all, can be placed inside. This parameter takes precedence over the **footer** parameter. This means that, if both **footer** and **footerComponent** are set, the value of **footerComponent** is used.<br>To avoid display issues, do not assign the same **footerComponent** to different **ListItemGroup** components.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                          |
 | space               | number&nbsp;\|&nbsp;string                          | No  | Yes| Spacing between list items. This parameter only affects the spacing between list items, but not spacing between the header and list items or between the footer and list items.<br>Default value: **0**<br>Unit: vp<br>**NOTE**<br>If this parameter is set to a negative number or a value greater than or equal to the length of the list content area, the default value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| spaceWidth          | [Dimension](ts-types.md#dimension10)                          | No  | Yes| Spacing between list items. This parameter only affects the spacing between list items, but not spacing between the header and list items or between the footer and list items.<br>Default value: **0**<br>Unit: vp<br>**NOTE**<br>If this parameter is set to a negative number or a value greater than or equal to the length of the list content area, the default value is used. If both **spaceWidth** and **space** are set, **spaceWidth** takes precedence. When **spaceWidth** is **undefined** or **null**, **space** takes effect.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0. |
 | style<sup>10+</sup> | [ListItemGroupStyle](#listitemgroupstyle10) | No  | Yes| Style of the list item.<br>Default value: **ListItemGroupStyle.NONE**<br>If this parameter is set to **ListItemGroupStyle.NONE**, no style is applied.<br>When **ListItemGroupStyle.CARD** is used, you are advised to pair it with **ListItemStyle.CARD** from [ListItem](ts-container-listitem.md) to apply the default card style.<br>In the card style, the default specifications for the **ListItemGroup** are as follows: horizontal margin of 12 vp on both left and right sides, and vertical as well as horizontal padding of 4 vp.<br>The card style provides default focused, hover, pressed, selected, and disabled states for list items.<br>**NOTE**<br>When **ListItemStyle.CARD** is set, the **listDirection** attribute of **List** must be **Axis.Vertical**. If **listDirection** is set to **Axis.Horizontal**, the display will be disordered. The default value of [alignListItem](./ts-container-list.md#alignlistitem9) is **ListItemAlign.Center**, which centers the items vertically.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| headerStyle | [ListItemGroupHeaderFooterStyle](#listitemgroupheaderfooterstyle) | No  | Yes| Header style of **ListItemGroup**.<br>Default value: **ListItemGroupHeaderFooterStyle.NONE**<br>If this parameter is set to **ListItemGroupHeaderFooterStyle.FLOATING**, the header component is displayed in floating mode during scrolling.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| footerStyle | [ListItemGroupHeaderFooterStyle](#listitemgroupheaderfooterstyle) | No  | Yes| Footer style of **ListItemGroup**.<br>Default value: **ListItemGroupHeaderFooterStyle.NONE**<br>If this parameter is set to **ListItemGroupHeaderFooterStyle.FLOATING**, the footer component is displayed in floating mode during scrolling.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## Attributes
 
@@ -127,6 +129,22 @@ Enumerates the card styles of the **ListItemGroup** component.
 | NONE | 0 | No style.          |
 | CARD | 1 | Default card style.|
 
+## ListItemGroupHeaderFooterStyle
+
+Enumerates the header and footer styles of **ListItemGroup**.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+ 
+| Name    | Value | Description      |
+| -------- | ---- | ---------- |
+| NONE     | 0    | No style.  |
+| FLOATING | 1    | Floating style.|
 
 
 ## Example

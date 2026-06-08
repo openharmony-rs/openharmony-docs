@@ -25,8 +25,8 @@ Provides APIs for game controller functionality.
 | [game_controller_type.h](capi-game-controller-type.md) | Defines common enumeration types for the **GameController** module.| 
 | [game_device.h](capi-game-device.md) | Defines APIs for game devices.| 
 | [game_device_event.h](capi-game-device-event.md) | Defines APIs for game device events.| 
-| [game_pad.h](capi-game-pad.md) | Defines APIs for game controllers.| 
-| [game_pad_event.h](capi-game-pad-event.md) | Defines APIs for game controller events.| 
+| [game_pad.h](capi-game-pad.md) | Defines APIs for gamepads.| 
+| [game_pad_event.h](capi-game-pad-event.md) | Defines APIs for gamepad events.| 
 
 
 ### Types
@@ -40,10 +40,10 @@ Provides APIs for game controller functionality.
 | typedef struct [GameDevice_DeviceInfo](#gamedevice_deviceinfo) [GameDevice_DeviceInfo](#gamedevice_deviceinfo) | Defines the game device information. |
 | typedef struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) [GameDevice_DeviceEvent](#gamedevice_deviceevent) | Defines game device status change events. |
 | typedef void(\*[GameDevice_DeviceMonitorCallback](#gamedevice_devicemonitorcallback)) (const struct [GameDevice_DeviceEvent](#gamedevice_deviceevent) \*deviceEvent) | Defines the callback function used in [OH_GameDevice_RegisterDeviceMonitor](#oh_gamedevice_registerdevicemonitor). Called when the game device goes online or offline.|
-| typedef enum [GamePad_AxisSourceType](#gamepad_axissourcetype) [GamePad_AxisSourceType](#gamepad_axissourcetype) | Defines source types of game controller axis events.|
-| typedef enum [GamePad_Button_ActionType](#gamepad_button_actiontype) [GamePad_Button_ActionType](#gamepad_button_actiontype) | Defines button action types of the game controller.|
-| typedef struct [GamePad_ButtonEvent](#gamepad_buttonevent) [GamePad_ButtonEvent](#gamepad_buttonevent) | Defines game controller button events.|
-| typedef struct [GamePad_AxisEvent](#gamepad_axisevent) [GamePad_AxisEvent](#gamepad_axisevent) | Defines game controller axis events.|
+| typedef enum [GamePad_AxisSourceType](#gamepad_axissourcetype) [GamePad_AxisSourceType](#gamepad_axissourcetype) | Defines source types of gamepad axis events.|
+| typedef enum [GamePad_Button_ActionType](#gamepad_button_actiontype) [GamePad_Button_ActionType](#gamepad_button_actiontype) | Defines button action types of the gamepad.|
+| typedef struct [GamePad_ButtonEvent](#gamepad_buttonevent) [GamePad_ButtonEvent](#gamepad_buttonevent) | Defines gamepad button events.|
+| typedef struct [GamePad_AxisEvent](#gamepad_axisevent) [GamePad_AxisEvent](#gamepad_axisevent) | Defines gamepad axis events.|
 | typedef struct [GamePad_PressedButton](#gamepad_pressedbutton) [GamePad_PressedButton](#gamepad_pressedbutton) | Defines pressed buttons.|
 | typedef void(\*[GamePad_ButtonInputMonitorCallback](#gamepad_buttoninputmonitorcallback)) (const struct [GamePad_ButtonEvent](#gamepad_buttonevent) \*buttonEvent) | Defines the callback function used in the button event registration listening API. Called when a player presses a button.|
 | typedef void(\*[GamePad_AxisInputMonitorCallback](#gamepad_axisinputmonitorcallback)) (const struct [GamePad_AxisEvent](#gamepad_axisevent) \*axisEvent) | Defines the callback function used in the axis event registration listening API. Called when a player operates a joystick.|
@@ -56,8 +56,8 @@ Provides APIs for game controller functionality.
 | [GameController_ErrorCode](#gamecontroller_errorcode) {<br>GAME_CONTROLLER_SUCCESS = 0,<br>GAME_CONTROLLER_PARAM_ERROR = 401,<br>GAME_CONTROLLER_MULTIMODAL_INPUT_ERROR = 32200001,<br>GAME_CONTROLLER_NO_MEMORY = 32200002<br>} | Game controller error codes.| 
 | [GameDevice_StatusChangedType](#gamedevice_statuschangedtype) {<br>OFFLINE = 0,<br>ONLINE = 1<br>} | Game device status change types.| 
 | [GameDevice_DeviceType](#gamedevice_devicetype) {<br>UNKNOWN = 0,<br>GAME_PAD = 1<br>} | Game device types.| 
-| [GamePad_AxisSourceType](#gamepad_axissourcetype) {<br>DPAD = 0,<br>LEFT_THUMBSTICK = 1,<br>RIGHT_THUMBSTICK = 2,<br>LEFT_TRIGGER = 3,<br>RIGHT_TRIGGER = 4<br>} | Source types of game controller axis events.| 
-| [GamePad_Button_ActionType](#gamepad_button_actiontype) {<br>DOWN = 0,<br>UP = 1<br>} | Button action types of the game controller.| 
+| [GamePad_AxisSourceType](#gamepad_axissourcetype) {<br>DPAD = 0,<br>LEFT_THUMBSTICK = 1,<br>RIGHT_THUMBSTICK = 2,<br>LEFT_TRIGGER = 3,<br>RIGHT_TRIGGER = 4<br>} | Source types of gamepad axis events.| 
+| [GamePad_Button_ActionType](#gamepad_button_actiontype) {<br>DOWN = 0,<br>UP = 1<br>} | Button action types of the gamepad.| 
 
 
 ### Functions
@@ -254,7 +254,7 @@ typedef struct GamePad_AxisEvent GamePad_AxisEvent
 
 **Description**
 
-Defines game controller axis events.
+Defines gamepad axis events.
 
 **Since**: 21
 
@@ -275,7 +275,7 @@ Defines the callback function used in the axis event registration listening API.
 
 | Name| Description| 
 | -------- | -------- |
-| axisEvent | Output parameter. Game controller axis event [GamePad_AxisEvent](#gamepad_axisevent).| 
+| axisEvent | Output parameter. Gamepad axis event [GamePad_AxisEvent](#gamepad_axisevent).| 
 
 
 ### GamePad_AxisSourceType
@@ -286,7 +286,7 @@ typedef enum GamePad_AxisSourceType GamePad_AxisSourceType
 
 **Description**
 
-Defines source types of game controller axis events.
+Defines source types of gamepad axis events.
 
 **Since**: 21
 
@@ -299,7 +299,7 @@ typedef enum GamePad_Button_ActionType GamePad_Button_ActionType
 
 **Description**
 
-Defines button action types of the game controller.
+Defines button action types of the gamepad.
 
 **Since**: 21
 
@@ -312,7 +312,7 @@ typedef struct GamePad_ButtonEvent GamePad_ButtonEvent
 
 **Description**
 
-Defines game controller button events.
+Defines gamepad button events.
 
 **Since**: 21
 
@@ -333,7 +333,7 @@ Defines the callback function used in the button event registration listening AP
 
 | Name| Description| 
 | -------- | -------- |
-| buttonEvent | Output parameter. Game controller button event [GamePad_ButtonEvent](#gamepad_buttonevent).| 
+| buttonEvent | Output parameter. Gamepad button event [GamePad_ButtonEvent](#gamepad_buttonevent).| 
 
 
 ### GamePad_PressedButton
@@ -387,7 +387,7 @@ Defines game device types.
 | Value| Description| 
 | -------- | -------- |
 | UNKNOWN | Unknown.| 
-| GAME_PAD | Game controller.| 
+| GAME_PAD | Gamepad.| 
 
 
 ### GameDevice_StatusChangedType
@@ -416,7 +416,7 @@ enum GamePad_AxisSourceType
 
 **Description**
 
-Defines source types of game controller axis events.
+Defines source types of gamepad axis events.
 
 **Since**: 21
 
@@ -437,7 +437,7 @@ enum GamePad_Button_ActionType
 
 **Description**
 
-Defines button action types of the game controller.
+Defines button action types of the gamepad.
 
 **Since**: 21
 

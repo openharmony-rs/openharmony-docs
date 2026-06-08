@@ -30,6 +30,7 @@ The **avplayer.h** file declares the AVPlayer APIs. You can use the native AVPla
 | -- | -- | -- |
 | [MediaKeySession](capi-avplayer-mediakeysession.md) | MediaKeySession | Describes the media key session.|
 | [DRM_MediaKeySystemInfo](capi-avplayer-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | Describes the media key system information.|
+| [OH_AVPlayerVideoOutput](capi-avplayer-oh-avplayervideooutput.md) | OH_AVPlayerVideoOutput | Describes the video output of the AVPlayer.|
 
 ### Functions
 
@@ -112,6 +113,8 @@ The **avplayer.h** file declares the AVPlayer APIs. You can use the native AVPla
 | [uint32_t OH_AVPlayer_GetTrackCount(OH_AVPlayer *player)](#oh_avplayer_gettrackcount) | - | Obtains the number of tracks of the media source of the AVPlayer.|
 | [OH_AVFormat *OH_AVPlayer_GetTrackFormat(OH_AVPlayer *player, uint32_t trackIndex)](#oh_avplayer_gettrackformat) | - | Obtains the track information of the AVPlayer by index.|
 | [OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)](#oh_avplayer_getplaybackstatisticmetrics) | - | Obtains the statistic metrics of the current AVPlayer. This API can be called when the playback resource is set and the AVPlayer is in the prepared, playing, paused, completed, or stopped state.<br> Note that you need to manually release the lifecycle of the [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md) pointer object.|
+| [OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)](#oh_avplayer_setvideosideoutput) | - | Sets the callback for decoded video frame output. This API can be called when the AVPlayer is in the idle or initialized state.|
+| [OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVideoOutput *videoOutput)](#oh_avplayervideooutput_getnewestvideosample) | - | Obtains a decoded video frame. This API can be called when the AVPlayer is in the paused or playing state.|
 
 ## Function Description
 
@@ -2108,3 +2111,52 @@ Obtains the statistic metrics of the current AVPlayer. This API can be called wh
 | Type| Description|
 | -- | -- |
 | [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | If the operation is successful, the statistic metrics of the current AVPlayer are returned. (For details about the key values, see [Variables](../apis-media-kit/capi-avplayer-base-h.md#variables) in **avplayer_base.h**.) Otherwise, **nullptr** is returned.<br> Possible failure cause: The input **player** pointer is invalid.|
+
+### OH_AVPlayer_SetVideoSideOutput()
+
+```c
+OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)
+```
+
+**Description**
+
+Sets the callback for decoded video frame output. This API can be called when the AVPlayer is in the idle or initialized state.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
+| OHNativeWindow *window | Pointer to the **OHNativeWindow** instance. For details, see **OHNativeWindow**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVPlayerVideoOutput*](capi-avplayer-oh-avplayervideooutput.md) | Pointer to the **OH_AVPlayerVideoOutput** instance. If **nullptr** is returned, the operation fails.<br> Possible cause:<br> 1. The **player** pointer is invalid.<br> 2. The **window** pointer is invalid.|
+
+### OH_AVPlayerVideoOutput_GetNewestVideoSample()
+
+```c
+OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVideoOutput *videoOutput)
+```
+
+**Description**
+
+Obtains a decoded video frame. This API can be called when the AVPlayer is in the paused or playing state.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [OH_AVPlayerVideoOutput](capi-avplayer-oh-avplayervideooutput.md) *videoOutput | Pointer to the **OH_AVPlayerVideoOutput** instance returned by **OH_AVPlayer_SetVideoSideOutput**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_VideoOutputResult](capi-avplayer-base-h.md#oh_videooutputresult) | **OH_VIDEO_OUTPUT_OK**: A decoded video frame is obtained.<br>         **OH_VIDEO_OUTPUT_NO_IMAGE**: No frame is available for rendering.|

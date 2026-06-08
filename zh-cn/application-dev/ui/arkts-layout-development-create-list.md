@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -775,7 +775,7 @@ export struct ResponsiveScrollPositionList {
 
 ![zh-cn_image_0000001563060773](figures/zh-cn_image_0000001563060773.gif)
 
-ListItem的[swipeAction属性](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#swipeaction9)可用于实现列表项的左右滑动功能。swipeAction属性方法初始化时有必填参数SwipeActionOptions，其中，start参数表示设置列表项右滑时起始端滑出的组件，end参数表示设置列表项左滑时尾端滑出的组件。
+ListItem的[swipeAction](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#swipeaction9)属性可用于实现列表项的左右滑动功能。swipeAction属性方法初始化时有必填参数SwipeActionOptions，其中，start参数表示设置列表项右滑时起始端滑出的组件，end参数表示设置列表项左滑时尾端滑出的组件。
 
 在消息列表中，end参数表示设置ListItem左滑时尾端划出自定义组件，即删除按钮。在初始化end方法时，将滑动列表项的索引传入删除按钮组件，当用户点击删除按钮时，可以根据索引值来删除列表项对应的数据，从而实现侧滑删除功能。
 
@@ -869,7 +869,7 @@ ListItem() {
 <!--RP1--><!--RP1End-->
 
 <!--Del-->
-下拉刷新与上拉加载的具体实现可参考[相关实例](#相关实例)中新闻数据加载。若开发者希望快速实现此功能，也可使用三方组件[PullToRefresh](https://gitcode.com/openharmony-sig/ohos_pull_to_refresh)。<!--DelEnd-->
+下拉刷新与上拉加载的具体实现可参考[相关实例](#相关实例)中新闻数据加载。若开发者希望快速实现此功能，也可使用三方组件[PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh)。<!--DelEnd-->
 
 
 ## 编辑列表
@@ -1606,6 +1606,80 @@ List(
 
 需要注意的是，当List组件的内容区小于一屏时，List默认无边缘滑动效果。若要启用边缘回弹效果，可以通过设置.edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true })来实现。
 
+## 手指滑动多选
+
+从API版本26.0.0开始，[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)支持在编辑模式下实现手指滑动多选能力。进入编辑模式后，用户可以滑动经过多个[ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md)，批量选择或取消选择列表项。应用可以在ListItem上设置是否允许被选择，并根据回调记录已选择的列表项。该能力适用于文件管理、消息列表、待办列表等需要连续批量选择列表项的场景。
+
+**List手指滑动多选示例效果图**
+
+![listSwipeSelect](figures/listSwipeSelect.gif)
+
+### 设置编辑模式
+
+通过[enableEditMode](../reference/apis-arkui/arkui-ts/ts-container-list.md#enableeditmode)设置是否进入编辑模式。设置为true时，List进入编辑模式，用户可以单指滑动经过多个ListItem进行批量选择或取消选择；设置为false时，List退出编辑模式。通过[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-list.md#oneditmodechange)监听编辑模式变化，将系统返回、侧滑返回或双指滑动触发的编辑模式变化同步到业务状态。
+
+通过[editModeOptions](../reference/apis-arkui/arkui-ts/ts-container-list.md#editmodeoptions23)配置编辑模式下的多选行为。editModeOptions中有两个滑动多选相关参数，分别是useDefaultMultiSelectStyle和enableTwoFingerMultiSelect，默认值均为true。前者控制是否显示ListItem右侧的系统复选框，后者控制是否允许用户通过双指滑动自动进入编辑模式并进行多选。开发者需要自定义样式时，可将useDefaultMultiSelectStyle设置为false。开发者需要关闭双指滑动自动进入编辑模式时，可将enableTwoFingerMultiSelect设置为false。
+<!-- @[Add_list_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets) -->
+
+``` TypeScript
+List({ space: 10 }) {
+  // ...
+}
+.enableEditMode(this.enableEditMode)
+.onEditModeChange((enabled: boolean) => {
+  this.setEditMode(enabled);
+})
+.editModeOptions({ useDefaultMultiSelectStyle: true, enableTwoFingerMultiSelect: true })
+```
+
+### 自定义多选样式
+
+如果默认多选样式不满足业务视觉要求，可关闭默认样式，并在ListItem内容中自行绘制复选框、图标、背景色等编辑态样式。
+
+1. 在List的editModeOptions中将useDefaultMultiSelectStyle设置为false，关闭ListItem右侧默认复选框。
+
+2. 在ListItem内容中根据编辑模式状态显示自定义选择控件，例如Checkbox、SymbolGlyph或自定义图片。
+
+3. 自定义选择控件和ListItem使用同一份选择结果数据。ListItem仍需配置selectable、selected和onSelect，用于在手指滑动多选过程中同步最新选择结果。
+
+4. 关闭了默认编辑样式以后，开发者需要通过[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)进行手势裁决，来决定滑动哪块区域能够进行滑动多选。开发者可根据编辑模式状态、手势类型、手势tag或触摸区域返回GestureJudgeResult.REJECT或GestureJudgeResult.CONTINUE，决定当前业务手势是否继续参与识别。
+<!-- @[Add_list_GestureRecognizerJudgeBegin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets) -->
+
+``` TypeScript
+.onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+  recognizers: Array<GestureRecognizer>) => {
+  // ...
+  // 以滑动多选的判定热区在列表左边，且宽度为48vp为例
+  if (current.getTag() !== 'SWIPESELECT' && this.enableEditMode && event.fingerList[0].localX < 48) {
+    return GestureJudgeResult.REJECT;
+  }
+  return GestureJudgeResult.CONTINUE;
+})
+```
+
+### 记录列表项选择结果
+
+在ListItem上配置[selectable](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selectable8)、[selected](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#selected10)和[onSelect](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#onselect8)。selectable用于设置列表项是否允许被选择，selected用于设置列表项当前是否被选中。滑动多选过程中，组件会触发onSelect回调，应用可以在回调中记录每个列表项的最新选择结果。
+<!-- @[Add_list_item_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ListSwipeSelect.ets) -->
+
+``` TypeScript
+ListItem() {
+  this.ItemContent(item, index)
+}
+.selectable(true)
+.selected(this.isSelected(item.id))
+.onSelect((selected: boolean) => {
+  this.updateSelected(item.id, selected);
+})
+```
+
+>**说明：**
+>
+>- 建议使用列表项数据中不会随位置变化的唯一标识（例如消息ID）记录选择结果，不建议仅使用当前下标，避免动态增删数据后选中项错位。
+>- 当业务需要在退出编辑模式后保留选择结果时，可在[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-list.md#oneditmodechange)回调中保存选择结果。
+>- 使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据源发生变化后应通过[DataChangeListener](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener)通知组件刷新，确保滑动多选过程中列表项状态与数据源一致。
+
+<!--RP2-->
 ## 相关实例
 
 如需详细了解ArkUI中列表的创建与使用，请参考以下示例：
@@ -1620,6 +1694,6 @@ List(
 
 - [List组件的使用之设置项（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/List_HDC)
 
-- [PullToRefresh](https://gitcode.com/openharmony-sig/ohos_pull_to_refresh)
+- [PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh)
 
-<!--RP2--><!--RP2End-->
+<!--RP2End-->

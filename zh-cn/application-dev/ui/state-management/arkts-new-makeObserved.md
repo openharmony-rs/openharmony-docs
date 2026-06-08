@@ -112,7 +112,7 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
  - 点击`change id`可以触发UI刷新。
  - 点击`change Info`，将`this.message`重新赋值为不可观察数据后，再次点击`change id`，无法触发UI刷新。
  - 再次点击`change Info1`，将`this.message`重新赋值为可观察数据，再次点击`change id`，可以触发UI刷新。
-  <!-- @[MakeObserved_only_applies_to_input_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page2.ets) -->
+  <!-- @[MakeObserved_only_applies_to_input_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page2.ets) --> 
   
   ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
@@ -125,6 +125,7 @@ makeObserved可以在\@Trace无法标记的情况下使用。在阅读本文档�
   @Entry
   @ComponentV2
   struct Page2 {
+    // message初始化为makeObserved的返回值，具有深度观察能力
     @Local message: Info = UIUtils.makeObserved(new Info(20));
     build() {
       Column() {
@@ -192,13 +193,15 @@ export class SendableData  {
 }
 ```
 
-<!-- @[function threadGetData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page3.ets) -->
+<!-- @[function_threadGetData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page3.ets) -->  
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 import { SendableData } from '../Model/modelView';
 import { UIUtils } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 @Concurrent
 function threadGetData(param: string): SendableData {
@@ -229,10 +232,14 @@ struct Page3 {
 
       Button('task').onClick(() => {
         // 将待执行的函数放入taskpool内部任务队列等待，等待分发到工作线程执行。
-        taskpool.execute(threadGetData, this.send.name).then(val => {
-          // 和@Local一起使用，可以观察this.send的变化
-          this.send = UIUtils.makeObserved(val as SendableData);
-        })
+        taskpool.execute(threadGetData, this.send.name)
+          .catch((err: Error) => {
+            hilog.error(DOMAIN, 'testTag', `taskpool execute fail. code is ${err.name}, message is ${err.message}`);
+          })
+          .then(val => {
+            // 和@Local一起使用，可以观察this.send的变化
+            this.send = UIUtils.makeObserved(val as SendableData);
+          });
       })
     }
   }
@@ -548,7 +555,7 @@ struct Page6 {
 
 ### makeObserved的入参为JSON.parse的返回值
 JSON.parse返回Object，无法使用@Trace装饰其属性，可以使用makeObserved使其变为可观察数据。
-<!-- @[makeObserved_JSON.parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page7.ets) -->
+<!-- @[makeObserved_JSON.parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page7.ets) --> 
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
@@ -570,6 +577,7 @@ let test2JsonStr: string = JSON.stringify(test2);
 @Entry
 @ComponentV2
 struct Page7 {
+  // JSON.parse返回的Object用makeObserved转为可观察数据
   message: Record<string, number> = 
         UIUtils.makeObserved<Record<string, number>>(JSON.parse(testJsonStr) as Record<string, number>);
   message2: Record<string, Info> = 

@@ -42,8 +42,8 @@ setValue(admin: Want, item: string, value: string): void
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| item   | string                                                  | 是   | 设备设置策略类型。<br/>- screenOff：设备息屏策略，对于PC/2in1设备，支持设置电池和电源供电下的息屏策略。<br/>- dateTime：设置系统时间。<br/>- powerPolicy：设备电源策略，对于PC/2in1设备，仅支持设置电池供电下的电源策略。<br/>- eyeComfort：从API version 23开始支持，设置护眼模式开关状态，仅支持全天开启和关闭护眼模式。<br/>- defaultInputMethod：从API version 23开始支持，设置默认输入法。 |
-| value  | string                                                  | 是   | 策略类型值。<br/>当item为screenOff时，value为设备息屏时间（单位：毫秒）。<br/>当item为dateTime时，value为要设置的系统时间（单位：毫秒）。<br/>当item为powerPolicy时，value为JSON字符串，格式：{"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}。powerScene为电源策略场景；delayTime为延迟时间（单位：毫秒），不支持设置为30000毫秒；powerPolicyAction为休眠策略。<br/>电源策略场景：<br/>- 0：超时场景。<br/>休眠策略：<br/>- 0：不执行动作。<br/>- 1：自动进入睡眠。<br/>- 2：强制进入睡眠。<br/>- 3：进入休眠，该策略暂不生效。<br/>- 4：关机。<br/>当item为eyeComfort时，value为护眼模式开关状态的字符串。<br/>- on：全天开启护眼模式。<br/>- off：关闭护眼模式。<br/>当item为defaultInputMethod时，value为输入法应用包名字符串。<br/>- 可以通过[getCurrentInputMethod](../apis-ime-kit/js-apis-inputmethod.md#inputmethodgetcurrentinputmethod9)获取当前输入法应用包名。 |
+| item   | string                                                  | 是   | 设备设置策略类型。<br/>- screenOff：设备息屏策略。对于PC/2in1设备，支持设置电池和电源供电下的设备息屏策略。<br/>- dateTime：设置系统时间。<br/>- powerPolicy：设备电源策略。该能力仅支持PC/2in1设备，策略设置之后不刷新设置—电源和电池页面，在手机平板设备设置后不生效。<br/>对于PC/2in1设备，仅支持设置电池供电下的设备电源策略。设置设备超时灭屏时睡眠延迟策略，睡眠动作需要在设置—电源和电池页面显示的睡眠时间之后等待设置的delayTime才会生效。<br/>- eyeComfort：从API version 23开始支持，设置护眼模式开关状态，仅支持全天开启和关闭护眼模式。<br/>- defaultInputMethod：从API version 23开始支持，设置默认输入法。 |
+| value  | string                                                  | 是   | 策略类型值。<br/>当item为screenOff时，value为设备息屏时间（单位：毫秒）。建议value值和设置页面手动操作下拉框中的可选项保持一致。<br/>当item为dateTime时，value为要设置的系统时间（单位：毫秒）。<br/>当item为powerPolicy时，value为JSON字符串，格式：{"powerScene":xx,"powerPolicy":{"powerPolicyAction":xx,"delayTime":xx}}。<br/>powerScene为电源策略场景，可设置参数如下：<br/>- 0：超时灭屏场景。<br/>powerPolicyAction为休眠动作策略场景，可设置参数如下：<br/>- 0：不执行动作。<br/>- 1：自动进入睡眠。<br/>- 2：强制进入睡眠。<br/>- 3：进入休眠，该策略暂不生效。<br/>- 4：关机。<br/>delayTime为延迟时间（单位：毫秒），不支持设置为30000毫秒，其余数值均在允许范围内。<br/>当item为eyeComfort时，value为护眼模式开关状态的字符串。<br/>- on：全天开启护眼模式。<br/>- off：关闭护眼模式。<br/>当item为defaultInputMethod时，value为输入法应用包名字符串。<br/>- 可以通过[getCurrentInputMethod](../apis-ime-kit/js-apis-inputmethod.md#inputmethodgetcurrentinputmethod9)获取当前输入法应用包名。 |
 
 **错误码**：
 
@@ -94,7 +94,7 @@ getValue(admin: Want, item: string): string
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| item   | string                                                  | 是   | 设备设置策略类型。<br/>- screenOff：设备息屏策略，对于PC/2in1设备，支持查询电池和电源供电下的息屏策略。<br/>- powerPolicy：设备电源策略，对于PC/2in1设备，仅支持查询电池供电下的电源策略。<br/>- eyeComfort：从API version 23开始支持，护眼模式开关状态。 |
+| item   | string                                                  | 是   | 设备设置策略类型。<br/>- screenOff：设备息屏策略，对于PC/2in1设备，支持查询电池供电下的设备息屏策略。<br/>- powerPolicy：设备电源策略，仅对PC/2in1设备生效，仅支持查询电池供电下的设备电源策略。<br/>- eyeComfort：从API version 23开始支持，护眼模式开关状态。 |
 
 **返回值：**
 
@@ -282,7 +282,7 @@ setValueForAccount(admin: Want, item: SettingsItem, accountId: number, value: st
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | item   | [SettingsItem](#settingsitem24)                                                  | 是   | 设备设置策略类型。|
 | accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。                       |
-| value  | string                                                  | 是   | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，value为设备名称的字符串。 字符串长度范围：大于等于1，小于等于100。只允许设置当前用户的设备名称，设置其他用户的设备名称返回9200012错误码。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，value为三键导航的开关状态，'0'表示三键导航已开启（在[Kiosk模式](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)下，三键导航显示依赖底部手势开启；即三键导航开关和底部手势开关同时开启时，三键导航才会显示。底部手势可通过接口[applicationManager.setKioskFeatures](./js-apis-enterprise-applicationManager.md#applicationmanagersetkioskfeatures20)设置开启或关闭），'1'表示三键导航已关闭。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。|
+| value  | string                                                  | 是   | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，value为设备名称的字符串。 字符串长度范围：大于等于1，小于等于100。只允许设置当前用户的设备名称，设置其他用户的设备名称返回9200012错误码。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。只允许设置当前用户的三键导航，设置其他用户的三键导航不会生效，value为三键导航的开关状态。<br/>- '0'：表示开启三键导航（通过接口[enterKioskMode](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)进入Kiosk模式下，三键导航显示依赖底部手势开启；即三键导航开关和底部手势开关同时开启时，三键导航才会显示。底部手势可通过接口[applicationManager.setKioskFeatures](./js-apis-enterprise-applicationManager.md#applicationmanagersetkioskfeatures20)设置开启或关闭）。<br/>- '1'：表示关闭三键导航。|
 
 **错误码**：
 
@@ -343,7 +343,7 @@ getValueForAccount(admin: Want, item: SettingsItem, accountId: number): string
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| string | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，返回当前用户的设备名称，查询非当前用户的设备名称返回9200012错误码。 <br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，返回指定用户的三键导航的开关状态。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，该接口在该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。|
+| string | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，返回当前用户的设备名称，查询非当前用户的设备名称返回9200012错误码。 <br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，返回指定用户的三键导航的开关状态。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。|
 
 **错误码**：
 
@@ -551,8 +551,8 @@ let wantTemp: Want = {
 try {
   const rawList: Array<number> = deviceSettings.getHiddenSettingsMenu(wantTemp) as Array<number>;
   for (const item of rawList) {
-      const menu: deviceSettings.SettingsMenu = item as deviceSettings.SettingsMenu;
-      console.info(`Valid SettingsMenu item: ${item} -> ${menu}`);
+    const menu: deviceSettings.SettingsMenu = item as deviceSettings.SettingsMenu;
+    console.info(`Valid SettingsMenu item: ${item} -> ${menu}`);
   }
   console.info('Succeeded in getting hidden settings menu.');
 } catch (err) {
@@ -564,7 +564,7 @@ try {
 
 setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void
 
-设置开关的状态。支持设置星闪、蓝牙、Wi-Fi的状态为开启或关闭，设置完毕后，用户可以手动开关。支持设置蓝牙的状态为强制开启，设置完毕后，用户不可以手动开关。若已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) 接口禁用了某个开关，则通过本接口设置这个开关的状态会抛出错误码203，需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) 接口解除该开关禁用策略。当设备有多个MDM应用时，各MDM应用设置开关状态不存在冲突，最后设置的策略生效。开启(用户可手动开启、关闭)、关闭(用户可手动开启、关闭)、强制开启(用户不可手动关闭)三个状态可以随意切换，也不存在冲突。
+设置开关的状态。支持设置星闪、蓝牙、Wi-Fi、NFC的状态为开启或关闭，设置完毕后，用户可以手动开关。支持设置蓝牙、NFC的状态为强制开启，设置完毕后，用户不可以手动开关。若已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) 接口禁用了某个开关，则通过本接口设置这个开关的状态会抛出错误码203，需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy) 接口解除该开关禁用策略。当设备有多个MDM应用时，各MDM应用设置开关状态不存在冲突，最后设置的策略生效。开启(用户可手动开启、关闭)、关闭(用户可手动开启、关闭)、强制开启(用户不可手动关闭)三个状态可以随意切换，也不存在冲突。
 
 **起始版本：** 26.0.0
 
@@ -581,8 +581,8 @@ setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void
 | 参数名   | 类型                                           | 必填   | 说明                                  |
 | ------- | ---------------------------------------------- | ---- |------------------------------------------------------------|
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。   |
-| key     | [SwitchKey](#switchkey)                        | 是      | 开关的名称，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS 并[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)，可以使用此接口设置以下开关：星闪、蓝牙、Wi-Fi。 |
-| status  | [SwitchStatus](#switchstatus)                  | 是      | 开关的状态，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS 并[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)，可以使用此接口设置以下状态：ON、OFF。设置为FORCE_ON状态时会报错误码9200002。 |
+| key     | [SwitchKey](#switchkey)                        | 是      | 开关的名称，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS 并通过接口[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为自带设备管理应用，可以使用此接口设置以下开关：星闪、蓝牙、Wi-Fi。设置NFC开关时会报错误码9200002。 |
+| status  | [SwitchStatus](#switchstatus)                  | 是      | 开关的状态，应用申请权限 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS 并通过接口[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)激活为自带设备管理应用，可以使用此接口设置以下状态：ON、OFF。设置为FORCE_ON状态时会报错误码9200002。 |
 
 **错误码**：
 
@@ -593,6 +593,7 @@ setSwitchStatus(admin: Want, key: SwitchKey, status: SwitchStatus): void
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200012  | Parameter verification failed.  |
+| 9201042  | Failed to toggle the switch state.  |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 203      | This function is prohibited by enterprise management policies. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
@@ -699,6 +700,7 @@ try {
 | NEARLINK  | 0    | 星闪开关。 | ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS |
 | BLUETOOTH | 1    | 蓝牙开关。 | ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS |
 | WIFI      | 2    | Wi-Fi开关。 | ohos.permission.ENTERPRISE_MANAGE_SETTINGS 或 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS |
+| NFC       | 3    | NFC开关。  | ohos.permission.ENTERPRISE_MANAGE_SETTINGS |
 
 ## SwitchStatus
 

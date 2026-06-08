@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -31,6 +31,9 @@
 | RGBA_1010102<sup>12+</sup> | 10 | 颜色信息由R（Red），G（Green），B（Blue）与透明度（Alpha）四部分组成，其中R、G、B分别占10位，透明度占2位，总共占32位。 |
 | YCBCR_P010<sup>12+</sup> | 11 | 颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。  |
 | YCRCB_P010<sup>12+</sup> | 12 | 颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。  |
+| Y8 | 14 | 每个像素占8位，仅包含Y平面（亮度）的单通道灰度格式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。  |
+| ALPHA_U8 | 15 | 颜色信息仅包含透明度（Alpha），每个像素占8位，按照从高位到低位的顺序储存。所有像素紧密排列，不进行对齐。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。  |
+| ALPHA_F16 | 16 | 颜色信息仅包含透明度（Alpha），每个像素占16位，按照从高位到低位的顺序以FP16半精度浮点数的形式储存。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。  |
 | ASTC_4x4<sup>18+</sup> | 102 | 存储格式为ASTC 4x4格式，内存使用量仅为RGBA_8888的1/4。该格式仅用于直接显示场景，不支持像素访问或后期处理编辑，不支持仿射变换级联使用。  |
 
 ## AlphaType<sup>9+</sup>
@@ -62,11 +65,12 @@
 
 | 名称          | 值   | 说明         |
 | ------------- | ---- | ------------ |
-| GAINMAP       | 1    | 增益图（Gain Map）。<br>用于更准确地生成HDR图像。<br>HDR合成通常需要同时使用SDR主图、增益图和[HDR元数据](./arkts-apis-image-PixelMap.md#getmetadata12)共同计算亮度映射关系。 |
+| GAINMAP       | 1    | 增益图（Gain Map）。<br>用于更准确地生成HDR图像。<br>HDR合成通常需要同时使用SDR主图、增益图和HDR元数据（[getMetadata](./arkts-apis-image-PixelMap.md#getmetadata12)）共同计算亮度映射关系。 |
 | DEPTH_MAP     | 2    | 深度图（Depth Map）。<br>用于存储每个像素与摄像头之间的距离信息，提供场景的三维结构。<br>可用于3D重建、背景分离和场景理解等任务。     |
 | UNREFOCUS_MAP | 3    | 未重对焦原图（UnReFocus Map）。<br>用于保存拍摄时未重对焦的图片像素内容。<br>可用于人像虚化等后期处理，便于用户自由选择焦点区域。  |
 | LINEAR_MAP    | 4    | 线性图（Linear Map）。<br>以线性方式记录光照、颜色或其他视觉要素，为图像处理提供补充信息。<br>可用于视觉效果增强与色彩后期处理。  |
 | FRAGMENT_MAP  | 5    | 水印裁剪图（Fragment Map）。<br>记录原图中被水印遮挡的区域，可能是从原图裁剪得到，也可能只是填充特定数值的像素数据作为占位符。<br>可用于水印移除、原图恢复等场景。 |
+| LHDR_GAINMAP  | 10    | 特殊增益图（LHDR Gain Map）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## MetadataType<sup>13+</sup>
 
@@ -85,6 +89,8 @@
 | PNG_METADATA | 19    | PNG图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 | JFIF_METADATA | 20    | JFIF图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 | TIFF_METADATA | 21    | TIFF图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
+| XMP_METADATA | 22    | XMP图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
+| AVIS_METADATA | 23    | AVIS图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 
 ## ScaleMode<sup>9+</sup>
 
@@ -166,7 +172,7 @@
 | GPS_SPEED_REF<sup>12+</sup>              | "GPSSpeedRef"               | 用来表示GPS接收器移动速度的单位。<br/>'K'："km/h"。<br />'M'："mph"。<br />'N'："knots"。<br />**读写能力：** 可读写。 | **修改传参格式说明：** 修改时传入对应的字母或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'K');`<br />或`imageSource.modifyImageProperty(key,'km/h');`<br />**读取结果示例：** "K" |
 | GPS_SPEED<sup>12+</sup>                  | "GPSSpeed"                  | GPS接收器的移动速度。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串<br />**修改示例：**`imageSource.modifyImageProperty(key,'123');`<br />或`imageSource.modifyImageProperty(key,'123.45');`<br />**读取结果示例：** "123.45" |
 | GPS_TRACK_REF<sup>12+</sup>              | "GPSTrackRef"               | GPS接收机移动方向的参照，用于说明这个角度是以哪个“北”为参考。<br/> 'T'："True direction"，真北：地理极点方向，适合地图、导航。<br />'M'："Magnetic direction"， 磁北：受地磁影响，磁偏角因地区和时间不同而变化。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入对应的字母或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'T');`<br />或`imageSource.modifyImageProperty(key,'True direction');`<br />**读取结果示例：** "T" |
-| GPS_TRACK<sup>12+</sup>                  | "GPSTrack"                  | GPS接收机的移动方向。用于记录拍摄设备在拍照时的移动方向（行进方向），单位是角度（度）<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'180');`<br />**读取结果示例：** "180" |
+| GPS_TRACK<sup>12+</sup>                  | "GPSTrack"                  | GPS接收机的移动方向。用于记录拍摄设备在拍照时的移动方向（行进方向），单位是角度（deg）<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'180');`<br />**读取结果示例：** "180" |
 | GPS_IMG_DIRECTION_REF<sup>12+</sup>      | "GPSImgDirectionRef"        | 图像方向的参照。<br/> 'T'："True direction"，真北：地理极点方向，适合地图、导航。<br />'M'："Magnetic direction"， 磁北：受地磁影响，磁偏角因地区和时间不同而变化。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入对应的字母或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'T');`<br />或`imageSource.modifyImageProperty(key,'True direction');`<br />**读取结果示例：** "T" |
 | GPS_IMG_DIRECTION<sup>12+</sup>          | "GPSImgDirection"           | 拍摄时图像的方向。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'120');`<br />**读取结果示例：** "120" |
 | GPS_MAP_DATUM<sup>12+</sup>              | "GPSMapDatum"               | GPS接收器使用的大地测量数据。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'GPS Map Datum');`<br />**读取结果示例：** "GPS Map Datum" |
@@ -182,7 +188,7 @@
 | GPS_AREA_INFORMATION<sup>12+</sup>       | "GPSAreaInformation"   | 记录GPS区域名的字符串。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'GPS Area Information');`<br />**读取结果示例：** "GPS Area Information" |
 | GPS_DATE_STAMP<sup>10+</sup>              | "GPSDateStamp"         | GPS日期戳。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 格式为“YY:MM:DD”。<br />**修改示例：**`imageSource.modifyImageProperty(key,'2020:07:07');`<br />**读取结果示例：** "2020:07:07" |
 | GPS_DIFFERENTIAL<sup>12+</sup>           | "GPSDifferential"      | 此字段表示GPS数据是否应用了差分校正，对于精确的位置准确性至关重要。<br/>  0："Without correction"，没有使用差分校正。<br/> 1："Correction applied"，使用差分校正。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Without correction');`<br />**读取结果示例：** "0" |
-| GPS_H_POSITIONING_ERROR<sup>12+</sup>    | "GPSHPositioningError" | 此标签指示水平定位误差，单位为米。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'100');`<br />**读取结果示例：** "100" |
+| GPS_H_POSITIONING_ERROR<sup>12+</sup>    | "GPSHPositioningError" | 此标签指示水平定位误差，单位为米（m）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'100');`<br />**读取结果示例：** "100" |
 | ISO_SPEED_RATINGS<sup>9+</sup>            | "ISOSpeedRatings"           | ISO感光度，例如400。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3200');`<br />**读取结果示例：** "3200" |
 | PHOTOGRAPHIC_SENSITIVITY<sup>12+</sup>   | "PhotographicSensitivity" | 用于表示图像拍摄时所用的感光度值（ISO 值），也叫ISO Speed。该字段是Exif 2.3后的推荐字段，ISOSpeedRatings（Tag 0x8827）是早期使用的字段，类型和含义相同，若两个字段都存在，以`PhotographicSensitivity` 为主。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3200');`<br />**读取结果示例：** "3200" |
 | OECF<sup>12+</sup>                       | "OECF"                      | 表示ISO 14524中规定的光电转换函数（OECF）。<br/>**读写能力：** 可读写。<br> | 该字段为特有格式，虽然支持读写，但目前版本不做解析。 |
@@ -334,7 +340,7 @@
 
 | 名称              | 值                | 说明                   |
 | ----------------- | ----------------- | --------------------- |
-| HEIFS_DELAY_TIME    | 'HeifsDelayTime'    | HEIF序列图片的每帧延迟时长。<br>单位为毫秒。 |
+| HEIFS_DELAY_TIME    | 'HeifsDelayTime'    | HEIF序列图片的每帧延迟时长。<br>单位为毫秒（ms）。 |
 | HEIFS_UNCLAMPED_DELAY_TIME | 'HeifsUnclampedDelayTime' | HEIF序列图片未钳制的帧延迟时长。<br>单位为毫秒（ms）。<br>**起始版本：** 26.0.0 |
 | HEIFS_CANVAS_HEIGHT | 'HeifsCanvasHeight' | HEIF序列图片的画布高度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0 |
 | HEIFS_CANVAS_WIDTH | 'HeifsCanvasWidth' | HEIF序列图片的画布宽度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0 |
@@ -358,10 +364,11 @@
 ## DngPropertyKey<sup>24+</sup>
 
 枚举，DNG图片信息。
-- 关于字段的更详细描述请参考DNG协议文档DNG Specification 1.4.0.0。
-- 格式示例中的key为：image.DngPropertyKey.XXX（XXX为枚举的名称，如：image.DngPropertyKey.DNG_BACKWARD_VERSION）。
-- 格式示例仅用于读取结果的格式。具体接口使用方法请参考：[readImageMetadata](arkts-apis-image-ImageSource.md#readimagemetadata23)。
-- 返回字段类型具体参考[DngMetadata](arkts-apis-image-i.md#dngmetadata24)。
+
+> **说明：**
+>
+> - 关于字段的更详细描述请参考DNG协议文档DNG Specification 1.4.0.0。
+> - 返回字段类型具体参考[DngMetadata](arkts-apis-image-i.md#dngmetadata24)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -392,7 +399,7 @@
 | REDUCTION_MATRIX2 | 'ReductionMatrix2' | 第二校准光源下的降维矩阵。 |
 | ANALOG_BALANCE | 'AnalogBalance' | 模拟增益平衡系数。 |
 | AS_SHOT_NEUTRAL | 'AsShotNeutral' | 拍摄时的中性白点。 |
-| AS_SHOT_WHITE_XY | 'AsShotWhiteXY' | 拍摄时白点的CIE x-y色度坐标。 |
+| AS_SHOT_WHITEXY | 'AsShotWhiteXY' | 拍摄时白点的CIE x-y色度坐标。 |
 | BASELINE_EXPOSURE | 'BaselineExposure' | 基准曝光补偿值，单位：EV。 |
 | BASELINE_NOISE | 'BaselineNoise' | 基准噪声水平。 |
 | BASELINE_SHARPNESS | 'BaselineSharpness' | 基准锐度增益。 |
@@ -400,7 +407,7 @@
 | LINEAR_RESPONSE_LIMIT | 'LinearResponseLimit' | 线性响应上限，有效值范围为[0.0, 1.0]。 |
 | CAMERA_SERIAL_NUMBER | 'CameraSerialNumber' | 相机序列号。 |
 | LENS_INFO | 'LensInfo' | 镜头信息。 |
-| CHROMA_BLUR_RADIUS | 'ChromaBlurRadius' | 色度模糊半径，单位：像素。 |
+| CHROMA_BLUR_RADIUS | 'ChromaBlurRadius' | 色度模糊半径，单位为像素（px）。 |
 | ANTI_ALIAS_STRENGTH | 'AntiAliasStrength' | 抗锯齿滤波器强度。 |
 | SHADOW_SCALE | 'ShadowScale' | 阴影区域缩放因子。 |
 | DNG_PRIVATE_DATA | 'DNGPrivateData' | 厂商私有数据块。 |
@@ -465,8 +472,7 @@
 
 > **说明：**
 >
-> - 格式示例中的key为：image.PngPropertyKey.XXX（XXX为枚举的名称，如：image.PngPropertyKey.X_PIXELS_PER_METER）。
-> - 返回字段类型具体参考[PngMetadata](arkts-apis-image-PngMetadata.md)。
+> 返回字段类型具体参考[PngMetadata](arkts-apis-image-PngMetadata.md)。
 
 **起始版本：** 26.0.0
 
@@ -499,8 +505,7 @@
 
 > **说明：**
 >
-> - 格式示例中的key为：image.JfifPropertyKey.XXX（XXX为枚举的名称，如：image.JfifPropertyKey.DENSITY_UNIT）。
-> - 返回字段类型具体参考[JfifMetadata](arkts-apis-image-JfifMetadata.md)。
+> 返回字段类型具体参考[JfifMetadata](arkts-apis-image-JfifMetadata.md)。
 
 **起始版本：** 26.0.0
 
@@ -522,8 +527,7 @@
 
 > **说明：**
 >
-> - 格式示例中的key为：image.TiffPropertyKey.XXX（XXX为枚举的名称，如：image.TiffPropertyKey.DOCUMENT_NAME）。
-> - 返回字段类型具体参考[TiffMetadata](arkts-apis-image-TiffMetadata.md)。
+> 返回字段类型具体参考[TiffMetadata](arkts-apis-image-TiffMetadata.md)。
 
 **起始版本：** 26.0.0
 
@@ -553,6 +557,24 @@
 | SOFTWARE | 'TiffSoftware' | 用于生成图像的软件名称和版本。 |
 | PRIMARY_CHROMATICITIES | 'TiffPrimaryChromaticities' | 图像中RGB三原色的色度坐标。 |
 | ARTIST | 'TiffArtist' | 创建图像的用户名称。 |
+
+## AvisPropertyKey
+
+枚举，AVIS图片信息。
+
+> **说明：**
+>
+> 返回字段类型具体参考[AvisMetadata](arkts-apis-image-AvisMetadata.md)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称              | 值                | 说明                   |
+| ----------------- | ----------------- | --------------------- |
+| DELAY_TIME    | 'AvisDelayTime'    | AVIS图片的每帧播放时长。<br>单位为毫秒（ms）。 |
 
 ## ImageFormat<sup>9+</sup>
 
@@ -724,3 +746,22 @@
 | SOFT   | 2    | 柔焦模式。 |
 | MONO   | 3    | 黑白模式。 |
 
+## XMPTagType
+
+枚举，XMP标签类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称            | 值   | 说明                                                                 |
+| --------------- | ---- | ------------------------------------------------------------------- |
+| UNKNOWN         | 0    | 未知类型。                                                           |
+| STRING          | 1    | 字符串类型。                                                         |
+| UNORDERED_ARRAY | 2    | 无序数组类型。序列化时，此类型在XMP元数据中的格式为\<rdf:Bag>。          |
+| ORDERED_ARRAY   | 3    | 有序数组类型。序列化时，此类型在XMP元数据中的格式为\<rdf:Seq>。          |
+| ALTERNATE_ARRAY | 4    | 备选数组类型。序列化时，此类型在XMP元数据中的格式为\<rdf:Alt>。          |
+| ALTERNATE_TEXT  | 5    | 多语言文本类型。序列化时，此类型为XMP格式的xml:lang限定符组成的备选数组。 |
+| STRUCTURE       | 6    | 结构体类型。不同于数组元素，结构体字段可以属于不同的命名空间。            |

@@ -10,6 +10,28 @@
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+## 9300000 Accessibility Service Abnormal
+
+**Error Message**
+
+System abnormality.
+
+**Description**
+
+This error code is reported when the system service is abnormal.
+
+**Possible Causes**
+
+This error code indicates that the accessibility system service is abnormal. The possible causes are as follows:
+1. The accessibility service is not started properly.
+2. The internal IPC of the system is abnormal.
+3. The internal functions of the accessibility service are abnormal.
+
+**Solution**
+
+System service error. Try again later or restart the device and retry.
+
 <!--Del-->
 ## 9300001 Invalid Bundle Name or Ability Name
 
@@ -106,6 +128,8 @@ An action that is not supported by the accessibility node element is performed.
 
 Make sure the action to perform is included in the list of actions supported by the accessibility node element.
 
+<!--Del-->
+
 ## 9300006 Failed to Connect the Target Application and Accessibility Services
 
 **Error Message**
@@ -142,3 +166,4 @@ This error code is reported when the amplification feature fails to be triggered
 **Solution**
 
 Enable the amplification feature and configure the amplification mode.
+<!--DelEnd-->

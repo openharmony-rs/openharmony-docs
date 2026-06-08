@@ -1,8 +1,8 @@
 # 半模态转场
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,9 +10,11 @@
 
 >  **说明：**
 >
->  从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  不支持路由跳转。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 不支持路由跳转。
 
 ## bindSheet
 
@@ -102,6 +104,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | enableFloatingDragBar<sup>20+</sup>              | boolean | 否 | 是   | 控制条是否悬浮显示，true为悬浮显示，false为不悬浮显示。<br />默认值：false <br /> **说明：** <br>悬浮效果只在控制条显示的场景生效，且控制条不占位。<br /> title传入[CustomBuilder](ts-types.md#custombuilder8)时enableFloatingDragBar始终为false。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | modalTransition<sup>20+</sup> | [ModalTransition](#modaltransition) | 否 | 是 | bindSheet全屏模态样式的系统转场方式。<br/>默认值：ModalTransition.DEFAULT<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | radiusRenderStrategy<sup>23+</sup> |  [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否 | 是  |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST <br/>**说明**: 当半模态设置模糊时，可通过设置为OFFSCREEN离屏模式解决半模态顶部或顶部圆角区域内显示效果异常问题。popup样式不支持设置组件绘制圆角模式。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| systemMaterial |  [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是  |设置组件的系统材质。<br/>默认值：undefined，会清除由该接口设置的材质效果。 <br/>**说明**: 不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。使用示例请参考[示例10（半模态设置系统材质）](#示例10半模态设置系统材质)。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SheetSize枚举说明
 
@@ -984,3 +987,67 @@ struct ContentCoverExample {
 }
 ```
 ![zh-cn_sheet](figures/sheet9_content_cover.gif)
+
+### 示例10（半模态设置系统材质）
+
+该示例通过半模态systemMaterial属性设置系统材质。
+
+从API版本26.0.0开始，[SheetOptions](./ts-universal-attributes-sheet-transition.md#sheetoptions)新增systemMaterial属性。
+
+```ts
+// xxx.ets
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetMaterialExample {
+  @State isShow: boolean = false;
+  @State sheetHeight: number = 300;
+  @State myMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
+    style: 0,
+  });
+
+  @Builder
+  myBuilder() {
+    Column({ space: 10 }) {
+      Text("Text")
+        .fontSize(20)
+        .margin(10)
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  build() {
+    Stack() {
+      // 请开发者替换为实际资源文件
+      Image($r('app.media.startIcon'))
+      Column() {
+        Button("open Sheet")
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShow, this.myBuilder(), {
+            height: this.sheetHeight,
+            // 以下接口不建议与systemMaterial一起使用
+            // borderWidth: 20,
+            // borderColor: Color.Red,
+            // backgroundColor: Color.Green,
+            // shadow: { radius: 30, type: ShadowType.COLOR, color: Color.Yellow },
+            // 某些材质效果不自带背景，会被backgroundColor设置的颜色覆盖，若要呈现此类材质效果，建议将背景色改为透明色
+            backgroundColor: Color.Transparent,
+            systemMaterial: this.myMaterial // 从API版本26.0.0开始，新增systemMaterial属性
+          })
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+![zh-cn_sheet](figures/sheetMaterial-new-s.jpg)
+

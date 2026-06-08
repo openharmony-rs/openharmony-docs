@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @lvcong_oh-->
-<!--Designer: @hollokin; @yuchaozhng-->
-<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Designer: @yuchaozhng-->
+<!--Tester: @logic42; @hanjiawei-->
 <!--Adviser: @ge-yafang-->
 
 本模块提供管理基本数据对象的相关能力，包括创建、查询、删除、修改、订阅等；同时支持相同应用多设备间的分布式数据对象协同能力。分布式数据对象处理数据时，不会解析用户数据的内容，存储路径安全性较低，不建议传输个人敏感数据和隐私数据。
@@ -256,7 +256,7 @@ setSessionId(callback: AsyncCallback&lt;void&gt;): void
 退出所有已加入的session，使用callback方式异步回调。
 
 **需要权限：**
-- API版本20+：不需要权限
+- API版本20+：N/A
 - API版本9-19：ohos.permission.DISTRIBUTED_DATASYNC
  
 **系统能力：** SystemCapability.DistributedDataManager.DataObject.DistributedObject
@@ -273,6 +273,7 @@ setSessionId(callback: AsyncCallback&lt;void&gt;): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
+  | 201      | Permission verification failed. <br/> 适用版本：9-19|
   | 401      | Parameter error. Incorrect parameter types. |
   | 15400001 | Failed to create the in-memory database. |
 

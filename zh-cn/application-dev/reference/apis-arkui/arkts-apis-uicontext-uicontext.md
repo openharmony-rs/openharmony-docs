@@ -12,6 +12,8 @@ UIContext实例对象。
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
 > - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的[getUIContext()](arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定义组件内置方法[getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](#getcallingscopeuicontext22)获取UIContext实例。本文中UIContext对象以uiContext表示。
@@ -839,7 +841,7 @@ animateTo(value: AnimateParam, event: () => void): void
 > - 在组件出现和消失时，可以通过[组件内转场](../apis-arkui/arkui-ts/ts-transition-animation-component.md)添加动画效果。
 > - 组件内转场不支持的属性，可以参考[显式动画](./arkui-ts/ts-explicit-animation.md)中的[示例2](./arkui-ts/ts-explicit-animation.md#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效果。
 > - 某些场景下，在[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。
-> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发[onFinish动画播放完成回调](arkui-ts/ts-explicit-animation.md#animateparam对象说明)。
+> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发动画播放完成回调[onFinish](arkui-ts/ts-explicit-animation.md#animateparam对象说明)。
 > - 在设置的开发者选项中关闭过渡动画，动画会当帧结束，onFinish动画播放完成回调会立即执行，请避免在回调中加入时序相关的功能逻辑。
 
 **参数：**
@@ -1126,7 +1128,9 @@ getFrameNodeByUniqueId(id: number): FrameNode | null
 
 提供getFrameNodeByUniqueId接口通过组件的uniqueId获取组件树的实体节点。
 1. 当uniqueId对应的是系统组件时，返回组件所对应的FrameNode；
-2. 当uniqueId对应的是自定义组件时，若其有渲染内容，则返回该自定义组件的根节点，类型为__Common__；若其无渲染内容，则返回其第一个子组件的FrameNode。
+2. 当uniqueId对应的是自定义组件时：
+   - 若其有渲染内容，且没有被[@Reusable装饰器](../../ui/state-management/arkts-reusable.md)修饰时，返回该自定义组件的根节点，类型为__Common__。
+   - 若其无渲染内容，或者被[@Reusable装饰器](../../ui/state-management/arkts-reusable.md)修饰时，在该自定义组件的子组件创建完成前调用此接口，将返回null；在该自定义组件的子组件创建完成后调用，返回其第一个子组件的FrameNode。
 3. 当uniqueId无对应的组件时，返回null。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1853,6 +1857,10 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 获取虚拟键盘弹出时，页面的避让模式。
 
+> **说明：**
+>
+> 从API version 18开始，getKeyboardAvoidMode接口返回KeyboardAvoidMode枚举值，为整数类型。API version 18之前版本，getKeyboardAvoidMode接口返回字符串类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
@@ -2256,6 +2264,30 @@ getContextMenuController(): ContextMenuController
 |类型|说明|
 |----|----|
 |[ContextMenuController](arkts-apis-uicontext-contextmenucontroller.md)| 获取ContextMenuController对象。|
+
+## getSmartGestureController
+
+getSmartGestureController(): SmartGestureController
+
+获取[SmartGestureController](arkts-apis-uicontext-smartgesturecontroller.md)对象，可通过该对象控制智慧手势处理流程。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [SmartGestureController](arkts-apis-uicontext-smartgesturecontroller.md) | SmartGestureController对象。 |
+
+**示例：**
+
+参考智慧手势控制器[示例1（启用智慧手势并自定义动作处理）](arkts-apis-uicontext-smartgesturecontroller.md#示例1启用智慧手势并自定义动作处理)。
 
 ## getMeasureUtils<sup>12+</sup>
 
@@ -4369,7 +4401,9 @@ export struct pageThreeTmp {
 
 isEasySplit(): boolean
 
+<!--RP1-->
 获取当前UI实例的兼容模式分栏状态。
+<!--RP1End-->
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -4379,9 +4413,11 @@ isEasySplit(): boolean
 
 **返回值：**
 
+<!--RP2-->
 | 类型   | 说明               |
 | ------ | ------------------ |
 | boolean | 返回当前UI实例的兼容模式分栏状态。true表示处于分栏模式，false表示未处于分栏模式。 |
+<!--RP2End-->
 
 **示例：**
 
@@ -4473,13 +4509,13 @@ addLocalInputEventMonitor(eventMask: number, listener: InputEventListener): Inpu
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | ---- |
 | eventMask | number | 是 | 事件类型掩码，通过位运算指定要监听的事件类型。取值及对应含义请参考[InputEventSubTypeMask](arkui-ts/ts-appendix-enums.md#inputeventsubtypemask)。 |
-| listener | [InputEventListener](#inputeventlistener) | 是 | 事件监听器回调函数。 |
+| listener | [InputEventListener](arkui-ts/ts-inputeventmonitor.md#inputeventlistener) | 是 | 事件监听器回调函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | ---- |
-| [InputEventMonitor](#inputeventmonitor) | 监听器唯一标识对象，用于后续取消注册。 |
+| [InputEventMonitor](arkui-ts/ts-inputeventmonitor.md#inputeventmonitor) | 监听器唯一标识对象，用于后续取消注册。 |
 
 **示例：**
 
@@ -4545,7 +4581,7 @@ removeLocalInputEventMonitor(monitor: InputEventMonitor): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | ---- |
-| monitor | [InputEventMonitor](#inputeventmonitor) | 是 | 监听器标识对象，通过[addLocalInputEventMonitor](#addlocalinputeventmonitor)返回。 |
+| monitor | [InputEventMonitor](arkui-ts/ts-inputeventmonitor.md#inputeventmonitor) | 是 | 监听器标识对象，通过[addLocalInputEventMonitor](#addlocalinputeventmonitor)返回。 |
 
 **示例：**
 
@@ -4585,234 +4621,6 @@ struct RemoveMonitorSample {
   }
 }
 ```
-
-## InputEventInterceptResult
-
-输入事件拦截结果接口，用于监听器回调[InputEventListener](#inputeventlistener)返回是否拦截的决策。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | ---- | ---- | ---- |
-| action | [InputEventInterceptAction](arkui-ts/ts-appendix-enums.md#inputeventinterceptaction) | 否 | 否 | 输入事件拦截动作。<br/>CONTINUE：允许事件继续传递到UI框架。<br/>BLOCK：阻止事件传递到UI框架。 |
-
-## InputEventMonitor
-
-输入事件监听器标识对象。
-
-此对象由系统创建并返回，作为监听器的唯一标识。
-
-> **说明：**
->
-> - 对象为空对象，不包含任何可访问的成员。
-> - 开发者无法主动构造此对象，只能通过[addLocalInputEventMonitor](#addlocalinputeventmonitor)接口注册获取。
-> - 用于后续解除注册时验证身份。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-## RawInputEventWrapper
-
-原始输入事件包装器类。
-
-提供统一的接口来访问不同类型的输入事件，确保类型安全和向后兼容性。
-
-此类封装了原始的MouseEvent、TouchEvent或KeyEvent对象，并通过类型安全的方法访问。
-
-此类为抽象类，开发者无法自行创建实例。系统会在触发输入事件监听器时自动创建实例并传递回调函数。
-
-> **说明：**
->
-> 由于监听器在事件派发给具体组件之前执行，事件中的一些字段将无法提供有效值：如触发对象[target](arkui-ts/ts-universal-events-click.md#eventtarget8)，相对于组件的坐标[(x,y)](arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)，[stopPropagation](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)方法，TouchEvent的[preventDefault](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)和[getHistoricalPoints](arkui-ts/ts-universal-events-touch.md#gethistoricalpoints10)方法以及KeyEvent的[metaKey](arkui-ts/ts-universal-events-key.md#keyevent对象说明)属性和[getModifierKeyState](arkui-ts/ts-universal-events-key.md#getmodifierkeystate12)方法。
-
-**示例：**
-
-```ts
-const listener: InputEventListener = (wrapper: RawInputEventWrapper) => {
-  // 使用类型判断 + 获取事件对象
-  if (wrapper.isMouseEvent()) {
-    const mouseEvent = wrapper.asMouseEvent()!;
-    console.info(`Mouse: (${mouseEvent.windowX}, ${mouseEvent.windowY})`);
-    return { action: InputEventInterceptAction.CONTINUE };
-  }
-  if (wrapper.isTouchEvent()) {
-    const touchEvent = wrapper.asTouchEvent()!;
-    console.info(`Touch: ${touchEvent.touches.length} points`);
-    return { action: InputEventInterceptAction.CONTINUE };
-  }
-  if (wrapper.isKeyEvent()) {
-    const keyEvent = wrapper.asKeyEvent()!;
-    console.info(`Key: ${keyEvent.keyText}`);
-    return { action: InputEventInterceptAction.CONTINUE };
-  }
-  return { action: InputEventInterceptAction.CONTINUE };
-};
-```
-
-### isMouseEvent
-
-isMouseEvent(): boolean
-
-判断是否为鼠标事件。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | ---- |
-| boolean | 判断是否为鼠标事件，如果是鼠标事件则返回true，否则返回false。 |
-
-### isTouchEvent
-
-isTouchEvent(): boolean
-
-判断是否为触摸事件。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | ---- |
-| boolean | 判断是否为触摸事件，如果是触摸事件则返回true，否则返回false。 |
-
-### isKeyEvent
-
-isKeyEvent(): boolean
-
-判断是否为按键事件。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | ---- |
-| boolean | 判断是否为按键事件，如果是按键事件则返回true，否则返回false。 |
-
-### asMouseEvent
-
-asMouseEvent(): MouseEvent | null
-
-获取鼠标事件。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | ---- |
-| [MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明) \| null | 获取鼠标事件，如果是鼠标事件则返回事件对象，否则返回null。 |
-
-### asTouchEvent
-
-asTouchEvent(): TouchEvent | null
-
-获取触摸事件。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | ---- |
-| [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明) \| null | 获取触摸事件，如果是触摸事件则返回事件对象，否则返回null。 |
-
-### asKeyEvent
-
-asKeyEvent(): KeyEvent | null
-
-获取按键事件。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | ---- |
-| [KeyEvent](arkui-ts/ts-universal-events-key.md#keyevent对象说明) \| null | 获取按键事件，如果是按键事件则返回事件对象，否则返回null。 |
-
-## InputEventListener
-
-type InputEventListener = (event: RawInputEventWrapper) => InputEventInterceptResult
-
-输入事件监听器回调函数类型。
-
-> **说明：**
->
-> - RawInputEventWrapper是抽象类，开发者无法使用`new`运算符创建实例。
-> - 系统会在事件触发时自动创建实例并通过此参数传递给回调函数。
-> - 当前回调参数event仅会封装以下原始输入事件类型：[MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)、[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)、[KeyEvent](arkui-ts/ts-universal-events-key.md#keyevent对象说明)。开发者可通过[asMouseEvent](#asmouseevent)、[asTouchEvent](#astouchevent)、[asKeyEvent](#askeyevent)获取对应事件对象。
-> - 请勿在回调中执行耗时操作（如复杂计算或网络请求），否则可能导致应用卡顿。
-> - 监听器在UI线程中同步执行会直接阻塞事件处理流程。建议只进行简单的判断和计算。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | ---- | ---- |
-| event | [RawInputEventWrapper](#rawinputeventwrapper) | 是 | 输入事件包装器，系统自动创建和传递，开发者无需手动创建。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | ---- |
-| [InputEventInterceptResult](#inputeventinterceptresult) | 事件拦截结果。 |
 
 ## setTextSelectionClearPolicy
 

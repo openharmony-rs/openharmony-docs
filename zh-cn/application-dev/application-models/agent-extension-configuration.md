@@ -1,10 +1,10 @@
-# Agent配置文件说明
+# AgentExtensionAbility配置文件说明
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 [AgentCard](../reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)作为Agent的“名片”，主要用于描述Agent的能力。AgentCard的详细配置信息需要通过agent_config.json配置文件来承载。
 

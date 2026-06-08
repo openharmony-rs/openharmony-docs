@@ -22,7 +22,9 @@ import {
   LayeredDrawableDescriptor,
   AnimatedDrawableDescriptor,
   AnimationOptions,
-  AnimationController
+  AnimationController,
+  PictureDrawableDescriptor,
+  HdrCompositionConfig
 } from '@kit.ArkUI';
 ```
 ## DrawableDescriptorLoadedResult<sup>21+</sup>
@@ -30,6 +32,8 @@ import {
 Represents the result of loading an image resource or URI.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,14 +47,35 @@ Represents the result of loading an image resource or URI.
 ```ts
 import { AnimatedDrawableDescriptor, AnimationOptions, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-try {
-    // You can preload animated image resources into the memory.
-    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
-    console.info(`load result = ${JSON.stringify(result)}`)
-} catch(e) {
-    console.error("load failed")
+@Entry
+@Component
+struct Index {
+  options: AnimationOptions = { duration: 2000, iterations: 1 };
+  // Replace $r('app.media.gif') with the image resource file you use.
+  @State drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+  @State result: string = '';
+
+  aboutToAppear() {
+    // Load resources to the memory before the page is displayed to speed up the rendering of the Image component.
+    // Use loadSync for synchronous loading:
+    // let loadResult: DrawableDescriptorLoadedResult = this.drawable.loadSync()
+    // Use load for asynchronous loading:
+    this.drawable.load().then((loadResult: DrawableDescriptorLoadedResult) => {
+      this.result = `width: ${loadResult.imageWidth}, height: ${loadResult.imageHeight}`
+      console.info(`load result = ${JSON.stringify(loadResult)}`)
+    }).catch(() => {
+      console.error("load failed")
+    })
+  }
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(100)
+        .height(100)
+      Text(this.result)
+    }
+  }
 }
 ```
 ## DrawableDescriptor
@@ -65,6 +90,8 @@ Obtains this **PixelMap** instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -72,6 +99,14 @@ Obtains this **PixelMap** instance.
 | Type                                      | Description      |
 | ---------------------------------------- | -------- |
 | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | **PixelMap** object.|
+
+**Error codes**
+
+For details about the error codes, see [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md).
+
+| ID| Error Message    |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
 
 **Example**
 
@@ -84,6 +119,8 @@ loadSync(): DrawableDescriptorLoadedResult
 Synchronously loads the image resource and returns the loading result.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,20 +137,11 @@ For details about the error codes, see [DrawableDescriptor Error Codes](errorcod
 | ID| Error Message    |
 | -------- | ------------ |
 | 111001   | resource loading failed. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
 
-```ts
-import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult, AnimationOptions } from '@kit.ArkUI';
+**Example**
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-try {
-    // You can preload animated image resources into the memory.
-    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
-    console.info(`load result = ${JSON.stringify(result)}`)
-} catch(e) {
-    console.error("load failed")
-}
-```
+For details, see [DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21).
 
 ### load<sup>21+</sup>
 
@@ -122,6 +150,8 @@ load(): Promise\<DrawableDescriptorLoadedResult>
 Asynchronously loads the image resource and returns the loading result. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,27 +168,92 @@ For details about the error codes, see [DrawableDescriptor Error Codes](errorcod
 | ID| Error Message    |
 | -------- | ------------ |
 | 111001   | resource loading failed. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
+
+**Example**
+
+For details, see [DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21).
+
+### release
+
+release(): void
+
+Releases the resource held by **DrawableDescriptor**. After the **release** API is called, the object becomes unavailable. In this case, if you call APIs such as [getPixelMap](#getpixelmap), [getForeground](#getforeground), [getBackground](#getbackground), [getMask](#getmask), [loadSync](#loadsync21), and [load](#load21) again, error code 111002 will be thrown. No crash occurs when the **release** API is called repeatedly.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Example**
 
 ```ts
-import {
-  AnimatedDrawableDescriptor,
-  DrawableDescriptor,
-  DrawableDescriptorLoadedResult,
-  AnimationOptions
-} from '@kit.ArkUI';
+import { DrawableDescriptor } from '@kit.ArkUI';
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-drawable.load().then((result: DrawableDescriptorLoadedResult) => {
-  console.info(`load result = ${JSON.stringify(result)}`)
-}).catch(() => {
-  console.info(`load failed`)
-})
+@Entry
+@Component
+struct Index {
+  private resManager = this.getUIContext().getHostContext()?.resourceManager;
+  // Replace $r('app.media.startIcon') with the image resource file you use.
+  private drawable: DrawableDescriptor | undefined =
+    this.resManager?.getDrawableDescriptor($r('app.media.startIcon').id);
+
+  build() {
+    Column() {
+      Button('release')
+        .onClick(() => {
+          this.drawable?.release()
+        })
+      Button('isReleased')
+        .onClick(() => {
+          let released = this.drawable?.isReleased()
+          console.info(`isReleased = ${released}`)
+        })
+    }
+  }
+}
 ```
+
+### isReleased
+
+isReleased(): boolean
+
+Checks whether **DrawableDescriptor** is released. If **true** is returned, the object has been released. In this case, calling APIs such as [getPixelMap](#getpixelmap), [getForeground](#getforeground), [getBackground](#getbackground), [getMask](#getmask), [loadSync](#loadsync21), and [load](#load21) will throw error code 111002. If **false** is returned, the object has not been released and can be used normally.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type   | Description                           |
+| ------- | ------------------------------- |
+| boolean | Whether **DrawableDescriptor** is released. The value **true** indicates that the object is released, and **false** indicates that the object is not released.|
+
+### invalidate
+
+invalidate(): void
+
+Redraws **DrawableDescriptor**. Currently, this API is supported for the [PictureDrawableDescriptor](#picturedrawabledescriptor) type, and does not take effect for other **DrawableDescriptor** subtypes. If no component is bound to **DrawableDescriptor**, no operation is performed.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
-Implements a **PixelMapDrawableDescriptor** object, which can be created by passing in a **PixelMap** object. Inherits from [DrawableDescriptor](#drawabledescriptor).
+Implements a **PixelMapDrawableDescriptor** object, which can be created by passing in a **PixelMap** object. This API inherits from [DrawableDescriptor](#drawabledescriptor).
 
 ### constructor<sup>12+</sup>
 
@@ -168,6 +263,8 @@ A constructor used to create a **PixelMapDrawableDescriptor** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -176,9 +273,55 @@ A constructor used to create a **PixelMapDrawableDescriptor** object.
 | --------- | ---------------- | ---- | ------------------------------------------ |
 | src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | No| **PixelMap** image data.|
 
+### constructor
+
+constructor(src?: image.PixelMap | ResourceStr)
+
+A constructor used to create a **PixelMapDrawableDescriptor** object through the PixelMap type or **ResourceStr**.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name    | Type             | Mandatory | Description                                      |
+| --------- | ---------------- | ---- | ------------------------------------------ |
+| src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\|[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)  | No| **PixelMap** image data. You can use application resources, system resources, sandbox paths (file://\<bundleName\>/\<sandboxPath\>), and Base64 strings to create **PixelMapDrawableDescriptor** objects.|
+
+**Example**
+
+The following is the sample code for creating a **PixelMapDrawableDescriptor** object using **ResourceStr**:
+
+```ts
+// xxx.ets
+import { PixelMapDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PixelMapDrawableDescriptorExample {
+  // Create a PixelMapDrawableDescriptor object using Resource.
+  // Replace $r('app.media.icon') with the image resource file you use.
+  @State drawable: DrawableDescriptor = new PixelMapDrawableDescriptor($r('app.media.icon'))
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(100)
+        .height(100)
+        .margin({ bottom: 20 })
+    }
+  }
+}
+```
+
 ## LayeredDrawableDescriptor
 
-Creates a **LayeredDrawableDescriptor** object when the passed resource ID or name belongs to a JSON file that contains foreground and background resources. Inherits from [DrawableDescriptor](#drawabledescriptor).
+Creates a **LayeredDrawableDescriptor** object when the passed resource ID or name belongs to a JSON file that contains foreground and background resources. This API inherits from [DrawableDescriptor](#drawabledescriptor).
 
 The **drawable.json** file is located under **entry/src/main/resources/base/media** in the project directory. Below shows the file content:
 
@@ -283,6 +426,8 @@ A constructor used to create a **LayeredDrawableDescriptor** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -300,6 +445,8 @@ Obtains the **DrawableDescriptor** object of the foreground.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -307,6 +454,14 @@ Obtains the **DrawableDescriptor** object of the foreground.
 | Type                                      | Description                  |
 | ---------------------------------------- | -------------------- |
 | [DrawableDescriptor](#drawabledescriptor) | **DrawableDescriptor** object.|
+
+**Error codes**
+
+For details about the error codes, see [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md).
+
+| ID| Error Message    |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
 
 **Example**
 ```ts
@@ -359,6 +514,8 @@ Obtains the **DrawableDescriptor** object of the background.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -366,6 +523,14 @@ Obtains the **DrawableDescriptor** object of the background.
 | Type                                      | Description                  |
 | ---------------------------------------- | -------------------- |
 | [DrawableDescriptor](#drawabledescriptor) | **DrawableDescriptor** object.|
+
+**Error codes**
+
+For details about the error codes, see [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md).
+
+| ID| Error Message    |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
 
 **Example**
 ```ts
@@ -413,6 +578,8 @@ Obtains the **DrawableDescriptor** object of the mask.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -420,6 +587,14 @@ Obtains the **DrawableDescriptor** object of the mask.
 | Type                                      | Description                  |
 | ---------------------------------------- | -------------------- |
 | [DrawableDescriptor](#drawabledescriptor) | **DrawableDescriptor** object.|
+
+**Error codes**
+
+For details about the error codes, see [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md).
+
+| ID| Error Message    |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
 
 **Example**
 ```ts
@@ -467,6 +642,8 @@ Obtains the built-in clipping path parameters of the system. It is a static meth
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -508,6 +685,8 @@ setBlendMode(mode: drawing.BlendMode): void
 Sets the blend mode of **LayeredDrawableDescriptor**. If this API is called for multiple times on the same **LayeredDrawableDescriptor** object, only the last call before the drawing completion takes effect. This API does not support dynamic switching. The default drawing order of **LayeredDrawableDescriptor** is background, mask, and foreground. After the blend mode is set, the drawing order changes to background, foreground, and mask. If the specified value is invalid, the default drawing order is used.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -565,9 +744,9 @@ Enumerates the stop modes of an animation.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+**Model restriction**: This API can be used only in the stage model.
 
-**Model constraint**: This API can be used only in the stage model.
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name     | **Value** | Description             |
 | ---------- | ---- |------------------------ |
@@ -578,6 +757,8 @@ Enumerates the stop modes of an animation.
 
 Provides the configuration options for animation playback, including the playback duration, number of playback times, and autoplay behavior.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 10%; 10%; 10%; 10%; 60%-->
@@ -587,7 +768,7 @@ Provides the configuration options for animation playback, including the playbac
 | iterations | number | No  | Yes|Number of playback times for the image sequence.<br>A value of **-1** indicates infinite playback, **0** indicates no playback, and a value greater than 0 represents the number of playback times.<br>The default value is **1**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | frameDurations<sup>21+</sup> | Array\<number> | No| Yes|Per-frame playback duration. The setting overrides **duration** if specified.<br>If **duration** and **frameDurations** are set, **duration** is ignored.<br>If the value of **frameDurations** is inconsistent with the image count, animation timing distributes across the total duration.<br>Unit: ms.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
 | autoPlay<sup>21+</sup> | boolean | No | Yes|Whether to enable autoplay.<br> **true** to enable, **false** otherwise.<br>The default value is **true**.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
-| stopMode<sup>24+</sup> | [AnimationStopMode](#animationstopmode24) | No | Yes|Sets the stop mode for an animation.<br> The default value is **AnimationStopMode.FIRST_FRAME**, indicating that the animation returns to the first frame when it stops.<br> **Atomic service API**: This API can be used in atomic services since API version 24.<br> **Model constraint**: This API can be used only in the stage model.|
+| stopMode<sup>24+</sup> | [AnimationStopMode](#animationstopmode24) | No | Yes|Sets the stop mode for an animation.<br> The default value is **AnimationStopMode.FIRST_FRAME**, indicating that the animation returns to the first frame when it stops.<br> **Atomic service API**: This API can be used in atomic services since API version 24.|
 
 **Example**
 
@@ -654,6 +835,8 @@ A constructor used to create an **AnimatedDrawableDescriptor** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -670,6 +853,8 @@ constructor(src: ResourceStr | Array\<image.PixelMap>, options?: AnimationOption
 A constructor used to create an **AnimatedDrawableDescriptor** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -719,6 +904,8 @@ getAnimationController(id?: string): AnimationController | undefined
 Obtains the animation controller for playback control.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -822,6 +1009,8 @@ Starts playback from the first frame.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
@@ -858,6 +1047,8 @@ stop(): void
 Stops playback and resets to the first frame.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -896,6 +1087,8 @@ Resumes playback from the current frame.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
@@ -933,6 +1126,8 @@ Pauses playback on the current frame.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
@@ -969,6 +1164,8 @@ getStatus(): AnimationStatus
 Obtains the current animation playback status.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1017,6 +1214,139 @@ struct Example {
           console.info(`animation status = ${this.statusToString(status)}`)
         })
     }
+  }
+}
+```
+
+## HdrCompositionConfig
+
+Provides HDR composition configuration.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| rect | [Rectangle](arkui-ts/ts-universal-attributes-touch-target.md#rectangle)| No| No| Rectangle area for HDR composition.|
+
+## PictureDrawableDescriptor
+
+Creates a **PictureDrawableDescriptor** object by passing a **Picture** object. This API inherits from [DrawableDescriptor](#drawabledescriptor).
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+### constructor
+
+constructor(src: image.Picture)
+
+A constructor used to create a **PictureDrawableDescriptor** object.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| src | image.[Picture](../apis-image-kit/arkts-apis-image-Picture.md) | Yes| **Picture** object for creating **PictureDrawableDescriptor**.|
+
+### setHdrComposition
+
+setHdrComposition(config: HdrCompositionConfig): void
+
+Sets HDR composition.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| config | [HdrCompositionConfig](#hdrcompositionconfig) | Yes| HDR composition configuration.|
+
+**Example**
+
+```ts
+import { PictureDrawableDescriptor } from '@ohos.arkui.drawableDescriptor';
+import { image } from '@kit.ImageKit';
+
+
+@Entry
+@Component
+struct PictureDrawableDescriptorInvalidateTest {
+  @State drawable: PictureDrawableDescriptor | undefined = undefined;
+
+  async createPictureDrawableDescriptor() {
+    let resMgr = this.getUIContext().getHostContext()?.resourceManager
+    if (resMgr) {
+      try {
+        // Replace $r('app.media.heic') with the image resource file you use.
+        let uint8buffer = resMgr.getMediaContentSync($r('app.media.heic').id)
+        let imageSource = image.createImageSource(uint8buffer.buffer)
+        // Configure decoding options and request to decode the GAINMAP and LHDR_GAINMAP auxiliary images for HDR composition.
+        let options: image.DecodingOptionsForPicture = {
+          desiredAuxiliaryPictures: [image.AuxiliaryPictureType.GAINMAP, image.AuxiliaryPictureType.LHDR_GAINMAP],
+          desiredPixelFormat: image.PixelMapFormat.NV12
+        }
+        let picture = await imageSource.createPicture(options)
+        let drawable = new PictureDrawableDescriptor(picture)
+        imageSource.release()
+        this.drawable = drawable
+      } catch (error) {
+        console.error(`get media content failed`)
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(300)
+        .height(225)
+        .borderColor(Color.Red)
+        .borderWidth(1)
+
+      Button("Create PictureDrawableDescriptor").onClick((event: ClickEvent) => {
+        this.createPictureDrawableDescriptor()
+      })
+
+      Button("Trigger Rebuild").onClick((event: ClickEvent) => {
+        // Set the HDR composition and specify the position and size of the rectangle area for composition.
+        this.drawable?.setHdrComposition({
+          rect: {
+            x: 200,
+            y: 200,
+            width: 300,
+            height: 300
+          }
+        })
+        this.drawable?.invalidate()
+      })
+    }
+    .height('100%')
+    .width('100%')
   }
 }
 ```

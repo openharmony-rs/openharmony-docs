@@ -1,9 +1,9 @@
-# resultSet (结果集)
+# resultSet（结果集）
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
@@ -12,7 +12,7 @@
 > 
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 从API Version 9开始，该接口不再维护，推荐使用新接口[@ohos.data.relationalStore#ResultSet](arkts-apis-data-relationalStore-ResultSet.md)。
+> 从API Version 9开始，该接口不再维护，推荐使用新接口[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)。
 
 ## ResultSet
 
@@ -22,14 +22,14 @@
 
 需要通过[RdbStore.query()](js-apis-data-rdb.md#query)获取resultSet对象。
 
-```js
+```ts
 import dataRdb from '@ohos.data.rdb';
 let predicates = new dataRdb.RdbPredicates("EMPLOYEE");
 predicates.equalTo("AGE", 18);
 let promise = rdbStore.query(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promise.then((resultSet) => {
-  console.log(TAG + "resultSet columnNames:" + resultSet.columnNames);
-  console.log(TAG + "resultSet columnCount:" + resultSet.columnCount);
+  console.info(TAG + "resultSet columnNames:" + resultSet.columnNames);
+  console.info(TAG + "resultSet columnCount:" + resultSet.columnCount);
 });
 ```
 
@@ -71,7 +71,7 @@ getColumnIndex(columnName: string): number
 
 **示例：**
 
-```js
+```ts
 const success = resultSet.goToFirstRow();
 if (success) {
   const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
@@ -103,7 +103,7 @@ getColumnName(columnIndex: number): string
 
 **示例：**
 
-```js
+```ts
 const id = resultSet.getColumnName(0);
 const name = resultSet.getColumnName(1);
 const age = resultSet.getColumnName(2);
@@ -131,14 +131,14 @@ goTo(offset:number): boolean
 
 **示例：**
 
-```js
+```ts
 let predicatesgoto = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoto = rdbStore.query(predicatesgoto, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoto.then((resultSet) => {
   resultSet.goTo(1);
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -164,14 +164,14 @@ goToRow(position: number): boolean
 
 **示例：**
 
-```js
+```ts
 let predicatesgotorow = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygotorow = rdbStore.query(predicatesgotorow, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygotorow.then((resultSet) => {
   resultSet.goToRow(5);
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -187,18 +187,18 @@ goToFirstRow(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | 如果成功移动结果集，则为true；否则返回false。 |
+  | boolean | 如果成功移动结果集到第一行，则为true；否则为false。 |
 
 **示例：**
 
-```js
+```ts
 let predicatesgoFirst = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoFirst = rdbStore.query(predicatesgoFirst, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoFirst.then((resultSet) => {
   resultSet.goToFirstRow();
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -214,18 +214,18 @@ goToLastRow(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | 如果成功移动结果集，则为true；否则返回false。 |
+  | boolean | 如果成功移动结果集到最后一行，则为true；否则为false。 |
 
 **示例：**
 
-```js
+```ts
 let predicatesgoLast = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoLast = rdbStore.query(predicatesgoLast, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoLast.then((resultSet) => {
   resultSet.goToLastRow();
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -241,18 +241,17 @@ goToNextRow(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | 如果成功移动结果集，则为true；否则返回false。 |
+  | boolean | 如果成功移动结果集到下一行，则为true；否则为false。 |
 
 **示例：**
 
-```js
+```ts
 let predicatesgoNext = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoNext = rdbStore.query(predicatesgoNext, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoNext.then((resultSet) => {
-  resultSet.goToNextRow();
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -268,18 +267,17 @@ goToPreviousRow(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | 如果成功移动结果集，则为true；否则返回false。 |
+  | boolean | 如果成功移动结果集到上一行，则为true；否则为false。 |
 
 **示例：**
 
-```js
+```ts
 let predicatesgoPrev = new dataRdb.RdbPredicates("EMPLOYEE");
 let promisequerygoPrev = rdbStore.query(predicatesgoPrev, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promisequerygoPrev.then((resultSet) => {
-  resultSet.goToPreviousRow();
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -305,7 +303,7 @@ getBlob(columnIndex: number): Uint8Array
 
 **示例：**
 
-```js
+```ts
 const codes = resultSet.getBlob(resultSet.getColumnIndex("CODES"));
 ```
 
@@ -331,7 +329,7 @@ getString(columnIndex: number): string
 
 **示例：**
 
-```js
+```ts
 const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
 ```
 
@@ -357,7 +355,7 @@ getLong(columnIndex: number): number
 
 **示例：**
 
-```js
+```ts
 const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
 ```
 
@@ -383,7 +381,7 @@ getDouble(columnIndex: number): number
 
 **示例：**
 
-```js
+```ts
 const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
 ```
 
@@ -409,7 +407,7 @@ isColumnNull(columnIndex: number): boolean
 
 **示例：**
 
-```js
+```ts
 const isColumnNull = resultSet.isColumnNull(resultSet.getColumnIndex("CODES"));
 ```
 
@@ -423,13 +421,13 @@ close(): void
 
 **示例：**
 
-```js
+```ts
 let predicatesClose = new dataRdb.RdbPredicates("EMPLOYEE");
 let promiseClose = rdbStore.query(predicatesClose, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promiseClose.then((resultSet) => {
   resultSet.close();
 }).catch((err) => {
-  console.log('resultset close failed');
+  console.error('resultset close failed');
 });
 ```
 

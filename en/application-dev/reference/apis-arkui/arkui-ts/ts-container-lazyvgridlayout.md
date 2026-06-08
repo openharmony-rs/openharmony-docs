@@ -2,16 +2,16 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @guozejun-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 Implements a grid layout that supports lazy loading.
 
 In versions earlier than API version 26.0.0, the parent component of the **LazyVGridLayout** component supports the [WaterFlow](ts-container-waterflow.md) and [FlowItem](ts-container-flowitem.md) components. You can also encapsulate the parent component using a custom component or [NodeContainer](ts-basic-components-nodecontainer.md) component and use it in **WaterFlow** or **FlowItem**.
 
-Since API version 26.0.0, the parent component of this component also supports [List](ts-container-list.md) and [Scroll](ts-container-scroll.md). Additionally, it can be encapsulated using a custom component or [NodeContainer](ts-basic-components-nodecontainer.md) and applied to **List** or **Scroll**.
+Since API version 26.0.0, the parent component of this component also supports [List](ts-container-list.md), [Scroll](ts-container-scroll.md), or [LazyColumnLayout](ts-container-lazycolumnlayout.md). Additionally, custom components or [NodeContainer](ts-basic-components-nodecontainer.md) components can be encapsulated and then used in **List**, **Scroll**, or **LazyColumnLayout**.
 
 > **NOTE**
 >
@@ -316,3 +316,4 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 ```
 
 ![](figures/en-us_image_lazyvgridlayout1.gif)
+<!--no_check-->
