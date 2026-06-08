@@ -57,7 +57,7 @@
   ArkTS-Sta示例：
   
   <!-- @[FlexDirectionRow_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionRow.ets) -->
-
+  
   ``` TypeScript
   Flex({ direction: FlexDirection.Row }) {
     Text('1').width('33%').height(50).backgroundColor('#F5DEB3')
