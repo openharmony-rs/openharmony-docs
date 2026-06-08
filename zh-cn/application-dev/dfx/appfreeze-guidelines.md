@@ -165,13 +165,15 @@ PID:13680
 UID:20020177
 PACKAGE_NAME:com.samples.freezedebug
 PROCESS_NAME:com.samples.freezedebug
-NOTE: Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults.
+NOTE: Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults.Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis.
 ***
 ```
 
 从API version 20开始，当整机资源告警（如整机低内存或热限频）时，系统会输出NOTE行。此时开发者可忽略应用冻屏故障。在之前的API版本中，无论整机资源状态如何，系统都不会输出此NOTE行。
 
 从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HitraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
+
+从API版本26.0.0开始，支持AppFreeze日志中关联[Resource Leak（资源泄漏）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)事件信息。若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因。
 
 AppFreeze事件（THREAD_BLOCK_6S、 APP_INPUT_BLOCK）都包含以下几部分信息：
 
