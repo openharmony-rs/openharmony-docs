@@ -278,7 +278,7 @@
 
    ArkTS-Dyn示例：
    <!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
      console.error('deviceList_ is empty');
@@ -297,7 +297,7 @@
      this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
      return;
    }
-
+   
    let devicePipe: usbManager.USBDevicePipe;
    try {
      devicePipe = usbManager.connectDevice(usbDevice);
