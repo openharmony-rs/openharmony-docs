@@ -394,7 +394,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
 
    ArkTS-Sta示例：   
    <!-- @[closePipe](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.pipe_ === undefined || this.interface_ === undefined) {
      console.error('pipe_ or interface_ is null');
@@ -410,7 +410,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
      console.error(`failed: ${error}`);
      this.logInfo_ += '\n[ERROR] failed: ' + JSON.stringify(error);
    }
-
+   
    this.pipe_ = undefined;
    this.interface_ = undefined;
    console.info('close device success');
