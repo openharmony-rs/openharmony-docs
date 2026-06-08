@@ -1,16 +1,16 @@
 # 剪贴板术语表
 <!--Kit: Basic Services Kit-->
-<!--Subsystem: MiscServices-->
+<!--Subsystem: DistributedDataManager-->
 <!--Owner: @yangxiaodong41-->
 <!--Designer: @guo867-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
-## H
+## E
 
-### HTML；超文本标记语言
+### Entry；数据条目
 
-一种用于创建网页的标准标记语言格式。在剪贴板中表示HTML格式的数据内容(text/html MIME类型),用于复制粘贴包含结构和样式的富文本内容,区别于纯文本的格式化文本表示,支持网页内容的跨应用传递。
+剪贴板记录中的一种数据表示形式。指PasteDataRecord对象中包含的单一MIME类型及其对应数据内容的组合，通过addEntry方法向记录对象添加多个entry以实现同一剪贴板内容的多格式数据表示(如同时包含纯文本、HTML、URI等不同类型)，粘贴时通过getData接口按MIME类型读取对应的entry数据，用于支持富媒体内容的多格式粘贴场景。
 
 ## M
 
