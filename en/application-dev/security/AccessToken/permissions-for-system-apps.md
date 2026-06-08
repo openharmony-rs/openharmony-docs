@@ -5829,6 +5829,20 @@ Allows an application to send update instructions to the head unit.
 
 **Since**: 26.0.0
 
+## ohos.permission.vehicle.CAR_LOG_SERVICE
+
+Allows an application to send log retrieval commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 Allows an application to subscribe to the notification service.
