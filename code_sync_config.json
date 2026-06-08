@@ -20037,39 +20037,39 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":34,
+						"end_line":31,
 						"name":"calendarData_indexImport",
 						"start_line":16
 					},
 					{
-						"end_line":122,
+						"end_line":119,
 						"name":"calendarData_createAccount",
-						"start_line":112
+						"start_line":109
 					},
 					{
-						"end_line":153,
+						"end_line":150,
 						"name":"calendarData_setConfig",
-						"start_line":127
+						"start_line":124
 					},
 					{
-						"end_line":164,
+						"end_line":161,
 						"name":"calendarData_getAccountByParam",
-						"start_line":158
+						"start_line":155
 					},
 					{
-						"end_line":175,
+						"end_line":172,
 						"name":"calendarData_getDefaultAccount",
-						"start_line":169
+						"start_line":166
 					},
 					{
-						"end_line":190,
+						"end_line":187,
 						"name":"calendarData_getAllCalendars",
-						"start_line":180
+						"start_line":177
 					},
 					{
-						"end_line":205,
+						"end_line":202,
 						"name":"calendarData_deleteCalendar",
-						"start_line":195
+						"start_line":192
 					}
 				]
 			}
@@ -20087,9 +20087,9 @@
 						"start_line":16
 					},
 					{
-						"end_line":76,
+						"end_line":74,
 						"name":"calendarEvent_entryAbility",
-						"start_line":24
+						"start_line":23
 					}
 				]
 			},
@@ -20097,14 +20097,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":39,
+						"end_line":36,
 						"name":"calendarEvent_indexImport",
 						"start_line":16
 					},
 					{
-						"end_line":134,
+						"end_line":131,
 						"name":"calendarEvent_createCalendar",
-						"start_line":117
+						"start_line":114
 					},
 					{
 						"end_line":44,
@@ -20112,29 +20112,29 @@
 						"start_line":41
 					},
 					{
-						"end_line":205,
+						"end_line":202,
 						"name":"calendarEvent_addEvent",
-						"start_line":145
+						"start_line":142
 					},
 					{
-						"end_line":228,
+						"end_line":225,
 						"name":"calendarEvent_updateEvent",
-						"start_line":214
+						"start_line":211
 					},
 					{
-						"end_line":242,
+						"end_line":239,
 						"name":"calendarEvent_getEvents",
-						"start_line":236
+						"start_line":233
 					},
 					{
-						"end_line":275,
+						"end_line":272,
 						"name":"calendarEvent_getEvent",
-						"start_line":251
+						"start_line":248
 					},
 					{
-						"end_line":289,
+						"end_line":286,
 						"name":"calendarEvent_deleteEvent",
-						"start_line":283
+						"start_line":280
 					}
 				]
 			}
