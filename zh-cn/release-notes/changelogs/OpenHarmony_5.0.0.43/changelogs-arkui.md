@@ -19,6 +19,7 @@
 变更后：component3D资源获取修改为通过ResourceStr方式，既支持从rawfile路径读取也支持从磁盘路径读取。
 
 不兼容场景：
+
 当用户存在指定数据类型赋值场景时，会出现不兼容情况; 例如：
 ```ts
 const params1: SceneResourceParameters = { name: "name1", uri: $rawfile("default_path") }

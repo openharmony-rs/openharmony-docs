@@ -3898,7 +3898,7 @@ Obtains the dash line style.
     }
   }
   ```
-![Dottedcircle-01](figures/Dottedcircle-01.png) 
+![Dottedcircle-01](figures/Dottedcircle.png) 
 
 
 ### transferFromImageBitmap

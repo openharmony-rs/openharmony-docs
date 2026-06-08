@@ -351,9 +351,11 @@ UX能力增强。
 
 上述第1、第5和第6条变更前后样式对比如下图所示。  
 
-- 变更前：  
+- 变更前：
+
   ![before](figures/popup_before.png)
-- 变更后：  
+- 变更后：
+
   ![after](figures/popup_after.png)
 
 > **说明：**
@@ -428,11 +430,11 @@ UX一致性需求变更
 
 变更前，showInSubWindow为true时，CustomDialog的蒙层范围为子窗口范围，showInSubWindow为false时，CustomDialog的蒙层范围为应用窗口范围。
 
-![image-alert](figures/image-alert.gif)
+![image-alert](figures/zh-cn_image_alert.gif)
 
 变更后，无论showInSubWindow为true还是false，CustomDialog的蒙层范围都为应用窗口的范围。
 
-![image-alert-showinsubwindow](figures/image-alert-showinsubwindow.jpg)
+![image-alert-showinsubwindow](figures/zh-cn_image_alert_showinsubwindow.jpg)
 
 **API Level**
 

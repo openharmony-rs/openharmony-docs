@@ -834,7 +834,7 @@ The following figures show how the component looks with the background brightnes
 
 When **rate** and **lightUpDegree** are both set to **0.5**
 
-![image-background-brightness1](figures/en-us_image_background_brightness1.png)
+![image-background-brightness1](figures/image-background-brightness1.png)
 
 When **rate** is set to **0.5** and **lightUpDegree** **-0.1**
 

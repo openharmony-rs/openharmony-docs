@@ -733,4 +733,4 @@ struct ActionSheetExample {
   }
 }
 ```
-![en-us_image_action_backgroundEffect](figures/en-us_image_action_backgroundEffect.png)
+![en-us_image_action_backgroundEffect](figures/image-action-backgroundEffect.png)

@@ -332,7 +332,7 @@ struct CustomDialogUser {
 }
 ```
 
-![image-custom](figures/image-custom.gif)
+![image-custom](figures/en-us_image_custom.gif)
 
 ### Example 2: Opening a Dialog Box Outside the Main Window
 

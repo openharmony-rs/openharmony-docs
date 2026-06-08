@@ -847,7 +847,7 @@ struct AlertDialogExample {
 }
 ```
 
-![image-alert-animation](figures/image-alert-animation.png)
+![image-alert-animation](figures/image-alert-animation.gif)
 
 ### 示例8（自定义背景效果参数）
 
