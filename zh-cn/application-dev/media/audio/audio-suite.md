@@ -97,5 +97,8 @@
 
 - 节点的连接是单向的，不支持后序节点反向连接到前序节点。输入节点是每条管线的首节点，输出节点是每条管线的尾节点。
 
+<!--RP1-->
 ## 完整示例代码
+
 - [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
+<!--RP1End-->
