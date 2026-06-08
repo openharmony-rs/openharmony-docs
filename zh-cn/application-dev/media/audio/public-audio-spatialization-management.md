@@ -104,7 +104,8 @@ ArkTS-Sta示例：
 import { audio } from '@kit.AudioKit';
 // ...
   let isSpatializationEnabledForCurrentDevice = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
-  console.info(`Succeeded in checking spatialization enabled for current device is: ${isSpatializationEnabledForCurrentDevice}.`);
+  console.info(`Succeeded in using isSpatializationEnabledForCurrentDevice function,
+    IsSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}.`);
 ```
 
 **订阅当前发声设备空间音频渲染效果的开关状态变化事件**
