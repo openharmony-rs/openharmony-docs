@@ -22,6 +22,8 @@
 | [getFullDom](#getfulldom) | 获取完整DOM树 | [FullDomCommand](#fulldomcommand) | [FullDomResult](#fulldomresult) | 返回树结构，不按筛选规则过滤节点。 |
 | [getLiteDom](#getlitedom) | 获取轻量DOM节点列表 | [LiteDomCommand](#litedomcommand) | [LiteDomResult](#litedomresult) | 返回扁平列表，支持按规则筛选节点。 |
 
+交互类命令（click、focus、cursor_position、type、send_keys）请参见[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。
+
 ## 通用命令格式
 
 | 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |

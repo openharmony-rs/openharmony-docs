@@ -19114,7 +19114,7 @@ executeAIPageCommand(command: string): Promise\<string\>
 
 | 参数名 | 类型   | 必填 | 说明 |
 | ------- | ------ | ---- | ---- |
-| command | string | 是   | JSON格式的命令参数。不同命令的参数格式不同，详细说明请参见[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)。 |
+| command | string | 是   | JSON格式的命令参数。不同命令的参数格式不同，查询类命令请参见[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)，交互类命令请参见[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。 |
 
 **返回值：**
 
