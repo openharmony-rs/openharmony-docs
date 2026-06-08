@@ -160,4 +160,4 @@ export default {
 
 
 
-![zh-cn_image_0000001185033226](figures/zh-cn_image_0000001185033226.png)
+![list](figures/list.png)

@@ -1128,7 +1128,7 @@ Allows an application or a service to use the DLP to register or unregister the 
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 26.0.0
 

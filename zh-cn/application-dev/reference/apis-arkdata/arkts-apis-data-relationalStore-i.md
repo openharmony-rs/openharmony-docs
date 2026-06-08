@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
@@ -29,7 +29,7 @@
 | pluginLibs<sup>12+</sup> | Array\<string> | 否 | 是 | 配置加载自定义动态库，数组中可传入多个动态库名称，默认值为空数组。具体请见[pluginLibs的使用约束和示例](#pluginlibs的使用约束和示例)。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | cryptoParam<sup>14+</sup> | [CryptoParam](#cryptoparam14) | 否 | 是 | 指定用户自定义的加密参数。<br/>当此参数不填时，使用默认的加密参数，见[CryptoParam](#cryptoparam14)各参数默认值。<br/>此配置只有在encrypt选项设置为true或密钥非空时才有效。<br/>从API version 14开始，支持此可选参数。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 23 |
 | vector<sup>18+</sup> | boolean | 否 | 是 | 指定数据库是否是向量数据库，true表示向量数据库，false表示关系型数据库，默认为false。<br/>向量数据库适用于存储和处理高维向量数据，关系型数据库适用于存储和处理结构化数据。<br/>当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
-| tokenizer<sup>17+</sup> | [Tokenizer](arkts-apis-data-relationalStore-e.md#tokenizer17) | 否 | 是 | 指定用户在FTS（Full-Text Search）场景下使用哪种分词器。<br/>当此参数不填时，则在fts下不支持中文以及多国语言分词，但仍可支持英文分词。<br/>如果用户想使用自定义分词器，可以通过pluginLibs参数进行配置，具体请见[pluginLibs的使用约束和示例](#pluginlibs的使用约束和示例)。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 17<br>**ArkTS-Sta起始版本：** 23 |
+| tokenizer<sup>17+</sup> | [Tokenizer](arkts-apis-data-relationalStore-e.md#tokenizer17) | 否 | 是 | 指定用户在FTS（Full-Text Search）场景下使用哪种分词器。<br/>当此参数不填时，则在FTS下不支持中文以及多国语言分词，但仍可支持英文分词。<br/>如果用户想使用自定义分词器，可以通过pluginLibs参数进行配置，具体请见[pluginLibs的使用约束和示例](#pluginlibs的使用约束和示例)。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 17<br>**ArkTS-Sta起始版本：** 23 |
 | persist<sup>18+</sup> | boolean | 否 | 是 | 指定数据库是否需要持久化。true表示持久化，false表示不持久化，即内存数据库。默认为true。<br/>内存数据库不支持加密、backup、restore、跨进程访问及分布式能力，securityLevel属性会被忽略。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
 | enableSemanticIndex<sup>20+</sup> | boolean | 否 | 是 | 指定数据库是否启用语义索引处理功能。true表示启用语义索引处理功能，false表示不启用。默认为false。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
@@ -104,7 +104,7 @@
 | tableType<sup>23+</sup> |  [DistributedTableType](arkts-apis-data-relationalStore-e.md#distributedtabletype23)  | 否 | 是 | 分布式表类型。DEVICE_COLLABORATION表示设备协作表；SINGLE_VERSION表示单版本表。跨设备数据同步时，默认值为DEVICE_COLLABORATION；端云数据同步时，默认值为SINGLE_VERSION，不支持DEVICE_COLLABORATION。<br> **ArkTS-Dyn起始版本：** 23<br> **ArkTS-Sta起始版本：** 23 |
 | assetConflictPolicy | [AssetConflictPolicy](arkts-apis-data-relationalStore-e.md#assetconflictpolicy) | 否 | 是 | 资产冲突策略。默认值为CONFLICT_POLICY_DEFAULT。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | assetTempPath | string | 否 | 是 | 资产临时路径。仅当assetConflictPolicy值为CONFLICT_POLICY_TEMP_PATH时生效，需指定为[distributedfiles](../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)下的临时路径，格式示例：tmp/，若未填写或路径不合规，将抛出 401 错误码。默认值为空。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| assetDownloadOnDemand | boolean | 否 | 是 | 是否按需下载资产。true表示仅下行数据到本地，当需要下载资产时，调用[cloudSync](arkts-apis-data-relationalStore-RdbStore.md#cloudsync)接口触发资产下载；false表示数据与资产都下行到本地。默认值为false。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| assetDownloadOnDemand | boolean | 否 | 是 | 是否按需下载资产。true表示仅下行数据到本地，当需要下载资产时，调用[cloudSyncEx](arkts-apis-data-relationalStore-RdbStore.md#cloudsyncex)接口触发资产下载；false表示数据与资产都下行到本地。默认值为false。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | autoSyncSwitch | boolean | 否 | 是 | 是否启用自动同步开关。true表示启用自动同步，false表示不启用。默认值为true。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## Statistic<sup>10+</sup>

@@ -8408,12 +8408,12 @@ IPC上下文信息，包括PID和UID、本端和对端设备ID、检查接口调
 
 | 名称    | 类型            | 只读 | 可选 | 说明                                  |
 | ------- | --------------- | ---- | ---- |-------------------------------------- |
-| callerPid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 调用者的PID。 |
-| callerUid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 调用者的UID。 |
-| callerTokenId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 调用者的TokenId。 |
+| callerPid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 调用者的PID，仅IPC场景有效。 |
+| callerUid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 调用者的UID，仅IPC场景有效。 |
+| callerTokenId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 调用者的TokenId，仅IPC场景有效。 |
 | remoteDeviceId   | string | 是   | 否   | 对端设备的设备ID，仅RPC场景有效。   |
 | localDeviceId   | string | 是   | 否   | 本端设备的设备ID，仅RPC场景有效。   |
-| isLocalCalling   | boolean | 是   | 否   | 当前通信对端是否为本设备进程。true：调用在同一台设备，false：调用未在同一台设备。   |
+| isLocalCalling   | boolean | 是   | 否   | 当前通信对端是否为本设备进程。true：调用在同一台设备（IPC场景），false：调用未在同一台设备（RPC场景）。   |
 
 ## IRemoteObject
 
@@ -10053,7 +10053,7 @@ if (proxy != undefined) {
   | ------------- | ------ | ----- | ----- | ------------------------------------------------------------------------ |
   | TF_SYNC       | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 同步调用标识。 |
   | TF_ASYNC      | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 异步调用标识。 |
-  | TF_ACCEPT_FDS | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 指示sendMessageRequest<sup>9+</sup>接口可以传递文件描述符。 |
+  | TF_ACCEPT_FDS | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 指示[sendMessageRequest](#sendmessagerequest9-2)接口可以传递文件描述符。 |
   | TF_WAIT_TIME  | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | RPC等待时间(单位：秒)，IPC场景下无效。默认等待为8秒（不建议修改等待时间）。 |
 
 

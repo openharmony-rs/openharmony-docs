@@ -51,6 +51,8 @@ scrollBarColor(color: Color | number | string): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -76,6 +78,8 @@ ArkTS-Sta: scrollBarColor(color: Color | int | string | Resource | undefined)
 设置滚动条的颜色。与[scrollBarColor<sup>11+</sup>](#scrollbarcolor11)相比，color参数开始支持Resource类型。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -429,6 +433,8 @@ ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined): t
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 18
@@ -459,6 +465,8 @@ contentStartOffset + contentEndOffset超过滚动组件内容区长度后content
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 22
@@ -482,6 +490,8 @@ ArkTS-Sta: contentEndOffset(offset: double | Resource | undefined)
 contentStartOffset + contentEndOffset超过滚动组件内容区长度后contentStartOffset和contentEndOffset会置0。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -658,6 +668,8 @@ onWillScroll(handler: Optional&lt;OnWillScrollCallback&gt;): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -690,6 +702,8 @@ onDidScroll(handler: OnScrollCallback): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -720,6 +734,8 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -748,6 +764,8 @@ ArkTS-Sta: onWillStartDragging(handler: VoidCallback | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 21
@@ -772,6 +790,8 @@ ArkTS-Sta: onWillStopDragging(handler: OnWillStopDraggingCallback | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
@@ -795,6 +815,8 @@ ArkTS-Sta: onDidStopDragging(handler: OnDidStopDraggingCallback | undefined)
 **卡片能力（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -826,6 +848,8 @@ ArkTS-Sta: onWillStartFling(handler: VoidCallback | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 21
@@ -850,6 +874,8 @@ ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 21
@@ -867,6 +893,8 @@ ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined)
 拖拽点信息对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -899,6 +927,8 @@ ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined)
 ## EdgeEffectOptions<sup>11+</sup>对象说明
 
 [edgeEffect](#edgeeffect11)属性参数对象。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -940,12 +970,15 @@ List/Grid组件编辑模式选项属性参数对象。
 | enableGatherSelectedItemsAnimation | boolean | 否   | 是 | 是否启用多选聚拢动画。设置true时启用聚拢动画，设置为false时关闭聚拢动画。<br>只有GridItem或ListItem上设置了[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)且responseType设置为[ResponseType](ts-appendix-enums.md#responsetype8).LongPress、[preview](ts-universal-attributes-menu.md#contextmenuoptions10)参数设置为MenuPreviewMode.IMAGE或CustomBuilder时会显示多选聚拢动画。<br>如果GridItem或ListItem上设置了[拖拽事件](ts-universal-events-drag-drop.md)，是否聚拢以[dragPreviewOptions](ts-universal-attributes-drag-drop.md#dragpreviewoptions11)设置为准。<br>默认值：false<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | onGetPreviewBadge | [OnGetPreviewBadgeCallback](#ongetpreviewbadgecallback23) | 否   | 是 | 即将启动多选长按聚拢动画时，触发用于获取选中数量的回调。<br>缺省时用Grid或List显示范围内选中item的数量作为多选长按聚拢动画后菜单预览图的角标。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | useDefaultMultiSelectStyle | boolean | 否   | 是 | 是否使用默认多选样式。<br>true表示GridItem或ListItem进入多选状态后显示勾选框；false表示进入多选状态后无默认样式。<br>默认值：true<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| enableTwoFingerMultiSelect | boolean | 否   | 是 | 是否开启双指滑动多选。<br>true表示双指滑动可以进入编辑模式并进行多选，只有List/Grid使用[enableEditMode](ts-container-grid.md#enableeditmode)双向绑定或设置[onEditModeChange](ts-container-grid.md#oneditmodechange)事件回调才生效；false表示双指滑动不可进行多选。<br>默认值：true<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## EffectEdge<sup>18+</sup>枚举说明
 
 表示当前边缘效果要生效的边缘。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -984,11 +1017,13 @@ List/Grid组件编辑模式选项属性参数对象。
 
 ArkTS-Dyn: type OnWillScrollCallback = (scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => void | ScrollResult
 
-ArkTS-Sta: type OnWillScrollCallback = (scrollOffset: double, scrollState: ScrollState, scrollSource: ScrollSource) => undefined | ScrollResult
+ArkTS-Sta: type OnWillScrollCallback = (scrollOffset: double, scrollState: ScrollState, scrollSource: ScrollSource) => (undefined | ScrollResult)
 
 滚动组件滑动前触发的回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1022,6 +1057,8 @@ ArkTS-Sta: type OnScrollCallback = (scrollOffset: double, scrollState: ScrollSta
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1039,7 +1076,7 @@ ArkTS-Sta: type OnScrollCallback = (scrollOffset: double, scrollState: ScrollSta
 
 ArkTS-Dyn: type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: number) => CustomBuilder
 
-ArkTS-Sta: type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: int) => CustomBuilder
+ArkTS-Sta: type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: int) => (CustomBuilder | undefined)
 
 开始拖拽列表或网格元素时触发的回调。
 
@@ -1068,7 +1105,7 @@ ArkTS-Sta: type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: int) 
 
 ArkTS-Dyn: type OnGetPreviewBadgeCallback = () => boolean | number
 
-ArkTS-Sta: type OnGetPreviewBadgeCallback = () => boolean | int
+ArkTS-Sta: type OnGetPreviewBadgeCallback = () => (boolean | int)
 
 即将启动多选长按聚拢动画时，触发用于获取选中数量的回调。
 
@@ -1126,6 +1163,8 @@ ChildrenMainSize有参构造函数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1156,6 +1195,8 @@ ArkTS-Sta: set childDefaultSize(value: double)
 修改子组件在主轴方向的默认大小。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1207,6 +1248,8 @@ ArkTS-Sta: splice(start: int, deleteCount?: int, childrenSize?: Array\<double\>)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1247,6 +1290,8 @@ ArkTS-Sta: update(index: int, childSize: double): void
 修改指定索引值对应的子组件的主轴方向的大小信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1387,6 +1432,8 @@ setOnScrollFrameBegin(callback: OnScrollFrameBeginCallback | undefined): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 19
@@ -1412,6 +1459,8 @@ ArkTS-Sta: type OnWillStopDraggingCallback = (velocity: double) => void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
@@ -1434,6 +1483,8 @@ type OnDidStopDraggingCallback = (willFling: boolean) => void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 21
@@ -1448,16 +1499,16 @@ type OnDidStopDraggingCallback = (willFling: boolean) => void
 
 ## OnVisibleIndexesChangeCallback
 
-type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
+ArkTS-Dyn: type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
-懒加载线性布局容器[LazyColumnLayout](ts-container-lazycolumnlayout.md)所显示的子组件索引发生变化时的回调类型。
+ArkTS-Sta: type OnVisibleIndexesChangeCallback = (start: int, end: int) => void
+
+懒加载布局容器[LazyColumnLayout](ts-container-lazycolumnlayout.md)、[LazyVGridLayout](ts-container-lazyvgridlayout.md)、[LazyVWaterFlowLayout](ts-container-lazyvwaterflowlayout.md)所显示的子组件索引发生变化时的回调类型。
 
 > **说明：**
 >
-> - 当LazyColumnLayout没有子组件时，start和end都返回-1。
-> - 当LazyColumnLayout在可视区域内无子组件时，start和end都返回-1。
-
-**起始版本：** 26.0.0
+> - 当懒加载布局容器没有子组件时，start和end都返回-1。
+> - 当懒加载布局容器在可视区域内无子组件时，start和end都返回-1。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -1465,12 +1516,16 @@ type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                  |
 | ------ | ------ | ---- | ------------------------------------- |
-| start  | number | 是   | 可视区域起始位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
-| end    | number | 是   | 可视区域终止位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
+| start  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 可视区域起始位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
+| end    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是   | 可视区域终止位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
 
 ## 示例
 

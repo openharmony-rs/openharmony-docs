@@ -57,7 +57,7 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ------- | ------- | ------- |
-| key       | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否      | 否      | 按键键值。<br/>**说明：** ArkTS-Dyn：从API version 26.0.0开始，新增支持[KEYCODE_FINGERPRINT_SLIDE_UP](js-apis-keycode.md#keycode)键和[KEYCODE_FINGERPRINT_SLIDE_DOWN](js-apis-keycode.md#keycode)键。<br/>从API version 21开始，新增支持[KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode)键和[KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode)键。<br/>对于API version 20及之前的版本，仅支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键和[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键。 <br/> ArkTS-Sta：支持以上按键功能。|
+| key       | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否      | 否      | 按键键值。<br/>**说明：** ArkTS-Dyn：从API version 26.0.0开始，新增支持[KEYCODE_FINGERPRINT_SLIDE_UP](js-apis-keycode.md#keycode)键和[KEYCODE_FINGERPRINT_SLIDE_DOWN](js-apis-keycode.md#keycode)键，非设备通用键值，使用前请判断当前设备是否支持相关按键事件上报，请参考[优先响应系统功能键开发指导](../../device/input/keypressed-guidelines.md)。<br/>从API version 21开始，新增支持[KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode)键和[KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode)键。<br/>对于API version 20及之前的版本，仅支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键和[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键。 <br/> ArkTS-Sta：支持以上按键功能。|
 | action    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否      | 否      | 订阅指定的按键事件。支持取值为1和2，取值为1表示订阅按键按下事件，取值为2表示同时订阅按键按下事件和按键抬起事件。<br/>**说明：** ArkTS-Dyn：从API version 21开始，支持取值为1和2。<br/>对于API version 20及之前的版本，仅支持取值为1。<br/> ArkTS-Sta：支持以上按键功能。 |
 | isRepeat  | boolean  | 否      | 否      | 是否上报重复的按键事件。true表示上报，false表示不上报，默认值为true。 |
 
@@ -132,7 +132,7 @@ struct Index {
           // 获取所有系统热键
           inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
             console.info(`Succeeded in getting list of system hotkeys: ${JSON.stringify(data)}.`);
-          }).catch((error: BusinessError) => {
+          }).catch((error) => {
             console.error(`Failed to get all system hotkeys, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           })
         })
@@ -161,7 +161,7 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 | ---------- | -------------------------- | ---- | ---------- |
 | type       | string                     | 是    | 事件类型，固定取值为'hotkeyChange'。                   |
 | hotkeyOptions | [HotkeyOptions](#hotkeyoptions) | 是    | 快捷键选项。                 |
-| callback   | Callback&lt;[HotkeyOptions](#hotkeyoptions)&gt; | 是    | 回调函数，获取满足条件的组合按键输入事件。 |
+| callback   | Callback&lt;[HotkeyOptions](#hotkeyoptions)&gt; | 是    | 回调函数，返回满足条件的组合按键输入事件。 |
 
 **错误码**：
 
@@ -169,7 +169,7 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 4200002  | The hotkey has been used by the system. |
 | 4200003  | The hotkey has been subscribed to by another. |
@@ -303,7 +303,7 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 
 **示例：**
@@ -446,7 +446,7 @@ struct Index {
 
 on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): void
 
-订阅按键按下事件，使用callback异步回调。若当前应用窗口为前台焦点窗口，用户按下指定按键，会触发回调。
+订阅按键按下事件。若当前应用窗口为前台焦点窗口，用户按下指定按键，会触发回调。使用callback异步回调。
 
 订阅成功后，该按键事件的系统默认行为将被屏蔽，即不会再触发系统级的响应，如音量调节。要恢复系统响应，请使用[off](#inputconsumeroffkeypressed16)方法取消订阅。
 
@@ -466,7 +466,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 | ---------- | --------------------------             | ----  | ---------- |
 | type       | string                                 | 是     | 事件类型，固定取值为'keyPressed'。        |
 | options    | [KeyPressedConfig](#keypressedconfig16)| 是     | 按键事件消费设置。           |
-| callback   | Callback&lt;[KeyEvent](./js-apis-keyevent.md#keyevent)&gt; | 是    | 回调函数，用于返回按键事件。订阅不同的按键事件需要使用不同的callback，否则订阅不生效。 |
+| callback   | Callback&lt;[KeyEvent](./js-apis-keyevent.md#keyevent)&gt; | 是    | 回调函数，返回按键事件。订阅不同的按键事件需要使用不同的callback，否则订阅不生效。 |
 
 **错误码**：
 
@@ -474,7 +474,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 
 **示例：**
@@ -602,7 +602,7 @@ off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 
 **示例：**

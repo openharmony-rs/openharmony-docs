@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -336,7 +336,7 @@
 | ------ | --- | ------------------------ |
 | FULLSCREEN | 1 | 全屏窗口，二进制从右往左，第一个二进制位为1。  |
 | SPLIT  | 1 << 1 | 分屏窗口，二进制从右往左，第二个二进制位为1。 |
-| FLOAT   | 1 << 2  | 悬浮窗，二进制从右往左，第三个二进制位为1。 |
+| FLOAT   | 1 << 2  | 自由悬浮窗口，二进制从右往左，第三个二进制位为1。 |
 | PIP   | 1 << 3  | 画中画，二进制从右往左，第四个二进制位为1。  |
 
 ## OcclusionState<sup>22+</sup>

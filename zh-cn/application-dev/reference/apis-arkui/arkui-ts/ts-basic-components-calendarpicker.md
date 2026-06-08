@@ -28,7 +28,7 @@ CalendarPicker(options?: CalendarOptions)
 
 日历选择器。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +54,9 @@ edgeAlign(alignType: CalendarAlign, offset?: Offset)
 
 设置选择器与入口组件的对齐方式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -62,9 +64,9 @@ edgeAlign(alignType: CalendarAlign, offset?: Offset)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[edgeAlign<sup>23+</sup>](#edgealign23)。
-
 **ArkTS-Dyn起始版本：** 10
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[edgeAlign<sup>23+</sup>](#edgealign23)。
 
 **参数：**
 
@@ -79,7 +81,9 @@ edgeAlign(alignType: Optional\<CalendarAlign>, offset?: Offset)
 
 设置选择器与入口组件的对齐方式。与[edgeAlign](#edgealign)相比，alignType参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +108,8 @@ edgeAlign(alignType: CalendarAlign | undefined, offset?: Offset)
 
 设置选择器与入口组件的对齐方式。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -125,7 +131,9 @@ textStyle(value: PickerTextStyle)
 
 入口区的文本颜色、字号、字体粗细。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,9 +141,9 @@ textStyle(value: PickerTextStyle)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle<sup>23+</sup>](#textstyle23)。
-
 **ArkTS-Dyn起始版本：** 10
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle<sup>23+</sup>](#textstyle23)。
 
 **参数：**
 
@@ -149,7 +157,9 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 入口区的文本颜色、字号、字体粗细。与[textStyle](#textstyle)相比，style参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,6 +183,8 @@ textStyle(value: PickerTextStyle | undefined)
 
 入口区的文本颜色、字号、字体粗细。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -193,7 +205,9 @@ markToday(enabled: boolean)
 
 设置日历选择器中系统当前日期是否保持高亮显示。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -217,6 +231,8 @@ markToday(enabled: boolean | undefined)
 
 设置日历选择器中系统当前日期是否保持高亮显示。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -237,6 +253,8 @@ attributeModifier(modifier: AttributeModifier\<CalendarPickerAttribute> | Attrib
 
 设置属性修改器。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -247,7 +265,7 @@ attributeModifier(modifier: AttributeModifier\<CalendarPickerAttribute> | Attrib
 
 | 参数名   | 类型               | 必填   | 说明      |
 | ----- | ---------- | ---- | ----------------------- |
-| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[CalendarPickerAttribute]> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[CommonMethod](ts-component-general-attributes.md)> \| undefined | 是    | 设置属性修改器。 |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CalendarPickerAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是    | 设置属性修改器。CommonMethod表示[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)。<br/>CalendarPickerAttribute表示当前组件的[属性](#属性)和[事件](#事件)。 |
 
 ## 事件
 
@@ -259,7 +277,9 @@ onChange(callback: Callback\<Date>)
 
 选择日期时触发该事件。不能通过双向绑定的状态变量触发。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -267,9 +287,9 @@ onChange(callback: Callback\<Date>)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
-
 **ArkTS-Dyn起始版本：** 10
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
 
 **参数：**
 
@@ -287,7 +307,9 @@ onChange(callback: Optional\<Callback\<Date>>)
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -311,6 +333,8 @@ onChange(callback: Callback\<Date> | undefined)
 
 选择日期时触发该事件。不能通过双向绑定的状态变量触发。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -325,11 +349,13 @@ onChange(callback: Callback\<Date> | undefined)
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | [Callback](ts-types.md#callback12)\<Date> \| undefined | 是   | 选中的日期值。<br>当callback的值为undefined时，不使用回调函数。 |
 
-##  CalendarOptions对象说明
+## CalendarOptions对象说明
 
 日历选择器组件的参数说明。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -337,11 +363,11 @@ onChange(callback: Callback\<Date> | undefined)
 
 | 名称      | 类型       | 只读 | 可选        | 说明                            |
 | ----------- | ---------- | ---- | ---- | --------------------------------- |
-| hintRadius | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否   | 是    | 描述日期选中态底板样式。<br />取值范围：[0.0, 16.0]<br />单位：vp<br/>默认值：16.0，即底板样式为圆形。<br />**说明：**<br />当hintRadius为0.0时表示底板样式为直角矩形；当hintRadius为(0.0, 16.0)时，底板样式为圆角矩形；当hintRadius为负数或大于16.0时，恢复为默认值16.0。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| selected | Date | 否   | 是    | 设置选中项的日期。选中的日期未设置或日期格式不符合规范则为默认值。<br/>默认值：当前系统日期。<br/>取值范围：\[Date('0001-01-01'), Date('5000-12-31')]<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| start<sup>18+</sup> | Date | 否   | 是    | 设置开始日期。<br/>默认值：Date('0001-01-01')<br/>取值范围：\[Date('0001-01-01'), Date('5000-12-31')]<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
-| end<sup>18+</sup> | Date | 否   | 是    | 设置结束日期。<br/>默认值：Date('5000-12-31')<br/>取值范围：\[Date('0001-01-01'), Date('5000-12-31')]<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
-| disabledDateRange<sup>19+</sup> | [DateRange](ts-picker-common.md#daterange19对象说明)[] | 否   | 是    | 设置禁用日期区间。<br/>**说明：**<br />1. 若日期区间内的开始日期或结束日期未设置或设置为异常值，则该日期区间无效。<br/>2. 若在日期区间内，结束日期早于开始日期，则该日期区间无效。<br/>3. 当在入口区选定某日期，通过上下箭头调整日期进行增加或减少操作时，若遇到禁用日期，系统将自动跳过整个禁用区间。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
+| hintRadius | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否   | 是    | 描述日期选中态底板样式。<br />取值范围：[0.0, 16.0]<br />单位：vp<br/>默认值：16.0，即底板样式为圆形。<br />**说明：**<br />当hintRadius为0.0时表示底板样式为直角矩形；当hintRadius为(0.0, 16.0)时，底板样式为圆角矩形；当hintRadius为负数或大于16.0时，恢复为默认值16.0。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| selected | Date | 否   | 是    | 设置选中项的日期。选中的日期未设置或日期格式不符合规范则为默认值。<br/>默认值：当前系统日期。<br/>取值范围：\[Date('0001-01-01'), Date('5000-12-31')]<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| start<sup>18+</sup> | Date | 否   | 是    | 设置开始日期。<br/>默认值：Date('0001-01-01')<br/>取值范围：\[Date('0001-01-01'), Date('5000-12-31')]<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| end<sup>18+</sup> | Date | 否   | 是    | 设置结束日期。<br/>默认值：Date('5000-12-31')<br/>取值范围：\[Date('0001-01-01'), Date('5000-12-31')]<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| disabledDateRange<sup>19+</sup> | [DateRange](ts-picker-common.md#daterange19对象说明)[] | 否   | 是    | 设置禁用日期区间。<br/>**说明：**<br />1. 若日期区间内的开始日期或结束日期未设置或设置为异常值，则该日期区间无效。<br/>2. 若在日期区间内，结束日期早于开始日期，则该日期区间无效。<br/>3. 当在入口区选定某日期，通过上下箭头调整日期进行增加或减少操作时，若遇到禁用日期，系统将自动跳过整个禁用区间。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
 
 **start和end设置规则：**
 
@@ -358,7 +384,9 @@ onChange(callback: Callback\<Date> | undefined)
 
 对齐方式类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -378,7 +406,7 @@ onChange(callback: Callback\<Date> | undefined)
 
 日期区间，用于描述起止日期区间。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

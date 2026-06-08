@@ -125,7 +125,7 @@
                   // 其他业务逻辑
                   // ...
                   let task: taskpool.Task = new taskpool.Task(createTask, 1, 2);
-                  taskpool.execute(task).then((res: object) => {
+                  taskpool.execute(task).then((res: Object) => {
                     // 任务执行完处理结果
                     this.message = '任务执行结果:'+ res;
                     // ...
@@ -253,12 +253,12 @@ TaskPool第一次执行任务慢，间隔几百毫秒，原因是子线程反序
 
 **问题原因**
 
-TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满足线程间通信支持的对象类型，详情请查看[线程间通信对象](../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。当Concurrent函数的入参或返回结果是线程间通信不支持的对象类型时，会出现上述现象。应用可以结合Hilog日志中打印的对象类型进一步排查通信对象是否符合要求。
+TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满足线程间通信支持的对象类型，详情请查看[序列化支持类型](../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。当Concurrent函数的入参或返回结果是线程间通信不支持的对象类型时，会出现上述现象。应用可以结合Hilog日志中打印的对象类型进一步排查通信对象是否符合要求。
 
 **场景示例**
 
 1. 应用在启动TaskPool任务时，在Concurrent函数中传入线程间通信不支持的对象类型，导致抛出入参序列化失败异常。  
-**解决方案**：应用需要查看[线程间通信对象](../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)排查Concurrent函数入参。
+**解决方案**：应用需要查看[序列化支持类型](../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)排查Concurrent函数入参。
 
 2. 应用在启动TaskPool任务时，抛出入参序列化失败异常，同时Hilog打印错误日志Unsupported serialize object type: Proxy（API version 20及之后版本打印错误日志：Serialize error: Serialize don't support object type: Proxy）。基于错误日志可知应用在Concurrent函数中传入代理对象，排查代码发现入参使用了@State装饰器，导致原对象实际上变为Proxy代理对象，代理对象不属于线程间通信支持的对象类型。  
 **解决方案**：TaskPool不支持@State、@Prop等装饰器修饰的复杂类型，具体内容可见[TaskPool注意事项](taskpool-introduction.md#taskpool注意事项)。应用需要去掉@State装饰器。

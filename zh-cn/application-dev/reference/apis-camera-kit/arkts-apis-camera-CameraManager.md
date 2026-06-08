@@ -10,7 +10,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -26,9 +27,14 @@ getSupportedCameras(): Array\<CameraDevice\>
 
 如果需要获取额外的相机设备对象（如获取CameraType为CAMERA_TYPE_TELEPHOTO的长焦相机），可通过[getCameraDevices](#getcameradevices23)接口获取。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 
 **返回值：**
 
@@ -59,9 +65,14 @@ getSupportedSceneModes(camera: CameraDevice): Array\<SceneMode\>
 
 获取指定的相机设备对象支持的模式，同步返回结果。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 
 **参数：**
 
@@ -98,9 +109,13 @@ getSupportedOutputCapability(camera: CameraDevice, mode: SceneMode): CameraOutpu
 
 查询相机设备在指定模式下支持的输出能力，同步返回结果。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -136,9 +151,14 @@ getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraO
  
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 
 **参数：**
 
@@ -170,7 +190,7 @@ isCameraMuted(): boolean
 
 查询当前相机是否禁用。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -199,9 +219,13 @@ createCameraInput(camera: CameraDevice): CameraInput
 
 **需要权限：** ohos.permission.CAMERA
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -222,8 +246,8 @@ createCameraInput(camera: CameraDevice): CameraInput
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400102                |  Operation not allowed.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400102                |  Operation not allowed.<br>适用版本：12+               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -253,9 +277,13 @@ createCameraInput(position: CameraPosition, type: CameraType): CameraInput
 
 **需要权限：** ohos.permission.CAMERA
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -277,8 +305,8 @@ createCameraInput(position: CameraPosition, type: CameraType): CameraInput
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400102                |  Operation not allowed.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400102                |  Operation not allowed.<br>适用版本：12+               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -306,9 +334,13 @@ createPreviewOutput(profile: Profile, surfaceId: string): PreviewOutput
 
 创建预览输出对象，同步返回结果。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -330,7 +362,7 @@ createPreviewOutput(profile: Profile, surfaceId: string): PreviewOutput
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -357,9 +389,13 @@ createPreviewOutput(surfaceId: string): PreviewOutput
 
 创建无配置信息的预览输出对象，同步返回结果。该接口需配合[preconfig](arkts-apis-camera-PhotoSession.md#preconfig12)一起使用。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -406,7 +442,7 @@ createDeferredPreviewOutput(profile: Profile): PreviewOutput
 
 创建延迟预览输出对象，在配流时替代普通的预览输出对象加入数据流。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -456,9 +492,13 @@ createPhotoOutput(profile?: Profile): PhotoOutput
 
 创建拍照输出对象，同步返回结果。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -479,7 +519,7 @@ createPhotoOutput(profile?: Profile): PhotoOutput
 | 错误码ID    | 错误信息                                           |
 |----------|------------------------------------------------|
 | 7400101  | Parameter missing or parameter type incorrect. |
-| 7400201  | Camera service fatal error.                    |
+| 7400201  | Camera service fatal error.<br>适用版本：12+                    |
 
 **示例：**
 
@@ -513,9 +553,13 @@ createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
 | SDR                | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT      |
 | HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT<br>BT2020_HLG_FULL |
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -537,7 +581,7 @@ createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -564,9 +608,13 @@ createVideoOutput(surfaceId: string): VideoOutput
 
 创建无配置信息的录像输出对象，同步返回结果。该接口需配合[preconfig](arkts-apis-camera-VideoSession.md#preconfig12)功能一起使用。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -613,9 +661,13 @@ createMetadataOutput(metadataObjectTypes: Array\<MetadataObjectType\>): Metadata
 
 创建metadata流输出对象，同步返回结果。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -636,7 +688,7 @@ createMetadataOutput(metadataObjectTypes: Array\<MetadataObjectType\>): Metadata
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -662,9 +714,13 @@ createSession\<T extends Session\>(mode: SceneMode): T
 
 创建指定SceneMode的Session实例，同步返回结果。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -684,7 +740,7 @@ createSession\<T extends Session\>(mode: SceneMode): T
 
 | 错误码ID   | 错误信息                                                                                                                                           |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |  
+| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed.<br>适用版本：19+ |  
 | 7400201 | Camera service fatal error.                                                                                                                    |
 
 **示例：**
@@ -715,9 +771,15 @@ on(type: 'cameraStatus', callback: AsyncCallback\<CameraStatusInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onCameraStatus](#oncamerastatus22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10  
 
 **参数：**
 
@@ -745,15 +807,64 @@ function registerCameraStatus(cameraManager: camera.CameraManager): void {
 }
 ```
 
+## onCameraStatus<sup>22+</sup>
+
+onCameraStatus(callback: AsyncCallback\<CameraStatusInfo\>): void
+
+相机设备状态回调，通过注册回调函数获取相机的状态变化。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('cameraStatus')](#oncamerastatus)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                 |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
+| callback | AsyncCallback\<[CameraStatusInfo](arkts-apis-camera-i.md#camerastatusinfo)\> | 是   | 回调函数，用于获取镜头状态变化信息。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, cameraStatusInfo: camera.CameraStatusInfo | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error('cameraStatus with errorCode = ' + err!.code);
+    return;
+  }
+  console.info(`camera : ${cameraStatusInfo!.camera.cameraId}`);
+  console.info(`status: ${cameraStatusInfo!.status}`);
+}
+
+function registerCameraStatus(cameraManager: camera.CameraManager): void {
+  cameraManager.onCameraStatus(callback);
+}
+```
+
 ## off('cameraStatus')
 
 off(type: 'cameraStatus', callback?: AsyncCallback\<CameraStatusInfo\>): void
 
 相机设备状态注销回调，通过注销回调函数取消获取相机的状态变化。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offCameraStatus](#offcamerastatus22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -770,6 +881,34 @@ function unregisterCameraStatus(cameraManager: camera.CameraManager): void {
 }
 ```
 
+## offCameraStatus<sup>22+</sup>
+
+offCameraStatus(callback?: AsyncCallback\<CameraStatusInfo\>): void
+
+相机设备状态注销回调，通过注销回调函数取消获取相机的状态变化。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('cameraStatus')](#offcamerastatus)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[CameraStatusInfo](arkts-apis-camera-i.md#camerastatusinfo)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterCameraStatus(cameraManager: camera.CameraManager): void {
+  cameraManager.offCameraStatus();
+}
+```
+
 ## on('foldStatusChange')<sup>12+</sup>
 
 on(type: 'foldStatusChange', callback: AsyncCallback\<FoldStatusInfo\>): void
@@ -780,9 +919,15 @@ on(type: 'foldStatusChange', callback: AsyncCallback\<FoldStatusInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFoldStatusChange](#onfoldstatuschange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -810,15 +955,64 @@ function registerFoldStatusChange(cameraManager: camera.CameraManager): void {
 }
 ```
 
+## onFoldStatusChange<sup>22+</sup>
+
+onFoldStatusChange(callback: AsyncCallback\<FoldStatusInfo\>): void
+
+注册折叠设备折叠状态变化的监听。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('foldStatusChange')](#onfoldstatuschange12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                             |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
+| callback | AsyncCallback\<[FoldStatusInfo](arkts-apis-camera-i.md#foldstatusinfo12)\> | 是   | 回调函数。返回折叠设备折叠信息。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, foldStatusInfo: camera.FoldStatusInfo | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error('foldStatusChange with errorCode = ' + err!.code);
+    return;
+  }
+  console.info(`camera length: ${foldStatusInfo!.supportedCameras.length}`);
+  console.info(`foldStatus: ${foldStatusInfo!.foldStatus}`);
+}
+
+function registerFoldStatusChange(cameraManager: camera.CameraManager): void {
+  cameraManager.onFoldStatusChange(callback);
+}
+```
+
 ## off('foldStatusChange')<sup>12+</sup>
 
 off(type: 'foldStatusChange', callback?: AsyncCallback\<FoldStatusInfo\>): void
 
 关闭折叠设备折叠状态变化的监听。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFoldStatusChange](#offfoldstatuschange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -835,15 +1029,47 @@ function unregisterFoldStatusChange(cameraManager: camera.CameraManager): void {
 }
 ```
 
+## offFoldStatusChange<sup>22+</sup>
+
+offFoldStatusChange(callback?: AsyncCallback\<FoldStatusInfo\>): void
+
+关闭折叠设备折叠状态变化的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('foldStatusChange')](#offfoldstatuschange12)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[FoldStatusInfo](arkts-apis-camera-i.md#foldstatusinfo12)\> | 否   | 回调函数，返回折叠设备折叠信息。如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+ 
+**示例：**
+
+```ts
+function unregisterFoldStatusChange(cameraManager: camera.CameraManager): void {
+  cameraManager.offFoldStatusChange();
+}
+```
+
 ## isTorchSupported<sup>11+</sup>
 
 isTorchSupported(): boolean
 
 检测设备是否支持手电筒。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -866,15 +1092,19 @@ isTorchModeSupported(mode: TorchMode): boolean
 
 检测是否支持设置的手电筒模式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型             | 必填 | 说明       |
 | -------- | --------------- | ---- | --------- |
-| mode | [TorchMode](arkts-apis-camera-e.md#torchmode11) | 是 | 手电筒模式。传参为null或者undefined，作为0处理，手电筒关闭。 |
+| mode | [TorchMode](arkts-apis-camera-e.md#torchmode11) | 是 | ArkTS-Dyn： 手电筒模式。传参为null或者undefined，作为0处理，手电筒关闭。<br/>ArkTS-Sta： 手电筒模式。目前不支持传参null或者undefined。 |
 
 **返回值：**
 
@@ -897,9 +1127,13 @@ getTorchMode(): TorchMode
 
 获取当前设备手电筒模式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -923,15 +1157,19 @@ setTorchMode(mode: TorchMode): void
 
 设置设备手电筒模式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型             | 必填 | 说明       |
 | -------- | --------------- | ---- | --------- |
-| mode | [TorchMode](arkts-apis-camera-e.md#torchmode11) | 是 | 手电筒模式。传参为null或者undefined，作为0处理，手电筒关闭。 |
+| mode | [TorchMode](arkts-apis-camera-e.md#torchmode11) | 是 | ArkTS-Dyn： 手电筒模式。传参为null或者undefined，作为0处理，手电筒关闭。<br/>ArkTS-Sta： 手电筒模式。目前不支持传参null或者undefined。 |
 
 **错误码：**
 
@@ -939,8 +1177,9 @@ setTorchMode(mode: TorchMode): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400102 | Operation not allowed. |
-| 7400201 | Camera service fatal error. |
+| 7400101 | Parameter missing or parameter type incorrect.<br>适用版本：11-17 |
+| 7400102 | Operation not allowed.<br>适用版本：12+ |
+| 7400201 | Camera service fatal error.<br>适用版本：12+ |
 
 **示例：**
 
@@ -968,9 +1207,15 @@ on(type: 'torchStatusChange', callback: AsyncCallback\<TorchStatusInfo\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onTorchStatusChange](#ontorchstatuschange22)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -997,15 +1242,63 @@ function registerTorchStatusChange(cameraManager: camera.CameraManager): void {
 }
 ```
 
+## onTorchStatusChange<sup>22+</sup>
+
+onTorchStatusChange(callback: AsyncCallback\<TorchStatusInfo\>): void
+
+手电筒状态变化回调，通过注册回调函数获取手电筒状态变化。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('torchStatusChange')](#ontorchstatuschange11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                   |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| callback | AsyncCallback\<[TorchStatusInfo](arkts-apis-camera-i.md#torchstatusinfo11)> | 是   | 回调函数，用于获取手电筒状态变化信息。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, torchStatusInfo: camera.TorchStatusInfo | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info(`onTorchStatusChange, isTorchAvailable: ${torchStatusInfo!.isTorchAvailable}, isTorchActive: ${torchStatusInfo!.isTorchActive}, level: ${torchStatusInfo!.torchLevel}`);
+}
+
+function registerTorchStatusChange(cameraManager: camera.CameraManager): void {
+  cameraManager.onTorchStatusChange(callback);
+}
+```
+
 ## off('torchStatusChange')<sup>11+</sup>
 
 off(type: 'torchStatusChange', callback?: AsyncCallback\<TorchStatusInfo\>): void
 
 手电筒状态变化注销回调，通过注销回调函数取消获取手电筒状态变化。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offTorchStatusChange](#offtorchstatuschange22)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1022,6 +1315,34 @@ function unregisterTorchStatusChange(cameraManager: camera.CameraManager): void 
 }
 ```
 
+## offTorchStatusChange<sup>22+</sup>
+
+offTorchStatusChange(callback?: AsyncCallback\<TorchStatusInfo\>): void
+
+手电筒状态变化注销回调，通过注销回调函数取消获取手电筒状态变化。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('torchStatusChange')](#offtorchstatuschange11)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<[TorchStatusInfo](arkts-apis-camera-i.md#torchstatusinfo11)> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterTorchStatusChange(cameraManager: camera.CameraManager): void {
+  cameraManager.offTorchStatusChange();
+}
+```
+
 ## isTorchLevelControlSupported
 
 isTorchLevelControlSupported(): boolean
@@ -1032,7 +1353,7 @@ isTorchLevelControlSupported(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 26开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1061,7 +1382,7 @@ SetTorchModeOnWithLevel(torchLevel: number): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 26开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1097,9 +1418,13 @@ getCameraDevice(position: CameraPosition, type: CameraType): CameraDevice
 
 获取指定[CameraPosition](arkts-apis-camera-e.md#cameraposition)和[CameraType](arkts-apis-camera-e.md#cameratype)的相机镜头，如果该接口返回结果为undefined，表示当前设备未查询到该镜头。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1146,7 +1471,7 @@ getCameraDevices(position: CameraPosition, types: Array\<CameraType>, connectTyp
 
 根据相机位置、相机类型数组和连接类型查询符合条件的相机列表。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -1196,9 +1521,13 @@ getCameraConcurrentInfos(cameras: Array\<CameraDevice\>): Array\<CameraConcurren
 
 获取指定相机设备的并发信息。返回空数组表示不支持并发。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1247,9 +1576,14 @@ getSupportedOutputCapability(camera: CameraDevice): CameraOutputCapability
 查询相机设备支持的输出能力，同步返回结果。
 
 > **说明：**
+>
 > 从 API version 10开始支持，从API version 11开始废弃。建议使用[getSupportedOutputCapability](#getsupportedoutputcapability11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1283,7 +1617,11 @@ createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput
 > - 从API version 10开始支持，从API version 11开始废弃。建议使用[createPhotoOutput](#createphotooutput11)替代。
 > - 该接口只支持创建JPEG格式的拍照输出对象。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1305,6 +1643,8 @@ createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
+
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1332,7 +1672,11 @@ createCaptureSession(): CaptureSession
 > **说明：**
 >从 API version 10开始支持，从API version 11开始废弃。建议使用[createSession](#createsession11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **返回值：**
 

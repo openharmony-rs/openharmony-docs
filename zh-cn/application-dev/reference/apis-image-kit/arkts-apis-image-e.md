@@ -31,6 +31,7 @@
 | RGBA_1010102<sup>12+</sup> | 10 | 颜色信息由R（Red），G（Green），B（Blue）与透明度（Alpha）四部分组成，其中R、G、B分别占10位，透明度占2位，总共占32位。</br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23 |
 | YCBCR_P010<sup>12+</sup> | 11 | 颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。</br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23  |
 | YCRCB_P010<sup>12+</sup> | 12 | 颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。</br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23  |
+| Y8 | 14 | 每个像素占8位，仅包含Y平面（亮度）的单通道灰度格式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。  |
 | ALPHA_U8 | 15 | 颜色信息仅包含透明度（Alpha），每个像素占8位，按照从高位到低位的顺序储存。所有像素紧密排列，不进行对齐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。</br>**ArkTS-Dyn起始版本：** 26.0.0</br>**ArkTS-Sta起始版本：** 26.0.0|
 | ASTC_4x4<sup>18+</sup> | 102 | 存储格式为ASTC 4x4格式，内存使用量仅为RGBA_8888的1/4。该格式仅用于直接显示场景，不支持像素访问或后期处理编辑，不支持仿射变换级联使用。</br>**ArkTS-Dyn起始版本：** 18</br>**ArkTS-Sta起始版本：** 23  |
 
@@ -76,6 +77,7 @@
 | UNREFOCUS_MAP | 3    | 未重对焦原图（UnReFocus Map）。<br>用于保存拍摄时未重对焦的图片像素内容。<br>可用于人像虚化等后期处理，便于用户自由选择焦点区域。  |
 | LINEAR_MAP    | 4    | 线性图（Linear Map）。<br>以线性方式记录光照、颜色或其他视觉要素，为图像处理提供补充信息。<br>可用于视觉效果增强与色彩后期处理。  |
 | FRAGMENT_MAP  | 5    | 水印裁剪图（Fragment Map）。<br>记录原图中被水印遮挡的区域，可能是从原图裁剪得到，也可能只是填充特定数值的像素数据作为占位符。<br>可用于水印移除、原图恢复等场景。 |
+| LHDR_GAINMAP  | 10    | 特殊增益图（LHDR Gain Map）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## MetadataType<sup>13+</sup>
 

@@ -152,7 +152,7 @@ export default class MigrationAbility extends UIAbility {
             }
             console.info('register finished, ' + JSON.stringify(continueResultInfo));
           });
-      } catch (e:Error) {
+      } catch (e) {
         console.error('register failed, cause: ' + JSON.stringify(e));
       }
     }
@@ -233,7 +233,7 @@ export default class MigrationAbility extends UIAbility {
 
 ## continueManager.offPrepareContinue<sup>23+</sup>
 
-offPrepareContinue(context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
+offPrepareContinue(context: Context, callback?: AsyncCallback\<ContinueResultInfo>): void
 
 在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。
 
@@ -296,7 +296,7 @@ export default class MigrationAbility extends UIAbility {
             }
             console.info('unregister finished, ' + JSON.stringify(continueResultInfo));
           });
-      } catch (e:Error) {
+      } catch (e) {
         console.error('unregister failed, cause: ' + JSON.stringify(e));
       }
     }
@@ -332,5 +332,5 @@ export default class MigrationAbility extends UIAbility {
 | 名称 | 值  | 说明    |
 | -------- |----|-------|
 | SUCCESS  | 0  | 操作成功。 |
-| SYSTEM_ERROR | 1 | 操作失败。 | 
+| SYSTEM_ERROR | 1 | 操作失败。 |
 

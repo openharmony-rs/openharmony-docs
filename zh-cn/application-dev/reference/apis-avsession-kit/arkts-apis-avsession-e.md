@@ -19,16 +19,16 @@
 
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |
-| TYPE_LOCAL<sup>11+</sup>      | 0    | 本地设备，包括设备本身的内置扬声器或音频插孔、A2DP 设备。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| TYPE_CAST_PLUS_STREAM<sup>11+</sup>      | 2    | Cast+的Stream模式。表示媒体正在其他设备上展示。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| TYPE_DLNA<sup>12+</sup>      | 4    | DLNA协议。表示媒体正在其他设备上展示。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
-| TYPE_CAST_PLUS_AUDIO<sup>20+</sup>      | 8    | PCM模式。表示媒体正在其他设备上展示。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| TYPE_LOCAL<sup>11+</sup>      | 0    | 本地设备，包括设备本身的内置扬声器或音频插孔、A2DP设备。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| TYPE_CAST_PLUS_STREAM<sup>11+</sup>      | 2    | Cast+的Stream模式。表示媒体正在其他设备上展示。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| TYPE_DLNA<sup>12+</sup>      | 4    | DLNA协议。表示媒体正在其他设备上展示。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
+| TYPE_CAST_PLUS_AUDIO<sup>20+</sup>      | 8    | PCM模式。表示媒体正在其他设备上展示。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 ## CastDisplayState<sup>12+</sup>
 
 投播显示设备状态的枚举。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
 
@@ -53,16 +53,16 @@
 
 | 名称             | 值           | 说明                                   |
 |----------------|-------------|--------------------------------------|
-| TYPE_CAST      | "cast"   | 调用方来自投播。                             |
-| TYPE_BLUETOOTH | "bluetooth" | 调用方来自蓝牙。                                |
-| TYPE_APP       | "app"      | 调用方来自应用。                                |
-| TYPE_NEARLINK  | "nearlink"  | 调用方来自星闪。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| TYPE_CAST      | 'cast'      | 调用方来自投播。                             |
+| TYPE_BLUETOOTH | 'bluetooth' | 调用方来自蓝牙。                                |
+| TYPE_APP       | 'app'       | 调用方来自应用。                                |
+| TYPE_NEARLINK  | 'nearlink'  | 调用方来自星闪。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ConnectionState<sup>10+</sup>
 
 连接状态枚举。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -80,7 +80,7 @@
 
 表示通话状态的枚举。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -116,7 +116,7 @@
 
 枚举，设备所支持的解码格式。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -126,15 +126,15 @@
 
 | 名称                        | 值   | 说明           |
 | --------------------------  | ---- | ------------ |
-| OH_AVCODEC_MIMETYPE_VIDEO_AVC      | "video/avc"  | VIDEO AVC  |
-| OH_AVCODEC_MIMETYPE_VIDEO_HEVC     | "video/hevc" | VIDEO HEVC  |
-| OH_AVCODEC_MIMETYPE_AUDIO_VIVID    | "audio/av3a" | AUDIO AV3A  |
+| OH_AVCODEC_MIMETYPE_VIDEO_AVC      | 'video/avc'  | VIDEO AVC格式。  |
+| OH_AVCODEC_MIMETYPE_VIDEO_HEVC     | 'video/hevc' | VIDEO HEVC格式。  |
+| OH_AVCODEC_MIMETYPE_AUDIO_VIVID    | 'audio/av3a' | AUDIO AV3A格式。  |
 
 ## ResolutionLevel<sup>19+</sup>
 
 枚举，设备所支持的分辨率。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -154,7 +154,7 @@
 
 投播的类别枚举。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -171,24 +171,23 @@
 
 播放设备的类型枚举。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |
-| DEVICE_TYPE_LOCAL      | 0    | 本地播放类型。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.Core|
-| DEVICE_TYPE_BLUETOOTH      | 10   | 蓝牙设备。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| DEVICE_TYPE_TV      | 2    | 电视。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
-| DEVICE_TYPE_SMART_SPEAKER      | 3   | 音箱设备。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DEVICE_TYPE_LOCAL      | 0    | 本地播放类型设备。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23|
+| DEVICE_TYPE_TV      | 2    | 电视设备。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| DEVICE_TYPE_SMART_SPEAKER      | 3   | 音箱设备。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| DEVICE_TYPE_CAR      | 4    | 车载设备。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| DEVICE_TYPE_PAD      | 6    | 平板设备。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| DEVICE_TYPE_DEFAULT_CAST_PLUS_STREAM      | 7    | 支持Cast+协议的默认设备。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| DEVICE_TYPE_2IN1      | 8    | PC/2in1设备。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| DEVICE_TYPE_BLUETOOTH      | 10   | 蓝牙设备。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
+| DEVICE_TYPE_HIPLAY      | 15    | HiPlay设备。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## LoopMode<sup>10+</sup>
 
 表示媒体播放循环模式的枚举。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -204,7 +203,7 @@
 
 表示媒体播放状态的枚举。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -229,71 +228,71 @@
 
 | 名称                                   | 值      | 说明                             |
 | -------------------------------------- | ------- | ------------------------------- |
-| ERR_CODE_SERVICE_EXCEPTION             | 6600101 | 会话服务端异常。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_SESSION_NOT_EXIST             | 6600102 | 会话不存在。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CONTROLLER_NOT_EXIST          | 6600103 | 会话控制器不存在。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_REMOTE_CONNECTION_ERR         | 6600104 | 远端会话连接失败。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_COMMAND_INVALID               | 6600105 | 无效会话命令。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_SESSION_INACTIVE              | 6600106 | 会话未激活。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_MESSAGE_OVERLOAD              | 6600107 | 命令&消息过载。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_DEVICE_CONNECTION_FAILED      | 6600108 | 设备连接失败。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_REMOTE_CONNECTION_NOT_EXIST   | 6600109 | 远端会话不存在。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_DESKTOP_LYRIC_NOT_ENABLED<sup>23+</sup>    | 6600110 | 应用程序的桌面歌词功能未开启。<br>**模型约束：** 此接口仅可在Stage模型下使用。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 23 |
-| ERR_CODE_DESKTOP_LYRIC_NOT_SUPPORTED<sup>23+</sup>    | 6600111 | 当前设备不支持桌面歌词功能。 <br>**模型约束：** 此接口仅可在Stage模型下使用。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 23 |
-| ERR_CODE_CAST_CONTROL_UNSPECIFIED<sup>13+</sup>    | 6611000 | 未被定义的投播错误码。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23 |
-| ERR_CODE_CAST_CONTROL_REMOTE_ERROR<sup>13+</sup>    | 6611001 | 远端播放器中发生不明错误。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23 |
-| ERR_CODE_CAST_CONTROL_BEHIND_LIVE_WINDOW<sup>13+</sup>     | 6611002 | 播放出现延迟。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_TIMEOUT<sup>13+</sup>     | 6611003 | 投播控制进程超时。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_RUNTIME_CHECK_FAILED<sup>13+</sup>      | 6611004 | 运行时检查失败。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_PLAYER_NOT_WORKING<sup>13+</sup>      | 6611100 | 跨设备数据传输被锁定。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_SEEK_MODE_UNSUPPORTED<sup>13+</sup>      | 6611101 | 不支持指定的查找模式。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_ILLEGAL_SEEK_TARGET<sup>13+</sup>      | 6611102 | 要搜索的位置超出媒体的范围，或者不支持当前搜索模式。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_PLAY_MODE_UNSUPPORTED<sup>13+</sup>      | 6611103 |  不支持指定的播放模式。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_PLAY_SPEED_UNSUPPORTED<sup>13+</sup>      | 6611104 | 不支持指定的播放速度。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DEVICE_MISSING<sup>13+</sup>      | 6611105 | 操作失败，因为媒体源设备或媒体接收器设备已被销毁。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_INVALID_PARAM<sup>13+</sup>       | 6611106 | 该参数无效。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_NO_MEMORY<sup>13+</sup>       | 6611107 | 内存分配失败。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_OPERATION_NOT_ALLOWED<sup>13+</sup>       | 6611108 | 不被允许的操作。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_UNSPECIFIED<sup>13+</sup>       | 6612000 | 未指定的输入/输出错误。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_NETWORK_CONNECTION_FAILED<sup>13+</sup>       | 6612001 | 网络连接失败。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_NETWORK_CONNECTION_TIMEOUT<sup>13+</sup>       | 6612002 | 网络连接超时。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_INVALID_HTTP_CONTENT_TYPE <sup>13+</sup>      | 6612003 | 无效的"Content-Type"。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_BAD_HTTP_STATUS<sup>13+</sup>        | 6612004 | HTTP服务器返回一个意外的HTTP响应状态码。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_FILE_NOT_FOUND<sup>13+</sup>   | 6612005 | 文件不存在。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_NO_PERMISSION<sup>13+</sup>    | 6612006 | 不允许执行输入/输出的IO操作。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_CLEARTEXT_NOT_PERMITTED<sup>13+</sup>    | 6612007 | 应用的网络安全配置不允许访问明文HTTP流量。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_READ_POSITION_OUT_OF_RANGE<sup>13+</sup>        | 6612008 | 从数据绑定中读取数据。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_NO_CONTENTS<sup>13+</sup>     | 6612100 | 媒体中没有可播放的内容。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_READ_ERROR<sup>13+</sup>        | 6612101 | 媒体无法读取。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_CONTENT_BUSY<sup>13+</sup>         | 6612102 | 该资源正在使用中。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_CONTENT_EXPIRED<sup>13+</sup>    | 6612103 | 输入/输出的IO请求内容已过期。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_USE_FORBIDDEN<sup>13+</sup>    | 6612104 | 不允许播放请求内容。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_NOT_VERIFIED<sup>13+</sup>     | 6612105 | 无法验证所允许的内容。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_EXHAUSTED_ALLOWED_USES<sup>13+</sup>     | 6612106 | 此内容已达到允许的最大使用次数。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_NETWORK_PACKET_SENDING_FAILED<sup>13+</sup>   | 6612107 | 从源设备发送数据包到接收设备时出现错误。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_PARSING_UNSPECIFIED<sup>13+</sup>    | 6613000 | 未指定的内容解析错误。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_PARSING_CONTAINER_MALFORMED<sup>13+</sup>    | 6613001 | 媒体容器比特流的格式解析错误。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_MALFORMED<sup>13+</sup>     | 6613002 | 媒体清单解析错误。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_PARSING_CONTAINER_UNSUPPORTED<sup>13+</sup>   | 6613003 | 文件的媒体容器格式/媒体容器特性不被支持。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_UNSUPPORTED<sup>13+</sup>      | 6613004 | 媒体清单中不支持的特性。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DECODING_UNSPECIFIED<sup>13+</sup>     | 6614000 | 未指定的解码错误。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DECODING_INIT_FAILED<sup>13+</sup>   | 6614001 | 解码器初始化失败。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DECODING_QUERY_FAILED<sup>13+</sup>     | 6614002 | 解码器查询失败。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DECODING_FAILED<sup>13+</sup>     | 6614003 | 媒体样本解码失败。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DECODING_FORMAT_EXCEEDS_CAPABILITIES<sup>13+</sup>    | 6614004 | 设备的能力无法解码当前格式。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DECODING_FORMAT_UNSUPPORTED<sup>13+</sup>    | 6614005 | 不支持的解码格式。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_AUDIO_RENDERER_UNSPECIFIED<sup>13+</sup>       | 6615000 | 未指定的音频渲染器错误。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_AUDIO_RENDERER_INIT_FAILED <sup>13+</sup>     | 6615001 | 音频渲染器初始化失败。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_AUDIO_RENDERER_WRITE_FAILED<sup>13+</sup>    | 6615002 | 音频渲染器写入数据失败。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DRM_UNSPECIFIED<sup>13+</sup>      | 6616000 | 未指定的DRM相关错误。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DRM_SCHEME_UNSUPPORTED<sup>13+</sup>  | 6616001 | 设备不支持所选择的DRM保护方案。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DRM_PROVISIONING_FAILED<sup>13+</sup>   | 6616002 | 设备配置失败。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DRM_CONTENT_ERROR<sup>13+</sup>  | 6616003 | 受DRM保护的内容无法播放。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DRM_LICENSE_ACQUISITION_FAILED<sup>13+</sup>    | 6616004 | 获取许可证失败。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DRM_DISALLOWED_OPERATION<sup>13+</sup>     | 6616005 | 许可证策略不允许该操作。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DRM_DEVICE_REVOKED<sup>13+</sup>     | 6616007 | 设备已撤销DRM权限。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DRM_LICENSE_EXPIRED<sup>13+</sup>   | 6616008 | 加载中的DRM许可证已过期。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_DRM_PROVIDE_KEY_RESPONSE_ERROR<sup>13+</sup>    | 6616100 | DRM处理密钥响应时发生错误。 <br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_SERVICE_EXCEPTION             | 6600101 | 会话服务端异常。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_SESSION_NOT_EXIST             | 6600102 | 会话不存在。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CONTROLLER_NOT_EXIST          | 6600103 | 会话控制器不存在。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_REMOTE_CONNECTION_ERR         | 6600104 | 远端会话连接失败。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_COMMAND_INVALID               | 6600105 | 无效会话命令。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_SESSION_INACTIVE              | 6600106 | 会话未激活。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_MESSAGE_OVERLOAD              | 6600107 | 命令&消息过载。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_DEVICE_CONNECTION_FAILED      | 6600108 | 设备连接失败。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_REMOTE_CONNECTION_NOT_EXIST   | 6600109 | 远端会话不存在。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_DESKTOP_LYRIC_NOT_ENABLED<sup>23+</sup>    | 6600110 | 应用程序的桌面歌词功能未开启。<br>**模型约束：** 此接口仅可在Stage模型下使用。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core <br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 23 |
+| ERR_CODE_DESKTOP_LYRIC_NOT_SUPPORTED<sup>23+</sup>    | 6600111 | 当前设备不支持桌面歌词功能。 <br>**模型约束：** 此接口仅可在Stage模型下使用。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core<br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 23 |
+| ERR_CODE_CAST_CONTROL_UNSPECIFIED<sup>13+</sup>    | 6611000 | 未被定义的投播错误码。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23 |
+| ERR_CODE_CAST_CONTROL_REMOTE_ERROR<sup>13+</sup>    | 6611001 | 远端播放器中发生不明错误。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23 |
+| ERR_CODE_CAST_CONTROL_BEHIND_LIVE_WINDOW<sup>13+</sup>     | 6611002 | 播放出现延迟。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_TIMEOUT<sup>13+</sup>     | 6611003 | 投播控制进程超时。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_RUNTIME_CHECK_FAILED<sup>13+</sup>      | 6611004 | 运行时检查失败。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_PLAYER_NOT_WORKING<sup>13+</sup>      | 6611100 | 跨设备数据传输被锁定。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_SEEK_MODE_UNSUPPORTED<sup>13+</sup>      | 6611101 | 不支持指定的查找模式。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_ILLEGAL_SEEK_TARGET<sup>13+</sup>      | 6611102 | 要搜索的位置超出媒体的范围，或者不支持当前搜索模式。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_PLAY_MODE_UNSUPPORTED<sup>13+</sup>      | 6611103 |  不支持指定的播放模式。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_PLAY_SPEED_UNSUPPORTED<sup>13+</sup>      | 6611104 | 不支持指定的播放速度。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DEVICE_MISSING<sup>13+</sup>      | 6611105 | 操作失败，因为媒体源设备或媒体接收器设备已被销毁。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_INVALID_PARAM<sup>13+</sup>       | 6611106 | 该参数无效。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_NO_MEMORY<sup>13+</sup>       | 6611107 | 内存分配失败。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_OPERATION_NOT_ALLOWED<sup>13+</sup>       | 6611108 | 不被允许的操作。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_UNSPECIFIED<sup>13+</sup>       | 6612000 | 未指定的输入/输出错误。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_NETWORK_CONNECTION_FAILED<sup>13+</sup>       | 6612001 | 网络连接失败。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_NETWORK_CONNECTION_TIMEOUT<sup>13+</sup>       | 6612002 | 网络连接超时。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_INVALID_HTTP_CONTENT_TYPE <sup>13+</sup>      | 6612003 | 无效的"Content-Type"。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_BAD_HTTP_STATUS<sup>13+</sup>        | 6612004 | HTTP服务器返回一个意外的HTTP响应状态码。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_FILE_NOT_FOUND<sup>13+</sup>   | 6612005 | 文件不存在。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_NO_PERMISSION<sup>13+</sup>    | 6612006 | 不允许执行输入/输出的IO操作。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_CLEARTEXT_NOT_PERMITTED<sup>13+</sup>    | 6612007 | 应用的网络安全配置不允许访问明文HTTP流量。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_READ_POSITION_OUT_OF_RANGE<sup>13+</sup>        | 6612008 | 从数据绑定中读取数据。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_NO_CONTENTS<sup>13+</sup>     | 6612100 | 媒体中没有可播放的内容。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_READ_ERROR<sup>13+</sup>        | 6612101 | 媒体无法读取。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_CONTENT_BUSY<sup>13+</sup>         | 6612102 | 该资源正在使用中。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_CONTENT_EXPIRED<sup>13+</sup>    | 6612103 | 输入/输出的IO请求内容已过期。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_USE_FORBIDDEN<sup>13+</sup>    | 6612104 | 不允许播放请求内容。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_NOT_VERIFIED<sup>13+</sup>     | 6612105 | 无法验证所允许的内容。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_EXHAUSTED_ALLOWED_USES<sup>13+</sup>     | 6612106 | 此内容已达到允许的最大使用次数。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_NETWORK_PACKET_SENDING_FAILED<sup>13+</sup>   | 6612107 | 从源设备发送数据包到接收设备时出现错误。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_PARSING_UNSPECIFIED<sup>13+</sup>    | 6613000 | 未指定的内容解析错误。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_PARSING_CONTAINER_MALFORMED<sup>13+</sup>    | 6613001 | 媒体容器比特流的格式解析错误。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_MALFORMED<sup>13+</sup>     | 6613002 | 媒体清单解析错误。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_PARSING_CONTAINER_UNSUPPORTED<sup>13+</sup>   | 6613003 | 文件的媒体容器格式/媒体容器特性不被支持。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_UNSUPPORTED<sup>13+</sup>      | 6613004 | 媒体清单中不支持的特性。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DECODING_UNSPECIFIED<sup>13+</sup>     | 6614000 | 未指定的解码错误。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DECODING_INIT_FAILED<sup>13+</sup>   | 6614001 | 解码器初始化失败。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DECODING_QUERY_FAILED<sup>13+</sup>     | 6614002 | 解码器查询失败。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DECODING_FAILED<sup>13+</sup>     | 6614003 | 媒体样本解码失败。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DECODING_FORMAT_EXCEEDS_CAPABILITIES<sup>13+</sup>    | 6614004 | 设备的能力无法解码当前格式。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DECODING_FORMAT_UNSUPPORTED<sup>13+</sup>    | 6614005 | 不支持的解码格式。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_AUDIO_RENDERER_UNSPECIFIED<sup>13+</sup>       | 6615000 | 未指定的音频渲染器错误。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_AUDIO_RENDERER_INIT_FAILED <sup>13+</sup>     | 6615001 | 音频渲染器初始化失败。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_AUDIO_RENDERER_WRITE_FAILED<sup>13+</sup>    | 6615002 | 音频渲染器写入数据失败。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DRM_UNSPECIFIED<sup>13+</sup>      | 6616000 | 未指定的DRM相关错误。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DRM_SCHEME_UNSUPPORTED<sup>13+</sup>  | 6616001 | 设备不支持所选择的DRM保护方案。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DRM_PROVISIONING_FAILED<sup>13+</sup>   | 6616002 | 设备配置失败。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DRM_CONTENT_ERROR<sup>13+</sup>  | 6616003 | 受DRM保护的内容无法播放。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DRM_LICENSE_ACQUISITION_FAILED<sup>13+</sup>    | 6616004 | 获取许可证失败。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DRM_DISALLOWED_OPERATION<sup>13+</sup>     | 6616005 | 许可证策略不允许该操作。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DRM_DEVICE_REVOKED<sup>13+</sup>     | 6616007 | 设备已撤销DRM权限。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DRM_LICENSE_EXPIRED<sup>13+</sup>   | 6616008 | 加载中的DRM许可证已过期。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_DRM_PROVIDE_KEY_RESPONSE_ERROR<sup>13+</sup>    | 6616100 | DRM处理密钥响应时发生错误。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
 
 ## SkipIntervals<sup>11+</sup>
 
@@ -328,15 +327,17 @@
 
 表示定义在不同场景中使用的额外键的枚举。 
 
+**模型约束：** 此接口仅可在Stage模型下使用。 
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **ArkTS-Dyn起始版本：** 26.0.0 
 
 **ArkTS-Sta起始版本：** 26.0.0 
 
-**模型约束：** 此接口仅可在Stage模型下使用。 
-
-**原子化服务API(仅ArkTS-Dyn)：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 
-
-| 名称                        | 值   | 说明         | 
-| --------------------------- | ---- | ----------- | 
-| DLNA_CURRENT_URI_METADATA      | "CurrentURIMetadata"    | DLNA投播场景下，用于提供与资源相关元数据的键。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast | 
-| DLNA_DIDL_LITE      | "DIDL-Lite"    | DLNA投播场景下，用于在传输中描述内容元数据的键。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| 名称                        | 值   | 说明         |
+| --------------------------- | ---- | ----------- |
+| REQUIRE_ABILITY_LIST      | 'requireAbilityList'    | 作为[setExtras](arkts-apis-avsession-AVSession.md#setextras10)接口传入的键，用于向系统设置应用所需的能力列表。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| SUPPORT_URL_CASTING      | 'url-cast'    | 作为[setExtras](arkts-apis-avsession-AVSession.md#setextras10)接口，给REQUIRE_ABILITY_LIST键传入能力列表的值，用于通知系统当前应用支持URL投播功能。<br>[setExtras](arkts-apis-avsession-AVSession.md#setextras10)接口传入入参`{[avSession.ExtraKey.REQUIRE_ABILITY_LIST]: [avSession.ExtraKey.SUPPORT_URL_CASTING]}`表示当前应用支持投播功能。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DLNA_CURRENT_URI_METADATA      | 'CurrentURIMetadata'    | [AVMediaDescription](arkts-apis-avsession-i.md#avmediadescription10)中extras属性可传入的键，值传入string类型。<br>用于DLNA投播场景下，在发送给对端的报文中，为CurrentURIMetaData标签添加内容。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DLNA_DIDL_LITE      | 'DIDL-Lite'    | [AVMediaDescription](arkts-apis-avsession-i.md#avmediadescription10)中extras属性可传入的键，值传入string类型。<br>用于DLNA投播场景下，在发送给对端的报文中，为DIDL-Lite标签添加内容。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |

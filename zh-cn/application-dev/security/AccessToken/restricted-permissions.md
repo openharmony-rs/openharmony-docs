@@ -13,7 +13,7 @@
 
 以下权限的开放范围为普通应用，但需要通过[访问控制列表（ACL）](app-permission-mgmt-overview.md#权限机制中的基本概念)的方式跨级别申请。
 
-normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
+normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
 
 **修改方式：**
 
@@ -1144,7 +1144,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | PC/2in1 | Tablet | Car
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：26.0.0
 

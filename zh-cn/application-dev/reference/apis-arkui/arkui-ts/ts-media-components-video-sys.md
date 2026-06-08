@@ -1,8 +1,8 @@
 # Video (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @qianpinyi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -27,6 +27,8 @@ ArkTS-Sta: surfaceBackgroundColor(color: ColorMetrics | undefined)
 设置Video组件中surfaceNode的背景色。
 
 **系统接口：** 此接口为系统接口
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

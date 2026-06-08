@@ -1,9 +1,9 @@
 # FormMenu
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 The **FormMenu** component encapsulates an **Add to home screen** menu, which allows users to long-press a component in the application to add it to their home screen for direct access. During application usage, this component acts as a portal for retention and re-engagement, encouraging users to conveniently add features to their home screen.
 
@@ -223,10 +223,10 @@ struct WidgetCard {
 
 **UI of the FormMenu component**
 
-![en-us_image_0000001616959836](figures/en-us_image_add_form_to_desktop.jpeg)
+![en-us_image_0000001616959836](figures/add-form-to-desktop.jpeg)
 
 **Result of using Add to home screen with the FormMenu component**
 
 The figure below shows the results when **formbindingdata** is empty (left), and when it is set to **{ data: 'share' }** (right).
 
-![en-us_image_0000001616959836](figures/en-us_image_add_form_to_desktop_result.jpeg)
+![en-us_image_0000001616959836](figures/add-form-to-desktop-result.jpeg)

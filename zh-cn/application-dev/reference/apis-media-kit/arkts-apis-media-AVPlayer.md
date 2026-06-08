@@ -31,7 +31,7 @@ import { media } from '@kit.MediaKit';
 
 | 名称                                                | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| url<sup>9+</sup>                                    | string                                                       | 否   | 是   | 媒体URL，只允许在**idle**状态下设置。<br/>支持的视频格式：mp4、mpeg-ts、mkv。<br>支持的音频格式：m4a、aac、mp3、ogg、wav、flac、amr、ape。<br/>**支持路径示例**：<br>1. fd类型播放：fd://xx。<br>![](figures/zh-cn_image_url.png)<br>2. http网络播放：`http\://xx`。<br/>3. https网络播放：`https\://xx`。<br/>4. HLS网络播放路径：`http\://xx`或者`https\://xx`。<br>**说明：**<br>- 设置网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 权限校验失败](../errorcode-universal.md#201-权限校验失败)。<br>- 从API version 11开始不支持webm。<br> - 将资源句柄（fd）传递给AVPlayer实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致媒体播放器数据获取异常。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| url<sup>9+</sup>                                    | string                                                       | 否   | 是   | 媒体URL，只允许在**idle**状态下设置。<br/>支持的视频格式：mp4、mpeg-ts、mkv。<br>支持的音频格式：m4a、aac、mp3、ogg、wav、flac、amr、ape。<br/>**支持路径示例**：<br>1. fd类型播放：fd://xx。<br>![](figures/image-url.png)<br>2. http网络播放：`http\://xx`。<br/>3. https网络播放：`https\://xx`。<br/>4. HLS网络播放路径：`http\://xx`或者`https\://xx`。<br>**说明：**<br>- 设置网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 权限校验失败](../errorcode-universal.md#201-权限校验失败)。<br>- 从API version 11开始不支持webm。<br> - 将资源句柄（fd）传递给AVPlayer实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致媒体播放器数据获取异常。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | fdSrc<sup>9+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | 否   | 是   | 媒体文件描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用中的媒体资源被连续存储在同一个文件中。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设一个连续存储的媒体文件：<br/>视频1（地址偏移：0，字节长度:100）；<br/>视频2（地址偏移：101，字节长度：50）；<br/>视频3（地址偏移：151，字节长度：150）；<br/>1. 播放视频1：AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br/>2. 播放视频2：AVFileDescriptor { fd = 资源句柄; offset = 101; length = 50; }。<br/>3. 播放视频3：AVFileDescriptor { fd = 资源句柄; offset = 151; length = 150; }。<br/>假设是一个独立的媒体文件: 请使用src=fd://xx。<br>**说明：**<br>从API version 11开始不支持webm。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | dataSrc<sup>10+</sup>                               | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10)                | 否   | 是   | 流式媒体资源描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用播放从远端下载到本地的文件，在应用未下载完整音视频资源时，提前播放已获取的资源数据。若将已获取的资源数据写入到本地文件中，同时从本地文件中读取数据，即可实现边播边缓存的能力。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设用户正在从远端服务器获取音视频媒体文件，希望下载到本地的同时播放已经下载好的部分：<br/>1.用户需要获取媒体文件的总大小size（单位为字节），获取不到时设置为-1。<br/>2.用户需要实现回调函数func用于填写数据，如果size = -1，则func形式为：func(buffer: ArrayBuffer, length: number)，此时播放器只会按照顺序获取数据；否则func形式为：func(buffer: ArrayBuffer, length: number, pos: number)，播放器会按需跳转并获取数据。<br/>3.用户设置AVDataSrcDescriptor {fileSize = size, callback = func}。<br/>**注意事项**：<br/>如果播放的是mp4/m4a格式用户需要保证moov字段（媒体信息字段）在mdat字段（媒体数据字段）之前，或者moov之前的字段小于10M，否则会导致解析失败无法播放。<br>**说明：**<br>从API version 11开始不支持webm。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | surfaceId<sup>9+</sup>                              | string                                                       | 否   | 是   | 视频窗口ID，默认无窗口。<br/>仅支持在**initialized**状态下初始化。<br/>初始化后可以在**prepared**/**playing**/**paused**/**completed**/**stopped**状态下重新设置，重新设置后视频播放将在新的窗口渲染。<br/>使用场景：视频播放时的窗口渲染（纯音频播放时不涉及）。<br/>**使用示例**：<br/>通过[getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)接口创建surfaceId。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -45,7 +45,8 @@ import { media } from '@kit.MediaKit';
 | duration<sup>9+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int                                                       | 是   | 否   | 视频时长，单位为毫秒（ms），可查询参数。<br/>返回为（-1）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回（-1）。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | width<sup>9+</sup>                                  | ArkTS-Dyn: number<br>ArkTS-Sta: int                                                       | 是   | 否   | 视频宽，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | height<sup>9+</sup>                                 | ArkTS-Dyn: number<br>ArkTS-Sta: int                                                       | 是   | 否   | 视频高，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| playlistLoopMode                      | [playlistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | 否   | 是   | 在播放媒体列表时，设置循环模式。默认值为PLAYLIST_LOOP_MODE_ALL，表示循环播放列表中的所有项目。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| playlistLoopMode                      | [PlaylistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | 否   | 是   | 在播放媒体列表时，设置循环模式。默认值为PLAYLIST_LOOP_MODE_ALL，表示循环播放列表中的所有项目。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| privacyType | [audio.AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10) | 否   | 是   | 音频隐私配置。详细信息请参阅[audio.AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10)。<br>默认值为PRIVACY_TYPE_PUBLIC。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## on('stateChange')<sup>9+</sup>
 
@@ -239,7 +240,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError()](#onerror23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -343,7 +344,7 @@ onError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[onerror](#onerror9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -357,7 +358,7 @@ onError(callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 在API version 9-13，针对网络、服务器等数据流异常，接口上报5400103；从API version 14开始，对应错误细化为错误码5411001-5411011。
 
@@ -404,7 +405,7 @@ offError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[offerror](#offerror9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -840,7 +841,7 @@ advanceToNextMediaSource(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -889,7 +890,7 @@ advanceToPrevMediaSource(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -935,9 +936,9 @@ advanceToMediaSource(id: string): Promise\<void>
 
 **参数：**
 
-| 参数名 | 类型   | 说明                                       |
-| ------ | ------ | ------------------------------------------ |
-| id    | string | 指定媒体源的唯一标识符ID。 |
+| 参数名 | 类型 | 必填  | 说明                                       |
+| ------ | ------ | ---- | ------------------------------------------ |
+| id    | string | 是 | 指定媒体源的唯一标识符ID。 |
 
 **返回值：**
 
@@ -947,7 +948,7 @@ advanceToMediaSource(id: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2490,7 +2491,7 @@ onSpeedDone(callback: Callback\<int>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('seedDone')](#onspeeddone9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('speedDone')](#onspeeddone9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2542,7 +2543,7 @@ ArkTS-Dyn: setPlaybackRate(rate: number): void
 
 ArkTS-Sta: setPlaybackRate(rate: double): void
 
-设置倍速模式。只能在prepared/playing/paused/completed状态调用，取值范围是[0.125, 4.0]，可以通过[playbackRateDone](#onplaybackratedone20)事件确认是否生效。
+设置倍速模式。只能在'prepared' | 'playing' | 'paused' | 'completed'状态下调用，在API版本26.0.0及以上的取值范围是[0.125, 8.0]，API版本26.0.0以下的取值范围是[0.125, 4.0]，可以通过[playbackRateDone](#onplaybackratedone20)事件确认是否生效。
 
 > **注意：**
 >
@@ -2560,7 +2561,7 @@ ArkTS-Sta: setPlaybackRate(rate: double): void
 
 | 参数名 | 类型                             | 必填 | 说明               |
 | ------ | -------------------------------- | ---- | ------------------ |
-| rate  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 指定播放倍速速率。 |
+| rate  | number | 是   | 指定播放倍速速率，在API版本26.0.0及以上的取值范围是[0.125, 8.0]，API版本26.0.0以下的取值范围是[0.125, 4.0]。 |
 
 **错误码：**
 
@@ -4208,7 +4209,7 @@ on(type: 'audioInterrupt', callback: Callback\<audio.InterruptEvent>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioInterrupt)](#onaudiointerrupt23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioInterrupt()](#onaudiointerrupt23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4245,7 +4246,7 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioInterrupt)](#offaudiointerrupt23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioInterrupt](#offaudiointerrupt23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4280,7 +4281,7 @@ onVideoSizeChange(callback: OnVideoSizeChangeHandler): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onVideoSizeChange')](#onvideosizechange9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('videoSizeChange')](#onvideosizechange9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4439,7 +4440,7 @@ off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStr
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioOutputDeviceChangeWithInfo)](#offaudiooutputdevicechangewithinfo23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offaudiooutputdevicechangewithinfo23](#offaudiooutputdevicechangewithinfo23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4578,7 +4579,7 @@ on(type: 'subtitleUpdate', callback: Callback\<SubtitleInfo>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubtitleUpdate)](#onsubtitleupdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onsubtitleupdate](#onsubtitleupdate23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4620,7 +4621,7 @@ off(type: 'subtitleUpdate', callback?: Callback\<SubtitleInfo>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubtitleUpdate](#onsubtitleupdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onsubtitleupdate23](#onsubtitleupdate23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4861,7 +4862,7 @@ on(type: 'seiMessageReceived', payloadTypes: Array\<number>, callback: OnSeiMess
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSeiMessageReceived)](#onseimessagereceived23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onseimessagereceived23](#onseimessagereceived23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4911,7 +4912,7 @@ off(type: 'seiMessageReceived', payloadTypes?: Array\<number>, callback?: OnSeiM
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSeiMessageReceived)](#onseimessagereceived23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onseimessagereceived](#onseimessagereceived23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -5266,7 +5267,7 @@ onTrackChange(callback: OnTrackChangeHandler): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('trackChange')](#ontrackchange12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('trackChange')](#ontrackchange12)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -5384,7 +5385,7 @@ onAmplitudeUpdate(callback: Callback\<Array\<double>>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('amplitudeUpdate')](#onamplitudeupdate13)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('amplitudeUpdate')](#onamplitudeupdate13)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -5792,5 +5793,59 @@ offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.offTimedMetaData();
+}
+```
+
+### getCurrentTrack
+
+getCurrentTrack(trackType: MediaType): Promise\<number>
+
+获取指定媒体类型的选定轨道。使用Promise异步回调。
+
+只有当AVPlayer处于prepared、playing或者paused状态时，才能调用该接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| trackType | [MediaType](arkts-apis-media-e.md#mediatype8)| 是   | 媒体类型枚举。<br>仅支持获取MEDIA_TYPE_AUD、MEDIA_TYPE_VID。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<number> | Promise对象，返回指定媒体类型选中轨道的索引值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400101  | No memory. Return by promise.|
+| 5400102  | Operation not allowed. Return by promise.|
+| 5400103  | I/O error. Return by promise.|
+| 5400105  | Service died. Return by promise.|
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
+  let myTrackId : number;
+  let trackType: media.MediaType = media.MediaType.MEDIA_TYPE_AUD;
+  avPlayer.getCurrentTrack(trackType).then((trackId: number) => {
+    console.info('Succeeded in getting CurrentTrack');
+    myTrackId = trackId;
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get CurrentTrack, error: ${error}`);
+  });
 }
 ```

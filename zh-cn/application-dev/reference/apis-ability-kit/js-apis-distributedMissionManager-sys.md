@@ -43,8 +43,8 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, 
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo) | 是    | 注册监听时的设备信息。 |
-| options   | [MissionCallback](#missioncallback)     | 是    | 注册的回调方法。 |
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 注册监听时的设备信息。 |
+| options   | [MissionCallback](#missioncallback10)     | 是    | 注册的回调方法。 |
 | callback  | AsyncCallback&lt;void&gt;               | 是    | 回调函数，注册监听成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -159,8 +159,8 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo)  | 是    | 注册监听时的设备信息。   |
-| options   | <a href="#missioncallback">MissionCallback</a> | 是    | 注册的回调方法。|
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10)  | 是    | 注册监听时的设备信息。   |
+| options   | <a href="#missioncallback10">MissionCallback</a> | 是    | 注册的回调方法。|
 
 **返回值：**
 
@@ -245,7 +245,7 @@ try {
     deviceId,
     parm).then(() => {
     console.info('registerMissionListener finished. ');
-  }).catch((error: BusinessError) :void=> {
+  }).catch((error) :void=> {
     console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
   })
 } catch (error) {
@@ -273,7 +273,7 @@ unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo) | 是    | 注册监听时的设备信息。    |
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 注册监听时的设备信息。    |
 | callback  | AsyncCallback&lt;void&gt;               | 是    | 回调函数，取消监听成功，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -349,7 +349,7 @@ unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo) | 是    | 注册监听时的设备信息。 |
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 注册监听时的设备信息。 |
 
 **返回值：**
 
@@ -422,7 +422,7 @@ startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;
 
 | 参数名       | 类型                                    | 必填   | 说明        |
 | --------- | ------------------------------------- | ---- | --------- |
-| parameter | [MissionParameter](#missionparameter) | 是    | 同步信息。     |
+| parameter | [MissionParameter](#missionparameter10) | 是    | 同步信息。     |
 | callback  | AsyncCallback&lt;void&gt;             | 是    | 回调函数，同步远端任务列表成功时，err为undefined，否则返回错误对象。 |
 
 **错误码：**
@@ -506,7 +506,7 @@ startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| parameter | [MissionParameter](#missionparameter) | 是    | 同步信息。 |
+| parameter | [MissionParameter](#missionparameter10) | 是    | 同步信息。 |
 
 **返回值：**
 
@@ -588,7 +588,7 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo) | 是    | 同步信息。     |
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 同步信息。     |
 | callback  | AsyncCallback&lt;void&gt;               | 是    | 回调函数，停止同步远端任务列表成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -666,7 +666,7 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo) | 是    | 同步信息。 |
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 同步信息。 |
 
 **返回值：**
 
@@ -1129,7 +1129,7 @@ try {
 }
 ```
 
-## distributedMissionManager.on('continueStateChange')<sup>11+</sup>
+## distributedMissionManager.on('continueStateChange')<sup>10+</sup>
 
 on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;): void
 
@@ -1192,7 +1192,7 @@ try {
 }
 ```
 
-## distributedMissionManager.off('continueStateChange')<sup>11+</sup>
+## distributedMissionManager.off('continueStateChange')<sup>10+</sup>
 
 off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt;): void
 
@@ -1257,7 +1257,7 @@ try {
 
 ```
 
-## MissionCallback
+## MissionCallback<sup>10+</sup>
 
 type MissionCallback = _MissionCallback
 
@@ -1271,7 +1271,7 @@ type MissionCallback = _MissionCallback
 | --- | --- |
 | [_MissionCallback](js-apis-inner-application-missionCallbacks-sys.md) | 作为可以registerMissionListener的入参，表示开始同步后，建立的回调函数。 |
 
-## MissionParameter
+## MissionParameter<sup>10+</sup>
 
 type MissionParameter = _MissionParameter
 
@@ -1285,7 +1285,7 @@ type MissionParameter = _MissionParameter
 | --- | --- |
 | [_MissionParameter](js-apis-inner-application-missionParameter-sys.md) | 作为startSyncRemoteMissions的入参，表示同步时所需参数的枚举。 |
 
-## MissionDeviceInfo
+## MissionDeviceInfo<sup>10+</sup>
 
 type MissionDeviceInfo = _MissionDeviceInfo
 

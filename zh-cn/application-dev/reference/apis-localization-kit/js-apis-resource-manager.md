@@ -477,7 +477,7 @@ getStringSync(resId: number): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -785,7 +785,7 @@ ArkTS-Sta: getStringValue(resId: long, callback: _AsyncCallback&lt;string&gt;): 
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.             |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.         |
@@ -890,7 +890,7 @@ ArkTS-Sta: getStringValue(resId: long): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -1186,7 +1186,7 @@ ArkTS-Sta: getStringArrayValueSync(resId: long): Array&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -1354,7 +1354,7 @@ ArkTS-Sta: getStringArrayValue(resId: long, callback: _AsyncCallback&lt;Array&lt
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -1467,7 +1467,7 @@ ArkTS-Sta: getStringArrayValue(resId: long): Promise&lt;Array&lt;string&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -2202,7 +2202,7 @@ ArkTS-Sta: getMediaContentSync(resId: long, density?: int): Uint8Array
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2300,7 +2300,7 @@ ArkTS-Sta: getMediaByNameSync(resName: string, density?: int): Uint8Array
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                       |
 | 9001004  | No matching resource is found based on the resource name.         |
 
@@ -2361,7 +2361,7 @@ ArkTS-Sta: getMediaContent(resId: long, callback: _AsyncCallback&lt;Uint8Array&g
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.              | 
+| 401 | Parameter error. Possible causes: Incorrect parameter types.              | 
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2450,7 +2450,7 @@ ArkTS-Sta: getMediaContent(resId: long, density: int, callback: _AsyncCallback&l
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2541,7 +2541,7 @@ ArkTS-Sta: getMediaContent(resId: long): Promise&lt;Uint8Array&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2629,7 +2629,7 @@ ArkTS-Sta: getMediaContent(resId: long, density: int): Promise&lt;Uint8Array&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -2795,7 +2795,7 @@ ArkTS-Sta: getMediaByName(resName: string, density: int, callback: _AsyncCallbac
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -2970,7 +2970,7 @@ ArkTS-Sta: getMediaByName(resName: string, density: int): Promise&lt;Uint8Array&
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -3057,7 +3057,7 @@ ArkTS-Sta: getMediaContentBase64Sync(resId: long, density?: int): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -3155,7 +3155,7 @@ ArkTS-Sta: getMediaBase64ByNameSync(resName: string, density?: int): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                       |
 | 9001004  | No matching resource is found based on the resource name.         |
 
@@ -3216,7 +3216,7 @@ ArkTS-Sta: getMediaContentBase64(resId: long, callback: _AsyncCallback&lt;string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -3303,7 +3303,7 @@ ArkTS-Sta: getMediaContentBase64(resId: long, density: int, callback: _AsyncCall
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -3394,7 +3394,7 @@ ArkTS-Sta: getMediaContentBase64(resId: long): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -3482,7 +3482,7 @@ ArkTS-Sta: getMediaContentBase64(resId: long, density: int): Promise&lt;string&g
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -3626,10 +3626,6 @@ ArkTS-Sta: getMediaBase64ByName(resName: string, density: int, callback: _AsyncC
 
 获取指定资源名称对应的指定屏幕密度图片资源Base64编码，使用callback异步回调。
 
-> **说明：**
->
-> 推荐使用[getMediaBase64ByName](#getmediacontentbase6410)或[getMediaContentBase64](#getmediacontentbase6410)接口，具体请参考[ResourceManager](#resourcemanager)的说明。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
@@ -3652,7 +3648,7 @@ ArkTS-Sta: getMediaBase64ByName(resName: string, density: int, callback: _AsyncC
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -3827,7 +3823,7 @@ ArkTS-Sta: getMediaBase64ByName(resName: string, density: int): Promise&lt;strin
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -3915,7 +3911,7 @@ ArkTS-Sta: getDrawableDescriptor(resId: long, density?: int, type?: int): Drawab
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 
@@ -4029,7 +4025,7 @@ ArkTS-Sta: getDrawableDescriptorByName(resName: string, density?: int, type?: in
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
+| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 
@@ -4103,7 +4099,7 @@ ArkTS-Sta: getBoolean(resId: long): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -4260,7 +4256,7 @@ getNumber(resId: number): number
 
 | 类型     | 说明         |
 | ------ | ---------- | 
-| number | 资源ID值对应的数值。<br>如果为integer.json资源，则返回原数值。如果为float.json资源，数值不带单位时返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
+| number | 资源ID值对应的数值。<br>如果为integer.json资源，则返回原数值。如果为float.json资源，数值不带单位时返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，densityPixels可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
 
 **错误码：**
 
@@ -4268,7 +4264,7 @@ getNumber(resId: number): number
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -4428,7 +4424,7 @@ getDouble(resId: long): double
 
 | 类型     | 说明         |
 | ------ | ---------- | 
-| double | 资源ID值对应的数值，数值不带单位时，返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
+| double | 资源ID值对应的数值，数值不带单位时，返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，densityPixels可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
 
 **错误码：**
 
@@ -4502,7 +4498,7 @@ getNumberByName(resName: string): number
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 资源名称对应的数值。<br>如果为integer.json资源，则返回原数值。如果为float.json资源，数值不带单位时返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
+| number | 资源名称对应的数值。<br>如果为integer.json资源，则返回原数值。如果为float.json资源，数值不带单位时返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，densityPixels可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
 
 **错误码：**
 
@@ -4510,7 +4506,7 @@ getNumberByName(resName: string): number
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -4669,7 +4665,7 @@ getDoubleByName(resName: string): double
 
 | 类型     | 说明        |
 | ------ | --------- |
-| double | 资源ID值对应的数值，数值不带单位时，返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，[densityPixels](../apis-arkui/js-apis-display.md#display)可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
+| double | 资源ID值对应的数值，数值不带单位时，返回原数值，数值带"vp"、"fp"单位时返回像素值，像素值等于原数值 * densityPixels，densityPixels可以通过[display.getDefaultDisplaySync()](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9).densityPixels获取，具体参考示例。 |
 
 **错误码：**
 
@@ -4751,7 +4747,7 @@ ArkTS-Sta: getColorSync(resId: long) : long
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -4846,7 +4842,7 @@ ArkTS-Sta: getColorByNameSync(resName: string) : long
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -4913,7 +4909,7 @@ ArkTS-Sta: getColor(resId: long, callback: _AsyncCallback&lt;long&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.              |
 | 9001001  | Invalid resource ID.             |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.         |
@@ -5018,7 +5014,7 @@ ArkTS-Sta: getColor(resId: long): Promise&lt;long&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5118,7 +5114,7 @@ ArkTS-Sta: getColorByName(resName: string, callback: _AsyncCallback&lt;long&gt;)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -5222,7 +5218,7 @@ ArkTS-Sta: getColorByName(resName: string): Promise&lt;long&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.              |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -6784,7 +6780,7 @@ ArkTS-Sta: getSymbol(resId: long): long
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001001  | Invalid resource ID.                       |
 | 9001002  | No matching resource is found based on the resource ID.         |
 | 9001006  | The resource is referenced cyclically.            |
@@ -6868,7 +6864,7 @@ ArkTS-Sta: getSymbolByName(resName: string): long
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | If the input parameter invalid. Possible causes: Incorrect parameter types.               |
+| 401 | Parameter error. Possible causes: Incorrect parameter types.               |
 | 9001003  | Invalid resource name.                     |
 | 9001004  | No matching resource is found based on the resource name.       |
 | 9001006  | The resource is referenced cyclically.            |
@@ -9082,7 +9078,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | If the input parameter invalid. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: Incorrect parameter types. |
 | 9001001  | Invalid resource ID.                                         |
 | 9001002  | No matching resource is found based on the resource ID.      |
 | 9001006  | The resource is referenced cyclically.                       |

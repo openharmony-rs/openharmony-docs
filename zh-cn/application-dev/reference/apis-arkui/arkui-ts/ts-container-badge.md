@@ -38,15 +38,15 @@ Badge(value: BadgeParamWithNumber)
 
 根据数字创建标记组件。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[badge](#badge23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[badge](#badge23)。
 
 **ArkTS-Dyn起始版本：** 7
 
@@ -62,15 +62,15 @@ Badge(value: BadgeParamWithString)
 
 根据字符串创建标记组件。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[badge](#badge23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[badge](#badge23)。
 
 **ArkTS-Dyn起始版本：** 7
 
@@ -92,7 +92,7 @@ Badge(value: BadgeParamWithNumber | BadgeParamWithString)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[badge](#badge-1)和[badge](#badge-2)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[badge](#badge-1)和[badge](#badge-2)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -106,9 +106,9 @@ Badge(value: BadgeParamWithNumber | BadgeParamWithString)
 
 包含用于创建Badge组件的基础参数。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,9 +126,9 @@ Badge(value: BadgeParamWithNumber | BadgeParamWithString)
 
 BadgeParamWithNumber继承自[BadgeParam](#badgeparam对象说明)，具有BadgeParam的全部属性。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,9 +145,9 @@ BadgeParamWithNumber继承自[BadgeParam](#badgeparam对象说明)，具有Badge
 
 BadgeParamWithString继承自[BadgeParam](#badgeparam对象说明)，具有BadgeParam的全部属性。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,9 +163,9 @@ BadgeParamWithString继承自[BadgeParam](#badgeparam对象说明)，具有Badge
 
 提示点显示位置。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -187,16 +187,16 @@ Badge的样式。包括文本颜色、尺寸、字重、圆点颜色和尺寸。
 
 | 名称                      | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| color                     | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | 文本颜色。<br/>默认值：Color.White<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| fontSize                  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) <br> ArkTS-Sta: double&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)                                   | 否   | 是   | 文本大小。string类型仅支持number类型取值的字符串形式，可以附带单位，支持的单位有"px"、"vp"、"fp"、"lpx"，例如"10"、"10fp"，不附带单位时默认单位为"fp"。<br/>默认值：10vp<br/>取值范围：大于0；取值为0时不显示文本，取值小于0时取默认值。<br/>**说明：** <br/>不支持设置百分比，当设置为百分比时，按照默认值处理。从API version 20开始，支持ResourceStr类型。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| badgeSize                 | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) <br> ArkTS-Sta: double&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)                                   | 否   | 是   | Badge的大小。string类型支持number类型取值的字符串形式，可以附带单位，例如"16"、"16vp"。<br/>默认值：16<br/>单位：vp<br/>取值范围：大于0；取值为0时不显示Badge，取值小于0时取默认值。<br/>**说明：** <br/>1. 不支持设置百分比，当设置为百分比时，按照默认值处理。<br/>2. 从API version 20开始，支持ResourceStr类型。<br/>3. 当设置了fontSize且badgeSize小于fontSize时，badgeSize将按照fontSize生效。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| badgeColor                | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | Badge的颜色。<br/>默认值：Color.Red<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| fontWeight<sup>10+</sup>  | ArkTS-Dyn: number \|[FontWeight](ts-appendix-enums.md#fontweight) \|&nbsp;[ResourceStr](ts-types.md#resourcestr) <br> ArkTS-Sta: int \|[FontWeight](ts-appendix-enums.md#fontweight) \|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 设置文本的字体粗细。number类型取值范围：[100, 900]，取值间隔为100。取值越大，字体越粗。设置number类型在取值范围外时，按默认值400处理。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal<br/>**说明：** <br/>不支持设置百分比，当设置为百分比时，按照默认值处理。从API version 20开始，支持ResourceStr类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| borderColor<sup>10+</sup> | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | 底板描边颜色。<br/>默认值：Color.Red<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                       |
-| borderWidth<sup>10+</sup> | [Length](ts-types.md#length)                                 | 否   | 是   | 底板描边粗细。<br/>默认值：1<br/>单位：vp<br/>**说明：** <br/>不支持设置百分比，当设置为百分比时，按照默认值处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
-| outerBorderColor<sup>22+</sup> | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | 底板外描边颜色。<br/>默认值：Color.White<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
-| outerBorderWidth<sup>22+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)                   | 否   | 是   | 底板外描边粗细。<br/>默认值：0<br/>单位：vp<br/>不支持设置百分比，当设置为百分比时，按照默认值处理。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
-| enableAutoAvoidance<sup>22+</sup> | boolean                                 | 否   | 是   | 增加角标文本延伸显示时是否避让。<br/>true表示避让，false表示不避让。<br/>默认值：true<br/> **说明：** <br/>1. 避让效果为角标文本向组件内部延伸显示。<br/>2. 当外描边的宽度大于0时，角标的延伸起点为外描边的内侧。<br/>3. 当position设置为具体坐标值时，角标不进行避让处理。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
+| color                     | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | 文本颜色。<br/>默认值：Color.White<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| fontSize                  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) <br> ArkTS-Sta: double&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)                                   | 否   | 是   | 文本大小。string类型仅支持number类型取值的字符串形式，可以附带单位，支持的单位有"px"、"vp"、"fp"、"lpx"，例如"10"、"10fp"，不附带单位时默认单位为"fp"。<br/>默认值：10vp<br/>取值范围：大于0；取值为0时不显示文本，取值小于0时取默认值。<br/>**说明：** <br/>不支持设置百分比，当设置为百分比时，按照默认值处理。从API version 20开始，支持ResourceStr类型。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| badgeSize                 | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) <br> ArkTS-Sta: double&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)                                   | 否   | 是   | Badge的大小。string类型支持number类型取值的字符串形式，可以附带单位，例如"16"、"16vp"。<br/>默认值：16<br/>单位：vp<br/>取值范围：大于0；取值为0时不显示Badge，取值小于0时取默认值。<br/>**说明：** <br/>1. 不支持设置百分比，当设置为百分比时，按照默认值处理。<br/>2. 从API version 20开始，支持ResourceStr类型。<br/>3. 当设置了fontSize且badgeSize小于fontSize时，badgeSize将按照fontSize生效。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| badgeColor                | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | Badge的颜色。<br/>默认值：Color.Red<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| fontWeight<sup>10+</sup>  | ArkTS-Dyn: number \|[FontWeight](ts-appendix-enums.md#fontweight) \|&nbsp;[ResourceStr](ts-types.md#resourcestr) <br> ArkTS-Sta: int \|[FontWeight](ts-appendix-enums.md#fontweight) \|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 设置文本的字体粗细。number类型取值范围：[100, 900]，取值间隔为100。取值越大，字体越粗。设置number类型在取值范围外时，按默认值400处理。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal<br/>**说明：** <br/>不支持设置百分比，当设置为百分比时，按照默认值处理。从API version 20开始，支持ResourceStr类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| borderColor<sup>10+</sup> | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | 底板描边颜色。<br/>默认值：Color.Red<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                       |
+| borderWidth<sup>10+</sup> | [Length](ts-types.md#length)                                 | 否   | 是   | 底板描边粗细。<br/>默认值：1<br/>单位：vp<br/>**说明：** <br/>不支持设置百分比，当设置为百分比时，按照默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
+| outerBorderColor<sup>22+</sup> | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | 底板外描边颜色。<br/>默认值：Color.White<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
+| outerBorderWidth<sup>22+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)                   | 否   | 是   | 底板外描边粗细。<br/>默认值：0<br/>单位：vp<br/>不支持设置百分比，当设置为百分比时，按照默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
+| enableAutoAvoidance<sup>22+</sup> | boolean                                 | 否   | 是   | 增加角标文本延伸显示时是否避让。<br/>true表示避让，false表示不避让。<br/>默认值：true<br/> **说明：** <br/>1. 避让效果为角标文本向组件内部延伸显示。<br/>2. 当外描边的宽度大于0时，角标的延伸起点为外描边的内侧。<br/>3. 当position设置为具体坐标值时，角标不进行避让处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
 
 > **说明：**
 > 当`borderWidth`大于0且`borderColor`与`badgeColor`颜色不一致时，先绘制角标，再绘制描边。由于边缘像素经过抗锯齿处理，抗锯齿产生半透明像素，四角会出现 `badgeColor` 颜色的描边线。如需实现相关场景，建议使用[Text](ts-basic-components-text.md)组件设置[outline](ts-universal-attributes-outline.md#outline)代替Badge组件。
@@ -204,6 +204,26 @@ Badge的样式。包括文本颜色、尺寸、字重、圆点颜色和尺寸。
 ## 属性
 
 支持[通用属性](ts-component-general-attributes.md)。
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<BadgeAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<BadgeAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Badge组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ## 事件
 
@@ -213,7 +233,7 @@ Badge的样式。包括文本颜色、尺寸、字重、圆点颜色和尺寸。
 
 ### 示例1（设置标记组件内容）
 
-该示例通过[BadgeParamWithNumber](#badgeparamwithnumber对象说明)的入参value、[BadgeParamWithString](#badgeparamwithstring对象说明)的入参count，实现了传入空值、字符、数字时标记组件展现不同的效果。
+该示例通过[BadgeParamWithNumber](#badgeparamwithnumber对象说明)的入参count、[BadgeParamWithString](#badgeparamwithstring对象说明)的入参value，实现了传入空值、字符、数字时标记组件展现不同的效果。
 
 ```ts
 // xxx.ets

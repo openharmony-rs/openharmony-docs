@@ -1,7 +1,7 @@
 # Interface (ConcatArray)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -57,11 +57,10 @@ readonly &#91;index: number&#93;: T
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                             |
 | ------- | ------------------------------------ |
-| 401 |  Parameter error. Illegal index.         |
 | 10200001 | The value of index is out of range. |
 
 **示例：**
@@ -93,14 +92,6 @@ join(separator?: string): string
 | ------ | ------------------------------------------------------------ |
 | string | 包含所有ConcatArray元素连接成的字符串。如果ConcatArray为空，则返回空字符串。 |
 
-**错误码**：
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------- |
-| 401 |  Parameter error. Invalid separator. |
-
 **示例：**
 
 ```ts
@@ -129,14 +120,6 @@ slice(start?: number, end?: number): ConcatArray\<T>
 | 类型      | 说明                       |
 | --------- | -------------------------- |
 | ConcatArray\<T> | 包含原始ConcatArray切片的新ConcatArray。 |
-
-**错误码**：
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------- |
-| 401 |  Parameter error. Invalid \`start\` or \`end\` parameters. |
 
 **示例：**
 

@@ -1,8 +1,8 @@
 # Interfaces (其他)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -18,11 +18,11 @@
 
 | 名称         | 类型                                               | 只读 | 可选 | 说明               |
 | ------------ | ------------------------------------------------- | ---- |---| ------------------ |
-| samplingRate | [AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8)          | 否 | 否 | 音频文件的采样率。 |
-| channels     | [AudioChannel](arkts-apis-audio-e.md#audiochannel8)                    | 否 | 否 | 音频文件的通道数。 |
-| sampleFormat | [AudioSampleFormat](arkts-apis-audio-e.md#audiosampleformat8)          | 否 | 否 | 音频采样格式。     |
-| encodingType | [AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)          | 否 | 否 | 音频编码格式。     |
-| channelLayout<sup>11+</sup> | [AudioChannelLayout](arkts-apis-audio-e.md#audiochannellayout11)  | 否 | 是 | 音频声道布局，默认值为0x0。 |
+| samplingRate | ArkTS-Dyn: [AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8) \| number<br> ArkTS-Sta: [AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8) \| int| 否 | 否 | 音频文件的采样率，单位为赫兹（Hz）。支持传入[AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8)。<br>从API版本26.0.0开始：<br>- 参数samplingRate在ArkTS-Dyn上支持number类型，ArkTS-Sta上支持int类型。<br>- 音频渲染扩展支持8000Hz到384000Hz范围内以10Hz为步长的采样率值。具体设备支持的采样率规格会存在差异。<br>**ArkTS-Dyn起始版本：** 26.0.0<br> **ArkTS-Sta起始版本：** 26.0.0|
+| channels     | [AudioChannel](arkts-apis-audio-e.md#audiochannel8)                    | 否 | 否 | 音频文件的通道数。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
+| sampleFormat | [AudioSampleFormat](arkts-apis-audio-e.md#audiosampleformat8)         | 否 | 否 | 音频采样格式。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
+| encodingType | [AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)          | 否 | 否 | 音频编码格式。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
+| channelLayout<sup>11+</sup> | [AudioChannelLayout](arkts-apis-audio-e.md#audiochannellayout11)  | 否 | 是 | 音频声道布局，默认值为0x0。<br>**ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23|
 
 ## AudioRendererInfo<sup>8+</sup>
 
@@ -146,6 +146,21 @@
 | spatializationSupported<sup>18+</sup>     | boolean                     | 是   | 是 | 设备是否支持空间音频。true表示支持空间音频，false表示不支持空间音频。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Spatialization|
 | model<sup>22+</sup>           | string                     | 是   | 是 | 设备的具体型号类别。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
 | capabilities<sup>22+</sup>    | Array&lt;[AudioStreamInfo](#audiostreaminfo8)&gt;| 是   | 是 | 设备支持的音频流能力。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
+
+## AudioDevicePair
+
+描述返听使用的音频设备对，包含输入设备和输出设备。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+| 名称              | 类型                                              | 只读 | 可选 | 说明               |
+| :---------------- | :------------------------------------------------ | :--- |---| :----------------- |
+| inputDevice | [AudioDeviceDescriptor](#audiodevicedescriptor) | 否 | 否 | 输入音频设备描述。 |
+| outputDevice | [AudioDeviceDescriptor](#audiodevicedescriptor) | 否 | 否 | 输出音频设备描述。 |
 
 ## VolumeEvent<sup>9+</sup>
 

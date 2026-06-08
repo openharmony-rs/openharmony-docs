@@ -5403,8 +5403,8 @@ Socket套接字的基础属性。
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | receiveBufferSize | number  | 否   | 是   | 接收缓冲区大小（单位：Byte），取值范围0~262144，不设置或设置的值超过取值范围则会默认为8192。     |
 | sendBufferSize    | number  | 否   | 是   | 发送缓冲区大小（单位：Byte），取值范围0~262144，不设置或设置的值超过取值范围则会默认为8192。     |
-| reuseAddress      | boolean | 否   | 是   | 是否重用地址。true：重用地址；false：不重用地址。                   |
-| socketTimeout     | number  | 否   | 是   | 套接字超时时间，单位毫秒（ms）。    |
+| reuseAddress      | boolean | 否   | 是   | 是否重用地址。true：重用地址；false：不重用地址。默认值为false。                   |
+| socketTimeout     | number  | 否   | 是   | 套接字超时时间，单位毫秒（ms）。默认值为0，表示不设置超时时间。    |
 
 ## socket.constructLocalSocketServerInstance<sup>11+</sup>
 

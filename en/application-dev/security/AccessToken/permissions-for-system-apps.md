@@ -1262,6 +1262,8 @@ Allows a system application or system service to start the DLP credential manage
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
 **Valid since**: 12
 
 ## ohos.permission.START_SHORTCUT
@@ -1431,6 +1433,8 @@ Allows configuration and management of the permissions on .dlp files.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Valid since**: 9
 

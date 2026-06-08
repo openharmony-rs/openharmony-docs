@@ -14,11 +14,15 @@
 >
 > - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 在attributeModifier中设置的属性尽量不要与其他方法设置的属性相同，避免在页面刷新时attributeModifier不生效。
 >
 > - 对于仅需根据条件设置组件单一属性的简单场景，可以使用[三目表达式](../../../ui/state-management/arkts-declarative-ui-description.md#配置属性)（如.width(isFullScreen ? 200 : 100)）。
 >
 > - 从API version 20开始，attributeModifier支持自定义组件。
+>
+> - 如果组件同时处于多种状态，并且分别在各自的状态里设置了一样的属性，那么最终样式生效的优先级为悬浮态&lt;按压态&lt;获焦态&lt;禁用态&lt;选中态。例如，如果组件同时处于悬浮态和按压态，在悬浮态和按压态都设置了背景色，那么此时组件最终显示按压态的背景色。
 
 ## attributeModifier
 
@@ -26,7 +30,7 @@ attributeModifier(modifier: AttributeModifier\<T>): T
 
 动态设置组件的属性方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,7 +54,7 @@ attributeModifier(modifier: AttributeModifier\<T>): T
 
 开发者需要自定义class实现AttributeModifier接口。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,7 +68,7 @@ applyNormalAttribute?(instance: T): void
 
 组件普通状态时的样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,7 +88,7 @@ applyPressedAttribute?(instance: T): void
 
 组件按压状态的样式。参考[示例2（组件绑定Modifier实现按压态效果）](#示例2组件绑定modifier实现按压态效果)、[示例8（自定义组件绑定Modifier实现按压态效果）](#示例8自定义组件绑定modifier实现按压态效果)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +108,7 @@ applyFocusedAttribute?(instance: T): void
 
 组件获焦状态的样式。参考[示例5（组件绑定Modifier获焦样式）](#示例5组件绑定modifier获焦样式)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,7 +128,7 @@ applyDisabledAttribute?(instance: T): void
 
 组件禁用状态的样式。参考[示例6（组件绑定modifier禁用状态的样式）](#示例6组件绑定modifier禁用状态的样式)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,13 +150,37 @@ applySelectedAttribute?(instance: T): void
 
 开发者可根据需要自定义实现这些方法，通过传入的参数识别组件类型，对instance设置属性，支持使用if/else语法进行动态设置。参考[示例7（组件绑定modifier选中状态样式）](#示例7组件绑定modifier选中状态样式)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                                                                                                         |
+| -------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| instance | T       | 是     | 组件的属性类，用来标识进行属性设置的组件的类型，比如[Button](ts-basic-components-button.md)组件的[属性](ts-basic-components-button.md#属性)（ButtonAttribute），[Text](ts-basic-components-text.md)组件的[属性](ts-basic-components-text.md#属性)（TextAttribute）等。具体取值请参考[Attribute类型支持范围](#attribute类型支持范围)。 |
+
+### applyHoveredAttribute
+
+ArkTS-Dyn: applyHoveredAttribute?(instance: T) : void
+
+ArkTS-Sta: default applyHoveredAttribute(instance: T) : void
+
+组件悬浮状态的样式。参考[示例9（组件绑定Modifier实现鼠标悬浮态效果）](#示例9组件绑定modifier实现鼠标悬浮态效果)。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -279,100 +307,6 @@ applySelectedAttribute?(instance: T): void
 7. 不支持系统组件属性。<!--DelEnd-->
 
 不支持或者未实现的属性在使用时会抛出"Method not implemented."、"is not callable"、"Builder is not supported."等异常信息。具体Modifier支持范围可参考[属性或事件对attributemodifier的支持情况](../../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
-
-## ModifierUtils
-
-ModifierUtils提供用于属性修改器和属性操作的工具方法。
-
-### isInstanceOf\<T\>
-
-isInstanceOf\<T\>(instance: T, componentName: string): boolean
-
-检查给定的实例是否为指定组件类型。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名       | 类型                        | 必填 | 说明                                                         |
-| ------------ | --------------------------- | ---- | ------------------------------------------------------------ |
-| instance     | T  | 是   | 要检查的实例，T为继承自[通用属性](./ts-component-general-attributes.md)（CommonMethod）的组件类型。               |
-| componentName | string                      | 是   | 要检查的组件类型名称。                                        |
-
-**返回值：**
-
-| 类型    | 说明                                                         |
-| ------- | ------------------------------------------------------------ |
-| boolean | 返回该实例是否为指定的组件类型，如果实例是指定的组件类型，则返回true；否则返回false。 |
-
-**示例：**  
-
-```ts
-// xxx.ets
-// 点击按钮，并检查日志，判断组件是否进入了自己的独有分支
-import { ModifierUtils } from '@kit.ArkUI';
-
-class MyModifier implements AttributeModifier<TextAttribute | ButtonAttribute> {
-  isDark: boolean = false
-
-  constructor(dark?: boolean) {
-    this.isDark = dark ?? false;
-  }
-
-  applyNormalAttribute(instance: TextAttribute | ButtonAttribute): void {
-    if (ModifierUtils.isInstanceOf(instance, 'Text')) {
-      console.info('This is TextAttribute')
-      const textInstance = instance as TextAttribute
-      if (this.isDark) {
-        textInstance.backgroundColor(Color.Blue)
-      } else {
-        textInstance.backgroundColor(Color.Green)
-      }
-    } else if (ModifierUtils.isInstanceOf(instance, 'Button')) {
-      console.info('This is ButtonAttribute')
-      const buttonInstance = instance as ButtonAttribute
-      if (this.isDark) {
-        buttonInstance.type(ButtonType.Circle)
-        buttonInstance.backgroundColor(Color.Blue)
-      } else {
-        buttonInstance.type(ButtonType.Normal)
-        buttonInstance.backgroundColor(Color.Green)
-      }
-    }
-  }
-}
-
-@Entry
-@Component
-struct MultiComponentAttributeDemo {
-  @State myModifier: MyModifier = new MyModifier();
-
-  build() {
-    Column() {
-      Text('Text')
-        .fontSize(50)
-        .attributeModifier(this.myModifier)
-        .onClick(() => {
-          this.myModifier.isDark = !this.myModifier.isDark;
-        })
-      Button('Button')
-        .attributeModifier(this.myModifier)
-        .onClick(() => {
-          this.myModifier.isDark = !this.myModifier.isDark;
-        })
-    }
-    .justifyContent(FlexAlign.SpaceEvenly)
-    .width('100%')
-    .height('50%')
-  }
-}
-```
 
 ## 自定义Modifier
 
@@ -1071,6 +1005,88 @@ struct ChildComponent {
 ```
 
 ![attributeModifier_common](figures/attributeModifier_common.gif)
+
+### 示例9（组件绑定Modifier实现鼠标悬浮态效果）
+
+该示例通过Button绑定Modifier实现了鼠标悬浮态的效果。当鼠标移动到Button上时，Button的背景颜色变为红色，此时为悬浮态效果；当鼠标离开Button时，Button的背景颜色变为黑色，此时为普通态效果；同时通过[applyHoveredAttribute](#applyhoveredattribute)接口设置悬浮态样式。
+
+从API版本26.0.0开始，新增[applyHoveredAttribute](#applyhoveredattribute)接口。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+// 设置Button组件属性的自定义AttributeModifier
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Black);
+  }
+
+  // 设置悬浮态样式
+  applyHoveredAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Red);
+  }
+}
+
+@Entry
+@Component
+struct attributeHoveredDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+
+  build() {
+    Row() {
+      Column() {
+        Button("Button")
+          .attributeModifier(this.modifier)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Component, Row, Column, Button, Color, ClickEvent, AttributeModifier, AttributeModifierState,
+  ButtonAttribute } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// 设置Button组件属性的自定义AttributeModifier
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Black);
+  }
+
+  // 设置悬浮态样式
+  applyHoveredAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Red);
+  }
+
+  monitoredStates(): int {
+    return AttributeModifierState.HOVERED;
+  }
+}
+
+@Entry
+@Component
+struct attributeHoveredDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+
+  build() {
+    Row() {
+      Column() {
+        Button("Button")
+          .attributeModifier(this.modifier)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![attributeModifier_hoverState](figures/attributeModifier_hoverState.gif)
 
 ## Attribute支持范围
 

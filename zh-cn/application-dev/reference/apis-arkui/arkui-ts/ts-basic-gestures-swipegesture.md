@@ -23,7 +23,7 @@ SwipeGesture(value?: { fingers?: number; direction?: SwipeDirection; speed?: num
 
 继承自[GestureInterface\<T>](ts-gesture-common.md#gestureinterfacet11)，设置快滑手势事件。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,7 +45,9 @@ SwipeGesture(options?: SwipeGestureHandlerOptions)
 
 设置快滑手势事件。与[SwipeGesture](#swipegesture-1)相比，options参数新增了isFingerCountLimited，表示是否检查触摸屏幕的手指数量。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,7 +65,7 @@ SwipeGesture(options?: SwipeGestureHandlerOptions)
 
 定义滑动手势的触发方向。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,7 +95,7 @@ ArkTS-Sta: onAction(event: Callback\<GestureEvent>)
 
 Swipe手势识别成功时触发回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

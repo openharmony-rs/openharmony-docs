@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -71,7 +71,7 @@ let innerEvent: emitter.InnerEvent = {
 };
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
-  console.info(`data type: ${typeof eventData.data}`);
+  console.info(`eventData: ${JSON.stringify(eventData?.data)}`);
 }
 
 // 收到eventId为1的事件后执行回调函数
@@ -289,7 +289,7 @@ let innerEvent: emitter.InnerEvent = {
 };
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
-  console.info(`data type: ${typeof eventData.data}`);
+  console.info(`eventData: ${JSON.stringify(eventData?.data)}`);
 }
 // 收到eventId为1的事件后执行该回调函数
 emitter.once(innerEvent, callback);
@@ -357,7 +357,7 @@ onceEventData(eventId: string, callback: Callback\<EventData\>): void
 import { Callback } from '@kit.BasicServicesKit';
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
-  console.info(`data type: ${typeof eventData.data}`);
+  console.info(`eventData: ${JSON.stringify(eventData?.data)}`);
 }
 // 收到eventId为"eventId"的事件后执行该回调函数
 emitter.onceEventData("eventId", callback);
@@ -562,7 +562,7 @@ ArkTS-Sta示例：
 import { Callback } from '@kit.BasicServicesKit';
 
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData | undefined | null) => {
-  console.info(`data type: ${typeof eventData?.data}`);
+  console.info(`eventData: ${JSON.stringify(eventData?.data)}`);
 }
 // 取消eventID为1的事件回调处理函数，callback对象应使用订阅时的对象
 // 如果该回调处理函数没有被订阅，则不做任何处理

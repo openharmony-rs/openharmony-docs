@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 
@@ -102,7 +102,7 @@
 > 数据只允许向数据安全标签不高于对端设备安全等级的设备同步数据，具体规则可见[跨设备同步访问控制机制](access-control-by-device-and-data-level.md#跨设备同步访问控制机制)。
 
 1. 导入模块。
-   <!--@[sync_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[sync_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
    
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // 导入模块
@@ -122,10 +122,9 @@
 3. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，默认采用多设备协同表模式进行数据存储和管理。
 
    ArkTS-Dyn示例：
-   <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
    
    ``` TypeScript
-   const context = new UIContext().getHostContext() as common.UIAbilityContext;
    let store: relationalStore.RdbStore | undefined = undefined;
    // ...
      const STORE_CONFIG: relationalStore.StoreConfig = {
@@ -133,6 +132,7 @@
        securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
      };
      // 打开数据库并设置分布式表
+     const context = new UIContext().getHostContext() as common.UIAbilityContext;
      relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
        store = rdbStore;
        await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
@@ -144,12 +144,12 @@
    ```
 
    ArkTS-Sta示例：
-   <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
-    
+   <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
+   
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
    
-   export async function setDefaultDistributedTables(context: common.UIAbilityContext | undefined) {
+   // ...
      const STORE_CONFIG: relationalStore.StoreConfig = {
        name: 'RdbTest.db', // 数据库文件名
        securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
@@ -163,7 +163,61 @@
      }).catch((err: Error) => {
        hilog.error(DOMAIN, 'rdbDataSync', `Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
      });
-   }
+   ```
+
+   ArkTS-Dyn示例：
+   <!--@[setCollaborationDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
+   
+   ``` TypeScript
+   let store: relationalStore.RdbStore | undefined = undefined;
+   // ...
+     const STORE_CONFIG: relationalStore.StoreConfig = {
+       name: 'RdbTest.db', // 数据库文件名
+       securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
+     };
+     // 打开数据库并设置分布式表
+     const DISTRIBUTED_CONFIG: relationalStore.DistributedConfig = {
+       autoSync: false,
+       asyncDownloadAsset: false,
+       enableCloud: false
+     }
+     const context = new UIContext().getHostContext() as common.UIAbilityContext;
+     relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+       store = rdbStore;
+       await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
+       // 将已创建的表设置分布式表。
+       await store.setDistributedTables(['EMPLOYEE'], relationalStore.DistributedType.DISTRIBUTED_DEVICE, DISTRIBUTED_CONFIG);
+     }).catch((err: BusinessError) => {
+       hilog.error(DOMAIN, 'rdbDataSync', `Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+     });
+   ```
+
+   ArkTS-Sta示例：
+   <!--@[setCollaborationDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
+   
+   ``` TypeScript
+   let store: relationalStore.RdbStore | undefined = undefined;
+   
+   // ...
+     const STORE_CONFIG: relationalStore.StoreConfig = {
+       name: 'RdbTest.db', // 数据库文件名
+       securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
+     };
+     // 打开数据库并设置分布式表
+     const DISTRIBUTED_CONFIG: relationalStore.DistributedConfig = {
+       autoSync: false,
+       asyncDownloadAsset: false,
+       enableCloud: false
+     }
+     relationalStore.getRdbStore(context!, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+       store = rdbStore;
+       await store!.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL)');
+       // 将已创建的表设置分布式表。
+       await store!.setDistributedTables(['EMPLOYEE'], relationalStore.DistributedType.DISTRIBUTED_DEVICE,
+         DISTRIBUTED_CONFIG);
+     }).catch((err: Error) => {
+       hilog.error(DOMAIN, 'rdbDataSync', `Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+     });
    ```
 
 4. 订阅组网内其他设备的数据变化消息。
@@ -171,7 +225,7 @@
    2. 通过设备ID获取与设备对应的分布式表表名，查询对应设备分布式表中的数据。
 
    ArkTS-Dyn示例：
-   <!--@[on_data_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[on_data_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
    
    ``` TypeScript
    // 订阅组网内其他设备的数据变化消息
@@ -210,8 +264,8 @@
    ```
 
    ArkTS-Sta示例：
-   <!--@[on_data_change](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
-    
+   <!--@[on_data_change](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
+   
    ``` TypeScript
    // 订阅组网内其他设备的数据变化消息
    if (store) {
@@ -228,7 +282,7 @@
        }
        // 调用分布式数据订阅接口，注册数据库的观察者
        // 当分布式数据库中的数据发生更改时，将调用回调
-       store!.onDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, (devices) => {
+       store!.onDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, (devices: string[]) => {
          for (let i = 0; i < devices.length; i++) {
            let device = devices[i];
            if (!store) {
@@ -236,11 +290,13 @@
            }
            hilog.info(DOMAIN, 'rdbDataSync', `The data of device:${device} has been changed.`);
            // 获取device对应的分布式表名。
-           const distributedTableName = await store!.obtainDistributedTableName(device, 'EMPLOYEE');
-           // 创建查询谓词，查询组网内设备分布式表的数据
-           const predicates = new relationalStore.RdbPredicates(distributedTableName);
-           const resultSet = await store!.query(predicates);
-           hilog.info(DOMAIN, 'rdbDataSync', `device ${device}, table EMPLOYEE rowCount is: ${resultSet.rowCount}`);
+           store!.obtainDistributedTableName(device, 'EMPLOYEE').then((distributedTableName: string) => {
+             // 创建查询谓词，查询组网内设备分布式表的数据
+             const predicates = new relationalStore.RdbPredicates(distributedTableName);
+             store!.query(predicates).then((resultSet: relationalStore.ResultSet) => {
+               hilog.info(DOMAIN, 'rdbDataSync', `device ${device}, table EMPLOYEE rowCount is: ${resultSet.rowCount}`);
+             });
+           });
          }
        });
      } catch (err) {
@@ -254,7 +310,7 @@
    2. 通过谓词的[inDevices](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md#indevices)方法指定推送的目标设备。
 
    ArkTS-Dyn示例：
-   <!--@[data_sync_push](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[data_sync_push](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
    
    ``` TypeScript
    // 同步当前设备数据变化至组网内其他设备
@@ -304,7 +360,7 @@
    ```
 
    ArkTS-Sta示例：
-   <!--@[data_sync_push](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[data_sync_push](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
     
    ``` TypeScript
    // 同步当前设备数据变化至组网内其他设备
@@ -359,7 +415,7 @@
    2. 通过谓词的[inDevices](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md#indevices)方法指定拉取的目标设备。
 
    ArkTS-Dyn示例：
-   <!--@[data_sync_pull](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[data_sync_pull](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
    
    ``` TypeScript
    // 拉取组网内其他设备的数据变化
@@ -402,7 +458,7 @@
    ```
 
    ArkTS-Sta示例：
-   <!--@[data_sync_pull](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[data_sync_pull](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
     
    ``` TypeScript
    // 拉取组网内其他设备的数据变化
@@ -448,7 +504,7 @@
 7. 当数据未完成同步，或未触发数据同步时，可使用RdbStore的[remoteQuery](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#remotequery-1)方法查询组网内指定设备上分布式表中的数据。
 
    ArkTS-Dyn示例：
-   <!--@[data_remote_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[data_remote_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
    
    ``` TypeScript
    // 查询组网内指定设备上分布式表中的数据
@@ -479,7 +535,7 @@
    ```
 
    ArkTS-Sta示例：
-   <!--@[data_remote_query](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[data_remote_query](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
     
    ``` TypeScript
    // 查询组网内指定设备上分布式表中的数据
@@ -515,10 +571,9 @@
 使用单版本表模式进行数据同步，基本开发步骤与[使用多设备协同表模式进行数据同步](#使用多设备协同表模式进行数据同步)相似。不过在创建数据表时（即使用多设备协同表模式进行数据同步中的步骤3），需要将进行跨设备同步的数据表设置为SINGLE_VERSION单版本类型。示例如下：
 
    ArkTS-Dyn示例：
-   <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
    
    ``` TypeScript
-   const context = new UIContext().getHostContext() as common.UIAbilityContext;
    let store: relationalStore.RdbStore | undefined = undefined;
    // ...
      const STORE_CONFIG: relationalStore.StoreConfig = {
@@ -532,6 +587,7 @@
        enableCloud: false,
        tableType: relationalStore.DistributedTableType.SINGLE_VERSION
      }
+     const context = new UIContext().getHostContext() as common.UIAbilityContext;
      relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
        store = rdbStore;
        await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)');
@@ -544,12 +600,12 @@
    ```
 
    ArkTS-Sta示例：
-   <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
     
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
    
-   export async function setCollaborationDistributedTables(context: common.UIAbilityContext | undefined) {
+   // ...
      const STORE_CONFIG: relationalStore.StoreConfig = {
        name: 'RdbTest.db', // 数据库文件名
        securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
@@ -558,17 +614,18 @@
      const DISTRIBUTED_CONFIG: relationalStore.DistributedConfig = {
        autoSync: false,
        asyncDownloadAsset: false,
-       enableCloud: false
+       enableCloud: false,
+       tableType: relationalStore.DistributedTableType.SINGLE_VERSION
      }
      relationalStore.getRdbStore(context!, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
        store = rdbStore;
-       await store!.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL)');
+       await store!.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)');
+       await store!.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE2 (NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB, PRIMARY KEY (NAME))');
        // 将已创建的表设置分布式表。
-       await store!.setDistributedTables(['EMPLOYEE'], relationalStore.DistributedType.DISTRIBUTED_DEVICE, DISTRIBUTED_CONFIG);
+       await store!.setDistributedTables(['EMPLOYEE', 'EMPLOYEE2'], relationalStore.DistributedType.DISTRIBUTED_DEVICE, DISTRIBUTED_CONFIG);
      }).catch((err: Error) => {
        hilog.error(DOMAIN, 'rdbDataSync', `Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
      });
-   }
    ```
 
 另外，在使用单版本表模式进行数据同步时，还需要配置schema文件，以指定需要同步的列及解决冲突的列。

@@ -1,8 +1,8 @@
 # 请求UI绘制帧率
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hudi33-->
-<!--Designer: @hudi33-->
+<!--Owner: @wh_qwe-->
+<!--Designer: @wh_qwe-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -227,6 +227,13 @@
        }
      };
 
+     if (this.backDisplaySyncSlow) {
+       // 取消订阅函数
+       this.backDisplaySyncSlow?.offFrame(draw30);
+       this.backDisplaySyncSlow?.stop();
+       this.backDisplaySyncSlow = undefined;
+     }
+ 
      let draw60 = (intervalInfo: displaySync.IntervalInfo) => {
        if (this.isBigger_60) {
          this.drawSecondSize += 1;
@@ -241,13 +248,6 @@
        }
      };
 
-     if (this.backDisplaySyncSlow) {
-       // 取消订阅函数
-       this.backDisplaySyncSlow?.offFrame(draw30);
-       this.backDisplaySyncSlow?.stop();
-       this.backDisplaySyncSlow = undefined;
-     }
- 
      if (this.backDisplaySyncFast) {
        // 取消订阅函数
        this.backDisplaySyncFast?.offFrame(draw60);

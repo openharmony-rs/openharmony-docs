@@ -63,7 +63,9 @@ ArcListItem()
 
 ### autoScale
 
-autoScale(enable: Optional\<boolean>)
+ArkTS-Dyn: autoScale(enable: Optional\<boolean>)
+
+ArkTS-Sta: autoScale(enable: boolean | undefined)
 
 用于设置ArcListItem是否支持自动缩放显示。
 
@@ -79,11 +81,13 @@ autoScale(enable: Optional\<boolean>)
 
 | 参数名 | 类型               | 必填 | 说明                                        |
 | ------ | ------------------ | ---- | ------------------------------------------- |
-| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | ArcListItem是否支持自动缩放显示，true表示支持自动缩放显示，false表示不支持自动缩放显示。<br/>默认值：true，支持自动缩放显示。 |
+| enable | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | ArcListItem是否支持自动缩放显示，true表示支持自动缩放显示，false表示不支持自动缩放显示。<br/>默认值：true，支持自动缩放显示。<br/>取值为undefined时，按默认值处理。 |
 
 ### swipeAction
 
-swipeAction(options: Optional\<SwipeActionOptions>)
+ArkTS-Dyn: swipeAction(options: Optional\<SwipeActionOptions>)
+
+ArkTS-Sta: swipeAction(options: SwipeActionOptions | undefined)
 
 用于设置ArcListItem的划出组件。
 
@@ -99,7 +103,25 @@ swipeAction(options: Optional\<SwipeActionOptions>)
 
 | 参数名  | 类型                                                         | 必填 | 说明                    |
 | ------- | ------------------------------------------------------------ | ---- | ----------------------- |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SwipeActionOptions](ts-container-listitem.md#swipeactionoptions9对象说明)&gt; | 是   | ArcListItem的划出组件。 |
+| options | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SwipeActionOptions](ts-container-listitem.md#swipeactionoptions9对象说明)&gt;<br/>ArkTS-Sta: [SwipeActionOptions](ts-container-listitem.md#swipeactionoptions9对象说明) \| undefined | 是   | ArcListItem的划出组件。<br/>取值为undefined时，不设置划出组件。 |
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<ArcListItemAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+动态设置ArcListItem组件的属性方法。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
+| -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
+| modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifier)\<ArcListItemAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>ArcListItemAttribute：当前组件的[属性](#属性)。 |
 
 ## 示例
 

@@ -7,9 +7,11 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
 
-输入事件注入模块，提供键盘和鼠标输入事件模拟能力。
+输入事件注入模块，提供键盘、鼠标和触控输入事件模拟能力。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -47,7 +49,7 @@ createKeyboardController(): Promise&lt;KeyboardController&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 801  | Capability not supported.  |
 | 3800001  | Input service exception.  |
 
@@ -107,7 +109,7 @@ createMouseController(): Promise&lt;MouseController&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 801  | Capability not supported.  |
 | 3800001  | Input service exception.  |
 
@@ -130,6 +132,66 @@ struct Index {
             })
             .catch((error: BusinessError) => {
               console.error(`Failed to create mouse controller. Code: ${error.code}, message: ${error.message}.`);
+            });
+        })
+    }
+  }
+}
+```
+
+## inputEventClient.createTouchController
+
+createTouchController(): Promise&lt;TouchController&gt;
+
+创建触控控制器，用于模拟触控操作。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+
+**需要权限：** ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上返回801错误码。
+
+**返回值：**
+
+| 类型                   | 说明       |
+| --------------------- | --------- |
+| Promise&lt;[TouchController](#touchcontroller)&gt; | Promise对象，返回触控控制器实例。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[输入事件注入错误码](errorcode-inputeventclient.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 801  | Capability not supported.  |
+| 3800001  | Input service exception.  |
+
+**示例：**
+
+```js
+import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          inputEventClient.createTouchController()
+            .then(touchController => {
+              console.info('Succeeded in creating touch controller');
+            })
+            .catch((error: BusinessError) => {
+              console.error(`Failed to create touch controller. Code: ${error.code}, message: ${error.message}.`);
             });
         })
     }
@@ -181,9 +243,9 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | The key has been pressed and is not the most recently pressed key, or the number of pressed keys exceeds 5.  |
+| 4300001  | The key is already pressed and is not the most recently pressed key.  |
 
 **示例：**
 
@@ -254,9 +316,9 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | The key has not been pressed.  |
+| 4300001  | The key is not pressed.  |
 
 **示例：**
 
@@ -294,8 +356,8 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 | 参数名      | 类型                   | 必填  | 说明       |
 | -------- | --------------------- | ---- | --------- |
 | displayId |ArkTS-Dyn: number <br>ArkTS-Sta: int| 是   | 目标显示器ID。|
-| displayX |ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 目标位置相对于显示器左边缘的X坐标，单位:px。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器宽度-1]。|
-| displayY | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 目标位置相对于显示器上边缘的Y坐标，单位:px。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器高度-1]。|
+| displayX |ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 目标位置相对于显示器左边缘的X坐标，单位为像素（px）。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器宽度-1]。|
+| displayY | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 目标位置相对于显示器上边缘的Y坐标，单位为像素（px）。若超出显示器有效范围，则实际坐标值会规约到有效范围[0, 显示器高度-1]。|
 
 **返回值：**
 
@@ -309,7 +371,7 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
 | 4300002  | The display does not exist.  |
 
@@ -378,9 +440,9 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | The mouse button has been pressed.  |
+| 4300001  | The mouse button is already pressed.  |
 
 **示例：**
 
@@ -451,9 +513,9 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | The mouse button has not been pressed.  |
+| 4300001  | The mouse button is not pressed.  |
 
 **示例：**
 
@@ -496,9 +558,9 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | An axis event is in progress.  |
+| 4300001  | The axis event in progress.  |
 
 **示例：**
 
@@ -574,9 +636,9 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | No axis event is in progress.  |
+| 4300001  | The axis event is not in progress.  |
 
 **示例：**
 
@@ -618,10 +680,218 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | No axis event is in progress.  |
+| 4300001  | The axis event is not in progress.  |
 
 **示例：**
 
 参见[beginAxis](#beginaxis)示例。
+
+## TouchPoint
+
+表示屏幕上的单个触点信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+
+| 名称        | 类型   | 只读   | 可选   | 说明      |
+| --------- | ------ | ---- | ---- | ------- |
+| id | number | 否 | 否 | 触点唯一标识。取值范围为[0, 9]，且必须为整数。 |
+| displayId | number | 否 | 否 | 触点所在屏幕的唯一标识，必须为整数。 |
+| displayX | number | 否 | 否 | 触点相对于屏幕左边缘的X坐标，单位为像素（px），必须为整数。 |
+| displayY | number | 否 | 否 | 触点相对于屏幕上边缘的Y坐标，单位为像素（px），必须为整数。 |
+
+## TouchController
+
+提供模拟触控操作的功能。模拟触控操作序列必须满足以下要求：
+
+1. 所有触点的displayId必须相同。
+2. 每个触点都必须以`touchDown()`开始，以`touchUp()`结束，中间可包含多个`touchMove()`。
+
+### touchDown
+
+touchDown(touch: TouchPoint): Promise&lt;void&gt;
+
+触点按下。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+
+**需要权限：** ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| touch | [TouchPoint](#touchpoint) | 是 | 与屏幕接触的触点信息。 |
+
+**返回值：**
+
+| 类型                   | 说明       |
+| --------------------- | --------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[输入事件注入错误码](errorcode-inputeventclient.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is touching the display; 2. The touch point ID is not within the valid range [0,9]. |
+| 4300002 | The display does not exist. |
+| 3800001 | Input service exception. |
+
+**示例：**
+
+```js
+import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          inputEventClient.createTouchController()
+            .then((touchController: inputEventClient.TouchController) => {
+              const touchPoint: inputEventClient.TouchPoint = {
+                id: 0,
+                displayId: 0,
+                displayX: 600,
+                displayY: 1200
+              };
+              touchController.touchDown(touchPoint);
+              return touchController;
+            })
+            .then((touchController: inputEventClient.TouchController) => {
+              touchController.touchMove({
+                id: 0,
+                displayId: 0,
+                displayX: 720,
+                displayY: 1200
+              });
+              return touchController;
+            })
+            .then((touchController: inputEventClient.TouchController) => {
+              touchController.touchUp({
+                id: 0,
+                displayId: 0,
+                displayX: 720,
+                displayY: 1200
+              });
+            })
+            .then(() => {
+              console.info('Succeeded in touch up');
+            })
+            .catch((error: BusinessError) => {
+              console.error(`Failed to simulate touch. Code: ${error.code}, message: ${error.message}.`);
+            });
+        })
+    }
+  }
+}
+```
+
+### touchMove
+
+touchMove(touch: TouchPoint): Promise&lt;void&gt;
+
+触点移动。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+
+**需要权限：** ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| touch | [TouchPoint](#touchpoint) | 是 | 需要移动的触点信息。 |
+
+**返回值：**
+
+| 类型                   | 说明       |
+| --------------------- | --------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[输入事件注入错误码](errorcode-inputeventclient.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0,9]. |
+| 3800001 | Input service exception. |
+
+**示例：**
+
+参见[touchDown](#touchdown)示例。
+
+### touchUp
+
+touchUp(touch: TouchPoint): Promise&lt;void&gt;
+
+触点抬起。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+
+**需要权限：** ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备上调用不生效。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| touch | [TouchPoint](#touchpoint) | 是 | 即将离开屏幕的触点信息。 |
+
+**返回值：**
+
+| 类型                   | 说明       |
+| --------------------- | --------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[输入事件注入错误码](errorcode-inputeventclient.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0,9]. |
+| 3800001 | Input service exception. |
+
+**示例：**
+
+参见[touchDown](#touchdown)示例。
