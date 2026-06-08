@@ -209,7 +209,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001223064173](figures/zh-cn_image_0000001223064173.gif)
+![Drawing-Line-Segments](figures/Drawing-Line-Segments.gif)
 
 
 ## 画边框
@@ -306,7 +306,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001177466006](figures/zh-cn_image_0000001177466006.gif)
+![Drawing-Border](figures/Drawing-Border.gif)
 
 
 ## 填充渐变色
@@ -435,7 +435,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001222985801](figures/zh-cn_image_0000001222985801.gif)
+![Gradient-Fill-Colors](figures/Gradient-Fill-Colors.gif)
 
 
 ## 填充文字
@@ -569,7 +569,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001223064401](figures/zh-cn_image_0000001223064401.gif)
+![Filling-Text](figures/Filling-Text.gif)
 
 > **说明：** 
 >
@@ -749,7 +749,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001218279600](figures/zh-cn_image_0000001218279600.gif)
+![Adding-Images](figures/Adding-Images.gif)
 
 > **说明：**
 > - setTransform方法使用的参数和transform()方法相同，但setTransform()方法会重置现有的变换矩阵并创建新的变换矩阵。
@@ -851,4 +851,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001177624696](figures/zh-cn_image_0000001177624696.gif)
+![Adding-Methods](figures/Adding-Methods.gif)
