@@ -228,7 +228,6 @@ ArkTS-Sta示例：
 import { Entry, Component, $r, Column } from '@kit.ArkUI'; 
 import { SubHeader, OperationType } from '@ohos.arkui.advanced.SubHeader'; 
 
-
 @Entry	 
 @Component 
 struct SubHeaderExample { 
