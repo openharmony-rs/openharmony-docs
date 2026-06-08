@@ -17,7 +17,7 @@
 
 - **窗口亮度**：指当前应用窗口的显示亮度，仅作用于主窗口，不直接修改设备全局亮度。  
 
-  开发者可根据当前页面的展示需求，对窗口亮度单独进行调节，以优化当前应用内的的显示效果。可以通过调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)接口设置主窗口的窗口亮度。
+   开发者可根据当前页面的展示需求，对窗口亮度单独进行调节，以优化当前应用内的显示效果。可以通过调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)接口设置主窗口的窗口亮度。
 
   > **说明：**
   > 
