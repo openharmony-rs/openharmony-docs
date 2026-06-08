@@ -8979,7 +8979,7 @@ try {
 
 onRectChangeInGlobalDisplay(callback: Callback&lt;RectChangeOptions&gt;): void
 
-开启[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
+开启[全局坐标系](../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)下窗口矩形（窗口位置及窗口大小）变化的监听事件。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -9405,7 +9405,7 @@ onWindowWillClose(callback: Callback&lt;void, Promise&lt;boolean&gt;&gt;): void
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -9541,7 +9541,7 @@ offWindowWillClose(callback?: Callback&lt;void, Promise&lt;boolean&gt;&gt;): voi
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -9923,9 +9923,9 @@ onRotationChange(callback: RotationChangeCallback&lt;RotationChangeInfo, Rotatio
 
 针对PC/2in1设备：可正常调用该接口且立即生效。
 
-针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：可正常调用且立即生效。
+针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备：可正常调用且立即生效。
 
-针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效。
 
 针对其他设备：调用该接口不生效也不报错。
 
@@ -10066,9 +10066,9 @@ offRotationChange(callback?: RotationChangeCallback&lt;RotationChangeInfo, Rotat
 
 针对PC/2in1设备：可正常调用该接口且立即生效。
 
-针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：可正常调用且立即生效。
+针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备：可正常调用且立即生效。
 
-针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效。
 
 针对其他设备：调用该接口不生效也不报错。
 
