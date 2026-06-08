@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @zhang_yixin13-->
 
-[\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)可用于获取自定义环境变量。开发者可通过WithEnv组件的.customEnv接口设置自定义环境变量，在子组件中通过[\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)装饰器读取相同[CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)对应的变量值。该机制实现了组件树间的数据透传，使父子组件能基于环境变量进行联动，同时保持代码解耦。
+[\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)可用于获取自定义环境变量。开发者可通过[WithEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md)组件的[.customEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md#customenv)接口设置自定义环境变量，在子组件中通过[\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)装饰器读取相同[CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)对应的变量值。该机制实现了组件树间的数据透传，使父子组件能基于环境变量进行联动，同时保持代码解耦。
 
 >**说明：**
 >
@@ -440,10 +440,65 @@ struct Child {
 
 ![image](./figures/customenv_1.gif)
 
-### \@CustomEnv装饰变量支持\@Monitor监听变化
+### \@Watch与\@Monitor监听\@CustomEnv装饰的变量
 
-当父组件通过`WithEnv`更新对应环境值时，子组件中\@CustomEnv变量会变更，并触发\@Monitor回调。
+在\@Component中，可通过[\@Watch](state-management/arkts-watch.md)监听\@CustomEnv装饰变量的变化。需要注意的是，仅当\@CustomEnv装饰的变量被整体赋值时才会触发\@Watch监听回调，其内部属性的变化不会触发回调。
+```ts
+import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
+const custom: CustomEnvKey<number> = CustomEnvKey.create<number>();
+
+@Entry
+@Component
+struct Index {
+  @State message: number = 1;
+
+  build() {
+    Column() {
+      Button('update').onClick(() => {
+        this.message++;
+      })
+
+      WithEnv() {
+        Child()
+      }.customEnv(custom, this.message)
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+
+@Component
+struct Child {
+  @CustomEnv(custom) @Watch('onParentValChanged') parentVal: number = 100;
+
+  // Watch回调
+  onParentValChanged() {
+    hilog.info(0x0000, 'testTag','@Watch message update');
+  }
+
+  build() {
+    Column() {
+      Text('parentVal is: ' + this.parentVal)
+        .fontSize(22);
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+在上面的示例中：
+
+点击'update'更改message的值，将会触发\@Watch装饰器的回调并输出对应日志。
+
+运行效果图如下。
+
+![image](./figures/custom-env-16.png)
+
+在\@ComponentV2中，可通过\@Monitor监听\@CustomEnv装饰变量的变化。需要注意的是，仅当\@CustomEnv装饰的变量被整体赋值时才会触发\@Monitor监听回调，其内部属性的变化不会触发回调。
 ```ts
 import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';

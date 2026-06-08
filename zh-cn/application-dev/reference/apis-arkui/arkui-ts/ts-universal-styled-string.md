@@ -59,13 +59,31 @@ constructor(value: string | ImageAttachment | CustomSpan, styles?: Array\<StyleO
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 12
 
 | 名称  |   类型   |   只读   |   可选   |   说明   |
 | ------ | ------ | ------ | ------ | -------------- |
-| length | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  是   | 否   | 属性字符串字符的长度。<br/>**说明：** <br/>属性字符串中的ImageAttachment和CustomSpan长度都计为1。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| length | number |  是   | 否   | 属性字符串字符的长度。<br/>**说明：** <br/>属性字符串中的ImageAttachment和CustomSpan长度都计为1。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+
+### get length<sup>23+</sup>
+
+get length(): int
+
+获取属性字符串内容长度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型              |说明       |
+| ------- | --------------------------------- | 
+| int | 属性字符串内容长度。<br/>**说明：** <br/>当属性字符串中包含图片或[CustomSpan](#customspan)时，长度都计为1。 |
 
 ### getString
 
@@ -196,7 +214,7 @@ ArkTS-Dyn: static fromHtml(html: string): Promise\<StyledString>
 
 ArkTS-Sta: static fromHtml(html: string): Promise\<StyledString | undefined>
 
-将HTML格式字符串转换成属性字符串，当前支持转换的HTML标签范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>、\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>、\<ol>、\<ul>、\<li>。支持将标签中的style属性样式转换成对应的属性字符串样式。
+将HTML格式字符串转换成属性字符串，使用Promise异步回调。当前支持转换的HTML标签范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>、\<cite>、\<dfn>、\<small>、\<h1>、\<h2>、\<h3>、\<h4>、\<h5>、\<h6>、\<ol>、\<ul>、\<li>。支持将标签中的style属性样式转换成对应的属性字符串样式。
 
 使用方法参考[示例12（fromHtml和toHtml互相转换）](#示例12fromhtml和tohtml互相转换)和[示例18（fromHtml转换）](#示例18fromhtml转换)。
 
@@ -247,7 +265,7 @@ ArkTS-Sta: static fromHtml(html: string): Promise\<StyledString | undefined>
 
 | 类型              |       说明       |
 | ------- | --------------------------------- |
-| ArkTS-Dyn: [StyledString](#styledstring) <br/> ArkTS-Sta: [StyledString](#styledstring) \| undefined | 属性字符串。 |
+| ArkTS-Dyn: Promise\<[StyledString](#styledstring)> <br/> ArkTS-Sta: Promise\<[StyledString](#styledstring)> \| undefined | [Promise](../../../arkts-utils/async-concurrency-overview.md#promise)对象，属性字符串。 |
 
 **错误码**：
 
@@ -740,9 +758,9 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 | fontWeight  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                   | 是   | 是   | 获取属性字符串的文本字体粗细。<br/>**说明：** <br/>实际返回是字符串，具体返回值和设置值关系参见下方表格。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | fontStyle   | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 是   | 获取属性字符串的文本字体样式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | fontConfigs<sup>24+</sup> | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) | 是   | 是   | 获取属性字符串的字体配置。<br/>默认返回undefined，表示未设置fontConfigs。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
-| strokeWidth<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                   | 是   | 是   | 获取属性字符串的文本描边宽度。<br/>默认返回0，单位为[vp](ts-pixel-units.md#基本像素单位)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23                                           |
-| strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | 是   | 是   | 获取属性字符串的文本描边颜色。<br/>默认返回字体颜色。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23                                           |
-| superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)  | 是   | 是   | 获取属性字符串的文本上下角标。<br/>默认值：SuperscriptStyle.NORMAL。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23                                           |
+| strokeWidth<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                   | 是   | 是   | 获取属性字符串的文本描边宽度。<br/>默认返回0，单位为[vp](ts-pixel-units.md#基本像素单位)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24                                           |
+| strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | 是   | 是   | 获取属性字符串的文本描边颜色。<br/>默认返回字体颜色。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24                                           |
+| superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)  | 是   | 是   | 获取属性字符串的文本上下角标。<br/>默认值：SuperscriptStyle.NORMAL。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24                                           |
 | fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | 是 | 是 | 获取可变字体的属性数组。<br/>默认值：undefined，表示未设置可变字体的属性。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 是 | 是 | 获取属性字符串的文本描边拐角样式。<br/>默认值：StrokeJoinStyle.MITER_JOIN。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
@@ -798,10 +816,10 @@ constructor(value?: TextStyleInterface)
 | fontSize    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | 否   | 是 | 字体大小。<br/>默认字体大小为16fp。<br/>如果LengthMetrics的unit值是PERCENT，当前设置不生效，处理为16fp。<br/>单位：[fp](ts-pixel-units.md#基本像素单位) <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | fontWeight  | ArkTS-Dyn: number\| [FontWeight](ts-appendix-enums.md#fontweight) \| string<br/>ArkTS-Sta: int\| [FontWeight](ts-appendix-enums.md#fontweight) \| string | 否   | 是 | 字体粗细。<br/>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | fontStyle   | [FontStyle](ts-appendix-enums.md#fontstyle)                      | 否   | 是 | 字体样式。<br/>默认值：FontStyle.Normal<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| fontConfigs<sup>24+</sup> | [FontConfigs](ts-text-common.md#fontconfigs24对象说明)                      | 否   | 是 | 字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| strokeWidth<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，处理为0。<br/>设置值小于0时为实心字，大于0时为空心字。<br/>默认值为0。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 文本描边颜色。<br/>默认值为字体颜色，设置异常值时取字体颜色。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)     | 否   | 是 | 文本上下角标。<br/>默认值：SuperscriptStyle.NORMAL<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| fontConfigs<sup>24+</sup> | [FontConfigs](ts-text-common.md#fontconfigs24对象说明)                      | 否   | 是 | 字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
+| strokeWidth<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，处理为0。<br/>设置值小于0时为实心字，大于0时为空心字。<br/>默认值为0。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 文本描边颜色。<br/>默认值为字体颜色，设置异常值时取字体颜色。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)     | 否   | 是 | 文本上下角标。<br/>默认值：SuperscriptStyle.NORMAL<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 | fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | 否 | 是 | 可变字体的属性。<br/>默认值：undefined，表示未设置可变字体的属性。<br/>fontVariations属性的优先级高于fontWeight。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 否 | 是 | 文本描边拐角样式。<br/>默认值：StrokeJoinStyle.MITER_JOIN。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
@@ -843,7 +861,7 @@ constructor(value?: GestureStyleInterface)
 | ------- | --------------------------------- | ---- | ---- | --------------------------------- |
 | onClick | Callback\<[ClickEvent](ts-universal-events-click.md#clickevent)> | 否   | 是 | 设置点击事件。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | onLongPress | Callback\<[GestureEvent](./ts-gesture-common.md#gestureevent对象说明)> | 否   | 是 | 设置长按事件。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| onTouch<sup>20+</sup> | ArkTS-Dyn: Callback\<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明)><br/>ArkTS-Sta: Callback\<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明)> \| undefined | 否   | 是 | 设置触摸事件。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 23<br/>取值为undefined时，不使用回调函数。|
+| onTouch<sup>20+</sup> | Callback\<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明)> | 否   | 是 | 设置触摸事件。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 24<br/>取值为undefined时，不使用回调函数。|
 
 ## DecorationOptions<sup>20+</sup>
 
@@ -856,6 +874,8 @@ constructor(value?: GestureStyleInterface)
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 | 名称  | 类型                              | 只读 | 可选 | 说明   |
 | ------- | --------------------------------- | ---- | ---- |--------------------------------- |
@@ -932,7 +952,7 @@ constructor(value: DecorationStyleInterface, options?: DecorationOptions)
 
 | 名称  | 类型                              | 只读 | 可选 | 说明 |
 | ------- | --------------------------------- | ---- | ---- |--------------------------------- |
-| type | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | 否   | 否 | 装饰线类型。<br/>默认值：TextDecorationType.None <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| type | ArkTS-Dyn: [TextDecorationType](ts-appendix-enums.md#textdecorationtype) <br/>ArkTS-Sta: [TextDecorationType](ts-appendix-enums.md#textdecorationtype) \| undefined | 否   | 否 | 装饰线类型。<br/>默认值：TextDecorationType.None <br/>取值undefined时，按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | color | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是 | 装饰线颜色。<br/>默认值：Color.Black <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | 否   | 是 | 装饰线样式。<br/>默认值：TextDecorationStyle.SOLID <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | thicknessScale<sup>20+</sup> | number | 否   | 是 | 装饰线粗细缩放。<br/>默认值：1.0 <br/>取值范围：[0, +∞) <br/>**说明：** 负值按默认值处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 20 |
@@ -1006,6 +1026,10 @@ constructor(value: LengthMetrics)
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型              | 只读   | 可选   | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
@@ -1167,6 +1191,10 @@ constructor(lineSpacing: LengthMetrics, options?: LineSpacingOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型              | 只读   | 可选   | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
 | textShadow  | Array\<[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> |  是  |  否  | 获取属性字符串的文本阴影。 |
@@ -1215,7 +1243,7 @@ ShadowOptions对象中不支持fill字段。
 | layoutStyle  | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) |  是  |  是  | 获取属性字符串的图片布局。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  是  |  是  | 获取属性字符串的图片颜色滤镜效果。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | supportSvg2<sup>22+</sup>  | boolean |  是  |  是  | 获取属性字符串是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
-| resourceValue  | string |  是  |  是  | 获取属性字符串的图片资源路径。<br/>**ArkTS模式：** 该参数仅适用于ArkTS-Sta<br/>**ArkTS-Sta起始版本：** 23 |
+| resourceValue  | string |  是  |  是  | 获取属性字符串的图片资源路径。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 
 ### constructor
 
@@ -1249,7 +1277,7 @@ constructor(attachment: Optional\<AttachmentType\>)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[constructor](#constructor23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[constructor](#constructor23)。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -1269,7 +1297,7 @@ constructor(value: AttachmentType | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[constructor](#constructor15)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[constructor](#constructor15)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1364,14 +1392,14 @@ ResourceStr类型图片设置项。
 
 | 名称  | 类型                              | 只读 | 可选 | 说明 |
 | ------- | --------------------------------- | ---- | ---- |--------------------------------- |
-| resourceValue | Optional<[ResourceStr](ts-types.md#resourcestr)> |  否  | 否 | 设置图片数据源。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| resourceValue | ArkTS-Dyn: Optional<[ResourceStr](ts-types.md#resourcestr)> <br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined |  否  | 否 | 设置图片数据源。<br/>取值为undefined时，按空处理。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | size | [SizeOptions](ts-types.md#sizeoptions) | 否   | 是 | 设置图片大小。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | 否   | 是 | 设置图片基于文本的对齐方式。<br/>默认值：ImageSpanAlignment.BOTTOM<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | objectFit | [ImageFit](ts-appendix-enums.md#imagefit) | 否  | 是  | 设置图片的缩放类型，当前枚举类型不支持ImageFit.MATRIX。<br/>默认值：ImageFit.Cover<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) | 否  | 是  | 设置图片布局。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | colorFilter  | [ColorFilterType](#colorfiltertype15) |  否  | 是 | 设置属性字符串的图片颜色滤镜效果。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | syncLoad  | boolean |  否  | 是 | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br>true：同步加载；false：异步加载。<br/>默认值：false<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
-| supportSvg2<sup>22+</sup>  | boolean |  否  |  是  | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
+| supportSvg2<sup>22+</sup>  | boolean |  否  |  是  | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
 
 ## CustomSpan
 
@@ -1425,7 +1453,7 @@ abstract onDraw(context: DrawContext, drawInfo: CustomSpanDrawInfo): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1516,15 +1544,16 @@ invalidate(): void
 | ------------ |---------------------| ---- | ---- | ------ |
 | textAlign  | [TextAlign](ts-appendix-enums.md#textalign) |  是  |  是  | 获取属性字符串文本段落在水平方向的对齐方式。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | textIndent | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 是    | 是    | 获取属性字符串文本段落的首行文本缩进。<br/>单位：vp <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| maxLines   | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 是    | 是    | 获取属性字符串文本段落的最大行数。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| maxLines   | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 是    | 是    | 获取属性字符串文本段落的最大行数。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | overflow   | [TextOverflow](ts-appendix-enums.md#textoverflow)   | 是    | 是   | 获取属性字符串文本段落超长时的显示方式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | wordBreak   | [WordBreak](ts-appendix-enums.md#wordbreak11) | 是    | 是    | 获取属性字符串文本段落的断行规则。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| leadingMargin   | ArkTS-Dyn: number<br/>ArkTS-Sta: double \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11) | 是    | 是   | 获取属性字符串文本段落的缩进。<br/>返回为number类型时，单位为vp。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
+| leadingMargin   | ArkTS-Dyn: number \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11)<br/>ArkTS-Sta: double \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11) | 是    | 是   | 获取属性字符串文本段落的缩进。<br/>返回为number或double类型时，单位为vp。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | paragraphSpacing<sup>19+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 是   | 获取属性字符串文本段落的段落间距。<br/>单位：vp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
 | textVerticalAlign<sup>20+</sup>  | [TextVerticalAlign](ts-text-common.md#textverticalalign20) | 是    | 是   | 获取属性字符串文本段落在垂直方向的对齐方式。<br>一个段落下使用同一字号必须同时设置行高[lineHeight](ts-basic-components-text.md#lineheight)或者同一个段落不同字号文本混排时才有效果差异，否则设置了该属性任意枚举值和未设置该属性都是一样的排版效果。属性字符串[TextStyle](#textstyle)中的SuperscriptStyle上下角标样式仅在[TextVerticalAlign](ts-text-common.md#textverticalalign20)属性值为TextVerticalAlign.BASELINE时生效，其余垂直对齐方式下上下角标文本和普通文本表现一致，无上下角标效果。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 | leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 是    | 是   | 获取属性字符串文本段落的自定义缩进信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
 | textDirection<sup>23+</sup>  | [TextDirection](ts-text-common.md#textdirection22) |  是  |  是  | 获取文本方向。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23|
 | shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  是  |  是  | 获取文本着色器效果。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| tailIndents | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<double>   | 是    | 是    | 获取属性字符串文本段落的文本尾部缩进距离。<br/>单位：vp <br/>取值范围：[0, INT32_MAX]<br/>值为0时不做尾部缩进。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 >  **说明：**
 >
@@ -1562,7 +1591,7 @@ constructor(value?: ParagraphStyleInterface)
 | ------- | --------------------------------- | ---- | ---- | --------------------------------- |
 | textAlign  | [TextAlign](ts-appendix-enums.md#textalign) |  否  | 是 | 设置文本段落在水平方向的对齐方式。<br/>默认值：TextAlign.Start<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | textIndent | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否  | 是    | 设置文本段落的首行文本缩进。不支持百分比。<br/>默认值：0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| maxLines   | number   | 否  | 是    | 设置文本段落的最大行数，默认不限制。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| maxLines   | ArkTS-Dyn: number <br/>ArkTS-Sta: int  | 否  | 是    | 设置文本段落的最大行数，默认不限制。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | overflow   | [TextOverflow](ts-appendix-enums.md#textoverflow)   |  否  | 是    | 设置文本段落超长时的显示方式。<br/>默认值：TextOverflow.None<br />需配合maxLines使用，单独设置不生效。不支持TextOverflow.MARQUEE。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | wordBreak   | [WordBreak](ts-appendix-enums.md#wordbreak11) | 否  | 是    | 设置文本段落的断行规则。<br/>默认值：WordBreak.NORMAL<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | leadingMargin   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11) | 否  | 是    | 设置文本段落的缩进。不支持百分比。<br/>默认值：0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
@@ -1571,6 +1600,7 @@ constructor(value?: ParagraphStyleInterface)
 | leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | 否  | 是    | 设置文本段落的自定义缩进。不支持百分比。<br/>默认值：0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
 | textDirection<sup>23+</sup>  | [TextDirection](ts-text-common.md#textdirection22) |  否  | 是 | 设置文本方向。<br/>默认值：TextDirection.DEFAULT<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 | shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  否  |  是  | 设置文本着色器效果。<br/>该接口与[TextStyleInterface](#textstyleinterface对象说明)的strokeWidth同时设置时，该接口不生效。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| tailIndents | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| Array&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt;   | 否  | 是    | 设置文本段落的文本尾部缩进。当提供一个单独的LengthMetrics值时，所有行共享相同的尾部缩进；当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。<br/>默认值：0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0|
 
 ## UserDataSpan
 
@@ -1664,8 +1694,8 @@ abstract getLeadingMargin(): LengthMetrics
 | bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否  | 否  | 行底与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>取值范围：大于等于0。 |
 | baseline | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否  | 否  | 当前行的基线与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>取值范围：大于等于0。 |
 | direction | [TextDirection](ts-text-common.md#textdirection22) |  否  | 否  | 文本内容的方向。 |
-| start | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否  | 否  | 当前行的起始索引。<br/>取值范围：大于等于0。 |
-| end | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否  | 否  | 当前行的结束索引。<br/>取值范围：大于等于0。 |
+| start | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否  | 否  | 当前行的起始索引。<br/>取值范围：大于等于0。 |
+| end | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否  | 否  | 当前行的结束索引。<br/>取值范围：大于等于0。 |
 | first | boolean |  否  | 否  | 当前行是否是段落的首行。<br/>true：首行；false：非首行。 |
 
 ## StyledStringKey枚举说明
@@ -3815,3 +3845,179 @@ struct ShaderColorStyle {
 }
 ```
 ![StyledStringShaderStyle](figures/styledStringShaderStyle.png)
+
+### 示例21（设置文本尾部缩进）
+
+该示例通过[ParagraphStyle](#paragraphstyle)中的tailIndents属性，为属性字符串设置文本尾部缩进。
+
+从API版本26.0.0开始，ParagraphStyle接口新增tailIndents属性。
+
+ArkTS-Dyn示例：
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  styledString1:StyledString =
+    new StyledString('未设置tailIndents\n未设置tailIndents\n未设置tailIndents\n未设置tailIndents\n未设置tailIndents', [
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(20) }),
+      },
+    ])
+
+  styledString2:StyledString =
+    new StyledString('设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值', [
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: new ParagraphStyle({
+          tailIndents: LengthMetrics.vp(100),
+        }),
+      },
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(20) }),
+      },
+    ])
+
+  styledString3:StyledString =
+    new StyledString('设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组', [
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: new ParagraphStyle({
+          tailIndents: [LengthMetrics.vp(100), LengthMetrics.vp(50), LengthMetrics.vp(20)],
+        }),
+      },
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(20) }),
+      },
+    ])
+
+  txtController1 = new TextController();
+  txtController2 = new TextController();
+  txtController3 = new TextController();
+
+  build() {
+    Column() {
+      Text(undefined, { controller: this.txtController1 })
+        .onAppear(() => {
+          this.txtController1.setStyledString(this.styledString1);
+        })
+        .textAlign(TextAlign.End)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+        .width('100%')
+
+      Text(undefined, { controller: this.txtController2 })
+        .onAppear(() => {
+          this.txtController2.setStyledString(this.styledString2);
+        })
+        .textAlign(TextAlign.End)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+
+      Text(undefined, { controller: this.txtController3 })
+        .onAppear(() => {
+          this.txtController3.setStyledString(this.styledString3);
+        })
+        .textAlign(TextAlign.End)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Column,Component, Entry, LengthMetrics, Text, StyledString,
+  TextController, ParagraphStyle, StyledStringKey, ParagraphStyleInterface, TextAlign } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  styledString1:StyledString =
+    new StyledString('未设置tailIndents\n未设置tailIndents\n未设置tailIndents\n未设置tailIndents\n未设置tailIndents', [
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: new ParagraphStyle({
+          tailIndents: LengthMetrics.vp(0),
+        } as ParagraphStyleInterface),
+      },
+    ])
+
+  styledString2:StyledString =
+    new StyledString('设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值', [
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: new ParagraphStyle({
+          tailIndents: LengthMetrics.vp(100),
+        } as ParagraphStyleInterface),
+      },
+    ])
+
+  styledString3:StyledString =
+    new StyledString('设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组', [
+      {
+        start: 0,
+        length: 120,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: new ParagraphStyle({
+          tailIndents: [LengthMetrics.vp(100), LengthMetrics.vp(50), LengthMetrics.vp(20)],
+        } as ParagraphStyleInterface),
+      },
+    ])
+
+  txtController1 : TextController = new TextController();
+  txtController2 : TextController = new TextController();
+  txtController3 : TextController = new TextController();
+
+  build() {
+    Column(undefined) {
+      Text(undefined, { controller: this.txtController1 })
+        .onAppear(() => {
+          this.txtController1.setStyledString(this.styledString1);
+        })
+        .borderWidth(1)
+        .textAlign(TextAlign.End)
+        .width('100%')
+
+      Text(undefined, { controller: this.txtController2 })
+        .onAppear(() => {
+          this.txtController2.setStyledString(this.styledString2);
+        })
+        .borderWidth(1)
+        .textAlign(TextAlign.End)
+        .width('100%')
+
+      Text(undefined, { controller: this.txtController3 })
+        .onAppear(() => {
+          this.txtController3.setStyledString(this.styledString3);
+        })
+        .borderWidth(1)
+        .textAlign(TextAlign.End)
+        .width('100%')
+    }
+  }
+}
+```
+
+![styledStringTailIndents](figures/styledStringTailIndents.png)

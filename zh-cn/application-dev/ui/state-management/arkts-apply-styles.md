@@ -11,13 +11,13 @@
 
 ## 导入模块
 
-```ts
+``` TypeScript
 import { applyStyles } from '@ohos.arkui.component';
 ```
 
 ### 语法
 
-```ts
+``` TypeScript
 function applyStyles<T extends CommoMethod>(this: T, styleMethod: (instance: CommonMethod) => void): T;
 ```
 
@@ -31,7 +31,7 @@ function applyStyles<T extends CommoMethod>(this: T, styleMethod: (instance: Com
 
 - 定义在组件内的Styles方法可以通过this访问组件的常量和状态变量，并可以在Styles方法里通过事件来改变状态变量的值，示例如下：
 
-  ```ts
+  ``` TypeScript
   import { ClickEvent, Color, Component, CommonMethod } from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
 
@@ -59,7 +59,7 @@ function applyStyles<T extends CommoMethod>(this: T, styleMethod: (instance: Com
 
 - Styles方法不能有参数，编译期会报错。
 
-  ```ts
+  ``` TypeScript
   // 错误写法： Styles方法不支持参数，编译期报错
   function globalFancy (instance: CommonMethod, value: number) {
     instance.width(value);
@@ -67,7 +67,7 @@ function applyStyles<T extends CommoMethod>(this: T, styleMethod: (instance: Com
 
   // 正确写法
   function globalFancy (instance: CommonMethod) {
-    instance.widthhan'shulue);
+    instance.width(100);
   }
   ```
 
@@ -75,7 +75,8 @@ function applyStyles<T extends CommoMethod>(this: T, styleMethod: (instance: Com
 
 ### 组件内Styles方法和全局Styles方法的用法
 
-```ts
+<!-- @[ApplyStylesFancy](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ApplyStyles/entry/src/main/ets/pages/ApplyStylesFancy.ets) -->
+``` TypeScript
 import { ClickEvent, Color, Column, CommonMethod, Component, Entry, Text, applyStyles } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 

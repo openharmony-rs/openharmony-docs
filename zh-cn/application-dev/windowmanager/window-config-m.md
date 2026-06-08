@@ -1,8 +1,8 @@
 # 窗口元数据配置
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -43,9 +43,8 @@
 
    自由多窗下的可支持窗口模式可以采用多种方法进行配置，配置优先级为：通过[SetSupportedWindowModes](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15)接口配置 > 通过StartAbility配置[StartOption](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)中的SupportWindowMode > 使用metadata配置 > 配置module.json5中[abilities](../quick-start/module-configuration-file.md#abilities标签)标签下的SupportWindowMode属性。
 
-   非自由多窗模式下只能通过配置module.json5中abilities标签下的SupportWindowMode属性配置窗口支持模式，其他配置方式均不生效。
+   非自由多窗模式下只能通过配置module.json5中abilities标签下的SupportWindowMode属性配置窗口支持模式，其他配置方式均不生效。<!--Del-->
 
-<!--Del-->
 5. 使用metadata标签配置主窗边角以直角显示。配置项为：name为ohos.ability.window.isRightAngle，value取值为true或false，取值为true表示窗口边角以直角显示、取值为false则使用系统默认圆角，未配置时默认为false。主窗直角配置仅在PC/2in1设备上生效，且仅支持系统应用。<!--DelEnd-->
 
 

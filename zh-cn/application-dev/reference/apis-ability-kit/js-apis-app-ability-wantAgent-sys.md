@@ -129,6 +129,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 
@@ -297,6 +298,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 
@@ -445,6 +447,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 
@@ -700,6 +703,7 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { RecordData } from '@kit.BasicServicesKit';

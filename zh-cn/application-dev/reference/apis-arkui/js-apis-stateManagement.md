@@ -2214,8 +2214,7 @@ struct ReusableChild {
 @ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct PoolOwner {
   checkPool() {
-    const context = UIUtils.getCustomComponentContext(this);
-    const pool = context.getReusePool();
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
     if (pool) {
       console.info('Global reuse pool configured.');
     } else {

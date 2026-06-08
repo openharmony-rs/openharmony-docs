@@ -1063,6 +1063,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIAbility, Want, common, bundleManager } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1182,6 +1183,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIAbility } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1283,6 +1285,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIAbility } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1516,6 +1519,7 @@ ArkTS-Sta示例：
 后台启动：
 
 ```ts
+'use static'
 import { UIAbility, Caller, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1740,6 +1744,7 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 ```ts
+'use static'
 import UIAbility from '@ohos.app.ability.UIAbility';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import Want from '@ohos.app.ability.Want';
@@ -1811,6 +1816,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import UIAbility from '@ohos.app.ability.UIAbility';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import Want from '@ohos.app.ability.Want';
@@ -1875,6 +1881,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIAbility } from '@kit.AbilityKit';
 import { LocalStorage } from '@ohos.arkui.stateManagement';
 
@@ -2254,8 +2261,10 @@ startAbilityByType(type: string, wantParam: Record\<string, RecordData>, ability
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility, common } from '@kit.AbilityKit';
 import { RecordData } from '@kit.BasicServicesKit';
 
@@ -2389,8 +2398,10 @@ startAbilityByType(type: string, wantParam: Record\<string, RecordData>, ability
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility, common } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 
@@ -2530,6 +2541,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Entry, Column, Text, Row, Component, State } from '@kit.ArkUI';
@@ -2709,6 +2721,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // Index.ets
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2855,6 +2868,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Entry, Column, Text, Row, Component, State } from '@kit.ArkUI';
@@ -3095,6 +3109,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common, OpenLinkOptions } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
@@ -3301,6 +3316,7 @@ ArkTS-Sta示例：
 调用方通过startAbilityForResult接口拉起目标方，目标方再调用backToCallerAbilityWithResult接口返回到调用方。
 
 ```ts
+'use static'
 // 调用方
 // index.ets
 import { common, Want } from '@kit.AbilityKit';
@@ -3564,6 +3580,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Entry, Column, Row, Button, Component } from '@kit.ArkUI';
@@ -3729,6 +3746,7 @@ struct UIServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 import { Entry, RelativeContainer, Button, Component } from '@kit.ArkUI';
@@ -3896,6 +3914,7 @@ struct UIServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 import { Entry, Column, Button, Component, Scroll } from '@kit.ArkUI';
@@ -4041,6 +4060,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIAbility } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4460,6 +4480,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIAbility, Want, common, bundleManager } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4576,6 +4597,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIAbility } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4682,6 +4704,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { AbilityConstant, contextConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4892,6 +4915,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';

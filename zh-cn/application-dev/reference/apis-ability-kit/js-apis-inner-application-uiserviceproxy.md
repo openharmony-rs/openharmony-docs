@@ -176,8 +176,10 @@ sendData(data: Record\<string, RecordData>): void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 import { Entry, Component, Scroll, Column, Button, ButtonType } from '@kit.ArkUI';

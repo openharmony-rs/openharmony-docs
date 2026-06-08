@@ -723,6 +723,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
 import { ShareExtensionAbility, Want, common, bundleManager } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
@@ -1213,6 +1214,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
 import { ShareExtensionAbility, Want, UIExtensionContentSession } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1470,6 +1472,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
 import { ShareExtensionAbility, Want, UIExtensionContentSession, OpenLinkOptions, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1632,6 +1635,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Entry, Column, Button, Row, Component } from '@kit.ArkUI';
@@ -1773,6 +1777,7 @@ struct Page_UIServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 import { Entry, Column, Text, Row, Component, State } from '@kit.ArkUI';
@@ -1894,6 +1899,7 @@ struct Page_UIServiceExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { common } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 import { Entry, Column, Row, Component, State } from '@kit.ArkUI';

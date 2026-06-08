@@ -95,7 +95,7 @@ transform动效，支持的组件范围：
 ```
 
 
-![zh-cn_image_0000001127285004](figures/zh-cn_image_0000001127285004.gif)
+![animateTransform01](figures/animateTransform01.gif)
 
 
 动画叠加
@@ -226,5 +226,5 @@ transform动效，支持的组件范围：
 ```
 
 
-![zh-cn_image_0000001173324765](figures/zh-cn_image_0000001173324765.gif)
+![animateTransform](figures/animateTransform.gif)
 

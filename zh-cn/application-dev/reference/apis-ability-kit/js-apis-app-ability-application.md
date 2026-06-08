@@ -51,7 +51,7 @@ createModuleContext(context: Context, moduleName: string): Promise\<Context>
 >
 > 由于创建模块上下文的过程涉及资源查询与初始化，耗时相对较长，在对应用流畅性要求较高的场景下，不建议频繁或多次调用createModuleContext接口创建多个Context实例，以免影响用户体验。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在元服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -115,7 +115,7 @@ getApplicationContext(): ApplicationContext
 
 重复调用该接口，将生成新的ApplicationContext对象。
 
-**原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在元服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -164,7 +164,7 @@ getApplicationContextInstance(): ApplicationContext
 
 重复调用该接口，将获取同一个ApplicationContext实例。
 
-**原子化服务API**：从API version 23开始，该接口支持在元服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

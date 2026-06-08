@@ -50,8 +50,8 @@ import { AbilityConstant } from '@kit.AbilityKit';
 | lastExitReason | [LastExitReason](#lastexitreason) | 否 | 否 | 枚举类型，表示Ability上次退出原因。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | lastExitMessage<sup>12+</sup> | string | 否 | 否 | 表示Ability上次退出的详细原因。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | lastExitDetailInfo<sup>18+</sup> | [LastExitDetailInfo](#lastexitdetailinfo18) | 否 | 是 | 表示Ability上次退出时的关键运行信息（含进程ID、退出时间戳、RSS内存值等）。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
-| launchUTCTime<sup>23+</sup> | number | 否 | 是 | 表示UIAbility开始启动的UTC时间戳，单位为毫秒。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**约束：**<br/>该功能仅在启动UIAbility时生效。对于其他类型的Ability（例如UIExtensionAbility），所获取的启动时间为默认值0。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
-| launchUptime<sup>23+</sup> | number | 否 | 是 | 表示UIAbility开始启动时系统已运行的时间（自系统开机启动以来的时间），单位为毫秒。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**约束：**<br/>该功能仅在启动UIAbility时生效。对于其他类型的Ability（例如UIExtensionAbility），所获取的启动时间为默认值0。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| launchUTCTime<sup>23+</sup> | number | 否 | 是 | 表示UIAbility开始启动的UTC时间戳，单位为毫秒。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。<br>**约束：**<br/>该功能仅在启动UIAbility时生效。对于其他类型的Ability（例如UIExtensionAbility），所获取的启动时间为默认值0。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| launchUptime<sup>23+</sup> | number | 否 | 是 | 表示UIAbility开始启动时系统已运行的时间（自系统开机启动以来的时间），单位为毫秒。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。<br>**约束：**<br/>该功能仅在启动UIAbility时生效。对于其他类型的Ability（例如UIExtensionAbility），所获取的启动时间为默认值0。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 ## LaunchReason
 
@@ -140,7 +140,7 @@ export default class MyAbility extends UIAbility {
 | pss | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | Ability上次退出时所在进程实际使用的物理内存大小，单位KB。 <br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 | timestamp | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | Ability上次退出时的时间戳。 <br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 | processState<sup>20+</sup> | [appManager.ProcessState](js-apis-app-ability-appManager.md#processstate10) | 否 | 是 | Ability上次退出时的进程状态。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| killReason<sup>24+</sup> | string | 否 | 是 | Ability上次退出时的原因，取值详见[应用终止事件reason字段说明](../../dfx/hiappevent-watcher-app-killed-events.md#reason字段说明)。<br/>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
+| killReason<sup>24+</sup> | string | 否 | 是 | Ability上次退出时的原因，取值详见[应用终止事件reason字段说明](../../dfx/hiappevent-watcher-app-killed-events.md#reason字段说明)。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
 
 > **说明：**
 >
@@ -240,10 +240,10 @@ export default class MyAbility extends UIAbility {
 | MEMORY_LEVEL_MODERATE       | 0   | 表示整机可用内存适中。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 | 
 | MEMORY_LEVEL_LOW            | 1   | 表示整机可用内存低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 | 
 | MEMORY_LEVEL_CRITICAL       | 2   | 表示整机可用内存极低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| MEMORY_LEVEL_UI_HIDDEN<sup>24+</sup>      | 3   | 表示应用程序的所有UI界面已不可见，此时应该释放一些资源。该枚举仅对从前台切换到后台的应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。<br>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
-| MEMORY_LEVEL_BACKGROUND_MODERATE<sup>24+</sup>     | 4   | 表示应用刚被使用过，即处于应用使用排序链表（LRU）的头部，暂时不会被系统清理。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。<br>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
-| MEMORY_LEVEL_BACKGROUND_LOW<sup>24+</sup>    | 5   | 表示应用已被用户使用完一段时间，即处于应用使用排序链表（LRU）的中部，存在被系统清理的风险。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。<br>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
-| MEMORY_LEVEL_BACKGROUND_CRITICAL<sup>24+</sup>    | 6   | 表示应用长期未被使用，即处于应用使用排序链表（LRU）的尾部，会被系统优先清理。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。<br>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
+| MEMORY_LEVEL_UI_HIDDEN<sup>24+</sup>      | 3   | 表示应用程序的所有UI界面已不可见，此时应该释放一些资源。该枚举仅对从前台切换到后台的应用生效。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。<br>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
+| MEMORY_LEVEL_BACKGROUND_MODERATE<sup>24+</sup>     | 4   | 表示应用刚被使用过，即处于应用使用排序链表（LRU）的头部，暂时不会被系统清理。该枚举仅对后台应用生效。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。<br>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
+| MEMORY_LEVEL_BACKGROUND_LOW<sup>24+</sup>    | 5   | 表示应用已被用户使用完一段时间，即处于应用使用排序链表（LRU）的中部，存在被系统清理的风险。该枚举仅对后台应用生效。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。<br>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
+| MEMORY_LEVEL_BACKGROUND_CRITICAL<sup>24+</sup>    | 6   | 表示应用长期未被使用，即处于应用使用排序链表（LRU）的尾部，会被系统优先清理。该枚举仅对后台应用生效。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。<br>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
 
 > **说明：**
 > 

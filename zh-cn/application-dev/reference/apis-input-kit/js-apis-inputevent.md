@@ -37,6 +37,6 @@ import { InputEvent } from '@kit.InputKit';
 | ---------- | ------ | ---- | ---- | -------------- |
 | id         |  ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    | 否    | 事件ID。 |
 | deviceId   |  ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    | 否    | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。    |
-| actionTime |  ArkTS-Dyn: number <br>ArkTS-Sta: long | 否    | 否    | 上报输入事件的时间，单位为微秒。    |
+| actionTime |  ArkTS-Dyn: number <br>ArkTS-Sta: long | 否    | 否    | 上报输入事件的时间，表示系统启动运行至今逝去的微秒数，单位为微秒（μs）。      |
 | screenId   |  ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    | 否    | 目标屏幕ID。         |
 | windowId   |  ArkTS-Dyn: number <br>ArkTS-Sta: int | 否    | 否    | 目标窗口ID。         |

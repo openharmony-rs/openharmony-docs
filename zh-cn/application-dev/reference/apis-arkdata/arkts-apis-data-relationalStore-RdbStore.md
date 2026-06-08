@@ -2410,6 +2410,8 @@ updateWithReturning(values: ValuesBucket, predicates: RdbPredicates, config: Ret
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
 
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **ArkTS-Dyn起始版本：** 23
@@ -2511,6 +2513,8 @@ updateWithReturningSync(values: ValuesBucket, predicates: RdbPredicates, config:
 根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定当发生数据冲突时的解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，返回[Result](arkts-apis-data-relationalStore-i.md#result23)。
 
 conflict参数不建议使用ON_CONFLICT_FAIL策略，可能无法返回正确的结果。
+
+单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -3408,7 +3412,7 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值**：
 
@@ -3474,7 +3478,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;): Lit
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值**：
 
@@ -3904,7 +3908,7 @@ querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&
 | 参数名   | 类型                                         | 必填 | 说明                                                         |
 | -------- | -------------------------------------------- | ---- | ------------------------------------------------------------ |
 | sql      | string                                       | 是   | 指定要执行的SQL语句。                                        |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt;         | 是   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数需为空数组。 |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt;         | 是   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 | callback | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 指定callback回调函数。如果操作成功，则返回ResultSet对象。    |
 
 **错误码：**
@@ -3972,7 +3976,7 @@ querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;ResultSet&g
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值**：
 
@@ -4062,7 +4066,7 @@ querySqlSync(sql: string, bindArgs?: Array&lt;ValueType&gt;): ResultSet
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空。 |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值**：
 
@@ -4329,7 +4333,7 @@ executeSql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallbac
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 是   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数需为空数组。 |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 是   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 | callback | AsyncCallback&lt;void&gt;            | 是   | 指定callback回调函数。                                       |
 
 **错误码：**
@@ -4396,7 +4400,7 @@ executeSql(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;void&gt;
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
+| bindArgs | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值**：
 
@@ -4475,7 +4479,7 @@ execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 | 参数名   | 类型                                 | 必填 | 说明                                                         |
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
-| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。 |
+| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值**：
 
@@ -4614,7 +4618,7 @@ ArkTS-Sta: execute(sql: string, txId: long, args?: Array&lt;ValueType&gt;): Prom
 | -------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | sql      | string                               | 是   | 指定要执行的SQL语句。                                        |
 | txId      | ArkTS-Dyn: number<br>ArkTS-Sta: long                               | 是   | 通过[beginTrans](#begintrans12)获取的事务ID，如果传0，该语句默认在单独事务内。                                      |
-| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，填null或者填undefined，都认为是sql参数语句完整。 |
+| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。当sql参数语句完整时，该参数不填。默认值为空数组。 |
 
 **返回值**：
 
@@ -4723,7 +4727,7 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 | 参数名 | 类型                                 | 必填 | 说明                                                         |
 | ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | sql    | string                               | 是   | 指定要执行的SQL语句。                                        |
-| args   | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，或者填null或undefined，都认为是sql参数语句完整。默认值为空。 |
+| args   | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否   | SQL语句中参数的值。该值与sql参数语句中的占位符相对应。该参数不填，或者填null或undefined，都认为是sql参数语句完整，默认值为空数组。 |
 
 **返回值**：
 
@@ -5169,7 +5173,7 @@ createTransaction(options?: TransactionOptions): Promise&lt;Transaction&gt;
 
 | 参数名      | 类型                          | 必填 | 说明                                                         |
 | ----------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| options       | [TransactionOptions](arkts-apis-data-relationalStore-i.md#transactionoptions14)           | 否   | 表示事务对象的配置信息。                                 |
+| options       | [TransactionOptions](arkts-apis-data-relationalStore-i.md#transactionoptions14)           | 否   | 表示事务对象的配置信息，默认值为DEFERRED。                                   |
 
 **返回值**：
 
@@ -7184,7 +7188,7 @@ on(event: 'autoSyncProgress', progress: Callback&lt;ProgressDetails&gt;): void
 | 参数名       | 类型                              | 必填 | 说明                                |
 | ------------ |---------------------------------| ---- |-----------------------------------|
 | event        | string                          | 是   | 取值为'autoSyncProgress'，表示自动同步进度通知。 |
-| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 回调函数。                             |
+| progress     | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 用于返回[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)结果的回调函数。                             |
 
 **错误码：**
 

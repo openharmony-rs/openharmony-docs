@@ -54,7 +54,7 @@ ArkTS-Sta:  setKeyboardRepeatDelay(delay: int, callback: AsyncCallback&lt;void&g
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202 | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -157,7 +157,7 @@ ArkTS-Sta: setKeyboardRepeatDelay(delay: int): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202 | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -250,7 +250,7 @@ ArkTS-Sta: getKeyboardRepeatDelay(callback: AsyncCallback&lt;int&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -347,7 +347,7 @@ ArkTS-Sta: getKeyboardRepeatDelay(): Promise&lt;int&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -440,7 +440,7 @@ ArkTS-Sta: setKeyboardRepeatRate(rate: int, callback: AsyncCallback&lt;void&gt;)
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -542,7 +542,7 @@ ArkTS-Sta: setKeyboardRepeatRate(rate: int): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -633,7 +633,7 @@ ArkTS-Sta: getKeyboardRepeatRate(callback: AsyncCallback&lt;int&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -728,7 +728,7 @@ ArkTS-Sta: getKeyboardRepeatRate(): Promise&lt;int&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -851,10 +851,10 @@ struct Index {
             inputDevice.setInputDeviceEnabled(0, true).then(() => {
               console.info(`Succeeded in setting input device enabled.`);
             }).catch((error: BusinessError) => {
-              console.error(`Failed to set device enable, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              console.error(`Failed to set device enabled, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Failed to set device enable, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            console.error(`Failed to set device enabled, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }

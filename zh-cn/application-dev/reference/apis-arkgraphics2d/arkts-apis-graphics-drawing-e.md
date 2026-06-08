@@ -39,35 +39,35 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称        | 值   | 说明                                                         | 示意图   |
 | ----------- | ---- | ------------------------------------------------------------ | -------- |
-| CLEAR       | 0    | 清除模式，r = 0，设置为全透明。                                | ![CLEAR](figures/zh-ch_image_BlendMode_Clear.png) |
-| SRC         | 1    | r = s（result的4个通道，都等于source的4个通道，即结果等于源。），使用源像素替换目标像素。 | ![SRC](figures/zh-ch_image_BlendMode_Src.png) |
-| DST         | 2    | r = d（result的4个通道，都等于destination的4个通道，即结果等于目标。），保持目标像素不变。 | ![DST](figures/zh-ch_image_BlendMode_Dst.png) |
-| SRC_OVER    | 3    | r = s + (1 - sa) * d，在目标像素上方绘制源像素，考虑源像素的透明度。 | ![SRC_OVER](figures/zh-ch_image_BlendMode_SrcOver.png) |
-| DST_OVER    | 4    | r = d + (1 - da) * s，在源像素上方绘制目标像素，考虑目标像素的透明度。 | ![DST_OVER](figures/zh-ch_image_BlendMode_DstOver.png) |
-| SRC_IN      | 5    | r = s * da，仅保留源像素与目标不透明部分的交集。 | ![SRC_IN](figures/zh-ch_image_BlendMode_SrcIn.png) |
-| DST_IN      | 6    | r = d * sa，仅保留目标像素与源不透明部分的交集。 | ![DST_IN](figures/zh-ch_image_BlendMode_DstIn.png) |
-| SRC_OUT     | 7    | r = s * (1 - da)，保留源像素中不与目标重叠的部分。 | ![SRC_OUT](figures/zh-ch_image_BlendMode_SrcOut.png) |
-| DST_OUT     | 8    | r = d * (1 - sa)，保留目标像素中不与源重叠的部分。 | ![DST_OUT](figures/zh-ch_image_BlendMode_DstOut.png) |
-| SRC_ATOP    | 9    | r = s * da + d * (1 - sa)，源像素覆盖在目标像素上，仅在目标不透明部分显示源像素。 | ![SRC_ATOP](figures/zh-ch_image_BlendMode_SrcATop.png) |
-| DST_ATOP    | 10   | r = d * sa + s * (1 - da)，目标像素覆盖在源像素上，仅在源不透明部分显示目标像素。 | ![DST_ATOP](figures/zh-ch_image_BlendMode_DstATop.png) |
-| XOR         | 11   | r = s * (1 - da) + d * (1 - sa)，仅显示源像素和目标像素中不重叠的部分。 | ![XOR](figures/zh-ch_image_BlendMode_Xor.png) |
-| PLUS        | 12   | r = min(s + d, 1)，源和目标像素的颜色值相加。                   | ![PLUS](figures/zh-ch_image_BlendMode_Plus.png) |
-| MODULATE    | 13   | r = s * d，源和目标像素的颜色值相乘。                           | ![MODULATE](figures/zh-ch_image_BlendMode_Modulate.png) |
-| SCREEN      | 14   | 滤色模式，r = s + d - s * d，反转源和目标像素的颜色值，相乘后再反转，结果通常更亮。 | ![SCREEN](figures/zh-ch_image_BlendMode_Screen.png) |
-| OVERLAY     | 15   | 叠加模式，根据目标像素的亮度，选择性地应用MULTIPLY或SCREEN模式，增强对比度。 | ![OVERLAY](figures/zh-ch_image_BlendMode_Overlay.png) |
-| DARKEN      | 16   | 变暗模式，rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d，取源和目标像素中较暗的颜色值。 | ![DARKEN](figures/zh-ch_image_BlendMode_Darken.png) |
-| LIGHTEN     | 17   | 变亮模式，rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d，取源和目标像素中较亮的颜色值。 | ![LIGHTEN](figures/zh-ch_image_BlendMode_Lighten.png) |
-| COLOR_DODGE | 18   | 颜色减淡模式，通过减小对比度使目标像素变亮以反映源像素。           | ![COLOR_DODGE](figures/zh-ch_image_BlendMode_ColorDodge.png) |
-| COLOR_BURN  | 19   | 颜色加深模式，通过增加对比度使目标像素变暗以反映源像素。           | ![COLOR_BURN](figures/zh-ch_image_BlendMode_ColorBurn.png) |
-| HARD_LIGHT  | 20   | 强光模式，根据源像素的亮度，选择性地应用MULTIPLY或SCREEN模式。    | ![HARD_LIGHT](figures/zh-ch_image_BlendMode_HardLight.png) |
-| SOFT_LIGHT  | 21   | 柔光模式，根据源像素的亮度，柔和地变亮或变暗目标像素。             | ![SOFT_LIGHT](figures/zh-ch_image_BlendMode_SoftLight.png) |
-| DIFFERENCE  | 22   | 差值模式，rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d，计算源和目标像素颜色值的差异。 | ![DIFFERENCE](figures/zh-ch_image_BlendMode_Difference.png) |
-| EXCLUSION   | 23   | 排除模式，rc = s + d - two(s * d), ra = s + (1 - sa) * d，类似于DIFFERENCE，但对比度较低。 | ![EXCLUSION](figures/zh-ch_image_BlendMode_Exclusion.png) |
-| MULTIPLY    | 24   | 正片叠底，r = s * (1 - da) + d * (1 - sa) + s * d，源和目标像素的颜色值相乘，结果通常更暗。 | ![MULTIPLY](figures/zh-ch_image_BlendMode_Multiply.png) |
-| HUE         | 25   | 色相模式，使用源像素的色相，目标像素的饱和度和亮度。               | ![HUE](figures/zh-ch_image_BlendMode_Hue.png) |
-| SATURATION  | 26   | 饱和度模式，使用源像素的饱和度，目标像素的色相和亮度。             | ![SATURATION](figures/zh-ch_image_BlendMode_Saturation.png) |
-| COLOR       | 27   | 颜色模式，使用源像素的色相和饱和度，目标像素的亮度。               | ![COLOR](figures/zh-ch_image_BlendMode_Color.png) |
-| LUMINOSITY  | 28   | 亮度模式，使用源像素的亮度，目标像素的色相和饱和度。               | ![LUMINOSITY](figures/zh-ch_image_BlendMode_Luminosity.png) |
+| CLEAR       | 0    | 清除模式，r = 0，设置为全透明。                                | ![CLEAR](figures/BlendMode-Clear.png) |
+| SRC         | 1    | r = s（result的4个通道，都等于source的4个通道，即结果等于源。），使用源像素替换目标像素。 | ![SRC](figures/BlendMode-Src.png) |
+| DST         | 2    | r = d（result的4个通道，都等于destination的4个通道，即结果等于目标。），保持目标像素不变。 | ![DST](figures/BlendMode-Dst.png) |
+| SRC_OVER    | 3    | r = s + (1 - sa) * d，在目标像素上方绘制源像素，考虑源像素的透明度。 | ![SRC_OVER](figures/BlendMode-SrcOver.png) |
+| DST_OVER    | 4    | r = d + (1 - da) * s，在源像素上方绘制目标像素，考虑目标像素的透明度。 | ![DST_OVER](figures/BlendMode-DstOver.png) |
+| SRC_IN      | 5    | r = s * da，仅保留源像素与目标不透明部分的交集。 | ![SRC_IN](figures/BlendMode-SrcIn.png) |
+| DST_IN      | 6    | r = d * sa，仅保留目标像素与源不透明部分的交集。 | ![DST_IN](figures/BlendMode-DstIn.png) |
+| SRC_OUT     | 7    | r = s * (1 - da)，保留源像素中不与目标重叠的部分。 | ![SRC_OUT](figures/BlendMode-SrcOut.png) |
+| DST_OUT     | 8    | r = d * (1 - sa)，保留目标像素中不与源重叠的部分。 | ![DST_OUT](figures/BlendMode-DstOut.png) |
+| SRC_ATOP    | 9    | r = s * da + d * (1 - sa)，源像素覆盖在目标像素上，仅在目标不透明部分显示源像素。 | ![SRC_ATOP](figures/BlendMode-SrcATop.png) |
+| DST_ATOP    | 10   | r = d * sa + s * (1 - da)，目标像素覆盖在源像素上，仅在源不透明部分显示目标像素。 | ![DST_ATOP](figures/BlendMode-DstATop.png) |
+| XOR         | 11   | r = s * (1 - da) + d * (1 - sa)，仅显示源像素和目标像素中不重叠的部分。 | ![XOR](figures/BlendMode-Xor.png) |
+| PLUS        | 12   | r = min(s + d, 1)，源和目标像素的颜色值相加。                   | ![PLUS](figures/BlendMode-Plus.png) |
+| MODULATE    | 13   | r = s * d，源和目标像素的颜色值相乘。                           | ![MODULATE](figures/BlendMode-Modulate.png) |
+| SCREEN      | 14   | 滤色模式，r = s + d - s * d，反转源和目标像素的颜色值，相乘后再反转，结果通常更亮。 | ![SCREEN](figures/BlendMode-Screen.png) |
+| OVERLAY     | 15   | 叠加模式，根据目标像素的亮度，选择性地应用MULTIPLY或SCREEN模式，增强对比度。 | ![OVERLAY](figures/BlendMode-Overlay.png) |
+| DARKEN      | 16   | 变暗模式，rc = s + d - max(s * da, d * sa), ra = s + (1 - sa) * d，取源和目标像素中较暗的颜色值。 | ![DARKEN](figures/BlendMode-Darken.png) |
+| LIGHTEN     | 17   | 变亮模式，rc = s + d - min(s * da, d * sa), ra = s + (1 - sa) * d，取源和目标像素中较亮的颜色值。 | ![LIGHTEN](figures/BlendMode-Lighten.png) |
+| COLOR_DODGE | 18   | 颜色减淡模式，通过减小对比度使目标像素变亮以反映源像素。           | ![COLOR_DODGE](figures/BlendMode-ColorDodge.png) |
+| COLOR_BURN  | 19   | 颜色加深模式，通过增加对比度使目标像素变暗以反映源像素。           | ![COLOR_BURN](figures/BlendMode-ColorBurn.png) |
+| HARD_LIGHT  | 20   | 强光模式，根据源像素的亮度，选择性地应用MULTIPLY或SCREEN模式。    | ![HARD_LIGHT](figures/BlendMode-HardLight.png) |
+| SOFT_LIGHT  | 21   | 柔光模式，根据源像素的亮度，柔和地变亮或变暗目标像素。             | ![SOFT_LIGHT](figures/BlendMode-SoftLight.png) |
+| DIFFERENCE  | 22   | 差值模式，rc = s + d - 2 * (min(s * da, d * sa)), ra = s + (1 - sa) * d，计算源和目标像素颜色值的差异。 | ![DIFFERENCE](figures/BlendMode-Difference.png) |
+| EXCLUSION   | 23   | 排除模式，rc = s + d - two(s * d), ra = s + (1 - sa) * d，类似于DIFFERENCE，但对比度较低。 | ![EXCLUSION](figures/BlendMode-Exclusion.png) |
+| MULTIPLY    | 24   | 正片叠底，r = s * (1 - da) + d * (1 - sa) + s * d，源和目标像素的颜色值相乘，结果通常更暗。 | ![MULTIPLY](figures/BlendMode-Multiply.png) |
+| HUE         | 25   | 色相模式，使用源像素的色相，目标像素的饱和度和亮度。               | ![HUE](figures/BlendMode-Hue.png) |
+| SATURATION  | 26   | 饱和度模式，使用源像素的饱和度，目标像素的色相和亮度。             | ![SATURATION](figures/BlendMode-Saturation.png) |
+| COLOR       | 27   | 颜色模式，使用源像素的色相和饱和度，目标像素的亮度。               | ![COLOR](figures/BlendMode-Color.png) |
+| LUMINOSITY  | 28   | 亮度模式，使用源像素的亮度，目标像素的色相和饱和度。               | ![LUMINOSITY](figures/BlendMode-Luminosity.png) |
 
 ## PathMeasureMatrixFlags<sup>12+</sup>
 
@@ -186,8 +186,8 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称                 | 值    | 说明           | 示意图   |
 | ------------------ | ---- | ---------------- | -------- |
-| DIFFERENCE | 0    | 将指定区域裁剪（取差集）。 | ![DIFFERENCE](figures/zh-ch_image_ClipOp_Difference.png) |
-| INTERSECT  | 1    | 将指定区域保留（取交集）。 | ![INTERSECT](figures/zh-ch_image_ClipOp_Intersect.png) |
+| DIFFERENCE | 0    | 将指定区域裁剪（取差集）。 | ![DIFFERENCE](figures/ClipOp-Difference.png) |
+| INTERSECT  | 1    | 将指定区域保留（取交集）。 | ![INTERSECT](figures/ClipOp-Intersect.png) |
 
 > **说明：**
 >
@@ -241,7 +241,7 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 | INVERSE_EVEN_ODD  | 3    | EVEN_ODD涂色规则取反。 |
 
 > **说明：**<br>
-> ![WINDING&EVEN_ODD](figures/zh-ch_image_PathFillType_Winding_Even_Odd.png)<br>
+> ![WINDING&EVEN_ODD](figures/PathFillType-Winding-Even-Odd.png)<br>
 > 如图所示圆环为路径，箭头指示路径的方向，p为区域内任意一点，蓝色线条为点p出发的射线，黑色箭头所指为对应填充规则下使用蓝色填充路径的结果。WINDING填充规则下，射线与路径的交点计数为2，不为0，点p被涂色；EVEN_ODD填充规则下，射线与路径的相交次数为2，是偶数，点p不被涂色。
 
 ## PointMode<sup>12+</sup>
@@ -382,9 +382,9 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称        | 值   | 说明                                                         | 示意图   |
 | ----------- | ---- | ----------------------------------------------------------- | -------- |
-| MITER_JOIN | 0    | 转角类型为尖角，如果折线角度比较小，则尖角会很长，需要使用限制值（miter limit）进行限制。 | ![MITER_JOIN](figures/zh-ch_image_JoinStyle_Miter_Join.png) |
-| ROUND_JOIN | 1    | 转角类型为圆头。 | ![ROUND_JOIN](figures/zh-ch_image_JoinStyle_Round_Join.png) |
-| BEVEL_JOIN | 2    | 转角类型为平头。 | ![BEVEL_JOIN](figures/zh-ch_image_JoinStyle_Bevel_Join.png) |
+| MITER_JOIN | 0    | 转角类型为尖角，如果折线角度比较小，则尖角会很长，需要使用限制值（miter limit）进行限制。 | ![MITER_JOIN](figures/JoinStyle-Miter-Join.png) |
+| ROUND_JOIN | 1    | 转角类型为圆头。 | ![ROUND_JOIN](figures/JoinStyle-Round-Join.png) |
+| BEVEL_JOIN | 2    | 转角类型为平头。 | ![BEVEL_JOIN](figures/JoinStyle-Bevel-Join.png) |
 
 ## CapStyle<sup>12+</sup>
 
@@ -398,9 +398,9 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称        | 值   | 说明                                                         | 示意图   |
 | ---------- | ---- | ----------------------------------------------------------- | -------- |
-| FLAT_CAP   | 0    | 没有线帽样式，线条头尾端点处横切。 | ![FLAT_CAP](figures/zh-ch_image_CapStyle_Flat_Cap.jpg) |
-| SQUARE_CAP | 1    | 线帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度是线段宽度的一半。 | ![SQUARE_CAP](figures/zh-ch_image_CapStyle_Square_Cap.jpg) |
-| ROUND_CAP  | 2    | 线帽的样式为圆弧，线条的头尾端点处多出一个半圆弧，半圆的直径与线段宽度一致。 | ![ROUND_CAP](figures/zh-ch_image_CapStyle_Round_Cap.jpg) |
+| FLAT_CAP   | 0    | 没有线帽样式，线条头尾端点处横切。 | ![FLAT_CAP](figures/CapStyle-Flat-Cap.jpg) |
+| SQUARE_CAP | 1    | 线帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度是线段宽度的一半。 | ![SQUARE_CAP](figures/CapStyle-Square-Cap.jpg) |
+| ROUND_CAP  | 2    | 线帽的样式为圆弧，线条的头尾端点处多出一个半圆弧，半圆的直径与线段宽度一致。 | ![ROUND_CAP](figures/CapStyle-Round-Cap.jpg) |
 
 ## BlurType<sup>12+</sup>
 
@@ -414,10 +414,10 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称   | 值 | 说明               | 示意图   |
 | ------ | - | ------------------ | -------- |
-| NORMAL | 0 | 全面模糊，外圈边缘和内部实体一起模糊。 | ![NORMAL](figures/zh-ch_image_BlueType_Normal.png) |
-| SOLID  | 1 | 内部实体不变，只模糊外圈边缘部分。 | ![SOLID](figures/zh-ch_image_BlueType_Solid.png) |
-| OUTER  | 2 | 只有外圈边缘模糊，内部实体完全透明。 | ![OUTER](figures/zh-ch_image_BlueType_Outer.png) |
-| INNER  | 3 | 只有内部实体模糊，外圈边缘清晰。 | ![INNER](figures/zh-ch_image_BlueType_Inner.png) |
+| NORMAL | 0 | 全面模糊，外圈边缘和内部实体一起模糊。 | ![NORMAL](figures/BlurType-Normal.png) |
+| SOLID  | 1 | 内部实体不变，只模糊外圈边缘部分。 | ![SOLID](figures/BlurType-Solid.png) |
+| OUTER  | 2 | 只有外圈边缘模糊，内部实体完全透明。 | ![OUTER](figures/BlurType-Outer.png) |
+| INNER  | 3 | 只有内部实体模糊，外圈边缘清晰。 | ![INNER](figures/BlurType-Inner.png) |
 
 ## ScaleToFit<sup>12+</sup>
 
@@ -448,12 +448,12 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称                   | 值   | 说明                           | 示意图   |
 | --------------------- | ---- | ------------------------------ | -------- |
-| DIFFERENCE         | 0    | 两个区域的相减操作。  | ![CLEAR](figures/zh-ch_image_RegionOp_Difference.png) |
-| INTERSECT          | 1    | 两个区域的相交操作。 | ![INTERSECT](figures/zh-ch_image_RegionOp_Intersect.png) |
-| UNION              | 2    | 两个区域的联合操作。   | ![UNION](figures/zh-ch_image_RegionOpe_Union.png) |
-| XOR                | 3    | 两个区域的异或操作。   | ![XOR](figures/zh-ch_image_RegionOp_Xor.png) |
-| REVERSE_DIFFERENCE | 4    | 两个区域的反向相减操作。   | ![REVERSE_DIFFERENCE](figures/zh-ch_image_RegionOp_Reverse_difference.png) |
-| REPLACE            | 5    | 两个区域替换操作。   | ![REPLACE](figures/zh-ch_image_RegionOp_Replace.png) |
+| DIFFERENCE         | 0    | 两个区域的相减操作。  | ![CLEAR](figures/RegionOp-Difference.png) |
+| INTERSECT          | 1    | 两个区域的相交操作。 | ![INTERSECT](figures/RegionOp-Intersect.png) |
+| UNION              | 2    | 两个区域的联合操作。   | ![UNION](figures/RegionOpe-Union.png) |
+| XOR                | 3    | 两个区域的异或操作。   | ![XOR](figures/RegionOp-Xor.png) |
+| REVERSE_DIFFERENCE | 4    | 两个区域的反向相减操作。   | ![REVERSE_DIFFERENCE](figures/RegionOp-Reverse-difference.png) |
+| REPLACE            | 5    | 两个区域替换操作。   | ![REPLACE](figures/RegionOp-Replace.png) |
 
 > **说明：**
 >
@@ -488,6 +488,6 @@ r : 如果4个通道（透明度、红、绿、蓝）的计算方式相同，用
 
 | 名称                   | 值   | 说明                           | 示意图   |
 | --------------------- | ---- | ------------------------------ | -------- |
-| TRIANGLES_VERTEXMODE           | 0    | 每三个顶点来自不同的三角形。  |![TRIANGLES_VERTEXMODE](figures/zh-ch_image_Triangles_VertexMode.png) |
-| TRIANGLESSTRIP_VERTEXMODE          | 1    | 连续的三角形共享一条边。对于连续表面效率高。 |![TRIANGLESSTRIP_VERTEXMODE](figures/zh-ch_image_TrianglesStrip_VertexMode.png) |
-| TRIANGLESFAN_VERTEXMODE       | 2    | 所有三角形共享一个顶点。非常适合圆形/扇形。   |![TRIANGLESFAN_VERTEXMODE](figures/zh-ch_image_TrianglesFan_VertexMode.png) |
+| TRIANGLES_VERTEXMODE           | 0    | 每三个顶点来自不同的三角形。  |![TRIANGLES_VERTEXMODE](figures/Triangles-VertexMode.png) |
+| TRIANGLESSTRIP_VERTEXMODE          | 1    | 连续的三角形共享一条边。对于连续表面效率高。 |![TRIANGLESSTRIP_VERTEXMODE](figures/TrianglesStrip-VertexMode.png) |
+| TRIANGLESFAN_VERTEXMODE       | 2    | 所有三角形共享一个顶点。非常适合圆形/扇形。   |![TRIANGLESFAN_VERTEXMODE](figures/TrianglesFan-VertexMode.png) |

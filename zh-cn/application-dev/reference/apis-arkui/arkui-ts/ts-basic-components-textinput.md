@@ -905,7 +905,7 @@ cancelButton(options: CancelButtonOptions)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[cancelButton](#cancelbutton23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[cancelButton](#cancelbutton23)。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -925,8 +925,7 @@ cancelButton(iconOptions: CancelButtonOptions | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[cancelButton](#cancelbutton11)。
-  
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[cancelButton](#cancelbutton11)。
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -1997,17 +1996,17 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 <!--Table: 25%; 8%; 67%-->
 | 名称                          |  值   | 说明                       |
 | ----------------------------- | ----- | --------------------------- |
-| Normal                        | 0 | 基本输入模式，无特殊限制。<br/>内联输入风格只支持InputType.Normal类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
-| ArkTS-Dyn: Number<br/>ArkTS-Sta: NUMBER | 2 | 纯数字输入模式。<br/>不支持负数、小数。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| Normal                        | 0 | 基本输入模式，无特殊限制。<br/>内联输入风格只支持InputType.Normal类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| ArkTS-Dyn: Number<br/>ArkTS-Sta: NUMBER | 2 | 纯数字输入模式。<br/>不支持负数、小数。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
 | PhoneNumber<sup>9+</sup>      | 3 | 电话号码输入模式。<br/>支持输入数字、空格、+ 、-、*、#、(、)，长度不限。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
-| Email                         | 5 | 邮箱地址输入模式。<br/>支持数字、字母、下划线、小数点、!、#、$、%、&、'、"、*、+、-、/、=、?、^、`、\{、\|、\}、~，以及@字符（只能存在一个@字符）。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
-| Password                      | 7 | 密码输入模式。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>密码输入模式中，[decoration](#decoration12)、[showUnderline](#showunderline10)、[lineHeight](#lineheight12)不生效。<br/>在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| Email                         | 5 | 邮箱地址输入模式。<br/>支持数字、字母、下划线、小数点、!、#、$、%、&、'、"、*、+、-、/、=、?、^、`、\{、\|、\}、~，以及@字符（只能存在一个@字符）。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Password                      | 7 | 密码输入模式。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>密码输入模式中，[decoration](#decoration12)、[showUnderline](#showunderline10)、[lineHeight](#lineheight12)不生效。<br/>在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
 | NUMBER_PASSWORD<sup>11+</sup> | 8 | 纯数字密码输入模式。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>密码输入模式不支持下划线样式。在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | USER_NAME<sup>11+</sup>       | 10 | 用户名输入模式，无特殊限制。<br/>在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | NEW_PASSWORD<sup>11+</sup>    | 11 | 新密码输入模式，无特殊限制。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>在已启用密码保险箱的情况下，支持自动生成新密码。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | NUMBER_DECIMAL<sup>11+</sup>  | 12 | 带小数点的数字输入模式。<br/>支持数字，小数点（只能存在一个小数点）。不支持负数小数，负数小数的数字输入模式请使用inputFilter实现。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | URL<sup>12+</sup>  | 13 | 带URL的输入模式，无特殊限制。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
-| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式，无特殊限制。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
+| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式，无特殊限制。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 24 |
 
 ## ContentType<sup>12+</sup>枚举说明
 
@@ -2094,11 +2093,11 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 | 名称                   | 值 | 说明               |
 | ---------------------- | --- | ------------------ |
-| Go                     | 2 | 显示为开始样式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
-| Search                 | 3 | 显示为搜索样式。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
-| Send                   | 4 | 显示为发送样式。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
-| Next                   | 5 | 显示为下一步样式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
-| Done                   | 6 | 显示为完成样式。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| Go                     | 2 | 显示为开始样式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Search                 | 3 | 显示为搜索样式。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Send                   | 4 | 显示为发送样式。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Next                   | 5 | 显示为下一步样式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Done                   | 6 | 显示为完成样式。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
 | PREVIOUS<sup>11+</sup> | 7 | 显示为上一步样式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | NEW_LINE<sup>11+</sup> | 8 | 显示为换行样式。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 
@@ -4337,35 +4336,97 @@ struct demo {
 
 ![textInput_barState](figures/textInput_barState.gif)
 
-### 示例26（设置行首标点压缩）
+### 示例26（设置行首标点符号压缩和行尾标点符号悬挂）
 
-该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+本示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点符号压缩，通过[punctuationOverflow](#punctuationoverflow)设置行尾标点符号悬挂。
 
-从API version 23开始，支持compressLeadingPunctuation接口。
+左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+
+文本自动换行后，剩余内容（含标点符号）需要能够放入上一行，标点符号悬挂才生效。
+
+从API版本23开始，新增compressLeadingPunctuation接口。
+
+从API版本26.0.0开始，新增punctuationOverflow接口。
+
+ArkTS-Dyn示例：
 
 ```ts
-// xxx.ets
 @Entry
 @Component
-struct Index {
+struct PunctuationDemo {
+  @State compressLeadingPunctuation: boolean = false;
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「123456789！\n『123456789：';
+
   build() {
-    Column(){
-      TextInput({ text: "\u300C行首标点压缩打开" })
-        .compressLeadingPunctuation(true)
-        .margin(5)
+    Column() {
+      TextInput({ text: this.text })
+        .compressLeadingPunctuation(this.compressLeadingPunctuation)
+        .punctuationOverflow(this.punctuationOverflow)
+        .fontSize('20fp')
         .style(TextInputStyle.Inline)
-        .fontSize(30)
-        .width("90%")
-      TextInput({ text: "\u300C行首标点压缩关闭" })
-        .compressLeadingPunctuation(false)
-        .style(TextInputStyle.Inline)
-        .fontSize(30)
-        .width("90%")
-    }
+        .align(Alignment.Center)
+        .width('45%')
+
+      Column() {
+        Button('开启行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = true
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = false
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = false
+        }).margin(5)
+      }
+    }.width('100%').padding(20)
   }
 }
 ```
-![textInputCompressLeadingPunctuation](figures/textInputCompressLeadingPunctuation.gif)
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Column, Button, Margin, Alignment, ClickEvent, State, TextInput, TextInputStyle } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PunctuationDemo {
+  @State compressLeadingPunctuation: boolean = false;
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「123456789！\n『123456789：';
+
+  build() {
+    Column() {
+      TextInput({ text: this.text })
+        .compressLeadingPunctuation(this.compressLeadingPunctuation)
+        .punctuationOverflow(this.punctuationOverflow)
+        .fontSize('20fp')
+        .style(TextInputStyle.Inline)
+        .align(Alignment.Center)
+        .width('45%')
+
+      Column() {
+        Button('开启行首标点符号压缩').onClick((event: ClickEvent) => {
+          this.compressLeadingPunctuation = true
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick((event: ClickEvent) => {
+          this.compressLeadingPunctuation = false
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick((event: ClickEvent) => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick((event: ClickEvent) => {
+          this.punctuationOverflow = false
+        }).margin(5)
+      }
+    }.width('100%').padding(20)
+  }
+}
+```
+![textInputPunctuation](figures/textInputPunctuation.gif)
 
 ### 示例27（设置自适应间距）
 

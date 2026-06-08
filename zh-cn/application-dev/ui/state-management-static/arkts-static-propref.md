@@ -34,7 +34,7 @@ import { PropRef } from '@kit.ArkUI';
 
 - 当装饰的变量为boolean、string、number等类型时，数据源的变化可以被同步观察到。
 
-  <!-- @[PropRefBasicTypes](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefBasicTypes.ets) -->
+  <!-- @[PropRefBasicTypes](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefBasicTypes.ets) --> 
   
   ``` TypeScript
   import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
@@ -47,9 +47,17 @@ import { PropRef } from '@kit.ArkUI';
     build() {
       Column() {
         Text(`State ${this.count}`)
+          .fontSize(20)
+          .margin(10)
         Text(`State ${this.message}`)
+          .fontSize(20)
+          .margin(10)
         Text(`State ${this.flag}`)
+          .fontSize(20)
+          .margin(10)
         Button('change State')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // 对数据源的更改会同步给子组件
             this.count++;
@@ -62,6 +70,7 @@ import { PropRef } from '@kit.ArkUI';
           flag: this.flag
         })
       }
+      .width('100%')
     }
   }
   @Component
@@ -72,18 +81,29 @@ import { PropRef } from '@kit.ArkUI';
     build() {
       Column() {
         Text(`PropRef ${this.count}`)
+          .fontSize(20)
+          .margin(10)
         Text(`PropRef ${this.message}`)
+          .fontSize(20)
+          .margin(10)
         Text(`PropRef ${this.flag}`)
+          .fontSize(20)
+          .margin(10)
         Button('change PropRef')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.count++;
             this.message += '!';
             this.flag = !this.flag;
           })
       }
+      .width('100%')
     }
   }
   ```
+
+![propref-one-way-sync-1](../figures/propref1.gif)
 
 - 装饰的变量为内置类型时，可观察变量整体赋值和API调用的变化。
 
@@ -104,7 +124,7 @@ import { PropRef } from '@kit.ArkUI';
 
 \@PropRef可以接收父组件传递的数据源，并与之单向同步。
 
-<!-- @[PropRefParentChild](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefParentChild.ets) -->
+<!-- @[PropRefParentChild](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefParentChild.ets) --> 
 
 ``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
@@ -115,13 +135,18 @@ struct Index {
   build() {
     Column() {
       Text(`State ${this.count}`)
+        .fontSize(20)
+        .margin(10)
       Button('change State')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           // 对数据源的更改会同步给子组件
           this.count++;
       })
       Child({ count: this.count })
     }
+    .width('100%')
   }
 }
 @Component
@@ -130,20 +155,27 @@ struct Child {
   build() {
     Column() {
       Text(`PropRef ${this.count}`)
+        .fontSize(20)
+        .margin(10)
       Button('change PropRef')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.count++;
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![propref-one-way-sync-2](../figures/propref2.gif)
 
 ### \@PropRef获得父组件中数据源的引用
 
 \@PropRef会获得父组件数据源的引用，对于复杂类型，修改属性将在父组件中体现。若希望不影响父组件中的数据源，则需重新赋值对象。
 
-<!-- @[PropRefDataSourceRef](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefDataSourceRef.ets) -->
+<!-- @[PropRefDataSourceRef](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PropRefDecorator/entry/src/main/ets/pages/PropRefDataSourceRef.ets) --> 
 
 ``` TypeScript
 import { 
@@ -176,10 +208,13 @@ struct Index {
   build() {
     Column() {
       Text(`data property code is ${this.data.code}`)
+        .fontSize(20)
+        .margin(10)
       Child({
         childData: this.data
       })
     }
+    .width('100%')
   }
 }
 
@@ -190,21 +225,30 @@ struct Child {
   build() {
     Column() {
       Text(`childData property code is ${this.childData.code}`)
+        .fontSize(20)
+        .margin(10)
       Button('modify childData property code')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           // 如果只点击该Button，由于childData是父组件中数据源的引用，则父组件中数据源的属性也会修改。
           this.childData.code += 10;
         })
 
       Button('replace childData')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           // 如果点击该Button，本地的childData变量会引用新的对象，所以不会影响父组件中的数据源。
           this.childData = new Data(200);
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![propref-data-source-ref](../figures/propref3.gif)
 
 ### 装饰Array类型
 

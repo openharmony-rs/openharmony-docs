@@ -1061,7 +1061,7 @@ NODE_TEXT_LINE_HEIGHT_MULTIPLE = 1042
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 倍数行高模式的倍数值，默认值：0，表示使用默认行高高度。 |
+| .value[0].f32 | 倍数行高模式的倍数值，默认值：0，表示使用默认行高高度。 |
 
 **返回：**
 
@@ -1336,6 +1336,32 @@ NODE_TEXT_PUNCTUATION_OVERFLOW = 1055
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | 是否启用行尾标点符号悬挂。 |
+
+## NODE_TEXT_TAIL_INDENTS
+
+```c
+NODE_TEXT_TAIL_INDENTS = 1056
+```
+
+定义文本块中每行的尾部缩进。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[i].i32 | 表示第i行文本的尾部缩进值，单位为vp。取值范围：[0, +∞)。当.size大小为1时，所有行共享相同的尾部缩进.value[0].i32；当.size大于1时，第i行使用.value[i].i32；当文本行数超过.size，则超出部分复用.value[.size - 1].i32。 |
+| .size | 表示有效缩进值的数量，即.value数组中实际使用的元素个数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[i].i32 | 第i个尾部缩进值，单位为vp。 |
+| .size | 表示有效缩进值的数量，即.value数组中实际使用的元素个数。 |
 
 
 ## NODE_SPAN_CONTENT

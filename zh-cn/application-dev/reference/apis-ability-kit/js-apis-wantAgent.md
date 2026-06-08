@@ -12,8 +12,10 @@
 WantAgent模块提供了创建WantAgent实例、获取实例的用户ID、获取want信息、比较WantAgent实例和获取bundle名称等能力。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 7开始支持，从API version 9废弃，替换模块为[@ohos.app.ability.wantAgent](js-apis-app-ability-wantAgent.md)。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块仅适用于ArkTS-Dyn。
+>
+> - 本模块首批接口从API version 7开始支持，从API version 9废弃，替换模块为[@ohos.app.ability.wantAgent](js-apis-app-ability-wantAgent.md)。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -834,7 +836,7 @@ type WantAgent = object
 
 WantAgent对象。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

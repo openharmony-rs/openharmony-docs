@@ -1,8 +1,8 @@
 # @ohos.window (窗口)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -2025,7 +2025,7 @@ ArkTS-Sta: moveMainWindowToTargetDisplay(displayId: long, windowId: int): Promis
 将指定的主窗口迁移到指定的屏幕上。使用Promise异步回调。
 
 - 对于[主屏](../../displaymanager/display-terminology.md#主屏)/[扩展屏](../../displaymanager/display-terminology.md#扩展屏)与[虚拟屏](../../displaymanager/display-terminology.md#虚拟屏)之间以及虚拟屏与虚拟屏之间的窗口迁移，仅主窗及其子窗会一起被迁移到对应屏幕上且被抬升，如果存在子窗，最上层可获焦子窗会获取焦点，否则主窗口获焦。
-- 对于主屏与扩展屏之间的窗口迁移，只会将主窗口迁移到对应屏幕，抬升并获取焦点。
+- 对于主屏与扩展屏之间的窗口迁移，只会将主窗口迁移到对应屏幕并抬升层级。
 
 <!--RP3--><!--RP3End-->
 

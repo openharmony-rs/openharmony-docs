@@ -174,6 +174,7 @@
     - [If：条件渲染(ArkTS-Sta)](rendering-control/arkts-rendering-control-ifelse-sta.md)
   - 学习响应式环境变量<!--arkts-env-property-->
     - [\@Env：环境变量](arkts-env-system-property.md)
+    - [\@CustomEnv：自定义环境变量](arkts-custom-env-property.md)
   - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
     - [组件导航和页面路由概述](arkts-navigation-introduction.md)
     - 组件导航(Navigation) (推荐)<!--arkts-navigation-navigation-->
@@ -201,6 +202,7 @@
     - [创建弧形列表 (ArcList)](arkts-layout-development-create-arclist.md)（圆形屏幕推荐使用）
     - [创建网格 (Grid/GridItem)](arkts-layout-development-create-grid.md)
     - [创建瀑布流 (WaterFlow)](arkts-layout-development-create-waterflow.md)
+    - [创建懒加载布局 (LazyColumnLayout/LazyVGridLayout/LazyVWaterFlowLayout)](arkts-layout-development-create-lazy-layout.md)
   - 使用文本<!--arkts-use-text-->
     - [文本概述](arkts-text-introduction.md)
     - [文本显示 (Text/Span)](arkts-common-components-text-display.md)

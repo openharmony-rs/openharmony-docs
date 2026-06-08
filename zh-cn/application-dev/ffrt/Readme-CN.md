@@ -2,9 +2,9 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
 
 - [Function Flow Runtime Kit概述](ffrt-overview.md)
