@@ -2924,7 +2924,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_disposeTree](figures/zh-cn_image_disposeTree.gif)
+![zh-cn_image_disposeTree](figures/image-disposeTree.gif)
 
 ### setCrossLanguageOptions<sup>15+</sup>
 

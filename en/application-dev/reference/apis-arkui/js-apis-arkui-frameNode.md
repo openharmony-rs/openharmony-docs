@@ -1527,7 +1527,7 @@ struct Index {
 }
 ```
 
-![en-us_image_dispose](figures/image-dispose.gif)
+![en-us_image_dispose](figures/image-dispose.giff)
 
 ### commonAttribute<sup>12+</sup>
 

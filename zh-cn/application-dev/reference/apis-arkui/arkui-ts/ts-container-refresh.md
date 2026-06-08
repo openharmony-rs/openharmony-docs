@@ -956,7 +956,7 @@ struct RefreshExample {
 }
 ```
 
-![zh-cn_image_refresh_refreshingcontent](figures/zh-cn_image_refresh_refreshingcontent.gif)
+![zh-cn_image_refresh_refreshingcontent](figures/image-refresh-refreshingcontent.gif)
 
 ### 示例5（实现最大下拉距离）
 

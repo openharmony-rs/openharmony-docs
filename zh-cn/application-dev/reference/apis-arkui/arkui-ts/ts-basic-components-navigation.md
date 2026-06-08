@@ -5606,7 +5606,7 @@ struct NavigationExample {
 }
 ```
 
-![navigation_navbarwidthrange](figures/navigation-navbarwidthrange.gif)
+![navigation_navbarwidthrange](figures/navigation_navbarwidthrange.gif)
 
 ### 示例15（Navigation工具栏自适应）
 
@@ -6200,4 +6200,4 @@ export struct NavigationMenu {
 >
 > 5. 点击应用重新进入，可发现页面依然是点击跳转按钮后的页面。
 
-![navigation_recoverable.gif](figures/navigation-recoverable.gif)
+![navigation_recoverable.gif](figures/navigation_recoverable.gif)

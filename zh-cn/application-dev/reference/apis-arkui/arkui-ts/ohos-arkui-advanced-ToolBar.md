@@ -774,4 +774,4 @@ struct Index {
 }
 ```
 
-![zh-cn_image_toolbar_example01](figures/zh-cn_image_toolbar_example01.png)
+![zh-cn_image_toolbar_example01](figures/image-toolbar-example01.png)

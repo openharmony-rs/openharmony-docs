@@ -2551,5 +2551,3 @@ struct ImageExample {
   }
 }
 ```
-
-![sandBox](figures/antialiased.PNG)

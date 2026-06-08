@@ -1354,7 +1354,7 @@ struct SubHeaderExample {
 }
 ```
 
-![子标题8](figures/zh-cn_image_subheader_example08.png)
+![子标题8](figures/image-subheader-example08.png)
 
 ### 示例9（右侧按钮设置默认获焦）
 
