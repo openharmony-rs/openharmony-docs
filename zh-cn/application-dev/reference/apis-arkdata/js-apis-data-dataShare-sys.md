@@ -20,7 +20,7 @@
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
-> - 本模块订阅RDB(RelationalStore，关系型数据库)变更的接口on('rdbDataChange')的回调支持不大于10M数据的传输。
+> - 本模块订阅RDB（RelationalStore，关系型数据库）变更的接口on('rdbDataChange')的回调支持不大于10M数据的传输。
 
 
 ## 导入模块
@@ -487,7 +487,7 @@ on(event: 'dataChange', type:SubscriptionType, uri: string, callback: AsyncCallb
 - 如未及时取消订阅，可能导致内存泄漏和资源占用。
 
 **相关方法：**
-- off('dataChange')：取消订阅数据变更事件
+- off('dataChange')：取消订阅数据变更事件。
 
 **触发通知：** 非静默场景下，调用[notifyChange](#notifychange12)方法，就会触发对指定URI订阅者的通知；或者静默场景下，使用指定URI的静默访问修改了数据，也会自动触发通知, 但此时callback通知中的changeInfo无效。
 
@@ -723,7 +723,7 @@ on(type: 'rdbDataChange', uris: Array&lt;string&gt;, templateId: TemplateId, cal
 - 如未及时取消订阅，可能导致内存泄漏和资源占用。
 
 **相关方法：**
-- off('rdbDataChange')：取消订阅数据变更事件
+- off('rdbDataChange')：取消订阅数据变更事件。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -789,7 +789,7 @@ off(type: 'rdbDataChange', uris: Array&lt;string&gt;, templateId: TemplateId, ca
 - 如果callback参数为空，将取消该URI的所有已注册回调函数。
 
 **相关方法：**
-- on('rdbDataChange')：订阅数据变更事件
+- on('rdbDataChange')：订阅数据变更事件。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 

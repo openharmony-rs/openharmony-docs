@@ -26,8 +26,8 @@
 
 | 名称                                               | typedef关键字       | 描述                                  |
 | -------------------------------------------------- | ------------------- | ------------------------------------- |
- | [OH_PreferencesPair](capi-preferences-oh-preferencespair.md)   | OH_PreferencesPair  | 定义Preferences使用的键值对数据对象类型。 |	 
- | [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) | OH_PreferencesValue | 定义PreferencesValue对象类型。        |
+| [OH_PreferencesPair](capi-preferences-oh-preferencespair.md)   | OH_PreferencesPair  | 定义Preferences使用的键值对数据对象类型。 |
+| [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) | OH_PreferencesValue | 定义PreferencesValue对象类型。        |
 ### 枚举
 
 | 名称                                          | typedef关键字        | 描述                             |
@@ -116,8 +116,8 @@ const char *OH_PreferencesPair_GetKey(const OH_PreferencesPair *pairs, uint32_t 
 
 | 参数项                                                       | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
- | const [OH_PreferencesPair](capi-preferences-oh-preferencespair.md) *pairs | 目标键值对数据[OH_PreferencesPair](capi-preferences-oh-preferencespair.md)的指针。 |	 
- | uint32_t index                                               | 目标键值对数据[OH_PreferencesPair](capi-preferences-oh-preferencespair.md)的索引值。 |
+| const [OH_PreferencesPair](capi-preferences-oh-preferencespair.md) *pairs | 目标键值对数据[OH_PreferencesPair](capi-preferences-oh-preferencespair.md)的指针。 |
+| uint32_t index                                               | 目标键值对数据[OH_PreferencesPair](capi-preferences-oh-preferencespair.md)的索引值。 |
 
 **返回：**
 

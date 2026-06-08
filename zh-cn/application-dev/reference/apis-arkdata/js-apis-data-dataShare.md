@@ -180,11 +180,11 @@ on(event: 'dataChange', uris: string[], config: DataProxyConfig, callback: Async
 订阅指定URI对应共享配置变更事件。若订阅者已注册变更通知，当配置发布方修改配置时，订阅者将会接收到callback通知，通知携带数据变更类型、变化的URI、变更的共享配置内容。使用callback异步回调。该功能不允许跨用户订阅通知，不允许订阅未发布的配置。订阅成功后若权限被收回，则后续不再通知订阅者。
 
 **配对调用：**
-- 订阅后必须在不需要时调用off('dataChange')取消订阅
-- 取消订阅时需确保event、uris、config和callback参数与订阅时一致
+- 订阅后必须在不需要时调用off('dataChange')取消订阅。
+- 取消订阅时需确保event、uris、config和callback参数与订阅时一致。
 - 未取消订阅可能导致内存泄漏和资源占用若订阅者已注册变更通知，当配置发布方修改配置时，订阅者将会接收到callback通知，通知携带数据变更类型、变化的URI、变更的共享配置内容。使用callback异步回调。该功能不允许跨用户订阅通知，不允许订阅未发布的配置。订阅成功后若权限被收回，则后续不再通知订阅者。
 
-触发通知：配置发布方调用[publish](#publish20)、[delete](#delete20)、[deleteMyPublishedData](#deletemypublisheddata)接口发布、删除指定配置或者删除所有配置时会自动触发通知。
+**触发通知：** 配置发布方调用[publish](#publish20)、[delete](#delete20)、[deleteMyPublishedData](#deletemypublisheddata)接口发布、删除指定配置或者删除所有配置时会自动触发通知。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -396,11 +396,13 @@ dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyR
 });
 ```
 
-### deleteMyPublishedData<sup>26+</sup>
+### deleteMyPublishedData
 
 deleteMyPublishedData(config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt;
 
 删除当前发布者发布的所有共享配置项。使用Promise异步回调。只有配置发布方能删除共享配置项。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
