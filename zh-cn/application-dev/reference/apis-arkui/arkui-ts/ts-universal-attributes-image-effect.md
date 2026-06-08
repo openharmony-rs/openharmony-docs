@@ -1813,13 +1813,13 @@ freeze(freeze: Optional\<boolean>): T
 | T | 返回当前组件。 |
 
 
-## systemMaterial
+## systemMaterial<sup>26+</sup>
 
-systemMaterial(material: SystemUiMaterial | undefined): T
+ArkTS-Dyn: systemMaterial(material: SystemUiMaterial | undefined): T
+
+ArkTS-Sta: systemMaterial(material: SystemUiMaterial | undefined): this
 
 设置组件的系统材质。不同系统材质对应不同的属性影响效果，该接口可以影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)、材质层滤镜效果，影响的属性与设备算力档位相关，参考[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)。使用示例请参考[示例1（设置沉浸式系统材质）](../arkts-apis-uimaterial.md#示例1设置沉浸式系统材质)。
-
-**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1828,6 +1828,10 @@ systemMaterial(material: SystemUiMaterial | undefined): T
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1839,7 +1843,7 @@ systemMaterial(material: SystemUiMaterial | undefined): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## SystemUiMaterial
 
