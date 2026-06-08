@@ -2811,6 +2811,56 @@
 						"start_line":27
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioLoopBackJS_Sta/entry/src/main/ets/pages/AudioLoopback.ets",
+				"functions":[
+					{
+						"end_line":112,
+						"name":"create_AudioLoopback",
+						"start_line":22
+					},
+					{
+						"end_line":362,
+						"name":"get_Status",
+						"start_line":24
+					},
+					{
+						"end_line":141,
+						"name":"set_Volume",
+						"start_line":25
+					},
+					{
+						"end_line":181,
+						"name":"set_ReverbPreset",
+						"start_line":26
+					},
+					{
+						"end_line":381,
+						"name":"get_ReverbPreset",
+						"start_line":27
+					},
+					{
+						"end_line":221,
+						"name":"set_EqualizerPreset",
+						"start_line":28
+					},
+					{
+						"end_line":400,
+						"name":"get_EqualizerPreset",
+						"start_line":29
+					},
+					{
+						"end_line":335,
+						"name":"enable",
+						"start_line":30
+					},
+					{
+						"end_line":336,
+						"name":"all_audioLoopback",
+						"start_line":21
+					}
+				]
 			}
 		]
 	},
@@ -14389,6 +14439,31 @@
 						"end_line":65,
 						"name":"concurrent_taskpool_notes",
 						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/public-audio-spatialization-management.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererSampleJS_Sta/entry/src/main/ets/pages/renderer.ets",
+				"functions":[
+					{
+						"end_line":97,
+						"name":"get_spacesound",
+						"start_line":28
+					},
+					{
+						"end_line":449,
+						"name":"check_spacesound",
+						"start_line":29
+					},
+					{
+						"end_line":458,
+						"name":"check_isspacesoundon",
+						"start_line":30
 					}
 				]
 			}
