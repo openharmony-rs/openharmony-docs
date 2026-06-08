@@ -6611,7 +6611,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LinkDecorator/entry/src/main/ets/pages/LinkWatch.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":71,
 						"name":"LinkWatch",
 						"start_line":18
 					}
@@ -6656,7 +6656,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkObjectType.ets",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":64,
 						"name":"ObjectLinkObjectType",
 						"start_line":18
 					}
@@ -6666,7 +6666,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkInheritObject.ets",
 				"functions":[
 					{
-						"end_line":93,
+						"end_line":73,
 						"name":"ObjectLinkInheritObject",
 						"start_line":18
 					}
@@ -6676,7 +6676,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkNestedObject.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":86,
 						"name":"ObjectLinkNestedObject",
 						"start_line":18
 					}
@@ -6686,7 +6686,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkMakeObserved.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":75,
 						"name":"ObjectLinkMakeObserved",
 						"start_line":18
 					}
@@ -6706,7 +6706,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkSerializeNoParam.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":60,
 						"name":"ObjectLinkSerializeNoParam",
 						"start_line":18
 					}
@@ -6716,7 +6716,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkSerializeWithParam.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":70,
 						"name":"ObjectLinkSerializeWithParam",
 						"start_line":18
 					}
