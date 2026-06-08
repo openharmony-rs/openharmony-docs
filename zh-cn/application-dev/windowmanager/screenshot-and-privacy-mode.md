@@ -110,7 +110,7 @@
         this.appendLog(this.statusText);
       }
     }
-    // 获取当前设备可用的 displayId，供 screenshot.capture 使用。
+    // 获取当前设备可用的displayId，供screenshot.capture使用。
     private async initDisplayInfo(): Promise<void> {
       try {
         const defaultDisplay = display.getDefaultDisplaySync();
