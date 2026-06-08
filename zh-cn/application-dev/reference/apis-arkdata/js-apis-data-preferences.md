@@ -2370,11 +2370,8 @@ off(type: 'dataChange', keys: Array&lt;string&gt;,  callback?: Callback&lt;Recor
 取消精确订阅数据变更。
 
 **配对调用：**
-- 与on('dataChange')成对使用，用于取消精确数据变更订阅。
+- 与[on('dataChange')](#ondatachange12)成对使用，用于取消精确数据变更订阅。
 - 如果不需要监听特定Key的数据变更，建议及时调用off取消订阅。
-
-**相关方法：**
-- on('dataChange')：精确订阅数据变更
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

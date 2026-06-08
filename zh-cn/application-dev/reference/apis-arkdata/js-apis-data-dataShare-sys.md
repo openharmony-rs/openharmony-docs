@@ -482,12 +482,9 @@ on(event: 'dataChange', type:SubscriptionType, uri: string, callback: AsyncCallb
 订阅指定URI对应数据的数据变更事件。若订阅者已注册变更通知，当有其他通知者触发了变更通知时，订阅者将会接收到callback通知，通知携带数据变更类型、变化的uri、变更的数据内容。使用callback回调。该功能不支持跨用户订阅通知。同一应用内对单个URI的重复订阅上限为51次。
 
 **配对调用：**
-- 与off('dataChange')成对使用，用于取消订阅数据变更事件。
+- 与[off('dataChange')](#offdatachange12)成对使用，用于取消订阅数据变更事件。
 - 取消订阅时需确保type、uri和callback参数与订阅时一致。
 - 如未及时取消订阅，可能导致内存泄漏和资源占用。
-
-**相关方法：**
-- off('dataChange')：取消订阅数据变更事件。
 
 **触发通知：** 非静默场景下，调用[notifyChange](#notifychange12)方法，就会触发对指定URI订阅者的通知；或者静默场景下，使用指定URI的静默访问修改了数据，也会自动触发通知, 但此时callback通知中的changeInfo无效。
 
@@ -718,12 +715,9 @@ on(type: 'rdbDataChange', uris: Array&lt;string&gt;, templateId: TemplateId, cal
 订阅指定URI和模板对应的数据变更事件。仅支持静默访问。该功能不支持跨用户订阅通知。
 
 **配对调用：**
-- 与off('rdbDataChange')成对使用，用于取消订阅数据变更事件。
+- 与[off('rdbDataChange')](#offrdbdatachange10)成对使用，用于取消订阅数据变更事件。
 - 取消订阅时需确保type、uris、templateId和callback参数与订阅时一致。
 - 如未及时取消订阅，可能导致内存泄漏和资源占用。
-
-**相关方法：**
-- off('rdbDataChange')：取消订阅数据变更事件。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -784,12 +778,9 @@ off(type: 'rdbDataChange', uris: Array&lt;string&gt;, templateId: TemplateId, ca
 取消订阅指定URI和模板对应的数据变更事件。仅支持静默访问。
 
 **配对调用：**
-- 与on('rdbDataChange')成对使用，必须在已订阅后使用。
+- 与[on('rdbDataChange')](#onrdbdatachange10)成对使用，必须在已订阅后使用。
 - 取消订阅时需确保type、uris、templateId参数与订阅时一致。
 - 如果callback参数为空，将取消该URI的所有已注册回调函数。
-
-**相关方法：**
-- on('rdbDataChange')：订阅数据变更事件。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
