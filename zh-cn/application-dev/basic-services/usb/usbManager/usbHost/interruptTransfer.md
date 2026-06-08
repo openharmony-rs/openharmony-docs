@@ -427,7 +427,7 @@
 
    ArkTS-Sta示例：   
    <!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    if (usbInterface === undefined) {
      console.error('usbInterface is undefined');
@@ -447,7 +447,7 @@
      this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
      return;
    }
-
+   
    // 传输类型为“实时传输”时，需设置设备接口。设置成功返回0，注册失败返回其他错误码。
    if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
      try {
