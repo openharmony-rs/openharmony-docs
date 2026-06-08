@@ -172,6 +172,17 @@ startAbilityByType接口中type字段为navigation，支持路线规划、导航
                   }
                   {
                   "scheme": "maps", // 这里仅示意，应用需确保这里声明的uri能被外部正常拉起
+                  "host": "search",
+                  "path": "",
+                  "linkFeature": "PlaceSearch" // 声明应用支持位置搜索功能
+                  },
+                  {
+                  "scheme": "maps", // 这里仅示意，应用需确保这里声明的uri能被外部正常拉起
+                  "host": "detailLocation",
+                  "path": "",
+                  "linkFeature": "DetailLocation" // 声明应用支持地点详情功能
+                  }
+                  "scheme": "maps", // 这里仅示意，应用需确保这里声明的uri能被外部正常拉起
                   "host": "detailLocation",
                   "path": "",
                   "linkFeature": "DetailLocation" // 声明应用支持地点详情功能
