@@ -463,7 +463,7 @@ struct BorderExample {
 
 从右至左显示语言示例图
 
-![zh-cm_image_border_rtl](figures/image-border-rtl.png)
+![zh-cn_image_border_rtl](figures/image-border-rtl.png)
 
 ### 示例3（设置离屏圆角）
 
