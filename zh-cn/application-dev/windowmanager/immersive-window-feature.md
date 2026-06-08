@@ -56,6 +56,34 @@
   > 非自由窗口状态下，除应用子窗外的其他类型窗口在创建时默认为非沉浸式布局，子窗口创建后默认为沉浸式布局。
 
   <!--@[HideDecorationBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/HideDecorationBar/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { window } from '@kit.ArkUI';
+  
+  const DOMAIN = 0x0000;
+  
+  export default class EntryAbility extends UIAbility {
+    // ...
+  
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      windowStage.loadContent('pages/Index', async (err) => {
+        if (err.code) {
+          return;
+        }
+  
+        try {
+          const mainWindow: window.Window = windowStage.getMainWindowSync();  // 获取应用主窗口
+          await mainWindow.setWindowLayoutFullScreen(true); // 进入窗口沉浸式布局（phone）
+          mainWindow.setWindowDecorVisible(false);  // 隐藏窗口标题栏，进入沉浸式布局（PC）
+        } catch (e) {
+          console.error(`Failed to set status bar to invisible`);
+        }
+      });
+    }
+  // ...
+  ```
 
   | 非自由窗口的非沉浸式布局示意 | 非自由窗口的沉浸式布局示意 |
   | -------- | -------- |
