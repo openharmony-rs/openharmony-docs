@@ -228,7 +228,6 @@
     */
    this.deviceList_ = deviceList;
    ```
-   ```
 
 3. 获取设备操作权限。
 
