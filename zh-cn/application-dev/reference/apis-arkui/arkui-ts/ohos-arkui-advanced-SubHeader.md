@@ -223,6 +223,32 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例： 
+```ts 
+import { Entry, Component, $r, Column } from '@kit.ArkUI'; 
+import { SubHeader, OperationType } from '@ohos.arkui.advanced.SubHeader'; 
+
+
+@Entry	 
+@Component 
+struct SubHeaderExample { 
+  build() { 
+    Column() { 
+      SubHeader({ 
+        primaryTitle: '一级标题', 
+        secondaryTitle: '二级标题', 
+        operationType: OperationType.TEXT_ARROW, 
+        operationItem: [{ 
+          value: '更多', 
+          action: () => { 
+            this.getUIContext().getPromptAction().showToast({ message: 'demo' }); 
+          } 
+        }] 
+      }) 
+    } 
+  } 
+} 
+```
 
 ![子标题2](figures/image-subheader-example02.png)
 
@@ -497,6 +523,7 @@ struct SubHeaderExample {
   }
 }
 ```
+
 ![zh-cn_image_subheader_example05](figures/image-subheader-example05.png)
 
 ### 示例6（自定义标题内容）
@@ -609,40 +636,6 @@ struct SubHeaderExample {
           value: '更多信息',
           action: () => {
             Prompt.showToast({ message: 'demo' });
-          }
-        }],
-        // 标题内外间距
-        contentMargin: { start: LengthMetrics.vp(20), end: LengthMetrics.vp(20) },
-        contentPadding: { start: LengthMetrics.vp(20), end: LengthMetrics.vp(20) }
-      })
-    }
-  }
-}
-```
-ArkTS-Sta示例：
-```ts
-import { Entry, Component, $r, Column, TextModifier, Text, Color, LengthMetrics, State } from '@kit.ArkUI';
-import { SubHeader, OperationType } from '@ohos.arkui.advanced.SubHeader';
-
-@Entry
-@Component
-struct SubHeaderExample {
-  // 设置主副标题文本颜色
-  @State primaryModifier: TextModifier = new TextModifier().fontColor(Color.Blue);
-  @State secondaryModifier: TextModifier = new TextModifier().fontColor(Color.Blue);
-
-  build() {
-    Column() {
-      SubHeader({
-        primaryTitle: 'primaryTitle',
-        secondaryTitle: 'secondaryTitle',
-        primaryTitleModifier: this.primaryModifier,
-        secondaryTitleModifier: this.secondaryModifier,
-        operationType: OperationType.TEXT_ARROW,
-        operationItem: [{
-          value: '更多信息',
-          action: () => {
-            this.getUIContext().getPromptAction().showToast({ message: 'demo' });
           }
         }],
         // 标题内外间距
