@@ -1,41 +1,36 @@
 # stack
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @lanshouren-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:29:13.127Z pushedAt=2026-06-08T06:54:52.882Z -->
 
 The **\<stack>** component provides a stack container where child components are successively stacked and the latter one overwrites the previous one.
 
 > **NOTE**
 >
->The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
-
+> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Child Components
 
 Supported
 
-
 ## Attributes
 
 The [universal attributes](js-service-widget-common-attributes.md) are supported.
-
 
 ## Styles
 
 The [universal styles](js-service-widget-common-styles.md) are supported.
 
-
 ## Events
 
 The [universal events](js-service-widget-common-events.md) are supported.
 
-
 ## Example
-
 
 ```html
 <!-- xxx.hml -->
@@ -45,7 +40,6 @@ The [universal events](js-service-widget-common-events.md) are supported.
   <div class="front-child bd-radius"></div>
 </stack>
 ```
-
 
 ```css
 /* xxx.css */
@@ -78,6 +72,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
   border-radius: 16px;
 }
 ```
-**4 x 4 widget**
+
+**4×4 widget**
 
 ![Stack](figures/stack.PNG)
