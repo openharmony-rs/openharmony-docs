@@ -320,7 +320,7 @@
 
    ArkTS-Sta示例：   
    <!-- @[connectDevice](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
      console.error('deviceList_ is empty');
