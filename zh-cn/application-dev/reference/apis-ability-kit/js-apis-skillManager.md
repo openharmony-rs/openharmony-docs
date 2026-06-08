@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供技能（Skill）信息的查询能力，支持查询应用自身的技能信息、指定应用的技能信息以及所有应用的技能信息。AI 代理框架在规划任务时，可通过本模块查询设备上可用的技能，选择合适的技能来完成用户请求。
+本模块提供技能（Skill）信息的查询能力，支持查询应用自身的技能信息、指定应用的技能信息以及所有应用的技能信息。AI 代理框架在规划任务时，可通过本模块查询设备上可用的技能，选择合适的技能来完成用户请求。通过技能信息查询,可以实现智能任务调度、能力匹配优化，提升AI代理的任务执行效率，降低开发者的技能集成复杂度。
 
 **起始版本：** 26.0.0
 
@@ -93,7 +93,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSkillInfoForSelf failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getSkillInfoForSelf failed: error %{public}d  %{public}s', code, message);
 }
 ```
 
@@ -141,7 +141,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSkillInfosForSelf failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getSkillInfosForSelf failed: error %{public}d  %{public}s', code, message);
 }
 ```
 
@@ -213,7 +213,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSkillInfo failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getSkillInfo failed: error %{public}d  %{public}s', code, message);
 }
 ```
 
@@ -279,7 +279,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSkillInfos failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getSkillInfos failed: error %{public}d  %{public}s', code, message);
 }
 ```
 
@@ -342,7 +342,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getAllSkillInfos failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getAllSkillInfos failed: error %{public}d  %{public}s', code, message);
 }
 ```
 

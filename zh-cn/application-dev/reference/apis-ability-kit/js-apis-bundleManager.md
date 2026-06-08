@@ -1427,7 +1427,7 @@ getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>;
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<[AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)> | Promise对象，返回\<AppCloneIdentity>。 |
+| Promise\<[AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14)> | Promise对象，返回AppCloneIdentity数组。 |
 
 **错误码：**
 
@@ -1855,7 +1855,7 @@ setAlternateIcon(alternateIconName: string): Promise\<void>;
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -1905,7 +1905,7 @@ getAlternateIcons(): Promise<Array\<AlternateIconInfo>>
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise<Array\<[AlternateIconInfo](js-apis-bundleManager-bundleInfo.md#alternateiconinfo)>> | Promise对象，返回当前应用的备用图标信息。 |
+| Promise<Array\<[AlternateIconInfo](js-apis-bundleManager-bundleInfo.md#alternateiconinfo)>> | Promise对象，返回当前应用的备用图标信息列表。 |
 
 **错误码：**
 

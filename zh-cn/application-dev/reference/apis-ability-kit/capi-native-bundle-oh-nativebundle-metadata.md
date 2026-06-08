@@ -12,7 +12,7 @@ typedef struct OH_NativeBundle_Metadata {...} OH_NativeBundle_Metadata
 
 ## 概述
 
-元数据信息。
+元数据信息。用于存储和传递与Native Bundle相关的元数据，如应用版本号、自定义属性等信息。
 
 **起始版本：** 20
 
