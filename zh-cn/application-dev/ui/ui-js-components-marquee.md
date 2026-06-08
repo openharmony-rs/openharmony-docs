@@ -241,4 +241,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001176075554](figures/zh-cn_image_0000001176075554.gif)
+![marquee](figures/marquee.gif)

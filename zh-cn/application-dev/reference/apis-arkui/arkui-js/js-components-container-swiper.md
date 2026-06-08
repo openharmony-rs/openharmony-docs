@@ -163,6 +163,6 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167823326](figures/zh-cn_image_0000001167823326.gif)
+![swiper](figures/swiper.gif)
 
 

@@ -219,7 +219,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001193544358](figures/en-us_image_0000001193544358.gif)
+![Widget-Transition](figures/Widget-Transition.gif)
 
 
 ## Page Transition
@@ -245,7 +245,7 @@ export default {
 
    a. In the push scenario, enter the animation described by **transition-enter** of the **Page2.js** application in the page stack; enter the animation described by **transition-exit** of the **Page1.js** application in the second position of the page stack.
 
-   ![en-us_image_0000001193704354](figures/en-us_image_0000001193704354.png)
+   ![Important-Notes](figures/Important-Notes.png)
 
    b. In the back scenario, exit the animation described by **transition-enter** of the **Page2.js** application in the page stack and play the animation in reverse sequence; enter the animation described by **transition-exit** of the **Page1.js** application in the second position of the page stack and play the animation in reverse sequence.
    
