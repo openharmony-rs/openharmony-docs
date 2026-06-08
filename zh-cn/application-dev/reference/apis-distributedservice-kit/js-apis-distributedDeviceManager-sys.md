@@ -31,6 +31,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 表示心跳广播策略。
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
