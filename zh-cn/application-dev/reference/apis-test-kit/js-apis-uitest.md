@@ -6051,7 +6051,7 @@ async function demo() {
 
 ## PointerMatrix<sup>9+</sup>
 
-存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。通过[create](#create9)构造对象后，使用[setPoint](#setpoint9)设置每个手指每步操作的坐标值，再作为参数传给[injectMultiPointerAction](#injectmultipointeaction9)执行多指操作。
+存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。通过[create](#create9)构造对象后，使用[setPoint](#setpoint9)设置每个手指每步操作的坐标值，再作为参数传给[injectMultiPointerAction](#injectMultiPointerAction9)执行多指操作。
 
 ### create<sup>9+</sup>
 

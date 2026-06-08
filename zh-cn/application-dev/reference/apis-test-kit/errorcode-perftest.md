@@ -49,7 +49,7 @@ Internal error.
 **处理步骤**
 
 1. 尝试通过重试解决IPC传输失败问题。
-2. 判断PerfTest对象是否已被销毁，若已销毁需要重新[创建PerfTest对象](js-apis-perftest.md#create)。
+2. 判断PerfTest对象是否已被销毁，若已销毁需要重新创建PerfTest对象。
 
 ## 32400003 参数校验失败
 **错误信息**
@@ -67,8 +67,8 @@ Parameter verification failed.
 
 **处理步骤**
 
-1. 检查接口入参类型是否与[PerfTest接口定义](js-apis-perftest.md)一致。
-2. 确认参数取值是否在接口规定的范围内，详细参数说明请参考[PerfTestStrategy](js-apis-perftest.md#perfteststrategy)参数描述。
+1. 检查接口入参类型是否与[PerfTest接口定义](./js-apis-perftest.md)一致。
+2. 确认参数取值是否在接口规定的范围内，详细参数说明请参考[PerfTestStrategy](./js-apis-perftest.md#perfteststrategy)参数描述。
 
 ## 32400004 执行回调函数失败
 **错误信息**
@@ -120,9 +120,9 @@ Failed to obtain the measurement result.
 
 **处理步骤**
 
-1. 确认[PerfTest.run](js-apis-perftest.md#run)接口已执行完成且未抛出异常。
+1. 确认PerfTest.run接口已执行完成且未抛出异常。
 2. 确保测试数据已采集完成。
-3. 调用[getMeasureResult](js-apis-perftest.md#getmeasureresult)获取指定数据。
+3. 调用getMeasureResult获取指定数据。
 
 ## 32400007 接口不支持并行调用
 **错误信息**
