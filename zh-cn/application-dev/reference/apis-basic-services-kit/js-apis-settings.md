@@ -1194,7 +1194,7 @@ openBiometricsSettingsPage(context: Context): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1、穿戴设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、Wearable设备中可正常调用，在其他设备调用不生效。
 
 **参数**：
 
@@ -1236,7 +1236,7 @@ openNfcSettingsPage(context: Context): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
-**设备行为差异**：该接口在Phone、Tablet、穿戴设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone、Tablet、Wearable设备中可正常调用，在其他设备调用不生效。
 
 **参数**：
 
