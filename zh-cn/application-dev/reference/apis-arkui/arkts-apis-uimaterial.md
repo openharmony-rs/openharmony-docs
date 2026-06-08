@@ -36,7 +36,7 @@ import { uiMaterial } from '@kit.ArkUI';
 | ------ | --- | --------------- |
 | NONE | 0 | 无材质类型。表示不应用任何材质效果。 |
 | SEMI_TRANSPARENT | 1 | 半透明材质类型。包含预定义的backgroundColor、border和shadow效果。 |
-| IMMERSIVE | 2 | 沉浸式材质类型。仅用于[MaterialInfo](#materialinfo)接口的type属性标识当前配置的材质类型，不映射到底层功能。实际材质效果通过[ImmersiveMaterial](#immersivematerial)类实现。 |
+| IMMERSIVE | 2 | 沉浸式材质类型。仅用于[MaterialInfo](#materialinfo<sup>26+</sup>)接口的type属性标识当前配置的材质类型，不映射到底层功能。实际材质效果通过[ImmersiveMaterial](#immersivematerial)类实现。 |
 
 ## MaterialState
 
@@ -54,7 +54,7 @@ import { uiMaterial } from '@kit.ArkUI';
 | ENABLE | 1 | 使能模式。[弹出框Dialog](../../ui/arkts-base-dialog-overview.md)、[即时反馈（Toast）](../../ui/arkts-create-toast.md)、[AlphabetIndexer](arkui-ts/ts-container-alphabet-indexer.md)、[ChipGroup](arkui-ts/ohos-arkui-advanced-ChipGroup.md)、[Chip](arkui-ts/ohos-arkui-advanced-Chip.md)、[Select](arkui-ts/ts-basic-components-select.md)、[菜单控制](arkui-ts/ts-universal-attributes-menu.md)、[Toggle](arkui-ts/ts-basic-components-toggle.md)、[SegmentButton](arkui-ts/ohos-arkui-advanced-SegmentButton.md)、[SegmentButtonV2](arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)、[Slider](arkui-ts/ts-basic-components-slider.md)、[bindSheet](arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)、[SelectionMenu](arkui-ts/ohos-arkui-advanced-SelectionMenu.md)组件默认开启沉浸式系统材质；[Text](arkui-ts/ts-basic-components-text.md)设置[copyOption](arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单默认开启沉浸式系统材质。此模式下，沉浸式系统材质样式生效的优先级高于组件本身设置的背景色、模糊、阴影和边框样式。其他组件需开发者主动设置。|
 | DISABLE | 2 | 禁用模式。所有组件禁止开启沉浸式系统材质，即使主动为组件设置沉浸式系统材质参数也不会生效。 |
 
-## MaterialInfo<sup>26</sup>
+## MaterialInfo<sup>26+</sup>
 
 材质配置信息，包含材质使能状态和材质类型。
 
@@ -69,7 +69,7 @@ import { uiMaterial } from '@kit.ArkUI';
 | state   | [MaterialState](#materialstate)                                   | 否 | 否   | 材质使能状态配置。 |
 | type   | [MaterialType](#materialtype)                                   | 否 | 否   | 材质类型标识，表示当前配置对应的材质类型。该值仅用于类型标识，不映射到底层功能。 |
 
-## uiMaterial.getMaterialInfo<sup>26</sup>
+## uiMaterial.getMaterialInfo<sup>26+</sup>
 
 getMaterialInfo(): MaterialInfo
 
@@ -83,9 +83,9 @@ getMaterialInfo(): MaterialInfo
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [MaterialInfo](#materialinfo) | 返回当前应用的材质配置信息，包含材质使能状态和材质类型。 |
+| [MaterialInfo](#materialinfo<sup>26+</sup>) | 返回当前应用的材质配置信息，包含材质使能状态和材质类型。 |
 
-## ImmersiveStyle<sup>26</sup>
+## ImmersiveStyle<sup>26+</sup>
 
 沉浸式材质样式枚举。不同的材质样式对应不同的材质参数，主要包括材质的模糊程度、高光效果等。
 
@@ -103,7 +103,7 @@ getMaterialInfo(): MaterialInfo
 | THICK | 3 | 厚样式。模糊效果强。 |
 | ULTRA_THICK | 4 | 超厚样式。模糊效果很强。 |
 
-## LightEffectOptions<sup>26</sup>
+## LightEffectOptions<sup>26+</sup>
 
 沉浸式材质的光感交互反馈配置。用于自定义反馈光感的颜色。
 
@@ -117,7 +117,7 @@ getMaterialInfo(): MaterialInfo
 | ----------------------------- | ---------------------------------------- | ---- | ---------------------------------------- | ---------------------------------------- |
 | color       | [ResourceColor](./arkui-ts/ts-types.md#resourcecolor) | 否    | 是   | 自定义交互反馈光感的颜色。<br/>默认值：Color.White |
 
-## ImmersiveOptions<sup>26</sup>
+## ImmersiveOptions<sup>26+</sup>
 
 沉浸式材质参数。
 
@@ -129,12 +129,12 @@ getMaterialInfo(): MaterialInfo
 
 | 名称       | 类型                                                        | 只读 | 可选 | 说明                                                     |
 | ---------- | ----------------------------------------------------------- | ---- | ------- | ----------------------------------------------------- |
-| style   | [ImmersiveStyle](#immersivestyle)                                   | 否 | 是   | 材质样式。不同样式对应不同的材质参数，影响材质的厚度。<br/>**说明**：该参数仅对高档和中档算力设备的显示效果生效。<br/>默认值：ImmersiveStyle.REGULAR |
+| style   | [ImmersiveStyle](#immersivestyle<sup>26+</sup>)                                   | 否 | 是   | 材质样式。不同样式对应不同的材质参数，影响材质的厚度。<br/>**说明**：该参数仅对高档和中档算力设备的显示效果生效。<br/>默认值：ImmersiveStyle.REGULAR |
 | materialColor   | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)                                   | 否 | 是   | 材质层赋色，该参数会为材质滤镜再混合一层纯色效果。该颜色需要带一定的透明度值，不能为纯不透明的颜色，否则会将材质滤镜效果完全遮挡。<br/>**说明**：该参数仅对高档和中档算力设备的显示效果生效。<br/>默认值：Color.Transparent |
 | colorInvert   | boolean                                   | 否 | 是   | 设置了材质对象的节点的子树是否自动适配材质到背景色的反色。<br/>若为false，则不会自动反色。<br/>若为true，则只有材质参数足够薄时才会自动反色。具体能反色的材质由系统定义，材质样式至少为THIN或ULTRA_THIN，且与设置应用的沉浸光感的强弱配置相关。材质越薄、沉浸光感越强，越容易符合反色材质的要求。<br/>自动反色能力仅对部分属性接口设置特殊资源值时生效，生效的属性接口包括：Text组件的[fontColor](arkui-ts/ts-basic-components-text.md#fontcolor)，Button组件的[fontColor](arkui-ts/ts-basic-components-button.md#fontcolor)，SymbolGlyph组件的[fontColor](arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor)，Image组件的[fillColor](arkui-ts/ts-basic-components-image.md#fillcolor)，Search组件的[placeholderColor](arkui-ts/ts-basic-components-search.md#placeholdercolor)、[fontColor](arkui-ts/ts-basic-components-search.md#fontcolor10)、[searchIcon](arkui-ts/ts-basic-components-search.md#searchicon10)中的图标颜色、[cancelButton](arkui-ts/ts-basic-components-search.md#cancelbutton10)中的图标颜色、[caretStyle](arkui-ts/ts-basic-components-search.md#caretstyle10)中的光标颜色，TabContent组件的[tabBar](arkui-ts/ts-container-tabcontent.md#tabbar)属性使用[BottomTabBarStyle](arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)样式时其中的文本和图标颜色。<br/>**说明**：该参数仅对高档和中档算力设备的显示效果生效。<br/>默认值：false |
 | applyShadow   | boolean                                   | 否 | 是   | 是否添加材质的阴影效果。<br/>当该参数为true时，材质中的阴影效果固定生效，优先于[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)通用属性。当该参数为false时，shadow通用属性生效，材质的阴影效果不生效。<br/>**说明**：该参数仅对所有档位的算力设备的显示效果生效。<br/>默认值：true |
 | interactive   | boolean                                   | 否 | 是   | 是否为设置材质的组件设置交互形变效果。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：false |
-| lightEffect   | [LightEffectOptions](#lighteffectoptions) \| null                                   | 否 | 是   | 是否为设置材质的组件设置光感交互反馈效果。当该参数为null时，禁用光感交互反馈效果。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：undefined，不设置光感交互反馈效果。 |
+| lightEffect   | [LightEffectOptions](#lighteffectoptions<sup>26+</sup>) \| null                                   | 否 | 是   | 是否为设置材质的组件设置光感交互反馈效果。当该参数为null时，禁用光感交互反馈效果。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：undefined，不设置光感交互反馈效果。 |
 
 ## MaterialOptions
 
@@ -176,7 +176,7 @@ Material的构造函数。
 | ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 |  options      | [MaterialOptions](#materialoptions)                      | 否   | 系统材质配置选项。<br/>默认值：{type:MaterialType.NONE}。    |
 
-### empty<sup>26</sup>
+### empty<sup>26+</sup>
 
 static get empty(): Material
 
@@ -204,7 +204,7 @@ static get empty(): Material
 
 沉浸式材质根据设备算力有分档表现，设备算力的高、中、低档由设备厂商决定，定义在系统配置文件中。在高档和中档算力设备上，影响材质层滤镜效果和阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)效果。在低档算力设备上，影响背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)效果。且同一材质的效果，会受到设置应用中沉浸光感配置项的影响，不同强弱程度的沉浸光感配置下，材质的参数和效果存在差异。
 
-### constructor<sup>26</sup>
+### constructor<sup>26+</sup>
 
 constructor(options?: ImmersiveOptions)
 
@@ -220,13 +220,13 @@ ImmersiveMaterial的构造函数。
 
 | 参数名       | 类型                                                       | 必填 | 说明                                                         |
 | ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-|  options      | [ImmersiveOptions](#immersiveoptions)                      | 否   | 系统材质配置选项，包括材质样式、材质层赋色等。<br/>默认值参考ImmersiveOptions接口各参数的默认值，即{style:ImmersiveStyle.REGULAR, materialColor:Color.Transparent, colorInvert:false, applyShadow:true, interactive:false, lightEffect:undefined}。    |
+|  options      | [ImmersiveOptions](#immersiveoptions<sup>26+</sup>)                      | 否   | 系统材质配置选项，包括材质样式、材质层赋色等。<br/>默认值参考ImmersiveOptions接口各参数的默认值，即{style:ImmersiveStyle.REGULAR, materialColor:Color.Transparent, colorInvert:false, applyShadow:true, interactive:false, lightEffect:undefined}。    |
 
 ## 示例
 
 ### 示例1（设置沉浸式系统材质）
 
-本示例介绍如何将沉浸式材质的[ImmersiveMaterial](#immersivematerial)对象通过[systemMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性设置给组件。
+本示例介绍如何将沉浸式材质的[ImmersiveMaterial](#immersivematerial)对象通过[systemMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial<sup>26+</sup>)属性设置给组件。
 
 从API版本26.0.0开始，新增ImmersiveMaterial对象和systemMaterial属性。
 
@@ -331,7 +331,7 @@ struct SystemMaterialPage {
 
 ### 示例2（获取材质配置信息并使用空材质关闭沉浸式系统材质）
 
-本示例介绍如何通过[uiMaterial.getMaterialInfo](#uimaterialgetmaterialinfo)获取当前应用的材质配置信息，并根据配置状态使用[empty](#empty)关闭特定组件的沉浸式系统材质效果。
+本示例介绍如何通过[uiMaterial.getMaterialInfo](#uimaterial.getmaterialinfo<sup>26+</sup>)获取当前应用的材质配置信息，并根据配置状态使用[empty](#empty<sup>26+</sup>)关闭特定组件的沉浸式系统材质效果。
 
 从API版本26.0.0开始，新增uiMaterial.getMaterialInfo方法和empty方法。
 
@@ -405,7 +405,7 @@ struct MaterialInfoPage {
 
 ### 示例3（设置组件材质的交互形变效果）
 
-本示例介绍如何通过[ImmersiveOptions](#immersiveoptions)中的interactive接口使组件实现交互形变效果。
+本示例介绍如何通过[ImmersiveOptions](#immersiveoptions26)中的interactive接口使组件实现交互形变效果。
 
 从API版本26.0.0开始，新增interactive接口。
 
@@ -442,7 +442,7 @@ struct Index {
 
 ### 示例4（设置组件材质的光感交互反馈效果）
 
-本示例介绍如何通过[ImmersiveOptions](#immersiveoptions)中的lightEffect接口使组件实现光感交互反馈效果。
+本示例介绍如何通过[ImmersiveOptions](#immersiveoptions<sup>26+</sup>)中的lightEffect接口使组件实现光感交互反馈效果。
 
 从API版本26.0.0开始，新增lightEffect接口。
 
