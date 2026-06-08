@@ -233,7 +233,7 @@
 
    ArkTS-Dyn示例：
    <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
      console.error('deviceList is empty');
