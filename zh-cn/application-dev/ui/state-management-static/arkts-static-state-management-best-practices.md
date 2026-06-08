@@ -192,7 +192,7 @@ struct Page1 {
       Title()
       Stack() {
       }
-      .backgroundColor('green')
+      .backgroundColor('#87CEEB')
       .width(200)
       .height(400)
       Button('move')
@@ -212,6 +212,8 @@ struct Page1 {
   }
 }
 ```
+
+![precise_control_positive_cases](../figures/best-practice_2.gif)
 
 ## 合理控制对象类型状态变量关联的组件数量
 
