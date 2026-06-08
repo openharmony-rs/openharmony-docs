@@ -95,7 +95,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001166962736](figures/en-us_image_0000001166962736.png)
+![fillStyle](figures/fillStyle.png)
 
 
 ### lineWidth
@@ -120,7 +120,7 @@ export default {
 
 ```
 
-![en-us_image_0000001166484430](figures/en-us_image_0000001166484430.png)
+![lineWidth](figures/lineWidth.png)
 
 
 ### strokeStyle
@@ -146,7 +146,7 @@ export default {
 ```
 
 
-![en-us_image_0000001212124299](figures/en-us_image_0000001212124299.png)
+![strokeStyle](figures/strokeStyle.png)
 
 ### lineCap
 
@@ -229,7 +229,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001167001464](figures/en-us_image_0000001167001464.png)
+![miterLimit](figures/miterLimit.png)
 
 
 ### font
@@ -253,7 +253,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001167046832](figures/en-us_image_0000001167046832.png)
+![font](figures/font.png)
 
 
 ### textAlign
@@ -293,7 +293,7 @@ export default {
 ```
 
 
-![en-us_image_0000001167472798](figures/en-us_image_0000001167472798.png)
+![textAlign](figures/textAlign.png)
 
 ### textBaseline
 
@@ -329,7 +329,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001169315920](figures/en-us_image_0000001169315920.png)
+![textBaseline](figures/textBaseline.png)
 
 ### globalAlpha
 
@@ -356,7 +356,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001167953648](figures/en-us_image_0000001167953648.png)
+![globalAlpha](figures/globalAlpha.png)
 
 ### lineDashOffset
 
@@ -381,7 +381,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001167950468](figures/en-us_image_0000001167950468.png)
+![swiper](figures/swiper.png)
 
 ### globalCompositeOperation
 
@@ -458,7 +458,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001168111514](figures/en-us_image_0000001168111514.png)
+![shadowBlur](figures/shadowBlur.png)
 
 ### shadowColor
 
@@ -483,7 +483,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001168111610](figures/en-us_image_0000001168111610.png)
+![shadowColor](figures/shadowColor.png)
 
 ### shadowOffsetX
 
@@ -510,7 +510,7 @@ export default {
 ```
 
 
-![en-us_image_0000001167631876](figures/en-us_image_0000001167631876.png)
+![shadowOffsetX](figures/shadowOffsetX.png)
 
 ### shadowOffsetY
 
@@ -564,7 +564,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001167952236](figures/en-us_image_0000001167952236.png)
+![imageSmoothingEnabled](figures/imageSmoothingEnabled.png)
 
 
 
@@ -807,7 +807,7 @@ Returns a **TextMetrics** object used to obtain the width of specified text.
   }
   ```
 
-  ![en-us_image_0000001169142476](figures/en-us_image_0000001169142476.png)
+  ![measureText](figures/measureText.png)
 
 
 ### stroke
@@ -913,7 +913,7 @@ Moves a drawing path to a target position on the canvas.
   }
   ```
 
-  ![en-us_image_0000001169309948](figures/en-us_image_0000001169309948.png)
+  ![moveTo](figures/moveTo.png)
 
 
 ### lineTo
@@ -952,7 +952,7 @@ Connects the current point to a target position using a straight line.
   }
   ```
 
-  ![en-us_image_0000001169469914](figures/en-us_image_0000001169469914.png)
+  ![lineTo01](figures/lineTo01.png)
 
 
 ### closePath
@@ -986,7 +986,7 @@ Draws a closed path.
   }
   ```
 
-  ![en-us_image_0000001169151508](figures/en-us_image_0000001169151508.png)
+  ![closePath](figures/closePath.png)
 
 ### createPattern
 
@@ -1033,7 +1033,7 @@ Creates a pattern for image filling based on a specified source image and repeti
   }
   ```
 
-  ![en-us_image_0000001169301188](figures/en-us_image_0000001169301188.png)
+  ![createPattern](figures/createPattern.png)
 
 ### bezierCurveTo
 
@@ -1117,7 +1117,7 @@ Create a path for a quadratic Bezier curve.
   }
   ```
 
-  ![en-us_image_0000001169461910](figures/en-us_image_0000001169461910.png)
+  ![quadraticCurveTo](figures/quadraticCurveTo.png)
 
 
 ### arc
@@ -1159,7 +1159,7 @@ Draws an arc on the canvas.
   }
   ```
 
-  ![en-us_image_0000001169470288](figures/en-us_image_0000001169470288.png)
+  ![arc](figures/arc.png)
 
 ### arcTo
 
@@ -1200,7 +1200,7 @@ Draws an arc based on the radius and points on the arc.
   }
   ```
 
-  ![en-us_image_0000001169143586](figures/en-us_image_0000001169143586.png)
+  ![arcTo](figures/arcTo.png)
 
 ### ellipse
 
@@ -1347,7 +1347,7 @@ Sets the current path to a clipping path.
   }
   ```
 
-  ![en-us_image_0000001169303414](figures/en-us_image_0000001169303414.png)
+  ![clip](figures/clip.png)
 
 ### rotate
 
@@ -1383,7 +1383,7 @@ Rotates a canvas clockwise around its coordinate axes.
   }
   ```
 
-  ![en-us_image_0000001169463368](figures/en-us_image_0000001169463368.png)
+  ![rotate](figures/rotate.png)
 
 ### scale
 
@@ -1519,7 +1519,7 @@ Resets the existing transformation matrix and creates a new transformation matri
   }
   ```
 
-  ![en-us_image_0000001168984880](figures/en-us_image_0000001168984880.png)
+  ![setTransform](figures/setTransform.png)
 
 ### translate
 
@@ -1557,7 +1557,7 @@ Moves the origin of the coordinate system.
   }
   ```
 
-  ![en-us_image_0000001169144864](figures/en-us_image_0000001169144864.png)
+  ![translate](figures/translate.png)
 
 ### createPath2D<sup>6+</sup>
 
@@ -1759,7 +1759,7 @@ Creates a linear gradient color and returns a CanvasGradient object. For details
   }
   ```
 
-  ![en-us_image_0000001169303416](figures/en-us_image_0000001169303416.png)
+  ![createLinearGradient](figures/createLinearGradient.png)
 
 ### createRadialGradient<sup>6+</sup>
 
@@ -1814,7 +1814,7 @@ Creates a radial gradient and returns a CanvasGradient object. For details, see 
   }
   ```
 
-  ![en-us_image_0000001169463370](figures/en-us_image_0000001169463370.png)
+  ![createRadialGradient](figures/createRadialGradient.png)
 
 ### createImageData
 
@@ -2181,4 +2181,4 @@ Displays the specified [ImageBitmap](js-components-canvas-imagebitmap.md) object
   }
   ```
 
-  ![en-us_image_0000001168984882](figures/en-us_image_0000001168984882.png)
+  ![transferFromImageBitmap](figures/transferFromImageBitmap.png)

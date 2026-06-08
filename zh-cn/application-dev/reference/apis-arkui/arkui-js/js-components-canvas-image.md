@@ -42,7 +42,7 @@ export default {
         // 图片路径建议放在common目录下
         img.src = 'common/images/example.jpg';
         img.onload = function () {
-            console.log('Image load success');
+            console.info('Image load success');
             ctx.drawImage(img, 0, 0, 360, 250);
         };
         img.onerror = function () {
@@ -53,4 +53,4 @@ export default {
 ```
 
 
-![zh-cn_image_0000001198530395](figures/zh-cn_image_0000001198530395.png)
+![Image](figures/Image.png)
