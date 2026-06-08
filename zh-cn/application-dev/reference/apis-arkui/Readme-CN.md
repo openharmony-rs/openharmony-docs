@@ -653,10 +653,11 @@
         - [@Param](arkui-ts/ts-state-management-param-static.md)
         - [@Provider](arkui-ts/ts-state-management-provider-static.md)
         - [@Trace](arkui-ts/ts-state-management-trace-static.md)
-        - [@Env](arkui-ts/ts-state-management-env-static.md)
   - 响应式环境变量<!--responsive-env-system-property-->
-    - [\@Env：环境变量](arkui-ts/ts-env-system-property.md)
-    - [\@CustomEnv：自定义环境变量](arkui-ts/ts-custom-env-property.md)
+    - [\@Env：环境变量 (ArkTS-Dyn)](arkui-ts/ts-env-system-property.md)
+    - [\@Env：环境变量 (ArkTS-Sta)](arkui-ts/ts-state-management-env-static.md)
+    - [\@CustomEnv：自定义环境变量 (ArkTS-Dyn)](arkui-ts/ts-custom-env-property.md)
+    - [\@CustomEnv：自定义环境变量 (ArkTS-Sta)](arkui-ts/ts-state-management-custom-env-static.md)
   - 公共定义<!--common-definitions-->
     - [基础类型定义](arkui-ts/ts-types.md)
     - [像素单位](arkui-ts/ts-pixel-units.md)
