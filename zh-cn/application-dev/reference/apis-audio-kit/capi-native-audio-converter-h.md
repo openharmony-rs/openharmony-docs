@@ -26,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md) | OH_AudioConverter_Format | 定义音频转换器格式数据结构，用于描述基本音频格式。 |
+| [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md) | OH_AudioConverter_Format | 定义音频转换器的数据结构，用于描述音频格式。|
 | [OH_AudioConverterStruct](capi-audioconverter-oh-audioconverterstruct.md) | OH_AudioConverter | 声明音频格式转换器。<br> 音频转换器的句柄用于执行与音频转换器相关的功能。 |
 
 ### 枚举
@@ -128,7 +128,6 @@ OH_AudioConverter_Result OH_AudioConverter_Create(const OH_AudioConverter_Format
 | 参数项 | 描述 |
 | --- | --- |
 | [const OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* inputFormat | 配置指向输入音频格式的指针。 |
-| inputFormat | 配置指向输入音频格式的指针。 |
 | [const OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* outputFormat | 配置指向输出音频格式的指针。 |
 | [OH_AudioConverter](capi-audioconverter-oh-audioconverterstruct.md)** converter | 指向可用的音频转换器的指针。 |
 
