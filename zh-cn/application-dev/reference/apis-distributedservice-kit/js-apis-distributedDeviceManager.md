@@ -122,7 +122,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 | ---------------------- | ------------------------- | --- | ---- | -------- |
 | deviceId               | string                    | 否 | 否  | 设备标识符。实际值为udid-hash与appid和盐值基于sha256方式进行混淆后的值。|
 | deviceName             | string                    | 否 | 否  | 设备名称。    |
-| deviceType             | string                    | 否 | 否  | [设备类型](#getDeviceType)。    |
+| deviceType             | string                    | 否 | 否  | 设备类型。    |
 | networkId              | string                    | 否 | 是  | 设备网络标识。  |
 
 ## DeviceStateChange
