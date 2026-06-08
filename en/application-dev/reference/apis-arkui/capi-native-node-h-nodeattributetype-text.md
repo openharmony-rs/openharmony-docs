@@ -1061,7 +1061,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Multiple value of the multiple line height mode. The default value is **0**, indicating that the default line height is used.|
+| .value[0].f32 | Multiple value of the multiple line height mode. The default value is **0**, indicating that the default line height is used.|
 
 **Returns**
 
@@ -1157,7 +1157,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_COMPRESS_LEADING_PUNCTUATION = 1048
 ```
 
-Whether to enable the feature of compressing punctuations at the beginning of a text line. This attribute can be set, reset, and obtained as required through APIs.<br>
+Whether to enable leading punctuation compression. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 23
@@ -1167,13 +1167,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to enable the feature of compressing punctuations at the beginning of a text line.<br>**true** to enable; **false** otherwise. The default value is **false**.|
+| .value[0].i32 | Whether to enable leading punctuation compression.<br>**true** to enable; **false** otherwise. The default value is **false**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the feature of compressing punctuations is enabled at the beginning of a text line.|
+| .value[0].i32 | Whether leading punctuation compression is enabled.|
 
 ## NODE_TEXT_INCLUDE_FONT_PADDING
 
