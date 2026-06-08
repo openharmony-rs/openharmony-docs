@@ -77,7 +77,134 @@
     @State previewPixelMap?: image.PixelMap = undefined;
     @State displayIdText: string = '0';
     @State displayInfoText: string = '-';
-    @State pickRectText: string = '-';
+<!--@[SnapshotScreen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { display, screenshot, window } from '@kit.ArkUI';
+import { common, abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  @State statusText: string = 'Tap a button to run the snapshot sample.';
+  @State logText: string = 'ready\n';
+  @State imageWidth: number = 0;
+  @State imageHeight: number = 0;
+  @State previewPixelMap?: image.PixelMap = undefined;
+  @State displayIdText: string = '0';
+  @State displayInfoText: string = '-';
+  @State pickRectText: string = '-';
+
+  private currentWindow?: window.Window = undefined;
+
+  aboutToAppear(): void {
+    void this.initWindow();
+    this.initDisplayInfo();
+  }
+  // ...
+  // getMainWindowSnapshot 需要使用 ohos.permission.CUSTOM_SCREEN_CAPTURE 权限。
+  private async requestCapturePermission(): Promise<boolean> {
+    try {
+      const hostContext = this.getUIContext().getHostContext();
+      if (!hostContext) {
+        this.statusText = 'permission request failed: hostContext is unavailable';
+        this.appendLog('permission request failed: hostContext is unavailable');
+        return false;
+      }
+
+      const context = hostContext as common.UIAbilityContext;
+      const atManager = abilityAccessCtrl.createAtManager();
+      const result = await atManager.requestPermissionsFromUser(context, [
+        'ohos.permission.CUSTOM_SCREEN_CAPTURE' as Permissions
+      ]);
+
+      const granted = result.authResults.length > 0 && result.authResults[0] === 0;
+      this.statusText = `permission granted=${granted}`;
+      this.appendLog(`permission granted=${granted}`);
+      return granted;
+    } catch (err) {
+      this.statusText = `permission request failed: ${JSON.stringify(err)}`;
+      this.appendLog(`permission request failed: ${JSON.stringify(err)}`);
+      return false;
+    }
+  }
+
+  // 通过当前主窗口 ID 获取主窗口截图。
+  private async takeMainWindowSnapshot(): Promise<void> {
+    if (!this.currentWindow) {
+      await this.initWindow();
+    }
+
+    if (!this.currentWindow) {
+      this.appendLog('Current window is unavailable.');
+      return;
+    }
+
+    const granted = await this.requestCapturePermission();
+    if (!granted) {
+      this.appendLog('CUSTOM_SCREEN_CAPTURE permission denied or unavailable.');
+      return;
+    }
+
+    try {
+      const windowId = this.currentWindow.getWindowProperties().id;
+      const pixelMaps = await window.getMainWindowSnapshot([windowId], {
+        useCache: false
+      });
+
+      const pixelMap = pixelMaps[0];
+      if (!pixelMap) {
+        this.appendLog(`getMainWindowSnapshot(${windowId}) returned undefined.`);
+        return;
+      }
+
+      await this.updatePreview(pixelMap, 'window.getMainWindowSnapshot');
+    } catch (err) {
+      this.appendLog(`getMainWindowSnapshot failed: ${JSON.stringify(err)}`);
+    }
+  }
+  // 通过手势框选屏幕区域，仅支持主屏区域截图。
+  private async pickScreenArea(): Promise<void> {
+    try {
+      const result = await screenshot.pick();
+      this.pickRectText = `left=${result.pickRect.left}, top=${result.pickRect.top}, width=${result.pickRect.width}, height=${result.pickRect.height}`;
+      await this.updatePreview(result.pixelMap, 'screenshot.pick');
+    } catch (err) {
+      this.statusText = `screenshot.pick failed: ${JSON.stringify(err)}`;
+      hilog.error(DOMAIN, 'screenshotSample', this.statusText);
+    }
+  }
+
+  // 根据 displayId 截取对应屏幕的全屏内容。
+  private async captureByDisplayId(): Promise<void> {
+    const granted = await this.requestCapturePermission();
+    if (!granted) {
+      this.statusText = 'CUSTOM_SCREEN_CAPTURE permission denied or unavailable.';
+      return;
+    }
+
+    try {
+      const displayId = Number.parseInt(this.displayIdText, 10);
+      if (Number.isNaN(displayId) || displayId < 0) {
+        throw new Error(`Invalid displayId: ${this.displayIdText}`);
+      }
+
+      const pixelMap = await screenshot.capture({ displayId });
+      await this.updatePreview(pixelMap, `screenshot.capture(displayId=${displayId})`);
+    } catch (err) {
+      this.statusText = `screenshot.capture failed: ${JSON.stringify(err)}`;
+      hilog.error(DOMAIN, 'screenshotSample', this.statusText);
+    }
+  }
+
+  build() {
+  // ...
+}
+```
   
     private currentWindow?: window.Window = undefined;
   
