@@ -26,9 +26,9 @@ Use **@media** to import query statements. The rule is as follows:
 }
 ```
 
-**@media screen and (round-screen: true) { … }**: The condition is met when the device screen is round.
+**@media screen and (round-screen: true) { ... }**: The condition is met when the device screen is round.
 
-**@media (max-height: 454) { … }**: Range query. CSS level 3 is used.
+**@media (max-height: 454) { ... }**: Range query. CSS level 3 is used.
 
 >  **NOTE**
 >

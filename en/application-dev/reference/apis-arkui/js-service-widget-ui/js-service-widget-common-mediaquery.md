@@ -32,13 +32,13 @@ Use **\@media** to import query statements. The rule is as follows:
 
 Example:
 
-\@media screen and (round-screen: true) { … } // The condition is met when the device screen is round.
+\@media screen and (round-screen: true) { ... } // The condition is met when the device screen is round.
 
-\@media (max-height: 800) { … } // Range query. CSS level 3 is used.
+\@media (max-height: 800) { ... } // Range query. CSS level 3 is used.
 
-\@media (height &lt;= 800) { … } // Range query. CSS level 4 is used, and the statement is equivalent to that of CSS level 3.
+\@media (height &lt;= 800) { ... } // Range query. CSS level 4 is used, and the statement is equivalent to that of CSS level 3.
 
-\@media screen and (device-type: tv) or (resolution &lt; 2) { … } // Multi-condition query that contains the media type and multiple media features.
+\@media screen and (device-type: tv) or (resolution &lt; 2) { ... } // Multi-condition query that contains the media type and multiple media features.
 
 ## Referencing Resources on a Page
 
