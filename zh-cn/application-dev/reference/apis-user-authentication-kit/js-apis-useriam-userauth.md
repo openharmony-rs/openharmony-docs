@@ -98,25 +98,6 @@ if (!lockState.isLocked) {
 }
 ```
 
-**复用认证结果流程**：
-
-```javascript
-// 以下为阐述调用逻辑的伪代码，仅提供步骤说明，不提供详细的可执行代码。
-// 1. 配置复用参数。
-let authParam = {
-  challenge: new Uint8Array([]), // challenge用于防止重放攻击，必须使用安全随机数生成器获取。
-  authType: [userAuth.UserAuthType.FACE],
-  authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-  reuseUnlockResult: {
-    reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
-    reuseDuration: 300000 // 5分钟
-  }
-};
-
-// 2. 查询可复用的认证结果。
-let reusableToken = userAuth.queryReusableAuthResult(authParam);
-```
-
 ## 导入模块
 
 ```ts
@@ -211,7 +192,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 > 如果身份认证解锁（包括设备解锁）后，在有效时间内凭据发生了变化，身份认证的结果依然可以复用，认证结果中返回当前实际的EnrolledState。若复用认证结果时，之前认证时所使用的身份认证凭据已经被删除：
 >
 > - 如果删除的是人脸、指纹，则认证结果依然可以复用，只是返回的EnrolledState中credentialCount和credentialDigest均为0。
-> - 如果删除的是锁屏口令，则此次复用会失败，系统将要求用户重新进行认证。
+> - 如果删除的是锁屏口令，则此次复用会失败。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
