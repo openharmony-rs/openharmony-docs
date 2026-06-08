@@ -63,6 +63,7 @@
   - [离线编辑(C/C++)](audio-suite-manual-rendering.md)
   - [实时预览(C/C++)](audio-suite-real-time-rendering.md)
   - [音频格式转换(C/C++)](audio-suite-format-converter.md)
+  - [空间渲染(C/C++)](audio-suite-space-render.md)
 - MIDI设备通信<!--midi-->
   - [OH_MIDI概述(C/C++)](midi-overview.md)
   - [使用OH_MIDI进行MIDI开发(C/C++)](using-ohmidi.md)

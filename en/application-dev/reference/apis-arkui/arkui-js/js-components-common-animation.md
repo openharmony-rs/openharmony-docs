@@ -111,7 +111,7 @@ If there is no default value for when an animation will start or end, you can ex
 ```
 
 
-![en-us_image_0000001173324797](figures/en-us_image_0000001173324797.gif)
+![Animation-Styles02](figures/Animation-Styles02.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -160,7 +160,7 @@ export default {
 ```
 
 
-![en-us_image_0000001127285034](figures/en-us_image_0000001127285034.gif)
+![animation-styles](figures/animation-styles.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -219,7 +219,7 @@ export default {
 ```
 
 
-![en-us_image_0000001152833768](figures/en-us_image_0000001152833768.gif)
+![animation-styles01](figures/animation-styles01.gif)
 
 
 >  **NOTE**

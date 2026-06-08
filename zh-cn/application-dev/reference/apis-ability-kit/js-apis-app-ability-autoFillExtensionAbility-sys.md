@@ -121,7 +121,7 @@ onSaveRequest(session: UIExtensionContentSession, request: SaveRequest, callback
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | session | [UIExtensionContentSession](js-apis-app-ability-uiExtensionContentSession.md)  | 是 | AutoFillExtensionAbility界面内容相关信息。 |
-| request | [SaveRequest](js-apis-inner-application-autoFillRequest-sys.md#saverequest)  | 是 | 保存请求数据。 |
+| request | [SaveRequest](js-apis-inner-application-autoFillRequest.md#saverequest)  | 是 | 保存请求数据。 |
 | callback | [SaveRequestCallback](js-apis-inner-application-autoFillRequest-sys.md#saverequestcallback)  | 是 | 保存请求回调。 |
 
 **示例：**

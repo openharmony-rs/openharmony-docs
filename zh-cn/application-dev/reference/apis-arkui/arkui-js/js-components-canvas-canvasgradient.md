@@ -50,4 +50,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001152610806](figures/zh-cn_image_0000001152610806.png)
+![addColorStop](figures/addColorStop.png)

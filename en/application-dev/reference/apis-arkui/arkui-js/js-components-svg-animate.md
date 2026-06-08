@@ -57,7 +57,7 @@ Not supported
 ```
 
 
-![en-us_image_0000001173324703](figures/en-us_image_0000001173324703.gif)
+![animate01](figures/animate01.gif)
 
 
 ```html
@@ -73,7 +73,7 @@ Not supported
 ```
 
 
-![en-us_image_0000001167662852](figures/en-us_image_0000001167662852.gif)
+![animate](figures/animate.gif)
 
 
 ```html
