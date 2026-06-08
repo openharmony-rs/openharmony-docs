@@ -1,4 +1,4 @@
-# 应用启动
+# 应用启动设置
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
