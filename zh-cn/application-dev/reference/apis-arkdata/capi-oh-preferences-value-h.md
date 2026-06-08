@@ -146,6 +146,7 @@ const OH_PreferencesValue *OH_PreferencesPair_GetPreferencesValue(const OH_Prefe
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | const [OH_PreferencesPair](capi-preferences-oh-preferencespair.md) *pairs | 目标键值对数据[OH_PreferencesPair](capi-preferences-oh-preferencespair.md)的指针。 |
 | uint32_t index                                               | 目标键值对数据[OH_PreferencesPair](capi-preferences-oh-preferencespair.md)的索引值，取值范围[0, count-1]（count为pairs数组长度）。 |
+
 **返回：**
 
 | 类型                                                     | 说明                                                         |
@@ -506,6 +507,7 @@ int OH_PreferencesValue_SetIntArray(const OH_PreferencesValue *object, const int
 | [const OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) *object | 指向目标[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)实例的指针。 |
 | const int *value | 需要设置的整型数组值。 |
 | uint32_t count | 需要设置的数组大小。 |
+
 **返回：**
 
 | 类型 | 说明 |
