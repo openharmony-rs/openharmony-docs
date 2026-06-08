@@ -360,6 +360,7 @@ int OH_Preferences_RegisterDataObserver(OH_Preferences *preference, void *contex
 | [OH_PreferencesDataObserver](#oh_preferencesdataobserver) observer | 订阅数据变更关联的回调函数[OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdataobserver)。 |
 | const char *keys[]                                           | 需要订阅的Key数组。                                          |
 | uint32_t keyCount                                            | 需要订阅的Key的数量。取值范围大于等于1，必须与keys数组的实际长度一致。                                        |
+
 **返回：**
 
 | 类型 | 说明                                                         |
@@ -388,6 +389,7 @@ int OH_Preferences_UnregisterDataObserver(OH_Preferences *preference, void *cont
 | [OH_PreferencesDataObserver](#oh_preferencesdataobserver) observer | 订阅数据变更关联的回调函数[OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdataobserver)。 |
 | const char *keys[]                                           | 需要取消订阅的Key数组。                                      |
 | uint32_t keyCount                                            | 需要取消订阅的Key的数量。取值范围大于等于1，必须与keys数组的实际长度一致。                                    |
+
 **返回：**
 
 | 类型 | 说明                                                         |

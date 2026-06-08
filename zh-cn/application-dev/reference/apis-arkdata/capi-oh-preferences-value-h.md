@@ -28,6 +28,7 @@
 | -------------------------------------------------- | ------------------- | ------------------------------------- |
 | [OH_PreferencesPair](capi-preferences-oh-preferencespair.md)   | OH_PreferencesPair  | 定义Preferences使用的键值对数据对象类型。 |
 | [OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md) | OH_PreferencesValue | 定义PreferencesValue对象类型。        |
+
 ### 枚举
 
 | 名称                                          | typedef关键字        | 描述                             |
@@ -109,6 +110,7 @@ const char *OH_PreferencesPair_GetKey(const OH_PreferencesPair *pairs, uint32_t 
 **描述**
 
 获取键值对数据中索引对应数据的键。
+
 **起始版本：** 13
 
 
