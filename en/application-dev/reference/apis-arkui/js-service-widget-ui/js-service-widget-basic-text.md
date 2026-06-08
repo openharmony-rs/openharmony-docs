@@ -1,28 +1,26 @@
 # text
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:28:10.909Z pushedAt=2026-06-08T03:48:21.956Z -->
 
 The **\<text>** component is used to display a piece of textual information.
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
-
+> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Child Components
 
 The child component **[\<span>](js-service-widget-basic-span.md)** is supported.
 
-
 ## Attributes
 
 The [universal attributes](js-service-widget-common-attributes.md) are supported.
-
 
 ## Styles
 
@@ -59,7 +57,6 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 > - The **letter-spacing**, **text-align**, **line-height**, **text-overflow**, and **max-lines** styles take effect on text content held by the **\<text>** component and its child components (**\<span>**).
 > 
 > - The **<text>** component cannot contain both the text and the child component **\<span>**. If both of them exist, only the content in **\<span>** is displayed.
-
 
 ## Events
 

@@ -6,14 +6,13 @@
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:28:15.018Z pushedAt=2026-06-08T03:48:24.048Z -->
 
 The atomic layout implements adaptive layout for screens of different sizes and types. Designers can use the atomic layout to define adaptive rules for components on UIs of different widgets. Developers can use the atomic layout to implement the adaptive UI features matching the design effect for a variety of screens.
 
-
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
-
+>  This feature is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Hiding Components
 
@@ -23,7 +22,6 @@ You can set priority flags for a flex layout that does not support cross-row dis
 | ------------- | ------ | ---- | ---------------------------------------- |
 | display-index | number | 0    | When the space of a container on the flex main axis is insufficient to display all content, the child components are hidden in ascending order of their **display-index** values. Child components with the same **display-index** value are hidden at the same time. The default value of this style is **0**, indicating that the child component is hidden. This style is applicable to child components in a container that supports flex layout, such as **\<div>**. |
 
-
 ## Proportion
 
 In a flex layout that does not support cross-row display, components with the proportion style configured are always arranged with the set proportions in the container.
@@ -31,7 +29,6 @@ In a flex layout that does not support cross-row display, components with the pr
 | Style         | Type    | Default Value | Description                                      |
 | ----------- | ------ | ---- | ---------------------------------------- |
 | flex-weight | number | -    | Size weight of the component on the flex main axis. Component size = Container main axis size x flex-weight / Sum of all component size weights. This style takes effect only when it is set for all components in the container.|
-
 
 ## Fixed Ratio
 
