@@ -394,9 +394,19 @@ interface Rect {
      @Component
      struct Index {
        @Env(SystemProperties.WINDOW_AVOID_AREA) avoidAreasVp: window.UIEnvWindowAvoidAreaInfoVP;
-      <!--@[ImmersiveLayout_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayout/entry/src/main/ets/pages/Index.ets) -->
-      
-      ``` TypeScript
+       @StorageProp('topAvoidHeight')
+       topAvoidHeight: number = 0;
+       @StorageProp('bottomAvoidHeight')
+       bottomAvoidHeight: number = 0;
+       @StorageProp('leftAvoidWidth')
+       leftAvoidWidth: number = 0;
+       @StorageProp('rightAvoidWidth')
+       rightAvoidWidth: number = 0;
+       @StorageLink('mainWindow')
+       mainWindow: window.Window | undefined = undefined;
+       // ...
+     }
+     ```
       import { window } from '@kit.ArkUI';
       import { hilog } from '@kit.PerformanceAnalysisKit';
       
