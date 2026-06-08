@@ -62,22 +62,27 @@ ArkUI NDK接口能力主要包括：
 | 任务 | 简介 |
 | -------- | -------- |
 | [NDK开发导读](../napi/ndk-development-overview.md) | 介绍NDK的适用场景与必备基础知识。 |
-| [接入ArkTS页面](ndk-access-the-arkts-page.md) | 介绍了如何将NDK接口开发的UI界面挂载到ArkTS主页面上进行渲染显示。 |
-| [添加事件响应](ndk-add-event-response.md) | 介绍了如何在Native侧添加事件监听和事件处理逻辑。 |
-| [使用动画](ndk-use-animation.md) | 介绍了如何在Native侧添加动画。 |
+| NDK对接ArkTS | 介绍了如何将NDK接口开发的组件/UI界面挂载到ArkTS主页面上进行渲染显示。包括[嵌入ArkTS组件](ndk-embed-arkts-components.md)和[接入ArkTS页面](ndk-access-the-arkts-page.md)。 |
 | [构建布局](ndk-loading-long-list.md) | 介绍了如何在Native侧使用容器组件构建布局。 |
-| [构建弹窗](ndk-build-pop-up-window.md) | 介绍了如何使用弹窗接口构建UI界面进行弹窗显示。 |
+| [使用导航类组件](ndk-navigation-query.md) | 介绍了如何在Native侧使用容器组件构建布局。 |
+| 使用列表与网格 | 介绍了如何在Native侧[使用列表](ndk-loading-long-list.md)、[使用瀑布流](ndk-waterflow.md)、[使用网格](ndk-grid.md)。 |
+| 使用文本 | 介绍了如何在Native侧[使用Text组件](ndk-use-text-component.md)、[使用属性字符串](ndk-styled-string.md)、[输入框文本事件监听](ndk-textarea-event.md)。 |
+| 媒体展示 | 介绍了如何在Native侧[显示图片（Image）](ndk-image-component.md)、[使用滑块视图容器 (Swiper)](zh-cn/application-dev/ui/ndk-swiper.md)。 |
 | [构建表单组件](ndk-build-form-components.md) | 介绍了如何使用NDK接口创建按钮、滑动条、开关、复选框和单选按钮等表单组件。 |
-| [构建自定义组件](ndk-build-custom-components.md) | 介绍了如何使用NDK接口能力构建自定义组件，实现差异化UI组件。 |
-| [嵌入ArkTS组件](ndk-embed-arkts-components.md) | 介绍了如何在Native侧构建带有ArkTS组件的界面。 |
-| [构建渲染节点](ndk-embed-render-components.md) | 介绍了如何在Native侧构建渲染节点。 |
+| [构建弹窗](ndk-build-pop-up-window.md) | 介绍了如何使用弹窗接口构建UI界面进行弹窗显示。 |
+| [使用动画](ndk-use-animation.md) | 介绍了如何在Native侧添加动画。 |
+| 使用选择类组件 | 介绍了如何在Native侧[使用滑动选择器](ndk-picker.md)。 |
+| [添加事件响应](ndk-add-event-response.md) | 介绍了如何在Native侧添加事件监听和事件处理逻辑。 |
+| 使用自定义能力 | 介绍了如何在Native侧[构建自定义组件](ndk-build-custom-components.md)、使用[自定义绘制](arkts-user-defined-draw.md)。 |
+
+
 | [通过自绘制接入无障碍](ndk-accessibility-xcomponent.md) | 介绍了自绘制机制接入的第三方UI框架平台，通过获取AccessibilityProvider如何对接系统无障碍。 |
-| [自定义绘制](arkts-user-defined-draw.md) | 介绍了如何使用自定义绘制能力，实现自定义内容的绘制。 |
 | [查询和操作自定义节点](ndk-node-query-operate.md) | 介绍了如何对自定义节点进行查询和操作。 |
 | [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ndk-embedded-component.md) | 介绍了如何在Native侧通过EmbeddedComponent拉起EmbeddedUIExtensionAbility。主要用于有进程隔离需求的模块化开发场景。 |
-| [使用文本](ndk-styled-string.md) | 介绍了Text组件与字体引擎如何配套使用。 |
+
 | [在NDK中保证多实例场景功能正常](ndk-scope-task.md) | 介绍了如何在NDK多线程场景中保证接口调用的功能正常。 |
 | [使用多线程NDK接口并行化构建UI页面](ndk-build-on-multi-thread.md) | 介绍了如何使用NDK进行多线程UI组件创建。 |
+| [构建渲染节点](ndk-embed-render-components.md) | 介绍了如何在Native侧构建渲染节点。 |
 
 
 ## 注意事项
