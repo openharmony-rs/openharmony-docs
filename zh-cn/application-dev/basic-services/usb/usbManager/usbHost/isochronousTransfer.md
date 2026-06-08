@@ -436,7 +436,7 @@
 
    ArkTS-Dyn示例：
    <!-- @[interruptTransfer_interruptTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    let transferParams: usbManager.UsbDataTransferParams | undefined = undefined;
    try {
@@ -454,7 +454,7 @@
        buffer: new Uint8Array(10),
        isoPacketCount: 2,
      };
-
+   
      transferParams.callback = (err: Error, callBackData: usbManager.SubmitTransferCallback) => {
        console.info(`callBackData = ${callBackData}`);
        this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
