@@ -372,7 +372,7 @@ struct Index {
         this.displayInfoText = displays.map((item) => `${item.id}`).join(', ');
         this.statusText = `available displayIds=${this.displayInfoText}`;
       } catch (err) {
-        this.statusText = `init display info failed: $JSON.stringify(err)}`;
+        this.statusText = `init display info failed: ${JSON.stringify(err)}`;
         hilog.error(DOMAIN, 'screenshotSample', this.statusText);
       }
     }
