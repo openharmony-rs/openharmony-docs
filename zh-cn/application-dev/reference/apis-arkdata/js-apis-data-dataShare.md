@@ -180,11 +180,9 @@ on(event: 'dataChange', uris: string[], config: DataProxyConfig, callback: Async
 订阅指定URI对应共享配置变更事件。若订阅者已注册变更通知，当配置发布方修改配置时，订阅者将会接收到callback通知，通知携带数据变更类型、变化的URI、变更的共享配置内容。使用callback异步回调。该功能不允许跨用户订阅通知，不允许订阅未发布的配置。订阅成功后若权限被收回，则后续不再通知订阅者。
 
 **配对调用：**
-- 订阅后必须在不需要时调用off('dataChange')取消订阅。
+- 订阅后必须在不需要时调用[off('dataChange')](#offdatachange20)取消订阅。
 - 取消订阅时需确保event、uris、config和callback参数与订阅时一致。
-- 未取消订阅可能导致内存泄漏和资源占用若订阅者已注册变更通知，当配置发布方修改配置时，订阅者将会接收到callback通知，通知携带数据变更类型、变化的URI、变更的共享配置内容。使用callback异步回调。该功能不允许跨用户订阅通知，不允许订阅未发布的配置。订阅成功后若权限被收回，则后续不再通知订阅者。
-
-**触发通知：** 配置发布方调用[publish](#publish20)、[delete](#delete20)、[deleteMyPublishedData](#deletemypublisheddata)接口发布、删除指定配置或者删除所有配置时会自动触发通知。
+- 未取消订阅可能导致内存泄漏和资源占用。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -242,7 +240,7 @@ off(event: 'dataChange', uris: string[], config: DataProxyConfig, callback?: Asy
 取消订阅指定URI对应代理数据变更事件。
 
 **配对调用：**
-- 必须在已调用on('dataChange')订阅后使用
+- 必须在已调用[on('dataChange')](#ondatachange20)订阅后使用
 - 取消订阅时需确保event、uris、config参数与订阅时一致
 - 如未指定callback参数，将取消该URI的所有已注册回调函数
 
