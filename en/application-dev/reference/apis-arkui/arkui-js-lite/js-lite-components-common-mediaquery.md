@@ -33,7 +33,7 @@ Use **@media** to import query statements. The rule is as follows:
 >  **NOTE**
 >
 >  - The &lt;=, &gt;=, &lt;, &gt; operators are not supported.
->  - Multi-layer nesting is supported () is supported since API version 9.
+>  - Multi-layer nesting is supported since API version 9.
 >  - The overall length of a media statement must not exceed 512 characters.
 >  - The length of a single media condition must not exceed 32 characters.
 
