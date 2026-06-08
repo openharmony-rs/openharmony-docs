@@ -655,6 +655,106 @@ interface Rect {
     - 避让使用@Env(SystemProperties.WINDOW_AVOID_AREA)获取到的避让区域的示例代码如下：
 
       <!--@[ImmersiveLayoutEnv3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayoutEnv/entry/src/main/ets/pages/Index.ets) -->
+      
+      ``` TypeScript
+       // ...
+        build() {
+          Column() {
+            Row() {
+              Text('Top Container')
+                .fontSize(40)
+                .textAlign(TextAlign.Center)
+                .width('100%')
+            }
+            .backgroundColor('#2786d9')
+            .padding({
+              top: this.avoidAreasVp.statusBar.topRect.height + 10,
+              bottom: 10,
+              left: this.avoidAreasVp.cutout.leftRect.width,
+              right: this.avoidAreasVp.cutout.rightRect.width
+            })
+      
+            Scroll() {
+              Column({ space: 12 }) {
+                Row() {
+                  Text(this.text)
+                    .fontSize(20)
+                }
+      
+                Divider()
+      
+                Text(`topAvoidHeight: ${this.topAvoidHeight}`)
+                Text(`bottomAvoidHeight: ${this.bottomAvoidHeight}`)
+                Text(`leftAvoidWidth: ${this.leftAvoidWidth}`)
+                Text(`rightAvoidWidth: ${this.rightAvoidWidth}`)
+                Text(`preferredOrientation: ${this.orientationText}`)
+                Text(this.statusText)
+                  .fontColor('#666666')
+      
+                Row({ space: 8 }) {
+                  Button('Auto Rotation')
+                    .layoutWeight(1)
+                    .onClick(() => {
+                      void this.setOrientation(window.Orientation.AUTO_ROTATION, 'AUTO_ROTATION');
+                    })
+      
+                  Button('Portrait')
+                    .layoutWeight(1)
+                    .backgroundColor('#0A7A5A')
+                    .onClick(() => {
+                      void this.setOrientation(window.Orientation.PORTRAIT, 'PORTRAIT');
+                    })
+      
+                  Button('Landscape')
+                    .layoutWeight(1)
+                    .backgroundColor('#AD5C00')
+                    .onClick(() => {
+                      void this.setOrientation(window.Orientation.LANDSCAPE, 'LANDSCAPE');
+                    })
+                }
+                .width('100%')
+      
+                Text('Cutout test: rotate the app and observe whether leftAvoidWidth / rightAvoidWidth change on a cutout device.')
+                  .fontColor('#666666')
+              }
+              .width('100%')
+            }
+            .backgroundColor(Color.White)
+            .padding(20)
+            .borderRadius(15)
+            .width('80%')
+            .margin({
+              left: this.avoidAreasVp.cutout.leftRect.width,
+              right: this.avoidAreasVp.cutout.rightRect.width
+            })
+            .layoutWeight(1)
+      
+            Row() {
+              Text('Bottom Container')
+                .fontSize(40)
+                .textAlign(TextAlign.Center)
+                .width('100%')
+            }
+            .backgroundColor('#96dffa')
+            .padding({
+              top: 10,
+              bottom: this.avoidAreasVp.navigationIndicator.bottomRect.height + 10,
+              left: this.avoidAreasVp.cutout.leftRect.width,
+              right: this.avoidAreasVp.cutout.rightRect.width
+            })
+          }
+          .width('100%')
+          .height('100%')
+          .padding({
+            left: this.avoidAreasVp.cutout.leftRect.width,
+            right: this.avoidAreasVp.cutout.rightRect.width
+          })
+          .alignItems(HorizontalAlign.Center)
+          .backgroundColor('#d5d5d5')
+          .justifyContent(FlexAlign.SpaceBetween)
+        }
+      }
+      ```
 
 4. 根据实际的UI界面显示或相关UI元素背景颜色等，还可以按需设置状态栏的文字颜色、背景色或设置导航区域的显示或隐藏，以使UI界面效果呈现和谐。状态栏和导航区域默认是透明的，透传的是应用界面的背景色。  
 
