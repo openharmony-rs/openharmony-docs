@@ -34,6 +34,8 @@ import { uiMaterial } from '@kit.ArkUI';
 
 | 名称     | 值 | 说明              |
 | ------ | --- | --------------- |
+| NONE | 0 | 无材质类型。表示不应用任何材质效果。 |
+| SEMI_TRANSPARENT | 1 | 半透明材质类型。包含预定义的backgroundColor、border和shadow效果。 |
 | IMMERSIVE | 2 | 沉浸式材质类型。仅用于[MaterialInfo](#materialinfo)接口的type属性标识当前配置的材质类型，不映射到底层功能。实际材质效果通过[ImmersiveMaterial](#immersivematerial)类实现。 |
 
 ## MaterialState
@@ -134,7 +136,19 @@ getMaterialInfo(): MaterialInfo
 | interactive   | boolean                                   | 否 | 是   | 是否为设置材质的组件设置交互形变效果。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：false |
 | lightEffect   | [LightEffectOptions](#lighteffectoptions) \| null                                   | 否 | 是   | 是否为设置材质的组件设置光感交互反馈效果。当该参数为null时，禁用光感交互反馈效果。<br/>**说明**：该参数对所有档位的算力设备的显示效果生效。<br/>默认值：undefined，不设置光感交互反馈效果。 |
 
-## Material<sup>26</sup>
+## MaterialOptions
+
+系统材质配置选项接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称       | 类型                                                        | 只读 | 可选 | 说明                                                     |
+| ---------- | ----------------------------------------------------------- | ---- | ------- | ----------------------------------------------------- |
+| type   | [MaterialType](#materialtype)                                   | 否 | 是   | 材质类型。<br/>默认值：MaterialType.NONE |
+
+## Material
 
 系统材质对象基类。
 
@@ -145,6 +159,22 @@ getMaterialInfo(): MaterialInfo
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### constructor
+
+constructor(options?: MaterialOptions)
+
+Material的构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名       | 类型                                                       | 必填 | 说明                                                         |
+| ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+|  options      | [MaterialOptions](#materialoptions)                      | 否   | 系统材质配置选项。<br/>默认值：{type:MaterialType.NONE}。    |
 
 ### empty<sup>26</sup>
 
@@ -157,6 +187,8 @@ static get empty(): Material
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
