@@ -157,7 +157,7 @@
 
    ArkTS-Sta示例：   
    <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // 获取设备列表。
    let deviceList: usbManager.USBDevice[] = [];
