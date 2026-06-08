@@ -24,21 +24,6 @@
   - [如何正确管理媒体库资产](medialibrary-faqs/medialibrary-asset-management-faq.md)
   - [如何正确判断媒体资源类型](medialibrary-faqs/medialibrary-asset-judgment-faq.md)
   - [查看的媒体图片未包含地理位置信息](medialibrary-faqs/medialibrary-asset-hidesensitive-faq.md)
-  - 查询类失败故障模式说明<!--query-class-failure-mode-description-->
-    - [参数的基本合法性错误故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/query-class-failure-mode-description/parameter-basic-legality-failure-mode-description.md)
-    - [媒体库模块参数错误故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/query-class-failure-mode-description/medialibrary-module-param-error-fault-mode-desc.md)
-    - [内部失败故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/query-class-failure-mode-description/internal-failure-failure-mode-description.md)
-    - [权限授权错误故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/query-class-failure-mode-description/permission-authorization-error-fault-mode-description.md)
-  - 写入类失败故障模式说明<!--write-class-failure-mode-description-->
-    - 创建失败故障模式说明<!--creation-failed-description-of-failure-mode-->
-      - [权限授权失败故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/creation-failed-description-of-failure-mode/permission-auth-error-fault-mode-desc.md)
-      - [存储IO失败故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/creation-failed-description-of-failure-mode/storage-io-failure-fault-mode-description.md)
-      - [参数的基本合法性错误故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/creation-failed-description-of-failure-mode/parameter-basic-legality-failure-mode-desc.md)
-      - [显示名称无效创建失败故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/creation-failed-description-of-failure-mode/invalid-display-name-fault-mode-description.md)
-      - [对象成员属性不存在错误故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/creation-failed-description-of-failure-mode/obj-member-prop-not-exist-fault-description.md)
-      - [不支持的操作故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/creation-failed-description-of-failure-mode/unsupported-operation-fault-mode-desc.md)
-    - 删除失败故障模式说明<!--deletion-failed-fault-mode-description-->
-      - [用户文件管理器模块参数错误故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/deletion-failed-fault-mode-description/user-file-manager-param-error-fault-mode-desc.md)
-      - [权限不足故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/deletion-failed-fault-mode-description/insufficient-permissions-fault-mode-description.md)
-    - 修改元数据失败故障模式说明<!--metadata-modify-failure-mode-description-->
-      - [操作的文件不存在故障模式说明](medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/metadata-modify-failure-mode-description/file-not-exist-operate-failure-mode-description.md)
+  - [如何正确处理高像素图片](multimedia-high-resolution-image.md)
+- [Media Library Kit术语](mediaLibrary-glossary.md)
+

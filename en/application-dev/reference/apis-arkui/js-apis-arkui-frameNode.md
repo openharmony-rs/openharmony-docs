@@ -5358,7 +5358,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API 15 and will not be threw above API 24. [since 15 - 24] |
 
 **Example**
 
@@ -6233,7 +6233,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24] |
 
 **Example**
 
@@ -6938,7 +6938,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24]|
 
 **Example**
 
@@ -7553,7 +7553,7 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. |
+| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24] |
 
 **Example**
 

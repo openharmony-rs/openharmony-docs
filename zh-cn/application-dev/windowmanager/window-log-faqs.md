@@ -214,7 +214,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 
 **可能原因**
 
-WINDOW_FROZEN_DETECTION是一个窗口伪冻屏检测事件。搭载openharmony 7.0.0及以上版本的设备支持此检测事件。
+WINDOW_FROZEN_DETECTION是一个窗口伪冻屏检测事件。搭载OpenHarmony 7.0.0及以上版本的设备支持此检测事件。
 
 当未成功设置UIContent、布局异常等情形时会触发此事件，可为排查伪冻屏问题提供线索，但事件触发并不等同于伪冻屏已实际发生。常见的异常类型包括：SetUIContent timeout（窗口内容加载超时）、RectCheck err（窗口尺寸异常）等。
 
@@ -503,6 +503,281 @@ windowStage.createSubWindowWithOptions('mySubWindow', options).then((windowClass
     console.error("setResizeByDragEnabled failed.", ` code: ${err.code}, message: ${err.message}`)
   })
 })
+```
+
+### 窗口名不存在，调用findWindow查找崩溃
+
+开发者在调用[findWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowfindwindow9)查找不存在的窗口时，导致应用崩溃。
+
+**典型日志信息**
+
+故障日志格式：
+
+```text
+Error Name: Error
+Error Message: [window][findWindow]msg: The window is not created or destroyed
+Error code: 1300002
+Stack trace:
+  at window.findWindow (WindowManagerService)
+  at MyComponent.onCreate (MyAbility.ts:50)
+```
+
+关键信息：
+- 错误码：1300002
+- 堆栈：findWindow()调用位置
+- 文件名和行号：定位具体代码位置
+
+**分析定位及解决**
+
+1. 根据日志堆栈定位findWindow()调用位置，检查窗口名称是否正确。使用以下命令查找findWindow参数信息：
+
+   ```bash
+   grep -n "findWindow" src/**/*.ts
+   ```
+
+2. 使用hidumper验证窗口状态：
+
+   ```bash
+   hdc shell hidumper -s WindowManagerService -a '-a'
+   ```
+
+**正反案例**
+
+错误示例
+
+```ts
+// 错误：查找窗口时传入错误窗口名称
+const currWindow = window.findWindow("test_Window");
+// 错误：对为空的对象进行函数调用
+currWindow.showWindow();
+```
+
+正确示例
+
+```ts
+// 正确：findWindow之后对获取到的对象进行空校验
+const currWindow = window.findWindow("test_Window");
+if (currWindow) {
+    currWindow.showWindow();
+} else {
+    console.error('Window not found');
+}
+```
+
+### 销毁未完成导致createSubWindow创建同名子窗失败
+
+开发者在[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9)创建窗口对象后，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)，在窗口还未销毁的情况下，再次调用[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9)，且使用相同名称，导致窗口创建失败，报错1300002。
+
+**典型日志信息**
+
+故障日志格式：
+
+```text
+WindowSessionCreateCheck: WindowName(TestSubWindow) already exists.
+Error code: 1300002
+```
+
+关键信息：
+- 重复窗口名：TestSubWindow
+- 错误码：1300002
+
+**分析定位及解决**
+
+destroyWindow()接口用于销毁对应窗口实例，该接口为异步接口，若createSubWindow接口调用时，需要销毁的窗口实例还未销毁完成，则有可能创建同名，触发1300002错误。
+
+1. 根据日志堆栈定位createSubWindow()调用位置，查找所有createSubWindow调用位置，检查是否有使用相同窗口名称的情况：
+
+   ```bash
+   grep -n "createSubWindow" src/**/*.ts
+   ```
+
+2. 在创建窗口失败后，使用hidumper查看当前窗口状态：
+
+   ```bash
+   hdc shell hidumper -s WindowManagerService -a '-a'
+   ```
+
+解决要点：
+- 确保destroyWindow()调用后等待异步回调完成，使用await等待销毁完成
+- 或使用不同的窗口名称避免重名
+
+**正反案例**
+
+错误示例
+
+```ts
+let windowClass: window.Window | undefined = undefined;
+
+let windowClass = await windowStage.createSubWindow('mySubWindow');
+
+// 错误，destroyWindow为异步接口，却当做同步接口使用
+windowClass.destroyWindow();
+let newWindow = await windowStage.createSubWindow('mySubWindow'); // 此处可能会返回1300002错误
+```
+
+正确示例
+
+```ts
+// 正确：等待销毁完成后再创建
+let windowClass = await windowStage.createSubWindow('mySubWindow');
+
+// 调用销毁并等待完成
+await windowClass.destroyWindow();
+// 确保销毁完成后，再创建同名窗口
+let newWindow = await windowStage.createSubWindow('mySubWindow');
+```
+
+或使用不同的窗口名称避免重名：
+
+```ts
+// 使用时间戳作为窗口名称的一部分，避免重名
+let windowName = 'mySubWindow_' + Date.now();
+let windowClass = await windowStage.createSubWindow(windowName);
+```
+
+### 窗口销毁时调用off('avoidAreaChange')崩溃
+
+开发者在窗口销毁过程中（如[onWindowStageDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagedestroy)、[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)或页面销毁等）调用[off('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#offavoidareachange9)接口，导致应用崩溃。
+
+**典型日志信息**
+
+```text
+Error Name: Error
+Error Message: [window][off]msg: Unregister listener failed.
+Error code: 1300002
+Stack trace:
+  at windowClass.off('avoidAreaChange') (WindowManagerService)
+  at MyComponent.onWindowStageDestroy (MyAbility.ts:50)
+```
+
+关键信息：
+- 错误码：1300002
+- 堆栈：off('avoidAreaChange')调用位置
+- 文件名和行号：定位具体代码位置（如MyAbility.ts第50行）
+
+**分析定位及解决**
+
+- 根据日志堆栈定位off('avoidAreaChange')调用位置不在onWindowStageDestroy或onDestroy等销毁回调中
+- 异步任务不会在销毁后执行off('avoidAreaChange')
+
+**正反案例**
+
+错误示例
+
+```ts
+// 错误：在onWindowStageDestroy中调用off
+onWindowStageDestroy() {
+    this.windowClass.off('avoidAreaChange'); // 窗口可能已经销毁，1300002崩溃！
+}
+```
+
+正确示例
+
+```ts
+// 取消监听时机：页面隐藏或卸载前（非销毁流程）
+onPageHide() {
+  try {
+    this.windowClass?.off('avoidAreaChange');
+  } catch (exception) {
+    console.error(`Failed to disable the listener. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
+}
+```
+
+## 1300004错误码的定位指导
+
+错误码1300004表示无权限操作，常见于窗口类型与接口不匹配场景。
+
+
+### 子窗调用restore失败
+
+开发者对子窗口调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口，导致操作失败，报错1300004。
+
+**典型日志信息**
+
+故障日志：
+
+```text
+BusinessError 1300004: Unauthorized operation. Possible cause: Invalid window Type.Only main windows are supported.
+```
+
+**分析定位及解决**
+
+`restore()`接口只能对主窗口进行恢复操作，否则会报1300004错误。
+
+1. 使用hidumper查看窗口类型，确认窗口是否为主窗口：
+
+    ```bash
+    hdc shell hidumper -s WindowManagerService -a '-a'
+    ```
+
+2. 在输出中查找目标窗口，根据Type字段判断：
+   - 若Type为1，则对应为主窗口（MainWindow），可以调用restore()。
+   - Type不为1的窗口，均不能调用restore()。例如，通过[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9)接口创建的窗口为子窗口，可在创建时指定子窗口名称。
+
+### 子窗口调用getWindowSystemBarProperties()崩溃
+
+开发者在应用子窗口、全局悬浮窗等非应用主窗口上调用[getWindowSystemBarProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowsystembarproperties12)接口，报错1300004。
+
+**典型日志信息**
+
+```text
+Error Name: Error
+Error Message: [window][getWindowSystemBarProperties]msg: Invalid window type. Only main windows are supported.
+Error code: 1300004
+Stack trace:
+  at windowClass.getWindowSystemBarProperties() (WindowManagerService)
+  at MyComponent.onWindowStageCreate (MyAbility.ts:50)
+```
+
+关键信息：
+- 错误码：1300004
+- 堆栈：getWindowSystemBarProperties()调用位置
+- 文件名和行号：定位具体代码位置（如MyAbility.ts第50行）
+
+**分析定位及解决**
+
+getWindowSystemBarProperties()接口只适用于应用主窗口调用，否则会报1300004错误。
+
+1. 使用hidumper查看窗口类型，确认当前窗口是否为应用主窗口：
+
+    ```bash
+    hdc shell hidumper -s WindowManagerService -a '-a'
+    ```
+2. 在输出中查找目标窗口，根据Type字段判断。若Type为1，则对应为主窗口，可以调用getWindowSystemBarProperties()；否则不可以调用getWindowSystemBarProperties()。
+
+**正反案例**
+
+错误示例
+
+```ts
+windowStage.createSubWindow('mySubWindow', (err: BusinessError, data) => {
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  windowClass = data;
+  console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
+  if (!windowClass) {
+    console.info('Failed to load the content. Cause: windowClass is null');
+  }
+  let systemBarProperty = windowClass.getWindowSystemBarProperties()
+});
+```
+
+正确示例
+
+```ts
+onWindowStageCreate(windowStage: window.WindowStage) {
+  let windowClass = windowStage.getMainWindowSync();
+  try {
+    let systemBarProperty = windowClass.getWindowSystemBarProperties();
+    console.info('Success in obtaining system bar properties. Property: ' + JSON.stringify(systemBarProperty));
+  } catch (err) {
+    console.error(`Failed to get system bar properties. Code: ${err.code}, message: ${err.message}`);
+  }
+}
 ```
 
 ## 1300012 画中画窗口状态异常
