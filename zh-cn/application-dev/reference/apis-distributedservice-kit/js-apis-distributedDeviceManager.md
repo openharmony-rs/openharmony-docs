@@ -75,6 +75,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 设备管理实例不再使用后，通过该方法释放DeviceManager实例。
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
 
 **参数：**
 
