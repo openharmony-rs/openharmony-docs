@@ -409,7 +409,7 @@
 
    ArkTS-Sta示例：   
    <!-- @[interruptTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (usbInterface === undefined) {
      console.error('usbInterface is undefined');
@@ -429,7 +429,6 @@
      this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
      return;
    }
-
    ```
 
 6. 传输数据。
