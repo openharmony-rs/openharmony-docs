@@ -52,9 +52,11 @@
 ### 单窗口截图
 可通过调用[snapshot()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshot9-1)/[snapshotSync()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotsync20)接口对当前窗口进行截图。  
 
-  ```ts
-  import { window } from '@kit.ArkUI';
-  import { common } from '@kit.AbilityKit';
+  <!--@[Snapshot_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  import { display, screenshot, window } from '@kit.ArkUI';
+  import { common, abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { image } from '@kit.ImageKit';
   
@@ -68,15 +70,21 @@
     @State imageWidth: number = 0;
     @State imageHeight: number = 0;
     @State previewPixelMap?: image.PixelMap = undefined;
+    @State displayIdText: string = '0';
+    @State displayInfoText: string = '-';
+    @State pickRectText: string = '-';
   
     private currentWindow?: window.Window = undefined;
   
     aboutToAppear(): void {
       void this.initWindow();
+      this.initDisplayInfo();
     }
-  
     // 在页面中记录接口调用结果，同时输出到 hilog，便于调试。
     private appendLog(message: string): void {
+      this.statusText = message;
+      hilog.info(DOMAIN, 'snapshotSample', message);
+  
       const line = `${Date.now()}: ${message}`;
       this.logText += `${line}\n`;
       hilog.info(DOMAIN, 'snapshotSample', line);
@@ -98,7 +106,22 @@
         this.appendLog(`window initialized, windowId=${windowId}`);
       } catch (err) {
         this.statusText = `Initialization failed: ${JSON.stringify(err)}`;
+        this.appendLog(`Initialization failed: ${JSON.stringify(err)}`);
         this.appendLog(this.statusText);
+      }
+    }
+    // 获取当前设备可用的 displayId，供 screenshot.capture 使用。
+    private async initDisplayInfo(): Promise<void> {
+      try {
+        const defaultDisplay = display.getDefaultDisplaySync();
+        this.displayIdText = `${defaultDisplay.id}`;
+  
+        const displays = await display.getAllDisplays();
+        this.displayInfoText = displays.map((item) => `${item.id}`).join(', ');
+        this.statusText = `available displayIds=${this.displayInfoText}`;
+      } catch (err) {
+        this.statusText = `init display info failed: $JSON.stringify(err)}`;
+        hilog.error(DOMAIN, 'screenshotSample', this.statusText);
       }
     }
   
@@ -118,7 +141,7 @@
     }
   
     // 将截图结果展示到页面预览区域，并读取 PixelMap 宽高。
-    private async updatePreview(pixelMap: image.PixelMap, source: string): Promise<void> {
+    private updatePreview(pixelMap: image.PixelMap, source: string): void {
       this.previewPixelMap = pixelMap;
   
       try {
@@ -126,12 +149,15 @@
         this.imageWidth = imageInfo.size.width;
         this.imageHeight = imageInfo.size.height;
         this.statusText = `${source} success, size=${this.imageWidth}x${this.imageHeight}`;
+        this.appendLog(`${source} success, size=${this.imageWidth}x${this.imageHeight}`);
       } catch (err) {
         this.imageWidth = 0;
         this.imageHeight = 0;
         this.statusText = `${source} success, but getImageInfoSync failed: ${JSON.stringify(err)}`;
+        this.appendLog(`${source} success, but getImageInfoSync failed: ${JSON.stringify(err)}`);
       }
   
+      hilog.info(DOMAIN, 'screenshotSample', this.statusText);
       this.appendLog(this.statusText);
     }
   
@@ -181,250 +207,17 @@
         this.appendLog(this.statusText);
       }
     }
+    // ...
   
     build() {
-      Scroll() {
-        Column({ space: 16 }) {
-          Text('Window Snapshot Sample')
-            .fontSize(24)
-            .fontWeight(FontWeight.Bold)
-            .width('100%')
-            .textAlign(TextAlign.Start)
-  
-          // 调用异步窗口截图接口。
-          Button('window.snapshot')
-            .width('100%')
-            .onClick(() => {
-              void this.takeWindowSnapshot();
-            })
-  
-          // 调用同步窗口截图接口。
-          Button('window.snapshotSync')
-            .width('100%')
-            .backgroundColor('#0A7A5A')
-            .onClick(() => {
-              this.takeWindowSnapshotSync();
-            })
-  
-          // 调用忽略隐私模式的窗口截图接口。
-          Button('window.snapshotIgnorePrivacy')
-            .width('100%')
-            .backgroundColor('#AD5C00')
-            .onClick(() => {
-              void this.takeWindowSnapshotIgnorePrivacy();
-            })
-  
-          Text('Status')
-            .fontSize(18)
-            .fontWeight(FontWeight.Medium)
-            .width('100%')
-            .textAlign(TextAlign.Start)
-  
-          Text(this.statusText)
-            .width('100%')
-            .fontSize(14)
-            .textAlign(TextAlign.Start)
-  
-          // 有截图结果时展示 PixelMap 预览和图片尺寸。
-          if (this.previewPixelMap) {
-            Text(`Preview size: ${this.imageWidth} x ${this.imageHeight}`)
-              .width('100%')
-              .fontSize(12)
-              .fontColor('#666666')
-              .textAlign(TextAlign.Start)
-  
-            Image(this.previewPixelMap)
-              .width('100%')
-              .height(360)
-              .objectFit(ImageFit.Contain)
-              .backgroundColor('#F3F3F3')
-          }
-  
-          Text('Log')
-            .fontSize(18)
-            .fontWeight(FontWeight.Medium)
-            .width('100%')
-            .textAlign(TextAlign.Start)
-  
-          Text(this.logText)
-            .width('100%')
-            .fontSize(12)
-            .textAlign(TextAlign.Start)
-        }
-        .width('100%')
-        .padding(20)
-        .alignItems(HorizontalAlign.Start)
-      }
-      .width('100%')
-      .height('100%')
-    }
+    // ...
   }
   ```
 
 ### 多窗口截图
 可通过调用[getMainWindowSnapshot()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetmainwindowsnapshot21)接口，针对一个或多个主窗（通过windowId指定）进行截图。  
 
-  ```ts
-  import { window } from '@kit.ArkUI';
-  import { common, abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { image } from '@kit.ImageKit';
-  
-  const DOMAIN = 0x0000;
-  
-  @Entry
-  @Component
-  struct Index {
-    @State statusText: string = 'Tap the button to capture main window.';
-    @State imageWidth: number = 0;
-    @State imageHeight: number = 0;
-    @State previewPixelMap?: image.PixelMap = undefined;
-  
-    private currentWindow?: window.Window = undefined;
-  
-    aboutToAppear(): void {
-      void this.initWindow();
-    }
-  
-    // 输出日志，并在页面中显示最近一次接口调用状态。
-    private appendLog(message: string): void {
-      this.statusText = message;
-      hilog.info(DOMAIN, 'snapshotSample', message);
-    }
-  
-    // 获取当前应用窗口，后续通过窗口 ID 调用 getMainWindowSnapshot。
-    private async initWindow(): Promise<void> {
-      try {
-        const hostContext = this.getUIContext().getHostContext();
-        if (!hostContext) {
-          throw new Error('Host context is unavailable.');
-        }
-  
-        const context = hostContext as common.UIAbilityContext;
-        this.currentWindow = await window.getLastWindow(context);
-  
-        const windowId = this.currentWindow.getWindowProperties().id;
-        this.appendLog(`window initialized, windowId=${windowId}`);
-      } catch (err) {
-        this.appendLog(`Initialization failed: ${JSON.stringify(err)}`);
-      }
-    }
-  
-    // getMainWindowSnapshot 需要使用 ohos.permission.CUSTOM_SCREEN_CAPTURE 权限。
-    private async requestCapturePermission(): Promise<boolean> {
-      try {
-        const hostContext = this.getUIContext().getHostContext();
-        if (!hostContext) {
-          this.appendLog('permission request failed: hostContext is unavailable');
-          return false;
-        }
-  
-        const context = hostContext as common.UIAbilityContext;
-        const atManager = abilityAccessCtrl.createAtManager();
-        const result = await atManager.requestPermissionsFromUser(context, [
-          'ohos.permission.CUSTOM_SCREEN_CAPTURE' as Permissions
-        ]);
-  
-        const granted = result.authResults.length > 0 && result.authResults[0] === 0;
-        this.appendLog(`permission granted=${granted}`);
-        return granted;
-      } catch (err) {
-        this.appendLog(`permission request failed: ${JSON.stringify(err)}`);
-        return false;
-      }
-    }
-  
-    // 展示截图结果，并读取 PixelMap 宽高。
-    private updatePreview(pixelMap: image.PixelMap, source: string): void {
-      this.previewPixelMap = pixelMap;
-  
-      try {
-        const imageInfo = pixelMap.getImageInfoSync();
-        this.imageWidth = imageInfo.size.width;
-        this.imageHeight = imageInfo.size.height;
-        this.appendLog(`${source} success, size=${this.imageWidth}x${this.imageHeight}`);
-      } catch (err) {
-        this.imageWidth = 0;
-        this.imageHeight = 0;
-        this.appendLog(`${source} success, but getImageInfoSync failed: ${JSON.stringify(err)}`);
-      }
-    }
-  
-    // 通过当前主窗口 ID 获取主窗口截图。
-    private async takeMainWindowSnapshot(): Promise<void> {
-      if (!this.currentWindow) {
-        await this.initWindow();
-      }
-  
-      if (!this.currentWindow) {
-        this.appendLog('Current window is unavailable.');
-        return;
-      }
-  
-      const granted = await this.requestCapturePermission();
-      if (!granted) {
-        this.appendLog('CUSTOM_SCREEN_CAPTURE permission denied or unavailable.');
-        return;
-      }
-  
-      try {
-        const windowId = this.currentWindow.getWindowProperties().id;
-        const pixelMaps = await window.getMainWindowSnapshot([windowId], {
-          useCache: false
-        });
-  
-        const pixelMap = pixelMaps[0];
-        if (!pixelMap) {
-          this.appendLog(`getMainWindowSnapshot(${windowId}) returned undefined.`);
-          return;
-        }
-  
-        this.updatePreview(pixelMap, 'window.getMainWindowSnapshot');
-      } catch (err) {
-        this.appendLog(`getMainWindowSnapshot failed: ${JSON.stringify(err)}`);
-      }
-    }
-  
-    build() {
-      Column({ space: 16 }) {
-        Text('Main Window Snapshot Sample')
-          .fontSize(24)
-          .fontWeight(FontWeight.Bold)
-          .width('100%')
-          .textAlign(TextAlign.Start)
-  
-        Button('window.getMainWindowSnapshot')
-          .width('100%')
-          .onClick(() => {
-            void this.takeMainWindowSnapshot();
-          })
-  
-        Text(this.statusText)
-          .width('100%')
-          .fontSize(14)
-          .textAlign(TextAlign.Start)
-  
-        if (this.previewPixelMap) {
-          Text(`Preview size: ${this.imageWidth} x ${this.imageHeight}`)
-            .width('100%')
-            .fontSize(12)
-            .fontColor('#666666')
-            .textAlign(TextAlign.Start)
-  
-          Image(this.previewPixelMap)
-            .width('100%')
-            .height(360)
-            .objectFit(ImageFit.Contain)
-            .backgroundColor('#F3F3F3')
-        }
-      }
-      .width('100%')
-      .height('100%')
-      .padding(20)
-      .alignItems(HorizontalAlign.Start)
-    }
-  }
-  ```
+  <!--@[SnapshotMore_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
 
 ## 屏幕截图
 
@@ -443,11 +236,12 @@
   - [on('screenshotAppEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#onscreenshotappevent20)接口可以监听截屏动作，并能返回触发的截屏事件类型[ScreenshotEventType](../reference/apis-arkui/arkts-apis-window-e.md#screenshoteventtype20)。比如系统截屏成功或中止、滚动截屏开始或结束等。
 
   - 当不需要再对进行屏幕截图进行监听时，可通过对应off接口（[off('screenshot')](../reference/apis-arkui/arkts-apis-window-Window.md#offscreenshot9)/[off('screenshotAppEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#offscreenshotappevent20)）关闭监听。
- 
 
-```ts
-import { display, screenshot } from '@kit.ArkUI';
-import { common, abilityAccessCtrl, Permissions } from 'kit.AbilityKit';
+<!--@[SnapshotScreen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { display, screenshot, window } from '@kit.ArkUI';
+import { common, abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
@@ -456,83 +250,91 @@ const DOMAIN = 0x0000;
 @Entry
 @Component
 struct Index {
-  @State statusText: string = 'Tap a button to run the screenshot smple.';
-  @State displayIdText: string = '0';
-  @State displayInfoText: string = '-';
-  @State pickRectText: string = '-';
+  @State statusText: string = 'Tap a button to run the snapshot sample.';
+  @State logText: string = 'ready\n';
   @State imageWidth: number = 0;
   @State imageHeight: number = 0;
   @State previewPixelMap?: image.PixelMap = undefined;
+  @State displayIdText: string = '0';
+  @State displayInfoText: string = '-';
+  @State pickRectText: string = '-';
+
+  private currentWindow?: window.Window = undefined;
 
   aboutToAppear(): void {
+    void this.initWindow();
     this.initDisplayInfo();
   }
-
-  // 获取当前设备可用的 displayId，供 screenshot.capture 使用。
-  private async initDisplayInfo(): Promise<void> {
-    try {
-      const defaultDisplay = display.getDefaultDisplaySync();
-      this.displayIdText = `${defaultDisplay.id}`;
-
-      const displays = await display.getAllDisplays();
-      this.displayInfoText = displays.map((item) => `{item.id}`).join(', ');
-      this.statusText = `available dsplayIds=${this.displayInfoText}`;
-    } catch (err) {
-      this.statusText = `init display info failed: $JSON.stringify(err)}`;
-      hilog.error(DOMAIN, 'screenshotSample', this.statusText);
-    }
-  }
-
-  // screenshot.capture 需要使用 ohos.permission.CUSTOM_SCREEN_CAPTURE 限。
+  // ...
+  // getMainWindowSnapshot 需要使用 ohos.permission.CUSTOM_SCREEN_CAPTURE 权限。
   private async requestCapturePermission(): Promise<boolean> {
     try {
       const hostContext = this.getUIContext().getHostContext();
       if (!hostContext) {
-        this.statusText = 'permission request failed: hostContext is uavailable';
+        this.statusText = 'permission request failed: hostContext is unavailable';
+        this.appendLog('permission request failed: hostContext is unavailable');
         return false;
       }
 
       const context = hostContext as common.UIAbilityContext;
       const atManager = abilityAccessCtrl.createAtManager();
-      const result = await aManager.requestPermissionsFromUser(context, [
+      const result = await atManager.requestPermissionsFromUser(context, [
         'ohos.permission.CUSTOM_SCREEN_CAPTURE' as Permissions
       ]);
 
-      const granted = result.authResults.length > 0 && rsult.authResults[0] === 0;
+      const granted = result.authResults.length > 0 && result.authResults[0] === 0;
       this.statusText = `permission granted=${granted}`;
+      this.appendLog(`permission granted=${granted}`);
       return granted;
     } catch (err) {
-      this.statusText = `permission request failed: $JSON.stringify(err)}`;
+      this.statusText = `permission request failed: ${JSON.stringify(err)}`;
+      this.appendLog(`permission request failed: ${JSON.stringify(err)}`);
       return false;
     }
   }
 
-  // 将截图结果展示到页面中，并读取 PixelMap 宽高。
-  private updatePreview(pixelMap: image.PixelMap, source: string): vid {
-    this.previewPixelMap = pixelMap;
-
-    try {
-      const imageInfo = pixelMap.getImageInfoSync();
-      this.imageWidth = imageInfo.size.width;
-      this.imageHeight = imageInfo.size.height;
-      this.statusText = `${source} success, sze=${this.imageWidth}x${this.imageHeight}`;
-    } catch (err) {
-      this.imageWidth = 0;
-      this.imageHeight = 0;
-      this.statusText = `${source} success, but getImageInfoSync filed: ${JSON.stringify(err)}`;
+  // 通过当前主窗口 ID 获取主窗口截图。
+  private async takeMainWindowSnapshot(): Promise<void> {
+    if (!this.currentWindow) {
+      await this.initWindow();
     }
 
-    hilog.info(DOMAIN, 'screenshotSample', this.statusText);
-  }
+    if (!this.currentWindow) {
+      this.appendLog('Current window is unavailable.');
+      return;
+    }
 
+    const granted = await this.requestCapturePermission();
+    if (!granted) {
+      this.appendLog('CUSTOM_SCREEN_CAPTURE permission denied or unavailable.');
+      return;
+    }
+
+    try {
+      const windowId = this.currentWindow.getWindowProperties().id;
+      const pixelMaps = await window.getMainWindowSnapshot([windowId], {
+        useCache: false
+      });
+
+      const pixelMap = pixelMaps[0];
+      if (!pixelMap) {
+        this.appendLog(`getMainWindowSnapshot(${windowId}) returned undefined.`);
+        return;
+      }
+
+      await this.updatePreview(pixelMap, 'window.getMainWindowSnapshot');
+    } catch (err) {
+      this.appendLog(`getMainWindowSnapshot failed: ${JSON.stringify(err)}`);
+    }
+  }
   // 通过手势框选屏幕区域，仅支持主屏区域截图。
   private async pickScreenArea(): Promise<void> {
     try {
       const result = await screenshot.pick();
-      this.pickRectText = `left=${result.pickRect.left}, tp=${result.pickRect.top}, width=${result.pickRect.width},   hight=${result.pickRect.height}`;
-      this.updatePreview(result.pixelMap, 'screenshot.pick');
+      this.pickRectText = `left=${result.pickRect.left}, top=${result.pickRect.top}, width=${result.pickRect.width}, height=${result.pickRect.height}`;
+      await this.updatePreview(result.pixelMap, 'screenshot.pick');
     } catch (err) {
-      this.statusText = `screenshot.pick failed: $JSON.stringify(err)}`;
+      this.statusText = `screenshot.pick failed: ${JSON.stringify(err)}`;
       hilog.error(DOMAIN, 'screenshotSample', this.statusText);
     }
   }
@@ -541,7 +343,7 @@ struct Index {
   private async captureByDisplayId(): Promise<void> {
     const granted = await this.requestCapturePermission();
     if (!granted) {
-      this.statusText = 'CUSTOM_SCREEN_CAPTURE permission denied or uavailable.';
+      this.statusText = 'CUSTOM_SCREEN_CAPTURE permission denied or unavailable.';
       return;
     }
 
@@ -552,75 +354,15 @@ struct Index {
       }
 
       const pixelMap = await screenshot.capture({ displayId });
-      this.updatePreview(pixelMap, `creenshot.capture(displayId=${displayId})`);
+      await this.updatePreview(pixelMap, `screenshot.capture(displayId=${displayId})`);
     } catch (err) {
-      this.statusText = `screenshot.capture failed: $JSON.stringify(err)}`;
+      this.statusText = `screenshot.capture failed: ${JSON.stringify(err)}`;
       hilog.error(DOMAIN, 'screenshotSample', this.statusText);
     }
   }
 
   build() {
-    Column({ space: 16 }) {
-      Text('Screen Screenshot Sample')
-        .fontSize(24)
-        .fontWeight(FontWeight.Bold)
-        .width('100%')
-        .textAlign(TextAlign.Start)
-
-      Text(`Available displayIds: ${this.displayInfoText}`)
-        .width('100%')
-        .fontSize(12)
-        .fontColor('#666666')
-        .textAlign(TextAlign.Start)
-
-      TextInput({ text: this.displayIdText, placeholder: 'Input dsplayId' })
-        .width('100%')
-        .onChange((value: string) => {
-          this.displayIdText = value;
-        })
-
-      Button('screenshot.pick')
-        .width('100%')
-        .onClick(() => {
-          void this.pickScreenArea();
-        })
-
-      Button('screenshot.capture')
-        .width('100%')
-        .onClick(() => {
-          void this.captureByDisplayId();
-        })
-
-      Text(`Last pickRect: ${this.pickRectText}`)
-        .width('100%')
-        .fontSize(12)
-        .fontColor('#666666')
-        .textAlign(TextAlign.Start)
-
-      Text(this.statusText)
-        .width('100%')
-        .fontSize(14)
-        .textAlign(TextAlign.Start)
-
-      if (this.previewPixelMap) {
-        Text(`Preview size: ${this.imageWidth} x $this.imageHeight}`)
-          .width('100%')
-          .fontSize(12)
-          .fontColor('#666666')
-          .textAlign(TextAlign.Start)
-
-        Image(this.previewPixelMap)
-          .width('100%')
-          .height(360)
-          .objectFit(ImageFit.Contain)
-          .backgroundColor('#F3F3F3')
-      }
-    }
-    .width('100%')
-    .height('100%')
-    .padding(20)
-    .alignItems(HorizontalAlign.Start)
-  }
+  // ...
 }
 ```
 
