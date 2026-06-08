@@ -96,25 +96,6 @@ if (!lockState.isLocked) {
 }
 ```
 
-**复用认证结果流程**：
-
-```javascript
-// 以下为阐述调用逻辑的伪代码，仅提供步骤说明，不提供详细的可执行代码。
-// 1. 配置复用参数。
-let authParam = {
-  challenge: new Uint8Array([]), // challenge用于防止重放攻击，必须使用安全随机数生成器获取。
-  authType: [userAuth.UserAuthType.FACE],
-  authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-  reuseUnlockResult: {
-    reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
-    reuseDuration: 300000 // 5分钟
-  }
-};
-
-// 2. 查询可复用的认证结果。
-let reusableToken = userAuth.queryReusableAuthResult(authParam);
-```
-
 ## 导入模块
 
 ```ts
@@ -197,7 +178,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 > 如果身份认证解锁（包括设备解锁）后，在有效时间内凭据发生了变化，身份认证的结果依然可以复用，认证结果中返回当前实际的EnrolledState。若复用认证结果时，之前认证时所使用的身份认证凭据已经被删除：
 >
 > - 如果删除的是人脸、指纹，则认证结果依然可以复用，只是返回的EnrolledState中credentialCount和credentialDigest均为0。
-> - 如果删除的是锁屏口令，则此次复用会失败，系统将要求用户重新进行认证。
+> - 如果删除的是锁屏口令，则此次复用会失败。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1651,7 +1632,7 @@ getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel): vo
 
 | 参数名         | 类型                               | 必填 | 说明                       |
 | -------------- | ---------------------------------- | ---- | -------------------------- |
-| authType       | [UserAuthType](#userauthtype8)     | 是   | 认证类型。用于指定查询的认证类型，支持FACE（人脸）、FINGERPRINT（指纹）、PIN（密码）、COMPANION_DEVICE（协同认证）。<br>**说明**：<br>从API version 11开始支持PIN查询。<br>从API版本26.0.0开始支持COMPANION_DEVICE查询。|
+| authType       | [UserAuthType](#userauthtype8)     | 是   | 认证类型。用于指定查询的认证类型，支持FACE（人脸）、FINGERPRINT（指纹）、PIN（密码）、COMPANION_DEVICE（伴随设备）。<br>**说明**：<br>从API version 11开始支持PIN查询。<br>从API版本26.0.0开始支持COMPANION_DEVICE查询。|
 | authTrustLevel | [AuthTrustLevel](#authtrustlevel8) | 是   | 认证信任等级。用于指定查询的认证可信等级，有效值为ATL1(10000)、ATL2(20000)、ATL3(30000)、ATL4(40000)。等级越高，对认证方案的活体检测能力要求越高。       |
 
 > **错误码返回顺序说明：**

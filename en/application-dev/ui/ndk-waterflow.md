@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The ArkUI framework provides a waterfall flow container component through NDK APIs. This component arranges items of different sizes in a waterfall-like manner from top to bottom.

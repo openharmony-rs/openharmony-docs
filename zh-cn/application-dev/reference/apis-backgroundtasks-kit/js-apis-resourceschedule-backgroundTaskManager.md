@@ -265,7 +265,7 @@ try {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;): void
 
-申请长时任务，支持申请一种类型，使用callback异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口支持申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
+申请长时任务，支持申请一种类型，使用callback异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -356,7 +356,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;
 
-申请长时任务，支持申请一种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口支持申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
+申请长时任务，支持申请一种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -448,7 +448,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent): Promise&lt;ContinuousTaskNotification&gt;
 
-申请长时任务，支持申请多种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口支持申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
+申请长时任务，支持申请多种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -521,6 +521,7 @@ export default class EntryAbility extends UIAbility {
       // 在原子化服务中，请使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
       wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
         try {
+          // 当长时任务类型包含数据传输(dataTransfer)时，应用需要更新进度，其他类型不需要
           let list: Array<string> = ["dataTransfer"];
           // 在原子化服务中，let list: Array<string> = ["audioPlayback"];
           backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
@@ -539,7 +540,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 
-  // 应用更新进度
+  // 当长时任务类型包含数据传输(dataTransfer)时，应用需要更新进度，其他类型不需要
   updateProcess(process: number) {
     // 定义通知类型，更新进度时的通知类型必须为实况窗
     let downLoadTemplate: notificationManager.NotificationTemplate = {
@@ -555,7 +556,7 @@ export default class EntryAbility extends UIAbility {
         // 系统实况类型，保持不变
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW,
         systemLiveView: {
-          typeCode: 8, // 上传下载类型需要填写 8，当前仅支持此类型。保持不变
+          typeCode: 8, // 数据传输(dataTransfer)类型需要填写 8，当前仅支持此类型。保持不变
           title: "test", // 应用自定义
           text: "test", // 应用自定义
         }
@@ -1773,6 +1774,72 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
+### requestAuthFromUserByDialog
+
+requestAuthFromUserByDialog(context: Context, callback: Callback&lt;UserAuthResult&gt;): void
+
+请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功后会发送授权弹窗。用户授权“本次允许”、“始终允许”或“不允许”后，再次请求授权时将直接回调上次授权结果，不再弹出授权弹窗。建议应用在前台时调用该接口，提示用户进行授权。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常调用，在其他设备类型中返回9800005错误码。
+
+**参数：**
+
+| 参数名      | 类型                                                  | 必填   | 说明           |
+| -------- |-----------------------------------------------------| ---- |--------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
+| callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | 是    | 回调函数，返回用户授权结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**示例：**
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callbackAuth(authResult: backgroundTaskManager.UserAuthResult) {
+  console.info('Operation requestAuthFromUserByDialog success. auth result: ' + JSON.stringify(authResult));
+}
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        return;
+      }
+      try {
+        let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+        let modeList: Array<number> = [backgroundTaskManager.BackgroundTaskMode.MODE_SPECIAL_SCENARIO_PROCESSING];
+        continuousTaskRequest.backgroundTaskModes = modeList;
+        let subModeList: Array<number> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION];
+        continuousTaskRequest.backgroundTaskSubmodes = subModeList;
+        continuousTaskRequest.requestAuthFromUserByDialog(this.context, callbackAuth);
+        console.info('Operation requestAuthFromUserByDialog succeeded.');
+      } catch (error) {
+        console.error(`Operation requestAuthFromUserByDialog failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+      }
+    });
+  }
+};
+```
+
 ### checkSpecialScenarioAuth<sup>22+</sup>
 
 checkSpecialScenarioAuth(context: Context): Promise&lt;UserAuthResult&gt;
@@ -1826,6 +1893,66 @@ export default class EntryAbility extends UIAbility {
       });
     } catch (error) {
       console.error(`Operation checkSpecialScenarioAuth failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
+### checkSpecialScenarioAuthResult
+
+checkSpecialScenarioAuthResult(context: Context): Promise&lt;UserAuthResult&gt;
+
+查询用户是否授权能在后台长时间运行。使用Promise异步回调。当未授权时，返回授权结果[NOT_DETERMINED](#userauthresult22)；当未配置特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务时，返回授权结果为[NOT_SUPPORTED](#userauthresult22)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1中可正常调用，在其他设备类型中返回9800005错误码。
+
+**参数：**
+
+| 参数名      | 类型                                                  | 必填   | 说明           |
+| -------- |-----------------------------------------------------| ---- |--------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。|
+
+**返回值：**
+
+| 类型             | 说明                |
+| -------------- |-------------------|
+| Promise&lt;[UserAuthResult](#userauthresult22)&gt; | Promise对象，返回用户授权结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**示例：**
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    try {
+      let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+      continuousTaskRequest.checkSpecialScenarioAuthResult(this.context).then((res: backgroundTaskManager.UserAuthResult) => {
+        console.info('Operation checkSpecialScenarioAuthResult succeeded. data: ' + JSON.stringify(res));
+      }).catch((error: BusinessError) => {
+        console.error(`Operation checkSpecialScenarioAuthResult failed. code is ${error.code} message is ${error.message}`);
+      });
+    } catch (error) {
+      console.error(`Operation checkSpecialScenarioAuthResult failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
   }
 };

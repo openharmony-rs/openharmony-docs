@@ -149,7 +149,7 @@
 </div>
 ```
 
-![zh-cn_image_0000001173164863](figures/zh-cn_image_0000001173164863.gif)
+![tspan](figures/tspan.gif)
 
 ```html
 <!-- xxx.hml -->

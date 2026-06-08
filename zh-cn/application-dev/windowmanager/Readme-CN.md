@@ -11,19 +11,13 @@
 - 窗口类型<!--window-type-->
   - [窗口类型开发概述](window-type-overview.md)
   - [子窗口开发指导](subwindow-guide.md)
-  - [全局悬浮窗开发指导](global-floating-window-guide.md)
-  <!--RP2-->
-  <!--RP2End-->
-  - [模态窗口开发指导](dialog-window-guide.md)
-  <!--RP1-->
-  <!--RP1End-->
+  - [全局悬浮窗开发指导](global-floating-window-guide.md)<!--RP2--><!--RP2End-->
+  - [模态窗口开发指导](dialog-window-guide.md)<!--RP1--><!--RP1End-->
   <!--Del-->
   - [管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)](system-window-stage-sys.md)
   <!--DelEnd-->
 - 窗口模式<!--window-mode-->
-  - [窗口模式简介](window-mode-overview.md)
-  <!--RP3-->
-  <!--RP3End-->
+  - [窗口模式简介](window-mode-overview.md)<!--RP3--><!--RP3End-->
   - 自由窗口<!--freeform-window-->
     - [自由窗口简介](freeform-window-overview.md)
     - [应用适配自由窗口](application-adaptation-freeform-window.md)
@@ -41,7 +35,6 @@
   - [控制亮度与常亮 (ArkTS)](brightness-control.md)
   - [设置窗口动效 (ArkTS)](window-animation.md)
   - [控制窗口外观 (ArkTS)](window-appearance.md)
-  - [管理应用窗口 (FA模型)](application-window-fa.md)
   - [使用WindowManager管理多模输入事件 (C/C++)](native-window-event-filter.md)
 - 应用启动页的配置与使用<!--launch-page-->
   - [应用启动页简介](launch-page-overview.md)

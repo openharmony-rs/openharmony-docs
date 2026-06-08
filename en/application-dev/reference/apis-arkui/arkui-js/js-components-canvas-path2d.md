@@ -47,7 +47,7 @@ export default {
 }
 ```
 
-  ![en-us_image_0000001173164873](figures/en-us_image_0000001173164873.png)
+  ![addPath](figures/addPath.png)
 
 ## setTransform
 
@@ -163,7 +163,7 @@ export default {
 }
 ```
 
-  ![en-us_image_0000001173164869](figures/en-us_image_0000001173164869.png)
+  ![moveTo01](figures/moveTo01.png)
 
 
 ## lineTo
@@ -205,7 +205,7 @@ export default {
 }
 ```
 
-  ![en-us_image_0000001127285024](figures/en-us_image_0000001127285024.png)
+  ![lineto](figures/lineto.png)
 
 
 ## bezierCurveTo
@@ -248,7 +248,7 @@ export default {
 }
 ```
 
-  ![en-us_image_0000001173324783](figures/en-us_image_0000001173324783.png)
+  ![bezierCurveTo](figures/bezierCurveTo.png)
 
 
 ## quadraticCurveTo
@@ -289,7 +289,7 @@ export default {
 }
 ```
 
-  ![en-us_image_0000001173164871](figures/en-us_image_0000001173164871.png)
+  ![quadraticCurveTo-01](figures/quadraticCurveTo-01.png)
 
 
 ## arc
@@ -331,7 +331,7 @@ export default {
 }
 ```
 
-  ![en-us_image_0000001173164867](figures/en-us_image_0000001173164867.png)
+  ![arc01](figures/arc01.png)
 
 
 ## arcTo
@@ -416,7 +416,7 @@ export default {
 }
 ```
 
-  ![en-us_image_0000001173324787](figures/en-us_image_0000001173324787.png)
+  ![ellipse01](figures/ellipse01.png)
 
 
 ## rect

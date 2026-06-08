@@ -440,11 +440,11 @@ The configured icon and label information can be displayed in **Task Center** an
 
 Allows an application to start its UIAbility by using C APIs.
 
-Currently, this permission is available only to 2-in-1 device applications.
-
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets
 
 **Valid since**: 15
 
@@ -744,3 +744,17 @@ With this permission, the application can obtain custom EDM configuration files,
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
+
+## ohos.permission.ACCESS_CAR_AUDIO
+
+Allows an application to access and manage in-vehicle audio.
+
+With this permission, the application can set audio sound effects and manage audio zones.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
