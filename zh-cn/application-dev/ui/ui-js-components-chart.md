@@ -67,7 +67,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001181974568](figures/zh-cn_image_0000001181974568.png)
+![chart-Component](figures/chart-Component.png)
 
 
 ## 设置图表类型
@@ -214,7 +214,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001227423251](figures/zh-cn_image_0000001227423251.gif)
+![Chart-Type](figures/Chart-Type.gif)
 
 > **说明：** 
 >
@@ -525,4 +525,4 @@ export default {
 
 ```
 
-![zh-cn_image_0000001179018876](figures/zh-cn_image_0000001179018876.gif)
+![Example-Scenario-4](figures/Example-Scenario-4.gif)
