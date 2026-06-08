@@ -6,12 +6,6 @@
 <!--Tester: @mamba-ting-->
 <!--Adviser: @fang-jinxu-->
 
-## A
-
-### AB Upgrade；AB升级
-
-双分区升级方式。系统在A和B两个分区交替运行与升级，升级时将新系统写入未激活分区，重启后切换至新分区运行。升级失败可回滚至旧分区，提高升级可靠性。
-
 ## C
 
 ### Cold Upgrade；冷升级
