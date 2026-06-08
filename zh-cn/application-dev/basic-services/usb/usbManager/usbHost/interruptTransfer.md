@@ -253,9 +253,8 @@
    });
    ```
 
-   ArkTS-Sta示例：
    <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
      console.error('deviceList is empty');
@@ -272,6 +271,7 @@
      console.error(`usb device request right failed : ${error}`);
      this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
    });
+   ```
    ```
 
 4. 获取通过实时传输读取数据的端点。
