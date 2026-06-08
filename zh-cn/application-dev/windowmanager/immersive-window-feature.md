@@ -293,6 +293,30 @@ interface Rect {
      当避让区域因横竖屏切换、系统栏显隐、窗口形态变化等发生变化时，@Env变量会自动更新，并触发相关组件刷新，从而实现沉浸式布局的动态适配。示例代码如下：
 
      <!--@[ImmersiveLayoutEnv_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayoutEnv/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     import { window } from '@kit.ArkUI';
+     import { hilog } from '@kit.PerformanceAnalysisKit';
+     
+     const DOMAIN = 0x0000;
+     
+     @Entry
+     @Component
+     struct Index {
+       @Env(SystemProperties.WINDOW_AVOID_AREA) avoidAreasVp: window.UIEnvWindowAvoidAreaInfoVP;
+       @StorageProp('topAvoidHeight')
+       topAvoidHeight: number = 0;
+       @StorageProp('bottomAvoidHeight')
+       bottomAvoidHeight: number = 0;
+       @StorageProp('leftAvoidWidth')
+       leftAvoidWidth: number = 0;
+       @StorageProp('rightAvoidWidth')
+       rightAvoidWidth: number = 0;
+       @StorageLink('mainWindow')
+       mainWindow: window.Window | undefined = undefined;
+       // ...
+     }
+     ```
 
 3. 布局中的系统界面元素需要避让状态栏和导航区域，否则可能产生UI元素重叠等情况。
 
