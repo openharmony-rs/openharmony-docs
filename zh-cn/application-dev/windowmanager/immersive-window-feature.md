@@ -55,61 +55,13 @@
   > 
   > 非自由窗口状态下，除应用子窗外的其他类型窗口在创建时默认为非沉浸式布局，子窗口创建后默认为沉浸式布局。
 
-  ```ts
-  // EntryAbility.ets
-  import { window } from '@kit.ArkUI';
-  import { UIAbility } from '@kit.AbilityKit';
+  <!--@[HideDecorationBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/HideDecorationBar/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-  export default class EntryAbility extends UIAbility {
-    // ..
-
-    onWindowStageCreate(windowStage: window.WindowStage): void {
-      windowStage.loadContent('pages/Index', async (err) => {
-        if (err.code) {
-          return;
-        }
-
-        try {
-          const mainWindow: window.Window = windowStage.getMainWindowSync(); // 获取应用主窗口
-          await mainWindow.setWindowLayoutFullScreen(true); // 进入窗口沉浸式布局
-        } catch (e) {
-          console.error(`Failed to set status bar to invisible`);
-        }
-      });
-    }
-  }
-  ```
-  
   | 非自由窗口的非沉浸式布局示意 | 非自由窗口的沉浸式布局示意 |
   | -------- | -------- |
   | ![非自由窗口的非沉浸式布局](figures/non-freeform-window-non-immersive-layout.png)  | ![非自由窗口的沉浸式布局](figures/non-freeform-window-immersive-layout.png) |
 
 - 自由窗口状态下，可通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口控制窗口标题栏显隐，当标题栏隐藏时，窗口处于沉浸式布局。  
-
-  ```ts
-  // EntryAbility.ets
-  import { window } from '@kit.ArkUI';
-  import { UIAbility } from '@kit.AbilityKit';
-
-  export default class EntryAbility extends UIAbility {
-    // ...
-
-    onWindowStageCreate(windowStage: window.WindowStage): void {
-      windowStage.loadContent('pages/Index', async (err) => {
-        if (err.code) {
-          return;
-        }
-
-        try {
-          const mainWindow: window.Window = windowStage.getMainWindowSync(); // 获取应用主窗口
-          await mainWindow.setWindowDecorVisible(false); // 隐藏窗口标题栏，进入窗口沉浸式布局
-        } catch (e) {
-          console.error(`Failed to set status bar to invisible`);
-        }
-      });
-    }
-  }
-  ```
 
   | 自由窗口的非沉浸式布局示意 | 自由窗口的沉浸式布局示意 |
   | -------- | -------- |
@@ -174,35 +126,7 @@ interface Rect {
 
 2. 调用[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)隐藏状态栏。  
 
-  ```ts
-  // EntryAbility.ets
-  import { window } from '@kit.ArkUI';
-  import { UIAbility } from '@kit.AbilityKit';
-
-  export default class EntryAbility extends UIAbility {
-    // ...
-
-    onWindowStageCreate(windowStage: window.WindowStage): void {
-      windowStage.loadContent('pages/Index', async (err) => {
-        if (err.code) {
-          return;
-        }
-
-        try {
-          // 获取应用主窗口
-          const mainWindow: window.Window = windowStage.getMainWindowSync();
-          // 设置窗口进入沉浸式布局
-          await mainWindow.setWindowLayoutFullScreen(true);
-          // 设置状态栏隐藏
-          mainWindow.setSpecificSystemBarEnabled('status', false);
-        } catch (e) {
-          console.error(`Failed to set status bar to invisible`);
-        }
-      });
-    }
-  }
-  ```
-
+  <!--@[SystemBarEnabled_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/SystemBarEnabled/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ## 适配沉浸式布局实现沉浸式效果
 
@@ -213,26 +137,6 @@ interface Rect {
 
 1. 调用[setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)接口设置窗口进入沉浸式布局。
 
-   ```ts
-   // EntryAbility.ets
-   private async initializeMainWindow(windowStage: window.WindowStage): Promise<void> {
-     try {
-       this.mainWindow = windowStage.getMainWindowSync();
-       AppStorage.setOrCreate('mainWindow', this.mainWindow);
-       // 设置窗口进入沉浸式布局
-       await this.mainWindow.setWindowLayoutFullScreen(true);
-       this.initSafeArea(this.mainWindow);
-     } catch (err) {
-       hilog.error(
-         DOMAIN,
-         'testTag',
-         'Failed to initialize main window. Cause: %{public}s',
-         JSON.stringify(err)
-       );
-     }
-   }
-   ```
-
 2. 获取并监听窗口避让区域，在避让区域更新时同时更新应用内布局。
 
    此处以获取并监听状态栏、底部导航区域、挖孔区为例。
@@ -241,95 +145,15 @@ interface Rect {
 
      常见的触发避让区域回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；多折叠设备在屏幕折叠态和展开态之间的切换；应用窗口在多设备之间的流转。
 
-     ```ts
-     // EntryAbility.ets
-     private initSafeArea(win: window.Window): void {
-       try {
-         // 获取状态栏避让区域
-         const systemAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-         // 获取底部导航区避让区域
-         const navigationAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
-         // 获取挖孔区避让区域
-         const cutoutAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_CUTOUT);
-
-         AppStorage.setOrCreate('topAvoidHeight', systemAvoidArea.topRect.height);
-         AppStorage.setOrCreate('bottomAvoidHeight', navigationAvoidArea.bottomRect.height);
-         AppStorage.setOrCreate('leftAvoidWidth', 0);
-         AppStorage.setOrCreate('rightAvoidWidth', 0);
-         this.handleCutoutAvoidArea(cutoutAvoidArea);
-       } catch (err) {
-         hilog.error(
-           DOMAIN,
-           'testTag',
-           'Failed to init safe area. Cause: %{public}s',
-           JSON.stringify(err)
-         );
-       }
-     }
-
-
-     private async initializeMainWindow(windowStage: window.WindowStage): Promise<void> {
-       try {
-         this.mainWindow.on('avoidAreaChange', (option) => {
-           switch (option.type) {
-             // 监听状态栏避让区域
-             case window.AvoidAreaType.TYPE_SYSTEM: {
-               const topHeight = Math.max(
-                 option.area.topRect.height,
-                 AppStorage.get<number>('topAvoidHeight') ?? 0
-               );
-               AppStorage.setOrCreate('topAvoidHeight', topHeight);
-               break;
-             }
-             // 监听挖孔区避让区域
-             case window.AvoidAreaType.TYPE_CUTOUT: {
-               this.handleCutoutAvoidArea(option.area);
-               break;
-             }
-             // 监听底部导航区避让区域
-             case window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR: {
-               const bottomHeight = Math.max(
-                 option.area.bottomRect.height,
-                 AppStorage.get<number>('bottomAvoidHeight') ?? 0
-               );
-               AppStorage.setOrCreate('bottomAvoidHeight', bottomHeight);
-               break;
-             }
-             default: {
-               break;
-             }
-           }
-         });
-       } catch (err) {
-         hilog.error(
-           DOMAIN,
-           'testTag',
-           'Failed to initialize avoid area listener. Cause: %{public}s',
-           JSON.stringify(err)
-         );
-       }
-     }
-     ```
+     <!--@[ImmersiveLayout_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayout/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
    - 还可以使用响应式环境变量装饰器[@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md)来实现避让区域的获取和监听。
 
      可通过响应式环境变量装饰器@Env(@Env(SystemProperties.WINDOW_AVOID_AREA)或@Env(SystemProperties.WINDOW_AVOID_AREA_PX))获取并监听当前窗口的避让区域信息。
 
      当避让区域因横竖屏切换、系统栏显隐、窗口形态变化等发生变化时，@Env变量会自动更新，并触发相关组件刷新，从而实现沉浸式布局的动态适配。示例代码如下：
-     ```ts
-     // Index.ets
-     import { window } from '@kit.ArkUI';
 
-     @Entry
-     @Component
-     struct Index {
-       // 使用响应式环境变量获取并监听避让区域
-       @Env(SystemProperties.WINDOW_AVOID_AREA) avoidAreasVp: window.UIEnvWindowAvoidAreaInfoVP;
-
-       private text: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '.repeat(10);
-      }
-
-     ```
+     <!--@[ImmersiveLayoutEnv_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayoutEnv/entry/src/main/ets/pages/Index.ets) -->
 
 3. 布局中的系统界面元素需要避让状态栏和导航区域，否则可能产生UI元素重叠等情况。
 
@@ -341,79 +165,11 @@ interface Rect {
 
    - 避让使用getWindowAvoidArea接口获取到的避让区域的示例代码如下：
 
-      ```ts
-      // Index.ets
-      // 避让顶部和挖孔区域
-      Row() {
-        Text('Top Container')
-          .fontSize(40)
-          .textAlign(TextAlign.Center)
-          .width('100%')
-      }
-      .backgroundColor('#2786d9')
-      .padding({
-        top: this.getUIContext().px2vp(this.topAvoidHeight) + 10,
-        bottom: 10,
-        // 避让挖孔区域
-        left: this.getUIContext().px2vp(this.leftAvoidWidth),
-        right: this.getUIContext().px2vp(this.rightAvoidWidth)
-      })
-      // 避让底部和挖孔区域
-      Row() {
-        Text('Bottom Container')
-          .fontSize(40)
-          .textAlign(TextAlign.Center)
-          .width('100%')
-      }
-      .backgroundColor('#96dffa')
-      .padding({
-        top: 10,
-        bottom: this.getUIContext().px2vp(this.bottomAvoidHeight) + 10,
-        // 避让挖孔区域
-        left: this.getUIContext().px2vp(this.leftAvoidWidth),
-        right: this.getUIContext().px2vp(this.rightAvoidWidth)
-      })
-      ```
+      <!--@[ImmersiveLayout_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayout/entry/src/main/ets/pages/Index.ets) -->
 
     - 避让使用@Env(SystemProperties.WINDOW_AVOID_AREA)获取到的避让区域的示例代码如下：
-      ```ts
-      build() {
-        Column() {
-          // 避让顶部和挖孔区域
-          Row() {
-            Text('Top Container')
-              .fontSize(40)
-              .textAlign(TextAlign.Center)
-              .width('100%')
-          }
-          .backgroundColor('#2786d9')
-          .padding({
-            // 避让状态栏区域
-            top: this.avoidAreasVp.statusBar.topRect.height + 10,
-            bottom: 10,
-            // 避让挖孔区域
-            left: this.avoidAreasVp.cutout.leftRect.width,
-            right: this.avoidAreasVp.cutout.rightRect.width
-          })
-          // 避让底部和挖孔区域
-          Row() {
-            Text('Bottom Container')
-              .fontSize(40)
-              .textAlign(TextAlign.Center)
-              .width('100%')
-          }
-          .backgroundColor('#96dffa')
-          .padding({
-            top: 10,
-            // 避让底部导航区域
-            bottom: this.avoidAreasVp.navigationIndicator.bottomRect.height + 10,
-            // 避让挖孔区域
-            left: this.avoidAreasVp.cutout.leftRect.width,
-            right: this.avoidAreasVp.cutout.rightRect.width
-          })
-        }
-      }
-      ```
+
+      <!--@[ImmersiveLayoutEnv3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayoutEnv/entry/src/main/ets/pages/Index.ets) -->
 
 4. 根据实际的UI界面显示或相关UI元素背景颜色等，还可以按需设置状态栏的文字颜色、背景色或设置导航区域的显示或隐藏，以使UI界面效果呈现和谐。状态栏和导航区域默认是透明的，透传的是应用界面的背景色。  
 
