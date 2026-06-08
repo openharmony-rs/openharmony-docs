@@ -62,7 +62,7 @@ ArkUI NDK接口能力主要包括：
 | 任务 | 简介 |
 | -------- | -------- |
 | [NDK开发导读](../napi/ndk-development-overview.md) | 介绍NDK的适用场景与必备基础知识。 |
-| NDK对接ArkTS | 介绍了如何将NDK接口开发的组件/UI界面挂载到ArkTS主页面上进行渲染显示。包括[嵌入ArkTS组件](ndk-embed-arkts-components.md)和[接入ArkTS页面](ndk-access-the-arkts-page.md)。 |
+| NDK对接ArkTS | 介绍如何在Native侧[嵌入ArkTS组件](ndk-embed-arkts-components.md)，以及如何[接入ArkTS页面](ndk-access-the-arkts-page.md)。 |
 | 构建布局 | 介绍了如何在Native侧[使用布局组件](ndk-layout-container.md)、[设置通用布局属性](ndk-common-attribute-layout.md)。 |
 | [使用导航类组件](ndk-navigation-query.md) | 介绍了如何在Native侧查询Navigation和页面路由状态信息。 |
 | 使用列表与网格 | 介绍了如何在Native侧[使用列表](ndk-loading-long-list.md)、[使用瀑布流](ndk-waterflow.md)、[使用网格](ndk-grid.md)。 |
