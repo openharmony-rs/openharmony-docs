@@ -92,29 +92,29 @@ The following table shows how different settings of **format** work out.
 
 | Input Format               | Display Effect           |
 | ----------------------- | ------------------- |
-| EEEE, M, d, yyyy      | Saturday, February 4, 2023|
-| MMM d, yyyy           | February 4, 2023       |
-| EEEE, M, d            | Saturday, February 4      |
-| MMM d                 | February 4             |
-| MM/dd/yyyy              | 02/04/2023          |
-| EEEE MM dd          | Saturday February 04    |
-| yyyy       | 2023             |
-| yy       | 23               |
-| MM         | February               |
-| M              | February                |
-| dd (complete date)         | 04               |
-| d               | 4                |
-| EEEE (full name)       | Saturday             |
-| E, EE, EEE (abbreviation) | Sat               |
-| MMM d, yyyy           | February 4, 2023       |
-| yyyy/M/d                | 2023/2/4            |
-| yyyy-M-d                | 2023-2-4            |
-| yyyy.M.d                | 2023.2.4            |
+| EEEE, M d, yyyy      | Saturday, Feb 4, 2023|
+| M d, yyyy           | Feb 4, 2023       |
+| EEEE, M d            | Saturday, Feb 4      |
+| M d                 | Feb 4             |
+| MM/dd/yyyy              | Feb/04/2023         |
+| EEEE MM dd          | Saturday Feb 04    |
+| yyyy (4-digit year)       | 2023             |
+| yy (2-digit year)       | 23               |
+| MM         | Feb               |
+| M              | Feb                |
+| dd (2-digit day)         | 04               |
+| d              | 4                |
+| EEEE (full week name)       | Saturday             |
+| E, EE, EEE (abbreviated week name) | Sat               |
+| M d, yyyy           | Feb 4, 2023       |
+| yyyy/M/d                | 2023/Feb/4            |
+| yyyy-M-d                | 2023-Feb-4           |
+| yyyy.M.d                | 2023.Feb.4           |
 | HH:mm:ss   | 17:00:04            |
-| aa hh:mm:ss| 5:00:04 AM       |
+| aa hh:mm:ss| AM 5:00:04       |
 | hh:mm:ss   | 5:00:04             |
 | HH:mm         | 17:00               |
-| aa hh:mm      | 5:00 AM          |
+| aa hh:mm      | AM 5:00          |
 | hh:mm         | 5:00                |
 | mm:ss         | 00:04               |
 | mm:ss.SS | 00:04.91            |
@@ -270,7 +270,7 @@ Creates a content modifier.
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<TextClockConfiguration>](#textclockconfiguration12)| Yes  | Content modifier to apply to the text clock.<br>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API.|
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[TextClockConfiguration](#textclockconfiguration12)>| Yes  | Content modifier to apply to the text clock.<br>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API.|
 
 ### dateTimeOptions<sup>12+</sup>
 

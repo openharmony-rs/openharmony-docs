@@ -62,7 +62,7 @@ Creates an offscreen canvas object. You can configure the canvas width, canvas h
 ## Attributes           
 
 > **NOTE**
-> For **fillStyle**, **shadowColor**, and **strokeStyle**, the value format of the string type is 'rgb(255, 255, 255)', 'rgba(255, 255, 255, 1.0)', '\#FFFFFF'.
+> For **fillStyle**, **shadowColor**, and **strokeStyle**, the value format of the string type is **'rgb(255, 255, 255)'**, **'rgba(255, 255, 255, 1.0)'**, and **'\#FFFFFF'**.
 
 ### fillStyle
 
@@ -93,7 +93,7 @@ struct FillStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // Use string to set the fillStyle attribute.
           offContext.fillStyle = '#0000ff'
@@ -125,7 +125,7 @@ struct FillStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // Use number to set the fillStyle property.
           offContext.fillStyle = 0x0000FF
@@ -172,14 +172,14 @@ struct LineWidthExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // Set the lineWidth attribute.
           offContext.lineWidth = 5
           offContext.strokeRect(25, 25, 85, 105)
           let image = this.offCanvas.transferToImageBitmap()
           this.context.transferFromImageBitmap(image)
-      })
+        })
     }
     .width('100%')
     .height('100%')
@@ -219,7 +219,7 @@ struct StrokeStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 10
           // Use string to set the strokeStyle attribute.
@@ -252,7 +252,7 @@ struct StrokeStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 10
           // Use number to set the strokeStyle attribute.
@@ -300,7 +300,7 @@ struct LineCapExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 8
           offContext.beginPath()
@@ -351,7 +351,7 @@ struct LineJoinExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.beginPath()
           offContext.lineWidth = 8
@@ -386,7 +386,7 @@ Sets the miter limit, which specifies the distance between the inner and outer a
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| number | No| No| Default value: **10** (px)<br>Unit: px<br>The value of **miterLimit** cannot be **0** or a negative number. The value **0**, a negative number, and **NaN** are treated as the default value. If the value is **Infinity**, the APIs related to the **miterLimit** attribute cannot be called for drawing.|
+| number | No| No| Default value: **10px**<br>Unit: px<br>The value of **miterLimit** cannot be **0** or a negative number. The value **0**, a negative number, and **NaN** are treated as the default value. If the value is **Infinity**, the APIs related to the **miterLimit** attribute cannot be called for drawing.|
 
 ```ts
 // xxx.ets
@@ -403,7 +403,7 @@ struct MiterLimit {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 8
           offContext.lineJoin = 'miter'
@@ -432,7 +432,7 @@ Sets the text font. This attribute is write-only. You can set its value through 
 
 Syntax: ctx.font&nbsp;=&nbsp;'font-style&nbsp;font-weight&nbsp;font-size&nbsp;font-family'<br>- (Optional) **font-style**: font style. Available values are **normal** and **italic**.<br>- (Optional) **font-weight**: font weight. Available values are as follows: **normal**, **bold**, **bolder**, **lighter**, **100**, **200**, **300**, **400**, **500**, **600**, **700**, **800**, **900**.<br>- (Optional) **font-size**: font size and line height. The unit can be px or vp and must be specified.<br>- (Optional) **font-family**: font family. Available values are **sans-serif**, **serif**, and **monospace**.
 
-From API version 20, this API can be used to set the registered custom font. This API can be used only in the main thread. It cannot be used in the worker thread. The previewer of DevEco Studio does not support custom fonts. You can register a custom font in either of the following ways: <br>Register a custom font by calling the asynchronous API this.uiContext.getFont().[registerFont](../arkts-apis-uicontext-font.md#registerfont) of ArkUI. Immediate rendering after calling this API may result in the custom font not taking effect. <br>Directly call the fontCollection.[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) API of the font engine to register the custom font. In this case, the **fontCollection** instance must be **text.FontCollection.getGlobalInstance()** because the component loads fonts from this instance by default. If you use another instance, the custom font may not take effect.
+From API version 20, this API can be used to set the registered custom font. This API can be used only in the main thread and cannot be used in the worker thread. The Previewer of DevEco Studio does not support custom fonts. You can register a custom font in either of the following ways: <br>Register a custom font by calling the asynchronous API this.uiContext.getFont().[registerFont](../arkts-apis-uicontext-font.md#registerfont) of ArkUI. Immediate rendering after calling this API may result in the custom font not taking effect. <br>Directly call the fontCollection.[loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) API of the font engine to register the custom font. In this case, the **fontCollection** instance must be **text.FontCollection.getGlobalInstance()** because the component loads fonts from this instance by default. If you use another instance, the custom font may not take effect.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -631,7 +631,7 @@ Sets the opacity. This attribute is write-only. You can set its value through an
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| number | No| No| The value range is [0.0, 1.0]. **0.0** indicates completely transparent, and **1.0** indicates completely opaque. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.<br>In versions earlier than API version 18, if **NaN **or **Infinity** is set, rendering APIs cannot be called for rendering after this API. In API version 18 and later versions, if **NaN** or **Infinity** is set, the current API does not take effect, and other rendering APIs with valid parameters can be called normally.<br>Default value: **1.0**|
+| number | No| No| The value range is [0.0, 1.0]. **0.0** indicates completely transparent, and **1.0** indicates completely opaque. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.<br>In versions earlier than API version 18, if **NaN **or **Infinity** is set, rendering APIs cannot be called for rendering after this API. Since API version 18, **NaN** or **Infinity** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly.<br>Default value: **1.0**|
 
 ```ts
 // xxx.ets
@@ -648,7 +648,7 @@ struct GlobalAlpha {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.fillStyle = 'rgb(0,0,255)'
           offContext.fillRect(0, 0, 50, 50)
@@ -698,10 +698,10 @@ struct LineDashOffset {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.arc(100, 75, 50, 0, 6.28)
-          offContext.setLineDash([10,20])
+          offContext.setLineDash([10, 20])
           // Set the lineDashOffset attribute.
           offContext.lineDashOffset = 10.0
           offContext.stroke()
@@ -923,7 +923,7 @@ Sets the blur level for drawing shadows. This attribute is write-only. You can s
 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| number | No| No| Bluring level. <br>A larger value produces a greater blur effect, with a precision of float. The value must be greater than or equal to 0.<br>Default value: **0.0**<br>Unit: px<br>The value of **shadowBlur** cannot be a negative number. A negative number, **NaN**, and **Infinity** are treated as the default value.|
+| number | No| No| Blur level. A larger value produces a greater blur effect. The value is of float type and must be greater than or equal to 0.<br>Default value: **0.0**<br>Unit: px<br>The value of **shadowBlur** cannot be a negative number. A negative number, **NaN**, and **Infinity** are treated as the default value.|
 
 ```ts
 // xxx.ets
@@ -940,7 +940,7 @@ struct ShadowBlur {
         .width('100%')
         .height('100%')
         .backgroundColor('rgb(213,213,213)')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // Set the shadowBlur property.
           offContext.shadowBlur = 30
@@ -1038,7 +1038,7 @@ struct ShadowOffsetX {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.shadowBlur = 10
           // Set the shadowOffsetX attribute.
@@ -1088,7 +1088,7 @@ struct ShadowOffsetY {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.shadowBlur = 10
           // Set the shadowOffsetY attribute.
@@ -1111,7 +1111,7 @@ struct ShadowOffsetY {
 
 ### imageSmoothingEnabled
 
-Indicates whether to apply image smoothing adjustments when drawing images. The value **true** means to enable smoothing ,and **false** means to disable it. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
+Indicates whether to apply image smoothing adjustments when drawing images. The value **true** means to enable smoothing, and **false** means to disable it. This attribute is write-only. You can set its value through an assignment statement, but cannot obtain its current value through a read operation. If you attempt to read its current value, **undefined** will be returned.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -1122,6 +1122,10 @@ Indicates whether to apply image smoothing adjustments when drawing images. The 
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | boolean | No| No| Default value: **true**|
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356) in **resOptions**.
 
 ```ts
 // xxx.ets
@@ -1140,11 +1144,11 @@ struct ImageSmoothingEnabled {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // Set the imageSmoothingEnabled attribute.
           offContext.imageSmoothingEnabled = false
-          offContext.drawImage(this.img,0,0,400,200)
+          offContext.drawImage(this.img, 0, 0, 400, 200)
           let image = this.offCanvas.transferToImageBitmap()
           this.context.transferFromImageBitmap(image)
       })
@@ -1172,6 +1176,10 @@ Sets the image smoothing quality when **imageSmoothingEnabled** is set to **true
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | [ImageSmoothingQuality](ts-canvasrenderingcontext2d.md#imagesmoothingquality) | No| No| Default value: **"low"**|
 
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356) in **resOptions**.
+
 ```ts
   // xxx.ets
   @Entry
@@ -1191,7 +1199,7 @@ justifyContent: FlexAlign.Center }) {
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let offctx = offContext
             offctx.imageSmoothingEnabled = true
@@ -1242,7 +1250,7 @@ justifyContent: FlexAlign.Center }) {
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let offctx = offContext
             offctx.font = '48px serif';
@@ -1275,9 +1283,14 @@ Sets the filter of an image. You can combine any number of filters. This attribu
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| string | No| No| Available values are as follows:<br>- **'none'**: no filter effect.<br>- 'blur(\<length>)': applies the Gaussian blur for the image. The value must be greater than or equal to 0. The unit can be px, vp, or rem. The default value is **blur(0px)**.<br>- 'brightness([\<number>\|\<percentage>])': applies a linear multiplication to the image to make it look brighter or darker. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **brightness(1)**.<br>- 'contrast([\<number>\|\<percentage>])': adjusts the image contrast. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **contrast(1)**.<br>- 'grayscale([\<number>\|\<percentage>])': converts the image to a grayscale image. The value can be a number or percentage. The value range is [0, 1]. The default value is **grayscale(0)**.<br>- 'hue-rotate(\<angle>)': applies hue rotation to the image. The value ranges from 0deg to 360deg. The default value is **hue-rotate(0deg)**.<br>- 'invert([\<number>\|\<percentage>])': inverts the input image. The value can be a number or percentage. The value range is [0, 1]. The default value is **invert (0)**.<br>- 'opacity([\<number>\|\<percentage>])': sets the opacity of the image. The value can be a number or percentage. The value range is [0, 1]. The default value is **opacity(1)**.<br>- 'saturate([\<number>\|\<percentage>])': sets the saturation of the image. The value can be a number or percentage. It must be greater than or equal to 0. The default value is **saturate(1)**.<br>- 'sepia([\<number>\|\<percentage>])': converts the image to dark brown. The value can be a number or percentage. The value range is [0, 1]. The default value is **sepia(0)**.|
+| string | No| No| Available values are as follows:<br>- **'none'**: no filter effect.<br>- 'blur(\<length>)': applies the Gaussian blur for the image. The value must be greater than or equal to 0. The unit can be px, vp, or rem. The default value is **blur(0px)**.<br>- **'brightness([\<number>\|\<percentage>])'**: applies a linear multiplier to the image to adjust its brightness. The value can be a number or a percentage, and must be greater than or equal to 0. The default value is **brightness(1)**.<br>- **'contrast([\<number>\|\<percentage>])'**: adjusts the contrast of the image. The value can be a number or a percentage, and must be greater than or equal to 0. The default value is **contrast(1)**.<br>- **'grayscale([\<number>\|\<percentage>])'**: converts the image to grayscale. The value can be a number or a percentage, and must be within the range of [0, 1]. The default value is **grayscale(0)**.<br>- 'hue-rotate(\<angle>)': applies hue rotation to the image. The value ranges from 0deg to 360deg. The default value is **hue-rotate(0deg)**.<br>- **'invert([\<number>\|\<percentage>])'**: inverts the input image. The value can be a number or a percentage, and must be within the range of [0, 1]. The default value is **invert(0)**.<br>- **'opacity([\<number>\|\<percentage>])'**: adjusts the opacity of the image. The value can be a number or a percentage, and must be within the range of [0, 1]. The default value is **opacity(1)**.<br>- **'saturate([\<number>\|\<percentage>])'**: adjusts the saturation of the image. The value can be a number or a percentage, and must be greater than or equal to 0. The default value is **saturate(1)**.<br>- **'sepia([\<number>\|\<percentage>])'**: converts the image to sepia. The value can be a number or a percentage, and must be within the range of [0, 1]. The default value is **sepia(0)**.|
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356) in **resOptions**.
 
 ```ts
   // xxx.ets
@@ -1352,6 +1365,7 @@ Sets the letter spacing. This attribute is write-only. You can set its value thr
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 25%; 10%; 10%; 55%-->
 | Type| Read Only| Optional| Description|
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | string&nbsp;\| [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| No| Spacing between characters.<br>When the **LengthMetrics** type is used:<br>The spacing is set according to the specified unit.<br>The FP, PERCENT, and LPX units are not supported and will be treated as invalid.<br>Negative and fractional values are supported. When set to a fraction, the spacing is not rounded.<br>When the string type is used:<br>Percentage values are not supported and will be treated as invalid.<br>Negative and fractional values are supported. When set to a fraction, the spacing is not rounded.<br>If no unit is specified (for example, **letterSpacing = '10'**) and **LengthMetricsUnit** is not set, the default unit is vp.<br>If **LengthMetricsUnit** is set to **px**, the default unit is px.<br>If the value of **letterSpacing** is specified with a unit (for example, **letterSpacing='10vp'**), the letter spacing is set based on the specified unit.<br>Default value: **0** (Invalid values are treated as the default value.)<br>Note: **LengthMetrics** is recommended for better performance.|
@@ -1394,6 +1408,75 @@ Sets the letter spacing. This attribute is write-only. You can set its value thr
 
 ![letterSpacingDemo](figures/letterSpacingDemo.jpeg)
 
+
+### antialias<sup>24+</sup>
+
+Sets whether to enable anti-aliasing for drawing graphics and text. Setting this API overrides the anti-aliasing effect in [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings). If this API is not specified, the default value is **undefined** and the anti-aliasing effect in [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) is used.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type| Read Only| Optional| Description|
+| ------ | ------ | ------ | ------ |
+| boolean | No| No| Whether to enable anti-aliasing for drawing graphics and text.<br>**true**: Anti-aliasing is enabled. **false**: Anti-aliasing is disabled.<br>When the value is **undefined**, the anti-aliasing effect in [RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings) is used.|
+
+**Example**
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct AntialiasDemoOff {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          let offContext = this.offCanvas.getContext("2d", this.settings);
+          let anti = offContext.antialias;
+          console.info(`current antialias is ${anti}`);
+          // Set antialias to false.
+          offContext.antialias = false;
+          offContext.strokeStyle = 'rgb(0,0,0)';
+          offContext.lineWidth = 2;
+          offContext.beginPath();
+          offContext.arc(150, 150, 100, 0, Math.PI);
+          offContext.stroke();
+          offContext.font = 'normal bold 30vp monospace';
+          offContext.fillText("Hello World", 20, 100);
+          anti = offContext.antialias;
+          console.info(`current antialias is ${anti}`);
+
+          // Set antialias to true.
+          offContext.antialias = true;
+          offContext.beginPath();
+          offContext.arc(150, 350, 100, 0, Math.PI);
+          offContext.stroke();
+          offContext.font = 'normal bold 30vp monospace';
+          offContext.fillText("Hello World", 20, 300);
+          anti = offContext.antialias;
+          console.info(`current antialias is ${anti}`);
+          let image = this.offCanvas.transferToImageBitmap();
+          this.context.transferFromImageBitmap(image);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![AntialiasDemo](figures/AntialiasOffDemo.jpeg)
+
 ## Methods
 
 
@@ -1435,9 +1518,9 @@ Fills a rectangle on the canvas.
           .width('100%')
           .height('100%')
           .backgroundColor('rgb(213,213,213)')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.fillRect(30,30,100,100)
+            offContext.fillRect(30, 30, 100, 100)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
          })
@@ -1489,7 +1572,7 @@ Draws an outlined rectangle on the canvas.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.strokeRect(30, 30, 200, 150)
             let image = this.offCanvas.transferToImageBitmap()
@@ -1543,14 +1626,14 @@ Clears the content in a rectangle on the canvas.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = 'rgb(0,0,255)'
-            offContext.fillRect(20,20,200,200)
-            offContext.clearRect(30,30,150,100)
+            offContext.fillRect(20, 20, 200, 200)
+            offContext.clearRect(30, 30, 150, 100)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
-        })
+          })
       }
       .width('100%')
       .height('100%')
@@ -1599,7 +1682,7 @@ Draws filled text on the canvas.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.font = '30px sans-serif'
             offContext.fillText("Hello World!", 20, 100)
@@ -1654,7 +1737,7 @@ Draws a text stroke on the canvas.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.font = '55px sans-serif'
             offContext.strokeText("Hello World!", 20, 60)
@@ -1902,8 +1985,8 @@ Moves a drawing path from the current position to a target position on the canva
 
 | Name  | Type    | Mandatory  | Description       |
 | ---- | ------ | ---- | --------- |
-| x    | number | Yes   | X-coordinate of the target position.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y    | number | Yes   | Y-coordinate of the target position.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| x    | number | Yes   | X-coordinate of the target position.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes   | Y-coordinate of the target position.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
 > **NOTE**
 >
@@ -1928,7 +2011,7 @@ Moves a drawing path from the current position to a target position on the canva
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.moveTo(10, 10)
@@ -1963,8 +2046,8 @@ Connects the current point to a target position using a line.
 
 | Name  | Type    | Mandatory  | Description       |
 | ---- | ------ | ----  | --------- |
-| x    | number | Yes   | X-coordinate of the target position.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y    | number | Yes   | Y-coordinate of the target position.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| x    | number | Yes   | X-coordinate of the target position.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes   | Y-coordinate of the target position.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
  **Example**
 
@@ -1983,7 +2066,7 @@ Connects the current point to a target position using a line.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.moveTo(10, 10)
@@ -2031,7 +2114,7 @@ Draws a closed path.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
               let offContext = this.offCanvas.getContext("2d", this.settings)
               offContext.beginPath()
               offContext.moveTo(30, 30)
@@ -2078,6 +2161,10 @@ Creates a pattern for image filling based on a specified source image and repeti
 | [CanvasPattern](ts-components-canvas-canvaspattern.md) \| null | Pattern for image filling based on a specified source image and repetition mode.|
 
  **Example**
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356) in **resOptions**.
 
   ```ts
   // xxx.ets
@@ -2128,14 +2215,15 @@ Creates a path for a cubic Bezier curve.
 
  **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name  | Type    | Mandatory | Description            |
 | ---- | ------ | ---- | -------------- |
-| cp1x | number | Yes | X-coordinate of the first parameter of the bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| cp1y | number | Yes | Y-coordinate of the first parameter of the bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| cp2x | number | Yes | X-coordinate of the second parameter of the bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| cp2y | number | Yes | Y-coordinate of the second parameter of the bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| x    | number | Yes | X-coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y    | number | Yes | Y-coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| cp1x | number | Yes | X-coordinate of the first parameter of the Bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| cp1y | number | Yes | Y-coordinate of the first parameter of the Bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| cp2x | number | Yes | X-coordinate of the second parameter of the Bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| cp2y | number | Yes | Y-coordinate of the second parameter of the Bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| x    | number | Yes | X-coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes | Y-coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
 **Example**
 
@@ -2191,7 +2279,7 @@ struct BezierCurveTo {
 }
 ```
 
-  ![en-us_image_0000001238952403](figures/en-us_image_0000001238952403.png)
+![en-us_image_0000001238952403](figures/en-us_image_0000001238952403.png)
 
 
 ### quadraticCurveTo
@@ -2210,10 +2298,10 @@ Create a path for a quadratic Bezier curve.
  
 | Name  | Type    | Mandatory | Description            |
 | ---- | ------ | ---- | -------------- |
-| cpx  | number | Yes  | X-coordinate of the Bezier curve parameter.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| cpy  | number | Yes  | Y-coordinate of the Bezier curve parameter.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| x    | number | Yes  | X-coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y    | number | Yes  | Y-coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| cpx  | number | Yes  | X-coordinate of the Bezier curve parameter.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| cpy  | number | Yes  | Y-coordinate of the Bezier curve parameter.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| x    | number | Yes  | X-coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes  | Y-coordinate of the end point on the Bezier curve.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
 **Example**
 
@@ -2284,13 +2372,14 @@ Draws an arc on the canvas.
 
  **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name| Type     | Mandatory  | Description        |
 | ---------------- | ------- | ---- | ---------- |
-| x                | number  | Yes  | X-coordinate of the center point of the arc.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y                | number  | Yes  | Y-coordinate of the center point of the arc.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| radius           | number  | Yes  | Radius of the arc.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| startAngle       | number  | Yes  | Start radian of the arc.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: radian|
-| endAngle         | number  | Yes  | End radian of the arc.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: radian|
+| x                | number  | Yes  | X-coordinate of the center point of the arc.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y                | number  | Yes  | Y-coordinate of the center point of the arc.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| radius           | number  | Yes  | Radius of the arc.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| startAngle       | number  | Yes  | Start radian of the arc.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: radian|
+| endAngle         | number  | Yes  | End radian of the arc.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: radian|
 | counterclockwise | boolean | No  | Whether to draw the arc counterclockwise.<br>**true**: Draw the arc counterclockwise.<br>**false**: Draw the arc clockwise.<br>The default value is **false**. If this parameter is set to **null** or **undefined**, the default value is used.|
 
  **Example**
@@ -2310,7 +2399,7 @@ Draws an arc on the canvas.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.arc(100, 75, 50, 0, 6.28)
@@ -2342,13 +2431,14 @@ Creates a circular arc using the given control points and radius.
 
  **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name   | Type    | Mandatory | Description        |
 | ------ | ------ | ---- | --------------- |
-| x1     | number | Yes | X-coordinate of the first control point.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y1     | number | Yes | Y-coordinate of the first control point.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| x2     | number | Yes | X-coordinate of the second control point.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y2     | number | Yes | Y-coordinate of the second control point.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| radius | number | Yes | Radius of the arc.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| x1     | number | Yes | X-coordinate of the first control point.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y1     | number | Yes | Y-coordinate of the first control point.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| x2     | number | Yes | X-coordinate of the second control point.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y2     | number | Yes | Y-coordinate of the second control point.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| radius | number | Yes | Radius of the arc.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
  **Example**
 
@@ -2367,7 +2457,7 @@ Creates a circular arc using the given control points and radius.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
 
             // Tangent
@@ -2431,15 +2521,16 @@ Draws an ellipse in the specified rectangular region on the canvas.
 
  **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name             | Type     | Mandatory  | Description|
 | ---------------- | ------- | ---- | ---------------------------------------- |
-| x                | number  | Yes    | X-coordinate of the ellipse center.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y                | number  | Yes    | Y-coordinate of the ellipse center.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| radiusX          | number  | Yes    | Radius of the ellipse on the x-axis.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| radiusY          | number  | Yes    | Radius of the ellipse on the y-axis.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| rotation         | number  | Yes    | Rotation angle of the ellipse.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian|
-| startAngle       | number  | Yes    | Angle of the start point for drawing the ellipse.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian|
-| endAngle         | number  | Yes    | Angle of the end point for drawing the ellipse.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Unit: radian|
+| x                | number  | Yes    | X-coordinate of the ellipse center.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y                | number  | Yes    | Y-coordinate of the ellipse center.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| radiusX          | number  | Yes    | Radius of the ellipse on the x-axis.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| radiusY          | number  | Yes    | Radius of the ellipse on the y-axis.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| rotation         | number  | Yes    | Rotation angle of the ellipse.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Unit: radian|
+| startAngle       | number  | Yes    | Angle of the start point for drawing the ellipse.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Unit: radian|
+| endAngle         | number  | Yes    | Angle of the end point for drawing the ellipse.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Unit: radian|
 | counterclockwise | boolean | No    | Whether to draw the ellipse counterclockwise.<br>**true**: Draw the ellipse counterclockwise.<br>**false**: Draw the ellipse clockwise.<br>The default value is **false**. If this parameter is set to **null** or **undefined**, the default value is used.|
 
  **Example**
@@ -2458,7 +2549,7 @@ Draws an ellipse in the specified rectangular region on the canvas.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.ellipse(200, 200, 50, 100, Math.PI * 0.25, Math.PI * 0.5, Math.PI * 2, false)
@@ -2493,12 +2584,13 @@ Creates a rectangle on the canvas.
 
  **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name | Type    | Mandatory| Description|
 | ---- | ------ | ---- | ------------- |
-| x    | number | Yes | X-coordinate of the upper left corner of the rectangle.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y    | number | Yes | Y-coordinate of the upper left corner of the rectangle.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| w    | number | Yes | Width of the rectangle.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| h    | number | Yes | Height of the rectangle.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other path APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| x    | number | Yes | X-coordinate of the upper left corner of the rectangle.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes | Y-coordinate of the upper left corner of the rectangle.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| w    | number | Yes | Width of the rectangle.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| h    | number | Yes | Height of the rectangle.<br>In versions earlier than API version 18, values **NaN** and **Infinity** prevent the entire path from rendering, and **null** or **undefined** values cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other path APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
  **Example**
 
@@ -2517,7 +2609,7 @@ Creates a rectangle on the canvas.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.rect(20, 20, 100, 100) // Create a 100*100 rectangle at (20, 20)
             offContext.stroke()
@@ -2547,6 +2639,7 @@ Creates a rounded rectangle path. This API does not directly render content. To 
 
 **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name  | Type    | Mandatory  | Description           |
 | ---- | ------ | ---- | ------------- |
 | x    | number | Yes   | X-coordinate of the upper left corner of the rectangle.<br>The value **null** is treated as **0**, and **undefined** is treated as an invalid value, indicating no rendering.<br>To draw a complete rectangle, the value range is [0, Canvas width).<br>Default unit: vp|
@@ -2607,7 +2700,7 @@ The following example shows how to draw six rounded rectangles:
               offContext.roundRect(120, 10, 100, 100, [10])
               offContext.fill()
               offContext.beginPath()
-              // Create a rounded rectangle with the start point at (10 vp, 120 vp), width and height of 100 vp, arc radius of 10 vp for the upper-left and lower-right rectangle corners, arc radius of 20 vp for the upper-right and lower-left rectangle corners.
+              // Create a rounded rectangle with the start point at (10 vp, 120 vp), width and height of 100 vp, arc radius of 10 vp for the upper-left and lower-right rectangle corners, and arc radius of 20 vp for the upper-right and lower-left rectangle corners.
               offContext.roundRect(10, 120, 100, 100, [10, 20])
               // Create a rounded rectangle with the start point at (120 vp, 120 vp), width and height of 100 vp, arc radius of 10 vp for the upper-left rectangle corner, arc radius of 20 vp for the upper-right and lower-left rectangle corners, arc radius of 30 vp for the lower-right rectangle corner.
               offContext.roundRect(120, 120, 100, 100, [10, 20, 30])
@@ -2669,7 +2762,7 @@ Fills the current path.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = '#000000'
             offContext.rect(20, 20, 100, 100) // Create a 100*100 rectangle at (20, 20)
@@ -2722,7 +2815,7 @@ struct Fill {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           let region = new Path2D()
           region.moveTo(30, 90)
@@ -2782,7 +2875,7 @@ Sets the current path to a clipping path.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.rect(0, 0, 100, 200)
             offContext.stroke()
@@ -2837,7 +2930,7 @@ Sets a specified path as the clipping path.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let region = new Path2D()
             region.moveTo(30, 90)
@@ -2890,7 +2983,7 @@ Resets this **OffscreenCanvasRenderingContext2D** object to its default state an
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = '#0000ff'
             offContext.fillRect(20, 20, 150, 100)
@@ -2938,16 +3031,16 @@ Saves this layer.
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = "#0000ff"
-            offContext.fillRect(50,100,300,100)
+            offContext.fillRect(50, 100, 300, 100)
             offContext.fillStyle = "#00ffff"
-            offContext.fillRect(50,150,300,100)
+            offContext.fillRect(50, 150, 300, 100)
             offContext.globalCompositeOperation = 'destination-over'
             offContext.saveLayer()
             offContext.globalCompositeOperation = 'source-over'
             offContext.fillStyle = "#ff0000"
-            offContext.fillRect(100,50,100,300)
+            offContext.fillRect(100, 50, 100, 300)
             offContext.fillStyle = "#00ff00"
-            offContext.fillRect(150,50,100,300)
+            offContext.fillRect(150, 50, 100, 300)
             offContext.restoreLayer()
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
@@ -3034,7 +3127,7 @@ Rotates a canvas clockwise around its coordinate axes.
 
 | Name   | Type    | Mandatory  | Description|
 | ----- | ------ | ---- | ---------------------------------------- |
-| angle | number | Yes   | Clockwise rotation angle. You can convert degrees to radians using the following formula: degree * Math.PI/180.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, values **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly.<br>Unit: radian|
+| angle | number | Yes   | Clockwise rotation angle. You can convert degrees to radians using the following formula: degree * Math.PI/180.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly.<br>Unit: radian|
 
  **Example**
 
@@ -3053,7 +3146,7 @@ Rotates a canvas clockwise around its coordinate axes.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.rotate(45 * Math.PI / 180)
             offContext.fillRect(70, 20, 50, 50)
@@ -3086,8 +3179,8 @@ Scales the canvas based on scale factors.
 
 | Name  | Type    | Mandatory  |  Description     |
 | ---- | ------ | ---- | ----------- |
-| x    | number | Yes | Horizontal scale factor.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly.|
-| y    | number | Yes | Vertical scale factor.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly.|
+| x    | number | Yes | Horizontal scale factor.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly.|
+| y    | number | Yes | Vertical scale factor.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly.|
 
  **Example**
 
@@ -3106,7 +3199,7 @@ Scales the canvas based on scale factors.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.lineWidth = 3
             offContext.strokeRect(30, 30, 50, 50)
@@ -3151,12 +3244,12 @@ Defines a transformation matrix. To transform a graph, you only need to set para
 
 | Name  | Type    | Mandatory| Description|
 | ---- | ------ | ---- | -------------------- |
-| a    | number | Yes   | **scaleX**: horizontal scaling value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly.|
-| b    | number | Yes   | **skewY**: vertical skewing value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly. |
-| c    | number | Yes   | **skewX**: horizontal skewing value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly. |
-| d    | number | Yes   | **scaleY**: vertical scaling value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly.|
-| e    | number | Yes   | **translateX**: horizontal translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| f    | number | Yes   | **translateY**: vertical translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| a    | number | Yes   | **scaleX**: horizontal scaling value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly.|
+| b    | number | Yes   | **skewY**: vertical skewing value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly. |
+| c    | number | Yes   | **skewX**: horizontal skewing value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly. |
+| d    | number | Yes   | **scaleY**: vertical scaling value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly.|
+| e    | number | Yes   | **translateX**: horizontal translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| f    | number | Yes   | **translateY**: vertical translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
  **Example**
 
@@ -3222,14 +3315,15 @@ Resets the existing transformation matrix and creates a new transformation matri
 
 **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name  | Type    | Mandatory| Description|
 | ---- | ------ | ---- | -------------------- |
-| a    | number | Yes   | **scaleX**: horizontal scaling value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly.|
-| b    | number | Yes   | **skewY**: vertical skewing value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly. |
-| c    | number | Yes   | **skewX**: horizontal skewing value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly. |
-| d    | number | Yes   | **scaleY**: vertical scaling value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly.|
-| e    | number | Yes   | **translateX**: horizontal translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| f    | number | Yes   | **translateY**: vertical translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| a    | number | Yes   | **scaleX**: horizontal scaling value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly.|
+| b    | number | Yes   | **skewY**: vertical skewing value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly. |
+| c    | number | Yes   | **skewX**: horizontal skewing value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly. |
+| d    | number | Yes   | **scaleY**: vertical scaling value. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly.|
+| e    | number | Yes   | **translateX**: horizontal translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| f    | number | Yes   | **translateY**: vertical translation distance. A negative value is supported.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
  **Example**
 
@@ -3248,7 +3342,7 @@ Resets the existing transformation matrix and creates a new transformation matri
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = 'rgb(255,0,0)'
             offContext.fillRect(0, 0, 100, 100)
@@ -3304,7 +3398,7 @@ Resets the current transformation and creates a new transformation matrix based 
           .width('230vp')
           .height('160vp')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext1.fillRect(100, 20, 50, 50);
             this.offcontext1.setTransform(1, 0.5, -0.5, 1, 10, 10);
             this.offcontext1.fillRect(100, 20, 50, 50);
@@ -3316,7 +3410,7 @@ Resets the current transformation and creates a new transformation matrix based 
           .width('230vp')
           .height('160vp')
           .backgroundColor('#0ffff0')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext2.fillRect(100, 20, 50, 50);
             let storedTransform = this.offcontext1.getTransform();
             this.offcontext2.setTransform(storedTransform);
@@ -3359,9 +3453,11 @@ Obtains the current transformation matrix being applied to the context.
   struct TransFormDemo {
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context1: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    private offcontext1: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
+    private offcontext1: OffscreenCanvasRenderingContext2D =
+      new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
     private context2: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    private offcontext2: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
+    private offcontext2: OffscreenCanvasRenderingContext2D =
+      new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -3370,9 +3466,9 @@ Obtains the current transformation matrix being applied to the context.
           .width('230vp')
           .height('120vp')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext1.fillRect(50, 50, 50, 50);
-            this.offcontext1.setTransform(1.2, Math.PI/8, Math.PI/6, 0.5, 30, -25);
+            this.offcontext1.setTransform(1.2, Math.PI / 8, Math.PI / 6, 0.5, 30, -25);
             this.offcontext1.fillRect(50, 50, 50, 50);
             let image = this.offcontext1.transferToImageBitmap();
             this.context1.transferFromImageBitmap(image);
@@ -3382,14 +3478,12 @@ Obtains the current transformation matrix being applied to the context.
           .width('230vp')
           .height('120vp')
           .backgroundColor('#0ffff0')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext2.fillRect(50, 50, 50, 50);
             let storedTransform = this.offcontext1.getTransform();
-            console.info("Matrix [scaleX = " + storedTransform.scaleX + ", scaleY = " + storedTransform.scaleY +
-            ", rotateX = " + storedTransform.rotateX + ", rotateY = " + storedTransform.rotateY +
-            ", translateX = " + storedTransform.translateX + ", translateY = " + storedTransform.translateY + "]")
+            console.info(`Matrix [scaleX = ${storedTransform.scaleX}, scaleY = ${storedTransform.scaleY}, rotateX = ${storedTransform.rotateX}, rotateY = ${storedTransform.rotateY}, translateX = ${storedTransform.translateX}, translateY = ${storedTransform.translateY}]`)
             this.offcontext2.setTransform(storedTransform);
-            this.offcontext2.fillRect(50,50,50,50);
+            this.offcontext2.fillRect(50, 50, 50, 50);
             let image = this.offcontext2.transferToImageBitmap();
             this.context2.transferFromImageBitmap(image);
           })
@@ -3416,10 +3510,11 @@ Moves the origin of the coordinate system.
 
  **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name  | Type    | Mandatory  | Description|
 | ---- | ------ | ---- | -------- |
-| x    | number | Yes | Distance to translate on the x-axis.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly.<br>Default unit: vp|
-| y    | number | Yes | Sets the vertical translation distance.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, values **NaN**, **Infinity**, **null**, and **undefined** cause the current API to have no effect, and other APIs with valid parameters continue to render correctly.<br>Default unit: vp|
+| x    | number | Yes | Distance to translate on the x-axis.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly.<br>Default unit: vp|
+| y    | number | Yes | Sets the vertical translation distance.<br>In versions earlier than API version 18, values **NaN** and **Infinity** cause the failure to call the drawing APIs following this API for rendering. Values **null** and **undefined** cause the current API to have no effect. Since API version 18, **NaN**, **Infinity**, **null**, or **undefined** causes the current API to have no effect, and other drawing APIs with valid arguments continue to render correctly.<br>Default unit: vp|
 
  **Example**
 
@@ -3438,7 +3533,7 @@ Moves the origin of the coordinate system.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillRect(10, 10, 50, 50)
             offContext.translate(70, 70)
@@ -3470,6 +3565,7 @@ Draws an image on the canvas.
 
  **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name   | Type| Mandatory  | Description|
 | ----- | ---------------------------------------- | ---- | ----------------------------- |
 | image | [ImageBitmap](ts-components-canvas-imagebitmap.md) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes| Image resource. For details, see **ImageBitmap** or **PixelMap**.<br>Values **undefined** and **null** are treated as invalid and will not be rendered.|
@@ -3477,6 +3573,10 @@ Draws an image on the canvas.
 | dy    | number | Yes | Y-coordinate of the upper left corner of the drawing area on the canvas.<br>The values **undefined** and **null** are treated as **0**, and **NaN** and **Infinity** are treated as invalid and are not rendered.<br>Default unit: vp|
 
  **Example**
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356) in **resOptions**.
 
   ```ts
   // xxx.ets
@@ -3533,6 +3633,10 @@ Draws an image by stretching or compressing it to the specified dimensions.
 | dh    | number | Yes | Height of the drawing area.<br>Negative values, **undefined**, and **null** are treated as **0**, and **NaN** and **Infinity** are treated as invalid and are not rendered.<br>Default unit: vp|
 
  **Example**
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356) in **resOptions**.
 
   ```ts
   // xxx.ets
@@ -3593,6 +3697,10 @@ Draws a cropped portion of an image by stretching or compressing it to the speci
 | dh    | number | Yes | Height of the drawing area.<br>Negative values, **undefined**, and **null** are treated as **0**, and **NaN** and **Infinity** are treated as invalid and are not rendered.<br>Default unit: vp|
 
  **Example**
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356) in **resOptions**.
 
   ```ts
   // xxx.ets
@@ -3700,7 +3808,10 @@ Obtains the [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) object
 
 > **NOTE**
 >
-> DevEco Studio Previewer does not support displaying content drawn using **setPixelMap**.
+> - DevEco Studio Previewer does not support displaying content drawn using **setPixelMap**.
+>
+> - The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356) in **resOptions**.
+
 
   ```ts
   // xxx.ets
@@ -3783,6 +3894,10 @@ Obtains the [ImageData](ts-components-canvas-imagedata.md) object created with t
 
 **Example**
 
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356) in **resOptions**.
+
   ```ts
   // xxx.ets
   @Entry
@@ -3800,11 +3915,11 @@ Obtains the [ImageData](ts-components-canvas-imagedata.md) object created with t
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.drawImage(this.img,0,0,130,130)
+            offContext.drawImage(this.img, 0, 0, 130, 130)
             let imageData = offContext.getImageData(50,50,130,130)
-            offContext.putImageData(imageData,150,150)
+            offContext.putImageData(imageData, 150, 150)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
           })
@@ -3880,7 +3995,7 @@ Puts an **[ImageData](ts-components-canvas-imagedata.md)** object onto a rectang
 
 ### putImageData
 
-putImageData(imageData: ImageData, dx: number | string, dy: number | string, dirtyX: number | string, dirtyY: number | string, dirtyWidth?: number | string, dirtyHeight: number | string): void
+putImageData(imageData: ImageData, dx: number | string, dy: number | string, dirtyX: number | string, dirtyY: number | string, dirtyWidth: number | string, dirtyHeight: number | string): void
 
 Fills the new rectangular area with the [ImageData](ts-components-canvas-imagedata.md) data after cropping.
 
@@ -4068,7 +4183,7 @@ Creates a data URL that contains a representation of an image. This API involves
 | Name    | Type  | Mandatory  | Description                                      |
 | ------- | ------ | ---- | ---------------------------------------- |
 | type    | string | No | Image format.<br>The options are **image/png**, **image/jpeg**, and **image/webp**.<br>The **undefined** and **null** values are treated as the default value.<br>Default value: **image/png**|
-| quality | any | No | Image quality, which ranges from 0 to 1, when the image format is **image/jpeg** or **image/webp**. If the set value is beyond the value range, the default value **0.92** is used.<br>Values **undefined**, **null**, **NaN**, and **Infinity** treated as the default value.<br>Default value: **0.92**|
+| quality | any | No | Image quality, which ranges from 0 to 1, when the image format is **image/jpeg** or **image/webp**. If the set value is beyond the value range, the default value **0.92** is used.<br>Invalid values **undefined**, **null**, **NaN**, and **Infinity** are treated as the default value.<br>Default value: **0.92**|
 
 **Return value**
 
@@ -4095,7 +4210,7 @@ Creates a data URL that contains a representation of an image. This API involves
           .height(100)
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.fillRect(0,0,100,100)
+            offContext.fillRect(0, 0, 100, 100)
             this.dataURL = offContext.toDataURL()
           })
         Text(this.dataURL)
@@ -4164,7 +4279,7 @@ Creates an **ImageBitmap** object from the most recently rendered image of the o
     }
   }
   ```
-![en-us_image_0000001238952387](figures/en-us_image_0000001238952387.png) 
+![en-us_image_0000001238952387](figures/en-us_image_0000001238952387.png)
 
 ### restore
 
@@ -4201,7 +4316,7 @@ Restores the saved drawing context.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.save() // save the default state
             offContext.fillStyle = "#00ff00"
@@ -4249,7 +4364,7 @@ Saves the current drawing context.
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.save() // save the default state
             offContext.fillStyle = "#00ff00"
@@ -4312,7 +4427,7 @@ Creates a linear gradient.
           .width('100%')
           .height('100%')
           .backgroundColor('rgb(213,213,213)')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let grad = offContext.createLinearGradient(50,0, 300,100)
             grad.addColorStop(0.0, 'rgb(39,135,217)')
@@ -4330,7 +4445,7 @@ Creates a linear gradient.
   }
   ```
 
-  ![en-us_image_0000001194032516](figures/en-us_image_0000001194032516.jpeg)
+  ![en-us_image_0000001194032516](figures/en-us_image_0000001194032516.png)
 
 
 ### createRadialGradient
@@ -4379,7 +4494,7 @@ Creates a radial gradient.
           .width('100%')
           .height('100%')
           .backgroundColor('rgb(213,213,213)')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let grad = offContext.createRadialGradient(200,200,50, 200,200,200)
             grad.addColorStop(0.0, 'rgb(39,135,217)')
@@ -4397,7 +4512,7 @@ Creates a radial gradient.
   }
   ```
 
-  ![en-us_image_0000001238952407](figures/en-us_image_0000001238952407.jpeg)
+  ![en-us_image_0000001238952407](figures/en-us_image_0000001238952407.png)
 
 ### createConicGradient<sup>10+</sup>
 
@@ -4413,9 +4528,9 @@ Creates a conic gradient.
 
 | Name| Type| Mandatory| Description|
 | ---------- | ------ | ----  | ----------------------------------- |
-| startAngle | number | Yes   | Angle at which the gradient starts. The angle measurement starts horizontally from the right side of the center and moves clockwise.<br>Values **undefined** and **null** are treated as **0**, and **NaN** and **Infinity** are treated as invalid.<br>Unit: radian|
-| x          | number | Yes   | X-coordinate of the center of the conic gradient.<br>Values **undefined** and **null** are treated as **0**, and **NaN** and **Infinity** are treated as invalid.<br>Default unit: vp|
-| y          | number | Yes   | Y-coordinate of the center of the conic gradient.<br>Values **undefined** and **null** are treated as **0**, and **NaN** and **Infinity** are treated as invalid.<br>Default unit: vp|
+| startAngle | number | Yes   | Angle at which the gradient starts. The angle measurement starts horizontally from the right side of the center and moves clockwise.<br>Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid.<br>Unit: radian|
+| x          | number | Yes   | X-coordinate of the center of the conic gradient.<br>Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid.<br>Default unit: vp|
+| y          | number | Yes   | Y-coordinate of the center of the conic gradient.<br>Invalid values **undefined** and **null** are treated as **0**. **NaN** and **Infinity** are treated as invalid.<br>Default unit: vp|
 
 **Return value**
 
@@ -4440,7 +4555,7 @@ struct OffscreenCanvasConicGradientPage {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffffff')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           let grad = offContext.createConicGradient(0, 50, 80)
           grad.addColorStop(0.0, '#ff0000')
