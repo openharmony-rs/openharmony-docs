@@ -36,19 +36,19 @@
 
 ### X509证书的基本结构
 
-![zh-cn_image_0000001743133236](figures/zh-cn_image_0000001743133236.png)
+![X509-certificate-structure](figures/X509-certificate-structure.png)
 
 样例证书文件：
 
-![zh-cn_image_0000001790212405](figures/zh-cn_image_0000001790212405.png)
+![sample-certificate-file](figures/sample-certificate-file.png)
 
 ### X509证书吊销列表（CRL）基本结构
 
-![zh-cn_image_0000001790372133](figures/zh-cn_image_0000001790372133.png)
+![certificate-revocation-list-structure](figures/certificate-revocation-list-structure.png)
 
 样例CRL文件：
 
-![zh-cn_image_0000001743292436](figures/zh-cn_image_0000001743292436.png)
+![sample-CRL-file](figures/sample-CRL-file.png)
 
 ## 约束与限制
 
