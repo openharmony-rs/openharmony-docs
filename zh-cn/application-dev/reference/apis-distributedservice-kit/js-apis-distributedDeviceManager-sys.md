@@ -32,7 +32,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -47,7 +47,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -63,7 +63,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -80,7 +80,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -121,7 +121,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -139,7 +139,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -159,7 +159,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -176,7 +176,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -201,7 +201,7 @@ replyUiAction(action: number, actionResult: string): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -257,7 +257,7 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -317,7 +317,7 @@ off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -364,7 +364,7 @@ setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: number): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -414,7 +414,7 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -472,7 +472,7 @@ putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfileInfo&gt;):
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -529,7 +529,7 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;Device
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -597,7 +597,7 @@ getLocalDisplayDeviceName(maxNameLength: number): Promise&lt;string&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -654,7 +654,7 @@ setLocalDeviceName(deviceName: string): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -714,7 +714,7 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -776,7 +776,7 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -836,7 +836,7 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -902,7 +902,7 @@ restoreLocalDeviceName(): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -947,7 +947,7 @@ restoreLocalDeivceName(): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**设备行为差异**：该接口在不支持分布式业务的Wearable设备调用会返回801错误码。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
