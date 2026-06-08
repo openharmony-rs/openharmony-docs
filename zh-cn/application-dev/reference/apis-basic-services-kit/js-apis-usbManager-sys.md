@@ -613,6 +613,7 @@ getPortList(): Array\<USBPort\>
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
 | 801      | Capability not supported.                                    |
+| 14400004 | Service exception. Possible causes: <br>1. No accessory is plugged in.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Sta。 |
 
 **示例：**
 
