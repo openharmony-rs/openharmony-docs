@@ -59,10 +59,19 @@
   ArkTS-Sta示例：
 
   <!-- @[createStyledString_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/CreateApply.ets) -->
-
+  
   ``` TypeScript
-  // ...
-  import { $r, Column, Component, Entry, MutableStyledString, Text, TextController, StyledString, NavDestination } from '@kit.ArkUI';
+  import {
+    $r,
+    Column,
+    Component,
+    Entry,
+    MutableStyledString,
+    Text,
+    TextController,
+    StyledString,
+    NavDestination
+  } from '@kit.ArkUI';
   import resourceToStringManager from '../../common/resource';
   
   @Entry
@@ -162,10 +171,23 @@
   ArkTS-Sta示例：
 
   <!-- @[styledStringTextStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringTextStyle.ets) -->
-
+  
   ``` TypeScript
-  // ...
-  import { Color, Column, Component, Entry, FontStyle, FontWeight, LengthMetrics, MutableStyledString, StyledStringKey, Text, TextController, TextStyle, SuperscriptStyle } from '@kit.ArkUI';
+  import {
+    Color,
+    Column,
+    Component,
+    Entry,
+    FontStyle,
+    FontWeight,
+    LengthMetrics,
+    MutableStyledString,
+    StyledStringKey,
+    Text,
+    TextController,
+    TextStyle,
+    SuperscriptStyle
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   
   @Entry
@@ -263,10 +285,21 @@
   ArkTS-Sta示例：
 
   <!-- @[styledStringTextShadowStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringTextShadowStyle.ets) -->
-
+  
   ``` TypeScript
-  // ...
-  import { Color, Column, Component, Entry, MutableStyledString, StyledStringKey, Text, TextController, TextShadowStyle, ShadowOptions, ShadowType } from '@kit.ArkUI';
+  import {
+    Color,
+    Column,
+    Component,
+    Entry,
+    MutableStyledString,
+    StyledStringKey,
+    Text,
+    TextController,
+    TextShadowStyle,
+    ShadowOptions,
+    ShadowType
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   
   @Entry
@@ -379,10 +412,20 @@
   ArkTS-Sta示例：
 
   <!-- @[styledStringDecorationStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringDecorationStyle.ets) -->
-
+  
   ``` TypeScript
-  // ...
-  import { Color, Column, Component, DecorationStyle, Entry, MutableStyledString, StyledStringKey, Text, TextController, TextDecorationType } from '@kit.ArkUI';
+  import {
+    Color,
+    Column,
+    Component,
+    DecorationStyle,
+    Entry,
+    MutableStyledString,
+    StyledStringKey,
+    Text,
+    TextController,
+    TextDecorationType
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   
   @Entry
@@ -480,10 +523,19 @@
   ArkTS-Sta示例：
 
   <!-- @[styledStringBaselineOffsetStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringBaselineOffsetStyle.ets) -->
-
+  
   ``` TypeScript
-  // ...
-  import { BaselineOffsetStyle, Column, Component, Entry, LengthMetrics, MutableStyledString, StyledStringKey, Text, TextController } from '@kit.ArkUI';
+  import {
+    BaselineOffsetStyle,
+    Column,
+    Component,
+    Entry,
+    LengthMetrics,
+    MutableStyledString,
+    StyledStringKey,
+    Text,
+    TextController
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   
   @Entry
@@ -561,10 +613,19 @@
   ArkTS-Sta示例：
 
   <!-- @[styledStringLineHeightStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringLineHeightStyle.ets) -->
-
+  
   ``` TypeScript
-  // ...
-  import { Column, Component, Entry, LengthMetrics, MutableStyledString, StyledStringKey, Text, TextController, LineHeightStyle } from '@kit.ArkUI';
+  import {
+    Column,
+    Component,
+    Entry,
+    LengthMetrics,
+    MutableStyledString,
+    StyledStringKey,
+    Text,
+    TextController,
+    LineHeightStyle
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   
   @Entry
@@ -642,10 +703,20 @@
   ArkTS-Sta示例：
 
   <!-- @[styledStringLetterSpacingStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringLetterSpacingStyle.ets) -->
-
+  
   ``` TypeScript
-  // ...
-  import { Column, Component, Entry, LengthMetrics, MutableStyledString, StyledStringKey, Text, TextController, LetterSpacingStyle, LengthUnit } from '@kit.ArkUI';
+  import {
+    Column,
+    Component,
+    Entry,
+    LengthMetrics,
+    MutableStyledString,
+    StyledStringKey,
+    Text,
+    TextController,
+    LetterSpacingStyle,
+    LengthUnit
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   
   @Entry
@@ -758,10 +829,23 @@
   ArkTS-Sta示例：
   
   <!-- @[styledStringParagraphStyleOne_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringParagraphStyleOne.ets) -->
-
+  
   ``` TypeScript
-  // ...
-  import { Column, Component, Entry, FontWeight, LengthMetrics, MutableStyledString, ParagraphStyle, StyledStringKey, Text, TextAlign, TextController, TextStyle, LineHeightStyle } from '@kit.ArkUI';
+  import {
+    Column,
+    Component,
+    Entry,
+    FontWeight,
+    LengthMetrics,
+    MutableStyledString,
+    ParagraphStyle,
+    StyledStringKey,
+    Text,
+    TextAlign,
+    TextController,
+    TextStyle,
+    LineHeightStyle
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   
   @Entry
@@ -919,10 +1003,27 @@
   ArkTS-Sta示例：
 
   <!-- @[styledStringReplaceParagraphStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringReplaceParagraphStyle.ets) -->
-
+  
   ``` TypeScript
-  // ...
-  import { $r, Button, Column, Component, Entry, FontWeight, LengthMetrics, MutableStyledString, ParagraphStyle, StyledStringKey, Text, TextAlign, TextController, TextOverflow, TextStyle, WordBreak, LineHeightStyle } from '@kit.ArkUI';
+  import {
+    $r,
+    Button,
+    Column,
+    Component,
+    Entry,
+    FontWeight,
+    LengthMetrics,
+    MutableStyledString,
+    ParagraphStyle,
+    StyledStringKey,
+    Text,
+    TextAlign,
+    TextController,
+    TextOverflow,
+    TextStyle,
+    WordBreak,
+    LineHeightStyle
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   
   @Entry
@@ -1228,10 +1329,31 @@
   ArkTS-Sta示例：
 
   <!-- @[styledStringConvertedToParagraph_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringConvertedToParagraph.ets) -->
-
+  
   ``` TypeScript
-  // ...
-  import { $r, Color, Column, Component, Divider, Entry, Font, LengthMetrics, MutableStyledString, ResourceStr, Scroll, StyledString, StyledStringKey, Text, TextController, TextStyle, CustomSpan, CustomSpanDrawInfo, DrawContext, CustomSpanMetrics, CustomSpanMeasureInfo } from '@kit.ArkUI';
+  import {
+    $r,
+    Color,
+    Column,
+    Component,
+    Divider,
+    Entry,
+    Font,
+    LengthMetrics,
+    MutableStyledString,
+    ResourceStr,
+    Scroll,
+    StyledString,
+    StyledStringKey,
+    Text,
+    TextController,
+    TextStyle,
+    CustomSpan,
+    CustomSpanDrawInfo,
+    DrawContext,
+    CustomSpanMetrics,
+    CustomSpanMeasureInfo
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   import { UIContext } from '@ohos.arkui.UIContext';
   import drawing from '@ohos.graphics.drawing';
@@ -1640,10 +1762,37 @@
   ArkTS-Sta示例：
 
   <!-- @[styledStringImageAttachment_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringImageAttachment.ets) -->
-
+  
   ``` TypeScript
-  // ...
-  import { $r, Button, Color, Column, ColumnOptions, Component, CopyOptions, DecorationStyle, Entry, FontWeight, ImageSpanAlignment, LengthMetrics, MutableStyledString, NavDestination, ParagraphStyle, Resource, Row, StyledStringKey, Text, TextController, TextDecorationStyle, TextDecorationType, TextStyle, ImageAttachment, ImageFit, LineHeightStyle, ImageAttachmentInterface } from '@kit.ArkUI';
+  import {
+    $r,
+    Button,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    CopyOptions,
+    DecorationStyle,
+    Entry,
+    FontWeight,
+    ImageSpanAlignment,
+    LengthMetrics,
+    MutableStyledString,
+    NavDestination,
+    ParagraphStyle,
+    Resource,
+    Row,
+    StyledStringKey,
+    Text,
+    TextController,
+    TextDecorationStyle,
+    TextDecorationType,
+    TextStyle,
+    ImageAttachment,
+    ImageFit,
+    LineHeightStyle,
+    ImageAttachmentInterface
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   import { image } from '@kit.ImageKit';
   import hilog from '@ohos.hilog';
@@ -1782,10 +1931,9 @@
       ]);
   
     build(): void {
-      ComponentCard() {
-        NavDestination() {
-          Column({ space: 12 } as ColumnOptions) {
-            // ...
+      NavDestination() {
+        Column({ space: 12 } as ColumnOptions) {
+          // ...
             Row() {
               Column({ space: 10 } as ColumnOptions) {
                 Text(undefined, { controller: this.controller })
@@ -1818,13 +1966,11 @@
             .backgroundColor('#F8F8FF')
           }
   
-            // ...
-          }
-          .backgroundColor('#f1f2f3')
-          // 请将$r('app.string.StyledStringImageAttachment_title')替换为实际资源文件，在本示例中该资源文件的value值为"通过ImageAttachment来添加图片"
-          .title($r('app.string.StyledStringImageAttachment_title'))
-        }
+          // ...
       }
+      .backgroundColor('#f1f2f3')
+      // 请将$r('app.string.StyledStringImageAttachment_title')替换为实际资源文件，在本示例中该资源文件的value值为"通过ImageAttachment来添加图片"
+      .title($r('app.string.StyledStringImageAttachment_title'))
     }
   }
   ```
@@ -1995,10 +2141,32 @@
   ArkTS-Sta示例：
   
   <!-- @[styledStringGestureStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringGestureStyle.ets) -->
-
+  
   ``` TypeScript
-  // ...
-  import { $r, Button, Color, Column, ColumnOptions, Component, CopyOptions, CustomSpan, CustomSpanDrawInfo, CustomSpanMetrics, CustomSpanMeasureInfo, Entry, Font, GestureStyle, MutableStyledString, NavDestination, ResourceColor, Row, StyledStringKey, Text, TextController, DrawContext } from '@kit.ArkUI';
+  import {
+    $r,
+    Button,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    CopyOptions,
+    CustomSpan,
+    CustomSpanDrawInfo,
+    CustomSpanMetrics,
+    CustomSpanMeasureInfo,
+    Entry,
+    Font,
+    GestureStyle,
+    MutableStyledString,
+    NavDestination,
+    ResourceColor,
+    Row,
+    StyledStringKey,
+    Text,
+    TextController,
+    DrawContext
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   import { UIContext } from '@ohos.arkui.UIContext';
   import drawing from '@ohos.graphics.drawing';
@@ -2032,8 +2200,7 @@
       const font = new drawing.Font();
       font.setSize(gUIContext.vp2px(this.fontSize));
       const textBlob =
-        drawing.TextBlob.makeFromString(this.word.substring(0, 5), font,
-          drawing.TextEncoding.TEXT_ENCODING_UTF8);
+        drawing.TextBlob.makeFromString(this.word.substring(0, 5), font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
       canvas.attachBrush(brush);
   
       this.onDrawRectByRadius(context, options.x, options.x + gUIContext.vp2px(this.width), options.lineTop,
@@ -2056,12 +2223,10 @@
       });
       canvas.attachBrush(brush);
       const textBlob1 =
-        drawing.TextBlob.makeFromString(this.word.substring(5), font,
-          drawing.TextEncoding.TEXT_ENCODING_UTF8);
+        drawing.TextBlob.makeFromString(this.word.substring(5), font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
       if (textBlob1) {
         canvas.drawTextBlob(textBlob1, options.x + gUIContext.vp2px(100), options.lineBottom - 30);
       }
-  
       canvas.detachBrush();
     }
   
@@ -2130,10 +2295,9 @@
     }
   
     build(): void {
-      ComponentCard() {
-        NavDestination() {
-          Column({ space: 12 } as ColumnOptions) {
-            // ...
+      NavDestination() {
+        Column({ space: 12 } as ColumnOptions) {
+          // ...
             Row() {
               Column() {
                 // 请将$r('app.string.StyledStringGestureStyle_button_content')替换为实际资源文件，在本示例中该资源文件的value值为"响应属性字符串事件改变背景色"
@@ -2151,13 +2315,11 @@
             .height('100%')
           }
   
-            // ...
-          }
-          .backgroundColor('#f1f2f3')
-          // 请将$r('app.string.TStyledStringGestureStyle_title')替换为实际资源文件，在本示例中该资源文件的value值为"设置事件"
-          .title($r('app.string.TStyledStringGestureStyle_title'))
-        }
+          // ...
       }
+      .backgroundColor('#f1f2f3')
+      // 请将$r('app.string.TStyledStringGestureStyle_title')替换为实际资源文件，在本示例中该资源文件的value值为"设置事件"
+      .title($r('app.string.TStyledStringGestureStyle_title'))
     }
   }
   ```
@@ -2259,10 +2421,30 @@
   ArkTS-Sta示例：
 
   <!-- @[styledStringHtml_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringHtml.ets) -->
-
+  
   ``` TypeScript
-  // ...
-  import { $r, Button, Color, Column, ColumnOptions, Component, Entry, ImageAttachment, LengthMetrics, MutableStyledString, NavDestination, Resource, Row, StyledString, StyledStringKey, Text, TextController, TextStyle, ImageAttachmentInterface, PixelMap } from '@kit.ArkUI';
+  import {
+    $r,
+    Button,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    Entry,
+    ImageAttachment,
+    LengthMetrics,
+    MutableStyledString,
+    NavDestination,
+    Resource,
+    Row,
+    StyledString,
+    StyledStringKey,
+    Text,
+    TextController,
+    TextStyle,
+    ImageAttachmentInterface,
+    PixelMap
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   import { UIContext } from '@ohos.arkui.UIContext';
   import { image } from '@kit.ImageKit';
@@ -2307,10 +2489,9 @@
     }
   
     build(): void {
-      ComponentCard() {
-        NavDestination() {
-          Column({ space: 12 } as ColumnOptions) {
-            // ...
+      NavDestination() {
+        Column({ space: 12 } as ColumnOptions) {
+          // ...
             Column() {
               Text(undefined, { controller: this.controller1 }).height(100)
               Row() {
@@ -2359,13 +2540,11 @@
             }.width('100%')
           }
   
-            // ...
-          }
-          .backgroundColor('#f1f2f3')
-          // 请将$r('app.string.StyledStringHtml_title')替换为实际资源文件，在本示例中该资源文件的value值为"格式转换"
-          .title($r('app.string.StyledStringHtml_title'))
-        }
+          // ...
       }
+      .backgroundColor('#f1f2f3')
+      // 请将$r('app.string.StyledStringHtml_title')替换为实际资源文件，在本示例中该资源文件的value值为"格式转换"
+      .title($r('app.string.StyledStringHtml_title'))
     }
   }
   ```
@@ -2450,10 +2629,11 @@
   ArkTS-Sta示例：
 
   <!-- @[styledStringHtmlOne_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringHtmlOne.ets) -->
-
+  
   ``` TypeScript
-  // ...
-  import { $r, Button, Column, Component, Entry, Text, TextController, StyledString, TextArea } from '@kit.ArkUI';
+  import {
+    $r, Button, Column, Component, Entry, Text, TextController, StyledString, TextArea
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   
   @Entry
@@ -2711,8 +2891,30 @@ ArkTS-Sta示例：
 <!-- @[styledStringSceneExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringSceneExample.ets) -->
 
 ``` TypeScript
-// ...
-import { $r, Button, Color, Column, ColumnOptions, Component, CopyOptions, DecorationStyle, Entry, FontWeight, LengthMetrics, MutableStyledString, NavDestination, ParagraphStyle, Row, StyledStringKey, Text, TextAlign, TextController, TextDecorationType, TextStyle, LineHeightStyle } from '@kit.ArkUI';
+import {
+  $r,
+  Button,
+  Color,
+  Column,
+  ColumnOptions,
+  Component,
+  CopyOptions,
+  DecorationStyle,
+  Entry,
+  FontWeight,
+  LengthMetrics,
+  MutableStyledString,
+  NavDestination,
+  ParagraphStyle,
+  Row,
+  StyledStringKey,
+  Text,
+  TextAlign,
+  TextController,
+  TextDecorationType,
+  TextStyle,
+  LineHeightStyle
+} from '@kit.ArkUI';
 import { ComponentCard } from '../../common/Card';
 import resourceToStringManager from '../../common/resource';
 
@@ -2764,85 +2966,84 @@ export struct StyledStringSceneExample {
   paragraphStyledString2: MutableStyledString =
     new MutableStyledString(this.getUIContext()
       .getHostContext()!.resourceManager.getStringSync($r('app.string.StyledStringSceneExample_Text_2').id), [
-    {
-      start: 0,
-      length: 4,
-      styledKey: StyledStringKey.PARAGRAPH_STYLE,
-      styledValue: this.alignCenterParagraphStyleAttr
-    },
-    {
-      start: 0,
-      length: 4,
-      styledKey: StyledStringKey.LINE_HEIGHT,
-      styledValue: new LineHeightStyle(LengthMetrics.vp(60))
-    },
-    {
-      start: 0,
-      length: 6,
-      styledKey: StyledStringKey.FONT,
-      styledValue: this.boldTextStyle
-    },
-    {
-      start: 1,
-      length: 1,
-      styledKey: StyledStringKey.FONT,
-      styledValue: new TextStyle({ fontSize: LengthMetrics.vp(18) })
-    },
-    {
-      start: 2,
-      length: 4,
-      styledKey: StyledStringKey.FONT,
-      styledValue: new TextStyle({ fontSize: LengthMetrics.vp(40) })
-    },
-    {
-      start: 6,
-      length: 3,
-      styledKey: StyledStringKey.FONT,
-      styledValue: new TextStyle({ fontColor: Color.Grey, fontSize: LengthMetrics.vp(14) })
-    },
-    {
-      start: 6,
-      length: 3,
-      styledKey: StyledStringKey.DECORATION,
-      styledValue: new DecorationStyle({ type: TextDecorationType.LineThrough, color: Color.Grey })
-    }
-  ]);
+      {
+        start: 0,
+        length: 4,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: this.alignCenterParagraphStyleAttr
+      },
+      {
+        start: 0,
+        length: 4,
+        styledKey: StyledStringKey.LINE_HEIGHT,
+        styledValue: new LineHeightStyle(LengthMetrics.vp(60))
+      },
+      {
+        start: 0,
+        length: 6,
+        styledKey: StyledStringKey.FONT,
+        styledValue: this.boldTextStyle
+      },
+      {
+        start: 1,
+        length: 1,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(18) })
+      },
+      {
+        start: 2,
+        length: 4,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(40) })
+      },
+      {
+        start: 6,
+        length: 3,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontColor: Color.Grey, fontSize: LengthMetrics.vp(14) })
+      },
+      {
+        start: 6,
+        length: 3,
+        styledKey: StyledStringKey.DECORATION,
+        styledValue: new DecorationStyle({ type: TextDecorationType.LineThrough, color: Color.Grey })
+      }
+    ]);
   // 请将$r('app.string.StyledStringSceneExample_Text_3')替换为实际资源文件，在本示例中该资源文件的value值为"\n02时06分后将失去该优惠"
   paragraphStyledString3: MutableStyledString =
     new MutableStyledString(this.getUIContext()
       .getHostContext()!.resourceManager.getStringSync($r('app.string.StyledStringSceneExample_Text_3').id), [
-    {
-      start: 0,
-      length: 4,
-      styledKey: StyledStringKey.PARAGRAPH_STYLE,
-      styledValue: this.alignCenterParagraphStyleAttr
-    },
-    {
-      start: 0,
-      length: 4,
-      styledKey: StyledStringKey.LINE_HEIGHT,
-      styledValue: new LineHeightStyle(LengthMetrics.vp(30))
-    },
-    {
-      start: 1,
-      length: 2,
-      styledKey: StyledStringKey.FONT,
-      styledValue: new TextStyle({ fontColor: '#FFD700', fontWeight: FontWeight.Bold })
-    },
-    {
-      start: 4,
-      length: 2,
-      styledKey: StyledStringKey.FONT,
-      styledValue: new TextStyle({ fontColor: '#FFD700', fontWeight: FontWeight.Bold })
-    }
-  ]);
+      {
+        start: 0,
+        length: 4,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: this.alignCenterParagraphStyleAttr
+      },
+      {
+        start: 0,
+        length: 4,
+        styledKey: StyledStringKey.LINE_HEIGHT,
+        styledValue: new LineHeightStyle(LengthMetrics.vp(30))
+      },
+      {
+        start: 1,
+        length: 2,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontColor: '#FFD700', fontWeight: FontWeight.Bold })
+      },
+      {
+        start: 4,
+        length: 2,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontColor: '#FFD700', fontWeight: FontWeight.Bold })
+      }
+    ]);
   controller: TextController = new TextController();
 
   build(): void {
-    ComponentCard() {
-      NavDestination() {
-        Column({ space: 12 } as ColumnOptions) {
-          // ...
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+        // ...
           Row() {
             Column({ space: 5 } as ColumnOptions) {
               Text(undefined, { controller: this.controller })
@@ -2855,7 +3056,6 @@ export struct StyledStringSceneExample {
                   this.paragraphStyledString1.appendStyledString(this.paragraphStyledString2);
                   this.controller.setStyledString(this.paragraphStyledString1);
                 })
-
               // 请将$r('app.string.StyledStringSceneExample_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"限时4.88元 立即续费"
               Button($r('app.string.StyledStringSceneExample_Button_1'))
                 .width(200)
@@ -2868,13 +3068,13 @@ export struct StyledStringSceneExample {
             .margin({ left: 10 })
           }
           .height('60%')
-          // ...
         }
-      }
-      .backgroundColor('#f1f2f3')
-      // 请将$r('app.string.StyledStringSceneExample_title')替换为实际资源文件，在本示例中该资源文件的value值为"场景示例"
-      .title($r('app.string.StyledStringSceneExample_title'))
+
+        // ...
     }
+    .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.StyledStringSceneExample_title')替换为实际资源文件，在本示例中该资源文件的value值为"场景示例"
+    .title($r('app.string.StyledStringSceneExample_title'))
   }
 }
 ```

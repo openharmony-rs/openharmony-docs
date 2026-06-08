@@ -59,8 +59,6 @@ Progress有5种可选类型，通过[ProgressType](../reference/apis-arkui/arkui
   <!-- @[progress_style_1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
-  import { Progress, ProgressType, ProgressOptions } from '@kit.ArkUI';
-  // ...
   Progress({ value: 20, total: 100, type: ProgressType.Linear } as ProgressOptions).width(200).height(50)
   Progress({ value: 20, total: 100, type: ProgressType.Linear } as ProgressOptions).width(50).height(200)
   ```
@@ -87,8 +85,6 @@ Progress有5种可选类型，通过[ProgressType](../reference/apis-arkui/arkui
   <!-- @[progress_style_2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
-  import { Progress, ProgressType, Color, ProgressOptions, ProgressStyleOptions } from '@kit.ArkUI';
-  // ...
   // 从左往右，1号环形进度条，默认前景色为蓝色渐变，默认strokeWidth进度条宽度为2.0vp
   Progress({ value: 40, total: 150, type: ProgressType.Ring } as ProgressOptions).width(100).height(100)
   // 从左往右，2号环形进度条
@@ -122,8 +118,6 @@ Progress有5种可选类型，通过[ProgressType](../reference/apis-arkui/arkui
   <!-- @[progress_style_3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
-  import { Progress, ProgressType, Color, ProgressOptions } from '@kit.ArkUI';
-  // ...
   Progress({ value: 20, total: 150, type: ProgressType.ScaleRing } as ProgressOptions).width(100).height(100)
     .backgroundColor(Color.Black)
     .style({ scaleCount: 20, scaleWidth: 5 }) // 设置环形有刻度进度条总刻度数为20，刻度宽度为5vp
@@ -155,8 +149,6 @@ Progress有5种可选类型，通过[ProgressType](../reference/apis-arkui/arkui
   <!-- @[progress_style_4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
-  import { Progress, ProgressType, Color, ProgressOptions } from '@kit.ArkUI';
-  // ...
   // 从左往右，1号圆形进度条，默认前景色为蓝色
   Progress({ value: 10, total: 150, type: ProgressType.Eclipse } as ProgressOptions).width(100).height(100)
   // 从左往右，2号圆形进度条，指定前景色为灰色
@@ -190,8 +182,6 @@ Progress有5种可选类型，通过[ProgressType](../reference/apis-arkui/arkui
     <!-- @[progress_style_5](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
-    import { Progress, ProgressType, Color, ProgressOptions } from '@kit.ArkUI';
-    // ...
     Progress({ value: 10, total: 150, type: ProgressType.Capsule } as ProgressOptions).width(100).height(50)
     Progress({ value: 20, total: 150, type: ProgressType.Capsule } as ProgressOptions)
       .width(50)
@@ -241,7 +231,17 @@ ArkTS-Sta示例：
 <!-- @[progress_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InfoComponent/ProgressProject/entry/src/main/ets/pages/ProgressCase1.ets) -->
 
 ``` TypeScript
-import { Entry, Component, Column, Progress, ProgressOptions, ProgressType, Button, Row, $r } from '@kit.ArkUI';
+import {
+  Entry,
+  Component,
+  Column,
+  Progress,
+  ProgressOptions,
+  ProgressType,
+  Button,
+  Row,
+  $r
+} from '@kit.ArkUI';
 import { State } from '@ohos.arkui.stateManagement';
 
 @Entry

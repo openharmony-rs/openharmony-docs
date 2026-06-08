@@ -303,7 +303,18 @@ ArkTS-Sta示例：
 <!-- @[textInputController_CloseKeyboard](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/manageKeyBoard/TextInputControllerCloseKeyboard.ets) -->
 
 ``` TypeScript
-import { $r, Button, Column, ColumnOptions, Component, Entry, FlexAlign, NavDestination, TextInput, TextInputController } from '@kit.ArkUI';
+import {
+  $r,
+  Button,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  FlexAlign,
+  NavDestination,
+  TextInput,
+  TextInputController
+} from '@kit.ArkUI';
 import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
@@ -376,7 +387,18 @@ ArkTS-Sta示例：
 <!-- @[requestFocus_CloseKeyBoard](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/manageKeyBoard/RequestFocusCloseKeyBoard.ets) -->
 
 ``` TypeScript
-import { $r, Button, Column, ColumnOptions, Component, Entry, FlexAlign, NavDestination, TextInput, TextInputController } from '@kit.ArkUI';
+import {
+  $r,
+  Button,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  FlexAlign,
+  NavDestination,
+  TextInput,
+  TextInputController
+} from '@kit.ArkUI';
 import { State } from '@ohos.arkui.stateManagement';
 
 @Entry

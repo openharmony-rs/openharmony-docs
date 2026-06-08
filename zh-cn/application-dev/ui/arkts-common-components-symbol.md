@@ -29,7 +29,17 @@ ArkTS-Sta示例：
 <!-- @[creat_symbol_glyph](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/CreatSymbolGlyph.ets) -->
 
 ``` TypeScript
-import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
+import {
+  $r,
+  Color,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  NavDestination,
+  SymbolGlyph,
+  SymbolRenderingStrategy
+} from '@kit.ArkUI';
 // ...
           SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
             .fontSize(96)
@@ -64,7 +74,24 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
   <!-- @[creat_symbol_span](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
   ``` TypeScript
-  import { Text, FontWeight, SymbolSpan, $r } from '@kit.ArkUI';
+  import {
+    $r,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    Entry,
+    FontWeight,
+    NavDestination,
+    Row,
+    Scroll,
+    Scroller,
+    SymbolEffectStrategy,
+    SymbolGlyph,
+    SymbolRenderingStrategy,
+    SymbolSpan,
+    Text
+  } from '@kit.ArkUI';
   // ...
               Text() {
                 SymbolSpan($r('sys.symbol.ohos_trash'))
@@ -120,7 +147,24 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
   <!-- @[symbol_span_font_size](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
   ``` TypeScript
-  import { Row, Column, Text, SymbolSpan, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
+  import {
+    $r,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    Entry,
+    FontWeight,
+    NavDestination,
+    Row,
+    Scroll,
+    Scroller,
+    SymbolEffectStrategy,
+    SymbolGlyph,
+    SymbolRenderingStrategy,
+    SymbolSpan,
+    Text
+  } from '@kit.ArkUI';
   // ...
               Row() {
                 Column() {
@@ -199,7 +243,24 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
   <!-- @[symbol_span_font_weight](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
   ``` TypeScript
-  import { Row, Column, Text, SymbolSpan, FontWeight, $r } from '@kit.ArkUI';
+  import {
+    $r,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    Entry,
+    FontWeight,
+    NavDestination,
+    Row,
+    Scroll,
+    Scroller,
+    SymbolEffectStrategy,
+    SymbolGlyph,
+    SymbolRenderingStrategy,
+    SymbolSpan,
+    Text
+  } from '@kit.ArkUI';
   // ...
               Row() {
                 Column() {
@@ -275,7 +336,24 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
   <!-- @[symbol_span_font_color](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
   ``` TypeScript
-  import { Row, Column, Text, SymbolSpan, Color, $r } from '@kit.ArkUI';
+  import {
+    $r,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    Entry,
+    FontWeight,
+    NavDestination,
+    Row,
+    Scroll,
+    Scroller,
+    SymbolEffectStrategy,
+    SymbolGlyph,
+    SymbolRenderingStrategy,
+    SymbolSpan,
+    Text
+  } from '@kit.ArkUI';
   // ...
               Row() {
                 Column() {
@@ -357,7 +435,24 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
   <!-- @[symbol_span_rendering_strategy](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
   ``` TypeScript
-  import { Row, Column, Text, SymbolSpan, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
+  import {
+    $r,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    Entry,
+    FontWeight,
+    NavDestination,
+    Row,
+    Scroll,
+    Scroller,
+    SymbolEffectStrategy,
+    SymbolGlyph,
+    SymbolRenderingStrategy,
+    SymbolSpan,
+    Text
+  } from '@kit.ArkUI';
   // ...
               Row() {
                 Column() {
@@ -440,41 +535,58 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
   ArkTS-Sta示例：
 
   <!-- @[symbol_span_effect_strategy](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
-
+  
   ``` TypeScript
-  import { Row, Column, Text, SymbolSpan, SymbolEffectStrategy, $r } from '@kit.ArkUI';
+  import {
+    $r,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    Entry,
+    FontWeight,
+    NavDestination,
+    Row,
+    Scroll,
+    Scroller,
+    SymbolEffectStrategy,
+    SymbolGlyph,
+    SymbolRenderingStrategy,
+    SymbolSpan,
+    Text
+  } from '@kit.ArkUI';
   // ...
-  Row() {
-    Column() {
-      // 请将$r('app.string.no_action')替换为实际资源文件，在本示例中该资源文件的value值为"无动效"
-      Text($r('app.string.no_action'));
-      Text() {
-        SymbolSpan($r('sys.symbol.ohos_wifi'))
-          .fontSize(96)
-          .effectStrategy(SymbolEffectStrategy.NONE)
-      }
-    }
+                Row() {
+                  Column() {
+                    // 请将$r('app.string.no_action')替换为实际资源文件，在本示例中该资源文件的value值为"无动效"
+                    Text($r('app.string.no_action'));
+                    Text() {
+                      SymbolSpan($r('sys.symbol.ohos_wifi'))
+                        .fontSize(96)
+                        .effectStrategy(SymbolEffectStrategy.NONE)
+                    }
+                  }
   
-    Column() {
-      // 请将$r('app.string.overall_scaling_animation_effect')替换为实际资源文件，在本示例中该资源文件的value值为"整体缩放动效"
-      Text($r('app.string.overall_scaling_animation_effect'));
-      Text() {
-        SymbolSpan($r('sys.symbol.ohos_wifi'))
-          .fontSize(96)
-          .effectStrategy(SymbolEffectStrategy.SCALE)
-      }
-    }
+                  Column() {
+                    // 请将$r('app.string.overall_scaling_animation_effect')替换为实际资源文件，在本示例中该资源文件的value值为"整体缩放动效"
+                    Text($r('app.string.overall_scaling_animation_effect'));
+                    Text() {
+                      SymbolSpan($r('sys.symbol.ohos_wifi'))
+                        .fontSize(96)
+                        .effectStrategy(SymbolEffectStrategy.SCALE)
+                    }
+                  }
   
-    Column() {
-      // 请将$r('app.string.hierarchical_animation')替换为实际资源文件，在本示例中该资源文件的value值为"层级动效"
-      Text($r('app.string.hierarchical_animation'));
-      Text() {
-        SymbolSpan($r('sys.symbol.ohos_wifi'))
-          .fontSize(96)
-          .effectStrategy(SymbolEffectStrategy.HIERARCHICAL)
-      }
-    }
-  }
+                  Column() {
+                    // 请将$r('app.string.hierarchical_animation')替换为实际资源文件，在本示例中该资源文件的value值为"层级动效"
+                    Text($r('app.string.hierarchical_animation'));
+                    Text() {
+                      SymbolSpan($r('sys.symbol.ohos_wifi'))
+                        .fontSize(96)
+                        .effectStrategy(SymbolEffectStrategy.HIERARCHICAL)
+                    }
+                  }
+                }
   ```
 
   ![symbolSpan_multi_effectStrategy](figures/symbolspan_multi_effectStrategy.gif)
@@ -517,26 +629,51 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
   ArkTS-Sta示例：
 
   <!-- @[symbol_variable_color](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
-
-  ``` TypeScript
-  import { Column, Text, SymbolGlyph, Button, EffectFillStyle, HierarchicalSymbolEffect, $r } from '@kit.ArkUI';
-  import { State } from '@ohos.arkui.stateManagement';
   
-  // ...
-  @State isActive: boolean = true;
-  // ...
-  Column() {
-    // 请将$r('app.string.variable_color_animation')替换为实际资源文件，在本示例中该资源文件的value值为"可变颜色动效"
-    Text($r('app.string.variable_color_animation'));
-    SymbolGlyph($r('sys.symbol.ohos_wifi'))
-      .fontSize(96)
-      .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
-    // 请将$r('app.string.off')替换为实际资源文件，在本示例中该资源文件的value值为"关闭"
-    // 请将$r('app.string.on')替换为实际资源文件，在本示例中该资源文件的value值为"播放"
-    Button(this.isActive ? $r('app.string.off') : $r('app.string.on')).onClick(() => {
-      this.isActive = !this.isActive;
-    })
-  }
+  ``` TypeScript
+  import {
+    $r,
+    BounceSymbolEffect,
+    Button,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    EffectDirection,
+    EffectFillStyle,
+    EffectScope,
+    Entry,
+    HierarchicalSymbolEffect,
+    NavDestination,
+    ReplaceEffectType,
+    ReplaceSymbolEffect,
+    SymbolRenderingStrategy,
+    Scroll,
+    Scroller,
+    SymbolGlyph,
+    Text
+  } from '@kit.ArkUI';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { ComponentCard } from '../../common/Card';
+  
+  @Entry
+  @Component
+  export struct SymbolGlyphSpanCustomIconAnimation {
+    scroller: Scroller = new Scroller();
+    @State isActive: boolean = true;
+    // ...
+              Column() {
+                // 请将$r('app.string.variable_color_animation')替换为实际资源文件，在本示例中该资源文件的value值为"可变颜色动效"
+                Text($r('app.string.variable_color_animation'));
+                SymbolGlyph($r('sys.symbol.ohos_wifi'))
+                  .fontSize(96)
+                  .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive)
+                // 请将$r('app.string.off')替换为实际资源文件，在本示例中该资源文件的value值为"关闭"
+                // 请将$r('app.string.on')替换为实际资源文件，在本示例中该资源文件的value值为"播放"
+                Button(this.isActive ? $r('app.string.off') : $r('app.string.on')).onClick(() => {
+                  this.isActive = !this.isActive;
+                })
+              }
   ```
 
   ![symbolGlyph_symbolEffect_isActive](figures/symbolGlyph_symbolEffect_isActive.gif)
@@ -573,7 +710,28 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
   <!-- @[symbol_bouncing_effect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
   ``` TypeScript
-  import { Column, Text, SymbolGlyph, Button, EffectScope, BounceSymbolEffect, EffectDirection, Color, $r } from '@kit.ArkUI';
+  import {
+    $r,
+    BounceSymbolEffect,
+    Button,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    EffectDirection,
+    EffectFillStyle,
+    EffectScope,
+    Entry,
+    HierarchicalSymbolEffect,
+    NavDestination,
+    ReplaceEffectType,
+    ReplaceSymbolEffect,
+    SymbolRenderingStrategy,
+    Scroll,
+    Scroller,
+    SymbolGlyph,
+    Text
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   import { ComponentCard } from '../../common/Card';
   
@@ -635,7 +793,28 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
   <!-- @[symbol_disable_effect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
   ``` TypeScript
-  import { Column, Text, SymbolGlyph, Button, EffectScope, ReplaceEffectType, ReplaceSymbolEffect, SymbolRenderingStrategy, $r } from '@kit.ArkUI';
+  import {
+    $r,
+    BounceSymbolEffect,
+    Button,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    EffectDirection,
+    EffectFillStyle,
+    EffectScope,
+    Entry,
+    HierarchicalSymbolEffect,
+    NavDestination,
+    ReplaceEffectType,
+    ReplaceSymbolEffect,
+    SymbolRenderingStrategy,
+    Scroll,
+    Scroller,
+    SymbolGlyph,
+    Text
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   import { ComponentCard } from '../../common/Card';
   
@@ -698,7 +877,28 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
   <!-- @[symbol_quick_replacement](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
   ``` TypeScript
-  import { Column, Text, SymbolGlyph, Button, EffectScope, ReplaceEffectType, ReplaceSymbolEffect, $r } from '@kit.ArkUI';
+  import {
+    $r,
+    BounceSymbolEffect,
+    Button,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    EffectDirection,
+    EffectFillStyle,
+    EffectScope,
+    Entry,
+    HierarchicalSymbolEffect,
+    NavDestination,
+    ReplaceEffectType,
+    ReplaceSymbolEffect,
+    SymbolRenderingStrategy,
+    Scroll,
+    Scroller,
+    SymbolGlyph,
+    Text
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   import { ComponentCard } from '../../common/Card';
   
@@ -769,7 +969,26 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
   <!-- @[shadow_color_1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
   
   ``` TypeScript
-  import { Column, Text, SymbolGlyph, Color, ShadowOptions, Button, EffectFillStyle, HierarchicalSymbolEffect, $r } from '@kit.ArkUI';
+  import {
+    $r,
+    Button,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    EffectFillStyle,
+    Entry,
+    HierarchicalSymbolEffect,
+    NavDestination,
+    RadialGradientOptions,
+    RadialGradientStyle,
+    Scroll,
+    Scroller,
+    ShadowOptions,
+    SymbolGlyph,
+    Text,
+    TextAlign
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   import { ComponentCard } from '../../common/Card';
   
@@ -837,7 +1056,26 @@ import { SymbolGlyph, SymbolRenderingStrategy, Color, $r } from '@kit.ArkUI';
   <!-- @[shadow_color_2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
   
   ``` TypeScript
-  import { Column, Text, RadialGradientOptions, RadialGradientStyle, SymbolGlyph, TextAlign, Color, $r } from '@kit.ArkUI';
+  import {
+    $r,
+    Button,
+    Color,
+    Column,
+    ColumnOptions,
+    Component,
+    EffectFillStyle,
+    Entry,
+    HierarchicalSymbolEffect,
+    NavDestination,
+    RadialGradientOptions,
+    RadialGradientStyle,
+    Scroll,
+    Scroller,
+    ShadowOptions,
+    SymbolGlyph,
+    Text,
+    TextAlign
+  } from '@kit.ArkUI';
   import { State } from '@ohos.arkui.stateManagement';
   import { ComponentCard } from '../../common/Card';
   
@@ -905,7 +1143,17 @@ ArkTS-Sta示例：
 <!-- @[symbol_glyph_span_add_event_up](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddEvent.ets) -->
 
 ``` TypeScript
-import { SymbolGlyph, ResourceColor, Color, $r } from '@kit.ArkUI';
+import {
+  $r,
+  Color,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  NavDestination,
+  ResourceColor,
+  SymbolGlyph
+} from '@kit.ArkUI';
 import { State } from '@ohos.arkui.stateManagement';
 import { ComponentCard } from '../../common/Card';
 
@@ -1159,7 +1407,29 @@ ArkTS-Sta示例：
 <!-- @[symbol_glyph_span_scene_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/symbol/SymbolSceneExample.ets) -->
 
 ``` TypeScript
-import { Entry, Column, Row, Component, ColumnOptions, RowOptions, Divider, Text, Span, FontWeight, SymbolGlyph, ReplaceSymbolEffect, EffectScope, SymbolSpan, HorizontalAlign, Resource, ResourceColor, Color, $r } from '@kit.ArkUI';
+import {
+  $r,
+  Builder,
+  Color,
+  Column,
+  ColumnOptions,
+  Component,
+  Divider,
+  EffectScope,
+  Entry,
+  FontWeight,
+  HorizontalAlign,
+  NavDestination,
+  ReplaceSymbolEffect,
+  Resource,
+  ResourceColor,
+  Row,
+  RowOptions,
+  Span,
+  SymbolGlyph,
+  SymbolSpan,
+  Text
+} from '@kit.ArkUI';
 import { State } from '@ohos.arkui.stateManagement';
 // ...
 

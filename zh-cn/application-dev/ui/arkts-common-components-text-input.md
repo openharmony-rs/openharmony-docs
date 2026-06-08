@@ -63,10 +63,8 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   ArkTS-Sta示例：
 
   <!-- @[create_text_input](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
-
+  
   ``` TypeScript
-  import { TextInput } from '@kit.ArkUI';
-  // ...
   TextInput()
   ```
 
@@ -86,10 +84,8 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   ArkTS-Sta示例：
 
   <!-- @[create_text_area](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
-
+  
   ``` TypeScript
-  import { TextArea } from '@kit.ArkUI';
-  // ...
   TextArea()
   ```
 
@@ -112,10 +108,8 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   ArkTS-Sta示例：
 
   <!-- @[create_text_area_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
-
+  
   ``` TypeScript
-  import { TextArea, $r } from '@kit.ArkUI';
-  // ...
   /* 请将$r('app.string.CreatTextInput_textContent')替换为实际资源文件，在本示例中该资源文件的value值为
    * "我是TextArea我是TextArea我是TextArea我是TextArea"
    */
@@ -140,10 +134,8 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   ArkTS-Sta示例：
 
   <!-- @[create_text_search](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
-
+  
   ``` TypeScript
-  import { Search, $r } from '@kit.ArkUI';
-  // ...
   Search()
   // 请将$r('app.string.Creat_TextInput_Content')替换为实际资源文件，在本示例中该资源文件的value值为"搜索"
     .searchButton(this.getUIContext()
@@ -174,8 +166,6 @@ ArkTS-Sta示例：
 <!-- @[set_password_input_type_1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
 ``` TypeScript
-import { TextInput, InputType } from '@kit.ArkUI';
-// ...
 TextInput()
   .type(InputType.Normal)
 ```
@@ -202,8 +192,6 @@ ArkTS-Sta示例：
 <!-- @[set_password_input_type_2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
 ``` TypeScript
-import { TextInput, InputType } from '@kit.ArkUI';
-// ...
 TextInput()
   .type(InputType.Password)
 ```
@@ -228,8 +216,6 @@ ArkTS-Sta示例：
 <!-- @[set_email_input_type_3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
 ``` TypeScript
-import { TextInput, InputType } from '@kit.ArkUI';
-// ...
 TextInput()
   .type(InputType.Email)
 ```
@@ -253,8 +239,6 @@ ArkTS-Sta示例：
 <!-- @[set_number_input_type_4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
 ``` TypeScript
-import { TextInput, InputType } from '@kit.ArkUI';
-// ...
 TextInput()
   .type(InputType.NUMBER)
 ```
@@ -279,8 +263,6 @@ ArkTS-Sta示例：
 <!-- @[set_phonenumber_input_type_5](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
 ``` TypeScript
-import { TextInput, InputType } from '@kit.ArkUI';
-// ...
 TextInput()
   .type(InputType.PhoneNumber)
 ```
@@ -305,8 +287,6 @@ ArkTS-Sta示例：
 <!-- @[set_number_decimal_input_type_6](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
 ``` TypeScript
-import { TextInput, InputType } from '@kit.ArkUI';
-// ...
 TextInput()
   .type(InputType.NUMBER_DECIMAL)
 ```
@@ -331,8 +311,6 @@ ArkTS-Sta示例：
 <!-- @[set_url_input_type_7](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
 ``` TypeScript
-import { TextInput, InputType } from '@kit.ArkUI';
-// ...
 TextInput()
   .type(InputType.URL)
 ```
@@ -363,8 +341,6 @@ ArkTS-Sta示例：
 <!-- @[textArea_style_default](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
 
 ``` TypeScript
-import { TextArea, TextContentStyle } from '@kit.ArkUI';
-// ...
 TextArea()
   .style(TextContentStyle.DEFAULT)
 ```
@@ -389,8 +365,6 @@ ArkTS-Sta示例：
 <!-- @[textArea_style_inline](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
 
 ``` TypeScript
-import { TextArea, TextContentStyle } from '@kit.ArkUI';
-// ...
 TextArea()
   .style(TextContentStyle.INLINE)
 ```
@@ -413,10 +387,8 @@ TextArea()
   ArkTS-Sta示例：
 
   <!-- @[custom_text_input_with_place_holder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
-
+  
   ``` TypeScript
-  import { TextInput, $r } from '@kit.ArkUI';
-  // ...
   // 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
   TextInput({ placeholder: $r('app.string.i_am_placeholder') })
   ```
@@ -441,10 +413,8 @@ TextArea()
   ArkTS-Sta示例：
 
   <!-- @[custom_text_input_with_place_holder_and_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
-
+  
   ``` TypeScript
-  import { TextInput, $r } from '@kit.ArkUI';
-  // ...
   TextInput({
     // 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
     placeholder: $r('app.string.i_am_placeholder'),
@@ -474,10 +444,8 @@ TextArea()
   ArkTS-Sta示例：
 
   <!-- @[custom_text_input_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
-
+  
   ``` TypeScript
-  import { TextInput, Color, $r } from '@kit.ArkUI';
-  // ...
   TextInput({
     // 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
     placeholder: $r('app.string.i_am_placeholder'),
@@ -601,7 +569,23 @@ ArkTS-Sta示例：
 <!-- @[TextInputAddEvent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/TextInputAddEvent.ets) -->
 
 ``` TypeScript
-import { Entry, Component, Column, Row, Text, TextInput, InputType, TextInputController, EnterKeyType, SubmitEvent, InsertValue, DeleteValue } from '@kit.ArkUI';
+import {
+  $r,
+  Builder,
+  Column,
+  Component,
+  EnterKeyType,
+  Entry,
+  InputType,
+  NavDestination,
+  Row,
+  Text,
+  TextInput,
+  TextInputController,
+  DeleteValue,
+  InsertValue,
+  SubmitEvent
+} from '@kit.ArkUI';
 import { State } from '@ohos.arkui.stateManagement';
 import hilog from '@ohos.hilog';
 
@@ -712,8 +696,6 @@ ArkTS-Sta示例：
 <!-- @[select_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
 ``` TypeScript
-import { TextInput, $r } from '@kit.ArkUI';
-// ...
 // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
 TextInput({ text: $r('app.string.show_selected_menu') })
 ```
@@ -736,8 +718,6 @@ ArkTS-Sta示例：
 <!-- @[select_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
 ``` TypeScript
-import { TextArea, $r } from '@kit.ArkUI';
-// ...
 // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
 TextArea({ text: $r('app.string.show_selected_menu') })
 ```
@@ -867,8 +847,6 @@ ArkTS-Sta示例：
 <!-- @[auto_fill](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
 
 ``` TypeScript
-import { TextInput, ContentType, $r } from '@kit.ArkUI';
-// ...
 // 请将$r('app.string.Auto_Fill_PlaceHolder')替换为实际资源文件，在本示例中该资源文件的value值为"输入你的邮箱..."
 TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
   .width('95%')
@@ -902,10 +880,8 @@ TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
   ArkTS-Sta示例：
 
   <!-- @[set_omission_property](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets) -->
-
+  
   ``` TypeScript
-  import { TextInput, TextOverflow, EllipsisMode, TextInputStyle, $r } from '@kit.ArkUI';
-  // ...
   // 请将$r('app.string.Set_Omission_Property_textContent')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示省略模式"
   TextInput({ text: $r('app.string.Set_Omission_Property_textContent') })
     .textOverflow(TextOverflow.Ellipsis)
@@ -938,10 +914,8 @@ TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
   ArkTS-Sta示例：
 
   <!-- @[set_stroke_property](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets) -->
-
+  
   ``` TypeScript
-  import { TextInput, LengthMetrics, Color } from '@kit.ArkUI';
-  // ...
   TextInput({ text: 'Text with stroke' })
     .width('100%')
     .height(60)
@@ -974,8 +948,6 @@ ArkTS-Sta示例：
 <!-- @[SetTextMargin](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetTextMargin.ets) -->
 
 ``` TypeScript
-import { TextArea, LengthMetrics } from '@kit.ArkUI';
-// ...
 TextArea({
   text: 'The line spacing of this TextArea is set to 20_px, and the spacing is effective only between the lines.'
 })
@@ -1020,7 +992,19 @@ ArkTS-Sta示例：
 <!-- @[keyboard_avoid](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/KeyboardAvoidance.ets) -->
 
 ``` TypeScript
-import { Entry, Component, Column, Scroll, ForEach, TextInput } from '@kit.ArkUI';
+import {
+  $r,
+  Builder,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  ForEach,
+  NavDestination,
+  Scroll,
+  TextInput
+} from '@kit.ArkUI';
+// ...
 
 @Entry
 @Component
@@ -1210,7 +1194,20 @@ ArkTS-Sta示例：
 <!-- @[normal_question_text_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets) -->
 
 ``` TypeScript
-import { Entry, Component, Blank, Button, Column, ConstraintSizeOptions, FlexAlign, SizeOptions, TextArea, $r } from '@kit.ArkUI';
+import {
+  $r,
+  Blank,
+  Builder,
+  Button,
+  Column,
+  Component,
+  Entry,
+  FlexAlign,
+  NavDestination,
+  SizeOptions,
+  TextArea,
+  ConstraintSizeOptions
+} from '@kit.ArkUI';
 import { State } from '@ohos.arkui.stateManagement';
 
 @Entry
