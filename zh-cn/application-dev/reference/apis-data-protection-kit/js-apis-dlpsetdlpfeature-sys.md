@@ -16,7 +16,8 @@
 
 > **说明：**
 >
-> 本模块接口为系统接口。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口为系统接口。
 
 ## 关键Class/Interface介绍
 
@@ -56,13 +57,13 @@ setDlpFeature(status: DlpFeatureStatus): Promise&lt;StatusInfoResult&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| status | [DlpFeatureStatus](#dlpfeaturestatus) | 是 | DLP特性开关状态。ENABLED_FEATURE用于开启DLP特性；NOT_ENABLED_FEATURE用于关闭DLP特性，菜单中不显示"加密保护"选项。超出此范围抛出错误码19100001。 |
+| status | [DlpFeatureStatus](#dlpfeaturestatus) | 是 | DLP特性开关状态。ENABLED_FEATURE用于开启DLP特性，菜单中显示"加密保护"选项；NOT_ENABLED_FEATURE用于关闭DLP特性，菜单中不显示"加密保护"选项。超出此范围抛出错误码19100001。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[StatusInfoResult](#statusinforesult)&gt; | Promise对象，返回DLP特性开关状态设置的结果信息。成功时返回StatusInfoResult对象，失败时抛出BusinessError错误。 |
+| Promise&lt;[StatusInfoResult](#statusinforesult)&gt; | Promise对象，返回DLP特性开关状态设置的结果信息。成功时返回[StatusInfoResult](#statusinforesult)对象，失败时抛出19100001错误码。 |
 
 **错误码：**
 
@@ -83,7 +84,7 @@ async function exampleFunction() {
   let statusInfoResult: dlpSetDlpFeature.StatusInfoResult =
     await dlpSetDlpFeature.setDlpFeature(dlpSetDlpFeature.DlpFeatureStatus.ENABLED_FEATURE); // 记录执行结果
   console.info('setDlpFeature result: ', JSON.stringify(statusInfoResult));
-}
+} // 设置DLP特性开关状态。
 
 exampleFunction();
 ```
