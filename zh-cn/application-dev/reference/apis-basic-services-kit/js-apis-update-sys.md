@@ -12,13 +12,13 @@
 
 各升级类型的设计逻辑和适用场景如下：
 
-- **SD卡升级**：
+- **SD卡升级**：详见[术语](../../basic-services/update/update-kit-term.md)。
 
 适用于需要从本地存储设备进行系统升级的场景。
 
 升级流程为：开发者准备SD卡和升级包 → 系统校验升级包 → 系统安装升级包 → 设备重启系统以应用新版本。
 
-- **在线升级**：
+- **在线升级**：详见[术语](../../basic-services/update/update-kit-term.md)。
 
 适用于需要通过网络自动检查和升级系统的场景。
 
@@ -28,9 +28,11 @@
 
 **恢复出厂设置：**
 
-适用于需要清除用户数据、恢复设备出厂状态的场景。通过清除用户数据和系统设置，帮助用户快速解决系统异常、释放存储空间、保护隐私数据等问题。通过Restorer接口实现恢复出厂设置功能。
+适用于需要清除用户数据、恢复设备出厂状态的场景。通过清除用户数据和系统设置，帮助用户快速解决系统异常、释放存储空间、保护隐私数据等问题。
 
-恢复出厂流程
+通过Restorer接口实现恢复出厂设置功能。
+
+**恢复出厂流程：**
 
 设备恢复出厂设置需遵循以下标准流程：
 
@@ -66,7 +68,11 @@ import { update } from '@kit.BasicServicesKit';
 
 getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 
-获取在线升级对象，可用于在线检查新版本、下载升级包、安装升级包等操作。适用于设备厂商的OTA（Over-The-Air，空中下载）升级客户端应用、在线系统升级等场景。解决无法自动检查新版本、手动升级繁琐等问题，帮助用户及时获取系统更新，提升升级效率和用户体验。
+获取在线升级对象，可用于在线检查新版本、下载升级包、安装升级包等操作。
+
+适用于设备厂商的OTA（详见[术语](../../basic-services/update/update-kit-term.md)）升级客户端应用、在线系统升级等场景。
+
+解决无法自动检查新版本、手动升级繁琐等问题，帮助用户及时获取系统更新，提升升级效率和用户体验。
 
 **原理说明**：
 
@@ -278,11 +284,11 @@ try {
   // 创建在线升级对象
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
   // 检查新版本，通过回调函数获取检查结果
-  onlineUpdater.checkNewVersion((checkError: BusinessError,      
+  onlineUpdater.checkNewVersion((checkError: BusinessError,
     checkResult: update.CheckResult) => {
       if (checkError) {
         console.error(`checkNewVersion error: ${JSON.stringify(checkError)}`);
-        return; 
+        return;
       }
       console.info(`checkNewVersion isExistNewVersion  ${checkResult?.isExistNewVersion}`);
     });
@@ -370,7 +376,7 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 
 - checkNewVersion()：检查是否有新版本（前置方法）。
 - getNewVersionDescription()：获取新版本描述信息 。
-- download()：下载升级包（后续方法）。  
+- download()：下载升级包（后续方法）。
 
 **系统接口**： 此接口为系统接口。
 
@@ -944,7 +950,7 @@ try {
   };
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
 
-  // 获取升级任务信息，通过回调函数接收任务状态 
+  // 获取升级任务信息，通过回调函数接收任务状态
   onlineUpdater.getTaskInfo((taskInfoError: BusinessError, taskInfo: update.TaskInfo) => {
     if (taskInfoError) {
       console.error(`getTaskInfo error: ${JSON.stringify(taskInfoError)}`);
@@ -1395,7 +1401,7 @@ try {
     }
   };
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // 暂停下载升级包，通过回调函数处理暂停结果 
+  // 暂停下载升级包，通过回调函数处理暂停结果
   onlineUpdater.pauseDownload(versionDigestInfo, pauseDownloadOptions,
     (pauseDownloadError: BusinessError) => {
     console.info(`pauseDownload error ${JSON.stringify(pauseDownloadError)}`);
@@ -1810,7 +1816,7 @@ try {
     }
   };
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // 清除异常状态 
+  // 清除异常状态
   onlineUpdater.clearError(versionDigestInfo, clearOptions).then(() => {
     console.info(`clearFailError success`);
   }).catch((clearFailError: BusinessError) => {
@@ -1976,7 +1982,7 @@ setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const upgradePolicy: update.UpgradePolicy = {
-  downloadStrategy: false, // 禁止自动下载 
+  downloadStrategy: false, // 禁止自动下载
   autoUpgradeStrategy: false, // 禁止自动升级
   autoUpgradePeriods: [{ start: 120, end: 240 }] // 自动升级时间段，用分钟表示
 };
@@ -1990,7 +1996,7 @@ try {
     }
   };
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // 设置升级策略，通过回调函数处理设置结果 
+  // 设置升级策略，通过回调函数处理设置结果
   onlineUpdater.setUpgradePolicy(upgradePolicy, (upgradePolicyError: BusinessError) => {
     console.info(`setUpgradePolicy result: ${upgradePolicyError}`);
   });
@@ -2041,7 +2047,7 @@ setUpgradePolicy(policy: UpgradePolicy): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const upgradePolicy: update.UpgradePolicy = {
-  downloadStrategy: false, // 禁止自动下载 
+  downloadStrategy: false, // 禁止自动下载
   autoUpgradeStrategy: false, // 禁止自动升级
   autoUpgradePeriods: [{ start: 120, end: 240 }] // 自动升级时间段，用分钟表示
 };
@@ -2055,7 +2061,7 @@ try {
     }
   };
   let onlineUpdater = update.getOnlineUpdater(upgradeInfo);
-  // 设置升级策略 
+  // 设置升级策略
   onlineUpdater.setUpgradePolicy(upgradePolicy).then(() => {
     console.info(`setUpgradePolicy success`);
   }).catch((upgradePolicyError: BusinessError) => {
@@ -2350,7 +2356,7 @@ try {
 
 factoryReset(callback: AsyncCallback\<void>): void
 
-清除用户数据分区，删除用户安装的应用、用户文件和个人设置，恢复设备出厂状态。使用callback异步回调。
+恢复出厂设置。详见[术语](../../basic-services/update/update-kit-term.md)。使用callback异步回调。
 
 使用场景：适用于系统恢复出厂、用户选择恢复出厂设置等场景。
 
@@ -2405,7 +2411,7 @@ try {
 
 factoryReset(): Promise\<void>
 
-清除用户数据分区，删除用户安装的应用、用户文件和个人设置，恢复设备出厂状态。使用Promise异步回调。
+恢复出厂设置。详见[术语](../../basic-services/update/update-kit-term.md)。使用Promise异步回调。
 
 使用场景：适用于系统恢复出厂、用户选择恢复出厂设置等场景。
 
@@ -2459,13 +2465,19 @@ try {
 
 forceFactoryReset(): Promise\<void>
 
-清除用户数据分区，同步清除文件密钥（用于加密用户数据的密钥），删除用户安装的应用、用户文件，恢复设备出厂状态。调用成功后，系统立即执行强制恢复出厂流程：清除用户数据分区 → 同步清除文件加密密钥 → 清除系统缓存和临时文件 → 设备自动重启恢复到出厂初始状态。使用Promise异步回调。
+强制恢复出厂设置，详见[术语](../../basic-services/update/update-kit-term.md)。
+
+调用成功后，系统立即执行强制恢复出厂流程：清除用户数据分区 → 同步清除文件加密密钥 → 清除系统缓存和临时文件
+
+→ 设备自动重启恢复到出厂初始状态。使用Promise异步回调。
 
 使用场景：用于需要彻底清除敏感数据、设备交接前清除数据等安全场景。
 
 **原理说明**：
 
-该方法与factoryReset的区别在于同步清除文件密钥。文件密钥用于加密用户数据，即使数据被删除，密钥仍可能残留。forceFactoryReset通过同步清除密钥，确保加密数据无法被恢复，实现更彻底的数据清除，适用于安全销毁场景。
+该方法与factoryReset的区别在于同步清除文件密钥。文件密钥用于加密用户数据，即使数据被删除，密钥仍可能残留。
+
+forceFactoryReset通过同步清除密钥，确保加密数据无法被恢复，实现更彻底的数据清除，适用于安全销毁场景。
 
 **约束和限制**：
 
@@ -2520,13 +2532,23 @@ try {
 
 deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
-通过覆盖等方式，深度清除用户数据分区、操作系统分区，彻底销毁数据，恢复设备出厂状态。调用成功后，系统执行深度恢复出厂流程：根据策略确定清除范围 → 对数据分区执行多次覆盖写入 → 销毁操作系统分区关键数据 → 验证数据销毁完整性 → 设备自动重启恢复到出厂初始状态。深度清除通过物理覆盖方式确保数据无法被任何工具恢复。使用Promise异步回调。
+深度恢复出厂设置，详见[术语](../../basic-services/update/update-kit-term.md)。
+
+调用成功后，系统执行深度恢复出厂流程：根据策略确定清除范围 → 对数据分区执行多次覆盖写入 → 销毁操作系统分区关键数据
+
+→ 验证数据销毁完整性 → 设备自动重启恢复到出厂初始状态。
+
+深度清除通过物理覆盖方式确保数据无法被任何工具恢复。使用Promise异步回调。
 
 使用场景：适用于设备丢失，需要彻底销毁数据的场景。
 
 **原理说明**：
 
-该方法提供最高安全级别的数据清除。与factoryReset（仅清除数据分区）和forceFactoryReset（清除数据分区和密钥）不同，deepFactoryReset通过多次覆盖写入（如多次写入随机数据）物理销毁数据，防止数据恢复工具提取残留数据。清除范围可配置：DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区。
+该方法提供最高安全级别的数据清除。与factoryReset（仅清除数据分区）和forceFactoryReset（清除数据分区和密钥）不同，
+
+deepFactoryReset通过多次覆盖写入（如多次写入随机数据）物理销毁数据，防止数据恢复工具提取残留数据。
+
+清除范围可配置：DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区。
 
 **约束和限制**：
 
@@ -2652,7 +2674,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 创建恢复出厂设置策略对象
   let factoryResetStrategy: update.FactoryResetStrategy = {
-    scope: update.FactoryResetScope.DATA, // 重置范围为用户数据 
+    scope: update.FactoryResetScope.DATA, // 重置范围为用户数据
     strategy: "getDeepFactoryResetInfo test" // 重置范围描述
   };
 try {
@@ -2674,10 +2696,10 @@ try {
 
 **本地升级流程**：
 
-1. 开发者调用getLocalUpdater方法获取LocalUpdater对象。 
-2. 用户准备本地升级包文件和对应的证书文件，确保文件已放置在可访问的存储路径。 
-3. 开发者调用verifyUpgradePackage方法校验升级包的数字签名、文件完整性和版本兼容性。 
-4. 校验通过后，开发者调用applyNewVersion安装升级包，设备将重启以应用新版本。 
+1. 开发者调用getLocalUpdater方法获取LocalUpdater对象。
+2. 用户准备本地升级包文件和对应的证书文件，确保文件已放置在可访问的存储路径。
+3. 开发者调用verifyUpgradePackage方法校验升级包的数字签名、文件完整性和版本兼容性。
+4. 校验通过后，开发者调用applyNewVersion安装升级包，设备将重启以应用新版本。
 5. 开发者调用on方法注册事件监听，实时监控安装进度和状态变化。
 
 **实现机制**：
@@ -2737,7 +2759,7 @@ const upgradeFile: update.UpgradeFile = {
   filePath: "/data/local/tmp/updater.zip" // 本地升级包路径，用户需从设备厂商官网或官方渠道下载升级包文件，放置到设备可访问的存储路径，（如/data/local/tmp/updater.zip）
 };
 
-// certsFile为证书文件路径，需从设备厂商官网下载并放置到设备可访问路径 
+// certsFile为证书文件路径，需从设备厂商官网下载并放置到设备可访问路径
 const certsFile = "/path/to/certificate.cert"; // 证书文件路径，从厂商官网下载
 
 try {
@@ -2809,7 +2831,7 @@ const upgradeFile: update.UpgradeFile = {
   filePath: "/data/local/tmp/updater.zip" // 本地升级包路径，用户需从设备厂商官网或官方渠道下载升级包文件，放置到设备可访问的存储路径，（如/data/local/tmp/updater.zip）
 };
 
-// certsFile为证书文件路径，需从设备厂商官网下载并放置到设备可访问路径 
+// certsFile为证书文件路径，需从设备厂商官网下载并放置到设备可访问路径
 const certsFile = "/path/to/certificate.cert"; // 证书文件路径，从厂商官网下载
 
 try {
@@ -3474,7 +3496,7 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 | 名称      | 值  | 说明   |
 | -------- | ---- | ---- |
-| FIRMWARE | 1    | 固件。表示升级类型为固件升级，用于升级系统固件而非应用。 |
+| FIRMWARE | 1    | 固件。详见[术语](../../basic-services/update/update-kit-term.md)。|
 
 ## ComponentType
 
@@ -3498,8 +3520,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 | 名称      | 值        | 说明   |
 | -------- | ---------- | ---- |
-| UPGRADE  | "upgrade"  | 差分包，仅包含与当前版本的差异部分，适用于已安装基础版本的增量升级场景。 |
-| RECOVERY | "recovery" | 修复包，用于修复系统异常或恢复系统功能的特殊升级包，适用于系统故障修复场景。 |
+| UPGRADE  | "upgrade"  | 差分包。详见[术语](../../basic-services/update/update-kit-term.md)。|
+| RECOVERY | "recovery" | 修复包。详见[术语](../../basic-services/update/update-kit-term.md)。|
 
 ## EffectiveMode
 
@@ -3511,9 +3533,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
-| COLD          | 1    | 冷升级，需重启设备生效，适用于需要完整系统重置或固件升级的场景。  |
-| LIVE          | 2    | 热升级，无需重启即可生效，适用于应用层组件升级或需要保持设备运行的场景。 |
-| LIVE_AND_COLD | 3    | 融合升级，结合两者特性，适用于同时包含热升级和冷升级组件的场景。 |
+| COLD          | 1    | 冷升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
+| LIVE          | 2    | 热升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
+| LIVE_AND_COLD | 3    | 融合升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
 
 ## OtaMode
 
@@ -3526,9 +3548,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
 | REGULAR_OTA   | 0    | 正常升级，先下载完整升级包到本地，再执行安装升级，适用于大多数常规升级场景。 |
-| STREAM_OTA    | 1    | 流式升级，边下载边升级，无需等待完整下载，适用于存储空间受限或需要快速升级的场景。 |
-| AB_REGULAR_OTA | 2    | AB正常升级，适用于A/B分区设备。 |
-| AB_STREAM_OTA  | 3    | AB流式升级，适用于A/B分区设备。 |
+| STREAM_OTA    | 1    | 流式升级。详见[术语](../../basic-services/update/update-kit-term.md)。 |
+| AB_REGULAR_OTA | 2    | AB正常升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
+| AB_STREAM_OTA  | 3    | AB流式升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
 
 ## DescriptionType
 
