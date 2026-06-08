@@ -9,7 +9,7 @@
 
 从API版本26.0.0开始，在外部密钥管理扩展场景下，公钥导出能力支持从扩展设备导出指定密钥的公钥。导出的公钥可用于证书申请、密钥协商等场景。
 
-具体的场景介绍请参考[密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)。
+具体的场景介绍请参考[密钥生成与导入导出介绍](huks-extension-key-generation-import-overview.md)。
 
 ## 开发步骤
 
