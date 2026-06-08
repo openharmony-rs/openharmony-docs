@@ -389,7 +389,7 @@
 
    ArkTS-Dyn示例：
    <!-- @[interruptTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
    try {
@@ -404,7 +404,6 @@
      this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
      return;
    }
-
    ```
 
    ArkTS-Sta示例：   
