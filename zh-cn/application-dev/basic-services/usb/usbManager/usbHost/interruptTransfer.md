@@ -271,7 +271,6 @@
      this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
    });
    ```
-   ```
 
 4. 获取通过实时传输读取数据的端点。
 
