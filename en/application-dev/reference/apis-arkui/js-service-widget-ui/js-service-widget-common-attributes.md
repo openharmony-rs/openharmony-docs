@@ -1,14 +1,16 @@
 # Universal Attributes
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:28:16.708Z pushedAt=2026-06-08T03:48:25.855Z -->
 
 > **NOTE**
 >
->The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+>This feature is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Common Attributes
 
@@ -22,7 +24,6 @@ Common attributes are used to set component identities and appearance.
 | ref | string | - | No| Reference information of child elements or child components, which is registered with the parent component on **$refs**.|
 | disabled | boolean | false | No| Whether the component is disabled. If it is disabled, it cannot respond to user interactions.|
 | dir | string | auto | No| Component layout mode. Available values are as follows:<br>- **rtl**: right-to-left layout.<br>- **ltr**: left-to-right layout.<br>- **auto**: follows the system language environment.|
-
 
 ## Rendering Attributes
 

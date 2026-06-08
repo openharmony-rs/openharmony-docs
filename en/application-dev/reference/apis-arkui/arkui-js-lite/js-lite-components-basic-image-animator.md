@@ -1,10 +1,12 @@
 # image-animator
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:26:40.109Z pushedAt=2026-06-05T12:07:21.517Z -->
 
 The **\<image-animator>** component is used to provide an image frame animator.
 
@@ -12,20 +14,18 @@ The **\<image-animator>** component is used to provide an image frame animator.
 >
 > This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
-
-## Child Component
+## Child Components
 
 Not supported
-
 
 ## Attributes
 
 | Name                 | Type                      | Default Value  | Mandatory| Description                                                        |
 | --------------------- | -------------------------- | -------- | ---- | ------------------------------------------------------------ |
-| images                | Array&lt;ImageFrame&gt;    | -        | Yes  | Image frame information. The frame information includes the image path, size, and location. The supported image formats include PNG, JPG, and BMP. For details about **ImageFrame**, see Table 1.<br>**NOTE**<br>1. Use data binding, for example, **images = {{images}}**, to specify the image. Declare the corresponding variable in JavaScript: **images: [{src: "/common/heart-rate01.png"}, {src: "/common/heart-rate02.png"}]**.<br>2. Some lightweight devices are not able to parse images in their original format. To address this issue, in the application compilation phase, the image is directly compiled into a parseable bitmap (total number of bytes: image length x width x 4) and packed in the application installation package. Naturally, larger images result in a larger application installation package. To maintain a proper size of the application installation package, reduce the image resolution as appropriate.|
+| images                | Array&lt;ImageFrame&gt;    | -        | Yes   | Image frame information. The information of each frame includes the image path, image size, and image position. The supported image formats include PNG, JPG, and BMP. For details about **ImageFrame**, see Table 1.<br/>**NOTE**<br/>1. Set this attribute using data binding, for example, **images = {{images}}**. Declare the corresponding variable **images: [{src: "/common/heart-rate01.png"}, {src: "/common/heart-rate02.png"}]** in the JavaScript.<br/>2. Some lightweight devices are not able to parse images in their original format. To address this issue, in the application compilation phase, the image is directly compiled into a parseable bitmap (total number of bytes: image length x width x 4) and packed in the application installation package. Naturally, larger images result in a larger application installation package. To maintain a proper size of the application installation package, reduce the image resolution as appropriate.|
 | iteration             | number&nbsp;\|&nbsp;string | infinite | No  | Number of times that the frame animation is played. **number** indicates a fixed number of playback operations, and **infinite** indicates an unlimited number of playback operations.|
 | reverse               | boolean                    | false    | No  | Playback sequence. The value **false** indicates that images are played from the first one to the last one, and **true** indicates that images are played from the last one to the first one.|
-| fixedsize             | boolean                    | true     | No  | Sets whether the image size is fixed at the component size. **true**: The image size is fixed at the component size. In this case, the width, height, top, and left attributes of the image are invalid.<br> **false**: The image size is different from the component size. In this case, the width, height, top, and left attributes of each image must be set separately.|
+| fixedsize             | boolean                    | true     | No  | Whether the image size is the same as the component size. **true**: The image size is the same as the component size. In this case, the **width**, **height**, **top**, and **left** attributes of the images are invalid.<br> **false**: The **width**, **height**, **top**, and **left** attributes of each image must be set separately.|
 | duration              | string                     | -        | Yes  | Single video playback duration, in seconds (s)|or milliseconds (ms). The default unit is ms. If the value is **0**, no image is played. The value change takes effect only at the start of the next cycle.|
 | fillmode<sup>5+</sup> | string                     | forwards | No  | Status of the frame animation after its playback is complete. Available values are as follows:<br>- **none**: restores to the initial status.<br>- **forwards**: retains the ending status defined for the last key frame.|
 | id                    | string                     | -        | No  | Unique ID of the component.                                            |
@@ -43,7 +43,6 @@ Not supported
 | top    | &lt;length&gt; | 0    | No   | Vertical coordinate of the image relative to the upper left corner of the component.|
 | left   | &lt;length&gt; | 0    | No   | Horizontal coordinate of the image relative to the upper left corner of the component.|
 
-
 ## Events
 
 | Name                | Parameter                               | Description         |
@@ -52,7 +51,6 @@ Not supported
 | click              | -                                 | Triggered when the component is clicked. |
 | longpress          | -                                 | Triggered when the component is long pressed. |
 | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | Triggered when a user quickly swipes on the component.|
-
 
 ## Styles
 
@@ -72,7 +70,6 @@ Not supported
 | display                            | string                                   | flex  | No   | How and whether to display the box containing an element. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
 | [left\|top]                        | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>6+</sup> | -     | No   | left\|Edge of the element.<br>- **left**: left edge position of the element. This attribute defines the offset between the left edge of the margin area of a positioned element and left edge of its containing block.<br>- **top**: top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element.|
 
-
 ## Methods
 
 | Name      | Parameter  | Description                                      |
@@ -83,9 +80,7 @@ Not supported
 | resume   | -    | Resumes the frame animation playback of an image.                                |
 | getState | -    | Obtains the playback state. Available values are as follows:<br>- playing<br>- paused<br>- stopped |
 
-
 ## Example
-
 
 ```html
 <!-- xxx.hml -->
@@ -99,7 +94,6 @@ Not supported
   </div>
 </div>
 ```
-
 
 ```css
 /* xxx.css */
@@ -130,9 +124,8 @@ Not supported
 }
 ```
 
-
 ```js
-//xxx.js
+// xxx.js
 export default {
   data: {
     frames: [

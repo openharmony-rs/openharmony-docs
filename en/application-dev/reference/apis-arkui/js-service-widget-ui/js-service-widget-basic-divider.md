@@ -1,17 +1,17 @@
 # divider
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:27:45.735Z pushedAt=2026-06-08T03:48:13.399Z -->
 
 The **\<divider>** component is used to separate content blocks and content elements. It can be used in a list or for UI layout.
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Attributes
 

@@ -1,17 +1,18 @@
 # input
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:28:07.114Z pushedAt=2026-06-08T03:48:16.012Z -->
 
 The **\<input>** component provides a radio button to receive user input. 
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Attributes
 
@@ -24,11 +25,9 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | name    | string  | -     | No   | Name of the **\<input>** component.                             |
 | value   | string  | -     | No   | Value of the **\<input>** component. When **type** is **radio**, this attribute is mandatory and the value must be unique for radio buttons with the same name. |
 
-
 ## Styles
 
 The [universal styles](js-service-widget-common-styles.md) are supported.
-
 
 ## Events
 
@@ -37,9 +36,7 @@ The [universal styles](js-service-widget-common-styles.md) are supported.
 | change | $event.checkedItem | Triggered when the **checked** status of a radio button changes. This event returns the value of the selected **\<input>** component.|
 | click  | -                  | Triggered when the component is clicked.                              |
 
-
 ## Example
-
 
 ```html
 <!-- xxx.hml -->
@@ -50,7 +47,6 @@ The [universal styles](js-service-widget-common-styles.md) are supported.
 </div>
 ```
 
-
 ```css
 /* xxx.css */
 .content{
@@ -60,7 +56,6 @@ The [universal styles](js-service-widget-common-styles.md) are supported.
   align-items: center;
 }
 ```
-
 
 ```json
 {
@@ -74,6 +69,7 @@ The [universal styles](js-service-widget-common-styles.md) are supported.
   }
 }
 ```
+
 **4 x 4 widget**
 
 ![input](figures/input.gif)

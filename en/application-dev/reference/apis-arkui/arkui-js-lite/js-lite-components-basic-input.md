@@ -1,10 +1,12 @@
 # input
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:26:36.212Z pushedAt=2026-06-05T12:07:23.901Z -->
 
 The **\<input>** component provides an interactive interface to receive user input. It can be a radio button, check box, or button.
 
@@ -12,17 +14,15 @@ The **\<input>** component provides an interactive interface to receive user inp
 >
 > This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
-
 ## Child Components
 
 Not supported
-
 
 ## Attributes
 
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| type | string | <br>button | No| Type of the component, which cannot be dynamically modified. The options are as follows:<br>- **button**: a button that can be clicked.<br>- **checkbox**: a check box.<br>- **radio**: a radio button that allows users to select one from multiple others with the same name. |
+| type | string | <br/>button | No | Type of the input component. <br/>The **button**, **checkbox**, and **radio** types cannot be dynamically modified. The options are as follows:<br/>-&nbsp;**button**: a button that can be clicked.<br/>-&nbsp;**checkbox**: a check box.<br/>-&nbsp;**radio**: a radio button that allows users to select one from multiple options with the same name.<br/>-&nbsp;**text**: a text box for text input. This parameter is available only on real devices that support input methods. The text box can be started by tapping on the screen. It does not have the [UI preview](../../../ui/ui-ide-previewer.md) effect. |
 | checked | boolean | false | No| Whether the component is selected. This attribute is valid only when **type** is set to **checkbox** or **radio**.|
 | name | string | - | No| Name of the component.|
 | value | string | - | No| Value of the component. When **type** is **radio**, this attribute is mandatory and the value must be unique for radio buttons with the same name.|
@@ -31,10 +31,10 @@ Not supported
 | class | string | - | No| Style class of the component, which is used to refer to a style table.|
 | ref | string | - | No| Reference information of child elements, which is registered with the parent component on **$refs**.|
 
-
 ## Events
 
 - When **type** is set to **checkbox** or **radio**, the following events are supported.
+
     | Name| Parameter| Description|
   | -------- | -------- | -------- |
   | change | { checked:true \| false } | Triggered when the checked status of the **checkbox** or **radio** button changes.|
@@ -43,12 +43,12 @@ Not supported
   | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | Triggered when a user quickly swipes on the component. |
 
 - When **type** is set to **button**, the following events are supported.
+
     | Name| Parameter| Description|
   | -------- | -------- | -------- |
   | click | - | Triggered when the component is clicked. |
   | longpress | - | Triggered when the component is long pressed. |
   | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | Triggered when a user quickly swipes on the component. |
-
 
 ## Styles
 
@@ -96,8 +96,6 @@ Not supported
    ```
 
    ![input-type-button](figures/input-type-button.png)
-
-   
 
 2. Check box
 

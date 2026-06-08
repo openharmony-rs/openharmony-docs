@@ -1,11 +1,11 @@
-# Multi-Language Capability 
-
+# Multi-Language Capability
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:29:37.484Z pushedAt=2026-06-08T06:55:01.747Z -->
 
 Applications designed based on the development framework apply to different countries and regions. With the multi-language capability, you do not need to develop application versions in different languages, and your users can switch between various locales. This also facilitates project maintenance.
 
@@ -62,6 +62,7 @@ Different languages have different matching rules for singular and plural forms.
 Multi-language syntax used on application development pages (including simple formatting and singular-plural formatting) can be used in **.hml** or **.js** files.
 
 - Simple formatting
+
   Use the **$t** function to reference to resources of different locales. The **$t** function is available for both **.hml** and **.js** files. The system displays content based on a resource file path specified via **$t** and the specified resource file whose locale matches the current system language.
 
     **Table 1** Simple formatting
