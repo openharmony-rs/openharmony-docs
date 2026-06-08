@@ -417,7 +417,7 @@
 
    ArkTS-Sta示例：
    <!-- @[bulkTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    if (this.pipe_ === undefined || this.interface_ === undefined) {
      console.error('pipe_ or interface_ is null');
@@ -447,7 +447,7 @@
        this.logInfo_ += '\n[ERROR] usb readData error: ' + JSON.stringify(error);
      });
    }
-
+   
    // 发送数据，在device信息中选取对应数据发送的endpoint来做数据传输。（endpoint.direction == 0）
    if (outEndpoint !== undefined && outEndpoint.direction === 0) {
      usbManager.bulkTransfer(pipe, outEndpoint, dataUint8Array, 15000).then((dataLength: int) => {
