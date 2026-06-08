@@ -510,7 +510,7 @@
 
    ArkTS-Dyn示例：
    <!-- @[interruptTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    try {
      usbManager.usbCancelTransfer(transferParams);
