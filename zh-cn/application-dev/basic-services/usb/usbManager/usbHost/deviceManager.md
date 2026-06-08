@@ -95,7 +95,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
 
    ArkTS-Dyn示例：
    <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    // 获取设备列表。
    let deviceList: usbManager.USBDevice[] = [];
@@ -105,7 +105,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
        console.error(`USB getDevices failed: ${error}`);
        this.logInfo_ += '\n[ERROR] USB getDevices failed: ' + JSON.stringify(error);
    }
-
+   
    console.info(`deviceList: ${deviceList}`);
    this.logInfo_ += '\n[INFO] deviceList: ' + JSON.stringify(deviceList);
    if (deviceList === undefined || deviceList.length === 0) {
