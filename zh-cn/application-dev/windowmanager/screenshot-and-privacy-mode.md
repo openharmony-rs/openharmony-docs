@@ -255,7 +255,7 @@
       hilog.info(DOMAIN, 'snapshotSample', line);
     }
   
-    // 获取当前应用窗口。window.snapshot 系列接口需要通过 Window 对象调用。
+    // 获取当前应用窗口。window.snapshot系列接口需要通过Window对象调用。
     private async initWindow(): Promise<void> {
       try {
         const hostContext = this.getUIContext().getHostContext();
