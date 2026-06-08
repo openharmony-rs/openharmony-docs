@@ -50579,6 +50579,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/Test.ets",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"example_sendable_enum",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -51210,6 +51220,16 @@
 						"end_line":89,
 						"name":"concurrent_taskpool_async_promise_usage",
 						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/notes.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"concurrent_taskpool_notes",
+						"start_line":16
 					}
 				]
 			}
