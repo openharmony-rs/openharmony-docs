@@ -13,7 +13,7 @@
 
 1. 获取资源ID。可通过[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetresourceid)获取外部密钥管理扩展的资源ID。
 
-2. 调用[clearUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoclearukeypinauthstate)清除Ukey PIN码认证状态。
+2. 调用[clearUkeyPinAuthState](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoclearukeypinauthstate)清除PIN码认证状态。
 
 ## 开发案例
 
@@ -21,7 +21,7 @@
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 清除Ukey PIN码认证状态
+// 清除PIN码认证状态
 async function clearUkeyPinAuthState(resourceId: string): Promise<void> {
   try {
     await huksExternalCrypto.clearUkeyPinAuthState(resourceId)
