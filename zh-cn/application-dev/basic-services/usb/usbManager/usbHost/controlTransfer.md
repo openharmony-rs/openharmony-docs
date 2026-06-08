@@ -421,7 +421,7 @@
 
    ArkTS-Dyn示例：
    <!-- @[closePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    if (this.pipe_ === undefined || this.interface_ === undefined) {
      console.error('pipe_ or interface_ is null');
@@ -437,7 +437,7 @@
      console.error(`failed: ${error}`);
      this.logInfo_ += '\n[ERROR] failed: ' + JSON.stringify(error);
    }
-
+   
    this.pipe_ = undefined;
    this.interface_ = undefined;
    console.info('close device success');
