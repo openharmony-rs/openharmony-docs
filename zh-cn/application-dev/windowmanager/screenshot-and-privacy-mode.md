@@ -418,7 +418,7 @@ struct Index {
     }
   }
 
-  // 通过当前主窗口 ID 获取主窗口截图。
+  // 通过当前主窗口ID获取主窗口截图。
   private async takeMainWindowSnapshot(): Promise<void> {
     if (!this.currentWindow) {
       await this.initWindow();
