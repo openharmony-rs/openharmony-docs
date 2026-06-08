@@ -239,6 +239,8 @@
 
    ArkTS-Sta示例：
    
+   <!-- @[custom_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/GestureConflictSta/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets) -->
+   
    ``` TypeScript
    import { Entry, Component, $r, Scroll, Column, Stack, Image, Text, Scroller, Color, Alignment, HitTestMode, GestureGroup, GestureMode, LongPressGesture, GestureEvent, GestureInfo, BaseGestureEvent, GestureControl, GestureJudgeResult, ColumnOptions, DragEvent, DragItemInfo } from '@kit.ArkUI';
    import { PromptAction } from '@ohos.arkui.UIContext';
@@ -677,6 +679,8 @@
    ```
 
    ArkTS-Sta示例：
+   
+   <!-- @[gesture_motioncontrol](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/GestureConflictSta/entry/src/main/ets/Component/GestureAndMotionControl/GestureAndMotionControl.ets) -->
    
    ``` TypeScript
    import { Entry, Component, Stack, Scroll, Column, Text, Scroller, Alignment, TextAlign, BarState, Color, EdgeEffect, GestureRecognizer, GestureControl, BaseGestureEvent, ScrollableTargetInfo, GestureJudgeResult, PanGesture, GestureEvent, GestureRecognizerState, PanGestureEvent, Margin, ForEach, ScrollDirection } from '@kit.ArkUI';
@@ -1196,6 +1200,8 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
+
+<!-- @[gesture_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/GestureConflictSta/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets) -->
 
 ``` TypeScript
 import { Entry, ComponentV2, Local, $r, Stack, Column, Text, Flex, Slider, Color, Alignment, ItemAlign, FlexAlign, SliderStyle, SliderChangeMode, GestureGroup, GestureMode, PanGesture, PanDirection, GestureEvent, LongPressGesture, TapGesture, GestureRecognizer, Margin } from '@kit.ArkUI';

@@ -228,7 +228,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001178875308](figures/zh-cn_image_0000001178875308.png)
+![isPointInStroke](figures/isPointInStroke.png)
 
 ### resetTransform
 
@@ -297,4 +297,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001179035242](figures/zh-cn_image_0000001179035242.png)
+![resetTransform](figures/resetTransform.png)

@@ -104,4 +104,4 @@ Not supported
 }
 ```
 
-![en-us_image_0000001152834002](figures/en-us_image_0000001152834002.png)
+![label](figures/label.png)
