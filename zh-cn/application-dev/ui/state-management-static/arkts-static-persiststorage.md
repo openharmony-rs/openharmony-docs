@@ -103,17 +103,24 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
        Row() {
          Column() {
            Text(this.message)
+             .fontSize(20)
+             .margin(10)
            // 应用退出时会保存当前结果；重新启动后，会显示上一次的保存结果。
            // 未修改时默认值为47
-           Text(`${this.aProp}`)
-             .onClick((e: ClickEvent) => {
-               this.aProp += 1;
-             })
+           Button(`aProp value is ${this.aProp}`)
+            .width(300)
+            .margin(10)
+            .onClick((e: ClickEvent) => {
+              this.aProp += 1;
+            })
          }
+         .width('100%')
        }
      }
    }
    ```
+
+![persistentstorage-basic](../figures/persistentstorage6.gif)
 
 - 新应用安装后首次启动运行：
 
@@ -124,7 +131,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
   5. 在Index组件中创建状态变量\@StorageLink('aProp') aProp，和AppStorage中“aProp”双向绑定，在创建的过程中会在AppStorage中查找，成功找到“aProp”，所以使用其在AppStorage找到的值47。
 
 - 触发点击事件后：
-  1. 状态变量\@StorageLink('aProp') aProp改变，触发Text组件重新刷新。
+  1. 状态变量\@StorageLink('aProp') aProp改变，触发Button组件刷新。
   2. [\@StorageLink](./arkts-static-appstorage.md#storagelink)装饰的变量是和AppStorage中建立双向同步的，所以\@StorageLink('aProp') aProp的变化会被同步回AppStorage中。
   3. AppStorage中“aProp”属性的改变会同步到所有绑定该“aProp”的单向或者双向变量，在本示例中没有其他的绑定“aProp”的变量。
   4. 因为“aProp”对应的属性已经被持久化，所以在AppStorage中“aProp”的改变会触发PersistentStorage，将新的改变写入本地磁盘。
