@@ -11,6 +11,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/Test.ets",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"example_sendable_enum",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -4974,6 +4984,16 @@
 						"end_line":81,
 						"name":"worker_handle_associated_sync_task",
 						"start_line":19
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/MyWorker2.ts",
+				"functions":[
+					{
+						"end_line":46,
+						"name":"worker_handle_associated_sync_task",
+						"start_line":16
 					}
 				]
 			}
@@ -14338,6 +14358,36 @@
 					{
 						"end_line":83,
 						"name":"quick_start",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/concurrency-faq.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets",
+				"functions":[
+					{
+						"end_line":27,
+						"name":"define_sendable",
+						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/taskpool-introduction.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/notes.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"concurrent_taskpool_notes",
 						"start_line":16
 					}
 				]
