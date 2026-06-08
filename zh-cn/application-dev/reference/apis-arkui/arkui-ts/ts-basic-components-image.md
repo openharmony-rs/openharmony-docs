@@ -1222,8 +1222,6 @@ struct ImageExample1 {
 }
 ```
 
-![zh-cn_image_0000001592882500](figures/zh-cn_image_0000001592882500.gif)
-
 ### 示例2（下载与显示静态网络图片）
 
 加载网络图片时，默认网络超时是5分钟，建议使用alt配置加载时的占位图。使用[HTTP](../../../network/http-request.md)工具包发送网络请求，接着将返回的数据解码为Image组件中的`PixelMap`，加载gif到`PixelMap`时，gif显示为静态图。图片开发可参考[Image Kit简介](../../../media/image/image-overview.md)。
