@@ -59,7 +59,7 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
    ```
 
    
-   ![zh-cn_image_0000001190934502](figures/zh-cn_image_0000001190934502.png)
+   ![Transition-Color01](figures/Transition-Color01.png)
 
 2. 45度夹角渐变。
 
@@ -70,7 +70,7 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
 
    
 
-   ![zh-cn_image_0000001189854534](figures/zh-cn_image_0000001189854534.png)
+   ![Transition-Color](figures/Transition-Color.png)
 
 3. 设置方向从左向右渐变。
 

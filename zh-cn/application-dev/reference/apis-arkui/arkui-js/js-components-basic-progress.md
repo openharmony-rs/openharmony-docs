@@ -134,6 +134,6 @@ type=eclipse<sup>5+</sup>
 }
 ```
 
-![zh-cn_image_0000001180339632](figures/zh-cn_image_0000001180339632.png)
+![progress01](figures/progress01.png)
 
 
