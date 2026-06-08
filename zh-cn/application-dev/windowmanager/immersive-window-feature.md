@@ -304,7 +304,118 @@ interface Rect {
      @Component
      struct Index {
        @Env(SystemProperties.WINDOW_AVOID_AREA) avoidAreasVp: window.UIEnvWindowAvoidAreaInfoVP;
-       @StorageProp('topAvoidHeight')
+      <!--@[ImmersiveLayout_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayout/entry/src/main/ets/pages/Index.ets) -->
+      
+      ``` TypeScript
+      import { window } from '@kit.ArkUI';
+      import { hilog } from '@kit.PerformanceAnalysisKit';
+      
+      const DOMAIN = 0x0000;
+      
+      @Entry
+      @Component
+      struct Index {
+        // ...
+        build() {
+          Column() {
+            // 避让顶部和挖孔区域
+            Row() {
+              Text('Top Container')
+                .fontSize(40)
+                .textAlign(TextAlign.Center)
+                .width('100%')
+            }
+            .backgroundColor('#2786d9')
+            .padding({
+              top: this.getUIContext().px2vp(this.topAvoidHeight) + 10,
+              bottom: 10,
+              // 避让挖孔区域
+              left: this.getUIContext().px2vp(this.leftAvoidWidth),
+              right: this.getUIContext().px2vp(this.rightAvoidWidth)
+            })
+      
+            Scroll() {
+              Column({ space: 12 }) {
+                Row() {
+                  Text(this.text)
+                    .fontSize(20)
+                }
+      
+                Divider()
+      
+                Text(`topAvoidHeight: ${this.topAvoidHeight}`)
+                Text(`bottomAvoidHeight: ${this.bottomAvoidHeight}`)
+                Text(`leftAvoidWidth: ${this.leftAvoidWidth}`)
+                Text(`rightAvoidWidth: ${this.rightAvoidWidth}`)
+                Text(`preferredOrientation: ${this.orientationText}`)
+                Text(this.statusText)
+                  .fontColor('#666666')
+      
+                Row({ space: 8 }) {
+                  Button('Auto Rotation')
+                    .layoutWeight(1)
+                    .onClick(() => {
+                      void this.setOrientation(window.Orientation.AUTO_ROTATION, 'AUTO_ROTATION');
+                    })
+      
+                  Button('Portrait')
+                    .layoutWeight(1)
+                    .backgroundColor('#0A7A5A')
+                    .onClick(() => {
+                      void this.setOrientation(window.Orientation.PORTRAIT, 'PORTRAIT');
+                    })
+      
+                  Button('Landscape')
+                    .layoutWeight(1)
+                    .backgroundColor('#AD5C00')
+                    .onClick(() => {
+                      void this.setOrientation(window.Orientation.LANDSCAPE, 'LANDSCAPE');
+                    })
+                }
+                .width('100%')
+      
+                Text('Cutout test: rotate the app and observe whether leftAvoidWidth / rightAvoidWidth change on a cutout device.')
+                  .fontColor('#666666')
+              }
+              .width('100%')
+            }
+            .backgroundColor(Color.White)
+            .padding(20)
+            .borderRadius(15)
+            .width('80%')
+            .margin({
+              left: this.getUIContext().px2vp(this.leftAvoidWidth),
+              right: this.getUIContext().px2vp(this.rightAvoidWidth)
+            })
+            .layoutWeight(1)
+            // 避让底部和挖孔区域
+            Row() {
+              Text('Bottom Container')
+                .fontSize(40)
+                .textAlign(TextAlign.Center)
+                .width('100%')
+            }
+            .backgroundColor('#96dffa')
+            .padding({
+              top: 10,
+              bottom: this.getUIContext().px2vp(this.bottomAvoidHeight) + 10,
+              // 避让挖孔区域
+              left: this.getUIContext().px2vp(this.leftAvoidWidth),
+              right: this.getUIContext().px2vp(this.rightAvoidWidth)
+            })
+          }
+          .width('100%')
+          .height('100%')
+          .padding({
+            left: this.getUIContext().px2vp(this.leftAvoidWidth),
+            right: this.getUIContext().px2vp(this.rightAvoidWidth)
+          })
+          .alignItems(HorizontalAlign.Center)
+          .backgroundColor('#d5d5d5')
+          .justifyContent(FlexAlign.SpaceBetween)
+        }
+      }
+      ```
        topAvoidHeight: number = 0;
        @StorageProp('bottomAvoidHeight')
        bottomAvoidHeight: number = 0;
