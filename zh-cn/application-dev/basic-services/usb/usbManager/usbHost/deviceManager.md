@@ -80,10 +80,11 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
 
    ArkTS-Sta示例：   
    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
+   
    // 导入usbManager模块
-   import { Entry, Component, Column, Row, Text, Button, Select, SelectOption, Toggle, ToggleType, ButtonType, TextArea, Scroll, Scroller, Edge, Flex, FlexDirection, ItemAlign,    FlexAlign, FontWeight, VerticalAlign, Alignment, ClickEvent, Blank } from '@ohos.arkui.component'
+   import { Entry, Component, Column, Row, Text, Button, Select, SelectOption, Toggle, ToggleType, ButtonType, TextArea, Scroll, Scroller, Edge, Flex, FlexDirection, ItemAlign, FlexAlign, FontWeight, VerticalAlign, Alignment, ClickEvent, Blank } from '@ohos.arkui.component'
    import { State } from '@ohos.arkui.stateManagement'
    import hilog from '@ohos.hilog'
    import usbManager from '@ohos.usbManager';
