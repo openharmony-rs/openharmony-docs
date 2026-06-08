@@ -634,7 +634,6 @@ getAllCalendars(): Promise\<Calendar[]>
 **示例**：
 
 ```typescript
-import { BusinessError } from '@kit.BasicServicesKit';
 // EntryAbility文件须按照calendarManager.getCalendarManager处示例代码进行配置
 import { calendarMgr } from '../entryability/EntryAbility';
 import { calendarManager } from '@kit.CalendarKit';
