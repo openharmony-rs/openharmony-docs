@@ -57,9 +57,162 @@
   ``` TypeScript
   import { display, screenshot, window } from '@kit.ArkUI';
   import { common, abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-  <!--@[SnapshotMore_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { image } from '@kit.ImageKit';
   
-  ``` TypeScript
+  const DOMAIN = 0x0000;
+  
+  @Entry
+  @Component
+  struct Index {
+    @State statusText: string = 'Tap a button to run the snapshot sample.';
+    @State logText: string = 'ready\n';
+    @State imageWidth: number = 0;
+    @State imageHeight: number = 0;
+    @State previewPixelMap?: image.PixelMap = undefined;
+    @State displayIdText: string = '0';
+    @State displayInfoText: string = '-';
+    @State pickRectText: string = '-';
+  
+    private currentWindow?: window.Window = undefined;
+  
+    aboutToAppear(): void {
+      void this.initWindow();
+      this.initDisplayInfo();
+    }
+    // 在页面中记录接口调用结果，同时输出到 hilog，便于调试。
+    private appendLog(message: string): void {
+      this.statusText = message;
+      hilog.info(DOMAIN, 'snapshotSample', message);
+  
+      const line = `${Date.now()}: ${message}`;
+      this.logText += `${line}\n`;
+      hilog.info(DOMAIN, 'snapshotSample', line);
+    }
+  
+    // 获取当前应用窗口。window.snapshot 系列接口需要通过 Window 对象调用。
+    private async initWindow(): Promise<void> {
+      try {
+        const hostContext = this.getUIContext().getHostContext();
+        if (!hostContext) {
+          throw new Error('Host context is unavailable.');
+        }
+  
+        const context = hostContext as common.UIAbilityContext;
+        this.currentWindow = await window.getLastWindow(context);
+  
+        const windowId = this.currentWindow.getWindowProperties().id;
+        this.statusText = `windowId=${windowId}`;
+        this.appendLog(`window initialized, windowId=${windowId}`);
+      } catch (err) {
+        this.statusText = `Initialization failed: ${JSON.stringify(err)}`;
+        this.appendLog(`Initialization failed: ${JSON.stringify(err)}`);
+        this.appendLog(this.statusText);
+      }
+    }
+    // 获取当前设备可用的 displayId，供 screenshot.capture 使用。
+    private async initDisplayInfo(): Promise<void> {
+      try {
+        const defaultDisplay = display.getDefaultDisplaySync();
+        this.displayIdText = `${defaultDisplay.id}`;
+  
+        const displays = await display.getAllDisplays();
+        this.displayInfoText = displays.map((item) => `${item.id}`).join(', ');
+        this.statusText = `available displayIds=${this.displayInfoText}`;
+      } catch (err) {
+        this.statusText = `init display info failed: $JSON.stringify(err)}`;
+        hilog.error(DOMAIN, 'screenshotSample', this.statusText);
+      }
+    }
+  
+    // 截图前确认当前窗口已初始化。
+    private async ensureWindow(): Promise<boolean> {
+      if (!this.currentWindow) {
+        await this.initWindow();
+      }
+  
+      if (!this.currentWindow) {
+        this.statusText = 'Current window is unavailable.';
+        this.appendLog(this.statusText);
+        return false;
+      }
+  
+      return true;
+    }
+  
+    // 将截图结果展示到页面预览区域，并读取 PixelMap 宽高。
+    private updatePreview(pixelMap: image.PixelMap, source: string): void {
+      this.previewPixelMap = pixelMap;
+  
+      try {
+        const imageInfo = pixelMap.getImageInfoSync();
+        this.imageWidth = imageInfo.size.width;
+        this.imageHeight = imageInfo.size.height;
+        this.statusText = `${source} success, size=${this.imageWidth}x${this.imageHeight}`;
+        this.appendLog(`${source} success, size=${this.imageWidth}x${this.imageHeight}`);
+      } catch (err) {
+        this.imageWidth = 0;
+        this.imageHeight = 0;
+        this.statusText = `${source} success, but getImageInfoSync failed: ${JSON.stringify(err)}`;
+        this.appendLog(`${source} success, but getImageInfoSync failed: ${JSON.stringify(err)}`);
+      }
+  
+      hilog.info(DOMAIN, 'screenshotSample', this.statusText);
+      this.appendLog(this.statusText);
+    }
+  
+    // 异步截取当前窗口。隐私窗口场景下，截图结果会受到隐私模式保护。
+    private async takeWindowSnapshot(): Promise<void> {
+      if (!await this.ensureWindow()) {
+        return;
+      }
+  
+      try {
+        const pixelMap = await this.currentWindow!.snapshot();
+        await this.updatePreview(pixelMap, 'window.snapshot');
+      } catch (err) {
+        this.statusText = `window.snapshot failed: ${JSON.stringify(err)}`;
+        this.appendLog(this.statusText);
+      }
+    }
+  
+    // 同步截取当前窗口。调用方式更直接，但会同步返回 PixelMap。
+    private takeWindowSnapshotSync(): void {
+      if (!this.currentWindow) {
+        this.statusText = 'window.snapshotSync failed: current window is unavailable.';
+        this.appendLog(this.statusText);
+        return;
+      }
+  
+      try {
+        const pixelMap = this.currentWindow.snapshotSync();
+        void this.updatePreview(pixelMap, 'window.snapshotSync');
+      } catch (err) {
+        this.statusText = `window.snapshotSync failed: ${JSON.stringify(err)}`;
+        this.appendLog(this.statusText);
+      }
+    }
+  
+    // 忽略隐私模式截取当前窗口。仅在业务明确需要且设备支持时使用。
+    private async takeWindowSnapshotIgnorePrivacy(): Promise<void> {
+      if (!await this.ensureWindow()) {
+        return;
+      }
+  
+      try {
+        const pixelMap = await this.currentWindow!.snapshotIgnorePrivacy();
+        await this.updatePreview(pixelMap, 'window.snapshotIgnorePrivacy');
+      } catch (err) {
+        this.statusText = `window.snapshotIgnorePrivacy failed: ${JSON.stringify(err)}`;
+        this.appendLog(this.statusText);
+      }
+    }
+    // ...
+  
+    build() {
+    // ...
+  }
+  ```
   import { display, screenshot, window } from '@kit.ArkUI';
   import { common, abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
