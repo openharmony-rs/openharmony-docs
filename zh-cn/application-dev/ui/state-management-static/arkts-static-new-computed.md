@@ -369,102 +369,72 @@ import { Computed } from '@kit.ArkUI';
 - `total`和`qualifiesForDiscount`的改变会触发子组件`Child`对应Text组件刷新。
 
   <!-- @[ComputedInitParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComputedDecorator/entry/src/main/ets/pages/ComputedInitParam.ets) -->
-   
+  
   ``` TypeScript
-  import {
-    Button,
-    ClickEvent,
-    Column,
-    ComponentV2,
-    Divider,
-    Entry,
-    ForEach,
-    HorizontalAlign,
-    Row,
-    Text
-  } from '@kit.ArkUI';
+  import { Button, ClickEvent, Column, ComponentV2, Divider, Entry,
+           ForEach, HorizontalAlign, Row, Text } from '@kit.ArkUI';
   import { Computed, Local, ObservedV2, Param, Trace } from '@kit.ArkUI';
-
+  
   @ObservedV2
   class Article {
     @Trace quantity: number = 0;
     unitPrice: number = 0;
-
+  
     constructor(quantity: number, unitPrice: number) {
       this.quantity = quantity;
       this.unitPrice = unitPrice;
     }
   }
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local shoppingBasket: Article[] = [new Article(1, 20), new Article(5, 2)];
-
+  
     @Computed
     get total(): number {
       return this.shoppingBasket.reduce((acc: number, item: Article) => acc + (item.quantity * item.unitPrice), 0);
     }
-
+  
     @Computed
     get qualifiesForDiscount(): boolean {
       return this.total >= 100;
     }
-
+  
     build() {
       Column() {
-        Column() {
-          Text(`Shopping List: `)
-            .fontSize(20)
-            .margin(10)
-        }
-        .width('100%')
-
+        Text(`Shopping List: `).fontSize(30)
         ForEach(this.shoppingBasket, (item: Article) => {
-          Column() {
+          Row() {
             Text(`unitPrice: ${item.unitPrice}`)
-              .fontSize(20)
-              .margin(10)
-            Button('-')
-              .margin(10)
-              .onClick((e: ClickEvent) => {
-                if (item.quantity > 0) {
-                  item.quantity--;
-                }
-              })
+            Button('-').onClick((e: ClickEvent) => {
+              if (item.quantity > 0) {
+                item.quantity--;
+              }
+            })
             Text(`quantity: ${item.quantity}`)
-              .fontSize(20)
-              .margin(10)
-            Button('+')
-              .margin(10)
-              .onClick((e: ClickEvent) => {
-                item.quantity++;
-              })
+            Button('+').onClick((e: ClickEvent) => {
+              item.quantity++;
+            })
           }
-          .width('100%')
-
+  
           Divider()
         })
         Child({ total: this.total, qualifiesForDiscount: this.qualifiesForDiscount })
-      }
+      }.alignItems(HorizontalAlign.Start)
     }
   }
-
+  
   @ComponentV2
   struct Child {
     @Param total: number = 0;
     @Param qualifiesForDiscount: boolean = false;
-
+  
     build() {
-      Column() {
-        Text(`Total: ${this.total} `)
-          .fontSize(20)
-          .margin(10)
-        Text(`Discount: ${this.qualifiesForDiscount} `)
-          .fontSize(20)
-          .margin(10)
+      Row() {
+        Text(`Total: ${this.total} `).fontSize(30)
+        Text(`Discount: ${this.qualifiesForDiscount} `).fontSize(30)
       }
-      .width('100%')
     }
   }
   ```
