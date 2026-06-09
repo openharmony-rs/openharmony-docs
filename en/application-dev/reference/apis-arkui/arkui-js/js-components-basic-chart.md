@@ -1,10 +1,12 @@
 # chart
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9fc8de61c9856085ad7066dda1e30828589acb6a translatedAt=2026-06-09T02:55:07.298Z pushedAt=2026-06-09T03:11:33.097Z -->
 
 >  **NOTE**
 >
@@ -16,11 +18,9 @@ The **\<chart>** component displays line charts, gauge charts, and bar charts.
 
 None
 
-
 ## Child Components
 
 Not supported
-
 
 ## Attributes
 
@@ -29,9 +29,9 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | Name                            | Type                                      | Default Value | Mandatory  | Description                                      |
 | ------------------------------ | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | type                           | string                                   | line | No   | Chart type. Dynamic modification is not supported. Available values include:<br>- **bar**: bar chart<br>- **line**: line chart<br>- **gauge**: gauge chart<br>- **progress**<sup>5+</sup>: circle chart of progresses<br>- **loading**<sup>5+</sup>: circle chart of loading processes<br>- **rainbow**<sup>5+</sup>: circle chart of proportions|
-| options                        | ChartOptions                             | -    | No   | Chart parameters. You must set parameters for bar charts and line charts. Parameter settings for gauge charts do not take effect. You can set the minimum value, maximum value, scale, and line width of the x-axis or y-axis, whether to display the x-axis and y-axis, and whether the line is smooth. Dynamic modification is not supported.|
+| options                        | ChartOptions                             | -    | No    | Chart parameters. You must set parameters for bar charts and line charts. Parameter settings for gauge charts do not take effect. You can set the minimum value, maximum value, scale, and line width of the x-axis or y-axis, whether to display the x-axis and y-axis, and whether the line is smooth. Dynamic modification is not supported. |
 | datasets                       | Array&lt;ChartDataset&gt;                | -    | No   | Data sets. You must set data sets for bar charts and line charts. Data sets for a gauge chart do not take effect. You can set multiple datasets and their background colors.|
-| segments<sup>5+</sup>          | DataSegment \| Array&lt;DataSegment&gt; | -    | No   | Data structures used by **progress**, **loading**, and **rainbow** charts.<br>**DataSegment** is available for **progress** and **loading** charts.<br>**Array&lt;DataSegment&gt;** is available for **rainbow** charts. A maximum of nine **DataSegment**s are supported in the array.|
+| segments<sup>5+</sup>          | DataSegment&nbsp;\|&nbsp;Array&lt;DataSegment&gt; | -    | No    | Data structures used by **progress**, **loading**, and **rainbow** charts.<br/>**DataSegment** is available for **progress** and **loading** charts. <br/>Array&lt;DataSegment&gt; is used for **rainbow** charts. A maximum of nine **DataSegments** are supported in the array. |
 | effects<sup>5+</sup>           | boolean                                  | true | No   | Whether to enable the effects for **progress** and **rainbow** charts.                      |
 | animationduration<sup>6+</sup> | number                                   | 3000 | No   | Animation duration for expanding a **rainbow** chart, in milliseconds.                  |
 
@@ -105,7 +105,7 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | description  | string        | -        | No   | Description text of the point.                             |
 | textLocation | string        | -        | No   | Position of the description text relative to the point. Available values are as follows: **top**: above the point<br>**bottom**: below the point<br>**none**: not displayed|
 | textColor    | &lt;color&gt; | \#000000 | No   | Color of the description text.                              |
-| lineDash     | string        | solid    | No   | Dashed line pattern. You can set the dash length and space length between the dashes. - **"dashed, 5, 5"**: dashed line with each dash in 5 px and a 5 px space between each two dashes. Default value **"solid"** indicates a solid line.|
+| lineDash     | string        | solid    | No    | Dashed line pattern. You can set the dash length and space length between the dashes. **"dashed,&nbsp;5,&nbsp;5"** indicates a dashed line with each dash in 5 px and a 5 px space between each two dashes. **"solid"** indicates a solid line. |
 | lineColor    | &lt;color&gt; | \#000000 | No   | Line color. If this attribute is not set, the value of **strokeColor** is used.  |
 
 **Table 9** DataSegment<sup>5+</sup>
@@ -135,10 +135,7 @@ For the **gauge** charts, the following attributes are also supported.
 | ------- | ------ | ---- | ---- | ---------------------- |
 | percent | number | 0    | No   | Percentage of the current value to the total value. The value ranges from 0 to 100.|
 
-
 ## Styles
-
-
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
 
@@ -155,11 +152,9 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | font-family<sup>5+</sup> | Array          | -                          | No   | Font style of the description text. You can use a [custom font](js-components-common-customizing-font.md).|
 | font-size<sup>5+</sup>   | &lt;length&gt; | -                          | No   | Font size of the description text.                           |
 
-
 ## Events
 
 The [universal events](js-components-common-events.md) are supported.
-
 
 ## Methods
 
@@ -172,6 +167,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 ## Example
 
 1. Line chart
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -264,6 +260,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![en-us_image_0000001173324843](figures/en-us_image_0000001173324843.png)
 
 2. Bar chart
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -332,6 +329,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![en-us_image_0000001173164929](figures/en-us_image_0000001173164929.png)
 
 3. Gauge chart
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -361,6 +359,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![en-us_image_0000001127125264](figures/en-us_image_0000001127125264.png)
 
 4. Circle chart of progresses, loading progresses, or proportions
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -378,6 +377,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
        </stack>
    </div>
    ```
+
    ```css
    /* xxx.css */
    .container {
@@ -394,6 +394,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
        margin-top: 30px;
    }
    ```
+
    ```js
    // xxx.js
    export default {
@@ -431,4 +432,5 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
       }
    }
    ```
+
    ![rainbow](figures/rainbow.gif)
