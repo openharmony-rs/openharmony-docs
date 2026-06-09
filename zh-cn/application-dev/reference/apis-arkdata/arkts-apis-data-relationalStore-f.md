@@ -26,10 +26,10 @@ getRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback&lt;Rd
 
 开发者在创建数据库时，应谨慎配置是否进行数据库加密的参数[encrypt](arkts-apis-data-relationalStore-i.md#storeconfig)，数据库创建后，禁止对该参数进行修改。
 
-| 当前开库的加密类型  | 本设备上创建该数据库时的加密类型           | 结果 |
+| 当前打开数据库时配置的加密类型  | 本设备上创建该数据库时的加密类型           | 结果 |
 | ------- | -------------------------------- | ---- |
-| 非加密 | 加密                          | 将数据库以加密方式打开。   |
-| 加密 | 非加密                          | 将数据库以非加密方式打开。   |
+| 非加密 | 加密                          | 使用加密配置（encrypt=true）打开数据库。   |
+| 加密 | 非加密                          | 使用非加密配置（encrypt=false）打开数据库。   |
 
 getRdbStore支持多线程并发操作。
 
@@ -132,10 +132,10 @@ getRdbStore(context: Context, config: StoreConfig): Promise&lt;RdbStore&gt;
 
 开发者在创建数据库时，应谨慎配置是否进行数据库加密的参数[encrypt](arkts-apis-data-relationalStore-i.md#storeconfig)，数据库创建后，禁止对该参数进行修改。
 
-| 当前开库的加密类型  | 本设备上创建该数据库时的加密类型           | 结果 |
+| 当前打开数据库时配置的加密类型  | 本设备上创建该数据库时的加密类型           | 结果 |
 | ------- | -------------------------------- | ---- |
-| 非加密 | 加密                          | 将数据库以加密方式打开。   |
-| 加密 | 非加密                          | 将数据库以非加密方式打开。   |
+| 非加密 | 加密                          | 使用加密配置（encrypt=true）打开数据库。   |
+| 加密 | 非加密                          | 使用非加密配置（encrypt=false）打开数据库。   |
 
 getRdbStore支持多线程并发操作。
 
@@ -237,10 +237,10 @@ getRdbStoreSync(context: Context, config: StoreConfig): RdbStore
 
 开发者在创建数据库时，应谨慎配置是否进行数据库加密的参数[encrypt](arkts-apis-data-relationalStore-i.md#storeconfig)，数据库创建后，禁止对该参数进行修改。如果有修改参数，则会报错误码。
 
-| 当前开库的加密类型  | 本设备上创建该数据库时的加密类型           | 结果 |
+| 当前打开数据库时配置的加密类型  | 本设备上创建该数据库时的加密类型           | 结果 |
 | ------- | -------------------------------- | ---- |
-| 非加密 | 加密                          | 将数据库以加密方式打开。   |
-| 加密 | 非加密                          | 将数据库以非加密方式打开。   |
+| 非加密 | 加密                          | 使用加密配置（encrypt=true）打开数据库。   |
+| 加密 | 非加密                          | 使用非加密配置（encrypt=false）打开数据库。   |
 
 getRdbStoreSync支持多线程并发操作。
 
@@ -384,7 +384,7 @@ class EntryAbility extends UIAbility {
 
 deleteRdbStore(context: Context, name: string): Promise&lt;void&gt;
 
-使用指定的数据库文件配置删除数据库，使用Promise异步回调。
+删除数据库文件，使用Promise异步回调。
 
 删除成功后，建议将数据库对象置为null。建立数据库时，若在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置了自定义路径，则调用此接口进行删库无效，必须使用 [deleteRdbStore](#relationalstoredeleterdbstore10-1) 接口进行删库。
 

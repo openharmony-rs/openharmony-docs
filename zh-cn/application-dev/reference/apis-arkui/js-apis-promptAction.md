@@ -937,8 +937,6 @@ try {
 
 当弹窗的showInSubWindow属性为true时，弹窗可显示在窗口外。
 
-从API版本26.0.0开始，[BaseDialogOptions](#basedialogoptions11)新增displayModeInSubWindow属性。
-
 ```ts
 import { promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -949,8 +947,6 @@ try {
     message: 'Message Info',
     isModal: true,
     showInSubWindow: true,
-    // 从API版本26.0.0开始，新增displayModeInSubWindow属性
-    displayModeInSubWindow: DialogDisplayMode.SCREEN_BASED,
     buttons: [
       {
         text: 'button1',
