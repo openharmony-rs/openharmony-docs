@@ -135,3 +135,14 @@
    当不再需要全局悬浮窗时，可根据具体实现逻辑，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9-1)接口销毁全局悬浮窗。
 
    <!-- @[destroy_floating_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
+   floatWindowClass.destroyWindow((err) => {
+     if (err?.code) {
+       console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
+       return;
+     }
+     console.info('Succeeded in destroying the window.');
+   });
+   ```
