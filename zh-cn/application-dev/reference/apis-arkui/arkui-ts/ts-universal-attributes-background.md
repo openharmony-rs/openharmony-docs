@@ -840,7 +840,7 @@ struct BackgroundExample {
 }
 ```
 
-![image-background](figures/zh-cn_image_background.png)
+![image-background](figures/image-background.png)
 
 ### 示例4（设置组件背景提亮效果）
 
