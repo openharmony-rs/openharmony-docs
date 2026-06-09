@@ -80,7 +80,7 @@
       void this.initWindow();
       this.initDisplayInfo();
     }
-    // 在页面中记录接口调用结果，同时输出到 hilog，便于调试。
+    // 在页面中记录接口调用结果，同时输出到hilog，便于调试。
     private appendLog(message: string): void {
       this.statusText = message;
       hilog.info(DOMAIN, 'snapshotSample', message);
@@ -90,7 +90,7 @@
       hilog.info(DOMAIN, 'snapshotSample', line);
     }
   
-    // 获取当前应用窗口。window.snapshot 系列接口需要通过 Window 对象调用。
+    // 获取当前应用窗口。window.snapshot系列接口需要通过Window对象调用。
     private async initWindow(): Promise<void> {
       try {
         const hostContext = this.getUIContext().getHostContext();
@@ -140,7 +140,7 @@
       return true;
     }
   
-    // 将截图结果展示到页面预览区域，并读取 PixelMap 宽高。
+    // 将截图结果展示到页面预览区域，并读取PixelMap宽高。
     private updatePreview(pixelMap: image.PixelMap, source: string): void {
       this.previewPixelMap = pixelMap;
   
@@ -176,7 +176,7 @@
       }
     }
   
-    // 同步截取当前窗口。调用方式更直接，但会同步返回 PixelMap。
+    // 同步截取当前窗口。调用方式更直接，但会同步返回PixelMap。
     private takeWindowSnapshotSync(): void {
       if (!this.currentWindow) {
         this.statusText = 'window.snapshotSync failed: current window is unavailable.';
