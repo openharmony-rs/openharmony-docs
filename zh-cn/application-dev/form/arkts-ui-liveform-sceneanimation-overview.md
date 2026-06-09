@@ -21,7 +21,7 @@
 
 **图2** 互动卡片动效触发流程
 
-![live-form-judge.png](figures/live-form-judge.png)
+![live-form-judge.PNG](figures/live-form-judge.PNG)
 
 ## 实现原理
 
