@@ -1947,7 +1947,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 ## Volume
 
-卷的属性信息。
+卷信息详情。
 
 ### 属性
 
