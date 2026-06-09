@@ -610,7 +610,7 @@ setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string长度范围[0, 4095]字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码19100001。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。err为undefined时表示设置成功；否则为错误对象。 |
 
 **错误码：**
@@ -660,7 +660,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。不对Array长度进行限制，每个string长度范围[0, 4095]字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码19100001。 |
 
 **返回值：**
 
@@ -705,7 +705,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。不对Array长度进行限制，每个string不超过4095字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码19100001。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。err为undefined时表示设置成功；否则为错误对象。 |
 
 **错误码：**
@@ -1321,7 +1321,7 @@ DLP文件授权类型的枚举。
 | -------- | -------- | -------- | -------- | -------- |
 | appIndex | number | 否 | 否 | 表示DLP沙箱应用索引。取值范围为1001到1100。 |
 | bundleName | string | 否 | 否 | 表示应用包名。最小7字节，最大128字节，超出此范围抛出错误码19100001。 |
-| docUris | Array&lt;string&gt; | 否 | 否 | 表示DLP文件的URI列表。不对Array长度进行限制，每个string不超过4095字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 否 | 否 | 表示DLP文件的URI列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码19100001。 |
 
 ## EnterprisePolicy<sup>21+</sup>
 
