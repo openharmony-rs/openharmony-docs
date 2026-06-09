@@ -6,128 +6,128 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=444d4b7458e1317b3c2f1a471488b9c4b8344c2e translatedAt=2026-06-03T06:18:42.620Z pushedAt=2026-06-03T09:33:26.389Z -->
+<!-- md-trans-meta sourceCommit=444d4b7458e1317b3c2f1a471488b9c4b8344c2e translatedAt=2026-06-03T06:18:42.620Z pushedAt=2026-06-05T06:19:55.739Z -->
 
 ## B
 
-### Base experience mode
+### Basic Access Mode
 
-A mode constraint for security control over input method applications, strictly adhering to providing only basic typing functionality.
+A restricted security mode for input method applications. In this mode, only basic typing functions are provided.
 
 ## C
 
-### CustomInput
+### Custom Input Box
 
-A text input control customized by developers, which is bound to the input method by integrating [InputMethodController](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodcontroller).
+A custom text input control developed by developers. It integrates [InputMethodController](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodcontroller) to bind to an input method.
 
 ## D
 
-### DARK_IMMERSIVE
+### Dark Immersive Mode
 
-A type of input method immersive mode that makes the input method panel present an immersive effect with a dark theme.
+An immersive mode that applies a dark immersive effect to the input method panel.
 
 ## E
 
-### EditorAttribute
+### Editor Box Attribute
 
-Characteristic attributes of an editor, including fields such as textInputType, enterKeyType, and immersiveMode.
+Attributes that describe the characteristics of an editor box, including **textInputType**, **enterKeyType**, and **immersiveMode**.
 
-### ExtensionContext
+### Extension Ability Context
 
-The context environment for ExtensionAbility, providing the ability to start, stop, bind, and unbind an Ability.
+The context of an Extension ability, which provides capabilities for starting, stopping, connecting to, and disconnecting from an Ability.
 
 ## F
 
-### FLAG_FIXED
+### Fixed State
 
-A state type where the input method panel is fixed at the bottom of the screen.
+A state in which the input method panel is fixed at the bottom of the screen.
 
-### FLAG_FLOATING
+### Floating State
 
-A state type where the input method panel can float and be moved.
+A state in which the input method panel can float and move.
 
-### FLAG_CANDIDATE
+### Candidate State
 
-The state type in which the input method panel displays user input candidates.
+A state in which the input method panel displays candidate words for user input.
 
-### Full experience mode
+### Full Access Mode
 
-The full access mode of the input method application, providing complete input method functionality.
+A full-access mode for input method applications, providing complete input method functions.
 
 ## I
 
 ### IME Kit
 
-A service that establishes a communication channel between the application where the edit box resides and the input method application, ensuring collaboration for text input functionality, and also provides system applications with the ability to manage input method applications.
+IME Kit establishes a communication channel between the application that contains the editor box and the input method application to support text input collaboration. It also provides input method application management capabilities for system applications.
 
-### ImmersiveEffect
+### Immersive Effect
 
-The visual presentation effect of the input method panel, including gradient mode and flow mode.
+The visual effect of the input method panel, including gradient mode and streamer mode.
 
-### ImmersiveMode
+### Immersive Mode
 
-An immersive display mode for the input method panel, including light immersive and dark immersive, set by the input method application.
+The immersive display mode of the input method panel, including light immersive mode and dark immersive mode. This mode is set by the input method application.
 
-### InputMethodExtensionAbility
+### Input Method Extension Ability
 
-The input method ExtensionAbility component, enabling developers to create their own input method applications.
+An input method Extension ability component that allows you to develop input method applications.
 
-### InputMethodSubtype
+### Input Method Subtype
 
-Different input modes or languages of an input method, such as Chinese keyboard and English keyboard.
+A specific input mode or language of an input method, such as a Chinese keyboard or English keyboard.
 
-### input_method_config.json
+### Subtype Configuration File
 
-A JSON file that configures input method subtype information, containing a subtypes array that defines attributes such as icon, id, label, and locale for each subtype.
+A JSON file that configures input method subtype information. It contains the subtypes array, which defines properties such as `icon`, `id`, `label`, and `locale` for each subtype.
 
-### IME command tool
+### IME Command Tool
 
-Use IME commands to manage input methods, including querying input methods, enabling/disabling input methods, switching input method access modes, and switching the current input method.
+A command-line tool for managing input methods, including querying input methods, enabling or disabling input methods, switching input method access modes, and switching the current input method.
 
 ## K
 
-### KeyboardAppearance
+### Keyboard Appearance Mode
 
-The keyboard display mode expected by the edit box, including immersive mode and non-immersive mode.
+The expected keyboard display mode for an editor box, including immersive and non-immersive modes.
 
-### KeyboardController
+### Keyboard Controller
 
-A controller class in the input method that controls soft keyboard display, event listening, and text operations.
+A controller class in an input method that controls soft keyboard display, event listening, and text operations.
 
 ## L
 
-### LIGHT_IMMERSIVE
+### Light Immersive Mode
 
-A type of input method immersive mode that renders the input method panel with a light theme immersive effect.
+An immersive mode that applies a light immersive effect to the input method panel.
 
 ## P
 
-### Panel
+### Input Method Panel
 
-A window component created by the input method application, used to display the soft keyboard or status bar.
+A window component created by an input method app to display the soft keyboard or status bar.
 
-### PanelFlag
+### Panel State Type
 
-Enumeration of input method panel state types, including fixed (FLAG_FIXED), floating (FLAG_FLOATING), and candidate (FLAG_CANDIDATE).
+An enum for input method panel states, including fixed (`FLAG_FIXED`), floating (`FLAG_FLOATING`), and candidate (`FLAG_CANDIDATE`) states.
 
-### PanelInfo
+### Panel Configuration Information
 
-Configuration information when creating an input method panel, including type (panel type) and flag (panel state).
+Configuration information for creating an input method panel, including `type` (panel type) and `flag` (panel state).
 
-### PanelType
+### Panel Type
 
-Enumeration of input method panel types, including soft keyboard (SOFT_KEYBOARD) and status bar (STATUS_BAR).
+An enum for input method panel types, including soft keyboard (`SOFT_KEYBOARD`) and status bar (`STATUS_BAR`).
 
-### PreviewText
+### Preview Text
 
-A preview function that displays the input text before the user confirms the input.
+A preview function that displays input text before the user confirms the input.
 
 ## S
 
-### SOFT_KEYBOARD
+### Soft Keyboard
 
-A virtual keyboard composed of keys, a panel type used for text input.
+A virtual keyboard consisting of keys. It is a panel type used for text input.
 
-### SystemPanel
+### System Panel
 
-The input method soft keyboard window is displayed in the system input method panel, and the input method soft keyboard window has an offset area relative to the system panel.
+A system input method panel in which the input method soft keyboard window is displayed. The soft keyboard window has an offset area relative to the system panel.
