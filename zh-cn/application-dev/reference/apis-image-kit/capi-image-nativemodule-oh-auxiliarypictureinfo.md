@@ -14,7 +14,7 @@ typedef struct OH_AuxiliaryPictureInfo OH_AuxiliaryPictureInfo
 
 AuxiliaryPictureInfo结构体类型，用于执行AuxiliaryPictureInfo相关操作。
 
-使用[OH_AuxiliaryPictureInfo_Create](capi-picture-native-h.md#oh_auxiliarypictureinfo_create) 函数创建OH_AuxiliaryPictureInfo对象。
+使用[OH_AuxiliaryPictureInfo_Create](capi-picture-native-h.md#oh_auxiliarypictureinfo_create)函数创建OH_AuxiliaryPictureInfo对象。
 
 使用[OH_AuxiliaryPictureNative_GetInfo](capi-picture-native-h.md#oh_auxiliarypicturenative_getinfo)函数从OH_AuxiliaryPictureNative对象中获取OH_AuxiliaryPictureInfo对象。
 
