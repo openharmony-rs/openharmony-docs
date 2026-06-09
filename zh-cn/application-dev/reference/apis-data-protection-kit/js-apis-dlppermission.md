@@ -80,7 +80,7 @@ isDLPFile(fd: number): Promise&lt;boolean&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| fd | number | 是 | 待查询文件的fd（文件描述符）。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，函数返回false；当fd大于2<sup>31</sup>-1时，fd的值被截断。|
+| fd | number | 是 | 待查询文件的fd（文件描述符）。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，抛出错误码19100001；当fd大于2<sup>31</sup>-1时，fd的值被截断。|
 
 **返回值：**
 | 类型 | 说明 |
@@ -131,7 +131,7 @@ isDLPFile(fd: number, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| fd | number | 是 | 待查询文件的fd（文件描述符）。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，函数返回false；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
+| fd | number | 是 | 待查询文件的fd（文件描述符）。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，当fd小于0时，抛出错误码19100001；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数，用于接收查询结果。回调参数包括：err（错误对象，查询成功时为undefined）和res（查询结果，返回true表示是DLP文件，返回false表示非DLP文件）。 |
 
 **错误码：**
@@ -1353,8 +1353,8 @@ generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPPr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| plaintextFd | number | 是 | 明文文件的文件描述符。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，函数抛出错误码19100001；当fd大于2<sup>31</sup>-1时，fd的值被截断。|
-| dlpFd | number | 是 | 加密文件的文件描述符。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，函数抛出错误码19100001；当fd大于2<sup>31</sup>-1时，fd的值被截断。|
+| plaintextFd | number | 是 | 明文文件的文件描述符。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。|
+| dlpFd | number | 是 | 加密文件的文件描述符。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。|
 | property | [DLPProperty](#dlpproperty21) | 是 | DLP文件通用策略。 |
 | customProperty | [CustomProperty](#customproperty21) | 是 | 企业定制策略。 |
 
@@ -1437,8 +1437,8 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | 是 | 待解密DLP文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，函数抛出错误码19100001；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
-| plaintextFd | number | 是 | 目标解密文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，函数抛出错误码19100001；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
+| dlpFd | number | 是 | 待解密DLP文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
+| plaintextFd | number | 是 | 目标解密文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
 
 **返回值：**
 
@@ -1509,7 +1509,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | 是 | 待查询策略的DLP文件的fd。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，函数抛出错误码19100001；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
+| dlpFd | number | 是 | 待查询策略的DLP文件的fd。取值范围为[0, 2<sup>31</sup>-1]。打印错误日志，函数停止运行；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
 
 **返回值：**
 
