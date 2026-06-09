@@ -143,12 +143,18 @@ import { backup } from '@kit.CoreFileKit';
 
 文件迁移的路径信息。
 
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**系统接口**：此接口为系统接口。
 
 | 名称       | 类型   | 只读 | 可选 | 说明                                     |
 | ---------- | ------ | ---- | --- | ---------------------------------------- |
-| srcPath | string | 否   | 否 | 迁移的源路径。 |
-| destPath | string | 否   | 否 | 迁移的目标路径。 |
+| srcPath | string | 否   | 否 | 迁移的源路径。长度限制为4096，不支持使用相对路径../和软链接。 |
+| destPath | string | 否   | 否 | 迁移的目标路径。长度限制为4096，不支持使用相对路径../和软链接。 |
 
 ## GeneralCallbacks
 
@@ -163,7 +169,21 @@ import { backup } from '@kit.CoreFileKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | onBackupSizeReport<sup>18+</sup>  | [OnBackupSizeReport](#onbackupsizereport18) | 否 | 是 |  框架获取到的待备份的数据量大小的信息。 |
-| onMigrateResult | [OnMigrateResult](#onmigrateresult) | 否 | 是 | 迁移文件流程结束的回调，返回迁移文件的结果信息。 |
+| onMigrateResult | AsyncCallback&lt;string, void \| string&gt; | 否 | 是 | 迁移文件流程结束的回调，返回迁移文件的结果信息。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**错误码**：参见下方错误码表格。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 13600001 | IPC error.               |
+| 13900001 | Operation not permitted.               |
+| 13900005 | I/O error.               |
+| 13900011 | Out of memory.           |
+| 13900020 | Invalid argument.           |
+| 13900025 | No space left on device. |
 
 ### onFileReady
 
@@ -445,53 +465,6 @@ onProcess (bundleName: string, process: string)
   onProcess: (bundleName: string, process: string) => {
     console.info('onProcess bundleName : ' + bundleName);
     console.info('onProcess processInfo : ' + process);
-  }
-  ```
-
-### onMigrateResult
-
-onMigrateResult: AsyncCallback&lt;string, void | string&gt;
-
-回调函数。迁移文件流程结束的回调，返回迁移文件的结果信息。
-
-**起始版本：** 26.0.0
-
-**系统能力**：SystemCapability.FileManagement.StorageService.Backup
-
-**系统接口**：此接口为系统接口。
-
-**参数：**
-
-| 参数名     | 类型          | 必填 | 说明                                                        |
-| ---------- | ------------- | ---- | ----------------------------------------------------------- |
-| bundleName | string        | 是   | 服务返回的应用名称。                                          |
-| err        | BusinessError | 否   | 当迁移操作成功，err为undefined，data为bundle名称；否则为错误对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
-
-| 错误码ID | 错误信息                |
-| -------- | ----------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API. |
-| 13600001 | IPC error.               |
-| 13900001 | Operation not permitted.               |
-| 13900005 | I/O error.               |
-| 13900011 | Out of memory.           |
-| 13900020 | Invalid argument.           |
-| 13900025 | No space left on device. |
-
-**示例：**
-
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  onMigrateResult: (err: BusinessError, bundleName: string) => {
-    if (err) {
-      console.error(`onMigrateResult failed. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('onMigrateResult success, bundleName: ' + bundleName);
   }
   ```
 
@@ -3295,11 +3268,11 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise&lt;string&gt;
 
 ### migrateFile
 
-migrateFile(pathInfo: [PathInfo](#pathinfo), fileMeta: [FileMeta](#filemeta)): Promise&lt;void&gt;
+migrateFile(pathInfo: PathInfo, fileMeta: FileMeta): Promise&lt;void&gt;
 
 用于将文件从源路径迁移到目标路径。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **需要权限**：ohos.permission.BACKUP
 
@@ -3314,7 +3287,7 @@ migrateFile(pathInfo: [PathInfo](#pathinfo), fileMeta: [FileMeta](#filemeta)): P
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
 | pathInfo | [PathInfo](#pathinfo) | 是   | 路径信息，包含源路径和目标路径。 |
-| fileMeta | [FileMeta](#filemeta) | 是   | 文件元数据，包含bundleName和可选的fileName。 |
+| fileMeta | [FileMeta](#filemeta) | 是   | 文件元数据，包含bundleName和uri。 |
 
 **返回值：**
 
@@ -3336,86 +3309,86 @@ migrateFile(pathInfo: [PathInfo](#pathinfo), fileMeta: [FileMeta](#filemeta)): P
 
 **示例：**
 
-  ```ts
-  import { backup } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { backup } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let generalCallbacks: backup.GeneralCallbacks = {
-    onFileReady: (err: BusinessError, file: backup.File) => {
-      if (err) {
-        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onFileReady succeeded.`);
-      fileIo.closeSync(file.fd);
-    },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
-      if (err) {
-        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onBundleBegin succeeded.`);
-    },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
-      if (err) {
-        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onBundleEnd succeeded.`);
-    },
-    onAllBundlesEnd: (err: BusinessError) => {
-      if (err) {
-        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onAllBundlesEnd success`);
-    },
-    onBackupServiceDied: () => {
-      console.info(`service died`);
-    },
-    onResultReport: (bundleName: string, result: string) => {
-      console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-    },
-    onProcess: (bundleName: string, process: string) => {
-      console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-    },
-    onMigrateResult: (err: BusinessError<string|void>, bundleName: string) => {
-      if (err) {
-        console.error(`onMigrateResult failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info('onMigrateResult success, bundleName: ' + bundleName);
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
     }
-  };
-
-  async function testMigrateFile() {
-    let sessionRestore = new backup.SessionRestore(generalCallbacks);
-    try {
-      await sessionRestore.migrateFile(
-        {
-          srcPath: "/data/storage/el1/base/files/",
-          destPath: "/data/storage/el2/base/files/"
-        },
-        {
-          bundleName: "com.example.app",
-          uri: "test.txt"
-        }
-      );
-      console.info("migrateFile success");
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      console.error(`migrateFile failed. Code: ${err.code}, message: ${err.message}`);
+    console.info(`onFileReady succeeded.`);
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
     }
+    console.info(`onBundleBegin succeeded.`);
+  },
+  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleEnd succeeded.`);
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onAllBundlesEnd success.`);
+  },
+  onBackupServiceDied: () => {
+    console.info(`service died.`);
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  },
+  onMigrateResult: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onMigrateResult failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onMigrateResult success, bundleName: ' + bundleName);
   }
-  ```
+};
+
+async function testMigrateFile() {
+  let sessionRestore = new backup.SessionRestore(generalCallbacks);
+  try {
+    await sessionRestore.migrateFile(
+      {
+        srcPath: "/data/storage/el1/base/files/",
+        destPath: "/data/storage/el2/base/files/"
+      },
+      {
+        bundleName: "com.example.app",
+        uri: ""
+      }
+    );
+    console.info("migrateFile success.");
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`migrateFile failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
 
 ### getApkFileHandle
 
-getApkFileHandle(path: string, fileName: string): Promise&lt;[FileData](#filedata)&gt;
+getApkFileHandle(path: string, fileName: string): Promise&lt;FileData&gt;
 
 用于获取APK文件的文件句柄。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **需要权限**：ohos.permission.BACKUP
 
@@ -3436,7 +3409,7 @@ getApkFileHandle(path: string, fileName: string): Promise&lt;[FileData](#filedat
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;[FileData](#filedata)&gt; | Promise对象。返回FileData对象，包含文件描述符。返回的文件是临时文件，关闭时会自动删除。 |
+| Promise&lt;[FileData](#filedata)&gt; | Promise对象，返回FileData对象，包含文件描述符。返回的文件是临时文件，关闭时会自动删除。 |
 
 **错误码：**
 
@@ -3452,72 +3425,72 @@ getApkFileHandle(path: string, fileName: string): Promise&lt;[FileData](#filedat
 
 **示例：**
 
-  ```ts
-  import { backup } from '@kit.CoreFileKit';
-  import { fileIo } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { backup } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let generalCallbacks: backup.GeneralCallbacks = {
-    onFileReady: (err: BusinessError, file: backup.File) => {
-      if (err) {
-        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onFileReady succeeded.`);
-      fileIo.closeSync(file.fd);
-    },
-    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
-      if (err) {
-        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onBundleBegin succeeded.`);
-    },
-    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
-      if (err) {
-        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onBundleEnd succeeded.`);
-    },
-    onAllBundlesEnd: (err: BusinessError) => {
-      if (err) {
-        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info(`onAllBundlesEnd success`);
-    },
-    onBackupServiceDied: () => {
-      console.info(`service died`);
-    },
-    onResultReport: (bundleName: string, result: string) => {
-      console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
-    },
-    onProcess: (bundleName: string, process: string) => {
-      console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
-    },
-    onMigrateResult: (err: BusinessError<string|void>, bundleName: string) => {
-      if (err) {
-        console.error(`onMigrateResult failed. Code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      console.info('onMigrateResult success, bundleName: ' + bundleName);
+let generalCallbacks: backup.GeneralCallbacks = {
+  onFileReady: (err: BusinessError, file: backup.File) => {
+    if (err) {
+      console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+      return;
     }
-  };
-
-  async function testGetApkFileHandle() {
-    let sessionRestore = new backup.SessionRestore(generalCallbacks);
-    try {
-      let fileData: backup.FileData = await sessionRestore.getApkFileHandle("/data/storage/el1/base/files", "app.apk");
-      console.info("getApkFileHandle success, fd: " + fileData.fd);
-      // 使用完毕后关闭文件描述符
-      fileIo.closeSync(fileData.fd);
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      console.error(`getApkFileHandle failed. Code: ${err.code}, message: ${err.message}`);
+    console.info(`onFileReady succeeded.`);
+    fileIo.closeSync(file.fd);
+  },
+  onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+      return;
     }
+    console.info(`onBundleBegin succeeded.`);
+  },
+  onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onBundleEnd succeeded.`);
+  },
+  onAllBundlesEnd: (err: BusinessError) => {
+    if (err) {
+      console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info(`onAllBundlesEnd success.`);
+  },
+  onBackupServiceDied: () => {
+    console.info(`service died`);
+  },
+  onResultReport: (bundleName: string, result: string) => {
+    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+  },
+  onProcess: (bundleName: string, process: string) => {
+    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+  },
+  onMigrateResult: (err: BusinessError<string|void>, bundleName: string) => {
+    if (err) {
+      console.error(`onMigrateResult failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('onMigrateResult success, bundleName: ' + bundleName);
   }
-  ```
+};
+
+async function testGetApkFileHandle() {
+  let sessionRestore = new backup.SessionRestore(generalCallbacks);
+  try {
+    let fileData: backup.FileData = await sessionRestore.getApkFileHandle("/data/storage/el1/base/files", "app.apk");
+    console.info("getApkFileHandle success, fd: " + fileData.fd);
+    // 使用完毕后关闭文件描述符
+    fileIo.closeSync(fileData.fd);
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`getApkFileHandle failed. Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
 
 ## IncrementalBackupSession<sup>12+</sup>
 
