@@ -207,6 +207,7 @@ OH_Crypto_ErrCode OH_CryptoSm2CiphertextSpec_Create(Crypto_DataBlob *sm2Cipherte
 **参考：**
 
 [OH_CryptoSm2CiphertextSpec_GetItem](capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_getitem) 获取SM2密文的指定项。
+
 [OH_CryptoSm2CiphertextSpec_SetItem](capi-crypto-asym-cipher-h.md#oh_cryptosm2ciphertextspec_setitem) 设置SM2密文规格的指定项。
 
 
