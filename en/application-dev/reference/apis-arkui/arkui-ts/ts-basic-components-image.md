@@ -1090,7 +1090,7 @@ struct ImageExample1 {
 }
 ```
 
-![en-us_image_0000001592882500](figures/en-us_image_0000001592882500.gif)
+![loadingImagesOfBasicTypes](figures/loadingImagesOfBasicTypes.gif)
 
 ### Example 2: Downloading and Displaying Static Online Images
 
