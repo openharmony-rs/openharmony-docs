@@ -224,7 +224,7 @@ mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
 vfat、exfat及ntfs。
 
-从API版本26.0.0开始支持ext4
+从API版本26.0.0开始支持ext4。
 
 **系统接口**：此接口为系统接口。
 
