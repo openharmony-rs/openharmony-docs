@@ -97,7 +97,7 @@ getDLPGatheringPolicy(): Promise&lt;GatheringPolicyType&gt;
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getDLPGatheringPolicy().then((gatheringPolicy: dlpPermission.GatheringPolicyType) => {
-  console.info('gatheringPolicy：', JSON.stringify(gatheringPolicy));
+  console.info('gatheringPolicy:', JSON.stringify(gatheringPolicy));
 }).catch((error: BusinessError)=> {
   console.error(error.message);
 }); // 获取沙箱聚合策略。
@@ -200,7 +200,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
 dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100,
   uri).then((dlpSandboxInfo: dlpPermission.DLPSandboxInfo) => {
-  console.info('dlpSandboxInfo：', JSON.stringify(dlpSandboxInfo));
+  console.info('dlpSandboxInfo:', JSON.stringify(dlpSandboxInfo));
 }).catch((error: BusinessError)=> {
   console.error(error.message);
 }); // 安装DLP沙箱。
