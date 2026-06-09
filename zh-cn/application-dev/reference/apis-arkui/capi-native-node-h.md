@@ -475,24 +475,6 @@ enum ArkUI_NodeDirtyFlag
 | NODE_NEED_LAYOUT = 2 | 重新布局位置。 |
 | NODE_NEED_RENDER = 3 | 重新进行绘制。 |
 
-### ArkUI_NodeCustomEventType
-
-```c
-enum ArkUI_NodeCustomEventType
-```
-
-**描述：**
-
-
-定义自定义组件事件类型。
-
-**起始版本：** 12
-
-<!--Table: 30%; 70%-->
-| 枚举项 | 描述 |
-| -- | -- |
-| [ArkUI_NodeCustomEventType](./capi-native-node-node-attributes-node-attr-custom-h.md#arkui_nodecustomeventtype) | 定义自定义组件事件类型。 |
-
 ### ArkUI_NodeAdapterEventType
 
 ```c
