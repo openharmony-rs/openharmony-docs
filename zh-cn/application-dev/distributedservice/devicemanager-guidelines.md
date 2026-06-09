@@ -273,27 +273,27 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
    ArkTS-Sta示例：
 
    <!-- @[stop_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/DistributedAppDev/DistributedAuthentication-sta/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    stopDeviceDiscovery(): void {
      if (this.deviceManager === undefined) {
        logger.error('deviceManager has not initialized');
        return;
      }
      logger.info('stopDeviceDiscovery');
-
+   
      try {
        this.deviceManager!.stopDiscovering();
        if (this.discoverSuccessCallback !== undefined) {
          this.deviceManager!.offDiscoverSuccess(this.discoverSuccessCallback);
          this.discoverSuccessCallback = () => {};
        }
-
+   
        if (this.discoverFailureCallback !== undefined) {
          this.deviceManager!.offDiscoverFailure(this.discoverFailureCallback);
          this.discoverFailureCallback = () => {};
        }
-
+   
        if (this.serviceDieCallback !== undefined) {
          this.deviceManager!.offServiceDie(this.serviceDieCallback);
          this.serviceDieCallback = () => {};
