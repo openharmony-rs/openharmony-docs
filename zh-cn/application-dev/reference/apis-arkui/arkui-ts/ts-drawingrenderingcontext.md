@@ -12,13 +12,17 @@ DrawingRenderingContext对象与Canvas组件绑定后，可在Canvas组件上进
 >
 > 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-## constructor
+## 接口
+
+### constructor
 
 constructor(unit?: LengthMetricsUnit)
 
 构造使用drawing接口进行绘制的Canvas画布对象，支持配置DrawingRenderingContext对象的单位模式。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,6 +40,8 @@ get size(): Size
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -51,6 +57,8 @@ get canvas(): DrawingCanvas
 获取绘制内容的画布对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,27 +76,33 @@ invalidate(): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## DrawingCanvas<sup>12+</sup>对象说明
 
-type DrawingCanvas = Canvas
+type DrawingCanvas = import('../api/@ohos.graphics.drawing').default.Canvas
 
 可用于向DrawingRenderingContext上绘制内容的画布对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md) | 返回一个Canvas对象。 |
+| [import('../api/@ohos.graphics.drawing').default.Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md) | 返回一个Canvas对象。 |
 
 ## Size
 
 DrawingRenderingContext的尺寸信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
