@@ -17773,5 +17773,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/distributedservice/devicemanager-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/DistributedAppDev/DistributedAuthentication-sta/entry/src/main/ets/model/RemoteDeviceModel.ets",
+				"functions":[
+					{
+						"end_line":260,
+						"name":"start_discovering",
+						"start_line":218
+					},
+					{
+						"end_line":290,
+						"name":"stop_discovering",
+						"start_line":262
+					},
+					{
+						"end_line":356,
+						"name":"bind_target",
+						"start_line":329
+					},
+					{
+						"end_line":376,
+						"name":"unbind_target",
+						"start_line":358
+					},
+					{
+						"end_line":155,
+						"name":"device_state_change",
+						"start_line":119
+					},
+					{
+						"end_line":327,
+						"name":"release_device_manager",
+						"start_line":311
+					}
+				]
+			}
+		]
 	}
 ]
