@@ -1222,7 +1222,7 @@ struct ImageExample1 {
 }
 ```
 
-![Image-with-gif-png-jpg-svg](figures/Image-with-gif-png-jpg-svg.gif)
+![Image-with-gif-png-jpg-svg](figures/mediacachedimage-sample-picture.gif)
 
 ### 示例2（下载与显示静态网络图片）
 

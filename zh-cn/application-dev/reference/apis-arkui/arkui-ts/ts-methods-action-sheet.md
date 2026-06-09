@@ -474,7 +474,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_style](figures/zh-cn_image_action_style.gif)
+![zh-cn_image_action_style](figures/image-action-style.gif)
 
 ### 示例5（悬停态弹窗）
 
