@@ -70,23 +70,23 @@
 
 5. 使用用户证书凭据。
 
-    您的应用在获得用户授权后，可以读取已授权用户证书凭据的证书链，及使用对应私钥进行签名。
+   您的应用在获得用户授权后，可以读取已授权用户证书凭据的证书链，及使用对应私钥进行签名。
 
-  - 读取用户证书凭据的证书链。
+- 读取用户证书凭据的证书链。
 
-    调用getPublicCertificate接口，传入openAuthorizeDialog接口返回的KeyUri，从响应中的CMResult.credential.credentialData字段获取证书链（为pem格式的证书文件）。
+  调用getPublicCertificate接口，传入openAuthorizeDialog接口返回的KeyUri，从响应中的CMResult.credential.credentialData字段获取证书链（为pem格式的证书文件）。
 
-  - 使用用户证书凭据的私钥对数据进行签名。
+- 使用用户证书凭据的私钥对数据进行签名。
   
-    1. 调用init接口初始化签名会话，传入安装接口返回的KeyUri和签名算法参数（如：填充方式和摘要算法），并返回签名会话的句柄handle。
+  1. 调用init接口初始化签名会话，传入安装接口返回的KeyUri和签名算法参数（如：填充方式和摘要算法），并返回签名会话的句柄handle。
     
-    2. 调用update接口传入签名会话的句柄handle和待签名的数据。如果待签名的数据量比较大，可以调用多次update接口，每次传入部分数据。
+  2. 调用update接口传入签名会话的句柄handle和待签名的数据。如果待签名的数据量比较大，可以调用多次update接口，每次传入部分数据。
 
-    3. 调用finish接口结束签名会话并获取签名数据。
+  3. 调用finish接口结束签名会话并获取签名数据。
 
-    > **说明：**
-    >
-    > 签名、验签操作支持的参数组合，详见HUKS声明的[签名/验签介绍及算法规格](../UniversalKeystoreKit/huks-signing-signature-verification-overview.md)中RSA、ECC及SM2的描述。
+  > **说明：**
+  >
+  > 签名、验签操作支持的参数组合，详见HUKS声明的[签名/验签介绍及算法规格](../UniversalKeystoreKit/huks-signing-signature-verification-overview.md)中RSA、ECC及SM2的描述。
 
 ## 样例代码
 

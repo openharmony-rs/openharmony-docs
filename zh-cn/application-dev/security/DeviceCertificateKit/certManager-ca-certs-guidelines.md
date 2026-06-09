@@ -59,11 +59,11 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
 1. 权限申请和声明。
 
-    MDM应用调用安装和卸载CA证书接口需要申请权限：ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT
+   MDM应用调用安装和卸载CA证书接口需要申请权限：ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT
 
-    调用其他接口需要申请权限：ohos.permission.ACCESS_CERT_MANAGER
+   调用其他接口需要申请权限：ohos.permission.ACCESS_CERT_MANAGER
 
-    声明权限请参考：[声明权限](../AccessToken/declare-permissions.md)
+   声明权限请参考：[声明权限](../AccessToken/declare-permissions.md)
 
 2. 导入相关模块。
 
@@ -94,11 +94,11 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
 4. 读取系统CA证书和用户CA证书。
 
-    证书管理服务提供了共享目录供应用读取系统CA证书和用户CA证书文件，您的应用可以先通过getCertificateStorePath接口获取对应CA证书的存储目录，然后从目录中读取CA证书文件（为pem格式的证书文件）。
+   证书管理服务提供了共享目录供应用读取系统CA证书和用户CA证书文件，您的应用可以先通过getCertificateStorePath接口获取对应CA证书的存储目录，然后从目录中读取CA证书文件（为pem格式的证书文件）。
 
-    系统CA证书按照国际和国密算法类型分别存储在两个目录，可以通过getCertificateStorePath接口的property.certAlg参数获取指定算法的证书存储目录。
+   系统CA证书按照国际和国密算法类型分别存储在两个目录，可以通过getCertificateStorePath接口的property.certAlg参数获取指定算法的证书存储目录。
 
-    用户CA证书按照当前用户级和所有用户级分别存储在不同的目录，可以通过getCertificateStorePath接口的property.certScope参数获取指定级别的证书存储目录。
+   用户CA证书按照当前用户级和所有用户级分别存储在不同的目录，可以通过getCertificateStorePath接口的property.certScope参数获取指定级别的证书存储目录。
 
 ## 样例代码
 
