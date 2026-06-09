@@ -210,9 +210,9 @@ Multi-line text is more complex than single-line text. Generally, text typograph
 | text.WordBreak.BREAK_WORD, text.TextAlign.JUSTIFY, 10 lines at most.| ![image_complexArkTsDemoJustify](figures/image_complexArkTsDemoJustify.png)| 
 | text.WordBreak.BREAK_ALL, text.TextAlign.LEFT, 3 lines at most.| ![image_0000002211603680](figures/image_0000002211603680.png)| 
 | text.WordBreak.BREAK_ALL, text.TextAlign.LEFT, 10 lines at most.| ![image_0000002246563845](figures/image_0000002246563845.png)| 
-| text.WordBreak.BREAK_HYPHEN, text.TextAlign.LEFT, 10 lines at most.<br>No language preference. No hyphen (-) for word breaks.| ![ts_word_break_hyphen_locale_undefined.jpg](figures/ts_word_break_hyphen_locale_undefined.jpg) | 
-| text.WordBreak.BREAK_HYPHEN, text.TextAlign.LEFT, 10 lines at most.<br>Preferred language: en-gb (UK). Hyphens (-) for word breaks.| ![ts_word_break_hyphen_local_en-gb.jpg](figures/ts_word_break_hyphen_local_en-gb.jpg) | 
-| text.WordBreak.BREAK_HYPHEN, text.TextAlign.LEFT, 10 lines at most.<br>Preferred language: en-us (US). Hyphens (-) for word breaks.| ![ts_word_break_hyphen_local_en-us.jpg](figures/ts_word_break_hyphen_local_en-us.jpg) | 
+| text.WordBreak.BREAK_HYPHEN, text.TextAlign.LEFT, 10 lines at most.<br>No language preference. No hyphen (-) for word breaks.| ![ts-hyphen-locale-undefined.jpg](figures/ts-hyphen-locale-undefined.jpg) | 
+| text.WordBreak.BREAK_HYPHEN, text.TextAlign.LEFT, 10 lines at most.<br>Preferred language: en-gb (UK). Hyphens (-) for word breaks.| ![ts-hyphen-local-en-gb.jpg](figures/ts-hyphen-local-en-gb.jpg) | 
+| text.WordBreak.BREAK_HYPHEN, text.TextAlign.LEFT, 10 lines at most.<br>Preferred language: en-us (US). Hyphens (-) for word breaks.| ![ts-hyphen-local-en-us.jpg](figures/ts-hyphen-local-en-us.jpg) | 
 
 
 ## Multi-style Text Drawing and Display
@@ -851,10 +851,10 @@ struct Font08 {
 The following figures show the effect.
 | Style (Vertical Alignment)| Effect (The black box only shows the text drawing area and is not drawn in actual.)| 
 | -------- | -------- |
-| Baseline alignment (default)| ![image_complexArkTsDemo2_1](figures/en_image_verticalAlignment_baseline.jpg)| 
-| Top alignment| ![image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_top.jpg)| 
-| Center alignment| ![image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_center.jpg)| 
-| Bottom alignment| ![image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_bottom.jpg)| 
+| Baseline alignment (default)| ![verticalAlignment-baseline](figures/verticalAlignment-baseline.jpg)| 
+| Top alignment| ![verticalAlignment-top](figures/verticalAlignment-top.jpg)| 
+| Center alignment| ![verticalAlignment-center](figures/verticalAlignment-center.jpg)| 
+| Bottom alignment| ![verticalAlignment-bottom](figures/verticalAlignment-bottom.jpg)| 
 
 ### Example 4 (Superscript and Subscript)
 The following uses the subscript style as an example to describe the superscript and subscript typography feature.
@@ -1003,8 +1003,8 @@ struct Font08 {
 The following figures show the effect.
 | Style (Superscript and Subscript)| Effect| 
 | -------- | -------- |
-| Superscript text| ![image_complexArkTsDemo2_1](figures/en_image_subscript.jpg)| 
-| Subscript text| ![image_complexArkTsDemo2_2](figures/en_image_superscript.jpg)| 
+| Superscript text| ![subscript](figures/subscript.jpg)| 
+| Subscript text| ![superscript](figures/superscript.jpg)| 
 
 ### Example 5 (High Contrast)
 The following uses high contrast as an example to describe how to draw and display high-contrast text.

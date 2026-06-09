@@ -12,7 +12,7 @@ Let's look at an example. After an image is clicked, it disappears, and a new im
 
 | Frame-by-Frame Transition Effect| Shared Element Transition|
 | ------ | ---- |
-| ![en-us_image_0000001599644876](figures/en-us_image_0000001599644876.gif)|![en-us_image_0000001599644877](figures/en-us_image_0000001599644877.gif)|
+| ![Frame-transition-effect](figures/Frame-transition-effect.gif)|![one-shot-style](figures/one-shot-style.gif)|
 
 There are multiple methods for implementing the shared element transition. During real-world development, choose the method that best meets the requirements of your project.
 
@@ -193,7 +193,7 @@ export default struct Post {
 }
 ```
 
-![en-us_image_0000001600653160](figures/en-us_image_0000001600653160.gif)
+![one-shot-style-container](figures/one-shot-style-container.gif)
 
 ## Creating a Container and Migrating Components Across Containers
 
@@ -1926,7 +1926,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-![en-us_image_BindSheetNodeTransfer](figures/en-us_image_BindSheetNodeTransfer.gif)
+![BindSheetNodeTransfer](figures/BindSheetNodeTransfer.gif)
 
 ## Using geometryTransition
 
@@ -2002,7 +2002,7 @@ struct IfElseGeometryTransition {
 }
 ```
 
-![en-us_image_0000001599644878](figures/en-us_image_0000001599644878.gif)
+![one-shot-style-page](figures/one-shot-style-page.gif)
 
 ### Combining geometryTransition with Modal Transition
 
@@ -2190,6 +2190,6 @@ export default struct Post {
 
 After a profile picture on the home page is clicked, the corresponding profile page is displayed in a modal, and there is a shared element transition between the profile pictures on the two pages.
 
-![en-us_image_0000001597320327](figures/en-us_image_0000001597320327.gif)
+![one-shot-style-avatar](figures/one-shot-style-avatar.gif)
 
 <!--RP1--><!--RP1End-->

@@ -155,7 +155,7 @@
 
 3. On the toolbar in the upper right corner of the editing window, click **Previewer**. Below is how the first page looks in the Previewer.
 
-   ![en-us_image_0000001311334976](figures/en-us_image_0000001311334976.png)
+   ![Previewer](figures/Previewer.png)
 
 
 ## Building the Second Page
@@ -335,9 +335,9 @@ To deliver better transition effects, use **Navigation**.
    }
    ```
 
-3. Open the **Index.ets** file and click ![en-us_image_0000001311015192](figures/en-us_image_0000001311015192.png) in the Previewer to refresh the UI. The display effect is shown in the figure below.
+3. Open the **Index.ets** file and click ![refresh](figures/refresh.png) in the Previewer to refresh the UI. The display effect is shown in the figure below.
 
-   ![en-us_image_0000001364254729](figures/en-us_image_0000001364254729.png)
+   ![Page-redirection-return](figures/Page-redirection-return.png)
 
 
 ## Running the Application on a Real Device
@@ -348,8 +348,8 @@ To deliver better transition effects, use **Navigation**.
 
    ![signConfig](figures/signConfig.png)
 
-3. On the toolbar in the upper right corner of the editing window, click ![en-us_image_0000001364054485](figures/en-us_image_0000001364054485.png). The display effect is shown in the figure below.
+3. On the toolbar in the upper right corner of the editing window, click ![start](figures/start.png). The display effect is shown in the figure below.
 
-   ![en-us_image_0000001364254729](figures/en-us_image_0000001364254729.png)
+   ![Page-redirection-return](figures/Page-redirection-return.png)
 
 Congratulations! You have successfully built your first OpenHarmony application based on ArkTS. Feel free to explore more HarmonyOS features!

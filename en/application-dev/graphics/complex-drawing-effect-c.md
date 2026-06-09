@@ -105,7 +105,7 @@ OH_Drawing_PathEffectDestroy(pathEffect);
 
 | Path Without Dashed Lines| Path With Dashed Lines|
 | -------- | -------- |
-| ![image_0000002158584342](figures/image_0000002158584342.png)| ![image_0000002194110865](figures/image_0000002194110865.png)|
+| ![Path-Without-Dashed-Lines](figures/Path-Without-Dashed-Lines.png)| ![image_0000002194110865](figures/image_0000002194110865.png)|
 
 
 ## Shader Effect
