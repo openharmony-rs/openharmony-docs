@@ -60,7 +60,7 @@
 
   - 读取应用证书凭据的证书链。
 
-    调用getPrivateCertificate接口，传入安装接口返回的KeyUri，从响应中的CMResult.credential.credentialData字段获取证书链（为der格式的证书文件）。
+    调用getPrivateCertificate接口，传入安装接口返回的KeyUri，从响应中的CMResult.credential.credentialData字段获取证书链（为pem格式的证书文件）。
 
   - 使用应用证书凭据的私钥对数据进行签名。
   
