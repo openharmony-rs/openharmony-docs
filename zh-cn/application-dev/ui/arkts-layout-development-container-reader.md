@@ -27,7 +27,7 @@ ContainerReader提供以下关键能力。
 
 > **说明：**
 > - 当父容器为Flex组件、Row组件或Column组件时，ContainerReader会占满父容器剩余空间，Flex的弹性特性生效优先级不变。
-> - 当父容器为其他容器类型时，ContainerReader会取父容器的理想尺寸，撑满父容器。
+> - 当父容器为其他容器类型时，ContainerReader会撑满父容器。
 > - ContainerReader的尺寸由父容器和自身布局确定，不受子组件影响。
 
 | 父容器类型 | 无兄弟节点 | 有兄弟节点 |
@@ -35,8 +35,12 @@ ContainerReader提供以下关键能力。
 | Flex、Row、Column | 撑满父容器。 | 撑满父容器剩余空间。 |
 | 其他类型组件 | 撑满父组件。 | 撑满父组件。 |
 
+
 [ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)作为子组件时，其尺寸由父容器决定。当父容器为Flex、Row或Column时，ContainerReader会根据父容器的布局方向自动撑满父容器剩余空间。
 
+> **说明：** 
+>
+> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
 <!-- @[FillTheSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/FillTheSpace.ets) -->
 
@@ -71,7 +75,11 @@ struct Example {
 
 ![](figures/containerReader-development-demo1.png)
 
-当Flex、Row或Column容器中有多个子组件时，[ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)可以占满剩余空间。这在固定内容与自适应内容并存的场景中较为适用。
+[ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)作为Flex、Row或Column的子组件使用时，会优先为非ContainerReader类型的子组件测算尺寸，再结合父容器剩余空间与开发者设置为ContainerReader组件分配空间。这在固定内容与自适应内容并存的场景中较为适用。
+
+> **说明：** 
+>
+> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
 <!-- @[DivideRemainingSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/DivideRemainingSpace.ets) -->
 
@@ -116,6 +124,10 @@ struct Example {
 ![](figures/containerReader-development-remainSize.png)
 
 当Flex、Row或Column容器中有多个[ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)子组件时，按开发者书写顺序第一个ContainerReader会占满剩余空间，此时其余ContainerReader组件的主轴大小为0。但开发者可以通过layoutWeight属性使多个ContainerReader平分剩余空间。
+
+> **说明：** 
+>
+> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
 <!-- @[DivideRemainingSpaceEqually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/DivideRemainingSpaceEqually.ets) -->
 
@@ -182,7 +194,7 @@ struct Example {
 ![](figures/containerReader-development-remainSize-layoutWeight.png)
 
 
-### 约束与限制
+## 约束与限制
 
 **状态变量要求**
 
@@ -220,63 +232,51 @@ ContainerReader({
 因此请确保，父容器有明确尺寸，含有ContainerReader组件的父容器不应依赖子节点确认自身大小，ContainerReader组件不依赖自身子节点大小确认尺寸。
 
 
-## ContainerReader开发指导
+## 获取ContainerReader容器尺寸
 
-### 接口说明
+ContainerReader的主要接口包括ContainerReader和breakpointConfig。
 
-**ContainerReader接口**
+- ContainerReader接口
 
-[ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)是实现容器断点的核心组件，其使用要求如下。
-
-> **说明：**
-> - [ContainerReaderInfo](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#containerreaderinfo)所有参数都必须通过状态变量进行双向绑定。
-> - ContainerReader通过双向绑定机制，将后端计算的尺寸和断点值实时更新到状态变量中。不能通过改变此处[ContainerReaderInfo](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#containerreaderinfo)的size来试图设置ContainerReader尺寸。
-> - 在使用状态变量时需要添加`!!`后缀，触发双向绑定更新。
+   [ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)是实现容器断点的核心组件，其使用要求如下。[ContainerReaderInfo](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#containerreaderinfo)所有参数都必须通过状态变量进行双向绑定。ContainerReader通过双向绑定机制，将后端计算的尺寸和断点值实时更新到状态变量中。不能通过改变此处[ContainerReaderInfo](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#containerreaderinfo)的size来试图设置ContainerReader尺寸。在使用状态变量时需要添加[!!](state-management/arkts-new-binding.md)后缀，触发双向绑定更新。
 
 
-**breakpointConfig属性**
+- breakpointConfig属性
 
-通过[breakpointConfig](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#breakpointconfig)属性可以自定义断点阈值。
+   通过[breakpointConfig](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#breakpointconfig)属性可以自定义断点阈值。断点数组必须为单调递增数组。其中，宽度断点最多支持5个，即数组最大长度为4；高度断点最多支持3个，即数组最大长度为2。断点区间为左闭右开区间`[breakpoint[i], breakpoint[i+1])`。宽度断点值单位为vp；高度断点值为组件高度与宽度的比值，无单位。
 
+   **异常处理规则：**
 
-**自定义断点规则：**
-- 断点数组必须为单调递增数组。
-- 宽度断点最多支持5个，即数组最大长度为4；高度断点最多支持3个，即数组最大长度为2。
-- 断点区间为左闭右开区间`[breakpoint[i], breakpoint[i+1])`。
-- 宽度断点值单位为vp；高度断点值为组件高度与宽度的比值，无单位。
+   | 异常情况 | 处理方式 |
+   | -------- | -------- |
+   | 数组大小超过最大数量。 | 使用系统默认断点。 |
+   | 数组非递增。 | 取递增结束的子数组。 |
+   | 数组中存在异常值（非数字等）。 | 跳过异常值，只处理有效值。 |
 
-**异常处理规则：**
+   **示例：**
 
-| 异常情况 | 处理方式 |
-| -------- | -------- |
-| 数组大小超过最大数量。 | 使用系统默认断点。 |
-| 数组非递增。 | 取递增结束的子数组。 |
-| 数组中存在异常值（非数字等）。 | 跳过异常值，只处理有效值。 |
+   ```ts
+   // 示例1：数组超过最大长度[320, 600, 840, 1440, 2000, 3000]
+   // 超过部分被忽略，使用系统默认：[320, 600, 840, 1440]
+   .breakpointConfig({ width: [320, 600, 840, 1440, 2000, 3000] })
 
-**示例：**
+   // 示例2：数组非递增[100, 50, 300, 400]
+   // 取递增结束的子数组：[100]
+   .breakpointConfig({ width: [100, 50, 300, 400] })
 
-```ts
-// 示例1：数组超过最大长度[320, 600, 840, 1440, 2000, 3000]
-// 超过部分被忽略，使用系统默认：[320, 600, 840, 1440]
-.breakpointConfig({ width: [320, 600, 840, 1440, 2000, 3000] })
-
-// 示例2：数组非递增[100, 50, 300, 400]
-// 取递增结束的子数组：[100]
-.breakpointConfig({ width: [100, 50, 300, 400] })
-
-// 示例3：数组包含异常值[100, undefined, 300, 400]
-// 跳过异常值undefined，处理有效值：[100, 300, 400]
-.breakpointConfig({ width: [100, undefined, 300, 400] })
-```
+   // 示例3：数组包含异常值[100, undefined, 300, 400]
+   // 跳过异常值undefined，处理有效值：[100, 300, 400]
+   .breakpointConfig({ width: [100, undefined, 300, 400] })
+   ```
 
 
-### 开发步骤
-
-下面为容器断点的简单开发步骤。
+下面介绍容器断点的简单开发步骤。
 
 1. 声明状态变量。
 
    首先需要声明用于存储容器尺寸和断点信息的状态变量并初始化，防止在未获取ContainerReader的大小和断点时使用造成异常。
+
+   <!-- @[DevelopmentSteps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentSteps/DevelopmentSteps.ets) -->
 
    ```ts
    @State containerSize: Size = { width: 0, height: 0 };
@@ -286,6 +286,8 @@ ContainerReader({
 2. 配置ContainerReader。
 
    将状态变量绑定到ContainerReader组件，使用`!!`后缀触发双向绑定更新。
+
+   <!-- @[DevelopmentSteps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentSteps/DevelopmentSteps.ets) -->
 
    ```ts
    ContainerReader({
@@ -306,7 +308,11 @@ ContainerReader({
    情况二：可以为ContainerReader设置布局约束等尺寸属性来约束其尺寸。当Flex、Row或Column容器中有多个ContainerReader子组件时，一般情况下按开发者书写顺序第一个ContainerReader会占满剩余空间，此时其余ContainerReader组件的主轴大小为0。当开发者给书写顺序靠前的ContainerReader设置了尺寸约束时，会按尺寸约束分配给ContainerReader空间，再将剩余空间分配给开发者写的下一个ContainerReader。
 
    以情况一的撑满父容器为例，Flex给子组件ContainerReader分配与Flex等大的空间。
-   
+
+   > **说明：** 
+   >
+   > 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
+
    <!-- @[DevelopmentSteps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentSteps/DevelopmentSteps.ets) -->
 
    ```ts
@@ -341,268 +347,13 @@ ContainerReader({
    ![](figures/containerReader-development-demo1.png)
 
 
-## 结合Flex/Row/Column使用
-
-[ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)作为Flex、Row或Column的子组件结合使用时，会优先为非ContainerReader类型的子组件测算尺寸，再结合剩余空间与开发者设置为ContainerReader组件分配空间。
-
-1. layoutWeight分配剩余空间。
-
-   当ContainerReader作为Flex、Row或Column的子组件时，它会自动撑满父容器的剩余空间。通过[layoutWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)可以精确控制占比。
-
-   <!-- @[CombineWithLayoutWeight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/combineWithFlexRowColumn/CombineWithLayoutWeight.ets) -->
-
-   ```ts
-   import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
-   @Entry
-   @Component
-   struct Example {
-     @State containerSize: Size = { width: 0, height: 0 };
-     @State widthBp: WidthBreakpoint = WidthBreakpoint.WIDTH_MD;
-     build() {
-       Flex({ direction: FlexDirection.Row }) {
-         Column() {
-           Text('Text')
-             .width(80)
-             .height('100%')
-
-         }
-         .width(80)
-         .height('100%')
-         .backgroundColor('#D5D5D5')
-
-         ContainerReader({
-           size: this.containerSize!!,
-           widthBreakpoint: this.widthBp!!
-         }) {
-           Column() {
-             Text('ContainerReader1')
-           }
-           .width('100%')
-           .height('100%')
-           .justifyContent(FlexAlign.Center)
-         }
-         .layoutWeight(1)
-         .backgroundColor('#F7F7F7')
-
-         ContainerReader({
-           size: this.containerSize!!,
-           widthBreakpoint: this.widthBp!!
-         }) {
-           Column() {
-             Text('ContainerReader2')
-           }
-           .width('100%')
-           .height('100%')
-           .justifyContent(FlexAlign.Center)
-         }
-         .layoutWeight(1)
-         .backgroundColor('#707070')
-       }
-       .width('100%')
-       .height(300)
-       .backgroundColor('#F0FAFF')
-       .padding(10)
-     }
-   }
-   ```
-
-   ![](figures/containerReader-development-layoutWeight.png)
-
-2. displayPriority控制显示优先级。
-
-   在空间不足时，[displayPriority](../reference/apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#displaypriority)可以控制ContainerReader的显示优先级，优先级低的组件会被隐藏。
-
-   <!-- @[CombineWithLowDisplayPriority](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/combineWithFlexRowColumn/CombineWithLowDisplayPriority.ets) -->
-
-   ```ts
-   import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
-   @Entry
-   @Component
-   struct Page8 {
-     @State cSize: Size = { width: 100, height: 100 };
-     @State wBreakpoint: WidthBreakpoint = WidthBreakpoint.WIDTH_MD;
-     @State hBreakpoint: HeightBreakpoint = HeightBreakpoint.HEIGHT_SM;
-
-     build() {
-       Column(){
-         Flex() {
-           Text('Text').width(100).height(100).displayPriority(2).backgroundColor('#004AAF')
-           Text('Text').width(100).height(100).displayPriority(2).backgroundColor('#2787D9')
-
-           ContainerReader({
-             size: this.cSize!!,
-             widthBreakpoint: this.wBreakpoint!!,
-             heightBreakpoint: this.hBreakpoint!!
-           })
-           .displayPriority(1)
-           .backgroundColor('#004AAF')
-         }
-         .height('30%')
-         .width('80%')
-         .backgroundColor('#F0FAFF')
-       }
-       .height('100%')
-       .width('100%')
-     }
-   }
-   ```
-
-   高优先级组件先布局，空间有剩余时，ContainerReader组件占满剩余空间。
-
-   ![](figures/containerReader-development-displayPriority-remain.png)
-   
-
-   当ContainerReader优先级较高时，优先为其分配空间。
-
-   <!-- @[CombineWithHighDisplayPriority](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/combineWithFlexRowColumn/CombineWithHighDisplayPriority.ets) -->
-
-   ```ts
-   import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
-   @Entry
-   @Component
-   struct Page8 {
-     @State cSize: Size = { width: 100, height: 100 };
-     @State wBreakpoint: WidthBreakpoint = WidthBreakpoint.WIDTH_MD;
-     @State hBreakpoint: HeightBreakpoint = HeightBreakpoint.HEIGHT_SM;
-
-     build() {
-       Column(){
-         Flex() {
-           Text('Text').width(100).height(100).displayPriority(2).backgroundColor('#004AAF')
-           Text('Text').width(100).height(100).displayPriority(2).backgroundColor('#2787D9')
-           ContainerReader({
-             size: this.cSize!!,
-             widthBreakpoint: this.wBreakpoint!!,
-             heightBreakpoint: this.hBreakpoint!!
-           }) {
-             Text('ContainerReader')
-           }
-           .displayPriority(3)
-           .backgroundColor('#004AAF')
-         }
-         .height('50%')
-         .width('80%')
-         .backgroundColor('#F0FAFF')
-         .padding(10)
-       }
-       .height('100%')
-       .width('100%')
-     }
-   }
-   ```
-
-   高优先级组件先布局，ContainerReader组件优先级较高，优先占满空间。
-
-   ![](figures/containerReader-development-displayPriority-higher.png)
-
-3. flexShrink控制收缩比例。
-
-   当父容器空间不足时，[flexShrink](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)控制各子组件的收缩比例。flexShrink值越大，收缩越多。
-
-   Flex默认[flexShrink](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)为1。当前非ContainerReader组件先测算尺寸，然后ContainerReader组件测算尺寸。按照开发者书写顺序，第一个ContainerReader占满剩余空间，第二个ContainerReader设置了宽度约束（100vp）后，子组件总宽度超出Flex容器，此时按flexShrink比例进行压缩处理。
-
-   <!-- @[CombineWithFlexShrink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/combineWithFlexRowColumn/CombineWithFlexShrink.ets) -->
-
-   ```ts
-   import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
-   @Entry
-   @Component
-   struct Page8 {
-     @State cSize: Size = { width: 100, height: 100 };
-     @State wBreakpoint: WidthBreakpoint = WidthBreakpoint.WIDTH_MD;
-     @State hBreakpoint: HeightBreakpoint = HeightBreakpoint.HEIGHT_SM;
-     @State cSize1: Size = { width: 100, height: 100 };
-     @State wBreakpoint1: WidthBreakpoint = WidthBreakpoint.WIDTH_MD;
-     @State hBreakpoint1: HeightBreakpoint = HeightBreakpoint.HEIGHT_SM;
-
-     build() {
-       Column(){
-         Flex() {
-           ContainerReader({
-             size: this.cSize!!,
-             widthBreakpoint: this.wBreakpoint!!,
-             heightBreakpoint: this.hBreakpoint!!
-           })
-           .flexShrink(2)
-           .backgroundColor('#2787D9')
-           Text('Text').width(100).height(100).backgroundColor('#004AAF')
-           Text('Text').width(100).height(100).backgroundColor('#2787D9')
-           ContainerReader({
-             size: this.cSize1!!,
-             widthBreakpoint: this.wBreakpoint1!!,
-             heightBreakpoint: this.hBreakpoint1!!
-           })
-           .width(100)
-           .flexShrink(2)
-           .backgroundColor('#004AAF')
-         }
-         .height('30%')
-         .width('80%')
-         .backgroundColor('#D5D5D5')
-       }
-       .height('100%')
-       .width('100%')
-     }
-   }
-   ```
-
-   ![](figures/containerReader-development-flexShrink.png)
-
-4. flexGrow控制扩展比例。
-
-   当父容器有剩余空间时，[flexGrow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow)控制各子组件的扩展比例。flexGrow值越大，获取的剩余空间越多。仅在ContainerReader有用户设置尺寸时使用，无用户设置时ContainerReader组件占满剩余空间无需拉伸。
-
-   <!-- @[CombineWithFlexGrow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/combineWithFlexRowColumn/CombineWithFlexGrow.ets) -->
-
-   ```ts
-   import {ContainerReader, ContainerReaderAttribute, Size} from '@kit.ArkUI';
-   @Entry
-   @Component
-   struct Page8 {
-     @State cSize: Size = { width: 100, height: 100 };
-     @State wBreakpoint: WidthBreakpoint = WidthBreakpoint.WIDTH_MD;
-     @State hBreakpoint: HeightBreakpoint = HeightBreakpoint.HEIGHT_SM;
-     @State cSize1: Size = { width: 100, height: 100 };
-     @State wBreakpoint1: WidthBreakpoint = WidthBreakpoint.WIDTH_MD;
-     @State hBreakpoint1: HeightBreakpoint = HeightBreakpoint.HEIGHT_SM;
-
-     build() {
-       Column(){
-         Row() {
-           ContainerReader({
-             size: this.cSize!!,
-             widthBreakpoint: this.wBreakpoint!!,
-             heightBreakpoint: this.hBreakpoint!!
-           })
-           .width(50)
-           .flexGrow(1)
-           .backgroundColor('#2787D9')
-           Text('Text').width(100).height(100).backgroundColor('#F0FAFF')
-           ContainerReader({
-             size: this.cSize1!!,
-             widthBreakpoint: this.wBreakpoint1!!,
-             heightBreakpoint: this.hBreakpoint1!!
-           })
-           .width(50)
-           .flexGrow(2)
-           .backgroundColor('#2787D9')
-         }
-         .height('30%')
-         .width('80%')
-         .backgroundColor('#D5D5D5')
-       }
-       .height('100%')
-       .width('100%')
-     }
-   }
-   ```
-
-   ![](figures/containerReader-development-flexGrow.png)
-
-
 ## 实现独立断点
 
 在同一组件中，可以同时使用多个ContainerReader组件，每个组件可以拥有独立的断点状态，实现更精细化的布局控制。
+
+> **说明：** 
+>
+> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
 <!-- @[IndependentBreakpoints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/IndependentBreakpoints.ets) -->
 
@@ -669,6 +420,10 @@ struct MultiContainerExample {
 ## 网格组件根据自身容器断点设置列数
 
 在多设备开发中，网格组件（如[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)）可以根据自身容器尺寸设置不同的列数，实现自适应的列表布局。
+
+> **说明：** 
+>
+> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
 <!-- @[GridComponentAdaptiveColumnSettings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/GridComponentAdaptiveColumnSettings.ets) -->
 
@@ -749,7 +504,11 @@ struct GridBreakpointExample {
 
 ## 自定义组件根据容器断点自适应布局
 
-开发者可以创建自定义组件，组件内部使用ContainerReader来实现自适应的内部布局，使得组件在不同的使用场景下都能呈现最佳效果。
+开发者可以创建自定义组件，组件内部使用ContainerReader来实现自适应的内部布局，使组件在不同的使用场景下都能呈现最佳效果。
+
+> **说明：** 
+>
+> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
 <!-- @[CustomComponentAdaptiveLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/CustomComponentAdaptiveLayout.ets) -->
 
@@ -777,48 +536,6 @@ struct AdaptiveCard {
     .backgroundColor('#D5D5D5')
     .border({ width: 1, color: '#D5D5D5', radius: 8 })
   }
-
-  // 根据断点切换卡片内容布局：小尺寸纵向排列，大尺寸横向排列
-  @Builder
-  buildCardContent() {
-    if (this.widthBp === WidthBreakpoint.WIDTH_XS || this.widthBp === WidthBreakpoint.WIDTH_SM) {
-      // 小尺寸：纵向排列，文本最多2行
-      Column({ space: 10 }) {
-        Column({ space: 5 }) {
-          Text(this.title)
-            .fontSize(16)
-            .fontWeight(FontWeight.Bold)
-          Text(this.content)
-            .fontSize(12)
-            .fontColor('#707070')
-            .maxLines(2)
-            .textOverflow({ overflow: TextOverflow.Ellipsis })
-        }
-        .width('100%')
-        .padding(10)
-        .alignItems(HorizontalAlign.Start)
-      }
-      .width('100%')
-    } else {
-      // 大尺寸：横向排列，文本最多3行
-      Row({ space: 10 }) {
-        Column({ space: 5 }) {
-          Text(this.title)
-            .fontSize(16)
-            .fontWeight(FontWeight.Bold)
-          Text(this.content)
-            .fontSize(12)
-            .fontColor('#707070')
-            .maxLines(3)
-            .textOverflow({ overflow: TextOverflow.Ellipsis })
-        }
-        .layoutWeight(1)
-        .alignItems(HorizontalAlign.Start)
-      }
-      .width('100%')
-      .padding(10)
-    }
-  }
 }
 
 // 使用不同尺寸的容器展示AdaptiveCard的自适应效果
@@ -836,7 +553,6 @@ struct AdaptiveCardExample {
         .fontColor('#707070')
         .alignSelf(ItemAlign.Start)
 
-      // 小容器：触发小尺寸断点，纵向布局
       AdaptiveCard({
         title: 'Small Card',
         content: 'This card adapts to small containers with vertical layout.'
@@ -849,7 +565,6 @@ struct AdaptiveCardExample {
         .fontColor('#707070')
         .alignSelf(ItemAlign.Start)
 
-      // 大容器：触发大尺寸断点，横向布局
       AdaptiveCard({
         title: 'Large Card',
         content: 'This card adapts to large containers with horizontal layout.'
@@ -869,6 +584,10 @@ struct AdaptiveCardExample {
 ## 左右分栏布局自适应
 
 在主从结构页面中，左侧为固定宽度的Tab标签，右侧为自适应的详情区域。右侧详情区域使用ContainerReader，根据剩余宽度自动切换布局：窄屏时上下排列，宽屏时左右排列。
+
+> **说明：** 
+>
+> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
 <!-- @[LeftOrRightSplitLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/LeftOrRightSplitLayout.ets) -->
 

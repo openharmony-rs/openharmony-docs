@@ -64,7 +64,7 @@ ContainerReader(value: ContainerReaderInfo)
 | ---- | ---- | ---- | ---- | ---- |
 | size | [Size](../js-apis-arkui-graphics.md#size) | 否 | 否 | 获取到的当前ContainerReader组件的尺寸，用于布局分析和断点计算。<br/>**说明：** <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。绑定后组件尺寸值变化时，size绑定的变量值会自动更新。 |
 | widthBreakpoint | [WidthBreakpoint](./ts-appendix-enums.md#widthbreakpoint13) | 否 | 是 | 容器的宽度断点，为获取到的当前ContainerReader组件的宽度断点枚举值。<br/>默认值：WidthBreakpoint.XS<br/>**说明：** <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。绑定后组件宽度断点值变化时，widthBreakpoint绑定的变量值会自动更新。 |
-| heightBreakpoint | [HeightBreakpoint](./ts-appendix-enums.md#heightbreakpoint13) | 否 | 是 | 容器的高度断点，为获取到的当前ContainerReader组件的高宽比断点枚举值。<br/>默认值：HeightBreakpoint.SM<br/>**说明：** <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。绑定后组件高度断点值变化时，heightBreakpoint绑定的变量值会自动更新。 |
+| heightBreakpoint | [HeightBreakpoint](./ts-appendix-enums.md#heightbreakpoint13) | 否 | 是 | 容器的高度断点，为获取到的当前ContainerReader组件在不同高宽比阈值下对应的高度断点枚举值。<br/>默认值：HeightBreakpoint.SM<br/>**说明：** <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。绑定后组件高度断点值变化时，heightBreakpoint绑定的变量值会自动更新。 |
 
 ## 属性
 
@@ -124,6 +124,10 @@ breakpointConfig(value?: BreakpointOptions)
 该示例展示了[ContainerReader](#containerreader-1)组件，如何通过双向绑定获取容器尺寸和断点信息，并根据宽度断点切换布局方向。
 
 从API版本26.0.0开始，新增ContainerReader。
+
+> **说明：** 
+>
+> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
 ```ts
 // xxx.ets
@@ -192,6 +196,10 @@ struct Index {
 该示例展示了如何通过[breakpointConfig](#breakpointconfig)自定义断点阈值，定义不同的宽窄布局尺寸要求，实现更精细化的布局控制。
 
 从API版本26.0.0开始，新增ContainerReader与breakpointConfig。
+
+> **说明：** 
+>
+> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
 ```ts
 // xxx.ets
@@ -267,6 +275,10 @@ struct Index {
 该示例展示了如何根据ContainerReader得到的宽度断点动态调整列数，实现多设备自适应布局。根据宽度断点不同设置不同的列数。
 
 从API版本26.0.0开始，新增ContainerReader。
+
+> **说明：** 
+>
+> 使用ContainerReader需要同时导入ContainerReaderAttribute，否则会导致编译报错。
 
 ```ts
 // xxx.ets
