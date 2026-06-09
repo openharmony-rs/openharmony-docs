@@ -1803,7 +1803,7 @@ ArkTS-Sta: deletePartition(diskId: string, partitionNum: int): Promise&lt;void&g
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号} |
+| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
 | partitionNum | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 分区号。 |
 
 **返回值：**
@@ -1880,7 +1880,7 @@ ArkTS-Sta: formatPartition(diskId: string, partitionNum: int, params: FormatPara
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号} |
+| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
 | partitionNum | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 分区号。 |
 | params | [FormatParams](#formatparams) | 是   | 格式化参数。 |
 
