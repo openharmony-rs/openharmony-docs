@@ -83,6 +83,7 @@ Text(content?: string | Resource , value?: TextOptions)
 | marqueeOptions<sup>18+</sup> | 设置文本跑马灯模式的配置项。 |
 | textOverflow | 设置文本超长时的显示方式。 |
 | wordBreak<sup>11+</sup> | 设置断行规则。 |
+| punctuationOverflow | 设置是否启用行尾标点符号悬挂。<br>**起始版本：** 26.0.0 |
 
 **行与段落**
 
@@ -99,6 +100,7 @@ Text(content?: string | Resource , value?: TextOptions)
 | minLines<sup>22+</sup> | 设置文本显示的最小行数。 |
 | optimizeTrailingSpace<sup>20+</sup> | 优化行尾空格。 |
 | textIndent<sup>10+</sup> | 设置首行文本缩进。 |
+| tailIndents | 设置文本尾部缩进。<br>**起始版本：** 26.0.0 |
 
 **字体自适应**
 
@@ -142,6 +144,7 @@ Text(content?: string | Resource , value?: TextOptions)
 |------|------|
 | contentTransition<sup>20+</sup> | 文本动效属性。 |
 | enableHapticFeedback<sup>13+</sup> | 设置是否开启触控反馈。 |
+| incrementalUpdatePolicy | 设置文本渲染的增量更新策略。<br/>**起始版本：** 26.0.0 |
 | privacySensitive<sup>12+</sup> | 设置是否支持卡片敏感隐私信息。 |
 
 以下是详细的接口说明：
@@ -606,7 +609,7 @@ fontFeature(value: string)
 >
 >  系统默认字体支持的liga连字：Th fb ff fb ffb ffh ffi ffk ffl fh fi fk fl rf rt rv rx ry。常导致Span、属性字符串的效果不符合预期，关闭liga连字特性可以规避。
 >
->  文字特性效果与使用的字体文件密切相关。例如，8标点挤压功能在当前系统默认字体中仅对左侧标点符号生效，而右侧标点符号及感叹号、顿号、问号均不生效。
+>  文字特性效果与使用的字体文件密切相关。例如，8标点挤压功能需要字体文件中字符支持"ss08"特性，否则无法压缩，在当前系统默认字体中右侧标点符号及感叹号、顿号、问号均不生效。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -771,6 +774,28 @@ heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 是   | 文本自适应高度的方式。<br/>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST |
+
+### incrementalUpdatePolicy
+
+incrementalUpdatePolicy(policy: IncrementalUpdatePolicy | undefined)
+
+设置文本渲染的增量更新策略。未通过该接口设置时，默认为IncrementalUpdatePolicy.NONE。
+
+该接口仅在Text内容包含属性字符串（StyledString）时生效。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                        | 必填 | 说明                                                         |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| policy | [IncrementalUpdatePolicy](ts-text-common.md#incrementalupdatepolicy) \| undefined | 是   | 文本渲染的增量更新策略。<br/>设置为undefined时，按IncrementalUpdatePolicy.NONE处理。 |
 
 ### letterSpacing
 
@@ -1247,6 +1272,26 @@ privacySensitive(supported: boolean)
 | --------- | ------- | ---- | ------------------------------------------------------------ |
 | supported | boolean | 是   | 是否支持卡片敏感隐私信息。<br/>默认值为false，当设置为true时，隐私模式下文字将被遮罩为横杠“-”样式。<br/>**说明：** <br/>设置为null则表示不敏感。<br/>进入隐私模式需要卡片框架支持。隐私遮罩的类型可以通过[obscured](./ts-universal-attributes-obscured.md#obscured)配置。|
 
+### punctuationOverflow
+
+punctuationOverflow(enabled: Optional\<boolean>)
+
+设置是否启用行尾标点符号悬挂。不通过该接口设置，默认标点符号不悬挂。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ----- | ---- | ---- |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是 | 是否启用行尾标点符号悬挂。<br/>true表示启用行尾标点符号悬挂，false表示不启用行尾标点符号悬挂。设置为undefined或null时，不启用标点符号悬挂。|
+
 ### selectedBackgroundColor<sup>14+</sup>
 
 selectedBackgroundColor(color: ResourceColor)
@@ -1423,6 +1468,26 @@ textIndent(value: Length)
 | ------ | ---------------------------- | ---- | ---------------------------- |
 | value  | [Length](ts-types.md#length) | 是   | 首行文本缩进。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md#基本像素单位) <br/>取值范围：大于等于0。设置负数时，按默认值处理。|
 
+### tailIndents
+
+tailIndents(value: Optional\<LengthMetrics> | Array\<LengthMetrics>)
+
+设置文本尾部缩进。未通过该接口设置时，文本尾部缩进为0fp。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                         | 必填 | 说明                         |
+| ------ | ---------------------------- | ---- | ---------------------------- |
+| value  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; \| Array&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 指定文本每一行尾部缩进。当提供一个单独的LengthMetrics值时，所有行共享相同的尾部缩进；当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。不支持百分比。<br/>取值范围：大于等于0。设置负数时，按默认值处理。|
+
 ### textOverflow
 
 textOverflow(options: TextOverflowOptions)
@@ -1460,8 +1525,6 @@ textOverflow(options: TextOverflowOptions)
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1549,6 +1612,8 @@ wordBreak(value: WordBreak)
 WordBreak.BREAK_ALL与{overflow:&nbsp;TextOverflow.Ellipsis}、maxLines组合使用，可实现英文单词按字母截断，超出部分以省略号显示。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3191,35 +3256,57 @@ struct Index {
 
 ![textSetTextSelection](figures/textSetTextSelection.gif)
 
-### 示例23（设置行首标点压缩）
+### 示例23（设置行首标点符号压缩和行尾标点符号悬挂）
 
-该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+本示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点符号压缩，通过[punctuationOverflow](#punctuationoverflow)设置行尾标点符号悬挂。
 
-从API version 23开始，支持compressLeadingPunctuation接口。
+左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+
+文本自动换行后，剩余内容（含标点符号）需要能够放入上一行，标点符号悬挂才生效。
+
+从API版本23开始，新增compressLeadingPunctuation接口。
+
+从API版本26.0.0开始，新增punctuationOverflow接口。
 
 ```ts
-// xxx.ets
 @Entry
 @Component
-struct Index {
+struct PunctuationDemo {
+  @State compressLeadingPunctuation: boolean = false;
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「0123456789！\n『0123456789：\n（0123456789；\n《0123456789）\n〈0123456789】';
+
   build() {
-    Column(){
-      Text("\u300C行首标点压缩打开")
-        .compressLeadingPunctuation(true)
-        .margin(5)
-        .border({ width: 1 })
-        .fontSize(30)
-        .width("90%")
-      Text("\u300C行首标点压缩关闭")
-        .compressLeadingPunctuation(false)
-        .border({ width: 1 })
-        .fontSize(30)
-        .width("90%")
-    }
+    Column() {
+      Text(this.text)
+        .compressLeadingPunctuation(this.compressLeadingPunctuation)
+        .punctuationOverflow(this.punctuationOverflow)
+        .border({ width: 1, color: Color.Black })
+        .copyOption(CopyOptions.LocalDevice)
+        .fontSize('20fp')
+        .align(Alignment.Center)
+        .height('35%')
+        .width('40%')
+
+      Column() {
+        Button('开启行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = true
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = false
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = false
+        }).margin(5)
+      }
+    }.width('100%').padding(20)
   }
 }
 ```
-![textCompressLeadingPunctuation](figures/textCompressLeadingPunctuation.gif)
+![textPunctuation](figures/textPunctuation.gif)
 
 ### 示例24（设置自适应间距）
 
@@ -3545,3 +3632,186 @@ struct TextExample {
 ```
 
 ![bindSelectionMenu](figures/bindSelectionMenu.gif)
+
+### 示例31（设置属性字符串段落缓存策略）
+
+该示例通过[incrementalUpdatePolicy](#incrementalupdatepolicy)接口设置文本渲染的增量更新策略，使用段落级缓存优化渲染性能。
+
+从API版本26.0.0开始，新增incrementalUpdatePolicy属性。
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct StyledStringAppend {
+  controller1: TextController = new TextController();
+  scroller: Scroller = new Scroller();
+  @State index: number = 0
+  // 段落标题样式：居中、加粗
+  titleParagraphStyle: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
+  // 第一段落样式：首行缩进20vp
+  paragraphStyleAttr1: ParagraphStyle = new ParagraphStyle({ textIndent: LengthMetrics.vp(20) });
+  // 第二段落样式：左对齐、首行缩进20vp
+  paragraphStyleAttr2: ParagraphStyle =
+    new ParagraphStyle({ textAlign: TextAlign.Start, textIndent: LengthMetrics.vp(20) });
+  // 行高样式
+  lineHeightStyle: LineHeightStyle = new LineHeightStyle(new LengthMetrics(30));
+  str: string = '属性字符串段落缓存示例'
+  styledString1: MutableStyledString = new MutableStyledString(this.str, [{
+    start: 0,
+    length: this.str.length,
+    styledKey: StyledStringKey.PARAGRAPH_STYLE,
+    styledValue: this.titleParagraphStyle
+  }, {
+    start: 0,
+    length: this.str.length,
+    styledKey: StyledStringKey.LINE_HEIGHT,
+    styledValue: this.lineHeightStyle
+  }, {
+    start: 0,
+    length: this.str.length,
+    styledKey: StyledStringKey.FONT,
+    styledValue: new TextStyle({
+      fontColor: Color.Blue,
+      fontWeight: FontWeight.Bolder
+    })
+  }]);
+
+  aboutToAppear() {
+    // 追加初始段落内容，设置段落缩进和行高
+    let str1: string = '\n首段落：'
+    let str2: string = '属性字符串支持段落样式缓存，单击下方按钮追加新段落，验证段落缓存效果。'
+    let paragraph1: StyledString =
+      new StyledString(str1 + str2, [{
+        start: 0,
+        length: str1.length,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: this.paragraphStyleAttr1
+      }, {
+        start: 0,
+        length: str1.length,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({
+          fontColor: Color.Blue,
+          fontWeight: FontWeight.Bold
+        })
+      }, {
+        start: 0,
+        length: str1.length + str2.length,
+        styledKey: StyledStringKey.LINE_HEIGHT,
+        styledValue: this.lineHeightStyle
+      }]);
+    this.styledString1.appendStyledString(paragraph1);
+    this.controller1.setStyledString(this.styledString1);
+  }
+
+  build() {
+    Column() {
+      Scroll(this.scroller) {
+        Column() {
+          Text('示例：属性字符串段落缓存\n单击"追加文本"追加新段落，后端走段落缓存\n')
+            .fontSize(16)
+            .fontColor(Color.Gray)
+            .margin({ bottom: 5 })
+            .width("100%")
+
+          Text(undefined, { controller: this.controller1 })
+            .width('100%')
+            .borderWidth(1)
+            .padding(10)
+            .copyOption(CopyOptions.InApp)
+            .incrementalUpdatePolicy(IncrementalUpdatePolicy.PARAGRAPH_CACHE)
+        }
+        .width('100%')
+        .padding({ left: 20, right: 20 })
+      }
+      .width('100%')
+
+      Button("追加文本")
+        .width('80%')
+        .margin({ top: 10, bottom: 15 })
+        .onClick(() => {
+          this.index++;
+          // 追加新段落，每个段落带有段落缩进样式，触发后端段落缓存
+          let str1: string = '\n第' + this.index + '段落：'
+          let str2: string = '这是追加的文本内容，用于验证段落缓存机制。'
+          let newParagraph: StyledString = new StyledString(
+            str1 + str2,
+            [{
+              start: 0,
+              length: str1.length,
+              styledKey: StyledStringKey.PARAGRAPH_STYLE,
+              styledValue: this.paragraphStyleAttr2
+            }, {
+              start: 0,
+              length: str1.length + str2.length,
+              styledKey: StyledStringKey.LINE_HEIGHT,
+              styledValue: this.lineHeightStyle
+            }, {
+              start: 0,
+              length: str1.length,
+              styledKey: StyledStringKey.FONT,
+              styledValue: new TextStyle({
+                fontColor: Color.Blue,
+                fontWeight: FontWeight.Bold
+              })
+            }]);
+          this.styledString1.appendStyledString(newParagraph);
+          this.controller1.setStyledString(this.styledString1);
+        })
+    }
+    .width('100%')
+    .height('70%')
+  }
+}
+```
+
+![incrementalUpdatePolicy](figures/incrementalUpdatePolicy.png)
+
+### 示例32（设置文本尾部缩进）
+
+该示例通过[tailIndents](#tailindents)接口实现了文本尾部缩进的功能。
+
+从API版本26.0.0开始，通过tailIndents属性设置文本尾部缩进。
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TailIndentsExample {
+  build() {
+    Column() {
+      Text('未设置tailIndents\n未设置tailIndents\n未设置tailIndents\n未设置tailIndents\n未设置tailIndents')
+        .fontSize(20)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+        .textAlign(TextAlign.End)
+        .width('100%')
+
+      Text('设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值')
+        .fontSize(20)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+        .textAlign(TextAlign.End)
+        .width('100%')
+        .tailIndents(LengthMetrics.vp(100))
+
+      Text('设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组')
+        .fontSize(20)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+        .textAlign(TextAlign.End)
+        .width('100%')
+        .tailIndents([LengthMetrics.vp(100), LengthMetrics.vp(50), LengthMetrics.vp(20)])
+
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![tailIndents](figures/tailIndents.png)

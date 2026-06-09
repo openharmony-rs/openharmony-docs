@@ -1,4 +1,4 @@
-# class (WebPMetadata)
+# Class (WebPMetadata)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->

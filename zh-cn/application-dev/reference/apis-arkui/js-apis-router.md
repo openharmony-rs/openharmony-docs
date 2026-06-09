@@ -588,6 +588,8 @@ pushNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -667,6 +669,8 @@ pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -735,6 +739,8 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&g
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -814,6 +820,8 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCal
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -885,6 +893,8 @@ replaceNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -951,6 +961,8 @@ replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&g
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1009,6 +1021,8 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;voi
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1077,6 +1091,8 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: Async
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1165,6 +1181,8 @@ back(index: number, params?: Object): void;
 > - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1280,6 +1298,8 @@ getStateByIndex(index: number): RouterState | undefined
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1319,6 +1339,8 @@ getStateByUrl(url: string): Array&lt;RouterState&gt;
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1356,7 +1378,7 @@ for (let i: number = 0; i < options.length; i++) {
 | index | number | 否   | 否   | 表示当前页面在页面栈中的索引。从栈底到栈顶，index从1开始递增。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | name  | string | 否   | 否   | 表示当前页面的名称，即对应文件名。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | path  | string | 否   | 否   | 表示当前页面的路径。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| params<sup>12+</sup>  | Object | 否   | 否   | 表示当前页面携带的参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                         |
+| params<sup>12+</sup>  | Object | 否   | 否   | 表示当前页面携带的参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                                         |
 
 ## router.showAlertBeforeBackPage<sup>(deprecated)</sup>
 
@@ -1500,8 +1522,8 @@ this.getUIContext().getRouter().getParams();
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| name   | string | 否   | 否   | 表示目标命名路由页面的name。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| params | Object | 否   | 是   | 表示路由跳转时要同时传递到目标页面的数据。跳转到目标页面后，使用router.getParams()获取传递的参数，此外，在类web范式中，参数也可以在页面中直接使用，如this.keyValue(keyValue为跳转时params参数中的key值)，如果目标页面中已有该字段，则其值会被传入的字段值覆盖。 <br/>**说明：** <br/>params参数不能传递方法和系统接口返回的对象（例如，媒体接口定义和返回的PixelMap对象）。建议开发者提取系统接口返回的对象中需要被传递的基础类型属性，自行构造object类型对象进行传递。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full  |
+| name   | string | 否   | 否   | 表示目标命名路由页面的name。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full|
+| params | Object | 否   | 是   | 表示路由跳转时要同时传递到目标页面的数据。跳转到目标页面后，使用router.getParams()获取传递的参数，此外，在类web范式中，参数也可以在页面中直接使用，如this.keyValue(keyValue为跳转时params参数中的key值)，如果目标页面中已有该字段，则其值会被传入的字段值覆盖。 <br/>**说明：** <br/>params参数不能传递方法和系统接口返回的对象（例如，媒体接口定义和返回的PixelMap对象）。建议开发者提取系统接口返回的对象中需要被传递的基础类型属性，自行构造object类型对象进行传递。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full  |
 | recoverable<sup>14+</sup> | boolean | 否   | 是   | 表示对应的页面是否可恢复，默认为true。当为true时，表示可恢复，当为false时，表示不可恢复。<br/>**说明：** <br/> 当应用退到后台，并且在未来的某个时间点，由于系统资源限制等原因被系统杀死，如果某个页面被设置成可恢复，那么该应用再次被拉到前台后系统可以恢复出页面，详细说明请参考[UIAbility备份恢复](../../application-models/ability-recover-guideline.md)。 <br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Lite |
 
 ## 完整示例
@@ -1510,6 +1532,7 @@ this.getUIContext().getRouter().getParams();
 
 以下代码仅适用于javascript文件，不适用于ArkTS文件
 
+<!--deprecated_code_no_check-->
 <!--code_no_check-->
 
 ```js
@@ -1525,13 +1548,14 @@ export default {
   }
 }
 ```
+<!--deprecated_code_no_check-->
 <!--code_no_check-->
 
 ```js
 // 在detail页面中
 export default {
   onInit() {
-    console.info('showData1:' + this.getUIContext().getRouter().getParams()['data1']);
+    console.info('showData1:' + router.getParams()['data1']);
   }
 }
 ```
@@ -1542,7 +1566,6 @@ export default {
 > 
 > 直接使用router可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
 
-<!--deprecated_code_no_check-->
 ```ts
 // 通过router.pushUrl跳转至目标页携带params参数
 import { router } from '@kit.ArkUI';
@@ -1801,6 +1824,8 @@ pages
    ├─ routerPage.hml
    └─ routerPage.js
 ```
+
+<!--code_no_check-->
 ```css
 /* index.css */
 .page {
@@ -1857,7 +1882,9 @@ pages
   background-color: #16a34a;
 }
 ```
-```hml
+
+<!--code_no_check-->
+```html
 <!--index.hml-->
 <div class="page">
     <text class="page-name">{{ pageName }}</text>
@@ -1867,6 +1894,9 @@ pages
     <input class="action-button action-button-secondary" type="button" value="replaceUrl to routerPage" onclick="replaceUrlToRouterPage"></input>
 </div>
 ```
+
+<!--deprecated_code_no_check-->
+<!--code_no_check-->
 ```js
 // index.js
 import router from '@ohos.router';
@@ -1895,6 +1925,8 @@ export default {
     }
 }
 ```
+
+<!--code_no_check-->
 ```css
 /* routerPage.css */
 .page {
@@ -1951,7 +1983,9 @@ export default {
   background-color: #16a34a;
 }
 ```
-```hml
+
+<!--code_no_check-->
+```html
 <!--routerPage.hml-->
 <div class="page">
     <text class="page-name">{{ pageName }}</text>
@@ -1961,6 +1995,9 @@ export default {
     <input class="action-button action-button-secondary" type="button" value="replaceUrl to index" onclick="replaceUrlToIndex"></input>
 </div>
 ```
+
+<!--deprecated_code_no_check-->
+<!--code_no_check-->
 ```js
 // routerPage.js
 import router from '@ohos.router';

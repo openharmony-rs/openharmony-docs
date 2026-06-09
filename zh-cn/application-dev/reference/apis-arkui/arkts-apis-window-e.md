@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -146,8 +146,8 @@
 | 名称       | 值   | 说明                          |
 | ---------- | ---- | ----------------------------- |
 | UNDEFINED  | 0    | 表示APP未定义窗口模式。       |
-| FULL_SCREEN | 1    | 表示APP全屏模式。<br>[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。<br>可通过[maximize()](arkts-apis-window-Window.md#maximize12)和[setTitleAndDockHoverShown()](arkts-apis-window-Window.md#settitleanddockhovershown14)配置，当hover到热区时是否显示标题栏和dock栏。<br>当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。<br>非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过[setSpecificSystemBarEnabled()](arkts-apis-window-Window.md#setspecificsystembarenabled11)配置是否显示状态栏。|
-| MAXIMIZE    | 2    | 表示APP窗口最大化模式，[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，不需要hover就可以显示dock栏、状态栏和标题栏。非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，不存在该状态。|
+| FULL_SCREEN | 1    | 表示APP全屏模式。<br>[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。<br>可通过[maximize()](arkts-apis-window-Window.md#maximize12)和[setTitleAndDockHoverShown()](arkts-apis-window-Window.md#settitleanddockhovershown14)配置，当hover到热区时是否显示标题栏和dock栏。<br>当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。<br>非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过[setSpecificSystemBarEnabled()](arkts-apis-window-Window.md#setspecificsystembarenabled11)配置是否显示状态栏。|
+| MAXIMIZE    | 2    | 表示APP窗口最大化模式，[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，不需要hover就可以显示dock栏、状态栏和标题栏。非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，不存在该状态。|
 | MINIMIZE    | 3    | 表示APP窗口最小化模式。   |
 | FLOATING    | 4    | 表示APP自由悬浮形式窗口模式。   |
 | SPLIT_SCREEN  | 5    | 表示APP分屏模式。   |
@@ -286,7 +286,7 @@
 | ------ | --- | ------------------------ |
 | FULLSCREEN | 1 | 全屏窗口，二进制从右往左，第一个二进制位为1。  |
 | SPLIT  | 1 << 1 | 分屏窗口，二进制从右往左，第二个二进制位为1。 |
-| FLOAT   | 1 << 2  | 悬浮窗，二进制从右往左，第三个二进制位为1。 |
+| FLOAT   | 1 << 2  | 自由悬浮窗口，二进制从右往左，第三个二进制位为1。 |
 | PIP   | 1 << 3  | 画中画，二进制从右往左，第四个二进制位为1。 |
 
 ## OcclusionState<sup>22+</sup>
@@ -346,7 +346,7 @@ WindowStage生命周期的状态类型枚举。
 | 名称                 | 值      | 说明       |
 | -------------------- | ------ | ---------- |
 | WINDOW_MODALITY      | 0      | 当仅需要其父级窗口不响应用户操作时，可选此参数。 |
-| APPLICATION_MODALITY | 1      |  除其父级窗口外还需要该应用其他实例的窗口不响应用户操作时，可选此参数。<br> **设备行为差异：** 该枚举在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。 |
+| APPLICATION_MODALITY | 1      |  除其父级窗口外还需要该应用其他实例的窗口不响应用户操作时，可选此参数。<br> **设备行为差异：** 该枚举在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。 |
 
 ## ScreenshotEventType<sup>20+</sup>
 

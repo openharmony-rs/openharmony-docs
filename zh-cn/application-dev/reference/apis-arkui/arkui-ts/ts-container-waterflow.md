@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 瀑布流容器，由“行”和“列”分割的单元格所组成，通过容器自身的排列规则，将不同大小的“项目”自上而下，如瀑布般紧密布局。
@@ -62,10 +62,10 @@ WaterFlow(options?:  WaterFlowOptions)
 | 名称     | 类型                                        | 只读 | 可选 | 说明                                     |
 | ---------- | ----------------------------------------------- | ------ | -- | -------------------------------------------- |
 | footer |  [CustomBuilder](ts-types.md#custombuilder8) | 否   | 是 | 设置WaterFlow尾部组件，用于在瀑布流末尾显示自定义内容（如加载提示、底部标识等）。不设置时不显示尾部组件。<br/>**说明：** <br/>使用方法参见[示例1](#示例1使用基本瀑布流)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| footerContent<sup>18+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 是 | 设置WaterFlow尾部组件。<br/>该参数的优先级高于参数footer，即同时设置footer和footerContent时，以footerContent设置的组件为准。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| footerContent<sup>18+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 是 | 设置WaterFlow尾部组件。<br/>该参数的优先级高于参数footer，即同时设置footer和footerContent时，以footerContent设置的组件为准。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | scroller | [Scroller](ts-container-scroll.md#scroller) | 否   | 是 | 可滚动组件的控制器，与可滚动组件绑定。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | 否   | 是 | 设置FlowItem分组，实现同一个瀑布流组件内部各分组使用不同列数混合布局。适用于需要在不同区域使用不同列数布局的场景。不设置时使用统一列数布局。<br/>**说明：** <br/>1. 使用分组混合布局时会忽略[columnsTemplate](#columnstemplate)和[rowsTemplate](#rowstemplate)属性。<br/>2. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12枚举说明) | 否 | 是 | 设置WaterFlow的布局模式，根据使用场景选择更切合的模式。<br/>**说明：** <br/>默认值：[ALWAYS_TOP_DOWN](#waterflowlayoutmode12枚举说明)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | 否   | 是 | 设置FlowItem分组，实现同一个瀑布流组件内部各分组使用不同列数混合布局。适用于需要在不同区域使用不同列数布局的场景。不设置时使用统一列数布局。<br/>**说明：** <br/>1. 使用分组混合布局时会忽略[columnsTemplate](#columnstemplate)和[rowsTemplate](#rowstemplate)属性。<br/>2. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。  |
+| layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12枚举说明) | 否 | 是 | 设置WaterFlow的布局模式，根据使用场景选择更切合的模式。<br/>**说明：** <br/>默认值：[ALWAYS_TOP_DOWN](#waterflowlayoutmode12枚举说明)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 
 ## WaterFlowSections<sup>12+</sup>
@@ -74,7 +74,7 @@ WaterFlow(options?:  WaterFlowOptions)
 
 > **说明：**
 >
-> 使用splice、push、update修改分组信息后需要保证所有分组子节点总数与瀑布流实际子节点总数一致，否则会出现瀑布流因为不能正常布局而无法滑动的问题。
+> 使用splice、push、update修改分组信息后需要保证所有分组子组件总数与瀑布流实际子组件总数一致，否则会出现瀑布流因为不能正常布局而无法滑动的问题。
 
 ### constructor
 
@@ -83,6 +83,8 @@ constructor()
 创建一个瀑布流分组。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,6 +95,8 @@ splice(start: number, deleteCount?: number, sections?: Array\<SectionOptions\>):
 移除或者替换已存在的分组和/或添加新分组。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,6 +123,8 @@ push(section: SectionOptions): boolean
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -140,6 +146,8 @@ update(sectionIndex: number, section: SectionOptions): boolean
 修改指定索引分组的配置信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,6 +172,8 @@ values(): Array\<SectionOptions\>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -180,6 +190,8 @@ length(): number
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：** 
@@ -193,6 +205,8 @@ length(): number
 FlowItem分组配置信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,13 +228,15 @@ type GetItemMainSizeByIndex = (index: number) => number
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名   | 类型                            | 必填   | 说明                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| index | number | 是    | FlowItem在WaterFlow中的索引。<br/>取值范围：[0, 子节点总数-1] |
+| index | number | 是    | FlowItem在WaterFlow中的索引。<br/>取值范围：[0, 子组件总数-1] |
 
 **返回值：** 
 
@@ -233,6 +249,8 @@ type GetItemMainSizeByIndex = (index: number) => number
 瀑布流组件布局模式枚举。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -294,6 +312,8 @@ columnsTemplate(value: string | ItemFillPolicy)
 例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -411,6 +431,8 @@ enableScrollInteraction(value: boolean)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -431,6 +453,8 @@ nestedScroll(value: NestedScrollOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -446,6 +470,8 @@ friction(value: number | Resource)
 设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -464,6 +490,8 @@ cachedCount(value: number)
 只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了[virtualScroll](ts-rendering-control-repeat.md#virtualscroll)开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效，超出显示及缓存范围的FlowItem会被释放。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -485,6 +513,8 @@ cachedCount(count: number, show: boolean)
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -501,6 +531,8 @@ syncLoad(enable: boolean)
 设置是否同步加载WaterFlow区域内所有子组件。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -532,7 +564,7 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
-| supported  | boolean \| undefined | 是   | 当前WaterFlow组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示显示空分支后的FlowItem；false表示不显示空分支后的FlowItem。</br>值为undefined时，按false处理。 |
+| supported  | boolean \| undefined | 是   | 当前WaterFlow组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子组件的空分支节点。</br>true表示显示空分支后的FlowItem；false表示不显示空分支后的FlowItem。</br>值为undefined时，按false处理。 |
 
 ## 事件
 
@@ -590,6 +622,8 @@ onScrollFrameBegin(event: OnScrollFrameBeginCallback)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -612,14 +646,16 @@ onScrollIndex(event: (first: number, last: number) => void)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                  |
 | ------ | ------ | ---- | ------------------------------------- |
-| first  | number | 是   | 当前显示的瀑布流起始位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
-| last   | number | 是   | 当前显示的瀑布流终止位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
+| first  | number | 是   | 当前显示的瀑布流起始位置的索引值。<br/>取值范围：[0, 子组件总数-1] |
+| last   | number | 是   | 当前显示的瀑布流终止位置的索引值。<br/>取值范围：[0, 子组件总数-1] |
 
 通过`last`参数可以判断是否“继续加载数据”，参考[示例3（使用分组）](#示例3使用分组)中“即将触底时提前增加数据”的处理逻辑。
 
@@ -647,6 +683,8 @@ setOnWillScroll(callback:  OnWillScrollCallback | undefined): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -664,6 +702,8 @@ setOnDidScroll(callback: OnScrollCallback | undefined): void
 方法入参为undefined时，会重置事件回调。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -683,6 +723,8 @@ setOnScrollIndex(callback: OnWaterFlowScrollIndexCallback | undefined): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -697,6 +739,8 @@ type OnWaterFlowScrollIndexCallback = (first: number, last: number) => void
 WaterFlow组件可见区域item变化事件的回调类型。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

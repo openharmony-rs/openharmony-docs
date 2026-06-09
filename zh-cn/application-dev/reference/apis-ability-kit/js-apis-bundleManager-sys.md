@@ -1366,7 +1366,7 @@ try {
 
 getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
-根据给定的hapFilePath和bundleFlags获取BundleInfo。使用callback异步回调。
+根据给定的hapFilePath和bundleFlags获取BundleInfo。使用callback异步回调。从API版本26.0.0开始,该接口支持处理APP包。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1378,7 +1378,7 @@ getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCa
 
 | 参数名       | 类型   | 必填 | 说明                                                         |
 | ----------- | ------ | ---- | ----------------------------------------------------------- |
-| hapFilePath | string | 是   | 表示存储HAP的路径，路径应该是当前应用程序数据目录的相对路径。 |
+| hapFilePath | string | 是   | 表示存储HAP或APP的路径，路径应该是当前应用程序数据目录的相对路径。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。       |
 | callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
@@ -1421,7 +1421,7 @@ try {
 
 getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise\<BundleInfo>
 
-根据给定的hapFilePath和bundleFlags获取BundleInfo。使用Promise异步回调。
+根据给定的hapFilePath和bundleFlags获取BundleInfo。使用Promise异步回调。从API版本26.0.0开始,该接口支持处理APP包。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1433,7 +1433,7 @@ getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise\<Bundle
 
 | 参数名       | 类型   | 必填 | 说明                                                         |
 | ----------- | ------ | ---- | ------------------------------------------------------------ |
-| hapFilePath | string | 是   | 表示存储HAP的路径，路径应该是当前应用程序数据目录的相对路径。 |
+| hapFilePath | string | 是   | 表示存储HAP或APP的路径，路径应该是当前应用程序数据目录的相对路径。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。       |
 
 **返回值：**
@@ -6102,6 +6102,271 @@ try {
   hilog.error(0x0000, 'testTag', 'isApplicationDisableForbidden failed: %{public}s', message);
 }
 
+```
+
+## bundleManager.setApplicationEnabledSync
+
+setApplicationEnabledSync(bundleName: string, appIndex: number, isEnabled: boolean, killProcess: boolean): void
+
+以同步方法设置指定应用或分身应用的启用或禁用状态，并控制禁用时是否退出应用进程。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型    | 必填 | 说明                       |
+| ----------- | ------- | ---- | ---------------------------- |
+| bundleName  | string  | 是   | 应用的包名。 |
+| appIndex    | number  | 是   | 应用索引。取值范围0~5的整数，取值为0表示主应用，取值1~5表示分身应用的索引。 |
+| isEnabled   | boolean | 是   | 是否启用应用。值为true表示启用应用，值为false表示禁用应用。 |
+| killProcess | boolean | 是   | 禁用应用时是否退出应用进程。值为true表示禁用应用时将退出应用进程，值为false表示禁用应用时不退出应用进程。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied. Non-system APP calling system API. |
+| 17700001 | The specified bundle is not found. |
+| 17700061 | The specified app index is invalid. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 需要替换为要设置的应用Bundle名称、应用索引、是否启用应用和禁用应用时是否退出应用进程
+let bundleName: string = 'com.example.myapplication';
+let appIndex: number = 0;
+let isEnabled: boolean = true;
+let killProcess: boolean = false;
+
+try {
+  bundleManager.setApplicationEnabledSync(bundleName, appIndex, isEnabled, killProcess);
+  hilog.info(0x0000, 'testTag', 'setApplicationEnabledSync successfully');
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setApplicationEnabledSync failed: %{public}s', message);
+}
+```
+
+## bundleManager.setApplicationEnabled
+
+setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean, killProcess: boolean): Promise\<void>
+
+设置指定应用或分身应用的启用或禁用状态，并控制禁用时是否退出应用进程。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型    | 必填 | 说明                       |
+| ----------- | ------- | ---- | ---------------------------- |
+| bundleName  | string  | 是   | 应用的包名。 |
+| appIndex    | number  | 是   | 应用索引。取值范围0~5的整数，取值为0表示主应用，取值1~5表示分身应用的索引。 |
+| isEnabled   | boolean | 是   | 是否启用应用。值为true表示启用应用，值为false表示禁用应用。 |
+| killProcess | boolean | 是   | 禁用应用时是否退出应用进程。值为true表示禁用应用时将退出应用进程，值为false表示禁用应用时不退出应用进程。 |
+
+**返回值：**
+
+| 类型              | 说明                    |
+| ----------------- | ----------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied. Non-system APP calling system API. |
+| 17700001 | The specified bundle is not found. |
+| 17700061 | The specified app index is invalid. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 需要替换为要设置的应用Bundle名称、应用索引、是否启用应用和禁用应用时是否退出应用进程
+let bundleName: string = 'com.example.myapplication';
+let appIndex: number = 0;
+let isEnabled: boolean = true;
+let killProcess: boolean = false;
+
+try {
+  bundleManager.setApplicationEnabled(bundleName, appIndex, isEnabled, killProcess)
+    .then(() => {
+      hilog.info(0x0000, 'testTag', 'setApplicationEnabled successfully');
+    })
+    .catch((err: BusinessError) => {
+      hilog.error(0x0000, 'testTag', 'setApplicationEnabled failed: %{public}s', err.message);
+    });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setApplicationEnabled failed: %{public}s', message);
+}
+```
+
+## bundleManager.getAbilityIcon<sup>deprecated</sup>
+
+getAbilityIcon(bundleName: string, moduleName: string, abilityName: string): Promise\<image.PixelMap>
+
+通过bundleName、moduleName和abilityName获取对应Icon的[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)，使用Promise异步回调。
+
+获取调用方信息时不需要权限。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[getMediaContent](../apis-localization-kit/js-apis-resource-manager.md#getmediacontent9)替代。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 或 ohos.permission.GET_BUNDLE_INFO
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明                     |
+| ----------- | ------ | ---- | ------------------------ |
+| bundleName  | string | 是   | 要查询的应用Bundle名称。 |
+| moduleName  | string | 是   | 要查询的应用Module名称。 |
+| abilityName | string | 是   | 要查询的Ability组件名。  |
+
+**返回值：**
+| 类型                  | 说明                                                         |
+| --------------------- | ------------------------------------------------------------ |
+| Promise\<image.PixelMap> | Promise对象，返回值为[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | ------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied. Non-system APP calling system API. |
+| 801 | Capability not supported. |
+| 17700001 | The specified bundle is not found. |
+| 17700002 | The specified module is not found. |
+| 17700003 | The specified ability is not found. |
+| 17700026 | The specified bundle is disabled. |
+| 17700029 | The specified ability is disabled. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 需要替换为要查询的应用Bundle名称、Module名称和Ability组件名
+let bundleName: string = "com.example.myapplication";
+let moduleName: string = "entry";
+let abilityName: string = "EntryAbility";
+
+try {
+  bundleManager.getAbilityIcon(bundleName, moduleName, abilityName).then((data) => {
+    hilog.info(0x0000,'testTag', 'getAbilityIcon successful. Data: %{public}s',JSON.stringify(data));
+  }).catch((error: BusinessError) => {
+    hilog.error(0x0000,'testTag', 'getAbilityIcon failed. Cause: %{public}s',error.message);
+  })
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAbilityIcon failed. Cause: %{public}s', message);
+}
+```
+
+## bundle.getAbilityIcon<sup>deprecated</sup>
+
+getAbilityIcon(bundleName: string, moduleName: string, abilityName: string, callback: AsyncCallback\<image.PixelMap>): void
+
+通过bundleName、moduleName和abilityName获取对应Icon的[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)，使用callback异步回调。
+
+获取调用方信息时不需要权限。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[getMediaContent](../apis-localization-kit/js-apis-resource-manager.md#getmediacontent9)替代。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 或 ohos.permission.GET_BUNDLE_INFO
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**参数：**
+
+| 参数名         | 类型                                       | 必填   | 说明                                              |
+| ----------- | ---------------------------------------- | ---- |-------------------------------------------------|
+| bundleName  | string                                   | 是    | 要查询的应用Bundle名称。                                |
+| moduleName | string                                   | 是    | 要查询的应用Module名称。                                 |
+| abilityName | string                                   | 是    | 要查询的Ability组件名。                                 |
+| callback   | AsyncCallback\<image.PixelMap> | 是   | 回调函数，返回指定[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)，作为程序启动时的入参。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | ------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied. Non-system APP calling system API. |
+| 801 | Capability not supported. |
+| 17700001 | The specified bundle is not found. |
+| 17700002 | The specified module is not found. |
+| 17700003 | The specified ability is not found. |
+| 17700026 | The specified bundle is disabled. |
+| 17700029 | The specified ability is disabled. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 需要替换为要查询的应用Bundle名称、Module名称和Ability组件名
+let bundleName: string = "com.example.myapplication";
+let moduleName: string = "entry";
+let abilityName: string = "EntryAbility";
+
+try {
+  bundleManager.getAbilityIcon(bundleName, moduleName, abilityName, (err, data) => {
+    if (err) {
+      hilog.error(0x0000, 'testTag', 'getAbilityIcon failed: %{public}s', err.message);
+    } else {
+      hilog.info(0x0000, 'testTag', 'getAbilityIcon successfully: %{public}s', JSON.stringify(data));
+    }
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAbilityIcon failed: %{public}s', message);
+}
 ```
 
 ## PermissionDef

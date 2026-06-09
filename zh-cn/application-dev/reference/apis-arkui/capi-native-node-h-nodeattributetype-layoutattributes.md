@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType（布局属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW; @zju_ljz; @camlostshi-->
-<!--Designer: @CCFFWW; @lanshouren-->
+<!--Owner: @hehongyang3; @zju_ljz; @camlostshi-->
+<!--Designer: @hehongyang3; @lanshouren-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -1118,3 +1118,51 @@ NODE_BORDER_RADIUS_TYPE = 123
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | 组件绘制圆角的模式。参数类型为[ArkUI_RenderStrategy](capi-native-type-h.md#arkui_renderstrategy)。 |
+
+## NODE_ACCESSIBILITY_NEXT_FOCUS_ID
+
+```c
+NODE_ACCESSIBILITY_NEXT_FOCUS_ID = 124
+```
+
+定义当前组件的无障碍下一个焦点组件的[NODE_ID](capi-native-node-h-nodeattributetype-base.md#node_id)。设置该组件NODE_ID后，无障碍会查找当前页面中NODE_ID与当前组件设置的无障碍下一个焦点组件的NODE_ID相同的组件，若不存在则设置无效。支持属性设置，属性重置和属性获取接口。
+
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .string | 无障碍下一个焦点组件的NODE_ID。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .string | 无障碍下一个焦点组件的NODE_ID。 |
+
+## NODE_ACCESSIBILITY_DEFAULT_FOCUS
+
+```c
+NODE_ACCESSIBILITY_DEFAULT_FOCUS = 125
+```
+
+设置无障碍默认焦点标志，用于无障碍服务查找默认焦点组件。支持属性设置，属性重置和属性获取接口。
+
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 无障碍默认焦点。取值为0或1，取值为1表示该组件被定义为无障碍服务中的默认焦点，取值为0表示组件不被定义为无障碍服务中的默认焦点。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 无障碍默认焦点；取值为0或1，取值为1表示该组件被定义为无障碍服务中的默认焦点，取值为0表示组件不被定义为无障碍服务中的默认焦点。 |

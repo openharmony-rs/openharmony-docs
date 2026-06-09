@@ -541,7 +541,6 @@ import { Key, KeyEvent } from '@kit.InputKit';
 let keyItem: Key = {code:0x49, pressedTime:2, deviceId:0};
 let event:KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 
-
 avcontroller.sendAVKeyEvent(event).then(() => {
   console.info('Succeeded in sending AV key event.');
 });
@@ -1362,31 +1361,7 @@ isDesktopLyricEnabled(): Promise\<boolean>
 | 6600111  | The desktop lyrics feature is not supported. |
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          let enabled: boolean = await controller.isDesktopLyricEnabled()
-          console.info(`desktop lyric enabled:${enabled}`)
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.isDesktopLyricEnabled();
 ```
 
 ## onDesktopLyricEnabled<sup>23+</sup>
@@ -1417,33 +1392,9 @@ onDesktopLyricEnabled(callback: Callback\<boolean>): void
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.onDesktopLyricEnabled((enabled: boolean) => {
-            console.info(`desktop lyric enabled state : ${enabled}`);
-          })
-          console.info('Succeeded in setting onDesktopLyricEnabled.');
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.onDesktopLyricEnabled((enabled: boolean) => {
+  console.info(`desktop lyric enabled state : ${enabled}`);
+})
 ```
 
 ## offDesktopLyricEnabled<sup>23+</sup>
@@ -1474,31 +1425,7 @@ offDesktopLyricEnabled(callback?: Callback\<boolean>): void
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.offDesktopLyricEnabled();
-          console.info('Succeeded in setting offDesktopLyricEnabled.');
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.offDesktopLyricEnabled();
 ```
 
 ## setDesktopLyricVisible<sup>23+</sup>
@@ -1538,31 +1465,7 @@ setDesktopLyricVisible(visible: boolean): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          await controller.setDesktopLyricVisible(true);
-          console.info('Succeeded in setting desktop lyric visible.');
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.setDesktopLyricVisible(true);
 ```
 
 ## isDesktopLyricVisible<sup>23+</sup>
@@ -1596,31 +1499,7 @@ isDesktopLyricVisible(): Promise\<boolean>
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          let visible: boolean = await controller.isDesktopLyricVisible();
-          console.info(`isDesktopLyricVisible: ${visible}`);
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.isDesktopLyricVisible();
 ```
 
 ## onDesktopLyricVisibilityChanged<sup>23+</sup>
@@ -1651,32 +1530,9 @@ onDesktopLyricVisibilityChanged(callback: Callback\<boolean>): void
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.onDesktopLyricVisibilityChanged((visible: boolean) => {
-            console.info(`desktop lyric visible state: ${visible}`);
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.onDesktopLyricVisibilityChanged((visible: boolean) => {
+  console.info(`desktop lyric visible state: ${visible}`);
+});
 ```
 
 ## offDesktopLyricVisibilityChanged<sup>23+</sup>
@@ -1707,30 +1563,7 @@ offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.offDesktopLyricVisibilityChanged();
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.offDesktopLyricVisibilityChanged();
 ```
 
 ## setDesktopLyricState<sup>23+</sup>
@@ -1770,34 +1603,10 @@ setDesktopLyricState(state: DesktopLyricState): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          let state: avSession.DesktopLyricState = {
-            isLocked: true,
-          };
-          await controller.setDesktopLyricState(state);
-          console.info('Succeeded in setting desktop lyric state.');
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+let state: avSession.DesktopLyricState = {
+  isLocked: true,
+};
+avcontroller.setDesktopLyricState(state);
 ```
 
 ## getDesktopLyricState<sup>23+</sup>
@@ -1831,31 +1640,7 @@ getDesktopLyricState(): Promise\<DesktopLyricState>
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          let state: avSession.DesktopLyricState = await controller.getDesktopLyricState();
-          console.info(`getDesktopLyricState: ${state.isLocked}`);
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.getDesktopLyricState();
 ```
 
 ## onDesktopLyricStateChanged<sup>23+</sup>
@@ -1886,32 +1671,9 @@ onDesktopLyricStateChanged(callback: Callback\<DesktopLyricState>): void
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
-            console.info(`desktop lyric isLocked : ${state.isLocked}`);
-          })
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
+  console.info(`desktop lyric isLocked : ${state.isLocked}`);
+})
 ```
 
 ## offDesktopLyricStateChanged<sup>23+</sup>
@@ -1942,30 +1704,7 @@ offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.offDesktopLyricStateChanged();
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.offDesktopLyricStateChanged();
 ```
 
 ## on('metadataChange')<sup>10+</sup>
@@ -2789,23 +2528,9 @@ on(type: 'extrasChange', callback: (extras: {[key: string]: Object}) => void): v
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
+avcontroller.on('extrasChange', (extras) => {
+  console.info(`Caught extrasChange event,the new extra is: ${JSON.stringify(extras)}`);
 });
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).on('extrasChange', (extras) => {
-    console.info(`Caught extrasChange event,the new extra is: ${JSON.stringify(extras)}`);
-  });
-}
 ```
 
 ## off('extrasChange')<sup>10+</sup>

@@ -12,6 +12,8 @@
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 只有[Image](./ts-basic-components-image.md)、[Column](./ts-container-column.md)、[Flex](./ts-container-flex.md)、[Row](./ts-container-row.md)、[Stack](./ts-container-stack.md)支持设置点光源。
 
 ## PointLightStyle

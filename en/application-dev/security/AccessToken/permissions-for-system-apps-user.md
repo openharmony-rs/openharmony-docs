@@ -11,7 +11,7 @@ Before requesting permissions for your application, read and understand the [per
 
 > **NOTE**
 >
-> - The permissions listed in this topic are available to system_basic or system_core applications, but not to normal applications.
+> - The permissions listed in this topic are available to system_basic or higher-level applications, but not to normal applications.
 > - The authorization mode of these permissions is user_grant.
 > - Applications of a lower APL can request these permissions via [Access Control List (ACL)](app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism).
 
@@ -43,7 +43,7 @@ Allows an application to answer incoming calls.
 
 ## ohos.permission.MANAGE_VOICEMAIL
 
-Allows an application to access messages in the voice mailbox.
+Allows an application to manage messages in the voice mailbox.
 
 **Permission level**: system_basic
 

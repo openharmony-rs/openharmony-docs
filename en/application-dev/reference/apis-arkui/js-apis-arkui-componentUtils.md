@@ -12,6 +12,8 @@ The **componentUtils** module provides API for obtaining the coordinates and siz
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
+> - The APIs of this module can be used only in the stage model.
+>
 > - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](arkts-apis-uicontext-uicontext.md).
 
 ## Modules to Import

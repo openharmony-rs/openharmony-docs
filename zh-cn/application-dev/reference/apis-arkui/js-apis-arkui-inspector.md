@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -125,7 +127,7 @@ off(type: 'draw', callback?: () => void): void
 | type     | string | 是   | 必须填写字符串'draw'。<br>draw: 组件绘制送显完成。|
 | callback | () => void   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[on('draw')](#ondraw)方法中的callback为相同对象时才能取消回调成功。 |
 
-### on('drawChildren')<sup>20+<sup>
+### on('drawChildren')<sup>20+</sup>
 
 on(type: 'drawChildren',  callback: Callback\<void\>): void
 

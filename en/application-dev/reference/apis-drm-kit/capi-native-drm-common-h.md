@@ -54,7 +54,7 @@ The file declares the DRM data types.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | Defines the callback used to obtain DRM information from a media source.|
+| [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | Defines the callback function used to obtain DRM information from a media source.|
 
 ### Macros
 
@@ -226,7 +226,7 @@ typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeyS
 
 **Description**
 
-Defines the callback used to obtain DRM information from a media source.
+Defines the callback function used to obtain DRM information from a media source.
 
 **Since**: 11
 
@@ -235,4 +235,4 @@ Defines the callback used to obtain DRM information from a media source.
 
 | Name| Description|
 | -- | -- |
-| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) *mediaKeySystemInfo | Pointer to the DRM information obtained from the media source.|
+| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) *mediaKeySystemInfo | Pointer to the DRM information obtained from the media source, including the unique identifier of the DRM system and PSSH data.|

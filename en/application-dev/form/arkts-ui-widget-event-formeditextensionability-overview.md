@@ -1,9 +1,9 @@
 # Overview of ArkTS Widget Editing
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 ArkTS widgets provide widget page editing capabilities, allowing users to customize widget content. For example, users can edit a contact widget, modify the contact displayed in a widget, or edit a weather widget.

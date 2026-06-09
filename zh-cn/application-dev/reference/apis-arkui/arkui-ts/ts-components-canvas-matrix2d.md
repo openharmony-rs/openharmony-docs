@@ -321,7 +321,7 @@ rotate(degree: number, rx?: number, ry?: number): Matrix2D
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| degree | number | 是  | 旋转角度，取值范围无限制。顺时针方向为正角度，可以通过 degree * Math.PI / 180 将角度转换为弧度值。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认单位：弧度|
+| degree | number | 是  | 旋转弧度，取值范围无限制。顺时针方向为正弧度，可以通过`角度 * Math.PI / 180`将角度转换为弧度值传入该接口。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认单位：弧度|
 | rx     | number | 否  | 旋转点的水平方向坐标，取值范围无限制。<br>默认单位：vp<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认值：0    |
 | ry     | number | 否  | 旋转点的垂直方向坐标，取值范围无限制。<br>默认单位：vp<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认值：0    |
 

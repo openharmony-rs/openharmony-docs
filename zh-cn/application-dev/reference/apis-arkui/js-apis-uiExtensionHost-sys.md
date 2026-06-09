@@ -1,7 +1,7 @@
 # @ohos.uiExtensionHost (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
+<!--Owner: @Pakoo007-->
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
@@ -28,6 +28,8 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -41,6 +43,8 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 获取宿主应用窗口内容避让的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与宿主窗口内容重叠时，需要宿主窗口内容避让的区域。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -88,6 +92,8 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -131,6 +137,8 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -171,6 +179,8 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 注册组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -214,6 +224,8 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 注销组件（EmbeddedComponent或UIExtensionComponent）尺寸变化的监听。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -262,6 +274,8 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 **需要权限**：ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -328,7 +342,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -413,7 +427,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -497,6 +511,8 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -560,6 +576,8 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -609,6 +627,8 @@ export default class EntryAbility extends UIExtensionAbility {
 用于表示宿主应用窗口和UIExtensionComponent组件的信息。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 

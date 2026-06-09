@@ -28,7 +28,7 @@ createDataProxyHandle(): Promise&lt;DataProxyHandle&gt;
 
 创建DataProxyHandle实例。使用Promise异步回调。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **返回值：**
 
@@ -54,7 +54,7 @@ export default class EntryAbility extends UIAbility {
     dataShare.createDataProxyHandle().then((dataProxyHandle) => {
       console.info("createDataProxyHandle succeed");
     }).catch((err: BusinessError) => {
-      console.error(`createDataProxyHandle error: code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to create DataProxyHandle. Code: ${err.code}, message: ${err.message}`);
     });
   }
 }
@@ -93,7 +93,7 @@ export default class EntryAbility extends UIAbility {
 | 名称       | 类型                                                         | 只读 | 可选 | 说明           |
 | ---------- | ----------------------------------------------------------- | ----| ---- | -------------- |
 | type       | [ChangeType](#changetype20)                                | 否 | 否    | 通知变更的类型。 |
-| uri       | string                                                        | 否 | 否    | 通知变更指定URI。|
+| uri       | string                                                        | 否 | 否    | 通知变更指定URI。固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。|
 | value     | [ValueType](js-apis-data-valuesBucket.md#valuetype)             | 否 | 否     | 更新的数据。     |
 
 ## DataProxyErrorCode<sup>20+</sup>
@@ -171,15 +171,20 @@ export default class EntryAbility extends UIAbility {
 
 数据代理操作句柄的实例，可使用此实例访问或管理共享配置信息。在调用DataProxyHandle提供的方法前，需要先通过[createDataProxyHandle](#datasharecreatedataproxyhandle20)构建一个实例。
 
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
 ### on('dataChange')<sup>20+</sup>
 
 on(event: 'dataChange', uris: string[], config: DataProxyConfig, callback: AsyncCallback&lt;DataProxyChangeInfo[]&gt;): DataProxyResult[]
 
 订阅指定URI对应共享配置变更事件。若订阅者已注册变更通知，当配置发布方修改配置时，订阅者将会接收到callback通知，通知携带数据变更类型、变化的URI、变更的共享配置内容。使用callback异步回调。该功能不允许跨用户订阅通知，不允许订阅未发布的配置。订阅成功后若权限被收回，则后续不再通知订阅者。
 
-触发通知：配置发布方调用[publish](#publish20)、[delete](#delete20)、[delete](#delete)接口发布、删除指定配置或者删除所有配置时会自动触发通知。
+**配对调用：**
+- 订阅后必须在不需要时调用[off('dataChange')](#offdatachange20)取消订阅。
+- 取消订阅时需确保event、uris、config和callback参数与订阅时一致。
+- 未取消订阅可能导致内存泄漏和资源占用。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
 
@@ -188,7 +193,7 @@ on(event: 'dataChange', uris: string[], config: DataProxyConfig, callback: Async
 | event     | string                        | 是   | 订阅的事件/回调类型，支持的事件为'dataChange'，当配置发布方修改配置时，触发该事件。 |
 | uris     | string\[]             | 是   | 表示要订阅的共享配置对应的URI数组。<br/>**说明：** <br/>1. API版本26.0.0之前，数组最大长度为32；从API版本26.0.0开始，数组最大长度为64。<br/>2. URI固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
 | config      | [DataProxyConfig](#dataproxyconfig20)               | 是   | 表示数据代理操作的配置。从API版本26.0.0开始，当变更的共享配置内容长度超过[DataProxyConfig](#dataproxyconfig20)中maxValueLength字段配置的最大长度限制时，该共享配置内容会被截断。 |
-| callback | AsyncCallback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | 是   | 回调函数。当配置发布方修改配置时会回调该函数。|
+| callback | AsyncCallback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | 是   | 回调函数。当订阅成功时，err为undefined，data为获取到的DataProxyChangeInfo数组，包含变更类型、URI和变更的共享配置内容；否则为错误对象。|
 
 **返回值：**
 
@@ -215,7 +220,7 @@ const config: dataShare.DataProxyConfig = {
 };
 const callback = (err: BusinessError<void>, changes: dataShare.DataProxyChangeInfo[]): void => {
   if (err) {
-    console.error(`callback error: code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to receive data change notification. Code: ${err.code}, message: ${err.message}`);
   } else {
     changes.forEach((change) => {
       console.info(`Change Type: ${change.type}, URI: ${change.uri}, Value: ${change.value}`);
@@ -234,7 +239,12 @@ off(event: 'dataChange', uris: string[], config: DataProxyConfig, callback?: Asy
 
 取消订阅指定URI对应代理数据变更事件。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+**配对调用：**
+- 必须在已调用[on('dataChange')](#ondatachange20)订阅后使用
+- 取消订阅时需确保event、uris、config参数与订阅时一致
+- 如未指定callback参数，将取消该URI的所有已注册回调函数
+
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
 
@@ -243,7 +253,7 @@ off(event: 'dataChange', uris: string[], config: DataProxyConfig, callback?: Asy
 | event     | string                        | 是   | 订阅的事件/回调类型，支持的事件为'dataChange'。 |
 | uris     | string\[]             | 是   | 表示要取消订阅的共享配置对应的URI数组。<br/>**说明：** <br/>1. API版本26.0.0之前，数组最大长度为32；从API版本26.0.0开始，数组最大长度为64。<br/>2. URI固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复，字符串长度不超过256个字节。 |
 | config      | [DataProxyConfig](#dataproxyconfig20)               | 是   | 表示数据代理操作的配置。 |
-| callback | AsyncCallback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | 否   | 回调函数。表示指定取消订阅的callback通知，如果为空、undefined或null，则取消订阅这些URI下所有的通知事件。|
+| callback | AsyncCallback&lt;[DataProxyChangeInfo](#dataproxychangeinfo20)\[]&gt; | 否   | 需要取消的回调函数。不填写则取消所有已注册的回调函数。|
 
 **返回值：**
 
@@ -270,7 +280,7 @@ const config: dataShare.DataProxyConfig = {
 };
 const callback = (err: BusinessError<void>, changes: dataShare.DataProxyChangeInfo[]): void => {
   if (err) {
-    console.error(`callback error: code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to receive data change notification. Code: ${err.code}, message: ${err.message}`);
   } else {
     changes.forEach((change) => {
       console.info(`Change Type: ${change.type}, URI: ${change.uri}, Value: ${change.value}`);
@@ -289,7 +299,7 @@ publish(data: ProxyData[], config: DataProxyConfig): Promise&lt;DataProxyResult[
 
 发布共享配置项。使用Promise异步回调。发布后，发布者和允许列表中指定的应用可以访问该共享配置项。如果要发布的URI已经存在，则更新对应的共享配置项。如果发布的配置项中存在任一URI的长度超出上限或者格式校验失败，则当前发布操作失败。只有发布者才允许更新共享配置项。API版本26.0.0之前，每个应用支持最多32个共享配置；从API版本26.0.0开始，每个应用支持最多64个共享配置。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
 
@@ -343,7 +353,7 @@ delete(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt
 
 根据URI删除指定的共享配置项。使用Promise异步回调。只有配置发布方能删除共享配置项。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
 
@@ -384,15 +394,15 @@ dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyR
 });
 ```
 
-### delete
+### deleteMyPublishedData
 
-delete(config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt;
+deleteMyPublishedData(config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt;
 
 删除当前发布者发布的所有共享配置项。使用Promise异步回调。只有配置发布方能删除共享配置项。
 
 **起始版本：** 26.0.0
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
 
@@ -421,12 +431,12 @@ delete(config: DataProxyConfig): Promise&lt;DataProxyResult[]&gt;
 const config: dataShare.DataProxyConfig = {
   type: dataShare.DataProxyType.SHARED_CONFIG,
 };
-dataProxyHandle.delete(config).then((results: dataShare.DataProxyResult[]) => {
+dataProxyHandle.deleteMyPublishedData(config).then((results: dataShare.DataProxyResult[]) => {
   results.forEach((result) => {
     console.info(`URI: ${result.uri}, Result: ${result.result}`);
   });
 }).catch((error: BusinessError) => {
-  console.error('Error deleting config:', error);
+  console.error(`Failed to delete all configs. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -436,7 +446,7 @@ get(uris: string[], config: DataProxyConfig): Promise&lt;DataProxyGetResult[]&gt
 
 根据URI获取指定的共享配置项。使用Promise异步回调。只有发布者和允许列表中指定的应用可以访问该共享配置项。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
 

@@ -10,7 +10,9 @@
 
 >**说明：**
 >
->本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 
 本文中T和S的含义如下：
@@ -1544,7 +1546,7 @@ struct ReusableChild {
 @Entry
 @ComponentV2({ 
   reusePool: 'shared', // 声明共享全局复用池
-  poolAccepts: ['ReusableChild'], // 全局复用池接纳子组件类型ReusableChild 
+  poolAccepts: [ReusableChild], // 全局复用池接纳子组件类型ReusableChild
   freezeWhenInactive: false // 关闭组件冻结功能。该参数必须声明reusePools时提供，也可以开启组件冻结。
 })
 struct Index {
@@ -1601,14 +1603,12 @@ type TaskCallback = () => T
 
 [addMonitor](#addmonitor20)的可选参数，用于配置回调类型以及是否使能通配符能力。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明     |
 | ------ | ---- | ---- | ---- | ------------ |
-|isSynchronous|boolean|否|是|配置当前回调函数否是为同步回调。true为同步回调。默认值为false，即异步回调。|
-|enableWildcard|boolean|否|是|配置当前addMonitor是否使能通配符能力。true为使能通配符能力，false为关闭通配符能力。默认值为false，即关闭通配符能力。当关闭通配符能力，但路径中含有通配符时，该路径将视为不合法路径。<br>**起始版本：** 26.0.0|
+|isSynchronous|boolean|否|是|配置当前回调函数是否为同步回调。true为同步回调。默认值为false，即异步回调。<br>**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。|
+|enableWildcard|boolean|否|是|配置当前addMonitor是否使能通配符能力。true为使能通配符能力，false为关闭通配符能力。默认值为false，即关闭通配符能力。当关闭通配符能力，但路径中含有通配符时，该路径将视为不合法路径。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## MonitorCallback<sup>20+</sup>
 type MonitorCallback = (monitorValue: IMonitor) => void
@@ -2211,11 +2211,10 @@ struct ReusableChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct PoolOwner {
   checkPool() {
-    const context = UIUtils.getCustomComponentContext(this);
-    const pool = context.getReusePool();
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
     if (pool) {
       console.info('Global reuse pool configured.');
     } else {
@@ -2226,6 +2225,10 @@ struct PoolOwner {
   build() {
     Column() {
       ReusableChild()
+      Button('Check Pool')
+        .onClick(() => {
+          this.checkPool();
+        })
     }
   }
 }
@@ -2245,7 +2248,7 @@ struct PoolOwner {
 
 ### getReusableInfo
 
-getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IReusableInfo | IReusableInfo[] | undefined
+getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IReusableInfo[] | IReusableInfo | undefined
 
 检索此复用池中给定可复用组件类型的回收实例信息。
 
@@ -2268,7 +2271,7 @@ getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IR
 
 | 类型 | 说明 |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [IReusableInfo](#ireusableinfo) \| [IReusableInfo](#ireusableinfo)[] \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`且复用组件未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`但复用组件使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
+| [IReusableInfo](#ireusableinfo)[] \| [IReusableInfo](#ireusableinfo) \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`且复用组件未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`但复用组件使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
 
 **示例：**
 
@@ -2291,7 +2294,7 @@ struct ReusableChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct PoolOwner {
   @Local showChild: boolean = true;
 
@@ -2339,7 +2342,7 @@ struct PoolOwner {
 
 ### preRender
 
-preRender(builder: WrappedBuilder\<[]\>, n: number): Promise\<void\>
+preRender(builder: WrappedBuilder\<[]\>, times: number): Promise\<void\>
 
 预创建@Reusable/@ReusableV2组件并将它们放入此复用池中。
 
@@ -2355,8 +2358,8 @@ preRender(builder: WrappedBuilder\<[]\>, n: number): Promise\<void\>
 
 | 参数名  | 类型                 | 必填 |  说明                            |
 | ------- | -------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
-| builder | WrappedBuilder\<[]\> | 是   | 包含要执行`n`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个@Reusable/@ReusableV2组件。 |
-| n   | number               | 是   | 执行@Builder函数的次数。                                                                                                          |
+| builder | WrappedBuilder\<[]\> | 是   | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个@Reusable/@ReusableV2组件。 |
+| times   | number               | 是   | 执行@Builder函数的次数。                                                                                                          |
 
 **返回值：**
 
@@ -2375,12 +2378,12 @@ preRender(builder: WrappedBuilder\<[]\>, n: number): Promise\<void\>
 **示例：**
 
 ```ts
-import { UIUtils } from '@kit.ArkUI';
+import { UIUtils, IReusableInfo } from '@kit.ArkUI';
 
 @ReusableV2
 @ComponentV2
 struct ReusableComponent {
-  @Require @Param param: number;
+  @Param param: number = 8;
 
   aboutToAppear() {
     console.info('ReusableComponent aboutToAppear');
@@ -2398,11 +2401,11 @@ struct ReusableComponent {
 
 @Builder 
 function preRenderBuilder() {
-  ReusableComponent({ param: 0 })
+  ReusableComponent()
 }
 
 @Entry
-@ComponentV2({ reusePool: 'shared', poolAccepts: ['ReusableComponent'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableComponent], freezeWhenInactive: false })
 struct Index {
   @Local onUIFullyLoaded: boolean = false;
 
@@ -2412,26 +2415,43 @@ struct Index {
     // 预加载preRenderBuilder内的复用组件到当前的全局复用池中，执行一次preRenderBuilder。
     pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder.bind(this)), 1)
       .then(() => {
-        this.onUIFullyLoaded = true;
+        console.info('ReusableComponent preRender completes');
       });
   }
 
+  checkPool() {
+    // 获取全局复用池内组件数量
+    const reusePool = UIUtils.getCustomComponentContext(this).getReusePool();
+    const reusableInfo: IReusableInfo = reusePool!.getReusableInfo(ReusableComponent) as IReusableInfo;
+    console.info(`ReusableComponent reuse pool count=${reusableInfo.count}`);
+  }
+
   build() {
-    Column() {
+    Column({ space: 5 }) {
+      Button('Switch')
+        .onClick(() => {
+          this.onUIFullyLoaded = !this.onUIFullyLoaded;
+        })
+        .width(100)
+      Button('Check pool')
+        .onClick(() => {
+          this.checkPool();
+        })
+        .width(100)
       CompA({ showFullUI: this.onUIFullyLoaded })
     }
+    .width('100%')
   }
 }
 
 @ComponentV2
 struct CompA {
   @Require @Param showFullUI: boolean;
-  @Local param: number = 8;
 
   build() {
     if (this.showFullUI) {
       // 这将从池中复用预渲染的实例。
-      ReusableComponent({ param: this.param })
+      ReusableComponent()
     }
   }
 }
@@ -2485,7 +2505,7 @@ struct TestChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['TestChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [TestChild], freezeWhenInactive: false })
 struct PoolOwner {
   @Local showA: boolean = true;
   @Local showB: boolean = true;

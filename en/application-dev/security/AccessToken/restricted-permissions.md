@@ -13,7 +13,7 @@
 
 Restricted permissions are permissions available to normal applications but must be requested via [access control list (ACL)](app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism).
 
-To change the APL of a normal application to system_basic or system_core, modify the HarmonyAppProvision file (**Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json** file in the SDK directory) of the application when developing the application installation package, and sign the application again.
+To change the APL of a normal application to system_basic or higher, modify the HarmonyAppProvision file (**Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json** file in the SDK directory) of the application when developing the application installation package, and sign the application again.
 
 **Modification mode**:
 
@@ -70,7 +70,7 @@ Allows an application to add, remove, and modify **Contacts**.
 
 ## ohos.permission.READ_AUDIO
 
-Allows an application to access the audio files in a user directory.
+Allows an application to access the audio files in a user public directory.
 
 <!--RP26--><!--RP26End-->
 
@@ -82,7 +82,7 @@ Allows an application to access the audio files in a user directory.
 
 ## ohos.permission.WRITE_AUDIO
 
-Allows an application to modify the audio files in a user directory.
+Allows an application to modify the audio files in a user public directory.
 
 <!--RP28--><!--RP28End-->
 
@@ -94,7 +94,7 @@ Allows an application to modify the audio files in a user directory.
 
 ## ohos.permission.READ_IMAGEVIDEO
 
-Allows an application to access the images/videos in a user directory.
+Allows an application to read image or video files from users' local public directories. 
 
 <!--RP27--><!--RP27End-->
 
@@ -104,9 +104,11 @@ Allows an application to access the images/videos in a user directory.
 
 **Since**: 9
 
+**Changelog**: In API versions 9 to 24, this permission allows an application to access images or videos stored on the cloud or locally. From API version 26.0.0, this permission allows an application to read only images or videos in users' local public directories.
+
 ## ohos.permission.WRITE_IMAGEVIDEO
 
-Allows an application to modify the images/videos in a user directory.
+Allows an application to modify the images/videos in a user public directory.
 
 <!--RP29--><!--RP29End-->
 
@@ -119,7 +121,7 @@ Allows an application to modify the images/videos in a user directory.
 <!--Del-->
 ## ohos.permission.WRITE_DOCUMENT
 
-Allows an application to modify the documents in a user directory.
+Allows an application to modify the documents in a user public directory.
 
 **Permission level**: system_basic
 
@@ -135,7 +137,7 @@ See the [alternative solution of the **Files** permission group](app-permission-
 
 ## ohos.permission.READ_DOCUMENT
 
-Allows an application to access the documents in a user directory.
+Allows an application to access the documents in a user public directory.
 
 **Permission level**: system_basic
 
@@ -152,9 +154,11 @@ See the [alternative solution of the **Files** permission group](app-permission-
 
 ## ohos.permission.READ_WRITE_DESKTOP_DIRECTORY
 
-Allows an application to access the **Desktop** directory and its subdirectories in the user directory.
+Allows an application to access the **Desktop** directory and its subdirectories in the user public directory.
 
 Currently, only applications on 2-in-1 devices and tablets can request this permission.
+
+<!--RP15--><!--RP15End-->
 
 **Permission level**: system_basic
 
@@ -196,11 +200,17 @@ Allows an application to read **Pasteboard** data.
 
 **Authorization mode**: user_grant
 
+**Supported devices**: Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **Since**: 11
 
 ## ohos.permission.FILE_ACCESS_PERSIST
 
 Allows an application to support persistent access to file URIs.
+
+> **NOTE**
+>
+> In API 12 and later versions, the permission level is changed to normal, and applications can directly [declare permissions](declare-permissions.md). If compatibility with versions earlier than API 12 is required, the permission must still be used following the [request method for restricted permissions](declare-permissions-in-acl.md).
 
 <!--RP18--><!--RP18End-->
 
@@ -244,7 +254,7 @@ Allows an application to listen for input events.
 
 ## ohos.permission.SHORT_TERM_WRITE_IMAGEVIDEO
 
-Allows an application to save images and videos to the user's directory within
+Allows an application to save images and videos to the user public directory within
 
 up to 30 minutes after obtaining the permission. If it exceeds 30 minutes, a dialog box will be displayed again to request user authorization.
 
@@ -304,13 +314,15 @@ This permission is required if you want to obtain the MAC address of the peer de
 
 Allows a carrier application to add eSIM configuration files.
 
+<!--RP86--><!--RP86End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
 **Since**: 13
 
-**Changelog**: The permission level is **normal** in API versions 13 and **system_basic** since API versions 14.
+**Changelog**: The permission level is **normal** in API versions 13 and **system_basic** since API version 14.
 
 ## ohos.permission.kernel.DISABLE_CODE_MEMORY_PROTECTION
 
@@ -344,7 +356,7 @@ For the application developed using the cross-platform framework, this permissio
 
 Allows an application to have its system JS engine to apply for anonymous executable memory with the MAP_FORT identifier.
 
-After the application has this permission, the system JS engine can request anonymous executable memory with MAP_FORT for just-in-time (JIT) compilation, which increase the runtime execution efficiency.
+After the application has this permission, the system JS engine can request anonymous executable memory with MAP_FORT for just-in-time (JIT) compilation, which increases the runtime execution efficiency.
 
 <!--RP13--><!--RP13End-->
 
@@ -363,6 +375,8 @@ Allows an application to set or remove the pasteable range of pasteboard data.
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
+
+**Supported devices**: Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **Since**: 14
 
@@ -400,7 +414,11 @@ Allows an application to preload files to improve the file opening speed.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: PCs/2-in-1 devices | tablets
+
 **Since**: 15
+
+**Changelog**: Since API version 26.0.0, this permission is also available on tablets.
 
 ## ohos.permission.SET_PAC_URL
 
@@ -426,6 +444,8 @@ Allows a device administrator application to manage personal device restrictions
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
 **Since**: 15
 
 ## ohos.permission.START_PROVISIONING_MESSAGE
@@ -437,6 +457,8 @@ Allows an application to start the device management service deployment process,
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 15
 
@@ -577,6 +599,8 @@ This permission can be requested successfully only when:
 1. The target extension driver server in the value field of the permission declaration for the peripheral extension driver client has been launched or both the server and client have been launched.
 2. The capabilities provided by the target extension driver server comply with the requirements of the peripheral extension driver client.
 
+<!--RP82--><!--RP82End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -595,6 +619,8 @@ Peripherals connected to the host via a USB bus and:
 
 1. InterfaceClass of the peripheral is Mass Storage (0x08) and InterfaceSubClass is SCSI Transparent Command Set (0x06).
 2. The peripheral can simulate a SCSI device in a way that is transparent to the operating system.
+
+<!--RP83--><!--RP83End-->
 
 **Permission level**: system_basic
 
@@ -635,6 +661,8 @@ Allows an application to call the screen time guard APIs to restrict screen usag
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets
 
 **Since**: 20
 
@@ -682,7 +710,7 @@ Allows an application to use the Native Development Kit (NDK) of the passkey ser
 
 ## ohos.permission.USE_FLOAT_BALL
 
-Allows an application to use the global float ball.
+Allows an application to use the global floating ball.
 
 <!--RP46--><!--RP46End-->
 
@@ -806,6 +834,8 @@ Allows an application to detect the network and obtain the TraceRoute informatio
 
 Allows an application to read all calendar information.
 
+<!--RP84--><!--RP84End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: user_grant
@@ -817,6 +847,8 @@ Allows an application to read all calendar information.
 ## ohos.permission.WRITE_WHOLE_CALENDAR
 
 Allows an application to add, remove, or change all calendar events.
+
+<!--RP85--><!--RP85End-->
 
 **Permission level**: system_basic
 
@@ -956,7 +988,7 @@ Allows an atomic service to request differentiated aging policies.
 
 ## ohos.permission.ACCESS_USER_FULL_DISK
 
-Allows an application to access the public user directory without a pop-up.
+Allows an application to access the user public directory without a dialog.
 
 With this permission, the application can access the public directory without having to notify the user via a pop-up every time.
 
@@ -988,7 +1020,7 @@ Allows an application to load shared libraries signed with binary certificates.
 
 ## ohos.permission.CRYPTO_EXTENSION_REGISTER
 
-Allows an application to register and deregister the crypto extension.
+Allows an application to register and unregister the crypto extension.
 
 <!--RP62--><!--RP62End-->
 
@@ -1152,7 +1184,7 @@ Allows an application to query the system for matching call records within a spe
 
 ## ohos.permission.GET_NETWORK_STATS
 
-Allows an application to query traffic data of other applications.
+Allows an application to query the traffic data of other applications.
 
 <!--RP81--><!--RP81End-->
 
@@ -1164,7 +1196,7 @@ Allows an application to query traffic data of other applications.
 
 **Since**: 10
 
-**Changelog**: **Enable via ACL** is **false** for this permission in API versions 10 to 11, and is changed to **true** since API version 12. This permission is available to system applications in API versions 10 to 24, and available to normal applications since API version 26.0.0.
+**Changelog**: **Enable via ACL** is **false** for this permission in API versions 10 to 11, and is changed to **true** since API version 12. For API versions 10 to 24, this permission is available to system applications. Since API version 26.0.0, this permission is available to normal applications.
 
 ## ohos.permission.ACCESS_DLP_SERVICE
 
@@ -1237,14 +1269,14 @@ Allows an application to query the call forwarding status.
 **Since**: 26.0.0
 
 ## ohos.permission.MANAGE_SKILL
-
+    
 Allows an application to use Skills.
 
-With this permission, an application can:
+With this permission, the application can:
 
-- Query information about Skill packages.
-- Listen for events such as the installation, update, and uninstallation of Skill packages.
-- Access the sandbox directory where Skill packages are installed.
+- Query information about skill packages.
+- Listen for events such as the installation, update, and uninstallation of skill packages.
+- Access the sandbox directory where skill packages are installed.
 
 <!--RP87--><!--RP87End-->
 
@@ -1252,7 +1284,7 @@ With this permission, an application can:
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PC/2in1
+**Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.0.0
 
@@ -1270,8 +1302,8 @@ Allows an application to install the PCIe driver.
 
 **Since**: 26.0.0
 
- ## ohos.permission.KNOCK_COLLABORATION
- 	 
+## ohos.permission.KNOCK_COLLABORATION
+
 Allows an application to connect to a specific device using Tap-to-Transfer for information exchange and cross-device interaction.
 
 <!--RP88--><!--RP88End-->

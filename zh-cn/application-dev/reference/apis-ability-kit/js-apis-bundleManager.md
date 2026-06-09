@@ -856,7 +856,7 @@ try {
 
 getLaunchWant(): Want
 
-获取本应用[入口UIAbility](../../quick-start/application-package-glossary.md#uiability)的Want参数。
+获取本应用[入口UIAbility](../../quick-start/application-package-glossary.md#入口uiability)的Want参数。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -1833,6 +1833,107 @@ try {
 }
 ```
 
+## bundleManager.setAlternateIcon
+
+setAlternateIcon(alternateIconName: string): Promise\<void>;
+
+根据给定的备用图标名称设置调用方自身的备用图标。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ----------- | ------ | ---- | ---------------------------- |
+| alternateIconName  | string | 是   | 要设置的备用图标名称。备用图标名称须在app.json5中[alternateIcons标签](../../quick-start/app-configuration-file.md#alternateicons标签)的name字段内。<br/>alternateIconName为空时表示取消备用图标。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 17700308 | The alternateIconName must match the name field under alternateIcons in the app.json5 file. |
+| 17700309 | No alternate icon is enabled. |
+| 17700310 | Failed to set the alternate icon. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// alternateIconName需要替换为要设置的备用图标名称
+let alternateIconName: string = 'com.ohos.demo';
+
+try {
+  bundleManager.setAlternateIcon(alternateIconName).then((data) => {
+    hilog.info(0x0000, 'testTag', 'setAlternateIcon successfully');
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'setAlternateIcon failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setAlternateIcon failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getAlternateIcons
+
+getAlternateIcons(): Promise<Array\<AlternateIconInfo>>
+
+查询当前应用在app.json5中[alternateIcons标签](../../quick-start/app-configuration-file.md#alternateicons标签)配置的备用图标信息。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**返回值：**
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise<Array\<[AlternateIconInfo](js-apis-bundleManager-bundleInfo.md#alternateiconinfo)>> | Promise对象，返回当前应用的备用图标信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | ---------------------------------- |
+| 17700311 | Failed to obtain alternate icon. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  bundleManager.getAlternateIcons().then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAlternateIcons successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAlternateIcons failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAlternateIcons failed. Cause: %{public}s', message);
+}
+```
+
 ## ApplicationInfo
 
 type ApplicationInfo = _ApplicationInfo
@@ -2098,3 +2199,17 @@ type AppCloneIdentity = _BundleInfo.AppCloneIdentity
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_BundleInfo.AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14) |应用包的身份信息。 |
+
+## AlternateIconInfo
+
+type AlternateIconInfo = _BundleInfo.AlternateIconInfo
+
+应用备用图标信息。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+| 类型                                                         | 说明           |
+| ------------------------------------------------------------ | -------------- |
+| [_BundleInfo.AlternateIconInfo](js-apis-bundleManager-bundleInfo.md#alternateiconinfo) | 应用的备用图标信息。 |

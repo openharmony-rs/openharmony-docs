@@ -1,7 +1,7 @@
 #  Search
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -227,8 +227,6 @@ copyOption(value: CopyOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -343,6 +341,8 @@ selectionMenuHidden(value: boolean)
 设置是否不弹出系统文本选择菜单。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -852,7 +852,7 @@ strokeWidth(width: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。当LengthMetrics的单位为px时，<br/>若设置值小于0，显示实心字；若大于0，显示空心字。<br/>默认值为0，不做描边处理。 |
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。如果LengthMetrics的unit值是PERCENT，当前设置不生效，按默认值处理。<br/>若设置值小于0，显示实心字；若大于0，显示空心字。<br/>默认值为0，不做描边处理。 |
 
 ### strokeColor<sup>20+</sup>
 
@@ -1191,8 +1191,6 @@ onCut(callback:Callback\<string>)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -1229,8 +1227,6 @@ onPaste(callback:OnPasteCallback )
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -1245,6 +1241,8 @@ onTextSelectionChange(callback: OnTextSelectionChangeCallback)
 文本选择的位置或编辑状态下光标位置发生变化时，触发该回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1261,6 +1259,8 @@ onContentScroll(callback: OnContentScrollCallback)
 文本内容滚动时，触发该回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2909,3 +2909,73 @@ struct SearchExample {
 ```
 
 ![searchscrolltovisible](figures/search_scroll_to_visible.gif)
+
+### 示例31（设置文本着色器效果）
+
+该示例通过[shaderStyle](#shaderstyle)接口实现对Search组件内文本着色效果。
+
+从API版本26.0.0开始，新增shaderStyle接口。
+
+```ts
+@Entry
+@Component
+struct ShaderColorStyle {
+  @State message: string = 'Hello World';
+  @State linearGradientOptions1: LinearGradientOptions =
+    {
+      angle: 45,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]]
+    };
+  @State linearGradientOptions2: LinearGradientOptions =
+    {
+      direction: GradientDirection.LeftTop,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State radialGradientOptions: RadialGradientOptions =
+    {
+      center: [50, 50],
+      radius: 20,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State colorShaderStyle: ColorShaderStyle =
+    {
+      color: Color.Blue
+    };
+  build() {
+    Column({ space: 5 }) {
+      Text('angle为45°的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      Search({ value: this.message })
+        .minFontSize(20)
+        .width('80%')
+        .height(40)
+        .shaderStyle(this.linearGradientOptions1)
+      Text('direction为LeftTop的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      Search({ value: this.message })
+        .minFontSize(20)
+        .width('80%')
+        .height(40)
+        .shaderStyle(this.linearGradientOptions2)
+      Text('径向渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      Search({ value: this.message })
+        .minFontSize(20)
+        .width('80%')
+        .height(40)
+        .shaderStyle(this.radialGradientOptions)
+      Text('纯色').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      Search({ value: this.message })
+        .minFontSize(20)
+        .width('80%')
+        .height(40)
+        .shaderStyle(this.colorShaderStyle)
+    }
+  }
+}
+```
+![SearchShaderStyle](figures/searchShaderStyle.png)
+

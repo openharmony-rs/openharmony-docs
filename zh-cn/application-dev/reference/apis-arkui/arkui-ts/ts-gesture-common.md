@@ -18,6 +18,8 @@
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### tag<sup>11+</sup>
@@ -27,6 +29,8 @@ tag(tag: string): T
 设置手势的标志。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,6 +53,8 @@ allowedTypes(types: Array\<SourceTool>): T
 设置手势响应的输入类型。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +82,8 @@ isBegin(): boolean
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -91,6 +99,8 @@ isEnd(): boolean
 返回当前滚动类容器组件是否在底部，如果为Swiper组件且在循环模式下返回false。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,6 +121,8 @@ getId(): string
 返回当前组件的组件标识。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,6 +158,8 @@ getUniqueId(): number
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### getEventTargetInfo<sup>20+</sup>
@@ -155,6 +169,8 @@ getEventTargetInfo(): EventTargetInfo
 返回当前触摸识别器对应组件的信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,6 +187,8 @@ cancelTouch(): void
 向当前触摸识别器发送触摸取消事件的信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -212,6 +230,8 @@ getTag(): string
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -227,6 +247,8 @@ getType(): GestureControl.GestureType
 返回当前手势识别器的类型。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -244,6 +266,8 @@ isBuiltIn(): boolean
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -259,6 +283,8 @@ setEnabled(isEnabled: boolean): void
 设置当前手势识别器的使能状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -276,6 +302,8 @@ isEnabled(): boolean
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -291,6 +319,8 @@ getState(): GestureRecognizerState
 返回当前手势识别器的状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -308,6 +338,8 @@ getEventTargetInfo(): EventTargetInfo
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -321,6 +353,8 @@ getEventTargetInfo(): EventTargetInfo
 isValid(): boolean;
 
 返回当前手势识别器是否有效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -338,6 +372,8 @@ getFingerCount(): number
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -354,6 +390,8 @@ isFingerCountLimit(): boolean
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -369,6 +407,8 @@ preventBegin(): void
 在手指全部抬起前阻止手势识别器参与当前手势识别。如果系统已确定该手势识别器的结果（无论成功与否），调用此接口将无效。此方法与GestureRecognizer.[setEnabled](#setenabled12)(isEnabled: boolean)不同，[setEnabled](#setenabled12)并不会阻止手势识别器对象参与手势识别过程，而只会影响手势对应的回调函数是否执行。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -410,6 +450,8 @@ getTapCount(): number
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -430,6 +472,8 @@ isRepeat(): boolean
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -446,6 +490,8 @@ getDuration(): number
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -461,6 +507,8 @@ getAllowableMovement(): number
 获取长按手势识别器识别的手势的最大移动距离。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -482,6 +530,8 @@ getVelocityThreshold(): number
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -497,6 +547,8 @@ getDirection(): SwipeDirection
 返回预设快滑手势识别器触发快滑手势滑动方向。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -518,6 +570,8 @@ getDistance(): number
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -537,6 +591,8 @@ getAngle(): number
 返回预设旋转手势识别器触发旋转手势最小改变度数阈值。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -558,6 +614,8 @@ getPanGestureOptions(): PanGestureOptions
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -574,6 +632,8 @@ getDirection(): PanDirection
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -589,6 +649,8 @@ getDistance(): number
 返回当前滑动手势识别器触发的最小滑动距离。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -610,6 +672,8 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -623,6 +687,8 @@ getDistanceMap(): Map\<SourceTool, number\>
 定义手势识别器状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -646,17 +712,17 @@ getDistanceMap(): Map\<SourceTool, number\>
 | repeat | boolean | 否 |  否  |是否为重复触发事件，用于LongPressGesture手势触发场景。true表示重复触发事件，false表示非重复触发事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | offsetX | number | 否 | 否  |手势事件相对于手指按下时的偏移量X，单位为vp，用于PanGesture手势触发场景，从左向右滑动offsetX为正，反之为负。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>取值范围：(-∞, +∞) |
 | offsetY | number | 否 | 否  |手势事件相对于手指按下时的偏移量Y，单位为vp，用于PanGesture手势触发场景，从上向下滑动offsetY为正，反之为负。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>取值范围：(-∞, +∞)  |
-| angle | number | 否 | 否  |用于RotationGesture手势触发场景时，表示旋转角度。<br/>用于SwipeGesture手势触发场景时，表示快滑手势的角度，即两根手指间的线段与水平方向的夹角变化的度数。<br/>**说明：**<br/>角度计算方式：快滑手势被识别到后，连接两根手指之间的线被识别为起始线条，随着手指的滑动，手指之间的线条会发生旋转，根据起始线条两端点和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角，最后arctan2(cy2-cy1,cx2-cx1)-arctan2(y2-y1,x2-x1)为旋转的角度。以起始线条为坐标系，顺时针旋转为0到180度，逆时针旋转为-180到0度。<br/>取值范围：[-180,  +180]<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| angle | number | 否 | 否  |用于RotationGesture手势触发场景时，表示旋转角度，单位为deg。<br/>用于SwipeGesture手势触发场景时，表示快滑手势的角度，即手指滑动的瞬时方向与水平正方向的夹角，单位为deg。<br/>**说明：**<br/>旋转角度计算方式：RotationGesture手势被识别到后，连接两根手指之间的线被识别为起始线条，随着手指的滑动，手指之间的线条会发生旋转，根据起始线条两端点和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角，最后arctan2(cy2-cy1,cx2-cx1)-arctan2(y2-y1,x2-x1)为旋转的角度。以起始线条为坐标系，顺时针旋转为0到180度，逆时针旋转为0到-180度。<br/>取值范围：[-180, 180]<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | scale | number |否 | 否  |缩放比例，用于PinchGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | pinchCenterX | number | 否 | 否  |捏合手势中心点相对于当前组件元素原始区域左上角的x轴坐标，单位为vp，用于PinchGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | pinchCenterY | number | 否 | 否  |捏合手势中心点相对于当前组件元素原始区域左上角的y轴坐标，单位为vp，用于PinchGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | speed<sup>8+</sup> | number | 否 | 否  |快滑手势速度，即所有手指相对当前组件元素原始区域滑动的平均速度，单位为vp/s，用于SwipeGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | fingerList<sup>8+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[] | 否 | 否  |输入源为触屏产生的手势，fingerList中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerList中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerList只会携带一条记录。<br/>**说明：**<br/>1. 手指索引编号与位置对应，即fingerList[index]的id为index。先按下且未参与当前手势触发的手指在fingerList中对应位置为空。<br/>2. 当使用键盘或手柄触发手势时，不存在手指信息，fingerList为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| fingerInfos<sup>20+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[] | 否 | 是  |由触屏产生的手势，fingerInfos中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerInfos中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerInfos只会携带一条记录。<br/> **说明：**<br/>fingerInfos只会记录参与触摸的有效手指信息，先按下但未参与当前手势触发的手指在fingerInfos中不会显示。默认值为空数组[]，返回空数组时，表示当前无有效触点信息。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
-| velocityX<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的x轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从左往右为正，反之为负。单位为vp/s。<br/>取值范围：(-∞,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| velocityY<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的y轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从上往下为正，反之为负。单位为vp/s。<br/>取值范围：(-∞,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| velocity<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的主方向速度。为xy轴方向速度的平方和的算术平方根。单位为vp/s。<br/>取值范围：[0,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| tapLocation<sup>20+</sup> | [EventLocationInfo](ts-basic-gestures-tapgesture.md#eventlocationinfo20) | 否 | 是  |用于点击手势中，获取当前手势的坐标信息。在非点击手势中，tapLocation返回值为undefined。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| fingerInfos<sup>20+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8对象说明)[] | 否 | 是  |由触屏产生的手势，fingerInfos中会包含触发事件的所有触点信息；由鼠标发起的手势，fingerInfos中只会有一条记录；触摸板的事件大类与鼠标一致，所以由触摸板发起的手势，fingerInfos只会携带一条记录。<br/> **说明：**<br/>fingerInfos只会记录参与触摸的有效手指信息，先按下但未参与当前手势触发的手指在fingerInfos中不会显示。默认值为空数组[]，返回空数组时，表示当前无有效触点信息。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| velocityX<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的x轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从左往右为正，反之为负。单位为vp/s。<br/>取值范围：(-∞,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| velocityY<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的y轴方向速度。坐标轴原点为屏幕左上角，分正负方向速度，从上往下为正，反之为负。单位为vp/s。<br/>取值范围：(-∞,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| velocity<sup>10+</sup> | number | 否 | 否  |用于[PanGesture](ts-basic-gestures-pangesture.md)手势中，获取当前手势的主方向速度。为xy轴方向速度的平方和的算术平方根。单位为vp/s。<br/>取值范围：[0,  +∞) <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| tapLocation<sup>20+</sup> | [EventLocationInfo](ts-basic-gestures-tapgesture.md#eventlocationinfo20) | 否 | 是  |用于点击手势中，获取当前手势的坐标信息。在非点击手势中，tapLocation返回值为undefined。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## GestureMask枚举说明
 
@@ -677,6 +743,8 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 | 说明                               |
@@ -687,6 +755,8 @@ getDistanceMap(): Map\<SourceTool, number\>
 ## GestureType<sup>11+</sup>
 
 定义手势类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -711,6 +781,8 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称            | 类型                  | 只读 | 可选 | 说明         |
@@ -734,11 +806,11 @@ getDistanceMap(): Map\<SourceTool, number\>
 | globalY | number | 否  |  否     |相对于应用窗口左上角的y轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | localX | number | 否  |  否     |相对于当前组件元素原始区域左上角的x轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | localY | number | 否  |  否     |相对于当前组件元素原始区域左上角的y轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| displayX<sup>12+</sup> | number | 否  | 否     | 相对于屏幕左上角的x轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| displayY<sup>12+</sup> | number | 否  |  否     |相对于屏幕左上角的y轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| hand<sup>15+</sup> | [InteractionHand](./ts-appendix-enums.md#interactionhand15) | 否  |  是     |表示事件是由左手点击还是右手点击触发。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| globalDisplayX<sup>20+</sup> | number | 否  |  是     |相对于全局屏幕的左上角的X坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| globalDisplayY<sup>20+</sup> | number | 否  |  是     |相对于全局屏幕的左上角的Y坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| displayX<sup>12+</sup> | number | 否  | 否     | 相对于屏幕左上角的x轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| displayY<sup>12+</sup> | number | 否  |  否     |相对于屏幕左上角的y轴坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| hand<sup>15+</sup> | [InteractionHand](./ts-appendix-enums.md#interactionhand15) | 否  |  是     |表示事件是由左手点击还是右手点击触发。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| globalDisplayX<sup>20+</sup> | number | 否  |  是     |相对于全局屏幕的左上角的X坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| globalDisplayY<sup>20+</sup> | number | 否  |  是     |相对于全局屏幕的左上角的Y坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### getCurrentLocalPosition
 
@@ -784,6 +856,8 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 基础手势事件类型。继承自[BaseEvent](./ts-gesture-customize-judge.md#baseevent8)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称      | 类型                                  | 只读   |    可选   | 说明        |
@@ -797,6 +871,8 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称      | 类型   | 只读 | 可选                                | 说明         |
@@ -809,6 +885,8 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称      | 类型                               | 只读 | 可选       | 说明         |
@@ -820,6 +898,8 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 继承自[BaseGestureEvent](#basegestureevent11对象说明)。可将该对象作为[onGestureJudgeBegin](./ts-gesture-customize-judge.md#ongesturejudgebegin)的event参数来传递。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -837,6 +917,8 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称         | 类型     | 只读 | 可选 | 说明         |
@@ -851,11 +933,13 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称         | 类型                              |只读 | 可选        | 说明         |
 | ------------  | ---------------------------------|----|--------------| -----------|
-| angle         | number | 否 | 否 |   表示旋转角度，单位为deg。<br/>**说明：**<br/>角度计算方式：当滑动手势被识别后，连接两根手指之间的线被识别为起始线条。随着手指的滑动，手指之间的线条会发生旋转。根据起始线条和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角。<br/>最终的旋转角度为：arctan2(cy2-cy1, cx2-cx1) - arctan2(y2-y1, x2-x1) <br/>在起始线条为坐标系的情况下，顺时针旋转为0到180度，逆时针旋转为-180到0度。  |
+| angle         | number | 否 | 否 |   表示旋转角度，单位为deg。<br/>**说明：**<br/>角度计算方式：当旋转手势被识别后，连接两根手指之间的线被识别为起始线条。随着手指的滑动，手指之间的线条会发生旋转。根据起始线条和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角。<br/>最终的旋转角度为：arctan2(cy2-cy1, cx2-cx1) - arctan2(y2-y1, x2-x1) <br/>在起始线条为坐标系的情况下，顺时针旋转为0到180度，逆时针旋转为0到-180度。  |
 
 ## SwipeGestureEvent<sup>11+</sup>对象说明
 
@@ -863,9 +947,11 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称         | 类型                         | 只读 | 可选             | 说明         |
 | ------------  | ----------------------------|------|------  | -----------|
-| angle         | number | 否 | 否 | 表示快滑手势的角度，即两根手指间的线段与水平方向的夹角变化的度数，单位为deg。<br/>**说明：**<br/>角度计算方式：当快滑手势被识别后，连接两根手指之间的线被识别为起始线条。随着手指的滑动，手指之间的线条会发生旋转。根据起始线条和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角。<br/>最终的旋转角度为：arctan2(cy2-cy1, cx2-cx1) - arctan2(y2-y1, x2-x1) <br/>在起始线条为坐标系的情况下，顺时针旋转为0到180度，逆时针旋转为-180到0度。|
+| angle         | number | 否 | 否 | 表示快滑手势的角度，即手指滑动的瞬时方向与水平正方向的夹角，单位为deg。<br/>**说明：**<br/>以水平正方向为基准，滑动方向位于水平正方向顺时针侧时，角度范围为0到180度；位于水平正方向逆时针侧时，角度范围为0到-180度。|
 | speed         | number | 否 | 否 | 快滑手势速度，即所有手指相对当前组件元素原始区域滑动的平均速度，单位为vp/s。  |

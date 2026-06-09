@@ -204,20 +204,21 @@
 
 | 名称              |  值    | 说明            |
 | ----------------- | ------ | --------------- |
-| SAMPLE_RATE_8000  | 8000   | 采样率为8000。  |
-| SAMPLE_RATE_11025 | 11025  | 采样率为11025。 |
-| SAMPLE_RATE_12000 | 12000  | 采样率为12000。 |
-| SAMPLE_RATE_16000 | 16000  | 采样率为16000。 |
-| SAMPLE_RATE_22050 | 22050  | 采样率为22050。 |
-| SAMPLE_RATE_24000 | 24000  | 采样率为24000。 |
-| SAMPLE_RATE_32000 | 32000  | 采样率为32000。 |
-| SAMPLE_RATE_44100 | 44100  | 采样率为44100。 |
-| SAMPLE_RATE_48000 | 48000  | 采样率为48000。 |
-| SAMPLE_RATE_64000 | 64000  | 采样率为64000。 |
-| SAMPLE_RATE_88200<sup>12+</sup> | 88200  | 采样率为88200。 |
-| SAMPLE_RATE_96000 | 96000  | 采样率为96000。 |
-| SAMPLE_RATE_176400<sup>12+</sup> | 176400  | 采样率为176400。 |
-| SAMPLE_RATE_192000<sup>12+</sup> | 192000  | 采样率为192000。 |
+| SAMPLE_RATE_8000  | 8000   | 采样率为8000。单位为赫兹（Hz）。  |
+| SAMPLE_RATE_11025 | 11025  | 采样率为11025。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_12000 | 12000  | 采样率为12000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_16000 | 16000  | 采样率为16000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_22050 | 22050  | 采样率为22050。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_24000 | 24000  | 采样率为24000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_32000 | 32000  | 采样率为32000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_44100 | 44100  | 采样率为44100。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_48000 | 48000  | 采样率为48000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_64000 | 64000  | 采样率为64000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_88200<sup>12+</sup> | 88200  | 采样率为88200。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_96000 | 96000  | 采样率为96000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_176400<sup>12+</sup> | 176400  | 采样率为176400。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_192000<sup>12+</sup> | 192000  | 采样率为192000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_384000 | 384000  | 采样率为384000。单位为赫兹（Hz）<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## AudioEncodingType<sup>8+</sup>
 
@@ -720,4 +721,5 @@
 | :--------------------- |:--|:--------|
 | DEFAULT_BEHAVIOR<sup>24+</sup> | 0x00000000 | 默认行为，用于清空音频会话行为设置。 |
 | VOIP_PRIVACY_TYPE_PUBLIC | 0x00000001 | 非隐私VoIP，允许VoIP录音流与其他应用的录音流同时进行录音。<br/>**注意：** VoIP通话流属于隐私流，请谨慎使用该接口并确保符合隐私保护要求。<br/>**起始版本：** 26.0.0 |
-| MUTE_WHEN_INTERRUPTED<sup>24+</sup> | 0x00000002 | 当音频流被打断时，使用静音替代。<br/>通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置该行为的同时，也需要调用接口[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)使其生效。<br/>当播放被静音时，应用将收到[InterruptHint](#interrupthint).INTERRUPT_HINT_MUTE通知，并且在恢复时会收到[InterruptHint](#interrupthint).INTERRUPT_HINT_UNMUTE通知。 |
+| MUTE_WHEN_INTERRUPTED<sup>24+</sup> | 0x00000002 | 当系统需要停止或暂停音频流时，执行强制静音替代。<br/>调用[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口配置该行为时，必须同步调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)接口，否则配置将无法生效。<br/>在音频会话场景下，当音频流静音或恢复时，应用将分别收到[AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_MUTE与[AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE的通知。<br/>在AudioRenderer和AudioCapturer场景下，当音频流静音或恢复时，应用将分别收到[InterruptHint](#interrupthint).INTERRUPT_HINT_MUTE与[InterruptHint](#interrupthint).INTERRUPT_HINT_UNMUTE的通知。<br/>**注意：** 该标志不能与PAUSE_WHEN_INTERRUPTED共存，若同时设置，仅PAUSE_WHEN_INTERRUPTED生效。 |
+| PAUSE_WHEN_INTERRUPTED | 0x00000004 | 当系统需要停止音频流时，执行暂停替代。<br/>调用[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口配置该行为时，必须同步调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)接口，否则配置将无法生效。<br/>在音频会话场景下，当音频流暂停或恢复时，应用将分别收到[AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE与[AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_RESUME的通知。<br/>在AudioRenderer和AudioCapturer场景下，当音频流暂停或恢复时，应用将分别收到[InterruptHint](#interrupthint).INTERRUPT_HINT_PAUSE与[InterruptHint](#interrupthint).INTERRUPT_HINT_RESUME的通知。<br/>**注意：** 该标志不能与MUTE_WHEN_INTERRUPTED共存，若同时设置，仅该标志生效。<br/>**起始版本：** 26.0.0 |

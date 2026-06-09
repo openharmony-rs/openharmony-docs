@@ -1194,7 +1194,7 @@ openBiometricsSettingsPage(context: Context): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、Wearable设备中可正常调用，在其他设备调用不生效。
 
 **参数**：
 
@@ -1236,7 +1236,7 @@ openNfcSettingsPage(context: Context): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
-**设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone、Tablet、Wearable设备中可正常调用，在其他设备调用不生效。
 
 **参数**：
 
@@ -1266,6 +1266,76 @@ try {
 } catch (err) {
   console.error(`Failed to open the NFC settings page. code: ${err?.code}, message: ${err?.message}`);
 }
+```
+
+## settings.openDoubleClickSettingsPage<sup>24+</sup>
+
+openDoubleClickSettingsPage(context: Context): void
+
+打开按键设置-双击下按键页面。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口仅在Wearable设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | 1. The parameter is incorrect. <br> 2. The parameter is not transferred or the transferred parameter is invalid.    |
+| 16900020 | 1. The setting page cannot be opened through redirection.<br> 2. Internal error |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openDoubleClickSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the DoubleClick settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.isDoubleClickAppForSelf<sup>24+</sup>
+
+isDoubleClickAppForSelf(): Promise\<boolean>
+
+判断双击下按键的默认启动应用是否为本应用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口仅在Wearable设备中可正常调用，在其他设备调用不生效。
+
+**返回值**：
+
+| 类型             | 说明                    |
+| ---------------- |-----------------------|
+| Promise\<boolean> | Promise对象。返回true表示是当前应用，返回false表示非当前应用。 |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+
+settings.isDoubleClickAppForSelf().then((result: boolean) => {
+  console.info(`isDoubleClickAppForSelf result: ${result}`);
+})
 ```
 
 ## settings.openMobileNetworkSettingsPage
@@ -1412,7 +1482,7 @@ openSoundSettingsPage(context: Context): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
 
 **参数**：
 

@@ -32,6 +32,7 @@
 | [native_interface.h](capi-native-interface-h.md) | 提供NativeModule接口的统一入口函数。 |
 | [native_interface_focus.h](capi-native-interface-focus-h.md) | 定义焦点管理的相关接口，主要用于主动转移焦点或管理控制焦点转移默认行为，控制焦点激活态。 |
 | [native_key_event.h](capi-native-key-event-h.md) | 提供NativeKeyEvent相关接口定义。 |
+| [native_material.h](capi-native-material-h.md) | 提供ArkUI在Native侧的沉浸式材质类型和API声明。 |
 | [native_node.h](capi-native-node-h.md) | 提供NativeNode接口的类型定义。 |
 | [native_node_napi.h](capi-native-node-napi-h.md) | 提供ArkTS侧的FrameNode转换NodeHandle的方式。 |
 | [native_type.h](capi-native-type-h.md) | 提供NativeModule公共的类型定义。 |

@@ -12,6 +12,8 @@
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](./arkts-apis-uicontext-uicontext.md)说明。 
 
 ## 导入模块

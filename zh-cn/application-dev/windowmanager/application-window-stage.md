@@ -1,8 +1,8 @@
 # 管理应用窗口（Stage模型）
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -124,7 +124,7 @@ export default class EntryAbility extends UIAbility {
 
 > **说明：**  
 > 以下几种场景不建议使用子窗口，建议优先考虑使用控件[浮层](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)能力实现。
-> - 移动设备（手机、在非自由模式下的平板设备）场景下子窗不能超出处于悬浮窗模式、分屏模式的应用主窗口范围，与控件一致。  
+> - 移动设备（手机、在非自由模式下的平板设备）场景下子窗不能超出处于智慧多窗悬浮窗模式、分屏模式的应用主窗口范围，与控件一致。  
 > - 分屏窗口与自由窗口模式下，主窗口位置大小发生改变时控件实时跟随变化能力优于子窗。  
 > - 部分设备平台下根据实际的系统配置限制，子窗只有系统默认的动效和圆角阴影，应用无法设置，自由度低。
 
@@ -143,7 +143,7 @@ export default class EntryAbility extends UIAbility {
    在调用`showWindow`之前，建议设置子窗口的大小和位置。
 
    如果没有设置子窗口的大小，调用`showWindow`后:
-    + [自由窗口](./window-terminology.md#自由窗口)状态下，默认子窗口大小为当前物理屏幕的大小。<!--RP3--><!--RP3End-->
+    + [自由窗口](./window-terminology.md#freeform-window自由窗口)状态下，默认子窗口大小为当前物理屏幕的大小。<!--RP3--><!--RP3End-->
     + 非自由窗口状态下，默认子窗口大小为主窗口大小。
 
 3. 加载显示子窗口的具体内容。

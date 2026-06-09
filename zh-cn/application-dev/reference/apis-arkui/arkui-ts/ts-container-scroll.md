@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 可滚动的容器组件，当子组件的布局尺寸超过父组件的尺寸时，内容可以滚动。
@@ -104,6 +104,8 @@ scrollBarColor(color: Color | number | string | Resource)
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -161,6 +163,8 @@ scrollSnap(value: ScrollSnapOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -184,7 +188,7 @@ edgeEffect(edgeEffect: EdgeEffect, options?: EdgeEffectOptions)
 | 参数名                | 类型                                              | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | edgeEffect            | [EdgeEffect](ts-appendix-enums.md#edgeeffect)     | 是   | Scroll组件的边缘滑动效果，支持弹簧效果和阴影效果。<br/>默认值：EdgeEffect.None |
-| options<sup>11+</sup> | [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明) | 否   | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：{ alwaysEnabled: true } |
+| options<sup>11+</sup> | [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明) | 否   | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：{ alwaysEnabled: true }<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### enableScrollInteraction<sup>10+</sup>
 
@@ -193,6 +197,8 @@ enableScrollInteraction(value: boolean)
 设置是否支持滚动手势。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,6 +220,8 @@ nestedScroll(value: NestedScrollOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -229,6 +237,8 @@ friction(value: number | Resource)
 设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -246,6 +256,8 @@ enablePaging(value: boolean)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -261,6 +273,8 @@ initialOffset(value: OffsetOptions)
 设置初始滚动偏移量。只在首次布局时生效，后续动态修改该属性值不生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -278,6 +292,8 @@ maxZoomScale(scale: number)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -293,6 +309,8 @@ minZoomScale(scale: number)
 设置Scroll组件内容的最小手势缩放比例。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -314,6 +332,8 @@ zoomScale(scale: number)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -329,6 +349,8 @@ enableBouncesZoom(enable: boolean)
 启用过缩放回弹效果。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -350,7 +372,7 @@ enableBouncesZoom(enable: boolean)
 | Horizontal | 1  | 仅支持水平方向滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | Free<sup>(deprecated) </sup> | 2 | 支持竖直或水平方向滚动。<br/> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用FREE替代。FREE枚举值从API version 20开始支持。|
 | None       | 3 | 不可滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| FREE<sup>20+</sup>   | 4 | 自由滚动。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| FREE<sup>20+</sup>   | 4 | 自由滚动。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 FREE（自由滚动）模式下支持的能力：
 
@@ -378,6 +400,8 @@ FREE（自由滚动）模式下支持的能力：
 限位滚动模式对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -478,6 +502,8 @@ onWillScroll(handler: ScrollOnWillScrollCallback)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -503,6 +529,8 @@ onDidScroll(handler: ScrollOnScrollCallback)
 3、越界回弹。 
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -602,6 +630,8 @@ onDidZoom(event: ScrollOnDidZoomCallback)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -617,6 +647,8 @@ onZoomStart(event: VoidCallback)
 手势缩放开始触发。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -634,6 +666,8 @@ onZoomStop(event: VoidCallback)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -649,6 +683,8 @@ type ScrollOnScrollCallback = (xOffset: number, yOffset: number, scrollState: Sc
 Scroll滚动时触发的回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -671,6 +707,8 @@ type ScrollOnWillScrollCallback = (xOffset: number, yOffset: number, scrollState
 Scroll滚动前触发的回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -697,6 +735,8 @@ type OnScrollEdgeCallback = (side: Edge) => void
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -712,6 +752,8 @@ type OnScrollFrameBeginCallback = (offset: number, state: ScrollState) => OnScro
 Scroll每帧滚动前触发的回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -738,6 +780,8 @@ Scroll每帧滚动前触发的回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 类型  | 只读 | 可选 | 说明  |
@@ -751,6 +795,8 @@ type ScrollOnDidZoomCallback = (scale: number) => void
 Scroll每帧缩放完成时触发的回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -792,8 +838,19 @@ Scroller的构造函数。
 
 scrollTo(options: ScrollOptions)
 
-
 滑动到指定位置。
+
+>  **说明：**
+>
+> - scrollTo动画速度大于200vp/s时，滚动组件区域内的组件不响应点击事件。
+>
+> - 各组件行为存在差异：
+>
+>   - [ArcList](ts-container-arclist.md)和[List](ts-container-list.md)组件会对所有经过的item进行加载和布局。
+>
+>   - Grid组件和[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的[WaterFlow](ts-container-waterflow.md)组件在跳转距离较大（大于2倍组件主轴高度）时，会直接估算出要显示的item。跳转指一帧滑动。
+>
+>   - [ALWAYS_TOP_DOWN](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的WaterFlow组件向后跳转（即dx或dy为正值时）会加载和布局所有经过的item，向前跳转（即dx或dy为负值时）会直接跳转到对应位置。跳转指一帧滑动。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -804,11 +861,6 @@ scrollTo(options: ScrollOptions)
 | 参数名   | 类型 | 必填   | 说明      |
 | ----- | ---- | ---- | --------- |
 | options | [ScrollOptions](#scrolloptions18对象说明) | 是    | 滑动到指定位置的参数。 |
-
->  **说明：**
->
-> ScrollTo动画速度大于200vp/s时，滚动组件区域内的组件不响应点击事件。
->
 
 ### scrollEdge
 
@@ -827,7 +879,7 @@ Scroll组件默认有动画，Grid、List、WaterFlow组件默认无动画。
 | 参数名   | 类型 | 必填   | 说明      |
 | ----- | ---- | ---- | --------- |
 | value | [Edge](ts-appendix-enums.md#edge) | 是    | 滚动到的边缘位置。|
-| options<sup>12+</sup>&nbsp; | [ScrollEdgeOptions](#scrolledgeoptions12对象说明) | 否    | 设置滚动到边缘位置的模式。 |
+| options<sup>12+</sup>&nbsp; | [ScrollEdgeOptions](#scrolledgeoptions12对象说明) | 否    | 设置滚动到边缘位置的模式。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### fling<sup>12+</sup>
 
@@ -837,6 +889,8 @@ fling(velocity: number): void
 滚动类组件根据传入的初始速度进行惯性滚动。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -910,7 +964,7 @@ currentOffset(): OffsetResult
 
 | 类型  | 说明 |
 | -------- | -------- |
-|  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动总偏移量。|
+|  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动总偏移量。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### offset<sup>23+</sup>
 
@@ -919,6 +973,8 @@ offset(): OffsetResult | undefined
 获取当前的滚动总偏移量。除接口声明有undefined以外，其他与[currentOffset](#currentoffset)接口保持一致。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -963,19 +1019,25 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 | value | number   | 是   | 要滑动到的目标元素在当前容器中的索引值。      <br/>**说明：** <br/>value值设置成负值或者大于当前容器子组件的最大索引值，视为异常值，本次跳转不生效。                     |
 | smooth | boolean  | 否   | 设置滑动到列表项在列表中的索引值时是否有动效，true表示有动效，false表示没有动效。<br/>默认值：false。|
 | align | [ScrollAlign](#scrollalign10枚举说明)  | 否   | 指定滑动到的元素与当前容器的对齐方式。<br/>List中的默认值为：ScrollAlign.START。Grid中默认值为：ScrollAlign.AUTO。WaterFlow中的默认值为：ScrollAlign.START。<br/>**说明：** <br/>仅List、Grid、WaterFlow组件支持该参数。 |
-| options<sup>12+</sup> | [ScrollToIndexOptions](#scrolltoindexoptions12对象说明)  | 否   | 设置滑动到指定Index的选项，如额外偏移量。<br/>默认值：0，单位：vp。 |
+| options<sup>12+</sup> | [ScrollToIndexOptions](#scrolltoindexoptions12对象说明)  | 否   | 设置滑动到指定Index的选项，如额外偏移量。<br/>默认值：0，单位：vp。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### scrollBy<sup>9+</sup>
 
 scrollBy(dx: Length, dy: Length)
 
-
 滑动指定距离。
 
-
->  **说明：**
+> **说明：**
 >
->  支持ArcList、Scroll、List、Grid、WaterFlow组件。
+> - 支持ArcList、Scroll、List、Grid、WaterFlow组件。
+>
+> - 各组件行为存在差异：
+>
+>   - [ArcList](ts-container-arclist.md)和[List](ts-container-list.md)组件会对所有经过的item进行加载和布局。
+>
+>   - Grid组件和[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的WaterFlow组件在跳转距离较大（大于2倍组件主轴高度）时，会直接估算出要显示的item。跳转指一帧滑动。
+>
+>   - [ALWAYS_TOP_DOWN](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)模式的WaterFlow组件向后跳转（即dx或dy为正值时）会加载和布局所有经过的item，向前跳转（即dx或dy为负值时）会直接跳转到对应位置。跳转指一帧滑动。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1000,6 +1062,8 @@ isAtEnd(): boolean
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -1019,6 +1083,8 @@ getItemRect(index: number): RectResult
 >  支持ArcList、Scroll、List、Grid、WaterFlow组件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1058,6 +1124,8 @@ getItemIndex(x: number, y: number): number
 >  支持List、Grid、WaterFlow组件。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1109,6 +1177,8 @@ contentSize(): SizeResult
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -1133,6 +1203,8 @@ getFrameNode(): FrameNode | undefined
 
 **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
@@ -1149,6 +1221,8 @@ getFrameNode(): FrameNode | undefined
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型   | 只读 | 可选 | 说明                             |
@@ -1161,6 +1235,8 @@ getFrameNode(): FrameNode | undefined
 自定义滚动动效的参数选项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1175,6 +1251,8 @@ getFrameNode(): FrameNode | undefined
 对齐方式枚举。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1191,6 +1269,8 @@ getFrameNode(): FrameNode | undefined
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型  | 只读 | 可选 | 说明              |
@@ -1202,6 +1282,8 @@ getFrameNode(): FrameNode | undefined
 翻页模式的参数选项。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1216,6 +1298,8 @@ getFrameNode(): FrameNode | undefined
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型  | 只读 | 可选 | 说明              |
@@ -1228,6 +1312,8 @@ getFrameNode(): FrameNode | undefined
 滚动到边缘位置的参数选项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1244,6 +1330,8 @@ getFrameNode(): FrameNode | undefined
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1269,6 +1357,8 @@ setOnWillScroll(callback:  ScrollOnWillScrollCallback | undefined): void
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -1286,6 +1376,8 @@ setOnDidScroll(callback: ScrollOnScrollCallback | undefined): void
 方法入参为undefined时，会重置事件回调。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

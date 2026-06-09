@@ -10,7 +10,9 @@ The state management module provides data storage, persistent data management, U
 
 >**NOTE**
 >
->The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 
 T and S in this topic represent the types as described below.
@@ -948,7 +950,7 @@ This API can be used together with [enableV2Compatibility](#enablev2compatibilit
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| source | T    | Yes  | Data source. Common classes, Array, Map, Set, and Date types are supported.<br>The classes decorated with [@arkts.collections](../apis-arkts/arkts-apis-arkts-collections.md) and [@Sendable](../../arkts-utils/arkts-sendable.md) are not supported.<br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported.|
+| source | T    | Yes  | Data source. Common classes, Array, Map, Set, and Date types are supported.<br>[@arkts.collections](../apis-arkts/arkts-apis-arkts-collections.md) (ArkTS containers) and classes decorated with [@Sendable](../../arkts-utils/arkts-sendable.md) are not supported.<br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported.|
 
 **Return value**
 
@@ -1544,7 +1546,7 @@ struct ReusableChild {
 @Entry
 @ComponentV2({ 
   reusePool: 'shared', // Declare the shared global reuse pool.
-  poolAccepts: ['ReusableChild'], // The global reuse pool accepts the child component type ReusableChild.
+  poolAccepts: [ReusableChild], // The global reuse pool accepts the child component type ReusableChild.
   freezeWhenInactive: false // Disable the component freezing feature. This parameter must be provided when reusePools is declared. You can also enable the component freezing feature.
 })
 struct Index {
@@ -1601,14 +1603,12 @@ Defines a synchronous callback.
 
 Defines the optional parameters for [addMonitor](#addmonitor20), which are used to configure the callback type and whether to enable the wildcard capability.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Parameter| Type| Read-Only| Optional| Description    |
 | ------ | ---- | ---- | ---- | ------------ |
-|isSynchronous|boolean|No|Yes|Whether the current callback is a synchronous callback. **true**: The current callback is a synchronous callback. **false** (default value): The current callback is an asynchronous callback.|
-|enableWildcard|boolean|No|Yes|Whether to enable the wildcard capability for this **addMonitor**. **true** to enable the wildcard capability, and **false** means the opposite. The default value is **false**. If the wildcard capability is disabled but the path contains wildcards, the path is considered invalid.<br>**Since**: 26.0.0|
+|isSynchronous|boolean|No|Yes|Whether the current callback is a synchronous callback. **true**: The current callback is a synchronous callback. **false** (default value): The current callback is an asynchronous callback.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+|enableWildcard|boolean|No|Yes|Whether to enable the wildcard capability for this **addMonitor**. **true** to enable the wildcard capability, and **false** means the opposite. The default value is **false**. If the wildcard capability is disabled but the path contains wildcards, the path is considered invalid.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## MonitorCallback<sup>20+</sup>
 type MonitorCallback = (monitorValue: IMonitor) => void
@@ -2211,7 +2211,7 @@ struct ReusableChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct PoolOwner {
   checkPool() {
     const context = UIUtils.getCustomComponentContext(this);
@@ -2226,6 +2226,10 @@ struct PoolOwner {
   build() {
     Column() {
       ReusableChild()
+      Button('Check Pool')
+        .onClick(() => {
+          this.checkPool();
+        })
     }
   }
 }
@@ -2245,7 +2249,7 @@ The **IReusePool** API provides the features related to the global reuse pool of
 
 ### getReusableInfo
 
-getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IReusableInfo | IReusableInfo[] | undefined
+getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IReusableInfo[] | IReusableInfo | undefined
 
 Obtains the information about the recycling instance of a given reusable component type in this reuse pool.
 
@@ -2268,7 +2272,7 @@ Obtains the information about the recycling instance of a given reusable compone
 
 | Type| Description|
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [IReusableInfo](#ireusableinfo) \| [IReusableInfo](#ireusableinfo)[] \| undefined | If the reuse pool is not configured to accept the given component type, **undefined** is returned.<br>If **reuseId** is specified, a single **IReusableInfo** is returned (even if **count** is set to **0** and **maxCount** is set to the default value).<br>If **reuseId** is not specified and the reusable component does not use **reuseId**, a single **IReusableInfo** is returned.<br>If **reuseId** is not specified but the reusable component uses **reuseId**, an **Array&lt;IReusableInfo&gt;** is returned, providing a separate entry for each **reuseId** that has a positive value of **count** or a non-default value of **maxCount** as well as an entry of **reuseId: undefined**.|
+| [IReusableInfo](#ireusableinfo)[] \| [IReusableInfo](#ireusableinfo) \| undefined | If the reuse pool is not configured to accept the given component type, **undefined** is returned.<br>If **reuseId** is specified, a single **IReusableInfo** is returned (even if **count** is set to **0** and **maxCount** is set to the default value).<br>If **reuseId** is not specified and the reusable component does not use **reuseId**, a single **IReusableInfo** is returned.<br>If **reuseId** is not specified but the reusable component uses **reuseId**, an **Array&lt;IReusableInfo&gt;** is returned, providing a separate entry for each **reuseId** that has a positive value of **count** or a non-default value of **maxCount** as well as an entry of **reuseId: undefined**.|
 
 **Example**
 
@@ -2291,7 +2295,7 @@ struct ReusableChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct PoolOwner {
   @Local showChild: boolean = true;
 
@@ -2339,7 +2343,7 @@ struct PoolOwner {
 
 ### preRender
 
-preRender(builder: WrappedBuilder\<[]\>, n: number): Promise\<void\>
+preRender(builder: WrappedBuilder\<[]\>, times: number): Promise\<void\>
 
 Pre-creates @Reusable/@ReusableV2 decorated components and places them in this reuse pool.
 
@@ -2355,8 +2359,8 @@ Pre-creates @Reusable/@ReusableV2 decorated components and places them in this r
 
 | Name | Type                | Mandatory|  Description                           |
 | ------- | -------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
-| builder | WrappedBuilder\<[]\> | Yes  | **WrappedBuilder** that contains the @Builder decorated function to be executed *n* times. Each execution should create one or more @Reusable/@ReusableV2 decorated components.|
-| n   | number               | Yes  | Number of times the @Builder decorated function is executed.                                                                                                         |
+| builder | WrappedBuilder\<[]\> | Yes  | **WrappedBuilder** that contains the @Builder decorated function to be executed *times* times. Each execution should create one or more @Reusable/@ReusableV2 decorated components.|
+| times   | number               | Yes  | Number of times the @Builder decorated function is executed.                                                                                                         |
 
 **Return value**
 
@@ -2402,7 +2406,7 @@ function preRenderBuilder() {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'shared', poolAccepts: ['ReusableComponent'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableComponent], freezeWhenInactive: false })
 struct Index {
   @Local onUIFullyLoaded: boolean = false;
 
@@ -2485,7 +2489,7 @@ struct TestChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['TestChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [TestChild], freezeWhenInactive: false })
 struct PoolOwner {
   @Local showA: boolean = true;
   @Local showB: boolean = true;

@@ -344,8 +344,8 @@ NODE_TEXT_INPUT_SHOW_PASSWORD_ICON = 7012
 NODE_TEXT_INPUT_EDITING = 7013
 ```
 
-控制单行文本输入框编辑态属性，支持属性设置。<br>
-作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+控制单行文本输入框编辑态属性，支持属性设置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
 
@@ -354,7 +354,12 @@ NODE_TEXT_INPUT_EDITING = 7013
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | false表示退出编辑态，true表示维持现状。<br>属性获取方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： |
+| .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
 | .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
 
 ## NODE_TEXT_INPUT_CANCEL_BUTTON
@@ -1253,7 +1258,6 @@ NODE_TEXT_INPUT_RADIAL_GRADIENT = 7052
 | .value[3]?.i32 | 渐变的颜色是否重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
 | .object | 指定位置处的渐变色颜色。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。<br> colors：渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 <br> stops：stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。 <br> size：生效后渐变色的颜色个数。 |
 
-
 ## NODE_TEXT_INPUT_TEXT_OVERFLOW
 
 ```c
@@ -1301,6 +1305,30 @@ NODE_TEXT_INPUT_DECORATION = 7050
 | 类型 | 说明 |
 | -- | -- |
 | .object | 装饰样式配置项。参数类型为[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)。 |
+
+## NODE_TEXT_INPUT_PUNCTUATION_OVERFLOW
+
+```c
+NODE_TEXT_INPUT_PUNCTUATION_OVERFLOW = 7053
+```
+
+设置TextInput组件是否启用行尾标点符号悬挂，支持属性设置，属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。1表示启用标点符号悬挂，0表示不启用标点符号悬挂。默认值为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。 |
 
 
 ## NODE_TEXT_AREA_PLACEHOLDER
@@ -1460,7 +1488,7 @@ NODE_TEXT_AREA_EDITING = 8006
 ```
 
 控制多行文本输入框编辑态属性，支持属性设置，属性获取接口。<br>
-作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
 
@@ -1469,7 +1497,12 @@ NODE_TEXT_AREA_EDITING = 8006
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | false表示退出编辑态，true表示维持现状。<br>属性获取方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： |
+| .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
 | .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
 
 ## NODE_TEXT_AREA_TYPE
@@ -2499,3 +2532,27 @@ NODE_TEXT_AREA_RADIAL_GRADIENT = 8049
 | .value[2]?.f32 | 径向渐变的半径，默认值0。 |
 | .value[3]?.i32 | 渐变的颜色是否重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
 | .object | 指定位置处的渐变色颜色。参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。<br> colors：渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 <br> stops：stops表示指定颜色所处位置的数组，数组元素取值范围为[0,1.0]，0表示需要设置渐变色的容器的开始处，1.0表示容器的结尾处。 <br> size：生效后渐变色的颜色个数。 |
+
+## NODE_TEXT_AREA_PUNCTUATION_OVERFLOW
+
+```c
+NODE_TEXT_AREA_PUNCTUATION_OVERFLOW = 8050
+```
+
+设置TextArea组件是否启用行尾标点符号悬挂，支持属性设置，属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。1表示启用标点符号悬挂，0表示不启用标点符号悬挂。默认值为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。 |

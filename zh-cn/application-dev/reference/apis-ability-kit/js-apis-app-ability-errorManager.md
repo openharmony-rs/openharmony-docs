@@ -835,7 +835,7 @@ setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 16000205      | The API is not called in the main thread. |
+| 16000205      | The API is not called on the main thread. |
 
 **示例**：
     
@@ -878,7 +878,7 @@ ErrorObserver模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [_ErrorObserver.default](js-apis-inner-application-errorObserver.md) | ErrorObserver模块。 |
+| [ErrorObserver](js-apis-inner-application-errorObserver.md) | ErrorObserver模块。 |
 
 ## LoopObserver<sup>12+</sup>
 
@@ -892,7 +892,7 @@ LoopObserver模块。定义异常监听，可作为 `errormanager.on` 函数的�
 
 | 类型 | 说明 |
 | --- | --- |
-| [_LoopObserver](js-apis-inner-application-loopObserver.md) | LoopObserver模块。 |
+| [LoopObserver](js-apis-inner-application-loopObserver.md) | LoopObserver模块。 |
 
 ## UnhandledRejectionObserver<sup>12+</sup>
 

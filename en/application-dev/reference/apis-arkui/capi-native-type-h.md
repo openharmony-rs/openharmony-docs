@@ -262,6 +262,7 @@ Defines the common types for the native module.
 | [OH_ArkUI_LineBreakStrategy](#oh_arkui_linebreakstrategy) | OH_ArkUI_LineBreakStrategy | Enumerates line break policies.|
 | [ArkUI_RawInputEventType](#arkui_rawinputeventtype) | ArkUI_RawInputEventType | Enumerates the types of raw input events.|
 | [OH_ArkUI_CrossLanguageOperatingStatus](#oh_arkui_crosslanguageoperatingstatus) | OH_ArkUI_CrossLanguageOperatingStatus | Enumerates the node tree operation states of cross-language configuration options.|
+| [OH_ArkUI_NodeMountPolicy](#oh_arkui_nodemountpolicy) | OH_ArkUI_NodeMountPolicy | Enumerates the child node mounting policy types.|
 
 ### Functions
 
@@ -811,6 +812,7 @@ Defines the common types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledString(const OH_ArkUI_TextEditorStyledStringController* controller, const ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_setstyledstring) | - | Sets the styled string displayed using the styled string controller.|
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetStyledString(const OH_ArkUI_TextEditorStyledStringController* controller, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_getstyledstring) | - | Obtains the styled string displayed using the styled string controller.|
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledPlaceholder(const OH_ArkUI_TextEditorStyledStringController* controller, const ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_setstyledplaceholder) | - | Sets the placeholder text in the styled string style using the styled string controller.|
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_ScrollToVisible(const OH_ArkUI_TextEditorStyledStringController* controller, int32_t start, int32_t end)](#oh_arkui_texteditorstyledstringcontroller_scrolltovisible) | -    | Scrolls the content within the range from the specified start index to the end index to the visible area using the styled string controller.|
 | [OH_ArkUI_FontWeightConfigs* OH_ArkUI_FontWeightConfigs_Create()](#oh_arkui_fontweightconfigs_create) | - | Creates a text font weight configuration object.|
 | [void OH_ArkUI_FontWeightConfigs_Destroy(OH_ArkUI_FontWeightConfigs* option)](#oh_arkui_fontweightconfigs_destroy) | - | Destroys the text font weight configuration object.|
 | [void OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight(OH_ArkUI_FontWeightConfigs* option, bool enable)](#oh_arkui_fontweightconfigs_setenablevariablefontweight) | - | Sets whether to enable variable font weight adjustment.|
@@ -2186,8 +2188,8 @@ Enumerates the dynamic range modes (for example, SDR/HDR) for images, controllin
 | Value| Description|
 | -- | -- |
 | ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | High dynamic range (HDR), representing the range between minimum and maximum brightness values in an image. A wider range makes image brightness closer to real-world conditions, preventing overexposure (all white) in bright environments and loss of detail (all black) in dark environments.|
-| ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT | Constrained high dynamic range, offering richer brightness and color than SDR while maintaining SDR compatibility. Typically used in scenarios requiring SDR backward compatibility.|
-| ARKUI_DYNAMIC_RANGE_MODE_STANDARD | Standard dynamic range (SDR), featuring a limited brightness range (typically 0-100 nits) with reduced contrast between bright and dark areas. Dark areas may lose detail to black, while bright areas may become overexposed to white.|
+| ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT = 1 | Constrained high dynamic range, offering richer brightness and color than SDR while maintaining SDR compatibility. Typically used in scenarios requiring SDR backward compatibility.|
+| ARKUI_DYNAMIC_RANGE_MODE_STANDARD = 2 | Standard dynamic range (SDR), featuring a limited brightness range (typically 0-100 nits) with reduced contrast between bright and dark areas. Dark areas may lose detail to black, while bright areas may become overexposed.|
 
 ### ArkUI_ImageRotateOrientation
 
@@ -2205,14 +2207,14 @@ Enumerates image rotation directions.
 | Value| Description|
 | -- | -- |
 | ARKUI_ORIENTATION_AUTO = 0 | Use EXIF metadata for display orientation, with support for rotation and mirroring. EXIF is a file format dedicated for photos taken by digital cameras and is used to record attributes and shooting data of the photos.|
-| ARKUI_ORIENTATION_UP | Display original pixel data without transformation.|
-| ARKUI_ORIENTATION_RIGHT | Display the image after rotating it 90 degrees clockwise.|
-| ARKUI_ORIENTATION_DOWN  | Display the image after rotating it 180 degrees clockwise.|
-| ARKUI_ORIENTATION_LEFT | Display the image after rotating it 270 degrees clockwise.|
-| ARKUI_ORIENTATION_UP_MIRRORED | Display the image after flipping it horizontally.|
-| ARKUI_ORIENTATION_RIGHT_MIRRORED  | Display the image after flipping it horizontally and then rotating it 90 degrees clockwise.|
-| ARKUI_ORIENTATION_DOWN_MIRRORED | Display the image after flipping it vertically.|
-| ARKUI_ORIENTATION_LEFT_MIRRORED | Display the image after flipping it horizontally and then rotating it 270 degrees clockwise.|
+| ARKUI_ORIENTATION_UP = 1 | Display original pixel data without transformation.|
+| ARKUI_ORIENTATION_RIGHT = 2 | Display the image after rotating it 90 degrees clockwise.|
+| ARKUI_ORIENTATION_DOWN = 3 | Display the image after rotating it 180 degrees clockwise.|
+| ARKUI_ORIENTATION_LEFT = 4 | Display the image after rotating it 270 degrees clockwise.|
+| ARKUI_ORIENTATION_UP_MIRRORED = 5 | Display the image after flipping it horizontally.|
+| ARKUI_ORIENTATION_RIGHT_MIRRORED = 6 | Display the image after flipping it horizontally and then rotating it 90 degrees clockwise.|
+| ARKUI_ORIENTATION_DOWN_MIRRORED = 7 | Display the image after flipping it vertically.|
+| ARKUI_ORIENTATION_LEFT_MIRRORED = 8 | Display the image after flipping it horizontally and then rotating it 270 degrees clockwise.|
 
 ### ArkUI_BlendMode
 
@@ -3282,6 +3284,7 @@ Enumerates the UI states of a component, used for handling state-specific styles
 | UI_STATE_FOCUSED = 1 << 1 | Focused state.|
 | UI_STATE_DISABLED = 1 << 2 | Disabled state.|
 | UI_STATE_SELECTED = 1 << 3 | Selected state. This state is supported only by specific component types: **Checkbox**, **Radio**, **Toggle**, **List**, **Grid**, and **MenuItem**.|
+| UI_STATE_HOVERED = 1 << 4 | Hovered state.<br>**Since**: 26.0.0|
 
 ### ArkUI_FocusWrapMode
 
@@ -3861,6 +3864,21 @@ Enumerates the node tree operation states of cross-language configuration option
 | OH_ARKUI_TREE_OPERATING_STATUS_ENABLE = 1 | Enabled, which indicates that when the configuration option is applied to a node, the node tree operation state of the node will be enabled.|
 | OH_ARKUI_TREE_OPERATING_STATUS_DISABLE = 2 | Disabled, which indicates that when the configuration option is applied to a node, the node tree operation state of the node will be disabled.|
 
+### OH_ArkUI_NodeMountPolicy
+
+```c
+enum OH_ArkUI_NodeMountPolicy
+```
+**Description**
+
+Enumerates the child node mounting policy types.
+
+**Since**: 26.0.0
+
+| Value| Description|
+| -- | -- |
+| OH_ARKUI_NODE_MOUNT_POLICY_SINGLE_IF_RENDER_NODE = 0 | If a [RenderNode](./js-apis-arkui-renderNode.md) needs to be mounted as a child node, this RenderNode must be the only child node.|
+| OH_ARKUI_NODE_MOUNT_POLICY_MIXED = 1 | Multiple [typeNodes](./js-apis-arkui-frameNode.md#typenode12) and RenderNodes can be mounted at the same time.|
 
 ## Function Description
 
@@ -14927,7 +14945,7 @@ Obtains whether the line spacing is evenly distributed to the top and bottom of 
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | Pointer to the text style of the **TextEditor** component.|
-| bool* halfLeading | Pointer to the **halfLeading** parameter indicating whether to enable half leading.<br>                    **true** means to enable, and **false** means the opposite. The default value is **false**.|
+| bool* halfLeading | Pointer to the **halfLeading** parameter indicating whether half leading is enabled.<br>                    **true** means half leading is enabled, and **false** means the opposite. The default value is **false**.|
 
 **Returns**
 
@@ -15603,6 +15621,32 @@ Sets the placeholder text in the styled string style using the styled string con
 
 | Type| Description|
 | -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextEditorStyledStringController_ScrollToVisible()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_ScrollToVisible(const OH_ArkUI_TextEditorStyledStringController* controller, int32_t start, int32_t end)
+```
+
+**Description**
+
+Scrolls the content within the range from the specified start index to the end index to the visible area using the styled string controller.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name                                                      | Description                                                        |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| const [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | Pointer to the [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md) object.|
+| int32_t start                                                | Start index.<br>     The start index must be less than or equal to the end index. Otherwise, the API call is invalid. The value range is [0, Total length of the content in the **TextEditor** component]. If the start index is less than 0, 0 is used. If the start index is greater than the total length, the total length is used.|
+| int32_t end                                                  | End index.<br>     The end index must be greater than or equal to the start index. Otherwise, the API call is invalid. The value range is [0, Total length of the content in the **TextEditor** component]. If the end index is less than 0, 0 is used. If the end index is greater than the total length, the total length is used.|
+
+**Returns**
+
+| Type                                                    | Description                                                        |
+| -------------------------------------------------------- | ------------------------------------------------------------ |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_Matrix4ScaleOptions_Create()

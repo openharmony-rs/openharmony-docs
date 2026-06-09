@@ -195,7 +195,7 @@ nativeNodeApi->setAttribute(image, NODE_IMAGE_INTERPOLATION, &interpolationItem)
 
 ```c++
 // 设置图片重复样式
-ArkUI_NumberValue repeatValue[] = {{.i32 = ARKUI_IMAGE_REPEAT_NO_REPEAT}};
+ArkUI_NumberValue repeatValue[] = {{.i32 = ARKUI_IMAGE_REPEAT_NONE}};
 ArkUI_AttributeItem repeatItem = {repeatValue, 1};
 nativeNodeApi->setAttribute(image, NODE_IMAGE_OBJECT_REPEAT, &repeatItem);
 ```
@@ -847,4 +847,4 @@ nativeNodeApi->unregisterNodeEventReceiver();
 
 5. 效果预览
 
-    ![capiImageExmaple](figures/imageCapiExample.png)
+    ![capiImageExample](figures/imageCapiExample.png)

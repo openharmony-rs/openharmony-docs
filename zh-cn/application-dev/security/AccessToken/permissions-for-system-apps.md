@@ -341,6 +341,20 @@
 
 **起始版本**：11
 
+## ohos.permission.THEME_SKIN
+
+允许系统应用获取到skin目录下的换肤资源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 允许应用读取无障碍配置信息。
@@ -605,6 +619,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet | Wearable
+
 **起始版本**：12
 
 ## ohos.permission.RECEIVE_ENTERPRISE_POLICY_EVENT
@@ -616,6 +632,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：14
 
@@ -789,6 +807,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **起始版本**：10
 
 ## ohos.permission.READ_HIVIEW_SYSTEM
@@ -800,6 +820,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：10
 
@@ -827,8 +849,6 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
-
 **起始版本**：12
 
 ## ohos.permission.PERMISSION_USED_STATS
@@ -840,8 +860,6 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
-
-**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：9
 
@@ -2182,6 +2200,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：11
 
 ## ohos.permission.PERCEIVE_TRAIL
@@ -2726,6 +2746,8 @@
 
 **起始版本**：11
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 ## ohos.permission.SET_CODE_PROTECT_INFO
 
 允许系统应用设置云侧公钥以及工作秘钥密文，并协商代码保护秘钥信息。
@@ -3040,6 +3062,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | Wearable | PC/2in1 | Tablet
+
 **起始版本**：13
 
 ## ohos.permission.MANAGE_SHUTDOWN_FINDNETWORK
@@ -3051,6 +3075,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | Wearable | PC/2in1 | Tablet
 
 **起始版本**：15
 
@@ -3918,6 +3944,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | Tablet | Car
+
 **起始版本**：12
 
 ## ohos.permission.ACCESS_IDM_WIDGET
@@ -4450,6 +4478,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：PC/2in1 | Phone | Tablet
+
 **起始版本**：18
 
 ## ohos.permission.ACCESS_FUSION_AWARENESS_DATA
@@ -4698,6 +4728,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | Wearable
 
 **起始版本**：18
 
@@ -5785,6 +5817,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.vehicle.AUTO_UPDATER
+
+允许应用向车机设备发送升级指令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 允许应用订阅通知服务。
@@ -6184,3 +6230,61 @@
 **支持设备**：Phone
 
 **起始版本**：20
+
+## ohos.permission.ACCESS_FIDO2_ONLINEAUTH_PRIVILEGE
+
+允许系统应用使用通行密钥服务的管理凭据功能。
+
+获取此权限后，应用可获取、删除通行密钥服务的全量凭据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
+## ohos.permission.TV_ACCESSORY_MANAGE
+
+允许系统应用查询与设置智慧屏配件信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0
+
+## ohos.permission.QUERY_SPACE_OPTIMIZATION
+
+允许应用查询空间优化的效果。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.ARKWEBCORE_SYS_CAP
+
+允许系统应用调用ArkWebCore的扩展功能。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0

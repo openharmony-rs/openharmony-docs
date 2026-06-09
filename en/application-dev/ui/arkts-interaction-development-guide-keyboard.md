@@ -27,7 +27,7 @@ When a text box has focus and the input method is enabled, most key events are c
 
 Within the ArkUI framework, key events propagate through the focus chain from leaf to root nodes, allowing child components to handle events before parent components.
 
-The key event process for the **Web** component differs from the aforementioned process. If [onKeyPreIme](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#onkeypreime12) returns false, the **Web** component does not match shortcuts. During the third phase of key event dispatch, the **Web** component re-dispatches unconsumed [KeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent) objects back to ArkUI through **ReDispatch**, and performs operations such as shortcut matching in **ReDispatch**.
+The key event process for the **Web** component differs from the aforementioned process. If [onKeyPreIme](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#onkeypreime12) returns false, the **Web** component does not match shortcuts. During the third phase of key event dispatch, the **Web** component re-dispatches unconsumed [KeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent) objects back to ArkUI, and performs operations such as shortcut matching in re-dispatching.
 
 ## onKeyEvent & onKeyPreIme
 
