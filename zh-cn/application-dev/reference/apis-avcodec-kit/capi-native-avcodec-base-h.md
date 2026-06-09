@@ -20,6 +20,8 @@
 
 **相关模块：** [CodecBase](capi-codecbase.md)
 
+**相关示例：** [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
+
 ## 汇总
 
 ### 结构体
