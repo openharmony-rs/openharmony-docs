@@ -82,6 +82,28 @@
    全局悬浮窗创建成功后，可以改变其大小、位置等，还可以根据应用需要设置全局悬浮窗的背景色、亮度等属性。
 
    <!-- @[floating_window_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   // 2.全局悬浮窗窗口创建成功后，设置全局悬浮窗的位置、大小及相关属性等。
+   floatWindowClass.moveWindowTo(100, 100, (err) => {
+     if (err?.code) {
+       console.error('Failed to move the window. Cause:' + JSON.stringify(err));
+       return;
+     }
+     console.info('Succeeded in moving the window.');
+     if (!floatWindowClass) {
+       console.error('float_windowClass is null');
+       return;
+     }
+     floatWindowClass.resize(600, 900, (err) => {
+       if (err?.code) {
+         console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
+         return;
+       }
+       console.info('Succeeded in changing the window size.');
+     });
+   });
+   ```
 
 3. 加载显示全局悬浮窗的具体内容。
 
