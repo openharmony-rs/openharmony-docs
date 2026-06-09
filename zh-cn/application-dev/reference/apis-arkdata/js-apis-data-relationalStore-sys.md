@@ -1,4 +1,4 @@
-# @ohos.data.relationalStore (关系型数据库)(系统接口)
+# @ohos.data.relationalStore（关系型数据库）（系统接口）
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
@@ -116,10 +116,10 @@ update(table: string, values: ValuesBucket, predicates: dataSharePredicates.Data
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| table      | string                                                       | 是   | 指定的目标表名。                                             |
+| table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。                                             |
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)                                | 是   | values指示数据库中要更新的数据行。键值对与数据库表的列名相关联。 |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的更新条件。                |
-| callback   | AsyncCallback&lt;number&gt;                                  | 是   | 指定的callback回调方法。返回受影响的行数。                   |
+| callback   | AsyncCallback&lt;number&gt;                                  | 是   | 回调函数。返回受影响的行数。                   |
 
 **错误码：**
 
@@ -209,7 +209,7 @@ update(table: string, values: ValuesBucket, predicates: dataSharePredicates.Data
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| table      | string                                                       | 是   | 指定的目标表名。                                             |
+| table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。                                             |
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)                                | 是   | values指示数据库中要更新的数据行。键值对与数据库表的列名相关联。 |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的更新条件。                |
 
@@ -217,7 +217,7 @@ update(table: string, values: ValuesBucket, predicates: dataSharePredicates.Data
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
-| Promise&lt;number&gt; | 指定的Promise回调方法。返回受影响的行数。 |
+| Promise&lt;number&gt; | Promise对象。返回受影响的行数。 |
 
 **错误码：**
 
@@ -308,7 +308,7 @@ delete(table: string, predicates: dataSharePredicates.DataSharePredicates, callb
 | ---------- | ------------------------------------------------------------ | ---- | --------------------------------------------- |
 | table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。              |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的删除条件。 |
-| callback   | AsyncCallback&lt;number&gt;                                  | 是   | 指定callback回调函数。返回受影响的行数量。 |
+| callback   | AsyncCallback&lt;number&gt;                                  | 是   | 回调函数。当删除数据成功，err为undefined，data为受影响的行数量；否则为错误对象。 |
 
 **错误码：**
 
@@ -372,7 +372,7 @@ delete(table: string, predicates: dataSharePredicates.DataSharePredicates):Promi
 
 | 参数名     | 类型                                                         | 必填 | 说明                                          |
 | ---------- | ------------------------------------------------------------ | ---- | --------------------------------------------- |
-| table      | string                                                       | 是   | 指定的目标表名。                              |
+| table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。                              |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的删除条件。 |
 
 **返回值**：
@@ -442,9 +442,9 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, callba
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| table      | string                                                       | 是   | 指定的目标表名。                                            |
+| table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。                                            |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的查询条件。               |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 指定callback回调函数。如果操作成功，则返回ResultSet对象。 |
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 回调函数。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -502,10 +502,10 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| table      | string                                                       | 是   | 指定的目标表名。                                            |
+| table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。                                            |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的查询条件。               |
 | columns    | Array&lt;string&gt;                                          | 是   | 表示要查询的列。如果值为空，则查询应用于所有列。            |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 指定callback回调函数。如果操作成功，则返回ResultSet对象。 |
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 回调函数。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -563,7 +563,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 
 | 参数名     | 类型                                                         | 必填 | 说明                                             |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
-| table      | string                                                       | 是   | 指定的目标表名。                                 |
+| table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。                                 |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的查询条件。    |
 | columns    | Array&lt;string&gt;                                          | 否   | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 
@@ -571,7 +571,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 
 | 类型                                                    | 说明                                               |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -635,7 +635,7 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 | mode        | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)          | 是   | 表示数据库的同步模式。                   |
 | predicates  | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)                  | 是   | 表示同步数据的谓词条件。                  |
 | progress    | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 用来处理数据库同步详细信息的回调函数。           |
-| callback    | AsyncCallback&lt;void&gt;      | 是   | 指定的callback回调函数，用于向调用者发送同步结果。 |
+| callback    | AsyncCallback&lt;void&gt;      | 是   | 回调函数。当同步成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -721,7 +721,7 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 
 | 类型                | 说明                                    |
 | ------------------- | --------------------------------------- |
-| Promise&lt;void&gt; | Promise对象，用于向调用者发送同步结果。 |
+| Promise&lt;void&gt; | Promise对象。返回同步结果。 |
 
 **错误码：**
 
@@ -800,7 +800,7 @@ querySharingResource(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 
 | 参数名    | 说明                                               |
 | -------- | ------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象，返回查询的结果集。   |
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。返回查询的结果集。   |
 
 **错误码：**
 
@@ -1008,7 +1008,7 @@ lockCloudContainer(): Promise&lt;number&gt;
 
 | 类型                | 说明                                    |
 | ------------------- | ---------------------------------------|
-| Promise&lt;number&gt; | Promise对象，如果加锁成功，返回锁的有效时长；如果加锁失败，返回0，单位：ms。 |
+| Promise&lt;number&gt; | Promise对象。如果加锁成功，返回锁的有效时长；如果加锁失败，返回0，单位：ms。 |
 
 **错误码：**
 
@@ -1046,7 +1046,7 @@ unlockCloudContainer(): Promise&lt;void&gt;
 
 | 类型                | 说明                                    |
 | ------------------- | --------------------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1084,7 +1084,7 @@ restore(): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1238,7 +1238,7 @@ updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise
 
 | 类型          | 说明                       |
 | -------------- | ------------------------ |
-| Promise&lt;number&gt; | Promise对象。如果操作成功，返回更新的数据个数，否则返回-1。 |
+| Promise&lt;number&gt; | Promise对象。返回更新的数据个数。 |
 
 **错误码：**
 
