@@ -76,11 +76,16 @@
          // 1.释放转码实例。
          await this.avTranscoder.release();
          let lastFd = this.avTranscoder.fdDst;
+         let fileDescriptor = this.avTranscoder.fdSrc;
          this.avTranscoder = undefined;
          // 2.关闭转码目标文件fd。
          if (lastFd != undefined) {
  	       fs.closeSync(lastFd);
          }
+         // 3.关闭转码源文件fd。
+         if (fileDescriptor != undefined) {
+ 	       fs.closeSync(fileDescriptor.fd);
+ 	     }
        }
      }
    }
