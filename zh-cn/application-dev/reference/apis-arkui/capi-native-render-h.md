@@ -594,7 +594,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetBackgroundColor(ArkUI_RenderNodeHandle node,
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| uint32_t* color | 用于存储获取到的 RGBA 颜色值的整数指针。<br/>默认值：0x00000000。<br>**颜色字节布局说明：**<br>- 位24-31：Alpha通道（0x00完全透明，0xFF完全不透明）。<br>- 位16-23：红色通道。<br>- 位8-15：绿色通道。<br>- 位0-7：蓝色通道。 |
+| uint32_t* color | 用于存储获取到的ARGB颜色值的整数指针。<br/>默认值：0x00000000。<br>**颜色字节布局说明：**<br>- 位24-31：Alpha通道（0x00完全透明，0xFF完全不透明）。<br>- 位16-23：红色通道。<br>- 位8-15：绿色通道。<br>- 位0-7：蓝色通道。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -1101,7 +1101,7 @@ int32_t OH_ArkUI_RenderNodeUtils_GetShadowColor(ArkUI_RenderNodeHandle node, uin
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | 目标渲染节点。 |
-| uint32_t* color | 用于存储获取到的RGBA颜色值的整数指针。<br/>默认值：0xFF000000。<br>**颜色字节布局说明：**<br>- 位24-31：Alpha通道（0x00完全透明，0xFF完全不透明）。<br>- 位16-23：红色通道。<br>- 位8-15：绿色通道。<br>- 位0-7：蓝色通道。 |
+| uint32_t* color | 用于存储获取到的ARGB颜色值的整数指针。<br/>默认值：0xFF000000。<br>**颜色字节布局说明：**<br>- 位24-31：Alpha通道（0x00完全透明，0xFF完全不透明）。<br>- 位16-23：红色通道。<br>- 位8-15：绿色通道。<br>- 位0-7：蓝色通道。 |
 
 **返回：**
 | 类型 | 说明 |
@@ -2758,7 +2758,7 @@ void OH_ArkUI_RenderNodeUtils_SetCommandPathOptionCommands(ArkUI_CommandPathOpti
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CommandPathOption](./capi-arkui-nativemodule-arkui-commandpathoption.md)* option | 指向自定义绘制路径的指针。 |
-| char* commands | 命令值。入参格式为SVG的[\<path>基础形状标签](./arkui-ts/ts-basic-svg.md#基础形状)。 |
+| char* commands | 命令值。入参格式为SVG[基础形状](./arkui-ts/ts-basic-svg.md#基础形状)中的\<path>形状标签。 |
 
 ### OH_ArkUI_RenderNodeUtils_CreateRenderNodeMaskOptionFromRectShape()
 
