@@ -81,7 +81,7 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 > **说明：**
 >
 > 属性actionCode和resetCode的入参类型为回调函数"Callback\<boolean>"。在代码段中需要主动调用此回调函数，通知框架代码段执行完成，否则会导致代码段执行超时。
-> 其中，回调函数的参数为boolean类型，true代表代码段执行符合预期，false代表代码段执行不符合预期。
+> 其中，回调函数的参数为boolean类型，true代表代码段执行符合预期，false代表代码段执行不符合预期。[代码示例](#create)。
 
 ## PerfMeasureResult
 
@@ -103,8 +103,6 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 ## PerfTest
 
 PerfTest类为白盒性能测试框架的总入口，提供测试任务创建、测试代码段执行和数据采集、测量结果获取等能力。
-
-使用流程：通过[create](#create)创建测试任务，调用[run](#run)运行性能测试并采集数据，使用[getMeasureResult](#getmeasureresult)获取指定指标的测量结果，最后调用[destroy](#destroy)销毁对象释放资源。
 
 ### create
 
@@ -155,7 +153,7 @@ async function demo() {
   }
   let resetCode = async (finish: Callback<boolean>) => { // 定义测试结束环境重置代码段
     num = 0;
-    finish(true); // 通知框架代码段执行完成且符合预期
+    finish(true);
   }
   let perfTestStrategy: PerfTestStrategy = {
     metrics: metrics,
@@ -172,7 +170,7 @@ async function demo() {
 
 run(): Promise\<void>
 
-运行性能测试，迭代执行测试代码段并采集性能数据，使用Promise回调。需在[create](#create)创建PerfTest对象后调用，执行完成后可通过[getMeasureResult](#getmeasureresult)获取测量结果。
+运行性能测试，迭代执行测试代码段并采集性能数据，使用Promise回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -203,17 +201,17 @@ import { PerfMetric, PerfTest, PerfTestStrategy } from '@kit.TestKit';
 async function demo() {
   let metrics: Array<PerfMetric> = [PerfMetric.DURATION];
   let num = 0;
-  let actionCode = async (finish: Callback<boolean>) => { // 定义测试代码段
+  let actionCode = async (finish: Callback<boolean>) => {
     for (let index = 0; index < 10000; index++) {
       num++;
     }
-    finish(true); // 通知框架代码段执行完成且符合预期
+    finish(true);
   }
-  let perfTestStrategy: PerfTestStrategy = { // 配置性能测试策略
+  let perfTestStrategy: PerfTestStrategy = {
     metrics: metrics,
     actionCode: actionCode
   };
-  let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 构造PerfTest对象，创建测试任务
+  let perfTest: PerfTest = PerfTest.create(perfTestStrategy);
   await perfTest.run(); // 运行性能测试
 }
 ```
@@ -222,7 +220,7 @@ async function demo() {
 
 getMeasureResult(metric: PerfMetric): PerfMeasureResult
 
-获取指定性能指标的测量数据。需在[run](#run)执行完成且未抛出异常后调用，否则可能导致获取失败或数据不完整。
+获取指定性能指标的测量数据。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -259,18 +257,18 @@ import { PerfMetric, PerfTest, PerfTestStrategy } from '@kit.TestKit';
 async function demo() {
   let metrics: Array<PerfMetric> = [PerfMetric.DURATION];
   let num = 0;
-  let actionCode = async (finish: Callback<boolean>) => { // 定义测试代码段
+  let actionCode = async (finish: Callback<boolean>) => {
     for (let index = 0; index < 10000; index++) {
       num++;
     }
-    finish(true); // 通知框架代码段执行完成且符合预期
+    finish(true);
   }
-  let perfTestStrategy: PerfTestStrategy = { // 配置性能测试策略
+  let perfTestStrategy: PerfTestStrategy = {
     metrics: metrics,
     actionCode: actionCode
   };
-  let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 构造PerfTest对象，创建测试任务
-  await perfTest.run(); // 运行性能测试
+  let perfTest: PerfTest = PerfTest.create(perfTestStrategy);
+  await perfTest.run();
   let res = perfTest.getMeasureResult(PerfMetric.DURATION); // 获取指定性能指标的测量数据
 }
 ```
@@ -279,7 +277,7 @@ async function demo() {
 
 destroy(): void
 
-销毁PerfTest对象，释放相关资源。需在[run](#run)执行完成后调用，销毁后对象不可再使用。
+销毁PerfTest对象。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -302,18 +300,18 @@ import { PerfMetric, PerfTest, PerfTestStrategy } from '@kit.TestKit';
 async function demo() {
   let metrics: Array<PerfMetric> = [PerfMetric.DURATION];
   let num = 0;
-  let actionCode = async (finish: Callback<boolean>) => { // 定义测试代码段
+  let actionCode = async (finish: Callback<boolean>) => {
     for (let index = 0; index < 10000; index++) {
       num++;
     }
-    finish(true); // 通知框架代码段执行完成且符合预期
+    finish(true);
   }
-  let perfTestStrategy: PerfTestStrategy = { // 配置性能测试策略
+  let perfTestStrategy: PerfTestStrategy = {
     metrics: metrics,
     actionCode: actionCode
   };
-  let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 构造PerfTest对象，创建测试任务
-  await perfTest.run(); // 运行性能测试
+  let perfTest: PerfTest = PerfTest.create(perfTestStrategy);
+  await perfTest.run();
   perfTest.destroy(); // 销毁PerfTest对象
 }
 ```
