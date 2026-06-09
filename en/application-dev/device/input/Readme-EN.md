@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=a1b9555ca35e53d2ce1fb3e822613b1436be9250 translatedAt=2026-06-08T06:14:22.774Z pushedAt=2026-06-08T12:54:17.716Z -->
 
 - [About This Kit](input-overview.md)
 - [Input Device Development](inputdevice-guidelines.md)

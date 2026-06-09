@@ -132,9 +132,13 @@ When relational data is used, different file artifacts may be generated. The pur
 
 ### Error Code: 14800013
 
-**Possible causes:** The passed column index is greater than the number of columns in the table or is a negative value. As a result, APIs such as [getLong](../reference/apis-arkdata/arkts-apis-data-relationalStore-ResultSet.md#getlong) and [getString](../reference/apis-arkdata/arkts-apis-data-relationalStore-ResultSet.md#getstring) fail.
+**Possible causes:**
 
-**Troubleshooting steps:** Check whether the key log `index.*is out of range|Invalid columnIndex` can be found using a regular expression around the time when the issue occurs, and check whether the passed column index is greater than the number of columns in the table or is a negative value.
+The passed column index is greater than the number of columns in the table or is a negative value. As a result, APIs such as [getLong](../reference/apis-arkdata/arkts-apis-data-relationalStore-ResultSet.md#getlong) and [getString](../reference/apis-arkdata/arkts-apis-data-relationalStore-ResultSet.md#getstring) fail.
+
+**Troubleshooting steps:**
+
+Check whether the key log `index.*is out of range|Invalid columnIndex` can be found using a regular expression around the time when the issue occurs, and check whether the passed column index is greater than the number of columns in the table or is a negative value.
 
    - Yes: Ensure that the passed parameter is as expected and does not exceed the number of columns in the database table.
 
