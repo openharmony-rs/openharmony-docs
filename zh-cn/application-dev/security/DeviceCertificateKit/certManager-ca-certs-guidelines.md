@@ -45,7 +45,7 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 >
 > 本开发指导需使用API版本18及以上版本SDK。
 >
-> 使用并信任当前用户级的CA证书，设备的用户可以通过网络代理工具对您应用的通信消息进行中间人攻击，这可能导致您的应用产生安全风险。具体请参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security)进行安全配置。
+> 使用并信任当前用户级的CA证书，设备的用户可以通过网络代理工具对您应用的通信消息进行中间人攻击，这可能导致您的应用产生安全风险。<!--RP1--><!--RP1End-->
 
 ## 基本概念
 
@@ -62,8 +62,6 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
     MDM应用调用安装和卸载CA证书接口需要申请权限：ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT
 
     调用其他接口需要申请权限：ohos.permission.ACCESS_CERT_MANAGER
-
-    申请流程请参考：[申请应用权限](../AccessToken/determine-application-mode.md)
 
     声明权限请参考：[声明权限](../AccessToken/declare-permissions.md)
 
