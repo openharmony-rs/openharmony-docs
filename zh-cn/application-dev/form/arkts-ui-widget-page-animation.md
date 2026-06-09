@@ -26,7 +26,9 @@ ArkTS卡片开放了使用动画效果的能力，支持[显式动画](../refere
 
 ![WidgetAnimation](figures/WidgetAnimation.gif)
 
+**示例：**
 
+ArkTS-Dyn示例：
 
 <!-- @[animation_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/ArkTSCardDocsSample/entry/src/main/ets/widget/pages/AnimationCard.ets) -->
 
@@ -55,10 +57,19 @@ struct AnimationCard {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[animation_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormStaticAnimate/entry/src/main/ets/widget/pages/AnimationCard.ets) -->   
+
 ## 组件转场动效
 以下示例代码使用[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)接口实现了在卡片内图片出现与消失的动画效果。
 
 ![WidgetAnimation](figures/WidgetTransitionAnimation.gif)
+
+**示例：**
+
+ArkTS-Dyn示例：
 
 <!-- @[TransitionEffectExample1_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/library/src/main/ets/widget1/pages/TransitionEffectExample1.ets) -->
 
@@ -96,3 +107,7 @@ struct TransitionEffectExample1 {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[TransitionEffectExample1_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormStaticAnimate/entry/src/main/ets/widget/pages/TransitionEffectExample1.ets) -->   
