@@ -106,7 +106,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify *
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] 验签算法名称，不能为NULL。取值如下：- RSA PKCS1模式：格式为"RSA\|PKCS1\|摘要"，示例："RSA\|PKCS1\|SHA256"、"RSA\|PKCS1\|SHA512"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- RSA PSS模式：格式为"RSA\|PSS\|摘要\|MGF1摘要"，示例："RSA\|PSS\|SHA256\|MGF1_SHA256"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。MGF1摘要支持"MGF1_MD5"、"MGF1_SHA1"、"MGF1_SHA224"、"MGF1_SHA256"、"MGF1_SHA384"、"MGF1_SHA512"。- RSA验签恢复：格式为"RSA\|PKCS1\|摘要\|Recover"，示例："RSA\|PKCS1\|SHA256\|Recover"、"RSA\|PKCS1\|SHA512\|Recover"。摘要支持"NoHash"、"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- ECDSA算法：格式为"ECC\|摘要"，示例："ECC\|SHA256"、"ECC\|SHA384"。摘要支持"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- DSA算法：格式为"DSA\|摘要"，示例："DSA\|SHA256"、"DSA\|SHA384"。摘要支持"NoHash"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- SM2算法：取值为"SM2|SM3"。- Ed25519算法：取值为"Ed25519"。 |
+| const char *algoName | [in] 验签算法名称，不能为NULL。取值如下：- RSA PKCS1模式：格式为"RSA\|PKCS1\|摘要"，示例："RSA\|PKCS1\|SHA256"、"RSA\|PKCS1\|SHA512"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- RSA PSS模式：格式为"RSA\|PSS\|摘要\|MGF1摘要"，示例："RSA\|PSS\|SHA256\|MGF1_SHA256"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。MGF1摘要支持"MGF1_MD5"、"MGF1_SHA1"、"MGF1_SHA224"、"MGF1_SHA256"、"MGF1_SHA384"、"MGF1_SHA512"。- RSA验签恢复：格式为"RSA\|PKCS1\|摘要\|Recover"，示例："RSA\|PKCS1\|SHA256\|Recover"、"RSA\|PKCS1\|SHA512\|Recover"。摘要支持"NoHash"、"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- ECDSA算法：格式为"ECC\|摘要"，示例："ECC\|SHA256"、"ECC\|SHA384"。摘要支持"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- DSA算法：格式为"DSA\|摘要"，示例："DSA\|SHA256"、"DSA\|SHA384"。摘要支持"NoHash"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- SM2算法：取值为"SM2\|SM3"。- Ed25519算法：取值为"Ed25519"。 |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) **verify | [out] 指向验签上下文指针的指针。verify不能为NULL，*verify必须为NULL。 |
 
 **返回：**
@@ -148,7 +148,9 @@ OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pu
 **参考：**
 
 [OH_CryptoVerify_Update](capi-crypto-signature-h.md#oh_cryptoverify_update) 追加待验签的消息数据。
+
 [OH_CryptoVerify_Final](capi-crypto-signature-h.md#oh_cryptoverify_final) 验签消息数据。
+
 [OH_CryptoVerify_Recover](capi-crypto-signature-h.md#oh_cryptoverify_recover) 恢复签名数据。
 
 
@@ -386,6 +388,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privK
 **参考：**
 
 [OH_CryptoSign_Update](capi-crypto-signature-h.md#oh_cryptosign_update) 更新待签名的数据。
+
 [OH_CryptoSign_Final](capi-crypto-signature-h.md#oh_cryptosign_final) 结束签名操作。
 
 
@@ -651,7 +654,7 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *sp
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul><br>         <li>CRYPTO_SUCCESS：操作成功。</li><br>         <li>CRYPTO_PARAMETER_CHECK_FAILED：spec或out为NULL，或尚未通过<br>            [OH_CryptoEccSignatureSpec_SetRAndS](capi-crypto-signature-h.mdoh_cryptoeccsignaturespec_setrands)设置r和s值。</li><br>         <li>CRYPTO_NOT_SUPPORTED：不支持的操作或算法。</li><br>         <li>CRYPTO_MEMORY_ERROR：内存分配失败。</li><br>         <li>CRYPTO_OPERTION_ERROR：编码失败。</li><br>         </ul> |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul><br>         <li>CRYPTO_SUCCESS：操作成功。</li><br>         <li>CRYPTO_PARAMETER_CHECK_FAILED：spec或out为NULL，或尚未通过<br>            [OH_CryptoEccSignatureSpec_SetRAndS](capi-crypto-signature-h.md#oh_cryptoeccsignaturespec_setrands)设置r和s值。</li><br>         <li>CRYPTO_NOT_SUPPORTED：不支持的操作或算法。</li><br>         <li>CRYPTO_MEMORY_ERROR：内存分配失败。</li><br>         <li>CRYPTO_OPERTION_ERROR：编码失败。</li><br>         </ul> |
 
 ### OH_CryptoEccSignatureSpec_Destroy()
 

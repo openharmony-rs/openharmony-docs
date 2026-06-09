@@ -71,6 +71,7 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_Crypt
 **参考：**
 
 [OH_CryptoSymKeyGenerator_Generate](capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate) 随机生成对称密钥。
+
 [OH_CryptoSymKeyGenerator_Convert](capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_convert) 将对称密钥数据转换为对称密钥。
 
 

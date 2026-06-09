@@ -212,6 +212,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_Cryp
 **参考：**
 
 [OH_CryptoAsymKeyGenerator_Generate](capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_generate) 生成非对称密钥对。
+
 [OH_CryptoAsymKeyGenerator_Convert](capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert) 将非对称密钥数据转换为密钥对。
 
 
@@ -856,6 +857,7 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob
 **参考：**
 
 [OH_CryptoEcPoint_GetCoordinate](capi-crypto-asym-key-h.md#oh_cryptoecpoint_getcoordinate) 获取椭圆曲线点的x和y坐标。
+
 [OH_CryptoEcPoint_SetCoordinate](capi-crypto-asym-key-h.md#oh_cryptoecpoint_setcoordinate) 设置椭圆曲线点的x和y坐标。
 
 

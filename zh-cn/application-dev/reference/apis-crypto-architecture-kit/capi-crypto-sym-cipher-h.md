@@ -206,6 +206,7 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Init(OH_CryptoSymCipher *ctx, Crypto_Cipher
 **参考：**
 
 [OH_CryptoSymCipher_Update](capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) 更新加解密数据，输出已加密或已解密的数据。
+
 [OH_CryptoSymCipher_Final](capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) 结束加解密操作，输出最终结果。
 
 
