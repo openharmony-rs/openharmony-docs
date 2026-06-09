@@ -22,9 +22,9 @@ import { continueManager } from '@kit.AbilityKit';
 
 ## continueManager.on
 
-on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;ContinueResultInfo&gt;): void
+on(type: 'prepareContinue', context: Context, callback: AsyncCallback\<ContinueResultInfo>): void
 
-在应用被快速拉起时，通过注册回调函数获取快速拉起结果。使用callback异步回调。
+在应用被快速拉起时，通过注册回调函数获取快速拉起结果。注册成功后，当应用被快速拉起时会触发回调函数。使用callback异步回调。
 
 适用于跨设备应用迁移场景，如游戏进度从手机迁移到平板、视频播放跨端同步、文档编辑协作等需要保持应用状态连续的场景。
 
@@ -91,11 +91,15 @@ export default class MigrationAbility extends UIAbility {
 
 ## continueManager.off
 
-off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;ContinueResultInfo&gt;): void
+off(type: 'prepareContinue', context: Context, callback?: AsyncCallback\<ContinueResultInfo>): void
 
-在应用快速拉起时，注销回调函数，不再获取快速拉起结果。使用callback异步回调。
+在应用快速拉起时，注销回调函数。注销成功后，不再接收快速拉起结果的通知。使用callback异步回调。
 
 适用于跨设备应用迁移完成或取消迁移后的回调清理场景，如应用迁移成功后清理监听、用户取消迁移操作时释放资源等。
+
+> **说明：**
+>
+> 快速拉起功能支持在用户触发迁移、等待迁移数据返回的过程中，并行拉起应用，减小用户等待时间。在源端应用[module.json5配置文件](../../quick-start/module-configuration-file.md)的continueType标签的取值中添加“_ContinueQuickStart”后缀，可以开启快速拉起功能。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -138,13 +142,13 @@ export default class MigrationAbility extends UIAbility {
             try {
               continueManager.off("prepareContinue", this.context, (err, continueResultInfo) => {
                 if (err.code != 0) {
-                  console.error('unregister failed, cause: ' + JSON.stringify(err));
+                  hilog.error(DOMAIN_NUMBER, TAG, 'unregister failed, cause: %{public}s', JSON.stringify(err));
                   return;
                 }
-                console.info('unregister finished, ' + JSON.stringify(continueResultInfo));
+                hilog.info(DOMAIN_NUMBER, TAG, 'unregister finished, %{public}s', JSON.stringify(continueResultInfo));
               });
             } catch (e) {
-              console.error('unregister failed, cause: ' + JSON.stringify(e));
+              hilog.error(DOMAIN_NUMBER, TAG, 'unregister failed, cause: %{public}s', JSON.stringify(e));
             }
             // 若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
             // 可处理应用自定义跳转、时序等问题
@@ -156,22 +160,22 @@ export default class MigrationAbility extends UIAbility {
 
 ## ContinueResultInfo
 
-注册或注销回调函数返回的快速拉起结果。
+注册或注销回调函数返回的快速拉起结果，包含操作状态码和结果说明信息，用于应用获取跨端迁移快速拉起的执行结果。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束**：此类型定义仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 | 名称 | 类型                                                                            | 只读 | 可选 | 说明       |
 | -------- |-------------------------------------------------------------------------------|----|----|----------|
 | resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | 否  | 否  | 操作结果状态码。 |
-| resultInfo | string                                                                        | 否  | 是  | 操作结果的说明。 |
+| resultInfo | string                                                                        | 否  | 是  | 操作结果的说明。提供操作成功或失败的详细描述信息，可用来向用户展示或用于日志记录。默认为空字符串。 |
 
 ## ContinueStateCode
 
 快速拉起的结果状态码的枚举值。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束**：此枚举仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -179,4 +183,3 @@ export default class MigrationAbility extends UIAbility {
 | -------- |----|-------|
 | SUCCESS  | 0  | 操作成功。表示快速拉起已成功完成，应用可以继续执行跨端迁移流程。 |
 | SYSTEM_ERROR | 1 | 操作失败。表示快速拉起过程中发生系统错误，应用需要提示用户迁移失败，并根据业务场景决定是否需要重试。 |
-
