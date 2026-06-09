@@ -18083,5 +18083,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/form/arkts-ui-widget-page-animation.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormSta/FormStaticAnimate/entry/src/main/ets/widget/pages/AnimationCard.ets",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"animation_card",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormSta/FormStaticAnimate/entry/src/main/ets/widget/pages/TransitionEffectExample1.ets",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"TransitionEffectExample1_card",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
