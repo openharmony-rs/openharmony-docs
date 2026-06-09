@@ -33,8 +33,6 @@
 
    需要申请的权限：ohos.permission.ACCESS_CERT_MANAGER
 
-   申请流程请参考：[申请应用权限](../AccessToken/determine-application-mode.md)
-
    声明权限请参考：[声明权限](../AccessToken/declare-permissions.md)
 
 2. 导入相关模块。
