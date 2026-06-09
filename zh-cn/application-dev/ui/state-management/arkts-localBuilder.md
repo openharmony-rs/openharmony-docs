@@ -49,7 +49,7 @@ this.myBuilderFunction()
 
 跨组件传递局部\@Builder函数时，会使用.bind(this)更改函数上下文，但这可能会导致组件的父子关系与状态管理的父子关系不一致。而\@LocalBuilder无论是否使用.bind(this)，都不会改变组件的父子关系，即\@LocalBuilder中定义组件所属的父组件是确定的，无法被改变。
 
-![zh-cn_image_compatible_localBuilder](figures/zh-cn_image_compatible_localBuilder.png)
+![zh-cn_image_compatible_localBuilder](figures/image-compatible-localBuilder.png)
 
 > **说明：**
 >
