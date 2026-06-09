@@ -46,6 +46,7 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    import { UIContext } from '@kit.ArkUI';
+   import { JSON, util } from '@kit.ArkTS';
    ```
 
 3. 安装用户证书凭据

@@ -39,6 +39,8 @@
 
    ```ts
    import { certificateManager } from '@kit.DeviceCertificateKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { util } from '@kit.ArkTS';
    ```
    
 3. 安装应用证书凭据。
