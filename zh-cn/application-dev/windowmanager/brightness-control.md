@@ -45,7 +45,7 @@
 
 示例代码如下：
 
-<!--@[windowBrightness_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/windowBrightness/entry/src/main/ets/pages/Index.ets) -->
+<!--@[windowBrightness_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/windowBrightness/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 
