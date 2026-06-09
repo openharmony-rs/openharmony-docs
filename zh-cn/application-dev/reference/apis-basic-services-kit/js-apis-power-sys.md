@@ -585,7 +585,7 @@ try {
 }
 ```
 
-## power.getPowerConfig
+## power.getPowerConfig<sup>26+</sup>
 
 getPowerConfig(sceneName: string): string
 
@@ -638,7 +638,7 @@ try {
 }
 ```
 
-## power.setPowerConfig
+## power.setPowerConfig<sup>26+</sup>
 
 setPowerConfig(sceneName: string, value: string): void
 
