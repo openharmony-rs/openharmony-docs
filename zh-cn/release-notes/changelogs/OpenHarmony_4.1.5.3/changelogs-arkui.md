@@ -181,7 +181,7 @@ struct Child {
 @Builder
 function buildFuction() {
 }
-```ts
+```
 
 **变更的接口/组件**
 
