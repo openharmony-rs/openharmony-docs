@@ -144,7 +144,7 @@ struct Index {
 }
 ```
 
-### 设置歌词信息
+### 设置歌词字段信息
 
 元数据信息[AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10)中包含歌词字段，应用可以通过设置歌词字段来满足某些场景的歌词内容展示，当前支持设置两种歌词字段：
 
@@ -154,10 +154,9 @@ struct Index {
 
 > **说明：**
 >
-> - lyric字段仅支持LRC格式（时间标签+歌词信息，如[00:25.44]歌词信息\r\n[00:26.44]歌词信息\r\n）的歌词内容，若应用传入其他格式的歌词内容，系统播控中心存在解析失败从而导致歌词显示异常问题。
+> - lyric字段仅支持LRC格式（时间标签+歌词信息，如[00:25.44]歌词信息）的歌词内容，若应用传入其他格式的歌词内容，系统播控中心存在解析失败从而导致歌词显示异常问题。
 >
 > - 传入的歌词字符串大小均不允许超过40960字节，否则会由于系统传输限制导致歌词信息设置失效。
-
 
 <!-- @[settingLyrics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingLyrics.ets) -->
 
@@ -312,7 +311,7 @@ struct Index {
 
 ## 设置播放状态
 
-应用通过[setAVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavplaybackstate10)将当前的播放状态信息设置给系统，系统播控中心界面严格根据应用传递的播放状态信息进行同步显示。
+应用通过[setAVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavplaybackstate10)将当前的播放状态信息设置给系统，系统播控中心界面会严格根据应用传递的播放状态信息进行同步显示。
 
 ### 播放状态信息
 
@@ -324,7 +323,7 @@ struct Index {
 
 ### 支持的控制命令
 
-应用接入AVSession，通过on接口注册不同的控制命令，可以实现播控中心界面上对应的控制按钮操作，具体的接口参考接口注册[on('play')](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onplay10)。
+应用接入AVSession，通过on接口可以注册控制命令，实现播控中心界面上对应的控制按钮操作。
 
 > **说明：**
 >
@@ -334,29 +333,29 @@ struct Index {
 
 | 控制命令 | 功能说明   |
 | ------  | -------------------------|
-| play    | 播放命令。 |
-| pause    | 暂停命令。 |
-| stop    | 停止命令。 |
-| playNext    | 播放下一首命令。 |
-| playPrevious    | 播放上一首命令。 |
-| fastForward    | 快进命令。 |
-| rewind    | 快退命令。 |
-| playFromAssetId    | 根据某个资源id进行播放命令。 |
-| seek    | 跳转命令。 |
-| setSpeed    | 设置播放速率命令。 |
-| setLoopMode    | 设置循环模式命令。 |
-| toggleFavorite    | 设置是否收藏命令。 |
-| skipToQueueItem    | 设置播放列表其中某项被选中播放的命令。 |
-| handleKeyEvent    | 设置按键事件的命令。 |
-| commonCommand    | 设置自定义控制命令。 |
+| [play](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onplay10)    | 播放命令。 |
+| [pause](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onpause10)    | 暂停命令。 |
+| [stop](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onstop10)    | 停止命令。 |
+| [playNext](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onplaynext10)    | 播放下一首命令。 |
+| [playPrevious](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onplayprevious10)    | 播放上一首命令。 |
+| [fastForward](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onfastforward10)    | 快进命令。 |
+| [rewind](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onrewind10)    | 快退命令。 |
+| [playWithAssetId](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onplaywithassetid20)    | 根据某个资源id进行播放命令。 |
+| [seek](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onseek10)    | 跳转命令。 |
+| [setSpeed](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onsetspeed10)    | 设置播放速率命令。 |
+| [setLoopMode](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onsetloopmode10)    | 设置循环模式命令。 |
+| [toggleFavorite](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#ontogglefavorite10)    | 设置是否收藏命令。 |
+| [skipToQueueItem](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onskiptoqueueitem10)    | 设置播放列表其中某项被选中播放的命令。 |
+| [handleKeyEvent](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhandlekeyevent10)    | 设置按键事件的命令。 |
+| [commonCommand](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#oncommoncommand10)    | 设置自定义控制命令。 |
 
 通话类应用支持的控制：
 
 | 控制命令 | 功能说明   |
 | ------  | -------------------------|
-| answer    | 接听电话的命令。 |
-| hangUp    | 通话挂断的命令。 |
-| toggleCallMute    | 通话静音或解除静音的命令。 |
+| [answer](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onanswer11)    | 接听电话的命令。 |
+| [hangUp](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#onhangup11)    | 通话挂断的命令。 |
+| [toggleCallMute](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#ontogglecallmute11)    | 通话静音或解除静音的命令。 |
 
 ### 处理不支持的控制命令
 
@@ -606,7 +605,7 @@ struct Index {
 
 ### 实现进度条控制功能
 
-应用如果[支持进度条显示](#设置进度条信息)，则需要同步支持进度条控制功能，即注册seek控制指令。当用户在播控中心界面拖动进度条时，应用会收到对应的回调，应用需要正确响应，参考实现：
+应用如果支持[进度条显示](#设置进度条信息)，则需要同步支持进度条控制功能，即注册seek控制指令。当用户在播控中心界面拖动进度条时，应用会收到对应的回调，应用需要正确响应，参考实现：
 
 <!-- @[performingProgressControl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/PerformingProgressControl.ets) -->
 
@@ -831,8 +830,7 @@ struct Index {
 
 > **说明：**
 >
-> 1. 方式一与方式二均需要应用正确设置元数据信息AVMetadata，并注册相应的控制命令接口，否则会无法接收到控制指令与按键事件。
-> 2. 方式一与方式二，选择其一接入即可，无须同时接入，系统推荐按照方式一接入。
+> 1. 方式一与方式二均需要应用正确设置元数据信息（AVMetadata），并注册相应的控制命令接口，否则会无法接收到控制指令与按键事件。
+> 2. 方式一与方式二，选择其一接入即可，无需同时接入，系统推荐按照方式一接入。
 
-<!--RP2-->
-<!--RP2End-->
+<!--RP2--><!--RP2End-->
