@@ -177,7 +177,7 @@ The shared heap is a process-level heap space. Unlike the local heap of a virtua
 
 **Relationship between the shared heap and local heap**
 
-![Sendable-Communication-Process](figures/Sendable-Communication-Process.png)
+![Sendable-communication-Process](figures/Sendable-communication-Process.png)
 
 The local heap of each concurrent instance is isolated, whereas the shared heap is a process-level heap that can be shared by all concurrent instances. However, the shared heap cannot reference objects in the local heap.
 

@@ -256,7 +256,7 @@ OH_Drawing_PointDestroy(centerPt);
 
 此例绘制的具有扇形渐变着色器效果的矩形如下所示：
 
-![zh-cn_image_0000002158584354](figures/zh-cn_image_0000002158584354.png)
+![sector-gradient-shader-effect](figures/sector-gradient-shader-effect.png)
 
 
 ## 滤波器效果

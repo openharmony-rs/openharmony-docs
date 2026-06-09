@@ -581,7 +581,7 @@ export const deleteNode = (id: string) => {
 }
 ```
 
-![en-us_image_sharedElementsNodeTransfer](figures/en-us_image_sharedElementsNodeTransfer.gif)
+![sharedElementsNodeTransfer](figures/sharedElementsNodeTransfer.gif)
 
 ### Using with Navigation
 
@@ -1372,7 +1372,7 @@ export const getMyNode = (): MyNodeController | undefined => {
 }
 ```
 
-![en-us_image_NavigationNodeTransfer](figures/en-us_image_NavigationNodeTransfer.gif)
+![NavigationNodeTransfer](figures/NavigationNodeTransfer.gif)
 
 ### Using with BindSheet
 

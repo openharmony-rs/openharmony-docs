@@ -27,11 +27,11 @@
    
    To develop native projects, select the Native C++ template. For details about how to use templates, see [Introduction to Project Templates](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-template).
 
-   ![createProject](figures/en-us_image_00250403.png)
+   ![createProject](figures/Native-C++-template.png)
 
 3. On the **Create Project** page, choose **5.0.0(12)** as an example of **Compatible SDK**, which specifies the earliest compatible API version. Retain the default values for other parameters.
 
-   ![chooseStageModel](figures/en-us_image_compatible_version.png)
+   ![chooseStageModel](figures/compatible-version.png)
 
 4. Click **Finish**. DevEco Studio will automatically generate the sample code and resources that match your project type. Wait until the HarmonyOS project is created.
 

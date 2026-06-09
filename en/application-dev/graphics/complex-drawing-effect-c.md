@@ -256,7 +256,7 @@ OH_Drawing_PointDestroy(centerPt);
 
 The following figure shows the rectangle with the sector gradient shader effect.
 
-![image_0000002158584354](figures/image_0000002158584354.png)
+![sector-gradient-shader-effect](figures/sector-gradient-shader-effect.png)
 
 
 ## Filter Effects
