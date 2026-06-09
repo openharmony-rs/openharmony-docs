@@ -5833,7 +5833,7 @@
 
 ## ohos.permission.vehicle.CAR_LOG_SERVICE
 
-允许系统应用发送日志获取指令。
+允许系统应用发送指令以获取日志。
 
 **权限级别**：system_basic
 
