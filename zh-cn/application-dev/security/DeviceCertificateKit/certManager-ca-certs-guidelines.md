@@ -22,7 +22,7 @@
 ![](figures/certificate-manager-ca-cert-case2.PNG)
 
 Device Certificate Kit的CA证书管理功能包含如下能力：
-- 系统CA证书管理：由操作系统预安装的CA证书，包括国密算法（SM算法）和国际算法（RSA和ECC算法）的CA证书。<!--RPx--><!--RPxEnd-->
+- 系统CA证书管理：由操作系统预安装的CA证书，包括国密算法（SM算法）和国际算法（RSA和ECC算法）的CA证书。<!--RP1--><!--RP1End-->
 
   系统CA证书包含了业界常用的商业CA证书，可以覆盖绝大部分互联网应用和网站的证书链校验需求。
 
