@@ -287,5 +287,5 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 <!--RP1-->
 ## 完整示例代码
 
-- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-7.0-Beta1/code/DocsSample/Media/Audio/AudioSuiteSample)
+- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
 <!--RP1End-->
