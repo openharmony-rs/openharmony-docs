@@ -144,6 +144,7 @@ SubComponentV2({objectLink: this.local})
 
 **V1->V2**
 <!-- @[MixCommonV1ToV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixCommonV1ToV2.ets) --> 
+
 ``` TypeScript
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, State, Param } from '@kit.ArkUI';
 
@@ -200,6 +201,7 @@ struct CompV2 {
 **V2->V1**
 
 <!-- @[MixCommonV2ToV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixCommonV2ToV1.ets) --> 
+
 ``` TypeScript
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, Local, ObjectLink } from '@kit.ArkUI';
 

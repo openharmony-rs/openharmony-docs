@@ -645,28 +645,28 @@ struct Index {
              .width(300)
              .margin(10)
              .onClick((e) => {
-              // 新增键值对，触发UI刷新
+             // 新增键值对，触发UI刷新
                this.info.memberMap.set(4, 'd');
              })
            Button('clear')
              .width(300)
              .margin(10)
              .onClick((e) => {
-              // 清空Map，触发UI刷新
+             // 清空Map，触发UI刷新
                this.info.memberMap.clear();
              })
            Button('set the key: 0')
              .width(300)
              .margin(10)
              .onClick((e) => {
-              // 更新键值对，触发UI刷新
+             // 更新键值对，触发UI刷新
                this.info.memberMap.set(0, 'aa');
              })
            Button('delete the first one')
              .width(300)
              .margin(10)
              .onClick((e) => {
-              // 删除键值对，触发UI刷新
+             // 删除键值对，触发UI刷新
                this.info.memberMap.delete(0);
              })
          }
@@ -718,21 +718,21 @@ struct Index {
              .width(300)
              .margin(10)
              .onClick((e) => {
-              // 新增元素，触发UI刷新
+             // 新增元素，触发UI刷新
                this.info.memberSet.add(5);
              })
            Button('clear')
              .width(300)
              .margin(10)
              .onClick((e) => {
-              // 清空Set，触发UI刷新
+             // 清空Set，触发UI刷新
                this.info.memberSet.clear();
              })
            Button('delete the first one')
              .width(300)
              .margin(10)
              .onClick((e) => {
-              // 删除元素，触发UI刷新
+             // 删除元素，触发UI刷新
                this.info.memberSet.delete(0);
              })
          }
@@ -771,29 +771,29 @@ struct Index {
            .width(300)
            .margin(10)
            .onClick((e) => {
-            // 通过给info.selectedDate重新赋值新的Date实例，触发UI刷新
-            this.info.selectedDate = new Date('2023-07-08');
+           // 通过给info.selectedDate重新赋值新的Date实例，触发UI刷新
+           this.info.selectedDate = new Date('2023-07-08');
            })
          Button('increase the year by 1')
            .width(300)
            .margin(10)
            .onClick((e) => {
-            // 调用Date的setFullYear接口修改年份，触发UI刷新
-            this.info.selectedDate.setFullYear(this.info.selectedDate.getFullYear() + 1);
+           // 调用Date的setFullYear接口修改年份，触发UI刷新
+           this.info.selectedDate.setFullYear(this.info.selectedDate.getFullYear() + 1);
            })
          Button('increase the month by 1')
            .width(300)
            .margin(10)
            .onClick((e) => {
-            // 调用Date的setMonth接口修改月份，触发UI刷新
-            this.info.selectedDate.setMonth(this.info.selectedDate.getMonth() + 1);
+           // 调用Date的setMonth接口修改月份，触发UI刷新
+           this.info.selectedDate.setMonth(this.info.selectedDate.getMonth() + 1);
            })
          Button('increase the day by 1')
            .width(300)
            .margin(10)
            .onClick((e) => {
-            // 调用Date的setDate接口修改日期，触发UI刷新
-            this.info.selectedDate.setDate(this.info.selectedDate.getDate() + 1);
+           // 调用Date的setDate接口修改日期，触发UI刷新
+           this.info.selectedDate.setDate(this.info.selectedDate.getDate() + 1);
            })
          DatePicker({
            start: new Date('1970-1-1'),

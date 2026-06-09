@@ -332,21 +332,21 @@ import { Computed } from '@kit.ArkUI';
    
      build() {
        Column() {
-          Button('-')
-            .margin(10)
-            .onClick((e: ClickEvent) => {
-              this.celsius--;
-            })
-  
-          Text(`Celsius ${this.celsius.toFixed(1)}`)
-            .fontSize(20)
-            .margin(10)
-  
-          Button('+')
-            .margin(10)
-            .onClick((e: ClickEvent) => {
-              this.celsius++;
-            })
+         Button('-')
+           .margin(10)
+           .onClick((e: ClickEvent) => {
+             this.celsius--;
+           })
+   
+         Text(`Celsius ${this.celsius.toFixed(1)}`)
+           .fontSize(20)
+           .margin(10)
+   
+         Button('+')
+           .margin(10)
+           .onClick((e: ClickEvent) => {
+             this.celsius++;
+           })
    
          Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`)
            .fontSize(20)
@@ -369,7 +369,7 @@ import { Computed } from '@kit.ArkUI';
 - `total`和`qualifiesForDiscount`的改变会触发子组件`Child`对应Text组件刷新。
 
   <!-- @[ComputedInitParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComputedDecorator/entry/src/main/ets/pages/ComputedInitParam.ets) -->
-   
+  
   ``` TypeScript
   import {
     Button,
@@ -384,33 +384,33 @@ import { Computed } from '@kit.ArkUI';
     Text
   } from '@kit.ArkUI';
   import { Computed, Local, ObservedV2, Param, Trace } from '@kit.ArkUI';
-
+  
   @ObservedV2
   class Article {
     @Trace quantity: number = 0;
     unitPrice: number = 0;
-
+  
     constructor(quantity: number, unitPrice: number) {
       this.quantity = quantity;
       this.unitPrice = unitPrice;
     }
   }
-
+  
   @Entry
   @ComponentV2
   struct Index {
     @Local shoppingBasket: Article[] = [new Article(1, 20), new Article(5, 2)];
-
+  
     @Computed
     get total(): number {
       return this.shoppingBasket.reduce((acc: number, item: Article) => acc + (item.quantity * item.unitPrice), 0);
     }
-
+  
     @Computed
     get qualifiesForDiscount(): boolean {
       return this.total >= 100;
     }
-
+  
     build() {
       Column() {
         Column() {
@@ -419,7 +419,7 @@ import { Computed } from '@kit.ArkUI';
             .margin(10)
         }
         .width('100%')
-
+  
         ForEach(this.shoppingBasket, (item: Article) => {
           Column() {
             Text(`unitPrice: ${item.unitPrice}`)
@@ -442,19 +442,19 @@ import { Computed } from '@kit.ArkUI';
               })
           }
           .width('100%')
-
+  
           Divider()
         })
         Child({ total: this.total, qualifiesForDiscount: this.qualifiesForDiscount })
       }
     }
   }
-
+  
   @ComponentV2
   struct Child {
     @Param total: number = 0;
     @Param qualifiesForDiscount: boolean = false;
-
+  
     build() {
       Column() {
         Text(`Total: ${this.total} `)

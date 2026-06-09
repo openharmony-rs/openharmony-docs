@@ -108,11 +108,11 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
            // 应用退出时会保存当前结果；重新启动后，会显示上一次的保存结果。
            // 未修改时默认值为47
            Button(`aProp value is ${this.aProp}`)
-            .width(300)
-            .margin(10)
-            .onClick((e: ClickEvent) => {
-              this.aProp += 1;
-            })
+           .width(300)
+           .margin(10)
+           .onClick((e: ClickEvent) => {
+             this.aProp += 1;
+           })
          }
          .width('100%')
        }
