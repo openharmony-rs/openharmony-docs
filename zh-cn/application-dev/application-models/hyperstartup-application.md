@@ -8,7 +8,7 @@
 
 ## 概述
 
-随着应用功能不断丰富，启动阶段往往需要完成进程创建、运行时初始化、模块加载、资源解析、首屏构建等一系列操作。当冷启动链路较长或启动阶段资源、模块加载占比较高时，用户可感知到首屏等待时间变长，进而影响应用体验和留存表现。
+随着应用功能不断丰富，启动阶段往往需要完成进程创建、运行时初始化、模块加载、资源解析、首屏构建等一系列操作。当冷启动链路较长或启动阶段资源、模块加载占比较高时，将导致用户在首屏等待时间变长，进而影响应用体验和留存表现。
 
 从API version 24开始，系统提供应用快启机制。该机制通过提前完成启动阶段中可复用流程的初始化工作，在用户再次启动应用时，复用相关启动初始化结果，减少重复初始化和加载开销，缩短启动链路耗时，有助于提升应用启动速度和稳定性。
 
@@ -20,7 +20,7 @@
 
 开发者可以从以下维度判断应用是否适合接入快启能力：
 
-- 应用冷启动性能较差，启动时延高于1.6s，或已存在启动体验相关舆情问题。
+- 应用冷启动性能较差，启动时延高于1.6s。
 - 资源加载、模块加载在启动过程中的耗时占比超过25%。
 
 ## 基本概念
@@ -45,18 +45,7 @@
 
 ![image](./figures/hyperstartup-application-process.png)
 
-包含在快启点内的流程有：AbilityStage模块加载、[AbilityStage.onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)和UIAbility模块加载。其中，在[模块加载](../arkts-utils/arkts-module-side-effects.md)过程中将执行部分代码，包括顶层代码（top level）、so的constructor和类静态变量初始化等。
-
-## 接口说明
-
-系统提供一组API，支持快启特性的接入和适配。
-
-| 接口名 | 功能描述 |
-| --- | --- |
-| [onLaunchFromHyperSnap](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onlaunchfromhypersnap24) | 生命周期回调接口，仅在快启启动时，系统会回调该接口执行。 |
-| [onAboutToCreateAbility](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24) | 生命周期回调接口，在AbilityStage创建第一个Ability前回调，普通启动和快启启动都会执行该回调。 |
-| [setHyperSnapEnabled](../reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagersethypersnapenabled) | 普通调用接口，用于设置快启能力开启或关闭。设置关闭时会立即清理快启相关初始化结果；设置开启时，系统会择机完成快启初始化，并在后续启动时生效快启启动。 |
-| [requestRebuildHyperSnap](../reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagerrequestrebuildhypersnap) | 普通调用接口，用于请求重新完成一次快启初始化。 |
+**包含在快启点内的流程有**：AbilityStage模块加载、[AbilityStage.onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)和UIAbility模块加载。其中，在[模块加载](../arkts-utils/arkts-module-side-effects.md)过程中将执行部分代码，包括顶层代码（top level）、so的constructor和类静态变量初始化等。
 
 ## 快启启动适配
 
@@ -64,7 +53,7 @@
 
 快启启动会跳过部分启动流程。为了保证数据一致性和状态正确，开发者需要消除快启初始化流程中的风险操作，才能保障快启启动后应用数据的正确性。
 
-风险操作包括以下类型：
+风险操作的实例如下：
 
 * 磁盘数据访问
 
@@ -90,7 +79,7 @@
 
 ### 将快启风险操作后置到快启点之外
 
-系统为开发者提供了新的回调接口AbilityStage.onAboutToCreateAbility。该接口在AbilityStage.onCreate()执行完毕后触发，但不参与快启初始化过程。无论是否开启应用快启功能，该回调均会被调用。
+系统为开发者提供了新的回调接口[onAboutToCreateAbility()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24)。该接口在AbilityStage.onCreate()执行完毕后触发，但不参与快启初始化过程。无论是否开启应用快启功能，该回调均会被调用。
 
 **示例1：** AbilityStage.onCreate中存在快启风险操作。
 
@@ -119,7 +108,7 @@ export class AppAbilityStage extends AbilityStage {
 
 2. 调整业务逻辑时，需要考虑时序依赖，保障业务逻辑正确性。
 
-3. AbilityStage.onCreate()是首个包含较多业务逻辑的生命周期回调。若该回调中的业务不易拆分，建议开发者在首次适配时，将AbilityStage.onCreate()的内容整体移至AbilityStage.onAboutToCreateAbility()。后续可通过业务前移扩大收益。
+3. AbilityStage.onCreate()是首个包含较多业务逻辑的生命周期回调。若该回调中的业务不易拆分，建议开发者在首次适配时，将AbilityStage.onCreate()的内容整体移至[onAboutToCreateAbility()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24)。后续可通过业务前移扩大收益。
 
 **示例2：** 顶层代码中存在快启风险操作。
 
@@ -198,7 +187,7 @@ export class AppAbilityStage extends AbilityStage {
 
 ### 在更新回调接口中更新数据
 
-考虑到实际调整业务逻辑的困难，部分对外数据交互难以剥离。快启机制为开发者提供新的回调接口AbilityStage.onLaunchFromHyperSnap()，该回调接口仅在快启启动流程（而不是快启初始化流程）中执行，正常冷启动不执行该回调。开发者可以在该回调接口中重新请求外部数据进行同步，保证数据一致性。
+考虑到实际调整业务逻辑的困难，部分对外数据交互难以剥离。快启机制为开发者提供新的回调接口[onLaunchFromHyperSnap()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onlaunchfromhypersnap24)，该回调接口仅在快启启动流程（而不是快启初始化流程）中执行，正常冷启动不执行该回调。开发者可以在该回调接口中重新请求外部数据进行同步，保证数据一致性。
 
 ```TypeScript
 export class AppAbilityStage extends AbilityStage {
@@ -229,7 +218,7 @@ export class AppAbilityStage extends AbilityStage {
 
 云推开关是一种通过云端在线配置、动态开启或关闭应用特定功能的机制。
 
-借助setHyperSnapEnabled()，应用可以根据需要关闭快启启动功能，直至云推开关重新开启。
+借助[setHyperSnapEnabled()](../reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagersethypersnapenabled)，应用可以根据需要关闭快启启动功能，直至云推开关重新开启。
 
 云推开关的基本规格：
 
@@ -281,7 +270,7 @@ export class AppAbilityStage extends AbilityStage {
 
 ## 通过应用主动重置快启初始化结果
 
-系统对外提供了requestRebuildHyperSnap接口，该接口支持应用在自己的业务逻辑中主动调用，清理当前快启初始化结果，在满足条件时重新进行快启初始化。
+系统对外提供了[requestRebuildHyperSnap()](../reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagerrequestrebuildhypersnap)接口，该接口支持应用在自己的业务逻辑中主动调用，清理当前快启初始化结果，在满足条件时重新进行快启初始化。
 
 ```TypeScript
 export class LauncherAbility extends UIAbility {
