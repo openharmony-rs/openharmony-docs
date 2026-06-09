@@ -5831,7 +5831,7 @@ Allows an application to send update instructions to the head unit.
 
 ## ohos.permission.vehicle.CAR_LOG_SERVICE
 
-Allows an application to send log retrieval commands.
+Allows a system application to send  commands to collect logs.
 
 **Permission level**: system_basic
 
