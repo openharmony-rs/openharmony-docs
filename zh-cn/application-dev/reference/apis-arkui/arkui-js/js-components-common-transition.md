@@ -219,7 +219,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001193544358](figures/zh-cn_image_0000001193544358.gif)
+![Widget-Transition](figures/Widget-Transition.gif)
 
 
 ## 页面转场样式
@@ -245,7 +245,7 @@ export default {
 
    a. push场景下：进入页面栈的Page2.js应用transition-enter描述的动画配置；进入页面栈第二位置的Page1.js应用transition-exit描述的动画配置。
 
-   ![zh-cn_image_0000001193704354](figures/zh-cn_image_0000001193704354.png)
+   ![Important-Notes](figures/Important-Notes.png)
 
    b. back场景下：退出页面栈的Page2.js应用transition-enter描述的动画配置，并进行倒播；从页面栈第二位置进入栈顶位置的Page1.js应用transition-exit描述的动画配置，并进行倒播。
    

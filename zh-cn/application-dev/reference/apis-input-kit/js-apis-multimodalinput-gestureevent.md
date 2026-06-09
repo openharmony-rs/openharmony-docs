@@ -50,8 +50,8 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | type         | [ActionType](#actiontype)   | 否    | 否    | 手势事件类型。如：手势开始、手势更新、手势结束等。                                   |
-| x        | number      | 否    | 否    | 坐标x，单位为px。                             |
-| y        | number      | 否    | 否    | 坐标y，单位为px。                             |
+| x        | number      | 否    | 否    | 坐标x，单位为像素（px）。                             |
+| y        | number      | 否    | 否    | 坐标y，单位为像素（px）。                             |
 
 ## FourFingersSwipe
 
@@ -62,8 +62,8 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | type         | [ActionType](#actiontype)   | 否    | 否    | 手势事件类型。如：手势开始、手势更新、手势结束等。                                   |
-| x        | number      | 否    | 否    | 坐标x，单位为px。                             |
-| y        | number      | 否    | 否    | 坐标y，单位为px。                             |
+| x        | number      | 否    | 否    | 坐标x，单位为像素（px）。                             |
+| y        | number      | 否    | 否    | 坐标y，单位为像素（px）。                             |
 
 ## ThreeFingersTap<sup>11+</sup>
 

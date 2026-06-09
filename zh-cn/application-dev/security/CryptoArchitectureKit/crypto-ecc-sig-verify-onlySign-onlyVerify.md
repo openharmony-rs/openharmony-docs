@@ -64,7 +64,7 @@
   async function main() {
     let messageData: cryptoFramework.DataBlob =
       { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
-    // 先使用 Md 计算 SHA256 摘要（32字节）
+    // 先使用 Md 计算 SHA1 摘要（20字节）
     let md = cryptoFramework.createMd('SHA1');
     await md.update(messageData);
     let digestBlob = await md.digest();

@@ -36,7 +36,7 @@
 
 当前窗口的实现和开发与应用开发模型相关联，不同模型下的接口功能略有区别。当前应用开发模型分为FA模型和Stage模型。
 
-两个模型的整体架构和设计思想，详见[应用模型](../application-models/application-models.md)。
+两个模型的整体架构和设计思想，详见[应用模型](../application-models/stage-model-development-overview.md)。
 
 针对窗口开发，推荐使用Stage模型进行相关开发。
 

@@ -23,15 +23,19 @@
 >
 > 当开发者通过DevEco Studio的Debug按钮安装并启动应用时，会自动关闭当前工程的超时检测机制。避免调试过程出现超时检测影响开发者调试。
 
-| 故障类型 | 说明 |
-| -------- | -------- |
-| THREAD_BLOCK_6S | 应用主线程卡死超时。 |
-| APP_INPUT_BLOCK | 用户输入响应超时。 |
-| LIFECYCLE_TIMEOUT | UIAbility生命周期切换超时。<br>**说明**：从API版本26.0.0开始，支持该类型。|
+| 事件类型 | 说明 | 所属故障类型 |
+| -------- | -------- | -------- |
+| THREAD_BLOCK_3S | 应用冻屏告警事件，应用主线程执行任务超过3s时触发。<br>**说明**：从API版本26.0.0开始，支持该类型。 | [THREAD_BLOCK_6S应用主线程卡死超时](#thread_block_6s应用主线程卡死超时) |
+| THREAD_BLOCK_6S | 应用冻屏事件，应用主线程执行任务超过6s时触发。 | [THREAD_BLOCK_6S应用主线程卡死超时](#thread_block_6s应用主线程卡死超时) |
+| APP_INPUT_BLOCK | 应用冻屏事件，用户输入响应超时。 | [APP_INPUT_BLOCK用户输入响应超时](#app_input_block用户输入响应超时) |
+| LIFECYCLE_HALF_TIMEOUT | 应用冻屏告警事件， UIAbility生命周期切换过程中，超过半生命周期阈值时触发。<br>**说明**：从API版本26.0.0开始，支持该类型。 | [LIFECYCLE_TIMEOUT生命周期切换超时](#lifecycle_timeout生命周期切换超时) |
+| LIFECYCLE_TIMEOUT | 应用冻屏事件，UIAbility生命周期切换超时。<br>**说明**：从API版本26.0.0开始，支持该类型。 | [LIFECYCLE_TIMEOUT生命周期切换超时](#lifecycle_timeout生命周期切换超时) |
 
-当应用发生上述故障时，为了保证可恢复，会杀死应用。并上报应用冻屏事件，可通过HiAppEvent订阅[应用冻屏事件](hiappevent-watcher-freeze-events.md)。
+当触发上述告警事件时，会上报应用冻屏告警事件，可通过HiAppEvent订阅[应用冻屏告警事件介绍](hiappevent-watcher-appfreezewarning-events.md)。
 
-### THREAD_BLOCK_6S 应用主线程卡死超时
+当触发上述应用冻屏故障时，系统会杀死应用以保证可恢复，同时上报应用冻屏事件，可通过HiAppEvent订阅[应用冻屏事件介绍](hiappevent-watcher-freeze-events.md)。
+
+### THREAD_BLOCK_6S应用主线程卡死超时
 
 **概述**：发生该故障，表示当前应用主线程有卡死或者执行任务过多的情况，影响应用的流畅度和体验。
 
@@ -43,7 +47,7 @@
 
 ![thread_block](figures/thread_block.png)
 
-### APP_INPUT_BLOCK 用户输入响应超时
+### APP_INPUT_BLOCK用户输入响应超时
 
 **概述**：该故障是指点击事件超过5s未得到响应。
 
@@ -59,7 +63,7 @@
 
 ![app_input_block](figures/app_input_block.png)
 
-### LIFECYCLE_TIMEOUT 生命周期切换超时
+### LIFECYCLE_TIMEOUT生命周期切换超时
 
 **概述**：生命周期切换超时是指：[UIAbility生命周期](../application-models/uiability-lifecycle.md)切换流程没有在指定时间内执行完毕。原因可能为：应用在生命周期切换过程中执行耗时操作，或者后台任务优先级低，资源供给不足导致的。
 
@@ -161,13 +165,15 @@ PID:13680
 UID:20020177
 PACKAGE_NAME:com.samples.freezedebug
 PROCESS_NAME:com.samples.freezedebug
-NOTE: Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults.
+NOTE: Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults.Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis.
 ***
 ```
 
 从API version 20开始，当整机资源告警（如整机低内存或热限频）时，系统会输出NOTE行。此时开发者可忽略应用冻屏故障。在之前的API版本中，无论整机资源状态如何，系统都不会输出此NOTE行。
 
 从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HitraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
+
+从API版本26.0.0开始，支持AppFreeze日志中关联[Resource Leak（资源泄漏）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)事件信息。若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因。
 
 AppFreeze事件（THREAD_BLOCK_6S、 APP_INPUT_BLOCK）都包含以下几部分信息：
 

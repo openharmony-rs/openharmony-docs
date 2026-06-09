@@ -100,6 +100,7 @@ Text(content?: string | Resource , value?: TextOptions)
 | minLines<sup>22+</sup> | 设置文本显示的最小行数。 |
 | optimizeTrailingSpace<sup>20+</sup> | 优化行尾空格。 |
 | textIndent<sup>10+</sup> | 设置首行文本缩进。 |
+| tailIndents | 设置文本尾部缩进。<br>**起始版本：** 26.0.0 |
 
 **字体自适应**
 
@@ -1466,6 +1467,26 @@ textIndent(value: Length)
 | 参数名 | 类型                         | 必填 | 说明                         |
 | ------ | ---------------------------- | ---- | ---------------------------- |
 | value  | [Length](ts-types.md#length) | 是   | 首行文本缩进。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md#基本像素单位) <br/>取值范围：大于等于0。设置负数时，按默认值处理。|
+
+### tailIndents
+
+tailIndents(value: Optional\<LengthMetrics> | Array\<LengthMetrics>)
+
+设置文本尾部缩进。未通过该接口设置时，文本尾部缩进为0fp。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                         | 必填 | 说明                         |
+| ------ | ---------------------------- | ---- | ---------------------------- |
+| value  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; \| Array&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | 是   | 指定文本每一行尾部缩进。当提供一个单独的LengthMetrics值时，所有行共享相同的尾部缩进；当提供一个数组时，第i个元素指定第i行的尾部缩进；如果文本行数超过数组长度，则数组中的最后一个元素将用于剩余的行。不支持百分比。<br/>取值范围：大于等于0。设置负数时，按默认值处理。|
 
 ### textOverflow
 
@@ -3235,35 +3256,57 @@ struct Index {
 
 ![textSetTextSelection](figures/textSetTextSelection.gif)
 
-### 示例23（设置行首标点压缩）
+### 示例23（设置行首标点符号压缩和行尾标点符号悬挂）
 
-该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+本示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点符号压缩，通过[punctuationOverflow](#punctuationoverflow)设置行尾标点符号悬挂。
 
-从API version 23开始，支持compressLeadingPunctuation接口。
+左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+
+文本自动换行后，剩余内容（含标点符号）需要能够放入上一行，标点符号悬挂才生效。
+
+从API版本23开始，新增compressLeadingPunctuation接口。
+
+从API版本26.0.0开始，新增punctuationOverflow接口。
 
 ```ts
-// xxx.ets
 @Entry
 @Component
-struct Index {
+struct PunctuationDemo {
+  @State compressLeadingPunctuation: boolean = false;
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「0123456789！\n『0123456789：\n（0123456789；\n《0123456789）\n〈0123456789】';
+
   build() {
-    Column(){
-      Text("\u300C行首标点压缩打开")
-        .compressLeadingPunctuation(true)
-        .margin(5)
-        .border({ width: 1 })
-        .fontSize(30)
-        .width("90%")
-      Text("\u300C行首标点压缩关闭")
-        .compressLeadingPunctuation(false)
-        .border({ width: 1 })
-        .fontSize(30)
-        .width("90%")
-    }
+    Column() {
+      Text(this.text)
+        .compressLeadingPunctuation(this.compressLeadingPunctuation)
+        .punctuationOverflow(this.punctuationOverflow)
+        .border({ width: 1, color: Color.Black })
+        .copyOption(CopyOptions.LocalDevice)
+        .fontSize('20fp')
+        .align(Alignment.Center)
+        .height('35%')
+        .width('40%')
+
+      Column() {
+        Button('开启行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = true
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = false
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = false
+        }).margin(5)
+      }
+    }.width('100%').padding(20)
   }
 }
 ```
-![textCompressLeadingPunctuation](figures/textCompressLeadingPunctuation.gif)
+![textPunctuation](figures/textPunctuation.gif)
 
 ### 示例24（设置自适应间距）
 
@@ -3726,3 +3769,49 @@ struct StyledStringAppend {
 ```
 
 ![incrementalUpdatePolicy](figures/incrementalUpdatePolicy.png)
+
+### 示例32（设置文本尾部缩进）
+
+该示例通过[tailIndents](#tailindents)接口实现了文本尾部缩进的功能。
+
+从API版本26.0.0开始，通过tailIndents属性设置文本尾部缩进。
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TailIndentsExample {
+  build() {
+    Column() {
+      Text('未设置tailIndents\n未设置tailIndents\n未设置tailIndents\n未设置tailIndents\n未设置tailIndents')
+        .fontSize(20)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+        .textAlign(TextAlign.End)
+        .width('100%')
+
+      Text('设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值\n设置tailIndents单值')
+        .fontSize(20)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+        .textAlign(TextAlign.End)
+        .width('100%')
+        .tailIndents(LengthMetrics.vp(100))
+
+      Text('设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组\n设置tailIndents数组')
+        .fontSize(20)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+        .textAlign(TextAlign.End)
+        .width('100%')
+        .tailIndents([LengthMetrics.vp(100), LengthMetrics.vp(50), LengthMetrics.vp(20)])
+
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![tailIndents](figures/tailIndents.png)

@@ -146,7 +146,7 @@ Immersive material parameters.
 
 ## Material
 
-Base class of the system material object on the UI.
+A base class of a system material object.
 
 **Since**: 26.0.0
 

@@ -230,7 +230,7 @@ Before a DLP file management application opens a protected file, the system need
 | access | [DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess) | Yes| Permission on the DLP file. The permissions on a DLP file determine the access scope of the file. If the value is out of range, error code 19100001 is thrown.|
 | userId | number | Yes| Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**. If the value is out of range, error code 19100001 is thrown.|
 | uri | string | Yes| URI of the DLP file. The value contains up to 4095 bytes. If the value is out of range, error code 19100001 is thrown.|
-| callback | AsyncCallback&lt;[DLPSandboxInfo](#dlpsandboxinfo)&gt; | Yes| Callback used to receive information about the application sandbox. The callback parameters include **err** and **res**. **err** is **undefined** when the operation is successful; otherwise, **err** is an error object. **res** is a **DLPSandboxInfo** object that contains information about the application sandbox.|
+| callback | AsyncCallback&lt;[DLPSandboxInfo](#dlpsandboxinfo)&gt; | Yes| Callback used to return the result. If the DLP sandbox is installed successfully, **err** is **undefined** and **data** is the sandbox information obtained; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -337,7 +337,7 @@ Use this API to clear the sandbox environment.
 | bundleName | string | Yes| Bundle name of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 19100001 is thrown.|
 | userId | number | Yes| Current user ID, which is the system account ID obtained by the account subsystem. The default super user ID is **100**. If the value is out of range, error code 19100001 is thrown.|
 | appIndex | number | Yes| DLP sandbox index, which is the value returned after **installDLPSandbox** is successfully called. It is used to identify the installed DLP sandbox. The value range is [1000, 1100]. If the value is out of range, error code 19100001 is thrown.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the uninstallation result.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the DLP sandbox is uninstalled successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -805,7 +805,7 @@ async function ExampleFunction() {
   file = fileIo.openSync(uri).fd;
   dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
-  await dlpFile.stopFuseLink(); // Stop the read and write on the FUSE.
+  await dlpFile.stopFuseLink(); // Stop the read and write on the link file.
   await dlpFile.resumeFuseLink(); // Resume read/write on the link file.
   
   dlpFile?.closeDLPFile(); // Close the DLP object.
@@ -872,7 +872,7 @@ async function ExampleFunction() {
   file = fileIo.openSync(uri).fd;
   dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
-  await dlpFile.stopFuseLink(); // Stop the read and write on the FUSE.
+  await dlpFile.stopFuseLink(); // Stop the read and write on the link file.
   dlpFile.resumeFuseLink(async (err, res) => {
     if (err !== undefined) {
       console.error('resumeFuseLink error,', err.code, err.message);
@@ -948,7 +948,7 @@ async function ExampleFunction() {
   file = fileIo.openSync(uri).fd;
   dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
-  await dlpFile.stopFuseLink(); // Stop the read and write on the FUSE.
+  await dlpFile.stopFuseLink(); // Stop the read and write on the link file.
   await dlpFile.replaceDLPLinkFile('test_new.txt.dlp.link'); // Replace a link file.
   await dlpFile.resumeFuseLink(); // Resume read/write on the link file.
   
@@ -1017,14 +1017,17 @@ async function ExampleFunction() {
   file = fileIo.openSync(uri).fd;
   dlpFile = await dlpPermission.openDLPFile(file, appId); // Open a DLP file.
   await dlpFile.addDLPLinkFile('test.txt.dlp.link'); // Add a link file.
-  await dlpFile.stopFuseLink(); // Stop the read and write on the FUSE.
-  await dlpFile.replaceDLPLinkFile('test_new.txt.dlp.link'); // Replace a link file.
-  await dlpFile.resumeFuseLink(); // Resume read/write on the link file.
-  
-  await dlpFile?.closeDLPFile(); // Close the DLP object.
-  if (file) {
+  await dlpFile.stopFuseLink(); // Stop the read and write on the link file.
+  dlpFile.replaceDLPLinkFile('test_new.txt.dlp.link', async (err, res) => { // Replace a link file.
+    if (err !== undefined) {
+      console.error('replaceDLPLinkFile error,', err.code, err.message);
+    } else {
+      console.info('res', JSON.stringify(res));
+      await dlpFile?.resumeFuseLink(); // Resume the read and write on the link file.
+    }
+    await dlpFile?.closeDLPFile(); // Close the DLP object.
     fileIo.closeSync(file);
-  }
+  });
 }
 
 ExampleFunction();
@@ -1577,7 +1580,7 @@ After calling **generateDLPFile()** to return a **DLPFile** object, the system m
 | plaintextFd | number | Yes| FD of the plaintext file to be encrypted. The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated.|
 | ciphertextFd | number | Yes| FD of the encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value is out of range, the excess part will be truncated.|
 | property | [DLPProperty](js-apis-dlppermission.md#dlpproperty21) | Yes| Authorization information, which includes the authorized user list, owner account, and contact account information.|
-| callback | AsyncCallback&lt;[DLPFile](#dlpfile)&gt; | Yes|Callback used to receive the result of generating a DLP file. The callback parameters include **err** and **res**. **err** is **undefined** when the operation is successful; otherwise, **err** is an error object. **res** is a **DLPFile** object that represents the DLP file generated.|
+| callback | AsyncCallback&lt;[DLPFile](#dlpfile)&gt; | Yes|Callback used to return the result. If the DLP file is generated successfully, **err** is **undefined** and **data** is the DLP file information obtained; otherwise, **err** is an error object.|
 
 **Error codes**
 

@@ -22,6 +22,7 @@
     - [使用PixelMap完成位图操作](image-pixelmap-operation.md)<!--RP1--><!--RP1End-->
   - 图片元数据处理<!--image-metadata-arkts-->
     - [读取和编辑图片Exif信息](image-tool.md)
+    - [读取和编辑图片XMP元数据](image-xmp-metadata.md)
     - [使用ImageSource获取专有元数据](image-specific-metadata.md)
   - 图片接收<!--image-receiving-arkts-->
     - [使用ImageReceiver完成图片接收](image-receiver.md)

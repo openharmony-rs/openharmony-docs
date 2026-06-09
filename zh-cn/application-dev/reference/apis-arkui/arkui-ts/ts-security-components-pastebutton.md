@@ -242,4 +242,4 @@ struct Index {
 }
 ```
 
-![zh-cn_image_0000001593677984](figures/zh-cn_image_0000001593677984.png)
+![PasteButton-Basic-demo](figures/PasteButton-Basic-demo.png)
