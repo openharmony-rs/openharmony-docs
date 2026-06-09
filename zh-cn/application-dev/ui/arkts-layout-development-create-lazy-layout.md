@@ -157,7 +157,7 @@ columnsTemplate还支持通过repeat关键字自动计算列数，格式为`'rep
 
 **图2** 网格的行列间距示例图
 
-![zh-cn_image_0000001511580908](figures/zh-cn_image_0000001511580908.png)
+![grid8](figures/grid8.png)
 
 LazyVGridLayout组件提供了[rowsGap](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#rowsgap)和[columnsGap](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md#columnsgap)属性分别设置行间距和列间距。默认值均为LengthMetrics.vp(0)，设置为小于0的值时按默认值显示。
 

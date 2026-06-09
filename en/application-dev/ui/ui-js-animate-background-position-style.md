@@ -89,4 +89,4 @@ By changing the **background-position** attribute (where the first value is the 
 >
 > The **background-position** attribute can only be used to move background images, but not the background color (**background-color**).
 >
-> ![en-us_image_background_img.gif](figures/en-us_image_background_img.gif)
+> ![backgroundImg](figures/backgroundImg.gif)

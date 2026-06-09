@@ -64,7 +64,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001222807812](figures/en-us_image_0000001222807812.gif)
+![componetnAnimation](figures/componetnAnimation.gif)
 
 > **NOTE**
 > -   When using the **animate** method, you must pass the **keyframes** and **options** parameters.
@@ -143,7 +143,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001267647897](figures/en-us_image_0000001267647897.gif)
+![settingAnimationParameters](figures/settingAnimationParameters.gif)
 
 > **NOTE**
 > - The sequence of **translate**, **scale**, and **rotate** affects the animation effect.
@@ -211,7 +211,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001222967796](figures/en-us_image_0000001222967796.gif)
+![componentAnimation](figures/componentAnimation.gif)
 
 > **NOTE**
 >
