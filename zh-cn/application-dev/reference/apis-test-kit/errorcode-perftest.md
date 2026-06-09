@@ -67,8 +67,7 @@ Parameter verification failed.
 
 **处理步骤**
 
-1. 检查接口入参类型是否与[PerfTest接口定义](./js-apis-perftest.md)一致。
-2. 确认参数取值是否在接口规定的范围内，详细参数说明请参考[PerfTestStrategy](./js-apis-perftest.md#perfteststrategy)参数描述。
+1. 检查接口入参是否符合要求。
 
 ## 32400004 执行回调函数失败
 **错误信息**
