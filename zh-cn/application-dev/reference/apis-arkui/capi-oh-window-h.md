@@ -137,10 +137,11 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 
 **描述**
 
-设置主窗口是否显示导航栏。<!--RP2--><!--RP2End-->
+设置主窗口是否显示<!--RP2-->导航栏<!--RP2End-->。
 
 **起始版本：** 15
 
+<!--RP3--><!--RP3End-->。
 
 **参数：**
 
