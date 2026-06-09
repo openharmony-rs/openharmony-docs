@@ -1090,7 +1090,7 @@ struct ImageExample1 {
 }
 ```
 
-![mediacachedimage-sample-picture](figures/loadingImagesOfBasicTypes.gif)
+![loadingImagesOfBasicTypes](figures/loadingImagesOfBasicTypes.gif)
 
 ### Example 2: Downloading and Displaying Static Online Images
 
