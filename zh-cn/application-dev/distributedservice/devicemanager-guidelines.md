@@ -402,14 +402,14 @@ ArkTS-Sta: bindTarget(deviceId: string, bindParam: Record&lt;string, int | strin
 4. 业务不再需要可信关系时，可调用[unbindTarget](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#unbindtarget)解除绑定关系。
 
    <!-- @[unbind_target](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/DistributedAppDev/DistributedAuthentication-sta/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    unAuthenticateDevice(device: distributedDeviceManager.DeviceBasicInfo): void {
      if (this.deviceManager === undefined) {
        logger.error('deviceManager has not initialized');
        return;
      }
-
+   
      for (let i = 0; i < this.trustedDeviceList.length; i++) {
        if (this.trustedDeviceList[i].deviceId != device.deviceId) {
          continue;
