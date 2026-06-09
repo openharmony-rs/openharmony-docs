@@ -1,8 +1,8 @@
 # Interface (WindowStage)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -13,6 +13,8 @@
 > - The initial APIs of this interface are supported since API version 9.
 >
 > - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
+>
+> - When an API of this module is called, an error will be thrown if parameter verification fails, permission verification fails, or the system status is abnormal. It is recommended that you use try-catch to capture errors at the outermost layer when calling APIs of this module. This helps prevent application crashes caused by API call failures.
 
 Implements a window manager, which manages each basic window unit, that is, [Window](arkts-apis-window-Window.md) instance.
 
@@ -531,7 +533,7 @@ You are advised to call this API during UIAbility startup. If called repeatedly,
 
 | Name  | Type                                           | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path     | string                                          | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project. |
+| path     | string                                          | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project. The path cannot be a relative path and must be the same as the value of **src** in the **main_pages.json** file.|
 | storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | Yes  | Page-level UI state storage unit, which is used to transfer the state attribute for the page content loaded to the window.|
 | callback | AsyncCallback&lt;void&gt;                       | Yes  | Callback used to return the result.                                                  |
 
@@ -594,7 +596,7 @@ You are advised to call this API during UIAbility startup. If called repeatedly,
 
 | Name | Type                                           | Mandatory| Description                                                        |
 | ------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path    | string                                          | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project.|
+| path    | string                                          | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project. The path cannot be a relative path and must be the same as the value of **src** in the **main_pages.json** file.|
 | storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No  | Page-level UI state storage unit, which is used to transfer the state attribute for the page content loaded to the window. This parameter is left blank by default.|
 
 **Return value**
@@ -661,7 +663,7 @@ You are advised to call this API during UIAbility startup. If called repeatedly,
 
 | Name  | Type                     | Mandatory| Description                |
 | -------- | ------------------------- | ---- | -------------------- |
-| path     | string                    | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project.|
+| path     | string                    | Yes  | Path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project. The path cannot be a relative path and must be the same as the value of **src** in the **main_pages.json** file.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.          |
 
 **Error codes**
@@ -1080,7 +1082,7 @@ off(eventType: 'windowStageEvent', callback?: Callback&lt;WindowStageEventType&g
 
 Unsubscribes from the WindowStage lifecycle change event.
 
-This API stops the listener for WindowStage lifecycle changes that was started with the [on('windowStageEvent')](#onwindowstageevent9) API.
+This API stops the listener for WindowStage lifecycle changes initiated by the [on('windowStageEvent')](#onwindowstageevent9) API.
 
 If you call this API without having previously called [on('windowStageEvent')](#onwindowstageevent9), the call does not cause an error and the program keeps running as usual.
 
@@ -1287,7 +1289,7 @@ Subscribes to the click event on the close button in the three-button navigation
 
 If the event is subscribed to multiple times, only the most recently subscribed-to event takes effect.
 
-The callback function in this API is executed synchronously. For asynchronous close events of the main window, refer to [on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15).
+The callback function in this API is executed synchronously. For details about listening for asynchronous close events of the main window, please refer to [on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15).
 
 If there is an existing event subscribed to by calling [on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15), only the [on('windowWillClose')](arkts-apis-window-Window.md#onwindowwillclose15) API will be responded to.
 
@@ -1410,7 +1412,7 @@ export default class EntryAbility extends UIAbility {
 
 setDefaultDensityEnabled(enabled: boolean): void
 
-Sets whether the main window of the application uses the system's default density. Child windows and system windows will follow the main window's setting. Before calling this API, call [WindowStage.loadContent()](#loadcontent9) to initialize the layout to ensure the correct call sequence.
+Sets whether the main window of the application uses the system's default density. Child windows and system windows will follow the main window's setting. Before calling this API, call [WindowStage.loadContent()](#loadcontent9) or [WindowStage.loadContentByName()](#loadcontentbyname11) to initialize the layout, ensuring the correct API call sequence.
 
 If this API is not called, the default density is not used.
 
@@ -1477,7 +1479,7 @@ Allows the main window of the application to customize its display size scale fa
 
 Existing child windows and system windows do not immediately re-layout to match the main window's new scale factor. They will re-layout to reflect this change only when their layout information (such as position, size, and system scale size) changes.
 
-If both this API and [setDefaultDensityEnabled(true)](#setdefaultdensityenabled12) are called, the setting from the last called API will be applied.
+When this API is used together with [setDefaultDensityEnabled()](#setdefaultdensityenabled12) with **true** passed, the setting from the last called API will be applied.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1529,7 +1531,7 @@ setCustomDensity(density: number, applyToSubWindow?: boolean): void
 
 Allows the main window of the application to customize its display size scale factor and control when child windows and system windows re-layout to match the main window.
 
-If both this API and [setDefaultDensityEnabled(true)](#setdefaultdensityenabled12) are called, the setting from the last called API will be applied.
+When this API is used together with [setDefaultDensityEnabled()](#setdefaultdensityenabled12) with **true** passed, the setting from the last called API will be applied.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1706,7 +1708,7 @@ Enables or disables the auto-save feature for the size of the last closed main w
 
 When the auto-save feature is enabled, within the same UIAbility, the size of the last closed main window is remembered. When this main window is restarted, it will open at the remembered size according to the rules.
 
-The following rules apply in stacking scenarios: 1. If the current instance is a free-form window, the next opened window will adopt the same size when stacked. 2. If the current instance is maximized or in full-screen mode, the next opened window will maintain the maximized state when stacked.
+The following rules apply in stacking scenarios: 1. If the current instance is a freeform window, the next opened window will adopt the same size when stacked. 2. If the current instance is maximized or in full-screen mode, the next opened window will maintain the maximized state when stacked.
 
 The following table describes the memory rules:
 |Last Window State|Memorizing Rule|
@@ -1943,7 +1945,7 @@ Since <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be properly called on
 
 | Name   | Type   | Mandatory| Description                                         |
 | --------- | ------- | ---- | --------------------------------------------- |
-| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | Yes  | Supported window modes.<br>- **FULL_SCREEN**: full-screen mode.<br>- **FLOATING**: floating window mode.<br>- **SPLIT**: split-screen mode. **FULL_SCREEN** or **FLOATING** must be used together. Configuring only **SPLIT** is not supported.<br> Note: The values of the **SupportWindowMode** field in the array should not conflict with the values of the **supportWindowMode** field under [abilities](../../quick-start/module-configuration-file.md#abilities) of the [module.json5 file](../../quick-start/module-configuration-file.md) corresponding to this UIAbility, or with the values of the **supportWindowModes** field in [StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions). In case of a conflict, the window support mode set by this parameter will take precedence.|
+| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | Yes  | Supported window modes.<br>- **FULL_SCREEN**: full-screen mode.<br>- **FLOATING**: floating window mode.<br>- **SPLIT**: split-screen mode. **FULL_SCREEN** or **FLOATING** must be used together. Configuring only **SPLIT** is not supported.<br> Note: The values of the **SupportWindowMode** field in the array should not conflict with the value of the **supportWindowMode** field under [abilities](../../quick-start/module-configuration-file.md#abilities) or **supportWindowModes** attribute in [StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions) of the [module.json5 file](../../quick-start/module-configuration-file.md) corresponding to this UIAbility. In case of a conflict, the window support mode set by this parameter will take precedence.|
 
 **Return value**
 

@@ -2428,7 +2428,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to create a PixelMap with DMA_ALLOC memory, see [Default Memory Allocation Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/image-allocator-type#default-memory-allocation-method).
+For details about how to create a PixelMap with DMA_ALLOC memory, see [Default Memory Allocation Mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/image-allocator-type#default-memory-allocation-mode).
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import {image} from '@kit.ImageKit';
@@ -2477,6 +2477,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 **Example**
 
 ```ts
+// EntryAbility.ets
 import { common } from '@kit.AbilityKit';
 import { taskpool } from '@kit.ArkTS';
 
@@ -2549,6 +2550,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 **Example**
 
 ```ts
+// EntryAbility.ets
 import { rpc } from '@kit.IPCKit';
 
 class MySequence implements rpc.Parcelable {
@@ -2635,6 +2637,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 **Example**
 
 ```ts
+// EntryAbility.ets
 import { rpc } from '@kit.IPCKit';
 
 class MySequence implements rpc.Parcelable {
@@ -2926,9 +2929,10 @@ Checks whether this PixelMap object is released. If released, any attempt to acc
 **Example**
 
 ```ts
-async function DemoIsReleased(pixelMap: PixelMap) { // Unreleased PixelMap.
+async function IsReleased(pixelMap: PixelMap) { // Unreleased PixelMap.
   pixelMap.isReleased(); // Return false.
   await pixelMap.release();
   pixelMap.isReleased(); // Return true.
 }
 ```
+<!--no_check-->

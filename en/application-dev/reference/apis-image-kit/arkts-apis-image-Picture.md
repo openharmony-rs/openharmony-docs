@@ -141,6 +141,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 **Example**
 
 ```ts
+// EntryAbility.ets
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -449,7 +450,7 @@ class MySequence implements rpc.Parcelable {
   marshalling(messageSequence: rpc.MessageSequence) {
     if(this.picture != null) {
       this.picture.marshalling(messageSequence);
-      console.info('Succceed in marshalling.');
+      console.info('Succeed in marshalling.');
       return true;
     } else {
       console.error('Failed to marshall.');
