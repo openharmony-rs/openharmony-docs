@@ -13217,7 +13217,7 @@ restore(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#电脑模式)下可正常调用，在其他设备和其他模式下返回801错误码。
+**设备行为差异：** 该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)下可正常调用，在其他设备和其他模式下返回801错误码。
 
 **ArkTS-Dyn起始版本：** 14
 
