@@ -15,7 +15,7 @@
 
    通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建模态窗口（TYPE_DIALOG）。
 
-   <!-- @[dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
 
 2. 设置模态窗口属性。
 
@@ -23,16 +23,16 @@
 
    - 在调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)之前，建议设置模态窗口的大小和位置。
 
-   <!-- @[dialog_window_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[dialog_window_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
 
 3. 加载显示窗口的具体内容。  
 
    通过[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)和[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)接口加载显示模态窗口的具体内容。
 
-   <!-- @[dialog_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[dialog_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
 
 4. 销毁窗口。 
 
    当不再需要模态窗口时，可根据具体实现逻辑，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)接口销毁模态窗口。
 
-   <!-- @[destroy_dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/DialogWindow.ets) -->
+   <!-- @[destroy_dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/DialogWindow.ets) --> 
