@@ -1204,10 +1204,10 @@ audioCapturer.off('stateChange');
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let stateChangeCallback = (state: audio.AudioState) => {
   if (state == 1) {
-    console.info('audio renderer state is: STATE_PREPARED');
+    console.info('audio capturer state is: STATE_PREPARED');
   }
   if (state == 2) {
-    console.info('audio renderer state is: STATE_RUNNING');
+    console.info('audio capturer state is: STATE_RUNNING');
   }
 };
 

@@ -7,12 +7,12 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callbacks
+typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callbacks；
 ```
 
 ## 概述
 
-声明输入音频流的回调函数指针。
+声明用于音频采集器的回调函数指针。
 
 为了避免不可预期的行为，在设置音频回调函数时，请确保该结构体的每一个成员变量都被自定义的回调方法或空指针初始化。可参考[推荐使用OHAudio开发音频录制功能(C/C++)](../../media/audio/using-ohaudio-for-recording.md)。
 
@@ -24,7 +24,7 @@ typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callback
 
 请分别使用以下回调类型替代：
 
-[OH_AudioCapturer_OnReadDataCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onreaddatacallback)、 [OH_AudioCapturer_OnDeviceChangeCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_ondevicechangecallback)、 [OH_AudioCapturer_OnInterruptCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_oninterruptcallback) 以及 [OH_AudioCapturer_OnErrorCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onerrorcallback)。
+[OH_AudioCapturer_OnReadDataCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onreaddatacallback)、[OH_AudioCapturer_OnDeviceChangeCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_ondevicechangecallback)、[OH_AudioCapturer_OnInterruptCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_oninterruptcallback) 以及 [OH_AudioCapturer_OnErrorCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onerrorcallback)。
 
 **相关模块：** [OHAudio](capi-ohaudio.md)
 
@@ -44,7 +44,7 @@ typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callback
 ## 成员函数说明
 
 > **说明：**
-> 以下回调接口的返回值没有枚举定义，当前版本实现并不按返回值区分处理，但为保证后续版本可扩展，默认使用0。
+> 以下回调接口的返回值没有枚举定义，当前版本实现并不按返回值区分处理。但为保证后续版本可扩展，建议不要对返回值做额外处理，或者将返回值固定为0。
 
 ### OH_AudioCapturer_OnReadData()
 
@@ -145,5 +145,5 @@ int32_t (*OH_AudioCapturer_OnError)(OH_AudioCapturer* capturer, void* userData, 
 |--| -- |
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | 指向[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)创建的音频流实例。 |
 | void* userData | 指向应用自定义的数据存储区域。 |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) error | 音频录制错误结果，可能为AUDIOSTREAM_ERROR_INVALID_PARAM、AUDIOSTREAM_ERROR_ILLEGAL_STATE或者 AUDIOSTREAM_ERROR_SYSTEM。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) error | 音频录制错误结果，可能为AUDIOSTREAM_ERROR_INVALID_PARAM、AUDIOSTREAM_ERROR_ILLEGAL_STATE 或者 AUDIOSTREAM_ERROR_SYSTEM。 |
 

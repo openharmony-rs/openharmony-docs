@@ -28,8 +28,8 @@
 | -- | -- | -- |
 | [OH_AudioStream_Result OH_AudioCapturer_Release(OH_AudioCapturer* capturer)](#oh_audiocapturer_release) | - | 释放输入音频流。 |
 | [OH_AudioStream_Result OH_AudioCapturer_Start(OH_AudioCapturer* capturer)](#oh_audiocapturer_start) | - | 启动音频采集器，开始获取音频数据。 |
-| [OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)](#oh_audiocapturer_pause) | - | 暂停输入音频流。在暂停音频，后续需要恢复录音的场景，建议使用pause。 |
-| [OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)](#oh_audiocapturer_stop) | - | 停止音频采集器，停止输入音频流。如果需要彻底结束录音，建议使用stop。 |
+| [OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)](#OH_AudioCapturer_Start) | - | 暂停输入音频流。在暂停音频后，后续需要恢复录音的场景，建议使用pause。 |
+| [OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)](#OH_AudioCapturer_Stop) | - | 停止音频采集器，停止输入音频流后，如果需要彻底结束录音，建议使用stop。 |
 | [OH_AudioStream_Result OH_AudioCapturer_Flush(OH_AudioCapturer* capturer)](#oh_audiocapturer_flush) | - | 丢弃获取的音频数据。 |
 | [OH_AudioStream_Result OH_AudioCapturer_GetCurrentState(OH_AudioCapturer* capturer, OH_AudioStream_State* state)](#oh_audiocapturer_getcurrentstate) | - | 查询当前音频流状态。 |
 | [OH_AudioStream_Result OH_AudioCapturer_GetLatencyMode(OH_AudioCapturer* capturer, OH_AudioStream_LatencyMode* latencyMode)](#oh_audiocapturer_getlatencymode) | - | 查询当前音频流时延模式。 |
@@ -44,7 +44,7 @@
 | [OH_AudioStream_Result OH_AudioCapturer_GetFramesRead(OH_AudioCapturer* capturer, int64_t* frames)](#oh_audiocapturer_getframesread) | - | 查询自创建流以来已读取的帧数。 |
 | [OH_AudioStream_Result OH_AudioCapturer_SetMuteHint(OH_AudioCapturer* capturer, bool mute)](#oh_audiocapturer_setmutehint) | - | 应用将当前录音流的自身静音状态传递给系统音频模块。该接口用于向系统音频模块上报应用自身的静音状态，不会改变录音流的实际静音状态。当前仅在部分PC/2in1设备上，系统音频模块会基于设置的状态调整策略以降低功耗。该接口仅在录音流处于运行态时允许调用，否则返回错误AUDIOSTREAM_ERROR_ILLEGAL_STATE。同一录音流同时设置流级静音提示接口（本接口）和会话级静音提示接口时，流级（本接口）优先级更高，数值以流级（本接口）设置值为准。 |
 | [OH_AudioStream_Result OH_AudioCapturer_GetOverflowCount(OH_AudioCapturer* capturer, uint32_t* count)](#oh_audiocapturer_getoverflowcount) | - | 查询当前录制音频流过载数。 |
-| [typedef void (\*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiocapturer_onreaddatacallback) | OH_AudioCapturer_OnReadDataCallback | 读取音频数据的回调函数。为了消除麦克风硬件设计带来的上电杂音，通常会对录音启动后的前100ms数据进行静音。 |
+| [typedef void (\*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiocapturer_onreaddatacallback) | OH_AudioCapturer_OnReadDataCallback | 读取音频数据的回调函数。另外需要注意：为了消除麦克风硬件设计带来的上电杂音，通常会对录音启动后的前100 ms数据进行静音。 |
 | [typedef void (\*OH_AudioCapturer_OnDeviceChangeCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioDeviceDescriptorArray* deviceArray)](#oh_audiocapturer_ondevicechangecallback) | OH_AudioCapturer_OnDeviceChangeCallback | 音频录制流的设备变化事件回调函数。 |
 | [typedef void (\*OH_AudioCapturer_OnInterruptCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioInterrupt_ForceType type, OH_AudioInterrupt_Hint hint)](#oh_audiocapturer_oninterruptcallback) | OH_AudioCapturer_OnInterruptCallback | 音频录制流的中断事件回调函数。 |
 | [typedef void (\*OH_AudioCapturer_OnErrorCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_Result error)](#oh_audiocapturer_onerrorcallback) | OH_AudioCapturer_OnErrorCallback | 音频录制流的错误事件回调函数。 |
@@ -118,7 +118,7 @@ OH_AudioStream_Result OH_AudioCapturer_Pause(OH_AudioCapturer* capturer)
 
 **描述**
 
-暂停输入音频流。在暂停音频，后续需要恢复录音的场景，建议使用pause。
+暂停输入音频流。在暂停音频后，后续需要恢复录音的场景，建议使用pause。
 
 **需要权限：** ohos.permission.MICROPHONE
 
@@ -145,7 +145,7 @@ OH_AudioStream_Result OH_AudioCapturer_Stop(OH_AudioCapturer* capturer)
 
 **描述**
 
-停止音频采集器，停止输入音频流。如果需要彻底结束录音，建议使用stop。
+停止音频采集器，停止输入音频流后，如果需要彻底结束录音，建议使用stop。
 
 **需要权限：** ohos.permission.MICROPHONE
 
@@ -431,7 +431,7 @@ OH_AudioStream_Result OH_AudioCapturer_GetTimestamp(OH_AudioCapturer* capturer, 
 
 **描述**
 
-获取输入音频流时间戳和当前数据帧位置信息。<br> 该接口可以获取到音频通道实际录制位置（framePosition）以及录制到该位置时候的时间戳（timestamp），时间戳单位为纳秒。
+获取输入音频流时间戳和当前数据帧位置信息。<br> 该接口可以获取到音频通道实际录制位置（framePosition）以及录制到该位置时的时间戳（timestamp），时间戳单位为纳秒。
 
 **起始版本：** 10
 
@@ -536,7 +536,7 @@ typedef void (*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, 
 
 **描述**
 
-读取音频数据的回调函数。为了消除麦克风硬件设计带来的上电杂音，通常会对录音启动后的前100ms数据进行静音。
+读取音频数据的回调函数。另外需要注意：为了消除麦克风硬件设计带来的上电杂音，通常会对录音启动后的前100 ms数据进行静音。
 
 **起始版本：** 20
 
