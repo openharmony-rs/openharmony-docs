@@ -295,7 +295,7 @@ sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
 **返回值：**
 
-| 类型 | 描述 |
+| 类型 | 说明 |
 | ---- | ----|
 | Record\<string, Object\> | 扩展Ability回复的数据。 |
 
