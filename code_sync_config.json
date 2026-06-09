@@ -17263,5 +17263,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/quick-start/integrated-hsp.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/IntegratedHsp/build-profile.json5",
+				"functions":[
+					{
+						"end_line":78,
+						"name":"integrated_hsp_002",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
