@@ -208,6 +208,8 @@ With this permission, the application can add and delete Wi-Fi networks, and mod
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 

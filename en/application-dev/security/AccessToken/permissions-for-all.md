@@ -148,6 +148,8 @@ With this permission, the application can obtain Wi-Fi information, including th
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+
 **Valid since**: 8
 
 **Changelog**: From API version 22, the support for the P2P capability is added to this permission.
@@ -243,6 +245,8 @@ including scanning, enabling/disabling, connecting, and disabling Wi-Fi, modifyi
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
 
 **Valid since**: 8
 
