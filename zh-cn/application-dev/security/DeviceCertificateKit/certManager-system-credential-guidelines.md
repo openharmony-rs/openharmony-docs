@@ -45,13 +45,13 @@
 
 3. 安装系统证书凭据。
 
-    调用openInstallCertificateDialog接口可拉起系统证书凭据安装的对话框（certType参数设置为CREDENTIAL_SYSTEM），安装页面需要用户输入正确的密钥库文件密码。
+   调用openInstallCertificateDialog接口可拉起系统证书凭据安装的对话框（certType参数设置为CREDENTIAL_SYSTEM），安装页面需要用户输入正确的密钥库文件密码。
 
-    > **说明：**
-    >
-    > 系统证书凭据功能当前仅支持RSA、ECC及SM2算法类型的证书和私钥。
-    >
-    > openInstallCertificateDialog接口当前只支持P12格式的密钥库文件。
+   > **说明：**
+   >
+   > 系统证书凭据功能当前仅支持RSA、ECC及SM2算法类型的证书和私钥。
+   >
+   > openInstallCertificateDialog接口当前只支持P12格式的密钥库文件。
 
 ## 样例代码
 
