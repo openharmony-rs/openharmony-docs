@@ -92,6 +92,28 @@
    此处以设置独立子窗的属性为例。示例代码如下：
 
    <!-- @[independent_subWindow_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   // 2.子窗口创建成功后，设置子窗口的位置、大小及相关属性等。
+   independentWindowClass.moveWindowTo(100, 100, (err) => {
+     if (err?.code) {
+       console.error('Failed to move the window. Cause:' + JSON.stringify(err));
+       return;
+     }
+     console.info('Succeeded in moving the window.');
+     if (!independentWindowClass) {
+       console.error('independent_windowClass is null');
+       return;
+     }
+     independentWindowClass.resize(1000, 500, (err) => {
+       if (err?.code) {
+         console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
+         return;
+       }
+       console.info('Succeeded in changing the window size.');
+     });
+   });
+   ```
 
 3. 加载显示子窗口的具体内容。
 
