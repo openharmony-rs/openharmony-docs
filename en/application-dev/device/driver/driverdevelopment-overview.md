@@ -37,6 +37,7 @@ With DDK, you can develop dedicated or extended peripheral drivers in an efficie
 - External Device Manager: performs lifecycle management of peripheral devices and driver packages.
 
 - Bundle Manager Service (BMS): manages application installation, uninstallation, and data on the system.
+- 
 
 - Ability Manager Service (AMS): used to start and stop **DriverExtensionAbility**.
 
@@ -94,7 +95,7 @@ The following table lists the associated modules you may use during development 
 | --------- | --------- |
 | PerformanceAnalysisKit | Introduces [hilog](../../reference/apis-performance-analysis-kit/js-apis-hilog.md) for log printing.| 
 | BasicServicesKit       | Introduces [BusinessError](../../reference/apis-basic-services-kit/js-apis-base.md#businesserror) to capture error information.|
-| IPCKit                 | Introduces [rpc](../../reference/apis-ipc-kit/js-apis-rpc.md)用于驱动与客户端IPC（Inter-Process Communication） to implement inter-process communication between the driver and the client.|
+| IPCKit                 | Introduces [rpc](../../reference/apis-ipc-kit/js-apis-rpc.md) to implement inter-process communication between the driver and the client.|
 | AbilityKit             | Introduces [@ohos.application.Want (Want)](../../reference/apis-ability-kit/js-apis-application-want.md) for lifecycle management.|
 
 ## Driver Application Specifications
