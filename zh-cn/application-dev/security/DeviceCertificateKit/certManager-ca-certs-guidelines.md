@@ -44,7 +44,7 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
 > **说明**
 >
-> 使用并信任当前用户级的CA证书，设备的用户可以通过网络代理工具对您应用的通信消息进行中间人攻击，这可能导致你的应用产生安全风险。具体请参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security)进行安全配置。
+> 使用并信任当前用户级的CA证书，设备的用户可以通过网络代理工具对您应用的通信消息进行中间人攻击，这可能导致您的应用产生安全风险。具体请参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security)进行安全配置。
 
 
 ## 基本概念
