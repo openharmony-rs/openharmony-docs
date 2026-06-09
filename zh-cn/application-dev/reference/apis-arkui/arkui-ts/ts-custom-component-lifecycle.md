@@ -145,7 +145,7 @@ struct IndexComponent {
   }
 }
 ```
-![zh-cn_image_lifecycle](figures/zh-cn_image_lifecycle.gif)
+![zh-cn_image_lifecycle](figures/image-lifecycle.gif)
 
 ## onNewParam<sup>19+</sup>
 

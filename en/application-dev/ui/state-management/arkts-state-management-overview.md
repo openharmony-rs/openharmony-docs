@@ -53,7 +53,7 @@ By data flow patterns and synchronization types, decorators can be categorized i
 
 The following figure illustrates the decorators. For details, see <!--RP1-->[@State Decorator: State Owned by Component](arkts-state.md)<!--RP1End--> and <!--RP2-->[Application State Management Overview](arkts-application-state-management-overview.md)<!--RP2End-->. You can use these decorators to implement linkage between data and the UI.
 
-![en-us_image_0000001502704640](figures/en-us_image_0000001502704640.png)
+![en-us_image_0000001502704640](figures/V1-Decorators.png)
 
 In the preceding figure, the decorators in the **Components** area are used for component-level state management, while others are used for application-level state management. Specifically, you can use [@StorageLink](arkts-appstorage.md#storagelink) or [@LocalStorageLink](arkts-localstorage.md#localstoragelink) to implement two-way synchronization for the application and component state, and [@StorageProp](arkts-appstorage.md#storageprop) or [@LocalStorageProp](arkts-localstorage.md#localstorageprop) to implement one-way synchronization.
 

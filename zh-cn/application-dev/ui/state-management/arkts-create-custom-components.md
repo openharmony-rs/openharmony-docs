@@ -541,7 +541,7 @@ struct Son {
   
   在ArkUI状态管理中，状态驱动UI更新。
 
-  ![zh-cn_image_0000001651365257](figures/zh-cn_image_0000001651365257.png)
+  ![zh-cn_image_0000001651365257](figures/State-UI-function.png)
 
   所以，不能在自定义组件的build()或\@Builder方法里直接改变状态变量，这可能会造成循环渲染的风险。Text('${this.count++}')在全量更新或最小化更新会产生不同的影响：
 
