@@ -1813,7 +1813,7 @@ freeze(freeze: Optional\<boolean>): T
 | T | 返回当前组件。 |
 
 
-## systemMaterial<sup>26+</sup>
+## systemMaterial
 
 ArkTS-Dyn: systemMaterial(material: SystemUiMaterial | undefined): T
 
