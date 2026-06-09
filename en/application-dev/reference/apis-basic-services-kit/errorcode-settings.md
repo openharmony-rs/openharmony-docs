@@ -6,6 +6,7 @@
 <!--Designer: @Kun_Wu-->
 <!--Tester: @dyx118186878-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:52:05.869Z pushedAt=2026-06-09T10:12:44.037Z -->
 
 > **NOTE**
 >
@@ -70,3 +71,21 @@ The type or format of the parameter is incorrect.
 **Solution**
 
 Make sure all the mandatory parameters are passed. If parameter verification fails, read the parameter specifications and locate the fault based on the possible causes.
+
+## 16900020 Failed to Open the Settings Page
+
+**Error Message**
+
+Failed to open the settings page via redirection.
+
+**Description**
+
+Failed to open the settings page.
+
+**Possible Causes**
+
+Internal system error.
+
+**Solution**
+
+Restart the application or device and try again.
