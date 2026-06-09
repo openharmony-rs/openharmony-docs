@@ -1090,7 +1090,7 @@ struct ImageExample1 {
 }
 ```
 
-![Image-of-png-gif-jpg-svg](figures/Image-of-png-gif-jpg-svg.gif)
+![mediacachedimage-sample-picture](figures/mediacachedimage-sample-picture.gif)
 
 ### Example 2: Downloading and Displaying Static Online Images
 
