@@ -43,6 +43,7 @@
    import { common } from '@kit.AbilityKit';
    import { media } from '@kit.MediaKit';
    import { fileIo } from '@kit.CoreFileKit';
+   import { display } from '@kit.ArkUI';
    ```
 
 2. 创建AVScreenCaptureRecorder类型的成员变量screenCapture。
@@ -194,11 +195,23 @@
      console.error("处理异常情况");
      return;
    }
-
+   let displayClass: display.Display | undefined = undefined;
+   try {
+     displayClass = display.getDefaultDisplaySync();
+     console.info(`The display info is: ${JSON.stringify(displayClass)}`);
+   } catch (exception) {
+     console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+   }
+   if (!displayClass) {
+     console.error("Failed to get displayClass.");
+     return;
+   }
    captureConfig: media.AVScreenCaptureRecordConfig = {
-       // 开发者可以根据自身的需要设置宽高。
-       frameWidth: 768,
-       frameHeight: 1280,
+       // 开发者可根据屏幕宽高设置相应尺寸。
+       // 屏幕宽度应设置为64的倍数。
+       frameWidth: displayClass.width,
+       // 根据屏幕的高设置高度。
+       frameHeight: displayClass.height,
        // 参考应用文件访问与管理开发示例新建并读写一个文件fd。
        fd: captureFile.fd,
        // 可选参数及其默认值。
@@ -334,6 +347,7 @@
 ``` TypeScript
 import { media } from '@kit.MediaKit';
 import { fileIo } from '@kit.CoreFileKit';
+import { display } from '@kit.ArkUI';
 
 export class AVScreenCaptureDemo {
   private screenCapture?: media.AVScreenCaptureRecorder;
@@ -362,10 +376,20 @@ export class AVScreenCaptureDemo {
     if (!this.captureFile) {
       return;
     }
+    let displayClass: display.Display | null = null;
+    try {
+      displayClass = display.getDefaultDisplaySync();
+      hilog.info(DOMAIN, 'DisplayTest', `The display info is: ${JSON.stringify(displayClass)}`);
+    } catch (exception) {
+      hilog.error(DOMAIN, 'DisplayTest',
+        `Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+    }
     this.captureConfig = {
-        // 开发者可以根据自身的需要设置宽高。
-        frameWidth: 768,
-        frameHeight: 1280,
+        // 开发者可以根据屏幕的宽高设置宽高。
+        // 设置宽为屏幕的宽度。
+        frameWidth: displayClass.width,
+        // 设置高为屏幕的高度。
+        frameHeight: displayClass.height,
         // 参考应用文件访问与管理开发示例新建并读写一个文件fd。
         fd: this.captureFile.fd,
         // 可选参数及其默认值。
@@ -451,8 +475,15 @@ export class AVScreenCaptureDemo {
     await this.screenCapture?.init(this.captureConfig);
 
     this.registerScreenCaptureCallback();
-    // 豁免隐私窗口。
-    let windowIDs = [57, 86];
+    // 豁免隐私窗口，窗口id可通过Window模块的getWindowProperties接口动态获取。
+    let windowId: number = 0;
+    try {
+      let properties = windowClass.getWindowProperties();
+      windowId = properties.id;
+    } catch (exception) {
+      hilog.error(`Failed to obtain the window properties. Cause Code: ${exception.code}, message: ${exception.message}`);
+    }
+    let windowIDs = [windowId];
     await this.screenCapture?.skipPrivacyMode(windowIDs);
 
     await this.screenCapture?.startRecording();
