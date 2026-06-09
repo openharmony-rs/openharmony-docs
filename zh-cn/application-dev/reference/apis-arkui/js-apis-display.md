@@ -228,7 +228,7 @@ import { display } from '@kit.ArkUI';
 | currentHeadroom             | number    | 是  | 否   | 当前亮度动态余量，该参数为大于0的浮点数。默认值为1.0。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | maxHeadroom                 | number    | 是  | 否   | 当前最大亮度余量，该参数为大于0的浮点数。默认值为1.0。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | sdrNits                     | number    | 是  | 否   | 屏幕的亮度，该参数为大于0的浮点数。默认值为500.0。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| brightnessPosition          | number    | 是  | 是   | 当前屏幕亮度所对应的亮度条位置，该参数为浮点数，取值范围[0.0, 1.0]，默认值为0.0。0.0表示当前屏幕亮度最低，1.0表示当前屏幕亮度最高。该参数返回的亮度条位置与实际可能存在精度为0.01的误差。<br>**起始版本：** 26.0.0。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| brightnessPosition          | number    | 是  | 是   | 当前屏幕亮度所对应的亮度条位置，该参数为浮点数，取值范围[0.0, 1.0]，默认值为0.0。0.0表示当前屏幕亮度最低，1.0表示当前屏幕亮度最高。该参数返回的亮度条位置与实际可能存在精度为0.01的误差。<br>**起始版本：** 26.0.0。<br>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## BrightnessCallback<sup>22+</sup>
 type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
