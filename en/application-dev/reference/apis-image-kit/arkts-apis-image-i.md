@@ -23,7 +23,7 @@ Describes area information in an image.
 | Name  | Type              | Read Only|  Optional| Description                                                        |
 | ------ | ------------------ | ---| -----|------------------------------------------------------- |
 | pixels | ArrayBuffer        | No|   No | Pixels of the image. Only pixel data in BGRA_8888 format is supported.|
-| offset | number             | No|   No |  Offset for data reading, The unit is bytes.                                                    |
+| offset | number             | No|   No |  Offset for data reading. The unit is bytes.                                                    |
 | stride | number             | No|   No | Number of bytes from one row of pixels in memory to the next row of pixels in memory. The unit is bytes. The value of **stride** must be greater than or equal to the value of **region.size.width** multiplied by 4.                  |
 | region | [Region](#region8) | No|   No |Region to read or write. The width of the region to write plus the X coordinate cannot be greater than the width of the original image. The height of the region to write plus the Y coordinate cannot be greater than the height of the original image.|
 

@@ -1939,7 +1939,7 @@ Sets the supported window modes of the main window. This API uses a promise to r
 
 In versions earlier than <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, error code 801 is returned.
 
-Since <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be properly called on a device that supports freeform windows and is in the freeform window state, and the call takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be property called, and the call takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
+Since <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be properly called on a device that supports freeform windows and is in the freeform window state, and the call takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be properly called, and the call takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
 
 **Parameters**
 
@@ -2007,7 +2007,7 @@ Sets the supported window modes for the main window and optionally disables the 
 
 In versions earlier than <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, error code 801 is returned.
 
-Since <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be properly called on a device that supports freeform windows and is in the freeform window state, and the call takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be property called, and the call takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
+Since <!--RP3-->OpenHarmony 6.1<!--RP3End-->, this API can be properly called on a device that supports freeform windows and is in the freeform window state, and the call takes effect immediately. If the device supports freeform windows but is not in the freeform window state, this API can be properly called, and the call takes effect when the device switches to the freeform window state. If the device does not support freeform windows, error code 801 is returned.
 
 **Parameters**
 
