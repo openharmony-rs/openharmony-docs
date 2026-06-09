@@ -159,9 +159,9 @@ Describes the region information.
 
 | Name| Type         | Read Only| Optional| Description        |
 | ---- | ------------- | ---- | ---- | ------------ |
-| size<sup>7+</sup> | [Size](#size) | No  | No  | Region size.  |
-| x<sup>7+</sup>    | number        | No  | No | X coordinate of the top-left corner of the region, The unit is px.|
-| y<sup>7+</sup>    | number        | No | No | Y coordinate of the top-left corner of the region, The unit is px.|
+| size | [Size](#size) | No  | No  | Region size.  |
+| x    | number        | No  | No | X coordinate of the top-left corner of the region, The unit is px.|
+| y    | number        | No | No | Y coordinate of the top-left corner of the region, The unit is px.|
 
 ## PackingOption
 

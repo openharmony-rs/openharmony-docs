@@ -1,8 +1,8 @@
 # Interface (Window)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -1608,7 +1608,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
-Sets whether the application main window layout or the application child window layout is immersive. This API uses a promise to return the result. This API neither takes effect nor returns an error when called by other windows.
+Sets whether the application main window or child windows use the [immersive layout](../../windowmanager/window-terminology.md#immersive-layout). This API uses a promise to return the result. This API neither takes effect nor returns an error when called by other windows.
 
 An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
 
@@ -1686,7 +1686,7 @@ export default class EntryAbility extends UIAbility {
 
 setImmersiveModeEnabledState(enabled: boolean): void
 
-Sets whether to enable the immersive layout for the main window. This API does not change the window mode or size. It can be called only by the main window and child windows.
+Sets whether to enable the [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) for the current window. This API does not change the window mode or size. It can be called only by the main window and child windows.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -1730,7 +1730,7 @@ try {
 
 getImmersiveModeEnabledState(): boolean
 
-Checks whether the immersive layout is enabled for this window.
+Checks whether the [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) is enabled for the current window.
 
 This API can be called only by the main window and child windows.
 
@@ -1768,14 +1768,14 @@ try {
 
 isImmersiveLayout(): boolean
 
-Checks whether this window is in immersive mode.
+Checks whether the current window is using the [immersive layout](../../windowmanager/window-terminology.md#immersive-layout).
 
 **System capability**: SystemCapability.Window.SessionManager
 
 **Return value**
 | Type    | Description                                                                                |
 | ------- | ------------------------------------------------------------------------------------ |
-| boolean | Check result for whether the window is in immersive mode. **true** if in immersive mode, **false** otherwise.|
+| boolean | Whether the window is using the immersive layout. **true** if yes, **false** otherwise.|
 
 **Error codes**
 
@@ -5766,7 +5766,7 @@ promise.then((data) => {
 
 setWindowColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;): void
 
-Sets a color space for this window. This API uses an asynchronous callback to return the result.
+Sets the color space of the current window. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5776,7 +5776,7 @@ Sets a color space for this window. This API uses an asynchronous callback to re
 
 | Name| Type| Mandatory| Description|
 | ---------- | ------------------------- | -- | ----------- |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes| Color space to set.|
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes| Color space.|
 | callback   | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.  |
 
 **Error codes**
@@ -5811,7 +5811,7 @@ try {
 
 setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 
-Sets a color space for this window. This API uses a promise to return the result.
+Sets the color space of the current window. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5821,7 +5821,7 @@ Sets a color space for this window. This API uses a promise to return the result
 
 | Name| Type| Mandatory| Description|
 | ---------- | ------------------------- | -- | ------------- |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes| Color space to set.|
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes| Color space.|
 
 **Return value**
 
@@ -5859,7 +5859,7 @@ try {
 
 getWindowColorSpace(): ColorSpace
 
-Obtains the color space of this window.
+Obtains the color space of the current window.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -11111,7 +11111,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Sets whether the main window layout or the child window layout is immersive. This API uses an asynchronous callback to return the result. It does not work when called by a system window.
+Sets whether the main window or child windows use the [immersive layout](../../windowmanager/window-terminology.md#immersive-layout). This API uses an asynchronous callback to return the result. It does not work when called by a system window.
 
 An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
 
@@ -11768,7 +11768,7 @@ export default class EntryAbility extends UIAbility {
 
 setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Sets whether the main window layout or the child window layout is immersive. This API uses an asynchronous callback to return the result.
+Sets whether the main window or child windows use the [immersive layout](../../windowmanager/window-terminology.md#immersive-layout). This API uses an asynchronous callback to return the result.
 
 An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
 
@@ -11825,7 +11825,7 @@ export default class EntryAbility extends UIAbility {
 
 setLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
-Sets whether the main window layout or the child window layout is immersive. This API uses a promise to return the result.
+Sets whether the main window or child windows use the [immersive layout](../../windowmanager/window-terminology.md#immersive-layout). This API uses a promise to return the result.
 
 An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
 
@@ -12393,7 +12393,7 @@ promise.then((data) => {
 
 setColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;): void
 
-Sets a color space for this window. This API uses an asynchronous callback to return the result.
+Sets the color space of the current window. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -12405,7 +12405,7 @@ Sets a color space for this window. This API uses an asynchronous callback to re
 
 | Name    | Type                     | Mandatory| Description        |
 | ---------- | ------------------------- | ---- | ------------ |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes  | Color space to set.|
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes  | Color space.|
 | callback   | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.  |
 
 
@@ -12428,7 +12428,7 @@ windowClass.setColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError) => 
 
 setColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 
-Sets a color space for this window. This API uses a promise to return the result.
+Sets the color space of the current window. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -12440,7 +12440,7 @@ Sets a color space for this window. This API uses a promise to return the result
 
 | Name    | Type                     | Mandatory| Description          |
 | ---------- | ------------------------- | ---- | -------------- |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes  | Color space to set.|
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes  | Color space.|
 
 **Return value**
 
