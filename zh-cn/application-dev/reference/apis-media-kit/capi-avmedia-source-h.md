@@ -1,7 +1,7 @@
 # avmedia_source.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -18,7 +18,7 @@
 
 **起始版本：** 23
 
-**相关模块：** [avmedia_source](capi-avmedia-source.md)
+**相关模块：** [AVMediaSource](capi-avmedia-source.md)
 
 ## 汇总
 
