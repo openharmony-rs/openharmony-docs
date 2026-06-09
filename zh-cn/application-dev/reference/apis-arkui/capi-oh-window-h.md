@@ -141,7 +141,7 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 
 **起始版本：** 15
 
-<!--RP3--><!--RP3End-->。
+<!--RP3--><!--RP3End-->
 
 **参数：**
 
