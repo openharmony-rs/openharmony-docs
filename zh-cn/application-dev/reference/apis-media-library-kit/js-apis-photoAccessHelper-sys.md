@@ -4083,7 +4083,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-## getAlbumIdByBundleName<sup>22+</sup>
+### getAlbumIdByBundleName<sup>22+</sup>
 
 getAlbumIdByBundleName(bundleName: string): Promise&lt;number&gt;
 
