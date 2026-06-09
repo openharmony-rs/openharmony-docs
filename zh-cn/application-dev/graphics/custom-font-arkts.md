@@ -31,6 +31,7 @@
 
 1. 导入依赖的相关模块。
 
+   ArkTS-Dyn示例：
    <!-- @[arkts_custom_font_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -38,6 +39,8 @@
    import { UIContext } from '@kit.ArkUI'
    import { text } from '@kit.ArkGraphics2D'
    ```
+   ArkTS-Sta示例：
+   <!-- @[arkts_custom_font_include](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/CustomFont/entry/src/main/ets/pages/Index.ets) -->
 
 2. 注册自定义字体。有以下两种方式：
 
@@ -74,6 +77,7 @@
 
 4. 创建段落样式，并使用字体管理器实例构造段落生成器ParagraphBuilder实例。
 
+   ArkTS-Dyn示例：
    <!-- @[arkts_custom_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -86,6 +90,8 @@
    // 创建一个段落生成器
    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection)
    ```
+   ArkTS-Sta示例：
+   <!-- @[arkts_custom_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/CustomFont/entry/src/main/ets/pages/Index.ets) -->
 
 5. 生成段落。
 
@@ -114,4 +120,5 @@
 ## 效果展示
 
 ![zh-cn_image_load](figures/zh-cn_image_load.png)
+
 ![zh-cn_image_unload](figures/zh-cn_image_unload.png)

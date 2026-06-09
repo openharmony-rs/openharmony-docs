@@ -30,6 +30,7 @@
    ```
 
 2. 获取系统字体信息。
+
    <!-- @[arkts_system_font_info_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -37,6 +38,7 @@
    ```
 
 3. 在获取系统字体信息之后通过日志打印字体信息。
+
    <!-- @[arkts_system_font_info_print](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -77,6 +79,7 @@
    ```
 
 2. 创建textStyle1，指定fontFamilies为“HarmonyOS Sans SC”，默认中文字体为“HarmonyOS Sans SC”。
+
    <!-- @[arkts_use_and_change_system_font_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -88,6 +91,7 @@
    ```
 
 3. 创建textStyle2，指定fontFamilies为“HarmonyOS Sans TC”（该两种字体易于观察同一文字字型差异）。
+
    <!-- @[arkts_use_and_change_system_font_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -99,6 +103,8 @@
    ```
 
 4. 创建段落生成器。
+
+   ArkTS-Dyn示例：
    <!-- @[arkts_use_and_change_system_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -113,8 +119,11 @@
    // 创建一个段落生成器
    let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    ```
+   ArkTS-Sta示例：
+   <!-- @[arkts_use_and_change_system_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
 
 5. 先后将textStyle1和textStyle2添加到段落样式中并添加文字。
+
    <!-- @[arkts_use_and_change_system_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
