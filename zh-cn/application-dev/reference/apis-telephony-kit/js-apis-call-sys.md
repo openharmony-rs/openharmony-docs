@@ -3023,7 +3023,7 @@ getCallTransferInfo\(slotId: number, type: CallTransferType, callback: AsyncCall
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| type     | [CallTransferType](js-apis-call.md#calltransfertype)                       | 是   | 呼叫转移类型。                         |
+| type     | [CallTransferType](#calltransfertype8)                       | 是   | 呼叫转移类型。                         |
 | callback | AsyncCallback&lt;[CallTransferResult](js-apis-call.md#calltransferresult)&gt; | 是   | 回调函数。返回呼叫转移信息。           |
 
 **错误码：**
@@ -3072,7 +3072,7 @@ getCallTransferInfo\(slotId: number, type: CallTransferType\): Promise\<CallTran
 | 参数名 | 类型                                   | 必填 | 说明                                   |
 | ------ | -------------------------------------- | ---- | -------------------------------------- |
 | slotId | number                                 | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| type   | [CallTransferType](js-apis-call.md#calltransfertype) | 是   | 呼叫转移类型。                         |
+| type   | [CallTransferType](#calltransfertype8) | 是   | 呼叫转移类型。                         |
 
 **返回值：**
 
@@ -4880,7 +4880,7 @@ IP多媒体系统调用模式。
 |          名称            | 类型                                                 | 必填 | 说明             |
 | ------------------------ | ---------------------------------------------------- | ---- | ---------------- |
 | transferNum              | string                                               | 是   | 转移编号。         |
-| type                     | [CallTransferType](js-apis-call.md#calltransfertype)               | 是   | 呼叫转移类型。     |
+| type                     | [CallTransferType](#calltransfertype8)               | 是   | 呼叫转移类型。     |
 | settingType              | [CallTransferSettingType](#calltransfersettingtype8) | 是   | 设置呼叫转移类型。 |
 | startHour<sup>9+</sup>   | number                                               | 否   | 开始时间的小时数。 |
 | startMinute<sup>9+</sup> | number                                               | 否   | 开始时间的分钟数。 |
