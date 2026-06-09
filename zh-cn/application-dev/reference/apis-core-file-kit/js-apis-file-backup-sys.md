@@ -153,8 +153,8 @@ import { backup } from '@kit.CoreFileKit';
 
 | 名称       | 类型   | 只读 | 可选 | 说明                                     |
 | ---------- | ------ | ---- | --- | ---------------------------------------- |
-| srcPath | string | 否   | 否 | 迁移的源路径。长度限制为4096，不支持使用相对路径../和软链接。 |
-| destPath | string | 否   | 否 | 迁移的目标路径。长度限制为4096，不支持使用相对路径../和软链接。 |
+| srcPath | string | 否   | 否 | 迁移的源路径。长度限制为4096个字符，不支持使用相对路径和软链接。 |
+| destPath | string | 否   | 否 | 迁移的目标路径。长度限制为4096个字符，不支持使用相对路径和软链接。 |
 
 ## GeneralCallbacks
 
@@ -166,24 +166,12 @@ import { backup } from '@kit.CoreFileKit';
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
+**系统接口**：此接口为系统接口。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | onBackupSizeReport<sup>18+</sup>  | [OnBackupSizeReport](#onbackupsizereport18) | 否 | 是 |  框架获取到的待备份的数据量大小的信息。 |
-| onMigrateResult | AsyncCallback&lt;string, void \| string&gt; | 否 | 是 | 迁移文件流程结束的回调，返回迁移文件的结果信息。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**错误码**：参见下方错误码表格。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
-
-| 错误码ID | 错误信息                |
-| -------- | ----------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API. |
-| 13600001 | IPC error.               |
-| 13900001 | Operation not permitted.               |
-| 13900005 | I/O error.               |
-| 13900011 | Out of memory.           |
-| 13900020 | Invalid argument.           |
-| 13900025 | No space left on device. |
+| onMigrateResult | AsyncCallback&lt;string, void \| string&gt; | 否 | 是 | 迁移文件流程结束的回调，返回迁移文件的结果信息。当迁移操作成功，err为undefined，data为string（应用名称）；否则为错误对象。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**错误码**：<br>以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。<br>- 202：Permission verification failed, application which is not a system application uses system API.<br>- 13600001：IPC error.<br>- 13900001：Operation not permitted.<br>- 13900005：I/O error.<br>- 13900011：Out of memory.<br>- 13900020：Invalid argument.<br>- 13900025：No space left on device. |
 
 ### onFileReady
 
