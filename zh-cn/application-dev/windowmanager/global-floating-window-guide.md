@@ -87,7 +87,26 @@
    // 2.全局悬浮窗窗口创建成功后，设置全局悬浮窗的位置、大小及相关属性等。
    floatWindowClass.moveWindowTo(100, 100, (err) => {
      if (err?.code) {
-       console.error('Failed to move the window. Cause:' + JSON.stringify(err));
+   <!-- @[floating_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   // 3.为全局悬浮窗加载对应的目标页面。
+   floatWindowClass.setUIContent('pages/FloatWindow', (err) => {
+     if (err?.code) {
+       console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+       return;
+     }
+     console.info('Succeeded in loading the content.');
+     // 显示全局悬浮窗。
+     (floatWindowClass as window.Window).showWindow((err) => {
+       if (err?.code) {
+         console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
+         return;
+       }
+       console.info('Succeeded in showing the window.');
+     });
+   });
+   ```
        return;
      }
      console.info('Succeeded in moving the window.');
