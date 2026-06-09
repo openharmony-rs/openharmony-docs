@@ -130,7 +130,7 @@
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**订阅者所需权限：**ohos.permission.INSTALL_BUNDLE（该权限仅系统应用可申请）
+**订阅者所需权限：** ohos.permission.INSTALL_BUNDLE（该权限仅系统应用可申请）
 
 **取值：** "usual.event.APP_FIRST_LAUNCH"
 
