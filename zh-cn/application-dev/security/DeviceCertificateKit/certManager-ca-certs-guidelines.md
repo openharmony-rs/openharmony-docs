@@ -7,44 +7,61 @@
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
 
+在对其他实体（设备、服务器）的证书凭据进行校验时，您的应用需要使用到CA证书。例如您的应用使用预置的CA证书对应用服务器的HTTPS证书链进行可信校验。
+
+场景1：通过鸿蒙网络通信服务进行HTTPS连接
+
+您的应用可以配置[Network Kit](../../network/http-request.md#配置证书校验)使用Device Certificate Kit的系统CA证书、用户CA证书对HTTPS证书链进行校验。具体配置方式请参考对应Kit的开发指导文档。
+
+![](figures/zh-cn_certificate_manager_ca_cert_case1.PNG)
+
+场景2：采用底层或自定义的安全协议进行通信
+
+如果您的应用需要采用底层或自定义的安全协议与应用服务器进行通信，则您的应用可能需要从Device Certificate Kit读取系统CA证书和用户CA证书对服务器的证书链进行校验。
+
+![](figures/zh-cn_certificate_manager_ca_cert_case2.PNG)
+
+
+Device Certificate Kit的CA证书管理功能包含如下能力：
+ - 系统CA证书管理： 由鸿蒙系统预安装的CA证书，包括国密算法（SM算法）和国际算法（RSA和ECC算法）的CA证书。只有通过[《华为根证书计划》](https://www.huawei.com/cn/root-certification-program)审核的CA证书才能预安装到鸿蒙系统中。
+ 
+    鸿蒙系统CA证书包含了业界常用的商业CA证书，可以覆盖绝大部分互联网应用和网站的证书链校验需求。
+ 
+    设备的用户和鸿蒙应用只能读取系统CA证书，不能进行安装和更新。
+
+- 用户CA证书管理： 归属于设备用户的CA证书，由用户或MDM应用进行管理。仅当签发应用服务器证书的CA证书未包含在鸿蒙系统CA证书内，才需要安装用户CA证书，例如企业内部服务器使用的证书由企业自建CA证书颁发。
+
+   用户CA证书划分为两个作用范围（Scope）：当前用户和所有用户。
+
+   1. 当前用户级的CA证书：设备的用户间隔离，只有设备的当前登录用户才能访问和管理。设备用户可以通过系统设置应用进行管理，鸿蒙应用也可以通过API拉起证书管理服务的对话框（仅限PC/2in1设备支持），引导用户安装或卸载当前用户的CA证书。
+
+   2. 所有用户级的CA证书：设备的所有用户都可以读取，当前只能通过MDM应用在企业设备上进行安装和管理。
+
+|用户CA证书<br>的作用范围（Scope）   | 作用范围说明 | 证书管理方式 | 设备用户可执行的操作|鸿蒙应用可执行的操作 | 典型应用场景|
+|-----|-------------------|-------|-------------------------------|----|---|
+| 当前用户  |    用户间隔离   |   由用户管理    |安装/卸载/查看| 读取，拉起安装/卸载对话框 | 在BYOD设备访问企业内部的服务器
+| 所有用户  |    所有用户共享   |  由MDM应用管理 |查看| 读取 |在企业设备访问企业内部的服务器
+
 > **说明**
 >
-> 本开发指导需使用API version 12及以上版本SDK。
+> 使用并信任当前用户级的CA证书，设备的用户可以通过网络代理工具对您应用的通信消息进行中间人攻击，这可能导致你的应用产生安全风险。具体请参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security)进行安全配置。
 
-## 场景说明
 
-典型场景。
-
-- 安装用户CA证书。调用者可以将用户CA证书安装在当前用户或者设备公共位置下。
-  - 安装在当前用户时，仅当前用户的业务可以访问该证书。
-  - 安装在设备公共位置下，所有用户下的业务都可以访问。
-- 获取用户CA证书列表。可以选择获取当前用户或者设备公共位置下的用户CA证书列表。
-- 获取用户CA证书详情。
-- 删除指定的用户CA证书。
-- 获取CA证书的存储路径。
-
-## 接口说明
-
-详细接口说明可参考[@ohos.security.certManager (证书管理模块)](../../reference/apis-device-certificate-kit/js-apis-certManager.md)。
-
-以上场景涉及的常用接口如下表所示。
-
-| 实例名          | 接口名                                                       | 描述                                         |
-| --------------- | ------------------------------------------------------------ | -------------------------------------------- |
-| certificateManager        | installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope) : CMResult<sup>18+</sup> | 安装用户CA证书。        |
-| certificateManager        | uninstallUserTrustedCertificateSync(certUri: string) : void<sup>18+</sup> | 删除用户CA证书。       |
-| certificateManager        | getAllUserTrustedCertificates(): Promise\<CMResult> | 获取当前用户和设备公共位置的所有用户根CA证书列表。 |
-| certificateManager        | getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult><sup>18+</sup> | 根据证书的位置获取用户根CA证书列表。 |
-| certificateManager        | getUserTrustedCertificate(certUri: string): Promise\<CMResult> | 获取用户根CA证书的详细信息。 |
-| certificateManager | getCertificateStorePath(property: CertStoreProperty): string<sup>18+</sup> | 获取证书的存储路径。 |
+## 基本概念
+- 商业CA证书：由正规的第三方商业数字证书认证机构（CA）颁发和运营的商用CA证书，具备公开权威公信力。
+- 自建CA证书：企业/组织自行搭建部署的私有数字证书颁发机构（CA）颁发的CA证书，一般用于企业/组织内网服务、测试环境等。
+- MDM（Mobile Device Management）应用：也称企业设备管理应用，指集成了MDM管理功能的应用，能够集中管理、监控和保护企业内的移动设备（如智能手机、平板电脑、笔记本电脑等）。它允许IT管理员远程配置设备、强制执行安全策略、部署应用程序，并确保企业数据的安全。具体请参考[MDM Kit](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/mdm-kit-intro)相关资料。
+- 企业设备：由企业MDM应用管理和控制的设备，该设备一般由企业进行采购并发放给企业员工进行日常办公。
+- BYOD（Bring Your Own Device）：自带设备办公，指一些企业允许员工携带自己平板或智能手机到公司，并使用这些设备接入办公环境。例如用户企业办公或者外来访客携带设备访问工厂、实验室等场景。
 
 ## 开发步骤
 
+
 1. 权限申请和声明。
 
-   使用安装和删除接口需要申请权限：ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT或ohos.permission.ACCESS_USER_TRUSTED_CERT
+   MDM应用调用安装和卸载CA证书接口需要申请权限：ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT
 
-   使用获取列表和获取详情接口需要申请权限：ohos.permission.ACCESS_CERT_MANAGER
+   调用其他接口需要申请权限：ohos.permission.ACCESS_CERT_MANAGER
 
    申请流程请参考：[申请应用权限](../AccessToken/determine-application-mode.md)
 
@@ -54,9 +71,40 @@
 
    ```ts
    import { certificateManager } from '@kit.DeviceCertificateKit';
+   import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   import { UIContext } from '@kit.ArkUI';
    ```
 
-3. 安装用户CA证书、获取用户CA证书列表、获取用户证书详情、删除用户CA证书。
+3. 安装和卸载用户CA证书。
+
+  - 场景1：在BYOD设备安装用户CA证书
+  
+    鸿蒙应用调用openInstallCertificateDialog接口可拉起安装用户CA证书的对话框（certType参数设置为CA_CERT），安装页面需要对设备用户的身份进行认证。该接口只支持安装当前用户级的CA证书。
+    
+    > **说明**
+    > 
+    > 安装并信任用户CA证书，拥有CA证书的攻击者可能会获取到设备用户在访问网站或使用应用时传输的敏感信息。<br>
+    > 拉起安装用户CA证书的对话框接口当前仅支持PC/2in1设备。
+
+  - 场景2：MDM应用在企业设备安装和卸载用户CA证书
+
+    MDM应用可调用installUserTrustedCertificateSync接口安装用户CA证书，接口需要指定待安装的CA证书文件，并返回已安装的CA证书标识（certUri）。
+
+    MDM应用可调用uninstallUserTrustedCertificateSync接口卸载已安装的用户CA证书，输入已安装的CA证书标识certUri。
+
+4. 读取系统CA证书和用户CA证书。
+
+   证书管理服务提供了共享目录供鸿蒙应用读取系统CA证书和用户CA证书文件，您的应用可以先通过getCertificateStorePath接口获取对应CA证书的存储目录，然后从目录中读取CA证书文件（为pem格式的证书文件）。
+
+   系统CA证书按照国际和国密算法类型分别存储在两个目录，可以通过getCertificateStorePath接口的property.certAlg参数获取指定算法的证书存储目录。
+
+   用户CA证书按照当前用户级和所有用户级分别存储在不同的目录，可以通过getCertificateStorePath接口的property.certScope参数获取指定级别的证书存储目录。
+
+## 样例代码
+
+(老的资料)安装用户CA证书、获取用户CA证书列表、获取用户证书详情、删除用户CA证书。
 
    <!-- @[certificate_management_user_ca](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets) -->
    
@@ -136,7 +184,7 @@
    ```
 
 
-4. 获取系统CA证书路径、用户CA证书路径。应用可以直接通过该路径访问CA证书。
+获取系统CA证书路径、用户CA证书路径。应用可以直接通过该路径访问CA证书。
 
    <!-- @[certificate_management_get_ca_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerGetCAPathSample.ets) -->
    
