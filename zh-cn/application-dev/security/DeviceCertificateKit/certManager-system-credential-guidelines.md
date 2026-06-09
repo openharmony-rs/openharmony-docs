@@ -58,3 +58,40 @@
 ## 样例代码
 
 <!-- @[certificate_management_system_cred_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerSystemCredSample.ets) -->
+
+``` TypeScript
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+import { UIContext } from '@kit.ArkUI';
+import { util } from '@kit.ArkTS';
+
+function systemCredSample(): void {
+  /* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
+  let context: common.Context = new UIContext().getHostContext() as common.Context;
+
+  /* 安装的凭据数据需要业务赋值，本例数据非凭据数据。 */
+  let keystoreBase64Str = 'MIIMJgIBAzCCC+AGCSqGSIb3DQEHAaCCC9EEggvNMIILyTCCBW4GCSqGSIb3DQEH' +
+    // ...
+    'G615kxCjeS6uixCHuij3pgQUhHiChcSeohRPrVkVPSPmYr9tjAYCAgQA';
+  /* 凭据数据转换为Uint8Array，凭据数据为der格式 */
+  let keystore: Uint8Array = new util.Base64Helper().decodeSync(keystoreBase64Str);
+
+  try {
+    /* 安装系统证书凭据 */
+    certificateManagerDialog.openInstallCertificateDialog(
+      context,
+      certificateManagerDialog.CertificateType.CREDENTIAL_SYSTEM,
+      certificateManagerDialog.CertificateScope.CURRENT_USER,
+      keystore
+    ).then((keyUri: string) => {
+      console.info(`Install system credential success, keyUri: ${keyUri}`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to install system credential. Code: ${error.code}, message: ${error.message}`);
+    });
+  } catch (error) {
+    console.error(`Failed to install system credential. Code: ${error.code}, message: ${error.message}`);
+  }
+  return;
+}
+```
