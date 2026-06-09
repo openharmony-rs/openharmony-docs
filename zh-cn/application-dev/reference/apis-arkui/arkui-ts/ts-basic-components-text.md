@@ -500,7 +500,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。默认值为：true。 |
+| enable  | boolean \| undefined | 是   | 是否对选中文本进行实体识别。<br/>true：开启识别，false：关闭识别。默认值为：true。 |
 
 ### font<sup>10+</sup>
 
@@ -1126,7 +1126,7 @@ minLines(minLines: Optional\<number>)
 
 如果实际文本高度小于最小行数对应的高度，最后显示高度为最小行数对应的高度。
 
-与[maxLines](#maxlines)同时配置时，最小行高显示范围不会超过最大行高限制。
+与[maxLines](#maxlines)同时配置时，最小行数对应的显示高度不会超过最大行数对应的高度限制。
 
 如果文本设置了[constraintSize](ts-universal-attributes-size.md#constraintsize)，那么组件最后显示高度会在[constraintSize](ts-universal-attributes-size.md#constraintsize)约束内。
 
@@ -1430,7 +1430,7 @@ textContentAlign(textContentAlign: Optional\<TextContentAlign>)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| textContentAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21)> | 是   | 文本段落在垂直方向的对齐方式。<br/>默认(undefined和异常值情况下)和align属性设置为Center效果一致。|
+| textContentAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21)> | 是   | 文本内容区在组件内的垂直对齐方式。<br/>默认(undefined和异常值情况下)和align属性设置为Center效果一致。|
 
 ### textDirection<sup>23+</sup>
 

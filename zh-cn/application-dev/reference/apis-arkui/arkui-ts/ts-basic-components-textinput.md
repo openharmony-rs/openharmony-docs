@@ -663,7 +663,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。默认值为：true。 |
+| enable  | boolean \| undefined | 是   | 是否开启选中文本实体识别。<br/>true：开启识别，false：关闭识别。默认值为：true。<br/>值为undefined时，按默认值处理。 |
 
 ### passwordRules<sup>11+</sup>
 
@@ -812,7 +812,7 @@ lineHeight(value: number | string | Resource)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 文本的文本行高。 |
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 文本行高。|
 
 ### decoration<sup>12+</sup>
 

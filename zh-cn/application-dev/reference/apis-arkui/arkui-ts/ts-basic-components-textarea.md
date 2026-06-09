@@ -600,7 +600,7 @@ enableSelectedDataDetector(enable: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。默认值为：true。 |
+| enable  | boolean \| undefined | 是   | 是否对选中文本进行实体识别。<br/>true：开启识别，false：关闭识别。默认值为：true。 |
 
 ### contentType<sup>12+</sup>
 
@@ -1034,7 +1034,7 @@ enableHapticFeedback(isEnabled: boolean)
 
 autoCapitalizationMode(mode: AutoCapitalizationMode)
 
-设置自动大小写模式的文本模式，只提供接口能力，具体实现以输入法应用为主。
+设置文本的自动大小写模式，只提供接口能力，具体实现以输入法应用为主。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
