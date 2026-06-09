@@ -48,7 +48,26 @@
    // 2.模态窗口创建成功后，设置模态窗口的位置、大小及相关属性等。
    dialogWindowClass.moveWindowTo(100, 100, (err) => {
      if (err?.code) {
-       console.error('Failed to move the window. Cause:' + JSON.stringify(err));
+   <!-- @[dialog_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   // 3.为模态窗口加载对应的目标页面。
+   dialogWindowClass.setUIContent('pages/DialogWindow', (err) => {
+     if (err?.code) {
+       console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+       return;
+     }
+     console.info('Succeeded in loading the content.');
+     // 显示模态窗口。
+     (dialogWindowClass as window.Window).showWindow((err) => {
+       if (err?.code) {
+         console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
+         return;
+       }
+       console.info('Succeeded in showing the window.');
+     });
+   });
+   ```
        return;
      }
      console.info('Succeeded in moving the window.');
