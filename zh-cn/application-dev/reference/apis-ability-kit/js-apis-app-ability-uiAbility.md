@@ -276,7 +276,7 @@ onDestroy(): void | Promise&lt;void&gt;
   ```ts
   import { UIAbility } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-
+  
   export default class MyUIAbility extends UIAbility {
     async onDestroy() {
       hilog.info(0x0000, 'testTag', `onDestroy`);
@@ -539,7 +539,7 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
 
 > **说明：**
 >
-> 对于API version 18（不含18） 之前版本仅支持同步调用，从API version 18及后续版本可支持Promise异步调用。
+> 对于API version 18之前的版本，仅支持同步调用；API version 18及后续版本，支持Promise异步调用。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -577,7 +577,7 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
 
   ```ts
   import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
-
+  
   export default class MyUIAbility extends UIAbility {
     async setWant(wantParams: Record<string, Object>) {
       console.info('setWant start');
@@ -586,7 +586,7 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
       }
       console.info('setWant end');
     }
-
+  
     async onContinue(wantParams: Record<string, Object>) {
       console.info('onContinue');
       return this.setWant(wantParams).then(() => {
