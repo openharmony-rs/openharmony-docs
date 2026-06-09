@@ -11,7 +11,7 @@
 
 场景1：通过网络通信服务进行HTTPS连接。
 
-您的应用可以配置[Network Kit](../../network/http-request.md#配置证书校验)使用Device Certificate Kit的系统CA证书、用户CA证书对HTTPS证书链进行校验。具体配置方式请参考对应Kit的开发指导文档。
+您的应用可以参考[Network Kit配置证书校验](../../network/http-request.md#配置证书校验)内容，利用Device Certificate Kit的系统CA证书、用户CA证书，对HTTPS证书链进行校验。
 
 ![](figures/certificate_manager_ca_cert_case1.PNG)
 
@@ -52,7 +52,7 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
 - 商业CA证书：由正规的第三方商业数字证书认证机构（CA）颁发和运营的商用CA证书，具备公开权威公信力。
 - 自建CA证书：企业/组织自行搭建部署的私有数字证书颁发机构（CA）颁发的CA证书，一般用于企业/组织内网服务、测试环境等。
-- MDM（Mobile Device Management）应用：也称企业设备管理应用，指集成了MDM功能的应用，能够集中管理、监控和保护企业内的移动设备（如智能手机、平板电脑、笔记本电脑等）。它允许IT管理员远程配置设备、强制执行安全策略、部署应用程序，并确保企业数据的安全。具体请参考[MDM Kit](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/mdm-kit-intro)相关资料。
+- MDM（Mobile Device Management）应用：也称企业设备管理应用，指集成了MDM功能的应用，能够集中管理、监控和保护企业内的移动设备（如智能手机、平板电脑、笔记本电脑等）。它允许IT管理员远程配置设备、强制执行安全策略、部署应用程序，并确保企业数据的安全。具体请参考[MDM Kit](../../mdm/mdm-kit-intro)相关资料。
 - 企业设备：由企业MDM应用管理和控制的设备，该设备一般由企业进行采购并发放给企业员工进行日常办公。
 - BYOD（Bring Your Own Device）：自带设备办公，指一些企业允许员工携带自己平板或智能手机到公司，并使用这些设备接入办公环境。例如用户企业办公或者外来访客携带设备访问工厂、实验室等场景。
 
