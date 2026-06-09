@@ -35,6 +35,53 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    ArkTS-Dyn示例：
 
    <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->    
+   
+   ``` TypeScript
+   import { audio, audioHaptic } from '@kit.AudioKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   
+   let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.getAudioHapticManager();
+   
+   // ...
+     // 方法1：使用registerSource接口注册资源。
+     let audioUri = 'data/audioTest.wav'; // 此处仅作示例，实际使用时需要将文件替换为应用目标音频资源的Uri。
+     let hapticUri = 'data/hapticTest.json'; // 此处仅作示例，实际使用时需要将文件替换为应用目标振动资源的Uri。
+     let idForUri = 0;
+   
+     audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
+       console.info(`Succeeded in registering source, sourceId is ${value}.`);
+       idForUri = value;
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to register source. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+     // ...
+     // 方法2:使用registerSourceFromFd接口注册资源。
+     // 此处仅作示例,实际使用时需要将文件替换为应用rawfile目录下的对应文件。
+     let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg');
+     let audioFd: audioHaptic.AudioHapticFileDescriptor = {
+       fd: audioFile.fd,
+       offset: audioFile.offset,
+       length: audioFile.length,
+     };
+     // 此处仅作示例,实际使用时需要将文件替换为应用rawfile目录下的对应文件。
+     let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json');
+     let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
+       fd: hapticFile.fd,
+       offset: hapticFile.offset,
+       length: hapticFile.length,
+     };
+     audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
+       console.info(`Succeeded in registering source from fd, sourceId is ${value}.`);
+       idForFd = value;
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to register source from fd. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+   ```
 
    ArkTS-Sta示例：
 
