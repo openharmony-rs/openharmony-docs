@@ -13431,6 +13431,26 @@
 						"start_line":17
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestureAndMotionControl/GestureControl.ets",
+				"functions":[
+					{
+						"end_line":99,
+						"name":"gesture_simultaneously",
+						"start_line":84
+					},
+					{
+						"end_line":135,
+						"name":"gesture_openingclosing",
+						"start_line":100
+					},
+					{
+						"end_line":139,
+						"name":"gesture_motioncontrol",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
