@@ -43,47 +43,6 @@
    - 在调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)之前，建议设置模态窗口的大小和位置。
 
    <!-- @[dialog_window_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
-   
-   ``` TypeScript
-   // 2.模态窗口创建成功后，设置模态窗口的位置、大小及相关属性等。
-   dialogWindowClass.moveWindowTo(100, 100, (err) => {
-     if (err?.code) {
-   <!-- @[dialog_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
-   
-   ``` TypeScript
-   // 3.为模态窗口加载对应的目标页面。
-   dialogWindowClass.setUIContent('pages/DialogWindow', (err) => {
-     if (err?.code) {
-       console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-       return;
-     }
-     console.info('Succeeded in loading the content.');
-     // 显示模态窗口。
-     (dialogWindowClass as window.Window).showWindow((err) => {
-       if (err?.code) {
-         console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
-         return;
-       }
-       console.info('Succeeded in showing the window.');
-     });
-   });
-   ```
-       return;
-     }
-     console.info('Succeeded in moving the window.');
-     if (!dialogWindowClass) {
-       console.error('dialog_windowClass is null');
-       return;
-     }
-     dialogWindowClass.resize(500, 500, (err) => {
-       if (err?.code) {
-         console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
-         return;
-       }
-       console.info('Succeeded in changing the window size.');
-     });
-   });
-   ```
 
 3. 加载显示窗口的具体内容。  
 
