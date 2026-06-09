@@ -1237,7 +1237,7 @@ struct ImageExample3 {
 }
 ```
 
-![en-us_image_0000001607845173](figures/en-us_image_0000001607845173.gif)
+![en-us_image_0000001607845173](figures/skychange.gif)
 
 ### Example 5: Enabling the AI Image Analyzer
 
