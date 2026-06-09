@@ -1057,7 +1057,7 @@ predicates.in("AGE", [18, 20]);
 
 notIn(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
-将谓词配置为匹配数据字段为ValueType且值不在给定列表内的指定字段。该方法等同于SQL语句中的"NOT IN"。
+配置谓词以匹配数据表的field列中值不在给定的value集合内的字段。该方法等同于SQL语句中的"NOT IN"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
