@@ -273,7 +273,7 @@ Scroll() {
   LazyColumnLayout() {
     // ...
 
-    // 区域一：线性列表
+    // 区域一：线性布局
     LazyColumnLayout() {
       // ...
     }
@@ -305,7 +305,7 @@ Scroll() {
 <!-- @[lazy_layout_on_visible_indexes_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyColumnLayoutNestedLazyLayout.ets) -->
 
 ``` TypeScript
-// 区域一：线性列表
+// 区域一：线性布局
 LazyColumnLayout() {
   // ...
 }
@@ -655,7 +655,7 @@ export struct LazyColumnLayoutNestedLazyLayout {
               .fontColor(Color.Gray)
               .margin({ bottom: 8 })
 
-            // 区域一：线性列表
+            // 区域一：线性布局
             LazyColumnLayout() {
               LazyForEach(this.listData, (item: number) => {
                 Row() {
