@@ -64,6 +64,8 @@
 
 **解决措施**
 
+API24开始提供了AssetCompatibleCapability配置项支持应用配置自己是否支持高像素图片。
+
 如果应用需要获取高像素原图，应显式声明应用具备处理高像素图片的能力，并在后续处理流程中做好降采样、区域解码和内存管理。
 
 通过PhotoPicker获取图片时，可在[PhotoSelectOptions](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-class.md#photoselectoptions)中配置`assetCompatibleCapability`以声明具备高像素原图的处理能力。
