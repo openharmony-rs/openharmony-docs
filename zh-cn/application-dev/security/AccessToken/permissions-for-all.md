@@ -148,6 +148,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
 **起始版本**：8
 
 **变更信息**：从API 22开始，获取该权限后，增加支持P2P能力的使用。
@@ -243,6 +245,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
 **起始版本**：8
 
