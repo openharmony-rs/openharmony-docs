@@ -210,9 +210,9 @@
 | 文本对齐方式为text.TextAlign.JUSTIFY，最大行数为10，断词策略为text.WordBreak.BREAK_WORD。 | ![zh-cn_image_complexArkTsDemoJustify](figures/zh-cn_image_complexArkTsDemoJustify.png) | 
 | 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_ALL。 | ![zh-cn_image_0000002211603680](figures/zh-cn_image_0000002211603680.png) | 
 | 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_ALL。 | ![zh-cn_image_0000002246563845](figures/zh-cn_image_0000002246563845.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>不设置语言偏好。段落无连字符“-”断词效果。 | ![ts_word_break_hyphen_locale_undefined.jpg](figures/ts_word_break_hyphen_locale_undefined.jpg) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-gb（英式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现英式语言环境断词效果。 | ![ts_word_break_hyphen_local_en-gb.jpg](figures/ts_word_break_hyphen_local_en-gb.jpg) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-us（美式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现美式语言环境断词效果。 | ![ts_word_break_hyphen_local_en-us.jpg](figures/ts_word_break_hyphen_local_en-us.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>不设置语言偏好。段落无连字符“-”断词效果。 | ![ts-hyphen-locale-undefined.jpg](figures/ts-hyphen-locale-undefined.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-gb（英式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现英式语言环境断词效果。 | ![ts-hyphen-local-en-gb.jpg](figures/ts-hyphen-local-en-gb.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-us（美式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现美式语言环境断词效果。 | ![ts-hyphen-local-en-us.jpg](figures/ts-hyphen-local-en-us.jpg) | 
 
 
 ## 多样式文本绘制与显示
@@ -883,10 +883,10 @@ struct Font08 {
 具体示意效果如下所示：
 | 样式设置（垂直对齐） | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） | 
 | -------- | -------- |
-| 基线对齐（默认）| ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_verticalAlignment_baseline.jpg) | 
-| 顶部对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_top.jpg) | 
-| 居中对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_center.jpg) | 
-| 底部对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_bottom.jpg) | 
+| 基线对齐（默认）| ![verticalAlignment-baseline](figures/verticalAlignment-baseline.jpg) | 
+| 顶部对齐 | ![verticalAlignment-top](figures/verticalAlignment-top.jpg) | 
+| 居中对齐 | ![verticalAlignment-center](figures/verticalAlignment-center.jpg) | 
+| 底部对齐 | ![verticalAlignment-bottom](figures/verticalAlignment-bottom.jpg) | 
 
 ### 示例四（上下标文本）
 这里以下标样式为例，呈现上下标文本排版特性。
@@ -1035,8 +1035,8 @@ struct Font08 {
 具体示意效果如下所示：
 | 样式设置（上下标） | 示意效果 | 
 | -------- | -------- |
-| 上标文本 | ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_subscript.jpg) | 
-| 下标文本 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_superscript.jpg) | 
+| 上标文本 | ![subscript](figures/subscript.jpg) | 
+| 下标文本 | ![superscript](figures/superscript.jpg) | 
 
 ### 示例五（高对比度）
 这里以高对比度为例，呈现高对比度文字的绘制与显示。

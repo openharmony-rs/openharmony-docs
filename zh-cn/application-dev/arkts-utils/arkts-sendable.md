@@ -179,7 +179,7 @@ struct enumusage {
 
 **SharedHeap与LocalHeap关系图**
 
-![zh-cn_image_0000002001521153](figures/zh-cn_image_0000002001521153.png)
+![Sendable-Communication-Process](figures/Sendable-Communication-Process.png)
 
 各个并发实例的LocalHeap是隔离的。SharedHeap是进程级别的堆，可以被所有并发实例共享，但SharedHeap不能引用LocalHeap中的对象。
 

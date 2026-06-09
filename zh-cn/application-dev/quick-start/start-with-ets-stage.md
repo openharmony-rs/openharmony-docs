@@ -155,7 +155,7 @@
 
 3. 在编辑窗口右上角的侧边工具栏，点击Previewer，打开预览器。第一个页面效果如下图所示：
 
-   ![zh-cn_image_0000001311334976](figures/zh-cn_image_0000001311334976.png)
+   ![Previewer](figures/Previewer.png)
 
 
 ## 构建第二个页面
@@ -335,9 +335,9 @@
    }
    ```
 
-3. 打开Index.ets文件，点击预览器中的![zh-cn_image_0000001311015192](figures/zh-cn_image_0000001311015192.png)按钮进行刷新。效果如下图所示：
+3. 打开Index.ets文件，点击预览器中的![refresh](figures/refresh.png)按钮进行刷新。效果如下图所示：
 
-   ![zh-cn_image_0000001364254729](figures/zh-cn_image_0000001364254729.png)
+   ![Page-redirection-return](figures/Page-redirection-return.png)
 
 
 ## 使用真机运行应用
@@ -348,8 +348,8 @@
 
    ![signConfig](figures/signConfig.png)
 
-3. 在编辑窗口右上角的工具栏，点击![zh-cn_image_0000001364054485](figures/zh-cn_image_0000001364054485.png)按钮运行。效果如下图所示：
+3. 在编辑窗口右上角的工具栏，点击![start](figures/start.png)按钮运行。效果如下图所示：
 
-   ![zh-cn_image_0000001364254729](figures/zh-cn_image_0000001364254729.png)
+   ![Page-redirection-return](figures/Page-redirection-return.png)
 
 恭喜您已经使用ArkTS语言开发（Stage模型）完成了第一个OpenHarmony应用，快来探索更多的OpenHarmony功能吧。

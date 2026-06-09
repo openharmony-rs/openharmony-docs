@@ -12,7 +12,7 @@
 
 | 一帧切换效果 | 一镜到底效果 |
 | ------ | ---- |
-| ![zh-cn_image_0000001599644876](figures/zh-cn_image_0000001599644876.gif)|![zh-cn_image_0000001599644877](figures/zh-cn_image_0000001599644877.gif) |
+| ![Frame-transition-effect](figures/Frame-transition-effect.gif)|![one-shot-style](figures/one-shot-style.gif) |
 
 一镜到底的动效有多种实现方式，在实际开发过程中，应根据具体场景选择合适的方法进行实现。
 
@@ -193,7 +193,7 @@ export default struct Post {
 }
 ```
 
-![zh-cn_image_0000001600653160](figures/zh-cn_image_0000001600653160.gif)
+![one-shot-style-container](figures/one-shot-style-container.gif)
 
 ## 新建容器并跨容器迁移组件
 
@@ -1926,7 +1926,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-![zh-cn_image_BindSheetNodeTransfer](figures/zh-cn_image_BindSheetNodeTransfer.gif)
+![BindSheetNodeTransfer](figures/BindSheetNodeTransfer.gif)
 
 ## 使用geometryTransition共享元素转场
 
@@ -2002,7 +2002,7 @@ struct IfElseGeometryTransition {
 }
 ```
 
-![zh-cn_image_0000001599644878](figures/zh-cn_image_0000001599644878.gif)
+![one-shot-style-page](figures/one-shot-style-page.gif)
 
 ### geometryTransition结合模态转场使用
 
@@ -2190,6 +2190,6 @@ export default struct Post {
 
 效果为点击主页的头像后，弹出模态页面显示个人信息，并且两个页面之间的头像做一镜到底动效：
 
-![zh-cn_image_0000001597320327](figures/zh-cn_image_0000001597320327.gif)
+![one-shot-style-avatar](figures/one-shot-style-avatar.gif)
 
 <!--RP1--><!--RP1End-->
