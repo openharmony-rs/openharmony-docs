@@ -2091,9 +2091,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 从<!--RP21-->OpenHarmony 5.0.0<!--RP21End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
-<!--RP18-->
-
-<!--RP18End-->
+<!--RP18--><!--RP18End-->
 
 **参数：**
 
@@ -2172,9 +2170,7 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 从<!--RP21-->OpenHarmony 5.0.0<!--RP21End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
-<!--RP18-->
-
-<!--RP18End-->
+<!--RP18--><!--RP18End-->
 
 **参数：**
 
@@ -2255,9 +2251,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 
 从<!--RP21-->OpenHarmony 5.0.0<!--RP21End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
-<!--RP19-->
-
-<!--RP19End-->
+<!--RP19--><!--RP19End-->
 
 
 **参数：**
@@ -11595,7 +11589,7 @@ try {
 
 setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback: AsyncCallback&lt;void&gt;): void
 
-设置主窗口<!--RP20-->三键导航栏<!--RP20End-->、状态栏的属性，使用callback异步回调，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
+设置主窗口<!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性，使用callback异步回调，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
 
 子窗口调用后不生效。
 
