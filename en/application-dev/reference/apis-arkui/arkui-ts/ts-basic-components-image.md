@@ -1237,7 +1237,7 @@ struct ImageExample3 {
 }
 ```
 
-![skychange](figures/skychange.gif)
+![en-us_image_0000001607845173](figures/en-us_image_0000001607845173.gif)
 
 ### Example 5: Enabling the AI Image Analyzer
 
@@ -2552,4 +2552,4 @@ struct ImageExample {
 }
 ```
 
-![sandBox](figures/antialiased.PNG)
+![antialiased](figures/antialiased.PNG)
