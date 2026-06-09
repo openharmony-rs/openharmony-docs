@@ -186,7 +186,7 @@ export default {
             this.ctx.stroke();
             // 右上
             this.ctx.beginPath();
-            //线条相交处内角和外角的距离
+            // 线条相交处内角和外角的距离
             this.ctx.lineJoin = 'miter';
             this.ctx.miterLimit = 3;
             this.ctx.moveTo(400, 100);
@@ -288,7 +288,7 @@ export default {
             this.ctx.setLineDash([0, 0]);
             // 画圆
             this.ctx.arc(300, 250, 150, 0, 6.28);
-            //进行边框绘制
+            // 进行边框绘制
             this.ctx.stroke();
         } else if (e.newValue == 'value3') {
             this.ctx.clearRect(0, 0, 600, 500);
