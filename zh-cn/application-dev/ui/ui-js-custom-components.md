@@ -102,7 +102,7 @@
 
 
 **图1** 自定义组件的效果
-![zh-cn_image_0000001070693737](figures/Custom-Components-example.png)
+![zh-cn_image_0000001070693737](figures/zh-cn_image_0000001070693737.png)
 
 
 ## 相关实例
