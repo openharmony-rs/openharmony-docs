@@ -87,8 +87,8 @@
                loadPictureTask.onReceiveData(notice);
                taskpool.execute(loadPictureTask).then((res: object) => {
                  iconItemSourceList = res as IconItemSource[];
+                 this.message = 'success';
                })
-               this.message = 'success';
              })
          }
          .width('100%')

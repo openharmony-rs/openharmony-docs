@@ -386,6 +386,7 @@ import { UIUtils } from '@kit.ArkUI';
 @ComponentV2
 struct Index {
   @Local message: string = 'Hello World';
+  // 替换成 pb: test_pb = test_pb.create(); 则用于observeProtobuf返回Sendable对象的场景
   @Local layout: LayoutS = new LayoutS();
 
   build() {
