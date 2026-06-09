@@ -10,7 +10,7 @@
 
 ### Entry；数据条目
 
-剪贴板记录中的一种数据表示形式。指PasteDataRecord对象中包含的单一MIME类型及其对应数据内容的组合，通过addEntry方法向记录对象添加多个entry以实现同一剪贴板内容的多格式数据表示(如同时包含纯文本、HTML、URI等不同类型)，粘贴时通过getData接口按MIME类型读取对应的entry数据，用于支持富媒体内容的多格式粘贴场景。
+剪贴板记录中的一种数据表示形式，对应同一份数据的不同格式，用于支持富文本、多媒体内容的多格式粘贴场景以及应用间的数据兼容性传递。
 
 ## M
 
@@ -28,13 +28,9 @@
 
 ### Record；记录
 
-剪贴板数据内容的最小组成单元。每个Record包含一种MIME类型及其对应的数据值,多个Record组成完整的剪贴板数据对象(PasteData),用于支持单一剪贴板内容承载多种数据格式,实现复杂数据的复制粘贴场景。在C API中通过OH_UdmfRecord表示,在ArkTS API中通过PasteDataRecord表示。
+剪贴板数据内容的最小组成单元。对应复制数据的不同内容片段。用于支持单一剪贴板内容承载多种数据格式,实现复杂数据的复制粘贴场景。在C API中通过OH_UdmfRecord表示,在ArkTS API中通过PasteDataRecord表示。
 
 ## U
-
-### UDMF；统一数据管理框架
-
-统一数据管理框架(Unified Data Management Framework),OpenHarmony系统中用于统一管理跨应用、跨设备数据交互的标准框架。通过UDMF定义的数据结构(如OH_UdmfData、OH_UdmfRecord)实现剪贴板数据的标准化封装和解析,确保不同应用间数据传递的一致性和互操作性,是剪贴板等数据传递场景的基础数据规范。
 
 ### URI；统一资源标识符
 
