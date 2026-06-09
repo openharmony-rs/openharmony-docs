@@ -276,7 +276,7 @@
       }
     }
     // ...
-    // getMainWindowSnapshot需要使用ohos.permission.CUSTOM_SCREEN_CAPTURE 权限。
+    // getMainWindowSnapshot需要使用ohos.permission.CUSTOM_SCREEN_CAPTURE权限。
     private async requestCapturePermission(): Promise<boolean> {
       try {
         const hostContext = this.getUIContext().getHostContext();
