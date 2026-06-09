@@ -41,4 +41,4 @@ OH_ImageSource_Info结构体内容和操作方式如下：
 
 **所在头文件：** [image_source_native.h](capi-image-source-native-h.md)
 
-**相关开发指导：** [使用Image_NativeModule完成图片解码](../../media/image/image-source-c.md)、[图片区域解码与下采样(C/C++)](../../media/image/image-region-and-downsampling-c.md)、[使用Image_NativeModule完成动图解码](../../media/image/image-animated-decoding-c.md)、[使用Image_NativeModule完成HDR图片解码](../../media/image/image-hdr-decoding-c.md)
+**相关开发指导：** [使用Image_NativeModule完成图片解码](../../media/image/image-source-c.md)、[图片区域解码与下采样(C/C++)](../../media/image/image-region-and-downsampling-c.md)
