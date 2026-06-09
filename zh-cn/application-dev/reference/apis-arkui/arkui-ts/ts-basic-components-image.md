@@ -1764,7 +1764,7 @@ struct ImageContentExample {
 }
 ```
 
-![imageContent](figures/zh-cn_image_view9.gif)
+![switchingBetweenDifferentTypes](figures/switchingBetweenDifferentTypes.gif)
 
 ### 示例12（配置隐私隐藏）
 
@@ -1789,7 +1789,7 @@ struct ImageExample {
 }
 ```
 
-![imageContent](figures/zh-cn_image_view10.gif)
+![securingSensitiveInformation](figures/securingSensitiveInformation.gif)
 
 ### 示例13（为图片设置扫光效果）
 
@@ -2685,4 +2685,4 @@ struct ImageExample {
 }
 ```
 
-![sandBox](figures/antialiased.PNG)
+![antialiased](figures/antialiased.PNG)
