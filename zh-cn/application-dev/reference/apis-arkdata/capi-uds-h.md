@@ -69,7 +69,7 @@
 | [const char* OH_UdsAppItem_GetIconId(OH_UdsAppItem* pThis)](#oh_udsappitem_geticonid) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取图片ID。 |
 | [const char* OH_UdsAppItem_GetLabelId(OH_UdsAppItem* pThis)](#oh_udsappitem_getlabelid) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取标签ID。 |
 | [const char* OH_UdsAppItem_GetBundleName(OH_UdsAppItem* pThis)](#oh_udsappitem_getbundlename) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取bundle名称。 |
-| [const char* OH_UdsAppItem_GetAbilityName(OH_UdsAppItem* pThis)](#oh_udsappitem_getabilityname) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中ability名称。 |
+| [const char* OH_UdsAppItem_GetAbilityName(OH_UdsAppItem* pThis)](#oh_udsappitem_getabilityname) | 从桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)实例中获取ability名称。 |
 | [int OH_UdsAppItem_SetId(OH_UdsAppItem* pThis, const char* appId)](#oh_udsappitem_setid) | 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的应用ID。 |
 | [int OH_UdsAppItem_SetName(OH_UdsAppItem* pThis, const char* appName)](#oh_udsappitem_setname) | 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的应用名称。 |
 | [int OH_UdsAppItem_SetIconId(OH_UdsAppItem* pThis, const char* appIconId)](#oh_udsappitem_seticonid) | 设置桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的图片ID。 |
@@ -92,7 +92,7 @@
 | [int OH_UdsArrayBuffer_Destroy(OH_UdsArrayBuffer* buffer)](#oh_udsarraybuffer_destroy) | 销毁ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)的实例对象。 |
 | [int OH_UdsArrayBuffer_SetData(OH_UdsArrayBuffer* buffer, unsigned char* data, unsigned int len)](#oh_udsarraybuffer_setdata) | 设置ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)对象的数据内容。 |
 | [int OH_UdsArrayBuffer_GetData(OH_UdsArrayBuffer* buffer, unsigned char** data, unsigned int* len)](#oh_udsarraybuffer_getdata) | 从ArrayBuffer类型[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)实例中获取用户自定义的ArrayBuffer数据内容。 |
-| [OH_UdsContentForm* OH_UdsContentForm_Create()](#oh_udscontentform_create) | 创建内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)指针及实例对象。 |
+| [OH_UdsContentForm* OH_UdsContentForm_Create()](#oh_udscontentform_create) | 创建内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdsContentForm_Destroy](capi-uds-h.md#oh_udscontentform_destroy)销毁实例对象，否则会导致内存泄漏。 |
 | [void OH_UdsContentForm_Destroy(OH_UdsContentForm* pThis)](#oh_udscontentform_destroy) | 销毁内容卡片类型数据[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)指针指向的实例对象。 |
 | [const char* OH_UdsContentForm_GetType(OH_UdsContentForm* pThis)](#oh_udscontentform_gettype) | 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取类型ID。 |
 | [int OH_UdsContentForm_GetThumbData(OH_UdsContentForm* pThis, unsigned char** thumbData, unsigned int* len)](#oh_udscontentform_getthumbdata) | 从内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)中获取图片数据。 |
@@ -242,8 +242,6 @@ const char* OH_UdsPlainText_GetAbstract(OH_UdsPlainText* pThis)
 | 类型        | 说明                                                         |
 | ----------- | ------------------------------------------------------------ |
 | const char* | 输入有效入参时返回纯文本摘要信息的字符串指针，否则返回nullptr。 |
-
-OH_UdsPlainText
 
 ### OH_UdsPlainText_SetContent()
 
@@ -1257,7 +1255,7 @@ int OH_UdsPixelMap_SetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelma
 | 参数项                                          | 描述                                                         |
 | ----------------------------------------------- | ------------------------------------------------------------ |
 | [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)* pThis | 表示指向像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例的指针。 |
-| OH_PixelmapNative* pixelmapNative               | 表示指向像素图片[OH_PixelmapNative](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_antialiasinglevel)实例的指针 |
+| OH_PixelmapNative* pixelmapNative               | 表示指向像素图片[OH_PixelmapNative](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_antialiasinglevel)实例的指针。 |
 
 **返回：**
 
@@ -1306,7 +1304,7 @@ int OH_UdsArrayBuffer_Destroy(OH_UdsArrayBuffer* buffer)
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行的错误码。请参阅错误码定义[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+| int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
 
 ### OH_UdsArrayBuffer_SetData()
 
@@ -1333,7 +1331,7 @@ int OH_UdsArrayBuffer_SetData(OH_UdsArrayBuffer* buffer, unsigned char* data, un
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行的错误码。请参阅错误码定义[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+| int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
 
 ### OH_UdsArrayBuffer_GetData()
 
@@ -1360,7 +1358,7 @@ int OH_UdsArrayBuffer_GetData(OH_UdsArrayBuffer* buffer, unsigned char** data, u
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行的错误码。请参阅错误码定义[OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
+| int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
 
 ### OH_UdsContentForm_Create()
 
@@ -1370,7 +1368,7 @@ OH_UdsContentForm* OH_UdsContentForm_Create()
 
 **描述**
 
-创建内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)指针及实例对象。
+创建内容卡片类型[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)指针及实例对象。当不再需要使用指针时，请使用[OH_UdsContentForm_Destroy](capi-uds-h.md#oh_udscontentform_destroy)销毁实例对象，否则会导致内存泄漏。
 
 **起始版本：** 14
 
@@ -1449,7 +1447,7 @@ int OH_UdsContentForm_GetThumbData(OH_UdsContentForm* pThis, unsigned char** thu
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行的错误码。请参阅错误码定义[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。<br>若返回UDMF_ERR，表示出现了内部系统错误。 |
+| int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。<br>若返回UDMF_ERR，表示出现了内部系统错误。 |
 
 ### OH_UdsContentForm_GetDescription()
 
@@ -1526,7 +1524,7 @@ int OH_UdsContentForm_GetAppIcon(OH_UdsContentForm* pThis, unsigned char** appIc
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行的错误码。请参阅错误码定义[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。<br>若返回UDMF_ERR，表示出现了内部系统错误。 |
+| int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。<br>若返回UDMF_ERR，表示出现了内部系统错误。 |
 
 ### OH_UdsContentForm_GetAppName()
 
@@ -1603,7 +1601,7 @@ int OH_UdsContentForm_SetThumbData(OH_UdsContentForm* pThis, const unsigned char
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行的错误码。请参阅错误码定义[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效的参数。 |
+| int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
 
 ### OH_UdsContentForm_SetDescription()
 
@@ -1629,7 +1627,7 @@ int OH_UdsContentForm_SetDescription(OH_UdsContentForm* pThis, const char* descr
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行的错误码。请参阅错误码定义[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效的参数。 |
+| int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
 
 ### OH_UdsContentForm_SetTitle()
 
@@ -1655,7 +1653,7 @@ int OH_UdsContentForm_SetTitle(OH_UdsContentForm* pThis, const char* title)
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行的错误码。请参阅错误码定义[OH_UdsContentForm](capi-udmf-oh-udscontentform.md)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效的参数。 |
+| int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
 
 ### OH_UdsContentForm_SetAppIcon()
 
@@ -1682,7 +1680,7 @@ int OH_UdsContentForm_SetAppIcon(OH_UdsContentForm* pThis, const unsigned char* 
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效的参数。 |
+| int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
 
 ### OH_UdsContentForm_SetAppName()
 
@@ -1708,7 +1706,7 @@ int OH_UdsContentForm_SetAppName(OH_UdsContentForm* pThis, const char* appName)
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效的参数。 |
+| int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
 
 ### OH_UdsContentForm_SetLinkUri()
 
@@ -1734,7 +1732,7 @@ int OH_UdsContentForm_SetLinkUri(OH_UdsContentForm* pThis, const char* linkUri)
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效的参数。 |
+| int  | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
 
 
 ### OH_UdsPlainText_GetDetails()
@@ -2123,7 +2121,7 @@ int OH_UdsDetails_Remove(OH_UdsDetails* pThis, const char* key)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效的参数。 |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
 
 ### OH_UdsDetails_Clear()
 
@@ -2147,7 +2145,7 @@ int OH_UdsDetails_Clear(OH_UdsDetails* pThis)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效的参数。 |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
 
 ### OH_UdsDetails_SetValue()
 
@@ -2173,7 +2171,7 @@ int OH_UdsDetails_SetValue(OH_UdsDetails* pThis, const char* key, const char* va
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效的参数。 |
+| int | 返回执行的错误码。请参阅错误码定义[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。<br>若返回UDMF_E_OK，表示执行成功。<br>若返回UDMF_E_INVALID_PARAM，表示传入了无效参数。 |
 
 ### OH_UdsDetails_GetValue()
 
