@@ -35,7 +35,7 @@ serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRig
 
 **ArkTS-Dyn起始版本**：19
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **需要权限：**  ohos.permission.MANAGE_USB_CONFIG
 
