@@ -7,14 +7,13 @@
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
 
-
 如果您的应用服务器需要为您的应用颁发证书凭据，并在您的应用访问服务器接口时通过证书凭据进行身份认证，则您的应用可以使用本功能进行应用证书凭据的安装和使用。
 
 应用证书凭据功能为应用提供了应用级别的证书凭据（包含证书链和私钥）的安全存储和管理能力，且支持应用间的访问隔离。
 
 您的应用可以读取已安装应用证书凭据的证书链，及使用对应私钥进行签名，但不能读取私钥数据（保护私钥数据的安全）。应用证书凭据的公私钥对存储在[Universal Keystore Kit](../UniversalKeystoreKit/huks-overview.md)。
 
-![](figures/zh-cn_certificate_manager_app_credential.PNG)
+![](figures/certificate_manager_app_credential.PNG)
 
 > **说明**
 >
@@ -51,8 +50,10 @@
   
   > **说明**
   >
-  > 本开发指导需使用API version 11及以上版本SDK。<br>
-  > 应用证书凭据功能当前仅支持RSA、ECC及SM2算法类型的证书和私钥。<br>
+  > 本开发指导需使用API version 11及以上版本SDK。
+  >
+  > 应用证书凭据功能当前仅支持RSA、ECC及SM2算法类型的证书和私钥。
+  >
   > installPrivateCertificate接口当前只支持P12格式的密钥库文件。
 
 4. 使用应用证书凭据。
@@ -65,11 +66,11 @@
 
   - 使用应用证书凭据的私钥对数据进行签名。
   
-    1）调用init接口初始化签名会话，传入安装接口返回的KeyUri和签名算法参数（如：填充方式和摘要算法），并返回签名会话的句柄handle。
+    1. 调用init接口初始化签名会话，传入安装接口返回的KeyUri和签名算法参数（如：填充方式和摘要算法），并返回签名会话的句柄handle。
     
-    2）调用update接口传入签名会话的句柄handle和待签名的数据。如果待签名的数据量比较大，可以调用多次update接口，每次传入部分数据。
+    2. 调用update接口传入签名会话的句柄handle和待签名的数据。如果待签名的数据量比较大，可以调用多次update接口，每次传入部分数据。
 
-    3）调用finish接口结束签名会话并获取签名数据。
+    3. 调用finish接口结束签名会话并获取签名数据。
 
   > **说明**
   >
@@ -81,88 +82,4 @@
 
 ## 样例代码
 
-   <!-- @[certificate_management_development_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerPrivateCredSample.ets) -->
-   
-   ``` TypeScript
-   import { certificateManager } from '@kit.DeviceCertificateKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { util } from '@kit.ArkTS';
-   
-   async function privateCredSample() {
-     /* 安装的凭据数据需要业务赋值，本例数据非凭据数据。 */
-     let keystoreBase64Str = 'MIIMJgIBAzCCC+AGCSqGSIb3DQEHAaCCC9EEggvNMIILyTCCBW4GCSqGSIb3DQEH' +
-       // ...
-       'G615kxCjeS6uixCHuij3pgQUhHiChcSeohRPrVkVPSPmYr9tjAYCAgQA';
-     /* 凭据数据转换为Uint8Array，凭据数据为der格式 */
-     let keystore: Uint8Array = new util.Base64Helper().decodeSync(keystoreBase64Str);
-   
-     /* 安装凭据对应的密码，业务赋值。 */
-     let keystorePwd: string = 'huawei';
-     let appKeyUri: string = '';
-     try {
-       /* 安装应用证书凭据。 */
-       const res: certificateManager.CMResult = await certificateManager.installPrivateCertificate(keystore, keystorePwd, 'testPriCredential');
-       appKeyUri = (res.uri != undefined) ? res.uri : '';
-       console.info(`InstallPrivateCertificate success appKeyUri: ${appKeyUri}`);
-     } catch (err) {
-       let e: BusinessError = err as BusinessError;
-       console.error(`Failed to install private certificate. Code: ${e.code}, message: ${e.message}`);
-     }
-   
-     try {
-       /* 获取应用证书凭据。 */
-       let res: certificateManager.CMResult = await certificateManager.getPrivateCertificate(appKeyUri);
-       if (res === undefined || res.credential == undefined) {
-         console.error('The result of getting private certificate is undefined.');
-       } else {
-         let credential = res.credential;
-         console.info('Succeeded in getting private certificate.');
-       }
-     } catch (err) {
-       console.error(`Failed to get private certificate. Code: ${err.code}, message: ${err.message}`);
-     }
-   
-     try {
-       /* srcData为待签名、验签的数据，业务自行赋值。 */
-       let srcData: Uint8Array = new Uint8Array([
-         0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01,
-       ]);
-   
-       /* 构造签名的属性参数。 */
-       const signSpec: certificateManager.CMSignatureSpec = {
-         purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN,
-         padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
-         digest: certificateManager.CmKeyDigest.CM_DIGEST_SHA256
-       };
-   
-       /* 签名。 */
-       const signHandle: certificateManager.CMHandle = await certificateManager.init(appKeyUri, signSpec);
-       await certificateManager.update(signHandle.handle, srcData);
-       const signResult: certificateManager.CMResult = await certificateManager.finish(signHandle.handle);
-   
-       /* 构造验签的属性参数。 */
-       const verifySpec: certificateManager.CMSignatureSpec = {
-         purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY,
-         padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
-         digest: certificateManager.CmKeyDigest.CM_DIGEST_SHA256
-       };
-   
-       /* 验签。 */
-       const verifyHandle: certificateManager.CMHandle = await certificateManager.init(appKeyUri, verifySpec);
-       await certificateManager.update(verifyHandle.handle, srcData);
-       const verifyResult = await certificateManager.finish(verifyHandle.handle, signResult.outData);
-       console.info('Succeeded in signing and verifying.');
-     } catch (err) {
-       let e: BusinessError = err as BusinessError;
-       console.error(`Failed to sign or verify. Code: ${e.code}, message: ${e.message}`);
-     }
-   
-     try {
-       /* 删除应用证书凭据。 */
-       await certificateManager.uninstallPrivateCertificate(appKeyUri);
-     } catch (err) {
-       let e: BusinessError = err as BusinessError;
-       console.error(`Failed to uninstall private certificate. Code: ${e.code}, message: ${e.message}`);
-     }
-   }
-   ```
+<!-- @[certificate_management_development_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerPrivateCredSample.ets) -->

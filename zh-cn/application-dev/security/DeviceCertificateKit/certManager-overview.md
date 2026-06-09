@@ -13,12 +13,11 @@
 
 证书管理服务不仅限于存储证书凭据，还可以存储CA证书，用于对其他实体（设备、服务器、个人）的证书凭据进行校验。例如您的应用使用预置的CA证书对应用服务器的HTTPS证书链进行可信校验。
 
-![](figures/zh-cn_certificate_manager_intro.PNG)
-
+![](figures/certificate_manager_intro.PNG)
 
 ## 功能架构
 
-![](figures/zh-cn_certificate_manager_function_arch.PNG)
+![](figures/certificate_manager_function_arch.PNG)
 
 证书管理服务提供了如下类型证书的管理功能：
 - CA证书：
@@ -41,7 +40,6 @@
 | 系统证书凭据  |   操作系统   | 由用户管理       |安装/卸载/查看| 拉起安装对话框 | 设备连接企业内部WIFI/VPN服务时进行接入认证。 |
 | 用户证书凭据  |   设备用户   |  由用户管理      |安装/卸载/取消授权/查看| 拉起安装/授权对话框<br>读取和签名 | 通过双向HTTPS登录企业内部服务器。 |
 | 应用证书凭据  |   应用   |  由应用管理  | NA   | 读取/安装/卸载/签名 |应用服务器认证应用身份。 |
-
 
 ## 约束与限制
 

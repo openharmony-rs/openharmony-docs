@@ -23,14 +23,16 @@
 
 ## 整体架构
 
-![](figures/zh-cn_device-certificate-kit-framework.png)
+![](figures/device-certificate-kit-framework.png)
 
 [ArkWeb](../../web/Readme-CN.md)和[Network Kit](../../network/Readme-CN.md)等网络通信相关的服务基于Device Certificate Kit提供证书链校验、双向HTTPS认证等功能。
 
 证书管理服务在对数字证书凭据的安装和使用时，依赖[Universal Keystore Kit](../UniversalKeystoreKit/huks-overview.md)的密钥存储和管理能力。
 
-> **说明：**
-> 建议优先使用高级别的API对证书进行处理，例如进行HTTPS网络通信时对服务器的证书链进行合法性校验，优先使用Network Kit的证书链校验和SSL Pinning能力。<br>
+> **说明**
+>
+> 建议优先使用高级别的API对证书进行处理，例如进行HTTPS网络通信时对服务器的证书链进行合法性校验，优先使用Network Kit的证书链校验和SSL Pinning能力。
+>
 > 只有当您的应用需要自定义证书链校验逻辑（如校验证书主题、证书扩展字段等）或访问更底层的安全协议功能时，才应直接使用Device Certificate Kit。
 
 ## 约束与限制

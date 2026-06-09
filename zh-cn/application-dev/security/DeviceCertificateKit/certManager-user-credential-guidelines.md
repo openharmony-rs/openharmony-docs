@@ -11,24 +11,22 @@
 
 用户证书凭据功能提供了用户级别的证书凭据（包含证书链和私钥）的安全存储、授权管理和签名能力。用户证书凭据的公私钥对存储在[Universal Keystore Kit](../UniversalKeystoreKit/huks-overview.md)。
 
-![](figures/zh-cn_certificate_manager_user_credential_arch.PNG)
+![](figures/certificate_manager_user_credential_arch.PNG)
 
 用户证书凭据归属于设备的用户，可以由设备的用户通过系统设置应用进行安装和管理，应用也可以通过API拉起证书管理服务的对话框，引导用户完成安装。
 
-应用在使用用户证书凭据前，需要调用证书管理服务API获取用户的授权。<br>
-您的应用在获得用户授权后，可以读取对应用户证书凭据的证书链，及使用对应私钥进行签名，但不能读取私钥数据（保护私钥数据的安全）。
+应用在使用用户证书凭据前，需要调用证书管理服务API获取用户的授权。
+
+应用在获得用户授权后，可以读取对应用户证书凭据的证书链，及使用对应私钥进行签名，但不能读取私钥数据（保护私钥数据的安全）。
 
 > **说明**
 >
 > 用户证书凭据在用户授权后，可以被其他应用访问和使用，如您的应用安装的证书凭据不希望其他应用访问，请使用“[应用证书凭据](./certManager-private-credential-guidelines.md)”功能。
 
-
 ## 约束与限制
    - 用户证书凭据的安装和签名、验签操作，依赖[密钥管理服务](../UniversalKeystoreKit/huks-overview.md)（HUKS）能力。
 
-
 ## 开发步骤
-
 
 1. 权限申请和声明。
 
@@ -49,17 +47,19 @@
    import { JSON, util } from '@kit.ArkTS';
    ```
 
-3. 安装用户证书凭据
+3. 安装用户证书凭据。
 
    调用openInstallCertificateDialog接口可拉起用户证书凭据安装的对话框（certType参数设置为CREDENTIAL_USER），安装页面需要用户输入正确的密钥库文件密码。
 
    > **说明**
    >
-   > 本开发指导需使用API version 23及以上版本SDK。<br>
-   > 用户证书凭据功能当前仅支持RSA、ECC及SM2算法类型的证书和私钥。<br>
+   > 本开发指导需使用API version 23及以上版本SDK。
+   >
+   > 用户证书凭据功能当前仅支持RSA、ECC及SM2算法类型的证书和私钥。
+   >
    > openInstallCertificateDialog接口当前只支持P12格式的密钥库文件。
 
-4. 请求用户授权使用用户证书凭据
+4. 请求用户授权使用用户证书凭据。
 
    您的应用在首次使用用户证书凭据前，需要调用openAuthorizeDialog接口获取用户的授权。该接口会拉起用户证书凭据授权对话框，并展示当前用户已安装的用户证书凭据列表，用户选择指定的凭据并确认授权。
 
@@ -91,114 +91,4 @@
 
 ## 样例代码
 
-   <!-- @[certificate_management_user_cred_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCredSample.ets) -->
-   
-   ``` TypeScript
-   import { certificateManager } from '@kit.DeviceCertificateKit';
-   import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { common } from '@kit.AbilityKit';
-   import { UIContext } from '@kit.ArkUI';
-   import { JSON, util } from '@kit.ArkTS';
-   
-   function userCredSample(): void {
-     /* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
-     let context: common.Context = new UIContext().getHostContext() as common.Context;
-   
-     /* 安装的凭据数据需要业务赋值，本例数据非凭据数据。 */
-     let keystoreBase64Str = 'MIIMJgIBAzCCC+AGCSqGSIb3DQEHAaCCC9EEggvNMIILyTCCBW4GCSqGSIb3DQEH' +
-       // ...
-       'G615kxCjeS6uixCHuij3pgQUhHiChcSeohRPrVkVPSPmYr9tjAYCAgQA';
-     /* 凭据数据转换为Uint8Array，凭据数据为der格式 */
-     let keystore: Uint8Array = new util.Base64Helper().decodeSync(keystoreBase64Str);
-   
-     try {
-       /* 安装用户证书凭据 */
-       certificateManagerDialog.openInstallCertificateDialog(
-         context,
-         certificateManagerDialog.CertificateType.CREDENTIAL_USER,
-         certificateManagerDialog.CertificateScope.CURRENT_USER,
-         keystore
-       ).then((keyUri: string) => {
-         console.info(`Installing user credential successful, keyUri: ${keyUri}`);
-         /* 请求用户授权使用用户证书凭据 */
-         requestUserCredAuth();
-       }).catch((error: BusinessError) => {
-         console.error(`Failed to install user credential. Code: ${error.code}, message: ${error.message}`);
-       });
-     } catch (error) {
-       console.error(`Failed to install user credential. Code: ${error.code}, message: ${error.message}`);
-     }
-     return;
-   }
-   
-   function requestUserCredAuth() {
-     /* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
-     let context: common.Context = new UIContext().getHostContext() as common.Context;
-     try {
-       certificateManagerDialog.openAuthorizeDialog(context, {
-         certTypes: [certificateManagerDialog.CertificateType.CREDENTIAL_USER]
-       }).then((authUri: certificateManagerDialog.CertReference) => {
-         console.info(`Auth user credential successful. AuthUri: ${authUri.keyUri}`);
-         /* 读取用户证书凭据。 */
-         getUserCredInfo(authUri.keyUri);
-         /* 使用用户证书凭据进行签名验签。 */
-         signAndVerify(authUri.keyUri);
-       }).catch((error: BusinessError) => {
-         console.error(`Failed to auth user credential. Code: ${error.code}, message: ${error.message}`);
-       });
-     } catch (error) {
-       console.error(`Failed to auth user credential. Code: ${error.code}, message: ${error.message}`);
-     }
-   }
-   
-   function getUserCredInfo(keyUri: string): void {
-     try {
-       certificateManager.getPublicCertificate(keyUri)
-         .then((result: certificateManager.CMResult) => {
-           console.info(`Get user credential info successful. Info: ${JSON.stringify(result.credential)}`);
-         }).catch((error: BusinessError) => {
-           console.error(`Failed to get user credential info. Code: ${error.code}, message: ${error.message}`);
-         });
-     } catch (error) {
-       console.error(`Failed to get user credential info. Code: ${error.code}, message: ${error.message}`);
-     }
-   }
-   
-   async function signAndVerify(keyUri: string): Promise<void> {
-     try {
-       /* srcData为待签名、验签的数据，业务自行赋值。 */
-       let srcData: Uint8Array = new Uint8Array([
-         0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01,
-       ]);
-   
-       /* 构造签名的属性参数。 */
-       const signSpec: certificateManager.CMSignatureSpec = {
-         purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN,
-         padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
-         digest: certificateManager.CmKeyDigest.CM_DIGEST_SHA256
-       };
-   
-       /* 签名。 */
-       const signHandle: certificateManager.CMHandle = await certificateManager.init(keyUri, signSpec);
-       await certificateManager.update(signHandle.handle, srcData);
-       const signResult: certificateManager.CMResult = await certificateManager.finish(signHandle.handle);
-   
-       /* 构造验签的属性参数。 */
-       const verifySpec: certificateManager.CMSignatureSpec = {
-         purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY,
-         padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
-         digest: certificateManager.CmKeyDigest.CM_DIGEST_SHA256
-       };
-   
-       /* 验签。 */
-       const verifyHandle: certificateManager.CMHandle = await certificateManager.init(keyUri, verifySpec);
-       await certificateManager.update(verifyHandle.handle, srcData);
-       const verifyResult = await certificateManager.finish(verifyHandle.handle, signResult.outData);
-       console.info('Succeeded in signing and verifying.');
-     } catch (err) {
-       let e: BusinessError = err as BusinessError;
-       console.error(`Failed to sign or verify. Code: ${e.code}, message: ${e.message}`);
-     }
-   }
-   ```
+<!-- @[certificate_management_user_cred_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCredSample.ets) -->
