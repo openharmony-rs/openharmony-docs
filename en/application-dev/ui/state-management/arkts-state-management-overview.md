@@ -18,7 +18,7 @@ In the declarative UI framework, the UI is the execution result of the applicati
 
 Custom components have variables. A variable must be decorated by a decorator whenever the re-rendering of the UI depends on this variable. Otherwise, the UI is rendered only at initialization and will not be updated. The following figure shows the relationship between the state and view (UI).
 
-![en-us_image_0000001562352677](figures/en-us_image_0000001562352677.png)
+![en-us_image_0000001562352677](figures/State-UI-relationship.png)
 
 - View (UI): UI rendering, which is visual representation of the UI description in the **build** method and \@Builder decorated method.
 
