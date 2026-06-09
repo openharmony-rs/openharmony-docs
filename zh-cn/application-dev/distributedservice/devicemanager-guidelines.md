@@ -369,8 +369,8 @@ ArkTS-Sta: bindTarget(deviceId: string, bindParam: Record&lt;string, int | strin
    ArkTS-Sta示例：
 
    <!-- @[bind_target](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/DistributedAppDev/DistributedAuthentication-sta/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    authenticateDevice(device: distributedDeviceManager.DeviceBasicInfo): void {
      if (this.deviceManager === undefined) {
        logger.error('deviceManager has not initialized');
