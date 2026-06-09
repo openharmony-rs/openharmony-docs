@@ -600,13 +600,13 @@ ArkTS-Sta: onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;
    ArkTS-Sta示例：
 
    <!-- @[release_device_manager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/DistributedAppDev/DistributedAuthentication-sta/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    releaseDeviceManager(): void {
      if (this.deviceManager === undefined) {
        return;
      }
-
+   
      this.deviceManager!.offDeviceStateChange();
      this.discoverSuccessCallback = () => {};
      this.discoverFailureCallback = () => {};
