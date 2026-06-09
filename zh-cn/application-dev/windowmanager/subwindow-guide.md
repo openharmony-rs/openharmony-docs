@@ -122,6 +122,28 @@
    此处以加载显示独立子窗的具体内容为例。示例代码如下：
 
    <!-- @[independent_subWindow_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   // 3.为子窗口加载对应的目标页面。
+   independentWindowClass.setUIContent('pages/IndependentSubWindow', (err) => {
+     if (err?.code) {
+       console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+       return;
+     }
+     console.info('Succeeded in loading the content.');
+     if (!independentWindowClass) {
+       console.error('independent_windowClass is null');
+       return;
+     }
+     // 显示子窗口。
+     independentWindowClass.showWindow((err) => {
+       if (err?.code) {
+         console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
+         return;
+       }
+       console.info('Succeeded in showing the window.');
+     });
+   ```
 
 4. 销毁子窗口。
 
