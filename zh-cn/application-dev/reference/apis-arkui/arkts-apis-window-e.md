@@ -38,7 +38,7 @@
 | TYPE_CUTOUT                      | 1    | 表示挖孔区域。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示侧边返回手势区域。当前所有设备均无此类型避让区域。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示固定态软键盘区域。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域或car设备的工具栏区域。当三键导航显示时，底部导航避让区域始终存在。<!--Del-->OpenHarmony各设备不支持此能力。<!--DelEnd--> <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<!--RP14--><!--RP14End-->|
+| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域<!--RP15--><!--RP15End-->。当三键导航显示时，底部导航避让区域始终存在。<!--Del-->OpenHarmony各设备不支持此能力。<!--DelEnd--> <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<!--RP14--><!--RP14End-->|
 | TYPE_FLOAT_NAVIGATION | 5    | 表示三键导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End--> <br>**系统能力：** SystemCapability.Window.SessionManager<br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。|
 
 <!--RP13-->
