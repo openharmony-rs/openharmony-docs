@@ -1168,21 +1168,6 @@ call.getCallTransferInfo(type, number)
 | TRANSFER_DISABLE | 0    | 禁用转移。 |
 | TRANSFER_ENABLE  | 1    | 启用转移。 |
 
-## CallTransferType
-
-呼叫转移类型。
-
-**起始版本**: 26.0.0
-
-**系统能力**：SystemCapability.Telephony.CallManager
-
-| 名称                        | 值   | 说明         |
-| --------------------------- | ---- | ------------ |
-| TRANSFER_TYPE_UNCONDITIONAL | 0    | 无条件转移。   |
-| TRANSFER_TYPE_BUSY          | 1    | 忙线转移。     |
-| TRANSFER_TYPE_NO_REPLY      | 2    | 无回复转移。   |
-| TRANSFER_TYPE_NOT_REACHABLE | 3    | 无法访问转移。 |
-
 ## CallTransferResult
 
 呼叫转移结果。

@@ -4887,6 +4887,20 @@ IP多媒体系统调用模式。
 | endHour<sup>9+</sup>     | number                                               | 否   | 结束时间的小时数。 |
 | endMinute<sup>9+</sup>   | number                                               | 否   | 结束时间的分钟数。 |
 
+## CallTransferType<sup>8+</sup>  
+
+呼叫转移类型。  
+
+**系统接口：** 此接口为系统接口。  
+
+**系统能力**：SystemCapability.Telephony.CallManager  
+
+| 名称                        | 值   | 说明         |  
+| --------------------------- | ---- | ------------ |  
+| TRANSFER_TYPE_UNCONDITIONAL | 0    | 无条件转移。   |  
+| TRANSFER_TYPE_BUSY          | 1    | 忙线转移。     |  
+| TRANSFER_TYPE_NO_REPLY      | 2    | 无回复转移。   |  
+| TRANSFER_TYPE_NOT_REACHABLE | 3    | 无法访问转移。 |
 
 ## CallTransferSettingType<sup>8+</sup>
 
