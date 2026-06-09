@@ -46,6 +46,8 @@ createEffect(): VisualEffect
 
 Creates a **VisualEffect** instance, which can be used to apply multiple visual effects to a component.
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 24.
+
 **System capability**: SystemCapability.Graphics.Drawing
 
 **Return value**
@@ -108,6 +110,50 @@ struct UIEffectFilterExample {
         .width('100%')
     }
 }
+```
+![zh-ch_image_UIEffect_blur.png](figures/zh-ch_image_UIEffect_blur.png)
+
+### hdrBrightnessRatio<sup>24+</sup>
+hdrBrightnessRatio(ratio: number): Filter
+
+Applies an HDR brightness effect to a component. Nesting is not recommended. Forcible nesting may cause overexposure.
+
+The brightness effect takes effect only when the HDR rendering pipeline is enabled. In some scenarios, HDR cannot be enabled even if the HDR rendering pipeline is triggered. For example, the device hardware does not support HDR.
+
+The maximum supported brightness boost multiple is calculated as the device's current maximum brightness divided by its SDR reference white luminance.
+
+>  **NOTE**
+>
+> Using the HDR brightness boost effect may cause certain performance and power consumption overheads. It is recommended that this effect be used in scenarios where HDR images or videos are already available.
+
+**Required permissions**: ohos.permission.HDR_BRIGHTNESS
+<!--Del-->System applications do not need to apply for this permission.<!--DelEnd-->
+
+**System capability**: SystemCapability.Graphics.Drawing
+
+**Parameters**
+| Name        | Type                 | Mandatory| Description                      |
+| ------------- | --------------------- | ---- | ------------------------- |
+| ratio  | number         | Yes  | Brightness boost multiple. Value range: [1.0, maximum supported brightness boost multiple of the device]. Values less than **1.0** default to **1.0**. Values equal to **1.0** trigger no processing. Values greater than **1.0** will attempt to trigger the HDR rendering pipeline. Values exceeding the device's maximum supported brightness boost multiple will be clamped to this maximum value.|
+
+**Return value**
+
+| Type             | Description                              |
+| ----------------- | --------------------------------- |
+| [Filter](#filter) | Returns a filter with the HDR brightness effect.|
+
+**Error codes:**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message|
+| ------- | --------------------------------------------|
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+filter.hdrBrightnessRatio(2.0)
 ```
 
 ## VisualEffect
