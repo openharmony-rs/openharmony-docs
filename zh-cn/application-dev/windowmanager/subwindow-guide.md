@@ -152,3 +152,14 @@
    此处以销毁独立子窗为例。示例代码如下：
 
    <!-- @[destroy_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
+   independentWindowClass.destroyWindow((err) => {
+     if (err?.code) {
+       console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
+       return;
+     }
+     console.info('Succeeded in destroying the window.');
+   });
+   ```
