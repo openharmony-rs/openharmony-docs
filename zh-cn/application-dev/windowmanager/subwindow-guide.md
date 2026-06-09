@@ -26,6 +26,31 @@
 
    <!-- @[create_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
    
+   ``` TypeScript
+   let windowStage_: window.WindowStage | undefined = undefined;
+   let subWindowClass: window.Window | undefined = undefined;
+   // ...
+         // 获取windowStage
+         windowStage_ = AppStorage.get('windowStage');
+         // 创建应用子窗口。
+         if (windowStage_ == null) {
+           console.error('Failed to create the subwindow. Cause: windowStage_ is null');
+         } else {
+           // 1.使用createSubWindow接口创建子窗
+           windowStage_.createSubWindow('SubWindow', (err, data) => {
+             if (err?.code) {
+               console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
+             }
+             subWindowClass = data;
+             if (!subWindowClass) {
+               console.error('sub_windowClass is null');
+               return;
+             }
+             console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+             // ...
+           })
+   ```
+   
    <!-- @[create_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
 
 2. 设置子窗口属性。
