@@ -43,6 +43,28 @@
    - 在调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)之前，建议设置模态窗口的大小和位置。
 
    <!-- @[dialog_window_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   // 2.模态窗口创建成功后，设置模态窗口的位置、大小及相关属性等。
+   dialogWindowClass.moveWindowTo(100, 100, (err) => {
+     if (err?.code) {
+       console.error('Failed to move the window. Cause:' + JSON.stringify(err));
+       return;
+     }
+     console.info('Succeeded in moving the window.');
+     if (!dialogWindowClass) {
+       console.error('dialog_windowClass is null');
+       return;
+     }
+     dialogWindowClass.resize(500, 500, (err) => {
+       if (err?.code) {
+         console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
+         return;
+       }
+       console.info('Succeeded in changing the window size.');
+     });
+   });
+   ```
 
 3. 加载显示窗口的具体内容。  
 
