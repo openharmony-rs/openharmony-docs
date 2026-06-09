@@ -44,7 +44,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | HUKS_EXT_CRYPTO_TAG_UID | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200004    | 表示调用方的uid。 |
 | HUKS_EXT_CRYPTO_TAG_PURPOSE | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200005    | 表示证书链对应密钥的使用类型，具体类型详见[CertificatePurpose](../apis-device-certificate-kit/js-apis-certManager.md#certificatepurpose22)。 |
 | HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200007    | 表示获取资源ID所需的信息，格式和内容由厂商自定义。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| HUKS_EXT_CRYPTO_TAG_ABILITY_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200008    | 表示密钥管理扩展自定义PIN码弹窗相关Ability列表信息，在注册密钥管理扩展时，同步注册，详见[provider注册示例](../../security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-arkts.md)。注册了自定义弹窗，则在PIN码认证时允许拉起自定义弹窗，进行PIN码认证等操作。<br>HUKS_EXT_CRYPTO_TAG_ABILITY_NAME中的JSON列表由多个JSON对象组成，每个JSON对象包含两个字段：AbilityName和index。字段应遵循以下要求：<br> 1.AbilityName：长度范围为1~128字节。<br> 2.index：其值为resourceId，最大长度为512字节。允许单个CryptoExtension下该字段为空，为空时传输空字符串，该字段不允许重复。在搜索时优先匹配index对应的UIExtensionAbility，当不存在时返回index为空的UIExtensionAbility。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| HUKS_EXT_CRYPTO_TAG_ABILITY_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200008    | 表示密钥管理扩展自定义PIN码弹窗相关Ability列表信息，在注册密钥管理扩展时，同步注册，详见[provider注册示例](../../security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-arkts.md)。注册了自定义弹窗，则在PIN码认证时允许拉起自定义弹窗，进行PIN码认证等操作。<br>HUKS_EXT_CRYPTO_TAG_ABILITY_INFO中的JSON列表由多个JSON对象组成，每个JSON对象包含两个字段：AbilityName和index。字段应遵循以下要求：<br> 1.AbilityName：长度范围为1~128字节。<br> 2.index：其值为resourceId，最大长度为512字节。允许单个CryptoExtension下该字段为空，为空时传输空字符串，该字段不允许重复。在搜索时优先匹配index对应的UIAbility，当不存在时返回index为空的UIAbility。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 | HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200009    | 表示CryptoExtensionAbility所属的HAP Bundle名称。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## HuksExternalCryptoParam
@@ -76,11 +76,11 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
 
 注册指定的外部provider。使用Promise异步回调。
 
-若需使用自定义PIN码弹窗，在注册provider时需要同步注册UIExtensionAbility，注意事项如下：
+若需使用自定义PIN码弹窗，在注册provider时需要同步注册UIAbility，注意事项如下：
 
-1. 自定义ability通过UIExtensionAbility扩展实现。
+1. 自定义ability通过UIAbility扩展实现。
 
-2. 注册的UIExtensionAbility可以通过证书管理kit提供的[openUKeyAuthDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenukeyauthdialog22)接口统一拉起。
+2. 注册的UIAbility可以通过证书管理kit提供的[openUKeyAuthDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenukeyauthdialog22)接口统一拉起。
   
 3. 系统拉起自定义弹窗时会通过want接口向开发者传递以下参数：
 
@@ -88,12 +88,12 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
     - appUid：number参数类型，通过want.parameters传输。"appUid"字段为应用id，开发者可以通过该字段完成应用隔离。
     - keyUri：string参数类型其值为resourceId，通过want.parameters传输，表示Ukey证书的索引。
   
-4. 开发者实现UIExtensionAbility时，应用需根据指定场景返回对应的错误码：
+4. 开发者实现UIAbility时，应用需根据指定场景返回对应的错误码：
 
-    - 用户取消操作时，返回-1001。
-    - keyUri指定的证书/密钥不存在时，返回-1008。
-    - 参数格式错误时，返回-1014。
-    - 其余失败场景返回错误码-1000，成功时返回0。
+    - 用户取消操作时，返回[ERROR_OPERATION_CANCELED](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode)。
+    - keyUri指定的证书/密钥不存在时，返回[ERROR_OPERATION_FAILED](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode)。
+    - 参数格式错误时，返回[ERROR_PARAMETER_VALIDATION_FAILED](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode)。
+    - 其余失败场景返回错误码[ERROR_GENERIC](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatedialogerrorcode)，成功时返回0。
 
 **需要权限：** ohos.permission.CRYPTO_EXTENSION_REGISTER
 
@@ -104,7 +104,7 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ------- | ---- | -------|
 | providerName | string | 是   | provider名称，最大长度为128。建议包含厂商信息，全局唯一，不要包含个人联系方式等敏感数据。<br>最多支持注册10个provider。 |
-| params  | Array<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 是  | 操作时需传入的参数，必选TAG：[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](#huksexternalcryptotag)，表示ability的名字，根据业务自己内部定义按照实际填写。<br>从API版本26.0.0开始，可选TAG：[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](#huksexternalcryptotag)，以JSON列表的形式传入PIN码认证自定义弹窗UIExtensionAbility的名字以及包名。 |
+| params  | Array<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | 是  | 操作时需传入的参数，必选TAG：[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](#huksexternalcryptotag)，表示ability的名字，根据业务自己内部定义按照实际填写。<br>从API版本26.0.0开始，可选TAG：[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](#huksexternalcryptotag)，以JSON列表的形式传入PIN码认证自定义弹窗UIAbility的名字以及包名。 |
 
 **返回值：**
 
