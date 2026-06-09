@@ -9,7 +9,7 @@
 
 ## 概述
 
-定义摘要算法API。
+定义摘要算法接口。
 
 **引用文件：** <CryptoArchitectureKit/crypto_digest.h>
 
@@ -27,18 +27,18 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) | OH_CryptoDigest | 定义摘要结构体。 |
+| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) | OH_CryptoDigest | 摘要结构体，表示摘要上下文。 |
 
 ### 函数
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest **ctx)](#oh_cryptodigest_create) | 根据给定的算法名称创建一个摘要实例。<br> 注意：创建的资源必须通过[OH_DigestCrypto_Destroy](capi-crypto-digest-h.md#oh_digestcrypto_destroy)销毁。 |
+| [OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest **ctx)](#oh_cryptodigest_create) | 根据给定的算法名称创建摘要上下文。 |
 | [OH_Crypto_ErrCode OH_CryptoDigest_Update(OH_CryptoDigest *ctx, Crypto_DataBlob *in)](#oh_cryptodigest_update) | 更新摘要数据。 |
-| [OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *out)](#oh_cryptodigest_final) | 完成摘要计算。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。 |
-| [uint32_t OH_CryptoDigest_GetLength(OH_CryptoDigest *ctx)](#oh_cryptodigest_getlength) | 获取摘要长度。 |
-| [const char *OH_CryptoDigest_GetAlgoName(OH_CryptoDigest *ctx)](#oh_cryptodigest_getalgoname) | 获取摘要算法名称。 |
-| [void OH_DigestCrypto_Destroy(OH_CryptoDigest *ctx)](#oh_digestcrypto_destroy) | 销毁摘要实例。 |
+| [OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *out)](#oh_cryptodigest_final) | 完成摘要操作，输出摘要结果。 |
+| [uint32_t OH_CryptoDigest_GetLength(OH_CryptoDigest *ctx)](#oh_cryptodigest_getlength) | 获取摘要结果的长度。 |
+| [const char *OH_CryptoDigest_GetAlgoName(OH_CryptoDigest *ctx)](#oh_cryptodigest_getalgoname) | 获取摘要上下文的算法名称。 |
+| [void OH_DigestCrypto_Destroy(OH_CryptoDigest *ctx)](#oh_digestcrypto_destroy) | 销毁摘要上下文。 |
 
 ## 函数说明
 
@@ -50,7 +50,7 @@ OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest *
 
 **描述**
 
-根据给定的算法名称创建一个摘要实例。<br> 注意：创建的资源必须通过[OH_DigestCrypto_Destroy](capi-crypto-digest-h.md#oh_digestcrypto_destroy)销毁。
+根据给定的算法名称创建摘要上下文。
 
 **起始版本：** 12
 
@@ -58,14 +58,19 @@ OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest *
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | 用于生成摘要实例的算法名称。<br> 例如"SHA256"。 |
-| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) **ctx | 指向摘要实例的指针。 |
+| const char *algoName | [in] 摘要算法名称，不能为NULL。取值如下：- 从API version 12开始支持"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"、"MD5"、"SM3"。- 从API version 22开始支持"SHA3-256"、"SHA3-384"、"SHA3-512"。 |
+| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) **ctx | [out] 指向摘要上下文指针的指针。ctx不能为NULL，*ctx必须为NULL。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | CRYPTO_SUCCESS：操作成功。<br>         CRYPTO_INVALID_PARAMS：参数无效。<br>         CRYPTO_NOT_SUPPORTED：操作不支持。<br>         CRYPTO_MEMORY_ERROR：内存错误。<br>         CRYPTO_OPERTION_ERROR：调用三方算法库API出错。 |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul><br>         <li>CRYPTO_SUCCESS：操作成功。</li><br>         <li>CRYPTO_INVALID_PARAMS：ctx为NULL、algoName为NULL、或algoName不是支持的摘要算法名称。</li><br>         <li>CRYPTO_NOT_SUPPORTED：不支持的操作或算法。</li><br>         <li>CRYPTO_MEMORY_ERROR：内存分配失败。</li><br>         <li>CRYPTO_OPERTION_ERROR：摘要操作失败。</li><br>         </ul> |
+
+**参考：**
+
+[OH_CryptoDigest_Update](capi-crypto-digest-h.md#oh_cryptodigest_update) 更新摘要数据。
+
 
 ### OH_CryptoDigest_Update()
 
@@ -83,18 +88,18 @@ OH_Crypto_ErrCode OH_CryptoDigest_Update(OH_CryptoDigest *ctx, Crypto_DataBlob *
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) *ctx | 指向摘要实例。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | 传入的消息。 |
+| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) *ctx | [in] 摘要上下文。不能为NULL。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *in | [in] 待计算摘要的数据。不能为NULL。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | CRYPTO_SUCCESS：操作成功。<br>         CRYPTO_INVALID_PARAMS：参数无效。<br>         CRYPTO_NOT_SUPPORTED：操作不支持。<br>         CRYPTO_MEMORY_ERROR：内存错误。<br>         CRYPTO_OPERTION_ERROR：调用三方算法库API出错。 |
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul><br>         <li>CRYPTO_SUCCESS：操作成功。</li><br>         <li>CRYPTO_INVALID_PARAMS：ctx或in为NULL。</li><br>         <li>CRYPTO_NOT_SUPPORTED：不支持的操作或算法。</li><br>         <li>CRYPTO_MEMORY_ERROR：内存操作失败。</li><br>         <li>CRYPTO_OPERTION_ERROR：摘要更新失败。</li><br>         </ul> |
 
 **参考：**
 
-[OH_CryptoDigest_Final](capi-crypto-digest-h.md#oh_cryptodigest_final)
+[OH_CryptoDigest_Final](capi-crypto-digest-h.md#oh_cryptodigest_final) 完成摘要操作，输出摘要结果。
 
 
 ### OH_CryptoDigest_Final()
@@ -105,7 +110,7 @@ OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *o
 
 **描述**
 
-完成摘要计算。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。
+完成摘要操作，输出摘要结果。
 
 **起始版本：** 12
 
@@ -113,19 +118,14 @@ OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *o
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) *ctx | 指向摘要实例。 |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | 返回的Md的计算结果。 |
+| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) *ctx | [in] 摘要上下文。不能为NULL。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *out | [out] 指向用于存储摘要结果的Crypto_DataBlob结构体的指针。不能为NULL。调用前需将out初始化为{0}，不要预分配out->data内存。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | CRYPTO_SUCCESS：操作成功。<br>         CRYPTO_INVALID_PARAMS：参数无效。<br>         CRYPTO_NOT_SUPPORTED：操作不支持。<br>         CRYPTO_MEMORY_ERROR：内存错误。<br>         CRYPTO_OPERTION_ERROR：调用三方算法库API出错。 |
-
-**参考：**
-
-[OH_CryptoDigest_Update](capi-crypto-digest-h.md#oh_cryptodigest_update)
-
+| [OH_Crypto_ErrCode](capi-crypto-common-h.md#oh_crypto_errcode) | <ul><br>         <li>CRYPTO_SUCCESS：操作成功。</li><br>         <li>CRYPTO_INVALID_PARAMS：ctx或out为NULL。</li><br>         <li>CRYPTO_NOT_SUPPORTED：不支持的操作或算法。</li><br>         <li>CRYPTO_MEMORY_ERROR：内存操作失败。</li><br>         <li>CRYPTO_OPERTION_ERROR：摘要完成操作失败。</li><br>         </ul> |
 
 ### OH_CryptoDigest_GetLength()
 
@@ -135,7 +135,7 @@ uint32_t OH_CryptoDigest_GetLength(OH_CryptoDigest *ctx)
 
 **描述**
 
-获取摘要长度。
+获取摘要结果的长度。
 
 **起始版本：** 12
 
@@ -143,13 +143,13 @@ uint32_t OH_CryptoDigest_GetLength(OH_CryptoDigest *ctx)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) *ctx | 指向摘要实例。 |
+| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) *ctx | [in] 摘要上下文。不能为NULL。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| uint32_t | 返回摘要长度。<br>        如果输入参数ctx为NULL，则返回401，其他情况下返回0。 |
+| uint32_t | 返回摘要结果的字节长度。 特殊说明：如果输入参数ctx为NULL，返回401；其他失败场景返回0。 |
 
 ### OH_CryptoDigest_GetAlgoName()
 
@@ -159,7 +159,7 @@ const char *OH_CryptoDigest_GetAlgoName(OH_CryptoDigest *ctx)
 
 **描述**
 
-获取摘要算法名称。
+获取摘要上下文的算法名称。
 
 **起始版本：** 12
 
@@ -167,13 +167,13 @@ const char *OH_CryptoDigest_GetAlgoName(OH_CryptoDigest *ctx)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) *ctx | 指向摘要实例。 |
+| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) *ctx | [in] 摘要上下文。不能为NULL。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| const char * | 返回摘要算法名称。 |
+| const char * | 返回摘要算法名称，不需要调用者释放，在上下文销毁后不可使用。 |
 
 ### OH_DigestCrypto_Destroy()
 
@@ -183,7 +183,7 @@ void OH_DigestCrypto_Destroy(OH_CryptoDigest *ctx)
 
 **描述**
 
-销毁摘要实例。
+销毁摘要上下文。
 
 **起始版本：** 12
 
@@ -191,6 +191,6 @@ void OH_DigestCrypto_Destroy(OH_CryptoDigest *ctx)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) *ctx | 指向摘要实例。 |
+| [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) *ctx | [in] 摘要上下文。 |
 
 

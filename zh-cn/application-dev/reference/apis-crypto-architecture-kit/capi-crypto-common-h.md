@@ -9,7 +9,7 @@
 
 ## 概述
 
-定义通用API接口。
+定义加解密通用的数据结构和错误码。
 
 **引用文件：** <CryptoArchitectureKit/crypto_common.h>
 
@@ -33,14 +33,14 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_Crypto_ErrCode](#oh_crypto_errcode) | OH_Crypto_ErrCode | 加解密错误返回码枚举。 |
-| [Crypto_CipherMode](#crypto_ciphermode) | Crypto_CipherMode | 定义加解密操作类型。 |
+| [OH_Crypto_ErrCode](#oh_crypto_errcode) | OH_Crypto_ErrCode | 枚举错误码。 |
+| [Crypto_CipherMode](#crypto_ciphermode) | Crypto_CipherMode | 定义加解密模式。 |
 
 ### 函数
 
 | 名称 | 描述 |
 | -- | -- |
-| [void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)](#oh_crypto_freedatablob) | 释放dataBlob数据。 |
+| [void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)](#oh_crypto_freedatablob) | 释放数据Blob的内存。 |
 
 ## 枚举类型说明
 
@@ -52,19 +52,19 @@ enum OH_Crypto_ErrCode
 
 **描述**
 
-加解密错误返回码枚举。
+枚举错误码。
 
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_SUCCESS = 0 | 表示操作成功。 |
-| CRYPTO_INVALID_PARAMS = 401 | 输入参数不合法。 |
-| CRYPTO_NOT_SUPPORTED = 801 | 不支持的函数或算法。 |
-| CRYPTO_MEMORY_ERROR = 17620001 | 内存错误。 |
-| CRYPTO_PARAMETER_CHECK_FAILED = 17620003 | 参数检查失败。<br>**起始版本：** 20 |
+| CRYPTO_SUCCESS = 0 | 表示操作成功。<br>**起始版本：** 12 |
+| CRYPTO_INVALID_PARAMS = 401 | 表示输入参数无效。<br>**起始版本：** 12 |
+| CRYPTO_NOT_SUPPORTED = 801 | 表示不支持的功能或算法。<br>**起始版本：** 12 |
+| CRYPTO_MEMORY_ERROR = 17620001 | 表示内存操作失败。<br>**起始版本：** 12 |
+| CRYPTO_PARAMETER_CHECK_FAILED = 17620003 | 表示参数校验失败。<br>**起始版本：** 20 |
 | CRYPTO_INVALID_CALL = 17620004 | 表示无效的函数调用。<br>**起始版本：** 26.0.0 |
-| CRYPTO_OPERTION_ERROR = 17630001 | 表示加解密操作错误。 |
+| CRYPTO_OPERTION_ERROR = 17630001 | 表示加解密操作错误。<br>**起始版本：** 12 |
 
 ### Crypto_CipherMode
 
@@ -74,14 +74,14 @@ enum Crypto_CipherMode
 
 **描述**
 
-定义加解密操作类型。
+定义加解密模式。
 
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_ENCRYPT_MODE = 0 | 加密操作。 |
-| CRYPTO_DECRYPT_MODE = 1 | 解密操作。 |
+| CRYPTO_ENCRYPT_MODE = 0 | 表示加密操作。<br>**起始版本：** 12 |
+| CRYPTO_DECRYPT_MODE = 1 | 表示解密操作。<br>**起始版本：** 12 |
 
 
 ## 函数说明
@@ -94,7 +94,7 @@ void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)
 
 **描述**
 
-释放dataBlob数据。
+释放数据Blob的内存。
 
 **起始版本：** 12
 
@@ -102,6 +102,6 @@ void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *dataBlob | 需要释放的dataBlob数据。 |
+| [Crypto_DataBlob](capi-cryptocommonapi-crypto-datablob.md) *dataBlob | [in] 待释放的数据Blob。 |
 
 
