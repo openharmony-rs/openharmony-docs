@@ -204,7 +204,9 @@ struct ChildComponentB {
 4. 当第二个（最后一个）实例被销毁时，复用池也被销毁。其中的所有回收组件被删除。
 5. 如果稍后创建拥有组件的新实例，则会创建新的复用池。
 
-注意：`shared`所有权与`static`类属性不同。全局复用池有跨实例的引用计数，而非永久单例。
+> **说明：**
+>
+> `shared`所有权与`static`类属性不同。全局复用池有跨实例的引用计数，而非永久单例。
 
 **`"perInstance"`**：拥有@Component/@ComponentV2的每个实例都有自己的复用池实例。复用池的生命周期与其拥有组件实例的生命周期相同。当拥有组件被销毁时，其复用池和其中的所有回收组件也被销毁。
 
@@ -1055,12 +1057,12 @@ ReusableLeaf aboutToReuse       // 从EntryComp的复用池中取出
 `preRender`用于提前创建可复用组件实例并将其放入复用池，后续创建时可直接复用。
 
 ```typescript
-import { UIUtils } from '@kit.ArkUI';
+import { UIUtils, IReusableInfo } from '@kit.ArkUI';
 
 @ReusableV2
 @ComponentV2
 struct ReusableComponent {
-  @Require @Param param: number;
+  @Param param: number = 8;
 
   aboutToAppear() {
     console.info('ReusableComponent aboutToAppear');
@@ -1078,7 +1080,7 @@ struct ReusableComponent {
 
 @Builder 
 function preRenderBuilder() {
-  ReusableComponent({ param: 0 })
+  ReusableComponent()
 }
 
 @Entry
@@ -1091,40 +1093,71 @@ struct Index {
     const pool = UIUtils.getCustomComponentContext(this).getReusePool();
     pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder.bind(this)), 1)
       .then(() => {
-        this.onUIFullyLoaded = true;
+        console.info('ReusableComponent preRender completes');
       });
   }
 
+  checkPool() {
+    // 获取全局复用池内组件数量
+    const reusePool = UIUtils.getCustomComponentContext(this).getReusePool();
+    const reusableInfo: IReusableInfo = reusePool!.getReusableInfo(ReusableComponent) as IReusableInfo;
+    console.info(`ReusableComponent reuse pool count=${reusableInfo.count}`);
+  }
+
   build() {
-    Column() {
+    Column({ space: 5 }) {
+      Button('Switch')
+        .onClick(() => {
+          // 切换触发组件复用
+          this.onUIFullyLoaded = !this.onUIFullyLoaded;
+        })
+        .width(100)
+      Button('Check pool')
+        .onClick(() => {
+          // 检查复用池大小
+          this.checkPool();
+        })
+        .width(100)
       CompA({ showFullUI: this.onUIFullyLoaded })
     }
+    .width('100%')
   }
 }
 
 @ComponentV2
 struct CompA {
   @Require @Param showFullUI: boolean;
-  @Local param: number = 8;
 
   build() {
     if (this.showFullUI) {
-      ReusableComponent({ param: this.param })
+      ReusableComponent()
     }
   }
 }
 ```
 
-![arkts-global-reuse-prerender.png](./figures/arkts-global-reuse-prerender.png)
+![arkts-global-reuse-prerender.gif](./figures/arkts-global-reuse-prerender.gif)
 
 执行序列：
 
-1. 启动时，`Index.aboutToAppear()`通过`UIUtils.getCustomComponentContext(this).getReusePool()`获取池并调用`preRender`。
-2. `preRender`作为空闲任务异步执行：它调用@Builder函数，创建`ReusableComponent`实例。
-3. 预渲染的`ReusableComponent`被回收到`Index`的复用池中。
-4. 设置`onUIFullyLoaded = true`，这会触发`CompA`的重新渲染。
-5. `CompA`的if条件变为true。框架创建`ReusableComponent`时，能找到`Index`上的全局复用池，并取出预渲染的实例。
-6. `aboutToReuse`触发，组件被复用，无需全新创建。
+1. 启动时，`Index.aboutToAppear()`通过`UIUtils.getCustomComponentContext(this).getReusePool()`获取池并调用`preRender`。`preRender`作为空闲任务异步执行：它调用@Builder函数，创建`ReusableComponent`实例。
+2. 预渲染的`ReusableComponent`被回收到`Index`的复用池中。预渲染完成打印日志。
+   ```plaintext
+   ReusableComponent preRender completes
+   ```
+3. 点击`Check pool`按钮检查全局复用池大小，打印日志，当前复用池大小为1。
+   ```plaintext
+   ReusableComponent reuse pool count=1
+   ```
+4. 点击`Switch`按钮设置`onUIFullyLoaded = true`，这会触发`CompA`的重新渲染。
+5. `CompA`的if条件变为true。框架创建`ReusableComponent`时，能找到`Index`上的全局复用池，并取出预渲染的实例。`aboutToAppear`触发，组件被复用，无需重新创建，然后执行build展开。
+   ```plaintext
+   ReusableComponent aboutToAppear
+   ```
+6. 再次点击`Check pool`按钮检查全局复用池大小，打印日志，当前复用池大小减少到0，表示预渲染的组件被使用并取出复用池。
+   ```plaintext
+   ReusableComponent reuse pool count=0
+   ```
 
 >**说明：**
 >
