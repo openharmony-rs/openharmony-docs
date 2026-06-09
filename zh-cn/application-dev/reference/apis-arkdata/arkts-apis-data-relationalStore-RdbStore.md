@@ -5287,6 +5287,7 @@ stopCloudSync(): Promise&lt;void&gt;
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 801       | Capability not supported because the device does not support the cloud synchronization capability. |
+| 14800000  | Internal error. |
 | 14800014  | The target instance is already closed. |
 
 **示例：**
