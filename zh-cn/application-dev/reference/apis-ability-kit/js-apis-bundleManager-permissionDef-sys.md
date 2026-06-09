@@ -26,11 +26,11 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**系统接口：** 此接口为系统接口。
+
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
- 
-**系统接口：** 此接口为系统接口。
 
 | 名称           | 类型   | 只读 | 可选 | 说明           |
 | -------------- | ------ | ---- | ---- | -------------- |
