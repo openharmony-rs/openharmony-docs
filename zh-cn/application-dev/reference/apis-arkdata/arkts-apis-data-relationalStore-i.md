@@ -17,7 +17,7 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | 否 | 否 | 数据库文件名，也是数据库唯一标识符。同一进程禁止创建两个同名的数据库，否则可能导致端端同步、端云同步、静默访问以及密钥备份等功能出现异常。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| name | string | 否 | 否 | 数据库文件名，也是数据库唯一标识符，不能为空字符串且不能包含路径分隔符/。同一进程禁止创建两个同名的数据库，否则可能导致端端同步、端云同步、静默访问以及密钥备份等功能出现异常。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | securityLevel | [SecurityLevel](arkts-apis-data-relationalStore-e.md#securitylevel) | 否 | 否 | 设置数据库安全级别。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | encrypt | boolean | 否 | 是 | 指定数据库是否加密，默认非加密。数据库创建完成后，此参数不允许直接修改。如需变更数据库加密状态，请调用[rekeyEx](arkts-apis-data-relationalStore-RdbStore.md#rekeyex22)接口进行更新操作。<br/> true：加密。<br/> false：非加密。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | dataGroupId<sup>10+</sup> | string | 否 | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应的沙箱路径下创建RdbStore实例。<!--RP1End--><br/>**模型约束：** 此属性仅在Stage模型下可用。<br/>从API version 10开始，支持此可选参数。dataGroupId共享沙箱的方式不支持多进程访问加密数据库，当此参数不填时，默认在本应用沙箱目录下创建RdbStore实例。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
@@ -64,9 +64,9 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | 否 | 否 | 资产的名称。 |
-| uri | string | 否 | 否 | 资产的uri，在系统里的绝对路径。 |
-| path | string | 否 | 否 | 资产在应用沙箱里的路径。 |
+| name | string | 否 | 否 | 资产的名称，长度不超过256字节。 |
+| uri | string | 否 | 否 | 资产的uri，在系统里的绝对路径，路径长度不超过1024字节。 |
+| path | string | 否 | 否 | 资产在应用沙箱里的路径，路径长度不超过1024字节。 |
 | createTime | string | 否 | 否 | 资产被创建出来的时间。 |
 | modifyTime | string | 否 | 否 | 资产最后一次被修改的时间。 |
 | size | string | 否 | 否 | 资产占用空间的大小。在端云同步机制中，本字段作为判定资产是否发生变更的关键依据之一，需确保在全链路中保持统一、一致的存储格式与取值逻辑。建议所有系统节点均采用标准化处理方式（单位为字节（Byte），取值为非负整数），避免因格式差异导致同步异常或误判。 |
@@ -220,8 +220,8 @@
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | code | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示执行SQL返回的错误码，对应的取值和含义请见[sqlite错误码](https://www.sqlite.org/rescode.html) |
-| message | string | 否 | 否 | 表示执行SQL返回的错误信息。 |
-| sql | string | 否 | 否 | 表示报错执行的SQL语句。 |
+| message | string | 否 | 否 | 表示执行SQL返回的错误信息，长度不超过1024字节。 |
+| sql | string | 否 | 否 | 表示报错执行的SQL语句，长度不超过1024字节。 |
 
 ## TransactionOptions<sup>14+</sup>
 
