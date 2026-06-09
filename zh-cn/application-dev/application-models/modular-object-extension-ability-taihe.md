@@ -111,7 +111,7 @@ taihec -G modobj-ipc -O example/generated example/Easy.ohidl
 
 <!-- @[example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampletwo/ITestInterface.ohidl) -->
 
-```ohipc
+``` 
 @!namespace("OHOS", "IPC")
 
 interface ICalculator {
@@ -144,7 +144,7 @@ interface ITestCallbackService {
 
    <!-- @[easy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/example/Easy.ohidl) -->
    
-   ```ohipc
+   ``` 
    @!namespace("OHOS", "IPC")
    
    @main_service(version = "1.0.0")
@@ -175,49 +175,49 @@ interface ITestCallbackService {
      `GetDescriptor()`返回接口描述符字符串，`IpcCode`枚举为每个方法分配唯一命令码，从1001开始。
 
      <!-- @[ICalculator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/icalculator.h) -->
-   
-        ``` C
-        class ICalculator {
-        public:
-            virtual ~ICalculator() = default;
-            static const char* GetDescriptor() { return "OHOS.IPC.ICalculator"; }
-        
-            virtual ErrCode WriteRemoteObject(OHIPCParcel* parcel) const = 0;
-        
-            enum class IpcCode : uint32_t {
-                COMMAND_ADD = 1001,
-                COMMAND_GET_TYPE_LIB_INFO = 1,
-                COMMAND_GET_VERSION = 2,
-                COMMAND_GET_TAIHE_VERSION = 3,
-            };
-        
-            virtual ErrCode Add(int32_t a, int32_t b, int32_t& result) = 0;
-            virtual ErrCode GetTypeLibInfo(int32_t fd) = 0;
-            virtual ErrCode GetVersion(std::string& result) = 0;
-            virtual ErrCode GetTaiheVersion(std::string& result) = 0;
-        };
-        ```
+     
+     ``` C
+     class ICalculator {
+     public:
+         virtual ~ICalculator() = default;
+         static const char* GetDescriptor() { return "OHOS.IPC.ICalculator"; }
+     
+         virtual ErrCode WriteRemoteObject(OHIPCParcel* parcel) const = 0;
+     
+         enum class IpcCode : uint32_t {
+             COMMAND_ADD = 1001,
+             COMMAND_GET_TYPE_LIB_INFO = 1,
+             COMMAND_GET_VERSION = 2,
+             COMMAND_GET_TAIHE_VERSION = 3,
+         };
+     
+         virtual ErrCode Add(int32_t a, int32_t b, int32_t& result) = 0;
+         virtual ErrCode GetTypeLibInfo(int32_t fd) = 0;
+         virtual ErrCode GetVersion(std::string& result) = 0;
+         virtual ErrCode GetTaiheVersion(std::string& result) = 0;
+     };
+     ```
 
    - calculator_proxy.h
 
      `CalculatorProxy`继承`ICalculator`，并包含了远端代理对象`remoteProxy_`。
 
      <!-- @[CalculatorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_proxy.h) -->
-   
-        ``` C
-        class CalculatorProxy : public ICalculator {
-        public:
-            explicit CalculatorProxy(OHIPCRemoteProxy* remote) : remoteProxy_(remote) {}
-            ~CalculatorProxy() override = default;
-        // ...
-            ErrCode WriteRemoteObject(OHIPCParcel* parcel) const override;
-        
-            ErrCode Add(int32_t a, int32_t b, int32_t& result) override;
-        // ...
-        private:
-            OHIPCRemoteProxy* remoteProxy_ = nullptr;
-        };
-        ```
+     
+     ``` C
+     class CalculatorProxy : public ICalculator {
+     public:
+         explicit CalculatorProxy(OHIPCRemoteProxy* remote) : remoteProxy_(remote) {}
+         ~CalculatorProxy() override = default;
+     // ...
+         ErrCode WriteRemoteObject(OHIPCParcel* parcel) const override;
+     
+         ErrCode Add(int32_t a, int32_t b, int32_t& result) override;
+     // ...
+     private:
+         OHIPCRemoteProxy* remoteProxy_ = nullptr;
+     };
+     ```
 
    - calculator_proxy.cpp
 
@@ -226,51 +226,51 @@ interface ITestCallbackService {
      调用`OH_IPCRemoteProxy_SendRequest()`发起同步IPC，并读取`reply`中的错误码与返回值。
 
      <!-- @[CalculatorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_proxy.cpp) -->
-   
-        ``` C++
-        ErrCode CalculatorProxy::WriteRemoteObject(OHIPCParcel* parcel) const
-        {
-            if (parcel == nullptr || remoteProxy_ == nullptr) {
-                return OH_IPC_CHECK_PARAM_ERROR;
-            }
-            if (OH_IPCParcel_WriteRemoteProxy(parcel, remoteProxy_) != OH_IPC_SUCCESS) {
-                return OH_IPC_PARCEL_WRITE_ERROR;
-            }
-            return OH_IPC_SUCCESS;
-        }
-        
-        ErrCode CalculatorProxy::Add(int32_t a, int32_t b, int32_t& result)
-        {
-        // ...
-            std::unique_ptr<OHIPCParcel, ParcelDeleter> parcelData(OH_IPCParcel_Create());
-            std::unique_ptr<OHIPCParcel, ParcelDeleter> parcelReply(OH_IPCParcel_Create());
-        // ...
-            if (OH_IPCParcel_WriteInterfaceToken(parcelData.get(),
-                ICalculator::GetDescriptor()) != OH_IPC_SUCCESS) {
-                return OH_IPC_PARCEL_WRITE_ERROR;
-            }
-        
-            if (OH_IPCParcel_WriteInt32(parcelData.get(), a) != OH_IPC_SUCCESS) {
-                return OH_IPC_PARCEL_WRITE_ERROR;
-            }
-            if (OH_IPCParcel_WriteInt32(parcelData.get(), b) != OH_IPC_SUCCESS) {
-                return OH_IPC_PARCEL_WRITE_ERROR;
-            }
-        // ...
-            int32_t errCode = OH_IPC_SUCCESS;
-            if (OH_IPCParcel_ReadInt32(parcelReply.get(), &errCode) != OH_IPC_SUCCESS) {
-                return OH_IPC_PARCEL_READ_ERROR;
-            }
-        
-            int32_t resultValue = 0;
-            if (OH_IPCParcel_ReadInt32(parcelReply.get(), &resultValue) != OH_IPC_SUCCESS) {
-                return OH_IPC_PARCEL_READ_ERROR;
-            }
-            result = resultValue;
-        
-            return errCode;
-        }
-        ```
+     
+     ``` C++
+     ErrCode CalculatorProxy::WriteRemoteObject(OHIPCParcel* parcel) const
+     {
+         if (parcel == nullptr || remoteProxy_ == nullptr) {
+             return OH_IPC_CHECK_PARAM_ERROR;
+         }
+         if (OH_IPCParcel_WriteRemoteProxy(parcel, remoteProxy_) != OH_IPC_SUCCESS) {
+             return OH_IPC_PARCEL_WRITE_ERROR;
+         }
+         return OH_IPC_SUCCESS;
+     }
+     
+     ErrCode CalculatorProxy::Add(int32_t a, int32_t b, int32_t& result)
+     {
+     // ...
+         std::unique_ptr<OHIPCParcel, ParcelDeleter> parcelData(OH_IPCParcel_Create());
+         std::unique_ptr<OHIPCParcel, ParcelDeleter> parcelReply(OH_IPCParcel_Create());
+     // ...
+         if (OH_IPCParcel_WriteInterfaceToken(parcelData.get(),
+             ICalculator::GetDescriptor()) != OH_IPC_SUCCESS) {
+             return OH_IPC_PARCEL_WRITE_ERROR;
+         }
+     
+         if (OH_IPCParcel_WriteInt32(parcelData.get(), a) != OH_IPC_SUCCESS) {
+             return OH_IPC_PARCEL_WRITE_ERROR;
+         }
+         if (OH_IPCParcel_WriteInt32(parcelData.get(), b) != OH_IPC_SUCCESS) {
+             return OH_IPC_PARCEL_WRITE_ERROR;
+         }
+     // ...
+         int32_t errCode = OH_IPC_SUCCESS;
+         if (OH_IPCParcel_ReadInt32(parcelReply.get(), &errCode) != OH_IPC_SUCCESS) {
+             return OH_IPC_PARCEL_READ_ERROR;
+         }
+     
+         int32_t resultValue = 0;
+         if (OH_IPCParcel_ReadInt32(parcelReply.get(), &resultValue) != OH_IPC_SUCCESS) {
+             return OH_IPC_PARCEL_READ_ERROR;
+         }
+         result = resultValue;
+     
+         return errCode;
+     }
+     ```
 
    - calculator_stub.h
 
@@ -279,71 +279,71 @@ interface ITestCallbackService {
      `OnRemoteRequest`作为IPC调用入口，`OnRemoteRequestInner`根据`code`分发到具体`HandleXXX`方法。
 
      <!-- @[CalculatorStub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_stub.h) -->
-   
-        ``` C
-        class CalculatorStub : public ICalculator {
-        public:
-        // ...
-            ErrCode WriteRemoteObject(OHIPCParcel* parcel) const override;
-        
-            static int32_t OnRemoteRequest(
-                uint32_t code,
-                const OHIPCParcel* data,
-                OHIPCParcel* reply,
-                void* userData);
-        // ...
-        private:
-            int32_t OnRemoteRequestInner(uint32_t code, const OHIPCParcel* data, OHIPCParcel* reply);
-            int32_t HandleAdd(const OHIPCParcel* data, OHIPCParcel* reply);
-        // ...
-        };
-        ```
+     
+     ``` C
+     class CalculatorStub : public ICalculator {
+     public:
+     // ...
+         ErrCode WriteRemoteObject(OHIPCParcel* parcel) const override;
+     
+         static int32_t OnRemoteRequest(
+             uint32_t code,
+             const OHIPCParcel* data,
+             OHIPCParcel* reply,
+             void* userData);
+     // ...
+     private:
+         int32_t OnRemoteRequestInner(uint32_t code, const OHIPCParcel* data, OHIPCParcel* reply);
+         int32_t HandleAdd(const OHIPCParcel* data, OHIPCParcel* reply);
+     // ...
+     };
+     ```
 
    - calculator_stub.cpp
 
      `OnRemoteRequestInner`方法中先校验接口描述符，再调用`HandleAdd`从`data`中读取参数，调用真实`Add`业务实现，并将`errCode`和结果写回`reply`。
 
      <!-- @[CalculatorStub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_stub.cpp) -->
-   
-        ``` C++
-        int32_t CalculatorStub::OnRemoteRequestInner(uint32_t code, const OHIPCParcel* data, OHIPCParcel* reply)
-        {
-        // ...
-            if (OH_IPCParcel_ReadInterfaceToken(data, &remoteDescriptor,
-                &remoteDescriptorLen, OhipcReadInterfaceTokenAllocator) != OH_IPC_SUCCESS) {
-                return OH_IPC_CHECK_PARAM_ERROR;
-            }
-        // ...
-            switch (static_cast<ICalculator::IpcCode>(code)) {
-                case ICalculator::IpcCode::COMMAND_ADD:
-                    return HandleAdd(data, reply);
-        // ...
-                default:
-                    return OH_IPC_CHECK_PARAM_ERROR;
-            }
-        }
-        
-        int32_t CalculatorStub::HandleAdd(const OHIPCParcel* data, OHIPCParcel* reply)
-        {
-            int32_t aValue = 0;
-            if (OH_IPCParcel_ReadInt32(data, &aValue) != OH_IPC_SUCCESS) {
-                return OH_IPC_PARCEL_READ_ERROR;
-            }
-            int32_t a = aValue;
-        // ...
-            int32_t result = 0;
-            ErrCode errCode = Add(a, b, result);
-            if (OH_IPCParcel_WriteInt32(reply, errCode) != OH_IPC_SUCCESS) {
-                return OH_IPC_PARCEL_WRITE_ERROR;
-            }
-        
-            if (OH_IPCParcel_WriteInt32(reply, result) != OH_IPC_SUCCESS) {
-                return OH_IPC_PARCEL_WRITE_ERROR;
-            }
-        
-            return OH_IPC_SUCCESS;
-        }
-        ```
+     
+     ``` C++
+     int32_t CalculatorStub::OnRemoteRequestInner(uint32_t code, const OHIPCParcel* data, OHIPCParcel* reply)
+     {
+     // ...
+         if (OH_IPCParcel_ReadInterfaceToken(data, &remoteDescriptor,
+             &remoteDescriptorLen, OhipcReadInterfaceTokenAllocator) != OH_IPC_SUCCESS) {
+             return OH_IPC_CHECK_PARAM_ERROR;
+         }
+     // ...
+         switch (static_cast<ICalculator::IpcCode>(code)) {
+             case ICalculator::IpcCode::COMMAND_ADD:
+                 return HandleAdd(data, reply);
+     // ...
+             default:
+                 return OH_IPC_CHECK_PARAM_ERROR;
+         }
+     }
+     
+     int32_t CalculatorStub::HandleAdd(const OHIPCParcel* data, OHIPCParcel* reply)
+     {
+         int32_t aValue = 0;
+         if (OH_IPCParcel_ReadInt32(data, &aValue) != OH_IPC_SUCCESS) {
+             return OH_IPC_PARCEL_READ_ERROR;
+         }
+         int32_t a = aValue;
+     // ...
+         int32_t result = 0;
+         ErrCode errCode = Add(a, b, result);
+         if (OH_IPCParcel_WriteInt32(reply, errCode) != OH_IPC_SUCCESS) {
+             return OH_IPC_PARCEL_WRITE_ERROR;
+         }
+     
+         if (OH_IPCParcel_WriteInt32(reply, result) != OH_IPC_SUCCESS) {
+             return OH_IPC_PARCEL_WRITE_ERROR;
+         }
+     
+         return OH_IPC_SUCCESS;
+     }
+     ```
 
    - calculator.typelib.json
 
