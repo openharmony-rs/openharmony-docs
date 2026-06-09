@@ -21,7 +21,7 @@
 
 **图2** 互动卡片动效触发流程
 
-![live-form-judge.PNG](figures/live-form-judge.PNG)
+![live-form-judge.PNG](figures/live-form-judge.png)
 
 ## 实现原理
 
@@ -31,11 +31,13 @@
 
 ![live-form-click-timeline.png](figures/live-form-click-timeline.png)
 
-定时定点刷新互动卡片动效的时序图如下。
-
 **图4** 定时定点触发互动卡片动效时序图
 
 ![live-form-update-timeline.png](figures/live-form-update-timeline.png)
+
+**图5** 摇一摇触发互动卡片动效时序图
+
+![live-form-shake-timeline.png](figures/live-form-shake-timeline.png)
 
 ## 约束和限制
 
@@ -56,7 +58,7 @@
 | 4 * 4 | 不超过AD边长的125%。| 不超过AB边长的125%。|
 | 6 * 4 | 不超过AD边长的125%。| 不超过AB边长的110%。|
 
-**图5** 互动卡片动效区域申请规则说明
+**图6** 互动卡片动效区域申请规则说明
 
 ![live-form-overflow-rule.png](figures/live-form-overflow-rule.png)
 
