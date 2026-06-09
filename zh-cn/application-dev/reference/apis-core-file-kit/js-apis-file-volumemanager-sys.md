@@ -1206,7 +1206,7 @@ eject(diskId: string): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 卷设备所属的磁盘id。 |
+| diskId | string | 是   | 卷设备所属的磁盘ID。 |
 
 **返回值：**
 
