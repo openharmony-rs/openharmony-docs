@@ -11429,6 +11429,21 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/InterceptGestureCollection/InterceptGestureCollection.ets",
+				"functions":[
+					{
+						"end_line":87,
+						"name":"gesture_collection",
+						"start_line":65
+					},
+					{
+						"end_line":97,
+						"name":"gesture_intercepting",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -13217,6 +13232,21 @@
 						"end_line":163,
 						"name":"swipe_and_pinch_exclusive_gesture",
 						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NdkEventGestureIntercept/entry/src/main/cpp/function.h",
+				"functions":[
+					{
+						"end_line":135,
+						"name":"gesture_intercepting",
+						"start_line":112
+					},
+					{
+						"end_line":73,
+						"name":"create_interception_function",
+						"start_line":38
 					}
 				]
 			}
