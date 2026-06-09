@@ -1700,7 +1700,7 @@ struct ImageExample1 {
 }
 ```
 
-![Image-with-gif-png-jpg-svg](figures/loadingImagesOfBasicTypes.gif)
+![loadingImagesOfBasicTypes](figures/loadingImagesOfBasicTypes.gif)
 
 ### 示例2（下载与显示静态网络图片）
 

@@ -1090,7 +1090,7 @@ struct ImageExample1 {
 }
 ```
 
-![Image-of-png-gif-jpg-svg](figures/loadingImagesOfBasicTypes.gif)
+![loadingImagesOfBasicTypes](figures/loadingImagesOfBasicTypes.gif)
 
 ### Example 2: Downloading and Displaying Static Online Images
 
@@ -1631,7 +1631,7 @@ struct ImageContentExample {
 }
 ```
 
-![imageContent](figures/en-us_image_view9.gif)
+![switchingBetweenDifferentTypes](figures/switchingBetweenDifferentTypes.gif)
 
 ### Example 12: Securing Sensitive Information
 
@@ -1656,7 +1656,7 @@ struct ImageExample {
 }
 ```
 
-![imageContent](figures/en-us_image_view10.gif)
+![securingSensitiveInformation](figures/securingSensitiveInformation.gif)
 
 ### Example 13: Setting the Scan Effect for an Image
 
