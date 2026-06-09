@@ -6,6 +6,7 @@
 <!--Designer: @dreamsky8023-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:56:48.738Z pushedAt=2026-06-09T10:12:44.327Z -->
 
 The **wallpaper** module provides APIs for switching between wallpapers. Since API version 9, the APIs of this module function as system APIs, and only system applications are allowed to switch between wallpapers. Applications that use the wallpaper, for example, the home screen, should subscribe to wallpaper changes and update the wallpaper accordingly.
 
@@ -14,13 +15,12 @@ The **wallpaper** module provides APIs for switching between wallpapers. Since A
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.wallpaper (Wallpaper)](js-apis-wallpaper.md).
 
-
 ## Modules to Import
-
 
 ```ts
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
+
 ## WallpaperResourceType<sup>10+</sup>
 
 Enumerates the types of wallpaper resources.
@@ -101,7 +101,7 @@ Sets a video resource as the home screen wallpaper or lock screen wallpaper. Thi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -150,7 +150,7 @@ Sets a video resource as the home screen wallpaper or lock screen wallpaper. Thi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -203,7 +203,7 @@ Sets a specific ZIP file as the wallpaper. This API works only when **com.ohos.s
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -258,7 +258,7 @@ Sets a specific ZIP file as the wallpaper. This API works only when **com.ohos.s
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -302,7 +302,7 @@ Subscribes to wallpaper change events. Multi-thread concurrent calls are not sup
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
 | 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
@@ -341,7 +341,7 @@ Unsubscribes from wallpaper change events. Multi-thread concurrent calls are not
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
 | 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
@@ -373,11 +373,15 @@ try {
 }
 ```
 
-## wallpaper.getColorsSync<sup>9+</sup>
+## wallpaper.getColorsSync<sup>(deprecated)</sup>
 
 getColorsSync(wallpaperType: WallpaperType): Array&lt;RgbaColor&gt;
 
 Obtains the main color information of the wallpaper of the specified type.
+
+> **NOTE:**
+> 
+> This API is supported since API version 9 and deprecated since API version 23.
 
 **System capability**: SystemCapability.MiscServices.Wallpaper
 
@@ -393,13 +397,13 @@ Obtains the main color information of the wallpaper of the specified type.
 
 | Type| Description|
 | -------- | -------- |
-| Array&lt;[RgbaColor](js-apis-wallpaper.md#rgbacolordeprecated)&gt; | Promise used to return the main color information of the wallpaper.|
+| Array&lt;[RgbaColor](js-apis-wallpaper.md#rgbacolordeprecated)&gt; | Main color information of the wallpaper.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
 | 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
@@ -429,13 +433,13 @@ Obtains the minimum height of this wallpaper.
 
 | Type| Description|
 | -------- | -------- |
-| number | Promise used to return the minimum wallpaper height, in pixels. If the return value is **0**, no wallpaper is set. In this case, the default height should be used instead.|
+| number | Minimum wallpaper height, in pixels. If the return value is **0**, no wallpaper is set. In this case, the default height should be used instead.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
 
@@ -464,13 +468,13 @@ Obtains the minimum width of this wallpaper.
 
 | Type| Description|
 | -------- | -------- |
-| number | Promise used to return the minimum wallpaper width, in pixels. If the return value is **0**, no wallpaper is set. In this case, the default width should be used instead.|
+| number | Minimum wallpaper width, in pixels. If the return value is **0**, no wallpaper is set. In this case, the default width should be used instead.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
 
@@ -508,7 +512,7 @@ Resets the wallpaper of the specified type to the default wallpaper. This API us
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -556,7 +560,7 @@ Resets the wallpaper of the specified type to the default wallpaper. This API us
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -598,7 +602,7 @@ Sets a specified source as the wallpaper of a specified type. This API uses an a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -670,7 +674,7 @@ Sets a specified source as the wallpaper of a specified type. This API uses a pr
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -732,7 +736,7 @@ Obtains the pixel map for the wallpaper of the specified type. This API only wor
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -775,13 +779,13 @@ Obtains the pixel map for the wallpaper of the specified type. This API only wor
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the result. If the operation is successful, the pixel map of the wallpaper is returned. Otherwise, error information is returned.|
+| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the result. If the operation is successful, the pixel map for the wallpaper is returned. Otherwise, error information is returned.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -799,11 +803,12 @@ wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.P
   console.error(`failed to getImage. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
+
 ## wallpaper.getWallpaperByState<sup>14+</sup>
 
 getWallpaperByState(wallpaperType:WallpaperType, foldState:FoldState, rotateState:RotateState): Promise&lt;image.PixelMap&gt;
 
-Obtains the pixel map of the wallpaper of a specific type, folding state, or landscape/portrait mode. If the specified wallpaper does not exist, the matching follows a degrading order: unfolded-land > unfolded-port > normal-port. This API uses a promise to return the result.
+Obtains the pixel map for the wallpaper of the specified type, folding state, or screen orientation. If the specified wallpaper does not exist, the wallpaper is matched in the following order: unfolded-land > unfolded-port > normal-port. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_WALLPAPER
 
@@ -816,20 +821,20 @@ Obtains the pixel map of the wallpaper of a specific type, folding state, or lan
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
-| foldState | [FoldState](#foldstate14) | Yes| Folding state type.|
-| rotateState | [RotateState](#rotatestate14) | Yes| Landscape/portrait mode.|
+| foldState | [FoldState](#foldstate14) | Yes| Fold state.|
+| rotateState | [RotateState](#rotatestate14) | Yes| Screen orientation.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the result. If the operation is successful, the pixel map of the wallpaper is returned. Otherwise, error information is returned.|
+| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the result. If the operation is successful, the pixel map for the wallpaper is returned. Otherwise, error information is returned.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -853,7 +858,7 @@ wallpaper.getWallpaperByState(wallpaper.WallpaperType.WALLPAPER_SYSTEM,wallpaper
 
 setAllWallpapers(wallpaperInfos: Array\<WallpaperInfo>\, wallpaperType: WallpaperType): Promise&lt;void&gt;
 
-Sets all wallpaper to a specific folding state, landscape/portrait mode, and resource path, where **wallpaper.FoldState.NORMAL** and **wallpaper.RotateState.PORTRAIT** are mandatory. This API uses a promise to return the result.  
+Sets wallpapers in all states, including the folding state, screen orientation, and resource path, where **wallpaper.FoldState.NORMAL** and **wallpaper.RotateState.PORTRAIT** are mandatory. This API uses a promise to return the result.  
 
 **Required permissions**: ohos.permission.SET_WALLPAPER
 
@@ -865,7 +870,7 @@ Sets all wallpaper to a specific folding state, landscape/portrait mode, and res
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperInfos | Array\<[WallpaperInfo](#wallpaperinfo14)> | Yes| Information structure of all wallpapers.|
+| wallpaperInfos | Array\<[WallpaperInfo](#wallpaperinfo14)> | Yes| Wallpaper information structures.|
 | wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
 
 **Return value**
@@ -878,7 +883,7 @@ Sets all wallpaper to a specific folding state, landscape/portrait mode, and res
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**                               |
+| **Error Code**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -936,7 +941,7 @@ Obtains the pixel map for the wallpaper of the specified type.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
-| callback | AsyncCallback&lt;image.PixelMap&gt; | Yes| Callback used to return the result. If the operation is successful, the pixel map of the wallpaper is returned. Otherwise, error information is returned.|
+| callback | AsyncCallback&lt;image.PixelMap&gt; | Yes| Callback used to return the result. If the operation is successful, the pixel map for the wallpaper is returned. Otherwise, error information is returned.|
 
 **Example**
 

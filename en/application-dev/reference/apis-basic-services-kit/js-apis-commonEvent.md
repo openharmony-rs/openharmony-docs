@@ -1,11 +1,12 @@
-# @ohos.commonEvent (Common Event)
+# @ohos.commonEvent (Common Event Module) (Deprecated)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:53:13.714Z pushedAt=2026-06-09T10:12:44.096Z -->
 
 The **CommonEvent** module provides capabilities to publish, subscribe to, and unsubscribe from common events, as well as obtain and modify the common event result code and result data.
 
@@ -83,16 +84,15 @@ Publishes a common event with given properties. This API uses an asynchronous ca
 
 **Example**
 
-
 ```ts
 import Base from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
 
-// Information of a common event.
+// Information of a common event
 let options:CommonEventManager.CommonEventPublishData = {
-    code: 0,             // Initial code of the common event.
-    data: "initial data",// Initial data of the common event.
-    isOrdered: true  // The common event is an ordered one.
+    code: 0,             // Initial code of the common event
+    data: "initial data",// Initial data of the common event
+    isOrdered: true  // Ordered common event
 }
 
 // Callback for common event publication
@@ -127,7 +127,6 @@ Creates a subscriber. This API uses an asynchronous callback to return the resul
 | callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)> | Yes  | Callback used to return the result.|
 
 **Example**
-
 
 ```ts
 import Base from '@ohos.base';
@@ -172,6 +171,7 @@ Creates a subscriber. This API uses a promise to return the result.
 | subscribeInfo | [CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md) | Yes  | Subscriber information.|
 
 **Return value**
+
 | Type                                                     | Description            |
 | --------------------------------------------------------- | ---------------- |
 | Promise\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)> | Promise used to return the subscriber object.|

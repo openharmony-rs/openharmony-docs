@@ -1,10 +1,12 @@
 # @ohos.zlib (Zip)
+
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:57:51.885Z pushedAt=2026-06-09T10:12:44.373Z -->
 
 The **Zip** module provides APIs for file compression and decompression.
 
@@ -19,6 +21,7 @@ import { zlib } from '@kit.BasicServicesKit';
 ```
 
 ## zlib.zipFile<sup>(deprecated)</sup>
+
 zipFile(inFile: string, outFile: string, options: Options): Promise&lt;void&gt;
 
 Zips a file. The execution result is returned after the compression is complete. This API uses a promise to return the result.
@@ -4359,7 +4362,7 @@ Clears all pending output of the file. Closes the file and releases the decompre
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message                 |
 | -------- | ------------------------- |
@@ -4489,7 +4492,7 @@ Describes the last error message that reported for the file. This API uses a pro
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message      |
 | -------- | -------------- |
@@ -4564,7 +4567,7 @@ Reads and decompresses a byte from a file. This API uses a promise to return the
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message                 |
 | -------- | ------------------------- |
@@ -4858,7 +4861,7 @@ Implements the same functions as that of **gzclose()** for writing or appending.
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message                 |
 | -------- | ------------------------- |
@@ -4921,7 +4924,7 @@ Implements the same functions as that of **gzclose()** for reading only. This AP
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message      |
 | -------- | -------------- |
@@ -5134,7 +5137,7 @@ Returns the start position of the next **gzread** or **gzwrite** in the file. Th
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message                 |
 | -------- | ------------------------- |
@@ -5340,7 +5343,7 @@ Repositions the file pointer to the beginning of the file. This feature is appli
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message                 |
 | -------- | ------------------------- |
@@ -5696,7 +5699,7 @@ Returns the current compressed read or write offset of the file. This API uses a
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message                 |
 | -------- | ------------------------- |

@@ -6,6 +6,7 @@
 <!--Designer: @gcw_4D6e0BBd-->
 <!--Tester: @guoshengbang-->
 <!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:52:35.347Z pushedAt=2026-06-09T10:12:44.076Z -->
 
 The **PrintExtensionAbility** module provides operation APIs of the print extension ability.
 
@@ -30,6 +31,7 @@ Called to initialize the print extension when the system connects to the extensi
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type** | **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | want | [Want](../apis-ability-kit/js-apis-application-want.md#want) | Yes| Parameters required for invoking the print page.|
@@ -99,6 +101,7 @@ Called when the device connects to the specified printer.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type** | **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | printerId | number | Yes| Printer ID.|
@@ -125,6 +128,7 @@ Called when the device disconnects from the specified printer.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type** | **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | printerId | number | Yes| Printer ID.|
@@ -142,11 +146,104 @@ export default class HWPrintExtension extends PrintExtensionAbility {
 }
 ```
 
+### onStartPrintJob<sup>24+</sup>
+
+onStartPrintJob(jobInfo: print.PrintJob): void
+
+Called when the specified print job starts.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| jobInfo | [print.PrintJob](js-apis-print.md#printjob24) | Yes | Information about the print job. |
+
+**Example**
+
+```ts
+import { print, PrintExtensionAbility } from '@kit.BasicServicesKit';
+
+export default class HWPrintExtension extends PrintExtensionAbility {
+    onStartPrintJob(jobInfo: print.PrintJob): void {
+        console.info('onStartPrintJob, jobId is: ' + jobInfo.jobId);
+        // ...
+    }
+}
+```
+
+### onCancelPrintJob<sup>24+</sup>
+
+onCancelPrintJob(jobInfo: print.PrintJob): void
+
+Called when the specified print job is canceled.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| jobInfo | [print.PrintJob](js-apis-print.md#printjob24) | Yes | Information about the print job. |
+
+**Example**
+
+```ts
+import { print, PrintExtensionAbility } from '@kit.BasicServicesKit';
+
+export default class HWPrintExtension extends PrintExtensionAbility {
+    onCancelPrintJob(jobInfo: print.PrintJob): void {
+        console.info('onCancelPrintJob, jobId is: ' + jobInfo.jobId);
+        // ...
+    }
+}
+```
+
+### onRequestPrinterCapability<sup>24+</sup>
+
+onRequestPrinterCapability(printerId: number): print.PrinterCapability
+
+Called when a request is sent to check the capability of the specified printer.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| printerId | number | Yes | Printer ID. |
+
+**Return value**
+
+| **Type** | **Description** |
+| -------- | -------- |
+| [print.PrinterCapability](js-apis-print.md#printercapability24) | Capability of the printer. |
+
+**Example**
+
+```ts
+import { print, PrintExtensionAbility } from '@kit.BasicServicesKit';
+
+export default class HWPrintExtension extends PrintExtensionAbility {
+    onRequestPrinterCapability(printerId: number): print.PrinterCapability {
+        console.info('onRequestPrinterCapability enter');
+        // ...
+        let tmp : print.PrinterCapability = {
+            colorMode : 1,
+            duplexMode : 1,
+            pageSize : []
+        };
+        return tmp;
+    }
+}
+```
+
 ### onDestroy
 
 onDestroy(): void
 
-Called when the print extension ability is stopped.
+Called when the print extension ability is destroyed.
 
 **System capability**: SystemCapability.Print.PrintFramework
 

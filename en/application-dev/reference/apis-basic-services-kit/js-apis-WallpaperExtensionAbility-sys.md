@@ -6,6 +6,7 @@
 <!--Designer: @gcw_jQMboB9m-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:57:10.662Z pushedAt=2026-06-09T10:12:44.329Z -->
 
 The **WallpaperExtensionAbility** module provides lifecycle callbacks for wallpaper extension abilities and APIs for listening for wallpaper changes.
 
@@ -23,11 +24,15 @@ The **WallpaperExtensionAbility** module provides lifecycle callbacks for wallpa
 import { WallpaperExtensionAbility } from '@kit.BasicServicesKit';
 ```
 
-## WallpaperExtensionAbility.onCreate
+## WallpaperExtensionAbility.onCreate<sup>(deprecated)</sup>
 
 onCreate(want: object): void
 
-Called to initialize a wallpaper extension ability when it is launched. Multi-thread concurrent calls are not supported.
+Initializes a wallpaper extension application. Multi-thread concurrent calls are not supported.
+
+> **NOTE:**
+> 
+> This API is supported since API version 10 and deprecated since API version 23.
 
 **System capability**: SystemCapability.MiscServices.Wallpaper
 
@@ -37,7 +42,7 @@ Called to initialize a wallpaper extension ability when it is launched. Multi-th
 
 | Name| Type         | Mandatory| Description                            |
 | ------ | ----------- | ---- | ------------------------------- |
-| want   | [object](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Want information related to the wallpaper extension ability, including the ability name and bundle name.|
+| want   | object | Yes   | Want information related to the **WallpaperExtensionAbility** instance, including the ability name and bundle name. |
 
 **Example**
 
@@ -52,11 +57,15 @@ class WallpaperExt extends WallpaperExtensionAbility {
 }
 ```
 
-## WallpaperExtensionAbility.onWallpaperChange
+## WallpaperExtensionAbility.onWallpaperChange<sup>(deprecated)</sup>
 
 onWallpaperChange(wallpaperType: number): void
 
-Called when the wallpaper changes. Multi-thread concurrent calls are not supported.
+Defines an API called when the wallpaper changes. Multi-thread concurrent calls are not supported.
+
+> **NOTE:**
+> 
+> This API is supported since API version 10 and deprecated since API version 23.
 
 **System capability**: SystemCapability.MiscServices.Wallpaper
 
@@ -81,11 +90,15 @@ class WallpaperExt extends WallpaperExtensionAbility {
 }
 ```
 
-## WallpaperExtensionAbility.onDestroy
+## WallpaperExtensionAbility.onDestroy<sup>(deprecated)</sup>
 
 onDestroy(): void
 
-Called when this wallpaper extension ability is destroyed to clear resources. Multi-thread concurrent calls are not supported.
+Defines an API called when this wallpaper extension ability is destroyed to clear resources. Multi-thread concurrent calls are not supported.
+
+> **NOTE:**
+> 
+> This API is supported since API version 10 and deprecated since API version 23.
 
 **System capability**: SystemCapability.MiscServices.Wallpaper
 
