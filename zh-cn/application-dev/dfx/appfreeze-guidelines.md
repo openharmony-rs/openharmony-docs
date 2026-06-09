@@ -600,11 +600,7 @@ DisplayPowerInfo:powerState:AWAKE
 
 **方式一：通过HiAppEvent接口订阅**
 
-从**API version 24**开始，系统默认将AppFreeze增强日志内容合并到APP_FREEZE事件的[external_log](hiappevent-watcher-freeze-events.md#事件字段说明)指向的日志结尾。
-
-> **说明：**
->
-> 如果功能不可用，当前系统版本需要升级到最新版本。
+从<!--RP3-->OpenHarmony 6.1.0<!--RP3End-->开始，系统默认将AppFreeze增强日志内容合并到APP_FREEZE事件的[external_log](hiappevent-watcher-freeze-events.md#事件字段说明)指向的日志结尾。
 
 如果开发者需要单独的AppFreeze增强日志文件，可以在AppScope/app.json5文件中配置如下环境变量：
 
