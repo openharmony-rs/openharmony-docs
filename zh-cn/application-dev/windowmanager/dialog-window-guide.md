@@ -16,6 +16,25 @@
    通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建模态窗口（TYPE_DIALOG）。
 
    <!-- @[dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   let dialogWindowClass: window.Window | undefined = undefined;
+   // ...
+       // 1.创建模态窗口。
+       let context1: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('context');
+       let config: window.Configuration = {
+         name: 'dialogWindow', windowType: window.WindowType.TYPE_DIALOG, ctx: context1 as common.BaseContext
+       };
+       window.createWindow(config, (err, data) => {
+         if (err?.code) {
+           console.error('Failed to create the dialogWindow. Cause: ' + JSON.stringify(err));
+           return;
+         }
+         console.info('Succeeded in creating the dialogWindow. Data: ' + JSON.stringify(data));
+         dialogWindowClass = data;
+         // ...
+       });
+   ```
 
 2. 设置模态窗口属性。
 
