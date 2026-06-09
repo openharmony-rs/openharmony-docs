@@ -7,24 +7,23 @@
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
 
-系统证书凭据用于鸿蒙系统服务（如WLAN、VPN服务）连接服务器时，服务器对接入设备进行身份认证。系统证书凭据功能提供了系统级别的证书凭据（包含证书链和私钥）的安全存储和签名能力。系统证书凭据的公私钥对存储在[Universal Keystore Kit](../UniversalKeystoreKit/huks-overview.md)。
+系统证书凭据用于系统服务（如WLAN、VPN服务）连接服务器时，服务器对接入设备进行身份认证。系统证书凭据功能提供了系统级别的证书凭据（包含证书链和私钥）的安全存储和签名能力。系统证书凭据的公私钥对存储在[Universal Keystore Kit](../UniversalKeystoreKit/huks-overview.md)。
 
 ![](figures/zh-cn_certificate_manager_system_credential_arch.PNG)
 
-系统证书凭据可以由设备的用户进行安装和管理，也可以由鸿蒙应用通过API拉起证书管理服务的对话框，引导用户完成安装。
+系统证书凭据可以由设备的用户进行安装和管理，也可以由应用通过API拉起证书管理服务的对话框，引导用户完成安装。
 
 > **说明**
 >
-> 系统证书凭据只能由鸿蒙系统服务进行读取和使用。<br>
+> 系统证书凭据只能由系统服务进行读取和使用。<br>
 > 系统证书凭据安装成功后，用户需要到系统设置应用界面进行对应的配置，WLAN、VPN等系统服务才能使用安装的系统证书凭据。
 
 
 
 ## 约束与限制
-   - 系统证书凭据的安装和签名、验签操作，依赖[密钥管理服务](../UniversalKeystoreKit/huks-overview.md)（HUKS）能力。
+   系统证书凭据的安装和签名、验签操作，依赖[密钥管理服务](../UniversalKeystoreKit/huks-overview.md)（HUKS）能力。
 
 ## 开发步骤
-
 
 1. 权限申请和声明。
 
@@ -50,6 +49,7 @@
 
   > **说明**
   >
+  > 本开发指导需使用API version 23及以上版本SDK。<br>
   > 系统证书凭据功能当前仅支持RSA、ECC及SM2算法类型的证书和私钥。<br>
   > openInstallCertificateDialog接口当前只支持P12格式的密钥库文件。
 
