@@ -62,6 +62,32 @@ ArkTS-Sta示例：
 
 <!-- @[animation_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormStaticAnimate/entry/src/main/ets/widget/pages/AnimationCard.ets) -->   
 
+``` TypeScript
+@Entry
+@Component
+struct AnimationCard {
+  @State rotateAngle: number = 0;
+
+  build() {
+    Row() {
+      Button('change rotate angle')
+        .height('20%')
+        .width('90%')
+        .margin('5%')
+        .onClick(() => {
+          this.rotateAngle = (this.rotateAngle === 0 ? 90 : 0);
+        })
+        .rotate({ angle: this.rotateAngle })
+        .animation({
+          curve: Curve.EaseOut,
+          playMode: PlayMode.Normal,
+        } as AnimateParam)
+    }.height('100%')
+    .alignItems(VerticalAlign.Center)
+  }
+}
+```
+
 ## 组件转场动效
 以下示例代码使用[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)接口实现了在卡片内图片出现与消失的动画效果。
 
