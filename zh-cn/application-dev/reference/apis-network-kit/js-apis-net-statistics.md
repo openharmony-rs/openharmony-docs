@@ -159,7 +159,7 @@ statistics.getIfaceTxBytes("wlan0", (error: BusinessError, stats: number) => {
 
 getIfaceTxBytes(nic: string): Promise\<number>
 
-获取获取指定网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用Promise异步回调。
+获取指定网卡从最近一次开机开始至接口调用时刻的上行流量总和（单位：字节）。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
