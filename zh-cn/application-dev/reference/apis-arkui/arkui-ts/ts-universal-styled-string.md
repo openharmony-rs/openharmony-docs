@@ -1560,6 +1560,8 @@ invalidate(): void
 >  属性字符串的maxLines和overflow仅在Text中生效，建议在组件侧设置。
 >
 >  textAlign只能调整文本整体的布局，不影响字符的显示顺序。若需要调整字符的显示顺序，请参考[镜像状态字符对齐](../../../ui/arkts-internationalization.md#镜像状态字符对齐)。
+>
+>  tailIndents数组在同一段落内的每一行依次取值做缩进；新的段落首行重新从tailIndents数组索引0位置开始取值做缩进。
 
 ### constructor
 
