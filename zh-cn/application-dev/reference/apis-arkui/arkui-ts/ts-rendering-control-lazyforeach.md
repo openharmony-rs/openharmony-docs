@@ -498,7 +498,7 @@ onDatasetChange(dataOperations: DataOperation[]): void
 >
 > 1. 该配置仅在LazyForEach下直接使用自定义组件时添加，其他情况不适用。
 >
-> 2. 开发者可以在应用的配置文件[module.json5配置文件](..\..\..\quick-start\module-configuration-file.md)中添加metadata参数，在metadata字段中配置name为enableCustomComponentFreeze，value支持取值true或false。true表示使能自定义组件冻结，false表示不使能自定义组件冻结，具体写法可以参考以下示例。
+> 2. 开发者可以在应用的配置文件[module.json5配置文件](../../../quick-start/module-configuration-file.md)中添加metadata参数，在metadata字段中配置name为enableCustomComponentFreeze，value支持取值true或false。true表示使能自定义组件冻结，false表示不使能自定义组件冻结，具体写法可以参考以下示例。
 
 module.json5配置文件示例。
 
