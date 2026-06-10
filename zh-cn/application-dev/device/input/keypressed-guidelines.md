@@ -33,7 +33,7 @@
 
 在电子书或新闻阅读应用中，用户希望通过音量键或智控键滑动控制翻页（例如：音量加键向上翻页、音量减键向下翻页、智控键上滑向上翻页、智控键下滑向下翻页），需注意智控键上滑及下滑非设备通用键值，使用前请判断当前设备是否支持相关按键事件上报；在相机或扫码类应用中，用户按音量键可直接拍照，而不跳转系统相机应用。
 
-<!-- @[input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTSInputConsumer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTSInputConsumer/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { inputConsumer, KeyEvent, inputDevice, KeyCode } from '@kit.InputKit';
@@ -81,7 +81,7 @@ struct TestDemo14 {
       inputDevice.getDeviceList((error: BusinessError, ids: Array<Number>) => {
         if (error) {
           console.error(`keyPressed Failed to get device id list, error: ${
-            JSON.stringify(error, ["code", "message"])}`);
+            JSON.stringify(error, ['code', 'message'])}`);
           resolve(false);
           return;
         }
