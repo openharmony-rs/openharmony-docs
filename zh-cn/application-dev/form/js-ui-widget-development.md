@@ -328,6 +328,56 @@ export default class JsCardFormAbility extends FormExtensionAbility {
    ArkTS-Sta示例：
 <!-- @[JSForm_JsCardFormAbility_onAddFormSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/JSFormSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
 
+``` TypeScript
+// entry/src/main/ets/entryformability/EntryFormAbility.ets
+
+const TAG: string = 'JsCardFormAbility';
+const DATA_STORAGE_PATH: string = '/data/storage/el2/base/haps/form_store';
+const DOMAIN_NUMBER: int = 0xFF00;
+let storeFormInfo =
+  async (formId: string, formName: string, tempFlag: boolean, context: common.FormExtensionContext): Promise<void> => {
+    // 此处仅对卡片ID：formId，卡片名：formName和是否为临时卡片：tempFlag进行了持久化
+    let formInfo: Record<string, string | boolean | number> = {
+      'formName': formName,
+      'tempFlag': tempFlag,
+      'updateCount': 0
+    };
+    try {
+      const storage: preferences.Preferences = await preferences.getPreferences(context, DATA_STORAGE_PATH);
+      await storage.put(formId, JSON.stringify(formInfo));
+      hilog.info(DOMAIN_NUMBER, TAG, `storeFormInfo, put form info successfully, formId: ` + formId);
+      await storage.flush();
+    } catch (err) {
+      hilog.error(DOMAIN_NUMBER, TAG, `failed to storeFormInfo code: ` + err?.code + 'message: ' + err?.message);
+    }
+  }
+// ...
+
+export default class JsCardFormAbility extends FormExtensionAbility {
+  onAddForm(want: Want): formBindingData.FormBindingData {
+    hilog.info(DOMAIN_NUMBER, TAG, '[JsCardFormAbility] onAddForm');
+
+    if (want.parameters) {
+      let formId = want?.parameters?.['ohos.extra.param.key.form_identity'] as string;
+      let formName = want?.parameters?.['ohos.extra.param.key.form_name'] as string;
+      let tempFlag = want?.parameters?.['ohos.extra.param.key.form_temporary'] as boolean;
+      // 将创建的卡片信息持久化，以便在下次获取/更新该卡片实例时进行使用
+      storeFormInfo(formId, formName, tempFlag, this.context);
+    }
+
+    let obj: Record<string, string> = {
+      'title': 'titleOnCreate',
+      'detail': 'detailOnCreate'
+    };
+    let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+    return formData;
+  }
+
+  // ...
+}
+
+```
+
 
 且需要适配onRemoveForm卡片删除通知接口，在其中实现卡片实例数据的删除。
 
