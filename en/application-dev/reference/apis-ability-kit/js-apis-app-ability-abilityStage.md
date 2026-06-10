@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AbilityStage is a [module](../../../application-dev/quick-start/application-package-overview.md#multi-module-design-mechanism)-level component manager. It is used for initializing operations such as resource preloading and thread creation at the module level, as well as maintaining the application state under the module. An AbilityStage instance corresponds to a module.
 
@@ -195,7 +195,7 @@ This API returns the result synchronously and does not support asynchronous call
 
 > **NOTE**
 > 
-> Releasing UI components in the **onMemoryLevel** callback may block the main thread tasks of the current process. Therefore, you are advised not to release UI components in this callback.
+> The **onMemoryLevel** callback runs in the main thread of the current process. If time-consuming UI component release is performed in this callback, the main thread task will be blocked. Therefore, you are not advised to release UI components in the callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -205,7 +205,7 @@ This API returns the result synchronously and does not support asynchronous call
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | Yes| Memory level that indicates the memory usage status. When the specified memory level is reached, a callback will be invoked and the system will start adjustment.<br>**NOTE**<br>The trigger conditions may differ across various devices. For example, on a standard device with 12 GB of memory:<br>- A callback with value 0 is triggered when available memory drops between 1700 MB and 1800 MB.<br>- A callback with value 1 is triggered when available memory drops between 1600 MB and 1700 MB.<br>- A callback with value 2 is triggered when available memory falls below 1600 MB.|
+  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | Yes| Available memory level of the entire device. For details about the triggering scenarios, see [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel).|
 
 **Example**
 
@@ -405,6 +405,52 @@ class MyAbilityStage extends AbilityStage {
       setTimeout(res, 1000); // Execute the operation after 1 second.
     });
     return '';
+  }
+}
+```
+
+### onLaunchFromHyperSnap<sup>24+</sup>
+
+onLaunchFromHyperSnap(): void
+
+Called when the process is started from [application quick launch](./js-apis-app-ability-hyperSnapManager.md#principle).
+
+Developers can override this method to handle the specific logic when the application is started from quick launch, for example, reinitializing certain resources or states.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Example**
+
+```ts
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onLaunchFromHyperSnap(): void {
+    console.info('Launched from Hyper Snap, reinitializing resources...');
+    // Add the initialization logic for starting from quick launch.
+  }
+}
+```
+
+### onAboutToCreateAbility<sup>24+</sup>
+
+onAboutToCreateAbility(): void
+
+Called when the AbilityStage is about to create the first Ability.
+
+Developers can override this method to perform preparations before the first Ability is created.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Example**
+
+```ts
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onAboutToCreateAbility(): void {
+    console.info('About to create first ability, preparing...');
+    // Add the preparations before creating the first Ability.
   }
 }
 ```
