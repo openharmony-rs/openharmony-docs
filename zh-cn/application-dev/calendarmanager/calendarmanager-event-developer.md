@@ -48,7 +48,6 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
     <!-- @[calendarEvent_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
-    const DOMAIN = 0x0000;
     
     export let calendarMgr: calendarManager.CalendarManager | null = null;
     
@@ -56,47 +55,47 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
     
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
+        console.info('%{public}s', 'Ability onCreate');
       }
     
       onDestroy(): void {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+        console.info('%{public}s', 'Ability onDestroy');
       }
     
       onWindowStageCreate(windowStage: window.WindowStage): void {
         // 主窗口已创建，请为此Ability设置主页
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+        console.info('%{public}s', 'Ability onWindowStageCreate');
         windowStage.loadContent('pages/Index', (err, data) => {
           if (err.code) {
-            hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+            console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
             return;
           }
-          hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+          console.info('Succeeded in loading the content.');
         });
         mContext = this.context;
         const permissions: Permissions[] = ['ohos.permission.READ_CALENDAR', 'ohos.permission.WRITE_CALENDAR'];
         let atManager = abilityAccessCtrl.createAtManager();
         atManager.requestPermissionsFromUser(mContext, permissions).then((result: PermissionRequestResult) => {
-          hilog.info(DOMAIN, 'testTag', 'get Permission success');
+          console.info('get Permission success');
           calendarMgr = calendarManager.getCalendarManager(mContext);
         }).catch((error: BusinessError) => {
-          hilog.error(DOMAIN, 'testTag', 'get Permission error, Cause: %{public}s', JSON.stringify(error));
+          console.error('get Permission error, Cause: %{public}s', JSON.stringify(error));
         })
       }
     
       onWindowStageDestroy(): void {
         // 主窗口已销毁，释放 UI 相关资源
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+        console.info('%{public}s', 'Ability onWindowStageDestroy');
       }
     
       onForeground(): void {
         // Ability 进入前台
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
+        console.info('%{public}s', 'Ability onForeground');
       }
     
       onBackground(): void {
         // Ability 进入后台
-        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
+        console.info('%{public}s', 'Ability onBackground');
       }
     }
     ```
@@ -109,9 +108,6 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
     import { BusinessError } from '@kit.BasicServicesKit';
     import { calendarMgr } from '../entryability/EntryAbility';
     import { calendarManager } from '@kit.CalendarKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    
-    const DOMAIN = 0x0000;
     
     let calendar: calendarManager.Calendar | undefined = undefined;
     // 指定日历账户信息
@@ -134,19 +130,19 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
     ``` TypeScript
     // 创建日历账户
     calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
-      hilog.info(DOMAIN, 'testTag', `Succeeded in creating calendar data->${JSON.stringify(data)}`);
+      console.info(`Succeeded in creating calendar data->${JSON.stringify(data)}`);
       calendar = data;
       // 请确保日历账户创建成功后，再进行相关日程的管理
     
       // 设置日历配置信息，打开日程提醒、设置日历账户颜色
       calendar.setConfig(config).then(() => {
-        hilog.info(DOMAIN, 'testTag', `Succeeded in setting config, data->${JSON.stringify(config)}`);
+        console.info(`Succeeded in setting config, data->${JSON.stringify(config)}`);
       }).catch((err: BusinessError) => {
-        hilog.error(DOMAIN, 'testTag', `Failed to set config. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to set config. Code: ${err.code}, message: ${err.message}`);
       });
       // ...
     }).catch((error: BusinessError) => {
-      hilog.error(DOMAIN, 'testTag', `Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
+      console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
     });
     ```
 
@@ -160,7 +156,7 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
 
    方式一：可以在日历账户下通过`addEvent()`或`addEvents()`接口创建日程。其中可使用`addEvent()`接口创建单个日程，也可以使用`addEvents()`接口批量创建日程，此处以创建单个日程为例。
 
-   方式二：在获取到日历管理器对象后，可通过`editEvent()`接口创建单个日程。调用此接口创建日程时，会跳转到日程创建页面，在日程创建页面进行相关操作完成日程的创建，`editEvent()`不支持自定义周期性日程创建。
+   方式二：在获取到日历管理器对象后，可通过`editEvent()`接口创建单个日程。调用此接口创建日程时，会跳转到日程创建页面，在日程创建页面进行相关操作完成日程的创建, `editEvent()`不支持自定义周期性日程创建。
    
    <!-- @[calendarEvent_eventParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
    
@@ -209,10 +205,10 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
    };
    // 方式一
    calendar.addEvent(event).then((data: number) => {
-     hilog.info(DOMAIN, 'testTag', `Succeeded in adding event, id -> ${data}`);
+     console.info(`Succeeded in adding event, id -> ${data}`);
      eventId = data;
    }).catch((err: BusinessError) => {
-     hilog.error(DOMAIN, 'testTag', `Failed to addEvent. Code: ${err.code}, message: ${err.message}`);
+     console.error(`Failed to addEvent. Code: ${err.code}, message: ${err.message}`);
    });
    // 方式二
    const eventInfo: calendarManager.Event = {
@@ -226,9 +222,9 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
      endTime: date.getTime() + 60 * 60 * 1000
    };
    calendarMgr?.editEvent(eventInfo).then((id: number): void => {
-     hilog.info(DOMAIN, 'testTag', `create Event id = ${id}`);
+     console.info(`create Event id = ${id}`);
    }).catch((err: BusinessError) => {
-     hilog.error(DOMAIN, 'testTag', `Failed to create Event. Code: ${err.code}, message: ${err.message}`);
+     console.error(`Failed to create Event. Code: ${err.code}, message: ${err.message}`);
    });
    ```
 
@@ -246,9 +242,9 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
       endTime: date.getTime() + 60 * 60 * 1000
     };
     calendar.updateEvent(updateEvent).then(() => {
-      hilog.info(DOMAIN, 'testTag', `Succeeded in updating event`);
+      console.info(`Succeeded in updating event`);
     }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN, 'testTag', `Failed to update event. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to update event. Code: ${err.code}, message: ${err.message}`);
     });
     ```
 
@@ -259,9 +255,9 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
    
    ``` TypeScript
    calendar.getEvents().then((data: calendarManager.Event[]) => {
-     hilog.info(DOMAIN, 'testTag', `Succeeded in getting events, data -> ${JSON.stringify(data)}`);
+     console.info(`Succeeded in getting events, data -> ${JSON.stringify(data)}`);
    }).catch((err: BusinessError) => {
-     hilog.error(DOMAIN, 'testTag', `Failed to get events. Code: ${err.code}, message: ${err.message}`);
+     console.error(`Failed to get events. Code: ${err.code}, message: ${err.message}`);
    });
    ```
 
@@ -272,25 +268,25 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
    // 根据日程id查询
    const filterId = calendarManager.EventFilter.filterById([eventId]);
    calendar.getEvents(filterId).then((data: calendarManager.Event[]) => {
-     hilog.info(DOMAIN, 'testTag', `Succeeded in getting events filter by eventId, data -> ${JSON.stringify(data)}`);
+     console.info(`Succeeded in getting events filter by eventId, data -> ${JSON.stringify(data)}`);
    }).catch((err: BusinessError) => {
-     hilog.error(DOMAIN, 'testTag', `Failed to get events. Code: ${err.code}, message: ${err.message}`);
+     console.error(`Failed to get events. Code: ${err.code}, message: ${err.message}`);
    });
    
    // 根据日程标题查询
    const filterTitle = calendarManager.EventFilter.filterByTitle('update');
    calendar.getEvents(filterTitle).then((data: calendarManager.Event[]) => {
-     hilog.info(DOMAIN, 'testTag', `Succeeded in getting events filter by title, data -> ${JSON.stringify(data)}`);
+     console.info(`Succeeded in getting events filter by title, data -> ${JSON.stringify(data)}`);
    }).catch((err: BusinessError) => {
-     hilog.error(DOMAIN, 'testTag', `Failed to get events. Code: ${err.code}, message: ${err.message}`);
+     console.error(`Failed to get events. Code: ${err.code}, message: ${err.message}`);
    });
    
    // 根据日程开始和结束时间查询
    const filterTime = calendarManager.EventFilter.filterByTime(1686931200000, 1687017600000);
    calendar.getEvents(filterTime).then((data: calendarManager.Event[]) => {
-     hilog.info(DOMAIN, 'testTag', `Succeeded in getting events filter by time, data -> ${JSON.stringify(data)}`);
+     console.info(`Succeeded in getting events filter by time, data -> ${JSON.stringify(data)}`);
    }).catch((err: BusinessError) => {
-     hilog.error(DOMAIN, 'testTag', `Failed to filter by time. Code: ${err.code}, message: ${err.message}`);
+     console.error(`Failed to filter by time. Code: ${err.code}, message: ${err.message}`);
    });
    ```
 
@@ -300,8 +296,8 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
     
     ``` TypeScript
     calendar.deleteEvent(eventId).then(() => {
-      hilog.info(DOMAIN, 'testTag', 'Succeeded in deleting event');
+      console.info('Succeeded in deleting event');
     }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN, 'testTag', `Failed to delete event. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to delete event. Code: ${err.code}, message: ${err.message}`);
     });
     ```
