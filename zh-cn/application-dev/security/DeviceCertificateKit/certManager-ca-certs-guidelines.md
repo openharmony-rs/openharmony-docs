@@ -76,21 +76,21 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
 3. 安装和卸载用户CA证书。
 
-- 场景1：在BYOD设备安装用户CA证书。
+   - 场景1：在BYOD设备安装用户CA证书。
   
-  应用调用openInstallCertificateDialog接口可拉起安装用户CA证书的对话框（certType参数设置为CA_CERT），安装页面需要对设备用户的身份进行认证。该接口只支持安装当前用户级的CA证书。
+     应用调用openInstallCertificateDialog接口可拉起安装用户CA证书的对话框（certType参数设置为CA_CERT），安装页面需要对设备用户的身份进行认证。该接口只支持安装当前用户级的CA证书。
   
-  > **说明：**
-  > 
-  > 安装并信任用户CA证书，拥有CA证书的攻击者可能会获取到设备用户在访问网站或使用应用时传输的敏感信息。
-  >
-  > 拉起安装用户CA证书的对话框接口当前仅支持PC/2in1设备。
+     > **说明：**
+     >
+     > 安装并信任用户CA证书，拥有CA证书的攻击者可能会获取到设备用户在访问网站或使用应用时传输的敏感信息。
+     >
+     > 拉起安装用户CA证书的对话框接口当前仅支持PC/2in1设备。
 
-- 场景2：MDM应用在企业设备安装和卸载用户CA证书。
+   - 场景2：MDM应用在企业设备安装和卸载用户CA证书。
 
-  MDM应用可调用installUserTrustedCertificateSync接口安装用户CA证书，接口需要指定待安装的CA证书文件，并返回已安装的CA证书标识（certUri）。
+     MDM应用可调用installUserTrustedCertificateSync接口安装用户CA证书，接口需要指定待安装的CA证书文件，并返回已安装的CA证书标识（certUri）。
 
-  MDM应用可调用uninstallUserTrustedCertificateSync接口卸载已安装的用户CA证书，输入已安装的CA证书标识certUri。
+     MDM应用可调用uninstallUserTrustedCertificateSync接口卸载已安装的用户CA证书，输入已安装的CA证书标识certUri。
 
 4. 读取系统CA证书和用户CA证书。
 
