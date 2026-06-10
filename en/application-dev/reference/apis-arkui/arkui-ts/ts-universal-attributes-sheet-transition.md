@@ -920,6 +920,8 @@ struct SheetSideExample {
 }
 ```
 
+![en-us_sheet](figures/sheet8-side.png)
+
 ### Example 9: Implementing a Full-Screen Content Cover Sheet
 
 This example demonstrates how to implement a full-screen sheet. This feature is supported since API version 20.
