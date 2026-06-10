@@ -200,7 +200,7 @@
         }
     });
     // 更换url。
-    let url = 'https://xxx.xxx.xxx.mp3';
+    let url = 'https://example.com/audio.mp3';
     if (avPlayer == null) {
         return;
     }
