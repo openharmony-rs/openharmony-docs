@@ -22,11 +22,11 @@ Place the downloaded NDK in a folder you prefer and decompress it.
 
 Below shows the directory structure after decompression on Windows or Linux.
 
-![en-us_image_0000001726080989](figures/en-us_image_0000001726080989.png)
+![ndk-decomp-structure](figures/ndk-decomp-structure.png)
 
 Below shows the directory structure after decompression on macOS.
 
-![en-us_image_20-24-01-16-14-35](figures/en-us_image_20-24-01-16-14-35.png)
+![macos-unzip](figures/macos-unzip.png)
 
 <!--RP1End-->
 ### Configuring the Environment Variable
@@ -58,11 +58,11 @@ Skip this step if the NDK is downloaded from DevEco Studio.
 
     Right-click **This PC** and choose **Properties** from the shortcut menu. In the displayed dialog box, click the **Advanced System Settings** tab and then click **Environment Variables**. Under **System Variables** dialog box, select the **Path** environment variable and click **Edit**. Add the paths, save the settings, and exit. (If the next step cannot be performed, restart the computer.)
 
-    ![en-us_image_20-25-11-18-11-56](figures/en-us_image_20-25-11-18-11-56.PNG)
+    ![windows-path-log](figures/windows-path-log.PNG)
 
     Open the CLI and run the **{*cmake_installation_path*}\cmake.exe -version** command. If the CMake version number is displayed correctly, the environment variable configuration is complete.
 
-    ![en-us_image_20-25-11-18-11-59](figures/en-us_image_20-25-11-18-11-59.PNG)
+    ![cmake-version-check](figures/cmake-version-check.PNG)
 
 
 2. Check the default CMake path.
@@ -202,11 +202,11 @@ In the module directory of the project directory, create the **build** directory
 
 Using CMake in Windows, unlike that in Linux, requires you to use the **-G** option to specify the generator.
 
-![en-us_image_20-24-01-16-14-56](figures/en-us_image_20-24-01-16-14-56.png)
+![camke-windows-G](figures/camke-windows-G.png)
 
 In this example, the Ninja generator, which comes with the NDK, is used, as indicated by **-G "Ninja"**.
 
-![en-us_image_20-24-01-16-14-57](figures/en-us_image_20-24-01-16-14-57.png)
+![camke-ninja-bin](figures/camke-ninja-bin.png)
 
 Step 1. Create the **build** folder in the module directory of the project directory and run the following command:
 ```shell
@@ -216,14 +216,14 @@ Step 1. Create the **build** folder in the module directory of the project direc
 >
 > If debugging is required, add the **-D CMAKE_BUILD_TYPE=normal** option. The CMake path and the ohos.toolchain.cmake path are where the NDK is downloaded.<br>The following figure shows the command output.
 
-![en-us_image_20-24-01-16-14-58](figures/en-us_image_20-24-01-16-14-58.png)
+![cmake-config-log](figures/cmake-config-log.png)
 
 The **build.ninja** file is the build configuration file.
 
 Step 2. Use the ninja command to compile and generate the target file. The following figure shows the location of the target file.
 
-![en-us_image_20-24-01-16-14-59](figures/en-us_image_20-24-01-16-14-59.png)
+![bulid-dir-list](figures/bulid-dir-list.png)
 
 Use **ninja -f build.ninja** or **cmake --build**. The following figure shows the command output.
 
-![en-us_image_20-24-01-16-14-60](figures/en-us_image_20-24-01-16-14-60.png)
+![ninja-bulid-log](figures/ninja-bulid-log.png)
