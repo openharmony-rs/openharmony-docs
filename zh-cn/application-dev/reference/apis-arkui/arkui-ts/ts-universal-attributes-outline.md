@@ -369,8 +369,8 @@ struct OutlineExample {
 
 从左至右显示语言示例图
 
-![localizedEdgeColors](figures/localizedEdgeColors.png)
+![zh-cm_image_outling_ltr](figures/image-outling-ltr.png)
 
 从右至左显示语言示例图
 
-![localizedEdgeColors2](figures/localizedEdgeColors2.png)
+![zh-cm_image_outling_rtl](figures/image-outling-rtl.png)
