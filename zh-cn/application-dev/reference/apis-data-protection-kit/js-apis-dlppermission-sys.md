@@ -155,7 +155,7 @@ installDLPSandbox(bundleName: string, access: DLPFileAccess, userId: number, uri
 
 安装一个应用的DLP沙箱。DLP沙箱为受保护的DLP文件创建独立的运行环境，与原应用进程隔离，确保数据在授权范围内安全流转。沙箱应用继承原应用的功能但仅能访问授权的DLP文件。使用Promise异步回调。
 
-调用installDLPSandbox成功后必须在使用完毕后调用[uninstallDLPSandbox](#dlpPermissionuninstallDLPSandbox)卸载沙箱。
+调用installDLPSandbox成功后必须在使用完毕后调用[uninstallDLPSandbox](#dlppermissionuninstalldlpsandbox)卸载沙箱。
 
 DLP文件管理应用打开受保护文件前，需要先为目标应用安装DLP沙箱。
 
@@ -212,7 +212,7 @@ installDLPSandbox(bundleName: string, access: DLPFileAccess, userId: number, uri
 
 安装一个应用的DLP沙箱。使用callback异步回调。调用成功后，系统为应用创建DLP沙箱环境并返回沙箱信息。
 
-调用installDLPSandbox成功后必须在使用完毕后调用[uninstallDLPSandbox](#dlpPermissionuninstallDLPSandbox)卸载沙箱。
+调用installDLPSandbox成功后必须在使用完毕后调用[uninstallDLPSandbox](#dlppermissionuninstalldlpsandbox)卸载沙箱。
 
 DLP文件管理应用打开受保护文件前，需要先为目标应用安装DLP沙箱。
 
@@ -267,7 +267,7 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number): Promi
 
 需要清理对应的沙箱环境时使用此接口。
 
-必须在调用[installDLPSandbox](#dlpPermissioninstallDLPSandbox)安装沙箱后才能调用此方法卸载。
+必须在调用[installDLPSandbox](#dlppermissioninstalldlpsandbox)安装沙箱后才能调用此方法卸载。
 
 **系统接口：** 此接口为系统接口。
 
@@ -324,7 +324,7 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number, callba
 
 需要清理沙箱环境时使用此接口。
 
-必须在调用[installDLPSandbox](#dlpPermissioninstallDLPSandbox)安装沙箱后才能调用此方法卸载。
+必须在调用[installDLPSandbox](#dlppermissioninstalldlpsandbox)安装沙箱后才能调用此方法卸载。
 
 **系统接口：** 此接口为系统接口。
 
@@ -380,7 +380,7 @@ on(type: 'uninstallDLPSandbox', listener: Callback&lt;DLPSandboxState&gt;): void
 
 注册监听DLP沙箱卸载事件，用于感知沙箱环境的变化。注册成功后，当DLP沙箱被卸载时，系统会通过回调函数通知应用。
 
-调用on注册监听后，建议在不需要监听时调用[off](#dlpPermissionoffuninstallDLPSandbox)取消监听释放资源。
+调用on注册监听后，建议在不需要监听时调用[off](#dlppermissionoffuninstalldlpsandbox)取消监听释放资源。
 
 DLP管理应用需要追踪沙箱的创建和销毁状态，以便维护沙箱列表或执行相关的清理操作。
 
@@ -424,7 +424,7 @@ off(type: 'uninstallDLPSandbox', listener?: Callback&lt;DLPSandboxState&gt;): vo
 
 取消监听DLP沙箱卸载事件。调用成功后，应用不再接收DLP沙箱卸载事件的回调通知。
 
-必须在调用[on](#dlpPermissiononuninstallDLPSandbox)注册监听后才能调用此方法取消监听。
+必须在调用[on](#dlppermissiononuninstalldlpsandbox)注册监听后才能调用此方法取消监听。
 
 DLP管理应用退出或不再需要追踪沙箱状态变化时，取消事件订阅以释放监听资源。
 
