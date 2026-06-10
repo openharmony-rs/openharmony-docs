@@ -679,7 +679,7 @@ if (avScreenCaptureRecorder != undefined) {
 
 setContentAutoRotation(enable: boolean): Promise\<void>
 
-在录屏前设置录制屏幕旋转。使用Promise异步回调。
+设置捕获的屏幕内容是否自动旋转以保持图像直立。使用Promise异步回调。
 
 > **说明：**
 >
@@ -695,7 +695,7 @@ setContentAutoRotation(enable: boolean): Promise\<void>
 
 | 参数名 | 类型                                   | 必填 | 说明                       |
 | ------ | -------------------------------------- | ---- | -------------------------- |
-| enable | boolean | 是   | 屏幕旋转能力开关控制，true代表屏幕旋转打开，false代表屏幕旋转关闭。默认值为false。 |
+| enable | boolean | 是   | 表示是否启用自动旋转。默认值为 false。值为 true 表示启用自动旋转，输出帧中的图像内容将保持直立。 |
 
 **返回值：**
 
@@ -705,7 +705,7 @@ setContentAutoRotation(enable: boolean): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
