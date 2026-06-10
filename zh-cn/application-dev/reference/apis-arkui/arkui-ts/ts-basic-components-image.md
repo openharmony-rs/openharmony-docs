@@ -1765,7 +1765,7 @@ struct ImageExample2 {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/zh-cn_image_view2.png)
+![zh-cn_image_0000001607845173](figures/image-view2.png)
 
 ### 示例3（下载与显示网络gif图片）
 
@@ -1899,7 +1899,7 @@ struct ImageExample4 {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/zh-cn_image_view4.gif)
+![zh-cn_image_0000001607845173](figures/image-view4.gif)
 <!--RP2End-->
 ### 示例6（通过slice拉伸图片）
 
@@ -2094,7 +2094,7 @@ struct ImageExample {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/zh-cn_image_view6.gif)
+![zh-cn_image_0000001607845173](figures/image-view6.gif)
 
 ### 示例9（为图像设置颜色滤镜效果）
 

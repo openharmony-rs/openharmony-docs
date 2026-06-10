@@ -997,4 +997,4 @@ struct TreeViewDemo {
 }
 ```
 
-![示例2-TreeView示例2 设置Symbol类型图标](figures/zh-cn_image_treeview_demo_02.png)
+![示例2-TreeView示例2 设置Symbol类型图标](figures/image-treeview-demo-02.png)
