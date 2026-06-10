@@ -361,6 +361,85 @@
 
     ArkTS-Sta示例：
    <!-- @[update_by_formprovider](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormStaticRefresh/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/pages/Index.ets
+   
+   import { Entry, Text, Column, ColumnOptions, Component, Button, ClickEvent } from '@ohos.arkui.component';
+   import { Tabs, TabContent, Color, FlexAlign } from '@ohos.arkui.component';
+   import { FormComponent, FormInfo, FormDimension, FormCallbackInfo, $r } from '@ohos.arkui.component';
+   import { formProvider, formHost } from '@kit.FormKit';
+   import { State } from '@ohos.arkui.stateManagement'
+   import hilog from '@ohos.hilog'
+   import { common } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   const TAG: string = 'EntryFormAbility';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   
+   @Entry
+   @Component
+   struct Index {
+     // ...
+   
+     @Builder
+     buildFormProviderUpdate() {
+       Column({ space: 20 } as ColumnOptions) {
+         Text('FormProviderUpdate')
+         Button('reloadForms')
+           .onClick((e: ClickEvent) => {
+             try {
+               let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+               let moduleName: string = 'entry';
+               let abilityName: string = 'EntryFormAbility';
+               let formName: string = 'WidgetCard' //'ReloadByUIAbility';
+               formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: int) => {
+                 console.info(`reloadForms success, reload number: ${reloadNum}`);
+               }).catch((error) => {
+                 console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+               });
+             } catch (error) {
+               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+             }
+           })
+         Button('reloadAllForms')
+           .onClick((e: ClickEvent) => {
+             try {
+               let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+               formProvider.reloadAllForms(context).then((reloadNum: int) => {
+                 console.info(`reloadAllForms success, reload number: ${reloadNum}`);
+               }).catch((error) => {
+                 console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+               });
+             } catch (error) {
+               console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+             }
+           })
+       }
+       .width('100%')
+       .justifyContent(FlexAlign.Center)
+     }
+   
+   
+     build() {
+       Column() {
+         Tabs() {
+           TabContent() {
+             this.buildFormProviderUpdate()
+           }.tabBar('formProvider').id('formProvider')
+   
+           TabContent() {
+             this.buildFormHostUpdate()
+           }.tabBar('formHost').id('formHost')
+         }
+         .width(360)
+         .height(400)
+         .backgroundColor('#F1F3F5')
+         .id('tabsId')
+       }.width('100%')
+     }
+   }
+   ```
 
 5. 资源文件如下。
 
