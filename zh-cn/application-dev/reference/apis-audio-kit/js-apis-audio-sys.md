@@ -5888,7 +5888,7 @@ isAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor): bool
 
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| deviceDescriptor     | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)     | 是   | 音频设备描述符。 |
+| deviceDescriptor     | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)     | 是   | 目标设备描述符，用于查询是否开启了自适应空间音频渲染。 |
 
 **返回值：**
 
@@ -5953,7 +5953,7 @@ try {
 
 setAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise&lt;void&gt;
 
-开启/关闭指定设备的自适应空间音频渲染效果。使用Promise异步回调。
+设置指定设备的自适应空间音频渲染开关。使用Promise异步回调。
 
 当开启自适应空间音频渲染时，立体声音频将不会进行空间音频渲染。
 
@@ -5967,14 +5967,14 @@ setAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor, enab
 
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| deviceDescriptor     | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)     | 是   | 音频设备描述符。 |
+| deviceDescriptor     | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)     | 是   | 目标设备描述符，用于设置是否开启自适应空间音频渲染。 |
 | enabled     | boolean     | 是   | 是否开启自适应空间音频渲染。true表示开启，false表示关闭。 |
 
 **返回值：**
 
 | 类型                  | 说明                         |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -6142,7 +6142,7 @@ try {
 
 onSpatialAudioSourceTypeChange(callback: Callback<SpatialAudioSourceType\>): void
 
-订阅空间音频源类型变化事件，当当前空间音频源类型发生变化时，注册的回调将被调用。
+订阅空间音频源类型变化事件。当前空间音频源类型发生变化时，注册的回调将被调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -6439,6 +6439,8 @@ let spatialDeviceState: audio.AudioSpatialDeviceState = {
 ## SpatialAudioSourceType<sup>24+</sup>
 
 表示空间音频源类型的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
