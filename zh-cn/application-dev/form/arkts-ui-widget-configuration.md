@@ -74,6 +74,22 @@
    ArkTS-Sta示例：
 <!-- @[standaloneSta_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormStandaloneDemoSta/library/src/main/module.json5) --> 
 
+``` JSON5
+{
+  "module": {
+    "name": "library",
+    "type": "shared",
+    "description": "$string:shared_desc",
+    "deviceTypes": [
+      "default"
+    ],
+    "deliveryWithInstall": true,
+    // 只在独立卡片包形态中会使用，用来关联应用包模块。
+    "formExtensionModule": "entry"
+  }
+}
+```
+
 
 ## 卡片配置
 
