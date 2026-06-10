@@ -505,7 +505,7 @@ struct ListItemGroupExample {
 }
 ```
 
-![en-us_image_listitemgroup_example03](figures/en-us_image_listitemgroup_example03.gif)
+![en-us_image_listitemgroup_example03](figures/image-listitemgroup-example03.gif)
 
 ### Example 4: Setting a Multi-Column Layout
 

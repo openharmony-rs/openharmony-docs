@@ -255,7 +255,7 @@
    }
    ```
    
-   ![zh-cn_image_0000001185652902](figures/zh-cn_image_0000001185652902.png)
+   ![zh-cn_image_0000001185652902](figures/string-diagram.png)
 
 2. 柱状图
    

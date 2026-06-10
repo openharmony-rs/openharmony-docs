@@ -1189,7 +1189,7 @@ isCaptured(bundleNameList: Array\<string>): boolean
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 1400003 | This display manager service works abnormally. |
-| 1400004 | Parameter error. Possible causes: The size of bundleNameList is larger than 100. |
+| 1400004 | Parameter error. Possible causes: 1.The size of bundleNameList is larger than 100. |
 
 **示例：**
 

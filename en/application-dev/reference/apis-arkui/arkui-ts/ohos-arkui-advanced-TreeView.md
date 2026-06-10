@@ -554,4 +554,4 @@ struct TreeViewDemo {
   }}
 ```
 
-![Example 2-Setting the Symbol Icon](figures/en-us_image_treeview_demo_02.png)
+![Example 2-Setting the Symbol Icon](figures/image-treeview-demo-02.png)

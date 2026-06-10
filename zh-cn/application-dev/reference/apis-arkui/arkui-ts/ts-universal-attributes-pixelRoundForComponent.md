@@ -131,8 +131,8 @@ struct PixelRoundExample {
 
 **图1** 使用pixelRound指导布局效果图
 
-![zh-cn_image_pixel_round_enable.png](figures/zh-cn_image_pixel_round_enable.png)
+![image-pixel-round-enable.png](figures/image-pixel-round-enable.png)
 
 **图2** 不使用pixelRound指导布局效果图
 
-![zh-cn_image_pixel_round_disable.png](figures/zh-cn_image_pixel_round_disable.png)
+![image-pixel-round-disable.png](figures/image-pixel-round-disable.png)
