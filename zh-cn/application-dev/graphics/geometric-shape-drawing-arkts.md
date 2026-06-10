@@ -114,7 +114,7 @@ canvas.detachPen();
 
 效果如下：
 
-![zh-cn_image_0000002194025289](figures/zh-cn_image_0000002194025289.png)
+![Drawing-an-Arc](figures/Drawing-an-Arc.png)
 
 
 ## 绘制圆
@@ -282,7 +282,7 @@ canvas.detachBrush();
 
 效果如下：
 
-![zh-cn_image_0000002194110921](figures/zh-cn_image_0000002194110921.png)
+![Drawing-a-Rectangle](figures/Drawing-a-Rectangle.png)
 
 
 ## 绘制圆角矩形
@@ -326,7 +326,7 @@ canvas.detachBrush();
 
 效果如下：
 
-![zh-cn_image_0000002158584406](figures/zh-cn_image_0000002158584406.png)
+![Drawing-a-Rounded-Rectangle](figures/Drawing-a-Rounded-Rectangle.png)
 
 <!--RP1-->
 ## 相关实例
