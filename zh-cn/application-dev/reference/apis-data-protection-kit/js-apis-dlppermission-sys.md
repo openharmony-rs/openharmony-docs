@@ -171,7 +171,7 @@ DLP文件管理应用打开受保护文件前，需要先为目标应用安装DL
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 应用包名。最小7字节，最大128字节。超出范围时抛出错误码19100001。 |
 | access | [DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess) | 是 | DLP文件授权类型。设置不同的授权类型将决定用户对DLP文件的访问权限范围。 |
-| userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。当小于0时，输出错误日志。取值范围为[0, 2<sup>31</sup>-1]，超出范围将被截断。  |
+| userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。<br>取值范围为[0, 2<sup>31</sup>-1]，超出范围将被截断。当传入参数值小于0时，输出错误日志。 |
 | uri | string | 是 |  DLP文件的URI。不超过4095字节。超出范围时抛出错误码19100001。 |
 
 **返回值：**
@@ -200,7 +200,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
 dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100,
   uri).then((dlpSandboxInfo: dlpPermission.DLPSandboxInfo) => {
-  console.info('dlpSandboxInfo:', JSON.stringify(dlpSandboxInfo));
+  console.info('dlpSandboxInfo: ', JSON.stringify(dlpSandboxInfo));
 }).catch((error: BusinessError)=> {
   console.error(error.message);
 }); // 安装DLP沙箱。
@@ -228,7 +228,7 @@ DLP文件管理应用打开受保护文件前，需要先为目标应用安装DL
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 应用包名。最小7字节，最大128字节。超出范围时抛出错误码19100001。 |
 | access | [DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess) | 是 | DLP文件授权类型。设置不同的授权类型将决定用户对DLP文件的访问权限范围。 |
-| userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。当小于0时，输出错误日志。取值范围为[0, 2<sup>31</sup>-1]，超出范围将被截断。 |
+| userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。<br>取值范围为[0, 2<sup>31</sup>-1]，超出范围将被截断。当传入参数值小于0时，输出错误日志。 |
 | uri | string | 是 | DLP文件的URI。不超过4095字节。 超出范围时抛出错误码19100001。|
 | callback | AsyncCallback&lt;[DLPSandboxInfo](#dlpsandboxinfo)&gt; | 是 | 回调函数。当安装DLP沙箱成功，err为undefined，data为获取到的沙箱信息；否则为错误对象。 |
 
@@ -280,7 +280,7 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number): Promi
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 应用包名。最小7字节，最大128字节。超出范围时抛出错误码19100001。 |
-| userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。当小于0时，输出错误日志。取值范围为[0, 2<sup>31</sup>-1]，超出范围将被截断。 |
+| userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。<br>取值范围为[0, 2<sup>31</sup>-1]，超出范围将被截断。当传入参数值小于0时，输出错误日志。 |
 | appIndex | number | 是 | DLP沙箱号，即installDLPSandbox接口调用成功后的返回值，用于标识已安装的DLP沙箱。取值范围为[1000, 1100]。超出范围时输出错误日志。 |
 
 **返回值：**
