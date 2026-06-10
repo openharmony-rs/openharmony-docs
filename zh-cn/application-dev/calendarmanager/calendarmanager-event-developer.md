@@ -160,7 +160,7 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
 
    方式一：可以在日历账户下通过`addEvent()`或`addEvents()`接口创建日程。其中可使用`addEvent()`接口创建单个日程，也可以使用`addEvents()`接口批量创建日程，此处以创建单个日程为例。
 
-   方式二：在获取到日历管理器对象后，可通过`editEvent()`接口创建单个日程。调用此接口创建日程时，会跳转到日程创建页面，在日程创建页面进行相关操作完成日程的创建, `editEvent()`不支持自定义周期性日程创建。
+   方式二：在获取到日历管理器对象后，可通过`editEvent()`接口创建单个日程。调用此接口创建日程时，会跳转到日程创建页面，在日程创建页面进行相关操作完成日程的创建，`editEvent()`不支持自定义周期性日程创建。
    
    <!-- @[calendarEvent_eventParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
    
