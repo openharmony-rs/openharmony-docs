@@ -41,6 +41,14 @@
    ```
    ArkTS-Sta示例：
    <!-- @[arkts_custom_font_include](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { Entry, Text, Column, Component, Button, Row, $r, NodeContainer, Color, ShadowStyle, FlexAlign, VerticalAlign } from '@ohos.arkui.component'
+   import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
+   import { State } from '@ohos.arkui.stateManagement'
+   import { UIContext } from '@kit.ArkUI'
+   import { text } from '@kit.ArkGraphics2D'
+   ```
 
 2. 注册自定义字体。有以下两种方式：
 
