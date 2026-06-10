@@ -749,10 +749,10 @@ struct FlexExample4 {
     Column() {
       Column({ space: 5 } as ColumnOptions) {
         Text('alignItems:Auto').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        AlignItemsFlex({ alignItems: ItemAlign.Auto }) // 子组件在容器交叉轴上首部对齐
+        AlignItemsFlex({ alignItems: ItemAlign.Auto }) // 子组件在容器交叉轴上首端对齐
 
         Text('alignItems:Start').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        AlignItemsFlex({ alignItems: ItemAlign.Start }) // 子组件在容器交叉轴上首部对齐
+        AlignItemsFlex({ alignItems: ItemAlign.Start }) // 子组件在容器交叉轴上首端对齐
 
         Text('alignItems:Center').fontSize(9).fontColor(0xCCCCCC).width('90%')
         AlignItemsFlex({ alignItems: ItemAlign.Center }) // 子组件在容器交叉轴上居中对齐
@@ -813,7 +813,7 @@ struct FlexExample5 {
         AlignContentFlex({ alignContent: FlexAlign.End }) // 多行布局下子组件尾部对齐
 
         Text('alignContent:SpaceBetween').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        AlignContentFlex({ alignContent: FlexAlign.SpaceBetween }) // 多行布局下第一行子组件与列首对齐，最后一行子组件与列尾对齐
+        AlignContentFlex({ alignContent: FlexAlign.SpaceBetween }) // 多行布局下第一行子组件与行首对齐，最后一行子组件与行尾对齐
 
         Text('alignContent:SpaceAround').fontSize(9).fontColor(0xCCCCCC).width('90%')
         AlignContentFlex({ alignContent: FlexAlign.SpaceAround }) // 多行布局下第一行子组件到列首的距离和最后一行子组件到列尾的距离是相邻行之间距离的一半
