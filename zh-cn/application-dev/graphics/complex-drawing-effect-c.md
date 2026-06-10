@@ -105,7 +105,7 @@ OH_Drawing_PathEffectDestroy(pathEffect);
 
 | 不设置虚线路径效果的示意图 | 设置虚线效果的示意图 |
 | -------- | -------- |
-| ![Path-Without-Dashed-Lines](figures/Path-Without-Dashed-Lines.png) | ![zh-cn_image_0000002194110865](figures/zh-cn_image_0000002194110865.png) |
+| ![Path-Without-Dashed-Lines](figures/Path-Without-Dashed-Lines.png) | ![Path-With-Dashed-Lines](figures/Path-With-Dashed-Lines.png) |
 
 
 ## 着色器效果
