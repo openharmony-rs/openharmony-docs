@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **gestureEvent** module provides APIs for gesture events reported by devices.
 
@@ -27,7 +27,7 @@ Defines a pinch event.
 
 | Name            | Type       | Read-Only  | Optional  | Description                                      |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
-| type         | [ActionType](#actiontype)   | No   | No   | Event type, for example, gesture start, gesture update, or gesture end.                                  |
+| type         | [ActionType](#actiontype)   | No   | No   | Gesture event type, for example, gesture start, gesture update, or gesture end.                                  |
 | scale        | number      | No   | No   | Pinch scale factor. The value is greater than or equal to 0.                            |
 
 ## Rotate<sup>11+</sup>
@@ -38,7 +38,7 @@ Defines a rotation gesture event.
 
 | Name            | Type       | Read-Only  | Optional  | Description                                      |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
-| type | [ActionType](#actiontype)   | No   | No   | Event type, for example, gesture start, gesture update, or gesture end.                                  |
+| type | [ActionType](#actiontype)   | No   | No   | Gesture event type, for example, gesture start, gesture update, or gesture end.                                  |
 | angle | number      | No   | No   | Angle to rotate.                            |
 
 ## ThreeFingersSwipe
@@ -49,7 +49,7 @@ Defines a three-finger swipe gesture event.
 
 | Name            | Type       | Read-Only  | Optional  | Description                                      |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
-| type         | [ActionType](#actiontype)   | No   | No   | Event type, for example, gesture start, gesture update, or gesture end.                                  |
+| type         | [ActionType](#actiontype)   | No   | No   | Gesture event type, for example, gesture start, gesture update, or gesture end.                                  |
 | x        | number      | No   | No   | X coordinate.                            |
 | y        | number      | No   | No   | Y coordinate.                            |
 
@@ -61,7 +61,7 @@ Defines a four-finger swipe gesture event.
 
 | Name            | Type       | Read-Only  | Optional  | Description                                      |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
-| type         | [ActionType](#actiontype)   | No   | No   | Event type, for example, gesture start, gesture update, or gesture end.                                  |
+| type         | [ActionType](#actiontype)   | No   | No   | Gesture event type, for example, gesture start, gesture update, or gesture end.                                  |
 | x        | number      | No   | No   | X coordinate.                            |
 | y        | number      | No   | No   | Y coordinate.                            |
 
@@ -73,7 +73,7 @@ Defines a three-finger tap gesture event.
 
 | Name              | Type                     | Read-Only| Optional| Description            |
 | ------------------ | ------------------------- | ---- | ---- | ---------------- |
-| type | [ActionType](#actiontype) | No  | No  | Event type, for example, gesture start, gesture update, or gesture end.|
+| type | [ActionType](#actiontype) | No  | No  | Gesture event type, for example, gesture start, gesture update, or gesture end.|
 
 ## ActionType
 

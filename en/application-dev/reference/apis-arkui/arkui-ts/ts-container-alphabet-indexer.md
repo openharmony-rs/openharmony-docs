@@ -1,9 +1,9 @@
 # AlphabetIndexer
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
-<!--Tester: @lxl007-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **AlphabetIndexer** component can create a logically indexed array of items in a container for instant location.
@@ -49,7 +49,7 @@ Defines the options of the **AlphabetIndexer** component.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | ---- | ---- | -------- |
 | arrayValue<sup>7+</sup> | Array&lt;string&gt; | No| No| Array of index items.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| selected<sup>7+</sup>   | number              | No| No   | Index of the initial selected item. If the value is out of range, the default value **0** is used.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| selected<sup>7+</sup>   | number              | No| No   | Index of the initial selected item. If the value is out of range, the default value **0** is used. When this parameter and the [selected](#selected8) property are set at the same time, the **selected** property has a higher priority.<br>Value range: [0, arrayValue.length-1]<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Attributes
 
@@ -129,7 +129,11 @@ Sets the background color of the selected item.
 
 popupBackground(value: ResourceColor)
 
-Sets the background color for the pop-up window.
+Sets the background color for the pop-up window.<br>
+If this API is not called or the **value** parameter is set to **undefined**:<br>
+In API version 11 and earlier versions, the default background color of the pop-up is **0xFFFFFFFF**, which is white.<br>
+In API versions 12 to 24, the default background color is **#66808080**, which is translucent gray.<br>
+Since API version 26.0.0, if neither **popupBackground** nor [popupBackgroundBlurStyle](#popupbackgroundblurstyle12) is called or the **value** parameter is set to **undefined**, the **THIN** style of **[ImmersiveStyle](../arkts-apis-uimaterial.md#immersivestyle)** is displayed by default on devices with high- and mid-level computing power, and the white background is displayed by default on devices with low-level computing power. If **popupBackgroundBlurStyle** is called and the **value** parameter is set to a valid value, the background color of the pop-up is **#66808080** by default, which is translucent gray.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -139,7 +143,7 @@ Sets the background color for the pop-up window.
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the pop-up window.<br>The background blur effect of the pop-up text can affect the background color. You can disable the effect by setting [popupBackgroundBlurStyle](#popupbackgroundblurstyle12) to **NONE**.<br>Default value:<br>API version 11 and earlier: **0xFFFFFFFF**, which is white.<br>Since API version 12: **#66808080**, which is semi-transparent gray.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the pop-up window.<br>The background blur effect of the pop-up text can affect the background color. You can disable the effect by setting [popupBackgroundBlurStyle](#popupbackgroundblurstyle12) to **NONE**.<br>|
 
 ### usingPopup
 
@@ -254,7 +258,7 @@ Since API version 10, this parameter supports two-way binding through [$$](../..
 
 | Name| Type  | Mandatory| Description                        |
 | ------ | ------ | ---- | ---------------------------- |
-| index  | number | Yes  | Index of the selected item.<br>Default value: **0**|
+| index  | number | Yes  | Index of the selected item.<br>Value range: [0, [arrayValue](#alphabetindexeroptions18).length – 1]<br>Default value: **0**|
 
 ### popupPosition<sup>8+</sup>
 
@@ -334,7 +338,7 @@ Sets the background color for the secondary index item in the pop-up window.
 
 | Name| Type                    | Mandatory| Description                                           |
 | ------ | ------------------------ | ---- | ----------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the secondary index item in the pop-up window.<br>Default value:<br>API version 11 and earlier: **#FFFFFFFF**, which is white.<br>Since API version 12: **#00000000**, which is black.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the secondary index item in the pop-up window.<br>Default value:<br>API version 11 and earlier: **#FFFFFFFF**, which is white.<br>API version 12 and later: **#00000000**, which is transparent.|
 
 ### autoCollapse<sup>11+</sup>   
 
@@ -396,7 +400,7 @@ Sets the radius of the index background border corners in the alphabetic index b
 
 popupBackgroundBlurStyle(value: BlurStyle)
 
-Sets the background blur style of the pop-up window. If this API is not called, the component is regularly blurred by default. The corresponding value is **COMPONENT_REGULAR** in **BlurStyle**.
+Sets the background blur style of the pop-up window. In versions earlier than API version 26.0.0, if this API is not called, the **COMPONENT_REGULAR** value in **BlurStyle** is used by default. Since API version 26.0.0, if neither [popupBackground](#popupbackground) nor **popupBackgroundBlurStyle** is called or the value is **undefined**, the **THIN** style of [ImmersiveStyle](../arkts-apis-uimaterial.md#immersivestyle) is used by default on devices with high- and mid-level computing power, and the white background is used by default on devices with low-level computing power.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -771,15 +775,15 @@ struct AlphabetIndexerSample {
               .itemSize(28) // Size of an item in the alphabetic index bar.
               .alignStyle(IndexerAlign.Right) // The pop-up window is displayed on the left of the indexer.
               .popupTitleBackground("#D2B48C") // Background color of the primary index item in the pop-up window.
-              .popupSelectedColor(0x00FF00) // Text color of the unselected secondary index items in the pop-up window.
-              .popupUnselectedColor(0x0000FF) // Text color of the selected secondary index item in the pop-up window.
+              .popupSelectedColor(0x00FF00) // Text color of the selected secondary index items in the pop-up window.
+              .popupUnselectedColor(0x0000FF) // Text color of the unselected secondary index item in the pop-up window.
               .popupItemFont({ size: 30, style: FontStyle.Normal }) // Text style of the secondary index item in the pop-up window.
               .popupItemBackgroundColor(0xCCCCCC) // Background color of the secondary index item in the pop-up window.
               .onSelect((index: number) => {
                 console.info(this.value[index] + ' Selected!');
               })
               .onRequestPopupData((index: number) => {
-                // When A is selected, the secondary index item list in the pop-up window displays arrayA. Similarly, selecting B, C, or L will display their respective arrays.
+                // When A is selected, the secondary index item list in the pop-up window displays arrayA. Similarly, selecting B, C, or J will display their respective arrays.
                 // For other index items, the pop-up window will only show the primary index item.
                 if (this.value[index] == 'A') {
                   return this.arrayA;
@@ -960,3 +964,4 @@ struct AlphabetIndexerSample {
 ```
 
 ![alphabetIndexerBlurStyleSample](figures/alphabetIndexerBlurStyleSample.gif)
+<!--no_check-->

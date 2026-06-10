@@ -1,8 +1,8 @@
 # 视效设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## visualEffect
 
@@ -109,6 +111,32 @@ compositingFilter(filter: Filter): T
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
 | filter | [Filter](#filter) | 是   | 合成滤镜视觉效果。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
+## materialFilter<sup>23+</sup>
+
+materialFilter(filter: Filter | undefined): T
+
+设置系统材质滤镜效果，系统材质滤镜的绘制早于[backgroundFilter](#backgroundfilter)绘制，即位于backgroundFilter的更底层。
+
+>**说明：**
+>
+> 该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                 |
+| ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
+| filter | [Filter](#filter) &nbsp;\|&nbsp; undefined | 是   | 系统材质滤镜视觉效果。设置为undefined时恢复为无系统材质滤镜效果。 |
 
 **返回值：**
 

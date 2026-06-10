@@ -3,7 +3,7 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
 该模块向应用提供端云同步能力，包括启动/停止端云同步以及启动/停止原图下载功能。
@@ -33,7 +33,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 | UPLOAD_FAILED |  1 | 上行同步失败。 |
 | DOWNLOADING |  2 | 下行同步中。 |
 | DOWNLOAD_FAILED |  3 | 下行同步失败。 |
-| COMPLETED |  4 | 同步成功。 |
+| COMPLETED |  4 | 同步成功或首次注册同步状态回调成功均返回。 |
 | STOPPED |  5 | 同步已停止。 |
 
 ## ErrorType<sup>12+</sup>
@@ -135,6 +135,8 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 
 云盘同步对象添加同步过程事件监听。
 
+当应用首次注册callback时，SyncProgress中的SyncState初始返回值为4，代表COMPLETED；后续重新注册时，该值将反映实际同步结果，例如若上次上行失败，返回值为1，代表UPLOAD_FAILED。
+
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **参数：**
@@ -158,7 +160,7 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 ```ts
 let fileSync = new cloudSync.FileSync();
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state：" + pg.state + "error type:" + pg.error);
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
 }
 
 fileSync.on('progress', callback);
@@ -194,7 +196,7 @@ off(event: 'progress', callback?: Callback\<SyncProgress>): void
 let fileSync = new cloudSync.FileSync();
 
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state：" + pg.state + "error type:" + pg.error);
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
 }
 
 fileSync.on('progress', callback);
@@ -236,7 +238,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let fileSync = new cloudSync.FileSync();
 
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state：" + pg.state + "error type:" + pg.error);
+  console.info("file sync state: " + pg.state + "error type: " + pg.error);
 }
 
 fileSync.on('progress', callback);
@@ -402,7 +404,7 @@ let fileSync = new cloudSync.FileSync();
 
 fileSync.getLastSyncTime().then((timeStamp: number) => {
   let date = new Date(timeStamp);
-  console.info("get last sync time successfully:"+ date);
+  console.info("get last sync time successfully: "+ date);
 }).catch((err: BusinessError) => {
   console.error("get last sync time failed with error message: " + err.message + ", error code: " + err.code);
 });
@@ -444,7 +446,7 @@ fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
     console.error("get last sync time with error message: " + err.message + ", error code: " + err.code);
   } else {
     let date = new Date(timeStamp);
-    console.info("get last sync time successfully:"+ date);
+    console.info("get last sync time successfully: "+ date);
   }
 });
 ```
@@ -508,7 +510,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let fileCache = new cloudSync.CloudFileCache();
 let callback = (pg: cloudSync.DownloadProgress) => {
-  console.info("download state：" + pg.state);
+  console.info("download state: " + pg.state);
 };
 
 try {
@@ -598,7 +600,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let fileCache = new cloudSync.CloudFileCache();
 
 let callback = (pg: cloudSync.DownloadProgress) => {
-  console.info("download state：" + pg.state);
+  console.info("download state: " + pg.state);
 }
 
 try {
@@ -641,7 +643,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let fileCache = new cloudSync.CloudFileCache();
 let callback = (pg: cloudSync.MultiDownloadProgress) => {
-  console.info("download state：" + pg.state);
+  console.info("download state: " + pg.state);
 }
 
 try {
@@ -697,7 +699,7 @@ let uri = fileUri.getUriFromPath(path);
 
 try {
   fileCache.on('progress', (pg: cloudSync.DownloadProgress) => {
-    console.info("download state:" + pg.state);
+    console.info("download state: " + pg.state);
   });
 } catch (e) {
   const error = e as BusinessError;
@@ -800,7 +802,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let fileCache = new cloudSync.CloudFileCache();
 try {
   fileCache.on('batchDownload', (pg: cloudSync.MultiDownloadProgress) => {
-    console.info(`batch download state：${pg.state}`);
+    console.info(`batch download state: ${pg.state}`);
   });
 } catch (e) {
   let error = e as BusinessError;
@@ -1018,6 +1020,90 @@ try {
 
 ```
 
+### cleanFileCache
+
+cleanFileCache(): Promise&lt;void&gt;
+
+删除所有已缓存文件，未上云文件、写打开文件及缩略图文件不会被删除。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**返回值：**
+
+| 类型  | 说明 |
+| ------ | ---- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 13900010 | Try again. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+
+fileCache.cleanFileCache().then(() => {
+  console.info("clean file cache successfully");
+}).catch((err: BusinessError) => {
+  console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
+});
+
+```
+
+### getCachedTotalSize
+
+getCachedTotalSize(): Promise&lt;number&gt;
+
+获取已缓存文件的总大小，包含本地新增未上云文件、本地新增已上云文件及已下载文件大小，不包含缩略图文件大小。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**返回值：**
+
+| 类型  | 说明 |
+| ------ | ---- |
+| Promise&lt;number&gt; | Promise对象，返回已缓存文件总大小。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 13900010 | Try again. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+
+fileCache.getCachedTotalSize().then((totalDownloadSize: number) => {
+  console.info("totalDownloadSize: " + totalDownloadSize);
+}).catch((err: BusinessError) => {
+  console.error("get totalDownloadSize failed with error message: " + err.message + ", error code: " + err.code);
+});
+
+```
+
 ## DownloadErrorType<sup>11+</sup>
 
 端云下载错误类型，为枚举类型。
@@ -1219,9 +1305,9 @@ let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 let onCallback1 = (changeData: cloudSync.ChangeData) => {
   if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-    // file had added, do something
+    // file has been added, do something
   } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-    // file had removed, do something
+    // file has been removed, do something
   }
 }
 cloudSync.registerChange(uri, false, onCallback1);
@@ -1264,9 +1350,9 @@ let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 let onCallback1 = (changeData: cloudSync.ChangeData) => {
   if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-    // file had added, do something
+    // file has been added, do something
   } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-    // file had removed, do something
+    // file has been removed, do something
   }
 }
 cloudSync.registerChange(uri, false, onCallback1);
@@ -1310,7 +1396,7 @@ cloudSync.unregisterChange(uri);
 
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
-| editedTime | number | 否   | 否   | 文件内容修改时间。 |
+| editedTime | number | 否   | 否   | 文件内容修改的时间戳，单位：ms。 |
 | fileSize | number | 否   | 否   | 文件大小，单位：Byte。 |
 | versionId | string | 否   | 否   | 文件版本号。 |
 | originalFileName | string | 否   | 否   | 当前版本对应的文件名。 |
@@ -1342,7 +1428,7 @@ cloudSync.unregisterChange(uri);
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
 | state | [State](#state11) | 否   | 否   | 所选版本云文件的下载状态。 |
-| progress | number | 否   | 否   | 下载进度。 |
+| progress | number | 否   | 否   | 下载进度，单位：百分比。 |
 | errType | [DownloadErrorType](#downloaderrortype11) | 否   | 否   | 若出现下载失败，失败的错误类型。 |
 
 ## FileVersion<sup>20+</sup>
@@ -1568,7 +1654,7 @@ fileVersion.downloadHistoryVersion(uri, versionId, callback).then((fileUri: stri
 fileVersion.replaceFileWithHistoryVersion(uri, versionUri).then(() => {
   console.info("replace file with history version success.");
 }).catch((err: BusinessError) => {
-  console.error("replace file with history version filed with error message: " + err.message + ", error code: " + err.code);
+  console.error("replace file with history version failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
 

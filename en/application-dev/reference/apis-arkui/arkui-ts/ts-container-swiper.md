@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
- The **Swiper** component is able to display child components in a carousel-like manner.
+The **Swiper** component is able to display child components in a carousel-like manner.
 
 > **NOTE**
 >
@@ -136,7 +136,7 @@ Sets the style of the navigation indicator.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [DotIndicator](#dotindicator10)<sup>10+</sup>&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)<sup>10+</sup>&nbsp;\|&nbsp;boolean | Yes  | Style of the navigation indicator.<br> \- **DotIndicator**: dot-style indicator.<br> \- **DigitIndicator**: digit-style indicator.<br> \- **boolean**: whether to enable the navigation indicator. **true** to enable, **false** otherwise.<br>  Default value: **true**<br>  Default style: **DotIndicator**|
+| value  | [DotIndicator](#dotindicator10)<sup>10+</sup>&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)<sup>10+</sup>&nbsp;\|&nbsp;boolean | Yes  | Style of the navigation indicator.<br> \- **DotIndicator**: dot-style indicator.<br> \- **DigitIndicator**: digit-style indicator.<br> \- **boolean**: whether to enable the navigation indicator. **true** to enable, **false** otherwise.<br>Default value: **true**.<br>Default type: **DotIndicator**|
 
 ### indicator<sup>15+</sup>
 
@@ -158,7 +158,7 @@ Sets the navigation indicator for the component.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| indicator  | [IndicatorComponentController](ts-swiper-components-indicator.md#indicatorcomponentcontroller)<sup>15+</sup>&nbsp;\| [DotIndicator](#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)&nbsp;\|&nbsp;boolean| Yes  | Style of the navigation indicator.<br>\- **IndicatorComponentController**: separate navigation indicator controller. This controller can be bound to an external navigation indicator, but the external and internal indicators cannot coexist.<br> \- **DotIndicator**: dot-style indicator.<br> \- **DigitIndicator**: digit-style indicator.<br> \- **boolean**: whether to enable the navigation indicator. **true** to enable, **false** otherwise.<br>  Default value: **true**<br>  Default style: **DotIndicator**|
+| indicator  | [IndicatorComponentController](ts-swiper-components-indicator.md#indicatorcomponentcontroller)<sup>15+</sup>&nbsp;\| [DotIndicator](#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)&nbsp;\|&nbsp;boolean| Yes  | Style of the navigation indicator.<br>\- **IndicatorComponentController**: separate navigation indicator controller. This controller can be bound to an external navigation indicator, but the external and internal indicators cannot coexist.<br> \- **DotIndicator**: dot-style indicator.<br> \- **DigitIndicator**: digit-style indicator.<br> \- **boolean**: whether to enable the navigation indicator. **true** to enable, **false** otherwise.<br>Default value: **true**.<br>Default type: **DotIndicator**|
 
 ### nestedScroll<sup>11+</sup>
 
@@ -365,7 +365,7 @@ Sets the number of child components to be prloaded and configuration options.
 
 > **NOTE**
 >
-> - When **independent** in options is set to **true**, the number of preloaded child components is calculated based on the value of **count**, which is decoupled from the **swipeByGroup** calculation of [displaycount](#displaycount22). For example, if the value of **count** in **cachedCount** is **1**, the previous and next child components of the current child node are preloaded.
+> - When **independent** in options is set to **true**, the number of preloaded child components is calculated based on the value of **count**, which is decoupled from the **swipeByGroup** calculation of [displayCount](#displaycount22). For example, if the value of **count** in **cachedCount** is **1**, the previous and next child components of the current child node are preloaded.
 > - If **swipeByGroup** of **displayCount** is set to **true** and **independent** of **options** is set to **false** (default value), the number of child components to be preloaded is calculated by group. For example, if **count** of **cachedCount** is **1**, **value** of **displayCount** is **2**, and **swipeByGroup** of **displayCount** is **true**, two child components of the previous group and two child components of the next group of the current group are preloaded.
 > - This parameter takes effect only when used with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) or the [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) component that has virtualScroll enabled. Child components outside the cache range will be released after this parameter takes effect.
 
@@ -504,7 +504,7 @@ Sets the arrow style of the navigation indicator.
 
 | Name                    | Type                                            | Mandatory| Description                                                        |
 | -------------------------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value                      | [ArrowStyle](#arrowstyle10)&nbsp;\|&nbsp;boolean | Yes  | Arrow and background to set. In cases of exceptions, the default values in the **ArrowStyle** object are used. The value **true** means to show the arrow and background in the default styles, and **false** means to hide the arrow and background.<br>Default value: **false**.|
+| value                      | [ArrowStyle](#arrowstyle10)&nbsp;\|&nbsp;boolean| Yes  | Arrow and background to set. In cases of exceptions, the default values in the **ArrowStyle** object are used. The value **true** means to show the arrow and background in the default styles, and **false** means to hide the arrow and background.<br>Default value: **false**.|
 | isHoverShow                | boolean                                          | No  | Whether to show the arrow on mouse hover.<br>Default value: **false**.<br>**NOTE**<br>1. **false**: The arrow is always displayed.<br>2. **true**: The arrow is displayed.<br>With navigation indicators, the arrow is displayed when the mouse pointer hovers over the indicators or arrow areas.<br>Without navigation indicators, the arrow is displayed when the mouse pointer hovers over the **Swiper** display area.<br>3. When the arrow is displayed, clicking the arrow turns pages.|
 
 ### displayMode
@@ -658,6 +658,7 @@ Enumerates the modes in which elements are displayed along the main axis.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 30%; 10%; 60%-->
 | Name                              |  Value|Description                                                        |
 | ---------------------------------- | -- |------------------------------------------------------------ |
 | Stretch<sup>(deprecated)</sup>     | 0 |The width of each page in the **Swiper** component equals the component's own width.<br>Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **STRETCH** instead.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 7.|
@@ -763,7 +764,7 @@ Moves to a specific page.
 | Name     | Type      | Mandatory | Description    |
 | -------- | ---------- | ---- | -------- |
 | index| number | Yes   | Index of the target page in the **Swiper** component.<br>**NOTE**<br>If the value specified is less than 0 or greater than the maximum page index, the value **0** is used.|
-| animationMode| [SwiperAnimationMode](#swiperanimationmode15)&nbsp;\|&nbsp;boolean | No   | Animation mode for moving to the specified page.<br>Default value: **SwiperAnimationMode.NO_ANIMATION**<br> **NOTE**<br>The value **true** is equivalent to **SwiperAnimationMode.DEFAULT_ANIMATION**, which means to use the default animation. The value **false** is equivalent to **SwiperAnimationMode.NO_ANIMATION**, which means to use no animation.|
+| animationMode| [SwiperAnimationMode](#swiperanimationmode15)&nbsp;\|&nbsp;boolean| No   | Animation mode for moving to the specified page.<br>Default value: **SwiperAnimationMode.NO_ANIMATION**<br> **NOTE**<br>The value **true** is equivalent to **SwiperAnimationMode.DEFAULT_ANIMATION**, which means to use the default animation. The value **false** is equivalent to **SwiperAnimationMode.NO_ANIMATION**, which means to use no animation.|
 
 ### finishAnimation
 
@@ -1064,7 +1065,7 @@ Sets the position of the navigation indicator relative to the bottom edge of the
 
 **Parameters**
 
-
+<!--Table: 15%; 25%; 10%; 50%-->
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
 | bottom  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[Length](ts-types.md#length)| Yes  | Position of the navigation indicator relative to the bottom edge of the **Swiper** component.<br>If neither **top** nor **bottom** is set, the navigation indicator is aligned at the bottom along the cross axis based on its own size and the size of the **Swiper** component, which is the same effect as setting **bottom=0**.<br>If the value specified is **0**, the navigation indicator is placed at the position 0.<br>Priority: lower than the **top** property<br>Value range: [0, Swiper height - Navigation indicator area height]. Values outside this range are adjusted to the nearest boundary.|
@@ -2014,7 +2015,9 @@ Defines the style of the navigation indicator.
 
 ### Example 1: Setting the Navigation Indicator Interaction and Page Turning Effect
 
-In this example, the [changeIndex](#changeindex15) API is used to set the [SwiperAnimationMode](#swiperanimationmode15) animation mode to implement the page turning of the **Swiper** component to a specified page.
+In this example, the [changeIndex](#changeindex15) API is used to set the [SwiperAnimationMode](#swiperanimationmode15) animation effect to jump to a specified page, and the [onScrollStateChanged](#onscrollstatechanged20) callback is used to listen for the scrolling state changes.
+
+The **onScrollStateChanged** event is supported since API version 20.
 
 ```ts
 // xxx.ets
@@ -2937,7 +2940,7 @@ struct SwiperExample {
 
 This example demonstrates how to set the number of elements displayed in the **Swiper** viewport based on breakpoints.
 
-From API version 22 onwards, the [displaycount](#displaycount22) API is added to set the number of elements displayed in the **Swiper** viewport.
+Since API version 22, the [displaycount](#displaycount22) API is added to set the number of elements displayed in the **Swiper** viewport.
 
 ```ts
 class MyDataSource implements IDataSource {

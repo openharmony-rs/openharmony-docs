@@ -1,8 +1,8 @@
 # 使用AVRecorder录制音频(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -40,27 +40,27 @@ AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis
 
 
 在 CMake 脚本中链接动态库。
-```
+```c++
 target_link_libraries(entry PUBLIC libavrecorder.so)
 ```
 
-使用[OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
-```
+使用[native_avformat.h](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
+```c++
 #include <multimedia/player_framework/native_avformat.h>
 ```
 
 并在 CMake 脚本中链接如下动态库。
-```
+```c++
 target_link_libraries(entry PUBLIC libnative_media_core.so)
 ```
 
 开发者使用系统日志能力时，需引入如下头文件。
-```
+```c++
 #include <hilog/log.h>
 ```
 
 并需要在 CMake 脚本中链接如下动态库。
-```
+```c++
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 ```
 
@@ -182,7 +182,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
        config.profile.audioSampleRate = 48000;
     
-       config.profile.fileFormat = AVRECORDER_CFT_MPEG_4A;
+       config.profile.fileFormat = AVRECORDER_CFT_MP3;
        config.fileGenerationMode = AVRECORDER_APP_CREATE;
     }
 
@@ -376,7 +376,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
       config.profile.audioSampleRate = 48000;
 
-      config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
+      config.profile.fileFormat = AVRECORDER_CFT_MP3;
       config.fileGenerationMode = AVRECORDER_APP_CREATE;
 
       config.metadata.location.latitude = 27.791863;

@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 
 > **说明：**
@@ -30,7 +30,7 @@ import Package from '@system.package';
 
 hasInstalled(options: CheckPackageHasInstalledOptions): void
 
-查询指定应用是否存在，或者原生应用是否安装。
+查询指定应用是否存在，或者应用是否安装。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -52,10 +52,10 @@ struct MainPage {
     Package.hasInstalled({
       bundleName: 'com.example.bundlename',
       success: (data) => {
-        console.log('package has installed: ' + data);
+        console.info('package has installed: ' + data);
       },
       fail: (msg:string, code) => {
-        console.log('query package fail, code: ' + code + ', data: ' + msg);
+        console.error('query package fail, code: ' + code + ', data: ' + msg);
       },
     });
   }

@@ -21,11 +21,12 @@
 该模块提供以下Web控制相关的常用功能：
 
 - [AdsBlockManager](./arkts-apis-webview-AdsBlockManager.md)：广告过滤配置。
+- [AIPageCommand](./arkts-apis-webview-AIPageCommand.md)：[executeAIPageCommand](./arkts-apis-webview-WebviewController.md#executeaipagecommand)支持的JSON命令协议。
 - [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md)：前进后退缓存配置。
 - [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md)：设置前进后退缓存配置所支持的特性。
 - [GeolocationPermissions](./arkts-apis-webview-GeolocationPermissions.md)：地理位置权限配置。
 - [JsMessageExt](./arkts-apis-webview-JsMessageExt.md)：执行JavaScript脚本的结果。
-- [MediaSourceInfo](./arkts-apis-webview-MediaSourceInfo.md)：媒体源信息配置。
+- [MediaSourceInfo](./arkts-apis-webview-MediaSourceInfo.md)：媒体源信息。
 - [NativeMediaPlayerSurfaceInfo](./arkts-apis-webview-NativeMediaPlayerSurfaceInfo.md)：应用接管媒体播放时渲染信息。
 - [PdfData](./arkts-apis-webview-PdfData.md)：生成的PDF输出数据。
 - [ProxyConfig](./arkts-apis-webview-ProxyConfig.md)：网络代理配置。

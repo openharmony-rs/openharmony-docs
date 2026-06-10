@@ -16,9 +16,9 @@ This topic walks you through on how to create a certificate extension (**CertExt
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. Use [cert.createCertExtension](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecertextension10) to create a **CertExtension** instance.
+2. Parse the certificate extension data and use [cert.createCertExtension](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecertextension10) to create a **CertExtension** instance.
 
-3. Use [CertExtension.getEntry](../../reference/apis-device-certificate-kit/js-apis-cert.md#getentry10) to obtain the certificate extension of the specified OID.   
+3. Use [CertExtension.getEntry](../../reference/apis-device-certificate-kit/js-apis-cert.md#getentry10) to obtain the certificate extension information for the specified OID. For example, obtain the OID list for certificate extension and obtain specific data based on an OID.
 
 4. Use [CertExtension.checkCA](../../reference/apis-device-certificate-kit/js-apis-cert.md#checkca10) to check whether the certificate is a CA certificate.
 

@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ```c
 typedef struct Input_Hotkey Input_Hotkey
@@ -13,7 +13,7 @@ typedef struct Input_Hotkey Input_Hotkey
 
 ## 概述
 
-定义快捷键结构体。
+定义快捷键结构体，用于描述快捷键的按键组合、触发条件和回调处理等设计逻辑，支持应用注册和管理自定义快捷键。
 
 **起始版本：** 14
 

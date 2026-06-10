@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -33,7 +33,7 @@
 
 FrameNode表示组件的实体节点，具体可以分为两大类能力：完全自定义节点的能力以及系统组件节点代理的能力。
 
-- 完全自定义节点：提供完整的自定义能力，包括自定义测量、布局以及绘制，支持节点的动态增、删，设置通用属性，设置事件回调。适用于不自带渲染引擎，需要依赖系统的布局、事件、动画、渲染等能力的场景。通过FrameNode的[构造函数](../reference/apis-arkui/js-apis-arkui-frameNode.md#constructor)创建的节点或者通过[typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12)的节点创建方法（例如：[createNode('Text')](../reference/apis-arkui/js-apis-arkui-frameNode.md#createnodetext12)、[createNode('Column')](../reference/apis-arkui/js-apis-arkui-frameNode.md#createnodecolumn12)、[createNode('Row')](../reference/apis-arkui/js-apis-arkui-frameNode.md#createnoderow12)等）创建出来的节点属于完全自定义节点。
+- 完全自定义节点：提供完整的自定义能力，包括自定义测量、布局以及绘制，支持节点的动态增、删，设置通用属性，设置事件回调。适用于不自带渲染引擎，需要依赖系统的布局、事件、动画、渲染等能力的场景。通过FrameNode的构造函数[constructor](../reference/apis-arkui/js-apis-arkui-frameNode.md#constructor)创建的节点或者通过[typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12)的节点创建方法（例如：[createNode('Text')](../reference/apis-arkui/js-apis-arkui-frameNode.md#createnodetext12)、[createNode('Column')](../reference/apis-arkui/js-apis-arkui-frameNode.md#createnodecolumn12)、[createNode('Row')](../reference/apis-arkui/js-apis-arkui-frameNode.md#createnoderow12)等）创建出来的节点属于完全自定义节点。
 
 - 系统组件代理节点：提供系统组件的代理能力，提供遍历节点树的能力，通过组件树上的FrameNode可以遍历整个组件树，并通过节点访问组件的信息或者注册额外的事件监听回调。适用于结合无感监听的接口实现打点、广告SDK、中台DFX等业务。通过FrameNode相关的查询接口（例如：[getChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild12)、[getParent](../reference/apis-arkui/js-apis-arkui-frameNode.md#getparent12)、[getNextSibling](../reference/apis-arkui/js-apis-arkui-frameNode.md#getnextsibling12)、[getAttachedFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getattachedframenodebyid12)等）返回的FrameNode对象，若不属于完全自定义节点则为系统组件代理节点。
 
@@ -48,3 +48,5 @@ BuilderNode通过无状态的UI方法[全局自定义构建函数](../ui/state-m
 ## 设置自定义节点跨语言属性
 
 ArkUI支持在前端使用ArkTS语言创建命令式节点，即FrameNode节点，也可以在Native侧使用C语言创建命令式节点，并且可以混合使用两类节点构建页面。针对上述场景，ArkUI提供命令式节点跨语言属性设置功能，即使用ArkTS语言创建的命令式节点，可以在Native侧进行属性设置。使用C语言创建的节点，可以在ArkTS侧进行属性设置。
+
+<!--RP1--><!--RP1End-->

@@ -1,4 +1,4 @@
-# @Entry：页面入口
+# \@Entry：页面入口
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
@@ -7,15 +7,15 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@Entry装饰的自定义组件将作为UI页面的入口。
+\@Entry装饰的自定义组件将作为UI页面的入口。
 
 > **说明：**
 >
 > 本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-## @Entry
+## \@Entry
 
-在单个UI页面中，仅允许存在一个由@Entry装饰的自定义组件作为页面的入口。
+在单个UI页面中，仅允许存在一个由\@Entry装饰的自定义组件作为页面的入口。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -26,6 +26,7 @@
 **示例：**
 
 ```ts
+// @Entry装饰的自定义组件作为UI页面的入口
 @Entry
 @Component
 struct Index {
@@ -39,6 +40,8 @@ struct Index {
 
 命名路由跳转选项。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                         | 类型                                                         | 只读 | 可选 | 说明                                                         |
@@ -50,6 +53,7 @@ struct Index {
 **示例：**
 
 ```ts
+// 设置路由页面名字为myPage
 @Entry({ routeName: 'myPage' })
 @Component
 struct Index {

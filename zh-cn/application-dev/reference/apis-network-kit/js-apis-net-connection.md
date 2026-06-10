@@ -268,7 +268,7 @@ let options: http.HttpRequestOptions = {
   usingProxy: true, // 选择使用网络代理，从API 10开始支持该属性。
 };
 // 发起一个HTTP请求。
-httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
+httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.HttpResponse) => {
   if (!err) {
    console.info(`Result: ${data.result}`);
    console.info(`code: ${data.responseCode}`);
@@ -490,6 +490,8 @@ setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 
 >**说明：**
 >
+> 当应用不再使用该网络或者该网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
+> 
 > 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId = 0的NetHandle对象，参考以下示例。
 
 ```ts
@@ -519,24 +521,55 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **示例：**
 
+当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
+
+以下示例以绑定WIFI网络为例，结合[on('netAvailable')](#onnetavailable)、[on('netLost')](#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
+
 ```ts
+
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
-    return;
+// 创建NetConnection对象。仅关注WIFI网络，需要指定网络类型为WIFI网络。
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
   }
-  // 表示APP使用当前默认网络访问网络
+});
+
+// 使用on接口订阅网络可用事件
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
     if (error) {
-      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   });
 });
+
+// 使用on接口订阅网络丢失事件。
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  // 网络丢失时，需要主动解除指定网络的绑定关系
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
+  });
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  if (error) {
+    console.error(JSON.stringify(error));
+  }
+});
+
 ```
 
 ## connection.setAppNet<sup>9+</sup>
@@ -557,17 +590,17 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 
 >**说明：**
 >
+> 当应用不再使用该网络或者该网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
+> 
 > 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId = 0的NetHandle对象，参考以下示例。
 ```ts
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.netId = 0;
-  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
-    if (error) {
-      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
-      return;
-    }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
-  });
+  connection.setAppNet(netHandle).then(() => {
+    console.info("setAppNet success");
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
 });
 ```
 
@@ -591,22 +624,51 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **示例：**
 
+当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
+
+以下示例以绑定WIFI网络为例，结合[on('netAvailable')](#onnetavailable)、[on('netLost')](#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
+
 ```ts
+
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
-    return;
+// 创建NetConnection对象。仅关注WIFI网络，需要指定网络类型为WIFI网络。
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
   }
+});
 
+// 使用on接口订阅网络可用事件
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle).then(() => {
-    console.info("success");
+    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
 });
+
+// 使用on接口订阅网络丢失事件。
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  // 网络丢失时，需要主动解除指定网络的绑定关系
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle).then(() => {
+    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  if (error) {
+    console.error(JSON.stringify(error));
+  }
+});
+
 ```
 
 ## connection.getAllNets
@@ -2541,7 +2603,7 @@ console.info(result);  // 预期结果：www.example.com
 
 getSystemNetPortStates(): Promise\<NetPortStatesInfo>
 
-获取系统当前监听的所有TCP、UDP端口信息，以及监听端口进程的PID、UID，支持IPV4和IPV6。  
+获取系统当前监听的所有TCP、UDP端口信息，以及监听端口进程的PID、UID，支持IPv4和IPv6。  
 
 > **说明：**
 >
@@ -2685,7 +2747,7 @@ queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInf
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | destination | string | 是 | 目标域名或IP地址，例如www.example.com、8.8.8.8。 |
-| duration | number | 是 | 探测持续时间，单位为秒，传入值需为正整数。探测间隔为1秒。若未出现异常（例如断网），探测时间到期后返回探测结果。 |
+| duration | number | 是 | 探测持续时间，单位为秒，取值范围\[1, 1000\]。探测间隔为1秒。若未出现异常（例如断网），探测时间到期后返回探测结果。该字段表示探测持续总时长，设置过长可能导致长时间占用应用线程资源。|
 
 **返回值：**
 
@@ -3575,17 +3637,17 @@ TCP状态。
 
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
-| ESTABLISHED | 1  | 连接已建立，可正常收发数据。  |
-| SYN_SENT    | 2  | 客户端发送SYN，等待服务端ACK+SYN（三次握手的第一步）。 |
-| SYN_RECV    | 3  | 服务端接收SYN并发送ACK+SYN，等待客户端ACK（三次握手的第二步）。 |
-| FIN_WAIT1   | 4  | 主动端发送FIN，等待对方ACK。 |
-| FIN_WAIT2   | 5  | 主动端接收FIN的ACK，等待对方ACK。 |
-| TIME_WAIT   | 6  | 主动端接收对方FIN并回复ACK，等待2倍最大报文段生存时间后彻底释放。 |
-| CLOSE       | 7  | 初始/关闭状态，无连接。 |
-| CLOSE_WAIT  | 8  | 被动端接收FIN并发送ACK，等待对方FIN。 |
-| LAST_ACK    | 9  | 被动端发送FIN后，等待对方ACK。 |
-| LISTEN      | 10 | 服务端监听，等待客户端连接。 |
-| CLOSING     | 11 | 双方同时发送FIN，互相等待ACK。   |
+| TCP_ESTABLISHED | 1  | 连接已建立，可正常收发数据。  |
+| TCP_SYN_SENT    | 2  | 客户端发送SYN，等待服务端ACK+SYN（三次握手的第一步）。 |
+| TCP_SYN_RECV    | 3  | 服务端接收SYN并发送ACK+SYN，等待客户端ACK（三次握手的第二步）。 |
+| TCP_FIN_WAIT1   | 4  | 主动端发送FIN，等待对方ACK。 |
+| TCP_FIN_WAIT2   | 5  | 主动端接收FIN的ACK，等待对方ACK。 |
+| TCP_TIME_WAIT   | 6  | 主动端接收对方FIN并回复ACK，等待2倍最大报文段生存时间后彻底释放。 |
+| TCP_CLOSE       | 7  | 初始/关闭状态，无连接。 |
+| TCP_CLOSE_WAIT  | 8  | 被动端接收FIN并发送ACK，等待对方FIN。 |
+| TCP_LAST_ACK    | 9  | 被动端发送FIN后，等待对方ACK。 |
+| TCP_LISTEN      | 10 | 服务端监听，等待客户端连接。 |
+| TCP_CLOSING     | 11 | 双方同时发送FIN，互相等待ACK。   |
   
   ## PacketsType
 
@@ -3615,6 +3677,40 @@ TCP状态。
 | exclusionList  | Array\<string\> | 否  |否 |不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式，详细匹配规则如下：<br/>1、域名匹配规则：<br/>（1）完全匹配：代理服务器主机名只要与列表中的任意一个主机名完全相同，就可以匹配。<br/>（2）包含匹配：代理服务器主机名只要包含列表中的任意一个主机名，就可以匹配。<br/>例如，如果在主机名列表中设置了 “ample.com”，则  “ample.com”、“www.ample.com”、“ample.com:80”都会被匹配，而 “www.example.com”、“ample.com.org”则不会被匹配。<br/>2、IP地址匹配规则：代理服务器主机名只要与列表中的任意一个IP地址完全相同，就可以匹配。<br/>3、域名跟IP地址可以同时添加到列表中进行匹配。<br/>4、单个“\*”是唯一有效的通配符，当列表中只有通配符时，将与所有代理服务器主机名匹配，表示禁用代理。通配符只能单独添加，不可以与其他域名、IP地址一起添加到列表中，否则通配符将不生效。<br/>5、匹配规则不区分主机名大小写。<br/>6、匹配主机名时，不考虑http和https等协议前缀。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | username<sup>12+</sup>  | string | 否 |是  |使用代理的用户名。<br>**说明:** 需同时设置password参数才会生效。|
 | password<sup>12+</sup>  | string | 否 | 是| 使用代理的用户密码。<br>**说明:** 需同时设置username参数才会生效。|
+
+## Socks5DnsStrategy
+
+SOCKS5代理的DNS查询策略配置信息。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称             | 值   | 说明                     |
+| --------------- | ------ | ------------------------ |
+| SYSTEM_MODE     | 0 | 使用SOCKS5代理时，DNS解析由系统执行。|
+| PROXY_MODE      | 1 | 使用SOCKS5代理时，DNS解析由代理服务器执行。|
+
+## Socks5Proxy
+
+SOCKS5代理配置信息。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| host  | string | 否  | 否 |代理服务器主机名。<br>**说明:** 当该项为空字符串时，视为未配置SOCKS5代理。|
+| port  | number | 否  |否  |主机端口。取值范围[0, 65535]。<br>**说明:** 当参数不在上述取值范围时，视为未配置SOCKS5代理。 |
+| username | string | 否 |是  |使用代理的用户名。<br>**说明:** 需同时设置password参数才会生效。|
+| password | string | 否 | 是| 使用代理的用户密码。<br>**说明:** 需同时设置username参数才会生效。|
+| dnsStrategy | [Socks5DnsStrategy](#socks5dnsstrategy) | 否 | 是 | 指定DNS解析由系统执行还是由代理服务器执行。<br>**说明:** 当此项未指定时，如果host有`socks5h://`协议前缀，则DNS解析由代理服务器执行，否则DNS解析由系统执行。 |
+| exclusionList  | Array\<string\> | 否  |是 |不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式，详细匹配规则如下：<br/>1、域名匹配规则：<br/>（1）完全匹配：代理服务器主机名只要与列表中的任意一个主机名完全相同，就可以匹配。<br/>（2）包含匹配：代理服务器主机名只要包含列表中的任意一个主机名，就可以匹配。<br/>例如，如果在主机名列表中设置了“example.com”，则“example.com”、“www.example.com”、“example.com:80”都会被匹配，而 “www.myexample.com”、“myexample.com.org”则不会被匹配。<br/>2、IP地址匹配规则：代理服务器主机名只要与列表中的任意一个IP地址完全相同，就可以匹配。<br/>3、域名跟IP地址可以同时添加到列表中进行匹配。<br/>4、单个“\*”是唯一有效的通配符，当列表中只有通配符时，将与所有代理服务器主机名匹配，表示禁用代理。通配符只能单独添加，不可以与其他域名、IP地址一起添加到列表中，否则通配符将不生效。<br/>5、匹配规则不区分主机名大小写。<br/>6、匹配主机名时，不考虑http、https、socks5、socks5h等协议前缀。 |
 
 ## NetSpecifier
 
@@ -3724,8 +3820,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | routes        | Array\<[RouteInfo](#routeinfo)>     | 否 | 否 | 路由信息。                                                                                          |
 | dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 否 | 网络地址，参考[NetAddress](#netaddress)。                                                              |
 | mtu           | number                              | 否 | 否 | 最大传输单元。                                                                                        |
-| isIPv4LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv4是否可用。true：当IPv4地址有效，且存在IPv4的默认路由时，认为IPv4可用；false：当IPv4地址无效，或者不存在IPv4的默认路由时，认为IPv4不可用。 |
-| isIPv6LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv6是否可用。true：当IPv6地址有效，且存在IPv6的默认路由时，认为IPv6可用；false：当IPv6地址无效，或者不存在IPv6的默认路由时，认为IPv6不可用。 |
+| isIPv4LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv4是否可用。true：当IPv4地址有效，且存在IPv4的默认路由时，认为IPv4可用；false：当IPv4地址无效，或者不存在IPv4的默认路由时，认为IPv4不可用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| isIPv6LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv6是否可用。true：当IPv6地址有效，且存在IPv6的默认路由时，认为IPv6可用；false：当IPv6地址无效，或者不存在IPv6的默认路由时，认为IPv6不可用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## RouteInfo
 
@@ -3840,12 +3936,12 @@ TCP端口状态信息。
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | tcpLocalIp    | string | 否 | 否 |TCP网络本地IP地址。                       |
-| tcpLocalPort  | number | 否 | 是 |TCP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
-| tcpRemoteIp   | string | 否 | 是 |TCP网络远程IP地址，默认是"0.0.0.0"。  |
-| tcpRemotePort | number | 否 | 是 |TCP网络远程端口，取值范围\[0, 65535]，默认值为0。 |
-| tcpUid        | number | 否 | 是 |监听该TCP端口的进程UID，默认值为0。 |
-| tcpPid        | number | 否 | 是 |监听该TCP端口的用户会UID，默认值为0。 |
-| tcpState      | [TcpState](#tcpstate24) | 否 | 是 |TCP网络状态，默认值为0。  |
+| tcpLocalPort  | number | 否 | 否 |TCP网络本地端口，取值范围\[0, 65535]。 |
+| tcpRemoteIp   | string | 否 | 否 |TCP网络远程IP地址。  |
+| tcpRemotePort | number | 否 | 否 |TCP网络远程端口，取值范围\[0, 65535]。 |
+| tcpUid        | number | 否 | 否 |监听该TCP端口的用户UID。 |
+| tcpPid        | number | 否 | 否 |监听该TCP端口的进程PID。 |
+| tcpState      | [TcpState](#tcpstate24) | 否 | 否 |TCP网络状态。  |
 
 
 ## UdpNetPortStatesInfo<sup>24+</sup>
@@ -3859,9 +3955,9 @@ UDP端口状态信息。
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | udpLocalIp    | string | 否 | 否 |UDP网络本地IP地址。                       |
-| udpLocalPort  | number | 否 | 是 |UDP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
-| udpUid        | number | 否 | 是 |监听该UDP端口的进程UID，默认值为0。 |
-| udpPid        | number | 否 | 是 |监听该UDP端口的用户会UID，默认值为0。 |
+| udpLocalPort  | number | 否 | 否 |UDP网络本地端口，取值范围\[0, 65535]。 |
+| udpUid        | number | 否 | 否 |监听该UDP端口的用户UID。 |
+| udpPid        | number | 否 | 否 |监听该UDP端口的进程PID。 |
 
 
 ## NetPortStatesInfo<sup>24+</sup>
@@ -3874,8 +3970,8 @@ UDP端口状态信息。
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
-| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的TCP信息。   |
-| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | 否 | 否 | 系统当前监听的UDP信息。   |
+| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo](#tcpnetportstatesinfo24)\> | 否 | 是 | 系统当前监听的TCP信息。   |
+| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo](#udpnetportstatesinfo24)\> | 否 | 是 | 系统当前监听的UDP信息。   |
   
  
 ## TraceRouteOptions
@@ -3890,7 +3986,7 @@ UDP端口状态信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| maxJumpNumber | number | 否 | 是 | 最大跳数，最大值为30，默认值为30。 |
+| maxJumpNumber | number | 否 | 是 | 最大跳数，取值范围\[1, 30\]，默认值为30。 |
 | packetsType | [PacketsType](#packetstype) | 否 | 是 | 探测使用的数据包类型，默认为NETCONN_PACKETS_ICMP。 |
   
 
@@ -3923,5 +4019,5 @@ UDP端口状态信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| lossRate | number | 否 | 否 | 丢包率，取值范围0-100。例如，100表示100%丢包，50表示50%丢包。 |
+| lossRate | number | 否 | 否 | 丢包率，取值范围\[0, 100\]。例如，100表示100%丢包，50表示50%丢包。 |
 | rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒。对目的主机发送多个探测报文，探测报文数量由[queryProbeResult](#connectionqueryproberesult)接口中duration参数决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |

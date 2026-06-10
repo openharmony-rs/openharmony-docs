@@ -4,7 +4,7 @@
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
 <!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 应用支持将文件上传到网络服务器，也支持从网络服务器下载资源文件到本地目录。
 
@@ -36,9 +36,9 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 
   // 新建一个本地应用文件
   try {
-    let file = fs.openSync(cacheDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    fs.writeSync(file.fd, 'upload file test');
-    fs.closeSync(file);
+    let file = fileIo.openSync(cacheDir + '/test.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+    fileIo.writeSync(file.fd, 'upload file test');
+    fileIo.closeSync(file);
   } catch (error) {
     let err: BusinessError = error as BusinessError;
     logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
@@ -46,7 +46,7 @@ async requestUploadFile(fileName: string, callback: (progress: number, isSuccess
 
   // 上传任务配置项
   let files: request.File[] = [
-  //uri前缀internal://cache 对应cacheDir目录
+  // uri前缀internal://cache 对应cacheDir目录
     {
       filename: fileName,
       name: 'test',
@@ -147,7 +147,7 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
 
 > **说明：**
 >
-> 当前网络资源文件仅支持下载至应用文件目录。
+> 从API version 20开始支持下载网络资源文件到用户文件。
 >
 > 使用上传下载模块，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
 
@@ -229,11 +229,11 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: n
 ```
 
 ## 下载网络资源文件至用户文件
-开发者可以使用[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)的[request.agent](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)接口下载网络资源文件到指定的用户文件目录。
+开发者可以使用[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)的[request.agent.create](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)接口下载网络资源文件到指定的用户文件目录。
 
 > **说明：**
 >
-> 从API version 20开始支持下载网络资源文件至用户文件。
+> 从API version 20开始支持下载网络资源文件到用户文件。
 
 ### 下载文档类文件
 
@@ -584,7 +584,7 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
             "include-subdomains": true,
             "name": "*.example.com"
           }
-        ],
+        ]
       }
     ]
   }
@@ -669,8 +669,7 @@ async wantAgentDownload(url: string, fileName: string, callback: (progress: numb
         logger.error(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
       })
       task.on('completed', async (progress) => {
-        console.warn('Request download completed, ' + JSON.stringify(progress));
-        logger.error(TAG, `Request download completed, ${JSON.stringify(progress)}`);
+        logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
         // 获取文件状态信息，其中包含大小
         let filePath = filesDir + '/' + fileName;
         // 获取文件状态信息，其中包含大小

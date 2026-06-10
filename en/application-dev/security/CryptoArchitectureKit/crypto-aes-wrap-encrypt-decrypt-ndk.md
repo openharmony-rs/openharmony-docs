@@ -26,7 +26,7 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 
 **Encryption**
 
-1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) and specify the string parameter **AES128-WRAP** to create a **Cipher** instance whose symmetric key type is AES128-WRAP for encryption.
+1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) and specify the string parameter **AES128-WRAP** to create a **Cipher** instance whose symmetric key type is **AES128-WRAP** for encryption.
 
 2. Call [OH_CryptoSymCipherParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_create) to create a parameter object and call [OH_CryptoSymCipherParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_setparam) to set encryption parameters.
 
@@ -36,7 +36,7 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 
 **Decryption**
 
-1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) and specify the string parameter **AES128-WRAP** to create a **Cipher** instance whose symmetric key type is AES128-WRAP for decryption.
+1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) and specify the string parameter **AES128-WRAP** to create a **Cipher** instance whose symmetric key type is **AES128-WRAP** for decryption.
 
 2. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to **CRYPTO_DECRYPT_MODE**, and specify the decryption key (**OH_CryptoSymKey**) and the decryption parameter instance (**OH_CryptoSymCipherParams**).
 
@@ -46,27 +46,74 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 
 Call [OH_CryptoSymKeyGenerator_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_destroy), [OH_CryptoSymCipher_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_destroy), [OH_CryptoSymKey_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkey_destroy), and [OH_Crypto_FreeDataBlob](../../reference/apis-crypto-architecture-kit/capi-crypto-common-h.md#oh_crypto_freedatablob) to release the allocated memory and destroy the object.
 
-```c++
+<!-- @[encrypt_decrypt_aes_wrap_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesWrap/entry/src/main/cpp/project/aes_wrap_encryption_decryption.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
-#include <string.h>
+#include <cstring>
+#include "file.h"
 
-static OH_Crypto_ErrCode doTestAesWrap()
+// Encryption function.
+static OH_Crypto_ErrCode doAesWrapEncrypt(OH_CryptoSymKey *keyCtx, OH_CryptoSymCipherParams *params,
+    Crypto_DataBlob *msgBlob, Crypto_DataBlob *encData)
+{
+    OH_CryptoSymCipher *encCtx = nullptr;
+    OH_Crypto_ErrCode ret = OH_CryptoSymCipher_Create("AES128-WRAP", &encCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Init(encCtx, CRYPTO_ENCRYPT_MODE, keyCtx, params);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Final(encCtx, msgBlob, encData);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+
+end:
+    OH_CryptoSymCipher_Destroy(encCtx);
+    return ret;
+}
+
+// Decryption function.
+static OH_Crypto_ErrCode doAesWrapDecrypt(OH_CryptoSymKey *keyCtx, OH_CryptoSymCipherParams *params,
+    Crypto_DataBlob *encData, Crypto_DataBlob *decData)
+{
+    OH_CryptoSymCipher *decCtx = nullptr;
+    OH_Crypto_ErrCode ret = OH_CryptoSymCipher_Create("AES128-WRAP", &decCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Init(decCtx, CRYPTO_DECRYPT_MODE, keyCtx, params); // The params value must be the same as that used in encryption.
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Final(decCtx, encData, decData);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+
+end:
+    OH_CryptoSymCipher_Destroy(decCtx);
+    return ret;
+}
+
+OH_Crypto_ErrCode doTestAesWrap()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
-    OH_CryptoSymCipher *encCtx = nullptr;
-    OH_CryptoSymCipher *decCtx = nullptr;
     OH_CryptoSymKey *keyCtx = nullptr;
     OH_CryptoSymCipherParams *params = nullptr;
     Crypto_DataBlob encData = {.data = nullptr, .len = 0};
     Crypto_DataBlob decData = {.data = nullptr, .len = 0};
-    char *plainText = const_cast<char *>("this is test!");
-    Crypto_DataBlob msgBlob = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
+    uint8_t keyData[] = {0xb7, 0x21, 0x3d, 0x4f, 0x63, 0x57, 0x9b, 0x97,
+        0x09, 0xd9, 0x80, 0x6f, 0x9f, 0x3a, 0x6f, 0x64};
+    Crypto_DataBlob msgBlob = {.data = keyData, .len = sizeof(keyData)};
     uint8_t iv[8] = {1, 2, 4, 12, 3, 4, 2, 3}; // iv is generated from an array of secure random numbers.
     Crypto_DataBlob ivBlob = {.data = iv, .len = sizeof(iv)};
     // Generate a symmetric key.
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("AES128", &genCtx);
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("AES128", &genCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -74,7 +121,7 @@ static OH_Crypto_ErrCode doTestAesWrap()
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    
+
     // Create a cipher parameter object.
     ret = OH_CryptoSymCipherParams_Create(&params);
     if (ret != CRYPTO_SUCCESS) {
@@ -85,39 +132,21 @@ static OH_Crypto_ErrCode doTestAesWrap()
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    
+
     // Encrypt data.
-    ret = OH_CryptoSymCipher_Create("AES128-WRAP", &encCtx);
+    ret = doAesWrapEncrypt(keyCtx, params, &msgBlob, &encData);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    ret = OH_CryptoSymCipher_Init(encCtx, CRYPTO_ENCRYPT_MODE, keyCtx, params);
-    if (ret != CRYPTO_SUCCESS) {
-        goto end;
-    }
-    ret = OH_CryptoSymCipher_Final(encCtx, &msgBlob, &encData);
-    if (ret != CRYPTO_SUCCESS) {
-        goto end;
-    }
-    
+
     // Decrypt data.
-    ret = OH_CryptoSymCipher_Create("AES128-WRAP", &decCtx);
-    if (ret != CRYPTO_SUCCESS) {
-        goto end;
-    }
-    ret = OH_CryptoSymCipher_Init(decCtx, CRYPTO_DECRYPT_MODE, keyCtx, params); // The params value must be the same as that used in encryption.
-    if (ret != CRYPTO_SUCCESS) {
-        goto end;
-    }
-    ret = OH_CryptoSymCipher_Final(decCtx, &encData, &decData);
+    ret = doAesWrapDecrypt(keyCtx, params, &encData, &decData);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
 
 end:
     OH_CryptoSymCipherParams_Destroy(params);
-    OH_CryptoSymCipher_Destroy(encCtx);
-    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     OH_Crypto_FreeDataBlob(&encData);

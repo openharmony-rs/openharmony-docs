@@ -10,7 +10,9 @@
 
 > **说明：** 
 >
-> 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -66,7 +68,8 @@ TabSegmentButtonV2({
   buttonMinHeight?: LengthMetrics, 
   buttonPadding?: LengthMetrics, 
   languageDirection?: Direction,
-  enableStateAnimation?: boolean 
+  enableStateAnimation?: boolean,
+  backgroundSystemMaterial?: uiMaterial.Material
 })
 ```
 
@@ -110,8 +113,12 @@ TabSegmentButtonV2({
 | itemSymbolFontColor              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮非选中选项HM Symbol类型图标的颜色。<br>默认值：`$r('sys.color.font_secondary')`<br>值为undefined时，按默认值处理。<br>**说明：**<br>items设置symbolModifier的fontColor属性值时，itemSymbolFontColor不生效。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮选中选项的HM Symbol类型图标颜色。<br>默认值：`$r('sys.color.font_primary')`<br>值为undefined时，按默认值处理。<br>**说明：**<br/>items设置symbolModifier的fontColor属性值时，itemSelectedSymbolFontColor不生效。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | 否   | @Param             | 配置分段按钮的布局方向。<br>默认值：Direction.Auto<br>超出取值范围按默认值处理。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| enableStateAnimation<sup>24+</sup>             | boolean                                                      | 否   | @Param             | 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；未配置该属性或值为false时表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| enableStateAnimation<sup>24+</sup>             | boolean                                                      | 否   | @Param             | 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；未配置该属性或值为false时表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | @Param | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButtonV2的动效发生改变。<br/>默认值：无材质效果。 <br>该成员只读，不支持更改。<br/>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
+> **说明：**
+>
+> 从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的新材质时，itemFontColor、itemSelectedFontColor、itemIconFillColor、itemSelectedIconFillColor、itemSymbolFontColor、itemSelectedSymbolFontColor使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。
 
 ## CapsuleSegmentButtonV2
 
@@ -149,7 +156,8 @@ CapsuleSegmentButtonV2({
   buttonMinHeight?: LengthMetrics,
   buttonPadding?: LengthMetrics,
   languageDirection?: Direction,
-  enableStateAnimation?: boolean 
+  enableStateAnimation?: boolean,
+  backgroundSystemMaterial?: uiMaterial.Material
 })
 ```
 
@@ -193,7 +201,12 @@ CapsuleSegmentButtonV2({
 | itemSymbolFontColor              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮非选中的选项中HM Symbol类型图标颜色。<br>默认值：`$r('sys.color.font_secondary')`<br>值为undefined时，按默认值处理。<br/>**说明：**<br>items设置symbolModifier的fontColor属性值时，itemSymbolFontColor不生效。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮选中的选项中HM Symbol类型图标颜色。<br>默认值：`$r('sys.color.font_on_primary')`<br>值为undefined时，按默认值处理。<br/>**说明：**<br>items设置symbolModifier的fontColor属性值时，itemSelectedSymbolFontColor不生效。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | 否   | @Param             | 配置分段按钮的布局方向。<br>默认值：Direction.Auto<br>超出取值范围按默认值处理。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| enableStateAnimation<sup>24+</sup>             | boolean                                                      | 否   | @Param             | 设置当通过变量修改selectedIndex时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；未配置该属性或值为false时表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| enableStateAnimation<sup>24+</sup>             | boolean                                                      | 否   | @Param             | 设置当通过变量修改selectedIndex时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；未配置该属性或值为false时表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | @Param | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。传入材质后，SegmentButtonV2的动效发生改变。<br/>默认值：无材质效果。 <br>该成员只读，不支持更改。<br/>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。  <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+
+> **说明：**
+>
+> 从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的新材质时，itemFontColor、itemSelectedFontColor、itemIconFillColor、itemSelectedIconFillColor、itemSymbolFontColor、itemSelectedSymbolFontColor使用支持反色的特殊系统资源，颜色自动适配到材质背景色的反色。
 
 ## MultiCapsuleSegmentButtonV2
 
@@ -1032,3 +1045,111 @@ export struct VCard {
 ```
 
 ![segmentbuttonv2-sample83](figures/segmentbuttonv2-sample83.gif)
+
+### 示例6（设置背景板材质）
+以下示例通过backgroundSystemMaterial属性，为分段按钮设置了透明的背景板材质、开启自动反色和交互形变效果，并自定义反馈光感的颜色。
+
+从API版本26.0.0开始，[TabSegmentButtonV2](#tabsegmentbuttonv2)和[CapsuleSegmentButtonV2](#capsulesegmentbuttonv2)中新增backgroundSystemMaterial属性。
+
+```ts
+import { SegmentButtonV2Items, TabSegmentButtonV2, CapsuleSegmentButtonV2, uiMaterial, ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct SegmentButtonV2Example {
+  @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    { text: '手机' },
+    { text: '平板' },
+    { text: 'PC/2in1' },
+    { text: '智能穿戴' },
+  ]);
+  @Local textSelectedIndex: number = 0;
+  @Local imageItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    { icon: $r('sys.media.ohos_ic_public_device_phone') },
+    { icon: $r('sys.media.ohos_ic_public_device_pad') },
+    { icon: $r('sys.media.ohos_ic_public_device_matebook') },
+    { icon: $r('sys.media.ohos_ic_public_device_watch') },
+  ]);
+  @Local imageSelectedIndex: number = 0;
+
+  build() {
+    Column({ space: 12 }) {
+      VCard({ title: '纯文本选项' }) {
+        TabSegmentButtonV2({
+          items: this.textItems,
+          selectedIndex: this.textSelectedIndex!!,
+          // 将itemFontColor设置为特殊系统资源值，启用自动反色能力。
+          itemFontColor: ColorMetrics.resourceColor($r('sys.color.font_primary')),
+          itemSelectedFontColor: ColorMetrics.resourceColor(Color.Black),
+          // 设置为系统材质样式为ULTRA_THIN，并开启自动反色和交互形变效果、自定义反馈光感的颜色。
+          backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+            colorInvert: true,
+            interactive: true,
+            lightEffect: { color: $r('sys.color.interactive_click') }
+          })
+        })
+      }
+
+      VCard({ title: '纯图标选项' }) {
+        CapsuleSegmentButtonV2({
+          items: this.imageItems,
+          selectedIndex: this.imageSelectedIndex!!,
+          // 将itemFontColor设置为特殊系统资源值，启用自动反色能力。
+          itemFontColor: ColorMetrics.resourceColor($r('sys.color.font_primary')),
+          itemSelectedFontColor: ColorMetrics.resourceColor(Color.Black),
+          // 设置为系统材质样式为ULTRA_THIN，开启自动反色和交互形变效果、自定义反馈光感的颜色。
+          backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+            colorInvert: true,
+            interactive: true,
+            lightEffect: { color: undefined }
+          })
+        })
+      }
+
+    }
+    .linearGradient({
+      angle: 180, // 渐变角度，180度是从右到左。
+      colors: [
+        ['#FF9A9E', 0.0], // 起始颜色及位置（0.0表示起点）。
+        ['#FECFEF', 0.5], // 中间颜色及位置。
+        ['#3B324C', 1.0] // 结束颜色及位置（1.0表示终点）。
+      ]
+    })
+    .height(225)
+    .justifyContent(FlexAlign.Start)
+    .padding(16)
+  }
+}
+
+@Builder
+function Noop() {
+}
+
+@Component
+export struct VCard {
+  @Prop
+  title: ResourceStr;
+  @BuilderParam
+  content: () => void = Noop;
+
+  build() {
+    Column({ space: 8 }) {
+      if (this.title) {
+        Text(this.title)
+          .maxLines(1)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+          .constraintSize({ maxWidth: '80%' })
+      }
+      this.content()
+    }
+    .backgroundColor(Color.Transparent)
+    .borderRadius(8)
+    .padding(8)
+    .width('100%')
+  }
+}
+```
+
+![SegmentButtonV2NewMaterial](figures/segment_button_v2_material.gif)

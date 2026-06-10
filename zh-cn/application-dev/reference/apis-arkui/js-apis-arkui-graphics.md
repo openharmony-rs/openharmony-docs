@@ -11,6 +11,8 @@
 > **说明：**
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -194,6 +196,25 @@ const transform: Matrix4 = [
 | x    | number | 否   | 否   | x轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
 | y    | number | 否   | 否   | y轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
 | z    | number | 否   | 否   | z轴方向的旋转角度。<br/>取值范围：(-∞, +∞) |
+
+## Vector4
+
+用于表示包含x、y、z、w四个值的向量。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型   | 只读 | 可选 | 说明     |
+| ---- | ------ | ---- | ---- | -------- |
+| x    | number | 否  | 否   | 向量x轴方向的值。<br/>取值范围：(-∞, +∞) |
+| y    | number | 否  | 否   | 向量y轴方向的值。<br/>取值范围：(-∞, +∞) |
+| z    | number | 否  | 否   | 向量z轴方向的值。<br/>取值范围：(-∞, +∞) |
+| w    | number | 否  | 否   | 向量w轴方向的值。<br/>取值范围：(-∞, +∞) |
 
 ## Vector2T\<T><sup>12+</sup>
 
@@ -575,6 +596,48 @@ struct SizeExample {
 ```
 ![image](figures/lengthMetricsDemo.png)
 
+### autoRefresh
+
+autoRefresh?(value: boolean): LengthMetrics
+
+设置LengthMetrics对象是否跟随系统配置变化自动更新。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|-------|------|------|------|
+| value | boolean | 是 | 使用[resource](#resource12)方法构造的LengthMetrics对象是否在系统配置变化时自动刷新值。<br>true表示主动监听系统配置变化，在变化时值刷新为对应配置下的资源值。<br>false表示不主动监听系统配置变化。|
+
+**返回值：**
+
+| 类型 | 说明 |
+|------|------|
+| [LengthMetrics](#lengthmetrics12) | 返回LengthMetrics对象。 |
+
+**示例：**
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State lengthMetrics: LengthMetrics = LengthMetrics.resource($r('sys.float.ohos_id_button_min_width')).autoRefresh!(true)
+
+  build() {
+    Column() {
+      Button('Test LengthMetrics')
+        .padding({ top: this.lengthMetrics })
+    }
+  }
+}
+```
 
 ## ColorMetrics<sup>12+</sup>
 
@@ -860,6 +923,51 @@ struct ColorMetricsSample {
 }
 ```
 ![image](figures/colorMetricsDemo.png)
+
+### autoRefresh
+
+autoRefresh?(value: boolean): ColorMetrics
+
+设置ColorMetrics对象是否跟随系统配置变化自动更新。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|-------|------|------|------|
+| value | boolean | 是 | 使用[resourceColor](#resourcecolor12)方法构造的ColorMetrics对象是否在系统配置变化时自动刷新颜色值。<br>true表示主动监听系统配置变化，变化时值刷新为对应配置下的资源值。<br>false表示不主动监听系统配置变化。|
+
+**返回值：**
+
+| 类型 | 说明 |
+|------|------|
+| [ColorMetrics](#colormetrics12) | 返回ColorMetrics对象。 |
+
+**示例：**
+
+```ts
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State colorMetrics: ColorMetrics = ColorMetrics.resourceColor($r('sys.color.font_primary')).autoRefresh!(true)
+
+  build() {
+    Column() {
+      Text('Test ColorMetrics')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(this.colorMetrics)
+  }
+}
+```
 
 ## Corners\<T><sup>12+</sup>
 
@@ -1965,3 +2073,53 @@ struct Index {
 }
 ```
 ![](figures/borderRadiuses_demo.png)
+
+## BackgroundBlur
+
+设置背景模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型     | 只读 | 可选 | 说明                                     |
+| -------- | -------- | ---- | ---- | ---------------------------------------- |
+| radius   | number   | 否   | 否   | 模糊半径。取值范围为[0, +∞)，默认值为0，值越大背景模糊效果越明显，为0时不模糊。 |
+| grayscale | [number, number] | 否   | 是   | 灰阶模糊参数，两参数取值范围均为[0, 127]，默认值为[0, 0]。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。参数一表示对黑色的提亮程度，参数二表示对白色的压暗程度，参数值越大调整效果越明显（黑白色变得越灰）。例如：设置参数为（20, 20），图片中的黑色像素RGB:[0, 0, 0]会调整为[20, 20, 20]（0+20），白色像素RGB:[255, 255, 255]会调整为[235, 235, 235]（255-20），图像中的彩色像素维持不变。      |
+
+## ContentBlur
+
+设置内容模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型     | 只读 | 可选 | 说明                                     |
+| -------- | -------- | ---- | ---- | ---------------------------------------- |
+| radius   | number   | 否   | 否   | 模糊半径。取值范围为[0, +∞)，默认值为0，值越大模糊效果越明显，为0时不模糊。 |
+| grayscale | [number, number] | 否   | 是   | 灰阶模糊参数，两参数取值范围均为[0, 127]，默认值为[0, 0]。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。参数一表示对黑色的提亮程度，参数二表示对白色的压暗程度，参数值越大调整效果越明显（黑白色变得越灰）。例如：设置参数为（20, 20），图片中的黑色像素RGB:[0, 0, 0]会调整为[20, 20, 20]（0+20），白色像素RGB:[255, 255, 255]会调整为[235, 235, 235]（255-20），图像中的彩色像素维持不变。      |
+
+## ForegroundBlur
+
+设置前景模糊效果。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                |
+| ------ | ------ | ---- | ---- | ----------------------------------- |
+| radius | number | 否   | 否   | 模糊效果半径。取值范围为[0, +∞)，默认值为0，值越大前景模糊效果越明显，为0时不模糊。 |

@@ -10,7 +10,13 @@
 
 >  **说明：**
 >
-> 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 从API版本26.0.0开始，Toggle组件支持新材质效果。Toggle组件使用通用新材质属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)时，不同[ToggleType](#toggletype枚举说明)类型的效果不同：    
+>   - ToggleType.Checkbox：当前未适配系统材质效果，设置系统材质不会出现系统材质相关的动效和视觉效果。
+>   - ToggleType.Switch：传入材质参数时，使用组件内部预设的视觉参数，传入的材质参数仅作为开启新材质的开关标记，不影响实际视觉效果。主要影响Toggle的滑块大小、滑块样式、阴影等视觉属性。设置[switchPointColor](#switchpointcolor)后会出现点光源效果，点光源颜色跟随switchPointColor的设置。传入undefined时，新材质不生效，表现为原先的Toggle样式。
+>   - ToggleType.Button：设置系统材质的效果与[Button](ts-basic-components-button.md)组件设置系统材质的效果相同，主要影响背景颜色、边框、阴影等视觉属性。
+
 
 ## 子组件
 
@@ -30,7 +36,7 @@ Toggle(options: ToggleOptions)
 
 | 参数名 | 类型 | 必填   | 说明           |
 | ---- | ---------- | -----| -------------- |
-| options | [ToggleOptions](#toggleoptions18对象说明) | 是   | Toggle的信息。 |
+| options | [ToggleOptions](#toggleoptions18对象说明) | 是   | Toggle组件的配置选项，用于配置开关的样式类型和初始状态。 |
 
 ## ToggleOptions<sup>18+</sup>对象说明
 
@@ -43,6 +49,8 @@ Toggle的信息。
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -109,7 +117,7 @@ switchPointColor(color: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                       |
 | ------ | ------------------------------------------ | ---- | -------------------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | 是   | Switch类型的圆形滑块颜色。<br/>默认值：$r('sys.color.ohos_id_color_foreground_contrary') |
+| color  | [ResourceColor](ts-types.md#resourcecolor) | 是   | Switch类型的圆形滑块颜色。<br/>默认值：$r('sys.color.ohos_id_color_foreground_contrary')<br/>**说明：**<br/>同时设置了[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)新材质时，设置此属性后会出现点光源效果，点光源颜色跟随此属性的设置。 |
 
 ### switchStyle<sup>12+</sup>
 
@@ -118,6 +126,8 @@ switchStyle(value: SwitchStyle)
 设置Switch类型的样式。仅当type为ToggleType.Switch生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,19 +145,25 @@ contentModifier(modifier: ContentModifier\<ToggleConfiguration>)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<ToggleConfiguration>](#toggleconfiguration12对象说明) | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ToggleConfiguration](#toggleconfiguration12对象说明)> | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+
+
 
 ## SwitchStyle<sup>12+</sup>对象说明
 
 Switch类型的样式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -185,6 +201,8 @@ onChange(callback:&nbsp;(isOn:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -364,3 +382,45 @@ struct Index {
 ```
 
 ![toggle](figures/Toggle_builder.gif)
+
+### 示例4（Toggle新材质效果）
+
+该示例展示了Toggle组件Switch类型在开启新材质前后的效果对比，包括不设置系统材质、设置undefined、开启新材质以及开启新材质并配合[switchPointColor](#switchpointcolor)设置点光源的效果。用例使用通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)接口来实现新材质效果。
+
+从API版本26.0.0开始，新增systemMaterial属性。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct ToggleMaterialTest {
+  build() {
+    Column({ space: 10 }) {
+      // 不设置新材质接口，无新材质效果
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .size({ width: 80, height: 40 })
+
+      // systemMaterial设置undefined，恢复为无材质的效果
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .size({ width: 80, height: 40 })
+        .systemMaterial(undefined)
+
+      // 开启新材质效果（systemMaterial参数任意仅作为新材质开关，最终使用组件侧固定参数），无点光源效果
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .size({ width: 80, height: 40 })
+        .systemMaterial(new uiMaterial.Material())
+
+      // 开启新材质效果（systemMaterial参数任意仅作为新材质开关，最终使用组件侧固定参数），有点光源效果
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .size({ width: 80, height: 40 })
+        .systemMaterial(new uiMaterial.Material())
+        .switchPointColor(Color.White)
+    }
+    .width('100%')
+  }
+}
+```
+
+![toggle](figures/Toggle_material.gif)

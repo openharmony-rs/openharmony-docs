@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供应用信息的查询能力，支持应用包信息[BundleInfo](js-apis-bundleManager-bundleInfo.md)、应用程序信息[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)、UIAbility组件信息[AbilityInfo](js-apis-bundleManager-abilityInfo.md)、ExtensionAbility组件信息[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)等信息的查询。
 
@@ -45,6 +45,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+<!--Table: 30%; 10%; 60%-->
 | 名称 | 值 | 说明 |
 |:----------------:|:---:|-----|
 | FORM             | 0   | [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)：卡片扩展能力，提供卡片开发能力。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -58,7 +59,7 @@ import { bundleManager } from '@kit.AbilityKit';
 |<!--DelRow--> WALLPAPER        | 8   | WallpaperExtensionAbility：壁纸扩展能力，用于实现桌面壁纸。预留能力，仅系统应用支持。 |
 | BACKUP           |  9  | [BackupExtensionAbility](../apis-core-file-kit/js-apis-application-backupExtensionAbility.md)：数据备份扩展能力，提供应用数据的备份恢复能力。 |
 |<!--DelRow--> WINDOW     |  10 | [WindowExtensionAbility](../apis-arkui/js-apis-application-windowExtensionAbility-sys.md)：界面组合扩展能力，允许系统应用进行跨应用的界面拉起和嵌入。 |
-| ENTERPRISE_ADMIN |  11 | [EnterpriseAdminExtensionAbility](../apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md)：企业设备管理扩展能力，提供企业管理时处理管理事件的能力，比如设备上应用安装事件、锁屏密码输入错误次数过多事件等。 |
+| ENTERPRISE_ADMIN |  11 | [EnterpriseAdminExtensionAbility](../apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md)：企业设备管理扩展能力，提供企业管理时处理管理事件的能力。 |
 |<!--DelRow--> THUMBNAIL        | 13  | ThumbnailExtensionAbility：文件缩略图扩展能力，用于为文件提供图标缩略图的能力。预留能力，仅系统应用支持。 |
 |<!--DelRow--> PREVIEW          | 14  | PreviewExtensionAbility：文件预览扩展能力，提供文件预览的能力，其他应用可以直接在应用中嵌入显示。预留能力，仅系统应用支持。 |
 |<!--DelRow--> PRINT<sup>10+</sup> | 15 | PrintExtensionAbility：文件打印扩展能力，提供应用打印照片、文档等办公场景。仅系统应用支持。 |
@@ -68,7 +69,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | ACTION<sup>10+</sup> | 19 | [ActionExtensionAbility](js-apis-app-ability-actionExtensionAbility.md)：自定义服务扩展能力，为开发者提供基于UIExtension的自定义操作业务模板。 |
 |<!--DelRow--> ADS_SERVICE<sup>11+</sup> | 20 | AdsServiceExtensionAbility：广告服务扩展能力，对外提供后台自定义广告业务服务，仅系统应用支持。 |
 | EMBEDDED_UI<sup>12+</sup> | 21 | [EmbeddedUIExtensionAbility](js-apis-app-ability-embeddedUIExtensionAbility.md)：嵌入式UI扩展能力，提供跨进程界面嵌入的能力。 |
-| INSIGHT_INTENT_UI<sup>12+</sup> | 22 | InsightIntentUIExtensionAbility：为开发者提供能被小艺意图调用，以窗口形态呈现内容的扩展能力。 |
+| INSIGHT_INTENT_UI<sup>12+</sup> | 22 | InsightIntentUIExtensionAbility：为开发者提供能被系统入口调用，以窗口形态呈现内容的扩展能力。 |
 | FENCE<sup>18+</sup> | 24 | [FenceExtensionAbility](../apis-location-kit/js-apis-app-ability-FenceExtensionAbility.md)：为开发者提供地理围栏相关的能力，继承自ExtensionAbility。 |
 | ASSET_ACCELERATION<sup>18+</sup> | 26 | AssetAccelerationExtensionAbility：资源预下载扩展能力，提供在设备闲时状态，进行后台资源预下载的能力。 |
 | FORM_EDIT<sup>18+</sup> | 27 | [FormEditExtensionAbility](../apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)：为开发者提供卡片编辑的能力，继承自UIExtensionAbility。 |
@@ -76,11 +77,13 @@ import { bundleManager } from '@kit.AbilityKit';
 | APP_SERVICE<sup>20+</sup> | 29 | [AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)：为企业普通应用提供后台服务能力。 |
 | LIVE_FORM<sup>20+</sup> | 30 | [LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)：互动卡片相关扩展能力，提供互动卡片创建、销毁的生命周期回调。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | SELECTION<sup>24+</sup> | 31 | [SelectionExtensionAbility](../apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)：为开发者提供划词弹窗能力的ExtensionAbility。<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| WEB_NATIVE_MESSAGING<sup>21+</sup> | 32 | [WebNativeMessagingExtensionAbility](../apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)：为开发者提供Web原生消息通信能力的ExtensionAbility。|
+| WEB_NATIVE_MESSAGING<sup>21+</sup> | 32 | [WebNativeMessagingExtensionAbility](../apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)：为开发者提供Web消息通信能力的ExtensionAbility。|
 | FAULT_LOG<sup>21+</sup> | 33 | [FaultLogExtensionAbility](../apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md)：提供故障延迟通知的能力。|
 | NOTIFICATION_SUBSCRIBER<sup>22+</sup> | 34 | [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)：提供通知订阅的相关功能。|
 | CRYPTO<sup>22+</sup> | 35 | [CryptoExtensionAbility](../../security/UniversalKeystoreKit/huks-extension-ability-support-dev.md)：提供外部密钥管理扩展的相关功能。|
 | PARTNER_AGENT<sup>23+</sup> | 36 | [PartnerAgentExtensionAbility](../apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)：基于蓝牙通信技术，提供设备发现与设备下线的通知功能。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| AGENT<sup>24+</sup> | 37 | [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| AGENT_UI<sup>24+</sup> | 38 | [AgentUIExtensionAbility](js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。<br>**模型约束**：此接口仅可在Stage模型下使用。|
 | UNSPECIFIED      | 255 | 不指定类型<!--Del-->，配合[queryExtensionAbilityInfo接口](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo)可以查询所有类型的ExtensionAbility<!--DelEnd-->。 |
 <!--RP2--><!--RP2End-->
 
@@ -136,8 +139,8 @@ import { bundleManager } from '@kit.AbilityKit';
 |  名称   | 值   |                            说明                            |
 | :-----: | ---- | :--------------------------------------------------------: |
 | PAGE    | 1    | UI界面类型的Ability。表示基于Page模板开发的FA，用于提供与用户交互的能力。        |
-| SERVICE | 2    | 后台服务类型的Ability，无UI界面。表示基于Service模板开发的[PA（ParticleAbility）](js-apis-ability-particleAbility.md)，用于提供后台运行任务的能力，例如后台下载或者播放音乐。  |
-|  DATA   | 3    | 表示基于Data模板开发的[PA（ParticleAbility）](js-apis-ability-particleAbility.md)，用于对外部提供统一的数据访问对象。 |
+| SERVICE | 2    | 后台服务类型的Ability，无UI界面。表示基于Service模板开发的[ParticleAbility](js-apis-ability-particleAbility.md)，用于提供后台运行任务的能力，例如后台下载或者播放音乐。  |
+|  DATA   | 3    | 表示基于Data模板开发的[ParticleAbility](js-apis-ability-particleAbility.md)，用于对外部提供统一的数据访问对象。 |
 
 ## DisplayOrientation
 
@@ -145,6 +148,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+<!--Table: 40%; 10%; 50%-->
 | 名称                               |值 |说明 |
 |:----------------------------------|---|---|
 | UNSPECIFIED                        |0 |表示未定义方向模式，由系统判定。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -300,7 +304,7 @@ getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback\<BundleInfo>):
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。 |
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的当前应用的BundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的当前应用的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 
@@ -343,7 +347,7 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName: strin
 根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用callback异步回调。
 
 > 说明：
-> 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
+> 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -356,11 +360,11 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName: strin
 | moduleName   | string                        | 是   | 表示Module名称。                                     |
 | abilityName  | string                        | 是   | 表示UIAbility组件的名称。                                    |
 | metadataName | string                        | 是   | 表示UIAbility组件的[元信息名称](../../quick-start/module-configuration-file.md#metadata标签)，即module.json5配置文件中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name。                                  |
-| callback     | AsyncCallback<Array\<string>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<string>；否则为错误对象。 |
+| callback     | AsyncCallback<Array\<string>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<string>；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -402,7 +406,7 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName?: stri
 根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用Promise异步回调。
 
 > 说明：
-> 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
+> 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -424,7 +428,7 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName?: stri
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -485,7 +489,7 @@ getProfileByAbilitySync(moduleName: string, abilityName: string, metadataName?: 
 
 以同步方法根据给定的moduleName、abilityName和metadataName（module.json5中[metadata标签](../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，返回对象为string数组。
 
->如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
+>如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -507,7 +511,7 @@ getProfileByAbilitySync(moduleName: string, abilityName: string, metadataName?: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -562,7 +566,7 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 
 根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串。使用callback异步回调。
 
->如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
+>如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -575,11 +579,11 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 | moduleName           | string                        | 是   | 表示Module名称。                                   |
 | extensionAbilityName | string                        | 是   | 表示ExtensionAbility组件的名称。                         |
 | metadataName         | string                        | 是   | 表示ExtensionAbility组件的元信息名称，即module.json5配置文件中[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)下的metadata标签的name。                                 |
-| callback             | AsyncCallback<Array\<string>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<string>；否则为错误对象。 |
+| callback             | AsyncCallback<Array\<string>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<string>；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -619,7 +623,7 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 
 根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串。使用Promise异步回调。
 
->如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
+>如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -641,7 +645,7 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -690,7 +694,7 @@ getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityName: strin
 
 以同步方法根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，返回对象为string数组。
 
->如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
+>如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -712,7 +716,7 @@ getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityName: strin
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -823,7 +827,7 @@ canOpenLink(link: string): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -852,7 +856,7 @@ try {
 
 getLaunchWant(): Want
 
-获取本应用[入口UIAbility](../../quick-start/application-package-glossary.md#uiability)的Want参数。
+获取本应用[入口UIAbility](../../quick-start/application-package-glossary.md#入口uiability)的Want参数。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -866,7 +870,7 @@ getLaunchWant(): Want
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                      |
 | -------- | ----------------------------- |
@@ -910,12 +914,12 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback:
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。|
-| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的bundleInfo；否则为错误对象。 |
+| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的bundleInfo；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -998,11 +1002,11 @@ getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。|
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -1058,7 +1062,7 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。       |
-| userId      | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。  |
+| userId      | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。  |
 
 **返回值：**
 
@@ -1068,7 +1072,7 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | --------------------------------------|
@@ -1144,7 +1148,7 @@ getBundleInfoSync(bundleName: string, bundleFlags: number, userId: number): Bund
 | ----------- | ------ | ---- | -------------------------------------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。                                 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。 |
-| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。              |
+| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。              |
 
 **返回值：**
 
@@ -1154,7 +1158,7 @@ getBundleInfoSync(bundleName: string, bundleFlags: number, userId: number): Bund
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------- |
@@ -1214,7 +1218,7 @@ getBundleInfoSync(bundleName: string, bundleFlags: number): BundleInfo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
@@ -1259,11 +1263,11 @@ getBundleNameByUid(uid: number, callback: AsyncCallback\<string>): void
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | uid      | number                 | 是   | 表示应用程序的UID。                                            |
-| callback | AsyncCallback\<string> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleName；否则为错误对象。 |
+| callback | AsyncCallback\<string> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleName；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息            |
 | -------- | --------------------- |
@@ -1320,7 +1324,7 @@ getBundleNameByUid(uid: number): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息            |
 | -------- | ---------------------|
@@ -1375,7 +1379,7 @@ getBundleNameByUidSync(uid: number): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息            |
 | -------- | ---------------------|
@@ -1427,7 +1431,7 @@ getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | --------------------------------------|
@@ -1480,7 +1484,7 @@ getSignatureInfo(uid: number): SignatureInfo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息            |
 | -------- | ---------------------|
@@ -1534,7 +1538,7 @@ getAbilityInfo(uri: string, abilityFlags: number): Promise\<Array\<AbilityInfo>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------- |
@@ -1613,7 +1617,7 @@ getPluginBundlePathForSelf(pluginBundleName: string): string
 
 **错误码：**
 
-错误码请参见[ohos.bundle错误码](errorcode-bundle.md)。
+错误码请参见[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID  | 错误信息                                  |
 | -------- | --------------------------------------- |
@@ -1656,7 +1660,7 @@ getLaunchWantForBundleSync(bundleName: string, userId?: number): Want
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ------------------------- |
 | bundleName | string | 是   | 表示应用的包名。 |
-| userId     | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br/>默认值：调用方所在用户。<br/>取值范围：大于等于0。 |
+| userId     | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br/>默认值：调用方所在用户。<br/>取值范围：大于等于0。 |
 
 **返回值：**
 
@@ -1769,6 +1773,164 @@ try {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: error %{public}d  %{public}s', err.code, err.message);
+}
+```
+
+## bundleManager.getInstalledBundleList
+
+getInstalledBundleList(bundleFlags: number): Promise<Array\<BundleInfo>>
+
+根据给定的bundleFlags获取系统中所有的BundleInfo。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
+ 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**设备行为差异：** 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回201错误码。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                                             |
+| ----------- | ------ | ---- | -------------------------------------------------- |
+| bundleFlags | number | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。                |
+
+**返回值：**
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1)>> | Promise对象，返回当前已安装应用的信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | ---------------------------------- |
+| 201 | Permission denied. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
+
+try {
+  bundleManager.getInstalledBundleList(bundleFlags).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getInstalledBundleList successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getInstalledBundleList failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getInstalledBundleList failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.setAlternateIcon
+
+setAlternateIcon(alternateIconName: string): Promise\<void>;
+
+根据给定的备用图标名称设置调用方自身的备用图标。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ----------- | ------ | ---- | ---------------------------- |
+| alternateIconName  | string | 是   | 要设置的备用图标名称。备用图标名称须在app.json5中[alternateIcons标签](../../quick-start/app-configuration-file.md#alternateicons标签)的name字段内。<br/>alternateIconName为空时表示取消备用图标。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 17700308 | The alternateIconName must match the name field under alternateIcons in the app.json5 file. |
+| 17700309 | No alternate icon is enabled. |
+| 17700310 | Failed to set the alternate icon. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// alternateIconName需要替换为要设置的备用图标名称
+let alternateIconName: string = 'com.ohos.demo';
+
+try {
+  bundleManager.setAlternateIcon(alternateIconName).then((data) => {
+    hilog.info(0x0000, 'testTag', 'setAlternateIcon successfully');
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'setAlternateIcon failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setAlternateIcon failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getAlternateIcons
+
+getAlternateIcons(): Promise<Array\<AlternateIconInfo>>
+
+查询当前应用在app.json5中[alternateIcons标签](../../quick-start/app-configuration-file.md#alternateicons标签)配置的备用图标信息。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**返回值：**
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise<Array\<[AlternateIconInfo](js-apis-bundleManager-bundleInfo.md#alternateiconinfo)>> | Promise对象，返回当前应用的备用图标信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | ---------------------------------- |
+| 17700311 | Failed to obtain alternate icon. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  bundleManager.getAlternateIcons().then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAlternateIcons successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAlternateIcons failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAlternateIcons failed. Cause: %{public}s', message);
 }
 ```
 
@@ -2037,3 +2199,17 @@ type AppCloneIdentity = _BundleInfo.AppCloneIdentity
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_BundleInfo.AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14) |应用包的身份信息。 |
+
+## AlternateIconInfo
+
+type AlternateIconInfo = _BundleInfo.AlternateIconInfo
+
+应用备用图标信息。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+| 类型                                                         | 说明           |
+| ------------------------------------------------------------ | -------------- |
+| [_BundleInfo.AlternateIconInfo](js-apis-bundleManager-bundleInfo.md#alternateiconinfo) | 应用的备用图标信息。 |

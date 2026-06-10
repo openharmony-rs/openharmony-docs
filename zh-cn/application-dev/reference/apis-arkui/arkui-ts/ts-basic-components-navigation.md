@@ -1,9 +1,9 @@
 # Navigation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 Navigation组件是路由导航的根视图容器，一般作为Page页面的根容器使用，其内部默认包含了标题栏、内容区和工具栏，其中内容区默认首页显示导航内容（Navigation的子组件）或非首页显示（[NavDestination](ts-basic-components-navdestination.md)的子组件），首页和非首页通过路由进行切换。
@@ -14,9 +14,9 @@ Navigation组件是路由导航的根视图容器，一般作为Page页面的根
 >
 > - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性实现安全区避让。
 >
-> - [NavBar](#navbar12)嵌套使用Navigation时，内层NavDestination的生命周期不和外层NavDestination以及[全模态](ts-universal-attributes-modal-transition.md)的生命周期进行联动。
+> - [NavBar](#navbar12)嵌套使用Navigation时，内层NavDestination的生命周期不和外层NavDestination以及全模态[bindContentCover](ts-universal-attributes-modal-transition.md#bindcontentcover)的生命周期进行联动。
 >
-> - Navigation未设置主副标题（[title](#title)或[subTitle](#subtitledeprecated)）且[hideBackButton](#hidebackbutton)属性设置为true时，不显示标题栏。
+> - Navigation未设置标题（[title](#title)）且[hideBackButton](#hidebackbutton)属性设置为true时，不显示标题栏。
 >
 > - Navigation的子页面切换时，新页面会主动请求焦点。
 >
@@ -106,17 +106,13 @@ title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCus
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)<sup>9+</sup>&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9)<sup>9+</sup> | 是   | 页面标题，使用NavigationCustomTitle类型设置height高度时，[titleMode](#titlemode)属性不会生效。<br/>字符串超长时，如果不设置副标题，先缩小再换行（2行）最后截断。如果设置副标题，先缩小最后截断。 |
-| options<sup>11+</sup> | [NavigationTitleOptions](#navigationtitleoptions11) | 否   | 标题栏选项。 包含标题栏背景颜色、标题栏背景模糊样式及模糊选项、标题栏背景属性、标题栏布局方式、标题栏起始端内间距、标题栏结束端内间距、主标题属性修改器、子标题属性修改器、是否响应悬停态。                                                 |
+| options<sup>11+</sup> | [NavigationTitleOptions](#navigationtitleoptions11) | 否   | 标题栏选项。包含标题栏背景颜色、标题栏背景模糊样式及模糊选项、标题栏背景属性、标题栏布局方式、标题栏滚动模糊效果选项、标题栏起始端内间距、标题栏结束端内间距、主标题属性修改器、子标题属性修改器、是否响应悬停态。                                                 |
 
 ### menus
 
 menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
 
 设置页面右上角菜单。不设置时不显示菜单项。使用Array<[NavigationMenuItem](#navigationmenuitem)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
-
-> **说明：**
->
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -137,8 +133,6 @@ menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: Navigati
 > **说明：**
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
->
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -176,8 +170,6 @@ toolbarConfiguration(value: Array&lt;ToolbarItem&gt; | CustomBuilder, options?: 
 >**说明：**
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
->
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -185,6 +177,7 @@ toolbarConfiguration(value: Array&lt;ToolbarItem&gt; | CustomBuilder, options?: 
 
 **参数：** 
 
+<!--Table: 10%; 20%; 8%; 62%-->
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | &nbsp;Array&lt;[ToolbarItem](#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 是   | 工具栏内容，使用Array&lt;[ToolbarItem](#toolbaritem10)&gt;设置的工具栏有如下特性：<br/>工具栏所有选项均分底部工具栏，在每个均分内容区布局文本和图标。<br/>竖屏模式最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。横屏模式时，如果为[Split](#navigationmode9枚举说明)模式，仍按照竖屏模式显示，如果为[Stack](#navigationmode9枚举说明)模式需配合menus属性的Array&lt;[NavigationMenuItem](#navigationmenuitem)&gt;使用，底部工具栏会自动隐藏，同时底部工具栏所有选项移动至页面右上角菜单。<br/>使用[CustomBuilder](ts-types.md#custombuilder8)写法为用户自定义工具栏选项，不具备以上功能。 |
@@ -204,7 +197,7 @@ hideToolBar(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否隐藏工具栏。<br/>true：隐藏工具栏；false：显示工具栏。<br/>传入参数非法时，按false处理。 |
+| value  | boolean | 是   | 是否隐藏工具栏。<br>默认值：false<br/>true：隐藏工具栏；false：显示工具栏。<br/>传入参数非法时，按false处理。 |
 
 ### hideToolBar<sup>13+</sup>
 
@@ -220,8 +213,8 @@ hideToolBar(hide: boolean, animated: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| hide  | boolean | 是   | 是否隐藏工具栏。<br/>true：隐藏工具栏；false：显示工具栏。<br/>传入参数非法时，按false处理。 |
-| animated  | boolean | 是   | 设置是否使用动画显隐工具栏。<br/>true：使用动画显示隐藏工具栏；false：不使用动画显示隐藏工具栏。<br/>传入参数非法时，按false处理。 |
+| hide  | boolean | 是   | 是否隐藏工具栏。<br>默认值：false<br/>true：隐藏工具栏；false：显示工具栏。<br/>传入参数非法时，按false处理。 |
+| animated  | boolean | 是   | 设置是否使用动画显隐工具栏。<br>默认值：false<br/>true：使用动画显示隐藏工具栏；false：不使用动画显示隐藏工具栏。<br/>传入参数非法时，按false处理。 |
 
 ### hideTitleBar
 
@@ -237,7 +230,7 @@ hideTitleBar(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否隐藏标题栏。<br/>true：隐藏标题栏；false：显示标题栏。<br/>传入参数非法时，按false处理。 |
+| value  | boolean | 是   | 是否隐藏标题栏。<br>默认值：false<br/>true：隐藏标题栏；false：显示标题栏。<br/>传入参数非法时，按false处理。 |
 
 ### hideTitleBar<sup>13+</sup>
 
@@ -253,8 +246,8 @@ hideTitleBar(hide: boolean, animated: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| hide  | boolean | 是   | 是否隐藏标题栏。<br/>true：隐藏标题栏；false：显示标题栏。<br/>传入参数非法时，按false处理。 |
-| animated  | boolean | 是   | 设置是否使用动画显隐标题栏。<br/>true：使用动画显示隐藏标题栏；false：不使用动画显示隐藏标题栏。<br/>传入参数非法时，按false处理。 |
+| hide  | boolean | 是   | 是否隐藏标题栏。<br>默认值：false<br/>true：隐藏标题栏；false：显示标题栏。<br/>传入参数非法时，按false处理。 |
+| animated  | boolean | 是   | 设置是否使用动画显隐标题栏。<br>默认值：false<br/>true：使用动画显示隐藏标题栏；false：不使用动画显示隐藏标题栏。<br/>传入参数非法时，按false处理。 |
 
 ### hideBackButton
 
@@ -330,7 +323,7 @@ backButtonIcon(value: string | PixelMap | Resource | SymbolGlyphModifier)
 
 > **说明：**
 >
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
+> 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -352,7 +345,7 @@ backButtonIcon(icon: string | PixelMap | Resource | SymbolGlyphModifier, accessi
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 >
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
+> 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -381,7 +374,7 @@ hideNavBar(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| value  | boolean | 是   | 是否隐藏导航页。<br/>true：隐藏导航页；false：显示导航页。<br/>传入参数非法时，按false处理。|
+| value  | boolean | 是   | 是否隐藏导航页。<br>默认值：false<br/>true：隐藏导航页；false：显示导航页。<br/>传入参数非法时，按false处理。|
 
 ### navDestination<sup>10+</sup>
 
@@ -554,7 +547,7 @@ enableModeChangeAnimation(isEnabled: Optional&lt;boolean&gt;)
 
 enableToolBarAdaptation(enable: Optional&lt;boolean&gt;)
 
-设置是否启用Navigation和NavDestination的工具栏[toolbarConfiguration](#toolbarconfiguration10)自适应能力。关闭此能力后，底部工具栏[toolbarConfiguration](#toolbarconfiguration10)将不会再移动至页面右上角的菜单中。该接口不适配于自定义菜单，使用该接口需采用[NavigationMenuItem](#navigationmenuitem)接口来定义[菜单](#menus)。
+设置是否启用Navigation和NavDestination的工具栏[toolbarConfiguration](#toolbarconfiguration10)自适应能力。关闭此能力后，底部工具栏[toolbarConfiguration](#toolbarconfiguration10)将不会再移动至页面右上角的菜单中。该接口不适配于自定义菜单，使用该接口需采用[NavigationMenuItem](#navigationmenuitem)接口来定义[menus](#menus)。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -620,6 +613,26 @@ enableVisibilityLifecycleWithContentCover(isEnabled: Optional&lt;boolean&gt;)
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
 | isEnabled  | Optional&lt;boolean&gt; | 是   |是否启用NavDestination页面onShown、onHidden生命周期与全模态的联动触发。<br/>默认值：true<br/>true：全模态拉起时，会触发当前NavDestination页面的onHidden生命周期；全模态关闭时会触发当前NavDestination页面的onShown生命周期<br/>false：NavDestination页面onHidden、onShown生命周期不会因为全模态的拉起、关闭而触发。|
+
+### configuration
+
+configuration(config: NavigationConfiguration)
+
+设置Navigation配置项，包括路由栈大小限制。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ---- |
+| config | [NavigationConfiguration](#navigationconfiguration) | 是 | Navigation配置项。 |
 
 ### subTitle<sup>(deprecated)</sup>
 
@@ -756,9 +769,9 @@ Navigation导航控制器，以栈的数据结构管理Navigation中所有的子
 > **说明：**
 >
 > 1.连续调用多个导航控制器操作方法时，中间过程会被忽略，显示最终的栈操作结果。<br/>
-> 例如：在Page1页面先pop再push一个Page1，系统会认为操作前和操作后的结果一致而不进行任何操作，如果需要强行push一个Page1实例，可以使用NEW_INSTANCE模式。
+> 例如：在Page1页面先pop再push一个Page1，系统会认为操作前和操作后的结果一致而不进行任何操作，如果需要强行push一个Page1实例，可以设置[NavigationOption](#navigationoptions12)中的launchMode属性值为LaunchMode.NEW_INSTANCE模式。
 >
-> 2.不建议开发者通过监听生命周期的方式管理自己的导航控制器。
+> 2.不建议开发者通过监听页面生命周期的方式管理自己的导航控制器。
 >
 > 3.在应用处于后台状态下，调用NavPathStack的栈操作方法，会在应用再次回到前台状态时触发刷新。
 
@@ -1558,6 +1571,7 @@ constructor(name: string, param: unknown, onPop?: Callback\<PopInfo>, isEntry?: 
 
 **参数：**
 
+<!--Table: 15%; 15%; 8%; 62%-->
 | 参数名    | 类型      | 必填   | 说明                   |
 | ----- | ------- | ---- | --------------------- |
 | name  | string  | 是    | NavDestination页面名称。该名称匹配开发者设置的路由表中的name，包括以下两种：<br/>1. 自定义路由表，开发者通过[navDestination](#navdestination10)方法传递。<br/>2. 系统路由表，通过routerMap中的name设置，可参考[示例2](#示例2使用导航控制器方法)。|
@@ -1571,6 +1585,7 @@ NavPathInfo参数信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 15%; 15%; 8%; 62%-->
 | 名称    | 类型      | 只读 | 可选 | 说明                   |
 | ----- | ------- | ---- | ---- | --------------------- |
 | name  | string  | 否    | 否    | NavDestination页面名称。该名称匹配开发者设置的路由表中的name，包括以下两种：<br/>1. 自定义路由表，开发者通过[navDestination](#navdestination10)方法传递。<br/>2. 系统路由表，通过routerMap中的name设置，可参考[示例2](#示例2使用导航控制器方法)。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -1689,6 +1704,7 @@ Navigation跳转拦截对象。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称    | 类型     | 只读 | 可选 | 说明    |
 | ---- | ----- | ----- | ----- | ----   |
 | willShow | [InterceptionShowCallback](#interceptionshowcallback12) | 否 | 是 | 页面跳转前的回调，允许操作栈，在当前跳转中生效。拦截的页面会被创建。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
@@ -1771,13 +1787,14 @@ Navigation首页名字。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称     | 类型            | 只读 | 可选 | 说明              |
 | ------ | ------------- | ---- | ---- | --------------- |
 | value  | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | 否    | 否    | API version 9：显示菜单栏单个选项的文本。<br> 从API version 10开始，不显示菜单栏单个选项的文本。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| icon   | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | 否    | 是    | 菜单栏单个选项的图标资源路径。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| icon   | string \| [Resource<sup>14+<sup>](ts-types.md#resource)       | 否    | 是    | 菜单栏单个选项的图标资源路径。 <br/>**说明：** <br/>当图标为SVG格式时，系统会默认设置fill颜色，覆盖SVG文件中自定义的fill属性，可能导致图标显示异常。建议在SVG文件中通过style样式设置fill来覆盖系统默认值，示例如下：<br/>原始写法（fill属性会被系统默认值覆盖）：`<rect fill="rgb(255,0,0)" .../>`，建议修改为：`<rect style="fill: rgb(255,0,0)" .../>`。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | isEnabled<sup>12+</sup>   | boolean        | 否    | 是    | 使能状态，默认使能（false未使能，true使能）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | action | () =&gt; void | 否    | 是    | 当前选项被选中的事件回调。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| symbolIcon<sup>12+</sup> |  [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 否    | 是    |菜单栏单个选项的symbol资源（优先级高于icon）。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| symbolIcon<sup>12+</sup> |  [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 否    | 是    |菜单栏单个选项的symbol资源（优先级高于icon）。 <br>**说明：** <br/>不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## ToolbarItem<sup>10+</sup>
 
@@ -1785,15 +1802,16 @@ Navigation首页名字。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称         | 类型                                       | 只读 | 可选 | 说明                                       |
 | ---------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | value      | ResourceStr                              | 否    | 否    | 工具栏单个选项的显示文本。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                            |
-| icon       | ResourceStr                              | 否    | 是    | 工具栏单个选项的图标资源路径。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                          |
+| icon       | ResourceStr                              | 否    | 是    | 工具栏单个选项的图标资源路径。<br/>**说明：** <br/>当图标为SVG格式时，系统会默认设置fill颜色，覆盖SVG文件中自定义的fill属性，可能导致图标显示异常。建议在SVG文件中通过style样式设置fill来覆盖系统默认值，原始写法（fill属性会被系统默认值覆盖）：`<rect fill="rgb(255,0,0)" .../>`，建议修改为：`<rect style="fill: rgb(255,0,0)" .../>`。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                          |
 | action     | () =&gt; void                            | 否    | 是    | 当前选项被选中的事件回调。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                            |
 | status     | [ToolbarItemStatus](#toolbaritemstatus10枚举说明) | 否    | 是    | 工具栏单个选项的状态。<br/>默认值：ToolbarItemStatus.NORMAL<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | activeIcon | ResourceStr                              | 否    | 是    | 工具栏单个选项处于ACTIVE态时的图标资源路径。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                |
-| symbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)        | 否    | 是    | 工具栏单个选项的symbol资源（优先级高于icon）。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
-| activeSymbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)              | 否    | 是    | 工具栏单个选项处于ACTIVE态时的symbol资源（优先级高于activeIcon）。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
+| symbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)        | 否    | 是    | 工具栏单个选项的symbol资源（优先级高于icon）。 <br/>**说明：** <br/> 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。   <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
+| activeSymbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)              | 否    | 是    | 工具栏单个选项处于ACTIVE态时的symbol资源（优先级高于activeIcon）。 <br/>**说明：** <br/> 不支持通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)对象的[fontSize](ts-basic-components-symbolGlyph.md#fontsize)属性修改图标大小、[effectStrategy](ts-basic-components-symbolGlyph.md#effectstrategy)属性修改动效、[symbolEffect](ts-basic-components-symbolGlyph.md#symboleffect12)属性修改动效类型。   <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 
 ## ToolbarItemStatus<sup>10+</sup>枚举说明
 
@@ -1817,6 +1835,7 @@ Navigation首页名字。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 10%; 10%; 80%-->
 | 名称 | 值 | 说明                                                         |
 | ---- | --- | ------------------------------------------------------------ |
 | Free | 0 | 当内容为满一屏的可滚动组件时，标题随着内容向上滚动而缩小（子标题的大小不变、淡出）。向下滚动内容到顶时则恢复原样。<br/>**说明：** <br/>标题随着内容滚动大小联动的动效在title设置为ResourceStr和NavigationCommonTitle时生效，设置成其余自定义节点类型时字体样式无法变化，下拉时只影响标题栏偏移。<br/>可滚动组件不满一屏时，如果想使用联动效果，就要使用滚动组件提供的[edgeEffect](ts-container-list.md#edgeeffect)接口将options参数设置为true。未滚动状态，标题栏高度与Full模式一致；滚动时，标题栏的最小高度与Mini模式一致。 |
@@ -1929,7 +1948,42 @@ Navigation分割线颜色及上下边距。
 |---------| --- |------|
 |STANDARD | 0 | 指定该模式的标题栏或工具栏与内容区采用上下布局。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 |STACK | 1 | 指定该模式的标题栏或工具栏与内容区采用层叠布局，标题栏或工具栏布局在内容区上层。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-|SAFE_AREA_PADDING<sup>14+</sup> | 2 | 将指定该模式的标题栏或工具栏设置为[组件级安全区](./ts-universal-attributes-size.md#safeareapadding14)。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+|SAFE_AREA_PADDING<sup>14+</sup> | 2 | 将指定该模式的标题栏或工具栏设置为[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+
+## ScrollEffectType
+
+标题栏滚动模糊效果类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| COMMON_BLUR | 0 | 普通模糊样式，对背景做均匀模糊，模糊背景随透明渐变显隐。 |
+| GRADUAL_BLUR | 1 | 渐进模糊样式，对标题背景做均匀模糊且边界清晰，标题栏内容颜色或状态在滚动前后切换，并在滚动过程中随手势线性变化。 |
+
+## ScrollEffectOptions
+
+标题栏滚动模糊效果选项。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| scrollEffectType | [ScrollEffectType](#scrolleffecttype) | 否 | 是 | 标题栏滚动模糊效果类型。<br/>默认值：ScrollEffectType.COMMON_BLUR |
+| blurEffectiveStartOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 启用标题栏滚动模糊效果的最小滑动距离。<br/>默认值：0vp |
+| blurEffectiveEndOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 达到标题栏最终模糊样式的最大滑动距离。<br/>默认值：8vp |
 
 ## NavigationTitleOptions<sup>11+</sup>
 
@@ -1937,6 +1991,7 @@ Navigation分割线颜色及上下边距。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称     | 类型            | 只读 | 可选 | 说明              |
 | ------ | ------------- | ---- | ---- | --------------- |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor)  | 否    | 是    | 标题栏背景颜色，不设置时为系统默认颜色。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -1944,11 +1999,23 @@ Navigation分割线颜色及上下边距。
 | backgroundBlurStyleOptions<sup>19+</sup>   | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)        | 否    | 是    | 标题栏背景模糊选项。<br/>**说明：** <br/>只在设置了backgroundBlurStyle时生效。<br/>不建议与backgroundEffect同时使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | backgroundEffect<sup>19+</sup>   | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)        | 否    | 是    | 设置标题栏背景属性包括：模糊半径，亮度，饱和度，颜色等。<br/>**说明：** <br/>不建议与backgroundBlurStyleOptions同时使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | barStyle<sup>12+</sup>   | [BarStyle](#barstyle12枚举说明)        | 否    | 是    | 设置标题栏布局方式。<br/>默认值：BarStyle.STANDARD<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| paddingStart<sup>12+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否    | 是    | 标题栏起始端内间距。<br/>仅支持以下任一场景：<br/>1. 显示返回图标，即[hideBackButton](#hidebackbutton)为false；<br/>2. 使用非自定义标题，即[标题value](#title)类型为ResourceStr或NavigationCommonTitle。<br/>默认值：<br/>LengthMetrics.resource(`$r('sys.float.margin_left')`)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| paddingEnd<sup>12+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否    | 是    | 标题栏结束端内间距。<br/>仅支持以下任一场景：<br/>1. 使用非自定义菜单，即[菜单value](#menus)为Array&lt;NavigationMenuItem&gt;；<br/>2. 没有右上角菜单，且使用非自定义标题，即[标题value](#title)类型为ResourceStr或NavigationCommonTitle。<br/>默认值：<br/>LengthMetrics.resource(`$r('sys.float.margin_right')`)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| paddingStart<sup>12+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否    | 是    | 标题栏起始端内间距。<br/>仅支持以下任一场景：<br/>1. 显示返回图标，即[hideBackButton](#hidebackbutton)为false；<br/>2. 使用非自定义标题，即[title](#title)类型为ResourceStr或NavigationCommonTitle。<br/>默认值：<br/>LengthMetrics.resource(`$r('sys.float.margin_left')`)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| paddingEnd<sup>12+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否    | 是    | 标题栏结束端内间距。<br/>仅支持以下任一场景：<br/>1. 使用非自定义菜单，即[menus](#menus)为Array&lt;NavigationMenuItem&gt;；<br/>2. 没有右上角菜单，且使用非自定义标题，即[title](#title)类型为ResourceStr或NavigationCommonTitle。<br/>默认值：<br/>LengthMetrics.resource(`$r('sys.float.margin_right')`)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | mainTitleModifier<sup>13+</sup>   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否    | 是    | 主标题属性修改器。<br/>1. 通过Modifier设置的属性会覆盖系统默认的属性（如果Modifier设置了fontSize，maxFontSize，minFontSize任一属性，则系统设置的大小相关属性不生效，以开发者的设置为准）；<br/>2. 不设该属性或者设置了异常值，则恢复系统默认设置；<br/>3. [Free](#navigationtitlemode枚举说明)模式下设置字体大小时，原有滑动改变标题大小的效果失效。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | subTitleModifier<sup>13+</sup>   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否    | 是    | 子标题属性修改器。<br/>1. 通过Modifier设置的属性会覆盖系统默认的属性（如果Modifier设置了fontSize，maxFontSize，minFontSize任一属性，则系统设置的大小相关属性不生效，以开发者的设置为准）；<br/>2. 不设该属性或者设置了异常值，则恢复系统默认设置。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | enableHoverMode<sup>13+</sup>   | boolean | 否    | 是    | 是否响应悬停态。<br/>使用规则：<br/>1. 需满足Navigation为全屏大小；<br/>2. 标题栏显示模式为[Free](#navigationtitlemode枚举说明)时或者标题栏布局方式为[STANDARD](#barstyle12枚举说明)时，此接口设置无效。<br/>true：响应悬停态；false：不响应悬停态。<br/>默认值：false<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| scrollEffectOptions | [ScrollEffectOptions](#scrolleffectoptions) | 否 | 是 | 标题栏滚动模糊效果选项。默认值undefined，不启用标题栏的滚动模糊。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| systemMaterial | [Material](#material) | 否    | 是    | 标题栏系统材质。默认值为undefined。系统材质效果取决于设备算力，详见[系统材质](../arkts-apis-uimaterial.md)。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+> **systemMaterial属性说明**
+>
+> 标题栏材质生效的范围是：返回键背板，menu按钮背板，menu的更多弹窗的背板。当应用级系统材质开关配置为disable时，无论systemMaterial设置为何值，标题栏材质效果都不生效，应用级系统材质开关请参考[MaterialState](../arkts-apis-uimaterial.md#materialstate)。标题栏系统材质设置不同值的效果：
+>
+> - undefined（默认值），应用级系统材质开关配置为default时，标题栏无材质效果；应用级系统材质开关配置为enable时，标题栏生效系统默认的沉浸式材质效果。
+>
+> - [Material.empty](../arkts-apis-uimaterial.md#empty)，标题栏无材质效果。
+>
+> - [Material](../arkts-apis-uimaterial.md#material)，应用级系统材质开关配置为default或者enable时，生效指定的材质效果。
 
 ## NavigationToolbarOptions<sup>11+</sup>
 
@@ -1956,6 +2023,7 @@ Navigation分割线颜色及上下边距。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称     | 类型            | 只读 | 可选 | 说明              |
 | ------ | ------------- | ---- | ---- | --------------- |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor)  | 否    | 是    | 工具栏背景颜色，不设置时为系统默认颜色。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -2006,6 +2074,22 @@ Navigation分割线颜色及上下边距。
 | launchMode | [LaunchMode](#launchmode12枚举说明)  | 否    | 是    | 路由栈的操作模式。<br/>默认值：LaunchMode.STANDARD |
 | animated   | boolean  | 否    | 是    | 是否支持转场动画。<br/>true：支持转场动画；false：不支持转场动画。<br/>默认值：true|
 
+## NavigationConfiguration
+
+Navigation配置项。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| stackSizeLimit | number | 否 | 是 | Navigation路由栈的活跃页面节点数量限制。<br/>默认值：0，表示不限制路由栈大小。<br/>取值小于等于0时，不限制路由栈大小。<br/>取值大于0时，将活跃页面节点数量限制为指定值；超过限制后，系统会按照先入先出顺序自动销毁较早入栈的页面节点，页面的NavPathInfo完整保留在路由栈中，支持后续重新创建页面。 |
+
 ## MoreButtonOptions<sup>19+</sup>
 
 更多图标的菜单选项。
@@ -2033,6 +2117,24 @@ type SystemBarStyle = SystemBarStyle
 | 类型     | 说明               |
 | -------- | ------------------ |
 | [SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)   | 状态栏文字颜色。<br/>默认值：`'#0xE5FFFFFF'`|
+
+## Material
+
+type Material = import('../api/@ohos.arkui.uiMaterial').default.Material
+
+系统材质。在设置标题栏系统材质属性时使用。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型     | 说明               |
+| -------- | ------------------ |
+| import('../api/@ohos.arkui.uiMaterial').default.[Material](../arkts-apis-uimaterial.md#material)   | 系统材质。|
 
 ## HomePathInfo<sup>20+</sup>
 
@@ -5374,3 +5476,211 @@ export struct NavigationMenu {
 > 5. 点击应用重新进入，可发现页面依然是点击跳转按钮后的页面。
 
 ![navigation_recoverable.gif](figures/navigation_recoverable.gif)
+
+### 示例19（设置ScrollEffectOptions开启标题栏滚动模糊）
+
+该示例演示如何使用[scrollEffectOptions](#scrolleffectoptions)配置项，开启标题栏滚动模糊效果。
+
+从API版本26.0.0开始，[title](#title)接口的参数options，新增了[scrollEffectOptions](#scrolleffectoptions)属性。
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct NavigationExample {
+  private arr: number[] = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 50; i++) {
+      this.arr.push(i)
+    }
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        Column() {
+          List({ space: 12, initialIndex: 0 }) {
+            ListItem() {
+              Column() {
+                Blank()
+                  .width('100%')
+                  .height(128)
+              }
+            }
+            ForEach(this.arr, (item: number) => {
+              ListItem() {
+                Text('' + item)
+                  .width('90%')
+                  .height(72)
+                  .backgroundColor($r('sys.color.brand'))
+                  .borderRadius(24)
+                  .fontSize(16)
+                  .fontWeight(500)
+                  .textAlign(TextAlign.Center)
+              }
+            }, (item: number) => item.toString())
+          }
+          .height("100%")
+          .width('100%')
+        }
+        .width('100%')
+        .height('100%')
+      }
+      .title({ main: "Main Title", sub: "Sub Title" }, {
+        barStyle: BarStyle.STACK,
+        scrollEffectOptions: {
+          scrollEffectType: ScrollEffectType.COMMON_BLUR,
+          blurEffectiveStartOffset: LengthMetrics.vp(8),
+          blurEffectiveEndOffset: LengthMetrics.vp(56)
+        }
+      })
+      .titleMode(NavigationTitleMode.Full)
+      .hideTitleBar(false)
+      .hideToolBar(false)
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
+![scrollEffect.gif](figures/scrollEffect.gif)
+
+### 示例20（设置systemMaterial开启标题栏材质效果）
+
+该示例演示如何使用systemMaterial属性，开启标题栏材质效果。
+
+从API版本26.0.0开始，[NavigationTitleOptions](#navigationtitleoptions11)新增了systemMaterial属性。
+
+```ts
+// xxx.ets
+import { SymbolGlyphModifier, uiMaterial } from '@kit.ArkUI';
+
+function BuildMenu(): Array<NavigationMenuItem> {
+  return [
+    {
+      value: 'menu1',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_circle'))
+    },
+    {
+      value: 'menu2',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_star'))
+    },
+    {
+      value: 'menu3',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_folder_badge_plus'))
+    },
+    {
+      value: 'menu4',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_lock'))
+    }
+  ]
+}
+
+@Component
+struct TestComponent {
+  private arr: number[] = new Array<number>();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 20; i++) {
+      this.arr.push(i);
+    }
+  }
+
+  build() {
+    Scroll() {
+      Column() {
+        ForEach(this.arr, (item: number) => {
+          Stack() {
+            Text(item.toString())
+              .fontSize(20)
+              .fontWeight(FontWeight.Bold)
+              .fontColor((item % 2) == 1 ? '#fff5e4e4' : '#ff302a2a')
+          }.width('100%')
+          .height(180)
+          .backgroundColor((item % 2) == 0 ? '#fff5e4e4' : '#ff302a2a')
+        }, (item: number) => item.toString())
+      }
+    }
+  }
+}
+
+@Component
+struct MyDest {
+  build() {
+    NavDestination() {
+      TestComponent().width('100%').height('100%')
+    }.width('100%').height('100%')
+    .title('', {
+      systemMaterial: new uiMaterial.ImmersiveMaterial({
+        style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+        colorInvert: true,
+        interactive: true,
+        lightEffect: {}
+      }),
+      // systemMaterial和barStyle没有关联性，但是同时设置barStyle为STACK样式可获得最佳沉浸效果
+      barStyle: BarStyle.STACK
+    })
+    .menus(BuildMenu())
+  }
+}
+
+@Entry
+@Component
+struct NavigationTitleMaterialDemo {
+  private stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  MyMap(name: string) {
+    MyDest()
+  }
+
+  build() {
+    RelativeContainer() {
+      Navigation(this.stack) {
+        Column() {
+          TestComponent()
+            .width('100%')
+        }.width('100%').height('100%')
+      }
+      .width('100%')
+      .height('100%')
+      .mode(NavigationMode.Stack)
+      .navDestination(this.MyMap)
+      .title('', {
+        systemMaterial: new uiMaterial.ImmersiveMaterial({
+          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+          colorInvert: true,
+          interactive: true,
+          lightEffect: {}
+        }),
+        // systemMaterial和barStyle没有关联性，但是同时设置barStyle为STACK样式可获得最佳沉浸效果
+        barStyle: BarStyle.STACK
+      })
+      .menus(BuildMenu())
+      Column() {
+        Stack({alignContent: Alignment.Center}) {
+          Text('push page').fontSize(25)
+        }
+        .width(150)
+        .height(50)
+        .borderRadius(22)
+        .backgroundColor(Color.Orange)
+        .margin({left: 50, bottom: 100})
+        .onClick(() => {
+          this.stack.pushPath({name: 'one'})
+        })
+      }
+      .alignRules({
+        bottom: {anchor: '__container__', align: VerticalAlign.Bottom},
+        left: {anchor: '__container__', align: HorizontalAlign.Start},
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![navigationTitleSystemMaterial.gif](figures/navigationTitleSystemMaterial.gif)

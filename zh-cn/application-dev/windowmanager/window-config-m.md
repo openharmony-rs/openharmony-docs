@@ -1,8 +1,8 @@
 # 窗口元数据配置
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -39,14 +39,14 @@
         2. 使用[startOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)的supportWindowModes属性，且只配置FULL_SCREEN选项。
         3. 使用[module.json5](../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode属性，且只配置fullscreen选项。
 
-4. 使用metadata配置[自由多窗](https://developer.huawei.com/consumer/cn/doc/design-guides/pad-0000001823654157#section1768267204717)下的可支持窗口模式。配置项为：name为ohos.ability.window.supportWindowModeInFreeMultiWindow，value取值为：fullscreen（表示全屏模式）、split（表示分屏模式）、floating（表示悬浮窗模式）。value取值为字符串，可以配置多种模式，每个模式之间用逗号分隔开，不区分顺序，不添加空格，例如：fullscreen,split。仅在支持并处于[自由窗口](window-terminology.md#自由窗口)状态的设备上生效；在支持但不处于[自由窗口](window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](window-terminology.md#自由窗口)状态的设备上配置不生效也不报错。
+4. 使用metadata配置[自由多窗](https://developer.huawei.com/consumer/cn/doc/design-guides/pad-0000001823654157#section1768267204717)下的可支持窗口模式。配置项为：name为ohos.ability.window.supportWindowModeInFreeMultiWindow，value取值为：fullscreen（表示全屏模式）、split（表示分屏模式）、floating（表示自由悬浮窗口模式）。value取值为字符串，可以配置多种模式，每个模式之间用逗号分隔开，不区分顺序，不添加空格，例如：fullscreen,split。仅在支持并处于[自由窗口](window-terminology.md#freeform-window自由窗口)状态的设备上生效；在支持但不处于[自由窗口](window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](window-terminology.md#freeform-window自由窗口)状态的设备上配置不生效也不报错。
 
    自由多窗下的可支持窗口模式可以采用多种方法进行配置，配置优先级为：通过[SetSupportedWindowModes](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15)接口配置 > 通过StartAbility配置[StartOption](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)中的SupportWindowMode > 使用metadata配置 > 配置module.json5中[abilities](../quick-start/module-configuration-file.md#abilities标签)标签下的SupportWindowMode属性。
 
-   非自由多窗模式下只能通过配置module.json5中abilities标签下的SupportWindowMode属性配置窗口支持模式，其他配置方式均不生效。
+   非自由多窗模式下只能通过配置module.json5中abilities标签下的SupportWindowMode属性配置窗口支持模式，其他配置方式均不生效。<!--Del-->
 
-<!--Del-->
-5. 使用metadata标签配置主窗边角以直角显示。配置项为：name为ohos.ability.window.isRightAngle，value取值为true或false，取值为true表示窗口边角以直角显示、取值为false则使用系统默认圆角，未配置时默认为false。主窗直角配置仅在PC/2in1设备上生效，且仅支持系统应用。<!--DelEnd-->
+5. 使用metadata标签配置主窗边角以直角显示。配置项为：name为ohos.ability.window.isRightAngle，value取值为true或false，取值为true表示窗口边角以直角显示、取值为false则使用系统默认圆角，未配置时默认为false。主窗直角配置仅在PC/2in1设备上生效，且仅支持系统应用。
+<!--DelEnd-->
 
 
 ```json

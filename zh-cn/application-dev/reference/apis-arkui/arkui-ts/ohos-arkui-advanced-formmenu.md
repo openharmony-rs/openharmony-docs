@@ -1,9 +1,9 @@
 # FormMenu
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 本组件封装了一个“添加至桌面”菜单，用于实现应用内长按组件生成“添加至桌面”菜单，点击该菜单，触发卡片添加至桌面操作。通过桌面访问该应用快捷卡片，可以直接访问该组件功能。在应用使用过程中，该组件作为留存和复访入口，可吸引用户将功能快捷添加到桌面。
 
@@ -223,10 +223,10 @@ struct WidgetCard {
 
 **高级自定义控件界面**
 
-![zh-cn_image_0000001616959836](figures/zh-cn_image_add_form_to_desktop.jpeg)
+![zh-cn_image_0000001616959836](figures/add-form-to-desktop.jpeg)
 
 **调用高级自定义控件桌面加桌结果**
 
 左侧是formbindingdata为空加桌结果，右侧是formbindingdata为{ data: 'share' }的加桌结果。
 
-![zh-cn_image_0000001616959836](figures/zh-cn_image_add_form_to_desktop_result.jpeg)
+![zh-cn_image_0000001616959836](figures/add-form-to-desktop-result.jpeg)

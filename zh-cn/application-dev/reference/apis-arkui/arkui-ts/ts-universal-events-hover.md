@@ -44,6 +44,8 @@ onHoverMove(event: Callback&lt;HoverEvent&gt;): T
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -62,19 +64,21 @@ onHoverMove(event: Callback&lt;HoverEvent&gt;): T
 
 继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --------------- | ---------- | ----- | ----- | -------------------- |
-| x<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
-| y<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
-| windowX<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前应用窗口坐标系中的X坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
-| windowY<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前应用窗口坐标系中的Y坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
-| displayX<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前应用屏幕坐标系中的X坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
-| displayY<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前应用屏幕坐标系中的Y坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
+| x<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。<br>单位：vp<br/>取值范围：[0, +∞)<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
+| y<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br>单位：vp<br/>取值范围：[0, +∞)<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
+| windowX<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前应用窗口坐标系中的X坐标。<br>单位：vp<br/>取值范围：[0, +∞)<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
+| windowY<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前应用窗口坐标系中的Y坐标。<br>单位：vp<br/>取值范围：[0, +∞)<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
+| displayX<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前应用屏幕坐标系中的X坐标。<br>单位：vp<br/>取值范围：[0, +∞)<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
+| displayY<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置在当前应用屏幕坐标系中的Y坐标。<br>单位：vp<br/>取值范围：[0, +∞)<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
 | stopPropagation | () => void |否|否| 阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。 <br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
-| globalDisplayX<sup>20+</sup> | number |否|是| 鼠标光标或手写笔位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| globalDisplayY<sup>20+</sup> | number |否|是| 鼠标光标或手写笔位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| globalDisplayX<sup>20+</sup> | number |否|是| 鼠标光标或手写笔位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| globalDisplayY<sup>20+</sup> | number |否|是| 鼠标光标或手写笔位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## 示例
 

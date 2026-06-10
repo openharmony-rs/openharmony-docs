@@ -1,16 +1,18 @@
 # @ohos.arkui.StateManagement (State Management)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiyujia926; @liwenzhen3; @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926; @liwenzhen3-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The state management module provides data storage, persistent data management, UIAbility data storage, and environment state and tools required by applications.
 
 >**NOTE**
 >
->The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 
 T and S in this topic represent the types as described below.
@@ -172,7 +174,7 @@ Stores key-value pair data on the application disk. If the given key already exi
 
 | Name  |Type  |Mandatory  | Description                                                     |
 | ------------- | ------------|-------------------|-------------------------- |
-| type    |[ConnectOptions\<T\>](#connectoptions18)    |Yes |Connection settings.|
+| type    |[ConnectOptions\<T\>](#connectoptionst18)    |Yes |Connection settings.|
 
 **Return value**
 
@@ -232,7 +234,7 @@ const p1: Sample = PersistenceV2.globalConnect({
   areaMode: contextConstant.AreaMode.EL1
 })!;
 
-// Use key:global2 for connection and use the constructor function. If the encryption level not specified, the default EL2 level is used.
+// Use key:global2 for connection and use the constructor function. If the encryption level is not specified, the default EL2 level is used.
 const p2: Sample = PersistenceV2.globalConnect({ type: Sample, key: 'global2', defaultCreator: () => new Sample() })!;
 
 // Use key:global3 for connection and set the encryption parameter ranging from 0 to 4; otherwise, a crash occurs. In this case, EL3 is set.
@@ -263,7 +265,7 @@ Stores key-value pair data on the application disk. Supports the persistence of 
 
 | Name  | Type  | Mandatory| Description              |
 | -------- | ------ | ---- | ---------------------- |
-| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18) |  Yes  | Passed **globalConnect** parameters. For details, see the description of **ConnectOptions** and **ConnectOptionsCollections**.<br>If **defaultSubCreator** is provided in **ConnectOptionsCollections**, **defaultCreator** must be provided. Otherwise, the persistence fails. The collection item type S must be the same as the return type of **defaultSubCreator**. If the return types are inconsistent, an error will be reported during compilation.|  
+| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollectionst-s23)\| [ConnectOptions\<T\>](#connectoptionst18) |  Yes  | Passed **globalConnect** parameters. For details, see the description of **ConnectOptions** and **ConnectOptionsCollections**.<br>If **defaultSubCreator** is provided in **ConnectOptionsCollections**, **defaultCreator** must be provided. Otherwise, the persistence fails. The collection item type S must be the same as the return type of **defaultSubCreator**. If the return types are inconsistent, an error will be reported during compilation.|  
 
 When you use **defaultSubCreator** in **globalConnect**, you must provide **defaultCreator**. The return type of the **defaultSubCreator** function must be the same as the collection item type returned by **defaultCreator**.<br>When **globalConnect** persists data of the **Array\<ClassA>** type, you need to use the **defaultSubCreator** option to instruct the state management framework to create an instance of **ClassA**. The following is an example of using **globalConnect** to persist data of the **Array\<ClassA>** type:
 
@@ -399,7 +401,7 @@ PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
 });
 ```
 
-## ConnectOptions<sup>18+</sup>
+## ConnectOptions\<T\><sup>18+</sup>
 
 Defines the parameter type for **globalConnect**.
 
@@ -414,9 +416,9 @@ Defines the parameter type for **globalConnect**.
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |No  |Yes  |Default constructor. You are advised to pass this parameter. If **globalConnect** is connected to the key for the first time, an error is reported if this parameter is not passed in.|
 |areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |No  |Yes   |Encryption level, ranging from EL1 to EL5 (corresponding to the value from 0 to 4). For details, see [Encryption Levels](../../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels). If no value is passed in, EL2 is used by default. Storage paths vary based on the encryption levels. If the input value of encryption level is not in the range of **0** to **4**, a crash occurs.|
 
-## ConnectOptionsCollections<sup>23+</sup>
+## ConnectOptionsCollections\<T, S\><sup>23+</sup>
 
-Defines the parameter type for [globalConnect](#globalconnect23) API. ConnectOptionsCollections is inherited from [ConnectOptions](#connectoptions18). You can use the **ConnectOptionsCollections** input parameter to persist container data (such as **Array\<S>**).
+Defines the parameter type for the [globalConnect](#globalconnect23) API. **ConnectOptionsCollections** is inherited from [ConnectOptions\<T\>](#connectoptionst18). You can use the **ConnectOptionsCollections** input parameter to persist container data (such as **Array\<S>**).
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -427,7 +429,7 @@ Defines the parameter type for [globalConnect](#globalconnect23) API. ConnectOpt
 |Parameter  |Type   |Read-Only  |Optional   |Description     |
 |--------|------------|------------|-----------|--------------|
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |No  |Yes  |Persists container data. **defaultSubCreator** should be provided together with **defaultCreator**; otherwise, the container data cannot be persisted. The collection item type **S** must be the same as the return type of **defaultSubCreator**. If **defaultSubCreator** is provided but **defaultCreator** is not, the persistence fails.|
-|defaultSubCreator   | [StorageDefaultCreator\<S\>](#storagedefaultcreatort)   |No  |Yes  |Persists container data. If the return value of **defaultSubCreator** is **undefined** or **null**, the persistence fails. When a user-defined class collection (such as **Array\<ClassA>**) is persisted, the generic type **T** in **defaultCreator** is **Array\<ClassA>**, and **S** in **defaultSubCreator** is **ClassA**.|
+|defaultSubCreator   | StorageDefaultCreator\<S\> |No  |Yes  |Persists container data. If the return value of **defaultSubCreator** is **undefined** or **null**, the persistence fails. When a user-defined class collection (such as **Array\<ClassA>**) is persisted, the generic type **T** in **defaultCreator** is **Array\<ClassA>**, and **S** in **defaultSubCreator** is **ClassA**.|
 
 The following shows the examples of **StorageDefaultCreator\<T>** and **StorageDefaultCreator\<S>**:
 
@@ -948,7 +950,7 @@ This API can be used together with [enableV2Compatibility](#enablev2compatibilit
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| source | T    | Yes  | Data source. Common classes, Array, Map, Set, and Date types are supported.<br>The [collections](../apis-arkts/arkts-apis-arkts-collections.md) type and [\@Sendable](../../arkts-utils/arkts-sendable.md) decorated classes are not supported.<br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported.|
+| source | T    | Yes  | Data source. Common classes, Array, Map, Set, and Date types are supported.<br>[@arkts.collections](../apis-arkts/arkts-apis-arkts-collections.md) (ArkTS containers) and classes decorated with [@Sendable](../../arkts-utils/arkts-sendable.md) are not supported.<br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported.|
 
 **Return value**
 
@@ -1495,6 +1497,92 @@ struct Index {
 }
 ```
 
+### getCustomComponentContext
+
+getCustomComponentContext\<T extends BaseCustomComponent\>(customComponent: T): CustomComponentContext
+
+Obtains [CustomComponentContext](#customcomponentcontext) of the given @Component(V1) or @ComponentV2. **CustomComponentContext** can be used to access the reuse pool of the component. For details about the reuse pool, see [Global Reuse: Centralized Component Recycling and Reuse](../../ui/state-management/arkts-global-reuse-pool.md).
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                                | Mandatory|  Description             |
+| ------- | ------------------------------------ | ---- | -------------------------------------------------- |
+| customComponent  | T | Yes  | @Component or @ComponentV2 whose context is to be obtained.|
+
+**Return value**
+
+| Type                                             | Description                         |
+| ------------------------------------------------- | ---------------------------- |
+| [CustomComponentContext](#customcomponentcontext)  | Context object of the given component instance.    |
+
+**Example**
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  aboutToRecycle() {
+    console.info('ReusableChild aboutToRecycle');
+  }
+  aboutToReuse() {
+    console.info('ReusableChild aboutToReuse');
+  }
+
+  build() {
+    Text('ReusableChild')
+  }
+}
+
+@Entry
+@ComponentV2({ 
+  reusePool: 'shared', // Declare the shared global reuse pool.
+  poolAccepts: [ReusableChild], // The global reuse pool accepts the child component type ReusableChild.
+  freezeWhenInactive: false // Disable the component freezing feature. This parameter must be provided when reusePools is declared. You can also enable the component freezing feature.
+})
+struct Index {
+  @Local showChild: boolean = true;
+
+  inspectPool() {
+    // Obtain CustomComponentContext of this component.
+    const context = UIUtils.getCustomComponentContext(this);
+    // Access the reuse pool through the context.
+    const pool = context.getReusePool();
+    if (pool) {
+      const info = pool.getReusableInfo(ReusableChild);
+      if (info && !Array.isArray(info)) {
+        console.info(`ReusableChild in the pool: count=${info.count}, maxCount=${info.maxCount}`);
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Button('Switch Child Component')
+        .onClick(() => { 
+          this.showChild = !this.showChild;
+        })
+      Button('Check Pool')
+        .onClick(() => {
+          this.inspectPool();
+        })
+      if (this.showChild) {
+        ReusableChild()
+      }
+    }
+  }
+}
+```
+
 ## TaskCallback<sup>22+</sup>
 
 type TaskCallback = () => T
@@ -1513,15 +1601,14 @@ Defines a synchronous callback.
 
 ## MonitorOptions<sup>20+</sup>
 
-Defines the optional parameter of [addMonitor](#addmonitor20), which is used to configure the callback type.
-
-**Atomic service API**: This API can be used in atomic services since API version 20.
+Defines the optional parameters for [addMonitor](#addmonitor20), which are used to configure the callback type and whether to enable the wildcard capability.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Parameter| Type| Read-Only| Optional| Description    |
 | ------ | ---- | ---- | ---- | ------------ |
-|isSynchronous|boolean|No|Yes|Whether the current callback is a synchronous callback. **true**: The current callback is a synchronous callback. **false** (default value): The current callback is an asynchronous callback.|
+|isSynchronous|boolean|No|Yes|Whether the current callback is a synchronous callback. **true**: The current callback is a synchronous callback. **false** (default value): The current callback is an asynchronous callback.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+|enableWildcard|boolean|No|Yes|Whether to enable the wildcard capability for this **addMonitor**. **true** to enable the wildcard capability, and **false** means the opposite. The default value is **false**. If the wildcard capability is disabled but the path contains wildcards, the path is considered invalid.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## MonitorCallback<sup>20+</sup>
 type MonitorCallback = (monitorValue: IMonitor) => void
@@ -2077,3 +2164,394 @@ struct CompV2 {
   }
 }
 ```
+
+## CustomComponentContext
+
+The **CustomComponentContext** class provides access to component-level services, including the reuse pool. You can obtain an instance through [UIUtils.getCustomComponentContext](#getcustomcomponentcontext).
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+### getReusePool
+
+getReusePool(): IReusePool | undefined
+
+Obtains the global reuse pool of the custom component. If the component does not configure the reuse pool through **reusePool** and **poolAccepts**, **undefined** is returned. For details about how to configure the global reuse pool, see [Global Reuse: Centralized Component Recycling and Reuse](../../../application-dev/ui/state-management/arkts-global-reuse-pool.md).
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                                  |  Description                         |
+| -------------------------------------- | ------------------------------------------------ |
+| [IReusePool](#ireusepool) \| undefined | If a global reuse pool is configured for the current component, the reuse pool information is returned. Otherwise, **undefined** is returned.|
+
+**Example**
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  build() {
+    Text('ReusableChild')
+  }
+}
+
+@Entry
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
+struct PoolOwner {
+  checkPool() {
+    const context = UIUtils.getCustomComponentContext(this);
+    const pool = context.getReusePool();
+    if (pool) {
+      console.info('Global reuse pool configured.');
+    } else {
+      console.info('No global reuse pool configured.');
+    }
+  }
+
+  build() {
+    Column() {
+      ReusableChild()
+      Button('Check Pool')
+        .onClick(() => {
+          this.checkPool();
+        })
+    }
+  }
+}
+```
+
+## IReusePool
+
+The **IReusePool** API provides the features related to the global reuse pool of a custom component.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+### getReusableInfo
+
+getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IReusableInfo[] | IReusableInfo | undefined
+
+Obtains the information about the recycling instance of a given reusable component type in this reuse pool.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name       | Type                                | Mandatory|  Description           |
+| ------------ | ------------------------------------ | ---- | --------------------------------------------------------------------------------------------------------------------------- |
+| constructor | [ReusableComponentConstructor](#reusablecomponentconstructor) | Yes  | Name of the reusable custom component to be queried.|
+| reuseId      | string   | No  | Reuse ID for filtering. If specified, only the information about the reuse pool with the reuse ID is returned. The default value is **undefined**, indicating that information about all reuse pools is returned.  |
+
+**Return value**
+
+| Type| Description|
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [IReusableInfo](#ireusableinfo)[] \| [IReusableInfo](#ireusableinfo) \| undefined | If the reuse pool is not configured to accept the given component type, **undefined** is returned.<br>If **reuseId** is specified, a single **IReusableInfo** is returned (even if **count** is set to **0** and **maxCount** is set to the default value).<br>If **reuseId** is not specified and the reusable component does not use **reuseId**, a single **IReusableInfo** is returned.<br>If **reuseId** is not specified but the reusable component uses **reuseId**, an **Array&lt;IReusableInfo&gt;** is returned, providing a separate entry for each **reuseId** that has a positive value of **count** or a non-default value of **maxCount** as well as an entry of **reuseId: undefined**.|
+
+**Example**
+
+```ts
+import { UIUtils, IReusableInfo } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  aboutToRecycle() {
+    console.info('ReusableChild aboutToRecycle');
+  }
+  aboutToReuse() {
+    console.info('ReusableChild aboutToReuse');
+  }
+
+  build() {
+    Text('ReusableChild')
+  }
+}
+
+@Entry
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
+struct PoolOwner {
+  @Local showChild: boolean = true;
+
+  inspectPool() {
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    if (!pool) {
+      return;
+    }
+
+    // Query the type of components accepted by the pool.
+    const info = pool.getReusableInfo(ReusableChild);
+    if (info === undefined) {
+      console.info('No reuse pool that accepts ReusableChild');
+    } else if (Array.isArray(info)) {
+      // Multiple reuseId buckets are used.
+      info.forEach((item: IReusableInfo, i: number) => {
+        console.info(`[${i}] reuseId=${item.reuseId}, count=${item.count}, maxCount=${item.maxCount}`);
+      });
+    } else {
+      // Single entry (reuseId is not used, or a specific reuseId is queried).
+      console.info(`count=${info.count}, maxCount=${info.maxCount}`);
+    }
+
+    // Query a specific reuseId. A single IReusableInfo is always returned.
+    const bucketInfo = pool.getReusableInfo(ReusableChild, 'A') as IReusableInfo;
+    console.info(`reuseId 'A': count=${bucketInfo.count}, maxCount=${bucketInfo.maxCount}`);
+  }
+
+  build() {
+    Column() {
+      Button('Switch Child Component')
+        .onClick(() => {
+          this.showChild = !this.showChild;
+        })
+      Button('Check Pool')
+        .onClick(() => this.inspectPool())
+      if (this.showChild) {
+        ReusableChild()
+          .reuse({ reuseId: () => 'A' })
+      }
+    }
+  }
+}
+```
+
+### preRender
+
+preRender(builder: WrappedBuilder\<[]\>, times: number): Promise\<void\>
+
+Pre-creates @Reusable/@ReusableV2 decorated components and places them in this reuse pool.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type                | Mandatory|  Description                           |
+| ------- | -------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
+| builder | WrappedBuilder\<[]\> | Yes  | **WrappedBuilder** that contains the @Builder decorated function to be executed *times* times. Each execution should create one or more @Reusable/@ReusableV2 decorated components.|
+| times   | number               | Yes  | Number of times the @Builder decorated function is executed.                                                                                                         |
+
+**Return value**
+
+| Type| Description |
+| --------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Promise\<void\> | Promise parsed when the idle task is successfully completed. This promise returns no value.|
+
+> **NOTE**
+>
+> 1. **preRender** only places components that are configured to be accepted by the pool into the pool. Components that are not accepted by the pre-rendering pool are created and destroyed immediately.
+>
+> 2. During pre-rendering, components are not reused from the pool. The pool only accepts newly created instances.
+>
+> 3. The @Builder decorated function performs complete deep rendering, including nested child components.
+
+**Example**
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableComponent {
+  @Require @Param param: number;
+
+  aboutToAppear() {
+    console.info('ReusableComponent aboutToAppear');
+  }
+  aboutToReuse() {
+    console.info('ReusableComponent aboutToReuse');
+  }
+
+  build() {
+    Column() {
+      Text(`ReusableComponent ${this.param}`)
+    }
+  }
+}
+
+@Builder 
+function preRenderBuilder() {
+  ReusableComponent({ param: 0 })
+}
+
+@Entry
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableComponent], freezeWhenInactive: false })
+struct Index {
+  @Local onUIFullyLoaded: boolean = false;
+
+  aboutToAppear() {
+    // Obtain the pool and schedule pre-rendering.
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    // Preload the reusable components in preRenderBuilder to this global reuse pool and execute preRenderBuilder once.
+    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder.bind(this)), 1)
+      .then(() => {
+        this.onUIFullyLoaded = true;
+      });
+  }
+
+  build() {
+    Column() {
+      CompA({ showFullUI: this.onUIFullyLoaded })
+    }
+  }
+}
+
+@ComponentV2
+struct CompA {
+  @Require @Param showFullUI: boolean;
+  @Local param: number = 8;
+
+  build() {
+    if (this.showFullUI) {
+      // This will reuse the pre-rendered instance from the pool.
+      ReusableComponent({ param: this.param })
+    }
+  }
+}
+```
+
+## IReusableInfo
+
+The **IReusableInfo** API provides information about the current number and maximum number of reusable components managed by the reuse pool.
+
+### Attributes
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Parameter    | Type  | Read-Only| Optional|  Description                              |
+| -------- | ------ | ---- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| count    | number | Yes  | No  | Number of components currently recycled in the pool. If **reuseId** is specified, **count** indicates the number of components with the reuse ID.                                  |
+| maxCount | number | No  | No  | Maximum number of components that can be recycled in the pool. If **reuseId** is specified, **maxCount** indicates the number of components with the reuse ID. Setting **maxCount** to a value smaller than that of **count** will cause the framework to asynchronously clear redundant components. During a delay, the value of **count** may temporarily exceed that of **maxCount**. The default value is **100**, and the maximum value is **200**.|
+| reuseId  | string | Yes  | Yes  | Reuse ID specified when a component is recycled. If the component is not recycled using **reuseId**, **undefined** is used.                                |
+
+**Example**
+
+```ts
+import { UIUtils, IReusableInfo } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct TestChild {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`TestChild [${this.label}] aboutToAppear`);
+  }
+  aboutToReuse() {
+    console.info(`TestChild [${this.label}] aboutToReuse`);
+  }
+  aboutToRecycle() {
+    console.info(`TestChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToDisappear() {
+    console.info(`TestChild [${this.label}] aboutToDisappear`);
+  }
+
+  build() {
+    Text(`Child component: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [TestChild], freezeWhenInactive: false })
+struct PoolOwner {
+  @Local showA: boolean = true;
+  @Local showB: boolean = true;
+
+  controlPool() {
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    if (!pool) {
+      return;
+    }
+
+    // Query all recycled TestChild instances.
+    const info = pool.getReusableInfo(TestChild);
+    if (info && !Array.isArray(info)) {
+      console.info(`TestChild: count=${info.count}, maxCount=${info.maxCount}`);
+      // Limit the cache to 5 components.
+      info.maxCount = 5;
+    }
+
+    // Clear specific reuseId buckets by setting maxCount to 0.
+    const bucketB = pool.getReusableInfo(TestChild, 'B') as IReusableInfo;
+    if (bucketB) {
+      bucketB.maxCount = 0; // Evict only the 'B' reuseId bucket.
+    }
+  }
+
+  build() {
+    Column() {
+      Button('Switch to A')
+        .onClick(() => {
+          this.showA = !this.showA;
+        })
+      Button('Switch to B')
+        .onClick(() => {
+          this.showB = !this.showB;
+        })
+      Button('Control Pool')
+        .onClick(() => this.controlPool())
+      if (this.showA) {
+        TestChild({ label: 'A' })
+          .reuse({ reuseId: () => 'A' })
+      }
+      if (this.showB) {
+        TestChild({ label: 'B' })
+          .reuse({ reuseId: () => 'B' })
+      }
+    }
+  }
+}
+```
+
+## ReusableComponentConstructor
+
+type ReusableComponentConstructor = Function
+
+Function for initializing the reusable custom component.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+<!--no_check-->

@@ -166,11 +166,11 @@ onRenderExited接口返回的渲染进程退出的具体原因。
 
 | 名称                         | 值 | 说明                |
 | -------------------------- | -- | ----------------- |
-| ProcessAbnormalTermination | 0 | 渲染进程异常退出。         |
+| ProcessAbnormalTermination | 0 | 渲染进程异常退出，可能原因包括：渲染进程启动超时、达到进程数量上限导致系统回收旧渲染进程、多个页签同时关闭等。     |
 | ProcessWasKilled           | 1 | 收到SIGKILL，或被手动终止。 |
 | ProcessCrashed             | 2 | 渲染进程崩溃退出，如段错误。    |
 | ProcessOom                 | 3 | 程序内存不足。           |
-| ProcessExitUnknown         | 4 | 其他原因。             |
+| ProcessExitUnknown         | 4 | 其他原因，比如渲染进程孵化失败。        |
 
 ## SslError<sup>9+</sup>
 
@@ -346,8 +346,8 @@ Web布局模式的配置。
 
 | 名称                           | 值 | 说明           |
 | ----------------------------- | -- | ------------ |
-| ASYNC_RENDER                        | 0 | Web组件异步渲染模式，ArkWeb组件作为图形surface节点，独立送显，Web组件的宽度最大规格不超过7,680 px（物理像素）。   |
-| SYNC_RENDER                        | 1 | Web组件同步渲染模式，ArkWeb组件作为图形canvas节点，跟随系统组件一起送显，可以渲染更长的Web组件内容，Web组件的宽度最大规格不超过500,000 px（物理像素）。   |
+| ASYNC_RENDER                        | 0 | Web组件异步渲染模式，ArkWeb组件作为图形surface节点，独立送显，Web组件的高度最大规格不超过7,680 px（物理像素）。   |
+| SYNC_RENDER                        | 1 | Web组件同步渲染模式，ArkWeb组件作为图形canvas节点，跟随系统组件一起送显，可以渲染更长的Web组件内容，Web组件的高度最大规格不超过500,000 px（物理像素）。   |
 
 ## ViewportFit<sup>12+</sup>
 
@@ -444,7 +444,7 @@ Web布局模式的配置。
 | 名称          | 值 | 说明                 |
 | ----------- | -- | ------------------ |
 | NONE        | 0 | 默认值，按vsync调度流程绘制。         |
-| SCROLLBY_FROM_ZERO_OFFSET | 1 | 在使用scrollby（只支持带滚动偏移量）且Web页面滚动偏移量为0，渲染流程跳过vsync调度直接绘制。 |
+| SCROLLBY_FROM_ZERO_OFFSET | 1 | 在使用scrollBy（只支持带滚动偏移量）且Web页面滚动偏移量为0，渲染流程跳过vsync调度直接绘制。 |
 
 ## PdfLoadResult<sup>20+</sup>
 

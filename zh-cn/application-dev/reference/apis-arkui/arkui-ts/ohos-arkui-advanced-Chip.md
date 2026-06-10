@@ -10,8 +10,9 @@ Chip用于搜索框历史记录、邮件发送列表等场景。
 
 > **说明：**
 >
-> 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -62,6 +63,8 @@ ChipOptions定义Chip的样式及具体式样参数。
 | suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](#chipsuffixsymbolglyphoptions14) | 否 | 是 | symbol类型后缀图标属性的无障碍朗读功能属性。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否  | 是  | Chip背景颜色。<br/>默认值：$r('sys.color.ohos_id_color_button_normal')。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | activatedBackgroundColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor)          | 否  | 是  | Chip激活时的背景颜色。<br/>默认值：$r('sys.color.ohos_id_color_emphasize')。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | 是 | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)等视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| activatedBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | 是 | 设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)等视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | borderRadius    | [Dimension](ts-types.md#dimension10)                         | 否  | 是  | Chip背景圆角半径大小，不支持百分比。<br/>默认值：$r('sys.float.ohos_id_corner_radius_button')。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | allowClose      | boolean                                                      | 否  | 是  | 关闭图标是否显示。<br/>默认值：true<br>true：删除图标显示；false：删除图标不显示。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onClose         | ()=>void                                                     | 否  | 是  | 默认关闭图标点击事件。<br>值为undefined时，关闭图标点击事件。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -80,10 +83,11 @@ ChipOptions定义Chip的样式及具体式样参数。
 >
 > 1. 当`suffixSymbol`有传入参数时，`suffixIcon`和`allowClose`不生效；当`suffixSymbol`没有传入参数而`suffixIcon`有传入参数时，`allowClose`不生效；当`suffixSymbol`和`suffixIcon`都没有传入参数时，`allowClose`决定是否显示删除图标。
 >2. `backgroundColor`和`activatedBackgroundColor`赋值为`undefined`时，显示默认背景颜色；赋值为非法值时，背景颜色透明。
-> 3. prefixSymbol/suffixSymbol的fontColor默认值为：normalFontColor: `[$r('sys.color.ohos_id_color_primary')]`、activatedFontColor: `[$r('sys.color.ohos_id_color_text_primary_contrary')]`。fontColor默认值为16。
+> 3. 当prefixSymbol或suffixSymbol设置了图标时，若Chip为非激活状态，图标颜色fontColor为`[$r('sys.color.ohos_id_color_secondary')]`，若Chip为激活状态，图标颜色fontColor为`[$r('sys.color.ohos_id_color_text_primary_contrary')]`。此外，图标的默认大小fontSize为16fp。
 >
-> 4. prefixIcon的fillColor默认值为：`$r('sys.color.ohos_id_color_secondary')`，suffixIcon的fillColor默认值为：`$r('sys.color.ohos_id_color_primary')`。fillColor对颜色的解析与Image组件保持一致。
->5. prefixIcon和suffixIcon的activatedFillColor默认值均为：`$r('sys.color.ohos_id_color_text_primary_contrary')`。activatedFillColor对颜色的解析与Image组件保持一致。
+> 4. 当prefixIcon和suffixIcon设置了图标时，fillColor默认值均为：`$r('sys.color.ohos_id_color_secondary')`。fillColor对颜色的解析与Image组件保持一致。
+> 5. 当prefixIcon和suffixIcon设置了图标时，activatedFillColor默认值均为：`$r('sys.color.ohos_id_color_text_primary_contrary')`。activatedFillColor对颜色的解析与Image组件保持一致。
+> 6. 从API版本26.0.0开始，当配置backgroundSystemMaterial为自动反色材质时，prefixIcon和suffixIcon的填充色以及prefixSymbol和suffixSymbol在非激活状态下的文字颜色会使用支持反色的系统资源，这些颜色会根据背景材质自动匹配反色效果；当设置activatedBackgroundSystemMaterial为自动反色材质时，prefixIcon和suffixIcon的激活态填充色以及prefixSymbol和suffixSymbol在激活状态下的文字颜色同样采用支持反色的系统资源，实现与背景材质反色的自动适配。
 
 ## ChipSize
 
@@ -238,6 +242,10 @@ LabelOptions定义文本属性。
 | fontFamily  | string                                     | 否  | 是  | 文字字体。<br/>默认值："HarmonyOS Sans"<br>值为undefined时，按默认值处理。 |
 | labelMargin | [LabelMarginOptions](#labelmarginoptions)  | 否  | 是  | 文本与左右侧图标之间间距。<br>默认值：<br>size为ChipSize.SMALL时，默认值：{ left: 4, right: 4 }<br>size为ChipSize.NORMAL时，默认值：{ left: 6, right: 6 }<br>单位：vp<br>值为undefined时，按默认值处理。 |
 | localizedLabelMargin<sup>12+</sup> | [LocalizedLabelMarginOptions](#localizedlabelmarginoptions12) | 否 | 是 | 本地化文本与左右侧图标之间间距。<br/>默认值：<br>size为ChipSize.SMALL时，默认值：<br>`{  start: LengthMetrics.resource($r('sys.float.chip_small_text_margin')),  end: LengthMetrics.resource($r('sys.float.chip_small_text_margin')) }`<br>size为ChipSize.NORMAL时，默认值：<br>`{  start: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')),  end: LengthMetrics.resource($r('sys.float.chip_normal_text_margin')) }`<br>值为undefined时，按默认值处理。 |
+
+> **说明：**
+>
+> 从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的新材质时，fontColor使用支持反色的特殊系统资源，文字颜色自动适配到材质背景色的反色；activatedBackgroundSystemMaterial设置自动反色的新材质时，activatedFontColor使用支持反色的特殊系统资源，操作块激活时的文字颜色自动适配到材质背景色的反色。
 
 ## CloseOptions<sup>14+</sup>
 
@@ -489,7 +497,7 @@ struct Index {
           console.info('chip on clicked');
         }
       })
- 	  // 点击“改变激活状态”，用于控制操作块的激活与关闭。
+      // 点击“改变激活状态”，用于控制操作块的激活与关闭。
       Button('改变激活状态')
         .onClick(() => {
           this.isActivated = !this.isActivated;
@@ -929,3 +937,60 @@ struct ChipAccessibilityExample {
   }
 }
 ```
+
+### 示例10（设置系统材质样式）
+
+该示例通过配置backgroundSystemMaterial和activatedBackgroundSystemMaterial实现系统材质样式，启用自动反色功能适配标签文本颜色。
+
+从API版本26.0.0开始，[ChipOptions](#chipoptions)新增backgroundSystemMaterial和activatedBackgroundSystemMaterial属性。
+
+```ts
+import { Chip, ChipOptions, uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ChipMaterialExample {
+  private chipOptions: ChipOptions = {
+    label: {
+      text: '操作块',
+      // 将fontColor设置为特殊系统资源值，启用自动反色能力。
+      fontColor: $r('sys.color.font_primary'),
+      activatedFontColor: $r('sys.color.font_primary')
+    },
+    allowClose: false,
+    // 设置普通状态下的背景颜色为透明，否则会和系统材质冲突。
+    backgroundColor: Color.Transparent,
+    // 设置普通状态下的系统材质样式为ULTRA_THIN，并开启自动反色。
+    backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      colorInvert: true
+    }),
+    // 设置激活状态下的背景颜色为透明，否则会和系统材质冲突。
+    activatedBackgroundColor: Color.Transparent,
+    // 设置激活状态下的系统材质样式。
+    activatedBackgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+    })
+  }
+
+  build() {
+    Column({ space: 50 }) {
+      Chip(this.chipOptions)
+      Chip(this.chipOptions)
+    }
+    .linearGradient({
+      angle: 0, // 渐变角度，0度是从左到右。
+      colors: [
+        ['#FF9A9E', 0.0], // 起始颜色及位置（0.0表示起点）。
+        ['#FECFEF', 0.5], // 中间颜色及位置。
+        ['#3B324C', 1.0] // 结束颜色及位置（1.0表示终点）。
+      ]
+    })
+    .padding(12)
+    .width('100%')
+    .height(150)
+  }
+}
+```
+
+![](figures/chip_material.png)

@@ -1,7 +1,7 @@
 # @ohos.arkui.uiExtension (uiExtension)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
+<!--Owner: @Pakoo007-->
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
@@ -10,7 +10,7 @@
 
 > **说明**
 >
-> 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 
 ## 导入模块
@@ -29,6 +29,8 @@ UIExtension宿主窗代理。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                                 | 类型                  | 只读 | 可选 | 说明                                                                                                     |
 | ------------------------------------| -------------------------------------------------- | ---- | ---- | ------------------------------------------------------------------------------------------------------ |
 | properties<sup>14+</sup>            | [WindowProxyProperties](#windowproxyproperties14) |  否  |  否  | 组件（EmbeddedComponent或UIExtensionComponent）的信息。<br/>**约束：** 由于架构约束，不建议在[onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)阶段同步获取该值，建议在收到[on('windowSizeChange')](../apis-arkui/js-apis-arkui-uiExtension.md#onwindowsizechange)回调之后获取。                                                                            |
@@ -37,11 +39,13 @@ UIExtension宿主窗代理。
 
 getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
-获取宿主应用窗口内容规避的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与宿主窗口内容重叠时，需要宿主窗口内容避让的区域。
+获取宿主应用窗口内容避让的区域；如系统栏区域、刘海屏区域、手势区域、软键盘区域等与宿主窗口内容重叠时，需要宿主窗口内容避让的区域。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -66,7 +70,7 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -84,11 +88,13 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaInfo&gt;): void
 
-注册系统避让区变化的监听。
+注册宿主应用窗口避让区变化的监听。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -99,16 +105,17 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaInfo&gt;): void
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
+| 1300002  | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listener has been registered. 3. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { uiExtension } from '@kit.ArkUI';
 
@@ -127,11 +134,13 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
-注销系统避让区变化的监听。
+注销宿主应用窗口避让区变化的监听。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -142,16 +151,17 @@ off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listening type is not registered. 3. The listener has not been registered. 4. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
@@ -173,6 +183,8 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明                   |
@@ -182,16 +194,17 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
+| 1300002  | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listener has been registered. 3. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -200,7 +213,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
     const extensionWindow = session.getUIExtensionWindowProxy();
     // 注册组件（EmbeddedComponent或UIExtensionComponent）大小变化的监听
     extensionWindow.on('windowSizeChange', (size: window.Size) => {
-      console.info(`The avoid area of the host window is: ${JSON.stringify(size)}.`);
+      console.info(`The size of the component is: ${JSON.stringify(size)}.`);
     });
   }
 }
@@ -216,6 +229,8 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明                   |
@@ -225,16 +240,17 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
+| 1300002  | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listening type is not registered. 3. The listener has not been registered. 4. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
@@ -256,7 +272,9 @@ on(type: 'rectChange', reasons: number, callback: Callback&lt;RectChangeOptions&
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -268,17 +286,18 @@ on(type: 'rectChange', reasons: number, callback: Callback&lt;RectChangeOptions&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listener has been registered. 3. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { uiExtension } from '@kit.ArkUI';
 
@@ -303,7 +322,9 @@ off(type: 'rectChange', callback?: Callback&lt;RectChangeOptions&gt;): void
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -314,17 +335,18 @@ off(type: 'rectChange', callback?: Callback&lt;RectChangeOptions&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listening type is not registered. 3. The listener has not been registered. 4. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 
 export default class EntryAbility extends EmbeddedUIExtensionAbility {
@@ -348,7 +370,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -371,12 +393,13 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 | ------- | ------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -430,7 +453,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 当[subWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中isModal为true且[modalityType](arkts-apis-window-e.md#modalitytype14)为APPLICATION_MODALITY时，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -453,12 +476,13 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The subWindow has been created and can not be created again. 4. It is not allowed to create non-secure window when secure extension exists. |
+| 1300035 | Creating a subwindow is not allowed in the current context. Possible cause: 1. An AgentUIExtensionAbility cannot create a subwindow. |
 
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -512,6 +536,8 @@ occupyEvents(eventFlags: number): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明           |
@@ -537,7 +563,7 @@ occupyEvents(eventFlags: number): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { uiExtension } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -571,6 +597,8 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                        | 值              | 说明            |
 |-----------------------------| --------------- |----------------|
 | EVENT_NONE                  | 0x00000000      | 无事件。      |
@@ -589,6 +617,8 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称 | 类型                 | 只读 | 可选 | 说明        |
 | ------ | -------------------- | ----- | ---- | ------------------ |
 | type   | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否 | 否 | 窗口避让区类型。|
@@ -602,6 +632,8 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                         | 类型        | 只读 | 可选 | 说明                             |
 | ------------------------------ | ----------- | ----- | ---- | -------------------------------- |
 | uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 |组件（EmbeddedComponent或UIExtensionComponent）的位置和宽高。 |
@@ -614,6 +646,8 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称                    | 值     | 说明                                                         |
 | ----------------------- | ------ | ------------------------------------------------------------ |
 | HOST_WINDOW_RECT_CHANGE | 0x0001 | 组件所在的宿主窗口矩形变化。 |
@@ -625,6 +659,8 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |

@@ -29,9 +29,9 @@
 - 如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。
   
   举例说明：
-  - 当需要分组模式为ECB、密钥长度为128bit、填充模式为PKCS7的AES密钥，其字符串参数为"AES128|ECB|PKCS7"。
+  - 当需要分组模式为ECB、密钥长度为128bit、填充模式为PKCS7，其字符串参数为"AES128|ECB|PKCS7"。
   
-  - 当需要分组模式为CFB、密钥长度为256bit、填充模式为NoPadding的AES密钥，其字符串参数为"AES256|CFB|NoPadding"。
+  - 当需要分组模式为CFB、密钥长度为256bit、填充模式为NoPadding，其字符串参数为"AES256|CFB|NoPadding"。
 
   | 分组模式 | 密钥长度（bit） | 填充模式 | API版本 | 
   | -------- | -------- | -------- | -------- |
@@ -44,9 +44,9 @@
   | CCM | [128\|192\|256] | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
   | XTS | [128\|256] | [NoPadding] | 26.0.0+ | 
 
-- 从API版本10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
+- 从API version 10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
   
-  举例说明，当需要分组模式为CFB、不带密钥长度、填充模式为NoPadding的AES密钥，其字符串参数为"AES|CFB|NoPadding"。
+  举例说明，当需要分组模式为CFB、不带密钥长度、填充模式为NoPadding，其字符串参数为"AES|CFB|NoPadding"。
 
 ## DES
 
@@ -63,9 +63,9 @@
 - 如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。
   
   举例说明：
-  - 当需要分组模式为ECB、密钥长度为64bit、填充模式为PKCS7的DES密钥，其字符串参数为"DES64|ECB|PKCS7"。
+  - 当需要分组模式为ECB、密钥长度为64bit、填充模式为PKCS7，其字符串参数为"DES64|ECB|PKCS7"。
   
-  - 当需要分组模式为OFB、密钥长度为64bit、填充模式为NoPadding的DES密钥，其字符串参数为"DES64|OFB|NoPadding"。
+  - 当需要分组模式为OFB、密钥长度为64bit、填充模式为NoPadding，其字符串参数为"DES64|OFB|NoPadding"。
 
   | 分组模式 | 密钥长度（bit） | 填充模式 | API版本 | 
   | -------- | -------- | -------- | -------- |
@@ -74,9 +74,9 @@
   | OFB | 64 | [NoPadding\|PKCS5\|PKCS7] | 20+ | 
   | CFB | 64 | [NoPadding\|PKCS5\|PKCS7] | 20+ | 
 
-- 从API版本10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
+- 从API version 10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
 
-  举例说明，当需要分组模式为CFB、不带密钥长度、填充模式为NoPadding的DES密钥，其字符串参数为"DES|CFB|NoPadding"。
+  举例说明，当需要分组模式为CFB、不带密钥长度、填充模式为NoPadding，其字符串参数为"DES|CFB|NoPadding"。
 
 ## 3DES
 
@@ -97,9 +97,9 @@
 - 如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。
   
   举例说明：
-  - 当需要分组模式为ECB、密钥长度为192bit、填充模式为PKCS7的3DES密钥，其字符串参数为"3DES192|ECB|PKCS7"。
+  - 当需要分组模式为ECB、密钥长度为192bit、填充模式为PKCS7，其字符串参数为"3DES192|ECB|PKCS7"。
   
-  - 当需要分组模式为OFB、密钥长度为192bit、填充模式为NoPadding的3DES密钥，其字符串参数为"3DES192|OFB|NoPadding"。
+  - 当需要分组模式为OFB、密钥长度为192bit、填充模式为NoPadding，其字符串参数为"3DES192|OFB|NoPadding"。
 
   | 分组模式 | 密钥长度（bit） | 填充模式 | API版本 | 
   | -------- | -------- | -------- | -------- |
@@ -108,9 +108,9 @@
   | OFB | 192 | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
   | CFB | 192 | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
 
-- 从API版本10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
+- 从API version 10开始，支持对称加解密不带密钥长度的规格。加解密参数输入密钥类型时，支持不带长度，加解密运算取决于实际输入的密钥长度。
 
-  举例说明，当需要分组模式为CFB、不带密钥长度、填充模式为NoPadding的3DES密钥，其字符串参数为"3DES|CFB|NoPadding"。
+  举例说明，当需要分组模式为CFB、不带密钥长度、填充模式为NoPadding，其字符串参数为"3DES|CFB|NoPadding"。
 
 ## SM4
 
@@ -129,11 +129,11 @@
 - 如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。SM4算法和密钥长度中间采用符号“_”拼接。
   
   举例说明：
-  - 当需要分组模式为ECB、密钥长度为128bit、填充模式为PKCS7的SM4密钥，其字符串参数为"SM4_128|ECB|PKCS7"。
+  - 当需要分组模式为ECB、密钥长度为128bit、填充模式为PKCS7，其字符串参数为"SM4_128|ECB|PKCS7"。
   
-  - 当需要分组模式为CFB、密钥长度为128bit、填充模式为NoPadding的SM4密钥，其字符串参数为"SM4_128|CFB|NoPadding"。
+  - 当需要分组模式为CFB、密钥长度为128bit、填充模式为NoPadding，其字符串参数为"SM4_128|CFB|NoPadding"。
 
-  - 当需要分组模式为GCM、密钥长度为128bit、填充模式为NoPadding的SM4密钥，其字符串参数为"SM4_128|GCM|NoPadding"。
+  - 当需要分组模式为GCM、密钥长度为128bit、填充模式为NoPadding，其字符串参数为"SM4_128|GCM|NoPadding"。
 
   | 分组模式 | 密钥长度（bit） | 填充模式 | API版本 | 
   | -------- | -------- | -------- | -------- |
@@ -152,8 +152,8 @@
 | 算法名称 | 字符串参数 | API版本 | 
 | -------- | -------- | -------- |
 | AES128_WRAP | AES128_WRAP | 22+ | 
+| AES192_WRAP | AES192_WRAP | 22+ | 
 | AES256_WRAP | AES256_WRAP | 22+ | 
-| AES384_WRAP | AES384_WRAP | 22+ | 
 
 ## 填充模式
 
@@ -169,7 +169,7 @@
 
 ## ChaCha20
 
-从API22开始，算法库支持该算法。
+从API version 22开始，算法库支持该算法。
 
 算法库当前提供了[ChaCha20](crypto-sym-key-generation-conversion-spec.md#chacha20)加解密，默认的ChaCha20加解密时需要传入IV。默认ChaCha20需要的加解密参数为[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
 
@@ -211,7 +211,7 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 
 从API版本26.0.0开始，支持流密码算法[RC4](crypto-sym-key-generation-conversion-spec.md#rc4)，无需分组与填充。密钥长度支持8位～4096位。
 
-算法库当前提供RC4加解密，RC4为流密码模式，无需分组模式跟填充模式。
+算法库当前提供RC4加解密，RC4为流密码模式，无需分组模式和填充模式。
 
 当前支持以字符串参数完成RC4加解密，字符串参数为RC4：
 
@@ -221,7 +221,7 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../
 
 ## Blowfish（BF）
 
-从API版本26.0.0开始，支持密码算法[Blowfish](crypto-sym-key-generation-conversion-spec.md#blowfishbf)，是一种分组密码算法，分组长度为64位，长度支持32位～448位。
+从API版本26.0.0开始，支持密码算法[Blowfish](crypto-sym-key-generation-conversion-spec.md#blowfishbf)，是一种分组密码算法，分组长度为64位，密钥长度支持32位～448位。
 
 > **说明：**
 >

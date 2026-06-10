@@ -1,9 +1,9 @@
 # FormExtensionContext
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 FormExtensionContext模块是[FormExtensionAbility](js-apis-app-form-formExtensionAbility.md)的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
@@ -28,7 +28,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
       'temperature': '11c',
       'time': '11:00'
     };
-    console.info("current language is：", this.context.config.language);
+    console.info("current language is:", this.context.config.language);
     return formBindingData.createFormBindingData(formData);
   }
 };

@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 WantAgent模块封装了[Want](./js-apis-app-ability-want.md)对象，允许应用程序在未来的某个时间点触发WantAgent实例执行指定操作（如启动Ability、发送公共事件等）。
 
@@ -36,7 +36,7 @@ getWantAgent(info: WantAgentInfo, callback: AsyncCallback\<WantAgent\>): void
 | 参数名     | 类型                       | 必填 | 说明                    |
 | -------- | -------------------------- | ---- | ----------------------- |
 | info     | [WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md)              | 是   | 表示创建WantAgent所需的配置信息，包括目标UIAbility、操作类型、请求码等。三方应用在WantAgentInfo中只能设置本应用的UIAbility。|
-| callback | AsyncCallback\<WantAgent\> | 是   | 回调函数。当创建WantAgent成功，err中code为0，data为创建的WantAgent；否则err会返回对应的错误码和错误信息。 |
+| callback | AsyncCallback\<WantAgent\> | 是   | 回调函数。当创建WantAgent成功，err为undefined，data为创建的WantAgent；否则err为错误对象。 |
 
 **错误码：**
 
@@ -197,7 +197,7 @@ getBundleName(agent: WantAgent, callback: AsyncCallback\<string\>): void
 | 参数名     | 类型                    | 必填 | 说明                              |
 | -------- | ----------------------- | ---- | --------------------------------- |
 | agent    | WantAgent               | 是   | WantAgent对象。                     |
-| callback | AsyncCallback\<string\> | 是   | 回调函数。当获取包名成功，err为undefined，data为创建的WantAgent；否则err会返回对应的错误码和错误信息。 |
+| callback | AsyncCallback\<string\> | 是   | 回调函数。当获取包名成功，err为undefined，data为创建的WantAgent；否则err为错误对象。 |
 
 **错误码：**
 
@@ -578,7 +578,7 @@ cancel(agent: WantAgent, callback: AsyncCallback\<void\>): void
 | 参数名     | 类型                  | 必填 | 说明                        |
 | -------- | --------------------- | ---- | --------------------------- |
 | agent    | WantAgent             | 是   | WantAgent对象。               |
-| callback | AsyncCallback\<void\> | 是   | 取消WantAgent实例的回调方法。 |
+| callback | AsyncCallback\<void\> | 是   | 回调函数，当取消WantAgent实例成功，err为undefined，否则err为错误对象。 |
 
 **错误码：**
 
@@ -639,7 +639,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     if (err) {
       console.error(`cancel failed, err code: ${err.code}, err msg: ${err.message}.`);
     } else {
-      console.info(`cancel sucecss.`);
+      console.info(`cancel success.`);
     }
   }
   try {
@@ -776,7 +776,7 @@ trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: AsyncCallback\<Co
 | ----------- | ----------------------------- | ---- | ------------------------------- |
 | agent       | WantAgent                     | 是   | WantAgent对象。                   |
 | triggerInfo | [TriggerInfo](js-apis-inner-wantAgent-triggerInfo.md)                   | 是   | 表示触发WantAgent实例时携带的信息，如自定义的extraInfos。 |
-| callback    | AsyncCallback\<[CompleteData](#completedata)\> | 否   | 主动激发WantAgent实例的回调方法。 |
+| callback    | AsyncCallback\<[CompleteData](#completedata)\> | 否   | 回调函数。当主动触发WantAgent实例成功，err为undefined，data为主动触发返回的数据；否则err为错误对象。 |
 
 **错误码：**
 
@@ -1068,7 +1068,7 @@ getOperationType(agent: WantAgent, callback: AsyncCallback\<number>): void
 | 参数名       | 类型                     | 必填 | 说明                                    |
 | ---------- | ------------------------ | ---- | --------------------------------------- |
 | agent      | WantAgent                | 是   | WantAgent对象。                           |
-| callback   | AsyncCallback\<number> | 是   | 获取一个WantAgent的OperationType信息的回调方法。 |
+| callback   | AsyncCallback\<number> | 是   | 回调函数。当获取一个WantAgent的OperationType信息成功，err为undefined，data为OperationType；否则err为错误对象。 |
 
 **错误码：**
 

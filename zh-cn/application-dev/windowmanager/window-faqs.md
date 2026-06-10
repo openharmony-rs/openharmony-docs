@@ -162,9 +162,9 @@ export default class EntryAbility extends UIAbility {
 
 ## 如何实现或判断窗口沉浸式布局
 
-[沉浸式布局](window-terminology.md#沉浸式布局)是一种让应用界面聚焦内容，减少无关元素干扰的窗口状态。
+[沉浸式布局](immersive-window-feature.md#沉浸式布局)是一种让应用可布局区域拓展至整个窗口显示区域的状态。
 
-非[自由窗口](window-terminology.md#自由窗口)可以通过调用[setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)设置沉浸式布局；自由窗口可以通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口控制窗口标题栏显隐，当标题栏隐藏时，窗口处于沉浸式布局。
+非[自由窗口](window-terminology.md#freeform-window自由窗口)可以通过调用[setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)设置沉浸式布局；自由窗口可以通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口控制窗口标题栏显隐，当标题栏隐藏时，窗口处于沉浸式布局。
 
 可以通过[isImmersiveLayout()](../reference/apis-arkui/arkts-apis-window-Window.md#isimmersivelayout20)判断当前窗口是否处于沉浸式布局。
 
@@ -261,11 +261,11 @@ export default class EntryAbility extends UIAbility {
 
 ## 如何设置窗口背景透明
 
-可以通过调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowavoidarea9)接口，传入'\#00XXXXXX'（其中X代表任意十六进制数字）或者透明的[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)实现窗口背景透明。
+可以通过调用[setWindowBackgroundColor](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口，传入'\#00XXXXXX'（其中X代表任意十六进制数字）或者透明的[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)实现窗口背景透明。
 
 > **说明：**
 > 
-> - 在支持[自由多窗](window-terminology.md#自由多窗模式)的设备上，存在窗口容器，窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowavoidarea9)接口仅可设置应用内容背景色，此时会透出窗口容器背景色。
+> - 在支持[自由多窗](window-terminology.md#free-multi-window-mode自由多窗模式)的设备上，存在窗口容器，窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。调用[setWindowBackgroundColor](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口仅可设置应用内容背景色，此时会透出窗口容器背景色。
 > 
 > - 在2in1和Tablet设备上可以调用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)接口设置容器透明，在其他设备上暂不支持设置容器背景色。
 
@@ -340,7 +340,7 @@ struct OrientationTestView {
 
 - [最佳实践：横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)
 
-- [setPreferredOrientation()入参枚举：Orientation](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)
+- [Orientation](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)
 
 ## 如何保持屏幕为横屏/竖屏，不随传感器旋转
 
@@ -434,13 +434,13 @@ supportWindowMode支持的取值如下：
 | -------- | -------- |
 | "fullscreen" | 全屏模式 |
 | "split" | 分屏模式 |
-| "floating" | 悬浮窗模式 |
+| "floating" | 自由悬浮窗口模式 |
 
 > **说明：**
 > 
 > - supportWindowMode字段类型为字符串数组，可缺省，缺省值为["fullscreen", "split", "floating"]。
 > 
-> - 在[自由窗口](window-terminology.md#自由窗口)状态下同时配置fullscreen和split时，如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)小于15，窗口将以悬浮窗模式启动；如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。
+> - 在[自由窗口](window-terminology.md#freeform-window自由窗口)状态下同时配置fullscreen和split时，如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)小于15，窗口将以自由悬浮窗口模式启动；如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。
 
 module.json5配置示例如下：
 
@@ -492,15 +492,15 @@ module.json5配置示例如下：
   | 名称 | 值 | 说明 |
   | -------- | -------- | -------- |
   | UNDEFINED | 0 | 表示APP未定义窗口模式。 |
-  | FULL_SCREEN | 1 | 表示APP全屏模式。<br/>[自由窗口](window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。<br/>可通过[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)和[setTitleAndDockHoverShown()](../reference/apis-arkui/arkts-apis-window-Window.md#settitleanddockhovershown14)配置，当hover到热区时是否显示标题栏和dock栏。<br/>当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。<br/>非[自由窗口](window-terminology.md#自由窗口)状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)配置是否显示状态栏。 |
-  | MAXIMIZE | 2 | 表示APP窗口最大化模式，在2in1设备中，窗口铺满整个屏幕，有dock栏和状态栏。 |
+  | FULL_SCREEN | 1 | 表示APP全屏模式。<br/>[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，默认无dock栏、标题栏和状态栏显示。<br/>可通过[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)和[setTitleAndDockHoverShown()](../reference/apis-arkui/arkts-apis-window-Window.md#settitleanddockhovershown14)配置，当hover到热区时是否显示标题栏和dock栏。<br/>当maximize()和setTitleAndDockHoverShown()接口都调用时，以最后调用设置的效果为准。<br/>非[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，窗口铺满整个屏幕，无标题栏和dock栏显示。可通过[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)配置是否显示状态栏。 |
+  | MAXIMIZE | 2 | 表示APP窗口最大化模式，在PC/2in1设备中，窗口铺满整个屏幕，有dock栏和状态栏。 |
   | MINIMIZE | 3 | 表示APP窗口最小化模式。 |
   | FLOATING | 4 | 表示APP自由悬浮窗口模式。 |
   | SPLIT_SCREEN | 5 | 表示APP分屏模式。 |
 
 - 可通过[on('windowStatusChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowstatuschange11)接口监听窗口模式变化。
 
-  如果应用需要在窗口模式发生变化时（例如从全屏切换到悬浮窗）立即做出响应，可以使用此接口监听窗口模式变化，以实现对应业务适配。
+  如果应用需要在窗口模式发生变化时（例如从全屏切换到自由悬浮窗口模式）立即做出响应，可以使用此接口监听窗口模式变化，以实现对应业务适配。
 
   ```ts
   import { UIAbility } from '@kit.AbilityKit';
@@ -551,7 +551,7 @@ module.json5配置示例如下：
 
 ## 如何设置全局悬浮窗背景色为透明
 
-可以通过调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowavoidarea9)接口，传入'\#00XXXXXX'（其中X代表任意十六进制数字）或者透明的[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)实现窗口背景透明。
+可以通过调用[setWindowBackgroundColor](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口，传入'\#00XXXXXX'（其中X代表任意十六进制数字）或者透明的[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)实现窗口背景透明。
 
 ## 如何判断应用被部分遮挡或完全遮挡
 
@@ -569,7 +569,7 @@ module.json5配置示例如下：
 
 ## 如何设置隐私窗口
 
-可通过[setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9-1)接口设置窗口为隐私模式，设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。
+可通过[setWindowPrivacyMode](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9-1)接口设置窗口为隐私模式，设置为隐私模式的窗口，窗口内容将无法被截屏或录屏。
 
 对于画中画和闪控球窗口，其隐私模式跟随父窗口。
 
@@ -585,19 +585,19 @@ module.json5配置示例如下：
 > 
 > **resize接口其他限制：**
 > 
-> - 在[自由窗口](window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12)获取）时调用生效，否则抛出错误码1300002。
+> - 在[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12)获取）时调用生效，否则抛出错误码1300002。
 > 
-> - 在非[自由窗口](window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+> - 在非[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，主窗口调用不生效。
 > 
 > **moveWindowTo接口其他限制：**
 > 
 > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowstatus12)获取）外的其他窗口模式下使用。
 > 
-> - 在[自由窗口](window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于父窗口移动。
+> - 在[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于父窗口移动。
 > 
 > - 若需在非自由窗口状态下实现相对于屏幕的移动，请使用[moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15)。
 > 
-> - 在非[自由窗口](window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+> - 在非[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，主窗口调用不生效。
 
 ## 如何设置或取消水印
 
@@ -610,7 +610,7 @@ module.json5配置示例如下：
 - 进程级水印：可通过[setWatermarkImageForAppWindows()](../reference/apis-arkui/arkts-apis-window-f.md#windowsetwatermarkimageforappwindows21)设置或取消应用进程级水印，针对当前应用进程的窗口生效，包括后续该进程新创建的窗口。
 
 <!--Del-->
-- 屏幕级水印：可通过[setWaterMarkImage()](../reference/apis-arkui/js-apis-window-sys.md#setwatermarkflag10)设置和取消屏幕级水印。
+- 屏幕级水印：可通过[window.setWaterMarkImage](../reference/apis-arkui/js-apis-window-sys.md#windowsetwatermarkimage10)设置和取消屏幕级水印。
 <!--DelEnd-->
 
 ## 如何将创建的窗口移动到扩展屏
@@ -621,7 +621,7 @@ module.json5配置示例如下：
 
 ## 子窗口背景如何实现半透明效果
 
-子窗口可以调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口，传入'\#XXYYYYYY'（其中XX代表任意十六进制且不为0数值，Y表示任意十六进制数字）或者半透明的[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)。
+子窗口可以调用[setWindowBackgroundColor](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口，传入'\#XXYYYYYY'（其中XX代表任意十六进制且不为0数值，Y表示任意十六进制数字）或者半透明的[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)。
 
 示例代码如下所示：
 
@@ -719,4 +719,54 @@ try {
 } catch (exception) {
   console.error(`Failed to destroy. Cause code: ${exception.code}, message: ${exception.message}`);
 };
+```
+
+## getWindowProperties接口返回值中的窗口类型（type字段）不符合预期
+
+**问题现象**
+
+因为历史问题，主窗场景调用[getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取到的窗口类型即[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)为TYPE_SYSTEM_ALERT而不是TYPE_MAIN。
+
+**解决措施**
+
+系统的后续API版本中将提供新的字段修正。
+
+应用内创建窗口时需要指明窗口类型，开发者可以直接感知窗口类型，不必要通过此接口主动获取。
+
+## on('windowSizeChange')等监听回调中通过getWindowAvoidArea()接口获取到的避让区域数据不是最新的
+
+**问题现象**
+
+在[on('windowSizeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowsizechange7)、[on('windowRectChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowrectchange12)等窗口属性变化监听回调中，通过[getWindowAvoidArea()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowavoidarea9)接口获取到的避让区域数据不准确。
+
+**产生原因**
+
+避让区域更新同时依赖窗口位置/尺寸属性的更新和系统界面元素（如状态栏）的位置/尺寸更新，在窗口属性更新回调触发时系统界面元素不一定已完成更新，这个时候通过getWindowAvoidArea()接口不能拿到准确的避让区域。
+
+**解决措施**
+
+通过避让区域专有的监听接口[on('avoidAreaChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onavoidareachange9)监听避让区域变化，避免在其他窗口属性变化事件回调中通过getWindowAvoidArea()接口主动获取避让区域。
+
+**示例代码**
+
+```ts
+import { window } from '@kit.ArkUI';
+
+// 代码中假设windowClass为已获取的Window实例
+
+// 错误写法：监听windowSizeChange事件主动获取避让区域
+windowClass.on('windowSizeChange', () => {
+  try {
+    const systemAvoidArea = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);  // 获取到的避让区域不准确
+  } catch (exception) {
+    console.error(`Failed to get window avoid area. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
+});
+
+// 正确写法：监听avoidAreaChange事件
+windowClass.on('avoidAreaChange', (data) => {
+  if (data.type === window.AvoidAreaType.TYPE_SYSTEM) {
+    const systemAvoidArea = data.area;  // 回调中的数据总是准确的避让区域
+  }
+});
 ```

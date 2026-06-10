@@ -16,7 +16,7 @@
 
 overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptions ): T
 
-在当前组件上，增加遮罩文本或者叠加自定义组件以及[ComponentContent](#componentcontent12)作为该组件的浮层。浮层的定位同样基于当前组件进行计算。浮层不通过组件树进行渲染，部分接口（例如[getRectangleById](../js-apis-arkui-componentUtils.md#componentutilsgetrectanglebyiddeprecated)）不支持获取浮层中的组件。
+在当前组件上，增加遮罩文本或者叠加自定义组件以及[ComponentContent](#componentcontent12)作为该组件的浮层。浮层的定位同样基于当前组件进行计算。浮层不通过组件树进行渲染，部分接口（例如[getRectangleById](../arkts-apis-uicontext-componentutils.md#getrectanglebyid)）不支持获取浮层中的组件。
 
 >**说明：**
 >
@@ -57,6 +57,8 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                  | 类型                                       | 只读 | 可选  | 说明                                                |
@@ -78,12 +80,14 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 类型                                                      | 只读 | 可选  | 说明                                                |
 | ------- | ---------------------------------------------------------| ---- | ------| --------------------------------------------------- |
-| x<sup>7+</sup>        | number                                                   | 否   | 是    | 横向偏移量。<br />单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
-| y<sup>7+</sup>        | number                                                   | 否   | 是    | 纵向偏移量。<br />单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
+| x<sup>7+</sup>        | number                                                   | 否   | 是    | 横向偏移量。<br/>默认值：0<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
+| y<sup>7+</sup>        | number                                                   | 否   | 是    | 纵向偏移量。<br/>默认值：0<br/>单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                               |
 
 ## ComponentContent<sup>12+</sup>
 
@@ -92,6 +96,8 @@ type ComponentContent\<T \= Object\> = ComponentContent\<T\>
 组件内容的实体封装。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

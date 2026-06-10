@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 全局快捷键订阅模块，用于处理组合按键的订阅，本模块也支持音量键拦截监听能力。
 
@@ -41,12 +41,12 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1和TV设备中可正常调用，在其他设备上返回801错误码。
 
 <!--Table: 10%; 10%; 10%; 10%; 60%-->
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ------- | ------- | ------- |
-| key       | number  | 否      | 否      | 按键键值。<br/>**说明：** 从API version 21开始，支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键、[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode)键和[KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode)键。<br/>对于API version 20及之前的版本，仅支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键和[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键。 |
+| key       | number  | 否      | 否      | 按键键值。<br/>**说明：** 从API version 26.0.0开始，新增支持[KEYCODE_FINGERPRINT_SLIDE_UP](js-apis-keycode.md#keycode)键和[KEYCODE_FINGERPRINT_SLIDE_DOWN](js-apis-keycode.md#keycode)键，非设备通用键值，使用前请判断当前设备是否支持相关按键事件上报，请参考[优先响应系统功能键开发指导](../../device/input/keypressed-guidelines.md)。<br/>从API version 21开始，新增支持[KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode)键和[KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode)键。<br/>对于API version 20及之前的版本，仅支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键和[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键。 |
 | action    | number  | 否      | 否      | 订阅指定的按键事件。<br/>**说明：** 从API version 21开始，支持取值为1和2，取值为1表示订阅按键按下事件，取值为2表示同时订阅按键按下事件和按键抬起事件。<br/>对于API version 20及之前的版本，仅支持取值为1，表示订阅按键按下事件。 |
 | isRepeat  | boolean  | 否      | 否      | 是否上报重复的按键事件。true表示上报，false表示不上报，默认值为true。 |
 
@@ -87,10 +87,11 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
+          // 获取所有系统热键
           inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
-            console.info(`List of system hotkeys : ${JSON.stringify(data)}`);
+            console.info(`Succeeded in getting list of system hotkeys: ${JSON.stringify(data)}.`);
           }).catch((error: BusinessError) => {
-            console.error(`Get all system hotkeys failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get all system hotkeys, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           })
         })
     }
@@ -114,7 +115,7 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 | ---------- | -------------------------- | ---- | ---------- |
 | type       | string                     | 是    | 事件类型，固定取值为'hotkeyChange'。                   |
 | hotkeyOptions | [HotkeyOptions](#hotkeyoptions) | 是    | 快捷键选项。                 |
-| callback   | Callback&lt;[HotkeyOptions](#hotkeyoptions)&gt; | 是    | 回调函数，获取满足条件的组合按键输入事件。 |
+| callback   | Callback&lt;[HotkeyOptions](#hotkeyoptions)&gt; | 是    | 回调函数，返回满足条件的组合按键输入事件。 |
 
 **错误码**：
 
@@ -122,7 +123,7 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 4200002  | The hotkey has been used by the system. |
 | 4200003  | The hotkey has been subscribed to by another. |
@@ -147,12 +148,13 @@ struct Index {
             isRepeat: true
           };
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
-            console.info(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
+            console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
           }
           try {
+            // 订阅热键变更事件
             inputConsumer.on("hotkeyChange", hotkeyOptions, hotkeyCallback);
           } catch (error) {
-            console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to Subscribe hot key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -168,8 +170,6 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
-
 **参数：** 
 
 | 参数名         | 类型                         | 必填   | 说明                              |
@@ -184,7 +184,7 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 
 **示例：**
@@ -203,15 +203,17 @@ struct Index {
           let zKey = 2042;
           // 取消订阅单个应用快捷键回调函数
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
-            console.info(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
+            console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
           }
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
+            // 订阅热键变更事件
             inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
+            // 取消订阅热键变更事件
             inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback);
-            console.info(`Unsubscribe success`);
+            console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -233,15 +235,17 @@ struct Index {
           let zKey = 2042;
           // 取消订阅所有应用快捷键回调函数
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
-            console.info(`hotkeyOptions: ${JSON.stringify(hotkeyOptions)}`);
+            console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
           }
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: true };
           try {
+            // 订阅热键变更事件
             inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback);
+            // 取消订阅热键变更事件
             inputConsumer.off("hotkeyChange", hotkeyOption);
-            console.info(`Unsubscribe success`);
+            console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -253,13 +257,13 @@ struct Index {
 
 on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): void
 
-订阅按键按下事件，使用callback异步回调。若当前应用窗口为前台焦点窗口，用户按下指定按键，会触发回调。
+订阅按键按下事件。若当前应用窗口为前台焦点窗口，用户按下指定按键，会触发回调。使用callback异步回调。
 
 订阅成功后，该按键事件的系统默认行为将被屏蔽，即不会再触发系统级的响应，如音量调节。要恢复系统响应，请使用[off](#inputconsumeroffkeypressed16)方法取消订阅。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1和TV设备中可正常调用，在其他设备上返回801错误码。
 
 **参数：**
 
@@ -267,7 +271,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 | ---------- | --------------------------             | ----  | ---------- |
 | type       | string                                 | 是     | 事件类型，固定取值为'keyPressed'。        |
 | options    | [KeyPressedConfig](#keypressedconfig16)| 是     | 按键事件消费设置。           |
-| callback   | Callback&lt;[KeyEvent](./js-apis-keyevent.md#keyevent)&gt; | 是    | 回调函数，用于返回按键事件。订阅不同的按键事件需要使用不同的callback，否则订阅不生效。 |
+| callback   | Callback&lt;[KeyEvent](./js-apis-keyevent.md#keyevent)&gt; | 是    | 回调函数，返回按键事件。订阅不同的按键事件需要使用不同的callback，否则订阅不生效。 |
 
 **错误码**：
 
@@ -275,7 +279,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 
 **示例：**
@@ -296,11 +300,12 @@ struct Index {
               action: 1,
               isRepeat: false,
             }
+            // 订阅按键按下事件
             inputConsumer.on('keyPressed', options, (event: KeyEvent) => {
-              console.info(`Subscribe success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in subscribing ${JSON.stringify(event)}.`);
             });
           } catch (error) {
-            console.error(`Subscribe execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to subscribe , Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -316,7 +321,7 @@ off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
-**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1、TV和Car设备中可正常调用，在其他设备上返回801错误码。
+**设备行为差异**：API version 23之前，该接口在Phone和Tablet设备中可正常调用，在其他设备上返回801错误码。从API version 23开始，该接口在Phone、Tablet、PC/2in1和TV设备中可正常调用，在其他设备上返回801错误码。
 
 **参数：**
 
@@ -331,7 +336,7 @@ off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 
 **示例：**
@@ -354,14 +359,16 @@ struct Index {
               isRepeat: false,
             }
             let callback = (event: KeyEvent) => {
-              console.info(`Unsubscribe success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in unsubscribing ${JSON.stringify(event)}.`);
             }
+            // 订阅按键按下事件
             inputConsumer.on('keyPressed', options, callback);
+            // 取消订阅按键按下事件
             inputConsumer.off('keyPressed', callback);
             // 取消当前已订阅的所有回调函数
             inputConsumer.off("keyPressed");
           } catch (error) {
-            console.error(`Unsubscribe execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }

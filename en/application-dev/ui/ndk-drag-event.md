@@ -1,4 +1,4 @@
-# Drag Event
+# Binding Drag Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
@@ -24,7 +24,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
    nodeAPI = nativeNodeAPI;
    ```
 
-   Create an **Image** node and set the draggable and other related attributes.
+   Create an **Image** node, use [OH_ArkUI_SetNodeDraggable](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_setnodedraggable) to set the node to be draggable, and set other related attributes.
 
    <!-- @[create_imageNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h) -->
    
@@ -41,6 +41,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
    
    ``` C
    #define DEFAULT_WIDTH 200.0
+   // Set the node brightness.
    void SetWidth(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH)
    {
        if (!nodeAPI) {
@@ -52,6 +53,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
    }
    
    #define DEFAULT_HEIGHT 200.0
+   // Set the node height.
    void SetHeight(ArkUI_NodeHandle &node, float height = DEFAULT_HEIGHT)
    {
        if (!nodeAPI) {
@@ -63,6 +65,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
    }
    
    #define DEFAULT_BG_COLOR 0xFFFFFFFF
+   // Set the background color of the node.
    void SetBackgroundColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BG_COLOR)
    {
        if (!nodeAPI) {
@@ -74,6 +77,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
    }
    
    #define DEFAULT_MARGIN 5.0
+   // Set the margin of the node.
    void SetMargin(ArkUI_NodeHandle &node, float margin = DEFAULT_MARGIN)
    {
        if (!nodeAPI) {
@@ -84,6 +88,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
        nodeAPI->setAttribute(node, NODE_MARGIN, &marginItem);
    }
    
+   // Set tags for a Button node.
    void SetButtonLabel(ArkUI_NodeHandle &node, const char *label)
    {
        if (!nodeAPI) {
@@ -93,6 +98,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
        nodeAPI->setAttribute(node, NODE_BUTTON_LABEL, &NODE_Button_SRC_Item);
    }
    
+   // Set the node identifier.
    void SetId(ArkUI_NodeHandle &node, const char *id)
    {
        if (!nodeAPI) {
@@ -103,6 +109,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
    }
    
    #define DEFAULT_BORDER_WIDTH 0.0
+   // Set the border width for the node.
    void SetBorderWidth(ArkUI_NodeHandle &node, float width = DEFAULT_BORDER_WIDTH)
    {
        if (!nodeAPI) {
@@ -114,6 +121,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
    }
    
    #define DEFAULT_BORDER_COLOR 0xFF000000
+   // Set the border color of the node.
    void SetBorderColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BORDER_COLOR)
    {
        if (!nodeAPI) {
@@ -124,6 +132,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
        nodeAPI->setAttribute(node, NODE_BORDER_COLOR, &borderColorItem);
    }
    
+   // Set common node attributes, such as the width, height, background color, margin, and border style.
    void SetCommonAttribute(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH, float height = DEFAULT_HEIGHT,
                            unsigned int color = DEFAULT_BG_COLOR, float margin = DEFAULT_MARGIN)
    {
@@ -266,7 +275,7 @@ In ArkUI, you can implement the drag-and-drop functionality using C and C++ by c
 
 5. Handle the **NODE_ON_DROP** event.
 
-   In the **NODE_ON_DROP** event, perform operations related to the drop phase, typically involving retrieving the data passed during the drag process. For example, import the <database/udmf/udmf_meta.h> file, obtain [OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md), check whether the required data type exists, extract the corresponding data from [OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md), and destroy the pointer.
+   In the **NODE_ON_DROP** event, perform operations related to the drop phase, typically involving retrieving the data passed during the drag process. For example, import the [udmf_meta.h](../reference/apis-arkdata/capi-udmf-meta-h.md) file, obtain [OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md), check whether the required data type exists, extract the corresponding data from [OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md), and destroy the pointer.
 
    <!-- @[on_drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) -->
    
@@ -362,6 +371,7 @@ In addition to the basic drag-and-drop functionality, ArkUI allows you to initia
    
    ``` C
    #define DEFAULT_WIDTH 200.0
+   // Set the node brightness.
    void SetWidth(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH)
    {
        if (!nodeAPI) {
@@ -373,6 +383,7 @@ In addition to the basic drag-and-drop functionality, ArkUI allows you to initia
    }
    
    #define DEFAULT_HEIGHT 200.0
+   // Set the node height.
    void SetHeight(ArkUI_NodeHandle &node, float height = DEFAULT_HEIGHT)
    {
        if (!nodeAPI) {
@@ -384,6 +395,7 @@ In addition to the basic drag-and-drop functionality, ArkUI allows you to initia
    }
    
    #define DEFAULT_BG_COLOR 0xFFFFFFFF
+   // Set the background color of the node.
    void SetBackgroundColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BG_COLOR)
    {
        if (!nodeAPI) {
@@ -395,6 +407,7 @@ In addition to the basic drag-and-drop functionality, ArkUI allows you to initia
    }
    
    #define DEFAULT_MARGIN 5.0
+   // Set the margin of the node.
    void SetMargin(ArkUI_NodeHandle &node, float margin = DEFAULT_MARGIN)
    {
        if (!nodeAPI) {
@@ -405,6 +418,7 @@ In addition to the basic drag-and-drop functionality, ArkUI allows you to initia
        nodeAPI->setAttribute(node, NODE_MARGIN, &marginItem);
    }
    
+   // Set tags for a Button node.
    void SetButtonLabel(ArkUI_NodeHandle &node, const char *label)
    {
        if (!nodeAPI) {
@@ -414,6 +428,7 @@ In addition to the basic drag-and-drop functionality, ArkUI allows you to initia
        nodeAPI->setAttribute(node, NODE_BUTTON_LABEL, &NODE_Button_SRC_Item);
    }
    
+   // Set the node identifier.
    void SetId(ArkUI_NodeHandle &node, const char *id)
    {
        if (!nodeAPI) {
@@ -424,6 +439,7 @@ In addition to the basic drag-and-drop functionality, ArkUI allows you to initia
    }
    
    #define DEFAULT_BORDER_WIDTH 0.0
+   // Set the border width for the node.
    void SetBorderWidth(ArkUI_NodeHandle &node, float width = DEFAULT_BORDER_WIDTH)
    {
        if (!nodeAPI) {
@@ -435,6 +451,7 @@ In addition to the basic drag-and-drop functionality, ArkUI allows you to initia
    }
    
    #define DEFAULT_BORDER_COLOR 0xFF000000
+   // Set the border color of the node.
    void SetBorderColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BORDER_COLOR)
    {
        if (!nodeAPI) {
@@ -445,6 +462,7 @@ In addition to the basic drag-and-drop functionality, ArkUI allows you to initia
        nodeAPI->setAttribute(node, NODE_BORDER_COLOR, &borderColorItem);
    }
    
+   // Set common node attributes, such as the width, height, background color, margin, and border style.
    void SetCommonAttribute(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH, float height = DEFAULT_HEIGHT,
                            unsigned int color = DEFAULT_BG_COLOR, float margin = DEFAULT_MARGIN)
    {

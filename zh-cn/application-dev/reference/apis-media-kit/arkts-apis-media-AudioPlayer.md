@@ -24,7 +24,7 @@ import { media } from '@kit.MediaKit';
 
 | 名称                            | 类型                                                   | 只读 | 可选 | 说明                                                         |
 | ------------------------------- | ------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| src                             | string                                                 | 否   | 否   | 音频媒体URI，支持当前主流的音频格式(m4a、aac、mp3、ogg、wav、amr)。<br>**支持路径示例**：<br>1. fd类型播放：fd://xx<br>![](figures/zh-cn_image_url.png)<br>2. http网络播放: http\://xx<br/>3. https网络播放: https\://xx<br/>4. hls网络播放路径：http\://xx或者https\://xx <br/>**需要权限：** ohos.permission.READ_MEDIA 或 ohos.permission.INTERNET。 |
+| src                             | string                                                 | 否   | 否   | 音频媒体URI，支持当前主流的音频格式(m4a、aac、mp3、ogg、wav、amr)。<br>**支持路径示例**：<br>1. fd类型播放：fd://xx<br>![](figures/image-url.png)<br>2. http网络播放: http\://xx<br/>3. https网络播放: https\://xx<br/>4. hls网络播放路径：http\://xx或者https\://xx <br/>**需要权限：** ohos.permission.READ_MEDIA 或 ohos.permission.INTERNET。 |
 | fdSrc<sup>9+</sup>              | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                 | 否   | 否   | 音频媒体文件描述，使用场景：应用中的音频资源被连续存储在同一个文件中。<br/>**使用示例**：<br/>假设一个连续存储的音乐文件: <br/>音乐1(地址偏移:0，字节长度:100)<br/>音乐2(地址偏移:101，字节长度:50)<br/>音乐3(地址偏移:151，字节长度:150)<br/>1. 播放音乐1：AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }<br/>2. 播放音乐2：AVFileDescriptor { fd = 资源句柄; offset = 101; length = 50; }<br/>3. 播放音乐3：AVFileDescriptor { fd = 资源句柄; offset = 151; length = 150; }<br/>假设是一个独立的音乐文件: 请使用src=fd://xx <br/> |
 | loop                            | boolean                                                | 否   | 否  | 音频循环播放属性，设置为'true'表示循环播放。                 |
 | audioInterruptMode<sup>9+</sup> | [audio.InterruptMode](../apis-audio-kit/arkts-apis-audio-e.md#interruptmode9) | 否   | 是   | 音频焦点模型。                                               |
@@ -46,7 +46,7 @@ play(): void
 **示例：**
 
 ```ts
-audioPlayer.on('play', () => {    //设置'play'事件回调。
+audioPlayer.on('play', () => {    // 设置'play'事件回调。
   console.info('audio play called');
 });
 audioPlayer.play();
@@ -66,7 +66,7 @@ pause(): void
 **示例：**
 
 ```ts
-audioPlayer.on('pause', () => {    //设置'pause'事件回调。
+audioPlayer.on('pause', () => {    // 设置'pause'事件回调。
   console.info('audio pause called');
 });
 audioPlayer.pause();
@@ -86,7 +86,7 @@ stop(): void
 **示例：**
 
 ```ts
-audioPlayer.on('stop', () => {    //设置'stop'事件回调。
+audioPlayer.on('stop', () => {    // 设置'stop'事件回调。
   console.info('audio stop called');
 });
 audioPlayer.stop();
@@ -106,7 +106,7 @@ reset(): void
 **示例：**
 
 ```ts
-audioPlayer.on('reset', () => {    //设置'reset'事件回调。
+audioPlayer.on('reset', () => {    // 设置'reset'事件回调。
   console.info('audio reset called');
 });
 audioPlayer.reset();
@@ -132,14 +132,14 @@ seek(timeMs: number): void
 **示例：**
 
 ```ts
-audioPlayer.on('timeUpdate', (seekDoneTime: number) => {    //设置'timeUpdate'事件回调。
+audioPlayer.on('timeUpdate', (seekDoneTime: number) => {    // 设置'timeUpdate'事件回调。
   if (seekDoneTime == null) {
     console.error('Failed to seek');
     return;
   }
   console.info('Succeeded in seek. seekDoneTime: ' + seekDoneTime);
 });
-audioPlayer.seek(30000);    //seek到30000ms的位置。
+audioPlayer.seek(30000);    // seek到30000ms的位置。
 ```
 
 ## setVolume<sup>(deprecated)</sup>
@@ -162,10 +162,10 @@ setVolume(vol: number): void
 **示例：**
 
 ```ts
-audioPlayer.on('volumeChange', () => {    //设置'volumeChange'事件回调。
+audioPlayer.on('volumeChange', () => {    // 设置'volumeChange'事件回调。
   console.info('audio volumeChange called');
 });
-audioPlayer.setVolume(1);    //设置音量到100%。
+audioPlayer.setVolume(1);    // 设置音量到100%。
 ```
 
 ## release<sup>(deprecated)</sup>
@@ -294,44 +294,44 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let audioPlayer: media.AudioPlayer = media.createAudioPlayer();  //创建一个音频播放实例。
-audioPlayer.on('dataLoad', () => {            //设置'dataLoad'事件回调，src属性设置成功后，触发此回调。
+let audioPlayer: media.AudioPlayer = media.createAudioPlayer();  // 创建一个音频播放实例。
+audioPlayer.on('dataLoad', () => {            // 设置'dataLoad'事件回调，src属性设置成功后，触发此回调。
   console.info('audio set source called');
-  audioPlayer.play();                       //开始播放，并触发'play'事件回调。
+  audioPlayer.play();                       // 开始播放，并触发'play'事件回调。
 });
-audioPlayer.on('play', () => {                //设置'play'事件回调。
+audioPlayer.on('play', () => {                // 设置'play'事件回调。
   console.info('audio play called');
-  audioPlayer.seek(30000);                  //调用seek方法，并触发'timeUpdate'事件回调。
+  audioPlayer.seek(30000);                  // 调用seek方法，并触发'timeUpdate'事件回调。
 });
-audioPlayer.on('pause', () => {               //设置'pause'事件回调。
+audioPlayer.on('pause', () => {               // 设置'pause'事件回调。
   console.info('audio pause called');
-  audioPlayer.stop();                       //停止播放，并触发'stop'事件回调。
+  audioPlayer.stop();                       // 停止播放，并触发'stop'事件回调。
 });
-audioPlayer.on('reset', () => {               //设置'reset'事件回调。
+audioPlayer.on('reset', () => {               // 设置'reset'事件回调。
   console.info('audio reset called');
-  audioPlayer.release();                    //释放播放实例资源。
+  audioPlayer.release();                    // 释放播放实例资源。
   audioPlayer = undefined;
 });
-audioPlayer.on('timeUpdate', (seekDoneTime: number) => {  //设置'timeUpdate'事件回调。
+audioPlayer.on('timeUpdate', (seekDoneTime: number) => {  // 设置'timeUpdate'事件回调。
   if (seekDoneTime == null) {
     console.error('Failed to seek');
     return;
   }
   console.info('Succeeded in seek, and seek time is ' + seekDoneTime);
-  audioPlayer.setVolume(0.5);                //设置音量为50%，并触发'volumeChange'事件回调。
+  audioPlayer.setVolume(0.5);                // 设置音量为50%，并触发'volumeChange'事件回调。
 });
-audioPlayer.on('volumeChange', () => {         //设置'volumeChange'事件回调。
+audioPlayer.on('volumeChange', () => {         // 设置'volumeChange'事件回调。
   console.info('audio volumeChange called');
-  audioPlayer.pause();                       //暂停播放，并触发'pause'事件回调。
+  audioPlayer.pause();                       // 暂停播放，并触发'pause'事件回调。
 });
-audioPlayer.on('finish', () => {               //设置'finish'事件回调。
+audioPlayer.on('finish', () => {               // 设置'finish'事件回调。
   console.info('audio play finish');
-  audioPlayer.stop();                        //停止播放，并触发'stop'事件回调。
+  audioPlayer.stop();                        // 停止播放，并触发'stop'事件回调。
 });
-audioPlayer.on('error', (error: BusinessError) => {  //设置'error'事件回调。
+audioPlayer.on('error', (error: BusinessError) => {  // 设置'error'事件回调。
   console.error(`audio error called, error: ${error}`);
 });
 
@@ -339,10 +339,10 @@ audioPlayer.on('error', (error: BusinessError) => {  //设置'error'事件回调
 let fdPath = 'fd://';
 // path路径的码流可通过"hdc file send D:\xxx\01.mp3 /data/accounts/account_0/appdata" 命令，将其推送到设备上。
 let path = '/data/accounts/account_0/appdata/ohos.xxx.xxx.xxx/01.mp3';
-fs.open(path).then((file) => {
+fileIo.open(path).then((file) => {
   fdPath = fdPath + '' + file.fd;
   console.info('Succeeded in opening fd, fd is' + fdPath);
-  audioPlayer.src = fdPath;  //设置src属性，并触发'dataLoad'事件回调。
+  audioPlayer.src = fdPath;  // 设置src属性，并触发'dataLoad'事件回调。
 }, (err: BusinessError) => {
   console.error('Failed to open fd, err is' + err);
 }).catch((err: BusinessError) => {
@@ -371,7 +371,7 @@ on(type: 'timeUpdate', callback: Callback\<number>): void
 **示例：**
 
 ```ts
-audioPlayer.on('timeUpdate', (newTime: number) => {    //设置'timeUpdate'事件回调。
+audioPlayer.on('timeUpdate', (newTime: number) => {    // 设置'timeUpdate'事件回调。
   if (newTime == null) {
     console.error('Failed to do timeUpdate');
     return;
@@ -432,8 +432,8 @@ on(type: 'error', callback: ErrorCallback): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioPlayer.on('error', (error: BusinessError) => {  //设置'error'事件回调。
+audioPlayer.on('error', (error: BusinessError) => {  // 设置'error'事件回调。
   console.error(`audio error called, error: ${error}`);
 });
-audioPlayer.setVolume(3);  //设置volume为无效值，触发'error'事件。
+audioPlayer.setVolume(3);  // 设置volume为无效值，触发'error'事件。
 ```

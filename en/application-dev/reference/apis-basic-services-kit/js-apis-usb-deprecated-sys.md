@@ -5,7 +5,7 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **usb** module provides USB device management functions, including USB device list query, bulk data transfer, control transfer, and permission control.
 
@@ -44,7 +44,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 | Type  | Description              |
 | ------ | ------------------ |
-| number | Function list in numeric mask format.|
+| number | Function list in numeric mask format after conversion.|
 
 **Example**
 
@@ -73,7 +73,7 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 | Type  | Description                          |
 | ------ | ------------------------------ |
-| string | Function list in string format.|
+| string | Function list in string format after conversion.|
 
 **Example**
 

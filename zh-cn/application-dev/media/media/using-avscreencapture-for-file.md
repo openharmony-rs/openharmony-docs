@@ -1,14 +1,14 @@
 # 使用AVScreenCapture录屏写文件(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
 屏幕录制主要为主屏幕录屏功能。
 
-开发者可以调用录屏（[AVScreenCapture](media-kit-intro.md#avscreencapture)）模块的C API接口，完成屏幕录制，采集设备内、麦克风等的音视频源数据。可以调用录屏模块获取音视频文件，然后通过文件的形式流转到其他模块进行播放或处理，达成文件形式分享屏幕内容的场景。
+开发者可以调用[AVScreenCapture](media-kit-intro.md#avscreencapture)模块的C API接口，完成屏幕录制，采集设备内、麦克风等的音视频源数据。可以调用录屏模块获取音视频文件，然后通过文件的形式流转到其他模块进行播放或处理，达成文件形式分享屏幕内容的场景。
 
 录屏模块和窗口（Window）、图形（Graphic）等模块协同完成整个视频采集的流程。
 
@@ -192,15 +192,12 @@ void OnCaptureContentChanged(struct OH_AVScreenCapture *capture, OH_AVScreenCapt
 void OnUserSelected(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectionInfo* selections, void *userData) {
     (void)capture;
     (void)userData;
-    int* selectType = new int;
-    uint64_t* displayId = new uint64_t;
+    int selectType = 0;
+    uint64_t displayId = 0;
 
     // 通过获取接口，拿到对应的选择类型和屏幕Id。OH_AVScreenCapture_UserSelectionInfo* selections仅在OnUserSelected回调中有效。
-    OH_AVSCREEN_CAPTURE_ErrCode errorSelectType = OH_AVScreenCapture_GetCaptureTypeSelected(selections, selectType);
-    OH_AVSCREEN_CAPTURE_ErrCode errorDisplayId = OH_AVScreenCapture_GetDisplayIdSelected(selections, displayId);
-
-    // 在使用完成后，对申请的内存进行释放
-    delete selectType, displayId;
+    OH_AVSCREEN_CAPTURE_ErrCode errorSelectType = OH_AVScreenCapture_GetCaptureTypeSelected(selections, &selectType);
+    OH_AVSCREEN_CAPTURE_ErrCode errorDisplayId = OH_AVScreenCapture_GetDisplayIdSelected(selections, &displayId);
 }
 
 // 开始录屏时调用StartScreenCapture。

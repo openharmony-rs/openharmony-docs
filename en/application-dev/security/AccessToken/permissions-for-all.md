@@ -13,7 +13,7 @@ After an application requests this type of permissions, the system automatically
 
 <!--Del-->
 > **NOTE**
-> "Enable via ACL" is not involved for permissions of the normal level.
+> **Certificate-based authorization** is not required for normal-level permissions.
 <!--DelEnd-->
 
 ## Request Mode
@@ -62,13 +62,15 @@ Allows an application to obtain the print framework capability.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
 **Valid since**: 10
 
 ## ohos.permission.DISCOVER_BLUETOOTH
 
 Allows an application to configure Bluetooth on a device, initiate or cancel a scan for Bluetooth devices, and pair with Bluetooth devices.
 
- 
+
 
 **Permission level**: normal
 
@@ -78,13 +80,15 @@ Allows an application to configure Bluetooth on a device, initiate or cancel a s
 
 ## ohos.permission.ACCELEROMETER
 
-Allows an application to read data from an acceleration sensor, uncalibrated acceleration sensor, or linear acceleration sensor.
+Allows an application to read data from an acceleration sensor.
 
- 
+Acceleration sensors include normal, uncalibrated, and linear acceleration sensors.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
@@ -148,19 +152,23 @@ With this permission, the application can obtain Wi-Fi information, including th
 
 ## ohos.permission.GYROSCOPE
 
-Allows an application to read data from a gyroscope sensor or uncalibrated gyroscope sensor.
+Allows an application to read data from a gyroscope sensor.
 
- 
+Gyroscope sensors include normal and uncalibrated gyroscope sensors.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
 ## ohos.permission.INTERNET
 
 Allows an application to access the Internet.
+
+With this permission, an application can obtain IP addresses, perform DNS resolution, or customize DNS rules.
 
 **Permission level**: normal
 
@@ -238,13 +246,15 @@ including scanning, enabling/disabling, connecting, and disabling Wi-Fi, modifyi
 
 ## ohos.permission.VIBRATE
 
-Allows an application to control vibration,
+Allows an application to control vibration.
 
-including one-time vibration, preset vibration, or custom vibration.
+Vibration includes one-time vibration, preset vibration, or custom vibration.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
@@ -302,6 +312,8 @@ Allows an application that has accessed the cloud to obtain its device-cloud syn
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | lite wearables | smart locks
+
 **Valid since**: 11
 
 ## ohos.permission.STORE_PERSISTENT_DATA
@@ -338,9 +350,13 @@ Allows an application to read the login status of user accounts.
 
 Allows an application to access the navigation service.
 
+With this permission, the application can set navigation information and process navigation instructions sent from other applications
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets | cars
 
 **Valid since**: 12
 
@@ -366,6 +382,8 @@ With this permission, the application can obtain the connection information betw
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | tablets | cars
+
 **Valid since**: 12
 
 ## ohos.permission.WINDOW_TOPMOST
@@ -382,7 +400,7 @@ Allows an application to set pinned windows.
 
 ## ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
-Allows a system application to use infrared interfaces.
+Allows an application to use infrared interfaces.
 
 With this permission, the application can obtain the maximum frequency supported by the infrared module and send infrared signals at a specific frequency.
 
@@ -422,11 +440,11 @@ The configured icon and label information can be displayed in **Task Center** an
 
 Allows an application to start its UIAbility by using C APIs.
 
-Currently, this permission is available only to 2-in-1 device applications.
-
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets
 
 **Valid since**: 15
 
@@ -519,7 +537,7 @@ This permission can be requested when the application meets the following condit
 
 Allows an application to set the main window container to be transparent and remove the shadow of the outer border of the main window.
 
-With this permission, the application can set the background color the shadow visibility of the main window.
+With this permission, the application can set the background color and the shadow visibility of the main window.
 
 **Permission level**: normal
 
@@ -563,7 +581,7 @@ This permission applies only to independent binary programs, not to HAPs.
 
 Allows an application to turn off the screen but keep it unlocked after a timeout.
 
-With this permission, the application prevents the device from locking by default when the screen turns off after a timeout.
+The device locks by default when the screen turns off after a timeout. With this permission, the application does not enter the lock screen when the screen turns off after a timeout.
 
 **Permission level**: normal
 
@@ -669,7 +687,7 @@ With this permission, the application can apply HDR brightening effects to compo
 
 **Supported devices**: general devices
 
-**Valid since**: 24
+**Since**: 24
 
 ## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
 
@@ -683,4 +701,60 @@ With this permission, the application can query available types of pluggable emb
 
 **Supported devices**: PCs/2-in-1 devices | phones | tablets
 
-**Valid since**: 24
+**Since**: 24
+
+## ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
+
+Allows an application to query the encryption and decryption status of a volume.
+
+With this permission, the application can obtain the encryption and decryption status of a volume and subscribe to system public events related to changes in the encryption and decryption status of a volume.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.STYLUS_FRAME_BOOST
+
+Allows an application to use stylus responsiveness enhancement APIs.
+
+With this permission, the application can improve handwriting performance, ensuring a more responsive stylus experience while writing.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.GET_ENTERPRISE_CONFIG
+
+Allows an application to obtain custom enterprise device management (EDM) configuration files.
+
+With this permission, the application can obtain custom EDM configuration files, including those for wallpapers and browser policies.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 20
+
+## ohos.permission.ACCESS_CAR_AUDIO
+
+Allows an application to access and manage in-vehicle audio.
+
+With this permission, the application can set audio sound effects and manage audio zones.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.0

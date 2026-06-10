@@ -12,7 +12,9 @@
 
 > **说明：**
 >
-> 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 
 ## 导入模块
@@ -31,7 +33,7 @@ SelectionMenu(options: SelectionMenuOptions): void
 
 入参为空时，文本选择菜单组件SelectionMenu内容区大小及组件大小为零。表现例如，富文本组件[RichEditor](ts-basic-components-richeditor.md)使用[bindSelectionMenu](ts-basic-components-richeditor.md#bindselectionmenu)接口绑定一个SelectionMenu的右键菜单，则右键富文本组件区域时无任何菜单弹出。
 
-**装饰器类型：**\@Builder
+**装饰器类型：**[\@Builder](../../../ui/state-management/arkts-builder.md)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -49,21 +51,21 @@ SelectionMenu(options: SelectionMenuOptions): void
 
 SelectionMenuOptions定义SelectionMenu的可选菜单类型项及其具体配置参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| editorMenuOptions | Array&lt;[EditorMenuOptions](#editormenuoptions)&gt; | 否 | 是 | 编辑菜单。<br/>editorMenuOptions未配置时，不显示编辑菜单。<br/>同时配置EditorMenuOptions中action和builder时，点击图标会同时响应。<br/>点击编辑菜单图标默认不关闭整个菜单，应用可以通过action接口配置RichEditorController的closeSelectionMenu主动关闭菜单。 |
-| expandedMenuOptions | Array&lt;[ExpandedMenuOptions](#expandedmenuoptions)&gt; | 否 | 是 | 扩展下拉菜单。<br/>expandedMenuOptions参数为空时无更多按钮，不显示扩展下拉菜单。<br/>expandedMenuOptions参数不为空时显示更多按钮，配置菜单项收起在更多按钮中，点击更多按钮展示。 |
-| controller | [RichEditorController](ts-basic-components-richeditor.md#richeditorcontroller) | 否 | 是 | 富文本控制器不为空时显示默认系统菜单（包含剪切复制粘贴等部分）且默认菜单功能内置。<br/>controller为空时不显示更多按钮，expandedMenuOptions参数不为空则显示下拉菜单中。<br/>系统默认只支持复制粘贴富文本文本内容，图文混排需要应用自定义onCopy、onPaste接口。应用自行配置onCopy \| onPaste接口时，系统菜单默认复制粘贴失效，调用应用自定义函数。 <br/>**说明：**<br/> 点击自定义文本选择菜单内置复制功能选项后，自定义菜单消失选中文本高亮保留。<br/> 点击自定义文本选择菜单内置全选功能选项后，自定义菜单消失文本全选高亮。<br/> 点击自定义文本选择菜单内置粘贴功能选项后，空白处粘贴或者选中文本替换粘贴均是保留被复制文本的样式。<br/> 当富文本组件[RichEditor](ts-basic-components-richeditor.md)的copyOptions属性设置为`CopyOptions.None`时，内置的复制剪切功能不会被限制。|
-| onCopy | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单复制项的事件回调。<br/>生效前提是一定要有controller参数，有系统默认菜单才能替换内置复制功能。<br/>**说明：**<br/> event为返回信息。|
-| onPaste | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单粘贴项的事件回调。<br/>生效前提是一定要有controller参数，有系统默认菜单才能替换内置粘贴功能。<br/>**说明：**<br/> event为返回信息。 |
-| onCut | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单剪切项的事件回调。<br/>生效前提是一定要有controller参数，有系统默认菜单才能替换内置剪切功能。<br/>**说明：**<br/>event为返回信息。|
-| onSelectAll | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单全选项的事件回调。<br/>生效前提是一定要有controller参数，有系统默认菜单才能替换内置全选功能。<br/>**说明：**<br/>event为返回信息。|
+| editorMenuOptions | Array&lt;[EditorMenuOptions](#editormenuoptions)&gt; | 否 | 是 | 编辑菜单。<br/>editorMenuOptions未配置时，不显示编辑菜单。<br/>同时配置EditorMenuOptions中action和builder时，点击图标会同时响应。<br/>点击编辑菜单图标默认不关闭整个菜单，应用可以通过action接口配置RichEditorController的closeSelectionMenu主动关闭菜单。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| expandedMenuOptions | Array&lt;[ExpandedMenuOptions](#expandedmenuoptions)&gt; | 否 | 是 | 扩展下拉菜单。<br/>expandedMenuOptions参数为空时无更多按钮，不显示扩展下拉菜单。<br/>expandedMenuOptions参数不为空时显示更多按钮，配置菜单项收起在更多按钮中，点击更多按钮展示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| controller | [RichEditorController](ts-basic-components-richeditor.md#richeditorcontroller) | 否 | 是 | 富文本控制器不为空时显示默认系统菜单（包含剪切复制粘贴等部分）且默认菜单功能内置。<br/>controller为空时不显示更多按钮，expandedMenuOptions参数不为空则显示下拉菜单中。<br/>系统默认只支持复制粘贴富文本文本内容，图文混排需要应用自定义onCopy、onPaste接口。应用自行配置onCopy \| onPaste接口时，系统菜单默认复制粘贴失效，调用应用自定义函数。 <br/>**说明：**<br/> 点击自定义文本选择菜单内置复制功能选项后，自定义菜单消失选中文本高亮保留。<br/> 点击自定义文本选择菜单内置全选功能选项后，自定义菜单消失文本全选高亮。<br/> 点击自定义文本选择菜单内置粘贴功能选项后，空白处粘贴或者选中文本替换粘贴均是保留被复制文本的样式。<br/> 当富文本组件[RichEditor](ts-basic-components-richeditor.md)的copyOptions属性设置为`CopyOptions.None`时，内置的复制剪切功能不会被限制。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| onCopy | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单复制项的事件回调。<br/>生效前提是一定要有controller参数，有系统默认菜单才能替换内置复制功能。<br/>**说明：**<br/> event为返回信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| onPaste | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单粘贴项的事件回调。<br/>生效前提是一定要有controller参数，有系统默认菜单才能替换内置粘贴功能。<br/>**说明：**<br/> event为返回信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| onCut | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单剪切项的事件回调。<br/>生效前提是一定要有controller参数，有系统默认菜单才能替换内置剪切功能。<br/>**说明：**<br/>event为返回信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| onSelectAll | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | 否 | 是 | 替代内置系统菜单全选项的事件回调。<br/>生效前提是一定要有controller参数，有系统默认菜单才能替换内置全选功能。<br/>**说明：**<br/>event为返回信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | 否 | 是 | 菜单的背景板的系统材质。不同系统材质包含不同的属性影响效果。默认值：undefined，无材质效果。<br/>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 
 ## EditorMenuOptions
@@ -435,7 +437,9 @@ struct Index {
           this.start = value.selection[0];
           this.end = value.selection[1];
         })
+        // 绑定鼠标右键操作自定义菜单
         .bindSelectionMenu(RichEditorSpanType.TEXT, this.MyMenu3(), RichEditorResponseType.RIGHT_CLICK)
+        // 绑定鼠标选中操作自定义菜单
         .bindSelectionMenu(RichEditorSpanType.TEXT, this.MyMenu2(), RichEditorResponseType.SELECT)
         .borderWidth(1)
         .borderColor(Color.Red)
@@ -449,6 +453,8 @@ struct Index {
 > **说明：**
 >
 > 系统暂未预置加粗、斜体等图标，示例代码使用本地资源图标，开发者使用时需自行替换editorMenuOptions中icon项的资源。
+>
+> 示例图为鼠标操作触发的自定义菜单弹出效果。
 
 ![selectionmenu](figures/selectionmenu.gif)
 
@@ -782,3 +788,126 @@ struct Index {
 ```
 
 ![selectionmenu02](figures/selectionmenu02.jpg)
+
+### 示例3（设置背景板材质）
+
+该示例通过设置[SelectionMenuOptions](#selectionmenuoptions)的属性backgroundSystemMaterial，展示了超薄样式的背景板材质。
+
+从API版本26.0.0开始，SelectionMenuOptions新增backgroundSystemMaterial属性。
+
+```ts
+import {
+  SelectionMenu,
+  EditorEventInfo,
+  SelectionMenuOptions
+} from '@kit.ArkUI';
+
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State select: boolean = true;
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  @State message: string = 'Hello world';
+  @State textSize: number = 30;
+  @State fontWeight: FontWeight = FontWeight.Normal;
+  @State start: number = -1;
+  @State end: number = -1;
+  @State textStyle: RichEditorTextStyle = {};
+  private selectionMenuOptions: SelectionMenuOptions = {
+    controller: this.controller,
+    onCut: (event?: EditorEventInfo) => {
+      if (event && event.content) {
+        event.content.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index) => {
+          if (typeof (item as RichEditorTextSpanResult)['textStyle'] != 'undefined') {
+            let span = item as RichEditorTextSpanResult;
+            console.info('test cut' + span.value);
+            console.info('test start ' + span.offsetInSpan[0] + ' end: ' + span.offsetInSpan[1]);
+          }
+        })
+      }
+    },
+    onPaste: (event?: EditorEventInfo) => {
+      if (event && event.content) {
+        event.content.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index) => {
+          if (typeof (item as RichEditorTextSpanResult)['textStyle'] != 'undefined') {
+            let span = item as RichEditorTextSpanResult;
+            console.info('test onPaste' + span.value);
+            console.info('test start ' + span.offsetInSpan[0] + ' end: ' + span.offsetInSpan[1]);
+          }
+        })
+      }
+    },
+    onCopy: (event?: EditorEventInfo) => {
+      if (event && event.content) {
+        event.content.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index) => {
+          if (typeof (item as RichEditorTextSpanResult)['textStyle'] != 'undefined') {
+            let span = item as RichEditorTextSpanResult;
+            console.info('test cut' + span.value);
+            console.info('test start ' + span.offsetInSpan[0] + ' end: ' + span.offsetInSpan[1]);
+          }
+        })
+      }
+    },
+    onSelectAll: (event?: EditorEventInfo) => {
+      if (event && event.content) {
+        event.content.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index) => {
+          if (typeof (item as RichEditorTextSpanResult)['textStyle'] != 'undefined') {
+            let span = item as RichEditorTextSpanResult;
+            console.info('test onPaste' + span.value);
+            console.info('test start ' + span.offsetInSpan[0] + ' end: ' + span.offsetInSpan[1]);
+          }
+        })
+      }
+    },
+    // 使用系统材质，以超薄样式为例
+    backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+    })
+  };
+
+  @Builder
+  MyMenu() {
+    Column() {
+      SelectionMenu(this.selectionMenuOptions)
+    }
+    .width(256)
+    .backgroundColor(Color.Transparent)
+  }
+
+  build() {
+    Column() {
+      Button("SetSelection")
+        .onClick((event: ClickEvent) => {
+          if (this.controller) {
+            this.controller.setSelection(0, 2);
+          }
+        })
+
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(this.message, { style: { fontColor: Color.Orange, fontSize: 30 } });
+          this.controller.addTextSpan(this.message, { style: { fontColor: Color.Black, fontSize: 25 } });
+        })
+        .onSelect((value: RichEditorSelection) => {
+          if (value.selection[0] == -1 && value.selection[1] == -1) {
+            return;
+          }
+          this.start = value.selection[0];
+          this.end = value.selection[1];
+        })
+        .bindSelectionMenu(RichEditorSpanType.TEXT, this.MyMenu(), RichEditorResponseType.RIGHT_CLICK)
+        .bindSelectionMenu(RichEditorSpanType.TEXT, this.MyMenu(), RichEditorResponseType.LONG_PRESS)
+        .borderWidth(1)
+        .borderColor(Color.Red)
+        .width(200)
+        .height(200)
+        .margin(10)
+    }
+  }
+}
+```
+
+![selectionmenu03](figures/selectionmenu03.jpg)

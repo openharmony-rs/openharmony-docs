@@ -27,7 +27,7 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelM
 
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：
 
@@ -49,7 +49,7 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelM
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 |   202    | Permission check failed. A non-system application uses the system API. |
-| 32100001 | Internal handling failed. File creation failed. |
+| 32100001 | Internal handling failed. |
 | 32100002 | Encode process fail. Possible causes: 1. Image processing error; 2. Channel coding error. |
 
 **示例**：
@@ -70,13 +70,13 @@ metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) 
 ```
 
 ## metadataBinding.decodeImage
-function decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
+decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 
 解析图片中携带的信息。使用promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：  
 
@@ -97,7 +97,7 @@ function decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 |   202    | Permission check failed. A non-system application uses the system API. |
-| 32100001 | Internal handling failed. File read failed. |
+| 32100001 | Internal handling failed. |
 | 32100003 | Decode process fail. Possible causes: 1. Image is not an encoded Image; 2. Image destroyed, decoding failed. |
 
 **示例：**  
@@ -122,7 +122,7 @@ notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口
 
 **参数**：  
 
@@ -143,7 +143,7 @@ notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 |   202    | Permission check failed. A non-system application uses the system API. |
-| 32100001 | Internal handling failed. Obtain metadata failed. |
+| 32100001 | Internal handling failed. |
 
 **示例**：
 

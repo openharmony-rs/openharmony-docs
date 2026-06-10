@@ -119,9 +119,9 @@ let opts : image.InitializationOptions = {
 
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap).then(colorPicker => {
-    console.info("color picker=" + colorPicker);
-  }).catch( (reason : BusinessError) => {
-    console.error("error=" + reason.message);
+    console.info("Succeeded in creating colorPicker.");
+  }).catch((err : BusinessError) => {
+    console.error(`Failed to create colorPicker. Code: ${err.code}, message: ${err.message}`);
   })
 })
 ```
@@ -178,9 +178,9 @@ let opts : image.InitializationOptions = {
 
 image.createPixelMap(color, opts).then((pixelMap) => {
   effectKit.createColorPicker(pixelMap, [0, 0, 1, 1]).then(colorPicker => {
-    console.info("color picker=" + colorPicker);
-  }).catch( (reason : BusinessError) => {
-    console.error("error=" + reason.message);
+    console.info("Succeeded in creating colorPicker.");
+  }).catch((err : BusinessError) => {
+    console.error(`Failed to create colorPicker. Code: ${err.code}, message: ${err.message}`);
   })
 })
 ```
@@ -373,7 +373,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![zh-ch_image_Main_Color.png](figures/zh-ch_image_Main_Color.png)
+![Main-Color.png](figures/Main-Color.png)
 
 ### getMainColorSync
 
@@ -420,7 +420,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![zh-ch_image_Main_Color.png](figures/zh-ch_image_Main_Color.png)
+![Main-Color.png](figures/Main-Color.png)
 
 ### getLargestProportionColor<sup>10+</sup>
 
@@ -467,7 +467,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![zh-ch_image_Largest_Proportion_Color.png](figures/zh-ch_image_Largest_Proportion_Color.png)
+![Largest-Proportion-Color.png](figures/Largest-Proportion-Color.png)
 
 ### getTopProportionColors<sup>12+</sup>
 
@@ -523,7 +523,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![zh-ch_image_Top_Proportion_Colors.png](figures/zh-ch_image_Top_Proportion_Colors.png)
+![Top-Proportion-Colors.png](figures/Top-Proportion-Colors.png)
 
 ### getHighestSaturationColor<sup>10+</sup>
 
@@ -570,7 +570,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![zh-ch_image_Highest_Saturation_Color.png](figures/zh-ch_image_Highest_Saturation_Color.png)
+![Highest-Saturation-Color.png](figures/Highest-Saturation-Color.png)
 
 ### getAverageColor<sup>10+</sup>
 
@@ -617,7 +617,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![zh-ch_image_Average_Color.png](figures/zh-ch_image_Average_Color.png)
+![Average-Color.png](figures/Average-Color.png)
 
 ### isBlackOrWhiteOrGrayColor<sup>10+</sup>
 
@@ -711,9 +711,9 @@ import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let radius = 5;
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
@@ -765,7 +765,7 @@ struct Index {
   }
 }
 ```
-![zh-ch_image_Add_Blur.png](figures/zh-ch_image_Add_Blur.png)
+![Add-Blur.png](figures/Add-Blur.png)
 
 ### blur<sup>14+</sup>
 
@@ -800,9 +800,9 @@ import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let radius = 30;
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
@@ -854,7 +854,7 @@ struct Index {
   }
 }
 ```
-![zh-ch_image_Add_Blur_With_TileMode.png](figures/zh-ch_image_Add_Blur_With_TileMode.png)
+![Add-Blur-With-TileMode.png](figures/Add-Blur-With-TileMode.png)
 
 ### invert<sup>12+</sup>
 
@@ -878,9 +878,9 @@ import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageInvert(Image: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
         // 对图片添加效果标识
@@ -931,7 +931,7 @@ struct Index {
   }
 }
 ```
-![zh-ch_image_Add_Invert.png](figures/zh-ch_image_Add_Invert.png)
+![Add-Invert.png](figures/Add-Invert.png)
 
 ### setColorMatrix<sup>12+</sup>
 
@@ -969,9 +969,9 @@ import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageColorFilter(Image: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let colorMatrix:Array<number> = [
       0.2126,0.7152,0.0722,0,0,
       0.2126,0.7152,0.0722,0,0,
@@ -1028,7 +1028,7 @@ struct Index {
   }
 }
 ```
-![zh-ch_image_Set_ColorMatrix.png](figures/zh-ch_image_Set_ColorMatrix.png)
+![Set_ColorMatrix.png](figures/Set-ColorMatrix.png)
 
 ### brightness
 
@@ -1046,7 +1046,7 @@ brightness(bright: number): Filter
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  bright   | number | 是   | 高亮程度，取值范围在0-1之间，取值为0时图像保持不变。 |
+|  bright   | number | 是   | 高亮程度，取值范围为[0, 1]，取值为0时图像保持不变，取值为1时图像达到预设的最大亮度。 |
 
 **返回值：**
 
@@ -1062,9 +1062,9 @@ import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageBrightness(Image: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let bright = 0.5;
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
@@ -1116,7 +1116,7 @@ struct Index {
   }
 }
 ```
-![zh-ch_image_Add_Brightness.png](figures/zh-ch_image_Add_Brightness.png)
+![Add-Brightness.png](figures/Add-Brightness.png)
 
 ### grayscale
 
@@ -1144,9 +1144,9 @@ import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
 function ImageGrayscale(Image: ArrayBuffer): Promise<image.PixelMap> {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     let imageSource = image.createImageSource(Image);
-    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+    await imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
       let headFilter = effectKit.createEffect(pixelMap);
       if (headFilter != null) {
         // 对图片添加效果标识
@@ -1197,7 +1197,7 @@ struct Index {
   }
 }
 ```
-![zh-ch_image_Add_Grayscale.png](figures/zh-ch_image_Add_Grayscale.png)
+![Add-Grayscale.png](figures/Add-Grayscale.png)
 
 ### getEffectPixelMap<sup>11+</sup>
 
@@ -1215,7 +1215,7 @@ getEffectPixelMap(): Promise<image.PixelMap>
 
 | 类型                   | 说明           |
 | ---------------------- | -------------- |
-| Promise\<image.PixelMap>  | Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
+| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
 
 
 **示例：**

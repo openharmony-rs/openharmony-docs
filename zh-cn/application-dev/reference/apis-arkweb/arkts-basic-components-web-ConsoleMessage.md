@@ -49,7 +49,7 @@ ConsoleMessage的构造函数。
 
 getLineNumber(): number
 
-获取ConsoleMessage的行数。
+获取ConsoleMessage的行号。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -57,7 +57,7 @@ getLineNumber(): number
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| number | 返回ConsoleMessage的行数。 |
+| number | 返回ConsoleMessage的行号。 |
 
 ## getMessage
 
@@ -91,7 +91,7 @@ getMessageLevel(): MessageLevel
 
 getSourceId(): string
 
-获取网页源文件路径和名字。
+获取网页源文件路径和文件名。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -99,7 +99,7 @@ getSourceId(): string
 
 | 类型     | 说明            |
 | ------ | ------------- |
-| string | 返回网页源文件路径和名字。 |
+| string | 返回网页源文件路径和文件名。 |
 
 ## getSource<sup>23+</sup>
 

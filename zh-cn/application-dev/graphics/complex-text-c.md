@@ -1,7 +1,7 @@
 # 复杂文本绘制与显示（C/C++）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -191,6 +191,12 @@ OH_Drawing_DestroyTypography(typography);
 - **行高调整：** 调整行高可改变文本行的垂直间距，使行间距更松散或更紧凑，显著改善文本垂直截断问题，提高可读性。
 
 - **行间距调整：** 通过调整行间距的方式可以实现行高调整一样的效果，优化阅读体验。
+
+- **省略号样式设置：** 在文本内容超出显示区域时，可以使用省略号截断文本，支持头部、中部、尾部以及多行省略模式。
+
+- **文字换行方式设置：** 文本排版时支持不同的断行策略，可根据场景选择合适的换行方式。
+
+- **行首标点压缩：** 在排版中，通过开启行首标点压缩功能，将行首标点符号进行挤压处理，避免标点占用行首空间，提升排版紧凑度。
 
 ### 装饰线
 
@@ -1037,11 +1043,86 @@ OH_Drawing_DestroyTypography(typography);
   
 具体效果如下所示：
 
-| 上升部下降部开关 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
-| -------- | -------- |
-| TEXT_HEIGHT_DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
-| TEXT_HEIGHT_ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+| 行间距 | 上升部下降部开关 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
+| -------- | -------- | -------- |
+|  0  | TEXT_HEIGHT_ALL | ![zh-cn_image_noLineSpacing](figures/LineSpacingClose.png) |
+| 100 | TEXT_HEIGHT_ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+| 100 | TEXT_HEIGHT_DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
 
+
+### 省略号样式设置
+
+从API version 22开始，支持设置省略号样式，在文本内容超出显示区域时截断文本。从API version 24开始，支持多行省略模式。
+
+使用[OH_Drawing_SetTypographyStyleAttributeInt](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributeint)接口，传入[TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid)设置省略号模式，可选的省略号模式可见[OH_Drawing_EllipsisModal](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal)。
+
+<!-- @[complex_text_c_ellipsis_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
+// 创建一个带有省略号设置的 TypographyStyle
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+// 设置最大行数为2，超过2行的部分将被省略
+OH_Drawing_SetTypographyTextMaxLines(typoStyle, 2);
+// 设置省略号模式为尾部省略
+OH_Drawing_SetTypographyStyleAttributeInt(typoStyle,
+    OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL, ELLIPSIS_MODAL_TAIL);
+// 设置自定义省略号字符串
+OH_Drawing_SetTypographyTextEllipsis(typoStyle, "...");
+```
+
+| 省略号模式 | 效果 |
+| -------- | -------- |
+| ELLIPSIS_MODAL_TAIL | ![complexCDemoEllipsis1](figures/complexCDemoEllipsis1.png) |
+| ELLIPSIS_MODAL_HEAD | ![complexCDemoEllipsis2](figures/complexCDemoEllipsis2.png) |
+| ELLIPSIS_MODAL_MIDDLE | ![complexCDemoEllipsis3](figures/complexCDemoEllipsis3.png) |
+| ELLIPSIS_MODAL_MULTILINE_HEAD | ![complexCDemoEllipsis4](figures/complexCDemoEllipsis4.png) |
+| ELLIPSIS_MODAL_MULTILINE_MIDDLE | ![complexCDemoEllipsis5](figures/complexCDemoEllipsis5.png) |
+
+
+### 文字换行方式设置
+
+从API version 22开始，支持在文本排版时设置断行策略，断行策略决定了文本如何在行尾进行换行处理。
+
+使用[OH_Drawing_SetTypographyTextBreakStrategy](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographytextbreakstrategy)接口设置断行策略，可选的断行策略可见[OH_Drawing_BreakStrategy](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_breakstrategy)。
+
+<!-- @[complex_text_c_break_strategy_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
+// 创建一个设置了均衡断行策略的 TypographyStyle
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+// 设置断行策略为 BALANCED（均衡策略）
+OH_Drawing_SetTypographyTextBreakStrategy(typoStyle, BREAK_STRATEGY_BALANCED);
+```
+
+| 换行方式 | 效果 |
+| -------- | -------- |
+| GREEDY | ![complexCDemoBreakStrategy1](figures/complexCDemoBreakStrategy1.png) |
+| HIGH_QUALITY | ![complexCDemoBreakStrategy2](figures/complexCDemoBreakStrategy2.png) |
+| BALANCED | ![complexCDemoBreakStrategy3](figures/complexCDemoBreakStrategy3.png) |
+
+### 行首标点压缩
+
+从API version 23开始，在文本排版中支持行首标点压缩功能。通过启用行首标点压缩功能，可以将行首标点符号进行挤压处理，提升排版紧凑度。
+
+使用[OH_Drawing_SetTypographyStyleAttributeBool](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributebool)接口，传入[TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid)设置是否启用行首标点压缩，使用[OH_Drawing_GetTypographyStyleAttributeBool](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_gettypographystyleattributebool)接口查询是否启用了行首标点压缩。
+
+<!-- @[complex_text_c_punctuation_compress_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
+// 第二段：开启行首标点压缩
+OH_Drawing_TypographyStyle *typoStyleCompress = OH_Drawing_CreateTypographyStyle();
+OH_Drawing_SetTypographyTextAlign(typoStyleCompress, TEXT_ALIGN_LEFT);
+OH_Drawing_ErrorCode errorCode = OH_Drawing_SetTypographyStyleAttributeBool(typoStyleCompress,
+    OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION, true);
+if (errorCode != OH_DRAWING_SUCCESS) {
+    DRAWING_LOGE("SetTypographyStyleAttributeBool failed, errorCode: %{public}d", errorCode);
+}
+```
+
+| 是否开启行首标点压缩 | 效果 |
+| -------- | -------- |
+| 关闭行首标点压缩 | ![complexCDemoCompressPunctuation1](figures/complexCDemoCompressPunctuation1.png) |
+| 开启行首标点压缩 | ![complexCDemoCompressPunctuation2](figures/complexCDemoCompressPunctuation2.png) |
 
 ## 样式的拷贝、绘制与显示
 支持拷贝文本样式、段落样式、阴影样式，以便快速复制相关样式作用到不同文字上。
@@ -1065,7 +1146,8 @@ OH_Drawing_SetTypographyTextAutoSpace(typoStyle, true);
 // 设置段落最大行数为3行
 OH_Drawing_SetTypographyTextMaxLines(typoStyle, 3);
 // 设置省略号模式为尾部省略号
-OH_Drawing_SetTypographyTextEllipsisModal(typoStyle, ELLIPSIS_MODAL_TAIL);
+OH_Drawing_SetTypographyStyleAttributeInt(typoStyle,
+    OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL, ELLIPSIS_MODAL_TAIL);
 // 设置省略号文本
 OH_Drawing_SetTypographyTextEllipsis(typoStyle, "...");
 // 设置对齐方式为居中对齐

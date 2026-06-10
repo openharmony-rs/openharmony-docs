@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -87,13 +87,13 @@
 
 在DevEco Studio工程中手动新建一个[UIServiceExtension](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)，具体步骤如下：
 
-1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为[UIServiceExtension](../reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md)。
+1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为“uiserviceext”。
 
-2. 在UIServiceExt目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为UIServiceExt.ets。
+2. 在uiserviceext目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为UIServiceExt.ets。
 
     ``` txt
     ├── ets
-    │ ├── UIServiceExt
+    │ ├── uiserviceext
     │ │   ├── UIServiceExt.ets
     ```
     
@@ -178,7 +178,7 @@
             "description": "uiService",
             "type": "uiService",
             "exported": true,
-            "srcEntry": "./ets/UIServiceExtAbility/UIServiceExtAbility.ets"
+            "srcEntry": "./ets/uiserviceext/UIServiceExtAbility.ets"
           }
         ]
       }
@@ -208,8 +208,8 @@ struct Index {
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             let startWant: Want = {
-              bundleName: 'com.acts.uiserviceextensionability',
-              abilityName: 'UiServiceExtAbility',
+              bundleName: 'com.acts.uiserviceextensionability', // 定义目标方应用包名，请开发者替换为实际包名
+              abilityName: 'UIServiceExtAbility',
             };
             try {
               // 启动UIServiceExtensionAbility
@@ -254,8 +254,8 @@ struct Index {
             const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
             const want: Want = {
               deviceId: '',
-              bundleName: 'com.example.myapplication',
-              abilityName: ''
+              bundleName: 'com.example.myapplication', // 定义目标方应用包名，请开发者替换为实际包名
+              abilityName: 'UIServiceExtAbility'
             };
             // 定义回调
             const callback: common.UIServiceExtensionConnectCallback = {
@@ -349,8 +349,8 @@ struct Index {
               .onClick(() => {
                 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 let startWant: Want = {
-                  bundleName: 'com.acts.uiserviceextensionability',
-                  abilityName: 'UiServiceExtAbility',
+                  bundleName: 'com.acts.uiserviceextensionability', // 定义目标方应用包名，请开发者替换为实际包名
+                  abilityName: 'UIServiceExtAbility',
                 };
                 try {
                   // 连接UIServiceExtensionAbility

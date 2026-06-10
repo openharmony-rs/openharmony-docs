@@ -1,10 +1,10 @@
 # Usb_NonRootHubArray
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct Usb_NonRootHubArray {...} Usb_NonRootHubArray
@@ -12,7 +12,7 @@ typedef struct Usb_NonRootHubArray {...} Usb_NonRootHubArray
 
 ## 概述
 
-非根集线器列表，用于存放OH_Usb_GetNonRootHubs接口获取到的非根集线器设备ID列表和数量。
+非根集线器列表，用于存放[OH_Usb_GetNonRootHubs](capi-usb-ddk-api-h.md#oh_usb_getnonroothubs)接口获取到的非根集线器设备ID列表和数量。
 
 **起始版本：** 26.0.0
 

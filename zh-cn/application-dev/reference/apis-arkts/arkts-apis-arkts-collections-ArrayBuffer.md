@@ -1,7 +1,7 @@
 # Class (ArrayBuffer)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -44,15 +44,14 @@ constructor(byteLength: number)
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------|
-| byteLength  | number | 是   | buffer所占的字节数， 最大值不能超过2147483647，否则会抛出异常。     |
+| byteLength  | number | 是   | buffer所占的字节数，取值范围是[0, 2147483647]，否则会抛出异常。0代表构造的ArrayBuffer的长度为0，2147483647表示构造的ArrayBuffer的长度为2147483647。 |
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                          |
 | 10200012 | The ArrayBuffer's constructor cannot be directly invoked. |
 
 **示例：**
@@ -86,11 +85,10 @@ slice(begin: number, end?: number): ArrayBuffer
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID |                    错误信息                   |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error.                             |
 | 10200011 | The slice method cannot be bound.            |
 | 10200201 | Concurrent modification error.               |
 

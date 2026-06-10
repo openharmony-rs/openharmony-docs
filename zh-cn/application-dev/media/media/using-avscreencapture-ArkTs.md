@@ -1,8 +1,8 @@
 # 使用AVScreenCaptureRecorder录屏写文件(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -42,7 +42,7 @@
     ```javascript
     import { common } from '@kit.AbilityKit';
     import { media } from '@kit.MediaKit';
-    import fileIo from '@ohos.file.fs';
+    import { fileIo } from '@kit.CoreFileKit';
     ```
 
 2. 创建AVScreenCaptureRecorder类型的成员变量screenCapture。
@@ -182,7 +182,7 @@
 
 ```javascript
 import { media } from '@kit.MediaKit';
-import fileIo from '@ohos.file.fs';
+import { fileIo } from '@kit.CoreFileKit';
 
 export class AVScreenCaptureDemo {
   private screenCapture?: media.AVScreenCaptureRecorder;
@@ -198,7 +198,12 @@ export class AVScreenCaptureDemo {
     if (!this.captureFile) {
       return;
     }
-    fileIo.closeSync(this.captureFile);
+    try {
+      fileIo.closeSync(this.captureFile.fd);
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`Failed to close fd, error code: ${err.code}, message: ${err.message}`);
+    }
   }
 
   private setConfig(): void {

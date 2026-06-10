@@ -30,6 +30,7 @@
 
 除支持组件[通用样式](js-components-common-styles.md)外，还支持如下样式：
 
+<!--Table: 20%; 15%; 15%; 10%; 40%-->
 | 名称                           | 类型           | 默认值       | 必填 | 描述                                                         |
 | ------------------------------ | -------------- | ------------ | ---- | ------------------------------------------------------------ |
 | flex-direction                 | string         | row          | 否   | flex容器主轴方向。可选项有：<br/>-&nbsp;column：垂直方向从上到下。<br/>-&nbsp;row：水平方向从左到右。 |
@@ -133,7 +134,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001127285076](figures/zh-cn_image_0000001127285076.png)
+   ![div](figures/div.png)
 
 2. Flex Wrap样式
    ```html
@@ -359,7 +360,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001168005276](figures/zh-cn_image_0000001168005276.gif)
+   ![div01](figures/div01.gif)
 
 5. 手指捏合<sup>7+</sup>
    ```html
@@ -415,4 +416,4 @@
    }
    ```
 
-   ![zh-cn_image_0000001168440692](figures/zh-cn_image_0000001168440692.gif)
+   ![div02](figures/div02.gif)

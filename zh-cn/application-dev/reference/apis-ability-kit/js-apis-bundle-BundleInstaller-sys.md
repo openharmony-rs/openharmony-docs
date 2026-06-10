@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供设备上安装、升级和卸载应用的能力。
 
@@ -167,11 +167,11 @@ let installParam: bundleInstall.InstallParam = {
 };
 
 bundleInstall.getBundleInstaller().then(installer => {
-  installer.uninstall(bundleName, installParam, err => {
+  installer.recover(bundleName, installParam, err => {
     if (err) {
-      console.error('uninstall failed:' + JSON.stringify(err));
+      console.error('recover failed:' + JSON.stringify(err));
     } else {
-      console.info('uninstall successfully.');
+      console.info('recover successfully.');
     }
   });
 }).catch((error: BusinessError) => {

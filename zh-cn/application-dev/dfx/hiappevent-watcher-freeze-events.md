@@ -72,6 +72,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台；false表示应用处于后台。 |
 | release_type | string | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持 |
 | cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
+| app_running_unique_id | string | 应用运行时唯一关联的id。<br>**说明**：从API version 24开始支持该参数。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
 | process_name | string | 应用的进程名称。 |
@@ -81,16 +82,16 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | exception | object | 异常信息，详见exception属性。 |
 | hilog | string[] | 日志信息。当生成应用无响应事件日志时，从hilog缓冲区中获取最多100行故障进程日志信息。 |
 | event_handler | string[] | 主线程未处理消息。 |
-| event_handler_size_3s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s-应用主线程卡死超时)（仅在应用无响应事件生效）中3s时任务栈中任务数量。 |
-| event_handler_size_6s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s-应用主线程卡死超时)（仅在应用无响应事件生效）中6s时任务栈中任务数量。 |
+| event_handler_size_3s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s应用主线程卡死超时)（仅在应用无响应事件生效）中3s时任务栈中任务数量。 |
+| event_handler_size_6s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s应用主线程卡死超时)（仅在应用无响应事件生效）中6s时任务栈中任务数量。 |
 | peer_binder | string[] | binder调用信息。 |
 | threads | object[] | 全量线程调用栈，详见thread属性。 |
 | memory | object | 内存信息，详见memory属性。 |
 | external_log<sup>12+</sup> | string[] | 故障日志文件路径。**为避免目录空间超限（参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
-| log_over_limit<sup>12+</sup> | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
+| log_over_limit<sup>12+</sup> | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。<br>启用minidump时，上限调整至35MB；关闭minidump时，上限恢复到5MB。 |
 | process_life_time | number | 故障进程存活时间。<br>**说明**：从API 22开始支持。 |
 | external_callback_log | string | 自定义回调日志信息，可通过[OH_HiCollie_SetFreezeCallback](../reference/apis-performance-analysis-kit/capi-hicollie-h.md#oh_hicollie_setfreezecallback)写入。<br>**说明**：从API version 24开始支持。 |
-| page_switch_log | string | 页面切换日志路径，日志介绍详见通用日志。<br>**说明**：从API version 24开始支持。 |
+| page_switch_log | string | 页面切换日志路径，日志介绍详见[页面切换日志](pageswitch-log.md)。<br>**说明**：从API version 24开始支持。 |
 
 ### exception字段说明
 
@@ -162,4 +163,4 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 ### 参数设置说明
 
-开发者可以通过该接口订阅name为hiAppEvent.event.APP_FREEZE的应用冻屏事件，具体使用详见[setEventParam使用](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventseteventparam12)。
+开发者可以通过该接口订阅name为hiAppEvent.event.APP_FREEZE的应用冻屏事件，具体使用详见[hiAppEvent.setEventParam](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventseteventparam12)。

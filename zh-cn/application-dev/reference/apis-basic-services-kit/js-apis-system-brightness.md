@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 该模块提供屏幕亮度和模式的查询、调节接口。
 
@@ -28,8 +28,11 @@
 import brightness, { BrightnessModeResponse, BrightnessResponse } from '@system.brightness';
 ```
 
+## Brightness
 
-## brightness.getValue<sup>(deprecated)</sup>
+提供屏幕亮度和模式的查询、调节接口。
+
+### getValue<sup>(deprecated)</sup>
 
 getValue(options?: GetBrightnessOptions): void
 
@@ -106,7 +109,7 @@ export default {
 }
 ```
 
-## brightness.setValue<sup>(deprecated)</sup>
+### setValue<sup>(deprecated)</sup>
 
 setValue(options?: SetBrightnessOptions): void
 
@@ -184,7 +187,7 @@ export default {
 }
 ```
 
-## brightness.getMode<sup>(deprecated)</sup>
+### getMode<sup>(deprecated)</sup>
 
 getMode(options?: GetBrightnessModeOptions): void
 
@@ -261,7 +264,7 @@ export default {
 }
 ```
 
-## brightness.setMode<sup>(deprecated)</sup>
+### setMode<sup>(deprecated)</sup>
 
 setMode(options?: SetBrightnessModeOptions): void
 
@@ -338,13 +341,16 @@ export default {
 }
 ```
 
-## brightness.setKeepScreenOn<sup>(deprecated)</sup>
+### setKeepScreenOn<sup>(deprecated)</sup>
 
 setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
->除Lite Wearable外，从API version 7开始不再维护，建议使用[window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9)替代。
-
 设置屏幕是否保持常亮状态，开启常亮模式推荐在onShow()阶段调用。
+
+> **注意：**
+>
+> - 除Lite Wearable外，从API version 7开始不再维护，建议使用[window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9)替代。
+> - 在Lite Wearable上，该接口仅能阻止系统无活动超时灭屏（自动），无法阻止用户主动操作（如盖屏）、常亮时刻结束等导致的灭屏。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 

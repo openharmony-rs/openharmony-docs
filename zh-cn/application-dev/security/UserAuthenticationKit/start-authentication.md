@@ -31,7 +31,7 @@
 认证控件的样式如图所示，通过[WidgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10)配置对应参数。
 
 <!--RP1-->
-![zh-cn_image_0000001789150921](figures/zh-cn_image_0000001789150921.png)
+![unified-UI-component-authentication](figures/unified-UI-component-authentication.png)
 <!--RP1End-->
 
 - 标注1：用户认证界面的标题（WidgetParam.title），不支持传空字串，最大长度为500字符。应用可在此配置符合场景的字符串，建议传入认证目的，例如用于支付、登录应用等。
@@ -47,7 +47,7 @@
 
   当前仅系统应用可以选择和使用全屏类型的认证界面。
 
-  ![zh-cn_image_0000001742032002](figures/zh-cn_image_0000001742032002.png)
+  ![popup-authentication](figures/popup-authentication.png)
 <!--DelEnd-->
 
 当前支持使用认证控件的认证类型包括：
@@ -76,7 +76,7 @@
 
 2. 指定用户认证相关参数[AuthParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#authparam10)（包括挑战值、认证类型[UserAuthType](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthtype8)列表和认证等级[AuthTrustLevel](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#authtrustlevel8)）、配置认证控件界面[WidgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10)，调用[getUserAuthInstance](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetuserauthinstance10)获取认证对象。
 
-3. 调用[UserAuthInstance.on](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#on10)接口订阅认证结果。
+3. 调用[UserAuthInstance.on('result')](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#onresult10-1)接口订阅认证结果。
 
 4. 调用[UserAuthInstance.start](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10)接口发起认证，通过[IAuthCallback](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#iauthcallback10)回调返回认证结果[UserAuthResult](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthresult10)。当认证成功时返回认证通过类型（[UserAuthType](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthtype8)）和令牌信息（AuthToken）。
 
@@ -87,48 +87,47 @@
 <!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-  initiatingUserAuthentication1() {
-    try {
-      const randData = getRandData();
-      if (!randData) {
-        return;
-      }
-      // 设置认证参数
-      const authParam: userAuth.AuthParam = {
-        challenge: randData,
-        authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-      };
-      // 配置认证界面
-      const widgetParam: userAuth.WidgetParam = {
-        title: resourceToString($r('app.string.title')),
-      };
-      // 获取认证对象
-      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-      Logger.info('get userAuth instance success');
-      // 订阅认证结果
-      userAuthInstance.on('result', {
-        onResult: (result: userAuth.UserAuthResult) => {
-          try {
-            Logger.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
-            this.result[ResultIndex.EXAMPLE_1] = (`${result.result}`);
-            // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-            userAuthInstance.off('result');
-          } catch (error) {
-            const err: BusinessError = error as BusinessError;
-            Logger.error(`onResult catch error. Code: ${err?.code}, Message: ${err?.message}`);
-          }
-        }
-      });
-      // 启动认证
-      userAuthInstance.start();
-      Logger.info('auth start success');
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      Logger.error(`auth catch error, code is ${err?.code}, message is ${err?.message}`);
+initiatingUserAuthentication1() {
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
     }
+    // 设置认证参数
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+    };
+    // 配置认证界面
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+    };
+    // 获取认证对象
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully.');
+    // 订阅认证结果
+    userAuthInstance.on('result', {
+      onResult: (result: userAuth.UserAuthResult) => {
+        try {
+          Logger.info('userAuthInstance callback.');
+          this.result[ResultIndex.EXAMPLE_1] = (`${result.result}`);
+          // 可在认证结束或其他业务需要场景，取消订阅认证结果。
+          userAuthInstance.off('result');
+        } catch (error) {
+          const err: BusinessError = error as BusinessError;
+          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+        }
+      }
+    });
+    // 启动认证
+    userAuthInstance.start();
+    Logger.info('auth start successfully.');
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
   }
-
+}
 ```
 
 
@@ -139,53 +138,52 @@
 <!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-  initiatingUserAuthentication2() {
-    // 设置认证参数
-    let reuseUnlockResult: userAuth.ReuseUnlockResult = {
-      reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
-      reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-    };
-    try {
-      const randData = getRandData();
-      if (!randData) {
-        return;
-      }
-      const authParam: userAuth.AuthParam = {
-        challenge: randData,
-        authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-        reuseUnlockResult: reuseUnlockResult,
-      };
-      // 配置认证界面
-      const widgetParam: userAuth.WidgetParam = {
-        title: resourceToString($r('app.string.title')),
-      };
-      // 获取认证对象
-      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-      Logger.info('get userAuth instance success');
-      // 订阅认证结果
-      userAuthInstance.on('result', {
-        onResult: (result: userAuth.UserAuthResult) => {
-          try {
-            Logger.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
-            this.result[ResultIndex.EXAMPLE_2] = (`${result.result}`);
-            // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-            userAuthInstance.off('result');
-          } catch (error) {
-            const err: BusinessError = error as BusinessError;
-            Logger.error(`onResult catch error. Code: ${err?.code}, Message: ${err?.message}`);
-          }
-        }
-      });
-      // 启动认证
-      userAuthInstance.start();
-      Logger.info('auth start success');
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      Logger.error(`auth catch error, code is ${err?.code}, message is ${err?.message}`);
+initiatingUserAuthentication2() {
+  // 设置认证参数
+  let reuseUnlockResult: userAuth.ReuseUnlockResult = {
+    reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
+    reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
+  };
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
     }
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+      reuseUnlockResult: reuseUnlockResult,
+    };
+    // 配置认证界面
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+    };
+    // 获取认证对象
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully.');
+    // 订阅认证结果
+    userAuthInstance.on('result', {
+      onResult: (result: userAuth.UserAuthResult) => {
+        try {
+          Logger.info('userAuthInstance callback.');
+          this.result[ResultIndex.EXAMPLE_2] = (`${result.result}`);
+          // 可在认证结束或其他业务需要场景，取消订阅认证结果。
+          userAuthInstance.off('result');
+        } catch (error) {
+          const err: BusinessError = error as BusinessError;
+          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+        }
+      }
+    });
+    // 启动认证
+    userAuthInstance.start();
+    Logger.info('auth start successfully.');
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
   }
-
+}
 ```
 
 
@@ -196,109 +194,107 @@
 <!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-  initiatingUserAuthentication3() {
-    // 设置认证参数
-    let reuseUnlockResult: userAuth.ReuseUnlockResult = {
-      reuseMode: userAuth.ReuseMode.CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT,
-      reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
-    };
-    try {
-      const randData = getRandData();
-      if (!randData) {
-        return;
-      }
-      const authParam: userAuth.AuthParam = {
-        challenge: randData,
-        authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-        reuseUnlockResult: reuseUnlockResult,
-      };
-      // 配置认证界面
-      const widgetParam: userAuth.WidgetParam = {
-        title: resourceToString($r('app.string.title')),
-      };
-      // 获取认证对象
-      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-      Logger.info('get userAuth instance success');
-      // 订阅认证结果
-      userAuthInstance.on('result', {
-        onResult: (result: userAuth.UserAuthResult) => {
-          try {
-            Logger.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
-            this.result[ResultIndex.EXAMPLE_3] = (`${result.result}`);
-            // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-            userAuthInstance.off('result');
-          } catch (error) {
-            const err: BusinessError = error as BusinessError;
-            Logger.error(`onResult catch error. Code: ${err?.code}, Message: ${err?.message}`);
-          }
-        }
-      });
-      // 启动认证
-      userAuthInstance.start();
-      Logger.info('auth start success');
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      Logger.error(`auth catch error, code is ${err?.code}, message is ${err?.message}`);
+initiatingUserAuthentication3() {
+  // 设置认证参数
+  let reuseUnlockResult: userAuth.ReuseUnlockResult = {
+    reuseMode: userAuth.ReuseMode.CALLER_IRRELEVANT_AUTH_TYPE_RELEVANT,
+    reuseDuration: userAuth.MAX_ALLOWABLE_REUSE_DURATION,
+  };
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
     }
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+      reuseUnlockResult: reuseUnlockResult,
+    };
+    // 配置认证界面
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+    };
+    // 获取认证对象
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully.');
+    // 订阅认证结果
+    userAuthInstance.on('result', {
+      onResult: (result: userAuth.UserAuthResult) => {
+        try {
+          Logger.info('userAuthInstance callback.');
+          this.result[ResultIndex.EXAMPLE_3] = (`${result.result}`);
+          // 可在认证结束或其他业务需要场景，取消订阅认证结果。
+          userAuthInstance.off('result');
+        } catch (error) {
+          const err: BusinessError = error as BusinessError;
+          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+        }
+      }
+    });
+    // 启动认证
+    userAuthInstance.start();
+    Logger.info('auth start successfully.');
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
   }
-
+}
 ```
 
 
 **示例4：**
 
-以模应用方式拉起身份认证控件对用户进行身份认证：
+以模应用弹窗方式拉起身份认证控件对用户进行身份认证：
 
 > **说明：**
-> 在PC/2in1设备上，应用如果使用模应用方式发起认证（即配置用户界面参数[widgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#on20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
+> 在PC/2in1设备上，应用如果使用模应用弹窗方式发起认证（即配置用户界面参数[widgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#onauthtip20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
 
 <!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-  initiatingUserAuthentication4() {
-    // 设置认证参数
-    try {
-      const randData = getRandData();
-      if (!randData) {
-        return;
-      }
-      const authParam: userAuth.AuthParam = {
-        challenge: randData,
-        authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
-        authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-      };
-      // 配置认证界面
-      const widgetParam: userAuth.WidgetParam = {
-        title: resourceToString($r('app.string.title')),
-        uiContext: this.getUIContext().getHostContext()
-      };
-      // 获取认证对象
-      const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-      Logger.info('get userAuth instance success');
-      // 订阅认证结果
-      userAuthInstance.on('result', {
-        onResult: (result: userAuth.UserAuthResult) => {
-          try {
-            Logger.info(`userAuthInstance callback result: ${JSON.stringify(result)}`);
-            this.result[ResultIndex.EXAMPLE_4] = (`${result.result}`);
-            // 可在认证结束或其他业务需要场景，取消订阅认证结果。
-            userAuthInstance.off('result');
-          } catch (error) {
-            const err: BusinessError = error as BusinessError;
-            Logger.error(`onResult catch error. Code: ${err?.code}, Message: ${err?.message}`);
-          }
-        }
-      });
-      // 启动认证
-      userAuthInstance.start();
-      Logger.info('auth start success');
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      Logger.error(`auth catch error, code is ${err?.code}, message is ${err?.message}`);
+initiatingUserAuthentication4() {
+  // 设置认证参数
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
     }
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+    };
+    // 配置认证界面
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+      uiContext: this.getUIContext().getHostContext()
+    };
+    // 获取认证对象
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully.');
+    // 订阅认证结果
+    userAuthInstance.on('result', {
+      onResult: (result: userAuth.UserAuthResult) => {
+        try {
+          Logger.info('userAuthInstance callback.');
+          this.result[ResultIndex.EXAMPLE_4] = (`${result.result}`);
+          // 可在认证结束或其他业务需要场景，取消订阅认证结果。
+          userAuthInstance.off('result');
+        } catch (error) {
+          const err: BusinessError = error as BusinessError;
+          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+        }
+      }
+    });
+    // 启动认证
+    userAuthInstance.start();
+    Logger.info('auth start successfully.');
+  } catch (error) {
+    const err: BusinessError = error as BusinessError;
+    Logger.error(`auth failed, code is ${err?.code}, message is ${err?.message}`);
   }
-
+}
 ```
 
 

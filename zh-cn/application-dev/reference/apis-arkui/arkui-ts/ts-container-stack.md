@@ -23,6 +23,8 @@
 
 Stack(options?: StackOptions)
 
+堆叠容器，子组件按照顺序依次入栈，后一个子组件覆盖前一个子组件。
+
 > **说明：**
 >
 > 过多的组件嵌套会导致性能劣化。在部分场景中，直接使用组件属性或借助系统API的能力可以替代层叠容器的效果，减少了嵌套组件数进而优化性能。最佳实践请参考[组件嵌套优化-优先使用组件属性代替嵌套组件](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-nesting-optimization#section78181114123811)。
@@ -41,6 +43,8 @@ Stack(options?: StackOptions)
 
 ## StackOptions<sup>18+</sup>对象说明
 
+设置堆叠容器的子组件对齐方式。
+
 > **说明：**
 >
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
@@ -48,6 +52,8 @@ Stack(options?: StackOptions)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,13 +83,35 @@ alignContent(value: Alignment)
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------------------- |
 | value  | [Alignment](ts-appendix-enums.md#alignment) | 是   | 所有子组件在容器内的对齐方式。<br/>默认值：Alignment.Center <br />非法值：按默认值处理。 |
 
+### syncLoad
+
+syncLoad(enable: boolean)
+
+设置是否同步加载Stack区域内所有子组件。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                        | 必填 | 说明                                 |
+| ------ | ------------------------------------------- | ---- | ----------------------------------- |
+| enable   | boolean | 是   | 是否同步加载Stack区域内所有子组件。<br/>true表示同步加载；false表示异步加载。<br/>默认值：true<br/>**说明：** <br/>设置为false时，在首次显示场景，若当前帧布局耗时超过50ms，会将Stack区域内尚未布局的子组件延后到下一帧进行布局。 |
+
 ## 事件
 
 支持[通用事件](ts-component-general-events.md)。
 
 ## 示例
 
-Stack的alignContent设置为Alignment.Bottom条件下子组件显示效果。
+当Stack的[alignContent](#aligncontent)属性设为Alignment.Bottom，且[syncLoad](#syncload)为true时，其子组件的显示效果表现为在Stack组件底部横向居中并且所有子组件在同一帧内加载完成。
+
+从API版本26.0.0开始，新增syncLoad属性。
 
 ```ts
 // xxx.ets
@@ -95,6 +123,8 @@ struct StackExample {
       Text('First child, show in bottom').width('90%').height('100%').backgroundColor(0xd2cab3).align(Alignment.Top)
       Text('Second child, show in top').width('70%').height('60%').backgroundColor(0xc1cbac).align(Alignment.Top)
     }.width('100%').height(150).margin({ top: 5 })
+    // 从API版本26.0.0开始，新增syncLoad属性。
+    .syncLoad(true)
   }
 }
 ```

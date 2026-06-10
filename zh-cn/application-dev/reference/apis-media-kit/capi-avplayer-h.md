@@ -30,6 +30,7 @@
 | -- | -- | -- |
 | [MediaKeySession](capi-avplayer-mediakeysession.md) | MediaKeySession | MediaKeySession类型。 |
 | [DRM_MediaKeySystemInfo](capi-avplayer-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | DRM_MediaKeySystemInfo类型。 |
+| [OH_AVPlayerVideoOutput](capi-avplayer-oh-avplayervideooutput.md) | OH_AVPlayerVideoOutput | OH_AVPlayerVideoOutput字段。 |
 
 ### 函数
 
@@ -54,7 +55,7 @@
 | [OH_AVErrCode OH_AVPlayer_GetVideoWidth(OH_AVPlayer *player, int32_t *videoWidth)](#oh_avplayer_getvideowidth) | - | 获取视频宽度。 |
 | [OH_AVErrCode OH_AVPlayer_GetVideoHeight(OH_AVPlayer *player, int32_t *videoHeight)](#oh_avplayer_getvideoheight) | - | 获取视频高度。 |
 | [OH_AVErrCode OH_AVPlayer_SetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed speed)](#oh_avplayer_setplaybackspeed) | - | 根据指定的[AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed)，设置播放器的播放速率。 |
-| [OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)](#oh_avplayer_setplaybackrate) | - | 在有效范围内，设置播放器的播放速率。<br> 支持的状态：已准备/正在播放/已暂停/已完成。 |
+| [OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)](#oh_avplayer_setplaybackrate) | - | 在有效范围内，设置播放器的播放速率。<br> 支持的状态包括已准备、正在播放、已暂停、已完成。 |
 | [OH_AVErrCode OH_AVPlayer_GetPlaybackSpeed(OH_AVPlayer *player, AVPlaybackSpeed *speed)](#oh_avplayer_getplaybackspeed) | - | 获取当前播放器的播放速率。 |
 | [OH_AVErrCode OH_AVPlayer_GetPlaybackRate(OH_AVPlayer *player, float *rate)](#oh_avplayer_getplaybackrate) | - | 获取当前播放器播放速率。 |
 | [OH_AVErrCode OH_AVPlayer_SetAudioRendererInfo(OH_AVPlayer *player, OH_AudioStream_Usage streamUsage)](#oh_avplayer_setaudiorendererinfo) | - | 设置player音频流类型。 |
@@ -112,6 +113,9 @@
 | [uint32_t OH_AVPlayer_GetTrackCount(OH_AVPlayer *player)](#oh_avplayer_gettrackcount) | - | 获取播放器媒体源的轨道数量。 |
 | [OH_AVFormat *OH_AVPlayer_GetTrackFormat(OH_AVPlayer *player, uint32_t trackIndex)](#oh_avplayer_gettrackformat) | - | 通过索引获取播放器轨道信息。 |
 | [OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)](#oh_avplayer_getplaybackstatisticmetrics) | - | 获取当前播放器的统计指标信息。设置完播放资源，并且当播放处于准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态时，可调用该接口。<br> 需要注意返回值[OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)指针对象的生命周期需要用户手动释放。 |
+| [OH_AVErrCode OH_AVPlayer_SetPCMOutputCallback(OH_AVPlayer *player, OH_AVPlayerPCMOutputCallback callback, void *userData)](#oh_avplayer_setpcmoutputcallback) | - | 设置音频PCM数据输出回调。当播放处于idle或initialized状态时，可调用此接口。 |
+| [OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)](#oh_avplayer_setvideosideoutput) | - | 设置视频解码帧输出回调。当播放处于idle或initialized状态时，可调用此接口。 |
+| [OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVideoOutput *videoOutput)](#oh_avplayervideooutput_getnewestvideosample) | - | 获得一个视频解码帧。当播放处于paused或playing状态时，可调用此接口。 |
 
 ## 函数说明
 
@@ -619,7 +623,7 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)
 
 **描述**
 
-在有效范围内，设置播放器的播放速率。<br> 支持的状态：已准备/正在播放/已暂停/已完成。
+在有效范围内，设置播放器的播放速率。<br> 支持的状态包括已准备、正在播放、已暂停、已完成。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -630,13 +634,13 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
-| float rate | 播放速率，有效范围是0.125~4。 |
+| float rate | 播放速率，在API版本26.0.0及以上的取值范围是[0.125, 8.0]，API版本26.0.0以下的取值范围是[0.125, 4.0]。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置播放速率。<br>         AV_ERR_OPERATE_NOT_PERMIT：如果在不支持的状态下调用或在直播期间调用。<br>         AV_ERR_INVALID_VAL：输入player为空指针，或者速率超出范围。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置播放速率。<br>         AV_ERR_OPERATE_NOT_PERMIT：在不支持的状态下或在直播期间调用这个方法。<br>         AV_ERR_INVALID_VAL：输入player为空指针，或者设置速率超出范围。 |
 
 ### OH_AVPlayer_GetPlaybackSpeed()
 
@@ -1593,7 +1597,7 @@ OH_AVErrCode OH_AVPlayer_SetTargetVideoWindowSize(OH_AVPlayer *player, int32_t w
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>         AV_ERR_OK：表示执行成功。<br>         AV_ERR_INVALID_VAL：表示输入的player为空指针或参数错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。<br>         AV_ERR_SUPER RESOLUTION UNSUPPORTED：表示不支持超分辨率。<br>         AV_ERR_SUPER_RESOLUTION_NOT_ENABLED：表示未在[OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)中启用超分辨率功能。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>         AV_ERR_OK：表示执行成功。<br>         AV_ERR_INVALID_VAL：表示输入的player为空指针或参数错误。<br>         AV_ERR_OPERATE_NOT_PERMIT：表示操作不允许。<br>         AV_ERR_SUPER_RESOLUTION_UNSUPPORTED：表示不支持超分辨率。<br>         AV_ERR_SUPER_RESOLUTION_NOT_ENABLED：表示未在[OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md)中启用超分辨率功能。 |
 
 ### OH_AVPlayer_SetVideoSuperResolutionEnable()
 
@@ -2107,6 +2111,81 @@ OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | 执行成功返回播放器的统计指标信息（键值详情请参考[统计指标信息](../apis-media-kit/capi-avplayer-base-h.md#变量)），否则返回nullptr。<br> 可能的失败原因：传入player指针不合法。 |
+| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | 执行成功返回播放器的统计指标信息（键值详情请参考avplayer_base.h中的[变量](../apis-media-kit/capi-avplayer-base-h.md#变量)信息），否则返回nullptr。<br> 可能的失败原因：传入player指针不合法。 |
+
+### OH_AVPlayer_SetPCMOutputCallback()
+
+```c
+OH_AVErrCode OH_AVPlayer_SetPCMOutputCallback(OH_AVPlayer *player, OH_AVPlayerPCMOutputCallback callback, void *userData)
+```
+
+**描述**
+
+设置音频PCM数据输出回调。当播放处于idle或initialized状态时，可调用此接口。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
+| [OH_AVPlayerPCMOutputCallback](capi-avplayer-base-h.md#oh_avplayerpcmoutputcallback) callback | 回调函数指针，nullptr表示取消注册回调。 |
+| void *userData | 指向用户指定数据的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | 函数执行结果。<br>         AV_ERR_OK：表示执行成功。<br>         AV_ERR_INVALID_VAL：表示输入的player为空指针，或player SetPCMOutputCallback失败。<br>         AV_ERR_OPERATE_NOT_PERMIT：表示在不支持的状态下调用。 |
+
+### OH_AVPlayer_SetVideoSideOutput()
+
+```c
+OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)
+```
+
+**描述**
+
+设置视频解码帧输出回调。当播放处于idle或initialized状态时，可调用此接口。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
+| OHNativeWindow *window | 指向OHNativeWindow实例的指针，具体请参阅OHNativeWindow。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AVPlayerVideoOutput*](capi-avplayer-oh-avplayervideooutput.md) | 返回指向OH_AVPlayerVideoOutput实例的指针，nullptr表示失败。<br> 可能故障原因：<br> 1. 传入player指针不合法。<br> 2. 传入window指针不合法。 |
+
+### OH_AVPlayerVideoOutput_GetNewestVideoSample()
+
+```c
+OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVideoOutput *videoOutput)
+```
+
+**描述**
+
+获得一个视频解码帧。当播放处于paused或playing状态时，可调用此接口。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVPlayerVideoOutput](capi-avplayer-oh-avplayervideooutput.md) *videoOutput | 指向OH_AVPlayer_SetVideoSideOutput返回的OH_AVPlayerVideoOutput实例的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_VideoOutputResult](capi-avplayer-base-h.md#oh_videooutputresult) | OH_VIDEO_OUTPUT_OK：获得一个视频解码帧。<br>         OH_VIDEO_OUTPUT_NO_IMAGE：没有可渲染的帧。 |
 
 

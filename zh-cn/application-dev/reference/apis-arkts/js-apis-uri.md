@@ -1,8 +1,8 @@
 # @ohos.uri (URI字符串解析)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -83,7 +83,7 @@ console.info(uriObj2.fragment); // fragment
 console.info(uriObj2.path); // /00/Weather/California/Los Angeles
 console.info(uriObj2.scheme); // gopher
 console.info(uriObj2.userInfo); // null
-console.info(uriObj2.port); //-1
+console.info(uriObj2.port); // -1
 console.info(uriObj2.query); // null
 
 const uriObj3 = new uri.URI("datashare:///com.samples.datasharetest.DataShare/DB00/TBL00");
@@ -151,11 +151,10 @@ constructor(uri: string)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200002 | Invalid uri string. |
 
 **示例：**
@@ -213,14 +212,6 @@ equalsTo(other: URI): boolean
 | 类型 | 说明 |
 | -------- | -------- |
 | boolean | 返回true表示相等，否则返回false。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -375,7 +366,7 @@ console.info(`${uriInstance1.checkHierarchical()}`); // false
 
 ### getQueryValue<sup>12+</sup>
 
-getQueryValue(key:string): string
+getQueryValue(key: string): string
 
 根据给定的查询关键词，从URI查询参数部分中提取出该关键词对应的第一个值，若查询参数中存在已编码过的内容，需将对应Key进行解码后获取Value。
 
@@ -397,14 +388,6 @@ getQueryValue(key:string): string
 | ------ | ----------------------------- |
 | string | 返回经解码处理后的URI查询参数的第一个值，若未找到对应值则返回null对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -417,7 +400,7 @@ console.info(uriInstance1.getQueryValue('abc')) // null
 
 ### addQueryValue<sup>12+</sup>
 
-addQueryValue(key:string, value:string): URI
+addQueryValue(key: string, value: string): URI
 
 在当前URI对象上添加查询参数后返回新的URI对象，保持原有URI对象不变。
 
@@ -438,14 +421,6 @@ addQueryValue(key:string, value:string): URI
 | ---- | -------------------------------- |
 | [URI](#uri)  | 返回添加查询部分后的URI对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -456,7 +431,7 @@ console.info(newRoute.toString()); // https://www.test.com?param1=hello%20world
 
 ### addSegment<sup>12+</sup>
 
-addSegment(pathSegment:string): URI
+addSegment(pathSegment: string): URI
 
 对指定字段进行编码，并将其追加到当前URI对象的path中，创建并返回新的URI对象，保持原有URI对象不变。
 
@@ -476,14 +451,6 @@ addSegment(pathSegment:string): URI
 | ---- | -------------------------------- |
 | [URI](#uri)  | 返回已追加字段的URI对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -494,7 +461,7 @@ console.info(newRoute.toString()); // http://www.test.com/my%20image.jpg
 
 ### addEncodedSegment<sup>12+</sup>
 
-addEncodedSegment(pathSegment:string): URI
+addEncodedSegment(pathSegment: string): URI
 
 将已编码的字段追加到当前URI的path字段中，创建新URI对象并返回，保持原有URI对象不变。
 
@@ -513,14 +480,6 @@ addEncodedSegment(pathSegment:string): URI
 | 类型 | 说明                             |
 | ---- | -------------------------------- |
 | [URI](#uri)  | 返回已追加字段的URI对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -556,7 +515,7 @@ console.info(paramNames.toString()); // param1,param2
 
 ### getQueryValues<sup>12+</sup>
 
-getQueryValues(key:string): string[]
+getQueryValues(key: string): string[]
 
 获取URI中查询参数指定键的所有值。如果查询参数已编码，需先解码键再获取值。
 
@@ -578,14 +537,6 @@ getQueryValues(key:string): string[]
 | -------- | ----------------------------------- |
 | string[] | 返回此URI中查询参数内指定键对应所有值的集合，若没有找到则返回一个空字符串数组[]。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -596,7 +547,7 @@ console.info(JSON.stringify(uriInstance.getQueryValues("abc"))); // []
 
 ### getBooleanQueryValue<sup>12+</sup>
 
-getBooleanQueryValue(key:string,defaultValue:boolean): boolean
+getBooleanQueryValue(key: string, defaultValue: boolean): boolean
 
 根据指定键名，搜索此URI查询字符串并返回其对应的布尔类型值。
 
@@ -616,14 +567,6 @@ getBooleanQueryValue(key:string,defaultValue:boolean): boolean
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
 | boolean | 如果指定的查询参数不存在，则返回defaultValue的值；查询参数对应第一个值为“false”或者“0”返回false，否则返回true。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -732,14 +675,6 @@ createFromParts(scheme: string, ssp: string, fragment: string): URI
 | 类型 | 说明                                              |
 | ---- | ------------------------------------------------- |
 | [URI](#uri)  | 返回由给定协议、协议特定部分和片段创建的URI对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 

@@ -1,8 +1,8 @@
 # 使用合适的音频流类型
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -40,7 +40,7 @@
 | SOURCE_TYPE_MIC | 适用于普通录音。|
 | SOURCE_TYPE_VOICE_RECOGNITION<sup>9+</sup> | 适用于语音识别。 |
 | SOURCE_TYPE_PLAYBACK_CAPTURE | （API12已废弃）适用于录制其他应用送到系统中播放的原始音频数据。<br>AudioKit不再提供内录接口，请通过[录屏接口AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture.md)进行内录。 |
-| SOURCE_TYPE_VOICE_COMMUNICATION | 适用于VoIP语音通话。 |
+| SOURCE_TYPE_VOICE_COMMUNICATION | 适用于VoIP语音通话，能够增强人声录制，同时抑制环境音等其他非人声。 |
 | SOURCE_TYPE_VOICE_MESSAGE | 适用于录制语音短消息。 |
 | SOURCE_TYPE_CAMCORDER<sup>13+</sup> | 适用于相机录像。 |
 | SOURCE_TYPE_UNPROCESSED<sup>14+</sup> | 适用于获取麦克风采集到的纯净音频数据（系统不做任何算法处理）。 |
@@ -69,7 +69,7 @@
 
 当应用启动音频播放或录制时，系统会根据音频流类型自动申请焦点，这可能会中断其他音频或降低其音量。音频焦点的具体介绍可参考[音频焦点介绍](audio-playback-concurrency.md)。
 
-此处仅说明常见的音频流类型影响音频焦点的表现，其他类型可参考[系统默认焦点策略表](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-audio-focus-management#section17923135513547)。
+此处仅说明常见的音频流类型影响音频焦点的表现。
 
 - 启动导航（Navigation）时，正在播放的音乐（Music）音量会自动调低，待导航（Navigation）结束后，音乐（Music）音量将自动恢复。
 
@@ -145,3 +145,43 @@
   可以在调用[AVRecorder.prepare](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#prepare9-1)接口时，传入对应的[AudioSourceType](../../reference/apis-media-kit/arkts-apis-media-e.md#audiosourcetype9)。
 
   AVRecorder.prepare的参数config类型为AVRecorderConfig，使用AVRecorderConfig.audioSourceType可指定音源类型。
+
+## 使用不同音频通路
+
+音频通路是指音频数据在系统内部的传输和处理路径，包括从应用到硬件输出的完整处理流程。不同的音频通路采用不同的数据处理策略和硬件资源分配方式，在延迟、功耗、音质等方面各有侧重。
+
+系统根据不同的用户使用场景和音频流的参数信息，提供多种音频通路选择。系统通过应用指定的[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)和[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)提供对应的场景信息，结合音频流的采样率、声道数、编码格式等参数，选择合适的音频通路。
+
+常见的音频通路包括以下几种：
+
+| 音频通路类型 | 特征 | 适用场景 |
+| ---------- | ---------- | ---------- |
+| **低时延播放通路** | 通过缩短缓冲和最小化音效算法达到时延低的效果。 | 游戏音效、K歌耳返、乐器演奏等对延迟敏感的场景。 |
+| **低时延录制通路** | 通过缩短缓冲和最小化音效算法达到时延低的效果。 | K歌场景。 |
+| **多声道播放通路** | 支持多声道数据输出，避免下混（将多声道混合为双声道或单声道）。 | 多声道播放场景。 |
+| **直通播放通路** | 音频数据在播放链路中不会改变音源格式，直接送到硬件输出。 | 播放高质量无损音乐、Hi-Fi音频等。 |
+| **低功耗播放通路** | 通过大缓存减少与硬件交互，以减少功耗。 | 长时间播放音乐、有声读物等。 |
+| **普通播放通路** | 通用通路，按当前设备默认音频格式输出。 | 视频播放、通知音、导航等。 |
+| **普通录制通路** | 通用通路，按当前设备默认音频格式输入。 | 录音机、相机录制、语音消息等。 |
+
+应用可以通过`AudioStreamManager`提供的查询接口，在创建音频流之前判断设备是否支持特定的音频通路，从而选择最合适的配置。
+
+### 播放相关查询接口
+
+| 接口 | 说明 |
+| ---------- | ---------- |
+| [isFastPlaybackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isfastplaybacksupported) | 查询是否支持低时延播放。 |
+| [isMultichannelPlaybackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#ismultichannelplaybacksupported) | 查询是否支持多声道播放。 |
+| [isDirectPlaybackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isdirectplaybacksupported) | 查询是否支持直通播放。 |
+| [isOffloadPlaybackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isoffloadplaybacksupported) | 查询是否支持低功耗播放。 |
+
+### 录制相关查询接口
+
+| 接口 | 说明 |
+| ---------- | ---------- |
+| [isFastRecordingSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isfastrecordingsupported) | 查询是否支持低时延录制。 |
+
+> **说明：**
+>
+> - 音频通路的支持情况取决于设备的硬件能力和系统配置，不同设备有所不同。
+> - 查询接口返回的结果仅表示在指定参数下系统是否支持对应的音频通路，音频流实际使用的通路还需结合系统当前的运行状态和资源配置情况确定。

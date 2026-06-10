@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @fangyuhao-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -161,28 +161,28 @@ Grid() {
   GridItem() {
     // app.string.Meeting资源文件中的value值为‘会议’
     Text($r('app.string.Meeting'))
-    // ···
+    // ...
   }
 
   GridItem() {
-    // app.string.Check_in资源文件中的value值为‘投票’
+    // app.string.Check_in资源文件中的value值为‘签到’
     Text($r('app.string.Check_in'))
-    // ···
+    // ...
   }
 
   GridItem() {
-    // app.string.Voting资源文件中的value值为‘签到’
+    // app.string.Voting资源文件中的value值为‘投票’
     Text($r('app.string.Voting'))
-    // ···
+    // ...
   }
 
   GridItem() {
     // app.string.Printing资源文件中的value值为‘打印’
     Text($r('app.string.Printing'))
-    // ···
+    // ...
   }
 }
-// ···
+// ...
 .rowsTemplate('1fr 1fr')
 .columnsTemplate('1fr 1fr')
 ```
@@ -196,37 +196,37 @@ Grid() {
 @Entry
 @Component
 export struct DataInGrid {
-// ···
+  // ...
 
   @State services: Array<string> = [
     // app.string.Meeting资源文件中的value值为‘会议’
     this.context!.resourceManager.getStringSync($r('app.string.Meeting').id),
-    // app.string.Check_in资源文件中的value值为‘投票’
+    // app.string.Check_in资源文件中的value值为‘签到’
     this.context!.resourceManager.getStringSync($r('app.string.Check_in').id),
-    // app.string.Voting资源文件中的value值为‘签到’
+    // app.string.Voting资源文件中的value值为‘投票’
     this.context!.resourceManager.getStringSync($r('app.string.Voting').id),
     // app.string.Printing资源文件中的value值为‘打印’
     this.context!.resourceManager.getStringSync($r('app.string.Printing').id)
   ];
-// ···
+  // ...
 
   build() {
-    // ···
+    // ...
       Column() {
-        // ···
+        // ...
           Grid() {
             ForEach(this.services, (service: string) => {
               GridItem() {
                 Text(service)
               }
-            // ···
+              // ...
             }, (service: string): string => service)
           }
           .rowsTemplate(('1fr 1fr') as string)
           .columnsTemplate(('1fr 1fr') as string)
-        // ···
+          // ...
       }
-    // ···
+      // ...
   }
 }
 ```
@@ -391,6 +391,54 @@ private scroller: Scroller = new Scroller();
 >- 滚动条组件[ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md)，还可配合其他可滚动组件使用，如[ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md)、[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)。
 >- 在圆形屏幕设备上，[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)可以与弧形滚动条组件[ArcScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md)配合使用为网格添加弧形外置滚动条，使用方式可参考[创建弧形列表 (ArcList)](./arkts-layout-development-create-arclist.md)的[添加外置滚动条ArcScrollBar](./arkts-layout-development-create-arclist.md#添加外置滚动条arcscrollbar)章节。
 
+## 手指滑动多选
+
+从API版本26.0.0开始，[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)支持在编辑模式下实现手指滑动多选能力。进入编辑模式后，用户可以通过手指滑动经过多个[GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)，批量选择或取消选择网格项。应用可以在GridItem上设置是否允许被选择，并根据回调记录已选择的网格项。该能力适用于相册、文件管理、视频列表等需要连续批量选择网格项的场景。
+
+**Grid手指滑动多选示例效果图**
+
+![gridSwipeSelect](figures/gridSwipeSelect.gif)
+
+### 设置编辑模式
+
+通过[enableEditMode](../reference/apis-arkui/arkui-ts/ts-container-grid.md#enableeditmode)设置是否进入编辑模式。设置为true，Grid进入编辑模式，用户可以单指滑动经过多个GridItem进行批量选择或取消选择；设置为false，Grid退出编辑模式。通过[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-grid.md#oneditmodechange)监听编辑模式变化，将侧滑返回或双指滑动触发的编辑模式变化同步到业务状态。
+
+通过[editModeOptions](../reference/apis-arkui/arkui-ts/ts-container-grid.md#editmodeoptions23)配置编辑模式下的多选行为。editModeOptions中有两个滑动多选相关参数，分别是useDefaultMultiSelectStyle和enableTwoFingerMultiSelect，默认值均为true。前者控制是否显示GridItem右下角的系统复选框，后者控制是否允许用户通过双指滑动自动进入编辑模式并进行多选。开发者需要自定义样式时，可将useDefaultMultiSelectStyle设置为false。开发者需要关闭双指滑动自动进入编辑模式时，可将enableTwoFingerMultiSelect设置为false。
+<!-- @[Add_grid_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSwipeSelect.ets) -->
+
+``` TypeScript
+Grid() {
+  // ...
+}
+.enableEditMode(this.enableEditMode)
+.onEditModeChange((enabled: boolean) => {
+  this.setEditMode(enabled);
+})
+.editModeOptions({ useDefaultMultiSelectStyle: true, enableTwoFingerMultiSelect: true })
+```
+
+### 记录网格项选择结果
+
+在GridItem上配置[selectable](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#selectable8)、[selected](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#selected10)和[onSelect](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#onselect8)。selectable用于设置网格项是否允许被选择，selected用于设置网格项当前是否被选中。滑动多选过程中，组件会触发onSelect回调，应用可以在回调中记录每个网格项的最新选择结果。
+<!-- @[Add_grid_item_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSwipeSelect.ets) -->
+
+``` TypeScript
+GridItem() {
+  this.GridCard(item, index)
+}
+.selectable(true)
+.selected(this.isSelected(item.id))
+.onSelect((selected: boolean) => {
+  this.updateSelected(item.id, selected);
+})
+```
+
+>**说明：**
+>
+>- 建议使用网格项数据中不会随位置变化的唯一标识（例如文件ID）记录选择结果，不建议仅使用当前下标，避免动态增删数据后选中项错位。
+>- 当业务需要在退出编辑模式后保留选择结果时，可在[onEditModeChange](../reference/apis-arkui/arkui-ts/ts-container-grid.md#oneditmodechange)回调中保存选择结果。
+>- 使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)时，数据源发生变化后应通过[DataChangeListener](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener)通知组件刷新，确保滑动多选过程中网格项状态与数据源一致。
+
 ## 性能优化
 
 与[长列表的处理](arkts-layout-development-create-list.md#长列表的处理)类似，[循环渲染](../ui/rendering-control/arkts-rendering-control-foreach.md)适用于数据量较小的布局场景，当构建具有大量网格项的可滚动网格布局时，推荐使用[数据懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)方式实现按需迭代加载数据，从而提升网格性能。
@@ -417,6 +465,7 @@ Grid() {
 >
 >cachedCount的增加会增大UI的CPU、内存开销。使用时需要根据实际情况，综合性能和用户体验进行调整。
 
+<!--RP1-->
 ## 相关实例
 
 针对网格开发，有以下相关实例可供参考：
@@ -424,4 +473,4 @@ Grid() {
 - [游戏2048（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Game2048)
 
 - [分布式计算器](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/ArkTSDistributedCalc)
-<!--RP1--><!--RP1End-->
+<!--RP1End-->

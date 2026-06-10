@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -19,6 +19,8 @@
 **起始版本：** 12
 
 **相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
+
+**相关开发指导：** [使用Image_NativeModule完成图片解码](../../media/image/image-source-c.md)、[图片区域解码与下采样(C/C++)](../../media/image/image-region-and-downsampling-c.md)、[使用Image_NativeModule完成动图解码](../../media/image/image-animated-decoding-c.md)、[使用Image_NativeModule完成HDR图片解码](../../media/image/image-hdr-decoding-c.md)、[使用Image_NativeModule完成多图对象解码](../../media/image/image-source-picture-c.md)
 
 ## 汇总
 
@@ -48,8 +50,8 @@
 | [Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t *width)](#oh_imagesourceinfo_getwidth) | 获取图片的宽。对于没有width标签的SVG图片，返回默认值0。 |
 | [Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t *height)](#oh_imagesourceinfo_getheight) | 获取图片的高。对于没有height标签的SVG图片，返回默认值0。 |
 | [Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bool *isHdr)](#oh_imagesourceinfo_getdynamicrange) | 获取图片是否为高动态范围的信息。 |
-| [Image_ErrorCode OH_ImageSourceInfo_GetMimeType(OH_ImageSource_Info *info, Image_MimeType *mimeType)](#oh_imagesourceinfo_getmimetype) | 获取图片源的MIME类型。 |
-| [Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)](#oh_imagesourceinfo_release) | 释放OH_ImageSource_Info指针。调用该接口之后，与OH_ImageSourceInfo结构体相关的属性均会被释放。因此在调用该接口前，请务必确认相关属性已不再被需要或对相关属性已完成深拷贝操作。 |
+| [Image_ErrorCode OH_ImageSourceInfo_GetMimeType(OH_ImageSource_Info *info, Image_MimeType *mimetype)](#oh_imagesourceinfo_getmimetype) | 获取图片源的MIME类型。 |
+| [Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)](#oh_imagesourceinfo_release) | 释放OH_ImageSource_Info指针。调用该接口后，通过OH_ImageSourceInfo_GetMimeType()获取到的mimeType.data会失效；如需在释放后继续使用MIME类型数据，应在释放前自行深拷贝。 |
 | [Image_ErrorCode OH_DecodingOptions_Create(OH_DecodingOptions **options)](#oh_decodingoptions_create) | 创建OH_DecodingOptions指针。 |
 | [Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options, int32_t *pixelFormat)](#oh_decodingoptions_getpixelformat) | 获取pixel格式。 |
 | [Image_ErrorCode OH_DecodingOptions_SetPixelFormat(OH_DecodingOptions *options, int32_t pixelFormat)](#oh_decodingoptions_setpixelformat) | 设置pixel格式。 |
@@ -212,7 +214,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | 被操作的OH_ImageSource_Info指针。 |
-| uint32_t *width | 图片的宽，单位：像素。 |
+| uint32_t *width | 图片的宽，单位为像素（px）。 |
 
 **返回：**
 
@@ -238,7 +240,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | 被操作的OH_ImageSource_Info指针。 |
-| uint32_t *height | 图片的高，单位：像素 |
+| uint32_t *height | 图片的高，单位为像素（px）。 |
 
 **返回：**
 
@@ -275,7 +277,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bo
 ### OH_ImageSourceInfo_GetMimeType()
 
 ```c
-Image_ErrorCode OH_ImageSourceInfo_GetMimeType(OH_ImageSource_Info *info, Image_MimeType *mimeType)
+Image_ErrorCode OH_ImageSourceInfo_GetMimeType(OH_ImageSource_Info *info, Image_MimeType *mimetype)
 ```
 
 **描述**
@@ -312,7 +314,7 @@ Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)
 
 **描述**
 
-释放OH_ImageSource_Info指针。调用该接口之后，与OH_ImageSourceInfo结构体相关的属性均会被释放。因此在调用该接口前，请务必确认相关属性已不再被需要或对相关属性已完成深拷贝操作。
+释放OH_ImageSource_Info指针。调用该接口后，通过OH_ImageSourceInfo_GetMimeType()获取到的mimeType.data会失效；如需在释放后继续使用MIME类型数据，应在释放前自行深拷贝。
 
 **起始版本：** 12
 
@@ -476,7 +478,7 @@ Image_ErrorCode OH_DecodingOptions_GetRotate(OH_DecodingOptions *options, float 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| float *rotate | 旋转角度，单位为deg，默认值为0。 |
+| float *rotate | 旋转角度，单位为角度（deg），默认值为0。取值范围为[0, 360]。 |
 
 **返回：**
 
@@ -502,7 +504,7 @@ Image_ErrorCode OH_DecodingOptions_SetRotate(OH_DecodingOptions *options, float 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| float rotate | 旋转角度，单位为deg，默认值为0。 |
+| float rotate | 旋转角度，单位为角度（deg），默认值为0。取值范围为[0, 360]。 |
 
 **返回：**
 
@@ -905,6 +907,10 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSi
 
 通过缓冲区数据创建OH_ImageSourceNative指针。<br> data数据应该是未解码的数据，不要传入类似于RGBA，YUV的像素buffer数据。<br> 如果想通过像素buffer数据创建pixelMap，可以调用[OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)这一类接口。
 
+使用场景：适用于应用已经通过网络、文件或其他模块获取到完整编码图片数据的场景，例如JPEG、PNG、WebP等格式的二进制数据。该接口创建的是图片源对象，后续可继续调用[OH_ImageSourceNative_GetImageInfo](#oh_imagesourcenative_getimageinfo)读取图片信息，或调用[OH_ImageSourceNative_CreatePixelmap](#oh_imagesourcenative_createpixelmap)解码为PixelMap。
+
+资源管理：成功创建的OH_ImageSourceNative对象由调用方持有，使用完成后必须调用[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)释放。传入的data仍由调用方管理，不应传入已经解码后的像素数据。
+
 **起始版本：** 12
 
 **参数：**
@@ -930,6 +936,10 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data,
 **描述**
 
 由数据缓存创建图片源。传入的数据缓存将在图片源对象中直接访问，在图片源对象的生命周期内，数据缓存需要保持可用。
+
+使用场景：适用于希望减少图片源创建过程中的数据拷贝，并且调用方能够保证输入缓冲区生命周期的场景。
+
+资源管理：在调用[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)释放图片源对象之前，data指向的缓冲区不能被释放、复用或修改为其他图片数据。否则后续读取图片信息、解码或读取元数据时可能访问无效数据。
 
 **起始版本：** 20
 
@@ -983,6 +993,12 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source
 
 通过图片解码参数创建OH_PixelmapNative指针。
 
+使用场景：适用于将JPEG、PNG、WebP、GIF单帧等编码图片解码为可读取、处理或再编码的PixelMap。解码前可通过OH_DecodingOptions设置帧序号、目标像素格式、目标尺寸、裁剪区域、期望动态范围等参数。
+
+使用约束：source、options和pixelmap均不能为空指针。调用前需先创建OH_ImageSourceNative对象；如需自定义解码参数，需先创建并设置OH_DecodingOptions对象。接口执行成功后，pixelmap指向新创建的OH_PixelmapNative对象；接口执行失败时，不应使用pixelmap指向的对象。
+
+资源管理：成功创建的OH_PixelmapNative对象由调用方持有，使用完成后应调用[OH_PixelmapNative_Destroy](capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)释放。OH_DecodingOptions和OH_ImageSourceNative对象不会因为创建PixelMap而自动释放，需要分别调用[OH_DecodingOptions_Release](#oh_decodingoptions_release)和[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)释放。
+
 **起始版本：** 12
 
 
@@ -1009,6 +1025,12 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSource
 **描述**
 
 根据解码参数创建一个PixelMap，PixelMap使用的内存类型可以通过allocatorType来指定。<br> 默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理通过此接口返回的PixelMap时，请始终考虑步幅（stride）的影响。
+
+使用场景：适用于调用方需要明确指定PixelMap内存类型的场景。例如，后续图像处理链路要求DMA内存时，可指定IMAGE_ALLOCATOR_TYPE_DMA。
+
+使用约束：source、options和pixelmap均不能为空指针。allocator需为[IMAGE_ALLOCATOR_TYPE](#image_allocator_type)中定义的有效枚举值。指定的内存类型可能受图片类型、图片大小、系统版本和设备能力限制，接口可能返回IMAGE_SOURCE_UNSUPPORTED_ALLOCATOR_TYPE。
+
+资源管理：成功创建的PixelMap需要调用[OH_PixelmapNative_Destroy](capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)释放。读取或写入像素数据时，不能假设每行字节数等于宽度乘以每像素字节数，应通过[OH_PixelmapImageInfo_GetRowStride](capi-pixelmap-native-h.md#oh_pixelmapimageinfo_getrowstride)获取行跨距。
 
 **起始版本：** 15
 
@@ -1038,6 +1060,12 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *so
 
 通过图片解码参数创建OH_PixelmapNative数组。<br> 注意，此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
 
+使用场景：适用于需要一次性获取动图所有帧并自行处理的场景，例如生成缩略图序列、分析每帧内容或重新编码动图。仅播放动图时，不建议优先使用该接口。
+
+使用约束：source、options和resVecPixMap均不能为空指针。调用方需根据帧数准备足够长度的resVecPixMap数组，size应与数组可写入元素数量一致。调用前可通过[OH_ImageSourceNative_GetFrameCount](#oh_imagesourcenative_getframecount)查询帧数。
+
+资源管理：resVecPixMap数组由调用方提供，数组中的每个OH_PixelmapNative对象创建成功后都由调用方持有。使用完成后，需要逐个调用[OH_PixelmapNative_Destroy](capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)释放。如果接口返回失败，也应检查数组中已写入的非空PixelMap指针并释放。
+
 **起始版本：** 12
 
 
@@ -1065,6 +1093,8 @@ Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source,
 **描述**
 
 通过图片解码创建OH_PictureNative指针。
+
+使用约束：source、options和picture均不能为空指针。
 
 **起始版本：** 13
 
@@ -1310,6 +1340,10 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyArraySize(OH_ImageSourceNat
 **描述**
 
 获取数组类型属性的数组长度或字符串类型属性的字符串长度。
+
+使用场景：适用于读取字符串、数组或二进制对象类型的图像属性前，先查询需要分配的缓冲区大小。典型流程为：先调用本接口获取长度，再由调用方分配缓冲区，最后调用[OH_ImageSourceNative_GetImagePropertyString](#oh_imagesourcenative_getimagepropertystring)、[OH_ImageSourceNative_GetImagePropertyIntArray](#oh_imagesourcenative_getimagepropertyintarray)、[OH_ImageSourceNative_GetImagePropertyDoubleArray](#oh_imagesourcenative_getimagepropertydoublearray)或[OH_ImageSourceNative_GetImagePropertyBlob](#oh_imagesourcenative_getimagepropertyblob)读取实际内容。
+
+资源管理：本接口不分配属性值缓冲区。后续读取属性值时，如果缓冲区由调用方分配，则由调用方释放；如果使用[OH_ImageSourceNative_GetImageProperty](#oh_imagesourcenative_getimageproperty)或[OH_ImageSourceNative_GetImagePropertyWithNull](#oh_imagesourcenative_getimagepropertywithnull)由系统分配value->data，使用完成后必须调用free()释放。
 
 **起始版本：** 23
 
@@ -1648,6 +1682,12 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNati
 
 获取图像属性值。输出的value.data以字符串结束符'\0'结尾。
 
+使用场景：适用于读取字符串形式的图像属性，例如图片方向、拍摄时间、设备信息等。与[OH_ImageSourceNative_GetImageProperty](#oh_imagesourcenative_getimageproperty)相比，本接口返回的value.data以'\0'结尾，更适合直接按C字符串处理。
+
+使用约束：source、key和value均不能为空指针。调用前应将value.data置为NULL、value.size置为0。接口执行成功后，可通过value.data和value.size读取属性值；接口执行失败时，不应读取value.data。
+
+资源管理：接口执行成功后，value.data由系统分配，调用方使用完成后必须调用free()释放。
+
 **起始版本：** 19
 
 
@@ -1674,6 +1714,10 @@ Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *s
 **描述**
 
 通过指定的键修改图片属性的值。
+
+使用场景：适用于修改ImageSource中的图像属性，例如方向、用户注释等字符串属性。对于短整型、长整型、浮点型、数组或二进制对象类型的属性，优先使用对应的ModifyImagePropertyShort、ModifyImagePropertyLong、ModifyImagePropertyDouble、ModifyImagePropertyIntArray、ModifyImagePropertyDoubleArray或ModifyImagePropertyBlob接口，避免类型不匹配。
+
+资源管理：key和value指向的内存由调用方管理，接口不会接管其生命周期。修改后的属性保存在当前ImageSource对象中；如需生成包含修改后属性的图片文件或图片数据，需要结合编码接口重新输出。
 
 **起始版本：** 12
 
@@ -1728,6 +1772,8 @@ Image_ErrorCode OH_ImageSourceNative_GetSupportedFormats(Image_MimeType **suppor
 
 获取支持解码的图片格式。
 
+使用场景：适用于在创建图片源或展示格式选择前，动态查询当前系统支持的解码格式。部分格式的解码能力可能和系统版本、设备能力有关，建议以该接口返回结果为准。
+
 **起始版本：** 20
 
 
@@ -1754,6 +1800,8 @@ Image_ErrorCode OH_ImageSourceNative_Release(OH_ImageSourceNative *source)
 
 释放OH_ImageSourceNative指针。
 
+资源管理：由OH_ImageSourceNative_CreateFromUri、OH_ImageSourceNative_CreateFromFd、OH_ImageSourceNative_CreateFromData、OH_ImageSourceNative_CreateFromDataWithUserBuffer或OH_ImageSourceNative_CreateFromRawFile成功创建的对象，都应在不再使用时调用本接口释放。释放后不得再将该source传入读取图片信息、解码、读取或修改属性等接口。释放ImageSource不会自动释放已经创建出的OH_PixelmapNative、OH_PictureNative或OH_ImageRawData对象，这些对象需要分别调用对应释放接口。
+
 **起始版本：** 12
 
 
@@ -1779,6 +1827,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_Create(OH_DecodingOptionsForPicture
 
 创建OH_DecodingOptionsForPicture指针。
 
+使用约束：options不能为空指针。接口返回失败时，输出参数的内容不能在后续流程中继续使用。
+
 **起始版本：** 13
 
 
@@ -1803,6 +1853,10 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures(OH_Deco
 **描述**
 
 获取解码时设置的期望辅助图（期望解码出的picture包含的辅助图）。
+
+使用约束：options、desiredAuxiliaryPictures和length均不能为空指针。未设置期望辅助图时，接口返回IMAGE_BAD_PARAMETER。
+
+资源管理：接口成功返回的desiredAuxiliaryPictures数组由接口分配，使用完成后调用方应使用delete[]释放。
 
 **起始版本：** 13
 
@@ -1830,6 +1884,10 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures(OH_Deco
 **描述**
 
 设置解码选项中的期望辅助图。
+
+使用约束：options和desiredAuxiliaryPictures均不能为空指针，length必须大于0，desiredAuxiliaryPictures数组中的辅助图类型必须为当前支持的Image_AuxiliaryPictureType。
+
+资源管理：接口会将传入数组中的辅助图类型保存到OH_DecodingOptionsForPicture对象中，不会持有传入的数组指针，接口返回后调用方可自行释放或复用该数组。多次调用该接口时，新传入的辅助图类型会追加到已有集合中；重复类型只保留一份。
 
 **起始版本：** 13
 
@@ -1883,6 +1941,10 @@ Image_ErrorCode OH_ImageSourceNative_CreateImageRawData(const OH_ImageSourceNati
 
 从图像中获取rawData对象。rawData对象通常占用大量内存，因为它包含来自相机的原始数据。<br>        当不再使用rawData对象时，请及时调用[OH_ImageSourceNative_DestroyImageRawData](capi-image-source-native-h.md#oh_imagesourcenative_destroyimagerawdata)方法销毁，以释放内存资源。
 
+使用场景：适用于从包含原始图像数据的图片源中读取rawData，并交给自定义图像处理、算法分析或保存链路使用。普通图片显示或常规像素处理场景，通常应使用[OH_ImageSourceNative_CreatePixelmap](#oh_imagesourcenative_createpixelmap)解码为PixelMap。
+
+资源管理：成功创建的OH_ImageRawData对象由调用方持有，使用完成后必须调用[OH_ImageSourceNative_DestroyImageRawData](#oh_imagesourcenative_destroyimagerawdata)销毁。rawData对象和OH_ImageSourceNative对象生命周期相互独立，释放ImageSource不会自动销毁rawData。
+
 **起始版本：** 24
 
 **参数：**
@@ -1907,6 +1969,8 @@ Image_ErrorCode OH_ImageSourceNative_GetBufferFromRawData(const OH_ImageRawData 
 **描述**
 
 从rawData对象获取二进制数据。
+
+资源管理：data返回的是rawData对象内部二进制缓冲区的地址，调用方不应对*data调用free()，也不应在[OH_ImageSourceNative_DestroyImageRawData](#oh_imagesourcenative_destroyimagerawdata)销毁rawData后继续访问该地址。如需在rawData销毁后继续使用数据，应在销毁前自行深拷贝。
 
 **起始版本：** 24
 
@@ -1959,6 +2023,8 @@ Image_ErrorCode OH_ImageSourceNative_DestroyImageRawData(OH_ImageRawData *rawDat
 
 销毁rawData对象。
 
+资源管理：该接口只销毁OH_ImageRawData对象及其内部资源，不会释放OH_ImageSourceNative对象。销毁后，之前通过[OH_ImageSourceNative_GetBufferFromRawData](#oh_imagesourcenative_getbufferfromrawdata)获取到的data地址立即失效。
+
 **起始版本：** 24
 
 **参数：**
@@ -1972,5 +2038,3 @@ Image_ErrorCode OH_ImageSourceNative_DestroyImageRawData(OH_ImageRawData *rawDat
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_SOURCE_INVALID_PARAMETER：rawData对象无效。 |
-
-

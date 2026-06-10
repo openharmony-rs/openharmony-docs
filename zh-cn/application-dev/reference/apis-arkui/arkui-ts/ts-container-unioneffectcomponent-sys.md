@@ -2,20 +2,22 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
- 	 
-形状融合容器，会收集该容器内所有[使用祖先融合效果](ts-universal-attributes-use-union-effect-sys.md#useunioneffect)的后代组件形状，将收集的形状融合生效在容器上，作为该容器的绘制形状。
- 	 
+
+形状融合容器，会收集该容器内所有使用[useUnionEffect](ts-universal-attributes-use-union-effect-sys.md#useunioneffect)的后代组件形状，将收集的形状融合生效在容器上，作为该容器的绘制形状。
+
 >  **说明：**
 >
 > - 该组件从API version 23开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 本模块为系统接口。
 > 
 > - 形状融合过程可以添加动画。
- 	 
+
 ## 子组件
 
 可以包含子组件。
@@ -86,9 +88,46 @@ pointLight(value: PointLightStyle)
 | ------ | ------------------------------------------------------------ | ---- | ------------ |
 | value  | [PointLightStyle](ts-universal-attributes-point-light-style-sys.md#pointlightstyle) | 是   | 点光源样式。 |
 
+### unionMode
+
+unionMode(mode: UnionMode)
+
+设置融合效果模式。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明         |
+| ------ | ------------------------------------------------------------ | ---- | ------------ |
+| mode  | [UnionMode](#unionmode枚举说明) | 是   | 融合效果模式。 |
+
+## UnionMode枚举说明
+
+融合效果枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+| 名称           | 值  | 说明                         |
+| -------------- | --- |---------------------------- |
+| SMOOTH_UNION       | 0   | 平滑的融合形变效果。            |
+| GRAVITY_UNION      | 1   | 引力作用下的融合形变效果。<br/>**说明：**<br/>设置该类型时，需要结合[useUnionEffect](./ts-universal-attributes-use-union-effect-sys.md#useunioneffect-1)并设置[GravityCenterOptions](./ts-universal-attributes-use-union-effect-sys.md#gravitycenteroptions)的gravityCenter为true才能生效。            |
+
 ## 示例
 
-### 示例1（设置产生融合形变效果）
+### 示例1（设置融合形变效果）
 
 该示例主要演示如何使用[UnionEffectContainer](#unioneffectcontainer)组件，通过改变spacing值或后代组件的距离，产生融合形变效果。
 
@@ -201,3 +240,118 @@ struct UnionEffectContainerPage {
 ```
 
 ![unionEffectContainerDemo](figures/unionEffectContainerDemo.gif)
+
+### 示例2（设置不同类型的融合形变效果）
+
+该示例主要演示如何使用[unionMode](#unionmode)接口，通过设置不同的融合类型，产生不同的融合形变效果。
+
+从API版本26.0.0开始，新增unionMode接口。
+
+```ts
+// UnionEffectContainerPage.ets
+@Entry
+@Component
+struct UnionEffectContainerPage {
+  @State translateY1: number = 0;
+  @State translateY2: number = 0;
+
+  build() {
+    Column() {
+      Column() {
+        Text("UnionMode.SMOOTH_UNION")
+        UnionEffectContainer({ spacing: 10 }) {
+          Column({ space: 50 }) {
+            Column()
+              .width(100)
+              .height(100)
+              .margin({ top: 10 })
+              .borderRadius(50)
+              .useUnionEffect(true)// 设置useUnionEffect属性，使用融合效果
+              .translate({ y: this.translateY1 })
+
+            Column()
+              .width(200)
+              .height(100)
+              .useUnionEffect(true)
+          }
+          .width('100%')
+        }
+        .width('100%')
+        .height('75%')
+        .backgroundColor("#2787d9") // 设置融合效果支持的属性，如背景色
+        .unionMode(UnionMode.SMOOTH_UNION)
+
+        Row({ space: 30 }) {
+          Text("translate:")
+          Button('+10')
+            .onClick(() => {
+              this.getUIContext().animateTo({ duration: 200 }, () => {
+                this.translateY1 += 10; // 改变相邻组件的距离
+              });
+            })
+          Button('-10')
+            .onClick(() => {
+              this.getUIContext().animateTo({ duration: 200 }, () => {
+                this.translateY1 -= 10; // 改变相邻组件的距离
+              });
+            })
+        }
+        .width('100%')
+        .height('20%')
+      }.width('90%')
+      .height('45%')
+      .borderWidth(1)
+      .margin({ top: 10 })
+
+      Column() {
+        Text("UnionMode.GRAVITY_UNION")
+        UnionEffectContainer({ spacing: 1000 }) {
+          Column({ space: 50 }) {
+            Column()
+              .width(40)
+              .height(40)
+              .margin({ top: 10 })
+              .borderRadius(20)
+              .useUnionEffect(true, {gravityCenter: true, gravityIntensity: 60})// 设置useUnionEffect属性，使用融合效果
+              .translate({ y: this.translateY2 })
+
+            Column()
+              .width(200)
+              .height(100)
+              .useUnionEffect(true)
+          }
+          .width('100%')
+        }
+        .width('100%')
+        .height('75%')
+        .backgroundColor("#2787d9") // 设置融合效果支持的属性，如背景色
+        .unionMode(UnionMode.GRAVITY_UNION)
+
+        Row({ space: 30 }) {
+          Text("translate:")
+          Button('+10')
+            .onClick(() => {
+              this.getUIContext().animateTo({ duration: 200 }, () => {
+                this.translateY2 += 10; // 改变相邻组件的距离
+              });
+            })
+          Button('-10')
+            .onClick(() => {
+              this.getUIContext().animateTo({ duration: 200 }, () => {
+                this.translateY2 -= 10; // 改变相邻组件的距离
+              });
+            })
+        }
+        .width('100%')
+        .height('20%')
+      }.width('90%')
+      .height('45%')
+      .borderWidth(1)
+      .margin({ top: 10 })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
+![unionModeDemo](figures/unionModeDemo.gif)

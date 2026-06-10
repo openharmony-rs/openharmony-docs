@@ -1,7 +1,7 @@
 # 使用JSVM-API实现JS与C/C++语言交互开发流程
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -24,12 +24,11 @@
 
 - 在index.d.ts文件中，提供JS侧的接口方法。
 
-  ```ts
-  // entry/src/main/cpp/types/libentry/index.d.ts
+  <!-- @[export_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+  
+  ``` TypeScript
   export const runTest: () => void;
   ```
-  <!-- @[export_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
 - 在oh-package.json5文件中将index.d.ts与cpp文件关联起来。
 
   ```json
@@ -63,8 +62,9 @@
 
 - 新建entry/src/main/cpp/hello.cpp，实现Native侧的runTest接口。具体代码如下：
 
-  ```cpp
-  // entry/src/main/cpp/hello.cpp
+  <!-- @[oh_jsvm_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/cpp/hello.cpp) -->
+  
+  ``` C++
   #include "napi/native_api.h"
   #include "hilog/log.h"
   #include "ark_runtime/jsvm.h"
@@ -114,7 +114,8 @@
   #define JSVM_CALL(theCall) JSVM_CALL_BASE(env, theCall, nullptr)
   
   // OH_JSVM_StrictEquals的样例方法
-  static JSVM_Value IsStrictEquals(JSVM_Env env, JSVM_CallbackInfo info) {
+  static JSVM_Value IsStrictEquals(JSVM_Env env, JSVM_CallbackInfo info)
+  {
       // 接受两个入参
       size_t argc = 2;
       JSVM_Value args[2] = {nullptr};
@@ -141,11 +142,12 @@
       {"isStrictEquals", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
   };
   // 样例测试js
-  const char *srcCallNative = R"JS(    let data = '123';
+  const char *SRC_CALL_NATIVE = R"JS(    let data = '123';
       let value = 123;
-      isStrictEquals(data,value);)JS";
+      isStrictEquals(data, value);)JS";
   
-  static int32_t TestJSVM() {
+  static int32_t TestJSVM()
+  {
       JSVM_InitOptions initOptions = {0};
       JSVM_VM vm;
       JSVM_Env env = nullptr;
@@ -156,27 +158,27 @@
       // 初始化JavaScript引擎实例
       if (g_aa == 0) {
           g_aa++;
-         CHECK(OH_JSVM_Init(&initOptions));
+          CHECK(OH_JSVM_Init(&initOptions));
       }
       // 创建JSVM环境
       CHECK(OH_JSVM_CreateVM(nullptr, &vm));
-      CHECK(OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env));
       CHECK(OH_JSVM_OpenVMScope(vm, &vmScope));
+      CHECK(OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env));
       CHECK_RET(OH_JSVM_OpenEnvScope(env, &envScope));
       CHECK_RET(OH_JSVM_OpenHandleScope(env, &handleScope));
   
       // 通过script调用测试函数
       JSVM_Script script;
       JSVM_Value jsSrc;
-      CHECK_RET(OH_JSVM_CreateStringUtf8(env, srcCallNative, JSVM_AUTO_LENGTH, &jsSrc));
+      CHECK_RET(OH_JSVM_CreateStringUtf8(env, SRC_CALL_NATIVE, JSVM_AUTO_LENGTH, &jsSrc));
       CHECK_RET(OH_JSVM_CompileScript(env, jsSrc, nullptr, 0, true, nullptr, &script));
       CHECK_RET(OH_JSVM_RunScript(env, script, &result));
   
       // 销毁JSVM环境
       CHECK_RET(OH_JSVM_CloseHandleScope(env, handleScope));
       CHECK_RET(OH_JSVM_CloseEnvScope(env, envScope));
-      CHECK(OH_JSVM_CloseVMScope(vm, vmScope));
       CHECK(OH_JSVM_DestroyEnv(env));
+      CHECK(OH_JSVM_CloseVMScope(vm, vmScope));
       CHECK(OH_JSVM_DestroyVM(vm));
       return 0;
   }
@@ -187,14 +189,11 @@
       return nullptr;
   }
   
-  // 模块初始化
+  // 模块注册信息，供arkts侧调用
   EXTERN_C_START
-  static napi_value Init(napi_env env, napi_value exports) {
-      // 实现ArkTS接口与C++接口的绑定和映射  
-      napi_property_descriptor desc[] = {
-        {"runTest", nullptr, RunTest, nullptr, nullptr, nullptr, napi_default, nullptr}
-      };
-      // 在exports对象上挂载RunJsVm的Native方法
+  static napi_value Init(napi_env env, napi_value exports)
+  {
+      napi_property_descriptor desc[] = {{"runTest", nullptr, RunTest, nullptr, nullptr, nullptr, napi_default, nullptr}};
       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
       return exports;
   }
@@ -212,12 +211,11 @@
   
   extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
   ```
-  <!-- @[oh_jsvm_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/cpp/hello.cpp) -->
-  
 ## ArkTS侧调用C/C++方法实现
 
-```ts
-// 通过import的方式，引入Native能力。
+<!-- @[call_native_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import napitest from 'libentry.so';
 
 @Entry
@@ -232,8 +230,13 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            // runtest
-            napitest.runTest();
+            try {
+              napitest.runTest();
+              this.message = 'success';
+            } catch (error) {
+              console.error('An error occurred: ', error);
+              this.message = 'fail';
+            }
           })
       }
       .width('100%')
@@ -242,8 +245,6 @@ struct Index {
   }
 }
 ```
-<!-- @[call_native_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/ets/pages/Index.ets) -->
-
 预期输出结果
 ```ts
 JSVM OH_JSVM_StrictEquals: success: 0

@@ -29,7 +29,7 @@ WebviewController还没有和具体的Web组件关联。
 请检查WebviewController对象是否已与Web组件关联，可以通过[onControllerAttached()](./arkts-basic-components-web-events.md#oncontrollerattached10)接口进行检查。<!--RP1--><!--RP1End-->
 
 
-## 17100002 Url格式错误
+## 17100002 URL格式错误
 
 **错误信息**
 
@@ -51,7 +51,7 @@ URL错误，可能原因：
 
 **处理步骤**
 
-请检查输入的url是否正确且url长度不超过2\*1024\*1024。
+请检查输入的URL是否正确且URL长度不超过2\*1024\*1024。
 
 
 ## 17100003 resource路径错误
@@ -133,7 +133,7 @@ port可能已经关闭。
 请检查port是否关闭。
 
 
-## 17100008 删除不存在的javaScriptProxy
+## 17100008 删除不存在的JavaScriptProxy
 
 **错误信息**
 
@@ -141,15 +141,15 @@ Failed to delete JavaScriptProxy because it does not exist.
 
 **错误描述**
 
-删除不存在的javaScriptProxy。
+删除不存在的JavaScriptProxy。
 
 **可能原因**
 
-传入的javaScriptProxy之前没有注册。
+传入的JavaScriptProxy之前没有注册。
 
 **处理步骤**
 
-检查传入的javaScriptProxy是否注册成功。
+检查传入的JavaScriptProxy是否注册成功。
 
 
 ## 17100010 无法使用该端口发送消息
@@ -384,6 +384,24 @@ The port number is not within the allowed range.
 **处理步骤**
 
 检查使用的端口号是否在允许的取值范围内。
+
+## 17100024 AIPageCommand格式错误
+
+**错误信息**
+
+Command format error. The command parameter does not conform to the JSON format requirements.
+
+**错误描述**
+
+AIPageCommand参数格式错误。
+
+**可能原因**
+
+调用[WebviewController.executeAIPageCommand](arkts-apis-webview-WebviewController.md#executeaipagecommand)时，传入的command参数不是合法的JSON对象字符串，或命令字段不符合格式要求。
+
+**处理步骤**
+
+检查command参数是否为合法的JSON对象字符串，并确认JSON对象中包含字符串类型的method字段。
 
 ## 17100101 使用了错误的网络错误码
 

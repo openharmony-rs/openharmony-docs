@@ -1,11 +1,18 @@
 # ContinuableInfo (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: DistributedAbilityManager-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @zhaodengqi-->
+<!--Adviser: @hu-zhiqiong-->
 
-The module provides the mission continuation information to be returned when the listener for listening for the mission continuation state is registered. For details about the registration, see [on('continueStateChange')](js-apis-distributedMissionManager-sys.md#distributedmissionmanageroncontinuestatechange11).
+When registering the callback for listening to the application mission continuation state, the application mission continuation state and information are returned. For details about the registration, see [on('continueStateChange')](js-apis-distributedMissionManager-sys.md#distributedmissionmanageroncontinuestatechange11).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > The APIs provided by this module are system APIs.
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -16,6 +23,8 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 ## ContinuableInfo
 
 **System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 

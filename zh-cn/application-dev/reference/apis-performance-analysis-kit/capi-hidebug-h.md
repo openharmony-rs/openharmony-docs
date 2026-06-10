@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -37,6 +37,7 @@
 | [void OH_HiDebug_GetAppMemoryLimit(HiDebug_MemoryLimit *memoryLimit)](#oh_hidebug_getappmemorylimit) | - | 获取应用程序进程的内存限制。 |
 | [HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64_t tags, uint32_t limitSize, char* fileName, uint32_t length)](#oh_hidebug_startapptracecapture) | - | 启动应用trace采集。 |
 | [HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()](#oh_hidebug_stopapptracecapture) | - | 停止采集应用程序trace。 |
+| [HiDebug_ErrorCode OH_HiDebug_RequestTrace(OH_HiDebug_RequestTraceConfig *config, OH_HiDebug_RequestTraceCallback callback)](#oh_hidebug_requesttrace) | - | 根据设置的采集配置请求trace采集。 |
 | [HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)](#oh_hidebug_getgraphicsmemory) | - | 获取应用GPU显存大小。注意：由于该接口涉及多次跨进程通信，其耗时可能超过1秒，建议不要在主线程中直接调用该接口。 |
 | [int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, void** pcArray, int size)](#oh_hidebug_backtracefromfp) | - | 根据给定的fp地址进行栈回溯，该函数异步信号安全。 |
 | [typedef void (\*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame)](#oh_hidebug_symbolicaddresscallback) | OH_HiDebug_SymbolicAddressCallback | 若[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口调用成功，将通过该函数将解析后的栈信息返回给调用者。<br>**注意：** 由于该接口涉及多次IO操作，耗时较长，建议不要在主线程中直接调用。 |
@@ -51,6 +52,15 @@
 | [HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)](#oh_hidebug_requestthreadlitesampling) | - | 对指定的数个线程进行Perf采样，并在调用结束后返回采样栈内容。注意：调用该函数后会阻塞当前线程，直至采样过程完全结束。系统对该接口的调用次数有严格限制，频繁调用超出限额后，将返回[HIDEBUG_RESOURCE_UNAVAILABLE](capi-hidebug-type-h.md#hidebug_errorcode)错误码。 |
 | [uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)](#oh_hidebug_setcrashobj) | - | 将维测信息添加到崩溃日志中，与[OH_HiDebug_ResetCrashObj](capi-hidebug-h.md#oh_hidebug_resetcrashobj)配对使用。若程序在OH_HiDebug_SetCrashObj与OH_HiDebug_ResetCrashObj之间发生崩溃，会将OH_HiDebug_SetCrashObj设置的维测信息添加到记录本次崩溃的日志中。 |
 | [void OH_HiDebug_ResetCrashObj(uint64_t crashObj)](#oh_hidebug_resetcrashobj) | - | 将维测信息对象还原到使用OH_HiDebug_SetCrashObj之前的状态。 |
+| [HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDebug_ResProfilerConfig* config, OH_HiDebug_ProfilingCallback callback)](#oh_hidebug_startprofiler) | - | 异步启动当前进程资源采集功能。<br>回调函数只在终止采集（含系统自动停止采集）时调用，其携带采集资源类型和采集文件路径。<br>若采集异常，则文件路径为NULL。 |
+| [HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)](#oh_hidebug_stopprofiler) | - | 停止当前进程资源采集功能。该接口可在[OH_HiDebug_StartProfiler](capi-hidebug-h.md#oh_hidebug_startprofiler)接口调用后使用，且调用间隔不能超过最大持续时间。 |
+| [typedef bool (\*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg)](#oh_hidebug_memdumplistener) | OH_HiDebug_MemDumpListener | 内存导出监听的回调函数。开发者通过应用中的文件描述符（FD）来写入内存数据，从而可利用[hidumper命令](../../dfx/hidumper.md#查询虚拟机堆内存)导出数据。 |
+| [HiDebug_ErrorCode OH_HiDebug_RegisterMemDumpListener(const char* name, OH_HiDebug_MemDumpListener listener)](#oh_hidebug_registermemdumplistener) | - | 注册内存导出监听。当应用的内存占用较高，或通过[hidumper命令](../../dfx/hidumper.md#查询虚拟机堆内存)手动导出内存信息时，系统会主动调用已注册的回调函数。<br> 第三方应用框架或开发者可借此将应用内部内存信息转储到hidumper中，或通过商业灰度上传至OEM厂商。<br> 对应的注销函数为：[OH_HiDebug_UnregisterMemDumpListener](capi-hidebug-h.md#oh_hidebug_unregistermemdumplistener)。 |
+| [HiDebug_ErrorCode OH_HiDebug_UnregisterMemDumpListener(const char* name)](#oh_hidebug_unregistermemdumplistener) | - | 注销已经注册成功的内存导出监听。 |
+| [uint64_t OH_HiDebug_AcquireAsyncContext()](#oh_hidebug_acquireasynccontext) | - | Profiler辅助接口，获取一个AsyncContext供后续使用。对应的释放函数为：[OH_HiDebug_ReleaseAsyncContext](capi-hidebug-h.md#oh_hidebug_releaseasynccontext)。 |
+| [void OH_HiDebug_PushAsyncContext(uint64_t ctx)](#oh_hidebug_pushasynccontext) | - | Profiler辅助接口，将AsyncContext压入运行上下文栈表。 |
+| [void OH_HiDebug_PopAsyncContext(uint64_t ctx)](#oh_hidebug_popasynccontext) | - | Profiler辅助接口，将AsyncContext从运行上下文栈表中弹出。 |
+| [void OH_HiDebug_ReleaseAsyncContext(uint64_t ctx)](#oh_hidebug_releaseasynccontext) | - | Profiler辅助接口，将AsyncContext释放给系统。 |
 
 ## 函数说明
 
@@ -244,6 +254,31 @@ HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()
 | 类型 | 说明 |
 | -- | -- |
 | [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 0 - 成功。<br>         11400104 - 系统内部错误。<br>         11400105 - 当前没有trace正在运行 |
+
+### OH_HiDebug_RequestTrace()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_RequestTrace(OH_HiDebug_RequestTraceConfig *config, OH_HiDebug_RequestTraceCallback callback)
+```
+
+**描述**
+
+根据设置的采集配置请求trace采集。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md) *config | trace采集的采集配置参数，参考[OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md)。 |
+| [OH_HiDebug_RequestTraceCallback](capi-hidebug-type-h.md#oh_hidebug_requesttracecallback) callback | trace采集的回调函数，参考[OH_HiDebug_RequestTraceCallback](capi-hidebug-type-h.md#oh_hidebug_requesttracecallback)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>         HIDEBUG_SUCCESS：采集成功。<br>         HIDEBUG_TRACE_ABNORMAL：远程服务异常或状态异常。<br>         OH_HIDEBUG_TRACE_STORAGE_LIMIT：trace存储达到限制。目录下存储的trace文件大于等于3份时，返回失败。<br>         HIDEBUG_RESOURCE_UNAVAILABLE：采集资源限制。 |
 
 ### OH_HiDebug_GetGraphicsMemory()
 
@@ -558,4 +593,207 @@ void OH_HiDebug_ResetCrashObj(uint64_t crashObj)
 | -- | -- |
 | uint64_t crashObj | 函数OH_HiDebug_SetCrashObj的返回值。 |
 
+### OH_HiDebug_StartProfiler()
 
+```c
+HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDebug_ResProfilerConfig* config, OH_HiDebug_ProfilingCallback callback)
+```
+
+**描述**
+
+异步启动当前进程资源采集功能。<br>回调函数只在终止采集（含系统自动停止采集）时调用，其携带采集资源类型和采集文件路径。<br>若采集异常，则文件路径为NULL。
+
+> **注意：**
+>
+> 1. 当前接口每24小时可调用10次；
+> 2. 采集资源的目标进程仅支持调用接口进程本身；
+> 3. 系统CPU占用率超过70%或内存可用空间少于15%或存储可用空间少于15%时，接口将调用失败并返回对应错误码；
+> 4. 当接口与命令行工具或系统采集任务发生冲突时，将调用失败，并返回相应的错误码；
+> 5. 同一个应用如存在多个进程，此接口最多可同时启动4个；
+> 6. 采集结果将保存在应用沙箱/data/storage/el2/base/files/目录下，文件名为“资源采集类型-进程名-进程号-时间戳.htrace”。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_HiDebug_ResourceType](capi-hidebug-type-h.md#oh_hidebug_resourcetype) type | 资源采集类型。 |
+| [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md)* config | 资源采集配置参数。 |
+| [OH_HiDebug_ProfilingCallback](capi-hidebug-type-h.md#oh_hidebug_profilingcallback) callback | 资源采集回调结果函数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>        HIDEBUG_RES_PROF_SUCCESS：启动资源采集成功。<br>        HIDEBUG_RES_PROF_INVALID_ARG：资源采集参数无效。<br>        HIDEBUG_RES_PROF_INVALID_MAX_DURATION：资源采集最大持续时间参数无效。<br>        HIDEBUG_RES_PROF_INVALID_FILTER_SIZE：资源采集过滤大小参数无效。<br>        HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH：资源采集最大回栈深度参数无效。<br>        HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL：资源采集统计间隔参数无效。<br>        HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL：资源采集采样大小参数无效。<br>        HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE：资源采集类型参数无效。<br>        HIDEBUG_RES_PROF_PERMISSION_DENIED：资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。<br>        HIDEBUG_RES_PROF_ALREADY_STARTED：资源采集重复启动。<br>        HIDEBUG_RES_PROF_PROCESS_OVERLIMIT：资源采集进程数超出 4 个限制。<br>        HIDEBUG_RES_PROF_CONFLICT：资源采集与命令行工具或系统采集任务冲突。<br>        HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED：资源采集每日配额超出 10 次限制。<br>        HIDEBUG_RES_PROF_CPU_OVERLOADED：系统 CPU 处于高负载状态，CPU 占用率超过 70%。<br>        HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL：内存可用空间紧张，可用空间少于 15%。<br>        HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL：存储可用空间紧张，可用空间少于 15%。<br>        HIDEBUG_RES_PROF_FAILURE：启动资源采集失败。 |
+
+### OH_HiDebug_StopProfiler()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)
+```
+
+**描述**
+
+停止当前进程资源采集功能。该接口可在[OH_HiDebug_StartProfiler](capi-hidebug-h.md#oh_hidebug_startprofiler)接口调用后使用，且调用间隔不能超过最大持续时间。
+
+**起始版本：** 24
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>        HIDEBUG_RES_PROF_SUCCESS：已成功停止资源采集。<br>        HIDEBUG_RES_PROF_NOT_STARTED：资源采集未启动，停止失败。<br>        HIDEBUG_RES_PROF_FAILURE：停止资源采集失败。 |
+
+### OH_HiDebug_MemDumpListener()
+
+```c
+typedef bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerType tag, bool mayReportToOEM, const char* arg)
+```
+
+**描述**
+
+内存导出监听的回调函数。开发者通过应用中的文件描述符（FD）来写入内存数据，从而可利用[hidumper命令](../../dfx/hidumper.md#查询虚拟机堆内存)导出数据。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t fd | 写入内存数据的应用程序文件描述符。 |
+| [OH_HiDebug_MemListenerType](capi-hidebug-type-h.md#oh_hidebug_memlistenertype)  tag | 内存监听回调的类型。开发者根据回调类型处理相关逻辑。 |
+| bool mayReportToOEM | 数据上报OEM厂商的标识。true表示数据将上传至OEM厂商，请注意数据隐私与安全；false表示数据不会上报。 |
+| const char\* arg | 回调参数。根据回调类型携带不同的数据内容，供开发者使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 操作结果：<br>        true：内存数据写入成功。<br>        false：写入失败。 |
+
+### OH_HiDebug_RegisterMemDumpListener()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_RegisterMemDumpListener(const char* name, OH_HiDebug_MemDumpListener listener)
+```
+
+**描述**
+
+注册内存导出监听。当应用的内存占用较高，或通过[hidumper命令](../../dfx/hidumper.md#查询虚拟机堆内存)手动导出内存信息时，系统会主动调用已注册的回调函数。<br> 第三方应用框架或开发者可借此将应用内部内存信息转储到hidumper中，或通过商业灰度上传至OEM厂商。<br> 对应的注销函数为：[OH_HiDebug_UnregisterMemDumpListener](capi-hidebug-h.md#oh_hidebug_unregistermemdumplistener)。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char* name | 监听器的唯一标识。用于标识本次注册的监听，注销时需传入相同的name。<br> 相同name只能注册一次，重复注册将返回HIDEBUG_INVALID_ARGUMENT；如需更新，请先注销原监听器。 |
+| [OH_HiDebug_MemDumpListener](capi-hidebug-h.md#oh_hidebug_memdumplistener) listener | 触发监听的回调函数。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>         HIDEBUG_SUCCESS：操作成功。<br>         HIDEBUG_INVALID_ARGUMENT：无效参数。 |
+
+### OH_HiDebug_UnregisterMemDumpListener()
+
+```c
+HiDebug_ErrorCode OH_HiDebug_UnregisterMemDumpListener(const char* name)
+```
+
+**描述**
+
+注销已经注册成功的内存导出监听。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char* name | 监听器的唯一标识。需要与注册时传入的name保持一致。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>         HIDEBUG_SUCCESS：操作成功。<br>         HIDEBUG_INVALID_ARGUMENT：无效参数。 |
+
+### OH_HiDebug_AcquireAsyncContext()
+
+```c
+uint64_t OH_HiDebug_AcquireAsyncContext()
+```
+
+**描述**
+
+Profiler辅助接口，获取一个AsyncContext供后续使用。对应的释放函数为：[OH_HiDebug_ReleaseAsyncContext](capi-hidebug-h.md#oh_hidebug_releaseasynccontext)。
+
+> **注意：**
+>
+> 该接口仅支持ARM64架构，且仅可在debug版本应用中使用。
+
+**起始版本：** 26.0.0
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| uint64_t | AsyncContext，异步线程上下文信息。 |
+
+### OH_HiDebug_PushAsyncContext()
+
+```c
+void OH_HiDebug_PushAsyncContext(uint64_t ctx)
+```
+
+**描述**
+
+Profiler辅助接口，将AsyncContext压入运行上下文栈表。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| uint64_t ctx | 由[OH_HiDebug_AcquireAsyncContext()](#oh_hidebug_acquireasynccontext)获取的异步线程上下文。 |
+
+### OH_HiDebug_PopAsyncContext()
+
+```c
+void OH_HiDebug_PopAsyncContext(uint64_t ctx)
+```
+
+**描述**
+
+Profiler辅助接口，将AsyncContext从运行上下文栈表中弹出。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| uint64_t ctx | 由[OH_HiDebug_AcquireAsyncContext()](#oh_hidebug_acquireasynccontext)获取的异步线程上下文。 |
+
+### OH_HiDebug_ReleaseAsyncContext()
+
+```c
+void OH_HiDebug_ReleaseAsyncContext(uint64_t ctx)
+```
+
+**描述**
+
+Profiler辅助接口，将AsyncContext释放给系统。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| uint64_t ctx | 由[OH_HiDebug_AcquireAsyncContext()](#oh_hidebug_acquireasynccontext)获取的异步线程上下文。 |

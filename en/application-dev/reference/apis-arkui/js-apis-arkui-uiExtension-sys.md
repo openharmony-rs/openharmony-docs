@@ -1,8 +1,8 @@
 # @ohos.arkui.uiExtension (uiExtension) (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @Pakoo007-->
+<!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -10,13 +10,13 @@ The **uiExtension** module provides APIs for the EmbeddedUIExtensionAbility (or 
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md).
+> - This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md).
 
 ## Modules to Import
 
-```
+```ts
 import { uiExtension } from '@kit.ArkUI';
 ```
 
@@ -39,6 +39,8 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 **Required permissions**: ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -66,7 +68,7 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -81,6 +83,7 @@ export default class EntryAbility extends UIExtensionAbility {
       console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
     })
   }
+  
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // Unhide non-secure windows.
@@ -103,6 +106,8 @@ Adds or deletes the watermark flag for this window. This API uses a promise to r
 > With the watermark flag added, the watermark is applied on the full screen when the window is in the foreground, regardless of whether the window is displayed in full screen, floating, and split screen mode.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -129,7 +134,7 @@ Adds or deletes the watermark flag for this window. This API uses a promise to r
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

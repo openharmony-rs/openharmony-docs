@@ -32,7 +32,9 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 | 名称         | 值  | 说明              |
 | ----------- | ---- | --------------- |
@@ -45,7 +47,9 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 | 名称         | 类型  | 只读 | 可选             |  说明    |
 | ----------- | ---- | -- | --- |--------------- | 
@@ -59,7 +63,9 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读| 可选              |  说明    |
 | -------------- | ---- | --------| ------- | --------|
@@ -74,7 +80,9 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读   |可选              |  说明    |
 | -------------- | ---- | ---| --------------- | --------|
@@ -113,7 +121,9 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读 | 可选              |  说明    |
 | -------------- | ---- | -------| -------- | --------|
@@ -129,7 +139,9 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读  |可选              |  说明    |
 | -------------- | ---- | ------| --------- | --------|
@@ -147,7 +159,9 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 | 名称           | 类型  | 只读 | 可选              |  说明    |
 | -------------- | ---- | ------ | --------- | --------|
@@ -158,11 +172,15 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 用于分布式设备识别的结构体。
 
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC、ohos.permission.ACCESS_SERVICE_DM和ohos.permission.sec.ACCESS_UDID
+
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 | 名称       | 类型  | 只读 | 可选              | 说明          |
 |----------| ---- | ------ | --------- |-------------|
@@ -183,7 +201,9 @@ replyUiAction(action: number, actionResult: string): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -237,7 +257,9 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -295,7 +317,9 @@ off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -340,7 +364,9 @@ setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: number): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -388,7 +414,9 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -444,7 +472,9 @@ putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfileInfo&gt;):
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -456,7 +486,7 @@ putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfileInfo&gt;):
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | number | 操作结果，0表示本次调用成功。  |
+  | Promise&lt;number&gt; | 操作结果，0表示本次调用成功。  |
 
 **错误码：**
 
@@ -499,7 +529,9 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;Device
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -565,7 +597,9 @@ getLocalDisplayDeviceName(maxNameLength: number): Promise&lt;string&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -577,7 +611,7 @@ getLocalDisplayDeviceName(maxNameLength: number): Promise&lt;string&gt;
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | string | 指定名称长度最大字节数的本机设备显示名。 |
+  | Promise&lt;string&gt; | 指定名称长度最大字节数的本机设备显示名。 |
 
 **错误码：**
 
@@ -620,7 +654,9 @@ setLocalDeviceName(deviceName: string): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -632,7 +668,7 @@ setLocalDeviceName(deviceName: string): Promise&lt;number&gt;
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | number | 操作结果，0表示本次调用成功。 |
+  | Promise&lt;number&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
@@ -678,7 +714,9 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -691,7 +729,7 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt;number&gt;
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | number | 操作结果，0表示本次调用成功。 |
+  | Promise&lt;number&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
@@ -738,7 +776,9 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -796,9 +836,11 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统API**： 此接口为系统接口。
+**系统接口**： 此接口为系统接口。
 
 **参数：**
 
@@ -826,27 +868,16 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 **示例：**
 
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit'
-  private idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
-  getDeviceUdids(deviceIds: Array<string>): void {
-    let deviceManager: distributedDeviceManager.DeviceManager | null = null;
-    try {
-      deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
-      this.idsLists = deviceManager?.getIdentificationByDeviceIds(deviceIds);
-      console.info("Successfully retrieved UDID list");
-    } catch (error) {
-      console.error('Get device UDID failed:', error);
-      this.idsLists = [];
-    } finally {
-      if (deviceManager) {
-        try {
-          distributedDeviceManager.releaseDeviceManager(deviceManager);
-          console.info("deviceManager released successfully");
-        } catch (releaseError) {
-          console.error('Release device manager failed:', releaseError);
-        }
-      }
-    }
+
+  let idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
+  let deviceIds: Array<string> = [];
+  try {
+    let deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
+    idsLists = deviceManager?.getIdentificationByDeviceIds(deviceIds);
+    console.info("Successfully retrieved UDID list");
+  } catch (error) {
+    console.error('Get device UDID failed:', error);
+    idsLists = [];
   }
   ```
 
@@ -860,7 +891,11 @@ restoreLocalDeviceName(): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**： 此接口为系统接口。
 
 **错误码：**
 
@@ -901,7 +936,9 @@ restoreLocalDeivceName(): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API**： 此接口为系统接口。
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**系统接口**： 此接口为系统接口。
 
 **错误码：**
 

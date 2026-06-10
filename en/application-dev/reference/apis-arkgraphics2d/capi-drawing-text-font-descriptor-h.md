@@ -1,7 +1,7 @@
 # drawing_text_font_descriptor.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -27,6 +27,8 @@ This file declares the capabilities of font information, such as obtaining font 
 | -- | -- | -- |
 | [OH_Drawing_SystemFontType](#oh_drawing_systemfonttype) | OH_Drawing_SystemFontType | Defines an enum for the system font types.|
 | [OH_Drawing_FontFullDescriptorAttributeId](#oh_drawing_fontfulldescriptorattributeid) | OH_Drawing_FontFullDescriptorAttributeId | Enumerates font descriptor attributes. You can use the corresponding APIs to obtain the attributes of different font descriptor types. For example, if the font descriptor attribute **FULL_DESCRIPTOR_ATTR_I_WEIGHT** is of the int type, use the [OH_Drawing_GetFontFullDescriptorAttributeInt](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorattributeint) API to obtain the attribute value.|
+| [OH_Drawing_FontVariationAxisAttributeId](#oh_drawing_fontvariationaxisattributeid) | OH_Drawing_FontVariationAxisAttributeId | Enumerates font variable axis attributes.|
+| [OH_Drawing_FontVariationInstanceAttributeId](#oh_drawing_fontvariationinstanceattributeid) | OH_Drawing_FontVariationInstanceAttributeId | Enumerates font variable instance attributes.|
 
 ### Functions
 
@@ -42,6 +44,7 @@ This file declares the capabilities of font information, such as obtaining font 
 | [OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromPath(const char* path)](#oh_drawing_getfontfulldescriptorsfrompath) | Obtains an array of font descriptors based on the font file path.|
 | [const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByIndex(OH_Drawing_Array* descriptorArray, size_t index)](#oh_drawing_getfontfulldescriptorbyindex) | Obtains the font descriptor from the font descriptor array based on the index.|
 | [void OH_Drawing_DestroyFontFullDescriptors(OH_Drawing_Array* descriptorArray)](#oh_drawing_destroyfontfulldescriptors) | Releases the memory occupied by the font descriptor array.|
+| [void OH_Drawing_DestroyFontFullDescriptor(const OH_Drawing_FontFullDescriptor* descriptor)](#oh_drawing_destroyfontfulldescriptor) | Releases the memory occupied by the font descriptor pointer. This function can be used to release the font descriptor pointer obtained by calling [OH_Drawing_GetFontFullDescriptorByFullName](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorbyfullname).|
 | [OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeInt(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, int* value)](#oh_drawing_getfontfulldescriptorattributeint) | Obtains the attributes of a font descriptor of the int type.|
 | [OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeBool(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, bool* value)](#oh_drawing_getfontfulldescriptorattributebool) | Obtains the attributes of the font descriptor of the bool type.|
 | [OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeString(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id, OH_Drawing_String* str)](#oh_drawing_getfontfulldescriptorattributestring) | Obtains the attributes of the font descriptor of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.|
@@ -50,6 +53,17 @@ This file declares the capabilities of font information, such as obtaining font 
 | [uint32_t OH_Drawing_GetFontCountFromFile(const char* fontSrc)](#oh_drawing_getfontcountfromfile) | Obtains the number of fonts contained in a font file.|
 | [uint32_t OH_Drawing_GetFontCountFromBuffer(uint8_t* fontBuffer, size_t length)](#oh_drawing_getfontcountfrombuffer) | Obtains the number of fonts contained in a font buffer.|
 | [OH_Drawing_String* OH_Drawing_GetFontPathsByType(OH_Drawing_SystemFontType fontType, size_t* pathCount)](#oh_drawing_getfontpathsbytype) | Obtains all font file paths of the specified font type.|
+| [OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorAttributeArray(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id)](#oh_drawing_getfontfulldescriptorattributearray) | Obtains the object array attributes of the font descriptor.|
+| [OH_Drawing_FontVariationAxis* OH_Drawing_GetFontVariationAxisByIndex(OH_Drawing_Array* array, size_t index)](#oh_drawing_getfontvariationaxisbyindex) | Obtains the corresponding font variable axis from the font variable axis array by index.|
+| [void OH_Drawing_DestroyFontVariationAxis(OH_Drawing_Array* fontVariaAxisArray)](#oh_drawing_destroyfontvariationaxis) | Releases the memory occupied by the font variable axis array.|
+| [OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeDouble(OH_Drawing_FontVariationAxis* variationAxis, OH_Drawing_FontVariationAxisAttributeId id, double *value)](#oh_drawing_getfontvariationaxisattributedouble) | Obtains the font variable axis attributes of the double type.|
+| [OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeInt(OH_Drawing_FontVariationAxis* variationAxis, OH_Drawing_FontVariationAxisAttributeId id, int *value)](#oh_drawing_getfontvariationaxisattributeint) | Obtains the font variable axis attributes of the int type.|
+| [OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeStr(OH_Drawing_FontVariationAxis* variationAxis, OH_Drawing_FontVariationAxisAttributeId id, OH_Drawing_String *str)](#oh_drawing_getfontvariationaxisattributestr) | Obtains the font variable axis attributes of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.|
+| [OH_Drawing_FontVariationInstance* OH_Drawing_GetFontVariationInstanceByIndex(OH_Drawing_Array* array, size_t index)](#oh_drawing_getfontvariationinstancebyindex) | Obtains the corresponding font variable instance from the font variable instance array by index.|
+| [void OH_Drawing_DestroyFontVariationInstance(OH_Drawing_Array* fontVariaAxisInstance)](#oh_drawing_destroyfontvariationinstance) | Releases the memory occupied by the font variable instance array.|
+| [OH_Drawing_ErrorCode OH_Drawing_GetFontVariationInstanceAttributeStr(OH_Drawing_FontVariationInstance* variationInstance, OH_Drawing_FontVariationInstanceAttributeId id, OH_Drawing_String* str)](#oh_drawing_getfontvariationinstanceattributestr) | Obtains the font variable instance attributes of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.|
+| [OH_Drawing_FontVariationInstanceCoordinate* OH_Drawing_GetFontVariationInstanceCoordinate(OH_Drawing_FontVariationInstance* variationInstance, size_t* arrayLength)](#oh_drawing_getfontvariationinstancecoordinate) | Obtains the variable font attribute object of the font variable instance.|
+| [const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByFullName(const OH_Drawing_String* fullName, OH_Drawing_SystemFontType fontType)](#oh_drawing_getfontfulldescriptorbyfullname) | Obtains the complete font descriptor object based on the font name and type.|
 
 ## Enum Description
 
@@ -106,7 +120,48 @@ Enumerates font descriptor attributes. You can use the corresponding APIs to obt
 | FULL_DESCRIPTOR_ATTR_S_COPYRIGHT = 16 | Font copyright information.<br>**Since**: 23|
 | FULL_DESCRIPTOR_ATTR_S_TRADEMARK = 17 | Font trademark information.<br>**Since**: 23|
 | FULL_DESCRIPTOR_ATTR_S_LICENSE = 18 | Font license information.<br>**Since**: 23|
+| FULL_DESCRIPTOR_ATTR_O_VARIATION_AXIS = 19 | Font variable axis array.<br>**Since**: 24|
+| FULL_DESCRIPTOR_ATTR_O_VARIATION_INSTANCE = 20 | Font variable instance array.<br>**Since**: 24|
 | FULL_DESCRIPTOR_ATTR_I_INDEX = 21 | Font index.<br>**Since**: 23|
+
+### OH_Drawing_FontVariationAxisAttributeId
+
+```c
+enum OH_Drawing_FontVariationAxisAttributeId
+```
+
+**Description**
+
+Enumerates font variable axis attributes.
+
+**Since**: 24
+
+| Value| Description|
+| -- | -- |
+| FONT_VARIATION_AXIS_ATTR_S_KEY = 0 | Keyword identifier of the font variable axis.|
+| FONT_VARIATION_AXIS_ATTR_D_MIN_VALUE = 1 | Minimum value of the font variable axis.|
+| FONT_VARIATION_AXIS_ATTR_D_MAX_VALUE = 2 | Maximum value of the font variable axis.|
+| FONT_VARIATION_AXIS_ATTR_D_DEFAULT_VALUE = 3 | Default value of the font variable axis.|
+| FONT_VARIATION_AXIS_ATTR_I_FLAGS = 4 | Flag of the font variable axis. The value **0** indicates that the axis is visible to users, and the value **1** indicates that the axis should be hidden.|
+| FONT_VARIATION_AXIS_ATTR_S_NAME = 5 | English name of the font variable axis.|
+| FONT_VARIATION_AXIS_ATTR_S_LOCAL_NAME = 6 | Localized name of the font variable axis.|
+
+### OH_Drawing_FontVariationInstanceAttributeId
+
+```c
+enum OH_Drawing_FontVariationInstanceAttributeId
+```
+
+**Description**
+
+Enumerates font variable instance attributes.
+
+**Since**: 24
+
+| Value| Description|
+| -- | -- |
+| FONT_VARIATION_INSTANCE_ATTR_S_NAME = 0 | English name of the font variable instance.|
+| FONT_VARIATION_INSTANCE_ATTR_S_LOCAL_NAME = 1 | Localized name of the font variable instance.|
 
 ## Function Description
 
@@ -365,6 +420,24 @@ Releases the memory occupied by the font descriptor array.
 | -- | -- |
 | [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* descriptorArray | Pointer to the font descriptor array [OH_Drawing_Array](capi-drawing-oh-drawing-array.md).|
 
+### OH_Drawing_DestroyFontFullDescriptor()
+
+```c
+void OH_Drawing_DestroyFontFullDescriptor(const OH_Drawing_FontFullDescriptor* descriptor)
+```
+
+**Description**
+
+Releases the memory occupied by the font descriptor pointer. This function can be used to release the font descriptor pointer obtained by calling [OH_Drawing_GetFontFullDescriptorByFullName](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorbyfullname).
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)* descriptor | Pointer to the font descriptor object [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md).|
+
 ### OH_Drawing_GetFontFullDescriptorAttributeInt()
 
 ```c
@@ -580,3 +653,298 @@ Obtains all font file paths of the specified font type.
 | Type| Description|
 | -- | -- |
 | [OH_Drawing_String*](capi-drawing-oh-drawing-string.md) | Returns a list of **OH_Drawing_String** objects representing font file paths. Use **free()** to free the object pointer and the internal pointer held by each **OH_Drawing_String** object when they are no longer needed.|
+
+### OH_Drawing_GetFontFullDescriptorAttributeArray()
+
+```c
+OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorAttributeArray(const OH_Drawing_FontFullDescriptor* descriptor, OH_Drawing_FontFullDescriptorAttributeId id)
+```
+
+**Description**
+
+Obtains the object array attributes of the font descriptor.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md)* descriptor | Pointer to the font descriptor object [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md).|
+| [OH_Drawing_FontFullDescriptorAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontfulldescriptorattributeid) id | Font descriptor attribute ID. You can obtain the font descriptor attribute from [OH_Drawing_FontFullDescriptorAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontfulldescriptorattributeid).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_Array*](capi-drawing-oh-drawing-array.md) | Object array returned.|
+
+### OH_Drawing_GetFontVariationAxisByIndex()
+
+```c
+OH_Drawing_FontVariationAxis* OH_Drawing_GetFontVariationAxisByIndex(OH_Drawing_Array* array, size_t index)
+```
+
+**Description**
+
+Obtains the corresponding font variable axis from the font variable axis array by index.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* array | Pointer to the font variable axis array [OH_Drawing_Array](capi-drawing-oh-drawing-array.md).|
+| size_t index | Index of the array, starting from 0.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_FontVariationAxis*](capi-drawing-oh-drawing-fontvariationaxis.md) | Returns the pointer to the font variable axis object [OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md) at the specified index.<br>Returns NULL if the index is out of range or the array is invalid.|
+
+### OH_Drawing_DestroyFontVariationAxis()
+
+```c
+void OH_Drawing_DestroyFontVariationAxis(OH_Drawing_Array* fontVariaAxisArray)
+```
+
+**Description**
+
+Releases the memory occupied by the font variable axis array.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* fontVariaAxisArray | Pointer to the font variable axis array object [OH_Drawing_Array](capi-drawing-oh-drawing-array.md).|
+
+### OH_Drawing_GetFontVariationAxisAttributeDouble()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeDouble(OH_Drawing_FontVariationAxis* variationAxis, OH_Drawing_FontVariationAxisAttributeId id, double *value)
+```
+
+**Description**
+
+Obtains the font variable axis attributes of the double type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md)* variationAxis | Pointer to the font variable axis object [OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md).|
+| [OH_Drawing_FontVariationAxisAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationaxisattributeid) id | Font variable axis attribute ID. You can obtain the font variable axis attribute from [OH_Drawing_FontVariationAxisAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationaxisattributeid).|
+| double *value | Pointer to the attributes of the double type. It is used as an output parameter.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if the parameter **variationAxis** or **value** is a null pointer.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+
+### OH_Drawing_GetFontVariationAxisAttributeInt()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeInt(OH_Drawing_FontVariationAxis* variationAxis, OH_Drawing_FontVariationAxisAttributeId id, int *value)
+```
+
+**Description**
+
+Obtains the font variable axis attributes of the int type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md)* variationAxis | Pointer to the font variable axis object [OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md).|
+| [OH_Drawing_FontVariationAxisAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationaxisattributeid) id | Font variable axis attribute ID. You can obtain the font variable axis attribute from [OH_Drawing_FontVariationAxisAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationaxisattributeid).|
+| int *value | Pointer to the attribute of the **int** type. It is used as an output parameter.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if the parameter **variationAxis** or **value** is a null pointer.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+
+### OH_Drawing_GetFontVariationAxisAttributeStr()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeStr(OH_Drawing_FontVariationAxis* variationAxis, OH_Drawing_FontVariationAxisAttributeId id, OH_Drawing_String *str)
+```
+
+**Description**
+
+Obtains the font variable axis attributes of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.
+
+>**NOTE**
+>
+> If **OH_Drawing_String** is no longer needed, the caller needs to manually release the **strData** member in the **OH_Drawing_String** struct.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md)* variationAxis | Pointer to the font variable axis object [OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md).|
+| [OH_Drawing_FontVariationAxisAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationaxisattributeid) id | Font variable axis attribute ID. You can obtain the font variable axis attribute from [OH_Drawing_FontVariationAxisAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationaxisattributeid).|
+| [OH_Drawing_String](capi-drawing-oh-drawing-string.md) *str | Pointer to the **OH_Drawing_String** attribute. It is used as an output parameter.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if the parameter **variationAxis** or **str** is a null pointer.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+
+### OH_Drawing_GetFontVariationInstanceByIndex()
+
+```c
+OH_Drawing_FontVariationInstance* OH_Drawing_GetFontVariationInstanceByIndex(OH_Drawing_Array* array, size_t index)
+```
+
+**Description**
+
+Obtains the corresponding font variable instance from the font variable instance array by index.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* array | Pointer to the font variable instance array [OH_Drawing_Array](capi-drawing-oh-drawing-array.md).|
+| size_t index | Index of the array, starting from 0.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_FontVariationInstance*](capi-drawing-oh-drawing-fontvariationinstance.md) | Returns the pointer to the font variable instance object [OH_Drawing_FontVariationInstance](capi-drawing-oh-drawing-fontvariationinstance.md) at the specified index.<br>Returns NULL if the index is out of range or the array is invalid.|
+
+### OH_Drawing_DestroyFontVariationInstance()
+
+```c
+void OH_Drawing_DestroyFontVariationInstance(OH_Drawing_Array* fontVariaAxisInstance)
+```
+
+**Description**
+
+Releases the memory occupied by the font variable instance array.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* fontVariaAxisInstance | Pointer to the font variable instance array object [OH_Drawing_Array](capi-drawing-oh-drawing-array.md).|
+
+### OH_Drawing_GetFontVariationInstanceAttributeStr()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetFontVariationInstanceAttributeStr(OH_Drawing_FontVariationInstance* variationInstance, OH_Drawing_FontVariationInstanceAttributeId id, OH_Drawing_String* str)
+```
+
+**Description**
+
+Obtains the font variable instance attributes of the [OH_Drawing_String](capi-drawing-oh-drawing-string.md) type.
+
+>**NOTE**
+>
+> If **OH_Drawing_String** is no longer needed, the caller needs to manually release the **strData** member in the **OH_Drawing_String** struct.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_FontVariationInstance](capi-drawing-oh-drawing-fontvariationinstance.md)* variationInstance | Pointer to the font variable instance object [OH_Drawing_FontVariationInstance](capi-drawing-oh-drawing-fontvariationinstance.md).|
+| [OH_Drawing_FontVariationInstanceAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationinstanceattributeid) id | Font variable instance attribute ID. You can obtain the font variable instance attribute from [OH_Drawing_FontVariationInstanceAttributeId](capi-drawing-text-font-descriptor-h.md#oh_drawing_fontvariationinstanceattributeid).|
+| [OH_Drawing_String](capi-drawing-oh-drawing-string.md)* str | Pointer to the **OH_Drawing_String** attribute. It is used as an output parameter.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns the execution result.<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if the parameter **variationInstance** or **str** is a null pointer.<br>**OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH** if the input attribute ID does not match the called function.|
+
+### OH_Drawing_GetFontVariationInstanceCoordinate()
+
+```c
+OH_Drawing_FontVariationInstanceCoordinate* OH_Drawing_GetFontVariationInstanceCoordinate(OH_Drawing_FontVariationInstance* variationInstance, size_t* arrayLength)
+```
+
+**Description**
+
+Obtains the variable font attribute object of the font variable instance.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_FontVariationInstance](capi-drawing-oh-drawing-fontvariationinstance.md)* variationInstance | Pointer to the font variable instance.|
+| size_t* arrayLength | Pointer to the list length of OH_Drawing_FontVariationInstanceCoordinate.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_FontVariationInstanceCoordinate*](capi-drawing-oh-drawing-fontvariationinstancecoordinate.md) | Returns the pointer to the variable font attribute list.|
+
+### OH_Drawing_GetFontFullDescriptorByFullName()
+
+```c
+const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByFullName(const OH_Drawing_String* fullName, OH_Drawing_SystemFontType fontType)
+```
+
+**Description**
+
+Obtains the complete font descriptor object based on the font name and type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_Drawing_String](capi-drawing-oh-drawing-string.md)* fullName | Pointer to the font name object [OH_Drawing_String](capi-drawing-oh-drawing-string.md).|
+| [OH_Drawing_SystemFontType](capi-drawing-text-font-descriptor-h.md#oh_drawing_systemfonttype) fontType | Enum for the system font type object, which is [OH_Drawing_SystemFontType](capi-drawing-text-font-descriptor-h.md#oh_drawing_systemfonttype).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [const OH_Drawing_FontFullDescriptor*](capi-drawing-oh-drawing-fontfulldescriptor.md) | Returns the pointer to the complete font descriptor object [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md). If OH_Drawing_FontFullDescriptor is not required, use the [OH_Drawing_DestroyFontFullDescriptor](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontfulldescriptor) API to release the pointer of the object.|

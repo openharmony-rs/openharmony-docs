@@ -44,29 +44,29 @@
 
 在ArkTS中，JsError崩溃类型检测主要通过全局异常捕获错误，收集完错误对象的类型（如 Error、TypeError、ReferenceError） 上报给Hiview进程。Hiview进程将事件信息存储到[应用沙箱目录](../file-management/app-sandbox-directory.md)，HiAppEvent注册的崩溃事件观察者监听到应用沙箱目录的文件变化，将事件回调给应用进程，帮助开发者快速定位和修复问题。
 
-## 崩溃日志规格自定义参数设置
+## 自定义规格设置
+
+### setEventConfig接口说明
 
 从**API version 20**开始支持设置崩溃日志规格自定义设置。
 
 系统提供通用的NativeCrash崩溃日志生成功能，同时给应用提供设置崩溃日志配置参数功能，以满足其对日志内容的个性化需求。
 
-### setEventConfig接口说明
-
 | 接口名 | 描述 |
 | -------- | -------- |
 | setEventConfig(name: string, config: Record&lt;string, ParamType>): Promise&lt;void> | 设置崩溃日志配置参数，name需设置为崩溃事件名称常量hiappevent.event.APP_CRASH。**仅支持NativeCrash类型崩溃。** |
 
-### setEventConfig参数设置说明
+### setEventConfig接口参数设置说明
 
 开发者可以使用上述HiAppEvent提供的接口，在Record&lt;string, ParamType>中配置崩溃日志打印规格的参数。具体参数说明如下：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | extend_pc_lr_printing | boolean | 否 | true：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br/>false：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br/>缺省时默认为false。 |
-| log_file_cutoff_sz_bytes | number | 否 | 单位为byte，取值范围为(0-5242880]。<br/>如果设置，按设置的参数值截断崩溃日志大小。<br/>如果不设置，默认值取0表示不截断崩溃日志。 |
+| log_file_cutoff_sz_bytes | number | 否 | 单位为byte，取值范围为[0, 5242880]。<br/>如果设置，按设置的参数值截断崩溃日志大小。<br/>如果不设置，默认值取0表示不截断崩溃日志。 |
 | simplify_vma_printing | boolean | 否 | true：只打印崩溃日志中出现的地址所属的VMA（Virtual Memory Area，进程地址空间中的区域）映射信息，即崩溃日志中Maps，以减小日志大小。<br/>false：打印所有VMA映射信息。<br/>缺省时默认为false。 |
 
-参数配置示例如下:
+参数配置示例如下：
 
 ```text
 let configParams: Record<string, hiAppEvent.ParamType> = {
@@ -76,7 +76,7 @@ let configParams: Record<string, hiAppEvent.ParamType> = {
 };
 ```
 
-以32位系统为例，参考[订阅崩溃事件（ArkTS）开发步骤](hiappevent-watcher-crash-events-arkts.md#开发步骤)完成崩溃事件订阅和日志配置参数设置，然后通过[external_log](#params字段说明)字段获取NativeCrash类型崩溃日志内容。日志中打印如下使能的配置参数列表：
+以64位系统为例，参考[订阅崩溃事件（ArkTS）开发步骤](hiappevent-watcher-crash-events-arkts.md#开发步骤)完成崩溃事件订阅和日志配置参数设置，然后通过[external_log](#params字段说明)字段获取NativeCrash类型崩溃日志内容。日志中打印如下使能的配置参数列表：
 
 ```text
 ...
@@ -109,45 +109,45 @@ Timestamp:2025-05-17 19:17:07.000
 | 配置项名称 | 类型 | 必须配置 | 说明 |
 | --- | --- | --- | --- |
 | 宏: OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING<br/>字符串：extend_pc_lr_printing | const char* | 否 | 是否打印PC和LR寄存器扩展字节范围的内存内容。<br/>"true"：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br/>"false"：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br/>缺省时默认为"false"。 |
-| 宏：OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES<br/>字符串：log_file_cutoff_sz_bytes | const char* | 否 | 是否截断CPP_CRASH日志，单位为Byte，取值范围为(0-5242880]。<br/>如果设置，按设置的参数值截断崩溃日志大小。<br/>如果不设置，默认值取0表示不截断崩溃日志。 |
-| 宏：OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING<br/>字符串：simplify_vma_printing | const char* | 否 | 是否打印崩溃日志中出现的地址所属的VMA映射信息。<br/>"true"：只打印崩溃日志中出现的地址所属的VMA（Virtual Memory Area，进程地址空间中的区域）映射信息，即崩溃日志中Maps，以减小日志大小。<br/>"false"：打印所有VMA映射信息。<br/>缺省时默认为"false"。 |
-| 宏：OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG<br/>字符串：merge_cppcrash_app_log | const char* | 否 | 是否拼接应用沙箱的日志。<br/>"true"：在 Native Crash 场景拼接应用日志。<br/>"false"：不拼接应用生成日志。 <br/>框架读取的应用日志路径为：沙箱路径 + 应用包名 +  _CppCrash_AppMerge.log，例如：/data/storage/el2/log/com.samples.eventsub_CppCrash_AppMerge.log <br/>如果开发者选择在信号处理函数中生成拼接日志，最长生成时间不超过5s，超过5s无法拼接应用生成的日志。|
+| 宏：OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES<br/>字符串：log_file_cutoff_sz_bytes | const char* | 否 | 是否截断CPP_CRASH日志，单位为Byte，取值范围为[0, 5242880]。<br/>如果设置，按设置的参数值截断崩溃日志大小。<br/>如果不设置，默认值取0表示不截断崩溃日志。 |
+| 宏：OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING<br/>字符串：simplify_vma_printing | const char* | 否 | 是否打印崩溃日志中出现的地址所属的VMA（Virtual Memory Area，虚拟内存空间）映射信息。<br/>"true"：只打印崩溃日志中出现的地址所属的VMA映射信息，即崩溃日志中Maps，以减小日志大小。<br/>"false"：打印所有VMA映射信息。<br/>缺省时默认为"false"。 |
+| 宏：OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG<br/>字符串：merge_cppcrash_app_log | const char* | 否 | 是否拼接应用沙箱的日志。<br/>"true"：在 Native Crash 场景拼接应用日志。<br/>"false"：不拼接应用生成日志。 <br/>框架读取的应用日志路径为：沙箱路径 + 应用包名 +  _CppCrash_AppMerge.log，例如：/data/storage/el2/log/com.samples.eventsub_CppCrash_AppMerge.log <br/>如果开发者选择在信号处理函数中生成拼接日志，最长生成时间不超过5s，超过5s无法拼接应用生成的日志。<br/>**注意**：沙箱路径下必须有应用生成的拼接日志。|
+| OH_APP_CRASH_PARAM_COLLECT_MINIDUMP<br/>collect_minidump | const char* | 否 | 是否启动minidump。<br/>"true"：在Native Crash场景同时生成minidump。<br/>"false"：在Native Crash场景不生成minidump。 <br/>生成minidump日志文件以.dmp结尾，跟随APP_CRASH事件一起返回，保存在external_log字段中。|
 
-### 参数设置示例
+参数设置示例如下：
 
-OH_HiAppEvent_SetEventConfig配置参考[订阅崩溃事件（C/C++）开发步骤](hiappevent-watcher-crash-events-ndk.md#开发步骤)完成崩溃事件订阅和日志配置参数设置，然后通过[external_log](#params字段说明)字段获取NativeCrash类型崩溃拼接应用日志内容。
-
-> **注意：**
->
-> 沙箱路径下必须有应用生成的拼接日志。
-
-## 页面切换日志规格自定义参数设置
-
-从**API version 24**开始支持页面切换日志配置。当应用发生崩溃时，系统可以收集并上报页面切换日志，帮助开发者定位问题。
+OH_HiAppEvent_SetEventConfig配置参考[订阅崩溃事件（C/C++）开发步骤](hiappevent-watcher-crash-events-ndk.md#开发步骤)完成崩溃事件订阅和日志配置参数设置，然后通过[external_log](#params字段说明)字段获取崩溃日志文件路径。
 
 ### configEventPolicy接口说明
 
+从**API version 24**开始支持页面切换日志配置。当应用发生崩溃时，系统可以收集并上报页面切换日志，帮助开发者定位问题。
+
+从**API version 26.0.0**开始支持崩溃日志规格自定义设置。系统提供通用的NativeCrash崩溃日志生成功能，同时给应用提供设置崩溃日志配置参数功能，以满足其对日志内容的个性化需求。
+
 | 接口名 | 描述 |
 | -------- | -------- |
-| [configEventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 设置崩溃事件策略参数接口，支持开启崩溃事件的页面切换日志采集。 |
+| [configEventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 设置崩溃事件策略参数接口，支持开启崩溃事件的页面切换日志采集，支持设置崩溃日志配置参数。 |
 
 ### configEventPolicy接口参数设置说明
 
-开发者可以通过设置[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 的参数来开启崩溃事件的页面切换日志采集。
+开发者可以通过设置[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 的参数来设置崩溃日志配置参数和开启崩溃事件的页面切换日志采集。
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
 | appCrashPolicy | [AppCrashPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appcrashpolicy24) | 否 | 是   | 崩溃事件配置策略。 |
 
-**参数设置示例**
+参数设置示例如下：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
 
 let policy: hiAppEvent.EventPolicy = {
-    "appCrashPolicy" : {
-      "pageSwitchLogEnable": true // 启用页面切换日志
+    appCrashPolicy: {
+      pageSwitchLogEnable: true, // 启用页面切换日志。从API version 24开始支持该参数
+      extendPcLrPrinting: true, // 使能扩展打印pc和lr寄存器附近的内存值。从API版本26.0.0开始支持该参数
+      logFileCutoffSzBytes: 102400, // 截断崩溃日志到100KB。从API版本26.0.0开始支持该参数
+      simplifyVmaPrinting: true // 使能精简打印maps。从API版本26.0.0开始支持该参数
     }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
@@ -174,6 +174,7 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台状态；false表示应用处于后台状态。 |
 | release_type | string | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持。 |
 | cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
+| app_running_unique_id | string | 应用运行时唯一关联的id。<br>**说明**：从API version 24开始支持该参数。 |
 | bundle_version | string | 应用版本。 |
 | bundle_name | string | 应用名称。 |
 | pid | number | 应用的进程ID。 |
@@ -185,9 +186,9 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | memory | object | 内存信息，详见[memory字段说明](#memory字段说明)。<br>**说明**：从API version 22开始支持。 |
 | threads | object[] | 全量线程调用栈，详见[thread字段说明](#thread字段说明)。仅在NativeCrash类型的崩溃事件提供。 |
 | external_log<sup></sup> | string[] | 故障日志文件[应用沙箱路径](../file-management/app-sandbox-directory.md)。开发者可通过路径读取故障日志文件内容。**为避免目录空间超限导致新生成的日志文件写入失败，日志文件处理完后请及时删除，超限规格请参考log_over_limit字段。** |
-| log_over_limit | boolean | 生成的与已存在的故障日志文件的大小总和是否超过5M上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
+| log_over_limit | boolean | 生成的与已存在的故障日志文件的大小总和是否超过5MB上限。true表示超过上限，日志写入失败；false表示未超过上限。<br>启用minidump时，上限调整至35MB；关闭minidump时，上限恢复到5MB。 |
 | process_name | string | 故障进程名。<br>**说明**：从API version 21开始支持。 |
-| page_switch_log | string | 页面切换日志路径，日志介绍详见通用日志。<br>**说明**：从API version 24开始支持。 |
+| page_switch_log | string | 页面切换日志路径，日志介绍详见[页面切换日志](pageswitch-log.md)。<br>**说明**：从API version 24开始支持。 |
 
 ### exception字段说明
 
@@ -199,6 +200,8 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | message | string | 异常原因。 |
 | stack | string | 异常调用栈。 |
 | thread_name | string | 线程名称。<br>**说明**：从API version 21开始支持。 |
+| caught_by_errormanager | boolean | 是否注册异常管理捕获。true：已注册异常管理捕获；false：未注册异常管理捕获。<br>**说明**：从API版本26.0.0开始，支持该字段。 |
+| uncatchable_fault | boolean | 是否为不可捕获的异常类型，当前仅包含OutOfMemoryError。true：不可捕获的异常类型；false：可捕获的异常类型。<br>**说明**：从API版本26.0.0开始，支持该字段。 |
 
 **NativeCrash类型exception字段说明**
 
@@ -272,4 +275,3 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | 接口名 | 描述 |
 | -------- | -------- |
 | setEventParam(params: Record&lt;string, ParamType>, domain: string, name?: string): Promise&lt;void> | 事件自定义参数设置方法。 |
-

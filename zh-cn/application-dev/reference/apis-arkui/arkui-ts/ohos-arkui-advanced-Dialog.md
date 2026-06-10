@@ -1,7 +1,7 @@
 #  弹出框 (Dialog)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -47,7 +47,7 @@ TipsDialog({controller: CustomDialogController, imageRes: ResourceStr | PixelMap
 | 名称                          | 类型                                                                                                                                  | 必填 | 装饰器类型 | 说明                                                                                                                                                                  |
 | ----------------------------- |-------------------------------------------------------------------------------------------------------------------------------------| ---- | ---------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | controller                    | [CustomDialogController](ts-methods-custom-dialog-box.md#customdialogcontroller)                                                    | 是 | -          | 提示弹出框控制器。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                 |
-| imageRes                      | [ResourceStr<sup>12+</sup>](ts-types.md#resourcestr) \| [PixelMap<sup>12+</sup>](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | -          | 展示的图片。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                          |
+| imageRes                      | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | -          | 展示的图片。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                          |
 | imageSize                     | [SizeOptions](ts-types.md#sizeoptions)                                                                                              | 否   | -          | 自定义图片尺寸。<br/>默认值：64*64vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                        |
 | title                         | [ResourceStr](ts-types.md#resourcestr)                                                                                              | 否   | -          | 提示弹出框标题。<br/>默认不设置或设置为undefined，弹出框标题不显示。<br/>  **说明：**  标题超过两行会显示“...”。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                        |
 | content                       | [ResourceStr](ts-types.md#resourcestr)                                                                                              | 否   | -          | 提示弹出框内容。<br/>默认不设置或设置为undefined，弹出框内容不显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                       |
@@ -189,7 +189,7 @@ PopoverDialog({visible: boolean, popover: PopoverOptions, targetBuilder: Callbac
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| visible | boolean | 是 | \@Link | 跟手弹出框显示状态。value为true时，表示显示弹出框，value为false时，表示隐藏弹出框。<br/>默认值为false，隐藏弹出框。 |
+| visible | boolean | 是 | \@Link | 跟手弹出框显示状态。visible为true时，表示显示弹出框，visible为false时，表示隐藏弹出框。<br/>默认值为false，隐藏弹出框。 |
 | popover | [PopoverOptions](#popoveroptions14) | 是 | \@Prop<br/>\@Require | 配置跟手弹出框的参数。 |
 | targetBuilder | [Callback](ts-types.md#callback12)\<void> | 是 | \@Require<br/>\@BuilderParam | 跟手弹出框基于的目标组件。 |
 

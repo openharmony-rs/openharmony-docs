@@ -1,8 +1,8 @@
 # Interface (AVMetadataExtractor)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -54,7 +54,7 @@ import { media } from '@kit.MediaKit';
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
 
 media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     let url = "http://xx";
@@ -120,7 +120,7 @@ let param: media.PixelMapParams = {
 };
 // 获取缩略图。
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
@@ -193,7 +193,7 @@ let param: media.PixelMapParams = {
 };
 // 获取缩略图。
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFrameByTimeWithTimeout(timeUs, queryOption, param, timeoutMs).then((pixelMap: image.PixelMap | undefined) => {
@@ -261,7 +261,7 @@ async function fetchFramesByTimesDemo() {
   };
   // 获取缩略图。
   let avMetadataExtractor = await media.createAVMetadataExtractor();
-  if (avMetadataExtractor !== null) {
+  if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
@@ -334,7 +334,7 @@ async function fetchFramesByTimesDemo() {
   };
   // 获取缩略图。
   let avMetadataExtractor = await media.createAVMetadataExtractor();
-  if (avMetadataExtractor !== null) {
+  if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimesWithTimeout(timesUs, queryOption, param, timeoutMs, async (frameInfo: media.FrameInfo, err: BusinessError) => {
       if (err) {
@@ -366,7 +366,7 @@ import { media } from '@kit.MediaKit';
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
 
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.cancelAllFetchFrames();
@@ -491,7 +491,7 @@ fetchMetadataWithTimeout(timeoutMs: number): Promise\<AVMetadata | undefined>
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
-| 5400104  | Operation timeout. Returned by promise. |
+| 5400104  | Operation timeout. |
 | 5400106  | Unsupported format. Returned by promise.  |
 | 5400108  | Parameter check failed. Returned by promise.  |
 | 5411012  | Http cleartext traffic is not permitted. |

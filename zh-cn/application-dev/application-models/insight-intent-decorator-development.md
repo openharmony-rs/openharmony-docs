@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 使用场景
 从 API version 20开始，支持通过装饰器开发意图，支持将现有功能通过装饰器快速集成至系统入口。典型场景介绍如下。
@@ -178,7 +178,7 @@
 
 由系统入口传递给应用的数据默认为基础类型。如果需要复杂数据（例如，播放音乐时需要传入的歌手信息包括歌手姓名、国籍等多个字段），需要采用对象类型，并使用[@InsightIntentEntity](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器装饰。被装饰的对象称为意图实体。
 
-以播放音乐为例，用户告诉小艺希望播放的音乐名称与歌手信息，小艺根据音乐名称和歌手信息拉起对应音乐界面，播放该音乐。
+以播放音乐为例，用户告诉系统入口希望播放的音乐名称与歌手信息，系统入口根据音乐名称和歌手信息拉起对应音乐界面，播放该音乐。
 
 为了实现该场景，开发者可以将歌手信息定义为意图实体，并开发意图实体。具体步骤如下：
 
@@ -318,6 +318,195 @@
           result: 'execute success'
         }
         hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo return %{public}s', JSON.stringify(result));
+        return Promise.resolve(result);
+      }
+    }
+    ```
+
+### （可选）通过开发意图实体支持应用内数据查询
+
+从API版本26.0.0开始，支持开发查询应用内数据的意图实体。由系统入口传递给应用的数据通常为静态参数。如需基于应用内实时数据执行意图，可通过动态查询意图实体实现。
+
+以播放音乐为例，当用户告知系统入口需要播放自定义歌单中的歌曲时，为使系统入口能够感知应用内歌单信息，开发者可将歌单信息定义为可查询意图实体，并在实体中描述歌单ID、歌单名称、显示名称、创建者等字段。意图实体需要继承[insightIntent.AppIntentEntity](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#appintententity)类并使用[@InsightIntentEntity](./../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)进行装饰。
+
+系统入口可基于这些字段查询应用内可用歌单。例如，可以通过歌单ID、歌单名称、创建者筛选目标歌单，再将匹配结果用于后续意图执行。
+
+为实现该场景，开发者可将歌单信息定义为可查询意图实体，并实现[onQueryEntity](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#onqueryentity)意图实体查询接口。具体步骤如下：
+
+1. 定义支持查询的意图实体。
+
+    开发者将歌单信息（包括歌单ID、歌单名称、显示名称、创建者）定义为继承自[insightIntent.AppIntentEntity](../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#appintententity)的类，并使用[@InsightIntentEntity](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器将该类定义为可查询意图实体。[IntentEntityDecoratorInfo](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#intententitydecoratorinfo)中的supportedQueryProperties属性声明支持通过歌单ID、歌单名称、创建者筛选目标歌单。
+
+    parameters属性需要列出实体的数据成员及其数据格式。这些属性对应继承自[insightIntent.AppIntentEntity](../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#appintententity)类中定义的实体字段（例如entityId、playlistName、owner等）。当属性在[IntentEntityDecoratorInfo](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#intententitydecoratorinfo)的supportedQueryProperties中声明时，需要为该属性添加title，用于配置该查询条件的界面显示名称。
+
+    [onQueryEntity](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#onqueryentity)接口需要根据传入的查询参数[QueryEntityParam](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#queryentityparam)返回符合条件的实体列表。推荐在[QueryEntityParam](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#queryentityparam)中的[queryType](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)为[ALL](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)时返回意图实体全部信息（例如返回所有歌单列表）；在[queryType](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)为[BY_PROPERTY](./../reference/apis-ability-kit/js-apis-app-ability-insightIntent.md#querytype)时，根据QueryEntityParam中的parameters属性值筛选符合条件的信息（例如同时传入歌单名称和创建者时，返回歌单名称和创建者均匹配的歌单列表）。
+
+    <!-- @[appIntentEntity_PlayMusicListImpl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->
+
+    ```ts
+    import { insightIntent, InsightIntentEntity, InsightIntentEntry, InsightIntentEntryExecutor } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+
+    const LOG_TAG: string = 'testTag';
+
+    // 意图实体定义
+    @InsightIntentEntity({
+      entityCategory: 'playlist_entity_category',
+      parameters: {
+        '$id': '/schemas/AppPlaylistEntity',
+        'type': 'object',
+        'description': 'Playlist entity with dynamic query support',
+        'properties': {
+          'entityId': {
+            'type': 'string',
+            'description': 'Playlist unique identifier',
+            'title': '歌单ID'
+          },
+          'playlistName': {
+            'type': 'string',
+            'description': 'Playlist name',
+            'title': '歌单名称'
+          },
+          'owner': {
+            'type': 'string',
+            'description': 'Playlist owner',
+            'title': '创建者'
+          },
+          'displayName': {
+            'type': 'string',
+            'description': 'Playlist display name',
+          }
+        },
+        'required': ['playlistName', 'displayName']
+      },
+      supportedQueryProperties: ['entityId', 'playlistName', 'owner'] // 支持通过歌单ID、歌单名称、创建者筛选目标歌单
+    })
+    export class AppPlaylistEntity extends insightIntent.AppIntentEntity<AppPlaylistEntity> {
+      public entityId: string = 'default';
+      public playlistName: string = '';
+      public displayName: string = '';
+      public owner: string = '';
+
+      async onQueryEntity(params: insightIntent.QueryEntityParam): Promise<Array<AppPlaylistEntity>> {
+        const playlists: AppPlaylistEntity[] = [
+          this.createEntity('p001', '夜跑歌单', '夜跑歌单', 'Alice'),
+          this.createEntity('p002', '通勤歌单', '通勤歌单', 'Bob'),
+          this.createEntity('p003', '睡前轻音乐', '睡前轻音乐', 'Alice')
+        ];
+
+        if (params.queryType === insightIntent.QueryType.ALL) {
+          return playlists;
+        }
+
+        const query = params.parameters ?? {};
+        const validKeys = Object.keys(query).filter((key) => ['entityId', 'playlistName', 'owner'].includes(key));
+        if (validKeys.length === 0) {
+          return [];
+        }
+
+        return playlists.filter((item) => {
+          return validKeys.every((key) => {
+            const queryValue = query[key];
+            if (key === 'entityId') {
+              return item.entityId === queryValue;
+            }
+            if (key === 'playlistName') {
+              return item.playlistName === queryValue;
+            }
+            if (key === 'owner') {
+              return item.owner === queryValue;
+            }
+            return false;
+          });
+        });
+      }
+
+      private createEntity(entityId: string, playlistName: string, displayName: string, owner: string): AppPlaylistEntity {
+        const entity = new AppPlaylistEntity();
+        entity.entityId = entityId;
+        entity.playlistName = playlistName;
+        entity.displayName = displayName;
+        entity.owner = owner;
+        return entity;
+      }
+    }
+    ```
+
+
+2. 使用可查询意图实体：添加[@InsightIntentEntry](../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintententry)装饰器的意图使用音乐名称和歌单信息（AppPlaylistEntity意图实体）作为播放音乐的入参。系统入口在调用意图前，会先根据歌单ID、歌单名称或者创建者查询应用内歌单信息。
+
+    <!-- @[appIntentEntity_PlayMusicListImpl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicListImpl.ets) -->
+
+    ```ts
+    import { insightIntent, InsightIntentEntity, InsightIntentEntry, InsightIntentEntryExecutor } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+
+    const LOG_TAG: string = 'testTag';
+
+    // 使用@InsightIntentEntry装饰器定义意图
+    @InsightIntentEntry({
+      intentName: 'PlayMusicList',
+      domain: 'MusicListDomain',
+      intentVersion: '1.0.1',
+      displayName: '播放歌单歌曲',
+      displayDescription: '播放指定歌单中的歌曲',
+      icon: $r('app.media.playMusicList'), // 请将$r('app.media.playMusicList')替换为实际资源文件
+      llmDescription: '支持传递歌曲名称和歌单信息，播放歌单中的音乐',
+      keywords: ['歌单播放', '播放歌单歌曲', 'PlayMusic'],
+      abilityName: 'EntryAbility',
+      executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
+      parameters: {
+        'type': 'object',
+        'title': 'Playlist Schema',
+        'description': 'A schema for describing song names and playlist information',
+        'properties': {
+          'songName': {
+            'type': 'string',
+            'description': 'The name of the song',
+            'minLength': 1
+          },
+          'playlist': {
+            'type': 'object',
+            'description': 'Information about the playlist',
+            'properties': {
+              'playlistName': {
+                'type': 'string',
+                'description': 'The name of the playlist',
+                'minLength': 1
+              },
+              'displayName': {
+                'type': 'string',
+                'description': 'The displayName of the playlist'
+              },
+              'owner': {
+                'type': 'string',
+                'description': 'The owner of the playlist',
+              },
+              'entityId': {
+                'type': 'string',
+                'description': 'The unique identifier of the playlist'
+              }
+            },
+            'required': ['playlistName', 'displayName']
+          }
+        },
+        'required': ['songName']
+      }
+    })
+    export default class PlayMusicListImpl extends InsightIntentEntryExecutor<string> {
+      public songName: string = '';
+      // 使用可查询意图实体
+      public playlist?: AppPlaylistEntity;
+
+      onExecute(): Promise<insightIntent.IntentResult<string>> {
+        hilog.info(0x0000, LOG_TAG, 'PlayMusicListImpl executeMode %{public}s', JSON.stringify(this.executeMode));
+        hilog.info(0x0000, LOG_TAG, 'PlayMusicListImpl playlist %{public}s', JSON.stringify(this.playlist));
+        // 定义意图的执行结果
+        let result: insightIntent.IntentResult<string> = {
+          code: 123,
+          result: 'execute success'
+        }
+        hilog.info(0x0000, LOG_TAG, 'PlayMusicListImpl return %{public}s', JSON.stringify(result));
         return Promise.resolve(result);
       }
     }

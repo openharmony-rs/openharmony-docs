@@ -25,9 +25,9 @@ Allows an application to obtain a running lock to keep running in the background
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.SET_WALLPAPER
 
@@ -37,9 +37,9 @@ Allows an application to set wallpapers.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.MODIFY_AUDIO_SETTINGS
 
@@ -49,7 +49,7 @@ Allows an application to modify audio settings.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -61,9 +61,9 @@ Allows an application to subscribe to the startup broadcast.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.PRE_START_ATOMIC_SERVICE
 
@@ -73,9 +73,9 @@ Allows a window to be displayed with animation for an atomic service without the
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.MANAGE_APP_KEEP_ALIVE
 
@@ -85,7 +85,7 @@ Allows a system service to set the keep-alive flag for other applications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 14
 
@@ -97,9 +97,9 @@ Allows a system application to access the bbox directory.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.CONTROL_LOCATION_SWITCH
 
@@ -109,9 +109,9 @@ Allows an application to turn on and off the location service.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.LOCATION_SWITCH_IGNORED
 
@@ -121,9 +121,9 @@ Allows a system application to obtain location information when the location swi
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.SUBSCRIBE_SWING_ABILITY
 
@@ -133,9 +133,9 @@ Allows an application to use the subscription capability powered by smart sensin
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.MANAGER_SWING_MOTION
 
@@ -145,9 +145,9 @@ Allows an application to use the air gesture adaptation capability.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.MOCK_LOCATION
 
@@ -157,9 +157,9 @@ Allows an application to use the mock location function.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_LEARN_MORE_DIALOG
 
@@ -169,19 +169,19 @@ Allows a system application to display the **Learn more** dialog for detailed in
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.WRITE_PROTECTION_ADVICE_POLICY
 
-Allows a system application to write the protection advice database.
+Allows a system application to modify the protection advice database.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 17
 
@@ -193,7 +193,7 @@ Allows a system application to read the protection advice database
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 17
 
@@ -205,7 +205,7 @@ Allows a system application to call the Message application authorization interf
 
 **Authorization mode**: system_grant
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.MANAGE_SETTINGS
 
@@ -215,9 +215,9 @@ Allows an application to set the device-level configuration table and user-level
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_SCREEN_LOCK
 
@@ -227,9 +227,9 @@ Allow an application to access screen lock and unlock information.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ALLOW_UPGRADE_GUIDE_ACCESS
 
@@ -239,9 +239,9 @@ Allows a system application to obtain the application upgrade guide or start the
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_MEDIALIB_THUMB_DB
 
@@ -251,9 +251,9 @@ Allows a system application to access and modify the media library database.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.AGENT_REQUIRE_FORM
 
@@ -263,7 +263,7 @@ Allows the application agent to request widgets.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -275,11 +275,11 @@ Allows a system application to enable or disable the VPN function.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
-**Changelog**: **Enable via ACL** is **false** for this permission in API versions 10 to 11, and is changed to **true** since API version 12.
+**Changelog**: For APIs versions 10 and 11, **Certificate-based authorization** is **false**. For API 12 and later, it is changed to **true**.
 
 ## ohos.permission.WAKEUP_VISION
 
@@ -289,7 +289,7 @@ Allows an application to access the AI Voice vision component.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -301,7 +301,7 @@ Allows an application to access the AI Voice wakeup component.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -313,7 +313,7 @@ Allows an application to obtain the certificate chain that attests the key valid
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -325,9 +325,9 @@ Allows an application to obtain the phone numbers of the device.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ACTIVATE_THEME_PACKAGE
 
@@ -337,9 +337,23 @@ Allows a system application to set themes, including wallpapers, icons, skins, A
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
+
+## ohos.permission.THEME_SKIN
+
+Allows a system application to obtain theme skinning resources in the skin directory.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 20
 
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
@@ -349,9 +363,9 @@ Allows an application to read the accessibility configuration.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
@@ -361,9 +375,9 @@ Allows an application to set the accessibility configuration.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.QUERY_ACCESSIBILITY_ELEMENT
 
@@ -373,7 +387,7 @@ Allows an application to query accessibility elements in batches.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -385,7 +399,7 @@ Allows an application to publish unremovable notifications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -397,9 +411,9 @@ Allows an application to uninstall applications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.RECOVER_BUNDLE
 
@@ -409,9 +423,9 @@ Allows pre-installed applications to be recovered.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.UPDATE_SYSTEM
 
@@ -421,7 +435,7 @@ Allows an application to call the update APIs.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -433,7 +447,7 @@ Allows an application to call the API for restoring factory settings.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -447,9 +461,9 @@ Allows a system application to forcibly restore a device to its factory settings
 
 **Supported devices**: general devices
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
@@ -459,9 +473,9 @@ Allows an application to start the upgrade service to perform assisted or collab
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.PLUGIN_UPDATE
 
@@ -471,33 +485,33 @@ Allows a system application or system service to call the update APIs to downloa
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.RECEIVE_UPDATE_MESSAGE
 
-Allows a system application or system ability to listen for the key events occurred in the system update process.
+Allows a system application or system service to listen for the key events occurred in the system update process.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.GET_ALL_PROCESSES
 
-Allows a system application or system ability to read files in **/proc**.
+Allows a system application or system service to read files in **/proc**.
 
 **Permission level**: system_core
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.MANAGE_LOCAL_ACCOUNTS
 
@@ -507,9 +521,9 @@ Allows an application to manage local accounts.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.ACCESS_SYSTEM_SETTINGS
 
@@ -519,9 +533,9 @@ Allows an application to access or start **Settings**.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.SET_ABILITY_CONTROLLER
 
@@ -531,9 +545,9 @@ Allows an application to intercept the startup of the Ability component. This pe
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_EXTENSION
 
@@ -543,9 +557,9 @@ Allows an application to interact across local accounts.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.CLEAN_APPLICATION_DATA
 
@@ -555,9 +569,9 @@ Allows an application to clear application data.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.START_ABILITIES_FROM_BACKGROUND
 
@@ -567,9 +581,9 @@ Allows an application to start or access other components from the background.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.MANAGE_MISSIONS
 
@@ -579,9 +593,9 @@ Allows an application to manage missions in the system.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
@@ -591,9 +605,9 @@ Allows an application to activate a device administrator application.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.ENTERPRISE_CONFIG
 
@@ -603,9 +617,11 @@ Allows an application to activate enterprise devices.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | wearables
+
+**Since**: 12
 
 ## ohos.permission.RECEIVE_ENTERPRISE_POLICY_EVENT
 
@@ -615,7 +631,9 @@ Allows a system application to subscribe to the policy events published by the E
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 14
 
@@ -627,9 +645,9 @@ Allows an application to publish system common events.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -639,7 +657,7 @@ Allows an application to manage and subscribe to notifications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -651,9 +669,9 @@ Allows an application to obtain the device-cloud information of the configuratio
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.GET_DEFAULT_APPLICATION
 
@@ -663,33 +681,33 @@ Allows an application to query default applications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.MANAGE_INTELLIGENT_VOICE
 
-Allows an application to access the intelligent voice service interfaces.
+Allows an application to access the intelligent voice service APIs.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.POWER_MANAGER
 
-Allows an application to hibernate or wake up the device by calling an API.
+Allows an application to hibernate or wake up the device by calling an API of the power management subsystem.
 
 **Permission level**: system_core
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.GET_SCENE_CODE
 
@@ -699,9 +717,9 @@ Allows an application to obtain the scene code of the specified application.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.MANAGE_ECOLOGICAL_RULE
 
@@ -711,9 +729,9 @@ Allows the rules for generating the scene code and the matching experience to be
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.INSTALL_ENTERPRISE_BUNDLE
 
@@ -723,9 +741,9 @@ Allows an application to install enterprise InHouse applications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.INSTALL_BUNDLE
 
@@ -735,15 +753,15 @@ Allows an application to install and uninstall other applications except enterpr
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.INSTALL_ALLOW_DOWNGRADE
 
-Allows an application to downgrade and install other applications.
+Allows an application to downgrade other applications.
 
-With this permission, the system application can overwrite an installed application with an earlier version, even if a later version is already present.
+With this permission, an application can perform downgrade installation of other applications, even if a later version already exists.
 
 **Permission level**: system_core
 
@@ -751,9 +769,9 @@ With this permission, the system application can overwrite an installed applicat
 
 **Supported devices**: general devices
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.MANAGE_SHORTCUTS
 
@@ -763,9 +781,9 @@ Allows an application to query and start shortcuts of other applications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -775,9 +793,9 @@ Allows an application to listen for the card running status.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.WRITE_HIVIEW_SYSTEM
 
@@ -787,9 +805,9 @@ Allows an application to modify HiView data.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.READ_HIVIEW_SYSTEM
 
@@ -799,9 +817,9 @@ Allows an application to access HiView data.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.READ_DFX_SYSEVENT
 
@@ -811,7 +829,9 @@ Allows an application to access system event logging data.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 8
 
@@ -823,9 +843,11 @@ Allows an application to read XPower data.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 12
 
 ## ohos.permission.PERMISSION_USED_STATS
 
@@ -835,9 +857,11 @@ Allows a system application to access the permission usage records.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 9
 
 ## ohos.permission.PERMISSION_RECORD_TOGGLE
 
@@ -847,9 +871,9 @@ Allows an application to set the permission usage record switch.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.CAPTURE_SCREEN
 
@@ -859,9 +883,9 @@ Allows an application to take screenshots.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
@@ -871,9 +895,9 @@ Allows an application to install, uninstall, and authorize users' public certifi
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 **Changelog**: The permission level is system_basic in API versions 9 to 11, and is changed to system_core since API version 12.
 
@@ -885,9 +909,9 @@ Allows an application to perform device-cloud synchronization.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.CHANGE_OVERLAY_ENABLED_STATE
 
@@ -897,9 +921,9 @@ Allows a system application to disable the application with the overlay feature 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ACCESS_SCREEN_LOCK_INNER
 
@@ -909,9 +933,9 @@ Allows an application to use the lock screen service to lock the screen, send a 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.BACKUP
 
@@ -921,9 +945,9 @@ Allows an application to use the backup and restore capability.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.MOUNT_FORMAT_MANAGER
 
@@ -933,9 +957,9 @@ Allows an application to format external cards.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.MOUNT_UNMOUNT_MANAGER
 
@@ -945,21 +969,21 @@ Allows an application to mount and unmount external cards.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.PROXY_AUTHORIZATION_URI
 
-Allows the application proxy to authorize the URI.
+Allows the application to act as a proxy for granting URI permissions.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ACCESS_CAST_ENGINE_MIRROR
 
@@ -969,9 +993,9 @@ Allows an application to use the mirror projection capability.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ACCESS_CAST_ENGINE_STREAM
 
@@ -981,9 +1005,9 @@ Allows an application to invoke the system resource projection capability.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE
 
@@ -993,9 +1017,9 @@ Allows an enterprise normal bundle to be installed on enterprise devices.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
 
@@ -1005,22 +1029,22 @@ Allows installation of enterprise MDM applications on enterprise devices.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.INSTALL_SELF_BUNDLE
 
-Allows automatic updates of enterprise MDM applications on enterprise devices.
+Allows enterprise MDM applications to self-update on enterprise devices.
 
 **Permission level**: system_core
 
 **Authorization mode**: system_grant
 
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.UPDATE_MIGRATE
 
@@ -1030,9 +1054,9 @@ Allows data migration during the update process.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.MANAGE_SENSOR
 
@@ -1042,9 +1066,9 @@ Allows an application that cannot directly use the sensor to turn on and off the
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.MANAGE_PRINT_JOB
 
@@ -1054,9 +1078,9 @@ Allows an application to obtain the capability of managing print tasks.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.securityguard.SET_MODEL_STATE
 
@@ -1066,9 +1090,9 @@ Allows an application to control the SecurityGuard model switch.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.UNLOCK_DEVELOPER_MODE
 
@@ -1078,9 +1102,9 @@ Allows an application to unlock the developer mode.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.CAPTURE_VOICE_DOWNLINK_AUDIO
 
@@ -1090,9 +1114,9 @@ Allows an application to capture the downlink voice audio.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.GET_WIFI_INFO_INTERNAL
 
@@ -1102,7 +1126,7 @@ Allows a system process to obtain Wi-Fi parameters.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -1114,9 +1138,9 @@ Allows an application to access the installation directory of another applicatio
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
@@ -1126,9 +1150,9 @@ Allows an application to enable or disable an application or component.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.CLOUDFILE_SYNC_MANAGER
 
@@ -1138,9 +1162,9 @@ Allows an application to obtain the device-cloud synchronization management capa
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.DUMP
 
@@ -1150,9 +1174,9 @@ Allows the basic system information and system ability (SA) information to be du
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.HIVIEW_TRACE_MANAGE
 
@@ -1162,11 +1186,11 @@ Allows a system service or system application to enable or disable system trace.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.DEVICE_STANDBY_EXEMPTION
 
@@ -1176,9 +1200,9 @@ Allows an application to use resources when the system is in standby mode.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.PERCEIVE_SMART_POWER_SCENARIO
 
@@ -1188,9 +1212,9 @@ Allows an application to perceive smart power scenarios.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.MANAGE_CAMERA_CONFIG
 
@@ -1200,9 +1224,9 @@ Allows an application to enable or disable cameras globally.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.MANAGE_AUDIO_CONFIG
 
@@ -1212,9 +1236,9 @@ Allows an application to mute microphones globally.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.MICROPHONE_CONTROL
 
@@ -1224,9 +1248,9 @@ Allows an application to control the microphone, for example, persisting the mut
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.CAPTURE_PLAYBACK
 
@@ -1236,9 +1260,9 @@ Allows a system service to capture audio without using the AVScreenCapture frame
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.MICROPHONE_BACKGROUND
 
@@ -1248,9 +1272,9 @@ Allows a system application to use the microphone in the background.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.START_DLP_CRED
 
@@ -1260,9 +1284,11 @@ Allows a system application or system service to start the DLP credential manage
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
+**Since**: 12
 
 ## ohos.permission.START_SHORTCUT
 
@@ -1272,9 +1298,9 @@ Allows an application to start shortcuts.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
 
@@ -1284,9 +1310,9 @@ Allows an application to preload a UIExtensionAbility instance.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.MANAGE_DISPOSED_APP_STATUS
 
@@ -1296,9 +1322,9 @@ Allows an application to set and query the application handling state.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.GET_DISPOSED_APP_STATUS
 
@@ -1308,21 +1334,21 @@ Allows an application to obtain the disposed application status.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.FILE_ACCESS_MANAGER
 
-Allows a file management application to access user data files through the FAF.
+Allows a file management application to access public data files through the FAF.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.ACCESS_PUSH_SERVICE
 
@@ -1332,9 +1358,9 @@ Allows an application to access the Ability of the push service.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.MANAGE_NET_STRATEGY
 
@@ -1344,9 +1370,9 @@ Allows an application to obtain network strategy information or modify network s
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.securityguard.REQUEST_SECURITY_EVENT_INFO
 
@@ -1356,9 +1382,9 @@ Allows an application to obtain detailed security event information.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.securityguard.REPORT_SECURITY_INFO
 
@@ -1368,9 +1394,9 @@ Allows an application to report risk data for security guard.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.GET_SENSITIVE_PERMISSIONS
 
@@ -1382,7 +1408,7 @@ Allows an application to obtain the sensitive permissions that have been granted
 
 **Supported devices**: general devices
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -1394,9 +1420,9 @@ Allows a system application to obtain the authentication and networking capabili
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.UPLOAD_SESSION_MANAGER
 
@@ -1406,9 +1432,9 @@ Allows an application to manage the upload sessions.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ABILITY_BACKGROUND_COMMUNICATION
 
@@ -1418,9 +1444,9 @@ Allows an application to start the Ability component in the background and estab
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.ACCESS_DLP_FILE
 
@@ -1430,9 +1456,11 @@ Allows configuration and management of the permissions on .dlp files.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
+**Since**: 9
 
 ## ohos.permission.ACCESS_IDS
 
@@ -1442,21 +1470,21 @@ Allows an application to query the unique identifier of a device.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.ACCESS_MISSIONS
 
-Allows an application to obtain information about running processes and mission in a mission stack.
+Allows an application to obtain information about missions in a mission stack.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 **Deprecated since**: 9
 
@@ -1468,9 +1496,9 @@ Allows an application to obtain how long other applications have been running in
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.CONNECT_IME_ABILITY
 
@@ -1480,9 +1508,9 @@ Allows an application to bind the InputMethodAbility.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.CONNECT_SCREEN_SAVER_ABILITY
 
@@ -1492,9 +1520,9 @@ Allows an application to bind the ScreenSaverAbility.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.CONNECTIVITY_INTERNAL
 
@@ -1504,7 +1532,7 @@ Allows an application to obtain network information or modify network settings. 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -1516,9 +1544,9 @@ Allows an application to use sync task animations.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.DOWNLOAD_SESSION_MANAGER
 
@@ -1528,9 +1556,9 @@ Allows an application to manage the download sessions.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.GET_DISTRIBUTED_ACCOUNTS
 
@@ -1540,9 +1568,9 @@ Allows an application to obtain information about distributed accounts.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.GET_LOCAL_ACCOUNTS
 
@@ -1552,9 +1580,9 @@ Allows an application to obtain information about local accounts.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.GET_TELEPHONY_STATE
 
@@ -1564,21 +1592,21 @@ Allows an application to read telephony information.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
 ## ohos.permission.ACCESS_BOOSTER_SERVICE
 
-Allows a system ability or system application to call network booster service APIs, such as APIs for network quality perception, network scenario prediction, and network acceleration.
+Allows a system service or system application to call network booster service APIs, such as APIs for network quality perception, network scenario prediction, and network acceleration.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.GET_WALLPAPER
 
@@ -1588,9 +1616,9 @@ Allows an application to read wallpaper files.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.GRANT_SENSITIVE_PERMISSIONS
 
@@ -1602,7 +1630,7 @@ Allows an application to grant sensitive permissions to other applications.
 
 **Supported devices**: general devices
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -1614,9 +1642,9 @@ Allows an application to navigate from its privacy statement page to the **Data 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -1626,9 +1654,9 @@ Allows an application to listen for changes in other applications, when they are
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.MANAGE_BLUETOOTH
 
@@ -1638,9 +1666,9 @@ Allows an application to pair with a Bluetooth device and access the Contacts or
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS
 
@@ -1650,9 +1678,9 @@ Allows an application to manage information about distributed accounts.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -1662,9 +1690,9 @@ Allows an application to obtain and manage the media resources that are being pl
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.MANAGE_SECURE_SETTINGS
 
@@ -1674,9 +1702,9 @@ Allows an application to modify security settings.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.MANAGE_WIFI_CONNECTION
 
@@ -1686,7 +1714,7 @@ Allows an application to manage Wi-Fi connections.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -1698,7 +1726,7 @@ Allows an application to enable or disable Wi-Fi hotspots.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -1710,9 +1738,9 @@ Allows an application to send agent-powered notifications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.PLACE_CALL
 
@@ -1722,7 +1750,7 @@ Allows an application to make calls without starting the dialer.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -1734,9 +1762,9 @@ Allows an application to set power saving mode, obtain configuration of the powe
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.PROVISIONING_MESSAGE
 
@@ -1746,9 +1774,9 @@ Allows the Super Device Manager application to be activated.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.radio.ACCESS_FM_AM
 
@@ -1758,9 +1786,9 @@ Allows an application to access radio services.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.READ_SCREEN_SAVER
 
@@ -1770,9 +1798,9 @@ Allows an application to read the screen saver information, such as the list of 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.REBOOT
 
@@ -1782,9 +1810,9 @@ Allows an application to restart the device.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.REBOOT_RECOVERY
 
@@ -1794,9 +1822,9 @@ Allows an application to restart the device and enter Recovery mode.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.REFRESH_USER_ACTION
 
@@ -1806,9 +1834,9 @@ Allows an application to reset the screen timeout counter when a user input even
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.REMOVE_CACHE_FILES
 
@@ -1818,9 +1846,9 @@ Allows the cache of the specified application to be cleared.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.REQUIRE_FORM
 
@@ -1830,9 +1858,9 @@ Allows an application to obtain the Ability Form.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.START_DESKTOP_UI_COMPONENT
 
@@ -1842,9 +1870,9 @@ Allows an application to start desktop UI components.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
 
@@ -1856,7 +1884,7 @@ Allows an application to revoke the sensitive permissions it has granted to othe
 
 **Supported devices**: general devices
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -1868,9 +1896,9 @@ Allows an application to run unsigned code.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.securityguard.REQUEST_SECURITY_MODEL_RESULT
 
@@ -1880,9 +1908,9 @@ Allows an application to obtain the device risk status.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.SET_DEFAULT_APPLICATION
 
@@ -1892,9 +1920,9 @@ Allows an application to set and reset default applications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.SET_TELEPHONY_STATE
 
@@ -1904,7 +1932,7 @@ Allows an application to set the telephony state.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -1916,9 +1944,9 @@ Allows an application to set the system time.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.SET_TIME_ZONE
 
@@ -1928,9 +1956,9 @@ Allows an application to set the system time zone.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.START_ABILIIES_FROM_BACKGROUND
 
@@ -1940,9 +1968,9 @@ Allows an application to start FAs in the background.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 **Deprecated since**: 9
 
@@ -1954,9 +1982,9 @@ Allows an application to start an invisible ability.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.STORAGE_MANAGER
 
@@ -1966,9 +1994,9 @@ Allows an application to call the interfaces of the Storage Manager service to q
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 9
+**Since**: 9
 
 ## ohos.permission.UPDATE_CONFIGURATION
 
@@ -1978,9 +2006,9 @@ Allows an application to modify system settings.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.WRITE_SCREEN_SAVER
 
@@ -1990,9 +2018,9 @@ Allows an application to modify the screen saver information, such as activating
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 7
+**Since**: 7
 
 ## ohos.permission.GET_BLUETOOTH_LOCAL_MAC
 
@@ -2002,7 +2030,7 @@ Allows an application to obtain the Bluetooth MAC address of the local device.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2014,9 +2042,9 @@ Allows an application to obtain the real Bluetooth MAC address of a device.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.USE_USER_IDM
 
@@ -2026,7 +2054,7 @@ Allows an application to access the system identity credential information.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -2038,7 +2066,7 @@ Allows an application to enroll and manage user identity authentication credenti
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -2050,7 +2078,7 @@ Allows an application to register the callback for obtaining the PIN during the 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -2062,7 +2090,7 @@ Allows an application to call internal system interfaces of IAM.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 8
 
@@ -2074,9 +2102,9 @@ Allows access to the resource pool of the user authentication widget (auth_widge
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ACCESS_SENSING_WITH_ULTRASOUND
 
@@ -2086,9 +2114,9 @@ Allows an application to use ultrasonic sensing.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 10
+**Since**: 10
 
 ## ohos.permission.ACCESS_DISTRIBUTED_HARDWARE
 
@@ -2098,7 +2126,7 @@ Allows a system service or system application to access distributed hardware res
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2110,7 +2138,7 @@ Allows a system service or system application to change the **instantshare** swi
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2122,7 +2150,7 @@ Allows a system service or system application to access the **instantshare** ser
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2134,7 +2162,7 @@ Allows a system service or system application to use the **instantshare** privat
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2146,7 +2174,7 @@ Allows the MCP host application to perform user account authorization and login 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2158,7 +2186,7 @@ Allows an application to obtain resource information of another application.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2170,7 +2198,9 @@ Allows a system application to enable the ScreenHop feature, which allows the us
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 11
 
@@ -2182,7 +2212,7 @@ Allows a system application to use the Multimodal Sensor Data Platform (MSDP) tr
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2194,9 +2224,23 @@ Allows a system application to execute intent calls.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
+
+## ohos.permission.EXECUTE_DISTRIBUTED_INTENT
+
+Allows a system application to execute distributed intents.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars | phones | TVs | wearables | PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.0
 
 ## ohos.permission.VERIFY_ACTIVATION_LOCK
 
@@ -2206,7 +2250,7 @@ Allows an application to verify the validity of activation lock credentials.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2218,7 +2262,7 @@ Allows a system application to start the software update capability.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2230,7 +2274,7 @@ Allows an application to call APIs for configuring and managing the fingerprint 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2242,7 +2286,7 @@ Allows an application to send data to the trusted ring of critical assets.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2254,31 +2298,31 @@ Allows a system application to shield the shortcut key distribution logic.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
 ## ohos.permission.MANAGE_TRUSTED_RING
 
-Allows the use of the capabilities provided by the critical asset trusted ring service.
+Allows the use of the capabilities provided by the asset trusted ring service.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
 ## ohos.permission.USE_TRUSTED_RING
 
-Allows an applications or service to use the critical asset trusted ring.
+Allows an application or service to use the asset trusted ring.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2290,21 +2334,21 @@ Allows an application to listen for the installation progress of other applicati
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
 ## ohos.permission.LAUNCH_SPAMSHIELD_PAGE
 
-Allows an application to access the shielded spam pages.
+Allows an application to access the spam shield pages.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_SPAMSHIELD_SERVICE
 
@@ -2314,9 +2358,9 @@ Allows an application to access the spam shield service.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_SECURITY_PRIVACY_CENTER
 
@@ -2326,7 +2370,7 @@ Allows a service to access the Security & Privacy Center.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2338,7 +2382,7 @@ Allows a system application to obtain advice from the Security & Privacy Center.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2350,19 +2394,19 @@ Allows a system application to process the advice provided by the Security & Pri
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
 ## ohos.permission.USE_SECURITY_PRIVACY_MESSAGER
 
-Allows a system service to call permission management interfaces.
+Allows a system service to call permission management APIs.
 
 **Permission level**: system_core
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2374,9 +2418,9 @@ Allows a system application to obtain details about privacy event notifications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.SET_PRIVACY_INDICATOR
 
@@ -2386,9 +2430,9 @@ Allows a system application to control the presence status of privacy event noti
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.EXEMPT_PRIVACY_INDICATOR
 
@@ -2398,9 +2442,9 @@ Allows an application to use permissions without displaying the privacy indicato
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.EXEMPT_CAMERA_PRIVACY_INDICATOR
 
@@ -2410,9 +2454,9 @@ Allows an application to access the device's camera without displaying the priva
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.EXEMPT_MICROPHONE_PRIVACY_INDICATOR
 
@@ -2422,9 +2466,9 @@ Allows an application to access the device's microphone without displaying the p
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.EXEMPT_LOCATION_PRIVACY_INDICATOR
 
@@ -2434,9 +2478,9 @@ Allows an application to use the location service without displaying the privacy
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.EXEMPT_PRIVACY_SECURITY_CENTER
 
@@ -2446,9 +2490,9 @@ Allows a system application to be hidden on the **Privacy & Security** page.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.GET_SUPER_PRIVACY
 
@@ -2458,9 +2502,9 @@ Allows a system application to obtain the status of the super privacy mode.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.SET_SUPER_PRIVACY
 
@@ -2470,9 +2514,9 @@ Allows a system application to set the super privacy mode.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_PRIVATE_SPACE_MANAGER
 
@@ -2482,9 +2526,9 @@ Allows a system application or system service to start the PrivateSpace manager.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_PRIVATE_SPACE_PASSWORD_PROTECT
 
@@ -2494,9 +2538,9 @@ Allows a system application to call PrivateSpace APIs related to password protec
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_PASSWORDVAULT_ABILITY
 
@@ -2506,7 +2550,7 @@ Allows a system application or system service to start the Password Vault abilit
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2518,9 +2562,9 @@ Allows a system application or system service to start the text autofill ability
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_LOWPOWER_MANAGER
 
@@ -2530,7 +2574,7 @@ Allows a system application or system service to send messages to LowpowerManage
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2542,7 +2586,7 @@ Allows a system application to set auto boot options for other applications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2554,7 +2598,7 @@ Allows the account service to query and modify account data.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2566,7 +2610,7 @@ Allows a system application to use the device anonymous attestation capability.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2578,7 +2622,7 @@ Allows a system application to display the account user authentication page.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2590,7 +2634,7 @@ Allows an application to start the specified UIAbility or the last started insta
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2602,7 +2646,7 @@ Allows an application that has accessed the cloud to manage the device-cloud syn
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2614,7 +2658,7 @@ Allows an application to start the **Find Device** app.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2626,7 +2670,7 @@ Allows a system application to obtain and modify the setting of **Find My Phone*
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2638,9 +2682,9 @@ Allows a system application to read the status of **Find Device**.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.MANAGE_USB_CONFIG
 
@@ -2650,7 +2694,7 @@ Allows an application to manage the USB device functions and ports.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2662,7 +2706,7 @@ Allows an application to start modal system dialog boxes.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2674,7 +2718,7 @@ Allows an application to access the status bar icons.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2686,7 +2730,7 @@ Allows an application to manage the system audio effects.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2698,7 +2742,9 @@ Allows an application to read the pasteboard via silent access.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **Valid since**: 11
 
@@ -2710,7 +2756,7 @@ Allows a system application to set the public key and working secret ciphertext 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2722,7 +2768,7 @@ Allows an application to set the advanced security mode configuration.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2734,7 +2780,7 @@ Allows an application to set the developer mode configuration.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2746,7 +2792,7 @@ Allows a system application to set whether an application can start the permissi
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2758,7 +2804,7 @@ Allows an application to manage the activation lock of a device.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2770,7 +2816,7 @@ Allows an application to access the built-in hidden albums and files in the albu
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2782,7 +2828,7 @@ Allows an application to record voice calls.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2794,7 +2840,7 @@ Allows an application to create and manage application installation tasks.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2806,7 +2852,7 @@ Allows a system application to uninstall other applications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 19
 
@@ -2818,7 +2864,7 @@ Allows a system application to access the advanced security mode configuration p
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2830,7 +2876,7 @@ Allows a system application to start HiViewX, which displays the **User Experien
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2842,7 +2888,7 @@ Allows a system application to start HiViewCare.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2854,7 +2900,7 @@ Allows a system application to set dynamic sandbox policies.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2866,7 +2912,7 @@ Allows a system application or system service to check sandbox policies of other
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 15
 
@@ -2878,7 +2924,7 @@ Allows an SA to call **Find Device**.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2890,7 +2936,7 @@ Allows an application to write private Push data to another application.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 11
 
@@ -2902,9 +2948,9 @@ Allows an application to read the private Push data of another application.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.MANAGE_NEARLINK
 
@@ -2914,9 +2960,9 @@ Allows an application to pair with a NearLink device and access the Contacts or 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.GET_NEARLINK_LOCAL_MAC
 
@@ -2926,9 +2972,9 @@ Allows an application to obtain the NearLink MAC address of the local device.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.GET_NEARLINK_PEER_MAC
 
@@ -2938,9 +2984,9 @@ Allows an application to obtain the NearLink MAC address of the peer device.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.MANAGE_UWB
 
@@ -2952,23 +2998,23 @@ for example, enabling or disabling UWB communication, querying the chip type, an
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.USE_UWB_RANGING
 
 Allows a system application to use UWB ranging,
 
-for example, opening a session for UWB ranging, starting ranging, stoping ranging, and closing a session.
+for example, opening a session for UWB ranging, starting ranging, stopping ranging, and closing a session.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.MANAGE_FINDNETWORK
 
@@ -2978,9 +3024,9 @@ Allows an application to manage the **Find Network** switch and pair and unpair 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.OPERATE_FINDNETWORK
 
@@ -2990,9 +3036,9 @@ Allows an application to call APIs for finding network.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.QUERY_FINDNETWORK_LOCATION
 
@@ -3002,31 +3048,35 @@ Allows an application to query the location of an offline device.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.REGISTER_FINDNETWORK_ACCESSORY
 
-Allows an application or system ability to initiate the process for registering the Find Network accessories.
+Allows an application or system service to initiate the process for registering the Find Network accessories.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Supported devices**: phones | wearables | PCs/2-in-1 devices | tablets
+
+**Since**: 13
 
 ## ohos.permission.MANAGE_SHUTDOWN_FINDNETWORK
 
-Allows a system application or system ability to manage the service that enables a powered-off device to be found by another device with the same account.
+Allows a system application or system service to manage the service that enables a powered-off device to be found by another device with the same account.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | wearables | PCs/2-in-1 devices | tablets
 
 **Valid since**: 15
 
@@ -3038,9 +3088,9 @@ Allows a system service or system application to manage RGM.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_PROTOCOL_DFX_DATA
 
@@ -3050,9 +3100,9 @@ Allows a system application to access communication failure information and syst
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_PROTOCOL_DFX_STATE
 
@@ -3062,9 +3112,9 @@ Allows a system application to enable or disable the switches related to communi
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_CMAP_SERVICE
 
@@ -3074,7 +3124,7 @@ Allows a system application to access the cellular map service.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 14
 
@@ -3086,9 +3136,9 @@ Allows a system application or an SA to call the account service.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ALLOW_TIPS_ACCESS
 
@@ -3098,9 +3148,9 @@ Allows a system application to start the exposed components of another system ap
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_AI_ABILITY
 
@@ -3110,9 +3160,9 @@ Allows a system application or an SA to access the AI ability.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.READ_HEALTH_MOTION
 
@@ -3122,9 +3172,9 @@ Allows a system application to read the activity ring information, such as the s
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.hsdr.REQUEST_HSDR
 
@@ -3134,9 +3184,9 @@ Allows a system application to access the OpenHarmony Security Detection and Res
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.WRITE_GTOKEN_POLICY
 
@@ -3146,9 +3196,9 @@ Allows a system application to write application control policies.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.READ_GTOKEN_POLICY
 
@@ -3158,9 +3208,9 @@ Allows a system application to read application control policies.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.NOTIFY_DEBUG_ASSERT_RESULT
 
@@ -3170,9 +3220,9 @@ Allows a system application to set the assertion debugging result.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.QUERY_PASSWORD_VAULT_DATA
 
@@ -3182,9 +3232,9 @@ Allows a system application to obtain password vault data.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.WRITE_ACCOUNT_LOGIN_STATE
 
@@ -3194,9 +3244,9 @@ Allows user account login status to be written to the data management service.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS_AS_USER
 
@@ -3206,9 +3256,9 @@ Allows a service in the U0 user space to call the open account APIs.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.SUBSCRIBE_NOTIFICATION_WINDOW_STATE
 
@@ -3218,9 +3268,9 @@ Allows an application to subscribe to the broadcasts sent when the notification 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.CHANGE_DISPLAYMODE
 
@@ -3230,9 +3280,9 @@ Allows a system application to change the display mode.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.MIGRATE_DATA
 
@@ -3242,9 +3292,9 @@ Allows a system application to migrate data.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_DYNAMIC_ICON
 
@@ -3254,9 +3304,9 @@ Allows a system application to use dynamic icons.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.CHANGE_BUNDLE_UNINSTALL_STATE
 
@@ -3266,9 +3316,9 @@ Allows a system application to change the uninstall status of the specified appl
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.MANAGE_STYLUS_EVENT
 
@@ -3278,9 +3328,9 @@ Allows a system application to use the stylus capabilities.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.USE_CLOUD_DRIVE_SERVICE
 
@@ -3290,9 +3340,9 @@ Allows a system application or service to use the DriveServiceAbility of the clo
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.USE_CLOUD_BACKUP_SERVICE
 
@@ -3302,9 +3352,9 @@ Allows a system application or service to trigger the BackupServiceAbility of th
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.USE_CLOUD_COMMON_SERVICE
 
@@ -3314,9 +3364,9 @@ Allows a system application to obtain cloud space information and resources thro
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.PRELOAD_APPLICATION
 
@@ -3326,9 +3376,9 @@ Allows a system application or service to preload application processes.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ENABLE_EXPERIENCE_HBM
 
@@ -3338,9 +3388,9 @@ Allows an application to enable the High Brightness Mode (HBM) for the screen.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.SET_PROCESS_CACHE_STATE
 
@@ -3350,9 +3400,9 @@ Allows an application to set whether to support application cache and quick star
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_SYSTEM_APP_CERT
 
@@ -3362,9 +3412,9 @@ Allows the caller to manage and use system service certificate credentials.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_USER_TRUSTED_CERT
 
@@ -3374,9 +3424,9 @@ Allows the caller to manage user CA certificates.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_LOCAL_BACKUP
 
@@ -3386,9 +3436,9 @@ Allows an application to access the local backup directory.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.CAST_AUDIO_OUTPUT
 
@@ -3398,9 +3448,9 @@ Allows the system to cast audio or collaborate with another application to cast 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.WRITE_RINGTONE
 
@@ -3410,9 +3460,9 @@ Allows an application to write the ring tone library.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.GET_ACCOUNT_MINORS_INFO
 
@@ -3422,9 +3472,9 @@ Allows a system application to obtain information about the minor users (users n
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_LOCAL_THEME
 
@@ -3434,9 +3484,9 @@ Allows a system application to access the local theme information.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_SHADER_CACHE_DIR
 
@@ -3446,9 +3496,9 @@ Allows a system application to access the shader_cache directory.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.INSTALL_CLONE_BUNDLE
 
@@ -3458,9 +3508,9 @@ Allows an application to install a cloned application.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.UNINSTALL_CLONE_BUNDLE
 
@@ -3470,9 +3520,9 @@ Allows an application to uninstall a cloned application.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_SCREEN_LOCK_MEDIA_DATA
 
@@ -3482,9 +3532,9 @@ Allows an application to access images and videos when the screen is locked.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_SCREEN_LOCK_ALL_DATA
 
@@ -3494,9 +3544,9 @@ Allows an application to access sensitive data, such as images and videos, call 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_DEVICE_COLLABORATION_PRIVATE_ABILITY
 
@@ -3506,9 +3556,9 @@ Allows a system service or system application to access the device collaboration
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_FILE_CONTENT_SHARE
 
@@ -3518,9 +3568,9 @@ Allows a system service or system application to access shared files.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_RINGTONE_RESOURCE
 
@@ -3530,9 +3580,9 @@ Allows a system application to access and write the ring tone public directory.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_SUBSCRIPTION_CAPSULE_DATA
 
@@ -3542,9 +3592,9 @@ Allows a system application to access the subscribed capsule data.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_SEARCH_SERVICE
 
@@ -3554,9 +3604,9 @@ Allows a system application to call the local search ability provided by the fus
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.INJECT_INPUT_EVENT
 
@@ -3566,9 +3616,9 @@ Allows a system application to inject input events.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.QUERY_SECURITY_EVENT
 
@@ -3578,9 +3628,9 @@ Allows an application to obtain detailed security event information.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.REPORT_SECURITY_EVENT
 
@@ -3590,9 +3640,9 @@ Allows an application to report risk data for security guard.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.QUERY_SECURITY_MODEL_RESULT
 
@@ -3602,9 +3652,9 @@ Allows an application to query the security model execution result.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.MANAGE_SECURITY_GUARD_CONFIG
 
@@ -3614,9 +3664,9 @@ Allows an application to manage Security Guard configuration.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.COLLECT_SECURITY_EVENT
 
@@ -3626,9 +3676,9 @@ Allows an application to collect security events.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.QUERY_SECURITY_POLICY_FROM_CLOUD
 
@@ -3638,9 +3688,9 @@ Allows an application to query security policies from the cloud.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.REPORT_SECURITY_EVENT_TO_CLOUD
 
@@ -3650,9 +3700,9 @@ Allows an application to report security events to the cloud.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_SCAN_SERVICE
 
@@ -3662,9 +3712,9 @@ Allows a system application to invoke the code dispatching capability provided b
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_FACTORY_OTA_DIR
 
@@ -3674,9 +3724,11 @@ Allows a system application to access the over-the-air update directory.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Supported devices**: wearables
+
+**Since**: 12
 
 ## ohos.permission.MANAGE_MOUSE_CURSOR
 
@@ -3686,9 +3738,9 @@ Allows a system application to set the mouse cursor status.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.FILTER_INPUT_EVENT
 
@@ -3698,9 +3750,9 @@ Allows a system application to filter input events.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.INPUT_DEVICE_CONTROLLER
 
@@ -3710,21 +3762,21 @@ Allows an application to obtain and set the status of input devices.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ACTIVATE_DEVICE_PSI
 
-Allows a system application or system ability to report the device activation status.
+Allows a system application or system service to report the device activation status.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.DUMP_AUDIO
 
@@ -3734,21 +3786,21 @@ Allows an application to dump audio data to a local storage device.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.RECEIVE_FUSION_MESSAGES
 
-Allows a system application or system ability to receive fusion service messages.
+Allows a system application or system service to receive fusion service messages.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.RECEIVE_BMS_BROKER_MESSAGES
 
@@ -3758,21 +3810,21 @@ Allows a system application or system service to receive BMS broker messages.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ACCESS_FUSION_MANAGER
 
-Allows a system ability or system application to access the fusion service.
+Allows a system service or system application to access the fusion service.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.PUBLISH_LOCATION_EVENT
 
@@ -3782,9 +3834,9 @@ Allows an application to publish common events related to location management.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_MULTICORE_HYBRID_ABILITY
 
@@ -3794,9 +3846,9 @@ Allows an application to access the system service APIs of the smart watch.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_DEVICE_COLLABORATION_SERVICE
 
@@ -3806,9 +3858,9 @@ Allows an application to use the multi-screen collaboration service.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.GET_APP_DOMAIN_BUNDLE_INFO
 
@@ -3818,9 +3870,9 @@ Allows an application to access the mappings between applications and domain nam
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.OPEN_FILE
 
@@ -3830,9 +3882,9 @@ Allows a system application to start the File Manager application to open files 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.PROCESS_FILE_COPY_PASTE
 
@@ -3842,33 +3894,33 @@ Allows a system application to start the File Manager application to copy, cut, 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.CLEAR_RECYCLEBIN
 
-Allows a system application to start the File Manager application to clear the trash.
+Allows a system application to start the File Manager application to clear the Recycle Bin.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.GET_FILE_THUMBNAIL
 
-Allows a system ability to obtain file thumbnails.
+Allows a system service to obtain file thumbnails.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.NETWORK_DHCP
 
@@ -3878,21 +3930,21 @@ Allows a system application to apply for IP addresses from the DHCP server.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ALLOW_CONNECT_CAR
 
-Allows an application to connect to a telematics device.
+Allows an application to connect to a head unit.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_IDM_WIDGET
 
@@ -3902,9 +3954,9 @@ Allows a system application to access the widget for credential enrollment.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.MANAGE_ACCESSORY
 
@@ -3914,9 +3966,9 @@ Allows an application to obtain information about accessories (such as the keybo
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.COLLECT_ACCESSORY_LOG
 
@@ -3926,9 +3978,9 @@ Allows an application to obtain logs of accessories (such as the keyboard and mo
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.INSTALL_INTERNALTESTING_BUNDLE
 
@@ -3938,9 +3990,9 @@ Allows an application to install beta applications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.PUBLISH_DISPLAY_ROTATION_EVENT
 
@@ -3950,9 +4002,9 @@ Allows a system ability to send screen rotation events to applications or other 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.PUBLISH_CAST_PLUGGED_EVENT
 
@@ -3962,9 +4014,9 @@ Allows a system ability to send the projection cable plug-in and plug-out events
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
@@ -3974,9 +4026,9 @@ Allows a modal UIExtension to unhide non-secure windows.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
 
@@ -3986,7 +4038,7 @@ Allows a UIExtensionAbility to be displayed on the locked screen.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 14
 
@@ -3998,9 +4050,9 @@ Allows a system service to access distributed modems.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.GET_TELEPHONY_ESIM_STATE
 
@@ -4010,9 +4062,9 @@ Allows a system application to obtain eSIM profile information and data written 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE
 
@@ -4022,9 +4074,9 @@ Allows a system application to modify the eSIM profile and upgrade the eSIM.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.CAMERA_BACKGROUND
 
@@ -4034,9 +4086,9 @@ Allows a system application to use the camera in the background.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.CALLED_TRANSITION_ON_LOCK_SCREEN
 
@@ -4046,9 +4098,9 @@ Allows an application to be started by another application on the lock screen pa
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.CALLED_BELOW_LOCK_SCREEN
 
@@ -4058,9 +4110,9 @@ Allows an application to start even when the screen is locked.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.ACCESS_ANALYTICS
 
@@ -4070,9 +4122,9 @@ Allows a system service to access and read files in **/data/log/faultlog/faultlo
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.START_RESTORE_NOTIFICATION
 
@@ -4082,9 +4134,9 @@ Allows a system application to subscribe to the restore start event of the backu
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.READ_WEATHER_DATA
 
@@ -4094,7 +4146,7 @@ Allows an application to read weather data.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 14
 
@@ -4106,9 +4158,9 @@ Allows a system application or system service to grant third-party applications 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.CHECK_QUICKFIX_RESULT
 
@@ -4118,9 +4170,9 @@ Allows a system service or system application to check the patch installation re
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 **Changelog**: This permission is available to system services in API versions 12 to 13. From API version 14, it is available to system applications.
 
@@ -4132,9 +4184,9 @@ Allows a system application or service to initiate user identity authentication 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.MANAGE_RECOVERY_KEY
 
@@ -4144,7 +4196,9 @@ Allows an application to create or remove the recovery key.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 14
 
@@ -4156,7 +4210,9 @@ Allows an application to utilize the recovery key to reset the lock screen passw
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 14
 
@@ -4168,9 +4224,9 @@ Allows an application to access the confidential computing zone.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.SYNC_ASSET_BETWEEN_TRUSTED_ACCOUNT
 
@@ -4180,9 +4236,9 @@ Allows an application to synchronize assets between the devices logged with the 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.GET_RECOVERY_KEY_BRIEF_INFORMATION
 
@@ -4192,7 +4248,9 @@ Allows an application to obtain brief information about the recovery key.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 14
 
@@ -4206,7 +4264,7 @@ With this permission, the application can update the virtual keyboard status and
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 14
 
@@ -4218,21 +4276,21 @@ Allows a system application to read the application lock state.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.WRITE_APP_LOCK
 
-Allows a system application to set the application lock state.
+Allows a system application to modify the application lock state.
 
 **Permission level**: system_core
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.ACCESS_APP_LOCK
 
@@ -4242,9 +4300,23 @@ Allows an application to access the application lock.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 13
+**Since**: 13
+
+## ohos.permission.ACCESS_CAR_CONTROL
+
+Allows an application to access or start the vehicle control screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 13
 
 ## ohos.permission.ACCESS_APP_SINGLE_PERMISSION_MANAGEMENT
 
@@ -4254,7 +4326,7 @@ Allows an application to launch a page for modifying a specific permission of an
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 15
 
@@ -4266,7 +4338,7 @@ Allows a system application to access the application installation directory.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 14
 
@@ -4278,7 +4350,7 @@ Allows a system application to invoke the services provided by the account Servi
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 15
 
@@ -4290,9 +4362,9 @@ Allows an application to access risk control probes to detect device security ri
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.EXEMPT_CAPTURE_SCREEN_AUTHORIZE
 
@@ -4302,7 +4374,7 @@ Allows an application to initiate screen recording without displaying the user a
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 15
 
@@ -4314,9 +4386,9 @@ Allows a system application or system service to call APIs to perform encryption
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.WATCH_READ_EMERGENCY_INFO
 
@@ -4326,9 +4398,9 @@ Allows an application to read the SOS emergency information.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.WATCH_WRITE_EMERGENCY_INFO
 
@@ -4338,9 +4410,9 @@ Allows an application to write the SOS emergency information.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.WATCH_START_SOS_SERVICE
 
@@ -4350,9 +4422,9 @@ Allows an application to enable or access the SOS service.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 **Changelog**: This permission is available only to system services in API versions 12 to 14, and becomes available to system applications since API version 15.
 
@@ -4364,9 +4436,9 @@ Allows a system application to start the page for setting privacy protection.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.GET_ANIM_POLICY
 
@@ -4376,9 +4448,9 @@ Allows a system application to register the animation plugin to obtain animation
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.VIRTUAL_KEYBOARD_WINDOW
 
@@ -4390,7 +4462,7 @@ A system application can create a virtual keyboard window only after obtaining t
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 15
 
@@ -4402,9 +4474,11 @@ Allows a system application to obtain the group information of Family Sharing.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 18
 
 ## ohos.permission.ACCESS_FUSION_AWARENESS_DATA
 
@@ -4414,9 +4488,9 @@ Allows a system application to obtain fusion awareness data.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ACCESS_ACCOUNT_RECOMMENDATION_DATA
 
@@ -4426,9 +4500,9 @@ Allows an application to read the data of Account Suggestions and start the UIEx
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 16
 
 ## ohos.permission.GET_PAGE_INFO
 
@@ -4438,9 +4512,9 @@ Allows a system application to obtain the page information of a specified applic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ACCESS_DDK_USB_SERIAL
 
@@ -4457,9 +4531,9 @@ Peripherals connected to the host via a USB bus and:
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ACCESS_CUSTOM_RINGTONE
 
@@ -4469,23 +4543,21 @@ Allows an application to access the RBT library.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ACCESS_STARTUPGUIDE
 
 Allows a system application to access common data and common events of the startup wizard.
 
-This permission is available only to the applications on smartphones, tablets, and 2-in-1 devices.
-
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ACCESS_DEVAUTH_CRED_MGR
 
@@ -4495,9 +4567,9 @@ Allows a system application or system service to access the credential managemen
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ACCESS_DEVAUTH_CRED_PRIVILEGE
 
@@ -4507,9 +4579,9 @@ Allows a system application or system service to access the credential managemen
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ACCESS_DEVAUTH_CRED_AUTH
 
@@ -4519,9 +4591,9 @@ Allows a system application or system service to access the credential authentic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ANTIFRAUD_DETECT
 
@@ -4531,9 +4603,9 @@ Allows a system application to perform anti-fraud detection.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ANTIFRAUD_PICTURE_DETECT
 
@@ -4543,9 +4615,9 @@ Allows a system application to perform face swapping detection for images.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ANTIFRAUD_MODEL_DOWNLOAD
 
@@ -4555,9 +4627,9 @@ Allows a system application to use model download APIs.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ACCESS_APP_CLONE_DIR
 
@@ -4567,9 +4639,9 @@ Allows a system application to access the installation file path copied from ano
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ACCESS_MEDIALIB_RESTORE
 
@@ -4579,7 +4651,7 @@ Allows an application to mount media restore paths.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 17
 
@@ -4591,23 +4663,9 @@ Allows an application to access the list of applications that can be started in 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
-
-## ohos.permission.GET_NETWORK_STATS
-
-Allows a system application to obtain historical network traffic.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Valid since**: 10
-
-**Changelog**: **Enable via ACL** is **false** for this permission in API versions 10 to 11, and is changed to **true** since API version 12.
+**Since**: 18
 
 ## ohos.permission.READ_DLP_HIDE_SWITCH
 
@@ -4617,9 +4675,9 @@ Allows a system application to read data from the Peep Protect database.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.WRITE_DLP_HIDE_SWITCH
 
@@ -4629,9 +4687,9 @@ Allows a system application to write data to the Peep Protect database.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.INSTALL_PLUGIN_BUNDLE
 
@@ -4641,7 +4699,7 @@ Allows an application to call the APIs for installing plugins.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 19
 
@@ -4653,7 +4711,7 @@ Allows an application to call the APIs for uninstalling plugins.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 19
 
@@ -4667,9 +4725,11 @@ This permission prevents unauthorized access to custom configuration files, such
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | wearables
+
+**Since**: 18
 
 ## ohos.permission.READ_DHA
 
@@ -4679,9 +4739,9 @@ Allows an application to read device health attestation information.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.WRITE_DHA
 
@@ -4691,9 +4751,9 @@ Allows an application to write device health attestation information.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.NOTIFY_DHA
 
@@ -4703,9 +4763,9 @@ Allows an application to notify the device health attestation event.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.CHANGE_DEFAULT_APPLICATION
 
@@ -4717,7 +4777,7 @@ Users can set default applications for the system, for example, specifying an ap
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 19
 
@@ -4729,9 +4789,9 @@ Allows an application to send notifications to the specified users in the system
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ALLOW_ACCESS_TIPS
 
@@ -4741,9 +4801,9 @@ Allows a system application to start the components provided by Tips.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.UPDATE_FONT
 
@@ -4753,7 +4813,7 @@ Allows an application to install and uninstall fonts.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -4769,7 +4829,7 @@ Allows an application to read the parental control website configuration.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -4783,11 +4843,25 @@ Allows an application to write the parental control website configuration.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 19
+
+## ohos.permission.MINORS_PROTECTION_UI
+
+Allows a system application to call the ExtensionAbility in youth mode.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
 
 ## ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -4799,7 +4873,7 @@ Allows an application to call the accessibility service extension APIs to query 
 
 **Supported devices**: general devices
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 20
 
@@ -4811,7 +4885,7 @@ Allows an application to read recording files from the file manager directory.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -4825,7 +4899,7 @@ Allows an application to write recording files to the file manager directory.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -4839,19 +4913,19 @@ Allows an application to access the sandbox directories of other applications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Valid since**: 17
 
 ## ohos.permission.REQUEST_DISABLE_NOTIFICATION
 
-Allows an application to run background request tasks without triggering notifications in the notification bar.
+Allows an application to run background upload and download tasks without triggering notifications in the notification bar.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
@@ -4859,13 +4933,13 @@ Allows an application to run background request tasks without triggering notific
 
 ## ohos.permission.RESTORE_APP
 
-Allows a system application to display a pop-up window for application restore.
+Allows a system application to display a dialog box for application restore.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -4879,7 +4953,7 @@ Allows a system application to call **io_uring** to perform async I/O operations
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
@@ -4893,7 +4967,7 @@ Allows an application to publish common events related to NFC notifications.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones
 
@@ -4907,7 +4981,7 @@ Allows a system application to inject playback audio into the capture stream.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
@@ -4923,7 +4997,7 @@ With this permission, the application can access kernel APIs across processes to
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
@@ -4937,7 +5011,7 @@ Allows an application to start virus protection tasks.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -4951,7 +5025,7 @@ Allows an application to upload sample files to the cloud.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -4965,7 +5039,7 @@ Allows an application to download policy files from the cloud.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -4979,7 +5053,7 @@ Allows an application to send notification to the virus protection page.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -4993,7 +5067,7 @@ Allows an application to access the virus protection page.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -5007,7 +5081,7 @@ Allows a system application to use the TvCooperation service.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: TVs
 
@@ -5021,7 +5095,7 @@ Allow an application to grant URI access permissions to the target application a
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
@@ -5035,7 +5109,7 @@ Allows an application to access the **/data/log** directory.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
@@ -5049,7 +5123,7 @@ Allows a system application to modify the encryption status of system files.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -5063,7 +5137,7 @@ Allows a system application to perform operations, such as transferring files, c
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -5077,7 +5151,7 @@ Allows a system application to query files and file transfer information.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -5091,7 +5165,7 @@ Allows a system application to create and delete workspaces.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -5105,7 +5179,7 @@ Allows the private space application to mount public directories from the main s
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | tablets
 
@@ -5119,7 +5193,7 @@ Allows an application to mount hdc debugging paths.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -5133,7 +5207,7 @@ Allows an application to access the remote photography card services.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: wearables
 
@@ -5147,7 +5221,7 @@ Allows a system application to trigger local **WantAgent** instances.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
@@ -5161,7 +5235,7 @@ Allows an application to use the distributed keystore capabilities.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | tablets | PCs/2-in-1 devices | wearables | TVs
 
@@ -5175,7 +5249,7 @@ Allows an application to access the sandbox directories of other extended applic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
@@ -5189,7 +5263,7 @@ Allows a system application to query the certificate information of independent 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -5203,7 +5277,7 @@ Allows a system application to set the certificate status of independent binary 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -5217,7 +5291,7 @@ Allows an application to obtain the content on the screen.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
@@ -5231,7 +5305,7 @@ Allows an application to simulate user operations.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
@@ -5245,7 +5319,7 @@ Allows an application to access the directory containing compatible applications
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -5261,7 +5335,7 @@ With this permission, the application can extend its implicit matching capabilit
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -5275,7 +5349,7 @@ Allows a system application to invoke the data identification and anonymization 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices | phones | tablets | TVs | cars
 
@@ -5289,11 +5363,11 @@ Allows an application to capture screenshots, including privacy windows.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
-**Valid since**: 13
+**Since**: 13
 
 ## ohos.permission.GET_BACKGROUND_TASK_INFO
 
@@ -5303,11 +5377,11 @@ Allows an application to obtain background task status.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.SET_BACKGROUND_TASK_STATE
 
@@ -5317,11 +5391,11 @@ Allows an application to obtain and set the user authorization status of special
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.SET_LAUNCH_REASON_MESSAGE
 
@@ -5331,9 +5405,9 @@ Allows a system application to set the launch reason when starting another appli
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.ACCESS_SUPER_HUB
 
@@ -5343,9 +5417,9 @@ Allows an application to access Super Hub.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 12
+**Since**: 12
 
 ## ohos.permission.ACCESS_USER_ACCOUNT_INFO
 
@@ -5355,9 +5429,9 @@ Allows a system application to access user account information.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.USE_USER_ACCESS_MANAGER
 
@@ -5367,9 +5441,9 @@ Allows an application to query and configure user identity authentication polici
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Valid since**: 18
+**Since**: 18
 
 ## ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
 
@@ -5379,7 +5453,7 @@ Allows an application to dynamically register or remove custom UTD data types.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
@@ -5393,11 +5467,11 @@ Allows a system application to access media sharing resources within the camera 
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
 
@@ -5407,11 +5481,11 @@ Allows an application that has accessed Cloud to manage cloud data.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.MANAGE_RISK_PHOTOS
 
@@ -5421,11 +5495,11 @@ Allows a system application to access potentially risky images or videos.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.READ_CLOUD_IMAGEVIDEO
 
@@ -5435,11 +5509,11 @@ Allows an application to read image or video files from the user's cloud storage
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.ACCESS_SECURE_FENCE
 
@@ -5449,11 +5523,11 @@ Allows a system application to access the security fence capability.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | cars
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.ACCESS_MINI_SYSTEM
 
@@ -5463,11 +5537,11 @@ Allows a system application to use the running capability framework.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Supported devices**: general devices
+**Supported devices**: phones | tablets | TVs | wearables
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
 
@@ -5479,7 +5553,7 @@ With this permission, the system application can help users add the widgets to d
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
 
@@ -5493,11 +5567,11 @@ Allows users to add WiseCard widgets of other apps.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
 
@@ -5507,11 +5581,11 @@ Allows an application to manage local education space accounts.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: tablets
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
 
@@ -5521,11 +5595,25 @@ Allows an application to query the properties of local education space accounts.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: tablets
 
-**Valid since**: 23
+**Since**: 23
+
+## ohos.permission.POWER_CONFIG
+
+Allows an application to read and write file nodes related to power configuration.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
 
 ## ohos.permission.MANAGE_STANDBY
 
@@ -5535,11 +5623,11 @@ Allows an application to manage the standby state of the page, such as controlli
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | TVs | PCs/2-in-1 devices | tablets | cars
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.ACCESS_STANDBY
 
@@ -5549,11 +5637,25 @@ Allows an application to query whether the page is in the standby state and acce
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | TVs | PCs/2-in-1 devices | tablets | cars
 
-**Valid since**: 23
+**Since**: 23
+
+## ohos.permission.RESTORE_END_NOTIFICATION
+
+Allows a system application to subscribe to the restore end event of the backup framework.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: general devices
+
+**Since**: 23
 
 ## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
@@ -5565,7 +5667,7 @@ With this permission, the application can call the API to obtain the local accou
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: PCs/2-in-1 devices
 
@@ -5579,7 +5681,7 @@ Allows a system application to obtain AgentCard information.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
@@ -5593,13 +5695,13 @@ Allows a system application to connect to the Agent.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
 **Valid since**: 24
 
-### ohos.permission.READ_APP_PROTECTION_RECORD
+## ohos.permission.READ_APP_PROTECTION_RECORD
 
 Allows a system application to read application protection records.
 
@@ -5607,13 +5709,13 @@ Allows a system application to read application protection records.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
 **Valid since**: 26.0.0
 
-### ohos.permission.WRITE_APP_PROTECTION_RECORD
+## ohos.permission.WRITE_APP_PROTECTION_RECORD
 
 Allows a system application to modify application protection records.
 
@@ -5621,13 +5723,13 @@ Allows a system application to modify application protection records.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
 **Valid since**: 26.0.0
 
-### ohos.permission.READ_SPAM_SHIELD_SETTING
+## ohos.permission.READ_SPAM_SHIELD_SETTING
 
 Allows a system application to read the spam shield settings.
 
@@ -5635,13 +5737,13 @@ Allows a system application to read the spam shield settings.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 26.0.0
 
-### ohos.permission.WRITE_SPAM_SHIELD_SETTING
+## ohos.permission.WRITE_SPAM_SHIELD_SETTING
 
 Allows a system application to modify the spam shield settings.
 
@@ -5649,7 +5751,7 @@ Allows a system application to modify the spam shield settings.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
@@ -5665,11 +5767,11 @@ With this permission, the application can always use sensors.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
-**Since**: 24
+**Valid since**: 24
 
 ## ohos.permission.MODIFY_AGENT_CARD
 
@@ -5679,13 +5781,13 @@ Allows a system application to update and delete AgentCard.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: general devices
 
 **Valid since**: 26.0.0
 
-### ohos.permission.START_ABILITY_TO_PAGE
+## ohos.permission.START_ABILITY_TO_PAGE
 
 Allows a system application to launch another application to a specified page stack.
 
@@ -5693,39 +5795,67 @@ Allows a system application to launch another application to a specified page st
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Supported devices**: Phone | Tablet
+**Supported devices**: phones | tablets
 
 **Valid since**: 26.0.0
 
-## ohos.permission.ENCRYPT_VOLUME_MANAGER
- 	 
-Allows an application to call the API of storage manager for managing volume encryption.
+## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
+
+Allows an application to obtain and set the car scenario mode.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Supported devices**: General
+**Supported devices**: cars
 
-**Since**: 24
+**Valid since**: 26.0.0
 
-## ohos.permission.ODD_MANAGER
+## ohos.permission.vehicle.AUTO_UPDATER
 
-Allows an application to call the API of storage manager for managing optical disc burning.
+Allows an application to send update instructions to the head unit.
 
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
-**Supported devices**: General
+**Supported devices**: cars
 
-**Since**: 24
+**Since**: 26.0.0
+
+## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
+
+Allows an application to subscribe to the notification service.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ASSET_CACHE_MANAGER
+
+Allows an application to deliver, control, and query tasks through the asset cache service management APIs.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 24
 
 ## ohos.permission.DCAS_OTA_PERMISSION
 
@@ -5735,8 +5865,410 @@ Allows an application and a service to access the device-side model deployment m
 
 **Authorization mode**: system_grant
 
+**Certificate-based authorization**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 24
+
+## ohos.permission.ACCESS_SUPPORT_FEEDBACK
+
+Allows a system application to open the Feedback screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.0
+
+## ohos.permission.REVOKE_FILE_ACCESS_PERSIST
+
+Allows an application to revoke persistent file authorizations for specified applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ACCESS_SHARED_FILE
+
+Allows an application to obtain and access shared files.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
+## ohos.permission.GET_FILE_ACCESS_PERSIST
+
+Allows an application to retrieve persistent file authorization records for specified applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ACCESS_SUPPORT_HELP
+
+Allows a system application to launch the intelligent customer service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY_ABILITY
+
+Allows a system application to use the unified management capabilities of the digital certificate service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets
+
+**Valid since**: 26.0.0
+
+## ohos.permission.MANAGE_VOLUME_ENCRYPTION_POLICY
+
+Allows an application to configure the encryption policy for a volume.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
 **Enable via ACL**: true
 
-**Supported devices**: General
+**Supported devices**: PCs/2-in-1 devices
 
-**Since**: 24
+**Valid since**: 26.0.0
+
+## ohos.permission.SUBSCRIBE_OUTDOOR_EXPLORATION_SERVICE
+
+Allows an application to enable the outdoor exploration service to provide the altitude subscription capability.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ACCESS_INTIMATE_RELATION_INFO
+
+Allows an application to obtain information about close contacts and open the close contact page.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.0
+
+## ohos.permission.QUERY_TOOL_PERMISSIONS
+
+Allows a system application to query the permissions required for running a CLI or skill.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
+## ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
+
+Allows a system application to set and query the permissions required for running a specified CLI or skill.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ACCESS_DEVICE_INTERCONNECTIVITY
+
+Allows an application to use the device interconnectivity capability.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
+**Valid since**: 24
+
+## ohos.permission.GET_TICKET_INFO
+
+Allows a system application to generate integrity protection credentials for sensitive messages.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
+## ohos.permission.MANAGE_AOD
+
+Allows an application to trigger the Always On Display (AOD) mode or exit it, and manage the AOD status.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets
+
+**Valid since**: 26.0.0
+
+## ohos.permission.MANAGE_SKILL_PRIVILEGE
+     
+Allows an application to use skills.
+
+With this permission, the application can:
+
+- Query information about skill packages.
+- Listen for events such as the installation, update, and uninstallation of skill packages.
+- Access the sandbox directory where skill packages are installed.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_VISION
+
+Allows a system application to query the status of visual-related accessibility functions via CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_HEARING
+
+Allows a system application to query the status of hearing-related accessibility functions via CLI commands. 
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_ACTION
+
+Allows a system application to query the status of interaction-related accessibility functions via CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.CONNECT_GAME_ACCELERATION
+
+Allows an application to adjust the policy in gaming scenarios.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | TVs
+
+**Valid since**: 26.0.0
+
+## ohos.permission.QUERY_CLI_TOOL
+
+Allows a system application to query CLI tools.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.0
+
+## ohos.permission.EXEC_CLI_TOOL
+
+Allows a system application to run CLI tools.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.0
+
+## ohos.permission.cli.GET_STORAGE_MANAGER
+
+Allows an application to query storage using CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars| lite wearables
+
+**Valid since**: 26.0.0
+
+## ohos.permission.cli.START_ABILITY
+
+Allows an agent application to start a specific application using CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.cli.KILL_APP_PROCESSES
+
+Allows an agent application to stop a specific application using CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ACCESS_MAPDATA_DIR
+
+Allows a system application to read and write map data.
+
+With this permission, the application can access and modify the offline map data downloaded to the device.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones
+
+**Valid since**: 20
+
+## ohos.permission.ACCESS_FIDO2_ONLINEAUTH_PRIVILEGE
+
+Allows a system application to use the credential management feature of the passkey service.
+
+With this permission, the system application can obtain and delete all credentials of the passkey service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 20
+
+## ohos.permission.QUERY_SPACE_OPTIMIZATION
+
+Allows an application to query the space optimization effect.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ARKWEBCORE_SYS_CAP
+
+Allows a system application to invoke ArkWebCore extended capabilities.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.0.0

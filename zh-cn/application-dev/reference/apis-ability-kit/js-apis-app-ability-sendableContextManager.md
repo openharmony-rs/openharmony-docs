@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6; @xuzhihao666-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 sendableContextManager模块提供Context与[SendableContext](js-apis-inner-application-sendableContext.md)相互转换的能力。
 
@@ -114,7 +114,7 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -183,7 +183,8 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -218,7 +219,8 @@ workerPort.onmessage = (e: MessageEvents) => {
       // 获取context后获取沙箱路径
       hilog.info(0x0000, 'testTag', 'worker context.databaseDir: %{public}s', context.databaseDir);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertToContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertToContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -297,7 +299,8 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -332,7 +335,8 @@ workerPort.onmessage = (e: MessageEvents) => {
       // 获取context后获取沙箱路径
       hilog.info(0x0000, 'testTag', 'worker context.databaseDir: %{public}s', context.databaseDir);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertToApplicationContext failed %{public}s', JSON.stringify(error));
+      hilog.error(0x0000,
+        'testTag', `convertToApplicationContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -380,7 +384,7 @@ convertToAbilityStageContext(sendableContext: SendableContext): common.AbilitySt
 
 主线程传递Context：
 ```ts
-import { UIAbility, sendableContextManager } from '@kit.AbilityKit';
+import { AbilityStage, sendableContextManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { worker } from '@kit.ArkTS';
 
@@ -395,7 +399,7 @@ export class SendableObject {
   contextName: string;
 }
 
-export default class EntryAbility extends UIAbility {
+export default class MyAbilityStage extends AbilityStage {
   worker: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
 
   onCreate(): void {
@@ -409,7 +413,8 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'AbilityStage post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -444,7 +449,8 @@ workerPort.onmessage = (e: MessageEvents) => {
       // 获取context后获取沙箱路径
       hilog.info(0x0000, 'testTag', 'worker context.databaseDir: %{public}s', context.databaseDir);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertToAbilityStageContext failed %{public}s', JSON.stringify(error));
+      hilog.error(0x0000,
+        'testTag', `convertToAbilityStageContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -521,7 +527,8 @@ export default class EntryAbility extends UIAbility {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability post message');
       this.worker.postMessageWithSharedSendable(object);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertFromContext failed %{public}s', JSON.stringify(error));
+      hilog.error(
+        0x0000, 'testTag', `convertFromContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -556,7 +563,8 @@ workerPort.onmessage = (e: MessageEvents) => {
       // 获取context后获取沙箱路径
       hilog.info(0x0000, 'testTag', 'worker context.databaseDir: %{public}s', context.databaseDir);
     } catch (error) {
-      hilog.error(0x0000, 'testTag', 'convertToUIAbilityContext failed %{public}s', JSON.stringify(error));
+      hilog.error(0x0000,
+        'testTag', `convertToUIAbilityContext failed, error code: ${error.code}, error msg: ${error.message}`);
     }
   }
 }
@@ -587,7 +595,7 @@ setEventHubMultithreadingEnabled(context: common.Context, enabled: boolean): voi
 
 | 参数名  | 类型           | 必填 | 说明                                                         |
 | ------- | -------------- | ---- | ------------------------------------------------------------ |
-| context | [common.Context](js-apis-inner-application-context.md) | 是   | Context对象。其中，Eventhub支持传递的序列化数据类型参见[序列化支持的类型](../apis-arkts/js-apis-taskpool.md#序列化支持类型)，数据大小不超过16MB。 |
+| context | [common.Context](js-apis-inner-application-context.md) | 是   | Context对象。其中，EventHub支持传递的序列化数据类型参见[序列化支持类型](../apis-arkts/js-apis-taskpool.md#序列化支持类型)，数据大小不超过16MB。 |
 | enabled  | boolean        | 是   | 表示是否启用Context的EventHub跨线程通信能力。<br>- true：表示启用跨线程通信能力，数据将通过引用的方式传递。<br>- false：表示禁用跨线程通信能力，数据将通过序列化的方式传递，即发送端线程与接收端线程的数据相互独立。 |
 
 **示例：**

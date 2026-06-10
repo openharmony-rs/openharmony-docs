@@ -235,4 +235,4 @@ The following describes the development procedure specific to each application s
 
 The following samples are provided to help you better understand how to develop traffic management features:
 
-- [Traffic Management] (https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case)
+- [Traffic Management](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case)

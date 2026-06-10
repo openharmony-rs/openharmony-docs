@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @zcdqs-->
+<!--Owner: @yylong; @rongShao-Z-->
 <!--Designer: @yylong; @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The common attributes and events for scrollable components currently only support the [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md) components.
@@ -96,6 +96,34 @@ Sets the scrollbar width. This attribute cannot be set in percentage. After the 
 | Name| Type                      | Mandatory| Description                                     |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
 | value  | number&nbsp;\|&nbsp;string | Yes  | Scrollbar width.<br>Default value: **4**<br>Unit: vp<br>If this parameter is set to a value less than or equal to 0, the default value is used. The value **0** means not to show the scrollbar.|
+
+**Return value**
+
+| Type| Description          |
+| --- | -------------- |
+| T | Current scrollable component.|
+
+### scrollBarWidth
+
+scrollBarWidth(value: number | string | Resource): T
+
+Sets the scrollbar width. This attribute cannot be set in percentage. After the width is set, the scrollbar is displayed with the set width in normal state and pressed state. If the set width exceeds the height of the scrollable component on the main axis, the scrollbar width changes to 4 vp. The **Resource** type is supported.
+
+If this attribute is not set, the scrollbar width is 4 vp.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description                                                        |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | number&nbsp;\|&nbsp;string \|&nbsp;[Resource](ts-types.md#resource) | Yes  | Scrollbar width.<br>Unit: vp<br>Value range: [0, +∞). If this parameter is set to a value less than 0, **4vp** is used. The value **0** means not to show the scrollbar.|
 
 **Return value**
 
@@ -323,6 +351,34 @@ Sets the margin of the scrollbar. The margin is calculated from the offset dista
 | --- | -------------- |
 | T | Current scrollable component.|
 
+### autoAdjustScrollBarMargin
+
+autoAdjustScrollBarMargin(enable: boolean | undefined): T
+
+Sets whether to automatically adjust the margin of the scrollbar. By default, the margin is not automatically adjusted.
+
+When the automatic margin adjustment feature is enabled, the scrolling direction of the scrollbar avoids the [padding](ts-universal-attributes-size.md#padding), [safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14) and [contentStartOffset](#contentstartoffset22)/[contentEndOffset](#contentendoffset22) areas of the component. If the [scrollBarMargin](#scrollbarmargin20) attribute is set, this feature does not take effect. If the sum of the horizontal [padding](ts-universal-attributes-size.md#padding), [safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14), [contentStartOffset](#contentstartoffset22) and [contentEndOffset](#contentendoffset22) values is greater than the width of the component, or the sum of the vertical values is greater than the height of the component, the scrollbar is not displayed.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                 |
+| ------ | ------- | ---- | ------------------------------------- |
+| enable  | boolean&nbsp;\|&nbsp;undefined  | Yes  | Whether to automatically adjust the margin.<br>**true**: yes.<br>**false**: no.<br>**undefined**: no.|
+
+**Return value**
+
+| Type| Description          |
+| --- | -------------- |
+| T | Current component.|
+
 ### digitalCrownSensitivity<sup>18+</sup>
 
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>): T
@@ -394,6 +450,34 @@ If the combined value of contentStartOffset and contentEndOffset exceeds the scr
 | Type| Description          |
 | --- | -------------- |
 | T | Current scrollable component.|
+
+
+### enableScrollWithMouse
+
+enableScrollWithMouse(enabled: boolean | undefined): T
+
+Sets whether to support scrolling by dragging with the left mouse button pressed. If this API is not called, scrolling by dragging with the left mouse button pressed is not supported by default.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                         |
+| ------ | ------ | ---- | --------------------------------------------- |
+| enabled  | boolean \| undefined | Yes  | Whether to support scrolling by dragging with the left mouse button pressed.<br>**true**: yes.<br>**false**: no.<br>**undefined**: no.|
+
+**Return value**
+
+| Type| Description          |
+| --- | -------------- |
+| T | Current component.|
 
 ## Events
 
@@ -766,14 +850,13 @@ Sets attributes of the **List** or **Grid** component in edit mode.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name          | Type                                                        | Read-Only| Optional| Description                                                        |
 | ---------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| enableGatherSelectedItemsAnimation | boolean | No  | Yes| Whether to enable the multi-selection gather animation. If this parameter is set to **true**, the gather animation is enabled. If this parameter is set to **false**, the gather animation is disabled.<br>The multi-selection gather animation is displayed only when [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8) is set on **GridItem** or **ListItem**, **responseType** is set to [ResponseType](ts-appendix-enums.md#responsetype8).LongPress, and [preview](ts-universal-attributes-menu.md#contextmenuoptions10) is set to **MenuPreviewMode.IMAGE** or **CustomBuilder**.<br>If [drag events](ts-universal-events-drag-drop.md) are set on **GridItem** or **ListItem**, whether to enable the gather animation is subject to the [dragPreviewOptions](ts-universal-attributes-drag-drop.md#dragpreviewoptions11) setting.<br>Default value: **false**.|
-| onGetPreviewBadge | [OnGetPreviewBadgeCallback](#ongetpreviewbadgecallback23) | No  | Yes| Callback triggered to obtain the number of selected items when the animation for gathering selected items upon long press is about to start.<br>If this parameter is omitted, the number of selected items within the display range of the **Grid** or **List** component is used as the badge for the menu preview image shown after the animation for gathering selected items upon long press.|
+| enableGatherSelectedItemsAnimation | boolean | No  | Yes| Whether to enable the multi-selection gather animation. If this parameter is set to **true**, the gather animation is enabled. If this parameter is set to **false**, the gather animation is disabled.<br>The multi-selection gather animation is displayed only when [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8) is set on **GridItem** or **ListItem**, **responseType** is set to [ResponseType](ts-appendix-enums.md#responsetype8).LongPress, and [preview](ts-universal-attributes-menu.md#contextmenuoptions10) is set to **MenuPreviewMode.IMAGE** or **CustomBuilder**.<br>If [drag events](ts-universal-events-drag-drop.md) are set on **GridItem** or **ListItem**, whether to enable the gather animation is subject to the [dragPreviewOptions](ts-universal-attributes-drag-drop.md#dragpreviewoptions11) setting.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| onGetPreviewBadge | [OnGetPreviewBadgeCallback](#ongetpreviewbadgecallback23) | No  | Yes| Callback triggered to obtain the number of selected items when the animation for gathering selected items upon long press is about to start.<br>If this parameter is omitted, the number of selected items within the display range of the **Grid** or **List** component is used as the badge for the menu preview image shown after the animation for gathering selected items upon long press.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| useDefaultMultiSelectStyle | boolean | No  | Yes| Whether to use the default multi-selection style.<br>The value **true** indicates that the check box is displayed after the **GridItem** or **ListItem** enters the multi-selection state. The value **false** indicates that no default style is available after the GridItem or ListItem enters the multi-selection state.<br>Default value: **true**<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## EffectEdge<sup>18+</sup>
 
@@ -1168,6 +1251,32 @@ Defines the callback invoked when the scrollable component stops being dragged.
 | --------  | ------- | ---- | -------------------------------------------------------------------------------- |
 | willFling | boolean | Yes  | Whether an inertial animation will follow. **true**: An inertial animation will follow. **false**: No inertial animation will follow.|
 
+## OnVisibleIndexesChangeCallback
+
+type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
+
+Called when the index of the child component displayed in the [LazyColumnLayout](ts-container-lazycolumnlayout.md) component changes.
+
+> **NOTE**
+>
+> - If **LazyColumnLayout** has no child components, both **start** and **end** return **-1**.
+> - If **LazyColumnLayout** has no child components in the visible area, both **start** and **end** return **-1**.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                 |
+| ------ | ------ | ---- | ------------------------------------- |
+| start  | number | Yes  | Index of the start position in the visible area.<br>Value range: [0, total number of child nodes - 1].|
+| end    | number | Yes  | Index of the end position in the visible area.<br>Value range: [0, total number of child nodes - 1].|
+
 ## Example
 
 ### Example 1: Implementing Gesture-based Scrolling
@@ -1400,3 +1509,4 @@ struct ListExample {
 ```
 
 ![scrollBarMargin_list](figures/scrollBarMargin_list.gif)
+<!--no_check-->

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -63,7 +63,7 @@ Since the variables decorated with \@Param cannot be changed locally, you can us
 
 You can use \@Event to change a variable in the parent component. When the variable is used as the data source of the \@Param variable in the child component, this change will be synchronized accordingly.
 
-<!-- @[EventDecoratorTest1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest1.ets) -->
+<!-- @[EventDecoratorTest1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest1.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -101,6 +101,7 @@ struct Child {
     Column() {
       Text(`${this.title}`)
         .fontColor(this.fontColor)
+      // Use changeFactory to change the type variable in the parent component.
       Button('change to Title Two')
         .onClick(() => {
           this.changeFactory(2);
@@ -116,13 +117,12 @@ struct Child {
 
 Note that using \@Event to change the value of the parent component takes effect immediately. However, the process of synchronizing the change from the parent component to the child component is asynchronous. That is, after the method of \@Event is called, the value of the child component does not change immediately. This is because \@Event passes the actual change capability of the child component value to the parent component for processing. After the parent component determines how to process the value, the final value is synchronized back to the child component before rendering.
 
-<!-- @[EventDecoratorTest2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest2.ets) -->
+<!-- @[EventDecoratorTest2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest2.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG = '[Sample_EventDecorator]';
 const DOMAIN = 0xF811;
-const BUNDLE = 'EventDecorator_';
 @ComponentV2
 struct Child2 {
   @Param index: number = 0;
@@ -133,7 +133,8 @@ struct Child2 {
       Text(`Child index: ${this.index}`)
         .onClick(() => {
           this.changeIndex(20);
-          hilog.info(DOMAIN, TAG, BUNDLE, `after changeIndex ${this.index}`);
+          // Output the child component this.index and verify that the value is not immediately synchronized back to the child component after @Event is called.
+          hilog.info(DOMAIN, TAG, `after changeIndex ${this.index}`);
         })
     }
   }
@@ -149,7 +150,8 @@ struct Index2 {
         index: this.index,
         changeIndex: (val: number) => {
           this.index = val;
-          hilog.info(DOMAIN, TAG, BUNDLE, `in changeIndex ${this.index}`);
+          // Output the index of the parent component for comparison with the logs on the child component side.
+          hilog.info(DOMAIN, TAG, `in changeIndex ${this.index}`);
         }
       })
     }

@@ -1,9 +1,9 @@
 # @ohos.app.form.formInfo (formInfo)(系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 formInfo模块提供了卡片信息和状态等相关类型和枚举。
@@ -27,15 +27,16 @@ import { formInfo } from '@kit.FormKit';
 
 | 名称        | 类型                 | 只读    | 可选    | 说明                                                         |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
-| previewImages<sup>18+</sup> | Array&lt;number&gt; | 是 | 是 | 卡片预览图资源ID。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| previewImages<sup>18+</sup> | Array&lt;number&gt; | 是 | 是 | 卡片预览图资源ID。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**说明：** 值为正整数的数组。|
 | enableBlurBackground<sup>18+</sup>  | boolean               | 是    | 是     | 卡片是否使用模糊背板。<br/>-&nbsp;true：开启模糊背板。<br/>-&nbsp;false：关闭模糊背板。|
 | renderingMode<sup>18+</sup>|[RenderingMode](./js-apis-app-form-formInfo-sys.md#renderingmode18)|是|是|卡片渲染模式。|
 | resizable<sup>20+</sup> | boolean  | 是    | 是     | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br/>-&nbsp;true：可以调整大小。<br/>-&nbsp;false：不可以调整大小。 |
 | groupId<sup>20+</sup> | string     | 是    | 是     | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享。例如，卡片A和B的groupId相同且resizable均为true，则卡片A可以调整为卡片A和B的supportDimensions配置中的任意尺寸。<br>推荐多张卡片功能相同且需要调整卡片尺寸时配置。 |
 | isTemplateForm<sup>23+</sup> | boolean  | 是    | 是     | 表示卡片是否是模板卡。<br/>-&nbsp;true：是模板卡。<br/>-&nbsp;false：不是模板卡。 |
-| isStandbySupported<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否支持在灵动显示界面展示。<br/>-&nbsp;true：支持灵动显示。<br/>-&nbsp;false：不支持灵动显示。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| isStandbyAdapted<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否已适配灵动显示规则。<br/>-&nbsp;true：已适配灵动显示。<br/>-&nbsp;false：未适配灵动显示。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| isPrivacySensitive<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否是隐私敏感卡片。<br/>-&nbsp;true：是隐私敏感卡片。<br/>-&nbsp;false：不是隐私敏感卡片。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| isStandbySupported<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否支持在灵动显示界面展示。<br/>-&nbsp;true：支持灵动显示。<br/>-&nbsp;false：不支持灵动显示。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| isStandbyAdapted<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否已适配灵动显示规则。<br/>-&nbsp;true：已适配灵动显示。<br/>-&nbsp;false：未适配灵动显示。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| isPrivacySensitive<sup>23+</sup> | boolean  | 是    | 是     | 卡片是否是隐私敏感卡片。<br/>-&nbsp;true：是隐私敏感卡片。<br/>-&nbsp;false：不是隐私敏感卡片。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| isFontScaleFollowSystem | boolean  | 否    | 是     | 卡片的字体缩放是否跟随系统，默认值为true。<br/>-&nbsp;true：字体缩放跟随系统。<br/>-&nbsp;false：字体缩放不会跟随系统。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0 |
 
 ##  FormParam
 
@@ -52,6 +53,8 @@ import { formInfo } from '@kit.FormKit';
 | TEMPLATE_FORM_DATA<sup>23+</sup>   | 'ohos.extra.param.key.template_form_data'   | 模板卡片数据。 <br>**系统接口：** 此接口为系统接口。  |
 | TEMPLATE_FORM_DISPLAY_NAME<sup>23+</sup>    | 'ohos.extra.param.key.template_form_display_name'   | 模板卡片显示名称。 <br>**系统接口：** 此接口为系统接口。  |
 | TEMPLATE_FORM_DESCRIPTION<sup>23+</sup>    | 'ohos.extra.param.key.template_form_description'   | 模板卡片描述　　。 <br>**系统接口：** 此接口为系统接口。  |
+| FORM_FONT_SIZE_SCALE_KEY    | 'ohos.extra.param.key.form_font_size_scale'   | 卡片字体大小缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0  |
+| FORM_FONT_WEIGHT_SCALE_KEY    | 'ohos.extra.param.key.form_font_weight_scale'   | 卡片字重缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0  |
 
 ## FormUsageState<sup>11+</sup>
 
@@ -112,8 +115,8 @@ import { formInfo } from '@kit.FormKit';
 | 名称        | 类型   | 必填         |说明         |
 | ----------- | ---- | ------------ |------------ |
 | bundleName<sup>12+</sup>    | string    |否    | 选填，仅保留含bundleName与提供值相符的卡片信息，未填写时则不通过bundleName进行过滤。<br>**系统接口：** 此接口为系统接口。  |
-| supportedDimensions<sup>12+</sup> | Array\<number\> |否    | 选填，仅保留含supportedDimensions提供值相符的卡片信息，未填写时则不通过supportedDimensions进行过滤。<br>**系统接口：** 此接口为系统接口。  |
-| supportedShapes<sup>12+</sup>  | Array\<number\> |否    | 选填，仅保留含supportedShapes提供值相符的卡片信息，未填写时则不通过supportedShapes进行过滤。<br>**系统接口：** 此接口为系统接口。   |
+| supportedDimensions<sup>12+</sup> | Array&lt;number&gt; |否    | 选填，仅保留含supportedDimensions提供值相符的卡片信息，未填写时则不通过supportedDimensions进行过滤。<br>**系统接口：** 此接口为系统接口。<br>**说明：** 最大长度为9，数值取值范围[1, 9]的的整数的数组，数值5从API version 9开始支持，从API version 20开始废弃。<br>具体规格参考 [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension)。  |
+| supportedShapes<sup>12+</sup>  | Array&lt;number&gt; |否    | 选填，仅保留含supportedShapes提供值相符的卡片信息，未填写时则不通过supportedShapes进行过滤。<br>**系统接口：** 此接口为系统接口。<br>**说明：** 只有1和2两个值。1代表方形，2代表圆形。   |
 
 ## FormLocation<sup>12+</sup>
 
@@ -214,7 +217,7 @@ import { formInfo } from '@kit.FormKit';
 | abilityName | string | 否  | 是   | 趣味交互场景 extensionAbility 名称，默认为空。 |
 | targetBundleName  | string | 否  | 否   | 趣味交互场景[主包包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。        |
 | subBundleName  | string | 否  | 否   | 趣味交互场景趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。 |
-| keepStateDuration  | number | 否  | 是   | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为[0,10000]的整数，超过取值范围则取默认值10000。 |
+| keepStateDuration  | number | 否  | 是   | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为(0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为(0,10000]的整数，超过取值范围则取默认值10000。 |
 
 ## SceneAnimationParams<sup>20+</sup>
 
@@ -228,10 +231,11 @@ import { formInfo } from '@kit.FormKit';
 |-----|-----|------|----|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | abilityName | string | 否 | 否  | 场景动效 extensionAbility 名称，如卡片提供方LiveFormExtensionAbility名称。                                     |
 | disabledDesktopBehaviors | string | 否 | 是  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，不同行为通过 \| 拼接，例如SWIPE_DESKTOP\|PULL_DOWN_SEARCH。缺省表示不禁用任何行为。 |
+| triggerTypes    | Array&lt;[SceneAnimationTriggerType](#sceneanimationtriggertype)&gt;      | 否    | 是     | 场景动效卡片触发类型。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0  |
 
 ## GetFormRectInfoCallback<sup>20+</sup>
 
-### (formId: string): Promise&lt;formInfo.Rect&gt;
+type GetFormRectInfoCallback = (formId: string) => Promise&lt;formInfo.Rect&gt;
 
 卡片位置、尺寸查询回调。使用Promise异步回调。
 
@@ -249,7 +253,7 @@ import { formInfo } from '@kit.FormKit';
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的的位置信息和卡片尺寸信息，单位vp。 |
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的的位置信息和卡片尺寸信息。 |
 
 **错误码：**
 
@@ -387,5 +391,66 @@ let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleContro
   (info: formInfo.PublishFormCrossBundleInfo): boolean => {
     console.info('publish form cross bundle info callback success.');
     return true;
+  };
+```
+
+## SceneAnimationTriggerType
+
+场景动效卡片触发类型枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+| 名称        |  值   | 说明         |
+| ----------- | ---- | ------------ |
+| SHAKE | 1   | 摇一摇。 |
+
+## GetWantParamsCallback
+
+type GetWantParamsCallback = (formInfo: Array&lt;FormInfo&gt;) => Array&lt;Record&lt;string, Object&gt;&gt;
+
+获取卡片参数回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------|------|----|------|
+| formInfo | Array&lt;[FormInfo](#forminfo)&gt; | 是 | 卡片信息列表。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Array&lt;Record&lt;string, Object&gt;&gt; | 返回卡片参数列表，与输入的卡片信息列表一一对应。 |
+
+**示例：**
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let getWantParamsCallback: formInfo.GetWantParamsCallback =
+  (formInfo: Array<formInfo.FormInfo>): Array<Record<string, Object>> => {
+    console.info('get want params callback, form count: ' + formInfo.length);
+    let wantParamsList: Array<Record<string, Object>> = [];
+    for (let i = 0; i < formInfo.length; i++) {
+      let params: Record<string, Object> = {
+        'key': 'value'
+      };
+      wantParamsList.push(params);
+    }
+    return wantParamsList;
   };
 ```

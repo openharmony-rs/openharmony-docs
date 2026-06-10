@@ -20,3 +20,7 @@
   - [Managing System Albums](photoAccessHelper-systemAlbum-guidelines.md)
   - [Observing Media Assets](photoAccessHelper-notify-guidelines.md)
   - [Requesting Media Assets Using MediaAssetManager (C/C++)](using-ndk-mediaassetmanager-for-request-resource.md)
+- Media Library Kit FAQs<!--media-library-kit-frequently-asked-questions-->
+  - [How to Properly Manage Media Assets](medialibrary-faqs/medialibrary-asset-management-faq.md)
+  - [How to Correctly Identify Media Asset Types](medialibrary-faqs/medialibrary-asset-judgment-faq.md)
+  - [Geolocation Information Is Missing from Images](medialibrary-faqs/medialibrary-asset-hidesensitive-faq.md)

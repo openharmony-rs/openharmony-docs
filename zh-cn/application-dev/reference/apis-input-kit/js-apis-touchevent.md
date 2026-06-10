@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 设备上报的触屏输入事件，继承自[InputEvent](./js-apis-inputevent.md)。
 
@@ -31,9 +31,9 @@ import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 | DOWN   | 1 | 触屏按下。 |
 | MOVE   | 2 | 触屏移动。 |
 | UP     | 3 | 触屏抬起。 |
-| PULL_DOWN  | 4 | 触屏开始拖拽。<br/>**起始版本：** 26.0.0 |
-| PULL_MOVE  | 5 | 触屏拖拽移动。<br/>**起始版本：** 26.0.0 |
-| PULL_UP    | 6 | 触屏结束拖拽。<br/>**起始版本：** 26.0.0 |
+| PULL_DOWN  | 4 | 触屏开始拖拽。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| PULL_MOVE  | 5 | 触屏拖拽移动。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| PULL_UP    | 6 | 触屏结束拖拽。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## ToolType
 
@@ -73,25 +73,25 @@ import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 | 名称          | 类型   | 只读   | 可选   | 说明                                  |
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
 | id          | number | 否    | 否    | 触屏输入事件ID。                                |
-| pressedTime | number | 否    | 否    | 按下时间戳，单位：μs。                           |
-| screenX     | number | 否    | 否    | 该触屏输入事件以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数。    |
-| screenY     | number | 否    | 否    | 该触屏输入事件以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数。    |
-| windowX     | number | 否    | 否    | 触屏所在窗口左上角为原点的相对坐标系的X坐标。当前仅支持整数。 |
-| windowY     | number | 否    | 否    | 触屏所在窗口左上角为原点的相对坐标系的Y坐标。当前仅支持整数。 |
+| pressedTime | number | 否    | 否    | 按下时间戳，表示系统启动运行至今逝去的微秒数，单位为微秒（μs）。                           |
+| screenX     | number | 否    | 否    | 该触屏输入事件以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数，单位为像素（px）。    |
+| screenY     | number | 否    | 否    | 该触屏输入事件以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数，单位为像素（px）。    |
+| windowX     | number | 否    | 否    | 触屏所在窗口左上角为原点的相对坐标系的X坐标。当前仅支持整数，单位为像素（px）。 |
+| windowY     | number | 否    | 否    | 触屏所在窗口左上角为原点的相对坐标系的Y坐标。当前仅支持整数，单位为像素（px）。 |
 | pressure    | number | 否    | 否    | 压力值，取值范围是[0.0, 1.0]，0.0表示不支持。       |
-| width       | number | 否    | 否    | 触屏区域的宽度。当前仅支持整数。         |
-| height      | number | 否    | 否    | 触屏区域的高度。当前仅支持整数。         |
-| tiltX       | number | 否    | 否    | 相对YZ平面的角度，取值的范围[-90, 90]，其中正值是向右倾斜。 |
-| tiltY       | number | 否    | 否    | 相对XZ平面的角度，取值的范围[-90, 90]，其中正值是向下倾斜。 |
-| toolX       | number | 否    | 否    | 工具区域的中心点以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数。  |
-| toolY       | number | 否    | 否    | 工具区域的中心点以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数。  |
-| toolWidth   | number | 否    | 否    | 工具区域宽度。当前仅支持整数。  |
-| toolHeight  | number | 否    | 否    | 工具区域高度。当前仅支持整数。  |
-| rawX        | number | 否    | 否    | 输入设备上的X坐标。当前仅支持整数。 |
-| rawY        | number | 否    | 否    | 输入设备上的Y坐标。当前仅支持整数。 |
+| width       | number | 否    | 否    | 触屏区域的宽度，单位为像素（px）。当前仅支持整数。         |
+| height      | number | 否    | 否    | 触屏区域的高度，单位为像素（px）。当前仅支持整数。         |
+| tiltX       | number | 否    | 否    | 相对YZ平面的角度，单位为度，取值的范围[-90, 90]，其中正值是向右倾斜。 |
+| tiltY       | number | 否    | 否    | 相对XZ平面的角度，单位为度，取值的范围[-90, 90]，其中正值是向下倾斜。 |
+| toolX       | number | 否    | 否    | 工具区域的中心点以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数，单位为像素（px）。  |
+| toolY       | number | 否    | 否    | 工具区域的中心点以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数，单位为像素（px）。  |
+| toolWidth   | number | 否    | 否    | 工具区域宽度，单位为像素（px）。当前仅支持整数。  |
+| toolHeight  | number | 否    | 否    | 工具区域高度，单位为像素（px）。当前仅支持整数。  |
+| rawX        | number | 否    | 否    | 输入设备上的X坐标。当前仅支持整数，单位为像素（px）。 |
+| rawY        | number | 否    | 否    | 输入设备上的Y坐标。当前仅支持整数，单位为像素（px）。 |
 | toolType    | [ToolType](#tooltype) | 否    | 否    | 工具类型。                                |
-| globalX<sup>20+</sup> | number | 否    | 是    | 该触屏输入事件以主屏左上角为原点的全局坐标系的X坐标。<!--Del-->作为入参时，若接口参数中的[TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的X坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。 |
-| globalY<sup>20+</sup> | number | 否    | 是    | 该触屏输入事件以主屏左上角为原点的全局坐标系的Y坐标。<!--Del-->作为入参时，若接口参数中的[TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的Y坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。 |
+| globalX<sup>20+</sup> | number | 否    | 是    | 该触屏输入事件以主屏左上角为原点的全局坐标系的X坐标，单位为像素（px）。<!--Del-->作为入参时，若接口参数中的[TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的X坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。 |
+| globalY<sup>20+</sup> | number | 否    | 是    | 该触屏输入事件以主屏左上角为原点的全局坐标系的Y坐标，单位为像素（px）。<!--Del-->作为入参时，若接口参数中的[TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的Y坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。 |
 
 ## TouchEvent
 

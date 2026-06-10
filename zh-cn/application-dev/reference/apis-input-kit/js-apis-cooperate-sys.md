@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 键鼠穿越功能模块，提供两台或多台设备组网协同后键鼠共享能力，实现键鼠输入设备的跨设备协同操作。
 
@@ -27,7 +27,7 @@ import { inputDeviceCooperate } from '@kit.InputKit';
 
 enable(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-开启、关闭键鼠穿越，使用AsyncCallback异步方式返回结果。
+开启、关闭键鼠穿越，使用callback异步回调。
 
 > **说明：**
 >
@@ -40,16 +40,17 @@ enable(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 参数名    | 类型      | 必填  | 说明    |
 | -------- | ------------------------- | ---- | --------------------------- |
 | enable   | boolean                   | 是   | 键鼠穿越使能状态。 |
-| callback | AsyncCallback&lt;void&gt;  | 是  | 回调函数，异步返回键鼠穿越开启、关闭结果。   |
+| callback | AsyncCallback&lt;void&gt;  | 是  | 回调函数。当开启键鼠穿越成功，err为undefined，否则为错误对象。   |
 
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息          |
-| -------- | -----------------|
-| 401 | Parameter error.      |
 
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -65,15 +66,15 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDeviceCooperate.enable(true, (error: BusinessError) => {
+           inputDeviceCooperate.enable(true, (error: BusinessError) => {
               if (error) {
-                console.error(`Keyboard mouse crossing enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to enable keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Keyboard mouse crossing enable success.`);
+              console.info(`Succeeded in enabling keyboard mouse crossing.`);
             });
           } catch (error) {
-            console.error(`Keyboard mouse crossing enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to enable keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -103,15 +104,17 @@ enable(enable: boolean): Promise&lt;void&gt;
 
 | 类型                 | 说明                     |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt;      | Promise对象，无返回结果的Promise对象。        |
+| Promise&lt;void&gt;      | Promise对象，无返回结果。        |
 
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息          |
-| -------- | -----------------|
-| 401 | Parameter error.      |
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -126,15 +129,11 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          try {
-            inputDeviceCooperate.enable(true).then(() => {
-              console.info(`Keyboard mouse crossing enable success.`);
-            }, (error: BusinessError) => {
-              console.error(`Keyboard mouse crossing enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-            });
-          } catch (error) {
-            console.error(`Keyboard mouse crossing enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+          inputDeviceCooperate.enable(true).then(() => {
+            console.info(`Succeeded in enabling keyboard mouse crossing.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to enable keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -145,7 +144,7 @@ struct Index {
 
 start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback: AsyncCallback\<void>): void
 
-启动键鼠穿越，使用AsyncCallback异步方式返回结果。
+启动键鼠穿越，使用callback异步回调。
 
 > **说明：**
 >
@@ -159,17 +158,19 @@ start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback: AsyncCal
 | --------             | ---------------------------- | ----  | ----------------------------   |
 | sinkDeviceDescriptor | string                       |  是   | 键鼠穿越目标设备描述符。             |
 | srcInputDeviceId     | number                       |  是   | 键鼠穿越待穿越外设标识符。           |
-| callback             | AsyncCallback\<void>         |  是    | 回调函数，异步返回键鼠穿越启动、停止状态。|
+| callback             | AsyncCallback\<void>         |  是    | 回调函数。当启动键鼠穿越成功，err为undefined，否则为错误对象。|
 
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[键鼠穿越管理错误码](errorcode-cooperator.md)。
 
+
 | 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |
-| 401      | Parameter error.    |
-| 4400001  | Incorrect descriptor for the target device.                |
-| 4400002  | Screen hop failed.   |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 4400001  | Incorrect descriptor for the target device. |
+| 4400002  | Screen hop failed. |
 
 **示例**：
 
@@ -189,13 +190,13 @@ struct Index {
           try {
             inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId, (error: BusinessError) => {
               if (error) {
-                console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to start keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Start Keyboard mouse crossing success.`);
+              console.info(`Succeeded in starting keyboard mouse crossing.`);
             });
           } catch (error) {
-            console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to start keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -228,17 +229,19 @@ start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise\<void>
 
 | 类型                  | 说明                             |
 | ---------------------- | ------------------------------- |
-| Promise\<void>         | Promise对象，异步返回键鼠穿越启动、关闭结果。       |
+| Promise\<void>         | Promise对象，无返回结果。       |
 
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[键鼠穿越管理错误码](errorcode-cooperator.md)。
 
+
 | 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |
-| 401      | Parameter error.    |
-| 4400001  | Incorrect descriptor for the target device.          |
-| 4400002  | Screen hop failed.              |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 4400001  | Incorrect descriptor for the target device. |
+| 4400002  | Screen hop failed. |
 
 **示例**：
 
@@ -255,15 +258,11 @@ struct Index {
         .onClick(() => {
           const sinkDeviceDescriptor = "descriptor";
           const srcInputDeviceId = 0;
-          try {
-            inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId).then(() => {
-              console.info(`Start Keyboard mouse crossing success.`);
-            }, (error: BusinessError) => {
-              console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-            });
-          } catch (error) {
-            console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+          inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId).then(() => {
+            console.info(`Succeeded in starting keyboard mouse crossing.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to start keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -274,7 +273,7 @@ struct Index {
 
 stop(callback: AsyncCallback\<void>): void
 
-停止键鼠穿越，使用AsyncCallback异步方式返回结果。
+停止键鼠穿越，使用callback异步回调。
 
 > **说明：**
 >
@@ -286,15 +285,17 @@ stop(callback: AsyncCallback\<void>): void
 
 | 参数名                | 类型                          | 必填  | 说明                            |
 | --------             | ---------------------------- | ----  | ----------------------------   |
-| callback             | AsyncCallback\<void>         |  是   | 回调函数，异步返回停止键鼠穿越结果。        |
+| callback             | AsyncCallback\<void>         |  是   | 回调函数。当停止键鼠穿越成功，err为undefined，否则为错误对象。        |
 
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息           |
-| -------- | ----------------- |
-| 401      | Parameter error.  |
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -312,13 +313,13 @@ struct Index {
           try {
             inputDeviceCooperate.stop((error: BusinessError) => {
               if (error) {
-                console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to stop keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Stop Keyboard mouse crossing success.`);
+              console.info(`Succeeded in stopping keyboard mouse crossing.`);
             });
           } catch (error) {
-            console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to stop keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -342,7 +343,16 @@ stop(): Promise\<void>
 
 | 类型                | 说明                            |
 | --------             | ----------------------------   |
-| Promise\<void>       |  Promise对象，异步返回停止键鼠穿越结果。      |
+| Promise\<void>       |  Promise对象，无返回结果。      |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
 
 **示例**：
 
@@ -357,15 +367,11 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          try {
-            inputDeviceCooperate.stop().then(() => {
-              console.info(`Stop Keyboard mouse crossing success.`);
-            }, (error: BusinessError) => {
-              console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-            });
-          } catch (error) {
-            console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+          inputDeviceCooperate.stop().then(() => {
+            console.info(`Succeeded in stopping keyboard mouse crossing.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to stop keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -376,7 +382,7 @@ struct Index {
 
 getState(deviceDescriptor: string, callback: AsyncCallback<{ state: boolean }>): void
 
-获取键鼠穿越开关的状态，使用AsyncCallback异步方式返回结果。
+获取键鼠穿越开关的状态，使用callback异步回调。
 
 > **说明：**
 >
@@ -389,15 +395,17 @@ getState(deviceDescriptor: string, callback: AsyncCallback<{ state: boolean }>):
 | 参数名                | 类型                          | 必填   | 说明                            |
 | --------             | ---------                    | ----  | ----------------------------    |
 | deviceDescriptor     | string                       |  是    | 键鼠穿越目标设备描述符。             |
-| callback             | AsyncCallback<{ state: boolean }> |  是    | 回调函数，异步返回键鼠穿越开关状态。        |
+| callback             | AsyncCallback<{ state: boolean }> |  是    | 回调函数。当获取键鼠穿越开关状态成功，err为undefined，data为键鼠穿越开关状态（true表示打开，false表示关闭）；否则为错误对象。        |
 
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 401      | Parameter error.  |
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 **示例**：
@@ -417,13 +425,13 @@ struct Index {
           try {
             inputDeviceCooperate.getState(deviceDescriptor, (error: BusinessError, data: object) => {
               if (error) {
-                console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Get the status success, data: ${JSON.stringify(data)}`);
+              console.info(`Succeeded in getting status, data: ${JSON.stringify(data)}.`);
             });
           } catch (error) {
-            console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -453,15 +461,17 @@ getState(deviceDescriptor: string): Promise<{ state: boolean }>
 
 | 类型                        | 说明                     |
 | -------------------        | ------------------------------- |
-| Promise<{ state: boolean }>| Promise对象，异步返回键鼠穿越开关状态。true表示键鼠穿越开关打开，false表示键鼠穿越开关关闭。       |
+| Promise<{ state: boolean }>| Promise对象，返回键鼠穿越开关状态。true表示键鼠穿越开关打开，false表示键鼠穿越开关关闭。       |
 
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 401      | Parameter error.  |
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 **示例**：
@@ -478,15 +488,11 @@ struct Index {
       Text()
         .onClick(() => {
           let deviceDescriptor = "descriptor";
-          try {
-            inputDeviceCooperate.getState(deviceDescriptor).then((data: object) => {
-              console.info(`Get the status success, data: ${JSON.stringify(data)}`);
-            }, (error: BusinessError) => {
-              console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-            });
-          } catch (error) {
-            console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+          inputDeviceCooperate.getState(deviceDescriptor).then((data: object) => {
+            console.info(`Succeeded in getting the status, data: ${JSON.stringify(data)}.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get the status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -497,11 +503,11 @@ struct Index {
 
 on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, eventMsg: EventMsg }>): void
 
-注册监听键鼠穿越状态。
+注册监听键鼠穿越状态，使用callback异步回调。
 
 > **说明：**
 >
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.on](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#oncooperatemessage11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.on](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateoncooperatemessage11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -510,15 +516,17 @@ on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, even
 | 参数名                | 类型                                                             | 必填 | 说明                            |
 | --------             | ----------------------------                                    | ---- | ----------------------------   |
 | type                 | string                                                          |  是  | 注册类型，取值”cooperation“。         |
-| callback             | AsyncCallback<{ deviceDescriptor: string, eventMsg: [EventMsg](#eventmsgdeprecated) }> |  是  | 回调函数，异步返回键鼠穿越事件。    |
+| callback             | AsyncCallback<{ deviceDescriptor: string, eventMsg: [EventMsg](#eventmsgdeprecated) }> |  是  | 回调函数。当接收键鼠穿越事件成功，err为undefined，data为键鼠穿越事件信息；否则为错误对象。    |
 
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 401      | Parameter error.  |
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 **示例**：
@@ -534,13 +542,13 @@ struct Index {
       Text()
         .onClick(() => {
           let callback = (msg: object) => {
-            console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
+            console.info(`Succeeded in monitoring cooperation, msg: ${JSON.stringify(msg)}.`);
             return false;
           }
           try {
             inputDeviceCooperate.on('cooperation', callback);
           } catch (error) {
-            console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to register keyboard and mouse traversal status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -552,11 +560,11 @@ struct Index {
 
 off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 
-关闭监听键鼠穿越状态。
+关闭监听键鼠穿越状态，使用callback异步回调。
 
 > **说明：**
 >
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.off](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#offcooperatemessage11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.off](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateoffcooperatemessage11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -565,15 +573,17 @@ off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 | 参数名                | 类型                                                              | 必填    | 说明                           |
 | --------             | ----------------------------                                     | ----   | ----------------------------   |
 | type                 | string                                                           |  是    | 注册类型，取值“cooperation”。         |
-| callback             | AsyncCallback\<void> |  否  | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
+| callback             | AsyncCallback\<void> |  否  | 回调函数。当取消注册成功，err为undefined，否则为错误对象。若无此参数，则取消当前应用注册的所有回调函数。 |
 
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 401      | Parameter error.  |
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202      | SystemAPI permit error.<br/>适用版本：12+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 **示例**：
@@ -590,14 +600,14 @@ struct Index {
         .onClick(() => {
           // 取消注册单个回调函数
           let callbackOn = (msg: object) => {
-            console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
+            console.info(`Succeeded in monitoring cooperation, msg: ${JSON.stringify(msg)}.`);
             return false;
           }
           try {
             inputDeviceCooperate.on('cooperation', callbackOn);
             inputDeviceCooperate.off("cooperation", callbackOn);
           } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to unregister callback function, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -616,14 +626,14 @@ struct Index {
         .onClick(() => {
           // 取消注册所有回调函数
           let callback = (msg: object) => {
-            console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
+            console.info(`Succeeded in monitoring cooperation, msg: ${JSON.stringify(msg)}.`);
             return false;
           }
           try {
             inputDeviceCooperate.on('cooperation', callback);
             inputDeviceCooperate.off("cooperation");
           } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to unregister callback function, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }

@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 ```c
@@ -12,7 +12,7 @@ typedef struct Sensor_Event Sensor_Event
 
 ## 概述
 
-定义传感器数据信息。
+定义传感器事件的数据结构，包含传感器类型、时间戳和传感器数据等信息。
 
 **起始版本：** 11
 

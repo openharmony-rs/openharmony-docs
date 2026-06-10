@@ -1,7 +1,7 @@
 # 无障碍控制操作
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,8 +10,11 @@
 
 >**说明：**
 >
->  - 本模块首批接口从API version 18开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
->  - 目前仅支持通过开启无障碍模式触发。
+> - 本模块首批接口从API version 18开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 目前仅支持通过开启无障碍模式触发。
 
 ## onAccessibilityFocus
 
@@ -202,7 +205,7 @@ struct OnAccessibilityFocusExample {
         Text("onAccessibilityFocus doesn't take effect")
         Text("onAccessibilityFocus takes effect")
         .onAccessibilityFocus((isFocus)=>{
-          console.info('[testingTag] isFocus current is ${isFocus}')
+          console.info(`[testingTag] isFocus current is ${isFocus}`)
           })
       }
       .padding(24)

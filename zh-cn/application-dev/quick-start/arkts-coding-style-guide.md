@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @yyytiancai-->
-<!--Designer: @qyhuo32-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -486,7 +486,7 @@ myFunc(bar1, foo1, baz); // 函数的多个参数之间的逗号后加个空格�
 <!-- @[single_quotation_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
-let message1 = 'world';
+let message1 = "world";
 console.info(message1);
 ```
 
@@ -879,7 +879,8 @@ export function getObject1(value: number): I {
 <!-- @[noESObject_app_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
-import { getObject1 } from './lib'
+// Index.ets
+import { getObject1 } from './lib';
 // ...
 let obj1: I = getObject1(123);
 ```
@@ -920,7 +921,7 @@ ArkTS提供了两种数组类型的表示方式：`T[]`和`Array<T>`。建议所
 
 **【反例】**
 
-<!-- @[use_T[]_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->    
+<!-- @[use_T_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 let x: Array<number> = [1, 2, 3];
@@ -929,7 +930,7 @@ let y: Array<string> = ['a', 'b', 'c'];
 
 **【正例】**
 
-<!-- @[use_T[]_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[use_T_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // 统一使用T[]语法

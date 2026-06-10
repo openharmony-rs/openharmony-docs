@@ -30,13 +30,14 @@ The **avplayer.h** file declares the AVPlayer APIs. You can use the native AVPla
 | -- | -- | -- |
 | [MediaKeySession](capi-avplayer-mediakeysession.md) | MediaKeySession | Describes the media key session.|
 | [DRM_MediaKeySystemInfo](capi-avplayer-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | Describes the media key system information.|
+| [OH_AVPlayerVideoOutput](capi-avplayer-oh-avplayervideooutput.md) | OH_AVPlayerVideoOutput | Describes the video output of the AVPlayer.|
 
 ### Functions
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [typedef void (\*Player_MediaKeySystemInfoCallback)(OH_AVPlayer *player, DRM_MediaKeySystemInfo* mediaKeySystemInfo)](#player_mediakeysysteminfocallback) | Player_MediaKeySystemInfoCallback | Called when media key system information of the AVPlayer is updated.|
-| [OH_AVPlayer *OH_AVPlayer_Create(void)](#oh_avplayer_create) | - | Creates an OH_AVPlayer instance.<br> You are advised to create a maximum of 16 AVPlayer instances for an application in both audio and video playback scenarios.<!--Del--><br> The actual number of instances that can be created may be different. It depends on the specifications of the device chip in use. For example, in the case of RK3568, you are advised to create a maximum of 6 AVPlayer instances for an application in audio and video playback scenarios.<!--DelEnd--> |
+| [OH_AVPlayer *OH_AVPlayer_Create(void)](#oh_avplayer_create) | - | Creates an **OH_AVPlayer** instance.<br> You are advised to create a maximum of 16 AVPlayer instances for an application in both audio and video playback scenarios.<!--Del--><br> The actual number of instances that can be created may be different. It depends on the specifications of the device chip in use. For example, in the case of RK3568, you are advised to create a maximum of 6 AVPlayer instances for an application in audio and video playback scenarios.<!--DelEnd--> |
 | [OH_AVErrCode OH_AVPlayer_SetURLSource(OH_AVPlayer *player, const char *url)](#oh_avplayer_seturlsource) | - | Sets the HTTP URL of a media source to be played by an AVPlayer.  |
 | [OH_AVErrCode OH_AVPlayer_SetFDSource(OH_AVPlayer *player, int32_t fd, int64_t offset, int64_t size)](#oh_avplayer_setfdsource) | - | Sets the file descriptor of a media source to be played by an AVPlayer.|
 | [OH_AVErrCode OH_AVPlayer_SetDataSource(OH_AVPlayer *player, OH_AVDataSourceExt* datasrc, void* userData)](#oh_avplayer_setdatasource) | - | Sets the media source of the AVPlayer. The data of this media source is provided by the application.|
@@ -45,8 +46,8 @@ The **avplayer.h** file declares the AVPlayer APIs. You can use the native AVPla
 | [OH_AVErrCode OH_AVPlayer_Pause(OH_AVPlayer *player)](#oh_avplayer_pause) | - | Pauses playback.|
 | [OH_AVErrCode OH_AVPlayer_Stop(OH_AVPlayer *player)](#oh_avplayer_stop) | - | Stops playback.|
 | [OH_AVErrCode OH_AVPlayer_Reset(OH_AVPlayer *player)](#oh_avplayer_reset) | - | Restores the AVPlayer to the initial state.<br> After the function is called, you can call **SetSource** to set the media source to play, and then call [OH_AVPlayer_Prepare](capi-avplayer-h.md#oh_avplayer_prepare) and [OH_AVPlayer_Play](capi-avplayer-h.md#oh_avplayer_play) in sequence.|
-| [OH_AVErrCode OH_AVPlayer_Release(OH_AVPlayer *player)](#oh_avplayer_release) | - | Asynchronously releases an OH_AVPlayer instance.<br> The asynchronous function improves performance, but cannot ensure that the surface buffer of the playback window is released. You must ensure the lifecycle of the playback window.|
-| [OH_AVErrCode OH_AVPlayer_ReleaseSync(OH_AVPlayer *player)](#oh_avplayer_releasesync) | - | Synchronously releases an OH_AVPlayer instance.<br> The synchronous function ensures that the display buffer of the playback window is released, with a long time. Therefore, you need to design an asynchronous mechanism.|
+| [OH_AVErrCode OH_AVPlayer_Release(OH_AVPlayer *player)](#oh_avplayer_release) | - | Asynchronously releases an **OH_AVPlayer** instance.<br> The asynchronous function improves performance, but cannot ensure that the surface buffer of the playback window is released. You must ensure the lifecycle of the playback window.|
+| [OH_AVErrCode OH_AVPlayer_ReleaseSync(OH_AVPlayer *player)](#oh_avplayer_releasesync) | - | Synchronously releases an **OH_AVPlayer** instance.<br> The synchronous function ensures that the display buffer of the playback window is released, with a long time. Therefore, you need to design an asynchronous mechanism.|
 | [OH_AVErrCode OH_AVPlayer_SetVolume(OH_AVPlayer *player, float leftVolume, float rightVolume)](#oh_avplayer_setvolume) | - | Sets the volume for an AVPlayer.<br> This function can be used when the AVPlayer is in the playing or paused state. The value **0** means that the AVPlayer is muted, and **1** means that the original volume is used.|
 | [OH_AVErrCode OH_AVPlayer_SetLoudnessGain(OH_AVPlayer *player, float loudnessGain)](#oh_avplayer_setloudnessgain) | - | Sets the loudness of the AVPlayer. This function can be called when the AVPlayer is in the prepared, playing, paused, completed, or stopped state.<br> The default loudness gain is 0.0 dB. The **usage** parameter of the AVPlayer stream must be [OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC,<br> [OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MOVIE, or [OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK.<br> The latency mode of the audio renderer must be [OH_AudioStream_LatencyMode](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode).AUDIOSTREAM_LATENCY_MODE_NORMAL.<br> If the audio is played through the high-resolution pipeline, this operation is not supported.|
 | [OH_AVErrCode OH_AVPlayer_Seek(OH_AVPlayer *player, int32_t mSeconds, AVPlayerSeekMode mode)](#oh_avplayer_seek) | - | Seeks to a playback position.<br> This function can be used when the AVPlayer is in the playing or paused state.|
@@ -112,6 +113,8 @@ The **avplayer.h** file declares the AVPlayer APIs. You can use the native AVPla
 | [uint32_t OH_AVPlayer_GetTrackCount(OH_AVPlayer *player)](#oh_avplayer_gettrackcount) | - | Obtains the number of tracks of the media source of the AVPlayer.|
 | [OH_AVFormat *OH_AVPlayer_GetTrackFormat(OH_AVPlayer *player, uint32_t trackIndex)](#oh_avplayer_gettrackformat) | - | Obtains the track information of the AVPlayer by index.|
 | [OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)](#oh_avplayer_getplaybackstatisticmetrics) | - | Obtains the statistic metrics of the current AVPlayer. This API can be called when the playback resource is set and the AVPlayer is in the prepared, playing, paused, completed, or stopped state.<br> Note that you need to manually release the lifecycle of the [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md) pointer object.|
+| [OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)](#oh_avplayer_setvideosideoutput) | - | Sets the callback for decoded video frame output. This API can be called when the AVPlayer is in the idle or initialized state.|
+| [OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVideoOutput *videoOutput)](#oh_avplayervideooutput_getnewestvideosample) | - | Obtains a decoded video frame. This API can be called when the AVPlayer is in the paused or playing state.|
 
 ## Function Description
 
@@ -131,7 +134,7 @@ Called when media key system information of the AVPlayer is updated.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [DRM_MediaKeySystemInfo](capi-avplayer-drm-mediakeysysteminfo.md)* mediaKeySystemInfo | Pointer to the media key system information.|
 
 ### OH_AVPlayer_Create()
@@ -142,7 +145,7 @@ OH_AVPlayer *OH_AVPlayer_Create(void)
 
 **Description**
 
-Creates an OH_AVPlayer instance.<br> You are advised to create a maximum of 16 AVPlayer instances for an application in both audio and video playback scenarios.<br> <!--Del-->The actual number of instances that can be created may be different. It depends on the specifications of the device chip in use. For example, in the case of RK3568, you are advised to create a maximum of 6 AVPlayer instances for an application in audio and video playback scenarios.<!--DelEnd-->
+Creates an **OH_AVPlayer** instance.<br> You are advised to create a maximum of 16 AVPlayer instances for an application in both audio and video playback scenarios.<br> <!--Del-->The actual number of instances that can be created may be different. It depends on the specifications of the device chip in use. For example, in the case of RK3568, you are advised to create a maximum of 6 AVPlayer instances for an application in audio and video playback scenarios.<!--DelEnd-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -152,7 +155,7 @@ Creates an OH_AVPlayer instance.<br> You are advised to create a maximum of 16 A
 
 | Type| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) * | Pointer to the OH_AVPlayer instance created if the operation is successful; nullptr otherwise.<br> The possible causes of an operation failure are as follows:<br> 1. The execution of **PlayerFactory::CreatePlayer** fails.<br> 2. The execution of **new PlayerObject** fails.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) * | Pointer to the **OH_AVPlayer** instance created if the operation is successful; nullptr otherwise.<br> The possible causes of an operation failure are as follows:<br> 1. The execution of **PlayerFactory::CreatePlayer** fails.<br> 2. The execution of **new PlayerObject** fails.|
 
 ### OH_AVPlayer_SetURLSource()
 
@@ -172,7 +175,7 @@ Sets the HTTP URL of a media source to be played by an AVPlayer.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | const char *url | URL of the media source.|
 
 **Returns**
@@ -199,7 +202,7 @@ Sets the file descriptor of a media source to be played by an AVPlayer.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | int32_t fd | File descriptor of the media source.|
 | int64_t offset | Offset of the media source in the file descriptor.|
 | int64_t size | Size of the media source.|
@@ -228,7 +231,7 @@ Sets the media source of the AVPlayer. The data of this media source is provided
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [OH_AVDataSourceExt](../apis-avcodec-kit/capi-codecbase-oh-avdatasourceext.md)* datasrc | Pointer to custom media data.|
 | void* userData | Pointer to the handle, which is used in the callback. If **userData** is empty, the AVPlayer does not support multi-instance playback.|
 
@@ -256,7 +259,7 @@ Prepares the playback environment and buffers media data.<br> This function must
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
@@ -282,7 +285,7 @@ Starts playback.<br> This function must be called after [OH_AVPlayer_Prepare](ca
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
@@ -308,7 +311,7 @@ Pauses playback.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
@@ -334,7 +337,7 @@ Stops playback.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
@@ -360,7 +363,7 @@ Restores the AVPlayer to the initial state.<br> After the function is called, yo
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
@@ -376,7 +379,7 @@ OH_AVErrCode OH_AVPlayer_Release(OH_AVPlayer *player)
 
 **Description**
 
-Asynchronously releases an OH_AVPlayer instance.<br> The asynchronous function improves performance, but cannot ensure that the surface buffer of the playback window is released. You must ensure the lifecycle of the playback window.
+Asynchronously releases an **OH_AVPlayer** instance.<br> The asynchronous function improves performance, but cannot ensure that the surface buffer of the playback window is released. You must ensure the lifecycle of the playback window.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -386,7 +389,7 @@ Asynchronously releases an OH_AVPlayer instance.<br> The asynchronous function i
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
@@ -412,7 +415,7 @@ Synchronously releases an OH_AVPlayer instance.<br> The synchronous function ens
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
@@ -438,7 +441,7 @@ Sets the volume for an AVPlayer.<br> This function can be used when the AVPlayer
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | float leftVolume | Target volume of the left channel.|
 | float rightVolume | Target volume of the right channel.|
 
@@ -466,7 +469,7 @@ Sets the loudness of the AVPlayer. This function can be called when the AVPlayer
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | float loudnessGain | Loudness, in the range [-90.0, 24.0], in dB.|
 
 **Returns**
@@ -493,7 +496,7 @@ Seeks to a playback position.<br> This function can be used when the AVPlayer is
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | int32_t mSeconds | Position to seek to, in ms.|
 | [AVPlayerSeekMode](capi-avplayer-base-h.md#avplayerseekmode) mode | Seek mode.|
 
@@ -521,7 +524,7 @@ Obtains the playback position, in milliseconds.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | int32_t *currentTime | Pointer to the playback position.|
 
 **Returns**
@@ -548,7 +551,7 @@ Obtains the video width.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | int32_t *videoWidth | Pointer to the video width.|
 
 **Returns**
@@ -575,7 +578,7 @@ Obtains the video height.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | int32_t *videoHeight | Pointer to the video height.|
 
 **Returns**
@@ -602,7 +605,7 @@ Sets the playback speed of the AVPlayer. For details about the playback speed, s
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed) speed | Playback speed.|
 
 **Returns**
@@ -629,7 +632,7 @@ Sets the playback rate of an AVPlayer within the valid range.<br> The supported 
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | float rate | Playback rate. The value ranges from 0.125 to 4.|
 
 **Returns**
@@ -656,7 +659,7 @@ Obtains the playback speed of an AVPlayer.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [AVPlaybackSpeed](capi-avplayer-base-h.md#avplaybackspeed) *speed | Pointer to the playback speed.|
 
 **Returns**
@@ -681,7 +684,7 @@ Obtains the playback rate of an AVPlayer.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | float *rate | Pointer to the playback rate that can be obtained.|
 
 **Returns**
@@ -708,7 +711,7 @@ Sets the audio stream type for an AVPlayer.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage) streamUsage | Audio stream type.|
 
 **Returns**
@@ -735,7 +738,7 @@ Sets the audio volume mode for an AVPlayer.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [OH_AudioStream_VolumeMode](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_volumemode) volumeMode | Volume mode of the audio stream.|
 
 **Returns**
@@ -762,7 +765,7 @@ Sets the audio interruption mode for an AVPlayer.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [OH_AudioInterrupt_Mode](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiointerrupt_mode) interruptMode | Audio interruption mode.|
 
 **Returns**
@@ -789,7 +792,7 @@ Sets the audio effect mode for an AVPlayer.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [OH_AudioStream_AudioEffectMode](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_audioeffectmode) effectMode | Audio effect mode.|
 
 **Returns**
@@ -816,7 +819,7 @@ Sets the bit rate used by an HLS player. This function is valid only for HLS net
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | uint32_t bitRate | Bit rate, in kbit/s.|
 
 **Returns**
@@ -843,7 +846,7 @@ Sets a playback window.<br> This function must be called after **SetSource** and
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [OHNativeWindow](../apis-avcodec-kit/capi-codecbase-nativewindow.md) *window | Pointer to the OHNativeWindow instance.|
 
 **Returns**
@@ -870,7 +873,7 @@ Obtains the total duration of a media file, in milliseconds.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | int32_t *duration | Pointer to the total duration.|
 
 **Returns**
@@ -897,7 +900,7 @@ Obtains the AVPlayer state.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [AVPlayerState](capi-avplayer-base-h.md#avplayerstate) *state | Pointer to the state of the AVPlayer.|
 
 **Returns**
@@ -924,7 +927,7 @@ Checks whether an AVPlayer is playing.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
@@ -950,7 +953,7 @@ Checks whether an AVPlayer is looping.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
@@ -976,7 +979,7 @@ Enables loop playback.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | bool loop | Whether to enable loop playback. **true** to play in a loop, **false** otherwise. |
 
 **Returns**
@@ -1007,7 +1010,7 @@ Sets an AVPlayer callback.<br> The callbacks [OH_AVPlayerOnInfo](capi-avplayer-b
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [AVPlayerCallback](capi-avplayer-avplayercallback.md) callback | Callback used to return the result.|
 
 **Returns**
@@ -1034,7 +1037,7 @@ Selects an audio or subtitle track.<br> By default, the first audio track with d
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | int32_t index | Index of the track.|
 
 **Returns**
@@ -1061,7 +1064,7 @@ Deselects an audio or subtitle track.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | int32_t index | Index of the track.|
 
 **Returns**
@@ -1088,7 +1091,7 @@ Obtains the currently valid track. You can set the track to the prepared, playin
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | int32_t trackType | Media type. The value **0** means audio and **1** means video.|
 | int32_t *index | Pointer to the index of the track.|
 
@@ -1116,7 +1119,7 @@ Sets a callback to return the media key system information for an AVPlayer.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [Player_MediaKeySystemInfoCallback](capi-avplayer-h.md#player_mediakeysysteminfocallback) callback | Callback.|
 
 **Returns**
@@ -1143,7 +1146,7 @@ Obtains the media key system information to create a media key session.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [DRM_MediaKeySystemInfo](capi-avplayer-drm-mediakeysysteminfo.md) *mediaKeySystemInfo | Pointer to the media key system information.|
 
 **Returns**
@@ -1170,7 +1173,7 @@ Sets the decryption information.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [MediaKeySession](capi-avplayer-mediakeysession.md) *mediaKeySession | Pointer to the media key session with the decryption feature.|
 | bool secureVideoPath | Whether a secure decoder is required. **true** if required, **false** otherwise.|
 
@@ -1198,7 +1201,7 @@ Sets a callback for the event indicating that the AVPlayer receives a message.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) callback | Pointer to the callback. If nullptr is passed in, the listening for AVPlayer messages is canceled.|
 | void *userData | Pointer to the instance set by the caller.|
 
@@ -1226,7 +1229,7 @@ Sets a callback for the event indicating that an error occurs in the AVPlayer.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback) callback | Pointer to the callback. If nullptr is passed in, the listening for AVPlayer errors is canceled.|
 | void *userData | Pointer to the instance set by the caller.|
 
@@ -1254,7 +1257,7 @@ Obtains the media source information for the AVPlayer. This function can be call
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
@@ -1280,7 +1283,7 @@ Obtains the media source track information for the AVPlayer by index. This funct
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | uint32_t index | Index of the track.|
 
 **Returns**
@@ -1305,7 +1308,7 @@ Adds the subtitle resource represented by the file descriptor to the player. Cur
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | int32_t fd | File descriptor of the subtitle source.|
 | int64_t offset | Offset of the media source in the file descriptor.|
 | int64_t size | Size of the media source.|
@@ -1332,7 +1335,7 @@ Adds the subtitle resource represented by the URL to the player. The external su
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | const char *url | URL of the subtitle source.|
 
 **Returns**
@@ -1357,7 +1360,7 @@ Sets the start and end positions of the playback. After the setting, only the co
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | int32_t mSecondsStart | Start position of playback. The value must be in the range of [0, **duration**). The value **-1** indicates that the start position is not set, and the playback starts from 0.|
 | int32_t mSecondsEnd | End position of playback. The value must be in the range of (**startTimeMs**, **duration**]. The value **-1** indicates that the end position is not set, and the playback ends at the end of the stream.|
 | bool closestRange | Whether to seek to the frame closest to the specified position.|
@@ -1382,7 +1385,7 @@ OH_AVErrCode OH_AVPlayer_SetMediaMuted(OH_AVPlayer *player, OH_MediaType mediaTy
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [OH_MediaType](../apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_mediatype) mediaType | Media type. For details, see [OH_MediaType](../apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_mediatype) in [native_avcodec_base.h](../apis-avcodec-kit/capi-native-avcodec-base-h.md).|
 | bool muted | **true** indicates that the audio is muted, and **false** indicates that the audio is unmuted.|
 
@@ -1408,7 +1411,7 @@ Obtains the playback position, in milliseconds. This API can be called only when
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
@@ -1432,7 +1435,7 @@ Checks whether the media source supports continuous seek. If this API is called 
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
@@ -1456,7 +1459,7 @@ Selects a track in the specified switching mode when playing a resource that con
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | int32_t index | Index of the selected track.|
 | [AVPlayerTrackSwitchMode](capi-avplayer-base-h.md#avplayertrackswitchmode) mode | Switching mode.|
 
@@ -1482,7 +1485,7 @@ Subscribes to the maximum audio amplitude update event, which is reported period
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [OH_AVPlayerOnAmplitudeUpdateCallback](capi-avplayer-base-h.md#oh_avplayeronamplitudeupdatecallback) callback | Pointer to the callback function. **nullptr** indicates that the callback is deregistered.|
 | void *userData | Pointer to user-defined data.|
 
@@ -1508,7 +1511,7 @@ Subscribes to the SEI message reception event. This API applies only to HTTP-FLV
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | const int32_t *payloadTypes | Load type array.|
 | uint32_t typeNum | Size of the load type array.|
 | [OH_AVPlayerOnSeiMessageReceivedCallback](capi-avplayer-base-h.md#oh_avplayeronseimessagereceivedcallback) callback | Pointer to the callback function. **nullptr** indicates that the callback is deregistered.|
@@ -1585,7 +1588,7 @@ Sets the video window size for super resolution. This API can be called when the
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | int32_t width | Window width, in pixels. The value range is [320, 1920].|
 | int32_t height | Window height, in pixels. The value range is [320, 1080].|
 
@@ -1611,7 +1614,7 @@ Dynamically enables or disables super resolution. This API can be called when th
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | bool enabled | **true** means to enable super resolution; **false** means the opposite.|
 
 **Returns**
@@ -1978,7 +1981,7 @@ Sets the playback strategy for the AVPlayer. This API can be called only when th
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) *strategy | Playback strategy instance.|
 
 **Returns**
@@ -2003,7 +2006,7 @@ Obtains the statistics of the current AVPlayer. This API can be called only when
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
@@ -2027,7 +2030,7 @@ Sets the **OH_AVMediaSource** to the AVPlayer.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md) *source | Media source.|
 
 **Returns**
@@ -2052,7 +2055,7 @@ Obtains the number of tracks of the media source of the AVPlayer.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
@@ -2076,7 +2079,7 @@ Obtains the track information of the AVPlayer by index.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 | uint32_t trackIndex | Index of the track array.|
 
 **Returns**
@@ -2101,10 +2104,59 @@ Obtains the statistic metrics of the current AVPlayer. This API can be called wh
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | If the operation is successful, the statistic metric information of the AVPlayer is returned. (For details about the key values, see [statistic metric information](../apis-media-kit/capi-avplayer-base-h.md#variables)). Otherwise, **nullptr** is returned.<br> Possible failure cause: The input **player** pointer is invalid.|
+| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | If the operation is successful, the statistic metrics of the current AVPlayer are returned. (For details about the key values, see [Variables](../apis-media-kit/capi-avplayer-base-h.md#variables) in **avplayer_base.h**.) Otherwise, **nullptr** is returned.<br> Possible failure cause: The input **player** pointer is invalid.|
+
+### OH_AVPlayer_SetVideoSideOutput()
+
+```c
+OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)
+```
+
+**Description**
+
+Sets the callback for decoded video frame output. This API can be called when the AVPlayer is in the idle or initialized state.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
+| OHNativeWindow *window | Pointer to the **OHNativeWindow** instance. For details, see **OHNativeWindow**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVPlayerVideoOutput*](capi-avplayer-oh-avplayervideooutput.md) | Pointer to the **OH_AVPlayerVideoOutput** instance. If **nullptr** is returned, the operation fails.<br> Possible cause:<br> 1. The **player** pointer is invalid.<br> 2. The **window** pointer is invalid.|
+
+### OH_AVPlayerVideoOutput_GetNewestVideoSample()
+
+```c
+OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVideoOutput *videoOutput)
+```
+
+**Description**
+
+Obtains a decoded video frame. This API can be called when the AVPlayer is in the paused or playing state.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [OH_AVPlayerVideoOutput](capi-avplayer-oh-avplayervideooutput.md) *videoOutput | Pointer to the **OH_AVPlayerVideoOutput** instance returned by **OH_AVPlayer_SetVideoSideOutput**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_VideoOutputResult](capi-avplayer-base-h.md#oh_videooutputresult) | **OH_VIDEO_OUTPUT_OK**: A decoded video frame is obtained.<br>         **OH_VIDEO_OUTPUT_NO_IMAGE**: No frame is available for rendering.|

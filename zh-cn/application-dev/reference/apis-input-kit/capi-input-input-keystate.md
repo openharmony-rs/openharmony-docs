@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ```c
 typedef struct Input_KeyState Input_KeyState
@@ -13,7 +13,7 @@ typedef struct Input_KeyState Input_KeyState
 
 ## 概述
 
-定义按键信息，用于标识按键行为。例如，“Ctrl”按键信息包含键值和键状态。
+定义按键信息，用于标识按键行为。例如，“Ctrl”按键信息包含键值和键状态。适用于快捷键处理、输入事件状态管理、按键状态检测等场景。
 
 **起始版本：** 12
 

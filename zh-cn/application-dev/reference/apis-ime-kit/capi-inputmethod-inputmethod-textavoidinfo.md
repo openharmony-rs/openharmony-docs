@@ -1,7 +1,7 @@
 # InputMethod_TextAvoidInfo
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -12,7 +12,7 @@ typedef struct InputMethod_TextAvoidInfo InputMethod_TextAvoidInfo
 
 ## 概述
 
-输入框避让信息。输入框用于避让键盘的信息。
+输入框避让信息。输入框用于避让键盘显示区域的信息。
 
 **起始版本：** 12
 

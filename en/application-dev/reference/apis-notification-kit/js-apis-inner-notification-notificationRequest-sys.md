@@ -1,8 +1,8 @@
 # NotificationRequest (System API)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -35,7 +35,7 @@ The **NotificationRequest** module provides APIs for defining the notification r
 | notDistributed<sup>18+</sup> | boolean | No| Yes| Whether notifications are not displayed in all scenarios across devices. The default value is **false**.<br>**NOTE**<br>This field is mutually exclusive with the **forceDistributed** field. When both fields are set to **true**, only the **notDistributed** field takes effect.<br>- **true**: Notifications are displayed only on the local device.<br>- **false**: Notifications are displayed on all collaboration devices.<br>**System API**: This is a system API.|
 | forceDistributed<sup>18+</sup> | boolean | No| Yes| Whether notifications are forcibly displayed in all scenario across devices. The default value is **false**.<br>**NOTE**<br>This field takes effect only when the application is in the cross-device collaborative management list and **notDistributed** is set to **false**. Check whether the **collaborationFilter** field in the **notification_config.json** file contains the UID or bundle name of the application. For details about the file configuration path, see the **NOTIFICATION_CONFIG_FILE** property in [notification_config_parse.h](https://gitcode.com/openharmony/notification_distributed_notification_service/blob/master/services/ans/include/notification_config_parse.h). If yes, the application is on the cross-device collaborative management list.<br>- **true**: Notifications are displayed on all collaboration devices.<br>- **false**: Notifications are displayed on the applications that are on the collaborative management list.<br>**System API**: This is a system API.|
 | extendInfo<sup>20+</sup> | Record<string, Object> | No| Yes| Extended parameters customized for the system applications to publish notifications. This parameter is left empty by default.<br>**System API**: This is a system API.|
-| groupInfo<sup>26+</sup> | [GroupInfo](#groupinfo26) | No| Yes| Custom group notification information. This parameter is left empty by default.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
+| groupInfo | [GroupInfo](#groupinfo) | No| Yes| Custom group notification information. This parameter is left empty by default.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br>**System API**: This is a system API.|
 
 ## DistributedOptions<sup>8+</sup>
 
@@ -162,9 +162,11 @@ Defines the details for triggering a geofence.
 | condition | [Geofence](#geofence23) | No| No| Details about a geofence.|
 | displayTime | number | No| Yes| Display time of a live view, in seconds. The value ranges from 15 to 1800. The default value is **900**.|
 
-## GroupInfo<sup>26+</sup>
+## GroupInfo
 
 Defines the group notification information.
+
+**Since**: 26.0.0
 
 **System capability**: SystemCapability.Notification.Notification
 

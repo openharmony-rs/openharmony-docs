@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -173,6 +173,8 @@ Codec MIME类型枚举。
 | TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | 表示总的加载大小，单位为字节（Byte）。<br> **模型约束：** 此接口仅可在Stage模型下使用。             |
 | STALLING_COUNT                     | 'stalling_count'                     | 表示总的卡顿次数。                         |
 | TOTAL_STALLING_TIME                | 'total_stalling_time'                | 表示总的卡顿时长，单位为毫秒（ms）。       |
+| LIP_ASYNC_COUNT                    | 'lip_async_count'                    | 表示总的音画不同步的次数。<br>**起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。       |
+| TOTAL_LIP_ASYNC_TIME               | 'total_lip_async_time'               | 表示总的音画不同步时长，单位为毫秒（ms）。<br>**起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。       |
 
 ## BufferingInfoType<sup>8+</sup>
 
@@ -232,7 +234,7 @@ Codec MIME类型枚举。
 
 表示视频播放的selectTrack模式枚举。
 
-可通过selectTrack方法作为参数传递下去，当前DASH/HLS协议视频轨均支持该扩展参数（从API version 24开始HLS协议视频轨支持该扩展参数）。
+可通过selectTrack方法作为参数传递下去，当前DASH/HLS协议视频轨均支持该扩展参数（从API版本26.0.0开始HLS协议视频轨支持该扩展参数）。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -415,6 +417,10 @@ Codec MIME类型枚举。
 | SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE  | 8    | 录屏进入隐私页面。       |
 | SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE   | 9    | 录屏退出隐私页面。       |
 | SCREENCAPTURE_STATE_STOPPED_BY_USER_SWITCHES   | 10    | 系统用户切换，录屏中断。       |
+| SCREENCAPTURE_STATE_PAUSED_BY_USER       | 11   | 录屏已被用户暂停。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_RESUMED_BY_USER      | 12   | 录屏已被用户恢复。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_PAUSED_BY_APP        | 13   | 录屏已被应用程序暂停。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| SCREENCAPTURE_STATE_RESUMED_BY_APP       | 14   | 录屏已被应用程序恢复。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## AVScreenCaptureFillMode<sup>18+</sup>
 
@@ -438,6 +444,10 @@ Codec MIME类型枚举。
 | WINDOW_ONLY | 0    | 仅显示窗口列表。 |
 | SCREEN_ONLY | 1    | 仅显示屏幕列表。 |
 | SCREEN_AND_WINDOW | 2    | 同时显示屏幕列表和窗口列表。 |
+| APP_ONLY | 3    | 仅显示应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WINDOW_AND_APP | 4    | 同时显示窗口和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SCREEN_AND_APP | 5    | 同时显示屏幕和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SCREEN_WINDOW_AND_APP | 6    | 同时显示屏幕、窗口和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AVMetricsEventType<sup>23+</sup>
 
