@@ -353,7 +353,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![zh-cn_image_0000002246603641](figures/zh-cn_image_0000002246603641.png)
+![Font-Feature](figures/Font-Feature.png)
 
 
 ### 可变字体
@@ -786,7 +786,7 @@ OH_Drawing_DestroyTypography(typography);
 
 效果如下（黑框仅为展示文本绘制区域，实际不绘制）：
 
-![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_center.jpg)
+![verticalAlignment-center](figures/verticalAlignment-center.jpg)
 
 ### 上下标
 
