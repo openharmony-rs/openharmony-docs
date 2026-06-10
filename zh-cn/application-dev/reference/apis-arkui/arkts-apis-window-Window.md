@@ -1608,7 +1608,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
-设置应用主窗口或应用子窗口的布局是否为沉浸式布局，使用Promise异步回调。其余窗口调用不生效也不报错。
+设置应用主窗口或应用子窗口的布局是否为[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)，使用Promise异步回调。其余窗口调用不生效也不报错。
 
 沉浸式布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
 
@@ -1686,7 +1686,7 @@ export default class EntryAbility extends UIAbility {
 
 setImmersiveModeEnabledState(enabled: boolean): void
 
-设置当前窗口是否开启沉浸式布局，该调用不会改变窗口模式和窗口大小。仅主窗口和子窗口可调用。
+设置当前窗口是否开启[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)，该调用不会改变窗口模式和窗口大小。仅主窗口和子窗口可调用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1730,7 +1730,7 @@ try {
 
 getImmersiveModeEnabledState(): boolean
 
-查询当前窗口是否开启沉浸式布局。
+查询当前窗口是否开启[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)。
 
 仅支持主窗和子窗调用。
 
@@ -1768,14 +1768,14 @@ try {
 
 isImmersiveLayout(): boolean
 
-查询当前窗口是否处于沉浸式布局状态。
+查询当前窗口是否处于[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)。
 
 **系统能力**：SystemCapability.Window.SessionManager
 
 **返回值：**
 | 类型     | 说明                                                                                 |
 | ------- | ------------------------------------------------------------------------------------ |
-| boolean | 是否处于沉浸式布局状态。true表示处于沉浸式布局状态，false表示不处于沉浸式布局状态。|
+| boolean | 是否处于沉浸式布局。true表示处于沉浸式布局，false表示不处于沉浸式布局。|
 
 **错误码：**
 
@@ -5766,7 +5766,7 @@ promise.then((data) => {
 
 setWindowColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;): void
 
-设置当前窗口为广色域模式或默认色域模式，使用callback异步回调。
+设置当前窗口的色域模式，使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5776,7 +5776,7 @@ setWindowColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---------- | ------------------------- | -- | ----------- |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | 是 | 设置色域模式。 |
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | 是 | 色域模式。 |
 | callback   | AsyncCallback&lt;void&gt; | 是 | 回调函数。   |
 
 **错误码：**
@@ -5811,7 +5811,7 @@ try {
 
 setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 
-设置当前窗口为广色域模式或默认色域模式，使用Promise异步回调。
+设置当前窗口的色域模式，使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5821,7 +5821,7 @@ setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---------- | ------------------------- | -- | ------------- |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | 是 | 设置色域模式。 |
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | 是 | 色域模式。 |
 
 **返回值：**
 
@@ -5859,7 +5859,7 @@ try {
 
 getWindowColorSpace(): ColorSpace
 
-获取当前窗口色域模式。
+获取当前窗口的色域模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7329,7 +7329,7 @@ export default class EntryAbility extends UIAbility {
 ## setResizeByDragEnabled<sup>14+</sup>
 setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-禁止/使能通过拖拽方式缩放主窗口或启用装饰的子窗口的功能。使用callback异步回调。
+禁止/使能通过拖拽方式缩放主窗口或启用标题栏的子窗口的功能。使用callback异步回调。
 
 > **说明：**
 >
@@ -7377,7 +7377,7 @@ try {
 ## setResizeByDragEnabled<sup>14+</sup>
 setResizeByDragEnabled(enable: boolean): Promise&lt;void&gt;
 
-禁止/使能通过拖拽方式缩放主窗口或启用装饰的子窗口的功能。使用Promise异步回调。
+禁止/使能通过拖拽方式缩放主窗口或启用标题栏的子窗口的功能。使用Promise异步回调。
 
 > **说明：**
 >
@@ -7497,7 +7497,7 @@ restore(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#电脑模式)下可正常调用，在其他设备和其他模式下返回801错误码。
 
 **返回值：**
 
@@ -8164,12 +8164,12 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
    - 在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；
    - 在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
 
- - 对于显示装饰栏的子窗口（即创建子窗口时设置[SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中的decorEnabled为true）：
+ - 对于显示标题栏的子窗口（即创建子窗口时设置[SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中的decorEnabled为true）：
    - 在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；
    - 在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；
    - 在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
 
- - 对于不显示装饰栏的子窗口（即创建子窗口时设置[SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中的decorEnabled为false），调用本接口将返回1300002或801错误码。
+ - 对于不显示标题栏的子窗口（即创建子窗口时设置[SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中的decorEnabled为false），调用本接口将返回1300002或801错误码。
 
 **参数：**
 
@@ -8466,7 +8466,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 
 setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 
-设置装饰栏按钮样式，仅对主窗和子窗生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+设置标题栏按钮样式，仅对主窗和子窗生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -8482,7 +8482,7 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
-| dectorStyle | [DecorButtonStyle](arkts-apis-window-i.md#decorbuttonstyle14)  | 是   | 要设置的装饰栏按钮样式。 |
+| dectorStyle | [DecorButtonStyle](arkts-apis-window-i.md#decorbuttonstyle14)  | 是   | 要设置的标题栏按钮样式。 |
 
 **错误码：**
 
@@ -8531,7 +8531,7 @@ export default class EntryAbility extends UIAbility {
 
 getDecorButtonStyle(): DecorButtonStyle
 
-获取装饰栏按钮样式，仅对主窗和子窗生效。
+获取标题栏按钮样式，仅对主窗和子窗生效。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -8549,7 +8549,7 @@ getDecorButtonStyle(): DecorButtonStyle
 
 | 类型                                  | 说明                                                         |
 | ------------------------------------- | ------------------------------------------------------------ |
-| [DecorButtonStyle](arkts-apis-window-i.md#decorbuttonstyle14) | 返回当前窗口装饰栏上的按钮样式，窗口装饰按钮区域位于窗口的右上角。 |
+| [DecorButtonStyle](arkts-apis-window-i.md#decorbuttonstyle14) | 返回当前窗口标题栏上的按钮样式，窗口标题栏按钮区域位于窗口的右上角。 |
 
 **错误码：**
 
@@ -8619,7 +8619,7 @@ windowClass.setUIContent('pages/WindowPage').then(() => {
 
 getTitleButtonRect(): TitleButtonRect
 
-获取主窗口或启用装饰的子窗口的标题栏上的最小化、最大化、关闭按钮矩形区域。
+获取主窗口或启用标题栏的子窗口的标题栏上的最小化、最大化、关闭按钮矩形区域。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -11111,7 +11111,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置主窗口或子窗口的布局是否为沉浸式布局，使用callback异步回调。系统窗口调用不生效。
+设置主窗口或子窗口的布局是否为[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)，使用callback异步回调。系统窗口调用不生效。
 
 沉浸式布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
 
@@ -11768,7 +11768,7 @@ export default class EntryAbility extends UIAbility {
 
 setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置主窗口或子窗口的布局是否为沉浸式布局，使用callback异步回调。
+设置主窗口或子窗口的布局是否为[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)，使用callback异步回调。
 
 沉浸式布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
 
@@ -11825,7 +11825,7 @@ export default class EntryAbility extends UIAbility {
 
 setLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
-设置主窗口或子窗口的布局是否为沉浸式布局，使用Promise异步回调。
+设置主窗口或子窗口的布局是否为[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)，使用Promise异步回调。
 
 沉浸式布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
 
@@ -12393,7 +12393,7 @@ promise.then((data) => {
 
 setColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;): void
 
-设置当前窗口为广色域模式或默认色域模式，使用callback异步回调。
+设置当前窗口的色域模式，使用callback异步回调。
 
 > **说明：**
 >
@@ -12405,7 +12405,7 @@ setColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名     | 类型                      | 必填 | 说明         |
 | ---------- | ------------------------- | ---- | ------------ |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | 是   | 设置色域模式。 |
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | 是   | 色域模式。 |
 | callback   | AsyncCallback&lt;void&gt; | 是   | 回调函数。   |
 
 
@@ -12428,7 +12428,7 @@ windowClass.setColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError) => 
 
 setColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 
-设置当前窗口为广色域模式或默认色域模式，使用Promise异步回调。
+设置当前窗口的色域模式，使用Promise异步回调。
 
 > **说明：**
 >
@@ -12440,7 +12440,7 @@ setColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 
 | 参数名     | 类型                      | 必填 | 说明           |
 | ---------- | ------------------------- | ---- | -------------- |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | 是   | 设置色域模式。 |
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | 是   | 色域模式。 |
 
 **返回值：**
 

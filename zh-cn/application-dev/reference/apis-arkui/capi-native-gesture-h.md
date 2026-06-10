@@ -72,7 +72,7 @@
 | [float OH_ArkUI_PanGesture_GetVelocityY(const ArkUI_GestureEvent* event)](#oh_arkui_pangesture_getvelocityy) | - | 滑动手势返回当前手势的y轴方向速度。 |
 | [float OH_ArkUI_PanGesture_GetOffsetX(const ArkUI_GestureEvent* event)](#oh_arkui_pangesture_getoffsetx) | - | 滑动手势返回当前手势事件x轴相对偏移量。 |
 | [float OH_ArkUI_PanGesture_GetOffsetY(const ArkUI_GestureEvent* event)](#oh_arkui_pangesture_getoffsety) | - | 滑动手势返回当前手势事件y轴相对偏移量。 |
-| [float OH_ArkUI_SwipeGesture_GetAngle(const ArkUI_GestureEvent* event)](#oh_arkui_swipegesture_getangle) | - | 快滑手势返回当前手势事件角度信息。角度计算方式：快滑手势被识别到后，连接两根手指之间的线被识别为起始线条，随着手指的滑动，手指之间的线条会发生旋转，<br>        根据起始线条两端点和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角，<br>        最后arctan2(cy2-cy1,cx2-cx1)-arctan2(y2-y1,x2-x1)为旋转的角度。<br>        以起始线条为坐标系，顺时针旋转为0到180度，逆时针旋转为-180到0度。<br> |
+| [float OH_ArkUI_SwipeGesture_GetAngle(const ArkUI_GestureEvent* event)](#oh_arkui_swipegesture_getangle) | - | 快滑手势返回当前手势事件角度信息，即手指滑动的瞬时方向与水平正方向的夹角。以水平正方向为基准，滑动方向位于水平正方向顺时针侧时，角度范围为0到180度；位于水平正方向逆时针侧时，角度范围为0到-180度。 |
 | [float OH_ArkUI_SwipeGesture_GetVelocity(const ArkUI_GestureEvent* event)](#oh_arkui_swipegesture_getvelocity) | - | 快滑手势场景中所有手指滑动平均速度。 |
 | [float OH_ArkUI_RotationGesture_GetAngle(const ArkUI_GestureEvent* event)](#oh_arkui_rotationgesture_getangle) | - | 旋转手势返回当前手势事件角度信息。 |
 | [float OH_ArkUI_PinchGesture_GetScale(const ArkUI_GestureEvent* event)](#oh_arkui_pinchgesture_getscale) | - | 捏合手势返回当前手势事件缩放信息。 |
@@ -720,8 +720,7 @@ float OH_ArkUI_SwipeGesture_GetAngle(const ArkUI_GestureEvent* event)
 
 **描述：**
 
-
-快滑手势返回当前手势事件角度信息。角度计算方式：快滑手势被识别到后，连接两根手指之间的线被识别为起始线条，随着手指的滑动，手指之间的线条会发生旋转，<br>        根据起始线条两端点和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角，<br>        最后arctan2(cy2-cy1,cx2-cx1)-arctan2(y2-y1,x2-x1)为旋转的角度。<br>        以起始线条为坐标系，顺时针旋转为0到180度，逆时针旋转为-180到0度。<br>
+快滑手势返回当前手势事件角度信息，即手指滑动的瞬时方向与水平正方向的夹角。以水平正方向为基准，滑动方向位于水平正方向顺时针侧时，角度范围为0到180度；位于水平正方向逆时针侧时，角度范围为0到-180度。
 
 **起始版本：** 12
 

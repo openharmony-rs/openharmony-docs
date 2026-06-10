@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=a1b9555ca35e53d2ce1fb3e822613b1436be9250 translatedAt=2026-06-08T06:13:57.563Z pushedAt=2026-06-08T12:53:56.885Z -->
 
 ## Introduction
 
@@ -48,7 +49,7 @@ Declare the required permission in the **module.json5** file. For details, see [
 
 - **Key event**
 
-<!-- @[key_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[key_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 struct KeyEvent {
@@ -65,26 +66,25 @@ void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
     event.action = OH_Input_GetKeyEventAction(keyEvent);
     event.keyCode = OH_Input_GetKeyEventKeyCode(keyEvent);
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
-	// ···
+    // ...
 }
 
 static napi_value AddKeyEventInterceptor(napi_env env, napi_callback_info info)
 {
     Input_Result ret = OH_Input_AddKeyEventInterceptor(OnKeyEventCallback, nullptr);
-	// ···
+    // ...
 }
 
 static napi_value RemoveKeyEventInterceptor(napi_env env, napi_callback_info info)
 {
     Input_Result ret = OH_Input_RemoveKeyEventInterceptor();
-	// ···
+    // ...
 }
 ```
 
-
 - **Input Events (Mouse, Touch, and Axis Events)**
 
-<!-- @[input_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[input_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 struct MouseEvent {

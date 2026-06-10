@@ -2,13 +2,13 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:27:01.457Z pushedAt=2026-06-05T12:07:32.894Z -->
 
 **\<list-item>** is a child component of the **[\<list>](js-lite-components-container-list.md)** component and is used to display items in a list.
-
 
 > **NOTE**
 >

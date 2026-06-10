@@ -6,6 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:57:56.561Z pushedAt=2026-06-09T10:12:44.377Z -->
 
 The **usbManager** module provides USB device management functions, including USB device list query, bulk data transfer, control transfer, and permission control on the host side as well as USB interface management, and function switch and query on the device side.
 
@@ -22,7 +23,7 @@ import { usbManager } from '@kit.BasicServicesKit';
 ## How to Use
 
 Perform the following steps when using the APIs with the [USBDevicePipe](#usbdevicepipe) parameter:
- 
+
 **Before use**:
 
 1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the USB device list.
@@ -43,11 +44,7 @@ Obtains the list of USB devices connected to the host.
 
 > **NOTE**
 >
-> If the USB service is running properly but no device is connected, an empty list is returned, which indicates that the call is successful but no USB device is connected.
->
-> This API returns **undefined** in the following scenarios: the USB host mode is not enabled, the USB service is not correctly initialized, the USB service fails to be connected (for example, the developer mode is disabled), the permission is insufficient, or other system errors occur. Note that you should perform an empty check for the return value.
->
-> Third-party applications are not allowed to obtain the device serial number from the **serial** field unless they request permission using **requestRight** and then initiate a control transfer to obtain it.
+> Third-party applications are not allowed to obtain the device serial number from the **serial** field unless they request permission using [requestRight](#usbmanagerrequestright) and then initiate a control transfer to obtain it.
 
 **System capability**: SystemCapability.USB.USBManager
 
@@ -61,7 +58,7 @@ Obtains the list of USB devices connected to the host.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                 |
+| Error Code| Error Message                 |
 | -------- | ------------------------- |
 | 801      | Capability not supported. |
 
@@ -130,6 +127,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 Connects to the USB device based on the device information returned by **getDevices()**. If the USB service is abnormal, **undefined** may be returned. Check whether the return value of the API is empty.
 
 1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the USB device list.
+
 2. Call [usbManager.requestRight](#usbmanagerrequestright) to request the device access permission.
 
 **System capability**: SystemCapability.USB.USBManager
@@ -138,7 +136,7 @@ Connects to the USB device based on the device information returned by **getDevi
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | ---------------- |
-| device | [USBDevice](#usbdevice) | Yes| USB device. The **busNum** and **devAddress** parameters obtained by **getDevices** are used to determine a USB device. Other parameters are passed transparently.|
+| device | [USBDevice](#usbdevice) | Yes | USB device. The **busNum** and **devAddress** parameters obtained by [getDevices](#usbmanagergetdevices) are used to determine a USB device. Other parameters are passed transparently. |
 
 **Return value**
 
@@ -150,7 +148,7 @@ Connects to the USB device based on the device information returned by **getDevi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -166,7 +164,7 @@ function connectDevice() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   console.info(`devicepipe = ${devicepipe}`);
@@ -187,7 +185,7 @@ Checks whether the user, for example, the application or system, has the device 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| deviceName | string | Yes| Device name, which can be obtained from the device list returned by **getDevices**.|
+| deviceName | string | Yes | Device name, which comes from the USB device name obtained by [getDevices](#usbmanagergetdevices). |
 
 **Return value**
 
@@ -199,7 +197,7 @@ Checks whether the user, for example, the application or system, has the device 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -214,7 +212,7 @@ function hasRight(): boolean {
     return false;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let right: boolean = usbManager.hasRight(device.name);
   console.info(`${right}`);
@@ -234,7 +232,7 @@ Requests the temporary device access permission for the application. This API us
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| deviceName | string | Yes| Device name, which can be obtained from the device list returned by **getDevices**.|
+| deviceName | string | Yes | Device name, which comes from the USB device name obtained by [getDevices](#usbmanagergetdevices).|
 
 **Return value**
 
@@ -246,7 +244,7 @@ Requests the temporary device access permission for the application. This API us
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -261,9 +259,11 @@ function requestRight() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name).then(ret => {
     console.info(`requestRight = ${ret}`);
+  }).catch((error: BusinessError) => {
+    console.error(`requestRight failed : ${error}`);
   });
 }
 ```
@@ -280,7 +280,7 @@ Removes the device access permission for the application. System applications ar
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| deviceName | string | Yes| Device name, which can be obtained from the device list returned by **getDevices**.|
+| deviceName | string | Yes | Device name, which comes from the USB device name obtained by [getDevices](#usbmanagergetdevices).|
 
 **Return value**
 
@@ -292,7 +292,7 @@ Removes the device access permission for the application. System applications ar
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -307,7 +307,7 @@ function removeRight(): boolean {
     return false;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   if (usbManager.removeRight(device.name)) {
     console.info(`Succeed in removing right`);
     return true;
@@ -333,21 +333,21 @@ Claims a USB device interface.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
-| iface | [USBInterface](#usbinterface) | Yes| USB interface. You can use **getDevices** to obtain device information and identify the USB interface based on the ID.|
+| pipe | [USBDevicePipe](#usbdevicepipe) | Yes | Bus address and device address, which are obtained by calling [connectDevice](#usbmanagerconnectdevice).|
+| iface | [USBInterface](#usbinterface) | Yes | USB interface. You can use [getDevices](#usbmanagergetdevices) to obtain device information and identify the USB interface based on the ID.|
 | force | boolean | No| Whether to forcibly claim a USB interface. The default value is **false**, which means not to forcibly claim a USB interface. You can set the value as required.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the **claim** interface is called successfully; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the **requestRight** API to request authorization.<br>- -1: The driver is abnormal.|
+| number | Returns **0** if the **claim** interface is called successfully; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the [requestRight](#usbmanagerrequestright) API to request authorization.<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -362,10 +362,10 @@ function claimInterface() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number= usbManager.claimInterface(devicepipe, interfaces);
   console.info(`claimInterface = ${ret}`);
 }
@@ -387,20 +387,20 @@ Releases the claimed communication interface.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
-| iface | [USBInterface](#usbinterface) | Yes| USB interface. You can use **getDevices** to obtain device information and identify the USB interface based on the ID.|
+| pipe | [USBDevicePipe](#usbdevicepipe) | Yes | Bus address and device address, which are obtained by calling [connectDevice](#usbmanagerconnectdevice).|
+| iface | [USBInterface](#usbinterface) | Yes | USB interface. You can use [getDevices](#usbmanagergetdevices) to obtain device information and identify the USB interface based on the ID.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the USB interface is successfully released; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the **requestRight** API to request authorization.<br>- -1: The driver is abnormal.|
+| number | Returns **0** if the USB interface is successfully released; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the [requestRight](#usbmanagerrequestright) API to request authorization.<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -415,10 +415,10 @@ function releaseInterface() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.releaseInterface(devicepipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
@@ -437,20 +437,20 @@ Sets the device configuration.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
-| config | [USBConfiguration](#usbconfiguration) | Yes| USB configuration. You can use **getDevices** to obtain device information and identify the USB configuration based on the ID.|
+| pipe | [USBDevicePipe](#usbdevicepipe) | Yes | Bus address and device address, which are obtained by calling [connectDevice](#usbmanagerconnectdevice). |
+| config | [USBConfiguration](#usbconfiguration) | Yes | USB configuration. You can use [getDevices](#usbmanagergetdevices) to obtain device information and identify the USB configuration based on the ID. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the USB configuration is successfully set; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the **requestRight** API to request authorization.<br>- -1: The driver is abnormal.<br>- -17: I/O failure.|
+| number | Returns **0** if the USB configuration is successfully set; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the [requestRight](#usbmanagerrequestright) API to request authorization.<br>- -1: The driver is abnormal.<br>- -17: I/O failure.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -465,10 +465,10 @@ function setConfiguration() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  let config: usbManager.USBConfiguration = device.configs[0];
+  let config: usbManager.USBConfiguration = device.configs?.[0];
   let ret: number= usbManager.setConfiguration(devicepipe, config);
   console.info(`setConfiguration = ${ret}`);
 }
@@ -492,20 +492,20 @@ Sets a USB interface.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
-| iface | [USBInterface](#usbinterface)   | Yes| USB interface. You can use **getDevices** to obtain device information and identify the USB interface based on its **id** and **alternateSetting**.|
+| pipe | [USBDevicePipe](#usbdevicepipe) | Yes | Bus address and device address, which are obtained by calling [connectDevice](#usbmanagerconnectdevice). |
+| iface | [USBInterface](#usbinterface)   | Yes | USB interface. You can use [getDevices](#usbmanagergetdevices) to obtain device information and identify the USB interface based on its **id** and **alternateSetting**.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the USB interface is successfully set; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the **requestRight** API to request authorization.<br>- -1: The driver is abnormal.|
+| number | Returns **0** if the USB interface is successfully set; returns an error code otherwise. The error codes are as follows:<br>- 88080389: The service is not started. Possible causes: 1. No device is inserted. 2. The service exits abnormally.<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the [requestRight](#usbmanagerrequestright) API to request authorization.<br>- -1: The driver is abnormal. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -520,10 +520,10 @@ function setInterface() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.setInterface(devicepipe, interfaces);
   console.info(`setInterface = ${ret}`);
@@ -542,7 +542,7 @@ Obtains a raw USB descriptor. If the USB service is abnormal, **undefined** may 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
+| pipe | [USBDevicePipe](#usbdevicepipe) | Yes | Bus address and device address, which are obtained by calling [connectDevice](#usbmanagerconnectdevice). |
 
 **Return value**
 
@@ -554,7 +554,7 @@ Obtains a raw USB descriptor. If the USB service is abnormal, **undefined** may 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -569,8 +569,8 @@ function getRawDescriptor() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   let ret: Uint8Array = usbManager.getRawDescriptor(devicepipe);
 }
 ```
@@ -587,19 +587,19 @@ Obtains a file descriptor.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
+| pipe | [USBDevicePipe](#usbdevicepipe) | Yes | Bus address and device address, which are obtained by calling [connectDevice](#usbmanagerconnectdevice). |
 
 **Return value**
 
 | Type    | Description                  |
 | ------ | -------------------- |
-| number | Returns a file descriptor of the USB device if the operation is successful; returns a negative number otherwise.|
+| number | Returns the file descriptor corresponding to the device if this API is successfully called; returns an error code otherwise. The error codes are as follows:<br>- 88080486: The service is being initialized. Try again later.<br>- 88080488: No device access permission. Call the [requestRight](#usbmanagerrequestright) API to request authorization.<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -614,82 +614,12 @@ function getFileDescriptor() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   let ret: number = usbManager.getFileDescriptor(devicepipe);
   console.info(`getFileDescriptor = ${ret}`);
   let closeRet: number = usbManager.closePipe(devicepipe);
   console.info(`closePipe = ${closeRet}`);
-}
-```
-
-## usbManager.controlTransfer<sup>(deprecated)</sup>
-
-controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: number): Promise&lt;number&gt;
-
-Performs control transfer. This API uses a promise to return the result.
-
-> **NOTE**
->
-> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [usbControlTransfer](#usbmanagerusbcontroltransfer12).
-
-**System capability**: SystemCapability.USB.USBManager
-
-**Parameters**
-
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe. You need to call **connectDevice** to obtain its value.|
-| controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | Yes| Control transfer parameters. Set the parameters as required. For details, see the USB protocol.|
-| timeout | number | No| Timeout interval, in milliseconds. This parameter is optional. If the control transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete. Set this parameter as required.|
-
-**Return value**
-
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- -1: The driver is abnormal.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-
-**Example**
-
-```ts
-class PARA {
-  request: number = 0
-  reqType: usbManager.USBControlRequestType = 0
-  target: usbManager.USBRequestTargetType = 0
-  value: number = 0
-  index: number = 0
-  data: Uint8Array = new Uint8Array()
-}
-
-let param: PARA = {
-  request: 0x06,
-  reqType: 0x80,
-  target:0,
-  value: 0x01 << 8 | 0,
-  index: 0,
-  data: new Uint8Array(18)
-};
-
-function controlTransfer() {
-  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-  if (!devicesList || devicesList.length == 0) {
-    console.info(`device list is empty`);
-    return;
-  }
-
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-  usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
-  console.info(`controlTransfer = ${ret}`);
-  })
 }
 ```
 
@@ -705,7 +635,7 @@ Performs control transfer. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the USB device.|
+| pipe | [USBDevicePipe](#usbdevicepipe) | Yes | USB device pipe, which is obtained by calling [connectDevice](#usbmanagerconnectdevice). |
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | Yes| Control transfer parameters. Set the parameters as required. For details, see the USB protocol.|
 | timeout | number | No| Timeout interval, in milliseconds. This parameter is optional. If the control transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete. Set this parameter as required.|
 
@@ -713,13 +643,13 @@ Performs control transfer. This API uses a promise to return the result.
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- -1: The driver is abnormal.|
+| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error code is returned:<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified.2.Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -753,8 +683,8 @@ function usbControlTransfer() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
   console.info(`usbControlTransfer = ${ret}`);
   })
@@ -779,22 +709,22 @@ Performs bulk transfer. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe. You need to call **connectDevice** to obtain its value.|
-| endpoint | [USBEndpoint](#usbendpoint) | Yes| USB endpoint, which is used to determine the USB interface for data transfer. You need to call **getDevices** to obtain the device information list and endpoint. Wherein, **address** is used to determine the endpoint address, **direction** is used to determine the endpoint direction, and **interfaceId** is used to determine the USB interface to which the endpoint belongs. Other parameters are passed transparently.|
-| buffer | Uint8Array | Yes| Buffer used to write or read data.|
+| pipe | [USBDevicePipe](#usbdevicepipe) | Yes | USB device pipe, which is obtained by calling [connectDevice](#usbmanagerconnectdevice). |
+| endpoint | [USBEndpoint](#usbendpoint) | Yes | USB endpoint, which is used to determine the USB interface for data transfer. You need to call [getDevices](#usbmanagergetdevices) to obtain the device information list and endpoint. Wherein, **address** is used to determine the endpoint address, **direction** is used to determine the endpoint direction, and **interfaceId** is used to determine the USB interface to which the endpoint belongs. Other parameters are passed transparently. |
+| buffer | Uint8Array | Yes| Buffer for writing or reading data.|
 | timeout | number | No| Timeout interval, in milliseconds. This parameter is optional. If the bulk transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete. Set this parameter as required.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error codes are returned:<br>- -1: The driver is abnormal.|
+| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error code is returned:<br>- -1: The driver is abnormal.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -816,18 +746,23 @@ function bulkTransfer() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
-
+  if (!usbManager.hasRight(device.name)) {
+    console.error(`request right fail`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  for (let i = 0; i < device.configs[0].interfaces.length; i++) {
-    if (device.configs[0].interfaces[i].endpoints[0].attributes == 2) {
-      let endpoint: usbManager.USBEndpoint = device.configs[0].interfaces[i].endpoints[0];
-      let interfaces: usbManager.USBInterface = device.configs[0].interfaces[i];
+  for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
+    if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
+      let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
+      let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
       let ret: number = usbManager.claimInterface(devicepipe, interfaces);
       let buffer =  new Uint8Array(128);
       usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
         console.info(`bulkTransfer = ${ret}`);
+      }).catch((error: BusinessError) => {
+        console.error(`bulkTransfer failed : ${error}`);
       });
     }
   }
@@ -852,13 +787,13 @@ Requests a USB data transfer.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | Yes| As a USB data transfer interface, it is required for a client to initiate a transfer request.|
+| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | Yes| USB data transfer. Fields of this parameter object need to be configured by the client to initiate a transfer request.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
@@ -874,6 +809,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 > The following sample code shows the basic process for calling the **usbSubmitTransfer** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols to ensure correct data transfer and device compatibility.
 
 <!--code_no_check-->
+
 ```ts
 // Call usbManager.getDevices to obtain a data set. Then, obtain a USB device and its access permission.
 // Pass the obtained USB device as a parameter to usbManager.connectDevice. Then, call usbManager.connectDevice to connect the USB device.
@@ -884,15 +820,19 @@ function usbSubmitTransfer() {
     console.info(`device list is empty`);
     return;
   }
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
+  if (!usbManager.hasRight(device.name)) {
+    console.info(`request right fail`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   // Obtain the endpoint address.
-  let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
+  let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
   })
   // Obtain the first ID of the device.
-  let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
+  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
 
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
@@ -936,13 +876,13 @@ Cancels an asynchronous USB data transfer request.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | Yes| Only the [USBDevicePipe](#usbdevicepipe) and [USBEndpoint](#usbendpoint) parameters should be specified in this API.|
+| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | Yes | USB data transfer. This parameter is the same as the input parameter object of the [usbManager.usbSubmitTransfer](#usbmanagerusbsubmittransfer18) API.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first. |
@@ -957,6 +897,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 > The following sample code shows the basic process for calling the **usbCancelTransfer** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols to ensure correct data transfer and device compatibility.
 
 <!--code_no_check-->
+
 ```ts
 // Call usbManager.getDevices to obtain a data set. Then, obtain a USB device and its access permission.
 // Pass the obtained USB device as a parameter to usbManager.connectDevice. Then, call usbManager.connectDevice to connect the USB device.
@@ -967,15 +908,23 @@ function usbCancelTransfer() {
     console.info(`device list is empty`);
     return;
   }
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
+  if (devicepipe === undefined) {
+    console.info(`connect device fail`);
+    return;
+  }
   // Obtain the endpoint address.
-  let endpoint = device.configs[0].interfaces[0]?.endpoints.find((value) => {
+  let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
   })
+  if (endpoint === undefined) {
+    console.info(`invalid endpoint`);
+    return;
+  }
   // Obtain the first ID of the device.
-  let ret: number = usbManager.claimInterface(devicepipe, device.configs[0].interfaces[0], true);
+  let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
     flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
@@ -1009,7 +958,9 @@ closePipe(pipe: USBDevicePipe): number
 Closes a USB device pipe.
 
 1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the USB device list.
+
 2. Call [usbManager.requestRight](#usbmanagerrequestright) to request the device access permission.
+
 3. Call [usbManager.connectDevice](#usbmanagerconnectdevice) to obtain **devicepipe** as an input parameter.
 
 **System capability**: SystemCapability.USB.USBManager
@@ -1018,19 +969,19 @@ Closes a USB device pipe.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the message control channel. You need to call **connectDevice** to obtain its value.|
+| pipe | [USBDevicePipe](#usbdevicepipe) | Yes | USB device pipe, which is used to determine the message control channel. You need to call [connectDevice](#usbmanagerconnectdevice) to obtain its value.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| number | Returns **0** if the USB device pipe is closed successfully; returns an error code otherwise. The error codes are as follows:<br>- 22: The service is abnormal.|
+| number | Returns **0** if the USB device pipe is closed successfully; returns an error code otherwise. The error codes are as follows:<br>- 22: The service is abnormal. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -1045,8 +996,8 @@ function closePipe() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   let ret: number = usbManager.closePipe(devicepipe);
   console.info(`closePipe = ${ret}`);
 }
@@ -1066,7 +1017,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 | Name   | Type        | Mandatory| Description                                 |
 | --------- | ------------ | ---- | ------------------------------------- |
-| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory, which is obtained through [getAccessoryList](#usbmanagergetaccessorylist14).|
+| accessory | [USBAccessory](#usbaccessory14) | Yes  | USB accessory, which is obtained by calling [getAccessoryList](#usbmanagergetaccessorylist14).|
 
 **Return value**
 
@@ -1078,7 +1029,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -1092,10 +1043,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.hasAccessoryRight(accList[0])
+  let flag = usbManager.hasAccessoryRight(accList?.[0])
   hilog.info(0, 'testTag ui', `hasAccessoryRight success, ret:${flag}`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `hasAccessoryRight error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `hasAccessoryRight error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1125,7 +1076,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -1139,10 +1090,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList[0])
+  let flag = usbManager.requestAccessoryRight(accList?.[0])
   hilog.info(0, 'testTag ui', `requestAccessoryRight success, ret:${flag}`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `requestAccessoryRight error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `requestAccessoryRight error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1150,7 +1101,7 @@ try {
 
 cancelAccessoryRight(accessory: USBAccessory): void
 
-Cancels the permission of the current application to access USB accessories.
+Cancels the permission of the current application to access the USB accessory.
 
 You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to obtain the accessory list and use [USBAccessory](#usbaccessory14) as a parameter.
 
@@ -1166,7 +1117,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -1180,11 +1131,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList[0])
-  usbManager.cancelAccessoryRight(accList[0])
+  let flag = usbManager.requestAccessoryRight(accList?.[0])
+  usbManager.cancelAccessoryRight(accList?.[0])
   hilog.info(0, 'testTag ui', `cancelAccessoryRight success`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `cancelAccessoryRight error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `cancelAccessoryRight error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1206,7 +1157,7 @@ Obtains the list of USB accessories connected to the host.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.                                    |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. |
@@ -1219,7 +1170,7 @@ try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
   hilog.info(0, 'testTag ui', `getAccessoryList success, accList: ${JSON.stringify(accList)}`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `getAccessoryList error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `getAccessoryList error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1249,7 +1200,7 @@ You need to call [usbManager.getAccessoryList](#usbmanagergetaccessorylist14) to
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -1263,17 +1214,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList[0])
-  let handle = usbManager.openAccessory(accList[0])
+  let flag = usbManager.requestAccessoryRight(accList?.[0])
+  let handle = usbManager.openAccessory(accList?.[0])
   hilog.info(0, 'testTag ui', `openAccessory success`)
   let arrayBuffer = new ArrayBuffer(4096);
-  let readLength = fs.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
+  let readLength = fileIo.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
   hilog.info(0, 'testTag ui', 'readSync ret: ' + readLength.toString(10));
 } catch (error) {
-  hilog.info(0, 'testTag ui', `openAccessory error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `openAccessory error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1297,7 +1248,7 @@ You need to call [usbManager.openAccessory](#usbmanageropenaccessory14) to obtai
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
@@ -1309,12 +1260,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
-  let flag = usbManager.requestAccessoryRight(accList[0])
-  let handle = usbManager.openAccessory(accList[0])
+  let flag = usbManager.requestAccessoryRight(accList?.[0])
+  let handle = usbManager.openAccessory(accList?.[0])
   usbManager.closeAccessory(handle)
   hilog.info(0, 'testTag ui', `closeAccessory success`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `closeAccessory error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `closeAccessory error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1334,7 +1285,7 @@ Resets a USB peripheral.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
+| pipe | [USBDevicePipe](#usbdevicepipe) | Yes | Bus address and device address, which are obtained by calling [connectDevice](#usbmanagerconnectdevice). |
 
 **Return value**
 
@@ -1346,7 +1297,7 @@ Resets a USB peripheral.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 801 | Capability not supported. |
 | 14400001 | Access right denied. Call requestRight to get the USBDevicePipe access right first.|
@@ -1365,14 +1316,84 @@ function resetUsbDevice() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   try {
     let ret: boolean = usbManager.resetUsbDevice(devicepipe);
     console.info(`resetUsbDevice  = ${ret}`);
   } catch (err) {
     console.error(`resetUsbDevice failed: ` + err);
   }
+}
+```
+
+## usbManager.controlTransfer<sup>(deprecated)</sup>
+
+controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: number): Promise&lt;number&gt;
+
+Performs control transfer. This API uses a promise to return the result asynchronously.
+
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [usbControlTransfer](#usbmanagerusbcontroltransfer12) instead.
+
+**System capability**: SystemCapability.USB.USBManager
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is obtained by calling **connectDevice**.|
+| controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | Yes| Control transfer parameters. Set the parameters as needed. For the parameter types, see the USB protocol.|
+| timeout | number | No| Timeout interval, in milliseconds. This parameter is optional. If the control transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;number&gt; | Promise used to return the result, which is the size of the transferred or received data block if the transfer is successful. If the API call fails, the following error code is returned:<br>- -1: The driver is abnormal.|
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code ID| Error Message|
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+
+**Example**
+
+```ts
+class PARA {
+  request: number = 0
+  reqType: usbManager.USBControlRequestType = 0
+  target: usbManager.USBRequestTargetType = 0
+  value: number = 0
+  index: number = 0
+  data: Uint8Array = new Uint8Array()
+}
+
+let param: PARA = {
+  request: 0x06,
+  reqType: 0x80,
+  target:0,
+  value: 0x01 << 8 | 0,
+  index: 0,
+  data: new Uint8Array(18)
+};
+
+function controlTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
+
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
+  usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
+  console.info(`controlTransfer = ${ret}`);
+  })
 }
 ```
 
@@ -1464,25 +1485,6 @@ Represents a USB device pipe, which is used to determine a USB device.
 | busNum     | number | No|No| Bus address.|
 | devAddress | number | No|No| Device address.|
 
-## USBControlParams<sup>(deprecated)</sup>
-
-Represents control transfer parameters.
-
->**NOTE**
->
-> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [USBDeviceRequestParams](#usbdevicerequestparams12) instead.
-
-**System capability**: SystemCapability.USB.USBManager
-
-| Name     | Type                                           | Read-Only | Optional              |Description              |
-| ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
-| request | number                                          | No| No  |Request type.           |
-| target  | [USBRequestTargetType](#usbrequesttargettype)   | No| No  |Request target type.         |
-| reqType | [USBControlRequestType](#usbcontrolrequesttype) | No| No  |Control request type.         |
-| value   | number                                          | No| No  |Request parameter.           |
-| index   | number                                          | No| No  |Index of the request parameter.|
-| data    | Uint8Array                                      | No| No  |Buffer for writing or reading data.    |
-
 ## USBDeviceRequestParams<sup>12+</sup>
 
 Represents control transfer parameters.
@@ -1494,7 +1496,7 @@ Represents control transfer parameters.
 | bmRequestType | number                                    | No| No  |Control request type.           |
 | bRequest  | number                                        | No| No  |Request type.         |
 | wValue | number                                           | No| No  |Request parameter.         |
-| wIndex   | number                                         | No| No  |Index of the request parameter.           |
+| wIndex   | number                                         | No| No  |Index of the request parameter value.           |
 | wLength   | number                                        | No| No  |Length of the requested data.|
 | data    | Uint8Array                                      | No| No  |Buffer for writing or reading data.    |
 
@@ -1509,7 +1511,7 @@ Enumerates request target types.
 | USB_REQUEST_TARGET_DEVICE    | 0    | Device.|
 | USB_REQUEST_TARGET_INTERFACE | 1    | Interface.|
 | USB_REQUEST_TARGET_ENDPOINT  | 2    | Endpoint.|
-| USB_REQUEST_TARGET_OTHER     | 3    | Other.|
+| USB_REQUEST_TARGET_OTHER     | 3    | Other. |
 
 ## USBControlRequestType
 
@@ -1560,17 +1562,17 @@ Describes the USB accessory handle.
 
 ## UsbDataTransferParams<sup>18+</sup>
 
-As a USB data transfer interface, it is required for a client to initiate a transfer request.
+Defines a USB data transfer API. Fields of this parameter object need to be configured by the client to initiate a transfer request.
 
 **System capability**: SystemCapability.USB.USBManager
 
 | Name        | Type  | Read-Only | Optional   |Description   |
 | ---------- | ------ | ---- | ----- |----- |
-| devPipe | [USBDevicePipe](#usbdevicepipe) | No| No| USB device pipe, which is used to determine the bus number and device address. You need to call **connectDevice** to obtain its value.|
-| flags | [UsbTransferFlags](#usbtransferflags18) | No|No| USB transfer flag.|
+| devPipe | [USBDevicePipe](#usbdevicepipe) | No | No | Bus address and device address, which are obtained by calling [connectDevice](#usbmanagerconnectdevice). |
+| flags | [UsbTransferFlags](#usbtransferflags18) | No|No| USB transfer flags.|
 | endpoint | number | No| No| Endpoint address, which is a positive integer.|
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | No|No| Transfer type.|
-| timeout | number | No| No| Timeout duration, in ms.|
+| timeout | number | No| No| Timeout duration, in milliseconds.|
 | length | number | No|No| Length of the data buffer, in bytes. The value must be a non-negative number (expected length).|
 | callback | AsyncCallback<[SubmitTransferCallback](#submittransfercallback18)> | No|No| Information returned by the callback.|
 | userData | Uint8Array | No| No| User data.|
@@ -1599,7 +1601,7 @@ Enumerates USB transfer types.
 | Name                        | Value  | Description  |
 | ---------------------------- | ---- | ------ |
 | TRANSFER_TYPE_ISOCHRONOUS | 0x1    | Real-time transfer.|
-| TRANSFER_TYPE_BULK  | 0x2    | Performs bulk transfer.|
+| TRANSFER_TYPE_BULK  | 0x2    | Bulk transfer.|
 | TRANSFER_TYPE_INTERRUPT     | 0x3    | Interrupt transfer.|
 
 ## SubmitTransferCallback<sup>18+</sup>
@@ -1641,3 +1643,22 @@ Describes packet information returned in real time by the transfer callback.
 | length | number | No| No|Expected length of the read or written data, in bytes.|
 | actualLength | number|No| No|Actual length of the read or written data, in bytes.|
 | status | [UsbTransferStatus](#usbtransferstatus18) | No| No|Status returned by callback.|
+
+## USBControlParams<sup>(deprecated)</sup>
+
+Control transfer parameters.
+
+>**NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [USBDeviceRequestParams](#usbdevicerequestparams12) instead.
+
+**System capability**: SystemCapability.USB.USBManager
+
+| Name| Type| Read-Only| Optional| Description|
+| ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
+| request | number                                          | No| No  |Request type.|
+| target  | [USBRequestTargetType](#usbrequesttargettype)   | No| No  |Request target type.|
+| reqType | [USBControlRequestType](#usbcontrolrequesttype) | No| No  |Request control type.|
+| value   | number                                          | No| No  |Request parameter.|
+| index   | number                                          | No| No  |Index of the request parameter value.|
+| data    | Uint8Array                                      | No| No  |Buffer used for writing or reading.|

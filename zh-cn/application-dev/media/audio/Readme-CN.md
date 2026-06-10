@@ -9,8 +9,9 @@
 - [Audio Kit简介](audio-kit-intro.md)
 - [使用合适的音频类型](using-right-streamusage-and-sourcetype.md)
 - 音频焦点和音频会话管理<!--audio-session-->
+  - [音频焦点和音频会话开发概述](audio-playback-concurrency-audio-session-overview.md)
   - [音频焦点介绍](audio-playback-concurrency.md)
-  - [音频会话管理](audio-session-management.md)
+  - [音频会话管理(ArkTS)](audio-session-management.md)
   - [使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)
 - 音频播放<!--audio-playback-->
   - [音频播放开发概述](audio-playback-overview.md)
@@ -61,6 +62,7 @@
   - [音频编创开发概述(C/C++)](audio-suite.md)
   - [离线编辑(C/C++)](audio-suite-manual-rendering.md)
   - [实时预览(C/C++)](audio-suite-real-time-rendering.md)
+  - [空间渲染(C/C++)](audio-suite-space-render.md)
 - MIDI设备通信<!--midi-->
   - [OH_MIDI概述(C/C++)](midi-overview.md)
   - [使用OH_MIDI进行MIDI开发(C/C++)](using-ohmidi.md)

@@ -92,13 +92,13 @@
 
 沉浸式布局是一种让应用界面聚焦内容，减少无关元素干扰的窗口状态。
 
-非[自由窗口](#自由窗口)可以通过调用[setWindowLayoutFullScreen](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)进入沉浸式布局。
+非[自由窗口](#自由窗口)可以通过调用[setWindowLayoutFullScreen](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)或[setImmersiveModeEnabledState()](../reference/apis-arkui/arkts-apis-window-Window.md#setimmersivemodeenabledstate12)接口进入沉浸式布局。
 
 | 非自由窗口的非沉浸式布局示意                    | 非自由窗口的沉浸式布局示意               |
 |----------------------------------------------|----------------------------------------|
 | ![no-immersive](figures/no-immersive.png)    | ![immersive](figures/immersive.png)    |
 
-自由窗口可以通过隐藏装饰栏进入沉浸式布局。
+自由窗口状态下，可通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口控制窗口标题栏显隐，当标题栏隐藏时，窗口处于沉浸式布局。
 
 | 自由窗口的非沉浸式布局示意                      | 自由窗口的沉浸式布局示意                 |
 |----------------------------------------------|----------------------------------------|

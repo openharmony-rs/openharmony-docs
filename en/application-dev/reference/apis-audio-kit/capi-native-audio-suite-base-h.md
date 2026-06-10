@@ -123,7 +123,7 @@ Enumerates the working modes of the audio creation pipeline.
 | Value| Description|
 | -- | -- |
 | AUDIOSUITE_PIPELINE_EDIT_MODE = 1 | Edit mode. In this mode, the pipeline can create various effect nodes for audio processing.|
-| AUDIOSUITE_PIPELINE_REALTIME_MODE = 2 | Real-time rendering mode. In this mode, processed audio is played in real time during audio processing.<br> Only equalizer effect processing is supported in this mode.|
+| AUDIOSUITE_PIPELINE_REALTIME_MODE = 2 | Real-time preview mode. In this mode, processed audio is previewed in real time during audio processing.<br> In versions earlier than API version 23, a pipeline supports only the equalizer effect node in real-time preview mode.<br> Since API version 23, a pipeline supports all effect nodes in real-time preview mode.|
 
 ### OH_AudioSuite_PipelineState
 
@@ -166,7 +166,7 @@ Enumerates the error codes for audio creation.
 | AUDIOSUITE_ERROR_NODE_NOT_EXIST = 7 | The node does not exist.|
 | AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT = 8 | Nodes do not support connection.|
 | AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION = 9 | Unsupported operation. For example, the audio format cannot be set for effect nodes.|
-| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 | The number of pipelines or nodes created reaches the upper limit. Specifically:<br> An engine supports the creation of up to 10 pipelines, with a maximum of 1 dedicated to real-time rendering.<br> Each pipeline can have up to 5 input nodes, 1 output node, 3 mixer nodes, 1 audio separation node, and up to 5 other effect nodes.|
+| AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS = 10 | The number of pipelines or nodes created reaches the upper limit. Specifically:<br> An engine supports the creation of up to 10 pipelines, with a maximum of 1 dedicated to real-time preview.<br> Each pipeline can have up to 1 output node, 3 mixer nodes, and 1 audio source separation node.<br> In versions earlier than API version 24, each pipeline can have up to 5 input nodes and 5 other effect nodes. Since API version 24, each pipeline can have up to 15 input nodes and 15 other effect nodes.|
 | AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING = 11 | Mandatory parameters are missing. For example, the callback function is not set for the input node, or the audio format is not set for the output node.|
 | AUDIOSUITE_ERROR_TIMEOUT = 12 | Operation timed out.|
 | AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED = 13 | Memory allocation failed.|

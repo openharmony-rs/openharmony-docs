@@ -6,6 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:55:37.833Z pushedAt=2026-06-09T10:12:44.300Z -->
 
 This module provides the serial port management functions, including enabling and disabling the serial port of the device, writing and reading data, setting and obtaining the configuration parameters of the serial port, and managing permissions.
 
@@ -40,6 +41,7 @@ Obtains the serial port device list, including the device name and port number.
 > The following sample code shows the basic process for calling the **getPortList** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
+
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
@@ -48,8 +50,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function getPortList() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -68,7 +70,7 @@ Checks whether the application has the permission to access the serial port devi
 
 | Name   | Type    | Mandatory| Description                                 |
 |--------|--------|----|-------------------------------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes  | Port number, which is the value of **SerialPort** obtained by [getPortList](#serialmanagergetportlist). |
 
 **Return value**
 
@@ -80,7 +82,7 @@ Checks whether the application has the permission to access the serial port devi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception. |
@@ -94,6 +96,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 > The following sample code shows the basic process for calling the **hasSerialRight** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
+
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
@@ -102,8 +105,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function hasSerialRight() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('portList: ', JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -112,7 +115,7 @@ function hasSerialRight() {
   if (serialManager.hasSerialRight(portId)) {
     console.info('The serial port is accessible');
   } else {
-    console.info('No permission to access the serial port');
+    console.error('No permission to access the serial port');
   }
 }
 ```
@@ -129,7 +132,7 @@ Requests the permission for the application to access the serial port device. Af
 
 | Name   | Type    | Mandatory| Description                                 |
 |--------|--------|----|-------------------------------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of **SerialPort** obtained by [getPortList](#serialmanagergetportlist). |
 
 **Return value**
 
@@ -141,7 +144,7 @@ Requests the permission for the application to access the serial port device. Af
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception. |
@@ -155,6 +158,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 > The following sample code shows the basic process for calling the **requestSerialRight** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
+
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
@@ -163,8 +167,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function requestSerialRight() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -174,7 +178,7 @@ function requestSerialRight() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -196,13 +200,13 @@ Opens a serial port device.
 
 | Name   | Type    | Mandatory| Description         |
 |--------|--------|----|-------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of **SerialPort** obtained by [getPortList](#serialmanagergetportlist). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -217,6 +221,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 > The following sample code shows the basic process for calling the **open** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
+
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
@@ -225,8 +230,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function open() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -236,7 +241,7 @@ function open() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -266,7 +271,7 @@ Obtains the configuration parameters of a specified serial port.
 
 | Name   | Type    | Mandatory| Description         |
 |--------|--------|----|-------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes | Port number, which is the value of **SerialPort** obtained by [getPortList](#serialmanagergetportlist). |
 
 **Return value**
 
@@ -278,7 +283,7 @@ Obtains the configuration parameters of a specified serial port.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -292,6 +297,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 > The following sample code shows the basic process for calling the **getAttribute** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
+
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
@@ -300,8 +306,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function getAttribute() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -311,7 +317,7 @@ function getAttribute() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -354,14 +360,14 @@ Sets the parameters of the serial port. If this method is not called, the defaul
 
 | Name      | Type                                 | Mandatory| Description         |
 |-----------|-------------------------------------|----|-------------|
-| portId    | number                              | Yes | Port number.|
+| portId    | number                              | Yes  | Port number, which is the value of **SerialPort** obtained by [getPortList](#serialmanagergetportlist). |
 | attribute | [SerialAttribute](#serialattribute) | Yes | Configuration parameters of the serial port.    |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -375,6 +381,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 > The following sample code shows the basic process for calling the **setAttribute** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
+
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
@@ -383,8 +390,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function setAttribute() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -394,7 +401,7 @@ function setAttribute() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -439,7 +446,7 @@ Reads data from the serial port device asynchronously. This API uses a promise t
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number.     |
+| portId  | number     | Yes  | Port number, which is the value of **SerialPort** obtained by [getPortList](#serialmanagergetportlist).      |
 | buffer  | Uint8Array | Yes | Buffer for reading data.|
 | timeout | number     | No | Timeout interval, in milliseconds. If the API has no data in the buffer of the target port, it returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting.|
 
@@ -453,7 +460,7 @@ Reads data from the serial port device asynchronously. This API uses a promise t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -469,6 +476,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 > The following sample code shows the basic process for calling the **read** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
+
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
@@ -477,8 +485,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function read() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -488,7 +496,7 @@ function read() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -526,7 +534,7 @@ Reads data from the serial port device synchronously.
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number.|
+| portId  | number     | Yes  | Port number, which is the value of **SerialPort** obtained by [getPortList](#serialmanagergetportlist).|
 | buffer  | Uint8Array | Yes | Buffer for reading data.|
 | timeout | number     | No | Timeout interval, in milliseconds. If the API has no data in the buffer of the target port, it returns the result after waiting for the specified time. The default value **0** indicates that the API returns the result without waiting.|
 
@@ -540,7 +548,7 @@ Reads data from the serial port device synchronously.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -556,6 +564,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 > The following sample code shows the basic process for calling the **readSync** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
+
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
@@ -564,8 +573,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function readSync() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -575,7 +584,7 @@ function readSync() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -614,7 +623,7 @@ Writes data to the serial port device asynchronously. The length of data written
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number.     |
+| portId  | number     | Yes  | Port number, which is the value of **SerialPort** obtained by [getPortList](#serialmanagergetportlist).      |
 | buffer  | Uint8Array | Yes | Buffer for writing data.|
 | timeout | number     | No | Timeout interval, in milliseconds. Whether the buffer of the target port is writable within the specified time. If yes, the API is processed properly; otherwise, a timeout message is returned after the specified time. The default value **0** indicates that the API returns the result immediately when the target port is not writable.|
 
@@ -628,7 +637,7 @@ Writes data to the serial port device asynchronously. The length of data written
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -644,6 +653,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 > The following sample code shows the basic process for calling the **write** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
+
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { buffer } from '@kit.ArkTS';
@@ -653,8 +663,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function write() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -664,7 +674,7 @@ function write() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -702,7 +712,7 @@ Writes data to the serial port device synchronously. The length of data written 
 
 | Name    | Type        | Mandatory| Description              |
 |---------|------------|----|------------------|
-| portId  | number     | Yes | Port number.    |
+| portId  | number     | Yes  | Port number, which is the value of **SerialPort** obtained by [getPortList](#serialmanagergetportlist).     |
 | buffer  | Uint8Array | Yes | Destination buffer for writing data.|
 | timeout | number     | No | Timeout interval, in milliseconds. Whether the buffer of the target port is writable within the specified time. If yes, the API is processed properly; otherwise, a timeout message is returned after the specified time. The default value **0** indicates that the API returns the result immediately when the target port is not writable.|
 
@@ -716,7 +726,7 @@ Writes data to the serial port device synchronously. The length of data written 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -732,6 +742,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 > The following sample code shows the basic process for calling the **writeSync** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
+
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { buffer } from '@kit.ArkTS';
@@ -741,8 +752,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function writeSync() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -752,7 +763,7 @@ function writeSync() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -791,13 +802,13 @@ Closes the serial port device.
 
 | Name   | Type    | Mandatory| Description         |
 |--------|--------|----|-------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes  | Port number, which is the value of **SerialPort** obtained by [getPortList](#serialmanagergetportlist). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -811,6 +822,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 > The following sample code shows the basic process for calling the **close** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
+
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
@@ -819,8 +831,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function close() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -830,7 +842,7 @@ function close() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -869,13 +881,13 @@ Cancels the permission to access the serial port device when the application is 
 
 | Name   | Type    | Mandatory| Description                                 |
 |--------|--------|----|-------------------------------------|
-| portId | number | Yes | Port number.|
+| portId | number | Yes  | Port number, which is the value of **SerialPort** obtained by [getPortList](#serialmanagergetportlist). |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception.                                |
@@ -890,6 +902,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 > The following sample code shows the basic process for calling the **cancelSerialRight** API and it needs to be executed in a specific method. In actual calling, you must comply with the device-related protocols.
 
 <!--code_no_check-->
+
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
@@ -898,8 +911,8 @@ import { serialManager } from '@kit.BasicServicesKit';
 function cancelSerialRight() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (portList === undefined || portList.length === 0) {
-    console.info('usbSerial portList is empty');
+  if (!portList || portList.length === 0) {
+    console.error('usbSerial portList is empty');
     return;
   }
   let portId: number = portList[0].portId;
@@ -909,7 +922,7 @@ function cancelSerialRight() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // If the application does not have the access permission and is not granted by the user, the application exits.
-        console.info('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -959,30 +972,30 @@ Enumerates the baud rates.
 
 | Name    | Value    | Description   |
 |-----------|-----------|-----------|
-| BAUDRATE_50  | 50  | The baud rate is 50 bit/s. |
-| BAUDRATE_75  | 75  | The baud rate is 75 bit/s. |
-| BAUDRATE_110  | 110  | The baud rate is 110 bit/s. |
-| BAUDRATE_134  | 134  | The baud rate is 134 bit/s. |
-| BAUDRATE_150  | 150  | The baud rate is 150 bit/s. |
-| BAUDRATE_200  | 200  | The baud rate is 200 bit/s. |
-| BAUDRATE_300  | 300  | The baud rate is 300 bit/s. |
-| BAUDRATE_600  | 600  | The baud rate is 600 bit/s. |
-| BAUDRATE_1200  | 1200  | The baud rate is 1200 bit/s. |
-| BAUDRATE_1800  | 1800  | The baud rate is 1800 bit/s. |
-| BAUDRATE_2400  | 2400  | The baud rate is 2400 bit/s. |
-| BAUDRATE_4800  | 4800  | The baud rate is 4800 bit/s. |
-| BAUDRATE_9600  | 9600  | The baud rate is 9600 bit/s. |
-| BAUDRATE_19200  | 19200  | The baud rate is 19200 bit/s. |
-| BAUDRATE_38400  | 38400  | The baud rate is 38400 bit/s. |
-| BAUDRATE_57600  | 57600  | The baud rate is 57600 bit/s. |
-| BAUDRATE_115200  | 115200  | The baud rate is 115200 bit/s. |
-| BAUDRATE_230400  | 230400  | The baud rate is 230400 bit/s. |
-| BAUDRATE_460800  | 460800  | The baud rate is 460800 bit/s. |
-| BAUDRATE_500000  | 500000  | The baud rate is 500000 bit/s. |
-| BAUDRATE_576000  | 576000  | The baud rate is 576000 bit/s. |
-| BAUDRATE_921600  | 921600  | The baud rate is 921600 bit/s. |
-| BAUDRATE_1000000  | 1000000  | The baud rate is 1000000 bit/s. |
-| BAUDRATE_1152000  | 1152000  | The baud rate is 1152000 bit/s. |
+| BAUDRATE_50  | 50  | The transmission baud rate is 50 bit/s. |
+| BAUDRATE_75  | 75  | The transmission baud rate is 75 bit/s. |
+| BAUDRATE_110  | 110  | The transmission baud rate is 110 bit/s. |
+| BAUDRATE_134  | 134  | The transmission baud rate is 134 bit/s. |
+| BAUDRATE_150  | 150  | The transmission baud rate is 150 bit/s. |
+| BAUDRATE_200  | 200  | The transmission baud rate is 200 bit/s. |
+| BAUDRATE_300  | 300  | The transmission baud rate is 300 bit/s. |
+| BAUDRATE_600  | 600  | The transmission baud rate is 600 bit/s. |
+| BAUDRATE_1200  | 1200  | The transmission baud rate is 1200 bit/s. |
+| BAUDRATE_1800  | 1800  | The transmission baud rate is 1800 bit/s. |
+| BAUDRATE_2400  | 2400  | The transmission baud rate is 2400 bit/s. |
+| BAUDRATE_4800  | 4800  | The transmission baud rate is 4800 bit/s. |
+| BAUDRATE_9600  | 9600  | The transmission baud rate is 9600 bit/s. |
+| BAUDRATE_19200  | 19200  | The transmission baud rate is 19200 bit/s. |
+| BAUDRATE_38400  | 38400  | The transmission baud rate is 38400 bit/s. |
+| BAUDRATE_57600  | 57600  | The transmission baud rate is 57600 bit/s. |
+| BAUDRATE_115200  | 115200  | The transmission baud rate is 115200 bit/s. |
+| BAUDRATE_230400  | 230400  | The transmission baud rate is 230400 bit/s. |
+| BAUDRATE_460800  | 460800  | The transmission baud rate is 460800 bit/s. |
+| BAUDRATE_500000  | 500000  | The transmission baud rate is 500000 bit/s. |
+| BAUDRATE_576000  | 576000  | The transmission baud rate is 576000 bit/s. |
+| BAUDRATE_921600  | 921600  | The transmission baud rate is 921600 bit/s. |
+| BAUDRATE_1000000  | 1000000  | The transmission baud rate is 1000000 bit/s. |
+| BAUDRATE_1152000  | 1152000  | The transmission baud rate is 1152000 bit/s. |
 | BAUDRATE_1500000  | 1500000  | The baud rate is 1500000 bit/s. |
 | BAUDRATE_2000000  | 2000000  | The baud rate is 2000000 bit/s. |
 | BAUDRATE_2500000  | 2500000  | The baud rate is 2500000 bit/s. |

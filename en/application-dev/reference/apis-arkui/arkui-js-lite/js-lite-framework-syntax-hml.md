@@ -1,16 +1,16 @@
 # HML
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sunfei2021-->
 <!--Designer: @sunfei2021-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:27:12.929Z pushedAt=2026-06-05T12:07:37.209Z -->
 
 HML is an HTML-like language that allows you to build pages based on components and events. Pages built using HML have advanced capabilities such as data binding, event binding, loop rendering, and conditional rendering.
 
-
 ## HML Page Structure
-
 
 ```html
 <!-- xxx.hml -->
@@ -22,9 +22,7 @@ HML is an HTML-like language that allows you to build pages based on components 
 </div>
 ```
 
-
 ## Data Binding
-
 
 ```html
 <!-- xxx.hml -->
@@ -32,7 +30,6 @@ HML is an HTML-like language that allows you to build pages based on components 
   <text> {{content[1]}} </text>
 </div>
 ```
-
 
 ```js
 // xxx.js
@@ -49,13 +46,11 @@ export default {
 >  **NOTE**
 >  - To make the array data modification take effect, use the **splice** method to change array items.
 >
->  - ECMAScript 6.0 syntax is not supported in HML.
-
+>  - ECMAScript 6 (ES6) syntax is not supported in HML.
 
 ## Event Binding
 
 The callback bound to an event receives an event object parameter, which can be used to obtain the event information.
-
 
 ```html
 <!-- xxx.hml -->
@@ -77,7 +72,6 @@ The callback bound to an event receives an event object parameter, which can be 
 </div>
 ```
 
-
 ```js
 // xxx.js
 export default {
@@ -93,7 +87,7 @@ export default {
 
 >  **NOTE**
 >
->  Event bubbling is supported since API version 5. After you upgrade the SDK and run an existing JavaScript application, events bound using a traditional statement (such as **onclick**) will not bubble. However, if you use the new SDK to repack the JavaScript application, such events will bubble. To avoid service logic errors, replace the traditional statement with one supported by the new SDK. For example, replace **onclick** with **grab:click**.
+>   Event bubbling is supported since API version 5. After you upgrade the SDK and run an existing JavaScript application, events bound using a traditional statement (such as **onclick**) will not bubble. However, if you use the new SDK to repack the JavaScript application, such events will bubble. To avoid service logic errors, replace the traditional statement with one supported by the new SDK. For example, replace **onclick** with **grab:click**.
 
 **Example**
 
@@ -112,7 +106,6 @@ export default {
 </div>
 ```
 
-
 ```js
 // xxx.js 
 export default {
@@ -130,7 +123,6 @@ export default {
   }
 };
 ```
-
 
 ```css
 /* xxx.css */
@@ -165,9 +157,7 @@ export default {
 }
 ```
 
-
 ## Loop Rendering
-
 
 ```html
 <!-- xxx.hml -->
@@ -188,7 +178,6 @@ export default {
 </div>
 ```
 
-
 ```js
 // xxx.js
 export default {
@@ -208,7 +197,6 @@ export default {
 }
 ```
 
-
 ```css
 .array-container {
     width: 100%;
@@ -226,8 +214,7 @@ export default {
 }
 ```
 
-
-The **tid** attribute accelerates the **for** loop and improves the re-rendering efficiency when data in a loop changes. The **tid** attribute specifies the unique ID of each element in the array. If it is not specified, the index of each element in the array is used as the ID. For example, **tid="id"** indicates that the **id** attribute of each element is its unique ID. The **for** loop supports the following statements:
+The **tid** attribute optimizes the **for** loop and improves the re-rendering efficiency when data in a loop changes. The **tid** attribute specifies the unique ID of each element in the array. If it is not specified, the index of each element in the array is used as the ID. For example, **tid="id"** indicates that the **id** attribute of each element is its unique ID. The **for** loop supports the following statements:
 
 - for="array": **array** is an array object, whose element variable is **$item** by default.
 
@@ -243,11 +230,9 @@ The **tid** attribute accelerates the **for** loop and improves the re-rendering
 >
 > - The **tid** field does not support expressions.
 
-
 ## Conditional Rendering
 
 There are two ways to implement conditional rendering: **if-elif-else** or **show**. In **if-elif-else**, when the **if** statement evaluates to **false**, the component is not built in the VDOM and is not rendered. For **show**, when show is **false**, the component is not rendered but is built in the VDOM. In addition, the **if-elif-else** statements must be used in sibling nodes. Otherwise, the compilation fails. The following example uses both ways to implement conditional rendering:
-
 
 ```html
 <!-- xxx.hml -->
@@ -259,7 +244,6 @@ There are two ways to implement conditional rendering: **if-elif-else** or **sho
   <text else> Hello-World </text>
 </div>
 ```
-
 
 ```css
 /* xxx.css */
@@ -273,7 +257,6 @@ There are two ways to implement conditional rendering: **if-elif-else** or **sho
   margin: 10px 0;
 }
 ```
-
 
 ```js
 // xxx.js
@@ -293,7 +276,6 @@ export default {
 
 In the optimized rendering (**show**), if **show** is **true**, the node is rendered properly; if it is **false**, the display style will be **none**.
 
-
 ```html
 <!-- xxx.hml -->
 <div class="container">
@@ -301,7 +283,6 @@ In the optimized rendering (**show**), if **show** is **true**, the node is rend
   <text show="{{visible}}" > Hello World </text>
 </div>
 ```
-
 
 ```css
 /* xxx.css */
@@ -315,7 +296,6 @@ In the optimized rendering (**show**), if **show** is **true**, the node is rend
   margin: 10px 0;
 }
 ```
-
 
 ```js
 // xxx.js

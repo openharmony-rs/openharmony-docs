@@ -2,10 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:53:15.813Z pushedAt=2026-06-09T10:12:44.110Z -->
 
 The **CommonEventManager** module provides common event capabilities to publish, subscribe to, and unsubscribe from common events.
 
@@ -37,14 +38,14 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 | Name    | Type                | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| event    | string               | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).|
+| event    | string               | Yes   | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). |
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| ID| Error Message                           |
+| Error Code| Error Message                           |
 | -------- | ----------------------------------- | 
 | 1500003  | The common event sending frequency too high. |
 | 1500007  | Failed to send the message to the common event service. |
@@ -85,7 +86,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 | Name    | Type                  | Mandatory| Description                  |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). |
+| event    | string                 | Yes   | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).  |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
 | callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
@@ -93,7 +94,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| ID| Error Message                           |
+| Error Code| Error Message                           |
 | -------- | ----------------------------------- |
 | 1500003  | The common event sending frequency too high. |
 | 1500007  | Failed to send the message to the common event service. |
@@ -148,7 +149,7 @@ Creates a subscriber. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                           |
+| Error Code| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.    | 
 
@@ -198,6 +199,7 @@ Creates a subscriber. This API uses a promise to return the result.
 | subscribeInfo | [CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md) | Yes  | Subscriber information.|
 
 **Return value**
+
 | Type                                                     | Description            |
 | --------------------------------------------------------- | ---------------- |
 | Promise\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | Promise used to return the created subscriber object.|
@@ -206,7 +208,7 @@ Creates a subscriber. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                           |
+| Error Code| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -247,6 +249,7 @@ Creates a subscriber. The API returns the result synchronously.
 | subscribeInfo | [CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md) | Yes  | Subscriber information.|
 
 **Return value**
+
 | Type                                                     | Description            |
 | --------------------------------------------------------- | ---------------- |
 | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1) | Promise used to return the subscriber object.|
@@ -255,7 +258,7 @@ Creates a subscriber. The API returns the result synchronously.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                           |
+| Error Code| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 
@@ -300,7 +303,7 @@ Subscribes to a common event. This API uses an asynchronous callback to return t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| ID| Error Message                           |
+| Error Code| Error Message                           |
 | -------- | ----------------------------------- |
 | 801  | capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
@@ -370,7 +373,7 @@ Unsubscribes from a common event. This API uses an asynchronous callback to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| ID| Error Message                           |
+| Error Code| Error Message                           |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
 | 801  | capability not supported.               |
@@ -456,6 +459,7 @@ Subscribes to a common event. This API uses a promise to return the result, indi
 | callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes  | Callback to be invoked when a common event is subscribed to.|
 
 **Return value**
+
 | Type                                                     | Description            |
 | --------------------------------------------------------- | ---------------- |
 | Promise\<void>   | Promise that returns no value.|
@@ -464,7 +468,7 @@ Subscribes to a common event. This API uses a promise to return the result, indi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| ID| Error Message                           |
+| Error Code| Error Message                           |
 | -------- | ----------------------------------- |
 | 801  | Capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |

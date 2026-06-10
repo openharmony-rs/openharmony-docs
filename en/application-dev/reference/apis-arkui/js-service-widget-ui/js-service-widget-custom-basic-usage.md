@@ -1,16 +1,16 @@
 # Custom Component Basic Usage
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @seaside_wu1-->
 <!--Designer: @shiyu_huang-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:29:16.729Z pushedAt=2026-06-08T06:54:57.300Z -->
 
-
->  **NOTE**
+> **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
-
+> This feature is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 Custom components are existing components encapsulated based on service requirements. A custom component can be invoked multiple times in a project to improve the code readability. You can introduce a custom component to the host page through **element** as shown in the following code snippet:
 
@@ -31,7 +31,6 @@ Custom components are existing components encapsulated based on service requirem
 | -------- | -------- | -------- |
 | data | Object | Data model of the page. The name cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (**for**, **if**, **show**, and **tid**).|
 | props | Array/Object | Used for communication between components. This attribute can be transferred to components via **\<tag xxxx='value'>**. A **props** name must be in lowercase and cannot start with a dollar sign ($) or underscore (_). Do not use reserved words (**for**, **if**, **show**, and **tid**). Currently, **props** does not support functions. |
-
 
 ## Adding a Custom Event
 
@@ -81,11 +80,12 @@ Example of a custom child component:
     }
 }
 ```
+
 Example of a parent component:
 
 ```html
 <!-- xxx.hml --> 
-<element name='comp' src='../../common/customComponent/customComponent.hml'></element>
+<element name='comp' src='../../common/customComponent/comp.hml'></element>
 
 <div class="container">
     <comp @event_1="click"></comp>
@@ -122,7 +122,6 @@ Example of a parent component:
   }
 }
 ```
-
 
 ## props
 
@@ -186,7 +185,7 @@ Example of the parent component that references the **comp** child component:
 
 ```html
 <!-- xxx.hml -->
-<element name='comp' src='../../common/customComponent/customComponent.hml'></element>
+<element name='comp' src='../../common/customComponent/comp.hml'></element>
 
 <div class="container">
     <comp progress="{{clicknow}}" textdata="{{texts}}" if="false" @event_1="click"></comp>
@@ -197,4 +196,4 @@ Example of the parent component that references the **comp** child component:
 
 Data can be transferred only from the parent component to child components. You are not allowed to change the value passed to the child component. However, you can receive the value passed by **props** as a default value in **data**, and then change the **data** value.
 
-For details, see [props](../arkui-js/js-components-custom-props.md).
+For details, see [Props](../arkui-js/js-components-custom-props.md#props).

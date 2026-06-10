@@ -1,10 +1,12 @@
 # div
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @lanshouren-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:26:56.566Z pushedAt=2026-06-05T12:07:30.505Z -->
 
 The **\<div>** component is a basic container that is used as the root node of the page structure or is used to group the content.
 
@@ -12,11 +14,9 @@ The **\<div>** component is a basic container that is used as the root node of t
 >
 > This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
-
 ## Child Components
 
 Supported
-
 
 ## Attributes
 
@@ -27,7 +27,6 @@ Supported
 | class | string | - | No| Style class of the component, which is used to refer to a style table.|
 | ref | string | - | No| Reference information of child elements, which is registered with the parent component on **$refs**.|
 
-
 ## Events
 
 | Name| Parameter| Description|
@@ -36,7 +35,6 @@ Supported
 | longpress | - | Triggered when the component is long pressed.|
 | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | Triggered when a user quickly swipes on the component.|
 
-
 ## Styles
 
 | Name| Type| Default Value| Mandatory| Description|
@@ -44,7 +42,7 @@ Supported
 | flex-direction | string | row | No| Main axis direction of the flex container, which defines how items are placed in the container. Available values are as follows:<br>- **column**: Items are placed vertically from top to bottom.<br>- **row**: Items are placed horizontally from left to right.|
 | flex-wrap | string | nowrap | No| Whether items in the flex container are displayed in a single line or multiple lines. The value cannot be dynamically updated. Available values are as follows:<br>- **nowrap**: Flex items are displayed in a single line.<br>- **wrap**: Flex items are displayed in multiple lines.|
 | justify-content | string | flex-start | No| How items are aligned along the main axis of the flex container. Available values are as follows:<br>- **flex-start**: Items are packed toward the start edge of the container along the main axis.<br>- **flex-end**: Items are packed toward the end edge of the container along the main axis.<br>- **center**: Items are packed toward the center of the container along the main axis.<br>- **space-between**: Items are positioned with space between the rows.<br>- **space-around**: Items are positioned with space before, between, and after the rows.|
-| align-items | string | stretch<sup>5+</sup><br>flex-start<sup>1-4</sup> | No| How items are aligned along the cross axis in a flex container. Available values are as follows:<br>- **stretch**: Items are stretched to the same height or width as the container along the cross axis.<sup>5+</sup><br>- **flex-start**: Items are packed toward the start edge of the cross axis.<br>- **flex-end**: Items are packed toward the end edge of the cross axis.<br>- **center**: Items are packed toward the center of the cross axis.|
+| align-items | string | stretch<sup>5+</sup><br/>flex-start<sup>1-4</sup> | No | How items are aligned along the cross axis in a flex container. Available values are as follows:<br/>-&nbsp;**stretch<sup>5+</sup>**: Items are stretched to the same height or width as the container in the cross axis direction.<br/>-&nbsp;**flex-start**: Items are aligned toward the start of the cross axis.<br/>-&nbsp;**flex-end**: Items are aligned toward the end of the cross axis.<br/>-&nbsp;**center**: Items are aligned in the center of the cross axis.|
 | display | string | flex | No| Type of the view box of the item. The value cannot be dynamically updated. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
 | width | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | - | No| Component width.<br><br>If this attribute is not set, the default value **0** is used.|
 | height | &lt;length&gt; \| &lt;percentage&gt;<sup>5+</sup> | - | No| Component height.<br>If this attribute is not set, the default value **0** is used. |
@@ -59,11 +57,10 @@ Supported
 | opacity<sup>5+</sup> | number | 1 | No| Opacity of an element. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent.|
 | [left\|top] | &lt;length&gt; \| &lt;percentage&gt;<sup>6+</sup> | - | No| Edge of the element.<br>- **left**: left edge position of the element. This attribute defines the offset between the left edge of the margin area of a positioned element and left edge of its containing block.<br>- **top**: top edge position of the element. This attribute defines the offset between the top edge of a positioned element and that of a block included in the element. |
 
-
 ## Example
 
 1. Flex style
-  
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -75,7 +72,6 @@ Supported
    </div>
    ```
 
-   
    ```css
    /* xxx.css */
    .container {
@@ -111,7 +107,7 @@ Supported
    ![en-us_image_0000001381108420](figures/en-us_image_0000001381108420.png)
 
 2. Flex wrap style
-  
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -123,7 +119,6 @@ Supported
    </div>
    ```
 
-   
    ```css
    /* xxx.css */
    .container {

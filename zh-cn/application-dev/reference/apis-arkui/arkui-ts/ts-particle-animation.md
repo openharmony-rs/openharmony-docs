@@ -360,7 +360,7 @@ interface ParticlePropertyAnimation<T> {
 | ELLIPSE | 'ellipse' | 粒子发射器为椭圆形。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | ANNULUS<sup>20+</sup> | 'annulus' | 粒子发射器为环形。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
-## DistributionType<sup>12+<sup>
+## DistributionType<sup>12+</sup>
 
 初始颜色随机值分布类型。
 

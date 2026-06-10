@@ -321,7 +321,7 @@ getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): 
 | 参数名       | 类型                                       | 必填   | 说明             |
 | -------- | ---------------------------------------- | ---- | -------------- |
 | windowId | number                                   | 是    | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](#pointersetpointerstyle)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
-| callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数，返回鼠标样式类型。 |
+| callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数。当获取鼠标样式类型成功时，err为undefined，data为鼠标样式类型；否则为错误对象。在特定场景（在设置自定义光标样式的窗口上获取样式）下返回DEVELOPER_DEFINED_ICON。 |
 
 **错误码**：
 
@@ -503,7 +503,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCal
 | 参数名           | 类型                             | 必填   | 说明                                  |
 | ------------ | ------------------------------ | ---- | ----------------------------------- |
 | windowId     | number                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle)获取。 |
-| pointerStyle | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。                             |
+| pointerStyle | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。 不能传入DEVELOPER_DEFINED_ICON作为参数。 |
 | callback     | AsyncCallback&lt;void&gt;      | 是    | 回调函数。 |
 
 **错误码**：
@@ -764,7 +764,7 @@ struct Index {
 | LASER_CURSOR<sup>22+</sup>        | 49   | 悬浮光标。手写笔进入空鼠模式时使用该光标，无法直接使用 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
 | LASER_CURSOR_DOT<sup>22+</sup>        | 50   | 点击光标。手写笔进入空鼠模式时使用该光标，无法直接使用 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
 | LASER_CURSOR_DOT_RED<sup>22+</sup>        | 51   | 激光笔光标。手写笔进入空鼠模式时使用该光标，无法直接使用 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
-| DEVELOPER_DEFINED_ICON<sup>22+</sup>        | -100 | 自定义光标，开发者可使用[setCustomCursor](#pointersetcustomcursor15)设置自定义光标，不支持使用[setPointerStyle](#pointersetpointerstyle-1)直接设置。 |自定义光标样式，通过接口设置。|
+| DEVELOPER_DEFINED_ICON<sup>22+</sup>        | -100 | 自定义光标，开发者可使用[setCustomCursor](#pointersetcustomcursor15)设置自定义光标，不支持使用[setPointerStyle](#pointersetpointerstyle-1)直接设置。 |自定义光标样式，通过接口设置。该参数用于getPointerStyle在特定场景（在设置自定义光标样式的窗口上获取样式）下返回数据，不能作为setCustomCursor、setPointerStyle接口入参使用。|
 
 ## pointer.setCustomCursor<sup>11+</sup>
 
