@@ -143,7 +143,9 @@ import { backup } from '@kit.CoreFileKit';
 
 文件迁移的路径信息。
 
-**起始版本**：26.0.0
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -171,7 +173,7 @@ import { backup } from '@kit.CoreFileKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | onBackupSizeReport<sup>18+</sup>  | [OnBackupSizeReport](#onbackupsizereport18) | 否 | 是 |  框架获取到的待备份的数据量大小的信息。 |
-| onMigrateResult | AsyncCallback&lt;string, void \| string&gt; | 否 | 是 | 迁移文件流程结束的回调，返回迁移文件的结果信息。当迁移操作成功，err为undefined，data为string（应用名称）；否则为错误对象。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**错误码**：<br>以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。<br>- 202：Permission verification failed, application which is not a system application uses system API.<br>- 13600001：IPC error.<br>- 13900001：Operation not permitted.<br>- 13900005：I/O error.<br>- 13900011：Out of memory.<br>- 13900020：Invalid argument.<br>- 13900025：No space left on device. |
+| onMigrateResult | AsyncCallback&lt;string, void \| string&gt; | 否 | 是 | 迁移文件流程结束的回调，返回迁移文件的结果信息。当迁移操作成功，err为undefined，data为string（应用名称）；否则为错误对象。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**错误码**：<br>以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。<br>- 202：Permission verification failed, application which is not a system application uses system API.<br>- 13600001：IPC error.<br>- 13900001：Operation not permitted.<br>- 13900005：I/O error.<br>- 13900011：Out of memory.<br>- 13900020：Invalid argument.<br>- 13900025：No space left on device. |
 
 ### onFileReady
 
@@ -3260,7 +3262,9 @@ migrateFile(pathInfo: PathInfo, fileMeta: FileMeta): Promise&lt;void&gt;
 
 用于将文件从源路径迁移到目标路径。使用Promise异步回调。
 
-**起始版本**：26.0.0
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **需要权限**：ohos.permission.BACKUP
 
@@ -3377,7 +3381,9 @@ getApkFileHandle(path: string, fileName: string): Promise&lt;FileData&gt;
 
 用于获取APK文件的文件句柄。使用Promise异步回调。
 
-**起始版本**：26.0.0
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **需要权限**：ohos.permission.BACKUP
 
