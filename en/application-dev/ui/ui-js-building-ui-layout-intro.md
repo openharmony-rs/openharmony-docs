@@ -34,8 +34,8 @@ Decomposing elements on a page and implementing each basic element in sequence c
 
 **Figure 1** Page layout decomposition
 
-![en-us_image_0000001070558189](figures/en-us_image_0000001070558189.png)
+![Layout-Description-2](figures/Layout-Description-2.png)
 
 **Figure 2** Layout of the comment area
 
-![en-us_image_0000001063442797](figures/en-us_image_0000001063442797.png)
+![Layout-Description-1](figures/Layout-Description-1.png)

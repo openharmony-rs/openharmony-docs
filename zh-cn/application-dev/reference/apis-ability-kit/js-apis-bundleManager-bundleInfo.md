@@ -66,7 +66,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 ## UsedScene
 
-描述权限使用的场景和时机，用于说明权限在哪些情况下使用，帮助开发者合理申请和使用权限。
+描述权限的使用场景和时机，帮助开发者合理申请和使用权限。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -79,7 +79,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 ## SignatureInfo
 
-描述应用包的签名信息，用于标识应用来源和确保应用完整性，可用于应用安全校验和识别。
+描述应用包的签名信息，可标识应用来源、确保应用完整性，并用于应用安全校验与识别。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -101,7 +101,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | bundleName | string         | 是   | 否   | 应用的bundleName。          |
-| appIndex | number | 是   | 否   | 应用包的分身索引信息。取值范围为自然数，其中0表示主应用，1表示第一个分身，以此类推。 |
+| appIndex | number | 是   | 否   | 应用包的分身索引信息。取值为整数，范围：[0-5]，0表示主应用，1-5等表示分身应用。 |
 
 ## AlternateIconInfo
 

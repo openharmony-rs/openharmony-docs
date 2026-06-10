@@ -95,7 +95,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001166962736](figures/zh-cn_image_0000001166962736.png)
+![fillStyle](figures/fillStyle.png)
 
 
 ### lineWidth
@@ -120,7 +120,7 @@ export default {
 
 ```
 
-![zh-cn_image_0000001166484430](figures/zh-cn_image_0000001166484430.png)
+![lineWidth](figures/lineWidth.png)
 
 
 ### strokeStyle
@@ -146,7 +146,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001212124299](figures/zh-cn_image_0000001212124299.png)
+![strokeStyle](figures/strokeStyle.png)
 
 ### lineCap
 
@@ -229,7 +229,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167001464](figures/zh-cn_image_0000001167001464.png)
+![miterLimit](figures/miterLimit.png)
 
 
 ### font
@@ -253,7 +253,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167046832](figures/zh-cn_image_0000001167046832.png)
+![font](figures/font.png)
 
 
 ### textAlign
@@ -293,7 +293,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001167472798](figures/zh-cn_image_0000001167472798.png)
+![textAlign](figures/textAlign.png)
 
 ### textBaseline
 
@@ -329,7 +329,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001169315920](figures/zh-cn_image_0000001169315920.png)
+![textBaseline](figures/textBaseline.png)
 
 ### globalAlpha
 
@@ -356,7 +356,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167953648](figures/zh-cn_image_0000001167953648.png)
+![globalAlpha](figures/globalAlpha.png)
 
 ### lineDashOffset
 
@@ -381,7 +381,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167950468](figures/zh-cn_image_0000001167950468.png)
+![lineDashOffset](figures/lineDashOffset.png)
 
 ### globalCompositeOperation
 
@@ -458,7 +458,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001168111514](figures/zh-cn_image_0000001168111514.png)
+![shadowBlur](figures/shadowBlur.png)
 
 ### shadowColor
 
@@ -483,7 +483,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001168111610](figures/zh-cn_image_0000001168111610.png)
+![shadowColor](figures/shadowColor.png)
 
 ### shadowOffsetX
 
@@ -510,7 +510,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001167631876](figures/zh-cn_image_0000001167631876.png)
+![shadowOffsetX](figures/shadowOffsetX.png)
 
 ### shadowOffsetY
 
@@ -564,7 +564,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001167952236](figures/zh-cn_image_0000001167952236.png)
+![imageSmoothingEnabled](figures/imageSmoothingEnabled.png)
 
 
 
@@ -807,7 +807,7 @@ measureText(text: string): TextMetrics
   }
   ```
 
-  ![zh-cn_image_0000001169142476](figures/zh-cn_image_0000001169142476.png)
+  ![measureText](figures/measureText.png)
 
 
 ### stroke
@@ -913,7 +913,7 @@ moveTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001169309948](figures/zh-cn_image_0000001169309948.png)
+  ![moveTo](figures/moveTo.png)
 
 
 ### lineTo
@@ -952,7 +952,7 @@ lineTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001169469914](figures/zh-cn_image_0000001169469914.png)
+  ![lineTo01](figures/lineTo01.png)
 
 
 ### closePath
@@ -986,7 +986,7 @@ closePath(): void
   }
   ```
 
-  ![zh-cn_image_0000001169151508](figures/zh-cn_image_0000001169151508.png)
+  ![closePath](figures/closePath.png)
 
 ### createPattern
 
@@ -1033,7 +1033,7 @@ createPattern(image: Image, repetition: string): Object
   }
   ```
 
-  ![zh-cn_image_0000001169301188](figures/zh-cn_image_0000001169301188.png)
+  ![createPattern](figures/createPattern.png)
 
 ### bezierCurveTo
 
@@ -1117,7 +1117,7 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001169461910](figures/zh-cn_image_0000001169461910.png)
+  ![quadraticCurveTo](figures/quadraticCurveTo.png)
 
 
 ### arc
@@ -1159,7 +1159,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
   }
   ```
 
-  ![zh-cn_image_0000001169470288](figures/zh-cn_image_0000001169470288.png)
+  ![arc](figures/arc.png)
 
 ### arcTo
 
@@ -1200,7 +1200,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
   }
   ```
 
-  ![zh-cn_image_0000001169143586](figures/zh-cn_image_0000001169143586.png)
+  ![arcTo](figures/arcTo.png)
 
 ### ellipse
 
@@ -1347,7 +1347,7 @@ clip(): void
   }
   ```
 
-  ![zh-cn_image_0000001169303414](figures/zh-cn_image_0000001169303414.png)
+  ![clip](figures/clip.png)
 
 ### rotate
 
@@ -1383,7 +1383,7 @@ rotate(rotate: number): void
   }
   ```
 
-  ![zh-cn_image_0000001169463368](figures/zh-cn_image_0000001169463368.png)
+  ![rotate](figures/rotate.png)
 
 ### scale
 
@@ -1519,7 +1519,7 @@ setTransform方法使用的参数和transform()方法相同，但setTransform()�
   }
   ```
 
-  ![zh-cn_image_0000001168984880](figures/zh-cn_image_0000001168984880.png)
+  ![setTransform](figures/setTransform.png)
 
 ### translate
 
@@ -1557,7 +1557,7 @@ translate(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001169144864](figures/zh-cn_image_0000001169144864.png)
+  ![translate](figures/translate.png)
 
 ### createPath2D<sup>6+</sup>
 
@@ -1759,7 +1759,7 @@ createLinearGradient(x0: number, y0: number, x1: number, y1: number): Object
   }
   ```
 
-  ![zh-cn_image_0000001169303416](figures/zh-cn_image_0000001169303416.png)
+  ![createLinearGradient](figures/createLinearGradient.png)
 
 ### createRadialGradient<sup>6+</sup>
 
@@ -1814,7 +1814,7 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
   }
   ```
 
-  ![zh-cn_image_0000001169463370](figures/zh-cn_image_0000001169463370.png)
+  ![createRadialGradient](figures/createRadialGradient.png)
 
 ### createImageData
 
@@ -2181,4 +2181,4 @@ transferFromImageBitmap(bitmap: ImageBitmap): void
   }
   ```
 
-  ![zh-cn_image_0000001168984882](figures/zh-cn_image_0000001168984882.png)
+  ![transferFromImageBitmap](figures/transferFromImageBitmap.png)

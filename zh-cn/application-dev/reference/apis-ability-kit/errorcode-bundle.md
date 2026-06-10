@@ -553,7 +553,7 @@ The specified shared bundle does not exist.
 
 **可能原因**<br/>
 1. 当前指定卸载的版本不存在与被卸载的shared library中。
-2. 当前指定卸载的shared library不存在于设备中。
+2. 当前指定卸载的shared library在设备中不存在。
 
 **处理步骤**<br/>
 1. 检查被卸载的shared library是否存在于当前设备中。

@@ -210,7 +210,7 @@ isHostBelongsTo(uniqueId: number): boolean
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| uniqueId | number | 是   | 组件的唯一ID。可以通过[getUniqueId](#getuniqueid)接口获取该ID。 |
+| uniqueId | number | 是   | 组件的唯一ID。可以通过[getUniqueId](#getuniqueid)接口获取该ID。<br>取值为异常值时返回false。 |
 
 **返回值：**
 
@@ -430,7 +430,7 @@ isHostBelongsTo(uniqueId: number): boolean
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| uniqueId | number | 是   | 组件的唯一ID。可以通过[getUniqueId](#getuniqueid)接口获取该ID。 |
+| uniqueId | number | 是   | 组件的唯一ID。可以通过[getUniqueId](#getuniqueid)接口获取该ID。<br>取值为异常值时返回false。 |
 
 **返回值：**
 

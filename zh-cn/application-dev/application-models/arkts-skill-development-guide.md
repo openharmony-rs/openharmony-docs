@@ -1,4 +1,4 @@
-# 基于ArkTS脚本开发应用Skill
+# 基于ArkTS脚本的应用Skill开发指导
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -30,7 +30,7 @@
 
 ## 开发步骤
 
-下文以“音乐助手Skill（`music-assistant`）”为示例，演示如何在自有应用中接入按名称播放音乐（`playMusicByName`）与播放控制（`controlPlayback`）。
+下文以“音乐助手Skill（`music-assistant`）”为示例，演示如何在自有应用中，通过代码开发和封装，实现按名称播放音乐（`playMusicByName`）与播放控制（`controlPlayback`）的能力。
 
 1. 创建文件和目录。
 
@@ -372,4 +372,4 @@
 
 针对应用Skill开发，可参考以下相关实例：
 
-- [音乐助手Skill示例工程（music-assistant）](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide)
+- [音乐助手Skill示例工程（music-assistant）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide)

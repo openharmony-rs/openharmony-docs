@@ -48,8 +48,8 @@ The DataShareHelper fails to be initialized.
 
 **可能原因**
 
-1. 创建DataShareHelper时，接口createDataHelper的入参uri不正确。
-2. 创建DataShareHelper时，接口createDataHelper的入参context不正确。
+1. 创建DataShareHelper时，接口createDataShareHelper的入参uri不正确。
+2. 创建DataShareHelper时，接口createDataShareHelper的入参context不正确。
 3. 创建DataShareHelper时，客户端从后台拉起DataShareExtension时，未配置后台拉起权限。
 
 **处理步骤**
@@ -132,7 +132,7 @@ The parameter format is incorrect or the value range is invalid.
 
 1. URI长度超过256字节。
 
-2. proxyData的value长度超过4096字节。
+2. proxyData（代理数据配置项）的value长度超过4096字节。
 
 3. 接口传入的URI数组长度超过32。
 

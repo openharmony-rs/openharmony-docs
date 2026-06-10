@@ -51,4 +51,4 @@ export default {
 }
 ```
 
-  ![en-us_image_0000001152610806](figures/en-us_image_0000001152610806.png)
+  ![addColorStop](figures/addColorStop.png)
