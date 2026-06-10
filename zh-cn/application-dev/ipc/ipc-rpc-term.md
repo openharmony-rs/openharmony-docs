@@ -1,4 +1,4 @@
-# IPC Kit术语
+# IPC与RPC通信术语
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
