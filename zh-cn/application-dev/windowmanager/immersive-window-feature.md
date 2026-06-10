@@ -55,61 +55,41 @@
   > 
   > 非自由窗口状态下，除应用子窗外的其他类型窗口在创建时默认为非沉浸式布局，子窗口创建后默认为沉浸式布局。
 
-  ```ts
-  // EntryAbility.ets
+  <!--@[HideDecorationBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/HideDecorationBar/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   import { window } from '@kit.ArkUI';
-  import { UIAbility } from '@kit.AbilityKit';
-
+  
+  const DOMAIN = 0x0000;
+  
   export default class EntryAbility extends UIAbility {
-    // ..
-
+    // ...
+  
     onWindowStageCreate(windowStage: window.WindowStage): void {
       windowStage.loadContent('pages/Index', async (err) => {
         if (err.code) {
           return;
         }
-
+  
         try {
-          const mainWindow: window.Window = windowStage.getMainWindowSync(); // 获取应用主窗口
-          await mainWindow.setWindowLayoutFullScreen(true); // 进入窗口沉浸式布局
+          const mainWindow: window.Window = windowStage.getMainWindowSync();  // 获取应用主窗口
+          await mainWindow.setWindowLayoutFullScreen(true); // 进入窗口沉浸式布局（非自由窗口状态）
+          mainWindow.setWindowDecorVisible(false);  // 隐藏窗口标题栏，进入沉浸式布局（自由窗口状态）
         } catch (e) {
           console.error(`Failed to set status bar to invisible`);
         }
       });
     }
-  }
+  // ...
   ```
-  
+
   | 非自由窗口的非沉浸式布局示意 | 非自由窗口的沉浸式布局示意 |
   | -------- | -------- |
   | ![非自由窗口的非沉浸式布局](figures/non-freeform-window-non-immersive-layout.png)  | ![非自由窗口的沉浸式布局](figures/non-freeform-window-immersive-layout.png) |
 
 - 自由窗口状态下，可通过[setWindowDecorVisible()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowdecorvisible11)接口控制窗口标题栏显隐，当标题栏隐藏时，窗口处于沉浸式布局。  
-
-  ```ts
-  // EntryAbility.ets
-  import { window } from '@kit.ArkUI';
-  import { UIAbility } from '@kit.AbilityKit';
-
-  export default class EntryAbility extends UIAbility {
-    // ...
-
-    onWindowStageCreate(windowStage: window.WindowStage): void {
-      windowStage.loadContent('pages/Index', async (err) => {
-        if (err.code) {
-          return;
-        }
-
-        try {
-          const mainWindow: window.Window = windowStage.getMainWindowSync(); // 获取应用主窗口
-          await mainWindow.setWindowDecorVisible(false); // 隐藏窗口标题栏，进入窗口沉浸式布局
-        } catch (e) {
-          console.error(`Failed to set status bar to invisible`);
-        }
-      });
-    }
-  }
-  ```
 
   | 自由窗口的非沉浸式布局示意 | 自由窗口的沉浸式布局示意 |
   | -------- | -------- |
@@ -174,35 +154,35 @@ interface Rect {
 
 2. 调用[setSpecificSystemBarEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setspecificsystembarenabled11)隐藏状态栏。  
 
-  ```ts
-  // EntryAbility.ets
+  <!--@[SystemBarEnabled_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/SystemBarEnabled/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   import { window } from '@kit.ArkUI';
-  import { UIAbility } from '@kit.AbilityKit';
-
+  
+  const DOMAIN = 0x0000;
+  
   export default class EntryAbility extends UIAbility {
-    // ...
-
+      // ...
+  
     onWindowStageCreate(windowStage: window.WindowStage): void {
       windowStage.loadContent('pages/Index', async (err) => {
         if (err.code) {
           return;
         }
-
+  
         try {
-          // 获取应用主窗口
-          const mainWindow: window.Window = windowStage.getMainWindowSync();
-          // 设置窗口进入沉浸式布局
-          await mainWindow.setWindowLayoutFullScreen(true);
-          // 设置状态栏隐藏
-          mainWindow.setSpecificSystemBarEnabled('status', false);
+          const mainWindow: window.Window = windowStage.getMainWindowSync();  // 获取应用主窗口
+          await mainWindow.setWindowLayoutFullScreen(true);  // 设置窗口进入沉浸式
+          await mainWindow.setSpecificSystemBarEnabled('status', false);  // 设置状态栏隐藏
         } catch (e) {
           console.error(`Failed to set status bar to invisible`);
         }
       });
     }
-  }
+    // ...
   ```
-
 
 ## 适配沉浸式布局实现沉浸式效果
 
@@ -213,26 +193,6 @@ interface Rect {
 
 1. 调用[setWindowLayoutFullScreen()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)接口设置窗口进入沉浸式布局。
 
-   ```ts
-   // EntryAbility.ets
-   private async initializeMainWindow(windowStage: window.WindowStage): Promise<void> {
-     try {
-       this.mainWindow = windowStage.getMainWindowSync();
-       AppStorage.setOrCreate('mainWindow', this.mainWindow);
-       // 设置窗口进入沉浸式布局
-       await this.mainWindow.setWindowLayoutFullScreen(true);
-       this.initSafeArea(this.mainWindow);
-     } catch (err) {
-       hilog.error(
-         DOMAIN,
-         'testTag',
-         'Failed to initialize main window. Cause: %{public}s',
-         JSON.stringify(err)
-       );
-     }
-   }
-   ```
-
 2. 获取并监听窗口避让区域，在避让区域更新时同时更新应用内布局。
 
    此处以获取并监听状态栏、底部导航区域、挖孔区为例。
@@ -241,72 +201,87 @@ interface Rect {
 
      常见的触发避让区域回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；多折叠设备在屏幕折叠态和展开态之间的切换；应用窗口在多设备之间的流转。
 
-     ```ts
-     // EntryAbility.ets
-     private initSafeArea(win: window.Window): void {
-       try {
-         // 获取状态栏避让区域
-         const systemAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-         // 获取底部导航区避让区域
-         const navigationAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
-         // 获取挖孔区避让区域
-         const cutoutAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_CUTOUT);
-
-         AppStorage.setOrCreate('topAvoidHeight', systemAvoidArea.topRect.height);
-         AppStorage.setOrCreate('bottomAvoidHeight', navigationAvoidArea.bottomRect.height);
-         AppStorage.setOrCreate('leftAvoidWidth', 0);
-         AppStorage.setOrCreate('rightAvoidWidth', 0);
-         this.handleCutoutAvoidArea(cutoutAvoidArea);
-       } catch (err) {
-         hilog.error(
-           DOMAIN,
-           'testTag',
-           'Failed to init safe area. Cause: %{public}s',
-           JSON.stringify(err)
-         );
+     <!--@[ImmersiveLayout_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayout/entry/src/main/ets/entryability/EntryAbility.ets) -->
+     
+     ``` TypeScript
+     import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+     import { hilog } from '@kit.PerformanceAnalysisKit';
+     import { window } from '@kit.ArkUI';
+     
+     const DOMAIN = 0x0000;
+     
+     export default class EntryAbility extends UIAbility {
+       // ...
+     
+       private async initializeMainWindow(windowStage: window.WindowStage): Promise<void> {
+         try {
+           this.mainWindow = windowStage.getMainWindowSync();
+           AppStorage.setOrCreate('mainWindow', this.mainWindow);
+           await this.mainWindow.setWindowLayoutFullScreen(true);
+           this.initSafeArea(this.mainWindow);
+           this.mainWindow.on('avoidAreaChange', (option) => {
+             switch (option.type) {
+               // 监听状态栏避让区域
+               case window.AvoidAreaType.TYPE_SYSTEM: {
+                 const topHeight = Math.max(option.area.topRect.height, AppStorage.get<number>('topAvoidHeight') ?? 0);
+                 AppStorage.setOrCreate('topAvoidHeight', topHeight);
+                 break;
+               }
+               // 监听挖孔区避让区域
+               case window.AvoidAreaType.TYPE_CUTOUT: {
+                 this.handleCutoutAvoidArea(option.area);
+                 break;
+               }
+               // 监听底部导航区避让区域
+               case window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR: {
+                 const bottomHeight = Math.max(option.area.bottomRect.height, AppStorage.get<number>('bottomAvoidHeight') ?? 0);
+                 AppStorage.setOrCreate('bottomAvoidHeight', bottomHeight);
+                 break;
+               }
+               default: {
+                 break;
+               }
+             }
+           });
+         } catch (err) {
+           hilog.error(DOMAIN, 'testTag', 'Failed to initialize avoid area listener. Cause: %{public}s', JSON.stringify(err));
+         }
        }
-     }
-
-
-     private async initializeMainWindow(windowStage: window.WindowStage): Promise<void> {
-       try {
-         this.mainWindow.on('avoidAreaChange', (option) => {
-           switch (option.type) {
-             // 监听状态栏避让区域
-             case window.AvoidAreaType.TYPE_SYSTEM: {
-               const topHeight = Math.max(
-                 option.area.topRect.height,
-                 AppStorage.get<number>('topAvoidHeight') ?? 0
-               );
-               AppStorage.setOrCreate('topAvoidHeight', topHeight);
-               break;
-             }
-             // 监听挖孔区避让区域
-             case window.AvoidAreaType.TYPE_CUTOUT: {
-               this.handleCutoutAvoidArea(option.area);
-               break;
-             }
-             // 监听底部导航区避让区域
-             case window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR: {
-               const bottomHeight = Math.max(
-                 option.area.bottomRect.height,
-                 AppStorage.get<number>('bottomAvoidHeight') ?? 0
-               );
-               AppStorage.setOrCreate('bottomAvoidHeight', bottomHeight);
-               break;
-             }
-             default: {
-               break;
-             }
-           }
-         });
-       } catch (err) {
-         hilog.error(
-           DOMAIN,
-           'testTag',
-           'Failed to initialize avoid area listener. Cause: %{public}s',
-           JSON.stringify(err)
-         );
+     
+       private initSafeArea(win: window.Window): void {
+         try {
+           // 获取状态栏避让区域
+           const systemAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
+           // 获取底部导航区避让区域
+           const navigationAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR);
+           // 获取挖孔区避让区域
+           const cutoutAvoidArea = win.getWindowAvoidArea(window.AvoidAreaType.TYPE_CUTOUT);
+     
+           AppStorage.setOrCreate('topAvoidHeight', systemAvoidArea.topRect.height);
+           AppStorage.setOrCreate('bottomAvoidHeight', navigationAvoidArea.bottomRect.height);
+           AppStorage.setOrCreate('leftAvoidWidth', 0);
+           AppStorage.setOrCreate('rightAvoidWidth', 0);
+           this.handleCutoutAvoidArea(cutoutAvoidArea);
+         } catch (err) {
+           hilog.error(DOMAIN, 'testTag', 'Failed to init safe area. Cause: %{public}s', JSON.stringify(err));
+         }
+       }
+     
+       private handleCutoutAvoidArea(cutoutAvoidArea: window.AvoidArea): void {
+         if (cutoutAvoidArea.topRect.height > 0) {
+           const topHeight = Math.max(AppStorage.get<number>('topAvoidHeight') ?? 0, cutoutAvoidArea.topRect.height);
+           AppStorage.setOrCreate('topAvoidHeight', topHeight);
+         }
+         if (cutoutAvoidArea.bottomRect.height > 0) {
+           const bottomHeight = Math.max(AppStorage.get<number>('bottomAvoidHeight') ?? 0, cutoutAvoidArea.bottomRect.height);
+           AppStorage.setOrCreate('bottomAvoidHeight', bottomHeight);
+         }
+         if (cutoutAvoidArea.leftRect.width > 0) {
+           AppStorage.setOrCreate('leftAvoidWidth', cutoutAvoidArea.leftRect.width);
+         }
+         if (cutoutAvoidArea.rightRect.width > 0) {
+           AppStorage.setOrCreate('rightAvoidWidth', cutoutAvoidArea.rightRect.width);
+         }
        }
      }
      ```
@@ -316,19 +291,31 @@ interface Rect {
      可通过响应式环境变量装饰器@Env(@Env(SystemProperties.WINDOW_AVOID_AREA)或@Env(SystemProperties.WINDOW_AVOID_AREA_PX))获取并监听当前窗口的避让区域信息。
 
      当避让区域因横竖屏切换、系统栏显隐、窗口形态变化等发生变化时，@Env变量会自动更新，并触发相关组件刷新，从而实现沉浸式布局的动态适配。示例代码如下：
-     ```ts
-     // Index.ets
-     import { window } from '@kit.ArkUI';
 
+     <!--@[ImmersiveLayoutEnv_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayoutEnv/entry/src/main/ets/pages/Index.ets) -->
+     
+     ``` TypeScript
+     import { window } from '@kit.ArkUI';
+     import { hilog } from '@kit.PerformanceAnalysisKit';
+     
+     const DOMAIN = 0x0000;
+     
      @Entry
      @Component
      struct Index {
-       // 使用响应式环境变量获取并监听避让区域
        @Env(SystemProperties.WINDOW_AVOID_AREA) avoidAreasVp: window.UIEnvWindowAvoidAreaInfoVP;
-
-       private text: string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '.repeat(10);
-      }
-
+       @StorageProp('topAvoidHeight')
+       topAvoidHeight: number = 0;
+       @StorageProp('bottomAvoidHeight')
+       bottomAvoidHeight: number = 0;
+       @StorageProp('leftAvoidWidth')
+       leftAvoidWidth: number = 0;
+       @StorageProp('rightAvoidWidth')
+       rightAvoidWidth: number = 0;
+       @StorageLink('mainWindow')
+       mainWindow: window.Window | undefined = undefined;
+       // ...
+     }
      ```
 
 3. 布局中的系统界面元素需要避让状态栏和导航区域，否则可能产生UI元素重叠等情况。
@@ -341,76 +328,219 @@ interface Rect {
 
    - 避让使用getWindowAvoidArea接口获取到的避让区域的示例代码如下：
 
-      ```ts
-      // Index.ets
-      // 避让顶部和挖孔区域
-      Row() {
-        Text('Top Container')
-          .fontSize(40)
-          .textAlign(TextAlign.Center)
+      <!--@[ImmersiveLayout_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayout/entry/src/main/ets/pages/Index.ets) -->
+      
+      ``` TypeScript
+      import { window } from '@kit.ArkUI';
+      import { hilog } from '@kit.PerformanceAnalysisKit';
+      
+      const DOMAIN = 0x0000;
+      
+      @Entry
+      @Component
+      struct Index {
+        // ...
+        build() {
+          Column() {
+            // 避让顶部和挖孔区域
+            Row() {
+              Text('Top Container')
+                .fontSize(40)
+                .textAlign(TextAlign.Center)
+                .width('100%')
+            }
+            .backgroundColor('#2786d9')
+            .padding({
+              top: this.getUIContext().px2vp(this.topAvoidHeight) + 10,
+              bottom: 10,
+              // 避让挖孔区域
+              left: this.getUIContext().px2vp(this.leftAvoidWidth),
+              right: this.getUIContext().px2vp(this.rightAvoidWidth)
+            })
+      
+            Scroll() {
+              Column({ space: 12 }) {
+                Row() {
+                  Text(this.text)
+                    .fontSize(20)
+                }
+      
+                Divider()
+      
+                Text(`topAvoidHeight: ${this.topAvoidHeight}`)
+                Text(`bottomAvoidHeight: ${this.bottomAvoidHeight}`)
+                Text(`leftAvoidWidth: ${this.leftAvoidWidth}`)
+                Text(`rightAvoidWidth: ${this.rightAvoidWidth}`)
+                Text(`preferredOrientation: ${this.orientationText}`)
+                Text(this.statusText)
+                  .fontColor('#666666')
+      
+                Row({ space: 8 }) {
+                  Button('Auto Rotation')
+                    .layoutWeight(1)
+                    .onClick(() => {
+                      void this.setOrientation(window.Orientation.AUTO_ROTATION, 'AUTO_ROTATION');
+                    })
+      
+                  Button('Portrait')
+                    .layoutWeight(1)
+                    .backgroundColor('#0A7A5A')
+                    .onClick(() => {
+                      void this.setOrientation(window.Orientation.PORTRAIT, 'PORTRAIT');
+                    })
+      
+                  Button('Landscape')
+                    .layoutWeight(1)
+                    .backgroundColor('#AD5C00')
+                    .onClick(() => {
+                      void this.setOrientation(window.Orientation.LANDSCAPE, 'LANDSCAPE');
+                    })
+                }
+                .width('100%')
+      
+                Text('Cutout test: rotate the app and observe whether leftAvoidWidth / rightAvoidWidth change on a cutout device.')
+                  .fontColor('#666666')
+              }
+              .width('100%')
+            }
+            .backgroundColor(Color.White)
+            .padding(20)
+            .borderRadius(15)
+            .width('80%')
+            .margin({
+              left: this.getUIContext().px2vp(this.leftAvoidWidth),
+              right: this.getUIContext().px2vp(this.rightAvoidWidth)
+            })
+            .layoutWeight(1)
+            // 避让底部和挖孔区域
+            Row() {
+              Text('Bottom Container')
+                .fontSize(40)
+                .textAlign(TextAlign.Center)
+                .width('100%')
+            }
+            .backgroundColor('#96dffa')
+            .padding({
+              top: 10,
+              bottom: this.getUIContext().px2vp(this.bottomAvoidHeight) + 10,
+              // 避让挖孔区域
+              left: this.getUIContext().px2vp(this.leftAvoidWidth),
+              right: this.getUIContext().px2vp(this.rightAvoidWidth)
+            })
+          }
           .width('100%')
+          .height('100%')
+          .padding({
+            left: this.getUIContext().px2vp(this.leftAvoidWidth),
+            right: this.getUIContext().px2vp(this.rightAvoidWidth)
+          })
+          .alignItems(HorizontalAlign.Center)
+          .backgroundColor('#d5d5d5')
+          .justifyContent(FlexAlign.SpaceBetween)
+        }
       }
-      .backgroundColor('#2786d9')
-      .padding({
-        top: this.getUIContext().px2vp(this.topAvoidHeight) + 10,
-        bottom: 10,
-        // 避让挖孔区域
-        left: this.getUIContext().px2vp(this.leftAvoidWidth),
-        right: this.getUIContext().px2vp(this.rightAvoidWidth)
-      })
-      // 避让底部和挖孔区域
-      Row() {
-        Text('Bottom Container')
-          .fontSize(40)
-          .textAlign(TextAlign.Center)
-          .width('100%')
-      }
-      .backgroundColor('#96dffa')
-      .padding({
-        top: 10,
-        bottom: this.getUIContext().px2vp(this.bottomAvoidHeight) + 10,
-        // 避让挖孔区域
-        left: this.getUIContext().px2vp(this.leftAvoidWidth),
-        right: this.getUIContext().px2vp(this.rightAvoidWidth)
-      })
       ```
 
     - 避让使用@Env(SystemProperties.WINDOW_AVOID_AREA)获取到的避让区域的示例代码如下：
-      ```ts
-      build() {
-        Column() {
-          // 避让顶部和挖孔区域
-          Row() {
-            Text('Top Container')
-              .fontSize(40)
-              .textAlign(TextAlign.Center)
+
+      <!--@[ImmersiveLayoutEnv3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ImmersiveLayoutEnv/entry/src/main/ets/pages/Index.ets) -->
+      
+      ``` TypeScript
+       // ...
+        build() {
+          Column() {
+            Row() {
+              Text('Top Container')
+                .fontSize(40)
+                .textAlign(TextAlign.Center)
+                .width('100%')
+            }
+            .backgroundColor('#2786d9')
+            .padding({
+              top: this.avoidAreasVp.statusBar.topRect.height + 10,
+              bottom: 10,
+              left: this.avoidAreasVp.cutout.leftRect.width,
+              right: this.avoidAreasVp.cutout.rightRect.width
+            })
+      
+            Scroll() {
+              Column({ space: 12 }) {
+                Row() {
+                  Text(this.text)
+                    .fontSize(20)
+                }
+      
+                Divider()
+      
+                Text(`topAvoidHeight: ${this.topAvoidHeight}`)
+                Text(`bottomAvoidHeight: ${this.bottomAvoidHeight}`)
+                Text(`leftAvoidWidth: ${this.leftAvoidWidth}`)
+                Text(`rightAvoidWidth: ${this.rightAvoidWidth}`)
+                Text(`preferredOrientation: ${this.orientationText}`)
+                Text(this.statusText)
+                  .fontColor('#666666')
+      
+                Row({ space: 8 }) {
+                  Button('Auto Rotation')
+                    .layoutWeight(1)
+                    .onClick(() => {
+                      void this.setOrientation(window.Orientation.AUTO_ROTATION, 'AUTO_ROTATION');
+                    })
+      
+                  Button('Portrait')
+                    .layoutWeight(1)
+                    .backgroundColor('#0A7A5A')
+                    .onClick(() => {
+                      void this.setOrientation(window.Orientation.PORTRAIT, 'PORTRAIT');
+                    })
+      
+                  Button('Landscape')
+                    .layoutWeight(1)
+                    .backgroundColor('#AD5C00')
+                    .onClick(() => {
+                      void this.setOrientation(window.Orientation.LANDSCAPE, 'LANDSCAPE');
+                    })
+                }
+                .width('100%')
+      
+                Text('Cutout test: rotate the app and observe whether leftAvoidWidth / rightAvoidWidth change on a cutout device.')
+                  .fontColor('#666666')
+              }
               .width('100%')
+            }
+            .backgroundColor(Color.White)
+            .padding(20)
+            .borderRadius(15)
+            .width('80%')
+            .margin({
+              left: this.avoidAreasVp.cutout.leftRect.width,
+              right: this.avoidAreasVp.cutout.rightRect.width
+            })
+            .layoutWeight(1)
+      
+            Row() {
+              Text('Bottom Container')
+                .fontSize(40)
+                .textAlign(TextAlign.Center)
+                .width('100%')
+            }
+            .backgroundColor('#96dffa')
+            .padding({
+              top: 10,
+              bottom: this.avoidAreasVp.navigationIndicator.bottomRect.height + 10,
+              left: this.avoidAreasVp.cutout.leftRect.width,
+              right: this.avoidAreasVp.cutout.rightRect.width
+            })
           }
-          .backgroundColor('#2786d9')
+          .width('100%')
+          .height('100%')
           .padding({
-            // 避让状态栏区域
-            top: this.avoidAreasVp.statusBar.topRect.height + 10,
-            bottom: 10,
-            // 避让挖孔区域
             left: this.avoidAreasVp.cutout.leftRect.width,
             right: this.avoidAreasVp.cutout.rightRect.width
           })
-          // 避让底部和挖孔区域
-          Row() {
-            Text('Bottom Container')
-              .fontSize(40)
-              .textAlign(TextAlign.Center)
-              .width('100%')
-          }
-          .backgroundColor('#96dffa')
-          .padding({
-            top: 10,
-            // 避让底部导航区域
-            bottom: this.avoidAreasVp.navigationIndicator.bottomRect.height + 10,
-            // 避让挖孔区域
-            left: this.avoidAreasVp.cutout.leftRect.width,
-            right: this.avoidAreasVp.cutout.rightRect.width
-          })
+          .alignItems(HorizontalAlign.Center)
+          .backgroundColor('#d5d5d5')
+          .justifyContent(FlexAlign.SpaceBetween)
         }
       }
       ```
