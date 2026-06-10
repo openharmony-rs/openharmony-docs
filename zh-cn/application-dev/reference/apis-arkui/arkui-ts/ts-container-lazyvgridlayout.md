@@ -392,7 +392,7 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 }
 ```
 
-![](figures/zh-cn_image_lazyvgridlayout1.gif)
+![](figures/image-lazyvgridlayout1.gif)
 
 ### 示例2（设置头部组件或尾部组件及吸附效果）
 

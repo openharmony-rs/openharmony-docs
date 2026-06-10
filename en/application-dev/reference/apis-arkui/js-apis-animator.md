@@ -967,7 +967,7 @@ class DateT {
 }
 ```
 
-  ![en-us_image_00007](figures/en-us_image_00007.gif)
+  ![en-us_image_00007](figures/js-animator-example.gif)
 
 ### ArkTS-based Declarative Development Paradigm
 

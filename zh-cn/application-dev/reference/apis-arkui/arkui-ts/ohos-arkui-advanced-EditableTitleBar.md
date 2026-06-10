@@ -486,4 +486,4 @@ struct Index {
 }
 ```
 
-![示例6-EditableTitleBar示例6 设置Symbol类型图标](figures/zh-cn_image_editabletitlebar_demo_06.png)
+![示例6-EditableTitleBar示例6 设置Symbol类型图标](figures/image-editabletitlebar-demo06.png)

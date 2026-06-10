@@ -524,7 +524,7 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom_style](figures/zh-cn_image_custom_style.gif)
+![zh-cn_image_custom_style](figures/image-custom-style.gif)
 
 ### 示例4（悬停态弹窗）
 
@@ -1121,7 +1121,7 @@ struct Example3 {
 }
 ```
 
-![zh-cn_image_custom_lifecycle](figures/zh-cn_image_custom_lifecycle.gif)
+![zh-cn_image_custom_lifecycle](figures/image-custom-lifecycle.gif)
 
 ### 示例10（不同customStyle下的弹窗示例）
 
@@ -1398,7 +1398,7 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom-backgroundEffect](figures/zh-cn_image_dynamicRefreshwidth.gif)
+![zh-cn_image_custom-backgroundEffect](figures/image-dynamicRefreshwidth.gif)
 
 ### 示例14（设置弹窗的系统材质）
 
