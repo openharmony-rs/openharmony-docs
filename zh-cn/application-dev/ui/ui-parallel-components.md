@@ -235,8 +235,20 @@ struct Page {
   <!-- @[parallelNoList_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParallelizeUI/entry/src/main/ets/pages/ParallelDemo.ets) -->
   
   ``` TypeScript
-  // ArkTS-Sta示例
-  import { Entry, Column, Component, Image, Text, Stack, $r, ImageFit, FontWeight, Margin } from '@ohos.arkui.component';
+  import {
+    BarState,
+    Column,
+    Component,
+    Entry,
+    FontWeight,
+    Image,
+    ImageFit,
+    Margin,
+    Scroll,
+    Stack,
+    Text,
+    $r
+  } from '@ohos.arkui.component';
   import { State } from '@ohos.arkui.stateManagement';
   import { ParallelizeUI } from '@ohos.arkui.Parallelize';
   
@@ -272,42 +284,53 @@ struct Page {
           .fontColor('#333')
           .margin({ bottom: 12 } as Margin)
   
-        // 循环并行创建
-        ParallelizeUI<Int, CardInfo>({ enable: true }, this.arr,
-          (item: Int, index: Int) => {
-            const coverIndex = ((item - 1) % 5) + 1
-            return new CardInfo(
-              `卡片 ${item}`,
-              `描述信息 ${item}`,
-              `app.media.cover${coverIndex}`
-            )
-          },
-          (param: CardInfo) => {
-            // 每个卡片UI
-            Stack() {
-              Image($r(param.cover))
+        Scroll() {
+          Column() {
+            // 循环并行创建
+            ParallelizeUI<Int, CardInfo>({ enable: true }, this.arr,
+              (item: Int, index: Int) => {
+                const coverIndex = ((item - 1) % 5) + 1
+                return new CardInfo(
+                  `卡片 ${item}`,
+                  `描述信息 ${item}`,
+                  `app.media.cover${coverIndex}`
+                )
+              },
+              (param: CardInfo) => {
+                Stack() {
+                  Image($r(param.cover))
+                    .width('100%')
+                    .height(180)
+                    .borderRadius(10)
+                    .objectFit(ImageFit.Cover)
+  
+                  Column() {
+                    Text(param.title)
+                      .fontSize(18)
+                      .fontWeight(FontWeight.Medium)
+                      .fontColor('#FFF')
+  
+                    Text(param.desc)
+                      .fontSize(14)
+                      .fontColor('#DDD')
+                  }
+                  .padding(10)
+                }
                 .width('100%')
                 .height(180)
                 .borderRadius(10)
-                .objectFit(ImageFit.Cover)
-  
-              Column() {
-                Text(param.title) // 卡片标题
-                  .fontSize(18)
-                  .fontWeight(FontWeight.Medium)
-                  .fontColor('#FFF')
-  
-                Text(param.desc) // 卡片描述
-                  .fontSize(14)
-                  .fontColor('#DDD')
+                .margin({ bottom: 12 } as Margin)
               }
-              .padding(10)
-            }
-            .width('100%')
-            .borderRadius(10)
+            )
           }
-        )
+          .width('100%')
+        }
+        .scrollBar(BarState.Auto)
+        .layoutWeight(1)
+        .width('100%')
       }
+      .width('100%')
+      .height('100%')
       .width('100%')
       .padding(16)
       .backgroundColor('#FAFAFA')
