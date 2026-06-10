@@ -820,7 +820,7 @@ error: install parse profile prop check error.
 
            如下图（仅作为格式示意，内容以实际为准）：
 
-           ![示例图](SHA-256-fingerprint.png)
+           ![示例图](figures/SHA-256-fingerprint.png)
 
            去掉冒号后的签名指纹为：5753DDBC1A8EF88A62058A9FC4B6AFAFC1C5D8D1A1B86FB3532739B625F8F3DB。
 
