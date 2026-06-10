@@ -28,4 +28,4 @@
 
 ### Stub
 
-IPC/RPC通信模型中包括服务端侧对象（stub）和客户端对象（proxy），stub接收并处理Proxy发起的请求并应答结果。Stub定义具体的请求处理逻辑，Proxy实现对应的请求发起方法。
+IPC/RPC通信模型中包括服务端侧对象（Stub）和客户端对象（Proxy），Stub接收并处理Proxy发起的请求并应答结果。Stub定义具体的请求处理逻辑，Proxy实现对应的请求发起方法。
