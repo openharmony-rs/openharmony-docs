@@ -17,7 +17,7 @@
 <br>
 > **说明：**
 >
-> - 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用Promise函数，更多方式可以查阅[API 参考](../reference/apis-network-kit/js-apis-net-statistics.md)。
+> - 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API均提供了callback和Promise两种方式，以下示例均采用Promise函数，更多方式可以查阅[@ohos.net.statistics (流量管理)](../reference/apis-network-kit/js-apis-net-statistics.md)。
 > - 上行流量是指由终端设备向网络侧发送的数据量，下行流量是指由网络侧向终端设备发起传输的数据量。
 
 以下分别介绍具体开发方式。
@@ -103,7 +103,7 @@
    ```
 5. 获取指定应用流量数据。
 
-    分别调用[getUidRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetuidrxbytes-1)和[getUidRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetuidtxbytes-1)接口，传入UID获取指定应用从最近一次开机至今的下行和上行流量数据。<br>
+    分别调用[getUidRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetuidrxbytes-1)和[getUidTxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetuidtxbytes-1)接口，传入UID获取指定应用从最近一次开机至今的下行和上行流量数据。<br>
     此处仅以应用UID为20010038为例，实际调用时需修改为真实UID。
    ```ts
     let UID = 20010038;
@@ -168,8 +168,8 @@
       import { statistics } from '@kit.NetworkKit';
 
       class IfaceInfo {
-        iface: string = "wlan0"，
-        startTime: number = 1685948465，
+        iface: string = "wlan0",
+        startTime: number = 1685948465,
         endTime: number = 16859485670
       }
       // 获取指定网卡历史流量信息。
