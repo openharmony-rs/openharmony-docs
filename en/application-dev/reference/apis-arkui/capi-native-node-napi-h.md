@@ -221,7 +221,7 @@ Obtains the ID of the [Navigation](arkui-ts/ts-basic-components-navigation.md) c
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the data size exceeds the specified buffer size.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the data size exceeds the specified buffer size.|
 
 ### OH_ArkUI_GetNavDestinationName()
 
@@ -250,7 +250,7 @@ Obtains the name of the [NavDestination](arkui-ts/ts-basic-components-navdestina
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the specified buffer size is smaller than the minimum buffer size required to hold the target.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the specified buffer size is smaller than the minimum buffer size required to hold the target.|
 
 ### OH_ArkUI_GetNavStackLength()
 
@@ -277,7 +277,7 @@ Obtains the length of the **Navigation** stack where the specified node is locat
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.|
 
 ### OH_ArkUI_GetNavDestinationNameByIndex()
 
@@ -307,7 +307,7 @@ Obtains the name of the page in the navigation stack where the specified node is
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_NODE_INDEX_INVALID](capi-native-type-h.md#arkui_errorcode) if the index is invalid.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the specified buffer size is smaller than the minimum buffer size required to hold the target.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_NODE_INDEX_INVALID](capi-native-type-h.md#arkui_errorcode) if the index is invalid.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the specified buffer size is smaller than the minimum buffer size required to hold the target.|
 
 ### OH_ArkUI_GetNavDestinationId()
 
@@ -336,7 +336,7 @@ Obtains the ID of the **NavDestination** component where the specified node is l
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the data size exceeds the specified buffer size.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the data size exceeds the specified buffer size.|
 
 ### OH_ArkUI_GetNavDestinationState()
 
@@ -363,7 +363,7 @@ Obtains the state of the **NavDestination** component where the specified node i
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.|
 
 ### OH_ArkUI_GetNavDestinationIndex()
 
@@ -390,7 +390,7 @@ Obtains the index of the **NavDestination** component where the specified node i
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.|
 
 ### OH_ArkUI_GetNavDestinationParam()
 
@@ -443,7 +443,7 @@ Obtains the index of the [Router](arkts-apis-uicontext-router.md) page stack whe
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if the node or index specified is invalid.<br>Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if information fails to be obtained, possibly because the specified node is not in the navigation stack.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if the node or index specified is invalid.<br>Returns [ARKUI_ERROR_CODE_GET_INFO_FAILED](capi-native-type-h.md#arkui_errorcode) if the information fails to be obtained, possibly because the current node is not mounted to the page.|
 
 ### OH_ArkUI_GetRouterPageName()
 
