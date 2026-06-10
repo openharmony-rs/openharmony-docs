@@ -293,7 +293,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_toolbar_example01](figures/zh-cn_image_toolbar_example01.png)
+![zh-cn_image_toolbar_example01](figures/image-toolbar-example01.png)
 
 ### 示例2（设置工具栏自定义样式）
 从API version 13开始，该示例通过设置属性ToolBarModifier自定义工具栏高度、背景色、按压效果等样式。
@@ -391,7 +391,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_toolbar_example02](figures/zh-cn_image_toolbar_example02.png)
+![zh-cn_image_toolbar_example02](figures/image-toolbar-example02.png)
 
 
 ### 示例3（设置工具栏自定义播报）
@@ -467,4 +467,4 @@ struct Index {
   }
 }
 ```
-![zh-cn_image_toolbar_example01](figures/zh-cn_image_toolbar_example01.png)
+![zh-cn_image_toolbar_example01](figures/image-toolbar-example01.png)

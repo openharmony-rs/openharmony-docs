@@ -3011,7 +3011,7 @@ resetTransform(): void
   }
   ```
 
-  ![zh-cn_image_0000001239032417](figures/zh-cn_image_ResetTransform.png)
+  ![zh-cn_image_0000001239032417](figures/image-ResetTransform.png)
 
 ### rotate
 
