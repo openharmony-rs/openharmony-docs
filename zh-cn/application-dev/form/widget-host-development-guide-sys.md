@@ -517,6 +517,503 @@ struct formHostSample {
    ArkTS-Sta示例：
 <!-- @[form_host_indexSta](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormHostSta/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+import { HashMap, HashSet } from '@kit.ArkTS';
+import { formHost, formInfo, formObserver } from '@kit.FormKit';
+import { bundleMonitor } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  Color,
+  ArrowPosition,
+  Resource,
+  TextPickerDialogOptions,
+  $r,
+  Row,
+  FormCallbackInfo,
+  Select,
+  Divider,
+  FontWeight,
+  TextPickerResult,
+  FormComponent,
+  FormDimension,
+  TextCascadePickerRangeContent
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement';
+import { ButtonType, MenuAlignType } from '@kit.ArkUI';
+
+const TAG: string = 'FormHost';
+const DOMAIN_NUMBER: int = 0xFF00;
+
+@Entry
+@Component
+struct formHostSample {
+  // 卡片尺寸枚举。
+  static FORM_DIMENSIONS_MAP : string[] = [
+    '1*2',
+    '2*2',
+    '2*4',
+    '4*4',
+    '1*1',
+    '6*4',
+  ]
+  // 模拟卡片尺寸。
+  static FORM_SIZE : number[][]= [
+    [120, 60], // 1*2
+    [120, 120], // 2*2
+    [240, 120], // 2*4
+    [240, 240], // 4*4
+    [60, 60], // 1*1
+    [240, 360],// 6*4
+  ]
+  // 请将$r('app.string.Host')替换为实际资源文件，在本示例中该资源文件的value值为"卡片使用方"
+  @State message: Resource | string = $r('app.string.Host');
+  formCardHashMap: HashMap<string, formInfo.FormInfo> = new HashMap<string, formInfo.FormInfo>();
+  @State showFormPicker: boolean = false;
+  // 请将$r('app.string.formOperation')替换为实际资源文件，在本示例中该资源文件的value值为"卡片操作"
+  @State operation: Resource | string = $r('app.string.formOperation');
+  @State index: Int = 2;
+  @State space: Int = 8;
+  @State arrowPosition: ArrowPosition = ArrowPosition.END;
+  formIds: HashSet<string> = new HashSet<string>();
+  currentFormKey: string = '';
+  focusFormInfo: formInfo.FormInfo = {
+    bundleName: '',
+    moduleName: '',
+    abilityName: '',
+    name: '',
+    displayName: '',
+    displayNameId: 0,
+    description: '',
+    descriptionId: 0,
+    type: formInfo.FormType.eTS,
+    jsComponentName: '',
+    isDefault: false,
+    updateEnabled: false,
+    formVisibleNotify: true,
+    scheduledUpdateTime: '',
+    formConfigAbility: '',
+    updateDuration: 0,
+    defaultDimension: FormDimension.DIMENSION_1_1,
+    supportDimensions: [],
+    supportedShapes: [],
+    customizeData: {},
+    isDynamic: false,
+    transparencyEnabled: false
+  }
+
+  formInfoRecord: TextCascadePickerRangeContent[] = [];
+
+  // 请将$r('app.string.formType')替换为实际资源文件，在本示例中该资源文件的value值为"卡片类型"
+  pickerBtnMsg: Resource | string = $r('app.string.formType');
+  @State showForm: boolean = true;
+  @State selectFormId: string = '0';
+  @State pickDialogIndex: int = 0;
+
+  aboutToAppear(): void {
+    try {
+      // 检查系统是否准备好。
+      formHost.isSystemReady().then(() => {
+        hilog.info(DOMAIN_NUMBER, TAG, 'formHost isSystemReady success');
+
+        // 订阅通知卡片不可见的事件和卡片可见通知事件。
+        let notifyInvisibleCallback = (data: formInfo.RunningFormInfo[]) => {
+          hilog.info(DOMAIN_NUMBER, TAG, `form change invisibility`);
+        }
+        let notifyVisibleCallback = (data: formInfo.RunningFormInfo[]) => {
+          hilog.info(DOMAIN_NUMBER, TAG, `form change visibility`);
+        }
+        formObserver.onNotifyInvisible(notifyInvisibleCallback);
+        formObserver.onNotifyVisible(notifyVisibleCallback);
+
+        // 注册监听应用的安装事件。
+        try {
+          bundleMonitor.onAdd((bundleChangeInfo) => {
+            hilog.info(DOMAIN_NUMBER, TAG,
+              `bundleName : ${bundleChangeInfo.bundleName} userId : ${bundleChangeInfo.userId}`);
+            this.getAllBundleFormsInfo();
+          })
+        } catch (errData) {
+          let message = (errData as BusinessError).message;
+          let errCode = (errData as BusinessError).code;
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to get errData. code: ${errData?.code}, message: ${errData?.message}`);
+        }
+        // 注册监听应用的更新事件。
+        try {
+          bundleMonitor.onUpdate((bundleChangeInfo) => {
+            hilog.info(DOMAIN_NUMBER, TAG,
+              `bundleName : ${bundleChangeInfo.bundleName} userId : ${bundleChangeInfo.userId}`);
+            this.getAllBundleFormsInfo();
+          })
+        } catch (errData) {
+          let message = (errData as BusinessError).message;
+          let errCode = (errData as BusinessError).code;
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to get errData. code: ${errData?.code}, message: ${errData?.message}`);
+        }
+        // 注册监听应用的卸载事件。
+        try {
+          bundleMonitor.onRemove((bundleChangeInfo) => {
+            hilog.info(DOMAIN_NUMBER, TAG,
+              `bundleName : ${bundleChangeInfo.bundleName} userId : ${bundleChangeInfo.userId}`);
+            this.getAllBundleFormsInfo();
+          })
+        } catch (errData) {
+          let message = (errData as BusinessError).message;
+          let errCode = (errData as BusinessError).code;
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to get errData. code: ${errData?.code}, message: ${errData?.message}`);
+        }
+      }).catch((error) => {
+        hilog.error(DOMAIN_NUMBER, TAG, `catch error. code: ${error?.code}, message: ${error?.message}`);
+      });
+    } catch (error) {
+      hilog.error(DOMAIN_NUMBER, TAG, `catch error. code: ${error?.code}, message: ${error?.message}`);
+    }
+  }
+
+  aboutToDisappear(): void {
+    // 删除所有卡片。
+    this.formIds.forEach((id) => {
+      hilog.info(DOMAIN_NUMBER, TAG, 'delete all form');
+      try {
+        formHost.deleteForm(id);
+      } catch (errData) {
+      let message = (errData as BusinessError).message;
+      let errCode = (errData as BusinessError).code;
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to get errData. code: ${errData?.code}, message: ${errData?.message}`);
+    }
+    });
+    // 注销监听应用的安装。
+    try {
+      bundleMonitor.offAdd();
+    } catch (errData) {
+      let message = (errData as BusinessError).message;
+      let errCode = (errData as BusinessError).code;
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to get errData. code: ${errData?.code}, message: ${errData?.message}`);
+    }
+    // 注销监听应用的更新。
+    try {
+      bundleMonitor.offUpdate();
+    } catch (errData) {
+      let message = (errData as BusinessError).message;
+      let errCode = (errData as BusinessError).code;
+       hilog.error(DOMAIN_NUMBER, TAG, `Failed to get errData. code: ${errData?.code}, message: ${errData?.message}`);
+    }
+    // 注销监听应用的卸载。
+    try {
+      bundleMonitor.offRemove();
+    } catch (errData) {
+      let message = (errData as BusinessError).message;
+      let errCode = (errData as BusinessError).code;
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to get errData. code: ${errData?.code}, message: ${errData?.message}`);
+    }
+    // 取消订阅通知卡片不可见和通知卡片可见事件。
+    formObserver.offNotifyInvisible();
+    formObserver.offNotifyVisible();
+  }
+
+  // 将所有卡片信息存入formHapRecordMap中。
+  getAllBundleFormsInfo() {
+    this.formCardHashMap.clear();
+    this.showFormPicker = false;
+    let formHapRecordMap: HashMap<string, formInfo.FormInfo[]> = new HashMap<string, formInfo.FormInfo[]>();
+    this.formInfoRecord = [];
+    formHost.getAllFormsInfo().then((formList: Array<formInfo.FormInfo>) => {
+      hilog.info(DOMAIN_NUMBER, TAG, 'getALlFormsInfo size:' + formList.length);
+      for (let formItemInfo of formList) {
+
+        let formBundleName = formItemInfo.bundleName;
+        if (formHapRecordMap.hasKey(formBundleName)) {
+          formHapRecordMap.get(formBundleName)?.push(formItemInfo)
+        } else {
+          let formInfoList: formInfo.FormInfo[] = [formItemInfo];
+          formHapRecordMap.set(formBundleName, formInfoList);
+        }
+      }
+
+      for (let formBundle of formHapRecordMap.keys()) {
+        let bundleFormInfo: TextCascadePickerRangeContent = {
+          text: formBundle,
+          children: []
+        }
+
+        let bundleFormList = formHapRecordMap.get(formBundle);
+
+        bundleFormList!.forEach((formItemInfo) => {
+          let dimIndex = formItemInfo.defaultDimension - 1;
+          if (dimIndex < 0 || dimIndex >= formHostSample.FORM_DIMENSIONS_MAP.length) {
+            dimIndex = 0;
+          }
+          let dimensionName = formHostSample.FORM_DIMENSIONS_MAP[dimIndex];
+
+          bundleFormInfo.children?.push({ text: formItemInfo.name + '#' + dimensionName });
+          this.formCardHashMap.set(formBundle + '#' + formItemInfo.name + '#' + dimensionName, formItemInfo);
+        })
+        this.formInfoRecord?.push(bundleFormInfo);
+      }
+      this.formCardHashMap.forEach((formItem: formInfo.FormInfo) => {
+        hilog.info(DOMAIN_NUMBER, TAG, `formCardHashmap item`);
+      })
+      this.showFormPicker = true;
+    })
+  }
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+
+      Divider().vertical(false).color(Color.Black).margin({ top: 10, bottom: 10 })
+
+      Row() {
+        // 点击查询所有卡片信息。
+        // 请将$r('app.string.inquiryForm')替换为实际资源文件，在本示例中该资源文件的value值为"查询卡片"
+        Button($r('app.string.inquiryForm'))
+          .onClick(() => {
+            this.getAllBundleFormsInfo();
+          })
+
+        // 点击按钮弹出选择界面，点击确定后，添加默认尺寸的所选卡片。
+        // 请将$r('app.string.selectAddForm')替换为实际资源文件，在本示例中该资源文件的value值为"选择添加卡片"
+        Button($r('app.string.selectAddForm'))
+          .enabled(this.showFormPicker)
+          .onClick(() => {
+            hilog.info(DOMAIN_NUMBER, TAG, 'TextPickerDialog: show()');
+            let op : TextPickerDialogOptions = {
+              range: this.formInfoRecord,
+              selected: this.pickDialogIndex,
+              canLoop: false,
+              disappearTextStyle: { color: Color.Red, font: { size: 10, weight: FontWeight.Lighter } },
+              textStyle: { color: Color.Black, font: { size: 12, weight: FontWeight.Normal } },
+              selectedTextStyle: { color: Color.Blue, font: { size: 12, weight: FontWeight.Bolder } },
+
+              onAccept: (result: TextPickerResult) => {
+                let array: Array<String> = result.value as Array<String>;
+
+                this.currentFormKey = array[0] + '#' + array[1];
+                this.pickDialogIndex = 0;
+                hilog.info(DOMAIN_NUMBER, TAG, `TextPickerDialog onAccept: ${this.currentFormKey}, ${this.pickDialogIndex}`);
+
+                let formInfo = this.formCardHashMap.get(this.currentFormKey);
+                if (!formInfo) {
+                  hilog.info(DOMAIN_NUMBER, TAG, `invalid formItemInfo by form key: ${this.currentFormKey}`);
+                  return;
+                }
+
+                this.showForm = false;
+                this.focusFormInfo = formInfo;
+                this.selectFormId = '0';
+
+                setTimeout(() => {
+                  this.showForm = true;
+                }, 50);
+              },
+
+              onCancel: () => {
+                hilog.info(DOMAIN_NUMBER, TAG, `TextPickerDialog : onCancel()`);
+              },
+              onChange: (result: TextPickerResult) => {
+                let array : Array<String> = result.value as Array<String>;
+                this.pickerBtnMsg = array[0] + '#' + array[1];
+                hilog.info(DOMAIN_NUMBER, TAG, `TextPickerDialog:onChange:` + this.pickerBtnMsg);
+              }
+            }
+            this.getUIContext().showTextPickerDialog(op);
+          })
+          .margin({ left: 10 })
+      }
+      .margin({ left: 10 })
+
+      Divider().vertical(false).color(Color.Black).margin({ top: 10, bottom: 10 })
+
+      if (this.showForm) {
+        Text(this.pickerBtnMsg)
+          .margin({ top: 10, bottom: 10 })
+      }
+
+      if (this.showForm) {
+        Text('formId: ' + this.selectFormId)
+          .margin({ top: 10, bottom: 10 })
+
+        // 卡片组件。
+        FormComponent({
+          id: this.selectFormId,
+          name: this.focusFormInfo.name,
+          bundle: this.focusFormInfo.bundleName,
+          ability: this.focusFormInfo.abilityName,
+          module: this.focusFormInfo.moduleName,
+          dimension: this.focusFormInfo.defaultDimension as FormDimension,
+          temporary: false,
+        })
+          .size({
+            width: formHostSample.FORM_SIZE[this.focusFormInfo.defaultDimension - 1][0],
+            height: formHostSample.FORM_SIZE[this.focusFormInfo.defaultDimension - 1][1],
+          })
+          .borderColor(Color.Black)
+          .borderRadius(10)
+          .borderWidth(1)
+          .onAcquired((form: FormCallbackInfo) => {
+            this.selectFormId = form.id.toString();
+            this.formIds.add(this.selectFormId);
+            this.showForm = true;
+          })
+          .onRouter(() => {
+            hilog.info(DOMAIN_NUMBER, TAG, `onRouter`);
+          })
+          .onError((error) => {
+            hilog.error(DOMAIN_NUMBER, TAG, `onError`);
+            this.showForm = false;
+          })
+          .onUninstall((info: FormCallbackInfo) => {
+            this.showForm = false;
+            hilog.info(DOMAIN_NUMBER, TAG, `onUninstall`);
+            this.formIds.remove(this.selectFormId);
+          })
+
+        // select列表，列出部分formHost接口功能。
+        Row() {
+          // 请将$r('app.string.deleteForm')替换为实际资源文件，在本示例中该资源文件的value值为"删除卡片"
+          Select([{ value: $r('app.string.deleteForm') },
+            // 请将$r('app.string.updateForm')替换为实际资源文件，在本示例中该资源文件的value值为"更新卡片"
+            { value: $r('app.string.updateForm') },
+            // 请将$r('app.string.visibleForms')替换为实际资源文件，在本示例中该资源文件的value值为"卡片可见"
+            { value: $r('app.string.visibleForms') },
+            // 请将$r('app.string.invisibleForms')替换为实际资源文件，在本示例中该资源文件的value值为"卡片不可见"
+            { value: $r('app.string.invisibleForms') },
+            // 请将$r('app.string.enableFormsUpdate')替换为实际资源文件，在本示例中该资源文件的value值为"可以更新"
+            { value: $r('app.string.enableFormsUpdate') },
+            // 请将$r('app.string.disableFormsUpdate')替换为实际资源文件，在本示例中该资源文件的value值为"不可更新"
+            { value: $r('app.string.disableFormsUpdate') },
+          ])
+            .selected(this.index)
+            .value(this.operation)
+            .font({ size: 16, weight: 500 })
+            .fontColor('#182431')
+            .selectedOptionFont({ size: 16, weight: 400 })
+            .optionFont({ size: 16, weight: 400 })
+            .space(this.space)
+            .arrowPosition(this.arrowPosition)
+            .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
+            .optionWidth(200)
+            .optionHeight(300)
+            .onSelect((index: Int, text?: string | Resource) => {
+              hilog.info(DOMAIN_NUMBER, TAG, 'Select:' + index);
+              this.index = index;
+              if (text) {
+                this.operation = text;
+              }
+            })
+
+          // 根据select列表所选的功能，对当前卡片执行对应操作。
+          // 请将$r('app.string.execute')替换为实际资源文件，在本示例中该资源文件的value值为"执行"
+          Button($r('app.string.execute'), {
+            type: ButtonType.Capsule
+          })
+            .fontSize(16)
+            .onClick(() => {
+              switch (this.index) {
+                case 0:
+                  try {
+                    formHost.deleteForm(this.selectFormId, (error) => {
+                      if (error) {
+                        hilog.error(DOMAIN_NUMBER, TAG,
+                          `deleteForm error, code: ${error?.code}, message: ${error?.message}`);
+                      } else {
+                        hilog.info(DOMAIN_NUMBER, TAG, 'formHost deleteForm success');
+                      }
+                    });
+                  } catch (error) {
+                    hilog.error(DOMAIN_NUMBER, TAG, `deleteForm catch error. code: ${error?.code}, message: ${error?.message}`);
+                  }
+                  this.showForm = false;
+                  this.selectFormId = '';
+                  // 重新查询卡片列表
+                  this.getAllBundleFormsInfo();
+                  break;
+                case 1:
+                  try {
+                    formHost.requestForm(this.selectFormId, (error) => {
+                      if (error) {
+                        hilog.error(DOMAIN_NUMBER, TAG,
+                          `requestForm error, code: ${error?.code}, message: ${error?.message}`);
+                      }
+                    });
+                  } catch (error) {
+                    hilog.error(DOMAIN_NUMBER, TAG, `requestForm catch error. code: ${error?.code}, message: ${error?.message}`);
+                  }
+                  break;
+                case 2:
+                  try {
+                    formHost.notifyVisibleForms([this.selectFormId], (error) => {
+                      if (error) {
+                        hilog.error(DOMAIN_NUMBER, TAG,
+                          `notifyVisibleForms error, code: ${error?.code}, message: ${error?.message}`);
+                      } else {
+                        hilog.info(DOMAIN_NUMBER, TAG, 'notifyVisibleForms success');
+                      }
+                    });
+                  } catch (error) {
+                    hilog.error(DOMAIN_NUMBER, TAG, `notifyVisibleForms catch error. code: ${error?.code}, message: ${error?.message}`);
+                  }
+                  break;
+                case 3:
+                  try {
+                    formHost.notifyInvisibleForms([this.selectFormId], (error) => {
+                      if (error) {
+                        hilog.error(DOMAIN_NUMBER, TAG,
+                          `notifyInvisibleForms error, code: ${error?.code}, message: ${error?.message}`);
+                      } else {
+                        hilog.info(DOMAIN_NUMBER, TAG, 'notifyInvisibleForms success');
+                      }
+                    });
+                  } catch (error) {
+                    hilog.error(DOMAIN_NUMBER, TAG, `notifyInvisibleForms catch error. code: ${error?.code}, message: ${error?.message}`);
+                  }
+                  break;
+                case 4:
+                  try {
+                    formHost.enableFormsUpdate([this.selectFormId], (error) => {
+                      if (error) {
+                        hilog.error(DOMAIN_NUMBER, TAG,
+                          `enableFormsUpdate error, code: ${error?.code}, message: ${error?.message}`);
+                      }
+                    });
+                  } catch (error) {
+                     hilog.error(DOMAIN_NUMBER, TAG, `enableFormsUpdate catch error. code: ${error?.code}, message: ${error?.message}`);
+                  }
+                  break;
+                case 5:
+                  try {
+                    formHost.disableFormsUpdate([this.selectFormId], (error) => {
+                      if (error) {
+                        hilog.error(DOMAIN_NUMBER, TAG,
+                          `disableFormsUpdate error, code: ${error?.code}, message: ${error?.message}`);
+                      } else {
+                        hilog.info(DOMAIN_NUMBER, TAG, 'disableFormsUpdate success');
+                      }
+                    });
+                  } catch (error) {
+                    hilog.error(DOMAIN_NUMBER, TAG, `disableFormsUpdate catch error. code: ${error?.code}, message: ${error?.message}`);
+                  }
+                  break;
+              }
+            })
+        }
+        .margin({
+          top: 20,
+          bottom: 10
+        })
+      }
+    }
+  }
+}
+```
+
 ![screenshot](./figures/widget-host-development-guide-2.jpeg)
 
 ## 相关实例
