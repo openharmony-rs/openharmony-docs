@@ -97,7 +97,7 @@ getDLPGatheringPolicy(): Promise&lt;GatheringPolicyType&gt;
 import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.getDLPGatheringPolicy().then((gatheringPolicy: dlpPermission.GatheringPolicyType) => {
-  console.info('gatheringPolicy:', JSON.stringify(gatheringPolicy));
+  console.info('gatheringPolicy: ', JSON.stringify(gatheringPolicy));
 }).catch((error: BusinessError)=> {
   console.error(error.message);
 }); // 获取沙箱聚合策略。
