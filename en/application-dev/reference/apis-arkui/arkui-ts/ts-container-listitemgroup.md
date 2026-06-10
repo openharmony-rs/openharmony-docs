@@ -287,7 +287,7 @@ struct ListItemGroupExample {
 }
 ```
 
-![en-us_image_0000001219864159](figures/image-listitemgroup.gif)
+![en-us_image_0000001219864159](figures/en-us_image_listitemgroup.gif)
 
 ### Example 2: Applying a Card-style Effect
 
@@ -487,7 +487,7 @@ struct ListItemGroupExample {
 }
 ```
 
-![zh-cn_image_listitemgroup_example03](figures/en-us_image_listitemgroup_example03.gif)
+![en-us_image_listitemgroup_example03](figures/image-listitemgroup-example03.gif)
 
 ### Example 4: Setting a Multi-Column Layout
 

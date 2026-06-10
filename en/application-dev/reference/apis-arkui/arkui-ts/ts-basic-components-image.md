@@ -1155,7 +1155,7 @@ struct ImageExample2 {
 }
 ```
 
-![en-us_image_0000001607845173](figures/en-us_image_view2.png)
+![en-us_image_0000001607845173](figures/image-view2.png)
 
 ### Example 3: Downloading and Displaying Online GIF Images
 
@@ -1237,7 +1237,7 @@ struct ImageExample3 {
 }
 ```
 
-![en-us_image_0000001607845173](figures/skychange.gif)
+![en-us_image_0000001607845173](figures/en-us_image_0000001607845173.gif)
 
 ### Example 5: Enabling the AI Image Analyzer
 
@@ -1289,7 +1289,7 @@ struct ImageExample4 {
 }
 ```
 
-![en-us_image_0000001607845173](figures/en-us_image_view4.gif)
+![en-us_image_0000001607845173](figures/image-view4.gif)
 <!--RP2End-->
 ### Example 6: Stretching an Image Using slice
 
@@ -1483,7 +1483,7 @@ struct ImageExample {
 }
 ```
 
-![en-us_image_0000001607845173](figures/en-us_image_view6.gif)
+![en-us_image_0000001607845173](figures/image-view6.gif)
 
 ### Example 9: Setting a Color Filter for an Image
 
@@ -2553,3 +2553,4 @@ struct ImageExample {
 ```
 
 ![antialiased](figures/antialiased.PNG)
+
