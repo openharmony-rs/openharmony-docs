@@ -693,6 +693,26 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
    ArkTS-Sta示例：
     <!-- @[JSForm_EntryAbilitySta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/JSFormSta/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+    
+    ``` TypeScript
+    // entry/src/main/ets/entryability/EntryAbility.ets
+    import UIAbility from '@ohos.app.ability.UIAbility';
+    import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+    import Want from '@ohos.app.ability.Want';
+    import window from '@ohos.window';
+    import { BusinessError } from '@ohos.base'
+    import hilog from '@ohos.hilog'
+    
+    const TAG: string = 'EntryAbility';
+    // ...
+    class EntryAbility extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        hilog.info(DOMAIN, TAG, 'EntryAbility onCreate');
+      }
+    
+      // ...
+    }
+    ```
 
 
 - 在FormExtensionAbility中接收message事件并获取参数，代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
