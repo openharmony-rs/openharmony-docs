@@ -75,8 +75,8 @@
   
         try {
           const mainWindow: window.Window = windowStage.getMainWindowSync();  // 获取应用主窗口
-          await mainWindow.setWindowLayoutFullScreen(true); // 进入窗口沉浸式布局（phone）
-          mainWindow.setWindowDecorVisible(false);  // 隐藏窗口标题栏，进入沉浸式布局（PC）
+          await mainWindow.setWindowLayoutFullScreen(true); // 进入窗口沉浸式布局（非自由窗口状态）
+          mainWindow.setWindowDecorVisible(false);  // 隐藏窗口标题栏，进入沉浸式布局（自由窗口状态）
         } catch (e) {
           console.error(`Failed to set status bar to invisible`);
         }
