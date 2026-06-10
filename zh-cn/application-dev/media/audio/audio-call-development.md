@@ -206,7 +206,7 @@ ArkTS-Sta示例：
 <!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit'; // 导入audio模块。
+import audio from '@ohos.multimedia.audio'; // 导入audio模块。
 import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit'; // 导入文件操作模块。
 import { common } from '@kit.AbilityKit'; // 导入UIAbilityContext。
 import {
@@ -220,8 +220,8 @@ import {
   Row,
   Scroll,
   Text
-} from '@kit.ArkUI';
-import { State } from '@kit.ArkUI';
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 // 与使用AudioRenderer开发音频播放功能过程相似，关键区别在于audioRendererInfo参数和音频数据来源。
 const TAG = 'VoIPDemoForAudioRenderer';
@@ -281,7 +281,7 @@ async function initArguments(context: common.UIAbilityContext) {
         let startIndex = bufferLength.toInt();
         let endIndex = buffer.byteLength.toInt();
         for (let i: int = startIndex; i < endIndex; i++) {
-          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时，0x7F为静音数据；使用其他采样格式时，0为静音数据。
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
           view.setUint8(i, 0);
         }
       }
@@ -377,7 +377,7 @@ async function stop() {
     return;
   }
   const state = renderer.state;
-  // 只有渲染器状态为running或paused的时候才可以停止。
+  // 只有渲染器状态为running或paused时才可以停止。
   if (state !== audio.AudioState.STATE_RUNNING &&
     state !== audio.AudioState.STATE_PAUSED) {
     console.info('Renderer is not running or paused.');
@@ -582,7 +582,7 @@ ArkTS-Sta示例：
 <!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit'; // 导入audio模块。
+import audio from '@ohos.multimedia.audio'; // 导入audio模块。
 import { Callback } from '@kit.BasicServicesKit';
 import { fileIo as fs, WriteOptions } from '@kit.CoreFileKit'; // 导入文件操作模块。
 import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit'; // 导入UIAbilityContext。
@@ -597,8 +597,8 @@ import {
   Row,
   Scroll,
   Text
-} from '@kit.ArkUI';
-import { State } from '@kit.ArkUI';
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 // 与使用AudioCapturer开发音频录制功能过程相似，关键区别在于audioCapturerInfo参数和音频数据流向。
 const TAG = 'VoIPDemoForAudioCapturer';
 const SAMPLE_RATE_48000: int = 48000;
