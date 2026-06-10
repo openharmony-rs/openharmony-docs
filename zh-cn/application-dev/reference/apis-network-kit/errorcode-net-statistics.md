@@ -49,7 +49,7 @@ Failed to connect to the service.
 
 1. 检查系统服务运行状态是否正常。
 2. 重启手机后再次尝试。
-3. 若重复报错，请到处日志文件提在线工单获取帮助。
+3. 若重复报错，请到处日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/add/89?level2=101594901521145579)获取帮助。
 
 ## 2100003 系统内部错误
 
@@ -70,7 +70,7 @@ System internal error.
 
 1. 检查内存空间是否充足，清理内存后重试。
 2. 系统异常，请稍后重试或重启设备。
-3. 若重复报错，请到处日志文件提在线工单获取帮助。
+3. 若重复报错，请到处日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/add/89?level2=101594901521145579)获取帮助。
 
 ## 2103005 读取系统map失败
 
@@ -124,7 +124,7 @@ Failed to obtain the NIC name.
 
 **处理步骤**
 
-检查传入的网卡名是否存在，可通过`ifconfig`查询当前设备的网卡。
+检查传入的网卡名是否存在，可通过`ifconfig`命令查询当前设备的网卡。
 
 ## 2103017 读取数据库失败
 
