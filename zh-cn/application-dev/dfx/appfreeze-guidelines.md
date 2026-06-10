@@ -248,7 +248,7 @@ AppFreeze事件THREAD_BLOCK_6S、 APP_INPUT_BLOCK均包含以下信息：
 | PROCESS_NAME | 应用进程名。 |
 | MSG | 发生故障时间及EventHandler信息。 |
 | IS_FROZEN | 发生故障时，进程冻结状态。<br/>- 0表示进程未冻结。<br/>- 1表示进程冻结。<br>**说明**：从API版本26.0.0开始支持。|
-| this thread has blocked 3000ms. | 发生故障时，应用主线程执行任务超时3s。<br>**说明**：从API版本26.0.0开始支持。|
+| this thread has blocked 3000ms. | 发生线程阻塞故障时，应用线程执行任务超时 3 秒（即 THREAD_BLOCK_3S 阈值）。具体超时时间以日志中实际数值为准（示例中为 3000ms）。<br>**说明**：从API版本26.0.0开始支持。|
 
 EventHandler信息，具体解释如下：
 
