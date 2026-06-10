@@ -1000,6 +1000,92 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 
    ArkTS-Dyn示例：
    <!-- @[FormEditUIAbilitySta_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/common/PreferencesUtil.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/common/PreferencesUtil.ets
+   import preferences from '@ohos.data.preferences';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = 'PreferencesUtil';
+   const MY_STORE: string = 'myStore';
+   const key: string = 'formID';
+   const DOMAIN = 0x0000;
+   
+   export class PreferencesUtil {
+     private static preferencesUtil: PreferencesUtil | null = null;
+   
+     public static getInstance(): PreferencesUtil {
+       if (!PreferencesUtil.preferencesUtil) {
+         PreferencesUtil.preferencesUtil = new PreferencesUtil();
+       }
+       return PreferencesUtil.preferencesUtil!;
+     }
+   
+     getPreferences(context: common.Context): preferences.Preferences | undefined {
+       try {
+         preferences.removePreferencesFromCacheSync(context, MY_STORE);
+         return preferences.getPreferencesSync(context, { name: MY_STORE });
+       } catch (error) {
+         let err = error as BusinessError;
+         hilog.error(DOMAIN, TAG, `getPreferences failed. code: ${error?.code}, message: ${error?.message}`);
+         return undefined;
+       }
+     }
+   
+     preferencesFlush(preferences: preferences.Preferences) {
+       preferences.flushSync();
+     }
+   
+     preferencesPut(preferences: preferences.Preferences, formID: string): void {
+       try {
+         preferences.putSync(key, formID);
+         preferences.flushSync();
+       } catch (error) {
+         let err = error as BusinessError;
+         hilog.error(DOMAIN, TAG, `preferencesPut failed. code: ${error?.code}, message: ${error?.message}`);
+       }
+     }
+   
+     removePreferencesFromCache(context: common.Context): void {
+       preferences.removePreferencesFromCache(context, MY_STORE).catch((err) => {
+         hilog.error(DOMAIN, TAG, `removePreferencesFromCache failed. code: ${err?.code}, message: ${err?.message}`);
+       });
+     }
+   
+     getValue(preferences: preferences.Preferences): string | undefined {
+       if (preferences === null) {
+         hilog.error(DOMAIN, TAG, `preferences is null`);
+         return undefined;
+       }
+       try {
+         return preferences.getSync(key, '') as string
+       } catch (error) {
+         let err = error as BusinessError;
+         hilog.error(DOMAIN, TAG, `getSync failed. code: ${error?.code}, message: ${error?.message}`);
+         return undefined;
+       }
+     }
+   
+     removeFormId(context: common.Context) {
+       try {
+         let preferences = this.getPreferences(context);
+         if (!preferences) {
+           hilog.error(DOMAIN, TAG, `preferences is null`);
+           return;
+         }
+         if (preferences.hasSync(key)) {
+           preferences.deleteSync(key);
+           preferences.flushSync();
+           hilog.info(DOMAIN, TAG, `deleteSync done.`)
+         }
+       } catch (error) {
+         hilog.error(DOMAIN, TAG, `Failed to get preferences. code: ${error?.code}, message: ${error?.message}`);
+       }
+     }
+   }
+   ```
 
 5. 资源文件如下。
    ```json5
