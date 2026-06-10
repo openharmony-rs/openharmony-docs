@@ -80,7 +80,7 @@ isDLPFile(fd: number): Promise&lt;boolean&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| fd | number | 是 | 待查询文件的fd（文件描述符）。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，抛出错误码19100001；当fd大于2<sup>31</sup>-1时，fd的值被截断。|
+| fd | number | 是 | 待查询文件的fd（文件描述符）。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，抛出错误码19100001；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
 
 **返回值：**
 | 类型 | 说明 |
@@ -131,7 +131,7 @@ isDLPFile(fd: number, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| fd | number | 是 | 待查询文件的fd（文件描述符）。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，当fd小于0时，抛出错误码19100001；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
+| fd | number | 是 | 待查询文件的fd（文件描述符）。取值范围为[0, 2<sup>31</sup>-1]。当fd小于0时，抛出错误码19100001；当fd大于2<sup>31</sup>-1时，fd的值被截断。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数，用于接收查询结果。回调参数包括：err（错误对象，查询成功时为undefined）和res（查询结果，返回true表示是DLP文件，返回false表示非DLP文件）。 |
 
 **错误码：**
@@ -264,7 +264,7 @@ getOriginalFileName(fileName: string): string
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| fileName | string | 是 | 指定要查询的DLP文件名。长度范围[1, 255]字节，超出此范围抛出错误码19100001。 |
+| fileName | string | 是 | 指定要查询的DLP文件名。长度不超过255字节，超出此范围抛出错误码19100001。 |
 
 **返回值：**
 
@@ -1016,7 +1016,7 @@ setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| configInfo | string | 是 | 沙箱应用配置信息。长度范围[0, 4194304)字节，超出此范围抛出错误码19100001。 |
+| configInfo | string | 是 | 沙箱应用配置信息。长度不超过2<sup>22</sup>-1字节，超出此范围抛出错误码19100001。 |
 
 **返回值：**
 
@@ -1285,7 +1285,7 @@ DLP文件授权类型的枚举。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | 否 | 否 | 表示DLP文件针对用户的授权类型，例如：只读。 |
-| flags | number | 否 | 否 | 表示DLP文件的详细操作权限，取值范围由不同[ActionFlagType](#actionflagtype)的组合决定，超出此范围抛出错误码19100001。 |
+| flags | number | 否 | 否 | 表示DLP文件的详细操作权限，取值范围由不同[ActionFlagType](#actionflagtype)的组合决定。 |
 
 ## AccessedDLPFileInfo
 
@@ -1295,8 +1295,8 @@ DLP文件授权类型的枚举。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| uri | string | 否 | 否 | 表示DLP文件的uri。不超过4095字节，超出此范围抛出错误码19100001。 |
-| lastOpenTime | number | 否 | 否 | 表示DLP文件最近打开时间。取值范围大于等于0。单位：s。 |
+| uri | string | 否 | 否 | 表示DLP文件的uri。不超过4095字节。 |
+| lastOpenTime | number | 否 | 否 | 表示DLP文件最近打开时间。单位：s。 |
 
 ## DLPManagerResult<sup>11+</sup>
 
@@ -1320,8 +1320,8 @@ DLP文件授权类型的枚举。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | appIndex | number | 否 | 否 | 表示DLP沙箱应用索引。取值范围为1001到1100。 |
-| bundleName | string | 否 | 否 | 表示应用包名。最小7字节，最大128字节，超出此范围抛出错误码19100001。 |
-| docUris | Array&lt;string&gt; | 否 | 否 | 表示DLP文件的URI列表。不对Array长度进行限制，每个string长度不超过4095字节，超出此范围抛出错误码19100001。 |
+| bundleName | string | 否 | 否 | 表示应用包名。最小7字节，最大128字节。 |
+| docUris | Array&lt;string&gt; | 否 | 否 | 表示DLP文件的URI列表。不对Array长度进行限制，每个string长度不超过4095字节。 |
 
 ## EnterprisePolicy<sup>21+</sup>
 
@@ -1331,7 +1331,7 @@ DLP文件授权类型的枚举。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| policyString | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度范围[0, 4194304]字节，超出此范围抛出错误码19100001。 |
+| policyString | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度不超过2<sup>22</sup>字节，超出此范围抛出错误码19100001。 |
 
 ## dlpPermission.generateDlpFileForEnterprise<sup>21+</sup>
 
@@ -1586,7 +1586,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| enterprise | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度范围[0, 4194304]字节，超出此范围抛出错误码19100001。 |
+| enterprise | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度不超过2<sup>22</sup>字节，超出此范围抛出错误码19100001。 |
 | options | [DlpFileQueryOptions](#dlpfilequeryoptions) | 否 | 是 | 企业DLP文件的查询选项，默认为空。**起始版本**：26.0.0**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DLPProperty<sup>21+</sup>
@@ -1598,19 +1598,19 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ownerAccount | string | 否 | 否 | 表示权限设置者账号。长度范围[1, 255]字节，超出此范围抛出错误码19100001。 |
-| ownerAccountID | string | 否 | 否 | 表示权限设置者账号的ID。不超过255字节，超出此范围抛出错误码19100001。 |
+| ownerAccount | string | 否 | 否 | 表示权限设置者账号。长度不超过255字节，超出此范围抛出错误码19100001。 |
+| ownerAccountID | string | 否 | 否 | 表示权限设置者账号的ID。长度不超过255字节，超出此范围抛出错误码19100001。 |
 | ownerAccountType | [AccountType](#accounttype21) | 否 | 否 | 表示权限设置者账号类型。 |
 | authUserList | Array&lt;[AuthUser](#authuser21)&gt; | 否 | 是 | 表示授权用户列表，默认为空。 |
-| contactAccount | string | 否 | 否 | 表示联系人账号。长度范围[1, 255]字节，超出此范围抛出错误码19100001。 |
+| contactAccount | string | 否 | 否 | 表示联系人账号。长度不超过255字节，超出此范围抛出错误码19100001。 |
 | offlineAccess | boolean | 否 | 否 | 表示是否是离线打开。true表示允许离线打开，false表示不可离线打开。 |
 | everyoneAccessList | Array&lt;[DLPFileAccess](#dlpfileaccess)&gt; | 否 | 是 | 表示授予所有人的权限，默认为空。 |
 | expireTime | number | 否 | 是 | 表示文件权限到期时间戳，默认为空。取值范围大于等于0，超出此范围抛出错误码。单位：s。 |
 | actionUponExpiry | [ActionType](#actiontype21) | 否 | 是 | 表示到期后文件是否允许打开（打开后拥有编辑权限），仅在expireTime不为空时生效，默认为空。 |
-| fileId | string | 否 | 是 | 表示文件的标识，默认为空。不超过255字节，超出此范围抛出错误码19100001。 |
-| allowedOpenCount | number | 否 | 是 | 表示允许打开的次数，默认为空。取值范围大于等于0，超出此范围抛出错误码19100001。 |
+| fileId | string | 否 | 是 | 表示文件的标识，默认为空。长度不超过255字节，超出此范围抛出错误码19100001。 |
+| allowedOpenCount | number | 否 | 是 | 表示允许打开的次数，默认为0。无范围限制。 |
 | waterMarkConfig<sup>23+</sup> | boolean | 否 | 是 | 表示是否要求添加水印。true表示要求添加水印，false表示不要求添加水印，默认为空。 |
-| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为空，单位：秒。取值范围大于等于0，超出此范围抛出错误码19100001。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，默认为0，单位：秒。取值范围大于等于0。无范围限制。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 | extensionFields<sup>24+</sup> | Record<string, Object> | 否 | 是 | 表示DLP文件的扩展属性，默认为空。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## AuthUser<sup>21+</sup>
@@ -1624,7 +1624,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 | authAccount | string | 否 | 否 | 表示被授权用户账号。不超过255字节，超出此范围抛出错误码19100001。 |
 | authAccountType | [AccountType](#accounttype21) | 否 | 否 | 表示被授权用户账号类型。 |
 | dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | 否 | 否 | 表示被授予的权限。 |
-| permExpiryTime | number | 否 | 否 | 表示授权到期时间。取值范围大于等于0，超出此范围抛出错误码19100001。单位：s。 |
+| permExpiryTime | number | 否 | 否 | 表示授权到期时间。取值范围大于等于0，超出此范围将被强转为非符号整数。单位：s。 |
 
 ## DlpConnPlugin<sup>21+</sup>
 
@@ -1831,7 +1831,7 @@ dlpPermission.DlpConnManager.unregisterPlugin();
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| classificationLabel | string | 否 | 是 | 表示企业DLP文件的用户定义分类标签。最大长度为255字节，超出此范围抛出错误码19100001。 |
+| classificationLabel | string | 否 | 是 | 表示企业DLP文件的用户定义分类标签。默认为空。最大长度为255字节，超出此范围抛出错误码19100001。 |
 
 ## dlpPermission.queryOpenedEnterpriseDlpFiles
 
