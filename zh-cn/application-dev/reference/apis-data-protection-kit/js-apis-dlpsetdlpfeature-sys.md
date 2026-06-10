@@ -63,7 +63,7 @@ setDlpFeature(status: DlpFeatureStatus): Promise&lt;StatusInfoResult&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[StatusInfoResult](#statusinforesult)&gt; | Promise对象，返回DLP特性开关状态设置的结果信息。成功时返回[StatusInfoResult](#statusinforesult)对象，失败时抛出19100001错误码。 |
+| Promise&lt;[StatusInfoResult](#statusinforesult)&gt; | Promise对象。设置DLP特性开关状态，返回DLP特性开关状态设置的结果信息。  |
 
 **错误码：**
 
