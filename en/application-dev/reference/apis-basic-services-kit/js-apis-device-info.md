@@ -33,7 +33,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 | Name| Type| Read-Only| Description|
 | -------- | -------- | -------- | -------- |
-| deviceType | string | Yes | Device type. For details, see [deviceTypes tag](../../quick-start/module-configuration-file.md#devicetypes-tag).<br/>**Atomic service API**: This API can be used in atomic services since API version 11.<br/>Example: <!--RP1-->wearable<!--RP1End-->|
+| deviceType | string | Yes | Device type. For details, see [deviceTypes](../../quick-start/module-configuration-file.md#devicetypes).<br/>**Atomic service API**: This API can be used in atomic services since API version 11.<br/>Example: <!--RP1-->wearable<!--RP1End-->|
 | manufacture | string | Yes| Device manufacturer.<br>Example: HUAWEI|
 | brand | string | Yes | Device brand.<br/>**Atomic service API**: This API can be used in atomic services since API version 11.<br/>Example: HUAWEI |
 | marketName | string | Yes| Marketing name.<br>Example: <!--RP2-->Mate XX<!--RP2End--> |

@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 <!-- md-trans-meta sourceCommit=d0c7a5fb2bc1f1b1c7630c4a5886ec88f6136925 translatedAt=2026-06-09T10:29:46.568Z pushedAt=2026-06-10T01:59:42.697Z -->
 
-As the base class of the peripheral interconnection extension capability, **PartnerAgentExtensionAbility** provides the device discovery and device offline notification features. This class needs to be inherited by the application. The **type** attribute of [extensionabilities](../../quick-start/module-configuration-file.md#extensionabilities-tag) in the module-level configuration file [module.json5](../../quick-start/module-configuration-file.md) must be set to **partnerAgent**.
+As the base class of the peripheral interconnection extension capability, **PartnerAgentExtensionAbility** provides the device discovery and device offline notification features. This class needs to be inherited by the application. The **type** attribute of [extensionabilities](../../quick-start/module-configuration-file.md#extensionabilities) in the module-level configuration file [module.json5](../../quick-start/module-configuration-file.md) must be set to **partnerAgent**.
 
 > **NOTE**
 >
