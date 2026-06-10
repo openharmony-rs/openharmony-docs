@@ -149,7 +149,7 @@ async function getHighResolutionAsset(
 
 **示例（ArkTS）：**
 
-解决获取图片格式异常问题，获取真实MIMEType。 
+解决获取图片格式异常问题，获取真实MIMEType。
 
 ```typescript
 import { image } from '@kit.ImageKit';
