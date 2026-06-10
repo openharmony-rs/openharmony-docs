@@ -79,7 +79,7 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
           console.info('Succeeded in getting permission');
           calendarMgr = calendarManager.getCalendarManager(mContext);
         }).catch((error: BusinessError) => {
-          console.error('get Permission error, Cause: %{public}s', JSON.stringify(error));
+          console.error('Failed to get permission. Cause: %{public}s', JSON.stringify(error));
         })
       }
     
