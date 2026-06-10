@@ -853,6 +853,92 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 
    ArkTS-Sta示例：
    <!-- @[FormEditUIAbilitySta_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/pages/FormEditIndex.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/pages/FormEditIndex.ets
+   import { formBindingData, formProvider } from '@kit.FormKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { PreferencesUtil } from '../common/PreferencesUtil';
+   import preferences from '@ohos.data.preferences';
+   import hilog from '@ohos.hilog';
+   import {
+     Entry,
+     Column,
+     Component,
+     Button,
+     Row,
+     $r,
+     FlexAlign,
+     ButtonType
+   } from '@ohos.arkui.component';
+   import { State } from '@ohos.arkui.stateManagement';
+   import { common } from '@kit.AbilityKit';
+   
+   const TAG: string = 'FormEditIndex';
+   const DOMAIN = 0x0000;
+   
+   @Entry
+   @Component
+   struct FormEditIndex {
+     @State message: string = 'Hello World';
+     @State message1: string = '北京';
+     @State message2: string = '上海';
+   
+     updateForm(message: string) {
+       // 通过数据库获取当前需要编辑的卡片ID
+       let util = PreferencesUtil.getInstance();
+       let preferences =
+         util.getPreferences(this.getUIContext().getHostContext() as common.Context) as preferences.Preferences;
+       let formId: string = util.getValue(preferences) as string;
+       if (!formId) {
+         return;
+       }
+       hilog.info(DOMAIN, TAG, `formId: ${formId}, message: ${message}`)
+       let param: Record<string, string> = {
+         'message': message
+       }
+       let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+       try {
+         formProvider.updateForm(formId, obj, (error) => {
+           if (error) {
+             hilog.error(DOMAIN, TAG, `callback error. code: ${error?.code}, message: ${error?.message}`);
+             return;
+           }
+           hilog.info(DOMAIN, TAG, `formProvider updateForm success`);
+         });
+       } catch (error) {
+         hilog.error(DOMAIN, TAG, `catch error. code: ${error?.code}, message: ${error?.message}`);
+       }
+     }
+   
+     build() {
+       Row() {
+         Column() {
+           Button($r('app.string.button_one'))
+             .width('80%')
+             .type(ButtonType.Capsule)
+             .margin({
+               top: 20
+             })
+             .onClick(() => {
+               this.updateForm(this.message1);
+             })
+           Button($r('app.string.button_two'))
+             .width('80%')
+             .type(ButtonType.Capsule)
+             .margin({
+               top: 20
+             })
+             .onClick(() => {
+               this.updateForm(this.message2);
+             })
+         }
+       }
+       .justifyContent(FlexAlign.Center)
+       .width('100%')
+     }
+   }
+   ```
 
    - 加载全屏编辑页布局文件。
    ```json5
