@@ -683,7 +683,7 @@ setContentAutoRotation(enable: boolean): Promise\<void>
 
 > **说明：**
 >
-> - 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用setContentAutoRotation接口。
+> 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用此接口。
 
 **起始版本：** 26.0.0
 
