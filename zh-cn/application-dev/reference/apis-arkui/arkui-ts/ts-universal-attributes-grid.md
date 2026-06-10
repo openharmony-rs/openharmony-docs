@@ -119,7 +119,7 @@ struct GridContainerExample1 {
 
 **图2** 设备宽度为MD
 
-![zh-cn_image_0000001219744207](figures/zh-cn_image_0000001219744207.png)
+![MD](figures/MD.png)
 
 **图3** 设备宽度为LG
 

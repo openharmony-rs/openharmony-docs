@@ -192,4 +192,4 @@ struct DisplayPriorityExample {
 
 Landscape display in containers of different sizes
 
-![en-us_image_0000001212058504](figures/en-us_image_0000001212058504.gif)
+![displayPriority](figures/displayPriority.gif)

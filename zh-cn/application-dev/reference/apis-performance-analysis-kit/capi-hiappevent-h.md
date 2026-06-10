@@ -156,9 +156,9 @@ enum OH_HiAppEvent_FrameworkType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_FLUTTER_DART | Flutter_dart类型。 |
-| OH_REACT_NATIVE_HERMES | React_native_hermes类型。 |
-| OH_KMP_KOTLIN | Kmp_kotlin类型。 |
+| OH_FLUTTER_DART = 0 | Flutter_dart类型。 |
+| OH_REACT_NATIVE_HERMES = 1 | React_native_hermes类型。 |
+| OH_KMP_KOTLIN = 2 | Kmp_kotlin类型。 |
 
 ## 函数说明
 

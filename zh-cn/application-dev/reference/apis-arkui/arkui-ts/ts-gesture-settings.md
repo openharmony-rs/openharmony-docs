@@ -208,7 +208,7 @@ struct GestureSettingsExample {
 }
 ```
 
-![parallelGesture](figures/parallelGesture.gif)
+![gestureBinding1](figures/gestureBinding1.gif)
 
 ### 示例2（实时监测参与滑动手势的有效触点数量）
 

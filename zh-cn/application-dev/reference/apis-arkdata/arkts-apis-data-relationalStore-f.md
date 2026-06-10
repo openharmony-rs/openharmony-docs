@@ -46,7 +46,7 @@ getRdbStore支持多线程并发操作。
 | -------- | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                        | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config   | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)               | 是   | 与此RDB存储相关的数据库配置。                                |
-| callback | AsyncCallback&lt;[RdbStore](arkts-apis-data-relationalStore-RdbStore.md)&gt; | 是   | 指定callback回调函数，返回RdbStore对象。                   |
+| callback | AsyncCallback&lt;[RdbStore](arkts-apis-data-relationalStore-RdbStore.md)&gt; | 是   | 回调函数。当获取RdbStore成功，err为undefined，data为RdbStore对象；否则为错误对象。                   |
 
 **错误码：**
 
@@ -342,8 +342,8 @@ deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&g
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                   | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| name     | string                    | 是   | 数据库名称。                                                 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 指定callback回调函数。                                       |
+| name     | string                    | 是   | 数据库名称，不能为空字符串且不能包含路径分隔符/。                                                 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当删除数据库成功，err为undefined，否则为错误对象。                                       |
 
 **错误码：**
 
@@ -503,13 +503,13 @@ deleteRdbStore(context: Context, name: string): Promise&lt;void&gt;
 | 参数名  | 类型    | 必填 | 说明                                                         |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
 | context | Context | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| name    | string  | 是   | 数据库名称。                                                 |
+| name    | string  | 是   | 数据库名称，不能为空字符串且不能包含路径分隔符/。                                                 |
 
 **返回值**：
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -585,7 +585,7 @@ deleteRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback\<v
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                     | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config   | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | 是   | 与此RDB存储相关的数据库配置。                                |
-| callback | AsyncCallback&lt;void&gt;   | 是   | 指定callback回调函数。                                       |
+| callback | AsyncCallback&lt;void&gt;   | 是   | 回调函数。当删除数据库成功，err为undefined，否则为错误对象。                                       |
 
 **错误码：**
 
@@ -679,7 +679,7 @@ deleteRdbStore(context: Context, config: StoreConfig): Promise\<void>
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -862,7 +862,7 @@ getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolut
 
 | 参数名  | 类型                  | 必填 | 说明                                                         |
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
-| table | string              | 是   | 要写入数据的数据库表名。 |
+| table | string              | 是   | 要写入数据的数据库表名，不能为空字符串。 |
 | values | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | 是 | 要写入数据库中数据的字段信息以及对应的值信息。 |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | 否 |指定冲突解决模式。默认值是relationalStore.ConflictResolution.ON_CONFLICT_NONE。 |
 

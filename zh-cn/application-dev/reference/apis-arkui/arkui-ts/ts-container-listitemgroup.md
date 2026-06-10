@@ -350,7 +350,7 @@ struct ListItemGroupExample {
 }
 ```
 
-![zh-cn_image_0000001219864159](figures/zh-cn_image_listitemgroup.gif)
+![zh-cn_image_0000001219864159](figures/image-listitemgroup.gif)
 
 ### 示例2（设置卡片样式）
 
@@ -550,7 +550,7 @@ struct ListItemGroupExample {
 }
 ```
 
-![zh-cn_image_listitemgroup_example03](figures/zh-cn_image_listitemgroup_example03.gif)
+![zh-cn_image_listitemgroup_example03](figures/image-listitemgroup-example03.gif)
 
 ### 示例4（设置多列布局）
 

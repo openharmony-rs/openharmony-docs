@@ -262,7 +262,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001118642902](figures/en-us_image_0000001118642902.png)
+![en-us_image_0000001118642902](figures/Matrix4-combine.png)
 
 
 ### invert
@@ -357,7 +357,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001219662645](figures/en-us_image_0000001219662645.png)
+![en-us_image_0000001219662645](figures/Matrix4-translate.png)
 
 
 ### scale
@@ -411,7 +411,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001219864131](figures/en-us_image_0000001219864131.png)
+![en-us_image_0000001219864131](figures/Matrix4-scale.png)
 
 
 ### skew<sup>12+</sup>
@@ -463,7 +463,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001219864132](figures/en-us_image_0000001219864132.jpeg)
+![en-us_image_0000001219864132](figures/Matrix4-skew.jpeg)
 
 
 ### rotate
@@ -516,7 +516,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001174422898](figures/en-us_image_0000001174422898.png)
+![en-us_image_0000001174422898](figures/Matrix4-rotate.png)
 
 
 ### transformPoint
@@ -578,7 +578,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001219864133](figures/en-us_image_0000001219864133.PNG)
+![en-us_image_0000001219864133](figures/Matrix4-Matrix4.PNG)
 
 ### setPolyToPoly<sup>12+</sup>
 
@@ -761,7 +761,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001219744181](figures/en-us_image_0000001219744181.png)
+![en-us_image_0000001219744181](figures/Matrix4-copy.png)
 
 ## matrix4.invert<sup>(deprecated)</sup>
 

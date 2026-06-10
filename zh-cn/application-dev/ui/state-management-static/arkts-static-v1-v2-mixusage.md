@@ -159,12 +159,17 @@ struct CompV1 {
   build() {
     Column() {
       Text(`@State commonObject: ${this.commonObject.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('Change object in V1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.commonObject.name += '!'; // 非Observed/ObservedV2类，组件不刷新
         })
       CompV2({ commonObject: this.commonObject })
     }
+    .width('100%')
   }
 }
 
@@ -176,15 +181,21 @@ struct CompV2 {
     Column() {
       // 非Observed/ObservedV2类，观察不到变化
       Text(`@Param commonObject: ${this.commonObject.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('Change object in V2')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.commonObject.name += '!'; // 非Observed/ObservedV2类，组件不刷新
         })
     }
+    .width('100%')
   }
 }
 ```
 
+![mix-common-v1-to-v2](../figures/v1-v2-mixusage_9.gif)
 
 **V2->V1**
 
@@ -204,13 +215,18 @@ struct CompV2 {
   build() {
     Column() {
       Text(`@Local commonObject: ${this.commonObject.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('Change object in V2')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.commonObject.name += '!'; // 非Observed/ObservedV2类，组件不刷新
         })
       // @ObjectLink可接收@Observed装饰class的实例
       CompV1({ commonObject: this.commonObject })
     }
+    .width('100%')
   }
 }
 
@@ -222,15 +238,21 @@ struct CompV1 {
     Column() {
       // 非Observed/ObservedV2类，观察不到变化
       Text(`@ObjectLink commonObject: ${this.commonObject.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('Change object in V1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.commonObject.name += '!'; // 非Observed/ObservedV2类，组件不刷新
         })
     }
+    .width('100%')
   }
 }
 ```
 
+![mix-common-v2-to-v1](../figures/v1-v2-mixusage_10.gif)
 
 ### \@Observed装饰的class
 **V1->V2**

@@ -3016,7 +3016,7 @@ Resets the current transform to the identity matrix.
     }
   }
   ```
-  ![en-us_image_0000001239032417](figures/en-us_image_ResetTransform.png)
+  ![en-us_image_0000001239032417](figures/image-ResetTransform.png)
 
 ### rotate
 
