@@ -394,4 +394,99 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 <!-- @[update_by_formhost](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormStaticRefresh/entry/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+// entry/src/main/ets/pages/Index.ets
+
+import { Entry, Text, Column, ColumnOptions, Component, Button, ClickEvent } from '@ohos.arkui.component';
+import { Tabs, TabContent, Color, FlexAlign } from '@ohos.arkui.component';
+import { FormComponent, FormInfo, FormDimension, FormCallbackInfo, $r } from '@ohos.arkui.component';
+import { formProvider, formHost } from '@kit.FormKit';
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const TAG: string = 'EntryFormAbility';
+const DOMAIN_NUMBER: int = 0xFF00;
+
+@Entry
+@Component
+struct Index {
+  @State formId: string = '0';
+
+  @Builder
+  buildFormHostUpdate() {
+    Column() {
+      Text('FormHostUpdate')
+      FormComponent({
+        id: 0,
+        name: 'WidgetCard',
+        bundle: 'com.samples.formstaticrefresh', // 请开发者替换为实际的bundlename
+        ability: 'EntryFormAbility',
+        module: 'entry',
+        dimension: FormDimension.Dimension_2_2,
+        temporary: false,
+      } as FormInfo)
+        .size({
+          width: 200,
+          height: 200,
+        })
+        .borderColor(Color.Black)
+        .borderRadius(10)
+        .borderWidth(1)
+        .onAcquired((form: FormCallbackInfo) => {
+          hilog.info(DOMAIN_NUMBER, TAG, `onAcquired: ${form.id}`)
+          this.formId = form.id.toString();
+        })
+        .onRouter(() => {
+          hilog.info(DOMAIN_NUMBER, TAG, `onRouter`)
+        })
+        .onError((error) => {
+          hilog.error(DOMAIN_NUMBER, TAG, `onError: code: ${error?.errcode}, message: ${error?.msg}`)
+        })
+      // ...
+      Button($r('app.string.button_update'))
+        .onClick((e: ClickEvent) => {
+          hilog.info(DOMAIN_NUMBER, TAG, `click to check requestForm, formId: ${this.formId}`);
+          // formId需要为实际需要刷新的卡片ID
+          if (this.formId != null) {
+            formHost.requestForm(this.formId).then(() => {
+              hilog.info(DOMAIN_NUMBER, TAG, 'EntryFormAbility requestForm success.');
+            }).catch((error) => {
+              hilog.error(DOMAIN_NUMBER, TAG,
+                `EntryFormAbility requestForm fail, code: ${error?.code}, message: ${error?.message}`);
+              hilog.error(DOMAIN_NUMBER, TAG, `EntryFormAbility requestForm fail, code: ${this.formId}`);
+            })
+          }
+        })
+        .margin(5)
+        .width('50%')
+    }
+    .width('100%')
+  }
+
+
+  // ...
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          this.buildFormProviderUpdate()
+        }.tabBar('formProvider').id('formProvider')
+
+        TabContent() {
+          this.buildFormHostUpdate()
+        }.tabBar('formHost').id('formHost')
+      }
+      .width(360)
+      .height(400)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId')
+    }.width('100%')
+  }
+}
+
+```
+
 <!--DelEnd-->
