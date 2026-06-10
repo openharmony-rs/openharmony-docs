@@ -151,7 +151,7 @@ class User {
   }
 
   constructor() {
-    // 正确用法，给a注册监听函数onChange1，没有设置options默认为异步监听回调
+    // 正确用法，给age注册监听函数onChange1，没有设置options默认为异步监听回调
     UIUtils.addMonitor(this, 'age', this.onChange1);
     // 错误用法，不能改变this.onChange1的监听回调的方式
     // 打印错误日志提示： FIX THIS APPLICATION ERROR: addMonitor failed, current function onChange1 has already register as async, cannot change to sync anymore
