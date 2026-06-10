@@ -869,7 +869,7 @@ The following describes the implementation of the pull-and-refresh feature:
 <!--RP1--><!--RP1End-->
 
 <!--Del-->
- You can also use the third-party component [PullToRefresh](https://gitcode.com/openharmony-sig/ohos_pull_to_refresh) to implement this feature.<!--DelEnd-->
+ You can also use the third-party component [PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh) to implement this feature.<!--DelEnd-->
 
 
 ## Editing a List

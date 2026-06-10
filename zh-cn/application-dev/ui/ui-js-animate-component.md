@@ -58,7 +58,7 @@ export default {
         ];
     },
     Show() {
-        this.animation = this.$element('content').animate(this.frames, this.options); //获取动画对象
+        this.animation = this.$element('content').animate(this.frames, this.options); // 获取动画对象
         this.animation.play();
     }
 }
