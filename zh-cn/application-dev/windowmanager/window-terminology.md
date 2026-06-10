@@ -18,13 +18,21 @@
 
   相关参考：[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)、[智慧多窗最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-window-practice)。
 
-- 全局悬浮窗是指一种特殊的应用辅助窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。
+- 全局悬浮窗是指一种特殊的应用辅助窗口，具备在应用主窗口和对应UIAbility退至后台后仍然可以在前台显示的能力。
 
   全局悬浮窗可以用于应用退至后台后，使用小窗继续显示UI，例如音乐应用用于显示桌面歌词等。
 
   应用在创建全局悬浮窗前，需要申请对应的权限。
   
   相关参考：[全局悬浮窗开发指导](global-floating-window-guide.md)。
+
+- 标准悬浮窗是指一种由系统管理并统一绘制UI的特殊应用辅助窗口，具备在应用主窗口和对应UIAbility退至后台后仍然可以在前台显示的能力。
+
+  标准悬浮窗由系统统一管理UI和动效，支持与[闪控球](../reference/apis-arkui/js-apis-floatingBall.md)绑定联合使用，用户点击闪控球可展开为标准悬浮窗，点击标准悬浮窗左上角的缩小按钮可收起为闪控球，实现两种窗口形态的相互切换。标准悬浮窗适用于需要在独立小窗口中持续展示应用内容或提供快捷操作的场景，例如股市盯盘应用实时查看股票行情变化，或手机直播应用展示自定义的互动面板和控制界面。
+
+  应用在创建标准悬浮窗前，需要申请对应的权限。
+
+  相关参考：<!--RP1-->[@ohos.window.floatView (标准悬浮窗)](../reference/apis-arkui/js-apis-floatView.md)<!--RP1End-->。
 
 ### Free Multi-Window Mode；自由多窗模式
 
