@@ -33,7 +33,7 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
-2. 获取指定网卡流量数据
+2. 获取指定网卡流量数据。
 
    分别调用[getIfaceRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetifacerxbytes-1)和[getIfaceTxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetifacetxbytes-1)接口传入网卡名获取指定网卡从最近一次开机至今的下行和上行流量数据。
 
@@ -126,7 +126,7 @@
    })
    // ...
    ```
-6. 获取指定socket流量数据
+6. 获取指定socket流量数据。
 
     分别调用[getSockfdRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetsockfdrxbytes11-1)接口和[getSockfdTxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetsockfdtxbytes11-1)，传入socket fd获取指定socket的下行和上行流量数据。
 
