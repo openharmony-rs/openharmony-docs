@@ -36,7 +36,7 @@ WebContextMenuParam的构造函数。
 
 x(): number
 
-弹出菜单的x坐标。
+弹出菜单的x坐标，相对于Web组件左上角的水平距离。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -50,7 +50,7 @@ x(): number
 
 y(): number
 
-弹出菜单的y坐标。
+弹出菜单的y坐标，相对于Web组件左上角的垂直距离。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

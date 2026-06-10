@@ -60,7 +60,7 @@ Web组件使用HTTPDNS的模式。
 
 ## MediaPlaybackState<sup>12+</sup>
 
-当前网页的播控状态。
+当前网页的播放控制状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
