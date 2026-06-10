@@ -238,7 +238,7 @@ DLP相关的系统服务无法正常运行，导致相关功能不可用。
 
 1. DLP权限服务无法正常启动。
 
-2. DLP权限服务的RPC（远程过程调用， Remote Procedure Call）对象无法获取。
+2. DLP权限服务的RPC（远程过程调用，Remote Procedure Call）对象无法获取。
 
 3. DLP权限服务依赖的其他服务无法正常启动。
 
