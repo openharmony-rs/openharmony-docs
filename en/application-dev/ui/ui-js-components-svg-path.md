@@ -33,7 +33,7 @@ The [\<svg>](../reference/apis-arkui/arkui-js/js-components-svg.md) component us
 ```
 
 
-![en-us_image_0000001181511962](figures/en-us_image_0000001181511962.png)
+![Path-Drawing](figures/Path-Drawing.png)
 
 
 > **Note:**
