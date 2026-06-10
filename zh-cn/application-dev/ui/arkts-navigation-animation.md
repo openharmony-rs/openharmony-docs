@@ -37,10 +37,11 @@
 
   ArkTS-Sta示例：
 
-  ```ts
-  import { NavPathStack } from '@kit.ArkUI';
-
+  <!-- @[PageAnimated](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/PageAnimated.ets) -->
+  
+  ``` TypeScript
   pageStack: NavPathStack = new NavPathStack();
+  
   aboutToAppear(): void {
     this.pageStack.disableAnimation(true);
   }
@@ -62,7 +63,7 @@ Navigation提供了两种自定义转场接口：Navigation自定义转场、Nav
 
 - NavDestination支持自定义转场动画，适用于控制单个页面的转场效果。通过设置[customTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15)属性即可实现单个页面的自定义转场效果。步骤如下，示例代码请参考[设置NavDestination自定义转场](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例2设置navdestination自定义转场)。
 
-  1. 实现[NavDestination的转场代理](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationtransitiondelegate15)，针对不同的堆栈操作类型返回自定义的转场协议对象[NavDestinationTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationtransition15)。其中，event是必填参数，需在此处实现自定义转场动画的逻辑，onTransitionEnd、duration、curve与delay为可选参数，分别对应动画结束后的回调、动画持续时间、动画曲线类型与开始前的延时。如果在转场代理中返回多个转场协议对象，这些动画效果将逐层叠加。
+  1. 实现[NavDestinationTransitionDelegate](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationtransitiondelegate15)转场代理，针对不同的堆栈操作类型返回自定义的转场协议对象[NavDestinationTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationtransition15)。其中，event是必填参数，需在此处实现自定义转场动画的逻辑，onTransitionEnd、duration、curve与delay为可选参数，分别对应动画结束后的回调、动画持续时间、动画曲线类型与开始前的延时。如果在转场代理中返回多个转场协议对象，这些动画效果将逐层叠加。
   2. 通过调用NavDestination组件的customTransition属性，并传入上述实现的转场代理，完成自定义转场的设置。
 
 > **说明：**
@@ -111,28 +112,33 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
    ArkTS-Sta示例：
 
-    ```ts
+    <!-- @[GeometryTransitionFromPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
+    
+    ``` TypeScript
     // 起始页配置共享元素id
-    import { NavDestination, Column, $r, Image } from '@kit.ArkUI';
     NavDestination() {
       Column() {
         // ...
+        // 请将$r('app.media.startIcon')替换为实际资源文件
         Image($r('app.media.startIcon'))
-        .geometryTransition('sharedId')
-        .width(100)
-        .height(100)
+          .geometryTransition('sharedId')
+          .width(100)
+          .height(100)
       }
-    }
-    .title('FromPage')
+    }.title('FromPage')
+    ```
 
+    <!-- @[GeometryTransitionToPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
+    
+    ``` TypeScript
     // 目的页配置共享元素id
     NavDestination() {
       Column() {
-        // ...
+        // 请将$r('app.media.startIcon')替换为实际资源文件
         Image($r('app.media.startIcon'))
-        .geometryTransition('sharedId')
-        .width(200)
-        .height(200)
+          .geometryTransition('sharedId')
+          .width(200)
+          .height(200)
       }
     }
     .title('ToPage')
@@ -165,20 +171,22 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
    ArkTS-Sta示例：
     
-    ```ts
-    import { NavDestination, Column, Button, ClickEvent } from '@kit.ArkUI';
+    <!-- @[GeometryTransitionFromPageOne](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/GeometryTransition.ets) -->
+    
+    ``` TypeScript
     NavDestination() {
       Column() {
-        Button('跳转目的页')
-        .width('80%')
-        .height(40)
-        .margin(20)
-        .onClick((e: ClickEvent) => {
+        // $r('app.string.ToPage')资源文件中的value值为“跳转到目的页”
+        Button($r('app.string.ToPage'))
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
             this.getUIContext()?.animateTo({ duration: 1000 }, () => {
-              this.pageStack.pushPath({ name: 'ToPage' }, false)
+              this.navPathStack.pushPath(new NavPathInfo('ToPage', undefined), false)
             });
-        })
+          })
+        // ...
       }
-    }
-    .title('FromPage')
+    }.title('FromPage')
     ```
