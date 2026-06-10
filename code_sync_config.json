@@ -55460,5 +55460,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-common-events-smartgesture-event.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case1.ets",
+				"functions":[
+					{
+						"end_line":82,
+						"name":"smartgesture_case1_controller",
+						"start_line":31
+					},
+					{
+						"end_line":129,
+						"name":"smartgesture_case1_button",
+						"start_line":120
+					},
+					{
+						"end_line":70,
+						"name":"smartgesture_case1_proposal",
+						"start_line":17
+					},
+					{
+						"end_line":167,
+						"name":"smartgesture_case1",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case2.ets",
+				"functions":[
+					{
+						"end_line":130,
+						"name":"smartgesture_case2",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case3.ets",
+				"functions":[
+					{
+						"end_line":162,
+						"name":"smartgesture_case3",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/SmartGesture/entry/src/main/ets/pages/Case4.ets",
+				"functions":[
+					{
+						"end_line":178,
+						"name":"smartgesture_case4",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
