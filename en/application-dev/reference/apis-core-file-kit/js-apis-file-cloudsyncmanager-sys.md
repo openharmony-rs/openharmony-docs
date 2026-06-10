@@ -1,12 +1,14 @@
 # @ohos.file.cloudSyncManager (Device-Cloud Sync Management) (System API)
+
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=d21d1cbfb7ea850ec5b69c0f309f5ed8cc8aa9c3 translatedAt=2026-06-10T06:04:59.466Z pushedAt=2026-06-10T10:59:32.493Z -->
 
-The **cloudSyncManager** module provides APIs for managing device-cloud synergy for applications. You can use the APIs to enable or disable device-cloud synergy, change the device-cloud sync switch for an application, notify cloud data changes, and clear or retain cloud files when a cloud account exits.
+This module provides APIs for managing device-cloud sync for applications. You can use the APIs to enable or disable device-cloud sync, change the device-cloud sync switch for an application, notify cloud data changes, clear or retain cloud files when a cloud account exits, and perform full download.
 
 > **NOTE**
 >
@@ -41,13 +43,13 @@ Changes the device-cloud file sync switch for an application. This API uses a pr
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID                    | Error Message       |
+| Error Code                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -84,13 +86,13 @@ Changes the device-cloud file sync switch for an application. This API uses an a
 | accountId | string | Yes  | Account ID.|
 | bundleName | string | Yes  | Bundle name of the application.|
 | status | boolean | Yes  | State of the cloud-device file sync switch to set. The value **true** means to enable this function; the value **false** means the opposite.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result of changing the device-cloud file sync switch for an application. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID                    | Error Message       |
+| Error Code                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -133,13 +135,13 @@ Notifies the device-cloud service that the cloud data of a specific application 
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the application data change in the cloud.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID                    | Error Message       |
+| Error Code                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -175,13 +177,13 @@ Notifies the device-cloud service that the cloud data of a specific application 
 | ---------- | ------ | ---- | ---- |
 | accountId | string | Yes  | Account ID.|
 | bundleName | string | Yes  | Bundle name.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the application data change in the cloud.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result of changing the device-cloud file sync switch for an application. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID                    | Error Message       |
+| Error Code                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -239,13 +241,13 @@ Notifies the device-cloud service of the cloud data change information of a spec
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the application data change in the cloud.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID                    | Error Message       |
+| Error Code                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
@@ -284,13 +286,13 @@ Notifies the device-cloud service of the cloud data change information of a spec
 | ---------- | ------ | ---- | ---- |
 | userId | number | Yes  | User ID.|
 | extraData | ExtraData | Yes  | Represents the cloud data change information.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the application data change in the cloud.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result of changing the device-cloud file sync switch for an application. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| ID                    | Error Message       |
+| Error Code                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
@@ -336,13 +338,13 @@ Enables device-cloud synergy. This API uses a promise to return the result.
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID                    | Error Message       |
+| Error Code                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -359,9 +361,9 @@ let switches: Record<string, boolean> = {
   'com.example.bundleName2': false
 }
 cloudSyncManager.enableCloud(accountId, switches).then(() => {
-  console.error("enableCloud successfully");
+  console.info("enableCloud successfully.");
 }).catch((err: BusinessError) => {
-  console.info("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
 
@@ -383,13 +385,13 @@ Enables device-cloud synergy. This API uses an asynchronous callback to return t
 | ---------- | ------ | ---- | ---- |
 | accountId | string | Yes  | Account ID.|
 | switches | Record<string, boolean> | Yes  | Whether to enable the device-cloud synergy feature. The application bundle name is a string. The switch status is a Boolean value. The value **true** means to enable this function; the value **false** means the opposite.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result of enabling device-cloud sync. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID                    | Error Message       |
+| Error Code                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -436,13 +438,13 @@ Disables device-cloud synergy. This API uses a promise to return the result.
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID                    | Error Message       |
+| Error Code                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -478,13 +480,13 @@ Disables device-cloud synergy. This API uses an asynchronous callback to return 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | accountId | string | Yes  | Account ID.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result of disabling device-cloud sync. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID                    | Error Message       |
+| Error Code                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -541,13 +543,13 @@ Callback used to clear the cloud data locally. This API uses a promise to return
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID                    | Error Message       |
+| Error Code                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -588,13 +590,13 @@ Callback used to clear the cloud data locally. This API uses an asynchronous cal
 | ---------- | ------ | ---- | ---- |
 | accountId | string | Yes  | Account ID.|
 | appActions | Record<string, Action> | Yes  | Action to perform. The bundle name of the application whose data is to be cleared is a string. [Action](#action) specifies the action to perform.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to clear the cloud data locally.|
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to clear the cloud data locally. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID                    | Error Message       |
+| Error Code                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -621,9 +623,9 @@ cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
 
 ## DowngradeDownload<sup>20+</sup>
 
-Represents the downgrade download for cloud data to prevent data loss when Cloud Premium expires.
+Provides the capability of downloading cloud data for applications through full download.
 
-It supports the download of cloud application files.
+It supports the full download of cloud application files.
 
 **System API**: This is a system API.
 
@@ -633,7 +635,7 @@ It supports the download of cloud application files.
 
 constructor(bundleName: string)
 
-A constructor used to create a **DowngradeDownload** instance with a specified bundle name.
+Defines a constructor for creating an instance of the **DowngradeDownload** class with a specified bundle name.
 
 **System API**: This is a system API.
 
@@ -649,9 +651,9 @@ A constructor used to create a **DowngradeDownload** instance with a specified b
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                                                                                                         |
+| Error Code| Error Message                                                                                                                                                                         |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.                                                                                                 |
 | 202      | Permission verification failed, application which is not a system application uses system API.                                                                                    |
@@ -676,7 +678,7 @@ try {
 
 getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 
-Obtains the size and count of files for applications requiring downgrade download, including those stored only locally, only in the cloud, or both locally and in the cloud. This API uses a promise to return the result.
+Obtains the size and count of files for applications requiring full download, including those stored only locally, only in the cloud, or both locally and in the cloud. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -692,9 +694,9 @@ Obtains the size and count of files for applications requiring downgrade downloa
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                                                                                                         |
+| Error Code| Error Message                                                                                                                                                                         |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.                                                                                                 |
 | 202      | Permission verification failed, application which is not a system application uses system API.                                                                                    |
@@ -720,9 +722,9 @@ downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) 
 
 startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
-Starts the downgrade download for the specified application's cloud files. This API uses a promise to return the result.
+Starts the full download for the specified application's cloud files. This API uses a promise to return the result. This API returns the result asynchronously through a callback.
 
-Repeated triggering of a downgrade download task will throw an error (22400006).
+Repeated triggering of a full download task will throw an error (22400006).
 
 **System API**: This is a system API.
 
@@ -734,7 +736,7 @@ Repeated triggering of a downgrade download task will throw an error (22400006).
 
 | Name  | Type                            | Mandatory| Description                                                                               |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------------------------------- |
-| callback | Callback&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt; | Yes  | Callback used to return the download progress. The parameter is **DownloadProgress**, and the return value is **void**.|
+| callback | Callback&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt; | Yes | Callback used to return the download progress. The parameter is **DownloadProgress**, and the return value is **void**. |
 
 **Return value**
 
@@ -744,9 +746,9 @@ Repeated triggering of a downgrade download task will throw an error (22400006).
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                                                                                                         |
+| Error Code| Error Message                                                                                                                                                                         |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.                                                                                                 |
 | 202      | Permission verification failed, application which is not a system application uses system API.                                                                                    |
@@ -782,7 +784,7 @@ downgradeMgr.startDownload(callback).then(() => {
 
 stopDownload(): Promise&lt;void&gt;
 
-Stops the downgrade download task triggered by [startDownload](#startdownload20). This API uses a promise to return the result.
+Stops the full download task triggered by [startDownload](#startdownload20). This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -798,9 +800,9 @@ Stops the downgrade download task triggered by [startDownload](#startdownload20)
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                                                                                                         |
+| Error Code| Error Message                                                                                                                                                                         |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.                                                                                                 |
 | 202      | Permission verification failed, application which is not a system application uses system API.                                                                                    |
@@ -832,7 +834,7 @@ if (needStop) {
 }
 ```
 
-  ## LocalFilePresentStatus<sup>23+</sup>
+## LocalFilePresentStatus<sup>23+</sup>
 
   Specifies a result object that contains the application bundle name and the status information about whether there are files that have not been uploaded to the cloud in the cloud storage space.
 
@@ -840,13 +842,12 @@ if (needStop) {
 
   **System capability**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
-
   | Name| Type| Read-Only| Optional| Description|
   | ---- | ---- | ---- | ---- | ---- |
   | bundleName | string | No| No| Bundle name.|
   | isLocalFilePresent | boolean | No| No| Whether there are local files that have not been synchronized to the cloud in the cloud storage space of the application. The value **true** indicates that such file exists, and the value **false** indicates the opposite.|
 
-  ## cloudSyncManager.getBundlesLocalFilePresentStatus<sup>23+</sup>
+## cloudSyncManager.getBundlesLocalFilePresentStatus<sup>23+</sup>
 
   getBundlesLocalFilePresentStatus(bundleNames: Array&lt;string&gt;): Promise&lt;Array&lt;LocalFilePresentStatus&gt;&gt;
 
@@ -866,15 +867,15 @@ if (needStop) {
 
   **Return value**
 
-  | Type| Description|
-  | ---- | ---- |
-  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus23)&gt;&gt; | Promise object, which returns an array of objects. Each object in the array contains the bundle name of the application to be checked and the local file existence status.|
+| Type| Description|
+| ---- | ---- |
+  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus23)&gt;&gt; | Promise used to return an array of objects. Each object in the array contains the bundle name of the application to be checked and the local file existence status. |
 
   **Error codes**
 
-  For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | ID| Error Message|
+  | Error Code| Error Message|
   | -------- | -------- |
   | 201 | Permission verification failed. |
   | 202 | The caller is not a system application. |
