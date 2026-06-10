@@ -10281,7 +10281,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParallelizeUI/entry/src/main/ets/pages/ParallelDemo.ets",
 				"functions":[
 					{
-						"end_line":97,
+						"end_line":120,
 						"name":"parallelNoList_start",
 						"start_line":18
 					}
