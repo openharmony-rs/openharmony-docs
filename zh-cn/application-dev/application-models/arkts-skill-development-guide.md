@@ -30,7 +30,7 @@
 
 ## 开发步骤
 
-下文以“音乐助手Skill（`music-assistant`）”为示例，演示如何在自有应用中接入按名称播放音乐（`playMusicByName`）与播放控制（`controlPlayback`）。
+下文以“音乐助手Skill（`music-assistant`）”为示例，演示如何在自有应用中，通过代码开发和封装，实现按名称播放音乐（`playMusicByName`）与播放控制（`controlPlayback`）的能力。
 
 1. 创建文件和目录。
 
