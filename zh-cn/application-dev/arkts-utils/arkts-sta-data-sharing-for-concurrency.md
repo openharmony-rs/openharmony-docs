@@ -92,8 +92,8 @@ async function updateWithAsyncLock(): Promise<void> {
 
 ## 使用RWLock保护读多写少数据
 
-RWLock适合读操作明显多于写操作的场景（尤其是单写多读，而且写占比很低的场景）。
-如果场景不适合，RWLock性能可能还不如Mutex。
+RWLock适合读操作明显多于写操作的场景（尤其是单写多读，而且写占比很低的场景）。<br>
+如果场景不适合，RWLock性能可能还不如Mutex。<br>
 读锁允许多个读线程同时进入，写锁需要独占访问。
 
 
@@ -167,9 +167,6 @@ async function updateWithAtomic(): Promise<void> {
 }
 ```
 实例化原子类型适合单值操作。需要维护多个字段之间的一致性时，应使用锁保护一组操作，或重新设计为并发容器。
-
-
-
 
 ## 使用并发哈希表共享键值数据
 
