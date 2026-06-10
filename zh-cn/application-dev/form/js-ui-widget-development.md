@@ -74,6 +74,15 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 
    ArkTS-Sta示例：
    <!-- @[JSForm_JsCardFormAbility_importSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/JSFormSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/entryformability/EntryFormAbility.ets
+   import { common, Want } from '@kit.AbilityKit';
+   import hilog from '@ohos.hilog';
+   import { formBindingData, FormExtensionAbility, formProvider } from '@kit.FormKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { preferences } from '@kit.ArkData';
+   ```
 
 2. 在JsCardFormAbility.ets中，实现FormExtension生命周期接口。
 
