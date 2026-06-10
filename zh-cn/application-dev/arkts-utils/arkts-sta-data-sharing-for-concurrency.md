@@ -87,7 +87,7 @@ async function updateWithAsyncLock(): Promise<void> {
   console.info("counter: " + counter.value); // counter: 2
 }
 ```
-一般情况下，使用Mutex可以满足大部分需求。 在多读少写的场景考虑尝试使用[RWLock](../reference/apis-arkts/arkts-sta-rwlock.md)，看看是否可以获得更佳的性能。
+一般情况下，使用Mutex可以满足大部分需求。在多读少写的场景考虑尝试使用[RWLock](../reference/apis-arkts/arkts-sta-rwlock.md)，看看是否可以获得更佳的性能。
 
 
 ## 使用RWLock保护读多写少数据
@@ -147,7 +147,7 @@ async function runRWLockTask(): Promise<void> {
 
 ## 使用原子类型共享单值状态
 
-当共享状态是单个计数器、标志位或引用时，原子类型通常比使用Mutex， RwLock性能更好。
+当共享状态是单个计数器、标志位或引用时，原子类型通常比使用Mutex， RWLock性能更好。
 
 ```ts
 function addCount(counter: AtomicInt, times: int): void {

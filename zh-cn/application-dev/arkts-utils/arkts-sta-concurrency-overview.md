@@ -8,12 +8,12 @@
 
 ArkTS-Dyn已经提供了Sendable对象来实现跨线程共享能力，但也是基于内存隔离的基础上，实现的部分数据共享。不能实现主流编程语言并发的内存共享模型。
 
-ArkTS-Sta则实现了共享内存模型，跨线程传递的时候不需要定义Structured Clone，Sendable对象表达共享语义， 对象可以直接在线程间共享。共享内存降低了跨线程传递成本，也要求开发者在多线程读写共享可变数据时显式使用锁、原子类型或并发容器保证线程安全。
+ArkTS-Sta则实现了共享内存模型，跨线程传递的时候不需要定义Structured Clone/Sendable对象表达共享语义，对象可以直接在线程间共享。共享内存降低了跨线程传递成本，也要求开发者在多线程读写共享可变数据时显式使用锁、原子类型或并发容器保证线程安全。
 
 ArkTS-Sta提供了和ArkTS-Dyn类似的并发接口，可以方便的让开发者从动态代码转移到静态代码。
 - 提供了Promise和async/await编排异步流程
 - 使用TaskPool将后台任务提交到运行时管理的工作线程执行
-- 提供了EAWorker来实现和ArkTS-Dyn Worker同样的功能，可以让在EAWorker上创建的任务都在这个EAworker上调度
+- 提供了EAWorker来实现和ArkTS-Dyn Worker同样的功能，可以让在EAWorker上创建的任务都在这个EAWorker上调度
 
 此外，ArkTS-Sta提供了如下能力来保障数据并发安全
 - 锁：解决共享数据的数据竞争
