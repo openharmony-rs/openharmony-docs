@@ -309,6 +309,51 @@ struct Index {
 
 <!-- @[displayTagsOfMediaAssets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/DisplayTagsOfMediaAssets.ets) -->  
 
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+  // ...
+
+  build() {
+    Column() {
+      // ...
+      Text(this.message)
+        .onClick(async () => {
+          let context = this.getUIContext().getHostContext() as Context;
+          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+          let type: AVSessionManager.AVSessionType = 'audio';
+          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', type);
+
+          // 把媒体音源信息设置给AVSession。
+          let metadata: AVSessionManager.AVMetadata = {
+            assetId: '0',
+            title: 'TITLE',
+            mediaImage: 'IMAGE',
+            // 标识该媒体音源是Audio Vivid。
+            displayTags: AVSessionManager.DisplayTag.TAG_AUDIO_VIVID,
+          };
+          session.setAVMetadata(metadata).then(() => {
+            console.info(`SetAVMetadata successfully`);
+            // ...
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to set AVMetadata. Code: ${err.code}, message: ${err.message}`);
+            // ...
+          });
+          // ...
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## 设置播放状态
 
 应用通过[setAVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavplaybackstate10)将当前的播放状态信息设置给系统，系统播控中心界面会严格根据应用传递的播放状态信息进行同步显示。
