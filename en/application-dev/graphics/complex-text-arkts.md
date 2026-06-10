@@ -711,7 +711,7 @@ The following figures show the effect.
 
 | Style (Font Variation, Text Shadow, and Placeholder)| Effect| 
 | -------- | -------- |
-| Disabled| ![complexArkTsDemo2_1](figures/complexArkTsDemo2-1.png)| 
+| Disabled| ![complexArkTsDemo2-1](figures/complexArkTsDemo2-1.png)| 
 | Enabled| ![complexArkTsDemo2-2](figures/complexArkTsDemo2-2.png)| 
 
 ### Example 3 (Vertical Alignment)

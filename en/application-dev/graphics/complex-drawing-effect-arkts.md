@@ -61,7 +61,6 @@ function drawRenderNode(canvas: drawing.Canvas) {
 }
 ```
 
-
 ![BlendMode-SrcIn.png](figures/BlendMode-SrcIn.png)
 
 
