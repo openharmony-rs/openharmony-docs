@@ -64,7 +64,7 @@ export default {
 }
 ```
 
-![componetnAnimation](figures/componetnAnimation.gif)
+![componentAnimation](figures/componentAnimation.gif)
 
 > **NOTE**
 > -   When using the **animate** method, you must pass the **keyframes** and **options** parameters.
