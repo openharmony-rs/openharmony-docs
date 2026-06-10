@@ -233,7 +233,7 @@ mainHandler dump is:
  Total event size : 2
 ```
 
-AppFreeze事件THREAD_BLOCK_6S、 APP_INPUT_BLOCK均包含以下信息：
+AppFreeze事件THREAD_BLOCK_6S、APP_INPUT_BLOCK均包含以下信息：
 
 从API版本26.0.0开始，AppFreeze事件新增支持LIFECYCLE_TIMEOUT。
 
