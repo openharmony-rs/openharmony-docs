@@ -105,7 +105,7 @@
      // 填写HTTP请求的URL地址，可以带参数也可以不带参数。URL地址需要开发者自定义。请求的参数可以在extraData中指定
      'EXAMPLE_URL',
      {
-       method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET
+       method: http.RequestMethod.POST, // 可选，默认为http.RequestMethod.GET，用于从服务器获取数据，而POST方法用于向服务器上传数据。
        // 开发者根据自身业务需要添加header字段
        header: {
          'Content-Type': 'application/json'
