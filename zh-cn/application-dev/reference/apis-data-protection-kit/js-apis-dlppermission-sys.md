@@ -464,7 +464,7 @@ dlpPermission.off('uninstallDLPSandbox', (info: dlpPermission.DLPSandboxState) =
 
 ## DLPFile
 
-管理DLPFile的实例，表示一个DLP文件对象，需要通过[generateDLPFile](#dlppermissiongeneratedlpfile)/[openDLPFile](#dlppermissionopendlpfile11)获取DLPFile的实例。DLPFile对象代表一个已打开的DLP文件句柄，封装了对DLP文件的所有操作接口。对象在使用完毕后必须调用[closeDLPFile](#closeDLPFile)方法释放资源，避免文件句柄泄漏。DLPFile对象在跨进程传递时，需要进行授权。
+管理DLPFile的实例，表示一个DLP文件对象，需要通过[generateDLPFile](#dlppermissiongeneratedlpfile)/[openDLPFile](#dlppermissionopendlpfile11)获取DLPFile的实例。DLPFile对象代表一个已打开的DLP文件句柄，封装了对DLP文件的所有操作接口。对象在使用完毕后必须调用[closeDLPFile](#closedlpfile)方法释放资源，避免文件句柄泄漏。DLPFile对象在跨进程传递时，需要进行授权。
 
 ### 属性
 
@@ -1049,7 +1049,7 @@ deleteDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
 删除FUSE文件系统中创建的link文件。使用Promise异步回调。调用成功后，从FUSE文件系统中移除指定的link文件。
 
-在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#addDLPLinkFile)添加DLP link文件。
+在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#adddlplinkfile)添加DLP link文件。
 
 DLP文件访问结束后清理link文件映射时使用此接口。
 
@@ -1123,7 +1123,7 @@ deleteDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): vo
 
 删除FUSE文件系统中创建的link文件，使用callback异步回调。调用成功后，从FUSE文件系统中移除指定的link文件。
 
-在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#addDLPLinkFile)添加DLP link文件。
+在调用deleteDLPLinkFile前需要调用[addDLPLinkFile](#adddlplinkfile)添加DLP link文件。
 
 DLP文件访问结束后清理link文件映射时使用此接口。
 
