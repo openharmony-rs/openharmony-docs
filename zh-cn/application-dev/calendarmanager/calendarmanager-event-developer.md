@@ -17,15 +17,15 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
 
 以下是日程管理的相关接口，更多详细接口及使用请参考[@ohos.calendarManager](../reference/apis-calendar-kit/js-apis-calendarManager.md)。
 
-| 接口名称                                      | 描述                                             |
-| ----------------------------------------- |------------------------------------------------|
-| getCalendarManager(context: Context): CalendarManager | 根据上下文获取CalendarManager对象，用于管理日历。               |
-| createCalendar(calendarAccount: CalendarAccount): Promise\<Calendar> | 根据日历账户信息，创建一个Calendar对象，使用Promise异步回调。         |
-| addEvent(event: Event): Promise\<number>  | 创建日程，入参Event不填日程id，使用Promise异步回调。              |
-| editEvent(event: Event): Promise\<number> | 通过跳转到日程创建界面创建单个日程，入参Event不填日程id，使用Promise异步回调。 |
-| deleteEvent(id: number): Promise\<void>   | 删除指定日程id的日程，使用Promise异步回调。                     |
-| updateEvent(event: Event): Promise\<void> | 更新日程，使用Promise异步回调。                            |
-| getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event[]> | 获取Calendar下符合查询条件的Event，使用Promise异步回调。         |
+| 接口名称                                      | 描述                                                                  |
+| ----------------------------------------- |---------------------------------------------------------------------|
+| getCalendarManager(context: Context): CalendarManager | 根据上下文获取CalendarManager对象，用于管理日历。                                    |
+| createCalendar(calendarAccount: CalendarAccount): Promise\<Calendar> | 根据日历账户信息，创建一个Calendar对象，使用Promise异步回调。                              |
+| addEvent(event: Event): Promise\<number>  | 创建日程，入参Event不填日程id、instanceStartTime和instanceEndTime，使用Promise异步回调。 |
+| editEvent(event: Event): Promise\<number> | 通过跳转到日程创建界面创建单个日程，入参Event不填日程id，不支持设置instanceStartTime、instanceEndTime、identifier、attendee、service、isLunar和timeZone属性，使用Promise异步回调。                      |
+| deleteEvent(id: number): Promise\<void>   | 删除指定日程id的日程，使用Promise异步回调。                                          |
+| updateEvent(event: Event): Promise\<void> | 更新日程，入参Event需要填写被修改日程的id，使用Promise异步回调。                                                 |
+| getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event[]> | 获取Calendar下符合查询条件的Event，使用Promise异步回调。                              |
 
 ## 开发步骤
 
@@ -160,7 +160,7 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
 
    方式一：可以在日历账户下通过`addEvent()`或`addEvents()`接口创建日程。其中可使用`addEvent()`接口创建单个日程，也可以使用`addEvents()`接口批量创建日程，此处以创建单个日程为例。
 
-   方式二：在获取到日历管理器对象后，可通过`editEvent()`接口创建单个日程。调用此接口创建日程时，会跳转到日程创建页面，在日程创建页面进行相关操作完成日程的创建, `editEvent()`不支持自定义周期性日程创建。
+   方式二：在获取到日历管理器对象后，可通过`editEvent()`接口创建单个日程。调用此接口创建日程时，会跳转到日程创建页面，在日程创建页面进行相关操作完成日程的创建，`editEvent()`不支持自定义周期性日程创建。
    
    <!-- @[calendarEvent_eventParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarEvent/entry/src/main/ets/pages/Index.ets) -->
    

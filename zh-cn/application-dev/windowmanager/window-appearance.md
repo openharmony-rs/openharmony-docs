@@ -267,7 +267,7 @@ struct SliderDemo {
 
 - 可使用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口调整窗口内容区域的背景色，主要影响窗口内承载UI内容的部分。可传入不区分大小写的十六进制RGB或ARGB颜色，调整背景颜色。从API version 18开始，支持传入[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)类型。
 
-- 可使用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)接口设置PC/2in1或Tablet设备上的主窗口容器区域的背景色，窗口容器背景色会覆盖整个窗口区域，包括标题栏和内容区域。如果处于非[自由窗口](window-terminology.md#自由窗口)状态下，效果等同于[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)。该接口不支持将非焦点态下的主窗口背景设置为透明。
+- 可使用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)接口设置PC/2in1或Tablet设备上的主窗口容器区域的背景色，窗口容器背景色会覆盖整个窗口区域，包括标题栏和内容区域。如果处于非[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，效果等同于[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)。该接口不支持将非焦点态下的主窗口背景设置为透明。
 
 - 当同时使用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)和[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)时，内容区域显示[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)设置的颜色，而标题栏则显示[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)设置的颜色。
 
@@ -283,8 +283,9 @@ struct SliderDemo {
 
 示例代码如下：
 
-```ts
-// Index.ets
+<!--@[backgroundColor_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/backgroundColor/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { ColorMetrics, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -293,8 +294,20 @@ const DOMAIN = 0x0000;
 @Entry
 @Component
 struct Index {
-  // ...
-  // 将0~255的通道值转换成两位十六进制字符串，用于拼接#AARRGGBB。
+  @StorageLink('mainWindow') mainWindow: window.Window | undefined = undefined;
+
+  @State alpha: number = 0;
+  @State red: number = 0;
+  @State green: number = 0;
+  @State blue: number = 0;
+  @State statusText: string = 'Move the sliders to change the current window background color.';
+  @State applyModeText: string = 'Current mode: string (#AARRGGBB)';
+
+  aboutToAppear(): void {
+    this.applyWindowBackgroundColor();
+  }
+
+  // 将0~255的通道值转换成两位十六进制字符串，用于拼接 #AARRGGBB。
   private toHex(value: number): string {
     return Math.round(value).toString(16).padStart(2, '0').toUpperCase();
   }
@@ -303,72 +316,28 @@ struct Index {
   private getColorValue(): string {
     return `#${this.toHex(this.alpha)}${this.toHex(this.red)}${this.toHex(this.green)}${this.toHex(this.blue)}`;
   }
-
-  // 使用string形式设置窗口背景色。
-  private applyWindowBackgroundColor(): void {
+ // ...
+  // 直接用ColorMetrics.rgba(...)设置窗口背景色。
+  private applyByColorMetrics(): void {
     if (!this.mainWindow) {
       this.statusText = 'Current window is unavailable.';
       return;
     }
-    const color = this.getColorValue();
-    this.mainWindow.setWindowBackgroundColor(color);
-    this.statusText = `setWindowBackgroundColor(${color}) success`;
-    hilog.info(DOMAIN, 'backgroundColor', this.statusText);
+
+    try {
+      const alpha = Math.round(this.alpha) / 255;
+      const colorMetrics = ColorMetrics.rgba(Math.round(this.red), Math.round(this.green), 
+                            Math.round(this.blue), alpha);
+      this.mainWindow.setWindowBackgroundColor(colorMetrics);
+      this.applyModeText = 'Current mode: ColorMetrics.rgba(...)';
+      this.statusText = `setWindowBackgroundColor(ColorMetrics.rgba(${Math.round(this.red)}, ${Math.round(this.green)}, ${Math.round(this.blue)}, ${alpha.toFixed(2)})) success`;
+      hilog.info(DOMAIN, 'backgroundColor', this.statusText);
+    } catch (err) {
+      this.statusText = `setWindowBackgroundColor by ColorMetrics failed: ${JSON.stringify(err)}`;
+      hilog.error(DOMAIN, 'backgroundColor', this.statusText);
+    }
   }
 
-  // 使用ColorMetrics.rgba(...)形式设置窗口背景色。
-  private applyByColorMetrics(): void {
-    const alpha = Math.round(this.alpha) / 255;
-    const colorMetrics = ColorMetrics.rgba(Math.round(this.red), Math.round(this.green), Math.round(this.blue), alpha);
-    this.mainWindow?.setWindowBackgroundColor(colorMetrics);
-    this.applyModeText = 'Current mode: ColorMetrics.rgba(...)';
-  }
-
-  // ...
-
-  build() {
-    // ...
-  }
-}
-```
-
-```ts
-// EntryAbility.ets
-import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
-
-const DOMAIN = 0x0000;
-
-export default class EntryAbility extends UIAbility {
-  // ...
-
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // ...
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      if (err.code) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to obtain the main window. Cause: %{public}s', JSON.stringify(err));
-        return;
-      }
-
-      const mainWindow: window.Window = data;
-      AppStorage.setOrCreate<window.Window>('mainWindow', mainWindow);
-      mainWindow.setWindowBackgroundColor('#00000000');
-
-      // 设置主窗口容器在焦点态和非焦点态时的背景色
-      const activeColor: string = '#00000000';
-      const inactiveColor: string = '#FF000000';
-      try {
-        mainWindow.setWindowContainerModalColor(activeColor, inactiveColor);
-        hilog.info(DOMAIN, 'testTag', 'Succeeded in setting window container color.');
-      } catch (exception) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to set the window container color. Cause: %{public}s',
-          JSON.stringify(exception));
-      }
-    });
-  }
-
-  // ...
+ // ...
 }
 ```

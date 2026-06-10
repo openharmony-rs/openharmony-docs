@@ -273,7 +273,7 @@
 | ------------------------ | ------------- | ------------------------------------------------------------ |
 | Black                    | 0x000000      | ![black](figures/black.png) |
 | Blue                     | 0x0000ff      | ![blue](figures/blue.png) |
-| Brown                    | 0xa52a2a      | ![zh-cn_image_0000001219744201](figures/zh-cn_image_0000001219744201.png) |
+| Brown                    | 0xa52a2a      | ![brown](figures/brown.png) |
 | Gray                     | 0x808080      | ![gray](figures/gray.png) |
 | Grey                     | 0x808080      | ![gray](figures/gray.png) |
 | Green                    | 0x008000      | ![green](figures/green.png) |
@@ -1026,7 +1026,7 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | ---- | ----- | ----- |
 | Down | 0 | 按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Up   | 1 | 按键松开。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| CANCEL   | 3 | 取消按键事件。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| CANCEL   | 3 | 取消按键事件。在[全局基础输入事件监听](ts-inputeventmonitor.md)场景中，当Up事件被阻止传递后自动补发CANCEL事件。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## LineJoinStyle
 

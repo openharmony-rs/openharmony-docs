@@ -706,6 +706,17 @@ struct PreInsertDemo {
 
 从API version 24开始，当父容器组件为[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)时，Repeat支持通过[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口为其显示区域内的子组件设置过渡动画效果。
 
+该能力默认关闭。可以在工程的[module.json5配置文件](../../quick-start/module-configuration-file.md)中配置[metadata](../../quick-start/module-configuration-file.md#配置文件标签)字段控制是否启用该能力，配置如下：
+
+```json
+"metadata": [
+  {
+    "name": "enableRepeatAnimation",
+    "value": "true"
+  }
+]
+```
+
 Repeat子组件过渡动画的判定规则如下：
 1. 子组件从外部进入显示区域和预加载区域时，将被判定为插入组件。
 2. 子组件从内部离开显示区域和预加载区域时，将被判定为删除组件（仅懒加载模式）。

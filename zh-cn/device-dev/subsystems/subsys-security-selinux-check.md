@@ -171,7 +171,7 @@ allow appspawn appspawn_exec:file { execute execute_no_trans };
 
 ### 删除冗余的白名单
 
-当整改了不合理的权限组合配置后，删除了不合理的策略，但是未同时删除白名单时，也会触发编译报错，关键报错信息`remove the following unnecessary whitelists in rule 'xxx' part 'user'`，这里的`xxx`表示被拦截的检查项`name`，报错如下：
+整改了不合理的权限组合配置，删除了不合理的策略后，若未删除白名单，会触发编译报错，关键报错信息`remove the following unnecessary whitelists in rule 'xxx' part 'user'`，这里的`xxx`表示被拦截的检查项`name`，报错如下：
 ```text
         check rule 'execute and execute_no_trans' failed in whitelist file 'perm_group_whitelist.json'
         remove the following unnecessary whitelists in rule 'execute and execute_no_trans' part 'user':
@@ -396,6 +396,14 @@ developer_only(`
 | hdfdomain | HDF服务进程，例如location_host | 芯片组件 |
 | native_chipset_domain | 芯片组件Native进程，例如chipset_init | 芯片组件 |
 
+部分进程无法仅通过SELinux属性自动归类到system_domain或chipset_domain，需要通过人工校准名单进行归类。表6展示了人工校准名单的用途。
+
+**表6** 人工校准名单用途
+|  人工校准字段  |  适用场景  | 对应进程域 |
+| -------- | -------- | -------- |
+| special_system_domain | 无法通过属性自动归类但实际属于系统组件的进程。 | system_domain |
+| special_chipset_domain | 无法通过属性自动归类但实际属于芯片组件的进程。 | chipset_domain |
+
 ### 编译拦截
 
 - 在定义进程标签类型时，未关联到一个正确的域，会导致编译报错拦截。关键报错信息`Check rule in user mode failed: a process should be associated with a domain`，报错如下：
@@ -403,10 +411,11 @@ developer_only(`
     Check rule in user mode failed: a process should be associated with a domain.
     Violation list (type):
             "distributed_isolate_hap",
-    There are two solutions:
+    There are three solutions:
     1. Associate the types to one of domains:
             sadomain, hap_domain, native_system_domain, hdfdomain, native_chipset_domain
-    2. Add the above list to "missing_domain" field under "user" field in domain_whitelist.json file.
+    2. If the type cannot be distinguished by attributes, add it to "special_system_domain" or "special_chipset_domain" under "user" field in domain_whitelist.json file.
+    3. Add the above list to "missing_domain" field under "user" field in domain_whitelist.json file.
     ```
 
 - 在定义进程标签类型时，关联到多个域，会导致报错拦截。关键报错信息`Check rule in user mode failed: a process is restricted to a single domain`，报错如下：
@@ -418,6 +427,14 @@ developer_only(`
     1. Change types to prevent association with multiple domains.
     2. Add the above list to "conflict_domain" field under "user" field in domain_whitelist.json file.
     ```
+
+- 在配置人工校准名单时，同一类型出现在多个名单中，会导致报错拦截。关键报错信息`Check whitelist overlap in user mode failed`，报错如下：
+  ```text
+  Check whitelist overlap in user mode failed.
+  Violation list (type):
+          "example_process",
+  Solution: keep each type in only one of "missing_domain" and "special_system_domain" in domain_whitelist.json file.
+  ```
 
 ### 拦截原因
 
@@ -433,13 +450,40 @@ type nwebspawn, sadomain, native_system_domain, domain;
 
 ### 修复方法
 
-- 进程标签类型未关联到一个正确的进程域报错，有两种修复方法：
+- 进程标签类型未关联到一个正确的进程域报错，有三种修复方法：
 
     - 方式一：修改不合理的策略，以满足要求。
 
         例如，将不合理的进程类型`distributed_isolate_hap`关联到`hap_domain`，即定义修改为`type distributed_isolate_hap, hap_domain, domain;`。
 
-    - 方式二：将不合理的类型添加到`//base/security/selinux_adapter/sepolicy/`下的白名单文件`domain_whitelist.json`。
+    - 方式二：将类型添加到`//base/security/selinux_adapter/sepolicy/`下的白名单文件`domain_whitelist.json`的`special_system_domain`或`special_chipset_domain`字段。
+
+        当进程无法仅通过SELinux属性自动归类到system_domain或chipset_domain时，可以通过人工校准名单进行归类。报错信息中的`under "user" field`说明该类型定义在`user`模式和开发者模式均生效，需要添加到`user`字段下。
+
+        `special_system_domain`用于归类系统组件进程，`special_chipset_domain`用于归类芯片组件进程。修改白名单需要评估合理性，审慎添加。该文件如下：
+
+        ```json
+        {
+            "whitelist": {
+                "user": {
+                    "missing_domain": [],
+                    "conflict_domain": [],
+                    "special_system_domain": [
+                        "distributed_isolate_hap"
+                    ],
+                    "special_chipset_domain": []
+                },
+                "developer": {
+                    "missing_domain": [],
+                    "conflict_domain": [],
+                    "special_system_domain": [],
+                    "special_chipset_domain": []
+                }
+            }
+        }
+        ```
+
+    - 方式三：将类型添加到`//base/security/selinux_adapter/sepolicy/`下的白名单文件`domain_whitelist.json`的`missing_domain`字段。
 
         报错信息中`Add the above list to "missing_domain" field under "user" field in domain_whitelist.json file`中的`user`说明该类型定义在`user`模式和开发者模式均生效，需要增加到`user`字段下的`missing_domain`中。
 
@@ -452,11 +496,15 @@ type nwebspawn, sadomain, native_system_domain, domain;
                     "missing_domain": [
                         "distributed_isolate_hap"
                     ],
-                    "conflict_domain": []
+                    "conflict_domain": [],
+                    "special_system_domain": [],
+                    "special_chipset_domain": []
                 },
                 "developer": {
                     "missing_domain": [],
-                    "conflict_domain": []
+                    "conflict_domain": [],
+                    "special_system_domain": [],
+                    "special_chipset_domain": []
                 }
             }
         }
@@ -481,11 +529,15 @@ type nwebspawn, sadomain, native_system_domain, domain;
                     "missing_domain": [],
                     "conflict_domain": [
                         "nwebspawn"
-                    ]
+                    ],
+                    "special_system_domain": [],
+                    "special_chipset_domain": []
                 },
                 "developer": {
                     "missing_domain": [],
-                    "conflict_domain": []
+                    "conflict_domain": [],
+                    "special_system_domain": [],
+                    "special_chipset_domain": []
                 }
             }
         }
@@ -493,16 +545,29 @@ type nwebspawn, sadomain, native_system_domain, domain;
 
 ### 删除冗余的白名单
 
-当整改了不合理的进程类型，但未同时删除白名单时，会触发编译报错。关键报错信息`delete any unused data from "xxx" field under "user" field in domain_whitelist.json file`，表示需要从白名单文件 `domain_whitelist.json` 中删除 `user` 字段下 `xxx` 的数据。
+整改了不合理的进程类型后，若未删除白名单，会触发编译报错。
 
-报错信息中`under "user" field`说明该进程标签类型定义在`user`和`developer`模式均生效；`xxx`指明是`missing_domain`或`conflict_domain`，分别对应缺少进程域和关联了多个域的场景，报错如下：
+- `missing_domain`或`conflict_domain`的白名单冗余报错：关键报错信息`delete any unused data from "xxx" field under "user" field in domain_whitelist.json file`，表示需要从白名单文件 `domain_whitelist.json` 中删除 `user` 字段下 `xxx` 的数据。
 
-```text
-Check whitelist of "missing_domain" in user mode failed.
-Violation list (type):
-        "distributed_isolate_hap",
-Solution: delete any unused data from "missing_domain" field under "user" field in domain_whitelist.json file.
-```
+    报错信息中`under "user" field`说明该进程标签类型定义在`user`和`developer`模式均生效；`xxx`指明是`missing_domain`或`conflict_domain`，分别对应缺少进程域和关联了多个域的场景，报错如下：
+
+    ```text
+    Check whitelist of "missing_domain" in user mode failed.
+    Violation list (type):
+            "distributed_isolate_hap",
+    Solution: delete any unused data from "missing_domain" field under "user" field in domain_whitelist.json file.
+    ```
+
+- `special_system_domain`或`special_chipset_domain`的白名单冗余报错：关键报错信息`Check whitelist of "xxx" in user mode failed`，表示需要从白名单文件`domain_whitelist.json`中删除该字段的数据。
+
+    当人工校准名单中的类型实际上可以通过SELinux属性自动归类，或者该类型不在进程集合中时，会触发此报错。报错信息中的`under "user" field`说明需要从`user`字段中删除，报错如下：
+
+    ```text
+    Check whitelist of "special_system_domain" in user mode failed.
+    Violation list (type):
+            "example_process",
+    Solution: delete any unused data from "special_system_domain" field under "user" field in domain_whitelist.json file, or keep it in "special_system_domain" only when the type requires manual calibration to system_domain.
+    ```
 
 ### 修改进程域基线检查
 
@@ -636,7 +701,7 @@ type dev_unix_socket, dev_attr, file_attr, system_sock_domain, chipset_sock_doma
 
 ### 删除冗余的白名单
 
-当修正了不合理的Unix域套接字文件相关策略，但未同时删除白名单时，也会触发编译错误。关键错误信息为：`delete any unused data from "user" field in socket_whitelist.json file`，表示需要把指定路径从白名单文件`socket_whitelist.json`中白名单的`user`字段中去除。报错如下：
+修正了不合理的Unix域套接字文件相关策略后，若未删除白名单，也会触发编译错误。关键错误信息为：`delete any unused data from "user" field in socket_whitelist.json file`，表示需要把指定路径从白名单文件`socket_whitelist.json`中白名单的`user`字段中去除。报错如下：
 
 ```text
 Check whitelist of socket rule in user mode failed.
@@ -649,9 +714,9 @@ Solution: delete any unused data from "user" field in socket_whitelist.json file
 
 ### 检查说明
 
-为了控制系统参数的权限访问范围，系统参数的安全上下文定义时，其标签类型需要关联正确的属性。参数的访问范围与其需要关联的属性对应关系如表6所示。
+为了控制系统参数的权限访问范围，系统参数的安全上下文定义时，其标签类型需要关联正确的属性。参数的访问范围与其需要关联的属性对应关系如表7所示。
 
-**表6** 参数的访问范围与其安全上下文中类型需要关联的属性对应关系
+**表7** 参数的访问范围与其安全上下文中类型需要关联的属性对应关系
 | 访问范围 | 需关联的属性  |
 | -------- | -------- |
 | 仅在系统组件内部可用 | system_parameter_attr, system_internal_parameter_attr |
@@ -706,7 +771,7 @@ Solution:
 
 ### 删除冗余的白名单
 
-当整改了不合理的类型定义，但未同时删除白名单，会触发编译报错。关键报错信息为`delete any unused data from "user" field under "parameter_attr" field in parameter_whitelist.json file`，表示需要把指定类型从白名单文件`parameter_whitelist.json`中白名单的`user`字段下的中`parameter_attr`去除。报错如下：
+整改了不合理的类型定义后，若未删除白名单，会触发编译报错。关键报错信息为`delete any unused data from "user" field under "parameter_attr" field in parameter_whitelist.json file`，表示需要把指定类型从白名单文件`parameter_whitelist.json`中白名单的`user`字段下的中`parameter_attr`去除。报错如下：
 
 ```text
 Check whitelist of attribute "parameter_attr" in user mode failed.
@@ -782,9 +847,9 @@ type accessibility_param, parameter_attr, system_parameter_attr, system_internal
 
 ### 检查说明
 
-不同的目录用于存放特定的文件资源，例如，`/system/lib`路径下用于存放系统组件的共享库，需要尽量避免芯片组件进程加载执行。为了对这些文件权限进行访问范围的管理，要求特定目录下的文件配置的安全上下文关联对应的属性，具体的对应关系如表7所示。
+不同的目录用于存放特定的文件资源，例如，`/system/lib`路径下用于存放系统组件的共享库，需要尽量避免芯片组件进程加载执行。为了对这些文件权限进行访问范围的管理，要求特定目录下的文件配置的安全上下文关联对应的属性，具体的对应关系如表8所示。
 
-**表7** 路径与其安全上下文中类型需要关联的属性对应关系
+**表8** 路径与其安全上下文中类型需要关联的属性对应关系
 | 路径 | 关联的属性  |
 | -------- | -------- |
 | /vendor | vendor_file_attr |
@@ -900,7 +965,7 @@ type hdf_devmgr_exec, exec_attr, file_attr, system_file_attr;
 
 ### 删除冗余的白名单
 
-当整改路径的 `file_contexts` 后，未同时删除白名单时，会触发编译报错。关键报错信息`Add following file path to "user" field in file_contexts_typeattr_whitelist.json file`。后续提示 `Change "permissive_list" of "path": xxx` 表示需要将指定路径从 `xxx` 的白名单 `permissive_list` 中移除。拦截提示中的 `to "user" field` 说明该路径需要从 `user` 项中移除。报错如下：
+整改路径的 `file_contexts` 后，若未删除白名单，会触发编译报错。关键报错信息`Add following file path to "user" field in file_contexts_typeattr_whitelist.json file`。后续提示 `Change "permissive_list" of "path": xxx` 表示需要将指定路径从 `xxx` 的白名单 `permissive_list` 中移除。拦截提示中的 `to "user" field` 说明该路径需要从 `user` 项中移除。报错如下：
 
 ```text
 Check security context of file and its associated attributes in user mode failed.
@@ -924,9 +989,9 @@ Check security context of file failed. There are two solutions:
 
 ### 检查说明
 
-为了对不同文件系统挂载的节点访问权限进行管理，要求挂载到不同文件系统的文件标签类型关联对应的属性如表8所示。
+为了对不同文件系统挂载的节点访问权限进行管理，要求挂载到不同文件系统的文件标签类型关联对应的属性如表9所示。
 
-**表8** 文件系统与其安全上下文中类型需要关联的属性对应关系
+**表9** 文件系统与其安全上下文中类型需要关联的属性对应关系
 | 文件系统 | 关联的属性  |
 | -------- | -------- |
 | proc | proc_attr |
@@ -1192,7 +1257,7 @@ Please modify context or add to whitelist file: context_length_whitelist.json
 
 ### 删除冗余的白名单
 
-当整改了过长的安全上下文，但未同时删除白名单时，会触发编译报错。关键报错信息`Unused whitelist entries`，表示需要从白名单文件`context_length_whitelist.json`中删除`file_contexts`字段下`u:object_r:very_long_type_name_that_exceeds_maximum_length:s0`的数据。报错如下：
+整改了过长的安全上下文后，若未删除白名单，会触发编译报错。关键报错信息`Unused whitelist entries`，表示需要从白名单文件`context_length_whitelist.json`中删除`file_contexts`字段下`u:object_r:very_long_type_name_that_exceeds_maximum_length:s0`的数据。报错如下：
 
 ```text
 Unused whitelist entries in file_contexts:

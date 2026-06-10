@@ -171,7 +171,7 @@ const TAG = 'IndexPage';
   | [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非[自由窗口](freeform-window-overview.md#自由窗口)状态下：子窗、模态窗口移动时原点为父窗口左上顶点，其他窗口移动时原点为屏幕左上顶点 | 移动窗口位置，调用成功即返回，返回后无法立即获取最终生效结果。 |
   | [moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync12)传入参数x、y<br/>[moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync15)传入参数x、y、moveConfiguration | [自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为屏幕左上顶点<br/>非[自由窗口](freeform-window-overview.md#自由窗口)状态下：原点为主窗口左上顶点 | 移动窗口位置，调用生效后返回。 |
   | [moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15)传入参数x、y<br/>[moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15)传入参数x、y、moveConfiguration | 目标屏幕左上顶点 | 基于屏幕坐标移动窗口位置，调用生效后返回。 |
-  | [moveWindowToGlobalDisplay()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobaldisplay20) | 主屏幕左上顶点（全局坐标系） | 基于[全局坐标系](window-terminology.md#全局坐标系)移动窗口位置。 |
+  | [moveWindowToGlobalDisplay()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobaldisplay20) | 主屏幕左上顶点（全局坐标系） | 基于[全局坐标系](window-terminology.md#global-coordinate-system全局坐标系)移动窗口位置。 |
 
 - 调整窗口大小：使用[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9-1)、[resizeAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#resizeasync12)接口可以在运行时动态调整窗口的大小。  
 
@@ -461,8 +461,8 @@ const TAG = 'IndexPage';
 | -------- | -------- | -------- |
 | [on('windowSizeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowsizechange7) | [Size](../reference/apis-arkui/arkts-apis-window-i.md#size7) | 监听窗口大小变化，单位为px。 |
 | [on('windowRectChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowrectchange12) | [RectChangeOptions](../reference/apis-arkui/arkts-apis-window-i.md#rectchangeoptions12) | 监听窗口矩形（窗口位置及窗口大小）变化，返回对应值及变化原因，单位为px。 |
-| [on('rectChangeInGlobalDisplay')](../reference/apis-arkui/arkts-apis-window-Window.md#onrectchangeinglobaldisplay20) | [RectChangeOptions](../reference/apis-arkui/arkts-apis-window-i.md#rectchangeoptions12) | 监听窗口矩形（窗口位置及窗口大小）在[全局坐标系](window-terminology.md#全局坐标系)中的变化，返回对应值及变化原因，单位为px。 |
-| [getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) | [WindowProperties](../reference/apis-arkui/arkts-apis-window-i.md#windowproperties) | 获取当前窗口的属性。其中窗口位置与大小相关的属性为：<br/>windowRect：窗口的位置和大小，相对于当前屏幕坐标系。<br/>drawableRect：窗口内的可绘制区域尺寸，其中左边界上边界相对于窗口左上顶点计算。globalDisplayRect：窗口的位置和大小，相对于[全局坐标系](window-terminology.md#全局坐标系)。 |
+| [on('rectChangeInGlobalDisplay')](../reference/apis-arkui/arkts-apis-window-Window.md#onrectchangeinglobaldisplay20) | [RectChangeOptions](../reference/apis-arkui/arkts-apis-window-i.md#rectchangeoptions12) | 监听窗口矩形（窗口位置及窗口大小）在[全局坐标系](window-terminology.md#global-coordinate-system全局坐标系)中的变化，返回对应值及变化原因，单位为px。 |
+| [getWindowProperties()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) | [WindowProperties](../reference/apis-arkui/arkts-apis-window-i.md#windowproperties) | 获取当前窗口的属性。其中窗口位置与大小相关的属性为：<br/>windowRect：窗口的位置和大小，相对于当前屏幕坐标系。<br/>drawableRect：窗口内的可绘制区域尺寸，其中左边界上边界相对于窗口左上顶点计算。globalDisplayRect：窗口的位置和大小，相对于[全局坐标系](window-terminology.md#global-coordinate-system全局坐标系)。 |
 
 应用还可以通过使用环境变量来感知窗口位置与大小的变化。环境变量是一种全局状态管理机制，在多设备开发的场景中，开发者可以使用[@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md)装饰器监听系统环境变量的改变，并根据系统环境变量来进行相应的场景判断，以减少不同设备间的适配逻辑和重复开发。详情请见[@Env：环境变量](../ui/arkts-env-system-property.md)。
 

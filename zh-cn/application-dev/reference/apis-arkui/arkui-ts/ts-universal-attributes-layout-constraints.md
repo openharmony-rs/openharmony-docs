@@ -125,7 +125,7 @@ struct AspectRatioExample {
 ```
 
 **图1** 竖屏显示<br>
-![zh-cn_image_0000001219744205](figures/zh-cn_image_0000001219744205.PNG)
+![layoutConstraints2](figures/layoutConstraints2.PNG)
 
 **图2** 横屏显示<br>
 ![portraitMode](figures/portraitMode.PNG)

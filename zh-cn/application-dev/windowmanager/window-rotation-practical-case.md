@@ -21,7 +21,9 @@
 
 示例代码如下：
 
-```ts
+<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { window } from '@kit.ArkUI'
 import common from '@ohos.app.ability.common';
 import { Callback } from '@kit.BasicServicesKit';
@@ -95,7 +97,7 @@ struct Index {
 
 ## 实现屏幕方向和窗口的orientation的相互转换
 
-目前存在[屏幕orientation](../reference/apis-arkui/js-apis-display.md#属性)、[屏幕rotation](../reference/apis-arkui/js-apis-display.md#属性)和[窗口orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)概念，它们之间存在关联，但并不相同，三者之间的区别与联系可以参考[display.orientation与window.orientation的区别](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section156337181114)、[window.orientation与display.rotation的关系](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section20201743171811)。
+目前存在屏幕[orientation](../reference/apis-arkui/js-apis-display.md#属性)、屏幕[rotation](../reference/apis-arkui/js-apis-display.md#属性)和窗口[orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)概念，它们之间存在关联，但并不相同，可以参考[display.Orientation与display.rotation的关系](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section5175174443718)。
 
 在多设备、多形态的场景下（例如折叠屏手机、平板、外接显示器），屏幕的rotation（物理角度）和屏幕的orientation（逻辑横竖状态）并不总是一一对应。
 
@@ -121,7 +123,7 @@ struct Index {
 
 若开发者想准确知道当前窗口方向从而选择旋转策略（比如视频播放页面锁定当前方向），推荐获取到[display.rotation](../reference/apis-arkui/js-apis-display.md#属性)或[display.orientation](../reference/apis-arkui/js-apis-display.md#属性)后，再使用[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)将屏幕方向转化为窗口方向，具体示例如下：
 
-1. 获取目标屏幕方向。调用[getDefaultDisplaySync()](../reference/apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获取屏幕方向。  
+1. 获取目标屏幕方向。调用[getDefaultDisplaySync()](../reference/apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获取屏幕方向。
 
 2. 将屏幕方向转换为窗口方向。调用[convertOrientationAndRotation()](../reference/apis-arkui/arkts-apis-window-Window.md#convertorientationandrotation23)可以把屏幕方向[display.orientation](../reference/apis-arkui/js-apis-display.md#属性)转换为窗口方向[orientation](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)。
 
@@ -129,7 +131,9 @@ struct Index {
 
 4. 调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置旋转策略锁定显示方向。
 
-```ts
+<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { display, window } from '@kit.ArkUI';
 
 @Entry
@@ -142,7 +146,7 @@ struct SpecificSceneSetOrientationIndex {
       const disp = display.getDefaultDisplaySync();
       const displayOrientation = disp.orientation; // 当前屏幕方向（0/1/2/3）
 
-      console.info("Current display orientation = " + displayOrientation);
+      console.info('Current display orientation = ' + displayOrientation);
       // 2.将displayOrientation转换为windowOrientation
       let windowOrientation: number =
         this.mainWindow.convertOrientationAndRotation(
@@ -167,21 +171,21 @@ struct SpecificSceneSetOrientationIndex {
           orientation = window.Orientation.LANDSCAPE;
           break;
         default:
-          throw new Error("Invalid orientation value");
+          throw new Error('Invalid orientation value');
       }
       // 4.设置旋转策略锁定窗口方向
       this.mainWindow.setPreferredOrientation(orientation, (err) => {
         if (err && err.code) {
-          console.error("setPreferredOrientation failed: " + JSON.stringify(err));
+          console.error('setPreferredOrientation failed: ' + JSON.stringify(err));
         }
       });
     } catch (exception) {
-      console.error("Exception in setOrientationByDisplay: " + JSON.stringify(exception));
+      console.error('Exception in setOrientationByDisplay: ' + JSON.stringify(exception));
     }
   }
   build() {
     Column() {
-      Text("Lock the display orientation")
+      Text('Lock the display orientation')
         .fontSize(17)
       Button('Set orientation from display')
         .onClick(() => {
