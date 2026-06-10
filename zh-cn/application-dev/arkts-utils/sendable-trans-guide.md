@@ -10,8 +10,8 @@
 
 本文介绍[TurboTrans](https://gitcode.com/openharmony-sig/turbo_trans)三方库中@hadss/turbo-trans-json（下文简称**TurboTransJSON**）与@hadss/turbo-trans-protobuf（下文简称**TurboTransProtobuf**）在ArkTS中操作Sendable对象的典型用法：
 
-- 使用**TurboTransJSON**将JSON字符串反序列化为对象，并转换为Sendable对象在并发实例间传递，适用于将普通对象或JSON字符串转换为Sendable对象，详细可参考[使用TurboTransJSON序列化/反序列化并生成Sendable对象](#使用TurboTransJSON序列化反序列化并生成sendable对象)。
-- 使用**TurboTransProtobuf**通过.proto生成@Sendable的消息类，并进行编码/解码，详细可参考[使用TurboTransProtobuf生成Sendable对象并编解码](#使用TurboTransProtobuf生成sendable对象并编解码)。
+- 使用**TurboTransJSON**将JSON字符串反序列化为对象，并转换为Sendable对象在并发实例间传递，适用于将普通对象或JSON字符串转换为Sendable对象，详细可参考[使用TurboTransJSON序列化/反序列化并生成Sendable对象](#使用turbotransjson序列化反序列化并生成sendable对象)。
+- 使用**TurboTransProtobuf**通过.proto生成@Sendable的消息类，并进行编码/解码，详细可参考[使用TurboTransProtobuf生成Sendable对象并编解码](#使用turbotransprotobuf生成sendable对象并编解码)。
 - 使用TurboTransJSON或TurboTransProtobuf转换生成Sendable对象后，如果还需要绑定UI进行组件刷新的话，可以阅读[使用makeObserved将Sendable对象转换为可观察对象](#使用makeobserved将sendable对象转换为可观察对象)章节。
 
 ## 使用TurboTrans三方库操作Sendable对象
