@@ -3299,6 +3299,7 @@ migrateFile(pathInfo: PathInfo, fileMeta: FileMeta): Promise&lt;void&gt;
 
 ```ts
 import { backup } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let generalCallbacks: backup.GeneralCallbacks = {
@@ -3329,23 +3330,23 @@ let generalCallbacks: backup.GeneralCallbacks = {
       console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info(`onAllBundlesEnd success.`);
+    console.info(`onAllBundlesEnd succeeded.`);
   },
   onBackupServiceDied: () => {
     console.info(`service died.`);
   },
   onResultReport: (bundleName: string, result: string) => {
-    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+    console.info(`onResultReport succeeded, bundleName: ${bundleName}, result: ${result}`);
   },
   onProcess: (bundleName: string, process: string) => {
-    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+    console.info(`onProcess succeeded, bundleName: ${bundleName}, process: ${process}`);
   },
   onMigrateResult: (err: BusinessError<string|void>, bundleName: string) => {
     if (err) {
       console.error(`onMigrateResult failed. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info('onMigrateResult success, bundleName: ' + bundleName);
+    console.info('onMigrateResult succeeded, bundleName: ' + bundleName);
   }
 };
 
@@ -3359,10 +3360,10 @@ async function testMigrateFile() {
       },
       {
         bundleName: "com.example.app",
-        uri: ""
+        uri: "" // 按目录迁移文件时，将uri置为空
       }
     );
-    console.info("migrateFile success.");
+    console.info("migrateFile succeeded.");
   } catch (error) {
     let err: BusinessError = error as BusinessError;
     console.error(`migrateFile failed. Code: ${err.code}, message: ${err.message}`);
@@ -3390,7 +3391,7 @@ getApkFileHandle(path: string, fileName: string): Promise&lt;FileData&gt;
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
-| path | string | 是   | APK文件的路径。 |
+| path | string | 是   | APK文件的路径，与fileName拼接后的总长度限制为4096个字符，不支持使用相对路径和软链接。 |
 | fileName | string | 是   | APK文件的名称。 |
 
 **返回值：**
@@ -3446,23 +3447,23 @@ let generalCallbacks: backup.GeneralCallbacks = {
       console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info(`onAllBundlesEnd success.`);
+    console.info(`onAllBundlesEnd succeeded.`);
   },
   onBackupServiceDied: () => {
     console.info(`service died`);
   },
   onResultReport: (bundleName: string, result: string) => {
-    console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+    console.info(`onResultReport succeeded, bundleName: ${bundleName}, result: ${result}`);
   },
   onProcess: (bundleName: string, process: string) => {
-    console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+    console.info(`onProcess succeeded, bundleName: ${bundleName}, process: ${process}`);
   },
   onMigrateResult: (err: BusinessError<string|void>, bundleName: string) => {
     if (err) {
       console.error(`onMigrateResult failed. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info('onMigrateResult success, bundleName: ' + bundleName);
+    console.info('onMigrateResult succeeded, bundleName: ' + bundleName);
   }
 };
 
@@ -3470,7 +3471,7 @@ async function testGetApkFileHandle() {
   let sessionRestore = new backup.SessionRestore(generalCallbacks);
   try {
     let fileData: backup.FileData = await sessionRestore.getApkFileHandle("/data/storage/el1/base/files", "app.apk");
-    console.info("getApkFileHandle success, fd: " + fileData.fd);
+    console.info("getApkFileHandle succeeded, fd: " + fileData.fd);
     // 使用完毕后关闭文件描述符
     fileIo.closeSync(fileData.fd);
   } catch (error) {
