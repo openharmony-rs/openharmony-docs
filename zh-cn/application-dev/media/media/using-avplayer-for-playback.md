@@ -199,7 +199,7 @@
             console.info('Succeeded in resetting');
         }
     });
-    // 更换url。
+    // 更换URL。
     let url = 'https://example.com/audio.mp3';
     if (avPlayer == null) {
         return;
