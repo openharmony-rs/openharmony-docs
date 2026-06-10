@@ -89,6 +89,7 @@
     - [ArkTS-Sta互操作特性规范](arkts-interop-spec.md)
     - [ArkTS动静态类型易用互操作规格指南](arkts-sta-interop-spec.md)
     - [ArkTS动静态类型互操作声明文件生成工具Declgen规格指南](arkts-sta-declgen-spec.md)
+    - [ArkTS动静态类型互操作显式接口使用指南](./arkts-sta-interop-interface.md)
     - [ArkTS-Sta与ArkTS-Dyn互操作迁移规则](arkts-dyn-to-sta-interop-rules.md)
   - 从ArkTS-Dyn到ArkTS-Sta的改造指导<!--arkts-dyn-to-arkts-sta-transformation-->
     - [ArkTS静态类型及应用迁移改造概述](arkts-sta-additions-application-migration.md)
