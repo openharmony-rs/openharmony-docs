@@ -214,6 +214,29 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 
    ArkTS-Sta示例：
    <!-- @[JSFormSta_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/JSFormSta/entry/src/main/module.json5) --> 
+   
+   ``` JSON5
+   {
+     "module": {
+       // ...
+       "extensionAbilities": [
+         {
+           "name": "EntryFormAbility",
+           "srcEntry": "./ets/entryformability/EntryFormAbility.ets",
+           "label": "$string:EntryFormAbility_label",
+           "description": "$string:EntryFormAbility_desc",
+           "type": "form",
+           "metadata": [
+             {
+               "name": "ohos.extension.form",
+               "resource": "$profile:form_config"
+             }
+           ]
+         }
+       ]
+     }
+   }
+   ```
 
 
 2. 卡片的具体配置信息。在上述FormExtensionAbility的元信息（"metadata"配置项）中，可以指定卡片具体配置信息的资源索引。例如当resource指定为$profile:form_jscard_config时，会使用开发视图的resources/base/profile/目录下的form_jscard_config.json作为卡片profile配置文件。内部字段结构说明如下表所示。
