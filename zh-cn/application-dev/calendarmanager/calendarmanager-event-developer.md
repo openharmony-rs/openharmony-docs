@@ -76,7 +76,7 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
         const permissions: Permissions[] = ['ohos.permission.READ_CALENDAR', 'ohos.permission.WRITE_CALENDAR'];
         let atManager = abilityAccessCtrl.createAtManager();
         atManager.requestPermissionsFromUser(mContext, permissions).then((result: PermissionRequestResult) => {
-          console.info('get Permission success');
+          console.info('Succeeded in getting permission');
           calendarMgr = calendarManager.getCalendarManager(mContext);
         }).catch((error: BusinessError) => {
           console.error('get Permission error, Cause: %{public}s', JSON.stringify(error));
