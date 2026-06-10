@@ -1,33 +1,31 @@
 # tspan
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b9b716c1423f6952b7169df5eb4de15f02019de4 translatedAt=2026-06-10T02:07:55.588Z pushedAt=2026-06-10T06:11:19.049Z -->
 
 The **\<tspan>** component is used to add a text style.
-
 
 >  **NOTE**
 >  - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  - This component can have **\<tspan>** child components nested.
+>  - The text content to be displayed must be written within element labels. The **\<tspan>** child element label can be nested to segment the text content.
 >
->  - This component can only be nested by the parent element label **svg**.
+>  - Text segmentation is only supported within the parent element label **\<text>**.
 
 ## Required Permissions
 
 None
 
-
 ## Child Components
 
 The **[\<tspan>](js-components-svg-tspan.md)** child component is supported.
 
-
 The attributes in the following table are supported.
-
 
 | Name            | Type                                | Default Value  | Mandatory  | Description                                      |
 | -------------- | ---------------------------------- | ----- | ---- | ---------------------------------------- |
