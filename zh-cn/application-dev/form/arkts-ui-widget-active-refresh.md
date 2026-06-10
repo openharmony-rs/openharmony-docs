@@ -176,6 +176,104 @@
 
     ArkTS-Sta示例：
    <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormStaticRefresh/entry/src/main/ets/entryformability/UpdateByMessageFormAbility.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/entryformability/UpdateByMessageFormAbility.ets
+   import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
+   import { Configuration, Want } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import common from '@ohos.app.ability.common';
+   import { AppStorage } from '@ohos.arkui.stateManagement';
+   
+   const TAG: string = 'UpdateByMessageFormAbility';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   
+   function onAcquireFormStateCallback(want: Want): formInfo.FormState {
+     let context: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('abilityContext');
+     hilog.info(DOMAIN_NUMBER, TAG, 'OnAcquireFormState register success');
+     return formInfo.FormState.READY;
+   }
+   
+   export default class UpdateByMessageFormAbility extends FormExtensionAbility {
+     constructor() {
+       hilog.info(DOMAIN_NUMBER, TAG, 'constructor register call');
+       try {
+         this.onStop = () => {
+           hilog.info(DOMAIN_NUMBER, TAG, 'OnStop callback success');
+         }
+         hilog.info(DOMAIN_NUMBER, TAG, 'OnStop register success');
+       } catch (err) {
+         hilog.error(DOMAIN_NUMBER, TAG, `OnStop catch error code: ${err?.code}, message: ${err?.message}`);
+       }
+   
+       this.onAcquireFormState = onAcquireFormStateCallback;
+     }
+   
+     onAddForm(want: Want): formBindingData.FormBindingData {
+       hilog.info(DOMAIN_NUMBER, TAG, '[UpdateByMessageFormAbility] onAddForm');
+       hilog.info(DOMAIN_NUMBER, TAG, want.parameters?.[formInfo.FormParam.NAME_KEY] as string);
+       // 卡片使用方创建卡片时触发，卡片提供方需要返回卡片数据绑定类
+       let obj: Record<string, string> = {
+         'title': 'Title: ' + Math.random(),
+         'detail': 'Description: ' + Math.random()
+       };
+       let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       return formData;
+     }
+   
+     onCastToNormalForm(formId: string): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[UpdateByMessageFormAbility] onCastToNormalForm');
+     }
+   
+     onUpdateForm(formId: string, wantParams?: Record<string, Object>): void {
+       // 若卡片支持定时更新/定点更新/卡片使用方主动请求更新功能，则提供方需要重写该方法以支持数据更新
+       hilog.info(DOMAIN_NUMBER, TAG, '[UpdateByMessageFormAbility] onUpdateForm');
+       let obj: Record<string, string> = {
+         'title': 'Title: ' + Math.random(),
+         'detail': 'Description: ' + Math.random()
+       };
+       let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       formProvider.updateForm(formId, formData).catch((err) => {
+         hilog.info(DOMAIN_NUMBER, TAG,
+           `[UpdateByMessageFormAbility] updateForm, code: ${err?.code}, message: ${err?.message}`);
+       });
+     }
+   
+     onChangeFormVisibility(newStatus: Record<string, int>): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[UpdateByMessageFormAbility] onChangeFormVisibility');
+     }
+   
+     onFormEvent(formId: string, message: string): void {
+       // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
+       hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+       // 请根据业务替换为实际刷新的卡片数据
+       let obj: Record<string, string> = {
+         'title': 'Title: ' + Math.random(),
+         'detail': 'Description: ' + Math.random()
+       };
+       let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       formProvider.updateForm(formId, formInfo).then(() => {
+         hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+       }).catch((err) => {
+         hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. code: ${err?.code}, message: ${err?.message}`);
+       });
+     }
+   
+     onRemoveForm(formId: string): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[UpdateByMessageFormAbility] onRemoveForm');
+       // ...
+     }
+   
+     onConfigurationUpdate(config: Configuration): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[UpdateByMessageFormAbility] onConfigurationUpdate');
+     }
+   }
+   ```
 
 4. 资源文件如下。
    ```ts
