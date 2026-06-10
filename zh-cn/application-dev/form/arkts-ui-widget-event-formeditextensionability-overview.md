@@ -643,6 +643,8 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 1. [创建卡片](./arkts-ui-widget-creation.md)。
 2. 开发者需要新增EntryEditAbility.ets文件，继承[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件，实现[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onNewWant](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)回调函数。卡片使用方会通过[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)的parameters字段把被编辑的卡片ID带进来。并且需要再form_config.json文件中配置[formConfigAbility](./arkts-ui-widget-configuration.md#配置文件字段说明)字段。
    - 实现编辑页面的Ability。
+
+   ArkTS-Dyn示例：
    <!-- @[FormEditUIAbility_EntryEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/entryability/EntryEditAbility.ets) -->
    
    ``` TypeScript
@@ -720,7 +722,12 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[FormEditUIAbilitySta_EntryEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/entryability/EntryEditAbility.ets) -->
+
    - 新增EntryEditAbility需要在module.json5配置，配置如下。
+
+   ArkTS-Dyn示例：
    <!-- @[FormEditUIAbility_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/module.json5) --> 
    
    ``` JSON5
@@ -738,6 +745,9 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
      }
    ],
    ```
+
+   ArkTS-Sta示例：
+   <!-- @[FormEditUIAbilitySta_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/module.json5) --> 
 
    - 卡片form_config.json文件实现。
    ```json5
@@ -766,6 +776,8 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
 3. 新增FormEditIndex.ets文件实现全屏编辑页布局，通过[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口去刷新被编辑卡片的信息。
+
+   ArkTS-Dyn示例：
    <!-- @[FormEditUIAbility_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/pages/FormEditIndex.ets) --> 
    
    ``` TypeScript
@@ -839,6 +851,9 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[FormEditUIAbilitySta_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/pages/FormEditIndex.ets) --> 
+
    - 加载全屏编辑页布局文件。
    ```json5
    // entry/src/main/resources/base/profile/main_pages.json
@@ -851,6 +866,8 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
    - 卡片布局文件如下。
+
+   ArkTS-Dyn示例：
    <!-- @[FormEditUIAbility_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
    
    ``` TypeScript
@@ -890,7 +907,12 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[FormEditUIAbilitySta_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
+
 4. 新增PreferencesUtil文件，主要是来封装[Preferences](../database/data-persistence-by-preferences.md)首选项，供业务做持久化数据使用。
+
+   ArkTS-Dyn示例：
    <!-- @[FormEditUIAbility_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/common/PreferencesUtil.ets) --> 
    
    ``` TypeScript
@@ -975,6 +997,9 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
      }
    }
    ```
+
+   ArkTS-Dyn示例：
+   <!-- @[FormEditUIAbilitySta_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/common/PreferencesUtil.ets) --> 
 
 5. 资源文件如下。
    ```json5

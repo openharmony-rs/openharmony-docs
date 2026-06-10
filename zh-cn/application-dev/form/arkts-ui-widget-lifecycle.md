@@ -10,6 +10,7 @@
 
 1. 在EntryFormAbility.ets中，导入相关模块。
 
+   ArkTS-Dyn示例：
     <!-- @[import_entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
     
     ``` TypeScript
@@ -20,8 +21,12 @@
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
+   ArkTS-Sta示例：
+    <!-- @[import_entry_form_abilitySta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormLifecycleSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
+
 2. 在EntryFormAbility.ets中，实现[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)生命周期接口，其中在onAddForm的入参[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)中可以通过[FormParam](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formparam)取出卡片的相关信息。
 
+   ArkTS-Dyn示例：
     <!-- @[entry_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
     
     ``` TypeScript
@@ -90,6 +95,9 @@
       }
     }
     ```
+
+   ArkTS-Sta示例：
+    <!-- @[entry_form_abilitySta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormLifecycleSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
 
 > **说明：**
 >

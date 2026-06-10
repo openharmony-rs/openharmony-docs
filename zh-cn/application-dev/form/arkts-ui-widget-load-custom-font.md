@@ -17,6 +17,7 @@ API version 22开始新增了[ohos.graphics.text.FontCollection.getLocalInstance
 
     在卡片页面中布局两个按钮，点击按钮`load font`或按钮`unload font`，调用本地字体集实例的loadFontSync、unloadFontSync进行字体的加载、卸载。
 
+   ArkTS-Dyn示例：
 <!-- @[loadFontSyncCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/CustomFontWidgetCards/entry/src/main/ets/widget/pages/WidgetCard.ets) -->  
 
 ``` TypeScript
@@ -51,6 +52,9 @@ struct loadFontSyncCard {
   }
 }
 ```
+
+   ArkTS-Sta示例：
+<!-- @[loadFontSyncCardSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/CustomFontWidgetCardsSta/entry/src/main/ets/widget/pages/WidgetCard.ets) -->  
 
 > **说明：**
 >

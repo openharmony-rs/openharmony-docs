@@ -60,6 +60,7 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 
 1. 在JsCardFormAbility.ets中，导入相关模块。
 
+   ArkTS-Dyn示例：
    <!-- @[JSForm_JsCardFormAbility_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
    
    ``` TypeScript
@@ -71,9 +72,12 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
    import { preferences } from '@kit.ArkData';
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[JSForm_JsCardFormAbility_importSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/JSFormSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
 
 2. 在JsCardFormAbility.ets中，实现FormExtension生命周期接口。
 
+   ArkTS-Dyn示例：
    <!-- @[JSForm_JsCardFormAbility_FormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
    
    ``` TypeScript
@@ -169,6 +173,8 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
    
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[JSForm_JsCardFormAbility_FormExtensionAbilitySta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/JSFormSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
 
 > **说明：**
 > FormExtensionAbility不能常驻后台，即在卡片生命周期回调函数中无法处理长时间的任务。
@@ -180,6 +186,7 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 
    配置示例如下：
 
+   ArkTS-Dyn示例：
    <!-- @[JSForm_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/module.json5) --> 
    
    ``` JSON5
@@ -205,6 +212,8 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[JSFormSta_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/JSFormSta/entry/src/main/module.json5) --> 
 
 
 2. 卡片的具体配置信息。在上述FormExtensionAbility的元信息（"metadata"配置项）中，可以指定卡片具体配置信息的资源索引。例如当resource指定为$profile:form_jscard_config时，会使用开发视图的resources/base/profile/目录下的form_jscard_config.json作为卡片profile配置文件。内部字段结构说明如下表所示。
@@ -261,6 +270,8 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 因大部分卡片提供方都不是常驻服务，只有在需要使用时才会被拉起获取卡片信息，且卡片管理服务支持对卡片进行多实例管理，卡片ID对应实例ID，因此若卡片提供方支持对卡片数据进行配置，则需要对卡片的业务数据按照卡片ID进行持久化管理，以便在后续获取、更新以及拉起时能获取到正确的卡片业务数据。
 
 代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
+
+   ArkTS-Dyn示例：
 <!-- @[JSForm_JsCardFormAbility_onAddForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
 
 ``` TypeScript
@@ -314,10 +325,13 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 ```
 
+   ArkTS-Sta示例：
+<!-- @[JSForm_JsCardFormAbility_onAddFormSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/JSFormSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
 
 
 且需要适配onRemoveForm卡片删除通知接口，在其中实现卡片实例数据的删除。
 
+   ArkTS-Dyn示例：
 <!-- @[JSForm_JsCardFormAbility_onRemoveForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
 
 ``` TypeScript
@@ -354,7 +368,6 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 ```
 
-
 具体的持久化方法可以参考[轻量级数据存储开发指导](../database/app-data-persistence-overview.md)。
 
 需要注意的是，卡片使用方在请求卡片时传递给提供方应用的Want数据中存在临时标记字段，表示此次请求的卡片是否为临时卡片：
@@ -371,6 +384,8 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 当卡片应用需要更新数据时（如触发了定时更新或定点更新），卡片应用获取最新数据，并调用updateForm()接口主动触发卡片的更新。
 
 代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
+
+   ArkTS-Dyn示例：
 <!-- @[JSForm_JsCardFormAbility_onUpdateForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
 
 ``` TypeScript
@@ -400,6 +415,8 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 ```
 
+   ArkTS-Sta示例：
+<!-- @[JSForm_JsCardFormAbility_onUpdateFormSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/JSFormSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
 
 
 ### 开发卡片页面
@@ -641,8 +658,9 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 - 在UIAbility中接收router事件并获取参数
 
+   ArkTS-Dyn示例：
     <!-- @[JSForm_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/entryability/EntryAbility.ets) --> 
-    
+  
     ``` TypeScript
     // entry/src/main/ets/entryability/EntryAbility.ets
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -673,11 +691,15 @@ export default class JsCardFormAbility extends FormExtensionAbility {
     }
     ```
 
+   ArkTS-Sta示例：
+    <!-- @[JSForm_EntryAbilitySta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/JSFormSta/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+
 
 - 在FormExtensionAbility中接收message事件并获取参数，代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
 
+   ArkTS-Dyn示例：
     <!-- @[JSForm_JsCardFormAbility_onFormEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
-    
+
     ``` TypeScript
     // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
     const TAG: string = 'JsCardFormAbility';
@@ -701,6 +723,8 @@ export default class JsCardFormAbility extends FormExtensionAbility {
     }
     ```
 
+   ArkTS-Sta示例：
+    <!-- @[JSForm_JsCardFormAbility_onFormEventSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/JSFormSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
 
 <!--Del-->
 ## 相关实例
