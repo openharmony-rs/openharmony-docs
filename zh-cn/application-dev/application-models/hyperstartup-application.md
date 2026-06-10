@@ -325,8 +325,4 @@ export class LauncherAbility extends UIAbility {
 
   ```
 
-## 快启接入的辅助工具
-
-为帮助开发者定位需要适配和修改的内容，系统提供了[配套插件工具](https://gitcode.com/HarmonyOS_Samples/HyperStartup/blob/dev/tools/hyperstartupcheck-user-manual.md)。该工具基于代码扫描，识别具有快启风险的代码，并报告给开发者进行修正，节省人工排查工作量，提升应用适配快启的效率。
-
 <!--RP2--><!--RP2End-->
