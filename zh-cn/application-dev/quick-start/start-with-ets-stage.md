@@ -27,7 +27,7 @@
    
    若开发者需要进行Native相关工程的开发，请选择Native C++模板，更多模板的使用和说明请见[工程模板介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-template)。
 
-   ![createProject](figures/Native-C++-template.png)
+   ![Native-C++-template](figures/Native-C++-template.png)
 
 3. 进入配置工程界面，**Compatible SDK**表示兼容的最低API Version，此处以选择5.0.0(12)为例，其他参数保持默认设置即可。
 
