@@ -46,7 +46,7 @@ Badge(value: BadgeParamWithNumber)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[badge](#badge23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[badge](#badge23)。
 
 **ArkTS-Dyn起始版本：** 7
 
@@ -70,7 +70,7 @@ Badge(value: BadgeParamWithString)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[badge](#badge23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[badge](#badge23)。
 
 **ArkTS-Dyn起始版本：** 7
 
@@ -92,7 +92,7 @@ Badge(value: BadgeParamWithNumber | BadgeParamWithString)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[badge](#badge-1)和[badge](#badge-2)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[badge](#badge-1)和[badge](#badge-2)。
 
 **ArkTS-Sta起始版本：** 23
 

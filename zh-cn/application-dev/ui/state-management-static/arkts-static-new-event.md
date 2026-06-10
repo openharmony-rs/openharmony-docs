@@ -121,7 +121,7 @@ struct Child {
 <!-- @[EventAsyncSync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventDecorator/entry/src/main/ets/pages/EventAsyncSync.ets) -->
 
 ``` TypeScript
-import { ClickEvent, Column, ComponentV2, Entry, Event, Local, Param, Text } from '@kit.ArkUI';
+import { ClickEvent, Column, ComponentV2, Entry, Event, Local, Param, Text, Button } from '@kit.ArkUI';
 
 @ComponentV2
 struct Child {
@@ -131,12 +131,18 @@ struct Child {
   build() {
     Column() {
       Text(`Child index: ${this.index}`)
+        .fontSize(20)
+        .margin(10)
+      Button(`Change index`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.changeIndex(20);
           // 从父组件将变化同步回子组件的不是立刻生效
           console.info(`after changeIndex ${this.index}`);
         })
     }
+    .width('100%')
   }
 }
 @Entry
@@ -155,11 +161,14 @@ struct Index {
         }
       })
     }
+    .width('100%')
   }
 }
 ```
 
-在上述示例中，点击文字触发\@Event回调方法改变子组件的值，打印出的日志为：
+![event-async-sync](../figures/event2.gif)
+
+在上述示例中，点击按钮触发\@Event回调方法改变子组件的值，打印出的日志为：
 
 ```text
 in changeIndex 20

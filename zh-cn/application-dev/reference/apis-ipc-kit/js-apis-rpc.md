@@ -975,6 +975,8 @@ ArkTS-Sta: writeInt(val: int): void
 
 将整数值写入MessageSequence实例。
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **ArkTS-Dyn起始版本：** 9
@@ -1020,6 +1022,8 @@ ArkTS-Dyn: readInt(): number
 ArkTS-Sta: readInt(): int
 
 从MessageSequence实例中读取整数值。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -1527,6 +1531,8 @@ writeString(val: string): void
 
 将字符串值写入MessageSequence实例。
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **ArkTS-Dyn起始版本：** 9
@@ -1570,6 +1576,8 @@ try {
 readString(): string
 
 从MessageSequence实例中读取字符串值。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -10051,10 +10059,10 @@ if (proxy != undefined) {
 
   | 名称          | 类型   | 只读  | 可选  | 说明                                                                      |
   | ------------- | ------ | ----- | ----- | ------------------------------------------------------------------------ |
-  | TF_SYNC       | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 同步调用标识。 |
-  | TF_ASYNC      | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 异步调用标识。 |
-  | TF_ACCEPT_FDS | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 指示[sendMessageRequest](#sendmessagerequest9-2)接口可以传递文件描述符。 |
-  | TF_WAIT_TIME  | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | RPC等待时间(单位：秒)，IPC场景下无效。默认等待为8秒（不建议修改等待时间）。 |
+  | TF_SYNC       | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 同步调用标识。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+  | TF_ASYNC      | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 异步调用标识。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+  | TF_ACCEPT_FDS | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 指示[sendMessageRequest](#sendmessagerequest9-2)接口可以传递文件描述符。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+  | TF_WAIT_TIME  | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | RPC等待时间(单位：秒)，IPC场景下无效。默认等待为8秒（不建议修改等待时间）。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 
 ### constructor
@@ -10064,6 +10072,8 @@ constructor(syncFlags?: number, waitTime?: number)
 MessageOption构造函数。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -10095,6 +10105,8 @@ constructor(async?: boolean)
 MessageOption构造函数。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -10243,6 +10255,8 @@ isAsync(): boolean
 
 获取[sendMessageRequest](#sendmessagerequest9-2)调用中确定同步或是异步的标志。
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **ArkTS-Dyn起始版本：** 9
@@ -10274,6 +10288,8 @@ try {
 setAsync(isAsync: boolean): void
 
 设置[sendMessageRequest](#sendmessagerequest9-2)调用中确定同步或是异步的标志。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -10308,6 +10324,8 @@ ArkTS-Dyn: getFlags(): number
 ArkTS-Sta: getFlags(): int
 
 获取同步调用或异步调用标志。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -10349,6 +10367,8 @@ ArkTS-Sta: setFlags(flags: int): void
 
 设置同步调用或异步调用标志。
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.IPC.Core
 
 **ArkTS-Dyn起始版本：** 7
@@ -10385,6 +10405,8 @@ ArkTS-Dyn: getWaitTime(): number
 ArkTS-Sta: getWaitTime(): int
 
 获取rpc调用的最长等待时间。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -10423,6 +10445,8 @@ ArkTS-Dyn: setWaitTime(waitTime: number): void
 ArkTS-Sta: setWaitTime(waitTime: int): void
 
 设置rpc调用最长等待时间。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -11625,6 +11649,8 @@ ArkTS-Dyn: onRemoteMessageRequest(code: number, data: MessageSequence, reply: Me
 ArkTS-Sta: onRemoteMessageRequest(code: int, data: MessageSequence, reply: MessageSequence, options: MessageOption): boolean | Promise\<boolean>
 
 sendMessageRequest请求的响应处理函数，服务端在该函数里同步或异步地处理请求，回复结果。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 > **说明：**
 >

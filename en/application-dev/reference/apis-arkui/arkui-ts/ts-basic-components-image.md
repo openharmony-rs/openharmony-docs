@@ -1090,6 +1090,11 @@ struct ImageExample1 {
 }
 ```
 
+<<<<<<< HEAD
+=======
+![loadingImagesOfBasicTypes](figures/loadingImagesOfBasicTypes.gif)
+
+>>>>>>> upsteam/OpenHarmony_feature_sta_20260331
 ### Example 2: Downloading and Displaying Static Online Images
 
 The default timeout is 5 minutes for loading online images. When using an online image, you are advised to use **alt** to configure a placeholder image displayed during loading. You can use [HTTP](../../../network/http-request.md) to send a network request, and then decode the returned data into a **PixelMap** object for the **Image** component. Note that a GIF image loaded into a **PixelMap** object will be displayed as a static image. For details about image development, see the [Image Kit](../../../media/image/image-overview.md) overview.
@@ -1629,7 +1634,11 @@ struct ImageContentExample {
 }
 ```
 
+<<<<<<< HEAD
 ![imageContent](figures/image-view9.gif)
+=======
+![switchingBetweenDifferentTypes](figures/switchingBetweenDifferentTypes.gif)
+>>>>>>> upsteam/OpenHarmony_feature_sta_20260331
 
 ### Example 12: Securing Sensitive Information
 
@@ -1654,7 +1663,11 @@ struct ImageExample {
 }
 ```
 
+<<<<<<< HEAD
 ![imageContent](figures/image-view10.gif)
+=======
+![securingSensitiveInformation](figures/securingSensitiveInformation.gif)
+>>>>>>> upsteam/OpenHarmony_feature_sta_20260331
 
 ### Example 13: Setting the Scan Effect for an Image
 
@@ -2549,3 +2562,8 @@ struct ImageExample {
   }
 }
 ```
+<<<<<<< HEAD
+=======
+
+![antialiased](figures/antialiased.PNG)
+>>>>>>> upsteam/OpenHarmony_feature_sta_20260331

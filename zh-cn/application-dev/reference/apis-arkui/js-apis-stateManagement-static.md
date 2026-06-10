@@ -1748,9 +1748,9 @@ function CustomButton(mutableParam1: MutableBinding<number>, mutableParam2: Muta
 
 **起始版本：** 26.0.0
 
-## getCustomComponentReusePool
+## getReusePool
 
-getCustomComponentReusePool(): IReusePool | undefined
+getReusePool(): IReusePool | undefined
 
 返回该自定义组件拥有的全局复用池。如果组件没有通过`reusePool`和`poolAccepts`配置复用池，则返回`undefined`。配置全局复用池方式请参考[全局复用开发指南](../../../application-dev/ui/state-management/arkts-global-reuse-pool.md)。
 
@@ -1790,7 +1790,7 @@ struct PoolOwner {
   checkPool() {
     const context = UIUtils.getCustomComponentContext(this);
     // 从上下文中获取自定义组件复用池
-    const pool = context.getCustomComponentReusePool();
+    const pool = context.getReusePool();
     if (pool) {
       console.info('Global reuse pool configured.');
     } else {
@@ -2298,7 +2298,7 @@ struct PoolOwner {
   @Local showChild: boolean = true;
 
   inspectPool() {
-    const pool = UIUtils.getCustomComponentContext(this).getCustomComponentReusePool();
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
     if (!pool) {
       return;
     }
@@ -2378,13 +2378,13 @@ preRender(builder: WrappedBuilder\<CustomBuilder\>, times: int): Promise\<void\>
 
 ```ts
 'use static'
-import { UIUtils, ReusableV2, ComponentV2, Require, Param, Column, Text,
-         Builder, Entry, ReusePoolOwnership, Local, WrappedBuilder } from '@kit.ArkUI';
+import { UIUtils, ReusableV2, ComponentV2, Param, Require, Local, Column, Text, Entry,
+         ReusePoolOwnership, WrappedBuilder, Builder, IReusableInfo, ColumnOptions, Button } from '@kit.ArkUI';
 
 @ReusableV2
 @ComponentV2
 struct ReusableComponent {
-  @Require @Param param: number;
+  @Param param: number = 8;
 
   aboutToAppear() {
     console.info('ReusableComponent aboutToAppear');
@@ -2402,7 +2402,7 @@ struct ReusableComponent {
 
 @Builder 
 function preRenderBuilder() {
-  ReusableComponent({ param: 0 })
+  ReusableComponent()
 }
 
 @Entry
@@ -2412,30 +2412,44 @@ struct Index {
 
   aboutToAppear() {
     // 获取池并调度预渲染。
-    const pool = UIUtils.getCustomComponentContext(this).getCustomComponentReusePool();
-    // 预加载preRenderBuilder内的复用组件到当前的全局复用池中，执行一次preRenderBuilder。
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
     pool!.preRender(new WrappedBuilder<@Builder () => void>(preRenderBuilder), 1)
       .then(() => {
-        this.onUIFullyLoaded = true;
+        console.info('ReusableComponent preRender completes');
       });
   }
 
+  checkPool() {
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    const reusableInfo: IReusableInfo = pool!.getReusableInfo(Class.from<ReusableComponent>()) as IReusableInfo;
+    console.info(`ReusableComponent reuse pool count=${reusableInfo.count}`);
+  }
+
   build() {
-    Column() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('Switch')
+        .onClick(() => {
+          this.onUIFullyLoaded = !this.onUIFullyLoaded;
+        })
+        .width(100)
+      Button('Check pool')
+        .onClick(() => {
+          this.checkPool();
+        })
+        .width(100)
       CompA({ showFullUI: this.onUIFullyLoaded })
     }
+    .width('100%')
   }
 }
 
 @ComponentV2
 struct CompA {
   @Require @Param showFullUI: boolean;
-  @Local param: number = 8;
 
   build() {
     if (this.showFullUI) {
-      // 这将从池中复用预渲染的实例。
-      ReusableComponent({ param: this.param })
+      ReusableComponent()
     }
   }
 }
@@ -2496,7 +2510,7 @@ struct PoolOwner {
   @Local showB: boolean = true;
 
   controlPool() {
-    const pool = UIUtils.getCustomComponentContext(this).getCustomComponentReusePool();
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
     if (!pool) {
       return;
     }

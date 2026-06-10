@@ -22,7 +22,7 @@
 ``` TypeScript
 'use static'
 
-import { ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
+import { Column, Component, Divider, Entry, State, Text } from '@kit.ArkUI';
 
 @Component
 struct HelloComponent {
@@ -32,23 +32,13 @@ struct HelloComponent {
     // HelloComponent自定义组件组合系统组件Row和Text
     Column() {
       Text(this.message)
-        .onClick((e: ClickEvent) => {
+        .onClick(() => {
           this.message = 'Hello, ArkUI!';
         })
     }
   }
 }
-```
-> **说明：**
->
-> 如果在其他文件中引用自定义组件，需要使用`export`关键字导出组件，并在页面中使用`import`语句导入该组件。
 
-在其他自定义组件的`build()`函数中多次创建`HelloComponent`实例，可以实现自定义组件的重用。
-
-``` TypeScript
-'use static'
-
-import { ClickEvent, Column, Component, Divider, Entry, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
 struct ParentComponent {
@@ -62,6 +52,12 @@ struct ParentComponent {
   }
 }
 ```
+
+> **说明：**
+>
+> 如果在其他文件中引用自定义组件，需要使用`export`关键字导出组件，并在页面中使用`import`语句导入该组件。
+
+在其他自定义组件的`build()`函数中多次创建`HelloComponent`实例，可以实现自定义组件的重用。
 
 要完全理解上面的示例，需要了解自定义组件的以下概念定义，本文将在后面的小节中介绍：
 

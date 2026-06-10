@@ -271,7 +271,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
 
 ## 示例（加载EmbeddedComponent）
 
-本示例展示`EmbeddedComponent`组件和`EmbeddedUIExtensionAbility`的基础使用方式，示例应用的`bundleName`为"com.example.embeddeddemo", 同应用下被拉起的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。同时，支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调。本示例仅支持在拥有多进程权限的设备上运行，如PC/2in1。
+本示例展示`EmbeddedComponent`组件和`EmbeddedUIExtensionAbility`的基础使用方式，示例应用的`bundleName`为"com.example.embeddedComponent", 同应用下被拉起的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。同时，支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调。本示例仅支持在拥有多进程权限的设备上运行，如PC/2in1。
 
 从API版本26.0.0开始，新增[onDrawReady](#ondrawready)接口。
 
@@ -305,7 +305,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
   struct Index {
     @State message: string = 'Message: ';
     private want: Want = {
-      bundleName: "com.example.embeddeddemo",
+      bundleName: "com.example.embeddedComponent",
       abilityName: "ExampleEmbeddedAbility",
     };
     @State dpiFollowStrategy: EmbeddedDpiFollowStrategy = EmbeddedDpiFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_DPI;
@@ -465,7 +465,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
           this.session?.terminateSelfWithResult({
             resultCode: 1,
             want: {
-              bundleName: "com.example.embeddeddemo",
+              bundleName: "com.example.embeddedComponent",
               abilityName: "ExampleEmbeddedAbility",
             }
           });
