@@ -16,6 +16,6 @@ typedef struct OH_AVMediaSource OH_AVMediaSource
 
 **起始版本：** 23
 
-**相关模块：** [avmedia_source](capi-avmedia-source.md)
+**相关模块：** [AVMediaSource](capi-avmedia-source.md)
 
 **所在头文件：** [avmedia_source.h](capi-avmedia-source-h.md)
