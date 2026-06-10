@@ -1472,7 +1472,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | density   | number   | 否   | 否   | 指定虚拟屏幕的密度，该参数为浮点数。 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId。        |
 | supportsFocus<sup>22+</sup> | boolean | 否 | 是  | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。 |
-| userId<sup>24+</sup> | number | 否 | 是  | 指定虚拟屏幕的用户ID，该参数为整数。默认值为-1。<br/>**设备行为差异：** 该参数仅在车机中生效，其他设备不生效也不报错。 |
+| userId<sup>24+</sup> | number | 否 | 是  | 指定虚拟屏幕的用户ID，该参数为整数。默认值为-1。<br/>**设备行为差异：** 该参数仅在Car设备中生效，其他设备不生效也不报错。 |
 
 ## Screen
 
