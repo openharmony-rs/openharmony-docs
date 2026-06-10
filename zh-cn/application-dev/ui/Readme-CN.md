@@ -300,8 +300,7 @@
   - 使用动画<!--arkts-use-animation-ndk-->
     - [动画概述](ndk-use-animation.md)
     - [使用动画开发指导](ndk-use-animation-scene.md)
-  - 使用选择类组件<!--arkts-build-picker-ndk-->
-      - [使用滑动选择器 (Picker)](ndk-picker.md)
+  - [使用滑动选择器 (Picker)](ndk-picker.md)
   - [添加事件响应](ndk-add-event-response.md)
     - [添加事件监听](ndk-add-component-events.md)
     - [绑定基础输入事件](ndk-bind-input-events.md)
