@@ -64,7 +64,7 @@
 
 **解决措施**
 
-API version 24开始提供了AssetCompatibleCapability配置项支持应用配置自己是否支持高像素图片。
+API version 24开始提供AssetCompatibleCapability接口，支持配置应用是否兼容高像素图片资源。
 
 如果应用需要获取高像素原图，应显式声明应用具备处理高像素图片的能力，并在后续处理流程中做好降采样、区域解码和内存管理。
 
