@@ -210,7 +210,7 @@
       - [单一手势](arkts-gesture-events-single-gesture.md)
       - [组合手势](arkts-gesture-events-combined-gestures.md)
       - [多层级手势事件](arkts-gesture-events-multi-level-gesture.md)
-      - [手势冲突处理](arkts-gesture-events-gesture-judge.md)<!--RP6--><!--RP6End-->
+      - [手势冲突处理](arkts-gesture-events-gesture-judge.md)
     - [支持统一拖拽](arkts-common-events-drag-event.md)
     - [支持焦点处理](arkts-common-events-focus-event.md)
   - 使用动画<!--arkts-use-animation-->
@@ -406,7 +406,7 @@
     - [使用文本常见问题](arkts-text-faq.md)
     - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
     - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)
-    - [UI并行化常见问题](multi-thread-ui-build-faq.md)
+    - [UI并行化常见问题](multi-thread-ui-build-faq.md)<!--RP6--><!--RP6End-->
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
 - [ArkUI术语](arkui-glossary.md)
