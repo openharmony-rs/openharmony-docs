@@ -222,7 +222,7 @@ Calendar Kit中的日程[Event](../reference/apis-calendar-kit/js-apis-calendarM
      endTime: date.getTime() + 60 * 60 * 1000
    };
    calendarMgr?.editEvent(eventInfo).then((id: number): void => {
-     console.info(`create Event id = ${id}`);
+     console.info(`Succeeded in creating event, id = ${id}`);
    }).catch((err: BusinessError) => {
      console.error(`Failed to create Event. Code: ${err.code}, message: ${err.message}`);
    });
