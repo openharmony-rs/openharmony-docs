@@ -174,7 +174,7 @@ async function installUserCACertDialog(userCAData: Uint8Array): Promise<string> 
         reject(error);
       });
     } catch (error) {
-      console.error(`Failed to install user CA certificate. Code: ${error.code}, message: ${error.message}`);
+      console.error(`Failed to install user CA credential. Code: ${error.code}, message: ${error.message}`);
       reject(error);
     }
   })
