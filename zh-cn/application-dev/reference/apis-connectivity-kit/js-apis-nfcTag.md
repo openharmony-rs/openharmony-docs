@@ -795,7 +795,7 @@ on(type: 'readerModeWithInterval', elementName: ElementName, discTech: number[],
 - 设备会进入读卡器模式，同时关闭卡模拟。
 - 通过discTech设置支持的读卡技术类型，通过callback方式获取到Tag的[TagInfo](#taginfo)信息，通过interval设置卡在位检测间隔。
 - 需要与取消读卡器模式的[tag.off](#tagoffreadermodewithinterval23)成对使用，如果已通过on进行设置，需要在页面退出前台或页面销毁时调用[tag.off](#tagoffreadermodewithinterval23)。
-- 与注册读卡器模式的[tag.on](#tagonreadermode11)互斥使用
+- 与注册读卡器模式的[tag.on](#tagonreadermode11)互斥使用。
 
 **需要权限：** ohos.permission.NFC_TAG
 
