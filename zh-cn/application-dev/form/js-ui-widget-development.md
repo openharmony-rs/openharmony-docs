@@ -418,6 +418,36 @@ export default class JsCardFormAbility extends FormExtensionAbility {
    ArkTS-Sta示例：
 <!-- @[JSForm_JsCardFormAbility_onUpdateFormSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/JSFormSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
 
+``` TypeScript
+// entry/src/main/ets/entryformability/EntryFormAbility.ets
+
+const TAG: string = 'JsCardFormAbility';
+// ...
+const DOMAIN_NUMBER: int = 0xFF00;
+// ...
+
+export default class JsCardFormAbility extends FormExtensionAbility {
+  // ...
+  onUpdateForm(formId: string): void {
+    // 若卡片支持定时更新/定点更新/卡片使用方主动请求更新功能，则卡片提供方需要重写该方法以支持数据更新
+    hilog.info(DOMAIN_NUMBER, TAG, 'onUpdateForm');
+    let obj: Record<string, string> = {
+      'title': 'titleOnUpdate',
+      'detail': 'detailOnUpdate'
+    };
+    let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+    formProvider.updateForm(formId, formData).then(() => {
+      hilog.info(DOMAIN_NUMBER, TAG, `formProvider updateForm success`);
+    }).catch((error) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `promise error, code: ${error?.code}, message: ${error?.message}`);
+    });
+  }
+
+  // ...
+}
+
+```
+
 
 ### 开发卡片页面
 
