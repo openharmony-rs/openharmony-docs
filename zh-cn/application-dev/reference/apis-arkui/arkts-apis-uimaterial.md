@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **起始版本：** 26.0.0
 
