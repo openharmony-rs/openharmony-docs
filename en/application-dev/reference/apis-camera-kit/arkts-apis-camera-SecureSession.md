@@ -1,10 +1,12 @@
 # Interface (SecureSession)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d0c7a5fb2bc1f1b1c7630c4a5886ec88f6136925 translatedAt=2026-06-09T10:27:36.016Z pushedAt=2026-06-10T01:59:42.635Z -->
 
 **SecureSession** inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), and [Zoom](arkts-apis-camera-Zoom.md).
 
@@ -17,7 +19,6 @@ The security TA can verify the signature of data delivered by the server, sign i
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 12.
-
 
 ## Modules to Import
 
@@ -45,7 +46,7 @@ Marks a [PreviewOutput](arkts-apis-camera-PreviewOutput.md) stream as secure out
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400102                |  Operation not allowed.                                  |
