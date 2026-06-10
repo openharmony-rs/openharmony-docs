@@ -280,7 +280,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   
   strokeMiterLimit取值需大于等于1，且在[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)属性取值LineJoinStyle.Miter时生效。
 
-  <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) -->
+  <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) --> 
   
   ``` TypeScript
   Polyline()
@@ -293,7 +293,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     // 设置折线拐角处为尖角
     .strokeLineJoin(LineJoinStyle.Miter)
     // 设置斜接长度与线宽的比值
-    .strokeMiterLimit(1/Math.sin(45))
+    .strokeMiterLimit(1 / Math.sin(45 * Math.PI / 180))
   Polyline()
     .width(100)
     .height(100)
