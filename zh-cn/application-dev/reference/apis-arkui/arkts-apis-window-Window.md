@@ -3325,7 +3325,7 @@ export struct Index {
 
 isWindowShowing(): boolean
 
-判断当前窗口是否属于显示状态，即[WINDOW_SHOWN](arkts-apis-window-e.md#windoweventtype10)。
+判断当前窗口是否已显示。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -7347,7 +7347,7 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 
 此接口根据调用对象不同，实现不同的功能：
 
-- 当调用对象为主窗口时，实现最小化功能，可在多任务中还原，在2in1设备上可通过Dock栏或者使用[restore()](#restore14)进行还原。
+- 当调用对象为主窗口时，实现最小化功能，可在多任务中还原，在2in1设备上可通过Dock栏或使用[restore()](#restore14)进行还原。
 
 - 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，可以使用[showWindow()](#showwindow9)进行还原。
 
@@ -7394,7 +7394,7 @@ minimize(): Promise&lt;void&gt;
 
 此接口根据调用对象不同，实现不同的功能：
 
-- 当调用对象为主窗口时，实现最小化功能，可在多任务中还原，在2in1设备上可通过Dock栏或者使用[restore()](#restore14)进行还原。
+- 当调用对象为主窗口时，实现最小化功能，可在多任务中还原，在2in1设备上可通过Dock栏或使用[restore()](#restore14)进行还原。
 
 - 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，可以使用[showWindow()](#showwindow9)进行还原。
 
