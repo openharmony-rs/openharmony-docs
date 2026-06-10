@@ -3325,7 +3325,7 @@ export struct Index {
 
 isWindowShowing(): boolean
 
-判断当前窗口是否已显示。
+判断当前窗口是否属于显示状态，即[WINDOW_SHOWN](arkts-apis-window-e.md#windoweventtype10)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4297,7 +4297,7 @@ try {
 
 on(type: 'windowEvent', callback: Callback&lt;WindowEventType&gt;): void
 
-开启窗口生命周期变化的监听。
+开启窗口生命周期状态变化的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4307,7 +4307,7 @@ on(type: 'windowEvent', callback: Callback&lt;WindowEventType&gt;): void
 
 | 参数名   | 类型                                                       | 必填 | 说明                                                         |
 | -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                     | 是   | 监听事件，固定为'windowEvent'，即窗口生命周期变化事件。 |
+| type     | string                                                     | 是   | 监听事件，固定为'windowEvent'，即窗口生命周期状态变化事件。 |
 | callback | Callback&lt;[WindowEventType](arkts-apis-window-e.md#windoweventtype10)&gt; | 是   | 回调函数。返回当前的窗口生命周期状态。                 |
 
 **错误码：**
@@ -4334,7 +4334,7 @@ try {
 
 off(type: 'windowEvent', callback?: Callback&lt;WindowEventType&gt;): void
 
-关闭窗口生命周期变化的监听。
+关闭窗口生命周期状态变化的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -4343,9 +4343,9 @@ off(type: 'windowEvent', callback?: Callback&lt;WindowEventType&gt;): void
 **参数：**
 
 | 参数名   | 类型                                                       | 必填 | 说明                                                         |
-| -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                     | 是   | 监听事件，固定为'windowEvent'，即窗口生命周期变化事件。 |
-| callback | Callback&lt;[WindowEventType](arkts-apis-window-e.md#windoweventtype10)&gt; | 否   | 回调函数。返回当前的窗口生命周期状态。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口生命周期变化的监听。                 |
+| -------- | ---------------------------------------------------------- | ---- |------------------------------------------------------------|
+| type     | string                                                     | 是   | 监听事件，固定为'windowEvent'，即窗口生命周期状态变化事件。                       |
+| callback | Callback&lt;[WindowEventType](arkts-apis-window-e.md#windoweventtype10)&gt; | 否   | 回调函数。返回当前的窗口生命周期状态。若传入参数，则关闭该监听。若未传入参数，则关闭窗口所有生命周期状态变化的监听。 |
 
 **错误码：**
 
@@ -7347,9 +7347,9 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 
 此接口根据调用对象不同，实现不同的功能：
 
-- 当调用对象为主窗口时，实现最小化功能，可在Dock栏中还原，2in1 设备上可以使用[restore()](#restore14)进行还原。
+- 当调用对象为主窗口时，实现最小化功能，可在多任务中还原，在2in1设备上可通过Dock栏或者使用[restore()](#restore14)进行还原。
 
-- 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，不可在Dock栏中还原，可以使用[showWindow()](#showwindow9)进行还原。
+- 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，可以使用[showWindow()](#showwindow9)进行还原。
 
 该接口仅支持主窗口、子窗口或全局悬浮窗，其它窗口调用返回1300002错误码，使用callback异步回调。
 
@@ -7394,9 +7394,9 @@ minimize(): Promise&lt;void&gt;
 
 此接口根据调用对象不同，实现不同的功能：
 
-- 当调用对象为主窗口时，实现最小化功能，可在Dock栏中还原，2in1 设备上可以使用[restore()](#restore14)进行还原。
+- 当调用对象为主窗口时，实现最小化功能，可在多任务中还原，在2in1设备上可通过Dock栏或者使用[restore()](#restore14)进行还原。
 
-- 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，不可在Dock栏中还原，可以使用[showWindow()](#showwindow9)进行还原。
+- 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，可以使用[showWindow()](#showwindow9)进行还原。
 
 该接口仅支持主窗口、子窗口或全局悬浮窗，其它窗口调用返回1300002错误码，使用Promise异步回调。
 
@@ -8786,9 +8786,9 @@ setSubWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 设置子窗的模态属性是否启用，使用Promise异步回调。
 
-子窗口调用该接口时，设置子窗口模态属性是否启用。启用子窗口模态属性后，其父级窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态属性被禁用。
+启用子窗口模态属性后，其父级窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态属性被禁用。
 
-非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。子窗之外的窗口调用该接口时会报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。子窗之外的窗口调用该接口时会返回1300004错误码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8859,15 +8859,15 @@ export default class EntryAbility extends UIAbility {
 
 setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void&gt;
 
-设置子窗的模态类型，使用Promise异步回调。
+设置子窗的模态属性是否启用，并设置其模态类型，使用Promise异步回调。
 
-当子窗口模态类型为模窗口子窗时，其父级窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态类型被禁用。
+当子窗口模态类型为[WINDOW_MODALITY](arkts-apis-window-e.md#modalitytype14)时，其父级窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态类型被禁用。
 
-当子窗口模态类型为模应用子窗时，其父级窗口与该应用其他实例的窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态类型被禁用。
+当子窗口模态类型为[APPLICATION_MODALITY](arkts-apis-window-e.md#modalitytype14)时，其父级窗口与该应用其他实例的窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态类型被禁用。
 
 此接口仅支持设置子窗口模态类型，当需要禁用子窗口模态属性时，建议使用[setSubWindowModal<sup>12+</sup>](#setsubwindowmodal12)。
 
-非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。子窗之外的窗口调用该接口时会报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。子窗之外的窗口调用该接口时会返回1300004错误码。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -8877,7 +8877,7 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
-| isModal | boolean | 是   | 设置子窗口模态属性是否启用，true为启用，false为不启用。当前仅支持设置为true。 |
+| isModal | boolean | 是   | 设置子窗口模态属性是否启用，true为启用，false为不启用。当前仅支持设置为true，为false将返回401错误码。 |
 | modalityType | [ModalityType](arkts-apis-window-e.md#modalitytype14) | 是   | 子窗口模态类型。 |
 
 **返回值：**
@@ -8890,13 +8890,13 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息                       |
-| -------- | ------------------------------ |
+| 错误码ID | 错误信息                                                                                                         |
+| -------- |--------------------------------------------------------------------------------------------------------------|
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. |
-| 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation.        |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                       |
+| 1300003  | This window manager service works abnormally.                                                                |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported.                  |
 
 **示例：**
 
