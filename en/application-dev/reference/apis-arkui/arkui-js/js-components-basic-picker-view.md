@@ -67,7 +67,7 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | -------- | ------- | --------- | ---- | ---------------------------------------- |
 | columns  | number  | -         | Yes    | Number of columns in the multi-column text selector.                            |
 | range    | 2D Array | -         | No    | Items of the multi-column text selector. The value is a two-dimensional array that indicates the number of columns. Each item in the array indicates the data of each column, for example,&nbsp;**[["a","b"],&nbsp;["c","d"]]**.<br/>Use the data binding mode, for example, `range ={{data}}`. Declare the corresponding variable `data: ["15","20","25"]` in JavaSscript. |
-| selected | Array   | [0,0,0,…] | No    | Default value of the multi-column text selector, which is an array consisting of the indexes of the selected items in each column. |
+| selected | Array   | [0,0,0,...] | No    | Default value of the multi-column text selector, which is an array consisting of the indexes of the selected items in each column. |
 
 ## Styles
 
@@ -174,7 +174,7 @@ export default {
 <!-- xxx.hml -->
 <div class="container">
   <text class="title">
-    Selected：{{time}}
+    Selected: {{time}}
   </text>
   <picker-view class="time-picker" type="time" selected="{{defaultTime}}" @change="handleChange"></picker-view>
 </div>
@@ -232,7 +232,7 @@ export default {
 <!-- xxx.hml -->
 <div class="container">
     <text class="title">
-        Selected：{{date}}
+        Selected: {{date}}
     </text>
     <picker-view class="time-picker" type="date" selected="{{defaultTime}}" @change="handleChange" lunarswitch="true"></picker-view>
 </div>
@@ -274,7 +274,7 @@ export default {
 <!-- xxx.hml -->
 <div class="container">
     <text class="title">
-        Selected：{{datetime}}
+        Selected: {{datetime}}
     </text>
     <picker-view class="date-picker" type="datetime"  hours="24" lunarswitch="true" @change="handleChange"></picker-view>
 </div>
@@ -316,7 +316,7 @@ export default {
 <!-- xxx.hml -->
 <div class="container">
     <text class="title">
-        Selected：{{ value }}
+        Selected: {{ value }}
     </text>
     <picker-view class="multitype-picker" type="multi-text" columns="3" range="{{ multitext }}" @columnchange="handleChange"></picker-view>
 </div>
