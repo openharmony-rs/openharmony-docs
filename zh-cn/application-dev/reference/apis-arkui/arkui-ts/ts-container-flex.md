@@ -752,7 +752,7 @@ struct FlexExample4 {
         AlignItemsFlex({ alignItems: ItemAlign.Auto }) // 子组件在容器交叉轴上首端对齐
 
         Text('alignItems:Start').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        AlignItemsFlex({ alignItems: ItemAlign.Start }) // 子组件在容器交叉轴上首部对齐
+        AlignItemsFlex({ alignItems: ItemAlign.Start }) // 子组件在容器交叉轴上首端对齐
 
         Text('alignItems:Center').fontSize(9).fontColor(0xCCCCCC).width('90%')
         AlignItemsFlex({ alignItems: ItemAlign.Center }) // 子组件在容器交叉轴上居中对齐
