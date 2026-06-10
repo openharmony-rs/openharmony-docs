@@ -201,6 +201,7 @@
     });
     // 更换URL。
     let url = 'https://example.com/audio.mp3';
+    // 此处仅为示意，请替换为真实源文件URL。
     if (avPlayer == null) {
         return;
     }
