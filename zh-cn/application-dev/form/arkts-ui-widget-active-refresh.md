@@ -81,6 +81,65 @@
 
     ArkTS-Sta示例：
    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormStaticRefresh/entry/src/main/ets/widget/pages/UpdateByMessageCard.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/widget/pages/UpdateByMessageCard.ets
+   let storageUpdateByMsg = new LocalStorage();
+   
+   @Entry(storageUpdateByMsg)
+   @Component
+   struct UpdateByMessageCard {
+     // $r('app.string.default_title')和$r('app.string.DescriptionDefault')需要替换为开发者所需的资源文件
+     @LocalStorageProp('title') title: ResourceStr = $r('app.string.default_title');
+     @LocalStorageProp('detail') detail: ResourceStr = $r('app.string.DescriptionDefault');
+   
+     build() {
+       Column() {
+         Column() {
+           Text(this.title)
+             .fontColor('#FFFFFF')
+             .opacity(0.9)
+             .fontSize(14)
+             .margin({ top: '8%', left: '10%' })
+           Text(this.detail)
+             .fontColor('#FFFFFF')
+             .opacity(0.6)
+             .fontSize(12)
+             .margin({ top: '5%', left: '10%' })
+         }.width('100%').height('50%')
+         .alignItems(HorizontalAlign.Start)
+   
+         Row() {
+           // ...
+           Button() {
+             // $r('app.string.update')需要替换为开发者所需的资源文件
+             Text($r('app.string.update'))
+               .fontColor('#45A6F4')
+               .fontSize(12)
+           }
+           .width(120)
+           .height(32)
+           .margin({ top: '30%', bottom: '10%' })
+           .backgroundColor('#FFFFFF')
+           .borderRadius(16)
+           .onClick(() => {
+             postCardAction(this, {
+               action: 'message',
+               params: { msgTest: 'messageEvent' }
+             });
+           })
+         }.width('100%').height('40%')
+         .justifyContent(FlexAlign.Center)
+       }
+       .width('100%')
+       .height('100%')
+       .alignItems(HorizontalAlign.Start)
+       // $r('app.media.CardEvent')需要替换为开发者所需的资源文件
+       .backgroundImage($r('app.media.CardEvent'))
+       .backgroundImageSize(ImageSize.Cover)
+     }
+   }
+   ```
 
 3. 在onFormEvent回调函数的实现中，通过updateForm接口刷新卡片数据。
 
