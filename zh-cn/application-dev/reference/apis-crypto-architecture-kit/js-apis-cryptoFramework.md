@@ -109,14 +109,14 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，长度为1~16字节，常用为12字节。                             |
+| iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，长度为1~128字节，常用为12字节。                             |
 | aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad，长度为0~INT_MAX字节，常用为16字节。                             |
 | authTag | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需从[doFinal()](#dofinal)或[doFinalSync()](#dofinalsync12)输出的[DataBlob](#datablob)中提取末尾16字节，作为[init()](#init-1)或[initSync()](#initsync12)方法中GcmParamsSpec的authTag。 |
 
 > **说明：**
 >
 > 1. 传入[init()](#init-1)方法前需要指定其algName属性（来源于父类[ParamsSpec](#paramsspec)）。
-> 2. 对于1~16字节长度的iv，加解密算法库无额外限制，但结果取决于底层openssl的支持情况。
+> 2. 对于1~128字节长度的iv，加解密算法库无额外限制，但结果取决于底层OpenSSL的支持情况。
 > 3. 当aad参数不需要使用或aad长度为0时，可以将aad的data属性设置为一个空的Uint8Array，来构造GcmParamsSpec，写法为aad: { data: new Uint8Array() }。
 
 ## CcmParamsSpec
@@ -174,7 +174,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 > 在AES-CCM模式下使用AeadParamsSpec加密时：
 > - 若加密时指定了tag长度，解密时必须传入相同长度。
 >
-> - 当前使用AeadParamsSpec参数，CCM模式下update(#update)与doFinal(#dofinal)只能调用其中一个进行加密或者解密。且每个方法只能调用一次。
+> - 当前使用AeadParamsSpec参数，CCM模式下[update](#update)与[doFinal](#dofinal)只能调用其中一个进行加密或者解密。且每个方法只能调用一次。
 
 **起始版本：** 26.0.0
 
@@ -416,7 +416,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework。从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -807,7 +807,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 > **说明：**
 >
-> passphrase指的是原始密码，如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型，同时需要确保该字符串为utf-8编码，否则派生结果会有差异。
+> passphrase指的是原始密码，如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型，同时需要确保该字符串为UTF-8编码，否则派生结果会有差异。
 
 ## X963KdfSpec<sup>22+</sup>
 
@@ -915,7 +915,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 
 ## EccSignatureSpec<sup>20+</sup>
 
-包含（r、s）的sm2签名数据的结构体。
+包含（r、s）的ECC/SM2签名数据的结构体。
 
 > **说明：**
 >
@@ -953,7 +953,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 getEncoded(): DataBlob
 
-同步方法，获取密钥数据的字节流。密钥可以是对称密钥、公钥或私钥。公钥格式需符合ASN.1语法、X.509规范和DER编码；私钥格式需符合ASN.1语法、PKCS#8规范和DER编码。
+同步方法，获取密钥数据的字节流。密钥可以是对称密钥、公钥或私钥。公钥格式需符合ASN.1语法、X.509规范和DER编码；私钥格式需符合ASN.1语法、PKCS #8规范和DER编码。
 
 > **说明：**
 >
@@ -973,7 +973,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1016,7 +1016,7 @@ getKeySize(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | ---------------------- |
@@ -1102,7 +1102,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | bigint \| string \| number | 用于查看密钥参数的具体内容。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1180,7 +1180,7 @@ getEncodedDer(format: string): DataBlob
 | [DataBlob](#datablob) | 返回满足ASN.1语法和DER编码的指定密钥格式的公钥数据。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1208,7 +1208,7 @@ async function testGetEncodedDer() {
 
 getEncodedPem(format: string): string
 
-同步方法，获取密钥数据的字符串。密钥可以是RSA公钥或私钥。公钥需符合X.509、PKCS#1规范，并采用PEM编码。
+同步方法，获取密钥数据的字符串。密钥可以是RSA公钥或私钥。公钥需符合X.509、PKCS #1规范，并采用PEM编码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1227,7 +1227,7 @@ getEncodedPem(format: string): string
 | string | 用于获取指定密钥格式的具体内容。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1285,7 +1285,7 @@ getKeyData(itemType: AsyKeyDataItem): Promise&lt;Uint8Array&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1335,7 +1335,7 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1418,7 +1418,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | bigint \| string \| number | 用于查看密钥参数的具体内容。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1497,7 +1497,7 @@ getEncodedDer(format: string): DataBlob
 | [DataBlob](#datablob) | 返回满足ASN.1语法和DER编码的指定密钥格式的ECC私钥数据。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1527,7 +1527,7 @@ async function testGetEncodedDer() {
 
 getEncodedPem(format: string): string
 
-同步方法，获取密钥数据的字符串。密钥可以是RSA公钥或私钥。私钥格式需符合PKCS#8、PKCS#1规范，并采用PEM编码。
+同步方法，获取密钥数据的字符串。密钥可以是RSA公钥或私钥。私钥格式需符合PKCS #8、PKCS #1规范，并采用PEM编码。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1547,7 +1547,7 @@ getEncodedPem(format: string): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1591,7 +1591,7 @@ function TestPriKeyPkcs1ToPkcs8BySync1024() {
 
 getEncodedPem(format: string, config: KeyEncodingConfig): string
 
-同步方法，获取密钥数据的字符串。支持RSA公钥和私钥。私钥格式满足PKCS#8规范、PKCS#1规范和PEM编码方式。
+同步方法，获取密钥数据的字符串。支持RSA公钥和私钥。私钥格式满足PKCS #8规范、PKCS #1规范和PEM编码方式。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1612,7 +1612,7 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1674,7 +1674,7 @@ getPubKey(): Promise\<PubKey>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1770,7 +1770,7 @@ getPubKeySync(): PubKey
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1876,7 +1876,7 @@ getKeyData(itemType: AsyKeyDataItem): Promise&lt;Uint8Array&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -1926,7 +1926,7 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2001,7 +2001,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2062,7 +2062,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -2104,7 +2104,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -2152,7 +2152,7 @@ generateSymKeySync(): SymKey
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
@@ -2200,7 +2200,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<[SymKey](#symkey)> | 是   | 回调函数。当生成对称密钥成功，err为undefined，data为获取到的SymKey；否则为错误对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | --------------------------------------------------- |
@@ -2259,7 +2259,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | --------------------------------------------- |
@@ -2324,7 +2324,7 @@ convertKeySync(key: DataBlob): SymKey
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | --------------------------------------------------- |
@@ -2379,7 +2379,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2431,7 +2431,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2474,7 +2474,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2515,7 +2515,7 @@ generateKeyPairSync(): KeyPair
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2563,7 +2563,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2623,7 +2623,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2681,7 +2681,7 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2724,7 +2724,7 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 解析密钥数据，生成非对称密钥对象。使用Promise异步回调。
 
 > **说明：**
-> 1. 当调用convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，公钥应满足ASN.1语法、X.509规范、PEM编码格式，私钥应满足ASN.1语法、PKCS#8规范、PEM编码格式。
+> 1. 当调用convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，公钥应满足ASN.1语法、X.509规范、PEM编码格式，私钥应满足ASN.1语法、PKCS #8规范、PEM编码格式。
 > 2. convertPemKey方法中，公钥和私钥字符串数据为非必选项，可单独传入公钥或私钥的数据，生成对应只包含公钥或私钥的KeyPair对象。
 > 3. convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，不会校验生成的密钥对象的规格与创建非对称密钥生成器时指定的密钥规格是否一致。
 
@@ -2747,7 +2747,7 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2802,7 +2802,7 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 解析密钥数据，生成非对称密钥对象。支持加密的私钥，同步传入私钥口令解密私钥。使用Promise异步回调。
 
 > **说明：**
-> 1. 当调用convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，公钥应满足ASN.1语法、X.509规范、PEM编码格式，私钥应满足ASN.1语法、PKCS#8规范、PEM编码格式。
+> 1. 当调用convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，公钥应满足ASN.1语法、X.509规范、PEM编码格式，私钥应满足ASN.1语法、PKCS #8规范、PEM编码格式。
 > 2. convertPemKey方法中，公钥和私钥字符串数据为非必选项，可单独传入公钥或私钥的数据，生成对应只包含公钥或私钥的KeyPair对象。
 > 3. convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，不会校验生成的密钥对象的规格与创建非对称密钥生成器时指定的密钥规格是否一致。
 > 4. password为口令，传入后可以解密加密后的私钥。
@@ -2827,7 +2827,7 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2899,7 +2899,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -2979,7 +2979,7 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3052,7 +3052,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3132,7 +3132,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -3205,7 +3205,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3276,7 +3276,7 @@ generateKeyPairSync(): KeyPair
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3354,7 +3354,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3427,7 +3427,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3498,7 +3498,7 @@ generatePriKeySync(): PriKey
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3574,7 +3574,7 @@ API version10-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3647,7 +3647,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3718,7 +3718,7 @@ generatePubKeySync(): PubKey
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3802,7 +3802,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -3855,7 +3855,7 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3903,7 +3903,7 @@ static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Ar
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -3964,7 +3964,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -4016,7 +4016,7 @@ static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -4071,7 +4071,7 @@ static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -4131,7 +4131,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4203,7 +4203,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                                 |
 | -------- | --------------------------------------------------------- |
@@ -4243,7 +4243,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -4275,7 +4275,7 @@ initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -4328,7 +4328,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -4376,7 +4376,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -4414,7 +4414,7 @@ updateSync(data: DataBlob): DataBlob
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -4459,7 +4459,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数。最终加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -4564,7 +4564,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | Promise\<[DataBlob](#datablob)> | Promise对象，返回剩余数据的加/解密结果DataBlob。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -4657,7 +4657,7 @@ doFinalSync(data: DataBlob | null): DataBlob
 | [DataBlob](#datablob) | 返回剩余数据的加/解密结果DataBlob。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -4735,7 +4735,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4783,7 +4783,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4830,7 +4830,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | [Sign](#sign) | 返回由输入算法指定生成的Sign对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4905,7 +4905,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4942,7 +4942,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -4971,7 +4971,7 @@ Sign类不支持重复调用initSync。
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5011,7 +5011,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5057,7 +5057,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5095,7 +5095,7 @@ updateSync(data: DataBlob): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5126,7 +5126,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5161,7 +5161,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5194,7 +5194,7 @@ signSync(data: DataBlob | null): DataBlob
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5425,7 +5425,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5472,7 +5472,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5520,7 +5520,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5587,7 +5587,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5622,7 +5622,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5649,7 +5649,7 @@ initSync(pubKey: PubKey): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5689,7 +5689,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5735,7 +5735,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5773,7 +5773,7 @@ updateSync(data: DataBlob): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5805,7 +5805,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5841,7 +5841,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -5875,7 +5875,7 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6138,7 +6138,7 @@ recover(signatureData: DataBlob): Promise\<DataBlob | null>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6254,7 +6254,7 @@ recoverSync(signatureData: DataBlob): DataBlob | null
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6291,7 +6291,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6339,7 +6339,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | string \| number | 获取的验签参数的具体值。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6387,7 +6387,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6441,7 +6441,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6477,7 +6477,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6510,7 +6510,7 @@ generateSecretSync(priKey: PriKey, pubKey: PubKey): DataBlob
 |[DataBlob](#datablob) | 共享密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6599,7 +6599,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -6663,7 +6663,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6703,7 +6703,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6733,7 +6733,7 @@ updateSync(input: DataBlob): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6763,7 +6763,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 
 | 错误码ID | 错误信息               |
@@ -6810,7 +6810,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -6936,7 +6936,7 @@ digestSync(): DataBlob
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7053,7 +7053,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7098,7 +7098,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -7146,7 +7146,7 @@ createMac(macSpec: MacSpec): Mac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -7215,7 +7215,7 @@ API version 9-11 系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7249,7 +7249,7 @@ API version 9-11 系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7275,7 +7275,7 @@ initSync(key: SymKey): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7308,7 +7308,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7346,7 +7346,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7377,7 +7377,7 @@ updateSync(input: DataBlob): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7405,7 +7405,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7457,7 +7457,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7503,7 +7503,7 @@ doFinalSync(): DataBlob
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7553,7 +7553,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7616,7 +7616,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息     |
 | -------- | ------------ |
@@ -7675,7 +7675,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7726,7 +7726,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7843,7 +7843,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -7952,7 +7952,7 @@ enableHardwareEntropy(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ----------------- |
@@ -8004,7 +8004,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ----------------- |
@@ -8058,7 +8058,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -8111,7 +8111,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -8190,7 +8190,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -8267,7 +8267,7 @@ generateSecretSync(params: KdfSpec): DataBlob
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -8339,7 +8339,7 @@ static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
@@ -8374,7 +8374,7 @@ static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
 
 static genEccSignature(spec: EccSignatureSpec): Uint8Array;
 
-将（r、s）的sm2签名数据转换为ASN1 DER格式。
+将（r、s）的ECC/SM2签名数据转换为ASN1 DER格式。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -8384,7 +8384,7 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array;
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| spec   | [EccSignatureSpec](#eccsignaturespec20)        | 是   | （r、s）的sm2签名数据。 |
+| spec   | [EccSignatureSpec](#eccsignaturespec20)        | 是   | （r、s）的ECC/SM2签名数据。 |
 
 **返回值：**
 
@@ -8394,7 +8394,7 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
