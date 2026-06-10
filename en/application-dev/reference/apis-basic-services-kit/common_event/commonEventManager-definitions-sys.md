@@ -384,7 +384,7 @@ When the sync root update is complete, the common event service is triggered to 
 
 **Value:** usual.event.CLOUD_DISK_STATE_CHANGED
 
-### COMMON_EVENT_RESTORE_END<sup>23+<sup>
+### COMMON_EVENT_RESTORE_END<sup>23+</sup>
 
 Indicates that an application has finished restoration.
 
