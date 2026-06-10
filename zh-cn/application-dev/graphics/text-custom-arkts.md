@@ -120,6 +120,33 @@
    ```
    ArkTS-Sta示例：
    <!-- @[arkts_independent_shaping_text_drawing](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
+   
+   ``` TypeScript
+   let x: double = 0;
+   let y: double = 0;
+   for (let index = 0; index < runs.length; index++) {
+     const run = runs[index];
+     // 绘制字形
+     let glyphs: int[] = run.getGlyphs();
+     let font: drawing.Font = run.getFont();
+     let advances: common2D.Point[] | undefined = run.getAdvances({ start: 0, end: 0 });
+   
+     // 创建字形buffer，通过drawing接口进行字形独立绘制
+     let runBuffer: drawing.TextBlobRunBuffer[] = [];
+     for (let i = 0; i < glyphs.length; i++) {
+       runBuffer.push({ glyph: glyphs[i], positionX: x, positionY: y });
+       if (advances != undefined) {
+         x += advances[i].x + 10;
+         y += advances[i].y + 30;
+       }
+     }
+     let textBlob: drawing.TextBlob | undefined = drawing.TextBlob.makeFromRunBuffer(runBuffer, font, undefined);
+     if (textBlob != undefined) {
+       // 自定义绘制一串具有相同属性的一系列连续字形
+       canvas.drawTextBlob(textBlob, 20, 100);
+     }
+   }
+   ```
 
 效果展示：
 
