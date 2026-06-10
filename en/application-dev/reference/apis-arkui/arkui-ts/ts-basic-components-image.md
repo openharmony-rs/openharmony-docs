@@ -1155,7 +1155,7 @@ struct ImageExample2 {
 }
 ```
 
-![en-us-image-view-02](figures/en-us-image-view-02.png)
+![en-us_image_0000001607845173](figures/image-view2.png)
 
 ### Example 3: Downloading and Displaying Online GIF Images
 
@@ -1237,7 +1237,7 @@ struct ImageExample3 {
 }
 ```
 
-![skychange](figures/skychange.gif)
+![en-us_image_0000001607845173](figures/en-us_image_0000001607845173.gif)
 
 ### Example 5: Enabling the AI Image Analyzer
 
@@ -1289,7 +1289,7 @@ struct ImageExample4 {
 }
 ```
 
-![en-us-image-view4](figures/en-us-image-view4.gif)
+![en-us_image_0000001607845173](figures/image-view4.gif)
 <!--RP2End-->
 ### Example 6: Stretching an Image Using slice
 
@@ -1483,7 +1483,7 @@ struct ImageExample {
 }
 ```
 
-![image-view6](figures/image-view6.gif)
+![en-us_image_0000001607845173](figures/image-view6.gif)
 
 ### Example 9: Setting a Color Filter for an Image
 
@@ -1631,7 +1631,7 @@ struct ImageContentExample {
 }
 ```
 
-![imageContent](figures/en-us_image_view9.gif)
+![switchingBetweenDifferentTypes](figures/switchingBetweenDifferentTypes.gif)
 
 ### Example 12: Securing Sensitive Information
 
@@ -1656,7 +1656,7 @@ struct ImageExample {
 }
 ```
 
-![imageContent](figures/en-us_image_view10.gif)
+![securingSensitiveInformation](figures/securingSensitiveInformation.gif)
 
 ### Example 13: Setting the Scan Effect for an Image
 
@@ -2552,4 +2552,4 @@ struct ImageExample {
 }
 ```
 
-![sandBox](figures/antialiased.PNG)
+![antialiased](figures/antialiased.PNG)
