@@ -46,13 +46,27 @@ ArkTS-Dyn: x(): number
 
 ArkTS-Sta: x(): int
 
-弹出菜单的x坐标。
+弹出菜单的x坐标，相对于Web组件左上角的水平距离。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 9
 
+<<<<<<< HEAD
 **ArkTS-Sta起始版本：** 23
+=======
+| 类型     | 说明                                 |
+| ------ |------------------------------------|
+| number | 显示正常返回非负整数，否则返回-1。<br>单位：px（物理像素）。 |
+
+## y<sup>9+</sup>
+
+y(): number
+
+弹出菜单的y坐标，相对于Web组件左上角的垂直距离。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+>>>>>>> c383d881b05 (添加模块概述)
 
 **返回值：**
 
