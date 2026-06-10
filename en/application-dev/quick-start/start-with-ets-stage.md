@@ -350,6 +350,6 @@ To deliver better transition effects, use **Navigation**.
 
 3. On the toolbar in the upper right corner of the editing window, click ![start](figures/start.png). The display effect is shown in the figure below.
 
-   ![en-us_image_0000001364254729](figures/en-us_image_0000001364254729.png)
+   ![Page-redirection-return](figures/Page-redirection-return.png)
 
 Congratulations! You have successfully built your first OpenHarmony application based on ArkTS. Feel free to explore more HarmonyOS features!
