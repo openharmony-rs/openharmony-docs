@@ -2087,9 +2087,9 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 **设备行为差异：**
 
-在<!--RP21-->OpenHarmony 5.0.0<!--RP21End-->之前，该接口在所有设备中可正常调用。
+在<!--RP20-->OpenHarmony 5.0.0<!--RP20End-->之前，该接口在所有设备中可正常调用。
 
-从<!--RP21-->OpenHarmony 5.0.0<!--RP21End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+从<!--RP20-->OpenHarmony 5.0.0<!--RP20End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
 <!--RP18--><!--RP18End-->
 
@@ -2166,9 +2166,9 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 **设备行为差异：**
 
-在<!--RP21-->OpenHarmony 5.0.0<!--RP21End-->之前，该接口在所有设备中可正常调用。
+在<!--RP20-->OpenHarmony 5.0.0<!--RP20End-->之前，该接口在所有设备中可正常调用。
 
-从<!--RP21-->OpenHarmony 5.0.0<!--RP21End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+从<!--RP20-->OpenHarmony 5.0.0<!--RP20End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
 <!--RP18--><!--RP18End-->
 
@@ -2237,7 +2237,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt;
 
-设置主窗口状态栏、<!--RP20-->三键导航栏的属性。<!--RP20End-->使用Promise异步回调。
+设置主窗口状态栏、<!--RP19-->三键导航栏的属性。<!--RP19End-->使用Promise异步回调。
 
 子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
@@ -2247,11 +2247,11 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 
 **设备行为差异：**
 
-在<!--RP21-->OpenHarmony 5.0.0<!--RP21End-->之前，该接口在所有设备中可正常调用。
+在<!--RP20-->OpenHarmony 5.0.0<!--RP20End-->之前，该接口在所有设备中可正常调用。
 
-从<!--RP21-->OpenHarmony 5.0.0<!--RP21End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+从<!--RP20-->OpenHarmony 5.0.0<!--RP20End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
-<!--RP19--><!--RP19End-->
+<!--RP18--><!--RP18End-->
 
 **参数：**
 
