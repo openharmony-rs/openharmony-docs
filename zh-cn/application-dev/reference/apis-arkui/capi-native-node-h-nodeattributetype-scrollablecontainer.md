@@ -267,7 +267,7 @@ NODE_SCROLL_OFFSET = 1002009
 | .value[0].f32 | 水平滑动偏移，单位为vp。取值范围：当值小于0时按0处理，表示不带动画的滚动。值大于0表示带动画的滚动，默认滚动到起始位置后停止。可通过设置ScrollOptions中的animation参数，使滚动在越界时启动回弹动画。 |
 | .value[1].f32 | 垂直滑动偏移，单位为vp。取值范围：当值小于0时按0处理，表示不带动画的滚动。值大于0表示带动画的滚动，默认滚动到起始位置后停止。可通过设置animation参数，使滚动在越界时启动回弹动画。 |
 | .value[2]?.i32 | 可选值，滚动时长，单位为毫秒，默认值1000。 |
-| .value[3]?.i32 | 可选值，滚动曲线，参数类型[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)。默认值为[ARKUI_CURVE_EASE](capi-native-type-h.md#arkui_animationcurve)。 |
+| .value[3]?.i32 | 可选值，滚动曲线，参数类型[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)。默认值为[ARKUI_CURVE_EASE](capi-native-type-visual-h.md#arkui_animationcurve)。 |
 | .value[4]?.i32 | 可选值，是否使能默认弹簧动效，默认值为0不使能。 |
 | .value[5]?.i32 | 可选值，设置动画滚动到边界是否转换为越界回弹动画，默认值为0不转换越界回弹动画。 |
 | .value[6]?.i32 | 可选值，设置滚动是否可以停留在越界位置，默认值为0不停留在越界位置。该参数从API version 20开始支持。 |
