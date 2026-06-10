@@ -18338,5 +18338,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/windowmanager/window-layout.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":152,
+						"name":"aspectRatio",
+						"start_line":16
+					},
+					{
+						"end_line":105,
+						"name":"enableDrag",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":168,
+						"name":"sub_move_resize",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/SubWindowPage.ets",
+				"functions":[
+					{
+						"end_line":147,
+						"name":"startMoving",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
