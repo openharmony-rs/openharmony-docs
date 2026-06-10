@@ -23,6 +23,16 @@
 
    ArkTS-Sta示例：
     <!-- @[import_entry_form_abilitySta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormLifecycleSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
+    
+    ``` TypeScript
+    // entry/src/main/ets/entryformability/EntryFormAbility.ets
+    import formBindingData from '@ohos.app.form.formBindingData';
+    import FormExtensionAbility from '@ohos.app.form.FormExtensionAbility';
+    import formInfo from '@ohos.app.form.formInfo';
+    import Want from '@ohos.app.ability.Want';
+    import { Configuration } from '@ohos.app.ability.Configuration';
+    import hilog from '@ohos.hilog';
+    ```
 
 2. 在EntryFormAbility.ets中，实现[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)生命周期接口，其中在onAddForm的入参[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)中可以通过[FormParam](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formparam)取出卡片的相关信息。
 
