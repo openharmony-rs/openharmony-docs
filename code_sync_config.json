@@ -18378,5 +18378,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/avsession/avsession-access-scene.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/DisplayTagsOfMediaAssets.ets",
+				"functions":[
+					{
+						"end_line":97,
+						"name":"displayTagsOfMediaAssets",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVSession/LocalAVSession/AccessingAVSession/entry/src/main/ets/pages/SettingGeneralStateInformation.ets",
+				"functions":[
+					{
+						"end_line":96,
+						"name":"settingGeneralStateInformation",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
