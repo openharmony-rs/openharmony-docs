@@ -281,7 +281,7 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number): Promi
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 应用包名。最小7字节，最大128字节。超出范围时抛出错误码19100001。 |
 | userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。<br>取值范围为[0, 2<sup>31</sup>-1]，超出范围将被截断。当传入参数值小于0时，输出错误日志。 |
-| appIndex | number | 是 | DLP沙箱号，即installDLPSandbox接口调用成功后的返回值，用于标识已安装的DLP沙箱。取值范围为[1000, 1100]。超出范围时输出错误日志。 |
+| appIndex | number | 是 | DLP沙箱号，即installDLPSandbox接口调用成功后的返回值，用于标识已安装的DLP沙箱。取值范围为[1000, 1100]，超出范围时输出错误日志。 |
 
 **返回值：**
 
@@ -338,7 +338,7 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number, callba
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 应用包名。最小7字节，最大128字节。超出范围时抛出错误码19100001。 |
 | userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。取值范围为[0, 2<sup>31</sup>-1]，超出范围将被截断。  |
-| appIndex | number | 是 | DLP沙箱号，即installDLPSandbox接口调用成功后的返回值，用于标识已安装的DLP沙箱。取值范围为[1000, 1100]。超出范围时输出错误日志。 |
+| appIndex | number | 是 | DLP沙箱号，即installDLPSandbox接口调用成功后的返回值，用于标识已安装的DLP沙箱。取值范围为[1000, 1100]，超出范围时输出错误日志。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当卸载DLP沙箱成功，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -1814,7 +1814,7 @@ DLP沙箱的状态信息。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | bundleName | string | 否 | 否 | 表示应用包名。最小7字节，最大128字节。超出此范围抛出错误码19100001。 |
-| appIndex | number | 否 | 否 | 表示DLP沙箱应用索引。取值范围为[1000, 1100]。超出范围时输出错误日志。 |
+| appIndex | number | 否 | 否 | 表示DLP沙箱应用索引。取值范围为[1000, 1100]，超出范围时输出错误日志。 |
 
 ## GatheringPolicyType
 
