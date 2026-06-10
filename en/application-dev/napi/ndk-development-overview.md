@@ -62,7 +62,7 @@ For details about how to obtain the NDK, see <!--RP1-->[Building an NDK Project 
 
 - **build** directory: stores the predefined toolchain script file <!--RP2-->[ohos.toolchain.cmake](build-with-ndk-overview.md#introduction-to-ohostoolchaincmake).<!--RP2End-->
 
-  ![](figures/en-us_image_0000001770128125.png)
+  ![ndk-bulid-structure](figures/ndk-bulid-structure.png)
 
   During compilation, CMake locates the file through **CMAKE_TOOLCHAIN_FILE** and reads the default values in this file, such as the compiler architecture and C++ library link mode.
 
@@ -77,7 +77,7 @@ For details about how to obtain the NDK, see <!--RP1-->[Building an NDK Project 
 
 - **llvm** folder: contains the compilers provided by the NDK.
 
-  ![en-us_image_0000001696408864](figures/en-us_image_0000001696408864.png)
+  ![ndk-tools-list](figures/ndk-tools-list.png)
 
 
 ## Common NDK Modules

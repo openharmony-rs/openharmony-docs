@@ -44,7 +44,7 @@ include_directories(
 
 When prebuilt libraries are used in the HAR, the currently built libraries and prebuilt libraries required for linking are packed to the **libs** directory in the HAR, as shown in the following figure.
 
-![en-us_image_0000001693795070](figures/en-us_image_0000001693795070.png)
+![har-libary-pacaging](figures/har-libary-pacaging.png)
 
 ### Resolving the SONAME Issue with Prebuilt Libraries
 
