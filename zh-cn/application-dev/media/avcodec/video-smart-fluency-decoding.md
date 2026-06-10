@@ -57,49 +57,69 @@
 
 在视频起播前，配置初始模式。
 
+<!-- @[configure_full_baseline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp) -->
+
 ```c++
-#include <multimedia/player_framework/native_avcodec_videodecoder.h>
-#include <multimedia/player_framework/native_avformat.h>
+int32_t VideoDecoder::Configure(const SampleInfo &sampleInfo)
+{
+    OH_AVFormat *format = OH_AVFormat_Create();
+    CHECK_AND_RETURN_RET_LOG(format != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "AVFormat create failed");
 
-OH_AVFormat *format = OH_AVFormat_Create();
-// ... 宽高等常规视频参数配置 ...
-
-// 配置 FULL 模式，为后续 ADAPTIVE 模式性能体验最大化准备好运行环境。
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE, 
-                        OH_FRAME_RETENTION_MODE_FULL);
-
-OH_VideoDecoder_Configure(vdec, format);
-OH_AVFormat_Destroy(format);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, sampleInfo.videoWidth);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, sampleInfo.videoHeight);
+    OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, sampleInfo.frameRate);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, sampleInfo.pixelFormat);
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_ROTATION, sampleInfo.rotation);
+    if (sampleInfo.codecSyncMode) {
+        OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, sampleInfo.codecSyncMode);
+    }
+    if (sampleInfo.isSmartFluencySupported) {
+        // 配置 FULL 模式，为后续 ADAPTIVE 模式性能体验最大化准备好运行环境。
+        OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE,
+                                OH_FRAME_RETENTION_MODE_FULL);
+    }
+    int ret = OH_VideoDecoder_Configure(decoder_, format);
+    OH_AVFormat_Destroy(format);
+    format = nullptr;
+    CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Config failed, ret: %{public}d", ret);
+    return AVCODEC_SAMPLE_ERR_OK;
+}
 ```
 
 ### 步骤二：运行态按需切换（Running）
 
 系统支持在运行态下动态切换帧保留模式。开发者可通过调用 `OH_VideoDecoder_SetParameter` 实时下发配置，参数的生效时机与该接口的标准行为一致。
 
+<!-- @[onUserSpeedChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp) -->
+
 ```c++
-// 假设 vdec 为已处于 Running 状态的 OH_AVCodec 实例。
-void OnUserSpeedChanged(OH_AVCodec *vdec, double targetSpeed) {
+int32_t VideoDecoder::OnUserSpeedChanged(double targetSpeed)
+{
     OH_AVFormat *param = OH_AVFormat_Create();
-    
+    CHECK_AND_RETURN_RET_LOG(param != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "AVFormat create failed");
+
     // 引入 epsilon 处理 double 类型的精度比较。
     const double EPSILON = 1e-6;
 
     if (targetSpeed > 1.0 + EPSILON) {
         // 场景：高倍速播放 (如 1.5x, 2.0x, 3.0x 等)。
         // 策略：使能感知自适应模式。
-        OH_AVFormat_SetIntValue(param, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE, 
+        OH_AVFormat_SetIntValue(param, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE,
                                 OH_FRAME_RETENTION_MODE_ADAPTIVE);
         OH_AVFormat_SetDoubleValue(param, OH_MD_KEY_VIDEO_DECODER_SPEED, targetSpeed);
     } else {
         // 场景：正常播放 (1.0x) 或 慢速播放 (< 1.0x)。
         // 策略：切换到全量直通模式，保障帧帧送显。
-        OH_AVFormat_SetIntValue(param, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE, 
+        OH_AVFormat_SetIntValue(param, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE,
                                 OH_FRAME_RETENTION_MODE_FULL);
     }
 
     // 实时下发参数，动态调整系统帧保留策略。
-    OH_VideoDecoder_SetParameter(vdec, param);
+    int32_t ret = OH_VideoDecoder_SetParameter(decoder_, param);
     OH_AVFormat_Destroy(param);
+    CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
+                             "SetParameter failed, ret: %{public}d", ret);
+    return AVCODEC_SAMPLE_ERR_OK;
 }
 ```
 
@@ -113,21 +133,27 @@ void OnUserSpeedChanged(OH_AVCodec *vdec, double targetSpeed) {
 
 **业务逻辑代码示例（以应对温控告警为例）：**
 
+<!-- @[onThermalWarningReceived](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp) -->
+
 ```c++
-// 假设 vdec 为已处于 Running 状态的 OH_AVCodec 实例。
-void OnThermalWarningReceived(OH_AVCodec *vdec) {
+int32_t VideoDecoder::OnThermalWarningReceived(double ratio)
+{
     OH_AVFormat *param = OH_AVFormat_Create();
+    CHECK_AND_RETURN_RET_LOG(param != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "AVFormat create failed");
 
     // 采用 UNIFORM 平滑定比模式。
-    OH_AVFormat_SetIntValue(param, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE, 
+    OH_AVFormat_SetIntValue(param, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE,
                             OH_FRAME_RETENTION_MODE_UNIFORM);
-                            
-    // 设定保留比例为 0.3（仅保留 30% 的解码帧输出）。
-    OH_AVFormat_SetDoubleValue(param, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_RATIO, 0.3);
+
+    // 设定保留比例（如 0.3 表示仅保留 30% 的解码帧输出）。
+    OH_AVFormat_SetDoubleValue(param, OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_RATIO, ratio);
 
     // 实时下发生效，系统将执行均匀的抽帧剔除，降低整机负载。
-    OH_VideoDecoder_SetParameter(vdec, param);
+    int32_t ret = OH_VideoDecoder_SetParameter(decoder_, param);
     OH_AVFormat_Destroy(param);
+    CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR,
+                             "SetParameter failed, ret: %{public}d", ret);
+    return AVCODEC_SAMPLE_ERR_OK;
 }
 ```
 
