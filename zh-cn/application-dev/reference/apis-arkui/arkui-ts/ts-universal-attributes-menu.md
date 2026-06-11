@@ -1018,7 +1018,7 @@ struct DirectiveMenuExample {
 }
 ```
 
-![zh-cn_image_0000001689126950](figures/zh-cn_image_0000001689126950.png)
+![DirectiveMenuExample](figures/DirectiveMenuExample.png)
 
 ### 示例5（长按弹出菜单的截图预览样式）
 
@@ -1862,7 +1862,7 @@ struct MenuExample {
 }
 ```
 
-![preview-builder](figures/zh-cn_image_backgroundBlurStyleOptions.png)
+![preview-builder](figures/image-backgroundBlurStyleOptions.png)
 
 ### 示例12（自定义背景效果参数）
 
@@ -1975,7 +1975,7 @@ struct MenuExample {
 }
 ```
 
-![preview-builder](figures/zh-cn_image_backgroundEffect.png)
+![preview-builder](figures/image-backgroundEffect.png)
 
 ### 示例13（设置一镜到底动效支持抬手打断）
 
@@ -2350,7 +2350,7 @@ struct Index {
 }
 ```
 
-![preview-builder](figures/zh-cn_image_bindMenuLifeCycle.gif)
+![preview-builder](figures/image-bindMenuLifeCycle.gif)
 
 ### 示例16（设置菜单蒙层）
 

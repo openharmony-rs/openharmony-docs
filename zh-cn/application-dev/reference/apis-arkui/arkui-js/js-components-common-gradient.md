@@ -88,4 +88,4 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
    background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30px,rgba(0, 0, 255, .5) 60px);
    ```
 
-   ![zh-cn_image_0000001237134475](figures/zh-cn_image_0000001237134475.png)
+   ![gradient](figures/gradient.png)

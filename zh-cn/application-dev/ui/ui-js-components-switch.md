@@ -31,7 +31,7 @@ switch为开关选择器，切换开启或关闭状态。具体用法请参考[s
 }
 ```
 
-![zh-cn_image_0000001229784239](figures/zh-cn_image_0000001229784239.png)
+![switch-Component](figures/switch-Component.png)
 
 
 ## 添加属性和方法
@@ -84,7 +84,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001221030133](figures/zh-cn_image_0000001221030133.gif)
+![Attributes-and-Methods](figures/Attributes-and-Methods.gif)
 
 
 > **说明：** 
@@ -197,4 +197,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001220830223](figures/zh-cn_image_0000001220830223.gif)
+![Example-Scenario-10](figures/Example-Scenario-10.gif)

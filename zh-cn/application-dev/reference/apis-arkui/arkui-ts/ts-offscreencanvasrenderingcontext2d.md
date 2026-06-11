@@ -140,7 +140,7 @@ struct FillStyleExample {
 }
 ```
 
-![zh-cn_image_0000001193872516](figures/zh-cn_image_0000001193872516.png)
+![fillStyle](figures/fillStyle.png)
 
 
 ### lineWidth
@@ -187,7 +187,7 @@ struct LineWidthExample {
 }
 ```
 
-![zh-cn_image_0000001238832403](figures/zh-cn_image_0000001238832403.png)
+![lineWidth2](figures/lineWidth2.png)
 
 
 ### strokeStyle
@@ -268,7 +268,7 @@ struct StrokeStyleExample {
 }
 ```
 
-![zh-cn_image_0000001238712437](figures/zh-cn_image_0000001238712437.png)
+![strokeStyle2](figures/strokeStyle2.png)
 
 
 ### lineCap
@@ -319,7 +319,7 @@ struct LineCapExample {
 }
 ```
 
-![zh-cn_image_0000001194192454](figures/zh-cn_image_0000001194192454.PNG)
+![lineCap](figures/lineCap.PNG)
 
 
 ### lineJoin
@@ -371,7 +371,7 @@ struct LineJoinExample {
 }
 ```
 
-![zh-cn_image_0000001194352450](figures/zh-cn_image_0000001194352450.png)
+![lineJoin2](figures/lineJoin2.png)
 
 
 ### miterLimit
@@ -423,7 +423,7 @@ struct MiterLimit {
 }
 ```
 
-![zh-cn_image_0000001238952397](figures/zh-cn_image_0000001238952397.png)
+![miterLimit](figures/miterLimit.png)
 
 
 ### font
@@ -550,7 +550,7 @@ struct CanvasExample {
 }
 ```
 
-![zh-cn_image_0000001239032423](figures/zh-cn_image_0000001239032423.png)
+![textAlign2](figures/textAlign2.png)
 
 
 ### textBaseline
@@ -666,7 +666,7 @@ struct GlobalAlpha {
 }
 ```
 
-![zh-cn_image_0000001238832405](figures/zh-cn_image_0000001238832405.png)
+![globalAlpha2](figures/globalAlpha2.png)
 
 
 ### lineDashOffset
@@ -715,7 +715,7 @@ struct LineDashOffset {
 }
 
 ```
-![zh-cn_image_0000001238712439](figures/zh-cn_image_0000001238712439.png)
+![lineDashOffset](figures/lineDashOffset.png)
 
 
 ### globalCompositeOperation
@@ -908,7 +908,7 @@ struct GlobalCompositeOperation {
 }
 ```
 
-![zh-cn_image_0000001194192456](figures/zh-cn_image_0000001194192456.png)
+![globalCompositeOperation](figures/globalCompositeOperation.png)
 
 
 ### shadowBlur
@@ -1056,7 +1056,7 @@ struct ShadowOffsetX {
 }
 ```
 
-![zh-cn_image_0000001194032478](figures/zh-cn_image_0000001194032478.png)
+![shadowOffsetX2](figures/shadowOffsetX2.png)
 
 
 ### shadowOffsetY
@@ -1106,7 +1106,7 @@ struct ShadowOffsetY {
 }
 ```
 
-![zh-cn_image_0000001239032425](figures/zh-cn_image_0000001239032425.png)
+![shadowOffsetY2](figures/shadowOffsetY2.png)
 
 
 ### imageSmoothingEnabled
@@ -1159,7 +1159,7 @@ struct ImageSmoothingEnabled {
 }
 ```
 
-![zh-cn_image_0000001193872520](figures/zh-cn_image_0000001193872520.png)
+![imageSmoothingEnabled](figures/imageSmoothingEnabled.png)
 
 
 ### imageSmoothingQuality
@@ -1585,7 +1585,7 @@ strokeRect(x: number, y: number, w: number, h: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194352436](figures/zh-cn_image_0000001194352436.png)
+  ![strokeRect](figures/strokeRect.png)
 
 
 ### clearRect
@@ -1641,7 +1641,7 @@ clearRect(x: number, y: number, w: number, h: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238952377](figures/zh-cn_image_0000001238952377.png)
+  ![clearRect](figures/clearRect.png)
 
 
 ### fillText
@@ -1696,7 +1696,7 @@ fillText(text: string, x: number, y: number, maxWidth?: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194032458](figures/zh-cn_image_0000001194032458.png)
+  ![fillText](figures/fillText.png)
 
 
 ### strokeText
@@ -1751,7 +1751,7 @@ strokeText(text: string, x: number, y: number, maxWidth?: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238952401](figures/zh-cn_image_0000001238952401.png)
+  ![strokeText](figures/strokeText.png)
 
 
 ### measureText
@@ -1860,7 +1860,7 @@ stroke(): void
   }
   ```
 
-  ![zh-cn_image_0000001238832389](figures/zh-cn_image_0000001238832393.png)
+  ![stroke4](figures/stroke4.png)
 
 ### stroke
 
@@ -1916,7 +1916,7 @@ stroke(path: Path2D): void
   }
   ```
 
-  ![zh-cn_image_0000001238832389](figures/zh-cn_image_0000001238832392.png)
+  ![stroke3](figures/stroke3.png)
 
 
 ### beginPath
@@ -2027,7 +2027,7 @@ moveTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238832409](figures/zh-cn_image_0000001238832409.png)
+  ![moveTo3](figures/moveTo3.png)
 
 
 ### lineTo
@@ -2082,7 +2082,7 @@ lineTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238712443](figures/zh-cn_image_0000001238712443.png)
+  ![lineTo2](figures/lineTo2.png)
 
 
 ### closePath
@@ -2132,7 +2132,7 @@ closePath(): void
   }
   ```
 
-  ![zh-cn_image_0000001194192460](figures/zh-cn_image_0000001194192460.png)
+  ![closePath2](figures/closePath2.png)
 
 
 ### createPattern
@@ -2279,7 +2279,7 @@ struct BezierCurveTo {
 }
 ```
 
-![zh-cn_image_0000001238952403](figures/zh-cn_image_0000001238952403.png)
+![bezierCurveTo](figures/bezierCurveTo.png)
 
 
 ### quadraticCurveTo
@@ -2356,7 +2356,7 @@ struct QuadraticCurveTo {
 }
 ```
 
-![zh-cn_image_0000001193872494](figures/zh-cn_image_0000001193872494.png)
+![quadraticCurveTo2](figures/quadraticCurveTo2.png)
 
 ### arc
 
@@ -2414,7 +2414,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
   }
   ```
 
-  ![zh-cn_image_0000001239032429](figures/zh-cn_image_0000001239032429.jpeg)
+  ![arc2](figures/arc2.jpeg)
 
 
 ### arcTo
@@ -2500,7 +2500,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
   }
   ```
 
-  ![zh-cn_image_0000001193872524](figures/zh-cn_image_0000001193872524.png)
+  ![arcTo](figures/arcTo.png)
 
   > 此示例中，arcTo()创建的圆弧为黑色，圆弧的两条切线为灰色。控制点为红色，起始点为绿色。
   >
@@ -2567,7 +2567,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
   }
   ```
 
-  ![zh-cn_image_0000001194192440](figures/zh-cn_image_0000001194192440.jpeg)
+  ![ellipse](figures/ellipse.jpeg)
 
 
 ### rect
@@ -2623,7 +2623,7 @@ rect(x: number, y: number, w: number, h: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238712445](figures/zh-cn_image_0000001238712445.jpeg)
+  ![rect2](figures/rect2.jpeg)
 
 ### roundRect<sup>20+</sup>
 
@@ -2777,7 +2777,7 @@ fill(fillRule?: CanvasFillRule): void
   }
   ```
 
-  ![zh-cn_image_0000001194192462](figures/zh-cn_image_0000001194192462.png)
+  ![fill](figures/fill.png)
 
 ### fill
 
@@ -2838,7 +2838,7 @@ struct Fill {
 }
 ```
 
- ![zh-cn_image_000000127777775](figures/zh-cn_image_000000127777775.jpg)
+ ![Yellow-trapezoid-02](figures/Yellow-trapezoid-02.jpg)
 
 ### clip
 
@@ -2892,7 +2892,7 @@ clip(fillRule?: CanvasFillRule): void
   }
   ```
 
-  ![zh-cn_image_0000001194032462](figures/zh-cn_image_0000001194032462.png)
+  ![clip](figures/clip.png)
 
 ### clip
 
@@ -2953,7 +2953,7 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
   }
   ```
 
-  ![zh-cn_image_000000127777779](figures/zh-cn_image_000000127777779.jpg)
+  ![Yellow-trapezoid](figures/Yellow-trapezoid.jpg)
 
 
 ### reset<sup>12+</sup>
@@ -2999,7 +2999,7 @@ reset(): void
   }
   ```
 
-  ![zh-cn_image_0000001239032460](figures/zh-cn_image_0000001239032460.png)
+  ![reset](figures/reset.png)
 
 ### saveLayer<sup>12+</sup>
 
@@ -3051,7 +3051,7 @@ saveLayer(): void
     }
   }
   ```
-  ![zh-cn_image_CanvasSavelayer](figures/zh-cn_image_CanvasSavelayer.png)
+  ![image-CanvasSavelayer](figures/image-CanvasSavelayer.png)
 
 ### restoreLayer<sup>12+</sup>
 
@@ -3160,7 +3160,7 @@ rotate(angle: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238952405](figures/zh-cn_image_0000001238952405.png)
+  ![rotate2](figures/rotate2.png)
 
 
 ### scale
@@ -3215,7 +3215,7 @@ scale(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001193872498](figures/zh-cn_image_0000001193872498.png)
+  ![scale](figures/scale.png)
 
 
 ### transform
@@ -3359,7 +3359,7 @@ setTransform方法使用的参数和transform()方法相同，但setTransform()�
   }
   ```
 
-  ![zh-cn_image_0000001193872526](figures/zh-cn_image_0000001193872526.png)
+  ![setTransform](figures/setTransform.png)
 
 ### setTransform
 
@@ -3424,7 +3424,7 @@ setTransform(transform?: Matrix2D): void
     }
   }
  ```
- ![zh-cn_image_0000001193872527.jpeg](figures/zh-cn_image_0000001193872527.jpeg)
+ ![setTransform](figures/setTransform.jpeg)
 
 ### getTransform
 
@@ -3494,7 +3494,7 @@ getTransform(): Matrix2D
   }
   ```
 
-  ![zh-cn_image_0000001219982726.png](figures/zh-cn_image_0000001219982726.png)
+  ![getTransform](figures/getTransform.png)
 
 ### translate
 
@@ -3548,7 +3548,7 @@ translate(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238832413](figures/zh-cn_image_0000001238832413.png)
+  ![translate2](figures/translate2.png)
 
 
 ### drawImage
@@ -3845,7 +3845,7 @@ getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
   }
   ```
 
-  ![zh-cn_image_000000127777783](figures/zh-cn_image_000000127777783.png)
+  ![Yellow-with-sky-01](figures/Yellow-with-sky-01.png)
 
 ### setPixelMap
 
@@ -3930,7 +3930,7 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
   }
   ```
 
-  ![zh-cn_image_000000127777780](figures/zh-cn_image_000000127777780.png)
+  ![Yellow-lemon](figures/Yellow-lemon.png)
 
 
 ### putImageData
@@ -4055,7 +4055,7 @@ putImageData(imageData: ImageData, dx: number | string, dy: number | string, dir
   }
   ```
 
-  ![zh-cn_image_0000001194192464](figures/zh-cn_image_0000001194192464.png)
+  ![putImageData3](figures/putImageData3.png)
 
 ### setLineDash
 
@@ -4104,7 +4104,7 @@ setLineDash(segments: number[]): void
     }
   }
   ```
-  ![zh-cn_image_000000127777772](figures/zh-cn_image_000000127777772.png)
+  ![Dotted-circle](figures/Dotted-circle.png)
 
 
 ### getLineDash
@@ -4162,7 +4162,7 @@ getLineDash(): number[]
     }
   }
   ```
-![zh-cn_image_000000127777778](figures/zh-cn_image_000000127777778.png) 
+![Dotted-circle-01](figures/Dotted-circle-01.png) 
 
 
 
@@ -4221,7 +4221,7 @@ toDataURL(type?: string, quality?: any): string
     }
   }
   ```
-![zh-cn_image_0000001194192442](figures/zh-cn_image_0000001194192442.png)
+![toDataURL2](figures/toDataURL2.png)
 
 
 ### transferToImageBitmap
@@ -4279,7 +4279,7 @@ transferToImageBitmap(): ImageBitmap
     }
   }
   ```
-![zh-cn_image_0000001238952387](figures/zh-cn_image_0000001238952387.png) 
+![transferToImageBitmap](figures/transferToImageBitmap.png) 
 
 ### restore
 
@@ -4332,7 +4332,7 @@ restore(): void
     }
   }
   ```
-![zh-cn_image_000000127777781](figures/zh-cn_image_000000127777781.png) 
+![Yellow-with-green-and-black](figures/Yellow-with-green-and-black.png) 
 
 
 ### save
@@ -4380,7 +4380,7 @@ save(): void
     }
   }
   ```
-![zh-cn_image_000000127777781](figures/zh-cn_image_000000127777781.png) 
+![Yellow-with-green-and-black](figures/Yellow-with-green-and-black.png) 
 
 
 ### createLinearGradient
@@ -4512,7 +4512,7 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
   }
   ```
 
-  ![zh-cn_image_0000001238952407](figures/zh-cn_image_0000001238952407.png)
+  ![createRadialGradient](figures/createRadialGradient.png)
 
 ### createConicGradient<sup>10+</sup>
 
@@ -4573,4 +4573,4 @@ struct OffscreenCanvasConicGradientPage {
 }
 ```
 
-  ![zh-cn_image_0000001239032419](figures/zh-cn_image_0000001239032420.png)
+  ![createConicGradient](figures/createConicGradient.png)

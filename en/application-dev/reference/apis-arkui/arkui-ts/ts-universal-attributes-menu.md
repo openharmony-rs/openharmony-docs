@@ -580,7 +580,7 @@ struct DirectiveMenuExample {
 }
 ```
 
-![en-us_image_0000001689126950](figures/en-us_image_0000001689126950.png)
+![DirectiveMenuExample](figures/DirectiveMenuExample.png)
 
 ### Example 5: Displaying a Menu with a Screenshot Preview on Long Press
 

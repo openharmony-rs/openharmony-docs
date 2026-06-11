@@ -66,7 +66,7 @@ addColorStop(offset: number, color: string): void
     }
   }
   ```
-  ![createLinearGradient](figures/createLinearGradient.png)
+  ![createLinearGradient2](figures/createLinearGradient2.png)
 
  
  ## addColorStop<sup>20+</sup>
