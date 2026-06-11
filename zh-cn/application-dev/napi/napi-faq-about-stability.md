@@ -36,7 +36,7 @@ Tid:15894, Name:e.myapplication
 
    DevEco Studio开关：   
 
-   ![DevEco Studio多线程开关](figures/zh_cn_image_20-25-06-40-15-09.png)   
+   ![multi-thread-check](figures/multi-thread-check.png)   
 2. 使用Node-API接口时入参非法导致。   
 - 这种情况一般是崩溃栈上的so会很浅，so调用了某个具体的Node-API接口，比如调用了napi_call_function之类的接口，然后Node-API又调到了libark_jsruntime的so，然后直接崩溃在libark_jsruntime里面。  
 
