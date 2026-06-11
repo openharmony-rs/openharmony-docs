@@ -11,7 +11,7 @@
 
 ## 功能简介
 
-**一入二出（One Input Dual Outputs）** 是指通过同一份视频输入数据，同时驱动 **两个独立编码器** 产生两路不同编码码流的能力。
+**一入二出（One Input Dual Outputs）**是指通过同一份视频输入数据，同时驱动**两个独立编码器**产生两路不同编码码流的能力。
 
 | 编码器角色 | 创建方式 | 说明 |
 |-----------|----------|------|
@@ -76,8 +76,8 @@
 
 | 约束项 | 说明 |
 |--------|------|
-| Surface 共享 | 主/副编码器共享同一个 Consumer Surface，仅需从 `GetSurface` 获取一次并绑定到数据源（Camera/XComponent）。 |
-| Window 生命周期 | `OH_VideoEncoder_GetSurface` 获取的window实例需由开发者负责释放，在所有编码器Destroy之后调用`OH_NativeWindow_DestroyNativeWindow(window)` 销毁。 |
+| Surface共享 | 主/副编码器共享同一个Consumer Surface，仅需从`GetSurface`获取一次并绑定到数据源（Camera/XComponent）。 |
+| Window 生命周期 | `OH_VideoEncoder_GetSurface`获取的window实例需由开发者负责释放，在所有编码器Destroy之后调用`OH_NativeWindow_DestroyNativeWindow(window)`销毁。 |
 | 前处理独立性 | 每个编码器可分别配置不同的降采样/裁剪/丢帧策略；但每个编码器内部降采样与裁剪仍然互斥。 |
 | 回调独立性 | 两路的`onNewOutputBuffer`回调在不同线程中触发，需各自释放FreeOutputBuffer。 |
 
@@ -183,20 +183,20 @@ if (ret != AV_ERR_OK || g_secondary == nullptr) {
 
 > **注意：**
 >
-> Primary 和 Secondary 的回调在**不同线程**中执行。两路都必须各自调用 `FreeOutputBuffer`，否则可能导致阻塞或饥饿。
+> Primary和Secondary的回调在**不同线程**中执行。两路都必须各自调用`FreeOutputBuffer`，否则可能导致阻塞或饥饿。
 
 ### 配置副编码器（含差异化前处理）
 
 ```c++
 OH_AVFormat *secFmt = OH_AVFormat_Create();
 
-// 输入尺寸与 Primary 一致（共享同一输入源）。
+// 输入尺寸与Primary一致（共享同一输入源）。
 OH_AVFormat_SetIntValue(secFmt, OH_MD_KEY_WIDTH, 1920);           // 同 Primary。
 OH_AVFormat_SetIntValue(secFmt, OH_MD_KEY_HEIGHT, 1080);          // 同 Primary。
 OH_AVFormat_SetDoubleValue(secFmt, OH_MD_KEY_FRAME_RATE, 30.0);   // 同 Primary。
 OH_AVFormat_SetLongValue(secFmt, OH_MD_KEY_BITRATE, 1500000);     // 1.5Mbps（较低码率）。
 
-// 差异化前处理配置（Secondary 独立配置）。
+// 差异化前处理配置（Secondary独立配置）。
 // 模式 A：降采样（最常用）。
 // 以下示例为将1080p缩放到480p用于预览。
 // 注意：width和height必须成对出现。
@@ -209,9 +209,9 @@ OH_AVFormat_SetIntValue(secFmt,
 OH_AVFormat_SetDoubleValue(secFmt,
     OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, 15.0);
 
-// 模式 B：ROI 裁剪（替代方案）。
+// 模式 B：ROI裁剪（替代方案）。
 // 以下示例为编码画面中心区域。
-// 注意：left/top/right/bottom 必须全部同时出现。
+// 注意：left/top/right/bottom必须全部同时出现。
 // OH_AVFormat_SetIntValue(secFmt, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT, 480);
 // OH_AVFormat_SetIntValue(secFmt, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_TOP, 270);
 // OH_AVFormat_SetIntValue(secFmt, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_RIGHT, 1439);
@@ -229,7 +229,7 @@ if (ret != AV_ERR_OK) {
 ### 获取共享Surface并绑定数据源
 
 ```c++
-// 关键规则：只能通过主编码器获取 Surface。
+// 关键规则：只能通过主编码器获取Surface。
 OHNativeWindow *window = nullptr;
 OH_AVErrCode ret = OH_VideoEncoder_GetSurface(g_primary, &window);
 if (ret != AV_ERR_OK || window == nullptr) {
@@ -237,15 +237,15 @@ if (ret != AV_ERR_OK || window == nullptr) {
     return -1;
 }
 
-// 将 window 绑定到 Camera / XComponent 数据源。
+// 将window绑定到Camera/XComponent数据源。
 // cameraManager->SetPreviewSurface(window)。
 // nativeXComponent->SetSurface(window)。
 ```
 
 > **核心规则**：
 > - **仅主编码器**可以合法调用`GetSurface`。
-> - 副编码器调用将直接返回 `AV_ERR_OPERATE_NOT_PERMIT`。
-> - 主/副共享同一个 Consumer Surface，只需获取和绑定一次。
+> - 副编码器调用将直接返回`AV_ERR_OPERATE_NOT_PERMIT`。
+> - 主/副共享同一个Consumer Surface，只需获取和绑定一次。
 
 ### 完成编码器准备并启动两个编码器
 
@@ -271,7 +271,7 @@ if (ret != AV_ERR_OK) {
 
 ### 运行时动态调整（可选）
 
-可在运行时通过 `SetParameter` 动态修改Secondary的前处理参数：
+可在运行时通过`SetParameter`动态修改Secondary的前处理参数：
 
 ```c++
 // 动态调整副编码器的降采样目标分辨率。
@@ -335,8 +335,8 @@ if (window != nullptr){
 ```
 
 > **销毁规则**：
-> - **推荐顺序**：先 Destroy Secondary → 再 Destroy Primary。
-> - 若违反顺序先 Destroy Primary，系统会**自动**先销毁关联的 Secondary 再释放 Primary。
+> - **推荐顺序**：先DestroySecondary → 再Destroy Primary。
+> - 若违反顺序先Destroy Primary，系统会**自动**先销毁关联的Secondary再释放Primary。
 > - 但仍建议显式遵循推荐顺序以确保代码清晰可控。
 
 
@@ -375,7 +375,7 @@ if (window != nullptr){
 
 **可能原因**：前处理参数不合法。
 
-**解决措施**：检查降采样/裁剪参数完整性、范围合法性、Crop 与 Downsample 是否互斥设置。
+**解决措施**：检查降采样/裁剪参数完整性、范围合法性、Crop与Downsample是否互斥设置。
 
 ### Secondary调用GetSurface报错
 
