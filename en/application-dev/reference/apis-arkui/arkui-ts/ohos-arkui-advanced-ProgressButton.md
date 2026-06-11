@@ -180,7 +180,7 @@ struct Index {
   }
 }
 ```
-![en-us_image_progressbutton_example02](figures/en-us_image_progressbutton_example02.png)
+![en-us_image_progressbutton_example02](figures/image-progressbutton-example02.png)
 
 ### Example 3: Implementing a Download Button with Custom Corner Radius
 This example shows how to implement a download button with custom corner radius.
@@ -234,4 +234,4 @@ struct Index {
   }
 }
 ```
-![en-us_image_progressbutton_example03](figures/en-us_image_progressbutton_example03.png)
+![en-us_image_progressbutton_example03](figures/image-progressbutton-example03.png)

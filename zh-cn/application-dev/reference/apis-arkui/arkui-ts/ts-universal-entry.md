@@ -1,4 +1,4 @@
-# @Entry：页面入口
+# \@Entry：页面入口
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
@@ -7,7 +7,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@Entry装饰的自定义组件将作为UI页面的入口。
+\@Entry装饰的自定义组件将作为UI页面的入口。
 
 > **说明：**
 >
@@ -15,9 +15,9 @@
 >
 > 本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-## @Entry
+## \@Entry
 
-在单个UI页面中，仅允许存在一个由@Entry装饰的自定义组件作为页面的入口。
+在单个UI页面中，仅允许存在一个由\@Entry装饰的自定义组件作为页面的入口。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

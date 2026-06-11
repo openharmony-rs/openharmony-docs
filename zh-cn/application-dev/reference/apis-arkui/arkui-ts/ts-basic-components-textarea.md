@@ -377,7 +377,7 @@ ArkTS-Sta: inputFilter(value: ResourceStr | undefined, error?: ((value: string) 
 | 参数名 | 类型                                   | 必填 | 说明                               |
 | ------ | -------------------------------------- | ---- | ---------------------------------- |
 | value  | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 是   | 正则表达式。<br/>取值为undefined时，按无正则匹配过滤处理。                       |
-| error  | ArkTS-Dyn: (value: string) => void<br/>ArkTS-Sta: (value: string) => void \| undefined | 否   | 匹配失败时的回调。正则匹配失败时，返回被过滤的内容。正则匹配成功时，无返回。<br/>取值为undefined时，不使用回调函数。 |
+| error  | ArkTS-Dyn: (value: string) => void<br/>ArkTS-Sta: ((value: string) => void) \| undefined | 否   | 匹配失败时的回调。<br/>value：正则匹配失败时，返回被过滤的内容。正则匹配成功时，无返回。<br/>取值为undefined时，不使用回调函数。 |
 
 ### copyOption<sup>9+</sup>
 
@@ -602,7 +602,7 @@ maxLines(value: int | undefined, options?: MaxLinesOptions)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[maxLines](#maxlines10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[maxLines](#maxlines10)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -627,7 +627,7 @@ maxLines(lines: number, options: MaxLinesOptions)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[maxLines](#maxlines23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[maxLines](#maxlines23)。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -1194,9 +1194,7 @@ ArkTS-Sta: heightAdaptivePolicy(value: TextHeightAdaptivePolicy | undefined)
 
 ### lineSpacing<sup>12+</sup>
 
-ArkTS-Dyn: lineSpacing(value: LengthMetrics)
-
-ArkTS-Sta: lineSpacing(value: LengthMetrics | undefined)
+lineSpacing(value: LengthMetrics)
 
 设置文本的行间距，设置值不大于0时，取默认值0。
 
@@ -1206,9 +1204,11 @@ ArkTS-Sta: lineSpacing(value: LengthMetrics | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta接口是[lineSpacing](#linespacing20)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -1851,7 +1851,7 @@ ArkTS-Dyn: onEditChange(callback:&nbsp;(isEditing:&nbsp;boolean)&nbsp;=&gt;&nbsp
 
 ArkTS-Sta: onEditChange(callback:&nbsp;((isEditing:&nbsp;boolean)&nbsp;=&gt;&nbsp;void) | undefined)
 
-输入状态变化时，触发该回调。有光标时为编辑态，无光标时为非编辑态。取值为undefined时，不使用回调函数。
+输入状态变化时，触发该回调。有光标时为编辑态，无光标时为非编辑态。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1868,6 +1868,7 @@ ArkTS-Sta: onEditChange(callback:&nbsp;((isEditing:&nbsp;boolean)&nbsp;=&gt;&nbs
 | 参数名    | 类型    | 必填 | 说明                 |
 | --------- | ------- | ---- | -------------------- |
 | isEditing | boolean | 是   | 是否处于编辑态。<br/> true：编辑态；false：非编辑态。 |
+| callback | ArkTS-Dyn:&nbsp;(isEditing:&nbsp;boolean)&nbsp;=&gt;&nbsp;void <br/>ArkTS-Sta:&nbsp;((isEditing:&nbsp;boolean)&nbsp;=&gt;&nbsp;void) \| undefined| 是   | 输入状态变化时，触发该回调。<br/>isEditing：是否处于编辑态。<br/> true：编辑态；false：非编辑态。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onCopy<sup>8+</sup>
 
@@ -1875,7 +1876,7 @@ ArkTS-Dyn: onCopy(callback:&nbsp;(value:&nbsp;string)&nbsp;=&gt;&nbsp;void)
 
 ArkTS-Sta: onCopy(callback:&nbsp;((value:&nbsp;string)&nbsp;=>&nbsp;void) | undefined)
 
-进行复制操作时，触发该回调。取值为undefined时，不使用回调函数。
+进行复制操作时，触发该回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1889,7 +1890,7 @@ ArkTS-Sta: onCopy(callback:&nbsp;((value:&nbsp;string)&nbsp;=>&nbsp;void) | unde
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| value  | string | 是   | 复制的文本内容。 |
+| callback  | ArkTS-Dyn:&nbsp;(value:&nbsp;string)&nbsp;=&gt;&nbsp;void<br/>ArkTS-Sta:&nbsp;((value:&nbsp;string)&nbsp;=>&nbsp;void) \| undefined | 是   | 进行复制操作时，触发该回调。<br/>value：复制的文本内容。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onWillCopy
 
@@ -1921,7 +1922,7 @@ ArkTS-Dyn: onCut(callback:&nbsp;(value:&nbsp;string)&nbsp;=&gt;&nbsp;void)
 
 ArkTS-Sta: onCut(callback:&nbsp;((value:&nbsp;string)&nbsp;=&gt;&nbsp;void) | undefined)
 
-进行剪切操作时，触发该回调。取值为undefined时，不使用回调函数。
+进行剪切操作时，触发该回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1935,7 +1936,7 @@ ArkTS-Sta: onCut(callback:&nbsp;((value:&nbsp;string)&nbsp;=&gt;&nbsp;void) | un
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| value  | string | 是   | 剪切的文本内容。 |
+| callback  | ArkTS-Dyn:&nbsp;(value:&nbsp;string)&nbsp;=&gt;&nbsp;void <br/>ArkTS-Sta:&nbsp;((value:&nbsp;string)&nbsp;=&gt;&nbsp;void) \| undefined | 是   | 进行剪切操作时，触发该回调。<br/>value：剪切的文本内容。 <br/>取值为undefined时，不使用回调函数。|
 
 ### onWillCut
 
@@ -1967,7 +1968,7 @@ ArkTS-Dyn: onPaste(callback:&nbsp;(value:&nbsp;string, event:&nbsp;PasteEvent)&n
 
 ArkTS-Sta: onPaste(callback:(&nbsp;(value:&nbsp;string, event:&nbsp;PasteEvent)&nbsp;=&gt;&nbsp;void) \| undefined)
 
-进行粘贴操作时，触发该回调。取值为undefined时，不使用回调函数。
+进行粘贴操作时，触发该回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1981,8 +1982,7 @@ ArkTS-Sta: onPaste(callback:(&nbsp;(value:&nbsp;string, event:&nbsp;PasteEvent)&
 
 | 参数名              | 类型                                                         | 必填 | 说明                   |
 | ------------------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| value               | string                                                       | 是   | 粘贴的文本内容。       |
-| event<sup>11+</sup> | [PasteEvent](ts-basic-components-richeditor.md#pasteevent11) | 是   | 用户自定义的粘贴事件。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| callback               | ArkTS-Dyn:&nbsp;(value:&nbsp;string, event:&nbsp;PasteEvent)&nbsp;=&gt;&nbsp;void<br/> ArkTS-Sta: (&nbsp;(value:&nbsp;string, event:&nbsp;PasteEvent)&nbsp;=&gt;&nbsp;void) \| undefined                                                    | 是   | 进行粘贴操作时，触发该回调。<br/>value：粘贴的文本内容。<br/>event：用户自定义的粘贴事件[PasteEvent](ts-basic-components-richeditor.md#pasteevent11) 。<br/>取值为undefined时，不使用回调函数。      |
 
 ### onTextSelectionChange<sup>10+</sup>
 
@@ -1990,7 +1990,7 @@ ArkTS-Dyn: onTextSelectionChange(callback: (selectionStart: number, selectionEnd
 
 ArkTS-Sta: onTextSelectionChange(callback: ((selectionStart: int, selectionEnd: int) => void) | undefined)
 
-文本选择的位置或编辑状态下光标位置发生变化时，触发该回调。取值为undefined时，不使用回调函数。
+文本选择的位置或编辑状态下光标位置发生变化时，触发该回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2006,8 +2006,8 @@ ArkTS-Sta: onTextSelectionChange(callback: ((selectionStart: int, selectionEnd: 
 
 | 参数名         | 类型   | 必填 | 说明                                    |
 | -------------- | ------ | ---- | --------------------------------------- |
-| selectionStart | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 所选文本的起始位置，文字的起始位置为0。 |
-| selectionEnd   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 所选文本的结束位置。        |
+| callback   | ArkTS-Dyn: (selectionStart: number, selectionEnd: number) => void<br/>ArkTS-Sta: ((selectionStart: int, selectionEnd: int) => void) \| undefined | 是   | 文本选择的位置或编辑状态下光标位置发生变化时，触发该回调。<br/>selectionStart：所选文本的起始位置，文字的起始位置为0。<br/>selectionEnd：所选文本的结束位置。<br/>取值为undefined时，不使用回调函数。       |
+
 
 ### onContentScroll<sup>10+</sup>
 
@@ -2015,7 +2015,7 @@ ArkTS-Dyn: onContentScroll(callback: (totalOffsetX: number, totalOffsetY: number
 
 ArkTS-Sta: onContentScroll(callback: ((totalOffsetX: double, totalOffsetY: double) => void) | undefined)
 
-文本内容滚动时，触发该回调。取值为undefined时，不使用回调函数。
+文本内容滚动时，触发该回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2031,8 +2031,7 @@ ArkTS-Sta: onContentScroll(callback: ((totalOffsetX: double, totalOffsetY: doubl
 
 | 参数名       | 类型   | 必填 | 说明                               |
 | ------------ | ------ | ---- | ---------------------------------- |
-| totalOffsetX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 文本在内容区的横坐标偏移。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
-| totalOffsetY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 文本在内容区的纵坐标偏移。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
+| callback | ArkTS-Dyn: (totalOffsetX: number, totalOffsetY: number) => void<br/>ArkTS-Sta: ((totalOffsetX: double, totalOffsetY: double) => void) \| undefined | 是   | 文本内容滚动时，触发该回调。<br/>totalOffsetX：文本在内容区的横坐标偏移。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>totalOffsetY：文本在内容区的纵坐标偏移。<br/>单位：[px](ts-pixel-units.md#基本像素单位) <br/>取值为undefined时，不使用回调函数。|
 
 ### onSubmit<sup>11+</sup>
 
@@ -3727,33 +3726,97 @@ struct TextAreaExample {
 }
 ```
 
-### 示例27（设置行首标点压缩）
+### 示例27（设置行首标点符号压缩和行尾标点符号悬挂）
 
-该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+本示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点符号压缩，通过[punctuationOverflow](#punctuationoverflow)设置行尾标点符号悬挂。
 
-从API version 23开始，支持compressLeadingPunctuation接口。
+左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+
+文本自动换行后，剩余内容（含标点符号）需要能够放入上一行，标点符号悬挂才生效。
+
+从API版本23开始，新增compressLeadingPunctuation接口。
+
+从API版本26.0.0开始，新增punctuationOverflow接口。
+
+ArkTS-Dyn示例：
 
 ```ts
-// xxx.ets
 @Entry
 @Component
-struct Index {
+struct PunctuationDemo {
+  @State compressLeadingPunctuation: boolean = false;
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「0123456789！\n『0123456789：\n（0123456789；\n《0123456789）\n〈0123456789】';
+
   build() {
-    Column(){
-      TextArea({ text: "\u300C行首标点压缩打开" })
-        .compressLeadingPunctuation(true)
-        .margin(5)
-        .fontSize(30)
-        .width("90%")
-      TextArea({ text: "\u300C行首标点压缩关闭" })
-        .compressLeadingPunctuation(false)
-        .fontSize(30)
-        .width("90%")
-    }
+    Column() {
+      TextArea({ text: this.text })
+        .compressLeadingPunctuation(this.compressLeadingPunctuation)
+        .punctuationOverflow(this.punctuationOverflow)
+        .fontSize('20fp')
+        .align(Alignment.Center)
+        .height('35%')
+        .width('50%')
+
+      Column() {
+        Button('开启行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = true
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick(() => {
+          this.compressLeadingPunctuation = false
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = false
+        }).margin(5)
+      }
+    }.width('100%').padding(20)
   }
 }
 ```
-![textAreaCompressLeadingPunctuation](figures/textAreaCompressLeadingPunctuation.gif)
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Column, Button, Margin, Alignment, ClickEvent, State, TextArea } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PunctuationDemo {
+  @State compressLeadingPunctuation: boolean = false;
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「0123456789！\n『0123456789：\n（0123456789；\n《0123456789）\n〈0123456789】';
+
+  build() {
+    Column() {
+      TextArea({ text: this.text })
+        .compressLeadingPunctuation(this.compressLeadingPunctuation)
+        .punctuationOverflow(this.punctuationOverflow)
+        .fontSize('20fp')
+        .align(Alignment.Center)
+        .height('35%')
+        .width('50%')
+
+      Column() {
+        Button('开启行首标点符号压缩').onClick((event: ClickEvent) => {
+          this.compressLeadingPunctuation = true
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick((event: ClickEvent) => {
+          this.compressLeadingPunctuation = false
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick((event: ClickEvent) => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick((event: ClickEvent) => {
+          this.punctuationOverflow = false
+        }).margin(5)
+      }
+    }.width('100%').padding(20)
+  }
+}
+```
+![textAreaPunctuation](figures/textAreaPunctuation.gif)
 
 ### 示例28（设置自适应间距）
 

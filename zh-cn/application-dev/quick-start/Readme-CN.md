@@ -16,9 +16,7 @@
 - 开发基础知识<!--development-fundamentals-->
   - 应用程序包基础知识<!--application-package-fundamentals-->
     - [应用程序包概述](application-package-overview.md)
-    - 应用程序包结构<!--application-package-structure-->
-      - [Stage模型应用程序包结构](application-package-structure-stage.md)
-      - [FA模型应用程序包结构](application-package-structure-fa.md)
+    - [应用程序包结构](application-package-structure-stage.md)
     - 应用程序包开发与使用<!--application-package-dev-->
       - [HAP](hap-package.md)
       - [HAR](har-package.md)
@@ -26,15 +24,10 @@
     - 应用程序包安装卸载与更新<!--application-package-install-->
       - [应用安装卸载与更新开发指导](application-package-install-uninstall.md)
       - [应用安装与更新一致性校验](install-and-update-consistency-verification.md)
-  - 应用配置文件（Stage模型）<!--application-configuration-file-stage-->
-    - [应用配置文件概述（Stage模型）](application-configuration-file-overview-stage.md)
+  - 应用配置文件<!--application-configuration-file-stage-->
+    - [应用配置文件概述](application-configuration-file-overview-stage.md)
     - [app.json5配置文件](app-configuration-file.md)
     - [module.json5配置文件](module-configuration-file.md)
-  - 应用配置文件（FA模型）<!--application-configuration-file-fa-->
-    - [应用配置文件概述（FA模型）](application-configuration-file-overview-fa.md)
-    - [app对象内部结构](app-structure.md)
-    - [deviceConfig内部结构](deviceconfig-structure.md)
-    - [module对象内部结构](module-structure.md)
   - 典型场景的开发指导<!--application-typical-scenarios-->
     - [创建应用静态快捷方式](typical-scenario-configuration.md)
     - [创建应用分身](app-clone.md)
@@ -89,6 +82,7 @@
     - [ArkTS-Sta互操作特性规范](arkts-interop-spec.md)
     - [ArkTS动静态类型易用互操作规格指南](arkts-sta-interop-spec.md)
     - [ArkTS动静态类型互操作声明文件生成工具Declgen规格指南](arkts-sta-declgen-spec.md)
+    - [ArkTS动静态类型互操作显式接口使用指南](./arkts-sta-interop-interface.md)
     - [ArkTS-Sta与ArkTS-Dyn互操作迁移规则](arkts-dyn-to-sta-interop-rules.md)
   - 从ArkTS-Dyn到ArkTS-Sta的改造指导<!--arkts-dyn-to-arkts-sta-transformation-->
     - [ArkTS静态类型及应用迁移改造概述](arkts-sta-additions-application-migration.md)

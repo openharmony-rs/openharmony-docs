@@ -224,7 +224,7 @@ mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
 vfat、exfat及ntfs。
 
-从API版本26.0.0开始支持ext4
+从API版本26.0.0开始支持ext4。
 
 **系统接口**：此接口为系统接口。
 
@@ -844,7 +844,7 @@ vfat和exfat。
   | 参数名       | 类型   | 必填 | 说明 |
   | ----------- | ------ | ---- | ---- |
   | volumeId    | string | 是   | 卷设备ID。 |
-  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat和ext4（ext4从API版本26.0.0开始支持）。 |
+  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat。<br>**说明**：从API版本26.0.0开始，支持ext4。 |
 
 **返回值：**
 
@@ -926,7 +926,7 @@ vfat和exfat。
   | 参数名   | 类型                      | 必填 | 说明                          |
   | -------- | ------------------------- | ---- | ----------------------------- |
   | volumeId | string                    | 是   | 卷设备ID。                |
-  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat和ext4（ext4从API版本26.0.0开始支持）。 |
+  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat。<br>**说明**：从API版本26.0.0开始，支持ext4。 |
   | callback | AsyncCallback&lt;void&gt;  | 是   | 对指定卷设备格式化后的回调。  |
 
 **错误码：**
@@ -1167,9 +1167,9 @@ erase(volumeId: string): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13600023 | Disc not erasable. |
+| 13600002 | Not supported filesystem. |
+| 13600010 | The input parameter is invalid. |
+| 13600026 | Erase operation failed. |
 
 **示例：**
 
@@ -1186,7 +1186,7 @@ volumeManager.erase(volumeId).then(() => {
 
 ## volumemanager.eject
 
-eject(volumeId: string): Promise&lt;void&gt;
+eject(diskId: string): Promise&lt;void&gt;
 
 弹出指定卷设备，使用Promise异步回调。
 
@@ -1206,7 +1206,7 @@ eject(volumeId: string): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| volumeId | string | 是   | 卷设备ID。 |
+| diskId | string | 是   | 卷设备所属的磁盘ID。 |
 
 **返回值：**
 
@@ -1223,16 +1223,15 @@ eject(volumeId: string): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
+| 13600002 | Not supported filesystem. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let volumeId: string = "";
-volumeManager.eject(volumeId).then(() => {
+let diskId: string = "";
+volumeManager.eject(diskId).then(() => {
   console.info("eject successfully.");
 }).catch((error: BusinessError) => {
   console.error("eject failed with error:" + JSON.stringify(error));
@@ -1279,8 +1278,9 @@ createIsoImage(volumeId: string, filePath: string): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
+| 13600002 | Not supported filesystem. |
 | 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
+| 13600010 | The input parameter is invalid. |
 | 13600024 | Empty disc. |
 | 13600025 | Failed to write the ISO file. |
 
@@ -1338,10 +1338,8 @@ burn(volumeId: string, want: Want): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13600026 | Insufficient disc space. |
-| 13600027 | Source data not found. |
+| 13600002 | Not supported filesystem. |
+| 13600010 | The input parameter is invalid. |
 | 13600028 | Burn operation failed. |
 
 **示例：**
@@ -1407,8 +1405,8 @@ ArkTS-Sta: getOpProcess(volumeId: string): Promise&lt;int&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. |
-| 13600029 | No ongoing operation. |
+| 13600002 | Not supported filesystem. |
+| 13600010 | The input parameter is invalid. |
 
 **示例：**
 
@@ -1476,10 +1474,9 @@ verifyBurnData(volumeId: string, verType: VerifyType): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
+| 13600002 | Not supported filesystem. |
+| 13600010 | The input parameter is invalid. |
 | 13600030 | Verification failed. |
-| 13600031 | Data mismatch. |
 
 **示例：**
 
@@ -1577,7 +1574,7 @@ getDiskById(diskId: string): Promise&lt;Disk&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 磁盘设备ID。 |
+| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
 
 **返回值：**
 
@@ -1647,7 +1644,7 @@ getPartitionTable(diskId: string): Promise&lt;PartitionTableInfo&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号} |
+| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
 
 **返回值：**
 
@@ -1718,7 +1715,7 @@ createPartition(diskId: string, params: PartitionParams): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号} |
+| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
 | params | [PartitionParams](#partitionparams) | 是   | 分区创建参数。 |
 
 **返回值：**
@@ -1806,7 +1803,7 @@ ArkTS-Sta: deletePartition(diskId: string, partitionNum: int): Promise&lt;void&g
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号} |
+| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
 | partitionNum | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 分区号。 |
 
 **返回值：**
@@ -1883,7 +1880,7 @@ ArkTS-Sta: formatPartition(diskId: string, partitionNum: int, params: FormatPara
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号} |
+| diskId | string | 是   | 磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
 | partitionNum | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 分区号。 |
 | params | [FormatParams](#formatparams) | 是   | 格式化参数。 |
 
@@ -1950,13 +1947,13 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 ## Volume
 
-卷的属性信息。
+卷信息详情。
+
+### 属性
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口**：该接口为系统接口。
-
-### 属性
 
 | 名称         | 类型    | 只读   | 可选   | 说明                 |
 | ----------- | ------- | ------- | ----- | -------------------- |
@@ -1975,6 +1972,8 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 磁盘类型的枚举。
 
+### 属性
+
 **ArkTS-Dyn起始版本**：26.0.0
 
 **ArkTS-Sta起始版本**：26.0.0
@@ -1992,6 +1991,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | CD_DVD_BD   | 3       | 光盘类型。     |
 | DATA_DISK_SSD | 4       | SSD数据盘类型。     |
 | DATA_DISK_HDD | 5       | HDD数据盘类型。     |
+| DVR_USB  | 6       | 行车记录仪U盘类型。     |
 | UNKNOWN_DISK_TYPE | 255       | 未知磁盘类型。     |
 
 ## Disk
@@ -2006,7 +2006,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume。
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口**：此接口为系统接口。
 
@@ -2031,7 +2031,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume。
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口**：此接口为系统接口。
 
@@ -2056,7 +2056,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume。
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口**：此接口为系统接口。
 
@@ -2082,7 +2082,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume。
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口**：此接口为系统接口。
 
@@ -2105,12 +2105,12 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume。
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
 
 **系统接口**：此接口为系统接口。
 
 | 名称         | 类型    | 只读   | 可选   | 说明                 |
 | ----------- | ------- | ------- | ----- | -------------------- |
 | fsType      | string  | 否 | 否 | 文件系统类型，当前支持格式化为ext4、vfat和exfat。                 |
-| quickFormat | boolean | 否 | 是 | 是否执行快速格式化。true是快速格式化；false不是快速格式化。默认值为true。               |
+| quickFormat | boolean | 否 | 是 | 是否执行快速格式化。当前仅支持快速格式化，因此该参数只支持传true。传false时将返回参数非法错误，错误码13600010。默认值为true。               |
 | volumeName  | string  | 否 | 是 | 格式化后的卷名称。        |

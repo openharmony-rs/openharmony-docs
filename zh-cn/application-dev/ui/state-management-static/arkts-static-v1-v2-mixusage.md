@@ -38,7 +38,7 @@
 
 ### V1->V2
 - V1的状态变量传递给V2的[\@Param](./arkts-static-new-param.md)，V1的状态变量在\@ComponentV2中有观察能力。完整示例见[常见场景](#常见场景)。
-```ts
+``` TypeScript
 @Observed
 class ObservedClass {
 }
@@ -82,7 +82,7 @@ struct CompV2 {
 
 在V2->V1时，V2的状态变量传递给V1的\@ObjectLink，V2的状态变量在\@Component中有观察能力。完整示例见[常见场景](#常见场景)。
 
-```ts
+``` TypeScript
 'use static'
 import { Entry, Column, Component, ComponentV2, Local, ObjectLink, Observed } from '@kit.ArkUI';
 
@@ -123,14 +123,14 @@ struct CompV1 {
 
 - ArkTS-Sta中V1->V2传递复杂类型数据，由于@Component和@ComponentV2天然支持V1/V2状态变量的传递，因此无需调用`UIUtils.enableV2Compatibility`，即可实现V1和V2的数据联动。
 
-```ts
+``` TypeScript
 // 无需调用enableV2Compatibility
 SubComponentV2({param: this.state})
 ```
 
 - ArkTS-Sta中V2->V1传递复杂类型数据，由于@Component和@ComponentV2天然支持V1/V2状态变量的传递，因此无需调用`UIUtils.enableV2Compatibility`，即可实现V2和V1的数据联动。
 
-```ts
+``` TypeScript
 // 无需调用enableV2Compatibility与makeV1Observed
 SubComponentV2({objectLink: this.local})
 ```
@@ -143,8 +143,8 @@ SubComponentV2({objectLink: this.local})
 在ArkTS-Sta中，普通class（无@Observed/@ObservedV2）不可观察。
 
 **V1->V2**
-```ts
-'use static'
+<!-- @[MixCommonV1ToV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixCommonV1ToV2.ets) --> 
+``` TypeScript
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, State, Param } from '@kit.ArkUI';
 
 class CommonClass {
@@ -159,12 +159,17 @@ struct CompV1 {
   build() {
     Column() {
       Text(`@State commonObject: ${this.commonObject.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('Change object in V1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.commonObject.name += '!'; // 非Observed/ObservedV2类，组件不刷新
         })
       CompV2({ commonObject: this.commonObject })
     }
+    .width('100%')
   }
 }
 
@@ -176,20 +181,26 @@ struct CompV2 {
     Column() {
       // 非Observed/ObservedV2类，观察不到变化
       Text(`@Param commonObject: ${this.commonObject.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('Change object in V2')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.commonObject.name += '!'; // 非Observed/ObservedV2类，组件不刷新
         })
     }
+    .width('100%')
   }
 }
 ```
 
+![mix-common-v1-to-v2](../figures/v1-v2-mixusage_9.gif)
 
 **V2->V1**
 
-```ts
-'use static'
+<!-- @[MixCommonV2ToV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixCommonV2ToV1.ets) --> 
+``` TypeScript
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, Local, ObjectLink } from '@kit.ArkUI';
 
 class CommonClass {
@@ -204,13 +215,18 @@ struct CompV2 {
   build() {
     Column() {
       Text(`@Local commonObject: ${this.commonObject.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('Change object in V2')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.commonObject.name += '!'; // 非Observed/ObservedV2类，组件不刷新
         })
       // @ObjectLink可接收@Observed装饰class的实例
       CompV1({ commonObject: this.commonObject })
     }
+    .width('100%')
   }
 }
 
@@ -222,15 +238,21 @@ struct CompV1 {
     Column() {
       // 非Observed/ObservedV2类，观察不到变化
       Text(`@ObjectLink commonObject: ${this.commonObject.name}`)
+        .fontSize(20)
+        .margin(10)
       Button('Change object in V1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.commonObject.name += '!'; // 非Observed/ObservedV2类，组件不刷新
         })
     }
+    .width('100%')
   }
 }
 ```
 
+![mix-common-v2-to-v1](../figures/v1-v2-mixusage_10.gif)
 
 ### \@Observed装饰的class
 **V1->V2**
@@ -241,9 +263,10 @@ struct CompV1 {
     - 在V1中，如果将非`@Track`装饰的属性使用在UI中，是非法行为，会有运行时报错。
     - 在V2中，非`@Track`装饰的属性使用在UI不会有运行时报错，但不会响应更新。
 
-```ts
-'use static'
-import { Entry, Text, Column, Component, ComponentV2, ClickEvent, State, Param, Observed, Track } from '@kit.ArkUI';
+<!-- @[MixObservedV1ToV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixObservedV1ToV2.ets) --> 
+
+``` TypeScript
+import { Entry, Text, Column, Component, ComponentV2, ClickEvent, State, Param, Observed, Track, Button } from '@kit.ArkUI';
 
 @Observed
 class ObservedClass {
@@ -257,15 +280,19 @@ struct CompV1 {
   @State observedClass: ObservedClass = new ObservedClass();
   build() {
     Column() {
-      Text(`name: ${this.observedClass.name}`).onClick(() => {
-        // 触发刷新
-        this.observedClass.name += 'a';
-      })
+      Button(`name: ${this.observedClass.name}`)
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          // 触发刷新
+          this.observedClass.name += 'a';
+        })
       // 使用非@Track的变量在V1中会崩溃
       // Text(`count: ${this.observedClass.count}`)
 
       CompV2({ observedClass: this.observedClass })
     }
+    .width('100%')
   }
 }
 
@@ -274,19 +301,27 @@ struct CompV2 {
   @Param observedClass: ObservedClass = new ObservedClass();
   build() {
     // 使用非@Track的变量在V2中不会崩溃，但不会响应更新
-    Text(`count: ${this.observedClass.count}`).onClick(() => {
-      // 不触发刷新
-      this.observedClass.count++;
-    })
+    Button(`count: ${this.observedClass.count}`)
+      .width(300)
+      .margin(10)
+      .onClick(() => {
+        // 不触发刷新
+        this.observedClass.count++;
+      })
   }
 }
 ```
+
+![mix-observed-v1-to-v2](../figures/v1-v2-mixusage_1.gif)
+
 **V2->V1**
 - `ObservedClass`是\@Observed装饰的class，该类的状态变量传递给V1可观察。
 - 只有[\@Track](./arkts-static-track.md)装饰的变量在V1和V2中可观察。非\@Track的变量在V1中使用在UI上会有运行时报错，在V2中不会报错，但不会响应刷新。
-```ts
-'use static'
-import { Entry, Text, Column, Component, ComponentV2, ClickEvent, Local, ObjectLink, Observed, Track } from '@kit.ArkUI';
+
+<!-- @[MixObservedV2ToV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixObservedV2ToV1.ets) --> 
+
+``` TypeScript
+import { Entry, Text, Column, Component, ComponentV2, ClickEvent, Local, ObjectLink, Observed, Track, Button } from '@kit.ArkUI';
 
 @Observed
 class ObservedClass {
@@ -301,17 +336,24 @@ struct CompV2 {
 
   build() {
     Column() {
-      Text(`name V2: ${this.observedClass.name}`).onClick(() => {
-        // 触发刷新
-        this.observedClass.name += 'a';
-      })
+      Button(`name V2: ${this.observedClass.name}`)
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          // 触发刷新
+          this.observedClass.name += 'a';
+        })
       // 使用非@Track的变量在V2中不会崩溃，但不触发刷新
-      Text(`count V2: ${this.observedClass.count}`).onClick(() => {
-        this.observedClass.count++;
-      })
+      Button(`count V2: ${this.observedClass.count}`)
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.observedClass.count++;
+        })
 
       CompV1({ observedClass: this.observedClass })
     }
+    .width('100%')
   }
 }
 
@@ -321,22 +363,30 @@ struct CompV1 {
 
   build() {
     Column() {
-      Text(`name V1: ${this.observedClass.name}`).onClick(() => {
-        // 触发刷新
-        this.observedClass.name += 'a';
-      })
+      Button(`name V1: ${this.observedClass.name}`)
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          // 触发刷新
+          this.observedClass.name += 'a';
+        })
       // 使用非@Track的变量在V1中会崩溃
       // Text(`count V1: ${this.observedClass.count}`)
     }
+    .width('100%')
   }
 }
 ```
 
+![mix-observed-v2-to-v1](../figures/v1-v2-mixusage_2.gif)
+
 ### 内置类型
 以Array为例。
+
 **V1->V2**
-```ts
-'use static'
+<!-- @[MixArrayV1ToV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixArrayV1ToV2.ets) --> 
+
+``` TypeScript
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, State, Param } from '@kit.ArkUI';
 
 @Entry
@@ -347,7 +397,11 @@ struct CompV1 {
   build() {
     Column() {
       Text(`V1 ${this.arr[0]}`)
+        .fontSize(20)
+        .margin(10)
       Button('Change object in V1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 点击触发ArrayCompV1和ArrayCompV2变化
           this.arr[0]++;
@@ -366,20 +420,27 @@ struct ArrayCompV2 {
   build() {
     Column() {
       Text(`V2 ${this.arr[0]}`)
+        .fontSize(20)
+        .margin(10)
       Button('Change object in V2')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 点击触发ArrayCompV1和ArrayCompV2变化
           this.arr[0]++;
         })
     }
+    .width('100%')
   }
 }
 ```
 
+![mix-array-v1-to-v2](../figures/v1-v2-mixusage_3.gif)
 
 **V2->V1**
-```ts
-'use static'
+<!-- @[MixArrayV2ToV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixArrayV2ToV1.ets) --> 
+
+``` TypeScript
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, Local, ObjectLink } from '@kit.ArkUI';
 
 @Entry
@@ -389,8 +450,12 @@ struct CompV2 {
 
   build() {
     Column() {
-      Text(`V2 ${this.arr[0]}`).fontSize(20)
+      Text(`V2 ${this.arr[0]}`)
+        .fontSize(20)
+        .margin(10)
       Button('Change object in V2')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 点击触发V2变化，且同步给V1 @ObjectLink
           this.arr[0]++;
@@ -408,17 +473,23 @@ struct ArrayCompV1 {
 
   build() {
     Column() {
-      Text(`V1 ${this.arr[0]}`).fontSize(20)
+      Text(`V1 ${this.arr[0]}`)
+        .fontSize(20)
+        .margin(10)
       Button('Change object in V1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 点击触发V1变化，且双向同步回给V2
           this.arr[0]++;
         })
     }
+    .width('100%')
   }
 }
-
 ```
+
+![mix-array-v2-to-v1](../figures/v1-v2-mixusage_4.gif)
 
 
 ### 二维数组
@@ -427,8 +498,9 @@ struct ArrayCompV1 {
 下面的示例中：
 - ArkTS-Sta状态变量已默认具有V2的观察能力，因此可直接传递至V2子组件。
 
-```ts
-'use static'
+<!-- @[MixTwoDimV1ToV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixTwoDimV1ToV2.ets) --> 
+
+``` TypeScript
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, Divider, ForEach, Row, Require, Param, State } from '@kit.ArkUI';
 
 @ComponentV2
@@ -436,12 +508,16 @@ struct Item {
   @Require @Param itemArr: Array<string>;
 
   build() {
-    Row() {
+    Column() {
       ForEach(this.itemArr, (item: string, index: int) => {
         Text(`${index}: ${item}`)
+          .fontSize(20)
+          .margin(10)
       }, (item: string) => item + Math.random())
 
       Button('@Param push')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.itemArr.push('Param');
         })
@@ -460,38 +536,49 @@ struct CompV1 {
       ForEach(this.arr, (itemArr: Array<string>) => {
         Item({ itemArr: itemArr })
       }, (itemArr: Array<string>) => JSON.stringify(itemArr) + Math.random())
-      Divider()
       Button('@State push two-dimensional array item')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr[0].push('strawberry');
         })
 
       Button('@State push array item')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr.push(['pear']);
         })
 
       Button('@State change two-dimensional array first item')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr[0][0] = 'APPLE';
         })
 
       Button('@State change array first item')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr[0] = ['watermelon'];
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![mix-two-dim-v1-to-v2](../figures/v1-v2-mixusage_5.gif)
 
 **V2->V1**
 
 下面的示例中：
 - V2中的二维数组已具有V2观察能力，在V1中使用\@ObjectLink接收二维数组的内层数组，点击`Button('@ObjectLink push')`，会正常响应刷新。
 
-```ts
-'use static'
+<!-- @[MixTwoDimV2ToV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixTwoDimV2ToV1.ets) --> 
+
+``` TypeScript
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, Divider, ForEach, Row, ObjectLink, Local } from '@kit.ArkUI';
 
 @Component
@@ -499,12 +586,16 @@ struct Item {
   @ObjectLink itemArr: Array<string>;
 
   build() {
-    Row() {
+    Column() {
       ForEach(this.itemArr, (item: string, index: int) => {
         Text(`${index}: ${item}`)
+          .fontSize(20)
+          .margin(10)
       }, (item: string) => item + Math.random())
 
       Button('@ObjectLink push')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.itemArr.push('ObjectLink');
         })
@@ -522,30 +613,40 @@ struct IndexPage {
       ForEach(this.arr, (itemArr: Array<string>) => {
         Item({ itemArr: itemArr })
       }, (itemArr: Array<string>) => JSON.stringify(itemArr) + Math.random())
-      Divider()
       Button('@Local push two-dimensional array item')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr[0].push('strawberry');
         })
 
       Button('@Local push array item')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr.push(['pear']);
         })
 
       Button('@Local change two-dimensional array first item')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr[0][0] = 'APPLE';
         })
 
       Button('@Local change array first item')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr[0] = ['watermelon'];
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![mix-two-dim-v2-to-v1](../figures/v1-v2-mixusage_6.gif)
 
 ### 嵌套类型
 **V1->V2**
@@ -558,8 +659,9 @@ struct IndexPage {
 - \@ObjectLink和\@Param是同一个对象的引用，其属性改变也会带来其他引用的刷新。
 
 完整示例如下。
-```ts
-'use static'
+<!-- @[MixNestedV1ToV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixNestedV1ToV2.ets) --> 
+
+``` TypeScript
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, ForEach, Observed, State, Track, ObjectLink, Require, Param } from '@kit.ArkUI';
 
 @Observed
@@ -605,16 +707,18 @@ struct CompV1 {
 
   build() {
     Column() {
-      Text(`@State outer.outerValue can update ${this.outer.outerValue}`)
-        .fontSize(20)
+      Button(`@State outer.outerValue can update ${this.outer.outerValue}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // @State可以观察第一层的变化
           // 变化会通知@ObjectLink和@Param刷新
           this.outer.outerValue += '!';
         })
 
-      Text(`@State outer.inner.innerValue cannot update ${this.outer.inner.innerValue}`)
-        .fontSize(20)
+      Button(`@State outer.inner.innerValue cannot update ${this.outer.inner.innerValue}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // @State无法观察第二层的变化
           // 但该变化会被@ObjectLink和@Param观察
@@ -635,8 +739,9 @@ struct NestedClassV1ObjectLink {
   @ObjectLink inner: Inner;
 
   build() {
-    Text(`@ObjectLink inner.innerValue can update ${this.inner.innerValue}`)
-      .fontSize(20)
+    Button(`@ObjectLink inner.innerValue can update ${this.inner.innerValue}`)
+      .width(300)
+      .margin(10)
       .onClick(() => {
         // 可以触发刷新，和@Param是同一个对象的引用，@Param也会进行刷新
         this.inner.innerValue += '!';
@@ -650,14 +755,16 @@ struct NestedClassV2 {
 
   build() {
     Column() {
-      Text(`@Param outer.outerValue can update ${this.outer.outerValue}`)
-        .fontSize(20)
+      Button(`@Param outer.outerValue can update ${this.outer.outerValue}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 可以观察第一层的变化
           this.outer.outerValue += '!';
         })
-      Text(`@Param outer.inner.innerValue can update ${this.outer.inner.innerValue}`)
-        .fontSize(20)
+      Button(`@Param outer.inner.innerValue can update ${this.outer.inner.innerValue}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 可以观察第二层的变化，和@ObjectLink是同一个对象的引用，也会触发刷新
           this.outer.inner.innerValue += '!';
@@ -665,29 +772,39 @@ struct NestedClassV2 {
 
       ForEach(this.outer.inner.arr, (item: ArrayItem, index: int) => {
         Text(`${index}: ${item.value}`)
+          .fontSize(15)
+          .margin(10)
       }, (item: ArrayItem) => '' + item.value + Math.random())
 
       Button('@Param push')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // outer已经使能了V2观察能力，对于新增加的数据，则默认开启V2观察能力
           this.outer.inner.arr.push(new ArrayItem(20));
         })
 
       Button('@Param change the last Item')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 可以观察最后一个数组项的属性变化
           this.outer.inner.arr[this.outer.inner.arr.length - 1].value++;
         })
     }
+    .width('100%')
   }
 }
 ```
 
+![mix-nested-v1-to-v2](../figures/v1-v2-mixusage_7.gif)
+
 **V2->V1**
 - V1中仅能观察第一层的变化，所以需要多层自定义组件，且每层都配合使用\@ObjectLink来接收，从而实现深度观察能力。
 
-```ts
-'use static'
+<!-- @[MixNestedV2ToV1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1V2MixUsage/entry/src/main/ets/pages/MixNestedV2ToV1.ets) --> 
+
+``` TypeScript
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, ForEach, Observed, Track, ObjectLink, Local } from '@kit.ArkUI';
 
 @Observed
@@ -732,15 +849,17 @@ struct CompV2 {
 
   build() {
     Column() {
-      Text(`@Local outer.outerValue can update ${this.outer.outerValue}`)
-        .fontSize(20)
+      Button(`@Local outer.outerValue can update ${this.outer.outerValue}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 可观察第一层的变化
           this.outer.outerValue += '!';
         })
 
-      Text(`@Local outer.inner.innerValue can update ${this.outer.inner.innerValue}`)
-        .fontSize(20)
+      Button(`@Local outer.inner.innerValue can update ${this.outer.inner.innerValue}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 可观察第二层的变化
           this.outer.inner.innerValue += '!';
@@ -759,14 +878,16 @@ struct NestedClassV1ObjectLink {
 
   build() {
     Column() {
-      Text(`@ObjectLink inner.innerValue can update ${this.inner.innerValue}`)
-        .fontSize(20)
+      Button(`@ObjectLink inner.innerValue can update ${this.inner.innerValue}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 可以触发刷新
           this.inner.innerValue += '!';
         })
       NestedClassV1ObjectLinkArray({ arr: this.inner.arr })
     }
+    .width('100%')
   }
 }
 
@@ -783,16 +904,21 @@ struct NestedClassV1ObjectLinkArray {
       })
 
       Button('@ObjectLink push')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.arr.push(new ArrayItem(20));
         })
 
       Button('@ObjectLink change the last Item')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 在NestedClassV1ObjectLinkArrayItem中可以观察最后一个数组项的属性变化
           this.arr[this.arr.length - 1].value++;
         })
     }
+    .width('100%')
   }
 }
 
@@ -802,7 +928,10 @@ struct NestedClassV1ObjectLinkArrayItem {
 
   build() {
     Text(`@ObjectLink outer.inner.arr item: ${this.item.value}`)
+      .fontSize(15)
+      .margin(10)
   }
 }
-
 ```
+
+![mix-nested-v2-to-v1](../figures/v1-v2-mixusage_8.gif)

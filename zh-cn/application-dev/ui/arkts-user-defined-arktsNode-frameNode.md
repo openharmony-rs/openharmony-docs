@@ -4081,7 +4081,7 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[frameNodeCanvas_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeCanvas.ets) --> 
+<!-- @[frameNodeCanvas_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeCanvas.ets) --> 
 
 ``` TypeScript
 import {

@@ -32,7 +32,7 @@ UpdatedCallback是监听系统环境变化的回调函数，开发者可通过[A
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -109,7 +109,7 @@ type OnColorModeUpdatedFn = (colorMode: ConfigurationConstant.ColorMode) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -131,7 +131,7 @@ type OnFontSizeScaleUpdatedFn = (fontSizeScale: number) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -154,7 +154,7 @@ type OnFontWeightScaleUpdatedFn = (fontWeightScale: number) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -176,7 +176,7 @@ type OnLanguageUpdatedFn = (language: string) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -198,7 +198,7 @@ type OnFontIdUpdatedFn = (fontId: string) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -220,7 +220,7 @@ type OnMCCUpdatedFn = (mcc: string) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -242,7 +242,7 @@ type OnMNCUpdatedFn = (mnc: string) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -264,7 +264,7 @@ type OnHasPointerDeviceUpdatedFn = (hasPointerDevice: boolean) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -286,7 +286,7 @@ type OnLocaleUpdatedFn = (locale: string) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 

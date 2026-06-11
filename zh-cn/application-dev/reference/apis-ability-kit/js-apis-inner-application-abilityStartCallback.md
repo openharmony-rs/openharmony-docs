@@ -95,6 +95,7 @@ export default class EntryAbility extends UIAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 import { UIAbility, common } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 
@@ -198,8 +199,10 @@ type OnResultFn = (parameter: AbilityResult) => void
 
 **示例：**
 
+ArkTS-Sta示例：
+
 ```ts
-// ArkTS-Sta示例
+'use static'
 import { UIAbility, common } from '@kit.AbilityKit';
 import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 

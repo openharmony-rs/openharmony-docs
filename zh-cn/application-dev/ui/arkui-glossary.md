@@ -149,3 +149,9 @@ Shape绘制组件中定义的矩形区域，由起始点坐标和尺寸描述，
 ### Theme Skinning；主题换肤
 
 应用内视觉主题切换机制，可定制应用的全局配色风格和局部配色风格。
+
+## 组件坐标系
+
+以组件左上角为坐标原点的坐标系，其中向右为x正轴，向下为y正轴。如果为三维坐标系，则由屏幕向外为z正轴。
+
+![coordinates](../reference/apis-arkui/arkui-ts/figures/coordinates.png)

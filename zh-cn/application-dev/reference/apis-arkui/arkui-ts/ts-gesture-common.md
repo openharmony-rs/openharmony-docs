@@ -316,7 +316,7 @@ ArkTS-Sta: isHostBelongsTo(uniqueId: int): boolean
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| uniqueId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 组件的唯一ID。可以通过[getUniqueId](#getuniqueid)接口获取该ID。 |
+| uniqueId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 组件的唯一ID。可以通过[getUniqueId](#getuniqueid)接口获取该ID。<br>取值为异常值时返回false。 |
 
 **返回值：**
 
@@ -586,7 +586,7 @@ ArkTS-Sta: isHostBelongsTo(uniqueId: int): boolean
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| uniqueId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 组件的唯一ID。可以通过[getUniqueId](#getuniqueid)接口获取该ID。 |
+| uniqueId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 组件的唯一ID。可以通过[getUniqueId](#getuniqueid)接口获取该ID。<br>取值为异常值时返回false。 |
 
 **返回值：**
 
@@ -932,7 +932,7 @@ ArkTS-Sta: getDistanceMap(): Map\<SourceTool, double\>
 | repeat | boolean | 否 |  否  |是否为重复触发事件，用于LongPressGesture手势触发场景。true表示重复触发事件，false表示非重复触发事件。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 | offsetX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |手势事件相对于手指按下时的偏移量X，单位为vp，用于PanGesture手势触发场景，从左向右滑动offsetX为正，反之为负。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>取值范围：(-∞, +∞)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 | offsetY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |手势事件相对于手指按下时的偏移量Y，单位为vp，用于PanGesture手势触发场景，从上向下滑动offsetY为正，反之为负。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>取值范围：(-∞, +∞)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| angle | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |用于RotationGesture手势触发场景时，表示旋转角度。<br/>用于SwipeGesture手势触发场景时，表示快滑手势的角度，即两根手指间的线段与水平方向的夹角变化的度数。<br/>**说明：**<br/>角度计算方式：快滑手势被识别到后，连接两根手指之间的线被识别为起始线条，随着手指的滑动，手指之间的线条会发生旋转，根据起始线条两端点和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角，最后arctan2(cy2-cy1,cx2-cx1)-arctan2(y2-y1,x2-x1)为旋转的角度。以起始线条为坐标系，顺时针旋转为0到180度，逆时针旋转为-180到0度。<br/>取值范围：[-180,  +180]<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| angle | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |用于RotationGesture手势触发场景时，表示旋转角度，单位为deg。<br/>用于SwipeGesture手势触发场景时，表示快滑手势的角度，即手指滑动的瞬时方向与水平正方向的夹角，单位为deg。<br/>**说明：**<br/>旋转角度计算方式：RotationGesture手势被识别到后，连接两根手指之间的线被识别为起始线条，随着手指的滑动，手指之间的线条会发生旋转，根据起始线条两端点和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角，最后arctan2(cy2-cy1,cx2-cx1)-arctan2(y2-y1,x2-x1)为旋转的角度。以起始线条为坐标系，顺时针旋转为0到180度，逆时针旋转为0到-180度。<br/>取值范围：[-180, 180]<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 | scale | ArkTS-Dyn: number<br/>ArkTS-Sta: double |否 | 否  |缩放比例，用于PinchGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 | pinchCenterX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |捏合手势中心点相对于当前组件元素原始区域左上角的x轴坐标，单位为vp，用于PinchGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 | pinchCenterY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否  |捏合手势中心点相对于当前组件元素原始区域左上角的y轴坐标，单位为vp，用于PinchGesture手势触发场景。<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
@@ -1206,7 +1206,7 @@ type GestureType = Gesture | GestureGroup
 
 | 名称         | 类型                              |只读 | 可选        | 说明         |
 | ------------  | ---------------------------------|----|--------------| -----------|
-| angle         | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 |   表示旋转角度，单位为deg。<br/>**说明：**<br/>角度计算方式：当滑动手势被识别后，连接两根手指之间的线被识别为起始线条。随着手指的滑动，手指之间的线条会发生旋转。根据起始线条和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角。<br/>最终的旋转角度为：arctan2(cy2-cy1, cx2-cx1) - arctan2(y2-y1, x2-x1) <br/>在起始线条为坐标系的情况下，顺时针旋转为0到180度，逆时针旋转为0到-180度。  |
+| angle         | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 |   表示旋转角度，单位为deg。<br/>**说明：**<br/>角度计算方式：当旋转手势被识别后，连接两根手指之间的线被识别为起始线条。随着手指的滑动，手指之间的线条会发生旋转。根据起始线条和当前线条两端点的坐标，使用反正切函数分别计算其相对于水平方向的夹角。<br/>最终的旋转角度为：arctan2(cy2-cy1, cx2-cx1) - arctan2(y2-y1, x2-x1) <br/>在起始线条为坐标系的情况下，顺时针旋转为0到180度，逆时针旋转为0到-180度。  |
 
 ## SwipeGestureEvent<sup>11+</sup>对象说明
 

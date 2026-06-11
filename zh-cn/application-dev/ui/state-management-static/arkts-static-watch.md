@@ -84,9 +84,9 @@ import { Watch } from '@kit.ArkUI';
 
 ### \@Watch和自定义组件更新
 
-```ts
-'use static'
+<!-- @[WatchCustomComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TrackWatch/entry/src/main/ets/pages/WatchCustomComponent.ets) -->
 
+``` TypeScript
 import { Entry, Component, Column, Button, ClickEvent, Text, State, Watch, PropRef } from '@kit.ArkUI';
 
 @Component
@@ -100,6 +100,8 @@ struct TotalView {
 
   build() {
     Text(`Total: ${this.total}`)
+      .fontSize(20)
+      .margin(10)
   }
 }
 
@@ -111,14 +113,19 @@ struct CountModifier {
   build() {
     Column() {
       Button('add to basket')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.count++;
         })
       TotalView({ count: this.count })
     }
+    .width('100%')
   }
 }
 ```
+
+![watch-customcomponent](../figures/watch_1.gif)
 
 在上述示例中：
 
@@ -132,9 +139,9 @@ struct CountModifier {
 
 当\@Watch装饰interface类型，或被[\@Observed](./arkts-static-observed-and-objectlink.md)/[\@Track](./arkts-static-track.md)装饰的class类型时，interface或class中不同的成员属性的修改，会将对应的状态变量名传入回调方法，而非属性名。详细见以下示例代码：
 
-```ts
-'use static'
+<!-- @[WatchPropertyName](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TrackWatch/entry/src/main/ets/pages/WatchPropertyName.ets) -->
 
+``` TypeScript
 import { Entry, Component, Column, Button, ClickEvent, Text, State, Watch } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -154,20 +161,31 @@ struct Index {
 
   build() {
     Column() {
-      Text(`Info name: ${this.info.name}`).fontSize(30)
-      Text(`Info age: ${this.info.age}`).fontSize(30)
+      Text(`Info name: ${this.info.name}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`Info age: ${this.info.age}`)
+        .fontSize(20)
+        .margin(10)
       Button('change info name')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.info.name = 'Jerry';
         })
       Button('change info age')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.info.age = 18;
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![watch-property-name](../figures/watch_2.gif)
 
 在上述示例中：
 

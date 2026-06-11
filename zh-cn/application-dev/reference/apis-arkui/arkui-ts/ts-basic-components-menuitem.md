@@ -217,6 +217,30 @@ attributeModifier(modifier: AttributeModifier\<MenuItemAttribute\> | AttributeMo
 | --------- | ------------------------------------------------------------------------------------------------- | ---- | -------------------------- |
 | modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[MenuItemAttribute](#menuitemattribute)\>&nbsp;\|&nbsp;[AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<CommonMethod\>&nbsp;\|&nbsp;undefined | 是   | MenuItem组件的属性修改器。取值为undefined时，则不使用属性修改器。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md) |
 
+### subMenuBuilder
+
+ArkTS-Dyn: subMenuBuilder(builder: CustomBuilder)
+
+ArkTS-Sta: subMenuBuilder(builder: CustomBuilder | undefined)
+
+设置自定义菜单项的二级菜单。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| builder  | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 设置二级菜单的自定义内容。<br/>当MenuItem组件的入参类型为[CustomBuilder](ts-types.md#custombuilder8)时可以使用本属性来接入自定义二级菜单。设置undefined时表示不启用二级菜单。<br/>父组件为[Menu](ts-basic-components-menu.md)时，[subMenuExpandingMode](ts-basic-components-menu.md#submenuexpandingmode12)属性设置任意类型，均按照SubMenuExpandingMode.SIDE_EXPAND生效。|
+
 ## 事件
 
 ### onChange

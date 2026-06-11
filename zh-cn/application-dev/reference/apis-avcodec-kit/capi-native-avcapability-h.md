@@ -135,6 +135,9 @@ enum OH_AVCapabilityFeature
 | VIDEO_ENCODER_LONG_TERM_REFERENCE = 1 | 编解码器支持长期参考帧特性，只用于视频编码场景。 |
 | VIDEO_LOW_LATENCY = 2 | 编解码器支持低时延特性，只用于视频解码场景。 |
 | VIDEO_ENCODER_B_FRAME = 7 | 编解码器支持B帧特性，只用于视频编码场景。<br>**起始版本：** 20 |
+| VIDEO_DECODER_OUTPUT_IN_DECODING_ORDER = 8 | 解码器支持按解码顺序输出帧特性，只用于视频解码场景。<br>**起始版本：** 26.0.0 |
+| VIDEO_ENCODER_PREPROC_DOWNSAMPLING = 9 | 编码器支持视频编码前处理降采样特性，该能力仅适用于视频编码器。<br>仅当编码器通过[OH_VideoEncoder_CreatePrimaryWithPreproc](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createprimarywithpreproc)或[OH_VideoEncoder_CreateSecondaryFromPrimary](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createsecondaryfromprimary)接口创建时，方可启用该能力。<br>**起始版本：** 26.0.0 |
+| VIDEO_ENCODER_PREPROC_CROP = 10 | 编码器支持视频编码前处理裁剪特性，该特性仅适用于视频编码器。<br>仅当编码器通过[OH_VideoEncoder_CreatePrimaryWithPreproc](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createprimarywithpreproc)或[OH_VideoEncoder_CreateSecondaryFromPrimary](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createsecondaryfromprimary)接口创建时，方可启用该能力。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明
@@ -157,7 +160,7 @@ OH_AVCapability *OH_AVCodec_GetCapability(const char *mime, bool isEncoder)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *mime | MIME类型描述字符串，请参阅[AVCODEC_MIME_TYPE](capi-native-avcodec-base-h.md#变量)。 |
+| const char *mime | MIME类型描述字符串，请参阅AVCODEC_MIME_TYPE类型[变量](capi-native-avcodec-base-h.md#变量)。 |
 | bool isEncoder | 编码器为true，解码器为false。 |
 
 **返回：**
@@ -184,7 +187,7 @@ OH_AVCapability *OH_AVCodec_GetCapabilityByCategory(const char *mime, bool isEnc
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *mime | MIME类型描述字符串，请参阅[AVCODEC_MIME_TYPE](capi-native-avcodec-base-h.md#变量)。 |
+| const char *mime | MIME类型描述字符串，请参阅AVCODEC_MIME_TYPE类型[变量](capi-native-avcodec-base-h.md#变量)。 |
 | bool isEncoder | 编码器为true，解码器为false。 |
 | [OH_AVCodecCategory](#oh_avcodeccategory) category | 编解码器类别。 |
 

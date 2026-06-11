@@ -9,7 +9,7 @@
 
 ## 简介
 
-应用灰度采集功能通过云端平台<!--Del-->（OS开发者参考[HiRetrieval云端功能说明](hiretrieval-cloud-server-guidelines.md)自行提供适配）<!--DelEnd-->圈选设备，精准采集故障日志上报云端，帮助开发者定位线上故障，适用于需要获取线上故障详细信息的场景。当前应用灰度采集功能支持的故障类型和对应的故障日志如下：
+<!--RP1-->应用灰度采集功能通过云端平台（OS开发者参考[HiRetrieval云端功能说明](hiretrieval-cloud-server-guidelines.md)自行提供适配）<!--RP1End-->圈选设备，精准采集故障日志上报云端，帮助开发者定位线上故障，适用于需要获取线上故障详细信息的场景。当前应用灰度采集功能支持的故障类型和对应的故障日志如下：
 - 资源泄漏类
   - FD泄漏：句柄泄漏日志、句柄栈日志。
   - GPU泄漏：内存采样日志、内存栈日志。
@@ -17,6 +17,10 @@
   - RSS泄漏：smaps日志、内存栈日志、ArkTS虚拟机内存快照日志、Kotlin语言内存快照日志。
 
 开发者在云端新建任务时，可以选择上述故障中的任一。在任务激活期间，被圈选的设备发生了对应故障，则会自动采集对应的日志并上传到云端。
+
+> **注意：**
+>
+> 当前暂不支持多实例应用，若在多实例应用中调用[hiRetrieval.init()](../reference/apis-performance-analysis-kit/js-apis-hiretrieval.md#hiretrievalinit)，会抛出错误码36000002，详细处理步骤请参考应用灰度错误码[36000002](../reference/apis-performance-analysis-kit/errorcode-hiviewdfx-hiretrieval.md#36000002)。
 
 ## 工作原理
 
@@ -54,7 +58,11 @@
          hilog.error(DOMAIN, 'testTag', 'Failed to set colorMode. Cause: %{public}s', JSON.stringify(err));
        }
        // 初始化应用灰度采集特性
-       hiRetrieval.init();
+       try {
+         hiRetrieval.init();
+       } catch (err) {
+         hilog.error(DOMAIN, 'testTag', 'hiretrieval error: %{public}s', JSON.stringify(err));
+       }
        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
      }
    

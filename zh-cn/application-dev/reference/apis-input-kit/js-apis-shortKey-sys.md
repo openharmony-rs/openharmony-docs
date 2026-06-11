@@ -53,7 +53,7 @@ ArkTS-Sta： setKeyDownDuration(businessKey: string, delay: int, callback: Async
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -154,7 +154,7 @@ ArkTS-Sta：setKeyDownDuration(businessKey: string, delay: int): Promise&lt;void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -248,5 +248,5 @@ struct Index {
 | 名称      | 类型                                       |只读   | 可选  |说明                    |
 | --------  | ------------------------                  |-------|------ |--------               |
 | action    | [FingerprintAction](#fingerprintaction12)   | 否    |  否   | 指纹手势事件类型的枚举。           |
-| distanceX | ArkTS-Dyn: number<br/>ArkTS-Sta: double      | 否    |  否   | 相对于侧边指纹器件短轴偏移量（正数表示向右移动，负数表示向左移动），单位为px。 |
-| distanceY | ArkTS-Dyn: number<br/>ArkTS-Sta: double     | 否    |  否   | 相对于侧边指纹器件长轴偏移量（正数表示向上移动，负数表示向下移动），单位为px。 |
+| distanceX | ArkTS-Dyn: number<br/>ArkTS-Sta: double      | 否    |  否   | 相对于侧边指纹器件短轴偏移量（正数表示向右移动，负数表示向左移动），单位为像素（px）。 |
+| distanceY | ArkTS-Dyn: number<br/>ArkTS-Sta: double     | 否    |  否   | 相对于侧边指纹器件长轴偏移量（正数表示向上移动，负数表示向下移动），单位为像素（px）。 |

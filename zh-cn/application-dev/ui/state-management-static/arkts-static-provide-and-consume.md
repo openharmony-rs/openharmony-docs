@@ -270,7 +270,7 @@ import { Consume, Provide } from '@kit.ArkUI';
 
 以下示例是@Provide变量与后代组件中@Consume变量进行双向同步的场景。当分别点击Index和ContentComponent组件内的Button时，count的更改会在Index和ContentComponent中双向同步。
 
-<!-- @[ProvideConsumeBasic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ProvideConsumeBasic.ets) -->
+<!-- @[ProvideConsumeBasic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ProvideConsumeBasic.ets) --> 
 
 ``` TypeScript
 import { Button, ClickEvent, Column, Component, Consume, Entry, Provide, Row, Text } from '@kit.ArkUI';
@@ -278,26 +278,30 @@ import { Button, ClickEvent, Column, Component, Consume, Entry, Provide, Row, Te
 struct ContentComponent {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件Index内的@Provide装饰的变量
   @Consume count: number;
+  index: number;
 
   build() {
     Column() {
-      Text(`count(${this.count})`)
-      Button(`count(${this.count}), count + 1`)
+      Text(`Child ${this.index} count(${this.count})`)
+        .fontSize(20)
+        .margin(10)
+      Button(`Child ${this.index} count(${this.count}), count + 1`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.count += 1;
         })
     }
-    .width('50%')
+    .width('100%')
   }
 }
 
 @Component
 struct ListComponent {
   build() {
-    Row() {
-      ContentComponent()
-      ContentComponent()
-    }
+    // 通过index区分两个子组件
+    ContentComponent({ index: 1})
+    ContentComponent({ index: 2})
   }
 }
 
@@ -309,15 +313,20 @@ struct Index {
 
   build() {
     Column() {
-      Button(`count(${this.count}), count + 1`)
+      Button(`Parent count(${this.count}), count + 1`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.count += 1;
         })
       ListComponent()
     }
+    .width('100%')
   }
 }
 ```
+
+![provide-consume-basic](../figures/provideconsume1.gif)
 
 ### 装饰Map类型变量
 
@@ -334,26 +343,50 @@ struct Child {
   build() {
     Column() {
       ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Text(`${item[1]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(20)
+          .margin(10)
+        Text(`${item[1]}`)
+          .fontSize(20)
+          .margin(10)
         Divider()
       })
-      Button('Consume init Map').onClick((e: ClickEvent) => {
-        this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
+      Button('Consume init Map')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
       })
-      Button('Consume set new one').onClick((e: ClickEvent) => {
-        this.message.set(4, 'd');
+      Button('Consume set new one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 新增键值对，触发UI刷新
+          this.message.set(4, 'd');
       })
-      Button('Consume clear').onClick((e: ClickEvent) => {
-        this.message.clear();
+      Button('Consume clear')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 清空Map，触发UI刷新
+          this.message.clear();
       })
-      Button('Consume replace the first item').onClick((e: ClickEvent) => {
-        this.message.set(0, 'aa');
+      Button('Consume replace the first item')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 更新键值对，触发UI刷新
+          this.message.set(0, 'aa');
       })
-      Button('Consume delete the first item').onClick((e: ClickEvent) => {
-        this.message.delete(0);
+      Button('Consume delete the first item')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 删除键值对，触发UI刷新
+          this.message.delete(0);
       })
     }
+    .width('100%')
   }
 }
 
@@ -365,8 +398,11 @@ struct MapSample {
   build() {
     Row() {
       Column() {
-        Button('Provide init Map').onClick((e: ClickEvent) => {
-          this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c'], [4, 'd']]);
+        Button('Provide init Map')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c'], [4, 'd']]);
         })
         Child()
       }
@@ -376,6 +412,8 @@ struct MapSample {
   }
 }
 ```
+
+![provide-consume-map](../figures/provideconsume3.gif)
 
 ### 装饰Set类型变量
 
@@ -392,20 +430,37 @@ struct Child {
   build() {
     Column() {
       ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-        Text(`${item[0]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(20)
+          .margin(10)
         Divider()
       })
-      Button('Consume init set').onClick((e: ClickEvent) => {
-        this.message = new Set<number>([0, 1, 2, 3, 4]);
+      Button('Consume init set')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.message = new Set<number>([0, 1, 2, 3, 4]);
       })
-      Button('Consume set new one').onClick((e: ClickEvent) => {
-        this.message.add(5);
+      Button('Consume set new one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 新增元素，触发UI刷新
+          this.message.add(5);
       })
-      Button('Consume clear').onClick((e: ClickEvent) => {
-        this.message.clear();
+      Button('Consume clear')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 清空Set，触发UI刷新
+          this.message.clear();
       })
-      Button('Consume delete the first one').onClick((e: ClickEvent) => {
-        this.message.delete(0);
+      Button('Consume delete the first one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 删除元素，触发UI刷新
+          this.message.delete(0);
       })
     }
     .width('100%')
@@ -420,7 +475,10 @@ struct SetSample {
   build() {
     Row() {
       Column() {
-        Button('Provide init set').onClick((e: ClickEvent) => {
+        Button('Provide init set')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
           this.message = new Set<number>([0, 1, 2, 3, 4, 5]);
         })
         Child()
@@ -431,6 +489,8 @@ struct SetSample {
   }
 }
 ```
+
+![provide-consume-set](../figures/provideconsume4.gif)
 
 ### 装饰Date类型变量
 
@@ -447,16 +507,24 @@ struct Child {
   build() {
     Column() {
       Text(`Provide: ${this.selectedDate}`)
+        .fontSize(20)
+        .margin(10)
       Button('child increase the day by 1')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 调用Date的setDate接口修改日期，触发UI刷新
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
         })
       Button('child update the new date')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 通过给selectedDate重新赋值新的Date实例，触发UI刷新
           this.selectedDate = new Date('2023-09-09');
         })
     }
+    .width('100%')
   }
 }
 
@@ -468,21 +536,28 @@ struct Parent {
   build() {
     Column() {
       Text(`Provide: ${this.selectedDate}`)
+        .fontSize(20)
+        .margin(10)
       Button('parent increase the day by 1')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
         })
       Button('parent update the new date')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
           this.selectedDate = new Date('2023-07-07');
         })
       Child()
     }
+    .width('100%')
   }
 }
 ```
+
+![provide-consume-date](../figures/provideconsume5.gif)
 
 ### \@Provide和\@Consume支持联合类型
 
@@ -500,12 +575,16 @@ struct Child {
   build() {
     Column() {
       Text(`count(${this.count})`)
+        .fontSize(20)
+        .margin(10)
       Button(`count(${this.count}), Child`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.count = 'Ancestors';
         })
     }
-    .width('50%')
+    .width('100%')
   }
 }
 
@@ -527,14 +606,19 @@ struct Ancestors {
   build() {
     Column() {
       Button(`count(${this.count}), Child`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.count = undefined;
         })
       Parent()
     }
+    .width('100%')
   }
 }
 ```
+
+![provide-consume-union](../figures/provideconsume6.gif)
 
 ### @Provide支持allowOverride参数
 
@@ -553,7 +637,7 @@ struct MyComponent {
 
 完整示例如下：
 
-<!-- @[ProvideAllowOverride](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ProvideAllowOverride.ets) -->
+<!-- @[ProvideAllowOverride](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProvideConsume/entry/src/main/ets/pages/ProvideAllowOverride.ets) --> 
 
 ``` TypeScript
 import { Button, ClickEvent, Column, Component, Consume, Entry, Provide, Row, Text } from '@kit.ArkUI';
@@ -565,12 +649,16 @@ struct GrandSon {
   build() {
     Column() {
       Text(`reviewVotes(${this.reviewVotes})`) // Text显示10
+        .fontSize(20)
+        .margin(10)
       Button(`reviewVotes(${this.reviewVotes}), give +1`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.reviewVotes += 1;
         })
     }
-    .width('50%')
+    .width('100%')
   }
 }
 
@@ -602,14 +690,19 @@ struct GrandParent {
   build() {
     Column() {
       Button(`reviewVotes(${this.reviewVotes}), give +1`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.reviewVotes += 1;
         })
       Parent()
     }
+    .width('100%')
   }
 }
 ```
+
+![provide-allow-override](../figures/provideconsume2.gif)
 
 在上面的示例中：
 
@@ -645,6 +738,7 @@ struct Index {
     Column() {
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -663,32 +757,52 @@ struct Child {
   build() {
     Column() {
       Button('Child change count')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.count += 1;
         })
-      Text(`Child count ${this.count}`);
+      Text(`Child count ${this.count}`)
+        .fontSize(20)
+        .margin(10)
 
       Button('Child change v.num')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.v.num += 2;
         })
-      Text(`Child v ${this.v.num}`);
+      Text(`Child v ${this.v.num}`)
+        .fontSize(20)
+        .margin(10)
 
       Button('Child change p.info')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.p.info += 100;
         })
-      Text(`Child p.info.userInfo ${this.p.info}`);
+      Text(`Child p.info.userInfo ${this.p.info}`)
+        .fontSize(20)
+        .margin(10)
 
       Button('Child change message')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
-          this.message += 'a';
+          this.message += '!';
         })
-      Text(`Child count ${this.message}`);
+      Text(`Child count ${this.message}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![consume-default-value](../figures/provideconsume7.gif)
+
 在上面的示例中：
 - 依次点击内容为“Child change count”按钮、“Child change v.num”按钮、“Child change p.info”按钮和“Child change message”按钮，均会触发“onCountUpdated”回调函数。
 - 观察日志依次显示：

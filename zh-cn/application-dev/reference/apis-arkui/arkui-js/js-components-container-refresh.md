@@ -144,4 +144,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001150719520](figures/zh-cn_image_0000001150719520.gif)
+![refresh](figures/refresh.gif)

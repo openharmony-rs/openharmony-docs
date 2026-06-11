@@ -146,4 +146,4 @@ export default {
 }
 ```
 
-![zh-cn_gif_js_media_video](figures/zh-cn_gif_js_media_video.gif)
+![zh-cn_gif_js_media_video](figures/js-media-video.gif)

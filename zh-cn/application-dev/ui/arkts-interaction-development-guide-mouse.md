@@ -92,9 +92,23 @@ struct MouseMove {
 
 ArkTS-Sta示例：
 
+<!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/mouseMove/MouseMove.ets) -->
+
 ``` TypeScript
-import { Entry, Component, State } from '@kit.ArkUI';
-import { Column, Button, Divider, Text, Color, MouseEvent, ButtonType, HorizontalAlign, FlexAlign } from '@kit.ArkUI';
+import {
+  Entry,
+  Component,
+  State,
+  Column,
+  Button,
+  Divider,
+  Text,
+  Color,
+  MouseEvent,
+  ButtonType,
+  HorizontalAlign,
+  FlexAlign
+} from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -219,9 +233,10 @@ struct StopPropagation {
 
 ArkTS-Sta示例：
 
+<!-- @[stop_propagation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/stopPropagation/StopPropagation.ets) -->
+
 ``` TypeScript
-import { Entry, Component, State } from '@kit.ArkUI';
-import { Column, Button, Divider, Text, Color, MouseEvent, ButtonType, HorizontalAlign, FlexAlign } from '@kit.ArkUI';
+import { Entry, Component, State, Column, Button, Divider, Text, Color, MouseEvent, ButtonType, HorizontalAlign, FlexAlign } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -323,9 +338,10 @@ struct OnHover {
 
 ArkTS-Sta示例：
 
+<!-- @[on_hover](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/onHover/OnHover.ets) -->
+
 ``` TypeScript
-import { Entry, Component, State } from '@kit.ArkUI';
-import { Column, Button, Color, FlexAlign } from '@kit.ArkUI';
+import { Entry, Component, State, Column, Button, Color, FlexAlign } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -505,9 +521,33 @@ struct ListExample {
 
 ArkTS-Sta示例：
 
+<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->
+
 ``` TypeScript
-import { Entry, Component, State, Builder, CommonMethod, CustomStyles } from '@kit.ArkUI';
-import { Column, List, ListItem, LazyForEach, Text, Color, MouseEvent, MouseButton, MouseAction, IDataSource, DataChangeListener, Axis, BarState, EdgeEffect, Padding, TextAlign } from '@kit.ArkUI';
+import {
+  Entry,
+  Component,
+  State,
+  Builder,
+  CommonMethod,
+  CustomStyles,
+  Column,
+  List,
+  ListItem,
+  LazyForEach,
+  Text,
+  Color,
+  MouseEvent,
+  MouseButton,
+  MouseAction,
+  IDataSource,
+  DataChangeListener,
+  Axis,
+  BarState,
+  EdgeEffect,
+  Padding,
+  TextAlign
+} from '@kit.ArkUI';
 
 class ListDataSource implements IDataSource<int> {
   private list: int[] = [];
@@ -558,7 +598,6 @@ struct ListExample {
   private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   private allSelectedItems: Array<int> = new Array<int>();
   @State isSelected: boolean[] = [false, false, false, false, false, false, false, false, false, false];
-
   selectedStyle: CustomStyles = (instance: CommonMethod): void => {
     instance.backgroundColor(Color.Blue);
   }
@@ -785,9 +824,10 @@ struct MouseWheel {
 
 ArkTS-Sta示例：
 
+<!-- @[list_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/MouseWheel/ListDataSource.ets) -->
+
 ``` TypeScript
-import { Entry, Component, State } from '@kit.ArkUI';
-import { Column, Text, Button, List, ListItem, LazyForEach, Color, Axis, BarState, EdgeEffect, IDataSource, DataChangeListener, TextAlign, PanGesture, PanDirection, Margin } from '@kit.ArkUI';
+import { IDataSource, DataChangeListener } from '@kit.ArkUI';
 
 export class ListDataSource implements IDataSource<number> {
   private list: number[] = [];
@@ -844,6 +884,13 @@ export class ListDataSource implements IDataSource<number> {
     this.notifyDataAdd(index);
   }
 }
+```
+
+<!-- @[mouse_wheel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets) -->
+
+``` TypeScript
+import { Entry, Component, State, Column, Button, Text, List, ListItem, LazyForEach, Axis, BarState, EdgeEffect, Padding, PanGesture, PanDirection, TextAlign, Margin } from '@kit.ArkUI';
+import { ListDataSource } from './ListDataSource';
 
 @Entry
 @Component

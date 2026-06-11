@@ -144,8 +144,10 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 **示例：**
 
+ArkTS-Sta示例：
+
   ```ts
-  // ArkTS-Sta示例 
+  'use static'
   import { uriPermissionManager, wantConstant } from '@kit.AbilityKit';
   import { fileIo, fileUri } from '@kit.CoreFileKit';
   
@@ -297,8 +299,10 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 **示例：**
 
+ArkTS-Sta示例：
+
   ```ts
-  // ArkTS-Sta示例
+  'use static'
   import { uriPermissionManager, wantConstant } from '@kit.AbilityKit';
   import { fileIo, fileUri } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -431,6 +435,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 
   ```ts
+  'use static'
   import { AbilityConstant, UIAbility, Want, wantConstant, uriPermissionManager } from '@kit.AbilityKit';
   import { fileUri } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -572,8 +577,10 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 
 **示例：**
 
+ArkTS-Sta示例：
+
   ```ts
-  // ArkTS-Sta示例
+  'use static'
   import { uriPermissionManager } from '@kit.AbilityKit';
   
   let targetBundleName = 'com.example.test_case2';
@@ -696,8 +703,10 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Sta示例：
+
   ```ts
-  // ArkTS-Sta示例
+  'use static'
   import { uriPermissionManager } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
@@ -813,6 +822,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 
   ```ts
+  'use static'
   import { AbilityConstant, UIAbility, Want, wantConstant, uriPermissionManager } from '@kit.AbilityKit';
   import { fileUri } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -878,7 +888,7 @@ ArkTS-Sta: grantUriPermissionByKey(key: string, flag: wantConstant.Flags, target
 | -------- | -------- | -------- | -------- |
 | key | string | 是 | 目标UDMF数据唯一标识。key必须由调用方通过[unifiedDataChannel.insertData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddatachannelinsertdata)创建，且写入的数据均为有权限授权的文件URI。<br>当前仅支持SYSTEM_SHARE、PICKER和MENU类型的[UDMF数据通路](../apis-arkdata/js-apis-data-unifiedDataChannel.md#intention)的key。key的创建与使用方法详见[标准化数据通路实现数据共享](../../database/unified-data-channels.md)。|
 | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | 是 | URI的读权限或写权限。支持的取值如下：<br>- FLAG_AUTH_READ_URI_PERMISSION：读权限。<br>- FLAG_AUTH_WRITE_URI_PERMISSION：写权限。 |
-| targetTokenId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)获取。 |
+| targetTokenId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)获取。目标应用需要与接口调用方为不同应用。 |
 
 **返回值：**
 
@@ -962,7 +972,7 @@ ArkTS-Sta: grantUriPermissionByKeyAsCaller(key: string, flag: wantConstant.Flags
 | key | string | 是 | 目标UDMF数据唯一标识。key必须指定应用（即callerTokenId对应的应用）通过[unifiedDataChannel.insertData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddatachannelinsertdata)创建，且写入的数据均为有权限授权的文件URI。<br>当前仅支持SYSTEM_SHARE、PICKER和MENU类型的[UDMF数据通路](../apis-arkdata/js-apis-data-unifiedDataChannel.md#intention)的key。key的创建与使用方法详见[标准化数据通路实现数据共享](../../database/unified-data-channels.md)。|
 | flag | [wantConstant.Flags](js-apis-app-ability-wantConstant.md#flags) | 是 | URI的读权限或写权限。支持的取值如下：<br>- FLAG_AUTH_READ_URI_PERMISSION：读权限。<br>- FLAG_AUTH_WRITE_URI_PERMISSION：写权限。 |
 | callerTokenId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 拉起方应用的身份标识，可以通过[want](js-apis-app-ability-want.md)中的"ohos.aafwk.param.callerToken"字段获取。 |
-| targetTokenId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)获取。 |
+| targetTokenId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 目标应用的身份标识，可以通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)获取。目标应用必须与拉起方为不同应用。 |
 
 **返回值：**
 
@@ -1064,6 +1074,7 @@ ArkTS-Dyn示例：
 ArkTS-Sta示例：
 
   ```ts
+  'use static'
   // 拉起方应用包名为com.example.caller
   // Index.ets
   import { common, Want, wantConstant } from '@kit.AbilityKit';

@@ -4,6 +4,8 @@
 | --- | --- | --- | --- | --- | ---- |
 | docs/zh-cn/application-dev/application-models/context-switch.md | [applicationInfo: ApplicationInfo;](../reference/apis-ability-kit/js-apis-inner-application-context.md#context) | Ability Kit | Ability | 是 | 2026-05-07 |
 | docs/zh-cn/application-dev/reference/apis-localization-kit/js-apis-i18n.md | [原始偏移量](#getrawoffset) | Localization Kit | global | 是 | 2026-05-09 |
+| docs/zh-cn/application-dev/reference/apis-connectivity-kit/js-apis-bluetooth-ble.md | [实际MAC地址](./js-apis-bluetooth-common.md#bluetoothaddresstype) | Connectivity Kit | Communication | 是 | 2026-05-11 |
+| docs/zh-cn/application-dev/reference/apis-connectivity-kit/js-apis-bluetooth-ble.md | [虚拟MAC地址](./js-apis-bluetooth-common.md#bluetoothaddresstype) | Connectivity Kit | Communication | 是 | 2026-05-11 |
 | docs/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md | [自定义弹窗的创建](./ts-methods-custom-dialog-box.md#open) | ArkUI Kit | ArkUI | 是 | 2026-05-11 |
 | docs/zh-cn/application-dev/ui/state-management/arkts-basic-syntax-overview.md | [属性方法](../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md) | ArkUI Kit | ArkUI | 是 | 2026-05-11 |
 | docs/zh-cn/application-dev/ui/state-management/arkts-basic-syntax-overview.md | [事件方法](../../reference/apis-arkui/arkui-ts/ts-component-general-events.md) | ArkUI Kit | ArkUI | 是 | 2026-05-11 |
@@ -18,3 +20,4 @@
 | docs/zh-cn/application-dev/reference/apis-arkui/js-apis-window-sys.md | [独立子窗](../../windowmanager/window-type-overview.md#辅助窗口) | ArkUI Kit | ArkUI | 是 | 2026-05-26 |
 | docs/zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-f.md | [独立子窗](../../windowmanager/window-type-overview.md#辅助窗口) | ArkUI Kit | ArkUI | 是 | 2026-05-26 |
 | docs/zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-i.md | [独立子窗](../../windowmanager/window-type-overview.md#辅助窗口) | ArkUI Kit | ArkUI | 是 | 2026-05-26 |
+| docs/zh-cn/application-dev/reference/apis-connectivity-kit/js-apis-nfcController.md | [canIUse("SystemCapability.Communication.NFC.Core")](../common/init.md#caniuse) | Connectivity Kit | Nfc | 是 | 2026-06-04 |

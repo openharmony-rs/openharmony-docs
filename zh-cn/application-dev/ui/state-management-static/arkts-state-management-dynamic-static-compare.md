@@ -21,6 +21,7 @@
 
 例如：
 
+<!-- @[static_no_mutable_builder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaCompare/entry/src/main/ets/pages/StaticNoMutableBuilder.ets) -->
   ```typescript
   'use static'
 
@@ -153,18 +154,27 @@ ArkTS-Sta中，状态管理框架使用Vsync（渲染同步信号）异步触发
 
 ArkTS-Dyn示例：
 
-```ts
+<!-- @[monitor_trigger_dyn](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynCompare/entry/src/main/ets/pages/MonitorTriggerDyn.ets) --> 
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
 
 @ObservedV2
 class Info {
   @Trace message: string = 'not initialized';
 
   constructor() {
-    UIUtils.addMonitor(this, 'message', this.onMessageChange);
+    try {
+      UIUtils.addMonitor(this, 'message', this.onMessageChange);
+    } catch (err) {
+      hilog.error(DOMAIN, 'testTag', `taskpool execute fail. code is ${err.name}, message is ${err.message}`);
+    }
     // 会触发onMessageChange回调，打印`message change from not initialized to initialized`
     this.message = 'initialized';
   }
+
   onMessageChange(monitor: IMonitor) {
     console.info(`message change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
@@ -177,7 +187,7 @@ struct Page {
 
   aboutToAppear(): void {
     // 会再次触发onMessageChange回调，打印`message change from initialized to Index aboutToAppear`
-    this.info.message = 'Index aboutToAppear'; 
+    this.info.message = 'Index aboutToAppear';
   }
 
   build() {
@@ -191,7 +201,8 @@ struct Page {
 ArkTS-Sta示例：
 
 
-```ts
+<!-- @[monitor_trigger_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaCompare/entry/src/main/ets/pages/MonitorTriggerSta.ets) -->
+``` TypeScript
 'use static'
 
 import { ObservedV2, Trace, Local, IMonitor, IMonitorDecoratedVariable, UIUtils,
@@ -259,7 +270,8 @@ PersistenceV2的globalConnect接口在ArkTS-Dyn和ArkTS-Sta上存在API层面的
 
 ArkTS-Dyn示例：
 
-```typescript
+<!-- @[global_connect_dyn](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DynCompare/entry/src/main/ets/pages/GlobalConnectDyn.ets) -->
+``` TypeScript
 import { PersistenceV2, UIUtils, Type } from '@kit.ArkUI';
 
 @ObservedV2
@@ -331,7 +343,8 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[global_connect_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaCompare/entry/src/main/ets/pages/GlobalConnectSta.ets) -->
+``` TypeScript
 'use static'
 
 // 迁移步骤1：移除Type的导入，新增StorageDefaultSubCreators的导入

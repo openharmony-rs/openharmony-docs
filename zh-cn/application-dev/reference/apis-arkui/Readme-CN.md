@@ -207,6 +207,7 @@
       - [特效绘制合并](arkui-ts/ts-universal-attributes-use-effect.md)
       - [组件内容填充方式](arkui-ts/ts-universal-attributes-renderfit.md)
       <!--Del-->
+      - [空间效果 (系统接口)](arkui-ts/ts-universal-attributes-spatial-effect-sys.md)
       - [点光源设置 (系统接口)](arkui-ts/ts-universal-attributes-point-light-style-sys.md)
       - [图像效果 (系统接口)](arkui-ts/ts-universal-attributes-image-effect-sys.md)
       - [融合效果 (系统接口)](arkui-ts/ts-universal-attributes-use-union-effect-sys.md)
@@ -436,6 +437,9 @@
     <!--Del-->
     - [XComponent (系统接口)](arkui-ts/ts-basic-components-xcomponent-sys.md)
     <!--DelEnd-->
+    <!--Del-->
+    - [DepthComponent (系统接口)](arkui-ts/ts-basic-components-depthcomponent-sys.md)
+    <!--DelEnd-->
   - 菜单<!--menus-->
     - [Menu](arkui-ts/ts-basic-components-menu.md)
     - [MenuItem](arkui-ts/ts-basic-components-menuitem.md)
@@ -544,7 +548,9 @@
     - [组件预览](arkui-ts/ts-universal-component-previewer.md)
   - 系统预置UI组件库<!--system-preset-ui-component-library-->
     - [Chip](arkui-ts/ohos-arkui-advanced-Chip.md)
+    - [ChipV2](arkui-ts/ohos-arkui-advanced-ChipV2.md)
     - [ChipGroup](arkui-ts/ohos-arkui-advanced-ChipGroup.md)
+    - [ChipGroupV2](arkui-ts/ohos-arkui-advanced-ChipGroupV2.md)
     - [ComposeListItem](arkui-ts/ohos-arkui-advanced-ComposeListItem.md)
     - [ComposeTitleBar](arkui-ts/ohos-arkui-advanced-ComposeTitleBar.md)
     - [DownloadFileButton](arkui-ts/ohos-arkui-advanced-DownloadFileButton.md)
@@ -575,6 +581,7 @@
     - [TreeView](arkui-ts/ohos-arkui-advanced-TreeView.md)
     - [advanced.Counter](arkui-ts/ohos-arkui-advanced-Counter.md)
     - [CounterV2](arkui-ts/ohos-arkui-advanced-CounterV2.md)
+    - [DatePickerComponent](arkui-ts/ohos-arkui-advanced-DatePickerComponent.md)
     <!--Del-->
     - [SegmentButton(系统接口)](arkui-ts/ohos-arkui-advanced-SegmentButton-sys.md)
     - [SegmentButtonV2(系统接口)](arkui-ts/ohos-arkui-advanced-SegmentButtonV2-sys.md)
@@ -586,6 +593,7 @@
     - [状态变量变化监听](arkui-ts/ts-state-management-watch-monitor.md)
     - [组件双向绑定 (ArkTS-Sta)](js-apis-twoWayBinding-static.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
+    - [WithEnv：环境变量容器](arkui-ts/ts-container-with-env.md)
     - [If (ArkTS-Sta)](arkui-ts/ts-rendering-control-ifelse-sta.md)
     - [ForEach (ArkTS-Dyn)](arkui-ts/ts-rendering-control-foreach.md)
     - [ForEach (ArkTS-Sta)](arkui-ts/ts-rendering-control-foreach-sta.md)

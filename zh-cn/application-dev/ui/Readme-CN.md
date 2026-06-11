@@ -59,7 +59,6 @@
     - [状态管理概述](state-management/arkts-state-management-overview.md)
       - [MVVM模式（V1）](state-management/arkts-mvvm.md)
       - [MVVM模式（V2）](state-management/arkts-mvvm-v2.md)
-    - [状态管理术语](state-management/arkts-state-management-glossary.md)
     - [状态管理原理介绍](state-management/arkts-state-management-introduce.md)
     - [状态管理V1和V2更新机制差异](state-management/arkts-v1-v2-update-difference.md)
     - 动态ArkTS的状态管理<!--arkts-state-management-v1-dynamic-->
@@ -163,6 +162,7 @@
         - [状态管理V1V2混用指导（ArkTS-Sta）](state-management-static/arkts-static-v1-v2-mixusage.md)
       - [状态管理优秀实践（ArkTS-Sta）](state-management-static/arkts-static-state-management-best-practices.md)
     - [状态管理动静态差异](state-management-static/arkts-state-management-dynamic-static-compare.md)
+    - [状态管理术语](state-management/arkts-state-management-glossary.md)
   - 学习UI范式渲染控制<!--arkts-rendering-control-->
     - [渲染控制概述](rendering-control/arkts-rendering-control-overview.md)
     - [if/else：条件渲染](rendering-control/arkts-rendering-control-ifelse.md)
@@ -174,6 +174,7 @@
     - [If：条件渲染(ArkTS-Sta)](rendering-control/arkts-rendering-control-ifelse-sta.md)
   - 学习响应式环境变量<!--arkts-env-property-->
     - [\@Env：环境变量](arkts-env-system-property.md)
+    - [\@CustomEnv：自定义环境变量](arkts-custom-env-property.md)
   - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
     - [组件导航和页面路由概述](arkts-navigation-introduction.md)
     - 组件导航(Navigation) (推荐)<!--arkts-navigation-navigation-->
@@ -201,6 +202,7 @@
     - [创建弧形列表 (ArcList)](arkts-layout-development-create-arclist.md)（圆形屏幕推荐使用）
     - [创建网格 (Grid/GridItem)](arkts-layout-development-create-grid.md)
     - [创建瀑布流 (WaterFlow)](arkts-layout-development-create-waterflow.md)
+    - [创建懒加载布局 (LazyColumnLayout/LazyVGridLayout/LazyVWaterFlowLayout)](arkts-layout-development-create-lazy-layout.md)
   - 使用文本<!--arkts-use-text-->
     - [文本概述](arkts-text-introduction.md)
     - [文本显示 (Text/Span)](arkts-common-components-text-display.md)
@@ -264,6 +266,7 @@
       - [支持键盘输入事件](arkts-interaction-development-guide-keyboard.md)
       - [支持游戏手柄输入事件](arkts-interaction-development-guide-gamepad.md)
       - [支持表冠输入事件](arkts-common-events-crown-event.md)
+      - [支持智慧手势输入事件](arkts-common-events-smartgesture-event.md)
     - [添加手势响应](arkts-interaction-development-guide-support-gesture.md)
       - [绑定手势方法](arkts-gesture-events-binding.md)
       - [单一手势](arkts-gesture-events-single-gesture.md)
@@ -369,7 +372,7 @@
       - [在ArkTS-Dyn中使用ArkTS-Sta的矩阵变换（matrix4）](arkts-dyn-interop-sta-matrix4.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的资源（Resource）](arkts-dyn-interop-sta-resource.md)
       - 状态管理（V1）互操作<!--ui-arkts-sta-interop-dyn-state-management-->
-        - [在ArkTS-Sta中使用ArkTS-Dyn管理组件拥有的状态](arkts-sta-interop-dyn-statemanager-v1.md)
+        - [在ArkTS-Sta中使用ArkTS-Dyn管理组件拥有的状态](arkts-sta-interop-dyn-statemanagement-v1.md)
         - [在ArkTS-Sta中使用ArkTS-Dyn的@Observed和@ObjectLink（嵌套类对象属性变化）](arkts-sta-interop-dyn-observed.md)
         - [在ArkTS-Sta中使用ArkTS-Dyn管理应用拥有的状态](arkts-sta-interop-dyn-storages.md)
         - [在ArkTS-Dyn中使用ArkTS-Sta管理组件拥有的状态](arkts-dyn-interop-sta-statemanagement-v1.md)
@@ -386,43 +389,45 @@
       <!--ui-arkts-sta-interop-dyn-state-management-v1-v2-->
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)
-  - [接入ArkTS页面](ndk-access-the-arkts-page.md)
-  - [添加事件监听](ndk-add-component-events.md)
-  - 添加交互事件<!--arkts-add-event-->
-    - [绑定基础输入事件](ndk-bind-input-events.md)
-    - [绑定手势事件](ndk-bind-gesture-events.md)
-    - [绑定拖拽事件](ndk-drag-event.md)
-  - 使用动画<!--arkts-use-animation-ndk-->
-    - [动画概述](ndk-use-animation.md)
-    - [使用动画开发指导](ndk-use-animation-scene.md)
+  - NDK对接ArkTS<!--arkts-bind-arkts-ndk-->
+    - [嵌入ArkTS组件](ndk-embed-arkts-components.md)
+    - [接入ArkTS页面](ndk-access-the-arkts-page.md)
   - 构建布局<!--arkts-build-layout-ndk-->
     - [使用布局组件](ndk-layout-container.md)
     - [设置通用布局属性](ndk-common-attribute-layout.md)
+  - [使用导航类组件](ndk-navigation-query.md)
   - 使用列表与网格<!--arkts-list-and-grid-ndk-->
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)
     - [使用网格](ndk-grid.md)
   - 使用文本<!--arkts-build-text-ndk-->
-      - [使用Text组件](ndk-use-text-component.md)
-      - [使用属性字符串](ndk-styled-string.md)
-      - [添加输入框文本事件监听](ndk-textarea-event.md)
-  - 使用选择类组件<!--arkts-build-picker-ndk-->
-      - [使用滑动选择器Picker](ndk-picker.md)
-  - [显示图片（Image）](ndk-image-component.md)
-  - [构建弹窗](ndk-build-pop-up-window.md)
-  - [构建表单组件](ndk-build-form-components.md)
+    - [使用Text组件](ndk-use-text-component.md)
+    - [使用属性字符串](ndk-styled-string.md)
+    - [输入框文本事件监听](ndk-textarea-event.md)
   - 媒体展示<!--arkts-build-media-ndk-->
+    - [显示图片（Image）](ndk-image-component.md)
     - [使用滑块视图容器 (Swiper)](ndk-swiper.md)
-  - [使用导航类组件](ndk-navigation-query.md)
-  - [构建自定义组件](ndk-build-custom-components.md)
-  - [嵌入ArkTS组件](ndk-embed-arkts-components.md)
-  - [构建渲染节点](ndk-embed-render-components.md)
+  - [构建表单组件](ndk-build-form-components.md)
+  - [构建弹窗](ndk-build-pop-up-window.md)
+  - 使用动画<!--arkts-use-animation-ndk-->
+    - [动画概述](ndk-use-animation.md)
+    - [使用动画开发指导](ndk-use-animation-scene.md)
+  - 使用选择类组件<!--arkts-build-picker-ndk-->
+      - [使用滑动选择器 (Picker)](ndk-picker.md)
+  - [添加事件响应](ndk-add-event-response.md)
+    - [添加事件监听](ndk-add-component-events.md)
+    - [绑定基础输入事件](ndk-bind-input-events.md)
+    - [绑定手势事件](ndk-bind-gesture-events.md)
+    - [绑定拖拽事件](ndk-drag-event.md)
+  - 使用自定义能力<!--arkts-build-custom-ndk-->
+    - [构建自定义组件](ndk-build-custom-components.md)
+    - [自定义绘制](arkts-user-defined-draw.md)
   - [通过自绘制接入无障碍](ndk-accessibility-xcomponent.md)
-  - [自定义绘制](arkts-user-defined-draw.md)
-  - [查询和操作自定义节点](ndk-node-query-operate.md)
   - [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ndk-embedded-component.md)
-  - [在NDK中保证多实例场景功能正常](ndk-scope-task.md)
-  - [使用多线程NDK接口并行化构建UI页面](ndk-build-on-multi-thread.md)
+  - [查询和操作NDK节点](ndk-node-query-operate.md)
+  - [NDK多实例场景开发](ndk-scope-task.md)
+  - [NDK多线程创建组件](ndk-build-on-multi-thread.md)
+  - [构建渲染节点](ndk-embed-render-components.md)
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
   - [UI开发 (兼容JS的类Web开发范式)概述](ui-js-overview.md)
   - 框架说明<!--js-framework-overview-->

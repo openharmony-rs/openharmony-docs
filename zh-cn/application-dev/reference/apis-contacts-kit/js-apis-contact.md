@@ -4610,7 +4610,7 @@ import { common } from '@kit.AbilityKit';
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let mode = contact.ContactSyncMode.MODE_INCREMENTAL;
 const totalBatches: number = 3;
-const syncId: number = Date.now();
+const syncId: number = Date.now() / 1000;
 const totalCount = 300;
 const batchSize = 100;
 for (let batch: number = 1; batch <= totalBatches; batch++) {
@@ -4707,7 +4707,7 @@ console.info('queryContactSyncInfo syncInfoList '  + JSON.stringify(syncInfoList
 
 importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
-通过UI交互批量导入多个联系人。每次最多可导入100个联系人。
+通过UI交互批量导入多个联系人。每次最多可导入100个联系人。不支持导入联系人的头像。
 
 **起始版本**：26.0.0
 
@@ -4782,7 +4782,7 @@ promise.then((data) => {
 | maxSelectable<sup>15+</sup>         | number | 否   | 是   | 联系人数量上限。默认值为10000，超出上限则以默认值筛选。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     | 
 | isDisplayedByName<sup>15+</sup>         | boolean | 否   | 是   | 是否按联系人姓名维度展示，true:按联系人姓名维度展示，false:按联系人号码维度展示，默认值为false。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     |
 | filter<sup>15+</sup>         | [ContactSelectionFilter](#contactselectionfilter15) | 否   | 是   | 联系人查询过滤器。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     | 
-| isAutoDismissOnNavigation        | boolean | 否   | 是   | 拉起picker的页面发生路由切换时是否允许自动关闭picker，true:允许自动关闭picker，false:不允许自动关闭picker，默认值为false。**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0     |
+| isAutoDismissOnNavigation        | boolean | 否   | 是   | 拉起picker的页面发生路由切换时是否允许自动关闭picker，true:允许自动关闭picker，false:不允许自动关闭picker，默认值为false。<br> **起始版本：** 26.0.0 <br> **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **模型约束**：此接口仅可在Stage模型下使用。     |
 
 ## ContactSelectionFilter<sup>15+</sup>
 
@@ -5559,7 +5559,7 @@ let website: contact.Website = {
 
 |                名称               |                  类型                 |  只读  | 可选    |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
-| syncId        | number |  否  |  否   |  表示用于同步所有联系人的同步标识符。该值应从0开始。     |
+| syncId        | number |  否  |  否   |  表示用于同步所有联系人的同步标识符。取值范围: [0, 2147483647]。     |
 | currentBatch        | number |  否  |  否    | 表示要同步的当前联系人批次的标识符。值的范围是从1到totalBatches。     |
 | totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
 

@@ -84,9 +84,9 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
    完整代码如下：
    
-   ```ts
-   'use static'
+   <!-- @[PersistentStorageBasic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistentStorageDecorator/entry/src/main/ets/pages/PersistentStorageBasic.ets) -->
    
+   ``` TypeScript
    import { Button, ClickEvent, Column, Component, Entry, PersistentStorage, Row, State, StorageLink, Text } from '@kit.ArkUI';
    
    @Entry
@@ -103,17 +103,24 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
        Row() {
          Column() {
            Text(this.message)
+             .fontSize(20)
+             .margin(10)
            // 应用退出时会保存当前结果；重新启动后，会显示上一次的保存结果。
            // 未修改时默认值为47
-           Text(`${this.aProp}`)
-             .onClick((e: ClickEvent) => {
-               this.aProp += 1;
-             })
+           Button(`aProp value is ${this.aProp}`)
+            .width(300)
+            .margin(10)
+            .onClick((e: ClickEvent) => {
+              this.aProp += 1;
+            })
          }
+         .width('100%')
        }
      }
    }
    ```
+
+![persistentstorage-basic](../figures/persistentstorage6.gif)
 
 - 新应用安装后首次启动运行：
 
@@ -124,7 +131,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
   5. 在Index组件中创建状态变量\@StorageLink('aProp') aProp，和AppStorage中“aProp”双向绑定，在创建的过程中会在AppStorage中查找，成功找到“aProp”，所以使用其在AppStorage找到的值47。
 
 - 触发点击事件后：
-  1. 状态变量\@StorageLink('aProp') aProp改变，触发Text组件重新刷新。
+  1. 状态变量\@StorageLink('aProp') aProp改变，触发Button组件刷新。
   2. [\@StorageLink](./arkts-static-appstorage.md#storagelink)装饰的变量是和AppStorage中建立双向同步的，所以\@StorageLink('aProp') aProp的变化会被同步回AppStorage中。
   3. AppStorage中“aProp”属性的改变会同步到所有绑定该“aProp”的单向或者双向变量，在本示例中没有其他的绑定“aProp”的变量。
   4. 因为“aProp”对应的属性已经被持久化，所以在AppStorage中“aProp”的改变会触发PersistentStorage，将新的改变写入本地磁盘。
@@ -175,14 +182,14 @@ if (AppStorage.get('aProp') > 50) {
 
 静态ArkTS中,语言不支持序列化undefined，因此，不建议开发者使用PersistentStorage时去持久化undefined，可使用null代替，如在下面的示例中，使用persistProp方法初始化'P'为12。通过@StorageLink('P')绑定变量p，类型为number | string | null，点击Button改变P的值，视图会随之刷新。且P的值被持久化存储。
 
-```ts
-'use static'
+<!-- @[PersistentStorageUnionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistentStorageDecorator/entry/src/main/ets/pages/PersistentStorageUnionType.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct MapSample {
+struct UnionTypeSample {
   success: boolean = PersistentStorage.persistProp<number | string | null>('union', 12,
     (val: number | string | null): jsonx.JsonElement => {
       const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
@@ -249,14 +256,14 @@ struct MapSample {
 
 在下面的示例中，@StorageLink装饰的persistedDate类型为Date，点击Button改变persistedDate的值，视图会随之刷新，并且persistedDate的值会被持久化存储。
 
-```ts
-'use static'
+<!-- @[PersistentStorageDate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistentStorageDecorator/entry/src/main/ets/pages/PersistentStorageDate.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct MapSample {
+struct DateSample {
   success: boolean = PersistentStorage.persistProp<Date>('date', new Date(),
     (date: Date): jsonx.JsonElement => {
       const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
@@ -324,9 +331,9 @@ struct MapSample {
 
 在下面的示例中，@StorageLink装饰的map类型为Map\<string, string\>，点击Button改变map的值，视图会随之刷新，并且map的值被持久化存储。
 
-```ts
-'use static'
+<!-- @[PersistentStorageMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistentStorageDecorator/entry/src/main/ets/pages/PersistentStorageMap.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
@@ -401,9 +408,9 @@ struct MapSample {
 
 在下面的示例中，@StorageLink装饰的set类型为Set\<string\>，点击Button改变set的值，视图会随之刷新。且persistedSet的值被持久化存储。
 
-```ts
-'use static'
+<!-- @[PersistentStorageSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistentStorageDecorator/entry/src/main/ets/pages/PersistentStorageSet.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
@@ -478,9 +485,9 @@ struct SetSample {
 
 在下面的示例中，@StorageLink装饰的class被@Observed修饰，@Observed装饰的class属性改变时，能触发PersistentStorage持久化。
 
-```ts
-'use static'
+<!-- @[PersistentStorageClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistentStorageDecorator/entry/src/main/ets/pages/PersistentStorageClass.ets) -->
 
+``` TypeScript
 import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 @Observed

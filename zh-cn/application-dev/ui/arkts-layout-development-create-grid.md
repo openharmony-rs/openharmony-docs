@@ -2,7 +2,7 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
 <!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -66,7 +66,7 @@ ArkTS-Dyn示例：
 
 ``` TypeScript
 Grid() {
-  // ···
+  // ...
 }
 .rowsTemplate('1fr 1fr 1fr')
 .columnsTemplate('1fr 2fr 1fr')
@@ -74,16 +74,15 @@ Grid() {
 
 ArkTS-Sta示例：
 
-```ts
-import { Grid } from '@ohos.arkui.component';
+<!-- @[build_a_grid](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/grid/GridLayout.ets) -->
 
+``` TypeScript
 Grid() {
   // ...
 }
 .rowsTemplate('1fr 1fr 1fr')
 .columnsTemplate('1fr 2fr 1fr')
 ```
-
 >**说明：**
 >
 >当Grid组件设置了rowsTemplate或columnsTemplate时，Grid的layoutDirection、maxCount、minCount、cellLength属性不生效，属性说明可参考[Grid-属性](../reference/apis-arkui/arkui-ts/ts-container-grid.md#属性)。
@@ -115,49 +114,51 @@ ArkTS-Dyn示例：
 layoutOptions: GridLayoutOptions = {
   regularSize: [1, 1],
   onGetRectByIndex: (index: number) => {
-  // ···
+    // ...
+
     if (index == key1) { // key1是“0”按键对应的index
       return [6, 0, 1, 2];
     } else if (index == key2) { // key2是“=”按键对应的index
       return [5, 3, 2, 1];
     }
-    // ···
+    // ...
     // 这里需要根据具体布局返回其他item的位置
   }
 }
-// ···
-Grid(undefined, this.layoutOptions) {
-  // ···
-}
-.columnsTemplate('1fr 1fr 1fr 1fr')
-.rowsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
+// ...
+        Grid(undefined, this.layoutOptions) {
+          // ...
+        }
+        .columnsTemplate('1fr 1fr 1fr 1fr')
+        .rowsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
 ```
 
 ArkTS-Sta示例：
 
-```ts
-import { Grid, GridLayoutOptions } from '@ohos.arkui.component';
+<!-- @[Set_numberrows_columns](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/grid/GridCalculator.ets) -->
 
+``` TypeScript
 layoutOptions: GridLayoutOptions = {
   regularSize: [1, 1],
-  onGetRectByIndex: (index: number) => {
-    if (index == key1) { // key1是“0”按键对应的index。
-      return [6, 0, 1, 2] as [Double, Double, Double, Double];
-    } else if (index == key2) { // key2是“=”按键对应的index。
-      return [5, 3, 2, 1] as [Double, Double, Double, Double];
+  onGetRectByIndex: (index: int) => {
+    // ...
+
+    if (index == key1) { // key1是"0"按键对应的index
+      return [6, 0, 1, 2];
+    } else if (index == key2) { // key2是"="按键对应的index
+      return [5, 3, 2, 1];
     }
     // ...
-    // 这里需要根据具体布局返回其他item的位置。
+    // 这里需要根据具体布局返回其他item的位置
   }
-} as GridLayoutOptions
-
-Grid(undefined, this.layoutOptions) {
-  // ...
 }
-.columnsTemplate('1fr 1fr 1fr 1fr')
-.rowsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
+// ...
+        Grid(undefined, this.layoutOptions) {
+          // ...
+        }
+        .columnsTemplate('1fr 1fr 1fr 1fr')
+        .rowsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
 ```
-
 ### 设置主轴方向
 
 使用Grid构建网格布局时，若没有设置行列数量与占比，可以通过[layoutDirection](../reference/apis-arkui/arkui-ts/ts-container-grid.md#layoutdirection8)设置网格布局的主轴方向，决定子组件的排列方式。此时可以结合[minCount](../reference/apis-arkui/arkui-ts/ts-container-grid.md#mincount8)和[maxCount](../reference/apis-arkui/arkui-ts/ts-container-grid.md#maxcount8)属性来约束主轴方向上的网格数量。
@@ -174,7 +175,7 @@ ArkTS-Dyn示例：
 
 ``` TypeScript
 Grid() {
-  // ···
+  // ...
 }
 .maxCount(3)
 .layoutDirection(GridDirection.Row)
@@ -182,16 +183,15 @@ Grid() {
 
 ArkTS-Sta示例：
 
-```ts
-import { Grid, GridDirection } from '@ohos.arkui.component';
+<!-- @[Set_the_direction_of_the_main_axis_of_the_grid](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/grid/GridLayout.ets) -->
 
+``` TypeScript
 Grid() {
   // ...
 }
 .maxCount(3)
 .layoutDirection(GridDirection.Row)
 ```
-
 >**说明：**
 >
 >- layoutDirection属性仅在不设置rowsTemplate和columnsTemplate时生效，此时元素在layoutDirection方向上排列。
@@ -246,35 +246,38 @@ Grid() {
 
 ArkTS-Sta示例：
 
-```ts
-import { Text, Grid, GridItem } from '@ohos.arkui.component';
+<!-- @[build_a_office_services_meeting](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/grid/DataInGrid.ets) -->
 
+``` TypeScript
 Grid() {
   GridItem() {
-    Text('会议')
-      // ...
+    // app.string.Meeting资源文件中的value值为'会议'
+    Text($r('app.string.Meeting'))
+    // ...
   }
 
   GridItem() {
-    Text('签到')
-      // ...
+    // app.string.Check_in资源文件中的value值为'签到'
+    Text($r('app.string.Check_in'))
+    // ...
   }
 
   GridItem() {
-    Text('投票')
-      // ...
+    // app.string.Voting资源文件中的value值为'投票'
+    Text($r('app.string.Voting'))
+    // ...
   }
 
   GridItem() {
-    Text('打印')
-      // ...
+    // app.string.Printing资源文件中的value值为'打印'
+    Text($r('app.string.Printing'))
+    // ...
   }
 }
+// ...
 .rowsTemplate('1fr 1fr')
 .columnsTemplate('1fr 1fr')
 ```
-
-
 对于内容结构相似的多个GridItem，通常更推荐使用ForEach语句中嵌套GridItem的形式，来减少重复代码。
 
 ArkTS-Dyn示例：
@@ -322,32 +325,39 @@ export struct DataInGrid {
 
 ArkTS-Sta示例：
 
-```ts
-import { Entry, Text, Column, Component, Grid, GridItem, ForEach } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+<!-- @[build_a_office_services_grid_of_foreach](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/grid/DataInGrid.ets) -->
 
+``` TypeScript
 @Entry
 @Component
-struct OfficeService {
-  @State services: Array<string> = ['会议', '投票', '签到', '打印'];
+export struct DataInGrid {
+  // ...
 
-  build() {
-    Column() {
-      Grid() {
-        ForEach(this.services, (service:string) => {
-          GridItem() {
-            Text(service)
+  @State
+  services: string[] = [] as string[];
+
+  // ...
+
+  build(): void {
+    // ...
+      Column() {
+        // ...
+          Grid() {
+            ForEach(this.services, (service: string) => {
+              GridItem() {
+                Text(service)
+              }
+              // ...
+            }, (service: string): string => service)
           }
-        }, (service:string):string => service)
+          .rowsTemplate(('1fr 1fr') as string)
+          .columnsTemplate(('1fr 1fr') as string)
+          // ...
       }
-      .rowsTemplate('1fr 1fr')
-      .columnsTemplate('1fr 1fr')
-    }
+      // ...
   }
 }
 ```
-
-
 ## 设置行列间距
 
 在两个网格单元之间的网格横向间距称为行间距，网格纵向间距称为列间距，如下图所示。
@@ -364,7 +374,7 @@ ArkTS-Dyn示例：
 
 ``` TypeScript
 Grid() {
-  // ···
+  // ...
 }
 .columnsGap(10)
 .rowsGap(15)
@@ -372,16 +382,13 @@ Grid() {
 
 ArkTS-Sta示例：
 
-```ts
-import { Grid } from '@ohos.arkui.component';
-
+``` TypeScript
 Grid() {
   // ...
 }
 .columnsGap(10)
 .rowsGap(15)
 ```
-
 ## 构建可滚动的网格布局
 
 可滚动的网格布局常用在文件管理、购物或视频列表等页面中，如下图所示。在设置Grid的行列数量与占比时，如果仅设置行、列数量与占比中的一个，即仅设置rowsTemplate或仅设置columnsTemplate属性，网格单元按照设置的方向排列，超出Grid显示区域后，Grid拥有可滚动能力。
@@ -437,32 +444,40 @@ export struct ScrollableGrid {
 
 ArkTS-Sta示例：
 
-```ts
-import { Entry, Column, Component, Grid, GridItem, ForEach, ColumnOptions } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+<!-- @[build_scrollable_horizontally_grid_layouts](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/grid/ScrollableGrid.ets) -->
 
+``` TypeScript
 @Entry
 @Component
-struct Shopping {
-  @State services: Array<string> = ['直播', '进口'];
+export struct ScrollableGrid {
+  // ...
+  @State
+  services: string[] = [] as string[];
+  // ...
+  build(): void {
+    // ...
 
-  build() {
-    Column({ space: 5 } as ColumnOptions) {
-      Grid() {
-        ForEach(this.services, (service: string, index: number) => {
-          GridItem() {
+      Column({ space: 5 } as ColumnOptions) {
+        // ...
+
+          Grid() {
+            ForEach(this.services, (service: string, index: int) => {
+              GridItem() {
+                // ...
+              }
+              .width('25%')
+              // ...
+            }, (service: string): string => service)
           }
-          .width('25%')
-        }, (service:string):string => service)
+          .rowsTemplate('1fr 1fr') // 只设置rowsTemplate属性，当内容超出Grid区域时，可水平滚动。
+          .rowsGap(15)
+
+          // ...
+        }
       }
-      .rowsTemplate('1fr 1fr') // 只设置rowsTemplate属性，当内容超出Grid区域时，可水平滚动。
-      .rowsGap(15)
-    }
-  }
+      // ...
 }
 ```
-
-
 ## 控制滚动位置
 
 与新闻列表的返回顶部场景类似，控制滚动位置功能在网格布局中也很常用，例如下图所示日历的翻页功能。
@@ -483,18 +498,17 @@ private scroller: Scroller = new Scroller();
 
 ArkTS-Sta示例：
 
-```ts
-import { Scroller } from '@ohos.arkui.component';
+<!-- @[build_a_private_scrolling_object](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/grid/ScrollPositionGrid.ets) -->
 
+``` TypeScript
 private scroller: Scroller = new Scroller();
 ```
-
 在日历页面中，用户在点击“下一页”按钮时，应用响应点击事件，通过指定scrollPage方法的参数next为true，滚动到下一页。
 
-ArkTS-Dyn示例：
+ ArkTS-Dyn示例：
 
  <!-- @[Control_scrolling_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridSideToSide.ets) -->
- 
+
  ``` TypeScript
  Column({ space: 5 }){
    Grid(this.scroller) {
@@ -523,32 +537,33 @@ ArkTS-Dyn示例：
 
  ArkTS-Sta示例：
 
-```ts
-import { Column, Button, ClickEvent, Grid, Scroller, ColumnOptions, Row, RowOptions, ScrollPageOptions } from '@ohos.arkui.component';
-
-Column({ space: 5 } as ColumnOptions) {
-  Grid(this.scroller) {
-  }
-  .columnsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
-
-  Row({ space: 20 } as RowOptions) {
-    Button('上一页')
-      .onClick((e: ClickEvent) => {
-        this.scroller.scrollPage({
-          next: false
-        } as ScrollPageOptions);
-      })
-
-    Button('下一页')
-      .onClick((e: ClickEvent) => {
-        this.scroller.scrollPage({
-          next: true
-        }as ScrollPageOptions);
-      })
-  }
-}
-```
-
+ <!-- @[Control_scrolling_position](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/grid/GridSideToSide.ets) -->
+ 
+ ``` TypeScript
+ Column({ space: 5 } as ColumnOptions){
+   Grid(this.scroller) {
+     // ...
+   }
+   .columnsTemplate('1fr 1fr 1fr 1fr 1fr 1fr 1fr')
+   // ...
+   Row({ space: 20 } as RowOptions) {
+     // 请将$r('app.string.Previous_Page')替换为实际资源文件，在本示例中该资源文件的value值为"上一页"
+     Button($r('app.string.Previous_Page'))
+       .onClick(() => {
+         this.scroller.scrollPage({
+           next: false
+         });
+       })
+     // 请将$r('app.string.Next_page')替换为实际资源文件，在本示例中该资源文件的value值为"下一页"
+     Button($r('app.string.Next_page'))
+       .onClick(() => {
+         this.scroller.scrollPage({
+           next: true
+         });
+       })
+   }
+ }
+ ```
 ## 添加外置滚动条
 
 网格组件[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)可与[ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md)组件配合使用，为网格添加外置滚动条。两者通过绑定同一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)滚动控制器对象实现联动。
@@ -556,50 +571,49 @@ Column({ space: 5 } as ColumnOptions) {
 1. 首先，需要创建一个[Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller)类型的对象gridScroller。
 
    ArkTS-Dyn示例：
+
    <!-- @[Add_external_scrollbar_gridScroller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
-   
+
    ``` TypeScript
    private gridScroller: Scroller = new Scroller();
    ```
 
    ArkTS-Sta示例：
 
-   ```ts
-   import { Scroller } from '@ohos.arkui.component';
-
+   <!-- @[Add_external_scrollbar_gridScroller](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
+   
+   ``` TypeScript
    private gridScroller: Scroller = new Scroller();
    ```
-
 2. 然后，通过[scroller](../reference/apis-arkui/arkui-ts/ts-container-grid.md#接口)参数绑定滚动控制器。
 
    ArkTS-Dyn示例：
-   
+
    <!-- @[Add_external_scrollbar1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
-   
+
    ``` TypeScript
    // gridScroller初始化Grid组件的scroller参数，绑定gridScroller与网格。
    Grid( this.gridScroller) {
-   // ···
+     // ...
    }
    ```
 
    ArkTS-Sta示例：
 
-   ```ts
-   import { Scroller, Grid } from '@ohos.arkui.component';
+   <!-- @[Add_external_scrollbar1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
+   
+   ``` TypeScript
    // gridScroller初始化Grid组件的scroller参数，绑定gridScroller与网格。
    Grid(this.gridScroller) {
-   // ...
+     // ...
    }
    ```
-
-
 3. 最后，滚动条通过[scroller](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md#scrollbaroptions对象说明)参数绑定滚动控制器。
 
    ArkTS-Dyn示例：
 
    <!-- @[Add_external_scrollbar2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
-   
+
    ``` TypeScript
    // gridScroller初始化ScrollBar组件的scroller参数，绑定gridScroller与滚动条。
    ScrollBar({ scroller: this.gridScroller })
@@ -607,12 +621,12 @@ Column({ space: 5 } as ColumnOptions) {
 
    ArkTS-Sta示例：
 
-   ```ts
-   import { Scroller, ScrollBar, ScrollBarOptions } from '@ohos.arkui.component';
+   <!-- @[Add_external_scrollbar2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/grid/GridScrollbar.ets) -->
+   
+   ``` TypeScript
    // gridScroller初始化ScrollBar组件的scroller参数，绑定gridScroller与滚动条。
-   ScrollBar({ scroller: this.gridScroller } as ScrollBarOptions)
+   ScrollBar({ scroller: this.gridScroller })
    ```
-
   **图11** 网格的外置滚动条 
 
 ![ScrollBar](figures/grid_scrollbar.gif)
@@ -647,18 +661,17 @@ Grid() {
 
 ArkTS-Sta示例：
 
-```ts
-import { Grid, GridItem, LazyForEach } from '@ohos.arkui.component';
+<!-- @[long_list](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/grid/LongGrid.ets) -->
 
+``` TypeScript
 Grid() {
-  LazyForEach(this.dataSource, (item：string, index: number) => {
+  LazyForEach(this.dataSource, () => {
     GridItem() {
     }
   })
 }
 .cachedCount(3)
 ```
-
 >**说明：**
 >
 >cachedCount的增加会增大UI的CPU、内存开销。使用时需要根据实际情况，综合性能和用户体验进行调整。

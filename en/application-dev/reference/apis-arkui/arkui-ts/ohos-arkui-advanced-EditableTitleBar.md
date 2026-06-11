@@ -172,7 +172,7 @@ struct Index {
 }
 ```
 
-![en-us_image_editabletitlebar_example01](figures/en-us_image_editabletitlebar_example01.png)
+![image-editabletitlebar-example01](figures/image-editabletitlebar-example01.png)
 
 ### Example 2: Implementing an Editable Title Bar with Background Blur and a Profile Picture
 This example shows how to implement an editable title bar with background blur, a profile picture, and custom margins.
@@ -276,7 +276,7 @@ struct Index {
 }
 ```
 
-![en-us_image_editabletitlebar_example02](figures/en-us_image_editabletitlebar_example02.png)
+![image-editabletitlebar-example02](figures/image-editabletitlebar-example02.png)
 
 ### Example 3: Implementing Screen Reader Announcement for the Custom Button on the Right Side
 This example customizes the screen reader announcement text by setting the **accessibilityText**, **accessibilityDescription**, and **accessibilityLevel** properties of the custom button on the right side of the title bar. This functionality is supported since API version 18.
@@ -337,7 +337,7 @@ struct Index1 {
   }
 }
 ```
-![en-us_image_editabletitlebar_example03](figures/en-us_image_editabletitlebar_example03.png)
+![image-editabletitlebar-example03](figures/image-editabletitlebar-example03.png)
 
 ### Example 4: Setting the Left Icon as the Default Focus
 This example demonstrates how to set the left icon as the default focus using **leftIconDefaultFocus**. This functionality is supported since API version 18.
@@ -479,4 +479,4 @@ struct Index {
 }
 ```
 
-![Setting the Symbol Icon](figures/en-us_image_editabletitlebar_demo_06.png)
+![Setting the Symbol Icon](figures/image-editabletitlebar-demo-06.png)
