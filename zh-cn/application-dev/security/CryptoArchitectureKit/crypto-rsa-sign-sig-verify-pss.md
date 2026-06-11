@@ -1,4 +1,4 @@
-# 使用RSA密钥对签名验签（PSS模式）(ArkTS)
+# 使用RSA密钥对（PSS模式）签名验签(ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
