@@ -90,8 +90,11 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
     uint64_t displayId = 0;
     NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
 
-    NativeDisplayManager_DisplayInfo* displayInfo = NULL;
+    NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
     ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
+    if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
+        // 处理异常结果并返回
+    }
     uint32_t screenWidth = displayInfo->width;
     uint32_t screenHeight = displayInfor->height;
     OH_VideoCaptureInfo videoCapInfo = {
@@ -243,8 +246,13 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     uint64_t displayId = 0;
     NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
 
-    NativeDisplayManager_DisplayInfo* displayInfo = NULL;
+    NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
     ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
+    if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
+        napi_value errCode;
+        napi_create_double(env, ret, &errCode);
+        return errCode;
+    }
     uint32_t screenWidth = displayInfo->width;
     uint32_t screenHeight = displayInfor->height;
     OH_VideoCaptureInfo videoCapInfo = {
@@ -285,6 +293,11 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     int32_t buffeSize = 1000;
     int32_t writeLength = 0;
     AbilityRunTime_ErrorCode result = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, buffeSize, &writeLength);
+    if (!fileDirPath) {
+        napi_value errCode;
+        napi_create_double(env, result, &errCode);
+        return errCode;
+    }
 
     OH_RecorderInfo recorderInfo;
     const std::string SCREEN_CAPTURE_ROOT = fileDirPath;
