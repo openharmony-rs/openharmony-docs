@@ -24,7 +24,7 @@
 import Device from '@system.device';
 ```
 ## Device
-## Device.getInfo<sup>(deprecated)</sup>
+### Device.getInfo<sup>(deprecated)</sup>
 
 getInfo(options?: GetDeviceOptions): void
 
