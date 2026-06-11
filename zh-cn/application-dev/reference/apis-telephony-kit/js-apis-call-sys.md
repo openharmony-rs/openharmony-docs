@@ -3023,8 +3023,8 @@ getCallTransferInfo\(slotId: number, type: CallTransferType, callback: AsyncCall
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| type     | [CallTransferType](js-apis-call.md#calltransfertype)                       | 是   | 呼叫转移类型。                         |
-| callback | AsyncCallback&lt;[CallTransferResult](js-apis-call.md#calltransferresult)&gt; | 是   | 回调函数。返回呼叫转移信息。           |
+| type     | [CallTransferType](#calltransfertype8)                       | 是   | 呼叫转移类型。                         |
+| callback | AsyncCallback&lt;[CallTransferResult](#calltransferresult8)&gt; | 是   | 回调函数。返回呼叫转移信息。           |
 
 **错误码：**
 
@@ -3072,13 +3072,13 @@ getCallTransferInfo\(slotId: number, type: CallTransferType\): Promise\<CallTran
 | 参数名 | 类型                                   | 必填 | 说明                                   |
 | ------ | -------------------------------------- | ---- | -------------------------------------- |
 | slotId | number                                 | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| type   | [CallTransferType](js-apis-call.md#calltransfertype) | 是   | 呼叫转移类型。                         |
+| type   | [CallTransferType](#calltransfertype8) | 是   | 呼叫转移类型。                         |
 
 **返回值：**
 
 | 类型                                                      | 说明                        |
 | --------------------------------------------------------- | --------------------------- |
-| Promise&lt;[CallTransferResult](js-apis-call.md#calltransferresult)&gt; | 以Promise形式异步返回结果。 |
+| Promise&lt;[CallTransferResult](#calltransferresult8)&gt; | 以Promise形式异步返回结果。 |
 
 **错误码：**
 
@@ -4880,13 +4880,27 @@ IP多媒体系统调用模式。
 |          名称            | 类型                                                 | 必填 | 说明             |
 | ------------------------ | ---------------------------------------------------- | ---- | ---------------- |
 | transferNum              | string                                               | 是   | 转移编号。         |
-| type                     | [CallTransferType](js-apis-call.md#calltransfertype)               | 是   | 呼叫转移类型。     |
+| type                     | [CallTransferType](#calltransfertype8)               | 是   | 呼叫转移类型。     |
 | settingType              | [CallTransferSettingType](#calltransfersettingtype8) | 是   | 设置呼叫转移类型。 |
 | startHour<sup>9+</sup>   | number                                               | 否   | 开始时间的小时数。 |
 | startMinute<sup>9+</sup> | number                                               | 否   | 开始时间的分钟数。 |
 | endHour<sup>9+</sup>     | number                                               | 否   | 结束时间的小时数。 |
 | endMinute<sup>9+</sup>   | number                                               | 否   | 结束时间的分钟数。 |
 
+## CallTransferType<sup>8+</sup> 
+
+呼叫转移类型。 
+
+**系统接口：** 此接口为系统接口。 
+
+**系统能力**：SystemCapability.Telephony.CallManager 
+
+| 名称                        | 值   | 说明         | 
+| --------------------------- | ---- | ------------ | 
+| TRANSFER_TYPE_UNCONDITIONAL | 0    | 无条件转移。   | 
+| TRANSFER_TYPE_BUSY          | 1    | 忙线转移。     | 
+| TRANSFER_TYPE_NO_REPLY      | 2    | 无回复转移。   | 
+| TRANSFER_TYPE_NOT_REACHABLE | 3    | 无法访问转移。 |
 
 ## CallTransferSettingType<sup>8+</sup>
 
@@ -5114,6 +5128,23 @@ VoIP通话信息。
 | -------------- | ------ | ---- | -------- |
 | messageContent | string | 是   | 消息内容。 |
 
+## CallTransferResult<sup>8+</sup>
+
+呼叫转移结果。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+|          名称            |                 类型               | 必填 |       说明       |
+| ------------------------ | ---------------------------------- | ---- | ---------------- |
+| status                   | [TransferStatus](#transferstatus8) |  是  | 转移状态。         |
+| number                   | string                             |  是  | 号码。             |
+| startHour<sup>9+</sup>   | number                             |  是  | 开始时间的小时数。 | 
+| startMinute<sup>9+</sup> | number                             |  是  | 开始时间的分钟数。 | 
+| endHour<sup>9+</sup>     | number                             |  是  | 结束时间的小时数。 | 
+| endMinute<sup>9+</sup>   | number                             |  是  | 结束时间的分钟数。 |
+
 ## CallWaitingStatus<sup>7+</sup>
 
 呼叫等待状态。
@@ -5140,17 +5171,17 @@ VoIP通话信息。
 | RESTRICTION_DISABLE | 0    | 禁用限制。 |
 | RESTRICTION_ENABLE  | 1    | 启用限制。 |
 
-## TransferStatus<sup>8+</sup>
+## TransferStatus<sup>8+</sup> 
 
-转移状态。
+转移状态。 
 
-**系统接口：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。 
 
-**系统能力**：SystemCapability.Telephony.CallManager
+**系统能力**：SystemCapability.Telephony.CallManager 
 
-| 名称             | 值   | 说明     |
-| ---------------- | ---- | -------- |
-| TRANSFER_DISABLE | 0    | 禁用转移。 |
+| 名称             | 值   | 说明     | 
+| ---------------- | ---- | -------- | 
+| TRANSFER_DISABLE | 0    | 禁用转移。 | 
 | TRANSFER_ENABLE  | 1    | 启用转移。 |
 
 ## DisconnectedDetails<sup>9+</sup>

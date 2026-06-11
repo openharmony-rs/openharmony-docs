@@ -52,14 +52,14 @@
 - 出于运行时性能等考量，--lib-path指定目录外的文件不会进行压缩。
 
 示例：
-- [Stage模型](../../application-dev/application-models/application-models.md#应用模型概况)示例：
+- Stage模型示例：
 
 
     ```bash
     java -jar app_packing_tool.jar --mode hap --json-path <path> [--resources-path <path>] [--ets-path <path>] [--index-path <path>] [--pack-info-path <path>] [--lib-path <path>] --out-path <path> [--force true] [--compress-level 5] [--pkg-context-path <path>] [--hnp-path <path>] [--pkg-sdk-info-path <path>]
     ```
 
-- [FA模型](../../application-dev/application-models/application-models.md#应用模型概况)示例：
+- FA模型示例：
 
 
     ```bash
@@ -116,7 +116,7 @@ java -jar app_packing_tool.jar --mode hsp --json-path <path> [--resources-path <
 | --json-path      | 是         | NA            | .json文件路径，文件名必须为module.json。                     |
 | --profile-path   | 否         | NA            | CAPABILITY.profile文件路径。                                 |
 | --dex-path       | 否         | NA            | 1. dex文件路径，文件名必须以.dex为后缀。如果是多个dex需要用“，”分隔。<br/>2. dex文件路径也可以为目录。 |
-| --lib-path       | 否         | NA            | lib库文件路径。从API version 22开始，--exist-src-path配置有效且--lib-path-retain配置为true时，对libs目录做增量打包，直接拷贝--exist-src-path配置的源HAP包中的libs目录，不再打包--lib-path配置的libs目录，--lib-path参数无效。|
+| --lib-path       | 否         | NA            | lib库文件路径。从API version 22开始，--exist-src-path配置有效且--lib-path-retain配置为true时，对libs目录做增量打包，直接拷贝--exist-src-path配置的源HSP包中的libs目录，不再打包--lib-path配置的libs目录，--lib-path参数无效。|
 | --resources-path | 否         | NA            | resources资源包路径。                                        |
 | --index-path     | 否         | NA            | .index文件路径，文件名必须为resources.index。                |
 | --pack-info-path | 否         | NA            | pack.info文件路径，文件名必须为pack.info。                   |
@@ -299,7 +299,7 @@ java -jar app_packing_tool.jar --mode versionNormalize --input-list 1.hap,2.hsp 
 | 指令             | 是否必选项 | 选项               | 描述                                                                |
 |----------------|-------|------------------|-------------------------------------------------------------------|
 | --mode         | 是     | versionNormalize | 命令类型。                                                             |
-| --input-list   | 是     | HAP或HSP的路径       | 1. HAP或HSP包文件路径，文件名必须以.HAP或.HSP为后缀。如果是多个HAP或HSP包需要“,”分隔。<br/>2. 传入目录时，会读取目录下所有的HAP和HSP文件。 |
+| --input-list   | 是     | HAP或HSP的路径       | 1. HAP或HSP包文件路径，文件名必须以.hap或.hsp为后缀。如果是多个HAP或HSP包需要“,”分隔。<br/>2. 传入目录时，会读取目录下所有的HAP和HSP文件。 |
 | --version-code | 是     | 版本号              | 指定的版本号，HAP、HSP的版本号会被修改为该版本。需要为整数，且不小于所有传入的HAP、HSP的版本号。            |
 | --version-name | 是     | 版本名称             | 指定的版本名称，HAP、HSP的版本名称会被修改为该版本名称。                                    |
 | --out-path     | 是     | NA               | 目标文件路径，需要为一个目录。                                                   |
@@ -2830,23 +2830,3 @@ Incremental pack hsp exception.
 **处理步骤**
 
 根据日志中“Error Message:”，确认异常信息。
-
-### 10011021 通用归一化命令失败
-
-**错误信息**
-
-Parse and check args invalid in generalNormalize mode.
-
-**错误描述**
-
-通用归一化命令失败。
-
-**可能原因**
-
-1. 传入的参数类型错误。
-2. 传入参数范围错误。
-3. 传入HAP或HSP包不完整，缺少json文件（json文件配置请参考Stage模型[module.json5](../quick-start/module-configuration-file.md#配置文件标签)/FA模型[config.json](../quick-start/application-configuration-file-overview-fa.md)）。
-
-**处理步骤**
-
-检查并传入正确的命令参数和有效的包文件。

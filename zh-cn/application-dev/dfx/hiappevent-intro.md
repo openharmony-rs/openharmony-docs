@@ -58,7 +58,7 @@ HiAppEvent通过事件领域和事件名称关联应用事件，并通过addWatc
 
 - 订阅接口addWatcher传入的名称name是唯一的，相同的name，后一次调用会覆盖前一次的订阅。
 
-- 目前鸿蒙应用有普通应用、[应用分身](../quick-start/app-clone.md)、原子化服务、[输入法应用](../inputmethod/inputmethod-application-guide.md)等多种类型，不同类型应用上，系统事件的订阅规格不同。从API version 22开始，HiAppEvent系统事件订阅能力支持输入法应用。具体规格可参见如下表格：
+- 目前应用有普通应用、[应用分身](../quick-start/app-clone.md)、原子化服务、[输入法应用](../inputmethod/inputmethod-application-guide.md)等多种类型，不同类型应用上，系统事件的订阅规格不同。从API version 22开始，HiAppEvent系统事件订阅能力支持输入法应用。具体规格可参见如下表格：
 
 |系统事件名称|是否支持应用分身订阅|是否支持原子化服务订阅|是否支持输入法应用订阅|
 |-----------|------------------|-----------------|-------------------|

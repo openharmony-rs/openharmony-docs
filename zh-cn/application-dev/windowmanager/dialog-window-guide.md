@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya; @qinliwen0417-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4; @qinliwen0417-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -17,9 +17,10 @@
 
    ```ts
    let dialog_windowClass: window.Window | undefined = undefined;
+   let context1: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('context');
    // 1.创建模态窗口。
    let config: window.Configuration = {
-     name: "DialogWindow", windowType: window.WindowType.TYPE_DIALOG, ctx: getContext(this)
+     name: "DialogWindow", windowType: window.WindowType.TYPE_DIALOG, ctx: context1 as common.BaseContext
    };
    window.createWindow(config, (err, data) => {
      let errCode: number = err.code;

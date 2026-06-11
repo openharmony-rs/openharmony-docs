@@ -3605,27 +3605,3 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
   // Unregister event
   wifiManager.off("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
 ```
-
-## wifiManager.isWlanSupported
-
-isWlanSupported(): boolean
-
-查询是否可用Wi-Fi网络。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-  | 类型 | 说明 |
-  | -------- | -------- |
-  | boolean | Wi-Fi是否可用。true表示Wi-Fi可用，&nbsp;false表示Wi-Fi不可用。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 2501000  | Operation failed. |

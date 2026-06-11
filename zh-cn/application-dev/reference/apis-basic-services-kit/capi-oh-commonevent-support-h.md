@@ -101,6 +101,3 @@
 | static const char * const COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED = "usual.event.MANAGED_BROWSER_POLICY_CHANGED" | 表示浏览器托管策略已更改。<br>**起始版本：** 15 |
 | static const char* const COMMON_EVENT_TABLET_MODE_CHANGED = "usual.event.TABLET_MODE_CHANGED" | 表示可感知支架开合的设备，其支架开合状态变化的公共事件。<br>**起始版本：** 23 |
 | static const char* const COMMON_EVENT_LID_STATE_CHANGED = "usual.event.LID_STATE_CHANGED" | 表示可感知开合盖子的设备，其开合盖状态变化的公共事件。<br>**起始版本：** 23 |
-| static const char* const COMMON_EVENT_VOLUME_DECRYPTED = "usual.event.VOLUME_DECRYPTED" | 表示设备上的特定卷已被解密。<br>**起始版本：** 26.0.0 |
-| static const char* const COMMON_EVENT_VOLUME_ENCRYPTED = "usual.event.VOLUME_ENCRYPTED" | 表示设备上的特定卷已被加密。<br>**起始版本：** 26.0.0 |
-| static const char* const COMMON_EVENT_VOLUME_ENCRYPTION_POLICY_SET = "usual.event.VOLUME_ENCRYPTION_POLICY_SET" | 表示设备上的特定卷已设置其加密策略。<br>**起始版本：** 26.0.0 |

@@ -191,7 +191,7 @@
 
 ### 装饰简单类型的变量
 
-以下示例为\@State装饰的简单类型，count被\@State装饰成为状态变量，count的改变引起Button组件的刷新：
+以下示例为\@State装饰的简单类型，count被\@State装饰成为状态变量，count的改变引起[Button](../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件的刷新：
 
 - 当状态变量count改变时，只能查询到Button组件与之关联。
 

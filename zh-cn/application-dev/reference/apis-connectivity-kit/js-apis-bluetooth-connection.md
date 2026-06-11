@@ -2025,6 +2025,92 @@ try {
 }
 ```
 
+## connection.onAclStateChange
+
+onAclStateChange(callback: Callback&lt;AclStateResult&gt;): void
+
+订阅蓝牙ACL链路连接状态变化事件。当触发蓝牙ACL链路连接与断开连接时，如订阅此事件，则会收到携带对应设备的地址与连接状态的回调函数。
+
+**起始版本：** 26.0.0
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                               |
+| -------- | ---------------------------------------- | ---- | -------------------------------- |
+| callback | Callback&lt;[AclStateResult](#aclstateresult)&gt; | 是    | 回调函数，返回蓝牙外设连接状态 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见 [通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.<br>Failed to call the API when the short-range chip is not inserted on 2in1 device.       |
+|2900099 | Internal system error.<br>For example, IPC error. Detailed error messages can be used to assist in locating the problem.              |
+
+**示例：**
+
+```js
+function AclStateChangeEvent(aclStateResult: connection.AclStateResult) {
+    console.info('acl state changed:'+ JSON.stringify(aclStateResult));
+}
+try {
+    connection.onAclStateChange(AclStateChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+## connection.offAclStateChange
+
+offAclStateChange(callback?: Callback&lt;AclStateResult&gt;): void
+
+取消订阅蓝牙ACL链路连接状态变化事件。
+
+**起始版本：** 26.0.0
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;[AclStateResult](#aclstateresult)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.onAclStateChange](#connectiononaclstatechange)中的回调函数一致；若无传参，则取消订阅所有蓝牙ACL连接状态变更的回调函数通知。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见 [通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.<br>Failed to call the API when the short-range chip is not inserted on 2in1 device.|
+|2900099 | Internal system error.<br>For example, IPC error. Detailed error messages can be used to assist in locating the problem.                        |
+
+**示例：**
+
+```js
+function AclStateChangeEvent(aclStateResult: connection.AclStateResult) {
+    console.info('acl state changed:'+ JSON.stringify(aclStateResult));
+}
+try {
+    connection.offAclStateChange(AclStateChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
 ## BondStateParam
 
 描述配对状态结果的参数结构。
@@ -2181,3 +2267,35 @@ try {
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
 | HASH_ALGORITHM_SHA256        | 0    | SHA256哈希算法。|
+
+
+## AclStateResult
+
+描述ACL连接状态的参数结构。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称       | 类型   | 只读 | 可选   | 说明          |
+| -------- | ------ | ---- | ---- | ----------- |
+| deviceId | string      | 否    | 否    | 表示对端设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| state    | [AclState](#aclstate)   | 否    | 否    | 连接状态。 |
+
+
+## AclState
+
+枚举，表示ACL连接状态。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称                 | 值  | 说明     |
+| ------------------ | ---- | ------ |
+| STATE_CONNECTED        | 0    | ACL链路已连接。|
+| STATE_DISCONNECTED        | 1    | ACL链路已断开连接。|

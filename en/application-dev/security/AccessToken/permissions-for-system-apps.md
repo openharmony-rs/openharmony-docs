@@ -5953,20 +5953,6 @@ Allows a system application to launch the intelligent customer service.
 
 **Since**: 26.0.0
 
-## ohos.permission.MANAGE_VOLUME_ENCRYPTION_POLICY
-
-Allows an application to configure the encryption policy for a volume.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Supported devices**: PCs/2-in-1 devices
-
-**Since**: 26.0.0
-
 ## ohos.permission.ACCESS_DIGITAL_IDENTITY_ABILITY
 
 Allows a system application to use the unified management capabilities of the digital certificate service.

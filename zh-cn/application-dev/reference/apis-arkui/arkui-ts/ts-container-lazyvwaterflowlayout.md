@@ -49,7 +49,7 @@ columnsTemplate(value: string | ItemFillPolicy | undefined)
 
 当value设置为string类型时，可以使用columnsTemplate('1fr 1fr 2fr')将LazyVWaterFlowLayout分为3列，LazyVWaterFlowLayout宽分为4等份，第1列占1份，第2列占1份，第3列占2份。
 
-可使用columnsTemplate('repeat(auto-fill, track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp。
+可使用columnsTemplate('repeat(auto-fill, track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%，默认单位为vp。也可以设置没有单位的有效数字。
 
 当value设置为ItemFillPolicy类型时，将根据LazyVWaterFlowLayout组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
 
@@ -152,8 +152,6 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined): T
 | T | 返回当前组件。 |
 
 ## 示例
-
-### 示例1（实现懒加载瀑布流布局）
 
 通过[Scroll](ts-container-scroll.md)和LazyVWaterFlowLayout组件实现懒加载瀑布流布局。
 
