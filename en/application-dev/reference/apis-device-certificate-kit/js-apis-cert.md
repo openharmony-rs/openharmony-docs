@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=a16dcd5380f352b729da625973de1c33bd7c6a2a translatedAt=2026-06-10T11:02:26.453Z pushedAt=2026-06-11T09:14:50.398Z -->
 
-The **cert** module provides APIs for performing certificate operations. This module depends on the basic algorithm capabilities of the Crypto framework. For details, see [Crypto Framework](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md).
+The **cert** module provides APIs for performing certificate operations. For details about the APIs for implementing the basic algorithm capabilities based on the cryptographic (crypto) framework, see [Crypto Framework](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md).
 
 > **NOTE**
 >
@@ -49,6 +50,7 @@ Encapsulates binary data. The core field **data** is of the Uint8Array type.
  **Atomic service API:** This API can be used in atomic services since API version 12.
 
  **System capability:** SystemCapability.Security.Cert
+
 | Name          | Type          | Read-Only| Optional| Description             |
 | -------------- | -------------- | ---- | ---- | ----------------|
 | data           | Uint8Array     | No  | No  | Data.   |
@@ -60,6 +62,7 @@ Defines a list of data arrays.
  **Atomic service API:** This API can be used in atomic services since API version 12.
 
  **System capability:** SystemCapability.Security.Cert
+
 | Name          | Type          | Read-Only| Optional| Description              |
 | -------------- | -------------- | ---- | ---- | ----------------|
 | data           | Array\<Uint8Array>     | No  | No  | Data list.   |
@@ -92,6 +95,7 @@ Defines a list of data arrays.
 | DER | 1      | DER format.|
 
 ## CsrAttribute<sup>18+</sup>
+
  Defines the extension attributes for the CSR encoding format configuration.
 
 OpenSSL defines extension types, such as the challenge password and key usage.
@@ -106,6 +110,7 @@ OpenSSL defines extension types, such as the challenge password and key usage.
 | value | string | No  | No | Extension value.|
 
 ## CsrGenerationConfig<sup>18+</sup>
+
 Represents the configuration for generating a CSR using an RSA private key, including the subject, extension, message digest (MD) algorithm, and output format.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
@@ -200,7 +205,6 @@ Defines a certificate binary array in encoding format.
 | data           | Uint8Array                        | No  | No  | Certificate data.|
 | encodingFormat | [EncodingFormat](#encodingformat) | No  | No  | Certificate encoding format.            |
 
-
 ## CertChainData
 
 Defines the certificate chain data, which is passed in as input parameters during certificate chain verification.
@@ -247,7 +251,7 @@ Indicates the general name of the certificate subject.
 
 | Name          | Type                             | Read-Only| Optional|Description              |
 | -------------- | --------------------------------- | ---- |  ---- |------------------ |
-| type | [GeneralNameType](#generalname12)    | No| No| Type of the certificate subject. |
+| type | [GeneralNameType](#generalnametype12)    | No | No | Type of the certificate subject.  |
 | name | Uint8Array    | No |  Yes|DER format of the certificate subject. |
 
 ## X509CertMatchParameters<sup>11+</sup>
@@ -291,8 +295,8 @@ Represents the parameters used to match a certificate revocation list (CRL). If 
 | issuer | Array\<Uint8Array> | No | Yes |Issuer as the filter criteria. At least one issuer must be matched.|
 | x509Cert | [X509Cert](#x509cert) | No | Yes |Certificate object used to determine whether the certificate is in the CRL.|
 | updateDateTime<sup>12+</sup> | string | No | Yes |Certificate update time.|
-| maxCRL<sup>12+</sup> | bigint | No | Yes |Maximum number of certificates in the CRL.|
-| minCRL<sup>12+</sup> | bigint | No | Yes |Minimum number of certificates in the CRL.|
+| maxCRL<sup>12+</sup> | bigint | No  | Yes  |Maximum value of the CRL number. |
+| minCRL<sup>12+</sup> | bigint | No  | Yes  |Minimum value of the CRL number. |
 
 ## CertChainBuildParameters<sup>12+</sup>
 
@@ -319,7 +323,7 @@ Represents the result of building the certificate chain.
 | Name          | Type                             | Read-Only| Optional|Description              |
 | -------------- | --------------------------------- | ---- | ---- |------------------ |
 | certChain | [X509CertChain](#x509certchain11) | Yes | No |Certificate chain object created.|
-| validationResult | [CertChainValidationResult](#certchainvalidationresult11) | Yes |  No |Result of the certificate chain validation.|
+| validationResult | [CertChainValidationResult](#certchainvalidationresult11) | Yes  |  No  |Certificate chain validation result. |
 
 ## X509TrustAnchor<sup>11+</sup>
 
@@ -368,7 +372,7 @@ Represents an X.509 trust anchor, which is used to verify the certificate chain.
 ## KeyUsageType<sup>12+</sup>
 
  Enumerates the purposes, for which the key in the certificate is used.
- 
+
  **Atomic service API:** This API can be used in atomic services since API version 12.
 
  **System capability:** SystemCapability.Security.Cert
@@ -421,7 +425,6 @@ Represents the parameters for certificate chain validation.
 | sslHostname<sup>12+</sup> | string | No  | Yes |Host name in the certificate to be verified. This parameter must be used with **policy** together.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
 | keyUsage<sup>12+</sup>     | Array\<[KeyUsageType](#keyusagetype12)> | No  | Yes |Usage of the key in the certificate to be validated.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
 
-
 ## CertChainValidationResult<sup>11+</sup>
 
 Represents the return value of certificate chain validation.
@@ -434,19 +437,6 @@ Represents the return value of certificate chain validation.
 | ----------- | ------------------------------------- | ---- | ---- | -------------- |
 | trustAnchor | [X509TrustAnchor](#x509trustanchor11) | Yes  | No  | Trust anchor.  |
 | entityCert  | [X509Cert](#x509cert)                 | Yes  | No  | Entity certificate.|
-
-## EncodingBaseFormat<sup>18+</sup>
-
-Enumerates basic encoding formats.
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-**System capability:** SystemCapability.Security.Cert
-
-| Name| Value| Description              |
-| ---- | --- | ------------------ |
-| PEM  | 0   | PEM format.     |
-| DER  | 1   | DER format.     |
 
 ## Pkcs12Data<sup>18+</sup>
 
@@ -2730,6 +2720,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   }
 });
 ```
+
 ### match<sup>11+</sup>
 
 match(param: X509CertMatchParameters): boolean
@@ -3770,7 +3761,6 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
   }
 });
 ```
-
 
 ### checkCA<sup>10+</sup>
 
@@ -5174,7 +5164,7 @@ Obtains the revoked X.509 certificate based on the specified certificate.
 
 | Type        | Description                 |
 | ------------ | -------------------- |
-| [X509CrlEntry](#x509crlentrydeprecated) | Revoked X.509 certificate obtained.|
+| [X509Cert](#x509cert) | Revoked X.509 certificate obtained.|
 
 **Error codes**
 
@@ -5496,7 +5486,7 @@ Obtains the signature data of the X.509 CRL.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignature](#getsignature11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [DataBlob](#datablob) instead.
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -5570,7 +5560,7 @@ Obtains the signature algorithm name of the X.509 CRL.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignatureAlgName](#getsignaturealgname11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [DataBlob](#datablob) instead.
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -5784,6 +5774,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   }
 });
 ```
+
 ## X509CRL<sup>11+</sup>
 
 Defines a list of revoked certificates.
@@ -5802,7 +5793,7 @@ Checks whether the certificate is revoked.
 
 | Name| Type    | Mandatory| Description                |
 | ------ | -------- | ---- | -------------------- |
-| cert   | [X509Cert](#x509cert) | Yes  | X.509 certificate to check.|
+| cert   | [DataBlob](#datablob) | Yes  | X.509 certificate to check.|
 
 **Return value**
 
@@ -5957,7 +5948,7 @@ Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to
 
 | Name  | Type                                         | Mandatory| Description                                      |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the serialized X.509 CRL data obtained.|
+| callback | AsyncCallback\<[X509Cert](#x509cert)> | Yes  | Callback used to return the serialized X.509 CRL data obtained.|
 
 **Error codes**
 
@@ -6463,7 +6454,7 @@ Obtains the X.509 CRL issuer name.
 
 | Type                 | Description                          |
 | --------------------- | ------------------------------ |
-| [DataBlob](#datablob) | X.509 CRL issuer name obtained.|
+| [EncodingBlob](#encodingblob) | X.509 CRL issuer name obtained.|
 
 **Error codes**
 
@@ -6535,7 +6526,7 @@ Obtains the X.509 CRL issuer name based on the encoding type.
 
 | Name  | Type                                 | Mandatory| Description                          |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
-| encodingType | [EncodingType](#encodingtype12)     | Yes  |  Encoding type. |
+| encodingType | [DataBlob](#datablob)     | Yes  |  Encoding type. |
 
 **Return value**
 
@@ -6847,7 +6838,7 @@ Obtains the revoked X.509 certificate based on the specified certificate.
 
 | Type                           | Description                  |
 | ------------------------------- | ---------------------- |
-| [X509CRLEntry](#x509crlentry11) | Revoked X.509 certificate obtained.|
+| [X509Cert](#x509cert) | Revoked X.509 certificate obtained.|
 
 **Error codes**
 
@@ -7533,7 +7524,7 @@ Checks whether the CRL matches the input parameters.
 
 | Name   | Type  | Mandatory| Description                                      |
 | --------- | ------ | ---- | ------------------------------------------ |
-| param | [X509CRLMatchParameters](#x509crlmatchparameters11)| Yes  | Parameters specified for matching the certificate.|
+| param | [DataBlob](#datablob)| Yes  | Parameters specified for matching the certificate.|
 
 **Return value**
 
@@ -7992,7 +7983,7 @@ let crlEncodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
-async function crlHashCode() {
+async function crlGetExtensionsObject() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
@@ -8057,7 +8048,6 @@ try {
 
 Describes a certificate chain validator object.
 
-
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.Security.Cert
@@ -8066,14 +8056,13 @@ Describes a certificate chain validator object.
 | ------- | ------ | ---- | ---- | -------------------------- |
 | algorithm  | string | Yes  | No  | Algorithm of the X.509 certificate chain validator.|
 
-
 ### validate
 
 validate(certChain : CertChainData, callback : AsyncCallback\<void>) : void
 
 Verifies the X.509 certificate chain. This API uses an asynchronous callback to return the result.
 
-The certificate chain validator does not verify the certificate validity period because the device system time is untrusted. The [checkValidityWithDate()](#checkvaliditywithdate) API for the X.509 certificate can be used to check the validity period of a certificate. For details, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
+The certificate chain validator does not verify the certificate validity period because the device system time is untrusted. The [CertChainValidator](#certchainvalidator) API for the X.509 certificate can be used to check the validity period of a certificate. For details, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -8083,7 +8072,7 @@ The certificate chain validator does not verify the certificate validity period 
 
 | Name   | Type                           | Mandatory| Description                                                        |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| certChain | [CertChainData](#certchaindata) | Yes  | Serialized X.509 certificate chain data.                                   |
+| certChain | [checkValidityWithDate](#checkvaliditywithdate) | Yes  | Serialized X.509 certificate chain data.                                   |
 | callback  | AsyncCallback\<void>            | Yes  | Callback used to return the result. If **error** is **null**, the validation is successful. If **error** is not **null**, the validation fails.|
 
 **Error codes**
@@ -8202,7 +8191,7 @@ validate(certChain : CertChainData) : Promise\<void>
 
 Verifies the X.509 certificate chain. This API uses a promise to return the result.
 
-The certificate chain validator does not verify the certificate validity period because the device system time is untrusted. The [checkValidityWithDate()](#checkvaliditywithdate) API for the X.509 certificate can be used to check the validity period of a certificate. For details, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
+The certificate chain validator does not verify the certificate validity period because the device system time is untrusted. The [CertChainData](#certchaindata) API for the X.509 certificate can be used to check the validity period of a certificate. For details, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -8212,7 +8201,7 @@ The certificate chain validator does not verify the certificate validity period 
 
 | Name   | Type                           | Mandatory| Description                      |
 | --------- | ------------------------------- | ---- | -------------------------- |
-| certChain | [CertChainData](#certchaindata) | Yes  | Serialized X.509 certificate chain data.|
+| certChain | [checkValidityWithDate](#checkvaliditywithdate) | Yes  | Serialized X.509 certificate chain data.|
 
 **Return value**
 
@@ -8334,7 +8323,7 @@ Defines the revoked certificate object.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry](#x509crlentry11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [CertChainData](#certchaindata) instead.
 
 ### getEncoded<sup>(deprecated)</sup>
 
@@ -8427,7 +8416,7 @@ Obtains the serialized data of this revoked certificate. This API uses a promise
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getEncoded](#getencoded11-3) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [EncodingBlob](#encodingblob) instead.
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -8508,7 +8497,7 @@ Obtains the serial number of this revoked certificate.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getSerialNumber](#getserialnumber11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [EncodingBlob](#encodingblob) instead.
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -8650,7 +8639,7 @@ Obtains the date (in ASN.1 format) when the certificate is revoked.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getRevocationDate](#getrevocationdate11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [DataBlob](#datablob) instead.
 
 **System capability:** SystemCapability.Security.Cert
 
@@ -8974,7 +8963,7 @@ Obtains the issuer of a revoked certificate.
 
 | Type                 | Description                      |
 | --------------------- | -------------------------- |
-| [DataBlob](#datablob) | Issuer of the revoked certificate obtained.|
+| [EncodingBlob](#encodingblob) | Issuer of the revoked certificate obtained.|
 
 **Error codes**
 
@@ -9049,7 +9038,7 @@ Obtains the issuer information of a revoked certificate based on the encoding ty
 
 | Name  | Type                                 | Mandatory| Description                          |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
-| encodingType | [EncodingType](#encodingtype12)     | Yes  |  Encoding type. |
+| encodingType | [DataBlob](#datablob)     | Yes  |  Encoding type. |
 
 **Return value**
 
@@ -9358,7 +9347,7 @@ Obtains the distinguished name of the X.509 certificate issuer.
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | Distinguished name of the X.509 certificate obtained.|
+| [DataBlob](#datablob) | Distinguished name of the X.509 certificate obtained.|
 
 **Error codes**
 
@@ -9702,7 +9691,7 @@ Creates an object for a collection of X.509 certificates and CRLs.
 | Name  | Type                                 | Mandatory| Description                          |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
 | certs | Array\<[X509Cert](#x509cert)>    | Yes  |  X.509 certificate array. |
-| crls | Array\<[X509CRL](#x509crl11)>     | No  |  X.509 CRL array. |
+| crls | Array\<[X509Cert](#x509cert)>     | No  |  X.509 CRL array. |
 
 **Return value**
 
@@ -9913,7 +9902,7 @@ Selects certificates that match the specified parameters. This API uses an async
 
 | Name   | Type                           | Mandatory| Description           |
 | --------- | ------------------------------- | ---- | ----------------- |
-| param | [X509CertMatchParameters](#x509certmatchparameters11) | Yes  | Parameters used to match the certificates.  |
+| param | [X509Cert](#x509cert) | Yes  | Parameters used to match the certificates.  |
 | callback  | AsyncCallback\<Array\<[X509Cert](#x509cert)>>    | Yes  | Callback used to return the matched certificates.|
 
 **Error codes**
@@ -10003,7 +9992,7 @@ Selects CRLs that match the specified parameters. This API uses a promise to ret
 
 | Name   | Type                           | Mandatory| Description     |
 | --------- | ------------------------------- | ---- | ------------ |
-| param | [X509CRLMatchParameters](#x509crlmatchparameters11) | Yes  | Parameters used to match the CRLs.  |
+| param | [X509Cert](#x509cert) | Yes  | Parameters used to match the CRLs.  |
 
 **Return value**
 
@@ -10266,7 +10255,7 @@ Creates an X.509 certificate chain object. This API uses a promise to return the
 
 | Type                           | Description            |
 | ------------------------------- | ---------------- |
-| Promise\<[X509CertChain](#x509certchain11)> | Promise used to return the **X509CertChain** instance created.|
+| Promise\<[EncodingBlob](#encodingblob)> | Promise used to return the **X509CertChain** instance created.|
 
 **Error codes**
 
@@ -10383,7 +10372,7 @@ Creates an X.509 certificate chain object. This API uses an asynchronous callbac
 | Name  | Type                                 | Mandatory| Description                      |
 | -------- | ------------------------------------- | ---- | -------------------------- |
 | inStream | [EncodingBlob](#encodingblob)         | Yes  | X.509 certificate serialization data.       |
-| callback | AsyncCallback\<[X509CertChain](#x509certchain11)> | Yes  | Callback used to return the **X509CertChain** instance created.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the **X509CertChain** instance created.|
 
 **Error codes**
 
@@ -10500,7 +10489,7 @@ Creates an X.509 certificate chain object based on the specified certificates. T
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| [X509CertChain](#x509certchain11) | X.509 certificate chain object.|
+| [X509Cert](#x509cert) | X.509 certificate chain object.|
 
 **Error codes**
 
@@ -10953,7 +10942,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The length of the password is zero or too large.                                    |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The length of the password is zero or too large.                                    |
 | 19030001 | crypto operation error.                           |
 | 19030008 | maybe wrong password.            |
 
@@ -11789,7 +11778,7 @@ Verifies the certificate chain. This API uses a promise to return the result.
 
 | Name   | Type                           | Mandatory| Description           |
 | --------- | ------------------------------- | ---- | ----------------- |
-| param | [CertChainValidationParameters](#certchainvalidationparameters11) | Yes  | Parameters for verifying the X.509 certificate chain.|
+| param | [X509Cert](#x509cert) | Yes  | Parameters for verifying the X.509 certificate chain.|
 
 **Return value**
 
@@ -12199,6 +12188,7 @@ async function certChainToString() {
   }
 }
 ```
+
 ### hashCode<sup>12+</sup>
 
 hashCode(): Uint8Array
@@ -12562,6 +12552,7 @@ async function createX500DistinguishedName() {
   }
 }
 ```
+
 ## X500DistinguishedName<sup>12+</sup>
 
 Provides APIs for managing the object of the Name type defined by X.509.
@@ -12797,7 +12788,7 @@ Creates a **CmsGenerator** object.
 
 | Name  | Type                         | Mandatory| Description                |
 | -------- | ----------------------------- | ---- | -------------------- |
-| contentType | [CmsContentType](#cmscontenttype18) | Yes| CMS content type.|
+| contentType | [EncodingBlob](#encodingblob) | Yes| CMS content type.|
 
 **Return value**
 
@@ -12884,7 +12875,7 @@ Provides APIs for generating the messages in CMS format.
 addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
 
 Adds a signer to the CMS **SIGNED_DATA** structure.
-  
+
 > **NOTE**
 >
 > OpenSSL does not support signature verification of self-signed certificates. Therefore, self-signed certificates cannot be used as issuer certificates.
@@ -12898,7 +12889,7 @@ Adds a signer to the CMS **SIGNED_DATA** structure.
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
 | cert |  [X509Cert](#x509cert) | Yes| X.509 certificate.|
-| keyInfo | [PrivateKeyInfo](#privatekeyinfo18) | Yes| Private key information.|
+| keyInfo | [X509Cert](#x509cert) | Yes| Private key information.|
 | config | [CmsSignerConfig](#cmssignerconfig18) | Yes| CMS signer configuration.|
 
 **Error codes**
@@ -13101,7 +13092,7 @@ This API should be called immediately after a **CmsGenerator** object of the **E
 
 | Name| Type     | Mandatory| Description                    |
 | ------ | --------- | ---- | ------------------------ |
-| algorithm   | [CmsRecipientEncryptionAlgorithm](#cmsrecipientencryptionalgorithm22)  | Yes  | Encryption algorithm used to encapsulate data based on CMS.     |
+| algorithm   | [X509Cert](#x509cert)  | Yes  | Encryption algorithm used to encapsulate data based on CMS.     |
 
 **Error codes**
 
@@ -13666,6 +13657,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | 19030001 | crypto operation error. |
 
 **Example**
+
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
 
@@ -13777,6 +13769,7 @@ async function testCmsVerifyTest() {
 ```
 
 ## CmsParser<sup>22+</sup>
+
 Verifies and decapsulates signed and encapsulated messages in CMS format.
 
 > **NOTE**
@@ -13789,7 +13782,7 @@ Verifies and decapsulates signed and encapsulated messages in CMS format.
 setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 Converts data in CMS format into CMS objects. This API uses a promise to return the result.
-  
+
 > **NOTE**
 >
 > CMS data in PEM and DER formats is supported. The string is in PEM format, and the Uint8Array data is in DER format.
@@ -14382,7 +14375,7 @@ Obtains the certificate from CMS data of the signature type by passing enumerate
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| type |  [CmsCertType](#cmscerttype22) | Yes| Type of the certificate obtained from the CMS.|
+| type |  [X509Cert](#x509cert) | Yes| Type of the certificate obtained from the CMS.|
 
 **Return value**
 
@@ -14532,7 +14525,7 @@ Decrypts CMS **Enveloped_DATA**. This API uses a promise to return the result.
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| config |  [CmsEnvelopedDecryptionConfig](#cmsenvelopeddecryptionconfig22) | Yes| Configuration for decryption of CMS data.|
+| config |  [X509Cert](#x509cert) | Yes| Configuration for decryption of CMS data.|
 
 **Return value**
 
@@ -14630,7 +14623,7 @@ async function testCmsDecryptTest() {
     console.info('[XTS] Decrypt result: success, decPlainText = ' + decPlainText);
     console.info('decryptEnvelopedData result: success.');
   } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    console.error(`decryptEnvelopedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }
 ```
