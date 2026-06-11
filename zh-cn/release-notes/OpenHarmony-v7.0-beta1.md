@@ -233,7 +233,7 @@ JSVM新增支持从外部内存创建ArrayBuffer对象。（[API参考](https://
 
 - 当应用发生SIGPIPE异常退出时，在Debug版本应用可开启SIGPIPE信号打印调用栈功能辅助定位问题。（[指南](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/dfx/cppcrash-guidelines.md#%E5%BA%94%E7%94%A8%E5%8F%91%E7%94%9Fsigpipe%E5%BC%82%E5%B8%B8%E9%80%80%E5%87%BA)）
 
-- hiprofiler新增文件缓存模式（use_file_cache_mode），通过将缓存数据落盘，提升内存分配信息的采集性能。（[指南](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/dfx/hiprofiler.md#native-hook%E6%8F%92%E4%BB%B6)）
+HiProfiler新增文件缓存模式（use_file_cache_mode），通过将缓存数据落盘，提升内存分配信息的采集性能。
 
 - HiDebug新增资源采集功能，支持按需采集应用进程资源分配栈至沙箱，覆盖文件描述符、线程、Native/GPU内存及全局句柄等类别，辅助定位资源泄漏。（[指南](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/dfx/hidebug-guidelines.md)）
 
