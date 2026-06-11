@@ -6,8 +6,6 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-## 模块简介
-
 FileSelectorParam是ArkWeb组件中的文件选择器参数类，用于获取Web页面中`<input type="file">`触发文件选择请求时的相关参数信息，包括文件选择模式、文件过滤类型、MIME类型、建议文件名、默认起始路径等。
 
 当Web页面发起文件选择请求时，开发者通过FileSelectorParam获取前端传递的完整参数信息，据此构建与前端需求匹配的自定义文件选择器，确保文件选择的模式、类型过滤、命名等行为与HTML规范一致。
