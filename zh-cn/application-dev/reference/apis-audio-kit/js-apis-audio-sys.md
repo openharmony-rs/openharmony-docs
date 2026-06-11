@@ -5874,6 +5874,35 @@ offHeadTrackingEnabledChangeForAnyDevice(callback?: Callback\<AudioSpatialEnable
 | 参数名   | 类型                                                | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
 | callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 否   | 回调函数。返回true表示头动跟踪已打开；返回false表示头动跟踪已关闭。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Not system App.                             |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+// 取消该事件的所有监听。
+audioSpatializationManager.offHeadTrackingEnabledChangeForAnyDevice();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let headTrackingEnabledChangeForAnyDeviceCallback = (audioSpatialEnabledStateForDevice: audio.AudioSpatialEnabledStateForDevice) => {
+  console.info(`deviceDescriptor: ${audioSpatialEnabledStateForDevice.deviceDescriptor}`);
+  console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
+};
+
+audioSpatializationManager.onHeadTrackingEnabledChangeForAnyDevice(headTrackingEnabledChangeForAnyDeviceCallback);
+
+audioSpatializationManager.offHeadTrackingEnabledChangeForAnyDevice(headTrackingEnabledChangeForAnyDeviceCallback);
+```
+
 ### isAdaptiveSpatialRenderingEnabled<sup>24+</sup>
 
 isAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean
@@ -5893,7 +5922,7 @@ isAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor): bool
 **返回值：**
 
 | 类型                                           | 说明                          |
-|----------------------------------------------| ----------------------------- |
+|---------------------------------------------- | ----------------------------- |
 | boolean | 指定设备是否开启了自适应空间音频渲染。返回true，表示自适应空间音频渲染开启。返回false，表示自适应空间音频渲染关闭。 |
 
 **错误码：**
@@ -5908,18 +5937,6 @@ isAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor): bool
 **示例：**
 
 ```ts
-// 取消该事件的所有监听。
-audioSpatializationManager.offHeadTrackingEnabledChangeForAnyDevice();
-
-// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
-let headTrackingEnabledChangeForAnyDeviceCallback = (audioSpatialEnabledStateForDevice: audio.AudioSpatialEnabledStateForDevice) => {
-  console.info(`deviceDescriptor: ${audioSpatialEnabledStateForDevice.deviceDescriptor}`);
-  console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
-};
-
-audioSpatializationManager.onHeadTrackingEnabledChangeForAnyDevice(headTrackingEnabledChangeForAnyDeviceCallback);
-
-audioSpatializationManager.offHeadTrackingEnabledChangeForAnyDevice(headTrackingEnabledChangeForAnyDeviceCallback);
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6067,7 +6084,7 @@ offAdaptiveSpatialRenderingEnabledChangeForAnyDevice(callback?: Callback<AudioSp
 
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 否   | 回调函数，返回设备信息和自适应空间音频渲染开关状态。 |
+| callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | 否   | 回调函数，返回设备信息和自适应空间音频渲染开关状态。不传入时，表示取消所有已注册的回调。 |
 
 **错误码：**
 
@@ -6191,7 +6208,7 @@ offSpatialAudioSourceTypeChange(callback?: Callback<SpatialAudioSourceType\>): v
 
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| callback | Callback\<[SpatialAudioSourceType](#spatialaudiosourcetype24)> | 否   | 回调函数，返回变化后的空间音频源类型。 |
+| callback | Callback\<[SpatialAudioSourceType](#spatialaudiosourcetype24)> | 否   | 回调函数，返回变化后的空间音频源类型。不传入时，表示取消所有已注册的回调。 |
 
 **错误码：**
 
