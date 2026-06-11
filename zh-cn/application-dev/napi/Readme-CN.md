@@ -11,7 +11,7 @@
   - [NDK工程构建概述](build-with-ndk-overview.md)
   - [使用DevEco Studio模板构建NDK工程](build-with-ndk-ide.md)
   - [使用命令行CMake构建NDK工程](build-with-ndk-cmake.md)
-  - [在NDK工程中使用预构建库](build-with-ndk-prebuilts.md)<!--RP1--><!--RP1End-->
+  - [在NDK工程中使用预构建库](build-with-ndk-prebuilts.md)<!--RP1--><!--RP1End--><!--RP4--><!--RP4End-->
 - 代码开发<!--coding-->
   - [代码开发概述](develop-code-overview.md)
   - C/C++标准库<!--c-cpp-->
