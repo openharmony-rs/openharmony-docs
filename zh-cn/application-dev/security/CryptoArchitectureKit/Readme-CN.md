@@ -71,7 +71,7 @@
     - [使用RSA非对称密钥（PKCS1模式）加解密(C/C++)](crypto-rsa-asym-encrypt-decrypt-pkcs1-ndk.md)
     - [使用RSA非对称密钥分段加解密(ArkTS)](crypto-rsa-asym-encrypt-decrypt-by-segment.md)
     - [使用RSA非对称密钥分段加解密(C/C++)](crypto-rsa-asym-encrypt-decrypt-by-segment-ndk.md)
-    - [使用RSA非对称密钥（PKCS1_OAEP模式）加解密](crypto-rsa-asym-encrypt-decrypt-pkcs1_oaep.md)
+    - [使用RSA非对称密钥（PKCS1_OAEP模式）加解密(ArkTS)](crypto-rsa-asym-encrypt-decrypt-pkcs1_oaep.md)
     - [使用SM2非对称密钥加解密(ArkTS)](crypto-sm2-asym-encrypt-decrypt.md)
     - [使用SM2非对称密钥加解密(C/C++)](crypto-sm2-asym-encrypt-decrypt-ndk.md)
     - [使用AES-WRAP算法对对称密钥加解密(ArkTS)](crypto-aes-wrap-encrypt-decrypt.md)
