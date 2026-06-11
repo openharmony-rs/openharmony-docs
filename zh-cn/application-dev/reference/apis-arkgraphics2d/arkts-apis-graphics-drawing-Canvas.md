@@ -4097,7 +4097,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-## drawImageLattice<sup>12+</sup>
+## drawImageLattice<sup>18+</sup>
 
 drawImageLattice(pixelmap: image.PixelMap, lattice: Lattice, dstRect: common2D.Rect, filterMode: FilterMode): void
 
@@ -4106,7 +4106,7 @@ drawImageLattice(pixelmap: image.PixelMap, lattice: Lattice, dstRect: common2D.R
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
 
