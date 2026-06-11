@@ -826,7 +826,7 @@ on(type: 'readerModeWithInterval', elementName: ElementName, discTech: number[],
 
 **示例：**
 
-示例请参见[tag.off](#tagoff23)接口的示例。
+示例请参见[tag.off](#tagoffreadermodewithinterval23)接口的示例。
 
 ## tag.off('readerModeWithInterval')<sup>23+</sup>
 
