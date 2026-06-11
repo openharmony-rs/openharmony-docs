@@ -3209,7 +3209,7 @@ setAudioSeparationEffectEnabled(enabled: boolean, uid: number, streamId?: number
 > **说明：**
 >
 > - 调用此接口前，应先调用[isAudioSeparationEffectSupported](js-apis-audio-sys.md#isaudioseparationeffectsupported)确认设备是否支持音频分离效果。
-> - 当streamId参数没有传入时，按uid控制整个应用的音频分离效果开关；当streamId参数传入时，按streamId控制指定音频播放流的音频分离效果开关。播放应用可通过[AudioRenderer.getAudioStreamIdSync](arkts-apis-audio-AudioRenderer.md#getaudiostreamidsync10)获取streamId。
+> - 当streamId参数没有传入时，根据uid控制整个应用的音频分离效果开关；当streamId参数传入时，根据streamId控制指定音频播放流的音频分离效果开关。播放应用可通过[AudioRenderer.getAudioStreamIdSync](arkts-apis-audio-AudioRenderer.md#getaudiostreamidsync10)获取streamId。
 
 **起始版本：** 26.0.0
 
@@ -3227,7 +3227,7 @@ setAudioSeparationEffectEnabled(enabled: boolean, uid: number, streamId?: number
 | --- | --- | --- | --- |
 | enabled | boolean | 是 | 音频分离效果的启用状态。true表示启用，false表示禁用。 |
 | uid | number | 是 | 表示目标应用进程ID。 |
-| streamId | number | 否 | 目标音频播放流的ID。如果没有传入此参数，则按uid控制应用级别的音频分离效果开关。播放应用可通过[AudioRenderer.getAudioStreamIdSync](arkts-apis-audio-AudioRenderer.md#getaudiostreamidsync10)获取streamId。 |
+| streamId | number | 否 | 目标音频播放流的ID，默认值为-1。如果没有传入此参数，则根据uid控制应用级别的音频分离效果开关。播放应用可通过[AudioRenderer.getAudioStreamIdSync](arkts-apis-audio-AudioRenderer.md#getaudiostreamidsync10)获取streamId。 |
 
 **返回值：**
 
@@ -3318,7 +3318,7 @@ offAudioSeparationEffectEnabledChange(callback?: Callback&lt;boolean&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | Callback&lt;boolean&gt; | 否 | 需要取消的回调函数。如果不使用此参数，则取消之前在当前进程中订阅的所有回调。 |
+| callback | Callback&lt;boolean&gt; | 否 | 需要取消的回调函数，默认值为空。如果不使用此参数，则取消之前在当前进程中订阅的所有回调。 |
 
 **错误码：**
 
