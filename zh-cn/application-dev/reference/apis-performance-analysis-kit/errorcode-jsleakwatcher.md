@@ -76,5 +76,5 @@ The parameter callback is invalid.
 
 确保传入参数callback的类型正确，必填参数已指定，且该回调函数入参是一个包含两个元素字符串类型数组。
 
-索引0为泄露列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。
+索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。
 
