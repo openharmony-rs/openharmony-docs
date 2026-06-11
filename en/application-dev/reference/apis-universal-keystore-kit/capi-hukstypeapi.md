@@ -9,7 +9,7 @@
 
 ## Overview
 
-Defines the macros, enums, structs, and error codes used by OpenHarmony Universal KeyStore (HUKS) APIs.
+Defines the HUKS header files and declares various macros, enums, structs, and error codes.
 
 **Since**: 9
 
@@ -17,4 +17,4 @@ Defines the macros, enums, structs, and error codes used by OpenHarmony Universa
 
 | Name| Description|
 | -- | -- |
-| [native_huks_type.h](capi-native-huks-type-h.md) | Defines the enums, structs, and macros used in the HUKS functions.|
+| [native_huks_type.h](capi-native-huks-type-h.md) | Provides the enums, structs, macros, and error codes used in the HUKS APIs.|
