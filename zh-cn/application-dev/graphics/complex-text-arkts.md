@@ -766,7 +766,7 @@ let myParagraphStyle: text.ParagraphStyle = {
        // 绘制文本
        paragraph.paint(canvas, 0, 0);
    
-       //获取全部占位符的数组
+       // 获取全部占位符的数组
        let placeholderRects = paragraph.getRectsForPlaceholders();
        // 获取第一个占位符的左边界
        let left = placeholderRects[0].rect.left;
