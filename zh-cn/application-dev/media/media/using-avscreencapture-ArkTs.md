@@ -163,18 +163,7 @@
 6. 创建豁免隐私窗口，这里填写的是子窗口id和主窗口id，具体开发步骤可参见窗口API[WindowProperties](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)。
 
     ```javascript
-    let windowId: number = -1;
-    try {
-      let properties = windowClass.getWindowProperties();
-      windowId = properties.id;
-    } catch (exception) {
-      console.error(`Failed to obtain the window properties. Cause Code: ${exception.code}, message: ${exception.message}`);
-    }
-    if (windowId < -1) {
-      console.error("处理异常情况");
-      return;
-    }
-    let windowIDs = [windowId];
+    let windowIDs = [57, 86];
     await this.screenCapture.skipPrivacyMode(windowIDs);
     ```
 
@@ -336,19 +325,8 @@ export class AVScreenCaptureDemo {
     await this.screenCapture?.init(this.captureConfig);
 
     this.registerScreenCaptureCallback();
-    // 豁免隐私窗口，窗口id可通过Window模块的getWindowProperties接口动态获取。
-    let windowId: number = -1;
-    try {
-      let properties = windowClass.getWindowProperties();
-      windowId = properties.id;
-    } catch (exception) {
-      console.error(`Failed to obtain the window properties. Cause Code: ${exception.code}, message: ${exception.message}`);
-    }
-    if (windowId < 0) {
-      console.error("处理异常情况");
-      return;
-    }
-    let windowIDs = [windowId];
+    // 豁免隐私窗口，窗口id获取可参见窗口API[WindowProperties](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)。
+    let windowIDs = [57, 86];
     await this.screenCapture?.skipPrivacyMode(windowIDs);
 
     await this.screenCapture?.startRecording();
