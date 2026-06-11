@@ -67,7 +67,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 | 201 | Permission denied. |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-| 801 | Capability not supported. |
+| 801 | Capability not supported. <br>适用版本：19+ |
 | 16000050 | Internal error. |
 | 16000058 | Invalid URI flag. |
 | 16000059 | Invalid URI type. |
@@ -217,7 +217,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 | 201 | Permission denied. |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-| 801 | Capability not supported. |
+| 801 | Capability not supported. <br>适用版本：19+ |
 | 16000050 | Internal error. |
 | 16000058 | Invalid URI flag. |
 | 16000059 | Invalid URI type. |
@@ -376,7 +376,7 @@ ArkTS-Sta: grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundl
 | 201 | Permission denied. |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-| 801 | Capability not supported. |
+| 801 | Capability not supported. <br>适用版本：19+ |
 | 16000050 | Internal error. |
 | 16000058 | Invalid URI flag. |
 | 16000059 | Invalid URI type. |
@@ -514,11 +514,13 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
+| 201 | Permission denied. <br>适用版本：10 - 11 |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 16000050 | Internal error. |
 | 16000059 | Invalid URI type. |
+| 801 | Capability not supported. <br>适用版本：19+ |
 
 **示例：**
 
@@ -635,9 +637,10 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;number&gt
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
+| 201 | Permission denied. <br>适用版本：10 - 11 |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-| 801 | Capability not supported. |
+| 801 | Capability not supported. <br>适用版本：19+ |
 | 16000050 | Internal error. |
 | 16000059 | Invalid URI type. |
 
@@ -767,7 +770,7 @@ ArkTS-Sta: revokeUriPermission(uri: string, targetBundleName: string, appCloneIn
 | ------- | -------------------------------- |
 | 202 | Not System App. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
-| 801 | Capability not supported. |
+| 801 | Capability not supported. <br>适用版本：19+ |
 | 16000050 | Internal error. |
 | 16000059 | Invalid URI type. |
 | 16000081 | Failed to obtain the target application information. |
