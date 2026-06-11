@@ -629,6 +629,7 @@
         - [@Once](arkui-ts/ts-state-management-once.md)
         - [@Param](arkui-ts/ts-state-management-param.md)
         - [@Provider](arkui-ts/ts-state-management-provider.md)
+        - [@SyncMonitor](arkui-ts/ts-state-management-syncmonitor.md)
         - [@Trace](arkui-ts/ts-state-management-trace.md)
         - [@Type](arkui-ts/ts-state-management-type.md)
     - 静态ArkTS状态管理 <!--static-arkts-state-management-decorator-->
@@ -644,6 +645,7 @@
         - [@State](arkui-ts/ts-state-management-state-static.md)
         - [@StorageLink](arkui-ts/ts-state-management-storagelink-static.md)
         - [@StoragePropref](arkui-ts/ts-state-management-storagepropref-static.md)
+        - [@SyncMonitor](arkui-ts/ts-state-management-syncmonitor-static.md)
         - [@Track](arkui-ts/ts-state-management-track-static.md)
         - [@Watch](arkui-ts/ts-state-management-watch-static.md)
       - 状态管理V2装饰器 <!--static-state-management-v2-decorator-->
