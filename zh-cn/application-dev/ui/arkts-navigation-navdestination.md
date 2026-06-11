@@ -94,60 +94,38 @@ NavDestination提供了两种类型。
     Column,
     NavPathStack,
     Button,
-    NavPathInfo,
-    NavDestinationContext,
-    NavigationOperation,
-    ButtonType,
-    GestureEvent,
-    PanGesture,
-    NavDestination,
-    ColumnOptions,
     Stack,
     Text,
     NavDestinationMode,
-    LaunchMode,
-    Context,
     Navigation,
-    TextInput,
-    List,
-    ForEach,
-    ListItem,
-    TextAlign,
-    $r,
     Entry,
     NavigationMode,
-    NavigationMenuItem,
-    HorizontalAlign,
-    Row,
-    Image,
-    NavigationTitleMode,
     Alignment,
     FlexAlign,
-    State,
-    AppStorage,
     Provide,
     Consume,
+    NavDestination
   } from '@kit.ArkUI';
-  
+
   @Entry
   @Component
   struct PageDisplayType {
-    @Provide pageStack: NavPathStack = new NavPathStack();
-  
+    @Provide navPathStack: NavPathStack = new NavPathStack();
+
     @Builder
     PagesMap(name: string) {
       if (name == 'DialogPage') {
         DialogPage();
       }
     }
-  
+
     build() {
-      Navigation(this.pageStack) {
+      Navigation(this.navPathStack) {
         Button('Push DialogPage')
           .margin(20)
           .width('80%')
           .onClick(() => {
-            this.pageStack.pushPathByName('DialogPage', '');
+            this.navPathStack.pushPathByName('DialogPage', '');
           })
       }
       .mode(NavigationMode.Stack)
@@ -155,11 +133,11 @@ NavDestination提供了两种类型。
       .navDestination(this.PagesMap)
     }
   }
-  
+
   @Component
   export struct DialogPage {
-    @Consume('NavPathStack') pageStack: NavPathStack;
-  
+    @Consume('navPathStack') navPathStack: NavPathStack;
+
     build(): void {
       NavDestination() {
         Stack({ alignContent: Alignment.Center }) {
@@ -168,7 +146,7 @@ NavDestination提供了两种类型。
               .fontSize(20)
               .margin({ bottom: 100 })
             Button('Close').onClick(() => {
-              this.pageStack.pop();
+              this.navPathStack.pop();
             }).width('30%')
           }
           .justifyContent(FlexAlign.Center)
