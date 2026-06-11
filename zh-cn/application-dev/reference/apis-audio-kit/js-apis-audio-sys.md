@@ -3227,7 +3227,7 @@ setAudioSeparationEffectEnabled(enabled: boolean, uid: number, streamId?: number
 | --- | --- | --- | --- |
 | enabled | boolean | 是 | 音频分离效果的启用状态。true表示启用，false表示禁用。 |
 | uid | number | 是 | 表示目标应用进程ID。 |
-| streamId | number | 否 | 目标音频播放流的ID，默认值为-1。如果没有传入此参数，则根据uid控制应用级别的音频分离效果开关。播放应用可通过[AudioRenderer.getAudioStreamIdSync](arkts-apis-audio-AudioRenderer.md#getaudiostreamidsync10)获取streamId。 |
+| streamId | number | 否 | 目标音频播放流的ID，默认值为-1。<br>如果没有传入此参数，则根据uid控制应用级别的音频分离效果开关。<br>播放应用可通过[AudioRenderer.getAudioStreamIdSync](arkts-apis-audio-AudioRenderer.md#getaudiostreamidsync10)获取streamId。 |
 
 **返回值：**
 
