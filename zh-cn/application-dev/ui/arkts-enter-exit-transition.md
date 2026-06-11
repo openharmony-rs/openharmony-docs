@@ -147,7 +147,7 @@
 
 
 
-![zh-cn_image_0000001599818064](figures/zh-cn_image_0000001599818064.gif)
+![zh-cn_image_0000001599818064](figures/Enter-Exit-Transition.gif)
 
 
 对多个组件添加转场效果时，可以在[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md#animation)动画参数中配置不同的delay值，实现组件渐次出现消失的效果：
@@ -215,4 +215,4 @@
    }
    ```
 
-![zh-cn_image_0000001599818064](figures/zh-cn_image_0000001599818065.gif)
+![zh-cn_image_0000001599818064](figures/Enter-Exit-Transition01.gif)

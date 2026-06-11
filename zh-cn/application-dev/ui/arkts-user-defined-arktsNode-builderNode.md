@@ -312,7 +312,7 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[Render
   }
   ```
   
-  ![zh-cn_image_update_BuilderNode](figures/zh-cn_image_update_BuilderNode.gif)
+  ![zh-cn_image_update_BuilderNode](figures/update-BuilderNode.gif)
 
 ## 解除实体节点引用关系
 

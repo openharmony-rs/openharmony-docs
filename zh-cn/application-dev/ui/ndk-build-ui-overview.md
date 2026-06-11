@@ -43,7 +43,7 @@ ArkUI NDK接口能力主要包括：
 
 **图1** NDK接口和ArkTS声明式关系架构图  
 
-![zh-cn_image_0000001923986433](figures/zh-cn_image_0000001923986433.png)
+![zh-cn_image_0000001923986433](figures/Overall-Architecture.png)
 
 **图2** 通过NDK接口创建的组件挂载示意图  
 

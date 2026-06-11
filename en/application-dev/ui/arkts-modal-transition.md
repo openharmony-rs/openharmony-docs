@@ -264,7 +264,7 @@ struct BindContentCoverDemo {
 
 
 
-![en-us_image_0000001646921957](figures/en-us_image_0000001646921957.gif)
+![en-us_image_0000001646921957](figures/Modal-Transition-bindContentCover.gif)
 
 
 
@@ -386,7 +386,7 @@ struct BindSheetDemo {
 }
 ```
 
-![en-us_image_0000001599977924](figures/en-us_image_0000001599977924.gif)
+![en-us_image_0000001599977924](figures/Sheet-Transition-bindSheet.gif)
 
 
 ## Creating a Menu with bindMenu
@@ -446,7 +446,11 @@ struct BindMenuDemo {
 }
 ```
 
+<<<<<<< HEAD
 
+=======
+![en-us_image_0000001599643478](figures/Creating-Menu-bindMenu.gif)
+>>>>>>> 98468f3... update
 
 
 ## Creating a Context Menu with bindContextMenu
@@ -531,7 +535,7 @@ struct BindContextMenuDemo {
 }
 ```
 
-![en-us_image_0000001600137920](figures/en-us_image_0000001600137920.gif)
+![en-us_image_0000001600137920](figures/Context-Menu-bindContextMenu.gif)
 
 
 ## Creating a Popup with bindPopup
@@ -599,7 +603,7 @@ struct BindPopupDemo {
 
 
 
-![en-us_image_0000001649282285](figures/en-us_image_0000001649282285.gif)
+![en-us_image_0000001649282285](figures/Creating-Popup-with-bindPopup.gif)
 
 
 ## Creating Modal Transition with if
@@ -809,4 +813,4 @@ struct ModalTransitionWithIf {
 }
 ```
 
-![en-us_image_0000001597792146](figures/en-us_image_0000001597792146.gif)
+![en-us_image_0000001597792146](figures/Modal-Transition.gif)

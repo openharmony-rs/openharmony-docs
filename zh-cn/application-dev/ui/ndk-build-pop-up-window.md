@@ -313,7 +313,7 @@
      }
      ```
 
-![zh-cn_image_0000001902966196](figures/zh-cn_image_0000001902966196.gif)
+![zh-cn_image_0000001902966196](figures/Interacting-Dialog-Box.gif)
 
 
 ## 弹窗的生命周期

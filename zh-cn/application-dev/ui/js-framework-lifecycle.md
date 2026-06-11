@@ -38,7 +38,7 @@
 
  **图1** 生命周期函数调用顺序图示
 
-![zh-cn_image_0000001147417424](figures/zh-cn_image_0000001147417424.png)
+![zh-cn_image_0000001147417424](figures/Page-Lifecycle.png)
 
 ## 示例代码
 
