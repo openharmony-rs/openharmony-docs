@@ -10,7 +10,9 @@
 
 > **NOTE**
 >
-> This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -65,13 +67,13 @@ TabSegmentButtonV2({
   buttonBorderRadius?: LengthMetrics, 
   buttonMinHeight?: LengthMetrics, 
   buttonPadding?: LengthMetrics, 
-  languageDirection?: Direction 
+  languageDirection?: Direction,
+  enableStateAnimation?: boolean,
+  backgroundSystemMaterial?: uiMaterial.Material
 })
 ```
 
 **Decorator**: @ComponentV2
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,38 +81,44 @@ TabSegmentButtonV2({
 
 | Name                            | Type                                                        | Mandatory| Decorator        | Description                                                        |
 | -------------------------------- | ------------------------------------------------------------ | ---- | ------------------ | ------------------------------------------------------------ |
-| items                            | [SegmentButtonV2Items](#segmentbuttonv2items)                | Yes  | @Require<br>@Param | Items of the segmented button.<br>If the value is **undefined**, the option information is not displayed.<br>This property is read-only.|
-| selectedIndex                    | number                                                       | Yes  | @Require<br>@Param | Index of the selected segmented button item. The index is zero-based and increments by 1.<br>If the value is undefined, no item is selected. If the value is a non-positive value, the default value **0** is used.<br>This property is read-only.|
-| $selectedIndex                   | [OnSelectedIndexChange](#onselectedindexchange)              | No  | @Event             | Callback invoked when the selected item changes.                    |
-| onItemClicked                    | Callback\<number>                                            | No  | @Event             | Callback invoked when a segmented button item is clicked.                    |
-| buttonBackgroundColor            | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Background color of the segmented button.<br>Default value: **$r('sys.color.segment_button_v2_tab_button_background')**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.|
-| buttonBackgroundBlurStyle        | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No  | @Param             | Background blur style of the segmented button.<br>Default value: **undefined**<br>This property is read-only.|
-| buttonBackgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)| No  | @Param             | Background blur style options of the segmented button.<br>Default value: **undefined**<br>This property is read-only.|
-| buttonBackgroundEffect           | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | No  | @Param             | Background blur effect options of the segmented button.<br>Default value: **undefined**<br>This property is read-only.|
-| buttonBorderRadius               | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Background border radius of the segmented button.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.segment_button_v2_background_corner_radius')**<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
-| buttonMinHeight                  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Minimum height of the segmented button.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.segment_button_v2_singleline_background_height')** for text-only buttons and icon-only buttons, and **$r('sys.float.segment_button_v2_doubleline_background_height')** for buttons with both an icon and text.<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
-| buttonPadding                    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Padding of the segmented button.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.padding_level1')**<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
-| itemSelectedBackgroundColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Background color of the selected segmented button item.<br>Default value: **$r('sys.color.segment_button_v2_tab_selected_item_background')**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.|
-| itemMinHeight                    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Minimum height of the segmented button item.<br>Value range: [0, +∞)<br>Default value:<br>**$r('sys.float.segment_button_v2_singleline_selected_height')** for text-only buttons and icon-only buttons, and **$r('sys.float.segment_button_v2_doubleline_selected_height')** for buttons with both an icon and text.<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
-| itemPadding                      | [LocalizedPadding](ts-types.md#localizedpadding12)           | No  | @Param             | Padding of the segmented button item.<br> Default value: **{top: LengthMetrics.resource ($r('sys.float.padding_level2')), bottom: LengthMetrics.resource ($r('sys.float.padding_level2')), start: LengthMetrics.resource($r('sys.float.padding_level4')), end: LengthMetrics.resource($r('sys.float.padding_level4'))}**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.|
-| itemShadow                       | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions) \| [ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10)| No  | @Param             | Shadow of the segmented button item.<br>Default value: **ShadowStyle.OUTER_DEFAULT_XS**<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
-| itemSpace                        | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Space between segmented button items.<br>Value range: [0, +∞)<br>Default value: **LengthMetrics.vp(0)**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>This property is read-only.|
-| itemMinFontScale                 | number \| [Resource](ts-types.md#resource)                   | No  | @Param             | Minimum font scale factor of the segmented button item text.<br>Value range: [0, 1]<br>Default value: **0**<br>**NOTE**<br>A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**. Abnormal values are ineffective by default.<br>This property is read-only.|
-| itemMaxFontScale                 | number \| [Resource](ts-types.md#resource)                   | No  | @Param             | Maximum font scale factor of the segmented button item text.<br>Value range: [1, 2]<br>Default value: **1**<br>**NOTE**<br>A value less than 1 is treated as **1**. A value greater than 2 is treated as **2**. Abnormal values are ineffective by default.<br>This property is read-only.|
-| itemFontSize                     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Font size of unselected segmented button items.<br>Value range: [0, +∞)<br>Default value: **14fp**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>When **fontSize** of **textModifier** is set for **items**, **itemFontSize** has no effect.<br>This property is read-only.|
-| itemSelectedFontSize             | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Font size of the selected segmented button item.<br>Value range: [0, +∞)<br>Default value: **14fp**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>When **fontSize** of **textModifier** is set for **items**, **itemSelectedFontSize** has no effect.<br>This property is read-only.|
-| itemFontColor                    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Font color of unselected segmented button items.<br>Default value: **$r('sys.color.font_secondary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **textModifier** is set for **items**, **itemFontColor** has no effect.<br>This property is read-only.|
-| itemSelectedFontColor            | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Font color of the selected segmented button item.<br>Default value: **$r('sys.color.font_primary')**.<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **textModifier** is set for **items**, **itemSelectedFontColor** has no effect.<br>This property is read-only.|
-| itemFontWeight                   | [FontWeight](ts-appendix-enums.md#fontweight)                | No  | @Param             | Font weight of unselected segmented button items.<br>Default value: **FontWeight.Medium**<br>If the value is out of the range, the default value is used.<br>**NOTE**<br>When **fontWeight** of **textModifier** is set for **items**, **itemFontWeight** has no effect.<br>This property is read-only.|
-| itemSelectedFontWeight           | [FontWeight](ts-appendix-enums.md#fontweight)                | No  | @Param             | Font weight of the selected segmented button item.<br>Default value: **FontWeight.Medium**<br>If the value is out of the range, the default value is used.<br>**NOTE**<br>When **fontWeight** of **textModifier** is set for **items**, **itemSelectedFontWeight** has no effect.<br>This property is read-only.|
-| itemBorderRadius                 | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Border radius of segmented button items.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.segment_button_v2_selected_corner_radius')**.<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
-| itemIconSize                     | [SizeT](../js-apis-arkui-graphics.md#sizett12)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | No  | @Param             | Image-type icon size of segmented button items.<br>Value range: [0, +∞)<br>Default value: **{ width: LengthMetrics.vp(24), height: LengthMetrics.vp(24) }**.<br>If the value is out of the range, the default value is used.<br>**NOTE**<br>When **width** and **height** of **iconModifier** are set for **items**, **itemIconSize** has no effect.<br>This property is read-only.|
-| itemIconFillColor                | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Icon color of unselected segmented button items.<br>Default value: **$r('sys.color.font_secondary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fillColor** of **iconModifier** is set for **items**, **itemIconFillColor** has no effect.<br>This property is read-only.|
-| itemSelectedIconFillColor        | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Icon color of the selected segmented button item.<br>Default value: **$r('sys.color.font_primary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fillColor** of **iconModifier** is set for **items**, **itemSelectedIconFillColor** has no effect.<br>This property is read-only.|
-| itemSymbolFontSize               | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | HM Symbol icon size of segmented button items.<br>Value range: [0, +∞)<br>Default value: **20fp**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>When **fontSize** of **symbolModifier** is set for **items**, **itemSymbolFontSize** has no effect.<br>This property is read-only.|
-| itemSymbolFontColor              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | HM Symbol icon color of unselected segmented button items.<br>Default value: **$r('sys.color.font_secondary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **symbolModifier** is set for **items**, **itemSymbolFontColor** has no effect.<br>This property is read-only.|
-| itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | HM Symbol icon color of the selected segmented button item.<br>Default value: **$r('sys.color.font_primary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **symbolModifier** is set for **items**, **itemSelectedSymbolFontColor** has no effect.<br>This property is read-only.|
-| languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | No  | @Param             | Language direction of the segmented button.<br>Default value: **Direction.Auto**<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
+| items                            | [SegmentButtonV2Items](#segmentbuttonv2items)                | Yes  | @Require<br>@Param | Items of the segmented button.<br>If the value is **undefined**, the option information is not displayed.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| selectedIndex                   | number                                                       | Yes  | @Require<br>@Param | Index of the selected segmented button item. The index is zero-based and increments by 1.<br>If the value is undefined, no item is selected. If the value is a non-positive value, the default value **0** is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| $selectedIndex                   | [OnSelectedIndexChange](#onselectedindexchange)              | No  | @Event             | Callback invoked when the selected item changes.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                    |
+| onItemClicked                    | Callback\<number>                                            | No  | @Event             | Callback invoked when a segmented button item is clicked.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                    |
+| buttonBackgroundColor            | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Background color of the segmented button.<br>Default value: **$r('sys.color.segment_button_v2_tab_button_background')**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| buttonBackgroundBlurStyle        | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No  | @Param             | Background blur style of the segmented button.<br>Default value: **undefined**<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| buttonBackgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)| No  | @Param             | Background blur style options of the segmented button.<br>Default value: **undefined**<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| buttonBackgroundEffect           | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | No  | @Param             | Background blur effect options of the segmented button.<br>Default value: **undefined**<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| buttonBorderRadius               | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Background border radius of the segmented button.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.segment_button_v2_background_corner_radius')**<br>If the value is out of the range, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| buttonMinHeight                  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Minimum height of the segmented button.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.segment_button_v2_singleline_background_height')** for text-only buttons and icon-only buttons, and **$r('sys.float.segment_button_v2_doubleline_background_height')** for buttons with both an icon and text.<br>If the value is out of the range, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| buttonPadding                    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Padding of the segmented button.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.padding_level1')**<br>If the value is out of the range, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSelectedBackgroundColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Background color of the selected segmented button item.<br>Default value: **$r('sys.color.segment_button_v2_tab_selected_item_background')**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemMinHeight                    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Minimum height of the segmented button item.<br>Value range: [0, +∞)<br>Default value:<br>**$r('sys.float.segment_button_v2_singleline_selected_height')** for text-only buttons and icon-only buttons, and **$r('sys.float.segment_button_v2_doubleline_selected_height')** for text+icon buttons.<br>If the value is out of the range, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemPadding                      | [LocalizedPadding](ts-types.md#localizedpadding12)           | No  | @Param             | Padding of the segmented button item.<br> Default value: **{top: LengthMetrics.resource ($r('sys.float.padding_level2')), bottom: LengthMetrics.resource ($r('sys.float.padding_level2')), start: LengthMetrics.resource($r('sys.float.padding_level4')), end: LengthMetrics.resource($r('sys.float.padding_level4'))}**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemShadow                       | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions) \| [ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10)| No  | @Param             | Shadow of the segmented button item.<br>Default value: **ShadowStyle.OUTER_DEFAULT_XS**<br>If the value is out of the range, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSpace                        | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Space between segmented button items.<br>Value range: [0, +∞)<br>Default value: **LengthMetrics.vp(0)**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemMinFontScale                 | number \| [Resource](ts-types.md#resource)                   | No  | @Param             | Minimum font scale factor of the segmented button item text.<br>Value range: [0, 1]<br>Default value: **0**<br>**NOTE**<br>A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**. Abnormal values are ineffective by default.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemMaxFontScale                 | number \| [Resource](ts-types.md#resource)                   | No  | @Param             | Maximum font scale factor of the segmented button item text.<br>Value range: [1, 2]<br>Default value: **1**<br>**NOTE**<br>A value less than 1 is treated as **1**. A value greater than 2 is treated as **2**. Abnormal values are ineffective by default.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemFontSize                     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Font size of unselected segmented button items.<br>Value range: [0, +∞)<br>Default value: **14fp**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>When **fontSize** of **textModifier** is set for **items**, **itemFontSize** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSelectedFontSize             | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Font size of the selected segmented button item.<br>Value range: [0, +∞)<br>Default value: **14fp**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>When **fontSize** of **textModifier** is set for **items**, **itemSelectedFontSize** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemFontColor                    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Font color of unselected segmented button items.<br>Default value: **$r('sys.color.font_secondary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **textModifier** is set for **items**, **itemFontColor** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSelectedFontColor            | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Font color of the selected segmented button item.<br>Default value: **$r('sys.color.font_primary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **textModifier** is set for **items**, **itemSelectedFontColor** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemFontWeight                   | [FontWeight](ts-appendix-enums.md#fontweight)                | No  | @Param             | Font weight of unselected segmented button items.<br>Default value: **FontWeight.Medium**<br>If the value is out of the range, the default value is used.<br>**NOTE**<br>When **fontWeight** of **textModifier** is set for **items**, **itemFontWeight** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSelectedFontWeight           | [FontWeight](ts-appendix-enums.md#fontweight)                | No  | @Param             | Font weight of the selected segmented button item.<br>Default value: **FontWeight.Medium**<br>If the value is out of the range, the default value is used.<br>**NOTE**<br>When **fontWeight** of **textModifier** is set for **items**, **itemSelectedFontWeight** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemBorderRadius                 | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Border radius of segmented button items.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.segment_button_v2_selected_corner_radius')**<br>If the value is out of the range, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemIconSize                     | [SizeT](../js-apis-arkui-graphics.md#sizett12)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | No  | @Param             | Image-type icon size of segmented button items.<br>Value range: [0, +∞)<br>Default value: **{ width: LengthMetrics.vp(24), height: LengthMetrics.vp(24) }**<br>If the value is out of the range, the default value is used.<br>**NOTE**<br>When **width** and **height** of **iconModifier** are set for **items**, **itemIconSize** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemIconFillColor                | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Icon color of unselected segmented button items.<br>Default value: **$r('sys.color.font_secondary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fillColor** of **iconModifier** is set for **items**, **itemIconFillColor** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSelectedIconFillColor        | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Icon color of the selected segmented button item.<br>Default value: **$r('sys.color.font_primary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fillColor** of **iconModifier** is set for **items**, **itemSelectedIconFillColor** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSymbolFontSize               | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | HM Symbol icon size of segmented button items.<br>Value range: [0, +∞)<br>Default value: **20fp**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>When **fontSize** of **symbolModifier** is set for **items**, **itemSymbolFontSize** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSymbolFontColor              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | HM Symbol icon color of unselected segmented button items.<br>Default value: **$r('sys.color.font_secondary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **symbolModifier** is set for **items**, **itemSymbolFontColor** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | HM Symbol icon color of the selected segmented button item.<br>Default value: **$r('sys.color.font_primary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **symbolModifier** is set for **items**, **itemSelectedSymbolFontColor** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | No  | @Param             | Language direction of the segmented button.<br>Default value: **Direction.Auto**<br>If the value is out of the range, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| enableStateAnimation<sup>24+</sup>             | boolean                                                      | No  | @Param             | Whether to enable property animation for the segmented button when the **selectedIndex** value is modified via a variable.<br>**true** indicates that property animation is enabled for the segmented button. If this property is not set or is set to **false**, property animation is disabled for the segmented button and the original animation is used.<br>Default value: **false**<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 24.<br>**Model restriction**: This API can be used only in the stage model.|
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | No| @Param | System material for the background of the segmented button component. Different system materials have different properties that affect the effect. After the material is passed, the animation effect of **SegmentButtonV2** changes.<br>Default value: no material effect<br>This property is read-only.<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
+
+> **NOTE**
+>
+> Since API version 26.0.0, when **backgroundSystemMaterial** is set to a new material with automatic color inversion, **itemFontColor**, **itemSelectedFontColor**, **itemIconFillColor**, **itemSelectedIconFillColor**, **itemSymbolFontColor** and **itemSelectedSymbolFontColor** use special system resources that support color inversion. The colors will automatically adapt to the inverted color of the material background.
 
 ## CapsuleSegmentButtonV2
 
@@ -147,13 +155,13 @@ CapsuleSegmentButtonV2({
   buttonBorderRadius?: LengthMetrics,
   buttonMinHeight?: LengthMetrics,
   buttonPadding?: LengthMetrics,
-  languageDirection?: Direction 
+  languageDirection?: Direction,
+  enableStateAnimation?: boolean,
+  backgroundSystemMaterial?: uiMaterial.Material
 })
 ```
 
 **Decorator**: @ComponentV2
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -161,38 +169,44 @@ CapsuleSegmentButtonV2({
 
 | Name                            | Type                                                        | Mandatory| Decorator        | Description                                                        |
 | -------------------------------- | ------------------------------------------------------------ | ---- | ------------------ | ------------------------------------------------------------ |
-| items                            | [SegmentButtonV2Items](#segmentbuttonv2items)                | Yes  | @Require<br>@Param | Items of the segmented button.<br>If the value is **undefined**, the option information is not displayed.<br>This property is read-only.|
-| selectedIndex                    | number                                                       | Yes  | @Require<br>@Param | Index of the selected segmented button item. The index is zero-based and increments by 1.<br>If the value is undefined, no item is selected. If the value is a non-positive value, the default value **0** is used.<br>This property is read-only.|
-| $selectedIndex                   | [OnSelectedIndexChange](#onselectedindexchange)              | No  | @Event             | Callback invoked when the selected item changes.                        |
-| onItemClicked                    | Callback\<number>                                            | No  | @Event             | Callback invoked when a segmented button item is clicked.                    |
-| buttonBackgroundColor            | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Background color of the segmented button.<br>Default value: **$r('sys.color.segment_button_v2_tab_button_background')**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.|
-| buttonBackgroundBlurStyle        | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No  | @Param             | Background blur style of the segmented button.<br>Default value: **undefined**<br>This property is read-only.|
-| buttonBackgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)| No  | @Param             | Background blur style options of the segmented button.<br>Default value: **undefined**<br>This property is read-only.|
-| buttonBackgroundEffect           | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | No  | @Param             | Background blur effect options of the segmented button.<br>Default value: **undefined**<br>This property is read-only.|
-| buttonBorderRadius               | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Background border radius of the segmented button.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.segment_button_v2_background_corner_radius')**<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
-| buttonMinHeight                  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Minimum height of the segmented button.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.segment_button_v2_singleline_background_height')** for text-only buttons and icon-only buttons, and **$r('sys.float.segment_button_v2_doubleline_background_height')** for buttons with both an icon and text.<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
-| buttonPadding                    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Padding of the segmented button.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.padding_level1')**<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
-| itemSelectedBackgroundColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Background color of the selected segmented button item.<br>Default value: **$r('sys.color.comp_background_emphasize')**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.|
-| itemMinHeight                    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Minimum height of the segmented button item.<br>Value range: [0, +∞)<br>Default value:<br>**$r('sys.float.segment_button_v2_singleline_selected_height')** for text-only buttons and icon-only buttons, and **$r('sys.float.segment_button_v2_doubleline_selected_height')** for buttons with both an icon and text.<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
-| itemPadding                      | [LocalizedPadding](ts-types.md#localizedpadding12)           | No  | @Param             | Padding of the segmented button item.<br>Default value: **{top: LengthMetrics.resource ($r('sys.float.padding_level2')), bottom: LengthMetrics.resource ($r('sys.float.padding_level2')), start: LengthMetrics.resource($r('sys.float.padding_level4')), end: LengthMetrics.resource($r('sys.float.padding_level4'))}**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.|
-| itemShadow                       | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions) \| [ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10)| No  | @Param             | Shadow of the segmented button item.<br>Default value: **ShadowStyle.OUTER_DEFAULT_XS**<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
-| itemSpace                        | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Space between segmented button items.<br>Value range: [0, +∞)<br>Default value: **LengthMetrics.vp(0)**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>This property is read-only.|
-| itemMinFontScale                 | number \| [Resource](ts-types.md#resource)                   | No  | @Param             | Minimum font scale factor of the segmented button item text.<br>Value range: [0, 1]<br>Default value: **0**<br>**NOTE**<br>A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**. Abnormal values are ineffective by default.<br>This property is read-only.|
-| itemMaxFontScale                 | number \| [Resource](ts-types.md#resource)                   | No  | @Param             | Maximum font scale factor of the segmented button item text.<br>Value range: [1, 2]<br>Default value: **1**<br>**NOTE**<br>A value less than 1 is treated as **1**. A value greater than 2 is treated as **2**. Abnormal values are ineffective by default.<br>This property is read-only.|
-| itemFontSize                     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Font size of unselected segmented button items.<br>Value range: [0, +∞)<br>Default value: **14fp**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>When **fontSize** of **textModifier** is set for **items**, **itemFontSize** has no effect.<br>This property is read-only.|
-| itemSelectedFontSize             | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Font size of the selected segmented button item.<br>Value range: [0, +∞)<br>Default value: **14fp**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>When **fontSize** of **textModifier** is set for **items**, **itemSelectedFontSize** has no effect.<br>This property is read-only.|
-| itemFontColor                    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Font color of unselected segmented button items.<br>Default value: **$r('sys.color.font_secondary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **textModifier** is set for **items**, **itemFontColor** has no effect.<br>This property is read-only.|
-| itemSelectedFontColor            | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Font color of the selected segmented button item.<br>Default value: **$r('sys.color.font_on_primary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **textModifier** is set for **items**, **itemSelectedFontColor** has no effect.<br>This property is read-only.|
-| itemFontWeight                   | [FontWeight](ts-appendix-enums.md#fontweight)                | No  | @Param             | Font weight of unselected segmented button items.<br>Default value: **FontWeight.Medium**<br>If the value is out of the range, the default value is used.<br>**NOTE**<br>When **fontWeight** of **textModifier** is set for **items**, **itemFontWeight** has no effect.<br>This property is read-only.|
-| itemSelectedFontWeight           | [FontWeight](ts-appendix-enums.md#fontweight)                | No  | @Param             | Font weight of the selected segmented button item.<br>Default value: **FontWeight.Medium**<br>If the value is out of the range, the default value is used.<br>**NOTE**<br>When **fontWeight** of **textModifier** is set for **items**, **itemSelectedFontWeight** has no effect.<br>This property is read-only.|
-| itemBorderRadius                 | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Border radius of segmented button items.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.segment_button_v2_selected_corner_radius')**<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
-| itemIconSize                     | [SizeT](../js-apis-arkui-graphics.md#sizett12)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | No  | @Param             | Image-type icon size of segmented button items.<br>Value range: [0, +∞)<br>Default value: **{ width: LengthMetrics.vp(24), height: LengthMetrics.vp(24) }**<br>If the value is out of the range, the default value is used.<br>**NOTE**<br>When **width** and **height** of **iconModifier** are set for **items**, **itemIconSize** has no effect.<br>This property is read-only.|
-| itemIconFillColor                | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Icon color of unselected segmented button items.<br>Default value: **$r('sys.color.font_secondary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fillColor** of **iconModifier** is set for **items**, **itemIconFillColor** has no effect.<br>This property is read-only.|
-| itemSelectedIconFillColor        | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Icon color of the selected segmented button item.<br>Default value: **$r('sys.color.font_on_primary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fillColor** of **iconModifier** is set for **items**, **itemSelectedIconFillColor** has no effect.<br>This property is read-only.|
-| itemSymbolFontSize               | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | HM Symbol icon size of segmented button items.<br>Value range: [0, +∞)<br>Default value: **20fp**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>When **fontSize** of **symbolModifier** is set for **items**, **itemSymbolFontSize** has no effect.<br>This property is read-only.|
-| itemSymbolFontColor              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | HM Symbol icon color of unselected segmented button items.<br>Default value: **$r('sys.color.font_secondary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **symbolModifier** is set for **items**, **itemSymbolFontColor** has no effect.<br>This property is read-only.|
-| itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | HM Symbol icon color of the selected segmented button item.<br>Default value: **$r('sys.color.font_on_primary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **symbolModifier** is set for **items**, **itemSelectedSymbolFontColor** has no effect.<br>This property is read-only.|
-| languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | No  | @Param             | Language direction of the segmented button.<br>Default value: **Direction.Auto**<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
+| items                            | [SegmentButtonV2Items](#segmentbuttonv2items)                | Yes  | @Require<br>@Param | Items of the segmented button.<br>If the value is **undefined**, the option information is not displayed.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| selectedIndex                    | number                                                       | Yes  | @Require<br>@Param | Index of the selected segmented button item. The index is zero-based and increments by 1.<br>If the value is undefined, no item is selected. If the value is a non-positive value, the default value **0** is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| $selectedIndex                   | [OnSelectedIndexChange](#onselectedindexchange)              | No  | @Event             | Callback invoked when the selected item changes.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                        |
+| onItemClicked                    | Callback\<number>                                            | No  | @Event             | Callback invoked when a segmented button item is clicked.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                    |
+| buttonBackgroundColor            | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Background color of the segmented button.<br>Default value: **$r('sys.color.segment_button_v2_tab_button_background')**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| buttonBackgroundBlurStyle        | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No  | @Param             | Background blur style of the segmented button.<br>Default value: **undefined**<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| buttonBackgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)| No  | @Param             | Background blur style options of the segmented button.<br>Default value: **undefined**<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| buttonBackgroundEffect           | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | No  | @Param             | Background blur effect options of the segmented button.<br>Default value: **undefined**<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| buttonBorderRadius               | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Background border radius of the segmented button.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.segment_button_v2_background_corner_radius')**<br>If the value is out of the range, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| buttonMinHeight                  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Minimum height of the segmented button.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.segment_button_v2_singleline_background_height')** for text-only buttons and icon-only buttons, and **$r('sys.float.segment_button_v2_doubleline_background_height')** for buttons with both an icon and text.<br>If the value is out of the range, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| buttonPadding                    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Padding of the segmented button.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.padding_level1')**<br>If the value is out of the range, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSelectedBackgroundColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Background color of the selected segmented button item.<br>Default value: **$r('sys.color.comp_background_emphasize')**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemMinHeight                    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Minimum height of the segmented button item.<br>Value range: [0, +∞)<br>Default value:<br>**$r('sys.float.segment_button_v2_singleline_selected_height')** for text-only buttons and icon-only buttons, and **$r('sys.float.segment_button_v2_doubleline_selected_height')** for text+icon buttons.<br>If the value is out of the range, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemPadding                      | [LocalizedPadding](ts-types.md#localizedpadding12)           | No  | @Param             | Padding of the segmented button item.<br>Default value: **{top: LengthMetrics.resource ($r('sys.float.padding_level2')), bottom: LengthMetrics.resource ($r('sys.float.padding_level2')), start: LengthMetrics.resource($r('sys.float.padding_level4')), end: LengthMetrics.resource($r('sys.float.padding_level4'))}**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemShadow                       | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions) \| [ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10)| No  | @Param             | Shadow of the segmented button item.<br>Default value: **ShadowStyle.OUTER_DEFAULT_XS**<br>If the value is out of the range, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSpace                        | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Space between segmented button items.<br>Value range: [0, +∞)<br>Default value: **LengthMetrics.vp(0)**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemMinFontScale                 | number \| [Resource](ts-types.md#resource)                   | No  | @Param             | Minimum font scale factor of the segmented button item text.<br>Value range: [0, 1]<br>Default value: **0**<br>**NOTE**<br>A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**. Abnormal values are ineffective by default.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemMaxFontScale                 | number \| [Resource](ts-types.md#resource)                   | No  | @Param             | Maximum font scale factor of the segmented button item text.<br>Value range: [1, 2]<br>Default value: **1**<br>**NOTE**<br>A value less than 1 is treated as **1**. A value greater than 2 is treated as **2**. Abnormal values are ineffective by default.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemFontSize                     | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Font size of unselected segmented button items.<br>Value range: [0, +∞)<br>Default value: **14fp**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>When **fontSize** of **textModifier** is set for **items**, **itemFontSize** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSelectedFontSize             | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Font size of the selected segmented button item.<br>Value range: [0, +∞)<br>Default value: **14fp**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>When **fontSize** of **textModifier** is set for **items**, **itemSelectedFontSize** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemFontColor                    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Font color of unselected segmented button items.<br>Default value: **$r('sys.color.font_secondary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **textModifier** is set for **items**, **itemFontColor** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSelectedFontColor            | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Font color of the selected segmented button item.<br>Default value: **$r('sys.color.font_on_primary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **textModifier** is set for **items**, **itemSelectedFontColor** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemFontWeight                   | [FontWeight](ts-appendix-enums.md#fontweight)                | No  | @Param             | Font weight of unselected segmented button items.<br>Default value: **FontWeight.Medium**<br>If the value is out of the range, the default value is used.<br>**NOTE**<br>When **fontWeight** of **textModifier** is set for **items**, **itemFontWeight** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSelectedFontWeight           | [FontWeight](ts-appendix-enums.md#fontweight)                | No  | @Param             | Font weight of the selected segmented button item.<br>Default value: **FontWeight.Medium**<br>If the value is out of the range, the default value is used.<br>**NOTE**<br>When **fontWeight** of **textModifier** is set for **items**, **itemSelectedFontWeight** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemBorderRadius                 | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Border radius of segmented button items.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.segment_button_v2_selected_corner_radius')**<br>If the value is out of the range, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemIconSize                     | [SizeT](../js-apis-arkui-graphics.md#sizett12)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | No  | @Param             | Image-type icon size of segmented button items.<br>Value range: [0, +∞)<br>Default value: **{ width: LengthMetrics.vp(24), height: LengthMetrics.vp(24) }**<br>If the value is out of the range, the default value is used.<br>**NOTE**<br>When **width** and **height** of **iconModifier** are set for **items**, **itemIconSize** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemIconFillColor                | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Icon color of unselected segmented button items.<br>Default value: **$r('sys.color.font_secondary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fillColor** of **iconModifier** is set for **items**, **itemIconFillColor** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSelectedIconFillColor        | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Icon color of the selected segmented button item.<br>Default value: **$r('sys.color.font_on_primary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fillColor** of **iconModifier** is set for **items**, **itemSelectedIconFillColor** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSymbolFontSize               | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | HM Symbol icon size of segmented button items.<br>Value range: [0, +∞)<br>Default value: **20fp**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>When **fontSize** of **symbolModifier** is set for **items**, **itemSymbolFontSize** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSymbolFontColor              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | HM Symbol icon color of unselected segmented button items.<br>Default value: **$r('sys.color.font_secondary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **symbolModifier** is set for **items**, **itemSymbolFontColor** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | HM Symbol icon color of the selected segmented button item.<br>Default value: **$r('sys.color.font_on_primary')**<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>When **fontColor** of **symbolModifier** is set for **items**, **itemSelectedSymbolFontColor** has no effect.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | No  | @Param             | Language direction of the segmented button.<br>Default value: **Direction.Auto**<br>If the value is out of the range, the default value is used.<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| enableStateAnimation<sup>24+</sup>             | boolean                                                      | No  | @Param             | Whether to enable property animation for the segmented button when the **selectedIndex** value is modified via a variable.<br>**true** indicates that property animation is enabled for the segmented button. If this property is not set or is set to **false**, property animation is disabled for the segmented button and the original animation is used.<br>Default value: **false**<br>This property is read-only.<br>**Atomic service API**: This API can be used in atomic services since API version 24.<br>**Model restriction**: This API can be used only in the stage model.|
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | No| @Param | System material for the background of the segmented button component. Different system materials have different properties that affect the effect. After the material is passed, the animation effect of **SegmentButtonV2** changes.<br>Default value: no material effect<br>This property is read-only.<br>**Since:** 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.|
+
+> **NOTE**
+>
+> Since API version 26.0.0, when **backgroundSystemMaterial** is set to a new material with automatic color inversion, **itemFontColor**, **itemSelectedFontColor**, **itemIconFillColor**, **itemSelectedIconFillColor**, **itemSymbolFontColor** and **itemSelectedSymbolFontColor** use special system resources that support color inversion. The colors will automatically adapt to the inverted color of the material background.
 
 ## MultiCapsuleSegmentButtonV2
 
@@ -248,7 +262,7 @@ MultiCapsuleSegmentButtonV2({
 | itemBackgroundBlurStyle        | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No  | @Param             | Background blur style of segmented button items.<br>Default value: **undefined**<br>This property is read-only.|
 | itemBackgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10)| No  | @Param             | Background blur style options of segmented button items.<br>Default value: **undefined**<br>This property is read-only.|
 | itemSelectedBackgroundColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | No  | @Param             | Background color of the selected segmented button item.<br>Default value: **$r('sys.color.comp_background_emphasize')**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.|
-| itemMinHeight                  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Minimum height of the segmented button item.<br>Value range: [0, +∞)<br>Default value:<br>**$r('sys.float.segment_button_v2_singleline_selected_height')** for text-only buttons and icon-only buttons, and **$r('sys.float.segment_button_v2_doubleline_selected_height')** for buttons with both an icon and text<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
+| itemMinHeight                  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Minimum height of the segmented button item.<br>Value range: [0, +∞)<br>Default value:<br>**$r('sys.float.segment_button_v2_singleline_selected_height')** for text-only buttons and icon-only buttons, and **$r('sys.float.segment_button_v2_doubleline_selected_height')** for text+icon buttons.<br>If the value is out of the range, the default value is used.<br>This property is read-only.|
 | itemPadding                    | [LocalizedPadding](ts-types.md#localizedpadding12)           | No  | @Param             | Padding of the segmented button item.<br>Default value: **{top: LengthMetrics.resource ($r('sys.float.padding_level2')), bottom: LengthMetrics.resource ($r('sys.float.padding_level2')), start: LengthMetrics.resource($r('sys.float.padding_level4')), end: LengthMetrics.resource($r('sys.float.padding_level4'))}**<br>If the value is **undefined**, the default value is used.<br>This property is read-only.|
 | itemSpace                      | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | @Param             | Space between segmented button items.<br>Value range: [0, +∞)<br>Default value: **LengthMetrics.vp(1)**<br>**NOTE**<br>Percentage values are not supported. If an invalid value is set, the default value is used.<br>This property is read-only.|
 | itemMinFontScale               | number \| [Resource](ts-types.md#resource)                   | No  | @Param             | Minimum font scale factor of the segmented button item text.<br>Value range: [0, 1]<br>Default value: **0**<br>**NOTE**<br>A value less than 0 is treated as **0**. A value greater than 1 is treated as **1**. Abnormal values are ineffective by default.<br>This property is read-only.|
@@ -330,8 +344,8 @@ Checks whether the component supports mixed icon and text items.
 | icon                     | [ResourceStr](ts-types.md#resourcestr)                               | No| Yes| Image icon of the segmented button item.<br>Default value: **undefined**<br>Decorator type: @Trace     |
 | symbol                   | [Resource](ts-types.md#resource)                                     | No| Yes| HM Symbol icon of the segmented button item.<br>Default value: **undefined**<br>Decorator type: @Trace|
 | enabled                  | boolean                                                              | No| No| Whether the segmented button item is enabled.<br>Default value: **true**<br>**true**: enabled. **false**: disabled.<br>If the value is **undefined**, the default value is used.<br>Decorator type: @Trace|
-| textModifier             | [TextModifier](ts-universal-attributes-attribute-modifier.md)        | No| Yes| Text modifier for the segmented button item.<br>Default value: **undefined**<br>Decorator type: @Trace|
-| iconModifier             | [ImageModifier](ts-universal-attributes-attribute-modifier.md)       | No| Yes| Image icon modifier for the segmented button item.<br>Default value: **undefined**<br>Decorator type: @Trace|
+| textModifier             | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)        | No| Yes| Text modifier for the segmented button item.<br>Default value: **undefined**<br>Decorator type: @Trace|
+| iconModifier             | [ImageModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)       | No| Yes| Image icon modifier for the segmented button item.<br>Default value: **undefined**<br>Decorator type: @Trace|
 | symbolModifier           | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| HM Symbol icon modifier for the segmented button item.<br>Default value: **undefined**<br>Decorator type: @Trace|
 | accessibilityText        | [ResourceStr](ts-types.md#resourcestr)                               | No| Yes| [Accessibility text](ts-universal-attributes-accessibility.md#accessibilitytext) of the segmented button item.<br>Default value: **""**<br>If the value is **undefined**, the default value is used.<br>Decorator type: @Trace|
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)                               | No| Yes| [Accessibility description](ts-universal-attributes-accessibility.md#accessibilitydescription) of the segmented button item.<br>Default value: **""**<br>If the value is **undefined**, the default value is used.<br>Decorator type: @Trace|
@@ -393,10 +407,10 @@ Defines segmented button item options.
 | text                     | [ResourceStr](ts-types.md#resourcestr)                       | No  | Yes  | Text of the segmented button item.<br>Default value: **undefined**                     |
 | icon                     | [ResourceStr](ts-types.md#resourcestr)                       | No  | Yes  | Icon of the segmented button item.<br>Default value: **undefined**                     |
 | symbol                   | [Resource](ts-types.md#resource)                             | No  | Yes  | HM Symbol icon of the segmented button item.<br>Default value: **undefined**     |
-| enabled                  | boolean                                                      | No  | Yes  | Whether the segmented button item is enabled.<br>Default value: **true**.<br>The value **true** means that the item is enabled, and **false** means the opposite.<br>If the value is **undefined**, the default value is used.|
-| textModifier             | [TextModifier](ts-universal-attributes-attribute-modifier.md) | No  | Yes  | Text modifier for the segmented button item.<br>Default value: **undefined**       |
-| iconModifier             | [ImageModifier](ts-universal-attributes-attribute-modifier.md) | No  | Yes  | Icon modifier for the segmented button item.<br>Default value: **undefined**|
-| symbolModifier           | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No  | Yes  | HM Symbol icon modifier for the segmented button item.<br>Default value: **undefined**|
+| enabled                  | boolean                                                      | No  | Yes  | Whether the segmented button item is enabled.<br>Default value: **true**<br>The value **true** means that the item is enabled, and **false** means the opposite.<br>If the value is **undefined**, the default value is used.|
+| textModifier             | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No  | Yes  | Text modifier for the segmented button item.<br>Default value: **undefined**       |
+| iconModifier             | [ImageModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No  | Yes  | Icon modifier for the segmented button item.<br>Default value: **undefined**|
+| symbolModifier           | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No  | Yes  | HM Symbol icon modifier for the segmented button item.<br>Default value: **undefined**|
 | accessibilityText        | [ResourceStr](ts-types.md#resourcestr)                       | No  | Yes  | [Accessibility text](ts-universal-attributes-accessibility.md#accessibilitytext) of the segmented button item.<br>Default value: **""**<br>If the value is **undefined**, the default value is used.|
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)                       | No  | Yes  | [Accessibility description](ts-universal-attributes-accessibility.md#accessibilitydescription) of the segmented button item.<br>Default value: **""**<br>If the value is **undefined**, the default value is used.|
 | accessibilityLevel       | string                                                       | No  | Yes  | [Accessibility level](ts-universal-attributes-accessibility.md#accessibilitylevel) of the segmented button item.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.|
@@ -455,9 +469,9 @@ import { SegmentButtonV2Items, TabSegmentButtonV2 } from '@kit.ArkUI';
 @ComponentV2
 struct TabSegmentButtonV2Example {
   @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
-    { text: 'Phone'},
+    { text: 'Phone' },
     { text: 'Tablet' },
-    { text: '2-in-1' }, 
+    { text: '2-in-1' },
     { text: 'Wearable' },
   ]);
   @Local textSelectedIndex: number = 0;
@@ -593,13 +607,15 @@ import { CapsuleSegmentButtonV2, SegmentButtonV2Items } from '@kit.ArkUI';
 @ComponentV2
 struct CapsuleSegmentButtonV2Example {
   @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
-    { text: 'Phone'},
+    // Sets the item text for the segmented button.
+    { text: 'Phone' },
     { text: 'Tablet' },
     { text: '2-in-1' }, 
     { text: 'Wearable' },
   ]);
   @Local textSelectedIndex: number = 0;
   @Local imageItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    // Set the item icon for the segmented button.
     { icon: $r('sys.media.ohos_ic_public_device_phone') },
     { icon: $r('sys.media.ohos_ic_public_device_pad') },
     { icon: $r('sys.media.ohos_ic_public_device_matebook') },
@@ -607,6 +623,7 @@ struct CapsuleSegmentButtonV2Example {
   ]);
   @Local imageSelectedIndex: number = 0;
   @Local symbolItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    // Segmented button item icon of the symbol type.
     { symbol: $r('sys.symbol.phone') },
     { symbol: $r('sys.symbol.pad') },
     { symbol: $r('sys.symbol.matebook') },
@@ -690,6 +707,7 @@ export struct VCard {
 
   build() {
     Column({ space: 8 }) {
+      // Check whether the title exists. If not, the title is not displayed.
       if (this.title) {
         Text(this.title)
           .maxLines(1)
@@ -719,13 +737,15 @@ import { MultiCapsuleSegmentButtonV2, SegmentButtonV2Items } from '@kit.ArkUI';
 @ComponentV2
 struct MultiCapsuleSegmentButtonV2Example {
   @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
-    { text: 'Phone'},
+    // Sets the item text for the segmented button.
+    { text: 'Phone' },
     { text: 'Tablet' },
     { text: '2-in-1' }, 
     { text: 'Wearable' },
   ]);
   @Local textSelectedIndexes: number[] = [0];
   @Local imageItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    // Set the item icon for the segmented button.
     { icon: $r('sys.media.ohos_ic_public_device_phone') },
     { icon: $r('sys.media.ohos_ic_public_device_pad') },
     { icon: $r('sys.media.ohos_ic_public_device_matebook') },
@@ -733,6 +753,7 @@ struct MultiCapsuleSegmentButtonV2Example {
   ]);
   @Local imageSelectedIndexes: number[] = [0];
   @Local symbolItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    // Segmented button item icon of the symbol type.
     { symbol: $r('sys.symbol.phone') },
     { symbol: $r('sys.symbol.pad') },
     { symbol: $r('sys.symbol.matebook') },
@@ -816,6 +837,7 @@ export struct VCard {
 
   build() {
     Column({ space: 8 }) {
+      // Check whether the title exists. If not, the title is not displayed.
       if (this.title) {
         Text(this.title)
           .maxLines(1)
@@ -853,10 +875,12 @@ import {
 @ComponentV2
 struct SegmentButtonV2Example {
   @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
-    { text: 'Phone', textModifier: new TextModifier().fontSize(20) },
+    { text: 'Phone', textModifier: new TextModifier().fontSize(20) }, // textModifier: Text modifier for the segmented button item.
     { text: 'Tablet' },
+    // iconModifier: Icon modifier for the segmented button item.
     { icon: $r('sys.media.ohos_ic_public_device_phone'), iconModifier: new ImageModifier().height(17).width(17) },
     { icon: $r('sys.media.ohos_ic_public_device_pad') },
+    // symbolModifier: Symbol modifier for the segmented button item.
     { symbol: $r('sys.symbol.phone'), symbolModifier: new SymbolGlyphModifier().fontColor([Color.Pink]) },
     { symbolModifier: new SymbolGlyphModifier($r('sys.symbol.pad')).fontColor([Color.Orange]) },
     { symbol: $r('sys.symbol.matebook') },
@@ -908,6 +932,7 @@ export struct VCard {
 
   build() {
     Column({ space: 8 }) {
+      // Check whether the title exists. If not, the title is not displayed.
       if (this.title) {
         Text(this.title)
           .maxLines(1)
@@ -925,3 +950,206 @@ export struct VCard {
 ```
 
 ![TabSegmentButtonV2OrCapsuleSegmentButtonV2OrMultiCapsuleSegmentButtonV2](figures/TabSegmentButtonV2OrCapsuleSegmentButtonV2OrMultiCapsuleSegmentButtonV2.png)
+
+### Example 5: Enabling Property Animation for SegmentButtonV2
+
+This example shows that after **enableStateAnimation** is enabled for **SegmentButtonV2**, button switching is animated when **selectedIndexes** is updated via a state variable.
+
+Since API version 24, the **enableStateAnimation** attribute is added to [TabSegmentButtonV2](#tabsegmentbuttonv2) and [CapsuleSegmentButtonV2](#capsulesegmentbuttonv2).
+
+```ts
+import { TabSegmentButtonV2, CapsuleSegmentButtonV2, SegmentButtonV2Items } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct SegmentButtonV2Example {
+  @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    { text: 'Phone' },
+    { text: 'Tablet' },
+    { text: '2-in-1' },
+    { text: 'Wearable' },
+  ]);
+  @Local imageItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    { icon: $r('sys.media.ohos_ic_public_device_phone') },
+    { icon: $r('sys.media.ohos_ic_public_device_pad') },
+    { icon: $r('sys.media.ohos_ic_public_device_matebook') },
+    { icon: $r('sys.media.ohos_ic_public_device_watch') },
+  ]);
+  @Local textSelectedIndex: number = 0;
+  @Local imageSelectedIndex: number = 0;
+  @Local currentSelectedIndex: number = 0; // Index counter for switching selected items.
+
+  build() {
+    Scroll() {
+      Column({ space: 12 }) {
+        VCard({ title: 'TabSegmentButtonV2' }) {
+          TabSegmentButtonV2({
+            items: this.textItems,
+            selectedIndex: this.textSelectedIndex!!,
+            enableStateAnimation: true // Enable property animation for TabSegmentButtonV2
+          })
+        }
+
+        VCard({ title: 'CapsuleSegmentButtonV2' }) {
+          CapsuleSegmentButtonV2({
+            items: this.imageItems,
+            selectedIndex: this.imageSelectedIndex!!,
+            enableStateAnimation: true // Enable property animation for CapsuleSegmentButtonV2.
+          })
+        }
+
+        Button('ChangeSelectedIndex').onClick((event: ClickEvent) => {
+          // Increment the selected index via a state variable. Reset the index to 0 if it exceeds the maximum value.
+          this.currentSelectedIndex = this.currentSelectedIndex < 3 ? this.currentSelectedIndex + 1 : 0;
+          this.textSelectedIndex = this.currentSelectedIndex;
+          this.imageSelectedIndex = this.currentSelectedIndex;
+        })
+      }
+      .constraintSize({ minHeight: '100%' })
+      .justifyContent(FlexAlign.Start)
+      .padding(16)
+    }
+    .backgroundColor('#f1f3f5')
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@Builder
+function Noop() {
+}
+
+@Component
+export struct VCard {
+  @Prop
+  title: ResourceStr;
+  @BuilderParam
+  content: () => void = Noop;
+
+  build() {
+    Column({ space: 8 }) {
+      if (this.title) {
+        Text(this.title)
+          .maxLines(1)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+          .constraintSize({ maxWidth: '80%' })
+      }
+      this.content()
+    }
+    .backgroundColor(Color.White)
+    .borderRadius(8)
+    .padding(8)
+    .width('100%')
+  }
+}
+```
+
+![segmentbuttonv2-sample83](figures/segmentbuttonv2-sample83.gif)
+
+### Example 6: Setting the Background Material
+This example demonstrates how to set a transparent background material for the segmented button, enable automatic color inversion and interactive deformation effects, and customize the color of the feedback light effect using the **backgroundSystemMaterial** attribute.
+
+Since API version 26.0.0, the **backgroundSystemMaterial** attribute is added to [TabSegmentButtonV2](#tabsegmentbuttonv2) and [CapsuleSegmentButtonV2](#capsulesegmentbuttonv2).
+
+```ts
+import { SegmentButtonV2Items, TabSegmentButtonV2, CapsuleSegmentButtonV2, uiMaterial, ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct SegmentButtonV2Example {
+  @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    { text: 'Phone' },
+    { text: 'Tablet' },
+    { text: 'PC/2-in-1' },
+    { text: 'Wearable' },
+  ]);
+  @Local textSelectedIndex: number = 0;
+  @Local imageItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    { icon: $r('sys.media.ohos_ic_public_device_phone') },
+    { icon: $r('sys.media.ohos_ic_public_device_pad') },
+    { icon: $r('sys.media.ohos_ic_public_device_matebook') },
+    { icon: $r('sys.media.ohos_ic_public_device_watch') },
+  ]);
+  @Local imageSelectedIndex: number = 0;
+
+  build() {
+    Column({ space: 12 }) {
+      VCard({ title: 'Text Button' }) {
+        TabSegmentButtonV2({
+          items: this.textItems,
+          selectedIndex: this.textSelectedIndex!!,
+          // Set itemFontColor to a special system resource value to enable automatic color inversion.
+          itemFontColor: ColorMetrics.resourceColor($r('sys.color.font_primary')),
+          itemSelectedFontColor: ColorMetrics.resourceColor(Color.Black),
+          // Set the system material style to ULTRA_THIN, enable automatic color inversion and interactive deformation, and customize the feedback light effect color.
+          backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+            colorInvert: true,
+            interactive: true,
+            lightEffect: { color: $r('sys.color.interactive_click') }
+          })
+        })
+      }
+
+      VCard({ title: 'Image Button' }) {
+        CapsuleSegmentButtonV2({
+          items: this.imageItems,
+          selectedIndex: this.imageSelectedIndex!!,
+          // Set itemFontColor to a special system resource value to enable automatic color inversion.
+          itemFontColor: ColorMetrics.resourceColor($r('sys.color.font_primary')),
+          itemSelectedFontColor: ColorMetrics.resourceColor(Color.Black),
+          // Set the system material style to ULTRA_THIN, enable automatic color inversion and interactive deformation, and customize the feedback light effect color.
+          backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+            colorInvert: true,
+            interactive: true,
+            lightEffect: { color: undefined }
+          })
+        })
+      }
+
+    }
+    .linearGradient({
+      angle: 180, // Gradient angle. 180 degrees means from right to left.
+      colors: [
+        ['#FF9A9E', 0.0], // Start color and position (0.0 indicates the start point).
+        ['#FECFEF', 0.5], // Middle color and position.
+        ['#3B324C', 1.0] // End color and position (1.0 indicates the end point).
+      ]
+    })
+    .height(225)
+    .justifyContent(FlexAlign.Start)
+    .padding(16)
+  }
+}
+
+@Builder
+function Noop() {
+}
+
+@Component
+export struct VCard {
+  @Prop
+  title: ResourceStr;
+  @BuilderParam
+  content: () => void = Noop;
+
+  build() {
+    Column({ space: 8 }) {
+      if (this.title) {
+        Text(this.title)
+          .maxLines(1)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+          .constraintSize({ maxWidth: '80%' })
+      }
+      this.content()
+    }
+    .backgroundColor(Color.Transparent)
+    .borderRadius(8)
+    .padding(8)
+    .width('100%')
+  }
+}
+```
+
+![SegmentButtonV2NewMaterial](figures/segment_button_v2_material.gif)
