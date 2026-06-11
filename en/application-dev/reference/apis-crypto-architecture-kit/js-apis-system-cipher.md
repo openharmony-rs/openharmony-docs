@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=d21d1cbfb7ea850ec5b69c0f309f5ed8cc8aa9c3 translatedAt=2026-06-10T06:06:05.631Z pushedAt=2026-06-10T10:59:32.530Z -->
 
 > **NOTE**
 >
@@ -14,7 +15,6 @@
 > The APIs of this module are deprecated since API version 9. You are advised to use [@ohos.security.cryptoFramework Cipher](js-apis-cryptoFramework.md#cipher).
 
 ## Modules to Import
-
 
 ```js
 import cipher from '@system.cipher';
@@ -29,7 +29,6 @@ Defines the response to the cipher interface called.
 | Name| Type  | Read-Only| Optional|Description        |
 | ------ | ------ | ---- | ---- | ------------ |
 | text   | string | No  | No  | Response content.|
-
 
 ## CipherRsaOptions
 
@@ -142,7 +141,6 @@ export default {
    }
 }
 ```
-
 
 ## cipher.aes
 

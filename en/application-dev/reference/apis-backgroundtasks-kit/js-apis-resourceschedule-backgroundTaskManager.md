@@ -6,13 +6,13 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=d21d1cbfb7ea850ec5b69c0f309f5ed8cc8aa9c3 translatedAt=2026-06-10T06:04:38.314Z pushedAt=2026-06-10T10:59:32.480Z -->
 
 The **backgroundTaskManager** module provides APIs to request background tasks. You can use the APIs to request transient tasks, continuous tasks, or efficiency resources to prevent the application process from being terminated or suspended when your application is switched to the background. For details, see [Continuous Task](../../task-management/continuous-task.md) and [Transient Task](../../task-management/transient-task.md).
 
 >  **NOTE**
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
 
 ## Modules to Import
 
@@ -81,7 +81,6 @@ try {
 }
 ```
 
-
 ## backgroundTaskManager.getRemainingDelayTime
 
 getRemainingDelayTime(requestId: number, callback: AsyncCallback&lt;number&gt;): void
@@ -111,7 +110,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 9900001 | Caller information verification failed for a transient task. |
 | 9900002 | Transient task verification failed. |
 
-
 **Example**
 
 ```ts
@@ -127,7 +125,6 @@ backgroundTaskManager.getRemainingDelayTime(id, (error: BusinessError, res: numb
   }
 })
 ```
-
 
 ## backgroundTaskManager.getRemainingDelayTime
 
@@ -176,7 +173,6 @@ backgroundTaskManager.getRemainingDelayTime(id).then((res: number) => {
   console.error(`promise => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
 })
 ```
-
 
 ## backgroundTaskManager.cancelSuspendDelay
 
@@ -448,7 +444,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent): Promise&lt;ContinuousTaskNotification&gt;
 
-Requests continuous tasks of multiple types. This API uses a promise to return the result. After a continuous task is successfully requested, there will be a notification message without prompt tone. A UIAbility (ServiceAbility in the FA model) can request only one continuous task at a time through this API. You can request multiple continuous tasks by calling [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) added in API version 21.
+Requests a continuous task of a specific type. This API uses a promise to return the result. After a continuous task is successfully requested, there will be a notification message without prompt tone. A UIAbility (ServiceAbility in the FA model) can request only one continuous task at a time through this API. You can request multiple continuous tasks by calling [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) added in API version 21.
 
 **Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -494,7 +490,7 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationManager } from '@kit.NotificationKit';
 import { wantAgent, WantAgent } from '@kit.AbilityKit';
-// In atomic services, please remove the WantAgent import.
+// In atomic services, remove the WantAgent import.
 
 export default class EntryAbility extends UIAbility {
   id: number = 0; // Save the notification ID.
@@ -518,9 +514,10 @@ export default class EntryAbility extends UIAbility {
 
     try {
       // Obtain the WantAgent object by using the getWantAgent API of the wantAgent module.
-      // In atomic services, please replace the following line of code with wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {.
+      // In atomic services, replace the following line of code with wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {.
       wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
         try {
+          // The application needs to update the progress only for continuous tasks of the dataTransfer type.
           let list: Array<string> = ["dataTransfer"];
           // In atomic services, let list: Array<string> = ["audioPlayback"];
           backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
@@ -539,7 +536,7 @@ export default class EntryAbility extends UIAbility {
     }
   }
 
-  // The application updates its progress.
+  // The application needs to update the progress only for continuous tasks of the dataTransfer type.
   updateProcess(process: number) {
     // Define the notification type. The notification type of the progress update must be live view.
     let downLoadTemplate: notificationManager.NotificationTemplate = {
@@ -552,10 +549,10 @@ export default class EntryAbility extends UIAbility {
     };
     let request: notificationManager.NotificationRequest = {
       content: {
-        // System live view type, which remains unchanged.
+        // System live view type. Retain the value.
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW,
         systemLiveView: {
-          typeCode: 8, // Set this parameter to 8 for the upload and download type. Currently, only the upload and download type is supported. Retain the value.
+          typeCode: 8, // Set this parameter to 8 for the dataTransfer type. Currently, only this type is supported. Retain the value.
           title: "test", // Customized by the application.
           text: "test", // Customized by the application.
         }
@@ -919,8 +916,11 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 Updates a continuous task. This API uses a promise to return the result. After a continuous task is successfully updated, there will be a notification message without prompt tone.
 
 The following restrictions apply when updating a continuous task:
+
 1. This API can only update continuous tasks requested via [startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;](#backgroundtaskmanagerstartbackgroundrunning21).
+
 2. If the main type and subtype of the background tasks are the same, only the wants information (such as **abilityName**) in **ContinuousTaskRequest.wantAgent** can be updated. If the types are different, the update fails.
+
 3. If the continuous task to be updated or the specified update type contains the data transmission type, a failure message is returned.
 
 **Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
@@ -1172,6 +1172,7 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
+
 ## backgroundTaskManager.off('continuousTaskCancel')<sup>15+</sup>
 
 off(type: 'continuousTaskCancel', callback?: Callback&lt;ContinuousTaskCancelInfo&gt;): void
@@ -1220,6 +1221,7 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
+
 ## backgroundTaskManager.on('continuousTaskSuspend')<sup>20+</sup>
 
 on(type: 'continuousTaskSuspend', callback: Callback&lt;ContinuousTaskSuspendInfo&gt;): void
@@ -1248,7 +1250,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1270,6 +1271,7 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
+
 ## backgroundTaskManager.off('continuousTaskSuspend')<sup>20+</sup>
 
 off(type: 'continuousTaskSuspend', callback?: Callback&lt;ContinuousTaskSuspendInfo&gt;): void
@@ -1319,6 +1321,7 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
+
 ## backgroundTaskManager.on('continuousTaskActive')<sup>20+</sup>
 
 on(type: 'continuousTaskActive', callback: Callback&lt;ContinuousTaskActiveInfo&gt;): void
@@ -1366,6 +1369,7 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
+
 ## backgroundTaskManager.off('continuousTaskActive')<sup>20+</sup>
 
 off(type: 'continuousTaskActive', callback?: Callback&lt;ContinuousTaskActiveInfo&gt;): void
@@ -1443,6 +1447,7 @@ Defines the type of a continuous task.
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 30%; 10%; 60%-->
+
 | Name                    | Value | Description                   |
 | ----------------------- | ---- | --------------------- |
 | DATA_TRANSFER           | 1    | Data transfer.<br>Use scenario: upload and download in non-hosting mode, for example, uploading or downloading data in the background of a browser.<br>Note: During data transfer, the application needs to update the progress. If the progress is not updated for more than 10 minutes, the continuous task of the **DATA_TRANSFER** type will be canceled.<br>The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12).      |
@@ -1485,6 +1490,7 @@ Describes the reason for canceling a continuous task.
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 40%; 10%; 50%-->
+
 | Name                    | Value | Description                   |
 | ----------------------- | ---- | --------------------- |
 | USER_CANCEL             | 1    | The task is canceled by the user.                 |
@@ -1566,6 +1572,7 @@ Describes the continuous task information.
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 25%; 15%; 8%; 8%; 44%-->
+
 | Name         | Type      | Read-Only  | Optional  | Description                   |
 |-------------|----------| ---- | ---- |-----------------------|
 | abilityName | string   | No   | No   | UIAbility name.         |
@@ -1586,12 +1593,19 @@ Describes the continuous task information.
 ## ContinuousTaskRequest<sup>21+</sup>
 
 Specifies details of the continuous task being requested or updated. It is typically used as input for the [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning21) and [updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21) APIs. Note that:
+
 1. When requesting a continuous task via [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning21), notifications will be combined if the main type and subtype of the continuous task to be requested are the same as those of the existing continuous task in the current application, and the **combinedTaskNotification** value is **true** for both tasks. Otherwise, notifications will not be combined.
+
 2. Notifications will not be combined if the continuous task has no notification. For details about whether notifications are sent for the continuous task, see [BackgroundTaskMode](#backgroundtaskmode21).
+
 3. Notifications cannot be combined if the continuous task includes data transmission.
+
 4. Notifications that have been combined cannot be canceled. If notifications have been combined, they cannot be updated to uncombined.
+
 5. After notifications are combined, tapping the notification will redirect to the UIAbility corresponding to the first requested continuous task. If the update API is called, the redirection will target the UIAbility corresponding to the last updated continuous task.
+
 6. When the [updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21) API is called to update a continuous task, the input **continuousTaskId** must exist. Otherwise, the update fails.
+
 7. Continuous tasks of the [MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21) type are supported since API version 22. This task type must be used independently and notifications cannot be combined. Specifically, when you request or update a continuous task, it must be of the **MODE_SPECIAL_SCENARIO_PROCESSING** type. Otherwise, an error is returned.
 
 ### Properties
@@ -1599,6 +1613,7 @@ Specifies details of the continuous task being requested or updated. It is typic
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 25%; 25%; 8%; 8%; 44%-->
+
 | Name            | Type    | Read-Only  | Optional  | Description                                      |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | No   | No   | Main type of a continuous task.<br>Note: The main type must match the subtype.    |
@@ -1633,6 +1648,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 9800005 | Continuous task verification failed. |
 
 **Example**
+
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1686,6 +1702,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 9800005 | Continuous task verification failed. |
 
 **Example**
+
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1749,6 +1766,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 9800005 | Continuous task verification failed. |
 
 **Example**
+
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1777,6 +1795,7 @@ Main type of a continuous task. It is usually used together with the subtype [Ba
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 40%; 10%; 50%-->
+
 | Name                    | Value | Description                   |
 | ------------------------ | ---- | --------------------- |
 | MODE_DATA_TRANSFER              | 1         | Data transfer.<br>Use scenario: upload and download in non-hosting mode, for example, uploading or downloading data in the background of a browser.<br>**NOTE**<br>1. During data transfer, the application needs to update the progress. If the progress is not updated for more than 10 minutes, the continuous task of the **DATA_TRANSFER** type will be canceled.<br>2. The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12).                |
@@ -1797,6 +1816,7 @@ Defines the subtype of a continuous task. It is usually used together with the m
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 40%; 10%; 50%-->
+
 | Name                    | Value | Description                   |
 | ----------------------- | ---- | --------------------- |
 | SUBMODE_CAR_KEY_NORMAL_NOTIFICATION     | 1    | **CAR_KEY** type. It is of the normal text notification type.      |
@@ -1833,6 +1853,7 @@ Represents the user authorization result.
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 30%; 10%; 60%-->
+
 | Name          | Value| Description    |
 | ------------ |---|--------|
 | NOT_SUPPORTED | 0 | The authorization is not supported. For example, if the main type of the requested continuous task is not **MODE_SPECIAL_SCENARIO_PROCESSING**, continuous task running in the background is not supported.|

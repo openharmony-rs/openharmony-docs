@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=d21d1cbfb7ea850ec5b69c0f309f5ed8cc8aa9c3 translatedAt=2026-06-10T06:05:55.048Z pushedAt=2026-06-10T10:59:32.526Z -->
 
 > **NOTE**
 >
@@ -28,6 +29,7 @@ The memory allocation failed.
 **Solution**
 
 1. Check whether the system is running properly.
+
 2. Check whether the service data is too long. 
 
 ## 17620002 Parameter Conversion Between ArkTS and C Failed
@@ -42,11 +44,29 @@ The parameter conversion between ArkTS and C failed.
 
 **Possible Causes**
 
-An unexpected error occurs.
+An unexpected error occurred.
 
 **Solution**
 
 Check whether the system is running properly.
+
+## 17620003 Parameter Verification Failed
+
+**Error Message**
+
+Parameter check failed.
+
+**Description**
+
+Parameter verification failed.
+
+**Possible Causes**
+
+The input parameter is out of the specified range, such as the length or value.
+
+**Solution**
+
+Checks whether the entered parameter values are within the supported ranges.
 
 ## 17630001 Crypto Operation Error
 
@@ -56,7 +76,7 @@ Crypto operation error.
 
 **Description**
 
-Failed to invoke the third-party cryptographic API.
+Failed to call the third-party cryptographic API.
 
 **Possible Causes**
 
