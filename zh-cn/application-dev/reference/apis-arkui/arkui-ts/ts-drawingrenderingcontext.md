@@ -1,8 +1,8 @@
 # DrawingRenderingContext
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
