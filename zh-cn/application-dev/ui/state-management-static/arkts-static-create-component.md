@@ -19,9 +19,8 @@
 以下示例展示了自定义组件的基本用法。
 
 <!-- @[ComponentBasicUsage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/ComponentBasicUsage.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Column, Component, Divider, Entry, State, Text } from '@kit.ArkUI';
 
 @Component
@@ -33,9 +32,12 @@ struct HelloComponent {
     Column() {
       Text(this.message)
         .onClick(() => {
+        .fontSize(20)
+        .margin(10)
           this.message = 'Hello, ArkUI!';
         })
     }
+    .width('100%')
   }
 }
 
@@ -45,10 +47,13 @@ struct ParentComponent {
   build() {
     Column() {
       Text('ArkUI message')
+        .fontSize(20)
+        .margin(10)
       HelloComponent({ message: 'Hello World!' });
       Divider()
       HelloComponent({ message: '你好，世界!' });
     }
+    .width('100%')
   }
 }
 ```
@@ -146,10 +151,10 @@ struct MyComponent {
 下面示例中，开发者可以在build方法里创建静态自定义组件，并在创建过程中根据装饰器的规则来初始化自定义组件的参数。
 
 <!-- @[ComponentParams](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/ComponentParams.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Color, Column, Component, Entry, Text } from '@kit.ArkUI';
+
 @Component
 struct MyComponent {
   private countDownFrom: number = 0;
@@ -173,6 +178,7 @@ struct ParentComponent {
       // 创建MyComponent实例，并将成员变量countDownFrom初始化为10，将成员变量color初始化为this.someColor。
       MyComponent({ countDownFrom: 10, color: this.someColor })
     }
+    .width('100%')
   }
 }
 ```
@@ -184,29 +190,31 @@ struct ParentComponent {
 - 使用[@Component](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-component-static.md)或[@ComponentV2](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-componentv2-static.md)装饰的自定义组件，其`build()` 函数下的根节点必须唯一且必要，可以是非容器组件，但 `ForEach` 不能作为根节点。
 
 <!-- @[BuildFunction](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildFunction.ets) -->
+
 ``` TypeScript
-  'use static'
+import { Component, Entry, Row, Text } from '@kit.ArkUI';
 
-  import { Component, Entry, Row, Text } from '@kit.ArkUI';
-
-  @Entry
-  @Component
-  struct MyComponent {
-    build() {
-      // 根节点唯一且必要，必须为容器组件
-      Row() {
-        ChildComponent()
-      }
+@Entry
+@Component
+struct MyComponent {
+  build() {
+    // 根节点唯一且必要，必须为容器组件
+    Row() {
+      ChildComponent()
     }
+    .height('100%')
   }
+}
 
-  @Component
-  struct ChildComponent {
-    build() {
-      // 根节点唯一且必要，可为非容器组件
-      Text('Hello world')
-    }
+@Component
+struct ChildComponent {
+  build() {
+    // 根节点唯一且必要，可为非容器组件
+    Text('Hello world')
+      .fontSize(20)
+      .margin(10)
   }
+}
 ```
 ### build()函数支持写非UI的逻辑
 
@@ -216,31 +224,31 @@ struct ParentComponent {
 **在build()根节点中进行变量声明**
 
 <!-- @[BuildVariableDeclaration](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildVariableDeclaration.ets) -->
+
 ``` TypeScript
-  'use static'
+import { Column, Component, Entry, Text } from '@kit.ArkUI';
 
-  import { Column, Component, Entry, Text } from '@kit.ArkUI';
-
-  @Entry
-  @Component
-  struct MyStateSample {
-    build() {
-      Column() {
-        let num: int = 1; // 在build()根节点中进行变量声明
-        Text('show text1')
-      }
-      .width('100%')
-      .height('100%')
+@Entry
+@Component
+struct MyStateSample {
+  build() {
+    Column() {
+      let num: int = 1; // 在build()根节点中进行变量声明
+      Text('show text1')
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
+    .height('100%')
   }
+}
 ```
 
 **在build()根节点中添加日志打印**
 
 <!-- @[BuildLogPrint](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildLogPrint.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -253,7 +261,11 @@ struct MyStateSample {
     Column() {
       hilog.info(0X0000, 'testTag', `${this.stateVar}`); // 在build()根节点中打印日志
       Text('show text1')
+        .fontSize(20)
+        .margin(10)
       Button('change stateVar')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.stateVar = (this.stateVar + 1) % 4;
         })
@@ -268,9 +280,8 @@ struct MyStateSample {
 **在build()函数中使用switch/case结构**
 
 <!-- @[BuildSwitchCase](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildSwitchCase.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Button, ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
 
 @Entry
@@ -283,15 +294,23 @@ struct MyStateSample {
       switch(this.stateVar) {
         case 1:
           Text('show text1')
+            .fontSize(20)
+            .margin(10)
           break;  // 不加break会执行下一个case分支
         case 2:
-          Text('show text2');
+          Text('show text2')
+            .fontSize(20)
+            .margin(10)
           break;
         default:
-          Text('show default');
+          Text('show default')
+            .fontSize(20)
+            .margin(10)
           break;
       }
       Button('change stateVar')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.stateVar = (this.stateVar + 1) % 4;
         })
@@ -309,9 +328,8 @@ struct MyStateSample {
 **允许创建本地的作用域**
 
 <!-- @[BuildLocalScope](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildLocalScope.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Component, Entry, Text } from '@kit.ArkUI';
 
 @Entry
@@ -320,6 +338,8 @@ struct MyComponent {
   build() {
     {  // 允许本地作用域
       Text('hello world')
+        .fontSize(20)
+        .margin(10)
     }
   }
 }
@@ -328,25 +348,27 @@ struct MyComponent {
 **允许使用表达式**
 
 <!-- @[BuildExpression](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildExpression.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct MyComponent {
   @State stateVar: int = 1;
   build() {
     Column() {
-      this.stateVar == 1 ? Text('is equal to 1'): Text('is not equal to 1'); // 支持使用表达式
+      this.stateVar == 1 ? Text('is equal to 1').fontSize(20).margin(10): Text('is not euqal to 1').fontSize(20).margin(10); // 支持使用表达式
       Text('hello world')
+        .fontSize(20)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.stateVar++;
         })
     }
+    .width('100%')
   }
 }
-
 ```
   > **说明：**
   >
@@ -390,9 +412,8 @@ struct MyStateSample {
 **在组件中编写复杂的计算逻辑**
 
 <!-- @[BuildNotRecommended](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildNotRecommended.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Column, Component, Entry, State, Text } from '@kit.ArkUI';
 
 @Entry
@@ -407,6 +428,8 @@ struct MyStateSample {
     }
     Column() {
       Text(this.stateVar)
+        .fontSize(20)
+        .margin(10)
     }
     .width('100%')
     .height('100%')
@@ -452,15 +475,16 @@ struct MyComponent {
 自定义组件通过“.”链式调用设置通用样式。
 
 <!-- @[ComponentStyle](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/ComponentStyle.ets) -->
-``` TypeScript
-'use static'
 
+``` TypeScript
 import { Button, Color, Component, Entry, Row } from '@kit.ArkUI';
 
 @Component
 struct ChildComponent {
   build() {
     Button(`Hello World`)
+      .width('90%')
+      .margin(10)
   }
 }
 
@@ -470,10 +494,11 @@ struct MyComponent {
   build() {
     Row() {
       ChildComponent()
-        .width(200)
+        .width(300)
         .height(300)
-        .backgroundColor(Color.Red)
+        .backgroundColor(Color.Pink)
     }
+    .height('100%')
   }
 }
 ```
@@ -488,10 +513,8 @@ struct MyComponent {
 示例如下。
 
 <!-- @[ComponentExtend](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/ComponentExtend.ets) -->
+
 ``` TypeScript
-'use static'
-
-
 import { Color, ColorMetrics, Column, Component, Entry, Link, ResourceColor, State, Text } from '@kit.ArkUI';
 import hilog from '@ohos.hilog';
 
@@ -523,8 +546,13 @@ struct ChildComponent {
   build() {
     Column() {
       Text(`ChildComponent message ${this.message}`)
+        .fontSize(20)
+        .margin(10)
       Text(`ChildComponent info ${this.info}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 
@@ -536,6 +564,8 @@ struct MyComponent {
   build() {
     Column() {
       Text(`MyComponent ${this.message}`)
+        .fontSize(20)
+        .margin(10)
 
       ChildComponent({ message: this.message, info: this.message })
         .width(200)
