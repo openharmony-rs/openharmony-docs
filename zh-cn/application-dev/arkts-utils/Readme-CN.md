@@ -28,7 +28,7 @@
     - [多线程并发概述](multi-thread-concurrency-overview.md)
     - [TaskPool简介](taskpool-introduction.md)
     - [Worker简介](worker-introduction.md)
-    - [TaskPool与Worker对比 (TaskPool和Worker)](taskpool-vs-worker.md)
+    - [TaskPool与Worker对比 (TaskPool和Worker)](taskpool-vs-worker.md)<!--RP1--><!--RP1End-->
   - 并发线程间通信<!--interthread-communication-->
     - [ArkTS线程间通信概述](interthread-communication-overview.md)
     - 线程间通信对象<!--interthread-communication-object-->
