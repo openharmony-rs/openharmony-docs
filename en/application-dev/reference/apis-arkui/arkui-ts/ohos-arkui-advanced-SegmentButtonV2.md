@@ -1044,8 +1044,6 @@ export struct VCard {
 }
 ```
 
-![segmentbuttonv2-sample83](figures/segmentbuttonv2-sample83.gif)
-
 ### Example 6: Setting the Background Material
 This example demonstrates how to set a transparent background material for the segmented button, enable automatic color inversion and interactive deformation effects, and customize the color of the feedback light effect using the **backgroundSystemMaterial** attribute.
 
@@ -1152,4 +1150,3 @@ export struct VCard {
 }
 ```
 
-![SegmentButtonV2NewMaterial](figures/segment_button_v2_material.gif)
