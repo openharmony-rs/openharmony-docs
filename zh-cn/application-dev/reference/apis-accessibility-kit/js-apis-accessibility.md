@@ -1124,9 +1124,9 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState,
 |**visual**| 查询已启用的具有视觉反馈的辅助应用 |查询已禁用的具有视觉反馈的辅助应用|查询已安装的具有视觉反馈的辅助应用|
 |**all**| 查询所有已启用的辅助应用 |查询所有已禁用的辅助应用|查询所有已安装的辅助应用|
 
-**查询所有已安装的辅助应用示例：**
+**示例：**
 
-ArkTS-Dyn示例：
+- 查询所有已安装的辅助应用ArkTS-Dyn示例。
 
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
@@ -1154,7 +1154,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: Busi
 // "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
 ```
 
-ArkTS-Sta示例：
+- 查询所有已安装的辅助应用ArkTS-Sta示例。
 
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
@@ -1172,9 +1172,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: Busi
 });
 ```
 
-**查询所有已启用的具有语音反馈的辅助应用示例：**
-
-ArkTS-Dyn示例：
+- 查询所有已启用的具有语音反馈的辅助应用ArkTS-Dyn示例。
 
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
@@ -1192,7 +1190,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: Busi
 });
 ```
 
-ArkTS-Sta示例：
+- 查询所有已启用的具有语音反馈的辅助应用ArkTS-Sta示例。
 
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
@@ -3492,7 +3490,7 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError | null) => {
     console.error(`failed to send event, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in send event, eventInfo is ${eventInfo}`);
+  console.info(`Succeeded in sending event, eventInfo is ${eventInfo}`);
 });
 ```
 
@@ -3564,7 +3562,7 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError | null) => {
     console.error(`failed to send event, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in send event, eventInfo is ${eventInfo}`);
+  console.info(`Succeeded in sending event, eventInfo is ${eventInfo}`);
 });
 ```
 
@@ -3610,7 +3608,7 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError | null) => {
     console.error(`failed to send event, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in send event, eventInfo is ${eventInfo}`);
+  console.info(`Succeeded in sending event, eventInfo is ${eventInfo}`);
 });
 ```
 
