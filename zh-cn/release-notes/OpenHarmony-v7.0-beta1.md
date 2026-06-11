@@ -244,3 +244,136 @@ JSVM新增支持从外部内存创建ArrayBuffer对象。（[API参考](https://
 - HiDebug新增提供包括内核信息在内的Trace采集请求接口。（[ArkTS API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugrequesttrace24)、[C API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_requesttrace)）
 
 - HiAppEvent新增应用冻屏告警事件，提供事件的订阅能力。（[指南](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/dfx/hiappevent-watcher-appfreezewarning-events.md)）
+
+## 配套关系
+
+**表1** 版本软件和工具配套关系
+
+| 软件 | 版本 | 备注 | 
+| -------- | -------- | -------- |
+| OpenHarmony | 7.0 Beta1 | NA | 
+| Public SDK | Ohos_sdk_public 26.0.0. (API Version 26.0.0 Beta1) | 面向应用开发者提供，不包含需要使用系统权限的系统接口。通过DevEco Studio默认获取的SDK为Public SDK。 | 
+| HUAWEI DevEco Studio（可选） | 26.0.0 Beta1 | OpenHarmony应用开发推荐使用。<br />*待发布后提供*。 | 
+| HUAWEI DevEco Device Tool（可选） | 4.0 Release | OpenHarmony智能设备集成开发环境推荐使用。<br />[请点击这里获取](https://device.harmonyos.com/cn/develop/ide#download)。 | 
+
+
+## 源码获取
+
+### 前提条件
+
+1. 注册gitcode账号。
+
+2. 注册gitcode的SSH公钥，请参考[gitcode帮助中心](https://docs.gitcode.com/docs/help/home/user_center/security_management/ssh)。
+
+3. 安装[git客户端](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)和[git-lfs](https://gitcode.com/gh_mirrors/gi/git-lfs?source_module=search_result_repo)并配置用户信息。
+  
+   ```shell
+   git config --global user.name "yourname"
+   git config --global user.email "your-email-address"
+   git config --global credential.helper store
+   ```
+
+4. 执行如下命令安装gitcode的repo工具。
+
+   下述命令中的安装路径以"~/bin"为例，请用户自行创建所需目录。
+  
+   ```shell
+   mkdir ~/bin
+   curl https://raw.gitcode.com/gitcode-dev/repo/raw/main/repo-py3 -o ~/bin/repo
+   chmod a+x ~/bin/repo
+   pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
+   ```
+
+5. 将repo添加到环境变量。
+
+   ```shell
+   vim ~/.bashrc               # 编辑环境变量
+   export PATH=~/bin:$PATH     # 在环境变量的最后添加一行repo路径信息
+   source ~/.bashrc            # 应用环境变量
+   ```
+
+
+### 通过repo获取
+
+**方式一（推荐）**
+
+通过repo + ssh 下载（需注册gitcode的SSH公钥，请参考[gitcode帮助中心](https://docs.gitcode.com/docs/help/home/user_center/security_management/ssh)）。
+
+- 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
+   ```
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-7.0-Beta1 --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
+   
+- 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
+   ```
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v7.0-Beta1 --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
+
+**方式二**
+
+通过repo + https 下载。
+
+- 从版本分支获取源码。可获取该版本分支的最新源码，包括版本发布后在该分支的合入。
+   ```
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-7.0-Beta1 --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
+   
+- 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
+   ```
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v7.0-Beta1 --no-repo-verify
+   repo sync -c
+   repo forall -c 'git lfs pull'
+   ```
+
+
+### 从镜像站点获取
+
+
+**表2** 获取源码路径
+
+| 版本源码                                | **版本信息** | **下载站点**                                                 | **SHA256校验码**                                             | **软件包容量** |
+| --------------------------------------- | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- |
+| 全量代码（标准、轻量和小型系统）        | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/code-v7.0-Beta1.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/code-v7.0-Beta1.tar.gz.sha256) | 49.1 GB |
+| Hi3861解决方案（二进制）        | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_pegasus.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_pegasus.tar.gz.sha256) | 28.4 MB |
+| Hi3516解决方案-LiteOS（二进制） | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_taurus_LiteOS.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_taurus_LiteOS.tar.gz.sha256) | 350.0 MB |
+| Hi3516解决方案-Linux（二进制）  | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_taurus_Linux.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_taurus_Linux.tar.gz.sha256) | 223.6 MB |
+| RK3568标准系统解决方案（二进制）        | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/dayu200_standard_arm32.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/dayu200_standard_arm32.tar.gz.sha256) | 	9.7 GB |
+| 标准系统Public SDK包（Mac）             | 26.0.0.23 | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/ohos-sdk-mac-public.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/ohos-sdk-mac-public.tar.gz.sha256) | 1.3 GB |
+| 标准系统Public SDK包（Mac-M1）             | 26.0.0.23  | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/L2-SDK-MAC-M1-PUBLIC.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/L2-SDK-MAC-M1-PUBLIC.tar.gz.sha256) | 1.2 GB |
+| 标准系统Public SDK包（Windows/Linux）   | 26.0.0.23   | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/ohos-sdk-windows_linux-public.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/ohos-sdk-windows_linux-public.tar.gz.sha256) | 3.2 GB |
+
+
+## 修复缺陷列表
+
+**表3** 修复缺陷ISSUE列表
+
+| ISSUE单 | 问题描述 | 
+| ------- | ------- |
+| [73886](https://gitcode.com/openharmony/arkui_ace_engine/issues/73886) | 开机完成时延较长，不满足基线要求。 |
+| [856](https://gitcode.com/openharmony/applications_settings/issues/856) | 进程com.ohos.settings小概率出现由于LIFECYCLE_TIMEOUT导致的sysfreeze。 |
+| [12339](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/12339) | 主进程com.ohos.systemui小概率出现cppcrash，崩溃栈为libark_jsruntime.so。 |
+
+
+## 遗留缺陷列表
+
+**表4** 遗留缺陷列表
+
+| ISSUE | 问题描述 | 影响 | 计划解决日期 | 
+| -------- | -------- | -------- | -------- |
+| [19617](https://gitcode.com/openharmony/graphic_graphic_2d/issues/19617) | 开机完成时延较前一版本稍有劣化。 | 轻微影响使用体验。 | 2026年5月30日 |
+| [329](https://gitcode.com/openharmony/applications_contacts/issues/329)<br />[192](https://gitcode.com/openharmony/telephony_telephony_data/issues/192) | 联系人列表滑动帧率低于基线要求。| 轻微影响使用体验。 | 2026年5月30日 |
+| [193](https://gitcode.com/openharmony/telephony_telephony_data/issues/193) | 首次启动联系人应用的时间超出基线要求。 | 轻微影响使用体验。 | 2026年5月30日 |
+| [73886](https://gitcode.com/openharmony/arkui_ace_engine/issues/73886) | 开机完成时延较长，不满足基线要求。 | 轻微影响使用体验。 | 2026年4月30日 |
+| [772](https://gitcode.com/openharmony/applications_photos/issues/772) | 首次启动图库应用的时间超出基线要求。 | 轻微影响使用体验。 | 2026年5月30日 |
+| [245](https://gitcode.com/openharmony/device_soc_rockchip/issues/245) | 进程render_service小概率出现因SERVICE_BLOCK导致的sysfreeze，阻塞原因为libmali-bifrost-g52-g7p0-ohos.so故障 | 键鼠卡顿1-2秒，短暂无法操作，1-2秒后自动恢复。 | 2026年6月30日 |
+| [246](https://gitcode.com/openharmony/device_soc_rockchip/issues/246) | RK3568在wukong压测下出现重启问题（Kernel panic - not syncing: watchdog pretimeout event） | 重启后恢复正常。 | 2026年6月30日 |
+| [248](https://gitcode.com/openharmony/device_soc_rockchip/issues/248) | 进程codec_host下的omx_msg_hdl线程小概率出现cppcrash，崩溃栈为libomxvpu_dec.z.so。 | 键鼠卡顿1-2秒，短暂无法操作，1-2秒后自动恢复。 | 2026年6月30日 |
+| [856](https://gitcode.com/openharmony/applications_settings/issues/856) | 进程com.ohos.settings小概率出现由于LIFECYCLE_TIMEOUT导致的sysfreeze。 | 正常业务使用时未复现该问题，对用户影响较小。 | 2026年5月30日 |
+| [630](https://gitcode.com/openharmony/applications_systemui/issues/630) | 进程com.ohos.systemui小概率出现jscrash，崩溃栈为subscriberCallBack。 | 设备黑屏后几秒后恢复。 | 2026年3月31日 |
+| [12339](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/12339) | 主进程com.ohos.systemui小概率出现cppcrash，崩溃栈为libark_jsruntime.so。 | 设备黑屏后几秒后恢复。 | 2026年3月31日 |
