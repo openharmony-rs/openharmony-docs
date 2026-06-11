@@ -54,7 +54,7 @@
 | [Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getpropertywithnull) | 获取图片元数据的属性值。输出的value.data以字符串结束符'\0'结尾。 |
 | [Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)](#oh_picturemetadata_release) | 释放OH_PictureMetadata指针。 |
 | <!--DelRow--> [Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metadatas, uint32_t metadataCount, int32_t type, OH_PictureMetadata *metadata)](#oh_picturemetadata_getmetadatabytype) | 从OH_PictureMetadata数组中获取与指定类型匹配的PictureMetadata对象。 |
-| [Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint32_t metadatasCount)](#oh_picturemetadatas_release) | 释放OH_PictureMetadata对象数组。 |
+| <!--DelRow--> [Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint32_t metadatasCount)](#oh_picturemetadatas_release) | 释放OH_PictureMetadata对象数组。 |
 | [Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_PictureMetadata **newMetadata)](#oh_picturemetadata_clone) | 拷贝元数据。 |
 
 ### 变量
@@ -628,7 +628,7 @@ Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metada
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>202：非系统应用程序调用该接口则返回此错误码。</li><br>         <li>IMAGE_INVALID_PARAMETER：</li><br>                                <li>1. metadatas或metadata为空指针。</li><br>                                <li>2. 数组长度为0。</li><br>         </ul> |
-<!--DelEnd-->
+
 ### OH_PictureMetadatas_Release()
 
 ```c
@@ -653,7 +653,7 @@ Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>202：非系统应用程序调用该接口则返回此错误码。</li><br>         <li>IMAGE_INVALID_PARAMETER：</li><br>                                <li>1. metadatas为空指针。</li><br>                                <li>2. 数组长度为0。</li><br>         </ul> |
-
+<!--DelEnd-->
 ### OH_PictureMetadata_Clone()
 
 ```c
