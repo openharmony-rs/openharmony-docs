@@ -38,7 +38,7 @@
 
 **图1** 默认启动页示意图 
 
-![zh-cn_image_0000002344605757](figures/zh-cn_image_0000002344605757.png)
+![Default-starting-window](figures/Default-starting-window.png)
 
 开发者可以根据应用需要，配置使用自定义设计的图标资源和颜色资源。
 
@@ -80,7 +80,7 @@ startWindow字段提供了增强的启动页配置能力，可用于元素更复
    
 **图2** 增强启动页示意图
    
-![zh-cn_image_0000002310726688](figures/zh-cn_image_0000002310726688.png)
+![Enhanced-starting-window](figures/Enhanced-starting-window.png)
    
 示例如下：
    
