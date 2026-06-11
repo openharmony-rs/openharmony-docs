@@ -214,7 +214,7 @@ int sum(int a, int b)
 
 这里使用的是cmake .. -G "Ninja" 引号里面跟的参数就是上图查看的环境所支持的生成器，这里ndk中自带的生成器是Ninja。
 
-![make-ninja-bin](figures/make-ninja-bin.png)
+![cmake-ninja-bin](figures/cmake-ninja-bin.png)
 
 Step 1. 同样在工程目录的模块目录下创建 build 文件夹，进入build目录并执行以下指令：
 ```shell
