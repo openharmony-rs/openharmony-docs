@@ -6272,3 +6272,17 @@ Allows a system application to invoke ArkWebCore extended capabilities.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
 
 **Valid since**: 26.0.0
+
+## ohos.permission.vehicle.VEHICLE_THERMAL
+
+Allows an application to access thermal control information of the cockpit device.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
