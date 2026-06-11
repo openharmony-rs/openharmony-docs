@@ -217,7 +217,7 @@ enabled：布尔值类型，用于控制指定设备的空间音频渲染开关�
 
 ## 开启/关闭指定设备的头动跟踪效果
 
-系统应用开发者可以通过[setHeadTrackingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setheadtrackingenabled12)接口开启/关闭指定设备的空间音频渲染效果，该接口需要传递两个参数：AudioDeviceDescriptor和enabled。
+系统应用开发者可以通过[setHeadTrackingEnabled](../../reference/apis-audio-kit/js-apis-audio-sys.md#setheadtrackingenabled12)接口开启/关闭指定设备的头动跟踪效果，该接口需要传递两个参数：AudioDeviceDescriptor和enabled。
 
 AudioDeviceDescriptor：用于指定音频设备。建议通过音频框架中其他接口来获取当前已连接设备或当前发声设备的[AudioDeviceDescriptor](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)。
 
