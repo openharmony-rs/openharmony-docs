@@ -1,4 +1,10 @@
 # @Extend：扩展组件样式
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 用于扩展组件样式。开发指南参考：[\@Extend装饰器：定义扩展组件样式（ArkTS-Dyn）](../../../ui/state-management/arkts-extend.md)。
 
