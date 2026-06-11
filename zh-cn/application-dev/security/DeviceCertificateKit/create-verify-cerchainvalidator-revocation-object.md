@@ -137,7 +137,7 @@ async function doTestLeafCertCrlCheck() {
 
 5. 调用[cert.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11)，传入证书链校验参数，进行证书链校验。
 
-> **说明**
+> **说明：**
 >
 > 本开发指导中提供的示例代码需要在配置网络的前提下执行。
 
