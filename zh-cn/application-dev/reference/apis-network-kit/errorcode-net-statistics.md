@@ -49,7 +49,7 @@ Failed to connect to the service.
 
 1. 检查系统服务运行状态是否正常。
 2. 重启手机后再次尝试。
-3. 若重复报错，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/ticketCard)获取帮助。
+<!--RP1--><!--RP1End-->
 
 ## 2100003 系统内部错误
 
