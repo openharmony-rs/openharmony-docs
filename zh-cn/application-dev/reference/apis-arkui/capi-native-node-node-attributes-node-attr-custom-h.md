@@ -8,7 +8,7 @@
 
 ## 概述
 
-定义自定义组件事件类型。
+为NativeNode API提供自定义节点事件定义。
 
 **引用文件：** <arkui/node_attributes/node_attr_custom.h>
 
