@@ -339,14 +339,14 @@ JSVM新增支持从外部内存创建ArrayBuffer对象。（[API参考](https://
 
 | 版本源码                                | **版本信息** | **下载站点**                                                 | **SHA256校验码**                                             | **软件包容量** |
 | --------------------------------------- | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- |
-| 全量代码（标准、轻量和小型系统）        | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/code-v7.0-Beta1.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/code-v7.0-Beta1.tar.gz.sha256) | 49.1 GB |
-| Hi3861解决方案（二进制）        | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_pegasus.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_pegasus.tar.gz.sha256) | 28.4 MB |
-| Hi3516解决方案-LiteOS（二进制） | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_taurus_LiteOS.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_taurus_LiteOS.tar.gz.sha256) | 350.0 MB |
-| Hi3516解决方案-Linux（二进制）  | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_taurus_Linux.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_taurus_Linux.tar.gz.sha256) | 223.6 MB |
-| RK3568标准系统解决方案（二进制）        | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/dayu200_standard_arm32.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/dayu200_standard_arm32.tar.gz.sha256) | 	9.7 GB |
-| 标准系统Public SDK包（Mac）             | 26.0.0.23 | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/ohos-sdk-mac-public.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/ohos-sdk-mac-public.tar.gz.sha256) | 1.3 GB |
-| 标准系统Public SDK包（Mac-M1）             | 26.0.0.23  | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/L2-SDK-MAC-M1-PUBLIC.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/L2-SDK-MAC-M1-PUBLIC.tar.gz.sha256) | 1.2 GB |
-| 标准系统Public SDK包（Windows/Linux）   | 26.0.0.23   | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/ohos-sdk-windows_linux-public.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/ohos-sdk-windows_linux-public.tar.gz.sha256) | 3.2 GB |
+| 全量代码（标准、轻量和小型系统）        | 7.0 Beta1    | *软件包上传中* | *软件包上传中* | - |
+| Hi3861解决方案（二进制）        | 7.0 Beta1    | *软件包上传中* | *软件包上传中* | - |
+| Hi3516解决方案-LiteOS（二进制） | 7.0 Beta1    | *软件包上传中* | *软件包上传中* | - |
+| Hi3516解决方案-Linux（二进制）  | 7.0 Beta1    | *软件包上传中* | *软件包上传中* | - |
+| RK3568标准系统解决方案（二进制）        | 7.0 Beta1    | *软件包上传中* | *软件包上传中* | - |
+| 标准系统Public SDK包（Mac）             | 26.0.0.23 | *软件包上传中* | *软件包上传中* | - |
+| 标准系统Public SDK包（Mac-M1）             | 26.0.0.23  | *软件包上传中* | *软件包上传中* | - |
+| 标准系统Public SDK包（Windows/Linux）   | 26.0.0.23   | *软件包上传中* | *软件包上传中* | - |
 
 
 ## 修复缺陷列表
@@ -365,15 +365,10 @@ JSVM新增支持从外部内存创建ArrayBuffer对象。（[API参考](https://
 **表4** 遗留缺陷列表
 
 | ISSUE | 问题描述 | 影响 | 计划解决日期 | 
-| -------- | -------- | -------- | -------- |
-| [19617](https://gitcode.com/openharmony/graphic_graphic_2d/issues/19617) | 开机完成时延较前一版本稍有劣化。 | 轻微影响使用体验。 | 2026年5月30日 |
-| [329](https://gitcode.com/openharmony/applications_contacts/issues/329)<br />[192](https://gitcode.com/openharmony/telephony_telephony_data/issues/192) | 联系人列表滑动帧率低于基线要求。| 轻微影响使用体验。 | 2026年5月30日 |
-| [193](https://gitcode.com/openharmony/telephony_telephony_data/issues/193) | 首次启动联系人应用的时间超出基线要求。 | 轻微影响使用体验。 | 2026年5月30日 |
-| [73886](https://gitcode.com/openharmony/arkui_ace_engine/issues/73886) | 开机完成时延较长，不满足基线要求。 | 轻微影响使用体验。 | 2026年4月30日 |
-| [772](https://gitcode.com/openharmony/applications_photos/issues/772) | 首次启动图库应用的时间超出基线要求。 | 轻微影响使用体验。 | 2026年5月30日 |
-| [245](https://gitcode.com/openharmony/device_soc_rockchip/issues/245) | 进程render_service小概率出现因SERVICE_BLOCK导致的sysfreeze，阻塞原因为libmali-bifrost-g52-g7p0-ohos.so故障 | 键鼠卡顿1-2秒，短暂无法操作，1-2秒后自动恢复。 | 2026年6月30日 |
-| [246](https://gitcode.com/openharmony/device_soc_rockchip/issues/246) | RK3568在wukong压测下出现重启问题（Kernel panic - not syncing: watchdog pretimeout event） | 重启后恢复正常。 | 2026年6月30日 |
-| [248](https://gitcode.com/openharmony/device_soc_rockchip/issues/248) | 进程codec_host下的omx_msg_hdl线程小概率出现cppcrash，崩溃栈为libomxvpu_dec.z.so。 | 键鼠卡顿1-2秒，短暂无法操作，1-2秒后自动恢复。 | 2026年6月30日 |
-| [856](https://gitcode.com/openharmony/applications_settings/issues/856) | 进程com.ohos.settings小概率出现由于LIFECYCLE_TIMEOUT导致的sysfreeze。 | 正常业务使用时未复现该问题，对用户影响较小。 | 2026年5月30日 |
-| [630](https://gitcode.com/openharmony/applications_systemui/issues/630) | 进程com.ohos.systemui小概率出现jscrash，崩溃栈为subscriberCallBack。 | 设备黑屏后几秒后恢复。 | 2026年3月31日 |
-| [12339](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/12339) | 主进程com.ohos.systemui小概率出现cppcrash，崩溃栈为libark_jsruntime.so。 | 设备黑屏后几秒后恢复。 | 2026年3月31日 |
+| [633](https://gitcode.com/openharmony/applications_systemui/issues/633) | 进程com.ohos.systemui有较高概率由于THREAD_BLOCK_6S类型的故障导致appfreeze。 | 点击通知-设置跳转较慢，轻微影响使用体验。 | 2026年7月30日 |
+| [263](https://gitcode.com/openharmony/device_soc_rockchip/issues/263) | 进程render_service低概率出现由于SERVICE_BLOCK导致的sysfreeze，崩溃栈为libmali-bifrost-g52-g7p0-ohos.so | 设备卡死，重启手机后可恢复。 | 2026年7月30日 |
+| [468](https://gitcode.com/openharmony/systemabilitymgr_safwk/issues/468) | 进程foundation在wukong压测下出现内存泄露，5天内存占用增长100M左右。 | 内存占用增长缓慢，用户开发无明显感知。 | 2026年6月30日 |
+| [329](https://gitcode.com/openharmony/applications_contacts/issues/329)<br />[192](https://gitcode.com/openharmony/telephony_telephony_data/issues/192) | 联系人列表滑动帧率低于基线要求。| 轻微影响使用体验。 | 2026年7月30日 |
+| [193](https://gitcode.com/openharmony/telephony_telephony_data/issues/193) | 首次启动联系人应用的时间超出基线要求。 | 轻微影响使用体验。 | 2026年7月30日 |
+| [73886](https://gitcode.com/openharmony/arkui_ace_engine/issues/73886) | 开机完成时延较长，不满足基线要求。 | 轻微影响使用体验。 | 2026年7月30日 |
+| [772](https://gitcode.com/openharmony/applications_photos/issues/772) | 首次启动图库应用的时间超出基线要求。 | 轻微影响使用体验。 | 2026年7月30日 |
