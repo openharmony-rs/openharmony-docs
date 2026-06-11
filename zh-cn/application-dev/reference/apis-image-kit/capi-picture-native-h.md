@@ -708,7 +708,7 @@ Image_ErrorCode OH_AuxiliaryPictureNative_CreateUsingAllocator(uint8_t *data, ui
 | uint8_t *data | 指向图像数据的指针。 |
 | uint32_t dataLength | 图像数据的长度。 |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | 指向辅助图基本信息的指针。 |
-| [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_allocator_mode) allocator | 辅助图使用的内存类型。有关可用选项的详细信息，请参阅[IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_errorcode)。 |
+| [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_allocator_mode) allocator | 辅助图使用的内存类型。有关可用选项的详细信息，请参阅[IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_allocator_mode)。 |
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) **auxiliaryPicture | 输出参数，用于接收新创建的OH_AuxiliaryPictureNative对象地址。 |
 
 **返回：**
