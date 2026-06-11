@@ -103,12 +103,12 @@ Worker线程→主线程：消息既能插队，又支持按优先级（[Priorit
    Worker线程收到宿主线程发送的消息后，发送普通消息和插队消息。
 
    <!-- @[child_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerPostAtFront/entry/src/main/ets/workers/Worker.ets) -->
-  
+   
    ``` TypeScript
    import { MessageEvents, ThreadWorkerGlobalScope, worker, Priority } from '@kit.ArkTS';
-  
+   
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
-  
+   
    workerPort.onmessage = (e: MessageEvents) => {
      // 发送多个消息，让消息排队起来
      for (let i = 0; i < 10; i++) {
