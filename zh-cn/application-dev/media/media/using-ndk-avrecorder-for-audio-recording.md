@@ -215,6 +215,12 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
         int32_t buffeSize = 1000;
         int32_t writeLength = 0;
         AbilityRunTime_ErrorCode result = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, buffeSize, &writeLength);
+        if (!fileDirPath) {
+           OH_LOG_ERROR(LOG_APP, "==NDKDemo== GetFilesDir failed, errCode: %{public}d", result);
+           napi_value res;
+           napi_create_int32(env, -1, &res);
+           return res;
+        }
         // 1.设置URL（fileGenerationMode选择APP_CREATE时设置）。
         const std::string AVRECORDER_ROOT = fileDirPath;
         int32_t outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp3").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
@@ -418,6 +424,12 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       int32_t buffeSize = 1000;
       int32_t writeLength = 0;
       AbilityRunTime_ErrorCode result = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, buffeSize, &writeLength);
+      if (!fileDirPath) {
+         OH_LOG_ERROR(LOG_APP, "==NDKDemo== GetFilesDir failed, errCode: %{public}d", result);
+         napi_value res;
+         napi_create_int32(env, -1, &res);
+         return res;
+      }
       // 1.1设置URL（fileGenerationMode选择APP_CREATE时设置）。
       const std::string AVRECORDER_ROOT = fileDirPath;
       g_outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp3").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。

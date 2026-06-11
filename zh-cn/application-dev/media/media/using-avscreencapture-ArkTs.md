@@ -194,7 +194,7 @@
       console.error("处理异常情况");
       return;
     }
-    let displayClass: display.Display | null = null;
+    let displayClass: display.Display | undefined = undefined;
     try {
       displayClass = display.getDefaultDisplaySync();
       hilog.info(DOMAIN, 'DisplayTest', `The display info is: ${JSON.stringify(displayClass)}`);
@@ -202,9 +202,13 @@
       hilog.error(DOMAIN, 'DisplayTest',
         `Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
     }
+    if (!displayClass) {
+      console.error("处理异常情况");
+      return;
+    }
     captureConfig: media.AVScreenCaptureRecordConfig = {
         // 开发者可以根据屏幕的宽高设置宽高。
-        // 根据屏幕的宽设置宽度。
+        // 根据屏幕的宽设置宽度，宽应为64的倍数。
         frameWidth: displayClass.width,
         // 根据屏幕的高设置高度。
         frameHeight: displayClass.height,
@@ -398,6 +402,7 @@ export class AVScreenCaptureDemo {
   private screenCapture?: media.AVScreenCaptureRecorder;
   private captureFile: fileIo.File | undefined = undefined;
   private captureConfig: media.AVScreenCaptureRecordConfig | undefined = undefined;
+  private displayClass: display.Display | undefined = undefined;
 
   private openFile(context: Context): void {
     const path: string = context.filesDir + '/screenCapture.mp4'; // 文件沙箱路径，文件后缀名应与封装格式对应。
@@ -421,19 +426,21 @@ export class AVScreenCaptureDemo {
     if (!this.captureFile) {
       return;
     }
-    let displayClass: display.Display | null = null;
     try {
-      displayClass = display.getDefaultDisplaySync();
-      console.info(`The display info is: ${JSON.stringify(displayClass)}`);
+      this.displayClass = display.getDefaultDisplaySync();
+      console.info(`The display info is: ${JSON.stringify(this.displayClass)}`);
     } catch (exception) {
       console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+    }
+    if (!this.displayClass) {
+      return;
     }
     this.captureConfig = {
         // 开发者可以根据屏幕的宽高设置宽高。
         // 设置宽为屏幕的宽度。
-        frameWidth: displayClass.width,
+        frameWidth: this.displayClass.width,
         // 设置高为屏幕的高度。
-        frameHeight: displayClass.height,
+        frameHeight: this.displayClass.height,
         // 参考应用文件访问与管理开发示例新建并读写一个文件fd。
         fd: this.captureFile.fd,
         // 可选参数及其默认值。
