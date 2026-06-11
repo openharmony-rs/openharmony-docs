@@ -122,7 +122,7 @@ OH_Crypto_ErrCode doTestSm4GcmSeg()
     }
 
     // 加密
-    ret = OH_CryptoSymCipher_Create("SM4_128|GCM|PKCS7", &encCtx);
+    ret = OH_CryptoSymCipher_Create("SM4_128|GCM", &encCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -161,7 +161,7 @@ OH_Crypto_ErrCode doTestSm4GcmSeg()
     cipherBlob = {.data = reinterpret_cast<uint8_t *>(cipherText), .len = (size_t)cipherLen};
     msgBlob.data -= strlen(plainText) - rem;
     msgBlob.len = strlen(plainText);
-    ret = OH_CryptoSymCipher_Create("SM4_128|GCM|PKCS7", &decCtx);
+    ret = OH_CryptoSymCipher_Create("SM4_128|GCM", &decCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
