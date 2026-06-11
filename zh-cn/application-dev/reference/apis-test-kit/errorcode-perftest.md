@@ -46,7 +46,7 @@ Internal error.
 **处理步骤**
 
 1. 尝试通过重试解决IPC传输失败问题。
-2. 判断PerfTest对象是否已被销毁，若已销毁需要重新[创建PerfTest对象](js-apis-perftest.md#create)。
+2. 判断PerfTest对象是否已被销毁，若已销毁需要重新使用[PerfTest.create](js-apis-perftest.md#create)创建PerfTest对象。
 
 ## 32400003 参数校验失败
 **错误信息**
