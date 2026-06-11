@@ -1,8 +1,8 @@
 # 前景属性设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,6 +11,8 @@
 >  **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -44,7 +46,7 @@ foregroundEffect(options: ForegroundEffectOptions): T
 
 ## foregroundEffect<sup>23+</sup>
 
-foregroundEffect(options: ForegroundEffectOptions | undefined): this
+foregroundEffect(options: ForegroundEffectOptions | undefined)
 
 设置组件的前景属性。
 
@@ -61,12 +63,6 @@ foregroundEffect(options: ForegroundEffectOptions | undefined): this
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
 | options | [ForegroundEffectOptions](#foregroundeffectoptions12) \| undefined | 是   | 设置组件前景属性包括：模糊半径。当options的值为undefined时，模糊不生效。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## ForegroundEffectOptions<sup>12+</sup>
 

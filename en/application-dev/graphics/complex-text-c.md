@@ -1,7 +1,7 @@
 # Drawing and Displaying Complex Text (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -80,7 +80,7 @@ OH_Drawing_DestroyTypography(typography);
 
 ### Effect
 
-![image_0000002246563765](figures/image_0000002246563765.png)
+![hello-chinese](figures/hello-chinese.png)
 
 
 ## Multi-line Text Drawing and Display
@@ -160,7 +160,7 @@ OH_Drawing_DestroyTypography(typography);
 
 | BREAK_HYPHEN (locale: Not Set)| BREAK_HYPHEN (locale: en-gb)| BREAK_HYPHEN (locale: en-us)| 
 | -------- | -------- |-------- |
-| ![ndk_word_break_hyphen_locale_undefined.jpg](figures/ndk_word_break_hyphen_locale_undefined.jpg) | ![ndk_word_break_hyphen_local_en-gb.jpg](figures/ndk_word_break_hyphen_local_en-gb.jpg) | ![ndk_word_break_hyphen_local_en-us.jpg](figures/ndk_word_break_hyphen_local_en-us.jpg) |
+| ![hyphen-locale-undefined.jpg](figures/hyphen-locale-undefined.jpg) | ![hyphen-local-en-gb.jpg](figures/hyphen-local-en-gb.jpg) | ![hyphen-local-en-us.jpg](figures/hyphen-local-en-us.jpg) |
 
 ## Multi-style Text Drawing and Display
 
@@ -270,7 +270,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![image_0000002211603604](figures/image_0000002211603604.png)
+![Decoration](figures/Decoration.png)
 
 
 ### Font Feature
@@ -347,7 +347,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![image_0000002246603641](figures/image_0000002246603641.png)
+![Font-Feature](figures/Font-Feature.png)
 
 
 ### Font Variation
@@ -425,7 +425,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![image_0000002211443824](figures/image_0000002211443824.png)
+![Font-Variation](figures/Font-Variation.png)
 
 
 ### Text Shadow
@@ -512,7 +512,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![image_0000002246563769](figures/image_0000002246563769.png)
+![Text-Shadow](figures/Text-Shadow.png)
 
 
 ### Placeholder
@@ -597,7 +597,7 @@ OH_Drawing_DestroyTypography(typographyWithPlaceholder);
 OH_Drawing_DestroyTypography(typographyNoPlaceholder);
 ```
 
-![image_0000002211443820](figures/image_0000002211443820.png)
+![Placeholder](figures/Placeholder.png)
 
 
 ### Automatic Spacing
@@ -674,8 +674,8 @@ OH_Drawing_DestroyTypography(typographyWithoutAutoSpace);
 
 | Paragraph Style Setting (Automatic Spacing)| Effect| 
 | -------- | -------- |
-| Disabled| ![image_autoSpace_1](figures/image_autoSpace_1.png)| 
-| Enabled| ![image_autoSpace_2](figures/image_autoSpace_2.png)| 
+| Disabled| ![Disabled-autoSpace](figures/Disabled-autoSpace.png)| 
+| Enabled| ![Enabled-autoSpace](figures/Enabled-autoSpace.png)| 
 
 ### Gradients
 
@@ -733,7 +733,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![image_gradient_c](figures/image_gradient_c.png)
+![gradient-c](figures/gradient-c.png)
 
 ### Vertical Alignment
 
@@ -887,8 +887,8 @@ OH_Drawing_DestroyTypography(typography);
 
 | High Contrast| Effect| 
 | -------- | -------- |
-| Disabled| ![image_highContrast_1](figures/image_highContrast_1.png)| 
-| Enabled| ![image_highContrast_2](figures/image_highContrast_2.png)| 
+| Disabled| ![Disabled-highContrast](figures/Disabled-highContrast.png)| 
+| Enabled| ![Enabled-highContrast](figures/Enabled-highContrast.png)| 
 
 ### Line Height Adjustment
 
@@ -1144,6 +1144,6 @@ OH_Drawing_DestroyTypographyHandler(handlerCopy);
 OH_Drawing_DestroyTypography(typographyCopy);
 ```
 
-![image_styleCopy_1](figures/image_styleCopy_1.png)
+![styleCopy](figures/styleCopy.png)
 
 <!--no_check-->

@@ -25,7 +25,7 @@ type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call' | 'photo'
 
 该类型可取的值为下表字符串。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -44,7 +44,7 @@ type AVCastControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPr
 
 投播控制器可传递的命令。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -92,7 +92,7 @@ type KeyRequestCallback = (assetId: string, requestData: Uint8Array) => void
 
 许可证请求事件的回调函数。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -124,30 +124,52 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 
 该类型可取的值为下表字符串的并集。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 
 | 类型             | 说明         |
 | ---------------- | ------------ |
-| 'play'           | 播放。无需传入参数。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23|
-| 'pause'          | 暂停。无需传入参数。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23|
-| 'stop'           | 停止。 无需传入参数。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
-| 'playNext'       | 下一首。无需传入参数。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23|
-| 'playPrevious'   | 上一首。无需传入参数。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23|
-| 'fastForward'    | 快进。无需传入参数。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
-| 'rewind'         | 快退。无需传入参数。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
-| 'seek'           | 跳转某一节点。对应参数使用number类型。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23|
-| 'setSpeed'       | 设置播放倍速。对应参数使用number类型。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
-| 'setLoopMode'    | 设置循环模式。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。对应参数使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
-| 'setTargetLoopMode' <sup>18+</sup>   | 设置目标循环模式。对应参数推荐使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br>***ArkTS-Sta起始版本：** 23 |
-| 'toggleFavorite' | 是否收藏。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。对应参数使用[AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10)。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23     |
-| 'playFromAssetId'<sup>11+</sup> | 播放指定的assetId。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>***ArkTS-Sta起始版本：** 23 |
-| 'playWithAssetId' <sup>20+</sup>    | 播放指定的assetId。对应参数使用[AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10)，<br>字符串长度<40960字节。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>***ArkTS-Sta起始版本：** 23 |
-|'answer'<sup>11+</sup>          | 接听。无需传入参数。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>***ArkTS-Sta起始版本：** 23        |
+| 'play'           | 播放。无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23|
+| 'pause'          | 暂停。无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23|
+| 'stop'           | 停止。 无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
+| 'playNext'       | 下一首。无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23|
+| 'playPrevious'   | 上一首。无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23|
+| 'fastForward'    | 快进。无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
+| 'rewind'         | 快退。无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
+| 'seek'           | 跳转某一节点。对应参数使用number类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23|
+| 'setSpeed'       | 设置播放倍速。对应参数使用number类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
+| 'setLoopMode'    | 设置循环模式。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。对应参数使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23 |
+| 'setTargetLoopMode' <sup>18+</sup>   | 设置目标循环模式。对应参数推荐使用[LoopMode](arkts-apis-avsession-e.md#loopmode10)。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br>***ArkTS-Sta起始版本：** 23 |
+| 'toggleFavorite' | 是否收藏。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。对应参数使用[AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10)。<br>**ArkTS-Dyn起始版本：** 10 <br>***ArkTS-Sta起始版本：** 23     |
+| 'playFromAssetId'<sup>11+</sup> | 播放指定的assetId。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>***ArkTS-Sta起始版本：** 23 |
+| 'playWithAssetId' <sup>20+</sup>    | 播放指定的assetId。对应参数使用[AVMetadata.assetId](arkts-apis-avsession-i.md#avmetadata10)，<br>字符串长度<40960字节。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>***ArkTS-Sta起始版本：** 23 |
+|'answer'<sup>11+</sup>          | 接听。无需传入参数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>***ArkTS-Sta起始版本：** 23        |
 | 'hangUp'<sup>11+</sup> | 挂断。无需传入参数。<br>**ArkTS-Dyn起始版本：** 11 <br>***ArkTS-Sta起始版本：** 23        |
-|'toggleCallMute'<sup>11+</sup>  | 设置通话静音状态。<br>**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。无需传入参数。<br>**ArkTS-Dyn起始版本：** 11 <br>***ArkTS-Sta起始版本：** 23 |
+|'toggleCallMute'<sup>11+</sup>  | 设置通话静音状态。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。无需传入参数。<br>**ArkTS-Dyn起始版本：** 11 <br>***ArkTS-Sta起始版本：** 23 |
+
+## AVMediaCenterControlType
+
+type AVMediaCenterControlType = 'playNext' | 'playPrevious' | 'fastForward' | 'rewind' | 'setSpeed' | 'setLoopMode' | 'toggleFavorite'
+
+播控中心控制命令类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+| 类型             | 说明         |
+| ---------------- | ------------ |
+| 'playNext'       | 下一首。 |
+| 'playPrevious'   | 上一首。 |
+| 'fastForward'    | 快进。 |
+| 'rewind'         | 快退。 |
+| 'setSpeed'       | 设置播放倍速。 |
+| 'setLoopMode'    | 设置循环模式。 |
+| 'toggleFavorite' | 是否收藏。 |
 
 ## NoParamCallback<sup>22+</sup>
 

@@ -18,9 +18,9 @@ import { Track } from '@kit.ArkUI';
 
 状态管理V1中[\@State](./arkts-static-state.md)结合[\@Observed](./arkts-static-observed-and-objectlink.md)使用支持观察第一层属性的变化，第一层属性的变化虽然可以触发更新，但无法做到类属性级的观察，如下面例子展示了这一限制：
 
-```ts
-'use static'
+<!-- @[TrackWithoutPrecision](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TrackWatch/entry/src/main/ets/pages/TrackWithoutPrecision.ets) -->
 
+``` TypeScript
 import { Button, Column, Component, Entry, Observed, State, Text } from '@kit.ArkUI';
 
 @Observed
@@ -109,9 +109,9 @@ struct Index {
 
 使用\@Track装饰器可以避免冗余刷新。
 
-```ts
-'use static'
+<!-- @[TrackAvoidRedundant](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TrackWatch/entry/src/main/ets/pages/TrackAvoidRedundant.ets) -->
 
+``` TypeScript
 import { Button, Column, Component, Entry, FontWeight, Observed, Row, State, Text, Track } from '@kit.ArkUI';
 
 class LogTrack {
@@ -206,11 +206,10 @@ struct AddLog {
 
 以下示例展示组件更新和\@Track的处理步骤。对象log是\@State装饰的状态变量，logInfo是\@Track的成员属性，其余成员属性都是非\@Track装饰的，而且也不准备在UI中更新它们的值。
 
+<!-- @[TrackCustomComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TrackWatch/entry/src/main/ets/pages/TrackCustomComponent.ets) -->
 
-```ts
-'use static'
-
-import { Column, Component, Entry, FontWeight, Row, State, Text, Track } from '@kit.ArkUI';
+``` TypeScript
+import { Column, Component, Entry, FontWeight, Row, State, Text, Track, Button } from '@kit.ArkUI';
 
 class Log {
   @Track logInfo: string;
@@ -238,9 +237,9 @@ struct AddLog {
   build() {
     Row() {
       Column() {
-        Text(this.log.logInfo)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
+        Button('Change log')
+          .width(300)
+          .margin(10)
           .onClick((e) => {
             // 没有被@Track装饰的属性可以在点击事件中使用。
             console.info('owner: ' + this.log.owner +
@@ -253,16 +252,21 @@ struct AddLog {
 
             this.log.logInfo += ' info.';
           })
+        Text(this.log.logInfo)
+          .fontSize(20)
+          .margin(10)
+          .fontWeight(FontWeight.Bold)
       }
       .width('100%')
     }
-    .height('100%')
   }
 }
 ```
 
+![track-customcomponent](../figures/track_1.gif)
+
 处理步骤：
 
-1. AddLog自定义组件的Text.onClick点击事件自增字符串' info.'。
+1. AddLog自定义组件的Button.onClick点击事件自增字符串' info.'。
 
 2. 由于\@State log变量的\@Track属性logInfo更改，Text重新渲染。

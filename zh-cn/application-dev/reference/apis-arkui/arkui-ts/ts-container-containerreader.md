@@ -6,14 +6,14 @@
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
-ContainerReader是容器断点组件，用于在动态场景下根据容器尺寸获取断点信息并进行响应式布局。该组件通过双向绑定机制实时返回容器的尺寸和断点，使开发者能够基于容器大小进行差异化的组件创建和布局。
+ContainerReader是容器断点组件，用于在动态场景下根据容器尺寸获取断点信息并进行响应式布局。该组件通过[双向绑定](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)实时返回容器的尺寸和断点，使开发者能够基于容器大小进行差异化的组件创建和布局。
 
 > **说明：**
 >
 > - 使用ContainerReader时，ContainerReader父组件不要依赖其子组件确定自身尺寸。
 > - 容器断点基于组件自身的实际尺寸和断点阈值数组确定高度和宽度断点值，组件尺寸和断点信息仅作用于当前组件及其子组件，同一页面中的多个容器可拥有各自独立的断点状态。
-> - ContainerReader组件的尺寸需要能够由父容器和自身布局确定，不受子组件影响。在不同父容器下的布局规格：父容器为Flex、Row、Column时撑满容器剩余空间；父容器为其他类型时撑满父容器。
-> - ContainerReader接口的参数必须使用状态变量结合双向绑定形式，以便在后端计算尺寸变化时及时通知前端刷新UI。
+> - ContainerReader组件的尺寸需要由父容器和自身布局确定，不受子组件影响。在不同父容器下的布局规格：父容器为[Flex](ts-container-flex.md)、[Column](ts-container-column.md)、[Row](ts-container-row.md)时撑满容器剩余空间；父容器为其他类型时撑满父容器。
+> - ContainerReader接口的参数必须使用状态变量结合双向绑定形式([!!语法](../../../ui/state-management/arkts-new-binding.md))，以便在后端计算尺寸变化时及时通知前端刷新UI。
 
 **起始版本：** 26.0.0
 
@@ -61,9 +61,9 @@ ContainerReader(value: ContainerReaderInfo)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| size | [Size](../js-apis-arkui-graphics.md#size) | 否 | 否 | 获取到的当前ContainerReader组件的尺寸，用于布局分析和断点计算。<br/>**说明：** <br/>需要利用状态变量双向绑定能力接收读取到的组件尺寸。当值变化时，size的值会自动更新。 |
-| widthBreakpoint | [WidthBreakpoint](./ts-appendix-enums.md#widthbreakpoint13) | 否 | 是 | 容器的宽度断点，为获取到的当前ContainerReader组件的宽度断点枚举值。<br/>默认值：WidthBreakpoint.XS<br/>**说明：** <br/>需要利用状态变量双向绑定能力接收读取到的组件宽度断点值。当值变化时，widthBreakpoint的值会自动更新。 |
-| heightBreakpoint | [HeightBreakpoint](./ts-appendix-enums.md#heightbreakpoint13) | 否 | 是 | 容器的高度断点，为获取到的当前ContainerReader组件的高宽比断点枚举值。<br/>默认值：HeightBreakpoint.SM<br/>**说明：** <br/>需要利用状态变量双向绑定能力接收读取到的组件高度断点值。当值变化时，heightBreakpoint的值会自动更新。 |
+| size | [Size](../js-apis-arkui-graphics.md#size) | 否 | 否 | 获取到的当前ContainerReader组件的尺寸，用于布局分析和断点计算。<br/>**说明：** <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。绑定后组件尺寸值变化时，size绑定的变量值会自动更新。 |
+| widthBreakpoint | [WidthBreakpoint](./ts-appendix-enums.md#widthbreakpoint13) | 否 | 是 | 容器的宽度断点，为获取到的当前ContainerReader组件的宽度断点枚举值。<br/>默认值：WidthBreakpoint.XS<br/>**说明：** <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。绑定后组件宽度断点值变化时，widthBreakpoint绑定的变量值会自动更新。 |
+| heightBreakpoint | [HeightBreakpoint](./ts-appendix-enums.md#heightbreakpoint13) | 否 | 是 | 容器的高度断点，为获取到的当前ContainerReader组件的高宽比断点枚举值。<br/>默认值：HeightBreakpoint.SM<br/>**说明：** <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。绑定后组件高度断点值变化时，heightBreakpoint绑定的变量值会自动更新。 |
 
 ## 属性
 
@@ -71,7 +71,7 @@ ContainerReader(value: ContainerReaderInfo)
 
 ### breakpointConfig
 
-breakpointConfig(value: BreakpointOptions)
+breakpointConfig(value?: BreakpointOptions)
 
 设置断点配置选项，定义触发不同布局行为的尺寸阈值。
 
@@ -89,7 +89,7 @@ breakpointConfig(value: BreakpointOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| value | [BreakpointOptions](#breakpointoptions) | 是 | 断点配置选项，包含宽度和高度的断点阈值数组。 |
+| value | [BreakpointOptions](#breakpointoptions) | 否 | 断点配置选项，包含宽度和高度的断点阈值数组。 |
 
 ## BreakpointOptions
 
@@ -107,8 +107,8 @@ breakpointConfig(value: BreakpointOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| width | Array\<number\> | 否 | 是 | 宽度断点值数组，单位为vp。数组必须为单调递增数组。<br/>默认值：[320, 600, 840, 1440]，单位vp，与窗口宽度断点默认值一致。<br/>**说明：** <br/>最多可支持5个断点，即数组最大长度为4。 |
-| height | Array\<number\> | 否 | 是 | 高度断点值数组，基于高宽比计算。数组必须为单调递增数组。<br/>默认值：[0.8, 1.2]，与窗口高度断点默认值一致。<br/>**说明：** <br/>最多支持3个断点，即数组最大长度为2。 |
+| width | Array\<number\> | 否 | 是 | 宽度断点值数组。数组必须为单调递增数组。<br/>默认值：[320, 600, 840, 1440]，单位vp，与窗口宽度断点默认值一致。<br/>**说明：** <br/>最多可支持5个断点，即数组最大长度为4。 |
+| height | Array\<number\> | 否 | 是 | 高度断点值数组，高度断点值是组件高度与宽度的比值。无单位。数组必须为单调递增数组。<br/>默认值：[0.8, 1.2]，与窗口高度断点默认值一致。<br/>**说明：** <br/>最多支持3个断点，即数组最大长度为2。 |
 
 
 ## 事件
@@ -126,7 +126,7 @@ breakpointConfig(value: BreakpointOptions)
 
 ```ts
 // xxx.ets
-import { ContainerReader, ContainerReaderAttribute } from '@kit.ArkUI';
+import { ContainerReader, ContainerReaderAttribute, Size } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -140,7 +140,7 @@ struct Index {
     Column({space: 10}) {
       Column({space: 10}) {
         ContainerReader({
-          size: this.containerSize!!,
+          size: this.containerSize!!, // 和this.containerSize变量绑定，ContainerReader尺寸变化时this.containerSize自动更新。
           widthBreakpoint: this.widthBp!!,
           heightBreakpoint: this.heightBp!!
         }) {
@@ -194,7 +194,7 @@ struct Index {
 
 ```ts
 // xxx.ets
-import { ContainerReader, ContainerReaderAttribute } from '@kit.ArkUI';
+import { ContainerReader, ContainerReaderAttribute, Size } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -269,16 +269,13 @@ struct Index {
 
 ```ts
 // xxx.ets
-import { ContainerReader, ContainerReaderAttribute } from '@kit.ArkUI';
+import { ContainerReader, ContainerReaderAttribute, Size } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
   @State containerSize: Size = { width: 0, height: 0 };
   @State widthBp: WidthBreakpoint = WidthBreakpoint.WIDTH_XS;
-  @State bgColors: ResourceColor[] = [
-    '#D5D5D5', '#707070', '#F7F7F7', '#004AAF', '#2787D9', '#F0FAFF'
-  ];
   @State columnWidth: number = 180
 
   build() {
@@ -289,21 +286,39 @@ struct Index {
           widthBreakpoint: this.widthBp!!
         }) {
           Row({ space: 2 }) {
-            ForEach(Array(this.widthBp).fill(null),
-              (item: null | undefined, index: number) => {
-                Column() {
-                  Text(`第 ${index + 1} 个 Column`)
-                    .fontColor(Color.White)
-                }
-                .width('100%')
-                .height(60)
-                .backgroundColor(this.bgColors[index])
-                .justifyContent(FlexAlign.Center)
-                .borderRadius(8)
-                .layoutWeight(1)
-              },
-              (item: null | undefined, index: number) => index.toString()
-            )
+            if (this.widthBp === WidthBreakpoint.WIDTH_XS || this.widthBp === WidthBreakpoint.WIDTH_SM) {
+              Column() {
+                Text(`第 1 个 Column`)
+                  .fontColor(Color.White)
+              }
+              .width('100%')
+              .height(60)
+              .backgroundColor('#D5D5D5')
+              .justifyContent(FlexAlign.Center)
+              .borderRadius(8)
+              .layoutWeight(1)
+            } else {
+              Column() {
+                Text(`第 1 个 Column`)
+                  .fontColor(Color.White)
+              }
+              .width('100%')
+              .height(60)
+              .backgroundColor('#D5D5D5')
+              .justifyContent(FlexAlign.Center)
+              .borderRadius(8)
+              .layoutWeight(1)
+              Column() {
+                Text(`第 2 个 Column`)
+                  .fontColor(Color.White)
+              }
+              .width('100%')
+              .height(60)
+              .backgroundColor('#707070')
+              .justifyContent(FlexAlign.Center)
+              .borderRadius(8)
+              .layoutWeight(1)
+            }
           }
           .width('100%')
           .height('100%')

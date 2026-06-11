@@ -176,7 +176,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    }
    ```
 
-   ![en-us_image_0000001198898293](figures/en-us_image_0000001198898293.png)
+   ![input](figures/input.png)
 
 3. Check box
    ```html
@@ -209,7 +209,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    }
    ```
 
-   ![en-us_image_0000001173324749](figures/en-us_image_0000001173324749.png)
+   ![input01](figures/input01.png)
 
 4. Radio button
    ```html

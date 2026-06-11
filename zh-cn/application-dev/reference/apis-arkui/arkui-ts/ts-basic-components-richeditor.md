@@ -1268,6 +1268,9 @@ onWillAttachIME(callback: Callback\<IMEClient> \| undefined)
 
 调用[IMEClient](ts-text-common.md#imeclient20对象说明)的[setExtraConfig](ts-text-common.md#setextraconfig22)方法设置输入法扩展信息。在绑定输入法成功后，输入法会收到扩展信息，输入法可以依据此信息实现自定义功能。
 
+<!--Del-->
+从API版本26.0.0开始，在输入框将要绑定输入法前，可以通过`UIContext`的系统接口[setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20)设置键盘的样式。<!--DelEnd-->
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1436,7 +1439,7 @@ Span类型信息。
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 否 | 是    | 文本背景样式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 | strokeWidth<sup>23+</sup> | ArkTS-Dyn: number  <br/>ArkTS-Sta: double   | 否   | 是   | 文本描边宽度。<br/>单位为[vp](ts-pixel-units.md#基本像素单位)。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 | strokeColor<sup>23+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | 否   | 是   | 文本描边颜色。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
-| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 是 | 是 | 文本描边拐角样式。<br/>默认值：StrokeJoinStyle.MITER_JOIN。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 否 | 是 | 文本描边拐角样式。<br/>默认值：StrokeJoinStyle.MITER_JOIN。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 在RichEditorTextStyle中，fontWeight是设置字体粗细的输入参数。
 
@@ -1857,7 +1860,7 @@ getCaretRect(): RectResult | undefined
 
 | 类型     | 说明        |
 | ------ | --------- |
-| [RectResult](ts-types.md#rectresult10) \| undefined | 当前光标与RichEditor的相对位置。 |
+| [RectResult](ts-universal-attributes-on-child-touch-test.md#rectresult) \| undefined | 当前光标与RichEditor的相对位置。 |
 
 ### deleteBackward<sup>23+</sup>
 
@@ -1894,6 +1897,28 @@ setStyledPlaceholder(styledString: StyledString): void
 | 参数名  | 类型   | 必填   | 说明  |
 | ------- | ------ | ---- | ----- |
 | styledString | [StyledString](ts-universal-styled-string.md#styledstring) | 是 | 设置属性字符串样式的提示文本，其优先级高于[placeholder](#placeholder12)属性设置的提示文本。<br>提示文本不支持触发属性字符串[GestureStyle](./ts-universal-styled-string.md#gesturestyle)样式绑定的手势事件，以及[UrlStyle](./ts-universal-styled-string.md#urlstyle14)样式的超链接跳转能力。|
+
+### scrollToVisible
+
+scrollToVisible(range?: TextRange): void
+
+将指定范围内的内容滚动到可视区域。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明  |
+| ------- | ------ | ---- | ----- |
+| range | [TextRange](ts-text-common.md#textrange12) | 否    | 滚动到可视区域的内容范围，包括内容起始位置和终止位置。<br>起始位置应小于等于结束位置，否则接口调用无效。起始位置小于0视为0，结束位置大于全文长度视为全文长度。<br>未指定范围时，默认为全部内容。未指定起始位置，默认起始位置为0；未指定结束位置，默认结束位置为全文长度。 |
 
 ## RichEditorController
 
@@ -2493,7 +2518,7 @@ SymbolSpan样式选项。
 | paragraphSpacing<sup>19+</sup> | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 否    | 是 | 设置段落间距大小。<br/>单位：fp<br/>段落间距默认大小为0。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
 | textVerticalAlign<sup>20+</sup> | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  否  | 是 | 设置文本段落在垂直方向的对齐方式。<br/>默认值：TextVerticalAlign.BASELINE <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 | textDirection<sup>23+</sup> | [TextDirection](ts-text-common.md#textdirection22) |  否  | 是 | 设置文本书写方向。<br/>默认值：TextDirection.DEFAULT<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
-| shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  是  |  是  | 设置文本着色器效果。<br/>该接口与[RichEditorTextStyle](#richeditortextstyle)中的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于[RichEditorTextStyle](#richeditortextstyle)的fontColor。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  否  |  是  | 设置文本着色器效果。<br/>该接口与[RichEditorTextStyle](#richeditortextstyle)中的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于[RichEditorTextStyle](#richeditortextstyle)的fontColor。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 ## LeadingMarginPlaceholder<sup>11+</sup>
 
 前导边距占位符，用于表示文本段落左侧与组件边缘之间的距离。
@@ -2564,7 +2589,7 @@ SymbolSpan样式选项。
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 否 | 是    | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 | strokeWidth<sup>23+</sup> | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| number  <br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| double     | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../js-apis-arkui-graphics.md#lengthunit12)，当前设置不生效，作为0处理。<br/>值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。<br/>默认值：0vp。<br/>单位：LengthMetrics类型时跟随LengthMetrics，number或double类型时是vp。<br/>取值范围：(-∞, +∞)<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 | strokeColor<sup>23+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 文本描边颜色。<br/>默认值：跟随字体颜色。<br/>设置异常值时跟随字体颜色。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
-| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 是 | 是 | 文本描边拐角样式。<br/>默认值：StrokeJoinStyle.MITER_JOIN。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 否 | 是 | 文本描边拐角样式。<br/>默认值：StrokeJoinStyle.MITER_JOIN。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## PlaceholderStyle<sup>12+</sup>
 
@@ -2693,7 +2718,7 @@ RichEditor span信息。
 | menuType<sup>13+</sup> | [MenuType](ts-text-common.md#menutype13枚举说明) | 否 | 是 | 自定义选择菜单类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br/>默认值：MenuType.SELECTION_MENU。 <br/>**ArkTS-Dyn起始版本：** 13  <br/>**ArkTS-Sta起始版本：** 23<br/>|
 | onMenuShow<sup>15+</sup> | [MenuCallback](#menucallback15) | 否 | 是 |  自定义选择菜单显示时回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 15  <br/>**ArkTS-Sta起始版本：** 23<br/>|
 | onMenuHide<sup>15+</sup> | [MenuCallback](#menucallback15) | 否 | 是 |  自定义选择菜单隐藏时回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 15  <br/>**ArkTS-Sta起始版本：** 23<br/>|
-| previewMenuOptions<sup>18+</sup> | [PreviewMenuOptions](#previewmenuoptions18) | 否 | 是 |  预览菜单的选项。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 18  <br/>**ArkTS-Sta起始版本：** 23<br/>|
+| previewMenuOptions<sup>18+</sup> | [PreviewMenuOptions](#previewmenuoptions18) | 否 | 是 |  预览菜单的选项。该参数只在RichEditor中生效。 <br/>从API版本26.0.0开始，该参数在Text组件中也生效。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 18  <br/>**ArkTS-Sta起始版本：** 23<br/>|
 
 ## PreviewMenuOptions<sup>18+</sup>
 
@@ -7723,89 +7748,104 @@ struct Child {
 
 ![richEditorIncludeFontPadding](figures/richEditorIncludeFontPadding.gif)
 
-### 示例36（设置开启行首标点符号压缩）
-该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)属性设置行首标点符号压缩。
+### 示例36（设置行首标点符号压缩和行尾标点符号悬挂）
+本示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)设置行首标点符号压缩，通过[punctuationOverflow](#punctuationoverflow)设置行尾标点符号悬挂。
 
-从API version 23开始，新增compressLeadingPunctuation属性。
+文本自动换行后，剩余内容（含标点符号）需能放入上一行，标点符号悬挂才生效。
+
+从API version 23开始，新增compressLeadingPunctuation接口。
+
+从API版本26.0.0开始，新增punctuationOverflow接口。
 
 ArkTS-Dyn示例：
 
 ```ts
 @Entry
 @Component
-struct CompressLeadingPunctuationDemo {
+struct PunctuationDemo {
   controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: '20fp' } };
   @State compressLeadingPunctuation: boolean = false;
-  @State text: string = '「0123456789\n『0123456789\n（0123456789\n《0123456789\n〈0123456789\n【0123456789\n〖0123456789\n〔0123456789\n［0123456789\n｛0123456789';
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「0123456789！\n『0123456789：\n（0123456789；\n《0123456789）\n〈0123456789】\n【0123456789、\n〖0123456789。\n〔0123456789﹑\n［0123456789〞\n｛0123456789';
 
   build() {
     Column() {
-      RichEditor(this.options)
+      RichEditor({ controller: this.controller })
         .onReady(() => {
-          this.controller.addTextSpan(this.text)
+          this.controller.addTextSpan(this.text, this.textSpanOptions)
         })
         .compressLeadingPunctuation(this.compressLeadingPunctuation)
-        .borderWidth(1)
-        .borderColor(Color.Green)
+        .punctuationOverflow(this.punctuationOverflow)
+        .border({ width: 1, color: Color.Black })
         .align(Alignment.Center)
-        .height("30%")
-        .width("50%")
+        .height('35%')
+        .width('50%')
 
       Column() {
-        Button("开启行首标点符号压缩").onClick(() => {
+        Button('开启行首标点符号压缩').onClick(() => {
           this.compressLeadingPunctuation = true
-        }).margin({ top: 10 })
-        Button("关闭行首标点符号压缩").onClick(() => {
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick(() => {
           this.compressLeadingPunctuation = false
-        }).margin({ top: 10 })
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = false
+        }).margin(5)
       }
-    }.width("100%").padding(20)
+    }.width('100%').padding(20)
   }
 }
 ```
 
 ArkTS-Sta示例：
 ```ts
-import { Entry, Component, Column, Button, Color, Margin, Alignment, ClickEvent, RichEditor, RichEditorController, RichEditorOptions } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Component, Column, ClickEvent, Color, Margin, Alignment, Button, ButtonAttribute, RichEditor, RichEditorController, RichEditorOptions, RichEditorTextSpanOptions, State } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct CompressLeadingPunctuationDemo {
+struct PunctuationDemo {
   controller: RichEditorController = new RichEditorController();
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: '20fp' } } as RichEditorTextSpanOptions;
   @State compressLeadingPunctuation: boolean = false;
-  @State text: string = '「0123456789\n『0123456789\n（0123456789\n《0123456789\n〈0123456789\n【0123456789\n〖0123456789\n〔0123456789\n［0123456789\n｛0123456789';
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「0123456789！\n『0123456789：\n（0123456789；\n《0123456789）\n〈0123456789】\n【0123456789、\n〖0123456789。\n〔0123456789﹑\n［0123456789〞\n｛0123456789';
 
   build() {
-    Column(undefined) {
-      Column() {
-        RichEditor({ controller: this.controller } as RichEditorOptions)
-          .onReady(() => {
-            this.controller.addTextSpan(this.text)
-          })
-          .compressLeadingPunctuation(this.compressLeadingPunctuation)
-          .borderWidth(1)
-          .borderColor(Color.Green)
-          .align(Alignment.Center)
-          .height("30%")
-          .width("50%")
+    Column() {
+      RichEditor({ controller: this.controller })
+        .onReady(() => {
+          this.controller.addTextSpan(this.text, this.textSpanOptions)
+        })
+        .compressLeadingPunctuation(this.compressLeadingPunctuation)
+        .punctuationOverflow(this.punctuationOverflow)
+        .border({ width: 1, color: Color.Black })
+        .align(Alignment.Center)
+        .height('35%')
+        .width('50%')
 
-        Column() {
-          Button("开启行首标点符号压缩").onClick((e: ClickEvent) => {
-            this.compressLeadingPunctuation = true
-          }).margin(5)
-          Button("关闭行首标点符号压缩").onClick((e: ClickEvent) => {
-            this.compressLeadingPunctuation = false
-          }).margin(5)
-        }
-      }.width("100%").padding(20)
-    }
+      Column() {
+        Button('开启行首标点符号压缩').onClick((event: ClickEvent) => {
+          this.compressLeadingPunctuation = true
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick((event: ClickEvent) => {
+          this.compressLeadingPunctuation = false
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick((event: ClickEvent) => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick((event: ClickEvent) => {
+          this.punctuationOverflow = false
+        }).margin(5)
+      }
+    }.width('100%').padding(20)
   }
 }
 ```
-![CompressLeadingPunctuation](figures/richEditorCompressLeadingPunctuation.gif)
+![Punctuation](figures/richEditorPunctuation.gif)
 
 ### 示例37（设置拖动预览样式）
 该示例通过[selectedDragPreviewStyle](#selecteddragpreviewstyle23)接口设置拖动预览样式。
@@ -8412,3 +8452,76 @@ struct ShaderColorStyle {
 }
 ```
 ![RichEditorShaderStyle](figures/richEditorShaderStyle.png)
+
+### 示例43（将指定范围的文字滚动到可视区内）
+
+本示例通过[scrollToVisible](#scrolltovisible)将可视区外的文本滚动到可视区内。
+
+从API版本26.0.0开始，新增scrollToVisible接口。
+
+ArkTS-Dyn示例：
+
+```ts
+@Entry
+@Component
+struct ScrollToVisibleDemo {
+  controller: RichEditorController = new RichEditorController();
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 30 } };
+  exampleText: string = '第一段示例文本\n第二段示例文本\n第三段示例文本\n第四段示例文本' +
+    '\n第五段示例文本\n第六段示例文本\n第七段示例文本\n第八段示例文本';
+
+  build() {
+    Column() {
+      RichEditor({ controller: this.controller })
+        .onReady(() => {
+          this.controller.addTextSpan(this.exampleText, this.textSpanOptions)
+        })
+        .width('250vp')
+        .height('150vp')
+        .border({ width: 1, color: Color.Black })
+        .margin(10)
+      Button('滚动首段文本至可视区').onClick((event: ClickEvent) => {
+        this.controller.scrollToVisible({start: 0, end: 7})
+      }).margin(5)
+      Button('滚动末段文本至可视区').onClick((event: ClickEvent) => {
+        this.controller.scrollToVisible({start: 64, end: 71})
+      }).margin(5)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Row, ClickEvent, Color, Button, ButtonAttribute, RichEditor, RichEditorController, RichEditorOptions, RichEditorTextSpanOptions, State } from '@kit.ArkUI';
+@Entry
+@Component
+struct ScrollToVisibleDemo {
+  controller: RichEditorController = new RichEditorController();
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 30 } } as RichEditorTextSpanOptions;
+  exampleText: string = '第一段示例文本\n第二段示例文本\n第三段示例文本\n第四段示例文本' +
+    '\n第五段示例文本\n第六段示例文本\n第七段示例文本\n第八段示例文本';
+
+  build() {
+    Column() {
+      RichEditor({ controller: this.controller })
+        .onReady(() => {
+          this.controller.addTextSpan(this.exampleText, this.textSpanOptions)
+        })
+        .width('250vp')
+        .height('150vp')
+        .border({ width: 1, color: Color.Black })
+        .margin(10)
+      Button('滚动首段文本至可视区').onClick((event: ClickEvent) => {
+        this.controller.scrollToVisible({start: 0, end: 7})
+      }).margin(5)
+      Button('滚动末段文本至可视区').onClick((event: ClickEvent) => {
+        this.controller.scrollToVisible({start: 64, end: 71})
+      }).margin(5)
+    }
+  }
+}
+```
+
+![RichEditorScrollToVisible](figures/richEditorScrollToVisible.gif)

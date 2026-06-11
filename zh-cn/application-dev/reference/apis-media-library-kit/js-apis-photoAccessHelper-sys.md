@@ -4029,9 +4029,11 @@ getAssetCompatibleUris(bundleName: string, assets: Array&lt;PhotoAsset&gt;, comp
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
+import { dataSharePredicates } from '@kit.ArkData';
+
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
-    let bundleName: string = 'com.example.helloworld';
+    let bundleName: string = 'com.example.helloWorld';
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
     let fetchOptions: photoAccessHelper.FetchOptions = {
       fetchColumns: [photoAccessHelper.PhotoKeys.URI, photoAccessHelper.PhotoKeys.WIDTH, photoAccessHelper.PhotoKeys.HEIGHT],
@@ -4398,7 +4400,7 @@ modifyAlbumDefaultCoverOrder(coverOrderInfos: DefaultCoverOrderInfo[], disableMo
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```javascript
-async function modifyAlbumDefaultCoverOrder() {
+async function modifyAlbumDefaultCoverOrder(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let coverOrderInfos: Array<photoAccessHelper.DefaultCoverOrderInfo> = [];
     let coverOrderInfo: photoAccessHelper.DefaultCoverOrderInfo = {
@@ -4466,7 +4468,7 @@ modifyHiddenAlbumDefaultCoverOrder(coverOrderInfos: DefaultCoverOrderInfo[], dis
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```javascript
-async function modifyHiddenAlbumDefaultCoverOrder() {
+async function modifyHiddenAlbumDefaultCoverOrder(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let coverOrderInfos: Array<photoAccessHelper.DefaultCoverOrderInfo> = [];
     let coverOrderInfo: photoAccessHelper.DefaultCoverOrderInfo = {
@@ -4829,26 +4831,25 @@ createAssetsWithAlbum(creationSettings: CreationSetting[], isRealTimeThumb: bool
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async handleTestApi() {
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     // 构造创建参数。
-    let creationSettings = [
+    let creationSettings: Array<photoAccessHelper.CreationSetting> = [
       {
-        title: this.title,
-        fileNameExtension: this.fileNameExtension,
-        photoType: this.photoType
+        title: 'test',
+        fileNameExtension: 'jpg',
+        photoType: photoAccessHelper.PhotoType.IMAGE
       }
     ];
-    // 指定相册地址。
-    let finalAlbumUri = this.albumUri.trim() || undefined;
     // 创建资产时不实时生成缩略图。
-    let whetherRealTimeThumb = false;
-
+    let isRealTimeThumb: boolean = false;
+    // 指定相册地址。
+    let albumUri: string = 'file://media/PhotoAlbum/10';
     // 调用接口，创建资产。
-    let result = await phAccessHelper.createAssetsWithAlbum(
+    let result: Array<string> = await phAccessHelper.createAssetsWithAlbum(
       creationSettings,
-      whetherRealTimeThumb,
-      finalAlbumUri
+      isRealTimeThumb,
+      albumUri
     );
     console.info('Succeeded in creating assets with album, uri is ' + result);
   } catch (err) {
@@ -4857,7 +4858,212 @@ async handleTestApi() {
 }
 ```
 
-## getAlbumIdByBundleName<sup>22+</sup>
+### canPerformDeepOptimizeSpace
+
+canPerformDeepOptimizeSpace(): Promise&lt;boolean&gt;
+
+查询当前系统是否可以执行深度优化存储空间功能。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.READ_IMAGEVIDEO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示可以调用[startDeepOptimizeSpace](#startdeepoptimizespace)；返回false表示不可以调用[startDeepOptimizeSpace](#startdeepoptimizespace)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let canPerform: boolean = await phAccessHelper.canPerformDeepOptimizeSpace();
+    console.info(`canPerformDeepOptimizeSpace result: ${canPerform}`);
+  } catch (err) {
+    console.error(`canPerformDeepOptimizeSpace failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### getDeepOptimizeSpace
+
+getDeepOptimizeSpace(): Promise&lt;number&gt;
+
+获取可以深度优化存储空间的大小，单位为字节（byte）。使用Promise异步回调。
+
+> - 此接口耗时较长，建议先调用[canPerformDeepOptimizeSpace](#canperformdeepoptimizespace)确认当前系统状态是否允许执行。
+> - 仅在返回true时调用此接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.READ_IMAGEVIDEO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;number&gt; | Promise对象，返回可以深度优化存储空间的大小。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let canPerform: boolean = await phAccessHelper.canPerformDeepOptimizeSpace();
+    if (canPerform) {
+      let size: number = await phAccessHelper.getDeepOptimizeSpace();
+      console.info(`getDeepOptimizeSpace result: ${size}`);
+    }
+  } catch (err) {
+    console.error(`getDeepOptimizeSpace failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### startDeepOptimizeSpace
+
+startDeepOptimizeSpace(callback?: Callback&lt;DeepOptimizeSpaceProgress&gt;): Promise&lt;void&gt;
+
+开启深度优化存储空间。使用Promise异步回调。
+
+建议先调用[canPerformDeepOptimizeSpace](#canperformdeepoptimizespace)确认当前系统状态是否允许执行，仅在返回true时调用此接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                      |
+| -------- | ------------------------ | ---- | ------------------------- |
+| callback | Callback&lt;[DeepOptimizeSpaceProgress](#deepoptimizespaceprogress)&gt; | 否 | 用于返回深度优化进度信息的回调函数。默认值为null。 |
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800201 | Unsupported operation type. Possible causes:<br>1. Repeatedly started;<br>2. System is busy, please try again later. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    await phAccessHelper.startDeepOptimizeSpace((progress: photoAccessHelper.DeepOptimizeSpaceProgress) => {
+      console.info(`startDeepOptimizeSpace progress: state=${progress.state}, progress=${progress.progress}`);
+    });
+    console.info('startDeepOptimizeSpace successfully');
+  } catch (err) {
+    console.error(`startDeepOptimizeSpace failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### stopDeepOptimizeSpace
+
+stopDeepOptimizeSpace(): Promise&lt;void&gt;
+
+停止深度优化存储空间。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    await phAccessHelper.stopDeepOptimizeSpace();
+    console.info('stopDeepOptimizeSpace successfully');
+  } catch (err) {
+    console.error(`stopDeepOptimizeSpace failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### getAlbumIdByBundleName<sup>22+</sup>
 
 getAlbumIdByBundleName(bundleName: string): Promise&lt;number&gt;
 
@@ -4914,27 +5120,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     }
 }
 ```
-
-## DefaultCoverOrderInfo
-
-相册默认封面选择规则信息。
-
-**起始版本：** 26.0.0
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-| 名称                    | 类型                | 只读 | 可选 | 说明                          |
-| ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| albumType    | [AlbumType](arkts-apis-photoAccessHelper-e.md#albumtype)   | 否 | 否   | 相册类型。 |
-| albumSubtype    | [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype)   | 否 | 否   | 相册子类型。 |
-| lpath    | string   | 否 | 是   | 相册的虚拟路径。 |
-| orderKey    | [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)   | 否 | 否   | 默认封面选择依赖的主字段。 |
-| orderSubKey    | [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)   | 否 | 否   | 默认封面选择依赖的辅助字段。 |
-| orderType    | number   | 否 | 否   | 默认封面选择依赖字段的排序类型。<br>值为整数，取值范围为[0, 1]。0表示按照orderKey和orderSubKey字段降序排列选择默认封面，1表示按照orderKey和orderSubKey字段升序排列选择默认封面。 |
 
 ## PhotoAsset
 
@@ -8860,6 +9045,61 @@ async function example(context: Context, assetUri: string) {
 }
 ```
 
+### setMovingPhotoVersion
+
+setMovingPhotoVersion(version: number): void
+
+保存动态照片的版本号。
+
+**起始版本**：26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名        | 类型      | 必填   | 说明                                 |
+| ---------- | ------- | ---- | ---------------------------------- |
+| version | number | 是    | 设置动态照片的版本号信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202        |  Called by non-system application.         |
+| 23800151 | Parameter error, Only supports 9. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('setMovingPhotoVersionDemo');
+  let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  let fetchOption: photoAccessHelper.FetchOptions = {
+    fetchColumns: [],
+    predicates: predicates
+  };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  let asset = await fetchResult.getFirstObject();
+  let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(asset);
+
+  let movingPhotoVersion: number = 9;
+  assetChangeRequest.setMovingPhotoVersion(movingPhotoVersion);
+  phAccessHelper.applyChanges(assetChangeRequest).then(() => {
+    console.info('apply setMovingPhotoVersion successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`apply setMovingPhotoVersion failed with error: ${err.code}, ${err.message}`);
+  });
+}
+```
+
 ## MediaAssetsChangeRequest<sup>11+</sup>
 
 批量资产变更请求。
@@ -12307,7 +12547,7 @@ async function example(context: Context) {
 
 ### startDownloadSpecificCloudMedia<sup>21+</sup>
 
-startDownloadSpecificCloudMedia(assetUris: string[], taskSequence?: number): Promise\<Map\<string, CloudAssetDownloadCode\>\>
+startDownloadSpecificCloudMedia(assetUris: string[]): Promise\<Map\<string, CloudAssetDownloadCode\>\>
 
 开始云端媒体资产批量下载任务。使用Promise异步回调。
 
@@ -12322,7 +12562,6 @@ startDownloadSpecificCloudMedia(assetUris: string[], taskSequence?: number): Pro
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | assetUris | string[] | 是   | 需要下载的原图和视频的uri列表。 |
-| taskSequence | number | 否   | 应用设置的序号，值应大于等于0。默认值为0。 <br> **起始版本：** 26.0.0 |
 
 **返回值：**
 
@@ -12352,63 +12591,7 @@ async function example(context: Context) {
     let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
       = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
     let taskRespMap : Map<string, photoAccessHelper.CloudAssetDownloadCode> =
-      await cloudMediaAssetManagerInstance.startDownloadSpecificCloudMedia(assetURIs, 2);
-  } catch (err) {
-    console.error(`failed with error: ${err.code}, ${err.message}`);
-  }
-}
-```
-
-### setDownloadSpecificCloudMediaNetworkPolicy
-
-setDownloadSpecificCloudMediaNetworkPolicy(assetUris: string[], networkPolicy: CloudDownloadNetworkPolicy): Promise\<void\>
-
-设置云端媒体资产批量下载任务的网络策略。使用Promise异步回调。
-
-**起始版本：** 26.0.0
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**需要权限**：ohos.permission.READ_IMAGEVIDEO 和 ohos.permission.CLOUDFILE_SYNC_MANAGER
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| assetUris | string[]  | 是   | 需要设置策略的下载的原图和视频的URI列表。<br>当传入null、undefined和空列表时，表示已存在的所有批量下载任务都将使用networkPolicy指定的网络策略。。 |
-| networkPolicy | [CloudDownloadNetworkPolicy](#clouddownloadnetworkpolicy) | 是   | 批量下载网络策略。 |
-
-
-**返回值：**
-
-| 类型                                    | 说明              |
-| --------------------------------------- | ----------------- |
-| Promise\<void\> | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. The assetUris array is empty; 2. The assetUris array size is bigger than 500.|
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
-
-**示例：**
-
-```ts
-async function example(context: Context) {
-  console.info('PauseDownloadSpecificCloudMediaDemo');
-  try {
-    let assetURIs: Array<string> = [
-       'file://media/Photo/12/IMG_1755046662_091/IMG_20250801_175331.jpg'];
-    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
-      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
-    await cloudMediaAssetManagerInstance.setDownloadSpecificCloudMediaNetworkPolicy(assetURIs, photoAccessHelper.CloudDownloadNetworkPolicy.CELL);
+      await cloudMediaAssetManagerInstance.startDownloadSpecificCloudMedia(assetURIs);
   } catch (err) {
     console.error(`failed with error: ${err.code}, ${err.message}`);
   }
@@ -12673,66 +12856,6 @@ async function example(context: Context) {
     predicates.orderByAsc("file_id");
     let count : number =
        await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaTaskCount(predicates);
-  } catch (err) {
-    console.error(`failed with error: ${err.code}, ${err.message}`);
-  }
-}
-```
-
-### queryDownloadSpecificCloudMediaTaskCountAndSize
-
-queryDownloadSpecificCloudMediaTaskCountAndSize(predicates: dataSharePredicates.DataSharePredicates): Promise\<number[]\>
-
-查询云端媒体资产批量下载任务的总量和大小。使用Promise异步回调。
-
-**起始版本：** 26.0.0
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**需要权限**：ohos.permission.READ_IMAGEVIDEO
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 谓词查询，显示过滤条件。 |
-
-**返回值：**
-
-| 类型                                    | 说明              |
-| --------------------------------------- | ----------------- |
-| Promise\<number[]\> | Promise对象，返回下载任务的总量和大小。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |
-| 201      | Permission denied.                |
-| 202      | Called by non-system application. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
-| 23800151 | Scenario parameters fail to pass the verification. Possible causes: predicates null or undefined. |
-
-**示例：**
-
-```ts
-import { dataSharePredicates } from '@kit.ArkData'
-
-async function example(context: Context) {
-  console.info('QueryDownloadSpecificCloudMediaTaskCountDemo');
-  try {
-    let cloudMediaAssetManagerInstance: photoAccessHelper.CloudMediaAssetManager
-      = photoAccessHelper.CloudMediaAssetManager.getCloudMediaAssetManagerInstance(context);
-    let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    predicates.orderByAsc("file_id");
-    let countAndSize : number[] =
-       await cloudMediaAssetManagerInstance.queryDownloadSpecificCloudMediaTaskCountAndSize(predicates);
-    console.info('count: ' + countAndSize[0] + ', size: ' + countAndSize[1]);
   } catch (err) {
     console.error(`failed with error: ${err.code}, ${err.message}`);
   }
@@ -13404,6 +13527,7 @@ async function example(context: Context) {
 | LCD_FILE_SIZE | 'lcd_file_size' | LCD图大小。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | HIDDEN_TIME | 'hidden_time'  | 文件隐藏时间（隐藏文件时间距1970年1月1日的毫秒数值）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 | FILE_HIDDEN | 'file_hidden' | 文件的隐藏状态。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
+| ATTACHMENT_SIZE | 'attachment_size' | 附件文件的大小。单位为字节（Byte）。<br>默认值为-1，表示尚未识别的附件文件大小。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |
 
 
 ## AlbumKeys
@@ -14701,22 +14825,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | SUSPICIOUS |  2 |  疑似风险图片。  |
 | REJECTED |  3 |  确认风险图片。  |
 
-## CloudDownloadNetworkPolicy
-
-枚举，批量下载网络策略类型枚举。
-
-**起始版本：** 26.0.0
-
-**系统接口**：此接口为系统接口。
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-| 名称  |  值 |  说明 |
-| ----- |  ---- |  ---- |
-| DEFAULT |  0 |  默认，用户未确认弹窗，仅WIFI网络下载。|
-| CELL |  1 |  用户已确认弹窗，蜂窝网络和WIFI网络均可下载。  |
-| WIFI |  2 |  用户已确认弹窗，WIFI网络可下载。  |
-
 ## AppLinkState<sup>24+</sup>
 
 枚举，用于标识文件记忆链接的状态信息。
@@ -14732,3 +14840,61 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | DEFAULT |  0 |  无法确定文件是否具有记忆链接标记。|
 | HAS_NO_LINK |  1 |  文件无记忆链接标记。  |
 | HAS_LINK |  2 |  文件具有记忆链接标记。  |
+
+## DefaultCoverOrderInfo
+
+相册默认封面选择规则信息。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                    | 类型                | 只读 | 可选 | 说明                          |
+| ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
+| albumType    | [AlbumType](arkts-apis-photoAccessHelper-e.md#albumtype)   | 否 | 否   | 相册类型。 |
+| albumSubtype    | [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype)   | 否 | 否   | 相册子类型。 |
+| lpath    | string   | 否 | 是   | 相册的虚拟路径。 |
+| orderKey    | [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)   | 否 | 否   | 默认封面选择依赖的主字段。 |
+| orderSubKey    | [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)   | 否 | 否   | 默认封面选择依赖的辅助字段。 |
+| orderType    | number   | 否 | 否   | 默认封面选择依赖字段的排序类型。<br>值为整数，取值范围为[0, 1]。0表示按照orderKey和orderSubKey字段降序排列选择默认封面，1表示按照orderKey和orderSubKey字段升序排列选择默认封面。 |
+
+## DeepOptimizeState
+
+表示深度优化存储空间的状态类型的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| RUNNING |  0 |  深度优化存储空间正在进行。|
+| COMPLETED |  1 |  深度优化存储空间成功完成。  |
+| FAILED |  2 |  深度优化存储空间失败。  |
+| STOPPED |  3 |  深度优化存储空间已停止。  |
+| INTERRUPTED |  4 |  深度优化存储空间被中断。  |
+
+## DeepOptimizeSpaceProgress
+
+深度优化存储空间的进度信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| state | [DeepOptimizeState](#deepoptimizestate)  | 否 | 否 | 当前深度优化状态。 |
+| progress  | number  |否 |否 | 深度优化进度百分比。取值范围为[0, 100]。  |

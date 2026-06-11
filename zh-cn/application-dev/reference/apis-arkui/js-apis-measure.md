@@ -30,9 +30,7 @@ import { MeasureText } from '@kit.ArkUI';
 
 ## MeasureText.measureText<sup>(deprecated)</sup>
 
-ArkTS-Dyn: static measureText(options: MeasureOptions): number
-
-ArkTS-Sta: static measureText(options: MeasureOptions): double
+static measureText(options: MeasureOptions): number
 
 计算指定文本作为单行文本显示时的宽度。如果文本包含多行（由换行符`\n`分隔），则返回其中最长的行的宽度。
 
@@ -48,9 +46,11 @@ ArkTS-Sta: static measureText(options: MeasureOptions): double
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta接口是[MeasureText.measureText](#measuretextmeasuretext23)。
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -62,7 +62,7 @@ ArkTS-Sta: static measureText(options: MeasureOptions): double
 
 | 类型          | 说明       |
 | ------------  | --------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 文本宽度。<br/>单位：px |
+| number        | 文本宽度。<br/>单位：px |
 
 > **说明：**
 >
@@ -94,6 +94,40 @@ struct Index {
 }
 ```
 
+## MeasureText.measureText<sup>23+</sup>
+
+static measureText(options: MeasureOptions): double
+
+计算指定文本作为单行文本显示时的宽度。如果文本包含多行（由换行符`\n`分隔），则返回其中最长的行的宽度。
+
+> **说明：**
+>
+> - 建议使用[measureText](arkts-apis-uicontext-measureutils.md#measuretext12)替代。measureText需要先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象，然后通过该对象进行调用。
+>
+> - 直接使用MeasureText可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](./arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)实例。
+>
+> - measureText接口的计算结果始终是单行文本的宽度，入参options中配置的布局约束（如constraintWidth、maxLines）对measureText的结果没有影响。如果需要计算布局约束下的宽度，请使用[measureTextSize](arkts-apis-uicontext-measureutils.md#measuretextsize12)方法。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[MeasureText.measureText](#measuretextmeasuretextdeprecated)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                              | 必填   | 说明        |
+| ------- | ------------------------------- | ---- | --------- |
+| options | [MeasureOptions](#measureoptions) | 是    | 被计算文本描述信息。 |
+
+**返回值：**
+
+| 类型          | 说明       |
+| ------------  | --------- |
+| double        | 文本宽度。<br/>单位：px |
+
 ## MeasureText.measureTextSize<sup>(deprecated)</sup>
 
 static measureTextSize(options: MeasureOptions): SizeOptions
@@ -108,9 +142,13 @@ static measureTextSize(options: MeasureOptions): SizeOptions
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[MeasureText.measureTextSize](#measuretextmeasuretextsize23)。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -124,7 +162,7 @@ static measureTextSize(options: MeasureOptions): SizeOptions
 
 | 类型          | 说明       |
 | ------------  | --------- |
-| [SizeOptions](arkui-ts/ts-types.md#sizeoptions)  | 返回文本所占布局宽度和高度。<br/>**说明:**  <br/>文本宽度以及高度返回值单位均为px。 |
+| [SizeOptions](arkui-ts/ts-types.md#sizeoptions)  | 返回文本所占布局宽度和高度。<br/>**说明：**  <br/>文本宽度以及高度返回值单位均为px。 |
 
 > **说明：**
 >
@@ -156,6 +194,40 @@ struct Index {
   }
 }
 ```
+
+## MeasureText.measureTextSize<sup>23+</sup>
+
+static measureTextSize(options: MeasureOptions): SizeOptions
+
+计算指定文本的宽度和高度。
+
+> **说明：**
+>
+> - 建议使用[measureTextSize](arkts-apis-uicontext-measureutils.md#measuretextsize12)替代。measureTextSize需要先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象，然后通过该对象进行调用。
+>
+> - 直接使用MeasureText可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](./arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[MeasureText.measureTextSize](#measuretextmeasuretextsizedeprecated)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                              | 必填   | 说明        |
+| ------- | ------------------------------- | ---- | --------- |
+| options | [MeasureOptions](#measureoptions) | 是    | 被计算文本描述信息。 |
+
+**返回值：**
+
+| 类型          | 说明       |
+| ------------  | --------- |
+| [SizeOptions](arkui-ts/ts-types.md#sizeoptions)  | 返回文本所占布局宽度和高度。<br/>**说明：**  <br/>文本宽度以及高度返回值单位均为px。 |
 
 ## MeasureOptions
 

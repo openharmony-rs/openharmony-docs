@@ -261,7 +261,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    }
    ```
 
-   ![en-us_image_0000001173324843](figures/en-us_image_0000001173324843.png)
+   ![chart01](figures/chart01.png)
 
 2. Bar chart
    ```html
@@ -329,7 +329,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    }
    ```
 
-   ![en-us_image_0000001173164929](figures/en-us_image_0000001173164929.png)
+   ![chart](figures/chart.png)
 
 3. Gauge chart
    ```html
@@ -358,7 +358,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    }
    ```
 
-   ![en-us_image_0000001127125264](figures/en-us_image_0000001127125264.png)
+   ![gauge](figures/gauge.png)
 
 4. Circle chart of progresses, loading progresses, or proportions
    ```html

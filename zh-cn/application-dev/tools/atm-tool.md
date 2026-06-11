@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-Access Token Manager (程序访问控制管理工具，简称atm工具)，是用于查询<!--Del-->或设置<!--DelEnd-->应用进程的权限、使用类型等信息的工具，为开发者提供了根据tokenId、包名、进程名等信息进行访问控制管理的能力。
+Access Token Manager (程序访问控制管理工具，简称atm工具)，是用于查询或设置应用进程的权限、使用类型等信息的工具，为开发者提供了根据tokenId、包名、进程名等信息进行访问控制管理的能力。
 
 ## 环境说明
 在使用本工具前，开发者需要先获取[hdc工具](../dfx/hdc.md)，执行hdc shell。
@@ -17,7 +17,7 @@ Access Token Manager (程序访问控制管理工具，简称atm工具)，是用
 | 命令                | 描述 |
 | ------------------- | -----------|
 | help                | 帮助命令，显示atm支持的命令信息。 |
-| <!--DelRow-->perm   | 权限命令，为应用进程授予或取消权限。 |
+| perm                | 权限命令，为应用进程授予、取消权限或重置user_grant权限状态。从API版本26.0.0开始，<!--Del-->此命令在非root版本下，仅<!--DelEnd-->支持对debug签名应用执行上述操作。 |
 | <!--DelRow-->toggle | 弹窗开关/权限使用记录开关状态命令，设置或获取权限弹窗/权限使用记录开关状态。 此命令仅在root版本下可用。|
 | dump                | 查询命令，用于查询访问控制相关数据信息。 |
 
@@ -29,12 +29,12 @@ atm help
 ```
 
 
-<!--Del-->
-
 ## 权限命令
 ```bash
-atm perm [-h] [-g -i <token-id> -p <permission-name>] [-c -i <token-id> -p <permission-name>]
+atm perm [-h] [-g -i <token-id> -p <permission-name>] [-c -i <token-id> -p <permission-name>] [-r -i <token-id>] [-r -b <bundle-name>]
 ```
+
+下表所列命令中，-g、-c、-r为必选参数，且只能单独使用。对atm perm -g和atm perm -c命令，-i和-p为必选参数；对atm perm -r命令，-i和-b参数只能单独使用，且不支持-p参数；-b参数仅支持和-r参数组合使用。
 
 **权限命令参数列表**
 | 参数                                               | 参数说明                  | 
@@ -42,6 +42,8 @@ atm perm [-h] [-g -i <token-id> -p <permission-name>] [-c -i <token-id> -p <perm
 | -h                                        | 帮助信息。atm perm支持的命令集合。 |
 | -g&nbsp;-i \<token-id\>&nbsp;-p \<permission-name\> | -g、-i、-p均为必选参数，通过应用进程的tokenId授予指定权限。返回是否成功。    | 
 | -c&nbsp;-i \<token-id\>&nbsp;-p \<permission-name\> | -c、-i、-p均为必选参数，通过应用进程的tokenId取消指定权限。返回是否成功。    | 
+| -r&nbsp;-i \<token-id\> | -r、-i均为必选参数，通过应用进程的tokenId重置user_grant权限状态。返回是否成功。<br>**说明**：从API版本26.0.0开始，支持该参数。 |
+| -r&nbsp;-b \<bundle-name\> | -r、-b均为必选参数，通过应用进程的包名重置同包名应用的user_grant权限状态。返回是否成功。<br>**说明**：从API版本26.0.0开始，支持该参数。 |
 
 示例：
 
@@ -54,8 +56,16 @@ atm perm -g -i ********* -p ohos.permission.CAMERA
 
 # 为应用进程取消相机权限
 atm perm -c -i ********* -p ohos.permission.CAMERA
+
+# 重置指定应用进程的user_grant权限状态
+atm perm -r -i *********
+
+# 重置指定包名下应用进程的user_grant权限状态
+atm perm -r -b com.ohos.bundlename
 ```
 
+
+<!--Del-->
 
 ## 弹窗开关状态命令
 
@@ -124,14 +134,14 @@ atm dump [-h] [-d [-p <permission-name>]] [-t [-i <token-id>] [-b <bundle-name>]
 
 | 参数                                          | 参数说明                                                 | 
 | ----------------------------------------------- | ---------------------------------------------------- | 
+| -h                                     | 帮助信息。                              | 
 | -d                                     | 必选参数，查询系统中所有的权限定义。                               | 
 | -d&nbsp;-p \<permission-name\>              | 可选参数，通过权限名，查询权限定义。                              | 
-| -h                                     | 帮助信息。                              | 
 | -t                                     | 必选参数，查询系统中所有进程的tokenId。                             | 
 | -t&nbsp;-i \<token-id\>                     | 可选参数，通过进程的tokenId，查询该进程的基本信息以及对应的[GrantStatus](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。             | 
 | -t&nbsp;-b \<bundle-name\>                  |  可选参数，通过应用进程的包名bundle-name，查询该应用的基本信息以及对应的[GrantStatus](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。     | 
 | -t&nbsp;-n \<process-name\>                 |  可选参数，通过进程名process-name，查询该进程的基本信息以及对应的[GrantStatus](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。  |
-| -t&nbsp;-p \<permission-name\>                 |  可选参数，通过权限名，查询申请该权限的应用进程的tokenId。<br>**说明**：从版本26.0.0开始，支持该参数。  |
+| -t&nbsp;-p \<permission-name\>                 |  可选参数，通过权限名，查询申请该权限的应用进程的tokenId。<br>**说明**：从API版本26.0.0开始，支持该参数。  |
 | <!--DelRow-->-r                        |  必选参数，查询系统内的所有[PermissionUsedResponse](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。                           | 
 | <!--DelRow-->-r&nbsp;-i \<token-id\>        | 可选参数，通过应用进程的tokenId，查询该应用的[PermissionUsedResponse](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。        | 
 | <!--DelRow-->-r&nbsp;-p \<permission-name\> | 可选参数，通过权限名，查询该权限的[PermissionUsedResponse](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。                        |

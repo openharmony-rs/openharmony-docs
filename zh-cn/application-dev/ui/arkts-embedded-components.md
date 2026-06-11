@@ -30,7 +30,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 - 应用范围
 
-  EmbeddedComponent组件只能在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用。
+  EmbeddedComponent组件只能在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用；从API版本26.0.0开始，如果EmbeddedComponent所属应用申请了ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA权限（该权限仅企业普通应用可申请），且该应用的[appIdentifier](../quick-start/common-problem-of-application.md#什么是appidentifier)在EmbeddedUIExtensionAbility支持的应用清单（即[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中，则允许EmbeddedComponent跨应用拉起EmbeddedUIExtensionAbility。
 
 - 属性限制
 
@@ -68,12 +68,19 @@ export struct Embedded {
     bundleName: 'com.samples.uiextensionandaccessibility',
     abilityName: 'ExampleEmbeddedAbility',
   };
+  @State dpiFollowStrategy: EmbeddedDpiFollowStrategy = EmbeddedDpiFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_DPI;
+  @State windowStrategy: EmbeddedWindowModeFollowStrategy = EmbeddedWindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
+
   build() {
     // ...
       Row() {
         Column() {
           Text(this.message).fontSize(30)
-          EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
+          // 可以在构造时传递options参数以设置相关策略
+          EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION, {
+            windowModeFollowStrategy: this.windowStrategy,
+            dpiFollowStrategy: this.dpiFollowStrategy
+          })
             .width('100%')
             .height('90%')
             .onTerminated((info) => {
@@ -83,6 +90,10 @@ export struct Embedded {
             .onError((error) => {
               // 失败或异常触发onError回调，文本框显示如下报错内容
               this.message = `Error: code = ${error.code}`;
+            })
+            .onDrawReady(() => {
+              // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调，文本框显示如下信息
+              this.message = 'onDrawReady';
             })
         }
         .width('100%')
@@ -96,35 +107,49 @@ export struct Embedded {
 ArkTS-Sta示例：
 
 ``` TypeScript
-'use static'
-
-import { Want } from '@kit.AbilityKit';
 import { State } from '@ohos.arkui.stateManagement'
-import { Entry, Component, Column, Row, Text, EmbeddedType, EmbeddedComponent } from '@ohos.arkui.component';
+import { Entry, wrapBuilder, Component, ComponentContent, Column, Color, Row, Text, EmbeddedType, LoadingProgress, EmbeddedComponent, EmbeddedDpiFollowStrategy, EmbeddedWindowModeFollowStrategy, TerminationInfo} from '@ohos.arkui.component';
+import { Callback, ErrorCallback, BusinessError, RecordData } from '@ohos.base';
 
+@Builder
+function LoadingBuilder() {
+  Column(undefined) {
+    LoadingProgress()
+      .color(Color.Blue)
+  }
+}
 @Entry
 @Component
-export struct Embedded {
+struct Embedded {
   @State message: string = 'Message: ';
-  private want: Want = {
-    bundleName: 'com.samples.uiextensionandaccessibility',
-    abilityName: 'ExampleEmbeddedAbility',
-  };
+  private initPlaceholder : ComponentContent = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder));
   build() {
     Row() {
-      Column(undefined) {
-        Text(this.message).fontSize(30)
-        EmbeddedComponent(this.want)
-          .width('100%')
-          .height('90%')
-          .onTerminated((info) => {
-            this.message = `Termination: code = ${info.code} , want = ${JSON.stringify(info.want)}`;
-          })
-          .onError((error) => {
-            this.message = `Error: code = ${error.code}`;
-          })
-      }
-      .width('100%')
+      Text(this.message).fontSize(30)
+      EmbeddedComponent({
+          bundleName: 'com.samples.uiextensionandaccessibility',
+          abilityName: 'ExampleEmbeddedAbility',
+        }, EmbeddedType.EMBEDDED_UI_EXTENSION,
+        {
+          placeholder: this.initPlaceholder,
+          areaChangePlaceholder: {
+            "FOLD_TO_EXPAND" : this.initPlaceholder,
+          },
+          windowModeFollowStrategy: EmbeddedWindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE,
+          dpiFollowStrategy: EmbeddedDpiFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_DPI
+        })
+        .width('100%')
+        .height('90%')
+        .onTerminated((info: TerminationInfo) => {
+          this.message = `Termination: code = ${info.code} , want = ${JSON.stringify(info.want)}`;
+        } as Callback<TerminationInfo>)
+        .onError((error: BusinessError) => {
+          this.message = `Error: code = ${error.code}`;
+        } as ErrorCallback<BusinessError>)
+        .onDrawReady(() => {
+          // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调，文本框显示如下信息
+          this.message = `onDrawReady`;
+        })
     }
     .height('100%')
   }

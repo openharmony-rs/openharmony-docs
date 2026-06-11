@@ -56,6 +56,8 @@ ArkTS-Sta: enableNestedScroll(enabled: boolean | undefined)
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 14
@@ -85,6 +87,8 @@ ArkTS-Sta: scrollBarColor(color: ColorMetrics | undefined)
 设置滚动条滑块的颜色，仅滚动条不放置子组件时生效。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -254,7 +258,7 @@ struct ScrollBarExample {
 }
 ```
 
-![zh-cn_image_scrollbar](figures/zh-cn_image_scrollbar.gif)
+![zh-cn_image_scrollbar](figures/image-scrollbar.gif)
 
 ## 示例3（支持嵌套滚动）
 

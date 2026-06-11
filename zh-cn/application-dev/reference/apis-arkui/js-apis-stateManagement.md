@@ -44,7 +44,7 @@ static&nbsp;connect\<T extends object\>( </br >
 
 将键值对数据储存在应用内存中。如果给定的key已经存在于[AppStorageV2](../../ui/state-management/arkts-new-appstoragev2.md)中，返回对应的值；否则，通过获取默认值的构造器构造默认值，并返回。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,7 +98,7 @@ static&nbsp;remove\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithAr
 
 将指定的键值对数据从[AppStorageV2](../../ui/state-management/arkts-new-appstoragev2.md)里面删除。如果指定的键值不存在于AppStorageV2中，将删除失败。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,7 +133,7 @@ static&nbsp;keys():&nbsp;Array\<string\>
 
 获取[AppStorageV2](../../ui/state-management/arkts-new-appstoragev2.md)中的所有key。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,7 +166,7 @@ static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefin
 
 将键值对数据储存在应用磁盘中。如果给定的key已经存在于[PersistenceV2](../../ui/state-management/arkts-new-persistencev2.md)中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。如果globalConnect的是[\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)对象，该对象[\@Trace](../../ui/state-management/arkts-new-observedV2-and-trace.md)属性的变化，会触发整个关联对象的自动刷新；非\@Trace属性变化则不会，如有必要，可调用[PersistenceV2.save](#save)接口手动存储。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -255,7 +255,7 @@ static globalConnect\<T extends CollectionType<S\>, S extends object\>( </br >
 将键值对数据储存在应用磁盘中。支持集合类型[`Array`，`Map`，`Set`，`Date`，`collections.Array`, `collections.Map`, `collections.Set`类型的持久化](../../ui/state-management/arkts-new-persistencev2.md#globalconnect支持集合的类型)。注意在持久化`Array<ClassA>`类型的数据时，需要调用[`makeObserved`](#makeobserved)使返回的对象被观察到。不支持多个嵌套集合，例如不支持`Array<Array<ClassA>>`的持久化。
 
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -340,7 +340,7 @@ static&nbsp;save\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithArgs
 
 将指定的键值对数据持久化一次。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -382,7 +382,7 @@ static notifyOnError(callback: PersistenceErrorCallback | undefined): void
 
 在持久化失败时调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -405,7 +405,7 @@ PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
 
 globalConnect参数类型。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -420,7 +420,7 @@ globalConnect参数类型。
 
 [globalConnect](#globalconnect23)接口参数类型，ConnectOptionsCollections继承自[ConnectOptions\<T\>](#connectoptionst18)。当开发者需要持久化容器类型数据（如`Array<S>`）时，需要使用`ConnectOptionsCollections`入参。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -521,7 +521,7 @@ Set\<S\> | collections.Array\<S\> | collections.Map\<string | number, S\> | coll
 
 globalConnect的入参泛型，用于定义globalConnect支持的持久化集合数据类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -540,7 +540,7 @@ globalConnect的入参泛型，用于定义globalConnect支持的持久化集合
 
 对象是否可被观察的结果。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -556,7 +556,7 @@ globalConnect的入参泛型，用于定义globalConnect支持的持久化集合
 
 可被观察对象关联的装饰器和组件信息。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -574,7 +574,7 @@ globalConnect的入参泛型，用于定义globalConnect支持的持久化集合
 
 可被观察对象关联的组件信息，包含系统组件和自定义组件。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -595,7 +595,7 @@ static getTarget\<T extends object\>(source: T): T
 
 从状态管理框架包裹的代理对象中获取原始对象。详见[getTarget接口：获取状态管理框架代理前的原始对象](../../ui/state-management/arkts-new-getTarget.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -643,7 +643,7 @@ static getLifecycle\<T extends BaseCustomComponent\>(customComponent: T): Custom
 
 getLifecycle用于获取[自定义组件的生命周期](./arkui-ts/ts-custom-component-new-lifecycle.md)实例。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -690,7 +690,7 @@ static canBeObserved\<T extends object\>(source: T): ObservedResult
 
 判断数据对象是否为可观察对象，并返回观察结果。详见[canBeObserved接口：判断对象是否为可被观察对象](../../ui/state-management/arkts-new-canBeObserved.md)。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -825,7 +825,7 @@ static makeObserved\<T extends object\>(source: T): T
 
 将普通不可观察数据变为可观察数据。详见[makeObserved接口：将非观察数据变为可观察数据](../../ui/state-management/arkts-new-makeObserved.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -877,7 +877,7 @@ static enableV2Compatibility\<T extends object\>(source: T): T
 
 使V1的状态变量能够在\@ComponentV2中观察，主要应用于状态管理V1、V2混用场景。详见[状态管理V1和V2混用指导（API version 19及之后）](../../ui/state-management/arkts-v1-v2-mixusage.md)。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -942,7 +942,7 @@ static makeV1Observed\<T extends object\>(source: T): T
 
 该接口可搭配[enableV2Compatibility](#enablev2compatibility19)应用于状态管理V1和V2混用场景，详见[状态管理V1和V2混用指导（API version 19及之后）](../../ui/state-management/arkts-v1-v2-mixusage.md)。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1009,7 +1009,7 @@ static makeBinding\<T\>(getter: GetterCallback\<T\>): Binding\<T\>
 
 创建只读的单向数据绑定实例，用于构建[\@Builder](../../ui/state-management/arkts-builder.md)函数中参数类型为`Binding`的对应实参。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1074,7 +1074,7 @@ static makeBinding\<T\>(getter: GetterCallback\<T\>, setter: SetterCallback\<T\>
 
 创建可修改的双向数据绑定实例，用于构建\@Builder函数中参数类型为`MutableBinding`的对应实参。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1144,7 +1144,7 @@ static addMonitor(target: object, path: string | string[], monitorCallback: Moni
 
 给状态管理V2的状态变量动态添加监听方法，详见[addMonitor/clearMonitor](../../ui/state-management/arkts-new-addMonitor-clearMonitor.md)。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1218,7 +1218,7 @@ static clearMonitor(target: object, path: string | string[], monitorCallback?: M
 
 删除通过[addMonitor](#addmonitor20)给状态管理V2的状态变量添加的监听方法，详见[addMonitor/clearMonitor](../../ui/state-management/arkts-new-addMonitor-clearMonitor.md)。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1299,7 +1299,7 @@ static applySync\<T\>(task: TaskCallback): T
 
 同步刷新指定的状态变量，该接口接收一个闭包函数，仅刷新闭包函数内的修改，包括更新[@Computed计算](../../ui/state-management/arkts-new-computed.md)、[@Monitor回调](../../ui/state-management/arkts-new-monitor.md)以及重新渲染UI节点，详见[applySync/flushUpdates/flushUIUpdates接口：同步刷新](../../ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1375,7 +1375,7 @@ static flushUpdates(): void
 
 同步刷新在调用该函数之前所有的状态变量修改，包括更新@Computed计算、@Monitor回调以及重新渲染UI节点，详见[applySync/flushUpdates/flushUIUpdates接口：同步刷新](../../ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1439,7 +1439,7 @@ static flushUIUpdates(): void
 
 立即处理在调用该函数之前所有的状态变量修改，同步[标脏](../../ui/state-management/arkts-state-management-introduce.md#触发更新)对应的UI节点，但不会同步执行@Computed计算和@Monitor回调，详见[applySync/flushUpdates/flushUIUpdates接口：同步刷新](../../ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1505,7 +1505,7 @@ getCustomComponentContext\<T extends BaseCustomComponent\>(customComponent: T): 
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1546,7 +1546,7 @@ struct ReusableChild {
 @Entry
 @ComponentV2({ 
   reusePool: 'shared', // 声明共享全局复用池
-  poolAccepts: ['ReusableChild'], // 全局复用池接纳子组件类型ReusableChild 
+  poolAccepts: [ReusableChild], // 全局复用池接纳子组件类型ReusableChild
   freezeWhenInactive: false // 关闭组件冻结功能。该参数必须声明reusePools时提供，也可以开启组件冻结。
 })
 struct Index {
@@ -1589,7 +1589,7 @@ type TaskCallback = () => T
 
 同步执行的回调方法。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1607,15 +1607,15 @@ type TaskCallback = () => T
 
 | 名称 | 类型 | 只读 | 可选 | 说明     |
 | ------ | ---- | ---- | ---- | ------------ |
-|isSynchronous|boolean|否|是|配置当前回调函数是否为同步回调。true为同步回调。默认值为false，即异步回调。<br>**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。|
-|enableWildcard|boolean|否|是|配置当前addMonitor是否使能通配符能力。true为使能通配符能力，false为关闭通配符能力。默认值为false，即关闭通配符能力。当关闭通配符能力，但路径中含有通配符时，该路径将视为不合法路径。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+|isSynchronous|boolean|否|是|配置当前回调函数是否为同步回调。true为同步回调。默认值为false，即异步回调。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。|
+|enableWildcard|boolean|否|是|配置当前addMonitor是否使能通配符能力。true为使能通配符能力，false为关闭通配符能力。默认值为false，即关闭通配符能力。当关闭通配符能力，但路径中含有通配符时，该路径将视为不合法路径。<br>**起始版本：** 26.0.0 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## MonitorCallback<sup>20+</sup>
 type MonitorCallback = (monitorValue: IMonitor) => void
 
 参数为[IMonitor](./arkui-ts/ts-state-management-watch-monitor.md#imonitor12)类型的监听回调函数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1631,7 +1631,7 @@ type StorageDefaultCreator\<T\> = () => T
 
 返回默认构造器的函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1684,7 +1684,7 @@ new(...args: any): T
 
 创建并返回一个指定类型T的实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1739,7 +1739,7 @@ type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' 
 
 持久化失败时返回错误原因的回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1804,7 +1804,7 @@ new(): T
 
 创建并返回一个指定类型T的实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1856,7 +1856,7 @@ type TypeDecorator = \<T\>(type: TypeConstructor\<T\>) => PropertyDecorator
 
 属性装饰器，用于装饰嵌套类中属于自定义class类的属性。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1935,7 +1935,7 @@ type GetterCallback\<T\> = () => T
 
 获取值的回调方法。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1987,7 +1987,7 @@ type SetterCallback\<T\> = (newValue: T) => void
 
 设置值的回调方法。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2045,7 +2045,7 @@ get value(): T
 
 提供get访问器，用于获取绑定的值。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2101,7 +2101,7 @@ set value(newValue: T)
 
 提供set访问器，用于设置当前绑定值的值。构造MutableBinding类实例时必须提供set访问器，否则触发set访问器会造成运行时错误。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2116,7 +2116,7 @@ get value(): T
 
 提供get访问器，用于获取当前绑定值。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2171,7 +2171,7 @@ struct CompV2 {
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2181,11 +2181,11 @@ struct CompV2 {
 
 getReusePool(): IReusePool | undefined
 
-返回该自定义组件拥有的全局复用池。如果组件没有通过`reusePool`和`poolAccepts`配置复用池，则返回`undefined`。配置全局复用池方式请参考[全局复用开发指南](../../../application-dev/ui/state-management/arkts-global-reuse-pool.md)。
+返回该自定义组件拥有的全局复用池。如果组件或其上层组件没有通过`reusePool`和`poolAccepts`配置全局复用池，则返回`undefined`。配置全局复用池方式请参考[全局复用开发指南](../../../application-dev/ui/state-management/arkts-global-reuse-pool.md)。
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2211,11 +2211,10 @@ struct ReusableChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct PoolOwner {
   checkPool() {
-    const context = UIUtils.getCustomComponentContext(this);
-    const pool = context.getReusePool();
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
     if (pool) {
       console.info('Global reuse pool configured.');
     } else {
@@ -2226,6 +2225,10 @@ struct PoolOwner {
   build() {
     Column() {
       ReusableChild()
+      Button('Check Pool')
+        .onClick(() => {
+          this.checkPool();
+        })
     }
   }
 }
@@ -2237,7 +2240,7 @@ struct PoolOwner {
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2245,13 +2248,13 @@ struct PoolOwner {
 
 ### getReusableInfo
 
-getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IReusableInfo | IReusableInfo[] | undefined
+getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IReusableInfo[] | IReusableInfo | undefined
 
 检索此复用池中给定可复用组件类型的回收实例信息。
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2268,7 +2271,7 @@ getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IR
 
 | 类型 | 说明 |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [IReusableInfo](#ireusableinfo) \| [IReusableInfo](#ireusableinfo)[] \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`且复用组件未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`但复用组件使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
+| [IReusableInfo](#ireusableinfo)[] \| [IReusableInfo](#ireusableinfo) \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`参数且复用组件在创建时未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`参数但复用组件在创建时使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
 
 **示例：**
 
@@ -2291,7 +2294,7 @@ struct ReusableChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['ReusableChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct PoolOwner {
   @Local showChild: boolean = true;
 
@@ -2339,13 +2342,13 @@ struct PoolOwner {
 
 ### preRender
 
-preRender(builder: WrappedBuilder\<[]\>, n: number): Promise\<void\>
+preRender(builder: WrappedBuilder\<[]\>, times: number): Promise\<void\>
 
-预创建@Reusable/@ReusableV2组件并将它们放入此复用池中。
+调用空闲任务以预创建可复用组件并在首次使用前将其放入复用池。
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2355,8 +2358,8 @@ preRender(builder: WrappedBuilder\<[]\>, n: number): Promise\<void\>
 
 | 参数名  | 类型                 | 必填 |  说明                            |
 | ------- | -------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
-| builder | WrappedBuilder\<[]\> | 是   | 包含要执行`n`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个@Reusable/@ReusableV2组件。 |
-| n   | number               | 是   | 执行@Builder函数的次数。                                                                                                          |
+| builder | [WrappedBuilder](././arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)\<[]\> | 是   | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个[@Reusable](../../ui/state-management/arkts-create-custom-components.md#reusable)/[@ReusableV2](../../ui/state-management/arkts-create-custom-components.md#reusablev2)组件。 |
+| times   | number               | 是   | 执行@Builder函数的次数。                                                                                                          |
 
 **返回值：**
 
@@ -2375,12 +2378,12 @@ preRender(builder: WrappedBuilder\<[]\>, n: number): Promise\<void\>
 **示例：**
 
 ```ts
-import { UIUtils } from '@kit.ArkUI';
+import { UIUtils, IReusableInfo } from '@kit.ArkUI';
 
 @ReusableV2
 @ComponentV2
 struct ReusableComponent {
-  @Require @Param param: number;
+  @Param param: number = 8;
 
   aboutToAppear() {
     console.info('ReusableComponent aboutToAppear');
@@ -2398,40 +2401,56 @@ struct ReusableComponent {
 
 @Builder 
 function preRenderBuilder() {
-  ReusableComponent({ param: 0 })
+  ReusableComponent()
 }
 
 @Entry
-@ComponentV2({ reusePool: 'shared', poolAccepts: ['ReusableComponent'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'shared', poolAccepts: [ReusableComponent], freezeWhenInactive: false })
 struct Index {
   @Local onUIFullyLoaded: boolean = false;
 
   aboutToAppear() {
     // 获取池并调度预渲染。
     const pool = UIUtils.getCustomComponentContext(this).getReusePool();
-    // 预加载preRenderBuilder内的复用组件到当前的全局复用池中，执行一次preRenderBuilder。
     pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder.bind(this)), 1)
       .then(() => {
-        this.onUIFullyLoaded = true;
+        console.info('ReusableComponent preRender completes');
       });
   }
 
+  checkPool() {
+    // 获取全局复用池内组件数量
+    const reusePool = UIUtils.getCustomComponentContext(this).getReusePool();
+    const reusableInfo: IReusableInfo = reusePool!.getReusableInfo(ReusableComponent) as IReusableInfo;
+    console.info(`ReusableComponent reuse pool count=${reusableInfo.count}`);
+  }
+
   build() {
-    Column() {
+    Column({ space: 5 }) {
+      Button('Switch')
+        .onClick(() => {
+          this.onUIFullyLoaded = !this.onUIFullyLoaded;
+        })
+        .width(100)
+      Button('Check pool')
+        .onClick(() => {
+          this.checkPool();
+        })
+        .width(100)
       CompA({ showFullUI: this.onUIFullyLoaded })
     }
+    .width('100%')
   }
 }
 
 @ComponentV2
 struct CompA {
   @Require @Param showFullUI: boolean;
-  @Local param: number = 8;
 
   build() {
     if (this.showFullUI) {
-      // 这将从池中复用预渲染的实例。
-      ReusableComponent({ param: this.param })
+      // 这将从池中复用预渲染的实例
+      ReusableComponent()
     }
   }
 }
@@ -2445,7 +2464,7 @@ struct CompA {
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2485,7 +2504,7 @@ struct TestChild {
 }
 
 @Entry
-@ComponentV2({ reusePool: 'perInstance', poolAccepts: ['TestChild'], freezeWhenInactive: false })
+@ComponentV2({ reusePool: 'perInstance', poolAccepts: [TestChild], freezeWhenInactive: false })
 struct PoolOwner {
   @Local showA: boolean = true;
   @Local showB: boolean = true;
@@ -2544,7 +2563,7 @@ type ReusableComponentConstructor = Function
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

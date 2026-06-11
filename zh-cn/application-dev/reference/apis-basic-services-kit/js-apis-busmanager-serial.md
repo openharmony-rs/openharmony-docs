@@ -550,6 +550,182 @@ port.sendBrk().then(() => {
 });
 ```
 
+### setDtr
+
+setDtr(enable: boolean): Promise&lt;void&gt;
+
+设置DTR（数据终端就绪）信号状态。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明                                       |
+| ------ | -------- | ---- | ------------------------------------------ |
+| enable | boolean  | 是   | DTR信号状态，true表示数据终端就绪；false表示数据终端未就绪。 |
+
+**返回值：**
+
+| 类型                | 说明                    |
+| ------------------- | ----------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍参见[串口管理错误码](errorcode-busmanager-serial.md)。
+
+| 错误码ID | 错误信息                          |
+| -------- | --------------------------------- |
+| 35700001 | Service error.                    |
+| 35700003 | Virtual serial port disconnected. |
+| 35700005 | Port not open.                    |
+
+**示例：**
+
+```ts
+import { serial } from "@kit.BasicServicesKit";
+
+// 设置DTR信号
+port.setDtr(true).then(() => {
+  console.info('setDtr success');
+}).catch((error: Error) => {
+  console.error(`setDtr error: ${JSON.stringify(error)}`);
+});
+```
+
+### getDsr
+
+getDsr(): Promise&lt;boolean&gt;
+
+获取DSR（数据设备就绪）信号状态。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
+
+**返回值：**
+
+| 类型                     | 说明                                             |
+| ------------------------ | ------------------------------------------------ |
+| Promise&lt;boolean&gt;   | Promise对象，返回DSR信号状态；true表示数据设备就绪；false表示数据设备未就绪。 |
+
+**错误码：**
+
+以下错误码的详细介绍参见[串口管理错误码](errorcode-busmanager-serial.md)。
+
+| 错误码ID | 错误信息                          |
+| -------- | --------------------------------- |
+| 35700001 | Service error.                    |
+| 35700003 | Virtual serial port disconnected. |
+| 35700005 | Port not open.                    |
+
+**示例：**
+
+```ts
+import { serial } from "@kit.BasicServicesKit";
+
+// 获取DSR信号状态
+port.getDsr().then((dsr: boolean) => {
+  console.info('getDsr success, dsr: ' + dsr);
+}).catch((error: Error) => {
+  console.error(`getDsr error: ${JSON.stringify(error)}`);
+});
+```
+
+### onDisconnect
+
+onDisconnect(callback: Callback&lt;void&gt;): void
+
+监听串口断开事件。使用callback异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                             |
+| -------- | --------------------- | ---- | -------------------------------- |
+| callback | Callback&lt;void&gt;  | 是   | 回调函数，串口断开时触发。 |
+
+**错误码：**
+
+以下错误码的详细介绍参见[串口管理错误码](errorcode-busmanager-serial.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | -------------------- |
+| 35700001 | Service error.       |
+| 35700005 | Port not open.       |
+
+**示例：**
+
+```ts
+import { serial } from "@kit.BasicServicesKit";
+
+// 监听串口断开事件
+port.onDisconnect(() => {
+  console.info('serial port disconnected');
+});
+```
+
+### offDisconnect
+
+offDisconnect(callback?: Callback&lt;void&gt;): void
+
+取消监听串口断开事件。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.BusManager.Serial
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明                                                   |
+| -------- | --------------------- | ---- | ------------------------------------------------------ |
+| callback | Callback&lt;void&gt;  | 否   | 回调函数。不传入callback时，清除所有串口断开事件监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍参见[串口管理错误码](errorcode-busmanager-serial.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | -------------------- |
+| 35700001 | Service error.       |
+| 35700005 | Port not open.       |
+
+**示例：**
+
+```ts
+import { serial } from "@kit.BasicServicesKit";
+
+// 取消监听串口断开事件
+port.offDisconnect();
+
+// 取消指定的监听回调
+let disconnectedCallback = () => {
+  console.info('serial port disconnected');
+};
+port.offDisconnect(disconnectedCallback);
+```
+
 ## SerialPortInfo
 
 串口设备信息。
@@ -612,6 +788,8 @@ port.sendBrk().then(() => {
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.BusManager.Serial
 

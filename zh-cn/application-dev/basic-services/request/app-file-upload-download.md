@@ -24,6 +24,8 @@
 
 以下示例代码展示了两种将缓存文件上传至服务器的方法：
 
+ArkTS-Dyn示例：
+
 <!-- @[request_upload_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
 
 ``` TypeScript
@@ -141,17 +143,150 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[request_upload_file](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/upload/RequestUpload.ets)-->
+
+``` TypeScript
+async requestUploadFile(fileName: string, callback: (progress: int, isSuccess: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 获取应用文件路径
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  let url: string = await urlUtils.getUrl(context);
+  let cacheDir: string = context.cacheDir;
+
+  // 新建一个本地应用文件
+  try {
+    let file = fileIo.openSync(cacheDir + '/test.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+    fileIo.writeSync(file.fd, 'upload file test');
+    fileIo.closeSync(file);
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
+  }
+
+  // 上传任务配置项
+  let files: request.File[] = [
+    // uri前缀internal://cache 对应cacheDir目录
+    {
+      filename: fileName,
+      name: 'test',
+      uri: 'internal://cache/' + fileName,
+      type: 'txt'
+    }
+  ];
+  let data: request.RequestData[] = [{ name: 'name', value: 'value' }];
+  let uploadConfig: request.UploadConfig = {
+    url: url,
+    header: {
+      'key1': 'value1',
+      'key2': 'value2'
+    },
+    method: 'POST',
+    files: files,
+    data: data
+  };
+
+  // 将本地应用文件上传至网络服务器
+  try {
+    let uploadTask: request.UploadTask = await request.uploadFile(context, uploadConfig);
+    uploadTask.onProgress((uploadedSize: Long, totalSize: Long): void => {
+      let progress: int = totalSize > 0 ? Long.toInt(uploadedSize * 100 / totalSize) : 0;
+      logger.info(TAG, `upload progress=${progress}%`);
+    });
+    uploadTask.onComplete((taskStates: request.TaskState[]): void => {
+      for (let i: int = 0; i < taskStates.length; i++) {
+        logger.info(TAG, `upload complete taskState: ${JSON.stringify(taskStates[i])}`);
+      }
+      callback(100, true);
+    });
+    uploadTask.onFail((taskStates: request.TaskState[]): void => {
+      logger.error(TAG, `upload failed taskState: ${JSON.stringify(taskStates)}`);
+      callback(100, false);
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
+    callback(100, false);
+  }
+}
+```
+
+<!-- -->
+
+<!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/upload/RequestUpload.ets)--> 
+
+``` TypeScript
+async requestAgentUpload(fileName: string, callback: (progress: int, isSucceed: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 获取应用文件路径
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  let url: string = await urlUtils.getUrl(context);
+  let cacheDir: string = context.cacheDir;
+
+  let attachments: request.agent.FormItem[] = [{
+    name: 'test',
+    value: [
+      {
+        filename: fileName,
+        path: cacheDir + '/' + fileName,
+      },
+    ]
+  }];
+  let config: request.agent.Config = {
+    action: request.agent.Action.UPLOAD,
+    url: url,
+    mode: request.agent.Mode.FOREGROUND,
+    overwrite: true,
+    method: 'POST',
+    headers: {
+      'key1': 'value1',
+      'key2': 'value2'
+    },
+    data: attachments
+  };
+  try {
+    let task: request.agent.Task = await request.agent.create(context, config);
+      
+    // 注册回调
+    task.onProgress((progress: request.agent.Progress): void => {
+      logger.info(TAG, `Request upload status ${progress.state}, uploaded ${progress.processed}`);
+    });
+    task.onCompleted((progress: request.agent.Progress): void => {
+      logger.info(TAG, `Request upload completed`);
+      callback(100, true);
+      request.agent.remove(task.tid);
+    });
+    task.onFailed((progress: request.agent.Progress): void => {
+      logger.error(TAG, `Request upload failed, ${JSON.stringify(progress)}`);
+      callback(100, false);
+      request.agent.remove(task.tid);
+    });
+      
+    // 启动任务
+    await task.start();
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    logger.error(TAG, `Failed to start the upload task, code=${err.code}, message=${err.message}`);
+    callback(100, false);
+  }
+}
+```
+
+
 ## 下载网络资源文件至应用文件目录
 
-开发者可以使用上传下载模块（[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)）的下载接口将网络资源文件下载到应用文件目录。对已下载的网络资源应用文件，开发者可以使用基础文件IO接口（[ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）对其进行访问，使用方式与[应用文件访问](../../file-management/app-file-access.md)一致。文件下载过程使用系统服务代理完成，在api12中request.agent.create接口增加了设置代理地址参数，支持用户设置自定义代理地址。
+开发者可以使用上传下载模块（[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)）的下载接口将网络资源文件下载到应用文件目录。对已下载的网络资源应用文件，开发者可以使用基础文件IO接口（[ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）对其进行访问，使用方式与[应用文件访问](../../file-management/app-file-access.md)一致。文件下载过程使用系统服务代理完成，在API version 12中request.agent.create接口增加了设置代理地址参数，支持用户设置自定义代理地址。
 
 > **说明：**
 >
-> 当前网络资源文件仅支持下载至应用文件目录。
+> 从API version 20开始支持下载网络资源文件到用户文件。
 >
 > 使用上传下载模块，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
 
 以下示例代码展示了将网络资源文件下载到应用内部文件目录的两种方法（示例requestDownloadFile中的clearExistFile方法可点击代码块右下角链接查看）：
+
+ArkTS-Dyn示例：
 
 <!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 
@@ -228,16 +363,109 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: n
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/RequestDownload.ets)-->
+
+``` TypeScript
+async requestDownloadFile(url: string, fileName: string, callback: (progress: int, isSuccess: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 获取应用文件路径
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  let filesDir: string = context.cacheDir;
+  let filePath: string = filesDir + '/' + fileName;
+  this.clearExistFile(filePath);
+  try {
+    let downloadTask: request.DownloadTask = await request.downloadFile(context, {
+      url: url,
+      filePath: filePath,
+    });
+    downloadTask.onProgress((receivedSize: Long, totalSize: Long): void => {
+      let progress: int = totalSize > 0 ? Long.toInt(receivedSize * 100 / totalSize) : 0;
+      logger.info(TAG, `download progress=${progress}%`);
+    });
+    downloadTask.onComplete(() => {
+      // 获取文件状态信息，其中包含大小
+      let fileStat = fileIo.statSync(filePath);
+      let fileSize: Long = fileStat.size;
+      logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
+      callback(100, true);
+    });
+    downloadTask.onFail((err: int): void => {
+      logger.error(TAG, `download failed, err=${err}`);
+      callback(100, false);
+    });
+  } catch (error) {
+    let err: Error = error;
+    logger.error(TAG, `downloadFile catch error, message=${err.message}`);
+    callback(100, false);
+  }
+}
+```
+
+<!-- -->
+
+<!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/RequestDownload.ets)-->
+
+``` TypeScript
+async requestAgentDownload(url: string, fileName: string, callback: (progress: int, isSuccess: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 获取应用文件路径
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  let filesDir: string = context.cacheDir;
+
+  let config: request.agent.Config = {
+    action: request.agent.Action.DOWNLOAD,
+    url: url,
+    saveas: fileName,
+    gauge: true,
+    overwrite: true,
+    network: request.agent.Network.WIFI,
+  };
+  try {
+    let task: request.agent.Task = await request.agent.create(context, config);
+      
+    // 注册回调
+    task.onProgress((progress: request.agent.Progress): void => {
+      logger.info(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
+    });
+    task.onCompleted((progress: request.agent.Progress): void => {
+      logger.info(TAG, `Request download completed`);
+      let filePath: string = filesDir + '/' + fileName;
+      let fileStat = fileIo.statSync(filePath);
+      let fileSize: Long = fileStat.size;
+      logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
+      callback(100, true);
+      request.agent.remove(task.tid);
+    });
+    task.onFailed((progress: request.agent.Progress): void => {
+      logger.error(TAG, `Request download failed, ${JSON.stringify(progress)}`);
+      callback(100, false);
+      request.agent.remove(task.tid);
+    });
+      
+    // 启动任务
+    await task.start();
+  } catch (error) {
+    let err: Error = error;
+    logger.error(TAG, `download agent task catch error, message=${err.message}`);
+    callback(100, false);
+  }
+}
+```
+
 ## 下载网络资源文件至用户文件
-开发者可以使用[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)的[request.agent](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)接口下载网络资源文件到指定的用户文件目录。
+开发者可以使用[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)的[request.agent.create](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)接口下载网络资源文件到指定的用户文件目录。
 
 > **说明：**
 >
-> 从API version 20开始支持下载网络资源文件至用户文件。
+> 从API version 20开始支持下载网络资源文件到用户文件。
 
 ### 下载文档类文件
 
 开发者可以通过调用[DocumentViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)的[save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
+
+ArkTS-Dyn示例：
 
 <!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets)-->
 
@@ -306,9 +534,79 @@ async docFileAgentTask(url: string, fileName: string, callback: (progress: numbe
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/userFile/DocumentDownload.ets)-->
+
+``` TypeScript
+async docFileAgentTask(url: string, fileName: string, callback: (progress: int, isSuccess: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 创建文件管理器选项实例。
+  try {
+    const documentSaveOptions: picker.DocumentSaveOptions = {
+      newFileNames: [fileName],
+      fileSuffixChoices: ['文档|.txt', '.pdf']
+    };
+    let uri: string = '';
+    // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+    const documentViewPicker = new picker.DocumentViewPicker(context);
+    let documentSaveResult: string[] = await documentViewPicker.save(documentSaveOptions);
+    uri = documentSaveResult[0];
+    logger.info(TAG, `DocumentViewPicker.save to file succeed and uri is ${uri}`);
+      
+    if (uri != '') {
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: url,
+        // saveas字段是DocumentViewPicker保存的文件的uri
+        saveas: uri,
+        gauge: true,
+        // overwrite字段必须为true
+        overwrite: true,
+        network: request.agent.Network.WIFI,
+        // mode字段必须为request.agent.Mode.FOREGROUND
+        mode: request.agent.Mode.FOREGROUND,
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(context, config);
+          
+        // 注册回调
+        task.onProgress((progress: request.agent.Progress): void => {
+          logger.info(TAG, `download status ${progress.state}, downloaded ${progress.processed}`);
+        });
+        task.onCompleted((progress: request.agent.Progress): void => {
+          logger.info(TAG, `download completed ${JSON.stringify(progress)}`);
+          callback(100, true);
+          request.agent.remove(task.tid);
+        });
+        task.onFailed((progress: request.agent.Progress): void => {
+          logger.error(TAG, `download failed ${JSON.stringify(progress)}`);
+          callback(100, false);
+          request.agent.remove(task.tid);
+        });
+          
+        // 启动任务
+        await task.start();
+      } catch (error) {
+        let err: Error = error;
+        logger.error(TAG, `Failed to create a download task, message=${err.message}`);
+        callback(100, false);
+      }
+    }
+  } catch (error) {
+    let err: Error = error;
+    logger.error(TAG, `Failed to create a documentSaveOptions, message=${err.message}`);
+    callback(100, false);
+    return;
+  }
+}
+```
+
 ### 下载音频类文件
 
 开发者可以通过调用[AudioViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)的[save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save-3)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
+
+ArkTS-Dyn示例：
 
 <!-- @[audio_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/AudioDownload.ets)-->
 
@@ -370,6 +668,73 @@ async audioFileAgentTask(url: string, fileName: string, callback: (progress: num
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[audio_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/userFile/AudioDownload.ets)-->
+
+``` TypeScript
+async audioFileAgentTask(url: string, fileName: string, callback: (progress: int, isSuccess: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 创建文件管理器选项实例。
+  const audioSaveOptions: picker.AudioSaveOptions = {
+    newFileNames: [fileName]
+  };
+
+  let uri: string = '';
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  const audioViewPicker = new picker.AudioViewPicker(context);
+  try {
+    let audioSelectResult: string[] = await audioViewPicker.save(audioSaveOptions);
+    uri = audioSelectResult[0];
+    logger.info(TAG, `AudioViewPicker.save to file succeed and uri is ${uri}`);
+      
+    if (uri != '') {
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: url,
+        // saveas字段是AudioViewPicker保存的文件的uri
+        saveas: uri,
+        gauge: true,
+        // overwrite字段必须为true
+        overwrite: true,
+        network: request.agent.Network.WIFI,
+        // mode字段必须为request.agent.Mode.FOREGROUND
+        mode: request.agent.Mode.FOREGROUND,
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(context, config);
+          
+        // 注册回调
+        task.onProgress((progress: request.agent.Progress): void => {
+          logger.info(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
+        });
+        task.onCompleted((progress: request.agent.Progress): void => {
+          logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
+          callback(100, true);
+          request.agent.remove(task.tid);
+        });
+        task.onFailed((progress: request.agent.Progress): void => {
+          logger.error(TAG, `Request download failed, ${JSON.stringify(progress)}`);
+          callback(100, false);
+          request.agent.remove(task.tid);
+        });
+          
+        // 启动任务
+        await task.start();
+      } catch (error) {
+        let err: Error = error;
+        logger.error(TAG, `Failed to create a download task, message=${err.message}`);
+        callback(100, false);
+      }
+    }
+  } catch (err) {
+    let error: Error = err;
+    logger.error(TAG, `Invoke audioViewPicker.save failed, message is ${error.message}`);
+    callback(100, false);
+  }
+}
+```
+
 
 ### 下载图片或视频类文件
 
@@ -378,6 +743,8 @@ async audioFileAgentTask(url: string, fileName: string, callback: (progress: num
 需要权限：[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo)
 
 权限[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo)是[权限机制中的基本概念](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)中system_basic(系统基础服务)级别的[受限开放权限](../../security/AccessToken/restricted-permissions.md)，normal等级的应用需要将自身的APL等级声明为system_basic及以上。授权方式为user_grant，需要[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+
+ArkTS-Dyn示例：
 
 <!-- @[media_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/MediaDownload.ets)--> 
 
@@ -477,12 +844,125 @@ async mediaFileAgentTask(url: string, callback: (progress: number, isSuccess: bo
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[media_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/userFile/MediaDownload.ets)--> 
+
+``` TypeScript
+async mediaFileAgentTask(url: string, callback: (progress: int, isSuccess: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  let bundleFlags: int = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
+    bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_METADATA;
+  // 获取应用程序的accessTokenID。
+  let tokenID: int = 0;
+  try {
+    let data: bundleManager.BundleInfo = await bundleManager.getBundleInfoForSelf(bundleFlags);
+    logger.info(TAG, `Request getBundleInfoForSelf successfully. Data: ${JSON.stringify(data)}`);
+    let appInfo: bundleManager.ApplicationInfo = data.appInfo!;
+    tokenID = appInfo.accessTokenId.toInt();
+  } catch (err) {
+    let error: Error = err;
+    logger.error(TAG, `GetBundleInfoForSelf failed: ${error.message}`);
+  }
+
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let grant: boolean = true;
+  // 校验应用是否授予权限。使用Promise异步回调。
+  try {
+    let data: abilityAccessCtrl.GrantStatus = await atManager.checkAccessToken(tokenID, 'ohos.permission.WRITE_IMAGEVIDEO');
+    logger.info(TAG, `Request checkAccessToken success, data->${JSON.stringify(data)}`);
+    if (data != abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED) {
+      grant = false;
+    }
+  } catch (err) {
+    let error: Error = err;
+    logger.error(TAG, `CheckAccessToken fail, message=${error.message}`);
+  }
+
+  if (!grant) {
+    // 用于UIAbility拉起弹框请求用户授权。使用callback异步回调。
+    try {
+      let data: PermissionRequestResult = await atManager.requestPermissionsFromUser(context, ['ohos.permission.WRITE_IMAGEVIDEO']);
+      logger.info(TAG, `Request grant: ${JSON.stringify(data)}`);
+      logger.info(TAG, `Request grant permissions: ${data.permissions}`);
+      logger.info(TAG, `Request grant authResults: ${data.authResults}`);
+      logger.info(TAG, `Request grant dialogShownResults: ${data.dialogShownResults}`);
+    } catch (err) {
+      let error: Error = err;
+      logger.error(TAG, `Grant error, message=${error.message}`);
+    }
+  }
+
+  try {
+    let photoType: photoAccessHelper.PhotoType = photoAccessHelper.PhotoType.IMAGE;
+    let extension: string = 'jpg';
+    let options: photoAccessHelper.CreateOptions = {
+      title: 'media'
+    };
+    // 获取相册管理模块的实例，用于访问和修改相册中的媒体文件。
+    let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+    if (phAccessHelper == null) {
+      logger.error(TAG, 'getPhotoAccessHelper failed, phAccessHelper is null');
+      callback(100, false);
+      return;
+    }
+    // 指定文件类型、后缀和创建选项，创建图片或视频资源，以Promise方式返回结果。
+    let uri: string = await phAccessHelper.createAsset(photoType, extension, options);
+    logger.info(TAG, `Request createAsset uri ${uri}`);
+
+    let config: request.agent.Config = {
+      action: request.agent.Action.DOWNLOAD,
+      url: url,
+      // saveas字段是PhotoAccessHelper保存的文件的uri
+      saveas: uri,
+      gauge: true,
+      // overwrite字段必须为true
+      overwrite: true,
+      network: request.agent.Network.WIFI,
+      // mode字段必须为request.agent.Mode.FOREGROUND
+      mode: request.agent.Mode.FOREGROUND,
+    };
+    try {
+      let task: request.agent.Task = await request.agent.create(context, config);
+        
+      // 注册回调
+      task.onProgress((progress: request.agent.Progress): void => {
+        logger.info(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
+      });
+      task.onCompleted((progress: request.agent.Progress): void => {
+        logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
+        callback(100, true);
+        request.agent.remove(task.tid);
+      });
+      task.onFailed((progress: request.agent.Progress): void => {
+        logger.error(TAG, `Request download failed, ${JSON.stringify(progress)}`);
+        callback(100, false);
+        request.agent.remove(task.tid);
+      });
+        
+      // 启动任务
+      await task.start();
+    } catch (err) {
+      let error: Error = err;
+      logger.error(TAG, `Failed to operate a download task, message=${error.message}`);
+      callback(100, false);
+    }
+  } catch (error) {
+    let err: Error = error;
+    logger.error(TAG, `Failed to create a media download task, message=${err.message}`);
+    callback(100, false);
+  }
+}
+```
+
 
 ## 添加任务速度限制与超时限制
 
 开发者可以使用[ohos.request (上传下载)](../../reference/apis-basic-services-kit/js-apis-request.md)模块中的接口上传本地文件或下载网络资源文件。为方便对任务速度及时长进行限制，分别在API version 18中增加了[setMaxSpeed](../../reference/apis-basic-services-kit/js-apis-request.md#setmaxspeed18)接口，支持用户设置任务的最高速度限制；在API version 20的[request.agent.create](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10-1)接口中增加了最低限速及超时参数，支持用户自定义最低速度限制以及超时时间。
 
 以下是对下载任务进行速度限制与超时限制的方式的示例代码演示：
+
+ArkTS-Dyn示例：
 
 <!-- @[speed_limit_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/SpeedLimitDownload.ets)--> 
 
@@ -556,6 +1036,84 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[speed_limit_download](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/SpeedLimitDownload.ets)--> 
+
+``` TypeScript
+async speedLimitDownload(url: string, fileName: string, callback: (progress: int, isSuccess: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 获取应用文件路径
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  let filesDir: string = context.cacheDir;
+
+  let config: request.agent.Config = {
+    action: request.agent.Action.DOWNLOAD,
+    url: url,
+    saveas: fileName,
+    gauge: true,
+    overwrite: true,
+    network: request.agent.Network.WIFI,
+    // 最低速度限制规则：
+    // 1. 若任务速度持续低于设定值（如：16 * 1024 B/s）达到指定时长（如：10s），则任务失败
+    // 2. 重置计时条件：
+    // - 任一秒速度超过最低限速
+    // - 任务暂停后恢复
+    // - 任务停止后重启
+    minSpeed: {
+      speed: 16 * 1024,
+      duration: 10
+    },
+    // 超时控制规则：
+    // 1. 连接超时（connectionTimeout）：
+    // - 单次连接建立耗时超过设定值（如：60s）则任务失败
+    // - 多次连接时各次独立计时（不累积）
+    // 2. 总超时（totalTimeout）：
+    // - 任务总耗时（含连接+传输时间）超过设定值（如：120s）则失败
+    // - 暂停期间不计时，恢复后累积计时
+    // 3. 重置计时条件：任务失败或停止时重置计时
+    timeout: {
+      connectionTimeout: 60,
+      totalTimeout: 120,
+    }
+  };
+  try {
+    let task: request.agent.Task = await request.agent.create(context, config);
+    // 设置任务速度上限
+    task.setMaxSpeed(10 * 1024 * 1024).then(() => {
+      logger.info(TAG, `Succeeded in setting the max speed of the task. result: ${task.tid}`);
+    }).catch((err: Error) => {
+      logger.error(TAG, `Failed to set the max speed of the task, message=${err.message}`);
+    });
+      
+    // 注册回调
+    task.onProgress((progress: request.agent.Progress): void => {
+      logger.info(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
+    });
+    task.onCompleted((progress: request.agent.Progress): void => {
+      logger.info(TAG, `Request download completed`);
+      let filePath: string = filesDir + '/' + fileName;
+      let fileStat = fileIo.statSync(filePath);
+      let fileSize: Long = fileStat.size;
+      logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
+      callback(100, true);
+      request.agent.remove(task.tid);
+    });
+    task.onFailed((progress: request.agent.Progress): void => {
+      logger.error(TAG, `Request download failed, ${JSON.stringify(progress)}`);
+      callback(100, false);
+      request.agent.remove(task.tid);
+    });
+      
+    // 启动任务
+    await task.start();
+  } catch (err) {
+    let error: Error = err;
+    logger.error(TAG, `Failed to create a download task, message: ${error.message}`);
+    callback(100, false);
+  }
+}
+```
 
 ## 添加网络配置
 
@@ -584,7 +1142,7 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
             "include-subdomains": true,
             "name": "*.example.com"
           }
-        ],
+        ]
       }
     ]
   }
@@ -602,6 +1160,8 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
 ### 示例代码
 
 以下示例代码展示了如何创建一个带有wantAgent功能的下载任务：
+
+ArkTS-Dyn示例：
 
 <!-- @[want_agent_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/WantAgentDownload.ets)-->
 
@@ -686,6 +1246,96 @@ async wantAgentDownload(url: string, fileName: string, callback: (progress: numb
   } catch (error) {
     let err: BusinessError = error as BusinessError;
     logger.error(TAG, `Failed to operate a download task, Code: ${err.code}, message: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[want_agent_download](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/WantAgentDownload.ets)-->
+
+``` TypeScript
+async wantAgentDownload(url: string, fileName: string, callback: (progress: int, isSuccess: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+
+  // 创建wantAgentInfo对象，用于定义点击通知后要执行的操作
+  let wantAgentInfo: wantAgent.WantAgentInfo = {
+    wants: [
+      {
+        deviceId: '',
+        bundleName: 'com.samples.uploaddownloadstatic', // 替换为实际应用的包名
+        abilityName: 'EntryAbility', // 替换为实际的ability名称
+        action: '',
+        entities: [],
+        uri: '',
+        parameters: {} // 可以传递自定义参数
+      }
+    ],
+    actionType: wantAgent.OperationType.START_ABILITY,
+    requestCode: 0,
+    actionFlags: [wantAgent.WantAgentFlags.CONSTANT_FLAG]
+  };
+
+  // 获取WantAgent实例
+  let wantAgentInstance: WantAgent;
+  try {
+    wantAgentInstance = await wantAgent.getWantAgent(wantAgentInfo);
+  } catch (error) {
+    let err: Error = error;
+    logger.error(TAG, `Failed to get WantAgent, message: ${err.message}`);
+    callback(100, false);
+    return;
+  }
+
+  let filesDir: string = context.cacheDir;
+  // 创建下载任务配置，包含wantAgent参数
+  let config: request.agent.Config = {
+    action: request.agent.Action.DOWNLOAD,
+    url: url, // 替换为实际的下载地址
+    title: '下载任务通知标题',
+    description: '下载任务通知描述',
+    mode: request.agent.Mode.BACKGROUND,
+    overwrite: true,
+    method: 'GET',
+    saveas: fileName,
+    network: request.agent.Network.ANY,
+    gauge: true,
+    notification: {
+      visibility: request.agent.VISIBILITY_COMPLETION | request.agent.VISIBILITY_PROGRESS,
+      wantAgent: wantAgentInstance,
+    }
+  };
+
+  // 创建并启动下载任务
+  try {
+    let task: request.agent.Task = await request.agent.create(context, config);
+      
+    // 注册回调
+    task.onProgress((progress: request.agent.Progress): void => {
+      logger.info(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
+    });
+    task.onCompleted((progress: request.agent.Progress): void => {
+      logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
+      let filePath: string = filesDir + '/' + fileName;
+      let fileStat = fileIo.statSync(filePath);
+      let fileSize: Long = fileStat.size;
+      logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
+      callback(100, true);
+      request.agent.remove(task.tid);
+    });
+    task.onFailed((progress: request.agent.Progress): void => {
+      logger.error(TAG, `Request download failed, ${JSON.stringify(progress)}`);
+      callback(100, false);
+      request.agent.remove(task.tid);
+    });
+      
+    // 启动任务
+    await task.start();
+  } catch (error) {
+    let err: Error = error;
+    logger.error(TAG, `Failed to operate a download task, message: ${err.message}`);
+    callback(100, false);
   }
 }
 ```

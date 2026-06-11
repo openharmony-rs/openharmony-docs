@@ -11,9 +11,13 @@ UIExtensionContext是[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility
 
 > **说明：**
 >
->  - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->  - 本模块接口仅可在Stage模型下使用。
->  - 本模块接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
 
 ## 导入模块
 
@@ -34,6 +38,10 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -86,7 +94,6 @@ import { ShareExtensionAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class ShareExtAbility extends ShareExtensionAbility {
-
   onForeground() {
     let want: Want = {
       bundleName: 'com.example.myapplication',
@@ -94,8 +101,8 @@ export default class ShareExtAbility extends ShareExtensionAbility {
     };
 
     try {
-      this.context.startAbility(want, (err: BusinessError) => {
-        if (err.code) {
+      this.context.startAbility(want, (err: BusinessError<void> | null) => {
+        if (err && err.code !== 0) {
           // 处理业务逻辑错误
           console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
           return;
@@ -124,6 +131,10 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -186,8 +197,8 @@ export default class ShareExtAbility extends ShareExtensionAbility {
     };
 
     try {
-      this.context.startAbility(want, options, (err: BusinessError) => {
-        if (err.code) {
+      this.context.startAbility(want, options, (err: BusinessError<void> | null) => {
+        if (err && err.code !== 0) {
           // 处理业务逻辑错误
           console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
           return;
@@ -216,6 +227,10 @@ startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -289,7 +304,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
           // 执行正常业务
           console.info('startAbility succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((err: BusinessError<void>): void => {
           // 处理业务逻辑错误
           console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -317,6 +332,10 @@ startAbilityForResult(want: Want, callback: AsyncCallback&lt;AbilityResult&gt;):
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -376,15 +395,16 @@ export default class ShareExtAbility extends ShareExtensionAbility {
     };
 
     try {
-      this.context.startAbilityForResult(want, (err: BusinessError, result: common.AbilityResult) => {
-        if (err.code) {
-          // 处理业务逻辑错误
-          console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        // 执行正常业务
-        console.info('startAbilityForResult succeed');
-      });
+      this.context.startAbilityForResult(want,
+        (err: BusinessError<void> | null, result: common.AbilityResult | undefined) => {
+          if (err && err.code !== 0) {
+            // 处理业务逻辑错误
+            console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+          // 执行正常业务
+          console.info('startAbilityForResult succeed');
+        });
     } catch (err) {
       // 处理入参错误异常
       let code = (err as BusinessError).code;
@@ -409,6 +429,10 @@ startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -471,15 +495,16 @@ export default class ShareExtAbility extends ShareExtensionAbility {
     };
 
     try {
-      this.context.startAbilityForResult(want, options, (err: BusinessError, result: common.AbilityResult) => {
-        if (err.code) {
-          // 处理业务逻辑错误
-          console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        // 执行正常业务
-        console.info('startAbilityForResult succeed');
-      });
+      this.context.startAbilityForResult(want, options,
+        (err: BusinessError<void> | null, result: common.AbilityResult | undefined) => {
+          if (err && err.code !== 0) {
+            // 处理业务逻辑错误
+            console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+          // 执行正常业务
+          console.info('startAbilityForResult succeed');
+        });
     } catch (err) {
       // 处理入参错误异常
       let code = (err as BusinessError).code;
@@ -504,6 +529,10 @@ startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityRes
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -578,7 +607,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
           // 执行正常业务
           console.info('startAbilityForResult succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((err: BusinessError<void>): void => {
           // 处理业务逻辑错误
           console.error(`startAbilityForResult failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -595,7 +624,9 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 ### connectServiceExtensionAbility
 
-connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
+ArkTS-Dyn: connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
+
+ArkTS-Sta: connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 将当前UIExtensionAbility连接到一个ServiceExtensionAbility，通过返回的proxy与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。
 
@@ -606,6 +637,10 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-mo
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -618,7 +653,7 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-mo
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回连接id，客户端可以通过[disconnectServiceExtensionAbility](#disconnectserviceextensionability)传入该连接id来断开连接。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 返回连接id，客户端可以通过[disconnectServiceExtensionAbility](#disconnectserviceextensionability)传入该连接id来断开连接。 |
 
 **错误码：**
 
@@ -643,6 +678,8 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-mo
 | 16000070 | The extension cannot start the service. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
@@ -683,9 +720,54 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+// UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
+import { ShareExtensionAbility, Want, common, bundleManager } from '@kit.AbilityKit';
+import rpc from '@ohos.rpc';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { ElementName } from 'bundleManager.ElementName';
+
+export default class ShareExtAbility extends ShareExtensionAbility {
+  onForeground() {
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'ServiceExtensionAbility'
+    };
+    let commRemote: rpc.IRemoteObject;
+    let options: common.ConnectOptions = {
+      onConnect: (elementName: bundleManager.ElementName, remote: rpc.IRemoteObject): void => {
+        console.info(`onConnect elementName: ${JSON.stringify(elementName)}`);
+      },
+      onDisconnect: (elementName: bundleManager.ElementName): void => {
+        console.info(`onDisconnect elementName: ${JSON.stringify(elementName)}`);
+      },
+      onFailed: (code: int): void => {
+        console.error(`onFailed code: ${code}`);
+      }
+    };
+
+    let connection: long;
+    try {
+      connection = this.context.connectServiceExtensionAbility(want, options);
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`connectServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
 ### disconnectServiceExtensionAbility
 
-disconnectServiceExtensionAbility(connection: number): Promise\<void>
+ArkTS-Dyn: disconnectServiceExtensionAbility(connection: number): Promise\<void>
+
+ArkTS-Sta: disconnectServiceExtensionAbility(connection: long): Promise\<void>
 
 断开与ServiceExtensionAbility的连接，断开连接之后开发者需要将连接成功时返回的remote对象置空。使用Promise异步回调。
 
@@ -693,11 +775,15 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-mo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| connection | number | 是 | 连接的ServiceExtensionAbility的标识Id，即[connectServiceExtensionAbility](#connectserviceextensionability)返回的connectionId。 |
+| connection | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是 | 连接的ServiceExtensionAbility的标识Id，即[connectServiceExtensionAbility](#connectserviceextensionability)返回的connectionId。 |
 
 **返回值：**
 
@@ -734,7 +820,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
         commRemote = null;
         // 执行正常业务
         console.info('disconnectServiceExtensionAbility succeed');
-      }).catch((err: BusinessError) => {
+      }).catch((err: BusinessError<void>): void => {
         // 处理业务逻辑错误
         console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
       })
@@ -751,7 +837,9 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 ### disconnectServiceExtensionAbility
 
-disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: disconnectServiceExtensionAbility(connection: long, callback: AsyncCallback\<void>): void
 
 断开与ServiceExtensionAbility的连接，断开连接之后开发者需要将连接成功时返回的remote对象置空。使用callback异步回调。
 
@@ -759,11 +847,15 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-mo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| connection | number | 是 | 连接的ServiceExtensionAbility的标识Id，即connectServiceExtensionAbility返回的connectionId。 |
+| connection | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 连接的ServiceExtensionAbility的标识Id，即connectServiceExtensionAbility返回的connectionId。 |
 | callback | AsyncCallback\<void> | 是 | 回调函数。当断开与ServiceExtensionAbility的连接成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -781,7 +873,7 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-mo
 ```ts
 // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
 import { ShareExtensionAbility } from '@kit.AbilityKit';
-import { rpc } from '@kit.IPCKit';
+import rpc from '@ohos.rpc';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class ShareExtAbility extends ShareExtensionAbility {
@@ -791,9 +883,9 @@ export default class ShareExtAbility extends ShareExtensionAbility {
     let commRemote: rpc.IRemoteObject | null;
 
     try {
-      this.context.disconnectServiceExtensionAbility(connection, (err: BusinessError) => {
+      this.context.disconnectServiceExtensionAbility(connection, (err: BusinessError<void> | null) => {
         commRemote = null;
-        if (err.code) {
+        if (err && err.code !== 0) {
           // 处理业务逻辑错误
           console.error(`disconnectServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
           return;
@@ -820,6 +912,10 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
@@ -844,8 +940,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
     try {
-      this.context.terminateSelf((err: BusinessError) => {
-        if (err.code) {
+      this.context.terminateSelf((err: BusinessError<void> | null) => {
+        if (err && err.code !== 0) {
           // 处理业务逻辑错误
           console.error(`terminateSelf failed, code is ${err.code}, message is ${err.message}`);
           return;
@@ -871,6 +967,10 @@ terminateSelf(): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                                   |
@@ -892,7 +992,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
           // 执行正常业务
           console.info('terminateSelf succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((err: BusinessError<void>): void => {
           // 处理业务逻辑错误
           console.error(`terminateSelf failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -913,6 +1013,10 @@ terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback&lt;voi
 销毁UIExtensionAbility自身，同时关闭对应的窗口界面，并将结果返回给UIExtensionAbility的拉起方，拉起方通常为系统服务。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -950,8 +1054,8 @@ export default class ShareExtAbility extends ShareExtensionAbility {
     };
 
     try {
-      this.context.terminateSelfWithResult(abilityResult, (err: BusinessError) => {
-        if (err.code) {
+      this.context.terminateSelfWithResult(abilityResult, (err: BusinessError<void> | null) => {
+        if (err && err.code !== 0) {
           // 处理业务逻辑错误
           console.error(`terminateSelfWithResult failed, code is ${err.code}, message is ${err.message}`);
           return;
@@ -977,6 +1081,10 @@ terminateSelfWithResult(parameter: AbilityResult): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                                    | 必填 | 说明                                   |
@@ -996,6 +1104,8 @@ terminateSelfWithResult(parameter: AbilityResult): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+
+**示例：**
 
 ```ts
 // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
@@ -1021,7 +1131,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
           // 执行正常业务
           console.info('terminateSelfWithResult succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((err: BusinessError<void>): void => {
           // 处理业务逻辑错误
           console.error(`terminateSelfWithResult failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -1035,13 +1145,17 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-### reportDrawnCompleted<sup>12+<sup>
+### reportDrawnCompleted<sup>12+</sup>
 
 reportDrawnCompleted(callback: AsyncCallback\<void>): void
 
 用于应用通知系统UIExtensionAbility对应的窗口内容已绘制完成。系统会根据开发者调用的时机进行资源分配优化等，以优化应用启动及显示时间。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1059,6 +1173,8 @@ reportDrawnCompleted(callback: AsyncCallback\<void>): void
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
@@ -1095,13 +1211,53 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-### openAtomicService<sup>12+<sup>
+ArkTS-Sta示例：
+
+```ts
+'use static'
+// UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
+import { ShareExtensionAbility, Want, UIExtensionContentSession } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { LocalStorage } from '@ohos.arkui.stateManagement';
+
+const TAG: string = '[testTag] ShareExtAbility';
+
+export default class ShareExtAbility extends ShareExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+    let data: Record<string, UIExtensionContentSession> = {
+      'session': session
+    };
+    let storage: LocalStorage = new LocalStorage(data);
+    session.loadContent('pages/extension', storage);
+    try {
+      this.context.reportDrawnCompleted((err) => {
+        if (err && err.code !== 0) {
+          // 处理业务逻辑错误
+          console.error(`reportDrawnCompleted failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        // 执行正常业务
+        console.info('reportDrawnCompleted succeed');
+      });
+    } catch (err) {
+      // 捕获同步的参数错误
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`reportDrawnCompleted failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+### openAtomicService<sup>12+</sup>
 
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;AbilityResult&gt;
 
 打开一个独立窗口的原子化服务，并返回结果。使用Promise异步回调。
 
 分为以下几种情况：
+
  - 正常情况下可通过调用[terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。
  - 异常情况下比如杀死原子化服务会返回异常信息给调用方，异常信息中resultCode为-1。
  - 如果不同应用多次调用该接口启动同一个原子化服务，当这个原子化服务调用[terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)接口使之终止时，只将正常结果返回给最后一个调用方, 其它调用方返回异常信息，异常信息中resultCode为-1。
@@ -1111,6 +1267,10 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;Abi
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1142,7 +1302,6 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;Abi
 | 16000069 | The extension cannot start the third party application. |
 | 16200001 | The caller has been released. |
 
-
 **示例：**
 
 ```ts
@@ -1163,8 +1322,9 @@ export default class ShareExtAbility extends ShareExtensionAbility {
           // 执行正常业务
           console.info('openAtomicService succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((error: Error) => {
           // 处理业务逻辑错误
+          let err = error as BusinessError;
           console.error(`openAtomicService failed, code is ${err.code}, message is ${err.message}`);
         });
     } catch (err) {
@@ -1177,7 +1337,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-### openLink<sup>12+<sup>
+### openLink<sup>12+</sup>
 
 openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
 
@@ -1197,6 +1357,10 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1239,6 +1403,8 @@ openLink(link: string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;Ab
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
 import { ShareExtensionAbility, Want, UIExtensionContentSession, OpenLinkOptions } from '@kit.AbilityKit';
@@ -1280,7 +1446,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
         openLinkOptions,
         (err, result) => {
           if (err) {
-            console.error(`openLink callback failed, err code: ${err.code}, err msg: ${err.message}.`);
+            console.error(`openLink callback failed, err code: ${err.code}, err message: ${err.message}.`);
             return;
           }
           console.info(`openLink success, result code: ${result.resultCode} result data: ${result.want}.`);
@@ -1288,12 +1454,12 @@ export default class ShareExtAbility extends ShareExtensionAbility {
       ).then(() => {
         console.info(`open link success.`);
       }).catch((err: BusinessError) => {
-        console.error(`open link failed, err code: ${err.code}, err msg: ${err.message}.`);
+        console.error(`open link failed, err code: ${err.code}, err message: ${err.message}.`);
       });
     } catch (err) {
       let code = (err as BusinessError).code;
-      let msg = (err as BusinessError).message;
-      console.error(`openLink failed, err code: ${code}, err msg: ${msg}.`);
+      let message = (err as BusinessError).message;
+      console.error(`openLink failed, err code: ${code}, err message: ${message}.`);
     }
   }
 
@@ -1303,7 +1469,78 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-### startUIServiceExtensionAbility<sup>14+<sup>
+ArkTS-Sta示例：
+
+```ts
+'use static'
+// UIExtensionAbility不支持三方应用直接继承，故以派生类ShareExtensionAbility举例说明。
+import { ShareExtensionAbility, Want, UIExtensionContentSession, OpenLinkOptions, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { LocalStorage } from '@kit.ArkUI';
+
+export default class ShareExtAbility extends ShareExtensionAbility {
+  onCreate() {
+    console.info(`UIExtAbility onCreate`);
+  }
+
+  onForeground() {
+    console.info(`UIExtAbility onForeground`);
+  }
+
+  onBackground() {
+    console.info(`UIExtAbility onBackground`);
+  }
+
+  onDestroy() {
+    console.info(`UIExtAbility onDestroy`);
+    return undefined;
+  }
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    console.info(`UIExtAbility onSessionCreate`);
+    console.info(`UIExtAbility onSessionCreate, want: ${JSON.stringify(want)}`);
+    let record: Record<string, UIExtensionContentSession> = {
+      'session': session
+    };
+    let storage: LocalStorage = new LocalStorage(record);
+    session.loadContent('pages/UIExtensionIndex', storage);
+
+    let link: string = 'https://www.example.com';
+    let openLinkOptions: OpenLinkOptions = {
+      appLinkingOnly: true
+    };
+    try {
+      this.context.openLink(
+        link,
+        openLinkOptions,
+        (err, result) => {
+          if (err) {
+            console.error(`openLink callback failed, err code: ${err.code}, err message: ${err.message}.`);
+            return;
+          }
+          let res = result as common.AbilityResult;
+          console.info(`openLink success, result code: ${res.resultCode} result data: ${res.want}.`);
+        }
+      ).then(() => {
+        console.info(`open link success.`);
+      }).catch((error) => {
+        let err = error as BusinessError;
+        console.error(`open link failed, err code: ${err.code}, err message: ${err.message}.`);
+      });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`openLink failed, err code: ${code}, err message: ${message}.`);
+    }
+  }
+
+  onSessionDestroy(session: UIExtensionContentSession) {
+    console.info(`UIExtAbility onSessionDestroy`);
+  }
+}
+```
+
+### startUIServiceExtensionAbility<sup>14+</sup>
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
@@ -1315,6 +1552,10 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 >
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1351,6 +1592,8 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1375,12 +1618,12 @@ struct Index {
               context.startUIServiceExtensionAbility(startWant).then(() => {
                 console.info(`startUIServiceExtensionAbility success.`);
               }).catch((error: BusinessError) => {
-                console.error(`startUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
+                console.error(`startUIServiceExtensionAbility failed, err code: ${error.code}, err message: ${error.message}.`);
               })
             } catch (err) {
               let code = (err as BusinessError).code;
-              let msg = (err as BusinessError).message;
-              console.error(`startUIServiceExtensionAbility failed, err code: ${code}, err msg: ${msg}.`);
+              let message = (err as BusinessError).message;
+              console.error(`startUIServiceExtensionAbility failed, err code: ${code}, err message: ${message}.`);
             }
           })
       }
@@ -1389,7 +1632,54 @@ struct Index {
 }
 ```
 
-### connectUIServiceExtensionAbility<sup>14+<sup>
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, Column, Button, Row, Component } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Row() {
+        // 创建启动按钮
+        Button('start ability')
+          .enabled(true)
+          .onClick(() => {
+            this.clickFun();
+          })
+      }
+    }
+  }
+
+  private clickFun() {
+    let context = this.getUIContext().getHostContext() as common.UIExtensionContext;
+    let startWant: Want = {
+      bundleName: 'com.acts.uiserviceextensionability',
+      abilityName: 'UiServiceExtAbility',
+    };
+    try {
+      // 启动UIServiceExtensionAbility
+      context.startUIServiceExtensionAbility(startWant).then(() => {
+        console.info(`startUIServiceExtensionAbility success.`);
+      }).catch((err) => {
+        let error = err as BusinessError;
+        console.error(`startUIServiceExtensionAbility failed, err code: ${error.code}, err message: ${error.message}.`);
+      })
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startUIServiceExtensionAbility failed, err code: ${code}, err message: ${message}.`);
+    }
+  }
+}
+```
+
+### connectUIServiceExtensionAbility<sup>14+</sup>
 
 connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise&lt;UIServiceProxy&gt;
 
@@ -1401,6 +1691,10 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 >
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1436,6 +1730,8 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1470,7 +1766,7 @@ struct Page_UIServiceExtensionAbility {
           this.uiServiceProxy = uiServiceProxy;
           console.info(`connectUIServiceExtensionAbility success`);
         }).catch((error: BusinessError) => {
-          console.error(`connectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
+          console.error(`connectUIServiceExtensionAbility failed, err code: ${error.code}, err message: ${error.message}.`);
         })
       })
     }
@@ -1478,13 +1774,74 @@ struct Page_UIServiceExtensionAbility {
 }
 ```
 
-### disconnectUIServiceExtensionAbility<sup>14+<sup>
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { Entry, Column, Text, Row, Component, State } from '@kit.ArkUI';
+
+class MyDataCallBack implements common.UIServiceExtensionConnectCallback {
+  // 接收数据
+  onData(data: Record<string, RecordData>) {
+    console.info(`dataCallBack received data`, JSON.stringify(data));
+  }
+
+  // 连接断开
+  onDisconnect() {
+    console.info(`dataCallBack onDisconnect`);
+  }
+}
+
+@Entry
+@Component
+struct Page_UIServiceExtensionAbility {
+  @State uiServiceProxy: common.UIServiceProxy | null = null;
+
+  build() {
+    Column() {
+      // ...
+      Row() {
+        // ...
+      }.onClick(() => {
+        this.clickFun();
+      })
+    }
+  }
+
+  private clickFun() {
+    const context = this.getUIContext().getHostContext() as common.UIExtensionContext;
+    const want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      abilityName: ''
+    };
+    // 定义回调
+    let callback = new MyDataCallBack();
+    // 连接UIServiceExtensionAbility
+    context.connectUIServiceExtensionAbility(want, callback).then((uiServiceProxy: common.UIServiceProxy) => {
+      this.uiServiceProxy = uiServiceProxy;
+      console.info(`connectUIServiceExtensionAbility success`);
+    }).catch((err) => {
+      let error = err as BusinessError;
+      console.error(`connectUIServiceExtensionAbility failed, err code: ${error.code}, err message: ${error.message}.`);
+    })
+  }
+}
+```
+
+### disconnectUIServiceExtensionAbility<sup>14+</sup>
 
 disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
 断开UIServiceExtensionAbility。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1510,6 +1867,8 @@ disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1529,10 +1888,54 @@ struct Page_UIServiceExtensionAbility {
         context.disconnectUIServiceExtensionAbility(this.uiServiceProxy).then(() => {
           console.info(`disconnectUIServiceExtensionAbility success.`);
         }).catch((error: BusinessError) => {
-          console.error(`disconnectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
+          console.error(`disconnectUIServiceExtensionAbility failed, err code: ${error.code}, err message: ${error.message}.`);
         })
       })
     }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { Entry, Column, Row, Component, State } from '@kit.ArkUI';
+
+class MyComProxy implements common.UIServiceProxy {
+  sendData(data: Record<string, RecordData>) {
+    console.info(`MyComProxy data ${data}`);
+  }
+}
+
+@Entry
+@Component
+struct Page_UIServiceExtensionAbility {
+  @State uiServiceProxy: common.UIServiceProxy | null = null;
+
+  build() {
+    Column() {
+      // ...
+      Row() {
+        // ...
+      }.onClick(() => {
+        this.clickFun();
+      })
+    }
+  }
+
+  private clickFun() {
+    const context = this.getUIContext().getHostContext() as common.UIExtensionContext;
+    // uiServiceProxy是连接时保存的proxy对象
+    let uiServiceProxy = new MyComProxy();
+    context.disconnectUIServiceExtensionAbility(uiServiceProxy).then(() => {
+      console.info(`disconnectUIServiceExtensionAbility success.`);
+    }).catch((err) => {
+      let error = err as BusinessError;
+      console.info(`disconnectUIServiceExtensionAbility failed, err code: ${error.code}, err message: ${error.message}.`);
+    })
   }
 }
 ```
@@ -1549,11 +1952,15 @@ setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型          | 必填 | 说明                 |
 | ------ | ------------- | ---- | -------------------- |
-| colorMode | [ConfigurationConstant.ColorMode](js-apis-app-ability-configurationConstant.md#colormode) | 是   | 设置颜色模式，包括：<br> - COLOR_MODE_DARK：深色模式 <br> - COLOR_MODE_LIGHT：浅色模式 <br> - COLOR_MODE_NOT_SET：不设置（跟随系统或应用）|
+| colorMode | [ConfigurationConstant.ColorMode](js-apis-app-ability-configurationConstant.md#colormode) | 是   | 设置颜色模式，包括：<br> - COLOR_MODE_DARK：深色模式 <br> - COLOR_MODE_LIGHT：浅色模式 <br> - COLOR_MODE_NOT_SET：不设置（跟随系统或应用）。 |
 
 **错误码**：
 

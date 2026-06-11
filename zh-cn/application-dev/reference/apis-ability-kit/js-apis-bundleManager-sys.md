@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[应用程序包管理模块](js-apis-bundleManager.md)。
@@ -28,10 +30,10 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称                                          | 值         | 说明                                                         |
 | --------------------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY<sup>12+</sup> | 0x00001000 | 用于获取仅包含有桌面图标的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。|
-| GET_BUNDLE_INFO_OF_ANY_USER<sup>12+</sup>      | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。它仅在[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效。<br/>**系统API：** 该标记仅支持在系统API中使用。 |
-| GET_BUNDLE_INFO_EXCLUDE_CLONE<sup>12+</sup> | 0x00004000 | 用于获取去除分身应用而仅包含主应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。|
-| GET_BUNDLE_INFO_WITH_CLOUD_KIT<sup>20+</sup> | 0x00008000 | 用于获取启用端云文件同步能力或者端云结构化数据同步能力的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。|
+| GET_BUNDLE_INFO_ONLY_WITH_LAUNCHER_ABILITY<sup>12+</sup> | 0x00001000 | 用于获取仅包含有桌面图标的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_OF_ANY_USER<sup>12+</sup>      | 0x00002000 | 用于获取任意用户安装的bundleInfo。它不能单独使用，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。它仅在[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)、[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口生效。<br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_EXCLUDE_CLONE<sup>12+</sup> | 0x00004000 | 用于获取去除分身应用而仅包含主应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| GET_BUNDLE_INFO_WITH_CLOUD_KIT<sup>20+</sup> | 0x00008000 | 用于获取启用端云文件同步能力或者端云结构化数据同步能力的应用的bundleInfo。它仅在[getAllBundleInfo](#bundlemanagergetallbundleinfo)接口中生效。 <br/>**系统API：** 该标记仅支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 
 ## ApplicationFlag
 
@@ -40,6 +42,10 @@ import { bundleManager } from '@kit.AbilityKit';
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                 | 值         | 说明                                                         |
 | ------------------------------------ | ---------- | ------------------------------------------------------------ |
@@ -58,14 +64,14 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 | 名称                              | 值         | 说明                                                         |
 | --------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_ABILITY_INFO_DEFAULT          | 0x00000000 | 用于获取默认abilityInfo，获取的abilityInfo不包含permission、metadata和禁用的abilityInfo。 |
-| GET_ABILITY_INFO_WITH_PERMISSION  | 0x00000001 | 用于获取包含permission的abilityInfo。                          |
-| GET_ABILITY_INFO_WITH_APPLICATION | 0x00000002 | 用于获取包含applicationInfo的abilityInfo。                     |
-| GET_ABILITY_INFO_WITH_METADATA    | 0x00000004 | 用于获取包含metadata的abilityInfo。                            |
-| GET_ABILITY_INFO_WITH_DISABLE     | 0x00000008 | 用于获取包含禁用的abilityInfo的abilityInfo。                   |
-| GET_ABILITY_INFO_ONLY_SYSTEM_APP  | 0x00000010 | 用于仅为系统应用程序获取abilityInfo。                         |
-| GET_ABILITY_INFO_WITH_APP_LINKING<sup>12+</sup>  | 0x00000040 | 用于获取通过域名校验筛选的abilityInfo。                         |
-| GET_ABILITY_INFO_WITH_SKILL<sup>12+</sup>   | 0x00000080 | 用于获取包含skills的abilityInfo。                         |
+| GET_ABILITY_INFO_DEFAULT          | 0x00000000 | 用于获取默认abilityInfo，获取的abilityInfo不包含permission、metadata和禁用的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_ABILITY_INFO_WITH_PERMISSION  | 0x00000001 | 用于获取包含permission的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_ABILITY_INFO_WITH_APPLICATION | 0x00000002 | 用于获取包含applicationInfo的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_ABILITY_INFO_WITH_METADATA    | 0x00000004 | 用于获取包含metadata的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_ABILITY_INFO_WITH_DISABLE     | 0x00000008 | 用于获取包含禁用的abilityInfo的abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_ABILITY_INFO_ONLY_SYSTEM_APP  | 0x00000010 | 用于仅为系统应用程序获取abilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_ABILITY_INFO_WITH_APP_LINKING<sup>12+</sup>  | 0x00000040 | 用于获取通过域名校验筛选的abilityInfo。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| GET_ABILITY_INFO_WITH_SKILL<sup>12+</sup>   | 0x00000080 | 用于获取包含skills的abilityInfo。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 ## ExtensionAbilityFlag
 
@@ -77,11 +83,11 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 | 名称                                        | 值         | 说明                                                         |
 | ------------------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_EXTENSION_ABILITY_INFO_DEFAULT          | 0x00000000 | 用于获取默认extensionAbilityInfo。获取的extensionAbilityInfo不包含permission、metadata 和禁用的extensionAbilityInfo。 |
-| GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION  | 0x00000001 | 用于获取包含permission的extensionAbilityInfo。               |
-| GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION | 0x00000002 | 用于获取包含applicationInfo的extensionAbilityInfo。         |
-| GET_EXTENSION_ABILITY_INFO_WITH_METADATA    | 0x00000004 | 用于获取包含metadata的extensionAbilityInfo。                 |
-| GET_EXTENSION_ABILITY_INFO_WITH_SKILL<sup>12+</sup>     | 0x00000010 | 用于获取包含skills的extensionAbilityInfo。                 |
+| GET_EXTENSION_ABILITY_INFO_DEFAULT          | 0x00000000 | 用于获取默认extensionAbilityInfo。获取的extensionAbilityInfo不包含permission、metadata 和禁用的extensionAbilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION  | 0x00000001 | 用于获取包含permission的extensionAbilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION | 0x00000002 | 用于获取包含applicationInfo的extensionAbilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_EXTENSION_ABILITY_INFO_WITH_METADATA    | 0x00000004 | 用于获取包含metadata的extensionAbilityInfo。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| GET_EXTENSION_ABILITY_INFO_WITH_SKILL<sup>12+</sup>     | 0x00000010 | 用于获取包含skills的extensionAbilityInfo。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 
 ## ProfileType<sup>11+</sup>
 
@@ -93,8 +99,8 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 | 名称           | 值   | 说明            |
 | -------------- | ---- | --------------- |
-| INTENT_PROFILE  | 1    | 意图框架配置文件。    |
-| CLOUD_PROFILE  | 8    | [端云同步](../apis-core-file-kit/js-apis-file-cloudsync.md)配置文件。**起始版本**：26.0.0    |
+| INTENT_PROFILE | 1    | 意图框架配置文件。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| CLOUD_PROFILE  | 8    | [端云同步](../apis-core-file-kit/js-apis-file-cloudsync.md)配置文件。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## AppDistributionType<sup>12+</sup>
 
@@ -103,6 +109,10 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
  **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
  **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 值   | 说明            |
 | ----------------- | ---- | --------------- |
@@ -123,10 +133,10 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 | 名称 | 值 | 说明 |
 |----------------|---|---|
-| FLAG_INSTALLED|  0x00000001 | 表示指定用户安装应用的状态为已安装状态。 |
-| FLAG_OTHER_INSTALLED<sup>15+</sup>|  0x00000010 | 表示除指定用户外，其他用户的应用安装状态为已安装。|
-| FLAG_PREINSTALLED_APP<sup>15+</sup>|  0x00000020 | 表示应用的预置属性为预置应用。|
-| FLAG_PREINSTALLED_APP_UPDATE<sup>15+</sup>|  0x00000040 | 表示该预置应用的更新状态为已更新。|
+| FLAG_INSTALLED |  0x00000001 | 表示指定用户安装应用的状态为已安装状态。 <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| FLAG_OTHER_INSTALLED<sup>15+</sup>|  0x00000010 | 表示除指定用户外，其他用户的应用安装状态为已安装。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
+| FLAG_PREINSTALLED_APP<sup>15+</sup>|  0x00000020 | 表示应用的预置属性为预置应用。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
+| FLAG_PREINSTALLED_APP_UPDATE<sup>15+</sup>|  0x00000040 | 表示该预置应用的更新状态为已更新。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
 
 ## BundleInstallStatus<sup>23+</sup>
 
@@ -136,6 +146,10 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 |:----------------:|:---:|:---:|
 | BUNDLE_NOT_EXIST        | 1   | 应用未安装。 |
@@ -144,7 +158,9 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 ## bundleManager.getApplicationInfo
 
-getApplicationInfo(bundleName: string, appFlags: number, userId: number, callback: AsyncCallback\<ApplicationInfo>): void
+ArkTS-Dyn: getApplicationInfo(bundleName: string, appFlags: number, userId: number, callback: AsyncCallback\<ApplicationInfo>): void
+
+ArkTS-Sta: getApplicationInfo(bundleName: string, appFlags: int, userId: int, callback: AsyncCallback\<ApplicationInfo>): void
 
 根据给定的bundleName、appFlags和userId获取ApplicationInfo。使用callback异步回调。
 
@@ -156,13 +172,17 @@ getApplicationInfo(bundleName: string, appFlags: number, userId: number, callbac
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------- |
 | bundleName | string | 是   | 表示要查询的应用Bundle名称。 |
-| appFlags   | number | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。   |
-| userId     | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
+| appFlags   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。   |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
 | callback | AsyncCallback\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的ApplicationInfo；否则为错误对象。 |
 
 **错误码：**
@@ -205,7 +225,9 @@ try {
 
 ## bundleManager.getApplicationInfo
 
-getApplicationInfo(bundleName: string, appFlags: number, callback: AsyncCallback\<ApplicationInfo>): void
+ArkTS-Dyn: getApplicationInfo(bundleName: string, appFlags: number, callback: AsyncCallback\<ApplicationInfo>): void
+
+ArkTS-Sta: getApplicationInfo(bundleName: string, appFlags: int, callback: AsyncCallback\<ApplicationInfo>): void
 
 根据给定的bundleName和appFlags获取ApplicationInfo。使用callback异步回调。
 
@@ -217,12 +239,16 @@ getApplicationInfo(bundleName: string, appFlags: number, callback: AsyncCallback
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------- |
 | bundleName | string | 是   | 表示要查询的应用Bundle名称。 |
-| appFlags   | number | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。    |
+| appFlags   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。    |
 | callback | AsyncCallback\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的ApplicationInfo；否则为错误对象。 |
 
 **错误码：**
@@ -263,7 +289,9 @@ try {
 
 ## bundleManager.getApplicationInfo
 
-getApplicationInfo(bundleName: string, appFlags: number, userId?: number): Promise\<ApplicationInfo>
+ArkTS-Dyn: getApplicationInfo(bundleName: string, appFlags: number, userId?: number): Promise\<ApplicationInfo>
+
+ArkTS-Sta: getApplicationInfo(bundleName: string, appFlags: int, userId?: int): Promise\<ApplicationInfo>
 
 根据给定的bundleName、appFlags和userId获取ApplicationInfo。使用Promise异步回调。
 
@@ -275,13 +303,17 @@ getApplicationInfo(bundleName: string, appFlags: number, userId?: number): Promi
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------- |
 | bundleName | string | 是   | 表示要查询的应用Bundle名称。 |
-| appFlags   | number | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。    |
-| userId     | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
+| appFlags   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。    |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
@@ -304,6 +336,7 @@ getApplicationInfo(bundleName: string, appFlags: number, userId?: number): Promi
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -324,10 +357,35 @@ try {
   hilog.error(0x0000, 'testTag', 'getApplicationInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 代码中使用的bundleName和useId需为应用实际的包名和用户ID。
+let bundleName = 'com.example.myapplication';
+let appFlags = bundleManager.ApplicationFlag.GET_APPLICATION_INFO_WITH_PERMISSION;
+let userId = 100;
+
+try {
+  bundleManager.getApplicationInfo(bundleName, appFlags, userId).then((data: bundleManager.ApplicationInfo) => {
+    hilog.info(0x0000, 'testTag', 'getApplicationInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getApplicationInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getApplicationInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getAllBundleInfo
 
-getAllBundleInfo(bundleFlags: number, userId: number, callback: AsyncCallback<Array\<BundleInfo>>): void
+ArkTS-Dyn: getAllBundleInfo(bundleFlags: number, userId: number, callback: AsyncCallback<Array\<BundleInfo>>): void
+
+ArkTS-Sta: getAllBundleInfo(bundleFlags: int, userId: int, callback: AsyncCallback<Array\<BundleInfo>>): void
 
 根据给定的bundleFlags和userId获取系统中所有的BundleInfo。使用callback异步回调。
 
@@ -337,12 +395,16 @@ getAllBundleInfo(bundleFlags: number, userId: number, callback: AsyncCallback<Ar
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                                             |
 | ----------- | ------ | ---- | -------------------------------------------------- |
-| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。                    |
-| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                      |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。 |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                      |
 | callback | AsyncCallback<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)>> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<BundleInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -382,7 +444,9 @@ try {
 
 ## bundleManager.getAllBundleInfo
 
-getAllBundleInfo(bundleFlags: number, callback: AsyncCallback<Array\<BundleInfo>>): void
+ArkTS-Dyn: getAllBundleInfo(bundleFlags: number, callback: AsyncCallback<Array\<BundleInfo>>): void
+
+ArkTS-Sta: getAllBundleInfo(bundleFlags: int, callback: AsyncCallback<Array\<BundleInfo>>): void
 
 根据给定的bundleFlags获取系统中所有的BundleInfo。使用callback异步回调。
 
@@ -392,11 +456,15 @@ getAllBundleInfo(bundleFlags: number, callback: AsyncCallback<Array\<BundleInfo>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                                             |
 | ----------- | ------ | ---- | -------------------------------------------------- |
-| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。   |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。 |
 | callback | AsyncCallback<Array\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)>> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<BundleInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -434,7 +502,9 @@ try {
 
 ## bundleManager.getAllBundleInfo
 
-getAllBundleInfo(bundleFlags: number, userId?: number): Promise<Array\<BundleInfo>>
+ArkTS-Dyn: getAllBundleInfo(bundleFlags: number, userId?: number): Promise<Array\<BundleInfo>>
+
+ArkTS-Sta: getAllBundleInfo(bundleFlags: int, userId?: int): Promise<Array\<BundleInfo>>
 
 根据给定的bundleFlags和userId获取系统中所有的BundleInfo。使用Promise异步回调。
 
@@ -444,12 +514,16 @@ getAllBundleInfo(bundleFlags: number, userId?: number): Promise<Array\<BundleInf
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                                             |
 | ----------- | ------ | ---- | -------------------------------------------------- |
-| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。                   |
-| userId      | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                      |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的BundleInfo所包含的信息，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。 |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                      |
 
 **返回值：**
 
@@ -470,6 +544,7 @@ getAllBundleInfo(bundleFlags: number, userId?: number): Promise<Array\<BundleInf
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -488,10 +563,32 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllBundleInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
+
+try {
+  bundleManager.getAllBundleInfo(bundleFlags).then((data: Array<bundleManager.BundleInfo>) => {
+    hilog.info(0x0000, 'testTag', 'getAllBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAllBundleInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllBundleInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getAllApplicationInfo
 
-getAllApplicationInfo(appFlags: number, userId: number, callback: AsyncCallback<Array\<ApplicationInfo>>): void
+ArkTS-Dyn: getAllApplicationInfo(appFlags: number, userId: number, callback: AsyncCallback<Array\<ApplicationInfo>>): void
+
+ArkTS-Sta: getAllApplicationInfo(appFlags: int, userId: int, callback: AsyncCallback<Array\<ApplicationInfo>>): void
 
 根据给定的appFlags和userId获取系统中所有的ApplicationInfo。使用callback异步回调。
 
@@ -501,12 +598,16 @@ getAllApplicationInfo(appFlags: number, userId: number, callback: AsyncCallback<
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                                      |
 | -------- | ------ | ---- | ----------------------------------------------------------- |
-| appFlags | number | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。                       |
-| userId   | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。         |
+| appFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。                       |
+| userId   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。         |
 | callback | AsyncCallback<Array\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)>> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<ApplicationInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -546,7 +647,9 @@ try {
 
 ## bundleManager.getAllApplicationInfo
 
-getAllApplicationInfo(appFlags: number, callback: AsyncCallback<Array\<ApplicationInfo>>): void
+ArkTS-Dyn: getAllApplicationInfo(appFlags: number, callback: AsyncCallback<Array\<ApplicationInfo>>): void
+
+ArkTS-Sta: getAllApplicationInfo(appFlags: int, callback: AsyncCallback<Array\<ApplicationInfo>>): void
 
 根据给定的appFlags获取系统中所有的ApplicationInfo。使用callback异步回调。
 
@@ -556,11 +659,15 @@ getAllApplicationInfo(appFlags: number, callback: AsyncCallback<Array\<Applicati
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                                      |
 | -------- | ------ | ---- | ----------------------------------------------------------- |
-| appFlags | number | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。                       |
+| appFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。                       |
 | callback | AsyncCallback<Array\<[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)>> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<ApplicationInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -598,7 +705,9 @@ try {
 
 ## bundleManager.getAllApplicationInfo
 
-getAllApplicationInfo(appFlags: number, userId?: number): Promise<Array\<ApplicationInfo>>
+ArkTS-Dyn: getAllApplicationInfo(appFlags: number, userId?: number): Promise<Array\<ApplicationInfo>>
+
+ArkTS-Sta: getAllApplicationInfo(appFlags: int, userId?: int): Promise<Array\<ApplicationInfo>>
 
 根据给定的appFlags和userId获取系统中所有的ApplicationInfo。使用Promise异步回调。
 
@@ -608,12 +717,16 @@ getAllApplicationInfo(appFlags: number, userId?: number): Promise<Array\<Applica
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                                      |
 | -------- | ------ | ---- | ---------------------------------------------------------- |
-| appFlags | number | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。                       |
-| userId   | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                        |
+| appFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的ApplicationInfo所包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。                       |
+| userId   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                        |
 
 **返回值：**
 
@@ -634,6 +747,7 @@ getAllApplicationInfo(appFlags: number, userId?: number): Promise<Array\<Applica
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -652,10 +766,32 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllApplicationInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+let appFlags = bundleManager.ApplicationFlag.GET_APPLICATION_INFO_DEFAULT;
+
+try {
+  bundleManager.getAllApplicationInfo(appFlags).then((data: Array<bundleManager.ApplicationInfo>) => {
+    hilog.info(0x0000, 'testTag', 'getAllApplicationInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAllApplicationInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllApplicationInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.queryAbilityInfo
 
-queryAbilityInfo(want: Want, abilityFlags: number, userId: number, callback: AsyncCallback<Array\<AbilityInfo>>): void
+ArkTS-Dyn: queryAbilityInfo(want: Want, abilityFlags: number, userId: number, callback: AsyncCallback<Array\<AbilityInfo>>): void
+
+ArkTS-Sta: queryAbilityInfo(want: Want, abilityFlags: int, userId: int, callback: AsyncCallback<Array\<AbilityInfo>>): void
 
 根据给定的want、abilityFlags和userId获取多个AbilityInfo。使用callback异步回调。
 
@@ -667,13 +803,17 @@ queryAbilityInfo(want: Want, abilityFlags: number, userId: number, callback: Asy
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
 | want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
-| abilityFlags | number | 是   | 指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。                       |
-| userId       | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                               |
+| abilityFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。                       |
+| userId       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                               |
 | callback | AsyncCallback<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<AbilityInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -722,7 +862,9 @@ try {
 
 ## bundleManager.queryAbilityInfo
 
-queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallback<Array\<AbilityInfo>>): void
+ArkTS-Dyn: queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallback<Array\<AbilityInfo>>): void
+
+ArkTS-Sta: queryAbilityInfo(want: Want, abilityFlags: int, callback: AsyncCallback<Array\<AbilityInfo>>): void
 
 根据给定的want和abilityFlags获取一个或多个AbilityInfo。使用callback异步回调。
 
@@ -739,7 +881,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallback<Array
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | -------------------------------------------------------|
 | want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
-| abilityFlags | number | 是   | 指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。       |
+| abilityFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。       |
 | callback | AsyncCallback<Array\<[AbilityInfo](js-apis-bundleManager-abilityInfo.md)>> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<AbilityInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -786,7 +928,9 @@ try {
 
 ## bundleManager.queryAbilityInfo
 
-queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Promise<Array\<AbilityInfo>>
+ArkTS-Dyn: queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Promise<Array\<AbilityInfo>>
+
+ArkTS-Sta: queryAbilityInfo(want: Want, abilityFlags: int, userId?: int): Promise<Array\<AbilityInfo>>
 
 根据给定的want、abilityFlags和userId获取一个或多个AbilityInfo。使用Promise异步回调。
 
@@ -798,13 +942,17 @@ queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Promise<Arr
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
 | want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
-| abilityFlags | number | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。 |
-| userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
+| abilityFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。 |
+| userId       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
 **返回值：**
 
@@ -829,6 +977,7 @@ queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Promise<Arr
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -877,10 +1026,65 @@ try {
   hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+// 代码中使用的bundleName、abilityName、useId需为应用实际的包名、Ability名称、用户ID。
+let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
+let userId = 100;
+let want: Want = {
+  bundleName : "com.example.myapplication",
+  abilityName : "EntryAbility"
+};
+
+try {
+  bundleManager.queryAbilityInfo(want, abilityFlags, userId).then((data: Array<bundleManager.AbilityInfo>) => {
+    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+}
+```
+
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+// 代码中使用的bundleName、abilityName需为应用实际的包名、Ability名称。
+let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
+let want: Want = {
+  bundleName : "com.example.myapplication",
+  abilityName : "EntryAbility"
+};
+
+try {
+  bundleManager.queryAbilityInfo(want, abilityFlags).then((data: Array<bundleManager.AbilityInfo>) => {
+    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  })
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.queryAbilityInfoSync<sup>10+</sup>
 
-queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number): Array\<AbilityInfo>
+ArkTS-Dyn: queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number): Array\<AbilityInfo>
+
+ArkTS-Sta: queryAbilityInfoSync(want: Want, abilityFlags: int, userId?: int): Array\<AbilityInfo>
 
 以同步方法根据给定的want、abilityFlags和userId获取一个或多个AbilityInfo。
 
@@ -892,13 +1096,17 @@ queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number): Array\<
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
 | want         | [Want](js-apis-app-ability-want.md)  | 是   | 表示包含要查询的应用Bundle名称的Want。                 |
-| abilityFlags | number | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。 |
-| userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
+| abilityFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。 |
+| userId       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
 **返回值：**
 
@@ -969,7 +1177,9 @@ try {
 
 ## bundleManager.queryAbilityInfo<sup>12+</sup>
 
-queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Promise<Array\<AbilityInfo>>
+ArkTS-Dyn: queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Promise<Array\<AbilityInfo>>
+
+ArkTS-Sta: queryAbilityInfo(wants: Array\<Want>, abilityFlags: int, userId?: int): Promise<Array\<AbilityInfo>>
 
 根据给定的want列表、abilityFlags和userId获取一个或多个AbilityInfo。使用Promise异步回调。
 
@@ -981,13 +1191,17 @@ queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Pr
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                                                  |
 | ------------ | ------ | ---- | ------------------------------------------------------- |
 | want         | Array\<[Want](js-apis-app-ability-want.md)>   | 是   | 表示包含要查询的应用Bundle名称的Want集合。                 |
-| abilityFlags | number | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。 |
-| userId       | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
+| abilityFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示指定返回的AbilityInfo所包含的信息，具体取值及不同含义参考[AbilityFlag](#abilityflag)。 |
+| userId       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                       |
 
 **返回值：**
 
@@ -1012,6 +1226,7 @@ queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Pr
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1040,10 +1255,43 @@ try {
   hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+// 代码中使用的bundleName、abilityName、useId需为应用实际的包名、Ability名称、用户ID。
+let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
+let userId = 100;
+let want: Want = {
+  bundleName : "com.example.myapplication1",
+  abilityName : "EntryAbility"
+};
+let want1: Want = {
+  bundleName : "com.example.myapplication2",
+  abilityName : "EntryAbility"
+};
+let wants: Array<Want> = [ want, want1 ];
+try {
+  bundleManager.queryAbilityInfo(wants, abilityFlags, userId).then((data: Array<bundleManager.AbilityInfo>) => {
+    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  })
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.queryExtensionAbilityInfo
 
-queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId: number, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
+ArkTS-Dyn: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId: number, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
+
+ArkTS-Sta: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: int, userId: int, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
 
 根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取一个或多个ExtensionAbilityInfo。使用callback异步回调。
 
@@ -1055,14 +1303,18 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | want                  | [Want](js-apis-app-ability-want.md)                                                        | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | 是   | 标识extensionAbility的类型。                                 |
-| extensionAbilityFlags | number                             | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。    |
-| userId                | number                                                       | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                                                 |
+| extensionAbilityFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。    |
+| userId                | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                                                 |
 | callback              | AsyncCallback<Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到Array\<ExtensionAbilityInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -1111,7 +1363,9 @@ try {
 
 ## bundleManager.queryExtensionAbilityInfo
 
-queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
+ArkTS-Dyn: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
+
+ArkTS-Sta: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: int, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
 
 根据给定的want、extensionAbilityType和extensionAbilityFlags获取一个或多个ExtensionAbilityInfo。使用callback异步回调。
 
@@ -1123,13 +1377,17 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | want                  | [Want](js-apis-app-ability-want.md)                                                        | 是   | 表示包含要查询的应用Bundle名称的Want。                       |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype)                | 是   | 标识extensionAbility的类型。                                 |
-| extensionAbilityFlags | number                             | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。    |
+| extensionAbilityFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。    |
 | callback              | AsyncCallback<Array\<[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到Array\<ExtensionAbilityInfo>；否则为错误对象。 |
 
 **错误码：**
@@ -1176,7 +1434,9 @@ try {
 
 ## bundleManager.queryExtensionAbilityInfo
 
-queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId?: number): Promise<Array\<ExtensionAbilityInfo>>
+ArkTS-Dyn: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId?: number): Promise<Array\<ExtensionAbilityInfo>>
+
+ArkTS-Sta: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: int, userId?: int): Promise<Array\<ExtensionAbilityInfo>>
 
 根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo。使用Promise异步回调。
 
@@ -1188,14 +1448,18 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                | 类型                                          | 必填 | 说明                                                      |
 | --------------------- | --------------------------------------------- | ---- | --------------------------------------------------------- |
 | want                  | [Want](js-apis-app-ability-want.md)                                         | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | 是   | 标识extensionAbility的类型。                              |
-| extensionAbilityFlags | number              | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
-| userId                | number                                        | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                                              |
+| extensionAbilityFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
+| userId                | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                                              |
 
 **返回值：**
 
@@ -1219,6 +1483,7 @@ queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1269,10 +1534,69 @@ try {
   hilog.error(0x0000, 'testTag', 'queryExtensionAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+
+// 代码中使用的bundleName、abilityName、useId需为应用实际的包名、Ability名称、用户ID。
+let extensionAbilityType = bundleManager.ExtensionAbilityType.FORM;
+let extensionFlags = bundleManager.ExtensionAbilityFlag.GET_EXTENSION_ABILITY_INFO_DEFAULT;
+let userId = 100;
+let want: Want = {
+  bundleName : "com.example.myapplication",
+  abilityName : "EntryAbility"
+};
+
+try {
+  bundleManager.queryExtensionAbilityInfo(want, extensionAbilityType, extensionFlags, userId)
+    .then((data: Array<bundleManager.ExtensionAbilityInfo>) => {
+      hilog.info(0x0000, 'testTag', 'queryExtensionAbilityInfo successfully. Data: %{public}s', JSON.stringify(data));
+    }).catch((err: Error) => {
+      hilog.error(0x0000, 'testTag', 'queryExtensionAbilityInfo failed. Cause: %{public}s', (err as BusinessError).message);
+    });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryExtensionAbilityInfo failed. Cause: %{public}s', message);
+}
+```
+
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+let extensionAbilityType = bundleManager.ExtensionAbilityType.FORM;
+let extensionFlags = bundleManager.ExtensionAbilityFlag.GET_EXTENSION_ABILITY_INFO_DEFAULT;
+let want: Want = {
+  bundleName : "com.example.myapplication",
+  abilityName : "EntryAbility"
+};
+
+try {
+  bundleManager.queryExtensionAbilityInfo(want, extensionAbilityType, extensionFlags)
+    .then((data: Array<bundleManager.ExtensionAbilityInfo>) => {
+      hilog.info(0x0000, 'testTag', 'queryExtensionAbilityInfo successfully. Data: %{public}s', JSON.stringify(data));
+    }).catch((err: Error) => {
+      hilog.error(0x0000, 'testTag', 'queryExtensionAbilityInfo failed. Cause: %{public}s', (err as BusinessError).message);
+    })
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryExtensionAbilityInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.queryExtensionAbilityInfoSync<sup>10+</sup>
 
-queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo>
+ArkTS-Dyn: queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo>
+
+ArkTS-Sta: queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: int, userId?: int): Array\<ExtensionAbilityInfo>
 
 以同步方法根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo。
 
@@ -1284,14 +1608,18 @@ queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbility
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                | 类型                                          | 必填 | 说明                                                      |
 | --------------------- | --------------------------------------------- | ---- | --------------------------------------------------------- |
 | want                  | [Want](js-apis-app-ability-want.md)                                         | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | [ExtensionAbilityType](js-apis-bundleManager.md#extensionabilitytype) | 是   | 标识extensionAbility的类型。                              |
-| extensionAbilityFlags | number              | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
-| userId                | number                                        | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                                              |
+| extensionAbilityFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用于指定将返回的ExtensionInfo对象中包含的信息的标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
+| userId                | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                                              |
 
 **返回值：**
 
@@ -1364,9 +1692,11 @@ try {
 
 ## bundleManager.getBundleArchiveInfo
 
-getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
+ArkTS-Dyn: getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
-根据给定的hapFilePath和bundleFlags获取BundleInfo。使用callback异步回调。
+ArkTS-Sta: getBundleArchiveInfo(hapFilePath: string, bundleFlags: int, callback: AsyncCallback\<BundleInfo>): void
+
+根据给定的hapFilePath和bundleFlags获取BundleInfo。使用callback异步回调。从API版本26.0.0开始,该接口支持处理APP包。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1374,12 +1704,16 @@ getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCa
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型   | 必填 | 说明                                                         |
 | ----------- | ------ | ---- | ----------------------------------------------------------- |
-| hapFilePath | string | 是   | 表示存储HAP的路径，路径应该是当前应用程序数据目录的相对路径。 |
-| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。       |
+| hapFilePath | string | 是   | 表示存储HAP或APP的路径，路径应该是当前应用程序数据目录的相对路径。 |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。 |
 | callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
 **错误码：**
@@ -1419,9 +1753,11 @@ try {
 
 ## bundleManager.getBundleArchiveInfo
 
-getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise\<BundleInfo>
+ArkTS-Dyn: getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise\<BundleInfo>
 
-根据给定的hapFilePath和bundleFlags获取BundleInfo。使用Promise异步回调。
+ArkTS-Sta: getBundleArchiveInfo(hapFilePath: string,  bundleFlags: int): Promise\<BundleInfo>
+
+根据给定的hapFilePath和bundleFlags获取BundleInfo。使用Promise异步回调。从API版本26.0.0开始,该接口支持处理APP包。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1429,12 +1765,16 @@ getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise\<Bundle
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型   | 必填 | 说明                                                         |
 | ----------- | ------ | ---- | ------------------------------------------------------------ |
-| hapFilePath | string | 是   | 表示存储HAP的路径，路径应该是当前应用程序数据目录的相对路径。 |
-| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。       |
+| hapFilePath | string | 是   | 表示存储HAP或APP的路径，路径应该是当前应用程序数据目录的相对路径。 |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。 |
 
 **返回值：**
 
@@ -1455,6 +1795,7 @@ getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise\<Bundle
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1474,10 +1815,34 @@ try {
   hilog.error(0x0000, 'testTag', 'getBundleArchiveInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 代码中使用的hapFilePath需为实际存储HAP的路径。
+let hapFilePath = "/data/xxx/test.hap";
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
+
+try {
+  bundleManager.getBundleArchiveInfo(hapFilePath, bundleFlags).then((data: bundleManager.BundleInfo) => {
+    hilog.info(0x0000, 'testTag', 'getBundleArchiveInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getBundleArchiveInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleArchiveInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getBundleArchiveInfoSync<sup>10+</sup>
 
-getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: number): BundleInfo
+ArkTS-Dyn: getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: number): BundleInfo
+
+ArkTS-Sta: getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: int): BundleInfo
 
 以同步方法根据给定的hapFilePath和bundleFlags获取BundleInfo对象。
 
@@ -1487,12 +1852,16 @@ getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: number): BundleInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型   | 必填 | 说明                                                         |
 | ----------- | ------ | ---- | ------------------------------------------------------------ |
 | hapFilePath | string | 是   | 表示存储HAP的路径，路径应该是当前应用程序数据目录的相对路径。 |
-| [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。       |
+| bundleFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。 |
 
 **返回值：**
 
@@ -1532,7 +1901,9 @@ try {
 
 ## bundleManager.getAllBundleCacheSize<sup>15+</sup>
 
-getAllBundleCacheSize(): Promise\<number>
+ArkTS-Dyn: getAllBundleCacheSize(): Promise\<number>
+
+ArkTS-Sta: getAllBundleCacheSize(): Promise\<long>
 
 获取全局缓存大小，单位：字节。使用Promise异步回调。
 
@@ -1544,11 +1915,15 @@ getAllBundleCacheSize(): Promise\<number>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<number> | Promise对象。返回全局缓存大小，以字节为单位。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象。返回全局缓存大小，以字节为单位。 |
 
 **错误码：**
 
@@ -1561,6 +1936,7 @@ getAllBundleCacheSize(): Promise\<number>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1571,6 +1947,25 @@ try {
     hilog.info(0x0000, 'testTag', 'getAllBundleCacheSize successful. Data: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', 'getAllBundleCacheSize failed: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllBundleCacheSize failed: %{public}s', message);
+}
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  bundleManager.getAllBundleCacheSize().then((data: long) => {
+    hilog.info(0x0000, 'testTag','getAllBundleCacheSize successful. Data: ' + JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAllBundleCacheSize failed: %{public}s', (err as BusinessError).message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
@@ -1590,6 +1985,10 @@ cleanAllBundleCache(): Promise\<void>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                       | 说明      |
@@ -1607,6 +2006,7 @@ cleanAllBundleCache(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1617,6 +2017,25 @@ try {
     hilog.info(0x0000, 'testTag', 'cleanAllBundleCache successful.');
   }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', 'cleanAllBundleCache failed: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'cleanAllBundleCache failed: %{public}s', message);
+}
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  bundleManager.cleanAllBundleCache().then(() => {
+    hilog.info(0x0000, 'testTag','cleanAllBundleCache successful.');
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'cleanAllBundleCache failed: %{public}s', (err as BusinessError).message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
@@ -1637,6 +2056,10 @@ cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback\<void>): void
 **需要权限：** ohos.permission.REMOVE_CACHE_FILES
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1694,6 +2117,10 @@ cleanBundleCacheFiles(bundleName: string): Promise\<void>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                                       |
@@ -1720,6 +2147,7 @@ cleanBundleCacheFiles(bundleName: string): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1738,10 +2166,33 @@ try {
   hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新bundleName。
+let bundleName = "com.ohos.myapplication";
+
+try {
+  bundleManager.cleanBundleCacheFiles(bundleName).then(() => {
+    hilog.info(0x0000, 'testTag', 'cleanBundleCacheFiles successfully.');
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', message);
+}
+```
 
 ## bundleManager.cleanBundleCacheFiles<sup>15+</sup>
 
-cleanBundleCacheFiles(bundleName: string, appIndex: number): Promise\<void>
+ArkTS-Dyn: cleanBundleCacheFiles(bundleName: string, appIndex: number): Promise\<void>
+
+ArkTS-Sta: cleanBundleCacheFiles(bundleName: string, appIndex: int): Promise\<void>
 
 根据给定的bundleName和appIndex清理BundleCache。使用Promise异步回调。
 
@@ -1753,12 +2204,16 @@ cleanBundleCacheFiles(bundleName: string, appIndex: number): Promise\<void>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                                       |
 | ---------- | ------ | ---- | ------------------------------------------ |
 | bundleName | string | 是   | 表示要清理其缓存数据的应用程序的bundleName。 |
-| appIndex | number | 是   | 表示要清理其缓存数据的应用程序的分身应用索引。<br>appIndex为0时，表示清理主应用缓存数据。appIndex大于0时，表示清理指定分身应用缓存数据。 |
+| appIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示要清理其缓存数据的应用程序的分身应用索引。<br>appIndex为0时，表示清理主应用缓存数据。appIndex大于0时，表示清理指定分身应用缓存数据。 |
 
 **返回值：**
 
@@ -1781,6 +2236,7 @@ cleanBundleCacheFiles(bundleName: string, appIndex: number): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1800,6 +2256,28 @@ try {
   hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 代码中使用的bundleName、appIndex需为应用实际的包名和分身应用索引。
+let bundleName = "com.ohos.myapplication";
+let appIndex = 1;
+
+try {
+  bundleManager.cleanBundleCacheFiles(bundleName, appIndex).then(() => {
+    hilog.info(0x0000, 'testTag', 'cleanBundleCacheFiles successfully.');
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', message);
+}
+```
 
 ## bundleManager.setApplicationEnabled
 
@@ -1812,6 +2290,10 @@ setApplicationEnabled(bundleName: string, isEnabled: boolean, callback: AsyncCal
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1867,6 +2349,10 @@ setApplicationEnabled(bundleName: string, isEnabled: boolean): Promise\<void>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型    | 必填 | 说明                                  |
@@ -1893,6 +2379,7 @@ setApplicationEnabled(bundleName: string, isEnabled: boolean): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1911,10 +2398,33 @@ try {
   hilog.error(0x0000, 'testTag', 'setApplicationEnabled failed: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新bundleName。
+let bundleName = "com.ohos.myapplication";
+
+try {
+  bundleManager.setApplicationEnabled(bundleName, false).then(() => {
+    hilog.info(0x0000, "testTag", "setApplicationEnabled successfully.");
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'setApplicationEnabled failed: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setApplicationEnabled failed: %{public}s', message);
+}
+```
 
 ## bundleManager.setApplicationEnabled<sup>12+</sup>
 
-setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean): Promise\<void>
+ArkTS-Dyn: setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean): Promise\<void>
+
+ArkTS-Sta: setApplicationEnabled(bundleName: string, appIndex: int, isEnabled: boolean): Promise\<void>
 
 设置指定应用或分身应用的禁用或使能状态。使用Promise异步回调。
 
@@ -1924,12 +2434,16 @@ setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean):
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型    | 必填 | 说明                                  |
 | ---------- | ------- | ---- | ------------------------------------- |
 | bundleName | string  | 是   | 表示应用程序的bundleName。            |
-| appIndex   | number  | 是   | 表示分身应用的索引。<br> appIndex为0时，表示设置主应用的禁用或使能状态。appIndex大于0时，表示设置指定分身应用的禁用或使能状态。              |
+| appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示分身应用的索引。<br> appIndex为0时，表示设置主应用的禁用或使能状态。appIndex大于0时，表示设置指定分身应用的禁用或使能状态。              |
 | isEnabled  | boolean | 是   | 值为true表示使能，值为false表示禁用。 |
 
 **返回值：**
@@ -1952,6 +2466,7 @@ setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean):
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1970,6 +2485,26 @@ try {
   hilog.error(0x0000, 'testTag', 'setApplicationEnabled failed: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+let bundleName = "com.ohos.myapplication";
+
+try {
+  bundleManager.setApplicationEnabled(bundleName, 1, false).then(() => {
+    hilog.info(0x0000, "testTag", "setApplicationEnabled successfully.");
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'setApplicationEnabled failed: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setApplicationEnabled failed: %{public}s', message);
+}
+```
 
 ## bundleManager.setApplicationEnabledSync<sup>10+</sup>
 
@@ -1982,6 +2517,10 @@ setApplicationEnabledSync(bundleName: string, isEnabled: boolean): void
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2031,6 +2570,10 @@ setAbilityEnabled(info: AbilityInfo, isEnabled: boolean, callback: AsyncCallback
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型        | 必填 | 说明                                  |
@@ -2053,6 +2596,7 @@ setAbilityEnabled(info: AbilityInfo, isEnabled: boolean, callback: AsyncCallback
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2086,6 +2630,42 @@ try {
   hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+// 开发者需根据实际工程更新userId、bundleName和abilityName。
+let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
+let userId = 100;
+let want: Want = {
+  bundleName : "com.example.myapplication",
+  abilityName : "EntryAbility"
+};
+
+try {
+  bundleManager.queryAbilityInfo(want, abilityFlags, userId).then((abilitiesInfo: Array<bundleManager.AbilityInfo>) => {
+    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(abilitiesInfo));
+    let info = abilitiesInfo[0];
+
+    bundleManager.setAbilityEnabled(info, false, err => {
+      if (err) {
+        hilog.error(0x0000, 'testTag', 'setAbilityEnabled failed: %{public}s', err.message);
+      } else {
+        hilog.info(0x0000, "testTag", "setAbilityEnabled successfully.");
+      }
+    });
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.setAbilityEnabled
 
@@ -2098,6 +2678,10 @@ setAbilityEnabled(info: AbilityInfo, isEnabled: boolean): Promise\<void>
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2126,6 +2710,7 @@ setAbilityEnabled(info: AbilityInfo, isEnabled: boolean): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2157,10 +2742,46 @@ try {
   hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+// 开发者需根据实际工程更新userId、bundleName和abilityName。
+let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
+let userId = 100;
+let want: Want = {
+  bundleName : "com.example.myapplication",
+  abilityName : "EntryAbility"
+};
+
+try {
+  bundleManager.queryAbilityInfo(want, abilityFlags, userId).then((abilitiesInfo: Array<bundleManager.AbilityInfo>) => {
+    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(abilitiesInfo));
+    let info = abilitiesInfo[0];
+
+    bundleManager.setAbilityEnabled(info, false).then(() => {
+      hilog.info(0x0000, "testTag", "setAbilityEnabled successfully.");
+    }).catch((err: Error) => {
+      hilog.error(0x0000, 'testTag', 'setAbilityEnabled failed: %{public}s', (err as BusinessError).message);
+    });
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.setAbilityEnabled<sup>12+</sup>
 
-setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boolean): Promise\<void>
+ArkTS-Dyn: setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boolean): Promise\<void>
+
+ArkTS-Sta: setAbilityEnabled(info: AbilityInfo, appIndex: int, isEnabled: boolean): Promise\<void>
 
 设置指定应用或分身应用组件的禁用或使能状态。使用Promise异步回调。
 
@@ -2170,12 +2791,16 @@ setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boolean): Prom
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型        | 必填 | 说明                                  |
 | -------- | ----------- | ---- | ------------------------------------- |
 | info     | [AbilityInfo](js-apis-bundleManager-abilityInfo.md) | 是   | 需要被设置的组件。                   |
-| appIndex   | number    | 是   | 表示分身应用的索引。<br> appIndex为0时，表示设置主应用组件的禁用或使能状态。appIndex大于0时，表示设置指定分身应用组件的禁用或使能状态。            |
+| appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示分身应用的索引。<br> appIndex为0时，表示设置主应用组件的禁用或使能状态。appIndex大于0时，表示设置指定分身应用组件的禁用或使能状态。            |
 | isEnabled| boolean     | 是   | 值为true表示使能，值为false表示禁用。 |
 
 **返回值：**
@@ -2199,6 +2824,7 @@ setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boolean): Prom
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2230,6 +2856,40 @@ try {
   hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+// 代码中使用的bundleName、abilityName、useId需为应用实际的包名、Ability名称、用户ID。
+let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
+let userId = 100;
+let want: Want = {
+  bundleName : "com.example.myapplication",
+  abilityName : "EntryAbility"
+};
+
+try {
+  bundleManager.queryAbilityInfo(want, abilityFlags, userId).then((abilitiesInfo: Array<bundleManager.AbilityInfo>) => {
+    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(abilitiesInfo));
+    let info = abilitiesInfo[0];
+
+    bundleManager.setAbilityEnabled(info, 1, false).then(() => {
+      hilog.info(0x0000, "testTag", "setAbilityEnabled successfully.");
+    }).catch((err: Error) => {
+      hilog.error(0x0000, 'testTag', 'setAbilityEnabled failed: %{public}s', (err as BusinessError).message);
+    });
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.setAbilityEnabledSync<sup>10+</sup>
 
@@ -2242,6 +2902,10 @@ setAbilityEnabledSync(info: AbilityInfo, isEnabled: boolean): void
 **需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2264,6 +2928,7 @@ setAbilityEnabledSync(info: AbilityInfo, isEnabled: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2297,6 +2962,42 @@ try {
   hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+// 开发者需根据实际工程更新userId、bundleName和abilityName。
+let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
+let userId = 100;
+let want: Want = {
+  bundleName : "com.example.myapplication",
+  abilityName : "EntryAbility"
+};
+
+try {
+  bundleManager.queryAbilityInfo(want, abilityFlags, userId).then((abilitiesInfo: Array<bundleManager.AbilityInfo>) => {
+    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(abilitiesInfo));
+    let info = abilitiesInfo[0];
+
+    try {
+      bundleManager.setAbilityEnabledSync(info, false);
+      hilog.info(0x0000, "testTag", "setAbilityEnabledSync successfully.");
+    } catch (err) {
+      let message = (err as BusinessError).message;
+      hilog.error(0x0000, 'testTag', 'setAbilityEnabledSync failed: %{public}s', message);
+    }
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.isApplicationEnabled
 
@@ -2307,6 +3008,10 @@ isApplicationEnabled(bundleName: string, callback: AsyncCallback\<boolean>): voi
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2358,6 +3063,10 @@ isApplicationEnabled(bundleName: string): Promise\<boolean>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                       |
@@ -2382,6 +3091,7 @@ isApplicationEnabled(bundleName: string): Promise\<boolean>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2400,10 +3110,33 @@ try {
   hilog.error(0x0000, 'testTag', 'isApplicationEnabled failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新bundleName。
+let bundleName = 'com.example.myapplication';
+
+try {
+  bundleManager.isApplicationEnabled(bundleName).then((data: boolean) => {
+    hilog.info(0x0000, 'testTag', 'isApplicationEnabled successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'isApplicationEnabled failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'isApplicationEnabled failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.isApplicationEnabled<sup>12+</sup>
 
-isApplicationEnabled(bundleName: string, appIndex: number): Promise\<boolean>
+ArkTS-Dyn: isApplicationEnabled(bundleName: string, appIndex: number): Promise\<boolean>
+
+ArkTS-Sta: isApplicationEnabled(bundleName: string, appIndex: int): Promise\<boolean>
 
 获取指定应用或分身应用的禁用或使能状态。使用Promise异步回调。
 
@@ -2411,12 +3144,16 @@ isApplicationEnabled(bundleName: string, appIndex: number): Promise\<boolean>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | -------------------------- |
 | bundleName | string | 是   | 表示应用程序的bundleName。  |
-| appIndex   | number  | 是   | 表示分身应用的索引。<br> appIndex为0时，表示获取主应用的禁用或使能状态。appIndex大于0时，表示获取指定分身应用的禁用或使能状态。            |
+| appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示分身应用的索引。<br> appIndex为0时，表示获取主应用的禁用或使能状态。appIndex大于0时，表示获取指定分身应用的禁用或使能状态。            |
 
 **返回值：**
 
@@ -2437,6 +3174,7 @@ isApplicationEnabled(bundleName: string, appIndex: number): Promise\<boolean>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2455,6 +3193,26 @@ try {
   hilog.error(0x0000, 'testTag', 'isApplicationEnabled failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+let bundleName = 'com.example.myapplication';
+
+try {
+  bundleManager.isApplicationEnabled(bundleName, 1).then((data: boolean) => {
+    hilog.info(0x0000, 'testTag', 'isApplicationEnabled successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'isApplicationEnabled failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'isApplicationEnabled failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.isApplicationEnabledSync<sup>10+</sup>
 
@@ -2465,6 +3223,10 @@ isApplicationEnabledSync(bundleName: string): boolean
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2516,6 +3278,10 @@ isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback\<boolean>): void
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明                        |
@@ -2536,6 +3302,7 @@ isAbilityEnabled(info: AbilityInfo, callback: AsyncCallback\<boolean>): void
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2569,6 +3336,42 @@ try {
   hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+// 开发者需根据实际工程更新userId、bundleName和abilityName。
+let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
+let userId = 100;
+let want: Want = {
+  bundleName : "com.example.myapplication",
+  abilityName : "EntryAbility"
+};
+
+try {
+  bundleManager.queryAbilityInfo(want, abilityFlags, userId).then((abilitiesInfo: Array<bundleManager.AbilityInfo>) => {
+    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(abilitiesInfo));
+    let info = abilitiesInfo[0];
+
+    bundleManager.isAbilityEnabled(info, (err, data) => {
+      if (err) {
+        hilog.error(0x0000, 'testTag', 'isAbilityEnabled failed: %{public}s', err.message);
+      } else {
+        hilog.info(0x0000, 'testTag', 'isAbilityEnabled successfully: %{public}s', JSON.stringify(data));
+      }
+    });
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.isAbilityEnabled
 
@@ -2579,6 +3382,10 @@ isAbilityEnabled(info: AbilityInfo): Promise\<boolean>
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2605,6 +3412,7 @@ isAbilityEnabled(info: AbilityInfo): Promise\<boolean>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2636,10 +3444,46 @@ try {
   hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+// 开发者需根据实际工程更新userId、bundleName和abilityName。
+let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
+let userId = 100;
+let want: Want = {
+  bundleName : "com.example.myapplication",
+  abilityName : "EntryAbility"
+};
+
+try {
+  bundleManager.queryAbilityInfo(want, abilityFlags, userId).then((abilitiesInfo: Array<bundleManager.AbilityInfo>) => {
+    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(abilitiesInfo));
+    let info = abilitiesInfo[0];
+
+    bundleManager.isAbilityEnabled(info).then((data: boolean) => {
+      hilog.info(0x0000, 'testTag', 'isAbilityEnabled successfully. Data: %{public}s', JSON.stringify(data));
+    }).catch((err: Error) => {
+      hilog.error(0x0000, 'testTag', 'isAbilityEnabled failed. Cause: %{public}s', (err as BusinessError).message);
+    });
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.isAbilityEnabled<sup>12+</sup>
 
-isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise\<boolean>
+ArkTS-Dyn: isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise\<boolean>
+
+ArkTS-Sta: isAbilityEnabled(info: AbilityInfo, appIndex: int): Promise\<boolean>
 
 获取应用或指定分身应用组件的禁用或使能状态。使用Promise异步回调。
 
@@ -2647,12 +3491,16 @@ isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise\<boolean>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明                        |
 | ---- | ----------- | ---- | --------------------------- |
 | info | [AbilityInfo](js-apis-bundleManager-abilityInfo.md) | 是   | 表示关于检查ability的信息。 |
-| appIndex   | number  | 是   | 表示分身应用的索引。 <br> appIndex为0时，表示获取主应用组件的禁用或使能状态。appIndex大于0时，表示获取指定分身应用组件的禁用或使能状态。           |
+| appIndex   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示分身应用的索引。 <br> appIndex为0时，表示获取主应用组件的禁用或使能状态。appIndex大于0时，表示获取指定分身应用组件的禁用或使能状态。           |
 
 **返回值：**
 
@@ -2674,6 +3522,7 @@ isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise\<boolean>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2705,6 +3554,40 @@ try {
   hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+// 代码中使用的bundleName、abilityName、useId需为应用实际的包名、Ability名称、用户ID。
+let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
+let userId = 100;
+let want: Want = {
+  bundleName : "com.example.myapplication",
+  abilityName : "EntryAbility"
+};
+
+try {
+  bundleManager.queryAbilityInfo(want, abilityFlags, userId).then((abilitiesInfo: Array<bundleManager.AbilityInfo>) => {
+    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(abilitiesInfo));
+    let info = abilitiesInfo[0];
+
+    bundleManager.isAbilityEnabled(info, 1).then((data: boolean) => {
+      hilog.info(0x0000, 'testTag', 'isAbilityEnabled successfully. Data: %{public}s', JSON.stringify(data));
+    }).catch((err: Error) => {
+      hilog.error(0x0000, 'testTag', 'isAbilityEnabled failed. Cause: %{public}s', (err as BusinessError).message);
+    });
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.isAbilityEnabledSync<sup>10+</sup>
 
@@ -2715,6 +3598,10 @@ isAbilityEnabledSync(info: AbilityInfo): boolean
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2741,6 +3628,7 @@ isAbilityEnabledSync(info: AbilityInfo): boolean
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2774,10 +3662,48 @@ try {
   hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { Want } from '@kit.AbilityKit';
+// 开发者需根据实际工程更新userId、bundleName和abilityName。
+let abilityFlags = bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT;
+let userId = 100;
+let want: Want = {
+  bundleName : "com.example.myapplication",
+  abilityName : "EntryAbility"
+};
+
+try {
+  bundleManager.queryAbilityInfo(want, abilityFlags, userId).then((abilitiesInfo: Array<bundleManager.AbilityInfo>) => {
+    hilog.info(0x0000, 'testTag', 'queryAbilityInfo successfully. Data: %{public}s', JSON.stringify(abilitiesInfo));
+    let info = abilitiesInfo[0];
+
+    try {
+      let data = bundleManager.isAbilityEnabledSync(info);
+      hilog.info(0x0000, 'testTag', 'isAbilityEnabledSync successfully: %{public}s', JSON.stringify(data));
+    } catch (err) {
+      let message = (err as BusinessError).message;
+      hilog.error(0x0000, 'testTag', 'isAbilityEnabledSync failed: %{public}s', message);
+    }
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getLaunchWantForBundle
 
-getLaunchWantForBundle(bundleName: string, userId: number, callback: AsyncCallback\<Want>): void
+ArkTS-Dyn: getLaunchWantForBundle(bundleName: string, userId: number, callback: AsyncCallback\<Want>): void
+
+ArkTS-Sta: getLaunchWantForBundle(bundleName: string, userId: int, callback: AsyncCallback\<Want>): void
 
 根据给定的bundleName和userId获取用于启动应用程序的Want参数。使用callback异步回调。
 
@@ -2787,12 +3713,16 @@ getLaunchWantForBundle(bundleName: string, userId: number, callback: AsyncCallba
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                 | 必填 | 说明                                                         |
 | ---------- | -------------------- | ---- | ------------------------------------------------------------ |
 | bundleName | string               | 是   | 表示应用程序的bundleName。                                     |
-| userId     | number               | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                                                   |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                                                   |
 | callback   | AsyncCallback\<Want> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Want；否则为错误对象。 |
 
 **错误码：**
@@ -2844,6 +3774,10 @@ getLaunchWantForBundle(bundleName: string, callback: AsyncCallback\<Want>): void
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                 | 必填 | 说明                                                         |
@@ -2888,7 +3822,9 @@ try {
 
 ## bundleManager.getLaunchWantForBundle
 
-getLaunchWantForBundle(bundleName: string, userId?: number): Promise\<Want>
+ArkTS-Dyn: getLaunchWantForBundle(bundleName: string, userId?: number): Promise\<Want>
+
+ArkTS-Sta: getLaunchWantForBundle(bundleName: string, userId?: int): Promise\<Want>
 
 根据给定的bundleName和userId获取用于启动应用程序的Want参数。使用Promise异步回调。
 
@@ -2898,12 +3834,16 @@ getLaunchWantForBundle(bundleName: string, userId?: number): Promise\<Want>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ------------------------- |
 | bundleName | string | 是   | 表示应用程序的bundleName。 |
-| userId     | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。  |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。  |
 
 **返回值：**
 
@@ -2926,6 +3866,7 @@ getLaunchWantForBundle(bundleName: string, userId?: number): Promise\<Want>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2945,6 +3886,28 @@ try {
   hilog.error(0x0000, 'testTag', 'getLaunchWantForBundle failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 代码中使用的bundleName、useId需为应用实际的包名、用户ID。
+let bundleName = 'com.example.myapplication';
+let userId = 100;
+
+try {
+  bundleManager.getLaunchWantForBundle(bundleName, userId).then((data: Want) => {
+    hilog.info(0x0000, 'testTag', 'getLaunchWantForBundle successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getLaunchWantForBundle failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getLaunchWantForBundle failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getPermissionDef
 
@@ -2957,6 +3920,10 @@ getPermissionDef(permissionName: string, callback: AsyncCallback\<PermissionDef>
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3010,6 +3977,10 @@ getPermissionDef(permissionName: string): Promise\<PermissionDef>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型   | 必填 | 说明           |
@@ -3035,6 +4006,7 @@ getPermissionDef(permissionName: string): Promise\<PermissionDef>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3046,6 +4018,25 @@ try {
     hilog.info(0x0000, 'testTag', 'getPermissionDef successfully. Data: %{public}s', JSON.stringify(data));
   }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', 'getPermissionDef failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getPermissionDef failed. Cause: %{public}s', message);
+}
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+let permissionName = "ohos.permission.GET_BUNDLE_INFO";
+try {
+  bundleManager.getPermissionDef(permissionName).then((data: bundleManager.PermissionDef) => {
+    hilog.info(0x0000, 'testTag', 'getPermissionDef successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getPermissionDef failed. Cause: %{public}s', (err as BusinessError).message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
@@ -3064,6 +4055,10 @@ getPermissionDefSync(permissionName: string): PermissionDef;
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3118,6 +4113,10 @@ getAbilityLabel(bundleName: string, moduleName: string, abilityName: string, cal
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3183,6 +4182,10 @@ getAbilityLabel(bundleName: string, moduleName: string, abilityName: string): Pr
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                      |
@@ -3215,6 +4218,7 @@ getAbilityLabel(bundleName: string, moduleName: string, abilityName: string): Pr
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3235,6 +4239,29 @@ try {
   hilog.error(0x0000, 'testTag', 'getAbilityLabel failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新bundleName、moduleName和abilityName。
+let bundleName = 'com.example.myapplication';
+let moduleName = 'entry';
+let abilityName = 'EntryAbility';
+
+try {
+  bundleManager.getAbilityLabel(bundleName, moduleName, abilityName).then((data: string) => {
+    hilog.info(0x0000, 'testTag', 'getAbilityLabel successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAbilityLabel failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAbilityLabel failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getAbilityLabelSync<sup>10+</sup>
 
@@ -3249,6 +4276,10 @@ getAbilityLabelSync(bundleName: string, moduleName: string, abilityName: string)
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3302,7 +4333,9 @@ try {
 
 ## bundleManager.getApplicationInfoSync
 
-getApplicationInfoSync(bundleName: string, applicationFlags: number, userId: number) : ApplicationInfo
+ArkTS-Dyn: getApplicationInfoSync(bundleName: string, applicationFlags: number, userId: number) : ApplicationInfo
+
+ArkTS-Sta: getApplicationInfoSync(bundleName: string, applicationFlags: int, userId: int) : ApplicationInfo
 
 以同步方法根据给定的bundleName、applicationFlags和userId获取ApplicationInfo。
 
@@ -3314,13 +4347,17 @@ getApplicationInfoSync(bundleName: string, applicationFlags: number, userId: num
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型   | 必填 | 说明                                                       |
 | ----------- | ------ | ---- | ----------------------------------------------------------|
 | bundleName  | string | 是   | 表示应用程序的bundleName。                                  |
-| applicationFlags | number | 是   | 表示用于指定将返回的ApplicationInfo对象中包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。       |
-| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                                         |
+| applicationFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用于指定将返回的ApplicationInfo对象中包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。       |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                                         |
 
 **返回值：**
 
@@ -3363,7 +4400,9 @@ try {
 
 ## bundleManager.getApplicationInfoSync
 
-getApplicationInfoSync(bundleName: string, applicationFlags: number) : ApplicationInfo
+ArkTS-Dyn: getApplicationInfoSync(bundleName: string, applicationFlags: number) : ApplicationInfo
+
+ArkTS-Sta: getApplicationInfoSync(bundleName: string, applicationFlags: int) : ApplicationInfo
 
 以同步方法根据给定的bundleName、applicationFlags获取ApplicationInfo。
 
@@ -3375,12 +4414,16 @@ getApplicationInfoSync(bundleName: string, applicationFlags: number) : Applicati
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名           | 类型                       | 必填 | 说明                                                  |
 | ---------------- | -------------------------- | ---- | ----------------------------------------------------- |
 | bundleName       | string                     | 是   | 表示应用程序的bundleName。                            |
-| applicationFlags | number | 是   | 表示用于指定将返回的ApplicationInfo对象中包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。 |
+| applicationFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用于指定将返回的ApplicationInfo对象中包含的信息，具体取值及不同含义参考[ApplicationFlag](#applicationflag)。 |
 
 **返回值：**
 
@@ -3432,6 +4475,10 @@ getSharedBundleInfo(bundleName: string,  moduleName: string, callback: AsyncCall
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3491,6 +4538,10 @@ getSharedBundleInfo(bundleName: string, moduleName: string): Promise\<Array\<Sha
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
@@ -3518,6 +4569,7 @@ getSharedBundleInfo(bundleName: string, moduleName: string): Promise\<Array\<Sha
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3537,6 +4589,28 @@ try {
   hilog.error(0x0000, 'testTag', 'getSharedBundleInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新bundleName和moduleName。
+let bundleName = 'com.example.myapplication';
+let moduleName = 'library';
+
+try {
+  bundleManager.getSharedBundleInfo(bundleName, moduleName).then((data: Array<bundleManager.SharedBundleInfo>) => {
+    hilog.info(0x0000, 'testTag', 'getSharedBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getSharedBundleInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getSharedBundleInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getAllSharedBundleInfo<sup>10+</sup>
 
@@ -3549,6 +4623,10 @@ getAllSharedBundleInfo(callback: AsyncCallback\<Array\<SharedBundleInfo\>\>): vo
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3598,6 +4676,10 @@ getAllSharedBundleInfo(): Promise\<Array\<SharedBundleInfo\>\>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                         | 说明                                |
@@ -3615,6 +4697,7 @@ getAllSharedBundleInfo(): Promise\<Array\<SharedBundleInfo\>\>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3625,6 +4708,25 @@ try {
     hilog.info(0x0000, 'testTag', 'getAllSharedBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
   }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', 'getAllSharedBundleInfo failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllSharedBundleInfo failed. Cause: %{public}s', message);
+}
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  bundleManager.getAllSharedBundleInfo().then((data: Array<bundleManager.SharedBundleInfo>) => {
+    hilog.info(0x0000, 'testTag', 'getAllSharedBundleInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAllSharedBundleInfo failed. Cause: %{public}s', (err as BusinessError).message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
@@ -3645,6 +4747,10 @@ getAppProvisionInfo(bundleName: string, callback: AsyncCallback\<AppProvisionInf
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3689,7 +4795,9 @@ try {
 
 ## bundleManager.getAppProvisionInfo<sup>10+</sup>
 
-getAppProvisionInfo(bundleName: string, userId: number, callback: AsyncCallback\<AppProvisionInfo\>): void
+ArkTS-Dyn: getAppProvisionInfo(bundleName: string, userId: number, callback: AsyncCallback\<AppProvisionInfo\>): void
+
+ArkTS-Sta: getAppProvisionInfo(bundleName: string, userId: int, callback: AsyncCallback\<AppProvisionInfo\>): void
 
 获取指定bundleName和userId的provision配置文件信息。使用callback异步回调。
 
@@ -3701,12 +4809,16 @@ getAppProvisionInfo(bundleName: string, userId: number, callback: AsyncCallback\
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | bundleName | string | 是   | 指定应用的bundleName。 |
-| userId | number | 是 | 指定用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 指定用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
 | callback | AsyncCallback\<[AppProvisionInfo](js-apis-bundleManager-AppProvisionInfo-sys.md)\> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为指定bundleName的provision配置文件信息。 |
 
 
@@ -3748,7 +4860,9 @@ try {
 
 ## bundleManager.getAppProvisionInfo<sup>10+</sup>
 
-getAppProvisionInfo(bundleName: string, userId?: number): Promise\<AppProvisionInfo\>
+ArkTS-Dyn: getAppProvisionInfo(bundleName: string, userId?: number): Promise\<AppProvisionInfo\>
+
+ArkTS-Sta: getAppProvisionInfo(bundleName: string, userId?: int): Promise\<AppProvisionInfo\>
 
 根据bundleName和userId获取应用的provision配置文件信息。使用Promise异步回调。
 
@@ -3760,12 +4874,16 @@ getAppProvisionInfo(bundleName: string, userId?: number): Promise\<AppProvisionI
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型         | 必填 | 说明          |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | bundleName | string | 是 | 指定的bundleName。 |
-| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 
 **返回值：**
@@ -3788,6 +4906,7 @@ getAppProvisionInfo(bundleName: string, userId?: number): Promise\<AppProvisionI
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3818,10 +4937,46 @@ try {
   hilog.error(0x0000, 'testTag', 'getAppProvisionInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 代码中使用的bundleName、useId需为应用实际的包名、用户ID。
+let bundleName = "com.ohos.myapplication";
+let userId = 100;
+
+try {
+  bundleManager.getAppProvisionInfo(bundleName).then((data: bundleManager.AppProvisionInfo) => {
+    hilog.info(0x0000, 'testTag', 'getAppProvisionInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAppProvisionInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAppProvisionInfo failed. Cause: %{public}s', message);
+}
+
+try {
+  bundleManager.getAppProvisionInfo(bundleName, userId).then((data: bundleManager.AppProvisionInfo) => {
+    hilog.info(0x0000, 'testTag', 'getAppProvisionInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAppProvisionInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAppProvisionInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getAppProvisionInfoSync<sup>10+</sup>
 
-getAppProvisionInfoSync(bundleName: string, userId?: number): AppProvisionInfo
+ArkTS-Dyn: getAppProvisionInfoSync(bundleName: string, userId?: number): AppProvisionInfo
+
+ArkTS-Sta: getAppProvisionInfoSync(bundleName: string, userId?: int): AppProvisionInfo
 
 以同步方法根据bundleName和userId获取应用的provision配置文件信息并返回结果。
 
@@ -3833,12 +4988,16 @@ getAppProvisionInfoSync(bundleName: string, userId?: number): AppProvisionInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型         | 必填 | 说明          |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | bundleName | string | 是 | 指定的bundleName。 |
-| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 
 **返回值：**
@@ -3888,7 +5047,9 @@ try {
 
 ## bundleManager.getAllAppProvisionInfo<sup>23+</sup>
 
-getAllAppProvisionInfo(userId?: number): Promise\<Array\<AppProvisionInfo\>\>
+ArkTS-Dyn: getAllAppProvisionInfo(userId?: number): Promise\<Array\<AppProvisionInfo\>\>
+
+ArkTS-Sta: getAllAppProvisionInfo(userId?: int): Promise\<Array\<AppProvisionInfo\>\>
 
 根据userId获取指定用户下所有应用的[Provision](js-apis-bundleManager-AppProvisionInfo-sys.md)配置文件信息。使用Promise异步回调。
 
@@ -3902,11 +5063,15 @@ getAllAppProvisionInfo(userId?: number): Promise\<Array\<AppProvisionInfo\>\>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型         | 必填 | 说明          |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| userId | number | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>默认值：调用方所在用户ID。<br>取值范围：大于等于0。 |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>默认值：调用方所在用户ID。<br>取值范围：大于等于0。 |
 
 
 **返回值：**
@@ -3927,6 +5092,7 @@ getAllAppProvisionInfo(userId?: number): Promise\<Array\<AppProvisionInfo\>\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3956,10 +5122,41 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+let userId = 100;
+
+try {
+  bundleManager.getAllAppProvisionInfo().then((data: Array<bundleManager.AppProvisionInfo>) => {
+    hilog.info(0x0000, 'testTag', 'getAllAppProvisionInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfo failed. Cause: %{public}s', message);
+}
+
+try {
+  bundleManager.getAllAppProvisionInfo(userId).then((data: Array<bundleManager.AppProvisionInfo>) => {
+    hilog.info(0x0000, 'testTag', 'getAllAppProvisionInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getAllBundleInstallInfo<sup>23+</sup>
 
-getAllBundleInstallInfo(): Promise\<Array\<Record\<string, Object\>\>\>
+ArkTS-Dyn: getAllBundleInstallInfo(): Promise\<Array\<Record\<string, Object\>\>\>
+
+ArkTS-Sta: getAllBundleInstallInfo(): Promise\<Array\<Record\<string, RecordData\>\>\>
 
 获取系统内所有应用的扩展安装信息。使用Promise异步回调。
 
@@ -3971,11 +5168,15 @@ getAllBundleInstallInfo(): Promise\<Array\<Record\<string, Object\>\>\>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型                                                         | 说明                                |
 | ------------------------------------------------------------ | ----------------------------------- |
-| Promise\<Array\<Record\<string, Object\>\>\> | Promise对象，返回所有应用的扩展安装信息集合列表。 |
+| ArkTS-Dyn: Promise\<Array\<Record\<string, Object\>\>\> </br> ArkTS-Sta: Promise\<Array\<Record\<string, [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)\>\>\>| Promise对象，返回所有应用的扩展安装信息集合列表。 |
 
 **返回扩展安装信息集合字段说明：**
 
@@ -4005,6 +5206,7 @@ getAllBundleInstallInfo(): Promise\<Array\<Record\<string, Object\>\>\>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4022,6 +5224,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  bundleManager.getAllBundleInstallInfo().then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAllBundleInstallInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAllBundleInstallInfo failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllBundleInstallInfo failed. Cause: %{public}s', message);
+}
+```
 ## bundleManager.getSpecifiedDistributionType<sup>10+</sup>
 getSpecifiedDistributionType(bundleName: string): string
 
@@ -4034,6 +5255,10 @@ getSpecifiedDistributionType(bundleName: string): string
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4088,6 +5313,10 @@ getAdditionalInfo(bundleName: string): string
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型                                | 必填 | 说明                         |
@@ -4131,7 +5360,9 @@ try {
 
 ## bundleManager.queryExtensionAbilityInfoSync<sup>11+</sup>
 
-queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo>
+ArkTS-Dyn: queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo>
+
+ArkTS-Sta: queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensionAbilityFlags: int, userId?: int): Array\<ExtensionAbilityInfo>
 
 根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo，使用同步方式返回结果。
 
@@ -4143,14 +5374,18 @@ queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensio
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                | 类型                            | 必填 | 说明                                                      |
 | --------------------- | ------------------------------- | ---- | --------------------------------------------------------- |
 | want                  | [Want](js-apis-app-ability-want.md)      | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
 | extensionAbilityType  | string                          | 是   | 表示自定义extensionAbility的类型。                        |
-| extensionAbilityFlags | number| 是   | 表示返回的ExtensionInfo对象中需要包含的信息标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
-| userId                | number                          | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
+| extensionAbilityFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示返回的ExtensionInfo对象中需要包含的信息标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
+| userId                | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
 **返回值：**
 
@@ -4223,7 +5458,9 @@ try {
 
 ## bundleManager.getJsonProfile<sup>11+</sup>
 
-getJsonProfile(profileType: ProfileType, bundleName: string, moduleName?: string, userId?: number): string
+ArkTS-Dyn: getJsonProfile(profileType: ProfileType, bundleName: string, moduleName?: string, userId?: number): string
+
+ArkTS-Sta: getJsonProfile(profileType: ProfileType, bundleName: string, moduleName?: string, userId?: int): string
 
 以同步的方法根据给定的profileType、bundleName和moduleName查询相应配置文件的JSON字符串。
 
@@ -4235,6 +5472,10 @@ getJsonProfile(profileType: ProfileType, bundleName: string, moduleName?: string
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                | 类型                            | 必填 | 说明                                                      |
@@ -4242,7 +5483,7 @@ getJsonProfile(profileType: ProfileType, bundleName: string, moduleName?: string
 | profileType           | [ProfileType](#profiletype11)     | 是   | 表示要查询的配置文件类型。                                   |
 | bundleName            | string                          | 是   | 表示要查询应用程序的bundleName。                                  |
 | moduleName            | string                          | 否   | 表示要查询应用程序的module的名称，缺省时在入口模块中查找。            |
-| userId<sup>12+</sup>  | number                          | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。  |
+| userId<sup>12+</sup>  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。  |
 
 **返回值：**
 
@@ -4297,6 +5538,10 @@ getRecoverableApplicationInfo(callback: AsyncCallback\<Array\<RecoverableApplica
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -4345,6 +5590,10 @@ getRecoverableApplicationInfo(): Promise\<Array\<RecoverableApplicationInfo\>\>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                         | 说明                                |
@@ -4362,6 +5611,7 @@ getRecoverableApplicationInfo(): Promise\<Array\<RecoverableApplicationInfo\>\>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4372,6 +5622,25 @@ try {
     hilog.info(0x0000, 'testTag', 'getRecoverableApplicationInfo successfully: %{public}s', JSON.stringify(data));
   }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', 'getRecoverableApplicationInfo failed: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getRecoverableApplicationInfo failed: %{public}s', message);
+}
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  bundleManager.getRecoverableApplicationInfo().then((data: Array<bundleManager.RecoverableApplicationInfo>) => {
+    hilog.info(0x0000, 'testTag', 'getRecoverableApplicationInfo successfully: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getRecoverableApplicationInfo failed: %{public}s', (err as BusinessError).message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
@@ -4390,6 +5659,10 @@ setAdditionalInfo(bundleName: string, additionalInfo: string): void
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4441,6 +5714,10 @@ getAllPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                         | 说明                                |
@@ -4458,6 +5735,7 @@ getAllPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationInfo
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4474,7 +5752,25 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllPreinstalledApplicationInfo failed: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
 
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  bundleManager.getAllPreinstalledApplicationInfo().then((data: Array<bundleManager.PreinstalledApplicationInfo>)=>{
+    hilog.info(0x0000, 'testTag', 'getAllPreinstalledApplicationInfo success, Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAllPreinstalledApplicationInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllPreinstalledApplicationInfo failed: %{public}s', message);
+}
+```
 
 ## bundleManager.getAllNewPreinstalledApplicationInfo<sup>24+</sup>
 
@@ -4488,11 +5784,11 @@ getAllNewPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationI
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 24
 
 **ArkTS-Sta起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -4511,7 +5807,7 @@ getAllNewPreinstalledApplicationInfo(): Promise\<Array\<PreinstalledApplicationI
 
 **示例：**
 
-ArkTS-Dyn:
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4528,8 +5824,10 @@ try {
     hilog.error(0x0000, 'testTag', 'getAllPreinstalledApplicationInfo failed: %{public}s', message);
 }
 ```
-ArkTS-Sta:
+ArkTS-Sta示例:
 ```ts
+'use static'
+
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -4548,7 +5846,9 @@ try {
 
 ## bundleManager.queryExtensionAbilityInfoSync<sup>11+</sup>
 
-queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo>
+ArkTS-Dyn: queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo>
+
+ArkTS-Sta: queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAbilityFlags: int, userId?: int): Array\<ExtensionAbilityInfo>
 
 根据给定的extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo。
 
@@ -4560,13 +5860,17 @@ queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAbilityFlag
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                | 类型                            | 必填 | 说明                                                      |
 | --------------------- | ------------------------------- | ---- | --------------------------------------------------------- |
 | extensionAbilityType  | string                          | 是   | 表示自定义extensionAbility的类型。                        |
-| extensionAbilityFlags | number| 是   | 表示返回的ExtensionInfo对象中需要包含的信息标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
-| userId                | number                          | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户ID。取值范围：大于等于0。 |
+| extensionAbilityFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示返回的ExtensionInfo对象中需要包含的信息标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
+| userId                | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户ID。取值范围：大于等于0。 |
 
 **返回值：**
 
@@ -4637,6 +5941,10 @@ getAllBundleInfoByDeveloperId(developerId: string): Array\<BundleInfo>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                | 类型      | 必填 | 说明                     |
@@ -4680,7 +5988,9 @@ try {
 
 ## bundleManager.getDeveloperIds<sup>12+</sup>
 
-getDeveloperIds(appDistributionType?: number): Array\<string>
+ArkTS-Dyn: getDeveloperIds(appDistributionType?: number): Array\<string>
+
+ArkTS-Sta: getDeveloperIds(appDistributionType?: int): Array\<string>
 
 根据给定的应用[appDistributionType](#appdistributiontype12)获取当前用户下的所有开发者ID列表。
 
@@ -4690,11 +6000,15 @@ getDeveloperIds(appDistributionType?: number): Array\<string>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                | 类型      | 必填 | 说明                     |
 | --------------------- | ---------| ---- | --------------------- |
-| [appDistributionType](#appdistributiontype12)  | number   | 否   | 表示应用的分发类型，当该参数缺省时，会返回所有应用的开发者ID列表。       |
+| [appDistributionType](#appdistributiontype12)  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示应用的分发类型，当该参数缺省时，会返回所有应用的开发者ID列表。       |
 
 **返回值：**
 
@@ -4742,6 +6056,10 @@ switchUninstallState(bundleName: string, state: boolean): void
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
@@ -4778,7 +6096,9 @@ try {
 
 ## bundleManager.getAllPluginInfo<sup>19+</sup>
 
-getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Array\<PluginBundleInfo>>
+ArkTS-Dyn: getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Array\<PluginBundleInfo>>
+
+ArkTS-Sta: getAllPluginInfo(hostBundleName: string, userId?: int): Promise<Array\<PluginBundleInfo>>
 
 根据给定的hostBundleName和userId获取所有的PluginBundleInfo。使用Promise异步回调。
 
@@ -4788,12 +6108,16 @@ getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Array\<Plugin
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | hostBundleName | string | 是   | 表示安装插件的应用包名。 |
-| userId         | number   | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户ID。取值范围：大于等于0。 |
+| userId         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户ID。取值范围：大于等于0。 |
 
 **返回值：**
 
@@ -4814,6 +6138,7 @@ getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Array\<Plugin
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4852,6 +6177,51 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllPluginInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 代码中使用的hostBundleName、useId需为应用实际的包名、用户ID。
+let hostBundleName = 'com.ohos.demo';
+let userId = 100;
+
+try {
+  bundleManager.getAllPluginInfo(hostBundleName, userId).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAllPluginInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAllPluginInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllPluginInfo failed. Cause: %{public}s', message);
+}
+```
+
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 代码中使用的hostBundleName需为应用实际的包名。
+let hostBundleName = 'com.ohos.demo';
+
+try {
+  bundleManager.getAllPluginInfo(hostBundleName).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAllPluginInfo successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAllPluginInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllPluginInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getExtResource<sup>12+</sup>
 
@@ -4864,6 +6234,10 @@ getExtResource(bundleName: string): Promise\<Array\<string>>;
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4891,6 +6265,7 @@ getExtResource(bundleName: string): Promise\<Array\<string>>;
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4911,6 +6286,29 @@ try {
   hilog.error(0x0000, 'testTag', 'getExtResource failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新bundleName。
+let bundleName : string = 'com.ohos.demo';
+
+try {
+  bundleManager.getExtResource(bundleName).then((modules: Array<string>) => {
+    for (let i = 0; i < modules.length; i++) {
+      hilog.info(0x0000, 'testTag', 'getExtResource item: %s', modules[i]);
+    }
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getExtResource failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getExtResource failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.enableDynamicIcon<sup>12+</sup>
 
@@ -4923,6 +6321,10 @@ enableDynamicIcon(bundleName: string, moduleName: string): Promise\<void>;
 **需要权限：** ohos.permission.ACCESS_DYNAMIC_ICON
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -4990,6 +6392,10 @@ enableDynamicIcon(bundleName: string, moduleName: string, option?: BundleOptions
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
@@ -5021,6 +6427,7 @@ enableDynamicIcon(bundleName: string, moduleName: string, option?: BundleOptions
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5041,6 +6448,29 @@ try {
   hilog.error(0x0000, 'testTag', 'enableDynamicIcon failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新bundleName、moduleName、userId和appIndex。
+let bundleName: string = 'com.ohos.demo';
+let moduleName: string = 'moduleTest';
+let option: bundleManager.BundleOptions = {'userId':100, 'appIndex':0};
+
+try {
+  bundleManager.enableDynamicIcon(bundleName, moduleName, option).then(() => {
+    hilog.info(0x0000, 'testTag', 'enableDynamicIcon successfully');
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'enableDynamicIcon failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'enableDynamicIcon failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.disableDynamicIcon<sup>12+</sup>
 
@@ -5053,6 +6483,10 @@ disableDynamicIcon(bundleName: string): Promise\<void>;
 **需要权限：** ohos.permission.ACCESS_DYNAMIC_ICON
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -5113,8 +6547,11 @@ disableDynamicIcon(bundleName: string, option?: BundleOptions): Promise\<void>
 
 **需要权限：** ohos.permission.ACCESS_DYNAMIC_ICON or (ohos.permission.ACCESS_DYNAMIC_ICON and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5144,6 +6581,7 @@ disableDynamicIcon(bundleName: string, option?: BundleOptions): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5163,6 +6601,28 @@ try {
   hilog.error(0x0000, 'testTag', 'disableDynamicIcon failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新bundleName、userId和appIndex。
+let bundleName: string = 'com.ohos.demo';
+let option: bundleManager.BundleOptions = {'userId':100, 'appIndex':0};
+
+try {
+  bundleManager.disableDynamicIcon(bundleName, option).then(() => {
+    hilog.info(0x0000, 'testTag', 'disableDynamicIcon successfully');
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'disableDynamicIcon failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'disableDynamicIcon failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getDynamicIcon<sup>12+</sup>
 
@@ -5175,6 +6635,10 @@ getDynamicIcon(bundleName: string): Promise\<string>;
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5202,6 +6666,7 @@ getDynamicIcon(bundleName: string): Promise\<string>;
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5220,6 +6685,27 @@ try {
   hilog.error(0x0000, 'testTag', 'getDynamicIcon failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新bundleName。
+let bundleName : string = 'com.ohos.demo';
+
+try {
+  bundleManager.getDynamicIcon(bundleName).then((data: string) => {
+    hilog.info(0x0000, 'testTag', 'getDynamicIcon successfully %s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getDynamicIcon failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getDynamicIcon failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getAppCloneIdentityBySandboxDataDir<sup>20+</sup>
 
@@ -5227,16 +6713,19 @@ getAppCloneIdentityBySandboxDataDir(sandboxDataDir: string): AppCloneIdentity
 
 根据应用的沙箱目录名称获取应用的身份信息，包括应用包名和分身索引信息。
 
-
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------|
-| sandboxDataDir | string |  是  |     表示[应用的沙箱目录](../../file-management/app-sandbox-directory.md)名称。 <br>**说明：**<br> 参数不校验合法性，如果入参sandboxDataDir不符合分身应用或元服务的目录名称格式，则sandboxDataDir将作为返回信息中的AppCloneIdentity.bundleName返回，此时AppCloneIdentity.appIndex为0。 <br> 1.分身应用目录名称格式要求：`+clone-{appIndex}+{bundleName}`，appIndex和bundleName是变量，对应分身索引和应用包名，例如： `+clone-1+com.example.myapplication`。<br> 2.元服务目录名称格式格式要求：`+auid-{uid}+{bundleName}`，uid和bundleName是变量，对应应用程序的UID和应用包名，例如： `+auid-20000000+com.example.myapplication`。   |
+| sandboxDataDir | string |  是  |     表示[应用的沙箱目录](../../file-management/app-sandbox-directory.md)名称。 <br>**说明：**<br> 参数不校验合法性，如果入参sandboxDataDir不符合分身应用或原子化服务的目录名称格式，则sandboxDataDir将作为返回信息中的AppCloneIdentity.bundleName返回，此时AppCloneIdentity.appIndex为0。 <br> 1.分身应用目录名称格式要求：`+clone-{appIndex}+{bundleName}`，appIndex和bundleName是变量，对应分身索引和应用包名，例如： `+clone-1+com.example.myapplication`。<br> 2.原子化服务目录名称格式要求：`+auid-{uid}+{bundleName}`，uid和bundleName是变量，对应应用程序的UID和应用包名，例如： `+auid-20000000+com.example.myapplication`。   |
 
 **返回值：**
 
@@ -5276,7 +6765,7 @@ try {
     message);
 }
 
-// 元服务
+// 原子化服务
 let atomicDataDir = '+auid-20000000+com.example.myapplication';
 try {
   let res = bundleManager.getAppCloneIdentityBySandboxDataDir(atomicDataDir);
@@ -5291,7 +6780,9 @@ try {
 
 ## bundleManager.getSandboxDataDir<sup>20+</sup>
 
-getSandboxDataDir(bundleName: string, appIndex: number): string
+ArkTS-Dyn: getSandboxDataDir(bundleName: string, appIndex: number): string
+
+ArkTS-Sta: getSandboxDataDir(bundleName: string, appIndex: int): string
 
 根据应用包名和分身索引获取对应的沙箱目录。
 
@@ -5301,12 +6792,16 @@ getSandboxDataDir(bundleName: string, appIndex: number): string
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------|
 | bundleName | string |  是  |   表示要查询的应用包名。当前用户下有此应用或者分身才可查询，否则返回错误码17700001。   |
-| appIndex | number |  是  |   表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。   |
+| appIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  |   表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。   |
 
 **返回值：**
 
@@ -5346,7 +6841,9 @@ try {
 
 ## bundleManager.getAppCloneBundleInfo<sup>12+</sup>
 
-getAppCloneBundleInfo(bundleName: string, appIndex: number, bundleFlags: number, userId?: number): Promise\<BundleInfo>;
+ArkTS-Dyn: getAppCloneBundleInfo(bundleName: string, appIndex: number, bundleFlags: number, userId?: number): Promise\<BundleInfo>
+
+ArkTS-Sta: getAppCloneBundleInfo(bundleName: string, appIndex: int, bundleFlags: int, userId?: int): Promise\<BundleInfo>
 
 根据bundleName、分身索引、[bundleFlags](js-apis-bundleManager.md#bundleflag)以及用户ID查询主应用或分身应用的BundleInfo。使用Promise异步回调。
 
@@ -5358,14 +6855,18 @@ getAppCloneBundleInfo(bundleName: string, appIndex: number, bundleFlags: number,
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------|
 |    bundleName     | string |  是  |       表示要查询的应用Bundle名称。      |
-|    appIndex     | number |  是  |       表示要查询的分身应用索引。<br>appIndex为0时，表示查询主应用信息。appIndex大于0时，表示查询指定分身应用信息。      |
-|    [bundleFlags](js-apis-bundleManager.md#bundleflag)     | number |  是  |       表示用于指定要返回的BundleInfo对象中包含的信息的标志。    |
-|    userId     | number |  否  |       表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。      |
+|    appIndex     | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  |       表示要查询的分身应用索引。<br>appIndex为0时，表示查询主应用信息。appIndex大于0时，表示查询指定分身应用信息。      |
+|    bundleFlags     | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  |       表示用于指定要返回的BundleInfo对象中包含的信息的标志，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。 |
+|    userId     |ArkTS-Dyn: number<br>ArkTS-Sta: int |  否  |       表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。      |
 
 **返回值：**
 
@@ -5389,6 +6890,7 @@ getAppCloneBundleInfo(bundleName: string, appIndex: number, bundleFlags: number,
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5410,10 +6912,36 @@ try {
   hilog.error(0x0000, 'testTag', 'getAppCloneBundleInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 代码中使用的bundleName、appIndex需为应用实际的包名、分身应用索引。
+let bundleName = 'com.example.myapplication';
+let appIndex = 1;
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE |
+bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY;
+
+try {
+  bundleManager.getAppCloneBundleInfo(bundleName, appIndex, bundleFlags).then((res: bundleManager.BundleInfo) => {
+    hilog.info(0x0000, 'testTag', 'getAppCloneBundleInfo res: BundleInfo = %{public}s', JSON.stringify(res));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAppCloneBundleInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAppCloneBundleInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getAllAppCloneBundleInfo<sup>12+</sup>
 
-getAllAppCloneBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise\<Array\<BundleInfo>>;
+ArkTS-Dyn: getAllAppCloneBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise\<Array\<BundleInfo>>
+
+ArkTS-Sta: getAllAppCloneBundleInfo(bundleName: string, bundleFlags: int, userId?: int): Promise\<Array\<BundleInfo>>
 
 根据bundleName、[bundleFlags](js-apis-bundleManager.md#bundleflag)以及用户ID查询主应用和分身应用的BundleInfo列表。使用Promise异步回调。
 
@@ -5425,13 +6953,17 @@ getAllAppCloneBundleInfo(bundleName: string, bundleFlags: number, userId?: numbe
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ---------------------------|
 |    bundleName     | string |  是  |       表示要查询的应用Bundle名称。      |
-|    [bundleFlags](js-apis-bundleManager.md#bundleflag)     | number |  是  |       表示用于指定要返回的BundleInfo对象中包含的信息的标志。    |
-|    userId     | number |  否  |       表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。      |
+|    bundleFlags     | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  |       表示用于指定要返回的BundleInfo对象中包含的信息的标志，详情请参考[BundleFlag](js-apis-bundleManager.md#bundleflag)。 |
+|    userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int |  否  |       表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。      |
 
 **返回值：**
 
@@ -5454,6 +6986,7 @@ getAllAppCloneBundleInfo(bundleName: string, bundleFlags: number, userId?: numbe
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5478,6 +7011,33 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllAppCloneBundleInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 代码中使用的bundleName需为应用实际的包名。
+let bundleName = 'com.example.myapplication';
+let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE |
+bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY;
+
+try {
+  bundleManager.getAllAppCloneBundleInfo(bundleName, bundleFlags).then((res: Array<bundleManager.BundleInfo>) => {
+    let index = 0;
+    for (let item of res) {
+      hilog.info(0x0000, 'testTag', 'getAllAppCloneBundleInfo res: BundleInfo[%{public}d] = %{public}s', index++, JSON.stringify(item));
+    }
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAllAppCloneBundleInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllAppCloneBundleInfo failed. Cause: %{public}s', message);
+}
+```
+
 ## bundleManager.verifyAbc<sup>11+</sup>
 
 verifyAbc(abcPaths: Array\<string>, deleteOriginalFiles: boolean, callback: AsyncCallback\<void>): void
@@ -5489,6 +7049,10 @@ verifyAbc(abcPaths: Array\<string>, deleteOriginalFiles: boolean, callback: Asyn
 **需要权限：** ohos.permission.RUN_DYN_CODE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5544,6 +7108,10 @@ migrateData(sourcePaths: Array&lt;string&gt;, destinationPath: string): Promise&
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型   | 必填 | 说明                                                     |
@@ -5575,6 +7143,7 @@ migrateData(sourcePaths: Array&lt;string&gt;, destinationPath: string): Promise&
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5598,6 +7167,32 @@ try {
   hilog.error(0x0000, 'testTag', 'migrateData call err: %{public}s', JSON.stringify(err));
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  // 开发者需将source1、source2、dest内容更新为实际文件路径或目录路径。
+  let source1: string = "/data/app/el2/100/base/com.example.myapplication/";
+  let source2: string = "/data/app/el2/101/base/com.example.myapplication/log.txt";
+  let dest: string = "/data/local/tmp";
+  let sourcePaths: Array<string> = [source1, source2];
+
+  bundleManager.migrateData(sourcePaths, dest)
+    .then(() => {
+      hilog.info(0x0000, 'testTag', 'migrateData succeed');
+    })
+    .catch((err: Error) => {
+      hilog.error(0x0000, 'testTag', 'migrateData err: %{public}s', JSON.stringify(err as BusinessError));
+    })
+} catch(err) {
+  hilog.error(0x0000, 'testTag', 'migrateData call err: %{public}s', JSON.stringify(err));
+}
+```
 
 ## bundleManager.verifyAbc<sup>11+</sup>
 
@@ -5610,6 +7205,10 @@ verifyAbc(abcPaths: Array\<string>, deleteOriginalFiles: boolean): Promise\<void
 **需要权限：** ohos.permission.RUN_DYN_CODE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5637,6 +7236,7 @@ verifyAbc(abcPaths: Array\<string>, deleteOriginalFiles: boolean): Promise\<void
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5655,6 +7255,27 @@ try {
   hilog.error(0x0000, 'testTag', 'verifyAbc failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新abcPaths。
+let abcPaths: Array<string> = ['/data/storage/el2/base/a.abc'];
+
+try {
+  bundleManager.verifyAbc(abcPaths, true).then(() => {
+    hilog.info(0x0000, 'testTag', 'verifyAbc successfully');
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'verifyAbc failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'verifyAbc failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.deleteAbc<sup>11+</sup>
 
@@ -5667,6 +7288,10 @@ deleteAbc(abcPath: string): Promise\<void>
 **需要权限：** ohos.permission.RUN_DYN_CODE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5693,6 +7318,7 @@ deleteAbc(abcPath: string): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5711,6 +7337,27 @@ try {
   hilog.error(0x0000, 'testTag', 'deleteAbc failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新abcPaths。
+let abcPath: string = '/data/storage/el2/base/a.abc';
+
+try {
+  bundleManager.deleteAbc(abcPath).then(() => {
+    hilog.info(0x0000, 'testTag', 'deleteAbc successfully');
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'deleteAbc failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'deleteAbc failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getDynamicIconInfo<sup>20+</sup>
 
@@ -5723,6 +7370,10 @@ getDynamicIconInfo(bundleName: string): Promise\<Array\<DynamicIconInfo>>
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5749,6 +7400,7 @@ getDynamicIconInfo(bundleName: string): Promise\<Array\<DynamicIconInfo>>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5767,10 +7419,33 @@ try {
   hilog.error(0x0000, 'testTag', 'getDynamicIconInfo failed. Cause: %{public}s', message);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// 开发者需根据实际工程更新bundleName。
+let bundleName: string = 'com.ohos.demo';
+
+try {
+  bundleManager.getDynamicIconInfo(bundleName).then((data: Array<bundleManager.DynamicIconInfo>) => {
+    hilog.info(0x0000, 'testTag', 'getDynamicIconInfo successfully %s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getDynamicIconInfo failed. Cause: %{public}s', (err as BusinessError).message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getDynamicIconInfo failed. Cause: %{public}s', message);
+}
+```
 
 ## bundleManager.getAllDynamicIconInfo<sup>20+</sup>
 
-getAllDynamicIconInfo(userId?: number): Promise\<Array\<DynamicIconInfo>>
+ArkTS-Dyn: getAllDynamicIconInfo(userId?: number): Promise\<Array\<DynamicIconInfo>>
+
+ArkTS-Sta: getAllDynamicIconInfo(userId?: int): Promise\<Array\<DynamicIconInfo>>
 
 查询指定用户下所有应用和所有分身的动态图标信息。使用Promise异步回调。
 
@@ -5784,11 +7459,15 @@ getAllDynamicIconInfo(userId?: number): Promise\<Array\<DynamicIconInfo>>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | ---------------------------- |
-| userId  | number | 否   | 标识用户ID。缺省时查询所有用户下所有应用和所有分身的动态图标信息。 |
+| userId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 标识用户ID。缺省时查询所有用户下所有应用和所有分身的动态图标信息。 |
 
 **返回值：**
 
@@ -5809,6 +7488,7 @@ getAllDynamicIconInfo(userId?: number): Promise\<Array\<DynamicIconInfo>>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5821,6 +7501,28 @@ try {
     hilog.info(0x0000, 'testTag', 'getAllDynamicIconInfo successfully');
   }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', 'getAllDynamicIconInfo failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllDynamicIconInfo failed. Cause: %{public}s', message);
+}
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 代码中使用的userId需为应用实际的用户ID。
+let userId = 100;
+
+try {
+  bundleManager.getAllDynamicIconInfo(userId).then((data: Array<bundleManager.DynamicIconInfo>) => {
+    hilog.info(0x0000, 'testTag', 'getAllDynamicIconInfo successfully');
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAllDynamicIconInfo failed. Cause: %{public}s', (err as BusinessError).message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
@@ -6018,6 +7720,10 @@ getBundleInstallStatus(bundleName: string): BundleInstallStatus
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
@@ -6061,7 +7767,9 @@ try {
 
 ## bundleManager.isApplicationDisableForbidden<sup>24+</sup>
 
-isApplicationDisableForbidden(bundleName: string, userId: number, appIndex: number): boolean
+ArkTS-Dyn: isApplicationDisableForbidden(bundleName: string, userId: number, appIndex: number): boolean
+
+ArkTS-Sta: isApplicationDisableForbidden(bundleName: string, userId: int, appIndex: int): boolean
 
 以同步方法查询指定用户下指定应用或分身应用是否被设置禁止停用。
 
@@ -6077,13 +7785,17 @@ isApplicationDisableForbidden(bundleName: string, userId: number, appIndex: numb
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 表示应用的包名。 |
-| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，取值范围：大于等于0。  |
-| appIndex    | number |  是  | 表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。   |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，取值范围：大于等于0。  |
+| appIndex    | ArkTS-Dyn: number<br>ArkTS-Sta: int |  是  | 表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。   |
 
 
 **返回值：**
@@ -6124,6 +7836,141 @@ try {
   hilog.error(0x0000, 'testTag', 'isApplicationDisableForbidden failed: %{public}s', message);
 }
 
+```
+
+## bundleManager.setApplicationEnabledSync
+
+ArkTS-Dyn: setApplicationEnabledSync(bundleName: string, appIndex: number, isEnabled: boolean, killProcess: boolean): void
+
+ArkTS-Sta: setApplicationEnabledSync(bundleName: string, appIndex: int, isEnabled: boolean, killProcess: boolean): void
+
+以同步方法设置指定应用或分身应用的启用或禁用状态，并控制禁用时是否退出应用进程。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型    | 必填 | 说明                       |
+| ----------- | ------- | ---- | ---------------------------- |
+| bundleName  | string  | 是   | 应用的包名。 |
+| appIndex    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 应用索引。取值范围0~5的整数，取值为0表示主应用，取值1~5表示分身应用的索引。 |
+| isEnabled   | boolean | 是   | 是否启用应用。值为true表示启用应用，值为false表示禁用应用。 |
+| killProcess | boolean | 是   | 禁用应用时是否退出应用进程。值为true表示禁用应用时将退出应用进程，值为false表示禁用应用时不退出应用进程。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied. Non-system APP calling system API. |
+| 17700001 | The specified bundle is not found. |
+| 17700061 | The specified app index is invalid. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 需要替换为要设置的应用Bundle名称、应用索引、是否启用应用和禁用应用时是否退出应用进程
+let bundleName = 'com.example.myapplication';
+let appIndex = 0;
+let isEnabled = true;
+let killProcess = false;
+
+try {
+  bundleManager.setApplicationEnabledSync(bundleName, appIndex, isEnabled, killProcess);
+  hilog.info(0x0000, 'testTag', 'setApplicationEnabledSync successfully');
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setApplicationEnabledSync failed: %{public}s', message);
+}
+```
+
+## bundleManager.setApplicationEnabled
+
+ArkTS-Dyn: setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean, killProcess: boolean): Promise\<void>
+
+ArkTS-Sta: setApplicationEnabled(bundleName: string, appIndex: int, isEnabled: boolean, killProcess: boolean): Promise\<void>
+
+设置指定应用或分身应用的启用或禁用状态，并控制禁用时是否退出应用进程。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.CHANGE_ABILITY_ENABLED_STATE
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型    | 必填 | 说明                       |
+| ----------- | ------- | ---- | ---------------------------- |
+| bundleName  | string  | 是   | 应用的包名。 |
+| appIndex    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 应用索引。取值范围0~5的整数，取值为0表示主应用，取值1~5表示分身应用的索引。 |
+| isEnabled   | boolean | 是   | 是否启用应用。值为true表示启用应用，值为false表示禁用应用。 |
+| killProcess | boolean | 是   | 禁用应用时是否退出应用进程。值为true表示禁用应用时将退出应用进程，值为false表示禁用应用时不退出应用进程。 |
+
+**返回值：**
+
+| 类型              | 说明                    |
+| ----------------- | ----------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied. Non-system APP calling system API. |
+| 17700001 | The specified bundle is not found. |
+| 17700061 | The specified app index is invalid. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 需要替换为要设置的应用Bundle名称、应用索引、是否启用应用和禁用应用时是否退出应用进程
+let bundleName = 'com.example.myapplication';
+let appIndex = 0;
+let isEnabled = true;
+let killProcess = false;
+
+try {
+  bundleManager.setApplicationEnabled(bundleName, appIndex, isEnabled, killProcess)
+    .then(() => {
+      hilog.info(0x0000, 'testTag', 'setApplicationEnabled successfully');
+    })
+    .catch((err: Error) => {
+      hilog.error(0x0000, 'testTag', 'setApplicationEnabled failed: %{public}s', err.message);
+    });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setApplicationEnabled failed: %{public}s', message);
+}
 ```
 
 ## bundleManager.getAbilityIcon<sup>deprecated</sup>
@@ -6282,6 +8129,10 @@ type PermissionDef = _PermissionDef
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_PermissionDef](./js-apis-bundleManager-permissionDef-sys.md#permissiondef) |配置文件中定义的权限详细信息。 |
@@ -6296,13 +8147,19 @@ type SharedBundleInfo = _SharedBundleInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_SharedBundleInfo](js-apis-bundleManager-sharedBundleInfo-sys.md#sharedbundleinfo) |共享包信息。 |
 
 ## AppProvisionInfo<sup>10+</sup>
 
-type AppProvisionInfo = _AppProvisionInfo.AppProvisionInfo
+ArkTS-Dyn: type AppProvisionInfo = _AppProvisionInfo.AppProvisionInfo
+
+ArkTS-Sta: type AppProvisionInfo = _AppProvisionInfo
 
 应用[HarmonyAppProvision配置文件](../../security/app-provision-structure.md)中的信息。
 
@@ -6310,14 +8167,20 @@ type AppProvisionInfo = _AppProvisionInfo.AppProvisionInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_AppProvisionInfo.AppProvisionInfo](js-apis-bundleManager-AppProvisionInfo-sys.md#appprovisioninfo) |应用[HarmonyAppProvision配置文件](../../security/app-provision-structure.md)中的信息。 |
+| ArkTS-Dyn: [_AppProvisionInfo.AppProvisionInfo](js-apis-bundleManager-AppProvisionInfo-sys.md#appprovisioninfo)<br>ArkTS-Sta: [_AppProvisionInfo](js-apis-bundleManager-AppProvisionInfo-sys.md#appprovisioninfo) |应用[HarmonyAppProvision配置文件](../../security/app-provision-structure.md)中的信息。 |
 
 
 ## Validity<sup>10+</sup>
 
-type Validity = _AppProvisionInfo.Validity
+ArkTS-Dyn: type Validity = _AppProvisionInfo.Validity
+
+ArkTS-Sta: type Validity = _Validity
 
 配置文件中的有效期。
 
@@ -6325,9 +8188,13 @@ type Validity = _AppProvisionInfo.Validity
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_AppProvisionInfo.Validity](js-apis-bundleManager-AppProvisionInfo-sys.md#validity) |配置文件中的有效期。 |
+| ArkTS-Dyn: [_AppProvisionInfo.Validity](js-apis-bundleManager-AppProvisionInfo-sys.md#validity)<br>ArkTS-Sta: [_Validity](js-apis-bundleManager-AppProvisionInfo-sys.md#validity) |配置文件中的有效期。 |
 
 ## RecoverableApplicationInfo<sup>11+</sup>
 
@@ -6338,6 +8205,10 @@ type RecoverableApplicationInfo = _RecoverableApplicationInfo
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -6353,6 +8224,10 @@ type PreinstalledApplicationInfo = _PreinstalledApplicationInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_PreinstalledApplicationInfo](js-apis-bundleManager-ApplicationInfo-sys.md#preinstalledapplicationinfo12) |预置应用信息。 |
@@ -6366,6 +8241,10 @@ type PluginBundleInfo = _PluginBundleInfo
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
@@ -6381,13 +8260,19 @@ type PluginModuleInfo = _PluginModuleInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_PluginModuleInfo](js-apis-bundleManager-pluginBundleInfo-sys.md#pluginmoduleinfo) |插件的模块信息。 |
 
 ## DynamicIconInfo<sup>20+</sup>
 
-type DynamicIconInfo = _BundleInfo.DynamicIconInfo
+ArkTS-Dyn: type DynamicIconInfo = _BundleInfo.DynamicIconInfo
+
+ArkTS-Sta: type DynamicIconInfo = _DynamicIconInfo
 
 应用的动态图标信息。
 
@@ -6395,13 +8280,19 @@ type DynamicIconInfo = _BundleInfo.DynamicIconInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_BundleInfo.DynamicIconInfo](js-apis-bundleManager-BundleInfo-sys.md#dynamiciconinfo) |应用的动态图标信息。 |
+| ArkTS-Dyn: [_BundleInfo.DynamicIconInfo](js-apis-bundleManager-BundleInfo-sys.md#dynamiciconinfo)<br>ArkTS-Sta: [_DynamicIconInfo](js-apis-bundleManager-BundleInfo-sys.md#dynamiciconinfo) |应用的动态图标信息。 |
 
 ## BundleOptions<sup>20+</sup>
 
-type BundleOptions = _BundleInfo.BundleOptions
+ArkTS-Dyn: type BundleOptions = _BundleInfo.BundleOptions
+
+ArkTS-Sta: type BundleOptions = _BundleOptions
 
 应用包选项，用于设置或查询应用相关信息。
 
@@ -6409,6 +8300,10 @@ type BundleOptions = _BundleInfo.BundleOptions
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [_BundleInfo.BundleOptions](js-apis-bundleManager-BundleInfo-sys.md#bundleoptions) |应用包选项，用于设置或查询应用相关信息。 |
+| ArkTS-Dyn: [_BundleInfo.BundleOptions](js-apis-bundleManager-BundleInfo-sys.md#bundleoptions)<br>ArkTS-Sta: [_BundleOptions](js-apis-bundleManager-BundleInfo-sys.md#bundleoptions) |应用包选项，用于设置或查询应用相关信息。 |

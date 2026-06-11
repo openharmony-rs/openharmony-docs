@@ -190,6 +190,7 @@ struct AutoFillPage {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -371,6 +372,7 @@ struct AutoFillPage {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -545,6 +547,7 @@ struct AutoFillPage {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -760,6 +763,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -966,6 +970,7 @@ struct SavePage {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1133,6 +1138,7 @@ struct SavePage {
 ArkTS-Sta示例：
 
 ```ts
+'use static'
 // MyAutoFillExtensionAbility.ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';

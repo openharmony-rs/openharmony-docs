@@ -173,7 +173,7 @@ addPath(path: Path2D, transform?: Matrix2D): void
   }
   ```
 
-  ![zh-cn_image_0000001238712467](figures/zh-cn_image_0000001238712467.png)
+  ![addPath](figures/addPath.png)
 
 
 ### closePath
@@ -219,7 +219,7 @@ closePath(): void
   }
   ```
 
-  ![zh-cn_image_0000001193872542](figures/zh-cn_image_0000001193872542.png)
+  ![closePath](figures/closePath.png)
 
 
 ### moveTo
@@ -278,7 +278,7 @@ moveTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194032502](figures/zh-cn_image_0000001194032502.png)
+  ![moveTo](figures/moveTo.png)
 
 
 ### lineTo
@@ -332,7 +332,7 @@ lineTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238832437](figures/zh-cn_image_0000001238832437.png)
+  ![lineTo3](figures/lineTo3.png)
 
 
 ### bezierCurveTo
@@ -387,7 +387,7 @@ bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number,
   }
   ```
 
-  ![zh-cn_image_0000001239032455](figures/zh-cn_image_0000001239032455.png)
+  ![bezierCurveTo3](figures/bezierCurveTo3.png)
 
 
 ### quadraticCurveTo
@@ -440,7 +440,7 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238952419](figures/zh-cn_image_0000001238952419.png)
+  ![quadraticCurveTo3](figures/quadraticCurveTo3.png)
 
 
 ### arc
@@ -494,7 +494,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
   }
   ```
 
-  ![zh-cn_image_0000001194192488](figures/zh-cn_image_0000001194192488.png)
+  ![arc](figures/arc.png)
 
 
 ### arcTo
@@ -513,10 +513,10 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
 
 | 参数名  | 类型     | 必填 |  说明   |
 | ----- | -------- | ---- | ---------- |
-| x1     | number | 是 | 圆弧经过的第一个点的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
-| y1     | number | 是 | 圆弧经过的第一个点的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
-| x2     | number | 是 | 圆弧经过的第二个点的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
-| y2     | number | 是 | 圆弧经过的第二个点的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
+| x1     | number | 是 | 圆弧第一个控制点的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
+| y1     | number | 是 | 圆弧第一个控制点的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
+| x2     | number | 是 | 圆弧第二个控制点的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
+| y2     | number | 是 | 圆弧第二个控制点的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 | radius | number | 是 | 圆弧的圆半径值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 
 **示例：**
@@ -548,7 +548,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194352486](figures/zh-cn_image_0000001194352486.png)
+  ![arcTo2](figures/arcTo2.png)
 
 
 ### ellipse
@@ -604,7 +604,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
   }
   ```
 
-  ![zh-cn_image_0000001238712471](figures/zh-cn_image_0000001238712471.png)
+  ![ellipse](figures/ellipse.png)
 
 
 ### rect
@@ -656,7 +656,7 @@ rect(x: number, y: number, w: number, h: number): void
   }
   ```
 
-  ![zh-cn_image_0000001193872544](figures/zh-cn_image_0000001193872544.png)
+  ![rect](figures/rect.png)
 
 ### roundRect<sup>20+</sup>
 

@@ -8,6 +8,8 @@
 
 ArkTS提供了渲染控制能力。条件渲染可根据应用状态，使用if、else和else if渲染相应的UI内容。
 
+ArkTS-Sta提供了[If](../../reference/apis-arkui/arkui-ts/ts-rendering-control-ifelse-sta.md)组件用于条件渲染。If组件在分支切换时先移除旧分支的子组件，再构建新分支的子组件，且If组件支持作为自定义组件根节点使用，与ArkTS-Dyn中if/else语句功能一致，建议开发者优先使用If组件进行ArkTS-Sta应用的开发。If的具体用法以及和if/else的差异请参考指南[If：条件渲染（ArkTS-Sta）](./arkts-rendering-control-ifelse-sta.md)。
+
 > **说明：**
 >
 > 从API version 9开始，该接口支持在ArkTS卡片中使用。

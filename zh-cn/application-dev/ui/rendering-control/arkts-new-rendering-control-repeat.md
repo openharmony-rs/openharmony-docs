@@ -257,6 +257,8 @@ Repeat组件默认开启节点复用功能。从API version 18开始，在懒加
 
 从API version 18开始，Repeat支持懒加载模式下[缓存池自定义组件冻结](../state-management/arkts-custom-components-freezeV2.md#repeat)。
 
+从API version 18开始，Repeat允许在[.each()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#each)中使用[@ReusableV2](../state-management/arkts-new-reusableV2.md)装饰的自定义组件。Repeat自身的复用能力优先于@ReusableV2的复用能力。在懒加载模式下，正常滑动场景、更新场景不会触发@ReusableV2的回收和复用，若开发者希望使用@ReusableV2的复用能力，建议关闭Repeat自身的复用能力。在全量加载模式下，删除、创建子组件会触发@ReusableV2的回收和复用。使用示例可参考[在Repeat组件中使用](../state-management/arkts-new-reusableV2.md#在repeat组件中使用)@ReusableV2。
+
 > **说明：**
 > 
 > Repeat子组件的节点操作分为四种：节点创建、节点更新、节点复用、节点销毁。其中，节点更新和节点复用的区别为：
@@ -703,6 +705,17 @@ struct PreInsertDemo {
 ### animateTo动效
 
 从API version 24开始，当父容器组件为[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)时，Repeat支持通过[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口为其显示区域内的子组件设置过渡动画效果。
+
+该能力默认关闭。可以在工程的[module.json5配置文件](../../quick-start/module-configuration-file.md)中配置[metadata](../../quick-start/module-configuration-file.md#配置文件标签)字段控制是否启用该能力，配置如下：
+
+```json
+"metadata": [
+  {
+    "name": "enableRepeatAnimation",
+    "value": "true"
+  }
+]
+```
 
 Repeat子组件过渡动画的判定规则如下：
 1. 子组件从外部进入显示区域和预加载区域时，将被判定为插入组件。

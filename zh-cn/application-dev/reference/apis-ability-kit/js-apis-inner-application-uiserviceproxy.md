@@ -12,6 +12,7 @@ UIServiceProxy提供代理能力，可以从UIServiceExtension客户端发送数
 
 > **说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >  - 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >  - 本模块接口仅可在Stage模型下使用。
 >  - 本模块接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
@@ -33,9 +34,13 @@ sendData(data: Record\<string, Object>): void
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
 >
 
-**原子化服务API**：从 API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从 API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 14
 
 **参数：**
 
@@ -120,6 +125,125 @@ struct UIServiceExtensionAbility {
             console.info(`${TAG} sendData.`);
             // 给UIServiceExtension发送数据
             this.comProxy.sendData(formData);
+          } catch (err) {
+            let code = (err as BusinessError).code;
+            let message = (err as BusinessError).message;
+            console.error(`${TAG} sendData failed, code is ${code}, message is ${message}.`);
+          }
+        }).catch((err: Error) => {
+        let code = (err as BusinessError).code;
+        let message = (err as BusinessError).message;
+        console.error(`${TAG} connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}.`);
+      });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`${TAG} connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}.`);
+    }
+  }
+}
+```
+
+## UIServiceProxy.sendData<sup>23+</sup>
+
+sendData(data: Record\<string, RecordData>): void
+
+给UIServiceExtension服务端发送数据。
+
+> **说明：**
+>
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。  
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                        | 必填 | 说明                                     |
+| ------ | --------------------------- | ---- | ---------------------------------------- |
+| data   | Record\<string, RecordData> | 是   | 待发送给UIServiceExtension服务端的数据。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                |
+| -------- | ------------------------------------------------------- |
+| 16000050 | Internal error. Possible cause: Connect to stub failed. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { Entry, Component, Scroll, Column, Button, ButtonType } from '@kit.ArkUI';
+
+const TAG: string = '[Extension] ';
+
+class MyDataCallBack implements common.UIServiceExtensionConnectCallback {
+  onData(data: Record<string, RecordData>) {
+    console.info(`dataCallBack received data`, JSON.stringify(data));
+  }
+
+  onDisconnect() {
+    console.info(`dataCallBack onDisconnect`);
+  }
+}
+
+@Entry
+@Component
+struct UIServiceExtensionAbility {
+  comProxy: common.UIServiceProxy | null = null;
+
+  build() {
+    Scroll() {
+      Column() {
+        // 创建一个连接UIServiceExtension的按钮
+        Button('connectUIServiceExtensionAbility', { type: ButtonType.Capsule, stateEffect: true })
+          .margin({
+            top: 5,
+            left: 10,
+            right: 10,
+            bottom: 5
+          })
+          .onClick(() => {
+            this.myConnectUIServiceExtensionAbility()
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+
+  // 自定义连接UIServiceExtension的函数
+  myConnectUIServiceExtensionAbility() {
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    let startWant: Want = {
+      deviceId: '',
+      bundleName: 'com.acts.myapplication',
+      abilityName: 'UiServiceExtensionAbility'
+    };
+
+    try {
+      let dataCallBack = new MyDataCallBack();
+      // 连接UIServiceExtension
+      context.connectUIServiceExtensionAbility(startWant, dataCallBack)
+        .then((proxy: common.UIServiceProxy) => {
+          console.info(TAG + `try to connectUIServiceExtensionAbility ${proxy}}`);
+          this.comProxy = proxy;
+          let formData: Record<string, RecordData> = {
+            'PATH': '/tmp/aaa.jpg'
+          };
+          try {
+            console.info(`${TAG} sendData.`);
+            // 给UIServiceExtension发送数据
+            this.comProxy?.sendData(formData);
           } catch (err) {
             let code = (err as BusinessError).code;
             let message = (err as BusinessError).message;

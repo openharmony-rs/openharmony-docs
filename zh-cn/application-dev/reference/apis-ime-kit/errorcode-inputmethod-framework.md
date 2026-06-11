@@ -334,7 +334,7 @@ The input method is not found.
 
 **错误描述**
 
-输入法未找到。
+通过查询系统已安装输入法列表，输入法未找到。
 
 **可能原因**
 
@@ -365,7 +365,7 @@ Current operation cannot be applied to the preconfigured default input method.
 
 <!--DelEnd-->
 
-## 12800020 沉浸效果不正确
+## 12800020 沉浸效果参数配置错误
 
 **错误信息**
 

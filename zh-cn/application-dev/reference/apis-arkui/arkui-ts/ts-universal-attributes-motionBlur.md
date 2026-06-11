@@ -1,8 +1,8 @@
 # 运动模糊
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,6 +11,8 @@
 >  **说明：**
 >
 >  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>  - 本模块接口仅可在Stage模型下使用。
 >
 >  - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -98,7 +100,7 @@ motionBlur(motionBlur: Optional\<MotionBlurOptions>): T
 
 ## motionBlur<sup>23+</sup>
 
-motionBlur(value: MotionBlurOptions | undefined): this
+motionBlur(value: MotionBlurOptions | undefined)
 
 在当前组件由缩放大小或位移变化引起的运动过程中，增加动态模糊效果。
 
@@ -127,12 +129,6 @@ motionBlur(value: MotionBlurOptions | undefined): this
 |   参数名    |    类型                                                      |  必填  |     说明                                                       |
 | ---------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value | [MotionBlurOptions](#motionbluroptions对象说明) \| undefined | 是   | 定义运动模糊参数。<br/>当motionBlur的值为undefined时，维持之前取值。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## MotionBlurOptions对象说明
 

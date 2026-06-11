@@ -13,7 +13,7 @@
 
 AbilityStage拥有[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)、[onDestroy()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#ondestroy12)生命周期回调和[onAcceptWant()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant)、[onConfigurationUpdate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)、[onMemoryLevel()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)、[onNewProcessRequest()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)、[onPrepareTermination()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onpreparetermination15)等事件回调。
 
-- onCreate()生命周期回调：在开始加载对应Module的第一个应用组件（如[UIAbility组件](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)或具体扩展能力的[ExtensionAbility组件](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)）实例之前会先创建AbilityStage，并在AbilityStage创建完成之后执行其onCreate()生命周期回调。AbilityStage模块提供在Module加载的时候，通知开发者，可以在此进行该Module的初始化（如资源预加载、线程创建等）。
+- onCreate()生命周期回调：在开始加载对应Module的第一个应用组件（如[@ohos.app.ability.UIAbility (带界面的应用组件)](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)或具体扩展能力的[@ohos.app.ability.ExtensionAbility (扩展能力基类)](../reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md)）实例之前会先创建AbilityStage，并在AbilityStage创建完成之后执行其onCreate()生命周期回调。AbilityStage模块提供在Module加载的时候，通知开发者，可以在此进行该Module的初始化（如资源预加载、线程创建等）。
 
 - onAcceptWant()事件回调：UIAbility[指定实例模式（specified）](uiability-launch-type.md#specified启动模式)启动时触发的事件回调，具体使用请参见[UIAbility启动模式综述](uiability-launch-type.md)。
 
@@ -41,6 +41,7 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
 
 3. 打开MyAbilityStage.ets文件，导入AbilityStage的依赖包，自定义类继承AbilityStage并加上需要的生命周期回调，示例中增加了一个[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期回调。
 
+    ArkTS-Dyn示例：
     <!-- @[my_example_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/exampleabilitystage/MyAbilityStage.ets) -->
 
     ``` TypeScript
@@ -51,6 +52,24 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
         // 应用HAP首次加载时触发，可以在此执行该Module的初始化操作（例如资源预加载、线程创建等）。
       }
 
+      onAcceptWant(want: Want): string {
+        // 仅specified模式下触发
+        return 'MyAbilityStage';
+      }
+    }
+    ```
+    
+    ArkTS-Sta示例：
+    <!-- @[my_example_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/AbilityStage-sta/entry/src/main/ets/exampleabilitystage/MyAbilityStage.ets) -->
+    
+    ``` TypeScript
+    import { AbilityStage, Want } from '@kit.AbilityKit';
+    
+    export default class MyAbilityStage extends AbilityStage {
+      onCreate(): void {
+        // 应用HAP首次加载时触发，可以在此执行该Module的初始化操作（例如资源预加载、线程创建等）。
+      }
+    
       onAcceptWant(want: Want): string {
         // 仅specified模式下触发
         return 'MyAbilityStage';
@@ -83,6 +102,7 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
 
 - 通过关闭应用进程，可以触发AbilityStage的onDestroy()生命周期回调。
 
+  ArkTS-Dyn示例：
   <!-- @[myAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/myabilitystage/MyAbilityStage.ets) -->
 
   ``` TypeScript
@@ -114,6 +134,48 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
       }
     }
 
+    onDestroy(): void {
+      // 通过onDestroy()方法，可以监听到Ability的销毁事件。
+      console.info('AbilityStage onDestroy');
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  <!-- @[myAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/AbilityStage-sta/entry/src/main/ets/myabilitystage/MyAbilityStage.ets) -->
+  
+  ``` TypeScript
+  import { AbilityStage, Configuration, AbilityConstant } from '@kit.AbilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  export default class MyAbilityStage extends AbilityStage {
+    onCreate(): void {
+      console.info('AbilityStage onCreate');
+    }
+  
+    onConfigurationUpdated(config: Configuration): void {
+      console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
+      let language = config.language; // 应用程序的当前语言
+      let colorMode = config.colorMode; // 深浅色模式
+      let direction = config.direction; // 屏幕方向
+      let fontSizeScale = config.fontSizeScale; // 字体大小缩放比例
+      let fontWeightScale = config.fontWeightScale; // 字体粗细缩放比例
+    }
+  
+    onMemoryLevel(level: AbilityConstant.MemoryLevel): void {
+      console.info(`onMemoryLevel level: ${level}`);
+    }
+  
+    onLaunchFromHyperSnap(): void {
+      console.info('Launched from Hyper Snap, reinitializing resources...');
+      // 在此添加从快照恢复时的初始化逻辑
+    }
+  
+    onAboutToCreateAbility(): void {
+      console.info('About to create first ability, preparing...');
+      // 在此添加创建第一个Ability前的准备工作
+    }
+  
     onDestroy(): void {
       // 通过onDestroy()方法，可以监听到Ability的销毁事件。
       console.info('AbilityStage onDestroy');

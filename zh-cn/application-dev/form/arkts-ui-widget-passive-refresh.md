@@ -44,6 +44,7 @@
 
 - 下次刷新：表示指定卡片的下一次刷新时间。可以通过调用[setFormNextRefreshTime](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidersetformnextrefreshtime)接口来实现。最短刷新时间为5分钟。例如，可以在接口调用后的5分钟内刷新卡片内容。
 
+   ArkTS-Dyn示例：
   <!-- @[set_form_next_refreshtime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts) -->
   
   ``` TypeScript
@@ -91,6 +92,129 @@
       return formInfo.FormState.READY;
     }
   
+  }
+  ```
+
+   ArkTS-Sta示例：
+  <!-- @[set_form_next_refreshtimeSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormPassiveRefreshSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
+  
+  ``` TypeScript
+  // entry/src/main/ets/EntryFormAbility/EntryFormAbility.ets
+  
+  import formBindingData from '@ohos.app.form.formBindingData';
+  import FormExtensionAbility from '@ohos.app.form.FormExtensionAbility';
+  import formInfo from '@ohos.app.form.formInfo';
+  import formProvider from '@ohos.app.form.formProvider';
+  import Want from '@ohos.app.ability.Want';
+  import { Configuration } from '@ohos.app.ability.Configuration';
+  import { BusinessError } from '@ohos.base';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG: string = 'EntryFormAbility';
+  const FIVE_MINUTE: int = 5;
+  const DOMAIN_NUMBER: int = 0xFF00;
+  
+  function onAcquireFormStateCallback(want: Want): formInfo.FormState {
+    hilog.info(DOMAIN_NUMBER, TAG, 'OnAcquireFormState register success');
+    return formInfo.FormState.READY;
+  }
+  
+  function onAcquireFormDataCallback(formId: string): Record<string, Object> {
+    hilog.info(DOMAIN_NUMBER, TAG, 'onAcquireFormDataCallback success');
+    let param: Record<string, Object> = {};
+    param = {
+      'title': 'onAcquireFormData'
+    };
+    return param;
+  }
+  
+  function onShareFormCallback(formId: string): Record<string, Object> {
+    hilog.info(DOMAIN_NUMBER, TAG, 'onShareFormCallback success');
+    let param: Record<string, Object> = {};
+    param = {
+      'title': 'onShareForm'
+    };
+    return param;
+  }
+  
+  export default class EntryFormAbility extends FormExtensionAbility {
+    constructor() {
+      hilog.info(DOMAIN_NUMBER, TAG, 'constructor register call');
+      try {
+        this.onStop = () => {
+          hilog.info(DOMAIN_NUMBER, TAG, 'OnStop callback success');
+        }
+        hilog.info(DOMAIN_NUMBER, TAG, 'OnStop register success');
+      } catch (err) {
+        hilog.error(DOMAIN_NUMBER, TAG, `OnStop catch error code: ${err?.code}, message: ${err?.message}`);
+      }
+  
+      this.onAcquireFormState = onAcquireFormStateCallback;
+      this.onAcquireFormData = onAcquireFormDataCallback;
+      this.onShareForm = onShareFormCallback;
+    }
+  
+    onAddForm(want: Want): formBindingData.FormBindingData {
+      // 卡片使用方创建卡片时触发，返回卡片数据绑定类
+      hilog.info(DOMAIN_NUMBER, TAG, `onAddForm`);
+      let wants = want?.parameters;
+      let formId = '';
+      if (wants) {
+        formId = wants['ohos.extra.param.key.form_identity'] as string;
+      }
+      let param: Record<string, string> = {};
+      param = {
+        'title1': '武汉2*2'
+      };
+      let data: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+      hilog.info(DOMAIN_NUMBER, TAG, `onAddForm testing FormBindingData`);
+      return data;
+    }
+  
+    onCastToNormalForm(formId: string): void {
+      hilog.info(DOMAIN_NUMBER, TAG, 'onCastToNormalForm testing');
+    }
+  
+    // ...
+  
+    onChangeFormVisibility(newStatus: Record<string, int>): void {
+      hilog.info(DOMAIN_NUMBER, TAG, 'onChangeFormVisibility');
+    }
+  
+    onFormEvent(formId: string, message: string): void {
+      // 当卡片提供方的postCardAction接口的message事件被触发时调用
+      hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+      try {
+        // 设置过5分钟后更新卡片内容
+        formProvider.setFormNextRefreshTime(formId, FIVE_MINUTE, (err: BusinessError | null) => {
+          if (err && err.code != 0) {
+            hilog.error(DOMAIN_NUMBER, TAG, `setFormNextRefreshTime. Code: ${err?.code}, message: ${err?.message}`);
+            return;
+          } else {
+            hilog.info(DOMAIN_NUMBER, TAG, `setFormNextRefreshTime success`);
+          }
+        });
+      } catch (error) {
+        hilog.error(DOMAIN_NUMBER, TAG, `setFormNextRefreshTime fail. Code: ${error?.code}, message: ${error?.message}`);
+      }
+    }
+  
+    onRemoveForm(formId: string): void {
+      hilog.info(DOMAIN_NUMBER, TAG, 'onRemoveForm testing');
+    }
+  
+    onConfigurationUpdate(newConfig: Configuration): void {
+      hilog.info(DOMAIN_NUMBER, TAG, 'onConfigurationUpdate testing');
+    }
+  
+    onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation): void {
+      hilog.info(DOMAIN_NUMBER, TAG, 'onFormLocationChanged testing');
+    }
+  
+    onAcquireFormStateFn(want: Want): formInfo.FormState {
+      // 卡片使用方查询卡片状态时触发该回调，默认返回初始状态。
+      return formInfo.FormState.READY;
+    }
   }
   ```
 

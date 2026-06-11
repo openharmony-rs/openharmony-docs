@@ -47,8 +47,8 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 | endIcon   | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是   | MenuItem的末尾图标。不支持Symbol图标。使用Symbol图标时，须使用symbolEndIcon。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9 <br/> **ArkTS-Sta起始版本：** 23 |
 | labelInfo | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是   | MenuItem结束的标签信息，如快捷方式Ctrl+C等。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9 <br/> **ArkTS-Sta起始版本：** 23  |
 | builder   | [CustomBuilder](ts-types.md#custombuilder8) | 否   | 是   | 用于构建二级菜单。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9 <br/> **ArkTS-Sta起始版本：** 23                      |
-| symbolStartIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | 否   | 是   | MenuItem起始的Symbol图标。配置该项时，原先startIcon图标不显示。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
-| symbolEndIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| 否   | 是   | MenuItem末尾的Symbol图标。配置该项时，原先endIcon图标不显示。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
+| symbolStartIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | 否   | 是   | MenuItem起始的Symbol图标。配置该项时，原先startIcon图标不显示。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
+| symbolEndIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| 否   | 是   | MenuItem末尾的Symbol图标。配置该项时，原先endIcon图标不显示。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
 
 
 ## 属性
@@ -113,6 +113,8 @@ ArkTS-Sta: contentFont(value: Font | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -134,6 +136,8 @@ ArkTS-Sta: contentFontColor(value: ResourceColor | undefined)
 设置菜单项中内容信息的字体颜色。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -157,6 +161,8 @@ ArkTS-Sta: labelFont(value: Font | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -178,6 +184,8 @@ ArkTS-Sta: labelFontColor(value: ResourceColor | undefined)
 设置菜单项中标签信息的字体颜色。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -208,6 +216,30 @@ attributeModifier(modifier: AttributeModifier\<MenuItemAttribute\> | AttributeMo
 | 参数名    | 类型                                                                                              | 必填 | 说明                       |
 | --------- | ------------------------------------------------------------------------------------------------- | ---- | -------------------------- |
 | modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[MenuItemAttribute](#menuitemattribute)\>&nbsp;\|&nbsp;[AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<CommonMethod\>&nbsp;\|&nbsp;undefined | 是   | MenuItem组件的属性修改器。取值为undefined时，则不使用属性修改器。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md) |
+
+### subMenuBuilder
+
+ArkTS-Dyn: subMenuBuilder(builder: CustomBuilder)
+
+ArkTS-Sta: subMenuBuilder(builder: CustomBuilder | undefined)
+
+设置自定义菜单项的二级菜单。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| builder  | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 设置二级菜单的自定义内容。<br/>当MenuItem组件的入参类型为[CustomBuilder](ts-types.md#custombuilder8)时可以使用本属性来接入自定义二级菜单。设置undefined时表示不启用二级菜单。<br/>父组件为[Menu](ts-basic-components-menu.md)时，[subMenuExpandingMode](ts-basic-components-menu.md#submenuexpandingmode12)属性设置任意类型，均按照SubMenuExpandingMode.SIDE_EXPAND生效。|
 
 ## 事件
 

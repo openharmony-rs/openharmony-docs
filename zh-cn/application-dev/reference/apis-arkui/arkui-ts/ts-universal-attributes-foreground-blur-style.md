@@ -1,8 +1,8 @@
 # 组件内容模糊
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,6 +11,8 @@
 >  **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -113,7 +115,7 @@ foregroundBlurStyle(style: Optional\<BlurStyle>, options?: ForegroundBlurStyleOp
 
 ## foregroundBlurStyle<sup>23+</sup>
 
-foregroundBlurStyle(style: BlurStyle | undefined, options?: ForegroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): this
+foregroundBlurStyle(style: BlurStyle | undefined, options?: ForegroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions)
 
 为当前组件提供内容模糊能力。
 
@@ -136,12 +138,6 @@ foregroundBlurStyle(style: BlurStyle | undefined, options?: ForegroundBlurStyleO
 | style   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) \| undefined| 否 | 否  | 内容模糊样式。<br/>当style的值为undefined时，恢复为无模糊的内容。 |
 | options | [ForegroundBlurStyleOptions](#foregroundblurstyleoptions对象说明) |  否 | 是 | 可选参数，内容模糊选项。                                     |
 | sysOptions   |  [SystemAdaptiveOptions](ts-universal-attributes-background.md#systemadaptiveoptions19)    | 否 | 是 | 系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## ForegroundBlurStyleOptions对象说明
 
@@ -213,7 +209,7 @@ foregroundBlurStyle(style: BlurStyle | undefined, options?: ForegroundBlurStyleO
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --------- | ------| ------- | ------- | --------|
-| grayscale   |  [number, number]   |  否 | 否 |  灰阶模糊参数，两参数取值范围均为[0,127] 。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。参数一表示对黑色的提亮程度，参数二表示对白色的压暗程度，参数值越大调整效果越明显（黑白色变得越灰），有效值范围0-127。例如：设置参数为（20,20），图片中的黑色像素RGB:[0, 0, 0]会调整为[20,20,20]，白色像素RGB:[255,255,255]会调整为[235,235,235]（255-20），图像中的彩色像素维持不变。 |
+| grayscale   | ArkTS-Dyn: [number, number]<br/>ArkTS-Sta: [double, double] \| undefined   |  否 | 否 |  灰阶模糊参数，两参数取值范围均为[0,127] 。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。参数一表示对黑色的提亮程度，参数二表示对白色的压暗程度，参数值越大调整效果越明显（黑白色变得越灰），有效值范围0-127。例如：设置参数为（20,20），图片中的黑色像素RGB:[0, 0, 0]会调整为[20,20,20]，白色像素RGB:[255,255,255]会调整为[235,235,235]（255-20），图像中的彩色像素维持不变。 |
 
 
 ## 示例
@@ -241,4 +237,4 @@ struct ForegroundBlurStyleDemo {
 }
 ```
 
-![zh-cn_image_background_blur_style](figures/zh-cn_image_foreground_blur_style.png)
+![zh-cn_image_background_blur_style](figures/image-foreground-blur_style.png)

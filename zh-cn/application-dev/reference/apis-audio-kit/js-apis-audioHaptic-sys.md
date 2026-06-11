@@ -10,7 +10,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 **设备行为差异：** 若设备无振动器件，将不会产生振动效果。
 
@@ -34,6 +35,10 @@ isHapticsIntensityAdjustmentSupported(): boolean
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                            |
@@ -51,7 +56,7 @@ isHapticsIntensityAdjustmentSupported(): boolean
 **示例：**
 
 ```ts
-const result: boolean = audioHapticPlayerInstance.isHapticsIntensityAdjustmentSupported();
+let result: boolean = audioHapticPlayerInstance.isHapticsIntensityAdjustmentSupported();
 ```
 
 ### isHapticsRampSupported<sup>20+</sup>
@@ -63,6 +68,10 @@ isHapticsRampSupported(): boolean
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -81,7 +90,7 @@ isHapticsRampSupported(): boolean
 **示例：**
 
 ```ts
-const result: boolean = audioHapticPlayerInstance.isHapticsRampSupported();
+let result: boolean = audioHapticPlayerInstance.isHapticsRampSupported();
 ```
 
 ### enableHapticsInSilentMode<sup>20+</sup>
@@ -97,6 +106,10 @@ enableHapticsInSilentMode(enable: boolean): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -121,7 +134,9 @@ audioHapticPlayerInstance.enableHapticsInSilentMode(true);
 
 ### setHapticsIntensity<sup>20+</sup>
 
-setHapticsIntensity(intensity: number): Promise&lt;void&gt;
+ArkTS-Dyn: setHapticsIntensity(intensity: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setHapticsIntensity(intensity: double): Promise&lt;void&gt;
 
 设置音振播放器的振幅。使用Promise异步回调。
 
@@ -133,11 +148,15 @@ setHapticsIntensity(intensity: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**
 
 | 参数名  | 类型                                     | 必填| 说明                    |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| intensity     | number                              | 是  | 取值范围为[0.00, 1.00]，其中1.00表示最大振幅（100%）。|
+| intensity     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是  | 取值范围为[0.00, 1.00]，其中1.00表示最大振幅（100%）。|
 
 **返回值：**
 
@@ -170,7 +189,9 @@ audioHapticPlayerInstance.setHapticsIntensity(0.5).then(() => {
 
 ### setHapticsRamp<sup>20+</sup>
 
-setHapticsRamp(duration: number, startIntensity: number, endIntensity: number): Promise&lt;void&gt;
+ArkTS-Dyn: setHapticsRamp(duration: number, startIntensity: number, endIntensity: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setHapticsRamp(duration: int, startIntensity: double, endIntensity: double): Promise&lt;void&gt;
 
 设置音振播放器渐变播放。使用Promise异步回调。
 
@@ -183,13 +204,17 @@ setHapticsRamp(duration: number, startIntensity: number, endIntensity: number): 
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**
 
 | 参数名  | 类型                                     | 必填| 说明                    |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| duration | number                           | 是  | 渐变时间段，单位为毫秒（ms），值必须为整数，且不能小于100ms。 |
-| startIntensity | number                     | 是  | 起始振动幅度，取值范围为[0.00, 1.00]，其中1.00表示最大振幅（100%）。|
-| endIntensity   | number                     | 是  | 结束振动幅度，取值范围为[0.00, 1.00]，其中1.00表示最大振幅（100%）。|
+| duration | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是  | 渐变时间段，单位为毫秒（ms），值必须为整数，且不能小于100ms。 |
+| startIntensity | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是  | 起始振动幅度，取值范围为[0.00, 1.00]，其中1.00表示最大振幅（100%）。|
+| endIntensity   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是  | 结束振动幅度，取值范围为[0.00, 1.00]，其中1.00表示最大振幅（100%）。|
 
 **返回值：**
 
@@ -213,9 +238,9 @@ setHapticsRamp(duration: number, startIntensity: number, endIntensity: number): 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const duration = 10000;
-const startIntensity = 0.5;
-const endIntensity = 1;
+let duration = 10000;
+let startIntensity = 0.5;
+let endIntensity = 1;
 
 audioHapticPlayerInstance.setHapticsRamp(duration, startIntensity, endIntensity).then(() => {
   console.info('Promise returned to indicate that set haptics ramp successfully.');

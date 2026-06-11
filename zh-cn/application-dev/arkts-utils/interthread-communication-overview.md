@@ -22,4 +22,4 @@ ArkTS目前主要提供两种并发能力支持线程间通信：TaskPool和Work
 
 图1 序列化反序列化原理图
 
-![zh-cn_image_0000002017033808](figures/zh-cn_image_0000002017033808.png)
+![Serialization-and-deserialization-principles](figures/Serialization-and-deserialization-principles.png)
