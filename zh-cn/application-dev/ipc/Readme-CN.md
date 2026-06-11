@@ -1,4 +1,10 @@
-# IPC Kit（进程间通信服务）<!--ipc-kit-->
+# IPC Kit（进程间通信服务）
+<!--Kit: IPC Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @xdx19211-->
+<!--Designer: @zhaopeng_gitee-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @zhang_yixin13-->
 
 - [IPC Kit简介](ipc-rpc-overview.md)
 - [IPC与RPC通信开发指导(ArkTS)](ipc-rpc-development-guideline.md)
