@@ -845,7 +845,7 @@ After the link file is replaced, the read and write need to be resumed.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the result of resumimg the read and write on the FUSE.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to receive the result of resuming the read and write on the FUSE.|
 
 **Error codes**
 
