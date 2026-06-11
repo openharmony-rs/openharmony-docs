@@ -54,6 +54,7 @@ try {
     console.error("getSync unexpected error: " + e);
 }
 ```
+
 ## systemParameter.get<sup>(deprecated)</sup>
 
 get(key: string, callback: AsyncCallback&lt;string&gt;): void
