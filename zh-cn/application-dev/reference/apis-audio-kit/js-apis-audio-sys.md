@@ -469,13 +469,15 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 表示音频分离效果的音量类型。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称 | 值 | 说明 |
 | --- | --- | --- |
@@ -3169,13 +3171,15 @@ isAudioSeparationEffectSupported(): boolean
 >
 > 应用在使用音频分离效果相关接口前，应先调用本接口确认设备是否支持。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -3211,8 +3215,6 @@ setAudioSeparationEffectEnabled(enabled: boolean, uid: number, streamId?: number
 > - 调用此接口前，应先调用[isAudioSeparationEffectSupported](js-apis-audio-sys.md#isaudioseparationeffectsupported)确认设备是否支持音频分离效果。
 > - 当streamId参数没有传入时，根据uid控制整个应用的音频分离效果开关；当streamId参数传入时，根据streamId控制指定音频播放流的音频分离效果开关。播放应用可通过[AudioRenderer.getAudioStreamIdSync](arkts-apis-audio-AudioRenderer.md#getaudiostreamidsync10)获取streamId。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
@@ -3220,6 +3222,10 @@ setAudioSeparationEffectEnabled(enabled: boolean, uid: number, streamId?: number
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -3268,13 +3274,15 @@ onAudioSeparationEffectEnabledChange(callback: Callback&lt;boolean&gt;): void
 
 系统中的音频分离效果状态可由系统播放控制应用设定，其他应用程序可以使用本接口监听状态变更事件。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -3306,13 +3314,15 @@ offAudioSeparationEffectEnabledChange(callback?: Callback&lt;boolean&gt;): void
 
 取消订阅系统音频分离效果使能状态变更事件。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -3343,8 +3353,6 @@ setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: number):
 
 设置指定音量类型的音频分离效果音量。使用Promise异步回调。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
@@ -3352,6 +3360,10 @@ setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: number):
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
