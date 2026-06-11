@@ -749,7 +749,11 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterAvailableAreaChan
 
 **起始版本：** 20
 
-**设备行为差异：** 该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+**设备行为差异：**
+
+- 在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。
+
+- 针对低于该版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
 **参数：**
 
@@ -776,7 +780,11 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterAvailableAreaCh
 
 **起始版本：** 20
 
-**设备行为差异：** 该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+**设备行为差异：**
+
+- 在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。
+
+- 针对低于该版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
 
 **参数：**
 
@@ -802,7 +810,11 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAvailableArea(uint6
 
 **起始版本：** 20
 
-**设备行为差异：** 该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过[OH_NativeDisplayManager_GetDefaultDisplayWidth()](#oh_nativedisplaymanager_getdefaultdisplaywidth)、[OH_NativeDisplayManager_GetDefaultDisplayHeight()](#oh_nativedisplaymanager_getdefaultdisplayheight)获取当前设备屏幕的可用区域。
+**设备行为差异：** 
+
+- 在搭载OpenHarmony 7.0.0及以上版本的设备上，该接口可正常调用。
+
+- 针对低于该版本的设备，该接口在PC/2in1设备、Tablet设备中可正常调用；在其他设备中不可用，请通过[OH_NativeDisplayManager_GetDefaultDisplayWidth()](#oh_nativedisplaymanager_getdefaultdisplaywidth)、[OH_NativeDisplayManager_GetDefaultDisplayHeight()](#oh_nativedisplaymanager_getdefaultdisplayheight)获取当前设备屏幕的可用区域。
 
 
 **参数：**
@@ -1039,5 +1051,4 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 | 类型 | 说明 |
 | -- | -- |
 | [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回屏幕管理接口的通用状态码，具体可见[NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode)。<br>当前仅支持主屏幕和扩展屏幕查询屏幕位置信息，其他屏幕查询会返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM。 |
-
 
