@@ -109,7 +109,7 @@
      wordBreak: text.WordBreak.NORMAL
    };
    // 获取全局字体集实例
-   let fontCollection = text.FontCollection.getGlobalInstance(); //获取Arkui全局FC
+   let fontCollection = text.FontCollection.getGlobalInstance(); // 获取Arkui全局FC
    // 创建一个段落生成器
    let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    ```
