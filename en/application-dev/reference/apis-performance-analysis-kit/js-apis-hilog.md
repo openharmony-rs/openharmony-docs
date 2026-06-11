@@ -416,7 +416,7 @@ Enumerates the output types of HiLog. **DEFAULT** and **CONSOLE_ONLY** are used 
 
 **Since**: 26.0.0
 
-**Atomic service API**: This API can be used in atomic services since API version 26.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
@@ -437,7 +437,7 @@ Sets the output type of HiLog.
 
 **Since**: 26.0.0
 
-**Atomic service API**: This API can be used in atomic services since API version 26.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
@@ -475,7 +475,7 @@ Sets the output type of HiLog and configures the domain ID list to be output. Yo
 
 **Since**: 26.0.0
 
-**Atomic service API**: This API can be used in atomic services since API version 26.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
@@ -521,7 +521,7 @@ Obtains the output type of HiLog.
 
 **Since**: 26.0.0
 
-**Atomic service API**: This API can be used in atomic services since API version 26.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
@@ -553,7 +553,7 @@ Obtains the path of the HiLog logs in the sandbox. If the output type of HiLog i
 
 **Since**: 26.0.0
 
-**Atomic service API**: This API can be used in atomic services since API version 26.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
@@ -585,7 +585,7 @@ Deletes all HiLog logs from the sandbox.
 
 **Since**: 26.0.0
 
-**Atomic service API**: This API can be used in atomic services since API version 26.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
@@ -602,7 +602,7 @@ Refreshes HiLog logs in the sandbox.
 
 **Since**: 26.0.0
 
-**Atomic service API**: This API can be used in atomic services since API version 26.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
@@ -619,7 +619,7 @@ Obtains the HiLog sandbox log files that have been modified within the specified
 
 **Since**: 26.0.0
 
-**Atomic service API**: This API can be used in atomic services since API version 26.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
