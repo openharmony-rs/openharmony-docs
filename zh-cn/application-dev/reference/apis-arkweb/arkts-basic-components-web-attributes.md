@@ -1548,6 +1548,8 @@ javaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 > - 不建议与[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)同时使用。
 >
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
+>
+> - 本接口不支持urlRegexRules。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1628,6 +1630,8 @@ javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 > - 不建议与[runJavaScriptOnDocumentEnd](#runjavascriptondocumentend15)同时使用。
 >
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
+>
+> - 本接口不支持urlRegexRules。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
