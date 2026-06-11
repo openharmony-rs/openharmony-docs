@@ -40,7 +40,7 @@ Panel(show: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| show | boolean | 是 | 控制Panel显示或隐藏。<br/>**说明：** <br/>如果设置为false时，则不占位隐藏。[Visible](ts-universal-attributes-visibility.md).None或者show之间有一个生效时，都会生效不占位隐藏。 |
+| show | boolean | 是 | 控制Panel显示或隐藏。<br/>**说明：** <br/>如果设置为false时，则不占位隐藏。[Visibility](ts-appendix-enums.md#visibility).None或者show之间有一个生效时，都会生效不占位隐藏。 |
 
 ## 属性
 
