@@ -49,34 +49,34 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_CryptoAsymKeyGenerator **ctx)](#oh_cryptoasymkeygenerator_create) | 根据给定的算法名称创建非对称密钥生成器。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoKeyPair **keyCtx)](#oh_cryptoasymkeygenerator_generate) | 生成非对称密钥对。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *ctx, Crypto_EncodingType type, Crypto_DataBlob *pubKeyData, Crypto_DataBlob *priKeyData, OH_CryptoKeyPair **keyCtx)](#oh_cryptoasymkeygenerator_convert) | 将非对称密钥数据转换为密钥对。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_CryptoAsymKeyGenerator **ctx)](#oh_cryptoasymkeygenerator_create) | 根据给定的算法名称创建非对称密钥生成器。<br> 注意：创建的资源必须通过[OH_CryptoAsymKeyGenerator_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_destroy)销毁。  |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoKeyPair **keyCtx)](#oh_cryptoasymkeygenerator_generate) | 生成非对称密钥对。注意：使用完成后必须通过[OH_CryptoKeyPair_Destroy](capi-crypto-asym-key-h.md#oh_cryptokeypair_destroy)销毁keyCtx内存。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *ctx, Crypto_EncodingType type, Crypto_DataBlob *pubKeyData, Crypto_DataBlob *priKeyData, OH_CryptoKeyPair **keyCtx)](#oh_cryptoasymkeygenerator_convert) | 将非对称密钥数据转换为密钥对。<br>注意：使用完成后必须通过[OH_CryptoKeyPair_Destroy](capi-crypto-asym-key-h.md#oh_cryptokeypair_destroy)销毁keyCtx内存。 |
 | [const char *OH_CryptoAsymKeyGenerator_GetAlgoName(OH_CryptoAsymKeyGenerator *ctx)](#oh_cryptoasymkeygenerator_getalgoname) | 获取非对称密钥生成器的算法名称。 |
 | [void OH_CryptoAsymKeyGenerator_Destroy(OH_CryptoAsymKeyGenerator *ctx)](#oh_cryptoasymkeygenerator_destroy) | 销毁非对称密钥生成器。 |
 | [void OH_CryptoKeyPair_Destroy(OH_CryptoKeyPair *keyCtx)](#oh_cryptokeypair_destroy) | 销毁密钥对。 |
 | [OH_CryptoPubKey *OH_CryptoKeyPair_GetPubKey(OH_CryptoKeyPair *keyCtx)](#oh_cryptokeypair_getpubkey) | 获取密钥对中的公钥。 |
 | [OH_CryptoPrivKey *OH_CryptoKeyPair_GetPrivKey(OH_CryptoKeyPair *keyCtx)](#oh_cryptokeypair_getprivkey) | 获取密钥对中的私钥。 |
-| [OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingType type, const char *encodingStandard, Crypto_DataBlob *out)](#oh_cryptopubkey_encode) | 对公钥进行编码。 |
-| [OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)](#oh_cryptopubkey_getparam) | 获取公钥的指定参数。 |
+| [OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingType type, const char *encodingStandard, Crypto_DataBlob *out)](#oh_cryptopubkey_encode) | 对公钥进行编码。<br>注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。 |
+| [OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)](#oh_cryptopubkey_getparam) | 获取公钥的指定参数。<br>注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放value内存。 |
 | [OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerator *ctx, const unsigned char *password, uint32_t passwordLen)](#oh_cryptoasymkeygenerator_setpassword) | 设置非对称密钥生成器的密码。如果需要使用[OH_CryptoAsymKeyGenerator_Convert](capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert)将加密的私钥数据转换为密钥对，请调用此方法设置密码。 |
-| [OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncodingParams **ctx)](#oh_cryptoprivkeyencodingparams_create) | 创建私钥编码参数。 |
+| [OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncodingParams **ctx)](#oh_cryptoprivkeyencodingparams_create) | 创建私钥编码参数。<br> 注意：创建的资源必须通过[OH_CryptoPrivKeyEncodingParams_Destroy](capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_destroy)销毁。 |
 | [OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodingParams *ctx, CryptoPrivKeyEncoding_ParamType type, Crypto_DataBlob *value)](#oh_cryptoprivkeyencodingparams_setparam) | 设置私钥编码参数。 |
 | [void OH_CryptoPrivKeyEncodingParams_Destroy(OH_CryptoPrivKeyEncodingParams *ctx)](#oh_cryptoprivkeyencodingparams_destroy) | 销毁私钥编码参数。 |
 | [OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_EncodingType type, const char *encodingStandard, OH_CryptoPrivKeyEncodingParams *params, Crypto_DataBlob *out)](#oh_cryptoprivkey_encode) | 对私钥进行编码。 |
-| [OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)](#oh_cryptoprivkey_getparam) | 获取私钥的指定参数。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveName, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_geneccommonparamsspec) | 生成EC通用参数规格。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_gendhcommonparamsspec) | 生成DH通用参数规格。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKeySpec_Type type, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_create) | 根据给定的算法名称和规格类型创建非对称密钥规格。 |
+| [OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)](#oh_cryptoprivkey_getparam) | 获取私钥的指定参数。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveName, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_geneccommonparamsspec) | 生成EC通用参数规格。<br> 注意：使用完成后必须通过[OH_CryptoAsymKeySpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_destroy)销毁spec内存。  |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_gendhcommonparamsspec) | 生成DH通用参数规格。<br> 注意：使用完成后必须通过[OH_CryptoAsymKeySpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_destroy)销毁spec内存。  |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKeySpec_Type type, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_create) | 根据给定的算法名称和规格类型创建非对称密钥规格。<br> 注意：创建的资源必须通过[OH_CryptoAsymKeySpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_destroy)销毁。 |
 | [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type, Crypto_DataBlob *value)](#oh_cryptoasymkeyspec_setparam) | 设置非对称密钥规格的指定参数。 |
 | [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec *spec, OH_CryptoAsymKeySpec *commonParamsSpec)](#oh_cryptoasymkeyspec_setcommonparamsspec) | 将通用参数规格设置到非对称密钥规格中。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type, Crypto_DataBlob *value)](#oh_cryptoasymkeyspec_getparam) | 获取非对称密钥规格的指定参数。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type, Crypto_DataBlob *value)](#oh_cryptoasymkeyspec_getparam) | 获取非对称密钥规格的指定参数。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放value内存。  |
 | [void OH_CryptoAsymKeySpec_Destroy(OH_CryptoAsymKeySpec *spec)](#oh_cryptoasymkeyspec_destroy) | 销毁非对称密钥规格。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec *keySpec, OH_CryptoAsymKeyGeneratorWithSpec **generator)](#oh_cryptoasymkeygeneratorwithspec_create) | 根据非对称密钥规格创建密钥生成器。 |
-| [OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyGeneratorWithSpec *generator, OH_CryptoKeyPair **keyPair)](#oh_cryptoasymkeygeneratorwithspec_genkeypair) | 根据非对称密钥规格生成密钥对。 |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec *keySpec, OH_CryptoAsymKeyGeneratorWithSpec **generator)](#oh_cryptoasymkeygeneratorwithspec_create) | 根据非对称密钥规格创建密钥生成器。<br> 注意：创建的资源必须通过[OH_CryptoAsymKeyGeneratorWithSpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeygeneratorwithspec_destroy)销毁。  |
+| [OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyGeneratorWithSpec *generator, OH_CryptoKeyPair **keyPair)](#oh_cryptoasymkeygeneratorwithspec_genkeypair) | 根据非对称密钥规格生成密钥对。<br> 注意：使用完成后必须通过[OH_CryptoKeyPair_Destroy](capi-crypto-asym-key-h.md#oh_cryptokeypair_destroy)释放keyPair内存。  |
 | [void OH_CryptoAsymKeyGeneratorWithSpec_Destroy(OH_CryptoAsymKeyGeneratorWithSpec *generator)](#oh_cryptoasymkeygeneratorwithspec_destroy) | 销毁根据规格创建的非对称密钥生成器。 |
-| [OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob *ecKeyData, OH_CryptoEcPoint **point)](#oh_cryptoecpoint_create) | 创建椭圆曲线点。 |
-| [OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)](#oh_cryptoecpoint_getcoordinate) | 获取椭圆曲线点的x和y坐标。 |
+| [OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob *ecKeyData, OH_CryptoEcPoint **point)](#oh_cryptoecpoint_create) | 创建椭圆曲线点。<br> 注意：创建的资源必须通过[OH_CryptoEcPoint_Destroy](capi-crypto-asym-key-h.md#oh_cryptoecpoint_destroy)销毁。 |
+| [OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)](#oh_cryptoecpoint_getcoordinate) | 获取椭圆曲线点的x和y坐标。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放x和y内存。 |
 | [OH_Crypto_ErrCode OH_CryptoEcPoint_SetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)](#oh_cryptoecpoint_setcoordinate) | 设置椭圆曲线点的x和y坐标。 |
 | [OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *format, Crypto_DataBlob *out)](#oh_cryptoecpoint_encode) | 将椭圆曲线点编码为指定格式。 |
 | [void OH_CryptoEcPoint_Destroy(OH_CryptoEcPoint *point)](#oh_cryptoecpoint_destroy) | 销毁椭圆曲线点。 |
@@ -194,6 +194,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_Cryp
 
 根据给定的算法名称创建非对称密钥生成器。
 
+注意：创建的资源必须通过[OH_CryptoAsymKeyGenerator_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_destroy)销毁。
+
 **起始版本：** 12
 
 **参数：**
@@ -226,6 +228,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *
 
 生成非对称密钥对。
 
+注意：使用完成后必须通过[OH_CryptoKeyPair_Destroy](capi-crypto-asym-key-h.md#oh_cryptokeypair_destroy)销毁keyCtx内存。
+
 **起始版本：** 12
 
 **参数：**
@@ -250,6 +254,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *c
 **描述**
 
 将非对称密钥数据转换为密钥对。
+
+注意：使用完成后必须通过[OH_CryptoKeyPair_Destroy](capi-crypto-asym-key-h.md#oh_cryptokeypair_destroy)销毁keyCtx内存。
 
 **起始版本：** 12
 
@@ -387,6 +393,8 @@ OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingTy
 
 对公钥进行编码。
 
+注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。
+
 **起始版本：** 12
 
 **参数：**
@@ -413,6 +421,8 @@ OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_P
 **描述**
 
 获取公钥的指定参数。
+
+注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放value内存。
 
 **起始版本：** 12
 
@@ -465,6 +475,8 @@ OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncoding
 **描述**
 
 创建私钥编码参数。
+
+注意：创建的资源必须通过[OH_CryptoPrivKeyEncodingParams_Destroy](capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_destroy)销毁。
 
 **起始版本：** 20
 
@@ -539,6 +551,8 @@ OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_Encoding
 
 对私钥进行编码。
 
+注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。
+
 **起始版本：** 20
 
 **参数：**
@@ -567,6 +581,8 @@ OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey
 
 获取私钥的指定参数。
 
+注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放value内存。
+
 **起始版本：** 20
 
 **参数：**
@@ -593,6 +609,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveNa
 
 生成EC通用参数规格。
 
+注意：使用完成后必须通过[OH_CryptoAsymKeySpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_destroy)销毁spec内存。
+
 **起始版本：** 20
 
 **参数：**
@@ -617,6 +635,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen
 **描述**
 
 生成DH通用参数规格。
+
+注意：使用完成后必须通过[OH_CryptoAsymKeySpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_destroy)销毁spec内存。
 
 **起始版本：** 20
 
@@ -643,6 +663,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKe
 **描述**
 
 根据给定的算法名称和规格类型创建非对称密钥规格。
+
+注意：创建的资源必须通过[OH_CryptoAsymKeySpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_destroy)销毁。
 
 **起始版本：** 20
 
@@ -721,6 +743,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, Cryp
 
 获取非对称密钥规格的指定参数。
 
+注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放value内存。
+
 **起始版本：** 20
 
 **参数：**
@@ -765,6 +789,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec 
 
 根据非对称密钥规格创建密钥生成器。
 
+注意：创建的资源必须通过[OH_CryptoAsymKeyGeneratorWithSpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeygeneratorwithspec_destroy)销毁。
+
 **起始版本：** 20
 
 **参数：**
@@ -794,6 +820,8 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyG
 **描述**
 
 根据非对称密钥规格生成密钥对。
+
+注意：使用完成后必须通过[OH_CryptoKeyPair_Destroy](capi-crypto-asym-key-h.md#oh_cryptokeypair_destroy)释放keyPair内存。
 
 **起始版本：** 20
 
@@ -838,6 +866,8 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob
 
 创建椭圆曲线点。
 
+注意：创建的资源必须通过[OH_CryptoEcPoint_Destroy](capi-crypto-asym-key-h.md#oh_cryptoecpoint_destroy)销毁。
+
 **起始版本：** 20
 
 **参数：**
@@ -870,6 +900,8 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto
 **描述**
 
 获取椭圆曲线点的x和y坐标。
+
+注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放x和y内存
 
 **起始版本：** 20
 
@@ -927,6 +959,8 @@ OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *f
 **描述**
 
 将椭圆曲线点编码为指定格式。
+
+注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。
 
 **起始版本：** 20
 

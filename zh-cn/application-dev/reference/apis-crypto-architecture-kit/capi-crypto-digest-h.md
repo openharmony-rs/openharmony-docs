@@ -33,9 +33,9 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest **ctx)](#oh_cryptodigest_create) | 根据给定的算法名称创建摘要上下文。 |
+| [OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest **ctx)](#oh_cryptodigest_create) | 根据给定的算法名称创建摘要上下文。<br> 注意：创建的资源必须通过[OH_DigestCrypto_Destroy](capi-crypto-digest-h.md#oh_digestcrypto_destroy)销毁。  |
 | [OH_Crypto_ErrCode OH_CryptoDigest_Update(OH_CryptoDigest *ctx, Crypto_DataBlob *in)](#oh_cryptodigest_update) | 更新摘要数据。 |
-| [OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *out)](#oh_cryptodigest_final) | 完成摘要操作，输出摘要结果。 |
+| [OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *out)](#oh_cryptodigest_final) | 完成摘要操作，输出摘要结果。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。 |
 | [uint32_t OH_CryptoDigest_GetLength(OH_CryptoDigest *ctx)](#oh_cryptodigest_getlength) | 获取摘要结果的长度。 |
 | [const char *OH_CryptoDigest_GetAlgoName(OH_CryptoDigest *ctx)](#oh_cryptodigest_getalgoname) | 获取摘要上下文的算法名称。 |
 | [void OH_DigestCrypto_Destroy(OH_CryptoDigest *ctx)](#oh_digestcrypto_destroy) | 销毁摘要上下文。 |
@@ -51,6 +51,8 @@ OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest *
 **描述**
 
 根据给定的算法名称创建摘要上下文。
+
+注意：创建的资源必须通过[OH_DigestCrypto_Destroy](capi-crypto-digest-h.md#oh_digestcrypto_destroy)销毁。
 
 **起始版本：** 12
 
@@ -111,6 +113,8 @@ OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *o
 **描述**
 
 完成摘要操作，输出摘要结果。
+
+注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。
 
 **起始版本：** 12
 

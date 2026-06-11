@@ -40,13 +40,13 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoSymCipherParams_Create(OH_CryptoSymCipherParams **params)](#oh_cryptosymcipherparams_create) | 创建对称密钥加解密参数。 |
+| [OH_Crypto_ErrCode OH_CryptoSymCipherParams_Create(OH_CryptoSymCipherParams **params)](#oh_cryptosymcipherparams_create) | 创建对称密钥加解密参数。<br> 注意：创建的资源必须通过[OH_CryptoSymCipherParams_Destroy](capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_destroy)销毁。  |
 | [OH_Crypto_ErrCode OH_CryptoSymCipherParams_SetParam(OH_CryptoSymCipherParams *params, CryptoSymCipher_ParamsType paramsType, Crypto_DataBlob *value)](#oh_cryptosymcipherparams_setparam) | 设置加解密参数。 |
 | [void OH_CryptoSymCipherParams_Destroy(OH_CryptoSymCipherParams *params)](#oh_cryptosymcipherparams_destroy) | 销毁加解密参数。 |
-| [OH_Crypto_ErrCode OH_CryptoSymCipher_Create(const char *algoName, OH_CryptoSymCipher **ctx)](#oh_cryptosymcipher_create) | 根据给定的算法名称创建对称密钥加解密上下文。 |
+| [OH_Crypto_ErrCode OH_CryptoSymCipher_Create(const char *algoName, OH_CryptoSymCipher **ctx)](#oh_cryptosymcipher_create) | 根据给定的算法名称创建对称密钥加解密上下文。<br> 注意：创建的资源必须通过[OH_CryptoSymCipher_Destroy](capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_destroy)销毁。  |
 | [OH_Crypto_ErrCode OH_CryptoSymCipher_Init(OH_CryptoSymCipher *ctx, Crypto_CipherMode mod, OH_CryptoSymKey *key, OH_CryptoSymCipherParams *params)](#oh_cryptosymcipher_init) | 使用给定的加解密模式、密钥和参数初始化加解密操作。 |
-| [OH_Crypto_ErrCode OH_CryptoSymCipher_Update(OH_CryptoSymCipher *ctx, Crypto_DataBlob *in, Crypto_DataBlob *out)](#oh_cryptosymcipher_update) | 更新加解密数据，输出已加密或已解密的数据。 |
-| [OH_Crypto_ErrCode OH_CryptoSymCipher_Final(OH_CryptoSymCipher *ctx, Crypto_DataBlob *in, Crypto_DataBlob *out)](#oh_cryptosymcipher_final) | 结束加解密操作，输出最终结果。 |
+| [OH_Crypto_ErrCode OH_CryptoSymCipher_Update(OH_CryptoSymCipher *ctx, Crypto_DataBlob *in, Crypto_DataBlob *out)](#oh_cryptosymcipher_update) | 更新加解密数据，输出已加密或已解密的数据。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。  |
+| [OH_Crypto_ErrCode OH_CryptoSymCipher_Final(OH_CryptoSymCipher *ctx, Crypto_DataBlob *in, Crypto_DataBlob *out)](#oh_cryptosymcipher_final) | 结束加解密操作，输出最终结果。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。 |
 | [const char *OH_CryptoSymCipher_GetAlgoName(OH_CryptoSymCipher *ctx)](#oh_cryptosymcipher_getalgoname) | 获取对称密钥加解密算法名称。 |
 | [void OH_CryptoSymCipher_Destroy(OH_CryptoSymCipher *ctx)](#oh_cryptosymcipher_destroy) | 销毁对称密钥加解密上下文。 |
 
@@ -82,6 +82,8 @@ OH_Crypto_ErrCode OH_CryptoSymCipherParams_Create(OH_CryptoSymCipherParams **par
 **描述**
 
 创建对称密钥加解密参数。
+
+注意：创建的资源必须通过[OH_CryptoSymCipherParams_Destroy](capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_destroy)销毁。
 
 **起始版本：** 12
 
@@ -156,6 +158,8 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Create(const char *algoName, OH_CryptoSymCi
 
 根据给定的算法名称创建对称密钥加解密上下文。
 
+注意：创建的资源必须通过[OH_CryptoSymCipher_Destroy](capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_destroy)销毁。
+
 **起始版本：** 12
 
 **参数：**
@@ -220,6 +224,8 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Update(OH_CryptoSymCipher *ctx, Crypto_Data
 
 更新加解密数据，输出已加密或已解密的数据。
 
+注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。
+
 **起始版本：** 12
 
 **参数：**
@@ -250,6 +256,8 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Final(OH_CryptoSymCipher *ctx, Crypto_DataB
 **描述**
 
 结束加解密操作，输出最终结果。
+
+注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。
 
 **起始版本：** 12
 
