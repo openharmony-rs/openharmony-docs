@@ -27,7 +27,7 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
 
   加载本地视频时，需在工程资源的rawfile目录中放置视频文件，如下图所示。
 
-  ![zh-cn_image_0000001562700409](figures/zh-cn_image_0000001562700409.png)
+  ![videoplayer-local](figures/videoplayer-local.png)
 
   再使用资源访问符$rawfile()引用视频资源。
 

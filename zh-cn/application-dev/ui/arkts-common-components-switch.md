@@ -36,7 +36,7 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
   Toggle({ type: ToggleType.Checkbox, isOn: true }).id('toggle2') // 请开发者替换为实际的id
   ```
 
-  ![zh-cn_image_0000001562940485](figures/zh-cn_image_0000001562940485.png)
+  ![switch-checkbox-default](figures/switch-checkbox-default.png)
   
   <!-- @[create_toggle_with_switch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
   
@@ -45,7 +45,7 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
   Toggle({ type: ToggleType.Switch, isOn: true }).id('toggle4') // 请开发者替换为实际的id
   ```
   
-    ![zh-cn_image_0000001511421228](figures/zh-cn_image_0000001511421228.png)
+    ![switch-create](figures/switch-create.png)
   
 - 创建包含子组件的Toggle。
 
@@ -67,7 +67,7 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
   }.width(100).id('toggle6') // 请开发者替换为实际的id
   ```
 
-    ![zh-cn_image_0000001511900404](figures/zh-cn_image_0000001511900404.png)
+    ![switch-checkbox](figures/switch-checkbox.png)
 
 
 ## 自定义样式
@@ -93,7 +93,7 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
       // ···
   ```
 
-  ![zh-cn_image_0000001563060657](figures/zh-cn_image_0000001563060657.png)
+  ![switch-style](figures/switch-style.png)
 
 - 通过[switchPointColor](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#switchpointcolor)属性设置Switch类型的圆形滑块颜色，仅对type为ToggleType.Switch生效。
 
@@ -108,7 +108,7 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
     // ···
   ```
 
-  ![zh-cn_image_0000001511421232](figures/zh-cn_image_0000001511421232.png)
+  ![switch-custom](figures/switch-custom.png)
 
 
 ## 添加事件
@@ -185,5 +185,5 @@ export struct ToggleSample {
 ```
 
 
-![zh-cn_image_0000001511740448](figures/zh-cn_image_0000001511740448.gif)
+![switch-example](figures/switch-example.gif)
   

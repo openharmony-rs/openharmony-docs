@@ -70,7 +70,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   TextInput()
   ```
 
-  ![zh-cn_image_0000001511580844](figures/zh-cn_image_0000001511580844.png)
+  ![textinput-create](figures/textinput-create.png)
 
 
 - 多行输入框。
@@ -93,7 +93,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   TextArea()
   ```
 
-  ![zh-cn_image_0000001562940481](figures/zh-cn_image_0000001562940481.png)
+  ![textarea-create](figures/textarea-create.png)
 
 - 多行输入框文字超出一行时会自动折行。
 
@@ -123,7 +123,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
     .width(300)
   ```
 
-  ![zh-cn_image_0000001511580836](figures/zh-cn_image_0000001511580836.png)
+  ![textinput-default](figures/textinput-default.png)
 
 - 搜索框。
 
@@ -150,7 +150,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
       .getHostContext()!.resourceManager.getStringSync($r('app.string.Creat_TextInput_Content').id) as string)
   ```
 
-  ![zh-ch_image_ui_arkts-common-components-text-input_search_default](figures/zh-ch_image_ui_arkts-common-components-text-input_search_default.png)
+  ![textinput-search](figures/textinput-search.png)
 
 ## 设置输入框类型
 
@@ -180,7 +180,7 @@ TextInput()
   .type(InputType.Normal)
 ```
 
-![zh-cn_image_0000001562820765](figures/zh-cn_image_0000001562820765.png)
+![textinput-normal](figures/textinput-normal.png)
 
 ### 密码模式
 
@@ -208,7 +208,7 @@ TextInput()
   .type(InputType.Password)
 ```
 
-![zh-cn_image_0000001511580840](figures/zh-cn_image_0000001511580840.png)
+![textinput-password](figures/textinput-password.png)
 
 ### 邮箱地址输入模式
 
@@ -421,7 +421,7 @@ TextArea()
   TextInput({ placeholder: $r('app.string.i_am_placeholder') })
   ```
 
-  ![zh-cn_image_0000001511900400](figures/zh-cn_image_0000001511900400.png)
+  ![textinput-placeholder](figures/textinput-placeholder.png)
 
 - 设置输入框当前的文本内容。
 
@@ -453,7 +453,7 @@ TextArea()
   })
   ```
 
-  ![zh-cn_image_0000001562820761](figures/zh-cn_image_0000001562820761.png)
+  ![textinput-border](figures/textinput-border.png)
 
 - 添加backgroundColor改变输入框的背景颜色。
 
@@ -487,7 +487,7 @@ TextArea()
     .backgroundColor(Color.Pink)
   ```
 
-  ![zh-cn_image_0000001511740444](figures/zh-cn_image_0000001511740444.png)
+  ![textinput-pink-bg](figures/textinput-pink-bg.png)
 
   更丰富的样式可以结合[通用属性](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)实现。
 

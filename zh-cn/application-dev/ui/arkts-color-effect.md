@@ -110,7 +110,7 @@
   }
   ```
 
-![zh-cn_image_0000001641176829](figures/zh-cn_image_0000001641176829.png)
+![color-linear-gradient](figures/color-linear-gradient.png)
 
 
 ## 为组件添加角度渐变效果
@@ -226,7 +226,7 @@
     }
   }
   ```
-![zh-cn_image_0000001641177073](figures/zh-cn_image_0000001641177073.png)
+![color-sweep-gradient](figures/color-sweep-gradient.png)
 
 
 ## 为组件添加径向渐变效果
@@ -336,4 +336,4 @@
     }
   }
   ```
-![zh-cn_image_0000001592904050](figures/zh-cn_image_0000001592904050.png)
+![color-radial-gradient](figures/color-radial-gradient.png)

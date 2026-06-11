@@ -27,7 +27,7 @@
 
 手势拖拽（手指/手写笔）触发拖拽流程：
 
-![zh-cn_image_0000001562820825](figures/zh-cn_image_0000001562820825.png)
+![drag-gesture](figures/drag-gesture.png)
 
 ### ​鼠标拖拽
 
