@@ -1,4 +1,4 @@
-# @system.device (设备信息)
+# @ohos.systemParameter (系统属性)(系统接口)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @chenjinxiang3-->
@@ -6,175 +6,264 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供当前设备的信息。
+系统参数（SystemParameter）是为各系统服务提供的简单易用的键值对访问接口，各个系统服务可以定义系统参数来描述该服务的状态信息，或者通过系统参数来改变系统服务的行为。其基本操作原语为get和set，通过get可以查询系统参数的值，通过set可以修改系统参数的值。
+
+详细的系统参数设计原理及定义可参考[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。
 
 > **说明：**
->
-> - 模块维护策略
->
->    \- 对于Lite Wearable设备类型，该模块长期维护，正常使用。
->
->     \- 对于支持该模块的其他设备类型，该模块从API Version 6开始不再维护，推荐使用新接口[@ohos.deviceInfo](js-apis-device-info.md)进行设备信息查询。
->
-> - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口从API version 9开始不再维护，建议使用新接口[@ohos.systemParameterEnhance](js-apis-system-parameterEnhance-sys.md)替代。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口为系统接口。
+> - 由于系统参数都是各个系统服务的内部信息和控制参数，每个系统参数都有各自不同的DAC和MAC访问控制权限，三方应用不能使用此类接口。
+
 
 ## 导入模块
 
-```typescript
-import Device from '@system.device';
+```ts
+import systemParameter from '@ohos.systemparameter';
 ```
-## Device
-### Device.getInfo<sup>(deprecated)</sup>
 
-getInfo(options?: GetDeviceOptions): void
+## systemParameter.getSync<sup>(deprecated)</sup>
 
-获取当前设备的信息。
+getSync(key: string, def?: string): string
 
-> **说明：**<br>
-> 在首页的onShow生命周期之前不建议调用device.getInfo接口。
+获取系统参数Key对应的值。
 
-**系统能力：** SystemCapability.Startup.SystemInfo.Lite
+**系统能力：** SystemCapability.Startup.SystemInfo
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [GetDeviceOptions](#getdeviceoptionsdeprecated) | 否 | 定义设备信息获取的参数选项。 |
+| key | string | 是 | 待查询的系统参数Key。 |
+| def | string | 否 | def为所要获取的系统参数的默认值。 <br> def为可选参数，仅当系统参数不存在时生效。 <br>def可以传undefined或自定义的任意值。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| string | 系统参数值。<br> 若key存在,返回设定的值。<br> 若key不存在且def有效，返回def；若未指定def或def无效(如undefined)，返回空字符串。 |
 
 **示例：**
 
-ArkTS示例：
-
-```typescript
-export default class Page {
-  getInfo() {
-    interface DeviceData {
-      brand: string;
-    }
-
-    try {
-      Device.getInfo({
-        success: (data: DeviceData) => {
-          console.info('Device information obtained successfully. Device brand:' + data.brand);
-        },
-        fail: (data: string, code: number) => {
-          console.info('Failed to obtain device information. Error code:' + code + '; Error information: ' + data);
-        },
-      });
-    } catch (error) {
-      console.error('Device information API is not supported');
-    }
-  }
+```ts
+try {
+    let info: string = systemParameter.getSync("const.ohos.apiversion");
+    console.info(JSON.stringify(info));
+} catch(e) {
+    console.error("getSync unexpected error: " + e);
 }
 ```
 
-JS示例：
+## systemParameter.get<sup>(deprecated)</sup>
 
-```xml
-<div class="container">
-    <text class="title">Device Information</text>
-    <input type="button" value="Get Device Brand" class="button" onclick="getDeviceInfo"></input>
-    <text class="info">{{brandInfo}}</text>
-</div>
-```
+get(key: string, callback: AsyncCallback&lt;string&gt;): void
 
-```css
-/*xxx.css*/
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-}
+获取系统参数Key对应的值，使用callback异步回调。
 
-.title {
-    font-size: 40px;
-    text-align: center;
-    width: 100%;
-    height: 80px;
-    margin-bottom: 50px;
-}
+**系统能力：** SystemCapability.Startup.SystemInfo
 
-.button {
-    font-size: 30px;
-    text-align: center;
-    width: 240px;
-    height: 80px;
-    margin: 20px;
-}
+**参数：**
 
-.info {
-    font-size: 28px;
-    text-align: center;
-    width: 100%;
-    height: 60px;
-    margin-top: 50px;
-    color: #007dff;
-}
-```
-
-```js
-//xxx.js
-import Device from '@system.device';
-
-export default {
-    data: {
-        brandInfo: 'Click the button to get device brand'
-    },
-    
-    getDeviceInfo() {
-        try {
-            Device.getInfo({
-                success: (data) => {
-                    console.info('Device information obtained successfully. Device brand:' + data.brand);
-                    this.brandInfo = 'Device brand: ' + data.brand;
-                },
-                fail: (data, code) => {
-                    console.info('Failed to obtain device information. Error code:' + code + '; Error information: ' + data);
-                    this.brandInfo = 'Failed to obtain, error code: ' + code;
-                },
-            });
-        } catch (error) {
-            console.error('Device information API is not supported');
-            this.brandInfo = 'Current device does not support this API';
-        }
-    }
-}
-```
-
-## GetDeviceOptions<sup>(deprecated)</sup>
-
-定义设备信息获取的参数选项。
-
-**系统能力：** SystemCapability.Startup.SystemInfo.Lite
-
-| 名称 | 类型 | 必填 | 说明 |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| success | (data: DeviceResponse) => void | 否 | 接口调用成功的回调函数。 data为成功返回的设备信息，具体参考[DeviceResponse](#deviceresponsedeprecated)。|
-| fail | (data: any,code:number)=> void | 否 | 接口调用失败的回调函数。 code为失败返回的错误码。<br>code:200，表示返回结果中存在无法获得的信息。|
-| complete | () => void | 否 | 接口调用结束的回调函数。 |
+| key | string | 是 | 待查询的系统参数Key。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。 |
 
-## DeviceResponse<sup>(deprecated)</sup>
+**示例：**
 
-设备信息。
+```ts
+import { BusinessError } from '@ohos.base';
 
-**系统能力：** SystemCapability.Startup.SystemInfo.Lite
+try {
+    systemParameter.get("const.ohos.apiversion", (err: BusinessError, data: string) => {
+    if (err == undefined) {
+        console.info("get test.parameter.key value success:" + data)
+    } else {
+        console.error(" get test.parameter.key value err:" + err.code)
+    }});
+} catch(e) {
+    console.error("get unexpected error: " + e);
+}
+```
 
-| 名称 | 类型 | 说明 |
-| -------- | -------- | -------- |
-| brand | string | 品牌。 |
-| manufacturer | string | 生产商。 |
-| model | string | 型号。 |
-| product | string | 代号。 |
-| language<sup>4+</sup> | string | 系统语言。 |
-| region<sup>4+</sup> | string | 系统地区。 |
-| windowWidth | number | 可使用的窗口宽度，单位px。 |
-| windowHeight | number | 可使用的窗口高度，单位px。 |
-| screenDensity<sup>4+</sup> | number | 屏幕密度，单位dpi。 |
-| screenShape<sup>4+</sup> | string | 屏幕形状。可取值：<br/>-&nbsp;rect：方形屏；<br/>-&nbsp;circle：圆形屏。 |
-| apiVersion<sup>4+</sup> | number | 系统API版本号。 |
-| deviceType<sup>4+</sup> | string | 设备类型。 |
+## systemParameter.get<sup>(deprecated)</sup>
+
+get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
+
+获取系统参数Key对应的值，使用callback异步回调。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| key | string | 是 | 待查询的系统参数Key。 |
+| def | string | 是 | 默认值。 |
+| callback | AsyncCallback&lt;string&gt; | 是 | 回调函数。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+try {
+    systemParameter.get("const.ohos.apiversion", "default", (err: BusinessError, data: string) => {
+        if (err == undefined) {
+            console.info("get test.parameter.key value success:" + data)
+        } else {
+            console.error(" get test.parameter.key value err:" + err.code)
+        }
+    });
+} catch(e) {
+    console.error("get unexpected error:" + e)
+}
+```
+
+## systemParameter.get<sup>(deprecated)</sup>
+
+get(key: string, def?: string): Promise&lt;string&gt;
+
+获取系统参数Key对应的值，使用Promise异步回调。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| key | string | 是 | 待查询的系统参数Key。 |
+| def | string | 否 | def为所要获取的系统参数的默认值。 <br> def为可选参数，仅当系统参数不存在时生效。 <br> def可以传undefined或自定义的任意值。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;string&gt; | Promise示例，用于异步获取结果。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+try {
+    let p: Promise<string> = systemParameter.get("const.ohos.apiversion");
+    p.then((value: string) => {
+        console.info("get test.parameter.key success: " + value);
+    }).catch((err: BusinessError) => {
+        console.error("get test.parameter.key error: " + err.code);
+    });
+} catch(e) {
+    console.error("get unexpected error: " + e);
+}
+```
+
+## systemParameter.setSync<sup>(deprecated)</sup>
+
+setSync(key: string, value: string): void
+
+设置系统参数Key对应的值。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| key | string | 是 | 待设置的系统参数Key。 |
+| value | string | 是 | 待设置的系统参数值。 |
+
+> **说明：**
+> - 此接口只能用于系统应用的参数设置。
+> - 所授权的系统应用需要配置对应selinux和dac规则，具体配置方法请参照系统参数指导文档:[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。
+
+
+**示例：**
+
+```ts
+try {
+    systemParameter.setSync("test.parameter.key", "default");
+} catch(e) {
+    console.error("set unexpected error: " + e);
+}
+```
+
+## systemParameter.set<sup>(deprecated)</sup>
+
+set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
+
+设置系统参数Key对应的值，使用callback异步回调。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| key | string | 是 | 待设置的系统参数Key。 |
+| value | string | 是 | 待设置的系统参数值。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
+
+> **说明：**
+> - 此接口只能用于系统应用的参数设置。
+> - 所授权的系统应用需要配置对应selinux和dac规则，具体配置方法请参照系统参数指导文档:[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。
+
+**示例：**
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+try {
+    systemParameter.set("test.parameter.key", "testValue",  (err: BusinessError, data: void) =>{
+    if (err == undefined) {
+        console.info("set test.parameter.key value success :" + data)
+    } else {
+        console.error("set test.parameter.key value err:" + err.code)
+    }});
+} catch(e) {
+    console.error("set unexpected error: " + e);
+}
+```
+
+## systemParameter.set<sup>(deprecated)</sup>
+
+set(key: string, value: string): Promise&lt;void&gt;
+
+设置系统参数Key对应的值，使用Promise异步回调。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| key | string | 是 | 待设置的系统参数Key。 |
+| value| string | 是 | 待设置的系统参数值。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise示例，用于异步获取结果。 |
+
+> **说明：**
+> - 此接口只能用于系统应用的参数设置。
+> - 所授权的系统应用需要配置对应selinux和dac规则，具体配置方法请参照系统参数指导文档:[系统参数](../../../device-dev/subsystems/subsys-boot-init-sysparam.md)
+
+**示例：**
+
+```ts
+import { BusinessError } from '@ohos.base';
+
+try {
+    let p: Promise<void> = systemParameter.set("test.parameter.key", "testValue");
+    p.then((value: void) => {
+        console.info("set test.parameter.key success: " + value);
+    }).catch((err: BusinessError) => {
+        console.error(" set test.parameter.key error: " + err.code);
+    });
+} catch(e) {
+    console.error("set unexpected error: " + e);
+}
+```
