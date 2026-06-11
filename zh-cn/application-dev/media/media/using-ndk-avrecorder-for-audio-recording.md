@@ -212,9 +212,9 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
         // 获取沙箱路径
         char *fileDirPath;
-        int32_t buffeSize = 1000;
+        int32_t bufferSize = 1000;
         int32_t writeLength = 0;
-        AbilityRunTime_ErrorCode result = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, buffeSize, &writeLength);
+        AbilityRunTime_ErrorCode result = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, bufferSize, &writeLength);
         if (!fileDirPath) {
            OH_LOG_ERROR(LOG_APP, "==NDKDemo== GetFilesDir failed, errCode: %{public}d", result);
            napi_value res;
@@ -421,9 +421,9 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
       // 获取沙箱路径
       char *fileDirPath;
-      int32_t buffeSize = 1000;
+      int32_t bufferSize = 1000;
       int32_t writeLength = 0;
-      AbilityRunTime_ErrorCode result = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, buffeSize, &writeLength);
+      AbilityRunTime_ErrorCode result = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, bufferSize, &writeLength);
       if (!fileDirPath) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== GetFilesDir failed, errCode: %{public}d", result);
          napi_value res;
