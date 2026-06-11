@@ -837,7 +837,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-![superscript](superscript.jpg)
+![superscript](figures/superscript.jpg)
 
 ### 高对比度
 
