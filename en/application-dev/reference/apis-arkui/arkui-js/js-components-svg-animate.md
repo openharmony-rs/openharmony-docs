@@ -122,4 +122,4 @@ Not supported
 ```
 
 
-![en-us_image_0000001127125126](figures/en-us_image_0000001127125126.gif)
+![Loopplayback](figures/Loopplayback.gif)

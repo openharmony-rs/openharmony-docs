@@ -104,5 +104,5 @@ constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: Leng
   }
   ```
 
-  ![zh-cn_image_000000127777780](figures/zh-cn_image_000000127777780.png)
+  ![Yellow-lemon](figures/Yellow-lemon.png)
 

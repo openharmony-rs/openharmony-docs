@@ -1090,7 +1090,7 @@ struct HeightExample {
 }
 ```
 
-![en-us_image_canvas_height](figures/en-us_image_canvas_height.png)
+![image-canvas-height](figures/image-canvas-height.png)
 
 
 ### width
@@ -1132,7 +1132,7 @@ struct WidthExample {
 }
 ```
 
-![en-us_image_canvas_width](figures/en-us_image_canvas_width.png)
+![image-canvas-width](figures/image-canvas-width.png)
 
 
 ### canvas<sup>13+</sup>
@@ -1187,7 +1187,7 @@ struct CanvasExample {
 }
 ```
 
-![en-us_image_canvas](figures/en-us_image_canvas.png)
+![image-canvas](figures/image-canvas.png)
 
 
 ### imageSmoothingQuality
@@ -2670,7 +2670,7 @@ struct Fill {
 }
 ```
 
- ![en-us_image_000000127777774](figures/en-us_image_000000127777774.jpg)
+ ![Yellowtrapezoid-01](figures/Yellowtrapezoid-01.jpg)
 
 ### clip
 
@@ -2777,7 +2777,7 @@ Sets a specified path as the clipping path.
   }
   ```
 
-  ![en-us_image_000000127777779](figures/en-us_image_000000127777779.jpg)
+  ![Yellowtrapezoid](figures/Yellowtrapezoid.jpg)
 
 
 ### reset<sup>12+</sup>
@@ -2865,7 +2865,7 @@ Saves this layer.
   }
 
   ```
-   ![en-us_image_CanvasSavelayer](figures/en-us_image_CanvasSavelayer.png)
+   ![image-CanvasSavelayer](figures/image-CanvasSavelayer.png)
 
 ### restoreLayer<sup>12+</sup>
 
@@ -3599,7 +3599,7 @@ Obtains the [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) object
   }
   ```
 
-  ![en-us_image_000000127777782](figures/en-us_image_000000127777782.png)
+  ![Yellowithsky](figures/Yellowithsky.png)
 
 ### setPixelMap
 
@@ -3675,7 +3675,7 @@ Obtains the [ImageData](ts-components-canvas-imagedata.md) object created with t
   }
   ```
 
-  ![en-us_image_000000127777780](figures/en-us_image_000000127777780.png)
+  ![Yellow-lemon](figures/Yellow-lemon.png)
 
 
 ### putImageData
@@ -3898,7 +3898,7 @@ Obtains the dash line style.
     }
   }
   ```
-![en-us_image_000000127777778](figures/en-us_image_000000127777778.png) 
+![Dottedcircle-01](figures/Dottedcircle.png) 
 
 
 ### transferFromImageBitmap
@@ -4061,7 +4061,7 @@ Restores the saved drawing context.
     }
   }
   ```
-  ![en-us_image_000000127777781](figures/en-us_image_000000127777781.png)
+  ![Yellow-with-GreenandBlack](figures/Yellow-with-GreenandBlack.png)
 
 
 ### save
@@ -4105,7 +4105,7 @@ Saves all states of the canvas in the stack. This API is usually called when the
     }
   }
   ```
-  ![en-us_image_000000127777781](figures/en-us_image_000000127777781.png)
+  ![Yellow-with-GreenandBlack](figures/Yellow-with-GreenandBlack.png)
 
 
 ### createLinearGradient
@@ -4749,7 +4749,7 @@ struct Index {
 }
 ```
 
-![](figures/en-us_image_canvas_fill_rule_example.png)
+![](figures/image-canvas-fill-rule-example.png)
 
 ## CanvasLineCap
 

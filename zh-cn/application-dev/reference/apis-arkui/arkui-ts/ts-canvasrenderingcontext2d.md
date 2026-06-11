@@ -1098,7 +1098,7 @@ struct HeightExample {
 }
 ```
 
-![zh-cn_image_canvas_height](figures/zh-cn_image_canvas_height.png)
+![zh-cn_image_canvas_height](figures/image-canvas-height.png)
 
 
 ### width
@@ -1140,7 +1140,7 @@ struct WidthExample {
 }
 ```
 
-![zh-cn_image_canvas_width](figures/zh-cn_image_canvas_width.png)
+![zh-cn_image_canvas_width](figures/image-canvas-width.png)
 
 
 ### canvas<sup>13+</sup>
@@ -1195,7 +1195,7 @@ struct CanvasExample {
 }
 ```
 
-![zh-cn_image_canvas](figures/zh-cn_image_canvas.png)
+![zh-cn_image_canvas](figures/image-canvas.png)
 
 
 ### imageSmoothingQuality
@@ -2762,7 +2762,7 @@ struct Fill {
 }
 ```
 
- ![zh-cn_image_000000127777774](figures/zh-cn_image_000000127777774.jpg)
+ ![zh-cn_image_000000127777774](figures/Yellow-trapezoid-01.jpg)
 
 ### clip
 
@@ -2870,7 +2870,7 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
   }
   ```
 
-  ![zh-cn_image_000000127777779](figures/zh-cn_image_000000127777779.jpg)
+  ![zh-cn_image_000000127777779](figures/Yellow-trapezoid.jpg)
 
 
 ### reset<sup>12+</sup>
@@ -2958,7 +2958,7 @@ saveLayer(): void
   }
 
   ```
-   ![zh-cn_image_CanvasSavelayer](figures/zh-cn_image_CanvasSavelayer.png)
+   ![zh-cn_image_CanvasSavelayer](figures/image-CanvasSavelayer.png)
 
 ### restoreLayer<sup>12+</sup>
 
@@ -3704,7 +3704,7 @@ getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
   }
   ```
 
-  ![zh-cn_image_000000127777782](figures/zh-cn_image_000000127777782.png)
+  ![zh-cn_image_000000127777782](figures/Yellow-with-sky.png)
 
 ### setPixelMap
 
@@ -3784,7 +3784,7 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
   }
   ```
 
-  ![zh-cn_image_000000127777780](figures/zh-cn_image_000000127777780.png)
+  ![zh-cn_image_000000127777780](figures/Yellow-lemon.png)
 
 
 ### putImageData
@@ -4007,7 +4007,7 @@ getLineDash(): number[]
     }
   }
   ```
-![zh-cn_image_000000127777778](figures/zh-cn_image_000000127777778.png) 
+![zh-cn_image_000000127777778](figures/Yellow-with-sky-01.png) 
 
 
 ### transferFromImageBitmap
@@ -4170,7 +4170,7 @@ restore(): void
     }
   }
   ```
-  ![zh-cn_image_000000127777781](figures/zh-cn_image_000000127777781.png)
+  ![zh-cn_image_000000127777781](figures/Yellow-with-green-and-black.png)
 
 
 ### save
@@ -4214,7 +4214,7 @@ save(): void
     }
   }
   ```
-  ![zh-cn_image_000000127777781](figures/zh-cn_image_000000127777781.png)
+  ![zh-cn_image_000000127777781](figures/Yellow-with-green-and-black.png)
 
 
 ### createLinearGradient
@@ -4859,7 +4859,7 @@ struct Index {
 }
 ```
 
-![](figures/zh-cn_image_canvas_fill_rule_example.png)
+![](figures/image-canvas-fill-rule-example.png)
 
 ## CanvasLineCap类型说明
 

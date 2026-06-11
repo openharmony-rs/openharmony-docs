@@ -1847,7 +1847,7 @@ struct ImageExample3 {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/zh-cn_image_0000001607845173.gif)
+![zh-cn_image_0000001607845173](figures/Dyn-sky.gif)
 
 ### 示例5（开启图像AI分析）
 
