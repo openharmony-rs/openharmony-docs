@@ -142,7 +142,6 @@
             - [\@Once装饰器：初始化同步一次](state-management-static/arkts-static-new-once.md)
           - [\@Event装饰器：规范组件输出](state-management-static/arkts-static-new-event.md)
           - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management-static/arkts-static-new-provider-and-consumer.md)
-          - [\@Env：环境变量](state-management-static/arkts-static-new-env.md)
         - 管理数据对象的状态<!--arkts-object-state-mgmt-functions-v2-->
           - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management-static/arkts-static-new-observedV2-and-trace.md)
           - [\@Monitor装饰器：状态变量修改监听](state-management-static/arkts-static-new-monitor.md)
@@ -173,8 +172,10 @@
   - 渲染控制（ArkTS-Sta）<!--arkts-rendering-control-static-->
     - [If：条件渲染(ArkTS-Sta)](rendering-control/arkts-rendering-control-ifelse-sta.md)
   - 学习响应式环境变量<!--arkts-env-property-->
-    - [\@Env：环境变量](arkts-env-system-property.md)
-    - [\@CustomEnv：自定义环境变量](arkts-custom-env-property.md)
+    - [\@Env：环境变量 (ArkTS-Dyn)](arkts-env-system-property.md)
+    - [\@Env：环境变量 (ArkTS-Sta)](state-management-static/arkts-static-new-env.md)
+    - [\@CustomEnv：自定义环境变量 (ArkTS-Dyn)](arkts-custom-env-property.md)
+    - [\@CustomEnv：自定义环境变量 (ArkTS-Sta)](state-management-static/arkts-static-custom-env-property.md)
   - 设置组件导航和页面路由<!--arkts-set-navigation-routing-->
     - [组件导航和页面路由概述](arkts-navigation-introduction.md)
     - 组件导航(Navigation) (推荐)<!--arkts-navigation-navigation-->

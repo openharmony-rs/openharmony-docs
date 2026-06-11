@@ -414,7 +414,7 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom](figures/zh-cn_image_custom.gif)
+![image-custom](figures/image-custom.gif)
 
 ### 示例2（可在主窗外弹出的弹窗）
 
@@ -503,7 +503,7 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom-showinsubwindow](figures/zh-cn_image_custom-showinsubwindow.jpg)
+![image-custom-showinsubwindow](figures/image-custom-showinsubwindow.jpg)
 
 ### 示例3（设置弹窗的样式）
 该示例定义了CustomDialog的样式，包括宽度、高度、背景色、阴影等。
@@ -1409,7 +1409,7 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom-backgroundBlurStyleOptions](figures/zh-cn_image_custom-backgroundBlurStyleOptions.png)
+![image-custom-backgroundBlurStyleOptions](figures/image-custom-backgroundBlurStyleOptions.png)
 
 ### 示例12（自定义背景效果参数）
 
@@ -1472,7 +1472,7 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom-backgroundEffect](figures/zh-cn_image_custom-backgroundEffect.png)
+![image-custom-backgroundEffect](figures/image-custom-backgroundEffect.png)
 
 ### 示例13（自定义弹窗动态刷新宽度）
 
