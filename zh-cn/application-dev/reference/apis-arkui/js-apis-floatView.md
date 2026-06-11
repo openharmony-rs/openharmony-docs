@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
-<!--Designer: @zhoulin_-->
+<!--Designer: @loumou-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -1006,7 +1006,7 @@ try {
 
 onLimitsChange(callback: Callback&lt;FloatViewLimits&gt;): void
 
-注册标准悬浮窗限制变化的监听事件，当限制规格变化时触发回调，例如设备折叠或者展开。不再使用时，取消监听以避免内存泄漏。
+注册标准悬浮窗限制变化的监听事件。当限制规格变化时（例如屏幕宽度变化或切换模板），触发回调并返回当前窗口模板类型的限制信息。不再使用时，取消监听以避免内存泄漏。
 
 **起始版本：** 26.0.0
 
