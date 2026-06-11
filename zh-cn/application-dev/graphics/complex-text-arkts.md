@@ -103,7 +103,7 @@
 
 ### 效果展示
 
-![zh-cn_image_0000002246603733](figures/zh-cn_image_0000002246603733.png)
+![Effect](figures/Effect.png)
 
 
 ## 多行文本绘制与显示
@@ -205,14 +205,14 @@
 
 | 段落样式设置（断词策略、文本对齐方式、最大行数限制） | 效果示意 | 
 | -------- | -------- |
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![zh-cn_image_0000002246563849](figures/zh-cn_image_0000002246563849.png) | 
-| 文本对齐方式为text.TextAlign.RIGHT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![zh-cn_image_0000002211443900](figures/zh-cn_image_0000002211443900.png) | 
-| 文本对齐方式为text.TextAlign.JUSTIFY，最大行数为10，断词策略为text.WordBreak.BREAK_WORD。 | ![zh-cn_image_complexArkTsDemoJustify](figures/zh-cn_image_complexArkTsDemoJustify.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_ALL。 | ![zh-cn_image_0000002211603680](figures/zh-cn_image_0000002211603680.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_ALL。 | ![zh-cn_image_0000002246563845](figures/zh-cn_image_0000002246563845.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>不设置语言偏好。段落无连字符“-”断词效果。 | ![ts_word_break_hyphen_locale_undefined.jpg](figures/ts_word_break_hyphen_locale_undefined.jpg) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-gb（英式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现英式语言环境断词效果。 | ![ts_word_break_hyphen_local_en-gb.jpg](figures/ts_word_break_hyphen_local_en-gb.jpg) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-us（美式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现美式语言环境断词效果。 | ![ts_word_break_hyphen_local_en-us.jpg](figures/ts_word_break_hyphen_local_en-us.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![BREAK-WORD-LEFT](figures/BREAK-WORD-LEFT.png) | 
+| 文本对齐方式为text.TextAlign.RIGHT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![BREAK-WORD-RIGHT](figures/BREAK-WORD-RIGHT.png) | 
+| 文本对齐方式为text.TextAlign.JUSTIFY，最大行数为10，断词策略为text.WordBreak.BREAK_WORD。 | ![complexArkTsDemoJustify](figures/complexArkTsDemoJustify.png) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_ALL。 | ![BREAK-ALL-LEFT](figures/BREAK-ALL-LEFT.png) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_ALL。 | ![BREAK-ALL-LEFT-10](figures/BREAK-ALL-LEFT-10.png) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>不设置语言偏好。段落无连字符“-”断词效果。 | ![ts-hyphen-locale-undefined.jpg](figures/ts-hyphen-locale-undefined.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-gb（英式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现英式语言环境断词效果。 | ![ts-hyphen-local-en-gb.jpg](figures/ts-hyphen-local-en-gb.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-us（美式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现美式语言环境断词效果。 | ![ts-hyphen-local-en-us.jpg](figures/ts-hyphen-local-en-us.jpg) | 
 
 
 ## 多样式文本绘制与显示
@@ -568,8 +568,8 @@ struct Font08 {
 
 | 样式设置（装饰线样式、字体特征） | 示意效果 | 
 | -------- | -------- |
-| 不开启装饰线和字体特征 | ![zh-cn_image_complexArkTsDemo1_1](figures/zh-cn_image_complexArkTsDemo1_1.png) | 
-| 开启装饰线和字体特征 | ![zh-cn_image_complexArkTsDemo1_2](figures/zh-cn_image_complexArkTsDemo1_2.png) | 
+| 不开启装饰线和字体特征 | ![complexArkTsDemo1-1](figures/complexArkTsDemo1-1.png) | 
+| 开启装饰线和字体特征 | ![complexArkTsDemo1-2](figures/complexArkTsDemo1-2.png) | 
 
 ### 示例二（可变字体、文本阴影、占位符）
 这里以可变字体、文本阴影、占位符三个特性为例，呈现多样式文本的绘制与显示。
@@ -743,8 +743,8 @@ struct Font08 {
 
 | 样式设置（可变字体、文本阴影、占位符） | 示意效果 | 
 | -------- | -------- |
-| 不开启可变字体和文本阴影，不使用占位符 | ![zh-cn_image_complexArkTsDemo2_1](figures/zh-cn_image_complexArkTsDemo2_1.png) | 
-| 开启可变字体和文本阴影，使用占位符 | ![zh-cn_image_complexArkTsDemo2_2](figures/zh-cn_image_complexArkTsDemo2_2.png) | 
+| 不开启可变字体和文本阴影，不使用占位符 | ![complexArkTsDemo2-1](figures/complexArkTsDemo2-1.png) | 
+| 开启可变字体和文本阴影，使用占位符 | ![complexArkTsDemo2-2](figures/complexArkTsDemo2-2.png) | 
 
 ### 示例三（垂直对齐）
 这里以垂直对齐-居中对齐特性为例，呈现文本垂直方向排版的特性。
@@ -883,10 +883,10 @@ struct Font08 {
 具体示意效果如下所示：
 | 样式设置（垂直对齐） | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） | 
 | -------- | -------- |
-| 基线对齐（默认）| ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_verticalAlignment_baseline.jpg) | 
-| 顶部对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_top.jpg) | 
-| 居中对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_center.jpg) | 
-| 底部对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_bottom.jpg) | 
+| 基线对齐（默认）| ![verticalAlignment-baseline](figures/verticalAlignment-baseline.jpg) | 
+| 顶部对齐 | ![verticalAlignment-top](figures/verticalAlignment-top.jpg) | 
+| 居中对齐 | ![verticalAlignment-center](figures/verticalAlignment-center.jpg) | 
+| 底部对齐 | ![verticalAlignment-bottom](figures/verticalAlignment-bottom.jpg) | 
 
 ### 示例四（上下标文本）
 这里以下标样式为例，呈现上下标文本排版特性。
@@ -1035,8 +1035,8 @@ struct Font08 {
 具体示意效果如下所示：
 | 样式设置（上下标） | 示意效果 | 
 | -------- | -------- |
-| 上标文本 | ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_subscript.jpg) | 
-| 下标文本 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_superscript.jpg) | 
+| 上标文本 | ![subscript](figures/subscript.jpg) | 
+| 下标文本 | ![superscript](figures/superscript.jpg) | 
 
 ### 示例五（高对比度）
 这里以高对比度为例，呈现高对比度文字的绘制与显示。
@@ -1171,8 +1171,8 @@ struct Font08 {
 
 | 高对比度设置 | 示意效果 | 
 | -------- | -------- |
-| 不开启高对比度 | ![zh-cn_image_complexArkTsDemo5_1](figures/zh-cn_image_complexArkTsDemo5_1.png) | 
-| 开启高对比度 | ![zh-cn_image_complexArkTsDemo5_2](figures/zh-cn_image_complexArkTsDemo5_2.png) | 
+| 不开启高对比度 | ![complexArkTsDemo5-1](figures/complexArkTsDemo5-1.png) | 
+| 开启高对比度 | ![complexArkTsDemo5-2](figures/complexArkTsDemo5-2.png) | 
 
 ### 示例六（行高调整方式一）
 这里以行高上限与行高下限设置相同值为例，呈现固定行高时的绘制表现。
