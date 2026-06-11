@@ -27,7 +27,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-## createImageLattice<sup>18+</sup>
+## createImageLattice<sup>12+</sup>
 
 ArkTS-Dyn: static createImageLattice(xDivs: Array\<number>, yDivs: Array\<number>, fXCount: number, fYCount: number, fBounds?: common2D.Rect | null, fRectTypes?: Array\<RectType> | null, fColors?: Array\<common2D.Color> | null): Lattice
 
@@ -37,7 +37,7 @@ ArkTS-Sta: static createImageLattice(xDivs: Array\<int>, yDivs: Array\<int>, fXC
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
