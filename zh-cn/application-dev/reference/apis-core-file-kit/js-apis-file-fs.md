@@ -34,7 +34,7 @@ import { fileIo } from '@kit.CoreFileKit';
   }
   ```
 
-获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>将指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义解及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
+获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>将指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 
 ## fileIo.stat
 
@@ -164,7 +164,7 @@ access(path: string, mode?: AccessModeType): Promise&lt;boolean&gt;
 
 | 类型 | 说明 |
 | ---- | ---- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示文件存在；返回false表示文件不存在。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示文件或目录存在；返回false表示文件或目录不存在。 |
 
 **错误码：**
 
@@ -293,7 +293,7 @@ accessSync(path: string, mode?: AccessModeType): boolean
 
 | 类型 | 说明 |
 | ---- | ---- |
-| boolean | 返回true，表示文件存在；返回false，表示文件不存在。 |
+| boolean | 返回true，表示文件或目录存在；返回false，表示文件或目录不存在。 |
 
 **错误码：**
 
@@ -338,7 +338,7 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
 | 类型 | 说明 |
 | ---- | ---- |
-| boolean | 返回true，表示文件在本地且校验权限存在；返回false，表示文件不存在或者文件在云端或其他分布式设备上。 |
+| boolean | 返回true，表示文件或目录在本地且校验权限存在；返回false，表示文件或目录不存在或者文件或目录在云端或其他分布式设备上。 |
 
 **错误码：**
 
@@ -377,7 +377,7 @@ close(file: number | File): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| file | number \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后File对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
+| file | number \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后File对象或文件描述符fd不可再用于读写等操作，继续使用可能导致错误或操作失败。 |
 
 **返回值：**
 
@@ -417,7 +417,7 @@ close(file: number | File, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| file | number \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后File对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
+| file | number \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后File对象或文件描述符fd不可再用于读写等操作，继续使用可能导致错误或操作失败。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当异步关闭文件或目录成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -454,7 +454,7 @@ closeSync(file: number | File): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| file | number \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后File对象或文件描述符fd不再具备实际意义，不可再用于进行读写等操作。 |
+| file | number \| [File](#file) | 是 | 已打开的File对象或已打开的文件描述符fd。关闭后File对象或文件描述符fd不可再用于读写等操作，继续使用可能导致错误或操作失败。 |
 
 **错误码：**
 
@@ -2509,7 +2509,7 @@ readLines(filePath: string, options: Options, callback: AsyncCallback&lt;ReaderI
 
 readLinesSync(filePath: string, options?: Options): ReaderIterator
 
-以同步方式逐行读取文件的文本内容。
+以同步方式逐行读取文件的文本内容，只支持读取utf-8格式文件。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4492,7 +4492,7 @@ createRandomAccessFileSync(file: string | File, mode?: number): RandomAccessFile
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | file | string \| [File](#file) | 是 | 文件的应用沙箱路径或已打开的File对象。 |
-| mode | number | 否 | 创建文件RandomAccessFile对象的[OpenMode](#openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且对应文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。 |
+| mode | number | 否 | 创建文件RandomAccessFile对象的[OpenMode](#openmode)，仅当传入文件沙箱路径时生效，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且对应文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。 |
 
 **返回值：**
 

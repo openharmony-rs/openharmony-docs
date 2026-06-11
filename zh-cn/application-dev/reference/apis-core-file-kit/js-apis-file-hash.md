@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
-该模块提供文件哈希处理能力，对文件内容进行哈希处理。
+该模块提供文件哈希处理能力，对文件内容进行哈希处理，适用于数据完整性校验、版本比对与内容去重等场景，可确保计算结果的不可变性与一致性，并支持流式处理大文件。
 
 > **说明：**
 >
@@ -22,25 +22,29 @@ import { hash } from '@kit.CoreFileKit';
 
 使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：
 
-  ```ts
-  import { UIAbility } from '@kit.AbilityKit';
-  import { window } from '@kit.ArkUI';
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
-  export default class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage) {
-      let context = this.context;
-      let pathDir = context.filesDir;
-    }
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let context = this.context;
+    let pathDir = context.filesDir;
   }
-  ```
+}
+```
 
-使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
+获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
 
 ## hash.hash
 
 hash(path: string, algorithm: string): Promise&lt;string&gt;
 
-计算文件的哈希值，使用Promise异步回调。
+计算文件的哈希值。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口会读取整个文件内容并计算哈希值，适用于中小文件。对于大文件处理，建议使用[HashStream](#hashstream12)流式计算。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -70,21 +74,26 @@ hash(path: string, algorithm: string): Promise&lt;string&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let filePath = pathDir + "/test.txt";
-  hash.hash(filePath, "sha256").then((str: string) => {
-    console.info("Succeeded in calculating file hash: " + str);
-  }).catch((err: BusinessError) => {
-    console.error("Failed to calculate file hash. Code: " + err.code + ", message: " + err.message);
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let filePath = pathDir + "/test.txt";
+hash.hash(filePath, "sha256").then((str: string) => {
+  console.info("Succeeded in calculating file hash: " + str);
+}).catch((err: BusinessError) => {
+  console.error("Failed to calculate file hash. Code: " + err.code + ", message: " + err.message);
+});
+```
 
 ## hash.hash
 
 hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): void
 
-计算文件的哈希值，使用callback异步回调。
+计算文件的哈希值。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口会读取整个文件内容并计算哈希值，适用于中小文件。对于大文件处理，建议使用[HashStream](#hashstream12)流式计算。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -124,7 +133,11 @@ hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): vo
 
 createHash(algorithm: string): HashStream
 
-创建并返回 HashStream 对象，该对象可用于使用给定的 algorithm 生成哈希摘要。
+创建并返回HashStream对象，用于生成哈希摘要。可以指定哈希计算采用的算法。
+
+> **说明：**
+>
+> HashStream采用流式处理机制，支持分批次更新数据，适用于大文件或数据流的哈希计算，避免一次性加载大文件到内存。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -136,9 +149,9 @@ createHash(algorithm: string): HashStream
 
 **返回值：**
 
-  | 类型            | 说明         |
-  | ------------- | ---------- |
-  | [HashStream](#hashstream12) | HashStream 类的实例。 |
+| 类型            | 说明         |
+| ------------- | ---------- |
+| [HashStream](#hashstream12) | HashStream类的实例，用于生成哈希摘要。 |
 
 **错误码：**
 
@@ -177,13 +190,13 @@ createHash(algorithm: string): HashStream
 
 ## HashStream<sup>12+</sup>
 
-HashStream 类是用于创建数据的哈希摘要的实用工具。由 [createHash](#hashcreatehash12) 接口获得。
+HashStream类是用于创建数据的哈希摘要的实用工具。由[createHash](#hashcreatehash12)接口获得。该类采用增量式哈希计算设计，通过update方法多次添加数据块，最后通过digest方法计算最终哈希值，适用于处理大文件或持续产生的数据流。
 
 ### update<sup>12+</sup>
 
 update(data: ArrayBuffer): void
 
-使用给定的 data 更新哈希内容，可多次调用。
+使用给定的数据更新哈希内容，可多次调用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 

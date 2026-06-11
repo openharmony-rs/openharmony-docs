@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
-该模块提供环境目录能力，获取内存存储根目录、公共文件根目录的ArkTS接口。
+该模块提供用户环境目录能力，用于获取用户的下载目录、桌面目录、文档目录的沙箱路径。上述三个方法分别适用于获取不同类型用户目录的场景，开发者可根据需要选择对应的目录类型。
 
 > **说明：**
 >
@@ -22,7 +22,7 @@ import { Environment } from '@kit.CoreFileKit';
 
 getUserDownloadDir(): string
 
-获取当前用户预授权下载目录的沙箱路径。
+获取当前用户的下载目录的沙箱路径。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
 
@@ -32,7 +32,7 @@ getUserDownloadDir(): string
 
 | 类型                  | 说明                  |
 | --------------------- |---------------------|
-| string | 返回当前用户预授权下载目录的沙箱路径。 |
+| string | 返回当前用户的下载目录的沙箱路径。 |
 
 **错误码：**
 
@@ -47,6 +47,7 @@ getUserDownloadDir(): string
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 function getUserDownloadDirExample() {
   try {
     let path = Environment.getUserDownloadDir();
@@ -61,7 +62,7 @@ function getUserDownloadDirExample() {
 
 getUserDesktopDir(): string
 
-获取当前用户预授权桌面目录的沙箱路径。
+获取当前用户的桌面目录的沙箱路径。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
 
@@ -71,7 +72,7 @@ getUserDesktopDir(): string
 
 | 类型                  | 说明                  |
 | --------------------- |---------------------|
-| string | 返回当前用户预授权桌面目录的沙箱路径。 |
+| string | 返回当前用户的桌面目录的沙箱路径。 |
 
 **错误码：**
 
@@ -86,6 +87,7 @@ getUserDesktopDir(): string
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 function getUserDesktopDirExample() {
   try {
     let path = Environment.getUserDesktopDir();
@@ -100,7 +102,7 @@ function getUserDesktopDirExample() {
 
 getUserDocumentDir(): string
 
-获取当前用户预授权文档目录的沙箱路径。
+获取当前用户的文档目录的沙箱路径。
 
 **系统能力**：SystemCapability.FileManagement.File.Environment.FolderObtain
 
@@ -110,7 +112,7 @@ getUserDocumentDir(): string
 
 | 类型                  | 说明                  |
 | --------------------- |---------------------|
-| string | 返回当前用户预授权文档目录的沙箱路径。 |
+| string | 返回当前用户的文档目录的沙箱路径。 |
 
 **错误码：**
 
@@ -125,6 +127,7 @@ getUserDocumentDir(): string
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 function getUserDocumentDirExample() {
   try {
     let path = Environment.getUserDocumentDir();
