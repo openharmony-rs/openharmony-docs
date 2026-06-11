@@ -252,8 +252,8 @@ JSVM新增支持从外部内存创建ArrayBuffer对象。（[API参考](https://
 | 软件 | 版本 | 备注 | 
 | -------- | -------- | -------- |
 | OpenHarmony | 7.0 Beta1 | NA | 
-| Public SDK | Ohos_sdk_public 26.0.0. (API Version 26.0.0 Beta1) | 面向应用开发者提供，不包含需要使用系统权限的系统接口。通过DevEco Studio默认获取的SDK为Public SDK。 | 
-| HUAWEI DevEco Studio（可选） | 26.0.0 Beta1 | OpenHarmony应用开发推荐使用。<br />*待发布后提供*。 | 
+| Public SDK | Ohos_sdk_public 26.0.0.25 (API Version 26.0.0 Beta1) | 面向应用开发者提供，不包含需要使用系统权限的系统接口。通过DevEco Studio默认获取的SDK为Public SDK。 | 
+| HUAWEI DevEco Studio（可选） | *待发布后提供* | OpenHarmony应用开发推荐使用。<br />*待发布后提供*。 | 
 | HUAWEI DevEco Device Tool（可选） | 4.0 Release | OpenHarmony智能设备集成开发环境推荐使用。<br />[请点击这里获取](https://device.harmonyos.com/cn/develop/ide#download)。 | 
 
 
@@ -344,9 +344,9 @@ JSVM新增支持从外部内存创建ArrayBuffer对象。（[API参考](https://
 | Hi3516解决方案-LiteOS（二进制） | 7.0 Beta1    | *软件包上传中* | *软件包上传中* | - |
 | Hi3516解决方案-Linux（二进制）  | 7.0 Beta1    | *软件包上传中* | *软件包上传中* | - |
 | RK3568标准系统解决方案（二进制）        | 7.0 Beta1    | *软件包上传中* | *软件包上传中* | - |
-| 标准系统Public SDK包（Mac）             | 26.0.0.23 | *软件包上传中* | *软件包上传中* | - |
-| 标准系统Public SDK包（Mac-M1）             | 26.0.0.23  | *软件包上传中* | *软件包上传中* | - |
-| 标准系统Public SDK包（Windows/Linux）   | 26.0.0.23   | *软件包上传中* | *软件包上传中* | - |
+| 标准系统Public SDK包（Mac）             | 26.0.0.25 | *软件包上传中* | *软件包上传中* | - |
+| 标准系统Public SDK包（Mac-M1）             | 26.0.0.25  | *软件包上传中* | *软件包上传中* | - |
+| 标准系统Public SDK包（Windows/Linux）   | 26.0.0.25   | *软件包上传中* | *软件包上传中* | - |
 
 
 ## 修复缺陷列表
@@ -372,3 +372,5 @@ JSVM新增支持从外部内存创建ArrayBuffer对象。（[API参考](https://
 | [193](https://gitcode.com/openharmony/telephony_telephony_data/issues/193) | 首次启动联系人应用的时间超出基线要求。 | 轻微影响使用体验。 | 2026年7月30日 |
 | [73886](https://gitcode.com/openharmony/arkui_ace_engine/issues/73886) | 开机完成时延较长，不满足基线要求。 | 轻微影响使用体验。 | 2026年7月30日 |
 | [772](https://gitcode.com/openharmony/applications_photos/issues/772) | 首次启动图库应用的时间超出基线要求。 | 轻微影响使用体验。 | 2026年7月30日 |
+
+<!--no_check-->
