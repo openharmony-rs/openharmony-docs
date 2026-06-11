@@ -1302,6 +1302,20 @@ Allows an application to install the PCIe driver.
 
 **Since**: 26.0.0
 
+## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
+
+Allows an application to access game buddy service. 
+<br/>With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and capturing user voice data via the microphone.
+<br/>Applicable scenarios and functionalities: The application provides game AI companion features, requiring the analysis of game screenshots while a user is playing to deliver in-game advice and recommendations.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.KNOCK_COLLABORATION
 
 Allows an application to connect to a specific device using Tap-to-Transfer for information exchange and cross-device interaction.
