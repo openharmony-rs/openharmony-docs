@@ -62,7 +62,7 @@ NDK（Native Development Kit）是OpenHarmony SDK提供的Native API、相应编
 
 - build目录：放置预定义的toolchain脚本文件<!--RP2-->[ohos.toolchain.cmake](build-with-ndk-overview.md#ohostoolchaincmake简介)<!--RP2End-->
 
-  ![ndk-build-structure](figures/ndk-build-structure.png)
+  ![ndk-bulid-structure](figures/ndk-bulid-structure.png)
 
   CMake编译时需要读取该文件中的默认值，比如编译器架构、C++库链接方式等，因此在编译时会通过CMAKE_TOOLCHAIN_FILE指出该文件的路径，便于CMake在编译时定位到该文件。
 
@@ -77,7 +77,7 @@ NDK（Native Development Kit）是OpenHarmony SDK提供的Native API、相应编
 
 - llvm文件夹：放置NDK提供的编译器
 
-  ![zh-cn_image_0000001696408864](figures/zh-cn_image_0000001696408864.png)
+  ![ndk-tools-list](figures/ndk-tools-list.png)
 
 
 ## NDK常用模块
