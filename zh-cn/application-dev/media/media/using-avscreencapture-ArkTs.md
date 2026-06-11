@@ -128,10 +128,8 @@
     let displayClass: display.Display | null = null;
     try {
       displayClass = display.getDefaultDisplaySync();
-      hilog.info(DOMAIN, 'DisplayTest', `The display info is: ${JSON.stringify(displayClass)}`);
     } catch (exception) {
-      hilog.error(DOMAIN, 'DisplayTest',
-        `Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+      console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
     }
     captureConfig: media.AVScreenCaptureRecordConfig = {
         // 开发者可以根据屏幕的宽高设置宽高。
@@ -160,7 +158,14 @@
 6. 创建豁免隐私窗口，这里填写的是子窗口id和主窗口id，具体开发步骤可参见窗口API[WindowProperties](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)。
 
     ```javascript
-    let windowIDs = [57, 86];
+    let windowId: number = 0;
+    try {
+      let properties = windowClass.getWindowProperties();
+      windowId = properties.id;
+    } catch (exception) {
+      hilog.error(`Failed to obtain the window properties. Cause Code: ${exception.code}, message: ${exception.message}`);
+    }
+    let windowIDs = [windowId];
     await this.screenCapture.skipPrivacyMode(windowIDs);
     ```
 
