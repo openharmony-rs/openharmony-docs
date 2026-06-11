@@ -128,6 +128,7 @@
     let displayClass: display.Display | null = null;
     try {
       displayClass = display.getDefaultDisplaySync();
+      console.info(`The display info is: ${JSON.stringify(displayClass)}`);
     } catch (exception) {
       console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
     }
@@ -163,7 +164,7 @@
       let properties = windowClass.getWindowProperties();
       windowId = properties.id;
     } catch (exception) {
-      hilog.error(`Failed to obtain the window properties. Cause Code: ${exception.code}, message: ${exception.message}`);
+      console.error(`Failed to obtain the window properties. Cause Code: ${exception.code}, message: ${exception.message}`);
     }
     let windowIDs = [windowId];
     await this.screenCapture.skipPrivacyMode(windowIDs);
@@ -229,10 +230,9 @@ export class AVScreenCaptureDemo {
     let displayClass: display.Display | null = null;
     try {
       displayClass = display.getDefaultDisplaySync();
-      hilog.info(DOMAIN, 'DisplayTest', `The display info is: ${JSON.stringify(displayClass)}`);
+      console.info(`The display info is: ${JSON.stringify(displayClass)}`);
     } catch (exception) {
-      hilog.error(DOMAIN, 'DisplayTest',
-        `Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+      console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
     }
     this.captureConfig = {
         // 开发者可以根据屏幕的宽高设置宽高。
@@ -331,7 +331,7 @@ export class AVScreenCaptureDemo {
       let properties = windowClass.getWindowProperties();
       windowId = properties.id;
     } catch (exception) {
-      hilog.error(`Failed to obtain the window properties. Cause Code: ${exception.code}, message: ${exception.message}`);
+      console.error(`Failed to obtain the window properties. Cause Code: ${exception.code}, message: ${exception.message}`);
     }
     let windowIDs = [windowId];
     await this.screenCapture?.skipPrivacyMode(windowIDs);
