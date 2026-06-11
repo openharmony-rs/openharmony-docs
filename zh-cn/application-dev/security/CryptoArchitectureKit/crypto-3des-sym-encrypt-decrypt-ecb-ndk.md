@@ -164,5 +164,5 @@ end:
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
-    // 本段代码只展示CBC、CTR、OFB、CFB分段模式的不同，其他流程请参考开发示例。
+    // 本段代码只展示CBC、CTR、OFB、CFB分组模式的不同，其他流程请参考开发示例。
 ```

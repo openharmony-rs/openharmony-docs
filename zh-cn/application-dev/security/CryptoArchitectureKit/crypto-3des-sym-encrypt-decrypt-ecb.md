@@ -167,5 +167,5 @@
   let iv = genIvParamsSpec();
   let cipher = cryptoFramework.createCipher('3DES192|CBC|PKCS7');
   cipher.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, iv);
-  // 本段代码只展示CBC、CTR、OFB、CFB分段模式的不同，其他流程请参考开发示例。
+  // 本段代码只展示CBC、CTR、OFB、CFB分组模式的不同，其他流程请参考开发示例。
   ```

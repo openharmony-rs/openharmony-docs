@@ -42,7 +42,7 @@ function testSm2SignDataRsToDer() {
 **指定DER格式，转换为（r、s）格式**
 1. 指定DER格式的SM2密文参数。
 
-2. 调用[genEccSignatureSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#geneccsignaturespec20)，将DER格式数据传入，转换为(r、s)格式的SM2密文。
+2. 调用[genEccSignatureSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#geneccsignaturespec20)，将DER格式数据传入，转换为（r、s）格式的SM2密文。
 
 <!-- @[sm2_sign_data_der_to_rs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/sm2_data_format_convertion/sm2_sign_data_der_to_rs.ets) -->
 
