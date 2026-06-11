@@ -54,6 +54,16 @@ target_link_libraries(entry PUBLIC libavrecorder.so)
 target_link_libraries(entry PUBLIC libnative_media_core.so)
 ```
 
+开发者使用AbilityKit相关能力时，需引入如下头文件。
+```c++
+#include <AbilityKit/ability_runtime/application_context.h>
+```
+
+并在 CMake 脚本中链接如下动态库。
+```c++
+target_link_libraries(entry PUBLIC libability_runtime.so)
+```
+
 开发者使用系统日志能力时，需引入如下头文件。
 ```c++
 #include <hilog/log.h>
@@ -200,8 +210,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
         SetConfig(*config);
 
+        // 获取沙箱路径
+        char *fileDirPath;
+        int32_t buffeSize = 1000;
+        int32_t writeLength = 0;
+        AbilityRunTime_ErrorCode result = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, buffeSize, &writeLength);
         // 1.设置URL（fileGenerationMode选择APP_CREATE时设置）。
-        const std::string AVRECORDER_ROOT = "/data/storage/el2/base/files/";
+        const std::string AVRECORDER_ROOT = fileDirPath;
         int32_t outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp3").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
         std::string fileUrl = "fd://" + std::to_string(outputFd);
         config->url = const_cast<char *>(fileUrl.c_str());
@@ -281,6 +296,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    #include <unistd.h>
    #include <fcntl.h>
    #include "hilog/log.h"
+   #include <AbilityKit/ability_runtime/application_context.h>
    #include <multimedia/player_framework/avrecorder.h>
    #include <multimedia/player_framework/avrecorder_base.h>
    #include <multimedia/media_library/media_asset_change_request_capi.h>
@@ -397,8 +413,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
 
       SetConfig(*config);
 
+      // 获取沙箱路径
+      char *fileDirPath;
+      int32_t buffeSize = 1000;
+      int32_t writeLength = 0;
+      AbilityRunTime_ErrorCode result = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, buffeSize, &writeLength);
       // 1.1设置URL（fileGenerationMode选择APP_CREATE时设置）。
-      const std::string AVRECORDER_ROOT = "/data/storage/el2/base/files/";
+      const std::string AVRECORDER_ROOT = fileDirPath;
       g_outputFd = open((AVRECORDER_ROOT + "avrecorder01.mp3").c_str(), O_RDWR | O_CREAT, 0777); // 设置文件名。
       std::string fileUrl = "fd://" + std::to_string(g_outputFd);
       config->url = const_cast<char *>(fileUrl.c_str());
