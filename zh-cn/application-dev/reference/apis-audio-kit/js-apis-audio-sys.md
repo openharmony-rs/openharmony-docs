@@ -3185,11 +3185,11 @@ isAudioSeparationEffectSupported(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 202 | Not system App. |
+| 202 | Caller is not a system application. |
 
 **示例：**
 
@@ -3226,14 +3226,14 @@ setAudioSeparationEffectEnabled(enabled: boolean, uid: number, streamId?: number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | enabled | boolean | 是 | 音频分离效果的启用状态。true表示启用，false表示禁用。 |
-| uid | number | 是 | 目标应用进程的uid，应为大于0的整数。 |
+| uid | number | 是 | 表示目标应用进程ID。 |
 | streamId | number | 否 | 目标音频播放流的ID。如果没有传入此参数，则按uid控制应用级别的音频分离效果开关。播放应用可通过[AudioRenderer.getAudioStreamIdSync](arkts-apis-audio-AudioRenderer.md#getaudiostreamidsync10)获取streamId。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3242,7 +3242,7 @@ setAudioSeparationEffectEnabled(enabled: boolean, uid: number, streamId?: number
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 201 | Permission denied. |
-| 202 | Not system App. |
+| 202 | Caller is not a system application. |
 | 6800101 | Parameter verification failed. |
 | 6800104 | Effect is not supported in this device. |
 | 6800301 | Audio service error occurs like service died. |
@@ -3284,11 +3284,11 @@ onAudioSeparationEffectEnabledChange(callback: Callback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 202 | Not system App. |
+| 202 | Caller is not a system application. |
 
 **示例：**
 
@@ -3326,7 +3326,7 @@ offAudioSeparationEffectEnabledChange(callback?: Callback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 202 | Not system App. |
+| 202 | Caller is not a system application. |
 | 6800101 | Parameter verification failed. |
 
 **示例：**
@@ -3364,7 +3364,7 @@ setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: number):
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3373,7 +3373,7 @@ setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: number):
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 201 | Permission denied. |
-| 202 | Not system App. |
+| 202 | Caller is not a system application. |
 | 6800101 | Parameter verification failed. |
 | 6800104 | Effect is not supported in this device. |
 | 6800301 | Audio service error occurs like service died. |
