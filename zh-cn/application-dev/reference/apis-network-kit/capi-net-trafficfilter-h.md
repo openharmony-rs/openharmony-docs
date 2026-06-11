@@ -35,7 +35,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | [int32_t OH_TrafficFilter_CreateRedirector(uint32_t group_id, uint32_t priority, OH_TrafficFilter_Redirector **redirector)](#oh_trafficfilter_createredirector) | 创建一个流量重定向实例。 |
-| [void OH_TrafficFilter_DestroyRedirector(OH_TrafficFilter_Redirector *redirector)](#oh_trafficfilter_destroyredirector) | 销毁流量重定向实例并释放相关资源。 |
+| [int32_t OH_TrafficFilter_DestroyRedirector(OH_TrafficFilter_Redirector *redirector)](#oh_trafficfilter_destroyredirector) | 销毁流量重定向实例并释放相关资源。 |
 | [int32_t OH_TrafficFilter_AddRedirectRule(OH_TrafficFilter_Redirector *redirector, const OH_TrafficFilter_RedirectRule *rule)](#oh_trafficfilter_addredirectrule) | 添加一条 TCP 流量重定向规则。 |
 | [int32_t OH_TrafficFilter_ClearRedirectRule(OH_TrafficFilter_Redirector *redirector)](#oh_trafficfilter_clearredirectrule) | 清除指定重定向实例下的所有重定向规则。 |
 | [int32_t OH_TrafficFilter_QueryProcess(const OH_TrafficFilter_ConnectionInfo *connection_info, OH_TrafficFilter_ProcessInfo *process_info)](#oh_trafficfilter_queryprocess) | 根据连接五元组信息查询对应进程信息。 |
@@ -73,8 +73,8 @@ int32_t OH_TrafficFilter_CreateRedirector(
 
 | 参数项 | 描述 |
 | -- | -- |
-| `uint32_t group_id` | 重定向链标识。应用内逻辑分组 ID。同一应用内不能重复使用相同 `group_id`。 |
-| `uint32_t priority` | 重定向器优先级。数值越小优先级越高。 |
+| `uint32_t group_id` | 重定向链标识。应用内逻辑分组 ID。同一应用内不能重复使用相同 `group_id`。取值范围为 [`OH_TRAFFICFILTER_MIN_GROUP_ID`, `OH_TRAFFICFILTER_MAX_GROUP_ID`]，超出范围返回 `OH_TRAFFICFILTER_ERROR_INVALID_PARAM`。 |
+| `uint32_t priority` | 重定向器优先级。数值越小优先级越高。取值范围为 [`OH_TRAFFICFILTER_MIN_PRIORITY`, `OH_TRAFFICFILTER_MAX_PRIORITY`]，超出范围返回 `OH_TRAFFICFILTER_ERROR_INVALID_PARAM`。 |
 | `OH_TrafficFilter_Redirector **redirector` | 输出参数。创建成功时返回重定向实例句柄。 |
 
 **返回：**
@@ -92,7 +92,7 @@ int32_t OH_TrafficFilter_CreateRedirector(
 ### OH_TrafficFilter_DestroyRedirector()
 
 ```c
-void OH_TrafficFilter_DestroyRedirector(OH_TrafficFilter_Redirector* redirector)
+int32_t OH_TrafficFilter_DestroyRedirector(OH_TrafficFilter_Redirector* redirector)
 ```
 
 **描述**
@@ -101,7 +101,6 @@ void OH_TrafficFilter_DestroyRedirector(OH_TrafficFilter_Redirector* redirector)
 
 - 销毁时会清理该 redirector 下的重定向规则。
 - 销毁后，该句柄失效，不能继续使用。
-- 如果传入空指针，接口不执行任何有效操作。
 
 **系统能力：** `SystemCapability.Communication.NetManager.NetFirewall`
 
@@ -117,7 +116,7 @@ void OH_TrafficFilter_DestroyRedirector(OH_TrafficFilter_Redirector* redirector)
 
 | 类型 | 说明 |
 | -- | -- |
-| `void` | 无返回值。 |
+| `int32_t` | 返回 `OH_TRAFFICFILTER_OK` 表示成功；返回 `OH_TRAFFICFILTER_ERROR_PERMISSION_DENIED` 表示权限被拒绝；返回 `OH_TRAFFICFILTER_ERROR_INVALID_PARAM` 表示 `redirector` 为空；返回 `OH_TRAFFICFILTER_ERROR_NOT_FOUND` 表示指定的 redirector 句柄未找到。 |
 
 **权限：** `ohos.permission.kernel.TRAFFIC_FILTER`
 
