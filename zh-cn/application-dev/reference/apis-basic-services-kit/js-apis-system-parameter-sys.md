@@ -86,6 +86,7 @@ try {
     console.error("get unexpected error: " + e);
 }
 ```
+
 ## systemParameter.get<sup>(deprecated)</sup>
 
 get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
