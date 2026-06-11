@@ -7,7 +7,7 @@
 <!--Tester: @laonie666-->
 <!--Adviser: @Brilliantry_Rui-->
 
-PerfTest提供白盒性能测试能力，供开发者在测试场景使用，支持对指定代码段或指定场景的性能数据测试，支持自动化执行测试代码段，并采集耗时、CPU、内存、时延、帧率等性能数据。
+PerfTest提供白盒性能测试能力，供开发者在测试场景使用。支持对指定代码段或指定场景自动化执行测试，并采集耗时、CPU、内存、时延、帧率等性能数据。
 
 > **说明：**
 > - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -36,7 +36,7 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 | CPU_LOAD                  | 1 | 应用进程CPU负载，取值为百分比。  |
 | CPU_USAGE                 | 2 | 应用进程CPU使用率，取值为百分比。  |
 | MEMORY_RSS                | 3 | 代码段单次执行结束时，应用进程占用物理内存（含共享库），单位：KB。  |
-| MEMORY_PSS                | 4 | 代码段单次执行结束时，应用进程占用物理内存（不含共享库），单位：KB。  |
+| MEMORY_PSS                | 4 | 代码段单次执行结束时，应用进程占用物理内存（按比例分摊共享库），单位：KB。  |
 | APP_START_RESPONSE_TIME   | 5 | 应用启动的响应时延，单位：ms。  |
 | APP_START_COMPLETE_TIME   | 6 | 应用启动的完成时延，单位：ms。  |
 | PAGE_SWITCH_COMPLETE_TIME | 7 | 应用内页面切换的完成时延，单位：ms。  |
@@ -48,16 +48,16 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 > 2. CPU（CPU_LOAD/CPU_USAGE）、内存（MEMORY_RSS/MEMORY_PSS）数据采集说明如下：
 >    - 测试过程中，代码段执行开始前和代码段执行结束后，会分别采集指定应用进程的CPU和内存数据，因此测试过程中需要保证被测应用进程一直存在。
 > 3. 应用启动时延（APP_START_RESPONSE_TIME/APP_START_COMPLETE_TIME）数据采集说明如下：
->    - 应用启动时延数据受系统打点上报限制，开始时间为点击事件上报时间点，响应时延结束时间为点击后系统响应首帧的上屏时间点（首帧显示在屏幕上的时间点），完成时延结束时间为应用启动后的首帧上屏时间点，与端到端用户感知时延存在差异。
+>    - 应用启动时延数据受系统打点上报限制，与端到端用户感知时延存在差异。开始时间为点击事件上报时间点；响应时延结束时间为点击后系统响应首帧的上屏时间点（首帧显示在屏幕上的时间点）；完成时延结束时间为应用启动后的首帧上屏时间点。
 >    - 应用启动时延数据采集支持的场景：桌面点击应用图标启动、Dock栏点击应用图标启动、应用中心点击应用图标启动。
 >    - 单次测试期间，仅第一次指定应用启动的时延数据会被采集。
 > 4. 页面切换时延（PAGE_SWITCH_COMPLETE_TIME）数据采集说明如下：
->    - 页面切换时延计算受系统打点上报限制，开始时间为点击事件上报时间点，完成时延结束时间为页面切换后的首帧上屏时间点，与端到端用户感知时延存在差异。
+>    - 页面切换时延计算受系统打点上报限制，与端到端用户感知时延存在差异。开始时间为点击事件上报时间点，完成时延结束时间为页面切换后的首帧上屏时间点。
 >    - 页面切换时延数据采集支持的场景：Router、Navigation控件内的页面切换。
 >    - 单次测试期间，仅指定应用内第一次页面切换的时延数据会被采集。
 > 5. 列表滑动帧率（LIST_SWIPE_FPS）数据采集说明如下：
 >    - 列表滑动帧率：指的是在列表滑动时，屏幕每秒钟渲染更新帧的次数。
->    - 列表滑动帧率数据采集支持的场景：ArkUI子系统List、Grid、scroll、waterflow滚动控件列表的滑动。
+>    - 列表滑动帧率数据采集支持的场景：ArkUI子系统List、Grid、Scroll、WaterFlow滚动控件列表的滑动。
 >    - 单次测试期间，仅指定应用内第一次列表滑动的帧率数据会被采集。
 
 
@@ -71,12 +71,12 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 
 | 名称 | 类型   | 只读 |  可选 | 说明        |
 | ---- | ------ | ---- | ---- |-----------|
-| metrics     | Array\<[PerfMetric](#perfmetric)>           | 否 | 否 | 被测性能指标列表。  |
-| actionCode  | Callback\<Callback\<boolean>> | 否 | 否 | 测试代码段。  |
-| resetCode   | Callback\<Callback\<boolean>> | 否 | 是 | 测试结束环境重置代码段。默认为空，框架运行时不执行此代码段。  |
-| bundleName  | string                      | 否 | 是 | 被测应用包名。默认为""，框架运行时测试当前测试应用的性能数据。  |
-| iterations  | number                      | 否 | 是 | 测试迭代执行次数，默认值为5。  |
-| timeout     | number                      | 否 | 是 | 单次代码段（actionCode/resetCode）执行的超时时间，默认值为10000ms。  |
+| metrics     | Array\<[PerfMetric](#perfmetric)>           | 否 | 否 | 被测性能指标列表，列表为空则不采集任何性能指标数据。  |
+| actionCode  | Callback\<Callback\<boolean>> | 否 | 否 | 测试代码段。入参为回调函数，需在代码段中主动调用以通知框架执行完成，否则会导致执行超时，详见下方说明。  |
+| resetCode   | Callback\<Callback\<boolean>> | 否 | 是 | 测试结束环境重置代码段。当测试代码段修改了全局状态（如全局变量、配置等）需要在每轮测试后重置时传入此参数。默认为空，框架在执行测试时不执行此代码段。入参为回调函数，需在代码段中主动调用以通知框架执行完成，否则会导致执行超时，详见下方说明。  |
+| bundleName  | string                      | 否 | 是 | 被测应用包名，格式要求与应用的bundleName一致。当需要测试非当前应用的性能数据时，传入目标应用的包名。默认为""，框架在执行测试时测试当前应用的性能数据。  |
+| iterations  | number                      | 否 | 是 | 测试迭代执行次数，取值范围为大于0的整数，默认值为5。超出范围时抛出异常。  |
+| timeout     | number                      | 否 | 是 | 单次代码段（actionCode/resetCode）执行的超时时间，取值范围为大于0的整数，单位ms，默认值为10000ms。当测试代码段执行耗时较长时，可适当增大此值以避免超时，超时后将触发异常，并终止测试执行。  |
 
 > **说明：**
 >
@@ -94,7 +94,7 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 | 名称   | 类型   | 只读 | 可选 | 说明                      |
 | ------ | ------ | ---- | ---- | ------------------------- |
 | metric        | [PerfMetric](#perfmetric)    | 是 | 否 | 被测性能指标。  |
-| roundValues   | Array\<number> | 是 | 否 | 被测性能指标的各轮测量数据值。当数据采集失败时返回-1。  |
+| roundValues   | Array\<number> | 是 | 否 | 被测性能指标的各轮测量数据值，单位与对应[PerfMetric](#perfmetric)指标一致。当数据采集失败时返回-1。  |
 | maximum       | number        | 是 | 否 | 各轮测量数据最大值（剔除为-1的数据后计算）。  |
 | minimum       | number        | 是 | 否 | 各轮测量数据最小值（剔除为-1的数据后计算）。  |
 | average       | number        | 是 | 否 | 各轮测量数据平均值（剔除为-1的数据后计算）。  |
@@ -124,7 +124,7 @@ static create(strategy: PerfTestStrategy): PerfTest
 
 | 类型 | 说明           |
 | -------- | ---------------------- |
-| [PerfTest](#perftest)   | 返回构造的PerfTest对象。 |
+| [PerfTest](#perftest)   | 返回构造的PerfTest对象，可用于执行测试任务、采集性能数据和获取测量结果。 |
 
 **错误码：**
 
@@ -150,17 +150,17 @@ async function demo() {
       num++;
     }
     finish(true); // 调用finish回调函数，通知代码段执行结束，且执行符合预期
-  }
+  };
   let resetCode = async (finish: Callback<boolean>) => { // 定义测试结束环境重置代码段
     num = 0;
     finish(true);
-  }
+  };
   let perfTestStrategy: PerfTestStrategy = {
     metrics: metrics,
     actionCode: actionCode,
     resetCode: resetCode,
     timeout: 30000,
-    iterations: 10,
+    iterations: 10
   };
   let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 构造一个PerfTest对象，创建测试任务
 }
@@ -170,7 +170,7 @@ async function demo() {
 
 run(): Promise\<void>
 
-运行性能测试，迭代执行测试代码段并采集性能数据，使用Promise回调。
+运行性能测试，按配置次数迭代执行测试代码段并采集性能数据，使用Promise回调。每次迭代中，框架依次执行actionCode和resetCode（若已配置），并在actionCode执行期间采集性能数据。执行完成后，可通过[getMeasureResult](#getmeasureresult)获取采集到的测量结果数据。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -211,7 +211,7 @@ async function demo() {
     metrics: metrics,
     actionCode: actionCode
   };
-  let perfTest: PerfTest = PerfTest.create(perfTestStrategy);
+  let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 构造一个PerfTest对象，创建测试任务
   await perfTest.run(); // 运行性能测试
 }
 ```
@@ -220,7 +220,7 @@ async function demo() {
 
 getMeasureResult(metric: PerfMetric): PerfMeasureResult
 
-获取指定性能指标的测量数据。
+获取指定性能指标的测量数据。需要在[run()](#run)执行完成后调用，否则无法获取到有效的测量数据。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -230,7 +230,7 @@ getMeasureResult(metric: PerfMetric): PerfMeasureResult
 
 | 参数名   | 类型   | 必填 | 说明                            |
 | -------- | ------ | ---- | ------------------------------- |
-| metric | [PerfMetric](#perfmetric) | 是   | 性能指标。 |
+| metric | [PerfMetric](#perfmetric) | 是   | 指定性能指标对应的测量结果，包含各轮测量数据值及统计值（最大值、最小值、平均值）。 |
 
 **返回值：**
 
@@ -277,7 +277,7 @@ async function demo() {
 
 destroy(): void
 
-销毁PerfTest对象。
+销毁PerfTest对象，释放该对象占用的相关资源。与[create](#create)方法配对使用，在PerfTest对象使用完毕后调用,未调用此方法可能导致资源无法释放。调用后不应再使用该PerfTest对象。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
