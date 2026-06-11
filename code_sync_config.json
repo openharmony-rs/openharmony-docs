@@ -11106,7 +11106,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/ComponentBasicUsage.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":54,
 						"name":"ComponentBasicUsage",
 						"start_line":18
 					}
@@ -11126,7 +11126,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/ComponentParams.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":47,
 						"name":"ComponentParams",
 						"start_line":18
 					}
@@ -11136,7 +11136,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildFunction.ets",
 				"functions":[
 					{
-						"end_line":39,
+						"end_line":42,
 						"name":"BuildFunction",
 						"start_line":18
 					}
@@ -11146,7 +11146,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildVariableDeclaration.ets",
 				"functions":[
 					{
-						"end_line":33,
+						"end_line":35,
 						"name":"BuildVariableDeclaration",
 						"start_line":18
 					}
@@ -11156,7 +11156,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildLogPrint.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":44,
 						"name":"BuildLogPrint",
 						"start_line":18
 					}
@@ -11166,7 +11166,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildSwitchCase.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":56,
 						"name":"BuildSwitchCase",
 						"start_line":18
 					}
@@ -11176,7 +11176,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildLocalScope.ets",
 				"functions":[
 					{
-						"end_line":30,
+						"end_line":32,
 						"name":"BuildLocalScope",
 						"start_line":18
 					}
@@ -11186,7 +11186,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildExpression.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":38,
 						"name":"BuildExpression",
 						"start_line":18
 					}
@@ -11196,7 +11196,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/BuildNotRecommended.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":40,
 						"name":"BuildNotRecommended",
 						"start_line":18
 					}
@@ -11206,7 +11206,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/ComponentStyle.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":43,
 						"name":"ComponentStyle",
 						"start_line":18
 					}
@@ -11216,7 +11216,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CreateComponent/entry/src/main/ets/pages/ComponentExtend.ets",
 				"functions":[
 					{
-						"end_line":75,
+						"end_line":82,
 						"name":"ComponentExtend",
 						"start_line":18
 					}
