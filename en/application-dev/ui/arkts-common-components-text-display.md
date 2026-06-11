@@ -690,7 +690,7 @@ The following examples demonstrate usage of common APIs.
   }
   ```
 
-  ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
+  ![text-enable-auto-spacing](figures/text-enable-auto-spacing.gif)
 
 - Since API version 20, you can use [shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20) to apply gradient color effects to text.
 
@@ -1122,7 +1122,7 @@ Since API version 12, use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-
   }
   ```
 
-  ![text_disable_system_menu_callback_and_custom_menu](figures/text_disable_system_menu_callback_and_custom_menu.gif)
+  ![text-disable-system-menu-callback-and-custom-menu](figures/text-disable-system-menu-callback-and-custom-menu.gif)
 
 ### Disabling System Service Menu Items
 
