@@ -21,10 +21,10 @@
 ## 导入模块
 
 ```typescript
-import device from '@system.device';
+import Device from '@system.device';
 ```
-
-## device.getInfo<sup>(deprecated)</sup>
+## Device
+## Device.getInfo<sup>(deprecated)</sup>
 
 getInfo(options?: GetDeviceOptions): void
 
@@ -53,7 +53,7 @@ export default class Page {
     }
 
     try {
-      device.getInfo({
+      Device.getInfo({
         success: (data: DeviceData) => {
           console.info('Device information obtained successfully. Device brand:' + data.brand);
         },
@@ -119,7 +119,7 @@ JS示例：
 
 ```js
 //xxx.js
-import device from '@system.device';
+import Device from '@system.device';
 
 export default {
     data: {
@@ -128,7 +128,7 @@ export default {
     
     getDeviceInfo() {
         try {
-            device.getInfo({
+            Device.getInfo({
                 success: (data) => {
                     console.info('Device information obtained successfully. Device brand:' + data.brand);
                     this.brandInfo = 'Device brand: ' + data.brand;
