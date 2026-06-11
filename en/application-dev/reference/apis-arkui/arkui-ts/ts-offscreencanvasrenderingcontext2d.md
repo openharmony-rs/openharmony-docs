@@ -140,7 +140,7 @@ struct FillStyleExample {
 }
 ```
 
-![en-us_image_0000001193872516](figures/en-us_image_0000001193872516.png)
+![fillStyle](figures/fillStyle.png)
 
 
 ### lineWidth
@@ -187,7 +187,7 @@ struct LineWidthExample {
 }
 ```
 
-![en-us_image_0000001238832403](figures/en-us_image_0000001238832403.png)
+![lineWidth](figures/lineWidth.png)
 
 
 ### strokeStyle
@@ -268,7 +268,7 @@ struct StrokeStyleExample {
 }
 ```
 
-![en-us_image_0000001238712437](figures/en-us_image_0000001238712437.png)
+![strokeStyle](figures/strokeStyle.png)
 
 
 ### lineCap
@@ -319,7 +319,7 @@ struct LineCapExample {
 }
 ```
 
-![en-us_image_0000001194192454](figures/en-us_image_0000001194192454.PNG)
+![lineCap](figures/lineCap.PNG)
 
 
 ### lineJoin
@@ -371,7 +371,7 @@ struct LineJoinExample {
 }
 ```
 
-![en-us_image_0000001194352450](figures/en-us_image_0000001194352450.png)
+![lineJoin](figures/lineJoin.png)
 
 
 ### miterLimit
@@ -423,7 +423,7 @@ struct MiterLimit {
 }
 ```
 
-![en-us_image_0000001238952397](figures/en-us_image_0000001238952397.png)
+![miterLimit](figures/miterLimit.png)
 
 
 ### font
@@ -550,7 +550,7 @@ struct CanvasExample {
 }
 ```
 
-![en-us_image_0000001239032423](figures/en-us_image_0000001239032423.png)
+![textAlign2](figures/textAlign2.png)
 
 
 ### textBaseline
@@ -666,7 +666,7 @@ struct GlobalAlpha {
 }
 ```
 
-![en-us_image_0000001238832405](figures/en-us_image_0000001238832405.png)
+![globalAlpha2](figures/globalAlpha2.png)
 
 
 ### lineDashOffset
@@ -715,7 +715,7 @@ struct LineDashOffset {
 }
 
 ```
-![en-us_image_0000001238712439](figures/en-us_image_0000001238712439.png)
+![lineDashOffset](figures/lineDashOffset.png)
 
 
 ### globalCompositeOperation
@@ -908,7 +908,7 @@ struct GlobalCompositeOperation {
 }
 ```
 
-![en-us_image_0000001194192456](figures/en-us_image_0000001194192456.png)
+![globalCompositeOperation](figures/globalCompositeOperation.png)
 
 
 ### shadowBlur
@@ -1056,7 +1056,7 @@ struct ShadowOffsetX {
 }
 ```
 
-![en-us_image_0000001194032478](figures/en-us_image_0000001194032478.png)
+![shadowOffsetX2](figures/shadowOffsetX2.png)
 
 
 ### shadowOffsetY
@@ -1106,7 +1106,7 @@ struct ShadowOffsetY {
 }
 ```
 
-![en-us_image_0000001239032425](figures/en-us_image_0000001239032425.png)
+![shadowOffsetY2](figures/shadowOffsetY2.png)
 
 
 ### imageSmoothingEnabled
@@ -1159,7 +1159,7 @@ struct ImageSmoothingEnabled {
 }
 ```
 
-![en-us_image_0000001193872520](figures/en-us_image_0000001193872520.png)
+![imageSmoothingEnabled](figures/imageSmoothingEnabled.png)
 
 
 ### imageSmoothingQuality
@@ -1583,7 +1583,7 @@ Draws an outlined rectangle on the canvas.
   }
   ```
 
-  ![en-us_image_0000001194352436](figures/en-us_image_0000001194352436.png)
+  ![strokeRect](figures/strokeRect.png)
 
 
 ### clearRect
@@ -1639,7 +1639,7 @@ Clears the content in a rectangle on the canvas.
   }
   ```
 
-  ![en-us_image_0000001238952377](figures/en-us_image_0000001238952377.png)
+  ![clearRect](figures/clearRect.png)
 
 
 ### fillText
@@ -1694,7 +1694,7 @@ Draws filled text on the canvas.
   }
   ```
 
-  ![en-us_image_0000001194032458](figures/en-us_image_0000001194032458.png)
+  ![fillText](figures/fillText.png)
 
 
 ### strokeText
@@ -1749,7 +1749,7 @@ Draws a text stroke on the canvas.
   }
   ```
 
-  ![en-us_image_0000001238952401](figures/en-us_image_0000001238952401.png)
+  ![strokeText](figures/strokeText.png)
 
 
 ### measureText
@@ -1858,7 +1858,7 @@ Strokes (outlines) this path.
   }
   ```
 
-  ![en-us_image_0000001238832389](figures/en-us_image_0000001238832393.png)
+  ![stroke4](figures/stroke4.png)
 
 ### stroke
 
@@ -1914,7 +1914,7 @@ Strokes (outlines) a specified path.
   }
   ```
 
-  ![en-us_image_0000001238832389](figures/en-us_image_0000001238832392.png)
+  ![stroke3](figures/stroke3.png)
 
 
 ### beginPath
@@ -2025,7 +2025,7 @@ Moves a drawing path from the current position to a target position on the canva
   }
   ```
 
-  ![en-us_image_0000001238832409](figures/en-us_image_0000001238832409.png)
+  ![moveTo2](figures/moveTo2.png)
 
 
 ### lineTo
@@ -2080,7 +2080,7 @@ Connects the current point to a target position using a line.
   }
   ```
 
-  ![en-us_image_0000001238712443](figures/en-us_image_0000001238712443.png)
+  ![lineTo2](figures/lineTo2.png)
 
 
 ### closePath
@@ -2130,7 +2130,7 @@ Draws a closed path.
   }
   ```
 
-  ![en-us_image_0000001194192460](figures/en-us_image_0000001194192460.png)
+  ![closePath](figures/closePath.png)
 
 
 ### createPattern
@@ -2276,7 +2276,7 @@ struct BezierCurveTo {
 }
 ```
 
-  ![en-us_image_0000001238952403](figures/en-us_image_0000001238952403.png)
+  ![bezierCurveTo](figures/bezierCurveTo.png)
 
 
 ### quadraticCurveTo
@@ -2353,7 +2353,7 @@ struct QuadraticCurveTo {
 }
 ```
 
-![en-us_image_0000001193872494](figures/en-us_image_0000001193872494.png)
+![quadraticCurveTo2](figures/quadraticCurveTo2.png)
 
 ### arc
 
@@ -2410,7 +2410,7 @@ Draws an arc on the canvas.
   }
   ```
 
-  ![en-us_image_0000001239032429](figures/en-us_image_0000001239032429.jpeg)
+  ![arc2](figures/arc2.jpeg)
 
 
 ### arcTo
@@ -2495,7 +2495,7 @@ Creates a circular arc using the given control points and radius.
   }
   ```
 
-  ![en-us_image_0000001193872524](figures/en-us_image_0000001193872524.png)
+  ![arcTo](figures/arcTo.png)
 
   > In this example, the arc created by **arcTo()** is black, and the two tangents of the arc are gray. The control points are marked in red, and the start point is indicated in green.
   >
@@ -2561,7 +2561,7 @@ Draws an ellipse in the specified rectangular region on the canvas.
   }
   ```
 
-  ![en-us_image_0000001194192440](figures/en-us_image_0000001194192440.jpeg)
+  ![ellipse](figures/ellipse.jpeg)
 
 
 ### rect
@@ -2616,7 +2616,7 @@ Creates a rectangle on the canvas.
   }
   ```
 
-  ![en-us_image_0000001238712445](figures/en-us_image_0000001238712445.jpeg)
+  ![rect2](figures/rect2.jpeg)
 
 ### roundRect<sup>20+</sup>
 
@@ -2769,7 +2769,7 @@ Fills the current path.
   }
   ```
 
-  ![en-us_image_0000001194192462](figures/en-us_image_0000001194192462.png)
+  ![fill](figures/fill.png)
 
 ### fill
 
@@ -2884,7 +2884,7 @@ Sets the current path to a clipping path.
   }
   ```
 
-  ![en-us_image_0000001194032462](figures/en-us_image_0000001194032462.png)
+  ![clip](figures/clip.png)
 
 ### clip
 
@@ -2991,7 +2991,7 @@ Resets this **OffscreenCanvasRenderingContext2D** object to its default state an
   }
   ```
 
-  ![en-us_image_0000001239032460](figures/en-us_image_0000001239032460.png)
+  ![reset](figures/reset.png)
 
 ### saveLayer<sup>12+</sup>
 
@@ -3152,7 +3152,7 @@ Rotates a canvas clockwise around its coordinate axes.
   }
   ```
 
-  ![en-us_image_0000001238952405](figures/en-us_image_0000001238952405.png)
+  ![rotate2](figures/rotate2.png)
 
 
 ### scale
@@ -3207,7 +3207,7 @@ Scales the canvas based on scale factors.
   }
   ```
 
-  ![en-us_image_0000001193872498](figures/en-us_image_0000001193872498.png)
+  ![scale](figures/scale.png)
 
 
 ### transform
@@ -3350,7 +3350,7 @@ Resets the existing transformation matrix and creates a new transformation matri
   }
   ```
 
-  ![en-us_image_0000001193872526](figures/en-us_image_0000001193872526.png)
+  ![setTransform](figures/setTransform.png)
 
 ### setTransform
 
@@ -3415,7 +3415,7 @@ Resets the current transformation and creates a new transformation matrix based 
     }
   }
  ```
- ![en-us_image_0000001193872527.jpeg](figures/en-us_image_0000001193872527.jpeg)
+ ![setTransform](figures/setTransform.jpeg)
 
 ### getTransform
 
@@ -3485,7 +3485,7 @@ Obtains the current transformation matrix being applied to the context.
   }
   ```
 
-  ![en-us_image_0000001219982726.png](figures/en-us_image_0000001219982726.png)
+  ![getTransform](figures/getTransform.png)
 
 ### translate
 
@@ -3538,7 +3538,7 @@ Moves the origin of the coordinate system.
   }
   ```
 
-  ![en-us_image_0000001238832413](figures/en-us_image_0000001238832413.png)
+  ![translate2](figures/translate2.png)
 
 
 ### drawImage
@@ -4044,7 +4044,7 @@ Fills the new rectangular area with the [ImageData](ts-components-canvas-imageda
   }
   ```
 
-  ![en-us_image_0000001194192464](figures/en-us_image_0000001194192464.png)
+  ![putImageData3](figures/putImageData3.png)
 
 ### setLineDash
 
@@ -4210,7 +4210,7 @@ Creates a data URL that contains a representation of an image. This API involves
     }
   }
   ```
-![en-us_image_0000001194192442](figures/en-us_image_0000001194192442.png)
+![toDataURL2](figures/toDataURL2.png)
 
 
 ### transferToImageBitmap
@@ -4268,7 +4268,7 @@ Creates an **ImageBitmap** object from the most recently rendered image of the o
     }
   }
   ```
-![en-us_image_0000001238952387](figures/en-us_image_0000001238952387.png) 
+![transferToImageBitmap](figures/transferToImageBitmap.png) 
 
 ### restore
 
@@ -4434,7 +4434,7 @@ Creates a linear gradient.
   }
   ```
 
-  ![en-us_image_0000001194032516](figures/en-us_image_0000001194032516.png)
+  ![createLinearGradient2](figures/createLinearGradient2.png)
 
 
 ### createRadialGradient
@@ -4562,4 +4562,4 @@ struct OffscreenCanvasConicGradientPage {
 }
 ```
 
-  ![en-us_image_0000001239032419](figures/en-us_image_0000001239032420.png)
+  ![createConicGradient](figures/createConicGradient.png)

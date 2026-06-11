@@ -279,7 +279,7 @@ struct LineCapExample {
 }
 ```
 
-![en-us_image_0000001238952373](figures/en-us_image_0000001238952373.png)
+![lineCap2](figures/lineCap2.png)
 
 
 ### lineJoin
@@ -482,7 +482,7 @@ struct CanvasExample {
 }
 ```
 
-![en-us_image_0000001238832385](figures/en-us_image_0000001238832385.png)
+![textAlign](figures/textAlign.png)
 
 
 ### textBaseline
@@ -582,7 +582,7 @@ struct GlobalAlpha {
 }
 ```
 
-![en-us_image_0000001194192434](figures/en-us_image_0000001194192434.png)
+![globalAlpha](figures/globalAlpha.png)
 
 
 ### lineDashOffset
@@ -827,7 +827,7 @@ struct GlobalCompositeOperation {
 }
 ```
 
-![en-us_image_0000001238952375](figures/en-us_image_0000001238952375.png)
+![globalCompositeOperation2](figures/globalCompositeOperation2.png)
 
 
 ### shadowBlur
@@ -871,7 +871,7 @@ struct ShadowBlur {
 }
 ```
 
-![en-us_image_0000001194032456](figures/en-us_image_0000001194032456.png)
+![shadowBlur](figures/shadowBlur.png)
 
 
 ### shadowColor
@@ -915,7 +915,7 @@ struct ShadowColor {
 }
 ```
 
-![en-us_image_0000001239032411](figures/en-us_image_0000001239032411.png)
+![shadowColor](figures/shadowColor.png)
 
 
 ### shadowOffsetX
@@ -960,7 +960,7 @@ struct ShadowOffsetX {
 }
 ```
 
-![en-us_image_0000001193872490](figures/en-us_image_0000001193872490.png)
+![shadowOffsetX](figures/shadowOffsetX.png)
 
 
 ### shadowOffsetY
@@ -1005,7 +1005,7 @@ struct ShadowOffsetY {
 }
 ```
 
-![en-us_image_0000001238832387](figures/en-us_image_0000001238832387.png)
+![shadowOffsetY](figures/shadowOffsetY.png)
 
 
 ### imageSmoothingEnabled
@@ -1053,7 +1053,7 @@ struct ImageSmoothingEnabled {
 }
 ```
 
-![en-us_image_0000001238712415](figures/en-us_image_0000001238712415.png)
+![imageSmoothingEnabled2](figures/imageSmoothingEnabled2.png)
 
 
 ### height
@@ -1581,7 +1581,7 @@ Draws an outlined rectangle on the canvas without filling its interior.
   }
   ```
 
-  ![en-us_image_0000001194352436](figures/en-us_image_0000001194352436.png)
+  ![strokeRect](figures/strokeRect.png)
 
 
 ### clearRect
@@ -1633,7 +1633,7 @@ Clears the content in a rectangle on the canvas.
   }
   ```
 
-  ![en-us_image_0000001238952377](figures/en-us_image_0000001238952377.png)
+  ![clearRect](figures/clearRect.png)
 
 
 ### fillText
@@ -1684,7 +1684,7 @@ Draws filled text on the canvas.
   }
   ```
 
-  ![en-us_image_0000001194032458](figures/en-us_image_0000001194032458.png)
+  ![fillText](figures/fillText.png)
 
 
 ### strokeText
@@ -1836,7 +1836,7 @@ Strokes (outlines) this path.
   }
   ```
 
-  ![en-us_image_0000001238832389](figures/en-us_image_0000001238832389.png)
+  ![stroke](figures/stroke.png)
 
 ### stroke
 
@@ -1888,7 +1888,7 @@ Strokes (outlines) a specified path.
   }
   ```
 
-  ![en-us_image_0000001238832389](figures/en-us_image_0000001238832390.png)
+  ![stroke2](figures/stroke2.png)
 
 ### beginPath
 
@@ -1936,7 +1936,7 @@ Creates a drawing path.
   }
   ```
 
-  ![en-us_image_0000001238712417](figures/en-us_image_0000001238712417.png)
+  ![beginPath](figures/beginPath.png)
 
 
 ### moveTo
@@ -1993,7 +1993,7 @@ Moves a drawing path from the current position to a target position on the canva
   }
   ```
 
-  ![en-us_image_0000001194192438](figures/en-us_image_0000001194192438.png)
+  ![moveTo](figures/moveTo.png)
 
 
 ### lineTo
@@ -2044,7 +2044,7 @@ Connects the current point to a target position using a line.
   }
   ```
 
-  ![en-us_image_0000001194352438](figures/en-us_image_0000001194352438.png)
+  ![lineTo](figures/lineTo.png)
 
 
 ### closePath
@@ -2090,7 +2090,7 @@ Draws a closed path.
   }
   ```
 
-  ![en-us_image_0000001238952379](figures/en-us_image_0000001238952379.png)
+  ![closePath3](figures/closePath3.png)
 
 
 ### createPattern
@@ -2154,7 +2154,7 @@ Creates a pattern for image filling based on a specified source image and repeti
   }
   ```
 
-  ![en-us_image_0000001194032460](figures/en-us_image_0000001194032460.png)
+  ![createPattern](figures/createPattern.png)
 
 
 ### bezierCurveTo
@@ -2231,7 +2231,7 @@ struct BezierCurveTo {
 }
 ```
 
-![en-us_image_0000001239032415](figures/en-us_image_0000001239032415.png)
+![bezierCurveTo2](figures/bezierCurveTo2.png)
 
 
 ### quadraticCurveTo
@@ -2358,7 +2358,7 @@ Draws an arc on the canvas.
   }
   ```
 
-  ![en-us_image_0000001238832391](figures/en-us_image_0000001238832391.jpeg)
+  ![arc](figures/arc.jpeg)
 
 
 ### arcTo
@@ -2437,7 +2437,7 @@ Creates a circular arc using the given control points and radius.
   }
   ```
 
-  ![en-us_image_0000001238712419](figures/en-us_image_0000001238712419.png)
+  ![arcTo3](figures/arcTo3.png)
 
   > In this example, the arc created by **arcTo()** is black, and the two tangents of the arc are gray. The control points are marked in red, and the start point is indicated in green.
   >
@@ -2500,7 +2500,7 @@ Draws an ellipse in the specified rectangular region on the canvas.
   }
   ```
 
-  ![en-us_image_0000001194192440](figures/en-us_image_0000001194192440.jpeg)
+  ![ellipse](figures/ellipse.jpeg)
 
 
 ### rect
@@ -2551,7 +2551,7 @@ Creates a rectangle on the canvas.
   }
   ```
 
-  ![en-us_image_0000001194352440](figures/en-us_image_0000001194352440.jpeg)
+  ![rect](figures/rect.jpeg)
 
 ### roundRect<sup>20+</sup>
 
@@ -2694,7 +2694,7 @@ Fills the current path.
   }
   ```
 
-  ![en-us_image_0000001238952381](figures/en-us_image_0000001238952381.png)
+  ![fill2](figures/fill2.png)
 
 ### fill
 
@@ -2802,7 +2802,7 @@ Sets the current path to a clipping path.
   }
   ```
 
-  ![en-us_image_0000001194032462](figures/en-us_image_0000001194032462.png)
+  ![clip](figures/clip.png)
 
 ### clip
 
@@ -2900,7 +2900,7 @@ Resets this **CanvasRenderingContext2D** object to its default state and clears 
   }
   ```
 
-  ![en-us_image_0000001239032460](figures/en-us_image_0000001239032460.png)
+  ![reset](figures/reset.png)
 
 
 ### saveLayer<sup>12+</sup>
@@ -3048,7 +3048,7 @@ Rotates a canvas clockwise around its coordinate axes.
   }
   ```
 
-  ![en-us_image_0000001239032417](figures/en-us_image_0000001239032417.png)
+  ![rotate3](figures/rotate3.png)
 
 
 ### scale
@@ -3099,7 +3099,7 @@ Scales the canvas based on the given scale factors.
   }
   ```
 
-  ![en-us_image_0000001193872498](figures/en-us_image_0000001193872498.png)
+  ![scale](figures/scale.png)
 
 
 ### transform
@@ -3237,7 +3237,7 @@ Resets the existing transformation matrix and creates a new transformation matri
   }
   ```
 
-  ![en-us_image_0000001238712421](figures/en-us_image_0000001238712421.png)
+  ![setTransform2](figures/setTransform2.png)
 
 ### setTransform
 
@@ -3298,7 +3298,7 @@ Resets the current transformation to the identity matrix, and then creates a new
   }
   ```
 
-  ![en-us_image_0000001238712422.jpeg](figures/en-us_image_0000001238712422.jpeg)
+  ![setTransform2](figures/setTransform2.jpeg)
 
 ### getTransform
 
@@ -3360,7 +3360,7 @@ Obtains the current transformation matrix being applied to the context.
   }
   ```
 
-  ![en-us_image_0000001219982726.png](figures/en-us_image_0000001219982726.png)
+  ![getTransform](figures/getTransform.png)
 
 ### translate
 
@@ -3409,7 +3409,7 @@ Moves the origin of the coordinate system.
   }
   ```
 
-  ![en-us_image_0000001194192446](figures/en-us_image_0000001194192446.png)
+  ![translate](figures/translate.png)
 
 
 ### drawImage
@@ -3940,7 +3940,7 @@ Sets the dash line style.
   }
   ```
 
-  ![en-us_image_000000127777771](figures/en-us_image_000000127777771.png)
+  ![setLineDash](figures/setLineDash.png)
 
 
 ### getLineDash
@@ -4110,7 +4110,7 @@ Creates a data URL that contains a representation of an image. This API involves
     }
   }
   ```
-  ![en-us_image_0000001238952387](figures/en-us_image_0000001194192441.png)  
+  ![toDataURL](figures/toDataURL.png)  
 
 
 ### restore
@@ -4265,7 +4265,7 @@ Creates a linear gradient.
   }
   ```
 
-  ![en-us_image_0000001194032516](figures/en-us_image_0000001194032516.png)
+  ![createLinearGradient](figures/createLinearGradient.png)
 
 
 ### createRadialGradient
@@ -4328,7 +4328,7 @@ Creates a radial gradient.
   }
   ```
 
-  ![en-us_image_0000001238952407](figures/en-us_image_0000001238952407.png)
+  ![createRadialGradient](figures/createRadialGradient.png)
 
 ### createConicGradient<sup>10+</sup>
 
@@ -4385,7 +4385,7 @@ struct CanvasExample {
 }
 ```
 
-![en-us_image_0000001239032419](figures/en-us_image_0000001239032420.png)
+![createConicGradient](figures/createConicGradient.png)
 
 ### on('onAttach')<sup>13+</sup>
 
