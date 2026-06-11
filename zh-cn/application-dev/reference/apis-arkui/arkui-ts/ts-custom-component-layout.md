@@ -26,8 +26,6 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的节点
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -52,8 +50,6 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -74,8 +70,6 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -88,8 +82,6 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 子组件布局信息。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### 属性
@@ -97,7 +89,7 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 | 名称         | 类型       | 只读|可选|  说明                                                      |
 |--------------|---------------------------------- | ------|-----------------------------------------------------|---------------------|
 | measureResult| [MeasureResult](#measureresult10) |   否|否| 子组件测量后的尺寸信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>单位：vp     |
-| uniqueId<sup>18+</sup>| number | 否 |是| 系统为子组件分配的唯一标识UniqueID。<br>取值范围[0,+∞)。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| uniqueId<sup>18+</sup>| number | 否 |是| 系统为子组件分配的唯一标识UniqueID。<br>取值范围[0,+∞)。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 
 ### layout<sup>10+</sup>
 
@@ -106,8 +98,6 @@ layout(position: Position): void
 调用此方法对子组件的位置信息进行限制。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -125,8 +115,6 @@ getMargin(): DirectionalEdgesT\<number>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -142,8 +130,6 @@ getPadding(): DirectionalEdgesT\<number>
  调用此方法获取子组件的padding信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -161,8 +147,6 @@ getBorderWidth(): DirectionalEdgesT\<number>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -177,8 +161,6 @@ getBorderWidth(): DirectionalEdgesT\<number>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### 属性
@@ -189,7 +171,7 @@ getBorderWidth(): DirectionalEdgesT\<number>
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| uniqueId<sup>18+</sup>| number | 否 | 是 | 系统为子组件分配的唯一标识UniqueID。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| uniqueId<sup>18+</sup>| number | 否 | 是 | 系统为子组件分配的唯一标识UniqueID。|
 
 ### measure
 
@@ -198,8 +180,6 @@ getBorderWidth(): DirectionalEdgesT\<number>
  调用此方法限制子组件的尺寸范围。
 
  **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
- **模型约束：** 此接口仅可在Stage模型下使用。
 
  **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -224,8 +204,6 @@ getBorderWidth(): DirectionalEdgesT\<number>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -241,8 +219,6 @@ getPadding(): DirectionalEdgesT\<number\>
 获取子组件的padding信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -260,8 +236,6 @@ getBorderWidth(): DirectionalEdgesT\<number\>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -276,8 +250,6 @@ getBorderWidth(): DirectionalEdgesT\<number\>
 测量后的组件布局信息。继承自[SizeResult](#sizeresult10)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -294,8 +266,6 @@ getBorderWidth(): DirectionalEdgesT\<number\>
 >- 使用自定义布局方法时，需要同时调用onMeasureSize和onPlaceChildren方法，否则可能出现布局异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
