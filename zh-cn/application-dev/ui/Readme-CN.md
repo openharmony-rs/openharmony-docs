@@ -24,7 +24,7 @@
         - [全局复用：集中化的组件回收与复用](state-management/arkts-global-reuse-pool.md)<!--RP7--><!--RP7End-->
       - 自定义组件冻结<!--arkts-component-freeze-->
         - [自定义组件冻结（V1）](state-management/arkts-custom-components-freeze.md)
-        - [自定义组件冻结（V2）](state-management/arkts-custom-components-freezeV2.md)
+        - [自定义组件冻结（V2）](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
     - 组件扩展<!--arkts-extend-components-->
       - [组件扩展概述](state-management/arkts-extend-components-overview.md)
       - [\@Builder装饰器：自定义构建函数](state-management/arkts-builder.md)
@@ -132,6 +132,7 @@
       - [相对布局 (RelativeContainer)](arkts-layout-development-relative-layout.md)
       - [栅格布局 (GridRow/GridCol)](arkts-layout-development-grid-layout.md)
       - [动态布局 (DynamicLayout)](arkts-layout-development-dynamiclayout.md)
+      - [容器断点 (ContainerReader)](arkts-layout-development-container-reader.md)
       - [选项卡 (Tabs)](arkts-navigation-tabs.md)<!--RP1--><!--RP1End-->
   - 列表与网格<!--arkts-list-and-grid-->
     - [列表与网格概述](arkts-list-grid-development-overview.md)
@@ -277,43 +278,44 @@
     <!--DelEnd-->
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)
-  - [接入ArkTS页面](ndk-access-the-arkts-page.md)
-  - [添加事件响应](ndk-add-event-response.md)
-    - [添加事件监听](ndk-add-component-events.md)
-    - [绑定基础输入事件](ndk-bind-input-events.md)
-    - [绑定手势事件](ndk-bind-gesture-events.md)
-    - [绑定拖拽事件](ndk-drag-event.md)
-  - 使用动画<!--arkts-use-animation-ndk-->
-    - [动画概述](ndk-use-animation.md)
-    - [使用动画开发指导](ndk-use-animation-scene.md)
+  - NDK对接ArkTS<!--arkts-bind-arkts-ndk-->
+    - [嵌入ArkTS组件](ndk-embed-arkts-components.md)
+    - [接入ArkTS页面](ndk-access-the-arkts-page.md)
   - 构建布局<!--arkts-build-layout-ndk-->
     - [使用布局组件](ndk-layout-container.md)
     - [设置通用布局属性](ndk-common-attribute-layout.md)
+  - [使用导航类组件](ndk-navigation-query.md)
   - 使用列表与网格<!--arkts-list-and-grid-ndk-->
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)
     - [使用网格](ndk-grid.md)
   - 使用文本<!--arkts-build-text-ndk-->
-      - [使用Text组件](ndk-use-text-component.md)
-      - [使用属性字符串](ndk-styled-string.md)
-      - [添加输入框文本事件监听](ndk-textarea-event.md)
-  - 使用选择类组件<!--arkts-build-picker-ndk-->
-      - [使用滑动选择器 (Picker)](ndk-picker.md)
-  - [显示图片（Image）](ndk-image-component.md)
-  - [构建弹窗](ndk-build-pop-up-window.md)
-  - [构建表单组件](ndk-build-form-components.md)
+    - [使用Text组件](ndk-use-text-component.md)
+    - [使用属性字符串](ndk-styled-string.md)
+    - [输入框文本事件监听](ndk-textarea-event.md)
   - 媒体展示<!--arkts-build-media-ndk-->
+    - [显示图片（Image）](ndk-image-component.md)
     - [使用滑块视图容器 (Swiper)](ndk-swiper.md)
-  - [使用导航类组件](ndk-navigation-query.md)
-  - [构建自定义组件](ndk-build-custom-components.md)
-  - [嵌入ArkTS组件](ndk-embed-arkts-components.md)
-  - [构建渲染节点](ndk-embed-render-components.md)
+  - [构建表单组件](ndk-build-form-components.md)
+  - [构建弹窗](ndk-build-pop-up-window.md)
+  - 使用动画<!--arkts-use-animation-ndk-->
+    - [动画概述](ndk-use-animation.md)
+    - [使用动画开发指导](ndk-use-animation-scene.md)
+  - [使用滑动选择器 (Picker)](ndk-picker.md)
+  - [添加事件响应](ndk-add-event-response.md)
+    - [添加事件监听](ndk-add-component-events.md)
+    - [绑定基础输入事件](ndk-bind-input-events.md)
+    - [绑定手势事件](ndk-bind-gesture-events.md)
+    - [绑定拖拽事件](ndk-drag-event.md)
+  - 使用自定义能力<!--arkts-build-custom-ndk-->
+    - [构建自定义组件](ndk-build-custom-components.md)
+    - [自定义绘制](arkts-user-defined-draw.md)
   - [通过自绘制接入无障碍](ndk-accessibility-xcomponent.md)
-  - [自定义绘制](arkts-user-defined-draw.md)
-  - [查询和操作自定义节点](ndk-node-query-operate.md)
   - [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ndk-embedded-component.md)
-  - [在NDK中保证多实例场景功能正常](ndk-scope-task.md)
-  - [使用多线程NDK接口并行化构建UI页面](ndk-build-on-multi-thread.md)
+  - [查询和操作NDK节点](ndk-node-query-operate.md)
+  - [NDK多实例场景开发](ndk-scope-task.md)
+  - [NDK多线程创建组件](ndk-build-on-multi-thread.md)
+  - [构建渲染节点](ndk-embed-render-components.md)
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
   - [UI开发 (兼容JS的类Web开发范式)概述](ui-js-overview.md)
   - 框架说明<!--js-framework-overview-->

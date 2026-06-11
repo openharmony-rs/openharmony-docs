@@ -1,4 +1,4 @@
-# 密钥生成与导入介绍
+# 密钥生成与导入导出介绍
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -7,11 +7,11 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-从API版本26.0.0开始，HUKS提供密钥生成与导入能力，支持在外部密钥管理扩展场景下，在扩展设备内生成密钥对或导入加密封装的密钥对。
+从API版本26.0.0开始，HUKS提供密钥生成与导入导出能力，支持在外部密钥管理扩展场景下，在扩展设备内生成密钥对、导入加密封装的密钥对或导出公钥。
 
 ## 功能概述
 
-在外部密钥管理扩展场景下，密钥生成与导入能力由[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)提供，驱动厂商需继承CryptoExtensionAbility并实现相关接口。
+在外部密钥管理扩展场景下，密钥生成与导入导出能力由[CryptoExtensionAbility](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md)提供，驱动厂商需继承CryptoExtensionAbility并实现相关接口。
 
 ### 密钥生成
 
@@ -19,9 +19,9 @@
 
 应用通过调用HUKS的[generateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9)接口发起密钥生成请求，请求被转发到CryptoExtensionAbility的[onGenerateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#cryptoextensionabilityongeneratekeyitem)接口完成密钥生成。
 
-### 密钥导入
+### 密钥安全导入
 
-密钥导入指将加密封装的密钥对导入到扩展设备中。加密封装的密钥对通常由安全协商密钥加密，确保密钥在传输过程中不被泄露。
+密钥安全导入指将加密封装的密钥对导入到扩展设备中。加密封装的密钥对通常由安全协商密钥加密，确保密钥在传输过程中不被泄露。
 
 应用通过调用HUKS的[importWrappedKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksimportwrappedkeyitem9)接口发起密钥导入请求，请求被转发到CryptoExtensionAbility的[onImportWrappedKeyItem](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#cryptoextensionabilityonimportwrappedkeyitem)接口完成密钥导入。
 
@@ -36,8 +36,8 @@
 以上接口复用HUKS原有接口定义。在外部密钥管理扩展场景下，params中的参数为可选参数，由Extension厂商定义支持范围。如未传入相应参数，厂商需设置默认行为。
 
 - **密钥生成（generateKeyItem）**：推荐传入算法类型（HUKS_TAG_ALGORITHM）、密钥长度（HUKS_TAG_KEY_SIZE）、密钥用途（HUKS_TAG_PURPOSE）等参数。如未传入，厂商需设置默认值。keyAlias需传入有效的资源ID。
+- **密钥安全导入（importWrappedKeyItem）**：推荐传入算法类型、密钥长度、密钥用途等参数。keyAlias和wrappingKeyAlias需传入有效的资源ID。wrappedKey为封装密钥数据，格式由Extension厂商定义。
 - **公钥导出（exportKeyItem）**：推荐传入密钥用途（HUKS_TAG_PURPOSE）参数，以便导出指定用途的公钥。如未传入，厂商需设置默认值（推荐默认签名用途）。keyAlias需传入有效的资源ID。
-- **密钥导入（importWrappedKeyItem）**：推荐传入算法类型、密钥长度、密钥用途等参数。keyAlias和wrappingKeyAlias需传入有效的资源ID。wrappedKey为封装密钥数据，格式由Extension厂商定义。
 
 > **说明：**
 >

@@ -9,7 +9,7 @@
 
 
 - [Ability Kit简介](abilitykit-overview.md)
-- [应用模型]<!--application-models-->
+- 应用模型<!--application-models-->
   - [应用模型概述](stage-model-development-overview.md)
   - 应用组件<!--stage-model-application-components-->
     - [应用/组件级配置](application-component-configuration-stage.md)
@@ -64,6 +64,7 @@
     - [应用启动设置](application-startup-options.md)
     - [应用启动框架AppStartup](app-startup.md)
     - [应用预加载](preload-application.md)
+    - [应用快启启动](hyperstartup-application.md)
   - [应用退出](app-stop.md)
   - [应用重启](app-restart.md)
   - [获取应用异常退出原因](ability-exit-info-record.md)

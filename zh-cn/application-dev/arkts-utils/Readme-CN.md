@@ -1,8 +1,8 @@
 # ArkTS（方舟编程语言）
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @flyingwolf; @wang_zhaoyong-->
-<!--Designer: @flyingwolf-->
+<!--Owner: @@vigavi; @wang_zhaoyong-->
+<!--Designer: @@vigavi-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @HelloCrease; @ge-yafang-->
 
@@ -120,4 +120,5 @@
     - [不同包类型的字节码混淆建议](bytecode-obfuscation-practice.md)
     - [ArkGuard字节码混淆常见问题](bytecode-obfuscation-questions.md)
   - [在build-profile.json5中配置arkOptions](arkoptions-guide.md)
+- [ArkTS术语](arkts-glossary.md)
 

@@ -1730,8 +1730,12 @@ struct Index {
         { value: 'SelectOption' },
         { value: 'SelectOption' }])
         .value('Click Show Options')
-        .systemMaterial(new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT }))
-        .menuSystemMaterial(new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT }))
+        .systemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+          }))
+        .menuSystemMaterial(new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.THICK
+          }))
     }
     // $r('app.media.img')需要替换为开发者所需的图像资源文件。
     .backgroundImage($r('app.media.img'))

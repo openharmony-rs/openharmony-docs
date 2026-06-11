@@ -81,7 +81,7 @@ struct TestDemo14 {
       inputDevice.getDeviceList((error: BusinessError, ids: Array<Number>) => {
         if (error) {
           console.error(`keyPressed Failed to get device id list, error: ${
-            JSON.stringify(error, ["code", "message"])}`);
+            JSON.stringify(error, ['code', 'message'])}`);
           resolve(false);
           return;
         }
