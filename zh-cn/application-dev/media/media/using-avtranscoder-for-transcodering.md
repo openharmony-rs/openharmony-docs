@@ -75,9 +75,17 @@
        if (this.avTranscoder != undefined) {
          // 1.释放转码实例。
          await this.avTranscoder.release();
+         let lastFd = this.avTranscoder.fdDst;
+ 	     let lastFdSrc = this.avTranscoder.fdSrc;
          this.avTranscoder = undefined;
          // 2.关闭转码目标文件fd。
-         fileIo.closeSync(this.avTranscoder!.fdDst);
+         if (lastFd != undefined) {
+ 	  	  	fs.closeSync(lastFd);
+ 	     }
+ 	     // 3.关闭转码源文件fd。
+ 	     if (lastFdSrc != undefined) {
+ 	  	    fs.closeSync(lastFdSrc.fd);
+ 	  	  }
        }
      }
    }
