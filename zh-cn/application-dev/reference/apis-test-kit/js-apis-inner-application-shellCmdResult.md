@@ -7,7 +7,9 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-本模块提供Shell命令执行结果的能力。
+ShellCmdResult是测试框架中用于封装Shell命令执行结果的数据对象，它包含stdResult（标准输出内容）和exitCode（退出码）两个关键属性，为测试脚本提供了结构化的命令执行结果访问方式。
+
+该模块适用于需要验证Shell命令执行结果或处理命令返回数据的测试场景，通过abilityDelegator的[executeShellCommand](js-apis-inner-application-abilityDelegator.md#executeshellcommand)方法获取。需要注意的是，其接口仅限测试框架中使用，不应在正式业务代码中调用。
 
 > **说明：**
 >
@@ -25,7 +27,7 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 ## 使用说明
 
-通过abilityDelegator中的[executeShellCommand](js-apis-inner-application-abilityDelegator.md#executeshellcommand)方法来获取。
+调用abilityDelegator中的[executeShellCommand](js-apis-inner-application-abilityDelegator.md#executeshellcommand)方法获取ShellCmdResult实例。调用成功后，返回ShellCmdResult对象，包含Shell命令的标准输出内容（stdResult）和退出码（exitCode）。
 
 **示例：**
 
@@ -35,8 +37,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 let cmd = 'cmd';
-
+// 获取AbilityDelegator实例
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+// 执行Shell命令，通过回调获取执行结果
 abilityDelegator.executeShellCommand(cmd, (error: BusinessError<void> | null, data) => {
   if (error) {
     console.error(`executeShellCommand fail, error: ${JSON.stringify(error)}`);
@@ -59,4 +62,4 @@ abilityDelegator.executeShellCommand(cmd, (error: BusinessError<void> | null, da
 | 名称      | 类型   | 只读 | 可选 | 说明                                                         |
 | --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | stdResult | string | 否   | 否   | Shell命令的标准输出内容。 |
-| exitCode  | number | 否   | 否   | Shell命令的结果码。 |
+| exitCode  | number | 否   | 否   | Shell命令的退出码。返回值为0表示命令执行成功，非0表示命令执行失败。 |
