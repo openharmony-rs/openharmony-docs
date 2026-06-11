@@ -606,7 +606,7 @@ Obtains the background color of the render node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
-| uint32_t* color | Integer pointer used to store the obtained RGBA color value.<br>Default value: **0x00000000**.<br>**Description of color byte layout**:<br>- Bits 24-31: alpha channel (0x00 for fully transparent, 0xFF for fully opaque).<br>- Bits 16-23: red channel.<br>- Bits 8-15: green channel.<br>- Bits 0-7: blue channel.|
+| uint32_t* color | Integer pointer used to store the obtained ARGB color value.<br>Default value: **0x00000000**.<br>**Description of color byte layout**:<br>- Bits 24-31: alpha channel (0x00 for fully transparent, 0xFF for fully opaque).<br>- Bits 16-23: red channel.<br>- Bits 8-15: green channel.<br>- Bits 0-7: blue channel.|
 
 **Return value**
 | Type| Description|
@@ -1113,7 +1113,7 @@ Obtains the shadow color of the render node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
-| uint32_t* color | Integer pointer used to store the obtained RGBA color value.<br>Default value: **0xFF000000**.<br>**Description of color byte layout**:<br>- Bits 24-31: alpha channel (0x00 for fully transparent, 0xFF for fully opaque).<br>- Bits 16-23: red channel.<br>- Bits 8-15: green channel.<br>- Bits 0-7: blue channel.|
+| uint32_t* color | Integer pointer used to store the obtained ARGB color value.<br>Default value: **0xFF000000**.<br>**Description of color byte layout**:<br>- Bits 24-31: alpha channel (0x00 for fully transparent, 0xFF for fully opaque).<br>- Bits 16-23: red channel.<br>- Bits 8-15: green channel.<br>- Bits 0-7: blue channel.|
 
 **Return value**
 | Type| Description|
@@ -3360,7 +3360,7 @@ Inserts a child render node at a specified position under a parent node.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.<br>         Returns [ARKUI_ERROR_CODE_NOT_CUSTOM_NODE](capi-native-type-h.md#arkui_errorcode) if the target node is not a custom node.<br>         Returns [ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED](capi-native-type-h.md#arkui_errorcode) if the target rendering node already has a parent node.<br>         Returns [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the current render node originates from a FrameNode that has been either detached as a child node or destroyed.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.<br>         Returns [ARKUI_ERROR_CODE_NOT_CUSTOM_NODE](capi-native-type-h.md#arkui_errorcode) if the target node is not a custom node.<br>         Returns [ARKUI_ERROR_CODE_CHILD_EXISTED](capi-native-type-h.md#arkui_errorcode) if the parent node already has a child node.<br>         Returns [ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED](capi-native-type-h.md#arkui_errorcode) if the target rendering node already has a parent node.<br>         Returns [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the current render node originates from a FrameNode that has been either detached as a child node or destroyed.|
 
 ### OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount()
 
