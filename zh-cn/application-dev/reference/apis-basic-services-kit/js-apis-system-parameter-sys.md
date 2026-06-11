@@ -20,10 +20,10 @@
 ## 导入模块
 
 ```ts
-import systemparameter from '@ohos.systemparameter';
+import systemParameter from '@ohos.systemparameter';
 ```
 
-## systemparameter.getSync<sup>(deprecated)</sup>
+## systemParameter.getSync<sup>(deprecated)</sup>
 
 getSync(key: string, def?: string): string
 
@@ -48,14 +48,14 @@ getSync(key: string, def?: string): string
 
 ```ts
 try {
-    let info: string = systemparameter.getSync("const.ohos.apiversion");
+    let info: string = systemParameter.getSync("const.ohos.apiversion");
     console.info(JSON.stringify(info));
 } catch(e) {
     console.error("getSync unexpected error: " + e);
 }
 ```
 
-## systemparameter.get<sup>(deprecated)</sup>
+## systemParameter.get<sup>(deprecated)</sup>
 
 get(key: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -76,7 +76,7 @@ get(key: string, callback: AsyncCallback&lt;string&gt;): void
 import { BusinessError } from '@ohos.base';
 
 try {
-    systemparameter.get("const.ohos.apiversion", (err: BusinessError, data: string) => {
+    systemParameter.get("const.ohos.apiversion", (err: BusinessError, data: string) => {
     if (err == undefined) {
         console.info("get test.parameter.key value success:" + data)
     } else {
@@ -87,7 +87,7 @@ try {
 }
 ```
 
-## systemparameter.get<sup>(deprecated)</sup>
+## systemParameter.get<sup>(deprecated)</sup>
 
 get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -109,7 +109,7 @@ get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 import { BusinessError } from '@ohos.base';
 
 try {
-    systemparameter.get("const.ohos.apiversion", "default", (err: BusinessError, data: string) => {
+    systemParameter.get("const.ohos.apiversion", "default", (err: BusinessError, data: string) => {
         if (err == undefined) {
             console.info("get test.parameter.key value success:" + data)
         } else {
@@ -121,7 +121,7 @@ try {
 }
 ```
 
-## systemparameter.get<sup>(deprecated)</sup>
+## systemParameter.get<sup>(deprecated)</sup>
 
 get(key: string, def?: string): Promise&lt;string&gt;
 
@@ -148,7 +148,7 @@ get(key: string, def?: string): Promise&lt;string&gt;
 import { BusinessError } from '@ohos.base';
 
 try {
-    let p: Promise<string> = systemparameter.get("const.ohos.apiversion");
+    let p: Promise<string> = systemParameter.get("const.ohos.apiversion");
     p.then((value: string) => {
         console.info("get test.parameter.key success: " + value);
     }).catch((err: BusinessError) => {
@@ -159,7 +159,7 @@ try {
 }
 ```
 
-## systemparameter.setSync<sup>(deprecated)</sup>
+## systemParameter.setSync<sup>(deprecated)</sup>
 
 setSync(key: string, value: string): void
 
@@ -183,13 +183,13 @@ setSync(key: string, value: string): void
 
 ```ts
 try {
-    systemparameter.setSync("test.parameter.key", "default");
+    systemParameter.setSync("test.parameter.key", "default");
 } catch(e) {
     console.error("set unexpected error: " + e);
 }
 ```
 
-## systemparameter.set<sup>(deprecated)</sup>
+## systemParameter.set<sup>(deprecated)</sup>
 
 set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -215,7 +215,7 @@ set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 import { BusinessError } from '@ohos.base';
 
 try {
-    systemparameter.set("test.parameter.key", "testValue",  (err: BusinessError, data: void) =>{
+    systemParameter.set("test.parameter.key", "testValue",  (err: BusinessError, data: void) =>{
     if (err == undefined) {
         console.info("set test.parameter.key value success :" + data)
     } else {
@@ -226,7 +226,7 @@ try {
 }
 ```
 
-## systemparameter.set<sup>(deprecated)</sup>
+## systemParameter.set<sup>(deprecated)</sup>
 
 set(key: string, value: string): Promise&lt;void&gt;
 
