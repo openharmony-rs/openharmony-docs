@@ -78,7 +78,7 @@
 | -------- | -------- | -------- |
 | symbol | string | 函数名称。<br/>**名称长度超过256字节时超出部分将被删除，防止超长字符串引起未知问题。** |
 | file | string | 文件名。 |
-| buildId | string | 文件唯一标识。<br/>**文件可能没有buildId**。 |
+| buildId | string | 来源于[elf](https://man7.org/linux/man-pages/man5/elf.5.html)中.note.gnu.build-id。 |
 | pc | string | 程序执行的指令在文件内的偏移十六进制字节数。 |
 | offset | number | 程序执行的指令在函数内偏移字节数。 |
 
