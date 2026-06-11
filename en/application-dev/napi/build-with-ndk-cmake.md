@@ -202,11 +202,11 @@ In the module directory of the project directory, create the **build** directory
 
 Using CMake in Windows, unlike that in Linux, requires you to use the **-G** option to specify the generator.
 
-![camke-windows-G](figures/camke-windows-G.png)
+![cmake-windows-G](figures/cmake-windows-G.png)
 
 In this example, the Ninja generator, which comes with the NDK, is used, as indicated by **-G "Ninja"**.
 
-![camke-ninja-bin](figures/camke-ninja-bin.png)
+![make-ninja-bin](figures/cmake-ninja-bin.png)
 
 Step 1. Create the **build** folder in the module directory of the project directory and run the following command:
 ```shell
@@ -222,8 +222,8 @@ The **build.ninja** file is the build configuration file.
 
 Step 2. Use the ninja command to compile and generate the target file. The following figure shows the location of the target file.
 
-![bulid-dir-list](figures/bulid-dir-list.png)
+![build-dir-list](figures/build-dir-list.png)
 
 Use **ninja -f build.ninja** or **cmake --build**. The following figure shows the command output.
 
-![ninja-bulid-log](figures/ninja-bulid-log.png)
+![ninja-build-log](figures/ninja-build-log.png)
