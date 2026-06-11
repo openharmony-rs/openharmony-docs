@@ -31,7 +31,7 @@ Button('click for Menu')
   ])
 ```
 
-![en-us_image_0000001562940565](figures/en-us_image_0000001562940565.png)
+![en-us_image_0000001562940565](figures/Creating-Menu-Default.png)
 
 ## Creating a Menu in a Custom Style
 
@@ -135,7 +135,7 @@ Button('click for Menu')
   .bindMenu(this.MyMenu)
 ```
 
-![en-us_image_0000001511580924](figures/en-us_image_0000001511580924.png)
+![en-us_image_0000001511580924](figures/bindMenu-Attribute.png)
 
 ## Creating a Context Menu Displayed Upon Right-clicking or Long Pressing
 

@@ -65,7 +65,7 @@ struct AnimationToAnimationDemo {
 ```
 
 
-![zh-cn_image_0000001599971890](figures/zh-cn_image_0000001599971890.gif)
+![zh-cn_image_0000001599971890](figures/Animation-smoothing.gif)
 
 
 
@@ -147,4 +147,4 @@ struct SpringMotionDemo {
 
 
 
-![zh-cn_image_0000001647027001](figures/zh-cn_image_0000001647027001.gif)
+![zh-cn_image_0000001647027001](figures/Smoothing-Gestures-Animations.gif)

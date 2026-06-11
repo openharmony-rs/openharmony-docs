@@ -26,7 +26,7 @@ NDK提供了NodeAdapter对象替代ArkTS侧的[LazyForEach](../reference/apis-ar
 
 - NodeAdapter通过相关事件通知开发者按需生成组件，类似组件事件机制，开发者使用NodeAdapter时要通过[OH_ArkUI_NodeAdapter_RegisterEventReceiver](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_registereventreceiver)注册事件监听器，在监听器事件中处理逻辑，相关事件通过[ArkUI_NodeAdapterEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype)定义。另外NodeAdapter不会主动释放不在屏幕内显示的组件对象，开发者需要在[NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeadaptereventtype)事件中进行组件对象的释放，或者进行缓存复用。下图展示了典型列表滑动场景下的事件触发机制：
 
-  ![zh-cn_image_0000001949769409](figures/zh-cn_image_0000001949769409.png)
+  ![zh-cn_image_0000001949769409](figures/NodeAdapter-Overview.png)
 
 <!--RP1-->
 以下示例提供了懒加载适配器的实现方法，仅包含主要步骤，完整代码请参考[NdkCreateList](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/NdkCreateList)。

@@ -87,7 +87,7 @@ struct attrAnimateToDemo2 {
 }
 ```
 
-![zh-cn_image_0000001599958466](figures/zh-cn_image_0000001599958466.gif)
+![zh-cn_image_0000001599958466](figures/animateTo-01.gif)
 
 
 ## 使用animation产生属性动画
@@ -154,7 +154,7 @@ struct attrAnimationDemo3 {
 ```
 
 
-![zh-cn_image_0000001649279705](figures/zh-cn_image_0000001649279705.gif)
+![zh-cn_image_0000001649279705](figures/animation-01.gif)
 
 ## 使用keyframeAnimateTo产生属性动画
 
