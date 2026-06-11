@@ -128,7 +128,7 @@
    ```
 6. 获取指定socket流量数据。
 
-    分别调用[getSockfdRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetsockfdrxbytes11-1)接口和[getSockfdTxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetsockfdtxbytes11-1)，传入socket fd获取指定socket的下行和上行流量数据。
+    分别调用[getSockfdRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetsockfdrxbytes11-1)和[getSockfdTxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetsockfdtxbytes11-1)接口，传入socket fd获取指定socket的下行和上行流量数据。
 
    <!-- @[flow_management_getSockfdRxBytes_and_getSockfdTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
