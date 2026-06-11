@@ -12,7 +12,7 @@
 
 >  **说明：**
 >
->  从API version 12开始，该组件不再维护，推荐使用通用属性[bindSheet](ts-universal-attributes-sheet-transition.md)。
+>  从API version 12开始，该组件不再维护，推荐使用通用属性[bindSheet](ts-universal-attributes-sheet-transition.md#bindsheet)。
 >
 >  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -40,7 +40,7 @@ Panel(show: boolean)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| show | boolean | 是 | 控制Panel显示或隐藏。<br/>**说明：** <br/>如果设置为false时，则不占位隐藏。[Visible.None](ts-universal-attributes-visibility.md)或者show之间有一个生效时，都会生效不占位隐藏。 |
+| show | boolean | 是 | 控制Panel显示或隐藏。<br/>**说明：** <br/>如果设置为false时，则不占位隐藏。[Visible](ts-universal-attributes-visibility.md).None或者show之间有一个生效时，都会生效不占位隐藏。 |
 
 ## 属性
 

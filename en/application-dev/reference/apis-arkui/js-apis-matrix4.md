@@ -207,7 +207,8 @@ struct Test {
 }
 ```
 
-![copy](figures/copy.png)
+![matrix4-copy](figures/matrix4-copy.png)
+
 ### combine
 
 combine(options: Matrix4Transit): Matrix4Transit

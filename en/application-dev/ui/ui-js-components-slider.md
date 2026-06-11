@@ -36,7 +36,7 @@ Create a **&lt;slider&gt;** component in the .hml file under **pages/index**.
 ```
 
 
-![en-us_image_0000001232162312](figures/en-us_image_0000001232162312.gif)
+![slider-Component](figures/slider-Component.gif)
 
 
 ## Setting Styles and Attributes
@@ -69,7 +69,7 @@ Use the **&lt;slider&gt;** component to set the background color, selected color
 }
 ```
 
-![en-us_image_0000001232003000](figures/en-us_image_0000001232003000.gif)
+![Styles-and-Attributes](figures/Styles-and-Attributes.gif)
 
 Add the **min**, **max**, **value**, **step**, and **mode** attributes to set the minimum value, maximum value, initial value, step, and style of the slider.
 
@@ -94,7 +94,7 @@ Add the **min**, **max**, **value**, **step**, and **mode** attributes to set th
 }
 ```
 
-![en-us_image_0000001276003517](figures/en-us_image_0000001276003517.gif)
+![Styles-and-Attributes-1](figures/Styles-and-Attributes-1.gif)
 
 > **NOTE**
 >
@@ -158,7 +158,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001275803169](figures/en-us_image_0000001275803169.gif)
+![Binding-Events-4](figures/Binding-Events-4.gif)
 
 
 ## Example Scenario
@@ -217,4 +217,4 @@ export default{
 }
 ```
 
-![en-us_image_0000001275922997](figures/en-us_image_0000001275922997.gif)
+![Example-Scenario-15](figures/Example-Scenario-15.gif)
