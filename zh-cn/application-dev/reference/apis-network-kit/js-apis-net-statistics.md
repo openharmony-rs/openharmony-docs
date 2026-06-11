@@ -196,7 +196,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 statistics.getIfaceTxBytes("wlan0").then((stats: number) => {
   console.info(`getIfaceTxBytes success, ${JSON.stringify(stats)}`);
 }).catch((err: BusinessError) => {
-  console.info(`getIfaceTxBytes error, ${JSON.stringify(err)}`);
+   console.error(`getIfaceTxBytes error, ${JSON.stringify(err)}`);
 });
 ```
 
