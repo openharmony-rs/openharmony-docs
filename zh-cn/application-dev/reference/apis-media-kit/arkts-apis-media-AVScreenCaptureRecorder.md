@@ -695,7 +695,7 @@ setContentAutoRotation(enable: boolean): Promise\<void>
 
 | 参数名 | 类型                                   | 必填 | 说明                       |
 | ------ | -------------------------------------- | ---- | -------------------------- |
-| enable | boolean | 是   | 表示是否启用自动旋转。默认值为 false。值为 true 表示启用自动旋转，输出帧中的图像内容将保持直立。 |
+| enable | boolean | 是   | 表示是否启用自动旋转。true表示启用自动旋转，输出帧中的图像内容将保持直立，false表示关闭自动旋转。默认值为false。 |
 
 **返回值：**
 
@@ -705,7 +705,7 @@ setContentAutoRotation(enable: boolean): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
