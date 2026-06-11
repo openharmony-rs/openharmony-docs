@@ -119,6 +119,7 @@ try {
     console.error("get unexpected error:" + e)
 }
 ```
+
 ## systemParameter.get<sup>(deprecated)</sup>
 
 get(key: string, def?: string): Promise&lt;string&gt;
@@ -156,6 +157,7 @@ try {
     console.error("get unexpected error: " + e);
 }
 ```
+
 ## systemParameter.setSync<sup>(deprecated)</sup>
 
 setSync(key: string, value: string): void
@@ -185,6 +187,7 @@ try {
     console.error("set unexpected error: " + e);
 }
 ```
+
 ## systemParameter.set<sup>(deprecated)</sup>
 
 set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
@@ -221,6 +224,7 @@ try {
     console.error("set unexpected error: " + e);
 }
 ```
+
 ## systemParameter.set<sup>(deprecated)</sup>
 
 set(key: string, value: string): Promise&lt;void&gt;
