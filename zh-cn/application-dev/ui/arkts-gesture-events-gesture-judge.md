@@ -11,7 +11,7 @@
 - 父子组件的同类型手势识别器。
 - 系统默认手势与自定义手势（如[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)滑动手势与子组件点击手势冲突）。
 
-干预手势处理可有效解决冲突，除控制组件响应热区和命中测试模式外，主要通过以下三种方式：[自定义手势判定](#自定义手势判定)、[手势并行动态控制](#手势并行动态控制)、[阻止手势参与识别](#阻止手势参与识别)。
+干预手势处理可有效解决冲突，除控制组件响应热区和命中测试模式外，主要通过以下四种方式：[自定义手势判定](#自定义手势判定)、[手势并行动态控制](#手势并行动态控制)、[阻止手势参与识别](#阻止手势参与识别)、[自定义干预事件和手势的收集结果](#自定义干预事件和手势的收集结果)。
 
 ## 自定义手势判定
 
@@ -23,7 +23,7 @@
 
 自定义手势判定涉及以下接口。
 
-| **接口** | **说明** |
+| 接口 | 说明 |
 | ------- | -------------- |
 |[onGestureJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#ongesturejudgebegin)|用于手势拦截，是通用事件。在手势满足系统触发阈值场景下，回调给应用判断是否拦截手势。|
 |[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)|用于手势拦截、获取手势识别器和设置手势识别器开闭状态。是onGestureJudgeBegin接口的能力扩展，可以代替onGestureJudgeBegin接口。<br>获取手势识别器时，会获取一次交互中手势响应链上的所有手势识别器，以及当前即将触发成功的手势识别器，此时可以设置手势的激活状态。|
@@ -194,7 +194,7 @@
                  try {
                    this.promptAction.showToast({ message: $r('app.string.Allow_dragging_prompt') });
                  } catch (error) {
-                   concole.error('ShowToast failed!')
+                   console.error('ShowToast failed!')
                  }
                })
                .width('200vp').height('200vp')
@@ -214,7 +214,7 @@
                    try {
                      this.promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt') });
                    } catch (error) {
-                     concole.error('ShowToast failed!')
+                     console.error('ShowToast failed!')
                    }
                  })
                  .tag('longPress')
@@ -311,7 +311,7 @@
    }
    ```
 
-   ![StackGesure20251119001](figures/StackGesure20251119001.png)
+   ![stack-gesture](figures/stack-gesture.png)
 
 ## 手势并行动态控制
 
@@ -331,15 +331,17 @@
 
 4. 动态开闭手势：指通过手势识别器的[setEnabled](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#setenabled12)方法，控制手势是否响应用户回调。
 
-手势并行动态控制涉及以下接口。
+### 内置手势并行动态控制
 
-| **接口** | **说明** |
+内置手势并行动态控制涉及以下接口。
+
+| 接口 | 说明 |
 | ------- | -------------- |
 |[shouldBuiltInRecognizerParallelWith](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#shouldbuiltinrecognizerparallelwith)|用于设置系统组件内置手势与其他手势并行。|
 |[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)|用于手势拦截，获取手势识别器，初始化手势识别器开闭状态。|
-|[parallelGesture](arkts-gesture-events-binding.md#parallelgesture并行手势绑定方法)|可使开发者定义的手势，与比他优先级高的手势并行。|
+|[parallelGesture](arkts-gesture-events-binding.md#parallelgesture并行手势绑定方法)|可使开发者定义的手势，与比它优先级高的手势并行。|
 
-以下示例是两个[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件的嵌套滚动场景，使用手势控制的API去控制外部组件和内部组件的嵌套滚动联动。
+以下示例在两个[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件的嵌套滚动场景下，使用手势控制的接口控制外部组件和内部组件的嵌套滚动联动。
 
 1. 使用shouldBuiltInRecognizerParallelWith接口设置外部Scroll组件的PanGesture手势与内部Scroll组件的PanGesture手势并行。
 
@@ -820,6 +822,334 @@
      }
    }
    ```
+
+### 非内置手势并行动态控制
+
+从API版本26.0.0开始，可以使用shouldRecognizerParallelWith接口设置非内置手势与其他手势并行。
+
+非内置手势并行动态控制涉及以下接口。
+
+| 接口 | 说明 |
+| ------- | -------------- |
+|[shouldRecognizerParallelWith](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#shouldrecognizerparallelwith)|用于设置组件非内置手势与其他手势并行。|
+|[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)|用于获取手势识别器，再通过控制手势识别器开闭状态拦截手势。|
+
+以下示例在嵌套滚动场景下，使用手势控制的接口控制外部的Column组件和内部的Scroll组件的嵌套滚动联动。
+
+1. 使用shouldRecognizerParallelWith接口设置外部Column组件的非内置PanGesture手势与内部Scroll组件的内置PanGesture手势并行。
+
+   <!-- @[gesture_simultaneously](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestureAndMotionControl/GestureControl.ets) -->
+   
+   ``` TypeScript
+   .shouldRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
+     for (let i = 0; i < others.length; i++) {
+       let target = others[i].getEventTargetInfo();
+       if (target) {
+         if (target.getId() == 'inner' && others[i].isBuiltIn() &&
+           others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
+           this.currentRecognizer = current; // 保存当前组件的识别器
+           this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
+           return others[i]; // 返回将要组成并行手势的识别器
+         }
+       }
+     }
+     return undefined;
+   })
+   ```
+
+2. 使用onGestureRecognizerJudgeBegin接口获取到Column和Scroll组件的PanGesture手势识别器，同时根据内外组件的边界条件，设置内外手势的开闭状态。
+
+   <!-- @[gesture_openingclosing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestureAndMotionControl/GestureControl.ets) -->
+   
+   ``` TypeScript
+   .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+     others: Array<GestureRecognizer>) => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
+     let target = current.getEventTargetInfo();
+     if (target && target.getId() == 'outer' &&
+       current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+       for (let i = 0; i < others.length; i++) {
+         let target = others[i].getEventTargetInfo();
+         if (target instanceof ScrollableTargetInfo && target.getId() == 'inner') { // 找到响应链上对应并行的识别器
+           let panEvent = event as PanGestureEvent;
+           if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
+             if (panEvent && panEvent.offsetY < 0) {
+               this.childRecognizer.setEnabled(false);
+               this.currentRecognizer.setEnabled(true);
+             } else {
+               this.childRecognizer.setEnabled(true);
+               this.currentRecognizer.setEnabled(false);
+             }
+           } else if (target.isBegin()) {
+             if (panEvent.offsetY > 0) {
+               this.childRecognizer.setEnabled(false);
+               this.currentRecognizer.setEnabled(true);
+             } else {
+               this.childRecognizer.setEnabled(true);
+               this.currentRecognizer.setEnabled(false);
+             }
+           } else {
+             this.childRecognizer.setEnabled(true);
+             this.currentRecognizer.setEnabled(false);
+           }
+         }
+       }
+     }
+     return GestureJudgeResult.CONTINUE;
+   })
+   ```
+
+3. 代码完整示例。
+
+   ArkTS-Dyn示例：
+
+   <!-- @[gesture_motioncontrol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestureAndMotionControl/GestureControl.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct CustomGestureControlGroup {
+     @State offsetY: number = 0
+     scroller2: Scroller = new Scroller();
+     private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+     private childRecognizer: GestureRecognizer = new GestureRecognizer();
+     private currentRecognizer: GestureRecognizer = new GestureRecognizer();
+     private lastOffset: number = 0;
+   
+     build() {
+       Stack({ alignContent: Alignment.TopStart }) {
+         Column() { // 外部滚动容器
+           Column() {
+             Text('Scroll Area')
+               .width('90%')
+               .height(150)
+               .backgroundColor(0xFFFFFF)
+               .borderRadius(15)
+               .fontSize(16)
+               .textAlign(TextAlign.Center)
+               .margin({ top: 10 })
+             Scroll(this.scroller2) { // 内部滚动容器
+               Column() {
+                 Text('Scroll Area2')
+                   .width('90%')
+                   .height(150)
+                   .backgroundColor(0xFFFFFF)
+                   .borderRadius(15)
+                   .fontSize(16)
+                   .textAlign(TextAlign.Center)
+                   .margin({ top: 10 })
+                 Column() {
+                   ForEach(this.arr, (item: number) => {
+                     Text(item.toString())
+                       .width('90%')
+                       .height(150)
+                       .backgroundColor(0xFFFFFF)
+                       .borderRadius(15)
+                       .fontSize(16)
+                       .textAlign(TextAlign.Center)
+                       .margin({ top: 10 })
+                   }, (item: string) => item)
+                 }.width('100%')
+               }
+             }
+             .id('inner')
+             .width('100%')
+             .height(800)
+           }
+           .width('100%')
+           .offset({ y: -this.offsetY })
+         }
+         .id('outer')
+         .height(600)
+         .clip(true)
+         .gesture(
+           PanGesture()
+             .onActionStart((event: GestureEvent) => {
+               this.lastOffset = this.offsetY // 手势开始时，记录当前滚动位置
+             })
+             .onActionUpdate((event: GestureEvent) => {
+               let moveY = event.offsetY; // 手势移动时，计算新位置
+               let targetOffset = this.lastOffset - moveY; // 目标位置 = 初始位置 - 移动距离
+               this.offsetY = Math.max(0, Math.min(360, targetOffset));
+             })
+         )
+         .shouldRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
+           for (let i = 0; i < others.length; i++) {
+             let target = others[i].getEventTargetInfo();
+             if (target) {
+               if (target.getId() == 'inner' && others[i].isBuiltIn() &&
+                 others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
+                 this.currentRecognizer = current; // 保存当前组件的识别器
+                 this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
+                 return others[i]; // 返回将要组成并行手势的识别器
+               }
+             }
+           }
+           return undefined;
+         })
+         .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+           others: Array<GestureRecognizer>) => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
+           let target = current.getEventTargetInfo();
+           if (target && target.getId() == 'outer' &&
+             current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+             for (let i = 0; i < others.length; i++) {
+               let target = others[i].getEventTargetInfo();
+               if (target instanceof ScrollableTargetInfo && target.getId() == 'inner') { // 找到响应链上对应并行的识别器
+                 let panEvent = event as PanGestureEvent;
+                 if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
+                   if (panEvent && panEvent.offsetY < 0) {
+                     this.childRecognizer.setEnabled(false);
+                     this.currentRecognizer.setEnabled(true);
+                   } else {
+                     this.childRecognizer.setEnabled(true);
+                     this.currentRecognizer.setEnabled(false);
+                   }
+                 } else if (target.isBegin()) {
+                   if (panEvent.offsetY > 0) {
+                     this.childRecognizer.setEnabled(false);
+                     this.currentRecognizer.setEnabled(true);
+                   } else {
+                     this.childRecognizer.setEnabled(true);
+                     this.currentRecognizer.setEnabled(false);
+                   }
+                 } else {
+                   this.childRecognizer.setEnabled(true);
+                   this.currentRecognizer.setEnabled(false);
+                 }
+               }
+             }
+           }
+           return GestureJudgeResult.CONTINUE;
+         })
+       }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
+
+   ``` TypeScript
+   import { Entry, Component, Stack, Scroll, State, Column, Text, Scroller, Alignment, TextAlign, Color, GestureRecognizer, GestureControl, BaseGestureEvent, ScrollableTargetInfo, GestureJudgeResult, PanGesture, GestureEvent, PanGestureEvent, Margin, ForEach } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct FatherControlChild {
+     @State offsetY: number = 0;
+     scroller2: Scroller = new Scroller();
+     private arr: int[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+     private childRecognizer: GestureRecognizer = new GestureRecognizer();
+     private currentRecognizer: GestureRecognizer = new GestureRecognizer();
+     private tempRecognizer: GestureRecognizer = new GestureRecognizer();
+     private lastOffset: number = 0;
+   
+     build() {
+       Stack({ alignContent: Alignment.TopStart }) {
+         Column() { // 外部滚动容器
+           Column() {
+             Text('Scroll Area')
+               .width('90%')
+               .height(150)
+               .backgroundColor(0xFFFFFF)
+               .borderRadius(15)
+               .fontSize(16)
+               .textAlign(TextAlign.Center)
+               .margin({ top: 10 })
+             Scroll(this.scroller2) { // 内部滚动容器
+               Column() {
+                 Text('Scroll Area2')
+                   .width('90%')
+                   .height(150)
+                   .backgroundColor(0xFFFFFF)
+                   .borderRadius(15)
+                   .fontSize(16)
+                   .textAlign(TextAlign.Center)
+                   .margin({ top: 10 })
+                 Column() {
+                   ForEach(this.arr, (item: int) => {
+                     Text(item.toString())
+                       .width('90%')
+                       .height(150)
+                       .backgroundColor(0xFFFFFF)
+                       .borderRadius(15)
+                       .fontSize(16)
+                       .textAlign(TextAlign.Center)
+                       .margin({ top: 10 })
+                   }, (item: int) => item.toString())
+                 }.width('100%')
+               }
+             }
+             .id('inner')
+             .width('100%')
+             .height(800)
+           }
+           .width('100%')
+           .offset({ y: -this.offsetY })
+         }
+         .id('outer')
+         .height(600)
+         .clip(true)
+         .gesture(
+           PanGesture()
+             .onActionStart((event: GestureEvent) => {
+               this.lastOffset = this.offsetY; // 手势开始时，记录当前滚动位置
+             })
+             .onActionUpdate((event: GestureEvent) => {
+               let moveY = event.offsetY; // 手势移动时，计算新位置
+               let targetOffset = this.lastOffset - moveY; // 目标位置 = 初始位置 - 移动距离
+               this.offsetY = Math.max(0, Math.min(360, targetOffset));
+             })
+         )
+         .shouldRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
+           for (let i = 0; i < others.length; i++) {
+             let target = others[i].getEventTargetInfo();
+             if (target) {
+               if (target.getId() == 'inner' && others[i].isBuiltIn() &&
+                 others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
+                 this.currentRecognizer = current; // 保存当前组件的识别器
+                 this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
+                 return others[i]; // 返回将要组成并行手势的识别器
+               }
+             }
+           }
+           return this.tempRecognizer;
+         })
+         .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+           others: Array<GestureRecognizer>) => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
+           let target = current.getEventTargetInfo();
+           if (target && target.getId() == 'outer' &&
+             current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+             for (let i = 0; i < others.length; i++) {
+               let target = others[i].getEventTargetInfo();
+               if (target instanceof ScrollableTargetInfo && target.getId() == 'inner') { // 找到响应链上对应并行的识别器
+                 let panEvent = event as PanGestureEvent;
+                 if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
+                   if (panEvent && panEvent.offsetY < 0) {
+                     this.childRecognizer.setEnabled(false);
+                     this.currentRecognizer.setEnabled(true);
+                   } else {
+                     this.childRecognizer.setEnabled(true);
+                     this.currentRecognizer.setEnabled(false);
+                   }
+                 } else if (target.isBegin()) {
+                   if (panEvent.offsetY > 0) {
+                     this.childRecognizer.setEnabled(false);
+                     this.currentRecognizer.setEnabled(true);
+                   } else {
+                     this.childRecognizer.setEnabled(true);
+                     this.currentRecognizer.setEnabled(false);
+                   }
+                 } else {
+                   this.childRecognizer.setEnabled(true);
+                   this.currentRecognizer.setEnabled(false);
+                 }
+               }
+             }
+           }
+           return GestureJudgeResult.CONTINUE;
+         })
+       }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+     }
+   }
+    ```
 
 ## 阻止手势参与识别
 
@@ -1447,4 +1777,149 @@ struct Index {
 }
 ```
 
-![Gesure20251119002](figures/Gesure20251119002.gif)
+![prevent-gesture-recognition](figures/prevent-gesture-recognition.gif)
+
+## 自定义干预事件和手势的收集结果
+
+从API版本26.0.0开始，在手势、触摸事件发起时，系统会收集已绑定手势和触摸识别器的识别结果。开发者可以通过`onGestureCollectIntercept`回调对收集结果进行干预，通过返回不同的干预策略来动态控制识别结果的收集行为，例如阻止触摸事件向父组件透传、丢弃当前节点的手势等。
+
+手势收集干预涉及以下接口。
+
+| 接口 | 说明 |
+| ------- | -------------- |
+| [onGestureCollectIntercept](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturecollectintercept) | 在当前节点及更高优先级节点上的事件和手势被收集完成后触发该回调。回调返回干预策略，控制后续收集流程。 |
+| [getUniqueId](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#getuniqueid) | 通过识别器的[getEventTargetInfo()](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#geteventtargetinfo12)获取的组件信息对象上调用，返回当前组件的唯一数字ID，可用于与其他组件的唯一ID进行比对。 |
+| [isHostBelongsTo](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#ishostbelongsto) | 判断当前手势或触摸识别器绑定的节点是否为指定组件的后代节点。传入组件的唯一ID，返回布尔值。该接口在[GestureRecognizer](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#gesturerecognizer12)和[TouchRecognizer](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#touchrecognizer20)上均可调用。 |
+
+下面通过示例介绍如何实现自定义干预事件和手势的收集结果。示例中构建了如下组件树。
+
+```mermaid
+graph TD
+    A((outerColumn))
+    B((innerColumn))
+    C((Row))
+    D((Button1))
+    E((Button2))
+
+    A --> B
+    A --> C
+    C --> D
+    C --> E
+```
+
+Button1未绑定点击事件，Button2绑定了点击事件。当用户点击Button2时，innerColumn上的`onGestureCollectIntercept`回调会对触摸识别器进行干预，阻止触摸事件继续向outerColumn透传；点击Button1时则允许正常透传。
+
+1. 在innerColumn组件上绑定`onGestureCollectIntercept`回调，在回调中获取触摸识别器列表。
+
+    <!-- @[gesture_collection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/InterceptGestureCollection/InterceptGestureCollection.ets) -->
+    
+    ``` TypeScript
+    .onGestureCollectIntercept((recognizers: Array<GestureRecognizer>,
+      touchRecognizers?: Array<TouchRecognizer> | undefined) => {
+      if (!touchRecognizers) {
+        return GestureCollectIntervention.CONTINUE;
+      }
+      // 遍历所有触摸识别器，获取目标组件信息
+      for (let i = 0; i < touchRecognizers.length; i++) {
+        let touchRecognizer = touchRecognizers[i];
+        let targetInfo = touchRecognizer.getEventTargetInfo();
+        let uniqueId = targetInfo.getUniqueId();
+        // 使用 isHostBelongsTo 判断识别器是否属于 innerColumn 的后代
+        if (touchRecognizer.isHostBelongsTo(uniqueId)) {
+          console.info('Touch belongs to innerColumn subtree');
+        }
+        if (targetInfo.getId() == 'button2') {
+          // 丢弃低优先级节点的收集，阻止事件透传到 outerColumn
+          return GestureCollectIntervention.DISCARD_LOWER;
+        }
+      }
+      return GestureCollectIntervention.CONTINUE;
+    })
+    ```
+
+2. 代码完整示例。
+
+    <!-- @[gesture_intercepting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/InterceptGestureCollection/InterceptGestureCollection.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct InterceptGestureCollection {
+      @State backgroundColorButton1: string = '#D5D5D5';
+      @State backgroundColorButton2: string = '#D5D5D5';
+      @State backgroundColorRow: string = '#FFFFFF';
+      @State backgroundColorColumn: string = '#FFFFFF';
+    
+      build() {
+        Column() {
+          Column() {
+            Row() {
+              Button('button1')
+                .width('30%')
+                .height(40)
+                .id('button1')
+                .onTouch((e?: TouchEvent) => {
+                  this.backgroundColorButton1 = '#E5E5E5';
+                })
+                .backgroundColor(this.backgroundColorButton1)
+              Button('button2')
+                .width('30%')
+                .height(40)
+                .id('button2')
+                .onTouch((e?: TouchEvent) => {
+                  this.backgroundColorButton2 = '#E5E5E5';
+                })
+                .onClick((e?: ClickEvent) => {
+                  console.info('button2 is clicked')
+                })
+                .backgroundColor(this.backgroundColorButton2)
+            }
+            .id('row')
+            .justifyContent(FlexAlign.Center)
+            .width('90%')
+            .height(200)
+            .margin(25)
+            .onTouch((e?: TouchEvent) => {
+              this.backgroundColorRow = '#666666';
+            })
+            .backgroundColor(this.backgroundColorRow)
+          }
+          .id('innerColumn')
+          .margin(25)
+          .padding(20)
+          .width('90%')
+          .height(250)
+          .borderWidth(2)
+          .onGestureCollectIntercept((recognizers: Array<GestureRecognizer>,
+            touchRecognizers?: Array<TouchRecognizer> | undefined) => {
+            if (!touchRecognizers) {
+              return GestureCollectIntervention.CONTINUE;
+            }
+            // 遍历所有触摸识别器，获取目标组件信息
+            for (let i = 0; i < touchRecognizers.length; i++) {
+              let touchRecognizer = touchRecognizers[i];
+              let targetInfo = touchRecognizer.getEventTargetInfo();
+              let uniqueId = targetInfo.getUniqueId();
+              // 使用 isHostBelongsTo 判断识别器是否属于 innerColumn 的后代
+              if (touchRecognizer.isHostBelongsTo(uniqueId)) {
+                console.info('Touch belongs to innerColumn subtree');
+              }
+              if (targetInfo.getId() == 'button2') {
+                // 丢弃低优先级节点的收集，阻止事件透传到 outerColumn
+                return GestureCollectIntervention.DISCARD_LOWER;
+              }
+            }
+            return GestureCollectIntervention.CONTINUE;
+          })
+        }
+        .id('outerColumn')
+        .padding(15)
+        .onTouch((e?: TouchEvent) => {
+          this.backgroundColorColumn = '#E5E5E5';
+        })
+        .backgroundColor(this.backgroundColorColumn)
+      }
+    }
+    ```
+
+经过上述处理后，点击Button2时，`onGestureCollectIntercept`返回`DISCARD_LOWER`，触摸事件不会透传至outerColumn；点击Button1时，返回`CONTINUE`，触摸事件正常透传，outerColumn响应变色。

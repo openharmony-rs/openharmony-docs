@@ -304,7 +304,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action](figures/zh-cn_image_action.gif)
+![image-action](figures/image-action.gif)
 
 ### 示例2（可在主窗外弹出的弹窗）
 
@@ -376,7 +376,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_showinsubwindow](figures/zh-cn_image_action_showinsubwindow.jpg)
+![image-action-showinsubwindow](figures/image-action-showinsubwindow.jpg)
 
 ### 示例3（设置弹窗的动画）
 
@@ -438,7 +438,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_animation](figures/zh-cn_image_action_animation.gif)
+![image-action-animation](figures/image-action-animation.gif)
 
 ### 示例4（设置弹窗的样式）
 
@@ -520,7 +520,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_style](figures/zh-cn_image_action_style.gif)
+![image-action-style](figures/image-action-style.gif)
 
 ### 示例5（悬停态弹窗）
 
@@ -671,7 +671,7 @@ struct Example1 {
 }
 ```
 
-![zh-cn_image_action_lifecycle](figures/zh-cn_image_action_lifecycle.gif)
+![image-action-lifecycle](figures/image-action-lifecycle.gif)
 
 ### 示例7（自定义背景模糊效果参数）
 
@@ -731,7 +731,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_backgroundBlurStyleOptions](figures/zh-cn_image_action_backgroundBlurStyleOptions.png)
+![image-action-backgroundBlurStyleOptions](figures/image-action-backgroundBlurStyleOptions.png)
 
 ### 示例8（自定义背景效果参数）
 
@@ -791,4 +791,4 @@ struct ActionSheetExample {
   }
 }
 ```
-![zh-cn_image_action_backgroundEffect](figures/zh-cn_image_action_backgroundEffect.png)
+![image-action-backgroundEffect](figures/image-action-backgroundEffect.png)

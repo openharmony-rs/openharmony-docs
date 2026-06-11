@@ -129,14 +129,14 @@
 
 1. 导入模块。
 
-   ArkTs-Dyn示例：
+   ArkTS-Dyn示例：
    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { serial, BusinessError } from '@kit.BasicServicesKit';
    ```
 
-   ArkTs-Sta示例：
+   ArkTS-Sta示例：
    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -146,7 +146,7 @@
 
 2. 获取串口设备列表。
 
-   ArkTs-Dyn示例：
+   ArkTS-Dyn示例：
    <!-- @[getSerialPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -165,7 +165,7 @@
    }
    ```
 
-   ArkTs-Sta示例：
+   ArkTS-Sta示例：
    <!-- @[getSerialPortList](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -187,7 +187,7 @@
 
 3. 打开串口设备。
 
-   ArkTs-Dyn示例：
+   ArkTS-Dyn示例：
    <!-- @[open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -210,7 +210,7 @@
    }
    ```
 
-   ArkTs-Sta示例：
+   ArkTS-Sta示例：
    <!-- @[open](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -235,7 +235,7 @@
 
 4. 注册数据接收回调，监听串口数据。
 
-   ArkTs-Dyn示例：
+   ArkTS-Dyn示例：
    <!-- @[onDataRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -255,7 +255,7 @@
    }
    ```
 
-   ArkTs-Sta示例：
+   ArkTS-Sta示例：
    <!-- @[onDataRead](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -278,7 +278,7 @@
 
 5. 通过串口写入数据。
 
-   ArkTs-Dyn示例：
+   ArkTS-Dyn示例：
    <!-- @[write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -296,7 +296,7 @@
    }
    ```
 
-   ArkTs-Sta示例：
+   ArkTS-Sta示例：
    <!-- @[write](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -316,7 +316,7 @@
 
 6. 刷新缓冲区与等待发送完成。
 
-   ArkTs-Dyn示例：
+   ArkTS-Dyn示例：
    <!-- @[flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -333,7 +333,7 @@
    }
    ```
 
-   ArkTs-Sta示例：
+   ArkTS-Sta示例：
    <!-- @[flush](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -354,7 +354,7 @@
 
    * 设置RTS信号为高电平。
 
-     ArkTs-Dyn示例：
+     ArkTS-Dyn示例：
      <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
@@ -371,7 +371,7 @@
      }
      ```
 
-     ArkTs-Sta示例：
+     ArkTS-Sta示例：
      <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
@@ -390,7 +390,7 @@
 
    * 获取CTS信号状态。
 
-     ArkTs-Dyn示例：
+     ArkTS-Dyn示例：
      <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
@@ -407,7 +407,7 @@
      }
      ```
 
-     ArkTs-Sta示例：
+     ArkTS-Sta示例：
      <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
@@ -426,7 +426,7 @@
 
    * 发送break信号。
 
-     ArkTs-Dyn示例：
+     ArkTS-Dyn示例：
      <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
@@ -443,7 +443,7 @@
      }
      ```
 
-     ArkTs-Sta示例：
+     ArkTS-Sta示例：
      <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
@@ -462,7 +462,7 @@
 
    * 设置DTR信号为高电平。
 
-     ArkTs-Dyn示例：
+     ArkTS-Dyn示例：
      <!-- @[setDtr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
@@ -479,7 +479,7 @@
      }
      ```
 
-     ArkTs-Sta示例：
+     ArkTS-Sta示例：
      <!-- @[setDtr](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
@@ -498,7 +498,7 @@
 
    * 获取DSR信号状态。
 
-     ArkTs-Dyn示例：
+     ArkTS-Dyn示例：
      <!-- @[getDsr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
@@ -515,7 +515,7 @@
      }
      ```
 
-     ArkTs-Sta示例：
+     ArkTS-Sta示例：
      <!-- @[getDsr](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
@@ -534,7 +534,7 @@
 
 8. 监听串口断开事件。
 
-   ArkTs-Dyn示例：
+   ArkTS-Dyn示例：
    <!-- @[onDisconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -554,7 +554,7 @@
    }
    ```
 
-   ArkTs-Sta示例：
+   ArkTS-Sta示例：
    <!-- @[onDisconnect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -577,7 +577,7 @@
 
 9. 注销数据接收回调和关闭串口设备。
 
-   ArkTs-Sta示例：
+   ArkTS-Dyn示例：
    <!-- @[close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript

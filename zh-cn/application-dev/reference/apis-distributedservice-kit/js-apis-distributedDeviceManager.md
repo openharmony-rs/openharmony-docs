@@ -35,6 +35,8 @@ createDeviceManager(bundleName: string): DeviceManager
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -80,6 +82,8 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -119,6 +123,8 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -127,7 +133,7 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 | ---------------------- | ------------------| --------- | ---- | -------- |
 | deviceId               | string            | 否        | 否    | 设备标识符。实际值为udid-hash与appid和盐值基于sha256方式进行混淆后的值。|
 | deviceName             | string            | 否        | 否    | 设备名称。    |
-| deviceType             | string            | 否        | 否    | [设备类型](#getdevicetype)。    |
+| deviceType             | string            | 否        | 否    | 设备类型。    |
 | networkId              | string            | 否        | 是    | 设备网络标识。  |
 
 ## DeviceStateChange
@@ -135,6 +141,8 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 表示设备状态。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -154,6 +162,8 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读       | 可选  | 说明 |
@@ -169,6 +179,8 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力**： SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读       | 可选 | 说明 |
@@ -182,6 +194,8 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -197,6 +211,8 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读   | 可选 | 说明 |
@@ -210,6 +226,8 @@ DeviceManager 服务进程退出信息。
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -225,6 +243,8 @@ DeviceManager 服务进程退出信息。
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读   | 可选 | 说明 |
@@ -236,6 +256,8 @@ DeviceManager 服务进程退出信息。
 设备管理实例，用于获取可信设备和本地设备的相关信息。在调用DeviceManager的方法前，需要先通过createDeviceManager构建一个DeviceManager实例dmInstance。
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -250,6 +272,8 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -293,6 +317,8 @@ getAvailableDeviceList(callback:AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -344,6 +370,8 @@ getAvailableDeviceList(): Promise&lt;Array&lt;DeviceBasicInfo&gt;&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -364,6 +392,27 @@ getAvailableDeviceList(): Promise&lt;Array&lt;DeviceBasicInfo&gt;&gt;
 | 11600101 | Failed to execute the function.                                 |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try{
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.getAvailableDeviceList().then((data: Array<distributedDeviceManager.DeviceBasicInfo>) => {
+      console.info('get available device info: ' + JSON.stringify(data));
+      }).catch((err: BusinessError) => {
+        let e: BusinessError = err as BusinessError;
+        console.error(`getAvailableDeviceList errCode: ${e.code}, errMessage: ${e.message}`);
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getAvailableDeviceList errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -391,6 +440,8 @@ getLocalDeviceNetworkId(): string
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -435,6 +486,8 @@ getLocalDeviceName(): string
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -481,6 +534,8 @@ ArkTS-Sta: getLocalDeviceType(): int
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -545,6 +600,8 @@ getLocalDeviceId(): string
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -588,6 +645,8 @@ getDeviceName(networkId: string): string
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -643,6 +702,8 @@ ArkTS-Sta: getDeviceType(networkId: string): int
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -717,6 +778,8 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -811,6 +874,8 @@ stopDiscovering(): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -850,6 +915,8 @@ ArkTS-Sta: bindTarget(deviceId: string, bindParam: Record&lt;string, int | strin
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -860,7 +927,7 @@ ArkTS-Dyn参数：
   | 参数名     | 类型                                                | 必填  | 说明         |
   | ---------- | --------------------------------------------------- | ----- | ------------ |
   | deviceId   | string                                              | 是    | 设备标识。长度范围1~255字符。   |
-  | bindParam  | {[key:&nbsp;string]:&nbsp;Object;}                             | 是    | 认证参数。由开发者自行决定传入的键值对。默认会携带以下key值：<br>bindType 此值是绑定的类型，必填。 <br /> 1：PIN码。<br>targetPkgName 绑定目标的包名。<br>appName 尝试绑定目标的应用程序名称。<br>appOperation 应用程序要绑定目标的原因。<br>customDescription 操作的详细说明。   |
+  | bindParam  | {[key:&nbsp;string]:&nbsp;Object;}                             | 是    | 认证参数。由开发者自行决定传入的键值对。默认会携带以下key值：<br>bindType 此值是绑定的类型，必填。 <br /> - 1：PIN码。<br>targetPkgName 绑定目标的包名。<br>appName 尝试绑定目标的应用程序名称。<br>appOperation 应用程序要绑定目标的原因。<br>customDescription 操作的详细说明。   |
   | callback   | AsyncCallback&lt;{deviceId:&nbsp;string;&nbsp;}&gt; | 是    | 认证结果回调。 |
 
 ArkTS-Sta参数：
@@ -957,6 +1024,8 @@ unbindTarget(deviceId: string): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -1005,6 +1074,8 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **ArkTS-Dyn起始版本：** 10
 

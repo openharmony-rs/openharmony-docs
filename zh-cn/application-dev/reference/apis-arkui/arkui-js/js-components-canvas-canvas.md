@@ -111,4 +111,4 @@ export default {
 }
 ```
 
-![zh-cn_image_js_canvas_canvas](figures/zh-cn_image_js_canvas_canvas.png)
+![image-js-canvas-canvas](figures/image-js-canvas-canvas.png)

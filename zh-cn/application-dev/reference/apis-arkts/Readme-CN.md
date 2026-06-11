@@ -94,6 +94,9 @@
       - [StdProcess (进程管理标准库)](arkts-sta-std_process.md)
       - [taskpool](arkts-sta-taskpool.md)
       - [Promise (异步操作)](arkts-sta-promise.md)
+    - 互操作相关（ArkTS-Sta）<!--js-apis-arkts-interop-->
+      - [STValue](arkts-sta-interop-stvalue.md)
+      - [ESValue](arkts-sta-interop-esvalue.md)
   - 已停止维护的接口<!--arkts-arkts-dep-->
     - [@ohos.util.Vector (线性容器Vector)](js-apis-vector.md)
 - 错误码<!--arkts-arkts-errcode-->

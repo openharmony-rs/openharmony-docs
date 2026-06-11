@@ -20,3 +20,4 @@
 | docs/zh-cn/application-dev/reference/apis-arkui/js-apis-window-sys.md | [独立子窗](../../windowmanager/window-type-overview.md#辅助窗口) | ArkUI Kit | ArkUI | 是 | 2026-05-26 |
 | docs/zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-f.md | [独立子窗](../../windowmanager/window-type-overview.md#辅助窗口) | ArkUI Kit | ArkUI | 是 | 2026-05-26 |
 | docs/zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-i.md | [独立子窗](../../windowmanager/window-type-overview.md#辅助窗口) | ArkUI Kit | ArkUI | 是 | 2026-05-26 |
+| docs/zh-cn/application-dev/reference/apis-connectivity-kit/js-apis-nfcController.md | [canIUse("SystemCapability.Communication.NFC.Core")](../common/init.md#caniuse) | Connectivity Kit | Nfc | 是 | 2026-06-04 |

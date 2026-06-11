@@ -388,7 +388,7 @@ struct ScrollExample {
   }
 }
 ```
-![zh-cn_visible_area_change.gif](figures/zh-cn_visible_area_change.gif)
+![visible-area-change.gif](figures/visible-area-change.gif)
 
 ### 示例3 (设置measureFromViewport子组件超出父组件显示)
 
@@ -500,4 +500,4 @@ struct OnVisibleAreaChangeSample {
   }
 }
 ```
-![zh-cn_visible_area_change.gif](figures/zh-cn_visible_area_change3.jpg)
+![visible-area-change.gif](figures/visible-area-change3.jpg)

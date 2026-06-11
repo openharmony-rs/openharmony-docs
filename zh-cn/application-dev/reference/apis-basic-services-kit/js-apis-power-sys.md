@@ -585,15 +585,11 @@ try {
 }
 ```
 
-## power.getPowerConfig
+## power.getPowerConfig<sup>26+</sup>
 
 getPowerConfig(sceneName: string): string
 
 读取电源配置节点。
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -602,6 +598,10 @@ getPowerConfig(sceneName: string): string
 **需要权限：** ohos.permission.POWER_CONFIG
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -638,15 +638,11 @@ try {
 }
 ```
 
-## power.setPowerConfig
+## power.setPowerConfig<sup>26+</sup>
 
 setPowerConfig(sceneName: string, value: string): void
 
 写入电源配置节点。
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -655,6 +651,10 @@ setPowerConfig(sceneName: string, value: string): void
 **需要权限：** ohos.permission.POWER_CONFIG
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 

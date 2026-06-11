@@ -90,4 +90,4 @@ export default {
 
 The figure below shows the effect.
 
-![en-us_image_0000001070707559](figures/en-us_image_0000001070707559.png)
+![Implementing-Redirection](figures/Implementing-Redirection.png)

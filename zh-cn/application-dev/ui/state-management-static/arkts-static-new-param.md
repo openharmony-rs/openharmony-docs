@@ -595,26 +595,44 @@ struct Index {
   build() {
     Column() {
       Text(`Local ${this.arr}`)
-      Button(`change arr[0]: ${this.arr[0]}`).onClick((e: ClickEvent) => {
+        .fontSize(20)
+        .margin(10)
+      Button(`change arr[0]: ${this.arr[0]}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
         // 修改数组元素，变化可观察到
         this.arr[0]++;
       })
-      Button(`push item: ${this.arr.length}`).onClick((e: ClickEvent) => {
+      Button(`push item: ${this.arr.length}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
         // 通过push API修改数组，变化可观察到
         this.arr.push(Double.toInt(this.arr.length));
       })
-      Button(`pop item`).onClick((e: ClickEvent) => {
+      Button(`pop item`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
         this.arr.pop();
       })
-      Button(`reverse`).onClick((e: ClickEvent) => {
+      Button(`reverse`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
         this.arr.reverse();
       })
-      Button(`reset`).onClick((e: ClickEvent) => {
+      Button(`reset`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
         // 对数组整体赋值，变化可观察到
         this.arr = [0, 1, 2];
       })
       Child({ arr: this.arr })
     }
+    .width('100%')
   }
 }
 @ComponentV2
@@ -623,10 +641,15 @@ struct Child {
   build() {
     Column() {
     Text(`Param ${this.arr}`)
+      .fontSize(20)
+      .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![Param_6](../figures/param_6.gif)
 
 ### 装饰Date类型变量
 
@@ -644,7 +667,10 @@ struct DateComponent {
   build() {
     Column() {
       Text(`${this.selectedDate}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 
@@ -656,32 +682,41 @@ struct ParentComponent {
   build() {
     Column() {
       Button('parent update the new date')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
           // 对Date整体赋值，变化可观察到
           this.parentSelectedDate = new Date('2023-07-07');
         })
       Button('increase the year by 1')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
           // 通过setFullYear API修改Date，变化可观察到
           this.parentSelectedDate.setFullYear(this.parentSelectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 通过setMonth API修改Date，变化可观察到
           this.parentSelectedDate.setMonth(this.parentSelectedDate.getMonth() + 1);
         })
       Button('parent increase the day by 1')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 通过setDate API修改Date，变化可观察到
           this.parentSelectedDate.setDate(this.parentSelectedDate.getDate() + 1);
         })
       DateComponent({ selectedDate: this.parentSelectedDate })
     }
+    .width('100%')
   }
 }
 ```
+
+![Param_7](../figures/param_7.gif)
 
 ### 装饰Map类型变量
 
@@ -699,11 +734,16 @@ struct Child {
   build() {
     Column() {
       ForEach(Array.from(this.value.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Text(`${item[1]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(20)
+          .margin(10)
+        Text(`${item[1]}`)
+          .fontSize(20)
+          .margin(10)
         Divider()
       })
     }
+    .width('100%')
   }
 }
 @Entry
@@ -715,22 +755,40 @@ struct MapSample {
     Row() {
       Column() {
         Child({ value: this.message })
-        Button('init map').onClick((e: ClickEvent) => {
+        Button('init map')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
           // 对Map整体赋值，变化可观察到
           this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
-        Button('set new one').onClick((e: ClickEvent) => {
-          // 通过set API修改Map，变化可观察到
-          this.message.set(4, 'd');
+        Button('set new one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 通过set API修改Map，变化可观察到
+            this.message.set(4, 'd');
         })
-        Button('clear').onClick((e: ClickEvent) => {
-          this.message.clear();
+        Button('clear')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 通过clear API清空Map，变化可观察到
+            this.message.clear();
         })
-        Button('replace the first one').onClick((e: ClickEvent) => {
-          this.message.set(0, 'aa');
+        Button('replace the first one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 通过set API修改Map，变化可观察到
+            this.message.set(0, 'aa');
         })
-        Button('delete the first one').onClick((e: ClickEvent) => {
-          this.message.delete(0);
+        Button('delete the first one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 通过delete API删除Map中元素，变化可观察到
+            this.message.delete(0);
         })
       }
       .width('100%')
@@ -739,6 +797,8 @@ struct MapSample {
   }
 }
 ```
+
+![Param_8](../figures/param_8.gif)
 
 ### 装饰Set类型变量
 
@@ -756,7 +816,9 @@ struct Child {
   build() {
     Column() {
       ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-        Text(`${item[0]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(20)
+          .margin(10)
         Divider()
       })
     }
@@ -772,19 +834,33 @@ struct SetSample {
     Row() {
       Column() {
         Child({ message: this.message })
-        Button('init set').onClick((e: ClickEvent) => {
-          // 对Set整体赋值，变化可观察到
-          this.message = new Set<number>([0, 1, 2, 3, 4]);
+        Button('init set')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 对Set整体赋值，变化可观察到
+            this.message = new Set<number>([0, 1, 2, 3, 4]);
         })
-        Button('set new one').onClick((e: ClickEvent) => {
-          // 通过add API修改Set，变化可观察到
-          this.message.add(5);
+        Button('set new one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 通过add API修改Set，变化可观察到
+            this.message.add(5);
         })
-        Button('clear').onClick((e: ClickEvent) => {
-          this.message.clear();
+        Button('clear')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 通过clear API清空Set，变化可观察到
+            this.message.clear();
         })
-        Button('delete the first one').onClick((e: ClickEvent) => {
-          this.message.delete(0);
+        Button('delete the first one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 通过delete API删除Set中元素，变化可观察到
+            this.message.delete(0);
         })
       }
       .width('100%')
@@ -793,6 +869,8 @@ struct SetSample {
   }
 }
 ```
+
+![Param_9](../figures/param_9.gif)
 
 ### 联合类型
 
@@ -812,11 +890,14 @@ struct Index {
     Column() {
       MyComponent({ count: this.count })
       Button('change')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           // 将count从number变为null，类型变化可观察到，UI会刷新
           this.count = null;
         })
     }
+    .width('100%')
   }
 }
 
@@ -827,7 +908,12 @@ struct MyComponent {
   build() {
     Column() {
       Text(`count(${this.count})`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![Param_10](../figures/param_10.gif)

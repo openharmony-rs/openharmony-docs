@@ -98,4 +98,4 @@
 }
 ```
 
-![zh-cn_image_0000001173164799](figures/zh-cn_image_0000001173164799.jpg)
+![divider](figures/divider.jpg)

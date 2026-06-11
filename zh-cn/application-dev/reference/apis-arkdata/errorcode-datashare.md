@@ -48,8 +48,8 @@ The DataShareHelper fails to be initialized.
 
 **可能原因**
 
-1. 创建DataShareHelper时，接口createDataHelper的入参uri不正确。
-2. 创建DataShareHelper时，接口createDataHelper的入参context不正确。
+1. 创建DataShareHelper时，接口createDataShareHelper的入参uri不正确。
+2. 创建DataShareHelper时，接口createDataShareHelper的入参context不正确。
 3. 创建DataShareHelper时，客户端从后台拉起DataShareExtension时，未配置后台拉起权限。
 
 **处理步骤**
