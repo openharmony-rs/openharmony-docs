@@ -1687,7 +1687,7 @@ Image_ErrorCode OH_ImageSourceNative_ReadImageMetadataByType(OH_ImageSourceNativ
 
 **描述**
 
-读取图像源的元数据，使用metadataType指定元数据。如果未指定metadataType，将返回所有支持的元数据。
+读取图像源的元数据，使用metadataTypes参数指定要读取的元数据类型。如果未指定metadataTypes，将返回所有支持的元数据。
 
 **起始版本：** 26.0.0
 
