@@ -1395,6 +1395,7 @@ ArkTS-Sta: forceVolumeKeyControlType(volumeType: AudioVolumeType, duration: int)
 | duration | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 无音量键事件时，控制音量类型的持续时间，单位为秒。当计时器到期时，强制音量类型设置将被取消，最大持续时间不得超过10秒。如果持续时间设置为-1，则取消该设置。 |
 
 **错误码：**
+
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
 
 | 错误码ID | 错误信息 |
