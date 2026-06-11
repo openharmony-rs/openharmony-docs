@@ -22,8 +22,8 @@
 ```ts
 import systemParameter from '@ohos.systemparameter';
 ```
-## systemParameter
-### systemParameter.getSync<sup>(deprecated)</sup>
+
+## systemParameter.getSync<sup>(deprecated)</sup>
 
 getSync(key: string, def?: string): string
 
@@ -54,8 +54,7 @@ try {
     console.error("getSync unexpected error: " + e);
 }
 ```
-## systemParameter
-### systemParameter.get<sup>(deprecated)</sup>
+## systemParameter.get<sup>(deprecated)</sup>
 
 get(key: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -86,8 +85,7 @@ try {
     console.error("get unexpected error: " + e);
 }
 ```
-## systemParameter
-### systemParameter.get<sup>(deprecated)</sup>
+## systemParameter.get<sup>(deprecated)</sup>
 
 get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -120,8 +118,7 @@ try {
     console.error("get unexpected error:" + e)
 }
 ```
-## systemParameter
-### systemParameter.get<sup>(deprecated)</sup>
+## systemParameter.get<sup>(deprecated)</sup>
 
 get(key: string, def?: string): Promise&lt;string&gt;
 
@@ -158,8 +155,7 @@ try {
     console.error("get unexpected error: " + e);
 }
 ```
-## systemParameter
-### systemParameter.setSync<sup>(deprecated)</sup>
+## systemParameter.setSync<sup>(deprecated)</sup>
 
 setSync(key: string, value: string): void
 
@@ -188,8 +184,7 @@ try {
     console.error("set unexpected error: " + e);
 }
 ```
-## systemParameter
-### systemParameter.set<sup>(deprecated)</sup>
+## systemParameter.set<sup>(deprecated)</sup>
 
 set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -225,8 +220,7 @@ try {
     console.error("set unexpected error: " + e);
 }
 ```
-## systemParameter
-### systemParameter.set<sup>(deprecated)</sup>
+## systemParameter.set<sup>(deprecated)</sup>
 
 set(key: string, value: string): Promise&lt;void&gt;
 
