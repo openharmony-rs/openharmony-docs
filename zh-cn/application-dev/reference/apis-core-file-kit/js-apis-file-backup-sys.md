@@ -393,7 +393,7 @@ onResultReport (bundleName: string, result: string)
 
 ### onProcess<sup>12+</sup>
 
-nProcess (bundleName: string, process: string): void
+onProcess (bundleName: string, process: string): void
 
 回调函数。应用备份/恢复过程中进度信息的回调，返回应用执行业务的进度信息和异常信息等。
 
