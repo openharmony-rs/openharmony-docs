@@ -71,7 +71,7 @@ ContainerReader(value: ContainerReaderInfo)
 
 ### breakpointConfig
 
-breakpointConfig(value: BreakpointOptions)
+breakpointConfig(value?: BreakpointOptions)
 
 设置断点配置选项，定义触发不同布局行为的尺寸阈值。
 
@@ -89,7 +89,7 @@ breakpointConfig(value: BreakpointOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| value | [BreakpointOptions](#breakpointoptions) | 是 | 断点配置选项，包含宽度和高度的断点阈值数组。 |
+| value | [BreakpointOptions](#breakpointoptions) | 否 | 断点配置选项，包含宽度和高度的断点阈值数组。 |
 
 ## BreakpointOptions
 
@@ -107,7 +107,7 @@ breakpointConfig(value: BreakpointOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| width | Array\<number\> | 否 | 是 | 宽度断点值数组，单位为vp。数组必须为单调递增数组。<br/>默认值：[320, 600, 840, 1440]，单位vp，与窗口宽度断点默认值一致。<br/>**说明：** <br/>最多可支持5个断点，即数组最大长度为4。 |
+| width | Array\<number\> | 否 | 是 | 宽度断点值数组。数组必须为单调递增数组。<br/>默认值：[320, 600, 840, 1440]，单位vp，与窗口宽度断点默认值一致。<br/>**说明：** <br/>最多可支持5个断点，即数组最大长度为4。 |
 | height | Array\<number\> | 否 | 是 | 高度断点值数组，高度断点值是组件高度与宽度的比值。无单位。数组必须为单调递增数组。<br/>默认值：[0.8, 1.2]，与窗口高度断点默认值一致。<br/>**说明：** <br/>最多支持3个断点，即数组最大长度为2。 |
 
 
@@ -126,7 +126,7 @@ breakpointConfig(value: BreakpointOptions)
 
 ```ts
 // xxx.ets
-import { ContainerReader, ContainerReaderAttribute } from '@kit.ArkUI';
+import { ContainerReader, ContainerReaderAttribute, Size } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -194,7 +194,7 @@ struct Index {
 
 ```ts
 // xxx.ets
-import { ContainerReader, ContainerReaderAttribute } from '@kit.ArkUI';
+import { ContainerReader, ContainerReaderAttribute, Size } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -269,16 +269,13 @@ struct Index {
 
 ```ts
 // xxx.ets
-import { ContainerReader, ContainerReaderAttribute } from '@kit.ArkUI';
+import { ContainerReader, ContainerReaderAttribute, Size } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
   @State containerSize: Size = { width: 0, height: 0 };
   @State widthBp: WidthBreakpoint = WidthBreakpoint.WIDTH_XS;
-  @State bgColors: ResourceColor[] = [
-    '#D5D5D5', '#707070', '#F7F7F7', '#004AAF', '#2787D9', '#F0FAFF'
-  ];
   @State columnWidth: number = 180
 
   build() {
@@ -289,21 +286,39 @@ struct Index {
           widthBreakpoint: this.widthBp!!
         }) {
           Row({ space: 2 }) {
-            ForEach(Array(this.widthBp).fill(null),
-              (index: number) => {
-                Column() {
-                  Text(`第 ${index + 1} 个 Column`)
-                    .fontColor(Color.White)
-                }
-                .width('100%')
-                .height(60)
-                .backgroundColor(this.bgColors[index])
-                .justifyContent(FlexAlign.Center)
-                .borderRadius(8)
-                .layoutWeight(1)
-              },
-              (index: number) => index.toString()
-            )
+            if (this.widthBp === WidthBreakpoint.WIDTH_XS || this.widthBp === WidthBreakpoint.WIDTH_SM) {
+              Column() {
+                Text(`第 1 个 Column`)
+                  .fontColor(Color.White)
+              }
+              .width('100%')
+              .height(60)
+              .backgroundColor('#D5D5D5')
+              .justifyContent(FlexAlign.Center)
+              .borderRadius(8)
+              .layoutWeight(1)
+            } else {
+              Column() {
+                Text(`第 1 个 Column`)
+                  .fontColor(Color.White)
+              }
+              .width('100%')
+              .height(60)
+              .backgroundColor('#D5D5D5')
+              .justifyContent(FlexAlign.Center)
+              .borderRadius(8)
+              .layoutWeight(1)
+              Column() {
+                Text(`第 2 个 Column`)
+                  .fontColor(Color.White)
+              }
+              .width('100%')
+              .height(60)
+              .backgroundColor('#707070')
+              .justifyContent(FlexAlign.Center)
+              .borderRadius(8)
+              .layoutWeight(1)
+            }
           }
           .width('100%')
           .height('100%')

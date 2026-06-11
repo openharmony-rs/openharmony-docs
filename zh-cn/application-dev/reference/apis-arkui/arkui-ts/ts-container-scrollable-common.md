@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @zcdqs; @rongShao-Z-->
+<!--Owner: @yylong; @rongShao-Z-->
 <!--Designer: @yylong; @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 滚动组件通用属性和事件目前只支持[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)组件。
@@ -1354,12 +1354,12 @@ type OnDidStopDraggingCallback = (willFling: boolean) => void
 
 type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
-懒加载线性布局容器[LazyColumnLayout](ts-container-lazycolumnlayout.md)所显示的子组件索引发生变化时的回调类型。
+懒加载布局容器[LazyColumnLayout](ts-container-lazycolumnlayout.md)、[LazyVGridLayout](ts-container-lazyvgridlayout.md)、[LazyVWaterFlowLayout](ts-container-lazyvwaterflowlayout.md)所显示的子组件索引发生变化时的回调类型。
 
 > **说明：**
 >
-> - 当LazyColumnLayout没有子组件时，start和end都返回-1。
-> - 当LazyColumnLayout在可视区域内无子组件时，start和end都返回-1。
+> - 当懒加载布局容器没有子组件时，start和end都返回-1。
+> - 当懒加载布局容器在可视区域内无子组件时，start和end都返回-1。
 
 **起始版本：** 26.0.0
 

@@ -96,7 +96,7 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 
 ```c++
 std::vector<int> windowIdsSkipPrivacy = {};
-OH_AVScreenCapture_SkipPrivacyMode(capture, &windowIdsSkipPrivacy[0],
+OH_AVScreenCapture_SkipPrivacyMode(capture, windowIdsSkipPrivacy.empty() ? nullptr : &windowIdsSkipPrivacy[0],
     static_cast<int32_t>(windowIdsSkipPrivacy.size()));
 ```
 

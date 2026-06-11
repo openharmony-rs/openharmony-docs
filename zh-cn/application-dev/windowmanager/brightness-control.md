@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -17,7 +17,7 @@
 
 - **窗口亮度**：指当前应用窗口的显示亮度，仅作用于主窗口，不直接修改设备全局亮度。  
 
-  开发者可根据当前页面的展示需求，对窗口亮度单独进行调节，以优化当前应用内的的显示效果。可以通过调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)接口设置主窗口的窗口亮度。
+   开发者可根据当前页面的展示需求，对窗口亮度单独进行调节，以优化当前应用内的显示效果。可以通过调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)接口设置主窗口的窗口亮度。
 
   > **说明：**
   > 
@@ -45,7 +45,10 @@
 
 示例代码如下：
 
-```ts
+<!--@[windowBrightness_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/windowBrightness/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+
 import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';

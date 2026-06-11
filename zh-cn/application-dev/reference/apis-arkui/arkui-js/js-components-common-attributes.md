@@ -1,8 +1,8 @@
 # 通用属性
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -107,7 +107,7 @@ export default {
 }
 ```
 
-![zh-cn-attributes](figures/zh-cn-attributes.gif)
+![zh-cn-attributes](figures/attributes.gif)
 
 ### 示例2
 
@@ -145,4 +145,4 @@ export default {
 }
 ```
 
-![zh-cn_image1](figures/zh-cn_image1.png)
+![zh-cn_image1](figures/image1.png)

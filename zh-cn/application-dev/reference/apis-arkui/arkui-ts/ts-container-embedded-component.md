@@ -24,7 +24,7 @@ EmbeddedComponent用于支持在当前页面嵌入本应用内其他[EmbeddedUIE
 
 EmbeddedComponent仅支持在拥有多进程权限的设备上使用。
 
-EmbeddedComponent只能在UIAbility中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用。
+EmbeddedComponent只能在UIAbility中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用；从API版本26.0.0开始，如果EmbeddedComponent所属应用申请了ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA权限（该权限仅企业普通应用可申请），且该应用的[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)在EmbeddedUIExtensionAbility支持的应用清单（即[extensionAbilities标签](../../../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中，则允许EmbeddedComponent跨应用拉起EmbeddedUIExtensionAbility。
 
 ## 子组件
 
@@ -204,7 +204,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
 
 ## 示例（加载EmbeddedComponent）
 
-本示例展示`EmbeddedComponent`组件和`EmbeddedUIExtensionAbility`的基础使用方式，示例应用的`bundleName`为"com.example.embeddeddemo", 同应用下被拉起的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。本示例仅支持在拥有多进程权限的设备上运行，如PC/2in1。
+本示例展示`EmbeddedComponent`组件和`EmbeddedUIExtensionAbility`的基础使用方式，示例应用的`bundleName`为"com.example.embeddedComponent", 同应用下被拉起的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。本示例仅支持在拥有多进程权限的设备上运行，如PC/2in1。
 
 从API版本26.0.0开始，新增[onDrawReady](#ondrawready)接口。
 
@@ -236,7 +236,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
   struct Index {
     @State message: string = 'Message: ';
     private want: Want = {
-      bundleName: "com.example.embeddeddemo",
+      bundleName: "com.example.embeddedComponent",
       abilityName: "ExampleEmbeddedAbility",
     };
     @State dpiFollowStrategy: EmbeddedDpiFollowStrategy = EmbeddedDpiFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_DPI;
@@ -344,7 +344,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
           this.session?.terminateSelfWithResult({
             resultCode: 1,
             want: {
-              bundleName: "com.example.embeddeddemo",
+              bundleName: "com.example.embeddedComponent",
               abilityName: "ExampleEmbeddedAbility",
             }
           });

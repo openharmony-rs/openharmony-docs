@@ -66,7 +66,7 @@ type InputEventListener = (event: RawInputEventWrapper) => InputEventInterceptRe
 
 ## InputEventInterceptResult
 
-输入事件拦截结果接口，用于监听器回调[InputEventListener](#inputeventlistener)返回是否拦截的决策。
+输入事件拦截结果接口，用于监听器回调[InputEventListener](#inputeventlistener)返回是否阻止事件传递的决策。
 
 **起始版本：** 26.0.0
 
@@ -92,7 +92,7 @@ type InputEventListener = (event: RawInputEventWrapper) => InputEventInterceptRe
 
 > **说明：**
 >
-> 由于监听器在事件派发给具体组件之前执行，事件中的一些字段将无法提供有效值：如触发对象[target](ts-universal-events-click.md#eventtarget8)、相对于组件的坐标[(x,y)](ts-universal-mouse-key.md#mouseevent对象说明)、[getCurrentLocalPosition](ts-universal-events-touch.md#getcurrentlocalposition)和[stopPropagation](ts-universal-events-touch.md#touchevent对象说明)方法、TouchEvent的[preventDefault](ts-universal-events-touch.md#touchevent对象说明)和[getHistoricalPoints](ts-universal-events-touch.md#gethistoricalpoints10)方法以及KeyEvent的[metaKey](ts-universal-events-key.md#keyevent对象说明)属性和[getModifierKeyState](ts-universal-events-key.md#getmodifierkeystate12)方法。
+> 由于监听器在事件派发给具体组件之前执行，事件中的一些字段将无法提供有效值：如触发对象[target](ts-universal-events-click.md#eventtarget8)、相对于组件的坐标([x](ts-universal-mouse-key.md#属性),[y](ts-universal-mouse-key.md#属性))、[getCurrentLocalPosition](ts-universal-events-touch.md#getcurrentlocalposition)和[stopPropagation](ts-universal-events-touch.md#touchevent对象说明)方法、TouchEvent的[preventDefault](ts-universal-events-touch.md#touchevent对象说明)和[getHistoricalPoints](ts-universal-events-touch.md#gethistoricalpoints10)方法以及KeyEvent的[metaKey](ts-universal-events-key.md#keyevent对象说明)属性和[getModifierKeyState](ts-universal-events-key.md#getmodifierkeystate12)方法。
 
 **示例：**
 

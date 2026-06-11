@@ -40,7 +40,7 @@ toolbar-item{
 }
 ```
 
-![en-us_image_0000001175668970](figures/en-us_image_0000001175668970.gif)
+![toolbar-Component](figures/toolbar-Component.gif)
 
 
 ## Adding Child Components
@@ -114,7 +114,7 @@ toolbar-item{
 ```
 
 
-![en-us_image_0000001218279254](figures/en-us_image_0000001218279254.png)
+![Setting-Styles-2](figures/Setting-Styles-2.png)
 
 
 ## Binding Events
@@ -168,7 +168,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001218439306](figures/en-us_image_0000001218439306.gif)
+![Binding-Event-4](figures/Binding-Event-4.gif)
 
 > **NOTE**
 >
@@ -226,4 +226,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001263279105](figures/en-us_image_0000001263279105.gif)
+![Example-Scenario-12](figures/Example-Scenario-12.gif)

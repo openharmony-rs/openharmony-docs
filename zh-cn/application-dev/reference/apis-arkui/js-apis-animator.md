@@ -1,8 +1,8 @@
 # @ohos.animator (动画)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -967,7 +967,7 @@ class DateT {
 }
 ```
 
-  ![zh-cn_image_00007](figures/zh-cn_image_00007.gif)
+  ![zh-cn_image_00007](figures/js-animator-example.gif)
 
 ### 基于ArkTS扩展的声明式开发范式
 

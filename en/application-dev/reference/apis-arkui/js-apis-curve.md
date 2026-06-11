@@ -1,8 +1,8 @@
 # @ohos.curves (Interpolation Calculation)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -481,4 +481,4 @@ struct ImageComponent {
 }
 ```
 
-![en-us_image_0000001174104410](figures/en-us_image_0000001174104410.gif)
+![curves-spring-example](figures/curves-spring-example.gif)

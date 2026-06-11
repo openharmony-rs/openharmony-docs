@@ -112,4 +112,4 @@ change(e){
 }
 ```
 
-![zh-cn_image_0000001127125124](figures/zh-cn_image_0000001127125124.png)
+![value](figures/value.png)

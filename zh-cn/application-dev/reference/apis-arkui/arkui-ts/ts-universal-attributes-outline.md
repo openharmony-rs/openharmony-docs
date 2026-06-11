@@ -1,8 +1,8 @@
 # 外描边设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -369,8 +369,8 @@ struct OutlineExample {
 
 从左至右显示语言示例图
 
-![zh-cm_image_outling_ltr](figures/zh-cm_image_outling_ltr.png)
+![zh-cm_image_outling_ltr](figures/image-outling-ltr.png)
 
 从右至左显示语言示例图
 
-![zh-cm_image_outling_rtl](figures/zh-cm_image_outling_rtl.png)
+![zh-cm_image_outling_rtl](figures/image-outling-rtl.png)

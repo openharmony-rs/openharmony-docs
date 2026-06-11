@@ -58,7 +58,7 @@
 | levelUniqueId<sup>15+</sup>       | number | 否   | 是  | 设置页面级弹窗需要显示的层级下的[getUniqueId](../js-apis-arkui-frameNode.md#getuniqueid12)。<br/>取值范围：大于等于0的数字。<br />**说明：**<br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](#immersivemode15) | 否   | 是  | 设置页面内弹窗蒙层效果。<br />**说明：**<br />- 默认值：ImmersiveMode.DEFAULT <br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | levelOrder<sup>18+</sup>       | [LevelOrder](../js-apis-promptAction.md#levelorder18) | 否   | 是  | 设置弹窗显示的顺序。<br />**说明：**<br />- 默认值：LevelOrder.clamp(0) <br />- 不支持动态刷新顺序。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| systemMaterial  | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置弹窗的系统材质。<br/>**说明：**<br/>- 默认值：[ImmersiveOptions](../arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。<br/>- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| systemMaterial  | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置弹窗的系统材质。<br/>**说明：**<br/>- 默认值：[ImmersiveOptions](../arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。<br/>- 不同的材质具有不同的效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述接口不生效。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## SheetInfo对象说明
 
@@ -258,7 +258,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action](figures/zh-cn_image_action.gif)
+![image-action](figures/image-action.gif)
 
 ### 示例2（可在主窗外弹出的弹窗）
 
@@ -330,7 +330,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_showinsubwindow](figures/zh-cn_image_action_showinsubwindow.jpg)
+![image-action-showinsubwindow](figures/image-action-showinsubwindow.jpg)
 
 ### 示例3（设置弹窗的动画）
 
@@ -392,7 +392,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_animation](figures/zh-cn_image_action_animation.gif)
+![image-action-animation](figures/image-action-animation.gif)
 
 ### 示例4（设置弹窗的样式）
 
@@ -474,7 +474,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_style](figures/zh-cn_image_action_style.gif)
+![zh-cn_image_action_style](figures/image-action-style.gif)
 
 ### 示例5（悬停态弹窗）
 
@@ -625,7 +625,7 @@ struct Example1 {
 }
 ```
 
-![zh-cn_image_action_lifecycle](figures/zh-cn_image_action_lifecycle.gif)
+![image-action-lifecycle](figures/image-action-lifecycle.gif)
 
 ### 示例7（自定义背景模糊效果参数）
 
@@ -685,7 +685,7 @@ struct ActionSheetExample {
 }
 ```
 
-![zh-cn_image_action_backgroundBlurStyleOptions](figures/zh-cn_image_action_backgroundBlurStyleOptions.png)
+![image-action-backgroundBlurStyleOptions](figures/image-action-backgroundBlurStyleOptions.png)
 
 ### 示例8（自定义背景效果参数）
 
@@ -745,4 +745,60 @@ struct ActionSheetExample {
   }
 }
 ```
-![zh-cn_image_action_backgroundEffect](figures/zh-cn_image_action_backgroundEffect.png)
+![image-action-backgroundEffect](figures/image-action-backgroundEffect.png)
+
+### 示例9（设置弹窗的系统材质）
+
+该示例通过配置[ActionSheetOptions](#actionsheetoptions对象说明)中的systemMaterial属性，实现系统材质效果。
+
+从API版本26.0.0开始，在[ActionSheetOptions](#actionsheetoptions对象说明)中新增了systemMaterial属性。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      Column() {
+        Button("ActionSheet")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showActionSheet({
+              title: 'ActionSheet Title',
+              subtitle: 'ActionSheet Subtitle',
+              message: 'ActionSheet Text',
+              sheets: [
+                {
+                  title: 'Apples',
+                  action: () => {
+                    console.info('apples');
+                  }
+                },
+                {
+                  title: 'Bananas',
+                  action: () => {
+                    console.info('bananas');
+                  }
+                },
+                {
+                  title: 'Pears',
+                  action: () => {
+                    console.info('pears');
+                  }
+                }
+              ],
+              alignment: DialogAlignment.Center,
+              systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK })
+            });
+          })
+      }
+      .height('100%')
+      .width('100%')
+      .backgroundColor(Color.Gray)
+    }
+  }
+}
+```
+![zh-cn_image_action_sheet_systemMaterial](figures/zh-cn_image_action_systemMaterial.png)

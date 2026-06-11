@@ -440,11 +440,11 @@
 
 允许应用通过C API启动同应用的UIAbility。
 
-当前仅2in1设备应用可申请此权限。
-
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
 
 **起始版本**：15
 
@@ -745,16 +745,16 @@
 
 **起始版本**：20
 
-## ohos.permission.VEHICLE_THERMAL
+## ohos.permission.ACCESS_CAR_AUDIO
 
-允许应用访问座舱设备温控信息。
+允许应用访问和管理车载音频。
 
-获取此权限后，应用可以订阅获取温控等级和动作。
+获取该权限后，应用可以设置音频音效、管理音区等。
 
-**权限级别**：system_basic
+**权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | PC/2in1 | Tablet
+**支持设备**：Car
 
-**起始版本**：20
+**起始版本**：26.0.0

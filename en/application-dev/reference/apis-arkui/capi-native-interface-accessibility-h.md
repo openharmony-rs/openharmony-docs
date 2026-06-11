@@ -34,7 +34,7 @@ Declares the APIs for accessing Native Accessibility features.
 | [ArkUI_AccessibleGridInfo](capi-arkui-accessibility-arkui-accessiblegridinfo.md) | ArkUI_AccessibleGridInfo | Configures the number of rows, number of columns, and selection mode for specific components including **List**, **Flex**, **Select**, and **Swiper**.|
 | [ArkUI_AccessibleGridItemInfo](capi-arkui-accessibility-arkui-accessiblegriditeminfo.md) | ArkUI_AccessibleGridItemInfo | Configures attributes for specific components including **List**, **Flex**, **Select**, and **Swiper**.|
 | [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) | ArkUI_AccessibilityProviderCallbacks | Defines a struct for third-party accessibility provider callback functions, which third-party platforms need to implement. These functions are registered with the system side through **OH_ArkUI_AccessibilityProviderRegisterCallback**.|
-| [ArkUI_AccessibilityProviderCallbacksWithInstance](capi-arkui-accessibility-arkui-accessibilityprovidercallbackswithinstance.md) | ArkUI_AccessibilityProviderCallbacksWithInstance | Defines the callback function struct for third-party accessibility providers in multi-instance scenarios. These functions should be implemented by third-party platforms and registered with the system using **OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance**.|
+| [ArkUI_AccessibilityProviderCallbacksWithInstance](capi-arkui-accessibility-arkui-accessibilityprovidercallbackswithinstance.md) | ArkUI_AccessibilityProviderCallbacksWithInstance | Defines callback functions of a third-party operation provider in multi-instance scenarios. These functions should be implemented by third-party platforms and registered with the system using **OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance**.|
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md) | ArkUI_AccessibilityElementInfo | Provides accessibility node information for accessibility services and assistive applications (such as screen readers).|
 | [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md) | ArkUI_AccessibilityEventInfo | Describes the accessibility event information. After a component completes an action requested by an accessibility service or application, it needs to send a success event to confirm the operation.|
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) | ArkUI_AccessibilityProvider |  Defines a third-party accessibility provider to implement callback functions.|
@@ -284,7 +284,7 @@ Defines a struct for third-party accessibility provider callback functions, whic
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)* provider | Pointer to an **ArkUI_AccessibilityProvider** instance.|
-| [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md)* callbacks | Pointer to an **ArkUI_AccessibilityProviderCallbacks** struct that contains the set of callback functions implemented by the third-party platform.|
+| [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md)* callbacks | Pointer to an **ArkUI_AccessibilityProviderCallbacks** instance.|
 
 **Returns**
 
@@ -602,7 +602,7 @@ Sets the supported operations for an **ArkUI_AccessibilityElementInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| int32_t* operationCount | Pointer to the number of actions supported by the component.|
+| int32_t operationCount | Number of actions supported by the component.|
 | [ArkUI_AccessibleAction](capi-arkui-accessibility-arkui-accessibleaction.md)* operationActions | Pointer to the array of actions supported by the component.|
 
 

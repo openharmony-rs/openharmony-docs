@@ -33,7 +33,7 @@ Settings already exist. To reconfigure, remove the existing sharing options.
 
 **错误信息**
 
-The format of one or more type descriptors are invalid.
+The format of one or more typeDescriptors are invalid.
 
 **错误描述**
 
