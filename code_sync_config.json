@@ -18803,5 +18803,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/DeviceCertificateKit/certManager-ca-certs-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets",
+				"functions":[
+					{
+						"end_line":168,
+						"name":"certificate_management_user_ca",
+						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/DeviceCertificateKit/certManager-private-credential-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerPrivateCredSample.ets",
+				"functions":[
+					{
+						"end_line":147,
+						"name":"certificate_management_development_guidance",
+						"start_line":1
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/DeviceCertificateKit/certManager-system-credential-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerSystemCredSample.ets",
+				"functions":[
+					{
+						"end_line":100,
+						"name":"certificate_management_system_cred_guidance",
+						"start_line":1
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/DeviceCertificateKit/certManager-user-credential-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCredSample.ets",
+				"functions":[
+					{
+						"end_line":173,
+						"name":"certificate_management_user_cred_guidance",
+						"start_line":1
+					}
+				]
+			}
+		]
 	}
 ]
