@@ -327,7 +327,7 @@ statistics.getCellularTxBytes((error: BusinessError, stats: number) => {
     console.error(`getCellularTxBytes error, ${JSON.stringify(error)}`);
     return;
   }
-  console.info(`getCellularTxBytes error, ${JSON.stringify(stats)}`);
+  console.info(`getCellularTxBytes success, ${JSON.stringify(stats)}`);
 });
 ```
 
