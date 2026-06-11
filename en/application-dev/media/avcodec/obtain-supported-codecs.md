@@ -24,7 +24,7 @@ To ensure that codec behavior meets expectations, use the audio and video codec 
    ```
    > **NOTE**
    >
-   > The word **sample** in the preceding code snippet is only an example. Use the actual project directory name.
+   > Replace **'sample'** with your actual project name.
 
 2. Add the header files.
 
@@ -38,24 +38,31 @@ To ensure that codec behavior meets expectations, use the audio and video codec 
 
 3. Obtain an audio/video codec capability instance.
 
-   You can use either of the following methods to obtain the instance:
-   
+   You can use either of the following methods to obtain the audio/video codec capability instance: After the instance is obtained, you can proceed with the follow-up procedure. There is no explicit API for releasing the instance. The system automatically releases and reclaims the resources when the instance is no longer needed.
+
    Method 1: Call **OH_AVCodec_GetCapability** to obtain the codec capability instance recommended by the system. The recommendation policy is the same as that of the **OH_XXX_CreateByMime** series APIs.
 
    ```c++
    // Obtain the AAC decoder capability instance recommended by the system.
    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
    ```
-   
+
    Method 2: Call **OH_AVCodec_GetCapabilityByCategory** to obtain the codec capability instance for the specified software or hardware.
 
    ```c++
    // Obtain the AVC encoder capability instance for the specified hardware.
    OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
    ```
-   After obtaining the codec capability instance, you can move on to the next steps. There is no need to manually release the instance. The system automatically reclaims the instance when it is no longer needed.
-   
-4. Call the query APIs as required. For details, see [AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md).
+
+   Method 3: Since API version 24, you can call **OH_AVCodec_GetCapabilityList** to obtain the full capability instance list of a specified codec type (for example, video decoder).
+
+   ```c++
+   // Obtain the capability instance list of all video decoders in the system.
+   uint32_t count = 0;
+   OH_AVCapability **capabilityList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODER, &count);
+   ```
+
+4. Call the query APIs as required. For details about the APIs, see [native_avcapability.h](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md).
 
 ## Scenario-based Development
 
@@ -776,5 +783,47 @@ if (isSupported) {
 OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
 if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
    // Handle exceptions.
+}
+```
+
+### Filtering Secure Decoders of a Specific MIME Type (DRM Playback Scenario)
+
+Since API version 24, secure decoders that support secure links can be used to process DRM media resources protected by digital copyright management.
+
+You can obtain the decoder list and use the MIME type to query the decoder type through the **OH_AVCapability_IsSecure** API to accurately filter out the required secure decoder.
+
+| API    | Description                        |
+| -------- | ---------------------------- |
+| OH_AVCodec_GetCapabilityList              | Obtains the list of all decoding capability instances of a specified type (for example, video decoder).|
+| OH_AVCapability_GetMimeType               | Obtains the MIME type string corresponding to the capability instance.|
+| OH_AVCapability_CheckMimeType             | Checks whether the MIME type of the capability instance is the same as the target MIME type.|
+| OH_AVCapability_IsSecure                  | Checks whether a codec capability instance describes a secure decoder that can process DRM resources.|
+
+You can use the following code to query and initialize the H.264 secure decoder:
+
+```c++
+// 1. Define the expected MIME type.
+const char *targetMime = OH_AVCODEC_MIMETYPE_VIDEO_AVC;
+uint32_t count = 0;
+
+// 2. Obtain the capability list of all video decoders.
+OH_AVCapability **capabilityList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODER, &count);
+
+if (capabilityList != nullptr && count > 0) {
+    for (uint32_t i = 0; i < count; i++) {
+        OH_AVCapability *cap = capabilityList[i];
+        
+        // 3. Check whether the MIME type is the target one and whether the decoder is a secure decoder.
+        if (OH_AVCapability_CheckMimeType(cap, targetMime) && OH_AVCapability_IsSecure(cap)) {
+            // 4. Find the decoder that meets the conditions and obtain its name for creating an instance.
+            const char *codecName = OH_AVCapability_GetName(cap);
+            OH_AVCodec *secureVideoDec = OH_VideoDecoder_CreateByName(codecName);
+            
+            if (secureVideoDec != nullptr) {
+                // 5. If the secure decoder is successfully created, exit the loop and proceed with subsequent services.
+                break;
+            }
+        }
+    }
 }
 ```

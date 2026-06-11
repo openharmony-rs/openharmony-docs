@@ -1,10 +1,12 @@
 # @ohos.application.StaticSubscriberExtensionContext (StaticSubscriberExtensionContext) (System API)
+
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:53:24.713Z pushedAt=2026-06-09T10:12:44.121Z -->
 
 The **StaticSubscriberExtensionContext** module, inherited from **StaticSubscriberExtensionAbility**, provides context for StaticSubscriberExtensionAbilities.
 
@@ -39,7 +41,9 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 Starts an ability that belongs to the same application as this StaticSubscriberExtensionAbility. This API uses an asynchronous callback to return the result.
 
 Observe the following when using this API:
+
  - If an application running in the background needs to call this API to start an ability, it must have the **ohos.permission.START_ABILITIES_FROM_BACKGROUND** permission.
+
  - If **visible** of the target ability is **false** in cross-application scenarios, the caller must have the **ohos.permission.START_INVISIBLE_ABILITY** permission.
 
 **Required permissions**: ohos.permission.START_ABILITIES_FROM_BACKGROUND
@@ -59,7 +63,7 @@ Observe the following when using this API:
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](../apis-ability-kit/errorcode-ability.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201     | The application does not have permission to call the interface. |
 | 202     | The application is not system-app, can not use system-api. |
@@ -120,7 +124,9 @@ startAbility(want: Want): Promise&lt;void&gt;
 Starts an ability that belongs to the same application as this StaticSubscriberExtensionAbility. This API uses a promise to return the result.
 
 Observe the following when using this API:
+
  - If an application running in the background needs to call this API to start an ability, it must have the **ohos.permission.START_ABILITIES_FROM_BACKGROUND** permission.
+
  - If **visible** of the target ability is **false** in cross-application scenarios, the caller must have the **ohos.permission.START_INVISIBLE_ABILITY** permission.
 
 **Required permissions**: ohos.permission.START_ABILITIES_FROM_BACKGROUND
@@ -145,7 +151,7 @@ Observe the following when using this API:
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](../apis-ability-kit/errorcode-ability.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201     | The application does not have permission to call the interface. |
 | 202     | The application is not system-app, can not use system-api. |

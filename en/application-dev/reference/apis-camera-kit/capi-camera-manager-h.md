@@ -1,10 +1,12 @@
 # camera_manager.h
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d0c7a5fb2bc1f1b1c7630c4a5886ec88f6136925 translatedAt=2026-06-09T10:27:41.823Z pushedAt=2026-06-10T01:59:42.637Z -->
 
 ## Overview
 
@@ -46,12 +48,13 @@ The file declares the camera manager concepts.
 | [Camera_ErrorCode OH_CameraManager_GetSupportedCameraOutputCapability(Camera_Manager* cameraManager, const Camera_Device* camera, Camera_OutputCapability** cameraOutputCapability)](#oh_cameramanager_getsupportedcameraoutputcapability) | - | Obtains the output capability supported by a camera.|
 | [Camera_ErrorCode OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode(Camera_Manager* cameraManager, const Camera_Device* camera, Camera_SceneMode sceneMode, Camera_OutputCapability** cameraOutputCapability)](#oh_cameramanager_getsupportedcameraoutputcapabilitywithscenemode) | - | Obtains the output capability supported by a camera in the specified mode.|
 | [Camera_ErrorCode OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode(Camera_Manager* cameraManager, const Camera_Device* camera, Camera_SceneMode sceneMode, Camera_OutputCapability** cameraOutputCapability)](#oh_cameramanager_getsupportedfullcameraoutputcapabilitywithscenemode) | - | Obtains the complete output capabilities supported by a specified camera in a specified mode, including YUV, HEIF, and HDR. Before using YUV, HEIF, or HDR, you need to explicitly call this method to ensure that the complete output capabilities are obtained.|
-| [Camera_ErrorCode OH_CameraManager_DeleteSupportedCameraOutputCapability(Camera_Manager* cameraManager, Camera_OutputCapability* cameraOutputCapability)](#oh_cameramanager_deletesupportedcameraoutputcapability) | - | Deletes the output capability supported by a camera.|
+| [Camera_ErrorCode OH_CameraManager_DeleteSupportedCameraOutputCapability(Camera_Manager* cameraManager, Camera_OutputCapability* cameraOutputCapability)](#oh_cameramanager_deletesupportedcameraoutputcapability) | - | Deletes the output capability supported by a camera. |
 | [Camera_ErrorCode OH_CameraManager_IsCameraMuted(Camera_Manager* cameraManager, bool* isCameraMuted)](#oh_cameramanager_iscameramuted) | - | Checks whether a camera is muted.|
 | [Camera_ErrorCode OH_CameraManager_CreateCaptureSession(Camera_Manager* cameraManager, Camera_CaptureSession** captureSession)](#oh_cameramanager_createcapturesession) | - | Creates a **CaptureSession** instance.|
 | [Camera_ErrorCode OH_CameraManager_CreateCameraInput(Camera_Manager* cameraManager, const Camera_Device* camera, Camera_Input** cameraInput)](#oh_cameramanager_createcamerainput) | - | Creates a **Camera_Input** instance.|
 | [Camera_ErrorCode OH_CameraManager_CreateCameraInput_WithPositionAndType(Camera_Manager* cameraManager, Camera_Position position, Camera_Type type, Camera_Input** cameraInput)](#oh_cameramanager_createcamerainput_withpositionandtype) | - | Creates a **Camera_Input** instance with the specified camera location and type.|
 | [Camera_ErrorCode OH_CameraManager_CreatePreviewOutput(Camera_Manager* cameraManager, const Camera_Profile* profile, const char* surfaceId, Camera_PreviewOutput** previewOutput)](#oh_cameramanager_createpreviewoutput) | - | Creates a **PreviewOutput** instance.|
+| [Camera_ErrorCode OH_CameraManager_CreateDeferredPreviewOutput(const Camera_Manager* cameraManager, const Camera_Profile* profile, Camera_PreviewOutput** previewOutput)](#oh_cameramanager_createdeferredpreviewoutput) | - | Creates a deferred **PreviewOutput** instance. After using the instance, call [OH_PreviewOutput_Release](capi-preview-output-h.md#oh_previewoutput_release) to release it. |
 | [Camera_ErrorCode OH_CameraManager_CreatePreviewOutputUsedInPreconfig(Camera_Manager* cameraManager, const char* surfaceId, Camera_PreviewOutput** previewOutput)](#oh_cameramanager_createpreviewoutputusedinpreconfig) | - | Creates a **PreviewOutput** instance to be used in a preconfiguration stream.|
 | [Camera_ErrorCode OH_CameraManager_CreatePhotoOutput(Camera_Manager* cameraManager, const Camera_Profile* profile, const char* surfaceId, Camera_PhotoOutput** photoOutput)](#oh_cameramanager_createphotooutput) | - | Creates a **PhotoOutput** instance. This API can only be used to create a **photoOutput** object in JPEG format.|
 | [Camera_ErrorCode OH_CameraManager_CreatePhotoOutputUsedInPreconfig(Camera_Manager* cameraManager, const char* surfaceId, Camera_PhotoOutput** photoOutput)](#oh_cameramanager_createphotooutputusedinpreconfig) | - | Creates a **PhotoOutput** instance to be used in a preconfiguration stream.|
@@ -566,6 +569,32 @@ Creates a **PreviewOutput** instance.
 
 **Returns**
 
+| Type | Description |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK: The method call is successful.<br>         CAMERA_INVALID_ARGUMENT: A parameter is missing or the parameter type is incorrect.<br>         CAMERA_SERVICE_FATAL_ERROR: A camera service exception occurs. |
+
+### OH_CameraManager_CreateDeferredPreviewOutput()
+
+```c
+Camera_ErrorCode OH_CameraManager_CreateDeferredPreviewOutput(const Camera_Manager* cameraManager, const Camera_Profile* profile, Camera_PreviewOutput** previewOutput)
+```
+
+**Description**
+
+Creates a deferred **PreviewOutput** instance. After using the instance, call [OH_PreviewOutput_Release](capi-preview-output-h.md#oh_previewoutput_release) to release it.
+
+**Since**: 24
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [const Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
+| [const Camera_Profile](capi-oh-camera-camera-profile.md)* profile | Pointer to the profile used for creating the **Camera_PreviewOutput** instance. |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)** previewOutput | Double pointer to the **Camera_PreviewOutput** instance created, if the function is successfully called. |
+
+**Returns**
+
 | Type| Description|
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
@@ -798,7 +827,7 @@ Obtains the scene modes supported by a camera.
 | Name| Description|
 | -- | -- |
 | [Camera_Device](capi-oh-camera-camera-device.md)* camera | Pointer to the **Camera_Device** instance.|
-| [Camera_SceneMode](capi-camera-h.md#camera_scenemode)** sceneModes | Double pointer to the list of scene modes, which are defined in the Camera_SceneMode struct, if the function is successfully called.|
+| [Camera_SceneMode](capi-camera-h.md#camera_scenemode)** sceneModes | Double pointer to the list of scene modes, which are defined in the **Camera_SceneMode** struct, if the function is successfully called.|
 | uint32_t* size | Pointer to the size of the list of scene modes.|
 
 **Returns**
@@ -849,7 +878,7 @@ Checks whether the device supports the flashlight.
 | Name| Description|
 | -- | -- |
 | [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance.|
-| bool* isTorchSupported | Pointer to the check result for the support of the flashlight. **true** if supported, **false** otherwise.|
+| bool* isTorchSupported | Pointer to the check result for the support of the flashlight. The value **true** indicates the flashlight is supported, and **false** indicates the opposite.|
 
 **Returns**
 
@@ -875,7 +904,7 @@ Checks whether the device supports the specified flashlight mode.
 | -- | -- |
 | [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance.|
 | [Camera_TorchMode](capi-camera-h.md#camera_torchmode) torchMode | Flashlight mode to check.|
-| bool* isTorchSupported | Pointer to the check result for the support of the flashlight mode. **true** if supported, **false** otherwise.|
+| bool* isTorchSupported | Pointer to the check result for the support of the flashlight mode. The value **true** indicates the flashlight mode is supported, and **false** indicates the opposite.|
 
 **Returns**
 
@@ -1008,8 +1037,8 @@ Obtains the concurrency information of the specified cameras.
 | [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance.|
 | [const Camera_Device](capi-oh-camera-camera-device.md)* camera | List of cameras used for query. You are advised to set this parameter to the camera list that contains the front and rear cameras obtained using [OH_CameraManager_GetCameraDevice](capi-camera-manager-h.md#oh_cameramanager_getcameradevice).|
 | uint32_t deviceSize | Length of the camera device list. The value must be set to 2 (indicating that both the front and rear cameras are used for concurrency information query).|
-| [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md)** cameraConcurrentInfo | Double pointer to an array of Camera_ConcurrentInfo objects representing the concurrency information of the cameras. This parameter must be set to NULL by default when being passed in.<br> If the camera supports concurrency, it is assigned the Camera_ConcurrentInfo array obtained.<br> If the camera does not support concurrency, the passed-in value is retained and the error code [Camera_ErrorCode](capi-camera-h.md#camera_errorcode).CAMERA_SERVICE_FATAL_ERROR is returned.|
-| uint32_t* infoSize | Pointer to the length of the array. This parameter must be set to **0** by default when being passed in.<br> If the camera supports concurrency, it is assigned the length of the Camera_ConcurrentInfo array obtained.<br> If the camera does not support concurrency, the passed-in value is retained and the error code [Camera_ErrorCode](capi-camera-h.md#camera_errorcode).CAMERA_SERVICE_FATAL_ERROR is returned.|
+| [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md)** cameraConcurrentInfo | Double pointer to an array of **Camera_ConcurrentInfo** objects representing the concurrency information of the cameras. This parameter must be set to null by default when being passed in.<br> If the camera supports concurrency, it is assigned the **Camera_ConcurrentInfo** array obtained.<br> If the camera does not support concurrency, the passed-in value is retained and the error code [Camera_ErrorCode](capi-camera-h.md#camera_errorcode).CAMERA_SERVICE_FATAL_ERROR is returned.|
+| uint32_t* infoSize | Pointer to the length of the array. This parameter must be set to **0** by default when being passed in.<br> If the camera supports concurrency, it is assigned the length of the **Camera_ConcurrentInfo** array obtained.<br> If the camera does not support concurrency, the passed-in value is retained and the error code [Camera_ErrorCode](capi-camera-h.md#camera_errorcode).CAMERA_SERVICE_FATAL_ERROR is returned.|
 
 **Returns**
 

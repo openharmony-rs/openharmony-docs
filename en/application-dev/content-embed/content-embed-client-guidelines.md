@@ -9,9 +9,9 @@
 
 ## When to Use
 
-The OH_ContentEmbed content embedding module provides an object editing framework and technology for inter-application document embedding and collaborative editing.
+The [OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md) content embedding module provides an object editing framework and technology for inter-application document embedding and collaborative editing.
 
-An OE client application is an application that embeds documents from other applications. By calling OE framework APIs, it can embed external documents, display document snapshots, and start OE server applications on demand to edit documents.
+An OE client application is an application that embeds documents from other applications. By calling [OE framework APIs](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md), it can embed external documents, display document snapshots, and start OE server applications on demand to edit documents.
 
 Typical use cases include:
 
@@ -25,7 +25,7 @@ Before using the APIs, check whether the device supports the `SystemCapability.C
 
 ## Available APIs
 
-Common APIs are listed in the following table. For more API details, see OH_ContentEmbed API.
+Common APIs are listed in the following table. For more API details, see [OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md).
 
 **Table 1** Main client APIs
 
@@ -434,5 +434,3 @@ void HandleProxy(ContentEmbed_ExtensionProxy* proxy)
     OH_ContentEmbed_Proxy_StopWork(proxy);
 }
 ```
-
-<!--no_check-->

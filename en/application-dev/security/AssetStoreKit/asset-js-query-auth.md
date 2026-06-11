@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4c605d27e0af7c49e44095d77dd99bf8c13d3e25 translatedAt=2026-06-03T09:10:33.610Z pushedAt=2026-06-03T09:31:42.427Z -->
 
 ## Available APIs
 
@@ -88,15 +89,16 @@ The following table describes the attributes of **AssetMap** used for querying a
 
 > **NOTE**
 >
-> The **asset** module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
+> This module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For details about the synchronous APIs, see [@ohos.security.asset (Asset Store Service)](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
-> Before querying an asset, ensure that the asset that requires user authentication exists. For details about how to add an asset, see [Adding an Asset](asset-js-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
+> Before querying, ensure that the asset requiring user authentication already exists. For details, see [the guide](asset-js-add.md). Otherwise, a NOT_FOUND error (error code 24000002) will be thrown.
 
-Query asset **demo_alias** with user authentication. For details about **@ohos.userIAM.userAuth** used in the example, see [@ohos.userIAM.userAuth (User Authentication)](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10).
+Query the asset with the alias **demo_alias** that requires user authentication. For details about how to use **@ohos.userIAM.userAuth** mentioned in the example, see the [start](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10) API in the userAuth documentation.
 
 1. Include the header file and define the tool function.
+
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_auth.ets) -->
-   
+
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
    import { util } from '@kit.ArkTS';
@@ -116,8 +118,9 @@ Query asset **demo_alias** with user authentication. For details about **@ohos.u
    ```
 
 2. Develop the desired feature.
+
    <!-- @[query_user_auth_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_auth.ets) -->
-   
+
    ``` TypeScript
    async function userAuthenticate(challenge: Uint8Array): Promise<Uint8Array> {
      return new Promise((resolve, reject) => {

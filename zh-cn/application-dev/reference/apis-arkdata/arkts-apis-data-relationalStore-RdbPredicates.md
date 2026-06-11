@@ -55,7 +55,7 @@ inDevices(devices: Array&lt;string&gt;): RdbPredicates
 > **说明：**
 >
 > 其中devices通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
-数据库同步时调用Sync接口，需要在入参谓词中调用inDevices接口选择设备。如果不调用inDevices接口即默认连接组网内所有的设备。
+> 调用[sync](arkts-apis-data-relationalStore-RdbStore.md#sync)接口同步数据库时，在入参谓词中调用inDevices接口以选择设备。如果不调用inDevices接口，则默认连接组网内所有的设备。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -609,7 +609,7 @@ notBetween(field: string, low: ValueType, high: ValueType): RdbPredicates
 | ------ | ----------------------- | ---- | -------------------------- |
 | field  | string                  | 是   | 数据库表中的列名。         |
 | low    | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示与谓词匹配的最小值。   |
-| high   | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示要与谓词匹配的最大值。 |
+| high   | [ValueType](arkts-apis-data-relationalStore-t.md#valuetype) | 是   | 指示与谓词匹配的最大值。 |
 
 **返回值**：
 
@@ -1048,7 +1048,7 @@ in(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 **示例：**
 
 ```ts
-// 匹配数据表的"AGE"列中在[18，20]中的值
+// 匹配数据表的"AGE"列中在[18, 20]中的值
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.in("AGE", [18, 20]);
 ```
@@ -1057,7 +1057,7 @@ predicates.in("AGE", [18, 20]);
 
 notIn(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
-将谓词配置为匹配数据字段为ValueType且值超出给定范围的指定字段。
+配置谓词以匹配数据表的field列中值不在给定的value集合内的字段。该方法等同于SQL语句中的"NOT IN"。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1166,7 +1166,7 @@ predicates.notLike("NAME", "%os%");
 
 ## having<sup>20+</sup>
 
-having(conditions:string, args?: Array\<ValueType>): RdbPredicates
+having(conditions: string, args?: Array\<ValueType>): RdbPredicates
 
 筛选符合条件的分组数据。
 
@@ -1176,7 +1176,7 @@ having(conditions:string, args?: Array\<ValueType>): RdbPredicates
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| conditions  | string | 是   | 用于过滤使用[groupBy](#groupby)获得的数据，不能为空且必须与[groupBy](#groupby)配合使用。|
+| conditions  | string | 是   | 用于过滤使用[groupBy](#groupby)获得的数据，conditions参数不能为空字符串且必须与[groupBy](#groupby)配合使用。|
 | args  | Array<[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)> | 否   | 条件中使用的参数，用来替换条件语句中的占位符，不传时默认为空数组。 |
 
 **返回值**：

@@ -1,8 +1,8 @@
 # Interface (Window)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -1608,7 +1608,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
-Sets whether the application main window layout or the application child window layout is immersive. This API uses a promise to return the result. This API neither takes effect nor returns an error when called by other windows.
+Sets whether the application main window or child windows use the [immersive layout](../../windowmanager/window-terminology.md#immersive-layout). This API uses a promise to return the result. This API neither takes effect nor returns an error when called by other windows.
 
 An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
 
@@ -1686,7 +1686,7 @@ export default class EntryAbility extends UIAbility {
 
 setImmersiveModeEnabledState(enabled: boolean): void
 
-Sets whether to enable the immersive layout for the main window. This API does not change the window mode or size. It can be called only by the main window and child windows.
+Sets whether to enable the [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) for the current window. This API does not change the window mode or size. It can be called only by the main window and child windows.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -1730,7 +1730,7 @@ try {
 
 getImmersiveModeEnabledState(): boolean
 
-Checks whether the immersive layout is enabled for this window.
+Checks whether the [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) is enabled for the current window.
 
 This API can be called only by the main window and child windows.
 
@@ -1768,14 +1768,14 @@ try {
 
 isImmersiveLayout(): boolean
 
-Checks whether this window is in immersive mode.
+Checks whether the current window is using the [immersive layout](../../windowmanager/window-terminology.md#immersive-layout).
 
 **System capability**: SystemCapability.Window.SessionManager
 
 **Return value**
 | Type    | Description                                                                                |
 | ------- | ------------------------------------------------------------------------------------ |
-| boolean | Check result for whether the window is in immersive mode. **true** if in immersive mode, **false** otherwise.|
+| boolean | Whether the window is using the immersive layout. **true** if yes, **false** otherwise.|
 
 **Error codes**
 
@@ -3389,6 +3389,8 @@ For details about how to set the soft keyboard to the fixed or floating state, s
 
 **System capability**: SystemCapability.Window.SessionManager
 
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, error code 801 is returned.
+
 **Parameters**
 
 | Name  | Type               | Mandatory| Description                                       |
@@ -3430,6 +3432,8 @@ Unsubscribes from the event indicating that the soft keyboard in the fixed state
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -3478,6 +3482,8 @@ For details about how to set the soft keyboard to the fixed or floating state, s
 
 **System capability**: SystemCapability.Window.SessionManager
 
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, error code 801 is returned.
+
 **Parameters**
 
 | Name  | Type               | Mandatory| Description                                       |
@@ -3519,6 +3525,8 @@ Unsubscribes from the event indicating that the soft keyboard in the fixed state
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -3567,6 +3575,8 @@ For details about how to set the soft keyboard to the fixed or floating state, s
 
 **System capability**: SystemCapability.Window.SessionManager
 
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, this API neither takes effect nor returns an error.
+
 **Parameters**
 
 | Name  | Type               | Mandatory| Description                                       |
@@ -3606,6 +3616,8 @@ Unsubscribes from the event indicating that the show animation of the soft keybo
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, this API neither takes effect nor returns an error.
 
 **Parameters**
 
@@ -3653,6 +3665,8 @@ For details about how to set the soft keyboard to the fixed or floating state, s
 
 **System capability**: SystemCapability.Window.SessionManager
 
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, this API neither takes effect nor returns an error.
+
 **Parameters**
 
 | Name  | Type               | Mandatory| Description                                       |
@@ -3692,6 +3706,8 @@ Unsubscribes from the event indicating that the hide animation of the soft keybo
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be called properly on phones, tablets, and PCs/2-in-1 devices. On other device types, this API neither takes effect nor returns an error.
 
 **Parameters**
 
@@ -4762,7 +4778,7 @@ try {
 
 off(type: 'windowStatusDidChange', callback?: Callback&lt;WindowStatusType&gt;): void
 
-Unsubscribes from the window status change event.
+Unsubscribes from the event indicating that the window status has changed.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -5211,7 +5227,7 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 
 Subscribes to main window or child window closing events. This event is triggered only when the user clicks the close button in the system-provided title bar to close the window. It is not triggered when the window is closed in other ways.
 
-The callback function in this API is executed synchronously. For synchronous close events of child windows, refer to [on('subWindowClose')](#onsubwindowclose12). For synchronous close events of the main window, refer to [on('windowStageClose')](arkts-apis-window-WindowStage.md#onwindowstageclose14).
+The callback function in this API is executed asynchronously. For synchronous close events of child windows, refer to [on('subWindowClose')](#onsubwindowclose12). For synchronous close events of the main window, refer to [on('windowStageClose')](arkts-apis-window-WindowStage.md#onwindowstageclose14).
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -5750,7 +5766,7 @@ promise.then((data) => {
 
 setWindowColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;): void
 
-Sets a color space for this window. This API uses an asynchronous callback to return the result.
+Sets the color space of the current window. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5760,7 +5776,7 @@ Sets a color space for this window. This API uses an asynchronous callback to re
 
 | Name| Type| Mandatory| Description|
 | ---------- | ------------------------- | -- | ----------- |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes| Color space to set.|
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes| Color space.|
 | callback   | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.  |
 
 **Error codes**
@@ -5795,7 +5811,7 @@ try {
 
 setWindowColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 
-Sets a color space for this window. This API uses a promise to return the result.
+Sets the color space of the current window. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -5805,7 +5821,7 @@ Sets a color space for this window. This API uses a promise to return the result
 
 | Name| Type| Mandatory| Description|
 | ---------- | ------------------------- | -- | ------------- |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes| Color space to set.|
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes| Color space.|
 
 **Return value**
 
@@ -5843,7 +5859,7 @@ try {
 
 getWindowColorSpace(): ColorSpace
 
-Obtains the color space of this window.
+Obtains the color space of the current window.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -8142,7 +8158,18 @@ Sets the window title. This API uses a promise to return the result. In the stag
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. On a device that supports freeform windows but is not in the freeform window state, this API neither takes effect nor returns an error. Once the device enters the freeform window mode, this API takes effect. On a device that does not support freeform windows, this API returns error code 1300002 or 801.
+**Device behavior differences**:
+ - For the main window:
+   - On a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state, this API can be properly called.
+   - On a device that supports freeform windows but is not in the freeform window state, this API neither takes effect nor returns an error. Once the device enters the freeform window mode, this API takes effect.
+   - On a device that does not support freeform windows, this API returns error code 1300002 or 801.
+
+ - For a child window that displays the decoration bar (that is, **decorEnabled** in [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) is set to **true** when the child window is created):
+   - On a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state, this API can be properly called.
+   - On a device that supports freeform windows but is not in the freeform window state, this API neither takes effect nor returns an error. Once the device enters the freeform window mode, this API takes effect.
+   - On a device that does not support the freeform window state, this API can be properly called.
+
+ - For a child window that does not display the decoration bar (that is, **decorEnabled** in [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) is set to **false** when the child window is created), this API returns error code 1300002 or 801 when called.
 
 **Parameters**
 
@@ -8795,7 +8822,7 @@ If the child window is focused and the new parent window has a modal child windo
 
 **Device behavior differences**:
 
-Before  <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices but returns error code 801 on other devices.
+Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices but returns error code 801 on other devices.
 
 Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. On a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows, this API returns error code 801.
 
@@ -8855,7 +8882,7 @@ Obtains the parent window of this child window.
 
 **Device behavior differences**:
 
-Before  <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices but returns error code 801 on other devices.
+Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices but returns error code 801 on other devices.
 
 Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on all devices.
 
@@ -11084,7 +11111,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Sets whether the main window layout or the child window layout is immersive. This API uses an asynchronous callback to return the result. It does not work when called by a system window.
+Sets whether the main window or child windows use the [immersive layout](../../windowmanager/window-terminology.md#immersive-layout). This API uses an asynchronous callback to return the result. It does not work when called by a system window.
 
 An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
 
@@ -11741,7 +11768,7 @@ export default class EntryAbility extends UIAbility {
 
 setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Sets whether the main window layout or the child window layout is immersive. This API uses an asynchronous callback to return the result.
+Sets whether the main window or child windows use the [immersive layout](../../windowmanager/window-terminology.md#immersive-layout). This API uses an asynchronous callback to return the result.
 
 An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
 
@@ -11798,7 +11825,7 @@ export default class EntryAbility extends UIAbility {
 
 setLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
-Sets whether the main window layout or the child window layout is immersive. This API uses a promise to return the result.
+Sets whether the main window or child windows use the [immersive layout](../../windowmanager/window-terminology.md#immersive-layout). This API uses a promise to return the result.
 
 An immersive layout means that the layout does not avoid the status bar or <!--RP15-->three-button navigation bar<!--RP15End-->, and components may overlap with them.
 
@@ -12366,7 +12393,7 @@ promise.then((data) => {
 
 setColorSpace(colorSpace:ColorSpace, callback: AsyncCallback&lt;void&gt;): void
 
-Sets a color space for this window. This API uses an asynchronous callback to return the result.
+Sets the color space of the current window. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -12378,7 +12405,7 @@ Sets a color space for this window. This API uses an asynchronous callback to re
 
 | Name    | Type                     | Mandatory| Description        |
 | ---------- | ------------------------- | ---- | ------------ |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes  | Color space to set.|
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes  | Color space.|
 | callback   | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.  |
 
 
@@ -12401,7 +12428,7 @@ windowClass.setColorSpace(window.ColorSpace.WIDE_GAMUT, (err: BusinessError) => 
 
 setColorSpace(colorSpace:ColorSpace): Promise&lt;void&gt;
 
-Sets a color space for this window. This API uses a promise to return the result.
+Sets the color space of the current window. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -12413,7 +12440,7 @@ Sets a color space for this window. This API uses a promise to return the result
 
 | Name    | Type                     | Mandatory| Description          |
 | ---------- | ------------------------- | ---- | -------------- |
-| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes  | Color space to set.|
+| colorSpace | [ColorSpace](arkts-apis-window-e.md#colorspace8) | Yes  | Color space.|
 
 **Return value**
 
@@ -13095,4 +13122,3 @@ promise.then(() => {
   console.error(`Failed to set the window to be touchable. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
-<!--no_check-->

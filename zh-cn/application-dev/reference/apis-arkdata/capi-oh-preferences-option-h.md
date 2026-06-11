@@ -62,7 +62,7 @@ enum Preferences_StorageType
 | 枚举项                      | 描述                                                         |
 | --------------------------- | ------------------------------------------------------------ |
 | PREFERENCES_STORAGE_XML = 0 | XML存储模式，对数据的操作发生在内存中，调用[OH_Preferences_Close](capi-oh-preferences-h.md#oh_preferences_close)时落盘，不支持多进程。 |
-| PREFERENCES_STORAGE_GSKV    | GSKV存储模式，对数据的操作实时落盘，可支持多进程             |
+| PREFERENCES_STORAGE_GSKV    | GSKV存储模式，对数据的操作实时落盘，可支持多进程。             |
 
 
 ## 函数说明
@@ -215,7 +215,7 @@ int OH_PreferencesOption_Destroy(OH_PreferencesOption *option)
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回接口操作执行的状态码。<br>PREFERENCES_OK，表示操作成功。<br>PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
+| int  | 返回接口操作执行的状态码。<br>若错误码为PREFERENCES_OK，表示操作成功。<br>若错误码为PREFERENCES_ERROR_INVALID_PARAM，表示参数不合法。 |
 
 
 

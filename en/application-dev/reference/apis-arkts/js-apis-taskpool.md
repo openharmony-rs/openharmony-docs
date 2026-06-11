@@ -1,8 +1,8 @@
 # @ohos.taskpool (Starting the Task Pool)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -149,7 +149,7 @@ taskpool.execute<[[number, string]], string>(testWithArray, [100, "test"]).then(
 
 execute(task: Task, priority?: Priority): Promise\<Object>
 
-Places a task in the internal queue of the task pool. The task will not be executed immediately; instead, it waits to be distributed to a worker thread for execution. In the current mode, you can set the task priority and cancel the task. Note that the task cannot belong to a task group, serial queue, or asynchronous queue. For non-continuous tasks, this API can be called multiple times. This API uses a promise to return the result.
+Places a task in the internal queue of the task pool. The task will not be executed immediately; instead, it waits to be distributed to a worker thread for execution. In the current mode, you can set the task priority and cancel the task. Note that the task cannot belong to a task group, serial queue, or asynchronous queue. For continuous tasks, this API can be called only once. For non-continuous tasks, this API can be called multiple times. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -203,12 +203,86 @@ taskpool.execute(task3, taskpool.Priority.HIGH).then((value: Object) => {
 });
 ```
 
+## taskpool.execute<sup>24+</sup>
+
+execute(task: Task, configs: Configs): Promise\<Object>
+
+Places a task in the internal queue of the task pool. The task will not be executed immediately; instead, it waits to be distributed to a worker thread for execution. In the current mode, you can set the task priority, set the timeout interval, and cancel the task. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - Tasks in a task group cannot be executed.
+> - Serial queue tasks cannot be executed.
+> - Asynchronous queue tasks cannot be executed.
+> - Periodic tasks cannot be executed.
+> - Delayed tasks cannot be executed.
+> - Dependent tasks cannot be executed.
+> - Repeated task execution is not supported.
+> - A task that has been set to timeout cannot be depended on by other tasks or depend on other tasks.
+> - If a failure listener is set for a task and the task execution times out, the failure listener will not be triggered.
+> - If a task sends messages to the host thread via sendData, the host thread stops receiving messages after task timeout.
+> - After a timeout exception is thrown, the task being executed will continue to run in the thread, but the execution result will not be returned.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Parameters**
+
+| Name  | Type                 | Mandatory| Description                                      |
+| -------- | --------------------- | ---- | ---------------------------------------- |
+| task     | [Task](#task)         | Yes  | Task to be executed.                 |
+| configs | [Configs](#configs24) | Yes  | Timeout interval and task priority.|
+
+**Return value**
+
+| Type             | Description             |
+| ----------------  | ---------------- |
+| Promise\<Object> | Promise used to return an object that carries the function execution result.|
+
+**Error codes**
+
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+
+| ID| Error Message                                    |
+| -------- | ------------------------------------------- |
+| 10200006 | An exception occurred during serialization. |
+| 10200014 | The function is not marked as concurrent.     |
+| 10200051 | The periodic task cannot be executed again. |
+| 10200057 | The task cannot be executed by two APIs.  |
+| 10200058 | Task timed out.  |
+
+**Example**
+
+```ts
+@Concurrent
+function printArgs(args: number, time: number): number {
+  let start = Date.now();
+  while (Date.now() - start < time) {
+    continue;
+  }
+  return args;
+}
+
+let task: taskpool.Task = new taskpool.Task(printArgs, 100, 1000);
+let config: taskpool.Configs = { timeout: 500, priority: taskpool.Priority.HIGH };
+taskpool.execute(task, config).catch((e: BusinessError) => {
+  // Failed to execute task. Code: 10200058, message: Task timed out.
+  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
+})
+try {
+  taskpool.execute(task, { timeout: 500 });
+} catch (e) {
+  // Failed to execute task. Code: 10200057, message: The task cannot be executed by two APIs, the timeout task cannot be executed again.
+  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
+}
+```
 
 ## taskpool.execute<sup>13+</sup>
 
 execute<A extends Array\<Object>, R>(task: GenericsTask<A, R>, priority?: Priority): Promise\<R>
 
-Places the generic task in the internal queue of the task pool. The parameter type and return value type of the task are not verified. This API uses a promise to return the result.
+Places the created generic task in the internal task queue of the task pool and verify the parameter type and return value type of the task. This API uses a promise to return the result.
 
 The verification of the **execute** task works in conjunction with **new GenericsTask**, requiring that the parameter and return value types match those specified in **new GenericsTask**.
 
@@ -220,7 +294,7 @@ The verification of the **execute** task works in conjunction with **new Generic
 
 | Name  | Type                 | Mandatory| Description                                      |
 | -------- | --------------------- | ---- | ---------------------------------------- |
-| task     | [GenericsTask<A, R>](#genericstask13)         | Yes  | Generic task to be executed.                 |
+| task     | [GenericsTask](#genericstask13)<A, R>         | Yes  | Generic task to be executed.                 |
 | priority | [Priority](#priority) | No  | Priority of the task to be executed. The default value is **taskpool.Priority.MEDIUM**.|
 
 **Return value**
@@ -264,6 +338,82 @@ taskpool.execute<[number], number>(task3, taskpool.Priority.HIGH).then((value: n
 });
 ```
 
+## taskpool.execute<sup>24+</sup>
+
+execute<A extends Array\<Object>, R>(task: GenericsTask<A, R>, configs: Configs): Promise\<R>
+
+Places the generic task in the internal queue of the task pool. The parameter type and return value type of the task are not verified. This API uses a promise to return the result.
+
+The verification of the **execute** task works in conjunction with **new GenericsTask**, requiring that the parameter and return value types match those specified in **new GenericsTask**.
+
+> **NOTE**
+>
+> - Tasks in a task group cannot be executed.
+> - Serial queue tasks cannot be executed.
+> - Asynchronous queue tasks cannot be executed.
+> - Periodic tasks cannot be executed.
+> - Delayed tasks cannot be executed.
+> - Dependent tasks cannot be executed.
+> - Repeated task execution is not supported.
+> - A task that has been set to timeout cannot be depended on by other tasks or depend on other tasks.
+> - If a failure listener is set for a task and the task execution times out, the failure listener will not be triggered.
+> - If a task sends messages to the host thread via sendData, the host thread stops receiving messages after task timeout.
+> - After a timeout exception is thrown, the task being executed will continue to run in the thread, but the execution result will not be returned.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Parameters**
+
+| Name  | Type                 | Mandatory| Description                                      |
+| -------- | --------------------- | ---- | ---------------------------------------- |
+| task     | [GenericsTask](#genericstask13)<A, R>        | Yes  | Generic task to be executed.                 |
+| configs | [Configs](#configs24) | Yes  | Timeout interval and task priority.|
+
+**Return value**
+
+| Type             | Description             |
+| ----------------  | ---------------- |
+| Promise\<R> | Promise used to return an object that carries the function execution result.|
+
+**Error codes**
+
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+
+| ID| Error Message                                    |
+| -------- | ------------------------------------------- |
+| 10200006 | An exception occurred during serialization. |
+| 10200014 | The function is not marked as concurrent.     |
+| 10200051 | The periodic task cannot be executed again. |
+| 10200057 | The task cannot be executed by two APIs.  |
+| 10200058 | Task timed out.  |
+
+**Example**
+
+```ts
+@Concurrent
+function printArgs(args: number, time: number): number {
+  let start = Date.now();
+  while (Date.now() - start < time) {
+    continue;
+  }
+  return args;
+}
+
+let task: taskpool.Task = new taskpool.GenericsTask<[number, number], number>(printArgs, 100, 1000);
+let config: taskpool.Configs = { timeout: 500, priority: taskpool.Priority.MEDIUM };
+taskpool.execute<[number, number], number>(task, config).catch((e: BusinessError) => {
+  // Failed to execute task. Code: 10200058, message: Task timed out.
+  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
+})
+try {
+  taskpool.execute<[number, number], number>(task, { timeout: 500 });
+} catch (e) {
+  // Failed to execute task. Code: 10200057, message: The task cannot be executed by two APIs, the timeout task cannot be executed again.
+  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
+}
+```
 
 ## taskpool.execute<sup>10+</sup>
 
@@ -290,12 +440,12 @@ Places a task group in the internal queue of the task pool. The tasks in the tas
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                    |
 | -------- | ------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200006 | An exception occurred during serialization. |
+| 10200059 | TaskGroup cannot be re-executed. |
 
 **Example**
 
@@ -319,11 +469,78 @@ taskGroup2.addTask(task1);
 taskGroup2.addTask(task2);
 taskGroup2.addTask(task3);
 taskpool.execute(taskGroup1).then((res: Array<Object>) => {
-  console.info("taskpool execute res is:" + res);
+  console.info("Succeeded in executing task, res is:" + res);
 });
 taskpool.execute(taskGroup2).then((res: Array<Object>) => {
-  console.info("taskpool execute res is:" + res);
+  console.info("Succeeded in executing task, res is:" + res);
 });
+```
+
+## taskpool.execute<sup>24+</sup>
+
+execute(group: TaskGroup, configs: Configs): Promise<Object[]>
+
+Places a task group in the internal queue of the task pool. The tasks in the task group are not executed immediately. They wait to be distributed to the worker thread for execution. After all tasks in the task group are executed, a result array is returned. This mode is applicable to the execution of associated tasks. This API uses a promise to return the result.
+
+Specifies the timeout interval and priority for executing the task group within configs. If the specified timeout interval elapses but the task group is not complete, a task group timeout exception is thrown.
+
+> **NOTE**
+>
+> - Repeated execution of a task group is not supported.
+> - After a timeout exception is thrown, the task being executed will continue to run in the thread, but the execution result will not be returned.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**Parameters**
+
+| Name    | Type                       | Mandatory| Description                                                          |
+| --------- | --------------------------- | ---- | -------------------------------------------------------------- |
+| group     | [TaskGroup](#taskgroup10)     | Yes  | Task group to be executed.                                     |
+| configs  | [Configs](#configs24)       | Yes  | Timeout interval and task priority.|
+
+**Return value**
+
+| Type                | Description                              |
+| ----------------    | ---------------------------------- |
+| Promise\<Object[]>  | Promise used to return an object array that carries the function execution result.|
+
+**Error codes**
+
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+
+| ID| Error Message                                    |
+| -------- | ------------------------------------------- |
+| 10200006 | An exception occurred during serialization. |
+| 10200059 | TaskGroup cannot be re-executed. |
+| 10200070 | TaskGroup timed out. |
+
+**Example**
+
+```ts
+@Concurrent
+function printArgs(args: number, time: number): number {
+  let start = Date.now();
+  while (Date.now() - start < time) {
+    continue;
+  }
+  return args;
+}
+
+let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
+taskGroup.addTask(printArgs, 10, 1000);
+let config: taskpool.Configs = {timeout: 500, priority: taskpool.Priority.HIGH};
+taskpool.execute(taskGroup, config).catch((e:BusinessError) => {
+  // Failed to execute task. Code: 10200070, message: TaskGroup timed out.
+  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
+})
+try {
+  taskpool.execute(taskGroup, config);
+} catch (e) {
+  // Failed to execute task. Code: 10200059, message: TaskGroup cannot be re-executed, taskGroup has already set timeout.
+  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
+}
 ```
 
 ## taskpool.executeDelayed<sup>11+</sup>
@@ -378,9 +595,9 @@ let t: number = Date.now();
 console.info("taskpool start time is: " + t);
 let task: taskpool.Task = new taskpool.Task(printArgs, 100); // 100: test number
 taskpool.executeDelayed(1000, task).then(() => { // 1000: delayTime is 1000ms
-  console.info("taskpool execute success");
+  console.info('Succeeded in executing task');
 }).catch((e: BusinessError) => {
-  console.error(`taskpool execute: Code: ${e.code}, message: ${e.message}`);
+  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
 })
 ```
 
@@ -402,7 +619,7 @@ The verification of the **executeDelayed** task works in conjunction with **new 
 | Name      | Type         | Mandatory| Description                |
 | ----------- | ------------- | ---- | -------------------- |
 | delayTime   | number        | Yes  | Delay, in ms. The value must be greater than or equal to 0. |
-| task        | [GenericsTask\<A, R>](#genericstask13) | Yes  | Generic task to be executed with a delay.|
+| task        | [GenericsTask](#genericstask13)<A, R> | Yes  | Generic task to be executed with a delay.|
 | priority    | [Priority](#priority)       | No  | Priority of the task. The default value is **taskpool.Priority.MEDIUM**.|
 
 **Return value**
@@ -436,9 +653,9 @@ function printArgs(args: number): string {
 
 let task: taskpool.Task = new taskpool.GenericsTask<[number], string>(printArgs, 100); // 100: test number
 taskpool.executeDelayed<[number], string>(1000, task).then((res: string) => { // 1000: delayTime is 1000ms
-  console.info("taskpool execute success");
+  console.info('Succeeded in executing task');
 }).catch((e: BusinessError) => {
-  console.error(`taskpool execute: Code: ${e.code}, message: ${e.message}`);
+  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
 })
 ```
 
@@ -503,7 +720,7 @@ function taskpoolTest() {
     let task: taskpool.Task = new taskpool.Task(printArgs, 100); // 100: test number
     taskpool.executePeriodically(1000, task); // 1000: period is 1000ms
   } catch (e) {
-    console.error(`taskpool execute-1: Code: ${e.code}, message: ${e.message}`);
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   }
 
   try {
@@ -511,7 +728,7 @@ function taskpoolTest() {
     periodicTask.onReceiveData(printResult);
     taskpool.executePeriodically(1000, periodicTask); // 1000: period is 1000ms
   } catch (e) {
-    console.error(`taskpool execute-2: Code: ${e.code}, message: ${e.message}`);
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   }
 }
 
@@ -536,7 +753,7 @@ The verification of the **executeDelayed** task works in conjunction with **new 
 | Name      | Type         | Mandatory | Description                |
 | -----------  | ------------- | ----- | -------------------- |
 | period       | number        | Yes   | Execution period, in ms. The value must be greater than or equal to 0. |
-| task         | [GenericsTask\<A, R>](#genericstask13) | Yes   | Generic task to be executed periodically.|
+| task         | [GenericsTask](#genericstask13)<A, R> | Yes   | Generic task to be executed periodically.|
 | priority     | [Priority](#priority) | No  | Priority of the task. The default value is **taskpool.Priority.MEDIUM**.|
 
 
@@ -580,7 +797,7 @@ function taskpoolTest() {
     let task: taskpool.Task = new taskpool.GenericsTask<[number], void>(printArgs, 100); // 100: test number
     taskpool.executePeriodically<[number], void>(1000, task); // 1000: period is 1000ms
   } catch (e) {
-    console.error(`taskpool execute-1: Code: ${e.code}, message: ${e.message}`);
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   }
 
   try {
@@ -588,7 +805,7 @@ function taskpoolTest() {
     periodicTask.onReceiveData(printResult);
     taskpool.executePeriodically<[number], void>(1000, periodicTask); // 1000: period is 1000ms
   } catch (e) {
-    console.error(`taskpool execute-2: Code: ${e.code}, message: ${e.message}`);
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   }
 }
 
@@ -658,9 +875,9 @@ function concurrentFunc() {
   let task5: taskpool.Task = new taskpool.Task(inspectStatus, 500); // 500: test number
   let task6: taskpool.Task = new taskpool.Task(inspectStatus, 600); // 600: test number
   taskpool.execute(task1).then((res: Object) => {
-    console.info("taskpool test result: " + res);
+    console.info(`Succeeded in executing task. result: ` + res);
   }).catch((err: BusinessError) => {
-    console.error("taskpool catch err: " + err.message);
+    console.error(`Failed to execute task. Code: ${err.code}, message: ${err.message}`);
   });
   taskpool.execute(task2);
   taskpool.execute(task3);
@@ -672,7 +889,7 @@ function concurrentFunc() {
     try {
       taskpool.cancel(task1);
     } catch (e) {
-      console.error(`taskpool: cancel error code: ${e.code}, info: ${e.message}`);
+      console.error(`Failed to cancel task. Code: ${e.code}, message: ${e.message}`);
     }
   }, 1000);
 }
@@ -728,18 +945,18 @@ function concurrentFunc() {
   let taskGroup2: taskpool.TaskGroup = new taskpool.TaskGroup();
   taskGroup2.addTask(printArgs, 100); // 100: test number
   taskpool.execute(taskGroup1).then((res: Array<Object>) => {
-    console.info("taskGroup1 res is:" + res);
+    console.info(`Succeeded in executing task. res is: ` + res);
   });
   taskpool.execute(taskGroup2).then((res: Array<Object>) => {
-    console.info("taskGroup2 res is:" + res);
+    console.info(`Succeeded in executing task. res is: ` + res);
   }).catch((err: BusinessError) => {
-    console.error("taskGroup2 catch err: " + err.message);
+    console.error(`Failed to execute task. Code: ${err.code}, message: ${err.message}`);
   });
   setTimeout(() => {
     try {
       taskpool.cancel(taskGroup2);
     } catch (e) {
-      console.error(`taskpool: cancel error code: ${e.code}, info: ${e.message}`);
+      console.error(`Failed to cancel task. Code: ${e.code}, message: ${e.message}`);
     }
   }, 1000);
 }
@@ -798,14 +1015,14 @@ function cancelFunction(taskId: number) {
   try {
     taskpool.cancel(taskId);
   } catch (e) {
-    console.error(`taskpool: cancel error code: ${e.code}, info: ${e.message}`);
+    console.error(`Failed to cancel task. Code: ${e.code}, message: ${e.message}`);
   }
 }
 
 function concurrentFunc() {
   let task = new taskpool.Task(printArgs, 100); // 100: test number
   taskpool.execute(task).catch((err: BusinessError) => {
-    console.error("taskpool catch err: " + err.message);
+    console.error(`Failed to execute task. Code: ${err.code}, message: ${err.message}`);
   });
   setTimeout(() => {
     let cancelTask = new taskpool.Task(cancelFunction, task.taskId);
@@ -995,7 +1212,7 @@ function dealTask() {
 
 ## Priority
 
-Enumerates the priorities available for created tasks. The task priority applies during task execution. The worker thread priority is updated with the task priority. For details about the mappings, see [QoS Level](../../napi/qos-guidelines.md#qos-level).
+Enumerates the priorities available for created tasks. The task priority applies during task execution. The worker thread priority is updated with the task priority. For details about the mappings, see [QoS Level Definition](../../kernel-enhance/qos-guidelines.md#qos-level-definition).
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -1044,7 +1261,7 @@ for (let i: number = 0; i < taskArray.length; i+=4) { // 4: Four tasks are execu
 
 ## Task
 
-Enumerates tasks, which can be executed for multiple times, placed in a task group, serial queue, or asynchronous queue for execution, or added with dependencies for execution.
+Before calling any API in a task, you must use the constructor to create a task object. Enumerates tasks, which can be executed for multiple times, placed in a task group, serial queue, or asynchronous queue for execution, or added with dependencies for execution.
 
 ### Properties
 
@@ -1090,7 +1307,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 @Concurrent
-function printArgs(args: number): number {
+function printArgs(args: string): string {
   console.info("printArgs: " + args);
   return args;
 }
@@ -1178,6 +1395,8 @@ function inspectStatus(arg: number): number {
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function inspectStatus(arg: number): number {
   // Check whether the task has been canceled and respond accordingly.
@@ -1200,9 +1419,9 @@ function inspectStatus(arg: number): number {
 
 let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
 taskpool.execute(task).then((res: Object) => {
-  console.info("taskpool test result: " + res);
-}).catch((err: string) => {
-  console.error("taskpool test occur error: " + err);
+  console.info("Succeeded in executing task, result: " + res);
+}).catch((e: BusinessError) => {
+  console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
 });
 // If cancel is not called, isCanceled() returns false by default, and the task execution result is 101.
 ```
@@ -1512,7 +1731,7 @@ async function sendDataTest(num: number) {
 function taskpoolTest() {
   try {
     let task: taskpool.Task = new taskpool.Task(sendDataTest, 10);
-    task.onReceiveData((data: string) => {
+    task.onReceiveData((data: number) => {
       console.info("taskpool: data is: " + data);
     });
     taskpool.execute(task);
@@ -1922,6 +2141,8 @@ Checks whether the task is complete.
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function inspectStatus(arg: number): number {
   // 1s sleep
@@ -1935,9 +2156,9 @@ function inspectStatus(arg: number): number {
 async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
-    console.info("taskpool test result: " + res);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+    console.info("Succeeded in executing task, result: " + res);
+  }).catch((e: BusinessError) => {
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
 
   setTimeout(() => {
@@ -2612,8 +2833,8 @@ Describes the internal information about a task pool.
 
 | Name         | Type                             | Read-Only| Optional| Description                 |
 | ------------- | -------------------------------- | ---- | ---- | -------------------- |
-| threadInfos   | [ThreadInfo[]](#threadinfo10)    | No  | No  | Internal information about the worker threads. You are advised not to change the value.|
-| taskInfos     | [TaskInfo[]](#taskinfo10)        | No  | No  | Internal information about the tasks. You are advised not to change the value.|
+| threadInfos   | [ThreadInfo](#threadinfo10)[]    | No  | No  | Internal information about the worker threads. You are advised not to change the value.|
+| taskInfos     | [TaskInfo](#taskinfo10)[]        | No  | No  | Internal information about the tasks. You are advised not to change the value.|
 
 ## TaskResult<sup>20+</sup>
 
@@ -2710,6 +2931,19 @@ function runningCancelError() {
 }
 ```
 
+## Configs<sup>24+</sup>
+
+Defines configuration items for tasks or task groups.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+| Name    | Type               | Read-Only| Optional| Description                                                          |
+| -------- | ------------------ | ---- | ---- | ------------------------------------------------------------- |
+| timeout | number             | No  | Yes  | Timeout interval, unit: ms It is recommended that an integer be passed in; a decimal will be rounded down.<br>If this parameter is omitted, the default value 0 is used for timeout, and the timeout logic is not executed.<br>**NOTE**<br>1. This timeout interval is not precise, and the actual timeout interval may differ from the expected one.<br>2. If the value is less than 1, the default value is 0.<br>3. The timeout value is limited by the system. If the value exceeds 2^31 - 1, an overflow occurs and the timeout value is 0.|
+| priority   | [Priority](#priority)   | No  | Yes  | Priority of the task. The default value is taskpool.Priority.MEDIUM.|
+
 ## Additional Information
 
 ### Sequenceable Data Types
@@ -2772,6 +3006,8 @@ taskpoolExecute();
 **Example 3**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 // The async functions are supported.
 @Concurrent
 async function delayExecute(): Promise<Array<Object>> {
@@ -2783,9 +3019,9 @@ async function delayExecute(): Promise<Array<Object>> {
 
 async function taskpoolExecute(): Promise<void> {
   taskpool.execute(delayExecute).then((result: Object) => {
-    console.info("taskPoolTest task result: " + result);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+    console.info("Succeeded in executing task, result: " + result);
+  }).catch((e: BusinessError) => {
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
 }
 
@@ -2796,6 +3032,8 @@ taskpoolExecute();
 
 ```ts
 // c.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function strSort(inPutArr: Array<string>): Array<string> {
   let newArr = inPutArr.sort();
@@ -2813,9 +3051,9 @@ export async function func2(): Promise<void> {
   console.info("taskpoolTest2 start");
   let strArray: Array<string> = ['c test string', 'b test string', 'a test string'];
   taskpool.execute(strSort, strArray).then((result: Object) => {
-    console.info("func2 result: " + result);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+    console.info("Succeeded in executing task, result: " + result);
+  }).catch((e: BusinessError) => {
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
 }
 ```
@@ -2831,6 +3069,8 @@ func2();
 **Example 5**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 // Success in canceling a task
 @Concurrent
 function inspectStatus(arg: number): number {
@@ -2855,9 +3095,9 @@ function inspectStatus(arg: number): number {
 async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
-    console.info("taskpool test result: " + res);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+    console.info("Succeeded in executing task, result: " + res);
+  }).catch((e: BusinessError) => {
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
   // Cancel the task 1s later.
   setTimeout(() => {
@@ -2875,6 +3115,8 @@ taskpoolCancel();
 **Example 6**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 // Failure to cancel a task that has been executed
 @Concurrent
 function inspectStatus(arg: number): number {
@@ -2897,9 +3139,9 @@ function inspectStatus(arg: number): number {
 async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
-    console.info("taskpool test result: " + res);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+    console.info("Succeeded in executing task, result: " + res);
+  }).catch((e: BusinessError) => {
+    console.error(`Failed to execute task. Code: ${e.code}, message: ${e.message}`);
   });
 
   setTimeout(() => {
@@ -2954,7 +3196,7 @@ async function taskpoolGroupCancelTest(): Promise<void> {
   try {
     taskpool.cancel(taskGroup2);
   } catch (e) {
-    console.error(`taskpool: cancel error code: ${e.code}, info: ${e.message}`);
+    console.error(`Failed to cancel task. Code: ${e.code}, message: ${e.message}`);
   }
 }
 

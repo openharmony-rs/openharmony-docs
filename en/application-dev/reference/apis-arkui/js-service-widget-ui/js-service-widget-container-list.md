@@ -2,26 +2,23 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:29:04.456Z pushedAt=2026-06-08T06:54:49.651Z -->
 
 The **\<list>** component provides a list container that presents a series of list items arranged in a column with the same width. It supports presentations of the same type of data in a multiple and coherent row style, for example, images or text.
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > Limit the number of items in a list to 30 to improve user experience.
-
-
-
 
 ## Child Components
 
 Only the **[\<list-item>](js-service-widget-container-list-item.md)** child component is supported.
-
 
 ## Attributes
 
@@ -31,14 +28,13 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | ------------- | -------------- | ------- | ---- | ---------------------------------------- |
 | cachedcount   | number         | 0       | No   | Minimum number of cached list items when a long list is loaded with delay.                |
 | scrollbar     | string         | off     | No   | Display mode of the side scrollbar. (Currently, only the vertical scrollbar is supported.)<br>- **off**: no display.<br>- **auto**: displayed on demand (The side scrollbar is displayed when touched and disappears 2s later.).<br>- **on**: always on display. |
-| scrolleffect  | string         | spring  | No   | Scroll effect. Available values are as follows:<br>- **spring**: Similar to the physical dynamic effect of a spring. When the scrollbar reaches the edge, it can continue to scroll for a distance based on the initial speed or a touch event. It rebounds after being released.<br>- **fade**: Similar to the physical dynamic effect of fade. When you scroll to the edge, a wave shape fades. The fade changes according to the speed and scrolling distance.<br>- **none**: No effect when the scrollbar reaches the edge.|
+| scrollEffect  | string         | spring  | No    | Scrolling effect. Available values are as follows:<br/>-&nbsp;**spring**: Similar to the physical dynamic effect of a spring. After scrolling to the edge, you can continue to scroll for a distance based on the initial speed or by touching the knob of the scrollbar. After you release your hand, the knob is rebounded.<br/>-&nbsp;**fade**: Similar to the physical dynamic effect of fade. When you scroll to the edge, a wave shape fades. The fade changes according to the speed and scrolling distance.<br/>-&nbsp;**no**: No effect after the scrollbar is moved to the edge.|
 | divider       | boolean        | false   | No   | Whether list items are separated by dividers.<br>For details, see **divider-color**, **divider-height**, **divider-length**, and **divider-origin** in [Styles](#styles).|
 | shapemode     | string         | default | No   | Shape of the side scrollbar.<br>- **default**: not specified (following the theme).<br>- **rect**: rectangle.<br>- **round**: circle.|
-| updateeffect  | boolean        | false   | No   | Whether a dynamic effect is displayed when an item in the list is deleted or added.<br>- **false**: No dynamic effect is displayed.<br>- **true**: A dynamic effect is displayed when an item is added or deleted.|
+| updateeffect  | boolean        | false   | No    | Whether a dynamic effect is displayed when an item in the list is deleted or added.<br/>-&nbsp;**false**: No dynamic effect is displayed.<br/>-&nbsp;**true**: A dynamic effect is displayed when an item is added or deleted. |
 | initialindex  | number         | 0       | No   | Item displayed at the start position of the viewport when the list is loaded for the first time. The default value is **0**, indicating that the first item is displayed. If the number you set is greater than the index of the last item, the setting does not take effect. When the **initialoffset** attribute is set, this attribute does not take effect. |
 | initialoffset | &lt;length&gt; | 0       | No   | Start offset of the viewport when the list is loaded for the first time. The offset must not exceed the scrolling range of the list. If exceeded, the offset is truncated to the maximum value of the scrolling range. |
 | selected      | string         | -       | No   | Selected item in the list. The value can be a **section** value of any list items. |
-
 
 ## Styles
 
@@ -59,17 +55,14 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 | scrollbar-width  | &lt;length&gt;                           | -           | No   | Width of the scrollbar.                               |
 | scrollbar-offset | &lt;length&gt;                           | 0           | No   | Offset between the scrollbar and the default position of the list. The value must be a positive number. The default position is on the right edge of the list. You can adjust the horizontal position of the scrollbar by setting this offset. If the scrollbar is drawn outside the list and the parent component of the list is capable of cropping, the scrollbar will be cropped.|
 
-
 ## Events
 
 The [universal events](js-service-widget-common-events.md) are supported.
 
-
 ## Example
 
-
 ```html
-<!-- index.hml -->
+<!-- index.html -->
 <div class="container">
   <list class="todo-wrapper">
     <list-item for="{{todolist}}" class="todo-item">
@@ -79,7 +72,6 @@ The [universal events](js-service-widget-common-events.md) are supported.
   </list>
 </div>
 ```
-
 
 ```json
 {
@@ -94,7 +86,6 @@ The [universal events](js-service-widget-common-events.md) are supported.
   }
 }
 ```
-
 
 ```css
 /* index.css */
@@ -122,6 +113,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
   text-align: center;
 }
 ```
+
 **4 x 4 widget**
 
 ![en-us_image_0000001231370803](figures/en-us_image_0000001231370803.png)

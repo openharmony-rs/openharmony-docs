@@ -592,8 +592,8 @@ Enumerates the system management events that can be subscribed to.
 | MANAGED_EVENT_ACCOUNT_ADDED<sup>18+</sup>    | 5    | An account is created.|
 | MANAGED_EVENT_ACCOUNT_SWITCHED<sup>18+</sup> | 6    | An account is switched.|
 | MANAGED_EVENT_ACCOUNT_REMOVED<sup>18+</sup>  | 7    | An account is removed.|
-| MANAGED_EVENT_STARTUP_GUIDE_COMPLETED<sup>24+</sup> | 8    | The startup wizard is complete. **Model restriction**: This API can be used only in the stage model.|
-| MANAGED_EVENT_BOOT_COMPLETED<sup>24+</sup>  | 9    | Device startup is complete. **Model restriction**: This API can be used only in the stage model.|
+| MANAGED_EVENT_STARTUP_GUIDE_COMPLETED<sup>24+</sup> | 8    | The startup wizard is complete.<br>**Model restriction**: This API can be used only in the stage model.|
+| MANAGED_EVENT_BOOT_COMPLETED<sup>24+</sup>  | 9    | Device startup is complete.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## AdminType<sup>15+</sup>
 

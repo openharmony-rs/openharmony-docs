@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @lushi871202; @CCFFWW-->
-<!--Designer: @piggyguy; @lushi871202; @CCFFWW-->
+<!--Owner: @piggyguy; @lushi871202; @hehongyang3-->
+<!--Designer: @piggyguy; @lushi871202; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -86,7 +86,7 @@ Enumerates the **TabContent** component states.
 
 ## NavDestinationInfo
 
-Information about the **NavDestination** component, returned by the system to developers.
+Provides information about the **NavDestination** component, returned by the system to developers.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1288,7 +1288,7 @@ struct TabsExample {
   }
 
   aboutToDisappear(): void {
-    // Unregister the listeners.
+    // Unregister the listener.
     uiObserver.off('tabContentUpdate', callbackFunc);
   }
 
@@ -1378,7 +1378,7 @@ struct TabsExample {
   }
 
   aboutToDisappear(): void {
-    // Unregister the listeners.
+    // Unregister the listener.
     uiObserver.off('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 

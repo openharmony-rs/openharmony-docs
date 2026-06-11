@@ -1,10 +1,12 @@
 # @ohos.update (Update) (System API)
+
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Update-->
 <!--Owner: @RainyDay_005; @huangsiping3-->
 <!--Designer: @zhangzhengxue; @jackd320-->
 <!--Tester: @mamba-ting-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:56:21.706Z pushedAt=2026-06-09T10:12:44.324Z -->
 
 The **update** module implements update of the entire system, including built-in resources and preset applications, but not third-party applications.
 
@@ -50,7 +52,7 @@ Obtains an **OnlineUpdater** object.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
@@ -89,7 +91,7 @@ Obtains a **Restorer** object for restoring factory settings.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
@@ -121,7 +123,7 @@ Obtains a **LocalUpdater** object.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
@@ -157,7 +159,7 @@ Checks whether a new version is available. This API uses an asynchronous callbac
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -193,7 +195,7 @@ Checks whether a new version is available. This API uses a promise to return the
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -235,7 +237,7 @@ Obtains information about the new version. This API uses an asynchronous callbac
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -272,7 +274,7 @@ Obtains information about the new version. This API uses a promise to return the
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -313,7 +315,7 @@ Obtains the description file of the new version. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -336,10 +338,9 @@ const descriptionOptions: update.DescriptionOptions = {
   language: "zh-cn" // Chinese
 };
 
-updater.getNewVersionDescription(versionDigestInfo, descriptionOptions).then((info: Array<update.ComponentDescription>)=> {
-  console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
+updater.getNewVersionDescription(versionDigestInfo, descriptionOptions, (err, info) => {
+  console.info(`getNewVersionDescription info ${JSON.stringify(info)}`);
+  console.info(`getNewVersionDescription err ${JSON.stringify(err)}`);
 });
 ```
 
@@ -370,7 +371,7 @@ Obtains the description file of the new version. This API uses a promise to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -420,7 +421,7 @@ Obtains information about the current version. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -458,7 +459,7 @@ Obtains information about the current version. This API uses a promise to return
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -499,7 +500,7 @@ Obtains the description file of the current version. This API uses an asynchrono
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -547,7 +548,7 @@ Obtains the description file of the current version. This API uses a promise to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -590,7 +591,7 @@ Obtains information about the update task. This API uses an asynchronous callbac
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -626,7 +627,7 @@ Obtains information about the update task. This API uses a promise to return the
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -666,7 +667,7 @@ Downloads the new version. This API uses an asynchronous callback to return the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -720,7 +721,7 @@ Downloads the new version. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -771,7 +772,7 @@ Resumes download of the new version. This API uses an asynchronous callback to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -824,7 +825,7 @@ Resumes download of the new version. This API uses a promise to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -874,7 +875,7 @@ Pauses download of the new version. This API uses an asynchronous callback to re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -927,7 +928,7 @@ Pauses download of the new version. This API uses a promise to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -977,7 +978,7 @@ Updates the version. This API uses an asynchronous callback to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1030,7 +1031,7 @@ Updates the version. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1080,7 +1081,7 @@ Clears errors. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1133,7 +1134,7 @@ Clears errors. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1181,7 +1182,7 @@ Obtains the update policy. This API uses an asynchronous callback to return the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1218,7 +1219,7 @@ Obtains the update policy. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1258,7 +1259,7 @@ Sets the update policy. This API uses an asynchronous callback to return the res
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1305,7 +1306,7 @@ Sets the update policy. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1348,7 +1349,7 @@ Terminates the update. This API uses an asynchronous callback to return the resu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1384,7 +1385,7 @@ Terminates the update. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1403,6 +1404,7 @@ updater.terminateUpgrade().then(() => {
 ```
 
 ### on
+
 on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): void
 
 Enables listening for update events. This API uses an asynchronous callback to return the result.
@@ -1420,7 +1422,7 @@ Enables listening for update events. This API uses an asynchronous callback to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
@@ -1438,6 +1440,7 @@ updater.on(eventClassifyInfo, (eventInfo: update.EventInfo) => {
 ```
 
 ### off
+
 off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): void
 
 Disables listening for update events. This API uses an asynchronous callback to return the result.
@@ -1455,7 +1458,7 @@ Disables listening for update events. This API uses an asynchronous callback to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
@@ -1494,7 +1497,7 @@ Restores a device to its factory settings. This API uses an asynchronous callbac
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1528,7 +1531,7 @@ Restores a device to its factory settings. This API uses a promise to return the
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1566,7 +1569,7 @@ Forcibly restores a device to its factory settings. This API uses a promise to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1608,7 +1611,7 @@ Verifies the update package. This API uses an asynchronous callback to return th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1624,7 +1627,7 @@ const upgradeFile: update.UpgradeFile = {
 };
 
 localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath", (err) => {
-  console.info(`factoryReset error ${JSON.stringify(err)}`);
+  console.info(`verifyUpgradePackage error ${JSON.stringify(err)}`);
 });
 ```
 
@@ -1655,7 +1658,7 @@ Verifies the update package. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1679,6 +1682,7 @@ localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath").then(() => {
 ```
 
 ### applyNewVersion
+
 applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>, callback: AsyncCallback\<void>): void
 
 Installs the update package. This API uses an asynchronous callback to return the result.
@@ -1698,7 +1702,7 @@ Installs the update package. This API uses an asynchronous callback to return th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1738,7 +1742,7 @@ Installs the update package. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 201      | Permission denied.       |
 | 202      | Permission verification failed. A non-system application calls a system API. |
@@ -1762,6 +1766,7 @@ localUpdater.applyNewVersion(upgradeFiles).then(() => {
 ```
 
 ### on
+
 on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): void
 
 Enables listening for update events. This API uses an asynchronous callback to return the result.
@@ -1779,7 +1784,7 @@ Enables listening for update events. This API uses an asynchronous callback to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 
@@ -1799,6 +1804,7 @@ localUpdater.on(eventClassifyInfo, onTaskUpdate);
 ```
 
 ### off
+
 off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): void
 
 Disables listening for update events. This API uses an asynchronous callback to return the result.
@@ -1816,7 +1822,7 @@ Disables listening for update events. This API uses an asynchronous callback to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID      | Error Message                                                 |
+| Error Code      | Error Message                                                 |
 | -------  | ---------------------------------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 

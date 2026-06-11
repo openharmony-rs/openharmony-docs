@@ -168,7 +168,7 @@
 
 如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。举例说明，当需要非对称密钥类型为RSA2048、填充模式为PKCS1、摘要算法为SHA256、验签模式为Recover的密钥时，其字符串参数为"RSA2048|PKCS1|SHA256|Recover"。
 
-| 非对称密钥类型 | 填充模式 | 摘要算法 | 签名模式 | API版本 | 
+| 非对称密钥类型 | 填充模式 | 摘要算法 | 验签模式 | API版本 | 
 | -------- | -------- | -------- | -------- | -------- | 
 | RSA512 | PKCS1 | [NoHash\|MD5\|SHA1\|SHA224\|SHA256] | Recover | 12+ | 
 | RSA768 | PKCS1 | [NoHash\|MD5\|SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | Recover | 12+ | 
@@ -184,7 +184,7 @@
 
 ## ECDSA
 
-ECDSA（Elliptic Curve Digital Signature Algorithm，椭圆曲线数字签名算法）是基于椭圆曲线密码（ECC）的数字签名算法（DSA）。相比DLP（Discrete Logarithm Problem，普通的离散对数问题）和IFP（Integer Factorization Problem，大数分解问题），椭圆曲线密码的单位比特强度要高于其他公钥体制。
+ECDSA（Elliptic Curve Digital Signature Algorithm，椭圆曲线数字签名算法）是基于椭圆曲线密码（ECC）的数字签名算法（DSA）。相比DLP（Discrete Logarithm Problem，离散对数问题）和IFP（Integer Factorization Problem，大数分解问题），椭圆曲线密码的单位比特强度要高于其他公钥体制。
 
 算法库框架提供了多种椭圆曲线及摘要算法组合的ECDSA签名验签能力。
 

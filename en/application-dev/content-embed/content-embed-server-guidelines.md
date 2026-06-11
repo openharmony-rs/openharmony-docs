@@ -9,9 +9,9 @@
 
 ## When to Use
 
-The OH_ContentEmbed content embedding module provides an object editing framework and technology for inter-application document embedding and collaborative editing.
+The [OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md) content embedding module provides an object editing framework and technology for inter-application document embedding and collaborative editing.
 
-An OE server application uses the APIs provided by the OE Extension framework to provide client applications with embedding and editing capabilities for documents in specific formats.
+An OE server application uses the APIs provided by the [OE Extension framework](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md) to provide client applications with embedding and editing capabilities for documents in specific formats.
 
 ## Constraints
 
@@ -19,7 +19,7 @@ Before using the APIs, check whether the device supports the `SystemCapability.C
 
 ## Available APIs
 
-Common APIs are listed in the following table. For more API details, see OH_ContentEmbed.
+Common APIs are listed in the following table. For more API details, see [OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md).
 
 **Table 1** Main server APIs
 
@@ -210,9 +210,9 @@ static void NativeOnDestroy(ContentEmbed_ExtensionInstanceHandle instance)
 
 ### Implementing Callbacks for Server OE Object Attach and Detach Events
 
-When an OE client calls OH_ContentEmbed_Proxy_StartWork to bind a client OE object to a server OE object, the system triggers the `RegisterOnObjectAttachFunc` callback of the OE server. In this callback, the OE server must call the registration functions of the server OE object to respond to OE client requests.
+When an OE client calls [OH_ContentEmbed_Proxy_StartWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_startwork) to bind a client OE object to a server OE object, the system triggers the `RegisterOnObjectAttachFunc` callback of the OE server. In this callback, the OE server must call the registration functions of the server OE object to respond to OE client requests.
 
-When an OE client calls OH_ContentEmbed_Proxy_StopWork to unbind the client OE object from the server OE object, the system triggers the `RegisterOnObjectDetachFunc` callback of the OE server. After this callback, the server OE object becomes invalid.
+When an OE client calls [OH_ContentEmbed_Proxy_StopWork](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_stopwork) to unbind the client OE object from the server OE object, the system triggers the `RegisterOnObjectDetachFunc` callback of the OE server. After this callback, the server OE object becomes invalid.
 
 ```cpp
 static void RegisterOnObjectAttachFunc(ContentEmbed_ExtensionInstanceHandle instance, ContentEmbed_ObjectHandle object)
@@ -258,7 +258,7 @@ static void RegisterOnObjectDetachFunc(ContentEmbed_ExtensionInstanceHandle inst
 
 ### Implementing OE Document Snapshot Retrieval
 
-When an OE client embeds an OE object by creating a new object type or using an existing file, the OE object can be displayed as a document snapshot in the OE client UI. After the OE Extension starts, the OE client obtains the document snapshot by calling OH_ContentEmbed_Proxy_GetSnapshot, which triggers the `NativeOnGetSnapshot` callback of the OE server. In this callback, the OE server application must call OH_ContentEmbed_Extension_SetSnapshot to set the OE document snapshot.
+When an OE client embeds an OE object by creating a new object type or using an existing file, the OE object can be displayed as a document snapshot in the OE client UI. After the OE Extension starts, the OE client obtains the document snapshot by calling [OH_ContentEmbed_Proxy_GetSnapshot](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_getsnapshot), which triggers the `NativeOnGetSnapshot` callback of the OE server. In this callback, the OE server application must call [OH_ContentEmbed_Extension_SetSnapshot](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_setsnapshot) to set the OE document snapshot.
 
 ```cpp
 static void NativeOnGetSnapshot(ContentEmbed_ObjectHandle object)
@@ -302,7 +302,7 @@ static void NativeOnGetSnapshot(ContentEmbed_ObjectHandle object)
 
 ### Implementing OE Document Editing
 
-After the OE Extension starts, the OE client notifies the OE server to edit the OE document by calling OH_ContentEmbed_Proxy_DoEdit, which triggers the `NativeOnDoEdit` callback of the OE server. In this callback, the OE server application must call OH_ContentEmbed_Extension_ContextStartSelfUIAbility or OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions to start the UIAbility of the OE server application for document editing.
+After the OE Extension starts, the OE client notifies the OE server to edit the OE document by calling [OH_ContentEmbed_Proxy_DoEdit](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_doedit), which triggers the `NativeOnDoEdit` callback of the OE server. In this callback, the OE server application must call [OH_ContentEmbed_Extension_ContextStartSelfUIAbility](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiability) or [OH_ContentEmbed_Extension_ContextStartSelfUIAbilityWithStartOptions](../reference/apis-content-embed-kit/capi-content-embed-extension-h.md#oh_contentembed_extension_contextstartselfuiabilitywithstartoptions) to start the UIAbility of the OE server application for document editing.
 
 ```cpp
 static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
@@ -395,7 +395,7 @@ static void NativeOnDoEdit(ContentEmbed_ObjectHandle object)
 
 ### Implementing OE Extension Capability Query
 
-After the OE Extension starts, the OE client obtains the capabilities of the OE server by calling OH_ContentEmbed_Proxy_GetCapability, which triggers the `NativeOnGetCapability` callback of the OE server. In this callback, the OE server application assigns a value to the `bitmask` attribute to notify the OE client of its capabilities.
+After the OE Extension starts, the OE client obtains the capabilities of the OE server by calling [OH_ContentEmbed_Proxy_GetCapability](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_getcapability), which triggers the `NativeOnGetCapability` callback of the OE server. In this callback, the OE server application assigns a value to the `bitmask` attribute to notify the OE client of its capabilities.
 
 ```cpp
 static void NativeOnGetCapability(ContentEmbed_ObjectHandle object, uint32_t *bitmask)
@@ -410,7 +410,7 @@ static void NativeOnGetCapability(ContentEmbed_ObjectHandle object, uint32_t *bi
 
 ### Implementing OE Document Editing Status Query
 
-After the OE Extension starts, the OE client obtains the editing status of the OE document by calling OH_ContentEmbed_Proxy_GetEditStatus, which triggers the `NativeOnGetEditStatusFunc` callback of the OE server. In this callback, the OE server application notifies the OE client of the document editing status.
+After the OE Extension starts, the OE client obtains the editing status of the OE document by calling [OH_ContentEmbed_Proxy_GetEditStatus](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md#oh_contentembed_proxy_geteditstatus), which triggers the `NativeOnGetEditStatusFunc` callback of the OE server. In this callback, the OE server application notifies the OE client of the document editing status.
 
 ```cpp
 static void NativeOnGetEditStatusFunc(ContentEmbed_ObjectHandle object, bool *isEditing, bool *isModified)
@@ -490,5 +490,3 @@ static void NativeOnWriteToDataStream(ContentEmbed_ObjectHandle object)
     }
 }
 ```
-
-<!--no_check--> 

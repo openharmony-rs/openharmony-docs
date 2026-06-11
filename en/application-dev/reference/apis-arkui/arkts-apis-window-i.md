@@ -1,8 +1,8 @@
 # Interfaces (Others)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -99,7 +99,7 @@ Describes the rectangular area of the window.
 
 Describes the rectangular area of the window, in vp.
 
-**Model restriction:** This API can be used only in the stage model.
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -193,7 +193,7 @@ Describes the window size, in px.
 
 Describes the window size, in vp.
 
-**Model restriction:** This API can be used only in the stage model.
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -438,7 +438,7 @@ The configuration is valid only for transitions between different abilities with
 
 The configuration is valid only full-screen applications.
 
-**Device behavior differences**: The API can be called properly on phones that are not working in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode and tablets that are working in neither freeform window nor desktop mode. On phones and tablets in freeform window or desktop mode and other devices, this API neither takes effect nor returns an error.
+**Device behavior differences**: The API can be called properly on phones that are not working in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode and tablets that are working in neither freeform window nor desktop mode. On phones and tablets in freeform window or desktop mode and other devices, calls to this API do not take effect or return an error.
 
 **System capability**: SystemCapability.Window.SessionManager
 | Name            | Type                                                                    | Read-Only| Optional| Description                                                        |
@@ -453,7 +453,7 @@ Describes the window parameters during application startup.
 | Name            | Type                                                                    | Read-Only| Optional| Description                                                        |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | animationParams             | [StartAnimationParams](arkts-apis-window-i.md#startanimationparams20)                 | No  | Yes  | Parameters for the startup animation. The default value is **undefined**. If this parameter is not set, the default animation of the system is used.|
-| needAnimation<sup>23+</sup> | boolean | No| Yes| Whether to enable the window creation animation.<br>If this parameter is set to **true**, the system's default animation will be used. If this parameter is set to **false**, the window creation animation is disabled. This value takes effect for [freeform windows](../../windowmanager/window-terminology.md#freeform-window) only.<br>If this parameter is not set, it defaults to **undefined** and the system's default animation will be used.<br> **Model restriction**: This API can be used only in the stage model.|
+| needAnimation<sup>23+</sup> | boolean | No| Yes| Whether to enable the window creation animation.<br>If this parameter is set to **true**, the system's default animation will be used. If this parameter is set to **false**, the window creation animation is disabled. This value takes effect for [freeform windows](../../windowmanager/window-terminology.md#freeform-window) only.<br>If this parameter is not set, it defaults to **undefined** and the system's default animation will be used.<br> **Model constraint**: This API can be used only in the stage model.|
 
 ## Callback<sup>15+</sup>
 

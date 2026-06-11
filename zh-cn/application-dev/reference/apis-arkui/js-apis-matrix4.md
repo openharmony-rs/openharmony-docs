@@ -1,8 +1,8 @@
 # @ohos.matrix4 (矩阵变换)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -207,7 +207,8 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001219744181](figures/h-cn_image_0000001219744185.png)
+![matrix4-copy](figures/matrix4-copy.png)
+
 ### combine
 
 combine(options: Matrix4Transit): Matrix4Transit

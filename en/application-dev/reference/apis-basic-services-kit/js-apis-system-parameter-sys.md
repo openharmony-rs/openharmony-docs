@@ -5,16 +5,17 @@
 <!--Designer: @liveery-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:56:21.784Z pushedAt=2026-06-09T10:12:44.311Z -->
 
 The **SystemParameter** module provides system services with easy access to key-value pairs. You can use the APIs provided by this module to describe the service status and change the service behavior. The basic operation primitives are **get** and **set**. You can obtain the values of system parameters through getters and modify the values through setters.
 
 For details about the system parameter design principles and definitions, see [Parameter Management](../../../device-dev/subsystems/subsys-boot-init-sysparam.md).
 
 > **NOTE**
-> - The APIs of this module are no longer maintained since API version 9. It is recommended that you use [@ohos.systemParameterEnhance](js-apis-system-parameterEnhance-sys.md) instead.
+> - The APIs of this module are no longer maintained since API version 9. You are advised to use the new APIs in [@ohos.systemParameterEnhance](js-apis-system-parameterEnhance-sys.md) instead.
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The APIs provided by this module are system APIs.
-> - Third-party applications cannot use the APIs provided by this module because system parameters each require specific discretionary access control (DAC) and mandatory access control (MAC) permissions.
+> - The APIs of this module are system APIs.
+> - Since system parameters are internal information and control parameters of various system services, each system parameter has its own DAC and MAC access control permissions. Third-party applications cannot use such APIs.
 
 
 ## Modules to Import

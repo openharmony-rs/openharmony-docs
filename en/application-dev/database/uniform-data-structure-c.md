@@ -1,17 +1,19 @@
 # Uniform Data Structs (C/C++)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=a1b9555ca35e53d2ce1fb3e822613b1436be9250 translatedAt=2026-06-05T06:41:44.106Z pushedAt=2026-06-08T03:52:55.570Z -->
 
 ## When to Use
 
-Uniform data structs are provided to define data of common [uniform data types](../reference/apis-arkdata/capi-utd-h.md). For example, the data struct for the system-defined home screen icon (whose uniform data type is **OH_UdsAppItem**) is provided to help you easily define the data.
+For some common types in [UTD](../reference/apis-arkdata/capi-utd-h.md), standardized data structures are provided for ease of use. For example, the system-defined home screen icon type (identified by the standardized data type `OH_UdsAppItem`) explicitly defines the corresponding metadata structure.
 
-Applications can directly use the uniform data structs in certain scenarios. For example, in the drag-and-drop operation across applications, you can write the data (encapsulated in a uniform struct) to be dragged to [DragEvent](../ui/ndk-drag-event.md). The target application (application requesting the data) reads the data from **DragEvent** and parses the data in the uniform data struct. Using uniform data structs for data interaction between applications effectively reduces the development workload in your application experience.
+In some scenarios, applications can directly use these predefined UTD standardized data structures, such as in [binding drag events
+](../ui/ndk-drag-event.md). The source application can write drag-and-drop data to the drag event according to a standardized data structure, and the target application can read the data from the drag event and parse it based on the same structure. This enables data interactions between applications to follow a common standard, effectively reducing the development effort required for cross-application data exchange.
 
 ## Basic Concepts
 
@@ -19,7 +21,7 @@ Applications can directly use the uniform data structs in certain scenarios. For
 
 ## Available APIs
 
-For details about the APIs, see [uds.h](../reference/apis-arkdata/capi-uds-h.md).
+For details, see [uds.h](../reference/apis-arkdata/capi-uds-h.md).
 
 | API                                                                                   | Description                                         | 
 |-----------------------------------------------------------------------------------------|---------------------------------------------|
@@ -48,6 +50,7 @@ libudmf.so, libhilog_ndk.z.so
 ```
 
 ## Including Header Files
+
 <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
@@ -63,8 +66,11 @@ libudmf.so, libhilog_ndk.z.so
 ## Using the PlainText Data Struct
 
 1. Create a pointer to an **PlainText** object.
+
 2. Set content for the **PlainText** object.
+
 3. Obtain data.
+
 4. Destroy all the pointers created.
 
 <!-- @[use_plaintext_datastructure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
@@ -94,9 +100,13 @@ OH_UdsPlainText_Destroy(plainText2);
 ## Using the fileUri Data Struct
 
 1. Create a struct for the **fileUri** data.
+
 2. Set the URL and description for the **fileUri**.
+
 3. Create an **OH_UdmfRecord** object and set **fileUri** data to it.
+
 4. Obtain the **fileUri** data.
+
 5. Destroy all the pointers created.
 
 <!-- @[use_fileUri_datastructure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->

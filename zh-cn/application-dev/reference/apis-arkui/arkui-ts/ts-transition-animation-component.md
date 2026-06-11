@@ -1,8 +1,8 @@
 # 组件内转场 (transition)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -333,7 +333,7 @@ animation(value: AnimateParam): TransitionEffect
 
 type TransitionFinishCallback = (transitionIn: boolean) => void
 
-组件转场动画的结束回调类型。
+定义组件转场动画结束回调的类型，回调的入参表示该回调为出现还是消失动画的结束回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 

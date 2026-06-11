@@ -1,16 +1,18 @@
 # @ohos.resourceschedule.systemload (System Load Level Management)
+
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Resourceschedule-->
 <!--Owner: @baiheng-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:54:46.969Z pushedAt=2026-06-09T10:12:44.219Z -->
 
 The **systemload** module allows the system to determine the system load level based on the current temperature, load, and scenario, and notifies registered applications of level changes, if any.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest version.
 
 ## Modules to Import
 
@@ -37,7 +39,7 @@ Enables listening for system load level changes. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Register a exist callback type; 3. Parameter verification failed. |
 
@@ -77,7 +79,7 @@ Disables listening for system load level changes. This API uses an asynchronous 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Unregister type has not register; 3. Parameter verification failed. |
 

@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d995619613c5a0ea556fde817ece4c1ff6754f94 translatedAt=2026-06-02T08:40:02.869Z pushedAt=2026-06-03T05:44:00.192Z -->
 
 ## Basic Concepts
 
@@ -85,7 +86,7 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
    }
    ```
    <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public CreateKvManager = (() => {
      Logger.info('CreateKvManager start');
@@ -107,7 +108,7 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
    })
    ```
    <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
-   
+
    ``` TypeScript
    public GetKvStore = (() => {
      Logger.info('GetKvStore start');
@@ -164,11 +165,11 @@ For details about the APIs, see [Distributed KV Store](../reference/apis-arkdata
    })
    ```
 
-## Setting the Security Level for an RDB Store 
+## Setting the Security Level for an RDB Store
 
 When an RDB store is created, the **securityLevel** parameter specifies the security level of the RDB store. For details about the security levels, see [SecurityLevel](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#securitylevel). The following example shows how to create an RDB store with security level of S3.
 
-For details about the APIs, see [RDB Store](../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
+For details about the specific APIs and functions, see [@ohos.data.relationalStore (Relational Store)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
 
 
 <!-- @[rdb_accessControlByDeviceAndDataLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/pages/accessControlByDeviceAndDataLevel.ets) -->  

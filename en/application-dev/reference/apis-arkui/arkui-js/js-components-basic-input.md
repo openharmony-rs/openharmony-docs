@@ -1,10 +1,12 @@
 # input
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9fc8de61c9856085ad7066dda1e30828589acb6a translatedAt=2026-06-09T03:13:22.879Z pushedAt=2026-06-09T03:40:09.365Z -->
 
 >  **NOTE**
 >
@@ -16,11 +18,9 @@ The **\<input>** component provides an interactive interface to receive user inp
 
 None
 
-
 ## Child Components
 
 Not supported
-
 
 ## Attributes
 
@@ -51,7 +51,6 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | icon    | string | Path of the icon for a menu option.|
 | content | string | Text content of a menu option.|
 
-
 ## Styles
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
@@ -64,7 +63,6 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | placeholder-color        | &lt;color&gt;              | \#99000000 | No   | Color of the hint text in the single-line text box. This attribute is available only when the component type is set to **text**, **email**, **date**, **time**, **number**, or **password**. |
 | font-weight              | number \| string | normal     | No   | Font weight of the single-line text box or button. For details, see **font-weight** of the [**\<text>**](js-components-basic-text.md) component. |
 | caret-color<sup>6+</sup> | &lt;color&gt;              | -          | No   | Color of the caret.                              |
-
 
 ## Events
 
@@ -94,13 +92,14 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 
 | Name                 | Parameter                                      | Description                                      |
 | ------------------- | ---------------------------------------- | ---------------------------------------- |
-| focus               | {<br> focus: true\|false<br> }:<br>If **focus** is not passed, the default value **true** is used. | Obtains or loses focus. When **type** is set to **text**, **email**, **date**, **time**, **number**, or **password**, the input method can be displayed or collapsed. |
+| focus               | {<br>&nbsp;focus:&nbsp;true\|false<br>&nbsp;}: <br>If **focus** is not passed, the default value **true** is used. | Obtains or loses focus. When **type** is set to **text**, **email**, **date**, **time**, **number**, or **password**, the input method can be displayed or collapsed. |
 | showError           | {<br> error: string <br>}                | Displays the error message. This method is available when **type** is set to **text**, **email**, **date**, **time**, **number**, or **password**. |
 | delete<sup>6+</sup> | -                                        | Deletes text based on the current caret position when **type** is set to **text**, **email**, **date**, **time**, **number**, or **password**; deletes the last character and displays the caret if the current input component does not have a caret. |
 
 ## Example
 
 1. Single-line text box
+
    ```html
    <!-- xxx.hml -->
    <div class="content">
@@ -129,7 +128,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
      margin-top: 20px;
     }
    ```
-   
+
    ```js
    // xxx.js
    import promptAction from '@ohos.promptAction';
@@ -155,8 +154,9 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ```
 
    ![1-2](figures/1-2.png)
-   
+
 2. Common button
+
    ```html
    <!-- xxx.hml -->
    <div class="div-button">
@@ -179,6 +179,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![en-us_image_0000001198898293](figures/en-us_image_0000001198898293.png)
 
 3. Check box
+
    ```html
    <!-- xxx.hml -->
    <div class="content">
@@ -212,6 +213,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![en-us_image_0000001173324749](figures/en-us_image_0000001173324749.png)
 
 4. Radio button
+
    ```html
    <!-- xxx.hml -->
    <div class="content">

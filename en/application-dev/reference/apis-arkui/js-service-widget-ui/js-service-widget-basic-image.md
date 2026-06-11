@@ -1,21 +1,22 @@
 # image
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:28:08.890Z pushedAt=2026-06-08T03:48:19.743Z -->
 
 The **\<image>** component is used to render and display images.
 
 > **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## Child Components
 
 Not supported
-
 
 ## Attributes
 
@@ -25,7 +26,6 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 | -------- | -------- | -------- | -------- | -------- |
 | src | string | - | No| Image path.<br>- The local path is supported. Supported formats are as follows: PNG, JPG, BMP, SVG, and GIF.<br>- The path to the in-memory image is also supported in the scheme format of **memory://**.<br>**NOTE**<br>To display an online image, download it and then access it with its in-memory path. Do not use URLs.|
 | alt | string | - | No| Placeholder image displayed during image loading.|
-
 
 ## Styles
 
@@ -61,7 +61,6 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 >
 >    - If the **\<image>** component is big enough to afford the SVG image, the SVG image is displayed in the upper left corner of the component.
 
-
 ## Events
 
 | Name| Parameter| Description|
@@ -70,9 +69,7 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 | complete | - | Triggered when the image is successfully loaded.|
 | error | - | Triggered when an exception occurs during image loading.|
 
-
 ## Example
-
 
 ```html
 <!-- xxx.hml -->
@@ -81,13 +78,13 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 </stack>
 ```
 
-
 ```css
 /* xxx.css */
 .img{  
   object-fit: contain
 }
 ```
+
 **4 x 4 widget**
 
 ![image.jpg](figures/image.jpg)

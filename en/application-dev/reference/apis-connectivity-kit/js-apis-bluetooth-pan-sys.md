@@ -6,6 +6,7 @@
 <!--Designer: @chengguohong; @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=d0c7a5fb2bc1f1b1c7630c4a5886ec88f6136925 translatedAt=2026-06-09T10:29:11.802Z pushedAt=2026-06-10T01:59:42.674Z -->
 
 The **pan** module provides APIs for accessing the Bluetooth personal area network (PAN).
 
@@ -13,7 +14,6 @@ The **pan** module provides APIs for accessing the Bluetooth personal area netwo
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > This topic describes only the system APIs provided by the module. For details about its public APIs, see [@ohos.bluetooth.pan (Bluetooth PAN Module)](js-apis-bluetooth-pan.md).
-
 
 ## Modules to Import
 
@@ -35,7 +35,7 @@ Disconnects from the PAN service of a device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**System capability**: SystemCapability.Communication.Bluetooth.Core
+**System Capability**: SystemCapability.Communication.Bluetooth.Core
 
 **Parameters**
 
@@ -47,7 +47,7 @@ Disconnects from the PAN service of a device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -70,7 +70,6 @@ try {
 }
 ```
 
-
 ### setTethering
 
 setTethering(enable: boolean): void
@@ -81,7 +80,7 @@ Sets Bluetooth tethering, which shares a mobile connection.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
-**System capability**: SystemCapability.Communication.Bluetooth.Core
+**System Capability**: SystemCapability.Communication.Bluetooth.Core
 
 **Parameters**
 
@@ -93,7 +92,7 @@ Sets Bluetooth tethering, which shares a mobile connection.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -116,7 +115,6 @@ try {
 }
 ```
 
-
 ### isTetheringOn
 
 isTetheringOn(): boolean
@@ -127,7 +125,7 @@ Checks whether Bluetooth tethering is activated.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**System capability**: SystemCapability.Communication.Bluetooth.Core
+**System Capability**: SystemCapability.Communication.Bluetooth.Core
 
 **Return value**
 
@@ -139,12 +137,11 @@ Checks whether Bluetooth tethering is activated.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
 |801 | Capability not supported.          |
-
 
 **Example**
 

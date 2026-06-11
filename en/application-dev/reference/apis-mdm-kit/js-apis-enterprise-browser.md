@@ -28,7 +28,7 @@ import { browser } from '@kit.MDMKit';
 
 setPolicySync(admin: Want, appId: string, policyName: string, policyValue: string): void
 
-Sets the sub-policy for a specified browser.
+Sets the sub-policy for a specified browser.<!--RP1--><!--RP1End-->
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
@@ -87,7 +87,7 @@ try {
 
 getPoliciesSync(admin: Want, appId: string): string
 
-Obtains the browser policy by app ID.
+Obtains the browser policy by app ID.<!--RP1--><!--RP1End-->
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -143,6 +143,10 @@ try {
 setManagedBrowserPolicy(admin: Want, bundleName: string, policyName: string, policyValue: string): void
 
 Sets the browser policy. After the setting is successful, the system common event [COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_managed_browser_policy_changed) is released.
+
+> **NOTE**
+>
+> In multi-MDM application scenarios, once a policy for a specific browser is configured and takes effect by the first admin, it can no longer be configured by other admins.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 

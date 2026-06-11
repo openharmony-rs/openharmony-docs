@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4c605d27e0af7c49e44095d77dd99bf8c13d3e25 translatedAt=2026-06-03T09:05:06.067Z pushedAt=2026-06-03T09:16:40.581Z -->
 
 For a singleton application that provides system-wide management functionalities, all users share an instance, which isolates data of different users. You need to specify the user space to which the operated asset belongs when:
 

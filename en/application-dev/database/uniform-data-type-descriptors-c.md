@@ -5,6 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=a1b9555ca35e53d2ce1fb3e822613b1436be9250 translatedAt=2026-06-05T06:41:50.661Z pushedAt=2026-06-08T03:53:05.433Z -->
 
 
 ## When to Use
@@ -98,7 +99,7 @@ bool isBelongsTo = OH_Utd_BelongsTo(typeIds1[0], typeIds2[0]);
 if (isBelongsTo) {
     OH_LOG_INFO(LOG_APP, "typeIds1[0] belongs to typeIds2[0]");
 } else {
-    OH_LOG_INFO(LOG_APP, "typeIds1[0] don't belongs to typeIds2[0]");
+    OH_LOG_INFO(LOG_APP, "typeIds1[0] doesn't belong to typeIds2[0]");
 }
 // 6. Check whether typeIds1[0] is a lower-level type of typeIds2[0].
 bool isLower = OH_Utd_IsLower(typeIds1[0], typeIds2[0]);

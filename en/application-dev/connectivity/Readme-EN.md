@@ -29,7 +29,13 @@
 
     - [GATT-based Connection and Data Transmission](bluetooth/gatt-development-guide.md)
 
+  - Bluetooth FAQs<!--bluetooth-faq-->
+
+    - [2900099 Bluetooth API Call Error](bluetooth/bluetooth-faq-2900099-errorcode.md)
+
 - NFC<!--nfc-->
+
+  - [NFC Service Development Overview](nfc/nfc-overview.md)
 
   - [NFC Tag Read/Write Development](nfc/nfc-tag-access-guide.md)
 
@@ -46,5 +52,11 @@
   - [STA Development](wlan/sta-development-guide.md)
 
   - [Wi-Fi Scanning Development](wlan/scan-development-guide.md)
+
+- Converged Short-Range<!--fusion-connectivity-->
+
+  - [Converged Short-Range Service Development Overview](fusion-connectivity/fusion-connectivity-overview.md)
+
+  - [Interconnection Between Partner Devices and OpenHarmony Devices](fusion-connectivity/partneragent-life-application-guide.md)
 
 - [Terminology](terminology.md)

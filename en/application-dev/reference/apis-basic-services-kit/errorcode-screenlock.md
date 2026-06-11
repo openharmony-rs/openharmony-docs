@@ -1,5 +1,7 @@
 # Screen Lock Management Error Codes
 
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:51:59.628Z pushedAt=2026-06-09T10:12:44.030Z -->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -16,10 +18,8 @@ This error code is reported when the screen lock management service is not worki
 
 **Possible Causes**
 
- 
 1. The service stops running due to unknown errors and is not automatically restored.
 2. The service is running but does not respond due to unknown errors.
-
 **Solution**
 
 Run the **ps -ef** command to check whether the service is running.
@@ -31,7 +31,7 @@ Run the **ps -ef** command to check whether the service is running.
 
 **Error Message**
 
-illegal use.
+Invalid use.
 
 **Description**
 

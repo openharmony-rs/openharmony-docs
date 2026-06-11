@@ -1,7 +1,7 @@
 # 屏幕管理开发术语
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
+<!--Owner: @fei_1007-->
 <!--Designer: @hejunfei1991-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->

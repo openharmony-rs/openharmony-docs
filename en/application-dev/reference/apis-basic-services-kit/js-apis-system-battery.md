@@ -6,6 +6,7 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:55:30.661Z pushedAt=2026-06-09T10:12:44.245Z -->
 
 The **battery** module allows you to query the charging status and remaining power of a device.
 
@@ -20,14 +21,11 @@ The **battery** module allows you to query the charging status and remaining pow
 >- The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 
-
 ## Modules to Import
-
 
 ```js
 import {Battery, BatteryResponse } from '@kit.BasicServicesKit';
 ```
-
 
 ## Battery.getStatus<sup>(deprecated)</sup>
 
@@ -48,7 +46,7 @@ Obtains the current charging state and battery level.
 ```js
 Battery.getStatus({
     success: (data: BatteryResponse) => {
-        console.log('success get battery level:' + data.level);
+        console.info('success get battery level:' + data.level);
     },
     fail: (data: string, code: number) => {
         console.error('fail to get battery level code:' + code + ', data: ' + data);

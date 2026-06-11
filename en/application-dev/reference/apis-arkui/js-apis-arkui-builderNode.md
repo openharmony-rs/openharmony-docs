@@ -1412,7 +1412,7 @@ Before calling this API, you need to convert the value of **event** to the corre
 | Name| Type                                                                     | Mandatory| Description      |
 | ------ | ------------------------------------------------------------------------- | ---- | ---------- |
 | event  | [InputEventType](#inputeventtype20) | Yes  | Input event used for event posting.|
-| competitionStrategy  | CompetitionStrategy | No  | Whether the gesture for posting the event is in a competition scenario. By default, the gesture is not in a competition scenario.|
+| competitionStrategy  | [CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24) | No  | Whether the gesture for posting the event is in a competition scenario. By default, the gesture is not in a competition scenario.|
 
 **Return value**
 
@@ -2700,7 +2700,7 @@ Before calling this API, you need to convert the value of **event** to the corre
 | Name| Type                                                                     | Mandatory| Description      |
 | ------ | ------------------------------------------------------------------------- | ---- | ---------- |
 | event  | [InputEventType](#inputeventtype20) | Yes  | Input event used for event posting.|
-| competitionStrategy  | CompetitionStrategy | No  | Whether the gesture for posting the event is in a competition scenario. By default, the gesture is not in a competition scenario.|
+| competitionStrategy  | [CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24) | No  | Whether the gesture for posting the event is in a competition scenario. By default, the gesture is not in a competition scenario.|
 
 **Return value**
 
@@ -4896,7 +4896,7 @@ struct MyComponent {
 
 The **postInputEventWithStrategy** API is added since API version 24.
 
-This example demonstrates the end-to-end process for intercepting mouse events in a custom component and performing coordinate conversion. The component reads the current touch point coordinates (x/y) through the [onMouse](./arkui-ts/ts-universal-mouse-key.md#onmouse) callback, and calls [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the relative coordinates to pixel coordinates based on the offset obtained from FrameNode.[getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12). It then updates **windowX**, **windowY**, **displayX**, and **displayY** of [MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent). The component selects a gesture competition strategy, and posts the converted mouse event to child nodes through rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24) for processing.
+This example demonstrates the end-to-end process for intercepting mouse events in a custom component and performing coordinate conversion. The component reads the current touch point coordinates (x/y) through the [onMouse](./arkui-ts/ts-universal-mouse-key.md#onmouse) callback, and calls [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the relative coordinates to pixel coordinates based on the offset obtained from FrameNode.[getPositionToParent](js-apis-arkui-frameNode.md#getpositiontoparent12). It then updates **windowX**, **windowY**, **displayX**, and **displayY** of [MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent). The component selects a [gesture competition strategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24), and posts the converted mouse event to child nodes through rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24) for processing.
 
 ```ts
 
@@ -5144,7 +5144,7 @@ struct MyComponent {
 
 The **postInputEventWithStrategy** API is added since API version 24.
 
-This example demonstrates the end-to-end process for intercepting touch events in a custom component and transforming touch point coordinates. In the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) callback, traverse the **changedTouches** and **touches** arrays of [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent), add the component offset to the X and Y coordinates of each touch point, call [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the coordinates to pixels, and update **windowX**, **windowY**, **displayX**, and **displayY** of each touch point. Select a gesture competition strategy, and post the converted touch event to child nodes through rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24) for processing.
+This example demonstrates the end-to-end process for intercepting touch events in a custom component and transforming touch point coordinates. In the [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch) callback, traverse the **changedTouches** and **touches** arrays of [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent), add the component offset to the X and Y coordinates of each touch point, call [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the coordinates to pixels, and update **windowX**, **windowY**, **displayX**, and **displayY** of each touch point. Select a [gesture competition strategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24), and post the converted touch event to child nodes through rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24) for processing.
 
 ```ts
 import { NodeController, BuilderNode, FrameNode, PromptAction, UIContext, InputEventType } from '@kit.ArkUI';
@@ -5421,7 +5421,7 @@ struct MyComponent {
 
 The **postInputEventWithStrategy** API is added since API version 24.
 
-This example demonstrates the end-to-end process for intercepting wheel or trackpad axis events in a custom component and performing coordinate conversion. In the [onAxisEvent](./arkui-ts/ts-universal-events-axis.md#onaxisevent) callback, obtain the relative X and Y coordinates of the event, add the component offset to the coordinates, call [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the coordinates to pixel coordinates, update **windowX**, **windowY**, **displayX**, and **displayY** of **AxisEvent**, select a gesture competition strategy, and use rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24) to post the converted axis event to child nodes for processing.
+This example demonstrates the end-to-end process for intercepting wheel or trackpad axis events in a custom component and performing coordinate conversion. In the [onAxisEvent](./arkui-ts/ts-universal-events-axis.md#onaxisevent) callback, obtain the relative X and Y coordinates of the event, add the component offset to the coordinates, call [vp2px](./arkts-apis-uicontext-uicontext.md#vp2px12) to convert the coordinates to pixel coordinates, update **windowX**, **windowY**, **displayX**, and **displayY** of **AxisEvent**, select a [gesture competition strategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24), and use rootNode.[postInputEventWithStrategy](#postinputeventwithstrategy24) to post the converted axis event to child nodes for processing.
 
 ```ts
 import { NodeController, BuilderNode, FrameNode, UIContext, PromptAction, InputEventType } from '@kit.ArkUI';
@@ -5512,5 +5512,3 @@ struct MyComponent {
   }
 }
 ```
-
-<!--no_check-->

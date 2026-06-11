@@ -1,16 +1,18 @@
 # Prebuilt UTDs
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=a1b9555ca35e53d2ce1fb3e822613b1436be9250 translatedAt=2026-06-05T06:42:52.593Z pushedAt=2026-06-08T06:11:02.497Z -->
 
 A Uniform Type Descriptor (UTD) is used to address data type ambiguity in a system. It provides a standardized way to describe the same data type in different representations, such as MIME types and file name extensions. For example, when describing a JPG/JPEG image, you can use **image/jpeg**, **.jpg**, **.jpeg**, or **image/picture**. For details, see [Generic UTDs](#generic-utds).
 
 When data in various formats is passed across applications or devices, the target application or device may fail to identify the data or can process the data after lots of adaptation.
 
-To facilitate use, OpenHarmony is prebuilt with common UTDs, which are classified into [Generic UTDs](#generic-utds), [system-specific UTDs](#system-specific-utds), and [application-specific UTDs](#application-specific-utds).
+To facilitate use, OpenHarmony is prebuilt with common UTDs, which are classified into [Generic UTDs](#generic-utds), [System-specific UTDs](#system-specific-utds), and [Application-specific UTDs](#application-specific-utds).
 
 ## Generic UTDs
 
@@ -140,8 +142,8 @@ Generic UTDs define universal data types that can be identified by the vast majo
 | general.pem                         | general.text                  | .pem                                   | application/x-pem-file                                                                 | Privacy-Enhanced Mail (PEM) format.                      |
 | general.log                         | general.text                  | .log                                   | text/plain                                                                             | Log file format.                            |
 | general.tel                         | general.text                  | .tel                                   |               -                   | Schematic information file type, such as files containing device packaging diagram, network topology, encoding information, and more.                            |
-| general.ion                         | general.text                  | .ion                                   | text/plain                                                                             | File content description type.                 |
-| general.conf                        | general.text                  | .conf                                  | text/plain                                                                             | Generic configuration file type.       |
+| general.ion                         | general.text                  | .ion                                   | -                                                                             | File content description type.                  |
+| general.conf                        | general.text                  | .conf                                  | -                                                                             | General configuration file type.        |
 | general.calendar                    | general.text                  |                 -                      |                                               -                                        | Calendar.                       |
 | general.vcs                         | general.calendar              | .vcs                                   | text/calendar                                                                          | vCalendar format.                   |
 | general.ics                         | general.calendar              | .ics                                   | text/calendar                                                                          | iCalendar format.                   |
@@ -216,10 +218,13 @@ Generic UTDs define universal data types that can be identified by the vast majo
 | com.apple.iwork.keynote.key                                     |                 general.composite-object,com.apple.iwork                                                            | .key                            |    application/vnd.apple.keynote                   |  Presentation file of iWork Keynote. <!--RP1-->This type is supported since OpenHarmony 6.1.<!--RP1End-->         |
 | com.apple.iwork.numbers.numbers                                     |                 general.composite-object,com.apple.iwork                                                            | .numbers                            |    application/vnd.apple.numbers                   |  Spreadsheet file of iWork Numbers. <!--RP1-->This type is supported since OpenHarmony 6.1.<!--RP1End-->         |
 | com.apple.iwork.pages.pages                                     |                 general.composite-object,com.apple.iwork                                                            | .pages                            |    application/vnd.apple.pages                   |  Document file of iWork Pages. <!--RP1-->This type is supported since OpenHarmony 6.1.<!--RP1End-->         |
-
+| com.huawei.hmos.musiccreate.gofile                                     |                 general.archive                                                          | .gomusic                            |    -    |  **musiccreate** file format. <!--RP2-->This type is supported since OpenHarmony 6.1.<!--RP2End-->         |
+| com.apple.coreaudio-format                                     |                 general.audio                                                            | .caf                            |    audio/x-caf                   |  CAF audio data file. <!--RP2-->This type is supported since OpenHarmony 6.1.<!--RP2End-->         |
 
 ## System-specific UTDs
+
 The system-specific UTDs are closely related to a platform or an operating system and are used for cross-application interaction within the system or platform. The IDs of system-specific UTDs are in the ***os-name*.xxx** format. The following table lists the system-specific UTDs prebuilt in the system.
+
 | **UTD ID**                | **BelongingTo**   | **File Name Extension**              | **MIME Type**                                                    | **Description**                          |
 |----------------------------|--------------------------|---------------------------------------|--------------------------------------------------------------------|----------------------------------|
 | openharmony.form           | general.object           |                  -                    |-                                                                    | Form type defined by OpenHarmony.          |
@@ -244,7 +249,9 @@ The system-specific UTDs are closely related to a platform or an operating syste
 | openharmony.dlp            | general.composite-object | .dlp                                  |-                                                                    | Account-based encryption file defined by OpenHarmony.    |
 
 ## Application-specific UTDs
+
 Application-specific UTDs are defined and maintained by a specific application or organization, and the data interaction is identified by the specific application. The IDs of these types of UTDs are in the **com.*company-name*.xxx** or **org.*organization-name*.xxx** format. The following table lists the application-specific UTDs prebuilt in the system.
+
 | **UTD ID**                                                 | **BelongingTo**                                                   | **File Name Extension**        | **MIME Type**                                                           | **Description**                                   |
 |-------------------------------------------------------------|--------------------------------------------------------------------------|---------------------------------|---------------------------------------------------------------------------|-------------------------------------------|
 | com.microsoft.bmp                                           | general.image                                                            | .bmp, .bm               | image/bmp, image/x-ms-bmp                                                 | Microsoft Windows BMP format.                            |

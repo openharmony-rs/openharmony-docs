@@ -5,6 +5,7 @@
 <!--Designer: @majiajun518-->
 <!--Tester: @jiyong_sd-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=531db22a21215c0121639101d61b4ccd5426a88b translatedAt=2026-06-08T07:52:17.900Z pushedAt=2026-06-09T10:12:44.050Z -->
 
 The **annotation** module defines the annotation types of OpenHarmony ArkTS APIs, such as the minimum available version of the lifecycle.
 
@@ -94,7 +95,7 @@ Prerequisites: The value of **compatibleSdkVersion** in the **build-profile.json
 
   ```typescript
   import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';
-  import wifiManager from '@ohos.wifiManager';
+  import { wifiManager } from '@kit.ConnectivityKit';
   wifiManager.startScan();  // This API is available since API version 21. Directly calling this API will generate a compatibility warning.
   // The 'startScan' API is supported since SDK version 21. However, the current compatible SDK version is 20.
 
@@ -125,7 +126,7 @@ Prerequisites: The value of **compatibleSdkVersion** in the **build-profile.json
 
   ```typescript
   import { Available } from '@kit.BasicServicesKit';
-  import wifiManager from '@ohos.wifiManager';
+  import { wifiManager } from '@kit.ConnectivityKit';
   wifiManager.startScan();  // This API is available since API version 21. Directly calling this API will generate a compatibility warning.
   // The 'startScan' API is supported since SDK version 21. However, the current compatible SDK version is 20.
 

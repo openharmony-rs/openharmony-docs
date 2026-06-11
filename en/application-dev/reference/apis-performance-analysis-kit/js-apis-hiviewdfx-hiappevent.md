@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -325,7 +325,7 @@ let params: Record<string, hiAppEvent.ParamType> = {
 hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
   hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
 }).catch((err: BusinessError) => {
-hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -397,7 +397,7 @@ Defines parameters for a **Watcher** object. This API is used to configure and m
 
 > **NOTE**
 >
-> You are not advised to [remove watchers](#hiappeventremovewatcher) in the callback. Once a watcher is removed, the subscription callback of the watcher becomes invalid, and the callback may not be triggered when an event occurs.
+> You are not advised to call [removeWatcher](#hiappeventremovewatcher) in the callback. Once a watcher is removed, the subscription callback of the watcher becomes invalid, and the callback may not be triggered when an event occurs.
 
 ## TriggerCondition
 
@@ -464,7 +464,7 @@ hiAppEvent.addWatcher({
       domain: hiAppEvent.domain.OS,
     }
   ],
-  });
+});
 
 // Create an AppEventPackageHolder instance. holder1 holds the event data subscribed by Watcher1 added through addWatcher.
 let holder1: hiAppEvent.AppEventPackageHolder = new hiAppEvent.AppEventPackageHolder("Watcher1");
@@ -784,13 +784,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-    let processor: hiAppEvent.Processor = {
-      name: 'analytics_demo'
-    };
-    let id: number = hiAppEvent.addProcessor(processor);
-    hilog.info(0x0000, 'hiAppEvent', `addProcessor event was successful, id=${id}`);
+  let processor: hiAppEvent.Processor = {
+    name: 'analytics_demo'
+  };
+  let id: number = hiAppEvent.addProcessor(processor);
+  hilog.info(0x0000, 'hiAppEvent', `addProcessor event was successful, id=${id}`);
 } catch (error) {
-    hilog.error(0x0000, 'hiAppEvent', `failed to addProcessor event, code=${error.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `failed to addProcessor event, code=${error.code}`);
 }
 ```
 
@@ -873,14 +873,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-    let processor: hiAppEvent.Processor = {
-      name: 'analytics_demo'
-    };
-    let id: number = hiAppEvent.addProcessor(processor);
-    // Remove a specified data processor based on the ID returned after the data processor is added.
-    hiAppEvent.removeProcessor(id);
+  let processor: hiAppEvent.Processor = {
+    name: 'analytics_demo'
+  };
+  let id: number = hiAppEvent.addProcessor(processor);
+  // Remove a specified data processor based on the ID returned after the data processor is added.
+  hiAppEvent.removeProcessor(id);
 } catch (error) {
-    hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
 }
 ```
 
@@ -1301,6 +1301,8 @@ Enumerates event types.
 
 ## hiAppEvent.domain<sup>11+</sup>
 
+### Constants
+
 Provides domain name constants.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -1340,6 +1342,8 @@ Provides event name constants, including system event name constants and applica
 | SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | Yes| ArkWeb fling jank event. This is a system event name constant.<br>**Atomic service API**: This parameter can be used in atomic services since API version 23.|
 
 ## hiAppEvent.param
+
+### Constants
 
 Provides parameter name constants.
 

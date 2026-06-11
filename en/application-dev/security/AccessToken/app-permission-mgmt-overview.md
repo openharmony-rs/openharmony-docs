@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4c605d27e0af7c49e44095d77dd99bf8c13d3e25 translatedAt=2026-06-03T09:06:16.265Z pushedAt=2026-06-03T09:14:10.653Z -->
 
 ## Introduction
 
@@ -30,6 +31,8 @@ Determine the permissions required by your application based on the use cases of
 - Sensitive permissions must be dynamically requested before the related service feature is provided.
 
 - If a user refuses to grant a permission, other service features irrelevant to this permission can be used normally.
+
+- When a user proactively revokes a permission, if the permission status changes from "granted" to "denied," the system typically terminates the corresponding application process. However, in scenarios where the system proactively reclaims a permission (for example, a one-time authorization from a security control is automatically reclaimed by the system after the authorization period ends), the permission status also changes, but the application process is not terminated as a result.
 
 ## Authorization Mode
 

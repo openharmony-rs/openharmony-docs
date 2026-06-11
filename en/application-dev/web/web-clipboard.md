@@ -6,13 +6,13 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-ArkWeb provides the capability of interacting with the system clipboard to cut, copy, and paste various types of data through the following methods: the [Menu](web_menu.md) component, keyboard shortcuts, and [W3C clipboard API and events](https://www.w3.org/TR/clipboard-apis/).
+ArkWeb provides the capability of interacting with the system clipboard to cut, copy, and paste various types of data through the following methods: the [Menu](web-menu.md) component, keyboard shortcuts, and [W3C clipboard API and events](https://www.w3.org/TR/clipboard-apis/).
 
 ## Using the Menu Component or Keyboard Shortcuts
 
 You can customize options in the menu. When a user selects a specific option, the [cut](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#cut9), [copy](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copy9) and [copyImage](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#copyimage9) APIs can be called to cut or copy the text, HTML or image data to the system clipboard. The [paste](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#paste9) and [pasteAndMatchStyle](../reference/apis-arkweb/arkts-basic-components-web-WebContextMenuResult.md#pasteandmatchstyle20) APIs can be used to paste the data to the input area of the web page.
 
-For details about how to use them, see [Using Web Menus](web_menu.md).
+For details about how to use them, see [Using Web Menus](web-menu.md).
 
 When a device has a physical keyboard, a user can also use keyboard shortcuts **Ctrl+X** (cut), **Ctrl+C** (copy), and **Ctrl+V** (paste) to interact with the clipboard.
 

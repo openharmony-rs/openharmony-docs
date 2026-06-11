@@ -1,45 +1,83 @@
 # JavaScript Service Widget UI Components<!--arkui-card-comp-->
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=7b6b884ef565767a6c9d0d7139fb4cb24a435447 translatedAt=2026-06-05T10:29:50.470Z pushedAt=2026-06-08T06:55:05.625Z -->
 
 - Framework Overview<!--card-comp-framework-overview-->
+
   - [File Organization](js-service-widget-file.md)
+
   - Syntax<!--card-comp-syntax-->
+
     - [HML](js-service-widget-syntax-hml.md)
+
     - [CSS](js-service-widget-syntax-css.md)
+
   - [Multi-Language Capability](js-service-widget-multiple-languages.md)
+
   - [Version Compatibility Adaptation](js-service-widget-version-compatibility.md)
+
   - [Theme Configuration](js-service-widget-theme.md)
-- Universal Components<!--card-comp-universal-comp-infor-->
+
+- Universal Components<!--card-comp-universal-comp-inform-->
+
   - [Universal Attributes](js-service-widget-common-attributes.md)
+
   - [Universal Styles](js-service-widget-common-styles.md)
+
   - [Universal Events](js-service-widget-common-events.md)
+
   - [Gradient Styles](js-service-widget-common-gradient.md)
+
   - [Media Query](js-service-widget-common-mediaquery.md)
+
   - [Custom Font Styles](js-service-widget-common-customizing-font.md)
+
   - [Accessibility](js-service-widget-common-accessibility.md)
+
   - [Atomic Layout](js-service-widget-common-atomic-layout.md)
+
 - Container Components<!--card-comp-container-comp-->
+
   - [badge](js-service-widget-container-badge.md)
+
   - [div](js-service-widget-container-div.md)
+
   - [list](js-service-widget-container-list.md)
+
   - [list-item](js-service-widget-container-list-item.md)
+
   - [stack](js-service-widget-container-stack.md)
+
   - [swiper](js-service-widget-container-swiper.md)
+
 - Basic Components<!--card-comp-basic-comp-->
+
   - [button](js-service-widget-basic-button.md)
+
   - [calendar](js-service-widget-basic-calendar.md)
+
   - [chart](js-service-widget-basic-chart.md)
+
   - [clock](js-service-widget-basic-clock.md)
+
   - [divider](js-service-widget-basic-divider.md)
+
   - [image](js-service-widget-basic-image.md)
+
   - [input](js-service-widget-basic-input.md)
+
   - [progress](js-service-widget-basic-progress.md)
+
   - [span](js-service-widget-basic-span.md)
+
   - [text](js-service-widget-basic-text.md)
+
 - [Custom Component Basic Usage](js-service-widget-custom-basic-usage.md)
+
 - [Data Types](js-service-widget-appendix-types.md)
