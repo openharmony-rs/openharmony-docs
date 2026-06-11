@@ -147,10 +147,6 @@ export default class EntryAbility extends UIAbility {
       hilog.error(0x0000, 'testTag', 'NFC System Capability not supported.');
       return;
     }
-    if (!nfcController.isNfcSupported()) {
-      hilog.error(0x0000, 'testTag', 'NFC not supported on this device.');
-      return;
-    }
     if (!cardEmulation.hasHceCapability()) {
       hilog.error(0x0000, 'testTag', 'hce unavailable.');
       return;
@@ -291,10 +287,6 @@ export default class HceUIAbility extends UIAbility {
     // 判断设备是否支持NFC能力和HCE能力
     if (!canIUse("SystemCapability.Communication.NFC.Core")) {
       hilog.error(0x0000, 'testTag', 'NFC System Capability not supported.');
-      return;
-    }
-    if (!nfcController.isNfcSupported()) {
-      hilog.error(0x0000, 'testTag', 'NFC not supported on this device.');
       return;
     }
     if (!cardEmulation.hasHceCapability()) {
