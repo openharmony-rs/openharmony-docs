@@ -35,7 +35,7 @@ Create a **&lt;search&gt;** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001276003537](figures/en-us_image_0000001276003537.png)
+![search-Component](figures/search-Component.png)
 
 
 ## Setting Attributes
@@ -63,7 +63,7 @@ Set the **hint**, **icon**, and **searchbutton** to define the hint text, icon, 
 }
 ```
 
-![en-us_image_0000001275923017](figures/en-us_image_0000001275923017.png)
+![Setting-Attributes-1](figures/Setting-Attributes-1.png)
 
 
 ## Adding Styles
@@ -96,7 +96,7 @@ search{
 }
 ```
 
-![en-us_image_0000001232003020](figures/en-us_image_0000001232003020.gif)
+![Adding-Styles](figures/Adding-Styles.gif)
 
 
 ## Binding Events
@@ -173,7 +173,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001231683164](figures/en-us_image_0000001231683164.gif)
+![Binding-Events-3](figures/Binding-Events-3.gif)
 
 
 ## Example Scenario
@@ -263,4 +263,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001232003024](figures/en-us_image_0000001232003024.gif)
+![Example-Scenario-11](figures/Example-Scenario-11.gif)

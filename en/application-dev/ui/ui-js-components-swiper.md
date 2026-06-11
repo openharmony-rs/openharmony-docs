@@ -59,7 +59,7 @@ text{
 ```
 
 
-![en-us_image_0000001181495038](figures/en-us_image_0000001181495038.gif)
+![swiper-Component](figures/swiper-Component.gif)
 
 
 > **NOTE**
@@ -120,7 +120,7 @@ text{
 }
 ```
 
-![en-us_image_0000001181655292](figures/en-us_image_0000001181655292.gif)
+![Adding-Attributes](figures/Adding-Attributes.gif)
 
 > **NOTE**
 > - The **digital** attribute takes effect only when the **indicator** attribute is set to **true**.
@@ -186,7 +186,7 @@ text{
 }
 ```
 
-![en-us_image_0000001226896657](figures/en-us_image_0000001226896657.gif)
+![Setting-Style-1](figures/Setting-Style-1.gif)
 
 
 ## Binding Events
@@ -288,7 +288,7 @@ export default{
 }
 ```
 
-![en-us_image_0000001227016767](figures/en-us_image_0000001227016767.gif)
+![Binding-Event-5](figures/Binding-Event-5.gif)
 
 
 ## Example Scenario
@@ -369,4 +369,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001263359599](figures/en-us_image_0000001263359599.gif)
+![Example-Scenario-13](figures/Example-Scenario-13.gif)
