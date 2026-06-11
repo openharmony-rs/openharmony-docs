@@ -68,7 +68,7 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
 
 type LaunchAtomicServiceCallback = (appId: string, options?: AtomicServiceOptions) => void
 
-拉起元服务触发的回调。
+拉起原子化服务触发的回调。
 
 **系统接口：** 此接口为系统接口。
 
