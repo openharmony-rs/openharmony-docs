@@ -78,7 +78,7 @@
 }
 ```
 
-![zh-cn_image_0000001127125196](figures/zh-cn_image_0000001127125196.png)
+![spans](figures/spans.png)
 
 属性动画示例
 
@@ -133,7 +133,7 @@
 </div>
 ```
 
-![zh-cn_image_0000001127125198](figures/zh-cn_image_0000001127125198.gif)
+![fill-opacity](figures/fill-opacity.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -172,4 +172,4 @@
 </div>
 ```
 
-![zh-cn_image_0000001127125200](figures/zh-cn_image_0000001127125200.gif)
+![stroke-width-opacity](figures/stroke-width-opacity.gif)

@@ -227,4 +227,4 @@ export default {
 >
 >  The following figure shows the meanings of **end** and **start** in the **steps** function.
 >
->  ![en-us_image_0000001127125220](figures/en-us_image_0000001127125220.png)
+>  ![steps](figures/steps.png)

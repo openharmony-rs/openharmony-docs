@@ -430,7 +430,7 @@ struct TreeViewDemo {
   }}
 ```
 
-![zh-cn_image_0000001664822257](figures/zh-cn_image_0000001664822257.png)
+![clickid](figures/clickid.png)
 
 ### 示例2（设置Symbol类型图标）
 

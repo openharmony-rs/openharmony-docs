@@ -840,7 +840,7 @@ stroke(): void
   }
   ```
 
-  ![zh-cn_image_0000001236697937](figures/zh-cn_image_0000001236697937.png)
+  ![Blue-cursor](figures/Blue-cursor.png)
 
 
 ### beginPath
