@@ -40,7 +40,7 @@ import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.
 | APP_START_RESPONSE_TIME   | 5 | 应用启动的响应时延，单位：ms。  |
 | APP_START_COMPLETE_TIME   | 6 | 应用启动的完成时延，单位：ms。  |
 | PAGE_SWITCH_COMPLETE_TIME | 7 | 应用内页面切换的完成时延，单位：ms。  |
-| LIST_SWIPE_FPS            | 8 | 应用内列表滑动的帧率，单位：fps。 |
+| LIST_SWIPE_FPS            | 8 | 应用内列表滑动的帧率，单位：fps(每秒帧数)。 |
 
 > **说明：**
 >
@@ -205,8 +205,8 @@ async function demo() {
     for (let index = 0; index < 10000; index++) {
       num++;
     }
-    finish(true);
-  }
+    finish(true); // 调用finish回调函数，通知代码段执行结束，且执行符合预期
+  };
   let perfTestStrategy: PerfTestStrategy = {
     metrics: metrics,
     actionCode: actionCode
@@ -230,13 +230,13 @@ getMeasureResult(metric: PerfMetric): PerfMeasureResult
 
 | 参数名   | 类型   | 必填 | 说明                            |
 | -------- | ------ | ---- | ------------------------------- |
-| metric | [PerfMetric](#perfmetric) | 是   | 指定性能指标对应的测量结果，包含各轮测量数据值及统计值（最大值、最小值、平均值）。 |
+| metric | [PerfMetric](#perfmetric) | 是   | 指定要查询的性能指标。 |
 
 **返回值：**
 
 | 类型 | 说明           |
 | -------- | ---------------------- |
-| [PerfMeasureResult](#perfmeasureresult)   | 性能指标对应测量结果数据。 |
+| [PerfMeasureResult](#perfmeasureresult)   | 指定性能指标对应的测量结果，包含各轮测量数据值及统计值（最大值、最小值、平均值）。 |
 
 **错误码：**
 
@@ -261,13 +261,13 @@ async function demo() {
     for (let index = 0; index < 10000; index++) {
       num++;
     }
-    finish(true);
-  }
+    finish(true); // 调用finish回调函数，通知代码段执行结束，且执行符合预期
+  };
   let perfTestStrategy: PerfTestStrategy = {
     metrics: metrics,
     actionCode: actionCode
   };
-  let perfTest: PerfTest = PerfTest.create(perfTestStrategy);
+  let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 构造一个PerfTest对象，创建测试任务
   await perfTest.run();
   let res = perfTest.getMeasureResult(PerfMetric.DURATION); // 获取指定性能指标的测量数据
 }
@@ -304,13 +304,13 @@ async function demo() {
     for (let index = 0; index < 10000; index++) {
       num++;
     }
-    finish(true);
-  }
+    finish(true); // 调用finish回调函数，通知代码段执行结束，且执行符合预期
+  };
   let perfTestStrategy: PerfTestStrategy = {
     metrics: metrics,
     actionCode: actionCode
   };
-  let perfTest: PerfTest = PerfTest.create(perfTestStrategy);
+  let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 构造一个PerfTest对象，创建测试任务
   await perfTest.run();
   perfTest.destroy(); // 销毁PerfTest对象
 }
