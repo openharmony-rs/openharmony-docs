@@ -77,7 +77,7 @@
 | 约束项 | 说明 |
 |--------|------|
 | Surface共享 | 主/副编码器共享同一个Consumer Surface，仅需从`GetSurface`获取一次并绑定到数据源（Camera/XComponent）。 |
-| Window 生命周期 | `OH_VideoEncoder_GetSurface`获取的window实例需由开发者负责释放，在所有编码器Destroy之后调用`OH_NativeWindow_DestroyNativeWindow(window)`销毁。 |
+| Window生命周期 | `OH_VideoEncoder_GetSurface`获取的window实例需由开发者负责释放，在所有编码器Destroy之后调用`OH_NativeWindow_DestroyNativeWindow(window)`销毁。 |
 | 前处理独立性 | 每个编码器可分别配置不同的降采样/裁剪/丢帧策略；但每个编码器内部降采样与裁剪仍然互斥。 |
 | 回调独立性 | 两路的`onNewOutputBuffer`回调在不同线程中触发，需各自释放FreeOutputBuffer。 |
 
@@ -197,7 +197,7 @@ OH_AVFormat_SetDoubleValue(secFmt, OH_MD_KEY_FRAME_RATE, 30.0);   // 同 Primary
 OH_AVFormat_SetLongValue(secFmt, OH_MD_KEY_BITRATE, 1500000);     // 1.5Mbps（较低码率）。
 
 // 差异化前处理配置（Secondary独立配置）。
-// 模式 A：降采样（最常用）。
+// 模式A：降采样（最常用）。
 // 以下示例为将1080p缩放到480p用于预览。
 // 注意：width和height必须成对出现。
 OH_AVFormat_SetIntValue(secFmt,
@@ -209,7 +209,7 @@ OH_AVFormat_SetIntValue(secFmt,
 OH_AVFormat_SetDoubleValue(secFmt,
     OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, 15.0);
 
-// 模式 B：ROI裁剪（替代方案）。
+// 模式B：ROI裁剪（替代方案）。
 // 以下示例为编码画面中心区域。
 // 注意：left/top/right/bottom必须全部同时出现。
 // OH_AVFormat_SetIntValue(secFmt, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT, 480);
