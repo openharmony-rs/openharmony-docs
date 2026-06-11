@@ -17,9 +17,8 @@ Sendable对象支持冻结操作。冻结后，对象变为只读，不能修改
 1. 提供ts文件封装Object.freeze方法。
 
    <!-- @[provide_encapsulate_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/helper.ts) --> 
-
-   ```ts
-   // helper.ts
+   
+   ``` TypeScript
    export function freezeObj(obj: any) {
      Object.freeze(obj);
    }
