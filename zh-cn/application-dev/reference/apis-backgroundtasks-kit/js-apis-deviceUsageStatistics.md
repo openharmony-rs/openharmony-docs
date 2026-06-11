@@ -41,7 +41,7 @@ isIdleState(bundleName: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 ```ts
 import { BusinessError } from '@ohos.base';
-import bundleState from '@ohos.bundleState'
+import bundleState from '@ohos.bundleState';
 // 三方应用使用示例代码时，注意将bundleName更换为自己应用的bundleName
 bundleState.isIdleState("com.ohos.camera", (err: BusinessError, res: boolean) => {
   if (err) {
@@ -77,7 +77,7 @@ isIdleState(bundleName: string): Promise&lt;boolean&gt;
 
 ```ts
 import { BusinessError } from '@ohos.base';
-import bundleState from '@ohos.bundleState'
+import bundleState from '@ohos.bundleState';
 // 三方应用使用示例代码时，注意将bundleName更换为自己应用的bundleName
 bundleState.isIdleState("com.ohos.camera").then((res: boolean) => {
   console.info('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));
