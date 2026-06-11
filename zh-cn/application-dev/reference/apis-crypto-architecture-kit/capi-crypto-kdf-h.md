@@ -40,11 +40,11 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfParams **params)](#oh_cryptokdfparams_create) | 创建KDF参数。 |
+| [OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfParams **params)](#oh_cryptokdfparams_create) | 创建KDF参数。<br> 注意：创建的资源必须通过[OH_CryptoKdfParams_Destroy](capi-crypto-kdf-h.md#oh_cryptokdfparams_destroy)销毁。  |
 | [OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, CryptoKdf_ParamType type, Crypto_DataBlob *value)](#oh_cryptokdfparams_setparam) | 设置KDF参数。 |
 | [void OH_CryptoKdfParams_Destroy(OH_CryptoKdfParams *params)](#oh_cryptokdfparams_destroy) | 销毁KDF参数。 |
-| [OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)](#oh_cryptokdf_create) | 根据给定的算法名称创建KDF上下文。 |
-| [OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParams *params, int keyLen, Crypto_DataBlob *key)](#oh_cryptokdf_derive) | 派生密钥。 |
+| [OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)](#oh_cryptokdf_create) | 根据给定的算法名称创建KDF上下文。<br> 注意：创建的资源必须通过[OH_CryptoKdf_Destroy](capi-crypto-kdf-h.md#oh_cryptokdf_destroy)销毁。  |
+| [OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParams *params, int keyLen, Crypto_DataBlob *key)](#oh_cryptokdf_derive) | 派生密钥。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放key内存。 |
 | [void OH_CryptoKdf_Destroy(OH_CryptoKdf *ctx)](#oh_cryptokdf_destroy) | 销毁KDF上下文。 |
 
 ## 枚举类型说明
@@ -84,6 +84,8 @@ OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfPa
 **描述**
 
 创建KDF参数。
+
+注意：创建的资源必须通过[OH_CryptoKdfParams_Destroy](capi-crypto-kdf-h.md#oh_cryptokdfparams_destroy)销毁。
 
 **起始版本：** 20
 
@@ -159,6 +161,8 @@ OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)
 
 根据给定的算法名称创建KDF上下文。
 
+注意：创建的资源必须通过[OH_CryptoKdf_Destroy](capi-crypto-kdf-h.md#oh_cryptokdf_destroy)销毁。
+
 **起始版本：** 20
 
 **参数：**
@@ -188,6 +192,8 @@ OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParam
 **描述**
 
 派生密钥。
+
+注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放key内存。
 
 **起始版本：** 20
 
