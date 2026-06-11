@@ -78,7 +78,7 @@ Enumerates the error codes reported when the certificate management dialog box A
 | ERROR_GENERIC  | 29700001      | An internal error occurs when the API is called, such as IPC failure, memory operation failure, and file operation failure. |
 | ERROR_OPERATION_CANCELED<sup>14+</sup>  | 29700002      | The user cancels the operation in the certificate management dialog box. |
 | ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | The user operation in the certificate management dialog box fails.<br>For example, the certificate fails to be installed. |
-| ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | This API is not supported onthe device. |
+| ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | This API is not supported on the device. |
 | ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | The operation does not comply with the device security policy.<br>For example, the CA certificate of **GLOBAL_USER** is not allowed on the device. |
 | ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | The input parameter validation fails.<br>For example, the parameter format is incorrect or the value range is invalid. |
 | ERROR_NO_AVAILABLE_CERTIFICATE<sup>22+</sup>  | 29700007      | No certificate is available.|
