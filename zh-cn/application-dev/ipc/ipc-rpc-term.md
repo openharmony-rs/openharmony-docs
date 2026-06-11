@@ -1,7 +1,7 @@
 # IPC与RPC通信术语
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @xdx19211@luodonghui0157-->
+<!--Owner: @xdx19211-->
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
