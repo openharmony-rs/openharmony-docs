@@ -193,10 +193,6 @@ export default class EntryAbility extends UIAbility {
       hilog.error(0x0000, 'testTag', 'NFC System Capability not supported.');
       return;
     }
-    if (!nfcController.isNfcSupported()) {
-      hilog.error(0x0000, 'testTag', 'NFC not supported on this device.');
-      return;
-    }
 
     // 根据应用程序信息，初始化正确的值
     nfcTagElementName = {
