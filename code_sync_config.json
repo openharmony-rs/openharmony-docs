@@ -15596,6 +15596,16 @@
 						"start_line":18
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets",
+				"functions":[
+					{
+						"end_line":42,
+						"name":"stroke_miter_limit",
+						"start_line":21
+					}
+				]
 			}
 		]
 	},
