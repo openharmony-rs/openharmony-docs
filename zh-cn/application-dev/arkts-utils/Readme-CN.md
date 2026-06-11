@@ -129,3 +129,4 @@
     - [AOT编译概述 (ArkTS-Sta)](static-arkts-aot-overview.md)
     - [安装时AOT开发指导 (ArkTS-Sta)](static-arkts-install-time-aot.md)
   - [在build-profile.json5中配置arkOptions](arkoptions-guide.md)
+- [ArkTS术语](arkts-glossary.md)
