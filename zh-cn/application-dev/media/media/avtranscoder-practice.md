@@ -169,10 +169,12 @@
          console.info(`AVTranscoder progressUpdate = ${progress}`);
          workerPort.postMessage(progress);
        })
+       
+       let fileDescriptor: resourceManager.RawFileDescriptor | undefined;
 
        try {
          // 获取输入文件fd，H264_AAC.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
-         let fileDescriptor = await context.resourceManager.getRawFd('H264_AAC.mp4');
+         fileDescriptor = await context.resourceManager.getRawFd('H264_AAC.mp4');
          transcoder.fdSrc = fileDescriptor; // 设置fdSrc。
        } catch (error) {
          console.error('Failed to get the file descriptor, please check the resource and path.');
