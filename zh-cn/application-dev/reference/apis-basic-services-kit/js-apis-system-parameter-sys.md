@@ -257,7 +257,7 @@ set(key: string, value: string): Promise&lt;void&gt;
 import { BusinessError } from '@ohos.base';
 
 try {
-    let p: Promise<void> = systemparameter.set("test.parameter.key", "testValue");
+    let p: Promise<void> = systemParameter.set("test.parameter.key", "testValue");
     p.then((value: void) => {
         console.info("set test.parameter.key success: " + value);
     }).catch((err: BusinessError) => {
