@@ -53,7 +53,7 @@ queryBundleStateInfos(begin: number, end: number, callback: AsyncCallback&lt;Bun
 
 ```ts
 import { BusinessError } from '@ohos.base';
-import bundleState from '@ohos.bundleState'
+import bundleState from '@ohos.bundleState';
 
 bundleState.queryBundleStateInfos(0, 20000000000000, (err: BusinessError ,
   res: bundleState.BundleActiveInfoResponse ) => {
@@ -96,7 +96,7 @@ queryBundleStateInfos(begin: number, end: number): Promise&lt;BundleActiveInfoRe
 
 ```ts
 import { BusinessError } from '@ohos.base';
-import bundleState from '@ohos.bundleState'
+import bundleState from '@ohos.bundleState';
 
 bundleState.queryBundleStateInfos(0, 20000000000000).then((res: bundleState.BundleActiveInfoResponse) => {
   console.info('BUNDLE_ACTIVE queryBundleStateInfos promise success.');
@@ -132,7 +132,7 @@ queryBundleStateInfoByInterval(byInterval: IntervalType, begin: number, end: num
 
 ```ts
 import { BusinessError } from '@ohos.base';
-import bundleState from '@ohos.bundleState'
+import bundleState from '@ohos.bundleState';
 
 bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED, 0, 20000000000000, (err: BusinessError, res: Array<bundleState.BundleStateInfo>) => {
   if (err) {
@@ -178,7 +178,7 @@ queryBundleStateInfoByInterval(byInterval: IntervalType, begin: number, end: num
 
 ```ts
 import { BusinessError } from '@ohos.base';
-import bundleState from '@ohos.bundleState'
+import bundleState from '@ohos.bundleState';
 
 bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED, 0, 20000000000000).then((res: Array<bundleState.BundleStateInfo>) => {
   console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise success.');
@@ -216,7 +216,7 @@ queryBundleActiveStates(begin: number, end: number, callback: AsyncCallback&lt;A
 
 ```ts
 import { BusinessError } from '@ohos.base';
-import bundleState from '@ohos.bundleState'
+import bundleState from '@ohos.bundleState';
 
 bundleState.queryBundleActiveStates(0, 20000000000000, (err: BusinessError, res: Array<bundleState.BundleActiveState>) => {
   if (err) {
@@ -261,7 +261,7 @@ queryBundleActiveStates(begin: number, end: number): Promise&lt;Array&lt;BundleA
 
 ```ts
 import { BusinessError } from '@ohos.base';
-import bundleState from '@ohos.bundleState'
+import bundleState from '@ohos.bundleState';
 
 bundleState.queryBundleActiveStates(0, 20000000000000).then((res: Array<bundleState.BundleActiveState>) => {
   console.info('BUNDLE_ACTIVE queryBundleActiveStates promise success.');
@@ -295,7 +295,7 @@ queryAppUsagePriorityGroup(): Promise&lt;number&gt;
 
 ```ts
 import { BusinessError } from '@ohos.base';
-import bundleState from '@ohos.bundleState'
+import bundleState from '@ohos.bundleState';
 
 bundleState.queryAppUsagePriorityGroup().then((res: number) => {
   console.info('BUNDLE_ACTIVE QueryPackageGroup promise succeeded. result: ' + JSON.stringify(res));
@@ -325,7 +325,7 @@ queryAppUsagePriorityGroup(callback: AsyncCallback&lt;number&gt;): void
 
 ```ts
 import { BusinessError } from '@ohos.base';
-import bundleState from '@ohos.bundleState'
+import bundleState from '@ohos.bundleState';
 
 bundleState.queryAppUsagePriorityGroup((err: BusinessError, res: number) => {
   if(err) {
@@ -359,7 +359,7 @@ queryCurrentBundleActiveStates(begin: number, end: number, callback: AsyncCallba
 
 ```ts
 import { BusinessError } from '@ohos.base';
-import bundleState from '@ohos.bundleState'
+import bundleState from '@ohos.bundleState';
 
 bundleState.queryCurrentBundleActiveStates(0, 20000000000000, (err: BusinessError, res: Array<bundleState.BundleActiveState>) => {
   if (err) {
@@ -402,7 +402,7 @@ queryCurrentBundleActiveStates(begin: number, end: number): Promise&lt;Array&lt;
 
 ```ts
 import { BusinessError } from '@ohos.base';
-import bundleState from '@ohos.bundleState'
+import bundleState from '@ohos.bundleState';
 
 bundleState.queryCurrentBundleActiveStates(0, 20000000000000).then((res: Array<bundleState.BundleActiveState>) => {
   console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise success.');
