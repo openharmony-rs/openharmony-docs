@@ -21,6 +21,7 @@ UiTest提供UI自动化测试能力，供开发者在测试场景使用，主要
 - [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated)：入口类，提供控件匹配/查找，按键注入，坐标点击/滑动，截图等能力。从API version 8开始支持，从API version 9开始废弃，建议使用[Driver<sup>9+</sup>](#driver9)替代。
 
 > **说明：**
+>
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/uitest-guidelines.md)<!--RP1End-->中使用。
 > - 本模块接口不支持并发调用。
@@ -243,7 +244,7 @@ UI事件的相关信息。
 | text       | string | 是   | 否   | 控件/窗口的文本信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | 是   | 是   | 窗口变化事件类型，若非窗口变化事件返回[WindowChangeType](#windowchangetype22).WINDOW_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | 是   | 是   | 控件操作事件类型，若非控件操作事件返回[ComponentEventType](#componenteventtype22).COMPONENT_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| windowId<sup>22+</sup>       | number | 是   | 是   | 控件所属窗口id。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| windowId<sup>22+</sup>       | number | 是   | 是   | 控件所属窗口id，若非窗口变化事件或非控件操作事件则返回-1。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | componentId<sup>22+</sup>       | string | 是   | 是   | 控件id，若非控件操作事件返回空字符串。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | componentRect<sup>22+</sup>       | [Rect](#rect9) | 是   | 是   | 控件边框信息，若非控件操作事件则返回属性值均为0的[Rect](#rect9)对象。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
@@ -305,7 +306,7 @@ UI事件的相关信息。
 | ---------- | ------ |----|----|--------------------------------------------------------|
 | speed | number | 否  | 是  | 操作速率，取值范围为200-40000的整数，默认值为600，单位：px/s。取值为超出取值范围的非负数或为null/undefined时按照默认值600处理，为负数时抛出17000007错误码。 |
 | duration | number | 否  | 是  | 操作持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。取值小于1500时抛出17000007错误码，为null或undefined时使用默认值。 |
-| pressure | number | 否  | 是  | 触摸的压力值，取值范围为0-1，默认值为0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出17000007错误码。 |
+| pressure | number | 否  | 是  | 触摸的压力值，取值范围为[0, 1]，包含0和1，默认值为0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出17000007错误码。 |
 
 ## PenKey
 
@@ -882,7 +883,7 @@ checkable(b?: boolean): On
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| 401      | Parameter error. 1. Incorrect parameter types; 2. Parameter verification failed. |
 
 **示例：**
 
@@ -1388,8 +1389,11 @@ click(): Promise\<void>
 import { Driver, ON, Component } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 查找Button类型的控件
   let button: Component = await driver.findComponent(ON.type('Button'));
+  // 点击该控件
   await button.click();
 }
 ```
@@ -2011,17 +2015,17 @@ inputText(text: string): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                           |
+| ------ | ------ | ---- | ---------------------------------------------- |
+| text   | string | 是   | 输入的文本信息，当前支持英文、中文和特殊字符。 |
+
 **返回值：**
 
 | 类型             | 说明              |
 |----------------|-----------------|
 | Promise\<void> | Promise对象，无返回结果。 |
-
-**参数：**
-
-| 参数名 | 类型   | 必填 | 说明                                     |
-| ------ | ------ | ---- | ---------------------------------------- |
-| text   | string | 是   | 输入的文本信息，当前支持英文、中文和特殊字符。 |
 
 **错误码：**
 
@@ -2064,7 +2068,7 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
 | text   | string | 是   | 输入的文本信息，当前支持英文、中文和特殊字符。 |
-| mode | [InputTextMode](#inputtextmode20)  | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。<br> **说明：** [InputTextMode](#inputtextmode20).addition取值为true时，在控件已有文本末尾后追加指定文本。取值为false时，指定文本将覆盖控件已有文本。|
+| mode | [InputTextMode](#inputtextmode20)  | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。<br> **说明：** [InputTextMode](#inputtextmode20).addition取值为true时，在控件已有文本末尾后追加指定文本。取值为false时，指定文本将覆盖控件已有文本。<br/> 当输入文本中包含中文、特殊字符或文本长度超过200字符时，无论[InputTextMode](#inputtextmode20).paste取值为何，均以复制粘贴方式输入。 |
 
 **返回值：**
 
@@ -2359,9 +2363,13 @@ dragTo(target: Component): Promise\<void>
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 查找Button类型的目标控件
   let button: Component = await driver.findComponent(ON.type('Button'));
+  // 查找text为'hello world'的控件作为拖拽目标
   let text: Component = await driver.findComponent(ON.text('hello world'));
+  // 将Button控件拖拽至text控件处
   await button.dragTo(text);
 }
 ```
@@ -2610,7 +2618,7 @@ async function demo() {
 
 Driver类为UiTest测试框架的总入口。提供控件匹配/查找、按键注入、坐标点击/滑动、截图等能力。
 
-该类提供的方法除Driver.create()和Driver.createUIEventObserver()以外的所有方法都使用Promise方式作为异步方法，需使用await方式调用。
+该类提供的所有方法均为异步方法（使用Promise方式），需使用await方式调用。Driver.create()和Driver.createUIEventObserver()为同步方法除外。
 
 ### create<sup>9+</sup>
 
@@ -2773,7 +2781,9 @@ findComponents(on: On): Promise\<Array\<Component>>
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 查找所有text为'next page'的控件
   let buttonList: Array<Component> = await driver.findComponents(ON.text('next page'));
 }
 ```
@@ -2836,7 +2846,7 @@ waitForComponent(on: On, time: number): Promise\<Component>
 | 参数名 | 类型       | 必填 | 说明                                      |
 | ------ | ---------- | ---- | ----------------------------------------- |
 | on    | [On](#on9) | 是   | 目标控件的属性要求。                      |
-| time   | number     | 是   | 查找目标控件的持续时间，单位：ms，取值范围：大于等于0的整数。 |
+| time   | number     | 是   | 查找目标控件的持续时间，单位：ms，取值范围：大于等于0的整数。传入负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -3181,10 +3191,10 @@ click(x: number, y: number): Promise\<void>
 
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                            |
-| ------ | ------ | ---- | ----------------------------------------------- |
-| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
 
 **返回值：**
 
@@ -3208,7 +3218,9 @@ click(x: number, y: number): Promise\<void>
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 在坐标(100,100)处执行点击操作
   await driver.click(100, 100);
 }
 ```
@@ -3318,10 +3330,10 @@ doubleClick(x: number, y: number): Promise\<void>
 
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                            |
-| ------ | ------ | ---- | ----------------------------------------------- |
-| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
 
 **返回值：**
 
@@ -3405,10 +3417,10 @@ longClick(x: number, y: number): Promise\<void>
 
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                            |
-| ------ | ------ | ---- | ----------------------------------------------- |
-| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
 
 **返回值：**
 
@@ -3452,7 +3464,7 @@ longClickAt(point: Point, duration?: number): Promise\<void>
 | 参数名 | 类型   | 必填 | 说明                                            |
 | ------ | ------ | ---- | ----------------------------------------------- |
 | point      | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入目标点信息。 |
-| duration | number | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| duration | number | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。取值小于1500时抛出17000007错误码，为null或undefined时使用默认值。 |
 
 **返回值：**
 
@@ -3682,7 +3694,7 @@ async function demo() {
 
 drag(startx: number, starty: number, endx: number, endy: number, speed?: number): Promise\<void>
 
-从起始坐标点拖拽至目的坐标点。使用Promise异步回调。
+从起始坐标点拖拽至目的坐标点。仅支持在设备默认屏幕上操作，不支持自定义拖拽前长按时长，如需指定屏幕或长按时长请使用[dragBetween](#dragbetween20)。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3694,11 +3706,11 @@ drag(startx: number, starty: number, endx: number, endy: number, speed?: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| startx | number | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数。              |
-| starty | number | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。              |
-| endx   | number | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。              |
-| endy   | number | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。              |
-| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。|
+| startx | number | 是   | 以number的形式传入起始点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| starty | number | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| endx   | number | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| endy   | number | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -3745,7 +3757,7 @@ dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\
 | from | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
 | to  | [Point](#point9) | 是   | 以[Point](#point9)对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
 | speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出17000007错误码。|
-| duration  | number | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+| duration  | number | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。取值小于1500时抛出17000007错误码，为null或undefined时使用默认值。 |
 
 **返回值：**
 
@@ -4091,7 +4103,7 @@ async function demo() {
 
 setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
-启用/禁用设备旋转屏幕的功能。使用Promise异步回调。
+启用/禁用设备旋转屏幕的功能，适用于需要在测试过程中锁定屏幕方向以保持特定显示状态的场景，例如测试横屏或竖屏下的布局稳定性。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4330,7 +4342,7 @@ async function demo() {
 
 pressHome(): Promise\<void>
 
-设备注入返回桌面操作。使用Promise异步回调。
+向设备注入返回桌面操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4368,7 +4380,7 @@ async function demo() {
 
 pressHome(displayId: number): Promise\<void>
 
-设备指定屏幕上注入返回桌面操作。使用Promise异步回调。
+向设备指定屏幕上注入返回桌面操作。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4423,8 +4435,8 @@ waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| idleTime | number | 是   | 空闲时间的阈值。在这个时间段控件不发生变化，视为该控件空闲，单位：ms，取值范围：大于等于0的整数。 |
-| timeout  | number | 是   | 等待空闲的最大时间，单位：ms，取值范围：大于等于0的整数。                    |
+| idleTime | number | 是   | 空闲时间的阈值。在这个时间段控件不发生变化，视为该控件空闲，单位：ms，取值范围：大于等于0的整数。传入负数时抛出401错误码。 |
+| timeout  | number | 是   | 等待空闲的最大时间，单位：ms，取值范围：大于等于0的整数。传入负数时抛出401错误码。 |
 
 **返回值：**
 
@@ -5062,7 +5074,7 @@ async function demo() {
 
 mouseMoveWithTrack(from: Point, to: Point, speed?: number): Promise\<void>
 
-鼠标从起始坐标点滑向终点坐标点，带有可见移动轨迹。使用Promise异步回调。
+鼠标从起始坐标点滑向终点坐标点，带有可见移动轨迹，适用于需要验证鼠标悬停效果、鼠标拖拽选择区域等依赖鼠标移动轨迹的测试场景。使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5323,7 +5335,7 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 | ------ | ---------------- | ---- | ------------------ |
 | p      | [Point](#point9) | 是   | 输入文本的坐标点。 |
 | text   | string           | 是   |输入的文本信息，当前支持英文、中文和特殊字符。 |
-| mode | [InputTextMode](#inputtextmode20) | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。 <br> **说明：** <br> [InputTextMode](#inputtextmode20).addition取值为true时，将光标移动至文本末尾后输入指定文本。取值为false时，将在坐标点位置输入指定文本。 |
+| mode | [InputTextMode](#inputtextmode20) | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。 <br> **说明：** <br> [InputTextMode](#inputtextmode20).addition取值为true时，将光标移动至文本末尾后输入指定文本。取值为false时，将在坐标点位置输入指定文本。<br/> 当输入文本中包含中文、特殊字符或文本长度超过200字符时，无论[InputTextMode](#inputtextmode20).paste取值为何，均以复制粘贴方式输入。 |
 
 **返回值：**
 
@@ -5379,7 +5391,7 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 | 参数名 | 类型                                            | 必填 | 说明                    |
 | ------ |-----------------------------------------------|----|-----------------------|
-| fingers      | number                                        | 是  | 触摸板多指滑动的手指数。取值为3或者4。为不在范围内的非负数时设为默认值。为负数时抛出401错误码。 |
+| fingers      | number                                        | 是  | 触摸板多指滑动的手指数。取值为3或者4。取值不在范围内时抛出401错误码。 |
 | direction | [UiDirection](#uidirection10)                 | 是  | 触摸板多指滑动的方向。           |
 | options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | 否  | 触摸板多指滑动手势附加选项，默认取TouchPadSwipeOptions中各属性的默认值，用于设置触摸板多指滑动结束是否停留以及滑动速率，适用于在触摸板上模拟多指滑动手势的场景，如三指上滑切换任务视图等。        |
 
@@ -5608,7 +5620,7 @@ penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number):
 | startPoint      | [Point](#point9) | 是  | 起始位置的坐标点。                                              |
 | endPoint      | [Point](#point9) | 是  | 结束位置的坐标点。                                              |
 | speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，单位：px/s。为不在范围内的非负数或为null/undefined时设为默认值600。为负数时抛出401错误码。 |
-| pressure      | number | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。                        |
+| pressure      | number | 否  | 手写笔滑动操作的压力，默认为1.0，取值范围为0.0到1.0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出401错误码。 |
 
 **返回值：**
 
@@ -5641,7 +5653,7 @@ async function demo() {
 
 injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: number): Promise\<void>
 
-模拟手写笔多点连续注入操作。使用Promise异步回调。
+模拟手写笔多点连续注入操作，适用于需要模拟手写笔连续书写、绘图等自定义轨迹操作的测试场景。使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -5694,7 +5706,7 @@ async function demo() {
 
 triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: PenKeyOperationOptions): Promise\<void>
 
-触发手写笔按键操作。使用Promise异步回调。
+触发手写笔按键操作，适用于需要模拟手写笔功能切换的测试场景，例如模拟空鼠模式下的点击操作或智慧键唤起等。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -5706,14 +5718,14 @@ triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: 
 
 | 参数名 | 类型       | 必填 | 说明                                                                 |
 | ------ | ---------- | ---- | -------------------------------------------------------------------- |
-| key | [PenKey](#penkey) | 是   | 手写笔按键。                                                   |
-| mode | [PenMode](#penmode) | 是   | 手写笔模式。                                                   |
-| operation | [PenKeyOperation](#penkeyoperation) | 是   | 操作类型。                                                     |
+| key | [PenKey](#penkey) | 是   | 要触发的手写笔按键类型，用于指定执行操作的手写笔按键，如书写键、智慧键或空鼠键。      |
+| mode | [PenMode](#penmode) | 是   | 手写笔的工作模式，用于指定手写笔当前所处的操作模式，如手写模式或空鼠模式。         |
+| operation | [PenKeyOperation](#penkeyoperation) | 是   | 对手写笔按键执行的操作类型，用于指定按键的操作方式，如单击或双击。                |
 | options | [PenKeyOperationOptions](#penkeyoperationoptions) | 否   | 操作选项，包括可选的坐标点。默认值继承[PenKeyOperationOptions](#penkeyoperationoptions)各属性默认值。 |
 
 **支持的参数组合：**
-- mode取值为[HANDWRITING](#penmode)时**：支持key取值为[HANDWRITING](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)。
-- mode取值为[AIR_MOUSE](#penmode)时**：支持key取值为[AIR_MOUSE](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)（需要在options中指定point）；支持key取值为[HANDWRITING](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)；支持key取值为[SMART](#penkey)，operation取值为[CLICK](#penkeyoperation)。
+- mode取值为[HANDWRITING](#penmode)时：支持key取值为[HANDWRITING](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)。
+- mode取值为[AIR_MOUSE](#penmode)时：支持key取值为[AIR_MOUSE](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)（需要在options中指定point）；支持key取值为[HANDWRITING](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)；支持key取值为[SMART](#penkey)，operation取值为[CLICK](#penkeyoperation)。
 - 使用其他参数组合将抛出17000007错误码。
 
 **返回值：**
@@ -6051,7 +6063,7 @@ async function demo() {
 
 ## PointerMatrix<sup>9+</sup>
 
-存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。通过[create](#create9)构造对象后，使用[setPoint](#setpoint9)设置每个手指每步操作的坐标值。
+存储多指操作中每根手指每一步动作的坐标点及其行为的二维数组。通过[create](#create9)构造对象后，使用[setPoint](#setpoint9)设置每个手指每步操作的坐标值，再作为参数传给[injectMultiPointerAction](#injectmultipointeraction9)执行多指操作。
 
 ### create<sup>9+</sup>
 
@@ -6065,10 +6077,10 @@ static create(fingers: number, steps: number): PointerMatrix
 
 **参数：**
 
-| 参数名  | 类型   | 必填 | 说明                                       |
-| ------- | ------ | ---- | ------------------------------------------ |
-| fingers | number | 是   | 多指操作中注入的手指数，取值范围：[1,10]的整数。 |
-| steps   | number | 是   | 每根手指操作的步骤数，取值范围：[1,1000]的整数。 |
+| 参数名  | 类型   | 必填 | 说明                                                         |
+| ------- | ------ | ---- | ------------------------------------------------------------ |
+| fingers | number | 是   | 多指操作中注入的手指数，取值范围：[1,10]的整数。传入不在取值范围内的值时抛出401错误码。 |
+| steps   | number | 是   | 每根手指操作的步骤数，取值范围：[1,1000]的整数。传入不在取值范围内的值时抛出401错误码。 |
 
 **返回值：**
 
@@ -6221,8 +6233,11 @@ getBounds(): Promise\<Rect>
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 查找当前活跃窗口
   let window: UiWindow = await driver.findWindow({ active: true });
+  // 获取窗口的边框信息
   let rect = await window.getBounds();
 }
 ```
@@ -6433,10 +6448,10 @@ moveTo(x: number, y: number): Promise\<void>
 
 **参数：**
 
-| 参数名 | 类型   | 必填 | 说明                                            |
-| ------ | ------ | ---- | ----------------------------------------------- |
-| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
-| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
 
 **返回值：**
 
@@ -6484,8 +6499,8 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
 | 参数名    | 类型                                 | 必填 | 说明                                                         |
 | --------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| wide      | number                               | 是   | 以number的形式传入调整后窗口的宽度，取值范围：大于等于0的整数，单位：px。                         |
-| height    | number                               | 是   | 以number的形式传入调整后窗口的高度，取值范围：大于等于0的整数，单位：px。                         |
+| wide      | number                               | 是   | 以number的形式传入调整后窗口的宽度，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
+| height    | number                               | 是   | 以number的形式传入调整后窗口的高度，取值范围：大于等于0的整数，单位：px。传入不在范围内的值抛出401错误码。 |
 | direction | [ResizeDirection](#resizedirection9) | 是   | 以[ResizeDirection](#resizedirection9)的形式传入窗口调整的方向。 |
 
 **返回值：**
@@ -6833,13 +6848,17 @@ once(type: 'toastShow', callback: Callback\<UIElementInfo>): void
 import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
+  // 创建Driver对象
   let driver: Driver = Driver.create();
+  // 创建UI事件监听器
   let observer: UIEventObserver = driver.createUIEventObserver();
+  // 定义回调函数，输出toast控件的属性信息
   let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
   }
+  // 订阅toast控件出现事件
   observer.once('toastShow', callback);
 }
 ```
