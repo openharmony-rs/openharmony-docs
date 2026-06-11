@@ -80,7 +80,7 @@ During file processing, the system checks whether the file is a DLP file and the
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| fd | number | Yes| FD of the file to be checked. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, **false** is returned. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
+| fd | number | Yes| FD of the file to be checked. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, error code 19100001 is thrown. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
 
 **Return value**
 | Type| Description|
@@ -131,7 +131,7 @@ During file processing, the system checks whether the file is a DLP file and the
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| fd | number | Yes| FD of the file to be checked. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, **false** is returned. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
+| fd | number | Yes| FD of the file to be checked. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, error code 19100001 is thrown. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
 | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to receive the query result. The callback parameters include **err** and **res**. **err** is **undefined** when the query is successful; otherwise, **err** is an error object. If **true** is returned, **res** is a DLP file; if **false** is returned, **res** is not a DLP file.|
 
 **Error codes**
@@ -209,7 +209,7 @@ dlpPermission.isInSandbox().then(async (inSandbox) => { // Check whether the app
 
 getDLPPermissionInfo(callback: AsyncCallback&lt;DLPPermissionInfo&gt;): void
 
-Obtains the permission information of this DLP file. The returned permission information includes permissions on the file and operations that can be performed (such as viewing, editing, and copying). This API uses an asynchronous callback to return the result.
+Obtains the permission information of this DLP file. The returned permission information includes permissions on the file and operations that can be performed (such as viewing, editing, and copying). This API can be called only in DLP sandbox applications. This API uses an asynchronous callback to return the result.
 
 When processing files in the DLP sandbox, the system determines the operations that can be performed for the current user to prevent calling unauthorized capabilities.
 
@@ -239,7 +239,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.isInSandbox().then((inSandbox) => { // Check whether the application is running in a sandbox.
   if (inSandbox) {
-    dlpPermission.getDLPPermissionInfo((err, permissionInfo) =>  { 
+    dlpPermission.getDLPPermissionInfo((err, permissionInfo) => { 
       if (err != undefined) {
         console.error('getDLPPermissionInfo error', err.code, err.message);
       } else {
@@ -264,7 +264,7 @@ Determine the file type based on the original file name extension and select an 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| fileName | string | Yes| Name of the target DLP file. The value contains 1 to 255 bytes. If the value is out of range, error code 19100001 is thrown.|
+| fileName | string | Yes| Name of the target DLP file. The value contains a maximum of 255 bytes. If the value is out of range, error code 19100001 is thrown.|
 
 **Return value**
 
@@ -319,7 +319,7 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-let dlpSuffix  = dlpPermission.getDLPSuffix(); // Obtain the DLP file name extension.
+let dlpSuffix = dlpPermission.getDLPSuffix(); // Obtain the DLP file name extension.
 console.info('dlpSuffix:', dlpSuffix);
 ```
 
@@ -358,7 +358,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 dlpPermission.on('openDLPFile', (info: dlpPermission.AccessedDLPFileInfo) => {
   console.info('openDlpFile event', info.uri, info.lastOpenTime);
-}); // Subscribe to a DLP file open event.
+}); // Subscribe to the DLP file open event.
 ```
 
 ## dlpPermission.off('openDLPFile')
@@ -556,7 +556,7 @@ dlpPermission.getDLPSupportedFileTypes((err, fileTypes) => {
 
 setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Sets the retention state for sandbox applications. By default, when a DLP file is opened, the system automatically creates a sandbox environment. After the file is closed, the sandbox is automatically destroyed. After the retention state is set, the sandbox environment is retained even if the DLP file is closed, allowing the system to quickly reopen the same DLP file. This is applicable to scenarios where the same DLP file needs to be frequently operated, improving the file opening efficiency. This API uses a promise to return the result.
+Sets the retention state for sandbox applications. By default, when a DLP file is opened, the system automatically creates a sandbox environment. After the file is closed, the sandbox is automatically destroyed. After the retention state is set, the sandbox environment is retained even if the DLP file is closed, allowing the system to quickly reopen the same DLP file. This is applicable to scenarios where the same DLP file needs to be frequently operated, improving the file opening efficiency. This API can be called only in DLP sandbox applications. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -602,7 +602,7 @@ dlpPermission.isInSandbox().then(async (inSandbox) => {
 
 setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the retention state for sandbox applications. By default, when a DLP file is opened, the system automatically creates a sandbox environment. After the file is closed, the sandbox is automatically destroyed. After the retention state is set, the sandbox environment is retained even if the DLP file is closed, allowing the system to quickly reopen the same DLP file. This is applicable to scenarios where the same DLP file needs to be frequently operated, improving the file opening efficiency.
+Sets the retention state for sandbox applications. By default, when a DLP file is opened, the system automatically creates a sandbox environment. After the file is closed, the sandbox is automatically destroyed. After the retention state is set, the sandbox environment is retained even if the DLP file is closed, allowing the system to quickly reopen the same DLP file. This is applicable to scenarios where the same DLP file needs to be frequently operated, improving the file opening efficiency. This API can be called only in DLP sandbox applications. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -782,7 +782,7 @@ dlpPermission.getRetentionSandboxList().then((sandboxList) => { // Obtain the sa
 
 getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo&gt;&gt;): void
 
-Obtains the sandbox applications in the retention state of an application. This API uses an asynchronous callback to return the result.
+Obtains the sandbox applications in the retention state of an application. This API can be called only in non-DLP sandbox applications. This API uses an asynchronous callback to return the result.
 
 This API is used to query the sandbox retention information of a specified application, so that the sandbox environment in the retention state can be checked or managed.
 
@@ -792,7 +792,7 @@ This API is used to query the sandbox retention information of a specified appli
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| bundleName | string | Yes| Bundle name of the application, which is used to query the sandbox retention information of the application. This parameter is required when you need to query the sandbox retention information of another application. It is optional when you need to query the sandbox retention information of the current application. The value contains 7 to 128 bytes. If the value is out of range, error code 19100001 is thrown.|
+| bundleName | string | Yes| Bundle name of the application, which is used to query the sandbox retention information of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 19100001 is thrown.|
 | callback | AsyncCallback&lt;Array&lt;[RetentionSandboxInfo](#retentionsandboxinfo)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -995,7 +995,7 @@ if (context !== undefined) {
         "parameters": {
         "displayName": "1.txt"
         }
-    }; // Request parameters.
+    }; // Construct request parameters, which must include uri and displayName.
     dlpPermission.startDLPManagerForResult(context, want).then((res) => {
         console.info('res.resultCode', res.resultCode);
         console.info('res.want', JSON.stringify(res.want));
@@ -1016,7 +1016,7 @@ This API sets the sandbox application configuration so that the application can 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| configInfo | string | Yes| Sandbox application configuration. The value contains a maximum of 4,194,304 bytes. If the value is out of range, error code 19100001 is thrown.|
+| configInfo | string | Yes| Sandbox application configuration. The value contains a maximum of 2<sup>22</sup>-1 bytes. If the value is out of range, error code 19100001 is thrown.|
 
 **Return value**
 
@@ -1285,7 +1285,7 @@ Represents the permission information about a DLP file.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | No| No| User permission on the DLP file, for example, read-only.|
-| flags | number | No| No| Operations that can be performed on the DLP file. The value is a combination of different [ActionFlagTypes](#actionflagtype). If the value is out of range, error code 19100001 is thrown.|
+| flags | number | No| No| Operations that can be performed on the DLP file. The value is determined by a combination of different [ActionFlagTypes](#actionflagtype).|
 
 ## AccessedDLPFileInfo
 
@@ -1295,8 +1295,8 @@ Represents the information about a DLP file opened.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| uri | string | No| No| URI of the DLP file. The value contains a maximum of 4095 bytes. If the value is out of range, error code 19100001 is thrown.|
-| lastOpenTime | number | No| No| Time when the file was last opened. The value must be greater than or equal to 0. Unit: s.|
+| uri | string | No| No| URI of the DLP file. The value contains up to 4095 bytes.|
+| lastOpenTime | number | No| No| Time when the file was last opened. Unit: s.|
 
 ## DLPManagerResult<sup>11+</sup>
 
@@ -1320,8 +1320,8 @@ Represents the sandbox retention information.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | appIndex | number | No| No| Index of the DLP sandbox application. The value ranges from 1001 to 1100.|
-| bundleName | string | No| No| Bundle name of the application. The value contains 7 to 128 bytes. If the value is out of range, error code 19100001 is thrown.|
-| docUris | Array&lt;string&gt; | No| No| URI list of the DLP files. The length of the array is not limited. Each string contains a maximum of 4095 bytes. If the string is out of range, error code 19100001 is thrown.|
+| bundleName | string | No| No| Bundle name of the application. The value contains 7 to 128 bytes.|
+| docUris | Array&lt;string&gt; | No| No| URI list of the DLP files. The array has no length limit, but each string cannot exceed 4095 bytes.|
 
 ## EnterprisePolicy<sup>21+</sup>
 
@@ -1331,7 +1331,7 @@ Represents an enterprise custom policy.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| policyString | string | No| No| JSON string of an enterprise custom policy. The value contains a maximum of 4,194,304 bytes. If the value is out of range, error code 19100001 is thrown.|
+| policyString | string | No| No| JSON string of an enterprise custom policy. The value contains a maximum of 2<sup>22</sup> bytes. If the value is out of range, error code 19100001 is thrown.|
 
 ## dlpPermission.generateDlpFileForEnterprise<sup>21+</sup>
 
@@ -1353,8 +1353,8 @@ This API encrypts a plaintext file to generate a DLP file that can be accessed o
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| plaintextFd | number | Yes| FD of a plaintext file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, error code 19100001 is thrown. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
-| dlpFd | number | Yes| FD of an encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, error code 19100001 is thrown. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
+| plaintextFd | number | Yes| FD of a plaintext file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
+| dlpFd | number | Yes| FD of an encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
 | property | [DLPProperty](#dlpproperty21) | Yes| General policy of DLP files.|
 | customProperty | [CustomProperty](#customproperty21) | Yes| Enterprise custom policy.|
 
@@ -1390,8 +1390,8 @@ let plaintextFd: number | undefined = undefined;
 let dlpFd: number | undefined = undefined;
 let plainFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt";
 let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
-plaintextFd = fileIo.openSync(plainFilePath, fileIo.OpenMode.READ_ONLY).fd;
-dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd;
+plaintextFd = fileIo.openSync(plainFilePath, fileIo.OpenMode.READ_ONLY).fd; // Open a plaintext file.
+dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd; // Open a DLP file.
 let dlpProperty: dlpPermission.DLPProperty = {
   ownerAccount: 'zhangsan',
   ownerAccountType: dlpPermission.AccountType.DOMAIN_ACCOUNT,
@@ -1437,8 +1437,8 @@ This API decrypts DLP files into plaintext files, which is applicable to exporti
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | Yes| FD of the DLP file to be decrypted. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, error code 19100001 is thrown. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
-| plaintextFd | number | Yes| FD of the decrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, error code 19100001 is thrown. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
+| dlpFd | number | Yes| FD of the DLP file to be decrypted. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
+| plaintextFd | number | Yes| FD of the decrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
 
 **Return value**
 
@@ -1473,8 +1473,8 @@ let plaintextFd: number | undefined = undefined;
 let dlpFd: number | undefined = undefined;
 let plainFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt";
 let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
-plaintextFd = fileIo.openSync(plainFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd;
-dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_ONLY).fd;
+plaintextFd = fileIo.openSync(plainFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd; // Open the target plaintext file.
+dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_ONLY).fd; // Open the DLP file to be decrypted.
 dlpPermission.decryptDlpFile(dlpFd, plaintextFd).then((res) => {
   console.info('Successfully decrypt DLP file.');
 }).catch((error: BusinessError)=> {
@@ -1509,7 +1509,7 @@ This API obtains the policy information of a DLP file for analysis in scenarios 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | Yes| FD of the DLP file to be queried. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, error code 19100001 is thrown. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
+| dlpFd | number | Yes| FD of the DLP file to be queried. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated.|
 
 **Return value**
 
@@ -1541,8 +1541,8 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 
 let dlpFd : number | undefined = undefined; // FD of the DLP file to be queried.
-let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp"; // Open the DLP file to obtain the FD.
-dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_ONLY).fd;
+let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp"; // Specify the DLP file path.
+dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_ONLY).fd; // Open the DLP file to obtain the descriptor.
 dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
   console.info('DLP policy:' + policy);
 }).catch((error: BusinessError)=> {
@@ -1586,7 +1586,7 @@ Represents a custom policy.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| enterprise | string | No| No| JSON string of an enterprise custom policy. The value contains a maximum of 4,194,304 bytes. If the value is out of range, error code 19100001 is thrown.|
+| enterprise | string | No| No| JSON string of an enterprise custom policy. The value contains a maximum of 2<sup>22</sup> bytes. If the value is out of range, error code 19100001 is thrown.|
 | options | [DlpFileQueryOptions](#dlpfilequeryoptions) | No| Yes| Query options about an enterprise DLP file. This parameter is left blank by default. **Since**: 26.0.0 **Model restriction**: This API can be used only in the stage model.|
 
 ## DLPProperty<sup>21+</sup>
@@ -1598,19 +1598,19 @@ Represents the authorization information.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| ownerAccount | string | No| No| Account of the owner who can set the permission. The value contains 1 to 255 bytes. If the value is out of range, error code 19100001 is thrown.|
+| ownerAccount | string | No| No| Account of the owner who can set the permission. The value contains a maximum of 255 bytes. If the value is out of range, error code 19100001 is thrown.|
 | ownerAccountID | string | No| No| Account ID of the owner. The value contains a maximum of 255 bytes. If the value is out of range, error code 19100001 is thrown.|
 | ownerAccountType | [AccountType](#accounttype21) | No| No| Account type of the owner.|
 | authUserList | Array&lt;[AuthUser](#authuser21)&gt; | No| Yes| List of users who are authorized to access the DLP file. By default, this parameter is left blank.|
-| contactAccount | string | No| No| Account of the contact. The value contains 1 to 255 bytes. If the value is out of range, error code 19100001 is thrown.|
+| contactAccount | string | No| No| Account of the contact. The value contains a maximum of 255 bytes. If the value is out of range, error code 19100001 is thrown.|
 | offlineAccess | boolean | No| No| Whether the file can be accessed offline. **true**: yes; **false**: no.|
 | everyoneAccessList | Array&lt;[DLPFileAccess](#dlpfileaccess)&gt; | No| Yes| Permission granted to everyone. This parameter is left blank by default.|
 | expireTime | number | No| Yes| Timestamp when the file permission has expired. This parameter is left blank by default. The value must be greater than or equal to 0. If the value is out of range, an error code is thrown. Unit: s.|
 | actionUponExpiry | [ActionType](#actiontype21) | No| Yes| Whether the file can be opened after the permission expires (with the editing permission). This parameter is valid only when **expireTime** is not empty. This parameter is left empty by default.|
 | fileId | string | No| Yes| System account ID. This parameter is left empty by default. The value contains a maximum of 255 bytes. If the value is out of range, error code 19100001 is thrown.|
-| allowedOpenCount | number | No| Yes| Number of allowed opening times. This parameter is left empty by default. The value must be greater than or equal to 0. If the value is out of range, error code 19100001 is thrown.|
+| allowedOpenCount | number | No| Yes| Number of allowed opening times. The default value is **0**. No value range restriction is specified.|
 | waterMarkConfig<sup>23+</sup> | boolean | No| Yes| Whether watermarks are required. **true**: yes; **false**: no. This parameter is left empty by default.|
-| countdown<sup>23+</sup> | number | No| Yes| Validity period for file viewing, in seconds. After the validity period expires, the file is automatically closed. This parameter is left empty by default. The value must be greater than or equal to 0. If the value is out of range, error code 19100001 is thrown.<br>**Model restriction**: This API can be used only in the stage model.|
+| countdown<sup>23+</sup> | number | No| Yes| Validity period for file viewing, in seconds. The default value is **0**. After the validity period expires, the file is automatically closed. The value must be greater than or equal to 0. No value range restriction is specified.<br>**Model restriction**: This API can be used only in the stage model.|
 | extensionFields<sup>24+</sup> | Record<string, Object> | No| Yes| Extended attribute of a DLP file. This parameter is left empty by default.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## AuthUser<sup>21+</sup>
@@ -1624,7 +1624,7 @@ Represents the user authorization information.
 | authAccount | string | No| No| Account of the user who can access the DLP file. The value contains a maximum of 255 bytes. If the value is out of range, error code 19100001 is thrown.|
 | authAccountType | [AccountType](#accounttype21) | No| No| Type of the account.|
 | dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | No| No| Permission granted to the user.|
-| permExpiryTime | number | No| No| Time when the authorization expires. The value must be greater than or equal to 0. If the value is out of range, error code 19100001 is thrown. Unit: s.|
+| permExpiryTime | number | No| No| Time when the authorization expires. The value must be greater than or equal to 0. If the value is out of range, it will be forcibly converted to an unsigned integer. Unit: s.|
 
 ## DlpConnPlugin<sup>21+</sup>
 
@@ -1645,7 +1645,7 @@ This API can be used in enterprise account authentication and cloud permission v
 >
 > **connectServer** indicates a call from the system capability side to the frontend.
 
-**Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE since API version 26. ohos.permission.ENTERPRISE_ACCESS_DLP_FILE for API versions 21 to 24.
+**Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE since API version 26.0.0. ohos.permission.ENTERPRISE_ACCESS_DLP_FILE for API versions 21 to 24.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
   
@@ -1702,7 +1702,7 @@ constructor()
 
 Represents a constructor for instantiating [DlpConnManager](#dlpconnmanager21).
  
-**Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE since API version 26. ohos.permission.ENTERPRISE_ACCESS_DLP_FILE for API versions 21 to 24.
+**Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE since API version 26.0.0. ohos.permission.ENTERPRISE_ACCESS_DLP_FILE for API versions 21 to 24.
  
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -1731,7 +1731,7 @@ Registers a callback with the SA.
 >
 > **registerPlugin** registers the callback with the SA.
 
-**Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE since API version 26. ohos.permission.ENTERPRISE_ACCESS_DLP_FILE for API versions 21 to 24.
+**Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE since API version 26.0.0. ohos.permission.ENTERPRISE_ACCESS_DLP_FILE for API versions 21 to 24.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -1795,7 +1795,7 @@ This API unregisters a callback and releases resources when an application exits
 >
 > **unregisterPlugin** unregisters a plug-in from the SA.
   
-**Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE since API version 26. ohos.permission.ENTERPRISE_ACCESS_DLP_FILE for API versions 21 to 24.
+**Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE or ohos.permission.ACCESS_DLP_SERVICE since API version 26.0.0. ohos.permission.ENTERPRISE_ACCESS_DLP_FILE for API versions 21 to 24.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -1831,7 +1831,7 @@ Represents the query options about an enterprise DLP file.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| classificationLabel | string | No| Yes| User-defined classification label of an enterprise DLP file. The value contains a maximum of 255 bytes. If the value is out of range, error code 19100001 is thrown.|
+| classificationLabel | string | No| Yes| User-defined classification label of an enterprise DLP file. This parameter is left empty by default. The value contains a maximum of 255 bytes. If the value is out of range, error code 19100001 is thrown.|
 
 ## dlpPermission.queryOpenedEnterpriseDlpFiles
 
