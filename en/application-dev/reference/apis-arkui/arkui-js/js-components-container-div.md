@@ -5,6 +5,7 @@
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b9b716c1423f6952b7169df5eb4de15f02019de4 translatedAt=2026-06-10T02:06:46.603Z pushedAt=2026-06-10T02:22:10.436Z -->
 
 >  **NOTE**
 >
@@ -31,6 +32,7 @@ The [universal attributes](js-components-common-attributes.md) are supported.
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
 
+<!--Table: 20%; 15%; 15%; 10%; 40%-->
 | Name                          | Type          | Default Value      | Mandatory| Description                                                        |
 | ------------------------------ | -------------- | ------------ | ---- | ------------------------------------------------------------ |
 | flex-direction                 | string         | row          | No  | Main axis direction of the flex container, which defines how items are placed in the container. Available values are as follows:<br>- **column**: Items are placed vertically from top to bottom.<br>- **row**: Items are placed horizontally from left to right.|

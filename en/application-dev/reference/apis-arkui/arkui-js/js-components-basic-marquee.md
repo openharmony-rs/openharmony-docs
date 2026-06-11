@@ -1,10 +1,12 @@
 # marquee
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9fc8de61c9856085ad7066dda1e30828589acb6a translatedAt=2026-06-09T03:13:08.589Z pushedAt=2026-06-09T03:44:00.977Z -->
 
 >  **NOTE**
 >
@@ -17,11 +19,9 @@ The **\<marquee>** component is used to display a scrolling piece of text.
 
 None
 
-
 ## Child Components
 
 Not supported
-
 
 ## Attributes
 
@@ -33,7 +33,6 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | loop         | number | -1   | No   | Number of rolling times. If this parameter is not set, the default value **-1** is used. When the value is less than or equal to **0**, the marquee scrolls continuously.|
 | direction    | string | left | No   | Direction in which the marquee scrolls, which can be **left** or **right**.            |
 
-
 ## Styles
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
@@ -41,11 +40,10 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | Name         | Type                        | Default Value       | Mandatory  | Description                                      |
 | ----------- | -------------------------- | ---------- | ---- | ---------------------------------------- |
 | color       | &lt;color&gt;              | \#e5000000 | No   | Font color of the scrolling text.                          |
-| font-size   | &lt;length&gt;             | 37.5       | No   | Font size of the scrolling text.                          |
+| font-size   | &lt;length&gt;             | 37.5px       | No    | Font size of the scrolling text.                           |
 | allow-scale | boolean                    | true       | No   | Whether the font size changes with the system's font size settings.<br>If the **config-changes** tag of **fontSize** is configured for abilities in the **config.json** file, the setting takes effect without application restart.|
-| font-weight | number \| string | normal     | No   | Font weight of the scrolling text. For details, see **font-weight** of the **[\<text> component](js-components-basic-text.md#styles)**.|
+| font-weight | number \| string | normal     | No   | Font weight of the scrolling text. For details, see **font-weight** of the **[\<text>](js-components-basic-text.md#styles)** component.|
 | font-family | string                     | sans-serif | No   | Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-components-common-customizing-font.md) is used for the text.|
-
 
 ## Events
 
@@ -65,7 +63,6 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 | ----- | ---- | ----- |
 | start | -    | Starts scrolling.|
 | stop  | -    | Stops scrolling.|
-
 
 ## Example
 

@@ -1,10 +1,12 @@
 # text
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9fc8de61c9856085ad7066dda1e30828589acb6a translatedAt=2026-06-09T03:13:48.883Z pushedAt=2026-06-09T07:35:52.460Z -->
 
 >  **NOTE**
 >
@@ -18,16 +20,13 @@ The **\<text>** component is used to display a piece of textual information.
 
 None
 
-
 ## Child Components
 
 The **[\<span>](js-components-basic-span.md)** child component is supported.
 
-
 ## Attributes
 
 The [universal attributes](js-components-common-attributes.md) are supported.
-
 
 ## Styles
 
@@ -37,9 +36,9 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | ---------------------------------- | ---------------------------------------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | color                              | &lt;color&gt;                            | #e5000000                                | No   | Font color.                                |
 | font-size                          | &lt;length&gt;                           | 30px                                     | No   | Font size.                                |
-| allow-scale                        | boolean                                  | true                                     | No   | Whether the font size changes with the system's font size settings.<br>For details about how to make the configuration take effect dynamically, see the **config-changes** attribute in the **config.json** file.|
+| allow-scale                        | boolean                                  | true                                     | No   | Whether the font size changes with the system's font size settings.<br>For details about how to make the configuration take effect dynamically, see the **config-changes** attribute in the **[config.json](../../../quick-start/application-configuration-file-overview-fa.md#configuration-file-internal-structure)** file.|
 | letter-spacing                     | &lt;length&gt;                           | 0px                                      | No   | Character spacing (px).                              |
-| word-spacing<sup>7+</sup>          | &lt;length&gt; \| &lt;percentage&gt; \| string | normal                                   | No   | Spacing between texts. If the input is a string, the options are as follows:<br>**normal**: default spacing.|
+| word-spacing<sup>7+</sup>          | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;&nbsp;\|&nbsp;string | normal                                    | No   | Spacing between texts. If the input is a string, the options are as follows:<br/>**normal**: default spacing. |
 | font-style                         | string                                   | normal                                   | No   | Font style. Available values are as follows:<br>- **normal**: standard font style.<br>- **italic**: italic font style.|
 | font-weight                        | number \| string                         | normal                                   | No   | Font weight. For the number type, the value ranges from 100 to 900. The default value is 400. A larger value indicates a heavier font weight. The value of the number type must be an integer multiple of 100.<br>The value of the string type can be **lighter**, **normal**, **bold**, or **bolder**.|
 | text-decoration                    | string                                   | none                                     | No   | Text decoration. Available values are as follows:<br>- **underline**: An underline is used.<br>- **line-through**: A strikethrough is used.<br>- **none**: The standard text is used.|
@@ -53,7 +52,7 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | max-font-size                      | &lt;length&gt;                           | -                                        | No   | Maximum font size in the text. This style must be used together with **min-font-size**. The font size can be changed dynamically. After the maximum and minimum font sizes are set, **font-size** does not take effect.|
 | font-size-step                     | &lt;length&gt;                           | 1px                                      | No   | Step for dynamically adjusting the font size in the text. The minimum and maximum font sizes must be set.           |
 | prefer-font-sizes                  | &lt;array&gt;                            | -                                        | No   | Preset preferred font sizes. For dynamic font size adjustment, the preset sizes are used to match the maximum number of lines in the text. If the preferred font sizes were not set, the font size will be adjusted based on the maximum and minimum font sizes and the step you have set. If the maximum number of lines in the text cannot be met, **text-overflow** is used to truncate the text. If this parameter is set, **font-size**, **max-font-size**, **min-font-size**, and **font-size-step** do not take effect.<br>Example: prefer-font-sizes: 12px,14px,16px|
-| word-break<sup>6+</sup>            | string                                   | normal                                   | No   | Text line breaking mode. The options are as follows:<br>- **normal**: Allows text line breaks between words as appropriate to the relevant language writing systems. This is the default mode.<br>- **break-all**: Allows text line breaks between any characters for writing systems other than Chinese, Japanese, and Korean.<br>- **break-word**: Works in the same way as **break-all**, except that it does not break unbreakable words.|
+| word-break<sup>6+</sup>            | string                                                       | normal                                    | No   | Text line breaking mode. The options are as follows:<br/>-&nbsp;**normal**: Allows text line breaks between words as appropriate to the relevant language writing systems. This is the default mode.<br/>-&nbsp;**break-all**: Allows text line breaks between any characters for writing systems other than Chinese, Japanese, and Korean.<br/>-&nbsp;**break-word**: Works in the same way as **break-all**, except that it does not break unbreakable words. |
 | text-indent<sup>7+</sup>           | &lt;length&gt;                           | -                                        | No   | Indentation of the first line.                                |
 | white-space<sup>7+</sup>           | string                                   | pre                                      | No   | Mode for processing blanks in the component. The options are as follows:<br>- **normal**: All spaces, carriage returns, and tabs are combined into one space, and the text is automatically wrapped.<br>- **nowrap**: All spaces, carriage returns, and tabs are combined into one space, and the text is not wrapped.<br>- **pre**: All contents are output as-is.<br>- **pre-wrap**: All contents are output as-is with line breaks.<br>- **pre-line**: All spaces and tabs are combined into one space, the carriage return remains unchanged, and the text is wrapped.|
 | adapt-height<sup>7+</sup>          | boolean                                  | false                                    | No   | Whether the text size adapts to the container height.<br>The settings take effect after font size auto-adaptation is configured.    |
@@ -71,7 +70,6 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 >
 >  - The **\<text>** component cannot contain both the text and the child component **\<span>**. If both of them exist, only the content in **\<span>** is displayed.
 
-
 ## Events
 
 The [universal events](js-components-common-events.md) are supported.
@@ -80,8 +78,8 @@ The [universal events](js-components-common-events.md) are supported.
 
 The [universal methods](js-components-common-methods.md) are supported.
 
-
 ## Example
+
 ```html
 <!-- xxx.hml -->
 <div class="container">
@@ -140,6 +138,5 @@ The [universal methods](js-components-common-methods.md) are supported.
     text-align: right;
 }
 ```
-
 
 ![en-us_image_0000001167823076](figures/js-text.png)
