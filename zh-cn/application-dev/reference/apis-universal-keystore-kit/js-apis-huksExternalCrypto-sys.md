@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-模块提供外部密钥管理扩展功能的注册与注销，PIN码认证与认证状态获取等。
+模块提供外部密钥管理扩展功能的注册与注销，PIN码认证与认证状态获取等能力。
 
 > **说明**
 >
@@ -66,7 +66,7 @@ PIN码认证。使用Promise异步回调。
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -83,11 +83,11 @@ const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
     value: uid
   }, {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN,
-    value: StringToUint8Array(pin)
+    value: stringToUint8Array(pin)
   }
 ];
 huksExternalCrypto.authUkeyPin(testResourceId, extProperties)
-    .then((data) => {
+    .then(() => {
         console.info(`promise: authUkeyPin success`);
     });
 ```

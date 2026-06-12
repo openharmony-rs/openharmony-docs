@@ -159,7 +159,7 @@ This credential is invalidated permanently.
 
 **处理步骤**
 
-1. 确认日志是哪种方式导致的认证不通过。
+1. 确认日志中记录的认证失败方式。
 2. 如果使用了正确参数，但是失效控制导致认证不通过，则该密钥已经无法使用。
 
 ## 12000008 密钥访问失败 - 密钥认证失败
@@ -211,7 +211,7 @@ The number of key operation sessions has reached the limit.
 
 **可能原因**
 
-同时使用huks进行密钥会话操作的调用方（同应用或者跨应用）过多，已经达到上限（15个）。
+HUKS密钥操作会话数已达上限（15个），无法处理更多同应用或跨应用的调用请求。
 
 **处理步骤**
 
@@ -400,7 +400,7 @@ The provider operation failed.
 
 根据下游返回的error code或者error message查看下游模块具体报错的原因。
 
-## 12000021 UKey PIN码被锁
+## 12000021 UKey PIN码被锁定
 
 **错误信息**
 
@@ -408,11 +408,11 @@ The UKey PIN is locked.
 
 **错误描述**
 
-UKey PIN码被锁。
+UKey PIN码被锁定。
 
 **可能原因**
 
-PIN码输入错误次数过多导致被锁。
+PIN码输入错误次数过多导致被锁定。
 
 **处理步骤**
 
