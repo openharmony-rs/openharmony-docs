@@ -6,7 +6,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=a25eb348c15cf99c260458a4695e6892e43884d1 translatedAt=2026-06-12T08:00:57.477Z pushedAt=2026-06-12T10:50:59.041Z -->
+<!-- md-trans-meta sourceCommit=a25eb348c15cf99c260458a4695e6892e43884d1 translatedAt=2026-06-12T08:00:57.477Z pushedAt=2026-06-12T10:56:00.072Z -->
 
 ## Overview
 
@@ -932,7 +932,7 @@ In OpenHarmony, the call stack is obtained based on the backtrace table (which r
 
 For example, in CMake, add **set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")** to **CMakeList.txt**.
 
-### What should I do if the app exits due to a SIGPIPE exception
+### What should I do if the app exits due to a SIGPIPE exception?
 
 Starting from API version 24, when an application exits due to a SIGPIPE exception, you can enable call stack printing for SIGPIPE signals. After restarting the application, reproduce the issue to collect call stack information and output it to HILOG.
 
