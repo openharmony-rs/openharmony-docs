@@ -90,6 +90,71 @@
     ArkTS-Sta示例：
 
     <!-- @[widget_event_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetCallStaDemo/entry/src/main/ets/widgeteventcall/pages/WidgetEventCallCard.ets) --> 
+    
+    ``` TypeScript
+    // src/main/ets/widgeteventcall/pages/WidgetEventCallCard.ets
+    let storageEventCall = new LocalStorage();
+    
+    @Entry(storageEventCall)
+    @Component
+    struct WidgetEventCallCard {
+      @LocalStorageProp('formId') formId: string = '12400633174999288';
+      // $r('app.string.ButtonA_label')和$r('app.string.ButtonB_label')需要替换为开发者所需的资源文件
+      private funA: Resource = $r('app.string.ButtonA_label');
+      private funB: Resource = $r('app.string.ButtonB_label');
+    
+      build() {
+        RelativeContainer() {
+          Button(this.funA)
+            .id('funA__')
+            .fontSize(14)
+            .fontWeight(FontWeight.Bold)
+            .alignRules({
+              center: { anchor: '__container__', align: VerticalAlign.Center },
+              middle: { anchor: '__container__', align: HorizontalAlign.Center }
+            })
+            .onClick(() => {
+              console.info('doy: funA');
+              postCardAction(this, {
+                action: 'call',
+                // 只能跳转到当前应用下的UIAbility，与module.json5中定义保持一致
+                abilityName: 'WidgetEventCallEntryAbility',
+                params: {
+                  formId: this.formId,
+                  // 需要调用的方法名称
+                  method: 'funA'
+                }
+              });
+            })
+    
+          Button(this.funB)
+            .id('funB__')
+            .fontSize(14)
+            .fontWeight(FontWeight.Bold)
+            .margin({ top: 10 })
+            .alignRules({
+              top: { anchor: 'funA__', align: VerticalAlign.Bottom },
+              middle: { anchor: '__container__', align: HorizontalAlign.Center }
+            })
+            .onClick(() => {
+              console.info('doy: funB');
+              postCardAction(this, {
+                action: 'call',
+                abilityName: 'WidgetEventCallEntryAbility',
+                params: {
+                  formId: this.formId,
+                  // 需要调用的方法名称
+                  method: 'funB',
+                  num: 1
+                }
+              });
+            })
+        }
+        .height('100%')
+        .width('100%')
+      }
+    }
+    ```
 
 3. 创建指定的UIAbility
     
