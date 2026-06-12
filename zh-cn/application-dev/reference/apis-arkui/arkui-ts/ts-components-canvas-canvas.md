@@ -142,7 +142,7 @@ Canvas组件初始化完成或者发生大小变化时的事件回调，支持[a
 
 | 参数名 | 类型    | 必填 | 说明 |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| event  | [VoidCallback](ts-types.md#voidcallback12) | 是   | Canvas组件初始化完成或者发生大小变化时的事件回调事件。 |
+| event  | [VoidCallback](ts-types.md#voidcallback12) | 是   | Canvas组件初始化完成或者发生大小变化时的回调事件。 |
 
 ### onReady<sup>23+</sup>
 
