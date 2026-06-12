@@ -334,8 +334,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 commonEventManager.removeStickyCommonEvent('sticky_event').then(() => {
   console.info(`removeStickyCommonEvent success`);
-}).catch((err: BusinessError): void => {
-  console.error(`removeStickyCommonEvent failed, errCode: ${err.code}, errMes: ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`removeStickyCommonEvent failed, errCode: ${error.code}, errMes: ${error.message}`);
 });
 ```
 
@@ -459,8 +460,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 commonEventManager.setStaticSubscriberState(false).then(() => {
   console.info(`setStaticSubscriberState success`);
-}).catch((err: BusinessError): void => {
-  console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMes: ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`setStaticSubscriberState failed, errCode: ${error.code}, errMes: ${error.message}`);
 });
 ```
 
@@ -535,7 +537,7 @@ setStaticSubscriberState(enable: boolean, events: Array\<string>): Promise\<void
 
 **相关接口**: 该接口对应的ArkTS-Dyn接口是[setStaticSubscriberState](#commoneventmanagersetstaticsubscriberstate12)
 
-**ArkTS-Sta起始版本**: 22
+**ArkTS-Sta起始版本**: 23
 
 **参数：**
 
@@ -569,7 +571,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let evenName: string[] = ['usual.event.SEND_DATA'];
 commonEventManager.setStaticSubscriberState(true, evenName).then(() => {
   console.info(`setStaticSubscriberState success, state is ${true}`);
-}).catch((err: BusinessError): void => {
-  console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMes: ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`setStaticSubscriberState failed, errCode: ${error.code}, errMes: ${error.message}`);
 });
 ```
