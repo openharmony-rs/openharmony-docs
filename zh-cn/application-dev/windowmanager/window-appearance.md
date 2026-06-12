@@ -52,6 +52,17 @@
      - 子窗矩形区域的左上部分变为透明不可交互，通过点击“Create Test Window”按钮，事件透传到该按钮，创建出绿色的测试窗口。
 
 <!-- @[index_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  // ...
+  private windowMaskSub: window.Window | undefined = undefined;
+```
 <!-- @[setWindowMask_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
 <!-- @[setWindowMask_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
 
