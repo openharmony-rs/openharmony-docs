@@ -75,7 +75,7 @@ Declare the ohos.permission.PUBLISH_AGENT_REMINDER permission. For details, see 
 
    - Timer
      
-      <!-- [timer_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
+      <!-- [timer_reminder](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
       
       ``` TypeScript
       let timer: reminderAgent.ReminderRequestTimer = {
