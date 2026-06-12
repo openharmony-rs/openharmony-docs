@@ -49,7 +49,7 @@ addCheckRule(rule: bigint): void
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| rule   | bigint | 是   | 需要添加的规则。支持使用或运算组合多个规则。可选值包括：<br>RULE_CAUTION_PRINT_LOG（记录日志）、RULE_CAUTION_TRIGGER_CRASH（应用退出）、RULE_THREAD_CHECK_SLOW_PROCESS（检测耗时函数调用）等，详见常量定义。 |
+| rule   | bigint | 是   | 需要添加的规则。支持使用或运算组合多个规则。可选值包括：<br>RULE_CAUTION_PRINT_LOG（记录日志）、RULE_CAUTION_TRIGGER_CRASH（应用退出）、RULE_THREAD_CHECK_SLOW_PROCESS（检测耗时函数调用）等，详见[常量](#常量)定义。 |
 
 **错误码：**
 
