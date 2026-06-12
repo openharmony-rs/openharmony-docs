@@ -64,6 +64,22 @@ struct Index {
   private windowMaskSub: window.Window | undefined = undefined;
 ```
 <!-- @[setWindowMask_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+setWindowMask(window: window.Window) {
+  let windowMask: Uint8Array = new Uint8Array(this.winWidth * this.winHeight);
+  for (let i = 0; i < this.winHeight; i++) {
+    for (let k = 0; k < this.winWidth; k++) {
+      if ((i + k) < (this.winHeight + this.winWidth) / 2) {
+        windowMask[i * this.winWidth + k] = 0;
+      } else {
+        windowMask[i * this.winWidth + k] = 255;
+      }
+    }
+  }
+  window.setWindowMaskWithAlpha(windowMask, this.winWidth, this.winHeight);
+}
+```
 <!-- @[setWindowMask_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
 
 ![setWindowMaskWithAlphaDemo](figures/setWindowMaskWithAlphaDemo.gif)
