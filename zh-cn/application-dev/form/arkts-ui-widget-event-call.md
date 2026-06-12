@@ -21,6 +21,7 @@
 
     在卡片页面中布局两个按钮，点击按钮A或按钮B，会调用postCardAction向指定UIAbility发送call事件，在call事件内定义了需要调用的方法。按钮A和按钮B分别对应调用funA、funB方法，其中funA携带了formID参数，funB携带了formID和num参数，开发过程中请根据实际需要传参。postCardAction中的method参数为必填参数，用于标识需要调用的方法名称，与步骤3中UIAbility监听的方法一致，其他参数为非必填。
 
+    ArkTS-Dyn示例：
     <!-- @[widget_event_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcall/pages/WidgetEventCallCard.ets) -->
     
     ``` TypeScript
@@ -86,10 +87,15 @@
     }
     ```
 
+    ArkTS-Sta示例：
+
+    <!-- @[widget_event_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetCallStaDemo/entry/src/main/ets/widgeteventcall/pages/WidgetEventCallCard.ets) --> 
+
 3. 创建指定的UIAbility
     
     在UIAbility中监听call事件，根据监听到的method参数中的方法名称调用对应方法，并通过[rpc.Parcelable](../reference/apis-ipc-kit/js-apis-rpc.md#parcelable9)获取参数。UIAbility中监听的方法与步骤2中调用的方法需保持一致。
-
+    
+    ArkTS-Dyn示例：
     <!-- @[widget_event_call_card_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets) -->
     
     ``` TypeScript
@@ -158,6 +164,10 @@
       }
     }
     ```
+
+    ArkTS-Sta示例：
+
+    <!-- @[entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetCallStaDemo/entry/src/main/ets/entryability/EntryAbility.ets) --> 
 
 4. 配置后台运行权限
 

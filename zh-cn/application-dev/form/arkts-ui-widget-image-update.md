@@ -27,6 +27,7 @@
 
 3. 在WgtImgUpdateEntryFormAbility中的onAddForm生命周期回调中实现本地文件的刷新。
 
+   ArkTS-Dyn示例：
    <!-- @[local_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
    
    ``` TypeScript
@@ -68,8 +69,12 @@
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[local_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetImageUpdateStaDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
+
 4. 在WgtImgUpdateEntryFormAbility中的onFormEvent生命周期回调中实现网络文件的刷新。
 
+   ArkTS-Dyn示例：
    <!-- @[network_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
    
    ``` TypeScript
@@ -155,9 +160,12 @@
    }
    
    ```
+   ArkTS-Sta示例：
+   <!-- @[network_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetImageUpdateStaDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
 
 5. 在卡片页面通过backgroundImage属性展示WgtImgUpdateEntryFormAbility传递过来的卡片内容。
 
+   ArkTS-Dyn示例：
    <!-- @[widget_image_update_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets) --> 
    
    ``` TypeScript
@@ -216,6 +224,9 @@
      }
    }
    ```
+
+   ArkTS-Sta示例：
+   <!-- @[widget_image_update_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetImageUpdateStaDemo/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets) --> 
 
 > **说明：**
 >

@@ -19,6 +19,7 @@
 
 2. 构建ArkTS卡片页面代码布局，卡片页面布局中有两个按钮，点击其中一个按钮时调用postCardAction向指定UIAbility发送router事件，并在事件内定义需要传递的内容。
 
+   ArkTS-Dyn示例：
    <!-- @[widget_event_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets) -->
    
    ``` TypeScript
@@ -87,8 +88,12 @@
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[widget_event_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetRouterDemo/entry/src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets) --> 
+
 3. 处理router事件，在UIAbility中接收router事件并获取参数，根据传递的params不同，选择拉起不同的页面。
   
+   ArkTS-Dyn示例：
    <!-- @[entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryability/EntryAbility.ts) -->
    
    ``` TypeScript
@@ -157,8 +162,12 @@
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetRouterDemo/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+
 4. 创建跳转后的UIAbility页面，新建FunA.ets和FunB.ets，构建页面布局。
 
+   ArkTS-Dyn示例：
    <!-- @[fun_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/funpages/FunA.ets) --> 
    
    ``` TypeScript
@@ -260,6 +269,10 @@
      }
    }
    ```
+   ArkTS-Sta示例：
+   <!-- @[fun_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetRouterDemo/entry/src/main/ets/funpages/FunA.ets) --> 
+
+   <!-- @[fun_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetRouterDemo/entry/src/main/ets/funpages/FunB.ets) --> 
 
 5. 在resources/base/profile下的main_pages.json文件中配置FunA.ets和FunB.ets页面。
    ```json5

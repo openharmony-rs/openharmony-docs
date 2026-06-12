@@ -13,6 +13,8 @@
 > 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见[FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)。
 
 - 在卡片页面通过注册Button的onClick点击事件回调，并在回调中调用postCardAction接口触发message事件拉起FormExtensionAbility。卡片页面中使用[LocalStorageProp](../ui/state-management/arkts-localstorage.md#localstorageprop)装饰需要刷新的卡片数据。
+
+    ArkTS-Dyn示例：
     <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
     
     ``` TypeScript
@@ -74,6 +76,10 @@
     }
     ```
 
+    ArkTS-Sta示例：
+
+    <!-- @[update_by_message_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetMessageStaDemo/entry/src/main/ets/updatebymessage/pages/UpdateByMessageCard.ets) --> 
+
 - 在EntryFormAbility.ets中，导入相关模块
 
     ```TypeScript
@@ -85,7 +91,9 @@
     ``` 
 
 - 在FormExtensionAbility的onFormEvent生命周期中调用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片。
-  
+
+    ArkTS-Dyn示例：
+
     <!-- @[update_form_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) --> 
     
     ``` TypeScript
@@ -118,6 +126,10 @@
     }
     
     ```
+
+    ArkTS-Sta示例：
+
+    <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetMessageStaDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
   
   运行效果如下图所示。
   
