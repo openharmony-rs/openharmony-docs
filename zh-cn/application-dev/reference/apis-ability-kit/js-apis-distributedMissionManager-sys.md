@@ -40,7 +40,7 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, 
 | --------- | --------------------------------------- | ---- | --------- |
 | parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 注册监听时的设备信息，deviceId为设备标识符。 |
 | options   | [MissionCallback](#missioncallback10)     | 是    | 注册的回调方法。 |
-| callback  | AsyncCallback&lt;void&gt;               | 是    | 回调函数，注册监听成功，err为undefined，否则为错误对象。 |
+| callback  | AsyncCallback&lt;void&gt;               | 是    | 回调函数，注册监听完成时err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -49,7 +49,7 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
 
 **示例：**
 
@@ -58,35 +58,36 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, 
   import { BusinessError } from '@kit.BasicServicesKit';
   
   // 实现回调函数
-  function NotifyMissionsChanged(deviceId: string): void {
-    console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
+  function notifyMissionsChanged(deviceId: string): void {
+    console.info('notifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
   }
-  function NotifySnapshot(deviceId: string, missionId: number): void {
-    console.info('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
-    console.info('NotifySnapshot missionId ' + JSON.stringify(missionId));
+  function notifySnapshot(deviceId: string, missionId: number): void {
+    console.info('notifySnapshot deviceId ' + JSON.stringify(deviceId));
+    console.info('notifySnapshot missionId ' + JSON.stringify(missionId));
   }
-  function NotifyNetDisconnect(deviceId: string, state: number): void {
-    console.info('NotifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
-    console.info('NotifyNetDisconnect state ' + JSON.stringify(state));
+  function notifyNetDisconnect(deviceId: string, state: number): void {
+    console.info('notifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
+    console.info('notifyNetDisconnect state ' + JSON.stringify(state));
   }
   try {
-    // 调用registerMissionListener接口
+    // 注册任务状态监听
+    // deviceId需通过设备发现接口获取实际设备ID
     distributedMissionManager.registerMissionListener(
       { deviceId: "" },
       {
-        notifyMissionsChanged: NotifyMissionsChanged,
-        notifySnapshot: NotifySnapshot,
-        notifyNetDisconnect: NotifyNetDisconnect
+        notifyMissionsChanged: notifyMissionsChanged,
+        notifySnapshot: notifySnapshot,
+        notifyNetDisconnect: notifyNetDisconnect
       },
       (error: BusinessError) => {
         if (error) {
-          console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+          console.error(`registerMissionListener failed. Code: ${error.code}, message: ${error.message}`);
           return;
         }
         console.info('registerMissionListener finished');
       });
   } catch (error) {
-    console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+    console.error(`registerMissionListener failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 ## distributedMissionManager.registerMissionListener
@@ -112,7 +113,7 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 操作成功时返回的Promise对象，表示任务状态监听已成功注册。 |
+| Promise&lt;void&gt; | 返回的Promise对象，操作成功时表示任务状态监听已成功注册，失败时返回错误信息。 |
 
 **错误码：**
 
@@ -121,7 +122,7 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
 
 **示例：**
 
@@ -130,16 +131,16 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
   import { BusinessError } from '@kit.BasicServicesKit';
 
   // 实现回调函数
-  function NotifyMissionsChanged(deviceId: string): void {
-    console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
+  function notifyMissionsChanged(deviceId: string): void {
+    console.info('notifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
   }
-  function NotifySnapshot(deviceId: string, missionId: number): void {
-    console.info('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
-    console.info('NotifySnapshot missionId ' + JSON.stringify(missionId));
+  function notifySnapshot(deviceId: string, missionId: number): void {
+    console.info('notifySnapshot deviceId ' + JSON.stringify(deviceId));
+    console.info('notifySnapshot missionId ' + JSON.stringify(missionId));
   }
-  function NotifyNetDisconnect(deviceId: string, state: number): void {
-    console.info('NotifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
-    console.info('NotifyNetDisconnect state ' + JSON.stringify(state));
+  function notifyNetDisconnect(deviceId: string, state: number): void {
+    console.info('notifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
+    console.info('notifyNetDisconnect state ' + JSON.stringify(state));
   }
   try {
       // 调用registerMissionListener接口
@@ -152,7 +153,7 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
         }).then(() => {
           console.info('registerMissionListener finished. ');
       }).catch((error: BusinessError) => {
-          console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
+          console.error(`registerMissionListener failed. Code: ${error.code}, message: ${error.message}`);
       });
   } catch (error) {
       console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
@@ -176,7 +177,7 @@ unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
 | parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 取消监听时指定的设备信息，deviceId为设备标识符。    |
-| callback  | AsyncCallback&lt;void&gt;               | 是    | 回调函数，取消监听成功，err为undefined，否则为错误对象。|
+| callback  | AsyncCallback&lt;void&gt;               | 是    | 回调函数，取消监听完成时err为undefined，否则为错误对象。|
 
 **错误码：**
 
@@ -185,7 +186,7 @@ unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
 
 **示例：**
 
@@ -194,11 +195,12 @@ unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
+    // 取消任务状态监听
     distributedMissionManager.unRegisterMissionListener(
       { deviceId: "" },
       (error: BusinessError) => {
         if (error) {
-            console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
+            console.error(`unRegisterMissionListener failed. Code: ${error.code}, message: ${error.message}`);
             return;
         }
         console.info('unRegisterMissionListener finished');
@@ -239,7 +241,7 @@ unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
 
 **示例：**
 
@@ -251,7 +253,7 @@ unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
     distributedMissionManager.unRegisterMissionListener({deviceId: ""}).then(() => {
       console.info('unRegisterMissionListener finished successfully');
     }).catch((error: BusinessError) => {
-        console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
+        console.error(`unRegisterMissionListener failed. Code: ${error.code}, message: ${error.message}`);
     });
   } catch (error) {
       console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
@@ -275,7 +277,7 @@ startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;
 | 参数名       | 类型                                    | 必填   | 说明        |
 | --------- | ------------------------------------- | ---- | --------- |
 | parameter | [MissionParameter](#missionparameter10) | 是    | 同步信息，包含deviceId、fixConflict和tag字段。tag为同步标识，用于区分不同同步会话，取值需满足场景需求。fixConflict表示是否解决冲突，建议在可能存在任务冲突的场景下设置为true以避免任务冲突问题。|
-| callback  | AsyncCallback&lt;void&gt;             | 是    | 回调函数，同步远端任务列表成功时，err为undefined，否则返回错误对象。 |
+| callback  | AsyncCallback&lt;void&gt;             | 是    | 回调函数，同步远端任务列表完成时err为undefined，否则返回错误对象。 |
 
 **错误码：**
 
@@ -284,7 +286,7 @@ startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
 
 **示例：**
 
@@ -293,6 +295,7 @@ startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
+    // 开始同步远端设备的任务列表
     distributedMissionManager.startSyncRemoteMissions(
       {
         deviceId: "",
@@ -301,13 +304,13 @@ startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;
       },
       (error: BusinessError) => {
         if (error) {
-          console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+          console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
           return;
         }
         console.info('startSyncRemoteMissions finished');}
     )
   } catch (error) {
-    console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+    console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
@@ -342,7 +345,7 @@ startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
 
 **示例：**
 
@@ -360,10 +363,10 @@ startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
     ).then(() => {
         console.info('startSyncRemoteMissions finished successfully');
       }).catch((error: BusinessError) => {
-      console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+      console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
     });
   } catch (error) {
-    console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+    console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
@@ -371,7 +374,7 @@ startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 
 stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;void&gt;): void;
 
-停止同步远端设备的任务列表。使用callback异步回调。调用成功后，系统将停止同步指定远端设备的任务列表。需先调用 startSyncRemoteMissions 启动同步后再调用，未启动同步时调用不生效。
+调用该接口停止同步远端设备的任务列表。使用callback异步回调。调用成功后，系统将停止同步指定远端设备的任务列表。需先调用 startSyncRemoteMissions 启动同步后再调用，未启动同步时调用不生效。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -384,7 +387,7 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
 | parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 停止同步的设备信息，deviceId为要停止同步的远端设备ID。   |
-| callback  | AsyncCallback&lt;void&gt;               | 是    | 回调函数，停止同步远端任务列表成功时，err为undefined，否则为错误对象。 |
+| callback  | AsyncCallback&lt;void&gt;               | 是    | 回调函数，停止同步远端任务列表完成时err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -393,7 +396,7 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
 
 **示例：**
 
@@ -402,19 +405,20 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
+    // 停止同步远端设备的任务列表
     distributedMissionManager.stopSyncRemoteMissions(
       {
         deviceId: ""
       },
       (error: BusinessError) => {
         if (error) {
-          console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+          console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
           return;
         }
         console.info('stopSyncRemoteMissions finished');}
     )
   } catch (error) {
-    console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+    console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
@@ -449,7 +453,7 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
 
 **示例：**
 
@@ -464,10 +468,10 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
       }).then(() => {
         console.info('stopSyncRemoteMissions finished successfully');
       }).catch((error: BusinessError) => {
-      console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+      console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
     });
   } catch (error) {
-    console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
+    console.error(`stopSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
@@ -489,7 +493,7 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
 | --------- | --------------------------------------- | ---- | ----- |
 | parameter | [ContinueDeviceInfo](js-apis-inner-application-continueDeviceInfo-sys.md) | 是    | 通过任务ID方式迁移时的迁移信息，包含源设备ID、目标设备ID、任务ID等。 |
 | options | [ContinueCallback](js-apis-inner-application-continueCallback-sys.md) | 是    | 通过任务ID方式迁移任务完成时的回调函数，用于接收迁移结果。 |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，迁移任务完成时，err为undefined，否则返回错误对象。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，迁移任务完成时err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -498,8 +502,8 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 201      | Permission denied.|
-| 202 | The application is not system-app, can not use system-api. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202 | The application is not system-app, can not use system-api. Please ensure your application is a system application to use system APIs. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
 | 16300501 | The system ability work abnormally. |
 | 16300502 | Failed to get the missionInfo of the specified missionId. |
 | 16300503 | The application is not installed on the remote end and installation-free is not supported. |
@@ -518,7 +522,8 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
     console.info('onContinueDone resultCode: ' + JSON.stringify(resultCode));
   };
   try {
-    // 调用continueMission接口
+    // 通过任务ID方式迁移任务
+    // missionId需通过系统API获取实际任务ID
     distributedMissionManager.continueMission(
       {
         srcDeviceId: '',
@@ -529,13 +534,13 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
       { onContinueDone: onContinueDone },
       (error: BusinessError) => {
         if (error) {
-          console.error('continueMission failed, cause: ' + JSON.stringify(error));
+          console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
           return;
         }
         console.info('continueMission finished');
     })
   } catch (error) {
-    console.error('continueMission failed, cause: ' + JSON.stringify(error));
+    console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
@@ -571,8 +576,8 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promi
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 201      | Permission denied.|
-| 202 | The application is not system-app, can not use system-api. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202 | The application is not system-app, can not use system-api. Please ensure your application is a system application to use system APIs. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
 | 16300501 | The system ability work abnormally. |
 | 16300502 | Failed to get the missionInfo of the specified missionId. |
 | 16300503 | The application is not installed on the remote end and installation-free is not supported. |
@@ -591,7 +596,8 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promi
     console.info('onContinueDone resultCode: ' + JSON.stringify(resultCode));
   };
   try {
-    // 调用continueMission接口
+    // 通过任务ID方式迁移任务
+    // missionId需通过系统API获取实际任务ID
     distributedMissionManager.continueMission(
       {
         srcDeviceId: '',
@@ -602,10 +608,10 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promi
       { onContinueDone: onContinueDone }).then(() => {
         console.info('continueMission finished successfully');
       }).catch((error: BusinessError) => {
-      console.error('continueMission failed, cause: ' + JSON.stringify(error));
+      console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
     });
   } catch (error) {
-    console.error('continueMission failed, cause: ' + JSON.stringify(error));
+    console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
@@ -635,8 +641,8 @@ continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 201      | Permission denied.|
-| 202 | The application is not system-app, can not use system-api. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202 | The application is not system-app, can not use system-api. Please ensure your application is a system application to use system APIs. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
 | 16300501 | The system ability work abnormally. |
 | 16300503 | The application is not installed on the remote end and installation-free is not supported. |
 | 16300504 | The application is not installed on the remote end but installation-free is supported, try again with freeInstall flag. |
@@ -660,13 +666,13 @@ continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&
       },
       (error: BusinessError) => {
         if (error) {
-          console.error('continueMission failed, cause: ' + JSON.stringify(error));
+          console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
           return;
         }
         console.info('continueMission finished');
     })
   } catch (error) {
-    console.error('continueMission failed, cause: ' + JSON.stringify(error));
+    console.error(`continueMission failed. Code: ${error.code}, message: ${error.message}`);
   }
   ```
 
@@ -701,8 +707,8 @@ continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 201      | Permission denied.|
-| 202 | The application is not system-app, can not use system-api. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202 | The application is not system-app, can not use system-api. Please ensure your application is a system application to use system APIs. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
 | 16300501 | The system ability work abnormally. |
 | 16300503 | The application is not installed on the remote end and installation-free is not supported. |
 | 16300504 | The application is not installed on the remote end but installation-free is supported, try again with freeInstall flag. |
@@ -750,7 +756,7 @@ on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;)
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| type | string  | 是    | 订阅的事件类型，取值必须为'continueStateChange'，表示订阅任务流转状态变化事件。 |
+| type | string  | 是    | 订阅的事件类型，取值为'continueStateChange'，表示订阅任务流转状态变化事件。 |
 | callback | Callback&lt;[ContinueCallbackInfo](#continuecallbackinfo11)&gt; | 是    | 回调函数，返回当前任务的流转状态和流转信息。    |
 
 **错误码：**
@@ -760,7 +766,7 @@ on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;)
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
 
 **示例：**
 
@@ -768,11 +774,12 @@ on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;)
   import { distributedMissionManager } from '@kit.AbilityKit';
 
   try {
+    // 注册任务流转状态变化事件监听
     distributedMissionManager.on('continueStateChange', (data) => {
       console.info("continueStateChange on:" + JSON.stringify(data));
     });
   } catch (error) {
-    console.error("continueStateChange err: " + JSON.stringify(error));
+    console.error(`continueStateChange failed. Code: ${error.code}, message: ${error.message}`);
   }
 ```
 
@@ -780,7 +787,7 @@ on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;)
 
 off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt;): void
 
-取消当前任务流转的状态监听。调用成功后，将停止接收任务流转状态变化的回调通知。在不再需要监听任务流转状态的场景中，如用户关闭流转状态显示功能或退出需要状态感知的应用页面时使用。接口需与 `on('continueStateChange')` 成对使用，在不需要监听时应及时调用以释放资源。
+取消当前任务流转的状态监听。调用成功后，将停止接收任务流转状态变化的回调通知。在不再需要监听任务流转状态的场景中，如用户关闭流转状态显示功能或退出需要状态感知的应用页面时使用。此接口需与 `on('continueStateChange')` 成对使用，在不需要监听时应及时调用以释放资源。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -802,7 +809,7 @@ off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
 
 **示例：**
 
@@ -810,11 +817,12 @@ off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt
   import { distributedMissionManager } from '@kit.AbilityKit';
 
   try {
+    // 取消任务流转状态变化事件监听
     distributedMissionManager.off('continueStateChange', (data) => {
       console.info("continueStateChange off:" + JSON.stringify(data));
     });
   } catch (err) {
-    console.error("continueStateChange err: " + JSON.stringify(err));
+    console.error(`continueStateChange failed. Code: ${err.code}, message: ${err.message}`);
   }
 ```
 
@@ -822,7 +830,7 @@ off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt
 
 type MissionCallback = _MissionCallback
 
-作为[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，表示注册监听后，用于接收任务列表变化通知、任务快照通知和断开连接通知的回调函数。
+用于监听任务状态变化的回调函数，包含任务列表变化通知、任务快照通知和断开连接通知等功能。作为[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，表示注册监听后建立的回调函数。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -830,13 +838,13 @@ type MissionCallback = _MissionCallback
 
 | 类型 | 说明 |
 | --- | --- |
-| [_MissionCallback](js-apis-inner-application-missionCallbacks-sys.md) | 作为可以registerMissionListener的入参，表示开始同步后，建立的回调函数。用于监听任务状态变化的回调函数，包含任务列表变化通知、任务快照通知和断开连接通知等功能。|
+| [_MissionCallback](js-apis-inner-application-missionCallbacks-sys.md) | 用于监听任务状态变化的回调函数，包含任务列表变化通知、任务快照通知和断开连接通知等功能。作为registerMissionListener的入参，表示注册监听后建立的回调函数。|
 
 ## MissionParameter<sup>10+</sup>
 
 type MissionParameter = _MissionParameter
 
-作为[startSyncRemoteMissions](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerstartsyncremotemissions)的入参，同步远程任务列表时所需的参数，包含deviceId、fixConflict和tag等字段。
+同步远程任务列表时所需的参数对象，包含deviceId、fixConflict和tag等字段。作为[startSyncRemoteMissions](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerstartsyncremotemissions)的入参。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -850,7 +858,7 @@ type MissionParameter = _MissionParameter
 
 type MissionDeviceInfo = _MissionDeviceInfo
 
-可以作为[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，注册任务状态监听时所需的设备信息，包含deviceId等设备标识符字段。
+注册任务状态监听时所需的设备信息对象，包含deviceId等设备标识符字段。作为[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -883,5 +891,5 @@ type MissionDeviceInfo = _MissionDeviceInfo
 
 | 名称       | 类型    | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| state | [ContinueState](#continuestate10)   | 否    | 否    |   表表示当前任务的流转状态，取值为ACTIVE（激活）或INACTIVE（未激活），根据任务实际流转状态设置。 |
-| info  | [ContinuableInfo](./js-apis-inner-application-continuableInfo-sys.md) | 否    | 否    |  表示当前任务的流转信息。|
+| state | [ContinueState](#continuestate10)   | 否    | 否    |   表示当前任务的流转状态，取值为ACTIVE（激活）或INACTIVE（未激活），根据任务实际流转状态设置。 |
+| info  | [ContinuableInfo](./js-apis-inner-application-continuableInfo-sys.md) | 否    | 否    |  表示当前任务的流转信息。 |
