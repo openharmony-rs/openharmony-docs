@@ -325,7 +325,7 @@
 
 以下示例创建了一个消息提示组件，通过内容层绘制消息气泡与文本，并在前景层叠加星标装饰，实现消息高亮提示效果，常用于消息提醒和引导标记等场景。完整示例请参考<!--RP2-->[NativeNodeUtilsSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample)<!--RP2End-->。
 
-未添加消息蒙层，未添加蒙层，没有前景层叠加星标装饰效果：
+未添加消息蒙层，没有前景层叠加星标装饰效果：
 
 ![messageMask](figures/messageMask2.jpg)
 
