@@ -380,7 +380,7 @@ export default new Z()
 | 名称   | 类型 | 必填 | 说明                                                         |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
 | uri<sup>7+</sup> | string   | 否   | 返回到指定uri的界面，如果页面栈上没有uri页面，则不响应该情况。如果uri未设置，则返回上一页。 <br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| params<sup>7+</sup> | object   | 否   | 跳转时要同时传递到目标页面的数据。 <br>**系统能力：** SystemCapability.ArkUI.ArkUI.Lite |
+| params<sup>7+</sup> | Object   | 否   | 返回时要同时传递到目标页面的数据。 <br>**系统能力：** SystemCapability.ArkUI.ArkUI.Lite |
 
 ## RouterState
 
@@ -415,8 +415,8 @@ export default new Z()
 
 | 名称     | 类型                 | 必填 | 说明                                               |
 | -------- | ------------------------ | ---- | -------------------------------------------------- |
-| success  | (errMsg: string) => void | 否   | 关闭询问对话框能力成功时触发，errMsg表示返回信息。 |
-| cancel   | (errMsg: string) => void | 否   | 关闭询问对话框能力失败时触发，errMsg表示返回信息。 |
+| success  | (errMsg: string) => void | 否   | 关闭询问对话框成功时触发，errMsg表示返回信息。 |
+| cancel   | (errMsg: string) => void | 否   | 关闭询问对话框失败时触发，errMsg表示返回信息。 |
 | complete | () => void               | 否   | 当对话框关闭时触发该回调。                           |
 
 ## ParamsInterface

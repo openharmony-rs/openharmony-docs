@@ -42,7 +42,7 @@ SideBarContainer( type?: SideBarContainerType )
 
 ## SideBarContainerType枚举说明
 
-容器内侧边栏样式枚举。
+容器内侧边栏类型枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -471,7 +471,7 @@ struct SideBarContainerExample {
           .onClick(() => {
             this.selectedItemId = item;
           })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }.width('100%')
       .justifyContent(FlexAlign.SpaceEvenly)
       .backgroundColor('#19000000')
