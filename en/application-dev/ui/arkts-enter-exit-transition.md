@@ -215,4 +215,4 @@ When adding transition effects to multiple components, you can configure differe
    }
    ```
 
-![en-us_image_0000001599818064](figures/Enter-Exit-Transition01.gif)
+![en-us_image_0000001599818064](figures/Enter-Exit-Transition.gif)

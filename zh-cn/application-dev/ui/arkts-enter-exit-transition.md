@@ -215,4 +215,4 @@
    }
    ```
 
-![zh-cn_image_0000001599818064](figures/Enter-Exit-Transition01.gif)
+![zh-cn_image_0000001599818064](figures/Enter-Exit-Transition.gif)
