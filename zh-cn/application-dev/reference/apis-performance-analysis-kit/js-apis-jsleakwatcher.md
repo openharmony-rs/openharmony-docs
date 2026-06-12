@@ -26,8 +26,7 @@ enable(isEnable: boolean): void
 
 使能ArkTS对象泄漏检测，默认关闭。开启后会收集泄漏信息，可能增加性能开销。
 
-**调用顺序：**
-- 完整调用流程：enable() → watch() → check() → dump()
+推荐的完整调用流程：enable() → watch() → check() → dump()
 
 **使用场景**：
 - 应用开发调试阶段，用于检测和定位内存泄漏问题。
@@ -108,12 +107,6 @@ dump(filePath: string): Array&lt;string&gt;
 
 导出泄漏列表和虚拟机内存快照。
 
-**使用场景**：
-- 发现泄漏后，导出详细信息进行深入分析。
-- 使用内存快照分析工具打开堆快照文件，分析对象引用关系（基础dump接口生成.heapsnapshot格式，enableLeakWatcher接口生成.rawheap格式）。
-- 根据泄漏列表快速定位泄漏对象的来源，进行代码修复。
-- 保存泄漏信息用于后续排查和问题追踪。
-
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
 **参数：**
@@ -146,7 +139,7 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 
 **使用场景**：
 - 对内存使用有严格要求的应用，需要持续监控内存泄漏情况。
-- 使用XComponent、NodeContainer、Window、CustomComponent、Ability等组件的应用是否发生泄漏。
+- 监控使用XComponent、NodeContainer、Window、CustomComponent、Ability等组件的应用是否发生泄漏。
 - 应用开发调试和测试阶段，快速发现内存泄漏问题。
 - 长时间运行的应用，需要定期检测内存泄漏。
 
