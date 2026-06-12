@@ -106,19 +106,19 @@ NavDestination提供了两种类型。
     Consume,
     NavDestination
   } from '@kit.ArkUI';
-
+  
   @Entry
   @Component
   struct PageDisplayType {
     @Provide navPathStack: NavPathStack = new NavPathStack();
-
+  
     @Builder
     PagesMap(name: string) {
       if (name == 'DialogPage') {
         DialogPage();
       }
     }
-
+  
     build() {
       Navigation(this.navPathStack) {
         Button('Push DialogPage')
@@ -133,11 +133,11 @@ NavDestination提供了两种类型。
       .navDestination(this.PagesMap)
     }
   }
-
+  
   @Component
   export struct DialogPage {
     @Consume('navPathStack') navPathStack: NavPathStack;
-
+  
     build(): void {
       NavDestination() {
         Stack({ alignContent: Alignment.Center }) {
