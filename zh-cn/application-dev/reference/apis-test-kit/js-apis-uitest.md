@@ -3944,7 +3944,7 @@ dumpLayout(savePath: string, displayId?: number): Promise\<boolean>
 
 | 参数名   | 类型   | 必填 | 说明                                       |
 | -------- | ------ | ---- | ------------------------------------------ |
-| savePath | string | 是   | JSON文件保存路径。路径需为当前应用的沙箱目录。 |
+| savePath | string | 是   | JSON文件保存路径。路径需为当前应用的[沙箱路径](../../file-management/app-sandbox-directory.md)。 |
 | displayId     | number | 否  | 指定设备屏幕ID，取值范围：大于等于0的整数。默认为主屏幕的displayId。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。 |
 
 **返回值：**
@@ -5721,9 +5721,10 @@ triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: 
 | key | [PenKey](#penkey) | 是   | 要触发的手写笔按键类型，用于指定执行操作的手写笔按键，如书写键、智慧键或空鼠键。      |
 | mode | [PenMode](#penmode) | 是   | 手写笔的工作模式，用于指定手写笔当前所处的操作模式，如手写模式或空鼠模式。         |
 | operation | [PenKeyOperation](#penkeyoperation) | 是   | 对手写笔按键执行的操作类型，用于指定按键的操作方式，如单击或双击。                |
-| options | [PenKeyOperationOptions](#penkeyoperationoptions) | 否   | 操作选项，包括可选的坐标点。默认值继承[PenKeyOperationOptions](#penkeyoperationoptions)各属性默认值。 |
+| options | [PenKeyOperationOptions](#penkeyoperationoptions) | 否   | 操作选项，包括可选的坐标点。默认值继承[PenKeyOperationOptions](#penkeyoperationoptions)各属性默认值。<br> **说明：** 当参数mode取值为[AIR_MOUSE](#penmode)且key取值为[AIR_MOUSE](#penkey)时，必须在options中设置point属性，否则将抛出17000007错误码。 |
 
 **支持的参数组合：**
+
 - mode取值为[HANDWRITING](#penmode)时：支持key取值为[HANDWRITING](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)。
 - mode取值为[AIR_MOUSE](#penmode)时：支持key取值为[AIR_MOUSE](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)（需要在options中指定point）；支持key取值为[HANDWRITING](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)；支持key取值为[SMART](#penkey)，operation取值为[CLICK](#penkeyoperation)。
 - 使用其他参数组合将抛出17000007错误码。
@@ -7062,7 +7063,7 @@ text(txt: string, pattern?: MatchPattern): By
 // xxx.test.ets
 import { BY, By } from '@kit.TestKit';
 
-let by: By = BY.text('123'); // 使用静态构造器BY创建by对象，指定目标控件的text属性。
+let by: By = BY.text('123'); // 使用静态构造器BY创建By对象，指定目标控件的text属性。
 ```
 
 
@@ -7096,7 +7097,7 @@ key(key: string): By
 // xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
-let by: By = BY.key('123'); // 使用静态构造器BY创建by对象，指定目标控件的key值属性。
+let by: By = BY.key('123'); // 使用静态构造器BY创建By对象，指定目标控件的key值属性。
 ```
 
 
@@ -7130,7 +7131,7 @@ id(id: number): By
 // xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
-let by: By = BY.id(123); // 使用静态构造器BY创建by对象，指定目标控件的id属性。
+let by: By = BY.id(123); // 使用静态构造器BY创建By对象，指定目标控件的id属性。
 ```
 
 
@@ -7164,7 +7165,7 @@ type(tp: string): By
 // xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
-let by: By = BY.type('Button'); // 使用静态构造器BY创建by对象，指定目标控件的控件类型属性。
+let by: By = BY.type('Button'); // 使用静态构造器BY创建By对象，指定目标控件的控件类型属性。
 ```
 
 
@@ -7198,7 +7199,7 @@ clickable(b?: boolean): By
 // xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
-let by: By = BY.clickable(true); // 使用静态构造器BY创建by对象，指定目标控件的可点击状态属性。
+let by: By = BY.clickable(true); // 使用静态构造器BY创建By对象，指定目标控件的可点击状态属性。
 ```
 
 
@@ -7232,7 +7233,7 @@ scrollable(b?: boolean): By
 // xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
-let by: By = BY.scrollable(true); // 使用静态构造器BY创建by对象，指定目标控件的可滑动状态属性。
+let by: By = BY.scrollable(true); // 使用静态构造器BY创建By对象，指定目标控件的可滑动状态属性。
 ```
 
 ### enabled<sup>(deprecated)</sup>
@@ -7265,7 +7266,7 @@ enabled(b?: boolean): By
 // xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
-let by: By = BY.enabled(true); // 使用静态构造器BY创建by对象，指定目标控件的使能状态属性。
+let by: By = BY.enabled(true); // 使用静态构造器BY创建By对象，指定目标控件的使能状态属性。
 ```
 
 ### focused<sup>(deprecated)</sup>
@@ -7298,7 +7299,7 @@ focused(b?: boolean): By
 // xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
-let by: By = BY.focused(true); // 使用静态构造器BY创建by对象，指定目标控件的获焦状态属性。
+let by: By = BY.focused(true); // 使用静态构造器BY创建By对象，指定目标控件的获焦状态属性。
 ```
 
 ### selected<sup>(deprecated)</sup>
@@ -7331,7 +7332,7 @@ selected(b?: boolean): By
 // xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
-let by: By = BY.selected(true); // 使用静态构造器BY创建by对象，指定目标控件的被选中状态属性。
+let by: By = BY.selected(true); // 使用静态构造器BY创建By对象，指定目标控件的被选中状态属性。
 ```
 
 ### isBefore<sup>(deprecated)</sup>
@@ -7364,7 +7365,7 @@ isBefore(by: By): By
 // xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
-// 使用静态构造器BY创建by对象，指定目标控件位于给出的特征属性控件之前。
+// 使用静态构造器BY创建By对象，指定目标控件位于给出的特征属性控件之前。
 let by: By = BY.type('Button').isBefore(BY.text('123')); // 查找text为123之前的第一个Button组件
 ```
 
@@ -7398,7 +7399,7 @@ isAfter(by: By): By
 // xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
-// 使用静态构造器BY创建by对象，指定目标控件位于给出的特征属性控件之后。
+// 使用静态构造器BY创建By对象，指定目标控件位于给出的特征属性控件之后。
 let by: By = BY.type('Text').isAfter(BY.text('123')); // 查找 text为123之后的第一个Text组件
 ```
 
