@@ -477,6 +477,53 @@
    ```
    ArkTS-Sta示例：
    <!-- @[fun_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetRouterDemo/entry/src/main/ets/funpages/FunA.ets) --> 
+   
+   ``` TypeScript
+   // src/main/ets/funpages/FunA.ets
+   import {
+     $r,
+     Button,
+     Column,
+     Component,
+     Entry,
+     FlexAlign,
+     FontWeight,
+     Image,
+     Row,
+     Text,
+     TextAlign
+   } from '@ohos.arkui.component'
+   
+   @Entry
+   @Component
+   struct FunA {
+     build() {
+       Column(undefined) {
+         Row() {
+           Text(($r('app.string.ButtonA_label')))
+             .fontSize(24)
+             .fontWeight(FontWeight.Bold)
+             .textAlign(TextAlign.Start)
+             .margin({
+               top: 12,
+               bottom: 11,
+               right: 24,
+               left: 24
+             })
+         }.width('100%').height(56).justifyContent(FlexAlign.Start)
+   
+         Image($r('app.media.pic_empty')).width(120).height(120).margin({ top: 224 })
+   
+         Text($r('app.string.NoContentAvailable')).fontSize(14).fontColor($r('app.color.text_color')).opacity(0.4).margin({
+           top: 8,
+           bottom: 317,
+           right: 152,
+           left: 152
+         })
+       }.width('100%').height('100%')
+     }
+   }
+   ```
 
    <!-- @[fun_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetRouterDemo/entry/src/main/ets/funpages/FunB.ets) --> 
 
