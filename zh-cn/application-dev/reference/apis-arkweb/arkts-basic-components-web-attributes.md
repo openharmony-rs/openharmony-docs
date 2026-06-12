@@ -1545,11 +1545,11 @@ javaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 >
 > - 该脚本按照字典序执行，非数组本身顺序，若需数组本身顺序，建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)接口。
 >
-> - 不建议与[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)同时使用。
->
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
 >
-> - 本接口不支持urlRegexRules。
+> - 本接口不支持[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)。
+>
+> - 建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1627,11 +1627,11 @@ javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 >
 > - 该脚本按照字典序执行，非数组本身顺序。
 >
-> - 不建议与[runJavaScriptOnDocumentEnd](#runjavascriptondocumentend15)同时使用。
->
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
 >
-> - 本接口不支持urlRegexRules。
+> - 本接口不支持[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)。
+>
+> - 建议使用[runJavaScriptOnDocumentEnd](#runjavascriptondocumentend15)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1696,8 +1696,6 @@ runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
 > - 网页文档根元素（HTML Element）创建后、但尚未加载任何其他内容之前注入脚本。
 >
 > - 该脚本按照数组本身顺序执行。
->
-> - 不建议与[javaScriptOnDocumentStart](#javascriptondocumentstart11)同时使用。
 >
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
 
@@ -1779,8 +1777,6 @@ runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 > - 该脚本将在页面的任何JavaScript代码之后运行，并且DOM树此时已经加载、渲染完毕。
 >
 > - 该脚本按照数组本身顺序执行。
->
-> - 不建议与[javaScriptOnDocumentEnd](#javascriptondocumentend11)同时使用。
 >
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
 
