@@ -95,8 +95,8 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
     if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
         // 处理异常结果并返回
     }
-    uint32_t screenWidth = displayInfo->width;
-    uint32_t screenHeight = displayInfo->height;
+    int32_t screenWidth = displayInfo->width;
+    int32_t screenHeight = displayInfo->height;
     OH_VideoCaptureInfo videoCapInfo = {
         .videoFrameWidth = screenWidth,
         .videoFrameHeight = screenHeight,
@@ -253,8 +253,8 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
         napi_create_double(env, ret, &errCode);
         return errCode;
     }
-    uint32_t screenWidth = displayInfo->width;
-    uint32_t screenHeight = displayInfo->height;
+    int32_t screenWidth = displayInfo->width;
+    int32_t screenHeight = displayInfo->height;
     OH_VideoCaptureInfo videoCapInfo = {
         .videoFrameWidth = screenWidth, 
         .videoFrameHeight = screenHeight, 
