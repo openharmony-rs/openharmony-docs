@@ -250,7 +250,6 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
@@ -1035,6 +1034,8 @@ Enumerates call states.
 Provides an option for determining whether a call is a video call.
 
 **System capability**: SystemCapability.Applications.Contacts
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
 
 |        Name             | Type                              | Read-Only| Optional| Description                                                                                            |
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |

@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @li-weifeng2024; @xuzhihao666-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 The **TestRunner** module provides a test framework. You can use the APIs of this module to prepare the unit test environment and run test cases.
 
@@ -23,15 +23,11 @@ To implement your own unit test framework, extend this class and override its AP
 import { TestRunner } from '@kit.TestKit';
 ```
 
-## TestRunner.onPrepare
+## TestRunner
 
-onPrepare(): void
-
-Prepares the unit test environment to run test cases.
+**TestRunner** is a template for the unit test framework. You can inherit this class and override all its methods to customize the unit test framework.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Example**
 
@@ -44,11 +40,37 @@ export default class UserTestRunner implements TestRunner {
   }
 
   onRun() {
+    console.info('Trigger onRun');
   }
 }
 ```
 
-## TestRunner.onRun
+### onPrepare
+
+onPrepare(): void
+
+Prepares the unit test environment to run test cases.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Example**
+
+```ts 
+import { TestRunner } from '@kit.TestKit';
+
+export default class UserTestRunner implements TestRunner {
+  onPrepare() {
+    console.info('Trigger onPrepare');
+  }
+
+  onRun() {
+  }
+}
+```
+
+### onRun
 
 onRun(): void
 
