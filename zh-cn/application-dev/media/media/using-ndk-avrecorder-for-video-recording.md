@@ -59,7 +59,7 @@ target_link_libraries(entry PUBLIC libavrecorder.so)
 target_link_libraries(entry PUBLIC libnative_media_core.so)
 ```
 
-开发者使用[AbilityKit](../../reference/apis-ability-kit)相关能力时，需引入如下头文件。
+开发者通过引入[application_context.h](../../reference/apis-ability-kit/capi-application-context-h.md)头文件，使用程序框架服务相关API。
 ```c++
 #include <AbilityKit/ability_runtime/application_context.h>
 ```
