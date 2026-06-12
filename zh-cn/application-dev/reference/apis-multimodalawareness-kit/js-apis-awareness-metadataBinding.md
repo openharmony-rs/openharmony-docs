@@ -178,7 +178,7 @@ off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback&lt;
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 |type|string|是|事件类型，type为“operationSubmitMetadata”，表示系统应用获取编码内容。|
 |bundleName|string|是|应用包名，标识注册应用的包名。|
-|callback|Callback&lt;number&gt;|否|回调函数，返回编码内容。|
+|callback|Callback&lt;number&gt;|否|回调函数，返回编码内容。需要取消监听的回调函数，需与订阅时传入的回调函数一致。若不填，则取消当前监听该事件的所有回调函数。|
 
 **错误码**：  
 
