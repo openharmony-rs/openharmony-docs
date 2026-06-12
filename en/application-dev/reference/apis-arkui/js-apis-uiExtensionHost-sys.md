@@ -1,7 +1,7 @@
 # @ohos.uiExtensionHost (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
+<!--Owner: @Pakoo007-->
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
@@ -28,6 +28,8 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 | Name| Type| Read-Only| Optional| Description|
@@ -41,6 +43,8 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 Obtains the area where the host application window cannot be displayed, for example, the system bar area, notch, gesture area, and soft keyboard area.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -88,6 +92,8 @@ Subscribes to the event of changes to the area where the host application window
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Parameters**
@@ -131,6 +137,8 @@ Unsubscribes from the event of changes to the area where the host application wi
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Parameters**
@@ -171,6 +179,8 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 Subscribes to size change events of the component (**EmbeddedComponent** or **UIExtensionComponent**).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -214,6 +224,8 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 Unsubscribes from size change events of the component (**EmbeddedComponent** or **UIExtensionComponent**).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -262,6 +274,8 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 **Required permissions**: ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -497,6 +511,8 @@ Adds or deletes the watermark flag for this window. This API uses a promise to r
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Parameters**
@@ -560,6 +576,8 @@ Sets whether to enable privacy protection for the UIExtension component during n
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Parameters**
@@ -609,6 +627,8 @@ export default class EntryAbility extends UIExtensionAbility {
 Defines information about the host application window and **UIExtensionComponent**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 

@@ -149,6 +149,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let dialogUIContext: UIContext | null = null;
 
 export function getDialogUIContext(): UIContext | null {
+  if (dialogUIContext === null) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'dialogUIContext is null');
+  }
   return dialogUIContext;
 }
 
@@ -185,7 +188,7 @@ export default class EntryAbility extends UIAbility {
       dialogUIContext = windowClass.getUIContext();
     })
 
-    //获取窗口
+    // 获取窗口
     windowStage.getMainWindow((err, data) => {
       if (err.code) {
         console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
@@ -193,7 +196,7 @@ export default class EntryAbility extends UIAbility {
       }
       windowClass = data;
       console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-      //设置窗口全屏
+      // 设置窗口全屏
       windowClass.setWindowLayoutFullScreen(false)
     })
   }
@@ -273,8 +276,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let dialogUIContext: UIContext | null = null;
 
 export function getDialogUIContext(): UIContext | null {
-  if (getDialogUIContext === null) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'getDialogUIContext is null');
+  if (dialogUIContext === null) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'dialogUIContext is null');
   }
   return dialogUIContext;
 }
@@ -312,7 +315,7 @@ export default class EntryAbility extends UIAbility {
       dialogUIContext = windowClass.getUIContext();
     })
 
-    //获取窗口
+    // 获取窗口
     windowStage.getMainWindow((err, data) => {
       if (err.code) {
         console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
@@ -320,7 +323,7 @@ export default class EntryAbility extends UIAbility {
       }
       windowClass = data;
       console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-      //设置窗口全屏
+      // 设置窗口全屏
       windowClass.setWindowLayoutFullScreen(false)
     })
   }

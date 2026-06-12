@@ -1,7 +1,7 @@
 # @ohos.arkui.uiExtension (uiExtension)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
+<!--Owner: @Pakoo007-->
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
@@ -29,6 +29,8 @@ Implements the proxy for the UIExtension host application window.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name                                | Type                 | Read-Only| Optional| Description                                                                                                    |
 | ------------------------------------| -------------------------------------------------- | ---- | ---- | ------------------------------------------------------------------------------------------------------ |
 | properties<sup>14+</sup>            | [WindowProxyProperties](#windowproxyproperties14) |  No |  No | Information about the component (**EmbeddedComponent** or **UIExtensionComponent**).<br>Note: Due to architecture restrictions, avoid obtaining the value in [onSessionCreate](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#onsessioncreate). Instead, when possible, obtain the value after receiving the [on('windowSizeChange')](../apis-arkui/js-apis-arkui-uiExtension.md#onwindowsizechange) callback.                                                                           |
@@ -42,6 +44,8 @@ Obtains the area where the host application window cannot be displayed, for exam
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -90,6 +94,8 @@ Subscribes to the event of changes to the area where the host application window
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
@@ -134,6 +140,8 @@ Unsubscribes from the event of changes to the area where the host application wi
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type| Mandatory| Description|
@@ -174,6 +182,8 @@ Subscribes to size change events of the component (**EmbeddedComponent** or **UI
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -219,6 +229,8 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                  |
@@ -260,7 +272,9 @@ Subscribes to position and size change events of the component (**EmbeddedCompon
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -308,7 +322,9 @@ Unsubscribes from position and size change events of the component (**EmbeddedCo
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -520,6 +536,8 @@ Sets the events that the component (**EmbeddedComponent** or **UIExtensionCompon
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name| Type   | Mandatory| Description          |
@@ -579,6 +597,8 @@ Enumerates event types.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name                       | Value             | Description           |
 |-----------------------------| --------------- |----------------|
 | EVENT_NONE                  | 0x00000000      | No event.     |
@@ -597,6 +617,8 @@ Represents the information about the avoidance area of the window.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name| Type                | Read-Only| Optional| Description       |
 | ------ | -------------------- | ----- | ---- | ------------------ |
 | type   | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | No| No| Type of the avoidance area of the window.|
@@ -610,6 +632,8 @@ Provides information about a component.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name                        | Type       | Read-Only| Optional| Description                            |
 | ------------------------------ | ----------- | ----- | ---- | -------------------------------- |
 | uiExtensionHostWindowProxyRect | [window.Rect](arkts-apis-window-i.md#rect7) | No| No|Position and size of the component (**EmbeddedComponent** or **UIExtensionComponent**).|
@@ -622,6 +646,8 @@ Enumerates the reasons for changes in the rectangle (position and size) of the c
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name                   | Value    | Description                                                        |
 | ----------------------- | ------ | ------------------------------------------------------------ |
 | HOST_WINDOW_RECT_CHANGE | 0x0001 | The rectangle of the host window containing the component changes.|
@@ -633,6 +659,8 @@ Provides the values and reasons returned when the rectangle (position and size) 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name      | Type     | Read-Only| Optional| Description              |
 | ---------- | ------------- | ---- | ---- | ------------------ |

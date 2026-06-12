@@ -7,20 +7,23 @@
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
 
+
 The AdsServiceExtensionAbility module provides ExtensionAbilities for the ads service. Device vendors can implement the callbacks for ads requests.
 
-> **NOTE**<br>
-> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+
+> **NOTE**
+> 
+> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+
 
 ## Modules to Import
 
-```ts
+```typescript
 import { RespCallback } from '@kit.AdsKit';
 ```
 
-## RespCallback
 
-### (respData: Map&lt;string, Array&lt;advertising.Advertisement&gt;&gt;)
+## RespCallback
 
 (respData: Map&lt;string, Array&lt;advertising.Advertisement&gt;&gt;): void
 
@@ -30,13 +33,13 @@ Ad request callback.
 
 **Parameters**
 
-| Name  | Type                                                                                             | Mandatory| Description             |
-|----------|---------------------------------------------------------------------------------------------------|-----|-----------------|
-| respData | Map&lt;string, Array&lt;advertising.[Advertisement](js-apis-advertising.md#advertisement)&gt;&gt; | Yes  | Data in the ad request callback.|
+| **Name**| **Type**| Mandatory| Description| 
+| -------- | -------- | -------- | -------- |
+| respData | Map&lt;string, Array&lt;advertising.[Advertisement](js-apis-advertising.md#advertisement)&gt;&gt; | Yes  | Callback data of ad requests. It is a mapping collection that takes ad unit ID as the key and stores acquired ad content.|
 
 **Example**
 
-```ts
+```typescript
 import { advertising, RespCallback } from '@kit.AdsKit';
 
 function setRespCallback(respCallback: RespCallback) {

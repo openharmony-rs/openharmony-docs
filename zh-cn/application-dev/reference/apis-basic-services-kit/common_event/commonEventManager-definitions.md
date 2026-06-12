@@ -227,6 +227,23 @@
 
 **取值：** "usual.event.MANAGE_PACKAGE_STORAGE"
 
+### COMMON_EVENT_SKILL_CHANGED<sup>26+</sup>
+
+表示设备上应用的skill发生变化的公共事件。
+
+在设备上指定用户下安装、更新、卸载了包含skill的应用程序，将会触发事件通知服务发布该系统公共事件。
+
+> **说明：** 
+> 
+> 应用默认只能接收自身应用的skill变化事件。
+> 
+> 申请ohos.permission.MANAGE_SKILL_PRIVILEGE权限后能接收自身应用和其他应用的skill变化事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.SKILL_CHANGED"
 
 ## Account Kit
 
@@ -1010,20 +1027,6 @@ Wi-Fi状态变化。
 **订阅者所需权限：** ohos.permission.LOCATION
 
 **取值：** "usual.event.wifi.SCAN_FINISHED"
-
-
-### COMMON_EVENT_WIFI_SCAN_STATE
-
-表示Wi-Fi扫描接入点状态改变。
-
-当Wi-Fi扫描接入点状态发生变化，将会触发事件通知服务发布该系统公共事件。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**订阅者所需权限：** ohos.permission.LOCATION
-
-**取值：** "usual.event.wifi.SCAN_STATE"
-
 
 
 ### COMMON_EVENT_WIFI_RSSI_VALUE

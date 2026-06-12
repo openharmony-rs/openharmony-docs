@@ -163,7 +163,7 @@ Badge的样式。包括文本颜色、尺寸、字重、圆点颜色和尺寸。
 
 ### 示例1（设置标记组件内容）
 
-该示例通过[BadgeParamWithNumber](#badgeparamwithnumber对象说明)的入参value、[BadgeParamWithString](#badgeparamwithstring对象说明)的入参count，实现了传入空值、字符、数字时标记组件展现不同的效果。
+该示例通过[BadgeParamWithNumber](#badgeparamwithnumber对象说明)的入参count、[BadgeParamWithString](#badgeparamwithstring对象说明)的入参value，实现了传入空值、字符、数字时标记组件展现不同的效果。
 
 ```ts
 // xxx.ets

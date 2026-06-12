@@ -160,6 +160,26 @@ labelFontColor(value: ResourceColor)
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
 | value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 菜单项中标签信息的字体颜色。<br />默认值：'#99000000' |
 
+### subMenuBuilder
+
+subMenuBuilder(builder: CustomBuilder)
+
+设置自定义菜单项的二级菜单。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| builder  | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 设置二级菜单的自定义内容。<br/>当MenuItem组件的入参类型为[CustomBuilder](ts-types.md#custombuilder8)时可以使用本属性来接入自定义二级菜单。<br/>父组件为[Menu](ts-basic-components-menu.md)时，[subMenuExpandingMode](ts-basic-components-menu.md#submenuexpandingmode12)属性仅设置SubMenuExpandingMode.SIDE_EXPAND或SubMenuExpandingMode.STACK_EXPAND时可以触发子菜单。|
+
 ## 事件
 
 ### onChange

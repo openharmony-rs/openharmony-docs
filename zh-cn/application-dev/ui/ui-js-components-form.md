@@ -33,7 +33,7 @@ form是一个表单容器，支持容器内[Input](../reference/apis-arkui/arkui
 }
 ```
 
-![zh-cn_image_0000001211069339](figures/zh-cn_image_0000001211069339.png)
+![form-Component](figures/form-Component.png)
 
 
 ## 实现表单缩放
@@ -74,7 +74,7 @@ form是一个表单容器，支持容器内[Input](../reference/apis-arkui/arkui
 ```
 
 
-![zh-cn_image_0000001208771113](figures/zh-cn_image_0000001208771113.gif)
+![Form-Style](figures/Form-Style.gif)
 
 
 ## 添加响应事件
@@ -138,7 +138,7 @@ export default{
 ```
 
 
-![zh-cn_image_0000001234329539](figures/zh-cn_image_0000001234329539.gif)
+![Response-Events](figures/Response-Events.gif)
 
 
 ## 场景示例
@@ -218,4 +218,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001234289465](figures/zh-cn_image_0000001234289465.gif)
+![Example-Scenario-2](figures/Example-Scenario-2.gif)

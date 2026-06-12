@@ -88,9 +88,10 @@ OH_AudioStreamBuilder_Destroy(builder);
    创建音频播放构造器后，可以设置音频流所需要的参数，可以参考下面的案例。
 
    <!-- @[Render_ConfigStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+   
    ``` C++
    // 设置音频采样率。
+   // 从API版本26.0.0开始：音频渲染扩展支持8000Hz到384000Hz范围内以10Hz为步长的采样率值。具体设备支持的采样率规格会存在差异。
    const int SAMPLING_RATE_48K = 48000;
    OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLING_RATE_48K);
    // 设置音频声道。

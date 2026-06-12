@@ -110,7 +110,7 @@ HMAC使用的对称密钥可以是任何长度。
 
 ## ChaCha20
 
-从API22开始，算法库支持该算法。
+从API version 22开始，算法库支持该算法。
 
 ChaCha20是一种现代化的流密码（stream cipher）对称加密算法。
 

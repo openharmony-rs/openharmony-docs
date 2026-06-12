@@ -8,7 +8,7 @@
 
 You can make the UI interactive by binding events to components. This topic describes how to associate a click event with **\<div>**, **\<text>**, and **\<image>** components to build a like button, as shown below.
 
-![en-us_image_0000001064068638](figures/en-us_image_0000001064068638.gif)
+![Adding-Interactions](figures/Adding-Interactions.gif)
 
 
 The like button is implemented by binding a click event to a **\<div>** component, which contains an **\<image>** component and a **\<text>** component.

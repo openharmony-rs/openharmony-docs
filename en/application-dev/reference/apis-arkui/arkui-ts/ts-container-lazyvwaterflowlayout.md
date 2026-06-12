@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 This component is used to implement the waterfall layout that supports lazy loading. Its parent component can only be [List](ts-container-list.md), [Scroll](ts-container-scroll.md), [WaterFlow](ts-container-waterflow.md), **FlowItem**, or **LazyColumnLayout**. It can also be encapsulated by using a custom component or [NodeContainer](ts-basic-components-nodecontainer.md) component and then applied to the preceding components.

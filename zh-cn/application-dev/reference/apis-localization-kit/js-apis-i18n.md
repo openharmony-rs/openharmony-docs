@@ -1396,6 +1396,14 @@ static checkLeapMonth(gregorianYear: number, cyclicalYear: number, month: number
 | ---------------------- | ----- |
 | boolean | 是否存在闰月。true表示该月存在闰月，false表示该月不存在闰月。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 8900001   | Invalid parameter. Possible causes: Parameter verification failed. |
+
 **示例：**
 ```ts
 let isExist = i18n.ChineseCalendar.checkLeapMonth(2026, 43, 2);
@@ -4222,6 +4230,52 @@ let endDate = new Date(2026, 3, 27, 18, 20, 0);
 let parts = formatter.formatRangeToParts(startDate, endDate); // parts[0].type = 'dayPeriod'
 ```
 
+### parse
+
+parse(text: string, lenientMode: boolean): number
+
+解析本地化时间日期字符串，返回对应的时间戳。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| text | string | 是    | 待解析的本地化时间日期字符串。 |
+| lenientMode | boolean | 是    | 是否采用宽松模式，true表示采用宽松模式，false表示不采用宽松模式。<br>宽松模式下，能够处理不符合常规逻辑的时间日期值，如"5月32日"会自动转换成"6月1日"进行解析。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| number | 时间日期字符串解析后对应的时间戳。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID  | 错误信息                   |
+| ------ | ---------------------- |
+| 8900001 | Invalid parameter. Possible causes: Parameter verification failed. |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  dateStyle: 'full'
+});
+let result = formatter.parse('2026年5月10日星期日', false); // result = 1778342400000
+```
+
 ### resolvedOptions
 
 resolvedOptions(): ResolvedSymbolDateTimeFormatOptions
@@ -4835,6 +4889,50 @@ let formatter = new i18n.SymbolNumberFormat(locale, {
   zero: '(0)'
 });
 let result = formatter.formatRangeToParts(10, 20); // result[0].type = 'integer'
+```
+
+### parse
+
+parse(text: string, lenientMode: boolean): number
+
+解析本地化数字字符串，返回对应的数字。无法正确解析使用自定义符号的本地化数字字符串。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明                |
+| ---- | ---- | ---- | ----------------- |
+| text | string | 是    | 待解析的本地化数字字符串。 |
+| lenientMode | boolean | 是    | 是否采用宽松模式，true表示采用宽松模式，false表示不采用宽松模式。<br>宽松模式下，能够识别错误的千分符，如"1,23,456"可以正确解析为"123456"。 |
+
+**返回值：**
+
+| 类型                     | 说明    |
+| ---------------------- | ----- |
+| number | 本地化数字字符串解析后的数字。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.i18n错误码](errorcode-i18n.md)。
+
+| 错误码ID  | 错误信息                   |
+| ------ | ---------------------- |
+| 8900001 | Invalid parameter. Possible causes: Parameter verification failed. |
+
+**示例：**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale);
+let result = formatter.parse('125 米', false); // result = 125
 ```
 
 ### resolvedOptions

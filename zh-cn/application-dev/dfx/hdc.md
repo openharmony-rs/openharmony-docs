@@ -156,7 +156,9 @@ hdc -t connect-key shell echo "Hello world"
 | [keygen](#安全相关命令) | 生成一个新的密钥对。 |
 | [version](#查询hdc版本号) | 打印hdc版本信息，也可使用hdc -v打印版本信息。 |
 | [checkserver](#查询客户端和服务器进程版本) | 获取客户进程与服务进程版本信息。 |
-| [bugreport](#导出系统信息) | 导出系统信息 |
+| [bugreport](#导出系统信息) | 导出系统信息。 |
+| [spawn-sub](#启动子服务器) | 启动子服务器。<br/>**说明**：从API版本26.0.0开始，支持该命令。 |
+| [killall-sub](#终止子服务器) | 终止子服务器。<br/>**说明**：从API版本26.0.0开始，支持该命令。 |
 
 ## 基本使用方法
 
@@ -662,7 +664,7 @@ hdc install [-cwd path|-r|-s|-w waitingTime|-u userId|-p|-g|-h] src
 
 | 参数名 | 说明 |
 | -------- | -------- |
-| src | 应用安装包的文件路径。支持安装[HAP](../quick-start/hap-package.md)、应用内[HSP](../quick-start/in-app-hsp.md)。从API version 22开始，支持安装[APP包](../quick-start/application-package-glossary.md#app)。 |
+| src | 应用安装包的文件路径。支持安装[HAP](../quick-start/hap-package.md)、应用内[HSP](../quick-start/in-app-hsp.md)。从API version 22开始，支持安装[APP应用包](../quick-start/application-package-glossary.md#app应用包)。 |
 | -cwd | 修改工作目录。<br>用于在应用安装时，切换src到指定path。例如，初始安装应用为test.hap，所在目录为C:\\，实际安装应用文件路径为C:\\test.hap；如果使用-cwd "D:\\"，实际安装应用文件路径为D:\\test.hap。 |
 | -r | 可选参数，覆盖安装一个HAP/HSP。默认缺省，缺省时表示覆盖安装。 |
 | -s | 安装应用HSP时为必选参数，其他场景为可选参数。用于指定待安装应用间HSP的路径。指定目录的时候，每个路径目录下只能存在一个HSP。 |
@@ -1220,7 +1222,7 @@ hdc track-jpid [-a|-p]
 | 返回信息 | 说明 |
 | -------- | -------- |
 | 进程号和包名/进程名列表。 | 不加参数时仅显示已打开应用的进程pid，使用-p参数额外显示应用包名，使用-a参数同时显示debug和release标签。 |
-| [Empty] | 无开启JDWP调试协议的应用进程。 |
+| [Empty] | 无已打开的应用进程。 |
 
 **使用方法**：
 
@@ -1487,6 +1489,77 @@ hdc shell ls /data/log/hilog                          # 查看已落盘hilog日�
 hdc file recv /data/log/hilog {local_path}            # 获取hilog已落盘日志（包含内核日志，local_path为本地路径，不同系统有所区别，这里未列举实际示例）。
 ```
 
+## 子服务器管理
+
+| 命令 | 说明 |
+| -------- | -------- |
+| spawn-sub | 启动子服务器。 |
+| killall-sub | 终止子服务器。 |
+
+> **说明：**
+>
+> 从API版本26.0.0开始，支持此功能。
+
+### 启动子服务器
+
+将指定USB设备与当前电脑端服务器连接断开，然后启动一个新的子服务器进程，并将USB设备连接到子服务器进程。命令格式如下：
+
+```shell
+hdc spawn-sub -i connect-key -o [ip:]port
+```
+
+创建子服务进程后，可以使用-s参数访问子服务进程，参见[远程连接场景](#远程连接场景)。
+
+**参数**：
+
+| 参数 | 说明 |
+| -------- | -------- |
+| connect-key | 指定子服务器连接的USB设备标识符。 |
+| ip | 可选参数，指定监听的IP地址，支持IPv4和IPv6。不指定IP默认监听本机127.0.0.1。 |
+| port | 指定监听的端口，范围为1~65535。 |
+
+**返回信息**：
+
+| 返回信息 | 说明 |
+| -------- | -------- |
+| Subserver connected successfully | 子服务进程已连接USB设备。 |
+| Port binding failed | 端口监听失败导致子服务进程退出。 |
+| USB connection timeout | 子服务进程连接USB设备超时退出。 |
+| Device not found | 主服务进程找不到设备。 |
+| Invalid parameters | 命令入参有误。 |
+| USB device disconnected | 子服务进程USB连接已断开。 |
+| Only main server can spawn subserver | 不能通过子服务进程创建新的子服务进程。 |
+| Subprocess launch failed | 拉起子进程失败。 |
+| Subserver process exited | 子服务器进程已退出。 |
+
+**使用方法**：
+
+```shell
+$ hdc spawn-sub -i connect-key -o [ip:]port
+Subserver connected successfully
+```
+
+### 终止子服务器
+
+将拉起的所有子服务器进程终止，命令格式如下：
+
+```shell
+hdc killall-sub
+```
+
+**返回信息**：
+
+| 返回信息 | 说明 |
+| -------- | -------- |
+| Kill subservers finish | 已终止所有的子服务器进程。 |
+
+**使用方法**：
+
+```shell
+$ hdc killall-sub
+Kill subservers finish
+```
+
 ## 可选配置项
 
 ### OHOS_HDC_SERVER_PORT
@@ -1548,6 +1621,18 @@ hdc file recv /data/log/hilog {local_path}            # 获取hilog已落盘日�
 > **说明：**
 >
 > 服务器进程运行时默认监听电脑端的8710端口，可通过设置系统环境变量OHOS_HDC_SERVER_PORT自定义监听的端口号。
+
+### HDC_SUBSERVER_LOG_FILE_MAX
+
+默认：不开启电脑端子服务进程的日志落盘。
+
+设置为整数数字表示电脑端子服务进程落盘日志的数量，可选范围为1~20，设置为非整数或不在范围内等同于未配置。
+
+从API版本26.0.0开始，支持该参数。
+
+> **说明：**
+>
+> 由于日志文件的创建和老化存在时序关系，实际日志数量可能比配置数量多一个。
 
 ### 环境变量配置方法
 
@@ -1805,7 +1890,7 @@ hdc文件传输命令执行出现乱码，如使用file recv从设备端发送�
 
 1. 首次连接未授权：连接设备后解锁设备，屏幕显示“是否信任此设备？”窗口，点击“始终信任”或“信任”完成授权。
 
-2. 授权窗口关闭或拒绝授权：设备端授权窗口会在超时后关闭，或开发者在授权窗口点击“不信任”拒绝授权。需要再次授权可在设备端 设置>系统>开发者选项>USB调试/无线调试 中，关闭已开启的调试开关后再开启，或执行hdc kill -r重启服务进程。屏幕会再次显示“是否信任此设备？”窗口，点击“始终信任”或“信任”完成授权。
+2. 授权窗口关闭或拒绝授权：设备端授权窗口会在超时后关闭，或开发者在授权窗口点击“不信任”拒绝授权。需要再次授权可在设备端 设置>系统>开发者选项>USB调试/无线调试 中，关闭已开启的调试开关后再开启，或执行hdc kill -r重启服务进程（如果使用过spawn-sub命令需执行hdc killall-sub）。屏幕会再次显示“是否信任此设备？”窗口，点击“始终信任”或“信任”完成授权。
 
 ### 执行任意hdc命令报错：CryptAcquireContext second failed
 
@@ -1944,7 +2029,7 @@ Otherwise try 'hdc kill' if that seems wrong.
 
 1. 场景一：设备端弹出授权窗口，点击授权。具体操作为：连接设备后，系统会自动弹出授权弹窗。
 
-2. 场景二：进入设备端 设置>系统>开发者选项，关闭调试开关后重新打开，重新连接设备进行授权；或者执行命令hdc kill -r后重新启动hdc，再次触发授权弹窗，点击“始终信任”。
+2. 场景二：进入设备端 设置>系统>开发者选项，关闭调试开关后重新打开，重新连接设备进行授权；或者执行命令hdc kill -r（如果使用过spawn-sub命令需执行hdc killall-sub）后重新启动hdc，再次触发授权弹窗，点击“始终信任”。
 
 ### E000003 设备端用户未授权
 
@@ -1970,7 +2055,7 @@ then check for a confirmation dialog on your device.
 
 **处理步骤**
 
-进入设备端 设置 > 系统 > 开发者选项，关闭调试开关后重新打开，重新连接设备进行授权；或执行命令hdc kill -r后重新启动hdc，再次触发授权弹窗，点击“始终信任”。
+进入设备端 设置 > 系统 > 开发者选项，关闭调试开关后重新打开，重新连接设备进行授权；或执行命令hdc kill -r（如果使用过spawn-sub命令需执行hdc killall-sub）后重新启动hdc，再次触发授权弹窗，点击“始终信任”。
 
 ### E000004 通信连接不稳定
 

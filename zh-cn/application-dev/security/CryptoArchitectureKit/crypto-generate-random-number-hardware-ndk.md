@@ -93,7 +93,7 @@ OH_Crypto_ErrCode doTestHardwareRandomNumber()
 
     // 生成指定长度的随机数。
     Crypto_DataBlob out = {0};
-    uint32_t randomLength = 24; // 生成24字节的随机数。
+    int randomLength = 24; // 生成24字节的随机数。
     ret = OH_CryptoRand_GenerateRandom(rand, randomLength, &out);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoRand_Destroy(rand);

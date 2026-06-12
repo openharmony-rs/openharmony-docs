@@ -36,7 +36,7 @@ setPolicySync(admin: Want, appId: string, policyName: string, policyValue: strin
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**冲突规则：** 同一个浏览器应用的同一个策略[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)；不同浏览器、同一浏览器的不同策略[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+**冲突规则：** 同一个浏览器应用的同一个策略[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)；不同浏览器、同一浏览器的不同策略[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **参数：**
 

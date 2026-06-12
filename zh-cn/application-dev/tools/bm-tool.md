@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 Bundle Manager（包管理工具，简称bm）是实现应用安装、卸载、更新、查询等功能的工具，bm为开发者提供基本的应用安装包的调试能力。
 
@@ -551,7 +551,7 @@ error: user not exist.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```shell
     hdc file recv /data/log/hilog/
@@ -609,6 +609,11 @@ HAP/HSP包没有签名。
 **处理步骤**
 
 请开发者根据实际场景选择自动签名或者手动签名，例如无法连接互联网的情况下推荐使用手动签名方式，详情参考[使用场景说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section54361623194519)。
+
+> **说明：**
+>
+> 在工程级build-profile.json5文件下的products标签中，signingConfig字段为非必填字段，若该字段缺失，将导致签名失效。详情请参考[products](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section45865492619)标签下的字段说明。
+>
 
 方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
 
@@ -996,11 +1001,13 @@ error: install parse failed.
 
 1. 使用了[bm install](#安装命令install)命令安装插件。
 2. 使用了[bm install](#安装命令install)命令安装[bundleType](../quick-start/app-configuration-file.md#配置文件标签)为skill类型的包。
+3. 待安装应用的module.json中配置了skillProfiles，但配置的skill名称、skill目录名与SKILL.md中frontmatter的name不一致。
 
 **处理步骤**
 
 1. 安装插件请使用[bm install-plugin](#安装插件命令install-plugin)命令。
 2. skill类型的包不支持命令行安装，请修改应用[bundleType](../quick-start/app-configuration-file.md#配置文件标签)的类型<!--Del-->，或者需要使用预置方式进行安装<!--DelEnd-->。
+3. 检查module.json中skillProfiles下skill的name、skills目录下的子目录名称、SKILL.md中frontmatter的name，确保三者一致。
 
 ### 9568265 安装过程中内部参数有误
 **错误信息**
@@ -1130,8 +1137,8 @@ error: signature verification failed due to not trusted app source.
 **处理步骤**
 
 <!--RP9-->
-<!--RP9End-->
-1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。<!--Del-->
+
+1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。<!--RP9End--><!--Del-->
 
 2. 如果使用的是手动签名，对于OpenHarmony应用，请参考[OpenHarmony应用手动签名](../security/hapsigntool-guidelines.md)，在UnsgnedDebugProfileTemplate.json文件中添加该调试设备的**UDID**。
 
@@ -1147,7 +1154,6 @@ error: signature verification failed due to not trusted app source.
         ```shell
           DevEco Studio安装路径\sdk\版本号或者default\openharmony\toolchains\lib\
 
-          例如：xxxx\Huawei\DevEco Studio\sdk\HarmonyOS-NEXT-DB1\openharmony\toolchains\lib\
           例如：xxxx\Huawei\DevEco Studio\sdk\default\openharmony\toolchains\lib\
         ```
 
@@ -1241,7 +1247,7 @@ error: install failed due to update hap token failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```shell
     hdc file recv /data/log/hilog/
@@ -1411,7 +1417,7 @@ error: verify signature failed.
 
 * 场景一：HSP只能给同包名的应用使用，只有集成态HSP可以给不同包名的应用使用。需要用户与三方开发者确认，三方开发者应提供集成态HSP、或同包名的HSP给用户使用。
 
-* 场景二：检查签名流程和签名证书，参考[应用/元服务签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
+* 场景二：检查签名流程和签名证书，参考[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
 
 
 ### 9568266 安装权限拒绝
@@ -1684,7 +1690,7 @@ error: Failed to install the HAP because the installation is forbidden by enterp
 
 **处理步骤**
 
-由于企业管控，暂无解决方案。请提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+由于企业管控，暂无解决方案。请<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
 
 ### 9568304 应用不支持当前设备类型
@@ -1853,7 +1859,7 @@ error: bundle manager service is died.
     ls -ls
     ```
 
-3. 导出crash文件和日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+3. 导出crash文件和日志文件<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```bash
     hdc file recv /data/log/faultlog/faultlogger/
@@ -1903,7 +1909,7 @@ error: copy file failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```bash
     hdc file recv /data/log/hilog/
@@ -1951,7 +1957,7 @@ error: delivery sign profile failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```bash
     hdc file recv /data/log/hilog/
@@ -1977,7 +1983,7 @@ error: remove sign profile failed.
 
 1. 重启手机后再次尝试卸载应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->）。
 
-2. 重复上述步骤3到5次后依旧卸载失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+2. 重复上述步骤3到5次后依旧卸载失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```bash
     hdc file recv /data/log/hilog/
@@ -2034,7 +2040,7 @@ bm工具进程异常或者权限丢失，导致卸载应用时无权限。
 
 1. 设备重启之后再尝试卸载应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2066,7 +2072,7 @@ error: uninstall bundle mgr service error.
     ls -ls
     ```
 
-3. 导出crash文件和日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+3. 导出crash文件和日志文件<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```bash
     hdc file recv /data/log/faultlog/faultlogger/
@@ -2124,7 +2130,7 @@ error: unknown.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2368,7 +2374,7 @@ error: installd param error.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2393,7 +2399,7 @@ error: installd create dir failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2418,7 +2424,7 @@ error: installd remove dir failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2443,7 +2449,7 @@ error: installd extract files failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2468,7 +2474,7 @@ error: installd rename dir failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2492,7 +2498,7 @@ error: installd clean dir failed.
 
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件
@@ -2715,7 +2721,7 @@ error: The uninstall request is rejected by the application.
 
 **处理步骤**
 
-暂无处理方案，可以提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+暂无处理方案，可以<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
 ### 9568413 应用设备类型不支持当前设备
 
@@ -2989,7 +2995,7 @@ error: Install incompatible signature info.
 
 **处理步骤**
 
-重新签名，使多个HAP包签名信息一致。参考[应用/元服务签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
+重新签名，使多个HAP包签名信息一致。参考[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。
 
 ### 9568334 模块名称重复
 **错误信息**
@@ -3139,7 +3145,7 @@ error: install parse native so failed.
 
 **处理步骤**
 
-1. 将设备或模拟器与DevEco Studio进行连接，具体指导及要求可查看[运行应用/元服务](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-device)。
+1. 将设备或模拟器与DevEco Studio进行连接，具体指导及要求可查看[使用本地真机运行应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-device)。
 
 2. 在命令行执行如下[hdc命令](#环境要求hdc工具)，查询设备支持的Abi列表。
 
@@ -3198,7 +3204,7 @@ error: Installd get proxy error.
 **处理步骤**
 1. 重启手机后再次尝试安装应用。
 
-2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件提[在线工单](https://developer.huawei.com/consumer/cn/support/feedback/#/)获取帮助。
+2. 重复上述步骤3到5次后依旧安装失败，请导出日志文件，<!--RP13-->提[新增Issue](https://atomgit.com/openharmony/docs/issues)获取帮助。<!--RP13End-->
 
     ```bash
     # 导出日志文件

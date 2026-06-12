@@ -144,7 +144,7 @@ off(type: 'mission', listenerId: number, callback: AsyncCallback&lt;void&gt;): v
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type     | string   | 是       | 取消监听的任务名称。固定值：'mission'，表示系统任务状态监听器。 |
-  | listenerId | number | 是 | 系统任务状态监器法的index值，和监听器一一对应，由on方法返回。 |
+  | listenerId | number | 是 | 系统任务状态监听器的index值，和监听器一一对应，由on方法返回。 |
   | callback | AsyncCallback&lt;void&gt; | 是 | 执行结果回调函数。 |
 
 **错误码**：
@@ -1705,5 +1705,351 @@ try {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
   console.error(`error: ${code}, ${message} `);
+}
+```
+
+## missionManager.on('missionEvent')<sup>(deprecated)</sup>
+
+on(type:'missionEvent', listener: MissionListener): number
+
+注册系统任务状态监听器。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[missionManager.on('mission')](#missionmanageronmission)替代。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type     | string   | 是       | 监听的任务名称。固定值：'missionEvent'，表示系统任务状态监听器。 |
+  | listener | [MissionListener](js-apis-inner-application-missionListener-sys.md) | 是 | 系统任务监听器。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | number | 监听器的index值，由系统创建，在注册系统任务状态监听时分配，和监听器一一对应&nbsp;。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { missionManager, UIAbility, AbilityConstant, common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+let listener: missionManager.MissionListener = {
+  onMissionCreated: (missionEvent: number) => {console.info('--------onMissionCreated-------');},
+  onMissionDestroyed: (missionEvent: number) => {console.info('--------onMissionDestroyed-------');},
+  onMissionSnapshotChanged: (missionEvent: number) => {console.info('--------onMissionSnapshotChanged-------');},
+  onMissionMovedToFront: (missionEvent: number) => {console.info('--------onMissionMovedToFront-------');},
+  onMissionIconUpdated: (missionEvent: number, icon: image.PixelMap) => {console.info('--------onMissionIconUpdated-------');},
+  onMissionClosed: (missionEvent: number) => {console.info('--------onMissionClosed-------');},
+  onMissionLabelUpdated: (missionEvent: number) => {console.info('--------onMissionLabelUpdated-------');}
+};
+
+let listenerId = -1;
+let abilityWant: Want;
+let context: common.UIAbilityContext;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info('[Demo] EntryAbility onCreate');
+    abilityWant = want;
+    context = this.context;
+  }
+
+  onDestroy() {
+    try {
+      if (listenerId !== -1) {
+        missionManager.off('missionEvent', listenerId).catch((error: BusinessError) => {
+          console.info(JSON.stringify(error));
+        });
+      }
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+    console.info('[Demo] EntryAbility onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info('[Demo] EntryAbility onWindowStageCreate');
+    try {
+      listenerId = missionManager.on('missionEvent', listener);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+
+    windowStage.loadContent('pages/index', (err, data) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        return;
+      }
+      console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
+    });
+  }
+}
+```
+
+
+## missionManager.off('missionEvent')<sup>(deprecated)</sup>
+
+off(type: 'missionEvent', listenerId: number, callback: AsyncCallback&lt;void&gt;): void
+
+解注册任务状态监听器。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[missionManager.off('mission')](#missionmanageroffmission)替代。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type     | string   | 是       | 取消监听的任务名称。固定值：'missionEvent'，表示系统任务状态监听器。 |
+  | listenerId | number | 是 | 系统任务状态监听器的index值，和监听器一一对应，由on方法返回。 |
+  | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。解注册任务状态监听器成功，err为undefined，否则为错误对象。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16300002 | The specified missionEvent listener does not exist. |
+
+**示例：**
+
+```ts
+import { missionManager, UIAbility, AbilityConstant, common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+let listener: missionManager.MissionListener = {
+  onMissionCreated: (missionEvent: number) => {
+    console.info('--------onMissionCreated-------');
+  },
+  onMissionDestroyed: (missionEvent: number) => {
+    console.info('--------onMissionDestroyed-------');
+  },
+  onMissionSnapshotChanged: (missionEvent: number) => {
+    console.info('--------onMissionSnapshotChanged-------');
+  },
+  onMissionMovedToFront: (missionEvent: number) => {
+    console.info('--------onMissionMovedToFront-------');
+  },
+  onMissionIconUpdated: (missionEvent: number, icon: image.PixelMap) => {
+    console.info('--------onMissionIconUpdated-------');
+  },
+  onMissionClosed: (missionEvent: number) => {
+    console.info('--------onMissionClosed-------');
+  },
+  onMissionLabelUpdated: (missionEvent: number) => {
+    console.info('--------onMissionLabelUpdated-------');
+  }
+};
+
+let listenerId = -1;
+let abilityWant: Want;
+let context: common.UIAbilityContext;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info('[Demo] EntryAbility onCreate');
+    abilityWant = want;
+    context = this.context;
+  }
+
+  onDestroy() {
+    try {
+      if (listenerId !== -1) {
+        missionManager.off('missionEvent', listenerId, (error: BusinessError) => {
+          if (error) {
+            console.error(`MissionManager.off failed, error code: ${error.code}, error msg: ${error.message}`);
+            return;
+          }
+          console.info(`MissionManager.off success.`);
+        });
+      }
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+    console.info('[Demo] EntryAbility onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info('[Demo] EntryAbility onWindowStageCreate');
+    try {
+      listenerId = missionManager.on('missionEvent', listener);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+
+    windowStage.loadContent('pages/index', (err: BusinessError, data) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        return;
+      }
+      console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
+    });
+  }
+}
+```
+
+
+## missionManager.off('missionEvent')<sup>(deprecated)</sup>
+
+off(type: 'missionEvent', listenerId: number): Promise&lt;void&gt;
+
+解注册任务状态监听。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[missionManager.off('mission')](#missionmanageroffmission)替代。
+
+**需要权限**：ohos.permission.MANAGE_MISSIONS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | type     | string   | 是       | 取消监听的任务名称。固定值：'missionEvent'，表示系统任务状态监听器。 |
+  | listenerId | number | 是 | 系统任务状态监听器的index值，和监听器一一对应，由on方法返回。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16300002 | The specified missionEvent listener does not exist. |
+
+**示例：**
+
+```ts
+import { missionManager, UIAbility, AbilityConstant, common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+let listener: missionManager.MissionListener = {
+  onMissionCreated: (missionEvent: number) => {
+    console.info('--------onMissionCreated-------');
+  },
+  onMissionDestroyed: (missionEvent: number) => {
+    console.info('--------onMissionDestroyed-------');
+  },
+  onMissionSnapshotChanged: (missionEvent: number) => {
+    console.info('--------onMissionSnapshotChanged-------');
+  },
+  onMissionMovedToFront: (missionEvent: number) => {
+    console.info('--------onMissionMovedToFront-------');
+  },
+  onMissionIconUpdated: (missionEvent: number, icon: image.PixelMap) => {
+    console.info('--------onMissionIconUpdated-------');
+  },
+  onMissionClosed: (missionEvent: number) => {
+    console.info('--------onMissionClosed-------');
+  },
+  onMissionLabelUpdated: (missionEvent: number) => {
+    console.info('--------onMissionLabelUpdated-------');
+  }
+};
+
+let listenerId = -1;
+let abilityWant: Want;
+let context: common.UIAbilityContext;
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info('[Demo] EntryAbility onCreate');
+    abilityWant = want;
+    context = this.context;
+  }
+
+  onDestroy() {
+    try {
+      if (listenerId !== -1) {
+        missionManager.off('missionEvent', listenerId).catch((error: BusinessError) => {
+          console.error(`MissionManager.off failed, error code: ${error.code}, error msg: ${error.message}.`);
+        });
+      }
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+    console.info('[Demo] EntryAbility onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    console.info('[Demo] EntryAbility onWindowStageCreate');
+    try {
+      listenerId = missionManager.on('missionEvent', listener);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`error: ${code}, ${message} `);
+    }
+
+    windowStage.loadContent('pages/index', (err: BusinessError, data) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        return;
+      }
+      console.info(`Succeeded in loading the content. Data: ${JSON.stringify(data)}`);
+    });
+  }
 }
 ```

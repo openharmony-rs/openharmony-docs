@@ -1,7 +1,7 @@
 # @ohos.graphics.text (文本模块)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -1630,13 +1630,13 @@ struct Index {
 | CENTER_OF_ROW_BOX   | 5 | 居中对齐。|
 | FOLLOW_PARAGRAPH<sup>20+</sup> | 6 | 跟随文本排版对齐。|
 
-![zh-ch_image_PlaceholderAlignment.png](figures/zh-ch_image_PlaceholderAlignment.png)
+![PlaceholderAlignment.png](figures/PlaceholderAlignment.png)
 
 > **说明：**
 >
 > 示意图展示了后三种对齐方式，前三种对齐方式在文本基线对齐方式上类似，比较位置是文本基线，即绿色线条部分。
 >
->![zh-ch_image_Baseline.png](figures/zh-ch_image_Baseline.png)
+>![Baseline.png](figures/Baseline.png)
 
 ## PlaceholderSpan
 
@@ -1831,7 +1831,7 @@ struct Index {
 >
 >示意图展示了点击按钮后layout接口示例代码的运行结果。
 >
->![zh-ch_image_layout.png](figures/zh-ch_image_layout.png)
+>![layout.png](figures/layout.png)
 
 ### layoutWithConstraints<sup>24+</sup>
 
@@ -3568,15 +3568,15 @@ struct Index {
 >
 >示意图展示文本行排版参数：width（包含左右空格的文本行宽度）、ascent（上升高度最高点）、descent（下降高度最低点）、leading（行间距）、top（当前行最高点）、baseline（字符基线）、bottom（当前行最低点）、next line top（下一行最高点）。
 >
->![zh-ch_image_Typographic.png](figures/zh-ch_image_Typographic.png)
+>![Typographic.png](figures/Typographic.png)
 >
 >示意图展示了字符串为" a b "的排版边界。
 >
->![zh-ch_image_TypographicBounds.png](figures/zh-ch_image_TypographicBounds.png)
+>![TypographicBounds.png](figures/TypographicBounds.png)
 >
 >示意图展示了字符串为"j"或"E"的排版边界。
 >
->![zh-ch_image_TypographicBounds_Character.png](figures/zh-ch_image_TypographicBounds_Character.png)
+>![TypographicBounds-Character.png](figures/TypographicBounds-Character.png)
 
 ## CaretOffsetsCallback<sup>18+</sup>
 
@@ -3793,11 +3793,11 @@ getTypographicBounds(): TypographicBounds
 >
 >示意图展示了字符串为" a b "的排版边界。
 >
->![zh-ch_image_TypographicBounds.png](figures/zh-ch_image_TypographicBounds.png)
+>![TypographicBounds.png](figures/TypographicBounds.png)
 >
 >示意图展示了字符串为"j"或"E"的排版边界。
 >
->![zh-ch_image_TypographicBounds_Character.png](figures/zh-ch_image_TypographicBounds_Character.png)
+>![TypographicBounds-Character.png](figures/TypographicBounds-Character.png)
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -3826,11 +3826,11 @@ getImageBounds(): common2D.Rect
 >
 >示意图展示了字符串为" a b "的图像边界。
 >
->![zh-ch_image_ImageBounds.png](figures/zh-ch_image_ImageBounds.png)
+>![ImageBounds.png](figures/ImageBounds.png)
 >
 >示意图展示了字符串为"j"或"E"的图像边界。
 >
->![zh-ch_image_ImageBounds_Character.png](figures/zh-ch_image_ImageBounds_Character.png)
+>![ImageBounds-Character.png](figures/ImageBounds-Character.png)
 
 
 **系统能力**：SystemCapability.Graphics.Drawing
@@ -4339,11 +4339,11 @@ getImageBounds(): common2D.Rect
 >
 >示意图展示了字符串为" a b "的图像边界。
 >
->![zh-ch_image_ImageBounds.png](figures/zh-ch_image_ImageBounds.png)
+>![ImageBounds.png](figures/ImageBounds.png)
 >
 >示意图展示了字符串为"j"或"E"的图像边界。
 >
->![zh-ch_image_ImageBounds_Character.png](figures/zh-ch_image_ImageBounds_Character.png)
+>![ImageBounds-Character.png](figures/ImageBounds-Character.png)
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -4371,11 +4371,11 @@ getTypographicBounds(): TypographicBounds
 >
 >示意图展示了字符串为" a b "的排版边界。
 >
->![zh-ch_image_TypographicBounds.png](figures/zh-ch_image_TypographicBounds.png)
+>![TypographicBounds.png](figures/TypographicBounds.png)
 >
 >示意图展示了字符串为"j"或"E"的排版边界。
 >
->![zh-ch_image_TypographicBounds_Character.png](figures/zh-ch_image_TypographicBounds_Character.png)
+>![TypographicBounds-Character.png](figures/TypographicBounds-Character.png)
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -4541,15 +4541,15 @@ function numberToRGBA(colorNum: number): common2D.Color {
 
 alignment为CENTER，location为200，文本为"12/t345"：
 
-![zh-ch_image_AlignmentCenter.png](figures/zh-ch_image_AlignmentCenter.png)
+![AlignmentCenter.png](figures/AlignmentCenter.png)
 
 alignment为LEFT，location为100，文本为"abccccccccc/tdef"：
 
-![zh-ch_image_AlignmentLeft.png](figures/zh-ch_image_AlignmentLeft.png)
+![AlignmentLeft.png](figures/AlignmentLeft.png)
 
 alignment为RIGHT，location为100，文本为"aabcdef/tg hi/tjkl/tmno/tp qr"：
 
-![zh-ch_image_AlignmentRight.png](figures/zh-ch_image_AlignmentRight.png)
+![AlignmentRight.png](figures/AlignmentRight.png)
 
 ## SystemFontType<sup>14+</sup>
 

@@ -1,4 +1,4 @@
-# @ohos.inputMethod (输入法框架) (系统接口)
+# @ohos.inputMethod (输入法框架)(系统接口)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->

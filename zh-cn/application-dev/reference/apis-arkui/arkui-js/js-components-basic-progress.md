@@ -96,7 +96,7 @@ type=eclipse<sup>5+</sup>
 | 名称               | 类型            | 默认值  | 必填   | 描述         |
 | ---------------- | ------------- | ---- | ---- | ---------- |
 | color            | &lt;color&gt; | -    | 否    | 圆形进度条的颜色。  |
-| background-color | &lt;color&gt; | -    | 否    | 弧形进度条的背景色。 |
+| background-color | &lt;color&gt; | -    | 否    | 圆形进度条的背景色。 |
 
 
 ## 事件
@@ -134,6 +134,6 @@ type=eclipse<sup>5+</sup>
 }
 ```
 
-![zh-cn_image_0000001180339632](figures/zh-cn_image_0000001180339632.png)
+![progress01](figures/progress01.png)
 
 

@@ -1004,6 +1004,40 @@ try {
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+### constructor
+
+constructor(bundleName: string)
+
+端云同步流程的构造函数，用于获取CloudFileCache类的实例。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明 |
+| ---------- | ------ | ---- | ---- |
+| bundleName | string | 是   | 应用包名。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 202 | The caller is not a system application. |
+
+**示例：**
+
+```ts
+let fileCache = new cloudSync.CloudFileCache("com.ohos.demo");
+```
+
 ### cleanCache<sup>11+</sup>
 
 cleanCache(uri: string): void

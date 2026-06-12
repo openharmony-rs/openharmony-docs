@@ -32,7 +32,7 @@ HUKS提供以下PIN码认证状态管理能力：
 - 应用退出或切换用户时，清除认证状态。
 - 认证状态异常时，重置认证状态。
 
-具体开发示例请参考[清除PIN码认证状态(ArkTS)](huks-clear-pin-auth-state-arkts.md)。
+具体开发示例请参考[清除Ukey PIN码认证状态(ArkTS)](huks-clear-pin-auth-state-arkts.md)。
 
 > **说明：**
 >

@@ -77,7 +77,7 @@ textPath属性示例，textpath文本内容沿着属性path中的路径绘制文
 ```
 
 
-![zh-cn_image_0000001173164775](figures/zh-cn_image_0000001173164775.png)
+![textPath](figures/textPath.png)
 
 textpath与tspan组合示例与效果图
 
@@ -97,7 +97,7 @@ textpath与tspan组合示例与效果图
 </div>
 ```
 
-![zh-cn_image_0000001173324691](figures/zh-cn_image_0000001173324691.png)
+![textPath02](figures/textPath02.png)
 
 ```html
 <!-- xxx.hml -->
@@ -117,7 +117,7 @@ textpath与tspan组合示例与效果图
 </div>
 ```
 
-![zh-cn_image_0000001173324689](figures/zh-cn_image_0000001173324689.png)
+![textPath01](figures/textPath01.png)
 
 ```html
 <!-- xxx.hml -->
@@ -201,7 +201,7 @@ textpath与tspan组合属性动画与效果图
 </div>
 ```
 
-![zh-cn_image_0000001173324693](figures/zh-cn_image_0000001173324693.gif)
+![textPath03](figures/textPath03.gif)
 
 (1) "tspan attribute x|rotate"  文本绘制起点偏移从50px运动到100px，顺时针旋转0度到360度。
 
@@ -237,7 +237,7 @@ textpath与tspan组合属性动画与效果图
 </div>
 ```
 
-![zh-cn_image_0000001173164779](figures/zh-cn_image_0000001173164779.gif)
+![textPath](figures/textPath.gif)
 
 (1) "This is TextPath." 在path上无偏移绘制第一段文本内容，大小30px，颜色"\#D2691E"。
 

@@ -260,7 +260,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001173324843](figures/zh-cn_image_0000001173324843.png)
+   ![chart01](figures/chart01.png)
 
 2. 柱状图
    ```html
@@ -328,7 +328,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001173164929](figures/zh-cn_image_0000001173164929.png)
+   ![chart](figures/chart.png)
 
 3. 量规图
    ```html
@@ -357,7 +357,7 @@
    }
    ```
 
-   ![zh-cn_image_0000001127125264](figures/zh-cn_image_0000001127125264.png)
+   ![gauge](figures/gauge.png)
 
 4. 进度类、加载类、占比类圆形图表
    ```html

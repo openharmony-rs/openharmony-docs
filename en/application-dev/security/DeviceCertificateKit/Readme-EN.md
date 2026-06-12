@@ -2,9 +2,9 @@
 
 <!--Kit: Device Certificate Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @zxz--3--; @chaceli-->
-<!--Designer: @lanming--; @chande-->
-<!--Tester: @PAFT--; @zhangzhi1995-->
+<!--Owner: @zxz--3; @chaceli-->
+<!--Designer: @lanming; @chande-->
+<!--Tester: @PAFT; @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
 
 - [About This Kit](device-certificate-kit-intro.md)
@@ -25,6 +25,7 @@
   - [Creating and Parsing a Certificate with PKCS #12](create-parse-pkcs12.md)
   - [Online Validation of Certificate Revocation Status of a Certificate Chain](create-verify-cerchainvalidator-revocation-object.md)
   - [Downloading the Missing Intermediate CA Certificate During Certificate Chain Validation](allow-download-Intermediate-Cert.md)
+  - [Building and Verifying a Certificate Chain](build-and-verify-cert-chain.md)
 - Certificate Management<!--certmanager-->
   - [Certificate Management Overview](certManager-overview.md)
   - [Application Certificate Development](certManager-private-credential-guidelines.md)

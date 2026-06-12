@@ -323,4 +323,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001191939702](figures/zh-cn_image_0000001191939702.gif)
+![picker](figures/picker.gif)

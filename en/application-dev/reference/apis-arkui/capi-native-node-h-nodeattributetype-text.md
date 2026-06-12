@@ -1,7 +1,7 @@
 # ArkUI_NodeAttributeType (Text Display Component Attribute)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiangyuan6; @kangshihui-->
+<!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6; @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -1061,7 +1061,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Multiple value of the multiple line height mode. The default value is **0**, indicating that the default line height is used.|
+| .value[0].f32 | Multiple value of the multiple line height mode. The default value is **0**, indicating that the default line height is used.|
 
 **Returns**
 
@@ -1181,7 +1181,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_COMPRESS_LEADING_PUNCTUATION = 1048
 ```
 
-Whether to enable the feature of compressing punctuations at the beginning of a text line. This attribute can be set, reset, and obtained as required through APIs.<br>
+Whether to enable leading punctuation compression. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 23
@@ -1191,13 +1191,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to enable the feature of compressing punctuations at the beginning of a text line.<br>**true** to enable; **false** otherwise. The default value is **false**.|
+| .value[0].i32 | Whether to enable leading punctuation compression.<br>**true** to enable; **false** otherwise. The default value is **false**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the feature of compressing punctuations is enabled at the beginning of a text line.|
+| .value[0].i32 | Whether leading punctuation compression is enabled.|
 
 ## NODE_TEXT_INCLUDE_FONT_PADDING
 
@@ -1318,6 +1318,74 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .object | Drag preview style when the text is selected. The parameter type is [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md).|
+
+## NODE_TEXT_CONTROLLER
+
+```c
+NODE_TEXT_CONTROLLER = 1054
+```
+
+Text controller.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .object | Text controller. The parameter type is [ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md).|
+
+## NODE_TEXT_PUNCTUATION_OVERFLOW
+
+```c
+NODE_TEXT_PUNCTUATION_OVERFLOW = 1055
+```
+
+Whether to enable punctuation hanging at the end of a line for the **Text** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Whether to enable punctuation hanging at the end of a line. The value **1** means to enable, and **0** means the opposite. The default value is **0**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Whether to enable punctuation hanging at the end of a line.|
+
+## NODE_TEXT_TAIL_INDENTS
+
+```c
+NODE_TEXT_TAIL_INDENTS = 1056
+```
+
+Tail indentation of each line in a text block.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[i].i32 | Tail indentation value of the *i*th line of text, in vp. The value range is [0, +∞). When the value of **.size** is **1**, all lines share the same tail indentation value (specified by **.value[0].i32**). When the value of **.size** is greater than **1**, the *i*th line uses the tail indentation value (specified by **.value[0].i32**). When the number of text lines exceeds the value of **.size**, the excess part reuses **.value[.size - 1].i32**.|
+| .size | Number of valid indentation values, that is, the number of actually-used elements in the **.value** array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[i].i32 | Tail indentation value of the *i*th line of text, in vp.|
+| .size | Number of valid indentation values, that is, the number of actually-used elements in the **.value** array.|
 
 ## NODE_SPAN_CONTENT
 

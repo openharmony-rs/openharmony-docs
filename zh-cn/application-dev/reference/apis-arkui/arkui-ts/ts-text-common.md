@@ -1033,7 +1033,7 @@ constructor(options: LinearGradientOptions)
 
 | 参数名  | 类型   | 必填   | 说明  |
 | ------- | ------ | ---- | ----- |
-| options | [LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明) | 是    | 显示为线性渐变效果。 |
+| options | [LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明) | 是    | 显示为线性渐变效果。<br/>[LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明)中的direction默认值按[GradientDirection](ts-appendix-enums.md#gradientdirection)中的NONE处理。 |
 
 ## RadialGradientStyle<sup>20+</sup>
 
@@ -1057,7 +1057,7 @@ constructor(options: LinearGradientOptions)
 
 constructor(options: RadialGradientOptions)
 
-用于创建RadialGradientOptions对象的构造函数。
+用于创建RadialGradientStyle对象的构造函数。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1091,7 +1091,7 @@ constructor(options: RadialGradientOptions)
 
 constructor(color: ResourceColor)
 
-用于创建ResourceColor对象的构造函数。
+用于创建ColorShaderStyle对象的构造函数。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

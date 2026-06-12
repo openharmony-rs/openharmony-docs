@@ -1,4 +1,4 @@
-# 应用生命周期
+# 应用生命周期概述
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

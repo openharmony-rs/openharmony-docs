@@ -937,8 +937,6 @@ try {
 
 当弹窗的showInSubWindow属性为true时，弹窗可显示在窗口外。
 
-从API版本26.0.0开始，[BaseDialogOptions](#basedialogoptions11)新增displayModeInSubWindow属性。
-
 ```ts
 import { promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -949,8 +947,6 @@ try {
     message: 'Message Info',
     isModal: true,
     showInSubWindow: true,
-    // 从API版本26.0.0开始，新增displayModeInSubWindow属性
-    displayModeInSubWindow: DialogDisplayMode.SCREEN_BASED,
     buttons: [
       {
         text: 'button1',
@@ -1266,6 +1262,8 @@ openCustomDialog(options: CustomDialogOptions): Promise&lt;number&gt;
 >
 > - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取当前UI上下文关联的[PromptAction](arkts-apis-uicontext-promptaction.md)对象。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1549,6 +1547,8 @@ closeCustomDialog(dialogId: number): void
 > - 从API version 11开始支持，从API version 18开始废弃，建议使用[closeCustomDialog](arkts-apis-uicontext-promptaction.md#closecustomdialog12-1)替代。closeCustomDialog需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用closeCustomDialog可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
 >
 > - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取当前UI上下文关联的[PromptAction](arkts-apis-uicontext-promptaction.md)对象。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

@@ -103,4 +103,4 @@
 }
 ```
 
-![zh-cn_image_0000001152834002](figures/zh-cn_image_0000001152834002.png)
+![label](figures/label.png)

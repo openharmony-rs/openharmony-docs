@@ -1,4 +1,4 @@
-# 组件启动规则（Stage模型）
+# 组件启动规则
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

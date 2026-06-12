@@ -56,7 +56,7 @@ export default {
 };
 ```
 
-![zh-cn_image_0000001218278612](figures/zh-cn_image_0000001218278612.gif)
+![image-animator-Component](figures/image-animator-Component.gif)
 
 
 ## 设置image-animator组件属性
@@ -139,7 +139,7 @@ export default {
 };
 ```
 
-![zh-cn_image_0000001218598678](figures/zh-cn_image_0000001218598678.gif)
+![image-animator-Component-1](figures/image-animator-Component-1.gif)
 
 > **说明：**
 > - 如果在images属性中设置了单独的duration属性，在image-animator组件中设置的duration属性无效。
@@ -229,7 +229,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001263278477](figures/zh-cn_image_0000001263278477.gif)
+![Binding-Events-1](figures/Binding-Events-1.gif)
 
 
 ## 场景示例
@@ -338,7 +338,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001218758816](figures/zh-cn_image_0000001218758816.gif)
+![Example-Scenario-8](figures/Example-Scenario-8.gif)
 
 
 ## 相关实例

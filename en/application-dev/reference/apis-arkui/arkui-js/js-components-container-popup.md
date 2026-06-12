@@ -135,4 +135,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001178886129](figures/en-us_image_0000001178886129.png)
+![popup](figures/popup.png)

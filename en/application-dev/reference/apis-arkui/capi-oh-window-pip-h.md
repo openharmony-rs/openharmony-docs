@@ -1,8 +1,8 @@
 # oh_window_pip.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -251,7 +251,7 @@ Defines a callback function for the component click event of the PiP window.
 | Parameter| Description|
 | -- | -- |
 | uint32_t controllerId | ID of the PiP controller. The value is a non-negative integer.|
-|  PictureInPicture_PipControlType controlType | Type of component displayed on the PiP controller.|
+|  PictureInPicture_PipControlType controlType | Type of the component displayed on the PiP controller.|
 | [PictureInPicture_PipControlStatus](#pictureinpicture_pipcontrolstatus) status | Status of the component displayed on the PiP controller.|
 
 ### WebPipResizeCallback()
@@ -1013,7 +1013,7 @@ Before launching PiP, call [OH_PictureInPicture_SetPipMainWindowId()](#oh_pictur
 
 If the main window of PiP changes (for example, if you launch PiP in one tab of a browser and then drag that tab out to create a new window), you must call this API to update the main window ID to the new window ID. This ensures that PiP can be restored to the correct main window.
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Since**: 22
 

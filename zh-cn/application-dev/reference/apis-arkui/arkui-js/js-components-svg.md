@@ -59,4 +59,4 @@
 ```
 
 
-![zh-cn_image_0000001173164789](figures/zh-cn_image_0000001173164789.png)
+![svg](figures/svg.png)

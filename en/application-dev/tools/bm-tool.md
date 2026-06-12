@@ -2333,11 +2333,11 @@ The HSP fails to be installed.
 
 **Possible Causes**
 
-The HSP is installed by running the **hdc app install ***** command.
+The HSP is installed by running the "hdc app install ***" command.
 
 **Solution**
 
-1. Run the **hdc install -s ***** command to install the HSP.
+1. Run the "hdc install -s ***" command to install the HSP.
 
 
 ### 9568349 Passed-in Parameter Error During File Operation

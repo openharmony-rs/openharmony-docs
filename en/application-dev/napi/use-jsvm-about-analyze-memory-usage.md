@@ -34,11 +34,11 @@ In **Comparison**, you can compare the current snapshot with another snapshot to
 - **Size Delta**: difference between **Alloc Size** and **Freed Size**.
 
 You can analyze memory problems based on the differences between snapshots on the **Comparison** page.
-! [](figures/js-memory-analysis-u-4.png)
+![](figures/js-memory-analysis-u-4.png)
 
 ### Containment
  **Containment** provides a top-down tree interface, which allows you to browse and explore the content in the heap memory. You can use it to analyze the reference of all variables (such as **Window**).
-! [](figures/js-memory-analysis-u-5.png)
+![](figures/js-memory-analysis-u-5.png)
 
 ### Statistics
 Statistics displays the memory usage ratio of different object types in a pie chart.

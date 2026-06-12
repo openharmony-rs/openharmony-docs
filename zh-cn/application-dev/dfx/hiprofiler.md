@@ -41,7 +41,7 @@ Hiprofiler工具对标业界调优工具，并提供更多能力，比如[跨语
 
 5. PC端解析数据，生成泳道，展示获取到的调优数据。
 
-![zh-cn_image_0000002381835609](figures/zh-cn_image_0000002381835609.png)
+![hiprofiler-plugins](figures/hiprofiler-plugins.png)
 
 
 ## 命令行说明
@@ -227,19 +227,19 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 
 开启fp回栈+跨语言回栈（其中绿色部分为js栈）：
 
-![zh-cn_image_0000002379700441](figures/zh-cn_image_0000002379700441.png)
+![hiprofiler-nativehook-fp](figures/hiprofiler-nativehook-fp.png)
 
 开启dwarf回栈和跨语言回栈（可以展示出native -&gt; js -&gt;native的栈）：
 
-![zh-cn_image_0000002346179694](figures/zh-cn_image_0000002346179694.png)
+![hiprofiler-nativehook-dwarf](figures/hiprofiler-nativehook-dwarf.png)
 
 开启统计模式，在此模式下，栈数据会周期性展示：
 
-![zh-cn_image_0000002379820229](figures/zh-cn_image_0000002379820229.png)
+![hiprofiler-nativehook-statistical](figures/hiprofiler-nativehook-statistical.png)
 
 开启非统计模式，在此模式下，栈数据不会周期性展示：
 
-![zh-cn_image_0000002346019934](figures/zh-cn_image_0000002346019934.png)
+![hiprofiler-nativehook-non-statistical](figures/hiprofiler-nativehook-non-statistical.png)
 
 
 ### ftrace plugin插件
@@ -297,7 +297,7 @@ CONFIG
 
 点击binder transaction右边的箭头，可以跳转到binder对端的进程或线程。
 
-![zh-cn_image_0000002316248152](figures/zh-cn_image_0000002316248152.png)
+![hiprofiler-ftrace-binder](figures/hiprofiler-ftrace-binder.png)
 
 
 ### memory plugin插件
@@ -406,7 +406,7 @@ CONFIG
 
 通过DevEco Studio 的工具获得内存的数据：
 
-![zh-cn_image_0000002357083514](figures/zh-cn_image_0000002357083514.png)
+![hiprofiler-memory-ide](figures/hiprofiler-memory-ide.png)
 
 通过DevEco-&gt;profiler-&gt;Allocation工具，选择Memory泳道，可以使用profiler的memory plugin功能。上图展示了框选时间段的进程smaps内存信息。
 
@@ -421,7 +421,7 @@ CONFIG
 
 **结果分析**
 
-![zh-cn_image_0000002346028442](figures/zh-cn_image_0000002346028442.png)
+![hiprofiler-xpower-energy](figures/hiprofiler-xpower-energy.png)
 
 通过DevEco-&gt;profiler-&gt;real time monitor工具，可以获取相关进程能耗数据。
 
@@ -974,7 +974,7 @@ $ hiprofiler_cmd stop
 
 使用hiprofiler_cmd命令时，显示Service not started。
 
-![zh-cn_image_0000002357083914](figures/zh-cn_image_0000002357083914.png)
+![hiprofiler-service-exception](figures/hiprofiler-service-exception.png)
 
 **可能原因&amp;解决方法**
 

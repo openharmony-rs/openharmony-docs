@@ -109,8 +109,8 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 2.  根据视频元信息，调用  [OH_LowPowerAudioSink_CreateByMime](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_createbymime)或[OH_LowPowerVideoSink_CreateByMime](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_createbymime)来创建播放器。
 
     ```c++
-    lppVideoStreamer_ = OH_LowPowerVideoSink_CreateByMime(codecMime.c_str());
-    lppAudioStreamer_ = OH_LowPowerAudioSink_CreateByMime(codecMime.c_str());
+    lppVideoStreamer_ = OH_LowPowerVideoSink_CreateByMime(videoCodecMime.c_str());
+    lppAudioStreamer_ = OH_LowPowerAudioSink_CreateByMime(audioCodecMime.c_str());
     ```
 
 3.  设置回调监听函数。
@@ -145,7 +145,9 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
      准备播放前，需要调用[OH_LowPowerVideoSink_SetSyncAudioSink](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink)设置音画同步绑定。然后调用prepare方法，[OH_LowPowerAudioSink_Prepare](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)或[OH_LowPowerVideoSink_Prepare](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_prepare)进入'准备'阶段。
 
     ```c++
+    OH_LowPowerVideoSink_SetSyncAudioSink(lppVideoStreamer_, lppAudioStreamer_);
     OH_LowPowerVideoSink_Prepare(lppVideoStreamer_);
+    OH_LowPowerAudioSink_Prepare(lppAudioStreamer_);
     ```
 
 6.  开始播放。

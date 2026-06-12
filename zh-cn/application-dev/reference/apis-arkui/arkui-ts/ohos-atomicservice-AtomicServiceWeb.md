@@ -694,16 +694,20 @@ struct WebComponent {
         console.info(`AtomicServiceWebLog accessStep = ${this.controller.accessStep(1)}`);
       })
       Button('forward').onClick(() => {
-        console.info(`AtomicServiceWebLog forward = ${this.controller.forward()}`);
+        this.controller.forward();
+        console.info(`AtomicServiceWebLog forward`);
       })
       Button('backward').onClick(() => {
-        console.info(`AtomicServiceWebLog backward = ${this.controller.backward()}`);
+        this.controller.backward();
+        console.info(`AtomicServiceWebLog backward`);
       })
       Button('refresh').onClick(() => {
-        console.info(`AtomicServiceWebLog refresh = ${this.controller.refresh()}`);
+        this.controller.refresh();
+        console.info(`AtomicServiceWebLog refresh`);
       })
       Button('loadUrl').onClick(() => {
-        console.info(`AtomicServiceWebLog loadUrl = ${this.controller.loadUrl('https://www.baidu.com/')}`);
+        this.controller.loadUrl('https://www.baidu.com/');
+        console.info(`AtomicServiceWebLog loadUrl`);
       })
       Button('深色模式').onClick(() => {
         this.forceDarkAccess = !this.forceDarkAccess;

@@ -1071,3 +1071,13 @@ cloudSyncManager.getDowngradeDownloadTaskState(bundles).then((results: Array<clo
   console.error(`getDowngradeDownloadTaskState failed, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+## DownloadState<sup>20+</sup>
+
+全量下载任务状态的枚举。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+| 名称      | 值  | 说明                                    |
+| --------- | --- | -------------------------------------- |
+| MISSING   | 3   | 下载任务不存在。<br>**起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |

@@ -8,13 +8,36 @@
 
 容器类对象在跨线程传递时，可通过序列化的机制，确保跨线程间的数据一致，从而实现跨线程数据传递。
 
-目前支持序列化的容器类对象包括[TreeSet](../reference/apis-arkts/js-apis-treeset.md)，容器类对象中的成员必须是序列化支持的类型，目前序列化支持类型可以参考[线程间通信对象概述](serializable-overview.md)中的相关对象。
+支持序列化的容器类对象和支持的初始版本可以参考[容器类对象支持情况](#容器类对象支持情况)。
+
+容器类对象中的成员必须是序列化支持的类型，序列化支持类型可以参考[线程间通信对象概述](serializable-overview.md)中的相关对象。
+
 
 > **说明：**
->
-> - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，支持使用TreeSet容器类对象实现跨线程数据传递。
 > 
 > - 容器类对象跨线程传递时，只能传递数据，自定义方法会丢失。如果需要自定义方法，则需要使用[@Sendable装饰器](arkts-sendable.md#sendable装饰器)标识为Sendable function后，自定义方法可以跨线程传递。
+
+## 容器类对象支持情况
+
+以下仅针对容器类对象，普通对象（Array、Map、Set等）的支持情况请参考[普通对象](normal-object.md)。
+
+| 容器类名称 | 支持版本 |
+| --------- | -------- |
+| [TreeSet](../reference/apis-arkts/js-apis-treeset.md) | 搭载<!--RP1-->OpenHarmony 6.1<!--RP1End-->及以上版本的设备支持 |
+| [ArrayList](../reference/apis-arkts/js-apis-arraylist.md) | 暂不支持 |
+| [List](../reference/apis-arkts/js-apis-list.md) | 暂不支持 |
+| [LinkedList](../reference/apis-arkts/js-apis-linkedlist.md) | 暂不支持 |
+| [Deque](../reference/apis-arkts/js-apis-deque.md) | 暂不支持 |
+| [Queue](../reference/apis-arkts/js-apis-queue.md) | 暂不支持 |
+| [Stack](../reference/apis-arkts/js-apis-stack.md) | 暂不支持 |
+| [Vector](../reference/apis-arkts/js-apis-vector.md) | 暂不支持 |
+| [HashMap](../reference/apis-arkts/js-apis-hashmap.md) | 暂不支持 |
+| [HashSet](../reference/apis-arkts/js-apis-hashset.md) | 暂不支持 |
+| [TreeMap](../reference/apis-arkts/js-apis-treemap.md) | 暂不支持 |
+| [LightWeightMap](../reference/apis-arkts/js-apis-lightweightmap.md) | 暂不支持 |
+| [LightWeightSet](../reference/apis-arkts/js-apis-lightweightset.md) | 暂不支持 |
+| [PlainArray](../reference/apis-arkts/js-apis-plainarray.md) | 暂不支持 |
+
 
 ## 使用示例
 

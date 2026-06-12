@@ -185,7 +185,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 
 检测原理如下图：
 
-![zh-cn_image_0000002326273258](figures/zh-cn_image_0000002326273258.png)
+![task-execution-timeout-principle](figures/task-execution-timeout-principle.png)
 
 ### 日志获取
 

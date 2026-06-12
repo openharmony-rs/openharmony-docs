@@ -1,8 +1,8 @@
 # panel
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -169,4 +169,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001173164785](figures/zh-cn_image_0000001173164785.gif)
+![panel](figures/panel.gif)

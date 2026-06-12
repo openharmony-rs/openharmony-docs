@@ -82,4 +82,4 @@
 }
 ```
 
-![zh-cn_image_0000001127284958](figures/zh-cn_image_0000001127284958.png)
+![example-3](figures/example-3.png)

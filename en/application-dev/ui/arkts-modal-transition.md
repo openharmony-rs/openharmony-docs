@@ -446,7 +446,7 @@ struct BindMenuDemo {
 }
 ```
 
-![en-us_image_0000001599643478](figures/en-us_image_0000001599643478.gif)
+
 
 
 ## Creating a Context Menu with bindContextMenu

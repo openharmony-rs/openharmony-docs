@@ -49,7 +49,7 @@ import { uiMaterial } from '@kit.ArkUI';
 
 ## Material
 
-UI侧的系统材质对象。
+系统材质对象基类。
 
 ### constructor
 

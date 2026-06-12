@@ -39,7 +39,7 @@ canvas {
 }
 ```
 
-![zh-cn_image_0000001222984605](figures/zh-cn_image_0000001222984605.png)
+![canvas-Component](figures/canvas-Component.png)
 
 > **说明：**
 > - Canvas组件默认背景色与父组件的背景色一致。
@@ -79,7 +79,7 @@ canvas {
 }
 ```
 
-![zh-cn_image_0000001177623482](figures/zh-cn_image_0000001177623482.png)
+![Adding-Styles](figures/Adding-Styles.png)
 
 
 ## 添加事件
@@ -152,7 +152,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001222985331](figures/zh-cn_image_0000001222985331.gif)
+![Adding-Events](figures/Adding-Events.gif)
 
 > **说明：** 
 >

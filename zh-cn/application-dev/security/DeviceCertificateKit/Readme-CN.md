@@ -26,8 +26,10 @@
   - [证书链在线校验证书吊销状态](create-verify-cerchainvalidator-revocation-object.md)
   - [证书链校验时下载缺失的中间CA证书](allow-download-Intermediate-Cert.md)
   - [构建并校验证书链](build-and-verify-cert-chain.md)
-- 证书管理<!--certmanager-->
-  - [证书管理概述](certManager-overview.md)
-  - [应用证书凭据开发指导](certManager-private-credential-guidelines.md)
+- 证书管理服务<!--certmanager-->
+  - [证书管理服务概述](certManager-overview.md)
   - [CA证书开发指导](certManager-ca-certs-guidelines.md)
-  - [证书管理对话框开发指导](certManagerDialog-guidelines.md)
+  - [应用证书凭据开发指导](certManager-private-credential-guidelines.md)
+  - [用户证书凭据开发指导](certManager-user-credential-guidelines.md)
+  - [系统证书凭据开发指导](certManager-system-credential-guidelines.md)
+- [Device Certificate Kit术语](device-certificate-glossary.md)

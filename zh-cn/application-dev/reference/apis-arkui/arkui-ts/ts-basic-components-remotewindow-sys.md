@@ -31,7 +31,7 @@ RemoteWindow(target: WindowAnimationTarget)
 
 **参数:**
 
-| 参数名 | 参数类型 | 必填  | 参数描述 |
+| 参数名 | 类型 | 必填  | 参数描述 |
 | -------- | -------- | --------------- | -------- |
 | target | [WindowAnimationTarget](#windowanimationtarget) | 是   | 需要控制的动画窗口的描述。 |
 

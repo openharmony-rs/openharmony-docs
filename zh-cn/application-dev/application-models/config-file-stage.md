@@ -1,4 +1,4 @@
-# Stage模型应用配置文件
+# 应用配置文件
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->

@@ -14,6 +14,8 @@ typedef struct JSVM_Script__* JSVM_Script
 
 表示一段JavaScript代码。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 11
 
 **相关模块：** [JSVM](capi-jsvm.md)

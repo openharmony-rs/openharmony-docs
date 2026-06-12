@@ -5815,6 +5815,20 @@ Allows an application to obtain and set the car scenario mode.
 
 **Valid since**: 26.0.0
 
+## ohos.permission.vehicle.AUTO_UPDATER
+
+Allows an application to send update instructions to the head unit.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 Allows an application to subscribe to the notification service.
@@ -6230,3 +6244,31 @@ With this permission, the system application can obtain and delete all credentia
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 20
+
+## ohos.permission.QUERY_SPACE_OPTIMIZATION
+
+Allows an application to query the space optimization effect.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ARKWEBCORE_SYS_CAP
+
+Allows a system application to invoke ArkWebCore extended capabilities.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.0.0

@@ -189,7 +189,7 @@ PopoverDialog({visible: boolean, popover: PopoverOptions, targetBuilder: Callbac
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| visible | boolean | 是 | \@Link | 跟手弹出框显示状态。value为true时，表示显示弹出框，value为false时，表示隐藏弹出框。<br/>默认值为false，隐藏弹出框。 |
+| visible | boolean | 是 | \@Link | 跟手弹出框显示状态。visible为true时，表示显示弹出框，visible为false时，表示隐藏弹出框。<br/>默认值为false，隐藏弹出框。 |
 | popover | [PopoverOptions](#popoveroptions14) | 是 | \@Prop<br/>\@Require | 配置跟手弹出框的参数。 |
 | targetBuilder | [Callback](ts-types.md#callback12)\<void> | 是 | \@Require<br/>\@BuilderParam | 跟手弹出框基于的目标组件。 |
 

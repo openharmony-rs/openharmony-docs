@@ -14,6 +14,8 @@ typedef struct JSVM_VM__* JSVM_VM
 
 表示JavaScript虚拟机实例。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 11
 
 **相关模块：** [JSVM](capi-jsvm.md)

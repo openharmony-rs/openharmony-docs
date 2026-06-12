@@ -702,6 +702,77 @@ The credentials are no longer valid.
 伴随设备认证场景，删除伴随设备后，重新绑定伴随设备。
 <!--DelEnd-->
 
+## 12300401 系统账号子身份资料不存在
+
+**错误信息**
+
+OS account sub-profile not found.
+
+**可能原因**
+
+未指定有效的系统账号子身份资料标识符。
+
+**处理步骤**
+
+指定合法的子身份资料。
+
+## 12300402 系统账号下的子身份资料数量已达到上限
+
+**错误信息**
+
+The number of sub-profiles under the OS account has reached limit.
+
+**可能原因**
+
+目标系统账号下创建了过多的子身份资料。
+
+**处理步骤**
+
+删除存在的子身份资料后重试，或者停止创建新的子身份资料。
+
+## 12300403 受限的系统账号子身份资料
+
+**错误信息**
+
+Restricted OS account sub-profile.
+
+**可能原因**
+
+1. 目标子身份资料不允许删除；
+2. 目标子身份资料不允许切换；
+
+**处理步骤**
+
+停止对目标子身份资料的操作。
+
+## 12300404 系统账号的前台子身份资料不允许被删除
+
+**错误信息**
+
+The foreground sub-profile of the OS account cannot be deleted.
+
+**可能原因**
+
+删除的系统账号子身份资料当前正处于前台。
+
+**处理步骤**
+
+停止删除系统账号子身份资料的操作。
+
+## 12300405 已登录分布式账号的前台子身份不可直接切换到后台
+
+**错误信息**
+
+The foreground sub-profile with a logged-in distributed account cannot be directly switched to the background.
+
+**可能原因**
+
+前台子身份资料关联的分布式账号还处在登录状态。
+
+**处理步骤**
+
+将前台子身份资料关联的分布式账号登出后，再触发切换操作。
+
 ## 12400001 应用不存在
 
 **错误信息**

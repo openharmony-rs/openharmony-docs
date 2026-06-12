@@ -578,4 +578,4 @@ export class ArtistClassDef implements insightIntent.IntentEntity {
 | ------------------ | -------------| --------- | ---- | ------------------------------------------------------------ |
 | entityCategory        | string       | 否        | 否   | 表示意图实体类别。可以基于意图实体类别对意图实体进行归类                   |
 | parameters        | Record<string, Object> | 否        | 是   | 表示意图实体的数据格式声明。用于定义意图实体的数据格式。 |
-| supportedQueryProperties        | string[] | 否        | 是   | 表示意图实体支持查询的属性列表。列表中的属性名必须在parameters中定义。<br>**起始版本：** 26.0.0 |
+| supportedQueryProperties        | string[] | 否        | 是   | 表示意图实体支持查询的属性列表。列表中的属性名必须在parameters中定义。<br>**起始版本：** 26.0.0<br>**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。 |

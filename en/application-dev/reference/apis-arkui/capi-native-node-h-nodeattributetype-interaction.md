@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType (Interaction Attribute)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW; @zju_ljz-->
-<!--Designer: @CCFFWW; @lanshouren-->
+<!--Owner: @hehongyang3; @zju_ljz-->
+<!--Designer: @hehongyang3; @lanshouren-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -78,7 +78,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 **Since**: 12
 
 > **NOTE**
-> During configuration, the data array can contain any number of values (all will be accepted), but only 20 values can be retrieved.
+> During configuration, the data array can contain any number of values (all will be accepted), but only the first 20 values can be retrieved.
 
 **Parameters**
 

@@ -449,7 +449,7 @@ Obtains the display mode of the foldable device.
 
 **Since**: 12
 
-**Device behavior differences**: This API returns **0** for 2-in-1 devices and non-foldable devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API returns **0** for PC/2-in-1 devices and non-foldable devices. For other devices, this API can be called properly.
 
 
 **Parameters**
@@ -749,7 +749,7 @@ Registers a listener for available area changes of the display.
 
 **Since**: 20
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, it has no effect and does not report errors.
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices and tablets. If it is called on other device types, it has no effect and does not report errors.
 
 **Parameters**
 
@@ -776,7 +776,7 @@ Unregisters a listener for available area changes of the display.
 
 **Since**: 20
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, it has no effect and does not report errors.
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices and tablets. If it is called on other device types, it has no effect and does not report errors.
 
 **Parameters**
 
@@ -802,7 +802,7 @@ Obtains the available area of a display.
 
 **Since**: 20
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. It does not work for other device types. To obtain the available screen area on the current device, call [OH_NativeDisplayManager_GetDefaultDisplayWidth()](#oh_nativedisplaymanager_getdefaultdisplaywidth) and [OH_NativeDisplayManager_GetDefaultDisplayHeight()](#oh_nativedisplaymanager_getdefaultdisplayheight).
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices and tablets. It does not work for other device types. To obtain the available screen area on the current device, call [OH_NativeDisplayManager_GetDefaultDisplayWidth()](#oh_nativedisplaymanager_getdefaultdisplaywidth) and [OH_NativeDisplayManager_GetDefaultDisplayHeight()](#oh_nativedisplaymanager_getdefaultdisplayheight).
 
 
 **Parameters**
@@ -1019,7 +1019,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 
 Obtains the display position, that is, the x-coordinate and y-coordinate relative to the original point (the upper left corner of the main screen).
 
-The actual value is returned only when the current display source mode is **DISPLAY_SOURCE_MODE_MAIN** or **DISPLAY_SOURCE_MODE_EXTEND**. For other display source modes, **0** is returned by default.
+The actual value is returned only when the current display source mode is **DISPLAY_SOURCE_MODE_MAIN** or **DISPLAY_SOURCE_MODE_EXTEND**.
 
 You can obtain the display source mode by calling [OH_NativeDisplayManager_GetDisplaySourceMode()](#oh_nativedisplaymanager_getdisplaysourcemode).
 

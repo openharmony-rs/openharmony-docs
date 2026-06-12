@@ -104,7 +104,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 2. 获取和操作stride值。
 
-   <!-- @[allocator_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->     
+   <!-- @[allocator_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->      
    
    ``` C++
    #include <cstring>
@@ -173,29 +173,14 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
        return;
    }
    
-   void DataCopy(OH_PixelmapNative *pixelmap, OH_ImageSourceNative* imageSource, OH_DecodingOptions *options,
-                 IMAGE_ALLOCATOR_TYPE allocatorType)
+   static void CopyPixelRows(void *pixels, void *newPixels, const PixelmapInfo &srcInfo, uint32_t dstRowStride,
+       IMAGE_ALLOCATOR_TYPE allocatorType)
    {
-       PixelmapInfo srcInfo;
-       GetPixelmapInfo(pixelmap, &srcInfo);
-       GetPixelmapAddrInfo(pixelmap, &srcInfo);
-   
-       void *pixels = nullptr;
-       OH_PixelmapNative_AccessPixels(pixelmap, &pixels);
-       OH_PixelmapNative *newPixelmap = nullptr;
-       OH_ImageSourceNative_CreatePixelmap(imageSource, options, &newPixelmap);
-       uint32_t dstRowStride = srcInfo.width * GetPixelFormatBytes(srcInfo.pixelFormat);
-       void *newPixels = nullptr;
-       OH_PixelmapNative_AccessPixels(newPixelmap, &newPixels);
        uint8_t *src = reinterpret_cast<uint8_t *>(pixels);
        uint8_t *dst = reinterpret_cast<uint8_t *>(newPixels);
        uint32_t dstSize = srcInfo.byteCount;
-       uint32_t rowSize;
-       if (allocatorType == IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA) {
-           rowSize = srcInfo.rowStride;
-       } else {
-           rowSize = dstRowStride;
-       }
+       uint32_t rowSize = allocatorType == IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA ? srcInfo.rowStride :
+           dstRowStride;
        for (uint32_t i = 0; i < srcInfo.height; ++i) {
            if (dstSize >= dstRowStride) {
                std::copy(src, src + dstRowStride, dst);
@@ -206,6 +191,32 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
            dst += dstRowStride;
            dstSize -= dstRowStride;
        }
+   }
+   
+   void DataCopy(OH_PixelmapNative *pixelmap, OH_ImageSourceNative* imageSource, OH_DecodingOptions *options,
+                 IMAGE_ALLOCATOR_TYPE allocatorType)
+   {
+       PixelmapInfo srcInfo;
+       GetPixelmapInfo(pixelmap, &srcInfo);
+       GetPixelmapAddrInfo(pixelmap, &srcInfo);
+       void *pixels = nullptr;
+       OH_PixelmapNative_AccessPixels(pixelmap, &pixels);
+       OH_PixelmapNative *newPixelmap = nullptr;
+       Image_ErrorCode image_ErrorCode = OH_ImageSourceNative_CreatePixelmap(imageSource, options, &newPixelmap);
+       if (image_ErrorCode != IMAGE_SUCCESS || newPixelmap == nullptr) {
+           OH_PixelmapNative_UnaccessPixels(pixelmap);
+           OH_DecodingOptions_Release(options);
+           OH_ImageSourceNative_Release(imageSource);
+           OH_PixelmapNative_Release(pixelmap);
+           if (newPixelmap != nullptr) {
+               OH_PixelmapNative_Release(newPixelmap);
+           }
+           return;
+       }
+       uint32_t dstRowStride = srcInfo.width * GetPixelFormatBytes(srcInfo.pixelFormat);
+       void *newPixels = nullptr;
+       OH_PixelmapNative_AccessPixels(newPixelmap, &newPixels);
+       CopyPixelRows(pixels, newPixels, srcInfo, dstRowStride, allocatorType);
        OH_PixelmapNative_UnaccessPixels(newPixelmap);
        OH_PixelmapNative_UnaccessPixels(pixelmap);
        OH_DecodingOptions_Release(options);
@@ -235,11 +246,23 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
    
        OH_ImageSourceNative* imageSource = nullptr;
        Image_ErrorCode image_ErrorCode = OH_ImageSourceNative_CreateFromUri(filePath, pathSize, &imageSource);
+       if (image_ErrorCode != IMAGE_SUCCESS || imageSource == nullptr) {
+           return GetJsResult(env, image_ErrorCode == IMAGE_SUCCESS ? IMAGE_BAD_PARAMETER : image_ErrorCode);
+       }
        OH_DecodingOptions *options = nullptr;
-       OH_DecodingOptions_Create(&options);
+       image_ErrorCode = OH_DecodingOptions_Create(&options);
+       if (image_ErrorCode != IMAGE_SUCCESS || options == nullptr) {
+           OH_ImageSourceNative_Release(imageSource);
+           return GetJsResult(env, image_ErrorCode == IMAGE_SUCCESS ? IMAGE_BAD_PARAMETER : image_ErrorCode);
+       }
        IMAGE_ALLOCATOR_TYPE allocatorType = IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA;  // 使用DMA创建pixelMap。
        OH_PixelmapNative *pixelmap = nullptr;
        image_ErrorCode = OH_ImageSourceNative_CreatePixelmapUsingAllocator(imageSource, options, allocatorType, &pixelmap);
+       if (image_ErrorCode != IMAGE_SUCCESS || pixelmap == nullptr) {
+           OH_DecodingOptions_Release(options);
+           OH_ImageSourceNative_Release(imageSource);
+           return GetJsResult(env, image_ErrorCode == IMAGE_SUCCESS ? IMAGE_BAD_PARAMETER : image_ErrorCode);
+       }
        DataCopy(pixelmap, imageSource, options, allocatorType);
        return GetJsResult(env, image_ErrorCode);
    }

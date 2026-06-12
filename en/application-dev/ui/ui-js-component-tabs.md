@@ -53,7 +53,7 @@ Create a **\<tabs>** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001165191390](figures/en-us_image_0000001165191390.gif)
+![Creating-Tabs](figures/Creating-Tabs.gif)
 
 
 ## Setting Styles
@@ -107,7 +107,7 @@ Set the background color, border, and tab-content layout of the tabs.
 }
 ```
 
-![en-us_image_0000001163388642](figures/en-us_image_0000001163388642.gif)
+![Setting-Styles](figures/Setting-Styles.gif)
 
 
 ## Displaying the Tab Index
@@ -146,7 +146,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001163228638](figures/en-us_image_0000001163228638.gif)
+![Displaying-the-Tab-Index](figures/Displaying-the-Tab-Index.gif)
 
 
 > **NOTE**
@@ -266,4 +266,4 @@ export default {
 }
 ```
 
-![en-us_image_tab.gif](figures/en-us_image_tab.gif)
+![Example-Scenario-9](figures/Example-Scenario-9.gif)

@@ -135,4 +135,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001173164927](figures/zh-cn_image_0000001173164927.png)
+![toggle](figures/toggle.png)

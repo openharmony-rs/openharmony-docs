@@ -750,7 +750,7 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
           .height(70)
 ```
 
-![alt text](figures/richeditor_image_oncut_paste_copy.gif)
+
 
 For details about all available events, see [RichEditor Events](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#events).
 
@@ -785,7 +785,7 @@ options: RichEditorOptions = { controller: this.controller };
         .height(300)
 ```
 
-![alt text](figures/richeditor_image_caretcolor.gif)
+
 
 ### Adding a Callback for Caret Position and Selection Changes
 

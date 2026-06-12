@@ -35,7 +35,7 @@
 }
 ```
 
-![zh-cn_image_0000001226897009](figures/zh-cn_image_0000001226897009.png)
+![grid-container-Component](figures/grid-container-Component.png)
 
 > **说明：** 
 >
@@ -104,7 +104,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001227135613](figures/zh-cn_image_0000001227135613.gif)
+![Calling-Methods](figures/Calling-Methods.gif)
 
 ## 添加grid-col
 
@@ -161,7 +161,7 @@ text{
 }
 ```
 
-![zh-cn_image_0000001227135731](figures/zh-cn_image_0000001227135731.png)
+![grid-col](figures/grid-col.png)
 
 > **说明：** 
 >
@@ -237,4 +237,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001263160403](figures/zh-cn_image_0000001263160403.gif)
+![Example-Scenario-5](figures/Example-Scenario-5.gif)
