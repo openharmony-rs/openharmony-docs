@@ -25,9 +25,9 @@
 
 | 名称       | 类型   | 只读   | 可选   | 说明      |
 | -------- | ------ | ---- | ---- | ------- |
-| srcDeviceId | string | 否    | 否    | 表示任务迁移源设备ID。 |
-| dstDeviceId | string | 否    | 否    | 表示任务迁移目标设备ID。 |
-| bundleName | string | 否    | 否    | 表示任务所属目标端应用包名。 |
+| srcDeviceId | string | 否    | 否    | 表示任务迁移源设备ID。最大长度255字符。 |
+| dstDeviceId | string | 否    | 否    | 表示任务迁移目标设备ID。最大长度255字符。 |
+| bundleName | string | 否    | 否    | 表示任务所属目标端应用包名。最大长度127字符。该参数作为srcBundleName的默认值使用。 |
 | wantParam | Record<string, Object> | 否    | 否    | 表示扩展参数。用于传递任务迁移时的自定义信息。可以包含开发者自定义的键值对，用于标识迁移场景或携带迁移相关的配置信息。 |
-| srcBundleName<sup>12+</sup> | string | 否    | 是    | 表示任务所属源端应用包名，默认与bundleName相同。 |
-| continueType<sup>12+</sup> | string | 否    | 是    | 表示任务所属应用迁移类型。 |
+| srcBundleName<sup>12+</sup> | string | 否    | 是    | 表示任务所属源端应用包名。当源端和目标端应用包名不同时需要传入（如跨应用迁移、应用包名变更等场景），不传入时默认与bundleName相同。最大长度127字符。 |
+| continueType<sup>12+</sup> | string | 否    | 是    | 表示任务所属应用迁移类型。如果不传，则使用系统默认值。 |
