@@ -458,7 +458,6 @@ accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountI
 }).catch((err: BusinessError) => {
   console.error(`Failed to create normal os account: code is ${err.code}, message is ${err.message}`);
 });
-
 ```
 
 ## accountManager.removeOsAccount
@@ -481,7 +480,6 @@ removeOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | accountId   | number                                                  | 是   | 系统账号ID，指将被移除系统账号的ID。不可移除默认系统账号 (ID为100) ，会报错误码9201041。 |
-
 
 **错误码**：
 
@@ -515,16 +513,12 @@ let wantTemp: Want = {
 // 创建普通系统账号
 accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountInfo: osAccount.OsAccountInfo) => {
   console.info('Succeeded in creating normal os account, accountInfo: ' + JSON.stringify(accountInfo));
-  try {
   // 根据系统账号ID移除创建的账号
-    let accountId: number = accountInfo.localId;
-    accountManager.removeOsAccount(wantTemp, accountId);
-    console.info(`Succeeded in removing os accountId:${accountId}`);
-  } catch (err) {
-    console.error(`Failed to remove os account. Code: ${err.code}, message: ${err.message}`);
-  }
+  let accountId: number = accountInfo.localId;
+  accountManager.removeOsAccount(wantTemp, accountId);
+  console.info(`Succeeded in removing os accountId:${accountId}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create normal os account: code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to create and remove normal os account: code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -581,15 +575,11 @@ let wantTemp: Want = {
 // 创建普通系统账号
 accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountInfo: osAccount.OsAccountInfo) => {
   console.info('Succeeded in creating normal os account, accountInfo: ' + JSON.stringify(accountInfo));
-  try {
   // 根据系统账号ID切换账号
-    let accountId: number = accountInfo.localId;
-    accountManager.activateOsAccount(wantTemp, accountId);
-    console.info(`Succeeded in activating os accountId:${accountId}`);
-  } catch (err) {
-    console.error(`Failed to activate os account. Code: ${err.code}, message: ${err.message}`);
-  }
+  let accountId: number = accountInfo.localId;
+  accountManager.activateOsAccount(wantTemp, accountId);
+  console.info(`Succeeded in activating os accountId:${accountId}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create normal os account: code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to create and  activate normal os account: code is ${err.code}, message is ${err.message}`);
 });
 ```
