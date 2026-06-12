@@ -58,7 +58,7 @@ Archived data sources can be classified into local resources, network resources,
   - They cannot obtain the current cache usage. The **Image** component does not support querying the real-time status of the disk cache, including the total file size and file quantity.
   - The cache policy cannot be customized, and the cache status cannot be observed. You cannot obtain runtime metrics such as the cache hit ratio and eviction count through APIs, so it is difficult to implement dynamic optimization based on the actual cache effect.
 
-  For complex scenarios, you are advised to use [ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife), which provides more flexible and scalable cache policies and comprehensive lifecycle management capabilities.
+  For complex scenarios, you are advised to use [ImageKnife](https://gitcode.com/CPF-ApplicationTPC/ImageKnife), which provides more flexible and scalable cache policies and comprehensive lifecycle management capabilities.
 
   Network images must comply with the RFC 9113 standard. Otherwise, the loading will fail. For images larger than 10 MB or bulk downloads, use the [HTTP](../network/http-request.md) API for pre-downloading to improve loading performance and simplify data management.
 
