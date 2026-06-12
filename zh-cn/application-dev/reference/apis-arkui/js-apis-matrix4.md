@@ -253,7 +253,7 @@ struct Test {
 }
 ```
 
-![matrix4-copy](figures/matrix4-copy.png)
+![Matrix4Copy](figures/Matrix4Copy.png)
 
 ### combine
 
