@@ -851,12 +851,12 @@ export struct GroupedList {
           List(
             // ...
           ) {
-            ListItemGroup({ header: this.itemHead('A') }) {
+            ListItemGroup({ header: () => { this.itemHead('A') }}) {
               // 循环渲染分组A的ListItem
               // ...
             }
 
-            ListItemGroup({ header: this.itemHead('B') }) {
+            ListItemGroup({ header: () => { this.itemHead('B') }}) {
               // 循环渲染分组B的ListItem
               // ...
             }
@@ -1106,7 +1106,7 @@ export struct StickyHeaderList {
           List() {
             // 懒加载ListItemGroup，contactsGroups为多个分组联系人contacts和标题title的数据集合
             LazyForEach(contactsGroupsDataSource, (itemGroup: ContactsGroup) => {
-              ListItemGroup({ header: this.itemHead(itemGroup.title) }) {
+              ListItemGroup({ header: () => { this.itemHead(itemGroup.title) }}) {
                 // 循环渲染ListItem
                 if (itemGroup.contacts) {
                   LazyForEach(new ContactDataSource(itemGroup.contacts as Contact[]), (item: Contact) => {
@@ -2315,7 +2315,7 @@ List(
                List({ space: 10 } as ListOptions) {
                  ForEach(this.routes, (itemGroup: ItemGroupInfo) => {
                    ListItemGroup({
-                     header: this.ListItemGroupHeader(itemGroup),
+                     header: () => { this.ListItemGroupHeader(itemGroup) },
                      style: ListItemGroupStyle.CARD,
                    }) {
                      if (this.expandedItems[itemGroup.index] && itemGroup.children) {
