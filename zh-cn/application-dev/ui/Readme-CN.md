@@ -341,6 +341,7 @@
     <!--DelEnd-->
   - [内置组件扩展](state-management-static/arkts-static-extendable-inner-component.md)
   - 从ArkTS-Dyn到ArkTS-Sta的UI适配指导<!--ui-arkts-migration-guide-->
+    - [从ArkTS-Dyn到ArkTS-Sta的UI语法规则适配](arkts-dyn-sta-ui-rules.md)
     - ArkTS-Dyn已废弃接口在ArkTS-Sta上的适配方法<!--ui-arkts-sta-deprecated-apis-migration-guide-->
       - [UI接口适配](arkts-sta-deprecated-ui-apis.md)
       - [UI组件适配（通用信息）](arkts-sta-deprecated-general-information.md)
@@ -349,6 +350,7 @@
       - [UI组件适配（文本）](arkts-sta-deprecated-text.md)
       - [UI组件适配（信息展示）](arkts-sta-deprecated-information-display.md)
       - [UI组件适配（动效与视效）](arkts-sta-deprecated-animation-and-visual.md)
+      - [UI组件适配（状态管理与渲染控制）](arkts-sta-deprecated-state-management-and-rendering-control.md)
   - ArkTS-Sta与ArkTS-Dyn的UI互操作<!--ui-arkts-sta-interop-dyn-->
     - [UI互操作概述](arkts-dyn-sta-ui-interop.md)
     - [UI互操作声明文件规范](arkts-ui-interop-declaration-spec.md)
