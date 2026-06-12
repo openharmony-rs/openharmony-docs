@@ -110,7 +110,7 @@
   }
   ```
 
-![color-linear-gradient](figures/color-linear-gradient.png)
+![zh-cn_image_0000001641176829](figures/zh-cn_image_0000001641176829.png)
 
 
 ## 为组件添加角度渐变效果
@@ -208,7 +208,7 @@
             center: [50, 50],
             start: 0,
             end: 360,
-            repeating: false, // 只在颜色断点角度覆盖范围内产生颜色渐变效果，其余范围内不重复
+            repeating: false, //只在颜色断点角度覆盖范围内产生颜色渐变效果，其余范围内不重复
             colors: [
               [0xf56c6c, 0],
               [0xffffff, 0.125],
@@ -226,7 +226,7 @@
     }
   }
   ```
-![color-sweep-gradient](figures/color-sweep-gradient.png)
+![zh-cn_image_0000001641177073](figures/zh-cn_image_0000001641177073.png)
 
 
 ## 为组件添加径向渐变效果
@@ -336,4 +336,4 @@
     }
   }
   ```
-![color-radial-gradient](figures/color-radial-gradient.png)
+![zh-cn_image_0000001592904050](figures/zh-cn_image_0000001592904050.png)
