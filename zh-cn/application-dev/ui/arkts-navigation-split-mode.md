@@ -110,7 +110,7 @@
       "pageSourceFile": "src/main/ets/pages/navigation/splitmode/NewsDetail.ets",
       "buildFunction": "NewsDetailPageBuilder",
       "data": {
-        "description": "this is DetailPageA"
+        "description": "this is NewsDetail"
       }
     }
   ]

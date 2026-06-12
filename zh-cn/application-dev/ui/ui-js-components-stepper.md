@@ -47,7 +47,7 @@ text{
 ![zh-cn_image_0000001234289455](figures/zh-cn_image_0000001234289455.gif)
 
 
-## 设置index属性
+## 设置index和label属性
 
 页面默认显示索引值为index的步骤。
 
@@ -222,7 +222,7 @@ stepper分别添加finish，change，next，back，skip事件。
 
 ```css
 /* xxx.css */
-.doc-page {
+.container {
   width:100%;
   height:100%;
   flex-direction: column;

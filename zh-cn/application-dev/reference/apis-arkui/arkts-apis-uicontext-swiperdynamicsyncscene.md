@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供Swiper组件相关帧率的配置。
+提供Swiper组件动态帧率场景的相关配置。
 
 > **说明：**
 >
