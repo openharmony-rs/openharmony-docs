@@ -153,7 +153,7 @@ The development of deferred task scheduling consists of two steps: implementing 
    ```
 
 2. Start a deferred task.
-   <!-- @[startWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
+   <!-- @[startWork](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
    
    ``` TypeScript
    let workInfo: workScheduler.WorkInfo = {
