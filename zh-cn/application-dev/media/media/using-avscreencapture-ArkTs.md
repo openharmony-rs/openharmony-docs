@@ -187,7 +187,7 @@
 
    ArkTS-Dyn示例：
 
-   ```TypeScript
+   ``` TypeScript
    const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    let filePath: string = context.filesDir + '/screenCapture.mp4';
    let captureFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
