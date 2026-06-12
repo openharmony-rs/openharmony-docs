@@ -721,7 +721,7 @@ showSystemApnSettings(context: Context): Promise\<void>
 
 当需要设置当前移动网络使用的SIM卡对应的APN配置信息时，调用该接口可以打开当前移动网络的APN配置界面，以展示移动网络的APN信息。该接口仅显示通用的APN，不支持新建或重置。使用Promise异步回调。
 
- **起始版本**： 26.0.0
+**起始版本**： 26.0.0
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
