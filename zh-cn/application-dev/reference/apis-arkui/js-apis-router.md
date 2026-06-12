@@ -1223,7 +1223,7 @@ router.replaceNamedRoute({
 
 ## router.back<sup>(deprecated)</sup>
 
-back(options?: RouterOptions ): void
+back(options?: RouterOptions): void
 
 返回上一页面或指定的页面，会删除当前页面与指定页面之间的所有页面。
 
