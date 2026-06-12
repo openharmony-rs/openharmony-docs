@@ -159,11 +159,11 @@ onHoverStatusChange事件处理。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| status | [HoverModeStatus](#hovermodestatus) | 是 | 折叠屏进入或退出悬停模式时触发的回调函数。 |
+| status | [HoverModeStatus](#hovermodestatus) | 是 | 折叠屏的悬停模式状态信息。 |
 
 ## HoverModeStatus
 
-设备或应用的折叠、旋转、窗口状态信息。
+设备或应用的折叠、悬停、旋转、窗口状态信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

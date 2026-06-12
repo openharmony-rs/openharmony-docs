@@ -114,7 +114,7 @@ ArkTS-Sta: width(widthValue: Length | LayoutPolicy | undefined): this
 
 | 参数名   | 类型                           | 必填   | 说明                  |
 | ----- | ---------------------------- | ---- | ------------------- |
-| widthValue | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15)<br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15) \| undefined | 是    | 要设置的组件宽度。<br/>单位：vp<br/>取值为undefined时，与不设置表现一致。 |
+| widthValue | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15)<br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15) \| undefined | 是    | 要设置的组件宽度或水平方向布局策略。<br/>单位：vp<br/>取值为undefined时，与不设置表现一致。 |
 
 **返回值：**
 
@@ -148,7 +148,7 @@ ArkTS-Sta: height(heightValue: Length | LayoutPolicy | undefined): this
 
 | 参数名   | 类型                           | 必填   | 说明                  |
 | ----- | ---------------------------- | ---- | ------------------- |
-| heightValue | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15)<br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15) \| undefined | 是    | 要设置的组件高度。<br/>单位：vp<br/>取值为undefined时，与不设置表现一致。 |
+| heightValue | ArkTS-Dyn: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15)<br/>ArkTS-Sta: [Length](ts-types.md#length)&nbsp;\|&nbsp;&nbsp;[LayoutPolicy](#layoutpolicy15) \| undefined | 是    | 要设置的组件高度或垂直方向布局策略。<br/>单位：vp<br/>取值为undefined时，与不设置表现一致。 |
 
 **返回值：**
 
@@ -350,7 +350,7 @@ ArkTS-Sta: constraintSize(value: ConstraintSizeOptions | undefined): this
 
 | 参数名   | 类型                                       | 必填   | 说明                                       |
 | ----- | ---------------------------------------- | ---- | ---------------------------------------- |
-| value | ArkTS-Dyn: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)<br/>ArkTS-Sta: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) \| undefined | 是    | 设置约束尺寸。constraintSize的优先级高于Width和Height。取值结果参考constraintSize取值对width/height影响。<br/>默认值：<br/>{<br/>minWidth:&nbsp;0,<br/>maxWidth:&nbsp;Infinity,<br/>minHeight:&nbsp;0,<br/>maxHeight:&nbsp;Infinity<br/>}<br/>异常值：数值开头的字符串仅解析出数字部分，非数值开头的字符串解析为0；其它异常值时，constraintSize属性恢复到不配置时的默认行为。<br/>单位：vp<br/><br/>取值为undefined时，按默认值处理。 |
+| value | ArkTS-Dyn: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)<br/>ArkTS-Sta: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) \| undefined | 是    | 设置约束尺寸。constraintSize的优先级高于[width](#width)和[height](#height)。取值结果参考constraintSize取值对width/height影响。<br/>默认值：<br/>{<br/>minWidth:&nbsp;0,<br/>maxWidth:&nbsp;Infinity,<br/>minHeight:&nbsp;0,<br/>maxHeight:&nbsp;Infinity<br/>}<br/>异常值：数值开头的字符串仅解析出数字部分，非数值开头的字符串解析为0；其它异常值时，constraintSize属性恢复到不配置时的默认行为。<br/>单位：vp<br/><br/>取值为undefined时，按默认值处理。 |
 
 **返回值：**
 

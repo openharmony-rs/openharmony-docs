@@ -40,7 +40,7 @@ GridCol(option?: GridColOptions)
 
 | 参数名 | 类型                                                  | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| option   | [GridColOptions](#gridcoloptions对象说明) | 否   | 栅格布局子组件参数。 |
+| option   | [GridColOptions](#gridcoloptions对象说明) | 否   | 栅格布局子组件布局选项。 |
 
 ## GridColOptions对象说明
 
