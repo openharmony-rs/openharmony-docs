@@ -76,7 +76,7 @@
 
 ## LevelMode<sup>15+</sup>
 
-type LevelMode = LevelMode
+type LevelMode = import('../api/@ohos.promptAction').LevelMode
 
 弹窗的显示层级。
 
@@ -88,11 +88,11 @@ type LevelMode = LevelMode
 
 | 类型                                                        | 说明                 |
 | ----------------------------------------------------------- | -------------------- |
-| [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 设置弹窗的显示层级。 |
+| import('../api/@ohos.promptAction').[LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 设置弹窗的显示层级。 |
 
 ## ImmersiveMode<sup>15+</sup>
 
-type ImmersiveMode = ImmersiveMode
+type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode
 
 弹窗的蒙层效果。
 
@@ -104,7 +104,7 @@ type ImmersiveMode = ImmersiveMode
 
 | 类型                                                         | 说明                       |
 | ------------------------------------------------------------ | -------------------------- |
-| [ImmersiveMode](../js-apis-promptAction.md#immersivemode15枚举说明) | 设置页面内弹窗的蒙层效果。 |
+| import('../api/@ohos.promptAction').[ImmersiveMode](../js-apis-promptAction.md#immersivemode15枚举说明) | 设置页面内弹窗的蒙层效果。 |
 
 ## DismissDialogAction<sup>12+</sup>
 
