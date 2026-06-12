@@ -1192,6 +1192,7 @@ ArkTS-Sta: mapPoints(src: Array\<common2D.Point>): Array\<common2D.Point> | unde
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import {drawing,common2D} from "@kit.ArkGraphics2D";
 
@@ -1201,6 +1202,20 @@ src.push({x: 20, y: 15});
 src.push({x: 30, y: 10});
 let matrix = new drawing.Matrix();
 let dst: Array<common2D.Point> = matrix.mapPoints(src);
+console.info("matrix= src: "+JSON.stringify(src));
+console.info("matrix= dst: "+JSON.stringify(dst));
+```
+
+ArkTS-Sta示例：
+```ts
+import {drawing,common2D} from "@kit.ArkGraphics2D";
+
+let src: Array<common2D.Point> = [];
+src.push({x: 15, y: 20});
+src.push({x: 20, y: 15});
+src.push({x: 30, y: 10});
+let matrix = new drawing.Matrix();
+  let dst: Array<common2D.Point> | undefined = matrix!.mapPoints(src);
 console.info("matrix= src: "+JSON.stringify(src));
 console.info("matrix= dst: "+JSON.stringify(dst));
 ```
