@@ -2,9 +2,9 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @buzhenwang-->
+<!--Owner: @suxunquan-->
 <!--Designer: @milkbread123-->
-<!--Tester: @liyang2235-->
+<!--Tester: @yufeifei-->
 <!--Adviser: @jinqiuheng-->
 
 
