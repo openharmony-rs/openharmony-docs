@@ -65,7 +65,7 @@
 
   以下打印的示例为应用设备系统对应的部分系统字体配置信息情况，不同设备系统配置信息可能不同，此处仅示意。
 
-  ![zh-cn_image_0000002211603664](figures/zh-cn_image_0000002211603664.png)
+![Obtaining-System-Font.png](figures/Obtaining-System-Font.png)
 
 ## 使用或切换系统字体
 
@@ -105,7 +105,7 @@
 4. 创建段落生成器。
 
    ArkTS-Dyn示例：
-   <!-- @[arkts_use_and_change_system_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_use_and_change_system_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) --> 
 
    ArkTS-Sta示例：
    <!-- @[arkts_use_and_change_system_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
@@ -147,4 +147,4 @@
 
 效果展示如下：
 
-![zh-cn_image_0000002246563829](figures/zh-cn_image_0000002246563829.png)
+![Using-or-Switching-System.png](figures/Using-or-Switching-System.png)
