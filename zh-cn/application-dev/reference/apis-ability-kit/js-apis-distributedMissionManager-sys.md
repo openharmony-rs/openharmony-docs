@@ -6,7 +6,7 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-分布式任务管理模块提供跨设备任务管理能力，包括注册和取消任务状态监听、开始和停止同步远端设备任务列表、通过任务ID和包名进行迁移任务等。
+分布式任务管理模块提供跨设备任务管理能力，包括注册和取消任务状态监听、开始和停止同步远端设备任务列表、通过任务ID和包名进行迁移任务等。该模块适用于需要跨设备协同工作的场景，如多设备办公、无缝切换等，能够解决用户在不同设备间同步和迁移应用状态的问题，提升用户体验和设备间的协同效率。
 
 > **说明：**
 >
@@ -26,7 +26,7 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, callback: AsyncCallback&lt;void&gt;): void;
 
-注册任务状态监听。使用callback异步回调。
+注册任务状态监听。使用callback异步回调。调用成功后，系统将开始监听指定设备上的任务状态变化。使用场景为需要实时获取远端设备任务状态变化时，例如多设备协同办公应用中需要同步显示各设备的任务运行状态。此接口需与 `unRegisterMissionListener` 成对使用，注册监听后应及时取消以释放资源，建议在应用不需要监听任务状态时调用 `unRegisterMissionListener`。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -38,7 +38,7 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, 
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 注册监听时的设备信息。 |
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 注册监听时的设备信息，deviceId为设备标识符。 |
 | options   | [MissionCallback](#missioncallback10)     | 是    | 注册的回调方法。 |
 | callback  | AsyncCallback&lt;void&gt;               | 是    | 回调函数，注册监听成功，err为undefined，否则为错误对象。 |
 
@@ -93,7 +93,7 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, 
 
 registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback): Promise&lt;void&gt;
 
-注册任务状态监听。使用promise异步回调。
+注册任务状态监听。使用Promise异步回调。调用成功后，系统将开始监听指定设备上的任务状态变化。使用场景为需要实时获取远端设备任务状态变化时，例如多设备协同办公应用中需要同步显示各设备的任务运行状态。此接口需与 `unRegisterMissionListener` 成对使用，注册监听后应及时取消以释放资源，建议在应用不需要监听任务状态时调用 `unRegisterMissionListener`。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -105,14 +105,14 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo10)  | 是    | 注册监听时的设备信息。   |
-| options   | <a href="#missioncallback10">MissionCallback</a> | 是    | 注册的回调方法。|
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10)  | 是    | 注册监听时的设备信息，deviceId为设备标识符。   |
+| options   | [MissionCallback](#missioncallback10) | 是    | 注册的回调方法。|
 
 **返回值：**
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 操作成功时返回的Promise对象，表示任务状态监听已成功注册。 |
 
 **错误码：**
 
@@ -153,7 +153,7 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
           console.info('registerMissionListener finished. ');
       }).catch((error: BusinessError) => {
           console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
-      })
+      });
   } catch (error) {
       console.error('registerMissionListener failed, cause: ' + JSON.stringify(error));
   }
@@ -163,7 +163,7 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
 
 unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;void&gt;): void;
 
-取消任务状态监听。使用callback异步回调。
+取消任务状态监听。使用callback异步回调。调用成功后，系统将停止监听指定设备上的任务状态变化。使用场景为不再需要监听远端设备任务状态变化时，例如用户关闭协同功能或退出多设备应用。需先调用 registerMissionListener 注册监听后再调用，未注册时调用不生效。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -175,7 +175,7 @@ unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 注册监听时的设备信息。    |
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 取消监听时指定的设备信息，deviceId为设备标识符。    |
 | callback  | AsyncCallback&lt;void&gt;               | 是    | 回调函数，取消监听成功，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -212,7 +212,7 @@ unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&
 
 unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
-取消任务状态监听。使用promise异步回调。
+取消任务状态监听。使用Promise异步回调。调用成功后，系统将停止监听指定设备上的任务状态变化。使用场景为在不再需要监听远端设备任务状态变化时，例如用户关闭协同功能或退出多设备应用。需先调用 registerMissionListener 注册监听后再调用，未注册时调用不生效。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -224,13 +224,13 @@ unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 注册监听时的设备信息。 |
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 取消监听时的设备信息，deviceId为设备标识符。 |
 
 **返回值：**
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; |无返回结果的Promise对象。 |
+| Promise&lt;void&gt; |返回的Promise对象，操作成功时表示任务状态监听已成功取消，失败时返回错误信息。|
 
 **错误码：**
 
@@ -252,7 +252,7 @@ unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
       console.info('unRegisterMissionListener finished successfully');
     }).catch((error: BusinessError) => {
         console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
-    })
+    });
   } catch (error) {
       console.error('unRegisterMissionListener failed, cause: ' + JSON.stringify(error));
   }
@@ -262,7 +262,7 @@ unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
 startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;void&gt;): void;
 
-开始同步远端设备的任务列表。使用callback异步回调。
+开始同步远端设备的任务列表。使用callback异步回调。调用成功后，系统将开始同步指定远端设备的任务列表到本地。使用场景为需要获取并展示远端设备任务信息时，例如多设备任务管理中心需要展示所有设备的运行任务。此接口需与 `stopSyncRemoteMissions` 配合使用，在不需要同步时应及时停止以释放资源；调用顺序为先调用 `startSyncRemoteMissions` 开始同步，完成后调用 `stopSyncRemoteMissions` 停止。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -274,7 +274,7 @@ startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;
 
 | 参数名       | 类型                                    | 必填   | 说明        |
 | --------- | ------------------------------------- | ---- | --------- |
-| parameter | [MissionParameter](#missionparameter10) | 是    | 同步信息。     |
+| parameter | [MissionParameter](#missionparameter10) | 是    | 同步信息，包含deviceId、fixConflict和tag字段。tag为同步标识，用于区分不同同步会话，取值需满足场景需求。fixConflict表示是否解决冲突，建议在可能存在任务冲突的场景下设置为true以避免任务冲突问题。|
 | callback  | AsyncCallback&lt;void&gt;             | 是    | 回调函数，同步远端任务列表成功时，err为undefined，否则返回错误对象。 |
 
 **错误码：**
@@ -315,7 +315,7 @@ startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;
 
 startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 
-开始同步远端设备的任务列表。使用promise异步回调。
+开始同步远端设备的任务列表。使用Promise异步回调。调用成功后，系统将开始同步指定远端设备的任务列表到本地。使用场景为需要获取并展示远端设备任务信息时，例如多设备任务管理中心需要展示所有设备的运行任务。此接口需与 `stopSyncRemoteMissions` 配合使用，在不需要同步时应及时停止以释放资源；调用顺序为先调用 `startSyncRemoteMissions` 开始同步，完成后调用 `stopSyncRemoteMissions` 停止。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -327,13 +327,13 @@ startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| parameter | [MissionParameter](#missionparameter10) | 是    | 同步信息。 |
+| parameter | [MissionParameter](#missionparameter10) | 是    | 同步信息，包含deviceId、fixConflict和tag字段。 |
 
 **返回值：**
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | 返回的Promise对象，操作成功时表示远端设备任务列表同步已成功启动，失败时返回错误信息。|
 
 **错误码：**
 
@@ -361,7 +361,7 @@ startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
         console.info('startSyncRemoteMissions finished successfully');
       }).catch((error: BusinessError) => {
       console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
-    })
+    });
   } catch (error) {
     console.error('startSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
   }
@@ -371,7 +371,7 @@ startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 
 stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;void&gt;): void;
 
-停止同步远端设备的任务列表。使用callback异步回调。
+停止同步远端设备的任务列表。使用callback异步回调。调用成功后，系统将停止同步指定远端设备的任务列表。需先调用 startSyncRemoteMissions 启动同步后再调用，未启动同步时调用不生效。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -383,7 +383,7 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 同步信息。     |
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 停止同步的设备信息，deviceId为要停止同步的远端设备ID。   |
 | callback  | AsyncCallback&lt;void&gt;               | 是    | 回调函数，停止同步远端任务列表成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -422,7 +422,7 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;
 
 stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
-停止同步远端设备的任务列表。使用promise异步回调。
+停止同步远端设备的任务列表。使用Promise异步回调。调用成功后，系统将停止同步指定远端设备的任务列表。使用场景为不再需要同步远端设备任务信息时，例如用户关闭设备协同功能或退出多设备应用。需先调用 startSyncRemoteMissions 启动同步后再调用，未启动同步时调用不生效。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -434,13 +434,13 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 同步信息。 |
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 停止同步的设备信息，deviceId为要停止同步的远端设备ID。 |
 
 **返回值：**
 
-| 类型                  | 说明               |
-| ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的promise对象。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 返回的Promise对象，操作成功时表示远端设备任务列表同步已成功停止，失败时返回错误信息。|
 
 **错误码：**
 
@@ -465,7 +465,7 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
         console.info('stopSyncRemoteMissions finished successfully');
       }).catch((error: BusinessError) => {
       console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
-    })
+    });
   } catch (error) {
     console.error('stopSyncRemoteMissions failed, cause: ' + JSON.stringify(error));
   }
@@ -475,7 +475,7 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
 continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callback: AsyncCallback&lt;void&gt;): void;
 
-通过指定任务ID（missionId）的方式进行迁移任务。使用callback异步回调。
+通过指定任务ID（missionId）的方式进行迁移任务。当需要迁移特定任务时使用此方式，当只知道应用包名但不知道具体任务ID时，建议使用bundleName方式迁移。使用callback异步回调。使用场景为在需要将当前设备的任务流转到其他设备的场景中，如视频播放应用支持跨设备继续播放，或游戏应用支持跨设备继续游戏。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -487,8 +487,8 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [ContinueDeviceInfo](js-apis-inner-application-continueDeviceInfo-sys.md) | 是    | 迁移信息。 |
-| options | [ContinueCallback](js-apis-inner-application-continueCallback-sys.md) | 是    | 迁移任务完成回调函数。 |
+| parameter | [ContinueDeviceInfo](js-apis-inner-application-continueDeviceInfo-sys.md) | 是    | 通过任务ID方式迁移时的迁移信息，包含源设备ID、目标设备ID、任务ID等。 |
+| options | [ContinueCallback](js-apis-inner-application-continueCallback-sys.md) | 是    | 通过任务ID方式迁移任务完成时的回调函数，用于接收迁移结果。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，迁移任务完成时，err为undefined，否则返回错误对象。 |
 
 **错误码：**
@@ -521,10 +521,10 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
     // 调用continueMission接口
     distributedMissionManager.continueMission(
       {
-        srcDeviceId: "",
-        dstDeviceId: "",
+        srcDeviceId: '',
+        dstDeviceId: '',
         missionId: 1,
-        wantParam: {"key": "value"}
+        wantParam: {'key': 'value'}
       },
       { onContinueDone: onContinueDone },
       (error: BusinessError) => {
@@ -543,7 +543,7 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
 
 continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promise&lt;void&gt;
 
-通过指定任务ID（missionId）的方式进行迁移任务。使用promise异步回调。
+通过指定任务ID（missionId）的方式进行迁移任务。使用Promise异步回调。调用成功后，指定任务将从源设备迁移到目标设备继续运行。使用场景为在需要将当前设备的任务流转到其他设备的场景中，如视频播放应用支持跨设备继续播放，或游戏应用支持跨设备继续游戏。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -555,14 +555,14 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promi
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [ContinueDeviceInfo](js-apis-inner-application-continueDeviceInfo-sys.md) | 是    | 迁移信息。 |
+| parameter | [ContinueDeviceInfo](js-apis-inner-application-continueDeviceInfo-sys.md) | 是    | 迁移信息，包含源设备ID、目标设备ID、任务ID和自定义参数等字段。 |
 | options | [ContinueCallback](js-apis-inner-application-continueCallback-sys.md) | 是    | 迁移任务完成回调函数。 |
 
 **返回值：**
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; |无返回结果的promise对象。 |
+| Promise&lt;void&gt; |返回的Promise对象，操作成功时表示通过任务ID方式迁移任务已完成，失败时返回错误信息。|
 
 **错误码：**
 
@@ -594,16 +594,16 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promi
     // 调用continueMission接口
     distributedMissionManager.continueMission(
       {
-        srcDeviceId: "",
-        dstDeviceId: "",
+        srcDeviceId: '',
+        dstDeviceId: '',
         missionId: 1,
-        wantParam: {"key": "value"}
+        wantParam: {'key': 'value'}
       },
       { onContinueDone: onContinueDone }).then(() => {
         console.info('continueMission finished successfully');
       }).catch((error: BusinessError) => {
       console.error('continueMission failed, cause: ' + JSON.stringify(error));
-    })
+    });
   } catch (error) {
     console.error('continueMission failed, cause: ' + JSON.stringify(error));
   }
@@ -613,7 +613,7 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promi
 
 continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&gt;): void;
 
-通过指定包名（bundleName）的方式进行迁移任务。使用callback异步回调。
+通过指定包名（bundleName）的方式进行迁移任务。使用callback异步回调。调用成功后，指定包名对应的应用任务将从源设备迁移到目标设备继续运行。该方式通过bundleName定位任务实例，适用于无需指定missionId的场景。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -625,7 +625,7 @@ continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [ContinueMissionInfo](./js-apis-inner-application-continueMissionInfo-sys.md) | 是    | 迁移信息。 |
+| parameter | [ContinueMissionInfo](./js-apis-inner-application-continueMissionInfo-sys.md) | 是    | 迁移信息，包含源设备ID、目标设备ID、应用包名和自定义参数等字段。|
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，通过指定包名迁移任务完成时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -653,10 +653,10 @@ continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&
   try {
     distributedMissionManager.continueMission(
       {
-        srcDeviceId: "",
-        dstDeviceId: "",
-        bundleName: "ohos.test.continueapp",
-        wantParam: {"key": "value"}
+        srcDeviceId: '',
+        dstDeviceId: '',
+        bundleName: 'ohos.test.continueapp',
+        wantParam: {'key': 'value'}
       },
       (error: BusinessError) => {
         if (error) {
@@ -674,7 +674,7 @@ continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&
 
 continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
 
-通过指定包名（bundleName）的方式进行迁移任务。使用Promise异步回调。
+通过指定包名（bundleName）的方式进行迁移任务。使用Promise异步回调。调用成功后，指定包名对应的应用任务将从源设备迁移到目标设备继续运行。使用场景为在不需要指定具体任务ID，而是将指定应用的所有任务流转到其他设备的场景中，适用于支持多任务并行流转的应用。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS，ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -686,13 +686,13 @@ continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [ContinueMissionInfo](./js-apis-inner-application-continueMissionInfo-sys.md) | 是    | 迁移信息。 |
+| parameter | [ContinueMissionInfo](./js-apis-inner-application-continueMissionInfo-sys.md) | 是    | 迁移信息，包含源设备ID、目标设备ID、应用包名和自定义参数等字段。 |
 
 **返回值：**
 
-| 类型                  | 说明               |
-| ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的promise对象。 |
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 返回的Promise对象，操作成功时表示通过包名方式迁移任务已完成，失败时返回错误信息。 |
 
 **错误码：**
 
@@ -719,16 +719,16 @@ continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
   try {
       distributedMissionManager.continueMission(
         {
-          srcDeviceId: "",
-          dstDeviceId: "",
-          bundleName: "ohos.test.continueapp",
+          srcDeviceId: '',
+          dstDeviceId: '',
+          bundleName: 'ohos.test.continueapp',
           wantParam: {"key": "value"}
         }
       ).then(() => {
           console.info('continueMission finished successfully');
       }).catch((error: BusinessError) => {
           console.error('continueMission failed, cause: ' + JSON.stringify(error));
-      })
+      });
   } catch (error) {
       console.error('continueMission failed, cause: ' + JSON.stringify(error));
   }
@@ -738,7 +738,7 @@ continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
 
 on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;): void
 
-注册当前任务流转状态的监听。
+注册当前任务流转状态变化事件的监听。调用成功后，当任务流转状态发生变化时，将通过回调函数通知监听者。监听可以实时获取任务在迁移过程中的状态变化（如激活、未激活等）。使用场景为在需要实时感知任务流转进度的场景中，例如需要向用户显示任务流转状态变化，或根据流转状态执行特定逻辑的应用。此接口需与 `off('continueStateChange')` 成对使用，不再监听时应及时取消；调用顺序为先通过 `on` 注册监听，不需要时再调用 `off` 取消监听。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -750,7 +750,7 @@ on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;)
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| type | string  | 是    | 当前任务流转状态，取值为'continueStateChange'。    |
+| type | string  | 是    | 订阅的事件类型，取值必须为'continueStateChange'，表示订阅任务流转状态变化事件。 |
 | callback | Callback&lt;[ContinueCallbackInfo](#continuecallbackinfo11)&gt; | 是    | 回调函数，返回当前任务的流转状态和流转信息。    |
 
 **错误码：**
@@ -780,7 +780,7 @@ on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;)
 
 off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt;): void
 
-取消当前任务流转的状态监听。
+取消当前任务流转的状态监听。调用成功后，将停止接收任务流转状态变化的回调通知。在不再需要监听任务流转状态的场景中，如用户关闭流转状态显示功能或退出需要状态感知的应用页面时使用。接口需与 `on('continueStateChange')` 成对使用，在不需要监听时应及时调用以释放资源。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -792,8 +792,8 @@ off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| type | string  | 是    | 当前任务流转状态，取值为'continueStateChange'。    |
-| callback | Callback&lt;[ContinueCallbackInfo](#continuecallbackinfo11)&gt; | 否    | 需要取消的回调函数。<br>参数不填写，取消type对应的所有回调监听。    |
+| type | string  | 是    | 取消订阅的事件类型，固定取值为'continueStateChange'，表示取消订阅任务流转状态变化事件。    |
+| callback | Callback&lt;[ContinueCallbackInfo](#continuecallbackinfo11)&gt; | 否    | 需要取消的回调函数。<br>当需要取消特定回调监听时传入callback参数，当需要取消type对应的所有回调监听时不传callback参数。不传入时将取消该事件类型的所有回调监听。|
 
 **错误码：**
 
@@ -822,7 +822,7 @@ off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt
 
 type MissionCallback = _MissionCallback
 
-作为可以[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，表示开始同步后，建立的回调函数。
+作为[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，表示注册监听后，用于接收任务列表变化通知、任务快照通知和断开连接通知的回调函数。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -830,13 +830,13 @@ type MissionCallback = _MissionCallback
 
 | 类型 | 说明 |
 | --- | --- |
-| [_MissionCallback](js-apis-inner-application-missionCallbacks-sys.md) | 作为可以registerMissionListener的入参，表示开始同步后，建立的回调函数。 |
+| [_MissionCallback](js-apis-inner-application-missionCallbacks-sys.md) | 作为可以registerMissionListener的入参，表示开始同步后，建立的回调函数。用于监听任务状态变化的回调函数，包含任务列表变化通知、任务快照通知和断开连接通知等功能。|
 
 ## MissionParameter<sup>10+</sup>
 
 type MissionParameter = _MissionParameter
 
-作为[startSyncRemoteMissions](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerstartsyncremotemissions)的入参，表示同步时所需参数的枚举。
+作为[startSyncRemoteMissions](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerstartsyncremotemissions)的入参，同步远程任务列表时所需的参数，包含deviceId、fixConflict和tag等字段。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -844,13 +844,13 @@ type MissionParameter = _MissionParameter
 
 | 类型 | 说明 |
 | --- | --- |
-| [_MissionParameter](js-apis-inner-application-missionParameter-sys.md) | 作为startSyncRemoteMissions的入参，表示同步时所需参数的枚举。 |
+| [_MissionParameter](js-apis-inner-application-missionParameter-sys.md) | 同步远端设备任务列表时所需的参数对象，包含deviceId、fixConflict和tag等字段。|
 
 ## MissionDeviceInfo<sup>10+</sup>
 
 type MissionDeviceInfo = _MissionDeviceInfo
 
-可以作为[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，表示注册监听时所需参数的枚举。
+可以作为[registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener)的入参，注册任务状态监听时所需的设备信息，包含deviceId等设备标识符字段。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -858,7 +858,7 @@ type MissionDeviceInfo = _MissionDeviceInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| [_MissionDeviceInfo](js-apis-inner-application-missionDeviceInfo-sys.md) | 可以作为registerMissionListener的入参，表示注册监听时所需参数的枚举。 |
+| [_MissionDeviceInfo](js-apis-inner-application-missionDeviceInfo-sys.md) | 注册监听时所需的设备信息对象，包含deviceId字段。 |
 
 ## ContinueState<sup>10+</sup>
 
@@ -875,7 +875,7 @@ type MissionDeviceInfo = _MissionDeviceInfo
 
 ## ContinueCallbackInfo<sup>11+</sup>
 
-当前任务流转状态监听的回调信息，包含流转状态和流转信息。
+任务流转状态监听回调时返回的信息对象，包含state（流转状态）和info（流转详细信息）两个字段。state为ACTIVE表示流转处于激活状态，INACTIVE表示流转处于未激活状态。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -883,5 +883,5 @@ type MissionDeviceInfo = _MissionDeviceInfo
 
 | 名称       | 类型    | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| state | [ContinueState](#continuestate10)   | 否    | 否    |   表示当前任务的流转状态。 |
-| info  | [ContinuableInfo](./js-apis-inner-application-continuableInfo-sys.md) | 否    | 否    |   表示当前任务的流转信息。 |
+| state | [ContinueState](#continuestate10)   | 否    | 否    |   表表示当前任务的流转状态，取值为ACTIVE（激活）或INACTIVE（未激活），根据任务实际流转状态设置。 |
+| info  | [ContinuableInfo](./js-apis-inner-application-continuableInfo-sys.md) | 否    | 否    |  表示当前任务的流转信息。|
