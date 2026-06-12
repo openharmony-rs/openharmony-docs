@@ -260,7 +260,7 @@ layoutGravity(alignment: LocalizedAlignment): T
 | top    | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置顶部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | bottom | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置底部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | center | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置纵向居中对齐方式的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
-| bias<sup>11+</sup>   | [Bias](./ts-types.md#bias对象说明) |否|是| 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| bias<sup>11+</sup>   | Bias |否|是| 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## HorizontalAlignParam<sup>23+</sup>对象说明
 
@@ -320,7 +320,7 @@ layoutGravity(alignment: LocalizedAlignment): T
 | top    | [LocalizedVerticalAlignParam](#localizedverticalalignparam12对象说明) |否|是| 设置纵向顶部对齐的参数。 |
 | bottom | [LocalizedVerticalAlignParam](#localizedverticalalignparam12对象说明) |否|是| 设置纵向底部对齐的参数。 |
 | center | [LocalizedVerticalAlignParam](#localizedverticalalignparam12对象说明) |否|是| 设置纵向居中对齐方式的参数。      |
-| bias   | [Bias](./ts-types.md#bias对象说明) |否|是| 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。|
+| bias   | Bias |否|是| 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。|
 
 ## LocalizedHorizontalAlignParam<sup>12+</sup>对象说明
 
