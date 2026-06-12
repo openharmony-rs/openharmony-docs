@@ -112,7 +112,7 @@ dump(filePath: string): Array&lt;string&gt;
 
 **使用场景**：
 - 发现泄漏后，导出详细信息进行深入分析
-- 使用内存快照工具（如Chrome DevTools）打开.heapsnapshot文件，分析对象引用关系
+- 使用内存快照分析工具打开堆快照文件，分析对象引用关系（基础dump接口生成.heapsnapshot格式，enableLeakWatcher接口生成.rawheap格式）
 - 根据泄漏列表快速定位泄漏对象的来源，进行代码修复
 - 保存泄漏信息用于后续排查和问题追踪
 
