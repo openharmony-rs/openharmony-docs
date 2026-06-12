@@ -27,7 +27,7 @@
   - [SystemProperties.WINDOW_SYSTEM_DENSITY](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口所在屏幕的系统显示大小缩放系数，从API版本26.0.0开始支持。
   - [WritableSystemEnvKey.FONT_SCALE](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#属性-1)，用于为后代组件提供局部字体缩放比例，从API版本26.0.0开始支持。
   - [WritableSystemEnvKey.DIRECTION](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#属性-1)，用于获取窗口所在屏幕的布局方向，从API版本26.0.0开始支持。
-  - 系统环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新，\@Env的参数为WritableSystemEnvKey.FONT_SCALE和WritableSystemEnvKey.DIRECTION时，父组件可通过WithEnv中的.env()方法向子组件中的\@Env传值。
+  - 系统环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新，\@Env的参数为WritableSystemEnvKey.FONT_SCALE和WritableSystemEnvKey.DIRECTION时，父组件可通过[WithEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md)中的[.env](../reference/apis-arkui/arkui-ts/ts-container-with-env.md#env)方法向子组件中的\@Env传值。
   - \@Env装饰的变量不允许开发者初始化。
     - 当\@Env装饰的类型是复杂类型时，\@Env会返回给开发者可观察的环境变量类（由[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰，且其由属性[\@Trace](./state-management/arkts-new-observedV2-and-trace.md)装饰）的实例。开发者如果想监听环境变量的变化，可以使用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)，具体示例见[在\@ComponentV2中使用\@Env](#在componentv2中使用env)。
     - 当\@Env装饰的类型是简单类型时，开发者可以在\@Component中使用[\@Watch](state-management/arkts-watch.md)，在\@ComponentV2中使用\@Monitor监听变化，具体示例见[\@Watch与\@Monitor监听\@Env装饰的变量](#watch与monitor监听env装饰的变量)。

@@ -239,7 +239,7 @@ params是[AppEventInfo](../reference/apis-performance-analysis-kit/js-apis-hivie
 | -------- | -------- | -------- |
 | file | string | 文件名称。 |
 | symbol | string | 函数名称。symbol为空可能是由于以下两种原因：<br/>**1. 二进制文件中没有保存该函数名信息。**<br/>**2. 函数名称长度超过256字节时将被全部删除，以防止超长字符串引起未知问题。** |
-| buildId | string | 文件唯一标识。**文件可能没有buildId**。|
+| buildId | string | 来源于elf中.note.gnu.build-id。 |
 | pc | string | 程序执行的指令在文件内的偏移十六进制字节数。 |
 | offset | number | 程序执行的指令在函数内偏移字节数。 |
 

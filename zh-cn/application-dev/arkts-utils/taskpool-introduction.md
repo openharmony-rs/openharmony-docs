@@ -12,7 +12,7 @@ TaskPool为应用程序提供多线程环境，降低资源消耗并提高系统
 
 TaskPool运作机制示意图
 
-![zh-cn_image_0000001964858368](figures/zh-cn_image_0000001964858368.png)
+![TaskPool-Operating-Mechanism](figures/TaskPool-Operating-Mechanism.png)
 
 TaskPool支持在宿主线程提交任务到任务队列，系统选择合适的工作线程执行任务，并将结果返回给宿主线程。接口易用，支持任务执行、取消和指定优先级。通过系统统一线程管理，结合动态调度和负载均衡算法，可以节约系统资源。系统默认启动一个任务工作线程，任务多时会自动扩容。工作线程数量上限由设备的物理核数决定，内部管理具体数量，确保调度和执行效率最优。长时间无任务分发时会缩容，减少工作线程数量。具体扩缩容机制请参见[TaskPool扩缩容机制](taskpool-introduction.md#taskpool扩缩容机制)。
 
