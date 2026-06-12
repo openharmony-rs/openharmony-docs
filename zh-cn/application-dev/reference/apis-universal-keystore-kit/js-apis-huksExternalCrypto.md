@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-模块提供外部密钥管理扩展功能的注册与注销，PIN码认证与认证状态获取等。
+模块提供外部密钥管理扩展功能的注册与注销，PIN码认证与认证状态获取等能力。
 
 > **说明**
 >
@@ -148,7 +148,7 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -160,7 +160,7 @@ const providerName = "testProviderName";
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-    value: StringToUint8Array("CryptoExtension")
+    value: stringToUint8Array("CryptoExtension")
   }
 ];
 huksExternalCrypto.registerProvider(providerName, extProperties)
@@ -211,7 +211,7 @@ unregisterProvider(providerName: string, params?: Array\<HuksExternalCryptoParam
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -223,7 +223,7 @@ const providerName = "testProviderName";
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-    value: StringToUint8Array("CryptoExtension")
+    value: stringToUint8Array("CryptoExtension")
   }
 ];
 huksExternalCrypto.unregisterProvider(providerName, extProperties)
@@ -470,7 +470,7 @@ getResourceId(providerName: string, params: HuksExternalCryptoParam[]): Promise&
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -487,15 +487,15 @@ const resourceInfo = "vendor_defined_resource_info";
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-    value: StringToUint8Array(abilityName)
+    value: stringToUint8Array(abilityName)
   },
   {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME,
-    value: StringToUint8Array(bundleName)
+    value: stringToUint8Array(bundleName)
   },
   {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO,
-    value: StringToUint8Array(resourceInfo)
+    value: stringToUint8Array(resourceInfo)
   }
 ];
 
@@ -738,6 +738,14 @@ getErrorInfo(): HuksExternalErrorInfo
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
+function stringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
 const resourceId = JSON.stringify({
   providerName: "testProviderName",
   bundleName: "com.example.cryptoapplication",
@@ -748,7 +756,7 @@ const resourceId = JSON.stringify({
 const params: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN,
-    value: StringToUint8Array(pin)
+    value: stringToUint8Array(pin)
   }
 ];
 
