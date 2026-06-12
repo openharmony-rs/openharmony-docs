@@ -1268,7 +1268,7 @@ The number of signed-in accounts reaches the upper limit.
 
 **错误描述**
 
-在当前设备上，已经登录的系统账号数量达到最大上限。
+当前设备上已登录的系统账号数量达到最大上限。
 
 **可能原因**
 
