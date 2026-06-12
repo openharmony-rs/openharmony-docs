@@ -52,7 +52,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001562820817](figures/zh-cn_image_0000001562820817.png)
+  ![flexDirectionRow](figures/flexDirectionRow.png)
 
 - FlexDirection.RowReverse：主轴为水平方向，子元素从终点端沿着FlexDirection.Row相反的方向开始排布。
 
@@ -71,7 +71,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001511900464](figures/zh-cn_image_0000001511900464.png)
+  ![flexDirectionRowReverse](figures/flexDirectionRowReverse.png)
 
 - FlexDirection.Column：主轴为垂直方向，子元素从起始端沿着垂直方向开始排布。
 
@@ -90,7 +90,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001511580884](figures/zh-cn_image_0000001511580884.png)
+  ![flexDirectionColumn](figures/flexDirectionColumn.png)
 
 - FlexDirection.ColumnReverse：主轴为垂直方向，子元素从终点端沿着FlexDirection.Column相反的方向开始排布。
 
@@ -109,7 +109,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001562940541](figures/zh-cn_image_0000001562940541.png)
+  ![flexDirectionColumnReverse](figures/flexDirectionColumnReverse.png)
 
 
 ## 布局换行
@@ -132,7 +132,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001562700425](figures/zh-cn_image_0000001562700425.png)
+  ![flexWrapNoWrap](figures/flexWrapNoWrap.png)
 
 - FlexWrap.Wrap：换行，每一行子元素按照主轴方向排列。
 
@@ -168,7 +168,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001562940521](figures/zh-cn_image_0000001562940521.png)
+  ![flexWrapWrapReverse](figures/flexWrapWrapReverse.png)
 
 
 ## 主轴对齐方式
@@ -194,7 +194,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001511421280](figures/zh-cn_image_0000001511421280.png)
+  ![flexAlignStart](figures/flexAlignStart.png)
 
 - FlexAlign.Center：子元素在主轴方向居中对齐。
 
@@ -212,7 +212,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001563060681](figures/zh-cn_image_0000001563060681.png)
+  ![flexAlignCenter](figures/flexAlignCenter.png)
 
 - FlexAlign.End：子元素在主轴方向终点端对齐，最后一个子元素与父元素边沿对齐，其他元素与后一个元素对齐。
 
@@ -230,7 +230,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001562820809](figures/zh-cn_image_0000001562820809.png)
+  ![flexAlignEnd](figures/flexAlignEnd.png)
 
 - FlexAlign.SpaceBetween：Flex主轴方向均匀分配弹性元素，相邻子元素之间距离相同。第一个子元素和最后一个子元素与父元素边沿对齐。
 
@@ -248,7 +248,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001511421288](figures/zh-cn_image_0000001511421288.png)
+  ![flexAlignSpaceBetween](figures/flexAlignSpaceBetween.png)
 
 - FlexAlign.SpaceAround：Flex主轴方向均匀分配弹性元素，相邻子元素之间距离相同。第一个子元素到主轴起始端的距离和最后一个子元素到主轴终点端的距离是相邻元素之间距离的一半。
 
@@ -266,7 +266,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001511900436](figures/zh-cn_image_0000001511900436.png)
+  ![flexAlignSpaceAround](figures/flexAlignSpaceAround.png)
 
 - FlexAlign.SpaceEvenly：Flex主轴方向元素等间距布局，相邻子元素之间的间距、第一个子元素与主轴起始端的间距、最后一个子元素到主轴终点端的间距均相等。
 
@@ -284,7 +284,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001563060713](figures/zh-cn_image_0000001563060713.png)
+  ![flexAlignSpaceEvenly](figures/flexAlignSpaceEvenly.png)
 
 
 ## 交叉轴对齐方式
@@ -313,7 +313,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001563060677](figures/zh-cn_image_0000001563060677.png)
+  ![flexItemAlignAuto](figures/flexItemAlignAuto.png)
 
 - ItemAlign.Start：交叉轴方向首部对齐。
 
@@ -331,7 +331,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001562700453](figures/zh-cn_image_0000001562700453.png)
+  ![flexItemAlignStart](figures/flexItemAlignStart.png)
 
 - ItemAlign.Center：交叉轴方向居中对齐。
 
@@ -367,7 +367,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001511580876](figures/zh-cn_image_0000001511580876.png)
+  ![flexItemAlignEnd](figures/flexItemAlignEnd.png)
 
 - ItemAlign.Stretch：交叉轴方向拉伸填充，在未设置尺寸时，拉伸到容器尺寸。元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置[FlexWrap](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#flexwrap)为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行或列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。
 
@@ -385,7 +385,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001511421252](figures/zh-cn_image_0000001511421252.png)
+  ![flexItemAlignStretch](figures/flexItemAlignStretch.png)
 
 - ItemAlign.Baseline：交叉轴方向文本基线对齐。
 
@@ -403,7 +403,7 @@
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001511900440](figures/zh-cn_image_0000001511900440.png)
+  ![flexItemAlignBaseline](figures/flexItemAlignBaseline.png)
 
 
 ### 子元素设置交叉轴对齐
@@ -434,7 +434,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 ```
 
 
-![zh-cn_image_0000001562940533](figures/zh-cn_image_0000001562940533.png)
+![flexAlignSelf](figures/flexAlignSelf.png)
 
 
 上例中，Flex容器中alignItems设置交叉轴子元素的对齐方式为居中，子元素自身设置了alignSelf属性的情况，覆盖父组件的alignItems值，表现为alignSelf的定义。
@@ -462,7 +462,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001511900460](figures/zh-cn_image_0000001511900460.png)
+  ![flexAlignCenterFlexAlignStart](figures/flexAlignCenterFlexAlignStart.png)
 
 - FlexAlign.Center：子元素各行在交叉轴方向居中对齐。
 
@@ -482,7 +482,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001511421256](figures/zh-cn_image_0000001511421256.png)
+  ![flexAlignCenterFlexAlignCenter](figures/flexAlignCenterFlexAlignCenter.png)
 
 - FlexAlign.End：子元素各行与交叉轴终点对齐。
 
@@ -502,7 +502,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001562820801](figures/zh-cn_image_0000001562820801.png)
+  ![flexAlignCenterFlexAlignEnd](figures/flexAlignCenterFlexAlignEnd.png)
 
 - FlexAlign.SpaceBetween：子元素各行与交叉轴两端对齐，各行间垂直间距平均分布。
 
@@ -522,7 +522,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001511900448](figures/zh-cn_image_0000001511900448.png)
+  ![flexAlignCenterFlexAlignSpaceBetween](figures/flexAlignCenterFlexAlignSpaceBetween.png)
 
 - FlexAlign.SpaceAround：子元素各行间距相等，是元素首尾行与交叉轴两端距离的两倍。
 
@@ -542,7 +542,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001562700445](figures/zh-cn_image_0000001562700445.png)
+  ![flexAlignCenterFlexAlignSpaceAround](figures/flexAlignCenterFlexAlignSpaceAround.png)
 
 - FlexAlign.SpaceEvenly:  子元素各行间距，子元素首尾行与交叉轴两端距离都相等。
 
@@ -562,7 +562,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   .backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001511580864](figures/zh-cn_image_0000001511580864.png)
+  ![flexAlignCenterFlexAlignSpaceEvenly](figures/flexAlignCenterFlexAlignSpaceEvenly.png)
 
 
 ## 自适应拉伸
@@ -599,7 +599,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   }.width('90%').height(120).padding(10).backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001562940505](figures/zh-cn_image_0000001562940505.png)
+  ![flexBasis](figures/flexBasis.png)
 
 - [flexGrow](../reference/apis-arkui//arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow)：设置父容器的剩余空间分配给此属性所在组件的比例，用于分配父组件的剩余空间。
 
@@ -625,7 +625,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   }.width(360).height(120).padding(10).backgroundColor('#AFEEEE')
   ```
   
-  ![zh-cn_image_0000001562700449](figures/zh-cn_image_0000001562700449.png)
+  ![flexGrow](figures/flexGrow.png)
   
   父容器宽度360vp，三个子元素原始宽度均为100vp，左右padding为20vp，总和320vp，剩余空间40vp根据flexGrow值的占比分配给子元素，未设置flexGrow的子元素不参与分配。
   
@@ -657,7 +657,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
   }.width(400).height(120).padding(10).backgroundColor('#AFEEEE')
   ```
 
-  ![zh-cn_image_0000001562820813](figures/zh-cn_image_0000001562820813.png)
+  ![flexShrink](figures/flexShrink.png)
 
   父容器宽度400vp，三个子元素原始宽度为200vp，左右padding为20vp，父容器给子元素的布局空间为380vp，超出父容器空间220vp。
   
@@ -697,7 +697,7 @@ struct FlexExample {
 }
 ```
 
-![zh-cn_image_0000001511900452](figures/zh-cn_image_0000001511900452.png)
+![flexExample](figures/flexExample.png)
 
 ## 相关实例
 
