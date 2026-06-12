@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 网格容器中单项内容容器。
