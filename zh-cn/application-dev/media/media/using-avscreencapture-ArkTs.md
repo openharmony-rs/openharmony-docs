@@ -186,10 +186,11 @@
    2in1设备配置displayId为扩展屏Id，可拉起录屏窗口选择界面，用户在界面上选择录屏内容，最终录屏内容以用户在弹窗界面上的选择为准。
 
    ArkTS-Dyn示例：
+
    ```TypeScript
-   const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;	 
-   let filePath: string = context.filesDir + '/screenCapture.mp4';	 
-   let captureFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);	 
+   const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   let filePath: string = context.filesDir + '/screenCapture.mp4';
+   let captureFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
    if (!captureFile) {
      console.error("处理异常情况");
      return;
@@ -213,11 +214,11 @@
        frameHeight: displayClass.height,
        // 参考应用文件访问与管理开发示例新建并读写一个文件fd。
        fd: captureFile.fd,
-       // 可选参数及其默认值。	 
+       // 可选参数及其默认值。
        videoBitrate: 10000000,
        audioSampleRate: 48000,
-       audioChannelCount: 2, 
-       audioBitrate: 96000, 
+       audioChannelCount: 2,
+       audioBitrate: 96000,
        displayId: 0,
        preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H264_AAC_MP4
    };
