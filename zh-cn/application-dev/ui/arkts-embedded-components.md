@@ -400,6 +400,6 @@ struct Extension {
 
 1. 在支持EmbeddedUIExtensionAbility的设备上启动应用；
 
-   ![zh-cn_image_0000001502261065](figures/zh-cn_image_0000001502261065.jpg)
+   ![zh-cn_image_0000001502261065](figures/Scenario-Example.jpg)
 
 2. 点击terminateSelfWithResult按钮，提供方内容消失，页面显示onTerminated信息。
