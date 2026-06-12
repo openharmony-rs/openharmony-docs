@@ -753,7 +753,7 @@ getSockfdRxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| sockfd   | number                 | 是   | 指定查询的Socket的fd(file description)。                     |
+| sockfd   | number                 | 是   | 指定查询的Socket的FD(file description)。                     |
 | callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取Socket的下行流量时，error为undefined，否则为错误对象。 |
 
 **错误码：**
