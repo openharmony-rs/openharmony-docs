@@ -151,9 +151,9 @@ void AddEnvCleanupHook(napi_env env)
 
 static napi_value Test(napi_env env, napi_callback_info info)
 {
-    //第一次注册
+    // 第一次注册
     AddEnvCleanupHook(env);
-    //第二次重复注册
+    // 第二次重复注册
     AddEnvCleanupHook(env);
     return nullptr;
 }
@@ -274,4 +274,5 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 3. 在native方法中创建的所有scope必须在该方法返回之前被关闭。  
 
 相关参考资料链接：
-[使用Node-API接口进行生命周期相关开发](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-life-cycle#napi_open_handle_scopenapi_close_handle_scope)。
+
+[使用Node-API接口进行生命周期相关开发](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-life-cycle#napi_open_handle_scopenapi_close_handle_scope)
