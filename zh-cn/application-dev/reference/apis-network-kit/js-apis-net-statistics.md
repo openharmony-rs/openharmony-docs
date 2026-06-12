@@ -507,7 +507,7 @@ getAllTxBytes(): Promise\<number>
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | 以 Promise 形式返回获取结果。返回所有网卡实时上行流量（单位：字节）。 |
+| Promise\<number> | 以Promise 形式返回获取结果。返回所有网卡实时上行流量（单位：字节）。 |
 
 **错误码：**
 
@@ -741,11 +741,11 @@ statistics.getUidTxBytes(uid).then((stats: number) => {
 
 getSockfdRxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
-获取指定socket的下行流量（单位：字节）。使用callback异步回调。
+获取指定Socket的下行流量（单位：字节）。使用callback异步回调。
 
 > **说明：**
 >
-> 推荐在socket连接时使用，否则socket已经关闭后无法查询到对应流量数据。<br>
+> 推荐在Socket连接时使用，否则Socket已经关闭后无法查询到对应流量数据。<br>
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -753,8 +753,8 @@ getSockfdRxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| sockfd   | number                 | 是   | 指定查询的socket的fd(file description)。                     |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取socket的下行流量时，error为undefined，否则为错误对象。 |
+| sockfd   | number                 | 是   | 指定查询的Socket的fd(file description)。                     |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取Socket的下行流量时，error为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -773,7 +773,7 @@ getSockfdRxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
-let sockfd = 50; // 实际开发中需要先根据自己创建的socket获取到。
+let sockfd = 50; // 实际开发中需要先根据自己创建的Socket获取到。
 statistics.getSockfdRxBytes(sockfd, (error: BusinessError, stats: number) => {
   if (error) {
     console.error(JSON.stringify(error));
@@ -787,11 +787,11 @@ statistics.getSockfdRxBytes(sockfd, (error: BusinessError, stats: number) => {
 
 getSockfdRxBytes(sockfd: number): Promise\<number\>
 
-获取指定socket的下行流量（单位：字节）。使用Promise异步回调。
+获取指定Socket的下行流量（单位：字节）。使用Promise异步回调。
 
 > **说明：**
 >
-> 推荐在socket连接时使用，否则socket已经关闭后无法查询到对应流量数据。<br>
+> 推荐在Socket连接时使用，否则Socket已经关闭后无法查询到对应流量数据。<br>
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -799,13 +799,13 @@ getSockfdRxBytes(sockfd: number): Promise\<number\>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| sockfd | number | 是   | 指定查询的socket的fd(file description)。 |
+| sockfd | number | 是   | 指定查询的Socket的fd(file description)。 |
 
 **返回值：**
 
 | 类型             | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| Promise\<number> | Promise对象。返回该socket的下行流量（单位：字节）。 |
+| Promise\<number> | Promise对象。返回该Socket的下行流量（单位：字节）。 |
 
 **错误码：**
 
@@ -824,7 +824,7 @@ getSockfdRxBytes(sockfd: number): Promise\<number\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
-let sockfd = 50; // 实际开发中需要先根据自己创建的socket获取到。
+let sockfd = 50; // 实际开发中需要先根据自己创建的Socket获取到。
 statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
   console.info(JSON.stringify(stats));
 }).catch((err: BusinessError) => {
@@ -836,11 +836,11 @@ statistics.getSockfdRxBytes(sockfd).then((stats: number) => {
 
 getSockfdTxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
-获取指定socket的上行流量（单位：字节）。使用callback异步回调。
+获取指定Socket的上行流量（单位：字节）。使用callback异步回调。
 
 > **说明：**
 >
-> 推荐在socket连接时使用，否则socket已经关闭后无法查询到对应流量数据。<br>
+> 推荐在Socket连接时使用，否则Socket已经关闭后无法查询到对应流量数据。<br>
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -848,8 +848,8 @@ getSockfdTxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| sockfd   | number                 | 是   | 指定查询的socket的fd(file description)。                     |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取socket的上行流量时，error为 undefined，否则为错误对象。 |
+| sockfd   | number                 | 是   | 指定查询的Socket的fd(file description)。                     |
+| callback | AsyncCallback\<number> | 是   | 回调函数。当成功获取Socket的上行流量时，error为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -868,7 +868,7 @@ getSockfdTxBytes(sockfd: number, callback: AsyncCallback\<number\>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
-let sockfd = 50; // 实际开发中需要先根据自己创建的socket获取到。
+let sockfd = 50; // 实际开发中需要先根据自己创建的Socket获取到。
 statistics.getSockfdTxBytes(sockfd, (error: BusinessError, stats: number) => {
   if (error) {
     console.error(JSON.stringify(error));
@@ -882,11 +882,11 @@ statistics.getSockfdTxBytes(sockfd, (error: BusinessError, stats: number) => {
 
 getSockfdTxBytes(sockfd: number): Promise\<number\>
 
-获取指定socket的上行流量（单位：字节）。使用Promise异步回调。
+获取指定Socket的上行流量（单位：字节）。使用Promise异步回调。
 
 > **说明：**
 >
-> 推荐在socket连接时使用，否则socket已经关闭后无法查询到对应流量数据。<br>
+> 推荐在Socket连接时使用，否则Socket已经关闭后无法查询到对应流量数据。<br>
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -894,13 +894,13 @@ getSockfdTxBytes(sockfd: number): Promise\<number\>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| sockfd | number | 是   | 指定查询的socket的fd(file description)。 |
+| sockfd | number | 是   | 指定查询的Socket的fd(file description)。 |
 
 **返回值：**
 
 | 类型             | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| Promise\<number> | Promise对象。返回该socket的上行流量（单位：字节）。 |
+| Promise\<number> | Promise对象。返回该Socket的上行流量（单位：字节）。 |
 
 **错误码：**
 
@@ -919,7 +919,7 @@ getSockfdTxBytes(sockfd: number): Promise\<number\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
-let sockfd = 50; // 实际开发中需要先根据自己创建的socket获取到。
+let sockfd = 50; // 实际开发中需要先根据自己创建的Socket获取到。
 statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
   console.info(JSON.stringify(stats));
 }).catch((err: BusinessError) => {
