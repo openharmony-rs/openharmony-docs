@@ -292,7 +292,7 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     char *fileDirPath;
     int32_t bufferSize = 1000;
     int32_t writeLength = 0;
-    AbilityRunTime_ErrorCode result = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, bufferSize, &writeLength);
+    AbilityRuntime_ErrorCode result = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, bufferSize, &writeLength);
     if (!fileDirPath) {
         napi_value errCode;
         napi_create_double(env, result, &errCode);
