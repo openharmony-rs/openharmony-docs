@@ -246,7 +246,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
         }
 
         // 3.调用prepare接口。
-        int result = OH_AVRecorder_Prepare(g_avRecorder, config);
+        OH_AVErrCode result = OH_AVRecorder_Prepare(g_avRecorder, config);
         if (result != AV_ERR_OK) {
             OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Prepare failed %{public}d", result);
         }
@@ -453,7 +453,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       }
 
       // 1.3调用prepare接口。
-      int result = OH_AVRecorder_Prepare(g_avRecorder, config);
+      OH_AVErrCode result = OH_AVRecorder_Prepare(g_avRecorder, config);
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Prepare failed %{public}d", result);
       }
@@ -468,7 +468,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    {
       (void)info;
       OH_LOG_INFO(LOG_APP, "==NDKDemo== g_avRecorder start: %{public}p", g_avRecorder);
-      int result = OH_AVRecorder_Start(g_avRecorder);
+      OH_AVErrCode result = OH_AVRecorder_Start(g_avRecorder);
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Start failed %{public}d", result);
       }
@@ -481,7 +481,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    static napi_value PauseAVRecorder(napi_env env, napi_callback_info info)
    {
       (void)info;
-      int result = OH_AVRecorder_Pause(g_avRecorder);
+      OH_AVErrCode result = OH_AVRecorder_Pause(g_avRecorder);
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Pause failed %{public}d", result);
       }
@@ -494,7 +494,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    static napi_value ResumeAVRecorder(napi_env env, napi_callback_info info)
    {
       (void)info;
-      int result = OH_AVRecorder_Resume(g_avRecorder);
+      OH_AVErrCode result = OH_AVRecorder_Resume(g_avRecorder);
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Resume failed %{public}d", result);
       }
@@ -507,7 +507,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    static napi_value StopAVRecorder(napi_env env, napi_callback_info info)
    {
       (void)info;
-      int result = OH_AVRecorder_Stop(g_avRecorder);
+      OH_AVErrCode result = OH_AVRecorder_Stop(g_avRecorder);
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Stop failed %{public}d", result);
       }
@@ -529,7 +529,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
          return res;
       }
 
-      int result = OH_AVRecorder_Reset(g_avRecorder);
+      OH_AVErrCode result = OH_AVRecorder_Reset(g_avRecorder);
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Reset failed %{public}d", result);
       }
@@ -550,7 +550,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
          return res;
       }
       
-      int result = OH_AVRecorder_Release(g_avRecorder);
+      OH_AVErrCode result = OH_AVRecorder_Release(g_avRecorder);
       g_avRecorder = nullptr;   // 释放录制资源后，需要显式地将g_avRecorder指针置空。
       
       if (result != AV_ERR_OK) {
