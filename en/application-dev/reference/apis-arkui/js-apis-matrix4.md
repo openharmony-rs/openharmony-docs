@@ -770,7 +770,7 @@ struct Test {
 }
 ```
 
-![en-us_image_0000001219744181](figures/Matrix4-copy.png)
+![en-us_image_0000001219744181](figures/Matrix4-copy1.png)
 
 ## matrix4.invert<sup>(deprecated)</sup>
 
