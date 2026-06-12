@@ -95,7 +95,7 @@ ArkTS-Sta: color(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \|  undefined| 是   | 未选中项文本颜色。<br/>默认值：0x99182431，显示为略带透明的棕色。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \|  undefined| 是   | 未选中项文本颜色。<br/>默认值：0x99182431，显示为略带透明的深暗蓝色。<br/>取值为undefined时，按默认值处理。 |
 
 ### selectedColor
 
@@ -161,7 +161,7 @@ ArkTS-Sta: selectedBackgroundColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 选中项背景颜色。<br/>默认值：0x1A007DFF，显示为半透明的蓝绿色。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 选中项背景颜色。<br/>默认值：0x1A007DFF，显示为半透明的蓝色。<br/>取值为undefined时，按默认值处理。 |
 
 ### popupBackground
 
@@ -1006,7 +1006,7 @@ struct AlphabetIndexerSample {
               .popupBackground(0xD2B48C) // 提示弹窗背景颜色
               .usingPopup(true) // 索引项被选中时显示提示弹窗
               .selectedFont({ size: 16, weight: FontWeight.Bolder }) // 选中项文本样式
-              .popupFont({ size: 30, weight: FontWeight.Bolder }) // 提示弹窗内容的文本样式
+              .popupFont({ size: 30, weight: FontWeight.Bolder }) // 提示弹窗一级索引的文本样式
               .itemSize(28) // 每一项的尺寸大小
               .alignStyle(IndexerAlign.Right) // 提示弹窗在索引条左侧弹出
               .popupTitleBackground("#D2B48C") // 设置提示弹窗一级索引项背景颜色
