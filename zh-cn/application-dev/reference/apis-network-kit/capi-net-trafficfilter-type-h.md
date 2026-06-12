@@ -19,8 +19,6 @@
 
 **起始版本：** 26.0.0
 
-**相关模块：** [TrafficFilter](capi-trafficfilter.md)
-
 ## 汇总
 
 ### 结构体
