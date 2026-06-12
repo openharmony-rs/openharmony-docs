@@ -126,14 +126,14 @@
    })
    // ...
    ```
-6. 获取指定socket流量数据。
+6. 获取指定Socket流量数据。
 
-    分别调用[getSockfdRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetsockfdrxbytes11-1)和[getSockfdTxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetsockfdtxbytes11-1)接口，传入socket fd获取指定socket的下行和上行流量数据。
+    分别调用[getSockfdRxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetsockfdrxbytes11-1)和[getSockfdTxBytes](../reference/apis-network-kit/js-apis-net-statistics.md#statisticsgetsockfdtxbytes11-1)接口，传入Socket fd获取指定Socket的下行和上行流量数据。
 
    <!-- @[flow_management_getSockfdRxBytes_and_getSockfdTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // 获取指定socket实时下行流量数据。
+   // 获取指定Socket实时下行流量数据。
    let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
    // ...
    tcp.getSocketFd().then((sockfd: number) => {
