@@ -94,6 +94,7 @@
       - [StdProcess (进程管理标准库)](arkts-sta-std_process.md)
       - [taskpool](arkts-sta-taskpool.md)
       - [Promise (异步操作)](arkts-sta-promise.md)
+      - [Timer (定时器)](arkts-sta-timer.md)
     - 互操作相关（ArkTS-Sta）<!--js-apis-arkts-interop-->
       - [STValue](arkts-sta-interop-stvalue.md)
       - [ESValue](arkts-sta-interop-esvalue.md)
