@@ -580,6 +580,6 @@ accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountI
   accountManager.activateOsAccount(wantTemp, accountId);
   console.info(`Succeeded in activating os accountId:${accountId}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create and  activate normal os account: code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to create and activate normal os account: code is ${err.code}, message is ${err.message}`);
 });
 ```
