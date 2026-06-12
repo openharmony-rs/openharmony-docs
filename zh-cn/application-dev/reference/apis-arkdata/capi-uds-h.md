@@ -719,7 +719,7 @@ void OH_UdsAppItem_Destroy(OH_UdsAppItem* pThis)
 
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 
 ### OH_UdsAppItem_GetType()
 
@@ -738,7 +738,7 @@ const char* OH_UdsAppItem_GetType(OH_UdsAppItem* pThis)
 
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 
 **返回：**
 
@@ -763,7 +763,7 @@ const char* OH_UdsAppItem_GetId(OH_UdsAppItem* pThis)
 
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 
 **返回：**
 
@@ -788,7 +788,7 @@ const char* OH_UdsAppItem_GetName(OH_UdsAppItem* pThis)
 
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 
 **返回：**
 
@@ -813,7 +813,7 @@ const char* OH_UdsAppItem_GetIconId(OH_UdsAppItem* pThis)
 
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 
 **返回：**
 
@@ -838,7 +838,7 @@ const char* OH_UdsAppItem_GetLabelId(OH_UdsAppItem* pThis)
 
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 
 **返回：**
 
@@ -863,7 +863,7 @@ const char* OH_UdsAppItem_GetBundleName(OH_UdsAppItem* pThis)
 
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 
 **返回：**
 
@@ -888,7 +888,7 @@ const char* OH_UdsAppItem_GetAbilityName(OH_UdsAppItem* pThis)
 
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 
 **返回：**
 
@@ -913,7 +913,7 @@ int OH_UdsAppItem_SetId(OH_UdsAppItem* pThis, const char* appId)
 
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 | const char* appId                             | 表示应用ID。                                                 |
 
 **返回：**
@@ -939,7 +939,7 @@ int OH_UdsAppItem_SetName(OH_UdsAppItem* pThis, const char* appName)
 
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 | const char* appName                           | 表示应用名称。                                               |
 
 **返回：**
@@ -965,7 +965,7 @@ int OH_UdsAppItem_SetIconId(OH_UdsAppItem* pThis, const char* appIconId)
 
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 | const char* appIconId                         | 表示图片ID。                                                 |
 
 **返回：**
@@ -991,7 +991,7 @@ int OH_UdsAppItem_SetLabelId(OH_UdsAppItem* pThis, const char* appLabelId)
 
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 | const char* appLabelId                        | 表示标签ID。                                                 |
 
 **返回：**
@@ -1017,7 +1017,7 @@ int OH_UdsAppItem_SetBundleName(OH_UdsAppItem* pThis, const char* bundleName)
 
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 | const char* bundleName                        | 表示bundle名称。                                             |
 
 **返回：**
@@ -1043,7 +1043,7 @@ int OH_UdsAppItem_SetAbilityName(OH_UdsAppItem* pThis, const char* abilityName)
 
 | 参数项                                        | 描述                                                         |
 | --------------------------------------------- | ------------------------------------------------------------ |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 | const char* abilityName                       | 表示ability名称。                                            |
 
 **返回：**
@@ -1838,7 +1838,7 @@ int OH_UdsPlainText_SetDetails(OH_UdsPlainText* pThis, const OH_UdsDetails* deta
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)* pThis | 表示指向纯文本类型[OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)实例的指针。 |
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
 
 **返回：**
 
@@ -1888,7 +1888,7 @@ int OH_UdsHyperlink_SetDetails(OH_UdsHyperlink* pThis, const OH_UdsDetails* deta
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)* pThis | 表示指向超链接类型[OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)实例的指针。 |
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
 
 **返回：**
 
@@ -1938,7 +1938,7 @@ int OH_UdsHtml_SetDetails(OH_UdsHtml* pThis, const OH_UdsDetails* details)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdsHtml](capi-udmf-oh-udshtml.md)* pThis | 表示指向超文本标记语言类型[OH_UdsHtml](capi-udmf-oh-udshtml.md)实例的指针。 |
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
 
 **返回：**
 
@@ -1962,7 +1962,7 @@ int OH_UdsAppItem_GetDetails(OH_UdsAppItem* pThis, OH_UdsDetails* details)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
 | [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 该参数是输出参数，表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
 
 **返回：**
@@ -1987,8 +1987,8 @@ int OH_UdsAppItem_SetDetails(OH_UdsAppItem* pThis, const OH_UdsDetails* details)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示一个指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+| [OH_UdsAppItem](capi-udmf-oh-udsappitem.md)* pThis | 表示指向桌面图标类型[OH_UdsAppItem](capi-udmf-oh-udsappitem.md)对象的指针。 |
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
 
 **返回：**
 
@@ -2038,7 +2038,7 @@ int OH_UdsFileUri_SetDetails(OH_UdsFileUri* pThis, const OH_UdsDetails* details)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)* pThis | 表示指向文件Uri类型[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例的指针。 |
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
 
 **返回：**
 
@@ -2088,7 +2088,7 @@ int OH_UdsPixelMap_SetDetails(OH_UdsPixelMap* pThis, const OH_UdsDetails* detail
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)* pThis | 表示指向像素图片类型[OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)实例的指针。 |
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* details | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针，该指针不能为空。 |
 
 **返回：**
 
@@ -2150,7 +2150,7 @@ bool OH_UdsDetails_HasKey(const OH_UdsDetails* pThis, const char* key)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
 | const char* key | 表示字典类型中键值对的键。 |
 
 **返回：**
@@ -2250,7 +2250,7 @@ const char* OH_UdsDetails_GetValue(const OH_UdsDetails* pThis, const char* key)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
+| const [OH_UdsDetails](capi-udmf-oh-udsdetails.md)* pThis | 表示指向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)实例的指针。 |
 | const char* key | 表示字典类型中键值对的键。 |
 
 **返回：**
