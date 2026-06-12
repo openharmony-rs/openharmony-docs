@@ -582,7 +582,7 @@ let wantTemp: Want = {
 accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountInfo: osAccount.OsAccountInfo) => {
   console.info('Succeeded in creating normal os account, accountInfo: ' + JSON.stringify(accountInfo));
   try {
-  // 根据系统账号ID移除创建的账号
+  // 根据系统账号ID切换账号
     let accountId: number = accountInfo.localId;
     accountManager.activateOsAccount(wantTemp, accountId);
     console.info(`Succeeded in activating os accountId:${accountId}`);
@@ -592,13 +592,4 @@ accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountI
 }).catch((err: BusinessError) => {
   console.error(`Failed to create normal os account: code is ${err.code}, message is ${err.message}`);
 });
-
-try {
-  // 参数需根据实际情况进行替换
-  let accountId: number = 101;
-  accountManager.activateOsAccount(wantTemp, accountId);
-  console.info(`Succeeded in activating os account.`);
-} catch (err) {
-  console.error(`Failed to activate os account. Code: ${err.code}, message: ${err.message}`);
-}
 ```
