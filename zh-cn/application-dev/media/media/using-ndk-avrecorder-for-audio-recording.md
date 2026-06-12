@@ -214,9 +214,9 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
         char *fileDirPath;
         int32_t bufferSize = 1000;
         int32_t writeLength = 0;
-        AbilityRunTime_ErrorCode result = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, bufferSize, &writeLength);
+        AbilityRuntime_ErrorCode errCode = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, bufferSize, &writeLength);
         if (!fileDirPath) {
-           OH_LOG_ERROR(LOG_APP, "==NDKDemo== GetFilesDir failed, errCode: %{public}d", result);
+           OH_LOG_ERROR(LOG_APP, "==NDKDemo== GetFilesDir failed, errCode: %{public}d", errCode);
            napi_value res;
            napi_create_int32(env, -1, &res);
            return res;
@@ -423,9 +423,9 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       char *fileDirPath;
       int32_t bufferSize = 1000;
       int32_t writeLength = 0;
-      AbilityRunTime_ErrorCode result = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, bufferSize, &writeLength);
+      AbilityRuntime_ErrorCode errCode = OH_AbilityRuntime_ApplicationContextGetFilesDir(fileDirPath, bufferSize, &writeLength);
       if (!fileDirPath) {
-         OH_LOG_ERROR(LOG_APP, "==NDKDemo== GetFilesDir failed, errCode: %{public}d", result);
+         OH_LOG_ERROR(LOG_APP, "==NDKDemo== GetFilesDir failed, errCode: %{public}d", errCode);
          napi_value res;
          napi_create_int32(env, -1, &res);
          return res;
