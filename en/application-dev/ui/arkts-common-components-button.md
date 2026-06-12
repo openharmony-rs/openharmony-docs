@@ -124,7 +124,7 @@ Buttons comes in four types, set using the **type** parameter: Capsule, Circle, 
     .height(40)
   ```
 
-  ![en-us_image_0000001563060641](figures/en-us_image_0000001511421208.png)
+  ![button-set-type](figures/button-set-type.png)
 
 ## Setting Styles
 
@@ -332,7 +332,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   }
   ```
 
-  ![en-us_image_0000001562700393](figures/en-us_image_0000001562940814.gif)
+  ![button-full-example](figures/button-full-example.gif)
 
 
 - Using the button for submitting forms
