@@ -187,84 +187,39 @@
 
     ArkTS-Dyn示例：
     ```TypeScript
-    const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    let filePath: string = context.filesDir + '/screenCapture.mp4';
-    let captureFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-    if (!captureFile) {
+    const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;	 
+    let filePath: string = context.filesDir + '/screenCapture.mp4';	 
+    let captureFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);	 
+    if (!captureFile) {	 
       console.error("处理异常情况");
       return;
     }
     let displayClass: display.Display | undefined = undefined;
     try {
       displayClass = display.getDefaultDisplaySync();
-      hilog.info(DOMAIN, 'DisplayTest', `The display info is: ${JSON.stringify(displayClass)}`);
+      console.info(`The display info is: ${JSON.stringify(displayClass)}`);
     } catch (exception) {
-      hilog.error(DOMAIN, 'DisplayTest',
-        `Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+      console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
     }
     if (!displayClass) {
       console.error("Failed to get displayClass.");
       return;
     }
-    captureConfig: media.AVScreenCaptureRecordConfig = {
-        // 开发者可根据屏幕宽高设置相应尺寸。
-        // 屏幕宽度应设置为64的倍数。
-        frameWidth: displayClass.width,
-        // 根据屏幕的高设置高度。
-        frameHeight: displayClass.height,
-        // 参考应用文件访问与管理开发示例新建并读写一个文件fd。
-        fd: captureFile.fd,
-        // 可选参数及其默认值。
-        videoBitrate: 10000000,
-        audioSampleRate: 48000,
-        audioChannelCount: 2,
-        audioBitrate: 96000,
-        displayId: 0,
-        preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H264_AAC_MP4
+    captureConfig: media.AVScreenCaptureRecordConfig = {	 
+        // 开发者可以根据自身的需要设置宽高。	 
+        frameWidth: 768,	 
+        frameHeight: 1280,	 
+        // 参考应用文件访问与管理开发示例新建并读写一个文件fd。	 
+        fd: captureFile.fd,	 
+        // 可选参数及其默认值。	 
+        videoBitrate: 10000000,	 
+        audioSampleRate: 48000,	 
+        audioChannelCount: 2,	 
+        audioBitrate: 96000,	 
+        displayId: 0,	 
+        preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H264_AAC_MP4 
     };
     ```
-
-   ArkTS-Sta示例：
-
-   <!-- @[get_file_fd](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
-   
-   ``` TypeScript
-   public updateFileFd(filesDir: string): void {
-     // 获取文件fd。
-     this.fileName = systemDateTime.getTime(true).toString() + '.mp4';
-     this.path = filesDir + '/' + this.fileName;
-     try {
-       this.file = fs.openSync(this.path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-     } catch (error) {
-       let err = error as BusinessError;
-       hilog.error(0x0000, 'testTag', `openSync fail. message = ${err.message}`);
-     }
-   }
-   ```
-
-   <!-- @[set_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
-   
-   ``` TypeScript
-   // 配置屏幕录制参数。
-   let displayInfo: display.Display | undefined = await display.getDefaultDisplaySync();
-   if (displayInfo == undefined || displayInfo.width == undefined || displayInfo.height == undefined) {
-     return;
-   }
-   
-   let captureConfig: media.AVScreenCaptureRecordConfig = {
-     // 开发者可以根据自己的需要设置宽度和高度。
-     frameWidth: displayInfo.width.toInt(),
-     frameHeight: displayInfo.height.toInt(),
-     // 用于写入文件的文件描述符（fd）。
-     fd: (this.file as fs.File).fd,
-     // 可选参数及其默认值。
-     videoBitrate: 10000000,
-     audioSampleRate: 48000,
-     audioChannelCount: 2,
-     audioBitrate: 96000,
-     displayId: 0,
-   };
-   ```
 
    ArkTS-Sta示例：
 
