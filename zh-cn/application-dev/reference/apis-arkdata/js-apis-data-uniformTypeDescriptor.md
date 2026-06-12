@@ -393,7 +393,7 @@ isHigherLevelType(type: string): boolean
 
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
-| type    | string  | 是    |所指定的标准化数据类型（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID）。   |
+| type    | string  | 是    |所指定的标准化数据类型（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。   |
 
 **返回值：**
 
@@ -417,7 +417,8 @@ ArkTS-Dyn示例：
 import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
+try {
+    // 获取TypeDescriptor对象
     let typeObj : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.source-code');
     let ret = typeObj.isHigherLevelType('general.type-script');
     if(ret) {
@@ -491,7 +492,8 @@ ArkTS-Dyn示例：
 import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
+try {
+    // 获取两个TypeDescriptor对象进行比较
     let typeA : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
     let typeB : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.python-script');
     if(!typeA.equals(typeB)) {
@@ -745,6 +747,11 @@ try {
 getUniformDataTypesByFilenameExtension(filenameExtension: string, belongsTo?: string): Array\<string>
 
 根据给定的文件后缀名和所归属的标准化数据类型查询标准化数据类型ID列表。
+
+**使用场景：**
+- 展示某个文件后缀对应的所有可能数据类型
+- 文件类型选择器中提供多种类型选项
+- 分析文件格式与数据类型的对应关系
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
