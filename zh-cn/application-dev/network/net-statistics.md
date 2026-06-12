@@ -146,7 +146,7 @@
      });
    })
    // ...
-   // 获取指定socket实时上行流量数据。
+   // 获取指定Socket实时上行流量数据。
    tcp.getSocketFd().then((sockfd: number) => {
      statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
        hilog.info(0x0000, 'testTag', JSON.stringify(stats));
