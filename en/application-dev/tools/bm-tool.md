@@ -779,7 +779,7 @@ Method 2: Manually sign the HAP file. For details, see [Signing Your App/Atomic 
 
 error: install parse profile prop check error.
 
-![Example](figures/Error-Message02.png)
+![Example](figures/error-message02.png)
 
 **Symptom**
 
@@ -815,7 +815,7 @@ When you start debugging or run an application, the error message "error: instal
 
            The following figure shows an example.
 
-           ![Example](figures/SHA-256-fingerprint.png)
+           ![Example](figures/sha-256-fingerprint.png)
 
            After colons are removed, the obtained signature fingerprint is **5753DDBC1A8EF88A62058A9FC4B6AFAFC1C5D8D1A1B86FB3532739B625F8F3DB**.
 
@@ -841,7 +841,7 @@ When you start debugging or run an application, the error message "error: instal
 
     3. Add the signature fingerprint obtained to **app_signature** in the **install_list_capability.json** file. Note that the signature fingerprint must be configured under the corresponding bundle name.
 
-       ![Example](figures/Error-Message05.png)
+       ![Example](figures/error-message05.png)
 
     4. Push the modified **install_list_capability.json** file to the device and restart the device.
 
@@ -873,15 +873,15 @@ Scenario 1: When the HSP and HAP are in the same project, perform the following 
 
 * Method 1: Run the [bm install -p](#install) command to install the dependent HSP module. On the **Run/Debug Configurations** page of DevEco Studio, select **Keep Application Data** on the **General** tab page, and click **OK** to save the configuration. Then run or debug the bundle again.
 
-  ![Example](figures/Method1.png)
+  ![Example](figures/method1.png)
 
 * Method 2: On the **Run/Debug Configurations** page of DevEco Studio, click the **Deploy Multi Hap** tab, select **Deploy Multi Hap Packages**, select the dependent module SharedLibrary, and click **OK** to save the configuration. Then run or debug the bundle again.
 
-  ![Example](figures/Method2.png)
+  ![Example](figures/method2.png)
 
 * Method 3: Click **Run** > **Edit** Configurations and select **Auto Dependencies** on the **General** tab. Click **OK** to save the configuration, and then run or debug the project.
 
-  ![Example](figures/Method3.png)
+  ![Example](figures/method3.png)
 
 Scenario 2: When the HSP and HAP are not in the same project, perform the following operations:
 
@@ -892,7 +892,7 @@ Before installing the HAP, run the [bm install](#install) command to install the
 
 error: install parse profile missing prop.
 
-![Example](figures/Error-Message.png)
+![Example](figures/error-message.png)
 
 **Symptom**
 
@@ -922,7 +922,7 @@ Mandatory fields are missing in the **app.json5** and **module.json5** files.
 
 error: install releaseType target not same.
 
-![Example](figures/Error-Message03.png)
+![Example](figures/error-message03.png)
 
 **Symptom**
 
@@ -1103,7 +1103,7 @@ The passed-in installation package path is invalid.
 
 error: signature verification failed due to not trusted app source.
 
-![Example](figures/Error-Message01.png)
+![Example](figures/error-message01.png)
 
 **Symptom**
 
@@ -1195,7 +1195,7 @@ hdc shell df -h /data
 
 error: install failed due to grant request permissions failed.<br>
 
-![Example](figures/Error-Message07.png)
+![Example](figures/error-message07.png)
 
 **Symptom**
 
@@ -1298,7 +1298,7 @@ The name of the existing HAP is the same as that of the new HAP, but the **app-f
 
 error: install failed due to older sdk version in the device.
 
-![Example](figures/Error-Message04.png)
+![Example](figures/error-message04.png)
 
 **Symptom**
 
@@ -1360,7 +1360,7 @@ Check the name in the **module.json5** file of each module and ensure that the n
 
 error: install sign info inconsistent.
 
-![Example](figures/Error-Message06.png)
+![Example](figures/error-message06.png)
 
 **Symptom**
 
@@ -1383,7 +1383,7 @@ When you start debugging or run an application, the error message "error: instal
 
 error: verify signature failed.
 
-![Example](figures/Error-Message08.png)
+![Example](figures/error-message08.png)
 
 **Symptom**
 
@@ -1408,7 +1408,7 @@ The **bundleName** in the signature information is different from that of the bu
 
 error: install permission denied.
 
-![Example](figures/Error-Message09.png)
+![Example](figures/error-message09.png)
 
 **Symptom**
 
@@ -2506,11 +2506,11 @@ The **apl** field in the signature configuration file is incorrect. It can be **
 
 1. Check whether the **apl** field in the .p7b file is correct.
 
-    ![Example](figures/Error-Message10.png)
+    ![Example](figures/error-message10.png)
 
 2. If the **apl** field is incorrect, modify the **apl** field in the **UnsgnedReleasedProfileTemplate.json** file and sign the file again.
 
-    ![Example](figures/Error-Message11.png)
+    ![Example](figures/error-message11.png)
 
 
 ### 9568360 Error Occurs During Overlay Application Installation
