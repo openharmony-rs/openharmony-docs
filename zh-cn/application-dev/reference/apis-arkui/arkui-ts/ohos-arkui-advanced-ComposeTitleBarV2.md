@@ -12,7 +12,7 @@
 
 > **说明：**
 >
-> - 该组件从API version 26开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 26.0.0开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 该组件仅可在Stage模型下使用。
 >
@@ -35,7 +35,7 @@ ComposeTitleBarV2({item?: ComposeTitleBarV2MenuItem, title: ResourceStr, subtitl
 
 **装饰器类型：**\@ComponentV2
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -56,7 +56,7 @@ ComposeTitleBarV2({item?: ComposeTitleBarV2MenuItem, title: ResourceStr, subtitl
 
 菜单项类，用于定义标题栏左侧头像或右侧菜单项。该类使用\@ObservedV2装饰器，支持响应式状态管理。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,7 +91,7 @@ ComposeTitleBarV2MenuItem(params?: ComposeTitleBarV2MenuItemParams)
 
 菜单项参数接口，用于创建ComposeTitleBarV2MenuItem实例。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,7 +114,7 @@ type OnActionCallback = () => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
