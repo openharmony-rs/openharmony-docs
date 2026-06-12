@@ -63,7 +63,7 @@
 
   以下打印的示例为应用设备系统对应的部分系统字体配置信息情况，不同设备系统配置信息可能不同，此处仅示意。
 
-  ![zh-cn_image_0000002211603664](figures/zh-cn_image_0000002211603664.png)
+  ![Obtaining-System-Font](figures/Obtaining-System-Font.png)
 
 ## 使用或切换系统字体
 
@@ -99,7 +99,7 @@
    ```
 
 4. 创建段落生成器。
-   <!-- @[arkts_use_and_change_system_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_use_and_change_system_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 创建一个段落样式对象，以设置排版风格
@@ -137,4 +137,4 @@
 
 效果展示如下：
 
-![zh-cn_image_0000002246563829](figures/zh-cn_image_0000002246563829.png)
+![Using-or-Switching-System](figures/Using-or-Switching-System.png)
