@@ -21278,5 +21278,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/napi/use-jsvm-threshold-callback.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutRawheap/entry/src/main/cpp/hello.cpp",
+				"functions":[
+					{
+						"end_line":201,
+						"name":"oh_jsvm_take_raw_heap_snapshot",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
