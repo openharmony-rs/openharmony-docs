@@ -84,56 +84,69 @@ NavDestination提供了两种类型。
 
   ArkTS-Sta示例：
 
-  ```ts
+  <!-- @[PageDisplayType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/PageDisplayType.ets) -->
+  
+  ``` TypeScript
+  // Dialog NavDestination
   import {
-    Entry,
+    Color,
     Component,
-    Builder,
     Column,
+    NavPathStack,
     Button,
     Stack,
-    Navigation,
-    NavigationMode,
-    NavPathStack,
-    NavDestination,
     Text,
-    Margin,
     NavDestinationMode,
-    ClickEvent,
+    Navigation,
+    Entry,
+    NavigationMode,
     Alignment,
     FlexAlign,
-    Color,
-    PopInfo
+    Provide,
+    Consume,
+    NavDestination
   } from '@kit.ArkUI';
 
-  let pageStack: NavPathStack = new NavPathStack();
   @Entry
   @Component
-  struct Index {
-    @Builder PagesMap(name: string) {
+  struct PageDisplayType {
+    @Provide navPathStack: NavPathStack = new NavPathStack();
+
+    @Builder
+    PagesMap(name: string) {
       if (name == 'DialogPage') {
         DialogPage();
       }
     }
 
     build() {
-      Navigation(pageStack) {
-        Button('Push DialogPage').margin(20).width('80%').onClick((e: ClickEvent) => {
-          pageStack.pushPathByName('DialogPage', new Object(), (info: PopInfo) => {}, true)
-        })
-      }.mode(NavigationMode.Stack).title('Main').navDestination(this.PagesMap)
+      Navigation(this.navPathStack) {
+        Button('Push DialogPage')
+          .margin(20)
+          .width('80%')
+          .onClick(() => {
+            this.navPathStack.pushPathByName('DialogPage', '');
+          })
+      }
+      .mode(NavigationMode.Stack)
+      .title('Main')
+      .navDestination(this.PagesMap)
     }
   }
 
   @Component
   export struct DialogPage {
-    build() {
+    @Consume('navPathStack') navPathStack: NavPathStack;
+
+    build(): void {
       NavDestination() {
         Stack({ alignContent: Alignment.Center }) {
           Column() {
-            Text("Dialog NavDestination").fontSize(20).margin({ bottom: 100 } as Margin)
-            Button("Close").onClick((e: ClickEvent) => {
-              pageStack.pop(new Object(), true);
+            Text('Dialog NavDestination')
+              .fontSize(20)
+              .margin({ bottom: 100 })
+            Button('Close').onClick(() => {
+              this.navPathStack.pop();
             }).width('30%')
           }
           .justifyContent(FlexAlign.Center)
@@ -141,8 +154,11 @@ NavDestination提供了两种类型。
           .borderRadius(10)
           .height('30%')
           .width('80%')
-        }.height("100%").width('100%')
-      }.backgroundColor('rgba(0,0,0,0.5)').hideTitleBar(true, true).mode(NavDestinationMode.DIALOG)
+        }.height('100%').width('100%')
+      }
+      .backgroundColor('rgba(0,0,0,0.5)')
+      .hideTitleBar(true)
+      .mode(NavDestinationMode.DIALOG)
     }
   }
   ```
@@ -151,7 +167,7 @@ NavDestination提供了两种类型。
 
 ## 页面生命周期
 
-页面生命周期承载在NavDestination组件上，可分为三类：自定义组件生命周期、通用组件生命周期和[NavDestination生命周期](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#事件)。其中，[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)和[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)是自定义组件的生命周期（NavDestination外层包含的自定义组件），[onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)和[onDisAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)是组件的通用生命周期。剩下的生命周期为NavDestination独有。
+页面生命周期承载在NavDestination组件上，可分为三类：自定义组件生命周期、通用组件生命周期和NavDestination生命周期[事件](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#事件)。其中，[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)和[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)是自定义组件的生命周期（NavDestination外层包含的自定义组件），[onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)和[onDisAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)是组件的通用生命周期。剩下的生命周期为NavDestination独有。
 
 生命周期时序如下图所示：
 
@@ -213,29 +229,66 @@ NavDestination提供了两种类型。
 
   ArkTS-Sta示例：
 
-  ```ts
-  import { Component, NavDestination, NavDestinationInfo, uiObserver } from '@kit.ArkUI';
-
-  @Component
-  export struct NavDestinationExample {
-    build() {
-      NavDestination() {
-        MyComponent();
-      }
-    }
-  }
-
+  <!-- @[MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/observer/template1/Index.ets) -->
+  
+  ``` TypeScript
+  import {
+    Color,
+    Component,
+    Column,
+    NavPathStack,
+    Button,
+    NavPathInfo,
+    NavDestinationContext,
+    NavigationOperation,
+    ButtonType,
+    GestureEvent,
+    PanGesture,
+    NavDestination,
+    ColumnOptions,
+    Stack,
+    Text,
+    NavDestinationMode,
+    LaunchMode,
+    Context,
+    Navigation,
+    TextInput,
+    List,
+    ForEach,
+    ListItem,
+    TextAlign,
+    $r,
+    Entry,
+    NavigationMode,
+    NavigationMenuItem,
+    HorizontalAlign,
+    Row,
+    Image,
+    NavigationTitleMode,
+    State,
+    AppStorage,
+    Provide,
+    Consume,
+  } from '@kit.ArkUI';
+  import uiObserver from '@ohos.arkui.observer';
+  
+  // NavDestination内的自定义组件
   @Component
   struct MyComponent {
     navDesInfo: uiObserver.NavDestinationInfo | undefined;
-
+    context: Context | undefined = this.getUIContext().getHostContext();
+  
     aboutToAppear() {
       this.navDesInfo = this.queryNavDestinationInfo();
-      console.info('get navDestinationInfo: ' + JSON.stringify(this.navDesInfo));
     }
-
+  
     build() {
       // ...
+        Column() {
+          // $r('app.string.onPageName')资源文件中的value值为“所属页面Name:”
+          Text(this.context!.resourceManager.getStringSync($r('app.string.onPageName').id) + `${this.navDesInfo?.name}`)
+        }.width('100%').height('100%')
+        // ...
     }
   }
   ```

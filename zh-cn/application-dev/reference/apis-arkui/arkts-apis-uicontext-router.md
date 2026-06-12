@@ -1404,7 +1404,7 @@ struct Index {
 
 ## back
 
-back(options?: router.RouterOptions ): void
+back(options?: router.RouterOptions): void
 
 返回上一页面或指定的页面。
 

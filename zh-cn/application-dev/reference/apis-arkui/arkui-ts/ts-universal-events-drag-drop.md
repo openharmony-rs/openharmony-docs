@@ -1877,6 +1877,8 @@ struct Index {
 
 从API version 20开始，示例6展示了通过[onDragSpringLoading](#ondragspringloading20)接口注册回调，并调用[SpringLoadingContext](#springloadingcontext20)接口获取上下文（当前状态、通知序列）。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -1950,6 +1952,88 @@ struct Index {
       }, this.config)
       .id("column")
       .backgroundColor(Color.Grey)
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, State, $r, dragController, Column, Row, Text, Image } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State targetText: string = 'Drag Text';
+  @State state: number = 0;
+  @State currentNotifySequence: number = 0;
+  @State config: dragController.DragSpringLoadingConfiguration = {
+    stillTimeLimit: 200,
+    updateInterval: 300,
+    updateNotifyCount: 4,
+    updateToFinishInterval: 300
+  } as dragController.DragSpringLoadingConfiguration;
+
+  build() {
+    Row() {
+      Column() {
+        Text('start Drag')
+          .fontSize(18)
+          .width('100%')
+          .height(40)
+          .margin(10)
+          .backgroundColor('#008888')
+        // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.startIcon'))
+          .id("ori_image")
+          .width(100)
+          .height(100)
+          .draggable(true)
+          .margin({ left: 15 })
+        Text('当前状态是： ' + this.state)
+          .fontSize(18)
+          .width('100%')
+          .height(40)
+          .margin(10)
+        Text('当前通知序列是： ' + this.currentNotifySequence)
+          .fontSize(18)
+          .width('100%')
+          .height(40)
+          .margin(10)
+      }
+      .width('45%')
+      .height('100%')
+
+      Column() {
+        Text('Drag Target Area')
+          .fontSize(20)
+          .width('100%')
+          .height(40)
+          .margin(10)
+          .backgroundColor('#008888')
+          .id("text")
+        Image("")
+          .width(100)
+          .height(100)
+          .draggable(true)
+          .margin({ left: 15 })
+          .border({ color: '#000000', width: 2 })
+          .onDragSpringLoading((context: dragController.SpringLoadingContext): void => {
+            this.state = context.state;
+            this.currentNotifySequence = context.currentNotifySequence;
+          }, this.config)
+      }
+      .width('45%')
+      .height('100%')
+      .margin({ left: '5%' })
+      .onDragSpringLoading((context: dragController.SpringLoadingContext): void => {
+        this.state = context.state;
+        this.currentNotifySequence = context.currentNotifySequence;
+      }, this.config)
+      .id("column")
+      .backgroundColor('#808080')
     }
     .height('100%')
   }
