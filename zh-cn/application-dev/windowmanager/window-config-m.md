@@ -85,7 +85,7 @@
       {
         "name": "enable.remove.starting.window",
         "value": "true"
-      }
+      },
       {
         "name": "ohos.ability.window.supportWindowModeInFreeMultiWindow",
         "value": "fullscreen,split,floating",
