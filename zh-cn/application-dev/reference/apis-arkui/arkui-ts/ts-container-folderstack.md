@@ -324,7 +324,7 @@ type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void
 
 ## WindowStatusType<sup>12+</sup>
 
-ArkTS-Dyn: type WindowStatusType = WindowStatusType
+ArkTS-Dyn: type WindowStatusType = import('../api/@ohos.window').default.WindowStatusType
 
 ArkTS-Sta: type WindowStatusType = window.WindowStatusType
 
@@ -342,7 +342,7 @@ ArkTS-Sta: type WindowStatusType = window.WindowStatusType
 
 | 类型        | 说明                 |
 | ---------- | ---------------------|
-| ArkTS-Dyn: [WindowStatusType](../arkts-apis-window-e.md#windowstatustype11)<br/>ArkTS-Sta: window.[WindowStatusType](../arkts-apis-window-e.md#windowstatustype11)  | 窗口模式枚举。 |
+| ArkTS-Dyn: import('../api/@ohos.window').default.[WindowStatusType](../arkts-apis-window-e.md#windowstatustype11)<br/>ArkTS-Sta: window.[WindowStatusType](../arkts-apis-window-e.md#windowstatustype11)  | 窗口模式枚举。 |
 
 ## 示例
 

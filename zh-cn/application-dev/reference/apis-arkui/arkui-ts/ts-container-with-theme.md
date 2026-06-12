@@ -71,7 +71,7 @@ WithTheme(options: WithThemeOptions)
 
 ## CustomTheme
 
-type CustomTheme = CustomTheme
+type CustomTheme = import('../api/@ohos.arkui.theme').CustomTheme
 
 自定义配色。
 
@@ -85,7 +85,7 @@ type CustomTheme = CustomTheme
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [CustomTheme](../js-apis-arkui-theme.md#customtheme)  | 自定义WithTheme作用域内组件缺省配色。 |
+| import('../api/@ohos.arkui.theme').[CustomTheme](../js-apis-arkui-theme.md#customtheme)  | 自定义WithTheme作用域内组件缺省配色。 |
 
 ## 示例
 

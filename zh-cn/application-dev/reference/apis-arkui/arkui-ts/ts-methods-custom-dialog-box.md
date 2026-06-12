@@ -159,7 +159,7 @@ getExternalOptions(): CustomDialogControllerExternalOptions
 
 ## PromptActionCommonState<sup>20+</sup>
 
-type PromptActionCommonState = promptAction.CommonState
+type PromptActionCommonState = import('../api/@ohos.promptAction').promptAction.CommonState
 
 自定义弹窗的状态。
 
@@ -177,7 +177,7 @@ type PromptActionCommonState = promptAction.CommonState
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [promptAction.CommonState](../js-apis-promptAction.md#commonstate20枚举说明) | 返回对应的弹窗状态。 |
+| import('../api/@ohos.promptAction').[promptAction.CommonState](../js-apis-promptAction.md#commonstate20枚举说明) | 返回对应的弹窗状态。 |
 
 ## CustomDialogControllerOptions对象说明
 

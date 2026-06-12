@@ -363,7 +363,7 @@ onPatternComplete(callback: Callback<Array\<int\>> | undefined)
 
 ### onDotConnect<sup>11+</sup>
 
-ArkTS-Dyn: onDotConnect(callback: Callback\<number\>)
+ArkTS-Dyn: onDotConnect(callback: import('../api/@ohos.base').Callback\<number\>)
 
 ArkTS-Sta: onDotConnect(callback: Callback\<int\> | undefined)
 
@@ -389,7 +389,7 @@ ArkTS-Sta: onDotConnect(callback: Callback\<int\> | undefined)
 
 | 参数名 | 类型            | 必填 | 说明                                                         |
 | ------ | --------------- | ---- | ------------------------------------------------------------ |
-| callback  |ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> <br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<int\> \| undefined | 是   | 密码输入选中宫格圆点时触发该回调。<br/>设置为undefined时不会执行回调。 |
+| callback  |ArkTS-Dyn: import('../api/@ohos.base').[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> <br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<int\> \| undefined | 是   | 密码输入选中宫格圆点时触发该回调。<br/>设置为undefined时不会执行回调。 |
 
 ## CircleStyleOptions<sup>12+</sup>对象说明
 

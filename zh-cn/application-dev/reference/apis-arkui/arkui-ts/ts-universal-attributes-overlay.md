@@ -107,7 +107,7 @@ ArkTS-Sta: overlay(value: string | CustomBuilder | ComponentContent\<Object> | u
 
 ## ComponentContent<sup>12+</sup>
 
-type ComponentContent\<T \= Object\> = ComponentContent\<T\>
+type ComponentContent\<T \= Object\> = import('../api/arkui/ComponentContent').ComponentContent\<T\>
 
 组件内容的实体封装。
 
@@ -119,11 +119,11 @@ type ComponentContent\<T \= Object\> = ComponentContent\<T\>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 | 类型|说明 |
 | ----- | ----------------- |
-| [ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | 组件内容的实体封装。|
+| import('../api/arkui/ComponentContent').[ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | 组件内容的实体封装。|
 
 ## 示例
 
