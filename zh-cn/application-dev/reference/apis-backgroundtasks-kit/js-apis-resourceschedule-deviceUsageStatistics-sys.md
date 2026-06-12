@@ -56,6 +56,7 @@ isIdleState(bundleName: string, callback: AsyncCallback&lt;boolean&gt;): void
 **示例**：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.isIdleState("com.ohos.camera", (err: BusinessError, res: boolean) => {
   if (err) {
@@ -108,6 +109,7 @@ isIdleState(bundleName: string): Promise&lt;boolean&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.isIdleState("com.ohos.camera").then((res: boolean) => {
   console.info('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));
@@ -155,6 +157,8 @@ isIdleStateSync(bundleName: string): boolean
 
 **示例**：
 ```ts
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+
 let isIdleState: boolean = usageStatistics.isIdleStateSync("com.ohos.camera");
 ```
 
@@ -195,6 +199,7 @@ queryAppGroup(): Promise&lt;number&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryAppGroup().then((res: number) => {
   console.info('BUNDLE_ACTIVE queryAppGroup promise succeeded. result: ' + JSON.stringify(res));
@@ -241,6 +246,7 @@ queryAppGroup(callback: AsyncCallback&lt;number&gt;): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryAppGroup((err: BusinessError, res: number) => {
   if(err) {
@@ -287,6 +293,8 @@ queryAppGroupSync(): number
 **示例**：
 
 ```ts
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+
 let priorityGroup: number = usageStatistics.queryAppGroupSync();
 ```
 
@@ -335,6 +343,7 @@ queryAppGroup(bundleName : string): Promise&lt;number&gt;
 ```javascript
 // 有bundleName的promise
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 let bundleName: string = "com.ohos.camera";
 usageStatistics.queryAppGroup(bundleName).then((res: number) => {
@@ -383,6 +392,7 @@ queryAppGroup(bundleName : string, callback: AsyncCallback&lt;number&gt;): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 let bundleName: string = "com.ohos.camera";
 usageStatistics.queryAppGroup(bundleName, (err: BusinessError, res: number) => {
@@ -437,6 +447,8 @@ queryAppGroupSync(bundleName: string): number
 **示例**：
 
 ```ts
+import { usageStatistics } from '@kit.BackgroundTasksKit';
+
 let priorityGroup: number = usageStatistics.queryAppGroupSync("com.ohos.camera");
 ```
 
@@ -484,6 +496,7 @@ setAppGroup(bundleName: string, newGroup: GroupType): Promise&lt;void&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 let bundleName: string = "com.example.deviceUsageStatistics";
 let newGroup = usageStatistics.GroupType.DAILY_GROUP;
@@ -534,6 +547,7 @@ setAppGroup(bundleName: string, newGroup: GroupType, callback: AsyncCallback&lt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 let bundleName: string = "com.example.deviceUsageStatistics";
 let newGroup = usageStatistics.GroupType.DAILY_GROUP;
@@ -586,6 +600,7 @@ queryBundleStatsInfos(begin: number, end: number, callback: AsyncCallback&lt;Bun
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryBundleStatsInfos(0, 20000000000000, (err: BusinessError, res:usageStatistics.BundleStatsMap) => {
   if (err) {
@@ -641,6 +656,7 @@ queryBundleStatsInfos(begin: number, end: number): Promise&lt;BundleStatsMap&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryBundleStatsInfos(0, 20000000000000).then((res:usageStatistics.BundleStatsMap) => {
   console.info('BUNDLE_ACTIVE queryBundleStatsInfos promise success.');
@@ -694,6 +710,7 @@ queryAppStatsInfos(begin: number, end: number): Promise&lt;AppStatsMap&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryAppStatsInfos(0, 20000000000000).then((res:usageStatistics.AppStatsMap) => {
   console.info('queryAppStatsInfos promise success.');
@@ -746,6 +763,7 @@ queryLastUseTime(appInfo: Record&lt;string, Array&lt;number&gt;&gt;): Promise&lt
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 // 查询时将com.ohos.camera替换为实际查询的包名
 usageStatistics.queryLastUseTime({"com.ohos.camera": [0]}).then((res:usageStatistics.AppStatsMap) => {
@@ -796,6 +814,7 @@ queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: num
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryBundleStatsInfoByInterval(0, 0, 20000000000000, (err: BusinessError, res: Array<usageStatistics.BundleStatsInfo>) => {
   if (err) {
@@ -855,6 +874,7 @@ queryBundleStatsInfoByInterval(byInterval: IntervalType, begin: number, end: num
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryBundleStatsInfoByInterval(0, 0, 20000000000000).then((res: Array<usageStatistics.BundleStatsInfo>) => {
   console.info('BUNDLE_ACTIVE queryBundleStatsInfoByInterval promise success.');
@@ -906,6 +926,7 @@ queryBundleEvents(begin: number, end: number, callback: AsyncCallback&lt;Array&l
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryBundleEvents(0, 20000000000000, (err: BusinessError, res: Array<usageStatistics.BundleEvents>) => {
   if (err) {
@@ -964,6 +985,7 @@ queryBundleEvents(begin: number, end: number): Promise&lt;Array&lt;BundleEvents&
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryBundleEvents(0, 20000000000000).then((res: Array<usageStatistics.BundleEvents>) => {
   console.info('BUNDLE_ACTIVE queryBundleEvents promise success.');
@@ -1012,6 +1034,7 @@ queryCurrentBundleEvents(begin: number, end: number, callback: AsyncCallback&lt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryCurrentBundleEvents(0, 20000000000000, (err: BusinessError, res: Array<usageStatistics.BundleEvents>) => {
   if (err) {
@@ -1067,6 +1090,7 @@ queryCurrentBundleEvents(begin: number, end: number): Promise&lt;Array&lt;Bundle
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryCurrentBundleEvents(0, 20000000000000).then((res: Array<usageStatistics.BundleEvents>) => {
   console.info('BUNDLE_ACTIVE queryCurrentBundleEvents promise success.');
@@ -1123,6 +1147,7 @@ queryDeviceEventStats(begin: number, end: number): Promise&lt;Array&lt;DeviceEve
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryDeviceEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
   console.info('BUNDLE_ACTIVE queryDeviceEventStates promise success.');
@@ -1171,6 +1196,7 @@ queryDeviceEventStats(begin: number, end: number, callback: AsyncCallback&lt;Arr
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryDeviceEventStats(0, 20000000000000, (err: BusinessError, res: Array<usageStatistics.DeviceEventStats>) => {
   if(err) {
@@ -1226,6 +1252,7 @@ queryNotificationEventStats(begin: number, end: number): Promise&lt;Array&lt;Dev
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryNotificationEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
   console.info('BUNDLE_ACTIVE queryNotificationEventStats promise success.');
@@ -1274,6 +1301,7 @@ queryNotificationEventStats(begin: number, end: number, callback: AsyncCallback&
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryNotificationEventStats(0, 20000000000000, (err: BusinessError, res: Array<usageStatistics.DeviceEventStats>) => {
   if(err) {
@@ -1325,6 +1353,7 @@ queryModuleUsageRecords(): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
 ```ts
 // 无maxNum参数调用方式
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryModuleUsageRecords().then((res: Array<usageStatistics.HapModuleInfo>) => {
   console.info('BUNDLE_ACTIVE queryModuleUsageRecords promise succeeded');
@@ -1374,6 +1403,7 @@ queryModuleUsageRecords(callback: AsyncCallback&lt;Array&lt;HapModuleInfo&gt;&gt
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryModuleUsageRecords((err: BusinessError, res: Array<usageStatistics.HapModuleInfo>) => {
   if(err) {
@@ -1431,6 +1461,7 @@ queryModuleUsageRecords(maxNum: number): Promise&lt;Array&lt;HapModuleInfo&gt;&g
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryModuleUsageRecords(1000).then((res: Array<usageStatistics.HapModuleInfo>) => {
   console.info('BUNDLE_ACTIVE queryModuleUsageRecords promise succeeded');
@@ -1481,6 +1512,7 @@ queryModuleUsageRecords(maxNum: number, callback: AsyncCallback&lt;Array&lt;HapM
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.queryModuleUsageRecords(1000, (err: BusinessError, res: Array<usageStatistics.HapModuleInfo>) => {
   if(err) {
@@ -1538,6 +1570,7 @@ registerAppGroupCallBack(groupCallback: Callback&lt;AppGroupCallbackInfo&gt;): P
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 function onBundleGroupChanged(res: usageStatistics.AppGroupCallbackInfo) {
   console.info('BUNDLE_ACTIVE registerAppGroupCallBack RegisterGroupCallBack callback success.');
@@ -1592,6 +1625,7 @@ registerAppGroupCallBack(groupCallback: Callback&lt;AppGroupCallbackInfo&gt;, ca
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 function onBundleGroupChanged(res: usageStatistics.AppGroupCallbackInfo) {
   console.info('BUNDLE_ACTIVE onBundleGroupChanged RegisterGroupCallBack callback success.');
@@ -1646,6 +1680,7 @@ unregisterAppGroupCallBack(): Promise&lt;void&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.unregisterAppGroupCallBack().then( () => {
   console.info('BUNDLE_ACTIVE unregisterAppGroupCallBack promise succeeded.');
@@ -1690,6 +1725,7 @@ unregisterAppGroupCallBack(callback: AsyncCallback&lt;void&gt;): void;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 usageStatistics.unregisterAppGroupCallBack((err: BusinessError) => {
   if(err) {
