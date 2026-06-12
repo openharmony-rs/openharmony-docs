@@ -548,7 +548,7 @@ zh-cn/application-dev/faqs/faqs-arkui-component.md @piggyguy @jiyujia926 @hehong
 zh-cn/application-dev/faqs/faqs-arkui-js.md @xiangyuan6 @yihao-lin @piggyguy @HelloCrease
 zh-cn/application-dev/faqs/faqs-arkui-layout.md @fenglinbailu @yylong @zcdqs @lanshouren @HelloCrease
 zh-cn/application-dev/faqs/faqs-arkui-route-nav.md @mayaolll @jiangdayuan @HelloCrease
-zh-cn/application-dev/faqs/faqs-arkui-web.md @yp99ustc @aohui @weixin_41848015 @ctqctq99 @yaomingliu @libing23232323 @HelloCrease
+zh-cn/application-dev/faqs/faqs-arkui-web.md @zourongchun @kurli1 @HelloCrease
 zh-cn/application-dev/faqs/faqs-bundle-management.md @wanghang904 @hanfeng6 @HelloCrease
 zh-cn/application-dev/faqs/faqs-compiler-runtime.md @xliu-huanwei @shilei123 @huanghello @fang-jinxu
 zh-cn/application-dev/faqs/faqs-dfx.md @mzyan @liyueric @jinqiuheng
@@ -3024,7 +3024,7 @@ zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-ConsoleMe
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-ControllerHandler.md @weixin_41848015 @libing23232323 @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-DataResubmissionHandler.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-e.md @zourongchun @kurli1 @HelloShuo
-zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-EventResult.md @yp99ustc @LongLie @HelloShuo
+zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-EventResult.md @ohxianzhi @dzichou @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-events.md @zourongchun @kurli1 @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md @zourongchun @zhufenghao @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-basic-components-web-FileSelectorResult.md @zourongchun @zhufenghao @HelloShuo
@@ -3078,7 +3078,7 @@ zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-webmessageport8h.md 
 zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/capi-web.md @aohui @zourongchun @yaomingliu @zhufenghao @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/errorcode-webview.md @zourongchun @kurli1 @HelloShuo
-zh-cn/application-dev/reference/apis-arkweb/Readme-CN.md @yp99ustc @kurli1 @HelloShuo
+zh-cn/application-dev/reference/apis-arkweb/Readme-CN.md @zourongchun @kurli1 @HelloShuo
 zh-cn/application-dev/reference/apis-asset-store-kit/capi-asset-api-h.md @HarMonkey @wkr321_ent @zengyawen
 zh-cn/application-dev/reference/apis-asset-store-kit/capi-asset-type-h.md @HarMonkey @wkr321_ent @zengyawen
 zh-cn/application-dev/reference/apis-asset-store-kit/capi-assetapi.md @HarMonkey @wkr321_ent @zengyawen
@@ -5523,11 +5523,11 @@ zh-cn/application-dev/web/web-download.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/web-drag.md @zourongchun @zhufenghao @HelloShuo
 zh-cn/application-dev/web/web-event-sequence.md @weixin_41848015 @libing23232323 @HelloShuo
 zh-cn/application-dev/web/web-file-upload.md @zourongchun @zhufenghao @HelloShuo
-zh-cn/application-dev/web/web-fit-content.md @yp99ustc @LongLie @HelloShuo
+zh-cn/application-dev/web/web-fit-content.md @sinat_22543221 @dzichou @HelloShuo
 zh-cn/application-dev/web/web-focus.md @zourongchun @zhufenghao @HelloShuo
 zh-cn/application-dev/web/web-geolocation-permission.md @zhang-yinglie @handyohos @HelloShuo
 zh-cn/application-dev/web/web-gesture.md @zourongchun @zhufenghao @HelloShuo
-zh-cn/application-dev/web/web-getpage-height.md @yp99ustc @LongLie @HelloShuo
+zh-cn/application-dev/web/web-getpage-height.md @sinat_22543221 @dzichou @HelloShuo
 zh-cn/application-dev/web/web-in-app-frontend-page-function-invoking.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/web-in-page-app-function-invoking.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/web-incognito-mode.md @aohui @yaomingliu @HelloShuo
@@ -5543,19 +5543,19 @@ zh-cn/application-dev/web/web-picture-in-picture.md @gzweioh @zhangyao75477 @Hel
 zh-cn/application-dev/web/web-predictor.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/web-print.md @zhang-yinglie @handyohos @HelloShuo
 zh-cn/application-dev/web/web-redirection-and-browsing-history-mgmt.md @aohui @yaomingliu @HelloShuo
-zh-cn/application-dev/web/web-render-mode.md @yp99ustc @LongLie @HelloShuo
+zh-cn/application-dev/web/web-render-mode.md @pxlstrong @dzichou @HelloShuo
 zh-cn/application-dev/web/web-resource-interception-request-mgmt.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/web-router-flash-optimization.md @wangxinbao01 @defeng20201 @HelloShuo
 zh-cn/application-dev/web/web-rtc.md @qq_42700029 @gzweioh @HelloShuo
-zh-cn/application-dev/web/web-safe-area-insets.md @KeeGitee @LongLie @HelloShuo
-zh-cn/application-dev/web/web-same-layer.md @ding-xin88 @LongLie @HelloShuo
+zh-cn/application-dev/web/web-safe-area-insets.md @sinat_22543221 @dzichou @HelloShuo
+zh-cn/application-dev/web/web-same-layer.md @zhanghaozhi1 @dzichou @HelloShuo
 zh-cn/application-dev/web/web-scale-zoom.md @zourongchun @zhufenghao @HelloShuo
 zh-cn/application-dev/web/web-scheme-handler.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/web-secure-shield-mode.md @weixin_41848015 @libing23232323 @HelloShuo
 zh-cn/application-dev/web/web-sensor.md @zhang-yinglie @handyohos @HelloShuo
 zh-cn/application-dev/web/web-set-back-forward-cache.md @aohui @yaomingliu @HelloShuo
-zh-cn/application-dev/web/web-set-dark-mode.md @KeeGitee @LongLie @HelloShuo
-zh-cn/application-dev/web/web-white-screen.md @yp99ustc @LongLie @HelloShuo
+zh-cn/application-dev/web/web-set-dark-mode.md @ohxianzhi @dzichou @HelloShuo
+zh-cn/application-dev/web/web-white-screen.md @pxlstrong @dzichou @HelloShuo
 zh-cn/application-dev/web/web_component_process.md @weixin_41848015 @libing23232323 @HelloShuo
 zh-cn/application-dev/web/web_full_screen.md @zhangyao75477 @gzweioh @HelloShuo
 zh-cn/application-dev/webgl/Readme-CN.md @samhu1989 @shi-yang-2012 @ge-yafang
