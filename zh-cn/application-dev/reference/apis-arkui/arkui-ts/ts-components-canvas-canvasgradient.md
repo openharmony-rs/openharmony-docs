@@ -12,8 +12,6 @@
 >
 >  从 API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-
-
 ## addColorStop
 
 addColorStop(offset: number, color: string): void
@@ -68,8 +66,7 @@ addColorStop(offset: number, color: string): void
   ```
   ![zh-cn_image_0000001194032516](figures/zh-cn_image_0000001194032516.png)
 
- 
- ## addColorStop<sup>20+</sup>
+## addColorStop<sup>20+</sup>
 
 addColorStop(offset: number, color: string | ColorMetrics): void
 
@@ -78,6 +75,8 @@ addColorStop(offset: number, color: string | ColorMetrics): void
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
