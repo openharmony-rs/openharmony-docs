@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API22开始，算法库支持该算法。
+从API version 22开始，算法库支持该算法。
 
 对应的算法规格请查看[对称密钥加解密算法规格：ChaCha20](crypto-sym-encrypt-decrypt-spec.md#chacha20)。
 
@@ -99,13 +99,13 @@
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20|Poly1305');
     await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, poly1305Params);
-    let decryptUpdata = await decoder.update(cipherText);
+    let decryptUpdate = await decoder.update(cipherText);
     // poly1305模式解密doFinal时传入空，验证init时传入的tag数据，如果验证失败会抛出异常。
     let decryptData = await decoder.doFinal(null);
     if (decryptData === null) {
       console.info('poly1305 decrypt result: success, decryptData is null.');
     }
-    return decryptUpdata;
+    return decryptUpdate;
   }
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
@@ -186,13 +186,13 @@
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20|Poly1305');
     decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, poly1305Params);
-    let decryptUpdata = decoder.updateSync(cipherText);
+    let decryptUpdate = decoder.updateSync(cipherText);
     // poly1305模式解密doFinal时传入空，验证init时传入的tag数据，如果验证失败会抛出异常。
     let decryptData = decoder.doFinalSync(null);
     if (decryptData === null) {
       console.info('poly1305 decrypt result: success, decryptData is null.');
     }
-    return decryptUpdata;
+    return decryptUpdate;
   }
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };

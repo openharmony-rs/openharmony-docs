@@ -55,4 +55,4 @@
 ```
 
 
-![zh-cn_image_0000001127284954](figures/zh-cn_image_0000001127284954.png)
+![example-2](figures/example-2.png)

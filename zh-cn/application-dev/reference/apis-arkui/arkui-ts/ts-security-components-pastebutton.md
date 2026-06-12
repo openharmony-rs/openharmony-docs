@@ -19,14 +19,14 @@
 
 ### 核心枚举类型
 
-- **[PasteIconStyle](#pasteiconstyle)**：粘贴控件图标风格枚举，用于指定控件展示的图标风格。
-- **[PasteDescription](#pastedescription)**：粘贴控件文本描述枚举，用于指定控件展示的文本描述。
-- **[PasteButtonOnClickResult](#pastebuttononclickresult)**：粘贴控件点击结果枚举，用于表示点击后授权是否成功。
+- **[PasteIconStyle](#pasteiconstyle)：** 粘贴控件图标风格枚举，用于指定控件展示的图标风格。
+- **[PasteDescription](#pastedescription)：** 粘贴控件文本描述枚举，用于指定控件展示的文本描述。
+- **[PasteButtonOnClickResult](#pastebuttononclickresult)：** 粘贴控件点击结果枚举，用于表示点击后授权是否成功。
 
 ### 核心接口类型
 
-- **[PasteButtonOptions](#pastebuttonoptions)**：粘贴控件配置对象，用于指定图标、文字和按钮类型等元素属性。
-- **[PasteButtonCallback](#pastebuttoncallback18)**：粘贴控件点击回调类型，用于返回点击事件、授权结果和错误信息。
+- **[PasteButtonOptions](#pastebuttonoptions)：** 粘贴控件配置对象，用于指定图标、文字和按钮类型等元素属性。
+- **[PasteButtonCallback](#pastebuttoncallback18)：** 粘贴控件点击回调类型，用于返回点击事件、授权结果和错误信息。
 
 ## 子组件
 
@@ -52,7 +52,7 @@ PasteButton()
 
 PasteButton(options: PasteButtonOptions)
 
-创建包含指定元素的粘贴控件。控件创建完成后，用户点击时系统会执行授权校验动作；授权成功后，应用可临时获取读取剪贴板权限。
+创建包含指定图标、文本或按钮类型的粘贴控件。控件创建完成后，用户点击时系统会执行授权校验动作；授权成功后，应用可临时获取读取剪贴板权限。
 
 为避免因控件样式不合法而导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
 
@@ -74,8 +74,8 @@ PasteButton(options: PasteButtonOptions)
 
 > **说明：**
 >
-> - 建议icon或text至少传入一个。<br>
-> - 如果icon、text都不传入，PasteButton中的options参数不生效，创建的PasteButton为默认样式。
+> - 建议icon或text至少传入一个。<br/>
+> - 如果icon、text都不传入，PasteButton将使用默认样式创建，默认样式：
 >
 >     - PasteIconStyle默认样式为LINES。
 >
@@ -94,7 +94,7 @@ PasteButton(options: PasteButtonOptions)
 | -------- | -------- | -------- | -------- | -------- |
 | icon | [PasteIconStyle](#pasteiconstyle) | 否 | 是 | 设置粘贴控件的图标风格。<br/>不传入该参数表示不显示图标；若同时也不传text，控件将显示为默认样式。 |
 | text | [PasteDescription](#pastedescription) | 否 | 是 | 设置粘贴控件的文本描述。<br/>不传入该参数表示不显示文本描述；若同时也不传icon，控件将显示为默认样式。 |
-| buttonType | [ButtonType](ts-securitycomponent-attributes.md#buttontype) | 否 | 是 | 设置粘贴控件的背景样式。不传入该参数时默认为ButtonType.Capsule。当需要自定义按钮形状时可传入此参数。 |
+| buttonType | [ButtonType](ts-securitycomponent-attributes.md#buttontype) | 否 | 是 | 设置粘贴控件的按钮形状。不传入该参数时默认为ButtonType.Capsule。当需要自定义按钮形状时可传入此参数。 |
 
 ## 属性
 
@@ -161,7 +161,7 @@ type PasteButtonCallback = (event: ClickEvent, result: PasteButtonOnClickResult,
 |------------|------|-------|---------|
 | event | [ClickEvent](ts-universal-events-click.md#clickevent) | 是 | 点击事件对象，包含点击的位置、时间戳、输入设备等信息。 |
 | result | [PasteButtonOnClickResult](#pastebuttononclickresult)| 是 | 剪贴板权限的授权结果。返回SUCCESS表示已获得当前剪贴板内容的临时读取权限，可以继续执行读取操作；返回TEMPORARY_AUTHORIZATION_FAILED表示本次授权未成功，不应继续读取剪贴板内容。 |
-| error | [BusinessError&lt;void&gt;](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 否 | 点击按钮时的错误码和错误信息。未传入时为undefined。错误码0表示无错误，授权结果需通过result参数判断。<br>错误码1表示系统内部错误。<br>错误码2表示属性设置错误，包括但不限于：<br>1. 字体或图标设置过小。<br>2. 字体或图标与控件背景颜色相近。<br>3. 字体或图标颜色过于透明。<br>4. padding为负值。<br>5. 按钮被其他组件或窗口遮挡。<br>6. 文本超出控件背景范围。<br>7. 按钮超出窗口或屏幕。<br>8. 按钮整体尺寸过大。<br>9. 按钮文本被截断，显示不全。<br>10. 部分安全控件相关属性的设置导致控件无法正常显示。 |
+| error | [BusinessError&lt;void&gt;](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 否 | 点击按钮时的错误码和错误信息。未传入时为undefined。授权结果需通过result参数判断。<br/>错误码1表示系统内部错误。请检查系统状态后重试。<br/>错误码2表示属性设置错误，包括但不限于：<br/>1. 字体或图标设置过小。<br/>2. 字体或图标与控件背景颜色相近。<br/>3. 字体或图标颜色过于透明。<br/>4. padding为负值。<br/>5. 按钮被其他组件或窗口遮挡。<br/>6. 文本超出控件背景范围。<br/>7. 按钮超出窗口或屏幕。<br/>8. 按钮整体尺寸过大。<br/>9. 按钮文本被截断，显示不全。<br/>10. 部分安全控件相关属性的设置导致控件无法正常显示。 |
 
 ## 事件
 
@@ -171,7 +171,9 @@ type PasteButtonCallback = (event: ClickEvent, result: PasteButtonOnClickResult,
 
 onClick(event: PasteButtonCallback)
 
-点击粘贴控件触发该回调，回调返回授权结果。授权成功后应用可读取剪贴板内容。
+点击粘贴控件触发该回调，回调返回授权结果。授权成功后应用可临时获取读取剪贴板权限。
+
+为避免因控件样式不合法而导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -183,7 +185,7 @@ onClick(event: PasteButtonCallback)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| event | [PasteButtonCallback](#pastebuttoncallback18) | 是 | 点击事件的回调函数，用于处理粘贴控件点击后的授权结果。<br>在API version 10-17时，参数类型为(event: [ClickEvent](ts-universal-events-click.md#clickevent), result: [PasteButtonOnClickResult](#pastebuttononclickresult)) => void；从API version 18开始，统一使用PasteButtonCallback，可额外获取error信息。 |
+| event | [PasteButtonCallback](#pastebuttoncallback18) | 是 | 点击事件的回调函数，用于处理粘贴控件点击后的授权结果。<br/>在API version 10-17时，参数类型为(event: [ClickEvent](ts-universal-events-click.md#clickevent), result: [PasteButtonOnClickResult](#pastebuttononclickresult)) => void；从API version 18开始，统一使用PasteButtonCallback，可额外获取error信息。 |
 
 ## 示例
 
@@ -240,4 +242,4 @@ struct Index {
 }
 ```
 
-![zh-cn_image_0000001593677984](figures/zh-cn_image_0000001593677984.png)
+![PasteButton-Basic-demo](figures/PasteButton-Basic-demo.png)

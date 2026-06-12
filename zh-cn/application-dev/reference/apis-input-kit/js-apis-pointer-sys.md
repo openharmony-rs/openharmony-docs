@@ -45,7 +45,7 @@ setPointerSpeed(speed: number, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 **示例**：
@@ -108,7 +108,7 @@ setPointerSpeed(speed: number): Promise&lt;void&gt;
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 **示例**：
@@ -163,7 +163,7 @@ setPointerSpeedSync(speed: number): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -212,7 +212,7 @@ getPointerSpeed(callback: AsyncCallback&lt;number&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | Permission denied, non-system app called system api. |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 **示例**：
@@ -313,7 +313,7 @@ getPointerSpeedSync(): number
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| number | 返回鼠标移动速度。 |
+| number | 返回鼠标移动速度，范围1-20。  |
 
 **错误码**：
 
@@ -322,7 +322,7 @@ getPointerSpeedSync(): number
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -372,7 +372,7 @@ setHoverScrollState(state: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -434,7 +434,7 @@ setHoverScrollState(state: boolean): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -488,7 +488,7 @@ getHoverScrollState(callback: AsyncCallback&lt;boolean&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -544,7 +544,7 @@ getHoverScrollState(): Promise&lt;boolean&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -599,7 +599,7 @@ setMousePrimaryButton(primary: PrimaryButton, callback: AsyncCallback&lt;void&gt
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -661,7 +661,7 @@ setMousePrimaryButton(primary: PrimaryButton): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -715,7 +715,7 @@ getMousePrimaryButton(callback: AsyncCallback&lt;PrimaryButton&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -771,7 +771,7 @@ getMousePrimaryButton(): Promise&lt;PrimaryButton&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -826,7 +826,7 @@ setMouseScrollRows(rows: number, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -888,7 +888,7 @@ setMouseScrollRows(rows: number): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -942,7 +942,7 @@ getMouseScrollRows(callback: AsyncCallback&lt;number&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -998,7 +998,7 @@ getMouseScrollRows(): Promise&lt;number&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1053,7 +1053,7 @@ setTouchpadScrollSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1115,7 +1115,7 @@ setTouchpadScrollSwitch(state: boolean): Promise\<void>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1169,7 +1169,7 @@ getTouchpadScrollSwitch(callback:  AsyncCallback\<boolean>): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1225,7 +1225,7 @@ getTouchpadScrollSwitch(): Promise\<boolean>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1280,7 +1280,7 @@ setTouchpadScrollDirection(state: boolean, callback: AsyncCallback\<void>): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1342,7 +1342,7 @@ setTouchpadScrollDirection(state: boolean): Promise\<void>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1396,7 +1396,7 @@ getTouchpadScrollDirection(callback:  AsyncCallback\<boolean>): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1448,7 +1448,7 @@ getTouchpadScrollDirection(): Promise\<boolean>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1503,7 +1503,7 @@ setTouchpadTapSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1565,7 +1565,7 @@ setTouchpadTapSwitch(state: boolean): Promise\<void>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1618,7 +1618,7 @@ getTouchpadTapSwitch(callback:  AsyncCallback\<boolean>): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1674,7 +1674,7 @@ getTouchpadTapSwitch(): Promise\<boolean>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1729,7 +1729,7 @@ setTouchpadPointerSpeed(speed: number, callback: AsyncCallback\<void>): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1791,7 +1791,7 @@ setTouchpadPointerSpeed(speed: number): Promise\<void>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1845,7 +1845,7 @@ getTouchpadPointerSpeed(callback: AsyncCallback\<number>): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1892,7 +1892,7 @@ getTouchpadPointerSpeed(): Promise\<number>
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise\<number> | Promise对象，返回触控板光标移动速度。 |
+| Promise\<number> | Promise对象，返回触控板光标移动速度，speed取值范围[1,11]。 |
 
 **错误码**：
 
@@ -1901,7 +1901,7 @@ getTouchpadPointerSpeed(): Promise\<number>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -1956,7 +1956,7 @@ setTouchpadPinchSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2018,7 +2018,7 @@ setTouchpadPinchSwitch(state: boolean): Promise\<void>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2072,7 +2072,7 @@ getTouchpadPinchSwitch(callback:  AsyncCallback\<boolean>): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2128,7 +2128,7 @@ getTouchpadPinchSwitch(): Promise\<boolean>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2183,7 +2183,7 @@ setTouchpadSwipeSwitch(state: boolean, callback: AsyncCallback\<void>): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2245,7 +2245,7 @@ setTouchpadSwipeSwitch(state: boolean): Promise\<void>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2299,7 +2299,7 @@ getTouchpadSwipeSwitch(callback:  AsyncCallback\<boolean>): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2351,7 +2351,7 @@ getTouchpadSwipeSwitch(): Promise\<boolean>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2406,7 +2406,7 @@ setTouchpadRightClickType(type: RightClickType, callback: AsyncCallback\<void>):
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2468,7 +2468,7 @@ setTouchpadRightClickType(type: RightClickType): Promise\<void>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2522,7 +2522,7 @@ getTouchpadRightClickType(callback: AsyncCallback\<RightClickType>): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2574,7 +2574,7 @@ getTouchpadRightClickType(): Promise\<RightClickType>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2629,7 +2629,7 @@ setPointerSize(size: number, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2691,7 +2691,7 @@ setPointerSize(size: number): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2745,7 +2745,7 @@ setPointerSizeSync(size: number): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2786,7 +2786,7 @@ getPointerSize(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标大小成功，err为undefined，number是获取的鼠标光标大小；否则为错误对象。 |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当获取鼠标光标大小成功，err为undefined，number是获取的鼠标光标大小，范围为[1-7]；否则为错误对象。 |
 
 **错误码**：
 
@@ -2795,7 +2795,7 @@ getPointerSize(callback: AsyncCallback&lt;number&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -2842,7 +2842,7 @@ getPointerSize(): Promise&lt;number&gt;
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise对象，返回鼠标光标大小。 |
+| Promise&lt;number&gt; | Promise对象，返回鼠标光标大小，范围为[1-7]。 |
 
 **错误码**：
 
@@ -2896,7 +2896,7 @@ getPointerSizeSync(): number
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| number | 鼠标光标大小。 |
+| number | 鼠标光标大小，范围为[1-7]。 |
 
 **错误码**：
 
@@ -2959,7 +2959,7 @@ setPointerColor(color: number, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -3025,7 +3025,7 @@ setPointerColor(color: number): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -3083,7 +3083,7 @@ setPointerColorSync(color: number): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -3133,7 +3133,7 @@ getPointerColor(callback: AsyncCallback&lt;number&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -3293,7 +3293,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean, callback: AsyncCallback\<void>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -3355,7 +3355,7 @@ setTouchpadDoubleTapAndDragState(isOpen: boolean): Promise\<void>
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 
@@ -3409,7 +3409,7 @@ getTouchpadDoubleTapAndDragState(callback: AsyncCallback\<boolean>): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
 

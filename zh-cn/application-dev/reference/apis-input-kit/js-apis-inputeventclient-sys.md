@@ -45,7 +45,7 @@ injectEvent({KeyEvent: KeyEvent}): void
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | Permission denied, non-system app called system api.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -110,7 +110,7 @@ injectKeyEvent(keyEvent: KeyEventData): void
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -186,7 +186,7 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -302,7 +302,7 @@ injectTouchEvent(touchEvent: TouchEventData): void
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -407,7 +407,7 @@ permitInjection(result: boolean): void
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 
 ```ts
@@ -443,7 +443,7 @@ struct Index {
 | --------- | ------ | ---- | ---- | ------- |
 | isPressed       | boolean | 否    |  否 | 按键是否按下。<br>true表示按键按下，false表示按键抬起。   |
 | keyCode         | number  | 否    |  否 | 按键键值。当前仅支持返回键/KEYCODE_BACK键。 |
-| keyDownDuration | number  | 否    |  否 | 按键按下持续时间，单位：μs。           |
+| keyDownDuration | number  | 否    |  否 | 按键按下持续时间，单位为微秒（μs）。           |
 | isIntercepted   | boolean | 否    |  否 | 按键是否可以被拦截。<br>true表示可以被拦截，false表示不可被拦截。 |
 
 ## KeyEventData<sup>11+</sup>
@@ -486,4 +486,4 @@ struct Index {
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
-| keyEvent       | [KeyEvent](#keyevent) | 否    |  否 | 按键注入描述信息。   |
+| KeyEvent       | [KeyEvent](#keyevent) | 否    |  否 | 按键注入描述信息。   |

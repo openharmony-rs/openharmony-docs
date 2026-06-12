@@ -1815,19 +1815,23 @@ try {
 connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 连接对端设备支持的profile（只包括A2DP、HFP和HID）。使用Callback异步回调。
-- 需先调用[connection.pairDevice](#connectionpairdevice)发起配对，且仅允许在每次发起配对后30s内调用此接口一次。
+- API版本26.0.0之前，需先调用[connection.pairDevice](#connectionpairdevice)发起配对，且仅允许在每次发起配对后30秒内调用此接口一次。
+- 从API版本26.0.0开始，针对A2DP和HFP，调用接口无时间限制，可以在调用[connection.pairDevice](#connectionpairdevice)发起配对后任意时间内进行调用。
 - 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的profile能力。若存在应用需要的能力，才调用此接口。
+- 需要与接口[connection.disconnectAllowedProfiles](#connectiondisconnectallowedprofiles)配合使用。
 - 从API version 21开始，此接口支持使用对端设备的实际MAC地址进行profile连接。
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力：**: SystemCapability.Communication.Bluetooth.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型    | 必填  | 说明                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是   | 表示需要连接的对端设备地址，例如："XX:XX:XX:XX:XX:XX"。|
+| deviceId | string | 是   | 表示需要连接的对端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。|
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当发起连接成功，err为undefined，否则为错误对象。  |
 
 **错误码：**
@@ -1866,25 +1870,29 @@ try {
 connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
 连接对端设备支持的profile（只包括A2DP、HFP和HID）。使用Promise异步回调。
-- 需先调用[connection.pairDevice](#connectionpairdevice)发起配对，且仅允许在每次发起配对后30s内调用此接口一次。
+- API版本26.0.0之前，需先调用[connection.pairDevice](#connectionpairdevice)发起配对，且仅允许在每次发起配对后30秒内调用此接口一次。
+- 从API版本26.0.0开始，针对A2DP和HFP，调用接口无时间限制，可以在调用[connection.pairDevice](#connectionpairdevice)发起配对后任意时间内进行调用。
 - 当配对成功后，建议先调用[getRemoteProfileUuids](#connectiongetremoteprofileuuids12)主动查询目标设备支持的profile能力。若存在应用需要的能力，才调用此接口。
+- 需要与接口[connection.disconnectAllowedProfiles](#connectiondisconnectallowedprofiles)配合使用。
 - 从API version 21开始，此接口支持使用对端设备的实际MAC地址进行profile连接。
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力：**: SystemCapability.Communication.Bluetooth.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型    | 必填  | 说明                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是   | 表示需要连接的对端设备地址，例如："XX:XX:XX:XX:XX:XX"。|
+| deviceId | string | 是   | 表示需要连接的对端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。|
 
 **返回值：**
 
 | 类型                                             | 说明               |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。|
+| Promise&lt;void&gt; | Promise对象。无返回结果。|
 
 **错误码：**
 
@@ -1911,6 +1919,55 @@ try {
   });
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## connection.disconnectAllowedProfiles
+
+disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
+
+断开对端设备支持的profile（只包括A2DP和HFP）。
+- 需要与接口[connection.connectAllowedProfiles](#connectionconnectallowedprofiles16)配合使用。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力：**: SystemCapability.Communication.Bluetooth.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型    | 必填  | 说明                                 |
+| -------- | ------ | ---- | ----------------------------------- |
+| deviceId | string | 是   | 表示需要断开连接的对端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。|
+
+**返回值：**
+
+| 类型                                             | 说明               |
+| ------------------------------------------------- | ------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回结果。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见 [通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID| 错误信息|
+| -------- | ---------------------------- |
+|201     | Permission denied.                       |
+|801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+try {
+  await connection.disconnectAllowedProfiles('68:13:24:79:4C:8C');
+} catch (err) {
+  console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1965,6 +2022,92 @@ try {
   let addr: string = connection.getVirtualAddressByHash(connection.HashAlgorithmType.HASH_ALGORITHM_SHA256, hashValue);
 } catch (err) {
   console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+## connection.onAclStateChange
+
+onAclStateChange(callback: Callback&lt;AclStateResult&gt;): void
+
+订阅蓝牙ACL链路连接状态变化事件。当触发蓝牙ACL链路连接与断开连接时，如订阅此事件，则会收到携带对应设备的地址与连接状态的回调函数。
+
+**起始版本：** 26.0.0
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                               |
+| -------- | ---------------------------------------- | ---- | -------------------------------- |
+| callback | Callback&lt;[AclStateResult](#aclstateresult)&gt; | 是    | 回调函数，返回蓝牙外设连接状态 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见 [通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.<br>Failed to call the API when the short-range chip is not inserted on 2in1 device.       |
+|2900099 | Operation failed.<br>For example, IPC error. Detailed error messages can be used to assist in locating the problem.              |
+
+**示例：**
+
+```js
+function AclStateChangeEvent(aclStateResult: connection.AclStateResult) {
+    console.info('acl state changed:'+ JSON.stringify(aclStateResult));
+}
+try {
+    connection.onAclStateChange(AclStateChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```
+
+## connection.offAclStateChange
+
+offAclStateChange(callback?: Callback&lt;AclStateResult&gt;): void
+
+取消订阅蓝牙ACL链路连接状态变化事件。
+
+**起始版本：** 26.0.0
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                                       |
+| -------- | ---------------------------------------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;[AclStateResult](#aclstateresult)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[connection.onAclStateChange](#connectiononaclstatechange)中的回调函数一致；若无传参，则取消订阅所有蓝牙ACL连接状态变更的回调函数通知。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见 [通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.<br>Failed to call the API when the short-range chip is not inserted on 2in1 device.|
+|2900099 | Operation failed.<br>For example, IPC error. Detailed error messages can be used to assist in locating the problem.                        |
+
+**示例：**
+
+```js
+function AclStateChangeEvent(aclStateResult: connection.AclStateResult) {
+    console.info('acl state changed:'+ JSON.stringify(aclStateResult));
+}
+try {
+    connection.offAclStateChange(AclStateChangeEvent);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -2124,3 +2267,35 @@ try {
 | 名称                 | 值  | 说明     |
 | ------------------ | ---- | ------ |
 | HASH_ALGORITHM_SHA256        | 0    | SHA256哈希算法。|
+
+
+## AclStateResult
+
+描述ACL连接状态的参数结构。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称       | 类型   | 只读 | 可选   | 说明          |
+| -------- | ------ | ---- | ---- | ----------- |
+| deviceId | string      | 否    | 否    | 表示对端设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| state    | [AclState](#aclstate)   | 否    | 否    | 连接状态。 |
+
+
+## AclState
+
+枚举，表示ACL连接状态。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称                 | 值  | 说明     |
+| ------------------ | ---- | ------ |
+| STATE_CONNECTED        | 0    | ACL链路已连接。|
+| STATE_DISCONNECTED        | 1    | ACL链路已断开连接。|

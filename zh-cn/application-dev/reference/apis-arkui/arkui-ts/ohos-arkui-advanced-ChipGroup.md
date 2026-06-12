@@ -1,7 +1,7 @@
 # ChipGroup
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xieziang-->
+<!--Owner: @Cuecuexiaoyu-->
 <!--Designer: @youzhi92-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -35,6 +35,7 @@ ChipGroup({
   chipGroupSpace?: ChipGroupSpaceOptions,
   chipGroupPadding?: ChipGroupPaddingOptions,
   backgroundSystemMaterial?: uiMaterial.Material,
+  selectedBackgroundMaterial?: uiMaterial.Material,
   onChange?: Callback<Array<number>>,
   suffix?: Callback<void>
 })
@@ -54,7 +55,8 @@ ChipGroup({
 | multiple        | boolean                                         | 否   | @Prop | 是否选中多个`Chip`。<br/>`true`：支持多个`Chip`选中；`false`：仅支持单个`Chip`选中。<br>默认值：`false`<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | 否   | @Prop | 左右内边距及Chip之间间距。参考[ChipGroupSpaceOptions](#chipgroupspaceoptions)类型。<br/>默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 }<br>单位：vp<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | 否   | @Prop | 设置ChipGroup的上下内边距，以控制整体高度。类型为[ChipGroupPaddingOptions](#chipgrouppaddingoptions)。<br/>默认值：{ top: 14, bottom: 14 }<br>单位：vp<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)等视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| selectedBackgroundMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件选中状态的系统材质样式。不同材质具有不同的效果，能够影响组件选中时的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)视觉属性。<br>默认值：undefined<br>值为undefined时，不应用选中状态的材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | onChange        | Callback\<Array\<number>>  | 否   | -  | Chip状态改变时的回调方法。<br/>若为undefined，表示解绑事件。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                              |
 | suffix          | Callback\<void\>                                        | 否   | @BuilderParam | 支持开发者自定义builder，如需在组件最右侧显示自定义内容可配置suffix属性，使用属性suffix需引用[IconGroupSuffix](#icongroupsuffix)接口。<br/>默认不传入时，没有suffix。<br>值为undefined时，没有suffix。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
@@ -116,6 +118,8 @@ ChipItemStyle定义了Chip的共通属性。
 > 1. 操作块的大小有两种类型，一种是ChipSize，提供NORMAL和SMALL两种尺寸供选择；另一种是SizeOptions。
 >
 > 2. backgroundColor、selectedBackgroundColor传入undefined时，显示默认背景颜色，传入非法值时，背景色透明。
+>
+> 3. 从API版本26.0.0开始，backgroundSystemMaterial设置自动反色的新材质时，fontColor使用系统预定义的可反色颜色资源（如$sys.color.font_primary），颜色自动适配到材质背景色的反色。
 
 ## ChipGroupSpaceOptions
 
@@ -201,7 +205,7 @@ IconGroupSuffix({
 | 名称                        | 类型                    | 必填 | 装饰器类型 | 说明                                                              |
 | --------------------------- | ---------------------- | ---- | ----------------------------------------------| ----------------------------------------------|
 | items                       | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | 是   | @Require &nbsp;@Prop | 尾部区域显示的自定义项数组，支持IconItemOptions（Image图标）、SymbolGlyphModifier（Symbol图标）或SymbolItemOptions（Symbol图标配置）类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| iconBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)等视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| iconBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | 否 | @Prop | 设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[border](ts-universal-attributes-border.md#border)、[shadow](ts-universal-attributes-image-effect.md#shadow)视觉属性。<br>默认值：undefined<br>值为undefined时，不应用材质样式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 > **说明：**
 >
@@ -861,12 +865,12 @@ export struct ChipGroupExample2 {
 
 ### 示例6（设置系统材质样式）
 
-该示例通过配置backgroundSystemMaterial和iconBackgroundSystemMaterial实现系统材质样式。
+该示例通过配置backgroundSystemMaterial和iconBackgroundSystemMaterial实现系统材质样式，开启自动反色功能使文本颜色适配背景色。
 
 从API版本26.0.0开始，[ChipGroup](#chipgroup-1)新增backgroundSystemMaterial属性，[IconGroupSuffix](#icongroupsuffix)新增iconBackgroundSystemMaterial属性。
 
 ```typescript
-import { ChipGroup, IconGroupSuffix, uiMaterial } from '@kit.ArkUI';
+import { ChipGroup, IconGroupSuffix, SymbolGlyphModifier, uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -876,25 +880,19 @@ struct ChipGroupMaterialExample {
   @LocalBuilder
   suffix() {
     IconGroupSuffix({
-      items: [{
-        icon: {
-          src: $r('sys.media.AI_phone'),
-        },
-        action: () => {
-          this.getUIContext().getPromptAction().showToast({
-            message: '后缀图标被点击'
-          })
-        }
-      }],
-      // 设置后缀图标的系统材质样式
+      items: [new SymbolGlyphModifier($r('sys.symbol.magnifyingglass'))
+      // 将fontColor设置为特殊系统资源值，启用自动反色能力。
+        .fontColor([$r('sys.color.font_primary')])],
+      // 设置后缀图标的系统材质样式为ULTRA_THIN，并开启自动反色。
       iconBackgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
-        style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+        style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+        colorInvert: true
       })
     })
   }
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       ChipGroup({
         items: [
           { label: { text: '选项1' } },
@@ -906,12 +904,16 @@ struct ChipGroupMaterialExample {
         ],
         selectedIndexes: this.selectedIndexes,
         itemStyle: {
-          // 设置透明的背景颜色，否则会和系统材质冲突
+          // 设置透明的背景颜色，否则会和系统材质冲突。
           backgroundColor: Color.Transparent,
+          // 将fontColor设置为特殊系统资源值，启用自动反色能力。
+          fontColor: $r('sys.color.font_primary'),
+          selectedFontColor: $r('sys.color.font_primary')
         },
-        // 设置ChipGroup的系统材质样式
+        // 设置ChipGroup的系统材质样式为ULTRA_THIN，并开启自动反色。
         backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
-          style: uiMaterial.ImmersiveStyle.ULTRA_THIN
+          style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+          colorInvert: true
         }),
         onChange: (activatedChipsIndex: Array<number>) => {
           this.selectedIndexes = activatedChipsIndex;
@@ -922,11 +924,11 @@ struct ChipGroupMaterialExample {
       })
     }
     .linearGradient({
-      angle: 135, // 渐变角度，135度是从左上到右下
+      angle: 90, // 渐变角度，90度是从上到下。
       colors: [
-        ['#FF9A9E', 0.0], // 起始颜色及位置 (0.0表示起点)
-        ['#FECFEF', 0.5], // 中间颜色及位置
-        ['#A18CD1', 1.0]  // 结束颜色及位置 (1.0表示终点)
+        ['#FF9A9E', 0.0], // 起始颜色及位置（0.0表示起点）。
+        ['#FECFEF', 0.5], // 中间颜色及位置。
+        ['#3B324C', 1.0] // 结束颜色及位置（1.0表示终点）。
       ]
     })
     .padding(12)
@@ -936,4 +938,4 @@ struct ChipGroupMaterialExample {
 }
 ```
 
-![](figures/zh-cn_chip-group_material.png)
+![](figures/chip_group_material.png)

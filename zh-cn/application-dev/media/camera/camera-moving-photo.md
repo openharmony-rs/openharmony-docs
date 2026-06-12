@@ -20,6 +20,7 @@
 详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 > **说明：**
+>
 > - 拍摄动态照片需要麦克风权限ohos.permission.MICROPHONE，权限申请和校验的方式请参考[开发准备](camera-preparation.md)。否则拍摄的照片没有声音。
 
 1. 导入依赖，需要导入相机框架、媒体库、图片相关领域依赖。
@@ -34,19 +35,18 @@
 
    通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流，通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法创建拍照输出流。
 
-   ```ts
-   function getPhotoOutput(cameraManager: camera.CameraManager, 
+   <!-- @[camera_getPhotoOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
+   ``` TypeScript
+   getPhotoOutput(cameraManager: camera.CameraManager,
      cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
-     if (!cameraOutputCapability || !cameraOutputCapability.photoProfiles) {
-       return;
-     }
-     let photoProfilesArray: Array<camera.Profile> = cameraOutputCapability.photoProfiles;
+     let photoProfilesArray: camera.Profile[] = cameraOutputCapability.photoProfiles;
      if (!photoProfilesArray || photoProfilesArray.length === 0) {
-       console.error("photoProfilesArray is null or []");
-       return;
+       console.error('photoProfilesArray is null or []');
      }
      let photoOutput: camera.PhotoOutput | undefined = undefined;
      try {
+       this.photoProfileObj = photoProfilesArray[0]
        photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0]);
      } catch (error) {
        let err = error as BusinessError;
@@ -58,40 +58,52 @@
 
 3. 查询当前设备当前模式是否支持动态照片能力。
 
-    > **说明：**
-    > 查询是否支持动态照片前需要先完成相机会话配置、提交和启动会话，详细开发步骤请参考[会话管理](camera-session-management.md)。
+   > **说明：**
+   >
+   > 查询是否支持动态照片前需要先完成相机会话配置、提交和启动会话，详细开发步骤请参考[会话管理](camera-session-management.md)。
 
-    ```ts
-    function isMovingPhotoSupported(photoOutput: camera.PhotoOutput): boolean {
-      let isSupported: boolean = false;
-      try {
-        isSupported = photoOutput.isMovingPhotoSupported();
-      } catch (error) {
-        // 失败返回错误码error.code并处理。
-        let err = error as BusinessError;
-        console.error(`The isMovingPhotoSupported call failed. error code: ${err.code}`);
-      }
-      return isSupported;
-    }
-    ```
+   <!-- @[camera_moving_photo_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
+   ``` TypeScript
+   isMovingPhotoSupported(): boolean {
+     let isSupported: boolean = false;
+     try {
+       if (this.photoOutput == undefined) {
+         console.error(`photoOutput is nullptr.`);
+         return false;
+       }
+       isSupported = this.photoOutput.isMovingPhotoSupported();
+     } catch (error) {
+       // 失败返回错误码error.code并处理。
+       let err = error as BusinessError;
+       console.error(`The isMovingPhotoSupported call failed. error code: ${err.code}`);
+     }
+     return isSupported;
+   }
+   ```
 
 4. 使能动态照片拍照能力。
 
-    > **说明：**
-    >
-    > 使能动态照片前需要使能[分段式拍照](camera-deferred-capture.md)能力。
+   > **说明：**
+   >
+   > 使能动态照片前需要使能[分段式拍照](camera-deferred-capture.md)能力。
 
-    ```ts
-    function enableMovingPhoto(photoOutput: camera.PhotoOutput): void {
-      try {
-        photoOutput.enableMovingPhoto(true);
-      } catch (error) {
-        // 失败返回错误码error.code并处理。
-        let err = error as BusinessError;
+   <!-- @[camera_moving_photo_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
+   ``` TypeScript
+   enableMovingPhoto(enable: boolean): void {
+     try {
+       if (this.photoOutput != undefined) {
+         console.info(TAG, `enableMovingPhoto: ${enable}`);
+         this.photoOutput.enableMovingPhoto(enable);
+       }
+     } catch (error) {
+       // 失败返回错误码error.code并处理。
+       let err = error as BusinessError;
        console.error(`The enableMovingPhoto call failed. error code: ${err.code}`);
-      }
-    }
-    ```
+     }
+   }
+   ```
 
 5. 触发拍照，与普通拍照方式相同，请参考[拍照](camera-shooting.md)。
 
@@ -99,36 +111,70 @@
 
 在相机应用开发过程中，可以随时监听动态照片拍照输出流状态。通过注册photoAsset的回调函数获取监听结果，photoOutput创建成功时即可监听。
 
-   ```ts
-   function getPhotoAccessHelper(context: Context): photoAccessHelper.PhotoAccessHelper {
-     let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
-     return phAccessHelper;
-   }
+<!-- @[photo_asset_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
 
-   async function mediaLibSavePhoto(photoAsset: photoAccessHelper.PhotoAsset,
-     phAccessHelper: photoAccessHelper.PhotoAccessHelper): Promise<void> {
-     try {
-       let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
-       assetChangeRequest.saveCameraPhoto();
-       await phAccessHelper.applyChanges(assetChangeRequest);
-       console.info('apply saveCameraPhoto successfully');
-     } catch (err) {
-       console.error(`apply saveCameraPhoto failed with error: ${err.code}, ${err.message}`);
-     }
-   }
+``` TypeScript
+onPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput, context: Context): void {
+  photoOutput.on('photoAssetAvailable', (err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset) => {
+    if (err) {
+      console.error(`photoAssetAvailable error: ${err}.`);
+      return;
+    }
+    console.info('photoOutputCallBack photoAssetAvailable');
+    // 开发者可通过photoAsset调用媒体库相关接口，自定义处理图片。
+    // 处理方式一：调用媒体库落盘接口保存一阶段图，二阶段图就绪后媒体库会主动帮应用替换落盘图片。
+    let accessHelper: photoAccessHelper.PhotoAccessHelper =
+      photoAccessHelper.getPhotoAccessHelper(this.context);
+    this.mediaLibSavePhoto(photoAsset, accessHelper);
+    // 处理方式二：调用媒体库接口请求图片并注册一阶段图或二阶段图buffer回调，自定义使用。
+    this.mediaLibRequestBuffer(photoAsset, context, this.callback);
+  });
+}
 
-   function onPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput, context: Context): void {
-     photoOutput.on('photoAssetAvailable', (err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset): void => {
-       if (err) {
-         console.error(`photoAssetAvailable error: ${err}.`);
-         return;
-       }
-       console.info('photoOutPutCallBack photoAssetAvailable');
-       // 调用媒体库落盘接口保存一阶段图和动态照片视频。
-       mediaLibSavePhoto(photoAsset, getPhotoAccessHelper(context));
-     });
-   }
-   ```
+async mediaLibSavePhoto(photoAsset: photoAccessHelper.PhotoAsset,
+  phAccessHelper: photoAccessHelper.PhotoAccessHelper): Promise<void> {
+  try {
+    let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+      new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
+    assetChangeRequest.saveCameraPhoto();
+    await phAccessHelper.applyChanges(assetChangeRequest);
+    phAccessHelper.release().catch(() => {
+      console.error(`release failed.`);
+    });
+  } catch (error) {
+    Logger.error(`apply saveCameraPhoto failed with error: ${error.code}, ${error.message}`);
+  }
+}
+
+async mediaLibRequestBuffer(photoAsset: photoAccessHelper.PhotoAsset, context: Context,
+  callback: (pixelMap: image.PixelMap, url: string) => void) {
+  class MediaDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
+    onDataPrepared(data: ArrayBuffer) {
+      if (data === undefined) {
+        Logger.error('Error occurred when preparing data');
+        return;
+      }
+      let imageSource = image.createImageSource(data);
+      imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+        callback(pixelMap, photoAsset.uri);
+      }).catch((err: BusinessError) => {
+        Logger.error(`createPixelMap err:${err.code}`);
+      })
+    }
+  }
+
+  let requestOptions: photoAccessHelper.RequestOptions = {
+    deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
+  }
+  const handler = new MediaDataHandler();
+  try {
+    await photoAccessHelper.MediaAssetManager.requestImageData(context, photoAsset, requestOptions, handler);
+  } catch (error) {
+    console.error(`requestImageData failed, err: ${error.code}`);
+  }
+}
+```
+
 ## HDR动态照片
 
 从API version 23开始，相机提供HDR动态照片拍摄能力，即组成动态照片的静态图片与动态短视频均为高动态范围（HDR）内容，能够在高光与暗部细节、色彩层次和整体质感方面优于SDR成片效果。

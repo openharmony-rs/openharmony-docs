@@ -608,7 +608,7 @@ Scrollable模式下的TabBar的布局样式对象。
 >
 > - [barWidth](#barwidth)生效优先级高于该接口，barWidth和该接口都没有生效时，TabBar宽度使用默认计算规则。
 >
-> - TabBar宽度默认计算规则如下表。子节点数量等于4个时，TabBar最大宽度为328vp。子节点数量大于等于5个时，TabBar最大宽度为360vp。
+> - TabBar宽度默认计算规则如下表。子节点数量等于4个时，TabBar最大宽度为328vp。子节点数量大于等于5个时，TabBar最大宽度为360vp。Tabs宽度大于等于1140vp时，TabBar的宽高会放大到1.15倍。
 
 | 子节点数量 | Tabs宽度 | 计算规则        |
 | --------- | -------- | -------------- |
@@ -635,6 +635,24 @@ Scrollable模式下的TabBar的布局样式对象。
 | largeBarWidth | [Length](ts-types.md#length) | 否 | 是    | Tabs宽度大于840vp，或宽度在600vp到840vp之间且高宽比大于0.8时，TabBar的宽度。 |
 
 
+## UIMaterial
+
+type UIMaterial = import('../api/@ohos.arkui.uiMaterial').uiMaterial
+
+系统材质模块。在设置tabBar悬浮样式系统材质属性时使用其中的ImmersiveMaterial类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型     | 说明               |
+| -------- | ------------------ |
+| import('../api/@ohos.arkui.uiMaterial').uiMaterial   | 系统材质模块。|
+
 ## FloatingTabBarStyle
 
 TabBar悬浮样式。
@@ -655,7 +673,7 @@ TabBar悬浮样式。
 | maskColor   | [ResourceColor](ts-types.md#resourcecolor)           | 否 | 是    | 蒙层的颜色。蒙层显示区域在纵向会基于蒙层的颜色进行透明度渐变显示，从下到上不透明度变小。浅色模式下默认值为#CCF1F3F5，显示为白色。深色模式下默认值为#99000000，显示为黑色。 |
 | maskHeight   | [Length](ts-types.md#length)           | 否 | 是    | 蒙层的高度。蒙层显示上边缘默认比TabBar上边缘高16vp。 |
 | adaptToHandedness   | boolean           | 否 | 是    | 是否跟随操作手左右布局显示。<br/>true表示跟随操作手左右布局显示；false表示不跟随操作手左右布局显示。<br/>默认值：false |
-| systemMaterial | UIMaterial.[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) | 否 | 是 | TabBar的背板沉浸式材质样式。 |
+| systemMaterial | [UIMaterial](#uimaterial).[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) | 否 | 是 | TabBar的背板沉浸式材质样式。 |
 
 ## BarMode枚举说明
 

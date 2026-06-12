@@ -206,8 +206,8 @@
       - [点击回弹效果](arkui-ts/ts-universal-attributes-click-effect.md)
       - [特效绘制合并](arkui-ts/ts-universal-attributes-use-effect.md)
       - [组件内容填充方式](arkui-ts/ts-universal-attributes-renderfit.md)
-      - [空间效果](arkui-ts/ts-universal-attributes-spatial-effect.md)
       <!--Del-->
+      - [空间效果 (系统接口)](arkui-ts/ts-universal-attributes-spatial-effect-sys.md)
       - [点光源设置 (系统接口)](arkui-ts/ts-universal-attributes-point-light-style-sys.md)
       - [图像效果 (系统接口)](arkui-ts/ts-universal-attributes-image-effect-sys.md)
       - [融合效果 (系统接口)](arkui-ts/ts-universal-attributes-use-union-effect-sys.md)
@@ -426,8 +426,6 @@
     <!--Del-->
     - [XComponent (系统接口)](arkui-ts/ts-basic-components-xcomponent-sys.md)
     <!--DelEnd-->
-  - 景深效果<!--depth-of-field -->
-    - [DepthComponent](arkui-ts/ts-basic-components-depthcomponent.md)
     <!--Del-->
     - [DepthComponent (系统接口)](arkui-ts/ts-basic-components-depthcomponent-sys.md)
     <!--DelEnd-->
@@ -464,9 +462,21 @@
     - [自定义弹窗 (CustomDialog) (系统接口)](arkui-ts/ts-methods-custom-dialog-box-sys.md)
     <!--DelEnd-->
     - [日历选择器弹窗 (CalendarPickerDialog)](arkui-ts/ts-methods-calendarpicker-dialog.md)
+    <!--Del-->
+    - [日历选择器弹窗 (CalendarPickerDialog) (系统接口)](arkui-ts/ts-methods-calendarpicker-dialog-sys.md)
+    <!--DelEnd-->
     - [日期滑动选择器弹窗 (DatePickerDialog)](arkui-ts/ts-methods-datepicker-dialog.md)
+    <!--Del-->
+    - [日期滑动选择器弹窗 (DatePickerDialog) (系统接口)](arkui-ts/ts-methods-datepicker-dialog-sys.md)
+    <!--DelEnd-->
     - [时间滑动选择器弹窗 (TimePickerDialog)](arkui-ts/ts-methods-timepicker-dialog.md)
+    <!--Del-->
+    - [时间滑动选择器弹窗 (TimePickerDialog) (系统接口)](arkui-ts/ts-methods-timepicker-dialog-sys.md)
+    <!--DelEnd-->
     - [文本滑动选择器弹窗 (TextPickerDialog)](arkui-ts/ts-methods-textpicker-dialog.md)
+    <!--Del-->
+    - [文本滑动选择器弹窗 (TextPickerDialog) (系统接口)](arkui-ts/ts-methods-textpicker-dialog-sys.md)
+    <!--DelEnd-->
     - [弹出框 (Dialog)](arkui-ts/ohos-arkui-advanced-Dialog.md)
   - 卡片<!--service-widgets-->
     - [FormLink](arkui-ts/ts-container-formlink.md)
