@@ -230,7 +230,7 @@ setMobile(isMobile: boolean): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| isMobile | boolean | 是   | 对应请求标头的Sec-CH-UA-Mobile。表示设备是否为移动设备。true为是移动设备，false为不是移动设备。默认值为true。 |
+| isMobile | boolean | 是   | 对应请求标头的Sec-CH-UA-Mobile。表示设备是否为移动设备。true为是移动设备，false为不是移动设备。|
 
 **示例：**
 
