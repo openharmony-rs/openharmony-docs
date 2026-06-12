@@ -78,23 +78,14 @@ ArkTS-Sta示例：
 import {
   Color,
   Component,
-  Column,
   NavPathStack,
-  Button,
-  NavPathInfo,
-  NavDestinationContext,
-  NavigationOperation,
-  ButtonType,
-  GestureEvent,
-  PanGesture,
-  NavDestination,
-  ColumnOptions,
   Stack,
   Text,
   NavDestinationMode,
   ResourceColor,
   State,
   AppStorage,
+  NavDestination
 } from '@kit.ArkUI';
 
 @Builder
@@ -122,7 +113,7 @@ export struct DialogNavDestination {
     .mode(NavDestinationMode.DIALOG)
     .onWillAppear(() => {
       // 启动时候蒙层渐现
-      this.getUIContext().animateTo({ duration:450 }, () => {
+      this.getUIContext().animateTo({ duration: 450 }, () => {
         this.backColor = '#66000000';
       });
     })
@@ -177,26 +168,16 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 import {
-  Color,
   Component,
   Column,
   NavPathStack,
   Button,
   NavPathInfo,
-  NavDestinationContext,
-  NavigationOperation,
-  ButtonType,
-  GestureEvent,
-  PanGesture,
-  NavDestination,
   ColumnOptions,
-  Stack,
   Text,
-  NavDestinationMode,
   Entry,
   Navigation,
-  State,
-  AppStorage,
+  AppStorage
 } from '@kit.ArkUI';
 
 @Entry
@@ -215,6 +196,7 @@ struct NavigationPage {
     }
   }
 }
+
 ```
 
 ## pop、push同时进行却执行pop动画
@@ -266,7 +248,8 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 this.stack.pop();
-this.stack.pushPath(new NavPathInfo('animation-BasicNavDestination', undefined), { launchMode: LaunchMode.NEW_INSTANCE });
+this.stack.pushPath(new NavPathInfo('animation-BasicNavDestination', undefined),
+  { launchMode: LaunchMode.NEW_INSTANCE });
 ```
 
 ## 跳转动画是否有结束回调

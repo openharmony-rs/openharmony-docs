@@ -990,7 +990,7 @@ import {
   TabContent,
   HorizontalAlign,
   NavDestination,
-  State,
+  State
 } from '@kit.ArkUI';
 import uiAppearance from '@ohos.uiAppearance';
 

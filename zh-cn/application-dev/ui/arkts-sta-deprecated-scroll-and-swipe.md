@@ -1087,7 +1087,7 @@ import {
   Curve,
   NavDestination,
   $r,
-  State,
+  State
 } from '@kit.ArkUI';
 
 // 如需作为页面入口，请取消@Entry的注释并删除export关键字

@@ -81,18 +81,12 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
   import {
     Entry,
     Component,
-    Flex,
-    FlexOptions,
-    FlexDirection,
-    ItemAlign,
-    FlexAlign,
     Text,
     FontWeight,
     Row,
     Button,
     Column,
-    ButtonType,
-    State,
+    ButtonType
   } from '@kit.ArkUI';
   import router from '@ohos.router';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -167,18 +161,12 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
   import {
     Entry,
     Component,
-    Flex,
-    FlexOptions,
-    FlexDirection,
-    ItemAlign,
-    FlexAlign,
     Text,
     FontWeight,
     Row,
     Button,
     Column,
-    ButtonType,
-    State,
+    ButtonType
   } from '@kit.ArkUI';
   import router from '@ohos.router';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -253,18 +241,12 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
   import {
     Entry,
     Component,
-    Flex,
-    FlexOptions,
-    FlexDirection,
-    ItemAlign,
-    FlexAlign,
     Text,
     FontWeight,
     Row,
     Button,
     Column,
-    ButtonType,
-    State,
+    ButtonType
   } from '@kit.ArkUI';
   import router from '@ohos.router';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -451,20 +433,14 @@ ArkTS-Sta示例：
 import {
   Entry,
   Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
   Text,
   FontWeight,
   Row,
   Button,
   Column,
   ButtonType,
-  State,
+  State
 } from '@kit.ArkUI';
-import router from '@ohos.router';
 
 class InfoTmp {
   public age: number = 0;
@@ -794,25 +770,13 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 import {
-  Entry,
-  Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
-  Row,
-  Button,
-  Column,
-  ButtonType,
-  State,
+  Entry, Component, Button, Column
 } from '@kit.ArkUI';
-import router from '@ohos.router';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0xF811;
 const TAG = '[Sample_ArkTSRouter]';
+
 // Index.ets
 @Entry
 @Component
@@ -850,26 +814,13 @@ struct MyComponent {
 
 ``` TypeScript
 import {
-  Entry,
-  Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
-  Row,
-  Button,
-  Column,
-  ButtonType,
-  Color,
-  State,
+  Entry, Component, Text, FontWeight, Button, Column, Color, State
 } from '@kit.ArkUI';
-import router from '@ohos.router';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0xF811;
 const TAG = '[Sample_ArkTSRouter]';
+
 // Page.ets
 @Entry
 @Component
@@ -982,27 +933,11 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 import {
-  Entry,
-  Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
-  Row,
-  Button,
-  Column,
-  ButtonType,
-  NavPathStack,
-  Navigation,
-  NavigationMode,
-  State,
+  Entry, Component, Text, FontWeight, Row, Button, Column, ButtonType, State
 } from '@kit.ArkUI';
-import router from '@ohos.router';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0xF811;
 const TAG = '[Sample_ArkTSRouter]';
 ```
@@ -1016,12 +951,14 @@ onBackClick(): void {
   try {
     this.getUIContext().getRouter().showAlertBeforeBackPage({
       // 请在resources\base\element\string.json文件中配置name为'pageRouter_dialog_context'，value为非空字符串的资源
-      message: this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('pageRouter_dialog_context') as string, // 设置询问框的内容
+      message: this.getUIContext()
+        .getHostContext()?.resourceManager
+        .getStringByNameSync('pageRouter_dialog_context') as string, // 设置询问框的内容
     });
   } catch (err) {
     let message = (err as BusinessError).message;
     let code = (err as BusinessError).code;
-    hilog.error(DOMAIN, TAG,`Invoke showAlertBeforeBackPage failed, code is ${code}, message is ${message}`);
+    hilog.error(DOMAIN, TAG, `Invoke showAlertBeforeBackPage failed, code is ${code}, message is ${message}`);
   }
 
   // 调用this.getUIContext().getRouter().back()方法，返回上一个页面
@@ -1106,11 +1043,6 @@ ArkTS-Sta示例：
 import {
   Entry,
   Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
   Text,
   FontWeight,
   Row,
@@ -1118,12 +1050,12 @@ import {
   Column,
   ButtonType,
   $r,
-  State,
+  promptAction,
+  State
 } from '@kit.ArkUI';
-import router from '@ohos.router';
-import { promptAction} from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0xF811;
 const TAG = '[Sample_ArkTSRouter]';
 ```
@@ -1133,37 +1065,41 @@ const TAG = '[Sample_ArkTSRouter]';
 ``` TypeScript
 onBackClick() {
   // 弹出自定义的询问框
-  this.getUIContext().getPromptAction().showDialog({
-    // 您还没有完成支付，确定要返回吗？
-    // 请将$r('app.string.pageRouter_dialog_context')替换为实际资源文件，在本示例中该资源文件的value值为"您还没有完成支付，确定要返回吗？"
-    message: $r('app.string.pageRouter_dialog_context'),
-    buttons: [
-      {
-        // 请将$r('app.string.pageRouter_dialog_canceled')替换为实际资源文件，在本示例中该资源文件的value值为"取消"
-        text: $r('app.string.pageRouter_dialog_canceled'),
-        color: '#FF0000'
-      },
-      {
-        // 请将$r('app.string.pageRouter_dialog_confirmed')替换为实际资源文件，在本示例中该资源文件的value值为"确认"
-        text: $r('app.string.pageRouter_dialog_confirmed'),
-        color: '#0099FF'
+  this.getUIContext()
+    .getPromptAction()
+    .showDialog({
+      // 您还没有完成支付，确定要返回吗？
+      // 请将$r('app.string.pageRouter_dialog_context')替换为实际资源文件，在本示例中该资源文件的value值为"您还没有完成支付，确定要返回吗？"
+      message: $r('app.string.pageRouter_dialog_context'),
+      buttons: [
+        {
+          // 请将$r('app.string.pageRouter_dialog_canceled')替换为实际资源文件，在本示例中该资源文件的value值为"取消"
+          text: $r('app.string.pageRouter_dialog_canceled'),
+          color: '#FF0000'
+        },
+        {
+          // 请将$r('app.string.pageRouter_dialog_confirmed')替换为实际资源文件，在本示例中该资源文件的value值为"确认"
+          text: $r('app.string.pageRouter_dialog_confirmed'),
+          color: '#0099FF'
+        }
+      ]
+    })
+    .then((result: promptAction.ShowDialogSuccessResponse) => {
+      if (result.index === 0) {
+        // 用户点击了“取消”按钮
+        hilog.info(DOMAIN, TAG, 'User canceled the operation.');
+      } else if (result.index === 1) {
+        // 用户点击了“确认”按钮
+        hilog.info(DOMAIN, TAG, 'User confirmed the operation.');
+        // 调用this.getUIContext().getRouter().back()方法，返回上一个页面
+        this.getUIContext().getRouter().back();
       }
-    ]
-  }).then((result: promptAction.ShowDialogSuccessResponse) => {
-    if (result.index === 0) {
-      // 用户点击了“取消”按钮
-      hilog.info(DOMAIN, TAG, 'User canceled the operation.');
-    } else if (result.index === 1) {
-      // 用户点击了“确认”按钮
-      hilog.info(DOMAIN, TAG, 'User confirmed the operation.');
-      // 调用this.getUIContext().getRouter().back()方法，返回上一个页面
-      this.getUIContext().getRouter().back();
-    }
-  }).catch((err: Error) => {
-    let message = (err as BusinessError).message;
-    let code = (err as BusinessError).code;
-    hilog.error(DOMAIN, TAG, `Invoke showDialog failed, code is ${code}, message is ${message}`);
-  });
+    })
+    .catch((err: Error) => {
+      let message = (err as BusinessError).message;
+      let code = (err as BusinessError).code;
+      hilog.error(DOMAIN, TAG, `Invoke showDialog failed, code is ${code}, message is ${message}`);
+    });
 }
 ```
 
@@ -1296,7 +1232,18 @@ ArkTS-Sta示例：
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { Entry, Component, Flex, FlexOptions, FlexDirection, ItemAlign, FlexAlign, Text, FontWeight, State } from '@kit.ArkUI';
+import {
+  Entry,
+  Component,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  ItemAlign,
+  FlexAlign,
+  Text,
+  FontWeight,
+  State
+} from '@kit.ArkUI';
 import router from '@ohos.router';
 
 // import 'library/src/main/ets/pages/Index'; // 引入共享包中的命名路由页面

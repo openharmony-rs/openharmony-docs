@@ -47,7 +47,7 @@ ArkTS-Sta示例：
 <!-- @[pushUrl](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().pushUrl({url: "url"})
+this.getUIContext().getRouter().pushUrl({ url: "url" })
 ```
 
 ### pushUrl
@@ -87,7 +87,7 @@ ArkTS-Sta示例：
 <!-- @[pushUrl2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().pushUrl({url: "url"}, router.RouterMode.Standard)
+this.getUIContext().getRouter().pushUrl({ url: "url" }, router.RouterMode.Standard)
 ```
 
 
@@ -109,7 +109,8 @@ ArkTS-Sta示例：
 <!-- @[pushUrl3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().pushUrl({url: "url"}, router.RouterMode.Standard, ()=>{})
+this.getUIContext().getRouter().pushUrl({ url: "url" }, router.RouterMode.Standard, () => {
+})
 ```
 
 
@@ -130,7 +131,7 @@ ArkTS-Sta示例：
 <!-- @[back](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().back({url: "url"})
+this.getUIContext().getRouter().back({ url: "url" })
 ```
 
 
@@ -174,7 +175,7 @@ ArkTS-Sta示例：
 <!-- @[replace](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().replaceUrl({url: "url"})
+this.getUIContext().getRouter().replaceUrl({ url: "url" })
 ```
 
 
@@ -196,7 +197,7 @@ ArkTS-Sta示例：
 <!-- @[replaceUrl](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().replaceUrl({url: "url"})
+this.getUIContext().getRouter().replaceUrl({ url: "url" })
 ```
 
 
@@ -218,7 +219,8 @@ ArkTS-Sta示例：
 <!-- @[replaceUrl2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().replaceUrl({url: "url"}, ()=>{})
+this.getUIContext().getRouter().replaceUrl({ url: "url" }, () => {
+})
 ```
 
 
@@ -240,7 +242,7 @@ ArkTS-Sta示例：
 <!-- @[replaceUrl3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().replaceUrl({url: "url"}, router.RouterMode.Standard)
+this.getUIContext().getRouter().replaceUrl({ url: "url" }, router.RouterMode.Standard)
 ```
 
 
@@ -262,7 +264,8 @@ ArkTS-Sta示例：
 <!-- @[replaceUrl4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().replaceUrl({url: "url"}, router.RouterMode.Standard, ()=>{})
+this.getUIContext().getRouter().replaceUrl({ url: "url" }, router.RouterMode.Standard, () => {
+})
 ```
 
 
@@ -284,7 +287,7 @@ ArkTS-Sta示例：
 <!-- @[pushNamedRoute](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().pushNamedRoute({name: "路由名"})
+this.getUIContext().getRouter().pushNamedRoute({ name: "路由名" })
 ```
 
 
@@ -306,7 +309,8 @@ ArkTS-Sta示例：
 <!-- @[pushNamedRoute2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, ()=>{})
+this.getUIContext().getRouter().pushNamedRoute({ name: "路由名" }, () => {
+})
 ```
 
 
@@ -328,7 +332,7 @@ ArkTS-Sta示例：
 <!-- @[pushNamedRoute3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, router.RouterMode.Standard)
+this.getUIContext().getRouter().pushNamedRoute({ name: "路由名" }, router.RouterMode.Standard)
 ```
 
 
@@ -350,7 +354,8 @@ ArkTS-Sta示例：
 <!-- @[pushNamedRoute4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, router.RouterMode.Standard, ()=>{})
+this.getUIContext().getRouter().pushNamedRoute({ name: "路由名" }, router.RouterMode.Standard, () => {
+})
 ```
 
 
@@ -372,7 +377,7 @@ ArkTS-Sta示例：
 <!-- @[replaceNamedRoute](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"})
+this.getUIContext().getRouter().replaceNamedRoute({ name: "路由名" })
 ```
 
 
@@ -394,7 +399,8 @@ ArkTS-Sta示例：
 <!-- @[replaceNamedRoute2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, ()=>{})
+this.getUIContext().getRouter().replaceNamedRoute({ name: "路由名" }, () => {
+})
 ```
 
 
@@ -416,7 +422,7 @@ ArkTS-Sta示例：
 <!-- @[replaceNamedRoute3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, router.RouterMode.Standard)
+this.getUIContext().getRouter().replaceNamedRoute({ name: "路由名" }, router.RouterMode.Standard)
 ```
 
 
@@ -438,7 +444,8 @@ ArkTS-Sta示例：
 <!-- @[replaceNamedRoute4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, router.RouterMode.Standard, ()=>{})
+this.getUIContext().getRouter().replaceNamedRoute({ name: "路由名" }, router.RouterMode.Standard, () => {
+})
 ```
 
 
@@ -590,7 +597,7 @@ ArkTS-Sta示例：
 <!-- @[enableAlertBeforeBackPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().showAlertBeforeBackPage({message: "1111"})
+this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "1111" })
 ```
 
 
@@ -612,7 +619,7 @@ ArkTS-Sta示例：
 <!-- @[enableAlertBeforeBackPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
 ``` TypeScript
-this.getUIContext().getRouter().showAlertBeforeBackPage({message: "1111"})
+this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "1111" })
 ```
 
 
@@ -1040,7 +1047,12 @@ ArkTS-Sta示例：
 <!-- @[RouterState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
 
 ``` TypeScript
-let state: router.RouterState = { index: 0, name: "name", path: "url", params: {} }
+let state: router.RouterState = {
+  index: 0,
+  name: "name",
+  path: "url",
+  params: {}
+}
 ```
 
 
@@ -1497,9 +1509,9 @@ import {
   Navigation,
   NavPathInfo,
   NavDestination,
-  State,
-} from '@kit.ArkUI';
-import hilog from '@ohos.hilog';
+  State
+} from '@kit.ArkUI'
+import hilog from '@ohos.hilog'
 
 @Entry
 @Component

@@ -178,30 +178,16 @@ NavBar的内容区可以通过两种方式指定：
     Component,
     Column,
     NavPathStack,
-    Button,
-    NavPathInfo,
-    NavDestinationContext,
-    NavigationOperation,
-    ButtonType,
-    GestureEvent,
-    PanGesture,
-    NavDestination,
-    ColumnOptions,
-    Stack,
     Text,
-    NavDestinationMode,
-    LaunchMode,
     Context,
     Navigation,
     TextInput,
     List,
     ForEach,
     ListItem,
-    TextAlign,
     $r,
     Entry,
     NavigationMode,
-    NavigationMenuItem,
     Row,
     FontWeight,
     HorizontalAlign,
@@ -211,10 +197,7 @@ NavBar的内容区可以通过两种方式指定：
     Axis,
     EdgeEffect,
     StickyStyle,
-    State,
-    AppStorage,
-    Provide,
-    Consume,
+    Provide
   } from '@kit.ArkUI';
   
   @Entry
@@ -223,6 +206,7 @@ NavBar的内容区可以通过两种方式指定：
     @Provide navPathStack: NavPathStack = new NavPathStack();
     private listArray: Array<string> = ['WLAN', 'Bluetooth', 'Personal Hotspot', 'Connect & Share'];
     context: Context | undefined = this.getUIContext().getHostContext();
+  
     build() {
       Column() {
         Navigation(this.navPathStack) {
@@ -408,11 +392,13 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
    <!-- @[NavigationMenuThreeImage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/MenusThreeImage.ets) -->
    
    ``` TypeScript
-   let menuItem: NavigationMenuItem  = {
+   let menuItem: NavigationMenuItem = {
      'value': 'func',
      'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
-     'action': () => {}
+     'action': () => {
+     }
    };
+   
    // ...
          Navigation(this.navPathStack) {
            // ...
@@ -445,11 +431,13 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
    <!-- @[NavigationMenuThreeResource](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/MenusThreeResource.ets) -->
    
    ``` TypeScript
-   let menuItem: NavigationMenuItem  = {
+   let menuItem: NavigationMenuItem = {
      'value': 'func',
      'icon': 'resources/base/media/ic_public_add.svg',
-     'action': () => {}
+     'action': () => {
+     }
    };
+   
    // ...
          Navigation(this.navPathStack) {
            // ...
@@ -487,11 +475,13 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
    
    ``` TypeScript
    
-   let menuItem: NavigationMenuItem  = {
+   let menuItem: NavigationMenuItem = {
      'value': 'func',
      'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
-     'action': () => {}
+     'action': () => {
+     }
    };
+   
    // ...
          Navigation(this.navPathStack) {
            // ...
@@ -534,9 +524,11 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
    let toolTmp: ToolbarItem = {
      'value': 'func',
      'icon': 'ets/pages/navigation/template1/image/ic_public_highlights.svg',
-     'action': () => {}
+     'action': () => {
+     }
    };
-   let tooBar: ToolbarItem[] = [toolTmp,toolTmp,toolTmp];
+   let tooBar: ToolbarItem[] = [toolTmp, toolTmp, toolTmp];
+   
    // ...
          Navigation(this.navPathStack) {
            // ...

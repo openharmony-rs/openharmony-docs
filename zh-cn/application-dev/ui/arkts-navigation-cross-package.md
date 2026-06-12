@@ -140,51 +140,16 @@ Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自�
    
    ``` TypeScript
    import {
-     Color,
-     Component,
-     Column,
-     NavPathStack,
-     Button,
-     NavPathInfo,
-     NavDestinationContext,
-     NavigationOperation,
-     ButtonType,
-     GestureEvent,
-     PanGesture,
-     NavDestination,
-     ColumnOptions,
-     Stack,
-     Text,
-     NavDestinationMode,
-     LaunchMode,
-     Context,
-     Navigation,
-     TextInput,
-     List,
-     ForEach,
-     ListItem,
-     TextAlign,
-     $r,
-     Entry,
-     NavigationMode,
-     NavigationMenuItem,
-     HorizontalAlign,
-     Row,
-     Image,
-     NavigationTitleMode,
-     State,
-     AppStorage,
-     Provide,
-     Consume,
+     Component, NavPathStack, NavDestinationContext, Navigation, Entry, NavDestination
    } from '@kit.ArkUI';
    
    @Entry
    @Component
    struct SystemRoutingTable {
-     pageStack : NavPathStack = new NavPathStack();
+     pageStack: NavPathStack = new NavPathStack();
    
      build() {
-       Navigation(this.pageStack){
+       Navigation(this.pageStack) {
        }.onAppear(() => {
          this.pageStack.pushPathByName('PageOne', null, false);
        })
@@ -340,23 +305,11 @@ ArkTS-Sta示例：
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import {
-  Color,
   Component,
   Column,
   NavPathStack,
-  Button,
   NavPathInfo,
-  NavDestinationContext,
-  NavigationOperation,
-  ButtonType,
-  GestureEvent,
-  PanGesture,
-  NavDestination,
-  ColumnOptions,
-  Stack,
   Text,
-  NavDestinationMode,
-  LaunchMode,
   Context,
   Navigation,
   TextInput,
@@ -367,10 +320,9 @@ import {
   $r,
   Entry,
   NavigationMode,
-  State,
-  AppStorage,
   Provide,
   Consume,
+  NavDestination
 } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
@@ -555,43 +507,7 @@ export struct pageOneTmp {
     
     ``` TypeScript
     import {
-      Color,
-      Component,
-      Column,
-      NavPathStack,
-      Button,
-      NavPathInfo,
-      NavDestinationContext,
-      NavigationOperation,
-      ButtonType,
-      GestureEvent,
-      PanGesture,
-      NavDestination,
-      ColumnOptions,
-      Stack,
-      Text,
-      NavDestinationMode,
-      LaunchMode,
-      Context,
-      Navigation,
-      TextInput,
-      List,
-      ForEach,
-      ListItem,
-      TextAlign,
-      $r,
-      Entry,
-      NavigationMode,
-      NavigationMenuItem,
-      HorizontalAlign,
-      Row,
-      Image,
-      NavigationTitleMode,
-      Alignment,
-      State,
-      AppStorage,
-      Provide,
-      Consume,
+      Component, NavDestinationContext, Stack, Alignment, NavDestination
     } from '@kit.ArkUI';
     
     // 仅作为示例写法，其余页面、模块需自行创建
@@ -665,43 +581,7 @@ export struct pageOneTmp {
     
     ``` TypeScript
     import {
-      Color,
-      Component,
-      Column,
-      NavPathStack,
-      Button,
-      NavPathInfo,
-      NavDestinationContext,
-      NavigationOperation,
-      ButtonType,
-      GestureEvent,
-      PanGesture,
-      NavDestination,
-      ColumnOptions,
-      Stack,
-      Text,
-      NavDestinationMode,
-      LaunchMode,
-      Context,
-      Navigation,
-      TextInput,
-      List,
-      ForEach,
-      ListItem,
-      TextAlign,
-      $r,
-      Entry,
-      NavigationMode,
-      NavigationMenuItem,
-      HorizontalAlign,
-      Row,
-      Image,
-      NavigationTitleMode,
-      ColumnOptions,
-      State,
-      AppStorage,
-      Provide,
-      Consume,
+      Component, NavPathStack, Button, NavPathInfo, ColumnOptions, Column
     } from '@kit.ArkUI';
     
     @Component

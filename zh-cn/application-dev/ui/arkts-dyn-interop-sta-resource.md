@@ -35,7 +35,7 @@ project/
   
   ``` TypeScript
   // library/src/main/ets/components/MainPage.ets
-  import { $r } from '@ohos.arkui.component';
+  import { $r } from '@kit.ArkUI';
   import transfer from '@ohos.transfer';
   
   export function createResource(): Any {

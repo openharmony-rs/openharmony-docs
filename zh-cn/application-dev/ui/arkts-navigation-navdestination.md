@@ -106,26 +106,26 @@ NavDestination提供了两种类型。
     Consume,
     NavDestination
   } from '@kit.ArkUI';
-
+  
   @Entry
   @Component
   struct PageDisplayType {
-    @Provide navPathStack: NavPathStack = new NavPathStack();
-
+    @Provide pageStack: NavPathStack = new NavPathStack();
+  
     @Builder
     PagesMap(name: string) {
       if (name == 'DialogPage') {
         DialogPage();
       }
     }
-
+  
     build() {
-      Navigation(this.navPathStack) {
+      Navigation(this.pageStack) {
         Button('Push DialogPage')
           .margin(20)
           .width('80%')
           .onClick(() => {
-            this.navPathStack.pushPathByName('DialogPage', '');
+            this.pageStack.pushPathByName('DialogPage', '');
           })
       }
       .mode(NavigationMode.Stack)
@@ -133,11 +133,11 @@ NavDestination提供了两种类型。
       .navDestination(this.PagesMap)
     }
   }
-
+  
   @Component
   export struct DialogPage {
-    @Consume('navPathStack') navPathStack: NavPathStack;
-
+    @Consume('NavPathStack') pageStack: NavPathStack;
+  
     build(): void {
       NavDestination() {
         Stack({ alignContent: Alignment.Center }) {
@@ -146,7 +146,7 @@ NavDestination提供了两种类型。
               .fontSize(20)
               .margin({ bottom: 100 })
             Button('Close').onClick(() => {
-              this.navPathStack.pop();
+              this.pageStack.pop();
             }).width('30%')
           }
           .justifyContent(FlexAlign.Center)
@@ -233,42 +233,17 @@ NavDestination提供了两种类型。
   
   ``` TypeScript
   import {
-    Color,
     Component,
     Column,
     NavPathStack,
     Button,
     NavPathInfo,
-    NavDestinationContext,
-    NavigationOperation,
-    ButtonType,
-    GestureEvent,
-    PanGesture,
     NavDestination,
-    ColumnOptions,
-    Stack,
     Text,
-    NavDestinationMode,
-    LaunchMode,
     Context,
     Navigation,
-    TextInput,
-    List,
-    ForEach,
-    ListItem,
-    TextAlign,
     $r,
-    Entry,
-    NavigationMode,
-    NavigationMenuItem,
-    HorizontalAlign,
-    Row,
-    Image,
-    NavigationTitleMode,
-    State,
-    AppStorage,
-    Provide,
-    Consume,
+    Entry
   } from '@kit.ArkUI';
   import uiObserver from '@ohos.arkui.observer';
   
@@ -288,6 +263,7 @@ NavDestination提供了两种类型。
           // $r('app.string.onPageName')资源文件中的value值为“所属页面Name:”
           Text(this.context!.resourceManager.getStringSync($r('app.string.onPageName').id) + `${this.navDesInfo?.name}`)
         }.width('100%').height('100%')
+  
         // ...
     }
   }

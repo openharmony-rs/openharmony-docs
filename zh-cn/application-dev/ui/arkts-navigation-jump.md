@@ -57,7 +57,6 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 import {
-  Color,
   Component,
   Column,
   NavPathStack,
@@ -66,34 +65,9 @@ import {
   NavDestinationContext,
   NavigationOperation,
   ButtonType,
-  GestureEvent,
-  PanGesture,
-  NavDestination,
-  ColumnOptions,
-  Stack,
-  Text,
-  NavDestinationMode,
-  LaunchMode,
-  Context,
   Navigation,
-  TextInput,
-  List,
-  ForEach,
-  ListItem,
-  TextAlign,
-  $r,
   Entry,
-  NavigationMode,
-  NavigationMenuItem,
-  HorizontalAlign,
-  Row,
-  Image,
-  NavigationTitleMode,
-  NavigationInterception,
-  State,
-  AppStorage,
-  Provide,
-  Consume,
+  NavigationInterception
 } from '@kit.ArkUI';
 
 @Entry
@@ -146,39 +120,18 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 import {
-  Color,
   Component,
   Column,
   NavPathStack,
   Button,
-  NavPathInfo,
   NavDestinationContext,
-  NavigationOperation,
-  ButtonType,
-  GestureEvent,
-  PanGesture,
-  NavDestination,
-  ColumnOptions,
-  Stack,
   Text,
-  NavDestinationMode,
-  LaunchMode,
   Context,
-  Navigation,
-  TextInput,
-  List,
-  ForEach,
-  ListItem,
   TextAlign,
   $r,
-  Entry,
-  NavigationMode,
-  NavigationMenuItem,
   ShadowOptions,
   State,
-  AppStorage,
-  Provide,
-  Consume,
+  NavDestination
 } from '@kit.ArkUI';
 
 @Builder
@@ -200,6 +153,7 @@ export struct PageOne {
     // ...
   }
 }
+
 ```
 
 ### 配置路由表
@@ -355,39 +309,18 @@ export struct PageOne {
     
     ``` TypeScript
     import {
-      Color,
       Component,
       Column,
       NavPathStack,
       Button,
-      NavPathInfo,
       NavDestinationContext,
-      NavigationOperation,
-      ButtonType,
-      GestureEvent,
-      PanGesture,
-      NavDestination,
-      ColumnOptions,
-      Stack,
       Text,
-      NavDestinationMode,
-      LaunchMode,
       Context,
-      Navigation,
-      TextInput,
-      List,
-      ForEach,
-      ListItem,
       TextAlign,
       $r,
-      Entry,
-      NavigationMode,
-      NavigationMenuItem,
       ShadowOptions,
       State,
-      AppStorage,
-      Provide,
-      Consume,
+      NavDestination
     } from '@kit.ArkUI';
     
     @Builder
@@ -410,6 +343,7 @@ export struct PageOne {
           // 通过NavDestinationContext获取当前所在页面的导航控制器
           this.navPathStack = ctx.pathStack;
         })
+    
       }
     }
     ```
@@ -780,6 +714,7 @@ NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui
      pathStack: NavPathStack | undefined = undefined;
      // ...
      pageParam: string = '';
+   
      build() {
        NavDestination() {
          // ...
@@ -1056,30 +991,16 @@ import {
   Component,
   Column,
   NavPathStack,
-  Button,
-  NavPathInfo,
-  NavDestinationContext,
-  NavigationOperation,
-  ButtonType,
-  GestureEvent,
-  PanGesture,
-  NavDestination,
-  ColumnOptions,
-  Stack,
   Text,
-  NavDestinationMode,
-  LaunchMode,
   Context,
   Navigation,
   TextInput,
   List,
   ForEach,
   ListItem,
-  TextAlign,
   $r,
   Entry,
   NavigationMode,
-  NavigationMenuItem,
   Row,
   FontWeight,
   HorizontalAlign,
@@ -1089,10 +1010,7 @@ import {
   Axis,
   EdgeEffect,
   StickyStyle,
-  State,
-  AppStorage,
-  Provide,
-  Consume,
+  Provide
 } from '@kit.ArkUI';
 
 @Entry
@@ -1101,6 +1019,7 @@ struct NavigationDemo {
   @Provide navPathStack: NavPathStack = new NavPathStack();
   private listArray: Array<string> = ['WLAN', 'Bluetooth', 'Personal Hotspot', 'Connect & Share'];
   context: Context | undefined = this.getUIContext().getHostContext();
+
   build() {
     Column() {
       Navigation(this.navPathStack) {
@@ -1254,39 +1173,18 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 import {
-  Color,
   Component,
   Column,
   NavPathStack,
   Button,
-  NavPathInfo,
   NavDestinationContext,
-  NavigationOperation,
-  ButtonType,
-  GestureEvent,
-  PanGesture,
-  NavDestination,
-  ColumnOptions,
-  Stack,
   Text,
-  NavDestinationMode,
-  LaunchMode,
   Context,
-  Navigation,
-  TextInput,
-  List,
-  ForEach,
-  ListItem,
   TextAlign,
   $r,
-  Entry,
-  NavigationMode,
-  NavigationMenuItem,
   ShadowOptions,
   State,
-  AppStorage,
-  Provide,
-  Consume,
+  NavDestination
 } from '@kit.ArkUI';
 
 @Builder
@@ -1334,13 +1232,16 @@ export struct PageOne {
           })
       }
       .size({ width: '100%', height: '100%' })
+
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
       // 通过NavDestinationContext获取当前所在页面的导航控制器
       this.navPathStack = ctx.pathStack;
     })
+
   }
 }
+
 ```
 
 
@@ -1447,43 +1348,23 @@ import {
   Component,
   Column,
   NavPathStack,
-  Button,
-  NavPathInfo,
   NavDestinationContext,
-  NavigationOperation,
-  ButtonType,
-  GestureEvent,
-  PanGesture,
-  NavDestination,
-  ColumnOptions,
-  Stack,
   Text,
-  NavDestinationMode,
-  LaunchMode,
   Context,
-  Navigation,
-  TextInput,
   List,
   ForEach,
   ListItem,
-  TextAlign,
   $r,
-  Entry,
-  NavigationMode,
-  NavigationMenuItem,
   Row,
   FontWeight,
   FlexAlign,
   HorizontalAlign,
-  Blank,
   VerticalAlign,
   Axis,
   EdgeEffect,
   StickyStyle,
-  State,
-  AppStorage,
-  Provide,
-  Consume,
+  NavDestination,
+  Blank
 } from '@kit.ArkUI';
 
 @Builder
@@ -1497,6 +1378,7 @@ export struct PageTwo {
   name: string = '';
   private listArray: Array<string> = ['Projection', 'Print', 'VPN', 'Private DNS', 'NFC'];
   context: Context | undefined = this.getUIContext().getHostContext();
+
   build(): void {
     NavDestination() {
       Column() {

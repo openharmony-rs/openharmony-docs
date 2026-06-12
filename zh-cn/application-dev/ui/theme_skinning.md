@@ -187,12 +187,9 @@
       Radio,
       RadioOptions,
       Slider,
-      Toggle,
-      ToggleType,
       ButtonRole,
       ResourceColor,
-      ToggleOptions,
-      State,
+      State
     } from '@kit.ArkUI';
     
     // 在页面build前执行ThemeControl
@@ -494,33 +491,19 @@
   <!-- @[custom_theme](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ThemeSkinningStatic/entry/src/main/ets/pages/Theme2/Theme2.ets) -->
   
   ``` TypeScript
-  import { CustomColors, CustomTheme, Theme } from '@ohos.arkui.theme';
-  import { common } from '@kit.AbilityKit';
+  import { CustomColors, CustomTheme } from '@ohos.arkui.theme';
   import {
-    Color,
     Component,
     Column,
     Button,
-    ButtonType,
     Text,
-    List,
-    ListItem,
-    TextAlign,
     $r,
     Entry,
     Row,
-    ColumnOptions,
-    ItemAlign,
-    Radio,
-    RadioOptions,
-    Slider,
-    Toggle,
-    ToggleType,
-    ButtonRole,
     ResourceColor,
     WithTheme,
     ResourceStr,
-    State,
+    State
   } from '@kit.ArkUI';
   // 请将$r('app.color.xxx')替换为实际资源文件
   class AppColors implements CustomColors {
@@ -656,35 +639,21 @@ dark.json数据示例：
   <!-- @[with_theme](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ThemeSkinningStatic/entry/src/main/ets/pages/Theme3/Theme3.ets) -->
   
   ``` TypeScript
-  import { CustomColors, CustomTheme, Theme, ThemeControl } from '@ohos.arkui.theme';
+  import { ThemeControl } from '@ohos.arkui.theme';
   import {
-    Color,
     Component,
     Column,
     Button,
-    ButtonType,
     Text,
-    List,
-    ListItem,
-    TextAlign,
     $r,
     Entry,
     Row,
-    ColumnOptions,
-    ItemAlign,
-    Radio,
-    RadioOptions,
-    Slider,
-    Toggle,
-    ToggleType,
-    ButtonRole,
-    ResourceColor,
     WithTheme,
     FontWeight,
     ThemeColorMode,
     SafeAreaType,
     SafeAreaEdge,
-    State,
+    State
   } from '@kit.ArkUI';
   
   ThemeControl.setDefaultTheme(undefined);

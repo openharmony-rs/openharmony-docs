@@ -64,9 +64,7 @@ project/
   <!-- @[call_resource_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ResourceInterop/entry/src/main/ets/pages/ResInterop.ets) -->
   
   ``` TypeScript
-  import { Entry, Button, ClickEvent, Column, Component, Text, FontWeight, ColumnOptions } from '@kit.ArkUI';
-  import { State } from '@ohos.arkui.stateManagement';
-  import { $r } from 'arkui.component.common';
+  import { Entry, Button, ClickEvent, Column, Component, Text, FontWeight, ColumnOptions, State, $r } from '@kit.ArkUI';
   import { Resource } from 'global.resource';
   import transfer from '@ohos.transfer';
   import { createResource } from 'library';

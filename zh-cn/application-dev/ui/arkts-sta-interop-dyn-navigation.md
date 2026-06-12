@@ -37,6 +37,7 @@ ArkTS-Dyn初始化NavDestination页面属性，其使用规格限制与非互操
   <!-- @[page_one](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ResourceInterop/library/src/main/ets/components/MainPage.ets) -->
   
   ``` TypeScript
+  @Entry
   @Component
   export struct PageOne {
     build() {

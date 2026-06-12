@@ -110,23 +110,15 @@ ArkTS-Sta示例：
 import {
   Entry,
   Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
   Text,
   FontWeight,
   Row,
   Button,
   Column,
   ButtonType,
-  NavPathStack,
-  Navigation,
-  NavigationMode,
   Alignment,
   $r,
-  State,
+  State
 } from '@kit.ArkUI';
 import router from '@ohos.router';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -173,25 +165,8 @@ struct Index {
 
 ``` TypeScript
 import {
-  Entry,
-  Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
-  Row,
-  Button,
-  Column,
-  ButtonType,
-  NavPathStack,
-  Navigation,
-  NavigationMode,
-  State,
+  Entry, Component, Text, FontWeight, Row, Button, Column, ButtonType, State
 } from '@kit.ArkUI';
-import router from '@ohos.router';
 
 @Entry
 @Component
@@ -260,23 +235,13 @@ ArkTS-Sta示例：
 import {
   Entry,
   Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
-  Row,
   Button,
   Column,
   ButtonType,
   NavPathStack,
   Navigation,
-  NavigationMode,
-  State,
+  NavigationMode
 } from '@kit.ArkUI';
-import router from '@ohos.router';
 
 // Index.ets
 @Entry
@@ -347,26 +312,14 @@ ArkTS-Sta示例：
 import {
   Entry,
   Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
-  Row,
   Button,
   Column,
   ButtonType,
   NavPathStack,
-  Navigation,
-  NavigationMode,
-  NavDestination,
   NavDestinationContext,
   $r,
-  State,
+  NavDestination
 } from '@kit.ArkUI';
-import router from '@ohos.router';
 
 @Builder
 export function PageOneBuilder(): void {
@@ -451,7 +404,7 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 // push page
-this.getUIContext().getRouter().pushUrl({ url:'pages/pageOne', params: undefined } as router.RouterOptions);
+this.getUIContext().getRouter().pushUrl({ url: 'pages/pageOne', params: undefined } as router.RouterOptions);
 
 // pop page
 this.getUIContext().getRouter().back({ url: 'pages/pageOne' } as router.RouterOptions);
@@ -538,25 +491,8 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 import {
-  Entry,
-  Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
-  Row,
-  Button,
-  Column,
-  ButtonType,
-  NavPathStack,
-  Navigation,
-  NavigationMode,
-  State,
+  Entry, Component, NavPathStack, Navigation, NavigationMode
 } from '@kit.ArkUI';
-import router from '@ohos.router';
 
 @Entry
 @Component
@@ -663,26 +599,13 @@ ArkTS-Sta示例：
 import {
   Entry,
   Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
-  Row,
-  Button,
-  Column,
-  ButtonType,
   NavPathStack,
-  Navigation,
   NavigationMode,
-  NavDestination,
-  State,
   Provide,
+  Navigation,
   Consume,
+  NavDestination
 } from '@kit.ArkUI';
-import router from '@ohos.router';
 
 // Navigation根容器
 @Entry
@@ -744,27 +667,8 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 import {
-  Entry,
-  Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
-  Row,
-  Button,
-  Column,
-  ButtonType,
-  NavPathStack,
-  Navigation,
-  NavigationMode,
-  NavDestination,
-  NavDestinationContext,
-  State,
+  Entry, Component, NavPathStack, NavDestinationContext, NavDestination
 } from '@kit.ArkUI';
-import router from '@ohos.router';
 
 @Entry
 @Component
@@ -828,27 +732,9 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 import {
-  Entry,
-  Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
-  Row,
-  Button,
-  Column,
-  ButtonType,
-  NavPathStack,
-  Navigation,
-  NavigationMode,
-  NavDestination,
-  State,
-  AppStorage,
+  Entry, Component, NavPathStack, NavigationMode, Navigation, NavDestination
 } from '@kit.ArkUI';
-import router from '@ohos.router';
+import { AppStorage } from '@ohos.arkui.stateManagement';
 
 @Entry
 @Component
@@ -923,25 +809,12 @@ ArkTS-Sta示例：
 import {
   Entry,
   Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
   Row,
   Button,
-  Column,
-  ButtonType,
   NavPathStack,
-  Navigation,
-  NavigationMode,
   NavPathInfo,
-  NavigationInfo,
-  State,
+  NavigationInfo
 } from '@kit.ArkUI';
-import router from '@ohos.router';
 
 // 子页面中的自定义组件
 @Entry
@@ -952,8 +825,8 @@ struct CustomNode {
   aboutToAppear() {
     // query navigation info
     let navigationInfo: NavigationInfo = this.queryNavigationInfo() as NavigationInfo;
-    if (navigationInfo !=  undefined) {
-      this.pathStack = navigationInfo.pathStack ;
+    if (navigationInfo != undefined) {
+      this.pathStack = navigationInfo.pathStack;
     }
   }
 
@@ -1078,23 +951,8 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 import {
-  Entry,
-  Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
-  Row,
-  Button,
-  Column,
-  ButtonType,
-  NavDestination,
-  State,
+  Entry, Component, NavDestination
 } from '@kit.ArkUI';
-import router from '@ohos.router';
 
 @Entry
 @Component
@@ -1183,25 +1041,8 @@ Router可以通过命名路由的方式实现跨包跳转。
    // library/src/main/ets/pages/Index.ets
    // library为新建共享包自定义的名字
    import {
-     Entry,
-     Component,
-     Flex,
-     FlexOptions,
-     FlexDirection,
-     ItemAlign,
-     FlexAlign,
-     Text,
-     FontWeight,
-     Row,
-     Button,
-     Column,
-     ButtonType,
-     NavPathStack,
-     Navigation,
-     NavigationMode,
-     State,
+     Entry, Component, Text, FontWeight, Column, Row
    } from '@kit.ArkUI';
-   import router from '@ohos.router';
    
    @Entry({ routeName: 'myPage' })
    @Component
@@ -1292,18 +1133,8 @@ Router可以通过命名路由的方式实现跨包跳转。
      ItemAlign,
      FlexAlign,
      Text,
-     FontWeight,
-     Row,
-     Button,
-     Column,
-     ButtonType,
-     NavPathStack,
-     Navigation,
-     NavigationMode,
-     State,
-   } from '@kit.ArkUI';
+     FontWeight} from '@kit.ArkUI';
    import router from '@ohos.router';
-   import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
    // import('library/src/main/ets/pages/routerToNavigation/router/Index'); // 引入共享包中的命名路由页面
@@ -1385,7 +1216,7 @@ Navigation作为路由组件，默认支持跨包跳转。
    <!-- @[router_hsp21](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/router/Hsp21.ets) -->
    
    ``` TypeScript
-   import { Component, NavDestination, State } from '@kit.ArkUI';
+   import { Component, NavDestination } from '@kit.ArkUI';
    import router from '@ohos.router';
    
    @Component
@@ -1471,24 +1302,12 @@ Navigation作为路由组件，默认支持跨包跳转。
    import {
      Entry,
      Component,
-     Flex,
-     FlexOptions,
-     FlexDirection,
-     ItemAlign,
-     FlexAlign,
-     Text,
-     FontWeight,
-     Row,
      Button,
-     Column,
-     ButtonType,
      NavPathStack,
      Navigation,
      NavigationMode,
-     NavPathInfo,
-     State,
+     NavPathInfo
    } from '@kit.ArkUI';
-   import router from '@ohos.router';
    
    @Entry
    @Component
@@ -1585,25 +1404,7 @@ ArkTS-Sta示例：
 <!-- @[observer_comm](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationStatic/entry/src/main/ets/pages/routerToNavigation/observer/Comm.ets) -->
 
 ``` TypeScript
-import {
-  Entry,
-  Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
-  Row,
-  Button,
-  Column,
-  ButtonType,
-  NavPathStack,
-  Navigation,
-  NavigationMode,
-  State,
-} from '@kit.ArkUI';
+import { State } from '@kit.ArkUI';
 import router from '@ohos.router';
 import uiObserver from '@ohos.arkui.observer';
 import { UIContext } from '@kit.ArkUI';
@@ -1670,27 +1471,9 @@ ArkTS-Sta示例：
 ``` TypeScript
 // EntryAbility.ets
 import {
-  Entry,
-  Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
-  Row,
-  Button,
-  Column,
-  ButtonType,
-  NavPathStack,
-  Navigation,
-  NavigationMode,
-  State,
-} from '@kit.ArkUI';
-import {
   UIContext, UIObserver
 } from '@ohos.arkui.UIContext';
+import { State } from '@kit.ArkUI';
 import router from '@ohos.router';
 import uiObserver from '@ohos.arkui.observer';
 import window from '@ohos.window';
@@ -1834,27 +1617,11 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 import {
-  Entry,
-  Component,
-  Flex,
-  FlexOptions,
-  FlexDirection,
-  ItemAlign,
-  FlexAlign,
-  Text,
-  FontWeight,
-  Row,
-  Button,
-  Column,
-  ButtonType,
-  NavPathStack,
-  Navigation,
-  NavigationMode,
-  NavDestination,
-  State,
+  Entry, Component, NavDestination
 } from '@kit.ArkUI';
 import uiObserver from '@ohos.arkui.observer';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN = 0xF811;
 const TAG = '[Sample_ArkTSRouter]';
 

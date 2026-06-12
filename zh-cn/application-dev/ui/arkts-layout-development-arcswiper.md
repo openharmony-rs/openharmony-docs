@@ -479,7 +479,20 @@ ArkTS-Sta示例：
 ``` TypeScript
 import { Decimal } from '@kit.ArkTS';
 import { ArcSwiper, ArcSwiperContentTransitionProxy } from '@ohos.arkui.ArcSwiper';
-import { Color, Component, $r, ColumnOptions, Column, ForEach, Padding, Text, TextAlign, Entry, NavDestination, State } from '@kit.ArkUI';
+import {
+  Color,
+  Component,
+  $r,
+  ColumnOptions,
+  Column,
+  ForEach,
+  Padding,
+  Text,
+  TextAlign,
+  Entry,
+  State,
+  NavDestination
+} from '@kit.ArkUI';
 // ...
 
 // 如需作为页面入口，请取消@Entry的注释并删除export关键字
@@ -625,7 +638,7 @@ import {
   TextAlign,
   GestureControl,
   NavDestination,
-  State,
+  State
 } from '@kit.ArkUI';
 // ...
 

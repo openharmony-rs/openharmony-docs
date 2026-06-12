@@ -171,25 +171,7 @@ ArkTS-Sta示例：
 
 ``` TypeScript
 import {
-  Color,
-  Component,
-  Column,
-  NavPathStack,
-  Button,
-  NavPathInfo,
-  NavDestinationContext,
-  NavigationOperation,
-  ButtonType,
-  GestureEvent,
-  PanGesture,
-  NavDestination,
-  ColumnOptions,
-  Stack,
-  Text,
-  NavDestinationMode,
-  LaunchMode,
-  State,
-  AppStorage,
+  Component, Column, NavDestinationContext, NavDestination, Text, State
 } from '@kit.ArkUI';
 
 // 自定义的参数类型，用于在push页面时给子页传递参数
@@ -315,19 +297,8 @@ import {
   Component,
   Column,
   NavPathStack,
-  Button,
   NavPathInfo,
-  NavDestinationContext,
-  NavigationOperation,
-  ButtonType,
-  GestureEvent,
-  PanGesture,
-  NavDestination,
-  ColumnOptions,
-  Stack,
   Text,
-  NavDestinationMode,
-  LaunchMode,
   List,
   Entry,
   RelativeContainer,
@@ -338,8 +309,7 @@ import {
   VerticalAlign,
   AlignRuleOption,
   HorizontalAlign,
-  State,
-  AppStorage,
+  State
 } from '@kit.ArkUI';
 import { NewsItem } from './NewsDetail';
 
@@ -364,8 +334,13 @@ struct NewsHome {
           Column() {
             Text(`${item.title}`).margin(15).fontSize(25).fontColor(Color.Black)
             Text(`${item.overview}`).fontSize(13).fontColor(Color.Gray)
-          }.margin({bottom: 15}).backgroundColor('#eeeeee').width('100%')
-          .borderRadius(15).height(120).onClick(() => {
+          }
+          .margin({ bottom: 15 })
+          .backgroundColor('#eeeeee')
+          .width('100%')
+          .borderRadius(15)
+          .height(120)
+          .onClick(() => {
             // 用户点击某一个新闻标签时，就在右侧子页区域push一个NavDestination页面，用来展示新闻详情
             this.stack?.pushPath(new NavPathInfo('NewsDetail', item))
           })

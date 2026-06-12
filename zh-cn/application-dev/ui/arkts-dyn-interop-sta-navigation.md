@@ -93,8 +93,12 @@ ArkTS-Sta初始化NavDestination页面属性，其使用规格限制与非互操
             .height(40)
             .margin(10)
             .onClick((e?: ClickEvent) => {
-              let info: NavPathInfo = new NavPathInfo("PageOne", undefined)
-              this.pathStack.pushPath(info)
+              try {
+                let info: NavPathInfo = new NavPathInfo("PageOne", undefined)
+                this.pathStack.pushPath(info)
+              } catch(e) {
+                console.error(`FZY ${e.message}\n${e.stack}`)
+              }
             })
         }
       }
