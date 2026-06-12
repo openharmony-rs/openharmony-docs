@@ -19086,7 +19086,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ResourceInteropDyn/entry/src/main/ets/pages/NavigationPage.ets",
 				"functions":[
 					{
-						"end_line":53,
+						"end_line":49,
 						"name":"navigation",
 						"start_line":16
 					}
