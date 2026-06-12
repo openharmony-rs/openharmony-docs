@@ -133,7 +133,7 @@
    <!-- @[flow_management_getSockfdRxBytes_and_getSockfdTxBytes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/FlowManagement_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // 获取指定Socket实时下行流量数据。
+   // 获取指定socket实时下行流量数据。
    let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
    // ...
    tcp.getSocketFd().then((sockfd: number) => {
@@ -146,7 +146,7 @@
      });
    })
    // ...
-   // 获取指定Socket实时上行流量数据。
+   // 获取指定socket实时上行流量数据。
    tcp.getSocketFd().then((sockfd: number) => {
      statistics.getSockfdTxBytes(sockfd).then((stats: number) => {
        hilog.info(0x0000, 'testTag', JSON.stringify(stats));
