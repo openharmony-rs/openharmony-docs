@@ -185,41 +185,43 @@
 
    2in1设备配置displayId为扩展屏Id，可拉起录屏窗口选择界面，用户在界面上选择录屏内容，最终录屏内容以用户在弹窗界面上的选择为准。
 
-    ArkTS-Dyn示例：
-    ```TypeScript
-    const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;	 
-    let filePath: string = context.filesDir + '/screenCapture.mp4';	 
-    let captureFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);	 
-    if (!captureFile) {	 
-      console.error("处理异常情况");
-      return;
-    }
-    let displayClass: display.Display | undefined = undefined;
-    try {
-      displayClass = display.getDefaultDisplaySync();
-      console.info(`The display info is: ${JSON.stringify(displayClass)}`);
-    } catch (exception) {
-      console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
-    }
-    if (!displayClass) {
-      console.error("Failed to get displayClass.");
-      return;
-    }
-    captureConfig: media.AVScreenCaptureRecordConfig = {	 
-        // 开发者可以根据自身的需要设置宽高。	 
-        frameWidth: 768,	 
-        frameHeight: 1280,	 
-        // 参考应用文件访问与管理开发示例新建并读写一个文件fd。	 
-        fd: captureFile.fd,	 
-        // 可选参数及其默认值。	 
-        videoBitrate: 10000000,	 
-        audioSampleRate: 48000,	 
-        audioChannelCount: 2,	 
-        audioBitrate: 96000,	 
-        displayId: 0,	 
-        preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H264_AAC_MP4 
-    };
-    ```
+   ArkTS-Dyn示例：
+   ```TypeScript
+   const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;	 
+   let filePath: string = context.filesDir + '/screenCapture.mp4';	 
+   let captureFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);	 
+   if (!captureFile) {
+     console.error("处理异常情况");
+     return;
+   }
+   let displayClass: display.Display | undefined = undefined;
+   try {
+     displayClass = display.getDefaultDisplaySync();
+     console.info(`The display info is: ${JSON.stringify(displayClass)}`);
+   } catch (exception) {
+     console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
+   }
+   if (!displayClass) {
+     console.error("Failed to get displayClass.");
+     return;
+   }
+   captureConfig: media.AVScreenCaptureRecordConfig = {
+       // 开发者可根据屏幕宽高设置相应尺寸。
+       // 屏幕宽度应设置为64的倍数。
+       frameWidth: displayClass.width,
+       // 根据屏幕的高设置高度。
+       frameHeight: displayClass.height,
+       // 参考应用文件访问与管理开发示例新建并读写一个文件fd。
+       fd: captureFile.fd,
+       // 可选参数及其默认值。	 
+       videoBitrate: 10000000,
+       audioSampleRate: 48000,
+       audioChannelCount: 2, 
+       audioBitrate: 96000, 
+       displayId: 0,
+       preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H264_AAC_MP4
+   };
+   ```
 
    ArkTS-Sta示例：
 
