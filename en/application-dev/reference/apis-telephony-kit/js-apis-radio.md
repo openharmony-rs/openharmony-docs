@@ -6,7 +6,7 @@
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
 
-The **radio** module provides basic network search management functions. Using the APIs provided by this module, you can obtain the radio access technology (RAT) used in the CS and PS domains, network status, current network selection mode, ISO country code of the registered network, ID of the slot in which the primary card is located, list of signal strengths of the registered network for the SIM card in the specified slot, and carrier name. Besides, you can check whether the current device supports New Radio \(NR\) and whether the radio service is enabled on the primary SIM card.
+The **radio** module provides basic network search management functions. Using the APIs provided by this module, you can obtain the radio access technology (RAT) used in the CS and PS domains, network status, current network selection mode, ISO country code of the registered network, ID of the slot in which the primary card is located, list of signal strengths of the registered network for the SIM card in the specified slot, and carrier name. Besides, you can check whether the current device supports New Radio \(NR\) and whether the radio service is enabled on the primary SIM card. The CS domain refers to the Circuit Switched domain, and the PS domain refers to the Packet Switched domain.
 
 > **NOTE**
 >
@@ -23,7 +23,7 @@ import { radio } from '@kit.TelephonyKit';
 
 getRadioTech\(slotId: number, callback: AsyncCallback<[NetworkRadioTech](#networkradiotech11)\>\): void
 
-Obtains the RAT used in the CS and PS domains for the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
+Obtains the RAT used in the CS and PS domains for the SIM card in the specified slot. This API uses an asynchronous callback to return the result. The CS domain refers to the Circuit Switched domain, and the PS domain refers to the Packet Switched domain.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -34,7 +34,7 @@ Obtains the RAT used in the CS and PS domains for the SIM card in the specified 
 | Name  | Type                                                        | Mandatory| Description                                  |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | slotId   | number                                                       | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
-| callback | AsyncCallback\<[NetworkRadioTech](#networkradiotech11)\> | Yes  | Callback used to return the result.  |
+| callback | AsyncCallback\<[NetworkRadioTech](#networkradiotech11)\> | Yes  | Callback used to return the result.  The CS domain refers to the Circuit Switched domain, and the PS domain refers to the Packet Switched domain.|
 
 **Error codes**
 
@@ -69,7 +69,7 @@ radio.getRadioTech(slotId, (err: BusinessError, data: radio.NetworkRadioTech) =>
 
 getRadioTech\(slotId: number\): Promise\<[NetworkRadioTech](#networkradiotech11)\>
 
-Obtains the RAT used in the CS and PS domains for the SIM card in the specified slot. This API uses a promise to return the result.
+Obtains the RAT used in the CS and PS domains for the SIM card in the specified slot. This API uses a promise to return the result. The CS domain refers to the Circuit Switched domain, and the PS domain refers to the Packet Switched domain.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -85,7 +85,7 @@ Obtains the RAT used in the CS and PS domains for the SIM card in the specified 
 
 | Type                                                        | Description                                           |
 | ------------------------------------------------------------ | ----------------------------------------------- |
-| Promise\<[NetworkRadioTech](#networkradiotech11)\> | Promise used to return the result.|
+| Promise\<[NetworkRadioTech](#networkradiotech11)\> | Promise used to return the result. The CS domain refers to the Circuit Switched domain, and the PS domain refers to the Packet Switched domain.|
 
 **Error codes**
 
@@ -118,7 +118,7 @@ radio.getRadioTech(slotId).then((data: radio.NetworkRadioTech) => {
 
 getRadioTechSync\(slotId: number\): [NetworkRadioTech](#networkradiotech11)
 
-Obtains the RAT used in the CS and PS domains for the SIM card in the specified slot.
+Obtains the RAT used in the CS and PS domains for the SIM card in the specified slot. The CS domain refers to the Circuit Switched domain, and the PS domain refers to the Packet Switched domain.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -134,7 +134,7 @@ Obtains the RAT used in the CS and PS domains for the SIM card in the specified 
 
 | Type                                                        | Description                                           |
 | ------------------------------------------------------------ | ----------------------------------------------- |
-| [NetworkRadioTech](#networkradiotech11) | RAT used in the CS and PS domains.|
+| [NetworkRadioTech](#networkradiotech11) | RAT used in the CS and PS domains. The CS domain refers to the Circuit Switched domain, and the PS domain refers to the Packet Switched domain.|
 
 **Error codes**
 
@@ -268,7 +268,7 @@ Obtains the network status of the SIM card in the specified slot. This API uses 
 
 | Type                                    | Description                       |
 | ---------------------------------------- | --------------------------- |
-| Promise\<[NetworkState](#networkstate)\> | Promise used to return the result.|
+| Promise\<[NetworkState](#networkstate)\> | Promise used to return the network status.|
 
 **Error codes**
 
@@ -399,7 +399,7 @@ Obtains the ISO country code of the network with which the SIM card in the speci
 | Name  | Type                   | Mandatory| Description                                    |
 | -------- | ----------------------- | ---- | ---------------------------------------- |
 | slotId   | number                  | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2  |
-| callback | AsyncCallback\<string\> | Yes  | Callback used to return the result. which is a country code, for example, **CN** (China). If the device is not registered with any network, an empty string is returned.|
+| callback | AsyncCallback\<string\> | Yes  | Callback used to return the result, which is a country code, for example, **CN** (China). If the device is not registered with any network, an empty string is returned.|
 
 **Error codes**
 
@@ -699,7 +699,7 @@ let signalInfo: Array<radio.SignalInformation> = radio.getSignalInformationSync(
 console.info(`signal information size is:` + signalInfo.length);
 ```
 
-## radio.isNrSupported<sup>8+(deprecated)</sup>
+## radio.isNrSupported<sup>(deprecated)</sup>
 
 isNrSupported\(\): boolean
 
@@ -1108,8 +1108,8 @@ Defines the signal strength.
 |      Name      |           Type             | Read-Only| Optional|      Description         |
 | --------------- | --------------------------- | ---- | ---- | ------------------ |
 | signalType      | [NetworkType](#networktype) | No  | No  | Signal strength type.|
-| signalLevel     | number                      | No  | No  | Signal strength level.|
-| dBm<sup>9+</sup>| number                      | No  | No  | Signal strength, in dBm.    |
+| signalLevel     | number                      | No  | No  | Signal strength level. The value range is [0, 5]. If the value is out of range, an error is returned.|
+| dBm<sup>9+</sup>| number                      | No  | No  | Signal strength. The value range is [–140, 140]. If the value is out of range, an error is returned.    |
 
 ## NetworkType
 
