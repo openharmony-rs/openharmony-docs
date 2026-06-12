@@ -33,7 +33,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | INVALID_PARAMS                        | 401      | 非法入参。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23                    |
 | NOT_SUPPORT                           | 801      | 操作不支持。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。  <br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23               |
 | ERR_OUT_OF_MEMORY                     | 19020001 | 内存错误。   <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。  <br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23               |
-| ERR_RUNTIME_ERROR                     | 19020002 | 运行时外部错误。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。  <br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23            |
+| ERR_RUNTIME_ERROR                     | 19020002 | 运行时错误。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。  <br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23            |
 | ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>             | 19020003 | 参数检查失败。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 23              |
 | ERR_CRYPTO_OPERATION                  | 19030001 | 调用三方算法库API出错。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23      |
 | ERR_CERT_SIGNATURE_FAILURE            | 19030002 | 证书签名验证错误。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23          |
