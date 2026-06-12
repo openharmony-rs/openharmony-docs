@@ -1,10 +1,12 @@
 # @ohos.distributedsched.abilityConnectionManager (Cross-Device Connection Management)
+
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a16dcd5380f352b729da625973de1c33bd7c6a2a translatedAt=2026-06-10T11:02:55.604Z pushedAt=2026-06-11T06:01:23.606Z -->
 
 The **abilityConnectionManager** module provides APIs for cross-device connection management. After successful networking between devices (login with the same account and enabling of Bluetooth on the devices), a system application and a third-party application can start a [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md) of the same application across these devices to establish a Bluetooth connection. This way, data (specifically, text) can be transmitted across the devices over the connection.
 
@@ -51,7 +53,7 @@ Creates a collaboration session between applications.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
@@ -188,7 +190,7 @@ Destroys a collaboration session between applications.
 
 | Name      | Type                                      | Mandatory  | Description      |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | number  | Yes   | Collaboration session ID.  |
+| sessionId | number  | Yes    | Collaboration session ID to be destroyed.<br />The value is an integer greater than 100. |
 
 **Example**
 
@@ -221,13 +223,13 @@ Obtains information about the peer application in the specified session.
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| [PeerInfo](https://developer.huawei.com/consumer/en/doc/harmonyos-references/js-apis-distributed-abilityconnectionmanager#peerinfo) \| undefined | Information about the peer application if the corresponding **peerInfo** exists; **undefined** if the session ID is not found.|
+| [PeerInfo](#peerinfo) \| undefined | Information about the peer application if the corresponding **PeerInfo** exists; **undefined** if the session ID is not found.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
@@ -268,7 +270,7 @@ Sets up a UIAbility connection after a collaboration session is created and the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
@@ -295,7 +297,7 @@ After an application sets up a collaboration session and obtains the session ID 
 
 acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;void&gt;
 
-Accepts the UIAbility connection after a collaboration session is set up and the session ID is obtained.
+Accepts the connection after a collaboration session is set up and the session ID is obtained. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -318,7 +320,7 @@ Accepts the UIAbility connection after a collaboration session is set up and the
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
@@ -425,7 +427,7 @@ Rejects a connection request in a cross-device collaboration session. After a co
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
@@ -464,7 +466,7 @@ Enables listening for **connect** events. This API uses an asynchronous callback
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type. This field has a fixed value of **connect**. This event is triggered when [abilityConnectionManager.connect()](#abilityconnectionmanagerconnect) is called.  |
+| type | string  | Yes   |   Event type. This field has a fixed value of **connect**. This event is triggered when [abilityConnectionManager.connect](#abilityconnectionmanagerconnect) is called.  |
 | sessionId | number  | Yes   | ID of the collaboration session.   |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | Yes   | Registered callback function.   |
 
@@ -472,7 +474,7 @@ Enables listening for **connect** events. This API uses an asynchronous callback
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
@@ -511,7 +513,7 @@ Disables listening for **connect** events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
@@ -539,7 +541,7 @@ Enables listening for **disconnect** events.
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type. This field has a fixed value of **disconnect**. This event is triggered when [abilityConnectionManager.disconnect()](#abilityconnectionmanagerdisconnect) is called.  |
+| type | string  | Yes   |   Event type. This field has a fixed value of **disconnect**. This event is triggered when [abilityConnectionManager.disconnect](#abilityconnectionmanagerdisconnect) is called.  |
 | sessionId | number  | Yes   | ID of the collaboration session.   |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | Yes   | Registered callback function.   |
 
@@ -547,7 +549,7 @@ Enables listening for **disconnect** events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
@@ -586,7 +588,7 @@ Disables listening for **disconnect** events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
@@ -615,7 +617,7 @@ Enables listening for **receiveMessage** events.
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type. This field has a fixed value of **receiveMessage**. This event is triggered when [abilityConnectionManager.sendMessage()](#abilityconnectionmanagersendmessage) is called.  |
+| type | string  | Yes   |   Event type. This field has a fixed value of **receiveMessage**. This event is triggered when [abilityConnectionManager.sendMessage](#abilityconnectionmanagersendmessage) is called.  |
 | sessionId | number  | Yes   | ID of the collaboration session.   |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | Yes   | Registered callback function.   |
 
@@ -623,7 +625,7 @@ Enables listening for **receiveMessage** events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
@@ -662,7 +664,7 @@ Disables listening for **receiveMessage** events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
@@ -691,7 +693,7 @@ Enables listening for **receiveData** events.
 
 | Name      | Type                                   | Mandatory  | Description   |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | Yes   |   Event type. This field has a fixed value of **receiveData**. This event is triggered when [abilityConnectionManager.sendData()](#abilityconnectionmanagersenddata) is called.  |
+| type | string  | Yes   |   Event type. This field has a fixed value of **receiveData**. This event is triggered when [abilityConnectionManager.sendData](#abilityconnectionmanagersenddata) is called.  |
 | sessionId | number  | Yes   | ID of the collaboration session.   |
 | callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | Yes   | Registered callback function.   |
 
@@ -699,7 +701,7 @@ Enables listening for **receiveData** events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
@@ -738,7 +740,7 @@ Disables listening for **receiveData** events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
@@ -780,7 +782,7 @@ Sends text messages after a collaboration session is set up.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
@@ -825,7 +827,7 @@ Sends [ArrayBuffer](../../arkts-utils/arraybuffer-object.md) byte streams from o
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
@@ -843,7 +845,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
     hilog.info(0x0000, 'testTag', "sendMessage success");
   }).catch(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage failed");
+    hilog.error(0x0000, 'testTag', "sendMessage failed");
   })
   ```
 

@@ -471,9 +471,9 @@
     - [Custom Component Layout](arkui-ts/ts-custom-component-layout.md)
     - [Custom Component Built-in APIs](arkui-ts/ts-custom-component-api.md)
     - [Custom Component Parameters](arkui-ts/ts-custom-component-parameter.md)
+    - [@Entry: Page Entry Declaration](arkui-ts/ts-universal-entry.md)
     - Component Extension Decorators<!--arkts-extend-component-decorator-->
       - [@AnimatableExtend: Animatable Property Definition](arkui-ts/ts-animatable-extend.md)
-      - [@Entry: Page Entry Declaration](arkui-ts/ts-universal-entry.md)
       - [wrapBuilder: Global @Builder Encapsulation](arkui-ts/ts-universal-wrapBuilder.md)
       - [mutableBuilder: Dynamic Update of Global @Builder](arkui-ts/ts-universal-mutableBuilder.md)
   - Component Preview<!--component-preview-->

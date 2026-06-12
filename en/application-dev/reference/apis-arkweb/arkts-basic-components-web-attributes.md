@@ -90,7 +90,7 @@ Sets whether to enable access to the file system in the application. This settin
 
 imageAccess(imageAccess: boolean)
 
-Sets whether to enable automatic image loading. When this attribute is not explicitly called, automatic loading of image resources is allowed.
+Sets whether to allow automatic image loading. When this attribute is not explicitly called, automatic loading of image resources is allowed.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -127,7 +127,7 @@ Registers an ArkTS object in **javaScriptProxy** with the **Web** component. The
 
 > **NOTE**
 >
-> The **javaScriptProxy** API must be used in pair with the [deleteJavaScriptRegister<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#deletejavascriptregister) API to prevent memory leaks.
+> The **javaScriptProxy** API must be used together with the [deleteJavaScriptRegister<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#deletejavascriptregister) API to prevent memory leaks.
 > All parameters of the **javaScriptProxy** object cannot be updated.
 > When registering a **javaScriptProxy** object, select at least one of the synchronous and asynchronous method lists, or both.
 > Only one object can be registered through this API. To register multiple objects, use [registerJavaScriptProxy<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#registerjavascriptproxy).
@@ -335,7 +335,7 @@ Sets whether to enable access to online images through HTTP and HTTPS. When this
 
 zoomAccess(zoomAccess: boolean)
 
-Sets whether to enable zoom gestures. When this attribute is not explicitly called, zoom gestures are supported by default.
+Sets whether to support zoom gestures. When this attribute is not explicitly called, zoom gestures are supported by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -343,7 +343,7 @@ Sets whether to enable zoom gestures. When this attribute is not explicitly call
 
 | Name       | Type   | Mandatory  | Description         |
 | ---------- | ------- | ---- | ------------- |
-| zoomAccess | boolean | Yes   | Whether to enable zoom gestures.<br>The value **true** means to enable zoom gestures, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
+| zoomAccess | boolean | Yes   | Whether to support zoom gestures.<br>The value **true** means to support zoom gestures, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
 
 **Example**
 
@@ -531,7 +531,7 @@ HTML file to be loaded:
 
 multiWindowAccess(multiWindow: boolean)
 
-Sets whether to enable the multi-window permission.
+Sets whether to enable the multi-window permission. When this attribute is not explicitly called, the multi-window permission is disabled by default.
 
 Enabling the multi-window permission requires implementation of the **onWindowNew** event. For the sample code, see [onWindowNew](./arkts-basic-components-web-events.md#onwindownew9).
 
@@ -541,7 +541,7 @@ Enabling the multi-window permission requires implementation of the **onWindowNe
 
 | Name        | Type   | Mandatory  | Description        |
 | ----------- | ------- | ---- | ------------ |
-| multiWindow | boolean | Yes   | Whether to enable the multi-window permission.<br>The value **true** means to enable the multi-window permission, and **false** means the opposite.<br>The default value is **false**.|
+| multiWindow | boolean | Yes   | Whether to enable the multi-window permission.<br>The value **true** means to enable the multi-window permission, and **false** means the opposite.|
 
 ## horizontalScrollBarAccess<sup>9+</sup>
 
@@ -1990,7 +1990,7 @@ Sets nested scrolling options.
 
 | Name  | Type                                    | Mandatory  | Description            |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| value | [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10)\| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> | Yes   | Nested scrolling options.<br> When the value is of the **NestedScrollOptions** type (forward and backward), the default nested scrolling mode of the **scrollForward** and **scrollBackward** options is [NestedScrollMode.SELF_FIRST](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10).<br> When the value is of the **NestedScrollOptionsExt** type (up, down, left, and right), the default nested scrolling mode of the **scrollUp**, **scrollDown**, **scrollLeft**, and **scrollRight** options is **NestedScrollMode.SELF_FIRST**.|
+| value | [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup>| Yes   | Nested scrolling options.<br> When the value is of the **NestedScrollOptions** type (forward and backward), the default nested scrolling mode of the **scrollForward** and **scrollBackward** options is [NestedScrollMode.SELF_FIRST](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10).<br> When the value is of the **NestedScrollOptionsExt** type (up, down, left, and right), the default nested scrolling mode of the **scrollUp**, **scrollDown**, **scrollLeft**, and **scrollRight** options is **NestedScrollMode.SELF_FIRST**.|
 
 **Example**
 
@@ -2311,7 +2311,7 @@ For details, see [Using Same-Layer Rendering](../../web/web-same-layer.md#render
           Web({ src: $rawfile('index.html'), controller: this.controller })
              // Enable same-layer rendering.
             .enableNativeEmbedMode(true)
-             // Register the same-layer tag of <object> and type of "native."
+             // Register the same-layer tag as <object> with the type prefixed by "native".
             .registerNativeEmbedRule("object", "native")
              // Obtain the lifecycle change data of the <object> tag.
             .onNativeEmbedLifecycleChange((object) => {
@@ -2355,7 +2355,7 @@ For details, see [Using Same-Layer Rendering](../../web/web-same-layer.md#render
 
 defaultTextEncodingFormat(textEncodingFormat: string)
 
-Sets the default text encoding format for the web page. When this attribute is not explicitly called, the default text encoding format of the web page is UTF-8.
+Sets the default text encoding format for the web page. When this attribute is not explicitly called, the default character encoding of the web page is UTF-8.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2630,7 +2630,7 @@ If the keyboard avoidance mode set in **UIContext** is [KeyboardAvoidMode.RESIZE
 
 editMenuOptions(editMenu: EditMenuOptions)
 
-Sets the custom menu options of the **Web** component.
+Sets the custom text selection menu for the Web component.
 
 You can use this attribute to customize a text menu.
 
@@ -2779,7 +2779,7 @@ struct WebComponent {
 
 enableHapticFeedback(enabled: boolean)
 
-Sets whether to enable haptic feedback for long-pressed text in the **Web** component. The **ohos.permission.VIBRATE** permission must be declared. When this attribute is not explicitly called, haptic feedback is enabled by default.
+Sets whether to enable haptic feedback for long-pressed text in the **Web** component. Requires the **ohos.permission.VIBRATE** permission. When this attribute is not explicitly called, haptic feedback is enabled by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3258,7 +3258,7 @@ Sets whether to enable segment-based HTML parsing optimization. If no attribute 
 
 To avoid occupying too many main thread resources and enable progressive loading of web pages, the ArkWeb kernel uses the segment-based parsing policy when parsing the HTML files. By default, the ArkWeb kernel uses the parsing time as the segment point. When the parsing time exceeds the threshold, the parsing is interrupted and then the layout and rendering operations are performed.
 
-After this optimization is enabled, the ArkWeb kernel checks whether the parsing time exceeds the limit and whether the number of parsed tokens (minimum parsing unit of HTML files, such as **\<div>** and **attr="xxx"**) exceeds the threshold specified by the kernel. If yes, the ArkWeb kernel decreases the threshold. When the First Contentful Paint (FCP) of the page is triggered, the default interrupt judgment logic is restored. In this way, the web page is parsed more frequently before the FCP is triggered, thereby the first-frame content may be parsed in advance and enter a rendering phase, effectively reducing the workload of first-frame rendering, and finally advancing the FCP.
+After this optimization is enabled, the ArkWeb kernel checks whether the parsing time exceeds the limit and whether the number of parsed tokens (minimum parsing unit of HTML files, such as `<div>` and `attr="xxx"`) exceeds the threshold specified by the kernel. If yes, the ArkWeb kernel decreases the threshold. When the First Contentful Paint (FCP) of the page is triggered, the default interrupt judgment logic is restored. In this way, the web page is parsed more frequently before the FCP is triggered, thereby the first-frame content may be parsed in advance and enter a rendering phase, effectively reducing the workload of first-frame rendering, and finally advancing the FCP.
 
 When the FCP of a page is triggered, the default segment parsing logic is restored. Therefore, the segment-based HTML parsing optimization takes effect only for the first page loaded by each **Web** component.
 
@@ -3408,7 +3408,7 @@ decoration:{
 }
 ```
 
-When **enableDataDetector** is set to **true** and [copyOptions](#copyoptions11) is set to **CopyOptions.LocalDevice**, the AI menu is activated. In this case, after the text on the web page is selected, the text selection menu can display the corresponding AI menu items, including **url** (opening a link), **email** (creating an email), **phoneNumber** (calling), **address** (navigating to the location), and **dateTime** (creating a schedule reminder) in [TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12).
+When **enableDataDetector** is set to **true** and [copyOptions](#copyoptions11) is set to **CopyOptions.LocalDevice**, the AI menu is activated. In this case, after the text on the web page is selected, the text selection menu can display the corresponding AI menu items, including **url** (opening a link), **email** (creating an email), **phoneNumber** (calling), **address** (navigating to this address), and **dateTime** (creating a schedule reminder) in [TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12).
 
 When the AI menu takes effect, the corresponding option can be displayed only when the selection contains a complete AI entity. This menu item and the askAI menu item in [TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12) do not appear at the same time.
 
@@ -3544,7 +3544,7 @@ enableSelectedDataDetector(enable: boolean)
 
 Sets whether to enable the AI menu feature for text selection menu. After the AI menu feature is enabled, the email, phone number, website, date, and address in the selection can be identified, and the corresponding AI menu items are displayed in the text selection menu. By default, the AI menu feature is enabled.
 
-When the AI menu feature is enabled, the corresponding AI menu items can be displayed in the text selection menu after text is selected on the web page, including **url** (opening a link), **email** (creating an email), **phoneNumber** (calling), **address** (navigating to the address), and **dateTime** (creating an event) in [TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12).
+When the AI menu feature is enabled, the corresponding AI menu items can be displayed in the text selection menu after text is selected on the web page, including **url** (opening a link), **email** (creating an email), **phoneNumber** (calling), **address** (navigating to the address), and **dateTime** (creating a schedule) in [TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12).
 
 When the AI menu takes effect, the corresponding option can be displayed only when the selection contains a complete AI entity. This menu item and the askAI menu item in [TextMenuItemId](../apis-arkui/arkui-ts/ts-text-common.md#textmenuitemid12) do not appear at the same time.
 
@@ -3706,7 +3706,7 @@ Sets whether to enable the forcible zoom functionality for the **Web** component
 
 | Name       | Type   | Mandatory  | Description         |
 | ---------- | ------- | ---- | ------------- |
-| enable | boolean | Yes   | Whether to comply with the zoom restriction specified by the **\<meta name="viewport">** tag on the web page.<br>The value **true** means to not comply with the web page zoom restriction, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the attribute setting does not take effect.|
+| enable | boolean | Yes   | Whether to comply with the zoom restriction specified by the `<meta name="viewport">` tag on the web page.<br>The value **true** means to not comply with the web page zoom restriction, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the attribute setting does not take effect.|
 
 **Example**
 
@@ -3999,6 +3999,47 @@ Sets whether to enable web page autofill. By default, this feature is enabled.
   </html>
   ```
 
+## enableDefaultContextMenu<sup>24+</sup>
+
+enableDefaultContextMenu(enable: boolean)
+
+Sets whether to enable the default right-click context menu. If this method is not called, it is disabled by default. The default menu supports only the **CUT**, **COPY**, **PASTE**, and **SELECT_ALL** menu items.
+
+> **NOTE**
+>
+> - If the [onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9) callback is set and **true** is returned in the callback, the setting of this API does not take effect.
+> - The default menu items are controlled by [editMenuOptions](#editmenuoptions12). You can customize menu options through this property.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                                   |
+| ------- | ------- | ---- | --------------------------------------- |
+| enable  | boolean | Yes  | Whether to enable the default right-click context menu. **true** indicates that the menu is enabled, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is **false**.|
+
+**Example**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .enableDefaultContextMenu(true)
+      }
+    }
+  }
+  ```
+
 ## password<sup>(deprecated)</sup>
 
 password(password: boolean)
@@ -4205,7 +4246,7 @@ If this attribute is not explicitly called, zooming by pressing **Ctrl + '-/+'**
 
 | Name       | Type   | Mandatory  | Description         |
 | ---------- | ------- | ---- | ------------- |
-| zoomControlAccess | boolean | Yes   | Whether to support the default zooming behavior by pressing the combination keys. The value **true** means to support the default zooming behavior by pressing the combination keys, and **false** means the opposite. When **null** or **undefined** is passed in, the value is **false**.|
+| zoomControlAccess | boolean | Yes   | Whether to allow zooming by pressing the combination keys. The value **true** means to support the default zooming behavior by pressing the combination keys, and **false** means the opposite. When **null** or **undefined** is passed in, the value is **false**.|
 
 **Example**
 

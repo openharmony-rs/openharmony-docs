@@ -4,7 +4,7 @@
 <!--Owner: @maorh-->
 <!--Designer: @keerecles-->
 <!--Tester: @khq-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 > 
@@ -158,6 +158,8 @@ template(type: string, itemBuilder: RepeatItemBuilder\<T\>, templateOptions?: Te
 
 由template type渲染对应的template子组件。
 
+当所有`.template()`的type和`.templateId()`返回值不匹配（即当前item不适用任何template定义的样式）时，将使用[`.each()`](#each)的组件生成函数处理数据项。当`.each()`的组件生成函数也为空时，将不渲染子组件。
+
 > **说明：**
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
@@ -179,11 +181,13 @@ template(type: string, itemBuilder: RepeatItemBuilder\<T\>, templateOptions?: Te
 // arr是Array<string>类型的数组
 // 在List容器组件中使用Repeat，并打开virtualScroll
 // 创建模板temp，该模板为数据创建Text组件
+// 所有数据项都使用temp模板
 List() {
   Repeat<string>(this.arr)
     .each((obj: RepeatItem<string>) => {})
     .virtualScroll()
     .template('temp', (obj: RepeatItem<string>) => { ListItem() { Text(obj.item) }})
+    .templateId((item: string, index: number) => { return 'temp' })
 }
 ```
 

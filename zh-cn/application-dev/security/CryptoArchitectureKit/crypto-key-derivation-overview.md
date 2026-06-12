@@ -27,7 +27,7 @@ PBKDF2是将伪随机函数PRF（Pseudo-Random Function，例如基于散列的[
 
 ## HKDF算法
 
-HKDF(HMAC-based Extract-and-Expand Key Derivation Function)是基于[HMAC](crypto-compute-hmac.md)消息身份验证代码的简单密钥派生算法。
+HKDF（HMAC-based Extract-and-Expand Key Derivation Function）是基于[HMAC](crypto-compute-hmac.md)消息身份验证代码的简单密钥派生算法。
 
 输入原始的密钥材料和盐值来提取、输入原始的密钥材料和扩展信息来扩展。它是一种密钥派生函数，用于从较短的输入密钥中派生出更长的输出密钥。
 
