@@ -28,7 +28,9 @@
 
 ## 接口
 
-Shape(value?: PixelMap)
+### Shape
+
+new Shape(value?: PixelMap)
 
 用于绘制Shape组件的构造函数。 
 
@@ -44,6 +46,33 @@ Shape(value?: PixelMap)
 | -------- | -------- | -------- | -------- |
 | value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
+### Shape
+
+Shape(value: PixelMap)
+
+用于绘制Shape组件的构造函数。 
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+
+### Shape
+
+Shape()
+
+用于绘制Shape组件的无参构造函数。 
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ViewportRect<sup>18+</sup>对象说明
 
