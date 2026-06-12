@@ -253,7 +253,7 @@ HiProfiler新增文件缓存模式（use_file_cache_mode），通过将缓存数
 | -------- | -------- | -------- |
 | OpenHarmony | 7.0 Beta1 | NA | 
 | Public SDK | Ohos_sdk_public 26.0.0.25 (API Version 26.0.0 Beta1) | 面向应用开发者提供，不包含需要使用系统权限的系统接口。通过DevEco Studio默认获取的SDK为Public SDK。 | 
-| HUAWEI DevEco Studio（可选） | *待发布后提供* | OpenHarmony应用开发推荐使用。<br />*待发布后提供*。 | 
+| HUAWEI DevEco Studio（可选） | 26.0.0 Beta1 | OpenHarmony应用开发推荐使用。<br />[请点击这里获取](https://developer.huawei.com/consumer/cn/download/deveco-studio)。 | 
 | HUAWEI DevEco Device Tool（可选） | 4.0 Release | OpenHarmony智能设备集成开发环境推荐使用。<br />[请点击这里获取](https://device.harmonyos.com/cn/develop/ide#download)。 | 
 
 
@@ -340,13 +340,14 @@ HiProfiler新增文件缓存模式（use_file_cache_mode），通过将缓存数
 | 版本源码                                | **版本信息** | **下载站点**                                                 | **SHA256校验码**                                             | **软件包容量** |
 | --------------------------------------- | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- |
 | 全量代码（标准、轻量和小型系统）        | 7.0 Beta1    | *软件包上传中* | *软件包上传中* | - |
-| Hi3861解决方案（二进制）        | 7.0 Beta1    | *软件包上传中* | *软件包上传中* | - |
-| Hi3516解决方案-LiteOS（二进制） | 7.0 Beta1    | *软件包上传中* | *软件包上传中* | - |
-| Hi3516解决方案-Linux（二进制）  | 7.0 Beta1    | *软件包上传中* | *软件包上传中* | - |
-| RK3568标准系统解决方案（二进制）        | 7.0 Beta1    | *软件包上传中* | *软件包上传中* | - |
-| 标准系统Public SDK包（Mac）             | 26.0.0.25 | *软件包上传中* | *软件包上传中* | - |
-| 标准系统Public SDK包（Mac-M1）             | 26.0.0.25  | *软件包上传中* | *软件包上传中* | - |
-| 标准系统Public SDK包（Windows/Linux）   | 26.0.0.25   | *软件包上传中* | *软件包上传中* | - |
+| Hi3861解决方案（二进制）        | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_pegasus.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_pegasus.tar.gz.sha256) | 28.9 MB |
+| Hi3516解决方案-LiteOS（二进制） | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_taurus_LiteOS.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_taurus_LiteOS.tar.gz.sha256) | 361.3 MB |
+| Hi3516解决方案-Linux（二进制）  | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_taurus_Linux.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/hispark_taurus_Linux.tar.gz.sha256) | 236.8 MB |
+| RK3568标准系统解决方案（二进制）ROM包        | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/dayu200_standard_arm32_rom.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/dayu200_standard_arm32_rom.tar.gz.sha256) | 	3.7 GB |
+| RK3568标准系统解决方案（二进制）XTS包        | 7.0 Beta1    | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/dayu200_standard_arm32_xts.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/dayu200_standard_arm32_xts.tar.gz.sha256) | 	6.6 GB |
+| 标准系统Public SDK包（Mac）             | 26.0.0.25 | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/ohos-sdk-mac-public.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/ohos-sdk-mac-public.tar.gz.sha256) | 1.3 GB |
+| 标准系统Public SDK包（Mac-M1）             | 26.0.0.25  | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/L2-SDK-MAC-M1-PUBLIC.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/L2-SDK-MAC-M1-PUBLIC.tar.gz.sha256) | 1.2 GB |
+| 标准系统Public SDK包（Windows/Linux）   | 26.0.0.25   | [站点](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/ohos-sdk-windows_linux-public.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/openharmony/os/7.0-Beta1/ohos-sdk-windows_linux-public.tar.gz.sha256) | 3.0 GB |
 
 
 ## 修复缺陷列表
