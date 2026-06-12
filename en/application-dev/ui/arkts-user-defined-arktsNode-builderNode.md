@@ -1718,7 +1718,7 @@ Starting from API version 20, in state management V1, if a BuilderNode is config
   }
   ```
 
-![inheritFreezeOptions](figures/builderNode_inheritFreezeOptions.gif)
+![inheritFreezeOptions](figures/builderNode_inheritfreezeOptions.gif)
 
 ### Common BuilderNode Freezing Scenarios (State Management V2)
 
