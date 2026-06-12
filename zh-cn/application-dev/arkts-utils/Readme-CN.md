@@ -83,6 +83,11 @@
       - [自定义Native Sendable对象的多线程操作场景](napi-define-sendable-object.md)
       - [Worker常驻线程通过TaskPool进行多任务并发处理](worker-and-taskpool.md)
   - [并发常见问题](concurrency-faq.md)
+- 静态并发<!--arkts-sta-concurrency-->
+  - [静态并发概述](arkts-sta-concurrency-overview.md)
+  - 静态并发线程间通信<!--arkts-sta-interthread-communication-->
+    - [静态并发数据共享](arkts-sta-data-sharing-for-concurrency.md)
+
 - [ArkTS跨语言交互](arkts-cross-language-interaction.md)
 - ArkTS运行时<!--arkts-runtime-->
   - [ArkTS运行时概述](arkts-runtime-overview.md)
