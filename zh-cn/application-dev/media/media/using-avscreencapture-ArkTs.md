@@ -133,12 +133,12 @@
       console.error(`Failed to get default display. Code: ${exception.code}, message: ${exception.message}`);
     }
     if (!displayClass) {
-      console.error("处理异常情况");
+      console.error("Failed to get displayClass.");
       return;
     }
     captureConfig: media.AVScreenCaptureRecordConfig = {
-        // 开发者可以根据屏幕的宽高设置宽高。
-        // 根据屏幕的宽设置宽度，宽应为64的倍数。
+        // 开发者可根据屏幕宽高设置相应尺寸。
+        // 屏幕宽度应设置为64的倍数。
         frameWidth: displayClass.width,
         // 根据屏幕的高设置高度。
         frameHeight: displayClass.height,
@@ -235,8 +235,8 @@ export class AVScreenCaptureDemo {
       return;
     }
     this.captureConfig = {
-        // 开发者可以根据屏幕的宽高设置宽高。
-        // 设置宽为屏幕的宽度。
+        // 开发者可根据屏幕宽高设置相应尺寸。
+        // 设置宽为屏幕的宽度，屏幕宽度应设置为64的倍数。
         frameWidth: this.displayClass.width,
         // 设置高为屏幕的高度。
         frameHeight: this.displayClass.height,
@@ -325,7 +325,7 @@ export class AVScreenCaptureDemo {
     await this.screenCapture?.init(this.captureConfig);
 
     this.registerScreenCaptureCallback();
-    // 豁免隐私窗口，窗口id获取可参见窗口API[WindowProperties](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)。
+    // 豁免隐私窗口，窗口id获取方式可参见开发步骤及注意事项6。
     let windowIDs = [57, 86];
     await this.screenCapture?.skipPrivacyMode(windowIDs);
 

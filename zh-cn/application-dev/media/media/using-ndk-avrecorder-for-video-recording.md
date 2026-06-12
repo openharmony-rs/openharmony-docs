@@ -59,12 +59,12 @@ target_link_libraries(entry PUBLIC libavrecorder.so)
 target_link_libraries(entry PUBLIC libnative_media_core.so)
 ```
 
-开发者使用AbilityKit相关能力时，需引入如下头文件。
+开发者使用[AbilityKit](../../reference/apis-ability-kit)相关能力时，需引入如下头文件。
 ```c++
 #include <AbilityKit/ability_runtime/application_context.h>
 ```
 
-并在 CMake 脚本中链接如下动态库。
+并在CMake脚本中链接如下动态库。
 ```c++
 target_link_libraries(entry PUBLIC libability_runtime.so)
 ```
