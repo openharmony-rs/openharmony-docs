@@ -2,16 +2,16 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @liuyifei;@buzhenwang-->
-<!--Designer: @shenchenkai-->
-<!--Tester: @liyang2235-->
+<!--Owner: @suxunqua-->
+<!--Designer: @milkbread123-->
+<!--Tester: @yufeifei-->
 <!--Adviser: @jinqiuheng-->
 
 ## 概述
 
 HiLog模块是OpenHarmony提供的C/C++日志记录模块，属于Performance Analysis Kit，用于在应用运行过程中输出结构化日志信息。开发者可以通过使用这些接口实现日志相关功能，输出日志时可以指定日志类型、所属业务领域、日志TAG标识、日志级别等。
 
-**使用场景：** 开发者在应用开发过程中需要记录运行日志用于问题定位、流程追踪和行为分析时使用本模块接口。例如：通过DEBUG和INFO级别日志跟踪业务流程和变量状态，辅助代码调试和逻辑验证；在出现异常或错误时，通过WARN、ERROR、FATAL级别日志记录故障信息，快速定位问题根因。
+**使用场景：** 开发者在应用开发过程中需要记录运行日志用于问题定位、流程追踪和行为分析时使用本模块接口。通过DEBUG级别日志记录调试日志，跟踪业务流程和运行状态；通过INFO级别日志记录非正常情况下的业务关键节点信息，比如无网络信号或登录失败；在出现异常或错误时，通过WARN、ERROR、FATAL级别日志记录故障信息，快速定位问题根因。
 
 **系统能力：** SystemCapability.HiviewDFX.HiLog
 
