@@ -1314,7 +1314,7 @@ Allows an application to access game buddy service.
 
 **Supported devices**: phones
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.KNOCK_COLLABORATION
 
