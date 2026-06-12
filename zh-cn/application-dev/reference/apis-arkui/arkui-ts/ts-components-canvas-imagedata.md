@@ -14,7 +14,9 @@ ImageData对象可以存储canvas渲染的像素数据。
 >
 > 创建ImageData时，宽高不超过16384px，最大面积不超过16000px*16000px，超过最大面积则无法正常绘制。当创建面积超过536870911px时，返回值的width和height均为0px，data为undefined。
 
-## constructor
+## 接口
+
+### constructor
 
 constructor(width: number, height: number, data?: Uint8ClampedArray)
 
@@ -33,7 +35,7 @@ constructor(width: number, height: number, data?: Uint8ClampedArray)
 | height | number |是| 矩形区域高度，默认单位为vp。<br>异常值NaN和Infinity按0处理。|
 | data | [Uint8ClampedArray](../../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md) |否| 一维数组，保存了相应的颜色数据，数据值范围为0到255。<br>传入异常值undefined时，data为undefined。<br/>默认值：值全为0的一维数组 |
 
-## constructor<sup>12+</sup>
+### constructor<sup>12+</sup>
 
 constructor(width: number, height: number, data?: Uint8ClampedArray, unit?: LengthMetricsUnit)
 
