@@ -47,7 +47,7 @@ type Position = Vector2
 | ------------------- | ----------------------------------- |
 | [Vector2](#vector2) | 包含x和y两个值的向量。<br/>单位：vp |
 
-## PositionT<sup>12+</sup>
+## PositionT\<T><sup>12+</sup>
 
 type PositionT\<T> = Vector2T\<T>
 

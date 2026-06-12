@@ -162,7 +162,7 @@ clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 
 ## CircleShape<sup>12+</sup>
 
-type CircleShape = CircleShape
+type CircleShape = import('../api/@ohos.arkui.shape').CircleShape
 
 导入CircleShape类型对象。
 
@@ -176,11 +176,11 @@ type CircleShape = CircleShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [CircleShape](../js-apis-arkui-shape.md#circleshape) | 圆形形状。 |
+| import('../api/@ohos.arkui.shape').[CircleShape](../js-apis-arkui-shape.md#circleshape) | 圆形形状。 |
 
 ## EllipseShape<sup>12+</sup>
 
-type EllipseShape = EllipseShape
+type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape
 
 导入EllipseShape类型对象。
 
@@ -194,11 +194,11 @@ type EllipseShape = EllipseShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [EllipseShape](../js-apis-arkui-shape.md#ellipseshape) | 椭圆形状。 |
+| import('../api/@ohos.arkui.shape').[EllipseShape](../js-apis-arkui-shape.md#ellipseshape) | 椭圆形状。 |
 
 ## PathShape<sup>12+</sup>
 
-type PathShape = PathShape
+type PathShape = import('../api/@ohos.arkui.shape').PathShape
 
 导入PathShape类型对象。
 
@@ -212,11 +212,11 @@ type PathShape = PathShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [PathShape](../js-apis-arkui-shape.md#pathshape) | 路径形状。 |
+| import('../api/@ohos.arkui.shape').[PathShape](../js-apis-arkui-shape.md#pathshape) | 路径形状。 |
 
 ## RectShape<sup>12+</sup>
 
-type RectShape = RectShape
+type RectShape = import('../api/@ohos.arkui.shape').RectShape
 
 导入RectShape类型对象。
 
@@ -230,7 +230,7 @@ type RectShape = RectShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [RectShape](../js-apis-arkui-shape.md#rectshape) | 矩形形状。 |
+| import('../api/@ohos.arkui.shape').[RectShape](../js-apis-arkui-shape.md#rectshape) | 矩形形状。 |
 
 ## mask<sup>12+</sup>
 

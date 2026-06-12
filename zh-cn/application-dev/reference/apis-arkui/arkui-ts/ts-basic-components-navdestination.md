@@ -692,7 +692,7 @@ onBackPressed(callback:&nbsp;()&nbsp;=&gt;&nbsp;boolean)
 
 ### onReady<sup>11+</sup>
 
-onReady(callback:&nbsp;[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<[NavDestinationContext](#navdestinationcontext11)>)
+onReady(callback:&nbsp;import('../api/@ohos.base').Callback<[NavDestinationContext](#navdestinationcontext11)>)
 
 当NavDestination即将构建子组件之前会触发此回调。
 
@@ -708,7 +708,7 @@ onReady(callback:&nbsp;[Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  &nbsp;[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<[NavDestinationContext](#navdestinationcontext11)>   | 是   | 当NavDestination即将构建子组件之前会触发此回调。|
+| callback   |  import('../api/@ohos.base').[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<[NavDestinationContext](#navdestinationcontext11)>   | 是   | 当NavDestination即将构建子组件之前会触发此回调。|
 
 ### onSaveState
 
@@ -1027,7 +1027,7 @@ NavDestination自定义转场动画的代理函数。
 
 ## Orientation<sup>19+</sup>
 
-type Orientation = Orientation
+type Orientation = import('../api/@ohos.window').default.Orientation
 
 Orientation实例对象。
 
@@ -1037,7 +1037,7 @@ Orientation实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [Orientation](../arkts-apis-window-e.md#orientation9) | 返回Orientation实例对象。 |
+| import('../api/@ohos.window').default.[Orientation](../arkts-apis-window-e.md#orientation9) | 返回Orientation实例对象。 |
 
 ## 示例
 
