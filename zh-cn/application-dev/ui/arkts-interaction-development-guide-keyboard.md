@@ -173,75 +173,7 @@ struct KeyEventPreventBubble {
 }
 ```
 
-<<<<<<< HEAD
-![zh-cn_image_0000001511900508](figures/zh-cn_image_0000001511900508.gif)
-=======
-ArkTS-Sta示例：
-
-<!-- @[listen_response_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/device/OnKeyPreventBubble.ets) -->
-
-``` TypeScript
-import { $r, Builder, Button, Color, Column, ColumnOptions, Component, Divider, Entry, FlexAlign, KeyEvent, KeyType, NavDestination, Padding, State, Text } from '@kit.ArkUI';
-@Entry
-@Component
-struct KeyEventPreventBubble {
-  @State buttonText: string = '';
-  @State buttonType: string = '';
-  @State columnText: string = '';
-  @State columnType: string = '';
-
-  build() {
-    Column() {
-      Button('onKeyEvent')
-        .defaultFocus(true)
-        .width(140).height(70)
-        .onKeyEvent((event?: KeyEvent): boolean => {
-          // 通过stopPropagation阻止事件冒泡
-          if(event){
-            if(event.stopPropagation){
-              event.stopPropagation();
-            }
-            if (event.type === KeyType.Down) {
-              this.buttonType = 'Down';
-            }
-            if (event.type === KeyType.Up) {
-              this.buttonType = 'Up';
-            }
-            this.buttonText = 'Button: \n' +
-              'KeyType:' + this.buttonType + '\n' +
-              'KeyCode:' + event.keyCode + '\n' +
-              'KeyText:' + event.keyText;
-          }
-          return false;
-        })
-
-      Divider()
-      Text(this.buttonText).fontColor(Color.Green)
-
-      Divider()
-      Text(this.columnText).fontColor(Color.Red)
-    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
-    .onKeyEvent((event?: KeyEvent): boolean => { // 给父组件Column设置onKeyEvent事件
-      if(event){
-        if (event.type === KeyType.Down) {
-          this.columnType = 'Down';
-        }
-        if (event.type === KeyType.Up) {
-          this.columnType = 'Up';
-        }
-        this.columnText = 'Column: \n' +
-          'KeyType:' + this.columnType + '\n' +
-          'KeyCode:' + event.keyCode + '\n' +
-          'KeyText:' + event.keyText;
-      }
-      return false;
-    })
-  }
-}
-```
-
 ![zh-cn_image_0000001511900508](figures/onKeyEvent02.gif)
->>>>>>> 98468f3... update
 
 使用OnKeyPreIme屏蔽在输入框中使用方向左键。
 
@@ -277,46 +209,7 @@ struct PreImeEventExample {
 }
 ```
 
-<<<<<<< HEAD
-![zh-cn_image_00012427222](figures/zh-cn_image_00012427222.gif)
-=======
-ArkTS-Sta示例：
-
-<!-- @[key_event_intercept](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/device/OnKeyPreIme.ets) -->
-
-``` TypeScript
-import { $r, Builder, Column, ColumnOptions, Component, Entry, KeyEvent, NavDestination, Padding, Search, State } from '@kit.ArkUI';
-import { KeyCode } from '@kit.InputKit';
-
-@Entry
-@Component
-struct PreImeEventExample {
-  @State buttonText: string = '';
-  @State buttonType: string = '';
-  @State columnText: string = '';
-  @State columnType: string = '';
-
-  build() {
-    Column() {
-      Search({
-        placeholder: 'Search...'
-      })
-        .width('80%')
-        .height('40vp')
-        .border({ radius:'20vp' })
-        .onKeyPreIme((event:KeyEvent) => {
-          if (event.keyCode == KeyCode.KEYCODE_DPAD_LEFT) {
-            return true;
-          }
-          return false;
-        })
-    }
-  }
-}
-```
-
 ![zh-cn_image_00012427222](figures/onKeyEvent04.gif)
->>>>>>> 98468f3... update
 
 使用onKeyEventDispatch分发按键事件到子组件，子组件使用onKeyEvent。
 
@@ -373,65 +266,7 @@ struct Index {
 }
 ```
 
-<<<<<<< HEAD
-![zh-cn_image_00012427111](figures/zh-cn_image_00012427111.PNG)
-=======
-ArkTS-Sta示例：
-
-<!-- @[key_distribute_event](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets) -->
-
-``` TypeScript
-import { $r, Builder, Button, Column, ColumnOptions, Component, Entry, KeyEvent, KeyType, Margin, NavDestination, Padding, Row, RowOptions } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG = '[Sample_Eventproject]';
-const DOMAIN = 0xF811;
-const BUNDLE = 'Eventproject_';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      Row() {
-        Button('button1')
-          .id('button1')
-          .margin({ left: 70, right: 30 } as Margin)
-          .onKeyEvent((event: KeyEvent): boolean => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'button1');
-            return true;
-          })
-        Button('button2')
-          .id('button2')
-          .onKeyEvent((event: KeyEvent): boolean => {
-            hilog.info(DOMAIN, TAG, BUNDLE + 'button2');
-            return true;
-          })
-      }
-      .width('100%')
-      .height('100%')
-      .id('Row1')
-      .onKeyEventDispatch((event: KeyEvent): boolean => {
-        this.getUIContext().getFocusController().requestFocus('button1');
-        return this.getUIContext().dispatchKeyEvent('button1', event);
-      })
-
-    }
-    .height('100%')
-    .width('100%')
-    .onKeyEventDispatch((event: KeyEvent): boolean => {
-      if (event.type == KeyType.Down) {
-        this.getUIContext().getFocusController().requestFocus('Row1');
-        return this.getUIContext().dispatchKeyEvent('Row1', event);
-      }
-      return true;
-    })
-  }
-}
-```
-
 ![zh-cn_image_00012427111](figures/onKeyEvent03.PNG)
->>>>>>> 98468f3... update
 
 使用OnKeyPreIme实现回车提交（建议使用物理键盘）。
 

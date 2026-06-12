@@ -209,11 +209,7 @@ struct PreImeEventExample {
 }
 ```
 
-<<<<<<< HEAD
 
-=======
-![en-us_image_00012427222](figures/onKeyEvent04.gif)
->>>>>>> 98468f3... update
 
 This example demonstrates how to use **onKeyEventDispatch** to distribute key events to child components, which handle the events using **onKeyEvent**.
 
