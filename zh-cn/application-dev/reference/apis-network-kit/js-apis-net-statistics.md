@@ -540,11 +540,6 @@ getUidRxBytes(uid: number, callback: AsyncCallback\<number>): void
 >
 > 若重启后该应用未产生流量消耗，则会抛出2103005错误码。<br>
 
-**需要权限：**
-
-- API版本26.0.0之前：N/A
-- API版本26.0.0+：ohos.permission.GET_NETWORK_STATS（仅当参数uid数值与接口调用方uid不同时需要申请，即查询非自身应用流量数据时需要申请）
-
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **参数：**
@@ -594,11 +589,6 @@ getUidRxBytes(uid: number): Promise\<number>
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**需要权限：**
-
-- API版本26.0.0之前：N/A
-- API版本26.0.0+：ohos.permission.GET_NETWORK_STATS（仅当参数uid数值与接口调用方uid不同时需要申请，即查询非自身应用流量数据时需要申请）
-
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
@@ -644,11 +634,6 @@ getUidTxBytes(uid: number, callback: AsyncCallback\<number>): void
 > 若重启后该应用未产生流量消耗，则会抛出2103005错误码。<br>
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
-
-**需要权限：**
-
-- API版本26.0.0之前：N/A
-- API版本26.0.0+：ohos.permission.GET_NETWORK_STATS（仅当参数uid数值与接口调用方uid不同时需要申请，即查询非自身应用流量数据时需要申请）
 
 **参数：**
 
@@ -696,11 +681,6 @@ getUidTxBytes(uid: number): Promise\<number>
 > 若重启后该应用未产生流量消耗，则会抛出2103005错误码。<br>
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
-
-**需要权限：**
-
-- API版本26.0.0之前：N/A
-- API版本26.0.0+：ohos.permission.GET_NETWORK_STATS（仅当参数uid数值与接口调用方uid不同时需要申请，即查询非自身应用流量数据时需要申请）
 
 **参数：**
 
