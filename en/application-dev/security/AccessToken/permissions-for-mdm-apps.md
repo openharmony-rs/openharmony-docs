@@ -828,3 +828,33 @@ Allows an enterprise MDM application to activate itself.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
+
+Allows the enterprise MDM application to manage local accounts.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: phones | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.ENTERPRISE_INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+Allows the enterprise MDM application to perform operations on multiple users.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: phones | tablets
+
+**Since**: 26.0.0

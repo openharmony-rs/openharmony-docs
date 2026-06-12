@@ -58,11 +58,13 @@ Allows an application to read the open anonymous device identifier (OAID).
 
 Allows an application to read the current workout status of the user, such as detecting whether the user is working out and recording the number of steps the user has taken.
 
- 
+For example, the application can determine whether the user is in motion or to record the number of steps that the user has walked.
 
 **Permission level**: normal
 
 **Authorization mode**: user_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
@@ -162,11 +164,13 @@ Allows an application to add, remove, and modify Calendar events.
 
 ## ohos.permission.READ_HEALTH_DATA
 
-Allows an application to read the health data of the user.
+Allows an application to obtain users' health data, such as heart rate.
 
 **Permission level**: normal
 
 **Authorization mode**: user_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 

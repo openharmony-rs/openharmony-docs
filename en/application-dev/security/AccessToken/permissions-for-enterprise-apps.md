@@ -655,6 +655,80 @@ With this permission, the application can update print status and printer inform
 
 **Valid since**: 24
 
+## ohos.permission.DLP_POLICY_MANAGER
+
+Allows common enterprise applications to manage transparent encryption/decryption policies through the data loss prevention capability.
+
+With this permission, an application can manage transparent encryption/decryption policies, such as specifying files of other applications that require transparent encryption/decryption and specifying encryption/decryption algorithms.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
+
+## ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA
+ 	 
+Allows an application to launch EmbeddedUIExtension on other applications.
+
+<!--RP3--><!--RP3End-->
+
+<!--RP2--><!--RP2End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
+
+## ohos.permission.SUPPORT_NP_PLUGIN_FOR_WEB
+ 	 
+Allows an application to release plugin libraries.
+
+<!--RP4--><!--RP4End-->
+
+<!--RP2--><!--RP2End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
+
+## ohos.permission.kernel.LOAD_CERTSIGN_LIBRARY_FOR_WEB
+ 	 
+Allows an application to load plugin libraries signed with binary certificates.
+
+<!--RP5--><!--RP5End-->
+
+<!--RP2--><!--RP2End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
 
 Allows an enterprise common application to obtain the list of all installed applications.

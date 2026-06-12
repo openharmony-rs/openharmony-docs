@@ -1,7 +1,7 @@
 # 系统字体的信息获取和使用（C/C++）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -106,7 +106,7 @@
 
    以下打印的示例为应用设备系统对应的部分系统字体配置信息情况，不同设备系统配置信息可能不同，此处仅示意。
 
-   ![zh-cn_image_0000002211603636](figures/zh-cn_image_0000002211603636.png)
+   ![System-Font-Information](figures/System-Font-Information.png)
 
 5. 如若后续不再需要系统字体的系统配置信息时，则释放其占用的内存。
 

@@ -1,8 +1,8 @@
 # 背景设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -617,6 +617,8 @@ backgroundImageResizable(value: ResizableOptions): T
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值|说明                            |
@@ -803,7 +805,7 @@ struct BackgroundBlurStyleDemo {
 }
 ```
 
-![zh-cn_image_background_blur_style](figures/zh-cn_image_background_blur_style.png)
+![image-background-blur-style](figures/image-background-blur-style.png)
 
 ### 示例3（设置组件背景）
 
@@ -838,7 +840,7 @@ struct BackgroundExample {
 }
 ```
 
-![zh-cn_image_background](figures/zh-cn_image_background.png)
+![image-background](figures/image-background.png)
 
 ### 示例4（设置组件背景提亮效果）
 
@@ -873,15 +875,15 @@ struct BackgroundBrightnessDemo {
 
 rate和lightUpDegree参数值为0.5,0.5：
 
-![zh-cn_image_background_brightness1](figures/zh-cn_image_background_brightness1.png)
+![image-background-brightness1](figures/image-background-brightness1.png)
 
 修改rate和lightUpDegree参数值为0.5,-0.1：
 
-![zh-cn_image_background_brightness2](figures/zh-cn_image_background_brightness2.png)
+![image-background-brightness2](figures/image-background-brightness2.png)
 
 去掉backgroundBrightness的设置，效果如下：
 
-![zh-cn_image_background_brightness3](figures/zh-cn_image_background_brightness3.png)
+![image-background-brightness3](figures/image-background-brightness3.png)
 
 ### 示例5（设置模糊属性）
 

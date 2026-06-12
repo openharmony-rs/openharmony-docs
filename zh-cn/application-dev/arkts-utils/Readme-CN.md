@@ -1,8 +1,8 @@
 # ArkTS（方舟编程语言）
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @flyingwolf; @wang_zhaoyong-->
-<!--Designer: @flyingwolf-->
+<!--Owner: @vigavi; @wang_zhaoyong-->
+<!--Designer: @vigavi-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @HelloCrease; @ge-yafang-->
 
@@ -37,7 +37,7 @@
       - [容器类对象](container-object.md)
       - [ArrayBuffer对象](arraybuffer-object.md)
       - [SharedArrayBuffer对象](shared-arraybuffer-object.md)
-      - [Transferable对象（NativeBinding对象）](transferabled-object.md)
+      - [Transferable对象 (NativeBinding对象)](transferabled-object.md)
       - Sendable对象<!--sendable-object-->
         - [Sendable对象简介](arkts-sendable.md)
         - [Sendable使用规则与约束](sendable-constraints.md)
@@ -55,6 +55,7 @@
       - [Worker和宿主线程的即时消息通信](worker-communicates-with-mainthread.md)
       - [Worker同步调用宿主线程的接口](worker-invoke-mainthread-interface.md)
       - [多级Worker间高性能消息通信](worker-postMessage-sendable.md)
+      - [Worker向宿主线程进行消息插队通信](worker-postMessageAtFront.md)
   - 应用多线程开发实践<!--multithread-develop-guide-->
     - [应用多线程开发概述](multithread-develop-overview.md)
     - 耗时任务并发场景<!--time-consuming-task-->
@@ -64,10 +65,10 @@
       - [同步任务开发指导 (TaskPool和Worker)](sync-task-development.md)
     - 长时任务并发场景<!--long-time-task-->
       - [长时任务并发场景简介](long-time-task-overview.md)
-      - [长时任务开发指导（TaskPool）](long-time-task-guide.md)
+      - [长时任务开发指导 (TaskPool)](long-time-task-guide.md)
     - 常驻任务并发场景<!--resident-task-->
       - [常驻任务并发场景简介](resident-task-overview.md)
-      - [常驻任务开发指导（Worker）](resident-task-guide.md)
+      - [常驻任务开发指导 (Worker)](resident-task-guide.md)
     - 应用多线程开发实践案例<!--multithread-develop-case-->
       - [批量数据写数据库场景](batch-database-operations-guide.md)
       - [业务模块并发加载场景](concurrent-loading-modules-guide.md)
@@ -90,7 +91,7 @@
   - ArkTS模块化<!--arkts-runtime-module-->
     - [模块化运行简介](module-principle.md)
     - [动态加载](arkts-dynamic-import.md)
-    - [延迟加载（lazy import）](arkts-lazy-import.md)
+    - [延迟加载 (lazy import)](arkts-lazy-import.md)
     - [同步方式动态加载native模块](js-apis-load-native-module.md)
     - [静态方式加载native模块](arkts-import-native-module.md)
     - [基于Node-API加载模块](load-module-base-nodeapi.md)
@@ -121,4 +122,5 @@
     - [不同包类型的字节码混淆建议](bytecode-obfuscation-practice.md)
     - [ArkGuard字节码混淆常见问题](bytecode-obfuscation-questions.md)
   - [在build-profile.json5中配置arkOptions](arkoptions-guide.md)
+- [ArkTS术语](arkts-glossary.md)
 

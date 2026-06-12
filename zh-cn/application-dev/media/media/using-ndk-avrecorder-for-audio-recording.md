@@ -44,7 +44,7 @@ AVRecorder详细的API说明请参考[AVRecorder API参考](../../reference/apis
 target_link_libraries(entry PUBLIC libavrecorder.so)
 ```
 
-使用[OH_AVFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
+使用[native_avformat.h](../../reference/apis-avcodec-kit/capi-native-avformat-h.md)相关接口时，需引入如下头文件。
 ```c++
 #include <multimedia/player_framework/native_avformat.h>
 ```
@@ -182,7 +182,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
        config.profile.audioSampleRate = 48000;
     
-       config.profile.fileFormat = AVRECORDER_CFT_MPEG_4A;
+       config.profile.fileFormat = AVRECORDER_CFT_MP3;
        config.fileGenerationMode = AVRECORDER_APP_CREATE;
     }
 
@@ -376,7 +376,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
       config.profile.audioSampleRate = 48000;
 
-      config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
+      config.profile.fileFormat = AVRECORDER_CFT_MP3;
       config.fileGenerationMode = AVRECORDER_APP_CREATE;
 
       config.metadata.location.latitude = 27.791863;

@@ -8,20 +8,20 @@
 
 ## 概述
 
-在企业PC设备管理场景下，企业可以引入多家[EMM厂商](./mdm-kit-term.md#emm厂商)来共同管理企业PC设备，分散管理权限，满足不同场景的管控诉求。在这种背景下，MDM Kit抽象出不同的设备管理员角色，用来支持多家EMM厂商在PC设备上同时部署自己的MDM业务。 由于这种场景下存在多个[MDM应用](./mdm-kit-term.md#mdm应用设备管理应用)同时调用MDM管控接口的情况，建议企业与EMM厂商提前约定各自MDM应用的管控范围，避免管控策略冲突，[管控策略冲突](#管控策略冲突)可能会导致企业管控失效，引发企业数据泄露等问题。
+在企业PC设备管理场景下，企业可以引入多家[EMM](./mdm-kit-term.md#enterprise-mobility-management-emm企业移动管理)厂商来共同管理企业PC设备，分散管理权限，满足不同场景的管控诉求。在这种背景下，MDM Kit抽象出不同的设备管理员角色，用来支持多家EMM厂商在PC设备上同时部署自己的MDM业务。 由于这种场景下存在多个[MDM应用](./mdm-kit-term.md#mdm应用)同时调用MDM管控接口的情况，建议企业与EMM厂商提前约定各自MDM应用的管控范围，避免管控策略冲突，[管控策略冲突](#管控策略冲突)可能会导致企业管控失效，引发企业数据泄露等问题。
 
 ## Admin组件的激活角色
 
 Admin组件可以通过不同的方式激活，不同的激活方式，成为的角色也不同。
 
-1.通过[adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerenabledeviceadmin23)接口, 激活后成为[DA角色](./mdm-kit-term.md#da)。当MDM应用仅需对设备进行管控，无需管理其他DA应用时，可选择被激活为DA。
+1.通过[adminManager.enableDeviceAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerenabledeviceadmin23)接口，激活后成为[DA角色](./mdm-kit-term.md#device-admin-da普通设备管理员)。当MDM应用仅需对设备进行管控，无需管理其他DA应用时，可选择被激活为DA。
 
-2.通过[adminManager.startAdminProvision](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)接口, 激活后成为[BDA角色](./mdm-kit-term.md#bda)。当MDM应用需要对员工使用的个人设备在特殊场景进行有限管控（如禁用拍照、录音等）时，可选择被激活为BDA。
+2.通过[adminManager.startAdminProvision](../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)接口，激活后成为[BDA角色](./mdm-kit-term.md#byod-device-admin-bdabyod设备管理员)。当MDM应用需要对员工使用的个人设备在特殊场景进行有限管控（如禁用拍照、录音等）时，可选择被激活为BDA。
 
 <!--Del-->
-3.通过[adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口, 第三个参数[AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype)传入ADMIN_TYPE_SUPER， 激活后成为[SDA角色](./mdm-kit-term.md#sda)。当MDM应用需要管理多个其他DA应用时，可选择被激活为SDA。
+3.通过[adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口，第三个参数[AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype)传入ADMIN_TYPE_SUPER，激活后成为[SDA角色](./mdm-kit-term.md#super-device-admin-sda超级设备管理员)。当MDM应用需要管理多个其他DA应用时，可选择被激活为SDA。
 
-4.通过[adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口, 第三个参数[AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype)传入ADMIN_TYPE_NORMAL， 激活后成为[DA角色](./mdm-kit-term.md#da)。<!--DelEnd-->
+4.通过[adminManager.enableAdmin](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin)接口，第三个参数[AdminType](../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#admintype)传入ADMIN_TYPE_NORMAL，激活后成为[DA角色](./mdm-kit-term.md#device-admin-da普通设备管理员)。<!--DelEnd-->
 
 ## 管控策略冲突
 

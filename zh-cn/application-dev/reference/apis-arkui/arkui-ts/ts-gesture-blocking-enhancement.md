@@ -219,7 +219,7 @@ type GestureCollectInterceptCallback = (recognizers: Array\<GestureRecognizer\>,
 
 | 类型     | 说明        |
 | ------ | --------- |
-| [GestureCollectIntervention](./ts-appendix-enums.md#gesturecollectintervention) | 手势收集干预结果。 |
+| [GestureCollectIntervention](./ts-appendix-enums.md#gesturecollectintervention) | 手势收集干预结果。<br/>取值为异常值时按照GestureCollectIntervention.[CONTINUE](./ts-appendix-enums.md#gesturecollectintervention)处理。 |
 
 ## shouldRecognizerParallelWith
 
@@ -923,21 +923,26 @@ struct Index {
   build() {
     Column() {
       Column() {
-        Row({ space: 20 }) {
+        Row({ space: 20 } as RowOptions) {
+          // 组件button1未设置点击事件
           Button('button1')
             .width('30%')
             .height(40)
             .id('button1')
-            .onTouch(() => {
+            .onTouch((e?: TouchEvent) => {
               this.backgroundColorButton1 = '#E5E5E5';
             })
             .backgroundColor(this.backgroundColorButton1)
+          // 组件button2设置了点击事件
           Button('button2')
             .width('30%')
             .height(40)
             .id('button2')
-            .onTouch(() => {
+            .onTouch((e?: TouchEvent) => {
               this.backgroundColorButton2 = '#E5E5E5';
+            })
+            .onClick((e?: ClickEvent) => {
+              console.info("button2 is clicked")
             })
             .backgroundColor(this.backgroundColorButton2)
         }
@@ -945,17 +950,18 @@ struct Index {
         .width('90%')
         .height(200)
         .margin(25)
-        .onTouch(() => {
+        .onTouch((e?: TouchEvent) => {
           this.backgroundColorRow = '#666666';
         })
         .backgroundColor(this.backgroundColorRow)
         .onGestureCollectIntercept((recognizers: Array<GestureRecognizer>,
-          touchRecognizers: Array<TouchRecognizer>) => {
+          touchRecognizers?: Array<TouchRecognizer> | undefined) => {
           if (!touchRecognizers) {
             return GestureCollectIntervention.CONTINUE;
           } else {
             for (let i = 0; i < touchRecognizers.length; i++) {
               let id = touchRecognizers[i].getEventTargetInfo().getId();
+              //当命中存在点击事件区域button2时，事件无需透传给Column
               if (id == 'button2') {
                 return GestureCollectIntervention.DISCARD_LOWER;
               }
@@ -969,7 +975,7 @@ struct Index {
       .width('90%')
       .height(250)
       .borderWidth(2)
-      .onTouch(() => {
+      .onTouch((e?: TouchEvent) => {
         this.backgroundColorColumn = '#E5E5E5';
       })
       .backgroundColor(this.backgroundColorColumn)
@@ -979,6 +985,21 @@ struct Index {
 }
 ```
 ![example](figures/gestureCollectIntercept.gif)
+
+示例对应的组件树如下图所示。
+```mermaid
+graph TD
+    A((Column))
+    B((Column))
+    C((Row))
+    D((Button1))
+    E((Button2))
+
+    A --> B
+    A --> C
+    C --> D
+    C --> E
+```
 
 ### 示例7（非内置手势嵌套滚动）
 

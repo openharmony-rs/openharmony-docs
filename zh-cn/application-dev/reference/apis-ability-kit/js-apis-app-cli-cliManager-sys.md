@@ -574,7 +574,6 @@ sendMessage(sessionId: string, message: string): Promise\<void>
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | Not system application.                                      |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 35600032 | The session does not exist.                                  |
 | 35600033 | Failed to write message to tool.                             |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |

@@ -580,7 +580,7 @@ struct DirectiveMenuExample {
 }
 ```
 
-![en-us_image_0000001689126950](figures/en-us_image_0000001689126950.png)
+![DirectiveMenuExample](figures/DirectiveMenuExample.png)
 
 ### Example 5: Displaying a Menu with a Screenshot Preview on Long Press
 
@@ -939,7 +939,7 @@ struct MenuExample {
 }
 ```
 
-![preview-builder](figures/en-us_image_backgroundBlurStyleOptions.png)
+![preview-builder](figures/image-backgroundBlurStyleOptions.png)
 
 ### Example 12: Customizing the Background Effect
 
@@ -991,7 +991,7 @@ struct MenuExample {
 }
 ```
 
-![preview-builder](figures/en-us_image_backgroundEffect.png)
+![preview-builder](figures/image-backgroundEffect.png)
 
 ### Sample 13: Configuring Lift-Finger Interruption for a Shared Element Transition
 

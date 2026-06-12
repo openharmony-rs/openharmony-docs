@@ -1,7 +1,7 @@
 # ArkUI_NodeAttributeType（文本显示类组件相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiangyuan6; @kangshihui-->
+<!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6; @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -404,7 +404,7 @@ NODE_TEXT_TEXT_SHADOW = 1015
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].f32 | 阴影模糊半径，单位为vp。 |
-| .value[1].i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)，默认值为ARKUI_SHADOW_TYPE_COLOR。 |
+| .value[1].i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype)，默认值为ARKUI_SHADOW_TYPE_COLOR。 |
 | .value[2].u32 | 阴影颜色，0xargb格式，形如 0xFFFF0000 表示红色。 |
 | .value[3].f32 | 阴影X轴偏移量，单位为vp。 |
 | .value[4].f32 | 阴影Y轴偏移量，单位为vp。 |
@@ -414,7 +414,7 @@ NODE_TEXT_TEXT_SHADOW = 1015
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].f32 | 阴影模糊半径，单位为vp。 |
-| .value[1].i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)。 |
+| .value[1].i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype)。 |
 | .value[2].u32 | 阴影颜色，0xargb格式。 |
 | .value[3].f32 | 阴影X轴偏移量，单位为vp。 |
 | .value[4].f32 | 阴影Y轴偏移量，单位为vp。 |
@@ -844,7 +844,7 @@ NODE_TEXT_LINEAR_GRADIENT = 1033
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].f32 | 线性渐变的起始角度。当direction属性设置为ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，angle属性生效；否则，以direction属性为主要布局方式。0点方向顺时针旋转为正向角度，默认值：180。 |
-| .value[1].i32 | 线性渐变的方向[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)。设置除ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM之外的线性渐变方向后，angle不生效。默认值：ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM。 |
+| .value[1].i32 | 线性渐变的方向[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)。设置除ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM之外的线性渐变方向后，angle不生效。默认值：ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM。 |
 | .value[2].i32 | 为渐变的颜色重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
 | .object | 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过。 |
 | colors | 渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 |
@@ -856,7 +856,7 @@ NODE_TEXT_LINEAR_GRADIENT = 1033
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].f32 | 线性渐变的起始角度。当为ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，angle为设置值，其他情况均为默认值0。 |
-| .value[1].i32 | 线性渐变的方向[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)。 |
+| .value[1].i32 | 线性渐变的方向[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)。 |
 | .value[2].i32 | 为渐变的颜色重复着色，0表示不重复着色，1表示重复着色。默认值：0。 |
 | .object | 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过： |
 | colors | 渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 |
@@ -1061,7 +1061,7 @@ NODE_TEXT_LINE_HEIGHT_MULTIPLE = 1042
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 倍数行高模式的倍数值，默认值：0，表示使用默认行高高度。 |
+| .value[0].f32 | 倍数行高模式的倍数值，默认值：0，表示使用默认行高高度。 |
 
 **返回：**
 
@@ -1318,6 +1318,74 @@ NODE_TEXT_SELECTED_DRAG_PREVIEW_STYLE = 1053
 | 类型 | 说明 |
 | -- | -- |
 | .object | 文本选中状态下的拖拽预览样式。参数类型为[ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)。 |
+
+## NODE_TEXT_CONTROLLER
+
+```c
+NODE_TEXT_CONTROLLER = 1054
+```
+
+设置文本的控制器。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .object | 文本的控制器，参数类型为[ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)。 |
+
+## NODE_TEXT_PUNCTUATION_OVERFLOW
+
+```c
+NODE_TEXT_PUNCTUATION_OVERFLOW = 1055
+```
+
+设置Text组件是否启用行尾标点符号悬挂，支持属性设置，属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。1表示启用标点符号悬挂，0表示不启用标点符号悬挂。默认值为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。 |
+
+## NODE_TEXT_TAIL_INDENTS
+
+```c
+NODE_TEXT_TAIL_INDENTS = 1056
+```
+
+定义文本块中每行的尾部缩进。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[i].i32 | 表示第i行文本的尾部缩进值，单位为vp。取值范围：[0, +∞)。当.size大小为1时，所有行共享相同的尾部缩进.value[0].i32；当.size大于1时，第i行使用.value[i].i32；当文本行数超过.size，则超出部分复用.value[.size - 1].i32。 |
+| .size | 表示有效缩进值的数量，即 .value 数组中实际使用的元素个数。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[i].i32 | 第i个尾部缩进值，单位为vp。 |
+| .size | 表示有效缩进值的数量，即.value数组中实际使用的元素个数。 |
 
 ## NODE_SPAN_CONTENT
 

@@ -91,7 +91,7 @@ const workerInstance2: worker.ThreadWorker = new worker.ThreadWorker('testworker
 ``` TypeScript
 import { worker } from '@kit.ArkTS';
 // @标识路径加载形式：
-// worker线程文件所在路径: "har/src/main/ets/workers/worker.ets"
+// Worker线程文件所在路径: "har/src/main/ets/workers/worker.ets"
 const workerInstance3: worker.ThreadWorker = new worker.ThreadWorker('@har/ets/workers/worker.ets');
 ```
 
@@ -603,13 +603,16 @@ workerPort.onmessage = (e : MessageEvents) => {
 }
 ```
 
-<!-- @[not_recommended_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/mainAbility/src/main/ets/workers/ChildWorker.ets) -->
-```ts
+<!-- @[not_recommended_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/mainAbility/src/main/ets/workers/ChildWorker.ets) --> 
+
+``` TypeScript
 // ChildWorker.ets
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
+// 子Worker与父Worker通信的对象
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
+// 接收子Worker返回的消息
 workerPort.onmessage = (e: MessageEvents) => {
   console.info('子Worker收到信息 ' + e.data);
 }

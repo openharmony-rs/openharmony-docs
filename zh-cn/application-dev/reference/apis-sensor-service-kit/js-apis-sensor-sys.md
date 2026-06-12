@@ -6,13 +6,199 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
-sensor模块提供了获取传感器数据的能力，包括获取传感器属性列表，订阅传感器数据，以及一些通用的传感器算法。
+## 模块简介
+
+@system.sensor模块是面向轻量穿戴（Lite Wearable）设备的传感器数据订阅模块，提供对加速度传感器、罗盘传感器、距离传感器、环境光传感器、计步传感器、气压计传感器、心率传感器、设备佩戴状态传感器、设备方向传感器及陀螺仪传感器的数据订阅与取消订阅能力。
+
+该模块用于帮助应用实时获取各类传感器数据变化通知，从而实现运动监测、健康追踪、环境感知、方向识别、屏幕自适应等功能。每种传感器均提供subscribe/unsubscribe配对接口，佩戴状态传感器额外提供getOnBodyState单次查询接口。
+
+该模块适用于轻量穿戴设备场景，需要对应硬件支持且仅支持真机调试。对于非轻量穿戴设备类型，该模块从API version 8起不再维护，建议使用[@ohos.sensor](js-apis-sensor.md)模块替代。同一应用对同一传感器多次调用订阅接口时，仅最后一次调用生效。
+
+## 概述
+
+本模块为@ohos.sensor模块的系统接口补充部分，仅包含COLOR（颜色传感器）和SAR（吸收比率传感器）的系统接口。其余公开接口（如加速度、陀螺仪、环境光等）请参见[@ohos.sensor](js-apis-sensor.md)。
+
+本模块采用"订阅-取消订阅"的使用模式：开发者通过sensor.on接口订阅传感器数据，系统按指定频率通过回调函数上报数据；开发者不再需要数据时，通过sensor.off接口取消订阅。同一类型传感器的on与off接口需配对使用，先调用sensor.on订阅后才能调用sensor.off取消订阅。
+
+从API version 19开始，sensor.off接口新增sensorInfoParam参数，支持指定deviceId和sensorIndex来精确取消订阅某一设备上的特定传感器回调，适用于多设备场景。不传入sensorInfoParam时，默认取消本地设备上的回调。API version 10的sensor.off接口不包含sensorInfoParam参数，仅支持取消本地设备上的回调。
 
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
+
+### UML类图
+
+```mermaid
+classDiagram
+
+    class Sensor {
+        <<class>>
+        +static subscribeAccelerometer(subscribeAccelerometerOptions) void
+        +static unsubscribeAccelerometer() void
+        +static subscribeCompass(SubscribeCompassOptions) void
+        +static unsubscribeCompass() void
+        +static subscribeHeartRate(SubscribeHeartRateOptions) void
+        +static unsubscribeHeartRate() void
+        +static getOnBodyState(GetOnBodyStateOptions) void
+    }
+
+    class subscribeAccelerometerOptions {
+        <<interface>>
+        +interval: string
+        +success: AccelerometerResponse~void
+        +fail: string, number~void
+    }
+
+    class AccelerometerResponse {
+        <<interface>>
+        +x: number
+        +y: number
+        +z: number
+    }
+
+    class SubscribeCompassOptions {
+        <<interface>>
+        +success: CompassResponse~void
+        +fail: string, number~void
+    }
+
+    class CompassResponse {
+        <<interface>>
+        +direction: number
+    }
+
+    class SubscribeProximityOptions {
+        <<interface>>
+        +success: ProximityResponse~void
+        +fail: string, number~void
+    }
+
+    class ProximityResponse {
+        <<interface>>
+        +distance: number
+    }
+
+    class SubscribeLightOptions {
+        <<interface>>
+        +success: LightResponse~void
+        +fail: string, number~void
+    }
+
+    class LightResponse {
+        <<interface>>
+        +intensity: number
+    }
+
+    class SubscribeStepCounterOptions {
+        <<interface>>
+        +success: StepCounterResponse~void
+        +fail: string, number~void
+    }
+
+    class StepCounterResponse {
+        <<interface>>
+        +steps: number
+    }
+
+    class SubscribeBarometerOptions {
+        <<interface>>
+        +success: BarometerResponse~void
+        +fail: string, number~void
+    }
+
+    class BarometerResponse {
+        <<interface>>
+        +pressure: number
+    }
+
+    class SubscribeHeartRateOptions {
+        <<interface>>
+        +success: HeartRateResponse~void
+        +fail: string, number~void
+    }
+
+    class HeartRateResponse {
+        <<interface>>
+        +heartRate: number
+    }
+
+    class SubscribeOnBodyStateOptions {
+        <<interface>>
+        +success: OnBodyStateResponse~void
+        +fail: string, number~void
+    }
+
+    class GetOnBodyStateOptions {
+        <<interface>>
+        +success: OnBodyStateResponse~void
+        +fail: string, number~void
+        +complete: void~void
+    }
+
+    class OnBodyStateResponse {
+        <<interface>>
+        +value: boolean
+    }
+
+    class SubscribeDeviceOrientationOptions {
+        <<interface>>
+        +interval: string
+        +success: DeviceOrientationResponse~void
+        +fail: string, number~void
+    }
+
+    class DeviceOrientationResponse {
+        <<interface>>
+        +alpha: number
+        +beta: number
+        +gamma: number
+    }
+
+    class SubscribeGyroscopeOptions {
+        <<interface>>
+        +interval: string
+        +success: GyroscopeResponse~void
+        +fail: string, number~void
+    }
+
+    class GyroscopeResponse {
+        <<interface>>
+        +x: number
+        +y: number
+        +z: number
+    }
+
+    Sensor ..> subscribeAccelerometerOptions : Dependency
+    Sensor ..> SubscribeCompassOptions : Dependency
+    Sensor ..> SubscribeProximityOptions : Dependency
+    Sensor ..> SubscribeLightOptions : Dependency
+    Sensor ..> SubscribeStepCounterOptions : Dependency
+    Sensor ..> SubscribeBarometerOptions : Dependency
+    Sensor ..> SubscribeHeartRateOptions : Dependency
+    Sensor ..> SubscribeOnBodyStateOptions : Dependency
+    Sensor ..> GetOnBodyStateOptions : Dependency
+    Sensor ..> SubscribeDeviceOrientationOptions : Dependency
+    Sensor ..> SubscribeGyroscopeOptions : Dependency
+
+    subscribeAccelerometerOptions --> AccelerometerResponse : Association
+    SubscribeCompassOptions --> CompassResponse : Association
+    SubscribeProximityOptions --> ProximityResponse : Association
+    SubscribeLightOptions --> LightResponse : Association
+    SubscribeStepCounterOptions --> StepCounterResponse : Association
+    SubscribeBarometerOptions --> BarometerResponse : Association
+    SubscribeHeartRateOptions --> HeartRateResponse : Association
+    SubscribeOnBodyStateOptions --> OnBodyStateResponse : Association
+    GetOnBodyStateOptions --> OnBodyStateResponse : Association
+    SubscribeDeviceOrientationOptions --> DeviceOrientationResponse : Association
+    SubscribeGyroscopeOptions --> GyroscopeResponse : Association
+```
+
+图中：
+- Sensor类通过Dependency关系使用各SubscribeOptions接口作为方法参数。
+- 各SubscribeOptions接口通过Association关系持有对应Response接口，作为success回调的参数类型。
+- GetOnBodyStateOptions和SubscribeOnBodyStateOptions均关联OnBodyStateResponse。
 
 
 ## 导入模块
@@ -27,7 +213,11 @@ import { sensor } from '@kit.SensorServiceKit';
 
 on(type: SensorId.COLOR, callback: Callback&lt;ColorResponse&gt;, options?: Options): void
 
-订阅颜色传感器数据。
+订阅颜色传感器数据变化。通过回调函数异步上报颜色传感器数据，数据格式为ColorResponse对象，包含lightIntensity（光照强度）和colorTemperature（色温）两个number类型字段。
+
+当开发者需要获取环境光照强度和色温信息以实现屏幕自动亮度调节、拍照色温补偿、环境光线监测等功能时，使用此接口。
+
+调用此接口后，系统会按指定的回调频率上报颜色传感器数据；如不传入options参数，默认上报频率为200000000ns（即200ms间隔）。该接口为异步回调方式，传感器数据变化时通过callback回调上报，无Promise返回值。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -39,7 +229,7 @@ on(type: SensorId.COLOR, callback: Callback&lt;ColorResponse&gt;, options?: Opti
 | -------- | ------------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | [SensorId](#sensorid9).COLOR                      | 是   | 传感器类型，该值固定为SensorId.COLOR。                      |
 | callback | Callback&lt;[ColorResponse](#colorresponse10)&gt; | 是   | 回调函数，异步上报的传感器数据固定为ColorResponse。         |
-| options  | [Options](js-apis-sensor.md#options)              | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](js-apis-sensor.md#options)              | 否   | 可选参数列表，用于设置传感器上报频率。默认值：200000000ns。不传入时使用默认频率。 |
 
 **错误码**：
 
@@ -75,7 +265,11 @@ try{
 
 on(type: SensorId.SAR, callback: Callback&lt;SarResponse&gt;, options?: Options): void
 
-订阅吸收比率传感器数据。
+订阅吸收比率传感器数据变化。通过回调函数异步上报SAR传感器数据，数据格式为SarResponse对象，包含absorptionRatio（吸收率）一个number类型字段。
+
+当开发者需要监测设备电磁波吸收率以实现通信安全监测、辐射检测等功能时，使用此接口。
+
+调用此接口后，系统会按指定的回调频率上报SAR传感器数据；如不传入options参数，默认上报频率为200000000ns（即200ms间隔）。该接口为异步回调方式，传感器数据变化时通过callback回调上报，无Promise返回值。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -87,7 +281,7 @@ on(type: SensorId.SAR, callback: Callback&lt;SarResponse&gt;, options?: Options)
 | -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | [SensorId](#sensorid9).SAR                    | 是   | 传感器类型，该值固定为SensorId.SAR。                        |
 | callback | Callback&lt;[SarResponse](#sarresponse10)&gt; | 是   | 回调函数，异步上报的传感器数据固定为SarResponse。           |
-| options  | [Options](js-apis-sensor.md#options)          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。 |
+| options  | [Options](js-apis-sensor.md#options)          | 否   | 可选参数列表，用于设置传感器上报频率。默认值：200000000ns。不传入时使用默认频率。 |
 
 **错误码**：
 
@@ -124,7 +318,11 @@ try {
 
 off(type: SensorId.COLOR, callback?: Callback&lt;ColorResponse&gt;): void
 
-取消订阅颜色传感器数据。
+取消订阅颜色传感器数据。调用后，颜色传感器的回调函数将不再触发。
+
+当开发者不再需要颜色传感器数据时（如页面切换、应用退出），使用此接口取消订阅，以减少系统资源占用。
+
+调用此接口后，之前通过sensor.on(SensorId.COLOR)注册的回调函数将不再被触发。若传入callback参数，仅取消该指定回调函数的订阅；若不传入callback参数，则取消当前SensorId.COLOR类型的所有回调函数。需先调用sensor.on(SensorId.COLOR)订阅后，再调用此接口取消订阅。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -177,7 +375,11 @@ try {
 
 off(type: SensorId.COLOR, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;ColorResponse&gt;): void
 
-取消订阅颜色传感器数据。
+取消订阅颜色传感器数据。与API version 10的off接口相比，新增sensorInfoParam参数，支持通过指定deviceId和sensorIndex来精确取消订阅某一设备上的特定传感器回调，适用于多设备场景。
+
+当开发者需要取消订阅特定设备上的颜色传感器数据时（如多设备连接场景），使用此接口。不传入sensorInfoParam时，默认取消本地设备（deviceId为-1）上的回调。
+
+调用此接口后，指定设备上的颜色传感器回调函数将不再被触发。若传入callback参数，仅取消该指定回调函数的订阅；若不传入callback参数，则取消指定设备上SensorId.COLOR类型的所有回调函数。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -188,8 +390,8 @@ off(type: SensorId.COLOR, sensorInfoParam?: SensorInfoParam, callback?: Callback
 | 参数名   | 类型                                                     | 必填 | 说明                                                         |
 | -------- |--------------------------------------------------------| ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).COLOR                           | 是   | 传感器类型，该值固定为SensorId.COLOR。                       |
-| sensorInfoParam | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
-| callback | Callback&lt;[ColorResponse](#colorresponse10)&gt;      | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
+| sensorInfoParam | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex。默认值：deviceId为-1（本地设备），sensorIndex为0（默认传感器）。不传入时默认取消本地设备上的回调。 |
+| callback | Callback&lt;[ColorResponse](#colorresponse10)&gt;      | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅指定设备上当前类型的所有回调函数。 |
 
 **错误码**：
 
@@ -262,7 +464,11 @@ function sensorUnsubscribe(): Ret {
 
 off(type: SensorId.SAR, callback?: Callback&lt;SarResponse&gt;): void
 
-取消订阅吸收比率传感器数据。
+取消订阅吸收比率传感器数据。调用后，SAR传感器的回调函数将不再触发。
+
+当开发者不再需要SAR传感器数据时（如页面切换、应用退出），使用此接口取消订阅，以减少系统资源占用。
+
+调用此接口后，之前通过sensor.on(SensorId.SAR)注册的回调函数将不再被触发。若传入callback参数，仅取消该指定回调函数的订阅；若不传入callback参数，则取消当前SensorId.SAR类型的所有回调函数。需先调用sensor.on(SensorId.SAR)订阅后，再调用此接口取消订阅。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -315,7 +521,11 @@ try {
 
 off(type: SensorId.SAR, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;SarResponse&gt;): void
 
-取消订阅吸收比率传感器数据。
+取消订阅吸收比率传感器数据。与API version 10的off接口相比，新增sensorInfoParam参数，支持通过指定deviceId和sensorIndex来精确取消订阅某一设备上的特定传感器回调，适用于多设备场景。
+
+当开发者需要取消订阅特定设备上的SAR传感器数据时（如多设备连接场景），使用此接口。不传入sensorInfoParam时，默认取消本地设备（deviceId为-1）上的回调。
+
+调用此接口后，指定设备上的SAR传感器回调函数将不再被触发。若传入callback参数，仅取消该指定回调函数的订阅；若不传入callback参数，则取消指定设备上SensorId.SAR类型的所有回调函数。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -326,8 +536,8 @@ off(type: SensorId.SAR, sensorInfoParam?: SensorInfoParam, callback?: Callback&l
 | 参数名   | 类型                                          | 必填 | 说明                                                         |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).SAR                    | 是   | 传感器类型，该值固定为SensorId.SAR。                         |
-| sensorInfoParam | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
-| callback | Callback&lt;[SarResponse](#sarresponse10)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
+| sensorInfoParam | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId和sensorIndex。默认值：deviceId为-1（本地设备），sensorIndex为0（默认传感器）。不传入时默认取消本地设备上的回调。 |
+| callback | Callback&lt;[SarResponse](#sarresponse10)&gt; | 否   | 需要取消订阅的回调函数，若无此参数，则取消订阅指定设备上当前类型的所有回调函数。 |
 
 **错误码**：
 
@@ -402,14 +612,16 @@ function sensorUnsubscribe(): Ret {
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.Sensors.Sensor
 
+**系统API**：此接口为系统接口
+
 | 名称                | 值   | 说明                                            |
 | ------------------- | ---- | ----------------------------------------------- |
-| COLOR<sup>10+</sup> | 14   | 颜色传感器。<br>系统API：此接口为系统接口。     |
-| SAR<sup>10+</sup>   | 15   | 吸收比率传感器。<br>系统API：此接口为系统接口。 |
+| COLOR<sup>10+</sup> | 14   | 颜色传感器。用于订阅/取消订阅颜色传感器数据，上报数据为[ColorResponse](#colorresponse10)对象，包含光照强度和色温信息。     |
+| SAR<sup>10+</sup>   | 15   | 吸收比率传感器。用于订阅/取消订阅吸收比率传感器数据，上报数据为[SarResponse](#sarresponse10)对象，包含电磁波吸收率信息。 |
 
 ## ColorResponse<sup>10+</sup>
 
-颜色传感器数据，继承于[Response](js-apis-sensor.md#response)。
+颜色传感器数据，继承于[Response](js-apis-sensor.md#response)。用于表示颜色传感器上报的响应数据，包含光照强度和色温信息。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.Sensors.Sensor
 
@@ -418,12 +630,12 @@ function sensorUnsubscribe(): Ret {
 
 | 名称             | 类型   | 只读 | 可选 | 说明                          |
 | ---------------- | ------ | ---- | ---- | ----------------------------- |
-| lightIntensity   | number | 否   | 否   | 表示光的强度，单位 : 勒克斯。 |
-| colorTemperature | number | 否   | 否   | 表示色温，单位 : 开尔文。     |
+| lightIntensity   | number | 否   | 否   | 表示光的强度。单位：勒克斯（lux）。取值范围：取值为实际上报物理量，由硬件传感器决定。典型室内环境光强度约为300-500 lux，户外阳光可达10000 lux以上。 |
+| colorTemperature | number | 否   | 否   | 表示色温。单位：开尔文（K）。取值范围：取值为实际上报物理量，由硬件传感器决定。典型值：暖白光约2700-3000K，正白光约4000-5000K，冷白光约6500K以上。     |
 
-## SarResponse<sup>10+ </sup>
+## SarResponse<sup>10+ </sup>
 
-吸收比率传感器数据，继承于[Response](js-apis-sensor.md#response)。
+吸收比率传感器数据，继承于[Response](js-apis-sensor.md#response)。用于表示吸收比率传感器上报的响应数据，包含电磁波吸收率信息。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.Sensors.Sensor
 
@@ -432,12 +644,11 @@ function sensorUnsubscribe(): Ret {
 
 | 名称            | 类型   | 只读 | 可选 | 说明                            |
 | --------------- | ------ | ---- | ---- | ------------------------------- |
-| absorptionRatio | number | 否   | 否   | 表示具体的吸收率，单位 : W/kg。 |
-
+| absorptionRatio | number | 否   | 否   | 表示具体的吸收率。单位：W/kg。取值范围：取值为实际上报物理量，由硬件传感器决定。 |
 
 ## SensorInfoParam<sup>19+</sup>
 
-传感器传入设置参数。
+传感器传入设置参数，用于指定目标传感器的设备ID和传感器索引，适用于多设备场景下的精确订阅/取消订阅操作。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.Sensors.Sensor
 
@@ -445,5 +656,5 @@ function sensorUnsubscribe(): Ret {
 
 | 名称         | 类型     | 只读 | 可选 | 说明                      |
 | ----------- | -------- | ---- | ---- | -------------------------- |
-| deviceId    | number   | 否   | 是   | 设备ID：默认值为-1，表示本地设备，设备ID需通过[getSensorList](js-apis-sensor.md#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](js-apis-sensor.md#sensoronsensorstatuschange19)获取。   |
-| sensorIndex   | number | 否   | 是   | 传感器索引：默认值为0，为设备上的默认传感器。其它传感器ID需通过[getSensorList](js-apis-sensor.md#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](js-apis-sensor.md#sensoronsensorstatuschange19)获取。 |
+| deviceId    | number   | 否   | 是   | 设备ID。默认值：-1，表示本地设备。其他设备ID需通过[getSensorListSync](js-apis-sensor.md#sensorgetsensorlistsync12)查询或监听设备上下线接口[sensorStatusChange](js-apis-sensor.md#sensoronsensorstatuschange19)获取。不传入时默认为本地设备（-1）。   |
+| sensorIndex   | number | 否   | 是   | 传感器索引。默认值：0，表示设备上的默认传感器。同一设备上可能存在多个同类型传感器，通过sensorIndex区分。其他传感器索引需通过[getSensorListSync](js-apis-sensor.md#sensorgetsensorlistsync12)查询或监听设备上下线接口[sensorStatusChange](js-apis-sensor.md#sensoronsensorstatuschange19)获取。不传入时默认为0。 |

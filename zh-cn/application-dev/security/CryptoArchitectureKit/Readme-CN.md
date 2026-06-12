@@ -114,6 +114,8 @@
     - [使用X25519进行密钥协商(C/C++)](crypto-key-agreement-using-x25519-ndk.md)
     - [使用DH进行密钥协商(ArkTS)](crypto-key-agreement-using-dh.md)
     - [使用DH进行密钥协商(C/C++)](crypto-key-agreement-using-dh-ndk.md)
+- 密钥封装解封装<!--crypto-kem-->
+  - [使用KEM进行密钥封装解封装(ArkTS)](crypto-kem-encapsulate-decapsulate.md)
 - 消息摘要计算<!--crypto-generate-message-->
   - [消息摘要计算介绍及算法规格](crypto-generate-message-digest-overview.md)
   - 消息摘要计算开发指导<!--crypto-generate-message-digest-dev-->

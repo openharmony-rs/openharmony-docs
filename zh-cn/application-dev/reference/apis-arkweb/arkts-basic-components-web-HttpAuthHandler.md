@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回的http auth认证请求确认或取消和使用缓存密码认证功能对象。示例代码参考[onHttpAuthRequest事件](./arkts-basic-components-web-events.md#onhttpauthrequest9)。
+Web组件返回的http auth认证请求确认或取消和使用缓存密码认证功能对象。示例代码参考[onHttpAuthRequest](./arkts-basic-components-web-events.md#onhttpauthrequest9)事件。
 
 > **说明：**
 >
@@ -57,7 +57,7 @@ confirm(userName: string, password: string): boolean
 
 isHttpAuthInfoSaved(): boolean
 
-通知Web组件用户使用服务器缓存的账号密码认证。
+确定当前主机存储的凭据是否适合使用，如果凭据在当前请求中曾被服务器拒绝过，则不适用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -65,4 +65,4 @@ isHttpAuthInfoSaved(): boolean
 
 | 类型      | 说明                        |
 | ------- | ------------------------- |
-| boolean | 存在密码认证成功返回true，其他返回false。 |
+| boolean | 存储的凭据适用返回true，其他返回false。 |

@@ -43,7 +43,7 @@ prompt.showToast({
 });
 ```
 
-![en-us_image_0001](figures/en-us_image_0001.gif)
+![en-us_image_0001](figures/showToast-example.gif)
 
 ## ShowToastOptions
 
@@ -103,7 +103,7 @@ prompt.showDialog({
   })
 ```
 
-![en-us_image_0002](figures/en-us_image_0002.gif)
+![en-us_image_0002](figures/showDialog-example01.gif)
 
 ## prompt.showDialog
 
@@ -146,7 +146,7 @@ prompt.showDialog({
 });
 ```
 
-![en-us_image_0004](figures/en-us_image_0004.gif)
+![en-us_image_0004](figures/showDialog-example02.gif)
 
 ## ShowDialogOptions
 
@@ -211,7 +211,7 @@ prompt.showActionMenu({
 })
 ```
 
-![en-us_image_0005](figures/en-us_image_0005.gif) 
+![en-us_image_0005](figures/showActionMenu-example01.gif) 
 
 ## prompt.showActionMenu
 
@@ -257,7 +257,7 @@ prompt.showActionMenu({
     console.info('showActionMenu error: ' + err);
   })
 ```
-![en-us_image_0006](figures/en-us_image_0006.gif)
+![en-us_image_0006](figures/showActionMenu-example02.gif)
 
 ## ActionMenuOptions
 

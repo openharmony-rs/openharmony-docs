@@ -182,13 +182,13 @@ NODE_SWIPER_CURVE = 1001006
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 设置动画曲线参数，参数类型[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)，默认值为ARKUI_CURVE_LINEAR。 |
+| .value[0].i32 | 设置动画曲线参数，参数类型[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)，默认值为ARKUI_CURVE_LINEAR。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 设置动画曲线参数，参数类型[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)，默认值为ARKUI_CURVE_LINEAR。 |
+| .value[0].i32 | 设置动画曲线参数，参数类型[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)，默认值为ARKUI_CURVE_LINEAR。 |
 
 ## NODE_SWIPER_ITEM_SPACE
 

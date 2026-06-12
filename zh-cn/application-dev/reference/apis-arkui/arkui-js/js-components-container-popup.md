@@ -134,4 +134,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001178886129](figures/zh-cn_image_0000001178886129.png)
+![popup](figures/popup.png)

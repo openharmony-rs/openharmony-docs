@@ -45,7 +45,7 @@ ToolBar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsCo
 | ----------------------------- | ------------------------------------------------------------ | ---- | ----------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | toolBarList                   | [ToolBarOptions](#toolbaroptions)                            | 是   | @ObjectLink | 工具栏列表。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                     |
 | activateIndex                 | number                                                       | 否   | @Prop       | 激活态的子项。<br/>取值范围：大于等于-1。<br/>默认值：-1，没有激活态的子项。若设置数值小于-1，按没有激活项处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                           |
-| controller                    | [TabsController](ts-container-tabs.md#tabscontroller)        | 是   | -           | 工具栏控制器，不支持控制工具栏子项。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                            |
+| controller                    | [TabsController](ts-container-tabs.md#tabscontroller)        | 是   | -           | 工具栏控制器，不支持控制工具栏子项。<br/>**说明：** <br/>根据自定义组件成员属性访问限定符[使用限制](../../../ui/state-management/arkts-custom-components-access-restrictions.md#使用限制)，该接口属于常规成员变量，可以传参进行初始化；也可以不传。不传时，使用组件内预设值进行初始化，组件内预设值为：new TabsController()。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                            |
 | dividerModifier<sup>13+</sup> | [DividerModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否   | @Prop       | 工具栏头部分割线属性，可设置分割线高度、颜色等。<br/>默认值：系统默认值。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。                                                                    |
 | toolBarModifier<sup>13+</sup> | [ToolBarModifier](#toolbarmodifier13)                        | 否   | @Prop       | 工具栏属性，可设置工具栏高度、背景色、内边距（仅在工具栏子项数量小于5时生效）、是否显示按压态。<br/>默认值：<br/>工具栏高度：56vp<br/>背景色：ohos_id_toolbar_bg<br/>内边距：24vp<br/>显示按压态。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 
@@ -293,7 +293,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_toolbar_example01](figures/zh-cn_image_toolbar_example01.png)
+![zh-cn_image_toolbar_example01](figures/image-toolbar-example01.png)
 
 ### 示例2（设置工具栏自定义样式）
 从API version 13开始，该示例通过设置属性ToolBarModifier自定义工具栏高度、背景色、按压效果等样式。
@@ -391,7 +391,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_toolbar_example02](figures/zh-cn_image_toolbar_example02.png)
+![zh-cn_image_toolbar_example02](figures/image-toolbar-example02.png)
 
 
 ### 示例3（设置工具栏自定义播报）
@@ -467,4 +467,4 @@ struct Index {
   }
 }
 ```
-![zh-cn_image_toolbar_example01](figures/zh-cn_image_toolbar_example01.png)
+![zh-cn_image_toolbar_example01](figures/image-toolbar-example01.png)

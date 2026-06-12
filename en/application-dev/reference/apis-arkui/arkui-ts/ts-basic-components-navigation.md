@@ -2166,7 +2166,7 @@ struct NavigationExample {
 }
 ```
 
-![en-us_image_navigation](figures/en-us_image_navigation.png)
+![en-us_image_navigation](figures/image-navigation.png)
 
 
 

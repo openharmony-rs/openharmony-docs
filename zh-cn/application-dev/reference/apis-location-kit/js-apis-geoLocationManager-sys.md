@@ -62,6 +62,19 @@ import { geoLocationManager } from '@kit.LocationKit';
 | isFromMock | Boolean | 否 | 是 | true：地名信息来自于逆地理编码模拟功能。<br/>false：地名信息不是来自于逆地理编码模拟功能。<br/>**系统接口**：此接口为系统接口。 |
 
 
+## GeofenceTransitionEvent<sup>12+</sup>
+
+地理围栏事件。
+
+**系统能力**：SystemCapability.Location.Location.Geofence
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| GEOFENCE_TRANSITION_EVENT_APPROACHING_GEOFENCE    | 8 | 该事件表示设备正在接近地理围栏区域。<br/>**系统接口**：此接口为系统接口。 |
+| GEOFENCE_TRANSITION_EVENT_LEAVING_GEOFENCE    | 16 | 该事件表示设备已离开地理围栏区域。<br/>**系统接口**：此接口为系统接口。 |
+| GEOFENCE_TRANSITION_EVENT_NEAR_WANDER    | 32 | 该事件表示设备正在接近地理围栏区域，且持续徘徊超过15分钟。<br/>**系统接口**：此接口为系统接口。 |
+
+
 ## Location
 
 位置信息。

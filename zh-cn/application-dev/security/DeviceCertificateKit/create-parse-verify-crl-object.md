@@ -11,7 +11,7 @@
 
 ## 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)和[加解密算法库模块](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)和[加解密算法库框架](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md)。
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -21,17 +21,17 @@
 
 3. 解析证书吊销列表信息。
 
-   此处以获取证书吊销列表版本、证书吊销列表类型、证书吊销列表颁发者名称、证书吊销列表对象的字符串类型数据为例，更多字段信息获取接口请查看[API参考文档](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509crl11)。
+   此处以获取证书吊销列表版本、证书吊销列表类型、证书吊销列表颁发者名称、证书吊销列表对象的字符串类型数据为例，更多字段信息获取接口请查看API参考文档[X509CRL11+](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509crl11)。
 
 4. 基于已有公钥信息，创建PublicKey公钥对象。
 
-   具体可参考[加解密算法库框架-指定二进制数据生成非对称密钥对](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-3)。
+   具体可参考加解密算法库框架-指定二进制数据生成非对称密钥对[convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-3)。
 
 5. 调用[X509CRL.verify](../../reference/apis-device-certificate-kit/js-apis-cert.md#verify11)校验签名合法性。
 
-6. 基于已有的X509证书数据，调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建证书对象。
+6. 基于已有的X.509证书数据，调用[cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert)创建证书对象。
 
-7. 调用[X509CRL.isRevoked](../../reference/apis-device-certificate-kit/js-apis-cert.md#isrevoked11)判断X509证书是否已被吊销。
+7. 调用[X509CRL.isRevoked](../../reference/apis-device-certificate-kit/js-apis-cert.md#isrevoked11)判断X.509证书是否已被吊销。
 
 8. 调用[X509CRL.getRevokedCert](../../reference/apis-device-certificate-kit/js-apis-cert.md#getrevokedcert11)获取被吊销证书对象。
 
@@ -118,15 +118,15 @@ function crlSample(): void {
     };
     let revokedFlag = true;
     let serial: bigint = BigInt('0');
-    cert.createX509Cert(certBlob, (err, cert) => {
-      serial = cert.getCertSerialNumber();
+    cert.createX509Cert(certBlob, (err, x509Cert) => {
+      serial = x509Cert.getCertSerialNumber();
       if (err == null) {
         try {
           // 检查证书是否被吊销。
-          revokedFlag = x509Crl.isRevoked(cert);
+          revokedFlag = x509Crl.isRevoked(x509Cert);
           console.info(`revokedFlag is: ${revokedFlag}`);
           if (!revokedFlag) {
-            console.info('the given cert is not revoked.');
+            console.info('the given x509Cert is not revoked.');
             return;
           }
           // 根据序列号来获取被吊销的证书。

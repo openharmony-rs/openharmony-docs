@@ -109,7 +109,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
-  ![zh-cn_image_0000001562820901](figures/zh-cn_image_0000001562820901.png)
+  ![relativeContainerParentComponentId](figures/relativeContainerParentComponentId.png)
 
 - 以兄弟元素为锚点。
 
@@ -158,7 +158,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
-  ![zh-cn_image_0000001562940613](figures/zh-cn_image_0000001562940613.png)
+  ![relativeContainerSiblingComponentId](figures/relativeContainerSiblingComponentId.png)
 
 - 子组件锚点可以任意选择，但需注意不要相互依赖。
 

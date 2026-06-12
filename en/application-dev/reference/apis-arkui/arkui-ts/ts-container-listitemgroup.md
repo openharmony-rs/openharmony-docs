@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **ListItemGroup** component is used to display list item groups. It must be used with the [List](ts-container-list.md) component. Unless specified otherwise, it spans the entire width of the **List** component.
@@ -305,7 +305,7 @@ struct ListItemGroupExample {
 }
 ```
 
-![en-us_image_0000001219864159](figures/en-us_image_listitemgroup.gif)
+![image-listitemgroup](figures/image-listitemgroup.gif)
 
 ### Example 2: Applying a Card-style Effect
 
@@ -505,7 +505,7 @@ struct ListItemGroupExample {
 }
 ```
 
-![en-us_image_listitemgroup_example03](figures/en-us_image_listitemgroup_example03.gif)
+![en-us_image_listitemgroup_example03](figures/image-listitemgroup-example03.gif)
 
 ### Example 4: Setting a Multi-Column Layout
 

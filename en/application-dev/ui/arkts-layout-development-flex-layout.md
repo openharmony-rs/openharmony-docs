@@ -52,7 +52,7 @@ In the flex layout, the child elements can be arranged in any direction. You can
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001562820817](figures/en-us_image_0000001562820817.png)
+  ![flexDirectionRow](figures/flexDirectionRow.png)
 
 - **FlexDirection.RowReverse**: The main axis runs along the row horizontally, and the child elements are laid out from the end edge of the main axis, in a direction opposite to **FlexDirection.Row**.
 
@@ -71,7 +71,7 @@ In the flex layout, the child elements can be arranged in any direction. You can
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511900464](figures/en-us_image_0000001511900464.png)
+  ![flexDirectionRowReverse](figures/flexDirectionRowReverse.png)
 
 - **FlexDirection.Column**: The main axis runs along the column vertically, and the child elements are laid out from the start edge of the main axis.
 
@@ -90,7 +90,7 @@ In the flex layout, the child elements can be arranged in any direction. You can
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511580884](figures/en-us_image_0000001511580884.png)
+  ![flexDirectionColumn](figures/flexDirectionColumn.png)
 
 - **FlexDirection.ColumnReverse**: The main axis runs along the column vertically, and the child elements are laid out from the end edge of the main axis, in a direction opposite to **FlexDirection.Column**.
 
@@ -109,7 +109,7 @@ In the flex layout, the child elements can be arranged in any direction. You can
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001562940541](figures/en-us_image_0000001562940541.png)
+  ![flexDirectionColumnReverse](figures/flexDirectionColumnReverse.png)
 
 
 ## Wrapping in the Flex Layout
@@ -132,7 +132,7 @@ In the flex layout, child elements can be laid on a single line or on multiple l
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001562700425](figures/en-us_image_0000001562700425.png)
+  ![flexWrapNoWrap](figures/flexWrapNoWrap.png)
 
 - **FlexWrap.Wrap**: Child elements break into multiple lines and are aligned along the main axis.
 
@@ -150,7 +150,7 @@ In the flex layout, child elements can be laid on a single line or on multiple l
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511740468](figures/en-us_image_0000001511740468.png)
+  ![flexWrapWrap](figures/flexWrapWrap.png)
 
 - **FlexWrap.WrapReverse**: Child elements break into multiple lines and are aligned in the reverse direction to the main axis.
 
@@ -168,7 +168,7 @@ In the flex layout, child elements can be laid on a single line or on multiple l
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001562940521](figures/en-us_image_0000001562940521.png)
+  ![flexWrapWrapReverse](figures/flexWrapWrapReverse.png)
 
 
 ## Alignment on the Main Axis
@@ -194,7 +194,7 @@ Use the **justifyContent** parameter to set alignment of child elements on the m
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511421280](figures/en-us_image_0000001511421280.png)
+  ![flexAlignStart](figures/flexAlignStart.png)
 
 - **FlexAlign.Center**: The child elements are aligned with each other toward the center of the container along the main axis.
 
@@ -212,7 +212,7 @@ Use the **justifyContent** parameter to set alignment of child elements on the m
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001563060681](figures/en-us_image_0000001563060681.png)
+  ![flexAlignCenter](figures/flexAlignCenter.png)
 
 - **FlexAlign.End**: The child elements are aligned with each other toward the end edge of the container along the main axis.
 
@@ -230,7 +230,7 @@ Use the **justifyContent** parameter to set alignment of child elements on the m
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001562820809](figures/en-us_image_0000001562820809.png)
+  ![flexAlignEnd](figures/flexAlignEnd.png)
 
 - **FlexAlign.SpaceBetween**: The child elements are evenly distributed within the container along the main axis. The first and last child elements are aligned with the edges of the container.
 
@@ -248,7 +248,7 @@ Use the **justifyContent** parameter to set alignment of child elements on the m
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511421288](figures/en-us_image_0000001511421288.png)
+  ![flexAlignSpaceBetween](figures/flexAlignSpaceBetween.png)
 
 - **FlexAlign.SpaceAround**: The child elements are evenly distributed within the container along the main axis. The space between the first child element and main-start, and that between the last child element and main-end are both half of the space between two adjacent child elements.
 
@@ -266,7 +266,7 @@ Use the **justifyContent** parameter to set alignment of child elements on the m
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511900436](figures/en-us_image_0000001511900436.png)
+  ![flexAlignSpaceAround](figures/flexAlignSpaceAround.png)
 
 - **FlexAlign.SpaceEvenly**: The child elements are evenly distributed within the container along the main axis. The space between the first child element and main-start, the space between the last child element and main-end, and the space between two adjacent child elements are the same.
 
@@ -284,7 +284,7 @@ Use the **justifyContent** parameter to set alignment of child elements on the m
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001563060713](figures/en-us_image_0000001563060713.png)
+  ![flexAlignSpaceEvenly](figures/flexAlignSpaceEvenly.png)
 
 
 ## Alignment on the Cross Axis
@@ -313,7 +313,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001563060677](figures/en-us_image_0000001563060677.png)
+  ![flexItemAlignAuto](figures/flexItemAlignAuto.png)
 
 - **ItemAlign.Start**: The child elements are aligned with the start edge of the container along the cross axis.
 
@@ -331,7 +331,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001562700453](figures/en-us_image_0000001562700453.png)
+  ![flexItemAlignStart](figures/flexItemAlignStart.png)
 
 - **ItemAlign.Start**: The child elements are aligned with the center of the container along the cross axis.
 
@@ -349,7 +349,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511740484](figures/en-us_image_0000001511740484.png)
+  ![flexItemAlignCenter](figures/flexItemAlignCenter.png)
 
 - **ItemAlign.End**: The child elements are aligned with the end edge of the container along the cross axis.
 
@@ -367,7 +367,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511580876](figures/en-us_image_0000001511580876.png)
+  ![flexItemAlignEnd](figures/flexItemAlignEnd.png)
 
 - **ItemAlign.Stretch**: The child elements are stretched along the cross axis. If no constraints are set, the child elements are stretched to fill the size of the container on the cross axis. The items in the flex container are stretched and padded along the cross axis. If the container is a flex container and [FlexWrap](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#flexwrap) is set to **FlexWrap.Wrap** or **FlexWrap.WrapReverse**, the items are stretched to align with the item that has the longest cross axis size in the current row or column. In other cases, the items are stretched to the container size regardless of whether their size is set.
 
@@ -385,7 +385,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511421252](figures/en-us_image_0000001511421252.png)
+  ![alignItems](figures/alignItems.png)
 
 - **ItemAlign.Baseline**: The items are aligned at the baseline of the cross axis.
 
@@ -403,7 +403,7 @@ Use the **alignItems** parameter in [FlexOptions](../reference/apis-arkui/arkui-
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511900440](figures/en-us_image_0000001511900440.png)
+  ![flexItemAlignBaseline](figures/flexItemAlignBaseline.png)
 
 
 ### Setting Alignment on the Cross Axis for Child Elements
@@ -434,7 +434,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // The ch
 ```
 
 
-![en-us_image_0000001562940533](figures/en-us_image_0000001562940533.png)
+![flexAlignSelf](figures/flexAlignSelf.png)
 
 
 In the preceding example, the **alignItems** parameter of the **Flex** container and the **alignSelf** attribute of the child element are both set. In this case, the **alignSelf** settings take effect.
@@ -462,7 +462,7 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511900460](figures/en-us_image_0000001511900460.png)
+  ![flexAlignCenterFlexAlignStart](figures/flexAlignCenterFlexAlignStart.png)
 
 - **FlexAlign.Center**: The child elements are aligned toward the center of the cross axis in the container.
 
@@ -482,7 +482,7 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511421256](figures/en-us_image_0000001511421256.png)
+  ![contentAlignment](figures/contentAlignment.png)
 
 - **FlexAlign.End**: The child elements are aligned toward the end edge of the cross axis in the container.
 
@@ -502,7 +502,7 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001562820801](figures/en-us_image_0000001562820801.png)
+  ![flexAlignCenterFlexAlignEnd](figures/flexAlignCenterFlexAlignEnd.png)
 
 - **FlexAlign.SpaceBetween**: The child elements are evenly distributed within the container along the cross axis. The first and last child elements are aligned with the edges of the container.
 
@@ -522,7 +522,7 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511900448](figures/en-us_image_0000001511900448.png)
+  ![contentAlignment2](figures/contentAlignment2.png)
 
 - **FlexAlign.SpaceAround**: The child elements are evenly distributed within the container along the cross axis. The space between the first child element and cross-start, and that between the last child element and cross-end are both half of the space between two adjacent child elements.
 
@@ -542,7 +542,7 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001562700445](figures/en-us_image_0000001562700445.png)
+  ![flexAlignCenterFlexAlignSpaceAround](figures/flexAlignCenterFlexAlignSpaceAround.png)
 
 - **FlexAlign.SpaceEvenly**: The child elements are evenly distributed within the container along the cross axis. The space between the first child element and cross-start, the space between the last child element and cross-end, and the space between two adjacent child elements are the same.
 
@@ -562,7 +562,7 @@ Use the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#fle
   .backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001511580864](figures/en-us_image_0000001511580864.png)
+  ![flexAlignCenterFlexAlignSpaceEvenly](figures/flexAlignCenterFlexAlignSpaceEvenly.png)
 
 
 ## Adaptive Scaling
@@ -599,7 +599,7 @@ When the size of the flex container is not large enough, the following attribute
   }.width('90%').height(120).padding(10).backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001562940505](figures/en-us_image_0000001562940505.png)
+  ![flexBasis2](figures/flexBasis2.png)
 
 - [flexGrow](../reference/apis-arkui//arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow): percentage of the flex container's remaining space that is allocated to the child element.
 
@@ -625,7 +625,7 @@ When the size of the flex container is not large enough, the following attribute
   }.width(360).height(120).padding(10).backgroundColor('#AFEEEE')
   ```
   
-  ![en-us_image_0000001562700449](figures/en-us_image_0000001562700449.png)
+  ![flexGrow2](figures/flexGrow2.png)
   
   In the preceding figure, the flex container has a width of 360 vp. The three child elements each have an initial width of 100 vp, with combined left and right margins totaling 20 vp, resulting in a total initial width of 320 vp. The remaining 40 vp of space in the flex container is distributed among the child elements according to their **flexGrow** values. The third child element, which has no **flexGrow** value set, does not participate in the distribution of the remaining space.
   
@@ -657,7 +657,7 @@ When the size of the flex container is not large enough, the following attribute
   }.width(400).height(120).padding(10).backgroundColor('#AFEEEE')
   ```
 
-  ![en-us_image_0000001562820813](figures/en-us_image_0000001562820813.png)
+  ![flexShrink2](figures/flexShrink2.png)
 
   In this example, the parent container has a width of 400 vp. The three child elements each have an initial width of 200 vp, with left and right padding totaling 20 vp. The available layout space within the parent container is 380 vp, creating an overflow of 220 vp beyond the available space.
   
@@ -697,4 +697,4 @@ struct FlexExample {
 }
 ```
 
-![en-us_image_0000001511900452](figures/en-us_image_0000001511900452.png)
+![flex2](figures/flex2.png)

@@ -6,7 +6,7 @@
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
-用户需要分享文件、保存图片、视频等用户文件时，开发者可以通过系统预置的[文件选择器（FilePicker）](../reference/apis-core-file-kit/js-apis-file-picker.md)，实现该能力。通过Picker访问相关文件，将拉起对应的应用，引导用户完成界面操作，接口本身无需申请权限。Picker选择文件或文件夹获取到的URI只具有**临时读写权限**，获取持久化权限需要通过[FilePicker设置永久授权](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)方式获取。
+用户需要分享文件、保存图片、视频等用户文件时，开发者可以通过系统预置的[选择器](../reference/apis-core-file-kit/js-apis-file-picker.md)，实现该能力。通过Picker访问相关文件，将拉起对应的应用，引导用户完成界面操作，接口本身无需申请权限。Picker选择文件或文件夹获取到的URI只具有**临时读写权限**，获取持久化权限需要通过[FilePicker设置永久授权](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)方式获取。
 
 **约束限制**
 
@@ -60,7 +60,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    documentSelectOptions.multiAuthMode = false;
    // 需要传入批量授权的uri数组（仅支持文件，文件夹不生效）。配合multiAuthMode使用。当multiAuthMode为false时，配置该参数不生效。该参数在Phone设备中可正常使用，在其他设备中无效果。
    documentSelectOptions.multiUriArray = ["file://docs/storage/Users/currentUser/test", "file://docs/storage/Users/currentUser/2test"];
-   // 开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。
+   // 开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。API版本26.0.0及之后的版本当该参数置为非DEFAULT时，仅fileSuffixFilters参数生效，其他参数不生效。
    // 该参数在Phone设备中可正常使用，在其他设备中无效果。
    documentSelectOptions.mergeMode = picker.MergeTypeMode.DEFAULT;
    // 是否支持加密（仅支持文件，文件夹不生效），默认为false。该参数为true时，在Picker界面可以选择对文件进行加密。（说明：从API version 19开始支持该参数）。
@@ -89,7 +89,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 
    > **注意：**
    >
-   > 1. 使用Picker获取的[select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3)返回的URI权限是临时只读权限，待退出应用后台后，获取的临时权限就会失效。<br>
+   > 1. 使用Picker获取的[select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3)返回的URI权限是临时读写权限，待退出应用后台后，获取的临时权限就会失效。<br>
    > 2. 如果想要获取持久化权限，请参考[文件持久化授权访问](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)。<br>
    > 3. 开发者可以根据结果集中URI做进一步的处理。建议定义一个全局变量保存URI。<br>
    > 4. 如有获取元数据需求，可以通过[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)和[文件URI](../reference/apis-core-file-kit/js-apis-file-fileuri.md)根据URI获取部分文件属性信息，比如文件大小、访问时间、修改时间、文件名、文件路径等。

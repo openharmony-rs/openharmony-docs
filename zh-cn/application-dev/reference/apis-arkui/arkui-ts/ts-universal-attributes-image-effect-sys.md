@@ -1,8 +1,8 @@
 # 图像效果 (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -97,7 +97,7 @@ systemMaterial(material: SystemUiMaterial | undefined): T
 
 **系统接口：** 此接口为系统接口。
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                            | 必填 | 说明                                                         |
 | ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
@@ -111,7 +111,9 @@ systemMaterial(material: SystemUiMaterial | undefined): T
 
 ## SystemUiMaterial<sup>23+</sup>
 
-type SystemUiMaterial = uiMaterial.Material
+type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.Material
+
+系统材质对象基类。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -121,7 +123,7 @@ type SystemUiMaterial = uiMaterial.Material
 
 | 类型                              | 说明           |
 | --------------------------------- | -------------- |
-| [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material)     | 系统材质对象。 |
+| import('../api/@ohos.arkui.uiMaterial').default.[Material](../arkts-apis-uimaterial-sys.md#material)     | 系统材质对象基类。 |
 
 ## edgeLight
    

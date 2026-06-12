@@ -72,7 +72,7 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
-| networkCheckTimeout | number | 否  | 是 | 检查网络可用的超时时间，单位为秒。默认值为20，最小值为0，最大值为20。<br/>检查网络需要权限：**ohos.permission.INTERNET**，无权限时网络检查失败直到超时。 |
+| networkCheckTimeout | number | 否  | 是 | 检查网络可用的超时时间，单位为秒。默认值为20，最小值为0，最大值为20。<br/>检查网络需要权限：**ohos.permission.GET_NETWORK_INFO**，无权限时网络检查失败直到超时。 |
 | httpTotalTimeout | number | 否  | 是 | 完成HTTP请求的超时时间，单位为秒。默认值为60，最小值为1。 |
 
 ## RetryOptions

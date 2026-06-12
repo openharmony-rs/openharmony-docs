@@ -1419,7 +1419,7 @@ Failed to send request to system service.
 
 **可能原因**
 
-设置快照使能状态或者重建快照时，发送请求失败。
+设置快启使能状态或者重新初始化快启时，发送请求失败。
 
 **处理步骤**
 
@@ -2827,3 +2827,93 @@ The current process still has another UIAbility, and this API cannot be called.
 **处理步骤**
 
 调用方保证当前进程中只有一个UIAbility且处于退出状态。
+
+## 35600004 指定的AgentCard版本低于当前版本
+
+**错误信息**
+
+The specified AgentCard version is older than the current version.
+
+**错误描述**
+
+指定的AgentCard版本低于当前版本。
+
+**可能原因**
+
+调用updateAgentCard接口时新版本号低于旧版本号。
+
+**处理步骤**
+
+将AgentCard中的version字段进行更新。
+
+## 35600005 指定的AgentCard版本无效
+
+**错误信息**
+
+The specified AgentCard version is invalid.
+
+**错误描述**
+
+指定的AgentCard版本无效。
+
+**可能原因**
+
+AgentCard中的version字段没有遵循SemVer的版本规则。
+
+**处理步骤**
+
+更新AgentCard中的version字段并遵循SemVer的版本规则。
+
+## 35600006 指定的AgentCard已被注册
+
+**错误信息**
+
+The specified AgentCard has already been registered. Use updateAgentCard instead.
+
+**错误描述**
+
+指定的AgentCard已被注册，请使用updateAgentCard接口。
+
+**可能原因**
+
+指定的AgentCard已被注册。
+
+**处理步骤**
+
+使用updateAgentCard接口。
+
+## 35600007 指定的LOW_CODE类型智能体已触发且尚未完成工作流
+
+**错误信息**
+
+The specified LOW_CODE agent has already been triggered and is not yet completed.
+
+**错误描述**
+
+指定的LOW_CODE类型智能体已触发且尚未完成工作流。
+
+**可能原因**
+
+指定的LOW_CODE类型智能体已触发且尚未完成工作流。
+
+**处理步骤**
+
+调用notifyLowCodeAgentComplete接口结束指定的LOW_CODE类型智能体。
+
+## 35600008 同一应用下AgentCard数量达到了上限
+
+**错误信息**
+
+The number of AgentCards in the bundle reaches the limit.
+
+**错误描述**
+
+同一应用下AgentCard数量达到了上限。
+
+**可能原因**
+
+同一应用下最多只能存在1000张AgentCard，调用agentManager.registerAgentCard接口时已达到此上限。
+
+**处理步骤**
+
+调用agentManager.deleteAgentCard删除不再需要的AgentCard。
