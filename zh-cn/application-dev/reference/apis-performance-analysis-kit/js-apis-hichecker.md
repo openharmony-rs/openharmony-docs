@@ -39,7 +39,9 @@ import { hichecker } from '@kit.PerformanceAnalysisKit';
 
 addCheckRule(rule: bigint): void
 
-添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈，当有相应规则触发时可在hilog中grep HiChecker查看运行信息。如果传入的规则级别为线程级别，则仅在当前线程中生效。
+添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈，当有相应规则触发时可在hilog中grep HiChecker查看运行信息。
+
+如果传入的规则级别为线程级别，则仅在当前线程中生效。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
@@ -51,9 +53,9 @@ addCheckRule(rule: bigint): void
 
 **错误码：**
 
-| 错误码ID | 错误信息 | 说明 |
-| ------- | ----------- | ---------------- |
-| 401 | the parameter check failed, only one bigint type parameter is needed  | 参数检查失败，需要传入一个bigint类型参数。请检查参数类型、参数数量和参数值是否正确。 |
+| 错误码ID | 错误信息 |
+| ------- | ----------- |
+| 401 | the parameter check failed, only one bigint type parameter is needed  |
 
 **示例：**
 
@@ -75,7 +77,9 @@ try {
 
 removeCheckRule(rule: bigint): void
 
-删除一条或多条规则，删除的规则后续将不再生效。如果传入的规则级别为线程级别，则仅从当前线程中删除。
+删除一条或多条规则，删除的规则后续将不再生效。
+
+如果传入的规则级别为线程级别，则仅从当前线程中删除。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
@@ -87,9 +91,9 @@ removeCheckRule(rule: bigint): void
 
 **错误码：**
 
-| 错误码ID | 错误信息 | 说明 |
-| ------- | ------------------------------ | ------------------------------ |
-| 401 | the parameter check failed, only one bigint type parameter is needed  | 参数检查失败，需要传入一个bigint类型参数。请检查参数类型、参数数量和参数值是否正确。 |
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 401 | the parameter check failed, only one bigint type parameter is needed  |
 
 **示例：**
 
@@ -111,7 +115,9 @@ try {
 
 containsCheckRule(rule: bigint): boolean
 
-当前已添加的规则集中是否包含了某一个特定的规则。如果传入的规则级别为线程级别，则仅在当前线程中进行查询。
+当前已添加的规则集中是否包含了某一个特定的规则。
+
+如果传入的规则级别为线程级别，则仅在当前线程中进行查询。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
@@ -129,9 +135,9 @@ containsCheckRule(rule: bigint): boolean
 
 **错误码：**
 
-| 错误码ID | 错误信息 | 说明 |
-| ------- | ------------------ | ------------------ |
-| 401 | the parameter check failed, only one bigint type parameter is needed  | 参数检查失败，需要传入一个bigint类型参数。请检查参数类型、参数数量和参数值是否正确。 |
+| 错误码ID | 错误信息 |
+| ------- | ------------------ |
+| 401 | the parameter check failed, only one bigint type parameter is needed  |
 
 **示例：**
 
