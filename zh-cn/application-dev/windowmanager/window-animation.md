@@ -51,6 +51,37 @@
    通过[completeTransition()](../reference/apis-arkui/js-apis-window-sys.md#completetransition9)传入true来设置属性转换的最终完成状态。如果传入false，则表示撤销本次转换。
 
    <!-- @[window_animation_complete_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/WindowAnimationDemo.ets) --> 
+   
+   ``` TypeScript
+   struct WindowAnimationDemo {
+     // ...
+     showWindow() {
+       // ...
+       try {
+         // 设置窗口显示过程动画效果
+         animationConfig?.ShowWindowWithCustomAnimation(systemTypeWindow, (context : window.TransitionContext)=>{
+           let toWindow = context.toWindow;
+           let sysWindowUIContext = systemTypeWindow.getUIContext();
+           // 2.配置具体的属性动画
+           sysWindowUIContext.animateTo({
+             // ...
+             onFinish: () => {
+               console.info('onFinish in animation');
+               // 3.设置属性转换的最终完成状态
+               context.completeTransition(true);
+             }
+           }, () => {
+             // ...
+           });
+           console.info('complete transition end');
+         });
+       } catch (error) {
+         console.error(`ShowWindowWithCustomAnimation error code: ${error.code}, message: ${error.message}` );
+       }
+     }
+     // ...
+   }
+   ```
 
 4. 显示或隐藏当前窗口，过程中播放动画。
 
