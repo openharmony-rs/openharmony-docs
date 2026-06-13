@@ -45,6 +45,61 @@
    通过动画函数[animateTo()](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)配置具体的属性动画，可通过[opacity()](../reference/apis-arkui/js-apis-window-sys.md#opacity9)设置窗口不透明度，通过[scale()](../reference/apis-arkui/js-apis-window-sys.md#scale9)设置缩放参数，通过[rotate()](../reference/apis-arkui/js-apis-window-sys.md#rotate9)设置旋转参数，通过[translate()](../reference/apis-arkui/js-apis-window-sys.md#translate9)设置平移参数。
 
    <!-- @[window_animation_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/WindowAnimationDemo.ets) --> 
+   
+   ``` TypeScript
+   import { window } from '@kit.ArkUI';
+   import { common } from '@kit.AbilityKit';
+   import { AnimationConfig } from './AnimationConfig';
+   
+   @Entry
+   @Component
+   struct WindowAnimationDemo {
+     // ...
+     showWindow() {
+       let systemTypeWindow = window.findWindow('dynamicWindow'); // 此处需要获取一个系统类型窗口。
+       let animationConfig = new AnimationConfig();
+       try {
+         // 设置窗口显示过程动画效果
+         animationConfig?.ShowWindowWithCustomAnimation(systemTypeWindow, (context : window.TransitionContext)=>{
+           let toWindow = context.toWindow;
+           let sysWindowUIContext = systemTypeWindow.getUIContext();
+           // 2.配置具体的属性动画
+           sysWindowUIContext.animateTo({
+             // ...
+           }, () => {
+             let translateObj : window.TranslateOptions = {
+               x : 400.0,
+               y : 400.0,
+               z : 0.0
+             };
+             toWindow?.translate(translateObj); // 设置平移参数
+             let rotateObj: window.RotateOptions = {
+               x: 1.0,
+               y: 1.0,
+               z: 360.0,
+               pivotX: 0.5,
+               pivotY: 0.5
+             };
+             toWindow?.rotate(rotateObj); // 设置旋转参数
+             let scaleObj: window.ScaleOptions = {
+               x: 2.0,
+               y: 2.0,
+               pivotX: 0.5,
+               pivotY: 0.5
+             };
+             toWindow?.scale(scaleObj); // 设置缩放参数
+             toWindow?.opacity(1); // 设置透明度参数
+             console.info('animation end');
+           });
+           console.info('complete transition end');
+         });
+       } catch (error) {
+         console.error(`ShowWindowWithCustomAnimation error code: ${error.code}, message: ${error.message}` );
+       }
+     }
+     // ...
+   }
+   ```
 
 3. 设置属性转换完成。
 
