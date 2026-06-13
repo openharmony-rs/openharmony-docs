@@ -128,6 +128,27 @@ struct Index {
   此处以全局悬浮窗为例，设置其窗口圆角。
 
   <!-- @[window_corner_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowCornerRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
+  
+  ``` TypeScript
+  // pages/page1.ets
+  import { window } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SliderDemo {
+    // ...
+  
+    // 设置圆角
+    setCornerRadius(val: number) {
+      const floatWindowObj = AppStorage.get<window.Window>('floatWindow');
+      floatWindowObj?.setWindowCornerRadius(val);
+    }
+  
+    build() {
+      // ...
+    }
+  }
+  ```
 
   ![setWindowCornerRadius](figures/setWindowCornerRadius.gif)
 
