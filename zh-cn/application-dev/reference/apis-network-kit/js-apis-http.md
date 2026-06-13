@@ -2013,7 +2013,7 @@ X509证书对象。
 
 ## ValidationCallback
 
-type ValidationCallback = (context: ValidationContext) => boolean | Promise<boolean>
+type ValidationCallback = (context: ValidationContext) => boolean | Promise\<boolean\>
 
 自定义远端服务器身份验证回调函数。开发者可通过此回调实现自定义的证书验证逻辑，支持同步或异步返回验证结果。
 
@@ -2033,7 +2033,7 @@ type ValidationCallback = (context: ValidationContext) => boolean | Promise<bool
 
 | 类型 | 说明                                   |
 | ------ | -------------------------------------- |
-| boolean \| Promise<boolean> | 返回布尔值表示验证是否通过。true表示验证通过，false表示验证不通过。支持返回Promise对象，用于异步验证场景。   |
+| boolean \| Promise\<boolean\> | 返回布尔值表示验证是否通过。true表示验证通过，false表示验证不通过。支持返回Promise对象，用于异步验证场景。   |
 
 ## AuthenticationType<sup>18+</sup>
 
