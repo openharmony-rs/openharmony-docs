@@ -101,7 +101,7 @@
       - [Graphics (系统接口)](js-apis-arkui-graphics-sys.md)
       <!--DelEnd-->
   - 窗口管理<!--window-manager-api-->
-    - [@ohos.window.floatView (标准悬浮窗)](js-apis-floatView.md)
+    - [@ohos.window.floatView (闪控窗)](js-apis-floatView.md)
     - [@ohos.PiPWindow (画中画窗口)](js-apis-pipWindow.md)
     <!--Del-->
     - [@ohos.PiPWindow (画中画窗口)(系统接口)](js-apis-pipWindow-sys.md)
