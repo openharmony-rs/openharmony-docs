@@ -1,4 +1,4 @@
-# @ohos.window.floatView (标准悬浮窗)
+# @ohos.window.floatView (闪控窗)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
@@ -6,27 +6,35 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-标准悬浮窗是悬浮在桌面/应用界面上的小型窗口，提供灵活的窗口管理能力。
+闪控窗是悬浮在桌面/应用界面上的小型窗口，提供灵活的窗口管理能力。
 
-本模块提供标准悬浮窗能力，包括判断设备是否支持标准悬浮窗功能、创建标准悬浮窗控制器以启动、更新或停止标准悬浮窗等。
+本模块提供闪控窗能力，包括判断设备是否支持闪控窗功能、创建闪控窗控制器以启动、更新或停止闪控窗等。
 
 **适用场景：**
 
-标准悬浮窗适用于需要在独立小窗口中持续展示应用内容或提供快捷操作的场景。例如：
-- 股市盯盘应用：用户在浏览其他应用时，通过标准悬浮窗实时查看股票行情变化，无需频繁切换应用。
-- 手机直播应用：主播在直播过程中使用标准悬浮窗展示自定义的互动面板或控制界面，方便实时操作和互动。
+闪控窗适用于需要在独立小窗口中持续展示应用内容或提供快捷操作的场景。例如：
+- 股市盯盘应用：用户在浏览其他应用时，通过闪控窗实时查看股票行情变化，无需频繁切换应用。
+- 手机直播应用：主播在直播过程中使用闪控窗展示自定义的互动面板或控制界面，方便实时操作和互动。
+
+**闪控窗和闪控球对比**
+
+- 共同点：闪控窗和[闪控球](js-apis-floatingBall.md)均为一种特殊的应用辅助窗口，具备在应用主窗口和对应UIAbility退至后台后仍然可以在前台显示的能力。可以用于应用退至后台后，使用其继续显示UI。
+- 区别：
+  - 显示形式不同。闪控球以小圆球的形式展现，适用于展示关键信息。闪控窗以小型窗口展示，展示区域较大，可以持续展示应用内容或提供快捷操作。
+  - 闪控球只能贴边展示，闪控窗则没有此限制。
+  - 闪控球模板固定，应用不能定制UI。闪控窗同样存在模板，并由系统管理并统一绘制UI，但是提供了可绘制的区域，可供应用加载指定页面内容。
 
 **与闪控球联动：**
 
-本模块可与[@ohos.window.floatingBall](js-apis-floatingBall.md)（闪控球）联合使用。通过[floatView.bind](#floatviewbind)接口将标准悬浮窗控制器与闪控球控制器绑定后，用户点击闪控球可展开为标准悬浮窗，点击标准悬浮窗左上角的缩小按钮可收起为闪控球，实现两种窗口形态的相互切换。
+本模块可与[@ohos.window.floatingBall](js-apis-floatingBall.md)（闪控球）联合使用。通过[floatView.bind](#floatviewbind)接口将闪控窗控制器与闪控球控制器绑定后，用户点击闪控球可展开为闪控窗，点击闪控窗左上角的缩小按钮可收起为闪控球，实现两种窗口形态的相互切换。
 
-**全局悬浮窗和标准悬浮窗对比**
+**全局悬浮窗和闪控窗对比**
 
-- 共同点：全局悬浮窗和标准悬浮窗均为一种特殊的应用辅助窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。可以用于应用退至后台后，使用其继续显示UI。
+- 共同点：全局悬浮窗和闪控窗均为一种特殊的应用辅助窗口，具备在应用主窗口和对应UIAbility退至后台后仍然可以在前台显示的能力。可以用于应用退至后台后，使用其继续显示UI。
 - 区别：
   - 全局悬浮窗由开发者管理并实现UI绘制，无统一UI及动效。
-  - 标准悬浮窗由系统管理并统一绘制UI，动效更为高端精致。
-  - 标准悬浮窗支持与[闪控球](js-apis-floatingBall.md)互相绑定联合使用，实现更复杂场景。
+  - 闪控窗由系统管理并统一绘制UI，动效更为高端精致。
+  - 闪控窗支持与[闪控球](js-apis-floatingBall.md)互相绑定联合使用，实现更复杂场景。
 
 > **说明：**
 >
@@ -46,7 +54,7 @@ import { floatView } from '@kit.ArkUI';
 
 isFloatViewEnabled(): boolean
 
-判断当前设备是否支持标准悬浮窗功能。
+判断当前设备是否支持闪控窗功能。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -60,7 +68,7 @@ isFloatViewEnabled(): boolean
 
 | 类型 | 说明 |
 |------------|------------|
-| boolean  | 当前设备是否支持标准悬浮窗功能。true表示支持，false则表示不支持。 |
+| boolean  | 当前设备是否支持闪控窗功能。true表示支持，false则表示不支持。 |
 
 **示例：**
 
@@ -73,7 +81,7 @@ console.info('Float view enabled is: ' + enable);
 
 create(config: FloatViewConfiguration): Promise&lt;FloatViewController&gt;
 
-创建标准悬浮窗控制器。使用Promise异步回调。
+创建闪控窗控制器。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -87,13 +95,13 @@ create(config: FloatViewConfiguration): Promise&lt;FloatViewController&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| config | [FloatViewConfiguration](#floatviewconfiguration) | 是 | 创建标准悬浮窗控制器的参数。该参数以及构造该参数的context不能为null或者undefined，否则抛出401。其他参数异常情况抛出1300016。 |
+| config | [FloatViewConfiguration](#floatviewconfiguration) | 是 | 创建闪控窗控制器的参数。该参数以及构造该参数的context不能为null或者undefined，否则抛出401。其他参数异常情况抛出1300016。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 |------------|------------|
-| Promise&lt;[FloatViewController](#floatviewcontroller)&gt; | Promise对象。返回当前创建的标准悬浮窗控制器。 |
+| Promise&lt;[FloatViewController](#floatviewcontroller)&gt; | Promise对象。返回当前创建的闪控窗控制器。 |
 
 **错误码：**
 
@@ -140,13 +148,13 @@ struct Index {
 
 bind(floatViewController: FloatViewController, floatingBallController: floatingBall.FloatingBallController, floatingBallParams: floatingBall.FloatingBallParams): Promise&lt;void&gt;
 
-绑定标准悬浮窗和闪控球。需要先创建[标准悬浮窗控制器](#floatviewcontroller)和[闪控球控制器](js-apis-floatingBall.md#floatingballcontroller)，且均未启动。使用Promise异步回调。
+绑定闪控窗和闪控球。需要先创建[闪控窗控制器](#floatviewcontroller)和[闪控球控制器](js-apis-floatingBall.md#floatingballcontroller)，且均未启动。使用Promise异步回调。
 
 > **说明：**
 >
-> - 绑定成功后，调用[start()](#start)或[startFloatingBall()](js-apis-floatingBall.md#startfloatingball)均会同时创建标准悬浮窗窗口和闪控球窗口，并触发对应窗口已注册的状态回调。但同一时刻仅展示其中一个窗口，展示顺序取决于先调用哪个控制器的启动接口。
-> - 绑定成功后，用户可通过点击操作在标准悬浮窗窗口与闪控球之间进行切换。
-> - 绑定成功后，调用任一控制器的停止接口（[stop()](#stop)或[stopFloatingBall()](js-apis-floatingBall.md#stopfloatingball)）会同时销毁标准悬浮窗窗口和闪控球窗口，并触发对应窗口已注册的状态回调。
+> - 绑定成功后，调用[start()](#start)或[startFloatingBall()](js-apis-floatingBall.md#startfloatingball)均会同时创建闪控窗窗口和闪控球窗口，并触发对应窗口已注册的状态回调。但同一时刻仅展示其中一个窗口，展示顺序取决于先调用哪个控制器的启动接口。
+> - 绑定成功后，用户可通过点击操作在闪控窗窗口与闪控球之间进行切换。
+> - 绑定成功后，调用任一控制器的停止接口（[stop()](#stop)或[stopFloatingBall()](js-apis-floatingBall.md#stopfloatingball)）会同时销毁闪控窗窗口和闪控球窗口，并触发对应窗口已注册的状态回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -162,7 +170,7 @@ bind(floatViewController: FloatViewController, floatingBallController: floatingB
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| floatViewController | [FloatViewController](#floatviewcontroller) | 是 | 标准悬浮窗控制器。 |
+| floatViewController | [FloatViewController](#floatviewcontroller) | 是 | 闪控窗控制器。 |
 | floatingBallController | [floatingBall.FloatingBallController](js-apis-floatingBall.md#floatingballcontroller) | 是 | 闪控球控制器。 |
 | floatingBallParams | [floatingBall.FloatingBallParams](js-apis-floatingBall.md#floatingballparams) | 是 | 闪控球参数。绑定时设置的参数会覆盖掉闪控球控制器启动时已保存的参数。 |
 
@@ -224,7 +232,7 @@ struct Index {
 
 unbind(floatViewController: FloatViewController, floatingBallController: floatingBall.FloatingBallController): Promise&lt;void&gt;
 
-解绑标准悬浮窗和闪控球。需要在[标准悬浮窗控制器](#floatviewcontroller)和[闪控球控制器](js-apis-floatingBall.md#floatingballcontroller)均停止后才可解绑。使用Promise异步回调。
+解绑闪控窗和闪控球。需要在[闪控窗控制器](#floatviewcontroller)和[闪控球控制器](js-apis-floatingBall.md#floatingballcontroller)均停止后才可解绑。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -238,7 +246,7 @@ unbind(floatViewController: FloatViewController, floatingBallController: floatin
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| floatViewController | [FloatViewController](#floatviewcontroller) | 是 | 标准悬浮窗控制器。 |
+| floatViewController | [FloatViewController](#floatviewcontroller) | 是 | 闪控窗控制器。 |
 | floatingBallController | [floatingBall.FloatingBallController](js-apis-floatingBall.md#floatingballcontroller) | 是 | 闪控球控制器。 |
 
 **返回值：**
@@ -273,7 +281,7 @@ struct Index {
   // ...
   public unbindController(): void {
     try {
-      // 使用绑定时传入的标准悬浮窗和闪控球控制器
+      // 使用绑定时传入的闪控窗和闪控球控制器
       if (this.floatViewController && this.floatingBallController) {
         floatView.unbind(this.floatViewController!, this.floatingBallController!).then(() => {
           console.info('Succeeded in unbinding float view and floating ball.');
@@ -292,7 +300,7 @@ struct Index {
 
 getFloatViewLimits(templateType: FloatViewTemplateType): FloatViewLimits
 
-根据传入的模板类型获取对应标准悬浮窗窗口的限制，单位为px。
+根据传入的模板类型获取对应闪控窗窗口的限制，单位为px。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -306,13 +314,13 @@ getFloatViewLimits(templateType: FloatViewTemplateType): FloatViewLimits
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 是 | 标准悬浮窗模板类型。 |
+| templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 是 | 闪控窗模板类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 |------------|------------|
-| [FloatViewLimits](#floatviewlimits) | 返回标准悬浮窗窗口的限制，包括最大尺寸、最小尺寸和宽高比的限制范围。 |
+| [FloatViewLimits](#floatviewlimits) | 返回闪控窗窗口的限制，包括最大尺寸、最小尺寸和宽高比的限制范围。 |
 
 **错误码：**
 
@@ -334,7 +342,7 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 
 ## FloatViewConfiguration
 
-创建标准悬浮窗控制器时需要提供的参数配置。
+创建闪控窗控制器时需要提供的参数配置。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -347,7 +355,7 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
 | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否 | 否 | 表示上下文环境。|
-| templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 否 | 否 | 标准悬浮窗的模板类型。|
+| templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 否 | 否 | 闪控窗的模板类型。|
 
 ## TemplateProperty
 
@@ -363,14 +371,14 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 否 | 否 | 标准悬浮窗的模板类型。 |
+| templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 否 | 否 | 闪控窗的模板类型。 |
 | size | [window.Size](arkts-apis-window-i.md#size7) | 否 | 否 | 更新模板类型时需要提供的窗口尺寸。 |
 
 ## FloatViewController
 
-标准悬浮窗控制器实例。用于启动、停止标准悬浮窗以及注册回调等操作。
+闪控窗控制器实例。用于启动、停止闪控窗以及注册回调等操作。
 
-下列API示例中都需先使用[floatView.create()](#floatviewcreate)方法获取到标准悬浮窗控制器实例（即floatViewController），再通过此实例调用对应方法。
+下列API示例中都需先使用[floatView.create()](#floatviewcreate)方法获取到闪控窗控制器实例（即floatViewController），再通过此实例调用对应方法。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -378,7 +386,7 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 
 setUIContext(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 
-根据当前工程中指定的页面路径为标准悬浮窗加载具体页面内容，通过LocalStorage传递状态属性至加载页面。使用Promise异步回调。
+根据当前工程中指定的页面路径为闪控窗加载具体页面内容，通过LocalStorage传递状态属性至加载页面。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -513,7 +521,7 @@ export struct Hello {
 
 setWindowSize(size: window.Size): Promise&lt;void&gt;
 
-设置标准悬浮窗窗口大小。建议先调用[getFloatViewLimits](#floatviewgetfloatviewlimits)接口获取推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](#onrectchange)接口监听。使用Promise异步回调。
+设置闪控窗窗口大小。建议先调用[getFloatViewLimits](#floatviewgetfloatviewlimits)接口获取推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](#onrectchange)接口监听。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -570,7 +578,7 @@ try {
 
 switchTemplate(templateProperty: TemplateProperty): Promise&lt;void&gt;
 
-切换标准悬浮窗的模板并改变其窗口尺寸。建议先调用[getFloatViewLimits](#floatviewgetfloatviewlimits)接口获取目标模板类型推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](#onrectchange)接口监听。使用Promise异步回调。
+切换闪控窗的模板并改变其窗口尺寸。建议先调用[getFloatViewLimits](#floatviewgetfloatviewlimits)接口获取目标模板类型推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](#onrectchange)接口监听。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -631,7 +639,7 @@ try {
 
 start(): Promise&lt;void&gt;
 
-启动标准悬浮窗窗口。接口返回不表示start流程结束，需要通过[onStateChange](#onstatechange)接口监听到STARTED回调时判断启动成功。建议在调用[setUIContext()](#setuicontext)或[setUIContextByName()](#setuicontextbyname)后调用start()。使用Promise异步回调。
+启动闪控窗窗口。接口返回不表示start流程结束，需要通过[onStateChange](#onstatechange)接口监听到STARTED回调时判断启动成功。建议在调用[setUIContext()](#setuicontext)或[setUIContextByName()](#setuicontextbyname)后调用start()。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -683,7 +691,7 @@ try {
 
 stop(): Promise&lt;void&gt;
 
-停止标准悬浮窗窗口。接口返回不表示stop流程结束，需要通过[onStateChange](#onstatechange)接口监听到STOPPED回调时判断停止成功。使用Promise异步回调。
+停止闪控窗窗口。接口返回不表示stop流程结束，需要通过[onStateChange](#onstatechange)接口监听到STOPPED回调时判断停止成功。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -730,9 +738,9 @@ try {
 
 setFloatViewVisibilityInApp(isVisible: boolean): Promise&lt;void&gt;
 
-设置应用在前台时标准悬浮窗窗口是否可见。使用Promise异步回调。
+设置应用在前台时闪控窗窗口是否可见。使用Promise异步回调。
 
-创建标准悬浮窗后未调用此接口前，默认其在应用处于前台时为可见状态。
+创建闪控窗后未调用此接口前，默认其在应用处于前台时为可见状态。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -746,7 +754,7 @@ setFloatViewVisibilityInApp(isVisible: boolean): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| isVisible | boolean | 是 | 应用在前台时标准悬浮窗是否可见，true表示可见，false表示不可见。 |
+| isVisible | boolean | 是 | 应用在前台时闪控窗是否可见，true表示可见，false表示不可见。 |
 
 **返回值：**
 
@@ -783,7 +791,7 @@ try {
 
 restoreMainWindow(wantParameters?: Record&lt;string, Object&gt;): Promise&lt;void&gt;
 
-恢复标准悬浮窗的主窗口到前台显示。如果主窗口已处于前台时调用，将抬升主窗口层级。此接口只能在标准悬浮窗窗口被点击后使用。当主窗口处于PAUSED生命周期或处于多任务状态时，调用接口将抛出错误码1300032。使用Promise异步回调。
+恢复闪控窗的主窗口到前台显示。如果主窗口已处于前台时调用，将抬升主窗口层级。此接口只能在闪控窗窗口被点击后使用。当主窗口处于PAUSED生命周期或处于多任务状态时，调用接口将抛出错误码1300032。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -797,7 +805,7 @@ restoreMainWindow(wantParameters?: Record&lt;string, Object&gt;): Promise&lt;voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| wantParameters | Record&lt;string, Object&gt; | 否 | 恢复标准悬浮窗的主窗口时会给主窗口传递的自定义参数，主窗口会在触发[onNewWant](../apis-ability-kit/js-apis-app-ability-abilityLifecycleCallback.md#onnewwant12)回调时收到。默认值为空，代表不向主窗传入任何自定义参数。 |
+| wantParameters | Record&lt;string, Object&gt; | 否 | 恢复闪控窗的主窗口时会给主窗口传递的自定义参数，主窗口会在触发[onNewWant](../apis-ability-kit/js-apis-app-ability-abilityLifecycleCallback.md#onnewwant12)回调时收到。默认值为空，代表不向主窗传入任何自定义参数。 |
 
 **返回值：**
 
@@ -824,7 +832,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let param: Record<string, Object> = {
   "info": "helloworld",
 };
-// 标准悬浮窗状态需是STARTED
+// 闪控窗状态需是STARTED
 try {
   this.floatViewController?.restoreMainWindow(param).then(() => {
     console.info('Succeeded in restoring main window.');
@@ -840,7 +848,7 @@ try {
 
 getWindowProperties(): FloatViewProperties
 
-获取标准悬浮窗窗口的属性。
+获取闪控窗窗口的属性。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -854,7 +862,7 @@ getWindowProperties(): FloatViewProperties
 
 | 类型 | 说明 |
 |------------|------------|
-| [FloatViewProperties](#floatviewproperties) | 返回标准悬浮窗窗口的属性。 |
+| [FloatViewProperties](#floatviewproperties) | 返回闪控窗窗口的属性。 |
 
 **错误码：**
 
@@ -880,7 +888,7 @@ try {
 
 onStateChange(callback: Callback&lt;FloatViewStateChangeInfo&gt;): void
 
-注册标准悬浮窗状态变化的监听事件。不再使用时，取消监听以避免内存泄漏。
+注册闪控窗状态变化的监听事件。不再使用时，取消监听以避免内存泄漏。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -894,7 +902,7 @@ onStateChange(callback: Callback&lt;FloatViewStateChangeInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| callback | Callback&lt;[FloatViewStateChangeInfo](#floatviewstatechangeinfo)&gt; | 是 | 回调函数。返回当前的标准悬浮窗状态变化信息。 |
+| callback | Callback&lt;[FloatViewStateChangeInfo](#floatviewstatechangeinfo)&gt; | 是 | 回调函数。返回当前的闪控窗状态变化信息。 |
 
 **错误码：**
 
@@ -922,7 +930,7 @@ try {
 
 offStateChange(callback?: Callback&lt;FloatViewStateChangeInfo&gt;): void
 
-取消标准悬浮窗状态变化的监听事件。
+取消闪控窗状态变化的监听事件。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -936,7 +944,7 @@ offStateChange(callback?: Callback&lt;FloatViewStateChangeInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| callback | Callback&lt;[FloatViewStateChangeInfo](#floatviewstatechangeinfo)&gt; | 否 | 回调函数。返回当前的标准悬浮窗状态变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗状态变化的监听。 |
+| callback | Callback&lt;[FloatViewStateChangeInfo](#floatviewstatechangeinfo)&gt; | 否 | 回调函数。返回当前的闪控窗状态变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有闪控窗状态变化的监听。 |
 
 **错误码：**
 
@@ -963,7 +971,7 @@ try {
 
 onRectChange(callback: Callback&lt;FloatViewRectChangeInfo&gt;): void
 
-注册标准悬浮窗矩形区域（位置和大小）变化的监听事件。不再使用时，取消监听以避免内存泄漏。
+注册闪控窗矩形区域（位置和大小）变化的监听事件。不再使用时，取消监听以避免内存泄漏。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -977,7 +985,7 @@ onRectChange(callback: Callback&lt;FloatViewRectChangeInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| callback | Callback&lt;[FloatViewRectChangeInfo](#floatviewrectchangeinfo)&gt; | 是 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。 |
+| callback | Callback&lt;[FloatViewRectChangeInfo](#floatviewrectchangeinfo)&gt; | 是 | 回调函数。返回当前的闪控窗矩形区域变化信息。 |
 
 **错误码：**
 
@@ -1005,7 +1013,7 @@ try {
 
 offRectChange(callback?: Callback&lt;FloatViewRectChangeInfo&gt;): void
 
-取消标准悬浮窗矩形区域变化的监听事件。
+取消闪控窗矩形区域变化的监听事件。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1019,7 +1027,7 @@ offRectChange(callback?: Callback&lt;FloatViewRectChangeInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| callback | Callback&lt;[FloatViewRectChangeInfo](#floatviewrectchangeinfo)&gt; | 否 | 回调函数。返回当前的标准悬浮窗矩形区域变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗矩形区域变化的监听。 |
+| callback | Callback&lt;[FloatViewRectChangeInfo](#floatviewrectchangeinfo)&gt; | 否 | 回调函数。返回当前的闪控窗矩形区域变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有闪控窗矩形区域变化的监听。 |
 
 **错误码：**
 
@@ -1046,7 +1054,7 @@ try {
 
 onLimitsChange(callback: Callback&lt;FloatViewLimits&gt;): void
 
-注册标准悬浮窗限制变化的监听事件。当限制规格变化时（例如屏幕宽度变化或切换模板），触发回调并返回当前窗口模板类型的限制信息。不再使用时，取消监听以避免内存泄漏。
+注册闪控窗限制变化的监听事件。当限制规格变化时（例如折叠展开导致屏幕宽度变化或切换模板），触发回调并返回当前窗口模板类型的限制信息。不再使用时，取消监听以避免内存泄漏。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1060,7 +1068,7 @@ onLimitsChange(callback: Callback&lt;FloatViewLimits&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| callback | Callback&lt;[FloatViewLimits](#floatviewlimits)&gt; | 是 | 回调函数。返回当前的标准悬浮窗限制变化信息。 |
+| callback | Callback&lt;[FloatViewLimits](#floatviewlimits)&gt; | 是 | 回调函数。返回当前的闪控窗限制变化信息。 |
 
 **错误码：**
 
@@ -1088,7 +1096,7 @@ try {
 
 offLimitsChange(callback?: Callback&lt;FloatViewLimits&gt;): void
 
-取消标准悬浮窗限制变化的监听事件。
+取消闪控窗限制变化的监听事件。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1102,7 +1110,7 @@ offLimitsChange(callback?: Callback&lt;FloatViewLimits&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| callback | Callback&lt;[FloatViewLimits](#floatviewlimits)&gt; | 否 | 回调函数。返回当前的标准悬浮窗限制变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有标准悬浮窗限制变化的监听。 |
+| callback | Callback&lt;[FloatViewLimits](#floatviewlimits)&gt; | 否 | 回调函数。返回当前的闪控窗限制变化信息。若传入参数，则停止该监听。若未传入参数，则停止所有闪控窗限制变化的监听。 |
 
 **错误码：**
 
@@ -1127,7 +1135,7 @@ try {
 
 ## FloatViewTemplateType
 
-标准悬浮窗模板类型的枚举。
+闪控窗模板类型的枚举。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1144,7 +1152,7 @@ try {
 
 ## FloatViewProperties
 
-标准悬浮窗窗口的属性。
+闪控窗窗口的属性。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1156,17 +1164,17 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 否 | 否 | 标准悬浮窗的模板类型。 |
-| windowId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 标准悬浮窗窗口ID。 |
-| displayId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 标准悬浮窗所在屏幕ID。 |
-| windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 标准悬浮窗窗口矩形区域。 |
-| windowScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 标准悬浮窗窗口缩放比例。 |
-| avoidArea | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | 否 | 否 | 标准悬浮窗内容的避让区域。<br>**注意：**<br/>通过[setUIContext()](#setuicontext)或[setUIContextByName()](#setuicontextbyname)加载的页面中，位于避让区域的组件将不响应手势事件，添加需要手势响应事件的组件时，请注意避让这些区域。 |
-| inSidebar | boolean | 否 | 否 | 标准悬浮窗是否在侧边栏中。true为在侧边栏中，false为不在侧边栏中。 |
+| templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 否 | 否 | 闪控窗的模板类型。 |
+| windowId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 闪控窗窗口ID。 |
+| displayId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 闪控窗所在屏幕ID。 |
+| windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 闪控窗窗口矩形区域。 |
+| windowScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 闪控窗窗口缩放比例。 |
+| avoidArea | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | 否 | 否 | 闪控窗内容的避让区域。<br>**注意：**<br/>通过[setUIContext()](#setuicontext)或[setUIContextByName()](#setuicontextbyname)加载的页面中，位于避让区域的组件将不响应手势事件，添加需要手势响应事件的组件时，请注意避让这些区域。 |
+| inSidebar | boolean | 否 | 否 | 闪控窗是否在侧边栏中。true为在侧边栏中，false为不在侧边栏中。 |
 
 ## RatioLimit
 
-标准悬浮窗的宽高比限制范围。宽高比比值由窗口矩形区域的宽除以高获得。
+闪控窗的宽高比限制范围。宽高比比值由窗口矩形区域的宽除以高获得。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1178,12 +1186,12 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| minRatio | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 标准悬浮窗的宽高比最小值。 |
-| maxRatio | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 标准悬浮窗的宽高比最大值。 |
+| minRatio | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 闪控窗的宽高比最小值。 |
+| maxRatio | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 闪控窗的宽高比最大值。 |
 
 ## FloatViewLimits
 
-标准悬浮窗窗口的限制。
+闪控窗窗口的限制。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1195,13 +1203,13 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| minSize | [window.Size](arkts-apis-window-i.md#size7) | 否 | 否 | 标准悬浮窗的最小尺寸。 |
-| maxSize | [window.Size](arkts-apis-window-i.md#size7) | 否 | 否 | 标准悬浮窗的最大尺寸。 |
-| ratioLimits | Array&lt;[RatioLimit](#ratiolimit)&gt; | 否 | 否 | 标准悬浮窗的宽高比限制范围。 |
+| minSize | [window.Size](arkts-apis-window-i.md#size7) | 否 | 否 | 闪控窗的最小尺寸。 |
+| maxSize | [window.Size](arkts-apis-window-i.md#size7) | 否 | 否 | 闪控窗的最大尺寸。 |
+| ratioLimits | Array&lt;[RatioLimit](#ratiolimit)&gt; | 否 | 否 | 闪控窗的宽高比限制范围。 |
 
 ## FloatViewStateChangeInfo
 
-标准悬浮窗状态变化信息。
+闪控窗状态变化信息。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1213,12 +1221,12 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| state | [FloatViewState](#floatviewstate) | 否 | 否 | 标准悬浮窗的状态。 |
-| stopReason | string | 否 | 否 | 标准悬浮窗停止的原因。该参数仅在状态为FloatViewState.STOPPED时有效，在其他状态下默认为空字符串。停止原因和对应含义如下：<br/>"APP_STOP"：应用主动停止<br/>"STOP_IN_SIDEBAR"：在侧边栏被关闭<br/>"TITLE_BAR_STOP_CLICK"：标题栏点击关闭按钮<br/>"DUMPSTER_STOP"：拖入垃圾桶停止<br/>"REPLACE_STOP"：被其他标准悬浮窗挤占<br/>"FLOATING_BALL_STOP"：绑定状态下跟随闪控球停止 <br/> "MAIN_WINDOW_DESTROY_STOP"：context关联的主窗被销毁后停止 |
+| state | [FloatViewState](#floatviewstate) | 否 | 否 | 闪控窗的状态。 |
+| stopReason | string | 否 | 否 | 闪控窗停止的原因。该参数仅在状态为FloatViewState.STOPPED时有效，在其他状态下默认为空字符串。停止原因和对应含义如下：<br/>"APP_STOP"：应用主动停止<br/>"STOP_IN_SIDEBAR"：在侧边栏被关闭<br/>"TITLE_BAR_STOP_CLICK"：标题栏点击关闭按钮<br/>"DUMPSTER_STOP"：拖入垃圾桶停止<br/>"REPLACE_STOP"：被其他闪控窗挤占<br/>"FLOATING_BALL_STOP"：绑定状态下跟随闪控球停止 <br/> "MAIN_WINDOW_DESTROY_STOP"：context关联的主窗被销毁后停止 |
 
 ## FloatViewState
 
-标准悬浮窗状态的枚举。
+闪控窗状态的枚举。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1230,16 +1238,16 @@ try {
 
 | 名称 | 值 | 说明 |
 |------------|------------|------------|
-| STARTED | 1 | 标准悬浮窗已启动并显示。 |
-| HIDDEN | 2 | 标准悬浮窗已隐藏。上滑进入多任务界面时触发、使用[setFloatViewVisibilityInApp](#setfloatviewvisibilityinapp)接口设置了应用在前台时隐藏标准悬浮窗且应用处于前台时触发。 |
-| STOPPED | 3 | 标准悬浮窗已停止。 |
-| IN_SIDEBAR | 4 | 标准悬浮窗在侧边栏中。 |
-| IN_FLOATING_BALL | 5 | 标准悬浮窗切换为闪控球。 |
-| ERROR | 6 | 标准悬浮窗发生异常。 |
+| STARTED | 1 | 闪控窗已启动并显示。 |
+| HIDDEN | 2 | 闪控窗已隐藏。上滑进入多任务界面时触发、使用[setFloatViewVisibilityInApp](#setfloatviewvisibilityinapp)接口设置了应用在前台时隐藏闪控窗且应用处于前台时触发。 |
+| STOPPED | 3 | 闪控窗已停止。 |
+| IN_SIDEBAR | 4 | 闪控窗在侧边栏中。 |
+| IN_FLOATING_BALL | 5 | 闪控窗切换为闪控球。 |
+| ERROR | 6 | 闪控窗发生异常。 |
 
 ## FloatViewRectChangeInfo
 
-标准悬浮窗矩形区域变化信息。
+闪控窗矩形区域变化信息。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -1251,6 +1259,6 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 标准悬浮窗窗口矩形区域。 |
-| windowScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 标准悬浮窗窗口缩放比例。 |
-| reason | string | 否 | 否 | 标准悬浮窗矩形区域变化的原因。原因和对应含义如下：<br/>"POSITION_CHANGE"：位置变化<br/>"SIZE_CHANGE"：大小变化<br/>"RECT_CHANGE"：位置大小同时变化 |
+| windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 闪控窗窗口矩形区域。 |
+| windowScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 闪控窗窗口缩放比例。 |
+| reason | string | 否 | 否 | 闪控窗矩形区域变化的原因。原因和对应含义如下：<br/>"POSITION_CHANGE"：位置变化<br/>"SIZE_CHANGE"：大小变化<br/>"RECT_CHANGE"：位置大小同时变化 |
