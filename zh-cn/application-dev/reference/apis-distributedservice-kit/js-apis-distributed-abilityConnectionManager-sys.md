@@ -212,7 +212,7 @@ onReceiveImage(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
 
   ```ts
   import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
-  import { hilog } from '@ohos.hilog';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let sessionId = 100;
   abilityConnectionManager.onReceiveImage(sessionId, (callbackInfo) => {
@@ -293,7 +293,7 @@ onCollaborateEvent(sessionId: int,callback: Callback&lt;CollaborateEventInfo&gt;
 
   ```ts
   import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
-  import { hilog } from '@ohos.hilog';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let sessionId = 100;
   abilityConnectionManager.onCollaborateEvent(sessionId, (callbackInfo) => {
