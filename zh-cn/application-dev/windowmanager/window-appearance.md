@@ -140,6 +140,35 @@ struct Index {
 
 <!-- @[window_blur_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowBlurSample/entry/src/main/ets/pages/Page1.ets) --> 
 
+``` TypeScript
+// pages/page1.ets
+import { window } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SliderDemo {
+  // ...
+
+  // 设置窗口内容的模糊半径
+  setBlur(val: number) {
+    this.setColumnBg();
+    const floatWindowObj = AppStorage.get<window.Window>('floatWindow');
+    floatWindowObj?.setBlur(val);
+  }
+  // 设置窗口背景的模糊半径
+  setBackdropBlur(val: number) {
+    this.columnBg = Color.Transparent;
+    const floatWindowObj = AppStorage.get<window.Window>('floatWindow');
+    floatWindowObj?.setWindowBackgroundColor('#00FFFFFF');
+    floatWindowObj?.setBackdropBlur(val);
+  }
+
+  build() {
+    // ...
+  }
+}
+```
+
 ![setBlur](figures/setBlur.gif)
 <!--DelEnd-->
 
