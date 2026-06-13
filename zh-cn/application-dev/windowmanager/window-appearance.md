@@ -118,6 +118,27 @@ struct Index {
   此处以全局悬浮窗为例，设置其窗口边缘阴影的模糊半径。
 
   <!-- @[window_shadow_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
+  
+  ``` TypeScript
+  // pages/page1.ets
+  import { window } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SliderDemo {
+    // ...
+  
+    // 设置窗口边缘阴影的模糊半径
+    setShadowRadius(val: number) {
+      const floatWindowObj = AppStorage.get<window.Window>('floatWindow');
+      floatWindowObj?.setWindowShadowRadius(val);
+    }
+  
+    build() {
+      // ...
+    }
+  }
+  ```
 
   ![setWindowShadowRadius](figures/setWindowShadowRadius.gif)
 
