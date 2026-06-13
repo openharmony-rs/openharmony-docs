@@ -109,6 +109,49 @@ struct Index {
   此处以子窗为例，调用setShadow()设置窗口边缘阴影。
 
   <!-- @[windowShadowSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowSample/entry/src/main/ets/pages/Index.ets) --> 
+  
+  ``` TypeScript
+  // Index.ets
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { window } from '@kit.ArkUI';
+  
+  let subWindowClass: window.Window | undefined = undefined;
+  
+  @Entry
+  @Component
+  struct Index {
+    // ...
+  
+    build() {
+      // ...
+    }
+  
+    private async showShadowSubWindow(): Promise<void> {
+      let windowStage = AppStorage.get<window.WindowStage>('windowStage');
+      if (!windowStage) {
+        this.prompt = 'WindowStage is unavailable.';
+        return;
+      }
+  
+      try {
+        if (!subWindowClass) {
+          subWindowClass = await windowStage.createSubWindow('shadowSubWindow');
+          await subWindowClass.moveWindowTo(220, 240);
+          await subWindowClass.resize(800, 600);
+          // 设置窗口边缘阴影：模糊半径为48px，半透明黑色，向右下方偏移20px。
+          subWindowClass.setShadow(48, '#B0000000', 20, 20);
+          await subWindowClass.setUIContent('pages/SubWindow');
+        }
+        await subWindowClass.showWindow();
+        this.prompt = 'The subwindow is displayed with a shadow.';
+      } catch (exception) {
+        let err = exception as BusinessError;
+        this.prompt = `Failed to set shadow: ${err.code}`;
+        console.error(`Failed to show shadow subwindow. Cause code: ${err.code}, message: ${err.message}`);
+      }
+    }
+  }
+  ```
 
   ![setShadow](figures/setShadow.png)
 <!--DelEnd-->
