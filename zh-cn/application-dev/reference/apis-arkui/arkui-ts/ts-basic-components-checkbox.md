@@ -1048,6 +1048,7 @@ struct Index {
     return 150 * 150 * (fingerY - edge) / 2000 / Math.abs(fingerY - edge);
   }
 
+  // 根据手指触摸坐标，确定对应的索引
   getIndex(fingerX: number, fingerY: number) {
     let rect: componentUtils.ComponentInfo | null = null;
     for (let i = 0; i < 100; i++) {
@@ -1066,6 +1067,7 @@ struct Index {
     return this.selectedEnd;
   }
   
+  //监听selectedEnd变化，自动更新选中的索引集合
   onSelectedEndChange() {
     let start: number = -1;
     let end: number = -1;
@@ -1092,6 +1094,7 @@ struct Index {
     this.selectedList = this.selectedPhotos.convertToArray();
   }
 
+  // 当滑动选择时，如果手指移到边缘区域，自动滚动列表。滚动距离由getSpeed计算
   scroll(fingerY: number) {
     if (fingerY > 700 && !this.listScroller.isAtEnd()) {
       this.listScroller.scrollBy(0, this.getSpeed(fingerY, 700));
@@ -1107,6 +1110,7 @@ struct Index {
     const fingerInfo = event.fingerList[event.fingerList.length - 1];
     const fingerX = fingerInfo.globalX;
     const fingerY = fingerInfo.globalY;
+    // 滑动过程中，更新selectedEnd索引
     this.selectedEnd = this.getIndex(fingerX, fingerY);
     this.scroll(fingerY);
   }
@@ -1136,6 +1140,7 @@ struct Index {
                 .draggable(false)
               Checkbox({ name: index.toString() })
                 .shape(CheckBoxShape.CIRCLE)
+                // Checkbox根据isChoosing决定可见性
                 .visibility(this.isChoosing ? Visibility.Visible : Visibility.None)
                 .select(this.selectedList.includes(index))
             }
@@ -1154,9 +1159,12 @@ struct Index {
         this.currentOffsetY = this.listScroller.currentOffset().yOffset;
       })
       .gesture(
+        // 通过GestureMode.Exclusive确保外层手势用于列表滚动
         GestureGroup(GestureMode.Exclusive,
+          // 内层GestureGroup组合长按+滑动实现多选
           GestureGroup(GestureMode.Sequence,
             LongPressGesture()
+              // 长按触发多选模式，呼出复选框
               .onAction(() => {
                 this.isChoosing = true;
               }),
@@ -1168,7 +1176,9 @@ struct Index {
                 const fingerInfo = event.fingerList[event.fingerList.length - 1];
                 const fingerX = fingerInfo.globalX;
                 const fingerY = fingerInfo.globalY;
+                // 滑动开始，记录selectedStart索引
                 this.selectedStart = this.getIndex(fingerX, fingerY);
+                // 根据滑动开始的图片选中状态，判断是选中操作还是取消选中操作
                 if (this.selectedPhotos.has(this.selectedStart)) {
                   this.selectedState = SelectedState.Remove;
                 } else {
