@@ -404,7 +404,7 @@ NODE_TEXT_TEXT_SHADOW = 1015
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].f32 | 阴影模糊半径，单位为vp。 |
-| .value[1].i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)，默认值为ARKUI_SHADOW_TYPE_COLOR。 |
+| .value[1].i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype)，默认值为ARKUI_SHADOW_TYPE_COLOR。 |
 | .value[2].u32 | 阴影颜色，0xargb格式，形如 0xFFFF0000 表示红色。 |
 | .value[3].f32 | 阴影X轴偏移量，单位为vp。 |
 | .value[4].f32 | 阴影Y轴偏移量，单位为vp。 |
@@ -414,7 +414,7 @@ NODE_TEXT_TEXT_SHADOW = 1015
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].f32 | 阴影模糊半径，单位为vp。 |
-| .value[1].i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype)。 |
+| .value[1].i32 | 阴影类型[ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype)。 |
 | .value[2].u32 | 阴影颜色，0xargb格式。 |
 | .value[3].f32 | 阴影X轴偏移量，单位为vp。 |
 | .value[4].f32 | 阴影Y轴偏移量，单位为vp。 |
@@ -844,7 +844,7 @@ NODE_TEXT_LINEAR_GRADIENT = 1033
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].f32 | 线性渐变的起始角度。当direction属性设置为ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，angle属性生效；否则，以direction属性为主要布局方式。0点方向顺时针旋转为正向角度，默认值：180。 |
-| .value[1].i32 | 线性渐变的方向[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)。设置除ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM之外的线性渐变方向后，angle不生效。默认值：ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM。 |
+| .value[1].i32 | 线性渐变的方向[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)。设置除ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM之外的线性渐变方向后，angle不生效。默认值：ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM。 |
 | .value[2].i32 | 为渐变的颜色重复着色，false表示不重复着色，true表示重复着色。默认值：false。 |
 | .object | 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过。 |
 | colors | 渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 |
@@ -856,7 +856,7 @@ NODE_TEXT_LINEAR_GRADIENT = 1033
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].f32 | 线性渐变的起始角度。当为ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM时，angle为设置值，其他情况均为默认值0。 |
-| .value[1].i32 | 线性渐变的方向[ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)。 |
+| .value[1].i32 | 线性渐变的方向[ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)。 |
 | .value[2].i32 | 为渐变的颜色重复着色，0表示不重复着色，1表示重复着色。默认值：0。 |
 | .object | 参数类型为[ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md)。指定某百分比位置处的渐变色颜色，设置非法颜色直接跳过： |
 | colors | 渐变色颜色数组，数组元素为0xargb格式，形如0xFFFF0000表示红色。 |

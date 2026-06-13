@@ -109,7 +109,7 @@ To properly define an anchor, each child element in **RelativeContainer** must h
   }
   ```
 
-  ![en-us_image_0000001562820901](figures/en-us_image_0000001562820901.png)
+  ![relativeContainerParentComponentId](figures/relativeContainerParentComponentId.png)
 
 - Example of using a sibling element as the anchor:
 
@@ -158,7 +158,7 @@ To properly define an anchor, each child element in **RelativeContainer** must h
   }
   ```
 
-  ![en-us_image_0000001562940613](figures/en-us_image_0000001562940613.png)
+  ![relativeContainerSiblingComponentId](figures/relativeContainerSiblingComponentId.png)
 
 - Make sure the anchors of a child component do not depend on each other.
 

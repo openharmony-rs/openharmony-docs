@@ -1626,13 +1626,13 @@ Enumerates the vertical alignment modes of a placeholder relative to the surroun
 | CENTER_OF_ROW_BOX   | 5 | Center-aligned.|
 | FOLLOW_PARAGRAPH<sup>20+</sup> | 6 | Aligns with the text baseline.|
 
-![image_PlaceholderAlignment.png](figures/image_PlaceholderAlignment.png)
+![PlaceholderAlignment.png](figures/PlaceholderAlignment.png)
 
 > **NOTE**
 >
 > The figure shows the last three alignment modes. The first three alignment modes are similar in text baseline alignment, with the comparison reference being the text baseline, indicated by the green line.
 >
->![image_Baseline.png](figures/image_Baseline.png)
+>![Baseline.png](figures/Baseline.png)
 
 ## PlaceholderSpan
 
@@ -1827,7 +1827,7 @@ struct Index {
 >
 >The following figure shows the running result of the sample code of the **layout** API after the button is tapped.
 >
->![image_layout.png](figures/image_layout.png)
+>![layout.png](figures/layout.png)
 
 ### layoutWithConstraints<sup>24+</sup>
 
@@ -3485,15 +3485,15 @@ Describes the typographic boundaries of a text line. These boundaries depend on 
 >
 >The following figure shows the layout parameters of a text line: width (width of the text line including the left and right spaces), ascent (highest point of the rising height), descent (lowest point of the falling height), leading (line spacing), top (highest point of the current line), baseline (character baseline), bottom (lowest point of the current line), and next line top (highest point of the next line).
 >
->![image_Typographic.png](figures/image_Typographic.png)
+>![Typographic.png](figures/Typographic.png)
 >
 >The following figure shows the typographic boundaries of the string " a b ".
 >
->![image_TypographicBounds.png](figures/image_TypographicBounds.png)
+>![TypographicBounds.png](figures/TypographicBounds.png)
 >
 >The following figure shows the typographic boundaries of the strings "j" and "E".
 >
->![image_TypographicBounds_Character.png](figures/image_TypographicBounds_Character.png)
+>![TypographicBounds-Character.png](figures/TypographicBounds-Character.png)
 
 ## CaretOffsetsCallback<sup>18+</sup>
 
@@ -3710,11 +3710,11 @@ Obtains the typographic boundaries of the text line. These boundaries depend on 
 >
 >The following figure shows the typographic boundaries of the string " a b ".
 >
->![image_TypographicBounds.png](figures/image_TypographicBounds.png)
+>![TypographicBounds.png](figures/TypographicBounds.png)
 >
 >The following figure shows the typographic boundaries of the strings "j" and "E".
 >
->![image_TypographicBounds_Character.png](figures/image_TypographicBounds_Character.png)
+>![TypographicBounds-Character.png](figures/TypographicBounds-Character.png)
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -3743,11 +3743,11 @@ Obtains the image boundaries of this text line. The image boundaries, equivalent
 >
 >The following figure shows the image boundaries of the string " a b ".
 >
->![image_ImageBounds.png](figures/image_ImageBounds.png)
+>![ImageBounds.png](figures/ImageBounds.png)
 >
 >The following figure shows the image boundaries of the strings "j" and "E".
 >
->![image_ImageBounds_Character.png](figures/image_ImageBounds_Character.png)
+>![ImageBounds-Character.png](figures/ImageBounds-Character.png)
 
 
 **System capability**: SystemCapability.Graphics.Drawing
@@ -4256,11 +4256,11 @@ Obtains the image boundaries of the typographic unit. Equivalent to visual bound
 >
 >The following figure shows the image boundaries of the string " a b ".
 >
->![image_ImageBounds.png](figures/image_ImageBounds.png)
+>![ImageBounds.png](figures/ImageBounds.png)
 >
 >The following figure shows the image boundaries of the strings "j" and "E".
 >
->![image_ImageBounds_Character.png](figures/image_ImageBounds_Character.png)
+>![ImageBounds-Character.png](figures/ImageBounds-Character.png)
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -4288,11 +4288,11 @@ Obtains the typographic boundaries of the typographic unit. These boundaries are
 >
 >The following figure shows the typographic boundaries of the string " a b ".
 >
->![image_TypographicBounds.png](figures/image_TypographicBounds.png)
+>![TypographicBounds.png](figures/TypographicBounds.png)
 >
 >The following figure shows the typographic boundaries of the strings "j" and "E".
 >
->![image_TypographicBounds_Character.png](figures/image_TypographicBounds_Character.png)
+>![TypographicBounds-Character.png](figures/TypographicBounds-Character.png)
 
 **System capability**: SystemCapability.Graphics.Drawing
 
@@ -4380,15 +4380,15 @@ Implements a paragraph-style text tab, which stores the alignment mode and posit
 
 **alignment** is **CENTER**, **location** is **200**, and the text is "12/t345".
 
-![image_AlignmentCenter.png](figures/image_AlignmentCenter.png)
+![AlignmentCenter.png](figures/AlignmentCenter.png)
 
 **alignment** is **LEFT**, **location** is **100**, and the text is "abccccccccc/tdef".
 
-![image_AlignmentLeft.png](figures/image_AlignmentLeft.png)
+![AlignmentLeft.png](figures/AlignmentLeft.png)
 
 **alignment** is **RIGHT**, **location** is **100**, and the text is "aabcdef/tg hi/tjkl/tmno/tp qr".
 
-![image_AlignmentRight.png](figures/image_AlignmentRight.png)
+![AlignmentRight.png](figures/AlignmentRight.png)
 
 ## SystemFontType<sup>14+</sup>
 

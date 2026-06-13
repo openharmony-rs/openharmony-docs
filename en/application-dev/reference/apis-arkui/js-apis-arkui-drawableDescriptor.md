@@ -47,14 +47,35 @@ Represents the result of loading an image resource or URI.
 ```ts
 import { AnimatedDrawableDescriptor, AnimationOptions, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-try {
-    // You can preload animated image resources into the memory.
-    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
-    console.info(`load result = ${JSON.stringify(result)}`)
-} catch(e) {
-    console.error("load failed")
+@Entry
+@Component
+struct Index {
+  options: AnimationOptions = { duration: 2000, iterations: 1 };
+  // Replace $r('app.media.gif') with the image resource file you use.
+  @State drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+  @State result: string = '';
+
+  aboutToAppear() {
+    // Load resources to the memory before the page is displayed to speed up the rendering of the Image component.
+    // Use loadSync for synchronous loading:
+    // let loadResult: DrawableDescriptorLoadedResult = this.drawable.loadSync()
+    // Use load for asynchronous loading:
+    this.drawable.load().then((loadResult: DrawableDescriptorLoadedResult) => {
+      this.result = `width: ${loadResult.imageWidth}, height: ${loadResult.imageHeight}`
+      console.info(`load result = ${JSON.stringify(loadResult)}`)
+    }).catch(() => {
+      console.error("load failed")
+    })
+  }
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(100)
+        .height(100)
+      Text(this.result)
+    }
+  }
 }
 ```
 ## DrawableDescriptor
@@ -118,19 +139,9 @@ For details about the error codes, see [DrawableDescriptor Error Codes](errorcod
 | 111001   | resource loading failed. |
 | 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
 
-```ts
-import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult, AnimationOptions } from '@kit.ArkUI';
+**Example**
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-try {
-    // You can preload animated image resources into the memory.
-    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
-    console.info(`load result = ${JSON.stringify(result)}`)
-} catch(e) {
-    console.error("load failed")
-}
-```
+For details, see [DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21).
 
 ### load<sup>21+</sup>
 
@@ -159,22 +170,9 @@ For details about the error codes, see [DrawableDescriptor Error Codes](errorcod
 | 111001   | resource loading failed. |
 | 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
 
-```ts
-import {
-  AnimatedDrawableDescriptor,
-  DrawableDescriptor,
-  DrawableDescriptorLoadedResult,
-  AnimationOptions
-} from '@kit.ArkUI';
+**Example**
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-drawable.load().then((result: DrawableDescriptorLoadedResult) => {
-  console.info(`load result = ${JSON.stringify(result)}`)
-}).catch(() => {
-  console.info(`load failed`)
-})
-```
+For details, see [DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21).
 
 ### release
 
@@ -255,7 +253,7 @@ Redraws **DrawableDescriptor**. Currently, this API is supported for the [Pictur
 
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
-Implements a **PixelMapDrawableDescriptor** object, which can be created by passing in a **PixelMap** object. Inherits from [DrawableDescriptor](#drawabledescriptor).
+Implements a **PixelMapDrawableDescriptor** object, which can be created by passing in a **PixelMap** object. This API inherits from [DrawableDescriptor](#drawabledescriptor).
 
 ### constructor<sup>12+</sup>
 
@@ -323,7 +321,7 @@ struct PixelMapDrawableDescriptorExample {
 
 ## LayeredDrawableDescriptor
 
-Creates a **LayeredDrawableDescriptor** object when the passed resource ID or name belongs to a JSON file that contains foreground and background resources. Inherits from [DrawableDescriptor](#drawabledescriptor).
+Creates a **LayeredDrawableDescriptor** object when the passed resource ID or name belongs to a JSON file that contains foreground and background resources. This API inherits from [DrawableDescriptor](#drawabledescriptor).
 
 The **drawable.json** file is located under **entry/src/main/resources/base/media** in the project directory. Below shows the file content:
 

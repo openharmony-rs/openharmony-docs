@@ -1329,3 +1329,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：PC/2in1 | Phone | Tablet
 
 **起始版本**：24
+
+## ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN
+
+允许应用安装与加载自分发插件。
+
+<!--RP90--><!--RP90End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0

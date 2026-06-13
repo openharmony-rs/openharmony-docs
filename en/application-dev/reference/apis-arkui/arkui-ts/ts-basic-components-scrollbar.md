@@ -210,7 +210,7 @@ struct ScrollBarExample {
 }
 ```
 
-![en-us_image_scrollbar](figures/en-us_image_scrollbar.gif)
+![en-us_image_scrollbar](figures/image-scrollbar.gif)
 
 ## Example 3: Enabling Nested Scrolling
 

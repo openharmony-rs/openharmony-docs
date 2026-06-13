@@ -369,7 +369,7 @@ type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyOptions | [KeyOptions](#keyoptions) | 是 | 触发回调时的组合键选项。 |
-| keyEvent | [KeyEvent](js-apis-keyevent.md#keyevent) | 否 | 按键事件对象，包含按键详细信息。 |
+| keyEvent | [KeyEvent](js-apis-keyevent.md#keyevent) | 是 | 按键事件对象，包含按键详细信息。 |
 
 ## inputConsumer.setShieldStatus<sup>11+</sup>
 
@@ -492,7 +492,7 @@ struct Index {
 | preKeys    | Array\<number>   | 否    | 否 | 前置按键集合，数量范围[0, 4]，前置按键无顺序要求。<br>如组合按键Ctrl+Alt+A中，Ctrl+Alt称为前置按键。 |
 | finalKey             | number  | 否    |  否 | 最终按键，此项必填，最终按键触发上报回调函数。<br>如组合按键Ctrl+Alt+A中，A称为最终按键。 |
 | isFinalKeyDown       | boolean | 否    |  否 | 最终按键状态。<br>true表示按键按下，false表示按键抬起。 |
-| finalKeyDownDuration | number  | 否    |  否 | 最终按键保持按下持续时间，单位：μs。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。   |
+| finalKeyDownDuration | number  | 否    |  否 | 最终按键保持按下持续时间，单位为微秒（μs）。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。   |
 | isRepeat<sup>18+</sup> | boolean  | 否      | 是      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 |
 | triggerType | [KeyCommandTriggerType](#keycommandtriggertype) | 否 | 是 | 触发模式。取值为PRESSED(1)、REPEAT_PRESSED(2)或ALL_RELEASED(3)。启用命令触发模式。一旦设置此值，isFinalKeyDown和isRepeat将被忽略。对于[inputConsumer.on('key')](#inputconsumeronkey)接口该参数是可选参数，对于[inputConsumer.onKey](#inputconsumeronkey-1)接口该参数是必填参数。<br>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 

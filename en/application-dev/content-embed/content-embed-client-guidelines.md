@@ -434,5 +434,3 @@ void HandleProxy(ContentEmbed_ExtensionProxy* proxy)
     OH_ContentEmbed_Proxy_StopWork(proxy);
 }
 ```
-
-<!--no_check-->

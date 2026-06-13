@@ -8,7 +8,7 @@
 
 ## ModifierUtils
 
-ModifierUtils提供用于属性修改器和属性操作的工具方法。
+ModifierUtils是一个[属性修改器](../../../ui/arkts-user-defined-extension-attributeModifier.md)工具类，用于给开发者提供属性修改和属性操作的方法。例如，可以判断给定的实例是否为指定组件类型。
 
 **起始版本：** 26.0.0
 
@@ -49,7 +49,7 @@ isInstanceOf\<T extends CommonMethod\<T>>(instance: T, componentName: string): b
 
 ```ts
 // xxx.ets
-// 点击按钮，并检查日志，判断组件是否进入了自己的独有分支
+// 点击按钮，并检查日志，判断组件是否进入独有分支
 import { ModifierUtils } from '@kit.ArkUI';
 
 class MyModifier implements AttributeModifier<TextAttribute | ButtonAttribute> {

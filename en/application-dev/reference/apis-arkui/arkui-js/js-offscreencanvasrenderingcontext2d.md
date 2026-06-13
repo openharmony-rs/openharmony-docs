@@ -227,7 +227,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001178875308](figures/en-us_image_0000001178875308.png)
+![isPointInStroke](figures/isPointInStroke.png)
 
 ### resetTransform
 
@@ -294,4 +294,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001179035242](figures/en-us_image_0000001179035242.png)
+![resetTransform](figures/resetTransform.png)

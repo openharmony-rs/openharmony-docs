@@ -44,6 +44,7 @@ zh-cn/application-dev/application-models/application-context-stage.md @li-weifen
 zh-cn/application-dev/application-models/application-lifecycle.md @wendel @HelloCrease @liangchengguang
 zh-cn/application-dev/application-models/application-models.md @ccllee1 @HelloCrease @liangchengguang
 zh-cn/application-dev/application-models/application-startup-options.md @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/arkts-skill-development-guide.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
 zh-cn/application-dev/application-models/autofillextensionability-guide-sys.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
 zh-cn/application-dev/application-models/bind-serviceability-from-stage.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
 zh-cn/application-dev/application-models/bind-serviceextensionability-from-fa.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
@@ -95,6 +96,8 @@ zh-cn/application-dev/application-models/mission-management-launch-type-sys.md @
 zh-cn/application-dev/application-models/mission-management-overview-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
 zh-cn/application-dev/application-models/mission-set-icon-name-for-task-snapshot-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
 zh-cn/application-dev/application-models/model-switch-overview.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/modular-object-extension-development.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/modular-object-extension-overview.md @yzkp @HelloCrease @liangchengguang
 zh-cn/application-dev/application-models/module-switch.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
 zh-cn/application-dev/application-models/obtaining-target-app-url-info.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
 zh-cn/application-dev/application-models/page-mission-stack-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
@@ -293,7 +296,7 @@ zh-cn/application-dev/basic-services/pasteboard/Readme-CN.md @yangxiaodong41 @gu
 zh-cn/application-dev/basic-services/pasteboard/use-pasteboard-to-copy-and-paste.md @yangxiaodong41 @guo867 @fang-jinxu
 zh-cn/application-dev/basic-services/powermgr/Readme-CN.md @zhang-yinglie @volcano_wang @wangyantian0 @fang-jinxu
 zh-cn/application-dev/basic-services/powermgr/runningLock/runningLock-dev.md @zhang-yinglie @volcano_wang @wangyantian0 @fang-jinxu
-zh-cn/application-dev/basic-services/print/native-print-file.md @guoshengbang @gcw_4D6e0BBd @fang-jinxu
+zh-cn/application-dev/basic-services/print/native-print-file.md @guoshengbang @baozewei @fang-jinxu
 zh-cn/application-dev/basic-services/print/printExtensionAbilityGuide.md @guoshengbang @gcw_4D6e0BBd @fang-jinxu
 zh-cn/application-dev/basic-services/print/Readme-CN.md @guoshengbang @gcw_4D6e0BBd @fang-jinxu
 zh-cn/application-dev/basic-services/request/app-cache-download.md @huaxin05 @hu-kai45 @fang-jinxu
@@ -305,6 +308,7 @@ zh-cn/application-dev/basic-services/selectionInput/selection-services-intro.md 
 zh-cn/application-dev/basic-services/update/Readme-CN.md @fang-jinxu @lingminghw
 zh-cn/application-dev/basic-services/update/sample-server-guidelines.md @RainyDay_005 @huangsiping3 @zhangzhengxue @jackd320 @fang-jinxu
 zh-cn/application-dev/basic-services/update/sample-server-overview.md @RainyDay_005 @huangsiping3 @zhangzhengxue @jackd320 @fang-jinxu
+zh-cn/application-dev/basic-services/update/update-kit-term.md @RainyDay_005 @huangsiping3 @zhangzhengxue @jackd320 @fang-jinxu
 zh-cn/application-dev/basic-services/usb/faqs-usb.md @hwymlgitcode @w00373942 @fang-jinxu
 zh-cn/application-dev/basic-services/usb/Readme-CN.md @hwymlgitcode @w00373942 @fang-jinxu
 zh-cn/application-dev/basic-services/usb/usb-glossary.md @hwymlgitcode @w00373942 @fang-jinxu
@@ -438,7 +442,7 @@ zh-cn/application-dev/device/sensor/vibrator-guidelines-capi.md @dilligencer @an
 zh-cn/application-dev/device/sensor/vibrator-guidelines.md @dilligencer @andeszhang @hu-zhiqiong
 zh-cn/application-dev/device/sensor/vibrator-overview.md @dilligencer @andeszhang @hu-zhiqiong
 zh-cn/application-dev/device/stationary/deviceStatus-guidelines.md @dilligencer @zou_ye @hu-zhiqiong
-zh-cn/application-dev/device/stationary/metadataBinding-guidelines.md @dilligencer @zou_ye @hu-zhiqiong
+zh-cn/application-dev/device/stationary/metadataBinding-guidelines.md @codexu62 @yuxiaoyang @hu-zhiqiong
 zh-cn/application-dev/device/stationary/motion-guidelines.md @dilligencer @zou_ye @hu-zhiqiong
 zh-cn/application-dev/device/stationary/multimodalawareness-kit-intro.md @dilligencer @zou_ye @hu-zhiqiong
 zh-cn/application-dev/device/stationary/Readme-CN.md @dilligencer @zou_ye @hu-zhiqiong
@@ -520,7 +524,7 @@ zh-cn/application-dev/dfx/performance-analysis-kit-overview.md @mzyan @liyueric 
 zh-cn/application-dev/dfx/performance-analysis-kit-terminology.md @mzyan @liyueric @jinqiuheng
 zh-cn/application-dev/dfx/Readme-CN.md @mzyan @liyueric @jinqiuheng
 zh-cn/application-dev/dfx/uinput.md @zhaoxueyuan @hanruofei @Brilliantry_Rui
-zh-cn/application-dev/displaymanager/display-terminology.md @waterwin @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/displaymanager/display-terminology.md @fei_1007 @hejunfei1991 @ge-yafang @qinliwen0417
 zh-cn/application-dev/displaymanager/displaymanager-faqs.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
 zh-cn/application-dev/displaymanager/displayManager-overview.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
 zh-cn/application-dev/displaymanager/native-display-manager.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
@@ -552,11 +556,10 @@ zh-cn/application-dev/faqs/faqs-distributed-data-management.md @widecode @ge-yaf
 zh-cn/application-dev/faqs/faqs-event-notification.md 无
 zh-cn/application-dev/faqs/faqs-file-management.md @wangke25 @bubble_mao @zhuangzhuang @gsl_1234 @jinqiuheng
 zh-cn/application-dev/faqs/faqs-globalization.md @liule_123 @buda_wy @Brilliantry_Rui
-zh-cn/application-dev/faqs/faqs-graphics.md @oh_wangxk @goumiao @hangmengxin @liumingxiang @wangyanglan @ge-yafang
+zh-cn/application-dev/faqs/faqs-graphics.md @oh_wangxk @goumiao @hangmengxin @liumingxiang @wanyanglan @ge-yafang
 zh-cn/application-dev/faqs/faqs-multimedia.md @qano @leo_ysl @w_Machine_cc
 zh-cn/application-dev/faqs/faqs-ndk.md @wangyang2022 @HelloCrease
 zh-cn/application-dev/faqs/faqs-network-management.md @wmyao_mm @guo-min_net @zhang_yixin13
-zh-cn/application-dev/faqs/faqs-sdk.md 无
 zh-cn/application-dev/faqs/faqs-sensor.md 无
 zh-cn/application-dev/faqs/faqs-startup.md 无
 zh-cn/application-dev/faqs/faqs-third-fourth-party-library.md 无
@@ -564,18 +567,19 @@ zh-cn/application-dev/faqs/faqs-window-manager.md @oh_wangxk @logn @hejunfei1991
 zh-cn/application-dev/faqs/full-sdk-compile-guide.md 无
 zh-cn/application-dev/faqs/full-sdk-switch-guide.md 无
 zh-cn/application-dev/faqs/Readme-CN.md @fang-jinxu @lingminghw
-zh-cn/application-dev/ffrt/ffrt-api-guideline-c.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @jinqiuheng
-zh-cn/application-dev/ffrt/ffrt-concurrency-concurrent-queue-c.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @jinqiuheng
-zh-cn/application-dev/ffrt/ffrt-concurrency-concurrent-queue-cpp.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @jinqiuheng
-zh-cn/application-dev/ffrt/ffrt-concurrency-graph-c.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @jinqiuheng
-zh-cn/application-dev/ffrt/ffrt-concurrency-graph-cpp.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @jinqiuheng
-zh-cn/application-dev/ffrt/ffrt-concurrency-job-partner-cpp.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @jinqiuheng
-zh-cn/application-dev/ffrt/ffrt-concurrency-paradigm.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @jinqiuheng
-zh-cn/application-dev/ffrt/ffrt-concurrency-serial-queue-c.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @jinqiuheng
-zh-cn/application-dev/ffrt/ffrt-concurrency-serial-queue-cpp.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @jinqiuheng
-zh-cn/application-dev/ffrt/ffrt-development-guideline.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @jinqiuheng
-zh-cn/application-dev/ffrt/ffrt-overview.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @jinqiuheng
-zh-cn/application-dev/ffrt/Readme-CN.md @chuchihtung @yanleo @geoffrey_guo @huangyouzhong @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-api-guideline-c.md @chuchihtung @zhanglu161 @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-concurrent-queue-c.md @chuchihtung @zhanglu161 @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-concurrent-queue-cpp.md @chuchihtung @zhanglu161 @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-graph-c.md @chuchihtung @zhanglu161 @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-graph-cpp.md @chuchihtung @zhanglu161 @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-job-partner-cpp.md @chuchihtung @zhanglu161 @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-paradigm.md @chuchihtung @zhanglu161 @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-serial-queue-c.md @chuchihtung @zhanglu161 @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-concurrency-serial-queue-cpp.md @chuchihtung @zhanglu161 @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-development-guideline.md @chuchihtung @zhanglu161 @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-glossary.md @chuchihtung @zhanglu161 @jinqiuheng
+zh-cn/application-dev/ffrt/ffrt-overview.md @chuchihtung @zhanglu161 @jinqiuheng
+zh-cn/application-dev/ffrt/Readme-CN.md @chuchihtung @zhanglu161 @jinqiuheng
 zh-cn/application-dev/file-management/app-file-access.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
 zh-cn/application-dev/file-management/app-file-backup-extension.md @lvzhenjie @chenxi0605 @jinqiuheng
 zh-cn/application-dev/file-management/app-file-backup-overview.md @lvzhenjie @chenxi0605 @jinqiuheng
@@ -633,6 +637,7 @@ zh-cn/application-dev/form/arkts-ui-widget-passive-refresh.md @Qian-Win @cx98329
 zh-cn/application-dev/form/arkts-ui-widget-process.md @Qian-Win @cx983299475 @HelloShuo
 zh-cn/application-dev/form/arkts-ui-widget-update-by-proxy-sys.md @cx983299475 @xueyulong @HelloShuo
 zh-cn/application-dev/form/arkts-ui-widget-update-by-status.md @Qian-Win @cx983299475 @HelloShuo
+zh-cn/application-dev/form/form-glossary.md @Qian-Win @cx983299475 @HelloShuo
 zh-cn/application-dev/form/formkit-overview.md @Qian-Win @cx983299475 @HelloShuo
 zh-cn/application-dev/form/js-ui-widget-development.md @Qian-Win @cx983299475 @HelloShuo
 zh-cn/application-dev/form/js-ui-widget-overview.md @Qian-Win @cx983299475 @HelloShuo
@@ -643,30 +648,30 @@ zh-cn/application-dev/game-controller/game-controller-introduction.md @zhaoshuha
 zh-cn/application-dev/game-controller/game-controller-monitor-device.md @zhaoshuhao123 @wudejun2025 @luwy2025
 zh-cn/application-dev/game-controller/game-controller-monitor-pad.md @zhaoshuhao123 @wudejun2025 @luwy2025
 zh-cn/application-dev/game-controller/Readme-CN.md @zhaoshuhao123 @wudejun2025 @luwy2025
-zh-cn/application-dev/graphics/arkgraphics2D-introduction.md @oh_wangxk @goumiao @hangmengxin @liumingxiang @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/basic-drawing-effect-arkts.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/basic-drawing-effect-c.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/canvas-get-result-draw-arkts.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/canvas-get-result-draw-c.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/canvas-operation-state-arkts.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/canvas-operation-state-c.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/complex-drawing-effect-arkts.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/complex-drawing-effect-c.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/complex-text-arkts.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/graphics/complex-text-c.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/graphics/arkgraphics2D-introduction.md @oh_wangxk @goumiao @hangmengxin @liumingxiang @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/basic-drawing-effect-arkts.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/basic-drawing-effect-c.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/canvas-get-result-draw-arkts.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/canvas-get-result-draw-c.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/canvas-operation-state-arkts.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/canvas-operation-state-c.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/complex-drawing-effect-arkts.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/complex-drawing-effect-c.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/complex-text-arkts.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/graphics/complex-text-c.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/graphics/custom-font-arkts.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/graphics/custom-font-c.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/graphics/custom-font-c.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/graphics/displaysoloist-native-guidelines.md @wh_qwe @ge-yafang
 zh-cn/application-dev/graphics/displaysync-animation.md @wh_qwe @ge-yafang
 zh-cn/application-dev/graphics/displaysync-overview.md @wh_qwe @ge-yafang
 zh-cn/application-dev/graphics/displaysync-ui.md @wh_qwe @ge-yafang
 zh-cn/application-dev/graphics/displaysync-xcomponent.md @wh_qwe @ge-yafang
-zh-cn/application-dev/graphics/drawing-effect-overview.md @hangmengxin @wangyanglan @ge-yafang
+zh-cn/application-dev/graphics/drawing-effect-overview.md @hangmengxin @wanyanglan @ge-yafang
 zh-cn/application-dev/graphics/effectkit-filter-c.md @hanamaru @chensiyi_CE @ge-yafang
-zh-cn/application-dev/graphics/geometric-shape-drawing-arkts.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/geometric-shape-drawing-c.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/graphic-drawing-overview.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/graphic-term.md @oh_wangxk @goumiao @hangmengxin @liumingxiang @wangyanglan @ge-yafang
+zh-cn/application-dev/graphics/geometric-shape-drawing-arkts.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/geometric-shape-drawing-c.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/graphic-drawing-overview.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/graphic-term.md @oh_wangxk @goumiao @hangmengxin @liumingxiang @wanyanglan @ge-yafang
 zh-cn/application-dev/graphics/native-buffer-guidelines.md @Felix-fangyang @conan13234 @ge-yafang
 zh-cn/application-dev/graphics/native-common-mistakes.md @Felix-fangyang @conan13234 @ge-yafang
 zh-cn/application-dev/graphics/native-fence-guidelines.md @Felix-fangyang @conan13234 @ge-yafang
@@ -674,24 +679,24 @@ zh-cn/application-dev/graphics/native-image-guidelines.md @Felix-fangyang @conan
 zh-cn/application-dev/graphics/native-vsync-guidelines.md @Felix-fangyang @BruceXu @alexci @conan13234 @ge-yafang
 zh-cn/application-dev/graphics/native-window-guidelines.md @Felix-fangyang @conan13234 @ge-yafang
 zh-cn/application-dev/graphics/overdraw-dfx-guidelines.md 无
-zh-cn/application-dev/graphics/pixelmap-drawing-arkts.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/pixelmap-drawing-c.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/primitive-drawing-overview.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/Readme-CN.md @oh_wangxk @goumiao @hangmengxin @liumingxiang @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/simple-text-arkts.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/graphics/simple-text-c.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/graphics/pixelmap-drawing-arkts.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/pixelmap-drawing-c.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/primitive-drawing-overview.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/Readme-CN.md @oh_wangxk @goumiao @hangmengxin @liumingxiang @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/simple-text-arkts.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/graphics/simple-text-c.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/graphics/system-font-arkts.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/graphics/system-font-c.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/graphics/system-font-c.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/graphics/text-custom-arkts.md @oh_wangxk @KejiePeng @liumingxiang @ge-yafang
 zh-cn/application-dev/graphics/text-custom-c.md @oh_wangxk @KejiePeng @liumingxiang @ge-yafang
-zh-cn/application-dev/graphics/text-faqs.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/graphics/text-measure-arkts.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/graphics/text-measure-c.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/graphics/text-overview.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/graphics/textblock-drawing-arkts.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/textblock-drawing-c.md @hangmengxin @wangyanglan @ge-yafang
-zh-cn/application-dev/graphics/theme-font-arkts.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/graphics/theme-font-c.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/graphics/text-faqs.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/graphics/text-measure-arkts.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/graphics/text-measure-c.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/graphics/text-overview.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/graphics/textblock-drawing-arkts.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/textblock-drawing-c.md @hangmengxin @wanyanglan @ge-yafang
+zh-cn/application-dev/graphics/theme-font-arkts.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/graphics/theme-font-c.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/graphics3d/arkgraphics3D-animation.md @zzhao0 @zdustc @ge-yafang
 zh-cn/application-dev/graphics3d/arkgraphics3D-overview.md @zzhao0 @zdustc @ge-yafang
 zh-cn/application-dev/graphics3d/arkgraphics3D-resource-environment.md @zzhao0 @zdustc @ge-yafang
@@ -701,6 +706,7 @@ zh-cn/application-dev/graphics3d/arkgraphics3D-scene.md @zzhao0 @zdustc @ge-yafa
 zh-cn/application-dev/graphics3d/arkgraphics3D-shader-resource.md @zzhao0 @zdustc @ge-yafang
 zh-cn/application-dev/graphics3d/Readme-CN.md @zzhao0 @zdustc @ge-yafang
 zh-cn/application-dev/IDL/idl-guidelines.md @c_bing_b @liveery @huipeizi
+zh-cn/application-dev/inputmethod/ime-kit-glossary.md @codexu62 @andeszhang @zhang_yixin13
 zh-cn/application-dev/inputmethod/ime-kit-intro.md @codexu62 @andeszhang @zhang_yixin13
 zh-cn/application-dev/inputmethod/input-method-subtype-guide.md @codexu62 @andeszhang @zhang_yixin13
 zh-cn/application-dev/inputmethod/inputmethod-application-guide.md @codexu62 @andeszhang @zhang_yixin13
@@ -734,6 +740,7 @@ zh-cn/application-dev/internationalization/l10n-multilingual-resources.md @yliup
 zh-cn/application-dev/internationalization/l10n-singular-plural.md @yliupy @sunyaozu @ningningW
 zh-cn/application-dev/internationalization/l10n-translation-scene.md @yliupy @sunyaozu @ningningW
 zh-cn/application-dev/internationalization/linguistic-testing.md @yliupy @sunyaozu @ningningW
+zh-cn/application-dev/internationalization/localization-glossary.md @yliupy @sunyaozu @ningningW
 zh-cn/application-dev/internationalization/pseudo-i18n-testing-mirror.md @yliupy @sunyaozu @ningningW
 zh-cn/application-dev/internationalization/pseudo-i18n-testing-overview.md @yliupy @sunyaozu @ningningW
 zh-cn/application-dev/internationalization/pseudo-i18n-testing-translation.md @yliupy @sunyaozu @ningningW
@@ -744,6 +751,7 @@ zh-cn/application-dev/ipc/ipc-rpc-overview.md @xdx19211 @luodonghui0157 @zhaopen
 zh-cn/application-dev/ipc/Readme-CN.md 无
 zh-cn/application-dev/ipc/subscribe-remote-state.md @xdx19211 @luodonghui0157 @zhaopeng_gitee @zhang_yixin13
 zh-cn/application-dev/kernel-enhance/gewu-ndk-api-guidelines.md @gatieme @tanyihua @fang-jinxu
+zh-cn/application-dev/kernel-enhance/kernel-enhance-glossary.md @yzl-kongzhenhua @Leibobo @wangxiayang @fang-jinxu
 zh-cn/application-dev/kernel-enhance/kernel-enhance-overview.md @gatieme @fang-jinxu @yzl-kongzhenhua @tanyihua @lingminghw @wangxiayang
 zh-cn/application-dev/kernel-enhance/purgeable-memory-guidelines.md @fang-jinxu @lingminghw
 zh-cn/application-dev/kernel-enhance/qos-guidelines.md @yzl-kongzhenhua @Leibobo @wangxiayang @lizongfeng @zzzuo @fang-jinxu
@@ -755,7 +763,7 @@ zh-cn/application-dev/mdm/mdm-kit-intro.md @huanleima @weizai16 @hp_guo @zhang_y
 zh-cn/application-dev/mdm/mdm-kit-multi-mdm.md @huanleima @weizai16 @hp_guo @zhang_yixin13
 zh-cn/application-dev/mdm/mdm-kit-term.md @huanleima @weizai16 @hp_guo @zhang_yixin13
 zh-cn/application-dev/mdm/Readme-CN.md @huanleima @weizai16 @hp_guo @zhang_yixin13
-zh-cn/application-dev/mechanicManager/camera-tracking-guide.md @hobbycao @saga2025 @hu-zhiqiong
+zh-cn/application-dev/mechanicManager/camera-tracking-guide.md @qxqxqxqxqx @Marssssss @hu-zhiqiong
 zh-cn/application-dev/mechanicManager/mechanic-kit-intro.md @hobbycao @saga2025 @hu-zhiqiong
 zh-cn/application-dev/mechanicManager/Readme-CN.md @hobbycao @saga2025 @hu-zhiqiong
 zh-cn/application-dev/mechanicManager/rotation-control-guide-sys.md @hobbycao @saga2025 @hu-zhiqiong
@@ -775,6 +783,7 @@ zh-cn/application-dev/media/audio/audio-output-device-change.md @songshenke @cai
 zh-cn/application-dev/media/audio/audio-output-device-management.md @songshenke @zhanganxiang1 @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-output-device-switcher.md @songshenke @zhanganxiang1 @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-performance.md @boxwall @magekkkk @w_Machine_cc
+zh-cn/application-dev/media/audio/audio-playback-concurrency-audio-session-overview.md @funny_sunix @hao-liangfei @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-playback-concurrency.md @funny_sunix @hao-liangfei @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-playback-overview.md @boxwall @magekkkk @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-playback-stream-management.md @boxwall @magekkkk @w_Machine_cc
@@ -783,8 +792,10 @@ zh-cn/application-dev/media/audio/audio-recording-overview.md @zyy0412 @weixin_4
 zh-cn/application-dev/media/audio/audio-recording-stream-management.md @zyy0412 @weixin_41398971 @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-session-management.md @funny_sunix @hao-liangfei @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-spatialization-management-sys.md @tom_guo @trytocalm @w_Machine_cc
+zh-cn/application-dev/media/audio/audio-suite-format-converter.md @xxngwang @jay-liusong @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-suite-manual-rendering.md @xxngwang @jay-liusong @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-suite-real-time-rendering.md @xxngwang @jay-liusong @w_Machine_cc
+zh-cn/application-dev/media/audio/audio-suite-space-render.md @xxngwang @jay-liusong @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-suite.md @xxngwang @jay-liusong @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-workgroup.md @boxwall @magekkkk @w_Machine_cc
 zh-cn/application-dev/media/audio/distributed-audio-playback-sys.md @songshenke @zhanganxiang1 @w_Machine_cc
@@ -906,6 +917,7 @@ zh-cn/application-dev/media/image/image-decoding.md @aulight02 @XiaoYao555 @w_Ma
 zh-cn/application-dev/media/image/image-effect-guidelines.md @zyj208 @wangshoucheng @w_Machine_cc
 zh-cn/application-dev/media/image/image-encoding-native.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/media/image/image-encoding.md @aulight02 @XiaoYao555 @w_Machine_cc
+zh-cn/application-dev/media/image/image-glossary.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/media/image/image-hdr-decoding-c.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/media/image/image-overview.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/media/image/image-packer-c.md @aulight02 @XiaoYao555 @w_Machine_cc
@@ -922,10 +934,12 @@ zh-cn/application-dev/media/image/image-region-and-downsampling-c.md @aulight02 
 zh-cn/application-dev/media/image/image-region-and-downsampling.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/media/image/image-source-c.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/media/image/image-source-picture-c.md @aulight02 @XiaoYao555 @w_Machine_cc
+zh-cn/application-dev/media/image/image-specific-metadata.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/media/image/image-tool-c.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/media/image/image-tool.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/media/image/image-transformation-native.md @yaozhupeng @w_Machine_cc
 zh-cn/application-dev/media/image/image-transformation.md 无
+zh-cn/application-dev/media/image/image-xmp-metadata.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/media/image/pixelmap-c.md @yaozhupeng @w_Machine_cc
 zh-cn/application-dev/media/image/Readme-CN.md @aulight02 @XiaoYao555 @w_Machine_cc
 zh-cn/application-dev/media/image/image-faqs/heif-adapter-faq.md @aulight02 @XiaoYao555 @w_Machine_cc
@@ -939,9 +953,10 @@ zh-cn/application-dev/media/media/avscreencapture-c-custom-scenarios.md @chenkun
 zh-cn/application-dev/media/media/avscreencapture-faqs.md @chenkun613227 @yxc2 @w_Machine_cc
 zh-cn/application-dev/media/media/avtranscoder-faq.md @wang-haizhou6 @HmQQQ @w_Machine_cc
 zh-cn/application-dev/media/media/avtranscoder-practice.md @wang-haizhou6 @HmQQQ @w_Machine_cc
+zh-cn/application-dev/media/media/media-glossary.md @chenkun613227 @yxc2 @w_Machine_cc
 zh-cn/application-dev/media/media/media-kit-intro.md @wang-haizhou6 @HmQQQ @w_Machine_cc
 zh-cn/application-dev/media/media/playback-url-setting-method.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
-zh-cn/application-dev/media/media/Readme-CN.md @chenkun @yxc2 @w_Machine_cc
+zh-cn/application-dev/media/media/Readme-CN.md @chenkun613227 @yxc2 @w_Machine_cc
 zh-cn/application-dev/media/media/streaming-media-playback-development-guide.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/media/media/using-avplayer-for-playback.md @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/media/media/using-avrecorder-for-recording.md @gcw_dyOv3Sds @chris2981 @w_Machine_cc
@@ -962,14 +977,15 @@ zh-cn/application-dev/media/media/using-soundpool-for-playback.md @wang-haizhou6
 zh-cn/application-dev/media/media/video-playback.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
 zh-cn/application-dev/media/media/video-recording.md @gcw_dyOv3Sds @chris2981 @w_Machine_cc
 zh-cn/application-dev/media/media/video-subtitle.md @xushubo @chennotfound @dongyu_dy @w_Machine_cc
-zh-cn/application-dev/media/media/video-supports-rectangular-area-recording.md @chenkun @yxc2 @w_Machine_cc
+zh-cn/application-dev/media/media/video-supports-rectangular-area-recording.md @chenkun613227 @yxc2 @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/mediaLibrary-glossary.md @xuchangda @yixiaoff @guxinggang @liweilu1 @w_Machine_cc
 zh-cn/application-dev/media/medialibrary/movingphotoview-guidelines.md @tangye123456 @YanSanzo @w_Machine_cc
 zh-cn/application-dev/media/medialibrary/photoAccessHelper-movingphoto.md @yixiaoff @liweilu1 @w_Machine_cc
 zh-cn/application-dev/media/medialibrary/photoAccessHelper-notify-guidelines.md @yixiaoff @liweilu1 @w_Machine_cc
 zh-cn/application-dev/media/medialibrary/photoAccessHelper-overview.md @yixiaoff @liweilu1 @w_Machine_cc
 zh-cn/application-dev/media/medialibrary/photoAccessHelper-photoviewpicker.md @yixiaoff @liweilu1 @w_Machine_cc
 zh-cn/application-dev/media/medialibrary/photoAccessHelper-preparation.md @yixiaoff @liweilu1 @w_Machine_cc
-zh-cn/application-dev/media/medialibrary/photoAccessHelper-resource-guidelines.md @yixiaoff @liweilu1 @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/photoAccessHelper-resource-guidelines.md @zhaochang14 @liweilu1 @w_Machine_cc
 zh-cn/application-dev/media/medialibrary/photoAccessHelper-savebutton.md @yixiaoff @liweilu1 @w_Machine_cc
 zh-cn/application-dev/media/medialibrary/photoAccessHelper-systemAlbum-guidelines.md @yixiaoff @liweilu1 @w_Machine_cc
 zh-cn/application-dev/media/medialibrary/photoAccessHelper-userAlbum-guidelines.md @yixiaoff @liweilu1 @w_Machine_cc
@@ -978,6 +994,19 @@ zh-cn/application-dev/media/medialibrary/using-ndk-mediaassetmanager-for-request
 zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-asset-hidesensitive-faq.md @zhaochang14 @liweilu1 @w_Machine_cc
 zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-asset-judgment-faq.md @TristanMVP @AnakinJiang @w_Machine_cc
 zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-asset-management-faq.md @TristanMVP @AnakinJiang @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-failure-mode-description/query-class-failure-mode-description/internal-failure-failure-mode-description.md @zhaochang14 @liweilu1 @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-failure-mode-description/query-class-failure-mode-description/medialibrary-module-param-error-fault-mode-desc.md @zhaochang14 @liweilu1 @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-failure-mode-description/query-class-failure-mode-description/parameter-basic-legality-failure-mode-description.md @zhaochang14 @liweilu1 @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-failure-mode-description/query-class-failure-mode-description/permission-authorization-error-fault-mode-description.md @zhaochang14 @liweilu1 @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/creation-failed-description-of-failure-mode/invalid-display-name-fault-mode-description.md @zhaochang14 @liweilu1 @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/creation-failed-description-of-failure-mode/obj-member-prop-not-exist-fault-description.md @zhaochang14 @liweilu1 @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/creation-failed-description-of-failure-mode/parameter-basic-legality-failure-mode-desc.md @zhaochang14 @liweilu1 @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/creation-failed-description-of-failure-mode/permission-auth-error-fault-mode-desc.md @zhaochang14 @liweilu1 @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/creation-failed-description-of-failure-mode/storage-io-failure-fault-mode-description.md @zhaochang14 @liweilu1 @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/creation-failed-description-of-failure-mode/unsupported-operation-fault-mode-desc.md @zhaochang14 @liweilu1 @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/deletion-failed-fault-mode-description/insufficient-permissions-fault-mode-description.md @zhaochang14 @liweilu1 @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/deletion-failed-fault-mode-description/user-file-manager-param-error-fault-mode-desc.md @zhaochang14 @liweilu1 @w_Machine_cc
+zh-cn/application-dev/media/medialibrary/medialibrary-faqs/medialibrary-failure-mode-description/write-class-failure-mode-description/metadata-modify-failure-mode-description/file-not-exist-operate-failure-mode-description.md @zhaochang14 @liweilu1 @w_Machine_cc
 zh-cn/application-dev/napi/build-with-ndk-cmake.md @huang_huijin @fang-jinxu
 zh-cn/application-dev/napi/build-with-ndk-ide.md @fang-jinxu @lingminghw
 zh-cn/application-dev/napi/build-with-ndk-overview.md @liyiming13 @fang-jinxu
@@ -1237,7 +1266,6 @@ zh-cn/application-dev/quick-start/arkts-get-started.md @oatuwwutao @cy917474985 
 zh-cn/application-dev/quick-start/arkts-high-performance-programming.md @oatuwwutao @cy917474985 @zhang_yixin13
 zh-cn/application-dev/quick-start/arkts-migration-background.md @oatuwwutao @cy917474985 @zhang_yixin13
 zh-cn/application-dev/quick-start/arkts-more-cases.md @oatuwwutao @cy917474985 @zhang_yixin13
-zh-cn/application-dev/quick-start/arkts-skill-development-guide.md @wanghang904 @hanfeng6 @HelloCrease
 zh-cn/application-dev/quick-start/common-problem-of-application.md @wanghang904 @hanfeng6 @HelloCrease
 zh-cn/application-dev/quick-start/deviceconfig-structure.md @wanghang904 @hanfeng6 @HelloCrease
 zh-cn/application-dev/quick-start/getting-started-with-arkts-for-java-programmers.md @fanglou @qyhuo32 @zhang_yixin13
@@ -1583,8 +1611,8 @@ zh-cn/application-dev/reference/apis-ability-kit/js-apis-overlay.md @wanghang904
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-permissionrequestresult.md @xia-bubai @linshuqing @hehehe-li @zengyawen @leiyuqian
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-privacyManager-sys.md @xia-bubai @linshuqing @hehehe-li @zengyawen @leiyuqian
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-recoverableApplicationInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-screenLockFileManager-sys.md @steven-q @JiDong-CS1 @zengyawen @leiyuqian
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-screenLockFileManager.md @steven-q @JiDong-CS1 @zengyawen @leiyuqian
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-screenLockFileManager-sys.md @steven-q @JiDong-CS1 @zengyawen @pan9f
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-screenLockFileManager.md @steven-q @JiDong-CS1 @zengyawen @pan9f
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-shortcutManager-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-shortcutManager.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-skillManager.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
@@ -1609,9 +1637,9 @@ zh-cn/application-dev/reference/apis-ads-kit/errorcode-oaid.md @SukiEvas @zhansf
 zh-cn/application-dev/reference/apis-ads-kit/js-apis-adcomponent.md @SukiEvas @zhansf1988 @RayShih
 zh-cn/application-dev/reference/apis-ads-kit/js-apis-adsserviceextensionability-sys.md @SukiEvas @zhansf1988 @RayShih
 zh-cn/application-dev/reference/apis-ads-kit/js-apis-adsserviceextensionability.md @SukiEvas @zhansf1988 @RayShih
+zh-cn/application-dev/reference/apis-ads-kit/js-apis-advertisement.md @SukiEvas @zhansf1988 @RayShih
 zh-cn/application-dev/reference/apis-ads-kit/js-apis-advertising.md @SukiEvas @zhansf1988 @RayShih
 zh-cn/application-dev/reference/apis-ads-kit/js-apis-autoadcomponent.md @SukiEvas @zhansf1988 @RayShih
-zh-cn/application-dev/reference/apis-ads-kit/js-apis-inner-advertising-advertisement.md @SukiEvas @zhansf1988 @RayShih
 zh-cn/application-dev/reference/apis-ads-kit/js-apis-oaid-sys.md @SukiEvas @zhansf1988 @RayShih
 zh-cn/application-dev/reference/apis-ads-kit/js-apis-oaid.md @SukiEvas @zhansf1988 @RayShih
 zh-cn/application-dev/reference/apis-ads-kit/Readme-CN.md @SukiEvas @zhansf1988 @RayShih
@@ -1772,9 +1800,9 @@ zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-color-h.md @drea
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-color-space-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-error-code-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-filter-h.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-font-collection-h.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-font-collection-h.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-font-h.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-font-mgr-h.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-font-mgr-h.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-gpu-context-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-image-filter-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-image-h.md @dreamyhhh @wanyanglan @ge-yafang
@@ -1793,25 +1821,25 @@ zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-color
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-filter.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-font-metrics.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-font.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontadjustinfo.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontaliasinfo.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontadjustinfo.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontaliasinfo.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontarguments.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontcollection.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontconfiginfo.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontdescriptor.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfallbackgroup.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfallbackinfo.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfeature.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfeatures.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfulldescriptor.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontgenericinfo.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontmgr.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontparser.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontstyleset.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontstylestruct.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontvariationaxis.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontvariationinstance.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontvariationinstancecoordinate.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontcollection.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontconfiginfo.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontdescriptor.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfallbackgroup.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfallbackinfo.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfeature.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfeatures.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfulldescriptor.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontgenericinfo.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontmgr.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontparser.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontstyleset.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontstylestruct.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontvariationaxis.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontvariationinstance.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontvariationinstancecoordinate.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-gpucontext.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-gpucontextoptions.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-image-info.md @dreamyhhh @wanyanglan @ge-yafang
@@ -1819,7 +1847,7 @@ zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-image
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-imagefilter.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-linemetrics.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-linetypography.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-linetypography.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-maskfilter.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-matrix.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-memorystream.md @dreamyhhh @wanyanglan @ge-yafang
@@ -1828,38 +1856,38 @@ zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-pathe
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-pathiterator.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-pen.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-pixelmap.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-placeholderspan.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-placeholderspan.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-point.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-point2d.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-point3d.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-positionandaffinity.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-range.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-range.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-recordcmd.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-recordcmdutils.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-rect.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-rectsize.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-rectsize.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-rectstyle-info.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-region.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-roundrect.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-run.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-run.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-runbuffer.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-samplingoptions.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-shadereffect.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-shadowlayer.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-string.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-strutstyle.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-strutstyle.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-surface.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-textblob.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-textblobbuilder.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-textbox.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-textline.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-textshadow.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-textstyle.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-texttab.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-textline.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-textshadow.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-textstyle.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-texttab.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-typeface.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-typographycreate.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-typographystyle.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-typography.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-typographycreate.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-drawing-typographystyle.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-oh-pixelmapnative.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-path-effect-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-path-h.md @dreamyhhh @wanyanglan @ge-yafang
@@ -1870,20 +1898,20 @@ zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-point-h.md @drea
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-record-cmd-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-rect-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-region-h.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-register-font-h.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-register-font-h.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-round-rect-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-sampling-options-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-shader-effect-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-shadow-layer-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-surface-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-declaration-h.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-font-descriptor-h.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-global-h.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-line-h.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-linetypography-h.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-run-h.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-declaration-h.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-font-descriptor-h.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-global-h.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-line-h.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-linetypography-h.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-run-h.md @gmiao522 @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-typeface-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-types-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing.md @dreamyhhh @wanyanglan @ge-yafang
@@ -1940,12 +1968,12 @@ zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-effectKit-sys.md @han
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-effectKit.md @hanamaru @gaoweihua @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-graphics-common2D.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-graphics-displaySync.md @wh_qwe @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-graphics-text.md @oh_wangxk @gmiao522 @Lem0nC @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-graphics-text.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-hdrCapability.md @xiaojianfeng_jeffery @dizuo1 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-sendableColorSpaceManager.md @xiaojianfeng_jeffery @dizuo1 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-uiEffect-sys.md @hanamaru @gaoweihua @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-uiEffect.md @hanamaru @gaoweihua @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/Readme-CN.md @hangmengxin @oh_wangxk @gmiao522 @wangyanglan @liumingxiang @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/Readme-CN.md @hangmengxin @oh_wangxk @gmiao522 @wanyanglan @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-boids-sim-sys.md @zzhao0 @zdustc @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-nodes.md @zzhao0 @zdustc @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-post-process-settings.md @zzhao0 @zdustc @ge-yafang
@@ -2011,7 +2039,7 @@ zh-cn/application-dev/reference/apis-arkts/js-apis-worker-sys.md @wang_zhaoyong 
 zh-cn/application-dev/reference/apis-arkts/js-apis-worker.md @wang_zhaoyong @huanghello @ge-yafang
 zh-cn/application-dev/reference/apis-arkts/js-apis-xml.md @wang_zhaoyong @lijin1039 @Malzahar @ge-yafang
 zh-cn/application-dev/reference/apis-arkts/Readme-CN.md @wang_zhaoyong @weng-changcheng @Malzahar @HelloCrease
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-atomicservicebar.md @yihao-lin @piggyguy @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-atomicservicebar.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-componentutils.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-contextmenucontroller.md @H-xinwei @zhanghaibo0 @Brilliantry_Rui
@@ -2022,9 +2050,9 @@ zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-e.md @piggyguy @
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-font.md @hddgzw @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-framecallback.md @wangyang2022 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-i-sys.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-i-sys.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-i.md @yihao-lin @liyi0903 @mayaolll @piggyguy @jiangdayuan @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-luminancesampler-sys.md @xuhang363 @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-luminancesampler-sys.md @xuhang363 @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-magnifier.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-marqueedynamicsyncscene.md @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-measureutils.md @hddgzw @xiangyuan6 @Brilliantry_Rui
@@ -2044,13 +2072,13 @@ zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-uiobserver.md @p
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uimaterial-sys.md @hehongyang3 @zhanghaibo0 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uimaterial.md @hehongyang3 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-e.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-f.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-i.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-t.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-Window.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-WindowStage.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-window.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-e.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-f.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-i.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-t.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-Window.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-WindowStage.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-window.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityactionarguments.md @wangyinhua @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityelementinfo.md @wangyinhua @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityelementinfolist.md @wangyinhua @dutie123 @Brilliantry_Rui
@@ -2071,27 +2099,27 @@ zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-accessi
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-accessibilityvalue.md @wangyinhua @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-activechildreninfo.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-alignmentruleoption.md @fenglinbailu @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-animatecompletecallback.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-animateoption.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-animator8h.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-animatorevent.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-animatoronframeevent.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-animatoroption.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-animatecompletecallback.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-animateoption.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-animator8h.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-animatorevent.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-animatoronframeevent.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-animatoroption.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-attributeitem.md @piggyguy @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-barrieroption.md @fenglinbailu @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-circleshapeoption.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-coastingaxisevent.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-coloranimatablepropertyhandle.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-colorpropertyhandle.md @wangyang2022 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-colorstop.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-colorstop.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-commandpathoption.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-contenttransitioneffect.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-context.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-context8h.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-contextcallback.md @piggyguy @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-crosslanguageoption.md @wangyang2022 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-curve.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-curve8h.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-curve.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-curve8h.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-customdialogoptions.md @houguobiao @liyi0309 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-customproperty.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-customspandrawinfo.md @xiangyuan6 @Brilliantry_Rui
@@ -2106,7 +2134,7 @@ zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-drawabl
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-drawcontext.md @piggyguy @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-embeddedcomponentoption.md @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-expectedframeraterange.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-expectedframeraterange.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-floatanimatablepropertyhandle.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-floatpropertyhandle.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md @yihao-lin @piggyguy @Brilliantry_Rui
@@ -2126,7 +2154,7 @@ zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-immersi
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-immersivematerialhandle.md @hehongyang3 @zhanghaibo0 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-intoffset.md @fenglinbailu @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-intsize.md @fenglinbailu @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-keyframeanimateoption.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-keyframeanimateoption.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-layoutconstraint.md @fenglinbailu @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-lighteffectoptions.md @hehongyang3 @zhanghaibo0 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-lighteffectoptionshandle.md @hehongyang3 @zhanghaibo0 @Brilliantry_Rui
@@ -2134,12 +2162,12 @@ zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-listchi
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-listitemswipeactionitem.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-listitemswipeactionoption.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-margin.md @fenglinbailu @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-matrix4.md @hehongyang3 @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-matrix4rotationoptions.md @hehongyang3 @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-matrix4scaleoptions.md @hehongyang3 @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-matrix4translationoptions.md @hehongyang3 @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-matrix4.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-matrix4rotationoptions.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-matrix4scaleoptions.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-matrix4translationoptions.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-motionpathoptions.md @hehongyang3 @chensiyi_CE @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativeanimateapi-1.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog.md @houguobiao @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog8h.md @houguobiao @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md @houguobiao @liyi0309 @Brilliantry_Rui
@@ -2169,7 +2197,7 @@ zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-pickeri
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatordivider.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-pickerindicatorstyle.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-pixelroundpolicy.md @little-bear-sleeps @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-pointf.md @hehongyang3 @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-pointf.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-positionedges.md @zju_ljz @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-progresslinearstyleoption.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-rect.md @houguobiao @Brilliantry_Rui
@@ -2179,9 +2207,9 @@ zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-rendern
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-rendernodeclipoption.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-rendernodehandle.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-rendernodemaskoption.md @wangyang2022 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-rotationoptions.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-rotationoptions.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-roundrectshapeoption.md @wangyang2022 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-scaleoptions.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-scaleoptions.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-selectionoptions.md @luckclover @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-snapshotoptions.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-stringasyncevent.md @xiangyuan6 @Brilliantry_Rui
@@ -2212,8 +2240,8 @@ zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-touchte
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitem.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-transitioneffect.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-translationoptions.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-transitioneffect.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-translationoptions.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2animatablepropertyhandle.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-vector2propertyhandle.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-visibleareaeventoptions.md @yihao-lin @piggyguy @Brilliantry_Rui
@@ -2263,22 +2291,22 @@ zh-cn/application-dev/reference/apis-arkui/capi-native-interface-xcomponent-h.md
 zh-cn/application-dev/reference/apis-arkui/capi-native-key-event-h.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-material-h.md @hehongyang3 @zhanghaibo0 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-accessibility.md @wangyinhua @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-animator.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-base.md @CCFFWW @wangyang2022 @zju_ljz @lanshouren @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-animator.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-base.md @hehongyang3 @wangyang2022 @zju_ljz @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-common.md @piggyguy @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-embeddedcomponent.md @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-form.md @houguobiao @liyi0309 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-image.md @liyujie43 @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-informationdisplay.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-informationselection.md @Zhang-Dong-hui @luoying_ace_admin @xiangyuan6 @weixin_52725220 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-interaction.md @CCFFWW @zju_ljz @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-layoutattributes.md @CCFFWW @zju_ljz @camlostshi @lanshouren @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-interaction.md @hehongyang3 @zju_ljz @lanshouren @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-layoutattributes.md @hehongyang3 @zju_ljz @camlostshi @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-layoutcomponent.md @camlostshi @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-navigationrelatedcomponents.md @Hu_ZeQi @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-other.md @piggyguy @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-richeditor.md @xiangyuan6 @kangshihui @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-scrollablecontainer.md @shengu_lancer @yylong @guozejun @zcdqs @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md @xiangyuan6 @kangshihui @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-textinputcategory.md @xiangyuan6 @kangshihui @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-xcomponent.md @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-node-h.md @piggyguy @wangyang2022 @Brilliantry_Rui
@@ -2297,40 +2325,40 @@ zh-cn/application-dev/reference/apis-arkui/capi-oh-display-capture-h.md @oh_wang
 zh-cn/application-dev/reference/apis-arkui/capi-oh-display-info-h.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/capi-oh-display-manager-h.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/capi-oh-displaymanager.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md @zjsxstar @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-nativewindow.md @zjsxstar @dutie123 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-nativewindow.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md @sd-wu @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md @sd-wu @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-callback.md @sd-wu @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-expectedraterange.md @sd-wu @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md @sd-wu @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-historicalpoint.md @zjsxstar @dutie123 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-historicalpoint.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-keyevent.md @sd-wu @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-mouseevent-callback.md @sd-wu @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-mouseevent.md @zjsxstar @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-touchevent.md @zjsxstar @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-touchpoint.md @zjsxstar @dutie123 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-mouseevent.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-touchevent.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-touchpoint.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md @sd-wu @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md @sd-wu @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-oh-window-comm-h.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/capi-oh-window-event-filter-h.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/capi-oh-window-h.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/capi-oh-window-pip-h.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/capi-pictureinpicture-pipconfig.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/capi-struct.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-oh-window-comm-h.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-oh-window-event-filter-h.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-oh-window-h.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-oh-window-pip-h.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-pictureinpicture-pipconfig.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-struct.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/capi-styled-string-h.md @hddgzw @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-ui-input-event-h.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-avoidarea.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-oh-windowmanager-densityinfo.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-oh-windowmanager-framemetrics.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-rect.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-windowmanager-mainwindowinfo.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-windowmanager-windowsnapshotconfig.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-windowproperties.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-avoidarea.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-oh-windowmanager-densityinfo.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-oh-windowmanager-framemetrics.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-rect.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-windowmanager-mainwindowinfo.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-windowmanager-windowsnapshotconfig.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-windowproperties.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/errorcode-adopt.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-attributeModifier.md @wangjunman1 @sunbees @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/errorcode-bindSheet.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/errorcode-bindSheet.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-canvas.md @ZhangYu-Coder @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-display.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/errorcode-drag-event.md @yihao-lin @piggyguy @Brilliantry_Rui
@@ -2339,7 +2367,7 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-env.md @liwenzhen3 @s100211
 zh-cn/application-dev/reference/apis-arkui/errorcode-event.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-focus.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-force-dark.md @fangzhiyuan1 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/errorcode-internal.md @CCFFWW @mayaolll @liyi0309 @jiangdayuan @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/errorcode-internal.md @hehongyang3 @mayaolll @liyi0309 @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-node-render-monitor.md @fangzhiyuan1 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-node-render.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-node.md @wangchensu1 @wangyang2022 @Brilliantry_Rui
@@ -2356,9 +2384,9 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-uiappearance.md 无
 zh-cn/application-dev/reference/apis-arkui/errorcode-uicontext.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-uiextension.md @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-video.md @sd-wu @sunbees @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/errorcode-window.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/errorcode-window.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/errorcode-xcomponent.md @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-animator.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-animator.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-application-windowExtensionAbility-sys.md @chbchb12 @stupidb @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-AttributeUpdater.md @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-builderNode.md @sunbees @Brilliantry_Rui
@@ -2370,25 +2398,26 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-dragController.md @yiha
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-drawableDescriptor-sys.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-drawableDescriptor.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-frameNode.md @sunbees @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-graphics-sys.md @sun-xinyan @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-graphics-sys.md @sun-xinyan @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-graphics.md @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-inspector.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md @zju_ljz @lanshouren @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md @yylong @rongShao-Z @guozejun @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-node.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-NodeContent.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-nodeController.md @wangyang2022 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-observer.md @piggyguy @lushi871202 @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-observer.md @piggyguy @lushi871202 @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-performancemonitor-sys.md @lushi871202 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-Prefetcher.md @maorh @keerecles @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-renderNode.md @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-resource.md @fangzhiyuan1 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-shape.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-shape.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-theme.md @fangzhiyuan1 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-UIContext-sys.md @wangyang2022 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-uiExtension-sys.md @chbchb12 @stupidb @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-uiExtension.md @chbchb12 @stupidb @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-xcomponentNode.md @zjsxstar @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-curve.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-uiExtension-sys.md @Pakoo007 @stupidb @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-uiExtension.md @Pakoo007 @stupidb @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-xcomponentNode.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-curve.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-devicestatus-draginteraction-sys.md @wuliangdong @guo867 @hu-zhiqiong
 zh-cn/application-dev/reference/apis-arkui/js-apis-display-sys.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/js-apis-display.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
@@ -2397,7 +2426,7 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-floatView.md @betafringe007 @
 zh-cn/application-dev/reference/apis-arkui/js-apis-font.md @hddgzw @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-getContext.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-inner-application-windowExtensionContext-sys.md @chbchb12 @stupidb @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/js-apis-matrix4.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-apis-matrix4.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-measure.md @hddgzw @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-mediaquery.md @zju_ljz @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-pipWindow-sys.md @betafringe007 @taoweihua @ge-yafang @qinliwen0417
@@ -2420,9 +2449,9 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-system-prompt.md @houguobiao 
 zh-cn/application-dev/reference/apis-arkui/js-apis-system-router.md @mayaolll @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-uiappearance-sys.md @fangzhiyuan1 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-uiappearance.md @fangzhiyuan1 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-uiExtensionHost-sys.md @chbchb12 @stupidb @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/js-apis-window-sys.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/reference/apis-arkui/js-apis-windowAnimationManager-sys.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/js-apis-uiExtensionHost-sys.md @Pakoo007 @stupidb @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/js-apis-window-sys.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/js-apis-windowAnimationManager-sys.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/Readme-CN.md @tsj_20201 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/_ark_ui_compile.md @zhangboren @zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-appendix-types.md @seaside_wu1 @shiyu_huang @Brilliantry_Rui
@@ -2454,7 +2483,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-toggle.m
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-toolbar-item.md @mayaolll @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-toolbar.md @mayaolll @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-web.md @zourongchun @kurli1 @HelloShuo
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-xcomponent.md @zjsxstar @dutie123 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-xcomponent.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-canvas-canvas.md @sd-wu @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-canvas-canvasgradient.md @sd-wu @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md @sd-wu @sunbees @Brilliantry_Rui
@@ -2463,17 +2492,17 @@ zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-canvas-imagebi
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-canvas-imagedata.md @sd-wu @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-canvas-offscreencanvas.md @sd-wu @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-canvas-path2d.md @sd-wu @sunbees @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-animation.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-animation.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-atomic-layout.md @fenglinbailu @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-attributes.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-attributes.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-customizing-font.md @hddgzw @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-events.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-gradient.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-gradient.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-mediaquery.md @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-methods.md @CCFFWW @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-monitorcrownevents.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-styles.md @fenglinbailu @yihao-lin @weixin_52725220 @lanshouren @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-transition.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-transition.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-badge.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-dialog.md @houguobiao @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-div.md @lanshouren @Brilliantry_Rui
@@ -2481,16 +2510,16 @@ zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-form
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-list-item-group.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-list-item.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-list.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-panel.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-panel.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-popup.md @liyi0309 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-refresh.md @yylong @rongShao-Z @yangcan18 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-stack.md @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-stepper-item.md @mayaolll @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-stepper.md @mayaolll @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-swiper.md @Hu_ZeQi @jiangdayuan @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-tab-bar.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-tab-content.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-tabs.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-tab-bar.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-tab-content.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-tabs.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-create-elements.md @seaside_wu1 @shiyu_huang @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-basic-usage.md @seaside_wu1 @shiyu_huang @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-custom-lifecycle.md @mayaolll @jiangdayuan @Brilliantry_Rui
@@ -2522,7 +2551,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-js/Readme-CN.md @yihao-lin @pig
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-common-attributes.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-common-events.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-common-monitorcrownevents.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-common-styles.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-common-styles.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-chart.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-image-animator.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-image.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
@@ -2536,7 +2565,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basi
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-text.md @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-canvas-canvas.md @sd-wu @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-canvas-canvasrenderingcontext2d.md @sd-wu @sunbees @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-common-animation.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-common-animation.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-common-mediaquery.md @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-container-div.md @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-container-list-item.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
@@ -2556,14 +2585,15 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/errorcode-image-analyzer.md 
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md @liyi0309 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcSlider.md @liyi0309 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md @xieziang @youzhi92 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md @xieziang @youzhi92 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md @Cuecuexiaoyu @youzhi92 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ComposeListItem.md @wangrunsen @YanSanzo @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ComposeTitleBar.md @wangrunsen @YanSanzo @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Counter.md @xieziang @youzhi92 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-CounterV2.md @xieziang @youzhi92 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-DatePickerComponent.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md @wangrunsen @YanSanzo @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-DialogV2.md @wangrunsen @YanSanzo @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-DownloadFileButton.md @yaoyao1798
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-DownloadFileButton.md @yaoyao1798 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-EditableTitleBar.md @wangrunsen @YanSanzo @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ExceptionPrompt.md @wangrunsen @YanSanzo @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Filter.md @wangrunsen @YanSanzo @Brilliantry_Rui
@@ -2590,16 +2620,16 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ToolBar.
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ToolBarV2.md @wangrunsen @YanSanzo @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-TreeView.md @wangrunsen @YanSanzo @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-atomicservice-AtomicServiceMenuBar-sys.md @qq_36417014 @autojuan @zengyawen
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-atomicservice-AtomicServiceNavigation.md @qq_36417014 @zhangbeilei @zengyawen
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-atomicservice-AtomicServiceSearch.md @qq_36417014 @zhangbeilei @zengyawen
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-atomicservice-AtomicServiceTabs.md @qq_36417014 @zhangbeilei @zengyawen
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-atomicservice-AtomicServiceNavigation.md @qq_36417014 @autojuan @zengyawen
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-atomicservice-AtomicServiceSearch.md @qq_36417014 @autojuan @zengyawen
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-atomicservice-AtomicServiceTabs.md @qq_36417014 @autojuan @zengyawen
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-atomicservice-AtomicServiceWeb.md @qq_36417014 @autojuan @zengyawen
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-atomicservice-HalfScreenLaunchComponent.md @qq_36417014 @autojuan @zengyawen
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-atomicservice-InterstitialDialogAction.md @qq_36417014 @autojuan @zengyawen
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ohos-atomicservice-NavPushPathHelper.md @qq_36417014 @autojuan @zengyawen
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-allow-force-dark.md @fangzhiyuan1 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-animatable-extend.md @hehongyang3 @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-animatorproperty.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-animatable-extend.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-animatorproperty.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums-sys.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md @piggyguy @jiyujia926 @hehongyang3 @s10021109 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md @shengu_lancer @yylong @rongShao-Z @Brilliantry_Rui
@@ -2612,8 +2642,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-componen
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-depthcomponent-sys.md @houguobiao @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-divider.md @zju_ljz @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md @cx983299475 @xueyulong @HelloShuo
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
@@ -2645,6 +2674,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-scrollba
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-search.md @jiaxiaguang @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-select-sys.md @zhanghaibo0 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-select.md @zhanghaibo0 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-slider.md @liyi0309 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-span.md @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md @tsj_20201 @jiangdayuan @Brilliantry_Rui
@@ -2661,9 +2691,9 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textpick
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-texttimer.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md @houguobiao @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-toolbaritem.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent-sys.md @zjsxstar @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md @zjsxstar @dutie123 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-toolbaritem.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent-sys.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-gestures-longpressgesture.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-gestures-pinchgesture.md @yihao-lin @piggyguy @Brilliantry_Rui
@@ -2699,7 +2729,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-counter.md @Zha
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-distortioncomponent-sys.md @hehongyang3 @zhanghaibo0 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-dynamic-component-sys.md @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md @zju_ljz @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md 无
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-embedded-component.md @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-flex-sys.md @camlostshi @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-flex.md @camlostshi @lanshouren @Brilliantry_Rui
@@ -2715,8 +2745,9 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-gridrow.md @zju
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-hyperlink.md @hddgzw @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md @yylong @rongShao-Z @yangcan18 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md @yylong @rongShao-Z @guozejun @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md @yylong @rongShao-Z @guozejun @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md @yylong @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md @yylong @rongShao-Z @guozejun @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-list-sys.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-list.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-listitem.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
@@ -2739,7 +2770,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabcontent.md @
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabs.md @Hu_ZeQi @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-ui-picker-component.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-unioneffectcomponent-sys.md @hehongyang3 @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-unioneffectcomponent-sys.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-waterflow.md @zcdqs @rongShao-Z @guozejun @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-with-env.md @song-song-song @fenglinbailu @zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-with-theme.md @fangzhiyuan1 @Brilliantry_Rui
@@ -2759,8 +2790,8 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-drawing-components-rect.m
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md @camlostshi @fenglinbailu @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-drawingrenderingcontext.md @sd-wu @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-env-system-property.md @liwenzhen3 @s10021109 @zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-explicit-animation.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-explicit-animation.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-gesture-common.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md @yihao-lin @piggyguy @Brilliantry_Rui
@@ -2770,24 +2801,28 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-image-common.md @liyujie4
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-information-display-common.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-inputeventmonitor.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-media-components-video-sys.md @sd-wu @sunbees @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-media-components-video.md @sd-wu @sunbees @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-media-components-video-sys.md @qianpinyi @fenglinbailu @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-media-components-video.md @qianpinyi @fenglinbailu @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-action-sheet-sys.md @houguobiao @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md @houguobiao @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box-sys.md @houguobiao @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md @houguobiao @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog-sys.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box-sys.md @houguobiao @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md @houguobiao @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog-sys.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-menu.md @H-xinwei @zhanghaibo0 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog-sys.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog-sys.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-motion-path-animation.md @CCFFWW @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md @sd-wu @sunbees @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-page-transition-animation.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-particle-animation.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-page-transition-animation.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-particle-animation.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-picker-common.md @luoying_ace_admin @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-pixel-units.md @fangzhiyuan1 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md @maorh @keerecles @Brilliantry_Rui
@@ -2806,10 +2841,10 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management.md @zhus
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-swiper-components-indicator.md @Hu_ZeQi @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-text-common-sys.md @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-text-common.md @hddgzw @xiangyuan6 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-transition-animation-component.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition-sys.md @CCFFWW @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-transition-animation-component.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition-sys.md @hehongyang3 @ge-yafang
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md @hehongyang3 @chensiyi_CE @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-types.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-uicommonevent.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-uigestureevent.md @yihao-lin @piggyguy @Brilliantry_Rui
@@ -2818,10 +2853,10 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-accessibility-h
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md @wangyinhua @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-symbolglyphmodifier.md @hddgzw @xiangyuan6 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-border-image.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md @zju_ljz @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-click-effect.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-click-effect.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-click-sound.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-click.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
@@ -2833,14 +2868,14 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-drag
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-enable.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md @camlostshi @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md @camlostshi @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-color.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-effect.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-color.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-effect.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-gesture-modifier.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-grid.md @zju_ljz @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-hover-effect.md @yihao-lin @piggyguy @Brilliantry_Rui
@@ -2851,38 +2886,38 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-layo
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md @zju_ljz @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-menu-sys.md @H-xinwei @zhanghaibo0 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md @H-xinwei @zhanghaibo0 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-modifierutils.md @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-monopolize-events.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-motionBlur.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-obscured.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-motionBlur.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-obscured.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-on-child-touch-test.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-opacity.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-outline.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-opacity.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-outline.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-pixelRoundForComponent.md @Lichtschein @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-pixelRoundForPage.md @Lichtschein @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-point-light-style-sys.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-polymorphic-style.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md @liyi0309 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-renderfit.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-renderfit.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-restoreId.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md @jiyujia926 @s10021109 @zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition-sys.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition-sys.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md @camlostshi @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-spatial-effect-sys.md @houguobiao @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-text-style.md @kangshihui @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md @liyi0309 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md @yihao-lin @piggyguy @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-use-effect.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-use-union-effect-sys.md @hehongyang3 @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-use-effect.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-use-union-effect-sys.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-area-change-event.md @yihao-lin @piggyguy @Brilliantry_Rui
@@ -2912,7 +2947,7 @@ zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widge
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-button.md @liyi0309 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-calendar.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-chart.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-clock.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-clock.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-divider.md @fenglinbailu @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-image.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-input.md @kangshihui @xiangyuan6 @Brilliantry_Rui
@@ -2924,9 +2959,9 @@ zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widge
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-common-attributes.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-common-customizing-font.md @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-common-events.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-common-gradient.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-common-gradient.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-common-mediaquery.md @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-common-styles.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-common-styles.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-container-badge.md @Zhang-Dong-hui @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-container-div.md @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-container-list-item.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
@@ -2946,6 +2981,7 @@ zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExt
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionContext.md @weixin_41848015 @libing23232323 @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionManager.md @weixin_41848015 @libing23232323 @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-AdsBlockManager.md @aohui @yaomingliu @HelloShuo
+zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-AIPageCommand.md @zourongchun @kurli1 @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-BackForwardCacheOptions.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-BackForwardCacheSupportedFeatures.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/arkts-apis-webview-BackForwardList.md @aohui @yaomingliu @HelloShuo
@@ -3043,20 +3079,20 @@ zh-cn/application-dev/reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md
 zh-cn/application-dev/reference/apis-arkweb/capi-web.md @aohui @zourongchun @yaomingliu @zhufenghao @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/errorcode-webview.md @zourongchun @kurli1 @HelloShuo
 zh-cn/application-dev/reference/apis-arkweb/Readme-CN.md @yp99ustc @kurli1 @HelloShuo
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-asset-api-h.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-asset-type-h.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assetapi.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-attr.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-blob.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-result.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-resultset.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-syncresult.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-value.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/errorcode-asset.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/js-apis-asset-sys.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/js-apis-asset.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/reference/apis-asset-store-kit/Readme-CN.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-asset-api-h.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-asset-type-h.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assetapi.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-attr.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-blob.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-result.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-resultset.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-syncresult.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype-asset-value.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/capi-assettype.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/errorcode-asset.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/js-apis-asset-sys.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/js-apis-asset.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/reference/apis-asset-store-kit/Readme-CN.md @HarMonkey @wkr321_ent @zengyawen
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md @zyy0412 @weixin_41398971 @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md @songshenke @caixuejiang @hao-liangfei @zhanganxiang @w_Machine_cc
 zh-cn/application-dev/reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md @tom_guo @trytocalm @w_Machine_cc
@@ -3273,6 +3309,7 @@ zh-cn/application-dev/reference/apis-backgroundtasks-kit/js-apis-resourceschedul
 zh-cn/application-dev/reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md @xufu7 @zhouben25 @HelloCrease
 zh-cn/application-dev/reference/apis-backgroundtasks-kit/js-apis-resourceschedule-deviceStandby-sys.md @geng_wd @HelloCrease
 zh-cn/application-dev/reference/apis-backgroundtasks-kit/js-apis-resourceschedule-deviceUsageStatistics-sys.md @xufu7 @zhouben25 @HelloCrease
+zh-cn/application-dev/reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler-sys.md @xufu7 @zhouben25 @HelloCrease
 zh-cn/application-dev/reference/apis-backgroundtasks-kit/js-apis-resourceschedule-workScheduler.md @xufu7 @zhouben25 @HelloCrease
 zh-cn/application-dev/reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md @xufu7 @zhouben25 @HelloCrease
 zh-cn/application-dev/reference/apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionContext-sys.md @xufu7 @zhouben25 @HelloCrease
@@ -3481,6 +3518,7 @@ zh-cn/application-dev/reference/apis-camera-kit/capi-camera-h.md @qano @leo_ysl 
 zh-cn/application-dev/reference/apis-camera-kit/capi-camera-input-h.md @qano @leo_ysl @w_Machine_cc
 zh-cn/application-dev/reference/apis-camera-kit/capi-camera-manager-h.md @qano @leo_ysl @w_Machine_cc
 zh-cn/application-dev/reference/apis-camera-kit/capi-capture-session-h.md @qano @leo_ysl @w_Machine_cc
+zh-cn/application-dev/reference/apis-camera-kit/capi-metadata-object-ext-h.md @qano @leo_ysl @w_Machine_cc
 zh-cn/application-dev/reference/apis-camera-kit/capi-metadata-output-h.md @qano @leo_ysl @w_Machine_cc
 zh-cn/application-dev/reference/apis-camera-kit/capi-oh-camera-camera-autodeviceswitchstatusinfo.md @qano @leo_ysl @w_Machine_cc
 zh-cn/application-dev/reference/apis-camera-kit/capi-oh-camera-camera-captureendinfo.md @qano @leo_ysl @w_Machine_cc
@@ -3517,7 +3555,9 @@ zh-cn/application-dev/reference/apis-camera-kit/capi-oh-camera-camerainput-callb
 zh-cn/application-dev/reference/apis-camera-kit/capi-oh-camera-cameramanager-callbacks.md @qano @leo_ysl @w_Machine_cc
 zh-cn/application-dev/reference/apis-camera-kit/capi-oh-camera-capturesession-callbacks.md @qano @leo_ysl @w_Machine_cc
 zh-cn/application-dev/reference/apis-camera-kit/capi-oh-camera-metadataoutput-callbacks.md @qano @leo_ysl @w_Machine_cc
+zh-cn/application-dev/reference/apis-camera-kit/capi-oh-camera-oh-camera-metadataobjectext.md @qano @leo_ysl @w_Machine_cc
 zh-cn/application-dev/reference/apis-camera-kit/capi-oh-camera-oh-camera-physicalaperture.md @qano @leo_ysl @w_Machine_cc
+zh-cn/application-dev/reference/apis-camera-kit/capi-oh-camera-oh-camera-rect-ext.md @qano @leo_ysl @w_Machine_cc
 zh-cn/application-dev/reference/apis-camera-kit/capi-oh-camera-oh-camera-zoompointinfo.md @qano @leo_ysl @w_Machine_cc
 zh-cn/application-dev/reference/apis-camera-kit/capi-oh-camera-oh-camera-zoomrange.md @qano @leo_ysl @w_Machine_cc
 zh-cn/application-dev/reference/apis-camera-kit/capi-oh-camera-oh-photonative.md @qano @leo_ysl @w_Machine_cc
@@ -3733,7 +3773,7 @@ zh-cn/application-dev/reference/apis-data-protection-kit/errorcode-dlp.md @winni
 zh-cn/application-dev/reference/apis-data-protection-kit/js-apis-dlppermission-sys.md @winnieHuYu @QRF @zengyawen
 zh-cn/application-dev/reference/apis-data-protection-kit/js-apis-dlppermission.md @winnieHuYu @QRF @zengyawen
 zh-cn/application-dev/reference/apis-data-protection-kit/js-apis-dlpsetdlpfeature-sys.md @winnieHuYu @QRF @zengyawen
-zh-cn/application-dev/reference/apis-data-protection-kit/js-apis-identifySensitiveContent.md @winnieHuYu @QRF @zengyawen
+zh-cn/application-dev/reference/apis-data-protection-kit/js-apis-identifySensitiveContent.md @Yuan_bys @zhengdu_628 @zengyawen
 zh-cn/application-dev/reference/apis-data-protection-kit/Readme-CN.md @winnieHuYu @QRF @zengyawen
 zh-cn/application-dev/reference/apis-device-certificate-kit/capi-certmanager.md @wxb_code @chande @zengyawen
 zh-cn/application-dev/reference/apis-device-certificate-kit/capi-certmanagertype-oh-cm-blob.md @wxb_code @chande @zengyawen
@@ -4337,13 +4377,13 @@ zh-cn/application-dev/reference/apis-media-kit/capi-videoprocessing-videoprocess
 zh-cn/application-dev/reference/apis-media-kit/capi-videoprocessing.md @wang-haizhou6 @HmQQQ @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/errorcode-media.md @wang-haizhou6 @HmQQQ @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/js-apis-inner-multimedia-soundPool-sys.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md @wang-haizhou6 @HmQQQ @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-kit/js-apis-media-sys.md @zzs_911 @stupig001 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md @hanzhengshi @chris2981 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-kit/js-apis-media-sys.md @chenkun613227 @yxc2 @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-kit/Readme-CN.md @wang-haizhou6 @zzs_911 @HmQQQ @stupig001 @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md @yixiaoff @liweilu1 @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-library-kit/arkts-apis-photoAccessHelper-Album.md @yixiaoff @liweilu1 @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-library-kit/arkts-apis-photoAccessHelper-class.md @xuchangda @yixiaoff @guxinggang @liweilu1 @w_Machine_cc
-zh-cn/application-dev/reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md @yixiaoff @liweilu1 @w_Machine_cc
+zh-cn/application-dev/reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md @zhaochang14 @liweilu1 @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-library-kit/arkts-apis-photoAccessHelper-f.md @yixiaoff @liweilu1 @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md @yixiaoff @liweilu1 @w_Machine_cc
 zh-cn/application-dev/reference/apis-media-library-kit/arkts-apis-photoAccessHelper-i.md @yixiaoff @liweilu1 @w_Machine_cc
@@ -4416,6 +4456,7 @@ zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-m
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-motion.md @dilligencer @zou_ye @hu-zhiqiong
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-onScreen-sys.md @dilligencer @wyxpku @hu-zhiqiong
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-spatialAwareness-sys.md @dilligencer @zou_ye @hu-zhiqiong
+zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-userStatus-sys.md @dilligencer @wyxpku @hu-zhiqiong
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-awareness-userStatus.md @dilligencer @zou_ye @hu-zhiqiong
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/js-apis-stationary.md @dilligencer @zou_ye @hu-zhiqiong
 zh-cn/application-dev/reference/apis-multimodalawareness-kit/Readme-CN.md @dilligencer @zou_ye @hu-zhiqiong
@@ -4762,7 +4803,7 @@ zh-cn/application-dev/reference/common/syscap__ndk_8h.md 无
 zh-cn/application-dev/reference/native-lib/capi-vulkan-nativewindow.md @andrew1993 @ext4FAT1 @ge-yafang
 zh-cn/application-dev/reference/native-lib/capi-vulkan-oh-nativebuffer.md @andrew1993 @ext4FAT1 @ge-yafang
 zh-cn/application-dev/reference/native-lib/capi-vulkan-ohbufferhandle.md @andrew1993 @ext4FAT1 @ge-yafang
-zh-cn/application-dev/reference/native-lib/capi-vulkan-ohos-h.md @andrew1993 @ext4FAT1 @ge-yafang
+zh-cn/application-dev/reference/native-lib/capi-vulkan-ohos-h.md @GaoPan_t @vvan9cha0 @ge-yafang
 zh-cn/application-dev/reference/native-lib/capi-vulkan-vkexternalformatohos.md @andrew1993 @ext4FAT1 @ge-yafang
 zh-cn/application-dev/reference/native-lib/capi-vulkan-vkimportnativebufferinfoohos.md @andrew1993 @ext4FAT1 @ge-yafang
 zh-cn/application-dev/reference/native-lib/capi-vulkan-vkmemorygetnativebufferinfoohos.md @andrew1993 @ext4FAT1 @ge-yafang
@@ -4823,27 +4864,28 @@ zh-cn/application-dev/security/AccessToken/request-user-authorization.md @xia-bu
 zh-cn/application-dev/security/AccessToken/restricted-permissions.md @xia-bubai @linshuqing @hehehe-li @zengyawen
 zh-cn/application-dev/security/AccessToken/savebutton.md @harylee @linshuqing @hehehe-li @zengyawen
 zh-cn/application-dev/security/AccessToken/security-component-overview.md @harylee @linshuqing @hehehe-li @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-as-user-sys.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-add.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-add.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-remove.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-update.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-group-access-control.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-query-auth.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-query.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-remove.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-sync.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-js-update.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-native-add.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-native-group-access-control.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-native-query.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-native-remove.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-native-sync.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-native-update.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-scenario1.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-scenario2.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/asset-store-kit-overview.md @yhf @wkr321_ent @zengyawen
-zh-cn/application-dev/security/AssetStoreKit/Readme-CN.md @yhf @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-as-user-sys.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-glossary.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-add.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-add.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-remove.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-update.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-group-access-control.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-query-auth.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-query.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-remove.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-sync.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-js-update.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-native-add.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-native-group-access-control.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-native-query.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-native-remove.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-native-sync.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-native-update.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-scenario1.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-scenario2.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/asset-store-kit-overview.md @HarMonkey @wkr321_ent @zengyawen
+zh-cn/application-dev/security/AssetStoreKit/Readme-CN.md @HarMonkey @wkr321_ent @zengyawen
 zh-cn/application-dev/security/CryptoArchitectureKit/crypto-3des-sym-encrypt-decrypt-ecb-ndk.md @zxz--3 @lanming @zengyawen
 zh-cn/application-dev/security/CryptoArchitectureKit/crypto-3des-sym-encrypt-decrypt-ecb.md @zxz--3 @lanming @zengyawen
 zh-cn/application-dev/security/CryptoArchitectureKit/crypto-aes-decryption-error-faq.md @zxz--3 @lanming @zengyawen
@@ -4909,6 +4951,7 @@ zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-random-numb
 zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-random-number.md @zxz--3 @lanming @zengyawen
 zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-sym-key-randomly-ndk.md @zxz--3 @lanming @zengyawen
 zh-cn/application-dev/security/CryptoArchitectureKit/crypto-generate-sym-key-randomly.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/CryptoArchitectureKit/crypto-kem-encapsulate-decapsulate.md @zxz--3 @lanming @zengyawen
 zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-overview.md @zxz--3 @lanming @zengyawen
 zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-using-dh-ndk.md @zxz--3 @lanming @zengyawen
 zh-cn/application-dev/security/CryptoArchitectureKit/crypto-key-agreement-using-dh.md @zxz--3 @lanming @zengyawen
@@ -4968,6 +5011,7 @@ zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sm4-sym-encrypt-decr
 zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md @zxz--3 @lanming @zengyawen
 zh-cn/application-dev/security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md @zxz--3 @lanming @zengyawen
 zh-cn/application-dev/security/CryptoArchitectureKit/Readme-CN.md @zxz--3 @lanming @zengyawen
+zh-cn/application-dev/security/DataProtectionKit/dlp-glossary.md @winnieHuYu @QRF @zengyawen
 zh-cn/application-dev/security/DataProtectionKit/dlp-guidelines-ndk.md @winnieHuYu @QRF @zengyawen
 zh-cn/application-dev/security/DataProtectionKit/dlp-guidelines.md @winnieHuYu @QRF @zengyawen
 zh-cn/application-dev/security/DataProtectionKit/dlp-overview.md @winnieHuYu @QRF @zengyawen
@@ -5018,6 +5062,7 @@ zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-key-generatio
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-key-import-arkts.md @wutitian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-ndk.md @wutiantian-gitee @HighLowWorld @zengyawen
+zh-cn/application-dev/security/UniversalKeystoreKit/huks-extension-set-property-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-external-hardware-key-management-overview.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-group-key-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-group-key-ndk.md @wutiantian-gitee @HighLowWorld @zengyawen
@@ -5068,6 +5113,7 @@ zh-cn/application-dev/security/UniversalKeystoreKit/huks-ukey-best-dev.md @wutia
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-ukey-general-query-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-ukey-general-query-ndk.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-ukey-general-query-overview.md @wutiantian-gitee @HighLowWorld @zengyawen
+zh-cn/application-dev/security/UniversalKeystoreKit/huks-ukey-get-error-info-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-ukey-pin-authentication-arkts-sys.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-ukey-pin-authentication-management-overview.md @wutiantian-gitee @HighLowWorld @zengyawen
 zh-cn/application-dev/security/UniversalKeystoreKit/huks-ukey-signing-signature-verification-arkts.md @wutiantian-gitee @HighLowWorld @zengyawen
@@ -5111,6 +5157,7 @@ zh-cn/application-dev/tools/cem-tool.md @peixu @dongqingran @wulong158 @fang-jin
 zh-cn/application-dev/tools/command-line-tools-overview.md @jinqiuheng @lingminghw
 zh-cn/application-dev/tools/devicedebug-tool.md @wangfenging @zl_startup @jinqiuheng
 zh-cn/application-dev/tools/edm-tool.md @huanleima @liuzuming @Brilliantry_Rui
+zh-cn/application-dev/tools/js-rawheap-translator.md @sunzibo @fang-jinxu
 zh-cn/application-dev/tools/lldb-tool-sys.md @Maxi_241437 @da_wei_li11 @fang-jinxu
 zh-cn/application-dev/tools/mediatool.md @yixiaoff @liweilu1 @w_Machine_cc
 zh-cn/application-dev/tools/network-cfg.md @wmyao_mm @guo-min_net @zhang_yixin13
@@ -5124,16 +5171,16 @@ zh-cn/application-dev/tools/restool.md @liule_123 @buda_wy @ningningW
 zh-cn/application-dev/tools/toybox.md @yan-mingzhen @liveery @jinqiuheng
 zh-cn/application-dev/tools/unpacking-tool.md @jsjzju @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-advanced-components-arcbutton.md @liyi0309 @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-animation-smoothing.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-animation.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-animator.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-animation-smoothing.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-animation.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-animator.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-arkui-frameNode-faq.md @wangjunman1 @sunbees @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-attribute-animation-apis.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-attribute-animation-overview.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-attribute-animation-overview.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-attribute-modifier-faq.md @wangjunman1 @sunbees @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-base-dialog-overview.md @houguobiao @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-blur-effect.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-clip-shape.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-blur-effect.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-clip-shape.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-color-effect.md @CCFFWW @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-common-attributes-content-modifier.md @liyi0309 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-common-components-button.md @liyi0309 @Brilliantry_Rui
@@ -5150,11 +5197,11 @@ zh-cn/application-dev/ui/arkts-common-events-crown-event.md @yihao-lin @piggyguy
 zh-cn/application-dev/ui/arkts-common-events-drag-event.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-common-events-focus-event.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-component-animation.md @hehongyang3 @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-contentcover-page.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-contentcover-page.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-create-overlaymanager.md @liyi0309 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-create-toast.md @liyi0309 @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-curve-overview.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-custom-attribute-animation.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-curve-overview.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-custom-attribute-animation.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-custom-env-property.md @liwenzhen3 @s10021109 @zhang_yixin13
 zh-cn/application-dev/ui/arkts-dialog-controller.md @houguobiao @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-dialog-focusable.md @houguobiao @Brilliantry_Rui
@@ -5177,6 +5224,7 @@ zh-cn/application-dev/ui/arkts-gesture-events-multi-level-gesture.md @yihao-lin 
 zh-cn/application-dev/ui/arkts-gesture-events-single-gesture.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-global-interface.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-graphics-display.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-immersive-light-sense.md @H-xinwei @zhanghaibo0 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-inspector-overview.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-interaction-basic-principles.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-interaction-capability-overview.md @yihao-lin @piggyguy @Brilliantry_Rui
@@ -5193,7 +5241,8 @@ zh-cn/application-dev/ui/arkts-isolated-components-sys.md @dutie123 @Brilliantry
 zh-cn/application-dev/ui/arkts-layout-debug.md 无
 zh-cn/application-dev/ui/arkts-layout-development-arcswiper.md @Hu_ZeQi @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-layout-development-create-arclist.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-layout-development-create-grid.md @zcdqs @rongShao-Z @guozejun @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-layout-development-create-grid.md @rongShao-Z @guozejun @zcdqs @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-layout-development-create-lazy-layout.md @yylong @rongShao-Z @yangcan18 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-layout-development-create-list.md @yylong @rongShao-Z @wind_ @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-layout-development-create-looping.md @Hu_ZeQi @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-layout-development-create-waterflow.md @zcdqs @rongShao-Z @guozejun @Brilliantry_Rui
@@ -5205,12 +5254,12 @@ zh-cn/application-dev/ui/arkts-layout-development-media-query.md @zju_ljz @lansh
 zh-cn/application-dev/ui/arkts-layout-development-overview.md @fenglinbailu @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-layout-development-relative-layout.md @fenglinbailu @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-layout-development-stack-layout.md @fenglinbailu @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-list-grid-development-overview.md @yylong @zcdqs @rongShao-Z @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-list-grid-development-overview.md @yylong @rongShao-Z @yangcan18 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-manage-components-visibility.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-manage-keyboard.md @tzcurtain @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-menu-overview.md @H-xinwei @zhanghaibo0 @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-modal-overview.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-modal-transition.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-modal-overview.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-modal-transition.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-navigation-animation-faq.md @mayaolll @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-navigation-animation.md @mayaolll @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-navigation-architecture.md @mayaolll @jiangdayuan @Brilliantry_Rui
@@ -5221,22 +5270,22 @@ zh-cn/application-dev/ui/arkts-navigation-navdestination.md @mayaolll @jiangdayu
 zh-cn/application-dev/ui/arkts-navigation-split-mode.md @mayaolll @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-navigation-tabs.md @Hu_ZeQi @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-page-transition-animation.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-particle-animation.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-particle-animation.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-popup-and-menu-components-menu.md @H-xinwei @zhanghaibo0 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-popup-and-menu-components-popup.md @liyi0309 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-popup-and-menu-components-uicontext-menu.md @H-xinwei @zhanghaibo0 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-popup-and-menu-components-uicontext-popup.md @liyi0309 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-popup-component-faq.md @liyi0309 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-popup-overview.md @liyi0309 @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-rotation-transition-animation.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-rotation-transition-animation.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-router-to-navigation.md @mayaolll @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-routing.md @tsj_20201 @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-select-component-faq.md @liyi0309 @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-shadow-effect.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-shape-overview.md @sd-wu @hehongyang3 @sunbees @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-shared-element-transition.md @CCFFWW @ge-yafang
+zh-cn/application-dev/ui/arkts-shadow-effect.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-shape-overview.md @sd-wu @hehongyang3 @sunbees @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-shared-element-transition.md @hehongyang3 @ge-yafang
 zh-cn/application-dev/ui/arkts-sheet-page.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-spring-curve.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-spring-curve.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-stability-crash-issues.md @caoruihong @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-stability-freeze-issues.md @caoruihong @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-stability-guide.md @caoruihong @dutie123 @Brilliantry_Rui
@@ -5244,8 +5293,8 @@ zh-cn/application-dev/ui/arkts-styled-string.md @hddgzw @xiangyuan6 @Brilliantry
 zh-cn/application-dev/ui/arkts-text-faq.md @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-text-image-layout.md @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-text-introduction.md @xiangyuan6 @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-traditional-curve.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-transition-overview.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-traditional-curve.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-transition-overview.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-ui-development-overview.md @piggyguy @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-ui-extension-components-sys.md @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-uicontext-component-snapshot.md @yihao-lin @piggyguy @Brilliantry_Rui
@@ -5279,10 +5328,11 @@ zh-cn/application-dev/ui/js-framework-syntax-css.md @sunfei2021 @Brilliantry_Rui
 zh-cn/application-dev/ui/js-framework-syntax-hml.md @sunfei2021 @Brilliantry_Rui
 zh-cn/application-dev/ui/js-framework-syntax-js.md @sunfei2021 @Brilliantry_Rui
 zh-cn/application-dev/ui/multi-thread-ui-build-faq.md @wangyang2022 @Brilliantry_Rui
-zh-cn/application-dev/ui/napi-xcomponent-guidelines.md @zjsxstar @dutie123 @Brilliantry_Rui
+zh-cn/application-dev/ui/napi-xcomponent-guidelines.md @pengzhiwen3 @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-access-the-arkts-page.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-accessibility-xcomponent.md @wangyinhua @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-add-component-events.md @yihao-lin @piggyguy @Brilliantry_Rui
+zh-cn/application-dev/ui/ndk-add-event-response.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-bind-gesture-events.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-bind-input-events.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-build-custom-components.md @wangyang2022 @Brilliantry_Rui
@@ -5306,8 +5356,8 @@ zh-cn/application-dev/ui/ndk-scope-task.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-styled-string.md @hddgzw @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-swiper.md @Hu_ZeQi @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-textarea-event.md @kangshihui @xiangyuan6 @Brilliantry_Rui
-zh-cn/application-dev/ui/ndk-use-animation-scene.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/ndk-use-animation.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/ui/ndk-use-animation-scene.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/ui/ndk-use-animation.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-use-text-component.md @hddgzw @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/ui/ndk-waterflow.md @zcdqs @rongShao-Z @guozejun @Brilliantry_Rui
 zh-cn/application-dev/ui/Readme-CN.md @tsj_20201 @Brilliantry_Rui
@@ -5315,14 +5365,14 @@ zh-cn/application-dev/ui/theme_skinning.md @fangzhiyuan1 @Brilliantry_Rui
 zh-cn/application-dev/ui/ui-dark-light-color-adaptation.md @fangzhiyuan1 @Brilliantry_Rui
 zh-cn/application-dev/ui/ui-ide-previewer.md @xin11112 @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/ui-inspector-profiler.md @lushi871202 @Brilliantry_Rui
-zh-cn/application-dev/ui/ui-js-animate-attribute-style.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/ui-js-animate-background-position-style.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/ui/ui-js-animate-attribute-style.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/ui/ui-js-animate-background-position-style.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-animate-component.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/ui-js-animate-dynamic-effects.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/ui-js-animate-frame.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/ui-js-animate-svg.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/ui-js-animate-transform.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/ui/ui-js-building-ui-animation.md @CCFFWW @Brilliantry_Rui
+zh-cn/application-dev/ui/ui-js-animate-dynamic-effects.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/ui/ui-js-animate-frame.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/ui/ui-js-animate-svg.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/ui/ui-js-animate-transform.md @hehongyang3 @Brilliantry_Rui
+zh-cn/application-dev/ui/ui-js-building-ui-animation.md @hehongyang3 @Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-building-ui-component.md @fenglinbailu @lanshouren @Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-building-ui-event.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-building-ui-interactions.md @yihao-lin @piggyguy @Brilliantry_Rui
@@ -5450,6 +5500,7 @@ zh-cn/application-dev/ui/state-management/arkts-watch.md @jiyujia926 @zhangboren
 zh-cn/application-dev/ui/state-management/arkts-wrapBuilder.md @zhangboren @zhang_yixin13
 zh-cn/application-dev/ui/state-management/troubleshooting-state-manage.md @liwenzhen3 @zhangboren @zhang_yixin13
 zh-cn/application-dev/web/app-takeovers-web-media.md @zhangyao75477 @gzweioh @HelloShuo
+zh-cn/application-dev/web/arkweb-glossary.md @zourongchun @zhufenghao @HelloShuo
 zh-cn/application-dev/web/arkweb-ndk-jsbridge.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/arkweb-ndk-page-data-channel.md @aohui @yaomingliu @HelloShuo
 zh-cn/application-dev/web/Readme-CN.md @zourongchun @kurli1 @HelloShuo
@@ -5510,27 +5561,34 @@ zh-cn/application-dev/web/web_full_screen.md @zhangyao75477 @gzweioh @HelloShuo
 zh-cn/application-dev/webgl/Readme-CN.md @samhu1989 @shi-yang-2012 @ge-yafang
 zh-cn/application-dev/webgl/webgl-2d-guidelines.md @samhu1989 @shi-yang-2012 @ge-yafang
 zh-cn/application-dev/windowmanager/application-adaptation-freeform-window.md @hanxuebing1 @chengyiyi @ge-yafang @qinliwen0417
-zh-cn/application-dev/windowmanager/application-window-as.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/windowmanager/application-window-fa.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/windowmanager/application-window-stage.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/windowmanager/brightness-control.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/application-window-as.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/application-window-fa.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/application-window-stage.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/brightness-control.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/dialog-window-guide.md @fei_1007 @gcw_sPCsris4 @qinliwen0417 @ge-yafang
 zh-cn/application-dev/windowmanager/freeform-window-overview.md @hanxuebing1 @chengyiyi @ge-yafang @qinliwen0417
-zh-cn/application-dev/windowmanager/immersive-window-feature.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/windowmanager/launch-page-config.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/global-floating-window-guide.md @fei_1007 @gcw_sPCsris4 @qinliwen0417 @ge-yafang
+zh-cn/application-dev/windowmanager/immersive-window-feature.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/launch-page-config.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
 zh-cn/application-dev/windowmanager/launch-page-overview.md @xiaochaobu @tenMiles @ge-yafang @qinliwen0417
 zh-cn/application-dev/windowmanager/launch-page-resource-config.md @xiaochaobu @tenMiles @ge-yafang @qinliwen0417
-zh-cn/application-dev/windowmanager/native-window-event-filter.md @waterwin @stupidb @ge-yafang @qinliwen0417
-zh-cn/application-dev/windowmanager/Readme-CN.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/windowmanager/screenshot-and-privacy-mode.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/windowmanager/system-window-stage-sys.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/native-window-event-filter.md @fei_1007 @stupidb @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/Readme-CN.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/screenshot-and-privacy-mode.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/subwindow-guide.md @fei_1007 @gcw_sPCsris4 @qinliwen0417 @ge-yafang
+zh-cn/application-dev/windowmanager/system-window-stage-sys.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
 zh-cn/application-dev/windowmanager/window-animation.md @gcw_bkPrirku @liaojunhua @ge-yafang @qinliwen0417
-zh-cn/application-dev/windowmanager/window-config-m.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-appearance.md @fei_1007 @gcw_sPCsris4 @qinliwen0417 @ge-yafang
+zh-cn/application-dev/windowmanager/window-config-m.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
 zh-cn/application-dev/windowmanager/window-faqs.md @JUGaaab @ki_ja @ge-yafang @qinliwen0417
-zh-cn/application-dev/windowmanager/window-focus-guide.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-focus-guide.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
 zh-cn/application-dev/windowmanager/window-layout.md @yyuehao @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-lifecycle.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-log-faqs.md @liangryan @ge-yafang @qinliwen0417
 zh-cn/application-dev/windowmanager/window-mode-overview.md @yyuehao @ge-yafang @qinliwen0417
 zh-cn/application-dev/windowmanager/window-overview.md @Pakoo007 @ki_ja @ge-yafang @qinliwen0417
 zh-cn/application-dev/windowmanager/window-rotation-practical-case.md @lizihao_73 @wambers584 @ge-yafang @qinliwen0417
-zh-cn/application-dev/windowmanager/window-rotation.md @waterwin @nyankomiya @qinliwen0417 @ge-yafang
-zh-cn/application-dev/windowmanager/window-terminology.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
-zh-cn/application-dev/windowmanager/window-zorder-guide.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-rotation.md @fei_1007 @gcw_sPCsris4 @qinliwen0417 @ge-yafang
+zh-cn/application-dev/windowmanager/window-terminology.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-type-overview.md @fei_1007 @gcw_sPCsris4 @qinliwen0417 @ge-yafang
+zh-cn/application-dev/windowmanager/window-zorder-guide.md @fei_1007 @gcw_sPCsris4 @ge-yafang @qinliwen0417

@@ -220,7 +220,10 @@ setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 
 通过本接口设置，或者通过[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口添加存储类型的USB设备，均可禁用USB存储设备。推荐使用后者。
 
-**需要权限：** API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_USB，API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_USB 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS（调用[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)接口将应用激活为自带设备管理应用）。
+**需要权限：** 
+
+- API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_USB
+- API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_USB 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS（调用[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)接口将应用激活为自带设备管理应用）。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -273,7 +276,10 @@ getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 
 获取USB存储设备访问策略。
 
-**需要权限：** API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_USB，API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_USB 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS（调用[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)接口将应用激活为自带设备管理应用）。
+**需要权限：**
+
+- API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_USB
+- API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_USB 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS（调用[startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)接口将应用激活为自带设备管理应用）。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -327,6 +333,10 @@ try {
 addDisallowedUsbDevices(admin: Want, usbDevices: Array\<UsbDeviceType>): void
 
 添加禁止使用的USB设备类型。
+
+> **说明**：
+>
+> 推荐使用[addDisallowedPermissiveUsbDevices](#usbmanageradddisallowedpermissiveusbdevices)接口。
 
 以下情况下，调用本接口会报策略冲突：
 
@@ -503,7 +513,7 @@ try {
 
 addDisallowedPermissiveUsbDevices(admin: Want, usbDevices: Array\<PermissiveUsbDeviceType>): void
 
-添加禁止使用的USB设备类型。与[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口不同的是，本接口支持可以不按照[defined-class-codes](https://www.usb.org/defined-class-codes)标准进行匹配。对已连接的USB设备热生效，无需重新插拔，例如USB线控耳机正常使用时，调用本接口禁用该耳机，会导致耳机不可用。
+添加禁止使用的USB设备类型。与[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口不同的是，本接口可以不按照[defined-class-codes](https://www.usb.org/defined-class-codes)标准进行匹配。对已连接的USB设备热生效，无需重新插拔，例如USB线控耳机正常使用时，调用本接口禁用该耳机，会导致耳机不可用。
 
 以下情况下，调用本接口会报策略冲突：
 
@@ -527,7 +537,7 @@ addDisallowedPermissiveUsbDevices(admin: Want, usbDevices: Array\<PermissiveUsbD
 | 参数名     | 类型                                                     | 必填 | 说明 |
 | ---------- | ------------------------------------------------------- | ---- | ---- |
 | admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| usbDevices | Array<[PermissiveUsbDeviceType](#permissiveusbdevicetype)> | 是   | 要添加的USB设备类型的数组，支持部分字段匹配。USB设备禁用名单数组长度上限为1000，若当前禁用名单中已有500个USB设备ID，则只允许再添加500个。 |
+| usbDevices | Array\<[PermissiveUsbDeviceType](#permissiveusbdevicetype)> | 是   | 要添加的USB设备类型的数组，支持部分字段匹配。USB设备禁用名单数组长度上限为1000，若当前禁用名单中已有500个USB设备ID，则只允许再添加500个。 |
 
 **错误码**：
 
@@ -553,13 +563,13 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-  // 禁用USB存储设备
+  // 禁用USB存储设备（以实际USB设备类型参数为准）
   let usbDevices1: Array<usbManager.PermissiveUsbDeviceType> = [{
     baseClass: 8
   }];
   usbManager.addDisallowedPermissiveUsbDevices(wantTemp, usbDevices1);
 
-  // 禁用USB线控耳机
+  // 禁用USB线控耳机（以实际USB设备类型参数为准）
   let usbDevices2: Array<usbManager.PermissiveUsbDeviceType> = [{
     baseClass: 0,
     subClass: 0,
@@ -568,7 +578,7 @@ try {
   }];
   usbManager.addDisallowedPermissiveUsbDevices(wantTemp, usbDevices2);
 
-  // 禁用USB线控键盘输入
+  // 禁用USB线控键盘输入（以实际USB设备类型参数为准）
   let usbDevices3: Array<usbManager.PermissiveUsbDeviceType> = [{
     baseClass: 3,
     subClass: 1,
@@ -586,7 +596,7 @@ try {
 
 removeDisallowedPermissiveUsbDevices(admin: Want, usbDevices: Array\<PermissiveUsbDeviceType>): void
 
-移除禁止使用的USB设备类型。
+移除通过[addDisallowedPermissiveUsbDevices](#usbmanageradddisallowedpermissiveusbdevices)接口禁用的USB设备类型。被移除的USB设备类型可恢复正常使用。
 
 **起始版本：** 26.0.0
 
@@ -603,7 +613,7 @@ removeDisallowedPermissiveUsbDevices(admin: Want, usbDevices: Array\<PermissiveU
 | 参数名     | 类型                                                       | 必填 | 说明 |
 | ---------- | --------------------------------------------------------- | ---- | ----- |
 | admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md)   | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| usbDevices | Array<[PermissiveUsbDeviceType](#permissiveusbdevicetype)> | 是   | 要移除的USB设备类型的数组。 |
+| usbDevices | Array\<[PermissiveUsbDeviceType](#permissiveusbdevicetype)> | 是   | 要移除的USB设备类型的数组。 |
 
 **错误码**：
 
@@ -642,7 +652,7 @@ try {
 
 getDisallowedPermissiveUsbDevices(admin: Want | null): Array\<PermissiveUsbDeviceType>
 
-获取禁止使用的USB设备类型。
+获取通过[addDisallowedPermissiveUsbDevices](#usbmanageradddisallowedpermissiveusbdevices)接口禁用的USB设备类型。
 
 **起始版本：** 26.0.0
 
@@ -662,7 +672,7 @@ getDisallowedPermissiveUsbDevices(admin: Want | null): Array\<PermissiveUsbDevic
 
 | 类型                                                     | 说明                         |
 | -------------------------------------------------------- | ---------------------------- |
-| Array<[PermissiveUsbDeviceType](#permissiveusbdevicetype)> | 禁止使用的USB设备类型数组。 |
+| Array\<[PermissiveUsbDeviceType](#permissiveusbdevicetype)> | 禁止使用的USB设备类型数组。 |
 
 **错误码**：
 
@@ -708,7 +718,7 @@ USB设备ID信息。
 
 USB设备类型信息。
 
-可通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取已接入主设备的USB设备列表，需在返回值列表中查找当前设备。
+可通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取已接入主设备的USB设备列表，并从返回值列表中查找当前设备的类型信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -746,9 +756,13 @@ USB描述符的枚举。
 
 USB设备类型信息，支持部分字段匹配。
 
-与[UsbDeviceType](#usbdevicetype14)相比，本接口的subClass、protocol、descriptor字段为可选字段，支持仅根据baseClass字段进行匹配，实现更灵活的USB设备禁用策略。
+- 与[UsbDeviceType](#usbdevicetype14)相比，本接口的subClass、protocol、descriptor字段为可选字段，实现更灵活的USB设备禁用策略。
 
-可通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取已接入主设备的USB设备列表，需在返回值列表中查找当前设备。
+- 支持仅根据baseClass字段进行匹配。
+
+- 支持配置多个字段，多个字段同时满足才匹配。
+
+- 可通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取已接入主设备的USB设备列表，并从返回值列表中查找当前设备的类型信息。
 
 **起始版本：** 26.0.0
 

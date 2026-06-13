@@ -392,4 +392,4 @@ export struct AccessibilityText {
 }
 ```
 
-![zh-cn_image_0000001745415556](figures/zh-cn_image_0000001745415556.jpg)
+![zh-cn_image_0000001745415556](figures/Supporting-Accessibility.jpg)

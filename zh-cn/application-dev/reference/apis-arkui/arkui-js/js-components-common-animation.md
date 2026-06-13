@@ -111,7 +111,7 @@
 ```
 
 
-![zh-cn_image_0000001173324797](figures/zh-cn_image_0000001173324797.gif)
+![Animation-Styles02](figures/Animation-Styles02.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -160,7 +160,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001127285034](figures/zh-cn_image_0000001127285034.gif)
+![animation-styles](figures/animation-styles.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -219,7 +219,7 @@ export default {
 ```
 
 
-![zh-cn_image_0000001152833768](figures/zh-cn_image_0000001152833768.gif)
+![animation-styles01](figures/animation-styles01.gif)
 
 
 >  **说明：**
@@ -227,4 +227,4 @@ export default {
 >
 >  steps函数的end和start含义如下图所示。
 >
->  ![zh-cn_image_0000001127125220](figures/zh-cn_image_0000001127125220.png)
+>  ![steps](figures/steps.png)

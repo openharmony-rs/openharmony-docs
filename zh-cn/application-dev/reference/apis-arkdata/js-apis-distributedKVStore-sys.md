@@ -308,9 +308,9 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 
 **参数：**
 
-| 参数名     | 类型                                                     | 必填 | 说明                                                         |
-| ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，当此参数为null时，应定义处理逻辑。              |
+| 参数名     | 类型                                                     | 必填 | 说明                                                        |
+| ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，不允许为null。              |
 | callback   | AsyncCallback&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt;   | 是   | 回调函数，获取与指定Predicates对象匹配的KVStoreResultSet对象。 |
 
 **错误码：**

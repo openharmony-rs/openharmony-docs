@@ -22,6 +22,26 @@
 
 ## 接口
 
+### Polyline
+
+new Polyline(options?: PolylineOptions)
+
+用于绘制折线的构造函数。 
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| options | [PolylineOptions](ts-drawing-components-polyline.md#polylineoptions18对象说明) | 否 | Polyline绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。|
+
+### Polyline
+
 Polyline(options?: PolylineOptions)
 
 用于绘制折线的构造函数。 
@@ -29,6 +49,8 @@ Polyline(options?: PolylineOptions)
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 

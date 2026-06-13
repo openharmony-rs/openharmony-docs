@@ -11,7 +11,7 @@
 
 样例中可以看到GlobalSign自签名了证书，GlobalSign也签发了GlobalSign RSA OV SSL CA 2018的证书，GlobalSign RSA OV SSL CA 2018又签发了第三级证书。
 
-![zh-cn_image_0000001746997074](figures/zh-cn_image_0000001746997074.png)
+![certificate-chain-example](figures/certificate-chain-example.png)
 
 开发者可以参考示例将已有的多个证书构建出证书链数据。
 

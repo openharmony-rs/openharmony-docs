@@ -865,7 +865,7 @@ promptAction.showDialog({
   })
 ```
 
-![zh-cn_image_0002](figures/zh-cn_image_0002.gif)
+![zh-cn_image_0002](figures/showDialog-example01.gif)
 
 ## promptAction.showDialog<sup>(deprecated)</sup>
 
@@ -933,11 +933,9 @@ try {
 };
 ```
 
-![zh-cn_image_0004](figures/zh-cn_image_0004.gif)
+![zh-cn_image_0004](figures/showDialog-example02.gif)
 
 当弹窗的showInSubWindow属性为true时，弹窗可显示在窗口外。
-
-从API版本26.0.0开始，[BaseDialogOptions](#basedialogoptions11)新增displayModeInSubWindow属性。
 
 ```ts
 import { promptAction } from '@kit.ArkUI';
@@ -949,8 +947,6 @@ try {
     message: 'Message Info',
     isModal: true,
     showInSubWindow: true,
-    // 从API版本26.0.0开始，新增displayModeInSubWindow属性
-    displayModeInSubWindow: DialogDisplayMode.SCREEN_BASED,
     buttons: [
       {
         text: 'button1',
@@ -975,7 +971,7 @@ try {
 };
 ```
 
-![zh-cn_image_0002_showinsubwindow](figures/zh-cn_image_0002_showinsubwindow.jpg)
+![zh-cn_image_0002_showinsubwindow](figures/showDialog-showinsubwindow.jpg)
 
 从API version 19开始，该示例通过调用[ShowDialogOptions](#showdialogoptions)中的onDidAppear、onDidDisappear、onWillAppear和onWillDisappear属性展示了弹窗生命周期的相关接口的使用方法。
 
@@ -1038,7 +1034,7 @@ struct DialogExample {
 }
 ```
 
-![zh-cn_image_0002_lifecycle](figures/zh-cn_image_0002_lifecycle.gif)
+![zh-cn_image_0002_lifecycle](figures/showDialog-lifecycle.gif)
 
 
 
@@ -1107,7 +1103,7 @@ try {
 };
 ```
 
-![zh-cn_image_0005](figures/zh-cn_image_0005.gif)
+![zh-cn_image_0005](figures/showActionMenu-example01.gif)
 
 **示例：2**
 
@@ -1182,7 +1178,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_0008](figures/zh-cn_image_0008.gif)
+![zh-cn_image_0008](figures/showActionMenu-example03.gif)
 
 ## promptAction.showActionMenu<sup>(deprecated)</sup>
 
@@ -1247,7 +1243,7 @@ promptAction.showActionMenu({
   })
 ```
 
-![zh-cn_image_0006](figures/zh-cn_image_0006.gif)
+![zh-cn_image_0006](figures/showActionMenu-example02.gif)
 
 ## promptAction.openCustomDialog<sup>(deprecated)</sup>
 
@@ -1448,7 +1444,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_0007](figures/zh-cn_image_0007.gif)
+![zh-cn_image_0007](figures/CustomDialog-example01.gif)
 
 该示例实现了一个页面内的弹窗。
 

@@ -9,7 +9,7 @@
 
 从API版本26.0.0开始，在外部密钥管理扩展场景下，密钥导入能力支持将加密封装的密钥对导入到扩展设备中。密钥用途等参数传递给Extension后，由Extension实现方根据业务场景自行处理，HUKS不做额外校验。
 
-具体的场景介绍请参考[密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)。
+具体的场景介绍请参考[密钥生成与导入导出介绍](huks-extension-key-generation-import-overview.md)。
 
 ## 开发步骤
 
@@ -26,14 +26,6 @@
 ```ts
 import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-
-function StringToUint8Array(str: string) {
-  let arr: number[] = [];
-  for (let i = 0, j = str.length; i < j; ++i) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
-}
 
 async function openResource(resourceId: string): Promise<void> {
   try {

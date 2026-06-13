@@ -367,8 +367,8 @@ struct OutlineExample {
 
 The following shows how the example is represented with left-to-right scripts.
 
-![en-us_image_outling_ltr](figures/en-us_image_outling_ltr.png)
+![en-us_image_outling_ltr](figures/image-outling-ltr.png)
 
 The following shows how the example is represented with right-to-left scripts.
 
-![en-us_image_outling_rtl](figures/en-us_image_outling_rtl.png)
+![en-us_image_outling_rtl](figures/image-outling-rtl.png)

@@ -1,4 +1,4 @@
-# @ohos.enterprise.restrictions（限制类策略）
+# @ohos.enterprise.restrictions （限制类策略）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -851,7 +851,7 @@ setDisallowedPolicyForAccount(admin: Want, feature: FeatureForAccount, disallow:
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| feature   | [FeatureForAccount](#featureforaccount)                 | 是   | 要禁用或允许的用户特性。<br>当feature值为SUPER_HUB时，如果已经通过[addUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddusernonstopapps22)接口将中转站添加到当前用户下不可关停的应用列表中，再调用本接口禁用中转站，会发生策略冲突，抛出9200010错误码。可以通过[removeUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremoveusernonstopapps22)接口将中转站从当前用户下不可关停的应用列表中移除来解决冲突。 |
+| feature   | [FeatureForAccount](#featureforaccount)                 | 是   | 要禁用或允许的用户特性。<br>当feature值为SUPER_HUB时，如果已经通过[addUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddusernonstopapps22)接口将中转站添加到当前用户下不可关停的应用列表中，再调用本接口禁用中转站，会发生策略冲突，抛出9200010错误码。可以通过[removeUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremoveusernonstopapps22)接口将中转站从当前用户下不可关停的应用列表中移除来解决冲突。<br>当feature值为DISTRIBUTED_TRANSMISSION时，如果已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14)接口禁用设备间分布式单向传输数据的能力，再调用本接口禁用分布式管理服务，会发生策略冲突，抛出9200010错误码。可以通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount14)接口取消禁用设备间分布式单向传输数据来解决冲突。 |
 | disallow  | boolean                                                 | 是   | true表示禁用，false表示启用。                                |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。<br>当feature值为SUPER_HUB时，accountId仅支持传入当前用户的用户ID，不支持跨用户设置。否则会抛出9200012错误码。 |
 
@@ -962,6 +962,7 @@ try {
 | WIFI_P2P   | 0   | Wi-Fi P2P（点对点连接），允许设备在没有接入点的情况下直接相互连接。禁用后，设备无法通过Wi-Fi P2P进行点对点连接，影响文件传输、游戏联机、屏幕共享等需要直接Wi-Fi连接的应用功能。 |
 | LOCAL_INPUT   | 2   | 本地输入（包含键盘、鼠标、触控板、触摸屏等）被禁用后，无法通过本地输入进行操作。重启设备可解除禁用。在息屏状态下禁用会导致屏幕无法唤醒，若禁用后屏幕自动息屏，同样会导致无法唤醒屏幕。<br>**起始版本：** 26.0.0 |
 | CORE_DUMP   | 6   | 创建文件转储。禁用后，无法通过任务管理器创建文件转储。<br>**起始版本：** 26.0.0 |
+| RS232   | 7   | RS-232串口管控策略。禁用后，无法通过RS-232串口传输数据。当前仅支持PC/2in1设备使用（部分设备不支持RS-232串口）。<br>**起始版本：** 26.0.0 |
 | DISK_ERASURE   | 8   | 磁盘擦除能力。禁用后，"磁盘擦除"入口将被置灰。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
 
 ## FeatureForAccount

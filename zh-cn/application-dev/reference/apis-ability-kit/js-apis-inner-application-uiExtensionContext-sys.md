@@ -506,7 +506,7 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
 
 connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOptions): number
 
-将当前UIExtensionAbility连接到一个[ServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)，通过返回的远程代理对象与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。与此同时，该方法会将UIExtensionAbility的原始宿主Ability的Token传递给被连接的ServiceExtensionAbility，ServiceExtensionAbility可以在[onCreate()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate)或[onConnect()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)方法中，通过Want参数的[UI_EXTENSION_ROOT_TOKEN](js-apis-app-ability-wantConstant-sys.md#params)获取该Token。
+将当前UIExtensionAbility连接到一个[ServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)，通过返回的远程代理对象与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。与此同时，该方法会将UIExtensionAbility的原始宿主Ability的Token传递给被连接的ServiceExtensionAbility，ServiceExtensionAbility可以在[onCreate()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate)或[onConnect()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)方法中，通过Want参数的[UI_EXTENSION_ROOT_TOKEN](js-apis-app-ability-wantConstant-sys.md#params)获取该Token。
 
 > **说明：**
 >
@@ -547,7 +547,7 @@ connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOpti
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled. |
 | 16000013 | The application is controlled by EDM. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to commnicate with dependency module.|
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.|
 | 16000053 | The ability is not on the top of the UI. |
 | 16000070 | The extension cannot start the service. |
 

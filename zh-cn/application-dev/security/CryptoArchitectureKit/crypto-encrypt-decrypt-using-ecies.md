@@ -61,6 +61,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   namespace ECIES {
     function generateGcmParamsSpec(ivData: Uint8Array): cryptoFramework.GcmParamsSpec {
@@ -154,7 +155,8 @@
         console.info('doEciesTest success, message: ' + buffer.from(plainData.data).toString('utf-8'));
         return 'Success';
       } catch (error) {
-        console.error(`doEciesTest failed, error: ${JSON.stringify(error)}`);
+        let e: BusinessError = error as BusinessError;
+        console.error(`doEciesTest failed: errCode: ${e.code}, message: ${e.message}`);
         return 'Failed';
       }
     }
@@ -168,6 +170,7 @@
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   namespace ECIES {
     function generateGcmParamsSpec(ivData: Uint8Array): cryptoFramework.GcmParamsSpec {
@@ -261,7 +264,8 @@
         console.info('doEciesTest success, message: ' + buffer.from(plainData.data).toString('utf-8'));
         return 'Success';
       } catch (error) {
-        console.error(`doEciesTest failed, error: ${JSON.stringify(error)}`);
+        let e: BusinessError = error as BusinessError;
+        console.error(`doEciesTest failed: errCode: ${e.code}, message: ${e.message}`);
         return 'Failed';
       }
     }

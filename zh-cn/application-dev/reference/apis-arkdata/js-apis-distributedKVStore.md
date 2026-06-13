@@ -3949,7 +3949,7 @@ getResultSet(query: Query, callback: AsyncCallback&lt;KVStoreResultSet&gt;): voi
 
 | 参数名   | 类型                                                   | 必填 | 说明                                                      |
 | -------- | ---------------------------------------------------------- | ---- | --------------------------------------------------------- |
-| query    | Query                                                      | 是   | 表示查询对象。                                            |
+| query    | [Query](#query)                                                      | 是   | 表示查询对象。                                            |
 | callback | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数，获取与指定Query对象匹配的KVStoreResultSet对象。 |
 
 **错误码：**

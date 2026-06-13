@@ -169,4 +169,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001173164785](figures/en-us_image_0000001173164785.gif)
+![panel](figures/panel.gif)

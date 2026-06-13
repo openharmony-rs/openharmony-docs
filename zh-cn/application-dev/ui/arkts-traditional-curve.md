@@ -115,5 +115,5 @@ struct CurveDemo {
 ```
 
 
-![zh-cn_image_0000001641260233](figures/zh-cn_image_0000001641260233.gif)
+![zh-cn_image_0000001641260233](figures/Traditional-Curve.gif)
 

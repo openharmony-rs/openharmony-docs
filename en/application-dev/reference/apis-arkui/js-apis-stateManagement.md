@@ -2214,8 +2214,7 @@ struct ReusableChild {
 @ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct PoolOwner {
   checkPool() {
-    const context = UIUtils.getCustomComponentContext(this);
-    const pool = context.getReusePool();
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
     if (pool) {
       console.info('Global reuse pool configured.');
     } else {
@@ -2379,12 +2378,12 @@ Pre-creates @Reusable/@ReusableV2 decorated components and places them in this r
 **Example**
 
 ```ts
-import { UIUtils } from '@kit.ArkUI';
+import { UIUtils, IReusableInfo } from '@kit.ArkUI';
 
 @ReusableV2
 @ComponentV2
 struct ReusableComponent {
-  @Require @Param param: number;
+  @Param param: number = 8;
 
   aboutToAppear() {
     console.info('ReusableComponent aboutToAppear');
@@ -2402,7 +2401,7 @@ struct ReusableComponent {
 
 @Builder 
 function preRenderBuilder() {
-  ReusableComponent({ param: 0 })
+  ReusableComponent()
 }
 
 @Entry
@@ -2416,26 +2415,43 @@ struct Index {
     // Preload the reusable components in preRenderBuilder to this global reuse pool and execute preRenderBuilder once.
     pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder.bind(this)), 1)
       .then(() => {
-        this.onUIFullyLoaded = true;
+        console.info('ReusableComponent preRender completes');
       });
   }
 
+  checkPool() {
+    // Obtain the number of components in the global reuse pool.
+    const reusePool = UIUtils.getCustomComponentContext(this).getReusePool();
+    const reusableInfo: IReusableInfo = reusePool!.getReusableInfo(ReusableComponent) as IReusableInfo;
+    console.info(`ReusableComponent reuse pool count=${reusableInfo.count}`);
+  }
+
   build() {
-    Column() {
+    Column({ space: 5 }) {
+      Button('Switch')
+        .onClick(() => {
+          this.onUIFullyLoaded = !this.onUIFullyLoaded;
+        })
+        .width(100)
+      Button('Check pool')
+        .onClick(() => {
+          this.checkPool();
+        })
+        .width(100)
       CompA({ showFullUI: this.onUIFullyLoaded })
     }
+    .width('100%')
   }
 }
 
 @ComponentV2
 struct CompA {
   @Require @Param showFullUI: boolean;
-  @Local param: number = 8;
 
   build() {
     if (this.showFullUI) {
       // This will reuse the pre-rendered instance from the pool.
-      ReusableComponent({ param: this.param })
+      ReusableComponent()
     }
   }
 }

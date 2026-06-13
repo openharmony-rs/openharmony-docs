@@ -1258,7 +1258,6 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[3]?.i32 | Whether the gradient color is repeated. The value **false** indicates that the gradient color is not repeated, and **true** indicates that the gradient color is repeated. The default value is **false**.|
 | .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.<br> **size**: number of effective gradient colors.|
 
-
 ## NODE_TEXT_INPUT_TEXT_OVERFLOW
 
 ```c
@@ -1306,6 +1305,30 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .object | Decoration style options. The parameter type is [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md).|
+
+## NODE_TEXT_INPUT_PUNCTUATION_OVERFLOW
+
+```c
+NODE_TEXT_INPUT_PUNCTUATION_OVERFLOW = 7053
+```
+
+Whether to enable punctuation hanging at the end of a line for the **TextInput** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Whether to enable punctuation hanging at the end of a line. The value **1** means to enable, and **0** means the opposite. The default value is **0**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Whether punctuation hanging at the end of a line is enabled.|
 
 
 ## NODE_TEXT_AREA_PLACEHOLDER
@@ -2509,3 +2532,27 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[2]?.f32 | Radius of the radial gradient. The default value is **0**.|
 | .value[3]?.i32 | Whether the gradient color is repeated. The value **false** indicates that the gradient color is not repeated, and **true** indicates that the gradient color is repeated. The default value is **false**.|
 | .object | Color stop. The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md).<br> **colors**: colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br> **stops**: stop positions of the color stops. The value range is [0, 1.0]. **0** represents the start of the gradient container, and **1.0** represents the end.<br> **size**: number of effective gradient colors.|
+
+## NODE_TEXT_AREA_PUNCTUATION_OVERFLOW
+
+```c
+NODE_TEXT_AREA_PUNCTUATION_OVERFLOW = 8050
+```
+
+Whether to enable punctuation hanging at the end of a line for the **TextArea** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Whether to enable punctuation hanging at the end of a line. The value **1** means to enable, and **0** means the opposite. The default value is **0**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Whether punctuation hanging at the end of a line is enabled.|

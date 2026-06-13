@@ -1896,6 +1896,7 @@ pages
 ```
 
 <!--deprecated_code_no_check-->
+<!--code_no_check-->
 ```js
 // index.js
 import router from '@ohos.router';
@@ -1996,6 +1997,7 @@ export default {
 ```
 
 <!--deprecated_code_no_check-->
+<!--code_no_check-->
 ```js
 // routerPage.js
 import router from '@ohos.router';

@@ -200,7 +200,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_StartPipeline(OH_AudioSuitePipeline* au
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuitePipeline为空指针。<br>         AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线已在运行或节点连接异常。<br>         可能的原因如下：<br>         1. 管线已经在运行状态；<br>         2. 当前管线中不存在输出类型节点；<br>         3. 起始节点不是输入类型节点。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuitePipeline为空指针。<br>         AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线已在运行或节点连接异常。<br>         可能的原因如下：<br>         1. 管线已经在运行状态；<br>         2. 当前管线中不存在输出类型节点；<br>         3. 起始节点不是输入类型节点。<br>         4. HOA输入节点未连接HOA空间渲染节点，或HOA空间渲染节点的前置节点不是HOA输入节点。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_StopPipeline()
 
@@ -622,7 +622,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetAudioFormat(OH_AudioNode* audioNode,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数audioNode或audioFormat为空指针。<br>         AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode是效果节点。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线不在停止状态。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数audioNode或audioFormat为空指针。<br>         AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode是效果节点。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT：（API版本26.0.0新增）参数audioFormat为不支持的格式。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线不在停止状态。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_ConnectNodes()
 

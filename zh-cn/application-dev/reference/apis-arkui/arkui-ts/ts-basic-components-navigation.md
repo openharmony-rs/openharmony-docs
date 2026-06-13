@@ -2259,7 +2259,7 @@ struct NavigationExample {
 }
 ```
 
-![zh-cn_image_navigation](figures/zh-cn_image_navigation.png)
+![zh-cn_image_navigation](figures/image-navigation.png)
 
 
 
@@ -4951,7 +4951,7 @@ struct NavigationExample {
 }
 ```
 
-![zh-cn_image_navigation_toolbar_adaptation_landscape](figures/zh-cn_image_navigation_toolbar_adaptation_landscape.gif)
+![zh-cn_image_navigation_toolbar_adaptation_landscape](figures/image-adaptation-landscape.gif)
 
 ### 示例16（Navigation使用NavDestination作为导航页）
 
@@ -5036,7 +5036,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_navigation_home_NavDestination](figures/zh-cn_image_navigation_home_NavDestination.gif)
+![zh-cn_image_navigation_home_NavDestination](figures/image-home-NavDestination.gif)
 
 ### 示例17（使用新增导航控制器方法）
 

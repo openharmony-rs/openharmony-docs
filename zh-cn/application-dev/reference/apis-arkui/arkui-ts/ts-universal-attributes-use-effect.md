@@ -100,8 +100,8 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 |  设备类型    | 模糊半径(单位: px)   | 饱和度                 |  亮度  |  颜色  |
 | -------- | ---- | ---------------------- | -------- | -------- |
 | 移动设备  | 0   | 0 | 0 | '#ffffffff'，显示为白色。 |
-| 2in1设备：深色模式  | 80   | 1.5 | 1.0 | '#e52e3033'，显示为淡红色的半透明效果。 |
-| 2in1设备：浅色模式  | 80   | 1.9 | 1.0 | '#e5ffffff'，显示为半透明的深红色。 |
+| 2in1设备：深色模式  | 80   | 1.5 | 1.0 | '#e52e3033'，显示为半透明的深灰色。 |
+| 2in1设备：浅色模式  | 80   | 1.9 | 1.0 | '#e5ffffff'，显示为半透明的白色。 |
 | Tablet设备  | 0   | 0 | 0 | '#ffffffff'，显示为白色。 |
 
 <!--Del-->
@@ -172,5 +172,5 @@ struct Index {
 }
 ```
 
-![zh_image_useeffect_effecttype](figures/zh_image_useeffect_effecttype.png)
+![zh_image_useeffect_effecttype](figures/image-useeffect-effecttype.png)
 <!--DelEnd-->

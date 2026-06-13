@@ -110,8 +110,6 @@ int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char 
 | 参数项                                             | 描述                                                       |
 | -------------------------------------------------- | ---------------------------------------------------------- |
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
-| const char *field                                  | 表示数据库表中的列名。                                     |
-| const char *pattern                                | 表示与谓词匹配的值。                                       |
 | const char *field                                  | 表示数据库表中的列名，不能为空。                                     |
 | const char *pattern                                | 表示与谓词匹配的值，不能为空。                                       |
 
