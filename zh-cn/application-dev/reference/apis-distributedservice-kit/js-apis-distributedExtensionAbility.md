@@ -80,7 +80,7 @@ import Want from '@ohos.app.ability.Want';
 import DistributedExtensionAbility from '@ohos.application.DistributedExtensionAbility';
 
 export default class DistributedExtension extends DistributedExtensionAbility {
-  onCreate(want: Want) {
+  onCreate(want: Want):void {
     console.info(`DistributedExtension Create ok`);
     console.info(`DistributedExtension on Create want: ${JSON.stringify(want)}`);
     console.info(`DistributedExtension Create end`);
@@ -194,7 +194,7 @@ import DistributedExtensionAbility from '@ohos.application.DistributedExtensionA
 
 export default class DistributedExtension extends DistributedExtensionAbility {
 
-  onDestroy() {
+  onDestroy(): void {
     console.info('DistributedExtension onDestroy ok');
   }
 }

@@ -276,7 +276,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
        return AbilityConstant.CollaborateResult.ACCEPT;
      }
  
-     onCollab(collabParam: Record<string, Object>) {
+     onCollab(collabParam: Record<string, Object>):void {
        const sessionId = this.createSessionFromWant(collabParam);
        if (sessionId == -1) {
          hilog.info(0x0000, 'testTag', 'Invalid session ID.');
