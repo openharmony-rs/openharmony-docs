@@ -81,4 +81,71 @@
 
 <!-- @[window_destroy_transition_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AppTransitionAnimationSample/entry/src/main/ets/entryability/EntryAbility.ets) --> 
 
+``` TypeScript
+import { UIAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+
+const DOMAIN = 0x0000;
+
+export default class EntryAbility extends UIAbility {
+  async onWindowStageCreate(windowStage: window.WindowStage): Promise<void> {
+    try {
+      // 获取主窗口
+      const windowClass = await windowStage.getMainWindow();
+
+      // 配置窗口销毁动画
+      this.setupWindowDestroyAnimation(windowClass);
+
+      // 加载页面
+      windowStage.loadContent('pages/Index', (err) => {
+        if (err.code) {
+          hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+          return;
+        }
+        hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+      });
+    } catch (err) {
+      console.error(`Failed to obtain the main window. Cause code: ${err.code}, message: ${err.message}`);
+    }
+  }
+
+  private setupWindowDestroyAnimation(windowClass: window.Window): void {
+    try {
+      // 检查是否已存在销毁动画配置
+      const existingAnimation = windowClass.getWindowTransitionAnimation(
+        window.WindowTransitionType.DESTROY
+      );
+
+      if (existingAnimation) {
+        return;
+      }
+
+      // 配置动画
+      const animationConfig: window.WindowAnimationConfig = {
+        duration: 1000,
+        curve: window.WindowAnimationCurve.LINEAR,
+      };
+
+      const transitionAnimation: window.TransitionAnimation = {
+        opacity: 0.0,
+        config: animationConfig
+      };
+
+      // 设置动画
+      windowClass.setWindowTransitionAnimation(
+        window.WindowTransitionType.DESTROY,
+        transitionAnimation
+      ).then(() => {
+        console.info('Succeeded in setting window transition animation');
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to set window transition animation. Cause: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to setup window animation. Cause: ${exception.message}`);
+    }
+  }
+}
+```
+
 ![appDestroyAnimation](figures/appDestroyAnimation.gif)
