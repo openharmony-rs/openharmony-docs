@@ -40,6 +40,8 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 **起始版本：** 26.0.0
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备调用无效果。
+
 **参数：**
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
