@@ -99,7 +99,6 @@ struct Index {
 
 ![setWindowMaskWithAlphaDemo](figures/setWindowMaskWithAlphaDemo.gif)
 
-
 ## 窗口阴影
 
 窗口阴影是显示在窗口边缘的投影效果，可以增强窗口与背景之间的层次感，使窗口呈现悬浮于背景之上的视觉效果。
@@ -109,48 +108,7 @@ struct Index {
 
   此处以子窗为例，调用setShadow()设置窗口边缘阴影。
 
-  ```ts
-  // Index.ets
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { window } from '@kit.ArkUI';
-
-  let subWindowClass: window.Window | undefined = undefined;
-
-  @Entry
-  @Component
-  struct Index {
-    // ...
-
-    build() {
-    // ...
-    }
-
-    private async showShadowSubWindow(): Promise<void> {
-      let windowStage = AppStorage.get<window.WindowStage>('windowStage');
-      if (!windowStage) {
-        this.prompt = 'WindowStage is unavailable.';
-        return;
-      }
-
-      try {
-        if (!subWindowClass) {
-          subWindowClass = await windowStage.createSubWindow('shadowSubWindow');
-          await subWindowClass.moveWindowTo(220, 240);
-          await subWindowClass.resize(800, 600);
-          // 设置窗口边缘阴影：模糊半径为48px，半透明黑色，向右下方偏移20px。
-          subWindowClass.setShadow(48, '#B0000000', 20, 20);
-          await subWindowClass.setUIContent('pages/SubWindow');
-        }
-        await subWindowClass.showWindow();
-        this.prompt = 'The subwindow is displayed with a shadow.';
-      } catch (exception) {
-        let err = exception as BusinessError;
-        this.prompt = `Failed to set shadow: ${err.code}`;
-        console.error(`Failed to show shadow subwindow. Cause code: ${err.code}, message: ${err.message}`);
-      }
-    }
-  }
-  ```
+  <!-- @[windowShadowSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowSample/entry/src/main/ets/pages/Index.ets) --> 
 
   ![setShadow](figures/setShadow.png)
 <!--DelEnd-->
@@ -159,29 +117,9 @@ struct Index {
 
   此处以全局悬浮窗为例，设置其窗口边缘阴影的模糊半径。
 
-  ```ts
-  // pages/page1.ets
-  import { window } from '@kit.ArkUI';
-
-  @Entry
-  @Component
-  struct SliderDemo {
-    @State shadowRadiusValue: number = 0;
-
-    // 设置窗口边缘阴影的模糊半径
-    setShadowRadius(val: number) {
-      const floatWindowObj = AppStorage.get<window.Window>('floatWindow');
-      floatWindowObj?.setWindowShadowRadius(val);
-    }
-
-    build() {
-      // ...
-    }
-  }
-  ```
+  <!-- @[window_shadow_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
 
   ![setWindowShadowRadius](figures/setWindowShadowRadius.gif)
-
 
 ## 设置窗口圆角<!--Del-->与模糊效果<!--DelEnd-->
 
@@ -189,26 +127,7 @@ struct Index {
 
   此处以全局悬浮窗为例，设置其窗口圆角。
 
-  ```ts
-  // pages/page1.ets
-  import { window } from '@kit.ArkUI';
-
-  @Entry
-  @Component
-  struct SliderDemo {
-    @State cornerRadiusValue: number = 0;
-
-    // 设置圆角
-    setCornerRadius(val: number) {
-      const floatWindowObj = AppStorage.get<window.Window>('floatWindow');
-      floatWindowObj?.setWindowCornerRadius(val);
-    }
-
-    build() {
-      // ...
-    }
-  }
-  ```
+  <!-- @[window_corner_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowCornerRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
 
   ![setWindowCornerRadius](figures/setWindowCornerRadius.gif)
 
@@ -217,44 +136,9 @@ struct Index {
 
 - 针对系统应用，可通过[setBackdropBlur()](../reference/apis-arkui/js-apis-window-sys.md#setbackdropblur9)接口设置窗口背景的模糊半径，仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
-
 此处以全局悬浮窗为例，设置其窗口模糊效果（窗口内容的模糊半径、窗口背景的模糊半径）。
 
-```ts
-// pages/page1.ets
-import { window } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SliderDemo {
-  @State blurValue: number = 0;
-  @State backdropBlurValue: number = 0;
-  @State columnBg: Color = Color.Orange;
-
-  setColumnBg() {
-    this.columnBg = Color.Orange;
-  }
-
-  // 设置窗口内容的模糊半径
-  setBlur(val: number) {
-    this.setColumnBg();
-    const floatWindowObj = AppStorage.get<window.Window>('floatWindow');
-    floatWindowObj?.setBlur(val);
-  }
-  // 设置窗口背景的模糊半径
-  setBackdropBlur(val: number) {
-    this.columnBg = Color.Transparent;
-    const floatWindowObj = AppStorage.get<window.Window>('floatWindow');
-    floatWindowObj?.setWindowBackgroundColor('#00FFFFFF');
-    floatWindowObj?.setBackdropBlur(val);
-  }
-
-  build() {
-  // ...
-  }
-}
-```
-
+<!-- @[window_blur_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowBlurSample/entry/src/main/ets/pages/Page1.ets) --> 
 
 ![setBlur](figures/setBlur.gif)
 <!--DelEnd-->
