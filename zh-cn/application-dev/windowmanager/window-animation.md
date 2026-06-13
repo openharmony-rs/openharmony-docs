@@ -57,6 +57,29 @@
    调用[showWithAnimation()](../reference/apis-arkui/js-apis-window-sys.md#showwithanimation9)接口，来显示窗口并播放动画。调用[hideWithAnimation()](../reference/apis-arkui/js-apis-window-sys.md#hidewithanimation9)接口，来隐藏窗口并播放动画。
 
    <!-- @[window_animation_play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/AnimationConfig.ts) --> 
+   
+   ``` TypeScript
+   import { window } from '@kit.ArkUI';
+   
+   export class AnimationConfig {
+     private animationForShownCallFunc_: ((context : window.TransitionContext) => void) | undefined = undefined;
+     private animationForHiddenCallFunc_: ((context : window.TransitionContext) => void) | undefined = undefined;
+   
+     ShowWindowWithCustomAnimation(windowClass: window.Window, callback: (context : window.TransitionContext) => void) {
+       // ...
+       // 窗口显示时的自定义动画配置。
+       controller.animationForShown = (context : window.TransitionContext)=> {
+         this.animationForShownCallFunc_(context);
+       };
+       // 4.显示窗口并播放动画
+       windowClass.showWithAnimation(()=>{
+         console.info('Show with animation success');
+       });
+     }
+   
+     // ...
+   }
+   ```
 
 ![showAndHideWindow](figures/showAndHideWindow.gif)
 <!--DelEnd-->
