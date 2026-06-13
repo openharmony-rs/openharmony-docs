@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @gcw_bkPrirku-->
-<!--Designer: @liaojunhua-->
+<!--Designer: @shinmy-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -39,6 +39,32 @@
    通过[getTransitionController()](../reference/apis-arkui/js-apis-window-sys.md#gettransitioncontroller9)接口获取控制器。后续的动画操作都由属性控制器来完成。
 
    <!-- @[window_animation_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/AnimationConfig.ts) --> 
+   
+   ``` TypeScript
+   import { window } from '@kit.ArkUI';
+   
+   export class AnimationConfig {
+     private animationForShownCallFunc_: ((context : window.TransitionContext) => void) | undefined = undefined;
+     private animationForHiddenCallFunc_: ((context : window.TransitionContext) => void) | undefined = undefined;
+   
+     ShowWindowWithCustomAnimation(windowClass: window.Window, callback: (context : window.TransitionContext) => void) {
+       if (!windowClass) {
+         console.error('windowClass is undefined');
+         return false;
+       }
+       this.animationForShownCallFunc_ = callback;
+       // 1.获取窗口属性转换控制器。
+       let controller: window.TransitionController = windowClass.getTransitionController();
+       // 窗口显示时的自定义动画配置。
+       controller.animationForShown = (context : window.TransitionContext)=> {
+         this.animationForShownCallFunc_(context);
+       };
+       // ...
+     }
+   
+     // ...
+   }
+   ```
 
 2. 配置窗口显示/隐藏时的动画。
 
