@@ -32,7 +32,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回801错误码。
 
 **参数：**
 
@@ -594,7 +594,7 @@ off(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;C
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异：** 该接口在不支持分布式业务的Wearable设备调用无效果。
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **参数：**
 
@@ -633,7 +633,7 @@ on(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异：** 该接口在不支持分布式业务的Wearable设备调用无效果。
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **参数：**
 
@@ -674,7 +674,7 @@ off(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nb
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异：** 该接口在不支持分布式业务的Wearable设备调用无效果。
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **参数：**
 
@@ -713,7 +713,7 @@ on(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Ca
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异：** 该接口在不支持分布式业务的Wearable设备调用无效果。
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **参数：**
 
@@ -754,7 +754,7 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-**设备行为差异：** 该接口在不支持分布式业务的Wearable设备调用无效果。
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
 **参数：**
 
