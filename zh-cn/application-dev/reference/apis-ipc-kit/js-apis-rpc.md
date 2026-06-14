@@ -10064,7 +10064,7 @@ if (proxy != undefined) {
   | TF_SYNC       | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 同步调用标识。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
   | TF_ASYNC      | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 异步调用标识。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
   | TF_ACCEPT_FDS | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | 指示[sendMessageRequest](#sendmessagerequest9-2)接口可以传递文件描述符。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
-  | TF_WAIT_TIME  | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | RPC等待时间(单位：秒)，IPC场景下无效。默认等待为8秒（不建议修改等待时间）。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+  | TF_WAIT_TIME  | ArkTS-Dyn:number</br> ArkTS-Sta:int | 是    | 否    | RPC等待时间（单位：秒），IPC场景下无效。默认等待为8秒（不建议修改等待时间）。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ### constructor<sup>9+</sup>
 
