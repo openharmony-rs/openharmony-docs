@@ -819,7 +819,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 |trust-anchors              | array           |受信任的CA。可以包含任意个item。item必须包含1个certificates。|
 |certificates               | string          |CA证书路径。 |
 |domains                    | array           |域。可以包含任意个item。item必须包含1个name(string：指示域名)，可以包含0或者1个include-subdomains。|
-|include-subdomains         | boolean         |指示规则是否适用于子域。true：指示规则适用于子域；false：指示规则不适用于子域。 |
+|include-subdomains         | boolean         |指示规则是否适用于子域。true：表示规则适用于该域名及其所有子域名；false：表示规则仅适用于该域名。默认为true。 |
 |pin-set                    | object          |证书公钥哈希设置。必须包含1个pin，可以包含0或者1个expiration。|
 |expiration                 | string          |指示证书公钥哈希的过期时间。 |
 |pin                        | array           |证书公钥哈希。可以包含任意个item。item必须包含1个digest-algorithm，item必须包含1个digest。|
@@ -883,7 +883,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 |base-config                     | object          | 否| 指示应用程序范围的明文配置。优先级最低。 |
 |cleartextTrafficPermitted<sup>18+</sup>  | boolean          |否 | 明文HTTP是否允许。true表示允许，false表示不允许，默认为true。 |
 |domain-config                     | array          | 否|  指示每个域的明文配置。可以包含任意个item。每个item必须包含1个domains。若相同域存在规则冲突时，以匹配到的第一条为准。优先级次于component-config。 |
-|include-subdomains         | boolean         | 否| 配置为true时，name支持正则匹配。配置为false时，name不支持正则匹配。注意：每增加1000条域名配置，正则匹配的延迟将增加大约10至15毫秒。当域名配置数量超过10000条时，正则匹配会带来较高耗时。默认为true。 |
+|include-subdomains         | boolean         | 否| 指示规则是否适用于子域。true：表示规则适用于该域名及其所有子域名；false：表示规则仅适用于该域名。默认为true。注意：每增加1000条域名配置，正则匹配的延迟将增加大约10至15毫秒。当域名配置数量超过10000条时，正则匹配会带来较高耗时。默认为true。 |
 |name         | string         | 否| 配置主域名。 |
 |component-config<sup>20+</sup>                    | object         |  否| 指示每个组件的明文配置。优先级最高。|
 |Request                    | boolean          |否| [Request](../reference/apis-basic-services-kit/js-apis-request.md)从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为true。|
