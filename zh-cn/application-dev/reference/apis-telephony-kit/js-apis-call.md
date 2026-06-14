@@ -325,6 +325,61 @@ call.makeCall(context, "138xxxxxxxx").then(() => {
 });
 ```
 
+## call.makeCallWithToken<sup>26+</sup>
+
+makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<string\>;
+
+跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。后台调用需要申请ohos.permission.START_ABILITIES_FROM_BACKGROUND权限。
+
+**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.Contacts
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明       |
+| ----------- | ------ | ---- | ---------- |
+| phoneNumber | string | 是   | 电话号码。 |
+| options | MakeCallOptions | 否   | 拨打电话的可选参数。 |
+
+**返回值：**
+
+| 类型                | 说明                              |
+| ------------------- | --------------------------------- |
+| Promise&lt;string&gt; | 以Promise形式异步返回校验token。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+
+**示例：**
+
+>**说明：**
+>
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+<!--code_no_check-->
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+// 构建MakeCallOptions
+let options : call.MakeCallOptions = {
+    isHideDialScreen : true,
+    isCustomAccessibility : true
+}
+// 从API15开始支持tel格式电话号码，如："tel:13xxxx"
+call.makeCallWithToken("188xxxx", options).then(() => {
+    console.info(`makeCallWithToken success`);
+}).catch((err: BusinessError) => {
+    console.error(`makeCallWithToken fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
 ## call.hasCall
 
 hasCall\(callback: AsyncCallback\<boolean\>\): void
