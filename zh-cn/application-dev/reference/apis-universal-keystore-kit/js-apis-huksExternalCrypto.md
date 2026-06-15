@@ -164,7 +164,7 @@ const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   }
 ];
 huksExternalCrypto.registerProvider(providerName, extProperties)
-    .then((data) => {
+    .then(() => {
         console.info('promise: registerProvider success.');
     });
 ```
@@ -227,7 +227,7 @@ const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   }
 ];
 huksExternalCrypto.unregisterProvider(providerName, extProperties)
-    .then((data) => {
+    .then(() => {
         console.info('promise: unregisterProvider success.');
     });
 ```
@@ -760,11 +760,14 @@ const params: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   }
 ];
 
-try {
-  await huksExternalCrypto.authUkeyPin(resourceId, params);
-} catch (error) {
-  const errorInfo = huksExternalCrypto.getErrorInfo();
-  console.info(`errno: ${errorInfo.errno}`);
-  console.info(`errorDesc: ${errorInfo.errorDesc}`);
+async function testFunction() : Promise<void>
+{
+  try {
+    huksExternalCrypto.authUkeyPin(resourceId, params);
+  } catch (error) {
+    const errorInfo = huksExternalCrypto.getErrorInfo();
+    console.info(`errno: ${errorInfo.errno}`);
+    console.info(`errorDesc: ${errorInfo.errorDesc}`);
+  }
 }
 ```
