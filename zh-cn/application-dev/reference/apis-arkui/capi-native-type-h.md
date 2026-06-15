@@ -31,8 +31,6 @@
 | [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md) | ArkUI_Node | 定义ArkUI native组件实例对象。 |
 | [ArkUI_ContextCallback](capi-arkui-nativemodule-arkui-contextcallback.md) | ArkUI_ContextCallback | 事件回调类型。 |
 | [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) | ArkUI_NumberValue | ArkUI在Native侧的数字类型定义。 |
-| [ARKUI_TextPickerRangeContent](capi-arkui-nativemodule-arkui-textpickerrangecontent.md) | ARKUI_TextPickerRangeContent | 定义单列滑动数据选择器支持的图片资源结构体。 |
-| [ARKUI_TextPickerCascadeRangeContent](capi-arkui-nativemodule-arkui-textpickercascaderangecontent.md) | ARKUI_TextPickerCascadeRangeContent | 定义多列联动滑动数据选择器的结构体。 |
 | [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md) | ArkUI_ColorStop | 定义渐变色结构。 |
 | [ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md) | ArkUI_Rect | 定义遮罩屏蔽区域的范围结构体。 |
 | [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md) | ArkUI_IntSize | 尺寸类型，用于描述组件的宽高。 |
@@ -56,7 +54,6 @@
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md) | ArkUI_AlignmentRuleOption | 指定设置在相对容器中子组件的对齐规则。 |
 | [ArkUI_GuidelineOption](capi-arkui-nativemodule-arkui-guidelineoption.md) | ArkUI_GuidelineOption | Guideline参数，用于定义Guideline（RelativeContainer容器内的辅助线）的id、方向和位置。|
 | [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md) | ArkUI_BarrierOption | barrier选项，用于定义barrier的id、方向和生成时所依赖的组件。 |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md) | ArkUI_ImageAnimatorFrameInfo | 定义图片帧信息。 |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md) | ArkUI_ListChildrenMainSize | 定义List的ChildrenMainSize类信息。 |
 | [ArkUI_ProgressLinearStyleOption](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md) | ArkUI_ProgressLinearStyleOption | 定义线性进度条样式。 |
 | [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md) | ArkUI_CustomProperty | 定义自定义属性的CustomProperty类信息。 |
@@ -73,8 +70,6 @@
 | [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md) | ArkUI_CustomSpanDrawInfo | 自定义段落组件的绘制信息。 |
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) | ArkUI_StyledString_Descriptor | 定义文本组件支持的属性字符串的数据对象。 |
 | [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | 定义截图的可选项。 |
-| [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | ArkUI_TextPickerRangeContentArray | 定义文本选择器的数据选择列表。 |
-| [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | ArkUI_TextCascadePickerRangeContentArray | 定义多列联动数据选择器的多列联动数据选择列表。 |
 | [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)| ArkUI_SelectionOptions | 定义选择操作的相关选项。|
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | 可见区域变化监听的参数。 |
 |[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)|ArkUI_PositionEdges|相对容器内容区边界的位置参数。|
@@ -87,9 +82,6 @@
 | [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md) | ArkUI_TextEditMenuOptions | 定义文本菜单扩展项结构体。 |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md) | ArkUI_TextSelectionMenuOptions | 定义自定义文本选择菜单结构体。 |
 | [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md) | ArkUI_SelectedDragPreviewStyle | 定义选中状态下文本拖拽预览样式。 |
-| [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)|ArkUI_PickerIndicatorBackground|背景样式指示器的样式参数。|
-| [ArkUI_PickerIndicatorDivider](capi-arkui-nativemodule-arkui-pickerindicatordivider.md)|ArkUI_PickerIndicatorDivider|分割线样式指示器的样式参数。|
-| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)|ArkUI_PickerIndicatorStyle|选中项指示器的样式。|
 | [ArkUI_TextMarqueeOptions](capi-arkui-nativemodule-arkui-textmarqueeoptions.md) | ArkUI_TextMarqueeOptions | 定义文本跑马灯模式配置项。 |
 | [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) | OH_ArkUI_DecorationStyleOptions | 定义装饰线样式。 |
 | [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) | OH_ArkUI_TextDataDetectorConfig | 定义文本实体识别的配置。 |
@@ -109,7 +101,6 @@
 | 名称                                                                  | typedef关键字                      | 描述                                |
 |---------------------------------------------------------------------|---------------------------------|-----------------------------------|
 | [ArkUI_Alignment](#arkui_alignment)                                 | ArkUI_Alignment                 | 定义布局对齐枚举值。                        |
-| [ArkUI_ImageRepeat](#arkui_imagerepeat)                             | ArkUI_ImageRepeat               | 定义图片重复铺设枚举值。                      |
 | [ArkUI_FontStyle](#arkui_fontstyle)                                 | ArkUI_FontStyle                 | 定义字体样式枚举值。                        |
 | [ArkUI_FontWeight](#arkui_fontweight)                               | ArkUI_FontWeight                | 定义字体粗细/字重枚举值。                     |
 | [ArkUI_TextAlignment](#arkui_textalignment)                         | ArkUI_TextAlignment             | 定义字体水平对齐样式枚举值。                    |
@@ -124,8 +115,6 @@
 | [ArkUI_TextDecorationStyle](#arkui_textdecorationstyle)             | ArkUI_TextDecorationStyle       | 定义装饰线样式枚举值。                       |
 | [ArkUI_TextCase](#arkui_textcase)                                   | ArkUI_TextCase                  | 定义文本大小写枚举值。                       |
 | [ArkUI_CopyOptions](#arkui_copyoptions)                             | ArkUI_CopyOptions               | 定义文本复制粘贴模式枚举值。                    |
-| [ArkUI_DatePickerMode](#arkui_datepickermode)                       | ArkUI_DatePickerMode            | 定义日期选择器列显示模式的枚举值。                 |
-| [ArkUI_TextPickerRangeType](#arkui_textpickerrangetype)             | ArkUI_TextPickerRangeType       | 定义滑动选择文本选择器输入类型。                  |
 | [ArkUI_AccessibilityCheckedState](#arkui_accessibilitycheckedstate) | ArkUI_AccessibilityCheckedState | 定义无障碍复选框状态类型枚举值。                  |
 | [ArkUI_AccessibilityActionType](#arkui_accessibilityactiontype)     | ArkUI_AccessibilityActionType   | 定义无障碍操作类型。                        |
 | [ArkUI_EdgeEffect](#arkui_edgeeffect)                               | ArkUI_EdgeEffect                | 定义边缘滑动效果枚举值。                      |
@@ -151,7 +140,6 @@
 | [ArkUI_SliderDirection](#arkui_sliderdirection)                     | ArkUI_SliderDirection           | 定义滑动条滑动方向。                        |
 | [ArkUI_SliderStyle](#arkui_sliderstyle)                             | ArkUI_SliderStyle               | 定义滑块与滑轨显示样式。                      |
 | [ArkUI_CheckboxShape](#arkui_checkboxshape)                         | ArkUI_CheckboxShape             | 定义CheckBox组件形状。                   |
-| [ArkUI_ImageSize](#arkui_imagesize)                                 | ArkUI_ImageSize                 | 定义图片宽高样式。                         |
 | [ArkUI_AdaptiveColor](#arkui_adaptivecolor)                         | ArkUI_AdaptiveColor             | 定义取色模式。                           |
 | [ArkUI_ColorMode](#arkui_colormode)                                 | ArkUI_ColorMode                 | 定义深浅色模式。                          |
 | [ArkUI_SystemColorMode](#arkui_systemcolormode)                     | ArkUI_SystemColorMode           | 定义系统深浅色模式。                        |
@@ -159,20 +147,14 @@
 | [ArkUI_HorizontalAlignment](#arkui_horizontalalignment)             | ArkUI_HorizontalAlignment       | 定义语言方向对齐方式。                       |
 | [ArkUI_TextOverflow](#arkui_textoverflow)                           | ArkUI_TextOverflow              | 定义文本超长时的显示方式。                     |
 | [ArkUI_ImageSpanAlignment](#arkui_imagespanalignment)               | ArkUI_ImageSpanAlignment        | 定义图片基于文本的对齐方式。                    |
-| [ArkUI_ObjectFit](#arkui_objectfit)                                 | ArkUI_ObjectFit                 | 定义[Image](arkui-ts/ts-basic-components-image.md)组件的图片填充效果。    |
-| [ArkUI_ImageInterpolation](#arkui_imageinterpolation)               | ArkUI_ImageInterpolation        | 定义图片插值效果。用于优化图片缩放时的锯齿问题。SVG类型图源不支持该属性。                         |
-| [ArkUI_DynamicRangeMode](#arkui_dynamicrangemode)                   | ArkUI_DynamicRangeMode          | 定义图像动态范围模式（例如：SDR/HDR），用于控制图像的明暗与色彩显示范围。 |
-| [ArkUI_ImageRotateOrientation](#arkui_imagerotateorientation)       | ArkUI_ImageRotateOrientation    | 定义图像旋转方向。                         |
 | [ArkUI_Direction](#arkui_direction)                                 | ArkUI_Direction                 | 设置容器元素内主轴方向上的布局枚举值。               |
 | [ArkUI_ItemAlignment](#arkui_itemalignment)                         | ArkUI_ItemAlignment             | 设置子组件在父容器交叉轴的对齐格式枚举值。             |
 | [ArkUI_FlexAlignment](#arkui_flexalignment)                         | ArkUI_FlexAlignment             | 定义垂直方向对齐方式。                       |
 | [ArkUI_FlexDirection](#arkui_flexdirection)                         | ArkUI_FlexDirection             | 定义Flex容器的主轴方向。                    |
 | [ArkUI_FlexWrap](#arkui_flexwrap)                                   | ArkUI_FlexWrap                  | 定义Flex行列布局模式模式。                   |
 | [ArkUI_Visibility](#arkui_visibility)                               | ArkUI_Visibility                | 控制组件的显隐枚举值。                       |
-| [ArkUI_CalendarAlignment](#arkui_calendaralignment)                 | ArkUI_CalendarAlignment         | 日历选择器与入口组件对齐方式。                   |
 | [ArkUI_WordBreak](#arkui_wordbreak)                                 | ArkUI_WordBreak                 | 定义文本断行规则。                         |
 | [ArkUI_EllipsisMode](#arkui_ellipsismode)                           | ArkUI_EllipsisMode              | 定义文本省略位置。                         |
-| [ArkUI_ImageRenderMode](#arkui_imagerendermode)                     | ArkUI_ImageRenderMode           | 定义图片渲染模式。                         |
 | [ArkUI_ListItemAlignment](#arkui_listitemalignment)                 | ArkUI_ListItemAlignment         | 交叉轴方向的布局方式。                       |
 | [ArkUI_LengthMetricUnit](#arkui_lengthmetricunit)                   | ArkUI_LengthMetricUnit          | 定义组件的单位模式。                        |
 | [ArkUI_TextInputContentType](#arkui_textinputcontenttype)           | ArkUI_TextInputContentType      | 定义自动填充类型。                         |
@@ -185,7 +167,6 @@
 | [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式。 |
 | [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的滚动模式。 |
 | [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | ListItem划出菜单的展开方向。 |
-| [ArkUI_AnimationStatus](#arkui_animationstatus)                     | ArkUI_AnimationStatus           | 定义帧动画的播放状态。                       |
 | [ArkUI_ErrorCode](#arkui_errorcode)                                 | ArkUI_ErrorCode                 | 定义错误码枚举值。                         |
 | [ArkUI_ScrollSource](#arkui_scrollsource)                           | ArkUI_ScrollSource              | 定义滚动来源枚举值。                        |
 | [ArkUI_SafeAreaType](#arkui_safeareatype)                           | ArkUI_SafeAreaType              | 定义扩展安全区域的枚举值。                     |
@@ -216,7 +197,6 @@
 | [ArkUI_RenderStrategy](#arkui_renderstrategy)                       | ArkUI_RenderStrategy             | 定义组件绘制圆角的模式。                |
 | [ArkUI_MarqueeStartPolicy](#arkui_marqueestartpolicy)| ArkUI_MarqueeStartPolicy| 定义跑马灯启动策略枚举。 |
 | [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy)| ArkUI_MarqueeUpdatePolicy| 定义跑马灯更新策略枚举。 |
-| [ArkUI_PickerIndicatorType](#arkui_pickerindicatortype) | ArkUI_PickerIndicatorType | 选择器的选中指示器类型。 |
 | [OH_ArkUI_HapticFeedbackMode](#oh_arkui_hapticfeedbackmode) | OH_ArkUI_HapticFeedbackMode | 震动效果类型枚举。 |
 | [OH_ArkUI_TextEditorSpanType](#oh_arkui_texteditorspantype) | OH_ArkUI_TextEditorSpanType | 自定义文本选择菜单span类型枚举。 |
 | [OH_ArkUI_TextEditorResponseType](#oh_arkui_texteditorresponsetype) | OH_ArkUI_TextEditorResponseType | 自定义文本选择菜单响应类型枚举。 |
@@ -357,19 +337,6 @@
 | [int32_t OH_ArkUI_AccessibilityValue_GetRangeCurrent(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangecurrent) | - | 用于获取范围组件的无障碍当前值信息。 |
 | [void OH_ArkUI_AccessibilityValue_SetText(ArkUI_AccessibilityValue* value, const char* text)](#oh_arkui_accessibilityvalue_settext) | - | 设置无障碍文本描述信息。 |
 | [const char* OH_ArkUI_AccessibilityValue_GetText(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_gettext) | - | 获取无障碍文本描述信息。 |
-| [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(char* src)](#oh_arkui_imageanimatorframeinfo_createfromstring) | - | 使用图片路径创建帧图片信息，图片格式为svg、png和jpg。 |
-| [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor(ArkUI_DrawableDescriptor* drawable)](#oh_arkui_imageanimatorframeinfo_createfromdrawabledescriptor) | - | 使用 DrawableDescriptor 对象创建帧图片信息，图片格式为Resource和PixelMap。 |
-| [void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_dispose) | - | 销毁帧图片对象指针。 |
-| [void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t width)](#oh_arkui_imageanimatorframeinfo_setwidth) | - | 设置图片宽度。 |
-| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getwidth) | - | 获取图片宽度。 |
-| [void OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t height)](#oh_arkui_imageanimatorframeinfo_setheight) | - | 设置图片高度。 |
-| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getheight) | - | 获取图片高度。 |
-| [void OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t top)](#oh_arkui_imageanimatorframeinfo_settop) | - | 设置图片相对于组件左上角的纵向坐标。 |
-| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_gettop) | - | 获取图片相对于组件左上角的纵向坐标。 |
-| [void OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t left)](#oh_arkui_imageanimatorframeinfo_setleft) | - | 设置图片相对于组件左上角的横向坐标。 |
-| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getleft) | - | 获取图片相对于组件左上角的横向坐标。 |
-| [void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t duration)](#oh_arkui_imageanimatorframeinfo_setduration) | - | 设置图片的播放时长。 |
-| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getduration) | - | 获取图片的播放时长。 |
 | [ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()](#oh_arkui_listchildrenmainsizeoption_create) | - | 创建ListChildrenMainSize接口设置的配置项。 |
 | [void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_dispose) | - | 销毁ListChildrenMainSize实例。 |
 | [int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildrenMainSize* option, float defaultMainSize)](#oh_arkui_listchildrenmainsizeoption_setdefaultmainsize) | - | 设置List组件列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。 |
@@ -427,14 +394,6 @@
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)](#oh_arkui_visibleareaeventoptions_getratios) | - | 获取阈值数组。 |
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getexpectedupdateinterval) | - | 获取预期更新间隔。 |
 | [bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getmeasurefromviewport) | - | 获取可见区域计算模式。 |
-| [ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(int32_t length)](#oh_arkui_textpickerrangecontentarray_create) | - | 创建TextPickerRangeContent数组的对象。 |
-| [void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* icon, int32_t index)](#oh_arkui_textpickerrangecontentarray_seticonatindex) | - | 设置TextPickerRangeContent数组指定位置的icon数据。 |
-| [void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textpickerrangecontentarray_settextatindex) | - | 设置TextPickerRangeContent数组指定位置的text数据。 |
-| [void OH_ArkUI_TextPickerRangeContentArray_Destroy(ArkUI_TextPickerRangeContentArray* handle)](#oh_arkui_textpickerrangecontentarray_destroy) | - | 删除TextPickerRangeContent数组对象。 |
-| [ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContentArray_Create(int32_t length)](#oh_arkui_textcascadepickerrangecontentarray_create) | - | 创建TextCascadePickerRangeContent数组对象。 |
-| [void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_settextatindex) | - | 设置TextCascadePickerRangeContent数组指定位置的text数据。 |
-| [void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, ArkUI_TextCascadePickerRangeContentArray* child, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_setchildatindex) | - | 设置TextCascadePickerRangeContent数组指定位置的child数据。 |
-| [void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy (ArkUI_TextCascadePickerRangeContentArray* handle)](#oh_arkui_textcascadepickerrangecontentarray_destroy) | - | 删除TextCascadePickerRangeContent数组对象。 |
 | [ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()](#oh_arkui_embeddedcomponentoption_create) | - | 创建EmbeddedComponent组件选项的对象。 |
 | [void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)](#oh_arkui_embeddedcomponentoption_dispose) | - | 删除EmbeddedComponent组件选项的对象。 |
 | [void OH_ArkUI_EmbeddedComponentOption_SetOnError (ArkUI_EmbeddedComponentOption* option, void (\*callback)(int32_t code, const char* name, const char* message))](#oh_arkui_embeddedcomponentoption_setonerror) | - | 设置EmbeddedComponent组件的onError回调。EmbeddedComponent组件在运行过程中发生异常时触发本回调。 |
@@ -528,10 +487,8 @@
 | [ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstartpolicy) | - | 获取文本跑马灯模式配置项的启动策略。 |
 | [void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeUpdatePolicy updatePolicy)](#oh_arkui_textmarqueeoptions_setupdatepolicy) | - | 设置文本跑马灯模式配置项的更新策略。 |
 | [ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getupdatepolicy) | - | 获取文本跑马灯模式配置项的更新策略。|
-| [ArkUI_PickerIndicatorStyle OH_ArkUI_PickerIndicatorStyle_Create(ArkUI_PickerIndicatorType type)](#oh_arkui_pickerindicatorstyle_create) | ArkUI_PickerIndicatorStyle | 创建选中项指示器的样式实例。 |
-| [void  OH_ArkUI_PickerIndicatorStyle_Dispose(ArkUI_PickerIndicatorStyle* style)](#oh_arkui_pickerindicatorstyle_dispose) | - | 销毁选中项指示器的样式实例。 |
-| [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureBackground(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorBackground* background)](#oh_arkui_pickerindicatorstyle_configurebackground) | - | 设置背景样式参数，此接口仅当选择器选中项样式枚举类型为[ARKUI_PICKER_INDICATOR_BACKGROUND](capi-native-type-h.md#arkui_pickerindicatortype)时生效。 |
-| [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorDivider* divider)](#oh_arkui_pickerindicatorstyle_configuredivider) | - | 设置分割线样式参数，此接口仅当选择器选中项样式枚举类型为[ARKUI_PICKER_INDICATOR_DIVIDER](capi-native-type-h.md#arkui_pickerindicatortype)时生效。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureBackground(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorBackground* background)](#oh_arkui_pickerindicatorstyle_configurebackground) | - | 设置背景样式参数，此接口仅当选择器选中项样式枚举类型为[ARKUI_PICKER_INDICATOR_BACKGROUND](capi-picker-h.md#arkui_pickerindicatortype)时生效。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorDivider* divider)](#oh_arkui_pickerindicatorstyle_configuredivider) | - | 设置分割线样式参数，此接口仅当选择器选中项样式枚举类型为[ARKUI_PICKER_INDICATOR_DIVIDER](capi-picker-h.md#arkui_pickerindicatortype)时生效。 |
 | [OH_ArkUI_DecorationStyleOptions* OH_ArkUI_DecorationStyleOptions_Create()](#oh_arkui_decorationstyleoptions_create) | - | 创建一个装饰线样式对象。当该对象不再使用时，请调用[OH_ArkUI_DecorationStyleOptions_Destroy](capi-native-type-h.md#oh_arkui_decorationstyleoptions_destroy)销毁。 |
 | [void OH_ArkUI_DecorationStyleOptions_Destroy(OH_ArkUI_DecorationStyleOptions* options)](#oh_arkui_decorationstyleoptions_destroy) | - | 销毁装饰线样式对象。 |
 | [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetTextDecorationType(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationType type)](#oh_arkui_decorationstyleoptions_settextdecorationtype) | - | 设置装饰线样式的装饰类型。 |
@@ -712,26 +669,6 @@ enum ArkUI_Alignment
 | ARKUI_ALIGNMENT_BOTTOM_START = 6 | 底部起始端。 |
 | ARKUI_ALIGNMENT_BOTTOM = 7 | 底部横向居中。 |
 | ARKUI_ALIGNMENT_BOTTOM_END = 8 | 底部尾端。 |
-
-### ArkUI_ImageRepeat
-
-```c
-enum ArkUI_ImageRepeat
-```
-
-**描述：**
-
-
-定义图片重复铺设枚举值。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_IMAGE_REPEAT_NONE = 0 | 不重复。 |
-| ARKUI_IMAGE_REPEAT_X = 1 | 在X轴方向重复。 |
-| ARKUI_IMAGE_REPEAT_Y = 2 | 在Y轴方向重复。 |
-| ARKUI_IMAGE_REPEAT_XY = 3 | 在X轴和Y轴方向重复。 |
 
 ### ArkUI_FontStyle
 
@@ -1071,45 +1008,6 @@ enum ArkUI_CopyOptions
 | ARKUI_COPY_OPTIONS_IN_APP = 1 | 支持应用内复制。 |
 | ARKUI_COPY_OPTIONS_LOCAL_DEVICE = 2 | 支持设备内复制。 |
 | ARKUI_COPY_OPTIONS_CROSS_DEVICE = 3 | 支持跨设备复制。 |
-
-### ArkUI_DatePickerMode
-
-```c
-enum ArkUI_DatePickerMode
-```
-
-**描述：**
-
-
-定义日期选择器列显示模式的枚举值。
-
-**起始版本：** 18
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_DATEPICKER_MODE_DATE = 0 | 默认值。日期列显示年、月、日三列。 |
-| ARKUI_DATEPICKER_YEAR_AND_MONTH = 1 | 日期列显示年、月二列。 |
-| ARKUI_DATEPICKER_MONTH_AND_DAY = 2 | 日期列显示月、日二列。 |
-
-### ArkUI_TextPickerRangeType
-
-```c
-enum ArkUI_TextPickerRangeType
-```
-
-**描述：**
-
-
-定义滑动选择文本选择器输入类型。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0 | 单列数据选择器。 |
-| ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1 | 多列数据选择器。 |
-| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2 | 支持图片资源的单列数据选择器。 |
-| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3 | 支持联动的多列数据选择器。 |
 
 ### ArkUI_AccessibilityCheckedState
 
@@ -1593,25 +1491,6 @@ enum ArkUI_CheckboxShape
 | ArkUI_CHECKBOX_SHAPE_CIRCLE = 0 | 圆形。 |
 | ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE = 1 | 圆角方形。 |
 
-### ArkUI_ImageSize
-
-```c
-enum ArkUI_ImageSize
-```
-
-**描述：**
-
-
-定义图片宽高样式。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_IMAGE_SIZE_AUTO = 0 | 保持原图的比例不变。 |
-| ARKUI_IMAGE_SIZE_COVER = 1 | 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。 |
-| ARKUI_IMAGE_SIZE_CONTAIN = 2 | 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。 |
-
 ### ArkUI_AdaptiveColor
 
 ```c
@@ -1746,102 +1625,6 @@ enum ArkUI_ImageSpanAlignment
 | ARKUI_IMAGE_SPAN_ALIGNMENT_TOP | 图片上边沿与文本上边沿对齐。                     |
 | ARKUI_IMAGE_SPAN_ALIGNMENT_FOLLOW_PARAGRAPH | 图片对齐方式跟随Text组件对齐方式。<br>**起始版本：** 20 |
 
-### ArkUI_ObjectFit
-
-```c
-enum ArkUI_ObjectFit
-```
-
-**描述：**
-
-
-定义[Image](arkui-ts/ts-basic-components-image.md)组件的图片填充效果。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_OBJECT_FIT_CONTAIN = 0 | 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。 |
-| ARKUI_OBJECT_FIT_COVER = 1 | 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。 |
-| ARKUI_OBJECT_FIT_AUTO = 2 | 自适应显示。 |
-| ARKUI_OBJECT_FIT_FILL = 3 | 不保持宽高比进行放大缩小，使得图片充满显示边界。 |
-| ARKUI_OBJECT_FIT_SCALE_DOWN = 4 | 保持宽高比显示，图片缩小或者保持不变。 |
-| ARKUI_OBJECT_FIT_NONE = 5 | 保持原有尺寸显示。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START = 6 | 图片大小不变，在image组件中顶部起始端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP = 7 | 图片大小不变，在image组件中顶部横向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END = 8 | 图片大小不变，在image组件中顶部尾端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_START = 9 | 图片大小不变，在image组件中起始端纵向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_CENTER = 10 | 图片大小不变，在image组件中横向和纵向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_END = 11 | 图片大小不变，在image组件中尾端纵向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 | 图片大小不变，在image组件中底部起始端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 | 图片大小不变，在image组件中底部横向居中对齐。 |
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 | 图片大小不变，在image组件中底部尾端对齐。 |
-| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | 不改变图像原始大小，需要配合[ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype)中的NODE_IMAGE_IMAGE_MATRIX使用。<br/>**起始版本：** 21 |
-
-### ArkUI_ImageInterpolation
-
-```c
-enum ArkUI_ImageInterpolation
-```
-
-**描述：**
-
-
-定义图片插值效果。用于优化图片缩放时的锯齿问题。SVG类型图源不支持该属性。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_IMAGE_INTERPOLATION_NONE = 0 | 不使用图片插值。 |
-| ARKUI_IMAGE_INTERPOLATION_LOW = 1 | 低图片插值。 |
-| ARKUI_IMAGE_INTERPOLATION_MEDIUM = 2 | 中图片插值。 |
-| ARKUI_IMAGE_INTERPOLATION_HIGH = 3 | 高图片插值，插值质量最高。 |
-
-### ArkUI_DynamicRangeMode
-
-```c
-enum ArkUI_DynamicRangeMode
-```
-
-**描述：**
-
-
-定义图像动态范围模式（例如：SDR/HDR），用于控制图像的明暗与色彩显示范围。
-
-**起始版本：** 21
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | 高动态范围（High Dynamic Range，简称HDR），表示图片中显示亮度（brightness）的最小值和最大值的范围，范围越大图像的亮度表达更逼近真实环境，在太亮的环境下不会产生过曝（一片白），太暗的环境下不会产生过暗的效果（一片黑）。 |
-| ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT = 1 | 受限的高动态范围，包含比SDR更丰富的亮度和色彩，但不是完整的HDR，一般用于需要兼容SDR的情况。 |
-| ARKUI_DYNAMIC_RANGE_MODE_STANDARD = 2 | 标准动态范围（Standard Dynamic Range，简称SDR），表示亮度范围有限，一般在0~100尼特（亮度单位）左右，明暗对比度较小，暗部容易糊成黑，亮部容易过曝。 |
-
-### ArkUI_ImageRotateOrientation
-
-```c
-enum ArkUI_ImageRotateOrientation
-```
-
-**描述：**
-
-
-定义图像旋转方向。
-
-**起始版本：** 21
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_ORIENTATION_AUTO = 0 | 读取图片携带的EXIF元数据作为显示方向，支持旋转和镜像。EXIF（Exchangeable image file format）是专门为数码相机的照片设定的文件格式，可以记录数码照片的属性信息和拍摄数据。 |
-| ARKUI_ORIENTATION_UP = 1 | 默认按照当前图片的像素数据进行显示，不做任何处理。 |
-| ARKUI_ORIENTATION_RIGHT = 2 | 将当前图片顺时针旋转90度后显示。 |
-| ARKUI_ORIENTATION_DOWN = 3 | 将当前图片顺时针旋转180度后显示。 |
-| ARKUI_ORIENTATION_LEFT = 4 | 将当前图片顺时针旋转270度后显示。 |
-| ARKUI_ORIENTATION_UP_MIRRORED = 5 | 将当前图片水平翻转后显示。 |
-| ARKUI_ORIENTATION_RIGHT_MIRRORED = 6 | 将当前图片水平翻转再顺时针旋转90度后显示。 |
-| ARKUI_ORIENTATION_DOWN_MIRRORED = 7 | 将当前图片垂直翻转后显示。 |
-| ARKUI_ORIENTATION_LEFT_MIRRORED = 8 | 将当前图片水平翻转再顺时针旋转270度后显示。 |
-
 ### ArkUI_Direction
 
 ```c
@@ -1963,25 +1746,6 @@ enum ArkUI_Visibility
 | ARKUI_VISIBILITY_HIDDEN = 1 | 隐藏，但参与布局进行占位。 |
 | ARKUI_VISIBILITY_NONE = 2 | 隐藏，但不参与布局，不进行占位。 |
 
-### ArkUI_CalendarAlignment
-
-```c
-enum ArkUI_CalendarAlignment
-```
-
-**描述：**
-
-
-日历选择器与入口组件对齐方式。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_CALENDAR_ALIGNMENT_START = 0 | 选择器和入口组件左对齐方式。 |
-| ARKUI_CALENDAR_ALIGNMENT_CENTER = 1 | 选择器和入口组件居中对齐方式。 |
-| ARKUI_CALENDAR_ALIGNMENT_END = 2 | 选择器和入口组件右对齐方式。 |
-
 ### ArkUI_WordBreak
 
 ```c
@@ -2022,24 +1786,6 @@ enum ArkUI_EllipsisMode
 | ARKUI_ELLIPSIS_MODE_END = 2 | 省略行末内容。适用单行文本和多行文本场景 |
 | ARKUI_ELLIPSIS_MODE_MULTILINE_START = 3 | 省略行首内容。适用单行文本和多行文本场景。<br>**起始版本：** 24 |
 | ARKUI_ELLIPSIS_MODE_MULTILINE_CENTER = 4 | 省略行中内容。适用单行文本和多行文本场景。<br>**起始版本：** 24 |
-
-### ArkUI_ImageRenderMode
-
-```c
-enum ArkUI_ImageRenderMode
-```
-
-**描述：**
-
-
-定义图片渲染模式。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_IMAGE_RENDER_MODE_ORIGINAL = 0 | 原色渲染模式。 |
-| ARKUI_IMAGE_RENDER_MODE_TEMPLATE = 1 | 黑白渲染模式。 |
 
 ### ArkUI_ListItemAlignment
 
@@ -2299,26 +2045,6 @@ ListItem划出菜单的展开方向。
 | -- | -- |
 | ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0 | 当列表方向是垂直方向时，LTR模式下表示ListItem的左边，RTL模式下表示ListItem的右边。当列表是水平方向时，表示ListItem的上边。 |
 | ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1 | 当列表方向是垂直方向时，LTR模式下表示ListItem的右边，RTL模式下表示ListItem的左边。当列表是水平方向时，表示ListItem的下边。 |
-
-### ArkUI_AnimationStatus
-
-```c
-enum ArkUI_AnimationStatus
-```
-
-**描述：**
-
-
-定义帧动画的播放状态。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_ANIMATION_STATUS_INITIAL = 0 | 动画初始状态。 |
-| ARKUI_ANIMATION_STATUS_RUNNING = 1 | 动画处于播放状态。 |
-| ARKUI_ANIMATION_STATUS_PAUSED = 2 | 动画处于暂停状态。 |
-| ARKUI_ANIMATION_STATUS_STOPPED = 3 | 动画处于停止状态。 |
 
 ### ArkUI_ErrorCode
 
@@ -3003,23 +2729,6 @@ enum ArkUI_RenderStrategy
 | -- | -- |
 | ARKUI_RENDERSTRATEGY_FAST  = 0 | 在线绘制模式。 |
 | ARKUI_RENDERSTRATEGY_OFFSCREEN = 1 | 离屏绘制模式。 |
-
-### ArkUI_PickerIndicatorType
-
-``` c
-enum ArkUI_PickerIndicatorType
-```
-
-**描述**
-
-选择器的选中指示器类型。
-
-**起始版本：** 23
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_PICKER_INDICATOR_BACKGROUND  = 0 | 背景样式。 |
-| ARKUI_PICKER_INDICATOR_DIVIDER  = 1 | 分割线样式。 |
 
 ### OH_ArkUI_HapticFeedbackMode
 
@@ -6135,313 +5844,6 @@ const char* OH_ArkUI_AccessibilityValue_GetText(ArkUI_AccessibilityValue* value)
 | -- | -- |
 | const char* | 组件的文本描述信息, 默认为空字符串;<br>         若函数参数异常，返回空指针。 |
 
-### OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString()
-
-```c
-ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(char* src)
-```
-
-**描述：**
-
-
-使用图片路径创建帧图片信息，图片格式为svg、png和jpg。支持应用沙箱内的相对路径和绝对路径。
-
-**起始版本：** 12
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| char* src | 图片路径，支持应用沙箱内的相对路径或绝对路径。 |
-
-**返回：**
-
-| 类型                                | 说明 |
-|-----------------------------------| -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* | 帧图片对象指针。 |
-
-### OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor()
-
-```c
-ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor(ArkUI_DrawableDescriptor* drawable)
-```
-
-**描述：**
-
-
-使用[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象创建帧图片信息。
-
-**起始版本：** 12
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawable | 使用PixelMap创建的ArkUI_DrawableDescriptor对象指针。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* | 帧图片对象指针。 |
-
-### OH_ArkUI_ImageAnimatorFrameInfo_Dispose()
-
-```c
-void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* imageInfo)
-```
-
-**描述：**
-
-
-销毁帧图片对象指针。
-
-**起始版本：** 12
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-
-### OH_ArkUI_ImageAnimatorFrameInfo_SetWidth()
-
-```c
-void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t width)
-```
-
-**描述：**
-
-
-设置图片宽度。
-
-**起始版本：** 12
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-| int32_t width | 图片宽度，单位为px。 |
-
-### OH_ArkUI_ImageAnimatorFrameInfo_GetWidth()
-
-```c
-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo)
-```
-
-**描述：**
-
-
-获取图片宽度。
-
-**起始版本：** 12
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 图片宽度，单位为px，imageInfo为空指针时返回0。 |
-
-### OH_ArkUI_ImageAnimatorFrameInfo_SetHeight()
-
-```c
-void OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t height)
-```
-
-**描述：**
-
-
-设置图片高度。
-
-**起始版本：** 12
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-| int32_t height | 图片高度，单位为px。 |
-
-### OH_ArkUI_ImageAnimatorFrameInfo_GetHeight()
-
-```c
-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo)
-```
-
-**描述：**
-
-
-获取图片高度。
-
-**起始版本：** 12
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 图片高度，单位为px，imageInfo为空指针时返回0。 |
-
-### OH_ArkUI_ImageAnimatorFrameInfo_SetTop()
-
-```c
-void OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t top)
-```
-
-**描述：**
-
-
-设置图片相对于组件左上角的纵向坐标。
-
-**起始版本：** 12
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-| int32_t top | 图片相对于组件左上角的纵向坐标，单位为px。 |
-
-### OH_ArkUI_ImageAnimatorFrameInfo_GetTop()
-
-```c
-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo)
-```
-
-**描述：**
-
-
-获取图片相对于组件左上角的纵向坐标。
-
-**起始版本：** 12
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 图片相对于组件左上角的纵向坐标，单位为px，imageInfo为空指针时返回0。 |
-
-### OH_ArkUI_ImageAnimatorFrameInfo_SetLeft()
-
-```c
-void OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t left)
-```
-
-**描述：**
-
-
-设置图片相对于组件左上角的横向坐标。
-
-**起始版本：** 12
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-| int32_t left | 图片相对于组件左上角的横向坐标，单位为px。 |
-
-### OH_ArkUI_ImageAnimatorFrameInfo_GetLeft()
-
-```c
-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo)
-```
-
-**描述：**
-
-
-获取图片相对于组件左上角的横向坐标。
-
-**起始版本：** 12
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 图片相对于组件左上角的横向坐标，单位为px，imageInfo为空指针时返回0。 |
-
-### OH_ArkUI_ImageAnimatorFrameInfo_SetDuration()
-
-```c
-void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t duration)
-```
-
-**描述：**
-
-
-设置图片的播放时长。
-
-**起始版本：** 12
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-| int32_t duration | 图片的播放时长，单位为ms。 |
-
-### OH_ArkUI_ImageAnimatorFrameInfo_GetDuration()
-
-```c
-int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo)
-```
-
-**描述：**
-
-
-获取图片的播放时长。
-
-**起始版本：** 12
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | 帧图片对象指针。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int32_t | 图片的播放时长，单位为毫秒，imageInfo为空指针时返回0。 |
-
 ### OH_ArkUI_ListChildrenMainSizeOption_Create()
 
 ```c
@@ -7440,7 +6842,6 @@ int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snap
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | 截图选项指针。 |
-| int32_t dynamicRangeMode | 指定截图使用的动态范围模式。<br>如果知道截图对象使用的动态范围模式，可通过dynamicRangeMode参数指定动态范围模式，并将isAuto设置为false，以达到预期的截图效果。<br>支持的取值为：[ArkUI_DynamicRangeMode](#arkui_dynamicrangemode)枚举值。<br>默认值：ARKUI_DYNAMIC_RANGE_MODE_STANDARD<br>仅当isAuto设置为false，该参数设置生效。 |
 | bool isAuto | 是否由系统自动决定所使用的动态范围模式。<br>true表示系统自动决定所使用的动态范围模式。在不确定组件使用的动态范围模式时，建议将isAuto设置为true，让系统根据实际情况自动决定使用的动态范围模式。<br>false表示使用通过dynamicRangeMode字段设置的动态范围模式进行截图。<br>默认值：false |
 
 **返回：**
@@ -7779,185 +7180,6 @@ bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEv
 | 类型 | 说明 |
 | -- | -- |
 | bool | 获取可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的NODE_CLIP属性设置。如果父组件的NODE_CLIP为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的NODE_CLIP设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑NODE_CLIP的影响，直接将组件超出父组件的部分视为不可见区域。<br/>默认值：false |
-
-### OH_ArkUI_TextPickerRangeContentArray_Create()
-
-```c
-ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(int32_t length)
-```
-
-**描述：**
-
-
-创建[TextPickerRangeContent](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)数组的对象。
-
-**起始版本：** 19
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| int32_t length | 指定TextPickerRangeContent数组的长度。 |
-
-**返回：**
-
-| 类型                                     | 说明 |
-|----------------------------------------| -- |
-| [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)* | 返回指向TextPickerRangeContent空数组的指针。 |
-
-### OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex()
-
-```c
-void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* icon, int32_t index)
-```
-
-**描述：**
-
-
-设置TextPickerRangeContent数组指定位置的icon数据。
-
-**起始版本：** 19
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)* handle | 指向TextPickerRangeContent数组的指针。 |
-| char* icon | 图标路径。 |
-| int32_t index | 数组索引，从0开始。 |
-
-### OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex()
-
-```c
-void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* text, int32_t index)
-```
-
-**描述：**
-
-
-设置TextPickerRangeContent数组指定位置的text数据。
-
-**起始版本：** 19
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)* handle | 指向TextPickerRangeContent数组的指针。 |
-| char* text | 文本内容。 |
-| int32_t index | 数组位置，从0开始。 |
-
-### OH_ArkUI_TextPickerRangeContentArray_Destroy()
-
-```c
-void OH_ArkUI_TextPickerRangeContentArray_Destroy(ArkUI_TextPickerRangeContentArray* handle)
-```
-
-**描述：**
-
-
-删除TextPickerRangeContent数组对象。
-
-**起始版本：** 19
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)* handle | 指向TextPickerRangeContent数组的指针。 |
-
-### OH_ArkUI_TextCascadePickerRangeContentArray_Create()
-
-```c
-ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContentArray_Create(int32_t length)
-```
-
-**描述：**
-
-创建[TextCascadePickerRangeContent](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)数组对象。
-
-**起始版本：** 19
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| int32_t length | 指向TextPickerRangeContent数组的长度。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)* | 返回指向TextCascadePickerRangeContent空数组的指针。 |
-
-### OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex()
-
-```c
-void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex(ArkUI_TextCascadePickerRangeContentArray* handle, char* text, int32_t index)
-```
-
-**描述：**
-
-
-设置TextCascadePickerRangeContent数组指定位置的text数据。
-
-**起始版本：** 19
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)* handle | 指向TextCascadePickerRangeContentHandle的指针。 |
-| char* text | 文本内容。 |
-| int32_t index | 数组位置，从0开始。 |
-
-### OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex()
-
-```c
-void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex(ArkUI_TextCascadePickerRangeContentArray* handle, ArkUI_TextCascadePickerRangeContentArray* child, int32_t index)
-```
-
-**描述：**
-
-
-设置TextCascadePickerRangeContent数组指定位置的child数据。
-
-**起始版本：** 19
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)* handle | 指向TextCascadePickerRangeContentHandle的指针。 |
-| [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)* child | 子节点数组指针。 |
-| int32_t index | 数组位置，从0开始。 |
-
-### OH_ArkUI_TextCascadePickerRangeContentArray_Destroy()
-
-```c
-void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy(ArkUI_TextCascadePickerRangeContentArray* handle)
-```
-
-**描述：**
-
-
-删除TextCascadePickerRangeContent数组对象。
-
-**起始版本：** 19
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)* handle | 指向TextCascadePickerRangeContentHandle的指针。 |
 
 ### OH_ArkUI_EmbeddedComponentOption_Create()
 
@@ -13104,48 +12326,6 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_ScrollToVisible(const 
 | -------------------------------------------------------- | ------------------------------------------------------------ |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。 <br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。 <br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
 
-### OH_ArkUI_PickerIndicatorStyle_Create()
-
-``` c
-ArkUI_PickerIndicatorStyle* OH_ArkUI_PickerIndicatorStyle_Create(ArkUI_PickerIndicatorType type)
-```
-
-**描述**
-
-创建选中项指示器的样式实例。
-
-**起始版本：** 23
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_PickerIndicatorType](capi-native-type-h.md#arkui_pickerindicatortype) type | 选择器选中项样式枚举类型。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* | [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)实例。如果返回空指针，表示创建失败，失败原因可是地址空间已满或类型不支持。 |
-
-### OH_ArkUI_PickerIndicatorStyle_Dispose()
-
-``` c
-void OH_ArkUI_PickerIndicatorStyle_Dispose(ArkUI_PickerIndicatorStyle* style)
-```
-
-**描述**
-
-销毁选中项指示器的样式实例。
-
-**起始版本：** 23
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | 要销毁的[ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)实例。 |
-
 ### OH_ArkUI_PickerIndicatorStyle_ConfigureBackground()
 
 ``` c
@@ -13154,7 +12334,7 @@ ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureBackground(ArkUI_PickerIn
 
 **描述**
 
-设置背景样式参数，此接口仅当选择器选中项样式枚举类型为[ARKUI_PICKER_INDICATOR_BACKGROUND](capi-native-type-h.md#arkui_pickerindicatortype)时生效。
+设置背景样式参数，此接口仅当选择器选中项样式枚举类型为[ARKUI_PICKER_INDICATOR_BACKGROUND](capi-picker-h.md#arkui_pickerindicatortype)时生效。
 
 **起始版本：** 23
 
@@ -13179,7 +12359,7 @@ ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndic
 
 **描述**
 
-设置分割线样式参数，此接口仅当选择器选中项样式枚举类型为[ARKUI_PICKER_INDICATOR_DIVIDER](capi-native-type-h.md#arkui_pickerindicatortype)时生效。
+设置分割线样式参数，此接口仅当选择器选中项样式枚举类型为[ARKUI_PICKER_INDICATOR_DIVIDER](capi-picker-h.md#arkui_pickerindicatortype)时生效。
 
 **起始版本：** 23
 
