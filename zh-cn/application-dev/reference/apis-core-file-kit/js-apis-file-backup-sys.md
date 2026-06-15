@@ -415,7 +415,7 @@ onResultReport (bundleName: string, result: string)
 
 ### onProcess<sup>12+</sup>
 
-onProcess (bundleName: string, process: string)
+onProcess (bundleName: string, process: string): void
 
 回调函数。应用备份/恢复过程中进度信息的回调，返回应用执行业务的进度信息和异常信息等。
 
@@ -943,6 +943,8 @@ type OnBackupSizeReport = (reportInfo: string) => void
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
+ **参数：**
+ 
 | 参数名   | 类型                                  | 必填 | 说明                 |
 | -------- | ------------------------------------- | ---- | -------------------- |
 | reportInfo | string | 是   | 框架获取到的应用待备份数据量大小的信息。 |
