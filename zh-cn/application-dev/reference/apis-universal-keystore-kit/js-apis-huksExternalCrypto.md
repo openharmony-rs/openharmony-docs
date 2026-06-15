@@ -763,7 +763,7 @@ const params: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
 async function testFunction() : Promise<void>
 {
   try {
-    huksExternalCrypto.authUkeyPin(resourceId, params);
+    await huksExternalCrypto.authUkeyPin(resourceId, params);
   } catch (error) {
     const errorInfo = huksExternalCrypto.getErrorInfo();
     console.info(`errno: ${errorInfo.errno}`);
