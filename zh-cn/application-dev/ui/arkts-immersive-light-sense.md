@@ -330,6 +330,37 @@ struct MaterialInfoPage {
    
    <!-- @[PopupMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/PopupMaterial.ets) -->
    
+   ``` TypeScript
+   import { uiMaterial } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct PopupMaterialPage {
+     @State handlePopup: boolean = false;
+   
+     build() {
+       Flex({ direction: FlexDirection.Column }) {
+         Button('PopupOptions')
+           .onClick(() => {
+             this.handlePopup = !this.handlePopup
+           })
+           .bindPopup(this.handlePopup!!, {
+             message: 'This is a popup with PopupOptions',
+             placement: Placement.Top,
+             // 控制是否设置系统材质
+             systemMaterial: new uiMaterial.ImmersiveMaterial({
+               style: uiMaterial.ImmersiveStyle.THIN
+             })
+           })
+           .position({ x: 100, y: 300 })
+       }.width('100%')
+       // 请开发者替换为实际资源文件
+       .backgroundImage($r('app.media.img'))
+       .backgroundImageSize({ width: '100%', height: '100%' })
+     }
+   }
+   ```
+   
    未设置系统材质时：
    
    ![popupWithoutNewMaterial](../reference/apis-arkui/arkui-ts/figures/popupWithoutNewMaterial.png)
