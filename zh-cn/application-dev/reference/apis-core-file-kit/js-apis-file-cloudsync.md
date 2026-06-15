@@ -1020,9 +1020,9 @@ try {
 
 ```
 
-### cleanFileCache
+### cleanAllFileCache
 
-cleanFileCache(): Promise&lt;void&gt;
+cleanAllFileCache(): Promise&lt;void&gt;
 
 删除所有已缓存文件，未上云文件、写打开文件及缩略图文件不会被删除。使用Promise异步回调。
 
@@ -1054,7 +1054,7 @@ import { fileUri } from '@kit.CoreFileKit';
 
 let fileCache = new cloudSync.CloudFileCache();
 
-fileCache.cleanFileCache().then(() => {
+fileCache.cleanAllFileCache().then(() => {
   console.info("clean file cache successfully");
 }).catch((err: BusinessError) => {
   console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
