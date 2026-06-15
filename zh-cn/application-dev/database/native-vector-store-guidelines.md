@@ -61,7 +61,7 @@ libnative_rdb_ndk.z.so
 
 **头文件**
 
-<!--@[vector_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->   
 
 ``` C
 #include <hilog/log.h>
