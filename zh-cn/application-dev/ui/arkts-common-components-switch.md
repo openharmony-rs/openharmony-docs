@@ -29,7 +29,18 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
   当ToggleType为Checkbox或者Switch时，用于创建不包含子组件的Toggle：
   
+  ArkTS-Dyn示例：
+
   <!-- @[create_toggle_with_checkbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
+  
+  ``` TypeScript
+  Toggle({ type: ToggleType.Checkbox, isOn: false }).id('toggle1') // 请开发者替换为实际的id
+  Toggle({ type: ToggleType.Checkbox, isOn: true }).id('toggle2') // 请开发者替换为实际的id
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[create_toggle_with_checkbox](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
   
   ``` TypeScript
   Toggle({ type: ToggleType.Checkbox, isOn: false }).id('toggle1') // 请开发者替换为实际的id
@@ -38,7 +49,18 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
   ![switch-checkbox-default](figures/switch-checkbox-default.png)
   
+  ArkTS-Dyn示例：
+
   <!-- @[create_toggle_with_switch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
+  
+  ``` TypeScript
+  Toggle({ type: ToggleType.Switch, isOn: false }).id('toggle3') // 请开发者替换为实际的id
+  Toggle({ type: ToggleType.Switch, isOn: true }).id('toggle4') // 请开发者替换为实际的id
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[create_toggle_with_switch](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
   
   ``` TypeScript
   Toggle({ type: ToggleType.Switch, isOn: false }).id('toggle3') // 请开发者替换为实际的id
@@ -51,7 +73,27 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
   当ToggleType为Button时，只能包含一个子组件，如果子组件有文本设置，则相应的文本内容会显示在按钮上。
 
+  ArkTS-Dyn示例：
+
   <!-- @[create_a_toggle_that_contains_subcomponents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
+  
+  ``` TypeScript
+  Toggle({ type: ToggleType.Button, isOn: false }) {
+    Text('status button')
+      .fontColor('#182431')
+      .fontSize(12)
+  }.width(100).id('toggle5') // 请开发者替换为实际的id
+  
+  Toggle({ type: ToggleType.Button, isOn: true }) {
+    Text('status button')
+      .fontColor('#182431')
+      .fontSize(12)
+  }.width(100).id('toggle6') // 请开发者替换为实际的id
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[create_a_toggle_that_contains_subcomponents](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
   
   ``` TypeScript
   Toggle({ type: ToggleType.Button, isOn: false }) {
@@ -70,9 +112,12 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
     ![switch-checkbox](figures/switch-checkbox.png)
 
 
+
 ## 自定义样式
 
 - 通过[selectedColor](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#selectedcolor)属性设置Toggle打开选中后的背景颜色。
+
+  ArkTS-Dyn示例：
 
   <!-- @[custom_toggle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->
   
@@ -93,9 +138,32 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
       // ···
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[custom_toggle](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->
+  
+  ``` TypeScript
+  Toggle({ type: ToggleType.Button, isOn: true }) {
+    Text('status button')
+      .fontColor('#182431')
+      .fontSize(12)
+  }.width(100)
+  .selectedColor(Color.Pink)
+  // ...
+  
+  Toggle({ type: ToggleType.Checkbox, isOn: true })
+    .selectedColor(Color.Pink)
+    // ...
+  Toggle({ type: ToggleType.Switch, isOn: true })
+    .selectedColor(Color.Pink)
+    // ...
+  ```
+
   ![switch-style](figures/switch-style.png)
 
 - 通过[switchPointColor](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#switchpointcolor)属性设置Switch类型的圆形滑块颜色，仅对type为ToggleType.Switch生效。
+
+  ArkTS-Dyn示例：
 
   <!-- @[custom_switch_point_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->  
   
@@ -108,6 +176,19 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
     // ···
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[custom_switch_point_color](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->
+  
+  ``` TypeScript
+  Toggle({ type: ToggleType.Switch, isOn: false })
+    .switchPointColor(Color.Pink)
+    // ...
+  Toggle({ type: ToggleType.Switch, isOn: true })
+    .switchPointColor(Color.Pink)
+    // ...
+  ```
+
   ![switch-custom](figures/switch-custom.png)
 
 
@@ -115,6 +196,8 @@ API version 11开始，Checkbox默认样式由圆角方形变为圆形。
 
 除支持[通用事件](../reference/apis-arkui/arkui-ts/ts-component-general-events.md)外，Toggle还用于选中和取消选中后触发某些操作，可以绑定[onChange](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#onchange)事件来响应操作后的自定义行为。
 
+
+ArkTS-Dyn示例：
 
 <!-- @[create_toggle_with_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->  
 
@@ -128,10 +211,26 @@ Toggle({ type: ToggleType.Switch, isOn: false })
   })
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[create_toggle_with_event](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
+
+``` TypeScript
+Toggle({ type: ToggleType.Switch, isOn: false })
+  .onChange((isOn: boolean) => {
+    if(isOn) {
+      // 需要执行的操作
+      // ...
+    }
+  })
+```
+
 
 ## 场景示例
 
 Toggle用于切换蓝牙开关状态。
+
+ArkTS-Dyn示例：
 
 <!-- @[the_example_of_bluetooth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCaseExample.ets) --> 
 
@@ -163,6 +262,75 @@ export struct ToggleSample {
                 } else {
                   this.message = 'off';
                   promptAction.openToast({ 'message': 'Bluetooth is off.' });
+                }
+              })
+          }.width('100%')
+        }
+        .alignItems(HorizontalAlign.Start)
+        .backgroundColor('#fff')
+        .borderRadius(12)
+        .padding(12)
+        .width('100%')
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.ToggleCaseExample_title')替换为实际资源文件，在本示例中该资源文件的value值为"toggle蓝牙示例"
+    .title($r('app.string.ToggleCaseExample_title'))
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[the_example_of_bluetooth](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCaseExample.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Toggle,
+  ToggleType,
+  Text,
+  Column,
+  ColumnOptions,
+  Row,
+  Blank,
+  NavDestination,
+  NavPathStack,
+  HorizontalAlign,
+  promptAction,
+  $r
+} from '@kit.ArkUI'
+import { State } from '@ohos.arkui.stateManagement'
+
+// xxx.ets
+@Entry
+@Component
+export struct ToggleSample {
+  @State message: string = 'off';
+  pathStack: NavPathStack = new NavPathStack();
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 8 } as ColumnOptions) {
+        Column({ space: 8 } as ColumnOptions) {
+          Text('Bluetooth Mode: ' + this.message)
+            .id('message')
+          Row() {
+            Text('Bluetooth')
+            Blank()
+            Toggle({ type: ToggleType.Switch })
+              .id('toggle') // 请开发者替换为实际的id
+              .onChange((isOn: boolean) => {
+                if (isOn) {
+                  this.message = 'on';
+                  this.getUIContext().getPromptAction().openToast({ 'message': 'Bluetooth is on.' });
+                } else {
+                  this.message = 'off';
+                  this.getUIContext().getPromptAction().openToast({ 'message': 'Bluetooth is off.' });
                 }
               })
           }.width('100%')
