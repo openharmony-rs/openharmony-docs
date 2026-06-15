@@ -6321,7 +6321,7 @@
 
 ## ohos.permission.ENTERPRISE_SPACE_FILE_TRANSFER_DATA_ACCESS
 
-允许访问文件传输服务的文件缓存目录，目前仅开放给空间互传使用。
+允许系统应用访问文件传输服务文件缓存路径。
 
 **权限级别**：system_basic
 
