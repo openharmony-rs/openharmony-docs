@@ -1,7 +1,7 @@
 # 无障碍悬浮事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,12 +10,17 @@
 
 >  **说明：**
 >
->  - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->  - 目前仅支持通过开启无障碍模式触发。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 目前仅支持通过开启无障碍模式触发。
 
 ## onAccessibilityHover
 
-onAccessibilityHover(callback: AccessibilityCallback): T
+ArkTS-Dyn: onAccessibilityHover(callback: AccessibilityCallback): T
+
+ArkTS-Sta: onAccessibilityHover(callback: AccessibilityCallback | undefined): this
 
 开启无障碍模式后，单指触摸绑定该回调的组件时触发该回调。
 
@@ -23,21 +28,25 @@ onAccessibilityHover(callback: AccessibilityCallback): T
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [AccessibilityCallback](#accessibilitycallback) | 是   |  提供开启无障碍模式后的无障碍悬浮回调事件，当开启无障碍模式后，单指触摸绑定该回调的组件时触发该回调。 |
+| callback      | ArkTS-Dyn: [AccessibilityCallback](#accessibilitycallback)<br/>ArkTS-Sta: [AccessibilityCallback](#accessibilitycallback) \| undefined | 是   |  提供开启无障碍模式后的无障碍悬浮回调事件，当开启无障碍模式后，单指触摸绑定该回调的组件时触发该回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## AccessibilityCallback
 
@@ -45,9 +54,13 @@ type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) 
 
 提供开启无障碍模式后的无障碍悬浮回调事件类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -60,44 +73,50 @@ type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) 
 
 继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称              | 类型       | 只读 | 可选 | 说明      |
 | --------------- | ---------- | ------- | ------- | ------- |
-| type             | [AccessibilityHoverType](ts-appendix-enums.md#accessibilityhovertype12) | 否 | 否 | 无障碍悬浮动作。                |
-| x                      | number                         | 否 | 否 | 手指位置相对于当前组件左上角的x轴坐标。<br/>单位：vp<br/> |
-| y                      | number                         | 否 | 否 | 手指位置相对于当前组件左上角的y轴坐标。<br/>单位：vp<br/> |
-| windowX                | number                         | 否 | 否 | 手指位置相对于应用窗口左上角的x轴坐标。<br/>单位：vp<br/> |
-| windowY                | number                         | 否 | 否 | 手指位置相对于应用窗口左上角的y轴坐标。<br/>单位：vp<br/> |
-| displayX               | number                         | 否 | 否 | 手指位置相对于应用屏幕左上角的x轴坐标。<br/>单位：vp<br/> |
-| displayY               | number                         | 否 | 否 | 手指位置相对于应用屏幕左上角的y轴坐标。<br/>单位：vp<br/> |
-| globalDisplayX<sup>20+</sup> | number                   | 否 | 是 | 手指位置相对于全局屏幕的左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| globalDisplayY<sup>20+</sup> | number                   | 否 | 是 | 手指位置相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| type             | [AccessibilityHoverType](ts-appendix-enums.md#accessibilityhovertype12) | 否 | 否 | 无障碍悬浮动作。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                |
+| x                      | ArkTS-Dyn: number <br/>ArkTS-Sta: double                         | 否 | 否 | 手指位置相对于当前组件左上角的x轴坐标。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| y                      | ArkTS-Dyn: number <br/>ArkTS-Sta: double                         | 否 | 否 | 手指位置相对于当前组件左上角的y轴坐标。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| windowX                | ArkTS-Dyn: number <br/>ArkTS-Sta: double                         | 否 | 否 | 手指位置相对于应用窗口左上角的x轴坐标。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| windowY                | ArkTS-Dyn: number <br/>ArkTS-Sta: double                         | 否 | 否 | 手指位置相对于应用窗口左上角的y轴坐标。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| displayX               | ArkTS-Dyn: number <br/>ArkTS-Sta: double                         | 否 | 否 | 手指位置相对于应用屏幕左上角的x轴坐标。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| displayY               | ArkTS-Dyn: number <br/>ArkTS-Sta: double                         | 否 | 否 | 手指位置相对于应用屏幕左上角的y轴坐标。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                   | 否 | 是 | 手指位置相对于全局屏幕的左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                   | 否 | 是 | 手指位置相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 
 ## onAccessibilityHoverTransparent<sup>20+</sup>
 
-onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback): T
+ArkTS-Dyn: onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback): T
+
+ArkTS-Sta: onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback | undefined): this
 
 在开启朗读类辅助应用以及手指触摸在组件区域的前提下，当该组件及子组件全部没有被无障碍悬浮识别为可聚焦时，会触发该回调，并且返回无障碍悬浮事件。仅支持手指触摸。不支持如下组件在触摸位置中的场景，包括[UIExtension](../../apis-arkui/js-apis-arkui-uiExtension.md)、[Web](../../apis-arkweb/arkts-basic-components-web.md)、<!--Del-->[FormComponent](ts-basic-components-formcomponent-sys.md)、<!--DelEnd-->[XComponent](ts-basic-components-xcomponent.md)与第三方UI框架对接。在上述场景下，该回调接口无法生效。
 
 组件无法被无障碍悬浮识别为可聚焦的主要原因包括，组件的无障碍重要性[accessibilityLevel](ts-universal-attributes-accessibility.md#accessibilitylevel)为"no"或者"no-hide-descendants"；组件无文本且未配置无障碍文本[accessibilityText](ts-universal-attributes-accessibility.md#accessibilitytext)，同时不支持点击或长按操作。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [AccessibilityTransparentCallback](ts-universal-accessibility-hover-event.md#accessibilitytransparentcallback20) | 是   |  提供开启无障碍模式后未能响应的用户输入的触摸事件，当开启无障碍模式后，单指触摸未能响应无障碍悬浮事件位置时触发该回调。 |
+| callback      | ArkTS-Dyn: [AccessibilityTransparentCallback](ts-universal-accessibility-hover-event.md#accessibilitytransparentcallback20)<br/>ArkTS-Sta: [AccessibilityTransparentCallback](ts-universal-accessibility-hover-event.md#accessibilitytransparentcallback20) \| undefined | 是   |  提供开启无障碍模式后未能响应的用户输入的触摸事件，当开启无障碍模式后，单指触摸未能响应无障碍悬浮事件位置时触发该回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## AccessibilityTransparentCallback<sup>20+</sup>
 
@@ -105,9 +124,13 @@ type AccessibilityTransparentCallback = (event: TouchEvent) => void
 
 提供开启无障碍模式后未能响应的用户输入的触摸事件。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

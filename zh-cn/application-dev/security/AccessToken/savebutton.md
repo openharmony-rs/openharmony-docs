@@ -15,7 +15,7 @@
 
 保存控件效果如图所示。
 
-![zh-cn_image_0000001701740676](figures/zh-cn_image_0000001701740676.png)
+![save-control-effect](figures/save-control-effect.png)
 
 ## 约束与限制
 
@@ -23,7 +23,7 @@
 
 - 应用在点击控件触发onClick()回调到调用媒体库特权接口的时间间隔需控制在授权时间内。在API version 19及之前的版本中，授权持续时间为10秒；在API version 20及之后的版本中，授权持续时间为1分钟。
 
-- 保存控件仅支持在[应用主窗口和子窗口](../../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)中使用，且不支持在[UIExtension](../../reference/apis-arkui/js-apis-arkui-uiExtension.md)中使用。
+- 保存控件仅支持在[WindowType](../../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)中定义的应用主窗口和子窗口中使用，且不支持在[UIExtension](../../reference/apis-arkui/js-apis-arkui-uiExtension.md)中使用。
 
 - 用户点击一次控件，仅获取一次授权调用。
 
@@ -52,6 +52,8 @@
    当前示例使用默认参数。具体请参见[SaveButton控件](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)。此外，所有安全控件都继承了[安全控件通用属性](../../reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes.md)，可用于定制样式。
    
    有关将图片保存到媒体库的详细信息，请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
+
+   ArkTS-Dyn示例：
 
    <!-- @[use_save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Save.ets) -->    
    
@@ -115,4 +117,75 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   ```ts
+   import {
+     Entry,
+     Column,
+     Component,
+     ClickEvent,
+     Row,
+     SaveButton,
+     SaveButtonOnClickResult,
+     Image,
+     $r,
+     ColumnOptions,
+   } from '@ohos.arkui.component'
+   import { BusinessError } from '@ohos.base'
+   import fileIo from '@ohos.file.fs'
+   import photoAccessHelper from '@ohos.file.photoAccessHelper'
+   import common from '@ohos.app.ability.common'
+   import promptAction from '@ohos.promptAction'
+
+   async function savePhotoToGallery(context: common.UIAbilityContext) {
+     let helper = photoAccessHelper.getPhotoAccessHelper(context);
+     try {
+       let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
+       let file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+       // $r('app.media.test')需要替换为开发者所需的图像资源文件。
+       context.resourceManager.getMediaContent($r('app.media.test').id, 0)
+         .then(async (value: Uint8Array) => {
+           let media = value.buffer;
+           // 写到媒体库文件中。
+           await fileIo.write(file.fd, media);
+           await fileIo.close(file.fd);
+           promptAction.openToast({ message: $r('app.string.saved_in_photo') });
+         });
+     } catch (error) {
+       const err: BusinessError = error as BusinessError;
+       console.error(`Failed to save photo. Code is ${err.code}, message is ${err.message}`);
+     }
+   }
+
+   @Entry
+   @Component
+   struct Index {
+     build() {
+       Row() {
+         Column({ space: 10 } as ColumnOptions) {
+           // $r('app.media.test')需要替换为开发者所需的图像资源文件。
+           Image($r('app.media.test'))
+             .height(400)
+             .width('100%')
+
+           SaveButton()
+             .padding({top: 12, bottom: 12, left: 24, right: 24})
+             .onClick((event: ClickEvent, result: SaveButtonOnClickResult, error?: BusinessError<void>) => {
+               if (result === SaveButtonOnClickResult.SUCCESS) {
+                 const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+                 // 免去权限申请和权限请求等环节，获得临时授权，保存对应图片。
+                 savePhotoToGallery(context);
+               } else {
+                 promptAction.openToast({ message: $r('app.string.set_permission_failed') });
+               }
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+       .backgroundColor(0xf1f3f5)
+     }
+   }
+   ```
 

@@ -10,11 +10,15 @@
 
 > **说明：**
 >
->  从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## onVisibleAreaChange
 
-onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallback): T
+ArkTS-Dyn: onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallback): T
+
+ArkTS-Sta: onVisibleAreaChange(ratios: Array&lt;double&gt; | undefined, event: VisibleAreaChangeCallback | undefined): this
 
 组件可见区域变化时触发该回调。开发指导及常见问题请参考[感知组件可见性](./../../../ui/arkts-manage-components-visibility.md)指南。
 
@@ -30,46 +34,58 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 >
 >- 不支持[scale](ts-universal-attributes-transformation.md#scale)属性，如果想要支持[scale](ts-universal-attributes-transformation.md#scale)，则需使用[onVisibleAreaChange<sup>22+</sup>](#onvisibleareachange22)，将measureFromViewport设置为true。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| ratios | Array&lt;number&gt;                                 | 是   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br/>**说明：** <br/>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
-| event  | [VisibleAreaChangeCallback](./ts-universal-component-visible-area-change-event.md#visibleareachangecallback12) | 是   | 组件可见区域变化事件的回调。 |
+| ratios | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;double&gt;&nbsp;\|&nbsp;undefined | 是   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br/>**说明：** <br/>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
+| event  | ArkTS-Dyn: [VisibleAreaChangeCallback](#visibleareachangecallback12)<br/>ArkTS-Sta: [VisibleAreaChangeCallback](#visibleareachangecallback12)&nbsp;\|&nbsp;undefined | 是   | 组件可见区域变化事件的回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onVisibleAreaChange<sup>22+</sup>
 
-onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallback, measureFromViewport: boolean): T
+ArkTS-Dyn: onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallback, measureFromViewport: boolean): T
+
+ArkTS-Sta: onVisibleAreaChange(ratios: Array&lt;double&gt; | undefined, event: VisibleAreaChangeCallback | undefined, measureFromViewport: boolean | undefined): this
 
 组件可见区域变化时触发该回调。可以通过measureFromViewport设置可见区域计算模式。开发指导及常见问题请参考[感知组件可见性](./../../../ui/arkts-manage-components-visibility.md)指南。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| ratios | Array&lt;number&gt;                                 | 是   | 阈值数组。其中，每个阈值代表组件可见面积与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br/>**说明：**<br/>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
-| event  | [VisibleAreaChangeCallback](./ts-universal-component-visible-area-change-event.md#visibleareachangecallback12) | 是   | 组件可见区域变化事件的回调。 |
-| measureFromViewport  | boolean | 是  | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12) 属性设置。如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](./ts-universal-attributes-sharp-clipping.md#clip12)的影响，直接将组件超出父组件的部分视为不可见区域。<br/>measureFromViewport设置为true时，祖先节点设置[scale](ts-universal-attributes-transformation.md#scale)属性，组件可见比例会被正确计算。 |
+| ratios | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;double&gt;&nbsp;\|&nbsp;undefined | 是   | 阈值数组。其中，每个阈值代表组件可见面积与组件自身面积的比值。当组件可见面积与自身面积的比值接近阈值时，均会触发该回调。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br/>**说明：**<br/>当数值接近边界0和1时，将会按照误差不超过0.001的规则进行舍入。例如，0.9997会被近似为1。 |
+| event  | ArkTS-Dyn: [VisibleAreaChangeCallback](#visibleareachangecallback12)<br/>ArkTS-Sta: [VisibleAreaChangeCallback](#visibleareachangecallback12)&nbsp;\|&nbsp;undefined | 是   | 组件可见区域变化事件的回调。 |
+| measureFromViewport  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是  | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12) 属性设置。如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](./ts-universal-attributes-sharp-clipping.md#clip12)的影响，直接将组件超出父组件的部分视为不可见区域。<br/>measureFromViewport设置为true时，祖先节点设置[scale](ts-universal-attributes-transformation.md#scale)属性，组件可见比例会被正确计算。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 > **说明：**
 >
@@ -82,7 +98,9 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 
 ## onVisibleAreaApproximateChange<sup>17+</sup>
 
-onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): T
+ArkTS-Dyn: onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): T
+
+ArkTS-Sta: onVisibleAreaApproximateChange(options: VisibleAreaEventOptions | undefined, event: VisibleAreaChangeCallback | undefined): this
 
 设置onVisibleAreaApproximateChange事件的回调参数，限制它的执行间隔。
 
@@ -90,22 +108,28 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 >
 > 从API version 23开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| options  | [VisibleAreaEventOptions](#visibleareaeventoptions12) | 是   | 可见区域变化相关的参数。 |
+| options  | ArkTS-Dyn: [VisibleAreaEventOptions](#visibleareaeventoptions12)<br/>ArkTS-Sta: [VisibleAreaEventOptions](#visibleareaeventoptions12)&nbsp;\|&nbsp;undefined | 是   | 可见区域变化相关的参数。 |
 | event  | [VisibleAreaChangeCallback](#visibleareachangecallback12)   \| undefined | 是   | onVisibleAreaChange事件的回调函数。当组件可见面积与自身面积的比值接近options中设置的阈值时触发该回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 >**说明：**
 >
@@ -123,30 +147,40 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 
 关于区域变化相关的参数。
 
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型                                                | 只读 | 可选 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | -------- | ------------------------------------------------------------ |
-| ratios | Array&lt;number&gt;                                 | 否 | 否   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| expectedUpdateInterval | number | 否 | 是 | 定义了开发者期望的计算间隔，单位为ms。当该字段小于100或为NaN时，默认取值为100；当该字段大于2^31-1时，默认取值为2^31-1。<br/>默认值：1000 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| measureFromViewport<sup>22+</sup> | boolean | 否 | 是 | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12) 属性设置。如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](./ts-universal-attributes-sharp-clipping.md#clip12)的影响，直接将组件超出父组件的部分视为不可见区域。<br/>默认值：false <br/>measureFromViewport设置为true时，祖先节点设置[scale](ts-universal-attributes-transformation.md#scale)属性，组件可见比例会被正确计算。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| ratios | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;double&gt;      | 否 | 否   | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值小于0.0，则实际取值为0.0；如果设置的阈值大于1.0，则实际取值为1.0。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| expectedUpdateInterval | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 定义了开发者期望的计算间隔，单位为ms。当该字段小于100或为NaN时，默认取值为100；当该字段大于2^31-1时，默认取值为2^31-1。<br/>默认值：1000 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| measureFromViewport<sup>22+</sup> | boolean | 否 | 是 | 设置可见区域计算模式。<br/>当measureFromViewport设置为true时，系统在计算该组件的可见区域时，会考虑父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12) 属性设置。如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)为false，则认为其内的子组件可以超出其区域进行显示，因此超出父组件的区域也将被视为可见区域纳入计算；如果父组件的[clip](./ts-universal-attributes-sharp-clipping.md#clip12)设置为true，则组件超出父组件的区域会被裁剪，无法显示，因此会被视为不可见区域进行计算。而当measureFromViewport设置为false时，则不考虑[clip](./ts-universal-attributes-sharp-clipping.md#clip12)的影响，直接将组件超出父组件的部分视为不可见区域。<br/>默认值：false <br/>measureFromViewport设置为true时，祖先节点设置[scale](ts-universal-attributes-transformation.md#scale)属性，组件可见比例会被正确计算。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 26.0.0|
 
 ## VisibleAreaChangeCallback<sup>12+</sup>
 
-type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) => void
+ArkTS-Dyn: type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) => void
+
+ArkTS-Sta: type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: double) => void
 
 组件可见区域变化事件的回调类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名            | 类型               | 必填      | 说明                                       |
 | ------------- | ------------------   | ------------- | ---------------------- |
 | isExpanding | boolean | 是 | 视组件的可见面积与自身面积的比值与上一次回调相比的情况而定，比值变大为true，比值变小为false。 |
-| currentRatio | number | 是 | 触发回调时，组件可见面积与自身面积的比值。 |
+| currentRatio | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 触发回调时，组件可见面积与自身面积的比值。 |
 
 ## 示例
 
@@ -354,7 +388,7 @@ struct ScrollExample {
   }
 }
 ```
-![zh-cn_visible_area_change.gif](figures/zh-cn_visible_area_change.gif)
+![visible-area-change.gif](figures/visible-area-change.gif)
 
 ### 示例3 (设置measureFromViewport子组件超出父组件显示)
 
@@ -466,4 +500,4 @@ struct OnVisibleAreaChangeSample {
   }
 }
 ```
-![zh-cn_visible_area_change.gif](figures/zh-cn_visible_area_change3.jpg)
+![visible-area-change.gif](figures/visible-area-change3.jpg)

@@ -1,8 +1,8 @@
 # 绑定全模态页面（bindContentCover）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@
 
 全模态页面本质上是弹窗类组件，其交互层级默认为应用内顶层。
 
-[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)导航转场时，新push的页面层级无法超出全模态，其效果仍然显示在模态页面之下。针对此类场景，建议将模态页面的内容迁移至转场页面中实现。例如，在上述情况下，可以使用NavDestination来替代拉起的模态页面，新push的页面层级低于全模态。
+[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)导航转场时，新push的页面层级无法超出全模态，其效果仍然显示在模态页面之下。针对此类场景，建议将模态页面的内容迁移至转场页面中实现。例如，在上述情况下，可以使用[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)来替代拉起的模态页面，新push的页面层级低于全模态。
 
 ## 生命周期
 

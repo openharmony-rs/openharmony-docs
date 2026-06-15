@@ -1,9 +1,9 @@
 # 应用及文件系统空间统计
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @Dyylll-->
+<!--Designer: @hwzhangchuang; @yangwei_814916-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 在系统中，可能出现系统空间不够或者cacheDir等目录受系统配额限制等情况，需要应用开发者关注系统剩余空间，同时控制应用自身占用的空间大小。
@@ -42,30 +42,53 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
 ## 开发示例
 
 - 获取文件系统数据分区剩余空间大小。
-  
+
+  ArkTS-Dyn示例：
+
   ```ts
   import { statfs } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
-  
+
   ```
   <!--@[storageStatistics_statfs_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
+  
+  ``` TypeScript
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let path = context.filesDir;
+  statfs.getFreeSize(path, (err: BusinessError, number: number) => {
+    if (err) {
+      console.error(`Invoke getFreeSize failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info(`Invoke getFreeSize succeeded, size is ${number}`);
+    }
+  });
+  ```
 
-   ``` TypeScript
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-   let path = context.filesDir;
-   statfs.getFreeSize(path, (err: BusinessError, number: number) => {
-     if (err) {
-       console.error(`Invoke getFreeSize failed, code is ${err.code}, message is ${err.message}`);
-     } else {
-       console.info(`Invoke getFreeSize succeeded, size is ${number}`);
-     }
-   });
-   ```
+  ArkTS-Sta示例：
 
+  ```ts
+  import { statfs } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { common } from '@kit.AbilityKit';
+
+  ```
+  <!--@[storageStatistics_statfs_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/AppFsSpaceStatisticsSample-sta/entry/src/main/ets/pages/Index.ets)-->
+  
+  ``` TypeScript
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let path: string = context.filesDir;
+  statfs.getFreeSize(path).then((freeSize: long) => {
+    console.info(`getFreeSize successfully, freeSize is ${freeSize}`);
+  }).catch((err: Error): void => {
+    console.error(`Failed to getFreeSize, code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
 - 获取当前应用的存储空间大小。
-  
+
+  ArkTS-Dyn示例：
+
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -82,8 +105,25 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   });
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  ```
+  <!--@[storageStatistics_getCurrentBundleStats](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/AppFsSpaceStatisticsSample-sta/entry/src/main/ets/pages/Index.ets)-->
+  
+  ``` TypeScript
+  storageStatistics.getCurrentBundleStats().then((BundleStats: storageStatistics.BundleStats) => {
+    console.info("getCurrentBundleStats successfully:" + JSON.stringify(BundleStats));
+  }).catch((err: Error): void => {
+    console.error(`Failed to getCurrentBundleStats, code is: ${err.code}, message is: ${err.message}`);
+  });
+  ```
 
 - 异步获取内置存储的总空间大小。
+
+  ArkTS-Dyn示例：
 
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
@@ -99,8 +139,25 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   });
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  ```
+  <!--@[storageStatistics_getTotalSize](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/AppFsSpaceStatisticsSample-sta/entry/src/main/ets/pages/Index.ets)-->
+  
+  ``` TypeScript
+  storageStatistics.getTotalSize().then((totalSize: long) => {
+    console.info(`getTotalSize successfully, totalSize is ${totalSize}`);
+  }).catch((err: Error): void => {
+    console.error(`Failed to getTotalSize, code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
 - 同步获取内置存储的总空间大小。
+
+  ArkTS-Dyn示例：
 
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
@@ -118,8 +175,26 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   }
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  ```
+  <!--@[storageStatistics_getTotalSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/AppFsSpaceStatisticsSample-sta/entry/src/main/ets/pages/Index.ets)-->
+  
+  ``` TypeScript
+  try {
+    let totalSize: long = storageStatistics.getTotalSizeSync();
+    console.info(`getTotalSizeSync successfully, totalSize is ${totalSize}`);
+  } catch (err) {
+    console.error(`Failed to getTotalSizeSync, code is ${err.code}, message is ${err.message}`);
+  }
+  ```
 
 - 异步获取内置存储的可用空间大小。
+
+  ArkTS-Dyn示例：
 
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
@@ -135,8 +210,25 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   });
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  ```
+  <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/AppFsSpaceStatisticsSample-sta/entry/src/main/ets/pages/Index.ets)-->
+  
+  ``` TypeScript
+  storageStatistics.getFreeSize().then((freeSize: long) => {
+    console.info(`getFreeSize successfully, freeSize is ${freeSize}`);
+  }).catch((err: Error): void => {
+    console.error(`Failed to getFreeSize, code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
 - 同步获取内置存储的可用空间大小。
+
+  ArkTS-Dyn示例：
 
   ```ts
   import { storageStatistics } from '@kit.CoreFileKit';
@@ -154,3 +246,19 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   }
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  ```
+  <!--@[storageStatistics_getFreeSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/CoreFile/AppFsSpaceStatisticsSample-sta/entry/src/main/ets/pages/Index.ets)-->
+  
+  ``` TypeScript
+  try {
+    let freeSize = storageStatistics.getFreeSizeSync();
+    console.info(`getFreeSizeSync successfully, freeSize is ${freeSize}`);
+  } catch (err) {
+    console.error(`Failed to getFreeSizeSync, code is ${err.code}, message is ${err.message}`);
+  }
+  ```

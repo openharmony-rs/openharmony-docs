@@ -4,11 +4,13 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 预置应用被卸载后可以恢复的预置应用信息，通过接口[bundleManager.getRecoverableApplicationInfo](./js-apis-bundleManager-sys.md#bundlemanagergetrecoverableapplicationinfo11)获取。
 
 > **说明：**
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > 本模块首批接口从API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -30,10 +32,10 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称             | 类型                           | 只读 | 可选 | 说明                   |
 | ---------------- | ------------------------------ | ---- | ---- | ---------------------- |
-| bundleName       | string                         | 是   | 否   | 应用包的名称。       |
-| moduleName       | string                         | 是   | 否   | 模块名称。 |
-| labelId          | number                         | 是   | 否   | 模块标签的资源ID值。     |
-| iconId           | number                         | 是   | 否   | 模块图标的资源ID值。    |
-| systemApp<sup>12+</sup>       | boolean                        | 是   | 否   | 标识应用是否为系统应用，取值为true表示系统应用，取值为false表示非系统应用。  |
-| bundleType<sup>12+</sup>       |[bundleManager.BundleType](js-apis-bundleManager.md#bundletype)             | 是   | 否   | 标识应用类型。                                |
-| codePaths<sup>12+</sup>        | Array\<string>                 | 是   | 否   | 应用程序的安装目录。          |
+| bundleName       | string                         | 是   | 否   | 应用包的名称。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| moduleName       | string                         | 是   | 否   | 模块名称。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| labelId          | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是   | 否   | 模块标签的资源ID值。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| iconId           | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是   | 否   | 模块图标的资源ID值。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| systemApp<sup>12+</sup> | boolean                        | 是   | 否   | 标识应用是否为系统应用，取值为true表示系统应用，取值为false表示非系统应用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| bundleType<sup>12+</sup> |[bundleManager.BundleType](js-apis-bundleManager.md#bundletype) | 是   | 否   | 标识应用类型。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| codePaths<sup>12+</sup> | Array\<string>                 | 是   | 否   | 应用程序的安装目录。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |

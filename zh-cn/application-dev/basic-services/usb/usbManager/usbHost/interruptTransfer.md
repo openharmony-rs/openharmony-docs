@@ -1,15 +1,15 @@
-# USB中断传输
+# USB实时传输
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 ## 场景介绍
 
-中断传输主要用于主机（Host）接收设备（Device）发送的数据包。设备的端点模式决定了接口支持中断读或中断写，这种传输方式适用于少量的、分散的、不可预测的数据类型的传输，鼠标、键盘和操纵杆等设备均属于这种类型，且此类设备的端点一般只支持中断读操作。
+实时传输是通过USB协议在固定时间窗口内完成数据传输，确保数据流的时序稳定性和低延迟，但允许少量数据丢失（如视频丢帧、音频杂音）的传输模式。这种传输方式适用于USB耳机、USB音响、视频会议设备等对连续性要求高、容错性强的场景。
 
 ## 环境准备
 
@@ -49,15 +49,16 @@
 
 ### 开发步骤
 
-主机（Host）连接设备（Device），通过`usbSubmitTransfer`接口进行数据传输。以下步骤描述了如何使用中断传输方式来传输数据：
+主机（Host）连接设备（Device），通过`usbSubmitTransfer`接口进行数据传输。以下步骤描述了如何使用实时传输方式来传输数据：
 
 > **说明：** 
 >
-> 以下示例代码只是使用中断传输方式来传输数据的必要流程，需要放入具体的方法中执行。在实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
+> 以下示例代码只是使用实时传输方式来传输数据的必要流程，需要放入具体的方法中执行。在实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
 
 1. 导入模块。
 
-   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   ArkTS-Dyn示例：
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 导入usbManager模块
@@ -66,14 +67,34 @@
    import { JSON } from '@kit.ArkTS';
    ```
 
+   ArkTS-Sta示例：   
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
+   ``` TypeScript
+   
+   // 导入usbManager模块
+   import { Entry, Component, Column, Row, Text, Button, Select, SelectOption, Toggle, ToggleType, ButtonType, TextArea, Scroll, Scroller, Edge, Flex, FlexDirection, ItemAlign, FlexAlign, FontWeight, VerticalAlign, Alignment, ClickEvent, Blank } from '@ohos.arkui.component'
+   import { State } from '@ohos.arkui.stateManagement'
+   import hilog from '@ohos.hilog'
+   import usbManager from '@ohos.usbManager';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
+
 2. 获取设备列表。
 
+   ArkTS-Dyn示例：
    <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 获取设备列表。
-   let deviceList: usbManager.USBDevice[] = usbManager.getDevices();
+   let deviceList: usbManager.USBDevice[] = [];
+   try {
+     deviceList = usbManager.getDevices();
+   } catch (error) {
+       console.error(`USB getDevices failed: ${error}`);
+       this.logInfo_ += '\n[ERROR] USB getDevices failed: ' + JSON.stringify(error);
+   }
+   
    console.info(`deviceList: ${deviceList}`);
    this.logInfo_ += '\n[INFO] deviceList: ' + JSON.stringify(deviceList);
    if (deviceList === undefined || deviceList.length === 0) {
@@ -82,64 +103,137 @@
      return;
    }
    /*
-   deviceList结构示例
-   [
-     {
-       name: '1-1',
-       serial: '',
-       manufacturerName: '',
-       productName: '',
-       version: '',
-       vendorId: 7531,
-       productId: 2,
-       clazz: 9,
-       subClass: 0,
-       protocol: 1,
-       devAddress: 1,
-       busNum: 1,
-       configs: [
-         {
-           id: 1,
-           attributes: 224,
-           isRemoteWakeup: true,
-           isSelfPowered: true,
-           maxPower: 0,
-           name: '1-1',
-           interfaces: [
-             {
-               id: 0,
-               protocol: 0,
-               clazz: 9,
-               subClass: 0,
-               alternateSetting: 0,
-               name: '1-1',
-               endpoints: [
-                 {
-                   address: 129,
-                   attributes: 3,
-                   interval: 12,
-                   maxPacketSize: 4,
-                   direction: 128,
-                   number: 1,
-                   type: 3,
-                   interfaceId: 0,
-                 }
-               ]
-             }
-           ]
-         }
-       ]
-     }
-   ]
+     deviceList结构示例
+     [
+       {
+         name: '1-1',
+         serial: '',
+         manufacturerName: '',
+         productName: '',
+         version: '',
+         vendorId: 7531,
+         productId: 2,
+         clazz: 9,
+         subClass: 0,
+         protocol: 1,
+         devAddress: 1,
+         busNum: 1,
+         configs: [
+           {
+             id: 1,
+             attributes: 224,
+             isRemoteWakeup: true,
+             isSelfPowered: true,
+             maxPower: 0,
+             name: '1-1',
+             interfaces: [
+               {
+                 id: 0,
+                 protocol: 0,
+                 clazz: 9,
+                 subClass: 0,
+                 alternateSetting: 0,
+                 name: '1-1',
+                 endpoints: [
+                   {
+                     address: 129,
+                     attributes: 3,
+                     interval: 12,
+                     maxPacketSize: 4,
+                     direction: 128,
+                     number: 1,
+                     type: 3,
+                     interfaceId: 0,
+                   }
+                 ]
+               }
+             ]
+           }
+         ]
+       }
+     ]
     */
    this.deviceList_ = deviceList;
    ```
 
+   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 获取设备列表。
+   let deviceList: usbManager.USBDevice[] = [];
+   try {
+     deviceList = usbManager.getDevices();
+   } catch (error) {
+     console.error(`USB getDevices failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB getDevices failed: ' + JSON.stringify(error);
+   }
+   
+   console.info(`deviceList: ${deviceList}`);
+   this.logInfo_ += '\n[INFO] deviceList: ' + JSON.stringify(deviceList);
+   if (deviceList === undefined || deviceList.length === 0) {
+     console.error('deviceList is empty');
+     this.logInfo_ += '\n[ERROR] deviceList is empty';
+     return;
+   }
+   /*
+     deviceList结构示例
+     [
+       {
+         name: '1-1',
+         serial: '',
+         manufacturerName: '',
+         productName: '',
+         version: '',
+         vendorId: 7531,
+         productId: 2,
+         clazz: 9,
+         subClass: 0,
+         protocol: 1,
+         devAddress: 1,
+         busNum: 1,
+         configs: [
+           {
+             id: 1,
+             attributes: 224,
+             isRemoteWakeup: true,
+             isSelfPowered: true,
+             maxPower: 0,
+             name: '1-1',
+             interfaces: [
+               {
+                 id: 0,
+                 protocol: 0,
+                 clazz: 9,
+                 subClass: 0,
+                 alternateSetting: 0,
+                 name: '1-1',
+                 endpoints: [
+                   {
+                     address: 129,
+                     attributes: 3,
+                     interval: 12,
+                     maxPacketSize: 4,
+                     direction: 128,
+                     int: 1,
+                     type: 3,
+                     interfaceId: 0,
+                   }
+                 ]
+               }
+             ]
+           }
+         ]
+       }
+     ]
+    */
+   this.deviceList_ = deviceList;
+   ```
 
 3. 获取设备操作权限。
 
+   ArkTS-Dyn示例：
    <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
      console.error('deviceList is empty');
@@ -158,10 +252,30 @@
    });
    ```
 
+   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
+     console.error('deviceList is empty');
+     this.logInfo_ += '\n[ERROR] deviceList is empty';
+     return;
+   }
+   let deviceList: usbManager.USBDevice[] = this.deviceList_;
+   let deviceName: string = deviceList[0].name;
+   // 申请操作指定的device的操作权限。
+   usbManager.requestRight(deviceName).then((hasRight: boolean) => {
+     console.info('usb device request right result: ' + hasRight);
+     this.logInfo_ += '\n[INFO] usb device request right result: ' + JSON.stringify(hasRight);
+   }).catch((error: Error) => {
+     console.error(`usb device request right failed : ${error}`);
+     this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+   });
+   ```
 
-4. 获取通过中断传输读取数据的端点。
+4. 获取通过实时传输读取数据的端点。
 
-   <!-- @[interruptTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   ArkTS-Dyn示例：
+   <!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -170,12 +284,26 @@
      return;
    }
    let usbDevice: usbManager.USBDevice = this.deviceList_[0];
-   if (!usbManager.hasRight(usbDevice.name)) {
-     console.error('permission denied');
-     this.logInfo_ += '\n[ERROR] permission denied';
+   try {
+     if (!usbManager.hasRight(usbDevice.name)) {
+       console.error('permission denied');
+       this.logInfo_ += '\n[ERROR] permission denied';
+       return;
+     }
+   } catch (error) {
+     console.error(`USB hasRight failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
      return;
    }
-   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(usbDevice);
+   
+   let devicePipe: usbManager.USBDevicePipe;
+   try {
+     devicePipe = usbManager.connectDevice(usbDevice);
+   } catch (error) {
+     console.error(`connectDevice failed ${error}`);
+     this.logInfo_ += '\n[ERROR] connectDevice: ' + JSON.stringify(error);
+     return
+   }
    let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
    let usbInterfaces: usbManager.USBInterface[] = [];
    let usbInterface: usbManager.USBInterface | undefined = undefined;
@@ -186,7 +314,8 @@
      for (let j = 0; j < usbInterfaces?.length; j++) {
        usbEndpoints = usbInterfaces[j]?.endpoints;
        usbEndpoint = usbEndpoints?.find((value) => {
-         return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT;
+         // direction为请求方向，0表示写入数据，128表示读取数据
+         return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
        })
        if (usbEndpoint !== undefined) {
          usbInterface = usbInterfaces[j];
@@ -195,31 +324,149 @@
      }
    }
    if (usbEndpoint === undefined) {
-     console.error(`get usbEndpoint error`)
+     console.error(`get usbEndpoint error`);
      this.logInfo_ += '\n[ERROR] get usbEndpoint error';
      return;
    }
    ```
 
-
-5. 连接设备，注册通信接口。
-
-   <!-- @[interruptTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   ArkTS-Sta示例：   
+   <!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
-   let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
-   if (claimInterfaceResult !== 0) {
-     console.error(`claimInterface error = ${claimInterfaceResult}`)
-     this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+   if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
+     console.error('deviceList_ is empty');
+     this.logInfo_ += '\n[ERROR] deviceList_ is empty';
+     return;
+   }
+   let usbDevice: usbManager.USBDevice = this.deviceList_[0];
+   try {
+     if (!usbManager.hasRight(usbDevice.name)) {
+       console.error('permission denied');
+       this.logInfo_ += '\n[ERROR] permission denied';
+       return;
+     }
+   } catch (error) {
+     console.error(`USB hasRight failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
+     return;
+   }
+   
+   let devicePipe: usbManager.USBDevicePipe;
+   try {
+     devicePipe = usbManager.connectDevice(usbDevice);
+   } catch (error) {
+     console.error(`connectDevice failed ${error}`);
+     this.logInfo_ += '\n[ERROR] connectDevice: ' + JSON.stringify(error);
+     return
+   }
+   let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
+   let usbInterfaces: usbManager.USBInterface[] = [];
+   let usbInterface: usbManager.USBInterface | undefined = undefined;
+   let usbEndpoints: usbManager.USBEndpoint[] = [];
+   let usbEndpoint: usbManager.USBEndpoint | undefined = undefined;
+   for (let i = 0; i < usbConfigs?.length; i++) {
+     usbInterfaces = usbConfigs[i]?.interfaces;
+     for (let j = 0; j < usbInterfaces?.length; j++) {
+       usbEndpoints = usbInterfaces[j]?.endpoints;
+       usbEndpoint = usbEndpoints?.find((value) => {
+         // direction为请求方向，0表示写入数据，128表示读取数据
+         return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
+       })
+       if (usbEndpoint !== undefined) {
+         usbInterface = usbInterfaces[j];
+         break;
+       }
+     }
+   }
+   if (usbEndpoint === undefined) {
+     console.error(`get usbEndpoint error`);
+     this.logInfo_ += '\n[ERROR] get usbEndpoint error';
      return;
    }
    ```
 
+5. 连接设备，注册通信接口。
+
+   ArkTS-Dyn示例：
+   <!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
+   try {
+     let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
+     if (claimInterfaceResult !== 0) {
+       console.error(`claimInterface error = ${claimInterfaceResult}`)
+       this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+       return;
+     }
+   } catch (error) {
+     console.error(`USB claimInterface failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
+     return;
+   }
+   
+   // 传输类型为“实时传输”时，需设置设备接口。设置成功返回0，注册失败返回其他错误码。
+   if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
+     try {
+       let setInterfaceResult = usbManager.setInterface(devicePipe, usbInterface);
+       if (setInterfaceResult !== 0) {
+         console.error(`setInterfaceResult error = ${setInterfaceResult}`)
+         this.logInfo_ += '\n[ERROR] setInterfaceResult error = ' + JSON.stringify(setInterfaceResult);
+         return;
+       }
+     } catch (error) {
+       console.error(`USB setInterface failed: ${error}`);
+       this.logInfo_ += '\n[ERROR] USB setInterface failed: ' + JSON.stringify(error);
+       return;
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：   
+   <!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   if (usbInterface === undefined) {
+     console.error('usbInterface is undefined');
+     this.logInfo_ += '\n[ERROR] usbInterface is undefined';
+     return;
+   }
+   // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
+   try {
+     let claimInterfaceResult: int = usbManager.claimInterface(devicePipe, usbInterface, true);
+     if (claimInterfaceResult !== 0) {
+       console.error(`claimInterface error = ${claimInterfaceResult}`)
+       this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+       return;
+     }
+   } catch (error) {
+     console.error(`USB claimInterface failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
+     return;
+   }
+   
+   // 传输类型为“实时传输”时，需设置设备接口。设置成功返回0，注册失败返回其他错误码。
+   if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
+     try {
+       let setInterfaceResult = usbManager.setInterface(devicePipe, usbInterface);
+       if (setInterfaceResult !== 0) {
+         console.error(`setInterfaceResult error = ${setInterfaceResult}`)
+         this.logInfo_ += '\n[ERROR] setInterfaceResult error = ' + JSON.stringify(setInterfaceResult);
+         return;
+       }
+     } catch (error) {
+       console.error(`USB setInterface failed: ${error}`);
+       this.logInfo_ += '\n[ERROR] USB setInterface failed: ' + JSON.stringify(error);
+       return;
+     }
+   }
+   ```
 
 6. 传输数据。
 
-   <!-- @[interruptTransfer_interruptTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   ArkTS-Dyn示例：
+   <!-- @[isochronousTransfer_isochronousTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let transferParams: usbManager.UsbDataTransferParams | undefined = undefined;
@@ -229,7 +476,7 @@
        devPipe: devicePipe,
        flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
        endpoint: usbEndpoint.address,
-       type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT,
+       type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS,
        timeout: 2000,
        length: 10,
        callback: () => {
@@ -242,8 +489,8 @@
      transferParams.callback = (err: Error, callBackData: usbManager.SubmitTransferCallback) => {
        console.info(`callBackData = ${callBackData}`);
        this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
-       console.info(`transfer success,result = ${transferParams?.buffer}`);
-       this.logInfo_ += '\n[INFO] transfer success,result = ' + JSON.stringify(transferParams?.buffer);
+       console.info('transfer success,result = ' + transferParams?.buffer.toString());
+       this.logInfo_ += '\n[INFO] transfer success,result = ' + transferParams?.buffer.toString();
      }
      usbManager.usbSubmitTransfer(transferParams);
      console.info('USB transfer request submitted.');
@@ -254,10 +501,46 @@
    }
    ```
 
+   ArkTS-Sta示例：   
+   <!-- @[isochronousTransfer_isochronousTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   let transferParams: usbManager.UsbDataTransferParams | undefined = undefined;
+   try {
+     // 通信接口注册成功，传输数据
+     transferParams = {
+       devPipe: devicePipe,
+       flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
+       endpoint: usbEndpoint.address,
+       type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS,
+       timeout: 2000,
+       length: 10,
+       callback: () => {
+       },
+       userData: new Uint8Array(10),
+       buffer: new Uint8Array(10),
+       isoPacketCount: 2,
+     };
+   
+     transferParams.callback = (err: BusinessError | null, callBackData: usbManager.SubmitTransferCallback | undefined) => {
+       console.info(`callBackData = ${callBackData}`);
+       this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
+       console.info('transfer success,result = ' + transferParams?.buffer.toString());
+       this.logInfo_ += '\n[INFO] transfer success,result = ' + transferParams?.buffer.toString();
+     }
+     usbManager.usbSubmitTransfer(transferParams);
+     console.info('USB transfer request submitted.');
+     this.logInfo_ += '\n[INFO] USB transfer request submitted.';
+   } catch (error) {
+     console.error(`USB transfer failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB transfer failed: ' + JSON.stringify(error);
+   }
+   ```
 
 7. 取消传输，释放接口，关闭设备消息控制通道。
 
-   <!-- @[interruptTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   ArkTS-Dyn示例：
+   <!-- @[isochronousTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -270,9 +553,27 @@
    }
    ```
 
+   ArkTS-Sta示例：   
+   <!-- @[isochronousTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
+   ``` TypeScript
+   if (transferParams === undefined) {
+     console.error('transferParams is undefined');
+     this.logInfo_ += '\n[ERROR] transferParams is undefined';
+     return;
+   }
+   try {
+     usbManager.usbCancelTransfer(transferParams);
+     usbManager.releaseInterface(devicePipe, usbInterface);
+     usbManager.closePipe(devicePipe);
+   } catch (error) {
+     console.error(`release failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] release failed: ' + JSON.stringify(error);
+   }
+   ```
+
 ### 调测验证
 
-1. 主机端通过USB接口连接支持中断传输的终端设备（鼠标、键盘等）。
+1. 主机端通过USB接口连接支持实时传输的设备（USB耳机等）。
 2. 执行上述代码。
-3. log中搜索关键字`transfer success`，表示中断传输接口调用成功。
+3. log中搜索关键字`transfer success`，表示实时传输接口调用成功。

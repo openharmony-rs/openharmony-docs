@@ -1,8 +1,8 @@
 # @ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -10,7 +10,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口均为系统接口。
 
@@ -20,7 +21,7 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-## notificationSubscribe.subscribe<sup>deprecated</sup>
+## notificationSubscribe.subscribe<sup>(deprecated)</sup>
 
 subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, callback: AsyncCallback\<void\>): void
 
@@ -64,6 +65,7 @@ subscribe(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo, c
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -88,7 +90,32 @@ let info: notificationSubscribe.NotificationSubscribeInfo = {
 notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
 ```
 
-## notificationSubscribe.subscribe<sup>deprecated</sup>
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+//subscribe回调
+let subscribeCallback = (err: BusinessError | null) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribe success");
+  }
+}
+let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
+  console.info(`Consume callback: ${JSON.stringify(data)}`);
+}
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+//不会对bundleNames进行校验，开发者自己确定需要订阅哪些bundleName
+let info: notificationSubscribe.NotificationSubscribeInfo = {
+  bundleNames: ["bundleName1","bundleName2"]
+};
+notificationSubscribe.subscribe(subscriber, info, subscribeCallback);
+```
+
+## notificationSubscribe.subscribe<sup>(deprecated)</sup>
 
 subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): void
 
@@ -131,6 +158,7 @@ subscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>): 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -150,7 +178,27 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## notificationSubscribe.subscribe<sup>deprecated</sup>
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscribeCallback = (err: BusinessError | null) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribe success");
+  }
+}
+let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
+  console.info(`Consume callback: ${JSON.stringify(data)}`);
+}
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```
+
+## notificationSubscribe.subscribe<sup>(deprecated)</sup>
 
 subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo): Promise\<void\>
 
@@ -199,6 +247,7 @@ subscribe(subscriber: NotificationSubscriber, info?: NotificationSubscribeInfo):
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -211,7 +260,22 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber).then(() => {
   console.info("subscribe success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
+  console.info(`Consume callback: ${JSON.stringify(data)}`);
+}
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+notificationSubscribe.subscribe(subscriber).then(() => {
+  console.info("subscribe success");
+}).catch((err: Error): void => {
+  console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -251,10 +315,9 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 1600001  | Internal error.                     |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.     |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
 
@@ -271,9 +334,9 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribe success");
+  console.info("subscribeNotification success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -286,9 +349,9 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
-  console.info("subscribe success");
+  console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -330,9 +393,8 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
-| 1600001  | Internal error.                     |
+| 202      | Not system application to call the interface.     |
+| 1600001  | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. 3.The user does not exist.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
 
@@ -352,9 +414,9 @@ let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
   bundleNames: ["bundleName1", "bundleName2"],
 }
 notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
-  console.info("subscribe success");
+  console.info("subscribeNotification success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -370,9 +432,9 @@ let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
   bundleNames: ["bundleName1", "bundleName2"],
 }
 notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
-  console.info("subscribe success");
+  console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -385,6 +447,10 @@ subscribeSelf(subscriber: NotificationSubscriber): Promise\<void\>
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -413,6 +479,7 @@ subscribeSelf(subscriber: NotificationSubscriber): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -425,11 +492,26 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeSelf(subscriber).then(() => {
   console.info("subscribeSelf success");
 }).catch((err: BusinessError) => {
-  console.error(`subscribeSelf fail: ${JSON.stringify(err)}`);
+  console.error(`subscribeSelf failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
+  console.info("Consume callback: " + JSON.stringify(data));
+}
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onConsume: onConsumeCallback
+};
+notificationSubscribe.subscribeSelf(subscriber).then(() => {
+  console.info("subscribeSelf success");
+}).catch((err: Error): void => {
+  console.error(`subscribeSelf failed, code is ${err.code}, message is ${err.message}`);
+});
+```
 
 ## notificationSubscribe.unsubscribe
 
@@ -440,6 +522,10 @@ unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>)
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -462,10 +548,31 @@ unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback\<void\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let unsubscribeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`unsubscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("unsubscribe success");
+  }
+}
+let onDisconnectCallback = () => {
+  console.info("subscribe disconnect");
+}
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onDisconnect: onDisconnectCallback
+};
+notificationSubscribe.unsubscribe(subscriber, unsubscribeCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let unsubscribeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`unsubscribe failed, code is ${err.code}, message is ${err.message}`);
   } else {
@@ -490,6 +597,10 @@ unsubscribe(subscriber: NotificationSubscriber): Promise\<void\>
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -517,6 +628,7 @@ unsubscribe(subscriber: NotificationSubscriber): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -533,6 +645,21 @@ notificationSubscribe.unsubscribe(subscriber).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+let onDisconnectCallback = () => {
+  console.info("subscribe disconnect");
+}
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onDisconnect: onDisconnectCallback
+};
+notificationSubscribe.unsubscribe(subscriber).then(() => {
+  console.info("unsubscribe success");
+}).catch((err: Error): void => {
+  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+});
+```
+
 ## notificationSubscribe.remove
 
 remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason, callback: AsyncCallback\<void\>): void
@@ -544,6 +671,10 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -571,6 +702,7 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationManager } from '@kit.NotificationKit';
@@ -593,6 +725,29 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(bundle, notificationKey, reason, removeCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { notificationManager } from '@kit.NotificationKit';
+
+let removeCallback = (err: BusinessError | null) => {
+  if (err) {
+    console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("remove success");
+  }
+}
+let bundle: notificationManager.BundleOption = {
+  // 需根据实际情况进行替换
+  bundle: "bundleName1",
+};
+let notificationKey: notificationSubscribe.NotificationKey = {
+  id: 0,
+  label: "label",
+};
+let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
+notificationSubscribe.remove(bundle, notificationKey, reason, removeCallback);
+```
 
 
 ## notificationSubscribe.remove
@@ -606,6 +761,10 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -638,6 +797,7 @@ remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveRea
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationManager } from '@kit.NotificationKit';
@@ -657,6 +817,26 @@ notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { notificationManager } from '@kit.NotificationKit';
+
+let bundle: notificationManager.BundleOption = {
+  // 需根据实际情况进行替换
+  bundle: "bundleName1",
+};
+let notificationKey: notificationSubscribe.NotificationKey = {
+  id: 0,
+  label: "label",
+};
+let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
+notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
+  console.info("remove success");
+}).catch((err: Error): void  => {
+  console.error(`remove fail: ${JSON.stringify(err)}`);
+});
+```
+
 ## notificationSubscribe.remove
 
 remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback\<void\>): void
@@ -668,6 +848,10 @@ remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback\<void\>):
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -693,11 +877,28 @@ remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback\<void\>):
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let hashCode: string = 'hashCode';
 let removeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("remove success");
+  }
+}
+let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
+notificationSubscribe.remove(hashCode, reason, removeCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hashCode: string = 'hashCode';
+let removeCallback = (err: BusinessError | null) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
@@ -719,6 +920,10 @@ remove(hashCode: string, reason: RemoveReason): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -749,6 +954,7 @@ remove(hashCode: string, reason: RemoveReason): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -757,6 +963,17 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(hashCode, reason).then(() => {
   console.info("remove success");
 }).catch((err: BusinessError) => {
+  console.error(`remove fail: ${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+let hashCode: string = 'hashCode';
+let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
+notificationSubscribe.remove(hashCode, reason).then(() => {
+  console.info("remove success");
+}).catch((err: Error): void => {
   console.error(`remove fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -772,6 +989,10 @@ remove(hashCodes: Array\<String\>, reason: RemoveReason, callback: AsyncCallback
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -796,11 +1017,28 @@ remove(hashCodes: Array\<String\>, reason: RemoveReason, callback: AsyncCallback
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let hashCodes: string[] = ['hashCode1', 'hashCode2'];
 let removeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("remove success");
+  }
+}
+let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CANCEL_REASON_REMOVE;
+notificationSubscribe.remove(hashCodes, reason, removeCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let hashCodes: string[] = ['hashCode1', 'hashCode2'];
+let removeCallback = (err: BusinessError | null ) => {
   if (err) {
     console.error(`remove failed, code is ${err.code}, message is ${err.message}`);
   } else {
@@ -822,6 +1060,10 @@ remove(hashCodes: Array\<String\>, reason: RemoveReason): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -851,6 +1093,7 @@ remove(hashCodes: Array\<String\>, reason: RemoveReason): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -859,6 +1102,17 @@ let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveRea
 notificationSubscribe.remove(hashCodes, reason).then(() => {
   console.info("remove success");
 }).catch((err: BusinessError) => {
+  console.error(`remove fail: ${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+let hashCodes: string[] = ['hashCode1','hashCode2'];
+let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
+notificationSubscribe.remove(hashCodes, reason).then(() => {
+  console.info("remove success");
+}).catch((err: Error): void => {
   console.error(`remove fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -874,6 +1128,10 @@ removeAll(bundle: BundleOption, callback: AsyncCallback\<void\>): void
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -898,6 +1156,7 @@ removeAll(bundle: BundleOption, callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -914,6 +1173,24 @@ let bundle: notificationSubscribe.BundleOption = {
 notificationSubscribe.removeAll(bundle, removeAllCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let removeAllCallback = (err: BusinessError | null) => {
+  if (err) {
+    console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("removeAll success");
+  }
+}
+let bundle: notificationSubscribe.BundleOption = {
+  // 需根据实际情况进行替换
+  bundle: "bundleName1",
+};
+notificationSubscribe.removeAll(bundle, removeAllCallback);
+```
+
 ## notificationSubscribe.removeAll
 
 removeAll(callback: AsyncCallback\<void\>): void
@@ -925,6 +1202,10 @@ removeAll(callback: AsyncCallback\<void\>): void
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -947,10 +1228,25 @@ removeAll(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let removeAllCallback = (err: BusinessError) => {
+    if (err) {
+        console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("removeAll success");
+    }
+}
+notificationSubscribe.removeAll(removeAllCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let removeAllCallback = (err: BusinessError | null) => {
     if (err) {
         console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
     } else {
@@ -971,6 +1267,10 @@ removeAll(bundle?: BundleOption): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1000,6 +1300,7 @@ removeAll(bundle?: BundleOption): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1011,9 +1312,21 @@ notificationSubscribe.removeAll().then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+// 不指定应用时，删除所有通知
+notificationSubscribe.removeAll().then(() => {
+  console.info("removeAll success");
+}).catch((err: Error): void => {
+  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+});
+```
+
 ## notificationSubscribe.removeAll
 
-removeAll(userId: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: removeAll(userId: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: removeAll(userId: int, callback: AsyncCallback\<void>): void
 
 删除指定用户下的所有通知。使用callback异步回调。
 
@@ -1023,11 +1336,15 @@ removeAll(userId: number, callback: AsyncCallback\<void>): void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| userId | number | 是   | 用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 用户ID。 |
 | callback | AsyncCallback\<void\> | 是   | 删除指定用户所有通知回调函数。 |
 
 **错误码：**
@@ -1046,6 +1363,7 @@ removeAll(userId: number, callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1061,9 +1379,27 @@ let userId: number = 1;
 notificationSubscribe.removeAll(userId, removeAllCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let removeAllCallback = (err: BusinessError | null ) => {
+  if (err) {
+    console.error(`removeAll failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("removeAll success");
+  }
+}
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+notificationSubscribe.removeAll(userId, removeAllCallback);
+```
+
 ## notificationSubscribe.removeAll
 
-removeAll(userId: number): Promise\<void>
+ArkTS-Dyn: removeAll(userId: number): Promise\<void>
+
+ArkTS-Sta: removeAll(userId: int): Promise\<void>
 
 删除指定用户下的所有通知。使用Promise异步回调。
 
@@ -1073,11 +1409,15 @@ removeAll(userId: number): Promise\<void>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| userId | number | 是   | 用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 用户ID。 |
 
 **返回值：**
 
@@ -1101,6 +1441,7 @@ removeAll(userId: number): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1108,6 +1449,16 @@ let userId: number = 1;
 notificationSubscribe.removeAll(userId).then(() => {
   console.info("removeAll success");
 }).catch((err: BusinessError) => {
+  console.error(`removeAll fail: ${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+let userId: int = 1;
+notificationSubscribe.removeAll(userId).then(() => {
+  console.info("removeAll success");
+}).catch((err: Error): void => {
   console.error(`removeAll fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -1123,6 +1474,10 @@ distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise\<v
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1151,6 +1506,7 @@ distributeOperation(hashcode: string, operationInfo?: OperationInfo): Promise\<v
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1168,11 +1524,29 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+let hashcode: string = 'hashcode';
+let operationInfo: notificationSubscribe.OperationInfo = {
+  actionName: "actionName",
+  userInput: "userInput",
+};
+notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
+  console.info("distributeOperation success");
+}).catch((err: Error): void => {
+  console.error(`distributeOperation fail: ${JSON.stringify(err.code)}`);
+});
+```
+
 ## NotificationKey
 
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 | 名称  | 类型   | 只读 | 可选 | 说明                |
 | ----- | ------ | --- | ---- | ------------------ |
@@ -1185,6 +1559,10 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 | 名称                 | 值  | 说明                  |
 | -------------------- | --- | -------------------- |
 | CLICK_REASON_REMOVE  | 1   | 点击通知后删除通知。    |
@@ -1196,9 +1574,13 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：23
+
 | 名称  | 类型   | 只读 | 可选 | 说明     |
 | ----- | ------ | --- | ---- | -------- |
-| actionName    | string | 否 | 是 | 描述通知中显示的操作按钮（与通知[NotificationActionButton](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1)中title字段保持一致）。   |
-| userInput | string | 否 | 是 | 用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知[NotificationUserInput](js-apis-inner-notification-notificationUserInput.md#notificationuserinput-1)中inputKey字段保持一致）。 |
-| operationType<sup>20+</sup> | number | 否 | 是 | 用户点击操作类型。<br> - 0：用户点击非实况通知本体。<br> - 1：用户点击非实况通知按钮。<br> - 32：用户点击实况通知本体。<br> - 33：用户点击实况通知辅助区 |
-| buttonIndex<sup>20+</sup> | number | 否 | 是 | 用户点击的非实况通知按钮序号或实况通知辅助区序号。 |
+| actionName    | string | 否 | 是 | 描述通知中显示的操作按钮（与通知[NotificationActionButton](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1)中title字段保持一致）。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23   |
+| userInput | string | 否 | 是 | 用户输入（用于通知跨设备快捷回复场景传递用户输入，与通知[NotificationUserInput](js-apis-inner-notification-notificationUserInput.md#notificationuserinput-1)中inputKey字段保持一致）。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| operationType<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 用户点击操作类型。<br> - 0：用户点击非实况通知本体。<br> - 1：用户点击非实况通知按钮。<br> - 32：用户点击实况通知本体。<br> - 33：用户点击实况通知辅助区<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| buttonIndex<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 用户点击的非实况通知按钮序号或实况通知辅助区序号。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |

@@ -1,8 +1,8 @@
 # video
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @Lichtschein-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -146,4 +146,4 @@ export default {
 }
 ```
 
-![zh-cn_gif_js_media_video](figures/zh-cn_gif_js_media_video.gif)
+![zh-cn_gif_js_media_video](figures/js-media-video.gif)

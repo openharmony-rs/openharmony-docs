@@ -3,9 +3,9 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
 <!--Owner: @guoshengbang-->
-<!--Designer: @gcw_4D6e0BBd-->
+<!--Designer: @baozewei-->
 <!--Tester: @guoshengbang-->
-<!--Adviser: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 ## OpenHarmony提供的两种打印方式
 
@@ -383,7 +383,7 @@ static napi_value Init(napi_env env, napi_value exports)
 EXTERN_C_END
 ```
 
-主页上新增一个按钮，单击调用c++的nativeStartPrintByNative直接发送任务。
+主页上新增一个按钮，单击调用c++的nativeStartPrintJob直接发送任务。
 ```ts
 // Index.ets
 

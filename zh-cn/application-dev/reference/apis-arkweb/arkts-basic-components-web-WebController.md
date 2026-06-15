@@ -6,7 +6,9 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通过WebController可以控制Web组件各种行为。一个WebController对象只能控制一个Web组件，且必须在Web组件和WebController绑定后，才能调用WebController上的方法。
+WebController是ArkWeb组件的控制器类，用于控制Web组件的各种行为。一个WebController对象只能与一个Web组件绑定，绑定后开发者可通过该控制器对Web组件进行页面导航（前进/后退/加载）、焦点控制、缩放调整、页面刷新与停止、Cookie管理、JavaScript注入与执行等操作。
+
+WebController适用于需要在应用侧对嵌入式Web组件进行主动控制的场景，例如实现浏览器式的前进后退导航、在应用侧与网页侧之间建立JavaScript交互通道、动态加载网页内容或管理Cookie数据。
 
 > **说明：**
 >
@@ -16,7 +18,7 @@
 >
 > - 本Class首批接口从API version 8开始支持。
 >
-> - 该组件接口从API version 9开始废弃，建议使用[WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md)代替。
+> - 该组件从API version 9开始废弃，建议使用[WebviewController](./arkts-apis-webview-WebviewController.md)代替。
 >
 > - 示例效果请以真机运行为准。
 
@@ -366,7 +368,7 @@ getHitTest(): HitTestType
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getHitTest<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#gethittestdeprecated)代替。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getHitTest<sup>(deprecated)</sup>](./arkts-apis-webview-WebviewController.md#gethittestdeprecated)代替。
 
 **ArkTS-Dyn起始版本：** 8
 
@@ -404,11 +406,11 @@ getHitTest(): HitTestType
 
 loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })
 
-baseUrl为空时，通过”data“协议加载指定的一段字符串。
+baseUrl为空时，通过“data”协议加载指定的一段字符串。
 
-当baseUrl为”data“协议时，编码后的data字符串将被Web组件作为”data"协议加载。
+当baseUrl为“data”协议时，编码后的data字符串将被Web组件作为“data”协议加载。
 
-当baseUrl为“http/https"协议时，编码后的data字符串将被Web组件以类似loadUrl的方式以非编码字符串处理。
+当baseUrl为“http/https”协议时，编码后的data字符串将被Web组件以类似loadUrl的方式以非编码字符串处理。
 
 > **说明：**
 >
@@ -422,10 +424,10 @@ baseUrl为空时，通过”data“协议加载指定的一段字符串。
 
 | 参数名        | 类型   | 必填   | 说明                                     |
 | ---------- | ------ | ---- | ---------------------------------------- |
-| data       | string | 是   | 按照”Base64“或者”URL"编码后的一段字符串。              |
+| data       | string | 是   | 按照“Base64”或者“URL”编码后的一段字符串。              |
 | mimeType   | string | 是   | 媒体类型（MIME）。                              |
-| encoding   | string | 是   | 编码类型，具体为“Base64"或者”URL编码。                |
-| baseUrl    | string | 否   | 指定的一个URL路径（“http”/“https”/"data"协议），并由Web组件赋值给`window.origin`。默认值为空字符串。 |
+| encoding   | string | 是   | 编码类型，具体为“Base64”或者“URL”编码。                |
+| baseUrl    | string | 否   | 指定的一个URL路径（“http”/“https”/“data”协议），并由Web组件赋值给`window.origin`。默认值为空字符串。 |
 | historyUrl | string | 否   | 历史记录URL。默认值为空字符串。非空时，可被历史记录管理，实现前进后退功能。当baseUrl为空时，此属性无效。 |
 
 **示例：**
@@ -654,7 +656,7 @@ refresh()
 
 registerJavaScriptProxy(options: { object: object, name: string, methodList: Array\<string\> })
 
-注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注册后，须调用[refresh](#refreshdeprecated)接口生效。
+注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注入的对象在页面下一次（重新）加载前不会出现在JavaScript中。
 
 > **说明：**
 >

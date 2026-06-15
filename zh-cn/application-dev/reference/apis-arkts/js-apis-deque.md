@@ -1,8 +1,8 @@
 # @ohos.util.Deque (线性容器Deque)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -19,9 +19,11 @@ Deque和[Queue](js-apis-queue.md)相比，Deque允许在两端执行插入和删
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
 
 ## 导入模块
@@ -34,13 +36,17 @@ import { Deque } from '@kit.ArkTS';
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| length | number | 是 | 否 | Deque的元素个数。 |
+| length | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否 | Deque的元素个数。 |
 
 ### constructor
 
@@ -48,9 +54,13 @@ constructor()
 
 Deque的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -62,8 +72,16 @@ Deque的构造函数。
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let deque = new Deque<string | number | boolean | Object>();
+```
+
+ArkTS-Sta示例：
+
+```ts
+let deque: Deque<string | int | boolean | Object> = new Deque<string | int | boolean | Object>();
 ```
 
 ### insertFront
@@ -72,9 +90,13 @@ insertFront(element: T): void
 
 在deque头部插入元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -91,6 +113,8 @@ insertFront(element: T): void
 | 10200011 | The insertFront method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 class C1 {
@@ -109,15 +133,38 @@ deque.insertFront(false);
 console.info("result:", deque[0]);  // result: false
 ```
 
+ArkTS-Sta示例：
+
+```ts
+class C1 {
+  name: string = ""
+  age: string = ""
+}
+let deque: Deque<string | int | boolean | Array<int> | C1> =
+  new Deque<string | int | boolean | Array<int> | C1>();
+deque.insertFront("a");
+deque.insertFront(1);
+let b: Array<int> = [1, 2, 3];
+deque.insertFront(b);
+let c: C1 = {name : "Dylan", age : "13"};
+deque.insertFront(c);
+deque.insertFront(false);
+console.info("result:", deque[0]);  // result: false
+```
+
 ### insertEnd
 
 insertEnd(element: T): void
 
 在deque尾部插入元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -134,6 +181,8 @@ insertEnd(element: T): void
 | 10200011 | The insertEnd method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 class C1 {
@@ -152,15 +201,39 @@ deque.insertEnd(false);
 console.info("result:", deque[0]);  // result: a
 ```
 
+ArkTS-Sta示例：
+
+```ts
+class C1 {
+  name: string = ""
+  age: string = ""
+}
+
+let deque: Deque<string | int | boolean | Array<int> | C1> =
+  new Deque<string | int | boolean | Array<int> | C1>();
+deque.insertEnd("a");
+deque.insertEnd(1);
+let b: Array<int> = [1, 2, 3];
+deque.insertEnd(b);
+let c: C1 = {name : "Dylan", age : "13"};
+deque.insertEnd(c);
+deque.insertEnd(false);
+console.info("result:", deque[0]);  // result: a
+```
+
 ### has
 
 has(element: T): boolean
 
 判断此Deque中是否包含指定元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -197,9 +270,13 @@ popFirst(): T
 
 删除并返回双端队列的首元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -213,9 +290,12 @@ popFirst(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The popFirst method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let deque = new Deque<number>();
@@ -228,15 +308,32 @@ let result = deque.popFirst();
 console.info("result:", result);  // result: 4
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let deque: Deque<int> = new Deque<int>();
+deque.insertFront(2);
+deque.insertFront(4);
+deque.insertEnd(5);
+deque.insertFront(2);
+deque.insertFront(4);
+let result = deque.popFirst();
+console.info("result = ", result) // result =  4
+```
+
 ### popLast
 
 popLast(): T
 
 删除并返回双端队列的尾元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -250,9 +347,12 @@ popLast(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The popLast method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let deque = new Deque<number>();
@@ -265,15 +365,33 @@ let result = deque.popLast();
 console.info("result:", result);  // result: 6
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let deque: Deque<int> = new Deque<int>();
+deque.insertFront(2);
+deque.insertEnd(6);
+deque.insertFront(5);
+deque.insertFront(2);
+deque.insertFront(4);
+let result = deque.popLast();
+```
+
 ### forEach
 
 forEach(callbackFn: (value: T, index?: number, deque?: Deque&lt;T&gt;) => void, thisArg?: Object): void
 
 在遍历Deque实例对象中每一个元素的过程中，对每个元素执行回调函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[forEach](#foreach23)。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -292,11 +410,10 @@ callbackFn的参数说明：
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **示例：**
@@ -318,15 +435,57 @@ deque.forEach((value: number, index: number): void => {
  */
 ```
 
+### forEach<sup>23+</sup>
+
+forEach(callbackFn: DequeForEachCb\<T\>): void
+
+通过回调函数来遍历Deque实例对象上的元素以及元素对应的下标。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[forEach](#foreach)。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callbackFn | [DequeForEachCb\<T\>](#dequeforeachcbt23) | 是 | 回调函数。 |
+
+**示例：**
+
+```ts
+import { DequeForEachCb } from '@kit.ArkTS'
+
+let deque: Deque<int> = new Deque<int>();
+deque.insertFront(2);
+deque.insertEnd(4);
+deque.insertFront(5);
+deque.insertEnd(4);
+let dequeCb: DequeForEachCb<int> = (value: int, index: int, deque: Deque<int>):void => {
+  console.info("value:" + value, "index:" + index);
+};
+
+deque.forEach(dequeCb);
+
+```
+
 ### getFirst
 
 getFirst(): T
 
 获取Deque实例的头元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -340,9 +499,12 @@ getFirst(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The getFirst method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let deque = new Deque<number>();
@@ -354,15 +516,30 @@ let result = deque.getFirst();
 console.info("result:", result);  // result: 4
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let deque: Deque<int> = new Deque<int>();
+deque.insertEnd(2);
+deque.insertEnd(4);
+deque.insertFront(5);
+deque.insertFront(4);
+let result = deque.getFirst();
+```
+
 ### getLast
 
 getLast(): T
 
 获取Deque实例的尾元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -376,9 +553,12 @@ getLast(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The getLast method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let deque = new Deque<number>();
@@ -390,15 +570,75 @@ let result = deque.getLast();
 console.info("result:", result);  // result: 2
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let deque: Deque<int> = new Deque<int>();
+deque.insertFront(2);
+deque.insertFront(4);
+deque.insertFront(5);
+deque.insertFront(4);
+let result = deque.getLast();
+```
+
+### \[index: int\]<sup>23+</sup>
+
+\[index: int\]: T
+
+获取指定索引值对应位置的元素。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| index | int | 是 | 元素的位置索引。需要小于等于int32_max即2147483647。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 容器中对应索引值为index的元素。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200001 | The value of index is out of range. |
+
+**示例：**
+
+```ts
+let deque: Deque<int> = new Deque<int>();
+deque.insertEnd(2);
+deque.insertEnd(4);
+deque.insertFront(5);
+deque.insertFront(4);
+let result1: int = deque[2];
+```
+
 ### [Symbol.iterator]
 
 [Symbol.iterator]\(): IterableIterator&lt;T&gt;
 
 返回一个迭代器，迭代器的每一项都是一个JavaScript对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[$_iterator](#_iterator23)。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -423,6 +663,50 @@ deque.insertFront(5);
 deque.insertFront(4);
 
 // 使用方法一：
+let nums: Array<number> = Array.from(deque);
+for (let item of nums) {
+  console.info("value:" + item);
+}
+
+// 使用方法二：
+let iter = deque[Symbol.iterator]();
+let temp:IteratorResult<number> = iter.next();
+while(!temp.done) {
+  console.info("value:" + temp.value);
+  temp = iter.next();
+}
+```
+
+### $_iterator<sup>23+</sup>
+
+\$_iterator\(): IterableIterator&lt;T&gt;
+
+返回一个迭代器，迭代器的每一项都是一个JavaScript对象，并返回该对象。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Symbol.iterator](#symboliterator)。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| IterableIterator&lt;T&gt; | 返回一个迭代器。 |
+
+**示例：**
+
+```ts
+let deque: Deque<int> = new Deque<int>();
+deque.insertFront(2);
+deque.insertFront(4);
+deque.insertFront(5);
+deque.insertFront(4);
+
+// 使用方法一：
 for (let item of deque) {
   console.info("value:" + item);
 }
@@ -435,8 +719,8 @@ value:2
  */
 
 // 使用方法二：
-let iter = deque[Symbol.iterator]();
-let temp:IteratorResult<number> = iter.next();
+let iter = deque.$_iterator();
+let temp:IteratorResult<int> = iter.next();
 while(!temp.done) {
   console.info("value:" + temp.value);
   temp = iter.next();
@@ -449,3 +733,23 @@ value:4
 value:2
  */
 ```
+
+### DequeForEachCb\<T\><sup>23+</sup>
+
+type DequeForEachCb\<T\> = (value: T, index: int, deque: Deque\<T\>) => void
+
+Deque中forEach方法的回调函数。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | T | 是 | 当前遍历到的元素。 |
+| index | int | 是 | 当前遍历到的下标值。 |
+| deque | [Deque&lt;T&gt;](#deque) | 是 | 当前调用[forEach](#foreach23)方法的实例对象。 |

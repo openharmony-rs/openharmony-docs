@@ -1,8 +1,8 @@
 # 阴影
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -58,4 +58,4 @@ struct ShadowOptionDemo {
 
 
 
-![zh-cn_image_0000001598502322](figures/zh-cn_image_0000001598502322.png)
+![zh-cn_image_0000001598502322](figures/Shadow-Effect.png)

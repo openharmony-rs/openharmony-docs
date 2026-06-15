@@ -10,7 +10,11 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](arkts-apis-uicontext-uicontext.md)说明。
 >
@@ -34,9 +38,13 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo,callback:As
 >
 > - 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -150,9 +158,13 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: DragInfo): Promise\<
 >
 > - 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -295,12 +307,282 @@ struct DragControllerPage {
 
 | 名称        | 类型                                                   | 只读 | 可选 | 说明                                     |
 | ----------- | ----------------------------------------------------- | ---- | ---- | --------------------------------------- |
-| pointerId   | number                                                 |  否  |  否   | 设置启动拖拽时屏幕上触摸点的Id。取值范围为[0, 9]的整数。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
-| data        | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | 否  |  是  | 设置拖拽过程中携带的数据。 <br/>默认值：空<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。               |
-| extraParams | string                                                 | 否  |  是  | 设置拖拽事件额外信息，具体功能暂未实现。<br/>默认值：空<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| touchPoint<sup>11+</sup>    | [TouchPoint](arkui-ts/ts-types.md#touchpoint11)  | 否  |  是  | 配置跟手点坐标。不配置时，左右居中，顶部向下偏移20%。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| previewOptions<sup>11+</sup>| [DragPreviewOptions](arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11-1)                                | 否   |  是  | 设置拖拽过程中背板图处理模式及数量角标的显示。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| dataLoadParams<sup>20+</sup>| [unifiedDataChannel.DataLoadParams](../apis-arkdata/js-apis-data-unifiedDataChannel.md#dataloadparams20)                                | 否   |  是  | 设置拖起方延迟提供数据。调用此方法向系统提供数据加载参数，而非直接传入完整的数据对象。当用户将数据拖拽至目标应用程序并释放时，系统将使用此参数从起拖方请求实际数据。与data同时设置时，dataLoadParams生效。<br/>默认值：空<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| pointerId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                 |  否  |  否   | 设置启动拖拽时屏幕上触摸点的Id。取值范围为[0, 9]的整数。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23         |
+| data        | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | 否  |  是  | 设置拖拽过程中携带的数据。 <br/>默认值：空<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23               |
+| extraParams | string                                                 | 否  |  是  | 设置拖拽事件额外信息，具体功能暂未实现。<br/>默认值：空<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| touchPoint<sup>11+</sup>    | [TouchPoint](arkui-ts/ts-types.md#touchpoint11)  | 否  |  是  | 配置跟手点坐标。不配置时，左右居中，顶部向下偏移20%。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| previewOptions<sup>11+</sup>| [DragPreviewOptions](arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11-1)                                | 否   |  是  | 设置拖拽过程中背板图处理模式及数量角标的显示。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23|
+| autoHideComponentUniqueIds | ArkTS-Dyn: number \| number[]<br/>ArkTS-Sta: int \| int[] | 否   |  是  | 设置在主动拖拽过程中由系统自动隐藏的组件uniqueId，支持传入单个uniqueId或数组。<br/>主动拖拽成功发起后，系统会在显示拖拽预览窗口前自动隐藏目标组件。<br/>若主动拖拽源本身也需要被隐藏，需要同时传入其uniqueId。<br/>组件的uniqueId可通过[UIContext.getFrameNodeById()](arkts-apis-uicontext-uicontext.md#getframenodebyid12)配合[FrameNode.getUniqueId()](js-apis-arkui-frameNode.md#getuniqueid12)获取。<br/>开发者需要在拖拽结束回调中按需恢复组件显示状态。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| dataLoadParams<sup>20+</sup>| [unifiedDataChannel.DataLoadParams](../apis-arkdata/js-apis-data-unifiedDataChannel.md#dataloadparams20)                                | 否   |  是  | 设置拖起方延迟提供数据。调用此方法向系统提供数据加载参数，而非直接传入完整的数据对象。当用户将数据拖拽至目标应用程序并释放时，系统将使用此参数从起拖方请求实际数据。与data同时设置时，dataLoadParams生效。<br/>默认值：空<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24|
+
+**示例：**
+
+该示例通过[DragInfo](#draginfo)的autoHideComponentUniqueIds属性，在主动拖拽成功发起后自动隐藏指定组件。
+
+从API版本26.0.0开始，DragInfo新增autoHideComponentUniqueIds属性。
+
+ArkTS-Dyn示例：
+
+```ts
+import { dragController } from '@kit.ArkUI';
+import { unifiedDataChannel } from '@kit.ArkData';
+
+@Entry
+@Component
+struct DragInfoAutoHideSample {
+  @State sourceVisibility: Visibility = Visibility.Visible;
+  @State badgeVisibility: Visibility = Visibility.Visible;
+  @State statusText: string = '状态：等待主动拖拽';
+
+  @Builder
+  PreviewBuilder() {
+    Text('Drag Preview')
+      .width(140)
+      .height(60)
+      .backgroundColor('#3F51B5')
+      .borderRadius(10)
+      .fontColor(Color.White);
+  }
+
+  private buildData(content: string): unifiedDataChannel.UnifiedData {
+    let plainText = new unifiedDataChannel.PlainText();
+    plainText.textContent = content;
+    plainText.abstract = content;
+    return new unifiedDataChannel.UnifiedData(plainText);
+  }
+
+  private collectHideIds(): number[] {
+    let hideIds: number[] = [];
+    let sourceNode = this.getUIContext().getFrameNodeById('active_source');
+    let badgeNode = this.getUIContext().getFrameNodeById('active_badge');
+    if (sourceNode?.getUniqueId() !== undefined) {
+      hideIds.push(sourceNode.getUniqueId());
+    }
+    if (badgeNode?.getUniqueId() !== undefined) {
+      hideIds.push(badgeNode.getUniqueId());
+    }
+    return hideIds;
+  }
+
+  private hideTargets(): void {
+    this.sourceVisibility = Visibility.Hidden;
+    this.badgeVisibility = Visibility.Hidden;
+    this.statusText = '状态：主动拖拽中，目标组件已隐藏';
+  }
+
+  private restoreTargets(): void {
+    this.sourceVisibility = Visibility.Visible;
+    this.badgeVisibility = Visibility.Visible;
+    this.statusText = '状态：拖拽结束，组件已恢复显示';
+  }
+
+  build() {
+    Column({ space: 12 }) {
+      Text(this.statusText)
+        .width('100%')
+        .fontSize(14)
+        .fontColor('#BF360C');
+
+      Row({ space: 12 }) {
+        Column() {
+          Text('主动拖拽源')
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Medium);
+          Text('id: active_source')
+            .fontSize(10)
+            .fontColor('#E8F5E9');
+        }
+          .id('active_source')
+          .width(140)
+          .height(90)
+          .backgroundColor('#2E7D32')
+          .borderRadius(12)
+          .justifyContent(FlexAlign.Center)
+          .visibility(this.sourceVisibility);
+
+        Column() {
+          Text('跟随隐藏组件')
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Medium);
+          Text('id: active_badge')
+            .fontSize(10)
+            .fontColor('#E3F2FD');
+        }
+          .id('active_badge')
+          .width(140)
+          .height(90)
+          .backgroundColor('#1565C0')
+          .borderRadius(12)
+          .justifyContent(FlexAlign.Center)
+          .visibility(this.badgeVisibility);
+      }
+
+      Button('发起主动拖拽')
+        .width('100%')
+        .height(56)
+        .backgroundColor('#FF8F00')
+        .onTouch((touchEvent) => {
+          if (!touchEvent || touchEvent.type !== TouchType.Down) {
+            return;
+          }
+          let hideIds = this.collectHideIds();
+          let dragInfo: dragController.DragInfo = {
+            pointerId: 0,
+            data: this.buildData('active drag data'),
+            extraParams: '',
+            autoHideComponentUniqueIds: hideIds
+          };
+          this.hideTargets();
+          this.getUIContext().getDragController().executeDrag(() => {
+            this.PreviewBuilder();
+          }, dragInfo, () => {
+            this.restoreTargets();
+          });
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Row, Text, FlexAlign, FontWeight, Color, Builder, Margin, Button } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { Visibility, TouchEvent, TouchType, DragResult } from '@kit.ArkUI';
+import dragController from '@ohos.arkui.dragController';
+import { unifiedDataChannel } from '@kit.ArkData';
+
+@Entry
+@Component
+struct DragInfoAutoHideStaticSample {
+  @State sourceVisibility: Visibility = Visibility.Visible;
+  @State badgeVisibility: Visibility = Visibility.Visible;
+  @State statusText: string = '状态：等待主动拖拽';
+
+  @Builder
+  PreviewBuilder(): void {
+    Text('Drag Preview')
+      .width(140)
+      .height(60)
+      .backgroundColor('#3F51B5')
+      .borderRadius(10)
+      .fontColor(Color.White);
+  }
+
+  private buildData(content: string): unifiedDataChannel.UnifiedData {
+    let plainText: unifiedDataChannel.PlainText = new unifiedDataChannel.PlainText();
+    plainText.textContent = content;
+    plainText.abstract = content;
+    return new unifiedDataChannel.UnifiedData(plainText);
+  }
+
+  private collectHideIds(): int[] {
+    let hideIds: int[] = [];
+    let sourceNode = this.getUIContext().getFrameNodeById('static_source');
+    let badgeNode = this.getUIContext().getFrameNodeById('static_badge');
+    if (sourceNode !== null && sourceNode !== undefined) {
+      let uniqueId: int | undefined = sourceNode.getUniqueId();
+      if (uniqueId !== undefined) {
+        hideIds.push(uniqueId);
+      }
+    }
+    if (badgeNode !== null && badgeNode !== undefined) {
+      let uniqueId: int | undefined = badgeNode.getUniqueId();
+      if (uniqueId !== undefined) {
+        hideIds.push(uniqueId);
+      }
+    }
+    return hideIds;
+  }
+
+  private hideTargets(): void {
+    this.sourceVisibility = Visibility.Hidden;
+    this.badgeVisibility = Visibility.Hidden;
+    this.statusText = '状态：主动拖拽中，目标组件已隐藏';
+  }
+
+  private restoreTargets(): void {
+    this.sourceVisibility = Visibility.Visible;
+    this.badgeVisibility = Visibility.Visible;
+    this.statusText = '状态：拖拽结束，组件已恢复显示';
+  }
+
+  build() {
+    Column({ space: 12 }) {
+      Text(this.statusText)
+        .width('100%')
+        .fontSize(14)
+        .fontColor('#BF360C');
+
+      Row({ space: 12 }) {
+        Column() {
+          Text('主动拖拽源')
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Medium);
+          Text('id: static_source')
+            .fontSize(10)
+            .fontColor('#E8F5E9');
+        }
+          .id('static_source')
+          .width(140)
+          .height(90)
+          .backgroundColor('#2E7D32')
+          .borderRadius(12)
+          .justifyContent(FlexAlign.Center)
+          .visibility(this.sourceVisibility);
+
+        Column() {
+          Text('跟随隐藏组件')
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Medium);
+          Text('id: static_badge')
+            .fontSize(10)
+            .fontColor('#E3F2FD');
+        }
+          .id('static_badge')
+          .width(140)
+          .height(90)
+          .backgroundColor('#1565C0')
+          .borderRadius(12)
+          .justifyContent(FlexAlign.Center)
+          .visibility(this.badgeVisibility);
+      }
+
+      Button('发起主动拖拽')
+        .width('100%')
+        .height(56)
+        .backgroundColor('#FF8F00')
+        .onTouch((touchEvent: TouchEvent | undefined): void => {
+          if (touchEvent === undefined || touchEvent.type !== TouchType.Down) {
+            return;
+          }
+          let hideIds: int[] = this.collectHideIds();
+          let dragInfo: dragController.DragInfo = {
+            pointerId: 0,
+            data: this.buildData('active drag data'),
+            extraParams: '',
+            autoHideComponentUniqueIds: hideIds
+          };
+          this.hideTargets();
+          this.getUIContext().getDragController().executeDrag((): void => {
+            this.PreviewBuilder();
+          }, dragInfo, (err: Error | null, eve: dragController.DragEventParam): void => {
+            if (eve.event) {
+              let result: DragResult = eve.event.getResult();
+              // 处理拖拽结果
+            }
+            this.restoreTargets();
+          });
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
 
 ## dragController.createDragAction<sup>(deprecated)</sup>
 
@@ -316,9 +598,13 @@ createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragIn
 >
 > - 建议控制传递的拖拽背板数量，传递过多容易导致拖起的效率问题。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -451,29 +737,41 @@ struct DragControllerPage {
 }
 ```
   ![zh-cn_executeDrag3](figures/executeDrag3.gif)
+
+
 ## DragAction<sup>11+</sup>
 
 监听状态改变，启动拖拽服务的对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 ### startDrag<sup>11+</sup>
 
-startDrag(): Promise&lt;void&gt;
+ArkTS-Dyn: startDrag(): Promise&lt;void&gt;
+
+ArkTS-Sta: startDrag(): Promise&lt;void&gt; | null
 
 启动拖拽服务。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+| ArkTS-Dyn: Promise&lt;void&gt;<br/>ArkTS-Sta: Promise&lt;void&gt; \| null | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -731,9 +1029,15 @@ on(type: 'statusChange', callback: Callback&lt;[DragAndDropInfo](#draganddropinf
 
 注册监听拖拽状态改变事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStatusChange](#onstatuschange23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 | 参数名     | 类型  | 必填   | 说明             |
@@ -815,15 +1119,41 @@ struct DragControllerPage {
 }
 ```
 
+### onStatusChange<sup>23+</sup>
+
+onStatusChange(callback: Callback&lt;DragAndDropInfo&gt;): void
+
+注册监听拖拽状态改变事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('statusChange')](#onstatuschange11)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型  | 必填    | 说明             |
+| ------ | ------ | ------- | ---------------- |
+|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | 是      | 回调函数，返回当前的[DragAndDropInfo](#draganddropinfo11)组件状态。|
+
 ### off('statusChange')<sup>11+</sup>
 
  off(type: 'statusChange', callback?: Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt;): void
 
 取消注册监听拖拽状态改变事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStatusChange](#offstatuschange23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 | 参数名     | 类型  | 必填    | 说明             |
@@ -902,13 +1232,37 @@ struct DragControllerPage {
 }
 ```
 
+### offStatusChange<sup>23+</sup>
+
+offStatusChange(callback?: Callback&lt;DragAndDropInfo&gt;): void
+
+取消注册监听拖拽状态改变事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('statusChange')](#offstatuschange11)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型  | 必填    | 说明             |
+| ------ | ------ | ------- | ---------------- |
+|  callback  | Callback&lt;[DragAndDropInfo](#draganddropinfo11)&gt; | 否    | 回调函数，返回当前的[DragAndDropInfo](#draganddropinfo11)组件状态。|
+
 ## DragAndDropInfo<sup>11+</sup>
 
 拖拽过程中监听到status改变时上报的数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型                                                   | 只读  |  可选 | 说明                                     |
 | -----------   | ------------------------------------------------------ | ---- | ---- |---------------------------------------- |
@@ -920,9 +1274,13 @@ struct DragControllerPage {
 
 拖拽开始和结束状态。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值                                                   | 说明                                     |
 | -----------   | ------------------------------------------------------| ---------------------------------------- |
@@ -933,22 +1291,30 @@ struct DragControllerPage {
 
 拖拽相关的动效参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 类型                                                   | 只读  |  可选 | 说明                                     |
 | ----------- | ------------------------------------------------------ | ---- | ---- | ---------------------------------------- |
-| duration    | number                                                 | 否  |  是   | 动画持续时间，单位为毫秒。<br/>默认值：1000<br/>**说明：**<br/>-&nbsp;设置小于0的值时按0处理。<br/>-&nbsp;设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。|
+| duration    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                   | 否  |  是   | 动画持续时间，单位为毫秒。<br/>默认值：1000<br/>**说明：**<br/>-&nbsp;设置小于0的值时按0处理。<br/>-&nbsp;设置浮点型类型的值时，向下取整。例如，设置值为1.2，按照1处理。|
 | curve       |&nbsp;[Curve](arkui-ts/ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](js-apis-curve.md#icurve9) | 否  |  是  | 设置动画曲线。<br/>默认值：Curve.EaseInOut|
 
 ## DragEventParam<sup>12+</sup>
 
 拖拽结束返回结果的回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型                                                         | 只读  |  可选 | 说明                           |
 | ----------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------ |
@@ -967,9 +1333,13 @@ getDragPreview(): DragPreview
 >
 > - 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getDragController](arkts-apis-uicontext-uicontext.md#getdragcontroller11)方法获取当前UI上下文关联的[DragController](arkts-apis-uicontext-dragcontroller.md)对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
 
 **返回值：**
 
@@ -985,9 +1355,13 @@ getDragPreview(): DragPreview
 
 拖拽背板的对象，在OnDrop和OnDragEnd回调中使用不生效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 ### setForegroundColor<sup>11+</sup>
 
@@ -995,9 +1369,13 @@ setForegroundColor(color: ResourceColor): void
 
 设置背板蒙版颜色，在OnDrop和OnDragEnd回调中使用不生效，仅支持通过 [getDragPreview()](arkts-apis-uicontext-dragcontroller.md#getdragpreview11) 方法获取到的对象上使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1015,9 +1393,13 @@ animate(options: AnimationOptions, handler: () => void): void
 
 设置背板蒙版颜色变化动效，在OnDrop和OnDragEnd回调中使用不生效，仅支持通过 [getDragPreview()](arkts-apis-uicontext-dragcontroller.md#getdragpreview11) 方法获取到的对象上使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1182,9 +1564,13 @@ animate(options: AnimationOptions, handler: () => void): void
 
 定义应用是否可以发起拖拽的枚举类型。仅在[onDragStart](./arkui-ts/ts-universal-events-drag-drop.md#ondragstart)调用时有效。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值 | 说明                                                         |
 | -------- | -- | ------------------------------------------------------------ |
@@ -1195,40 +1581,52 @@ animate(options: AnimationOptions, handler: () => void): void
 
 定义拖拽的悬停检测状态的枚举类型。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 
 | 名称 | 值|说明                                                          |
 | ------ | --------------------- |--------------------------------------- |
-| BEGIN  | - |拖拽进入组件范围静止一段时间，被识别为悬停状态。此时允许进行一些悬停检测的准备操作。 |
-| UPDATE | - |拖拽已处于悬停状态，如果继续静止会定期触发UPDATE通知，以检查悬停状态。此时允许UI效果刷新以突出悬停状态。 |
-| END    | - |如果最后一次UPDATE通知后拖拽继续静止会进入END，整个悬停检测结束。进入END后拖拽需要移出组件范围后再次进入组件或移入组件内子组件才会重新开始悬停检测。此时应用程序可进行清理、导航或视图切换操作。 |
-| CANCEL | - |拖拽进入BEGIN后，在手指/鼠标抬起、切换窗口、息屏、移出组件范围、移入组件内子组件或组件内移动超过检测阈值等场景会触发CANCEL通知，悬停检测中断。应用程序将恢复UI样式，并取消待定的导航及视图切换操作。 |
+| BEGIN  | 0 |拖拽进入组件范围静止一段时间，被识别为悬停状态。此时允许进行一些悬停检测的准备操作。 |
+| UPDATE | 1 |拖拽已处于悬停状态，如果继续静止会定期触发UPDATE通知，以检查悬停状态。此时允许UI效果刷新以突出悬停状态。 |
+| END    | 2 |如果最后一次UPDATE通知后拖拽继续静止会进入END，整个悬停检测结束。进入END后拖拽需要移出组件范围后再次进入组件或移入组件内子组件才会重新开始悬停检测。此时应用程序可进行清理、导航或视图切换操作。 |
+| CANCEL | 3 |拖拽进入BEGIN后，在手指/鼠标抬起、切换窗口、息屏、移出组件范围、移入组件内子组件或组件内移动超过检测阈值等场景会触发CANCEL通知，悬停检测中断。应用程序将恢复UI样式，并取消待定的导航及视图切换操作。 |
 
 ## DragSpringLoadingConfiguration<sup>20+</sup>
 
 定义拖拽的悬停检测配置参数的接口。默认的配置参数通常已能满足需求。可以通过在绑定[onDragSpringLoading](./arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20)时指定配置，或者通过在BEGIN状态期间使用[updateConfiguration](#updateconfiguration20)方法动态修改的方式以自定义该配置参数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称                 | 类型   |只读| 可选 | 说明                                   |
 | --------------------- | ------ | ---- | --- | ---------------------------------------------------- |
-| stillTimeLimit         | number | 否   |    是   |进入悬停检测BEGIN状态所需保持静止的时间（ms）。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值500。 |
-| updateInterval         | number | 否   |    是   |进入悬停检测UPDATE状态后，更新通知的时间间隔（ms）。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。|
-| updateNotifyCount      | number | 否   |    是   |进入悬停检测UPDATE状态后，更新通知的最大次数。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值3。|
-| updateToFinishInterval | number | 否   |    是   |从UPDATE状态到END状态的最长等待时间（ms）。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。 |
+| stillTimeLimit         | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   |    是   |进入悬停检测BEGIN状态所需保持静止的时间，单位：ms。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值500。 |
+| updateInterval         | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   |    是   |进入悬停检测UPDATE状态后，更新通知的时间间隔，单位：ms。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。|
+| updateNotifyCount      | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   |    是   |进入悬停检测UPDATE状态后，更新通知的最大次数。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值3。|
+| updateToFinishInterval | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   |    是   |从UPDATE状态到END状态的最长等待时间，单位：ms。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。 |
 
 ## SpringLoadingDragInfos<sup>20+</sup>
 
 定义触发悬停检测时拖拽事件信息的接口。该接口提供了拖拽数据摘要和拖拽事件额外信息，应用程序可以据此决定是否响应悬停检测回调。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称      | 类型       | 只读  |  可选 | 说明                      |
 | :-------- | ------- | ---- | ---- | --------------------------------------------- |
@@ -1241,14 +1639,18 @@ animate(options: AnimationOptions, handler: () => void): void
 
 ### 属性
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称        | 类型          | 只读   |可选    | 说明                         |
 | :----- | -------- | ---- | ---- | ---------------------------------------- |
 | state                 | [DragSpringLoadingState](#dragspringloadingstate20)    |否     |否   | 当前悬停检测的状态。         |
-| currentNotifySequence | number  |否      |否   |在一次悬停检测流转中的回调通知次数，从0开始。 |
+| currentNotifySequence | ArkTS-Dyn: number<br/>ArkTS-Sta: int  |否      |否   |在一次悬停检测流转中的回调通知次数，从0开始。 |
 | dragInfos             | [SpringLoadingDragInfos](#springloadingdraginfos20)  |否    |是   | 拖拽信息，当悬停检测状态为CANCEL时缺失，为undefined时取[SpringLoadingDragInfos](#springloadingdraginfos20)默认值。      |
 | currentConfig         | [DragSpringLoadingConfiguration](#dragspringloadingconfiguration20)   |否    |是   | 当前回调中的配置信息，当悬停检测状态为CANCEL时缺失，为undefined时取[DragSpringLoadingConfiguration](#dragspringloadingconfiguration20)默认值。    |
 
@@ -1258,9 +1660,13 @@ abort(): void
 
 终止后续的悬停检测。本方法不会触发CANCEL状态通知，应用程序需要在执行本方法时进行状态清理。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 ### updateConfiguration<sup>20+</sup>
 
@@ -1268,9 +1674,13 @@ updateConfiguration(config: DragSpringLoadingConfiguration): void
 
 更新悬停检测的配置，仅在悬停检测状态为BEGIN时生效。应用程序通常在绑定[onDragSpringLoading](./arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20)时设置悬停检测配置或使用默认配置。该方法不会修改绑定时的原始配置，而是在后续悬停检测中更新动态的配置信息。请谨慎使用本方法，因为不同的拖拽数据类型可能需要不同的UX时间。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 

@@ -3,12 +3,14 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yewei0794-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AppServiceExtensionAbility模块提供后台服务相关扩展能力，包括后台服务的创建、销毁、连接、断开等生命周期回调。
 
 > **说明：**
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -59,6 +61,10 @@ AppServiceExtensionAbility模块提供后台服务相关扩展能力，包括后
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | context | [AppServiceExtensionContext](js-apis-inner-application-appServiceExtensionContext.md)  | 否 | 否 | AppServiceExtensionAbility的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。 |
@@ -75,6 +81,10 @@ onCreate(want: Want): void
 > 如果AppServiceExtensionAbility实例已创建，再次启动或连接该实例时不会触发onCreate()回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -105,6 +115,10 @@ onDestroy(): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
   ```ts
@@ -122,18 +136,24 @@ onDestroy(): void
 
 ### onRequest
 
-onRequest(want: Want, startId: number): void
+ArkTS-Dyn: onRequest(want: Want, startId: number): void
+
+ArkTS-Sta: onRequest(want: Want, startId: int): void
 
 调用方每次使用[startAppServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20)拉起AppServiceExtensionAbility实例时，系统都会触发该回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want |  [Want](js-apis-app-ability-want.md) | 是 | 调用方拉起当前AppServiceExtensionAbility实例时传递的Want类型信息，包括Ability名称、Bundle名称等。 |
-| startId | number | 是 | 返回拉起次数。首次拉起初始值返回1，多次拉起时自动递增。 |
+| startId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 返回拉起次数。首次拉起初始值返回1，多次拉起时自动递增。 |
 
 **示例：**
 
@@ -161,6 +181,10 @@ onConnect(want: Want): rpc.RemoteObject
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -174,6 +198,8 @@ onConnect(want: Want): rpc.RemoteObject
 | [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject) | 一个RemoteObject对象，用于客户端和服务端进行通信。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -199,6 +225,33 @@ onConnect(want: Want): rpc.RemoteObject
   }
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  'use static'
+  import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
+  import rpc from '@ohos.rpc';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG: string = '[AppServiceExtAbility]';
+  
+  class StubTest extends rpc.RemoteObject {
+    constructor(des: string) {
+      super(des);
+    }
+  
+    onConnect(code: int, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
+    }
+  }
+  
+  class AppServiceExtAbility extends AppServiceExtensionAbility {
+    onConnect(want: Want) {
+      hilog.info(0x0000, TAG, `onConnect, want: ${want.abilityName}`);
+      return new StubTest('test');
+    }
+  }
+  ```
+
 ### onDisconnect
 
 onDisconnect(want: Want): void
@@ -206,6 +259,10 @@ onDisconnect(want: Want): void
 当所有连接方断开与AppServiceExtensionAbility实例的连接时，系统会触发该回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

@@ -1,9 +1,9 @@
 # ArkTS卡片使用自定义字体
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 API version 22开始新增了[ohos.graphics.text.FontCollection.getLocalInstance](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getlocalinstance22)接口获取本地字体集实例，应用可以通过这个本地实例为卡片加载自定义字体。
@@ -17,6 +17,7 @@ API version 22开始新增了[ohos.graphics.text.FontCollection.getLocalInstance
 
     在卡片页面中布局两个按钮，点击按钮`load font`或按钮`unload font`，调用本地字体集实例的loadFontSync、unloadFontSync进行字体的加载、卸载。
 
+   ArkTS-Dyn示例：
 <!-- @[loadFontSyncCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/CustomFontWidgetCards/entry/src/main/ets/widget/pages/WidgetCard.ets) -->  
 
 ``` TypeScript
@@ -38,6 +39,42 @@ struct loadFontSyncCard {
         .onClick(() => {
           // 在此处加载自定义字体文件
           this.fc.loadFontSync('custom', $rawfile('xxx.ttf'));
+          this.content = '自定义字体';
+        })
+      Button('unload font')
+        .onClick(() => {
+          this.fc.unloadFontSync('custom');
+          this.content = '默认字体';
+        })
+    }.width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+   ArkTS-Sta示例：
+<!-- @[loadFontSyncCardSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/CustomFontWidgetCardsSta/entry/src/main/ets/widget/pages/WidgetCard.ets) -->  
+
+``` TypeScript
+// entry/src/main/ets/widget/pages/WidgetCard.ets
+import { text } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct LoadFontSyncCard {
+  // 在这里使用getLocalInstance访问本地字体集实例
+  private fc: text.FontCollection = text.FontCollection.getLocalInstance();
+  @State content: string = '默认字体';
+
+  build() {
+    Column({ space: 10 }) {
+      Text(this.content)
+        .fontFamily('custom') // 在此处声明组件使用自定义字体
+      Button('load font')
+        .onClick(() => {
+          // 在此处加载自定义字体文件
+          this.fc.loadFontSync('custom', $rawfile('customfont.ttf'));
           this.content = '自定义字体';
         })
       Button('unload font')

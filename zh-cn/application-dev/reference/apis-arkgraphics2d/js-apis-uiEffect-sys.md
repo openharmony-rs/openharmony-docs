@@ -350,7 +350,7 @@ ArkTS-Sta: distort(distortionK: double): Filter
 | ------------- | --------------------- | ---- | ------------------------- |
 | distortionK  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 畸变系数，表示透镜畸变的程度，取值范围为[-1, 1]。畸变系数设置小于-1的值时，按值为-1处理；设置大于1的值时，按值为1处理。|
 
-![zh-ch_image_Add_Distort.png](./figures/zh-ch_image_Add_Distort.png)
+![Add-Distort.png](./figures/Add-Distort.png)
 
 如上图是对图片组件分别设置畸变参数为-1，0，0.5，1的绘制结果。畸变参数小于0时，效果为桶形畸变；大于0时，效果为枕形畸变；越接近0时，畸变程度越小，等于0时，没有畸变效果。
 
@@ -1273,6 +1273,144 @@ struct VariableRadiusBlurExample {
         .height("100%")
         .backgroundFilter(uiEffect.createFilter().variableRadiusBlur(64, this.maskExample))
     }
+  }
+}
+```
+
+### heatDistortion
+
+heatDistortion(param: HeatDistortionEffectParam): Filter
+
+应用热浪扭曲效果到图像，模拟热空气流动产生的视觉扭曲。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| param | [HeatDistortionEffectParam](#heatdistortioneffectparam) | 是 | 热浪扭曲效果的参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [Filter](#filter) | 返回添加了热浪扭曲效果的Filter。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct HeatDistortionExample {
+  @State intensity: number = 0.8;
+  @State noiseScale: number = 2.0;
+  @State riseWeight: number = 0.5;
+  @State progress: number = 0.3;
+
+  build() {
+    Stack() {
+      Image($r('app.media.test'))
+        .width('100%')
+        .height('100%')
+        .foregroundFilter(uiEffect.createFilter().heatDistortion({
+          intensity: this.intensity,
+          noiseScale: this.noiseScale,
+          riseWeight: this.riseWeight,
+          progress: this.progress
+        }))
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### blurBubblesRise
+
+blurBubblesRise(param: BlurBubblesRiseEffectParam): Filter
+
+应用模糊气泡上升效果到图像，模拟气泡在液体中上升的梦幻模糊扭曲效果。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| param | [BlurBubblesRiseEffectParam](#blurbubblesriseeffectparam) | 是 | 模糊气泡上升效果的参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [Filter](#filter) | 返回添加了模糊气泡上升效果的Filter。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct BlurBubblesRiseExample {
+  private context: Context | undefined = this.getUIContext().getHostContext();
+  @State blurIntensity: number = 0.8;
+  @State mixStrength: number = 0.6;
+  @State progress: number = 0.5;
+  @State maskImage: image.PixelMap | null = null;
+
+  aboutToAppear() {
+    if (this.context) {
+      this.getImagePixelMap(this.context)
+    }
+  }
+
+  getImagePixelMap(context: Context) {
+    let resourceMgr = context.resourceManager;
+    resourceMgr?.getMediaContent($r('app.media.drawBlurMask').id)
+      .then((val: Uint8Array) => {
+        let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength)
+        let imageSource: image.ImageSource = image.createImageSource(buffer);
+        imageSource.createPixelMap().then((pixelmap: image.PixelMap) => {
+          this.maskImage = pixelmap as PixelMap;
+        })
+      })
+  }
+
+  build() {
+    Stack() {
+      Image($r('app.media.test'))
+        .width('100%')
+        .height('100%')
+        .foregroundFilter(uiEffect.createFilter().blurBubblesRise({
+          blurIntensity: this.blurIntensity,
+          mixStrength: this.mixStrength,
+          progress: this.progress,
+          maskImage: this.maskImage
+        }))
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -2352,3 +2490,45 @@ BrightnessBlender参数列表。
 | positiveCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br/>每个number的取值范围[-20, 20]。 |
 | negativeCoefficient | ArkTS-Dyn: [number, number, number]<br>ArkTS-Sta: [double, double, double]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围[-20, 20]。 |
 | fraction            | ArkTS-Dyn: number<br>ArkTS-Sta: double                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。  |
+
+## HeatDistortionEffectParam
+
+热浪扭曲效果的参数。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| intensity | number | 否 | 否 | 热浪扭曲的强度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0表示无扭曲，1表示最大扭曲程度。 |
+| noiseScale | number | 否 | 否 | 热浪扭曲的噪声缩放，控制噪声纹理的细度。<br/>取值范围[0.1, 5.0]，超出边界会在实现时自动截断。<br/>值越大，噪声纹理越腻。 |
+| riseWeight | number | 否 | 否 | 热浪扭曲的上升权重，控制气泡的上升速度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>值越大，向上运动越明显。 |
+| progress | number | 否 | 否 | 热浪扭曲的动画进度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0对应动画开始，1对应动画结束。 |
+
+## BlurBubblesRiseEffectParam
+
+模糊气泡上升效果的参数。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| blurIntensity | number | 否 | 否 | 模糊气泡上升效果的高斯模糊强度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0表示无模糊，1表示最大模糊度。 |
+| mixStrength | number | 否 | 否 | 原图与模糊图的混合强度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0对应原图，1对应模糊后的图像。 |
+| progress | number | 否 | 否 | 模糊气泡上升效果的动画进度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0对应动画开始，1对应动画结束。 |
+| maskImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 否 | 否 | 模糊气泡上升效果的遮罩图像，控制模糊气泡区域。<br/>被遮罩的区域有模糊效果，未遮罩的区域无模糊效果。 |

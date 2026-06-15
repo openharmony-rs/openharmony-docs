@@ -5,7 +5,7 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供延迟任务注册、取消、查询的能力。在开发过程中，对于实时性要求不高的任务，可以调用本模块接口注册延迟任务，在系统空闲时根据性能、功耗、热等情况进行调度执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
 
@@ -93,7 +93,7 @@ const parameter: Record<string, int | double | string | boolean> = {
   "mykey0": 1,
   "mykey1": "string value",
   "mykey2": true,
-  "mkkey3": 1.5
+  "mykey3": 1.5
 };
 let workInfo: workScheduler.WorkInfo = {
   workId: 1,
@@ -183,7 +183,7 @@ const parameter: Record<string, int | double | string | boolean> = {
   "mykey0": 1,
   "mykey1": "string value",
   "mykey2": true,
-  "mkkey3": 1.5
+  "mykey3": 1.5
 };
 let workInfo: workScheduler.WorkInfo = {
   workId: 1,
@@ -323,7 +323,6 @@ workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { workScheduler } from '@kit.BackgroundTasksKit';
 
 workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
@@ -335,7 +334,7 @@ workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
 
 ## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
 
-obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
+obtainAllWorks(callback: AsyncCallback\<void>) : Array\<WorkInfo>
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
@@ -370,7 +369,7 @@ obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
 
 ## workScheduler.obtainAllWorks<sup>10+<sup>
 
-obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
+obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
@@ -476,7 +475,6 @@ workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { workScheduler } from '@kit.BackgroundTasksKit';
 
 workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
@@ -560,9 +558,9 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
 ## workScheduler.isLastWorkTimeOut<sup>10+<sup>
 
-ArkTS-Dyn: isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
+ArkTS-Dyn: isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void
 
-ArkTS-Sta: isLastWorkTimeOut(workId: int, callback : AsyncCallback\<boolean>): void
+ArkTS-Sta: isLastWorkTimeOut(workId: int, callback: AsyncCallback\<boolean>): void
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 
@@ -681,7 +679,6 @@ workScheduler.isLastWorkTimeOut(500)
 ArkTS-Sta示例：
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { workScheduler } from '@kit.BackgroundTasksKit';
 
 workScheduler.isLastWorkTimeOut(500)
@@ -711,23 +708,23 @@ workScheduler.isLastWorkTimeOut(500)
 
 | 名称             | 类型                                | 只读   | 可选   | 说明               |
 | --------------- | --------------------------------- | ---- | ---- | ---------------- |
-| workId          | number                            | 否    | 否    |延迟任务ID。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23          |
+| workId          | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 否    |延迟任务ID。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23          |
 | bundleName      | string                            | 否    | 否    |延迟任务所在应用的包名。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23            |
 | abilityName     | string                            | 否    | 否    |包内ability名称。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
 | networkType     | [NetworkType](#networktype)       | 否    | 是    |网络类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
 | isCharging      | boolean                           | 否    | 是    |是否充电，默认为false。<br>- true表示充电触发延迟任务回调。<br>- false表示不充电触发延迟任务回调。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
 | chargerType     | [ChargingType](#chargingtype)     | 否    | 是    |充电类型。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23             |
-| batteryLevel    | number                            | 否    | 是    |电量。<br>取值范围：[0, 100]  <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23       |
+| batteryLevel    | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 是    |电量。<br>取值范围：[0, 100]  <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23       |
 | batteryStatus   | [BatteryStatus](#batterystatus)   | 否    | 是    |电池状态。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
 | storageRequest  | [StorageRequest](#storagerequest) | 否    | 是    |存储状态。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
 | isRepeat        | boolean                           | 否    | 是    |是否循环任务，默认为false。<br>- true表示循环任务。 <br>- false表示非循环任务。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
-| repeatCycleTime | number                            | 否    | 是    |循环间隔，单位：ms。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
-| repeatCount     | number                            | 否    | 是    |循环次数。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
+| repeatCycleTime | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 是    |循环间隔，单位：ms。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
+| repeatCount     | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 是    |循环次数。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
 | isPersisted     | boolean                           | 否    | 是    |注册的延迟任务是否可保存在系统中，默认为false。<br>- true表示可保存，即系统重启后，任务可恢复。<br>- false表示不可保存。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
 | isDeepIdle      | boolean                           | 否    | 是    |是否要求设备进入空闲状态，默认为false。<br>- true表示需要。<br>- false表示不需要。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23    |
-| idleWaitTime    | number                            | 否    | 是    |空闲等待时间，单位：ms。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23            |
-| parameters      | Record<string, number \| string \| boolean>  | 否    | 是    |携带参数信息。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
-| earliestStartTime<sup>22+</sup> | number | 否    | 是    |任务首次执行时间距离任务申请时间的间隔，单位：ms，默认为0，范围大于等于0。 <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23 |
+| idleWaitTime    | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 是    |空闲等待时间，单位：ms。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23            |
+| parameters      | ArkTS-Dyn: Record<string, number \| string \| boolean> <br> ArkTS-Sta: Record<string, int \| double \| string \| boolean>| 否    | 是    |携带参数信息。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
+| earliestStartTime<sup>22+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 是    |任务首次执行时间距离任务申请时间的间隔，单位：ms，默认为0，范围大于等于0。 <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## NetworkType
 

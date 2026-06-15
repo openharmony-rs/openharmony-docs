@@ -1,8 +1,8 @@
 # @ohos.util.json (JSON解析与生成)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -10,7 +10,9 @@
 
 >**说明：**
 >
->本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅适用于ArkTS-Dyn。
+>
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -27,7 +29,7 @@ type Transformer = (this: Object, key: string, value: Object) => Object | undefi
 作为[JSON.parse](#jsonparse)函数的参数时，对象的每个成员将会调用此函数，允许在解析过程中对数据进行自定义处理或转换。<br>
 作为[JSON.stringify](#jsonstringify-1)函数的参数时，序列化时，每个属性都会经过该函数的转换处理。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -49,7 +51,7 @@ type Transformer = (this: Object, key: string, value: Object) => Object | undefi
 
 定义处理BigInt的模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -63,7 +65,7 @@ type Transformer = (this: Object, key: string, value: Object) => Object | undefi
 
 解析的选项，可定义处理BigInt的模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -77,7 +79,7 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | nul
 
 解析JSON字符串生成ArkTS对象或null。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -93,15 +95,7 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | nul
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Object \| null | 返回ArkTS对象或null。当入参是null时，返回null。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| Object \| null | 返回ArkTS对象或null。当入参字符串为'null'时，返回null。|
 
 **示例：**
 
@@ -146,7 +140,7 @@ stringify(value: Object, replacer?: (number | string)[] | null, space?: string |
 
 该方法将一个ArkTS对象或数组转换为JSON字符串，支持线性容器的转换，不支持非线性容器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -163,14 +157,6 @@ stringify(value: Object, replacer?: (number | string)[] | null, space?: string |
 | 类型 | 说明 |
 | -------- | -------- |
 | string | 转换后的JSON字符串。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -197,7 +183,7 @@ console.info(rstStrSpace);
   "name": "John",
   "age": 30
 }
-*/
+ */
 
 let rstStrStar = JSON.stringify(person, ["name", "age"], '  &&');
 console.info(rstStrStar);
@@ -207,7 +193,7 @@ console.info(rstStrStar);
   &&"name": "John",
   &&"age": 30
 }
-*/
+ */
 
 let bigIntObj = BigInt(112233445566778899n);
 console.info(JSON.stringify(bigIntObj));
@@ -220,7 +206,7 @@ stringify(value: Object, replacer?: Transformer, space?: string | number): strin
 
 该方法将一个ArkTS对象或数组转换为JSON字符串，支持线性容器的转换，不支持非线性容器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -237,14 +223,6 @@ stringify(value: Object, replacer?: Transformer, space?: string | number): strin
 | 类型 | 说明 |
 | -------- | -------- |
 | string | 转换后的JSON字符串。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -276,7 +254,7 @@ console.info(JSON.stringify(inputObj, replacer, '  '));
   "age": 30,
   "city": "CHONGQING"
 }
-*/
+ */
 ```
 
 ## JSON.has
@@ -285,7 +263,7 @@ has(obj: object, property: string): boolean
 
 检查ArkTS对象是否包含某种属性，可用于[JSON.parse](#jsonparse)解析JSON字符串之后。has接口仅支持最外层为字典形式（即大括号而非中括号包围）的合法json串。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -301,14 +279,6 @@ has(obj: object, property: string): boolean
 | 类型 | 说明 |
 | -------- | -------- |
 | boolean | 返回ArkTS对象是否包含某种属性结果。true表示包含，false表示不包含。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -329,7 +299,7 @@ remove(obj: object, property: string): void
 
 从ArkTS对象中删除某种属性，可用于[JSON.parse](#jsonparse)解析JSON字符串之后。JSON.remove接口仅支持最外层为字典形式（即大括号而非中括号包围）的合法json串。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -339,14 +309,6 @@ remove(obj: object, property: string): void
 | -------- | -------- | -------- | -------- |
 | obj | object | 是 | ArkTS对象。|
 | property | string | 是 | 属性名。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 

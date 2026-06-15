@@ -4,14 +4,16 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025 -->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AbilityManager模块提供获取Ability相关信息和运行状态信息的能力。
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
 
 ## 导入模块
 
@@ -25,14 +27,18 @@ Ability的状态，该类型为枚举，可配合[AbilityRunningInfo](js-apis-in
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-| 名称 | 值 | 说明 | 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| INITIAL | 0 | 表示ability为初始化状态。| 
+| INITIAL | 0 | 表示ability为初始化状态。|
 | FOCUS | 2 | 表示ability为获焦状态。 |
-| FOREGROUND | 9 | 表示ability为前台状态。  | 
-| BACKGROUND | 10 | 表示ability为后台状态。  | 
-| FOREGROUNDING | 11 | 表示ability为前台调度中状态。  | 
-| BACKGROUNDING | 12 | 表示ability为后台调度中状态。  | 
+| FOREGROUND | 9 | 表示ability为前台状态。  |
+| BACKGROUND | 10 | 表示ability为后台状态。  |
+| FOREGROUNDING | 11 | 表示ability为前台调度中状态。  |
+| BACKGROUNDING | 12 | 表示ability为后台调度中状态。  |
 
 
 ## abilityManager.getAbilityRunningInfos<sup>14+</sup>
@@ -49,6 +55,10 @@ getAbilityRunningInfos(): Promise\<Array\<AbilityRunningInfo>>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                       | 说明      |
@@ -63,7 +73,7 @@ getAbilityRunningInfos(): Promise\<Array\<AbilityRunningInfo>>
 | ------- | -------- |
 | 16000050 | Internal error. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { abilityManager } from '@kit.AbilityKit';
@@ -74,13 +84,14 @@ try {
     .then((data: abilityManager.AbilityRunningInfo[]) => {
       console.info(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
     })
-    .catch((error: BusinessError) => {
-      console.error(`getAbilityRunningInfos fail, error code: ${JSON.stringify(error.code)}, error msg: ${JSON.stringify(error.message)}`);
+    .catch((err: Error) => {
+      let error = err as BusinessError;
+      console.error(`getAbilityRunningInfos fail, error ${error.code}, ${error.message}`);
     })
 } catch (e) {
   let code = (e as BusinessError).code;
   let msg = (e as BusinessError).message;
-  console.error(`getAbilityRunningInfos fail, error code: ${JSON.stringify(code)}, error msg: ${JSON.stringify(msg)}`);
+  console.error(`getAbilityRunningInfos fail, error code: ${code}, error msg: ${msg}`);
 }
 ```
 
@@ -101,13 +112,17 @@ restartSelfAtomicService(context: Context): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| context    | [Context](./js-apis-inner-application-context.md)   | 是    | 当前Ability的上下文。<br>**说明**：当前仅支持[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。</br> |
+| context    | [Context](./js-apis-inner-application-context.md)   | 是    | 当前Ability的上下文。<br>**说明**：当前仅支持[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。 |
 
 **错误码**：
 
@@ -132,7 +147,8 @@ export default class EntryAbility extends EmbeddableUIAbility {
     try {
       abilityManager.restartSelfAtomicService(this.context);
     } catch (e) {
-      console.error(`restartSelfAtomicService error: ${JSON.stringify(e as BusinessError)}`);
+      let error=e as BusinessError;
+      console.error(`restartSelfAtomicService error: ${error.code} ${error.message}`);
     }
   }
 }
@@ -177,6 +193,10 @@ AbilityRunningInfo二级模块。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型 | 说明 |
 | --- | --- |
 | [_AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md) | AbilityRunningInfo二级模块，提供对Ability运行的相关信息和状态的定义。 |
@@ -189,6 +209,26 @@ AbilityStateData二级模块。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 14
+
 | 类型 | 说明 |
 | --- | --- |
-| [_AbilityStateData.default](js-apis-inner-application-abilityStateData.md) | AbilityStateData二级模块，提供Ability状态信息。 |
+| [AbilityStateData](js-apis-inner-application-abilityStateData.md) | AbilityStateData二级模块，提供Ability状态信息。 |
+
+## AbilityStateData<sup>23+</sup>
+
+type AbilityStateData = _AbilityStateData
+
+AbilityStateData二级模块。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                                                         | 说明                                            |
+| ------------------------------------------------------------ | ----------------------------------------------- |
+| [_AbilityStateData](js-apis-inner-application-abilityStateData.md) | AbilityStateData二级模块，提供Ability状态信息。 |

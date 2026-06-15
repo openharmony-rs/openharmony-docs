@@ -21,7 +21,9 @@
 
 >  **说明：**
 >
->  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 接口
@@ -32,9 +34,15 @@ PanGesture(value?: { fingers?: number; direction?: PanDirection; distance?: numb
 
 创建滑动手势对象。继承自[GestureInterface\<T>](ts-gesture-common.md#gestureinterfacet11)
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[PanGesture<sup>15+</sup>](#pangesture15)。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -48,9 +56,15 @@ PanGesture(options?: PanGestureHandlerOptions)
 
 创建滑动手势对象。与[PanGesture](#pangesture-1)相比，options参数新增了对isFingerCountLimited和distanceMap参数，分别表示是否检查触摸屏幕的手指数量以及指定不同输入源触发滑动手势事件的最小滑动距离。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -62,39 +76,53 @@ PanGesture(options?: PanGestureHandlerOptions)
 
 与SwipeDirection不同，PanDirection没有角度限制。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
-| ---- | -- | ----- |
-| All | - | 所有方向。 |
-| Horizontal | - | 水平方向。 |
-| Vertical | - | 竖直方向。 |
-| Left | - | 向左滑动。 |
-| Right | - | 向右滑动。 |
-| Up | - | 向上滑动。 |
-| Down | - | 向下滑动。 |
-| None | - | 任何方向都不可触发滑动手势事件。 |
+| -------- | -------- | -------- |
+| None | 0 | 任何方向都不可触发滑动手势事件。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Left | 1 | 向左滑动。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Right | 2 | 向右滑动。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Horizontal | 3 | 水平方向。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Up | 4 | 向上滑动。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| UP_LEFT<sup>23+</sup> | 5 | 向上或左滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| UP_RIGHT<sup>23+</sup> | 6 | 向上或右滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| UP_HORIZONTAL<sup>23+</sup> | 7 | 向上或水平滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| Down | 8 | 向下滑动。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| DOWN_LEFT<sup>23+</sup> | 9 | 向下或左滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| DOWN_RIGHT<sup>23+</sup> | 10 | 向下或右滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| DOWN_HORIZONTAL<sup>23+</sup> | 11 | 向下或水平滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| Vertical | 12 | 竖直方向。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| VERTICAL_LEFT<sup>23+</sup> | 13 | 竖直或左滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| VERTICAL_RIGHT<sup>23+</sup> | 14 | 竖直或右滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| All | 15 | 所有方向。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 
 
 ## PanGestureOptions
 
 ### constructor
 
-constructor(value?: { fingers?: number; direction?: PanDirection; distance?: number })
+ArkTS-Dyn: constructor(value?: { fingers?: number; direction?: PanDirection; distance?: number })
+
+ArkTS-Sta: constructor(value?: PanGestureHandlerOptions)
 
 创建滑动手势配置参数对象。通过PanGestureOptions对象接口可以动态修改滑动手势的属性，从而避免通过状态变量修改属性（状态变量修改会导致UI刷新）。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| value   | { fingers?: number; direction?: [PanDirection](#pandirection枚举说明); distance?: number } | 否   | 滑动手势配置参数对象。<br/>fingers用于指定触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 <br/>direction用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br/>distance用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs](ts-container-tabs.md)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。<br/>当组件应用了[scale](./ts-universal-attributes-transformation.md#scale)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。|
+| value   | ArkTS-Dyn: { fingers?: number; direction?: [PanDirection](#pandirection枚举说明); distance?: number }<br/>ArkTS-Sta: [PanGestureHandlerOptions](./ts-gesturehandler.md#pangesturehandleroptions) | 否   | 滑动手势配置参数对象。<br/>fingers用于指定触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 <br/>direction用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br/>distance用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs](ts-container-tabs.md)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。<br/>当组件应用了[scale](./ts-universal-attributes-transformation.md#scale)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。|
 
 ### setDirection
 
@@ -102,9 +130,13 @@ setDirection(value: PanDirection)
 
 设置滑动方向。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -114,35 +146,47 @@ setDirection(value: PanDirection)
 
 ### setDistance
 
-setDistance(value: number)
+ArkTS-Dyn: setDistance(value: number)
+
+ArkTS-Sta: setDistance(value: double): void
 
 设置触发滑动手势事件的最小滑动距离，单位为vp。距离值不宜设置过大，避免因滑动脱手、响应时延过大等问题导致性能劣化，最佳实践请参考：[减小拖动识别距离](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-application-latency-optimization-cases#section1116134115286)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  number | 是   | 触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。<br/>当组件应用了[scale](./ts-universal-attributes-transformation.md#scale)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
+| value  |  ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 触发滑动手势事件的最小滑动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>建议设置合理的滑动距离，滑动距离设置过大时会导致滑动不跟手（响应时延慢）的问题。<br/>当组件应用了[scale](./ts-universal-attributes-transformation.md#scale)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
 
 ### setFingers
 
-setFingers(value: number)
+ArkTS-Dyn: setFingers(value: number)
+
+ArkTS-Sta: setFingers(value: int): void
 
 设置触发滑动的最少手指数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| value  |  number | 是   | 触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 |
+| value  |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 触发滑动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 |
 
 ### getDirection<sup>12+</sup>
 
@@ -150,9 +194,15 @@ getDirection(): PanDirection
 
 获取滑动方向。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -162,20 +212,27 @@ getDirection(): PanDirection
 
 ### getDistance<sup>18+</sup>
 
-getDistance(): number
+ArkTS-Dyn: getDistance(): number
+
+ArkTS-Sta: getDistance(): double
 
 获取触发滑动手势事件的最小滑动距离。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型     | 说明        |
 | ------ | --------- |
-| number | 滑动手势事件的最小滑动距离。 |
-
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 滑动手势事件的最小滑动距离。 |
 
 ## 事件
 
@@ -185,51 +242,69 @@ getDistance(): number
 
 ### onActionStart
 
-onActionStart(event: (event: GestureEvent) => void)
+ArkTS-Dyn: onActionStart(event: (event: GestureEvent) => void)
+
+ArkTS-Sta: onActionStart(event: Callback\<GestureEvent>)
 
 设置滑动手势识别成功回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型                                       | 必填 | 说明                         |
-| ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 滑动手势识别成功回调。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| event | ArkTS-Dyn: (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void<br/>ArkTS-Sta: Callback<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 滑动手势识别成功回调。 |
 
 ### onActionUpdate
 
-onActionUpdate(event: (event: GestureEvent) => void)
+ArkTS-Dyn: onActionUpdate(event: (event: GestureEvent) => void)
+
+ArkTS-Sta: onActionUpdate(event: Callback\<GestureEvent>)
 
 设置滑动手势更新回调。fingerList为多根手指时，该回调监听每次只会更新一根手指的位置信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型                                       | 必填 | 说明                         |
-| ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 滑动手势更新回调。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| event | ArkTS-Dyn: (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void<br/>ArkTS-Sta: Callback<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 滑动手势更新回调。 |
 
 ### onActionEnd
 
-onActionEnd(event: (event: GestureEvent) => void)
+ArkTS-Dyn: onActionEnd(event: (event: GestureEvent) => void)
+
+ArkTS-Sta: onActionEnd(event: Callback\<GestureEvent>)
 
 设置滑动手势结束回调。滑动手势识别成功后，手指抬起时触发回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型                                       | 必填 | 说明                         |
-| ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 滑动手势结束回调。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| event | ArkTS-Dyn: (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void<br/>ArkTS-Sta: Callback<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 滑动手势结束回调。 |
 
 ### onActionCancel
 
@@ -237,9 +312,15 @@ onActionCancel(event: () => void)
 
 设置滑动手势取消回调。滑动手势识别成功后，接收到触摸取消事件时触发回调。不返回手势事件信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onActionCancel<sup>18+</sup>](#onactioncancel18)。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -249,13 +330,17 @@ onActionCancel(event: () => void)
 
 ### onActionCancel<sup>18+</sup>
 
-onActionCancel(event: Callback\<GestureEvent\>)
+onActionCancel(event: Callback\<GestureEvent>)
 
 设置滑动手势取消回调。滑动手势识别成功后，接收到触摸取消事件时触发回调。返回手势事件信息。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -325,8 +410,8 @@ struct PanGestureExample {
 
 向左滑动：
 
-![zh-cn_image_0000001174264374](figures/zh-cn_image_0000001174264374.png) 
+![panGesture2](figures/panGesture2.png) 
 
 点击按钮时，修改PanGesture触发条件为双指向左下方滑动：
 
- ![zh-cn_image1_0000001174264374](figures/zh-cn_image1_0000001174264374.png) 
+ ![panGesture](figures/panGesture.png) 

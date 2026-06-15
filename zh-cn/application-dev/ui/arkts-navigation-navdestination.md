@@ -20,6 +20,8 @@ NavDestination提供了两种类型。
   
   NavDestination设置mode为NavDestinationMode.DIALOG弹窗类型，此时整个NavDestination默认透明显示。弹窗类型的NavDestination显示和消失时不会影响下层标准类型的NavDestination的显示和生命周期，两者可以同时显示。
 
+  ArkTS-Dyn示例：
+  
   <!-- @[PageDisplayType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayType.ets) -->
   
   ``` TypeScript
@@ -80,11 +82,92 @@ NavDestination提供了两种类型。
   }
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[PageDisplayType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/PageDisplayType.ets) -->
+  
+  ``` TypeScript
+  // Dialog NavDestination
+  import {
+    Color,
+    Component,
+    Column,
+    NavPathStack,
+    Button,
+    Stack,
+    Text,
+    NavDestinationMode,
+    Navigation,
+    Entry,
+    NavigationMode,
+    Alignment,
+    FlexAlign,
+    Provide,
+    Consume,
+    NavDestination
+  } from '@kit.ArkUI';
+
+  @Entry
+  @Component
+  struct PageDisplayType {
+    @Provide navPathStack: NavPathStack = new NavPathStack();
+
+    @Builder
+    PagesMap(name: string) {
+      if (name == 'DialogPage') {
+        DialogPage();
+      }
+    }
+
+    build() {
+      Navigation(this.navPathStack) {
+        Button('Push DialogPage')
+          .margin(20)
+          .width('80%')
+          .onClick(() => {
+            this.navPathStack.pushPathByName('DialogPage', '');
+          })
+      }
+      .mode(NavigationMode.Stack)
+      .title('Main')
+      .navDestination(this.PagesMap)
+    }
+  }
+
+  @Component
+  export struct DialogPage {
+    @Consume('navPathStack') navPathStack: NavPathStack;
+
+    build(): void {
+      NavDestination() {
+        Stack({ alignContent: Alignment.Center }) {
+          Column() {
+            Text('Dialog NavDestination')
+              .fontSize(20)
+              .margin({ bottom: 100 })
+            Button('Close').onClick(() => {
+              this.navPathStack.pop();
+            }).width('30%')
+          }
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor(Color.White)
+          .borderRadius(10)
+          .height('30%')
+          .width('80%')
+        }.height('100%').width('100%')
+      }
+      .backgroundColor('rgba(0,0,0,0.5)')
+      .hideTitleBar(true)
+      .mode(NavDestinationMode.DIALOG)
+    }
+  }
+  ```
+  
   ![dialog_navdestination](figures/DialogNavDestinationExample.gif)
 
 ## 页面生命周期
 
-页面生命周期承载在NavDestination组件上，可分为三类：自定义组件生命周期、通用组件生命周期和[NavDestination生命周期](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#事件)。其中，[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)和[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)是自定义组件的生命周期（NavDestination外层包含的自定义组件），[onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)和[onDisAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)是组件的通用生命周期。剩下的生命周期为NavDestination独有。
+页面生命周期承载在NavDestination组件上，可分为三类：自定义组件生命周期、通用组件生命周期和NavDestination生命周期[事件](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#事件)。其中，[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)和[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)是自定义组件的生命周期（NavDestination外层包含的自定义组件），[onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)和[onDisAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)是组件的通用生命周期。剩下的生命周期为NavDestination独有。
 
 生命周期时序如下图所示：
 
@@ -116,6 +199,8 @@ NavDestination提供了两种类型。
 
   自定义组件提供[queryNavDestinationInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo)方法，可以在NavDestination内部查询到当前所属页面的信息，返回值为[NavDestinationInfo](../reference/apis-arkui/js-apis-arkui-observer.md#navdestinationinfo)，若查询不到则返回undefined。
 
+  ArkTS-Dyn示例：
+  
   <!-- @[MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/observer/template1/Index.ets) -->
   
   ``` TypeScript
@@ -126,6 +211,72 @@ NavDestination提供了两种类型。
   struct MyComponent {
     navDesInfo: uiObserver.NavDestinationInfo | undefined;
     context = this.getUIContext().getHostContext();
+  
+    aboutToAppear() {
+      this.navDesInfo = this.queryNavDestinationInfo();
+    }
+  
+    build() {
+      // ...
+        Column() {
+          // $r('app.string.onPageName')资源文件中的value值为“所属页面Name:”
+          Text(this.context!.resourceManager.getStringSync($r('app.string.onPageName').id) + `${this.navDesInfo?.name}`)
+        }.width('100%').height('100%')
+        // ...
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/observer/template1/Index.ets) -->
+  
+  ``` TypeScript
+  import {
+    Color,
+    Component,
+    Column,
+    NavPathStack,
+    Button,
+    NavPathInfo,
+    NavDestinationContext,
+    NavigationOperation,
+    ButtonType,
+    GestureEvent,
+    PanGesture,
+    NavDestination,
+    ColumnOptions,
+    Stack,
+    Text,
+    NavDestinationMode,
+    LaunchMode,
+    Context,
+    Navigation,
+    TextInput,
+    List,
+    ForEach,
+    ListItem,
+    TextAlign,
+    $r,
+    Entry,
+    NavigationMode,
+    NavigationMenuItem,
+    HorizontalAlign,
+    Row,
+    Image,
+    NavigationTitleMode,
+    State,
+    AppStorage,
+    Provide,
+    Consume,
+  } from '@kit.ArkUI';
+  import uiObserver from '@ohos.arkui.observer';
+  
+  // NavDestination内的自定义组件
+  @Component
+  struct MyComponent {
+    navDesInfo: uiObserver.NavDestinationInfo | undefined;
+    context: Context | undefined = this.getUIContext().getHostContext();
   
     aboutToAppear() {
       this.navDesInfo = this.queryNavDestinationInfo();

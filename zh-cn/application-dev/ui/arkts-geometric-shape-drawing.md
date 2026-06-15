@@ -1,8 +1,8 @@
 # 绘制几何图形 (Shape)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -22,7 +22,19 @@
 
   该接口用于创建带有父组件的绘制组件，其中value用于设置绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则在当前绘制目标中进行绘制。
 
+  ArkTS-Dyn示例：
+
   <!-- @[shape_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Shape.ets) -->
+  
+  ``` TypeScript
+  Shape() {
+    Rect().width(300).height(50)
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[shape_one](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/Shape.ets) -->
   
   ``` TypeScript
   Shape() {
@@ -39,7 +51,17 @@
 
     该接口用于在页面绘制圆形，其中width用于设置圆形的宽度，height用于设置圆形的高度，圆形直径由宽高最小值确定。
 
+  ArkTS-Dyn示例：
+
   <!-- @[shape_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Shape.ets) -->
+  
+  ``` TypeScript
+  Circle({ width: 150, height: 150 })
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[shape_two](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/Shape.ets) -->
   
   ``` TypeScript
   Circle({ width: 150, height: 150 })
@@ -61,6 +83,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 以下三个示例说明如何使用viewPort：
 
 - 通过形状视口对图形进行放大与缩小。
+
+  ArkTS-Dyn示例：
 
   <!-- @[view_port_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ViewPort1.ets) -->
   
@@ -130,9 +154,85 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[view_port_one](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/ViewPort1.ets) -->
+  
+  ``` TypeScript
+  import {
+    Entry,
+    Text,
+    Column,
+    ColumnOptions,
+    Row,
+    RowOptions,
+    Component,
+    $r,
+    Shape,
+    Rect,
+    Circle,
+    ViewportRect
+  } from '@ohos.arkui.component';
+  
+  @Entry
+  @Component
+  export struct ViewPort1 {
+    viep: ViewportRect = {
+      x: 0,
+      y: 0,
+      width: 75,
+      height: 75
+    } as ViewportRect;
+    viep1: ViewportRect = {
+      x: 0,
+      y: 0,
+      width: 300,
+      height: 300
+    } as ViewportRect;
+  
+    build(): void {
+      Column() {
+        // 请将$r('app.string.OriginalSizeCircle')替换为实际资源文件，在本示例中该资源文件的value值为"原始尺寸Circle组件"
+        Text($r('app.string.OriginalSizeCircle')).margin({ top: 20 })
+        Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
+  
+        Row({ space: 10 } as RowOptions) {
+          Column() {
+            // 请将$r('app.string.EnlargedCircle')替换为实际资源文件，在本示例中该资源文件的value值为"shape内放大的Circle组件"
+            Text($r('app.string.EnlargedCircle'))
+            Shape() {
+              Rect().width('100%').height('100%').fill('rgb(39, 135, 217)')
+              Circle({ width: 75, height: 75 }).fill('rgb(213, 213, 213)')
+            }
+            .viewPort(this.viep)
+            .width(150)
+            .height(150)
+            .backgroundColor('rgb(23, 169, 141)')
+          }
+  
+          Column() {
+            // 请将$r('app.string.ShrunkCircle')替换为实际资源文件，在本示例中该资源文件的value值为"Shape内缩小的Circle组件"
+            Text($r('app.string.ShrunkCircle'))
+            Shape() {
+              Rect().width('100%').height('100%').fill('rgb(213, 213, 213)')
+              Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
+            }
+            .viewPort(this.viep1)
+            .width(150)
+            .height(150)
+            .backgroundColor('rgb(23, 169, 141)')
+          }
+        }
+      }
+    }
+  }
+  ```
+
   ![2023032401632](figures/2023032401632.png)
 
 - 创建一个宽高都为300的shape组件，背景色为黄色，创建一个宽高都为300的viewPort。用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个半径为75的圆。
+
+  ArkTS-Dyn示例：
 
   <!-- @[view_port_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ViewPort2.ets) -->
   
@@ -164,9 +264,51 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[view_port_two](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/ViewPort2.ets) -->
+  
+  ``` TypeScript
+  import {
+    Entry,
+    Column,
+    Component,
+    Shape,
+    Rect,
+    Circle,
+    ViewportRect
+  } from '@ohos.arkui.component';
+  
+  @Entry
+  @Component
+  export struct ViewPort2 {
+    viep: ViewportRect = {
+      x: 0,
+      y: 0,
+      width: 300,
+      height: 300
+    } as ViewportRect;
+  
+    build(): void {
+      Column() {
+        Shape() {
+          Rect().width('100%').height('100%').fill('#0097D4')
+          Circle({ width: 150, height: 150 }).fill('#E87361')
+        }
+        .viewPort(this.viep)
+        .width(300)
+        .height(300)
+        .backgroundColor('#F5DC62')
+      }
+    }
+  }
+  ```
+
   ![viewport（2）](figures/viewport（2）.jpg)
 
 - 创建一个宽高都为300的shape组件，背景色为黄色，创建一个宽高都为300的viewPort。用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个半径为75的圆，将viewPort向右方和下方各平移150。
+
+  ArkTS-Dyn示例：
 
   <!-- @[view_port_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ViewPort3.ets) -->
   
@@ -198,6 +340,46 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[view_port_three](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/ViewPort3.ets) -->
+  
+  ``` TypeScript
+  import {
+    Entry,
+    Column,
+    Component,
+    Shape,
+    Rect,
+    Circle,
+    ViewportRect
+  } from '@ohos.arkui.component';
+  
+  @Entry
+  @Component
+  export struct ViewPort3 {
+    viep: ViewportRect = {
+      x: -150,
+      y: -150,
+      width: 300,
+      height: 300
+    } as ViewportRect;
+  
+    build(): void {
+      Column() {
+        Shape() {
+          Rect().width('100%').height('100%').fill('#0097D4')
+          Circle({ width: 150, height: 150 }).fill('#E87361')
+        }
+        .viewPort(this.viep)
+        .width(300)
+        .height(300)
+        .backgroundColor('#F5DC62')
+      }
+    }
+  }
+  ```
+
   ![viewport（3）](figures/viewport（3）.jpg)
 
 
@@ -211,7 +393,22 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 - 通过[fill](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#fill)可以设置组件填充区域颜色。
 
+  ArkTS-Dyn示例：
+
   <!-- @[fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Fill.ets) -->
+  
+  ``` TypeScript
+  Path()
+    .width(100)
+    .height(100)
+    .commands('M150 0 L300 300 L0 300 Z')
+    .fill('#E87361')
+    .strokeWidth(0)
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[fill](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/Fill.ets) -->
   
   ``` TypeScript
   Path()
@@ -226,7 +423,22 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 - 通过[stroke](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#stroke)可以设置组件边框颜色。
 
+  ArkTS-Dyn示例：
+
   <!-- @[stroke](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Stroke.ets) -->
+  
+  ``` TypeScript
+  Path()
+    .width(100)
+    .height(100)
+    .fillOpacity(0)
+    .commands('M150 0 L300 300 L0 300 Z')
+    .stroke(Color.Red)
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[stroke](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/Stroke.ets) -->
   
   ``` TypeScript
   Path()
@@ -241,7 +453,24 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 - 通过[strokeOpacity](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#strokeopacity)可以设置边框透明度。
 
+  ArkTS-Dyn示例：
+
   <!-- @[stroke_opacity](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeOpacity.ets) -->
+  
+  ``` TypeScript
+  Path()
+    .width(100)
+    .height(100)
+    .fillOpacity(0)
+    .commands('M150 0 L300 300 L0 300 Z')
+    .stroke(Color.Red)
+    .strokeWidth(10)
+    .strokeOpacity(0.2)
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[stroke_opacity](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/StrokeOpacity.ets) -->
   
   ``` TypeScript
   Path()
@@ -258,6 +487,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 - 通过[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)可以设置线条拐角绘制样式。拐角绘制样式分为Bevel(使用斜角连接路径段)、Miter(使用尖角连接路径段)、Round(使用圆角连接路径段)。
 
+  ArkTS-Dyn示例：
+
   <!-- @[stroke_line_join](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeLineJoin.ets) -->
   
   ``` TypeScript
@@ -272,6 +503,21 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .strokeLineJoin(LineJoinStyle.Round)
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[stroke_line_join](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/StrokeLineJoin.ets) -->
+  
+  ``` TypeScript
+  Polyline()
+    .width(100)
+    .height(100)
+    .fillOpacity(0)
+    .stroke(Color.Red)
+    .strokeWidth(8)
+    .points([[20, 0], [0, 100], [100, 90]])
+    .strokeLineJoin(LineJoinStyle.Round)
+  ```
+
   ![strokeLineJoin](figures/strokeLineJoin.jpg)
 
 - 通过[strokeMiterLimit](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokemiterlimit)设置斜接长度与边框宽度比值的极限值。
@@ -280,7 +526,9 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   
   strokeMiterLimit取值需大于等于1，且在[strokeLineJoin](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#strokelinejoin)属性取值LineJoinStyle.Miter时生效。
 
-  <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) -->
+  ArkTS-Dyn示例：
+
+  <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) --> 
   
   ``` TypeScript
   Polyline()
@@ -293,6 +541,31 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     // 设置折线拐角处为尖角
     .strokeLineJoin(LineJoinStyle.Miter)
     // 设置斜接长度与线宽的比值
+    .strokeMiterLimit(1 / Math.sin(45 * Math.PI / 180))
+  Polyline()
+    .width(100)
+    .height(100)
+    .fillOpacity(0)
+    .stroke(Color.Red)
+    .strokeWidth(10)
+    .points([[20, 0], [20, 100], [100, 100]])
+    .strokeLineJoin(LineJoinStyle.Miter)
+    .strokeMiterLimit(1.42)
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[stroke_miter_limit](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/StrokeMiterLimit.ets) -->
+  
+  ``` TypeScript
+  Polyline()
+    .width(100)
+    .height(100)
+    .fillOpacity(0)
+    .stroke(Color.Red)
+    .strokeWidth(10)
+    .points([[20, 0], [20, 100], [100, 100]])
+    .strokeLineJoin(LineJoinStyle.Miter)
     .strokeMiterLimit(1/Math.sin(45))
   Polyline()
     .width(100)
@@ -309,6 +582,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 - 通过[antiAlias](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md#antialias)设置是否开启抗锯齿，默认值为true（开启抗锯齿）。
 
+  ArkTS-Dyn示例：
+
   <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
   
   ``` TypeScript
@@ -321,12 +596,41 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     .stroke(Color.Black)
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) -->
+  
+  ``` TypeScript
+  Circle()
+    .width(150)
+    .height(200)
+    .fillOpacity(0)
+    .strokeWidth(5)
+    .stroke(Color.Black)
+  ```
+
   ![无标题](figures/无标题.png)
+
+  ArkTS-Dyn示例：
 
   <!-- @[antialias_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
   
   ``` TypeScript
   // 关闭抗锯齿
+  Circle()
+    .width(150)
+    .height(200)
+    .fillOpacity(0)
+    .strokeWidth(5)
+    .stroke(Color.Black)
+    .antiAlias(false)
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[antialias_close](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) -->
+  
+  ``` TypeScript
   Circle()
     .width(150)
     .height(200)
@@ -343,6 +647,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   > **说明：**
   >
   > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+
+  ArkTS-Dyn示例：
 
   <!-- @[mesh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Mesh.ets) -->
   
@@ -498,6 +804,178 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[mesh](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/Mesh.ets) -->
+  
+  ``` TypeScript
+  import {
+    Entry,
+    Column,
+    Component,
+    Shape,
+    Path,
+    Image,
+    Button,
+    ButtonOptions,
+    LineJoinStyle,
+    Color,
+    DrawContext,
+    OffscreenCanvas,
+    ImageBitmap,
+    NodeContainer
+  } from '@ohos.arkui.component';
+  import { image } from '@kit.ImageKit';
+  import { drawing } from '@kit.ArkGraphics2D';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { UIContext } from '@ohos.arkui.UIContext';
+  import { NodeController, FrameNode, RenderNode } from '@ohos.arkui.node';
+  
+  let offCanvas: OffscreenCanvas = new OffscreenCanvas(150, 150);
+  let ctx = offCanvas.getContext('2d');
+  
+  class DrawingRenderNode extends RenderNode {
+    private verts_: Array<number> = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360];
+  
+    setVerts(verts: Array<number>): void {
+      this.verts_ = verts
+    }
+  
+    draw(context: DrawContext): void {
+      const canvas = context.canvas;
+      let pixelMap = ctx.getPixelMap(0, 0, 150, 150) as image.PixelMap;
+      const brush = new drawing.Brush();
+      canvas.attachBrush(brush);
+      let verts: number[] = [0, 0, 410, 0, 50, 0, 0, 180, 50, 180, 410, 180, 0, 360, 410, 360, 50, 360];
+      canvas.drawPixelMapMesh(pixelMap, 2, 2, verts, 0, null, 0);
+      canvas.detachBrush();
+    }
+  }
+  
+  const renderNode = new DrawingRenderNode();
+  renderNode.frame = {
+    x: 0,
+    y: 0,
+    width: 150,
+    height: 150
+  };
+  
+  export class MyNodeController extends NodeController {
+    private rootNode: FrameNode | null = null;
+  
+    makeNode(uiContext: UIContext): FrameNode | null {
+      this.rootNode = new FrameNode(uiContext);
+  
+      const rootRenderNode: RenderNode | null = this.rootNode!.getRenderNode();
+      if (rootRenderNode !== null) {
+        rootRenderNode.appendChild(renderNode);
+      }
+      return this.rootNode;
+    }
+  }
+  
+  @Entry
+  @Component
+  export struct Mesh {
+    myNodeController: MyNodeController = new MyNodeController();
+    @State showShape: boolean = false;
+    @State pixelMap: image.PixelMap | undefined = undefined;
+    @State shapeWidth: number = 150;
+    @State strokeWidth: number = 1;
+    @State meshArray: Array<Double> =
+      [0.0, 0.0, 50.0, 0.0, 410.0, 0.0, 0.0, 180.0, 50.0, 180.0, 410.0, 180.0, 0.0, 360.0, 50.0, 360.0, 410.0, 360.0];
+  
+    aboutToAppear(): void {
+      // 'resources/base/media/image.png'需要替换为开发者所需的图像资源文件
+      let img: ImageBitmap = new ImageBitmap('resources/base/media/image.png');
+      ctx.drawImage(img, 0, 0, 100, 100);
+      this.pixelMap = ctx.getPixelMap(0, 0, 150, 150);
+    }
+  
+    build(): void {
+      Column() {
+        Image(this.pixelMap)
+          .backgroundColor('#86C5E3')
+          .width(150)
+          .height(150)
+          .onClick(() => {
+            // 'resources/base/media/image.png'需要替换为开发者所需的图像资源文件
+            let img: ImageBitmap = new ImageBitmap('resources/base/media/image.png');
+            ctx.drawImage(img, 0, 0, 100, 100);
+            this.pixelMap = ctx.getPixelMap(1, 1, 150, 150);
+            this.myNodeController.rebuild();
+            this.strokeWidth += 1;
+          })
+  
+        NodeContainer(this.myNodeController)
+          .width(150)
+          .height(150)
+          .backgroundColor(Color.Grey)
+          .onClick(() => {
+            this.meshArray = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360, 0];
+          })
+        Button('change mesh')
+          .margin(5)
+          .onClick(() => {
+            this.meshArray = [0, 0, 410, 0, 50, 0, 0, 180, 50, 180, 410, 180, 0, 360, 410, 360, 50, 360];
+          })
+        Button('Show Shape')
+          .margin(5)
+          .onClick(() => {
+            this.showShape = !this.showShape;
+          })
+  
+        if (this.showShape) {
+          Shape(this.pixelMap) {
+            Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
+          }
+          .fillOpacity(0.2)
+          .backgroundColor(Color.Grey)
+          .width(this.shapeWidth)
+          .height(150)
+          .mesh(this.meshArray, 2, 2)
+          .fill(0x317AF7)
+          .stroke(0xEE8443)
+          .strokeWidth(this.strokeWidth)
+          .strokeLineJoin(LineJoinStyle.Miter)
+          .strokeMiterLimit(5)
+  
+          Shape(this.pixelMap) {
+            Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
+          }
+          .fillOpacity(0.2)
+          .backgroundColor(Color.Grey)
+          .width(this.shapeWidth)
+          .height(150)
+          .fill(0x317AF7)
+          .stroke(0xEE8443)
+          .strokeWidth(this.strokeWidth)
+          .strokeLineJoin(LineJoinStyle.Miter)
+          .strokeMiterLimit(5)
+  
+          // mesh只对shape传入pixelMap时生效，此处不生效
+          Shape() {
+            Path().width(150).height(60).commands('M0 0 L400 0 L400 150 Z')
+          }
+          .fillOpacity(0.2)
+          .backgroundColor(Color.Grey)
+          .width(this.shapeWidth)
+          .height(150)
+          .mesh(this.meshArray, 2, 2)
+          .fill(0x317AF7)
+          .stroke(0xEE8443)
+          .strokeWidth(this.strokeWidth)
+          .strokeLineJoin(LineJoinStyle.Miter)
+          .strokeMiterLimit(5)
+          .onClick(() => {
+            this.pixelMap = undefined;
+          })
+        }
+      }
+    }
+  }
+  ```
+
   ![ShapeMeshDemo](figures/ShapeMeshDemo.png)
 
 ## 场景示例
@@ -510,6 +988,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   >
   > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
 
+  ArkTS-Dyn示例：
+
   <!-- @[shape_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ShapeExample.ets) -->
   
   ``` TypeScript
@@ -518,6 +998,45 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   struct ShapeExample {
     build() {
       Column({ space: 10 }) {
+        Shape() {
+          Path().width(200).height(60).commands('M0 0 L400 0 L400 150 Z')
+        }
+        .viewPort({
+          x: -80,
+          y: -5,
+          width: 500,
+          height: 300
+        })
+        .fill('rgb(213, 213, 213)')
+        .stroke('rgb(39, 135, 217)')
+        .strokeWidth(3)
+        .strokeLineJoin(LineJoinStyle.Miter)
+        .strokeMiterLimit(5)
+      }.width('100%').margin({ top: 15 })
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[shape_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/ShapeExample.ets) -->
+  
+  ``` TypeScript
+  import {
+    Entry,
+    Column,
+    ColumnOptions,
+    Component,
+    Shape,
+    Path,
+    LineJoinStyle
+  } from '@ohos.arkui.component';
+  
+  @Entry
+  @Component
+  export struct ShapeExample {
+    build(): void {
+      Column({ space: 10 } as ColumnOptions) {
         Shape() {
           Path().width(200).height(60).commands('M0 0 L400 0 L400 150 Z')
         }
@@ -547,6 +1066,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   >
   > 本示例通过strokeDashArray属性设置边框间隙来实现红色虚线的圆环，strokeDashArray属性参考[strokeDashArray](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#strokedasharray)。  
 
+  ArkTS-Dyn示例：
+
   <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 
   
   ``` TypeScript
@@ -571,6 +1092,39 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+  
+  ``` TypeScript
+  import {
+    Entry,
+    Column,
+    ColumnOptions,
+    Component,
+    Circle,
+    Color
+  } from '@ohos.arkui.component';
+  
+  @Entry
+  @Component
+  export struct CircleExample {
+    build(): void {
+      Column({ space: 10 } as ColumnOptions) {
+        Circle({ width: 150, height: 150 })
+        Circle()
+          .width(150)
+          .height(200)
+          .fillOpacity(0)
+          .strokeWidth(3)
+          .stroke(Color.Red)
+          .strokeDashArray([1, 2])
+        // ...
+      }.width('100%')
+    }
+  }
+  ```
+
   ![场景2](figures/场景2.jpg)
 
 ### UI视觉属性作用效果
@@ -579,6 +1133,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 >
 > [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient)等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
 
+
+  ArkTS-Dyn示例：
 
   <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 
   
@@ -594,6 +1150,35 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
           .width(150)
           .height(200)
           .backgroundColor(Color.Pink) // 会生效在一个150*200大小的矩形区域，而非仅在绘制的一个直径为150的圆形区域
+      }.width('100%')
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+  
+  ``` TypeScript
+  import {
+    Entry,
+    Column,
+    ColumnOptions,
+    Component,
+    Circle,
+    Color
+  } from '@ohos.arkui.component';
+  
+  @Entry
+  @Component
+  export struct CircleExample {
+    build(): void {
+      Column({ space: 10 } as ColumnOptions) {
+        // ...
+        Circle()
+          .width(150)
+          .height(200)
+          .backgroundColor(Color.Pink)
       }.width('100%')
     }
   }

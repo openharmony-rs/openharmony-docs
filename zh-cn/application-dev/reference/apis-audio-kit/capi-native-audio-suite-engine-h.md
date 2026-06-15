@@ -1,8 +1,8 @@
 # native_audio_suite_engine.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @xxngwang-->
+<!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -28,7 +28,7 @@
 | -- | -- | -- |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_Create(OH_AudioSuiteEngine** audioSuiteEngine)](#oh_audiosuiteengine_create) | - | 创建音频编创引擎。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_Destroy(OH_AudioSuiteEngine* audioSuiteEngine)](#oh_audiosuiteengine_destroy) | - | 销毁音频编创引擎句柄。 |
-| [OH_AudioSuite_Result OH_AudioSuiteEngine_CreatePipeline(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline** audioSuitePipeline, OH_AudioSuite_PipelineWorkMode workMode)](#oh_audiosuiteengine_createpipeline) | - | 在当前音频编创引擎中创建1个管线。管线是引擎内负责音频编创的执行单元，1个引擎可创建多个管线。<br> 支持最多创建10条管线，其中至多有1条实时渲染管线。<br> 每个管线必须至少包含1个输入节点，有且只有1个输出节点。<br> 当管线在[OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_EDIT_MODE模式下工作时，支持所有的效果节点。<br> 当管线在[OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_REALTIME_MODE模式下工作时，仅支持[OH_AudioNode_Type](capi-native-audio-suite-base-h.md#oh_audionode_type).EFFECT_NODE_TYPE_EQUALIZER效果节点。 |
+| [OH_AudioSuite_Result OH_AudioSuiteEngine_CreatePipeline(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline** audioSuitePipeline, OH_AudioSuite_PipelineWorkMode workMode)](#oh_audiosuiteengine_createpipeline) | - | 在当前音频编创引擎中创建1个管线。管线是引擎内负责音频编创的执行单元，1个引擎可创建多个管线。<br> 支持最多创建10条管线，其中至多有1条实时预览管线。<br> 每个管线必须至少包含1个输入节点，有且只有1个输出节点。<br> 当管线在[OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_EDIT_MODE模式下工作时，支持所有的效果节点。<br> 在API version 23之前，当管线在[OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_REALTIME_MODE模式下工作时，仅支持[OH_AudioNode_Type](capi-native-audio-suite-base-h.md#oh_audionode_type).EFFECT_NODE_TYPE_EQUALIZER效果节点；<br> 在API version 23及以后，当管线在[OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_REALTIME_MODE模式下工作时，支持所有效果节点。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_DestroyPipeline(OH_AudioSuitePipeline* audioSuitePipeline)](#oh_audiosuiteengine_destroypipeline) | - | 销毁音频编创管线句柄。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_StartPipeline(OH_AudioSuitePipeline* audioSuitePipeline)](#oh_audiosuiteengine_startpipeline) | - | 开始运行该管线，管线会进入[OH_AudioSuite_PipelineState](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelinestate).AUDIOSUITE_PIPELINE_RUNNING运行状态。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_StopPipeline(OH_AudioSuitePipeline* audioSuitePipeline)](#oh_audiosuiteengine_stoppipeline) | - | 停止运行该管线，管线会进入[OH_AudioSuite_PipelineState](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelinestate).AUDIOSUITE_PIPELINE_STOPPED停止状态。该函数不会改变管线中节点之间的连接关系，管线一旦被停止，[OH_AudioSuiteEngine_RenderFrame](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe)就不能再进行音频处理。 |
@@ -70,6 +70,7 @@
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_GetPureVoiceChangeOption(OH_AudioNode* audioNode, OH_AudioSuite_PureVoiceChangeOption* option)](#oh_audiosuiteengine_getpurevoicechangeoption) | - | 获取传统变声节点的配置参数。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_SetGeneralVoiceChangeType(OH_AudioNode* audioNode, OH_AudioSuite_GeneralVoiceChangeType type)](#oh_audiosuiteengine_setgeneralvoicechangetype) | - | 设置通用变声节点的配置参数。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_GetGeneralVoiceChangeType(OH_AudioNode* audioNode, OH_AudioSuite_GeneralVoiceChangeType* type)](#oh_audiosuiteengine_getgeneralvoicechangetype) | - | 获取通用变声节点的配置参数。 |
+| [OH_AudioSuite_Result OH_AudioSuite_PrintInfo(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline* audioSuitePipeline, int fd)](#oh_audiosuite_printinfo) | - | 打印AudioSuite运行时快照。 |
 
 ## 函数说明
 
@@ -132,7 +133,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_CreatePipeline(OH_AudioSuiteEngine* aud
 
 **描述**
 
-在当前音频编创引擎中创建1个管线。管线是引擎内负责音频编创的执行单元，1个引擎可创建多个管线。<br> 支持最多创建10条管线，其中至多有1条实时渲染管线。<br> 每个管线必须至少包含1个输入节点，有且只有1个输出节点。<br> 当管线在[OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_EDIT_MODE模式下工作时，支持所有的效果节点。<br> 当管线在[OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_REALTIME_MODE模式下工作时，仅支持[OH_AudioNode_Type](capi-native-audio-suite-base-h.md#oh_audionode_type).EFFECT_NODE_TYPE_EQUALIZER效果节点。
+在当前音频编创引擎中创建1个管线。管线是引擎内负责音频编创的执行单元，1个引擎可创建多个管线。<br> 支持最多创建10条管线，其中至多有1条实时预览管线。<br> 每个管线必须至少包含1个输入节点，有且只有1个输出节点。<br> 当管线在[OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_EDIT_MODE模式下工作时，支持所有的效果节点。<br> 在API version 23之前，当管线在[OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_REALTIME_MODE模式下工作时，仅支持[OH_AudioNode_Type](capi-native-audio-suite-base-h.md#oh_audionode_type).EFFECT_NODE_TYPE_EQUALIZER效果节点；<br> 在API version 23及以后，当管线在[OH_AudioSuite_PipelineWorkMode](capi-native-audio-suite-base-h.md#oh_audiosuite_pipelineworkmode).AUDIOSUITE_PIPELINE_REALTIME_MODE模式下工作时，支持所有效果节点。
 
 **起始版本：** 22
 
@@ -199,7 +200,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_StartPipeline(OH_AudioSuitePipeline* au
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuitePipeline为空指针。<br>         AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线已在运行或节点连接异常。<br>         可能的原因如下：<br>         1. 管线已经在运行状态；<br>         2. 当前管线中不存在输出类型节点；<br>         3. 起始节点不是输入类型节点。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数audioSuitePipeline为空指针。<br>         AUDIOSUITE_ERROR_PIPELINE_NOT_EXIST：管线不存在或已经被销毁。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线已在运行或节点连接异常。<br>         可能的原因如下：<br>         1. 管线已经在运行状态；<br>         2. 当前管线中不存在输出类型节点；<br>         3. 起始节点不是输入类型节点。<br>         4. HOA输入节点未连接HOA空间渲染节点，或HOA空间渲染节点的前置节点不是HOA输入节点。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_StopPipeline()
 
@@ -522,7 +523,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_CreateNode(OH_AudioSuitePipeline* audio
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数为空指针或无效值。<br>         可能的原因如下：<br>         1. 参数audioSuitePipeline为空指针；<br>         2. 参数builder为空指针；<br>         3. 参数audioNode为空指针。<br>         AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS：当构建当前类型的节点数量超过管线限制。<br>         例如，创建效果类节点超过5个。<br>         AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING：构建builder中type类型的节点时缺少必要参数。<br>         例如，builder未设置节点类型。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：当前构造器节点类型为输出节点但设置了回调函数，<br>         或构造器节点类型为效果节点但设置了音频格式或回调函数。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED：内存申请失败。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数为空指针或无效值。<br>         可能的原因如下：<br>         1. 参数audioSuitePipeline为空指针；<br>         2. 参数builder为空指针；<br>         3. 参数audioNode为空指针。<br>         AUDIOSUITE_ERROR_CREATED_EXCEED_SYSTEM_LIMITS：当构建当前类型的节点数量超过管线限制。<br>         例如，在API version 24之前，创建效果类节点的数量超过5个；在API version 24及以后，创建效果类节点的数量超过15个。<br>         AUDIOSUITE_ERROR_REQUIRED_PARAMETERS_MISSING：构建builder中type类型的节点时缺少必要参数。<br>         例如，builder未设置节点类型。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：当前构造器节点类型为输出节点但设置了回调函数，<br>         或构造器节点类型为效果节点但设置了音频格式或回调函数。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_MEMORY_ALLOC_FAILED：内存申请失败。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_DestroyNode()
 
@@ -621,7 +622,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_SetAudioFormat(OH_AudioNode* audioNode,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数audioNode或audioFormat为空指针。<br>         AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode是效果节点。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线不在停止状态。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数audioNode或audioFormat为空指针。<br>         AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode是效果节点。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_FORMAT：（API版本26.0.0新增）参数audioFormat为不支持的格式。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线不在停止状态。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
 
 ### OH_AudioSuiteEngine_ConnectNodes()
 
@@ -1199,5 +1200,31 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetGeneralVoiceChangeType(OH_AudioNode*
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。 <br>         AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非通用变声效果节点。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+
+### OH_AudioSuite_PrintInfo()
+
+```c
+OH_AudioSuite_Result OH_AudioSuite_PrintInfo(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline* audioSuitePipeline, int fd)
+```
+
+**描述**
+
+打印AudioSuite运行时快照。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)* audioSuiteEngine | 指向需要显示运行时快照的AudioSuiteEngine的指针。 |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 指向需要显示运行时快照的AudioSuitePipeline的指针。<br>                           如果audioSuitePipeline为空，输出所有管道（引擎下的所有管道/节点）。否则，仅输出此管道和节点的快照。 |
+| int fd | 文件句柄，表示快照信息存储的位置。<br>           如果fd小于0，快照信息存储在日志中。否则，快照将以追加模式存储在由fd句柄指向的文件中。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数为nullptr或无效值。<br>         AUDIOSUITE_ERROR_SYSTEM：系统存在其他异常。 |
 
 

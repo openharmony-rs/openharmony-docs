@@ -1,16 +1,18 @@
 # 自定义属性设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022; @jiyujia926-->
+<!--Tester: @sally__; @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
 当开发者希望在组件上设置自定义的属性时，可以使用自定义属性设置功能。这些自定义属性可以在其对应的FrameNode上获取，从而实现更自由的组件管理。
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## customProperty
 
@@ -22,11 +24,17 @@ API版本26.0.0之前，[自定义组件](../../../ui/state-management/arkts-cre
 
 从API版本26.0.0开始，自定义组件支持设置并读取自定义属性。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[customProperty<sup>23+</sup>](#customproperty23)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：**
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -39,6 +47,56 @@ API版本26.0.0之前，[自定义组件](../../../ui/state-management/arkts-cre
 | --- | --- |
 | T | 返回当前组件。 |
 
+## customProperty<sup>23+</sup>
+
+customProperty(name: string, value: CustomProperty): this
+
+设置组件的自定义属性。
+
+API版本26.0.0之前，[自定义组件](../../../ui/state-management/arkts-create-custom-components.md)不支持设置自定义属性。
+
+从API版本26.0.0开始，自定义组件支持设置并读取自定义属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[customProperty](#customproperty)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                 | 必填 | 说明                                                         |
+| ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| name  | string | 是   | 自定义属性的名称。 |
+| value  | [CustomProperty](#customproperty23) | 是   | 自定义属性的值。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| this | 返回当前组件。 |
+
+## CustomProperty<sup>23+</sup>
+
+type CustomProperty = undefined | null | Object | Record\<string, CustomProperty> | Array\<CustomProperty>
+
+自定义属性的值。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 |说明   |
+| ------ | ------------------- |
+| undefined | 自定义属性值为undefined。 |
+| null | 自定义属性值为null。 |
+| Object | 自定义属性Object类型。|
+| Record\<string, CustomProperty> | 自定义属性类型为`Record<string, CustomProperty>`，表示键为字符串、值为CustomProperty类型的对象。 |
+| Array\<CustomProperty> | 自定义属性类型为`Array<CustomProperty>`，表示元素为CustomProperty类型的数组。 |
 
 ## Optional\<T>
 
@@ -46,11 +104,15 @@ type Optional\<T> = T | undefined
 
 定义可选类型，其值可以是undefined。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明                       |
 | ---- | -------------------------- |

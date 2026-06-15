@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)是基础的组件转场接口，用于实现一个组件出现或者消失时的动画效果。可以通过[TransitionEffect对象](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)的组合使用，定义出各式效果。
+[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)是基础的组件转场接口，用于实现一个组件出现或者消失时的动画效果。可以通过[TransitionEffect<sup>10+</sup>对象说明](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)的组合使用，定义出各式效果。
 
 
   **表1** 转场效果接口
@@ -21,9 +21,9 @@
 | rotate | 通过设置组件旋转创建转场效果。 | 出现时，旋转参数的值从rotate接口设置的值变化为默认值0，消失时从默认值0变化为rotate接口设置的值。 |
 | opacity | 通过设置透明度参数创建转场效果。 | 出现时，透明度参数的值从opacity设置的值变化为透明度默认值1，消失时从透明度默认值1变化为opacity设置的值。 |
 | move | 通过[TransitionEdge](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitionedge10)创建从窗口哪条边缘出来的效果。 | 出现时从TransitionEdge方向滑入，消失时滑出到TransitionEdge方向。 |
-| asymmetric | 通过此方法组合非对称的出现消失转场效果。<br/>- appear：出现转场的效果。<br/>- disappear：消失转场的效果。 | 出现时采用appear设置的TransitionEffect出现效果，消失时采用disappear设置的[TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)消失效果。 |
+| asymmetric | 通过此方法组合非对称的出现消失转场效果，即出现、消失为两套独立不同的动画，效果不互为逆过程。具体使用可参考[asymmetric](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#asymmetric10)。<br/>- appear：出现转场的效果。<br/>- disappear：消失转场的效果。 | 出现时采用appear设置的TransitionEffect出现效果，消失时采用disappear设置的[TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)消失效果。 |
 | combine | 组合其他TransitionEffect。 | 组合其他TransitionEffect，一起生效。 |
-| animation | 定义转场效果的动画参数：<br/>-&nbsp;如果不定义会跟随[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)的动画参数。<br/>-&nbsp;不支持通过控件的animation接口配置动画参数。<br/>-&nbsp;TransitionEffect中animation的onFinish不生效。 | 调用顺序是从上往下，上面TransitionEffect的animation也会作用到下面TransitionEffect。 |
+| animation | 定义转场效果的动画参数：<br/>-&nbsp;如果不定义会跟随[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)的动画参数。<br/>-&nbsp;不支持通过控件的[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)接口配置动画参数。<br/>-&nbsp;TransitionEffect中[animation](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#animation10)接口中的onFinish参数不生效。 | 调用顺序是从上往下，上面TransitionEffect的animation也会作用到下面TransitionEffect。 |
 
 
 1. 创建TransitionEffect。
@@ -147,7 +147,7 @@
 
 
 
-![zh-cn_image_0000001599818064](figures/zh-cn_image_0000001599818064.gif)
+![zh-cn_image_0000001599818064](figures/Enter-Exit-Transition.gif)
 
 
 对多个组件添加转场效果时，可以在[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md#animation)动画参数中配置不同的delay值，实现组件渐次出现消失的效果：
@@ -215,4 +215,4 @@
    }
    ```
 
-![zh-cn_image_0000001599818064](figures/zh-cn_image_0000001599818065.gif)
+![zh-cn_image_0000001599818064](figures/Enter-Exit-Transition01.gif)

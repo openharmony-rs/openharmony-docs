@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
@@ -46,7 +46,7 @@ getRdbStore支持多线程并发操作。
 | -------- | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                        | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config   | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)               | 是   | 与此RDB存储相关的数据库配置。                                |
-| callback | AsyncCallback&lt;[RdbStore](arkts-apis-data-relationalStore-RdbStore.md)&gt; | 是   | 指定callback回调函数，返回RdbStore对象。                   |
+| callback | AsyncCallback&lt;[RdbStore](arkts-apis-data-relationalStore-RdbStore.md)&gt; | 是   | 回调函数。当获取RdbStore成功，err为undefined，data为RdbStore对象；否则为错误对象。                   |
 
 **错误码：**
 
@@ -87,7 +87,7 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
   securityLevel: relationalStore.SecurityLevel.S3
 };
 
-relationalStore.getRdbStore(context, STORE_CONFIG, async (err: BusinessError, rdbStore: relationalStore.RdbStore) => {
+relationalStore.getRdbStore(context, STORE_CONFIG, (err, rdbStore) => {
   if (err) {
     console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -114,7 +114,7 @@ class EntryAbility extends UIAbility {
       securityLevel: relationalStore.SecurityLevel.S3
     };
 
-    relationalStore.getRdbStore(this.context, STORE_CONFIG, async (err: BusinessError, rdbStore: relationalStore.RdbStore) => {
+    relationalStore.getRdbStore(this.context, STORE_CONFIG, (err, rdbStore) => {
       if (err) {
         console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
         return;
@@ -342,8 +342,8 @@ deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&g
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                   | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| name     | string                    | 是   | 数据库名称。                                                 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 指定callback回调函数。                                       |
+| name     | string                    | 是   | 数据库名称，不能为空字符串且不能包含路径分隔符/。                                                 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当删除数据库成功，err为undefined，否则为错误对象。                                       |
 
 **错误码：**
 
@@ -366,7 +366,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let context = featureAbility.getContext();
 
-relationalStore.deleteRdbStore(context, "RdbTest.db", (err: BusinessError) => {
+relationalStore.deleteRdbStore(context, "RdbTest.db", (err) => {
   if (err) {
     console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -386,7 +386,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    relationalStore.deleteRdbStore(this.context, "RdbTest.db", (err: BusinessError) => {
+    relationalStore.deleteRdbStore(this.context, "RdbTest.db", (err) => {
       if (err) {
         console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
         return;
@@ -503,13 +503,13 @@ deleteRdbStore(context: Context, name: string): Promise&lt;void&gt;
 | 参数名  | 类型    | 必填 | 说明                                                         |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
 | context | Context | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| name    | string  | 是   | 数据库名称。                                                 |
+| name    | string  | 是   | 数据库名称，不能为空字符串且不能包含路径分隔符/。                                                 |
 
 **返回值**：
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -585,7 +585,7 @@ deleteRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback\<v
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                     | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config   | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | 是   | 与此RDB存储相关的数据库配置。                                |
-| callback | AsyncCallback&lt;void&gt;   | 是   | 指定callback回调函数。                                       |
+| callback | AsyncCallback&lt;void&gt;   | 是   | 回调函数。当删除数据库成功，err为undefined，否则为错误对象。                                       |
 
 **错误码：**
 
@@ -615,7 +615,7 @@ const STORE_CONFIG: relationalStore.StoreConfig = {
   securityLevel: relationalStore.SecurityLevel.S3
 };
 
-relationalStore.deleteRdbStore(context, STORE_CONFIG, (err: BusinessError) => {
+relationalStore.deleteRdbStore(context, STORE_CONFIG, (err) => {
   if (err) {
     console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -639,7 +639,7 @@ class EntryAbility extends UIAbility {
       name: "RdbTest.db",
       securityLevel: relationalStore.SecurityLevel.S3
     };
-    relationalStore.deleteRdbStore(this.context, STORE_CONFIG, (err: BusinessError) => {
+    relationalStore.deleteRdbStore(this.context, STORE_CONFIG, (err) => {
       if (err) {
         console.error(`Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
         return;
@@ -679,7 +679,7 @@ deleteRdbStore(context: Context, config: StoreConfig): Promise\<void>
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -772,7 +772,7 @@ import { relationalStore } from '@kit.ArkData';
 
 let store: relationalStore.RdbStore | undefined = undefined;
 export default class EntryAbility extends UIAbility {
-  async onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     let supported = relationalStore.isVectorSupported();
     if (supported) {
       // 支持向量数据库
@@ -784,10 +784,14 @@ export default class EntryAbility extends UIAbility {
       };
       try {
         const context = this.context.getApplicationContext().createAreaModeContext(contextConstant.AreaMode.EL3);
-        const rdbStore = await relationalStore.getRdbStore(context, STORE_CONFIG);
-        console.info('Get RdbStore successfully.');
-        store = rdbStore;
-        // 成功获取到 rdbStore 后执行后续操作
+        relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+          store = rdbStore;
+          console.info('Get RdbStore successfully.');
+          // 成功获取到 rdbStore 后执行后续操作
+        }).catch((err: Error) => {
+          let businessError = err as BusinessError;
+          console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
+        });
       } catch (error) {
         const err = error as BusinessError;
         console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
@@ -858,7 +862,7 @@ getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolut
 
 | 参数名  | 类型                  | 必填 | 说明                                                         |
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
-| table | string              | 是   | 要写入数据的数据库表名。 |
+| table | string              | 是   | 要写入数据的数据库表名，不能为空字符串。 |
 | values | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | 是 | 要写入数据库中数据的字段信息以及对应的值信息。 |
 | conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | 否 |指定冲突解决模式。默认值是relationalStore.ConflictResolution.ON_CONFLICT_NONE。 |
 
@@ -897,10 +901,10 @@ const sqlInfo: relationalStore.SqlInfo = relationalStore.getInsertSqlInfo(
 ArkTS-Sta示例：
 ```ts
 const bucket: relationalStore.ValuesBucket = {
-  name: "Logitech",
-  age: 18 as long,
-  sex: "man",
-  desc: "asserter"
+  'name': "Logitech",
+  'age': 18 as long,
+  'sex': "man",
+  'desc': "asserter"
 };
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getInsertSqlInfo(
   "USER",
@@ -965,10 +969,10 @@ const sqlInfo: relationalStore.SqlInfo = relationalStore.getUpdateSqlInfo(
 ArkTS-Sta示例：
 ```ts
 const bucket: relationalStore.ValuesBucket = {
-  name: "Logitech",
-  age: 18 as long,
-  sex: "man",
-  desc: "asserter"
+  'name': "Logitech",
+  'age': 18 as long,
+  'sex': "man",
+  'desc': "asserter"
 };
 const predicates = new relationalStore.RdbPredicates("users");
 const sqlInfo: relationalStore.SqlInfo = relationalStore.getUpdateSqlInfo(

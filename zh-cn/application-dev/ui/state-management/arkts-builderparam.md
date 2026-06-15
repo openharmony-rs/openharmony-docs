@@ -6,7 +6,12 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-当开发者创建[自定义组件](./arkts-create-custom-components.md)并需要为其添加特定功能（例如[页面跳转](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)功能）时，如果直接在组件内嵌入事件方法，会导致所有该自定义组件的实例都增加此功能。为了解决此问题，ArkUI引入了\@BuilderParam装饰器。\@BuilderParam用于装饰指向\@Builder方法的变量，开发者可以在初始化自定义组件时，使用不同的方式（如参数修改、尾随闭包、借用箭头函数等）对\@BuilderParam装饰的自定义构建函数进行传参赋值。在自定义组件内部，通过调用\@BuilderParam为组件增加特定功能。
+当开发者创建[自定义组件](./arkts-create-custom-components.md)并需要为其添加特定功能（例如[Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)功能）时，如果直接在组件内嵌入事件方法，会导致所有该自定义组件的实例都增加此功能。为了解决此问题，ArkUI引入了\@BuilderParam装饰器。\@BuilderParam用于装饰指向\@Builder方法的变量，开发者可以在初始化自定义组件时，使用不同的方式（如参数修改、尾随闭包、借用箭头函数等）对\@BuilderParam装饰的自定义构建函数进行传参赋值。在自定义组件内部，通过调用\@BuilderParam为组件增加特定功能。
+
+在ArkTS-Sta上下文中，需导入装饰器：
+``` TypeScript
+import { BuilderParam } from '@kit.ArkUI';
+```
 
 在阅读本文档前，建议提前阅读：[\@Builder](./arkts-builder.md)。
 
@@ -17,7 +22,8 @@
 > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
 >
 > 从API version 11开始，该装饰器支持在原子化服务中使用。
-
+>
+> 从API version 22开始，该装饰器支持在ArkTS-Sta中使用。
 
 ## 装饰器使用说明
 
@@ -54,7 +60,8 @@
 
 - 使用父组件自定义构建函数初始化子组件\@BuilderParam装饰的方法。
 
-  <!-- @[builder_param_init_method_demo01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo01.ets) --> 
+  **ArkTS-Dyn:**
+  <!-- @[builder_param_init_method_demo01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo01.ets) -->  
   
   ``` TypeScript
   @Component
@@ -82,6 +89,45 @@
   
     build() {
       Column() {
+        // 使用父组件自定义构建函数初始化子组件@BuilderParam装饰的方法
+        Child({ customBuilderParam: this.componentBuilder })
+      }
+    }
+  }
+  ```
+
+  **ArkTS-Sta:**
+  <!-- @[BuilderParamInitMethod](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamInitMethod.ets) -->
+  ``` TypeScript
+  'use static'
+
+  import { Entry, Component, Column, Builder, BuilderParam, Text } from '@kit.ArkUI';
+
+  @Component
+  struct Child {
+    @Builder
+    customBuilder() {
+    }
+
+    @BuilderParam customBuilderParam: () => void = this.customBuilder;
+
+    build() {
+      Column() {
+        this.customBuilderParam()
+      }
+    }
+  }
+
+  @Entry
+  @Component
+  struct Parent {
+    @Builder
+    componentBuilder() {
+      Text(`Parent builder `)
+    }
+
+    build() {
+      Column() {
         Child({ customBuilderParam: this.componentBuilder })
       }
     }
@@ -97,6 +143,7 @@
 
   示例如下：
 
+  **ArkTS-Dyn:**
   <!-- @[builder_param_init_method_demo02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo02.ets) -->
   
   ``` TypeScript
@@ -155,6 +202,66 @@
 
 ![builderparam-demo2](figures/builderparam-demo2.png)
 
+  **ArkTS-Sta:**
+  <!-- @[BuilderParamThis](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamThis.ets) -->
+  ``` TypeScript
+  'use static'
+
+  import { Entry, Component, Column, Builder, BuilderParam, Text } from '@kit.ArkUI';
+
+  @Component
+  struct Child {
+    label: string = 'Child';
+
+    @Builder
+    customBuilder() {
+    }
+
+    @Builder
+    customChangeThisBuilder() {
+    }
+
+    @BuilderParam customBuilderParam: () => void = this.customBuilder;
+    @BuilderParam customChangeThisBuilderParam: () => void = this.customChangeThisBuilder;
+
+    build() {
+      Column() {
+        this.customBuilderParam()
+        this.customChangeThisBuilderParam()
+      }
+    }
+  }
+
+  @Entry
+  @Component
+  struct Parent {
+    label: string = 'Parent';
+
+    @Builder
+    componentBuilder() {
+      Text(`${this.label}`)
+    }
+
+    build() {
+      Column() {
+        // 调用this.componentBuilder()时，this指向当前@Entry所装饰的Parent组件，即label变量的值为'Parent'。
+        this.componentBuilder()
+        Child({
+          // 把this.componentBuilder传给子组件Child的@BuilderParam customBuilderParam，this始终指向定义处上下文Parent，即label变量的值为'Parent'。
+          customBuilderParam: this.componentBuilder,
+          // 把():void=>{this.componentBuilder()}传给子组件Child的@BuilderParam customChangeThisBuilderParam，
+          // this始终指向定义处上下文Parent，即label变量的值为'Parent'。
+          customChangeThisBuilderParam: (): void => {
+            this.componentBuilder()
+          }
+        })
+      }
+    }
+  }
+  ```
+  **图3** 示例效果图
+
+  ![builderparam-demo2](figures/builderparam-demo2-2.png)
 
 ## 限制条件
 
@@ -170,6 +277,7 @@
 
 \@BuilderParam装饰的方法为有参数或无参数的形式，必须与指向的\@Builder方法类型匹配。
 
+**ArkTS-Dyn:**
 <!-- @[builder_param_scene_init_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneInitComponent.ets) -->
 
 ``` TypeScript
@@ -224,7 +332,67 @@ struct Parent {
   }
 }
 ```
-**图3** 示例效果图
+
+**ArkTS-Sta:**
+<!-- @[BuilderParamSceneInit](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamSceneInit.ets) -->
+``` TypeScript
+'use static'
+
+import { Entry, Component, Column, Builder, BuilderParam, Text, Color } from '@kit.ArkUI';
+
+interface Tmp {
+  label: string;
+}
+
+@Builder
+function overBuilder($$: Tmp) {
+  Text($$.label)
+    .width('100%')
+    .height(50)
+    .backgroundColor(Color.Green)
+}
+
+@Component
+struct Child {
+  label: string = 'Child';
+
+  @Builder
+  customBuilder() {
+  }
+
+  // 无参数类型，指向的customBuilder也是无参数类型
+  @BuilderParam customBuilderParam: () => void = this.customBuilder;
+  // 有参数类型，指向的overBuilder也是有参数类型的方法
+  @BuilderParam customOverBuilderParam: ($$: Tmp) => void = overBuilder;
+
+  build() {
+    Column() {
+      this.customBuilderParam()
+      this.customOverBuilderParam({ label: 'global Builder label' })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  label: string = 'Parent';
+
+  @Builder
+  componentBuilder() {
+    Text(`${this.label}`)
+  }
+
+  build() {
+    Column() {
+      this.componentBuilder()
+      Child({ customBuilderParam: this.componentBuilder, customOverBuilderParam: overBuilder })
+    }
+  }
+}
+```
+
+**图4** 示例效果图
 
 ![builderparam-demo3](figures/builderparam-demo3.png)
 
@@ -237,12 +405,14 @@ struct Parent {
 >
 >  - 此场景下自定义组件内仅有一个使用\@BuilderParam装饰的属性。
 >
->  - 此场景下自定义组件不支持通用属性。
-
+>  - 在ArkTS-Sta自定义组件内可以使用多个\@BuilderParam装饰的属性，尾随闭包只会对最后一个@BuilderParam装饰属性进行赋值，此场景下自定义组件支持通用属性。
+>
+>  - 在ArkTS-Dyn自定义组件内仅有一个使用\@BuilderParam装饰的属性，此场景下自定义组件不支持通用属性。
 开发者可将尾随闭包内的内容看作\@Builder装饰的函数传给\@BuilderParam。
 
 示例1：
 
+**ArkTS-Dyn:**
 <!-- @[builder_param_scene_trailing_closure_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneTrailingClosure01.ets) -->
 
 ``` TypeScript
@@ -297,14 +467,83 @@ struct CustomContainerUser {
   }
 }
 ```
-**图4** 示例效果图
+**图5** 示例效果图
 
 ![builderparam-demo4](figures/builderparam-demo4.gif)
+
+**ArkTS-Sta:**
+<!-- @[BuilderParamTrailingClosure01](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamTrailingClosure01.ets) -->
+``` TypeScript
+'use static'
+
+import { Entry, Component, Column, Builder, BuilderParam, Text, Color, ClickEvent, State, PropRef } from '@kit.ArkUI';
+
+@Component
+struct CustomContainer {
+  @PropRef header: string = '';
+
+  @Builder
+  closerBuilder() {
+    Text('CustomContainer')
+        .fontSize(30)
+  }
+
+  // this.closerBuilder初始化子组件@BuilderParam
+  @BuilderParam mainContentBuilder: () => void = this.closerBuilder;
+  // 使用父组件的尾随闭包{}(@Builder装饰的方法)初始化子组件@BuilderParam
+  @BuilderParam closer: () => void = this.closerBuilder;
+
+  build() {
+    Column() {
+      Text(this.header)
+        .fontSize(30)
+      this.mainContentBuilder()
+      this.closer()
+    }
+  }
+}
+
+@Builder
+function specificParam(label1: string, label2: string) {
+  Column() {
+    Text(label1)
+      .fontSize(30)
+    Text(label2)
+      .fontSize(30)
+  }
+}
+
+@Entry
+@Component
+struct CustomContainerUser {
+  @State text: string = 'header';
+
+  build() {
+    Column() {
+      // 创建CustomContainer，在创建CustomContainer时，通过其后紧跟一个大括号"{}"形成尾随闭包
+      // 这里用尾随闭包传递closer属性（其他@BuilderParam需要通过字面量初始化）
+      CustomContainer({ header: this.text }) {
+        Column() {
+          specificParam('testA', 'testB')
+        }.backgroundColor(Color.Yellow)
+        .onClick((e: ClickEvent) => {
+          this.text = 'changeHeader';
+        })
+      }
+    }
+  }
+}
+```
+
+**图6** 示例效果图
+
+![builderparam-demo5](figures/builderparam-demo5-2.png)
 
 可以使用全局或局部\@Builder通过尾随闭包的形式对[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件中的\@BuilderParam装饰的方法进行初始化。
 
 示例2：
 
+**ArkTS-Dyn:**
 <!-- @[builder_param_scene_trailing_closure_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneTrailingClosure02.ets) -->
 
 ``` TypeScript
@@ -375,6 +614,91 @@ struct ParentPage {
 }
 ```
 
+**图7** 示例效果图
+
+![trailing-closure-initializes-component](figures/trailing-closure-initializes-component.png)
+
+**ArkTS-Sta:**
+<!-- @[BuilderParamTrailingClosure02](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamTrailingClosure02.ets) -->
+``` TypeScript
+'use static'
+
+import { Entry, Text, Row, Column, ComponentV2, Builder, Line, BuilderParam, Local, Require, Param, FontWeight } from '@kit.ArkUI';
+
+@ComponentV2
+struct ChildPage {
+  @Require @Param message: string = '';
+
+  @Builder
+  customBuilder() {
+  }
+
+  @BuilderParam customBuilderParam: () => void = this.customBuilder;
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .fontColor('#cc2787d9')
+      this.customBuilderParam()
+    }
+  }
+}
+
+const builder_value: string = 'Hello World';
+
+@Builder
+function overBuilder() {
+  Row() {
+    Text(`Global Builder: ${builder_value}`)
+      .fontSize(20)
+      .fontWeight(FontWeight.Bold)
+      .fontColor('#992787d9')
+  }
+}
+
+@Entry
+@ComponentV2
+struct ParentPage {
+  @Local label: string = 'Parent Page';
+
+  @Builder
+  componentBuilder() {
+    Row() {
+      Text(`Local Builder: ${this.label}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+        .fontColor('#992787d9')
+    }
+  }
+
+  build() {
+    Column() {
+      ChildPage({ message: this.label }) {
+        Column() { // 使用局部@Builder，通过组件后紧跟一个大括号"{}"形成尾随闭包去初始化自定义组件@BuilderParam
+          this.componentBuilder();
+        }
+      }
+
+      Line()
+        .width('100%')
+        .height(10)
+        .backgroundColor('#66d5d5d5')
+        .margin(10)
+      ChildPage({ message: this.label }) { // 使用全局@Builder，通过组件后紧跟一个大括号"{}"形成尾随闭包去初始化自定义组件@BuilderParam
+        Column() {
+          overBuilder();
+        }
+      }
+    }
+  }
+}
+```
+
+**图8** 示例效果图
+
+![initializing-by-trailing-closure](figures/initializing-by-trailing-closure.png)
 
 ### 使用\@BuilderParam隔离多组件对\@Builder跳转逻辑的调用
 
@@ -384,6 +708,7 @@ struct ParentPage {
 >
 > 当前示例代码中使用了Navigation组件导航，具体实现逻辑可以查询[Navigation](../arkts-navigation-architecture.md)指南。
 
+**ArkTS-Dyn:**
 <!-- @[builder_param_scene_jump_logic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/BuilderParamSceneJumpLogic.ets) -->
 
 ``` TypeScript
@@ -468,7 +793,7 @@ struct ChildPage_BuilderParam {
 ```
 
 
-<!-- @[builder_param_scene_jump_logic_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/helloworld.ets) -->
+<!-- @[builder_param_scene_jump_logic_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/helloworld.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -482,6 +807,7 @@ struct HelloWorldPage {
   @State pathStack: NavPathStack = new NavPathStack();
 
   build() {
+    // 用于跳转的子页面
     NavDestination() {
       Column() {
         Text(this.message)
@@ -498,7 +824,7 @@ struct HelloWorldPage {
 
 **router_map.json**
 这个文件位于项目的`resources/base/profile`目录下。
-```ts
+``` TypeScript
 {
   "routerMap": [
     {
@@ -512,7 +838,7 @@ struct HelloWorldPage {
 **module.json5**
 这个文件位于应用模块的根目录下，例如`entry/src/main/module.json5`。
 
-```ts
+``` TypeScript
 {
   "module": {
     "routerMap": "$profile:router_map",
@@ -521,14 +847,141 @@ struct HelloWorldPage {
 }   
 ```
 
-**图5** 示例效果图
+**图9** 示例效果图
 
 ![builderparam-demo7](figures/builderparam-demo7.gif)
+
+**ArkTS-Sta:**
+<!-- @[BuilderParamJumpLogic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamJumpLogic.ets) -->
+``` TypeScript
+'use static'
+
+import { Entry, Component, Column, Builder, BuilderParam, Text, Color, Navigation, NavigationMode, Button, NavPathStack, ButtonType, NavPathInfo, NavDestination, State, FontWeight, NavDestinationContext } from '@kit.ArkUI';
+
+class NavigationParams {
+  boo: boolean = true;
+  pathStack: NavPathStack = new NavPathStack();
+  constructor(boo: boolean) {
+    this.boo = boo;
+  }
+}
+
+@Component
+struct HelloWorldPage {
+  @State message: string = 'Hello World';
+  @State pathStack: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text(this.message)
+          .fontSize(20)
+          .fontWeight(FontWeight.Bold)
+        Button(`call back`)
+          .onClick(() => {
+            this.pathStack.pop();
+          })
+          .width('80%')
+          .margin(20)
+      }
+    }
+    .height('100%')
+    .width('100%')
+    .onReady((context: NavDestinationContext) => {
+      this.pathStack = context.pathStack;
+    })
+  }
+}
+@Builder
+function PageBuilder(name: string, param: Object|null|undefined) {
+  if (name == 'HelloWorldPage') {
+    HelloWorldPage()
+  }
+}
+@Builder
+function navigationAction(params: NavigationParams) {
+  Column() {
+    Navigation(params?.pathStack) {
+      Button('router to page', { stateEffect: true, type: ButtonType.Capsule })
+        .width('80%')
+        .height(40)
+        .margin(20)
+        .onClick((e) => {
+          // 通过修改@BuilderParam参数决定是否跳转。
+          if (params.boo) {
+            try{
+              let info: NavPathInfo = new NavPathInfo('HelloWorldPage',new Object());
+              params?.pathStack?.pushPath(info, true);
+            } catch(e) {
+              console.error(e);
+            }
+          } else {
+            console.info('@BuilderParam setting does not jump');
+          }
+        })
+    }
+    .navDestination(PageBuilder)
+    .hideTitleBar(true, true)
+    .height('100%')
+    .width('100%')
+  }
+  .height('25%')
+  .width('100%')
+}
+
+@Entry
+@Component
+struct ParentPage {
+  @State info: NavigationParams = new NavigationParams(true);
+
+  build() {
+    Column() {
+      Text('ParentPage')
+      navigationAction(this.info)
+      ChildPageOne()
+      ChildPageBuilderParam({ eventBuilder: navigationAction })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+struct ChildPageOne {
+  @State info: NavigationParams = new NavigationParams(true);
+
+  build() {
+    Column() {
+      Text('ChildPage')
+      navigationAction(this.info)
+    }
+  }
+}
+
+@Component
+struct ChildPageBuilderParam {
+  @State info: NavigationParams = new NavigationParams(false);
+  @BuilderParam eventBuilder: (param: NavigationParams) => void = navigationAction;
+
+  build() {
+    Column() {
+      Text('ChildPageBuilderParam')
+      // 对传递过来的全局@Builder进行参数修改，可以实现禁用点击跳转的功能。
+      this.eventBuilder(this.info)
+    }
+  }
+}
+```
+
+**图10** 示例效果图
+
+![builderparam-demo7](figures/builderparam-demo7-2.gif)
 
 ### 使用全局和局部\@Builder初始化\@BuilderParam
 
 在自定义组件中，使用\@BuilderParam装饰的变量接收父组件通过\@Builder传递的内容进行初始化，由于父组件的\@Builder可以使用箭头函数改变当前的this指向，因此使用\@BuilderParam装饰的变量会展示不同的内容。
 
+**ArkTS-Dyn:**
 <!-- @[builder_param_scene_global_local_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneGlobalLocalInit.ets) -->
 
 ``` TypeScript
@@ -608,14 +1061,102 @@ struct ParentPage {
   }
 }
 ```
-**图6** 示例效果图
+**图11** 示例效果图
 
 ![builderparam-demo5](figures/builderparam-demo5.png)
+
+**ArkTS-Sta:**
+<!-- @[BuilderParamGlobalLocalInit](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamGlobalLocalInit.ets) -->
+``` TypeScript
+'use static'
+
+import { Entry, Component, Column, Builder, Line, BuilderParam, Text, Row, FontWeight } from '@kit.ArkUI';
+
+@Component
+struct ChildPage {
+  label: string = 'Child Page';
+
+  @Builder
+  customBuilder() {
+  }
+
+  @BuilderParam customBuilderParam: () => void = this.customBuilder;
+  @BuilderParam customChangeThisBuilderParam: () => void = this.customBuilder;
+
+  build() {
+    Column() {
+      this.customBuilderParam()
+      this.customChangeThisBuilderParam()
+    }
+  }
+}
+
+const builder_value: string = 'Hello World';
+
+@Builder
+function overBuilder() {
+  Row() {
+    Text(`Global Builder: ${builder_value}`)
+      .fontSize(20)
+      .fontWeight(FontWeight.Bold)
+      .fontColor('#992787d9')
+  }
+}
+
+@Entry
+@Component
+struct ParentPage {
+  label: string = 'Parent Page';
+
+  @Builder
+  componentBuilder() {
+    Row() {
+      Text(`Local Builder: ${this.label}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+        .fontColor('#cc2787d9')
+    }
+  }
+
+  build() {
+    Column() {
+      // 调用this.componentBuilder()时，this指向当前@Entry所装饰的ParentPage组件，所以label变量的值为'Parent Page'。
+      this.componentBuilder()
+      ChildPage({
+        // 把this.componentBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，this指向的仍是父组件ParentPage，所以label变量的值为'Parent Page'。
+        customBuilderParam: this.componentBuilder,
+        // 把():void=>{this.componentBuilder()}传给子组件ChildPage的@BuilderParam customChangeThisBuilderParam，
+        // 因为箭头函数的this指向的是宿主对象，所以label变量的值为'Parent Page'。
+        customChangeThisBuilderParam: (): void => {
+          this.componentBuilder()
+        }
+      })
+      Line()
+        .width('100%')
+        .height(10)
+        .backgroundColor('#66d5d5d5')
+        .margin(10)
+      // 调用全局overBuilder()时，this指向当前整个活动页，所以展示的内容为'Hello World'。
+      overBuilder()
+      ChildPage({
+        // 把全局overBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，this指向当前整个活动页，所以展示的内容为'Hello World'。
+        customBuilderParam: overBuilder,
+        // 把全局overBuilder传给子组件ChildPage的@BuilderParam customChangeThisBuilderParam，this指向当前整个活动页，所以展示的内容为'Hello World'。
+        customChangeThisBuilderParam: overBuilder
+      })
+    }
+  }
+}
+```
+**图12** 示例效果图
+
+![initializing-by-builder](figures/initializing-by-builder.png)
 
 ### 在@ComponentV2装饰的自定义组件中使用@BuilderParam
 
 使用全局或局部@Builder初始化@ComponentV2装饰的自定义组件中的@BuilderParam属性。
 
+**ArkTS-Dyn:**
 <!-- @[builder_param_scene_in_component_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneInComponentV2.ets) -->
 
 ``` TypeScript
@@ -695,19 +1236,97 @@ struct ParentPage {
   }
 }
 ```
-**图7** 示例效果图
+**图13** 示例效果图
 
 ![builderparam-demo6](figures/builderparam-demo6.png)
+
+**ArkTS-Sta:**
+<!-- @[BuilderParamInComponentV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamInComponentV2.ets) -->
+``` TypeScript
+'use static'
+
+import { Entry, Text, Row, Column, ComponentV2, Builder, Line, BuilderParam, Local, Param, FontWeight } from '@kit.ArkUI';
+
+@ComponentV2
+struct ChildPage {
+  @Param label: string = 'Child Page';
+
+  @Builder
+  customBuilder() {
+  }
+
+  @BuilderParam customBuilderParam: () => void = this.customBuilder;
+
+  build() {
+    Column() {
+      this.customBuilderParam()
+    }
+  }
+}
+
+const builder_value: string = 'Hello World';
+
+@Builder
+function overBuilder() {
+  Row() {
+    Text(`Global Builder: ${builder_value}`)
+      .fontSize(20)
+      .fontWeight(FontWeight.Bold)
+      .fontColor('#992787d9')
+  }
+}
+
+@Entry
+@ComponentV2
+struct ParentPage {
+  @Local label: string = 'Parent Page';
+
+  @Builder
+  componentBuilder() {
+    Row() {
+      Text(`Local Builder: ${this.label}`)
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+        .fontColor('#cc2787d9')
+    }
+  }
+
+  build() {
+    Column() {
+      // 调用this.componentBuilder()时，this指向当前@Entry所装饰的ParentPage组件，所以label变量的值为'Parent Page'。
+      this.componentBuilder()
+      ChildPage({
+        // this指向的是父组件ParentPage，所以label变量的值为'Parent Page'。
+        customBuilderParam: this.componentBuilder,
+      })
+      Line()
+        .width('100%')
+        .height(5)
+        .backgroundColor('#66d5d5d5')
+        .margin(10)
+      // 调用全局overBuilder()时，this指向当前整个活动页，所以展示的内容为'Hello World'。
+      overBuilder()
+      ChildPage({
+        customBuilderParam: overBuilder,
+      })
+    }
+  }
+}
+```
+**图14** 示例效果图
+
+![using-BuilderParam-in-ComponentV2](figures/using-BuilderParam-in-ComponentV2.png)
 
 
 ## 常见问题
 
-### 改变内容UI不刷新
+### 改变内容UI不刷新（仅适用于ArkTS-Dyn上下文）
 
 调用自定义组件`ChildPage`时，通过`this.componentBuilder`传递\@Builder参数。`this`指向自定义组件内部，因此父组件中改变`label`的值时，`ChildPage`无法感知这一变化。
 
 【反例】
 
+**ArkTS-Dyn:**
 <!-- @[builder_param_problem_not_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemNotRefreshOpposite.ets) -->
 
 ``` TypeScript
@@ -762,6 +1381,7 @@ struct ParentPage {
 
 【正例】
 
+**ArkTS-Dyn:**
 <!-- @[builder_param_problem_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemNotRefreshPositive.ets) -->
 
 ``` TypeScript
@@ -813,13 +1433,18 @@ struct ParentPage {
 }
 ```
 
+**图15** 示例效果图
+
+![change-content-UI-refresh](figures/change-content-UI-refresh.gif)
+
 ### @Require装饰器和@BuilderParam装饰器联合使用
 
 由于\@Require装饰器所装饰的变量需进行初始化，未初始化会导致编译报错。
 
 【反例】
 
-```ts
+**ArkTS-Dyn:**
+``` TypeScript
 @Builder
 function globalBuilder() {
   Text('Hello World')
@@ -848,11 +1473,46 @@ struct ChildPage {
 }
 ```
 
+**ArkTS-Sta:**
+``` TypeScript
+'use static'
+
+import { Entry, Component, Column, Builder, Text, BuilderParam, Require } from '@kit.ArkUI';
+
+@Builder
+function globalBuilder() {
+  Text('Hello World')
+}
+
+@Entry
+@Component
+struct customBuilderDemo {
+  build() {
+    Column() {
+      // 由于未对子组件ChildBuilder进行赋值，此处无论是编译还是编辑，均会报错。
+      ChildPage()
+    }
+  }
+}
+
+@Component
+struct ChildPage {
+  @Require @BuilderParam ChildBuilder: () => void = globalBuilder;
+
+  build() {
+    Column() {
+      this.ChildBuilder()
+    }
+  }
+}
+```
+
 \@Require装饰的变量必须从外部初始化。
 
 【正例】
 
-<!-- @[builder_param_problem_combined_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemCombinedPositive.ets) -->
+**ArkTS-Dyn:**
+<!-- @[builder_param_problem_combined_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemCombinedPositive.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -865,6 +1525,7 @@ function globalBuilder() {
 struct CustomBuilderDemo {
   build() {
     Column() {
+      // childBuilder被@Require装饰，必须从外部初始化
       ChildPage({ childBuilder: globalBuilder })
     }
   }
@@ -882,13 +1543,52 @@ struct ChildPage {
 }
 ```
 
+**ArkTS-Sta:**
+<!-- @[BuilderParamRequirePositive](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamRequirePositive.ets) -->
+``` TypeScript
+'use static'
+
+import { Entry, Component, Column, Builder, Text, BuilderParam, Require } from '@kit.ArkUI';
+
+@Builder
+function globalBuilder() {
+  Text('Hello World')
+}
+
+@Entry
+@Component
+struct customBuilderDemo {
+  build() {
+    Column() {
+      ChildPage({ ChildBuilder: globalBuilder })
+    }
+  }
+}
+
+@Component
+struct ChildPage {
+  @Require @BuilderParam ChildBuilder: () => void = globalBuilder;
+
+  build() {
+    Column() {
+      this.ChildBuilder()
+    }
+  }
+}
+```
+
+**图16** 示例效果图
+
+![builderparam-combined-with-require](figures/builderparam-combined-with-require.png)
+
 ### @BuilderParam装饰器初始化的值必须为@Builder
 
 使用\@State装饰器装饰的变量，在初始化子组件的\@BuilderParam和`ChildBuilder`变量时，编译时会输出报错信息。
 
 【反例】
 
-```ts
+**ArkTS-Dyn:**
+``` TypeScript
 @Builder
 function globalBuilder() {
   Text('Hello World')
@@ -919,11 +1619,48 @@ struct ChildPage {
 }
 ```
 
+**ArkTS-Sta:**
+``` TypeScript
+'use static'
+
+import { Entry, Component, Column, Builder, BuilderParam, Text, State } from '@kit.ArkUI';
+
+@Builder
+function globalBuilder() {
+  Text('Hello World')
+}
+
+@Entry
+@Component
+struct customBuilderDemo {
+  @State message: string = '';
+
+  build() {
+    Column() {
+      // 子组件ChildBuilder接收@State装饰的变量，会出现编译和编辑报错
+      ChildPage({ ChildBuilder: this.message })
+    }
+  }
+}
+
+@Component
+struct ChildPage {
+  @BuilderParam ChildBuilder: () => void = globalBuilder;
+
+  build() {
+    Column() {
+      this.ChildBuilder()
+    }
+  }
+}
+```
+
 使用全局\@Builder装饰的`globalBuilder()`方法为子组件\@BuilderParam装饰的`ChildBuilder`变量初始化，编译无报错，功能正常。
 
 【正例】
 
-<!-- @[builder_param_problem_must_builder_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemMustBuilderPositive.ets) -->
+**ArkTS-Dyn:**
+<!-- @[builder_param_problem_must_builder_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemMustBuilderPositive.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -936,6 +1673,7 @@ function globalBuilder() {
 struct CustomBuilderDemo {
   build() {
     Column() {
+      // 正确写法
       ChildPage({ childBuilder: globalBuilder })
     }
   }
@@ -952,3 +1690,37 @@ struct ChildPage {
   }
 }
 ```
+
+**ArkTS-Sta:**
+<!-- @[BuilderParamMustBuilderPositive](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderParam/entry/src/main/ets/pages/BuilderParamMustBuilderPositive.ets) -->
+``` TypeScript
+'use static'
+
+import { Entry, Component, Column, Builder, BuilderParam, Text } from '@kit.ArkUI';
+
+@Builder function globalBuilder() {
+  Text('Hello World')
+}
+@Entry
+@Component
+struct customBuilderDemo {
+  build() {
+    Column() {
+      ChildPage({ChildBuilder: globalBuilder})
+    }
+  }
+}
+
+@Component
+struct ChildPage {
+  @BuilderParam ChildBuilder: () => void = globalBuilder;
+  build() {
+    Column() {
+      this.ChildBuilder()
+    }
+  }
+}
+```
+**图16** 示例效果图
+
+![builderparam-combined-with-require](figures/builderparam-combined-with-require.png)

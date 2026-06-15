@@ -1,8 +1,8 @@
-# 融合效果（系统接口）
+# 融合效果 (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,6 +11,8 @@
 > **说明：**
 >
 > - 从API version 23开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 本模块为系统接口。
 
@@ -47,6 +49,10 @@ useUnionEffect(value: boolean | undefined, options?: GravityCenterOptions): T
 表示是否使用祖先组件[UnionEffectContainer](ts-container-unioneffectcomponent-sys.md)的融合效果，是否作为UnionEffectContainer做形状融合的一部分。
 
 不设置该属性时，默认不使用祖先组件UnionEffectContainer的融合效果。
+
+> **说明：**
+>
+> 多次调用该接口传入[GravityCenterOptions](#gravitycenteroptions)参数时，仅最后一次设置的引力中心参数生效。
 
 **起始版本：** 26.0.0
 

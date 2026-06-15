@@ -1,8 +1,8 @@
 # Interface (AtomicServiceBar)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
-<!--Designer: @piggyguy-->
+<!--Owner: @pengzhiwen3-->
+<!--Designer: @dutie123-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -16,6 +16,8 @@
 >
 > - 本Interface首批接口从API version 11开始支持。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 以下接口需要先使用UIContext中的[getAtomicServiceBar](arkts-apis-uicontext-uicontext.md#getatomicservicebar11)方法获取到AtomicServiceBar对象，再通过该对象调用对应方法。
 >
 > - 从API version 12开始原子化服务menuBar样式变更，以下接口将失效。
@@ -28,9 +30,9 @@ setVisible(visible: boolean): void
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar默认隐藏，变为悬浮按钮，通过该接口无法改变menuBar的可见性。
+> 从API version 12开始，原子化服务menuBar默认隐藏并以悬浮按钮替代。**在原子化服务中调用setVisible()时，visible参数将被忽略，无法实现menuBar的显示或隐藏。**
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -80,9 +82,9 @@ ArkTS-Sta: setBackgroundColor(color:Nullable<Color | int | string>): void
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar的背景默认隐藏，通过该接口无法改变menuBar的背景颜色。
+> 从API version 12开始，原子化服务menuBar背景默认隐藏。**在原子化服务中调用setBackgroundColor()时，color参数将被忽略，无法设置menuBar的背景颜色。**
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,9 +131,9 @@ setTitleContent(content:string): void
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar的标题默认隐藏，通过该接口无法改变menuBar的标题内容。
+> 从API version 12开始，原子化服务menuBar标题默认隐藏。**在原子化服务中调用setTitleContent()时，content参数将被忽略，无法设置menuBar的标题内容。**
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,9 +180,9 @@ setTitleFontStyle(font:FontStyle):void
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar的标题默认隐藏，通过该接口无法改变menuBar的字体样式。
+> 从API version 12开始，原子化服务menuBar标题默认隐藏。**在原子化服务中调用setTitleFontStyle()时，font参数将被忽略，无法设置menuBar标题的字体样式，例如斜体显示。**
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -229,9 +231,9 @@ ArkTS-Sta: setIconColor(color:Nullable<Color | int | string>): void
 
 > **说明：**
 >
-> 从API version 12开始原子化服务menuBar样式变更，menuBar默认隐藏，悬浮按钮图标不予用户设置，通过该接口无法改变menuBar的图标颜色。
+> 从API version 12开始，原子化服务menuBar默认隐藏并以悬浮按钮替代。**在原子化服务中调用setIconColor()时，color参数将被忽略，无法设置menuBar图标颜色。**
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -281,7 +283,7 @@ getBarRect(): Frame
 >
 > 布局信息包含了原子化服务menuBar的左右margin。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -329,9 +331,7 @@ onBarRectChange(callback: Callback\<Frame\>): void
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

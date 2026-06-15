@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 > **说明：**
 >
@@ -50,13 +50,15 @@ Incorrect ability type.
 **可能原因**
 
 1. 被调用方（服务端）的Ability类型与调用方（客户端）接口期望的类型不匹配。
-2. 当目标服务端为AppServiceExtensionAbility类型时，未在module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。
+2. 当目标服务端为AppServiceExtensionAbility类型时，未在module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。<!--Del-->
+3. 调用[connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)时，入参指定的abilityName或moduleName与agentId对应AgentCard的appInfo内配置的abilityName或moduleName不匹配。<!--DelEnd-->
 
 **处理步骤**
 
 1. 检查Want中的bundleName、moduleName和abilityName是否正确。
 2. 确认被调用方（服务端）的Ability类型与调用接口是否匹配。对于ServiceExtensionAbility，应使用<!--Del-->[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability)方法启动或用<!--DelEnd-->[connectServiceExtensionAbility()](js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)方法连接。同时需要确保[module.json5配置文件](../../quick-start/module-configuration-file.md)中`extensionAbilities`的`type`设置为与接口匹配的`service`。
-3. 若被调用方（服务端）为appService类型，需在服务端的module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。
+3. 若被调用方（服务端）为appService类型，需在服务端的module.json5配置文件中配置ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。<!--Del-->
+4. 调用[connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)时，确保入参指定的abilityName或moduleName与agentId对应AgentCard的appInfo内配置的abilityName或moduleName保持一致。<!--DelEnd-->
 
 ## 16000003 指定的ID不存在
 
@@ -844,7 +846,7 @@ Failed to obtain the target application information.
 
 **错误描述**
 
-调用[URI授权相关接口](js-apis-uripermissionmanager-sys.md)时，无法根据应用包名和分身索引获取到目标应用的相关信息。
+调用[@ohos.application.uriPermissionManager (URI权限管理)(系统接口)](js-apis-uripermissionmanager-sys.md)时，无法根据应用包名和分身索引获取到目标应用的相关信息。
 
 **可能原因**
 
@@ -858,6 +860,24 @@ Failed to obtain the target application information.
 2. 检查分身应用索引是否在允许范围内。
 3. 检查目标应用是否创建了该索引对应的分身应用。
 <!--DelEnd-->
+
+## 16000082 UIAbility正在启动中
+
+**错误信息**
+
+The UIAbility is being started.
+
+**错误描述**
+
+UIAbility正在启动中，onCreate或onWindowStageCreate生命周期回调尚未完成。
+
+**可能原因**
+
+UIAbility仍处于启动阶段，onCreate或onWindowStageCreate回调尚未执行完成。
+
+**处理步骤**
+
+等待UIAbility完成onCreate或onWindowStageCreate生命周期回调后再执行相关操作。
 
 ## 16000083 不允许该类型ExtensionAbility启动指定Ability
 
@@ -1032,7 +1052,7 @@ The target token ID is invalid.
 2. 确保callerTokenId与targetTokenId不是同一应用。
 <!--DelEnd-->
 
-## 16000100 监听Ability生命周期变化的AbilityMonitor方法执行失败
+## 16000100 监听Ability生命周期变化的AbilityMonitor或InteropAbilityMonitor方法执行失败
 
 **错误信息**
 
@@ -1064,9 +1084,13 @@ The target token ID is invalid.
 
  - Calling WaitAbilityStageMonitor failed.
 
+ - Calling AddInteropAbilityMonitorSync failed.
+
+ - Calling RemoveInteropAbilityMonitorSync failed.
+
 **错误描述**
 
-当监听指定Ability的生命周期变化的AbilityMonitor方法执行失败时，返回该错误码。
+当监听指定Ability的生命周期变化的AbilityMonitor或InteropAbilityMonitor方法执行失败时，返回该错误码。
 
 **可能原因**
 
@@ -1349,6 +1373,44 @@ The UIAbility is prohibited from launching itself via App Linking.
 - 如果允许使用App Linking拉起当前UIAbility，开发者需要在[module.json5配置文件](../../quick-start/module-configuration-file.md)将[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的allowSelfRedirect字段设置为true。
 - 如果不允许使用App Linking拉起当前UIAbility，开发者需要通过catch捕获该错误码并进行处理。
 
+<!--Del-->
+## 16000137 跨设备执行意图连接失败
+
+**错误信息**
+
+Cross-device execution failed due to a connection error.
+
+**错误描述**
+
+跨设备执行意图时，设备连接失败。
+
+**可能原因**
+
+入参[ExecuteParam](../apis-ability-kit/js-apis-app-ability-insightIntentDriver-sys.md#executeparam)中的deviceId不为空且无效。
+
+**处理步骤**
+
+检查deviceId是否有效。
+
+## 16000138 跨设备执行意图设备断连
+
+**错误信息**
+
+Device disconnected during cross-device intent execution.
+
+**错误描述**
+
+跨设备执行意图时，设备断开连接。
+
+**可能原因**
+
+设备距离过远、设备异常或设备主动退出账号，导致设备连接断开。
+
+**处理步骤**
+
+检查设备状态是否正常，并重新连接。
+<!--DelEnd-->
+
 ## 16000150 发送请求失败
 
 **错误信息**
@@ -1361,7 +1423,7 @@ Failed to send request to system service.
 
 **可能原因**
 
-设置快照使能状态或者重建快照时，发送请求失败。
+设置快启使能状态或者重新初始化快启时，发送请求失败。
 
 **处理步骤**
 
@@ -2594,11 +2656,13 @@ The specified agentId does not exist.
 
 **可能原因**
 
-目标应用中不存在指定agentId对应的AgentCard。
+1. 目标应用中不存在指定agentId对应的AgentCard。<!--Del-->
+2. 调用[connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)时，入参bundleName与入参agentId关联的AgentCard中appInfo所配置的bundleName不匹配。<!--DelEnd-->
 
 **处理步骤**
 
-检查一下目标应用的静态配置信息，重新传入正确的agentId。
+1. 检查一下目标应用的静态配置信息，重新传入正确的agentId。<!--Del-->
+2. 调用[connectAgentExtensionAbility](js-apis-app-agent-agentManager-sys.md#agentmanagerconnectagentextensionability)时，确保入参bundleName与入参agentId关联的AgentCard中appInfo所配置的bundleName保持一致。<!--DelEnd-->
 
 ## 35600002 IPC消息发送失败
 
@@ -2637,3 +2701,223 @@ Maximum connections from the same caller have been reached.
 **处理步骤**
 
 调用方断开一些连接后重新发起连接。
+
+## 35600004 指定的AgentCard版本低于当前版本
+
+**错误信息**
+
+The specified AgentCard version is older than the current version.
+
+**错误描述**
+
+指定的AgentCard版本低于当前版本。
+
+**可能原因**
+
+调用updateAgentCard接口时新版本号低于旧版本号。
+
+**处理步骤**
+
+将AgentCard中的version字段进行更新。
+
+## 35600005 指定的AgentCard版本无效
+
+**错误信息**
+
+The specified AgentCard version is invalid.
+
+**错误描述**
+
+指定的AgentCard版本无效。
+
+**可能原因**
+
+AgentCard中的version字段没有遵循SemVer的版本规则。
+
+**处理步骤**
+
+更新AgentCard中的version字段并遵循SemVer的版本规则。
+
+## 35600006 指定的AgentCard已被注册
+
+**错误信息**
+
+The specified AgentCard has already been registered. Use updateAgentCard instead.
+
+**错误描述**
+
+指定的AgentCard已被注册，请使用updateAgentCard接口。
+
+**可能原因**
+
+指定的AgentCard已被注册。
+
+**处理步骤**
+
+使用updateAgentCard接口。
+
+## 35600007 指定的LOW_CODE类型智能体已触发且尚未完成工作流
+
+**错误信息**
+
+The specified LOW_CODE agent has already been triggered and is not yet completed.
+
+**错误描述**
+
+指定的LOW_CODE类型智能体已触发且尚未完成工作流。
+
+**可能原因**
+
+指定的LOW_CODE类型智能体已触发且尚未完成工作流。
+
+**处理步骤**
+
+调用notifyLowCodeAgentComplete接口结束指定的LOW_CODE类型智能体。
+
+## 35600008 同一应用下AgentCard数量达到了上限
+
+**错误信息**
+
+The number of AgentCards in the bundle reaches the limit.
+
+**错误描述**
+
+同一应用下AgentCard数量达到了上限。
+
+**可能原因**
+
+同一应用下最多只能存在1000张AgentCard，调用agentManager.registerAgentCard接口时已达到此上限。
+
+**处理步骤**
+
+调用agentManager.deleteAgentCard删除不再需要的AgentCard。
+
+<!--Del-->
+## 35600030 CLI工具不存在
+
+**错误信息**
+
+No tool with the specified name exists.
+
+**错误描述**
+
+指定的工具不存在。
+
+**可能原因**
+
+系统内不存在此工具。
+
+**处理步骤**
+
+检查传入的cliName是否正确，需重新传入正确的cliName。
+
+## 35600031 工具并发数已达上限
+
+**错误信息**
+
+Maximum number of processes has been reached.
+
+**错误描述**
+
+工具并发数已达上限。
+
+**可能原因**
+
+系统内正在运行的工具已达到系统允许的上限，不允许再发起新的连接请求。
+
+**处理步骤**
+
+等待部分工具执行结束后重新发起连接。
+
+## 35600032 指定的session不存在
+
+**错误信息**
+
+The session does not exist.
+
+**错误描述**
+
+指定的session不存在。
+
+**可能原因**
+
+传入了错误的sessionId。
+
+**处理步骤**
+
+检查sessionId是否正确，传入正确的sessionId。
+
+## 35600033 向工具进程写入消息失败
+
+**错误信息**
+
+Failed to write message to tool.
+
+**错误描述**
+
+向工具进程写入消息失败。
+
+**可能原因**
+
+write系统调用失败。
+
+**处理步骤**
+
+缓冲区满或对端异常，尝试等待一会重新写入。
+
+## 35600050 偶发性报错
+
+**错误信息**
+
+System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module.
+
+**错误描述**
+
+系统运行过程中出现的一些应用无法解决的偶发性报错。
+
+**可能原因**
+
+1. 不能连接到系统服务。
+2. 系统服务之间通信失败。
+
+**处理步骤**
+
+1. 退出应用后重新尝试。
+2. 重启设备后重新尝试。
+<!--DelEnd-->
+
+## 16000161 当前进程的处理流程尚未结束，无法调用此API
+
+**错误信息**
+
+Delayed process exit is not pending in the current process, and this API cannot be called.
+
+**错误描述**
+
+在当前进程中，由于延迟退出进程未处于等待状态，因此无法调用此API。
+
+**可能原因**
+
+调用方在调用该API前，未启用当前进程延迟退出功能。
+
+**处理步骤**
+
+调用方先调用启用当前进程延迟退出接口，再调用该API。
+
+## 16000162 当前的进程中仍有其他UIAbility，无法调用此API
+
+**错误信息**
+
+The current process still has another UIAbility, and this API cannot be called.
+
+**错误描述**
+
+当前的进程中仍有其他UIAbility，此API无法被调用。
+
+**可能原因**
+
+调用方当前进程中还存在其他的UIAbility。
+
+**处理步骤**
+
+调用方保证当前进程中只有一个UIAbility且处于退出状态。

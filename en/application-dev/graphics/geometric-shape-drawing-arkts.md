@@ -114,7 +114,7 @@ canvas.detachPen();
 
 The effect is as follows:
 
-![image_0000002194025289](figures/image_0000002194025289.png)
+![Drawing-an-Arc](figures/Drawing-an-Arc.png)
 
 
 ## Drawing a Circle
@@ -282,7 +282,7 @@ canvas.detachBrush();
 
 The effect is as follows:
 
-![image_0000002194110921](figures/image_0000002194110921.png)
+![Drawing-a-Rectangle](figures/Drawing-a-Rectangle.png)
 
 
 ## Drawing a Rounded Rectangle
@@ -326,7 +326,7 @@ canvas.detachBrush();
 
 The effect is as follows:
 
-![image_0000002158584406](figures/image_0000002158584406.png)
+![Drawing-a-Rounded-Rectangle](figures/Drawing-a-Rounded-Rectangle.png)
 
 <!--RP1-->
 ## Samples

@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
@@ -160,4 +160,4 @@ export default {
 
 
 
-![zh-cn_image_0000001185033226](figures/zh-cn_image_0000001185033226.png)
+![list](figures/list.png)

@@ -1,9 +1,9 @@
 # AlphabetIndexer
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
-<!--Tester: @lxl007-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 可以与容器组件联动用于按逻辑结构快速定位容器显示区域的组件。
@@ -26,9 +26,11 @@ AlphabetIndexer(options: AlphabetIndexerOptions)
 
 创建索引条组件。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 7
 
@@ -48,7 +50,9 @@ AlphabetIndexer(options: AlphabetIndexerOptions)
 >
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,8 +62,8 @@ AlphabetIndexer(options: AlphabetIndexerOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
-| arrayValue<sup>7+</sup> | Array&lt;string&gt; | 否 | 否 | 字符串数组，每个字符串代表一个索引项。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| selected<sup>7+</sup>   | ArkTS-Dyn: number<br/>ArkTS-Sta: int             | 否 | 否    | 初始选中项索引值，若超出索引值范围，则取默认值0。与[selected](#selected8)属性同时设置时，selected属性的优先级较高。<br/>取值范围：[0, arrayValue.length-1]<br/>该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| arrayValue<sup>7+</sup> | Array&lt;string&gt; | 否 | 否 | 字符串数组，每个字符串代表一个索引项。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| selected<sup>7+</sup>   | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| Bindable\<int>            | 否 | 否    | 初始选中项索引值，若超出索引值范围，则取默认值0。与[selected](#selected8)属性同时设置时，selected属性的优先级较高。<br/>取值范围：[0, arrayValue.length-1]<br/>该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 属性
 
@@ -79,7 +83,7 @@ ArkTS-Sta: color(value: ResourceColor | undefined)
 
 设置未选中项文本颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,7 +95,7 @@ ArkTS-Sta: color(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \|  undefined| 是   | 未选中项文本颜色。<br/>默认值：0x99182431，显示为略带透明的棕色 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \|  undefined| 是   | 未选中项文本颜色。<br/>默认值：0x99182431，显示为略带透明的棕色。<br/>取值为undefined时，按默认值处理。 |
 
 ### selectedColor
 
@@ -101,7 +105,7 @@ ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
 设置选中项文本颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,7 +117,7 @@ ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 选中项文本颜色。<br/>默认值：0xFF007DFF，显示为蓝色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 选中项文本颜色。<br/>默认值：0xFF007DFF，显示为半透明蓝色。<br/>取值为undefined时，按默认值处理。 |
 
 ### popupColor
 
@@ -123,7 +127,7 @@ ArkTS-Sta: popupColor(value: ResourceColor | undefined)
 
 设置提示弹窗一级索引项文本颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,7 +139,7 @@ ArkTS-Sta: popupColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 提示弹窗一级索引项文本颜色。<br/>默认值：0xFF007DFF，显示为蓝色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 提示弹窗一级索引项文本颜色。<br/>默认值：0xFF007DFF，显示为半透明蓝色。<br/>取值为undefined时，按默认值处理。 |
 
 ### selectedBackgroundColor
 
@@ -145,7 +149,7 @@ ArkTS-Sta: selectedBackgroundColor(value: ResourceColor | undefined)
 
 设置选中项背景颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -157,7 +161,7 @@ ArkTS-Sta: selectedBackgroundColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 选中项背景颜色。<br/>默认值：0x1A007DFF，显示为半透明的蓝绿色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 选中项背景颜色。<br/>默认值：0x1A007DFF，显示为半透明的蓝绿色。<br/>取值为undefined时，按默认值处理。 |
 
 ### popupBackground
 
@@ -167,7 +171,7 @@ ArkTS-Sta: popupBackground(value: ResourceColor | undefined)
 
 设置提示弹窗背景颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -179,7 +183,7 @@ ArkTS-Sta: popupBackground(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 提示弹窗背景颜色。<br/>弹窗的背景模糊材质效果会对背景色产生影响，可通过设置[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)属性值为NONE关闭背景模糊材质效果。<br/>默认值：<br />API version 11及以前：0xFFFFFFFF，显示为白色。<br />API version 12及以后：#66808080，显示为半透明的灰色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 提示弹窗背景颜色。<br/>弹窗的背景模糊材质效果会对背景色产生影响，可通过设置[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)属性值为NONE关闭背景模糊材质效果。<br/>默认值：<br />API version 11及以前：0xFFFFFFFF，显示为白色。<br />API version 12及以后：#66808080，显示为半透明的灰色。<br/>取值为undefined时，按默认值处理。 |
 
 ### usingPopup
 
@@ -189,7 +193,7 @@ ArkTS-Sta: usingPopup(value: boolean | undefined)
 
 设置是否显示提示弹窗。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -201,7 +205,7 @@ ArkTS-Sta: usingPopup(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------- | ---- | -------------------------------------- |
-| value  | ArkTS-Dyn: boolean <br/>  ArkTS-Sta: boolean \| undefined | 是   | 是否显示提示弹窗。<br/>默认值：false <br/>true：显示提示弹窗。<br/>false：不显示提示弹窗。 |
+| value  | ArkTS-Dyn: boolean <br/>  ArkTS-Sta: boolean \| undefined | 是   | 是否显示提示弹窗。<br/>默认值：false <br/>true：显示提示弹窗。<br/>false：不显示提示弹窗。<br/>取值为undefined时，按默认值处理。 |
 
 ### selectedFont
 
@@ -211,7 +215,7 @@ ArkTS-Sta: selectedFont(value: Font | undefined)
 
 设置选中项文本样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -223,7 +227,7 @@ ArkTS-Sta: selectedFont(value: Font | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 选中项文本样式。<br/>默认值：<br/>API version 11及以前：<br/>{<br/>size:'12.0fp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Regular,<br/> family:'HarmonyOS Sans'<br/>}<br/>API version 12及以后：<br/>{<br/>size:'10.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>} |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font) <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 选中项文本样式。<br/>默认值：<br/>API version 11及以前：<br/>{<br/>size:'12.0fp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Regular,<br/> family:'HarmonyOS Sans'<br/>}<br/>API version 12及以后：<br/>{<br/>size:'10.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>}<br/>取值为undefined时，按默认值处理。 |
 
 ### popupFont
 
@@ -233,7 +237,7 @@ ArkTS-Sta: popupFont(value: Font | undefined)
 
 设置提示弹窗一级索引文本样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -245,7 +249,7 @@ ArkTS-Sta: popupFont(value: Font | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Font](ts-types.md#font)  <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 提示弹窗一级索引文本样式。<br/>默认值：<br/>{<br/>size:'24.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>} |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font)  <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 提示弹窗一级索引文本样式。<br/>默认值：<br/>{<br/>size:'24.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>}<br/>取值为undefined时，按默认值处理。 |
 
 ### font
 
@@ -255,7 +259,7 @@ ArkTS-Sta: font(value: Font | undefined)
 
 设置未选中项文本样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -267,7 +271,7 @@ ArkTS-Sta: font(value: Font | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Font](ts-types.md#font)  <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 未选中索引项文本样式。<br/>默认值：<br/>API version 11及以前：<br/>{<br/>size:'12.0fp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Regular,<br/> family:'HarmonyOS Sans'<br/>}<br/>API version 12及以后：<br/>{<br/>size:'10.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>} |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font)  <br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 未选中索引项文本样式。<br/>默认值：<br/>API version 11及以前：<br/>{<br/>size:'12.0fp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Regular,<br/> family:'HarmonyOS Sans'<br/>}<br/>API version 12及以后：<br/>{<br/>size:'10.0vp',<br/> style:FontStyle.Normal,<br/> weight:FontWeight.Medium,<br/> family:'HarmonyOS Sans'<br/>}<br/>取值为undefined时，按默认值处理。 |
 
 ### itemSize
 
@@ -277,7 +281,7 @@ ArkTS-Sta: itemSize(value: string | double | undefined)
 
 设置索引项区域大小。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -289,7 +293,7 @@ ArkTS-Sta: itemSize(value: string | double | undefined)
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;number  <br/>  ArkTS-Sta: string&nbsp;\|&nbsp;double \| undefined| 是   | 索引项区域大小，索引项区域为正方形，即正方形边长。不支持设置为百分比。<br/>实际取值会受到组件尺寸的约束，索引项宽度最大为组件宽度-左右[padding](ts-universal-attributes-size.md#padding)，索引项高度最大为（组件高度-上下[padding](ts-universal-attributes-size.md#padding)）/索引项个数。传入值小于等于0时，按照默认值处理。<br/>默认值：16.0<br/>单位：vp |
+| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;number  <br/>  ArkTS-Sta: string&nbsp;\|&nbsp;double \| undefined| 是   | 索引项区域大小，索引项区域为正方形，即正方形边长。不支持设置为百分比。<br/>实际取值会受到组件尺寸的约束，索引项宽度最大为组件宽度-左右[padding](ts-universal-attributes-size.md#padding)，索引项高度最大为（组件高度-上下[padding](ts-universal-attributes-size.md#padding)）/索引项个数。传入值小于等于0时，按照默认值处理。<br/>默认值：16.0<br/>单位：vp<br/>取值为undefined时，按默认值处理。 |
 
 ### alignStyle
 
@@ -299,7 +303,7 @@ ArkTS-Sta: alignStyle(value: IndexerAlign | undefined, offset?: Length | undefin
 
 设置索引条提示弹窗的对齐样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -311,20 +315,20 @@ ArkTS-Sta: alignStyle(value: IndexerAlign | undefined, offset?: Length | undefin
 
 | 参数名               | 类型                                  | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| value                | ArkTS-Dyn: [IndexerAlign](#indexeralign枚举说明)  <br/>  ArkTS-Sta: [IndexerAlign](#indexeralign枚举说明) \| undefined| 是   | 索引条提示弹窗的对齐样式，支持弹窗显示在索引条右侧和左侧。<br/>默认值: IndexerAlign.END。 |
-| offset<sup>10+</sup> | ArkTS-Dyn: [Length](ts-types.md#length) <br/>  ArkTS-Sta: [Length](ts-types.md#length) \| undefined          | 否   | 提示弹窗与索引条之间间距，大于等于0为有效值，在不设置或设置为小于0的情况下间距与popupPosition.x相同。与popupPosition同时设置时，水平方向上offset生效，竖直方向上popupPosition.y生效。 |
+| value                | ArkTS-Dyn: [IndexerAlign](#indexeralign枚举说明)  <br/>  ArkTS-Sta: [IndexerAlign](#indexeralign枚举说明) \| undefined| 是   | 索引条提示弹窗的对齐样式，支持弹窗显示在索引条右侧和左侧。<br/>默认值: IndexerAlign.END。<br/>取值为undefined时，按默认值处理。 |
+| offset<sup>10+</sup> | ArkTS-Dyn: [Length](ts-types.md#length) <br/>  ArkTS-Sta: [Length](ts-types.md#length) \| undefined          | 否   | 提示弹窗与索引条之间间距，大于等于0为有效值，在不设置或设置为小于0的情况下间距与popupPosition.x相同。与popupPosition同时设置时，水平方向上offset生效，竖直方向上popupPosition.y生效。<br/>取值为undefined时，按默认值处理。 |
 
 ### selected<sup>8+</sup>
 
 ArkTS-Dyn: selected(index: number)
 
-ArkTS-Sta: selected(index: int | Bindable\<int> | undefined)
+ArkTS-Sta: selected(index: int \| Bindable\<int> \| undefined)
 
 设置选中项索引值。
 
 从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -336,7 +340,7 @@ ArkTS-Sta: selected(index: int | Bindable\<int> | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| index  | ArkTS-Dyn: number  <br/>  ArkTS-Sta: int \| Bindable<int\> \| undefined| 是   | 选中项索引值。<br/>默认值：0 |
+| index  | ArkTS-Dyn: number  <br/>  ArkTS-Sta: int \| Bindable<int\> \| undefined| 是   | 选中项索引值。<br/>默认值：0<br/>取值为undefined时，按默认值处理。 |
 
 ### popupPosition<sup>8+</sup>
 
@@ -346,7 +350,7 @@ ArkTS-Sta: popupPosition(value: Position | undefined)
 
 设置弹出窗口相对于索引条上边框中点的位置。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -358,7 +362,7 @@ ArkTS-Sta: popupPosition(value: Position | undefined)
 
 | 参数名 | 类型                              | 必填 | 说明                                                         |
 | ------ | --------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Position](ts-types.md#position) <br/>  ArkTS-Sta: [Position](ts-types.md#position) \| undefined| 是   | 弹出窗口相对于索引条上边框中点的位置。<br/>默认值：{x:60.0, y:48.0} |
+| value  | ArkTS-Dyn: [Position](ts-types.md#position) <br/>  ArkTS-Sta: [Position](ts-types.md#position) \| undefined| 是   | 弹出窗口相对于索引条上边框中点的位置。<br/>默认值：{x:60.0, y:48.0}<br/>取值为undefined时，按默认值处理。 |
 
 ### popupSelectedColor<sup>10+</sup>
 
@@ -368,7 +372,9 @@ ArkTS-Sta: popupSelectedColor(value: ResourceColor | undefined)
 
 设置提示弹窗二级索引选中项文本颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -380,7 +386,7 @@ ArkTS-Sta: popupSelectedColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                  |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431<br/>取值为undefined时，按默认值处理。 |
 
 ### popupUnselectedColor<sup>10+</sup>
 
@@ -390,7 +396,9 @@ ArkTS-Sta: popupUnselectedColor(value: ResourceColor | undefined)
 
 设置提示弹窗二级索引未选中项文本颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -402,7 +410,7 @@ ArkTS-Sta: popupUnselectedColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                    |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431<br/>取值为undefined时，按默认值处理。 |
 
 ### popupItemFont<sup>10+</sup>
 
@@ -412,7 +420,9 @@ ArkTS-Sta: popupItemFont(value: Font | undefined)
 
 设置提示弹窗二级索引项文本样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -424,7 +434,7 @@ ArkTS-Sta: popupItemFont(value: Font | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明                                                         |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Font](ts-types.md#font)<br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 提示弹窗二级索引项文本样式。 <br/>默认值：<br/>{<br/>size:24,<br/>weight:FontWeight.Medium<br/>} |
+| value  | ArkTS-Dyn: [Font](ts-types.md#font)<br/>  ArkTS-Sta: [Font](ts-types.md#font) \| undefined| 是   | 提示弹窗二级索引项文本样式。 <br/>默认值：<br/>{<br/>size:24,<br/>weight:FontWeight.Medium<br/>}<br/>取值为undefined时，按默认值处理。 |
 
 ### popupItemBackgroundColor<sup>10+</sup>
 
@@ -434,7 +444,9 @@ ArkTS-Sta: popupItemBackgroundColor(value: ResourceColor | undefined)
 
 设置提示弹窗二级索引项背景颜色。 
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -446,7 +458,7 @@ ArkTS-Sta: popupItemBackgroundColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                     | 必填 | 说明                                            |
 | ------ | ------------------------ | ---- | ----------------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引项背景颜色。 <br/>默认值：<br />API version 11及以前：#FFFFFFFF，显示为白色。<br />API version 12及以后：#00000000，显示为透明色。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 提示弹窗二级索引项背景颜色。 <br/>默认值：<br />API version 11及以前：#FFFFFFFF，显示为白色。<br />API version 12及以后：#00000000，显示为透明色。<br/>取值为undefined时，按默认值处理。 |
 
 ### autoCollapse<sup>11+</sup>   
 
@@ -464,7 +476,9 @@ ArkTS-Sta: autoCollapse(value: boolean | undefined)
 >
 > 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -476,7 +490,7 @@ ArkTS-Sta: autoCollapse(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | ArkTS-Dyn: boolean <br/>  ArkTS-Sta: boolean \| undefined| 是   | 是否使用自适应折叠模式。<br/>默认值：<br />API version 12之前：false，不使用自适应折叠模式。<br />API version 12及之后：true <br/>true：使用自适应折叠模式。<br/>false：不使用自适应折叠模式。 |
+| value  | ArkTS-Dyn: boolean <br/>  ArkTS-Sta: boolean \| undefined| 是   | 是否使用自适应折叠模式。<br/>默认值：<br />API version 12之前：false，不使用自适应折叠模式。<br />API version 12及之后：true <br/>true：使用自适应折叠模式。<br/>false：不使用自适应折叠模式。<br/>取值为undefined时，按默认值处理。 |
 
 ### popupItemBorderRadius<sup>12+</sup>   
 
@@ -486,7 +500,9 @@ ArkTS-Sta: popupItemBorderRadius(value: double | undefined)
 
 设置提示弹窗索引项背板圆角半径。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -498,7 +514,7 @@ ArkTS-Sta: popupItemBorderRadius(value: double | undefined)
 
 | 参数名 |   类型   | 必填 | 说明                                                         |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number <br/>  ArkTS-Sta: double \|undefined| 是   | 设置提示弹窗索引项背板圆角半径。<br/>默认值：24vp<br/>不支持百分比，小于0时按照0设置。<br/>提示弹窗背板圆角自适应变化（索引项圆角半径+4vp）。 |
+| value  | ArkTS-Dyn: number <br/>  ArkTS-Sta: double \|undefined| 是   | 设置提示弹窗索引项背板圆角半径。<br/>默认值：24vp<br/>不支持百分比，小于0时按照0设置。<br/>提示弹窗背板圆角自适应变化（索引项圆角半径+4vp）。<br/>取值为undefined时，按默认值处理。 |
 
 ### itemBorderRadius<sup>12+</sup>   
 
@@ -508,7 +524,9 @@ ArkTS-Sta: itemBorderRadius(value: double | undefined)
 
 设置索引项背板圆角半径。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -520,7 +538,7 @@ ArkTS-Sta: itemBorderRadius(value: double | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number <br/>  ArkTS-Sta: double \| undefined | 是   | 设置索引项背板圆角半径。<br/>默认值：8vp<br/>不支持百分比，小于0时按照0设置。<br/>索引条背板圆角自适应变化（索引项圆角半径+4vp）。 |
+| value  | ArkTS-Dyn: number <br/>  ArkTS-Sta: double \| undefined | 是   | 设置索引项背板圆角半径。<br/>默认值：8vp<br/>不支持百分比，小于0时按照0设置。<br/>索引条背板圆角自适应变化（索引项圆角半径+4vp）。<br/>取值为undefined时，按默认值处理。 |
 
 ### popupBackgroundBlurStyle<sup>12+</sup>   
 
@@ -530,7 +548,9 @@ ArkTS-Sta: popupBackgroundBlurStyle(value: BlurStyle | undefined)
 
 设置提示弹窗的背景模糊材质。未通过该接口设置时，默认为组件普通材质模糊，对应取值为BlurStyle中的COMPONENT_REGULAR。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -542,7 +562,7 @@ ArkTS-Sta: popupBackgroundBlurStyle(value: BlurStyle | undefined)
 
 | 参数名 | 类型                                         | 必填 | 说明                                                         |
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [BlurStyle](ts-universal-attributes-background.md#blurstyle9)  <br/>  ArkTS-Sta: [BlurStyle](ts-universal-attributes-background.md#blurstyle9) \| undefined| 是   | 设置提示弹窗的背景模糊材质。<br/>弹窗的背景模糊材质效果会对背景色[popupBackground](#popupbackground)产生影响，可通过设置属性值为NONE关闭背景模糊材质效果。<br/>默认值：COMPONENT_REGULAR。 |
+| value  | ArkTS-Dyn: [BlurStyle](ts-universal-attributes-background.md#blurstyle9)  <br/>  ArkTS-Sta: [BlurStyle](ts-universal-attributes-background.md#blurstyle9) \| undefined| 是   | 设置提示弹窗的背景模糊材质。<br/>弹窗的背景模糊材质效果会对背景色[popupBackground](#popupbackground)产生影响，可通过设置属性值为NONE关闭背景模糊材质效果。<br/>默认值：COMPONENT_REGULAR<br/>取值为undefined时，按默认值处理。 |
 
 ### popupTitleBackground<sup>12+</sup>   
 
@@ -552,7 +572,9 @@ ArkTS-Sta: popupTitleBackground(value: ResourceColor | undefined)
 
 设置提示弹窗一级索引项背景颜色。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -564,7 +586,7 @@ ArkTS-Sta: popupTitleBackground(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 设置提示弹窗一级索引项背景颜色。<br/>默认值：<br/>提示弹窗只有一个索引项：#00FFFFFF。<br/>提示弹窗有多个索引项：#0c182431。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 设置提示弹窗一级索引项背景颜色。<br/>默认值：<br/>提示弹窗只有一个索引项：#00FFFFFF。<br/>提示弹窗有多个索引项：#0c182431。<br/>取值为undefined时，按默认值处理。 |
 
 ### enableHapticFeedback<sup>12+</sup>
 
@@ -574,7 +596,9 @@ ArkTS-Sta: enableHapticFeedback(value: boolean | undefined)
 
 设置是否开启触控反馈。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -586,7 +610,7 @@ ArkTS-Sta: enableHapticFeedback(value: boolean | undefined)
 
 | 参数名         | 类型                                                  | 必填 | 说明                         |
 |-------------|-----------------------------------------------------|----|----------------------------|
-| value | ArkTS-Dyn: boolean<br/>  ArkTS-Sta: boolean \| undefined | 是  | 是否支持触控反馈。<br/>true：支持触控反馈。<br/>false：不支持触控反馈。<br/>默认值：true<br/>开启触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段开启振动权限，配置如下：<br/>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}]  |
+| value | ArkTS-Dyn: boolean<br/>  ArkTS-Sta: boolean \| undefined | 是  | 是否支持触控反馈。<br/>默认值：true<br/>true：开启触控反馈；false：不开启触控反馈。<br/>取值为undefined时，按默认值处理。<br/>开启触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段开启振动权限，配置如下：<br/>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
 
 ### attributeModifier<sup>23+</sup>
 
@@ -604,7 +628,7 @@ attributeModifier(modifier: AttributeModifier\<AlphabetIndexerAttribute> | Attri
 
 | 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
 | -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
-| modifier | [AttributeModifier\<AlphabetIndexerAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。 |
+| modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<AlphabetIndexerAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>取值为undefined时，按当前组件的属性方法默认值处理。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>AlphabetIndexerAttribute：当前组件的[属性](#属性)和[事件](#事件)。 |
 
 ## IndexerAlign枚举说明
 
@@ -614,10 +638,10 @@ attributeModifier(modifier: AttributeModifier\<AlphabetIndexerAttribute> | Attri
 
 | 名称 | 值 | 说明 |
 | -------- | --- | ----- |
-| Left | 0 | 提示弹窗显示在索引条右侧。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23|
-| Right | 1 | 提示弹窗显示在索引条左侧。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23|
-| START<sup>12+</sup> | 2 | 在从左到右（LTR）场景下，提示弹窗显示在索引条右侧的位置。在RTL场景下，提示弹窗显示在索引条左侧的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| END<sup>12+</sup> | 3 | 在从左到右（LTR）场景下，提示弹窗显示在索引条左侧的位置。在RTL场景下，提示弹窗显示在索引条右侧的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| Left | 0 | 提示弹窗显示在索引条右侧。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23|
+| Right | 1 | 提示弹窗显示在索引条左侧。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23|
+| START<sup>12+</sup> | 2 | 在从左到右（LTR）场景下，提示弹窗显示在索引条右侧的位置。在RTL场景下，提示弹窗显示在索引条左侧的位置。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| END<sup>12+</sup> | 3 | 在从左到右（LTR）场景下，提示弹窗显示在索引条左侧的位置。在RTL场景下，提示弹窗显示在索引条右侧的位置。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 
 ## 事件
 
@@ -653,7 +677,7 @@ ArkTS-Sta: onSelect(callback: OnAlphabetIndexerSelectCallback | undefined)
 
 索引项选中事件，回调参数为当前选中项索引。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -665,7 +689,7 @@ ArkTS-Sta: onSelect(callback: OnAlphabetIndexerSelectCallback | undefined)
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| callback  | ArkTS-Dyn: [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18)  <br/>  ArkTS-Sta: [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18) \| undefined| 是   | 索引项选中事件。 |
+| callback  | ArkTS-Dyn: [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18)  <br/>  ArkTS-Sta: [OnAlphabetIndexerSelectCallback](#onalphabetindexerselectcallback18) \| undefined| 是   | 索引项选中事件。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onRequestPopupData<sup>8+</sup>
 
@@ -675,7 +699,7 @@ ArkTS-Sta: onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallbac
 
 设置提示弹窗二级索引项内容事件，回调参数为当前选中项索引，回调返回值为提示弹窗需显示的二级索引项内容。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -687,7 +711,7 @@ ArkTS-Sta: onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallbac
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callback  | ArkTS-Dyn: [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) <br/>  ArkTS-Sta: [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) \| undefined| 是   | 设置提示弹窗二级索引项内容事件。 |
+| callback  | ArkTS-Dyn: [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) <br/>  ArkTS-Sta: [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) \| undefined| 是   | 设置提示弹窗二级索引项内容事件。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onPopupSelect<sup>8+</sup>
 
@@ -697,7 +721,7 @@ ArkTS-Sta: onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback | undefi
 
 提示弹窗二级索引选中事件，回调参数为当前选中二级索引项索引。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -709,7 +733,7 @@ ArkTS-Sta: onPopupSelect(callback: OnAlphabetIndexerPopupSelectCallback | undefi
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| callback  | ArkTS-Dyn: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18)<br/>  ArkTS-Sta: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18) \| undefined| 是   | 提示弹窗二级索引选中事件。 |
+| callback  | ArkTS-Dyn: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18)<br/>  ArkTS-Sta: [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18) \| undefined| 是   | 提示弹窗二级索引选中事件。<br/>取值为undefined时，不使用回调函数。 |
 
 ## OnAlphabetIndexerSelectCallback<sup>18+</sup>
 
@@ -719,7 +743,9 @@ ArkTS-Sta: type OnAlphabetIndexerSelectCallback = (index: int) => void
 
 索引项被选中时触发的事件。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -740,7 +766,9 @@ ArkTS-Sta: type OnAlphabetIndexerPopupSelectCallback = (index: int) => void
 
 提示弹窗二级索引项被选中时触发的事件。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -761,7 +789,9 @@ ArkTS-Sta: type OnAlphabetIndexerRequestPopupDataCallback = (index: int) => Arra
 
 [usingPopup](#usingpopup)设置值为true，索引项被选中时触发的事件。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

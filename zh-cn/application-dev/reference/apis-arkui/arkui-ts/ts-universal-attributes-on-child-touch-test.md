@@ -10,13 +10,19 @@
 
 > **说明：**
 >
-> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - onClick和旋转、捏合手势经过自定义事件分发后，可能会因为未命中触摸热区导致事件不响应。
 
 ## onChildTouchTest<sup>11+</sup>
 
-onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
+ArkTS-Dyn: onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
+
+ArkTS-Sta: onChildTouchTest(event: ((value: Array&lt;TouchTestInfo&gt;) => TouchResult) | undefined): this
 
 当前组件通过设置回调，可自定义触摸测试并控制触摸测试中的子节点行为。
 
@@ -26,38 +32,46 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 >
 > - 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                   |
 | ------ | ------------------------------------------ | ---- | ---------------------- |
-| event  | (value: Array<[TouchTestInfo>](#touchtestinfo11)) => TouchResult | 是   | 触摸事件信息。value的值为包含子节点信息的数组。 |
+| event  | ArkTS-Dyn: (value: Array<[TouchTestInfo](#touchtestinfo11)>) => TouchResult<br/>ArkTS-Sta: ((value: Array<[TouchTestInfo](#touchtestinfo11)>) => TouchResult) \| undefined | 是   | 触摸事件信息。value的值为包含子节点信息的数组。<br/>传入undefined时无效果。 |
 
-**返回值：** 
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## TouchTestInfo<sup>11+</sup>
 
 当前屏幕触点所在组件的坐标系、id和尺寸相关信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 类型  | 只读    | 可选   |  说明                                       |
 | ------------- | ------ | ------ | ------ | ---------------------------------------- |
-| windowX | number | 否 | 否| 按压点相对于窗口左上角的x轴坐标。<br />单位：vp |
-| windowY   | number| 否 |否|按压点相对于窗口左上角的y轴坐标。<br />单位：vp|
-| parentX   | number| 否  |否|按压点相对于父组件左上角的x轴坐标。<br />单位：vp  |
-| parentY   | number| 否 |否|按压点相对于父组件左上角的y轴坐标。<br />单位：vp  |
-| x   | number| 否  | 否|按压点相对于子组件左上角的x轴坐标。<br />单位：vp |
-| y   | number| 否  |否| 按压点相对于子组件左上角的y轴坐标。<br />单位：vp |
+| windowX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否| 按压点相对于窗口左上角的x轴坐标。<br />单位：vp |
+| windowY   | ArkTS-Dyn: number<br/>ArkTS-Sta: double| 否 |否|按压点相对于窗口左上角的y轴坐标。<br />单位：vp|
+| parentX   | ArkTS-Dyn: number<br/>ArkTS-Sta: double| 否  |否|按压点相对于父组件左上角的x轴坐标。<br />单位：vp  |
+| parentY   | ArkTS-Dyn: number<br/>ArkTS-Sta: double| 否 |否|按压点相对于父组件左上角的y轴坐标。<br />单位：vp  |
+| x   | ArkTS-Dyn: number<br/>ArkTS-Sta: double| 否  | 否|按压点相对于子组件左上角的x轴坐标。<br />单位：vp |
+| y   | ArkTS-Dyn: number<br/>ArkTS-Sta: double| 否  |否| 按压点相对于子组件左上角的y轴坐标。<br />单位：vp |
 | rect   | [RectResult](#rectresult)| 否  |否|子组件的位置和宽高。  |
 | [id](ts-universal-attributes-component-id.md#id)   | string| 否  | 否|子组件的唯一标识。 |
 
@@ -65,24 +79,32 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 位置和尺寸类型，用于描述组件的位置和宽高。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型   | 只读 | 可选  | 说明 |
 | ------- | ------ | ----- | -------- | ---------- |
-| x     | number | 否 | 否 | 水平方向横坐标。<br />单位：vp |
-| y     | number |  否 | 否 | 竖直方向纵坐标。<br />单位：vp |
-| width | number | 否 | 否 | 内容宽度大小。<br />单位：vp |
-| height | number | 否 | 否 | 内容高度大小。<br />单位：vp |
+| x     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 水平方向横坐标。<br />单位：vp |
+| y     | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否 | 否 | 竖直方向纵坐标。<br />单位：vp |
+| width | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 内容宽度大小。<br />单位：vp |
+| height | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 内容高度大小。<br />单位：vp |
 
 ## TouchResult<sup>11+</sup>
 
 自定义事件分发结果，开发者通过返回结果来影响事件分发。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                                     | 只读    | 可选   |  说明                                |
 | --------- | --------- | ---- |--------------------------------------- | ---- |
@@ -93,11 +115,15 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 事件派发策略。
 
-**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值    |说明                                       |
 | ------------| ---------| ----------------------------------------- |

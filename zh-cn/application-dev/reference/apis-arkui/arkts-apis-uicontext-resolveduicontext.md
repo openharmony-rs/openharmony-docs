@@ -1,8 +1,8 @@
 # Class (ResolvedUIContext)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,12 +14,17 @@ ResolvedUIContext实例对象。
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 > - ResolvedUIContext继承自[UIContext](arkts-apis-uicontext-uicontext.md)，该类对象包含[UIContext](arkts-apis-uicontext-uicontext.md)实例和[UIContext](arkts-apis-uicontext-uicontext.md)的解析策略。
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 属性
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型                                                      | 只读 | 可选 | 说明                                |
 | --------- | --------------------------------------------------------- | ---- | ---- | ---------------------------------- |

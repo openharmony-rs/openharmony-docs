@@ -5,7 +5,7 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供延迟任务回调能力。开发者可重写模块接口，在延迟任务触发时，系统可通过本模块接口回调应用，在回调里处理任务逻辑。
 
@@ -75,12 +75,28 @@ onWorkStart(work: workScheduler.WorkInfo): void
 
 **示例：** 
 
+ArkTS-Dyn示例：
+
 ```ts
 import { workScheduler } from '@kit.BackgroundTasksKit';
 import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
   onWorkStart(workInfo: workScheduler.WorkInfo) {
+    console.info(`MyWorkSchedulerExtensionAbility onWorkStart, workId: ${workInfo.workId},
+          bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { workScheduler } from '@kit.BackgroundTasksKit';
+import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
+
+export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
+  onWorkStart(workInfo: workScheduler.WorkInfo): void {
     console.info(`MyWorkSchedulerExtensionAbility onWorkStart, workId: ${workInfo.workId},
           bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
   }
@@ -108,12 +124,28 @@ onWorkStop(work: workScheduler.WorkInfo): void
 
 **示例：** 
 
+ArkTS-Dyn示例：
+
 ```ts
 import { workScheduler } from '@kit.BackgroundTasksKit';
 import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
   onWorkStop(workInfo: workScheduler.WorkInfo) {
+    console.info(`MyWorkSchedulerExtensionAbility onWorkStop, workId: ${workInfo.workId},
+          bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { workScheduler } from '@kit.BackgroundTasksKit';
+import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
+
+export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
+  onWorkStop(workInfo: workScheduler.WorkInfo): void {
     console.info(`MyWorkSchedulerExtensionAbility onWorkStop, workId: ${workInfo.workId},
           bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
   }

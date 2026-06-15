@@ -1,8 +1,8 @@
 # TaskPool任务与宿主线程通信
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -39,7 +39,7 @@
    }
    ```
 
-   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->
+   <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) --> 
    
    ``` TypeScript
    import { taskpool } from '@kit.ArkTS';
@@ -82,13 +82,13 @@
              .fontWeight(FontWeight.Bold)
              .onClick(() => {
                let iconItemSourceList: IconItemSource[];
-               let lodePictureTask: taskpool.Task = new taskpool.Task(loadPictureSendData, 30);
+               let loadPictureTask: taskpool.Task = new taskpool.Task(loadPictureSendData, 30);
                // 设置notice方法接收Task发送的消息
-               lodePictureTask.onReceiveData(notice);
-               taskpool.execute(lodePictureTask).then((res: object) => {
+               loadPictureTask.onReceiveData(notice);
+               taskpool.execute(loadPictureTask).then((res: object) => {
                  iconItemSourceList = res as IconItemSource[];
+                 this.message = 'success';
                })
-               this.message = 'success';
              })
          }
          .width('100%')

@@ -3,16 +3,18 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy; @yangxuguang-huawei; @Luobniz21-->
 <!--Designer: @ccllee1; @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ContextConstant提供Context相关的枚举，包含文件加密分区等级、UIAbility启动后的进程模式等。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -28,11 +30,11 @@ import { contextConstant } from '@kit.AbilityKit';
 
 | 名称  | 值 | 说明                                                                                                                   |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
-| EL1 | 0 | 设备级加密区，设备开机后可访问的数据区。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。    |
-| EL2 | 1 | 用户级加密区，设备开机，首次输入密码后才能够访问的数据区。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。       |
-| EL3<sup>11+<sup> | 2 | 用户级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，可读写；解锁后，可读写。<br/>未打开文件：锁屏时，不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，可创建、可打开、可写不可读；解锁后，可创建、可打开、可读写。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| EL4<sup>11+<sup> | 3 | 用户级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，不可读写；解锁后，可读写。<br/>未打开文件：锁屏时，不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，不可创建；解锁后，可创建、可打开、可读写。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。  |
-| EL5<sup>12+<sup> | 4 | 应用级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，可读写；解锁后，可读写。<br/>未打开文件：锁屏时，调用[Access](js-apis-screenLockFileManager.md#screenlockfilemanageracquireaccess)接口获取保留密钥后，可打开、可读写，否则不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，可创建、可打开、可读写；解锁后，可创建、可打开、可读写。<br/>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| EL1 | 0 | 设备级加密区，设备开机后可访问的数据区。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| EL2 | 1 | 用户级加密区，设备开机，首次输入密码后才能够访问的数据区。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| EL3<sup>11+</sup> | 2 | 用户级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，可读写；解锁后，可读写。<br/>未打开文件：锁屏时，不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，可创建、可打开、可写不可读；解锁后，可创建、可打开、可读写。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| EL4<sup>11+</sup> | 3 | 用户级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，不可读写；解锁后，可读写。<br/>未打开文件：锁屏时，不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，不可创建；解锁后，可创建、可打开、可读写。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| EL5<sup>12+</sup> | 4 | 应用级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，可读写；解锁后，可读写。<br/>未打开文件：锁屏时，调用[Access](js-apis-screenLockFileManager.md#screenlockfilemanageracquireaccess)接口获取保留密钥后，可打开、可读写，否则不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，可创建、可打开、可读写；解锁后，可创建、可打开、可读写。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 
 ## ProcessMode<sup>12+</sup>
@@ -44,6 +46,10 @@ ProcessMode作为[StartOptions](js-apis-app-ability-startOptions.md)的一个属
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该功能仅在2in1和Tablet设备上生效，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值 | 说明                                                                                                                   |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
@@ -70,10 +76,10 @@ ProcessMode作为[StartOptions](js-apis-app-ability-startOptions.md)的一个属
       };
 
       try {
-        this.context.startAbility(want, options, (err: BusinessError) => {
-          if (err.code) {
+        this.context.startAbility(want, options, (err: BusinessError<void> | null) => {
+          if (err) {
             // 处理业务逻辑错误
-            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            console.error(`startAbility failed: ${JSON.stringify(err)}`);
             return;
           }
           // 执行正常业务
@@ -101,6 +107,10 @@ StartupVisibility作为[StartOptions](js-apis-app-ability-startOptions.md)的一
 
 **设备行为差异**：该功能仅在2in1和Tablet设备上生效，在其他设备中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 值 | 说明                                                                                                                   |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
 | STARTUP_HIDE | 0 | 目标UIAbility启动后，进入隐藏状态。不会调用UIAbility的onForeground生命周期。        |
@@ -114,9 +124,13 @@ StartupVisibility作为[StartOptions](js-apis-app-ability-startOptions.md)的一
 
 表示不触发[onNewWant](./js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调场景的枚举，用于[setOnNewWantSkipScenarios](./js-apis-inner-application-uiAbilityContext.md#setonnewwantskipscenarios20)接口。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值 | 说明                                                                                                                   |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
@@ -156,13 +170,17 @@ export default class EntryAbility extends UIAbility {
 
 ## ContextType
 
-表示常见Context类型的枚举，用于[contextType](./js-apis-inner-application-context.md#contexttype)接口。
+表示常见Context类型的枚举，用于[isContextOf](./js-apis-inner-application-context.md#iscontextof)接口。
 
-**起始版本**：26.0.0
-
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称  | 值 | 说明                                                                                                                   |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
@@ -181,7 +199,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class EntryAbility extends UIAbility {
   onCreate() {
     hilog.info(0x0000, 'testTag', `%{public}s`, 'Ability onCreate');
-    let result = this.context.contextType(contextConstant.ContextType.UIABILITY_CONTEXT);
+    let result = this.context.isContextOf(contextConstant.ContextType.UIABILITY_CONTEXT);
     hilog.info(0x0000, 'testTag', `match contextType result is:%{public}s`, JSON.stringify(result));
   }
 }

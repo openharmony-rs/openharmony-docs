@@ -9,9 +9,13 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 12开始支持。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 以下API需先使用UIContext中的[getComponentSnapshot()](./arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。
 >
@@ -27,9 +31,13 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnap
 >
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -96,7 +104,9 @@ struct SnapshotExample {
 
 ## get<sup>12+</sup>
 
-get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
+ArkTS-Dyn: get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
+
+ArkTS-Sta: get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap> | null
 
 获取已加载的组件的截图，传入组件的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)，找到对应组件进行截图。使用Promise异步回调。
 
@@ -104,9 +114,13 @@ get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.Pixe
 >
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -119,7 +133,7 @@ get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.Pixe
 
 | 类型                                                         | 说明             |
 | ------------------------------------------------------------ | ---------------- |
-| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise对象，返回组件截图对象。 |
+| ArkTS-Dyn: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt;<br/>ArkTS-Sta: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; \| null | Promise对象，返回组件截图对象。 |
 
 **错误码：** 
 
@@ -177,7 +191,9 @@ struct SnapshotExample {
 
 ## createFromBuilder<sup>12+</sup>
 
-createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): void
+ArkTS-Dyn: createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): void
+
+ArkTS-Sta: createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap>, delay?: int, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): void
 
 传入[CustomBuilder](arkui-ts/ts-types.md#custombuilder8)自定义组件，系统对其进行离屏构建后进行截图。使用callback异步回调。
 
@@ -187,9 +203,13 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 >
 > - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -197,7 +217,7 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | builder  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8)         | 是   | 自定义组件构建函数。<br/>**说明：** 不支持全局builder。<br/>builder的根组件宽高为0时，截图操作会失败并抛出100001错误码。      |
 | callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是   | 回调函数。当截图返回结果成功，err为undefined，data为获取到的image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)；否则为错误对象。支持在回调中获取离屏组件绘制区域坐标和大小。 |
-| delay   | number | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br/> 当使用PixelMap资源或对Image组件设置[syncLoad](arkui-ts/ts-basic-components-image.md#syncload8)为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br/>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br/> 默认值：300 <br/> 单位：毫秒 <br/> 取值范围：[0, +∞)，小于0时按默认值处理。 |
+| delay   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br/> 当使用PixelMap资源或对Image组件设置[syncLoad](arkui-ts/ts-basic-components-image.md#syncload8)为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br/>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br/> 默认值：300 <br/> 单位：毫秒 <br/> 取值范围：[0, +∞)，小于0时按默认值处理。 |
 | checkImageStatus  | boolean | 否    | 指定是否允许在截图之前，校验图片解码状态。如果为true，则会在截图之前检查所有Image组件是否已经解码完成，如果没有完成检查，则会放弃截图并返回异常。<br/>默认值：false|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12) | 否    | 截图相关的自定义参数。 |
 
@@ -271,7 +291,9 @@ struct ComponentSnapshotExample {
 
 ## createFromBuilder<sup>12+</sup>
 
-createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
+ArkTS-Dyn: createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
+
+ArkTS-Sta: createFromBuilder(builder: CustomBuilder, delay?: int, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap> | null
 
 传入[CustomBuilder](arkui-ts/ts-types.md#custombuilder8)自定义组件，系统对其进行离屏构建后进行截图。使用Promise异步回调。
 
@@ -281,16 +303,20 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 >
 > - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型                                                 | 必填 | 说明                                                    |
 | ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------- |
 | builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | 是   | 自定义组件构建函数。<br/>**说明：** 不支持全局builder。<br/>builder的根组件宽高为0时，截图操作会失败并抛出100001错误码。 |
-| delay   | number | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br/> 当使用PixelMap资源或对Image组件设置[syncLoad](arkui-ts/ts-basic-components-image.md#syncload8)为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br/>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br/> 默认值：300 <br/> 单位：毫秒<br/> 取值范围：[0, +∞)，小于0时按默认值处理。|
+| delay   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br/> 当使用PixelMap资源或对Image组件设置[syncLoad](arkui-ts/ts-basic-components-image.md#syncload8)为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br/>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br/> 默认值：300 <br/> 单位：毫秒<br/> 取值范围：[0, +∞)，小于0时按默认值处理。|
 | checkImageStatus  | boolean | 否    | 指定是否允许在截图之前，校验图片解码状态。如果为true，则会在截图之前检查所有Image组件是否已经解码完成，如果没有完成检查，则会放弃截图并返回异常。<br/>默认值：false|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)           | 否    | 截图相关的自定义参数。 |
 
@@ -298,7 +324,7 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 
 | 类型                                                         | 说明             |
 | ------------------------------------------------------------ | ---------------- |
-| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise对象，返回组件截图对象。 |
+| ArkTS-Dyn: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt;<br/>ArkTS-Sta: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; \| null | Promise对象，返回组件截图对象。 |
 
 **错误码：** 
 
@@ -370,7 +396,9 @@ struct ComponentSnapshotExample {
 
 ## getSync<sup>12+</sup>
 
-getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
+ArkTS-Dyn: getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
+
+ArkTS-Sta: getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap | null
 
 获取已加载的组件的截图。传入组件的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)，找到对应组件进行截图，同步等待截图完成返回[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)。本方法会阻塞主线程，请谨慎使用。接口的最大等待时间为3s，如果3s后未返回将会抛出异常。
 
@@ -378,9 +406,13 @@ getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 >
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -393,7 +425,7 @@ getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 
 | 类型                            | 说明       |
 | ----------------------------- | -------- |
-| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 截图返回的结果。 |
+| ArkTS-Dyn: image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)<br/>ArkTS-Sta: image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| null | 截图返回的结果。 |
 
 **错误码：** 
 
@@ -449,7 +481,9 @@ struct SnapshotExample {
 
 ## getWithUniqueId<sup>15+</sup>
 
-getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
+ArkTS-Dyn: getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
+
+ArkTS-Sta: getWithUniqueId(uniqueId: int, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap> | null
 
 获取已加载的组件的截图，传入组件的uniqueId，找到对应组件进行截图。使用Promise异步回调。
 
@@ -457,22 +491,26 @@ getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): 
 >
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明                                       |
 | ---- | ------ | ---- | ---------------------------------------- |
-| uniqueId   | number | 是    | 目标组件的uniqueId。FrameNode节点的uniqueId可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)接口获取。 <br/>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。|
+| uniqueId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 目标组件的uniqueId。FrameNode节点的uniqueId可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)接口获取。 <br/>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)            | 否    | 截图相关的自定义参数。 |
 
 **返回值：**
 
 | 类型                                                         | 说明             |
 | ------------------------------------------------------------ | ---------------- |
-| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise对象，返回组件截图对象。 |
+| ArkTS-Dyn: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt;<br/>ArkTS-Sta: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; \| null | Promise对象，返回组件截图对象。 |
 
 **错误码：** 
 
@@ -549,7 +587,9 @@ struct SnapshotExample {
 
 ## getSyncWithUniqueId<sup>15+</sup>
 
-getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): image.PixelMap
+ArkTS-Dyn: getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): image.PixelMap
+
+ArkTS-Sta: getSyncWithUniqueId(uniqueId: int, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 
 获取已加载的组件的截图，传入组件的uniqueId，找到对应组件进行截图。同步等待截图完成返回[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)。
 
@@ -557,15 +597,19 @@ getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOption
 >
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明                                       |
 | ---- | ------ | ---- | ---------------------------------------- |
-| uniqueId   | number | 是    | 目标组件的uniqueId。FrameNode节点的uniqueId可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)接口获取。<br/>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。|
+| uniqueId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 目标组件的uniqueId。FrameNode节点的uniqueId可通过[getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12)接口获取。<br/>**说明：** 不支持未挂树组件，当传入的组件标识是离屏或缓存未挂树的节点时，系统不会对其进行截图。|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)            | 否    | 截图相关的自定义参数。 |
 
 **返回值：**
@@ -645,20 +689,27 @@ struct SnapshotExample {
 
 ## createFromComponent<sup>18+</sup>
 
-createFromComponent\<T extends Object>(content: ComponentContent\<T>, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
+
+ArkTS-Dyn: createFromComponent\<T extends Object>(content: ComponentContent\<T>, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
+
+ArkTS-Sta: createFromComponent\<T extends Object>(content: ComponentContent\<T>, delay?: int, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap> | null
 
 将传入的content对象进行截图。使用Promise异步回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | content  | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md)         | 是   | 当前UIContext显示的组件内容。      |
-| delay   | number | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br/> 当使用PixelMap资源或对Image组件设置[syncLoad](arkui-ts/ts-basic-components-image.md#syncload8)为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br/>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br/> 取值范围：[0,+∞) ，小于0时按默认值处理。<br/>默认值：300 <br/> 单位：毫秒|
+| delay   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br/> 当使用PixelMap资源或对Image组件设置[syncLoad](arkui-ts/ts-basic-components-image.md#syncload8)为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br/>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br/> 取值范围：[0,+∞) ，小于0时按默认值处理。<br/>默认值：300 <br/> 单位：毫秒|
 | checkImageStatus  | boolean | 否    | 指定是否允许在截图之前，校验图片解码状态。如果为true，则会在截图之前检查所有Image组件是否已经解码完成，如果没有完成检查，则会放弃截图并返回异常。<br/>默认值：false|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12) | 否    | 截图相关的自定义参数。可以指定截图时图形侧绘制pixelmap的缩放比例与是否强制等待系统执行截图指令前所有绘制指令都执行完成之后再截图。 |
 
@@ -666,7 +717,7 @@ createFromComponent\<T extends Object>(content: ComponentContent\<T>, delay?: nu
 
 | 类型                            | 说明       |
 | ----------------------------- | -------- |
-| Promise<image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise对象，返回组件截图对象。 |
+| ArkTS-Dyn: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt;<br/>ArkTS-Sta: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; \| null  | Promise对象，返回组件截图对象。 |
 
 **错误码：** 
 
@@ -760,3 +811,128 @@ struct Index {
 }
 ```
 
+## getSizeLimitation
+
+getSizeLimitation(): componentSnapshot.SnapshotSizeLimitation
+
+查询组件截图的最大尺寸限制。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型                                                           | 说明             |
+| ------------------------------------------------------------ | -------------- |
+| componentSnapshot.[SnapshotSizeLimitation](js-apis-arkui-componentSnapshot.md#snapshotsizelimitation) | 组件截图的尺寸限制信息。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { image } from '@kit.ImageKit';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct SnapshotColorModeExample {
+  @State pixmap: image.PixelMap | undefined = undefined;
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image($r('app.media.startIcon'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
+      }
+
+      Button("click to generate UI snapshot")
+        .onClick(() => {
+          let componentSnapshot = this.getUIContext().getComponentSnapshot();
+          // 检查尺寸限制
+          let limitation = componentSnapshot.getSizeLimitation();
+          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
+          // 验证节点尺寸是否符合最大尺寸限制
+          if (limitation.maxWidth >= this.getUIContext().vp2px(200) &&
+            limitation.maxHeight >= this.getUIContext().vp2px(200)) {
+            this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
+              if (error) {
+                console.error(`error: ${JSON.stringify(error)}`)
+                return;
+              }
+              this.pixmap = pixmap
+            })
+          }
+        }).margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Image, $r, Row, HorizontalAlign, Column, Component, Button, Color } from '@kit.ArkUI';
+import { BusinessError } from '@ohos.base';
+import { State } from '@ohos.arkui.stateManagement';
+import image from '@ohos.multimedia.image';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct SnapshotColorModeExample {
+  @State pixmap: image.PixelMap | undefined = undefined;
+
+  build() {
+    Column() {
+      Row() {
+        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image($r('app.media.startIcon'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id('root')
+      }
+
+      Button('click to generate UI snapshot')
+        .onClick(() => {
+          let componentSnapshot = this.getUIContext().getComponentSnapshot();
+          // 检查尺寸限制
+          let limitation = componentSnapshot.getSizeLimitation();
+          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
+          // 验证节点尺寸是否符合最大尺寸限制
+          if (limitation.maxWidth >= this.getUIContext().vp2px(200) &&
+            limitation.maxHeight >= this.getUIContext().vp2px(200)) {
+            this.getUIContext().getComponentSnapshot().get('root', (error: BusinessError|null, pixmap: image.PixelMap|undefined) => {
+              if (pixmap) {
+                this.pixmap = pixmap
+              } else {
+                console.error('error: ' + JSON.stringify(error))
+                return;
+              }
+            })
+          }
+        }).margin(10)
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```

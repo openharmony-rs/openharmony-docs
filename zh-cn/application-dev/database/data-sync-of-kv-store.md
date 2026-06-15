@@ -39,7 +39,7 @@
 
 ### 手动同步
 
-由应用程序调用sync接口来触发，需要指定端端同步的设备列表和同步模式。同步模式分为PULL_ONLY（将远端数据拉取到本端）、PUSH_ONLY（将本端数据推送到远端）和PUSH_PULL（将本端数据推送到远端同时也将远端数据拉取到本端）。[带有Query参数的端端同步接口](../reference/apis-arkdata/js-apis-distributedKVStore.md#sync-1)，支持按条件过滤的方法进行端端同步，将符合条件的数据同步到远端。
+由应用程序调用sync接口来触发，需要指定端端同步的设备列表和同步模式。同步模式分为PULL_ONLY（将远端数据拉取到本端）、PUSH_ONLY（将本端数据推送到远端）和PUSH_PULL（将本端数据推送到远端同时也将远端数据拉取到本端）。带有Query参数的端端同步接口[sync](../reference/apis-arkdata/js-apis-distributedKVStore.md#sync-1)，支持按条件过滤的方法进行端端同步，将符合条件的数据同步到远端。
 
 ### 自动同步
 
@@ -235,6 +235,8 @@
 
 5. 调用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用[off('dataChange')](../reference/apis-arkdata/js-apis-distributedKVStore.md#offdatachange)关闭。
 
+   **ArkTS-Dyn示例：**
+
    <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
@@ -253,6 +255,28 @@
        Logger.error(`An unexpected error occurred. code:${error.code},message:${error.message}`);
      }
    })
+   ```
+
+   **ArkTS-Sta示例：**
+
+   <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/KvStore/KvStoreStaticSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+
+   ```ts
+   public On: () => void = (() => {
+     Logger.info('On start');
+     if (kvStore === undefined) {
+       Logger.info('On: kvStore not initialized');
+       return;
+     }
+     try {
+       kvStore!.onDataChange(distributedKVStore.SubscribeType.SUBSCRIBE_TYPE_LOCAL, (data: distributedKVStore.ChangeNotification): void => {
+         console.info(`dataChange callback call data: ${data}`);
+       });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. code:${error.code},message:${error.message}`);
+     }
+   });
    ```
 
 6. 调用put()方法将数据写入分布式数据库。

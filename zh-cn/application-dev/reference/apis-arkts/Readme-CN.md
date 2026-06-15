@@ -1,10 +1,10 @@
 # ArkTS（方舟编程语言）
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025; @xliu-huanwei-->
-<!--Designer: @weng-changcheng; @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @weng-changcheng; @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 - ArkTS API<!--arkts-arkts-->
   - @arkts.collections (ArkTS容器集)<!--js-apis-arkts-collections-->
@@ -37,6 +37,7 @@
   - [@ohos.fastbuffer (FastBuffer)](js-apis-fastbuffer.md)
   - [@ohos.process (获取进程相关的信息)](js-apis-process.md)
   - [@ohos.taskpool (启动任务池)](js-apis-taskpool.md)
+  - [@ohos.transfer (系统对象转换工具)](js-apis-transfer.md)
   - [@ohos.uri (URI字符串解析)](js-apis-uri.md)
   - [@ohos.url (URL字符串解析)](js-apis-url.md)
   - [@ohos.util (util工具函数)](js-apis-util.md)
@@ -60,6 +61,43 @@
   - [@ohos.worker (启动一个Worker)(系统接口)](js-apis-worker-sys.md)
   <!--DelEnd-->
   - [@ohos.xml (xml解析与生成)](js-apis-xml.md)
+  - builtin相关接口（ArkTS-Sta）<!--js-apis-arkts-builtin-->
+    - ArkTS语言基本类型<!--js-apis-arkts-primitive-types-->
+      - [Array](arkts-sta-array.md)
+      - [Boolean](arkts-sta-boolean.md)
+      - [Byte](arkts-sta-byte.md)
+      - [Char](arkts-sta-char.md)
+      - [Deepcopy (深拷贝)](arkts-sta-deepcopy.md)
+      - [Int](arkts-sta-int.md)
+      - [JSON](arkts-sta-json.md)
+      - [Map](arkts-sta-map.md)
+      - [Set](arkts-sta-set.md)
+      - [jsonx](arkts-sta-jsonx.md)
+      - [reflect](arkts-sta-reflect.md)
+    - 并发相关<!--js-apis-arkts-concurrency-->
+      - Atomics<!--js-apis-arkts-atomics-->
+        - [Atomics模块描述](arkts-sta-atomics-overview.md)
+        - [Atomics (实例化原子类型接口)](arkts-sta-atomics.md)
+        - [Atomics (基于typedArray的原子类型接口)](arkts-sta-legacyatomics.md)
+      - EAWorker<!--js-apis-arkts-eaworker-->
+        - [EAWorker（独占线程任务执行器）(ArkTS)](eaworker_managed.md)
+        - [EAWorker（独占线程任务执行器）(C/C++)](eaworker_native.md)
+        - [Job和CompletableJob](job.md)
+        - [Message (EAWorker消息)](message.md)
+        - [MessageHandler (EAWorker消息处理器)](message_handler.md)
+      - [Mutex (互斥锁)](arkts-sta-mutex.md)
+      - [RWLock (读写锁)](arkts-sta-rwlock.md)
+      - [AsyncLock (异步锁)](arkts-sta-asynclock.md)
+      - [ConcurrentSet (并发集合)](arkts-sta-concurrentset.md)
+      - [ConcurrentQueue (并发队列)](arkts-sta-concurrentqueue.md)
+      - [ConcurrentHashMap (并发哈希表)](arkts-sta-concurrenthashmap.md)
+      - [StdProcess (进程管理标准库)](arkts-sta-std_process.md)
+      - [taskpool](arkts-sta-taskpool.md)
+      - [Promise (异步操作)](arkts-sta-promise.md)
+      - [Timer (定时器)](arkts-sta-timer.md)
+    - 互操作相关（ArkTS-Sta）<!--js-apis-arkts-interop-->
+      - [STValue](arkts-sta-interop-stvalue.md)
+      - [ESValue](arkts-sta-interop-esvalue.md)
   - 已停止维护的接口<!--arkts-arkts-dep-->
     - [@ohos.util.Vector (线性容器Vector)](js-apis-vector.md)
 - 错误码<!--arkts-arkts-errcode-->

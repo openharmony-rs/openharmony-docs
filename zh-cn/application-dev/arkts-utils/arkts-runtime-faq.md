@@ -4,7 +4,7 @@
 <!--Owner: @DaiHuina1997-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 ## 正则运算与预期输出结果不一致场景
 
@@ -286,7 +286,7 @@ let res = str.replace(/^/, 'abc');
 
 **Async函数内部异常的捕获方式**
 
-1. 使用[errorManager.on()](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)捕获到Async函数产生的unhandledrejection事件，再通过编写errorManager.on()注册的回调函数，来进行异常处理操作。
+1. 使用[errorManager.on()](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)捕获到Async函数产生的unhandledRejection事件，再通过编写errorManager.on()注册的回调函数，来进行异常处理操作。
 
    <!-- @[test_safeAsyncCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
    

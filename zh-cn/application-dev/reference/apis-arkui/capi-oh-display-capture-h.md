@@ -40,11 +40,13 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uin
 
 获取屏幕全屏截图，可以通过设置不同的屏幕id号截取不同屏幕的截图。
 
-**需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE
+**需要权限：**
+- API版本22+：ohos.permission.CUSTOM_SCREEN_CAPTURE or ohos.permission.CUSTOM_SCREEN_RECORDING
+- API版本14-21：ohos.permission.CUSTOM_SCREEN_CAPTURE
 
 **起始版本：** 14
 
-**设备行为差异：** 在API version 21之前，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。从API version 21开始，该接口在Phone设备、2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 在API version 21之前，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。从API version 21开始，该接口在Phone设备、2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 

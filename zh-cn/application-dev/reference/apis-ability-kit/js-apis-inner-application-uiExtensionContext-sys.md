@@ -4,16 +4,20 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 UIExtensionContext是[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)，提供UIExtensionAbility的相关配置信息以及操作UIAbility的方法，如启动UIAbility等。
 
 > **说明：**
 >
->  - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->  - 本模块接口仅可在Stage模型下使用。
->  - 本模块接口为系统接口。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块接口为系统接口。
 
 ## 导入模块
 
@@ -42,6 +46,10 @@ startAbilityForResultAsCaller(want: Want, options?: StartOptions): Promise&lt;Ab
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -92,8 +100,9 @@ export default class UIExtension extends UIExtensionAbility {
       abilityName: 'EntryAbility',
       moduleName: 'entry'
     }).then((data) => {
-      console.info(`StartAbilityForResultAsCaller success, data: ${JSON.stringify(data)}.`);
-    }).catch((error: BusinessError) => {
+      let code = data.resultCode;
+      console.info(`StartAbilityForResultAsCaller success, data: ${code}.`);
+    }).catch((error: BusinessError<void>): void => {
       console.error(`StartAbilityForResultAsCaller failed, err code: ${error.code}, err msg: ${error.message}.`);
     });
   }
@@ -111,6 +120,10 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -166,7 +179,7 @@ export default class UIExtAbility extends UIExtensionAbility {
           // 执行正常业务
           console.info('startServiceExtensionAbility succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((err: BusinessError<void>): void => {
           // 处理业务逻辑错误
           console.error(`startServiceExtensionAbility failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -182,7 +195,9 @@ export default class UIExtAbility extends UIExtensionAbility {
 
 ### startServiceExtensionAbilityWithAccount<sup>18+</sup>
 
-startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
+ArkTS-Dyn: startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
+
+ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise\<void>
 
 启动一个指定系统账号下的ServiceExtensionAbility。使用Promise异步回调。
 
@@ -200,12 +215,16 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------ |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
-| accountId | number | 是 | 系统账号的ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)接口获取。 |
 
 **返回值：**
 
@@ -256,7 +275,7 @@ export default class UIExtAbility extends UIExtensionAbility {
           // 执行正常业务
           console.info('startServiceExtensionAbilityWithAccount succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((err: BusinessError<void>): void => {
           // 处理业务逻辑错误
           console.error(`startServiceExtensionAbilityWithAccount failed, code is ${err.code}, message is ${err.message}`);
         });
@@ -287,6 +306,10 @@ setHostPageOverlayForbidden(isForbidden: boolean) : void
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -326,14 +349,14 @@ export default class UIExtAbility extends UIExtensionAbility {
 
 ### startUIAbilities<sup>20+</sup>
 
-startUIAbilities(wantList: Array\<Want>): Promise\<void>
+startUIAbilities(wantList: Array\<Want\>): Promise\<void\>
 
 同时启动多个UIAbility。使用Promise异步回调。
 
 开发者可以传入多个UIAbility对应的Want信息，这些UIAbility可以指向一个或多个应用。当所有的UIAbility都能启动成功时，系统会通过多个窗口同时展示这些UIAbility。根据窗口的处理，不同设备上可能会有不同的展示效果（包括窗口形态、数量和排版布局）。
 
 > **说明：**
-> 
+>
 > 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统接口**：此接口为系统接口。
@@ -342,46 +365,50 @@ startUIAbilities(wantList: Array\<Want>): Promise\<void>
 
 **设备行为差异**：该接口仅在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
-| 参数名 | 类型 | 必填 | 说明 |
-| ------ | ------ | ------ | ------ |
-| wantList | Array\<[Want](js-apis-app-ability-want.md)> | 是 | 需要被同时拉起的多个UIAbility的启动参数列表，最多支持传入4个Want。启动参数Want不支持隐式启动、跨用户启动、分布式、免安装和按需加载，不指明分身的情况下默认启动主应用。|
+| 参数名   | 类型                                        | 必填 | 说明                                                         |
+| -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
+| wantList | Array\<[Want](js-apis-app-ability-want.md)> | 是   | 需要被同时拉起的多个UIAbility的启动参数列表，最多支持传入4个Want。启动参数Want不支持隐式启动、跨用户启动、分布式、免安装和按需加载，不指明分身的情况下默认启动主应用。 |
 
 **返回值：**
 
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。|
+| 类型            | 说明                      |
+| --------------- | ------------------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码**：
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
-| 错误码ID | 错误信息 |
-| ------ | ------ |
-| 201 | The application does not have permission to call the interface. |
-| 202 | Not system application. |
-| 801 | Capability not supported. |
-| 16000001 | The specified ability does not exist. |
-| 16000004 | Cannot start an invisible component. |
-| 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
-| 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000011 | The context does not exist. |
-| 16000050 | Internal error. |
-| 16200001 | The caller has been released. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000080 | Creating a new instance is not supported. |
-| 16000120 | A maximum of four UIAbility instances can be started simultaneously. The current parameter exceeds the maximum number or is less than 1.|
-| 16000121 | The target component type is not a UIAbility. |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | The application does not have permission to call the interface. |
+| 202      | Not system application.                                      |
+| 801      | Capability not supported.                                    |
+| 16000001 | The specified ability does not exist.                        |
+| 16000004 | Cannot start an invisible component.                       |
+| 16000005 | The specified process does not have the permission.          |
+| 16000006 | Cross-user operations are not allowed.                       |
+| 16000008 | The crowdtesting application expires.                        |
+| 16000009 | An ability cannot be started or stopped in Wukong mode.      |
+| 16000011 | The context does not exist.                                  |
+| 16000050 | Internal error.                                              |
+| 16200001 | The caller has been released.                                |
+| 16000073 | The app clone index is invalid.                              |
+| 16000076 | The app instance key is invalid.                             |
+| 16000080 | Creating a new instance is not supported.                    |
+| 16000120 | A maximum of four UIAbility instances can be started simultaneously. The current parameter exceeds the maximum number or is less than 1. |
+| 16000121 | The target component type is not a UIAbility.                |
 | 16000122 | The target component is blocked by the system module and does not support startup. |
-| 16000123 | Implicit startup is not supported. |
-| 16000124 | Starting a remote UIAbility is not supported. |
-| 16000125 | Starting a plugin UIAbility is not supported. |
-| 16000126 | Starting DLP files is not supported. |
+| 16000123 | Implicit startup is not supported.                           |
+| 16000124 | Starting a remote UIAbility is not supported.                |
+| 16000125 | Starting a plugin UIAbility is not supported.                |
+| 16000126 | Starting DLP files is not supported.                         |
 
 **示例**：
 
@@ -403,11 +430,13 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
     try {
       this.context.startUIAbilities(wantList).then(() => {
         console.info(`TestTag:: start succeeded.`);
-      }).catch((error: BusinessError) => {
+      }).catch((err: Error) => {
+        let error = err as BusinessError;
         console.info(`TestTag:: startUIAbilities failed: ${JSON.stringify(error)}`);
       });
-    } catch (paramError) {
+    } catch (error) {
       // 处理入参错误异常
+      let paramError = error as BusinessError;
       console.error(`error.code: ${paramError.code}, error.message: ${paramError.message}`);
     }
   }
@@ -415,7 +444,9 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
 ```
 ### startUIAbilitiesInSplitWindowMode<sup>21+</sup>
 
-startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want): Promise\<void>
+ArkTS-Dyn: startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want): Promise\<void\>
+
+ArkTS-Sta: startUIAbilitiesInSplitWindowMode(primaryWindowId: int, secondaryWant: Want): Promise\<void\>
 
 当第一个UIAbility实例被创建后，启动第二个UIAbility，并以分屏模式进行显示。使用Promise异步回调。
 
@@ -435,44 +466,48 @@ startUIAbilitiesInSplitWindowMode(primaryWindowId: number, secondaryWant: Want):
 
 **设备行为差异**：该接口仅在Phone设备中可正常调用，在其他设备中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
-| 参数名 | 类型 | 必填 | 说明                                                                                                                                                                                                                     |
-| ------ |--------| ------ |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| primaryWindowId | number | 是| 启动第一个UIAbility的主窗的窗口ID。窗口ID是[WindowProperties](../apis-arkui/arkts-apis-window-i.md#windowproperties)的属性，WindowProperties可通过[getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取。 |
-| secondaryWant | [Want](js-apis-app-ability-want.md) | 是| 启动第二个UIAbility所需的Want信息。                                                                                                                                                                                               |
+| 参数名          | 类型                                | 必填 | 说明                                                         |
+| --------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
+| primaryWindowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 启动第一个UIAbility的主窗的窗口ID。窗口ID是[WindowProperties](../apis-arkui/arkts-apis-window-i.md#windowproperties)的属性，WindowProperties可通过[getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)获取。 |
+| secondaryWant   | [Want](js-apis-app-ability-want.md) | 是   | 启动第二个UIAbility所需的Want信息。                          |
 
 **返回值：**
 
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。|
+| 类型            | 说明                      |
+| --------------- | ------------------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码**：
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
-| 错误码ID | 错误信息 |
-| ------ | ------ |
-| 201 | The application does not have permission to call the interface. |
-| 202 | Not system application. |
-| 801 | Capability not supported. |
-| 16000001 | Target UIAbility does not exist. |
-| 16000004 | Cannot start an invisible component. |
-| 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
-| 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000011 | The context does not exist. |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | The application does not have permission to call the interface. |
+| 202      | Not system application.                                      |
+| 801      | Capability not supported.                                    |
+| 16000001 | Target UIAbility does not exist.                             |
+| 16000004 | Cannot start an invisible component.                         |
+| 16000005 | The specified process does not have the permission.          |
+| 16000006 | Cross-user operations are not allowed.                       |
+| 16000008 | The crowdtesting application expires.                        |
+| 16000009 | An ability cannot be started or stopped in Wukong mode.      |
+| 16000011 | The context does not exist.                                  |
 | 16000050 | Failed to connect to the system service or system server handle failed. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000073 | The app clone index is invalid.                              |
+| 16000076 | The app instance key is invalid.                             |
+| 16000080 | Creating a new instance is not supported.                    |
 | 16000122 | The target component is blocked by the system module and does not support startup. |
-| 16000123 | Implicit startup is not supported. |
-| 16000124 | Starting a remote UIAbility is not supported. |
-| 16000125 | Starting a plugin UIAbility is not supported. |
-| 16000126 | Starting DLP files is not supported. |
+| 16000123 | Implicit startup is not supported.                           |
+| 16000124 | Starting a remote UIAbility is not supported.                |
+| 16000125 | Starting a plugin UIAbility is not supported.                |
+| 16000126 | Starting DLP files is not supported.                         |
 
 **示例**
 
@@ -491,11 +526,13 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
     try {
       this.context.startUIAbilitiesInSplitWindowMode(primaryWindowId, secondaryWant).then(() => {
         console.info(`TestTag:: start succeeded.`);
-      }).catch((error: BusinessError) => {
+      }).catch((err: Error) => {
+        let error = err as BusinessError;
         console.error(`TestTag:: startUIAbilitiesInSplitWindowMode failed: ${JSON.stringify(error)}`);
       });
-    } catch (paramError) {
+    } catch (err) {
       // 处理入参错误异常
+      let paramError = err as BusinessError;
       console.error(`error.code: ${paramError.code}, error.message: ${paramError.message}`);
     }
   }
@@ -506,7 +543,7 @@ export default class EntryUIExtAbility extends UIExtensionAbility {
 
 connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOptions): number
 
-将当前UIExtensionAbility连接到一个[ServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)，通过返回的远程代理对象与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。与此同时，该方法会将UIExtensionAbility的原始宿主Ability的Token传递给被连接的ServiceExtensionAbility，ServiceExtensionAbility可以在[onCreate()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate)或[onConnect()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)方法中，通过Want参数的[UI_EXTENSION_ROOT_TOKEN](js-apis-app-ability-wantConstant-sys.md#params)获取该Token。
+将当前UIExtensionAbility连接到一个[ServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)，通过返回的远程代理对象与ServiceExtensionAbility进行通信，以使用ServiceExtensionAbility对外提供的能力。与此同时，该方法会将UIExtensionAbility的原始宿主Ability的Token传递给被连接的ServiceExtensionAbility，ServiceExtensionAbility可以在[onCreate()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate)或[onConnect()](../apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md#onconnect)方法中，通过Want参数的[UI_EXTENSION_ROOT_TOKEN](js-apis-app-ability-wantConstant-sys.md#params)获取该Token。
 
 > **说明：**
 >
@@ -547,7 +584,7 @@ connectServiceExtensionAbilityWithRootHostToken(want: Want, connect: ConnectOpti
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled. |
 | 16000013 | The application is controlled by EDM. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to commnicate with dependency module.|
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.|
 | 16000053 | The ability is not on the top of the UI. |
 | 16000070 | The extension cannot start the service. |
 

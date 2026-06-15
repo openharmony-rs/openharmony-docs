@@ -1,7 +1,7 @@
 # XComponent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 该组件从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -24,9 +26,17 @@ XComponent(params: NativeXComponentParameters)
 
 在Native侧获取XComponent节点实例、注册XComponent持有的Surface的生命周期回调和触摸、鼠标、按键等组件事件回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[XComponent](#xcomponent23)。
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数：**
 
@@ -40,9 +50,17 @@ XComponent(options: XComponentOptions)
 
 创建XComponent组件，支持在ArkTS侧获取SurfaceId、注册XComponent持有的Surface的生命周期回调和触摸、鼠标、按键等组件事件回调，支持AI分析。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[XComponent](#xcomponent23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -58,9 +76,17 @@ XComponent(value: {id: string, type: XComponentType, libraryname?: string, contr
 
 该接口从API version 12开始不再演进，推荐使用[XComponent(options: XComponentOptions)](#xcomponent12)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[XComponent](#xcomponent23)。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：** 
 
@@ -81,6 +107,10 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
+
 **参数：** 
 
 | 参数名      | 类型                                      | 必填 | 说明                                                         |
@@ -90,13 +120,40 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 | libraryname | string                                        | 否   | 应用Native层编译输出动态库名称（对应的动态库不支持跨模块加载），仅XComponent类型为"surface"时有效。 |
 | controller  | [XComponentController](#xcomponentcontroller) | 否   | 给组件绑定一个控制器，通过控制器调用组件方法，仅XComponent类型为"surface"时有效。 |
 
+
+### XComponent<sup>23+</sup>
+
+XComponent(params: XComponentParameters | XComponentOptions | NativeXComponentParameters)
+
+创建XComponent组件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[XComponent](#xcomponent10)、[XComponent](#xcomponent12)和[XComponent](#xcomponent19)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                | 必填 | 说明                           |
+| ------- | --------------------------------------- | ---- | ------------------------------ |
+| params | [XComponentParameters](#xcomponentparameters23) \| [XComponentOptions](#xcomponentoptions12) \| [NativeXComponentParameters](#nativexcomponentparameters19) | 是   | 定义XComponent的具体配置参数。 |
+
 ## XComponentOptions<sup>12+</sup>
 
 定义XComponent的具体配置参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -108,14 +165,54 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 
 定义XComponent的具体配置参数。通过这种构造参数创建的XComponent，可以将其对应的[FrameNode](../js-apis-arkui-frameNode.md)对象传递至Native侧，使用NDK接口进行Surface生命周期的相关设置和[添加事件监听](../../../ui/ndk-add-component-events.md)。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | type | [XComponentType](ts-appendix-enums.md#xcomponenttype10)         | 否 | 否   | 用于指定XComponent组件类型。 |
 | imageAIOptions | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 否 | 是 | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。 |
+
+
+## XComponentParameters<sup>23+</sup>
+
+定义XComponent的具体配置参数，支持Native侧触发XComponent生命周期回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| id          | string       | 否    | 否   | 组件的唯一标识，支持最大的字符串长度128。                    |
+| type        | [XComponentType](ts-appendix-enums.md#xcomponenttype10)   | 否 |否  | 用于指定XComponent组件类型。                                 |
+| nativeXComponentHandler | Callback&lt;[NativeXComponentPointer](#nativexcomponentpointer23)&gt;                           |否           | 否   | 用于处理NativeXComponent实例的回调。 |
+| controller  | [XComponentController](#xcomponentcontroller) | 否 |是   | 给组件绑定一个控制器，通过控制器调用组件方法，仅类型为SURFACE或TEXTURE时有效。 |
+
+## NativeXComponentPointer<sup>23+</sup>
+
+type NativeXComponentPointer = long
+
+NativeXComponent指针类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型 | 说明 |
+| ---- | ---- |
+| long |  表示NativeXComponent指针类型。|
 
 ## 属性
 除支持通用属性外，还支持以下属性：
@@ -132,7 +229,9 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
   
 ### enableAnalyzer<sup>12+</sup>
 
-enableAnalyzer(enable: boolean)
+ArkTS-Dyn: enableAnalyzer(enable: boolean)
+
+ArkTS-Sta: enableAnalyzer(enable: boolean | undefined)
 
 设置组件支持AI分析，当前支持主体识别、文字识别和对象查找等功能。
 
@@ -140,15 +239,21 @@ enableAnalyzer(enable: boolean)
 
 不能和[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时overlay中[CustomBuilder](ts-types.md#custombuilder8)属性将失效。该特性依赖设备能力。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| enable | boolean | 是 | 是否启用图像分析功能。<br/>true：开启图像分析；false：关闭图像分析。<br/>默认值：false |
+| enable | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用图像分析功能。<br/>true：开启图像分析；false：关闭图像分析。<br/>默认值：false<br/>ArkTS-Sta模式下可不传，不传时使用默认值false。 |
 
   > **说明：**
   >
@@ -156,19 +261,27 @@ enableAnalyzer(enable: boolean)
 
 ### enableSecure<sup>13+</sup>
 
-enableSecure(isSecure: boolean)
+ArkTS-Dyn: enableSecure(isSecure: boolean)
+
+ArkTS-Sta: enableSecure(isSecure: boolean | undefined)
 
 防止组件内自绘制内容被截屏、录屏。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                   |
 | -------- | ------- | ---- | ---------------------- |
-| isSecure | boolean | 是   | 是否开启隐私图层模式。<br/>true：开启隐私图层模式；false：关闭隐私图层模式。<br/>默认值：false |
+| isSecure | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启隐私图层模式。<br/>true：开启隐私图层模式；false：关闭隐私图层模式。<br/>默认值：false。<br/>ArkTS-Sta模式下可不传，不传时使用默认值false。 |
 
   > **说明：**
   >
@@ -178,19 +291,27 @@ enableSecure(isSecure: boolean)
 
 ### hdrBrightness<sup>20+</sup>
 
-hdrBrightness(brightness: number)
+ArkTS-Dyn: hdrBrightness(brightness: number)
+
+ArkTS-Sta: hdrBrightness(brightness: double | undefined)
 
 用于调整组件播放HDR视频的亮度。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                   |
 | -------- | ------- | ---- | ---------------------- |
-| brightness | number | 是   | 用于调整组件播放HDR视频的亮度; brightness的取值范围为0.0~1.0; 小于0.0的值等价于0.0，大于1.0的值等价于1.0，异常值按1.0处理; 0.0 表示SDR视频的亮度，1.0 表示HDR视频的亮度。<br/>默认值：1.0 |
+| brightness | ArkTS-Dyn: number <br/>ArkTS-Sta: double \| undefined | 是   | 用于调整组件播放HDR视频的亮度; brightness的取值范围为0.0~1.0; 小于0.0的值等价于0.0，大于1.0的值等价于1.0，异常值按1.0处理; 0.0 表示SDR视频的亮度，1.0 表示HDR视频的亮度。<br/>默认值：1.0 |
 
   > **说明：**
   >
@@ -200,7 +321,9 @@ hdrBrightness(brightness: number)
 
 ### hdrBrightness<sup>24+</sup>
 
-hdrBrightness(brightness: number, type?: HdrType)
+ArkTS-Dyn: hdrBrightness(brightness: number, type?: HdrType)
+
+ArkTS-Sta: hdrBrightness(brightness: double | undefined, type?: HdrType)
 
 调整组件播放HDR视频时的亮度，该接口仅对HDR视频生效。
 > **说明：**
@@ -209,33 +332,82 @@ hdrBrightness(brightness: number, type?: HdrType)
 > - 如果将参数type设置为[HdrType](#hdrtype24枚举说明).AIHDR，调用该接口前需先检查[Display](../js-apis-display.md#display)的hdrFormats属性是否包含[HDRFormat](../../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat).VIDEO_AIHDR。仅当包含HDRFormat.VIDEO_AIHDR时，当前设备才支持AI HDR类型，参数设置才会生效；否则按默认值HdrType.DEFAULT处理。
 > - 不支持[ArkUI NDK接口](../../../ui/ndk-build-ui-overview.md)创建的XComponent组件。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明                   |
 | -------- | ------- | ---- | ---------------------- |
-| brightness | number | 是   | HDR视频的亮度。取值范围为0.0到1.0。小于0.0的值按0.0处理，大于1.0的值按1.0处理，其他异常值按1.0处理。0.0表示视频按照SDR亮度显示，1.0表示视频按照当前允许的最高HDR亮度显示。|
+| brightness | ArkTS-Dyn: number <br/>ArkTS-Sta: double \| undefined | 是  | HDR视频的亮度。取值范围为0.0到1.0。小于0.0的值按0.0处理，大于1.0的值按1.0处理，其他异常值按1.0处理。0.0表示视频按照SDR亮度显示，1.0表示视频按照当前允许的最高HDR亮度显示。<br/>默认值：1.0。<br/>ArkTS-Sta模式下可不传，不传时使用默认值1.0。|
 | type | [HdrType](#hdrtype24枚举说明) | 否   | 播放HDR视频时的HDR类型。<br/>默认值: HdrType.DEFAULT|
 
-## HdrType<sup>24+</sup>枚举说明
+### attributeModifier<sup>23+</sup>
 
-HDR视频的高动态范围渲染类型。
+attributeModifier(modifier: AttributeModifier\<XComponentAttribute> | AttributeModifier\<CommonMethod> | undefined)
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+设置XComponent组件的属性修改器。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<XComponentAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是 | XComponent组件的属性修改器。取值为undefined时，不使用attributeModifier。 |
+
+## HdrType<sup>24+</sup>枚举说明
+
+HDR视频的高动态范围渲染类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 24
+
 | 名称 | 值 | 说明 |
 | ---- | -- | ---- |
 | DEFAULT | 0 | 默认HDR类型，使用标准高动态范围渲染模式。 |
 | AIHDR | 1 | AI HDR类型，使用AI算法对非HDR内容进行智能动态范围扩展，实现HDR的显示效果。|
+
+## HdrType<sup>24+</sup>枚举说明
+
+HDR视频的高动态范围渲染类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| DEFAULT | 0 | 默认HDR类型，使用标准高动态范围渲染模式。 |
+| AIHDR | 1 | AI HDR类型，使用AI算法对非HDR内容进行智能动态范围扩展，实现HDR的显示效果。|
+| EDR | 2 | EDR类型。<br>**起始版本：** 26.0.0|
+
 
 ## 事件
 
@@ -249,35 +421,47 @@ HDR视频的高动态范围渲染类型。
 
 ### onLoad
 
-onLoad(callback: OnNativeLoadCallback )
+ArkTS-Dyn: onLoad(callback: OnNativeLoadCallback)
+
+ArkTS-Sta: onLoad(callback: VoidCallback | undefined)
 
 插件加载完成时回调事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型   | 必填   | 说明                                       |
 | ----- | ------ | ---- | ---------------------------------------- |
-| callback | [OnNativeLoadCallback](#onnativeloadcallback18) | 是    | XComponent持有的Surface创建后回调事件。 |
+| callback | ArkTS-Dyn: [OnNativeLoadCallback](#onnativeloadcallback18)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是    | XComponent持有的Surface创建后回调事件。<br/>ArkTS-Sta模式下可不传。 |
 
 ### onDestroy
 
-onDestroy(event: VoidCallback )
+ArkTS-Dyn: onDestroy(event: VoidCallback)
+
+ArkTS-Sta: onDestroy(event: VoidCallback | undefined)
 
 插件卸载完成时回调事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型   | 必填   | 说明                                       |
 | ----- | ------ | ---- | ---------------------------------------- |
-| event | [VoidCallback](ts-types.md#voidcallback12) | 是    | XComponent销毁后回调事件。 |
+| event | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是    | XComponent销毁后回调事件。<br/>ArkTS-Sta模式下可不传。 |
 
 ## OnNativeLoadCallback<sup>18+</sup>
 
@@ -285,9 +469,15 @@ type OnNativeLoadCallback = (event?: object) =\> void
 
 XComponent持有的Surface创建后回调事件。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -299,9 +489,13 @@ XComponent持有的Surface创建后回调事件。
 
 XComponent组件的控制器，可以将此对象绑定至XComponent组件，然后通过控制器来调用组件方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 ### constructor
 
@@ -309,9 +503,13 @@ constructor()
 
 XComponentController的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -325,9 +523,13 @@ getXComponentSurfaceId(): string
 
 获取XComponent对应Surface的ID，仅XComponent类型为SURFACE("surface")或TEXTURE时有效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -373,14 +575,18 @@ setXComponentSurfaceSize(value: {surfaceWidth: number, surfaceHeight: number}): 
 >
 > 该接口从API version 9开始支持，从API version 12开始废弃，建议使用[setXComponentSurfaceRect](#setxcomponentsurfacerect12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
 | 参数名           | 类型   | 必填   | 说明                      |
 | ------------- | ------ | ---- | ----------------------- |
-| surfaceWidth  | number | 是    | XComponent持有Surface的宽度。 |
-| surfaceHeight | number | 是    | XComponent持有Surface的高度。 |
+| surfaceWidth  | number | 是    | XComponent持有Surface的宽度。 单位：px。|
+| surfaceHeight | number | 是    | XComponent持有Surface的高度。 单位：px。|
 
 
 ### getXComponentContext
@@ -389,9 +595,13 @@ getXComponentContext(): Object
 
 获取XComponent实例对象的context，仅XComponent类型为SURFACE("surface")或TEXTURE时有效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -405,9 +615,15 @@ setXComponentSurfaceRect(rect: SurfaceRect): void
 
 设置XComponent持有Surface的显示区域，包括宽高和相对于组件左上角的位置坐标，仅XComponent类型为SURFACE("surface")或TEXTURE时有效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -429,9 +645,15 @@ getXComponentSurfaceRect(): SurfaceRect
 
 获取XComponent持有Surface的显示区域，包括宽高和相对于组件左上角的位置坐标，仅XComponent类型为SURFACE("surface")或TEXTURE时有效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -445,9 +667,15 @@ onSurfaceCreated(surfaceId: string): void
 
 当XComponent持有的Surface创建后进行该回调，仅XComponent类型为SURFACE("surface")或TEXTURE时有效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -465,9 +693,15 @@ onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void
 
 当XComponent持有的Surface大小改变后（包括首次创建时的大小改变）进行该回调，仅XComponent类型为SURFACE("surface")或TEXTURE时有效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -486,9 +720,15 @@ onSurfaceDestroyed(surfaceId: string): void
 
 当XComponent持有的Surface销毁后进行该回调，仅XComponent类型为SURFACE("surface")或TEXTURE时有效，具体可以参考指南[创建XComponent和管理Surface生命周期](../../../ui/napi-xcomponent-guidelines.md#创建xcomponent和管理surface生命周期)章节。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -504,16 +744,22 @@ onSurfaceDestroyed(surfaceId: string): void
 
 startImageAnalyzer(config: ImageAnalyzerConfig): Promise\<void>
 
-配置AI分析并启动AI分析功能，使用前需先[启用图像AI分析能力](#enableanalyzer12)。使用Promise异步回调。<br>该方法调用时，将截取调用时刻的画面帧进行分析，使用时需注意启动分析的时机，避免出现画面和分析内容不一致的情况。<br>若该方法尚未执行完毕，此时重复调用，则会触发错误回调。
+配置AI分析并启动AI分析功能，使用前需先启用图像AI分析能力[enableAnalyzer](#enableanalyzer12)。使用Promise异步回调。<br>该方法调用时，将截取调用时刻的画面帧进行分析，使用时需注意启动分析的时机，避免出现画面和分析内容不一致的情况。<br>若该方法尚未执行完毕，此时重复调用，则会触发错误回调。
 
 > **说明：**
 > 
 > 分析类型不支持动态修改。
 > 该特性依赖设备能力，不支持该能力的情况下，将返回错误码。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -548,9 +794,15 @@ stopImageAnalyzer(): void
 > 在startImageAnalyzer方法未返回结果时调用本方法，会触发其错误回调。
 > 该特性依赖设备能力。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 ### setXComponentSurfaceRotation<sup>12+</sup>
 
@@ -558,9 +810,15 @@ setXComponentSurfaceRotation(rotationOptions: SurfaceRotationOptions): void
 
 设置XComponent持有Surface在屏幕旋转时是否锁定方向，仅XComponent类型为SURFACE("surface")时有效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -584,9 +842,15 @@ getXComponentSurfaceRotation(): Required\<SurfaceRotationOptions>
 
 获取XComponent持有Surface在屏幕旋转时是否锁定方向的设置，仅XComponent类型为SURFACE("surface")时有效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -600,9 +864,15 @@ lockCanvas(): DrawingCanvas | null
 
 返回可用于向XComponent上绘制内容的画布对象。具体绘制方法请参考[Canvas](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型                                 | 说明                                  |
@@ -621,7 +891,7 @@ lockCanvas(): DrawingCanvas | null
 >
 > 使用此接口后，同时在NDK侧获取NativeWindow并调用相关接口进行绘制，可能出现缓冲区竞争和上下文冲突而发生绘制画面错误等异常，因此不允许使用。
 >
-> 此接口需要和[unlockCanvasAndPost](#unlockcanvasandpost20)接口配对使用，具体参考[示例3使用画布对象在XComponent上绘制内容](#示例3使用画布对象在xcomponent上绘制内容)。
+> 此接口需要和[unlockCanvasAndPost](#unlockcanvasandpost20)接口配对使用，具体参考示例3[使用画布对象在XComponent上绘制内容](#示例3使用画布对象在xcomponent上绘制内容)。
 
 ### unlockCanvasAndPost<sup>20+</sup>
 
@@ -629,9 +899,15 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 
 将画布对象中的内容绘制在XComponent区域，并释放该画布对象。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -646,7 +922,7 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 >
 > 3. 使用此接口后，同时在NDK侧获取NativeWindow并调用相关接口进行绘制，可能出现缓冲区竞争和上下文冲突而发生绘制画面错误等异常，因此不允许使用。
 >
-> 4. 此接口需要和[lockCanvas](#lockcanvas20)接口配对使用，具体参考[示例3使用画布对象在XComponent上绘制内容](#示例3使用画布对象在xcomponent上绘制内容)。
+> 4. 此接口需要和[lockCanvas](#lockcanvas20)接口配对使用，具体参考示例3[使用画布对象在XComponent上绘制内容](#示例3使用画布对象在xcomponent上绘制内容)。
 
 ### setXComponentSurfaceConfig<sup>22+</sup>
 
@@ -658,9 +934,15 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 >
 > 仅当XComponent组件类型为TEXTURE或SURFACE时，本接口生效。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -671,9 +953,15 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 
 用于描述XComponent持有Surface在屏幕旋转时是否锁定方向的设置。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------- | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -683,16 +971,22 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 
 用于描述XComponent持有Surface的显示区域。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------- | ------ | ------ | ---- | ------------------------------------------------------------ |
-| offsetX       | number | 否   | 是   | Surface显示区域相对于XComponent组件左上角的x轴坐标，单位：px。 |
-| offsetY       | number | 否   | 是   | Surface显示区域相对于XComponent组件左上角的y轴坐标，单位：px。 |
-| surfaceWidth  | number | 否   | 否   | Surface显示区域的宽度，单位：px。                            |
-| surfaceHeight | number | 否   | 否   | Surface显示区域的高度，单位：px。                            |
+| offsetX       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 是   | Surface显示区域相对于XComponent组件左上角的x轴坐标，单位：px。 |
+| offsetY       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 是   | Surface显示区域相对于XComponent组件左上角的y轴坐标，单位：px。 |
+| surfaceWidth  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | Surface显示区域的宽度，单位：px。 |
+| surfaceHeight | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | Surface显示区域的高度，单位：px。 |
 
 > **说明：**
 >
@@ -706,9 +1000,15 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 
 用于描述XComponent持有的Surface在渲染时是否需要被视为不透明。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------- | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -726,7 +1026,7 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 <!--RP1-->
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)。
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。
 <!--RP1End-->
 
 ```ts
@@ -858,7 +1158,7 @@ struct XComponentExample {
 
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)。<!--RP2End-->
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。<!--RP2End-->
 
 ```ts
 // xxx.ets
@@ -1017,7 +1317,7 @@ struct Index {
 
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/ArkTSXComponent)。<!--RP2End-->
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。<!--RP2End-->
 
 ```ts
 // xxx.ets

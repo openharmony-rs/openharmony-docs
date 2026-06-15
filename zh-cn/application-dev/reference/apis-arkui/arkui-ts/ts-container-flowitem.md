@@ -2,15 +2,17 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fangyuhao-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-[瀑布流组件](ts-container-waterflow.md)的子组件，用来展示瀑布流具体item。
+瀑布流组件[WaterFlow](ts-container-waterflow.md)的子组件，用来展示瀑布流具体item。
 
 
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > * 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > * 仅支持作为[WaterFlow](ts-container-waterflow.md)组件的子组件使用。
@@ -29,13 +31,33 @@ FlowItem()
 
 使用该接口来创建瀑布流子组件。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ## 属性
 
-无
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<FlowItemAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+动态设置FlowItem组件的属性方法。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
+| -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
+| modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<FlowItemAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>FlowItemAttribute：当前组件的[属性](#属性)。 |
 
 ## 示例
 

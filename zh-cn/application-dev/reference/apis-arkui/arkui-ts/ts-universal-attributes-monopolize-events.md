@@ -11,29 +11,39 @@
 
 >  **说明：**
 >
->  从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## monopolizeEvents
 
-monopolizeEvents(monopolize: boolean): T
+ArkTS-Dyn: monopolizeEvents(monopolize: boolean): T
+
+ArkTS-Sta: monopolizeEvents(monopolize: boolean | undefined): this
 
 设置组件是否独占事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名   | 类型 | 必填 | 说明                  |
 | ----------- | -------- | ------------------------ | ------------------------ |
-| monopolize | boolean  | 是 | 组件是否独占事件。true表示组件独占事件，false表示组件不独占事件。<br/>默认值：false<br/>**说明：**<br/>1、如果第一根手指触发了组件事件独占，在抬起前又按下了一根手指，则第二根手指的交互继续处于组件独占状态，依次类推。<br/>2、如果开发者通过[parallelGesture](ts-gesture-settings.md#parallelgesture)绑定了与子组件同时触发的手势，如[PanGesture](ts-basic-gestures-pangesture.md)，子组件设置了独占控制且首个响应事件，则父组件的手势不会响应。|
+| monopolize | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 组件是否独占事件。true表示组件独占事件，false表示组件不独占事件。<br/>默认值：false<br/>**说明：**<br/>1、如果第一根手指触发了组件事件独占，在抬起前又按下了一根手指，则第二根手指的交互继续处于组件独占状态，依次类推。<br/>2、如果开发者通过[parallelGesture](ts-gesture-settings.md#parallelgesture)绑定了与子组件同时触发的手势，如[PanGesture](ts-basic-gestures-pangesture.md)，子组件设置了独占控制且首个响应事件，则父组件的手势不会响应。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## 示例
 

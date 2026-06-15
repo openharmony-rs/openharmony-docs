@@ -1,14 +1,16 @@
 # @ohos.animator (动画)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
 本模块提供组件动画效果，包括定义动画、启动动画和以相反的顺序播放动画等。
 
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -34,9 +36,13 @@ import { Animator as animator, AnimatorOptions, AnimatorResult, SimpleAnimatorOp
 
 定义Animator类。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 23
 
 ### create<sup>(deprecated)</sup>
 
@@ -50,9 +56,13 @@ create(options: AnimatorOptions): AnimatorResult
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)来明确UI的执行上下文。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：** 
 
@@ -105,9 +115,15 @@ create(options: AnimatorOptions \| SimpleAnimatorOptions): AnimatorResult
 
 创建animator动画结果对象（AnimatorResult）。与[create](#createdeprecated)相比，新增对[SimpleAnimatorOptions](#simpleanimatoroptions18)类型入参的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -156,6 +172,10 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 6
+
 **参数：** 
 
 | 参数名     | 类型                                  | 必填   | 说明      |
@@ -199,14 +219,14 @@ this.animator = animator.createAnimator(options);
 
 | 名称       | 类型                                                        | 只读 | 可选 | 说明                                                         |
 | ---------- | ------------------------------ | ---- | ------- | ----------------------------------------------------- |
-| onFrame<sup>12+</sup>   | (progress: number) => void                    | 否 | 否   | 接收到帧时回调。<br/>progress表示动画的当前值。取值范围为[AnimatorOptions](#animatoroptions)定义的[begin, end]，默认取值范围为[0, 1]。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                        |
-| onFinish<sup>12+</sup>   | () => void                    | 否 | 否   | 动画完成时回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                        |
-| onCancel<sup>12+</sup>   | () => void                    | 否 | 否   | 动画被取消时回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                        |
-| onRepeat<sup>12+</sup>   | () => void                    | 否 | 否   | 动画重复时回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                        |
-| onframe<sup>(deprecated)</sup>   | (progress: number) => void                   | 否 | 否   | 接收到帧时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onFrame。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| onfinish<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画完成时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onFinish。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| oncancel<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画被取消时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onCancel。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| onrepeat<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画重复时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onRepeat。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| onFrame<sup>12+</sup>   | (progress: number) => void                    | 否 | 否   | 接收到帧时回调。<br/>progress表示动画的当前值。取值范围为[AnimatorOptions](#animatoroptions)定义的[begin, end]，默认取值范围为[0, 1]。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| onFinish<sup>12+</sup>   | () => void                    | 否 | 否   | 动画完成时回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| onCancel<sup>12+</sup>   | () => void                    | 否 | 否   | 动画被取消时回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| onRepeat<sup>12+</sup>   | () => void                    | 否 | 否   | 动画重复时回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| onframe<sup>(deprecated)</sup>   | (progress: number) => void                   | 否 | 否   | 接收到帧时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onFrame。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 6 |
+| onfinish<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画完成时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onFinish。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 6 |
+| oncancel<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画被取消时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onCancel。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 6 |
+| onrepeat<sup>(deprecated)</sup>   | () => void                 | 否 | 否   | 动画重复时回调。<br/>**说明:** 从API version 6开始支持，从API version 12开始废弃，推荐使用onRepeat。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 6 |
 
 ### reset<sup>9+</sup>
 
@@ -214,9 +234,13 @@ reset(options: AnimatorOptions): void
 
 重置当前animator动画参数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：** 
 
@@ -279,9 +303,15 @@ reset(options: AnimatorOptions \| SimpleAnimatorOptions): void
 
 重置当前animator动画参数。与[reset](#reset9)相比，新增对[SimpleAnimatorOptions](#simpleanimatoroptions18)类型入参的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -330,9 +360,13 @@ play(): void
 
 启动动画。动画会保留上一次的播放状态，比如播放状态设置reverse后，再次播放会保留reverse的播放状态。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -348,9 +382,13 @@ finish(): void
 
 结束动画，会触发[onFinish](#属性)回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -366,9 +404,13 @@ pause(): void
 
 暂停动画。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -384,9 +426,13 @@ cancel(): void
 
 取消动画，会触发[onCancel](#属性)回调。此接口和[finish](#finish)接口功能上没有区别，仅触发的回调不同，建议使用finish接口结束动画。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -402,9 +448,13 @@ reverse(): void
 
 以相反的顺序播放动画。使用interpolating-spring曲线时此接口无效。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -420,9 +470,15 @@ setExpectedFrameRateRange(rateRange: ExpectedFrameRateRange): void
 
 设置期望的帧率范围。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -482,6 +538,10 @@ update(options: AnimatorOptions): void
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 6
+
 **参数：** 
 
 | 参数名     | 类型                                  | 必填   | 说明      |
@@ -500,22 +560,24 @@ animator.update(options);
 
 定义动画选项。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-### 属性
+**ArkTS-Dyn起始版本：** 6
 
-| 名称       | 类型                                                        | 只读 | 可选 | 说明                                                         |
-| ---------- | ----------------------------------------------------------- | ---- | ------- | ----------------------------------------------------- |
-| duration   | number                                                      | 否 | 否   | 动画播放的时长，单位毫秒。<br/> 取值范围：[0, +∞)  <br/>默认值：0                         |
-| easing     | string                                                      | 否 | 否   | 动画插值曲线，支持的曲线类型可参考表1。<br/>非法字符串时取:"ease"。 |
-| delay      | number                                                      | 否 | 否   | 动画延时播放时长，单位毫秒，设置为0时，表示不延时。设置为负数时动画提前播放，如果提前播放的时长大于动画总时长，动画直接过渡到终点。 <br/>默认值：0        |
-| fill       | 'none' \| 'forwards' \| 'backwards' \| 'both'               | 否 | 否   | 动画执行后是否恢复到初始状态，动画执行后，动画结束时的状态（在最后一个关键帧中定义）将保留。<br/>'none'：在动画执行之前和之后都不会应用任何样式到目标上。<br/>'forwards'：在动画结束后，目标将保留动画结束时的状态（在最后一个关键帧中定义）。<br/>'backwards'：动画将在[AnimatorOptions](#animatoroptions)中的delay期间应用第一个关键帧中定义的值。当[AnimatorOptions](#animatoroptions)中的direction为'normal'或'alternate'时应用from关键帧中的值，当[AnimatorOptions](#animatoroptions)中的direction为'reverse'或'alternate-reverse'时应用to关键帧中的值。<br/>'both'：动画将遵循forwards和backwards的规则，从而在两个方向上扩展动画属性。 |
-| direction  | 'normal' \| 'reverse' \| 'alternate' \| 'alternate-reverse' | 否 | 否   | 动画播放模式。<br/>'normal'： 动画正向循环播放。<br/>'reverse'： 动画反向循环播放。<br/>'alternate'：动画交替循环播放，奇数次正向播放，偶数次反向播放。<br/>'alternate-reverse'：动画反向交替循环播放，奇数次反向播放，偶数次正向播放。<br/>默认值：'normal' |
-| iterations | number                                                      | 否 | 否   | 动画播放次数。设置为0时不播放，设置为-1时无限次播放，设置大于0时为播放次数。<br/>**说明:** 设置为除-1外其他负数视为无效取值，无效取值动画默认播放1次。 |
-| begin      | number                                                      | 否 | 否   | 动画插值起点。<br/>**说明:** 会影响[onFrame](#属性)回调的入参值。<br/>默认值：0                                              |
-| end        | number                                                      | 否 | 否   | 动画插值终点。<br/>**说明:** 会影响[onFrame](#属性)回调的入参值。   <br/>默认值：1                                            |
+**ArkTS-Sta起始版本：** 23
+
+| 名称       | 类型                                                        | 必填 | 说明                                                         |
+| ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| duration   | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 是   | 动画播放的时长，单位毫秒。<br/> 取值范围：[0, +∞)  <br/>默认值：0                         |
+| easing     | string      | 是   | 动画插值曲线，支持的曲线类型可参考表1。<br/>非法字符串时取:"ease"。 |
+| delay      | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 是   | 动画延时播放时长，单位毫秒，设置为0时，表示不延时。设置为负数时动画提前播放，如果提前播放的时长大于动画总时长，动画直接过渡到终点。 <br/>默认值：0         |
+| fill       | 'none' \| 'forwards' \| 'backwards' \| 'both'               | 是   | 动画执行后是否恢复到初始状态，动画执行后，动画结束时的状态（在最后一个关键帧中定义）将保留。<br/>'none'：在动画执行之前和之后都不会应用任何样式到目标上。<br/>'forwards'：在动画结束后，目标将保留动画结束时的状态（在最后一个关键帧中定义）。<br/>'backwards'：动画将在[AnimatorOptions](#animatoroptions)中的delay期间应用第一个关键帧中定义的值。当[AnimatorOptions](#animatoroptions)中的direction为'normal'或'alternate'时应用from关键帧中的值，当[AnimatorOptions](#animatoroptions)中的direction为'reverse'或'alternate-reverse'时应用to关键帧中的值。<br/>'both'：动画将遵循forwards和backwards的规则，从而在两个方向上扩展动画属性。 |
+| direction  | 'normal' \| 'reverse' \| 'alternate' \| 'alternate-reverse' | 是   | 动画播放模式。<br/>'normal'： 动画正向循环播放。<br/>'reverse'： 动画反向循环播放。<br/>'alternate'：动画交替循环播放，奇数次正向播放，偶数次反向播放。<br/>'alternate-reverse'：动画反向交替循环播放，奇数次反向播放，偶数次正向播放。<br/>默认值：'normal' |
+| iterations | ArkTS-Dyn: number<br/>ArkTS-Sta: int     | 是   | 动画播放次数。设置为0时不播放，设置为-1时无限次播放，设置大于0时为播放次数。<br/>**说明:** 设置为除-1外其他负数视为无效取值，无效取值动画默认播放1次。 |
+| begin      | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 是   | 动画插值起点。<br/>**说明:** 会影响[onFrame](#属性)回调的入参值。<br/>默认值：0    |
+| end        | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 是   | 动画插值终点。<br/>**说明:** 会影响[onFrame](#属性)回调的入参值。   <br/>默认值：1      |
 
 **表1 支持的曲线类型：** 
 
@@ -536,11 +598,15 @@ animator.update(options);
 | "smooth" | 平滑曲线，cubic-bezier(0.4, 0.0, 0.4, 1.0)。 |
 | "cubic-bezier(x1, y1, x2, y2)" | 三次贝塞尔曲线，x1、x2的值必须处于0-1之间。例如"cubic-bezier(0.42, 0.0, 0.58, 1.0)"。 |
 | "steps(number, step-position)" | 阶梯曲线，number必须设置，为正整数，step-position参数可选，支持设置start或end，默认值为end。例如"steps(3, start)"。 |
-| interpolating-spring(velocity, mass, stiffness, damping) | 插值弹簧曲线。<br/>velocity、mass、stiffness、damping都是数值类型，且mass、stiffness、damping参数均应该大于0，具体参数含义参考[插值弹簧曲线](./js-apis-curve.md#curvesinterpolatingspring10)。<br/>使用interpolating-spring时，duration不生效，由弹簧参数决定；fill、direction、iterations设置无效，fill固定设置为"forwards"，direction固定设置为"normal"，iterations固定设置为1，且对animator的[reverse](#reverse)函数调用无效。即animator使用interpolating-spring时只能正向播放1次。<br/>从API version 11开始支持且仅在ArkTS中支持使用。|
+| interpolating-spring(velocity, mass, stiffness, damping) | 插值弹簧曲线。<br/>velocity、mass、stiffness、damping都是数值类型，且mass、stiffness、damping参数均应该大于0，具体参数含义参考插值弹簧曲线[curves.interpolatingSpring](./js-apis-curve.md#curvesinterpolatingspring10)。<br/>使用interpolating-spring时，duration不生效，由弹簧参数决定；fill、direction、iterations设置无效，fill固定设置为"forwards"，direction固定设置为"normal"，iterations固定设置为1，且对animator的[reverse](#reverse)函数调用无效。即animator使用interpolating-spring时只能正向播放1次。<br/>从API version 11开始支持且仅在ArkTS中支持使用。|
 
 ## SimpleAnimatorOptions<sup>18+</sup>
 
 animator简易动画参数对象。与AnimatorOptions相比，部分动画参数有默认值，可不设置。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 ### constructor<sup>18+</sup>
 
@@ -548,16 +614,24 @@ constructor(begin: number, end: number)
 
 SimpleAnimatorOptions的构造函数。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[constructor<sup>23+</sup>](#constructor23)。
+
+**ArkTS-Dyn起始版本：** 18
+
 **参数：** 
 
-| 参数名       | 类型                                                        | 必填 | 说明                                                         |
-| ---------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-|  begin      | number                                                      | 是   | 动画插值起点。                                               |
-|  end        | number                                                      | 是   | 动画插值终点。                                               |
+| 参数名     | 类型     | 必填  | 说明     |
+| ---------- | -------- | ---- | -------- |
+|  begin      | number    | 是   | 动画插值起点。      |
+|  end        | number    | 是   | 动画插值终点。      |
 
 **示例：**
 
@@ -582,15 +656,44 @@ struct AnimatorTest {
 }
 ```
 
+### constructor<sup>23+</sup>
+
+constructor(begin: double, end: double)
+
+SimpleAnimatorOptions的构造函数。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[constructor<sup>18+</sup>](#constructor18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名     | 类型     | 必填  | 说明     |
+| ---------- | -------- | ---- | -------- |
+|  begin      | double  | 是   | 动画插值起点。     |
+|  end        | double   | 是   | 动画插值终点。     |
+
 ### duration<sup>18+</sup>
 
 duration(duration: number): SimpleAnimatorOptions
 
 设置animator动画时长。 
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[duration<sup>23+</sup>](#duration23)。
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：** 
 
@@ -627,15 +730,47 @@ struct AnimatorTest {
 }
 ```
 
+### duration<sup>23+</sup>
+
+duration(duration: int): SimpleAnimatorOptions
+
+设置animator动画时长。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[duration<sup>18+</sup>](#duration18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型   | 必填   | 说明      |
+| ------- | ----- | ---- | ------- |
+| duration |  int | 是    | 设置动画时长，单位毫秒。<br/>默认值：1000 |
+
+**返回值：** 
+
+| 类型                                | 说明            |
+| --------------------------------- | ------------- |
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | Animator简易动画参数对象。 |
+
 ### easing<sup>18+</sup>
 
 easing(curve: string): SimpleAnimatorOptions
 
 设置animator动画插值曲线。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -678,9 +813,17 @@ delay(delay: number): SimpleAnimatorOptions
 
 设置animator动画播放时延。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[delay<sup>23+</sup>](#delay23)。
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：** 
 
@@ -717,15 +860,47 @@ struct AnimatorTest {
 }
 ```
 
+### delay<sup>23+</sup>
+
+delay(delay: int): SimpleAnimatorOptions
+
+设置animator动画播放时延。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[delay<sup>18+</sup>](#delay18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名     | 类型                                  | 必填   | 说明      |
+| ------- | ----------------------------------- | ---- | ------- |
+| delay |  int | 是    | 设置animator动画播放时延，单位毫秒，设置为0时，表示不延时。设置为负数时动画提前播放，如果提前播放的时长大于动画总时长，动画直接过渡到终点。<br/>默认值：0 |
+
+**返回值：** 
+
+| 类型                                | 说明            |
+| --------------------------------- | ------------- |
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | Animator简易动画参数对象。 |
+
 ### fill<sup>18+</sup>
 
 fill(fillMode: [FillMode](./arkui-ts/ts-appendix-enums.md#fillmode)): SimpleAnimatorOptions
 
 设置animator动画填充方式。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -768,9 +943,15 @@ direction(direction: [PlayMode](./arkui-ts/ts-appendix-enums.md#playmode)): Simp
 
 设置animator动画播放方向。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -813,9 +994,17 @@ iterations(iterations: number): SimpleAnimatorOptions
 
 设置animator动画播放次数。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[iterations<sup>23+</sup>](#iterations23)。
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：** 
 
@@ -851,6 +1040,32 @@ struct AnimatorTest {
   }
 }
 ```
+
+### iterations<sup>23+</sup>
+
+iterations(iterations: int): SimpleAnimatorOptions
+
+设置animator动画播放次数。
+
+**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[iterations<sup>18+</sup>](#iterations18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名     | 类型                                  | 必填   | 说明      |
+| ------- | ----------------------------------- | ---- | ------- |
+| iterations | int | 是    | 设置animator动画播放次数，设置为0时不播放，设置为-1时无限次播放。<br/>默认值：1 |
+
+**返回值：** 
+
+| 类型                                | 说明            |
+| --------------------------------- | ------------- |
+| [SimpleAnimatorOptions](#simpleanimatoroptions18) | Animator简易动画参数对象。 |
 
 ## 完整示例
 ### 基于JS扩展的类Web开发范式
@@ -947,7 +1162,7 @@ class DateT {
 }
 ```
 
-  ![zh-cn_image_00007](figures/zh-cn_image_00007.gif)
+  ![zh-cn_image_00007](figures/js-animator-example.gif)
 
 ### 基于ArkTS扩展的声明式开发范式
 

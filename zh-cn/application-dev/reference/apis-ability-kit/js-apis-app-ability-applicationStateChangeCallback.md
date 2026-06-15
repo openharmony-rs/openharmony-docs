@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 本模块用于监听当前应用进程的状态变化。为了便于表述，下文中将“应用进程”简称为“进程”。
 
@@ -12,9 +12,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块首批接口从API version 10 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 约束限制
 
@@ -38,9 +40,13 @@ onApplicationForeground(): void
 
 当前进程从后台切换到前台时触发回调。当该回调触发时，并不表示进程已完全处于前台状态，而是即将进入前台状态，此时无法执行需要依赖前台状态的操作（例如启动其他UIAbility）。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -52,11 +58,17 @@ onApplicationBackground(): void
 
 当前进程从前台切换到后台时触发回调。当该回调触发时，表示进程已完全处于后台状态，可以执行适合在后台状态下完成的操作（例如清理内存缓存）。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
@@ -93,6 +105,55 @@ export default class MyAbility extends UIAbility {
       if (applicationContext != undefined) {
         applicationContext.off('applicationStateChange', applicationStateChangeCallback);
       } 
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class ApplicationStateChangeCallbackCustom implements ApplicationStateChangeCallback {
+  onApplicationForeground() {
+    console.info('applicationStateChangeCallback onApplicationForeground');
+  }
+
+  onApplicationBackground() {
+    console.info('applicationStateChangeCallback onApplicationBackground');
+  }
+}
+
+export default class MyAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    // 1.获取applicationContext
+    let applicationContext = this.context.getApplicationContext();
+    let applicationStateChangeCallback = new ApplicationStateChangeCallbackCustom();
+    try {
+      // 2.通过applicationContext注册应用前后台状态监听
+      if (applicationContext != undefined) {
+        applicationContext.onApplicationStateChange(applicationStateChangeCallback);
+      }
+    } catch (paramError) {
+      console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+    console.info('Register applicationStateChangeCallback');
+  }
+
+  onDestroy(): Promise<void> {
+    let applicationContext = this.context.getApplicationContext();
+    let applicationStateChangeCallback = new ApplicationStateChangeCallbackCustom();
+    try {
+      // 1.通过applicationContext解除注册应用前后台状态监听
+      if (applicationContext != undefined) {
+        applicationContext.offApplicationStateChange(applicationStateChangeCallback);
+      }
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }

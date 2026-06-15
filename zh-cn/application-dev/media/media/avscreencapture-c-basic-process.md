@@ -2,8 +2,8 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -155,7 +155,7 @@ OH_AVScreenCapture_Init(capture, config);
 
 ### 设置数据更新、状态切换、错误上报的回调
 
-回调函数主要用来监听录屏过程中的错误发生、音视频流生成和录屏状态变更等事件，详细内容请参考：[错误回调](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonerror)、[状态回调](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback)、[获取数据回调](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setdatacallback)。
+回调函数主要用来监听录屏过程中的错误发生、音视频流生成和录屏状态变更等事件，详细内容请参考：错误回调[OH_AVScreenCaptureOnError](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_avscreencaptureonerror)、状态回调[OH_AVScreenCapture_SetStateCallback](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback)和获取数据回调[OH_AVScreenCapture_SetDataCallback](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setdatacallback)。
 
 ```c++
 // 设置回调。
@@ -284,7 +284,7 @@ OH_AVScreenCapture_Release(capture);
 
 系统提供的录屏模式：[录制指定屏幕](#录制指定屏幕)、[录制主屏幕](#录制主屏幕)和[录制指定窗口](#录制指定窗口推荐)。
 
-录屏模式会使用到屏幕ID（displayId）和窗口ID（missionIds）。获取方式可参考：[获取displayid](../../reference/apis-arkui/capi-oh-display-manager-h.md#oh_nativedisplaymanager_createalldisplays)、[获取missionIds](../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。
+录屏模式会使用到屏幕ID（displayId）和窗口ID（missionIds）。获取方式请分别参考：[OH_NativeDisplayManager_CreateAllDisplays](../../reference/apis-arkui/capi-oh-display-manager-h.md#oh_nativedisplaymanager_createalldisplays)和[getWindowProperties](../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。
 
 ### 录制指定屏幕
 
@@ -337,9 +337,12 @@ config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
 config.videoInfo.videoCapInfo.displayId = 0;
 
 // (可选)若有期望录制的窗口，可传入单个窗口Id。
-std::vector<int32_t> missionIds = {61}; // 表示弹出的Picker默认选中61号窗口。
+int32_t* missionIds = new int32_t[1]{61}; // 表示弹出的Picker默认选中61号窗口。
 config.videoInfo.videoCapInfo.missionIDs = &missionIds[0];
-config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
+int32_t missionIdsLen = sizeof(missionIds) / sizeof(missionIds[0]);
+config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIdsLen);
+
+// 在配置参数结束后执行"delete[] missionIds"。
 ```
 
 <!--RP2--><!--RP2End-->
@@ -356,9 +359,12 @@ config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
 config.videoInfo.videoCapInfo.displayId = 0;
 
 // 传入多个窗口Id。
-vector<int32_t> missionIds = {60, 61}; // 表示期望同时录制60、61号窗口。
+int32_t* missionIds = new int32_t[2]{60, 61}; // 表示期望同时录制60、61号窗口。
 config.videoInfo.videoCapInfo.missionIDs = &missionIds[0];
-config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
+int32_t missionIdsLen = sizeof(missionIds) / sizeof(missionIds[0]);
+config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIdsLen);
+
+// 在配置参数结束后执行"delete[] missionIds"。
 ```
 
 ## Phone/Tablet弹窗模式配置说明

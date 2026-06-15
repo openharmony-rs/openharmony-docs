@@ -5,13 +5,14 @@
 <!--Owner: @guoshengbang-->
 <!--Designer: @gcw_4D6e0BBd-->
 <!--Tester: @guoshengbang-->
-<!--Adviser: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 该模块为基本打印的操作API，提供调用基础打印功能的接口。
 
 > **说明：**  
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前界面仅包含本模块的系统接口，其他公开接口参见[@ohos.print (打印)](js-apis-print-sys.md)。
+> 当前界面仅包含本模块的系统接口，其他公开接口参见[@ohos.print (打印)](js-apis-print.md)。
 
 ## 导入模块
 
@@ -27,6 +28,10 @@ import { print } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **属性：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -36,6 +41,41 @@ import { print } from '@kit.BasicServicesKit';
 | vendorName | string | 否 | 否 | 表示供应商名称。 |
 | vendorIcon | number | 否 | 否 | 表示供应商图标。 |
 | version | string | 否 | 否 | 表示当前打印机扩展的版本。 |
+
+## PrintMargin
+
+定义打印页边距的接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
+**属性：**
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- |--------| -------- | -------- |
+| top | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是   | 表示页面上边距。默认值为0。 |
+| bottom | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是   | 表示页面下边距。默认值为0。 |
+| left | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是   | 表示页面左边距。默认值为0。 |
+| right | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是   | 表示页面右边距。默认值为0。 |
+
+## PrinterRange
+
+定义打印范围的接口。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
+**属性：**
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 
 ## print.queryAllPrinterExtensionInfos
 
@@ -68,7 +108,7 @@ queryAllPrinterExtensionInfos(callback: AsyncCallback&lt;Array&lt;PrinterExtensi
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.queryAllPrinterExtensionInfos((err: BusinessError, extensionInfos: print.PrinterExtensionInfo[]) => {
     if (err) {
@@ -110,7 +150,7 @@ queryAllPrinterExtensionInfos(): Promise&lt;Array&lt;PrinterExtensionInfo&gt;&gt
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.queryAllPrinterExtensionInfos().then((extensionInfos: print.PrinterExtensionInfo[]) => {
     console.info('queryAllPrinterExtensionInfos success ' + JSON.stringify(extensionInfos));
@@ -153,7 +193,7 @@ disconnectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId: string = 'printerId_32';
 print.disconnectPrinter(printerId, (err: BusinessError) => {
@@ -203,7 +243,7 @@ disconnectPrinter(printerId: string): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId: string = 'printerId_32';
 print.disconnectPrinter(printerId).then(() => {
@@ -246,7 +286,7 @@ queryPrinterCapability(printerId: string, callback: AsyncCallback&lt;void&gt;): 
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId: string = 'printerId_32';
 print.queryPrinterCapability(printerId, (err: BusinessError) => {
@@ -296,7 +336,7 @@ queryPrinterCapability(printerId: string): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId: string = 'printerId_32';
 print.queryPrinterCapability(printerId).then(() => {
@@ -339,7 +379,7 @@ startPrintJob(jobInfo: PrintJob, callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobInfo : print.PrintJob = {
     fdList : [44,45],
@@ -405,7 +445,7 @@ startPrintJob(jobInfo: PrintJob): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobInfo : print.PrintJob = {
     fdList : [44,45],
@@ -464,7 +504,7 @@ cancelPrintJob(jobId: string, callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobId : string = '121212';
 print.cancelPrintJob(jobId, (err: BusinessError) => {
@@ -514,7 +554,7 @@ cancelPrintJob(jobId: string): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobId : string = '121212';
 print.cancelPrintJob(jobId).then(() => {
@@ -561,7 +601,7 @@ restartPrintJob(jobId: string): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobId : string = '121212';
 print.restartPrintJob(jobId).then(() => {
@@ -666,7 +706,7 @@ requestPrintPreview(jobInfo: PrintJob): Promise&lt;number&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobInfo : print.PrintJob = {
     fdList : [44,45],
@@ -965,7 +1005,7 @@ addPrinters(printers: Array&lt;PrinterInfo&gt;, callback: AsyncCallback&lt;void&
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1023,7 +1063,7 @@ addPrinters(printers: Array&lt;PrinterInfo&gt;): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1074,7 +1114,7 @@ removePrinters(printerIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId : string = '1212';
 print.removePrinters([printerId], (err: BusinessError) => {
@@ -1124,7 +1164,7 @@ removePrinters(printerIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId : string = '1212';
 print.removePrinters([printerId]).then(() => {
@@ -1167,7 +1207,7 @@ updatePrinters(printers: Array&lt;PrinterInfo&gt;, callback: AsyncCallback&lt;vo
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1225,7 +1265,7 @@ updatePrinters(printers: Array&lt;PrinterInfo&gt;): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerInfo : print.PrinterInfo = {
     printerId : '3232',
@@ -1277,7 +1317,7 @@ updatePrinterState(printerId: string, state: PrinterState, callback: AsyncCallba
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId : string = '1212';
 let state : print.PrinterState = print.PrinterState.PRINTER_CONNECTED;
@@ -1329,7 +1369,7 @@ updatePrinterState(printerId: string, state: PrinterState): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId : string = '1212';
 let state : print.PrinterState = print.PrinterState.PRINTER_CONNECTED;
@@ -1373,7 +1413,7 @@ updateExtensionInfo(info: string, callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let info : string = 'WIFI_INACTIVE';
 print.updateExtensionInfo(info, (err: BusinessError) => {
@@ -1423,7 +1463,7 @@ updateExtensionInfo(info: string): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let info : string = 'WIFI_INACTIVE';
 print.updateExtensionInfo(info).then(() => {
@@ -1467,7 +1507,7 @@ queryAllPrintJobs(callback: AsyncCallback&lt;void&gt;): void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.queryAllPrintJobs((err: BusinessError) => {
     if (err) {
@@ -1512,7 +1552,7 @@ queryAllPrintJobs(): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.queryAllPrintJobs().then(() => {
     console.info('queryAllPrintJobs success');
@@ -1552,7 +1592,7 @@ queryAllActivePrintJobs(): Promise&lt;[PrintJob](js-apis-print.md#printjob24)[]&
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.queryAllActivePrintJobs().then((printJobs : print.PrintJob[]) => {
     console.info('queryAllActivePrintJobs success, data : ' + JSON.stringify(printJobs));
@@ -1592,7 +1632,7 @@ queryPrintJobList(callback: AsyncCallback&lt;Array&lt;PrintJob&gt;&gt;): void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.queryPrintJobList((err: BusinessError, printJobs : print.PrintJob[]) => {
     if (err) {
@@ -1634,7 +1674,7 @@ queryPrintJobList(): Promise&lt;Array&lt;PrintJob&gt;&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.queryPrintJobList().then((printJobs : print.PrintJob[]) => {
     console.info('queryPrintJobList success, data : ' + JSON.stringify(printJobs));
@@ -1676,7 +1716,7 @@ queryPrintJobById(jobId: string, callback: AsyncCallback&lt;PrintJob&gt;): void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobId : string = '1';
 print.queryPrintJobById(jobId, (err: BusinessError, printJob : print.PrintJob) => {
@@ -1726,7 +1766,7 @@ queryPrintJobById(jobId: string): Promise&lt;PrintJob&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobId : string = '1';
 print.queryPrintJobById(jobId).then((printJob : print.PrintJob) => {
@@ -1844,7 +1884,7 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobId : string = '1';
 print.notifyPrintService(jobId, 'spooler_closed_for_started', (err: BusinessError) => {
@@ -1895,7 +1935,7 @@ notifyPrintService(jobId: string, type: 'spooler_closed_for_cancelled' | 'spoole
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let jobId : string = '1';
 print.notifyPrintService(jobId, 'spooler_closed_for_started').then(() => {
@@ -1943,7 +1983,7 @@ getPrinterInfoById(printerId: string): Promise&lt;PrinterInfo&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId : string = '1';
 print.getPrinterInfoById(printerId).then((printerInfo : print.PrinterInfo) => {
@@ -1991,7 +2031,7 @@ notifyPrintServiceEvent(event: ApplicationEvent): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let event : print.ApplicationEvent = print.ApplicationEvent.APPLICATION_CREATED;
 print.notifyPrintServiceEvent(event).then(() => {
@@ -2040,7 +2080,7 @@ setPrinterPreferences(printerId: string, printerPreferences: PrinterPreferences)
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId : string = 'testPrinterId';
 let preferences : print.PrinterPreferences = {
@@ -2084,7 +2124,7 @@ discoverUsbPrinters(): Promise&lt;Array&lt;PrinterInformation&gt;&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 print.discoverUsbPrinters().then((printers : print.PrinterInformation[]) => {
     console.info('discoverUsbPrinters data : ' + JSON.stringify(printers));
@@ -2132,7 +2172,7 @@ setDefaultPrinter(printerId: string, type: DefaultPrinterType): Promise&lt;void&
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerId : string = '1';
 let type : print.DefaultPrinterType = print.DefaultPrinterType.DEFAULT_PRINTER_TYPE_SET_BY_USER;
@@ -2182,7 +2222,7 @@ notifyPrintServiceEvent(event: ApplicationEvent, jobId: string): Promise&lt;void
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let event : print.ApplicationEvent = print.ApplicationEvent.APPLICATION_CREATED;
 let jobId : string = '1';
@@ -2234,7 +2274,7 @@ queryPrinterCapabilityByUri(printerUri: string, printerId: string): Promise&lt;[
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerUri : string = "testPrinterUri";
 let printerId : string = "testPrinterId";
@@ -2287,7 +2327,7 @@ addPrinterToCups(printerUri: string, printerName: string, printerMake: string): 
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerUri : string = "testPrinterUri";
 let printerName : string = "testPrinterName";
@@ -2339,7 +2379,7 @@ deletePrinterFromCups(printerName: string): Promise&lt;void&gt;
 
 ```ts
 import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 let printerName : string = "testPrinterName";
 

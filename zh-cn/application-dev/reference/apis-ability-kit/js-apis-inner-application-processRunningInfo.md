@@ -3,13 +3,14 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
 
 运行进程信息，可以通过appManager中[getProcessRunningInfos](js-apis-application-appManager.md#appmanagergetprocessrunninginfosdeprecated)方法来获取运行进程信息。
 
 > **说明：** 
+> - 本模块仅支持ArkTS-Dyn。
 > - 本模块接口从API version 9 开始废弃，建议使用[ProcessInformation<sup>9+</sup>](js-apis-inner-application-processInformation.md)替代。
 > - 本模块首批接口从API version 8 开始支持。
 
@@ -22,6 +23,10 @@ import appManager from '@ohos.application.appManager';
 ## 属性
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 8
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |

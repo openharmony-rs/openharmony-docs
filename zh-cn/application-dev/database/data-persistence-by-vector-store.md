@@ -142,7 +142,7 @@ SQL语句中的函数，如下所示：
 
 1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。示例代码如下：
 
-   <!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
+   <!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // 导入模块
@@ -168,9 +168,9 @@ SQL语句中的函数，如下所示：
    > 
    > - 错误码的详细介绍请参见[通用错误码](../reference/errorcode-universal.md)和[关系型数据库错误码](../reference/apis-arkdata/errorcode-data-rdb.md)。
 
-   示例代码如下：
+   ArkTS-Dyn示例：
 
-   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
+   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
@@ -179,15 +179,53 @@ SQL语句中的函数，如下所示：
    const STORE_CONFIG: relationalStore.StoreConfig = {
      name: 'VectorTest.db', // 数据库文件名
      securityLevel: relationalStore.SecurityLevel.S1, // 数据库安全级别
-     vector: true // 可选参数，该参数为true时才可以使用向量数据库。
+     vector: true // 可选参数，该参数为true时才可以使用向量数据库
    };
    // ...
      try {
        store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+       if (!store) {
+         console.error('Get RdbStore failed, store is undefined');
+         return;
+       }
        // 建表语句，floatvector(2)代表repr的维度是2
        const SQL_CREATE_TABLE = 'CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY, repr floatvector(2));';
        // 第二个入参表示不开启显示事务，第三个参数undefined表示未使用参数绑定
        await store!.execute(SQL_CREATE_TABLE, 0, undefined);
+     } catch(err) {
+       console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+     };
+   ```
+   ArkTS-Sta示例：
+   
+   context为应用的上下文信息，此处获取方式仅为示例，开发者可以根据自己的需求获取上下文信息。当前获取方式是通过UIAbility在Index.ets页面获取。
+   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/Index.ets)-->
+
+   ``` TypeScript
+   /* context为应用的上下文信息，此处获取方式仅为示例。 */
+   const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   ```
+
+   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   
+   ``` TypeScript
+   let store: relationalStore.RdbStore | undefined = undefined;
+   const STORE_CONFIG: relationalStore.StoreConfig = {
+     name: 'VectorTest.db', // 数据库文件名
+     securityLevel: relationalStore.SecurityLevel.S1, // 数据库安全级别
+     vector: true // 可选参数，该参数为true时才可以使用向量数据库
+   };
+   // ...
+     try {
+       store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+       if (!store) {
+         console.error('Get RdbStore failed, store is undefined');
+         return;
+       }
+       // 建表语句，floatvector(2)代表repr的维度是2
+       const SQL_CREATE_TABLE = 'CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY, repr floatvector(2));';
+       // 第二个入参表示不开启显示事务，第三个参数undefined表示未使用参数绑定
+       await store!.execute(SQL_CREATE_TABLE, 0 as long, undefined);
      } catch(err) {
        console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
      };
@@ -199,9 +237,9 @@ SQL语句中的函数，如下所示：
    >
    > 向量数据库没有显式的flush操作实现持久化，数据插入即保存在持久化文件。
    
-   示例代码如下：
+   ArkTS-Dyn示例：
 
-   <!--@[vector_TS_execute_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@[vector_TS_execute_insert](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    try {
@@ -215,9 +253,27 @@ SQL语句中的函数，如下所示：
    }
    ```
 
-4. 获取到RdbStore后，调用execute接口修改或删除数据。示例代码如下：
+   ArkTS-Sta示例：
 
-   <!--@[vector_TS_execute_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@[vector_TS_execute_insert](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
+   ``` TypeScript
+   try {
+     // 使用参数绑定
+     const vectorValue: Float32Array = Float32Array.from([1.2, 2.3]);
+     await store!.execute('insert into test VALUES(?, ?);', 0 as long, [0 as long, vectorValue]);
+     // 不使用参数绑定
+     await store!.execute("insert into test VALUES(1, '[1.3, 2.4]');", 0 as long, undefined);
+   } catch (err) {
+     console.error(`execute insert failed, code is ${err.code}, message is ${err.message}`);
+   }
+   ```
+
+4. 获取到RdbStore后，调用execute接口修改或删除数据。
+
+   ArkTS-Dyn示例：
+
+   <!--@[vector_TS_execute_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    // 修改数据
@@ -242,35 +298,71 @@ SQL语句中的函数，如下所示：
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!--@[vector_TS_execute_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
+   ``` TypeScript
+   // 修改数据
+   try {
+     // 使用参数绑定
+     const vectorValue1: Float32Array = Float32Array.from([2.1, 3.2]);
+     await store!.execute('update test set repr = ? where id = ?', 0 as long, [vectorValue1, 0 as long]);
+     // 不使用参数绑定
+     await store!.execute("update test set repr = '[5.1, 6.1]' where id = 0", 0 as long, undefined);
+   } catch (err) {
+     console.error(`execute update failed, code is ${err.code}, message is ${err.message}`);
+   }
+   
+   // 删除数据
+   try {
+     // 使用参数绑定
+     await store!.execute('delete from test where id = ?', 0 as long, [0 as long]);
+     // 不使用参数绑定
+     await store!.execute('delete from test where id = 0', 0 as long, undefined);
+   } catch (err) {
+     console.error(`execute delete failed, code is ${err.code}, message is ${err.message}`);
+   }
+   ```
+
 5. 获取到RdbStore后，调用querySql方法查找数据，返回一个ResultSet结果集。
 
    > **说明：**
    >
    > 当应用完成查询数据操作，不再使用结果集（ResultSet）时，请及时调用close方法关闭结果集，释放系统为其分配的内存。
 
-   示例代码如下：
+   ArkTS-Dyn示例：
 
-   <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
+   let resultSet: relationalStore.ResultSet | undefined = undefined;
    // 单表查询
    try {
      // 使用参数绑定
      const QUERY_SQL = 'select id, repr <-> ? as distance from test where id > ? order by repr <-> ? limit 5;';
      const vectorValue2: Float32Array = Float32Array.from([6.2, 7.3]);
-     let resultSet = await store!.querySql(QUERY_SQL, [vectorValue2, 0, vectorValue2]);
-     while (resultSet!.goToNextRow()) {
-       let id = resultSet.getValue(0);
-       let dis = resultSet.getValue(1);
+     resultSet = await store!.querySql(QUERY_SQL, [vectorValue2, 0, vectorValue2]);
+     while (resultSet?.goToNextRow()) {
+       let id = resultSet?.getValue(0);
+       let dis = resultSet?.getValue(1);
      }
-     resultSet!.close();
-   
+   } catch (err) {
+     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   } finally {
+     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+     resultSet?.close();
+   }
+
+   try {
      // 不使用参数绑定
      const QUERY_SQL1 = "select id, repr <-> '[6.2, 7.3]' as distance from test where id > 0 order by repr <-> '[6.2, 7.3]' limit 5;";
      resultSet = await store!.querySql(QUERY_SQL1);
-     resultSet!.close();
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   } finally {
+     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+     resultSet?.close();
    }
    
    // 子查询
@@ -278,43 +370,120 @@ SQL语句中的函数，如下所示：
      // 创建第二张表
      let CREATE_SQL = 'CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY);';
      await store!.execute(CREATE_SQL);
-     let resultSet = await store!.querySql('select * from test where id in (select id from test1);');
-     resultSet!.close();
+     resultSet = await store!.querySql('select * from test where id in (select id from test1);');
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   } finally {
+     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+     resultSet?.close();
    }
    
    // 聚合查询
    try {
-     let resultSet = await store!.querySql("select * from test where repr <-> '[1.0, 1.0]' > 0 group by id having max(repr <=> '[1.0, 1.0]');");
-     resultSet!.close();
+     resultSet = await store!.querySql("select * from test where repr <-> '[1.0, 1.0]' > 0 group by id having max(repr <=> '[1.0, 1.0]');");
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   } finally {
+     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+     resultSet?.close();
    }
    
    // 多表查询
    try {
      // union all与union的区别在于union会将数据去重
-     let resultSet = await store!.querySql("select id, repr <-> '[1.5, 5.6]' as distance from test union select id, repr <-> '[1.5, 5.6]' as distance from test order by distance limit 5;");
-     resultSet!.close();
+     resultSet = await store!.querySql("select id, repr <-> '[1.5, 5.6]' as distance from test union select id, repr <-> '[1.5, 5.6]' as distance from test order by distance limit 5;");
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   } finally {
+     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+     resultSet?.close();
+   }
+   ```
+
+   ArkTS-Sta示例：
+
+   <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
+   ``` TypeScript
+   let resultSet: relationalStore.ResultSet | undefined = undefined;
+   // 单表查询
+   try {
+     // 使用参数绑定
+     const QUERY_SQL = 'select id, repr <-> ? as distance from test where id > ? order by repr <-> ? limit 5;';
+     const vectorValue2: Float32Array = Float32Array.from([6.2, 7.3]);
+     resultSet = await store!.querySql(QUERY_SQL, [vectorValue2, 0 as long, vectorValue2]);
+     while (resultSet?.goToNextRow()) {
+       let id = resultSet?.getValue(0);
+       let dis = resultSet?.getValue(1);
+     }
+   } catch (err) {
+     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   } finally {
+     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+     resultSet?.close();
+   }
+   
+   try {
+     // 不使用参数绑定
+     const QUERY_SQL1 = "select id, repr <-> '[6.2, 7.3]' as distance from test where id > 0 order by repr <-> '[6.2, 7.3]' limit 5;";
+     resultSet = await store!.querySql(QUERY_SQL1);
+   } catch (err) {
+     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   } finally {
+     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+     resultSet?.close();
+   }
+   
+   // 子查询
+   try {
+     // 创建第二张表
+     let CREATE_SQL = 'CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY);';
+     await store!.execute(CREATE_SQL);
+     resultSet = await store!.querySql('select * from test where id in (select id from test1);');
+   } catch (err) {
+     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   } finally {
+     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+     resultSet?.close();
+   }
+   
+   // 聚合查询
+   try {
+     resultSet = await store!.querySql("select * from test where repr <-> '[1.0, 1.0]' > 0 group by id having max(repr <=> '[1.0, 1.0]');");
+   } catch (err) {
+     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   } finally {
+     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+     resultSet?.close();
+   }
+   
+   // 多表查询
+   try {
+     // union all与union的区别在于union会将数据去重
+     resultSet = await store!.querySql("select id, repr <-> '[1.5, 5.6]' as distance from test union select id, repr <-> '[1.5, 5.6]' as distance from test order by distance limit 5;");
+   } catch (err) {
+     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   } finally {
+     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+     resultSet?.close();
    }
    ```
 
 6. 创建视图并执行查询。示例代码如下：
 
-   <!--@[vector_TS_execute_create_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@[vector_TS_execute_create_view](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    // 视图查询
    try {
      // 创建视图
      await store!.execute('CREATE VIEW v1 as select * from test where id > 0;');
-     let resultSet = await store!.querySql('select * from v1;');
-     resultSet!.close();
+     resultSet = await store!.querySql('select * from v1;');
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   } finally {
+     // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+     resultSet?.close();
    }
    ```
    
@@ -368,7 +537,7 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
-   <!--@[vector_TS_execute_create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@[vector_TS_execute_create_index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    // 基础用法
@@ -411,7 +580,7 @@ SQL语句中的函数，如下所示：
 
     示例代码如下：
 
-   <!--@[vector_TS_execute_gsdiskann](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@[vector_TS_execute_gsdiskann](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    try {
@@ -455,7 +624,7 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
-   <!--@[vector_TS_execute_auto_dataAging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+   <!--@[vector_TS_execute_auto_dataAging](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    try {
@@ -480,7 +649,7 @@ SQL语句中的函数，如下所示：
 
     示例代码如下：
 
-    <!--@[vector_TS_execute_dataAging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+    <!--@[vector_TS_execute_dataAging](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
     
     ``` TypeScript
     try {
@@ -495,7 +664,7 @@ SQL语句中的函数，如下所示：
 
     调用deleteRdbStore方法，删除数据库及数据库相关文件。示例代码如下：
 
-    <!--@[vector_TS_deleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+    <!--@[vector_TS_deleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
     
     ``` TypeScript
     try {

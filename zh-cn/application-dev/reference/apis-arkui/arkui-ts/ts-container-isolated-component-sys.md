@@ -6,15 +6,17 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-IsolatedComponent用于支持在本页面内嵌入显示独立Abc（.abc文件）提供的UI，展示的内容在受限worker线程中运行。
+IsolatedComponent用于支持在本页面内嵌入显示独立Abc（.abc文件）提供的UI，展示的内容在受限[worker](../../apis-arkts/js-apis-worker.md)线程中运行。
 
 通常用于有Abc热更新（可动态替换Isolated加载的abc文件，无需通过重新安装应用的方式实现内容更新）诉求的模块化开发场景。
 
 > **说明：**
 >
-> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 本模块为系统接口。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块为系统接口。
 
 ## 使用约束
 
@@ -90,7 +92,7 @@ IsolatedComponent(options: IsolatedOptions)
 
 onError(callback:ErrorCallback)
 
-被拉起的Ability扩展在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理。
+被拉起的[Ability](../../apis-ability-kit/js-apis-app-ability-ability.md)扩展在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理。
 
 **系统接口：** 此接口为系统接口。
 

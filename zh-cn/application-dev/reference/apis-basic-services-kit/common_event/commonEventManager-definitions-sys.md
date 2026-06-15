@@ -1,9 +1,8 @@
 # 系统定义的公共事件(系统接口)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -30,6 +29,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
 
 **取值：** "usual.event.BOOT_COMPLETED"
@@ -45,9 +48,28 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.PACKAGE_INSTALLATION_STARTED"
+
+
+### COMMON_EVENT_DYNAMIC_ICON_CHANGED<sup>12+</sup>
+
+表示应用动态图标发生变化的公共事件。
+
+在应用的动态图标发生变更时，会发送此公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.DYNAMIC_ICON_CHANGED"
 
 
 ### COMMON_EVENT_BUNDLE_RESOURCES_CHANGED<sup>15+</sup>
@@ -59,6 +81,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_BUNDLE_RESOURCES
 
@@ -75,6 +101,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** ohos.permission.CHANGE_DEFAULT_APPLICATION
 
 **取值：** "usual.event.DEFAULT_APPLICATION_CHANGED"
@@ -90,6 +120,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** ohos.permission.MANAGE_SHORTCUTS
 
 **取值：** "usual.event.SHORTCUT_CHANGED"
@@ -102,6 +136,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -116,6 +154,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.KIOSK_MODE_OFF"
@@ -129,9 +171,13 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**订阅者所需权限：**ohos.permission.INSTALL_BUNDLE（该权限仅系统应用可申请）
+**订阅者所需权限：** ohos.permission.INSTALL_BUNDLE（该权限仅系统应用可申请）
 
 **取值：** "usual.event.APP_FIRST_LAUNCH"
 
@@ -152,6 +198,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED"
@@ -168,6 +218,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.CUSTOM_CONFIG_POLICY_UPDATED"
@@ -182,6 +236,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -199,10 +257,29 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.CHARGE_TYPE_CHANGED"
 
+### COMMON_EVENT_SCREEN_LOCK_EXITING
+
+表示锁屏退出的公共事件。
+
+锁屏退出时将会触发事件通知服务发布该系统公共事件，此公共事件不关注文件系统是否解密。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**取值：** "usual.event.SCREEN_LOCK_EXITING"
+
+## Basic Services Kit-账号
 
 ### COMMON_EVENT_USER_ADDED
 
@@ -215,6 +292,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
@@ -233,6 +314,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
 **取值：** "usual.event.USER_REMOVED"
@@ -249,6 +334,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.GET_LOCAL_ACCOUNTS（该权限仅系统应用可申请）
 
@@ -267,6 +356,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 在API version 21之前，需要申请ohos.permission.MANAGE_LOCAL_ACCOUNTS权限；从API version 21开始，需要申请ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限
 
 **取值：** "usual.event.USER_SWITCHED"
@@ -282,6 +375,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **取值：** "usual.event.USER_LOCKING"
 
 
@@ -295,8 +392,119 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **取值：** "usual.event.USER_LOCKED"
 
+### COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_CREATED
+
+表示创建系统账号子身份。
+
+系统账号子身份创建成功时，会触发公共事件服务发布该事件，携带系统账号ID和子身份ID。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.OS_ACCOUNT_SUB_PROFILE_CREATED"
+
+### COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_DELETED
+
+表示删除系统账号子身份。
+
+系统账号子身份被删除时，触发公共事件服务发布该事件，携带系统账号ID和子身份ID。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.OS_ACCOUNT_SUB_PROFILE_DELETED"
+
+### COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHING
+
+表示系统账号子身份开始切换。
+
+系统账号子身份开始切换时，触发公共事件服务发布该事件，携带系统账号ID、切换到的子身份ID和切换前的子身份ID。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHING"
+
+### COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHED
+
+表示系统账号子身份切换完成。
+
+系统账号子身份切换完成时，触发公共事件服务发布此事件，携带系统账号ID、切换到的子身份ID和切换前的子身份ID。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHED"
+
+### COMMON_EVENT_DISTRIBUTED_ACCOUNT_BOUND
+
+表示绑定分布式账号。
+
+分布式账号绑定时，会触发公共事件服务发布该事件，携带系统账号ID和子身份ID。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.DISTRIBUTED_ACCOUNT_BOUND"
+
+### COMMON_EVENT_DISTRIBUTED_ACCOUNT_UNBOUND
+
+表示已解绑分布式账号。
+
+分布式账号解绑时，会触发公共事件服务发布该事件，携带系统账号ID和子身份ID。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.DISTRIBUTED_ACCOUNT_UNBOUND"
 
 ## Core File Kit
 
@@ -311,6 +519,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
@@ -327,6 +539,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
 **取值：** "usual.event.data.VOLUME_UNMOUNTED"
@@ -341,6 +557,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
@@ -357,6 +577,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
 **取值：** "usual.event.data.VOLUME_BAD_REMOVAL"
@@ -371,6 +595,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
@@ -387,6 +615,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：13
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** ohos.permission.START_RESTORE_NOTIFICATION
 
 **取值：** "usual.event.RESTORE_START"
@@ -402,9 +634,32 @@
 
 **系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** ohos.permission.ACCESS_CLOUD_DISK_INFO（该权限仅系统应用可申请）
 
 **取值：** "usual.event.CLOUD_DISK_STATE_CHANGED"
+
+
+### COMMON_EVENT_RESTORE_END<sup>23+</sup>
+
+表示某个应用结束恢复的公共事件。
+
+当数据迁移相关应用拉起备份恢复框架进行恢复任务，某个应用恢复结束后会发送此公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+**订阅者所需权限：** ohos.permission.RESTORE_END_NOTIFICATION（该权限仅系统应用可申请）
+
+**取值：** "usual.event.RESTORE_END"
 
 
 ## Media Kit
@@ -419,10 +674,30 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
 **取值：** "usual.event.SCREEN_SHARE"
 
+
+## Network Kit
+
+### COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED<sup>12+</sup>
+
+表示VPN连接状态的公共事件。
+
+当VPN连接或者断开时会发送此公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.VPN_CONNECTION_STATUS_CHANGED"
 
 ## Telephony Kit
 
@@ -435,6 +710,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
@@ -451,6 +730,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
 **取值：** "usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED"
@@ -465,6 +748,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
@@ -481,6 +768,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.OPERATOR_CONFIG_CHANGED"
@@ -495,6 +786,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**: 10
+
+**ArkTS-Sta起始版本**: 20
 
 **订阅者所需权限：** 无
 
@@ -511,6 +806,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
@@ -525,6 +824,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -541,6 +844,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.SET_PRIMARY_SLOT_STATUS"
@@ -555,6 +862,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -571,6 +882,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
@@ -585,6 +900,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -601,6 +920,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** ohos.permission.GET_TELEPHONY_STATE（该权限仅系统应用可申请）
 
 **取值：** "usual.event.INCOMING_CALL_MISSED"
@@ -615,6 +938,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -631,6 +958,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.DIALER_SPECIAL_CODE"
@@ -645,6 +976,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -665,6 +1000,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.STK_COMMAND"
@@ -679,6 +1018,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** 无
 
@@ -695,6 +1038,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 
@@ -710,6 +1057,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.STK_ALPHA_IDENTIFIER"
@@ -724,6 +1075,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 

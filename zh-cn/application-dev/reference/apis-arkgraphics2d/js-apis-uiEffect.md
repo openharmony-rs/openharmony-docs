@@ -54,6 +54,8 @@ createEffect(): VisualEffect
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -126,7 +128,7 @@ struct UIEffectFilterExample {
     }
 }
 ```
-![zh-ch_image_UIEffect_blur.png](figures/zh-ch_image_UIEffect_blur.png)
+![UIEffect-blur.png](figures/UIEffect-blur.png)
 
 ### hdrBrightnessRatio<sup>24+</sup>
 

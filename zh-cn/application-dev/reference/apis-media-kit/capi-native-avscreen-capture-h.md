@@ -1,8 +1,8 @@
 # native_avscreen_capture.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -78,6 +78,9 @@
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayIdsSelected(OH_AVScreenCapture_UserSelectionInfo *selection, uint64_t** displayIds, size_t *count)](#oh_avscreencapture_getmultidisplayidsselected) | 获取picker页面上用户选择录制的DisplayID列表。在[OH_AVScreenCapture_OnUserSelected](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onuserselected)回调中使用，selection指针在回调结束后销毁。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayCaptureCapability(struct OH_AVScreenCapture *capture, uint64_t *displayIds, size_t count, OH_MultiDisplayCapability *capability)](#oh_avscreencapture_getmultidisplaycapturecapability) | 获取多屏幕录制能力信息，判断用户选择的多个屏幕是否支持联合录制。 |
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPrivacyProtectCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnPrivacyProtect callback, void *userData)](#oh_avscreencapture_setprivacyprotectcallback) | 设置隐私保护回调函数，以便应用程序响应屏幕捕获产生的隐私保护事件。该接口必须在调用开始录屏之前调用。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPause(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)](#oh_avscreencapture_strategyforpause) | 允许暂停屏幕捕获。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PauseScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_pausescreencapture) | 暂停屏幕捕获。 |
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_resumescreencapture) | 恢复屏幕捕获。 |
 
 ## 函数说明
 
@@ -280,7 +283,7 @@ OH_NativeBuffer* OH_AVScreenCapture_AcquireVideoBuffer(struct OH_AVScreenCapture
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
 | int32_t *fence | 用于同步的显示相关参数信息。 |
-| int64_t *timestamp | 视频帧的时间戳。 |
+| int64_t *timestamp | 视频帧的时间戳。单位为纳秒（ns）。 |
 | [struct OH_Rect](capi-avscreencapture-oh-rect.md) *region | 视频显示相关的坐标信息。 |
 
 **返回：**
@@ -702,6 +705,11 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCa
 
 调整屏幕的分辨率。<br> 调用该方法可以设置录屏屏幕数据的分辨率，width为屏幕的宽度，height为屏幕的高度。<br> 该接口目前仅支持录屏取码流的场景，不支持录屏存文件的场景。并且调用该接口的调用者以及视频数据的消费者需要确保自身能够支持收到的视频数据分辨率发生变化。
 
+约束与限制：
+
+- 该接口仅允许在录屏运行阶段调用。
+- 设置自动跟随旋转配置[OH_AVScreenCapture_StrategyForCanvasFollowRotation](#oh_avscreencapture_strategyforcanvasfollowrotation)时，不支持同时调用该接口调整录屏分辨率。
+
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
 **起始版本：** 12
@@ -711,8 +719,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCa
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| int32_t width | 录屏屏幕的宽度。 |
-| int32_t height | 录屏屏幕的高度。 |
+| int32_t width | 录屏屏幕的宽度。单位为像素（px）。 |
+| int32_t height | 录屏屏幕的高度。单位为像素（px）。|
 
 **返回：**
 
@@ -767,7 +775,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetMaxVideoFrameRate(struct OH_AV
 | 参数项 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-| int32_t frameRate | 录屏的最大帧率。 |
+| int32_t frameRate | 录屏的最大帧率。单位为帧率（FPS）。 |
 
 **返回：**
 
@@ -1079,7 +1087,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetCaptureTypeSelected(OH_AVScree
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVScreenCapture_UserSelectionInfo](capi-avscreencapture-oh-avscreencapture-userselectioninfo.md) *selection | 指向OH_AVScreenCapture_UserSelectionInfo实例的指针。 |
-| int32_t* type | 用户选择的捕获对象类型，0：代表屏幕，1：代表窗口。 |
+| int32_t* type | 用户选择的捕获对象类型，0：代表屏幕，1：代表窗口，2：代表应用。 |
 
 **返回：**
 
@@ -1343,11 +1351,11 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayCaptureCapability(
 | OH_AVSCREEN_CAPTURE_ErrCode | AV_SCREEN_CAPTURE_ERR_OK：操作执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL：输入的录屏实例参数capture为空指针。<br>         AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT：不允许操作，获取数据失败。 |
 
 ### OH_AVScreenCapture_SetPrivacyProtectCallback()
-  
+
 ```c
 OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPrivacyProtectCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnPrivacyProtect callback, void *userData)
 ```
- 
+
 **描述**
 
 设置隐私保护回调函数，以便应用程序响应屏幕捕获产生的隐私保护事件。该接口必须在调用开始录屏之前调用。
@@ -1367,3 +1375,76 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPrivacyProtectCallback(struct 
 | 类型 | 说明 |
 | -- | -- |
 | OH_AVSCREEN_CAPTURE_ErrCode | AV_SCREEN_CAPTURE_ERR_OK：执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL：输入录屏实例为空指针或输入回调为空指针。 |
+
+### OH_AVScreenCapture_StrategyForPause()
+
+```c
+OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPause(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)
+```
+
+**描述**
+
+允许暂停屏幕捕获。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md) *strategy | 指向OH_AVScreenCapture_CaptureStrategy实例的指针。 |
+| bool value | 是否允许暂停屏幕捕获。true表示允许，false表示不允许。默认值为false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| OH_AVSCREEN_CAPTURE_ErrCode | AV_SCREEN_CAPTURE_ERR_OK: 执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL: 参数strategy为空指针。 |
+
+### OH_AVScreenCapture_PauseScreenCapture()
+
+```c
+OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PauseScreenCapture(struct OH_AVScreenCapture *capture)
+```
+
+**描述**
+
+暂停屏幕捕获。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 已初始化的屏幕捕获实例。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| OH_AVSCREEN_CAPTURE_ErrCode | AV_SCREEN_CAPTURE_ERR_OK: 执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL: 输入录屏实例为空指针。<br>         AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT：不允许操作。 |
+
+### OH_AVScreenCapture_ResumeScreenCapture()
+
+```c
+OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVScreenCapture *capture)
+```
+
+**描述**
+
+恢复屏幕捕获。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 已初始化的屏幕捕获实例。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| OH_AVSCREEN_CAPTURE_ErrCode | AV_SCREEN_CAPTURE_ERR_OK: 执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL: 输入录屏实例为空指针。<br>         AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT：不允许操作。 |

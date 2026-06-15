@@ -1,8 +1,8 @@
 # CanvasGradient对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -50,4 +50,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001152610806](figures/zh-cn_image_0000001152610806.png)
+![addColorStop](figures/addColorStop.png)

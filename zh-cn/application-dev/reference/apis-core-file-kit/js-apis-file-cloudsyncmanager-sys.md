@@ -10,6 +10,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.file.cloudSyncManager (端云同步管理能力)](js-apis-file-cloudsyncmanager.md)。
 
@@ -28,6 +29,10 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 **系统接口**：该接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -55,6 +60,8 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -63,6 +70,20 @@ let bundleName: string = "com.example.bundle";
 cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then(() => {
   console.info("changeAppCloudSwitch successfully");
 }).catch((err: BusinessError) => {
+  console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then<void>((): void => {
+  console.info("changeAppCloudSwitch successfully");
+}).catch((err: BusinessError<void>): void => {
   console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
@@ -76,6 +97,10 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 **系统接口**：该接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -98,6 +123,8 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -105,6 +132,22 @@ let accountId: string = "testAccount";
 let bundleName: string = "com.example.bundle";
 cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError) => {
   if (err) {
+    console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("changeAppCloudSwitch successfully");
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError<void> | null) => {
+  if (err && err.code) {
     console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
   } else {
     console.info("changeAppCloudSwitch successfully");
@@ -121,6 +164,10 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 **系统接口**：该接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -147,6 +194,8 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -155,6 +204,20 @@ let bundleName: string = "com.example.bundle";
 cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
   console.info("notifyDataChange successfully");
 }).catch((err: BusinessError) => {
+  console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.notifyDataChange(accountId, bundleName).then<void>((): void => {
+  console.info("notifyDataChange successfully");
+}).catch((err: BusinessError<void>): void => {
   console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
@@ -168,6 +231,10 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 **系统接口**：该接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -189,6 +256,8 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -196,6 +265,22 @@ let accountId: string = "testAccount";
 let bundleName: string = "com.example.bundle";
 cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) => {
   if (err) {
+    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("notifyDataChange successfully");
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError<void> | null): void => {
+  if (err && err.code) {
     console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
   } else {
     console.info("notifyDataChange successfully");
@@ -211,6 +296,10 @@ cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) =>
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
 | eventId | string | 否   | 否   | 变更事件id。|
@@ -218,7 +307,9 @@ cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) =>
 
 ## cloudSyncManager.notifyDataChange<sup>11+</sup>
 
-notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
+ArkTS-Dyn: notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
+
+ArkTS-Sta: notifyDataChange(userId: int, extraData: ExtraData): Promise&lt;void&gt;
 
 通知端云服务应用指定用户的云数据变更信息。使用Promise异步回调。
 
@@ -228,11 +319,15 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| userId | number | 是   | 用户Id。|
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户Id。|
 | extraData | ExtraData | 是   | 云端数据变更信息。|
 
 **返回值：**
@@ -254,6 +349,8 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -266,9 +363,25 @@ cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId: int = 100;
+let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
+cloudSyncManager.notifyDataChange(userId, extraData).then<void>((): void => {
+  console.info("notifyDataChange successfully");
+}).catch((err: BusinessError<void>): void => {
+  console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ## cloudSyncManager.notifyDataChange<sup>11+</sup>
 
-notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: notifyDataChange(userId: int, extraData: ExtraData, callback: AsyncCallback&lt;void&gt;): void
 
 通知端云服务应用指定用户的云数据变更信息。使用callback异步回调。
 
@@ -278,11 +391,15 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| userId | number | 是   | 用户Id。|
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用户Id。|
 | extraData | ExtraData | 是   | 云端数据变更信息。|
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步通知端云服务应用的云数据变更之后。 |
 
@@ -299,6 +416,8 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -306,6 +425,22 @@ let userId: number = 100;
 let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
 cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
   if (err) {
+    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("notifyDataChange successfully");
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId: int = 100;
+let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
+cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError<void> | null): void => {
+  if (err && err.code) {
     console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
   } else {
     console.info("notifyDataChange successfully");
@@ -324,6 +459,10 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -350,6 +489,8 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -365,6 +506,23 @@ cloudSyncManager.enableCloud(accountId, switches).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let switches: Record<string, boolean> = {
+  'com.example.bundleName1': true,
+  'com.example.bundleName2': false
+}
+cloudSyncManager.enableCloud(accountId, switches).then<void>((): void => {
+  console.error("enableCloud successfully");
+}).catch((err: BusinessError<void>): void => {
+  console.info("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ## cloudSyncManager.enableCloud
 
 enableCloud(accountId: string, switches: Record<string, boolean>, callback: AsyncCallback&lt;void&gt;): void
@@ -376,6 +534,10 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -397,6 +559,8 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -407,6 +571,25 @@ let switches: Record<string, boolean> = {
 }
 cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
   if (err) {
+    console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("enableCloud successfully");
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let switches: Record<string, boolean> = {
+  'com.example.bundleName1': true,
+  'com.example.bundleName2': false
+}
+cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError<void> | null): void => {
+  if (err && err.code) {
     console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
   } else {
     console.info("enableCloud successfully");
@@ -425,6 +608,10 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -450,6 +637,8 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -457,6 +646,19 @@ let accountId: string = "testAccount";
 cloudSyncManager.disableCloud(accountId).then(() => {
   console.info("disableCloud successfully");
 }).catch((err: BusinessError) => {
+  console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+cloudSyncManager.disableCloud(accountId).then<void>((): void => {
+  console.info("disableCloud successfully");
+}).catch((err: BusinessError<void>): void => {
   console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
@@ -472,6 +674,10 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -492,12 +698,29 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountId: string = "testAccount";
 cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
   if (err) {
+    console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("disableCloud successfully");
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+cloudSyncManager.disableCloud(accountId, (err: BusinessError<void> | null): void => {
+  if (err && err.code) {
     console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
   } else {
     console.info("disableCloud successfully");
@@ -512,6 +735,10 @@ cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**: SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
@@ -529,6 +756,10 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -555,6 +786,8 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -570,6 +803,22 @@ cloudSyncManager.clean(accountId, appActions).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let appActions: Record<string, cloudSyncManager.Action> = new Record<string, cloudSyncManager.Action>();
+appActions['com.example.bundleName1'] = cloudSyncManager.Action.RETAIN_DATA;
+appActions['com.example.bundleName2'] = cloudSyncManager.Action.CLEAR_DATA;
+cloudSyncManager.clean(accountId, appActions).then<void>((): void => {
+  console.info("clean successfully");
+}).catch((err: BusinessError<void>): void => {
+  console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ## cloudSyncManager.clean
 
 clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCallback&lt;void&gt;): void
@@ -581,6 +830,10 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -602,6 +855,8 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -619,6 +874,24 @@ cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: string = "testAccount";
+let appActions: Record<string, cloudSyncManager.Action> = new Record<string, cloudSyncManager.Action>();
+appActions['com.example.bundleName1'] = cloudSyncManager.Action.RETAIN_DATA;
+appActions['com.example.bundleName2'] = cloudSyncManager.Action.CLEAR_DATA;
+cloudSyncManager.clean(accountId, appActions, (err: BusinessError<void> | null): void => {
+  if (err && err.code) {
+    console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("clean successfully");
+  }
+});
+```
+
 ## DowngradeDownload<sup>20+</sup>
 
 全量下载：为云盘管理应用提供集中下载云端数据的能力。
@@ -628,6 +901,10 @@ cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
 **系统接口**：该接口为系统接口。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 ### constructor<sup>20+</sup>
 
@@ -640,6 +917,10 @@ constructor(bundleName: string)
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -660,6 +941,8 @@ constructor(bundleName: string)
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -668,6 +951,20 @@ try {
   let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
 } catch (e) {
   let error = e as BusinessError;
+  console.error(`Failed to create downgrade manager object, error code: ${error.code}, message: ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName: string = 'com.demo.a';
+try {
+  let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
   console.error(`Failed to create downgrade manager object, error code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -683,6 +980,10 @@ getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -704,6 +1005,8 @@ getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -712,6 +1015,20 @@ let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
 downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) => {
   console.info("cloud file info: " + JSON.stringify(fileInfo));
 }).catch((err: BusinessError) => {
+  console.error(`Failed to get downgrade info, error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName: string = "com.demo.a";
+let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+downgradeMgr.getCloudFileInfo().then<void>((fileInfo: cloudSyncManager.CloudFileInfo): void => {
+  console.info("cloud file info: " + JSON.stringify(fileInfo));
+}).catch((err: BusinessError<void>): void => {
   console.error(`Failed to get downgrade info, error message: ${err.message}, error code: ${err.code}`);
 });
 ```
@@ -729,6 +1046,10 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -758,6 +1079,8 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -778,6 +1101,28 @@ downgradeMgr.startDownload(callback).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName: string = "com.demo.a";
+let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+let callback = (data: cloudSyncManager.DownloadProgress): void => {
+  console.info(`Downgrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSyncManager.DownloadState.COMPLETED) {
+    console.info('Downgrade finished.');
+  } else if (data.state == cloudSyncManager.DownloadState.STOPPED) {
+    console.info(`Downgrade stopped, reason: ${data.stopReason}.`);
+  }
+};
+downgradeMgr.startDownload(callback).then<void>((): void => {
+  console.info("Downgrade started successfully.");
+}).catch((err: BusinessError<void>): void => {
+  console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
+});
+```
+
 ### stopDownload<sup>20+</sup>
 
 stopDownload(): Promise&lt;void&gt;
@@ -789,6 +1134,10 @@ stopDownload(): Promise&lt;void&gt;
 **需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -808,6 +1157,8 @@ stopDownload(): Promise&lt;void&gt;
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -832,6 +1183,171 @@ if (needStop) {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName: string = "com.demo.a";
+let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+downgradeMgr.startDownload((data: cloudSyncManager.DownloadProgress): void => {
+  console.info(`Downgrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+}).then<void>((): void => {
+  console.info("Downgrade started successfully.");
+}).catch((err: BusinessError<void>): void => {
+  console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
+});
+let needStop: boolean = true;
+if (needStop) {
+  downgradeMgr.stopDownload().then<void>((): void => {
+    console.info("Downgrade stopped successfully.");
+  }).catch((err: BusinessError<void>): void => {
+    console.error(`Failed to stop downgrade, error message: ${err.message}, error code: ${err.code}`);
+  });
+}
+```
+
+### startTransfer
+
+startTransfer(targetUri: string, callback: Callback&lt;TransferProgress&gt;): void
+
+将云盘目录下已完成本地下载的文件搬迁至指定目录，过程中通过回调上报搬迁进度。使用callback异步回调。
+
+同一应用存在正在执行的搬迁任务的情况下，重复触发会返回错误信息（22400006）。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                                                                |
+| -------- | -------------------------------- | ---- | ----------------------------------------------------------------------------------- |
+| targetUri | string | 是  | 用于存放搬迁后的文件路径URI，必须以“file://docs/storage/Users/currentUser/”为前缀。 |
+| callback | Callback&lt;[TransferProgress](js-apis-file-cloudsyncmanager-sys.md#transferprogress)&gt; | 是   | 回调函数，返回搬迁进度。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                                                                                                                          |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201      | Permission verification failed.                                                                                                                                                   |
+| 202      | The caller is not a system application.                                                                                                                                           |
+| 13900001 | Operation not permitted. Possible causes:<br>1.The DowngradeDownload task is running.<br>2.The full data synchronization task is running.                                         |
+| 13900002 | No such file or directory.                                                                                                                                                        |
+| 13900010 | Try again.                                                                                                                                                                        |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified.<br>2.The length of the input uri does not meet the value range requirement.<br>3.The input uri does not belong to a File Manager public directory. |
+| 22400006 | The same task is already in progress.                                                                                                                                             |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let targetPath: string = "file://docs/storage/Users/currentUser/Download/";
+try {
+    let downgradeMgr = new cloudSyncManager.DowngradeDownload("com.demo");
+    downgradeMgr.startTransfer(targetPath, (data: cloudSyncManager.TransferProgress) => {
+        console.info(`Transfer progress: successfulCount: ${data.successfulCount}, totalCount: ${data.totalCount}`);
+    });
+} catch (err) {
+    let e = err as BusinessError;
+    console.error("transfer files failed with error message: " + e.message + ", error code: " + e.code);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let targetPath: string = "file://docs/storage/Users/currentUser/Download/";
+try {
+    let downgradeMgr = new cloudSyncManager.DowngradeDownload("com.demo");
+    downgradeMgr.startTransfer(targetPath, (data: cloudSyncManager.TransferProgress) => {
+        console.info(`Transfer progress: successfulCount: ${data.successfulCount}, totalCount: ${data.totalCount}`);
+    });
+} catch (err: Error) {
+    let e: BusinessError = err as BusinessError;
+    console.error("transfer files failed with error message: " + e.message + ", error code: " + e.code);
+}
+```
+
+## TransferProgress
+
+搬迁任务的进度信息。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+| 名称            | 类型                                        | 只读 | 可选 | 说明                                                                          |
+| --------------- | ------------------------------------------- | ---- | ---- | ----------------------------------------------------------------------------- |
+| state           | [TransferState](#transferstate)             | 否   | 否   | 搬迁任务的状态。                                                              |
+| successfulCount | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 否   | 已搬迁的文件个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。        |
+| failedCount     | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 否   | 搬迁失败的文件个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。      |
+| totalCount      | ArkTS-Dyn: number<br>ArkTS-Sta: int         | 否   | 否   | 待搬迁文件总个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。        |
+| transferredSize | ArkTS-Dyn: number<br>ArkTS-Sta: long        | 否   | 否   | 已搬迁的数据大小，取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。 |
+| totalSize       | ArkTS-Dyn: number<br>ArkTS-Sta: long        | 否   | 否   | 需要搬迁的文件总大小，取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。 |
+| stopReason      | [TransferStopReason](#transferstopreason)   | 否   | 否   | 搬迁停止的原因。                                                              |
+
+## TransferState
+
+搬迁任务状态的枚举。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+| 名称      | 值  | 说明       |
+| --------- | --- | ---------- |
+| RUNNING   | 0   | 搬迁中。   |
+| COMPLETED | 1   | 搬迁完成。 |
+| STOPPED   | 2   | 搬迁停止。 |
+
+## TransferStopReason
+
+搬迁停止原因的枚举。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+| 名称                | 值  | 说明                                                   |
+| ------------------- | --- | ------------------------------------------------------ |
+| SWITCH_OFF          | 0   | 搬迁过程中，云服务开关关闭。                                         |
+| ACCOUNT_LOGOUT      | 1   | 搬迁过程中，账户登出。               |
+| OTHER_REASON        | 2   | 搬迁过程中，其他原因导致停止。                         |
+
   ## LocalFilePresentStatus<sup>23+</sup>
 
   检测结果对象，包含应用包名及其在云盘存储空间内是否存在未上云文件的状态信息。
@@ -839,6 +1355,10 @@ if (needStop) {
   **系统接口**：该接口为系统接口。
 
   **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 
   | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -857,6 +1377,10 @@ if (needStop) {
   **系统接口**：该接口为系统接口。
 
   **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
   **参数：**
 
@@ -885,6 +1409,8 @@ if (needStop) {
 
   **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -897,3 +1423,110 @@ cloudSyncManager.getBundlesLocalFilePresentStatus(bundles).then((results: Array<
   console.error(`getBundlesLocalFilePresentStatus failed, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundles: Array<string> = ['com.example.app1', 'com.example.app2'];
+cloudSyncManager.getBundlesLocalFilePresentStatus(bundles).then<void>((results: Array<cloudSyncManager.LocalFilePresentStatus>): void => {
+  results.forEach((item: cloudSyncManager.LocalFilePresentStatus): void => {
+    console.info(`bundle: ${item.bundleName}, hasLocalUncloudedFiles: ${item.isLocalFilePresent}`);
+  });
+}).catch((err: BusinessError<void>): void => {
+  console.error(`getBundlesLocalFilePresentStatus failed, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## cloudSyncManager.getDowngradeDownloadTaskState
+
+getDowngradeDownloadTaskState(bundleNames: Array&lt;string&gt;): Promise&lt;Array&lt;DownloadProgress&gt;&gt;
+
+查询接入云盘的应用的全量下载任务状态。使用Promise异步回调。
+
+由于返回的DownloadProgress对象中不包含包名信息，因此在批量查询多个应用时，调用方需自行记录应用包名。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| bundleNames | Array&lt;string&gt; | 是 | 需要查询的应用包名数组，每个元素为应用的包名字符串，包名数组大小上限为20个。 |
+
+**返回值**：
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;Array&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt;&gt; | Promise对象，返回查询的全量下载任务的状态信息数组。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13900010 | Try again. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameter are left unspecified. 2. The length of the input parameter exceeds the upper limit. 3. The input parameter contains an invalid bundleName. |
+
+**示例**：
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundles: Array<string> = ['com.example.app1', 'com.example.app2'];
+cloudSyncManager.getDowngradeDownloadTaskState(bundles).then((results: Array<cloudSyncManager.DownloadProgress>) => {
+  results.forEach((item) => {
+    console.info(`state: ${item.state}, downloadedSize: ${item.downloadedSize}, totalSize: ${item.totalSize}`);
+    console.info(`successfulCount: ${item.successfulCount}, failedCount: ${item.failedCount}, totalCount: ${item.totalCount}`);
+    if (item.state == cloudSyncManager.DownloadState.STOPPED) {
+      console.info(`stopReason: ${item.stopReason}`);
+    }
+  });
+}).catch((err: BusinessError) => {
+  console.error(`getDowngradeDownloadTaskState failed, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundles: Array<string> = ['com.example.app1', 'com.example.app2'];
+cloudSyncManager.getDowngradeDownloadTaskState(bundles).then((results: Array<cloudSyncManager.DownloadProgress>) => {
+  results.forEach((item) => {
+    console.info(`state: ${item.state}, downloadedSize: ${item.downloadedSize}, totalSize: ${item.totalSize}`);
+    console.info(`successfulCount: ${item.successfulCount}, failedCount: ${item.failedCount}, totalCount: ${item.totalCount}`);
+    if (item.state == cloudSyncManager.DownloadState.STOPPED) {
+      console.info(`stopReason: ${item.stopReason}`);
+    }
+  });
+}).catch((err: Error) => {
+  let err: BusinessError = error as BusinessError;
+  console.error(`getDowngradeDownloadTaskState failed, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## DownloadState<sup>20+</sup>
+
+全量下载任务状态的枚举。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+| 名称      | 值  | 说明                                                                             |
+| --------- | --- | ------------------------------------------------------------------------------- |
+| MISSING   | 3   | 下载任务不存在。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。 |

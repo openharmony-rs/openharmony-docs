@@ -29,6 +29,7 @@
 
 示例代码为发起认证可信等级≥ATL3的人脸+锁屏口令认证后，取消认证请求：
 
+ArkTS-Dyn示例：
 <!-- @[cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -36,11 +37,11 @@ handleAuthResultAndCanceling(userAuthInstance: userAuth.UserAuthInstance, exampl
   // ...
     // 启动认证
     userAuthInstance.start();
-    Logger.info('auth start successfully');
+    Logger.info('auth start successfully.');
     // ...
       // 取消认证
       userAuthInstance.cancel();
-      Logger.info('auth cancel successfully');
+      Logger.info('auth cancel successfully.');
       // ...
 }
 
@@ -66,7 +67,7 @@ cancelingUserAuthentication() {
     };
     // 获取认证对象
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully');
+    Logger.info('get userAuth instance successfully.');
     this.handleAuthResultAndCanceling(userAuthInstance, ResultIndex.CANCEL);
   } catch (error) {
     const err: BusinessError = error as BusinessError;
@@ -75,7 +76,53 @@ cancelingUserAuthentication() {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[cancel_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+handleAuthResultAndCanceling(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: int) {
+  // ...
+    // 启动认证
+    userAuthInstance.start();
+    Logger.info('auth start successfully.');
+    // ...
+      // 取消认证
+      userAuthInstance.cancel();
+      Logger.info('auth cancel successfully.');
+      // ...
+}
+
+/*
+ * cancel-authentication.md
+ * 发起认证可信等级≥ATL3的人脸+锁屏密码认证后，取消认证请求
+ * */
+cancelingUserAuthentication() {
+  try {
+    const randData = getRandData();
+    if (!randData) {
+      return;
+    }
+    // 设置认证参数
+    const authParam: userAuth.AuthParam = {
+      challenge: randData,
+      authType: [userAuth.UserAuthType.PIN, userAuth.UserAuthType.FACE, userAuth.UserAuthType.FINGERPRINT],
+      authTrustLevel: userAuth.AuthTrustLevel.ATL3,
+    };
+    // 配置认证界面
+    const widgetParam: userAuth.WidgetParam = {
+      title: resourceToString($r('app.string.title')),
+    };
+    // 获取认证对象
+    const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
+    Logger.info('get userAuth instance successfully.');
+    this.handleAuthResultAndCanceling(userAuthInstance, ResultIndex.CANCEL);
+  } catch (error) {
+      Logger.error(`auth failed, code is ${error.code}, message is ${error.message}`);
+  }
+}
+```
 
 ## 示例代码
 
-  - [认证过程中取消认证](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [认证过程中取消认证(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [认证过程中取消认证(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)

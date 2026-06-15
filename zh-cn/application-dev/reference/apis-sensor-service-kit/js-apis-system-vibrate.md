@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 vibrator模块提供控制马达振动的能力，主要包含灯的列表查询、打开灯、关闭灯等接口，振动器的列表查询、振动效果查询、触发/关闭等接口。
@@ -45,7 +45,7 @@ import { Vibrator } from '@kit.SensorServiceKit';
 | ------- | --------------------------------- | ---- | ---------- |
 | options | [VibrateOptions](#vibrateoptions) | 否   | 振动模式。 |
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
 import { Vibrator, VibrateOptions } from '@kit.SensorServiceKit';
@@ -59,10 +59,82 @@ let vibrateOptions: VibrateOptions = {
     console.error(`Failed to vibrate. Data: ${data}, code: ${code}`);
   },
   complete: () => {
-    console.info('completed in vibrating');
+    console.info('vibration completed');
   }
 };
 Vibrator.vibrate(vibrateOptions);
+```
+
+**JS示例**：
+
+```js
+import vibrator from '@system.vibrator';
+
+export default {
+  data: {
+    TAG: "WearLiteSample:",
+    result: ''
+  },
+  vibrate() {
+    try {
+      let vibrateOptions = {
+        mode: 'short',
+        success: () => {
+          console.info('Succeeded in vibrating');
+          this.result = 'Succeeded in vibrating';
+        },
+        fail: (data, code) => {
+          console.error(`Failed to vibrate. Data: ${data}, code: ${code}`);
+          this.result = `Failed to vibrate. Data: ${data}, code: ${code}`;
+        },
+        complete: () => {
+          console.info('vibration completed');
+        }
+      };
+      vibrator.vibrate(vibrateOptions);
+    } catch (e) {
+      console.error(this.TAG + 'vibrate exception occurred, message:' + JSON.stringify(e))
+    }
+  }
+};
+```
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title">
+    {{ result }}
+  </text>
+  <input class="buttonText" type="button" onclick="vibrate">点击振动</input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+.buttonText {
+  background-color: blue;
+  radius: 30px;
+  text-color: white;
+  font-size: 25px;
+  width: 150px;
+  height:50px;
+  margin-top: 20px;
+  font-weight: bolder;
+  align-items: center;
+}
 ```
 
 ## VibrateOptions

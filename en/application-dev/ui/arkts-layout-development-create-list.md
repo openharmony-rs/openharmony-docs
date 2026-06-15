@@ -25,7 +25,7 @@ As shown in the following figure, in a vertical list, **ListItemGroup** or **Lis
 
   **Figure 1** Relationships between List, ListItemGroup, and ListItem 
 
-![en-us_image_0000001562940589](figures/en-us_image_0000001562940589.png)
+![list1](figures/list1.png)
 
 >**NOTE**
 >
@@ -40,13 +40,13 @@ When used in vertical layout, the list can contain one or more scrollable column
 
   **Figure 2** Vertical scrolling list (left: one column; right: multiple columns) 
 
-![en-us_image_0000001511580940](figures/en-us_image_0000001511580940.png)
+![list](figures/list.png)
 
 When used in horizontal layout, the list can contain one or more scrollable rows, as shown below.
 
   **Figure 3** Horizontal scrolling list (left: one column; right: multiple columns) 
 
-![en-us_image_0000001511421344](figures/en-us_image_0000001511421344.png)
+![layout3](figures/layout3.png)
 
 
 While **Grid** and **WaterFlow** can also create single-column and multi-column layouts, there are scenarios where the **List** is the more suitable choice. Specifically, if your layout design requires columns of equal width and items do not need to span rows or columns, opt for the **List**.
@@ -59,7 +59,7 @@ As shown below, the main axis of a vertical list is in the vertical direction, a
 
   **Figure 4** Main axis and cross axis of the list 
 
-![en-us_image_0000001562940581](figures/en-us_image_0000001562940581.png)
+![list4](figures/list4.png)
 
 If a size is set for the main axis or cross axis of the **List** component, it is used as the size of the component in the corresponding direction.
 
@@ -69,7 +69,7 @@ In the example shown below, no height is set for vertical list B, and the height
 
   **Figure 5** Main axis height constraint example 1 (A: parent component of List; B: List component; C: all child components of List) 
 
-![en-us_image_0000001511580956](figures/en-us_image_0000001511580956.png)
+![list5](figures/list5.png)
 
 If the total size of the child components in the main axis direction is greater than the size of the parent component of **List**, the size of the **List** component in the main axis direction automatically adapts to the size of its parent component.
 
@@ -77,7 +77,7 @@ In the example shown below, still no height is set for vertical list B, and the 
 
   **Figure 6** Main axis height constraint example 2 (A: parent component of List; B: List component; C: all child components of List) 
 
-![en-us_image_0000001511740548](figures/en-us_image_0000001511740548.png)
+![list6](figures/list6.png)
 
 If no size is set for the cross axis of the **List** component, the size of the **List** component in the cross axis direction automatically adapts to the size of its parent component.
 
@@ -209,7 +209,7 @@ The list displays a collection of items horizontally or vertically and can scrol
 
   **Figure 11** Example of a city list 
 
-![en-us_image_0000001563060761](figures/en-us_image_0000001563060761.png)
+![list11](figures/list11.png)
 
 <!-- @[list_statically_creates_the_contents_of_list_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/DataInList.ets) -->
 
@@ -249,7 +249,7 @@ Each **ListItem** component can contain only one root child component. Therefore
 
   **Figure 12** Example of a contacts list 
 
-![en-us_image_0000001511421328](figures/en-us_image_0000001511421328.png)
+![contactsList](figures/contactsList.png)
 
 As shown above, as a list item, each contact has a profile picture and a name. To present it, you can encapsulate **Image** and **Text** components into a **Row** container.
 
@@ -370,7 +370,7 @@ A divider separates UI items to make them easier to identify. In the following f
 
   **Figure 13** Using dividers between the setting items 
 
-![en-us_image_0000001511580960](figures/en-us_image_0000001511580960.png)
+![dividers13](figures/dividers13.png)
 
 To add dividers between list items, use the [divider](../reference/apis-arkui/arkui-ts/ts-container-list.md#divider) attribute together with the following style attributes:<br> **strokeWidth** and **color**: stroke width and color of the divider, respectively.
 
@@ -431,7 +431,7 @@ When the total height (width) of list items exceeds the screen height (width), t
 
   **Figure 14** Scrollbar of a list
 
-![en-us_image_0000001511740544](figures/en-us_image_0000001511740544.gif)
+![list14](figures/list14.gif)
 
 When using the **List** component, you can use the **scrollBar** attribute to control the display of the list scrollbar. The value type of **scrollBar** is [BarState](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#barstate). When the value is **BarState.Auto**, the scrollbar is displayed as required: It is displayed when the scrollbar area is touched and becomes thicker when being dragged; it automatically disappears after 2 seconds of inactivity.
 
@@ -494,7 +494,7 @@ By allowing data to be displayed in groups in the list, you make the list easier
 
   **Figure 16** Contacts list with grouping
 
-![en-us_image_0000001511580948](figures/en-us_image_0000001511580948.png)
+![list16](figures/list16.png)
 
 You can use **ListItemGroup** to group items in the **List** component to build a two-dimensional list.
 
@@ -547,7 +547,7 @@ Sticky headers not only signify the representation and usage of data in the resp
 
   **Figure 17** Sticky header 
 
-![en-us_image_0000001511740552](figures/en-us_image_0000001511740552.gif)
+![list17](figures/list17.gif)
 
 You can set a sticky header or footer for a **ListItemGroup** component by setting the [sticky](../reference/apis-arkui/arkui-ts/ts-container-list.md#sticky9) attribute of its parent **List** component.
 
@@ -671,7 +671,7 @@ In some cases you may want to control the scroll position of a list. For example
 
   **Figure 18** Returning to the top of the list 
 
-![en-us_image_0000001511900520](figures/en-us_image_0000001511900520.gif)
+![list18](figures/list18.gif)
 
 When the **List** component is initialized, you can use the **scroller** parameter to bind a [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) object to control the scrolling of the list. In this example of a news page list, the **scrollToIndex** API of the **Scroller** object is used to scroll the list to the list item with the specified index. This allows the user to return to the top of the list by clicking a specific button.
 
@@ -715,7 +715,7 @@ Another common example is a scrolling list working with a multi-level index bar,
 
 **Figure 19** Alphabetical index bar's response to contacts list scrolling 
 
-![en-us_image_0000001563060769](figures/en-us_image_0000001563060769.gif)
+![list19](figures/list19.gif)
 
 As shown above, when the contacts list scrolls from group A to B, the alphabetical index bar on the right also changes from A to B. This behavior can be implemented by listening for the [onScrollIndex](../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex) event of the **List** component. The alphabetical index bar is implemented using the [AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md) component.
 
@@ -773,7 +773,7 @@ Swipe menus are common in many applications. For example, a messaging applicatio
 
 **Figure 20** Swipe-to-delete feature 
 
-![en-us_image_0000001563060773](figures/en-us_image_0000001563060773.gif)
+![list20](figures/list20.gif)
 
 Swiping left or right on a list item can be implemented through the [swipeAction](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#swipeaction9) attribute. In initialization of the **swipeAction** attribute, the **SwipeActionOptions** parameter is mandatory, wherein the **start** parameter indicates the component that appears from the start edge when the list item is swiped right, and the **end** parameter indicates the component that appears from the end edge when the list item is swiped left.
 
@@ -825,7 +825,7 @@ A badge is an intuitive, unobtrusive visual indicator to draw attention and conv
 
   **Figure 21** Adding a badge to a list item 
 
-![en-us_image_0000001511580952](figures/en-us_image_0000001511580952.png)
+![list21](figures/list21.png)
 
 To add a badge, use the [Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md) component in **ListItem**. The **Badge** component is a container that can be attached to another component for tagging.
 
@@ -869,7 +869,7 @@ The following describes the implementation of the pull-and-refresh feature:
 <!--RP1--><!--RP1End-->
 
 <!--Del-->
- You can also use the third-party component [PullToRefresh](https://gitcode.com/openharmony-sig/ohos_pull_to_refresh) to implement this feature.<!--DelEnd-->
+ You can also use the third-party component [PullToRefresh](https://gitcode.com/CPF-ApplicationTPC/ohos_pull_to_refresh) to implement this feature.<!--DelEnd-->
 
 
 ## Editing a List
@@ -885,7 +885,7 @@ As shown below, when a user touches **Add**, a page is displayed for the user to
 
   **Figure 22** Adding a to-do task 
 
-![en-us_image_0000001511740556](figures/en-us_image_0000001511740556.gif)
+![list22](figures/list22.gif)
 
 The process of implementing the addition feature is as follows:
 
@@ -1041,7 +1041,7 @@ As shown below, when the user long presses a list item to enter the deletion mod
 
   **Figure 23** Deleting a to-do task 
 
-![en-us_image_0000001562820877](figures/en-us_image_0000001562820877.gif)
+![list23](figures/list23.gif)
 
 The process of implementing the deletion feature is as follows:
 
@@ -1199,7 +1199,7 @@ The collapsing and expanding of list items are widely used, often applied in sce
 
   **Figure 24** Collapsing and expanding of list items
 
-![en-us_image_0000001949866104](figures/en-us_image_0000001949866104.gif)
+![list24](figures/list24.gif)
 
 The process of implementing the collapsing and expanding effect of list items is as follows:
 
@@ -1395,7 +1395,7 @@ In certain scenarios, you may want a list to automatically scroll upward when ne
 
   **Figure 25** Real-time message scrolling
 
-![en-us_image_0000001949866105](figures/en-us_image_0000001949866105.gif)
+![list25](figures/list25.gif)
 
 1. Define the list item data structure.
 

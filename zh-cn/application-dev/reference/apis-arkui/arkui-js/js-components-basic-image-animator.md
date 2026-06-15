@@ -196,4 +196,4 @@ export default {
 };
 ```
 
-![zh-cn_image_0000001127284946](figures/zh-cn_image_0000001127284946.gif)
+![image-animator](figures/image-animator.gif)

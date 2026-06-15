@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口为系统接口。
@@ -28,21 +30,27 @@ import { inputConsumer } from '@kit.InputKit';
 
 on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): void
 
-订阅系统快捷键，当满足条件的组合按键输入事件发生时，使用callback异步方式上报组合按键数据。
+订阅系统快捷键，使用callback异步回调。
 > **说明：**
 >
 > - 支持仅订阅按键的down事件，或者同时订阅按键的down事件和up事件。
 > - 若需要仅订阅按键的up事件，会存在down事件被焦点窗口消费，而无up事件闭环的风险，需要排查设计实现是否合理。
 
+**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onKey](#inputconsumeronkey23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：** 
 
 | 参数名         | 类型                         | 必填   | 说明                                       |
 | ---------- | -------------------------- | ---- | ---------------------------------------- |
 | type       | string                     | 是    | 事件类型，目前仅支持'key'。                       |
-| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。                 |
-| callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | 是    | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合按键数据。 |
+| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。从API版本26.0.0起keyOptions中新增参数[KeyCommandTriggerType](#keycommandtriggertype)，本接口无需关注此参数。|
+| callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | 是    | 回调函数，返回组合按键数据。 |
 
 **错误码**：
 
@@ -74,12 +82,80 @@ struct Index {
             finalKeyDownDuration: 0
           };
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
-            console.info(`keyOptions: ${JSON.stringify(keyOptions)}`);
+            console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}.`);
           }
           try {
+            // 订阅按键事件
             inputConsumer.on("key", keyOptions, callback);
           } catch (error) {
-            console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to subscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputConsumer.onKey<sup>23+</sup>
+
+onKey(callback: Callback&lt;KeyOptions&gt;): void
+
+订阅系统快捷键，当满足条件的组合按键输入事件发生时，使用Callback异步方式上报组合按键数据。
+
+**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[on('key')](#inputconsumeronkey)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名         | 类型                         | 必填   | 说明 |
+| ---------- | -------------------------- | ---- | ---------------------------------------- |
+| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。                 |
+| callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | 是    | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合按键数据。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 202  | Permission denied, non-system app called system api. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputConsumer, KeyCode } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let leftAltKey = 2045;
+          let tabKey = 2049;
+          let keyOptions: inputConsumer.KeyOptions = {
+            preKeys: [ leftAltKey ],
+            finalKey: tabKey,
+            isFinalKeyDown: true,
+            finalKeyDownDuration: 0
+          };
+          let callback = (keyOptions: inputConsumer.KeyOptions) => {
+            console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}`);
+          }
+          try {
+            // 订阅按键事件
+            inputConsumer.onKey(keyOptions, callback);
+          } catch (error) {
+            console.error(`Failed to subscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -94,14 +170,20 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 
 取消订阅系统快捷键。使用callback异步回调。
 
+**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offKey](#inputconsumeroffkey23)。
+
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：** 
 
 | 参数名         | 类型                         | 必填   | 说明                              |
 | ---------- | -------------------------- | ---- | ------------------------------- |
 | type       | string                     | 是    | 事件类型，当前仅支持 'key'。              |
-| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。             |
+| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。从API版本26.0.0起keyOptions中新增参数[KeyCommandTriggerType](#keycommandtriggertype)，本接口无需关注此参数。|
 | callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | 否    | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
 
 **错误码**：
@@ -129,15 +211,17 @@ struct Index {
           let tabKey = 2049;
           // 取消订阅单个回调函数
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
-            console.info(`keyOptions: ${JSON.stringify(keyOptions)}`);
+            console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}.`);
           }
           let keyOption: inputConsumer.KeyOptions = {preKeys: [leftAltKey], finalKey: tabKey, isFinalKeyDown: true, finalKeyDownDuration: 0};
           try {
+            // 订阅按键事件
             inputConsumer.on("key", keyOption, callback);
+            // 取消订阅按键事件
             inputConsumer.off("key", keyOption, callback);
-            console.info(`Unsubscribe success`);
+            console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -158,21 +242,295 @@ struct Index {
           let tabKey = 2049;
           // 取消订阅所有回调函数
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
-            console.info(`keyOptions: ${JSON.stringify(keyOptions)}`);
+            console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}.`);
           }
           let keyOption: inputConsumer.KeyOptions = {preKeys: [leftAltKey], finalKey: tabKey, isFinalKeyDown: true, finalKeyDownDuration: 0};
           try {
+            // 订阅按键事件
             inputConsumer.on("key", keyOption, callback);
+            // 取消订阅按键事件
             inputConsumer.off("key", keyOption);
-            console.info(`Unsubscribe success`);
+            console.info(`Succeeded in unsubscribing.`);
           } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
   }
 }
 ```
+
+## inputConsumer.offKey<sup>23+</sup>
+
+offKey(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
+
+取消订阅系统快捷键。使用callback异步回调。
+
+**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[off('key')](#inputconsumeroffkey)。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名         | 类型                         | 必填   | 说明                              |
+| ---------- | -------------------------- | ---- | ------------------------------- |
+| type       | string                     | 是    | 事件类型，当前仅支持 'key'。              |
+| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。             |
+| callback   | Callback&lt;[KeyOptions](#keyoptions)&gt; | 否    | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 202  | Permission denied, non-system app called system api. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputConsumer, KeyCode } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let leftAltKey = 2045;
+          let tabKey = 2049;
+          let keyOptions: inputConsumer.KeyOptions = {
+            preKeys: [ leftAltKey ],
+            finalKey: tabKey,
+            isFinalKeyDown: true,
+            finalKeyDownDuration: 0
+          };
+          let callback = (keyOptions: inputConsumer.KeyOptions) => {
+            console.info(`Succeeded in consuming key, keyOptions: ${JSON.stringify(keyOptions)}.`);
+          }
+          try {
+            // 订阅按键事件
+            inputConsumer.onKey(keyOptions, callback);
+            // 取消监听单个回调函数
+            inputConsumer.offKey(keyOptions, callback);
+            // 取消监听所有回调函数
+            inputConsumer.offKey(keyOptions);
+          } catch (error) {
+            console.error(`Failed to unsubscribe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputConsumer.onKey
+
+onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
+
+订阅组合按键（按键命令模式），支持通过triggerType指定不同的触发模式。当满足条件的组合按键输入事件发生时，使用callback异步回调。
+
+与 [inputConsumer.on('key')](#inputconsumeronkey)现有接口的区别：
+- 本接口的keyOptions支持triggerType参数，可选择按键按下触发、重复按下触发、重复按下或抬起均会触发等模式。
+- 本接口回调参数为KeyCommandCallback类型，同时接收KeyOptions和KeyEvent对象。
+- 本接口采用事件消费机制，可通过事件消费阻止按键事件向后传递。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| keyOptions | [KeyOptions](#keyoptions) | 是 | 组合键选项，支持triggerType参数。 |
+| callback | [KeyCommandCallback](#keycommandcallback) | 是 | 回调函数，返回组合键选项和按键事件数据。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 202  | Permission denied, non-system app called system api. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```js
+import { inputConsumer } from '@kit.InputKit';
+
+let leftCtrlKey = 2072;
+let cKey = 2049;
+let keyOptions: inputConsumer.KeyOptions = {
+  preKeys: [leftCtrlKey],
+  finalKey: cKey,
+  isFinalKeyDown: true,
+  finalKeyDownDuration: 0,
+  triggerType: inputConsumer.KeyCommandTriggerType.PRESSED
+};
+let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void => {
+  console.info(`keyOptions: ${keyOptions} keyEvents: ${keyEvents}`);
+}
+try {
+  inputConsumer.onKey(keyOptions, callback);
+} catch (error) {
+  console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+```ts
+import { inputConsumer } from '@kit.InputKit';
+
+let keyOptions: inputConsumer.KeyOptions = {
+  preKeys: [],
+  finalKey: 2049,
+  isFinalKeyDown: true,
+  finalKeyDownDuration: 0,
+  triggerType: inputConsumer.KeyCommandTriggerType.REPEAT_PRESSED
+};
+let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void => {
+  console.info(`Repeat key event`);
+}
+try {
+  inputConsumer.onKey(keyOptions, callback);
+} catch (error) {
+  console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+```ts
+import { inputConsumer } from '@kit.InputKit';
+
+let leftAltKey = 2045;
+let tabKey = 2049;
+let keyOptions: inputConsumer.KeyOptions = {
+  preKeys: [leftAltKey],
+  finalKey: tabKey,
+  isFinalKeyDown: true,
+  finalKeyDownDuration: 0,
+  triggerType: inputConsumer.KeyCommandTriggerType.ALL_RELEASED
+};
+let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void => {
+  console.info(`All released event`);
+}
+try {
+  inputConsumer.onKey(keyOptions, callback);
+} catch (error) {
+  console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+## inputConsumer.offKey
+
+offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
+
+取消订阅系统快捷键。使用callback异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| keyOptions | [KeyOptions](#keyoptions) | 是 | 组合键选项，需与订阅时传入的keyOptions一致。 |
+| callback | [KeyCommandCallback](#keycommandcallback) | 否 | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 202  | Permission denied, non-system app called system api. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { inputConsumer } from '@kit.InputKit';
+
+// Unsubscribe a single callback
+let leftCtrlKey = 2072;
+let cKey = 2049;
+let callback: inputConsumer.KeyCommandCallback = (keyOptions, keyEvents): void => {
+  console.info(`KeyEvent received`);
+}
+let keyOptions: inputConsumer.KeyOptions = {
+  preKeys: [leftCtrlKey],
+  finalKey: cKey,
+  isFinalKeyDown: true,
+  finalKeyDownDuration: 0,
+  triggerType: inputConsumer.KeyCommandTriggerType.PRESSED
+};
+try {
+  inputConsumer.onKey(keyOptions, callback);
+  inputConsumer.offKey(keyOptions, callback);
+  console.info(`Unsubscribe success`);
+} catch (error) {
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+```ts
+import { inputConsumer } from '@kit.InputKit';
+
+// Unsubscribe all callbacks for the specified keyOptions
+let leftCtrlKey = 2072;
+let cKey = 2049;
+let keyOptions: inputConsumer.KeyOptions = {
+  preKeys: [leftCtrlKey],
+  finalKey: cKey,
+  isFinalKeyDown: true,
+  finalKeyDownDuration: 0,
+  triggerType: inputConsumer.KeyCommandTriggerType.PRESSED
+};
+try {
+  inputConsumer.offKey(keyOptions);
+  console.info(`Unsubscribe all success`);
+} catch (error) {
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+## KeyCommandCallback
+
+type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
+
+按键命令回调函数类型，当快捷键注册条件满足时触发的回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统API：** 此接口为系统接口。
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| keyOptions | [KeyOptions](#keyoptions) | 是 | 触发回调时的组合键选项。 |
+| keyEvent | [KeyEvent](js-apis-keyevent.md#keyevent) | 是 | 按键事件对象，包含按键详细信息。 |
 
 ## inputConsumer.setShieldStatus<sup>11+</sup>
 
@@ -183,6 +541,10 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 **需要权限**: ohos.permission.INPUT_CONTROL_DISPATCHING
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数：** 
 
@@ -203,6 +565,8 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 
 **示例：** 
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputConsumer } from '@kit.InputKit';
 
@@ -215,10 +579,39 @@ struct Index {
         .onClick(() => {
           let FACTORY_MODE = 0;
           try {
+            // 设置屏蔽状态
             inputConsumer.setShieldStatus(FACTORY_MODE,true);
-            console.info(`set shield status success`);
+            console.info(`Succeeded in setting shield status.`);
           } catch (error) {
-            console.error(`set shield status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set shield status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputConsumer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let mode = inputConsumer.ShieldMode.FACTORY_MODE;
+          try {
+            // 设置屏蔽状态
+            inputConsumer.setShieldStatus(mode, true);
+            console.info(`Succeeded in setting shield status.`);
+          } catch (error) {
+            console.error(`Failed to set shield status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -235,6 +628,10 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 **需要权限**: ohos.permission.INPUT_CONTROL_DISPATCHING
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数：** 
 
@@ -260,6 +657,8 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 
 **示例：** 
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputConsumer } from '@kit.InputKit';
 
@@ -273,9 +672,36 @@ struct Index {
           try {
             let FACTORY_MODE = 0;
             let shieldstatusResult:Boolean =  inputConsumer.getShieldStatus(FACTORY_MODE);
-            console.info(` get shield status result:${JSON.stringify(shieldstatusResult)}`);
+            console.info(`Succeeded in getting shield status, result:${JSON.stringify(shieldstatusResult)}.`);
           } catch (error) {
-            console.error(`Failed to get shield status, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get shield status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputConsumer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let mode = inputConsumer.ShieldMode.FACTORY_MODE;
+          try {
+            let shieldstatusResult: Boolean =  inputConsumer.getShieldStatus(mode);
+            console.info(`Succeeded in getting shield status, result:${JSON.stringify(shieldstatusResult)}.`);
+          } catch (error) {
+            console.error(`Failed to get shield status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -291,11 +717,12 @@ struct Index {
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
-| preKeys    | Array\<number>   | 否    | 否 | 前置按键集合，数量范围[0, 4]，前置按键无顺序要求。<br>如组合按键Ctrl+Alt+A中，Ctrl+Alt称为前置按键。 |
-| finalKey             | number  | 否    |  否 | 最终按键，此项必填，最终按键触发上报回调函数。<br>如组合按键Ctrl+Alt+A中，A称为最终按键。 |
-| isFinalKeyDown       | boolean | 否    |  否 | 最终按键状态。<br>true表示按键按下，false表示按键抬起。 |
-| finalKeyDownDuration | number  | 否    |  否 | 最终按键保持按下持续时间，单位：μs。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。   |
-| isRepeat<sup>18+</sup> | boolean  | 否      | 是      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 |
+| preKeys    | ArkTS-Dyn: Array\<number> <br/>ArkTS-Sta: Array\<int>   | 否    | 否 | 前置按键集合，数量范围[0, 4]，前置按键无顺序要求。<br>如组合按键Ctrl+Alt+A中，Ctrl+Alt称为前置按键。 <br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：23|
+| finalKey             | ArkTS-Dyn: number <br/>ArkTS-Sta: int  | 否    |  否 | 最终按键，此项必填，最终按键触发上报回调函数。<br>如组合按键Ctrl+Alt+A中，A称为最终按键。<br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：23 |
+| isFinalKeyDown       | boolean | 否    |  否 | 最终按键状态。<br>true表示按键按下，false表示按键抬起。<br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：23 |
+| finalKeyDownDuration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否    |  否 | 最终按键保持按下持续时间，单位为微秒（μs）。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。 <br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：23  |
+| isRepeat<sup>18+</sup> | boolean | 否      | 否      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 <br>**ArkTS-Dyn起始版本**: 18 <br>**ArkTS-Sta起始版本**：23|
+| triggerType | [KeyCommandTriggerType](#keycommandtriggertype) | 否 | 是 | 触发模式。取值为PRESSED(1)、REPEAT_PRESSED(2)或ALL_RELEASED(3)。启用命令触发模式。一旦设置此值，isFinalKeyDown和isRepeat将被忽略。对于[inputConsumer.on('key')](#inputconsumeronkey)接口该参数是可选参数，对于[inputConsumer.onKey](#inputconsumeronkey-1)接口该参数是必填参数。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## shieldMode<sup>11+</sup>
 
@@ -303,6 +730,30 @@ struct Index {
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                        | 值 | 说明           |
 | ------------------------------ | ----------- | ---------------- |
 | FACTORY_MODE | 0 | 值为0，表示屏蔽所有系统快捷键。 |
+
+## KeyCommandTriggerType
+
+按键命令触发类型枚举，用于指定组合按键的触发时机。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统API：** 此接口为系统接口。
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| PRESSED | 1 | 首次按下触发。当最终按键首次按下时触发回调，自动重复按下不触发。 |
+| REPEAT_PRESSED | 2 | 重复按下触发。当最终按键每次按下时都触发回调，包括自动重复按下。 |
+| ALL_RELEASED | 3 | 按下按键或抬起按键时均会触发回调。包括自动重复按下的按键。 |

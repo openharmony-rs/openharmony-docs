@@ -38,7 +38,7 @@ The typical call sequence of lifecycle functions is illustrated below.
 
  **Figure 1** Lifecycle function call sequence diagram
 
-![en-us_image_0000001147417424](figures/en-us_image_0000001147417424.png)
+![en-us_image_0000001147417424](figures/Page-Lifecycle.png)
 
 ## Example
 

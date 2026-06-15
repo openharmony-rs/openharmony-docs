@@ -10,59 +10,171 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 目前仅支持通过外接鼠标触发。
 
 ## onMouse
 
-onMouse(event: (event: MouseEvent) => void): T
+ArkTS-Dyn: onMouse(event: (event: MouseEvent) => void): T
+
+ArkTS-Sta: onMouse(event: ((event: MouseEvent) => void) | undefined): this
 
 当前组件被鼠标按键点击时或者鼠标在组件上悬浮移动时，触发该回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型                              | 必填 | 说明                                                         |
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| event | (event: [MouseEvent](#mouseevent对象说明)) => void | 是   | 返回触发事件时的时间戳、鼠标按键、动作、鼠标位置在整个屏幕上的坐标和相对于当前组件的坐标。 |
+| event | ArkTS-Dyn: (event: [MouseEvent](#mouseevent对象说明)) => void <br/>ArkTS-Sta: ((event: [MouseEvent](#mouseevent对象说明)) => void) \|&nbsp;undefined | 是   | 返回触发事件时的时间戳、鼠标按键、动作、鼠标位置在整个屏幕上的坐标和相对于当前组件的坐标。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## MouseEvent对象说明
 
 继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
 
+### 属性
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                    | 类型                    | 只读    |  可选   |     说明                          |
 | ---------------------- | -------------------------------------- |-------------- |------------- |  --------------------------- |
-| x                      | number                                  | 否           |  否     |鼠标位置在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| y                      | number                                    |  否         |  否     |鼠标位置在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。         |
-| button                 | [MouseButton](ts-appendix-enums.md#mousebutton8)      |  否     |  否     |鼠标按键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| action                 | [MouseAction](ts-appendix-enums.md#mouseaction8)       |  否   |  否     |鼠标动作。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| stopPropagation        | () => void                            |  否          |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
-| windowX<sup>10+</sup> | number                           |  否          |  否     |鼠标位置在当前应用窗口坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| windowY<sup>10+</sup> | number                           |  否         |  否     |鼠标位置在当前应用窗口坐标系中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| displayX<sup>10+</sup> | number                          |  否         |  否     |鼠标位置在当前应用屏幕坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| displayY<sup>10+</sup> | number                         |  否          |  否     |鼠标位置在当前应用屏幕坐标系中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| screenX<sup>(deprecated)</sup> | number                 |  否         |  否     |鼠标位置在当前应用窗口坐标系中的X坐标。<br>单位：vp<br/>**说明：** 从API version 8开始支持，从API version 10开始废弃，建议使用windowX替代。 |
-| screenY<sup>(deprecated)</sup> | number                 |  否          |  否     |鼠标位置在当前应用窗口坐标系中的Y坐标。<br>单位：vp<br/>**说明：** 从API version 8开始支持，从API version 10开始废弃，建议使用windowY替代。 |
-| rawDeltaX<sup>15+</sup> | number      |  否   |  是     |鼠标设备在二维平面X轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| rawDeltaY<sup>15+</sup> | number      |  否     |  是    |鼠标设备在二维平面Y轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| pressedButtons<sup>15+</sup> | MouseButton[]      |  否      | 是     |当前按下的鼠标按键集合。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| globalDisplayX<sup>20+</sup> | number       |  否    |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| globalDisplayY<sup>20+</sup> | number      | 否      |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| eventHandleId<sup>24+</sup> | number | 否 | 是 | 用于事件处理的唯一标识。<br/> 取值范围：[0, +∞)<br/> **说明：** 在使用[postEventWithStrategy](../js-apis-arkui-builderNode.md#postinputeventwithstrategy24)接口分发事件时会使用该字段，事件每分发一次字段会增加100000。<br/> 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| x                      | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                  | 否           |  否     |鼠标位置在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。<br/>单位：vp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
+| y                      | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                    |  否         |  否     |鼠标位置在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br/>单位：vp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
+| button                 | [MouseButton](ts-appendix-enums.md#mousebutton8)      |  否     |  否     |鼠标按键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                        |
+| action                 | [MouseAction](ts-appendix-enums.md#mouseaction8)       |  否   |  否     |鼠标动作。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                        |
+| stopPropagation        | () => void                            |  否          |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 8                      |
+| windowX<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                           |  否          |  否     |鼠标位置在当前应用窗口坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| windowY<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                           |  否         |  否     |鼠标位置在当前应用窗口坐标系中的Y坐标。<br/>单位：vp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| displayX<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                          |  否         |  否     |鼠标位置在当前应用屏幕坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| displayY<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                         |  否          |  否     |鼠标位置在当前应用屏幕坐标系中的Y坐标。<br/>单位：vp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| screenX<sup>(deprecated)</sup> | number                 |  否         |  否     |鼠标位置在当前应用窗口坐标系中的X坐标。<br>单位：vp<br/>**说明：** 从API version 8开始支持，从API version 10开始废弃，建议使用windowX替代。<br/>**ArkTS模式：** 该字段仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 8 |
+| screenY<sup>(deprecated)</sup> | number                 | 否          |  否     |鼠标位置在当前应用窗口坐标系中的Y坐标。<br>单位：vp<br/>**说明：** 从API version 8开始支持，从API version 10开始废弃，建议使用windowY替代。<br/>**ArkTS模式：** 该字段仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 8 |
+| rawDeltaX<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double      |  否   |  是     |鼠标设备在二维平面X轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| rawDeltaY<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double      |  否     |  是    |鼠标设备在二维平面Y轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| pressedButtons<sup>15+</sup> | MouseButton[]      |  否      | 是     |当前按下的鼠标按键集合。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double       |  否    |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double      | 否      |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| eventHandleId<sup>24+</sup> | ArkTS-Dyn：number<br/>ArkTS-Sta：int | 否 | 是 | 用于事件处理的唯一标识。<br/> 取值范围：[0, +∞)<br/> **说明：** 在使用[postInputEventWithStrategy](../js-apis-arkui-builderNode.md#postinputeventwithstrategy24)接口分发事件时会使用该字段，事件每分发一次字段会增加100000。<br/> 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
+
+### stopPropagation<sup>23+</sup>
+
+stopPropagation(): void
+
+阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23 
+
+### getCurrentLocalPosition
+
+ArkTS-Dyn: getCurrentLocalPosition?(): Coordinate2D
+ 
+ArkTS-Sta: default getCurrentLocalPosition(): Coordinate2D
+
+获取鼠标位置相对于当前组件实时位置的左上角坐标。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：** 
+
+| 类型    | 说明                                                  |
+| ------- | ----------------------------------------------------- |
+| [Coordinate2D](ts-types.md#coordinate2d) | 获取鼠标位置相对于当前组件实时位置的左上角坐标。|
+
+### getHistoricalPoints
+ 
+ArkTS-Dyn: getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
+
+ArkTS-Sta: default getHistoricalPoints(): MouseHistoricalPoint[] | undefined
+ 
+获取当前帧的所有历史点信息。历史点可用于实现更平滑的绘制效果。
+ 
+该接口仅能在[MouseEvent](#mouseevent对象说明)中调用，用于获取触发[onMouse](#onmouse)时当前帧历史点的相关信息，不同设备每帧的鼠标事件上报频率不同，一帧通常只会上报一个鼠标事件，如果当前帧收到的[MouseEvent](#mouseevent对象说明)数目大于1，会将该帧最后一个点通过[onMouse](#onmouse)返回，其余点作为历史点。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+ 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+ 
+**返回值：**
+ 
+| 类型                                                 | 说明              |
+| -------------------------------------------------- | --------------- |
+| ArkTS-Dyn: Array&lt;[MouseHistoricalPoint](#mousehistoricalpoint)&gt;<br/>ArkTS-Sta: [MouseHistoricalPoint](#mousehistoricalpoint)[]&nbsp;\|&nbsp;undefined | 当前帧的所有历史点信息组成的数组。当系统内部运行环境损坏时，将返回undefined。 |
+ 
+## MouseHistoricalPoint
+ 
+鼠标事件历史点信息。
+
+历史点按时间顺序排列，获取到的第一个历史点是最早发生的事件的信息，最后一个是最新发生事件的信息。历史点的数量取决于系统事件队列的配置和硬件性能。历史点主要用于如下场景：
+ 
+1. 平滑绘制：使用历史点可以实现更平滑的绘制效果，特别是在鼠标快速移动时。
+ 
+2. 手势识别：通过分析历史点的轨迹，可以识别各种鼠标手势。
+ 
+3. 性能优化：在一个事件回调中处理多个历史点，减少事件处理频率，提升性能。
+ 
+4. 轨迹分析：分析鼠标移动轨迹，用于绘图应用或手势控制。
+
+5. 数据分析：历史点中的timestamp可用于计算鼠标移动速度。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+ 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+ 
+| 名称         | 类型        | 只读 | 可选 | 说明                                      |
+| ---------- | --------- | ---- | ---- | --------------------------------------- |
+| x          | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于被点击组件左上角的X坐标。<br>单位：vp          |
+| y          | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于被点击组件左上角的Y坐标。<br>单位：vp          |
+| displayX   | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于整个屏幕左上角的X坐标。<br>单位：vp            |
+| displayY   | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于整个屏幕左上角的Y坐标。<br>单位：vp            |
+| windowX    | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于应用窗口左上角的X坐标。<br>单位：vp            |
+| windowY    | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于应用窗口左上角的Y坐标。<br>单位：vp            |
+| globalDisplayX | ArkTS-Dyn: number<br/>ArkTS-Sta: double| 否   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。<br>单位：vp  |
+| globalDisplayY | ArkTS-Dyn: number<br/>ArkTS-Sta: double| 否   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的Y坐标。<br>单位：vp  |
+| timestamp  | ArkTS-Dyn: number<br/>ArkTS-Sta: long      | 否   | 否   | 鼠标事件的时间戳。<br>单位：ns                              |
 
 ## 示例
+
+### 示例1（获取鼠标事件相关参数）
 
 该示例通过按钮设置了鼠标事件，通过鼠标点击按钮可以触发[onMouse](#onmouse)事件，获取鼠标事件相关参数。从API version 15开始，可以获取鼠标事件[MouseEvent](#mouseevent对象说明)的targetDisplayId、rawDeltaX、rawDeltaY、pressedButtons等参数。
 
@@ -125,9 +237,6 @@ struct MouseEventExample {
             }
             // 判断触发的鼠标动作类型
             switch (event.action) {
-              case MouseAction.Hover:
-                this.action = 'Hover';
-                break;
               case MouseAction.Press:
                 this.action = 'Press';
                 break;
@@ -136,6 +245,12 @@ struct MouseEventExample {
                 break;
               case MouseAction.Release:
                 this.action = 'Release';
+                break;
+              case MouseAction.ENTER_WINDOW:
+                this.action = 'ENTER_WINDOW';
+                break;
+              case MouseAction.LEAVE_WINDOW:
+                this.action = 'LEAVE_WINDOW';
                 break;
             }
             // 拼接鼠标事件全量信息并展示
@@ -154,8 +269,158 @@ struct MouseEventExample {
 }
 ```
 
-示意图： 
+示意图：
 
 鼠标点击时：
 
 ![mouse](figures/mouse.gif)
+
+### 示例2（获取当前帧历史点）
+
+该示例通过调用[getHistoricalPoints](#gethistoricalpoints)接口，获取到触发重采样时的历史点，可以用来实现更平滑的绘制等操作。
+
+从API版本26.0.0开始，新增getHistoricalPoints接口。
+
+ArkTS-Dyn示例：
+```ts
+@Entry
+@Component
+struct HistoricalPointsExample {
+  historicalPointsInfo: string = ''
+
+  build() {
+    Column() {
+      Button('鼠标移动获取历史点')
+        .width(180)
+        .height(80)
+        .onMouse((event: MouseEvent) => {
+          if (event.action === MouseAction.Move) {
+            // 调用getHistoricalPoints接口获取当前帧历史点信息
+            const historicalPoints = event.getHistoricalPoints?.();
+            if (historicalPoints) {
+              this.historicalPointsInfo = `历史点数量: ${historicalPoints.length}`;
+              historicalPoints.forEach((point: MouseHistoricalPoint, index: number) => {
+                this.historicalPointsInfo += `\n点${index}: `
+                  +`x = ${point.x}, y = ${point.y}, windowX = ${point.windowX}, windowY = ${point.windowY}, `
+                  +`displayX = ${point.displayX}, displayY = ${point.displayY}, `
+                  +`globalDisplayX = ${point.globalDisplayX}, globalDisplayY = ${point.globalDisplayY}, `
+                  +`timestamp = ${point.timestamp}`;
+              });
+              console.info(this.historicalPointsInfo);
+            }
+          }
+        })
+    }.padding({ top: 30 })
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Column, Component, Button, MouseEvent, MouseHistoricalPoint, MouseAction } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MouseEventExample {
+  historicalPointsInfo: string = ''
+
+  build() {
+    Column() {
+      Button('鼠标移动获取历史点')
+        .width(180)
+        .height(80)
+        .onMouse((event: MouseEvent): void => {
+          if (event.action === MouseAction.Move) {
+            // 调用getHistoricalPoints接口获取当前帧历史点信息
+            let historicalPoints: MouseHistoricalPoint[] | undefined = event.getHistoricalPoints();
+            if (historicalPoints !== undefined) {
+              this.historicalPointsInfo = `历史点数量: ${historicalPoints.length}`;
+              for (let index: int = 0; index < historicalPoints.length; index++) {
+                this.historicalPointsInfo += `\n点${index}: `
+                  +`x = ${historicalPoints[index].x}, y = ${historicalPoints[index].y}, `
+                  +`windowX = ${historicalPoints[index].windowX}, windowY = ${historicalPoints[index].windowY}, `
+                  +`displayX = ${historicalPoints[index].displayX}, displayY = ${historicalPoints[index].displayY}, `
+                  +`globalDisplayX = ${historicalPoints[index].globalDisplayX}, `
+                  +`globalDisplayY = ${historicalPoints[index].globalDisplayY}, `
+                  +`timestamp = ${historicalPoints[index].timestamp}\n`;
+              }
+            }
+            console.info(this.historicalPointsInfo);
+          }
+        })
+    }.padding({ top: 30 })
+    .width('100%')
+  }
+}
+```
+
+### 示例3（获取组件实时位置的示例）
+
+该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取当前组件基于其实时位置的左上角坐标。
+
+从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+@Entry
+@Component
+struct GetCurrentLocalPositionExample {
+  @State positionText: string = '';
+  @State textOffsetY: number = 0;
+
+  build() {
+    Column() {
+      Button('获取鼠标位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
+        .onMouse((event?: MouseEvent) => {
+          if (event) {
+            this.textOffsetY = -200;
+            setTimeout(() => {
+              let localPos: Coordinate2D | undefined = event.getCurrentLocalPosition?.();
+              this.positionText = `相对于当前组件实时位置左上角的坐标:\n  x: ${localPos?.x}\n  y: ${localPos?.y}`;
+            }, 2000);
+          }
+        })
+
+      Text(this.positionText)
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Text, Button, State, Column, Component, MouseEvent, Coordinate2D, TranslateOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct GetCurrentLocalPositionExample {
+  @State positionText: string = '';
+  @State textOffsetY: number = 0;
+
+  build() {
+    Column() {
+      Button('获取鼠标位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY } as TranslateOptions)
+        .onMouse((event?: MouseEvent) => {
+          if (event) {
+            this.textOffsetY = -200;
+            setTimeout(() => {
+              let localPos: Coordinate2D | undefined = event.getCurrentLocalPosition?.();
+              this.positionText = `相对于当前组件实时位置左上角的坐标:\n  x: ${localPos?.x}\n  y: ${localPos?.y}`;
+            }, 2000);
+          }
+        })
+
+      Text(this.positionText)
+    }.width('100%')
+  }
+}
+```
+
+示意图： 
+
+鼠标触发事件时：
+
+![mouse](figures/localPosition1.gif)

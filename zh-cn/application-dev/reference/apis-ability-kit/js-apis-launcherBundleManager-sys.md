@@ -4,11 +4,13 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块支持launcher应用（桌面有图标的应用）所需的查询能力，支持[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)、[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息的查询。
 
 > **说明：**
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -23,7 +25,9 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 
 ## launcherBundleManager.getLauncherAbilityInfo
 
-getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>) : void
+ArkTS-Dyn: getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>): void
+
+ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>): void
 
 查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。使用callback异步回调。
 
@@ -33,13 +37,17 @@ getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallba
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
-| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为bundle包含的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
+| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为bundle包含的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -56,6 +64,7 @@ getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallba
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -75,10 +84,34 @@ try {
   console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 代码中使用的bundleName、useId需为应用实际的包名、用户ID。
+try {
+  launcherBundleManager.getLauncherAbilityInfo('com.example.demo', 100, (errData, data) => {
+    if (errData !== null) {
+      console.error(`getLauncherAbilityInfo errData is errCode:${errData.code}  message:${errData.message}`);
+    } else {
+      console.info('getLauncherAbilityInfo data is ' + JSON.stringify(data));
+    }
+  })
+} catch (errData) {
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`getLauncherAbilityInfo errData is errCode:${code}  message:${message}`);
+}
+```
 
 ## launcherBundleManager.getLauncherAbilityInfo
 
-getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
+ArkTS-Dyn: getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
+
+ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int) : Promise\<Array\<LauncherAbilityInfo\>\>
 
 查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。使用Promise异步回调。
 
@@ -88,12 +121,16 @@ getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<Lau
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
 
 **返回值：**
 
@@ -116,6 +153,7 @@ getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<Lau
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -125,18 +163,41 @@ try {
     .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
       console.info('data is ' + JSON.stringify(data));
     }).catch((errData: BusinessError) => {
-    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-  })
+      console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+    })
 } catch (errData) {
   let code = (errData as BusinessError).code;
   let message = (errData as BusinessError).message;
   console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 代码中使用的bundleName、useId需为应用实际的包名、用户ID。
+try {
+  launcherBundleManager.getLauncherAbilityInfo("com.example.demo", 100)
+    .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
+      console.info('getLauncherAbilityInfo data is ' + JSON.stringify(data));
+    }).catch ((errData: Error) => {
+      console.error(`getLauncherAbilityInfo errData is errCode:${(errData as BusinessError).code}  message:${(errData as BusinessError).message}`);
+    })
+} catch (errData) {
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`getLauncherAbilityInfo errData is errCode:${code}  message:${message}`);
+}
+```
 
 ## launcherBundleManager.getAllLauncherAbilityInfo
 
-getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>) : void
+ArkTS-Dyn: getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>): void
+
+ArkTS-Sta: getAllLauncherAbilityInfo(userId: int, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>): void
 
 查询指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。使用callback异步回调。
 
@@ -146,12 +207,16 @@ getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<Launch
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | -------------- |
-| userId | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
-| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -167,6 +232,7 @@ getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<Launch
 
 示例：
 
+ArkTS-Dyn示例:
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -186,9 +252,34 @@ try {
   console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 代码中使用的useId需为应用实际的用户ID。
+try {
+  launcherBundleManager.getAllLauncherAbilityInfo(100, (errData, data) => {
+    if (errData !== null) {
+      console.error(`getAllLauncherAbilityInfo errData is errCode:${errData.code}  message:${errData.message}`);
+    } else {
+      console.info('getAllLauncherAbilityInfo data is ' + JSON.stringify(data));
+    }
+  });
+} catch (errData) {
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`getAllLauncherAbilityInfo errData is errCode:${code}  message:${message}`);
+}
+```
+
 ## launcherBundleManager.getAllLauncherAbilityInfo
 
-getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
+ArkTS-Dyn: getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
+
+ArkTS-Sta: getAllLauncherAbilityInfo(userId: int) : Promise\<Array\<LauncherAbilityInfo\>\>
 
 查询指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。使用Promise异步回调。
 
@@ -198,11 +289,15 @@ getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | -------------- |
-| userId | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
 
 **返回值：**
 
@@ -224,6 +319,7 @@ getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -233,12 +329,33 @@ try {
     .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
       console.info('data is ' + JSON.stringify(data));
     }).catch((errData: BusinessError) => {
-    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-  });
+      console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+    });
 } catch (errData) {
   let code = (errData as BusinessError).code;
   let message = (errData as BusinessError).message;
   console.error(`errData is errCode:${code}  message:${message}`);
+}
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 代码中使用的useId需为应用实际的用户ID。
+try {
+  launcherBundleManager.getAllLauncherAbilityInfo(100)
+    .then((data: launcherBundleManager.LauncherAbilityInfo[]) => {
+      console.info('getAllLauncherAbilityInfo data is ' + JSON.stringify(data));
+    }).catch ((errData: Error) => {
+      console.error(`getAllLauncherAbilityInfo errData is errCode:${(errData as BusinessError).code}  message:${(errData as BusinessError).message}`);
+    });
+} catch (errData) {
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`getAllLauncherAbilityInfo errData is errCode:${code}  message:${message}`);
 }
 ```
 
@@ -256,12 +373,16 @@ getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息。否则为错误对象。|
+| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息。否则为错误对象。|
 
 **错误码：**
 
@@ -278,6 +399,7 @@ getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -285,6 +407,29 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   launcherBundleManager.getShortcutInfo("com.example.demo",
     (errData: BusinessError, data: launcherBundleManager.ShortcutInfo[]) => {
+      if (errData !== null) {
+        console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+      } else {
+        console.info('data is ' + JSON.stringify(data));
+      }
+    });
+} catch (errData) {
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
+}
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+// 开发者需传入实际工程的bundleName。
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  launcherBundleManager.getShortcutInfo("com.example.demo",
+    (errData: BusinessError | null, data: launcherBundleManager.ShortcutInfo[] | undefined) => {
       if (errData !== null) {
         console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
       } else {
@@ -311,6 +456,10 @@ getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -339,6 +488,7 @@ getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -348,8 +498,29 @@ try {
     .then((data: launcherBundleManager.ShortcutInfo[]) => {
       console.info('data is ' + JSON.stringify(data));
     }).catch((errData: BusinessError) => {
-    console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-  });
+      console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
+    });
+} catch (errData) {
+  let code = (errData as BusinessError).code;
+  let message = (errData as BusinessError).message;
+  console.error(`errData is errCode:${code}  message:${message}`);
+}
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+// 开发者需传入实际工程的bundleName。
+import { launcherBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  launcherBundleManager.getShortcutInfo("com.example.demo")
+    .then((data: launcherBundleManager.ShortcutInfo[]) => {
+      console.info('data is ' + JSON.stringify(data));
+    }).catch ((errData: Error) => {
+      console.error(`errData is errCode:${(errData as BusinessError).code}  message:${(errData as BusinessError).message}`);
+    });
 } catch (errData) {
   let code = (errData as BusinessError).code;
   let message = (errData as BusinessError).message;
@@ -370,6 +541,10 @@ getShortcutInfoSync(bundleName : string) : Array\<ShortcutInfo\>
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -414,7 +589,9 @@ try {
 
 ## launcherBundleManager.getShortcutInfoSync<sup>13+</sup>
 
-getShortcutInfoSync(bundleName: string, userId: number) : Array\<ShortcutInfo\>
+ArkTS-Dyn: getShortcutInfoSync(bundleName: string, userId: number): Array\<ShortcutInfo\>
+
+ArkTS-Sta: getShortcutInfoSync(bundleName: string, userId: int): Array\<ShortcutInfo\>
 
 查询指定用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。
 
@@ -426,12 +603,16 @@ getShortcutInfoSync(bundleName: string, userId: number) : Array\<ShortcutInfo\>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
+| userId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
 
 **返回值：**
 
@@ -480,6 +661,10 @@ startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise\<void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -551,6 +736,10 @@ startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string, options
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型   | 必填 | 说明         |
@@ -611,7 +800,9 @@ try {
 
 ## launcherBundleManager.getShortcutInfoByAppIndex<sup>20+</sup>
 
-getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array\<ShortcutInfo\>
+ArkTS-Dyn: getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array\<ShortcutInfo\>
+
+ArkTS-Sta: getShortcutInfoByAppIndex(bundleName: string, appIndex: int): Array\<ShortcutInfo\>
 
 查询当前用户下指定分身应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。
 
@@ -623,12 +814,16 @@ getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array\<Shortcut
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| appIndex | number | 是   | 分身应用的索引。 |
+| appIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 分身应用的索引。 |
 
 **返回值：**
 

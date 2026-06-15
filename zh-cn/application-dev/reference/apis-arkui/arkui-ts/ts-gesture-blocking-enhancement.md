@@ -10,28 +10,39 @@
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## shouldBuiltInRecognizerParallelWith
 
-shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWithCallback): T
+ArkTS-Dyn: shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWithCallback): T
+
+ArkTS-Sta: shouldBuiltInRecognizerParallelWith(callback: ShouldBuiltInRecognizerParallelWithCallback | undefined): this
 
 提供系统内置手势与响应链上其他组件的手势设置并行关系的回调事件。此接口对应的C API接口为[setInnerGestureParallelTo](../capi-arkui-nativemodule-arkui-nativegestureapi-1.md#setinnergestureparallelto)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
+
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [ShouldBuiltInRecognizerParallelWithCallback](#shouldbuiltinrecognizerparallelwithcallback) | 是   |  系统内置手势与响应链上其他组件的手势设置并行关系的回调事件，当该组件进行触摸碰撞测试时，会触发用户定义的回调来形成手势并行关系。 |
+| callback      | ArkTS-Dyn: [ShouldBuiltInRecognizerParallelWithCallback](#shouldbuiltinrecognizerparallelwithcallback)<br/>ArkTS-Sta: [ShouldBuiltInRecognizerParallelWithCallback](#shouldbuiltinrecognizerparallelwithcallback)&nbsp;\|&nbsp;undefined | 是   |  系统内置手势与响应链上其他组件的手势设置并行关系的回调事件，当该组件进行触摸碰撞测试时，会触发用户定义的回调来形成手势并行关系。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## ShouldBuiltInRecognizerParallelWithCallback
 
@@ -39,9 +50,13 @@ type ShouldBuiltInRecognizerParallelWithCallback = (current: GestureRecognizer, 
 
 系统内置手势与响应链上其他组件的手势设置并行关系的回调事件类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -58,49 +73,63 @@ type ShouldBuiltInRecognizerParallelWithCallback = (current: GestureRecognizer, 
 
 ## onGestureRecognizerJudgeBegin<sup>13+</sup>
 
-onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback, exposeInnerGesture: boolean): T
+ArkTS-Dyn: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback, exposeInnerGesture: boolean): T
+
+ArkTS-Sta: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback | undefined, exposeInnerGesture: boolean | undefined): this
 
 给组件绑定自定义手势识别器判定回调。
 
 新增exposeInnerGesture参数作为是否将ArkUI系统组合组件的内置组件的手势暴露给开发者的标识。当该标识置为true时，将ArkUI系统组合组件的内置组件的手势暴露给开发者。<br>
 对于不需要将ArkUI系统组合组件的内置组件的手势暴露给开发者的场景，建议采用原有[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin)接口。若要求将ArkUI系统组合组件的内置组件的手势暴露给开发者，建议使用该接口并将exposeInnerGesture设置为true。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
+
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [GestureRecognizerJudgeBeginCallback](#gesturerecognizerjudgebegincallback) | 是     |  给组件绑定自定义手势识别器判定回调，当绑定到该组件的手势即将成功时，会触发用户定义的回调来获取结果。 |
-| exposeInnerGesture   | boolean         | 是    | 暴露内部手势标识。<br/>默认值：false<br/>**说明：** <br/>如果是组合组件，此参数设置true，回调中的current参数则会包含组合组件内部的手势识别器。<br>当前仅支持[Tabs](ts-container-tabs.md)，其他组件请不要设置此参数。<br/>设置为false时，功能与原接口[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin)相同。 |
+| callback      | ArkTS-Dyn: [GestureRecognizerJudgeBeginCallback](#gesturerecognizerjudgebegincallback)<br/>ArkTS-Sta: [GestureRecognizerJudgeBeginCallback](#gesturerecognizerjudgebegincallback)&nbsp;\|&nbsp;undefined | 是     |  给组件绑定自定义手势识别器判定回调，当绑定到该组件的手势即将成功时，会触发用户定义的回调来获取结果。 |
+| exposeInnerGesture   | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined         | 是    | 暴露内部手势标识。<br/>默认值：false<br/>**说明：** <br/>如果是组合组件，此参数设置true，回调中的current参数则会包含组合组件内部的手势识别器。<br>当前仅支持[Tabs](ts-container-tabs.md)，其他组件请不要设置此参数。<br/>设置为false时，功能与原接口[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin)相同。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onGestureRecognizerJudgeBegin
 
-onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback): T
+ArkTS-Dyn: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback): T
+
+ArkTS-Sta: onGestureRecognizerJudgeBegin(callback: GestureRecognizerJudgeBeginCallback | undefined): this
 
 给组件绑定自定义手势识别器判定回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
+
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [GestureRecognizerJudgeBeginCallback](#gesturerecognizerjudgebegincallback) | 是     |  自定义手势识别器判定回调。当绑定到该组件的手势即将成功时，会触发用户定义的回调来获取结果。 |
+| callback      | ArkTS-Dyn: [GestureRecognizerJudgeBeginCallback](#gesturerecognizerjudgebegincallback)<br/>ArkTS-Sta: [GestureRecognizerJudgeBeginCallback](#gesturerecognizerjudgebegincallback)&nbsp;\|&nbsp;undefined | 是     |  自定义手势识别器判定回调。当绑定到该组件的手势即将成功时，会触发用户定义的回调来获取结果。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## GestureRecognizerJudgeBeginCallback
 
@@ -108,18 +137,16 @@ type GestureRecognizerJudgeBeginCallback = (event: BaseGestureEvent, current: Ge
 
 自定义手势识别器判定回调类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明) | 是   | 当前基础手势事件信息。 |
-| current | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | 是   | 当前即将要响应的识别器对象。 |
-| recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上的其他手势识别器对象。 |
-| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | 否   | 响应链上的Touch识别器对象。 默认值为null，表示在当前手势绑定组件及其子孙组件没有可响应的Touch识别器。|
+| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明) | 是   | 当前基础手势事件信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 24 |
+| current | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | 是   | 当前即将要响应的识别器对象。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 24 |
+| recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上的其他手势识别器对象。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 24 |
+| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](./ts-gesture-common.md#touchrecognizer20)\> | 否   | 响应链上的Touch识别器对象。 默认值为null，表示在当前手势绑定组件及其子孙组件没有可响应的Touch识别器。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24|
 
 **返回值：**
 
@@ -129,35 +156,45 @@ type GestureRecognizerJudgeBeginCallback = (event: BaseGestureEvent, current: Ge
 
 ## onTouchTestDone<sup>20+</sup>
 
-onTouchTestDone(callback: TouchTestDoneCallback): T
+ArkTS-Dyn: onTouchTestDone(callback: TouchTestDoneCallback): T
+
+ArkTS-Sta: onTouchTestDone(callback: TouchTestDoneCallback | undefined): this;
 
 提供在[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，指定手势识别器是否参与后续处理的能力。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名        | 类型                    | 必填  | 说明                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [TouchTestDoneCallback](#touchtestdonecallback20) | 是   |  回调函数，用于指定手势识别器是否参与后续处理。在[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，开始识别用户手势之前，会触发该回调来动态指定手势识别器是否参与后续处理。 |
+| callback      | ArkTS-Dyn: [TouchTestDoneCallback](#touchtestdonecallback20)<br/>ArkTS-Sta: [TouchTestDoneCallback](#touchtestdonecallback20) \| undefined | 是   |  回调函数，用于指定手势识别器是否参与后续处理。在[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，开始识别用户手势之前，会触发该回调来动态指定手势识别器是否参与后续处理。<br/>参数设置undefined时不设置回调。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## TouchTestDoneCallback<sup>20+</sup>
 
 type TouchTestDoneCallback = (event: BaseGestureEvent, recognizers: Array\<GestureRecognizer\>) => void
 
-动态指定手势识别器是否参与手势处理的回调事件类型。
+动态指定手势识别器是否参与手势处理的回调事件类型，回调内参数的生命周期跟随回调本身，参数内的方法仅支持在回调内同步使用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -174,7 +211,7 @@ ArkTS-Sta: onGestureCollectIntercept(callback: GestureCollectInterceptCallback):
 
 在当前节点及更高优先级节点上的事件和手势被收集完成后触发该回调。该回调可用于干预事件和手势的收集结果。使用callback异步回调。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -202,7 +239,7 @@ type GestureCollectInterceptCallback = (recognizers: Array\<GestureRecognizer\>,
 
 定义在[onGestureCollectIntercept](#ongesturecollectintercept)中使用的回调类型。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -223,8 +260,65 @@ type GestureCollectInterceptCallback = (recognizers: Array\<GestureRecognizer\>,
 
 | 类型     | 说明        |
 | ------ | --------- |
-| [GestureCollectIntervention](./ts-appendix-enums.md#gesturecollectintervention) | 手势收集干预结果。 |
+| [GestureCollectIntervention](./ts-appendix-enums.md#gesturecollectintervention) | 手势收集干预结果。<br/>取值为异常值时按照GestureCollectIntervention.[CONTINUE](./ts-appendix-enums.md#gesturecollectintervention)处理。 |
 
+## shouldRecognizerParallelWith
+
+ArkTS-Dyn: shouldRecognizerParallelWith(callback: ShouldRecognizerParallelWithCallback): T
+
+ArkTS-Sta: shouldRecognizerParallelWith(callback: ShouldRecognizerParallelWithCallback | undefined): this
+
+提供手势与响应链上其他组件的手势设置并行关系的回调事件。使用callback异步回调。此接口对应的C API接口为[setGestureParallelTo](../capi-arkui-nativemodule-arkui-nativegestureapi-3.md#setgestureparallelto)。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+| 参数名        | 类型                    | 必填  | 说明                          |
+| ---------- | -------------------------- | ------- | ----------------------------- |
+| callback      | ArkTS-Dyn: [ShouldRecognizerParallelWithCallback](#shouldrecognizerparallelwithcallback)<br/>ArkTS-Sta: [ShouldRecognizerParallelWithCallback](#shouldrecognizerparallelwithcallback) \| undefined | 是   |  手势与响应链上其他组件的手势设置并行关系的回调事件，当该组件进行[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)时，会触发用户定义的回调来形成手势并行关系。设置为undefined时取消事件注册。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
+
+## ShouldRecognizerParallelWithCallback
+
+type ShouldRecognizerParallelWithCallback = (current: GestureRecognizer, others: Array\<GestureRecognizer\>) => GestureRecognizer
+
+手势与响应链上其他组件的手势设置并行关系的回调事件类型。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| current | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | 是   | 当前组件的手势识别器，当前仅支持[GestureType](./ts-gesture-common.md#gesturetype11).PAN_GESTURE类型的手势识别器。 |
+| others | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上优先级高于当前组件的其他组件所持有的同类型[GestureType](./ts-gesture-common.md#gesturetype11)的手势识别器。 |
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------ | --------- |
+| [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | 与current识别器绑定并行关系的某个手势识别器。 |
 
 ## 示例
 
@@ -571,7 +665,7 @@ struct Index {
 
  ![example](figures/gesture_recognizer_obtain_attributes.gif)
 
- ### 示例4（手势触发成功时取消子组件上的Touch事件）
+### 示例4（手势触发成功时取消子组件上的Touch事件）
 
 该示例通过配置onGestureRecognizerJudgeBegin判定手势，在父容器手势触发成功时，调用cancelTouch()强制取消子组件上的Touch事件，实现父子组件手势控制的精准切换。
 
@@ -769,7 +863,7 @@ struct FatherControlChild {
 ```
 ![example](figures/canceltouch.gif)
 
- ### 示例5（自定义手势识别器是否参与手势处理）
+### 示例5（自定义手势识别器是否参与手势处理）
 
 从API version 20开始，该示例通过配置[onTouchTestDone](#ontouchtestdone20)指定手势识别器不参与后续手势处理，触发回调时，调用[preventBegin](./ts-gesture-common.md#preventbegin20)阻止手势识别器参与后续处理。点击Tap2和Tap1的重合区域，不调用preventBegin时，触发Tap2对应的手势；调用preventBegin阻止Tap2时，触发Tap1对应的手势。
 
@@ -857,13 +951,14 @@ struct TouchTestDoneExample {
 ```
 ![example](figures/touchTestDone.gif)
 
- ### 示例6（自定义干预事件和手势的收集结果）
+### 示例6（自定义干预事件和手势的收集结果）
 
 该示例通过配置[onGestureCollectIntercept](#ongesturecollectintercept)指定手势识别器或者触摸识别器是否透传到其他节点。点击button2时，不透传触摸事件到Column。点击button1时，透传触摸事件到Column，Column变色。
 
 从API版本26.0.0开始，新增onGestureCollectIntercept接口。
 
 ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -878,6 +973,7 @@ struct Index {
     Column() {
       Column() {
         Row({ space: 20 } as RowOptions) {
+          // 组件button1未设置点击事件
           Button('button1')
             .width('30%')
             .height(40)
@@ -886,12 +982,16 @@ struct Index {
               this.backgroundColorButton1 = '#E5E5E5';
             })
             .backgroundColor(this.backgroundColorButton1)
+          // 组件button2设置了点击事件
           Button('button2')
             .width('30%')
             .height(40)
             .id('button2')
             .onTouch((e?: TouchEvent) => {
               this.backgroundColorButton2 = '#E5E5E5';
+            })
+            .onClick((e?: ClickEvent) => {
+              console.info("button2 is clicked")
             })
             .backgroundColor(this.backgroundColorButton2)
         }
@@ -910,6 +1010,7 @@ struct Index {
           } else {
             for (let i = 0; i < touchRecognizers.length; i++) {
               let id = touchRecognizers[i].getEventTargetInfo().getId();
+              //当命中存在点击事件区域button2时，事件无需透传给Column
               if (id == 'button2') {
                 return GestureCollectIntervention.DISCARD_LOWER;
               }
@@ -952,6 +1053,7 @@ struct Index {
     Column() {
       Column() {
         Row({ space: 20 } as RowOptions) {
+          // 组件button1未设置点击事件
           Button('button1')
             .width('30%')
             .height(40)
@@ -960,12 +1062,16 @@ struct Index {
               this.backgroundColorButton1 = '#E5E5E5';
             })
             .backgroundColor(this.backgroundColorButton1)
+          // 组件button2设置了点击事件
           Button('button2')
             .width('30%')
             .height(40)
             .id('button2')
             .onTouch((e?: TouchEvent) => {
               this.backgroundColorButton2 = '#E5E5E5';
+            })
+            .onClick((e?: ClickEvent) => {
+              console.info("button2 is clicked")
             })
             .backgroundColor(this.backgroundColorButton2)
         }
@@ -984,6 +1090,7 @@ struct Index {
           } else {
             for (let i = 0; i < touchRecognizers.length; i++) {
               let id = touchRecognizers[i].getEventTargetInfo().getId();
+              //当命中存在点击事件区域button2时，事件无需透传给Column
               if (id == 'button2') {
                 return GestureCollectIntervention.DISCARD_LOWER;
               }
@@ -1007,3 +1114,295 @@ struct Index {
 }
 ```
 ![example](figures/gestureCollectIntercept.gif)
+
+示例对应的组件树如下图所示。
+```mermaid
+graph TD
+    A((Column))
+    B((Column))
+    C((Row))
+    D((Button1))
+    E((Button2))
+
+    A --> B
+    A --> C
+    C --> D
+    C --> E
+```
+
+### 示例7（非内置手势嵌套滚动）
+
+该示例通过[shouldRecognizerParallelWith](#shouldrecognizerparallelwith)和[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin)实现了嵌套滚动的功能。内部组件优先响应滑动手势，当内部组件滑动至顶部或底部时，外部组件能够接替滑动。
+
+从API版本26.0.0开始，新增shouldRecognizerParallelWith接口。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+@Entry
+@Component
+struct FatherControlChild {
+  scroller: Scroller = new Scroller();
+  scroller2: Scroller = new Scroller();
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  private childRecognizer: GestureRecognizer = new GestureRecognizer();
+  private currentRecognizer: GestureRecognizer = new GestureRecognizer();
+  private lastOffset: number = 0;
+
+  build() {
+    Stack({ alignContent: Alignment.TopStart }) {
+      Scroll(this.scroller) { // 外部滚动容器
+        Column() {
+          Text("Scroll Area")
+            .width('90%')
+            .height(150)
+            .backgroundColor(0xFFFFFF)
+            .borderRadius(15)
+            .fontSize(16)
+            .textAlign(TextAlign.Center)
+            .margin({ top: 10 })
+          Scroll(this.scroller2) { // 内部滚动容器
+            Column() {
+              Text("Scroll Area2")
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 10 })
+              Column() {
+                ForEach(this.arr, (item: number) => {
+                  Text(item.toString())
+                    .width('90%')
+                    .height(150)
+                    .backgroundColor(0xFFFFFF)
+                    .borderRadius(15)
+                    .fontSize(16)
+                    .textAlign(TextAlign.Center)
+                    .margin({ top: 10 })
+                }, (item: string) => item)
+              }.width('100%')
+            }
+          }
+          .id("inner")
+          .width('100%')
+          .height(800)
+        }.width('100%')
+      }
+      .id("outer")
+      .height(600)
+      .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
+      .scrollBar(BarState.On) // 滚动条常驻显示
+      .scrollBarColor(Color.Gray) // 滚动条颜色
+      .scrollBarWidth(10) // 滚动条宽度
+      .edgeEffect(EdgeEffect.None)
+      .enableScrollInteraction(false)
+      .gesture(
+        PanGesture()
+          .onActionStart((event: GestureEvent) => {
+            this.lastOffset = this.scroller.currentOffset().yOffset; // 手势开始时，记录当前滚动位置
+          })
+          .onActionUpdate((event: GestureEvent) => {
+            let moveY = event.offsetY; // 手势移动时，计算新位置
+            let targetOffset = this.lastOffset - moveY; // 目标位置 = 初始位置 - 移动距离
+            this.scroller.scrollTo({ xOffset: 0, yOffset: targetOffset });
+          })
+      )
+      .shouldRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
+        for (let i = 0; i < others.length; i++) {
+          let target = others[i].getEventTargetInfo();
+          if (target) {
+            if (target.getId() == "inner" && others[i].isBuiltIn() &&
+              others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
+              this.currentRecognizer = current; // 保存当前组件的识别器
+              this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
+              return others[i]; // 返回将要组成并行手势的识别器
+            }
+          }
+        }
+        return undefined;
+      })
+      .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+        others: Array<GestureRecognizer>) => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
+        if (current) {
+          let target = current.getEventTargetInfo();
+          if (target) {
+            if (target.getId() == "outer" &&
+              current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+              if (others) {
+                for (let i = 0; i < others.length; i++) {
+                  let target = others[i].getEventTargetInfo() as ScrollableTargetInfo;
+                  if (target instanceof ScrollableTargetInfo && target.getId() == "inner") { // 找到响应链上对应并行的识别器
+                    let panEvent = event as PanGestureEvent;
+                    if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
+                      if (panEvent && panEvent.offsetY < 0) {
+                        this.childRecognizer.setEnabled(false);
+                        this.currentRecognizer.setEnabled(true);
+                      } else {
+                        this.childRecognizer.setEnabled(true);
+                        this.currentRecognizer.setEnabled(false);
+                      }
+                    } else if (target.isBegin()) {
+                      if (panEvent.offsetY > 0) {
+                        this.childRecognizer.setEnabled(false);
+                        this.currentRecognizer.setEnabled(true);
+                      } else {
+                        this.childRecognizer.setEnabled(true);
+                        this.currentRecognizer.setEnabled(false);
+                      }
+                    } else {
+                      this.childRecognizer.setEnabled(true);
+                      this.currentRecognizer.setEnabled(false);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        return GestureJudgeResult.CONTINUE;
+      })
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+import { Entry, Row, Stack, Text, Column, Component, Button, ClickEvent, GestureRecognizer, Scroll, Scroller,
+  AttributeModifier, CommonAttribute, GestureCollectIntervention, TapGesture, HitTestMode, TouchEvent, RowOptions,
+  Color, GestureEvent, BaseGestureEvent, ScrollableTargetInfo, PanGestureEvent, TextAlign, ScrollDirection, BarState,
+  GestureRecognizerJudgeBeginCallback, StackOptions, State, Alignment, EdgeEffect, PanGesture, ForEach,
+  ShouldRecognizerParallelWithCallback, GestureRecognizerJudgeBeginCallback, GestureControl,
+  GestureJudgeResult, PanGestureHandler} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct FatherControlChild {
+  scroller: Scroller = new Scroller();
+  scroller2: Scroller = new Scroller();
+  private arr: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  private childRecognizer: GestureRecognizer = new GestureRecognizer();
+  private currentRecognizer: GestureRecognizer = new GestureRecognizer();
+  private tempRecognizer: GestureRecognizer = new GestureRecognizer();
+  private lastOffset: number = 0;
+
+  build() {
+    Stack({ alignContent: Alignment.TopStart } as StackOptions) {
+      Scroll(this.scroller) { // 外部滚动容器
+        Column() {
+          Text("Scroll Area")
+            .width('90%')
+            .height(150)
+            .backgroundColor(0xFFFFFF)
+            .borderRadius(15)
+            .fontSize(16)
+            .textAlign(TextAlign.Center)
+            .margin({ top: 10 })
+          Scroll(this.scroller2) { // 内部滚动容器
+            Column() {
+              Text("Scroll Area2")
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 10 })
+              Column() {
+                ForEach(this.arr, (item: string) => {
+                  Text(item.toString())
+                    .width('90%')
+                    .height(150)
+                    .backgroundColor(0xFFFFFF)
+                    .borderRadius(15)
+                    .fontSize(16)
+                    .textAlign(TextAlign.Center)
+                    .margin({ top: 10 })
+                }, (item: string) => item)
+              }.width('100%')
+            }
+          }
+          .id("inner")
+          .width('100%')
+          .height(800)
+        }.width('100%')
+      }
+      .id("outer")
+      .height(600)
+      .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
+      .scrollBar(BarState.On) // 滚动条常驻显示
+      .scrollBarColor(Color.Gray) // 滚动条颜色
+      .scrollBarWidth(10) // 滚动条宽度
+      .edgeEffect(EdgeEffect.None)
+      .enableScrollInteraction(false)
+      .gesture(
+        PanGesture()
+          .onActionStart((event: GestureEvent) => {
+            this.lastOffset = this.scroller!.currentOffset()!.yOffset; // 手势开始时，记录当前滚动位置
+          })
+          .onActionUpdate((event: GestureEvent) => {
+            let moveY = event.offsetY; // 手势移动时，计算新位置
+            let targetOffset = this!.lastOffset - moveY; // 目标位置 = 初始位置 - 移动距离
+            this.scroller.scrollTo({ xOffset: 0, yOffset: targetOffset });
+          })
+      )
+      .shouldRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
+        for (let i = 0; i < others.length; i++) {
+          let target = others[i].getEventTargetInfo();
+          if (target) {
+            if (target.getId() == "inner" && others[i].isBuiltIn() &&
+              others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
+              this.currentRecognizer = current; // 保存当前组件的识别器
+              this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
+              return others[i]; // 返回将要组成并行手势的识别器
+            }
+          }
+        }
+        return this.tempRecognizer;
+      } as ShouldRecognizerParallelWithCallback)
+      .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+        others: Array<GestureRecognizer>) => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
+        if (current) {
+          let target = current.getEventTargetInfo();
+          if (target) {
+            if (target.getId() == "outer" &&
+              current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+              if (others) {
+                for (let i = 0; i < others.length; i++) {
+                  let target = others[i].getEventTargetInfo() as ScrollableTargetInfo;
+                  if (target instanceof ScrollableTargetInfo && target.getId() == "inner") { // 找到响应链上对应并行的识别器
+                    let panEvent = event as PanGestureEvent;
+                    if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
+                      if (panEvent && panEvent.offsetY < 0) {
+                        this.childRecognizer.setEnabled(false);
+                        this.currentRecognizer.setEnabled(true);
+                      } else {
+                        this.childRecognizer.setEnabled(true);
+                        this.currentRecognizer.setEnabled(false);
+                      }
+                    } else if (target.isBegin()) {
+                      if (panEvent.offsetY > 0) {
+                        this.childRecognizer.setEnabled(false);
+                        this.currentRecognizer.setEnabled(true);
+                      } else {
+                        this.childRecognizer.setEnabled(true);
+                        this.currentRecognizer.setEnabled(false);
+                      }
+                    } else {
+                      this.childRecognizer.setEnabled(true);
+                      this.currentRecognizer.setEnabled(false);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        return GestureJudgeResult.CONTINUE;
+      } as GestureRecognizerJudgeBeginCallback)
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+  }
+}
+```
+![fatherControlChild](figures/fatherControlChild.gif)

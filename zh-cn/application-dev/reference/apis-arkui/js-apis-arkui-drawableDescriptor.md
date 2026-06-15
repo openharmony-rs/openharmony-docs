@@ -8,7 +8,11 @@
 
 本模块提供分层图标合成（包括前景，背景，蒙版），动图播放与控制，基础图像处理的能力。
 
+支持使用@ohos.transfer系统对象转换工具进行动静态类型转换。
+
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -22,35 +26,64 @@ import {
   LayeredDrawableDescriptor,
   AnimatedDrawableDescriptor,
   AnimationOptions,
-  AnimationController
+  AnimationController,
+  PictureDrawableDescriptor,
+  HdrCompositionConfig
 } from '@kit.ArkUI';
 ```
 ## DrawableDescriptorLoadedResult<sup>21+</sup>
 
 传入的图片资源或地址的加载结果。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型    | 只读 | 可选  | 说明              |
 | ---------- | ------ | -----| ----|------------------------ |
-| imageWidth   | number | 否 | 否 | 图片的宽度。<br/>单位：px |
-| imageHeight | number | 否 | 否 | 图片的高度。<br/>单位：px |
+| imageWidth   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 图片的宽度。<br/>单位：px |
+| imageHeight | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 图片的高度。<br/>单位：px |
 
 **示例：**
 
 ```ts
 import { AnimatedDrawableDescriptor, AnimationOptions, DrawableDescriptor, DrawableDescriptorLoadedResult } from '@kit.ArkUI';
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-try {
-    // 可以提前手动加载动图资源到内存中。
-    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
-    console.info(`load result = ${JSON.stringify(result)}`)
-} catch(e) {
-    console.error("load failed")
+@Entry
+@Component
+struct Index {
+  options: AnimationOptions = { duration: 2000, iterations: 1 };
+  // $r('app.media.gif')需要替换为开发者所需的图像资源文件。
+  @State drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), this.options);
+  @State result: string = '';
+
+  aboutToAppear() {
+    // 在页面显示前提前加载资源到内存中，加快Image组件渲染速度。
+    // 使用loadSync同步加载：
+    // let loadResult: DrawableDescriptorLoadedResult = this.drawable.loadSync()
+    // 使用load异步加载：
+    this.drawable.load().then((loadResult: DrawableDescriptorLoadedResult) => {
+      this.result = `width: ${loadResult.imageWidth}, height: ${loadResult.imageHeight}`
+      console.info(`load result = ${JSON.stringify(loadResult)}`)
+    }).catch(() => {
+      console.error("load failed")
+    })
+  }
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(100)
+        .height(100)
+      Text(this.result)
+    }
+  }
 }
 ```
 ## DrawableDescriptor
@@ -59,19 +92,30 @@ try {
 
 ### getPixelMap
 
-getPixelMap(): image.PixelMap
+ArkTS-Dyn: getPixelMap(): image.PixelMap
+
+ArkTS-Sta: getPixelMap(): image.PixelMap | undefined
 
 获取PixelMap实例。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+> **说明：** 
+> DrawableDescriptor对象通过[release](#release)释放后，本接口在ArkTS-Sta模式下返回undefined。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                                       | 说明       |
 | ---------------------------------------- | -------- |
-| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | PixelMap |
+| ArkTS-Dyn: [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) <br/>ArkTS-Sta: [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined | PixelMap |
 
 **示例：**
 
@@ -83,9 +127,16 @@ loadSync(): DrawableDescriptorLoadedResult
 
 发起图片资源的同步加载，并返回加载结果。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+> **说明：** 
+> DrawableDescriptor对象通过[release](#release)释放后，本接口在ArkTS-Sta模式下返回imageWidth和imageHeight均为-1的结果。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -101,19 +152,9 @@ loadSync(): DrawableDescriptorLoadedResult
 | -------- | ------------ |
 | 111001   | resource loading failed. |
 
-```ts
-import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult, AnimationOptions } from '@kit.ArkUI';
+**示例：**
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-try {
-    // 可以提前手动加载动图资源到内存中
-    let result: DrawableDescriptorLoadedResult = drawable.loadSync()
-    console.info(`load result = ${JSON.stringify(result)}`)
-} catch(e) {
-    console.error("load failed")
-}
-```
+示例请参考[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)中的示例代码。
 
 ### load<sup>21+</sup>
 
@@ -121,9 +162,16 @@ load(): Promise\<DrawableDescriptorLoadedResult>
 
 发起图片资源的异步加载，并返回加载结果。使用Promise异步回调。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+> **说明：** 
+> DrawableDescriptor对象通过[release](#release)释放后，本接口在ArkTS-Sta模式下返回imageWidth和imageHeight均为-1的Promise结果。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -139,22 +187,92 @@ load(): Promise\<DrawableDescriptorLoadedResult>
 | -------- | ------------ |
 | 111001   | resource loading failed. |
 
-```ts
-import {
-  AnimatedDrawableDescriptor,
-  DrawableDescriptor,
-  DrawableDescriptorLoadedResult,
-  AnimationOptions
-} from '@kit.ArkUI';
+**示例：**
 
-let options: AnimationOptions = { duration: 2000, iterations: 1 };
-let drawable: DrawableDescriptor = new AnimatedDrawableDescriptor($r('app.media.gif'), options)
-drawable.load().then((result: DrawableDescriptorLoadedResult) => {
-  console.info(`load result = ${JSON.stringify(result)}`)
-}).catch(() => {
-  console.info(`load failed`)
-})
+示例请参考[DrawableDescriptorLoadedResult](#drawabledescriptorloadedresult21)中的示例代码。
+
+### release
+
+release(): void
+
+释放DrawableDescriptor持有的资源。调用release后，该对象将不可用，再调用[getPixelMap](#getpixelmap)、[getForeground](#getforeground)、[getBackground](#getbackground)、[getMask](#getmask)、[loadSync](#loadsync21)、[load](#load21)等接口，ArkTS-Sta返回undefined或默认异常值。重复调用release不会崩溃。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+import { DrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private resManager = this.getUIContext().getHostContext()?.resourceManager;
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  private drawable: DrawableDescriptor | undefined =
+    this.resManager?.getDrawableDescriptor($r('app.media.startIcon').id);
+
+  build() {
+    Column() {
+      Button('release')
+        .onClick(() => {
+          this.drawable?.release()
+        })
+      Button('isReleased')
+        .onClick(() => {
+          let released = this.drawable?.isReleased()
+          console.info(`isReleased = ${released}`)
+        })
+    }
+  }
+}
 ```
+
+### isReleased
+
+isReleased(): boolean
+
+查询DrawableDescriptor是否已被释放。返回true表示已释放，此时调用[getPixelMap](#getpixelmap)、[getForeground](#getforeground)、[getBackground](#getbackground)、[getMask](#getmask)、[loadSync](#loadsync21)、[load](#load21)等接口，ArkTS-Sta返回undefined或默认异常值；返回false表示未释放，对象可正常使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型    | 说明                            |
+| ------- | ------------------------------- |
+| boolean | DrawableDescriptor是否已被释放。true表示已释放，false表示未释放。 |
+
+### invalidate
+
+invalidate(): void
+
+重新绘制DrawableDescriptor。当前仅支持[PictureDrawableDescriptor](#picturedrawabledescriptor)类型，其他DrawableDescriptor子类型触发后无效果。若DrawableDescriptor未绑定任何组件，则不会执行任何操作。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
@@ -166,15 +284,69 @@ constructor(src?: image.PixelMap)
 
 PixelMapDrawableDescriptor的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型              | 必填  | 说明                                       |
 | --------- | ---------------- | ---- | ------------------------------------------ |
 | src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 否 | PixelMap类型参数，存储 PixelMap 图片数据。 |
+
+### constructor
+
+constructor(src?: image.PixelMap | ResourceStr)
+
+PixelMapDrawableDescriptor的构造函数，通过PixelMap类型或者ResourceStr创建。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名     | 类型              | 必填  | 说明                                       |
+| --------- | ---------------- | ---- | ------------------------------------------ |
+| src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\|[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)  | 否 | PixelMap类型参数，存储PixelMap图片数据。支持应用资源、系统资源、沙箱路径（file://\<bundleName\>/\<sandboxPath\>）和Base64字符串用于创建PixelMapDrawableDescriptor。 |
+
+**示例：**
+
+通过ResourceStr创建PixelMapDrawableDescriptor，示例代码如下。
+
+```ts
+// xxx.ets
+import { PixelMapDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PixelMapDrawableDescriptorExample {
+  // 使用Resource创建PixelMapDrawableDescriptor
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  @State drawable: DrawableDescriptor = new PixelMapDrawableDescriptor($r('app.media.icon'))
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(100)
+        .height(100)
+        .margin({ bottom: 20 })
+    }
+  }
+}
+```
 
 ## LayeredDrawableDescriptor
 
@@ -281,9 +453,15 @@ constructor(foreground?: DrawableDescriptor, background?: DrawableDescriptor, ma
 
 LayeredDrawableDescriptor的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -294,19 +472,31 @@ LayeredDrawableDescriptor的构造函数。
 | mask | [DrawableDescriptor](#drawabledescriptor) | 否 | 分层图标的遮罩选项。 |
 
 ### getForeground
-getForeground(): DrawableDescriptor
+
+ArkTS-Dyn: getForeground(): DrawableDescriptor
+
+ArkTS-Sta: getForeground(): DrawableDescriptor | undefined
 
 获取前景的DrawableDescriptor对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+> **说明：**
+> DrawableDescriptor对象通过[release](#release)释放后，本接口在ArkTS-Sta模式下返回undefined。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                                       | 说明                   |
 | ---------------------------------------- | -------------------- |
-| [DrawableDescriptor](#drawabledescriptor) | DrawableDescriptor对象。 |
+| ArkTS-Dyn: [DrawableDescriptor](#drawabledescriptor) <br/>ArkTS-Sta: [DrawableDescriptor](#drawabledescriptor) \| undefined | DrawableDescriptor对象。 |
 
 **示例：**
 ```ts
@@ -353,19 +543,30 @@ struct Index {
 
 ### getBackground
 
-getBackground(): DrawableDescriptor
+ArkTS-Dyn: getBackground(): DrawableDescriptor
+
+ArkTS-Sta: getBackground(): DrawableDescriptor | undefined
 
 获取背景的DrawableDescriptor对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+> **说明：** 
+> DrawableDescriptor对象通过[release](#release)释放后，本接口在ArkTS-Sta模式下返回undefined。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                                       | 说明                   |
 | ---------------------------------------- | -------------------- |
-| [DrawableDescriptor](#drawabledescriptor) | DrawableDescriptor对象。 |
+| ArkTS-Dyn: [DrawableDescriptor](#drawabledescriptor) <br/>ArkTS-Sta: [DrawableDescriptor](#drawabledescriptor) \| undefined | DrawableDescriptor对象。 |
 
 **示例：**
 ```ts
@@ -407,19 +608,30 @@ struct Index {
 
 ### getMask
 
-getMask(): DrawableDescriptor
+ArkTS-Dyn: getMask(): DrawableDescriptor
+
+ArkTS-Sta: getMask(): DrawableDescriptor | undefined
 
 获取蒙版的DrawableDescriptor对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+> **说明：** 
+> DrawableDescriptor对象通过[release](#release)释放后，本接口在ArkTS-Sta模式下返回undefined。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                                       | 说明                   |
 | ---------------------------------------- | -------------------- |
-| [DrawableDescriptor](#drawabledescriptor) | DrawableDescriptor对象。 |
+| ArkTS-Dyn: [DrawableDescriptor](#drawabledescriptor) <br/>ArkTS-Sta: [DrawableDescriptor](#drawabledescriptor) \| undefined | DrawableDescriptor对象。 |
 
 **示例：**
 ```ts
@@ -465,9 +677,15 @@ static getMaskClipPath(): string
 
 LayeredDrawableDescriptor的静态方法，获取系统内置的裁切路径参数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -503,19 +721,27 @@ struct Index {
 
 ### setBlendMode<sup>23+</sup>
 
-setBlendMode(mode: drawing.BlendMode): void
+ArkTS-Dyn: setBlendMode(mode: drawing.BlendMode): void
 
-设置LayeredDrawableDescriptor的混合模式。对同一LayeredDrawableDescriptor对象多次调用setBlendMode接口时，仅在绘制完成前的最后一次调用生效。该接口不支持动态切换。LayeredDrawableDescriptor的默认绘制顺序为背景、蒙版、前景。设置了混合模式后，绘制顺序变为背景、前景、蒙版。若设置的值无效，则按照未设置混合模式进行绘制。
+ArkTS-Sta: setBlendMode(mode: drawing.BlendMode | undefined): void
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+设置LayeredDrawableDescriptor的混合模式。对同一LayeredDrawableDescriptor对象多次调用setBlendMode接口时，仅在绘制完成前的最后一次调用生效。该接口不支持动态切换。LayeredDrawableDescriptor的默认绘制顺序为背景、蒙版、前景。设置了混合模式后，绘制顺序变为背景、前景、蒙版。若设置的值无效，会按照未设置混合模式进行绘制。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型              | 必填  | 说明                                       |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| mode | [drawing.BlendMode](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)  | 是   | 混合模式。 |
+| mode | ArkTS-Dyn: [drawing.BlendMode](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) <br/>ArkTS-Sta: [drawing.BlendMode](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) \| undefined  | 是   | 混合模式。设置undefined，会按照未设置混合模式进行绘制。 |
 
 **示例：**
 
@@ -563,11 +789,15 @@ struct Index {
 
 动图停止模式。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称      | 值  | 说明              |
 | ---------- | ---- |------------------------ |
@@ -578,16 +808,18 @@ struct Index {
 
 动画播放参数。包括播放时延，迭代次数，单帧播放时间，是否自动播放。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 10%; 10%; 10%; 10%; 60%-->
 | 名称      | 类型    | 只读 | 可选  | 说明                                    |
 | :--------- | :----- | :----| :----| :-------------------------------------- |
-| duration   | number | 否   | 是  | 设置图片数组播放总时间。<br/>PixelMap数组的默认值是每张图片播放1秒。本地图片或者应用资源的默认值是图片资源中携带的播放时延。<br/>单位：毫秒<br/> 取值范围：[0, +∞)<br>设置负数取默认值。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| iterations | number | 否   | 是 |设置图片数组播放次数。<br/>值为-1时表示无限播放，值为0时表示不播放，值大于0时表示有限的播放次数。<br/>默认值为1。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| frameDurations<sup>21+</sup> | Array\<number> | 否 | 是 |设置动图中的单帧播放时间。不设置则按照总时间播放。<br/>设置的优先级高于duration，即同时设置了duration和frameDurations时，duration不生效。<br/>当设置的frameDurations长度与图片的数量不一致时，按照总时间播放。<br/>单位：毫秒<br/> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
-| autoPlay<sup>21+</sup> | boolean | 否  | 是 |设置动图是否自动播放。<br/> true表示自动播放，false表示不自动播放。<br/>默认值为true。<br/> **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
-| stopMode<sup>24+</sup> | [AnimationStopMode](#animationstopmode24) | 否  | 是 |设置动图的停止模式。<br/> 默认值：AnimationStopMode.FIRST_FRAME，表示动图停止时回到首帧。<br/> **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| duration   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 是  | 设置图片数组播放总时间。<br/>PixelMap数组的默认值是每张图片播放1秒。本地图片或者应用资源的默认值是图片资源中携带的播放时延。<br/>单位：毫秒<br/> 取值范围：[0, +∞)<br>设置负数取默认值。<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>  **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| iterations | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 是 |设置图片数组播放次数。<br/>值为-1时表示无限播放，值为0时表示不播放，值大于0时表示有限的播放次数。<br/>默认值为1。<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>  **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| frameDurations<sup>21+</sup> | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否 | 是 |设置动图中的单帧播放时间。不设置则按照总时间播放。<br/>设置的优先级高于duration，即同时设置了duration和frameDurations时，duration不生效。<br/>当设置的frameDurations长度与图片的数量不一致时，按照总时间播放。<br/>单位：毫秒<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。 <br/>  **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 23 |
+| autoPlay<sup>21+</sup> | boolean | 否  | 是 |设置动图是否自动播放。<br/> true表示自动播放，false表示不自动播放。<br/>默认值为true。<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。 <br/>  **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 23 |
+| stopMode<sup>24+</sup> | [AnimationStopMode](#animationstopmode24) | 否  | 是 |设置动图的停止模式。<br/> 默认值：AnimationStopMode.FIRST_FRAME，表示动图停止时回到首帧。<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **模型约束：** 此接口仅可在Stage模型下使用。 <br/>  **ArkTS-Dyn起始版本：** 24 <br/> **ArkTS-Sta起始版本：** 24 |
 
 **示例：**
 
@@ -652,9 +884,15 @@ constructor(pixelMaps: Array\<image.PixelMap>, options?: AnimationOptions)
 
 AnimatedDrawableDescriptor的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -669,9 +907,15 @@ constructor(src: ResourceStr | Array\<image.PixelMap>, options?: AnimationOption
 
 AnimatedDrawableDescriptor的构造函数。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -718,9 +962,15 @@ getAnimationController(id?: string): AnimationController | undefined
 
 获取动画控制器。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -820,9 +1070,15 @@ start(): void
 
 从首帧开始播放。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -857,9 +1113,15 @@ stop(): void
 
 停止动图的播放并回到首帧。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -894,9 +1156,15 @@ resume(): void
 
 在当前帧恢复播放动图。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -931,9 +1199,15 @@ pause(): void
 
 暂停动图的播放，保持在当前帧。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -968,9 +1242,15 @@ getStatus(): AnimationStatus
 
 获取当前动图播放的状态。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1017,6 +1297,147 @@ struct Example {
           console.info(`animation status = ${this.statusToString(status)}`)
         })
     }
+  }
+}
+```
+
+## HdrCompositionConfig
+
+HDR合成配置选项。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| rect | [Rectangle](arkui-ts/ts-universal-attributes-touch-target.md#rectangle对象说明) | 否 | 否 | HDR合成的矩形区域。 |
+
+## PictureDrawableDescriptor
+
+支持通过传入Picture对象创建PictureDrawableDescriptor对象。继承自[DrawableDescriptor](#drawabledescriptor)。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### constructor
+
+constructor(src: image.Picture)
+
+PictureDrawableDescriptor的构造函数。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| src | image.[Picture](../apis-image-kit/arkts-apis-image-Picture.md) | 是 | 用于创建PictureDrawableDescriptor的Picture对象。 |
+
+### setHdrComposition
+
+setHdrComposition(config: HdrCompositionConfig): void
+
+设置HDR合成配置。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| config | [HdrCompositionConfig](#hdrcompositionconfig) | 是 | HDR合成配置。 |
+
+**示例：**
+
+```ts
+import { PictureDrawableDescriptor } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+
+
+@Entry
+@Component
+struct PictureDrawableDescriptorInvalidateTest {
+  @State drawable: PictureDrawableDescriptor | undefined = undefined;
+
+  async createPictureDrawableDescriptor() {
+    let resMgr = this.getUIContext().getHostContext()?.resourceManager
+    if (resMgr) {
+      try {
+        // $r('app.media.heic')需要替换为开发者所需的图像资源文件。
+        let uint8buffer = resMgr.getMediaContentSync($r('app.media.heic').id)
+        let imageSource = image.createImageSource(uint8buffer.buffer)
+        // 配置解码选项，请求解码GAINMAP和LHDR_GAINMAP辅助图用于HDR合成。
+        let options: image.DecodingOptionsForPicture = {
+          desiredAuxiliaryPictures: [image.AuxiliaryPictureType.GAINMAP, image.AuxiliaryPictureType.LHDR_GAINMAP],
+          desiredPixelFormat: image.PixelMapFormat.NV12
+        }
+        let picture = await imageSource.createPicture(options)
+        let drawable = new PictureDrawableDescriptor(picture)
+        imageSource.release()
+        this.drawable = drawable
+      } catch (error) {
+        console.error(`get media content failed`)
+      }
+    }
+  }
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(300)
+        .height(225)
+        .borderColor(Color.Red)
+        .borderWidth(1)
+
+      Button("创建PictureDrawableDescriptor对象").onClick((event: ClickEvent) => {
+        this.createPictureDrawableDescriptor()
+      })
+
+      Button("触发一次重建").onClick((event: ClickEvent) => {
+        // 设置HDR合成配置，指定合成矩形区域的位置和大小。
+        this.drawable?.setHdrComposition({
+          rect: {
+            x: 200,
+            y: 200,
+            width: 300,
+            height: 300
+          }
+        })
+        this.drawable?.invalidate()
+      })
+    }
+    .height('100%')
+    .width('100%')
   }
 }
 ```

@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 sensor模块提供了获取传感器数据的能力，包括获取传感器属性列表，订阅传感器数据，以及一些通用的传感器算法。
@@ -722,7 +722,7 @@ function sensorUnsubscribe(): Ret {
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.Sensors.Sensor
 
-**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 19开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 19
 
@@ -730,5 +730,5 @@ function sensorUnsubscribe(): Ret {
 
 | 名称         | 类型     | 只读 | 可选 | 说明                      |
 | ----------- | -------- | ---- | ---- | -------------------------- |
-| deviceId    | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否   | 是   | 设备ID：默认值为-1，表示本地设备，设备ID需通过[getSensorList](js-apis-sensor.md#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](js-apis-sensor.md#sensoronsensorstatuschange19)获取。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。   |
-| sensorIndex   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 是   | 传感器索引：默认值为0，为设备上的默认传感器。其它传感器ID需通过[getSensorList](js-apis-sensor.md#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](js-apis-sensor.md#sensoronsensorstatuschange19)获取。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。 |
+| deviceId    | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否   | 是   | 设备ID：默认值为-1，表示本地设备，设备ID需通过[getSensorList](js-apis-sensor.md#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](js-apis-sensor.md#sensoronsensorstatuschange19)获取。   |
+| sensorIndex   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 是   | 传感器索引：默认值为0，为设备上的默认传感器。其它传感器ID需通过[getSensorList](js-apis-sensor.md#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](js-apis-sensor.md#sensoronsensorstatuschange19)获取。 |

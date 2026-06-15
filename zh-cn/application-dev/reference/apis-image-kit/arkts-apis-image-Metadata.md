@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -10,7 +10,8 @@ Metadata类，用于存储图像的元数据。目前支持的元数据类型可
 
 > **说明：**
 >
-> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用右上角数字上标方式单独标记接口的起始版本。
 > - 本Interface首批接口从API version 13开始支持。
 
 ## 导入模块
@@ -28,6 +29,10 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)和[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)和[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -52,6 +57,7 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -70,10 +76,22 @@ async function GetProperties(context: Context) {
     await metaData.getProperties(["ImageWidth", "ImageLength"]).then((data2) => {
       console.info('Get properties ',JSON.stringify(data2));
     }).catch((error: BusinessError) => {
-      console.error(`Get properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get properties. error.code is ${error.code}, error.message is ${error.message}`);
     });
   } else {
     console.error('Metadata is null.');
+  }
+}
+```
+
+ArkTS-Sta示例:
+```ts
+function GetPropertiesFunc(metadata: image.Metadata): void {
+  try {
+    let properties: Record<string, string | null> = await metadata.getProperties(["ImageWidth", "ImageLength"]);
+    console.info(0x00000, 'GetPropertiesFunc', 'getProperties success!');
+  } catch (err) {
+    console.error(0x00000, 'GetPropertiesFunc', 'GetPropertiesFunc failed: ' + err);
   }
 }
 ```
@@ -87,6 +105,10 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 如要查询属性值信息请参考[PropertyKey](arkts-apis-image-e.md#propertykey7)、[FragmentMapPropertyKey](arkts-apis-image-e.md#fragmentmappropertykey13)和[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)和[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -111,6 +133,7 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -131,7 +154,7 @@ async function SetProperties(context: Context) {
       "ImageLength": "300"
     };
     await metaData.setProperties(setkey).then(async () => {
-      console.info('Set AuxPictureObj properties success.');
+      console.info('Succeeded in setting AuxPictureObj properties.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
     })
@@ -141,9 +164,27 @@ async function SetProperties(context: Context) {
 }
 ```
 
+ArkTS-Sta示例:
+```ts
+function SetPropertiesFunc(metadata: image.Metadata): void {
+  let properties: Record<string, string | null> = {
+    "ImageWidth": "200",
+    "ImageLength": "300"
+  };
+  try {
+    await metadata.setProperties(properties);
+    console.info(0x00000, 'SetPropertiesFunc', 'setProperties success!');
+  } catch (err) {
+    console.error(0x00000, 'SetPropertiesFunc', 'SetPropertiesFunc failed: ' + err);
+  }
+}
+```
+
 ## getAllProperties<sup>13+</sup>
 
-getAllProperties(): Promise\<Record\<string, string \| null>>
+ArkTS-Dyn: getAllProperties(): Promise\<Record\<string, string \| null>>
+
+ArkTS-Sta: getAllProperties(): Promise\<Record<string, string | null> | undefined>
 
 获取图片中所有元数据的属性和值。使用Promise异步回调。
 
@@ -151,14 +192,19 @@ getAllProperties(): Promise\<Record\<string, string \| null>>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                     | 说明                                        |
 | ---------------------------------------- | ------------------------------------------- |
-| Promise\<Record\<string, string \| null>> | Promise对象，返回元数据拥有的所有属性的值。 |
+| ArkTS-Dyn: Promise\<Record\<string, string \| null>> <br>ArkTS-Sta: Promise\<Record<string, string \| null> \| undefined> | Promise对象，返回元数据拥有的所有属性的值。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -179,7 +225,7 @@ async function GetAllProperties(context: Context) {
       console.info('Metadata have ', count, ' properties');
       console.info(`Get metadata all properties: ${data2}`);
     }).catch((error: BusinessError) => {
-      console.error(`Get metadata all properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get metadata all properties. error.code is ${error.code}, error.message is ${error.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -187,22 +233,41 @@ async function GetAllProperties(context: Context) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+function GetAllPropertiesFunc(metadata: image.Metadata): void {
+  try {
+    let properties = await metadata.getAllProperties();
+    console.info(0x00000, 'GetAllPropertiesFunc', 'getAllProperties success!');
+  } catch (err) {
+    console.error(0x00000, 'GetAllPropertiesFunc', 'GetAllPropertiesFunc failed: ' + err);
+  }
+}
+```
+
 ## clone<sup>13+</sup>
 
-clone(): Promise\<Metadata>
+ArkTS-Dyn: clone(): Promise\<Metadata>
+
+ArkTS-Sta: clone(): Promise\<Metadata | undefined>
 
 对元数据进行克隆。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                              | 说明                              |
 | --------------------------------- | --------------------------------- |
-| Promise\<[Metadata](arkts-apis-image-Metadata.md)> | Promise对象，成功返回元数据实例。 |
+| ArkTS-Dyn: Promise\<[Metadata](arkts-apis-image-Metadata.md)>  <br>ArkTS-Sta: Promise\<[Metadata](arkts-apis-image-Metadata.md) \| undefined> | Promise对象，成功返回元数据实例。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -222,10 +287,22 @@ async function Clone(context: Context) {
     new_metadata.getProperties(["ImageWidth"]).then((data1) => {
       console.info(`Clone new_metadata and get Properties: ${data1}`);
     }).catch((err: BusinessError) => {
-      console.error(`Clone new_metadata failed, error : ${err}`);
+      console.error(`Failed to clone new_metadata, error : ${err}`);
     });
   } else {
     console.error('Metadata is null.');
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+function CloneFunc(metadata: image.Metadata): void {
+  try {
+    let newMetadata = await metadata.clone();
+    console.info(0x00000, 'CloneFunc', 'clone success!');
+  } catch (err) {
+    console.error(0x00000, 'CloneFunc', 'CloneFunc failed: ' + err);
   }
 }
 ```
@@ -240,6 +317,10 @@ getBlob(): Promise\<ArrayBuffer>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                  | 说明                                  |
@@ -248,6 +329,7 @@ getBlob(): Promise\<ArrayBuffer>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 
@@ -267,7 +349,42 @@ async function GetBlob(context: Context) {
   if (metaData != null) {
     let blob = await metaData.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeded in getting blob.");
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+function getFileFd(context: common.UIAbilityContext): int | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd = file.fd;
+  return fd;
+}
+
+async function metadataGetBlob(context: common.UIAbilityContext) {
+  let fd = getFileFd(context);
+  if (fd == undefined) {
+    return;
+  }
+  let imageSource = image.createImageSource(fd);
+  if (imageSource == null) {
+    return;
+  }
+  let picture = await imageSource.createPicture();
+  if (picture != undefined) {
+    let metadataType = image.MetadataType.EXIF_METADATA;
+    let metadata = await picture.getMetadata(metadataType);
+    if (metadata != null) {
+      let blob = await metadata.getBlob();
+      if (blob != undefined) {
+        console.info("get blob success");
+      }
     }
   }
 }
@@ -282,6 +399,10 @@ setBlob(blob: ArrayBuffer): Promise\<void>
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -305,6 +426,7 @@ setBlob(blob: ArrayBuffer): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 
@@ -324,12 +446,52 @@ async function setBlob(context: Context) {
   if (metaData != null) {
     let blob = await metaData.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeded in getting blob.");
       metaData.setBlob(blob);
     }
     let new_blob = metaData.getBlob();
     if (new_blob != undefined) {
       console.info("new_blob is not undefined");
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+function getFileFd(context: common.UIAbilityContext): int | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
+  const fd = file.fd;
+  return fd;
+}
+
+async function metadataSetBlob(context: common.UIAbilityContext) {
+  let fd = getFileFd(context);
+  if (fd == undefined) {
+    return;
+  }
+  let imageSource = image.createImageSource(fd);
+  if (imageSource == null) {
+    return;
+  }
+  let picture = await imageSource.createPicture();
+  if (picture != undefined) {
+    let metadataType = image.MetadataType.EXIF_METADATA;
+    let metadata = await picture.getMetadata(metadataType);
+    if (metadata != null) {
+      let blob = await metadata.getBlob();
+      if (blob != undefined) {
+        console.info("get blob success");
+        metadata.setBlob(blob);
+      }
+      let new_blob = metadata.getBlob();
+      if (new_blob != undefined) {
+        console.info("new_blob is not undefined");
+      }
     }
   }
 }

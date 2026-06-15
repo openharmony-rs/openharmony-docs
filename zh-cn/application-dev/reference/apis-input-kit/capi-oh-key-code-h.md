@@ -116,8 +116,8 @@ enum Input_KeyCode
 | KEYCODE_TAB = 2049 | Tab键 |
 | KEYCODE_SPACE = 2050 | 空格键 |
 | KEYCODE_SYM = 2051 | 符号修改器按键 |
-| KEYCODE_EXPLORER = 2052 | 浏览器功能键，此键用于启动浏览器应用程序 |
-| KEYCODE_ENVELOPE = 2053 | 电子邮件功能键，此键用于启动电子邮件应用程序 |
+| KEYCODE_EXPLORER = 2052 | 浏览器功能键，此键用于启动浏览器应用程序。|
+| KEYCODE_ENVELOPE = 2053 | 电子邮件功能键，此键用于启动电子邮件应用程序。|
 | KEYCODE_ENTER = 2054 | 回车键 |
 | KEYCODE_DEL = 2055 | 退格键 |
 | KEYCODE_GRAVE = 2056 | 按键'`' |
@@ -227,7 +227,7 @@ enum Input_KeyCode
 | KEYCODE_FIND = 2623 | 查找键<br/>**起始版本：** 22 |
 | KEYCODE_CUT = 2624 | 剪切键<br/>**起始版本：** 22 |
 | KEYCODE_HELP = 2625 | 帮助键<br/>**起始版本：** 22 |
-| KEYCODE_CALC = 2626 | 计算器特殊功能键，用于启动计算器应用程序<br/>**起始版本：** 22 |
+| KEYCODE_CALC = 2626 | 计算器特殊功能键，用于启动计算器应用程序。<br/>**起始版本：** 22 |
 | KEYCODE_FILE = 2627 | 文件按键<br/>**起始版本：** 22 |
 | KEYCODE_BOOKMARKS = 2628 | 书签键<br/>**起始版本：** 22 |
 | KEYCODE_NEXT = 2629 | Page Down键<br/>**起始版本：** 22 |
@@ -326,15 +326,15 @@ enum Input_KeyCode
 | KEYCODE_KBD_LAYOUT_NEXT = 2723 | 下一个键盘布局键<br/>**起始版本：** 22 |
 | KEYCODE_BRIGHTNESS_MIN = 2724 | 最小亮度键<br/>**起始版本：** 22 |
 | KEYCODE_BRIGHTNESS_MAX = 2725 | 最大亮度键<br/>**起始版本：** 22 |
-| KEYCODE_KBDINPUTASSIST_PREV = 2726 | 键盘输入Assist_Previous，查看输入法输入记录<br/>**起始版本：** 22 |
-| KEYCODE_KBDINPUTASSIST_NEXT = 2727 | 键盘输入Assist_Next，查看输入法输入拓展<br/>**起始版本：** 22 |
-| KEYCODE_KBDINPUTASSIST_PREVGROUP = 2728 | 键盘输入Assist_Previous，切换输入组中上一个输入法<br/>**起始版本：** 22 |
-| KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729 | 键盘输入Assist_Next，切换输入组中下一个输入法<br/>**起始版本：** 22 |
+| KEYCODE_KBDINPUTASSIST_PREV = 2726 | 键盘输入Assist_Previous，查看输入法输入记录。<br/>**起始版本：** 22 |
+| KEYCODE_KBDINPUTASSIST_NEXT = 2727 | 键盘输入Assist_Next，查看输入法输入拓展。<br/>**起始版本：** 22 |
+| KEYCODE_KBDINPUTASSIST_PREVGROUP = 2728 | 键盘输入Assist_Previous，切换输入组中上一个输入法。<br/>**起始版本：** 22 |
+| KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729 | 键盘输入Assist_Next，切换输入组中下一个输入法。<br/>**起始版本：** 22 |
 | KEYCODE_KBDINPUTASSIST_ACCEPT = 2730 | 键盘输入Assist_Accept<br/>**起始版本：** 22 |
 | KEYCODE_KBDINPUTASSIST_CANCEL = 2731 | 键盘输入Assist_Cancel<br/>**起始版本：** 22 |
-| KEYCODE_MOUSE_ASSISTANT = 2732 | 鼠标AI助手键<br/>**起始版本：** 24 |
-| KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733 | 鼠标智慧框选键<br/>**起始版本：** 24 |
-| KEYCODE_AOD_SINGLE_CLICK = 2740 | 手机触摸屏单击事件，在熄屏显示状态下使用<br/>**起始版本：** 26.0.0 |
+| KEYCODE_MOUSE_ASSISTANT = 2732 | 鼠标AI助手键<br/>**起始版本：** 26.0.0 |
+| KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733 | 鼠标智慧框选键<br/>**起始版本：** 26.0.0 |
+| KEYCODE_AOD_SINGLE_CLICK = 2740 | 手机触摸屏单击事件，在熄屏显示状态下使用。<br/>**起始版本：** 26.0.0 |
 | KEYCODE_FRONT = 2800 | 挡风玻璃除雾器开关<br/>**起始版本：** 22 |
 | KEYCODE_SETUP = 2801 | 设置键<br/>**起始版本：** 22 |
 | KEYCODE_WAKEUP = 2802 | 唤醒键<br/>**起始版本：** 22 |
@@ -374,7 +374,7 @@ enum Input_KeyCode
 | KEYCODE_SPORT = 2837 | 运动按键<br/>**起始版本：** 22 |
 | KEYCODE_SHOP = 2838 | 商城键<br/>**起始版本：** 22 |
 | KEYCODE_ALTERASE = 2839 | 交替键<br/>**起始版本：** 22 |
-| KEYCODE_SWITCHVIDEOMODE = 2841 | 在可用视频之间循环输出（监视器/LCD/TV输出/等）<br/>**起始版本：** 22 |
+| KEYCODE_SWITCHVIDEOMODE = 2841 | 在可用视频之间循环输出（监视器/LCD/TV输出/等）。<br/>**起始版本：** 22 |
 | KEYCODE_BATTERY = 2842 | 电池按键<br/>**起始版本：** 22 |
 | KEYCODE_BLUETOOTH = 2843 | 蓝牙按键<br/>**起始版本：** 22 |
 | KEYCODE_WLAN = 2844 | 无线局域网<br/>**起始版本：** 22 |
@@ -397,3 +397,5 @@ enum Input_KeyCode
 | KEYCODE_DAGGER_LONG_PRESS = 3213 | 智能手表智感窗按键长按<br/>**起始版本：** 22 |
 | KEYCODE_DIV = 3220 | 智能手表左按键<br/>**起始版本：** 22 |
 | KEYCODE_XKEY = 3232 | 自定义快捷键<br/>**起始版本：** 26.0.0 |
+| KEYCODE_FINGERPRINT_SLIDE_UP = 3233 | 智控键上滑<br/>**起始版本：** 26.0.0 |
+| KEYCODE_FINGERPRINT_SLIDE_DOWN = 3234 | 智控键下滑<br/>**起始版本：** 26.0.0 |

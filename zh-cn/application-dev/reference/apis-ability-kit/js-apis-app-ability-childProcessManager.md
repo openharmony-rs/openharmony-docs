@@ -3,14 +3,16 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 childProcessManager模块提供子进程管理能力，支持子进程创建和启动操作。
 
 创建的子进程会随着父进程的退出而退出，无法脱离父进程独立运行。
 
 > **说明：**
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -37,6 +39,10 @@ import { childProcessManager } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                       | 值                             | 说明                              |
 | --------                     |  -----------------               |  -----------------               |
 | SELF_FORK |  0   | 从App自身进程Fork子进程。以该模式启动的子进程会继承父进程资源，不能使用Binder IPC和其他进程通信，否则会导致子进程崩溃退出。 |
@@ -44,7 +50,9 @@ import { childProcessManager } from '@kit.AbilityKit';
 
 ## childProcessManager.startChildProcess
 
-startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt;number&gt;
+ArkTS-Dyn: startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt;number&gt;
+
+ArkTS-Sta: startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt;int&gt;
 
 启动[ArkTS子进程](../../application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。
 
@@ -65,16 +73,16 @@ startChildProcess(srcEntry: string, startMode: StartMode): Promise&lt;number&gt;
 
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | srcEntry | string | 是 | 子进程源文件路径，只支持源文件放在entry类型的模块中。传入带`.ets`后缀的srcEntry表示动态子进程源文件路径，传入不带`.ets`后缀的srcEntry表示静态子进程源文件路径。<br/>- 拉起ArkTS-Dyn类型子进程时，以src/main为根目录。例如子进程文件在entry模块下src/main/ets/process/DemoProcess.ets，则srcEntry为"./ets/process/DemoProcess.ets"。<br/>- 拉起ArkTS-Sta类型子进程时，srcEntry需要传入子进程文件相对于工程根目录的路径，且不带文件后缀。例如子进程文件相对于工程根目录的路径为`Project/entry/src/main/ets/process/StaticDemoProcess.ets`，则srcEntry为`entry/src/main/ets/process/StaticDemoProcess`。如果该子进程文件中继承ChildProcess基类的类名与文件名不一致，需要在末尾追加`:className`，例如`entry/src/main/ets/process/StaticDemoProcess:className`。<br/>另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉。（详见下方示例代码） |
-  | startMode | [StartMode](#startmode) | 是 | 子进程启动模式。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| srcEntry | string | 是 | 子进程源文件路径，只支持源文件放在entry类型的模块中。传入带`.ets`后缀的srcEntry表示动态子进程源文件路径，传入不带`.ets`后缀的srcEntry表示静态子进程源文件路径。<br/>- 拉起ArkTS-Dyn类型子进程时，以src/main为根目录。例如子进程文件在entry模块下src/main/ets/process/DemoProcess.ets，则srcEntry为"./ets/process/DemoProcess.ets"。<br/>- 拉起ArkTS-Sta类型子进程时，srcEntry需要传入子进程文件相对于工程根目录的路径，且不带文件后缀。例如子进程文件相对于工程根目录的路径为`Project/entry/src/main/ets/process/StaticDemoProcess.ets`，则srcEntry为`entry/src/main/ets/process/StaticDemoProcess`。如果该子进程文件中继承ChildProcess基类的类名与文件名不一致，需要在末尾追加`:className`，例如`entry/src/main/ets/process/StaticDemoProcess:className`。<br/>另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉。（详见下方示例代码） |
+| startMode | [StartMode](#startmode) | 是 | 子进程启动模式。 |
 
 **返回值：**
 
-  | 类型 | 说明 |
-  | -------- | -------- |
-  | Promise&lt;number&gt; | Promise对象，返回子进程pid。 |
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回子进程pid。 |
 
 **错误码**：
 
@@ -105,6 +113,7 @@ export default class DemoProcess extends ChildProcess {
 ```
 ArkTS-Sta示例：
 ```ts
+'use static'
 // 在entry模块的src/main/ets/process下创建StaticDemoProcess.ets子进程类:
 // entry/src/main/ets/process/StaticDemoProcess.ets
 import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
@@ -178,6 +187,7 @@ struct Index {
 ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
+'use static'
 // 使用childProcessManager.startChildProcess方法启动子进程:
 // entry/src/main/ets/pages/Index.ets
 import { Entry, Text, Column, Component, Button } from '@ohos.arkui.component';
@@ -230,7 +240,9 @@ struct Index {
 
 ## childProcessManager.startChildProcess
 
-startChildProcess(srcEntry: string, startMode: StartMode, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: startChildProcess(srcEntry: string, startMode: StartMode, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: startChildProcess(srcEntry: string, startMode: StartMode, callback: AsyncCallback&lt;int&gt;): void
 
 启动[ArkTS子进程](../../application-models/ability-terminology.md#arkts子进程)。使用callback异步回调。
 
@@ -250,11 +262,11 @@ startChildProcess(srcEntry: string, startMode: StartMode, callback: AsyncCallbac
 
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | srcEntry | string | 是 | 子进程源文件路径，只支持源文件放在entry类型的模块中。传入带`.ets`后缀的srcEntry表示动态子进程源文件路径，传入不带`.ets`后缀的srcEntry表示静态子进程源文件路径。<br/>- 拉起ArkTS-Dyn类型子进程时，以src/main为根目录。例如子进程文件在entry模块下src/main/ets/process/DemoProcess.ets，则srcEntry为"./ets/process/DemoProcess.ets"。<br/>- 拉起ArkTS-Sta类型子进程时，srcEntry需要传入子进程文件相对于工程根目录的路径，且不带文件后缀。例如子进程文件相对于工程根目录的路径为`Project/entry/src/main/ets/process/StaticDemoProcess.ets`，则srcEntry为`entry/src/main/ets/process/StaticDemoProcess`。如果该子进程文件中继承ChildProcess基类的类名与文件名不一致，需要在末尾追加`:className`，例如`entry/src/main/ets/process/StaticDemoProcess:className`。<br/>另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉。（详见下方示例代码） |
-  | startMode | [StartMode](#startmode) | 是 | 子进程启动模式。 |
-  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当子进程启动成功，err为undefined，data为获取到的子进程pid；否则为错误对象。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| srcEntry | string | 是 | 子进程源文件路径，只支持源文件放在entry类型的模块中。传入带`.ets`后缀的srcEntry表示动态子进程源文件路径，传入不带`.ets`后缀的srcEntry表示静态子进程源文件路径。<br/>- 拉起ArkTS-Dyn类型子进程时，以src/main为根目录。例如子进程文件在entry模块下src/main/ets/process/DemoProcess.ets，则srcEntry为"./ets/process/DemoProcess.ets"。<br/>- 拉起ArkTS-Sta类型子进程时，srcEntry需要传入子进程文件相对于工程根目录的路径，且不带文件后缀。例如子进程文件相对于工程根目录的路径为`Project/entry/src/main/ets/process/StaticDemoProcess.ets`，则srcEntry为`entry/src/main/ets/process/StaticDemoProcess`。如果该子进程文件中继承ChildProcess基类的类名与文件名不一致，需要在末尾追加`:className`，例如`entry/src/main/ets/process/StaticDemoProcess:className`。<br/>另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉。（详见下方示例代码） |
+| startMode | [StartMode](#startmode) | 是 | 子进程启动模式。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是 | 回调函数。当子进程启动成功，err为undefined，data为获取到的子进程pid；否则为错误对象。 |
 
 **错误码**：
 
@@ -285,6 +297,7 @@ export default class DemoProcess extends ChildProcess {
 ```
 ArkTS-Sta示例：
 ```ts
+'use static'
 // 在entry模块的src/main/ets/process下创建StaticDemoProcess.ets子进程类:
 // entry/src/main/ets/process/StaticDemoProcess.ets
 import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
@@ -358,6 +371,7 @@ struct Index {
 ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
+'use static'
 // 使用childProcessManager.startChildProcess方法启动子进程:
 // entry/src/main/ets/pages/Index.ets
 import { Entry, Text, Column, Component, Button} from '@ohos.arkui.component';
@@ -410,7 +424,9 @@ struct Index {
 
 ## childProcessManager.startArkChildProcess<sup>12+</sup>
 
-startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise&lt;number&gt;
+ArkTS-Dyn: startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise&lt;number&gt;
+
+ArkTS-Sta: startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise&lt;int&gt;
 
 启动[ArkTS子进程](../../application-models/ability-terminology.md#arkts子进程)。使用Promise异步回调。
 
@@ -422,23 +438,23 @@ startArkChildProcess(srcEntry: string, args: ChildProcessArgs, options?: ChildPr
 
 **设备行为差异**：该接口在Tablet、PC/2in1中可正常调用，在其他设备类型中返回801错误码。
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | srcEntry | string | 是 | 子进程源文件路径，不支持源文件放在HAR类型的模块中。传入带`.ets`后缀的srcEntry表示动态子进程源文件路径，传入不带`.ets`后缀的srcEntry表示静态子进程源文件路径。<br/>- 拉起ArkTS-Dyn类型子进程时，由“模块名” + “/” + “文件路径”组成，文件路径以src/main为根目录。例如子进程文件在module1模块下src/main/ets/process/DemoProcess.ets，则srcEntry为"module1/ets/process/DemoProcess.ets"。<br/>- 拉起ArkTS-Sta类型子进程时，srcEntry需要传入子进程文件相对于工程根目录的路径，且不带文件后缀。默认情况下，子进程所在模块的文件夹名称与模块名保持一致。如存在不一致的情况，以实际文件夹名称为准。例如子进程文件相对于工程根目录的路径为`Project/module1/src/main/ets/process/StaticDemoProcess.ets`，则srcEntry为`module1/src/main/ets/process/StaticDemoProcess`。如果该子进程文件中继承ChildProcess基类的类名与文件名不一致，需要在末尾追加`:className`，例如`module1/src/main/ets/process/StaticDemoProcess:className`。<br/>另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉。（详见下方示例代码） |
-  | args | [ChildProcessArgs](js-apis-app-ability-childProcessArgs.md) | 是 | 传递到子进程的参数。 |
-  | options | [ChildProcessOptions](js-apis-app-ability-childProcessOptions.md) | 否 | 子进程的启动配置选项。|
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| srcEntry | string | 是 | 子进程源文件路径，不支持源文件放在HAR类型的模块中。传入带`.ets`后缀的srcEntry表示动态子进程源文件路径，传入不带`.ets`后缀的srcEntry表示静态子进程源文件路径。<br/>- 拉起ArkTS-Dyn类型子进程时，由“模块名” + “/” + “文件路径”组成，文件路径以src/main为根目录。例如子进程文件在module1模块下src/main/ets/process/DemoProcess.ets，则srcEntry为"module1/ets/process/DemoProcess.ets"。<br/>- 拉起ArkTS-Sta类型子进程时，srcEntry需要传入子进程文件相对于工程根目录的路径，且不带文件后缀。默认情况下，子进程所在模块的文件夹名称与模块名保持一致。如存在不一致的情况，以实际文件夹名称为准。例如子进程文件相对于工程根目录的路径为`Project/module1/src/main/ets/process/StaticDemoProcess.ets`，则srcEntry为`module1/src/main/ets/process/StaticDemoProcess`。如果该子进程文件中继承ChildProcess基类的类名与文件名不一致，需要在末尾追加`:className`，例如`module1/src/main/ets/process/StaticDemoProcess:className`。<br/>另外，需要确保子进程源文件被其它文件引用到，防止被构建工具优化掉。（详见下方示例代码） |
+| args | [ChildProcessArgs](js-apis-app-ability-childProcessArgs.md) | 是 | 传递到子进程的参数。 |
+| options | [ChildProcessOptions](js-apis-app-ability-childProcessOptions.md) | 否 | 子进程的启动配置选项。|
 
 **返回值：**
 
-  | 类型 | 说明 |
-  | -------- | -------- |
-  | Promise&lt;number&gt; | Promise对象，返回子进程pid。 |
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回子进程pid。 |
 
 **错误码**：
 
@@ -472,6 +488,7 @@ export default class DemoProcess extends ChildProcess {
 ```
 ArkTS-Sta示例：
 ```ts
+'use static'
 // 在module1模块的src/main/ets/process下创建StaticDemoProcess.ets子进程类:
 // module1/src/main/ets/process/StaticDemoProcess.ets
 import { ChildProcess, ChildProcessArgs } from '@kit.AbilityKit';
@@ -568,6 +585,7 @@ struct Index {
 ArkTS-Sta示例：
 <!--code_no_check-->
 ```ts
+'use static'
 // 使用childProcessManager.startArkChildProcess方法启动子进程:
 // module1/src/main/ets/pages/Index.ets
 import { Entry, Text, Column, Component, Button } from '@ohos.arkui.component';
@@ -629,7 +647,9 @@ struct Index {
 
 ## childProcessManager.startNativeChildProcess<sup>13+</sup>
 
-startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise&lt;number&gt;
+ArkTS-Dyn: startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise&lt;number&gt;
+
+ArkTS-Sta: startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: ChildProcessOptions): Promise&lt;int&gt;
 
 启动[Native子进程](../../application-models/ability-terminology.md#native子进程)。使用Promise异步回调。
 
@@ -641,19 +661,23 @@ startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, options?: Ch
 
 **设备行为差异**：该接口在Tablet、PC/2in1中可正常调用，在其他设备类型中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | entryPoint | string | 是 | 子进程中调用动态库的符号和入口函数，中间用“:”隔开（例如“libentry.so:Main”)。 |
-  | args | [ChildProcessArgs](js-apis-app-ability-childProcessArgs.md) | 是 | 传递到子进程的参数。 |
-  | options | [ChildProcessOptions](js-apis-app-ability-childProcessOptions.md) | 否 | 子进程的启动配置选项。|
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| entryPoint | string | 是 | 子进程中调用动态库的符号和入口函数，中间用“:”隔开（例如“libentry.so:Main”)。 |
+| args | [ChildProcessArgs](js-apis-app-ability-childProcessArgs.md) | 是 | 传递到子进程的参数。 |
+| options | [ChildProcessOptions](js-apis-app-ability-childProcessOptions.md) | 否 | 子进程的启动配置选项。|
 
 **返回值：**
 
-  | 类型 | 说明 |
-  | -------- | -------- |
-  | Promise&lt;number&gt; | Promise对象，返回子进程pid。 |
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回子进程pid。 |
 
 **错误码**：
 
@@ -738,6 +762,173 @@ struct Index {
                 })
             } catch (err) {
               console.error(`startChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+            }
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+## childProcessManager.isArkChildProcessSupported
+
+isArkChildProcessSupported(): boolean
+
+查询是否允许调用者在此设备上创建[ArkTS子进程](../../application-models/ability-terminology.md#arkts子进程)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**返回值：**
+
+| 类型    | 说明                                          |
+| :------ | --------------------------------------------- |
+| boolean | 是否允许调用者创建ArkTS子进程。<br>true：允许创建ArkTS子进程。<br>false：不允许创建ArkTS子进程。<br>默认值：false。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { childProcessManager } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('Click')
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            try {
+              let isSupport: boolean = childProcessManager.isArkChildProcessSupported();
+              console.info(`isArkChildProcessSupported: ${isSupport}`);
+            } catch (err) {
+              console.error(`isArkChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
+            }
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { childProcessManager } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  build(): void {
+    Row() {
+      Column() {
+        Text('Click')
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .onClick((): void => {
+            try {
+              const isSupport: boolean = childProcessManager.isArkChildProcessSupported();
+              console.info(`isArkChildProcessSupported: ${isSupport}`);
+            } catch (err) {
+              console.error(`isArkChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
+            }
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+## childProcessManager.isNativeChildProcessSupported
+
+isNativeChildProcessSupported(): boolean
+
+查询是否允许调用者在此设备上创建[Native子进程](../../application-models/ability-terminology.md#native子进程)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**返回值：**
+
+| 类型    | 说明                                          |
+| :------ | --------------------------------------------- |
+| boolean | 是否允许调用者创建Native子进程。<br>true：允许创建Native子进程。<br>false：不允许创建Native子进程。<br>默认值：false。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { childProcessManager } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('Click')
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            try {
+              let isSupport: boolean = childProcessManager.isNativeChildProcessSupported();
+              console.info(`isNativeChildProcessSupported: ${isSupport}`);
+            } catch (err) {
+              console.error(`isNativeChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
+            }
+          });
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { childProcessManager } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  build(): void {
+    Row() {
+      Column() {
+        Text('Click')
+          .fontSize(30)
+          .fontWeight(FontWeight.Bold)
+          .onClick((): void => {
+            try {
+              const isSupport: boolean = childProcessManager.isNativeChildProcessSupported();
+              console.info(`isNativeChildProcessSupported: ${isSupport}`);
+            } catch (err) {
+              console.error(`isNativeChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
             }
           });
       }

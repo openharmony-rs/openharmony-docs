@@ -1,8 +1,8 @@
 # 发布公共事件
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -16,7 +16,7 @@
 
 ## 接口说明
 
-详细接口见[接口文档](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagerpublish)。
+详细接口见接口文档[publish()](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagerpublish)。
 
 | 接口名                                                       | 接口描述                     |
 | ------------------------------------------------------------ | ---------------------------- |
@@ -30,6 +30,7 @@
 
 1. 导入模块。
    
+   ArkTS-Dyn示例：
    <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) --> 
    
    ``` TypeScript
@@ -40,8 +41,20 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = 'ProcessModel';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   ```
+
 2. 传入需要发布的事件名称和回调函数，发布事件。
    
+   ArkTS-Dyn示例：
    <!-- @[PublicEventNoInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
@@ -57,13 +70,29 @@
    });
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[PublicEventNoInformation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
+   // 发布公共事件，其中的event字段需要替换为实际的事件名称。
+   commonEventManager.publish('event', (err: BusinessError | null) => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Publish failed, code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
+     } else {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, `Publish success`);
+     }
+   });
+   ```
 
 ## 发布携带信息的公共事件
 
 携带信息的公共事件，可以发布为无序公共事件、有序公共事件和粘性事件，可以通过参数[CommonEventPublishData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md)的isOrdered、isSticky的字段进行设置。
 
 1. 导入模块。
-   
+
+   ArkTS-Dyn示例：
    <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
@@ -72,6 +101,17 @@
    
    const TAG: string = 'ProcessModel';
    const DOMAIN_NUMBER: number = 0xFF00;
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = 'ProcessModel';
+   const DOMAIN_NUMBER: int = 0xFF00;
    ```
 
 2. 构建需要发布的公共事件信息。
@@ -87,12 +127,29 @@
    ```
 
 3. 传入需要发布的事件名称、需要发布的指定信息和回调函数，发布事件。
-   
+
+   ArkTS-Dyn示例：
    <!-- @[PublicEventCarryingInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    // 发布公共事件，其中的event字段需要替换为实际的事件名称。
    commonEventManager.publish('event', options, (err: BusinessError) => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
+     } else {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in publishing common event.`);
+     }
+   });
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[PublicEventCarryingInformation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
+   // 发布公共事件，其中的event字段需要替换为实际的事件名称。
+   commonEventManager.publish('event', options, (err: BusinessError | null) => {
      if (err) {
        hilog.error(DOMAIN_NUMBER, TAG,
          `Failed to publish common event. Code is ${err.code}, message is ${err.message}`);

@@ -1,7 +1,7 @@
 # drawing_text_typography.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -164,7 +164,7 @@
 | [OH_Drawing_LineMetrics* OH_Drawing_TypographyGetLineMetrics(OH_Drawing_Typography* typography)](#oh_drawing_typographygetlinemetrics) | 获取排版对象的行位置信息，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用之后调用。不再需要[OH_Drawing_LineMetrics](capi-drawing-oh-drawing-linemetrics.md)时，请使用[OH_Drawing_DestroyLineMetrics](capi-drawing-text-typography-h.md#oh_drawing_destroylinemetrics)接口释放该对象的指针。 |
 | [size_t OH_Drawing_LineMetricsGetSize(OH_Drawing_LineMetrics* lineMetrics)](#oh_drawing_linemetricsgetsize) | 获取行数量。 |
 | [void OH_Drawing_DestroyLineMetrics(OH_Drawing_LineMetrics* lineMetrics)](#oh_drawing_destroylinemetrics) | 释放行位置信息对象占用的内存。 |
-| [bool OH_Drawing_TypographyGetLineMetricsAt(OH_Drawing_Typography* typography,int lineNumber, OH_Drawing_LineMetrics* lineMetric)](#oh_drawing_typographygetlinemetricsat) | 获取排版对象的指定行位置信息，具体参见[OH_Drawing_LineMetr](capi-drawing-oh-drawing-linemetrics.md)结构体，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用之后调用。 |
+| [bool OH_Drawing_TypographyGetLineMetricsAt(OH_Drawing_Typography* typography,int lineNumber, OH_Drawing_LineMetrics* lineMetric)](#oh_drawing_typographygetlinemetricsat) | 获取排版对象的指定行位置信息，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用之后调用。 |
 | [bool OH_Drawing_TypographyGetLineInfo(OH_Drawing_Typography* typography, int lineNumber, bool oneLine,bool includeWhitespace, OH_Drawing_LineMetrics* drawingLineMetrics)](#oh_drawing_typographygetlineinfo) | 获取排版对象中指定行的位置信息或指定行第一个字符的位置信息，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用之后调用。 |
 | [void OH_Drawing_SetTypographyTextFontWeight(OH_Drawing_TypographyStyle* style, int weight)](#oh_drawing_settypographytextfontweight) | 设置排版样式默认字重。目前只有系统默认字体支持字重的调节，其他字体设置字重值小于semi-bold时字体粗细无变化，当设置字重值大于等于semi-bold时可能会触发伪加粗效果。 |
 | [void OH_Drawing_SetTypographyTextFontStyle(OH_Drawing_TypographyStyle* style, int fontStyle)](#oh_drawing_settypographytextfontstyle) | 设置排版样式默认的字体样式。 |
@@ -288,6 +288,8 @@
 | [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, int* value)](#oh_drawing_gettypographystyleattributeint) | 获取int类型排版样式的属性。 |
 | [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool value)](#oh_drawing_settypographystyleattributebool) | 设置bool类型排版样式的属性。 |
 | [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool* value)](#oh_drawing_gettypographystyleattributebool) | 获取bool类型排版样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDoubleArray(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double* arrayValue, size_t arrayLength)](#oh_drawing_settypographystyleattributedoublearray) | 设置浮点数数组类型排版样式的属性。 |
+| [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDoubleArray(const OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double** arrayValue, size_t* arrayLength)](#oh_drawing_gettypographystyleattributedoublearray) | 获取浮点数数组类型排版样式的属性。 |
 | [void OH_Drawing_DestroyPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)](#oh_drawing_destroypositionandaffinity) | 释放[OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md)对象持有的内存。 |
 | [OH_Drawing_Range* OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer(OH_Drawing_Typography* typography, size_t glyphRangeStart, size_t glyphRangeEnd, OH_Drawing_Range** actualGlyphRange, OH_Drawing_TextEncoding textEncodingType)](#oh_drawing_typographygetcharacterrangeforglyphrangewithbuffer) | 获取指定字形范围对应的字符范围。 |
 | [OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer(OH_Drawing_Typography* typography, double dx, double dy, OH_Drawing_TextEncoding textEncodingType)](#oh_drawing_typographygetcharacterpositionatcoordinatewithbuffer) | 获取与指定坐标最接近的字符位置信息。 |
@@ -737,6 +739,9 @@ enum OH_Drawing_TypographyStyleAttributeId
 | TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6 | 设置文本排版时是否使能字体内部的padding。<br>**起始版本：** 23 |
 | TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7 | 设置文本排版时是否使能行间距回退机制。<br>**起始版本：** 23 |
 | TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL = 8 | 省略号样式。具体省略号样式可见[OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal)。<br>**起始版本：** 24 |
+| TYPOGRAPHY_STYLE_ATTR_DA_LINE_HEAD_INDENT = 9 | 行首缩进数组。<br>缩进数组值需全部大于等于0，数组中每个元素代表一行缩进值，当实际文本行数超过缩进数组个数时，超过行的缩进为数组最后一个值。<br>**起始版本：** 26.0.0 |
+| TYPOGRAPHY_STYLE_ATTR_D_FIRST_LINE_HEAD_INDENT = 10 | 段落首行缩进。缩进值需大于等于0。<br>**起始版本：** 26.0.0 |
+| TYPOGRAPHY_STYLE_ATTR_DA_LINE_TAIL_INDENT = 11 | 行尾缩进数组。<br>缩进数组值需全部大于等于0，数组中每个元素代表一行缩进值，当实际文本行数超过缩进数组个数时，超过行的缩进为数组最后一个值。<br>**起始版本：** 26.0.0 |
 
 ## 函数说明
 
@@ -3034,7 +3039,7 @@ bool OH_Drawing_TypographyGetLineMetricsAt(OH_Drawing_Typography* typography,int
 
 **描述**
 
-获取排版对象的指定行位置信息，具体参见[OH_Drawing_LineMetr](capi-drawing-oh-drawing-linemetrics.md)结构体，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用之后调用。
+获取排版对象的指定行位置信息，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用之后调用。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -3047,7 +3052,7 @@ bool OH_Drawing_TypographyGetLineMetricsAt(OH_Drawing_Typography* typography,int
 | -- | -- |
 | [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | 指向文本对象[OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)的指针，由[OH_Drawing_CreateTypography](capi-drawing-text-typography-h.md#oh_drawing_createtypography)获取。 |
 | int lineNumber | 要获取的行数。 |
-| [OH_Drawing_LineMetrics](capi-drawing-oh-drawing-linemetrics.md)* lineMetric | 指向行位置信息对象[OH_Drawing_LineMetrics](capi-drawing-oh-drawing-linemetrics.md)的指针，由[OH_Drawing_LineMetrics](capi-drawing-oh-drawing-linemetrics.md)获取。 |
+| [OH_Drawing_LineMetrics](capi-drawing-oh-drawing-linemetrics.md)* lineMetric | 指向行位置信息对象[OH_Drawing_LineMetrics](capi-drawing-oh-drawing-linemetrics.md)的指针，作为出参使用。 |
 
 **返回：**
 
@@ -6113,6 +6118,64 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeBool(OH_Drawing_Typog
 | 类型 | 说明 |
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数style或者value为空指针。<br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+
+### OH_Drawing_SetTypographyStyleAttributeDoubleArray()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDoubleArray(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double* arrayValue, size_t arrayLength)
+```
+
+**描述**
+
+设置浮点数数组类型排版样式的属性。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | 排版样式属性id。 |
+| double* arrayValue | 指向浮点数数组的指针。 |
+| size_t arrayLength | 指向浮点数数组的长度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数style或者arrayValue为空指针或arrayLength为0。<br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
+
+### OH_Drawing_GetTypographyStyleAttributeDoubleArray()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDoubleArray(const OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double** arrayValue, size_t* arrayLength)
+```
+
+**描述**
+
+获取浮点数数组类型排版样式的属性。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向排版样式对象[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针。 |
+| [OH_Drawing_TypographyStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid) id | 排版样式属性id。 |
+| double** arrayValue | 指向浮点数数组的指针。作为出参使用。 |
+| size_t* arrayLength | 指向浮点数数组的长度。作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示参数style或者arrayValue为空指针或arrayLength为0。<br>返回OH_DRAWING_ERROR_ATTRIBUTE_ID_MISMATCH，表示传入属性id与调用函数不匹配。 |
 
 ### OH_Drawing_DestroyPositionAndAffinity()
 

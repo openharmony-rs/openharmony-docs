@@ -10,8 +10,9 @@
 程序访问控制提供应用程序的权限校验和管理能力。
 
 > **说明：**
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 ## 导入模块
 
 ```ts
@@ -24,10 +25,13 @@ createAtManager(): AtManager
 
 访问控制管理：创建程序访问控制管理的实例对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
-
 
 **返回值：**
 
@@ -45,15 +49,19 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 
 管理访问控制模块的实例。
 
-AtManager接口调用依赖于tokenID，应用可通过[bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取tokenID。<!--Del-->对于系统应用，还可以通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)获取。<!--DelEnd-->
-
 ### checkAccessToken<sup>9+</sup>
 
-checkAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;GrantStatus&gt;
+ArkTS-Dyn: checkAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;GrantStatus&gt;
+
+ArkTS-Sta: checkAccessToken(tokenID: int, permissionName: Permissions): Promise&lt;GrantStatus&gt;
 
 校验应用是否被授予权限。使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -61,14 +69,14 @@ checkAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;Grant
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 要校验的目标应用的身份标识，可通过[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。本应用的tokenID可通过[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取。|
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是   | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise对象，返回授权状态结果。 |
+| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise对象。返回授权状态结果。 |
 
 **错误码：**
 
@@ -81,26 +89,51 @@ checkAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;Grant
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
-import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
-atManager.checkAccessToken(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS').then((data: abilityAccessCtrl.GrantStatus) => {
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: number = bundleInfo.appInfo.accessTokenId;
+let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+atManager.checkAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
   console.info(`checkAccessToken success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
+  console.error(`checkAccessToken fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: int = bundleInfo.appInfo.accessTokenId as int;
+let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+atManager.checkAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
+  console.info(`checkAccessToken success, result: ${data}`);
+}).catch((err: BusinessError): void => {
   console.error(`checkAccessToken fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ### checkAccessTokenSync<sup>10+</sup>
 
-checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
+ArkTS-Dyn: checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
+
+ArkTS-Sta: checkAccessTokenSync(tokenID: int, permissionName: Permissions): GrantStatus
 
 校验应用是否被授予权限，同步返回结果。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -108,7 +141,7 @@ checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 要校验的目标应用的身份标识，可通过[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。本应用的tokenID可通过[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取。|
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是   | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
@@ -128,14 +161,36 @@ checkAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: number = bundleInfo.appInfo.accessTokenId;
 let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
-let data: abilityAccessCtrl.GrantStatus = atManager.checkAccessTokenSync(tokenID, permissionName);
-console.info(`Result: ${data}`);
+try {
+  let data: abilityAccessCtrl.GrantStatus = atManager.checkAccessTokenSync(tokenID, permissionName);
+  console.info(`checkAccessTokenSync success, result: ${data}`);
+} catch(err: Error) {
+  console.error(`checkAccessTokenSync fail, code: ${err.code}, message: ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: int = bundleInfo.appInfo.accessTokenId as int;
+let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+try {
+  let data: abilityAccessCtrl.GrantStatus = atManager.checkAccessTokenSync(tokenID, permissionName);
+  console.info(`checkAccessTokenSync success, result: ${data}`);
+} catch(err: Error) {
+  console.error(`checkAccessTokenSync fail, code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ### on<sup>18+</sup>
@@ -148,7 +203,19 @@ on(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, 
 
 - 多次调用本订阅接口时，如果订阅的权限列表间有相同的子集，callback相同时，订阅失败。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+权限状态由“已授权”变更为“未授权”可能存在两种场景：
+
+- 用户主动撤销：系统会终止对应应用进程。
+
+- 系统主动回收：应用进程不会终止。典型场景如安全控件的单次授权，在授权周期结束后由系统自动回收。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSelfPermissionStateChange](#onselfpermissionstatechange23)。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -158,7 +225,7 @@ on(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, 
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | 是   | 订阅事件类型，固定为'selfPermissionStateChange'，自身权限状态变更事件。  |
 | permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | 是   | 订阅的权限名列表，如果为空，则表示订阅所有的权限状态变化，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
-| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | 是 | 回调函数，返回订阅指定权限名状态变更事件的结果。|
+| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | 是 | 回调函数。订阅指定权限名状态变更事件的回调。|
 
 **错误码：**
 
@@ -177,14 +244,15 @@ on(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;, 
 ```ts
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
 try {
-    atManager.on('selfPermissionStateChange', permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
-        console.info(`receive permission state change, result: ${data}`);
-    });
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
+  atManager.on('selfPermissionStateChange', permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
+    console.info('receive permission state change');
+    console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
+  });
 } catch(err) {
-    console.error(`Code: ${err.code}, message: ${err.message}`);
+  console.error(`Code: ${err.code}, message: ${err.message}`);
 }
 ```
 ### off<sup>18+</sup>
@@ -195,7 +263,13 @@ off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;,
 
 取消订阅不传callback时，批量删除permissionList下面的所有callback。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 18
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSelfPermissionStateChange](#offselfpermissionstatechange23)。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -205,7 +279,7 @@ off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;,
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string         | 是   | 订阅事件类型，固定为'selfPermissionStateChange'，权限状态变更事件。  |
 | permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | 是   | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与[on](#on18)的输入一致，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
-| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | 否 | 回调函数，返回取消订阅指定tokenID与指定权限名状态变更事件的结果。|
+| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | 否 | 回调函数。取消订阅指定tokenID与指定权限名状态变更事件的回调。|
 
 **错误码：**
 
@@ -222,11 +296,110 @@ off(type: 'selfPermissionStateChange', permissionList: Array&lt;Permissions&gt;,
 ```ts
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 
+try {
+  let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+  let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
+  atManager.off('selfPermissionStateChange', permissionList);
+} catch(err) {
+  console.error(`Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+### onSelfPermissionStateChange<sup>23+</sup>
+
+onSelfPermissionStateChange(permissionList: Array&lt;Permissions&gt;, callback: Callback&lt;PermissionStateChangeInfo&gt;): void
+
+订阅本应用的指定权限列表的权限授权状态变化事件。当本应用对应权限的授权状态发生变化时，触发对应回调函数的执行。
+
+- 多次调用本订阅接口时，如果订阅的权限列表相同，callback不同，允许订阅成功。
+
+- 多次调用本订阅接口时，如果订阅的权限列表间有相同的子集，callback相同时，订阅失败。
+
+**ArkTS-Sta起始版本：** 23
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on18)。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名             | 类型                   | 必填 | 说明                                                          |
+| ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | 是   | 订阅的权限名列表，如果为空，则表示订阅所有的权限状态变化，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
+| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | 是 | 订阅指定权限名状态变更事件的回调。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12100001 | Invalid parameter. Possible causes: 1. The permissionList exceeds the size limit; 2. The permissionNames in the list are all invalid. |
+| 12100004 | The API is used repeatedly with the same input. |
+| 12100005 | The registration time has exceeded the limit. |
+| 12100007 | The service is abnormal. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
 let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
 try {
-    atManager.off('selfPermissionStateChange', permissionList);
-} catch(err) {
+  atManager.onSelfPermissionStateChange(permissionList, (data: abilityAccessCtrl.PermissionStateChangeInfo) => {
+    console.info('receive permission state change');
+    console.info(`data change: ${data.change}, tokenID: ${data.tokenID}, permission name: ${data.permissionName}`);
+  });
+} catch(err: Error) {
+  console.error(`Code: ${err.code}, message: ${err.message}`);
+}
+```
+### offSelfPermissionStateChange<sup>23+</sup>
+
+offSelfPermissionStateChange(permissionList: Array&lt;Permissions&gt;, callback?: Callback&lt;PermissionStateChangeInfo&gt;): void
+
+取消订阅自身指定权限列表的权限状态变更事件，使用callback回调异步返回结果。
+
+取消订阅不传callback时，批量删除permissionList下面的所有callback。
+
+**ArkTS-Sta起始版本：** 23
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off18)。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名             | 类型                   | 必填 | 说明                                                          |
+| ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | 是   | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与[onSelfPermissionStateChange](#onselfpermissionstatechange23)的输入一致，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
+| callback | Callback&lt;[PermissionStateChangeInfo](#permissionstatechangeinfo18)&gt; | 否 | 取消订阅指定tokenID与指定权限名状态变更事件的回调。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 12100004 | The API is not used in pair with "onSelfPermissionStateChange". |
+| 12100007 | The service is abnormal. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let permissionList: Array<Permissions> = ['ohos.permission.APPROXIMATELY_LOCATION'];
+try {
+    atManager.offSelfPermissionStateChange(permissionList);
+} catch(err: Error) {
     console.error(`Code: ${err.code}, message: ${err.message}`);
 }
 ```
@@ -243,7 +416,11 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 ![requestPermissionsFromUser](figures/requestPermissionsFromUser.png)
 <!--RP3End-->
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -273,6 +450,8 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 关于向用户申请授权的完整流程及示例，请参见[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 <!--code_no_check-->
+
+ArkTS-Dyn示例：
 ```ts
 import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -293,6 +472,27 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: 
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+// 请在组件内获取context
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: BusinessError | null, data: PermissionRequestResult | undefined) => {
+  if (err) {
+    console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`requestPermissionsFromUser success, result: ${data}`);
+    console.info('requestPermissionsFromUser data permissions:' + data?.permissions);
+    console.info('requestPermissionsFromUser data authResults:' + data?.authResults);
+    console.info('requestPermissionsFromUser data dialogShownResults:' + data?.dialogShownResults);
+    console.info('requestPermissionsFromUser data errorReasons:' + data?.errorReasons);
+  }
+});
+```
+
 ### requestPermissionsFromUser<sup>9+</sup>
 
 requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permissions&gt;): Promise&lt;PermissionRequestResult&gt;
@@ -301,7 +501,11 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 如果用户拒绝授权，将无法再次拉起弹框，需要用户在系统应用“设置”的界面中，手动授予权限，或是调用[requestPermissionOnSetting](#requestpermissiononsetting12)，拉起权限设置弹框，引导用户授权。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -318,7 +522,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Promise对象，返回接口的结果。 |
+| Promise&lt;[PermissionRequestResult](js-apis-permissionrequestresult.md)&gt; | Promise对象。返回接口的结果。 |
 
 **错误码：**
 
@@ -336,6 +540,7 @@ requestPermissionsFromUser(context: Context, permissionList: Array&lt;Permission
 
 关于向用户申请授权的完整流程及示例，请参见[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 <!--code_no_check-->
+
 ```ts
 import { abilityAccessCtrl, Context, PermissionRequestResult, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -349,7 +554,7 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((
   console.info('requestPermissionsFromUser data authResults:' + data.authResults);
   console.info('requestPermissionsFromUser data dialogShownResults:' + data.dialogShownResults);
   console.info('requestPermissionsFromUser data errorReasons:' + data.errorReasons);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`requestPermissionsFromUser fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -358,15 +563,19 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA']).then((
 
 requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permissions&gt;): Promise&lt;Array&lt;GrantStatus&gt;&gt;
 
-用于[UIAbility](js-apis-app-ability-uiAbility.md#uiability)/[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability)二次拉起权限设置弹框。使用Promise异步回调。
+用于[UIAbility](js-apis-app-ability-uiAbility.md#uiability)/[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability)二次拉起权限设置弹框。
 
-在调用此接口前，应用需要先调用[requestPermissionsFromUser](#requestpermissionsfromuser9)，如果用户在首次弹窗授权时已授权，调用当前接口将无法拉起弹窗。
+在调用此接口前，应用需要先调用[requestPermissionsFromUser](#requestpermissionsfromuser9)，如果用户在首次弹窗授权时已授权，调用当前接口将无法拉起弹窗。使用Promise异步回调。
 
 <!--RP4-->
 ![requestPermissionOnSetting](figures/requestPermissionOnSetting.png)
 <!--RP4End-->
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -383,11 +592,11 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;Array&lt;[GrantStatus](#grantstatus)&gt;&gt; | Promise对象，返回授权状态结果。 |
+| Promise&lt;Array&lt;[GrantStatus](#grantstatus)&gt;&gt; | Promise对象。返回授权状态结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -398,18 +607,19 @@ requestPermissionOnSetting(context: Context, permissionList: Array&lt;Permission
 | 12100014 | Unexpected permission. You cannot request this type of permission from users via a pop-up window. |
 
 **示例：**
+
 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 <!--code_no_check-->
+
 ```ts
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-// 请在组件内获取context
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestPermissionOnSetting(context, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
   console.info(`requestPermissionOnSetting success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`requestPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -426,7 +636,11 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 ![requestGlobalSwitch](figures/requestGlobalSwitch.png)
 <!--RP5End-->
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -457,8 +671,10 @@ requestGlobalSwitch(context: Context, type: SwitchType): Promise&lt;boolean&gt;
 | 12100013 | The specific global switch is already open. |
 
 **示例：**
+
 示例中context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 <!--code_no_check-->
+
 ```ts
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -468,7 +684,7 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.requestGlobalSwitch(context, abilityAccessCtrl.SwitchType.CAMERA).then((data: Boolean) => {
   console.info(`requestGlobalSwitch success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`requestGlobalSwitch fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -479,7 +695,11 @@ getSelfPermissionStatus(permissionName: Permissions): PermissionStatus
 
 查询应用权限状态，同步返回结果。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -506,6 +726,7 @@ getSelfPermissionStatus(permissionName: Permissions): PermissionStatus
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -519,11 +740,28 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+try {
+  let data: abilityAccessCtrl.PermissionStatus = atManager.getSelfPermissionStatus('ohos.permission.CAMERA');
+  console.info(`getSelfPermissionStatus success, result: ${data}`);
+} catch(err: Error) {
+  console.error(`getSelfPermissionStatus fail, code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ### openPermissionOnSetting<sup>22+</sup>
 
 openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;SelectedResult&gt;
 
 用于[UIAbility](js-apis-app-ability-uiAbility.md#uiability)/[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md#uiextensionability)拉起跳转设置页的弹窗。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -540,7 +778,7 @@ openPermissionOnSetting(context: Context, permission: Permissions): Promise&lt;S
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;[SelectedResult](#selectedresult22)&gt; | Promise对象，返回跳转设置页弹窗结果。 |
+| Promise&lt;[SelectedResult](#selectedresult22)&gt; | Promise对象。返回跳转设置页弹窗结果。 |
 
 **错误码：**
 
@@ -565,16 +803,22 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 atManager.openPermissionOnSetting(context, 'ohos.permission.HOOK_KEY_EVENT').then((data: abilityAccessCtrl.SelectedResult) => {
   console.info(`openPermissionOnSetting success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`openPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ### verifyAccessTokenSync<sup>9+</sup>
 
-verifyAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
+ArkTS-Dyn: verifyAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
+
+ArkTS-Sta: verifyAccessTokenSync(tokenID: int, permissionName: Permissions): GrantStatus
 
 校验应用是否被授予权限，同步返回结果。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -582,7 +826,7 @@ verifyAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 要校验的目标应用的身份标识，可通过[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。本应用的tokenID可通过[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取。|
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是   | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
@@ -602,22 +846,43 @@ verifyAccessTokenSync(tokenID: number, permissionName: Permissions): GrantStatus
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
-import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: number = bundleInfo.appInfo.accessTokenId;
 try {
-  let data: abilityAccessCtrl.GrantStatus = atManager.verifyAccessTokenSync(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS');
+  let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+  let data: abilityAccessCtrl.GrantStatus = atManager.verifyAccessTokenSync(tokenID, permissionName);
   console.info(`verifyAccessTokenSync success, result: ${data}`);
 } catch(err) {
   console.error(`verifyAccessTokenSync fail, code: ${err.code}, message: ${err.message}`);
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: int = bundleInfo.appInfo.accessTokenId as int;
+try {
+  let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+  let data: abilityAccessCtrl.GrantStatus = atManager.verifyAccessTokenSync(tokenID, permissionName);
+  console.info(`verifyAccessTokenSync success, result: ${data}`);
+} catch(err: Error) {
+  console.error(`verifyAccessTokenSync fail, code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ### verifyAccessToken<sup>9+</sup>
 
-verifyAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;GrantStatus&gt;
+ArkTS-Dyn: verifyAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;GrantStatus&gt;
+
+ArkTS-Sta: verifyAccessToken(tokenID: int, permissionName: Permissions): Promise&lt;GrantStatus&gt;
 
 校验应用是否被授予权限。使用Promise异步回调。
 
@@ -625,33 +890,55 @@ verifyAccessToken(tokenID: number, permissionName: Permissions): Promise&lt;Gran
 >
 > 建议使用[checkAccessToken](#checkaccesstoken9)替代。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 要校验的目标应用的身份标识，可通过[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。本应用的tokenID可通过[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取。|
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 是   | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise对象，返回授权状态结果。 |
+| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise对象。返回授权状态结果。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: number = bundleInfo.appInfo.accessTokenId;
 let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
 atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
   console.info(`verifyAccessToken success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
+  console.error(`verifyAccessToken fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: int = bundleInfo.appInfo.accessTokenId as int;
+let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
+  console.info(`verifyAccessToken success, result: ${data}`);
+}).catch((err: BusinessError): void => {
   console.error(`verifyAccessToken fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -666,32 +953,38 @@ verifyAccessToken(tokenID: number, permissionName: string): Promise&lt;GrantStat
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[checkAccessToken](#checkaccesstoken9)替代。
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Security.AccessToken
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID   |  number   | 是   | 要校验的目标应用的身份标识，可通过[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。本应用的tokenID可通过[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取。|
 | permissionName | string | 是   | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise对象，返回授权状态结果。 |
+| Promise&lt;[GrantStatus](#grantstatus)&gt; | Promise对象。返回授权状态结果。 |
 
 **示例：**
 
 ```ts
-import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { abilityAccessCtrl, Permissions, bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
-atManager.verifyAccessToken(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS').then((data: abilityAccessCtrl.GrantStatus) => {
+let bundleInfo = bundleManager.getBundleInfoForSelfSync(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
+let tokenID: number = bundleInfo.appInfo.accessTokenId;
+let permissionName: Permissions = 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS';
+atManager.verifyAccessToken(tokenID, permissionName).then((data: abilityAccessCtrl.GrantStatus) => {
   console.info(`verifyAccessToken success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`verifyAccessToken fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -700,7 +993,11 @@ atManager.verifyAccessToken(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSION
 
 表示授权状态的枚举。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -713,7 +1010,11 @@ atManager.verifyAccessToken(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSION
 
 表示全局开关类型的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -727,7 +1028,13 @@ atManager.verifyAccessToken(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSION
 
 表示权限授权状态变化操作类型的枚举。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -740,14 +1047,20 @@ atManager.verifyAccessToken(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSION
 
 表示某次权限授权状态变化的详情。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
 | 名称           | 类型                       | 只读 | 可选 | 说明                |
 | -------------- | ------------------------- | ---- | ---- | ------------------ |
 | change         | [PermissionStateChangeType](#permissionstatechangetype18) | 否   | 否   | 权限授权状态变化类型。        |
-| tokenID        | number                    | 否   | 否   | 被订阅的应用身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID        | ArkTS-Dyn: number <br> ArkTS-Sta: int                    | 否   | 否   | 被订阅的应用身份标识，可通过[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md#applicationinfo-1)的accessTokenId字段获取。本应用的tokenID可通过[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取。|
 | permissionName | [Permissions](../../security/AccessToken/app-permissions.md)                    | 否   | 否   | 当前授权状态发生变化的权限名，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 ## PermissionRequestResult<sup>10+</sup>
@@ -756,7 +1069,11 @@ type PermissionRequestResult = _PermissionRequestResult
 
 权限请求结果对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -772,7 +1089,11 @@ type Context = _Context
 
 提供了ability或application的上下文的能力，包括访问特定应用程序的资源等。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -786,7 +1107,11 @@ type Context = _Context
 
 表示权限状态的枚举。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -801,6 +1126,10 @@ type Context = _Context
 ## SelectedResult<sup>22+</sup>
 
 表示跳转设置页弹窗结果的枚举。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **系统能力：** SystemCapability.Security.AccessToken
 

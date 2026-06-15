@@ -1,9 +1,9 @@
-# @ohos.data.relationalStore (关系型数据库)(系统接口)
+# @ohos.data.relationalStore（关系型数据库）（系统接口）
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 关系型数据库（Relational Database，RDB）是一种基于关系模型来管理数据的数据库。关系型数据库基于SQLite组件提供了一套完整的对本地数据库进行管理的机制，对外提供了一系列的增、删、改、查等接口，也可以直接运行用户输入的SQL语句来满足复杂的场景需要。不支持Worker线程。
@@ -39,6 +39,7 @@ import { relationalStore } from '@kit.ArkData';
 | ---- | ---- | ---- | ---- | ---- |
 | isSearchable<sup>11+</sup> | boolean | 否 | 是 | 指定数据库是否支持搜索，true表示支持搜索，false表示不支持搜索，默认不支持搜索。<br/>**系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | haMode<sup>12+</sup> | [HAMode](#hamode12) | 否 | 是 | 指定关系型数据库存储的高可用性模式，SINGLE表示将数据写入单个关系型数据库存储，MAIN_REPLICA表示将数据写入主关系型数据库存储和副本关系型数据库存储，但不支持加密场景和attach场景。MAIN_REPLICA会导致数据库写入性能的劣化，默认为SINGLE。<br/>**系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| autoCleanDeviceDirtyData | boolean | 否 | 是 | 指定本端是否自动清理对端删除后同步过来的数据，true表示自动清理，默认为自动清理；false表示不自动清理，需要主动调用[cleanDeviceDirtyData](#cleandevicedirtydata)进行脏数据清理。<br/>[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表配置不生效。<br/>**系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/> **ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下可用。<br/> |
 
 ## HAMode<sup>12+</sup>
 
@@ -83,6 +84,24 @@ import { relationalStore } from '@kit.ArkData';
 | -------- | ------- | ----  | ---- | ------------------------------------------------------------ |
 | references<sup>11+</sup> | Array&lt;[Reference](#reference11)&gt; | 否 | 是   | 设置表之间的关联关系，可以设置多个字段的关联，子表和父表关联字段的值必须相同。默认数据库表之间无关联关系。<br/>**系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 
+## CloudSyncConfig
+
+云同步配置信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明                                                                         |
+|------|------|------|------|----------------------------------------------------------------------------|
+| downloadOnly | boolean | 否 | 是 | 是否仅下行云端数据到本地。true表示仅下行云端数据到本地，false表示先下行云端数据到本地，再上行本地数据到云侧的同步流程。默认值为false。 |
+
 ## RdbStore
 
 提供管理关系型数据库（RDB）的接口。
@@ -113,10 +132,10 @@ ArkTS-Sta: update(table: string, values: ValuesBucket, predicates: dataSharePred
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| table      | string                                                       | 是   | 指定的目标表名。                                             |
+| table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。                                             |
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)                                | 是   | values指示数据库中要更新的数据行。键值对与数据库表的列名相关联。 |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的更新条件。                |
-| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;                                  | 是   | 指定的callback回调方法。返回受影响的行数。                   |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;                                  | 是   | 回调函数。返回受影响的行数。                   |
 
 **错误码：**
 
@@ -243,7 +262,7 @@ ArkTS-Sta: update(table: string, values: ValuesBucket, predicates: dataSharePred
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| table      | string                                                       | 是   | 指定的目标表名。                                             |
+| table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。                                             |
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)                                | 是   | values指示数据库中要更新的数据行。键值对与数据库表的列名相关联。 |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的更新条件。                |
 
@@ -251,7 +270,7 @@ ArkTS-Sta: update(table: string, values: ValuesBucket, predicates: dataSharePred
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | 指定的Promise回调方法。返回受影响的行数。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回受影响的行数。 |
 
 **错误码：**
 
@@ -378,7 +397,7 @@ ArkTS-Sta: delete(table: string, predicates: dataSharePredicates.DataSharePredic
 | ---------- | ------------------------------------------------------------ | ---- | --------------------------------------------- |
 | table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。              |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的删除条件。 |
-| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;                                  | 是   | 指定callback回调函数。返回受影响的行数量。 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt;                                  | 是   | 回调函数。当删除数据成功，err为undefined，data为受影响的行数量；否则为错误对象。 |
 
 **错误码：**
 
@@ -448,7 +467,7 @@ ArkTS-Sta: delete(table: string, predicates: dataSharePredicates.DataSharePredic
 
 | 参数名     | 类型                                                         | 必填 | 说明                                          |
 | ---------- | ------------------------------------------------------------ | ---- | --------------------------------------------- |
-| table      | string                                                       | 是   | 指定的目标表名。                              |
+| table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。                              |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的删除条件。 |
 
 **返回值**：
@@ -523,9 +542,9 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, callba
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| table      | string                                                       | 是   | 指定的目标表名。                                            |
+| table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。                                            |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的查询条件。               |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 指定callback回调函数。如果操作成功，则返回ResultSet对象。 |
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 回调函数。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -591,10 +610,10 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| table      | string                                                       | 是   | 指定的目标表名。                                            |
+| table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。                                            |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的查询条件。               |
 | columns    | Array&lt;string&gt;                                          | 是   | 表示要查询的列。如果值为空，则查询应用于所有列。            |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 指定callback回调函数。如果操作成功，则返回ResultSet对象。 |
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | 是   | 回调函数。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -660,7 +679,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 
 | 参数名     | 类型                                                         | 必填 | 说明                                             |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
-| table      | string                                                       | 是   | 指定的目标表名。                                 |
+| table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。                                 |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的查询条件。    |
 | columns    | Array&lt;string&gt;                                          | 否   | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 
@@ -668,7 +687,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 
 | 类型                                                    | 说明                                               |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。如果操作成功，则返回ResultSet对象。 |
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。返回ResultSet对象。 |
 
 **错误码：**
 
@@ -737,7 +756,7 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 | mode        | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)          | 是   | 表示数据库的同步模式。                   |
 | predicates  | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)                  | 是   | 表示同步数据的谓词条件。                  |
 | progress    | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 用来处理数据库同步详细信息的回调函数。           |
-| callback    | AsyncCallback&lt;void&gt;      | 是   | 指定的callback回调函数，用于向调用者发送同步结果。 |
+| callback    | AsyncCallback&lt;void&gt;      | 是   | 回调函数。当同步成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -847,7 +866,7 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 
 | 类型                | 说明                                    |
 | ------------------- | --------------------------------------- |
-| Promise&lt;void&gt; | Promise对象，用于向调用者发送同步结果。 |
+| Promise&lt;void&gt; | Promise对象。返回同步结果。 |
 
 **错误码：**
 
@@ -951,7 +970,7 @@ querySharingResource(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 
 | 参数名    | 说明                                               |
 | -------- | ------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象，返回查询的结果集。   |
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise对象。返回查询的结果集。   |
 
 **错误码：**
 
@@ -1174,7 +1193,7 @@ ArkTS-Sta: lockCloudContainer(): Promise&lt;int&gt;
 
 | 类型                | 说明                                    |
 | ------------------- | ---------------------------------------|
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，如果加锁成功，返回锁的有效时长；如果加锁失败，返回0，单位：ms。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象。如果加锁成功，返回锁的有效时长；如果加锁失败，返回0，单位：ms。 |
 
 **错误码：**
 
@@ -1217,7 +1236,7 @@ unlockCloudContainer(): Promise&lt;void&gt;
 
 | 类型                | 说明                                    |
 | ------------------- | --------------------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1260,7 +1279,7 @@ restore(): Promise&lt;void&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1404,7 +1423,7 @@ ArkTS-Sta: updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicate
 >
 > 入参info中若要传入设备id信息，则设备id必须是已与当前设备建立网络连接的设备id。
 >
-> 入参predicates中若要传入[ORIGIN_ORIDEVICE](#distributedinfo24)，则只允许使用等于空或不等于空。
+> 入参predicates中若要传入[ORIGIN_ORIDEVICE](#distributedfield24)，则只允许使用等于空或不等于空。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -1425,7 +1444,7 @@ ArkTS-Sta: updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicate
 
 | 类型          | 说明                       |
 | -------------- | ------------------------ |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。如果操作成功，返回更新的数据个数，否则返回-1。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回更新的数据个数。 |
 
 **错误码：**
 
@@ -1489,6 +1508,71 @@ async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
     }
   }
 }
+```
+
+## cleanDeviceDirtyData
+
+ArkTS-Dyn: cleanDeviceDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
+
+ArkTS-Sta: cleanDeviceDirtyData(table: string, cursor?: long): Promise&lt;void&gt;
+
+本端清理对端删除后同步过来的数据。使用Promise异步回调。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                               |
+| -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
+| table     | string           | 是   | 表示需要清理数据库表的名称。数据库表名只能由字母、数字和下划线组成，不能包含其他字符，长度为[1, 256]。           |
+| cursor    | ArkTS-Dyn: number  <br> ArkTS-Sta: long           | 否   | 表示数据游标，不大于此游标的脏数据将被清理。整数类型，取值应大于0。当传入小于等于0的值时，会抛出异常，异常信息为无效的参数。当此参数不填时，清理当前表的所有脏数据。 |
+
+**返回值：**
+
+| 类型     | 说明                                              |
+| -------- | ------------------------------------------------- |
+| Promise\<void> | Promise对象，无返回结果。        |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**     |
+|-----------|---------------|
+| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
+| 14800015  | The database does not respond. |
+| 14800021  | SQLite: Generic error. |
+| 14800024  | SQLite: The database file is locked. |
+| 14800043  | DB is not support this scenario. Possible causes: 1. DB type is not support; 2. Table type is not support; 3. This is a readonly db. |
+
+**示例：**
+
+```ts
+try {
+  await store!.cleanDeviceDirtyData('test_table', 100);
+  console.info('Succeeded in cleaning device dirty data.');
+} catch (err) {
+  console.error(`Failed to clean device dirty data: code is ${err.code}, message is ${err.message}.`);
+};
+
+// 全量清理
+try {
+  await store!.cleanDeviceDirtyData('test_table');
+  console.info('Succeeded in cleaning device dirty data.');
+} catch (err) {
+  console.error(`Failed to clean device dirty data: code is ${err.code}, message is ${err.message}.`);
+};
 ```
 
 ## ResultSet
@@ -1642,14 +1726,12 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**ArkTS-Dyn起始版本：** 24
-
-**ArkTS-Sta起始版本：** 24
-
 | 名称           | 值   | 说明                               |
 | -------------- | ---- | ---------------------------------- |
-| ORIGIN      | '#_origin'     | 用于分布式数据库表对应log表查找或更新时指定数据来源的字段名。    |
-| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于分布式数据库表对应log表查找或更新时指定数据产生者的设备id，该值传入若为空，则表示本地设备；若不为空，则表示其他组网设备。|
+| ORIGIN      | '#_origin'     | 用于查找或更新时指定数据来源的字段名。   <br/>**ArkTS-Dyn起始版本：** 24<br/> **ArkTS-Sta起始版本：** 24|
+| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于查找或更新时指定数据产生者的设备id，该值传入若为空，则表示本地设备；若不为空，则表示其他组网设备。<br/>**ArkTS-Dyn起始版本：** 24<br/> **ArkTS-Sta起始版本：** 24|
+| CURSOR_FIELD      | '#_cursor'     | 用于cursor查找的字段名。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/> **ArkTS-Sta起始版本：** 26.0.0|
+| DELETED_FLAG_FIELD  | '#_deleted_flag' | 用于cursor查找的结果集返回时填充的字段。true表示对端删除的数据，同步到本端。false表示对端写入或更新的数据，同步到本端；或者本端写入或更新的数据。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/> **ArkTS-Sta起始版本：** 26.0.0|
 
 ## DistributedInfo<sup>24+</sup>
 

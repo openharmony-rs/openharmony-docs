@@ -1,0 +1,997 @@
+# \@ObjectLink装饰器和\@Observed装饰器：嵌套类对象属性变化
+
+装饰器[\@State](arkts-static-state.md)、[\@PropRef](arkts-static-propref.md)、[\@Link](arkts-static-link.md)、[\@Provide和\@Consume](arkts-static-provide-and-consume.md)仅能观察到第一层的变化，但是在实际应用开发中，应用会根据开发需要，封装自己的数据模型。对于多层嵌套的情况，比如对象数组项class，或者嵌套类，他们的第二层的属性变化是无法观察到的。这就引出了\@Observed和\@ObjectLink装饰器。
+
+## 概述
+
+\@ObjectLink和\@Observed类装饰器用于嵌套对象（对象的属性是对象）或数组的场景中进行双向数据同步：
+
+- 使用new创建被\@Observed装饰的类，可以被观察到属性的变化。
+
+- 子组件中\@ObjectLink装饰器装饰的状态变量用于接收\@Observed装饰的类的实例，和父组件中对应的状态变量建立双向数据绑定。这个实例可以是数组中的被\@Observed装饰的项，或者是class object中的属性，这个属性同样也需要被\@Observed装饰。
+
+- \@Observed用于嵌套类场景中，观察对象类属性变化，要配合自定义组件使用。在API版本26.0.0以前，该嵌套类场景中的属性对应的类如果被@Observed装饰，则该对象类属性变化，UI不会刷新；API版本26.0.0及以后，若该对象类属性变化，则UI会刷新，示例详见[嵌套对象](#嵌套对象)。如果要做数据双向同步，需要搭配\@ObjectLink使用。
+
+在静态上下文中使用时，需要导入装饰器：
+
+```ts
+import { ObjectLink, Observed } from '@kit.ArkUI';
+```
+
+## 装饰器说明
+
+| \@Observed类装饰器 | 说明                                |
+| -------------- | --------------------------------- |
+| 装饰器参数          | 无。                                 |
+| 使用方式           | 装饰class。需要放在class的定义前，使用new创建类对象。 |
+
+| \@ObjectLink变量装饰器 | 说明                                       |
+| ----------------- | ---------------------------------------- |
+| 装饰器参数             | 无。                                       |
+| 允许装饰的变量类型         | 必须为复杂类型，即class、interface字面量和built-in类型。其中interface字面量、built-in类型和被\@Observed装饰的class类型可以被观察变化，详情见[观察变化](#观察变化)。<br/>\@ObjectLink不支持简单类型，如果开发者需要使用简单类型，可以使用\@PropRef。<br/>\@ObjectLink支持\@Observed装饰类和undefined或null组成的联合类型，比如ClassA \| ClassB、 ClassA \| undefined 或 ClassA \| null的联合类型, 示例见[@ObjectLink支持联合类型](#objectlink支持联合类型)。|
+| 初始化规则         | 不允许定义本地默认值。<br/>初始化\@ObjectLink装饰的变量必须同时满足以下场景：<br/>-&nbsp;类型必须是\@Observed装饰的class。<br/>-&nbsp;初始化的数值需要是数组项，或者class的属性。<br/>-&nbsp;同步源的class或者数组必须是\@State，\@Link，\@Provide，\@Consume或者\@ObjectLink装饰的数据。<br/>初始化的class的示例请参考[嵌套对象](#嵌套对象)。                                     |
+| 同步规则           | **在子组件使用时：**<br/>与父组件中的源对象双向同步。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、[\@State](arkts-static-state.md)、[\@Link](arkts-static-link.md)、[\@PropRef](arkts-static-propref.md)、[\@Provide](arkts-static-provide-and-consume.md)。|
+
+```ts
+// 允许@ObjectLink装饰的数据属性赋值
+this.objLink.a= ...
+// 不允许@ObjectLink装饰的数据自身赋值
+this.objLink= ...
+```
+
+> **说明：**
+>
+> \@ObjectLink装饰的变量不能被赋值，如果要使用赋值操作，请使用@PropRef。
+
+## 观察变化和行为表现
+
+
+### 观察变化
+
+当使用\@Observed装饰一个类时，如果该类的属性为非内置类型（非Array/Map/Set/Date）的Object类型，则该属性必须被\@Observed装饰，否则改属性内部的变化将无法被观察到。
+
+
+```ts
+'use static'
+
+import { Observed } from '@kit.ArkUI';
+
+class Child {
+  public num: int;
+
+  constructor(num: int) {
+    this.num = num;
+  }
+}
+
+@Observed
+class Parent {
+  public child: Child;
+  public count: int;
+
+  constructor(child: Child, count: int) {
+    this.child = child;
+    this.count = count;
+  }
+}
+```
+
+以上示例中，Parent被\@Observed装饰，其成员变量的赋值的变化是可以被观察到的，但对于Child，没有被\@Observed装饰，其属性的修改不能被观察到。
+
+
+```ts
+@ObjectLink parent: Parent;
+
+// 赋值变化可以被观察到
+this.parent.child = new Child(5);
+this.parent.count = 5;
+
+// Child没有被@Observed装饰，其属性的变化观察不到
+this.parent.child.num = 5;
+```
+
+\@ObjectLink接收对象时，如果对象被\@State或其他状态变量装饰器装饰，则可以观察第一层变化。示例请参考[对象类型](#对象类型)。
+
+\@ObjectLink接收嵌套对象时，内层对象支持为被\@Observed装饰的class类型。从API version 23开始，内层对象也支持为被[makeObserved](../../reference/apis-arkui/js-apis-stateManagement-static.md#makeobserved)处理的interface字面量类型和built-in类型，示例请参考[嵌套对象](#嵌套对象)。
+
+\@ObjectLink推荐设计单独的自定义组件来渲染每一个数组或对象。此时，对象数组或嵌套对象需要两个自定义组件，一个自定义组件呈现外部数组/对象，另一个自定义组件呈现嵌套在数组/对象内的类对象。可以观察到：
+
+- 其属性的数值的变化，其中属性是指Object.keys(observedObject)返回的所有属性，示例请参考[嵌套对象](#嵌套对象)。
+
+- 如果数据源是数组，则可以观察到数组item的替换，如果数据源是class，可观察到class的属性的变化，示例请参考[对象数组](#对象数组)。
+
+## 限制条件
+
+1. \@ObjectLink装饰器不能在[\@Entry](./arkts-static-create-component.md#entry)装饰的自定义组件中使用。
+
+2. \@ObjectLink装饰的变量必须是class类型或interface字面量类型，否则会有编译时报错。
+
+3. \@ObjectLink装饰的变量必须要指定类型，否则会有编译时报错。
+
+    ```ts
+    'use static'
+    
+    import { Component, ObjectLink, Observed, Text } from '@kit.ArkUI';
+    
+    @Observed
+    class Info {
+      count: int;
+    
+      constructor(count: int) {
+        this.count = count;
+      }
+    }
+    
+    class Test {
+      msg: int;
+    
+      constructor(msg: int) {
+        this.msg = msg;
+      }
+    }
+    
+    @Component
+    struct Child {
+      // 错误写法，count未指定类型，编译报错
+      @ObjectLink count;
+    
+      // 正确写法
+      @ObjectLink count: Info;
+    
+      build() {
+        Text(`${this.count.count}`)
+      }
+    }
+    ```
+  
+4. \@ObjectLink装饰的变量不能本地初始化，仅能通过构造参数从父组件传入初始值，否则编译时会报错。
+
+    ```ts
+    'use static'
+
+    import { Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
+
+    @Observed
+    class Info {
+      count: int;
+    
+      constructor(count: int) {
+        this.count = count;
+      }
+    }
+    
+    @Component
+    struct Child {
+      // 错误写法，编译报错
+      @ObjectLink count: Info = new Info(10);
+    
+      // 正确写法
+      @ObjectLink count: Info;
+
+      build() {
+        Text(`${this.count.count}`)
+      }
+    }
+
+    @Entry
+    @Component
+    struct Parent {
+      @State info: Info = new Info(0)
+      build() {
+        Column() {
+          // 正确写法：从父组件传入初始值
+          Child({count: this.info})
+        }
+      }
+    }
+    ```
+
+5. \@ObjectLink装饰的变量是只读的，不能被赋值，否则会有编译时报错提示`Cannot assign to this property because it is readonly`。如果需要对\@ObjectLink装饰的变量进行整体替换，可以在父组件对其进行整体替换。
+
+    【反例】
+  
+    ```ts
+    'use static'
+
+    import { Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
+
+    @Observed
+    class Info {
+      count: int;
+    
+      constructor(count: int) {
+        this.count = count;
+      }
+    }
+    
+    @Component
+    struct Child {
+      @ObjectLink num: Info;
+    
+      build() {
+        Column() {
+          Text(`num的值: ${this.num.count}`)
+            .onClick((e) => {
+              // 错误写法，@ObjectLink装饰的变量不能被赋值
+              this.num = new Info(10);
+            })
+        }
+      }
+    }
+
+    @Entry
+    @Component
+    struct Parent {
+      @State num: Info = new Info(10);
+    
+      build() {
+        Column() {
+          Text(`count的值: ${this.num.count}`)
+          Child({num: this.num})
+        }
+      }
+    }
+    ```
+  
+    【正例】
+    <!-- @[ObjectLinkReadOnly](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkReadOnly.ets) -->
+    
+    ``` TypeScript
+    import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
+    
+    @Observed
+    class Info {
+      count: int;
+    
+      constructor(count: int) {
+        this.count = count;
+      }
+    }
+    
+    @Component
+    struct Child {
+      @ObjectLink num: Info;
+    
+      build() {
+        Column() {
+          Text(`num的值: ${this.num.count}`)
+            .onClick((e) => {
+              // 正确写法，可以更改@ObjectLink装饰变量的成员属性
+              this.num.count = 20;
+            })
+        }
+      }
+    }
+    
+    @Entry
+    @Component
+    struct Parent {
+      @State num: Info = new Info(10);
+    
+      build() {
+        Column() {
+          Text(`count的值: ${this.num.count}`)
+          Button('click')
+            .onClick((e) => {
+              // 可以在父组件做整体替换
+              this.num = new Info(30);
+            })
+          Child({num: this.num})
+        }
+      }
+    }
+    ```
+
+6. \@ObjectLink变量初始化传递时，传递的\@Observed class对象没有通过new而是通过字面量的方式创建，则编译时报错提示`The '@Observed' class object must be instantiated with the 'new' keyword; initialization with an object literal is not allowed.`。
+
+    ```ts
+    'use static'
+
+    import { Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
+
+    @Observed
+    class Info {
+      count: int = 99;
+    }
+    
+    @Component
+    struct Child {
+      @ObjectLink count: Info;
+
+      build() {
+        Text(`${this.count.count}`)
+      }
+    }
+
+    @Entry
+    @Component
+    struct Parent {
+      build() {
+        Column() {
+          // 错误写法：使用字面量方式，编译报错
+          Child({ count: { count: 0 }})
+
+          // 正确写法：使用new的方式
+          Child({ count: new Info() })
+        }
+      }
+    }
+    ```
+
+    对象创建方式为字面量形式时本应编译报错，但如下示例所示，当且仅当对象为this.xxx结构且创建形式为字面量时，可正常编译通过。
+
+    <!-- @[ObjectLinkLiteralThis](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkLiteralThis.ets) -->
+    
+    ``` TypeScript
+    import { Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
+    @Observed
+    class Info {
+      count: int = 99;
+    }
+    
+    @Component
+    struct Child {
+      @ObjectLink count: Info;
+    
+      build() {
+        Text(`${this.count.count}`)
+      }
+    }
+    
+    @Entry
+    @Component
+    struct Parent {
+      @State propInfo: Info = { count: 0 } as Info;
+    
+      build() {
+        Column() {
+          // 特例：当且仅当字面量为this.xxx结构时，可正常编译通过
+          Child({ count: this.propInfo })
+        }
+      }
+    }
+    ```
+
+7. \@ObjectLink变量初始化传递时，传递的\@Observed class对象没有通过new而是通过字面量的方式创建，对象创建时用到容器组件Array、Set、Map，则编译时告警提示`The '@Observed' class object must be instantiated with the 'new' keyword; initialization with an object literal is not allowed.`。
+
+    ```ts
+    'use static'
+    
+    import { Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
+    
+    @Observed
+    class Info {
+      count: int = 99;
+    }
+    
+    @Component
+    struct Child {
+      @ObjectLink count: Info;
+    
+      build() {
+        Text(`${this.count.count}`)
+      }
+    }
+    
+    @Entry
+    @Component
+    struct Parent {
+      @State propInfoArray: Info[] = [{ count: 0 } as Info, new Info()];
+      @State propInfoSet: Set<Info> = new Set<Info>([{ count: 0 }, new Info()]);
+      @State propInfoMap: Map<string, Info> =
+        new Map<string, Info>([
+          ['字面量', { count: 0 }],
+          ['new', new Info()],
+        ]);
+    
+      build() {
+        Column() {
+          // 涉及容器组件Array，编译告警
+          Child({ count: this.propInfoArray[0] });
+          Child({ count: this.propInfoArray[1] });
+    
+          // 涉及容器组件Set，编译告警
+          Child({ count: Array.from(this.propInfoSet)[0] });
+          Child({ count: Array.from(this.propInfoSet)[1] });
+    
+          // 涉及容器组件Map，编译告警
+          Child({ count: this.propInfoMap.get('字面量') as Info });
+          Child({ count: this.propInfoMap.get('new') as Info });
+        }
+      }
+    }
+    ```
+
+## 使用场景
+
+### 对象类型
+
+<!-- @[ObjectLinkObjectType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkObjectType.ets) -->
+
+``` TypeScript
+import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text, TextAlign } from '@kit.ArkUI';
+
+@Observed
+class Book {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+@Component
+struct BookCard {
+  @ObjectLink book: Book;
+
+  build() {
+    Column() {
+      Text(`BookCard: ${this.book.name}`) // 可以观察到name的变化
+        .fontSize(20)
+        .margin(10)
+        .textAlign(TextAlign.Center)
+
+      Button('change book.name')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.book.name = 'C++';
+        })
+    }
+    .width('100%')
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State book: Book = new Book('JS');
+
+  build() {
+    Column() {
+      BookCard({ book: this.book })
+    }
+    .width('100%')
+  }
+}
+```
+
+![objectlink-object-type](../figures/observed_objectlink1.gif)
+
+Book被\@Observed装饰，其属性的修改可以被观察到。所以点击Button，BookCard组件中的Text组件会刷新。
+
+### 继承对象
+
+<!-- @[ObjectLinkInheritObject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkInheritObject.ets) -->
+
+``` TypeScript
+import { Button, Column, Component, Entry, Observed, State, Text } from '@kit.ArkUI';
+
+@Observed
+class Animal {
+  name: string;
+  age: int;
+
+  constructor(name: string, age: int) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+@Observed
+class Dog extends Animal {
+  kinds: string;
+
+  constructor(name: string, age: int, kinds: string) {
+    super(name, age);
+    this.kinds = kinds;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State dog: Dog = new Dog('Molly', 2, 'Husky'); // 初始化dog对象
+
+  build() {
+    Column() {
+      Button(`${this.dog.name}`)
+        .width(300)
+        .margin(10)
+        .onClick((e) => {
+          this.dog.name = 'DouDou';
+        })
+
+      Button(`${this.dog.age}`)
+        .width(300)
+        .margin(10)
+        .onClick((e) => {
+          this.dog.age = 3;
+        })
+
+      Button(`${this.dog.kinds}`)
+        .width(300)
+        .margin(10)
+        .onClick((e) => {
+          this.dog.kinds = 'Samoyed';
+        })
+    }
+    .width('100%')
+  }
+}
+```
+
+![objectlink-inherit-object](../figures/observed_objectlink2.gif)
+
+上述示例中，Dog类中的部分属性（name、age）继承自Animal类，直接修改\@State装饰的变量dog中的属性name和age可以正常触发UI刷新。
+
+### 嵌套对象
+
+<!-- @[ObjectLinkNestedObject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkNestedObject.ets) -->
+
+``` TypeScript
+import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text, TextAlign } from '@kit.ArkUI';
+
+@Observed
+export class Book {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+@Observed
+export class Bag {
+  book: Book;
+
+  constructor(book: Book) {
+    this.book = book;
+  }
+}
+
+@Component
+struct BookCard {
+  @ObjectLink book: Book;
+
+  build() {
+    Column() {
+      Text(`BookCard: ${this.book.name}`) // 可以观察到name的变化
+        .fontSize(20)
+        .margin(10)
+        .textAlign(TextAlign.Center)
+
+      Button('change book.name')
+        .width(300)
+        .margin(10)
+        .onClick((e) => {
+          this.book.name = 'C++';
+        })
+    }
+    .width('100%')
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State bag: Bag = new Bag(new Book('JS'));
+
+  build() {
+    Column() {
+      // API版本26.0.0以前，无法观察到name的变化，API版本26.0.0及之后，可观察到name的变化。
+      Text(`Index: ${this.bag.book.name}`)
+        .fontSize(20)
+        .margin(10)
+        .textAlign(TextAlign.Center)
+
+      Button('change bag.book.name')
+        .width(300)
+        .margin(10)
+        .onClick((e) => {
+          this.bag.book.name = 'TS';
+        })
+
+      BookCard({ book: this.bag.book })
+    }
+    .width('100%')
+  }
+}
+```
+
+![objectlink-nested-object](../figures/observed_objectlink3.gif)
+
+在API版本26.0.0以前，上述示例中，Index组件中的Text组件不刷新，因为该变化属于第二层的变化，\@State无法观察到第二层的变化；API版本26.0.0及之后，Index组件中的Text组件会刷新。同时，Book被\@Observed装饰，Book的属性name可以被\@ObjectLink观察到，所以无论点击哪个Button，BookCard组件中的Text组件都会刷新。
+
+<!-- @[ObjectLinkMakeObserved](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkMakeObserved.ets) -->
+
+``` TypeScript
+import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text, TextAlign, UIUtils } from '@kit.ArkUI';
+
+interface Book {
+  name: string;
+}
+
+interface Bag {
+  book: Book;
+}
+
+@Component
+struct BookCard {
+  @ObjectLink book: Book;
+
+  build() {
+    Column() {
+      Text(`BookCard: ${this.book.name}`) // 可以观察到name的变化
+        .fontSize(20)
+        .margin(10)
+        .textAlign(TextAlign.Center)
+
+      Button('change book.name')
+        .width(300)
+        .margin(10)
+        .onClick((e) => {
+          this.book.name = 'C++';
+        })
+    }
+    .width('100%')
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State bag: Bag = { book: UIUtils.makeObserved({ name: 'JS' } as Book) } as Bag;
+
+  build() {
+    Column() {
+      Text(`Index: ${this.bag.book.name}`) // 可以观察到name的变化
+        .fontSize(20)
+        .margin(10)
+        .textAlign(TextAlign.Center)
+
+      Button('change bag.book.name')
+        .width(300)
+        .margin(10)
+        .onClick((e) => {
+          this.bag.book.name = 'TS';
+        })
+
+      BookCard({ book: this.bag.book })
+    }
+    .width('100%')
+  }
+}
+```
+
+![objectlink-makeobserved](../figures/observed_objectlink4.gif)
+
+上述示例中，Index组件中的Text组件刷新，虽然该变化属于第二层的变化，但是makeObserved支持深度观察。Book的属性变化可以被观察到，所以无论点击哪个Button，BookCard组件中的Text组件都会刷新。
+
+### 对象数组
+
+对象数组是一种常用的数据结构。以下示例展示了数组对象的用法。
+
+> **说明：**
+>
+> NextID是用来在ForEach循环渲染过程中，为每个数组元素生成一个唯一且持久的键值，用于标识对应的组件。
+
+<!-- @[ObjectLinkArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkArray.ets) -->
+
+``` TypeScript
+import { Button, Column, Component, Entry, ForEach, ObjectLink, Observed, Row, State } from '@kit.ArkUI';
+
+let NextID: int = 1;
+
+@Observed
+class Info {
+  public id: int;
+  public info: int;
+
+  constructor(info: int) {
+    this.id = NextID++;
+    this.info = info;
+  }
+}
+
+@Component
+struct Child {
+  // 子组件Child的@ObjectLink的类型是Info
+  @ObjectLink info: Info;
+  label: string = 'ViewChild';
+
+  build() {
+    Row() {
+      Button(`ViewChild [${this.label}] this.info.info = ${this.info ? this.info.info : "undefined"}`)
+        .width(320)
+        .margin(10)
+        .onClick((e) => {
+          this.info.info += 1;
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  // Parent中有@State装饰的Info[]
+  @State arrA: Info[] = [new Info(0), new Info(0)];
+
+  build() {
+    Column() {
+      ForEach(this.arrA,
+        (item: Info) => {
+          Child({ label: `#${item.id}`, info: item })
+        },
+        (item: Info): string => item.id.toString()
+      )
+      // 使用@State装饰的数组的数组项初始化@ObjectLink，其中数组项是被@Observed装饰的Info的实例
+      Child({ label: `ViewChild this.arrA[first]`, info: this.arrA[0] })
+      Child({ label: `ViewChild this.arrA[last]`, info: this.arrA[this.arrA.length-1] })
+
+      Button(`ViewParent: reset array`)
+        .width(320)
+        .margin(10)
+        .onClick((e) => {
+          this.arrA = [new Info(0), new Info(0)];
+        })
+      Button(`ViewParent: push`)
+        .width(320)
+        .margin(10)
+        .onClick((e) => {
+          this.arrA.push(new Info(0));
+        })
+      Button(`ViewParent: shift`)
+        .width(320)
+        .margin(10)
+        .onClick((e) => {
+          if (this.arrA.length > 0) {
+            this.arrA.shift();
+          } else {
+            console.info("length <= 0");
+          }
+        })
+      Button(`ViewParent: item property in middle`)
+        .width(320)
+        .margin(10)
+        .onClick((e) => {
+          if (this.arrA[(this.arrA.length / 2) as int]) {
+            this.arrA[(this.arrA.length / 2) as int].info = 10;
+          } else {
+            console.info('middle element does not exist');
+          }
+        })
+      Button(`ViewParent: item property in middle`)
+        .width(320)
+        .margin(10)
+        .onClick((e) => {
+          this.arrA[(this.arrA.length / 2) as int] = new Info(11);
+        })
+    }
+  }
+}
+```
+
+![Observed_ObjectLink_object_array](../figures/Observed_ObjectLink_object_array.gif)
+
+
+- this.arrA[(this.arrA.length/2) as int] = new Info(..) ：该状态变量的改变触发2次更新：
+  1. ForEach：数组项的赋值导致ForEach的itemGenerator被修改，因此数组项被识别为有更改，ForEach的item builder将执行，创建新的Child组件实例。
+  2. Child({ label: `ViewChild this.arrA[last]`, info: this.arrA[this.arrA.length-1] })：上述更改改变了数组中第二个元素，所以绑定this.arrA[1]的Child将被更新。
+
+- this.arrA.push(new Info(0)) ： 将触发2次不同效果的更新：
+  1. ForEach：新添加的Info对象对于ForEach是未知的itemGenerator，ForEach的item builder将执行，创建新的Child组件实例。
+  2. Child({ label: `ViewChild this.arrA[last]`, info: this.arrA[this.arrA.length-1] })：数组的最后一项有更改，因此引起第二个Child的实例的更改。对于Child({ label: `ViewChild this.arrA[first]`, info: this.arrA[0] })，数组的更改并没有触发一个数组项更改的改变，所以第一个Child不会刷新。
+
+- this.arrA[(this.arrA.length/2)].info：@State无法观察到第二层的变化，但是Info被\@Observed装饰，Info的属性的变化将被\@ObjectLink观察到。
+
+### 序列化和反序列化
+
+使用无参构造函数的@Observed装饰的类可以使用JSON.stringify序列化和JSON.parse反序列化。
+
+使用有参构造函数的@Observed装饰的类可以使用JSON.stringify进行序列化，但在反序列化时，需要先使用JSON.parseJsonElement创建JsonElement实例，并且需要开发者实现从JsonElement实例到@Observed装饰类的转换。
+
+**无参构造**
+
+<!-- @[ObjectLinkSerializeNoParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkSerializeNoParam.ets) -->
+
+``` TypeScript
+import { Button, Column, Component, Entry, Observed, State, Text } from '@kit.ArkUI';
+
+@Observed
+class Source {
+  public source: int = 123;
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  @State source: Source = new Source();
+
+  build() {
+    Column() {
+      Text(`Source ${this.source.source} and message ${this.message}`)
+        .fontSize(20)
+        .margin(10)
+      Button('+1')
+        .width(300)
+        .margin(10)
+        .onClick((e) => {
+          this.source.source += 1;
+        })
+      Button('Serialize')
+        .width(300)
+        .margin(10)
+        .onClick((e) => {
+          this.message = JSON.stringify(this.source);
+        })
+      Button('Deserialize')
+        .width(300)
+        .margin(10)
+        .onClick((e) => {
+          // 反序列化生成@Observed类并赋值
+          this.source = JSON.parse<Source>('{"source": 123}', Type.from<Source>())!;
+        })
+    }
+    .width('100%')
+  }
+}
+```
+
+![objectlink-serialize-no-param](../figures/observed_objectlink5.gif)
+
+**有参构造**
+
+<!-- @[ObjectLinkSerializeWithParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkSerializeWithParam.ets) -->
+
+``` TypeScript
+import { Button, Column, Component, Entry, Observed, State, Text } from '@kit.ArkUI';
+
+@Observed
+class Source {
+  public source: int;
+
+  constructor(s: int) {
+    // 有参构造
+    this.source = s;
+  }
+
+  // 用户自定义静态函数
+  static FromJSON(e: jsonx.JsonElement): Source {
+    return new Source(e.getInteger('source'))
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  @State source: Source = new Source(1);
+
+  build() {
+    Column() {
+      Text(`Source ${this.source.source} and message ${this.message}`)
+        .fontSize(20)
+        .margin(10)
+      Button('+1')
+        .width(300)
+        .margin(10)
+        .onClick((e) => {
+          this.source.source += 1;
+        })
+      Button('Serialize')
+        .width(300)
+        .margin(10)
+        .onClick((e) => {
+          this.message = JSON.stringify(this.source);
+        })
+      Button('Deserialize')
+        .width(300)
+        .margin(10)
+        .onClick((e) => {
+          // 使用JSON.parseJsonElement反序列生成JSONElement，再传入静态方法构建实例
+          this.source = Source.FromJSON(JSON.parseJsonElement('{"source": 123}'))!;
+        })
+    }
+    .width('100%')
+  }
+}
+```
+
+![objectlink-serialize-with-param](../figures/observed_objectlink6.gif)
+
+### ObjectLink支持联合类型
+
+\@ObjectLink支持\@Observed装饰类和undefined或null组成的联合类型，在下面的示例中，count类型为Source | Data | undefined，点击父组件Parent中的Button改变count的属性或者类型，Child中也会对应刷新。
+
+<!-- @[ObjectLinkUnionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedObjectLink/entry/src/main/ets/pages/ObjectLinkUnionType.ets) -->
+
+``` TypeScript
+import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
+
+@Observed
+class Source {
+  public source: int;
+
+  constructor(source: int) {
+    this.source = source;
+  }
+}
+
+@Observed
+class Data {
+  public data: int;
+
+  constructor(data: int) {
+    this.data = data;
+  }
+}
+
+@Entry
+@Component
+struct Parent {
+  @State count: Source | Data | undefined = new Source(10);
+
+  build() {
+    Column() {
+      Child({ count: this.count })
+
+      Button('change count property')
+        .margin(10)
+        .onClick((e) => {
+          // 判断count的类型，做属性的更新
+          if (this.count instanceof Source) {
+            (this.count as Source).source += 1;
+          } else if (this.count instanceof Data) {
+            (this.count as Data).data += 1;
+          } else {
+            console.info('count is undefined, cannot change property');
+          }
+        })
+
+      Button('change count to Source')
+        .margin(10)
+        .onClick((e) => {
+          // 赋值为Source的实例
+          this.count = new Source(100);
+        })
+
+      Button('change count to Data')
+        .margin(10)
+        .onClick((e) => {
+          // 赋值为Data的实例
+          this.count = new Data(100);
+        })
+
+      Button('change count to undefined')
+        .margin(10)
+        .onClick((e) => {
+          // 赋值为undefined
+          this.count = undefined;
+        })
+    }.width('100%')
+  }
+}
+
+@Component
+struct Child {
+  @ObjectLink count: Source | Data | undefined;
+
+  build() {
+    Column() {
+      Text(`count is instanceof ${this.count instanceof Source ? 'Source' :
+        this.count instanceof Data ? 'Data' : 'undefined'}`)
+        .fontSize(30)
+        .margin(10)
+
+      Text(`count's property is  ${this.count instanceof Source ? (this.count as Source).source :
+        (this.count as Data | undefined)?.data}`).fontSize(15)
+
+    }.width('100%')
+  }
+}
+```
+
+![ObjectLink-support-union-types](../figures/ObjectLink-support-union-types.gif)

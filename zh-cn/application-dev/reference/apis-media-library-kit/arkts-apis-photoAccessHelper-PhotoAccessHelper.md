@@ -84,7 +84,7 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 获取图片和视频资源，使用Promise方式返回结果。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -151,7 +151,7 @@ getBurstAssets(burstKey: string, options: FetchOptions): Promise&lt;FetchResult&
 
 获取连拍照片资源，使用Promise方式返回结果。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -219,7 +219,7 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 
 在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -278,7 +278,7 @@ createAsset(photoType: PhotoType, extension: string, callback: AsyncCallback&lt;
 
 在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -333,7 +333,7 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 
 在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -398,7 +398,7 @@ createPhotoAsset(photoType: PhotoType, extension: string, title?: string): Promi
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -777,7 +777,7 @@ applyChanges(mediaChangeRequest: MediaChangeRequest): Promise&lt;void&gt;
 
 在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -904,7 +904,7 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 >
 > 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -975,7 +975,7 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1044,7 +1044,7 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1217,7 +1217,7 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 
 <!--RP1--><!--RP1End-->调用接口给未授权的URI进行授权，返回已创建并授予保存权限的URI列表。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1273,8 +1273,8 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;R
 
 返回授权结果，其中包含已创建并授予保存权限的URI列表以及无效的URI列表。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-  
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 ​**模型约束**： 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1623,7 +1623,7 @@ getPhotoPickerComponentDefaultAlbumName(): Promise&lt;string&gt;
 
 应用使用PhotoPickerComponent组件选择照片时，支持调用API获取组件默认显示相册的相册名字符串。跟随当前系统语言，支持返回当前语言的相册名。使用Promise异步回调。
 
-**原子化服务API**： 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**： 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1801,7 +1801,7 @@ getRecentPhotoInfo(options?: RecentPhotoOptions): Promise\<RecentPhotoInfo>
 
 应用使用RecentPhotoComponent组件查看最近图片时，支持调用API获取最近图片信息。使用Promise异步回调。
 
-**原子化服务API**： 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**： 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -2235,7 +2235,7 @@ setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise\<vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151 | The scenario parameter verification fails, Invalid tokenId.|
+| 23800151 | The capability is invalid. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -2255,6 +2255,62 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+## checkPhotoUrisReadPermission
+
+checkPhotoUrisReadPermission(uris: string[]): Promise&lt;Map&lt;string, MediaAssetPermissionState&gt;&gt;
+
+查询URI对应资产的读权限，以及资产是否存在。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| uris | string[] | 是   | 待查询的URI数组，单次最多查询500条。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;Map&lt;string, [MediaAssetPermissionState](arkts-apis-photoAccessHelper-e.md#mediaassetpermissionstate)&gt;&gt; | Promise对象，返回URI与MediaAssetPermissionState的键值对集合。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 23800151 | Scenario-specific parameters are incorrect. Possible causes are as follows: 1. The length of the input parameter queue is greater than 500. 2. The input parameter is null or undefined.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('checkPhotoUrisReadPermissionDemo');
+
+  try {
+    let uris: string[] = [
+      'file://fileUriDemo1', // 实际场景请使用真实的URI。
+      'file://fileUriDemo2'
+    ];
+    let permissionMap: Map<string, photoAccessHelper.MediaAssetPermissionState> =
+      await phAccessHelper.checkPhotoUrisReadPermission(uris);
+  } catch (err) {
+    const error = err as BusinessError;
+    console.error(`checkPhotoUrisReadPermission failed, error: ${error.code}, ${error.message}`);
+  }
+}
+```
 ## onMediaLibraryAvailability
 
 onMediaLibraryAvailability(callback: Callback&lt;MediaLibraryAvailability&gt;): void
@@ -2290,25 +2346,30 @@ onMediaLibraryAvailability(callback: Callback&lt;MediaLibraryAvailability&gt;): 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-private handleMediaLibraryChange?: (
-  changeData: photoAccessHelper.MedialibraryAvailability
-) => void;
+class MediaLibraryExample {
+  private helper: photoAccessHelper.PhotoAccessHelper;
+  private handleMediaLibraryChange?: (changeData: photoAccessHelper.MediaLibraryAvailability) => void;
 
-onMedialibraryAvailability = async () => {
-  try {
-    this.handleMediaLibraryChange = (
-      changeData: photoAccessHelper.MedialibraryAvailability
-    ) => {
-      const availabilityStatus = changeData.availabilityStatus;
-      const unavailabilityReason = changeData.unavailabilityReason;
-      console.info(`媒体库状态变化：状态=${availabilityStatus}，原因=${unavailabilityReason}`);
-    };
-    await this.helper.onMedialibraryAvailability(this.handleMediaLibraryChange);
-    console.info('媒体库监听注册成功');
-  } catch (err) {
-    console.error(`onMedialibraryAvailability failed::${err.code}, ${err.message} !`);
+  constructor(context: common.Context) {
+    this.helper = photoAccessHelper.getPhotoAccessHelper(context);
   }
-};
+
+  onMediaLibraryAvailability = async () => {
+    try {
+      this.handleMediaLibraryChange = (
+        changeData: photoAccessHelper.MediaLibraryAvailability
+      ) => {
+        const availabilityStatus = changeData.availabilityStatus;
+        const unavailabilityReason = changeData.unavailabilityReason;
+        console.info(`媒体库状态变化：状态=${availabilityStatus}，原因=${unavailabilityReason}`);
+      };
+      this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
+      console.info('媒体库监听注册成功');
+    } catch (err) {
+      console.error(`onMediaLibraryAvailability failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
+    }
+  };
+}
 ```
 
 ## offMediaLibraryAvailability
@@ -2345,17 +2406,22 @@ offMediaLibraryAvailability(callback?: Callback&lt;MediaLibraryAvailability&gt;)
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-private handleMediaLibraryChange?: (
-  changeData: photoAccessHelper.MedialibraryAvailability
-) => void;
+class MediaLibraryExample {
+  private helper: photoAccessHelper.PhotoAccessHelper;
+  private handleMediaLibraryChange?: (changeData: photoAccessHelper.MediaLibraryAvailability) => void;
 
-offMedialibraryAvailability1 = async () => {
-  try {
-    await this.helper.onMedialibraryAvailability(this.handleMediaLibraryChange);
-    await this.helper.offMedialibraryAvailability(this.handleMediaLibraryChange);
-    console.info('媒体库监听解除成功');
-  } catch (err) {
-    console.error(`offMedialibraryAvailability failed::${err.code}, ${err.message} !`);
+  constructor(context: common.Context) {
+    this.helper = photoAccessHelper.getPhotoAccessHelper(context);
   }
-};
+
+  offMediaLibraryAvailability = async () => {
+    try {
+      this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
+      this.helper.offMediaLibraryAvailability(this.handleMediaLibraryChange);
+      console.info('媒体库监听解除成功');
+    } catch (err) {
+      console.error(`offMediaLibraryAvailability failed::${(err as BusinessError).code}, ${(err as BusinessError).message} !`);
+    }
+  };
+}
 ```

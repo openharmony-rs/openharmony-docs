@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API Version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -19,7 +21,9 @@
 
 ## 接口
 
-Blank(min?: number&nbsp;|&nbsp;string)
+ArkTS-Dyn: Blank(min?: number&nbsp;|&nbsp;string)
+
+ArkTS-Sta: Blank(min?: double&nbsp;|&nbsp;string)
 
 创建空白填充组件。
 
@@ -28,17 +32,21 @@ Blank(min?: number&nbsp;|&nbsp;string)
  - Blank设置主轴方向大小（size）与min时约束关系为max(min, size)。  
  - Blank在父容器交叉轴上设置大小时不会撑满父容器交叉轴，交叉轴不设置大小时alignSelf默认值为ItemAlign.Stretch，会撑满容器交叉轴。  
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| min | number&nbsp;\|&nbsp;string | 否 | 空白填充组件在容器主轴上的最小大小。<br/>默认值：0，number类型单位为vp，string类型可以显式指定[像素单位](ts-pixel-units.md)，如'10px'。不指定像素单位时，默认单位vp，如'10'，等同于10vp。<br />非法值：按默认值处理。<br/>**说明：** <br/>不支持设置百分比。负值使用默认值。当最小值大于容器可用空间时，使用最小值作为自身大小并超出容器。 |
+| min | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 空白填充组件在容器主轴上的最小大小。<br/>默认值：0，number类型单位为vp，string类型可以显式指定[像素单位](ts-pixel-units.md)，如'10px'。不指定像素单位时，默认单位vp，如'10'，等同于10vp。<br />非法值：按默认值处理。<br/>**说明：** <br/>不支持设置百分比。负值使用默认值。当最小值大于容器可用空间时，使用最小值作为自身大小并超出容器。 |
 
 ## 属性
 
@@ -46,21 +54,45 @@ Blank(min?: number&nbsp;|&nbsp;string)
 
 ### color
 
-color(value: ResourceColor)
+ArkTS-Dyn: color(value: ResourceColor)
+
+ArkTS-Sta: color(value: ResourceColor | undefined)
 
 设置空白填充的填充颜色，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [ResourceColor](ts-types.md#resourcecolor) | 是 | 空白填充的填充颜色。<br/>默认值：Color.Transparent <br />非法值：按默认值处理。 |
+| value | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是 | 空白填充的填充颜色。<br/>默认值：Color.Transparent <br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<BlankAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<BlankAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Blank组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ## 事件
 
@@ -71,6 +103,8 @@ color(value: ResourceColor)
 ### 示例1（占满空余空间）
 
 Blank组件在横竖屏占满空余空间效果。
+
+**ArkTS-Dyn示例：**
 
 ```ts
 // xxx.ets
@@ -89,18 +123,41 @@ struct BlankExample {
 }
 ```
 
+**ArkTS-Sta示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Toggle, Column, Row, Blank, ToggleType, Margin, Padding } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct BlankExample {
+  build() {
+    Column() {
+      Row() {
+        Text('Bluetooth').fontSize(18)
+        Blank()
+        Toggle({ type: ToggleType.Switch }).margin({ top: 14, bottom: 14, left: 6, right: 6 } as Margin)
+      }.width('100%').backgroundColor(0xFFFFFF).borderRadius(15).padding({ left: 12 } as Padding)
+    }.backgroundColor(0xEFEFEF).padding(20)
+  }
+}
+```
+
 竖屏状态
 
-![zh-cn_image_0000001219662649](figures/zh-cn_image_0000001219662649.gif)
+![blank2](figures/blank2.gif)
 
 横屏状态
 
-![zh-cn_image_0000001174104388](figures/zh-cn_image_0000001174104388.gif)
+![blank](figures/blank.gif)
 
 
 ### 示例2（填充固定宽度）
 
 Blank组件的父组件未设置宽度时，min参数的使用效果。
+
+**ArkTS-Dyn示例：**
 
 ```ts
 // xxx.ets
@@ -127,6 +184,37 @@ struct BlankExample {
   }
 }
 ```
+
+**ArkTS-Sta示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Toggle, Column, Row, Blank, ColumnOptions, ToggleType, Margin, Padding, Color } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct BlankExample {
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      // Blank父组件不设置宽度时，Blank失效，可以通过设置min最小宽度填充固定宽度
+      Row() {
+        Text('Bluetooth').fontSize(18)
+        Blank().color(Color.Yellow)
+        Toggle({ type: ToggleType.Switch }).margin({ top: 14, bottom: 14, left: 6, right: 6 } as Margin)
+      }.backgroundColor(0xFFFFFF).borderRadius(15).padding({ left: 12 } as Padding)
+
+      Row() {
+        Text('Bluetooth').fontSize(18)
+        // 设置最小宽度为160
+        Blank('160').color(Color.Yellow)
+        Toggle({ type: ToggleType.Switch }).margin({ top: 14, bottom: 14, left: 6, right: 6 } as Margin)
+      }.backgroundColor(0xFFFFFF).borderRadius(15).padding({ left: 12 } as Padding)
+
+    }.backgroundColor(0xEFEFEF).padding(20).width('100%')
+  }
+}
+```
+
 Blank父组件未设置宽度时，子组件间无空白填充，使用min参数设置填充尺寸
 
 ![blankmin](figures/blankmin.png)

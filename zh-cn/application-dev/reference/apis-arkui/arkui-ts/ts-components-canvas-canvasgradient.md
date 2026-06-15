@@ -1,8 +1,8 @@
 # CanvasGradient
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,8 +11,6 @@
 >  **说明：**
 >
 >  从 API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
-
-
 
 ## addColorStop
 
@@ -66,10 +64,9 @@ addColorStop(offset: number, color: string): void
     }
   }
   ```
-  ![zh-cn_image_0000001194032516](figures/zh-cn_image_0000001194032516.png)
+  ![createLinearGradient2](figures/createLinearGradient2.png)
 
- 
- ## addColorStop<sup>20+</sup>
+## addColorStop<sup>20+</sup>
 
 addColorStop(offset: number, color: string | ColorMetrics): void
 
@@ -78,6 +75,8 @@ addColorStop(offset: number, color: string | ColorMetrics): void
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +103,7 @@ addColorStop(offset: number, color: string | ColorMetrics): void
 **示例：**
 
 通过addColorStop设置指定色域的渐变断点值，包括偏移和颜色。设置窗口色域模式为广色域参照方法[setWindowColorSpace](../arkts-apis-window-Window.md#setwindowcolorspace9)。
+
 ```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -155,5 +155,5 @@ struct AddColorStop {
   }
 }
 ```
-![zh-cn_image_0000001194032516](figures/zh-cn_image_0000001194032517.png)
+![addColorStop](figures/addColorStop.png)
 

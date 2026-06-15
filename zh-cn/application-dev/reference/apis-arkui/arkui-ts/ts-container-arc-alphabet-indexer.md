@@ -1,17 +1,22 @@
 # ArcAlphabetIndexer
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
-<!--Tester: @Giacinta-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 弧形索引条是一种弧形的、可按字母顺序排序进行快速定位的组件，可以与容器组件联动，按逻辑结构快速定位至容器显示区域。
 
 >  **说明：**
 >
->  - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->  - 该组件支持在Phone、PC/2in1、Tablet、TV、Wearable设备上使用。API version 22及以前版本，在Phone、PC/2in1、Tablet、TV上使用会编译告警，但可以正常运行。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件仅可在Stage模型下使用。
+>
+> - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件支持在Phone、PC/2in1、Tablet、TV、Wearable设备上使用。API version 22及以前版本，在Phone、PC/2in1、Tablet、TV上使用会编译告警，但可以正常运行。
 
 
 ## 导入模块
@@ -46,7 +51,7 @@ ArcAlphabetIndexer(info: ArcAlphabetIndexerInitInfo)
 
 创建弧形索引条实例，传入弧形索引条配置项参数。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -71,7 +76,7 @@ color(color: Optional&lt;ColorMetrics&gt;)
 
 设置普通状态下索引项文字颜色。未通过该接口设置时，默认0xFFFFFF，显示为白色。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -91,7 +96,7 @@ selectedColor(color: Optional&lt;ColorMetrics&gt;)
 
 设置选中项文字颜色。未通过该接口设置时，默认0xFFFFFF，显示为白色。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -111,7 +116,7 @@ popupColor(color: Optional&lt;ColorMetrics&gt;)
 
 设置提示弹窗文字颜色。未通过该接口设置时，默认0xFFFFFF，显示为白色。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -131,7 +136,7 @@ selectedBackgroundColor(color: Optional&lt;ColorMetrics&gt;)
 
 设置选中项背景颜色。未通过该接口设置时，默认0x1F71FF，显示为蓝色。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -151,7 +156,7 @@ popupBackground(color: Optional&lt;ColorMetrics&gt;)
 
 设置提示弹窗背景色。未通过该接口设置时，默认0xD8404040，显示为灰色。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -175,7 +180,7 @@ usePopup(enabled: Optional&lt;boolean&gt;)
 
 设置是否使用提示弹窗。未通过该接口设置时，默认为false，不使用提示弹窗。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -195,7 +200,7 @@ selectedFont(font: Optional&lt;Font&gt;)
 
 设置选中项文字尺寸、粗细、字体族、倾斜等样式。未通过该接口设置时，默认样式为{size: '13.0fp', style: FontStyle.Normal, weight:500, family: 'HarmonyOS Sans' }。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -215,7 +220,7 @@ popupFont(font: Optional&lt;Font&gt;)
 
 设置提示弹窗字体样式。未通过该接口设置时，默认样式为{size: '13.0fp', style: FontStyle.Normal, weight:500, family: 'HarmonyOS Sans'}。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -235,7 +240,7 @@ font(font: Optional&lt;Font&gt;)
 
 设置字母索引条默认字体样式。未通过该接口设置时，默认样式为{size: '13.0fp', style: FontStyle.Normal, weight:500, family: 'HarmonyOS Sans'}。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -255,7 +260,7 @@ itemSize(size: Optional&lt;LengthMetrics&gt;)
 
 设置字母索引条字母区域大小。未通过该接口设置时，默认字母索引条区域大小为24.0vp。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -277,7 +282,7 @@ ArkTS-Sta: selected(index: Optional&lt;int&gt; | Bindable&lt;int&gt;)
 
 设置选中项索引值。未通过该接口设置时，选中项索引值默认为0。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -297,7 +302,7 @@ autoCollapse(enable: Optional&lt;boolean&gt;)
 
 设置是否使用自适应折叠模式。未通过该接口设置时，默认使用自适应折叠模式。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -321,7 +326,7 @@ popupBackgroundBlurStyle(style: Optional&lt;BlurStyle&gt;)
 >
 > 当通过popupBackgroundBlurStyle设置弹窗气泡的背景模糊材质时，不建议再通过[popupBackground](#popupbackground)设置背景色。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -335,10 +340,6 @@ popupBackgroundBlurStyle(style: Optional&lt;BlurStyle&gt;)
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
 | style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[BlurStyle](ts-universal-attributes-background.md#blurstyle9)&gt; | 是   | 设置提示弹窗的背景模糊材质。<br/>取值为undefined时，提示弹窗的背景模糊材质为BlurStyle.NONE，无模糊效果。 |
 
->  **说明：**
->
->  当通过popupBackgroundBlurStyle设置弹窗气泡的背景模糊材质时，不建议再通过[popupBackground](#popupbackground)设置背景色。
-
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
@@ -349,7 +350,7 @@ onSelect(handler: Optional&lt;OnSelectCallback&gt;)
 
 索引条选中回调，返回值为当前选中索引。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -368,7 +369,7 @@ onSelect(handler: Optional&lt;OnSelectCallback&gt;)
 
 定义弧形字母索引条的初始化参数。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -383,13 +384,13 @@ onSelect(handler: Optional&lt;OnSelectCallback&gt;)
 
 ## OnSelectCallback
 
-ArkTS-Dyn: type OnSelectCallback =  (index: number) => void
+ArkTS-Dyn: type OnSelectCallback = (index: number) => void
 
-ArkTS-Sta: type OnSelectCallback =  (index: int) => void
+ArkTS-Sta: type OnSelectCallback = (index: int) => void
 
 定义[onSelect](#onselect)中使用的回调类型。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 

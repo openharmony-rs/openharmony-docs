@@ -127,7 +127,7 @@ V1：
 
 具体示例如下：
 
-<!-- @[Internal_Other_Migrations_WaterFlow_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsWaterFlowV1.ets) -->
+<!-- @[Internal_Other_Migrations_WaterFlow_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsWaterFlowV1.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -161,6 +161,7 @@ struct WaterFlowSample {
     Column() {
       Text(`${this.arr.length}`)
 
+      // @State装饰sections，可以观察到调用WaterFlowSections接口带来的变化
       Button('push option').onClick(() => {
         let section: SectionOptions = {
           itemsCount: 1,
@@ -304,7 +305,7 @@ V1：
 
 具体示例如下：
 
-<!-- @[Internal_attribute_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalattributeModifierV1.ets) -->
+<!-- @[Internal_attribute_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalattributeModifierV1.ets) --> 
 
 ``` TypeScript
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
@@ -330,6 +331,7 @@ struct AttributeDemo {
         Button('Button')
           .attributeModifier(this.modifier)
           .onClick(() => {
+            // 在状态管理V1中，可以通过@State装饰观察modifier的变化
             this.modifier.isDark = !this.modifier.isDark;
           })
       }
@@ -388,7 +390,7 @@ struct AttributeDemo {
 
 ### CommonModifier
 
-动态设置组件的属性类。以[CommonModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)为例。
+动态设置组件的属性类。以[自定义Modifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)为例。
 
 V1：
 
@@ -462,7 +464,7 @@ struct Index {
 
 V2：
 
-在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，又因为[CommonModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)在框架内是通过其属性触发刷新，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
+在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，又因为[自定义Modifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)在框架内是通过其属性触发刷新，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
 
 具体示例如下：
 
@@ -542,7 +544,7 @@ V1：
 
 具体示例如下：
 
-<!-- @[Internal_Module_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV1.ets) --> 
+<!-- @[Internal_Module_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV1.ets) -->  
 
 ``` TypeScript
 import { TextModifier } from '@kit.ArkUI';
@@ -579,6 +581,7 @@ struct MyImage1 {
       Button($r('app.string.EntryAbility_label'))
         .margin(10)
         .onClick(() => {
+          // 通过点击改变index数值，动态设置Text的属性类
           hilog.info(DOMAIN, 'testTag', 'Modifier', 'onClick');
           this.index++;
           if (this.index % 2 === 1) {

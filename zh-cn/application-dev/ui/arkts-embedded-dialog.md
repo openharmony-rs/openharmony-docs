@@ -25,7 +25,7 @@ ArkUI的弹出框默认设置为全局级别，弹窗节点作为页面根节点
 
 在弹出框的options入参中设置[levelMode](../reference/apis-arkui/js-apis-promptAction.md#levelmode15枚举说明)属性，值为LevelMode.EMBEDDED表示开启页面级弹出框能力。
 
-当弹出框弹出时，会自动获取当前显示的Page页面并将弹出框节点挂载在此页面下。此时弹出框的显示层级高于此Page页面下的所有Navigation页面。
+当弹出框弹出时，会自动获取当前显示的Page页面并将弹出框节点挂载在此页面下。此时弹出框的显示层级高于此Page页面下的所有[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)页面。
 
 <!-- [open_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
 
@@ -59,7 +59,7 @@ Text(this.message).id('test_text')
         this.customDialogComponent();
       },
       // ···
-      levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框	
+      levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
       levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
     })
       .then((dialogId: number) => {
@@ -202,7 +202,7 @@ struct Next {
 
 ``` TypeScript
 import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
- 	 
+
 let customDialogId: number = 0;
 
 @Builder

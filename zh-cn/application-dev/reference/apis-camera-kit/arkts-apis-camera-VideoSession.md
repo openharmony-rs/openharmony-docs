@@ -6,9 +6,9 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-VideoSession继承自[Session](arkts-apis-camera-Session.md)、[Flash](arkts-apis-camera-Flash.md)、[AutoExposure](arkts-apis-camera-AutoExposure.md)、 [WhiteBalance](arkts-apis-camera-WhiteBalance.md)、[Focus](arkts-apis-camera-Focus.md)、[Zoom](arkts-apis-camera-Zoom.md)、[Stabilization](arkts-apis-camera-Stabilization.md)、[ColorManagement](arkts-apis-camera-ColorManagement.md)、[AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md)、[Macro](arkts-apis-camera-Macro.md)、[ControlCenter](arkts-apis-camera-ControlCenter.md)。
+VideoSession继承自[Session](arkts-apis-camera-Session.md)、[Flash](arkts-apis-camera-Flash.md)、[AutoExposure](arkts-apis-camera-AutoExposure.md)、[WhiteBalance](arkts-apis-camera-WhiteBalance.md)、[Focus](arkts-apis-camera-Focus.md)、[Zoom](arkts-apis-camera-Zoom.md)、[Stabilization](arkts-apis-camera-Stabilization.md)、[ColorManagement](arkts-apis-camera-ColorManagement.md)、[AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md)、[Macro](arkts-apis-camera-Macro.md)、[ControlCenter](arkts-apis-camera-ControlCenter.md)、[ManualExposure](arkts-apis-camera-ManualExposure.md)、[ManualFocus](arkts-apis-camera-ManualFocus.md)、[ManualIso](arkts-apis-camera-ManualIso.md)、[OIS](arkts-apis-camera-OIS.md)、[Aperture](arkts-apis-camera-Aperture.md)。
 
-普通录像模式会话类，提供了对闪光灯、曝光、白平衡、对焦、变焦、视频防抖、色彩空间、微距及控制器的操作。
+普通录像模式会话类，提供了对闪光灯、曝光、白平衡、对焦、变焦、视频防抖、色彩空间、微距及控制器、手动曝光、手动对焦、手动ISO、光学防抖及光圈的操作。
 
 默认的视频录制模式，适用于一般场景。支持720P、1080p等多种分辨率的录制，可选择不同帧率（如30fps、60fps）。
 
@@ -29,7 +29,7 @@ canPreconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): boo
 
 查询当前Session是否支持指定的预配置类型。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -77,7 +77,7 @@ preconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): void
 
 对当前Session进行预配置。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -123,7 +123,7 @@ on(type: 'error', callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -154,7 +154,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 注销监听普通录像会话的错误事件，通过注册回调函数获取结果。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -183,7 +183,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -218,7 +218,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 注销监听相机聚焦的状态变化。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -247,7 +247,7 @@ on(type: 'smoothZoomInfoAvailable', callback: AsyncCallback\<SmoothZoomInfo\>): 
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -282,7 +282,7 @@ off(type: 'smoothZoomInfoAvailable', callback?: AsyncCallback\<SmoothZoomInfo\>)
 
 注销监听相机平滑变焦的状态变化。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -311,7 +311,7 @@ on(type: 'autoDeviceSwitchStatusChange', callback: AsyncCallback\<AutoDeviceSwit
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -346,7 +346,7 @@ off(type: 'autoDeviceSwitchStatusChange', callback?: AsyncCallback\<AutoDeviceSw
 
 注销监听相机自动切换镜头状态变化。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -375,7 +375,7 @@ setQualityPrioritization(quality : QualityPrioritization) : void;
 > - 默认为高录像质量，设置为功耗平衡将降低录像质量以减少功耗。实际功耗收益因平台而异。
 > - 建议该接口在[commitConfig](arkts-apis-camera-Session.md#commitconfig11)和[start](arkts-apis-camera-Session.md#start11-1)之间调用。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -420,7 +420,7 @@ on(type: 'systemPressureLevelChange', callback: AsyncCallback\<SystemPressureLev
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -455,7 +455,7 @@ off(type: 'systemPressureLevelChange', callback?: AsyncCallback\<SystemPressureL
 
 注销监听系统压力状态变化。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -484,7 +484,7 @@ on(type: 'controlCenterEffectStatusChange', callback: AsyncCallback\<ControlCent
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -518,7 +518,7 @@ off(type: 'controlCenterEffectStatusChange', callback?: AsyncCallback\<ControlCe
 
 注销监听相机控制器激活状态变化。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -543,7 +543,7 @@ on(type: 'macroStatusChanged', callback: AsyncCallback\<boolean\>): void
 
 监听相机微距状态变化，通过注册回调函数获取结果。使用callback异步回调。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -579,7 +579,7 @@ off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 
 注销相机微距状态变化的监听。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -607,7 +607,7 @@ onIsoInfoChange(callback: Callback\<IsoInfo\>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
  
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -639,7 +639,7 @@ offIsoInfoChange(callback?: Callback\<IsoInfo\>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -664,5 +664,63 @@ function unregisterIsoInfoChanged(videoSession: camera.VideoSession): void {
 
 function unregisterAllIsoInfoChanged(videoSession: camera.VideoSession): void {
   videoSession.offIsoInfoChange();
+}
+```
+
+## onExposureInfoChange
+
+onExposureInfoChange(callback: Callback\<ExposureInfo\>): void
+
+订阅曝光信息变化事件回调。曝光参数更改后，系统将返回更新后的曝光信息。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型            | 必填 | 说明       |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\> | 是   | 回调函数，用于获取曝光值变化信息。 |
+
+**示例：**
+
+```ts
+function onExposureInfoChange(videoSession: camera.VideoSession): void {
+  videoSession.onExposureInfoChange((exposureInfo: camera.ExposureInfo) => {
+    console.info(`Exposure info changed, exposureTime: ${exposureInfo.exposureTime}`);
+  });
+}
+```
+
+## offExposureInfoChange
+
+offExposureInfoChange(callback?: Callback\<ExposureInfo\>): void
+
+取消订阅曝光信息变化事件回调。如果订阅了曝光信息，请在释放相机前取消订阅。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型            | 必填 | 说明       |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function offExposureInfoChange(videoSession: camera.VideoSession): void {
+  videoSession.offExposureInfoChange();
 }
 ```

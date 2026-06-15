@@ -1,8 +1,8 @@
 # Path
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,9 +10,11 @@
 
 > **说明：**
 >
-> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
 
 ## 子组件
@@ -21,7 +23,11 @@
 
 ## 接口
 
-Path(options?: PathOptions)
+### Path
+
+new Path(options?: PathOptions)
+
+用于绘制路径的构造函数。 
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -29,7 +35,25 @@ Path(options?: PathOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数:**
+**参数：**
+
+| 参数名                                             | 类型         | 必填 | 说明                   |
+| ------ | ---------------- | ---- | ------------------------------------------------------------ |
+| options  | [PathOptions](ts-drawing-components-path.md#pathoptions18对象说明) | 否   | Path绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+
+### Path
+
+Path(options?: PathOptions)
+
+用于绘制路径的构造函数。 
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
 
 | 参数名                                             | 类型         | 必填 | 说明                   |
 | ------ | ---------------- | ---- | ------------------------------------------------------------ |
@@ -47,13 +71,15 @@ Path(options?: PathOptions)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 路径所在矩形的宽度。<br/>值为异常值或缺省时按照自身内容需要的宽度处理。<br/>默认单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 路径所在矩形的高度。<br/>值为异常值或缺省时按照自身内容需要的高度处理。<br/>默认单位：vp<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| [commands<sup>7+</sup>](ts-drawing-components-path.md#commands) | [ResourceStr](ts-types.md#resourcestr)  | 否 | 是 | 路径绘制的命令字符串。<br/>值为异常值或缺省时按照自身内容需要的宽高处理。默认值：空字符串<br/>异常值按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| [commands<sup>7+</sup>](ts-drawing-components-path.md#commands) | [ResourceStr](ts-types.md#resourcestr)  | 否 | 是 | 路径绘制的命令字符串。<br/>默认值：空字符串<br/>异常值按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -61,7 +87,9 @@ Path(options?: PathOptions)
 
 ### commands
 
-commands(value: [ResourceStr](ts-types.md#resourcestr))
+ArkTS-Dyn: commands(value: [ResourceStr](ts-types.md#resourcestr))
+
+ArkTS-Sta: commands(value: string | undefined)
 
 设置符合[SVG路径描述规范](ts-drawing-components-path.md#svg路径描述规范)的命令字符串，单位为px。像素单位转换方法请参考[像素单位转换](ts-pixel-units.md)。
 
@@ -71,11 +99,15 @@ commands(value: [ResourceStr](ts-types.md#resourcestr))
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                          |
 | ------ | ------ | ---- | ----------------------------- |
-| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 线条绘制的路径。<br/>默认值：空字符串<br/>默认单位：px <br/>异常值undefined和null按照默认值处理。|
+| value  | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: string \| undefined | 是   | 线条绘制的路径。<br/>默认值：空字符串<br/>默认单位：px <br/>异常值undefined和null按照默认值处理。|
 
 ### fill
 
@@ -381,7 +413,7 @@ struct PathExample {
 }
 ```
 
-![zh-cn_image_0000001219744193](figures/zh-cn_image_0000001219744193.png)
+![path1](figures/path1.png)
 
 ### 示例2（使用不同参数类型绘制路径）
 

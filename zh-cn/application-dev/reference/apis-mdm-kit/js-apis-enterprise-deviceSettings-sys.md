@@ -1,7 +1,7 @@
 # @ohos.enterprise.deviceSettings （设备设置管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
@@ -14,7 +14,7 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[MDM应用](../../mdm/mdm-kit-term.md#mdm应用)开放，需通过[enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)接口将设备管理应用激活后调用。
 > 
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.deviceSettings](js-apis-enterprise-deviceSettings.md)。
 
@@ -321,7 +321,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     .then((result) => {
       console.info(`Succeeded in installing user certificate, result : ${JSON.stringify(result)}`);
     }).catch((err: BusinessError) => {
-    console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
   })
 }).catch((error: BusinessError) => {
   console.error(`Failed to get raw file content. message: ${error.message}`);

@@ -10,6 +10,8 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 从API version 18开始，部分设备会优先响应系统的双指长按手势，导致应用的双指长按手势不生效。
@@ -23,15 +25,21 @@ LongPressGesture(value?: { fingers?: number; repeat?: boolean; duration?: number
 
 创建长按手势对象。继承自[GestureInterface\<T>](ts-gesture-common.md#gestureinterfacet11)。
 
-当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下： 
+当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下：
 
-当长按触发时间小于500毫秒时，系统优先响应长按事件而非拖拽事件。 
+当长按触发时间小于500毫秒时，系统优先响应长按事件而非拖拽事件。
 
 当长按触发时间达到或超过500毫秒时，系统优先响应拖拽事件而非长按事件。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[LongPressGesture<sup>15+</sup>](#longpressgesture15)。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -45,15 +53,21 @@ LongPressGesture(options?: LongPressGestureHandlerOptions)
 
 创建长按手势对象。与[LongPressGesture](#longpressgesture-1)相比，options参数新增了对isFingerCountLimited参数，表示是否检查触摸屏幕的手指数量。
 
-当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下： 
+当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下：
 
-当长按触发时间小于500毫秒时，系统优先响应长按事件而非拖拽事件。 
+当长按触发时间小于500毫秒时，系统优先响应长按事件而非拖拽事件。
 
 当长按触发时间达到或超过500毫秒时，系统优先响应拖拽事件而非长按事件。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -72,35 +86,47 @@ LongPressGesture(options?: LongPressGestureHandlerOptions)
 
 ### onAction
 
-onAction(event: (event: GestureEvent) => void)
+ArkTS-Dyn: onAction(event: (event: GestureEvent) => void)
+
+ArkTS-Sta: onAction(event: Callback\<GestureEvent>)
 
 设置长按手势识别成功回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 长按手势识别成功回调函数。 |
+| event  |  ArkTS-Dyn: (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void<br/>ArkTS-Sta: Callback<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是   | 长按手势识别成功回调函数。 |
 
 ### onActionEnd
 
-onActionEnd(event: (event: GestureEvent) => void)
+ArkTS-Dyn: onActionEnd(event: (event: GestureEvent) => void)
+
+ArkTS-Sta: onActionEnd(event: Callback\<GestureEvent>)
 
 设置长按手势结束回调。长按手势识别成功后，最后一根手指抬起时触发回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void | 是   | 长按手势结束回调函数。 |
+| event  |  ArkTS-Dyn: (event: [GestureEvent](ts-gesture-common.md#gestureevent对象说明)) => void<br/>ArkTS-Sta: Callback<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是   | 长按手势结束回调函数。 |
 
 ### onActionCancel
 
@@ -108,9 +134,15 @@ onActionCancel(event: () => void)
 
 设置长按手势取消回调。长按手势识别成功后，接收到触摸取消事件时触发回调。不返回手势事件信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onActionCancel](#onactioncancel18)。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -120,13 +152,19 @@ onActionCancel(event: () => void)
 
 ### onActionCancel<sup>18+</sup>
 
-onActionCancel(event: Callback\<GestureEvent\>)
+onActionCancel(event: Callback\<GestureEvent>)
 
 设置长按手势取消回调。长按手势识别成功后，接收到触摸取消事件时触发回调。返回手势事件信息。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -173,4 +211,4 @@ struct LongPressGestureExample {
 }
 ```
 
-![zh-cn_image_0000001174264380](figures/zh-cn_image_0000001174264380.gif)
+![longPressGesture](figures/longPressGesture.gif)

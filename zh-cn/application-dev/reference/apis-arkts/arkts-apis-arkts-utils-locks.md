@@ -1,7 +1,7 @@
 # ArkTSUtils.locks
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @dwhuawei-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -14,9 +14,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本Class仅适用于ArkTS-Dyn。
 >
-> 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
 
 ## 导入模块
 
@@ -30,7 +32,7 @@ type AsyncLockCallback\<T> = () => T | Promise\<T>
 
 这是一个补充类型别名，表示[lockAsync](#lockasync)函数所有重载中的回调。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -40,7 +42,7 @@ type AsyncLockCallback\<T> = () => T | Promise\<T>
 
 ### 属性
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -98,7 +100,7 @@ constructor()
 
 默认构造函数。创建一个异步锁。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -114,7 +116,7 @@ static request(name: string): AsyncLock
 
 使用指定的名称查找或创建（如果未找到）异步锁实例。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -143,7 +145,7 @@ static query(name: string): AsyncLockState
 
 查询指定异步锁的信息。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -161,11 +163,10 @@ static query(name: string): AsyncLockState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist. |
 
 **示例：**
@@ -195,7 +196,7 @@ static queryAll(): AsyncLockState[]
 
 查询所有现有锁的信息。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -222,7 +223,7 @@ lockAsync\<T>(callback: AsyncLockCallback\<T>): Promise\<T>
 
 在获取的锁下执行操作。该方法首先获取锁，然后调用回调，最后释放锁。回调在调用[lockAsync](#lockasync)的同一线程中以异步方式执行。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -240,11 +241,10 @@ lockAsync\<T>(callback: AsyncLockCallback\<T>): Promise\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist. |
 
 **示例：**
@@ -262,7 +262,7 @@ lockAsync\<T>(callback: AsyncLockCallback\<T>, mode: AsyncLockMode): Promise\<T>
 
 在获取的锁下执行操作。该方法首先获取锁，然后调用回调，最后释放锁。回调在调用[lockAsync](#lockasync)的同一线程中以异步方式执行。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -281,11 +281,10 @@ lockAsync\<T>(callback: AsyncLockCallback\<T>, mode: AsyncLockMode): Promise\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist. |
 
 **示例：**
@@ -303,7 +302,7 @@ lockAsync\<T, U>(callback: AsyncLockCallback\<T>, mode: AsyncLockMode, options: 
 
 在获取的锁下执行操作。该方法首先获取锁，然后调用回调，最后释放锁。回调在调用[lockAsync](#lockasync)的同一线程中以异步方式执行。在[AsyncLockOptions](#asynclockoptions)中可以提供一个可选的超时值。在这种情况下，如果超时前未能获取锁，lockAsync将返回被拒绝的Promise并带上一个BusinessError实例。这种情况下，错误信息将包含持有的锁和等待的锁的信息以及可能的死锁警告。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -323,11 +322,10 @@ lockAsync\<T, U>(callback: AsyncLockCallback\<T>, mode: AsyncLockMode, options: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 401      | The input parameters are invalid. |
 | 10200030 | The lock does not exist.     |
 | 10200031 | Timeout exceeded. |
 
@@ -350,7 +348,7 @@ let p: Promise<void> = lock.lockAsync<void, void>(
 
 锁操作对应的模式枚举。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -396,7 +394,7 @@ class AsyncLockOptions\<T>
 
 表示锁操作选项的类。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -406,7 +404,7 @@ constructor()
 
 默认构造函数。创建一个所有属性均具有默认值的异步锁配置项实例。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -439,7 +437,7 @@ let p = lock.lockAsync<void, string>(
 
 用于存储异步锁实例上当前执行的所有锁操作的信息的类。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -454,7 +452,7 @@ let p = lock.lockAsync<void, string>(
 
 关于锁的信息。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -470,7 +468,7 @@ let p = lock.lockAsync<void, string>(
 
 用于终止异步操作的对象。该类的实例必须在其创建的同一线程中访问。从其他线程访问此类的字段会导致未定义的行为。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -485,7 +483,7 @@ let p = lock.lockAsync<void, string>(
 
 实现异步等待功能的类，支持异步等待通知操作。该类使用[@Sendable装饰器](../../arkts-utils/arkts-sendable.md)装饰。
 
-**原子化服务API**：从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -495,7 +493,7 @@ constructor()
 
 默认构造函数。创建一个异步等待通知操作的对象。
 
-**原子化服务API**：从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -511,7 +509,7 @@ static request(name: string): ConditionVariable
 
 使用指定的名称查找或创建（如果未找到）异步等待通知操作的对象。
 
-**原子化服务API**：从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -539,7 +537,7 @@ wait(): Promise\<void>
 
 异步调用进入等待中，将在被唤醒后继续执行。使用Promise异步回调。
 
-**原子化服务API**：从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -564,7 +562,7 @@ waitFor(timeout : number) : Promise\<void>
 
 异步调用进入等待中, 将在被唤醒或者等待时间结束后继续执行。使用Promise异步回调。
 
-**原子化服务API**：从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -595,7 +593,7 @@ notifyAll() : void
 
 通知所有等待的线程。
 
-**原子化服务API**：从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -616,7 +614,7 @@ notifyOne() : void
 
 通知第一个等待的线程。
 
-**原子化服务API**：从API version 18 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 

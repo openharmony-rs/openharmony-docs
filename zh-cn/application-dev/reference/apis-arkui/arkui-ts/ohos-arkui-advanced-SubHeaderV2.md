@@ -1,7 +1,7 @@
 # SubHeaderV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -14,6 +14,8 @@
 
 
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -47,6 +49,10 @@ SubHeaderV2({ icon?: SubHeaderV2IconType, title?: SubHeaderV2Title, select?: Sub
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型                                                      | 必填 | 装饰器类型 | 说明                                     |
 | -------- |---------------------------------------------------------| -------- | -------- |----------------------------------------|
 | icon| [SubHeaderV2IconType](#subheaderv2icontype)             | 否 | @Param | 图标设置项。<br />默认值：undefined<br/>当title使用secondaryTitle属性时，设置icon属性才会生效。              |
@@ -68,6 +74,10 @@ type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                        | 说明                     |
 | ----------------------------- |------------------------|
 | [ResourceStr](ts-types.md#resourcestr)                 | 资源类型，用于定义普通图标。         |
@@ -86,12 +96,12 @@ type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier
 
 | 名称 | 类型 | 只读 | 可选 | 说明                           |
 | -------- | -------- |---|----|------------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 标题内容。<br />当[SubHeaderV2](#subheaderv2-1)中同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br />默认值：undefined<br/>装饰器类型：@Trace  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                     |
-| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 副标题内容。<br />默认值：undefined<br/>装饰器类型：@Trace  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                     |
-| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置副标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 设置标题自定义朗读内容。<br />默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| id<sup>24+</sup>|  string  | 否 | 是  | 标题id。需要为标题设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置标题id。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 标题内容。<br />当[SubHeaderV2](#subheaderv2-1)中同时使用primaryTitle、secondaryTitle、icon属性时，设置primaryTitle属性不生效。<br />默认值：undefined<br/>装饰器类型：@Trace  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 副标题内容。<br />默认值：undefined<br/>装饰器类型：@Trace  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置副标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 设置标题自定义朗读内容。<br />默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
+| id<sup>24+</sup>|  string  | 否 | 是  | 标题id。需要为标题设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置标题id。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
 
 ### constructor
 
@@ -104,6 +114,10 @@ constructor(options: SubHeaderV2TitleOptions)
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -121,12 +135,12 @@ constructor(options: SubHeaderV2TitleOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明                          |
 | -------- | -------- |----|----|-----------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  否  | 是  | 标题内容。<br />默认值：undefined   <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                    |
-| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  否  | 是  | 副标题内容。<br />默认值：undefined  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                    |
-| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  |  否  | 是  | 设置标题文本属性，如设置主标题颜色、字体大小、字重等。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  |  否  | 是  | 设置副标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
-| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 设置标题自定义朗读内容。<br />默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| id<sup>24+</sup>|   string | 否 | 是  | 标题id。需要为标题设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置标题id。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  否  | 是  | 标题内容。<br />默认值：undefined   <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23   |
+| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  否  | 是  | 副标题内容。<br />默认值：undefined  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  |  否  | 是  | 设置标题文本属性，如设置主标题颜色、字体大小、字重等。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  |  否  | 是  | 设置副标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 设置标题自定义朗读内容。<br />默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23  |
+| id<sup>24+</sup>|   string | 否 | 是  | 标题id。需要为标题设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置标题id。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24  |
 
 ## SubHeaderV2Select
 
@@ -142,12 +156,12 @@ select内容以及事件。
 
 | 名称 | 类型                                                               | 只读 | 可选 | 说明                                                                        |
 | -------- |------------------------------------------------------------------|----|----|---------------------------------------------------------------------------|
-| options | [SelectOption](ts-basic-components-select.md#selectoption对象说明)[] |  否  | 否  | 下拉选项内容。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。          |
-| selectedIndex | number       |  否  | 是  | 设置下拉菜单初始选项的索引。<br />第一项的索引为0。<br />当不设置selected属性时，<br />默认选择值为-1，菜单项不选中。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| selectedContent | [ResourceStr](ts-types.md#resourcestr)                         |  否  | 是  | 设置下拉按钮本身的文本内容。默认值：'' 。从API version 20开始，支持Resource类型。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
-| onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)                                   |  否  | 是  | 下拉菜单选中某一项的回调。 <br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。      |
-| defaultFocus | boolean |  否  | 是  |下拉按钮是否为默认焦点。<br/>true：下拉按钮是默认焦点。<br/>false：下拉按钮不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。      |
-| id<sup>24+</sup> | string |  否  | 是  |下拉按钮id。需要为下拉按钮设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置下拉按钮id。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| options | [SelectOption](ts-basic-components-select.md#selectoption对象说明)[] |  否  | 否  | 下拉选项内容。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| selectedIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int       |  否  | 是  | 设置下拉菜单初始选项的索引。<br />第一项的索引为0。<br />当不设置selected属性时，<br />默认选择值为-1，菜单项不选中。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| selectedContent | [ResourceStr](ts-types.md#resourcestr)                         |  否  | 是  | 设置下拉按钮本身的文本内容。默认值：'' 。从API version 20开始，支持Resource类型。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23        |
+| onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)                                   |  否  | 是  | 下拉菜单选中某一项的回调。 <br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23      |
+| defaultFocus | boolean |  否  | 是  |下拉按钮是否为默认焦点。<br/>true：下拉按钮是默认焦点。<br/>false：下拉按钮不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23      |
+| id<sup>24+</sup> | string |  否  | 是  |下拉按钮id。需要为下拉按钮设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置下拉按钮id。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
 
 ### constructor
 
@@ -160,6 +174,10 @@ select内容以及事件构造函数。
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -177,16 +195,18 @@ select内容以及事件构造函数。
 
 | 名称 | 类型                                                               | 只读 | 可选 | 说明                                                                        |
 | -------- |------------------------------------------------------------------|----|----|---------------------------------------------------------------------------| 
-| options | [SelectOption](ts-basic-components-select.md#selectoption对象说明)[] |  否  | 否  | 下拉选项内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。           |
-| selectedIndex | number        |  否  | 是  | 设置下拉菜单初始选项的索引。<br />第一项的索引为0。<br />当不设置selected属性时，<br />默认选择值为-1，菜单项不选中。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| selectedContent | [ResourceStr](ts-types.md#resourcestr)       |  否  | 是  | 设置下拉按钮本身的文本内容。默认值：''。从API version 20开始，支持Resource类型。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |
-| onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)          |  否  | 是  | 下拉菜单选中某一项的回调。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。           |
-| defaultFocus | boolean |  否  | 是  | 下拉按钮是否为默认焦点。<br/>true：下拉按钮是默认焦点。<br/>false：下拉按钮不是默认焦点。<br />默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |
-| id<sup>24+</sup> | string |  否  | 是  | 下拉按钮id。需要为下拉按钮设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置下拉按钮id。 <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。    |
+| options | [SelectOption](ts-basic-components-select.md#selectoption对象说明)[] |  否  | 否  | 下拉选项内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| selectedIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int        |  否  | 是  | 设置下拉菜单初始选项的索引。<br />第一项的索引为0。<br />当不设置selected属性时，<br />默认选择值为-1，菜单项不选中。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| selectedContent | [ResourceStr](ts-types.md#resourcestr)       |  否  | 是  | 设置下拉按钮本身的文本内容。默认值：''。从API version 20开始，支持Resource类型。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)          |  否  | 是  | 下拉菜单选中某一项的回调。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23           |
+| defaultFocus | boolean |  否  | 是  | 下拉按钮是否为默认焦点。<br/>true：下拉按钮是默认焦点。<br/>false：下拉按钮不是默认焦点。<br />默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| id<sup>24+</sup> | string |  否  | 是  | 下拉按钮id。需要为下拉按钮设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置下拉按钮id。 <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24    |
 
 ## SubHeaderV2SelectOnSelect
 
-type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: string) => void
+ArkTS-Dyn: type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: string) => void
+
+ArkTS-Sta: type SubHeaderV2SelectOnSelect = (selectedIndex: int, selectedContent?: string) => void
 
 下拉菜单选中某一项的回调类型。
 
@@ -196,11 +216,15 @@ type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: strin
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名            | 类型     | 必填 | 说明                       |
 |:--------------|:-------|:---|:-------------------------|
-| selectedIndex   | number | 是  | 表示选中的下拉菜单项的索引值。 |
+| selectedIndex   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是  | 表示选中的下拉菜单项的索引值。 |
 | selectedContent | string | 否  | 表示选中的下拉菜单项的内容值。  |
 
 ## SubHeaderV2OperationType
@@ -212,6 +236,10 @@ type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: strin
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -232,6 +260,10 @@ type SubHeaderV2OperationItemType = ResourceStr | SymbolGlyphModifier
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                        | 说明                                |
 | ----------------------------- |-----------------------------------|
 | [ResourceStr](ts-types.md#resourcestr)                 | 字符串类型用于定义文本显示或普通图标；资源类型，用于定义普通图标。 |
@@ -251,13 +283,13 @@ type SubHeaderV2OperationItemType = ResourceStr | SymbolGlyphModifier
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                                                                                                                                                                              |
 | -------- | -------- |---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| content |  [SubHeaderV2OperationItemType](#subheaderv2operationitemtype)  | 否 | 否 | 操作区元素内容。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。             |
-| action | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)| 否 | 是 | 操作区事件。默认值：() => void。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。    |
-| accessibilityText |[ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧icon图标无障碍描述。 <br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。      |
-| accessibilityLevel | string | 否 | 是 | 子标题右侧icon图标无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题右侧icon图标由无障碍分组服务和ArkUI进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题右侧icon图标可被无障碍辅助服务所识别。<br/>"no"：当前子标题右侧icon图标不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题右侧icon图标及其所有子组件不可被无障碍辅助服务所识别。<br>默认值: “yes”。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 | 
-| accessibilityDescription|[ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧icon图标无障碍说明，用于为用户进一步说明当前组件。<br>默认值：“单指双击即可执行”。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。         |
-| defaultFocus | boolean | 否 | 是 | 子标题右侧按钮是否为默认焦点。<br/>true：子标题右侧按钮是默认焦点。<br/>false：子标题右侧按钮不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。       |
-| id<sup>24+</sup> | string | 否 | 是 | 子标题右侧按钮id。需要为子标题右侧按钮设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置子标题右侧按钮id。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。   |
+| content |  [SubHeaderV2OperationItemType](#subheaderv2operationitemtype)  | 否 | 否 | 操作区元素内容。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| action | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)| 否 | 是 | 操作区事件。默认值：() => void。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| accessibilityText |[ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧icon图标无障碍描述。 <br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| accessibilityLevel | string | 否 | 是 | 子标题右侧icon图标无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题右侧icon图标由无障碍分组服务和ArkUI进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题右侧icon图标可被无障碍辅助服务所识别。<br/>"no"：当前子标题右侧icon图标不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题右侧icon图标及其所有子组件不可被无障碍辅助服务所识别。<br>默认值: “yes”。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 | 
+| accessibilityDescription|[ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧icon图标无障碍说明，用于为用户进一步说明当前组件。<br>默认值：“单指双击即可执行”。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| defaultFocus | boolean | 否 | 是 | 子标题右侧按钮是否为默认焦点。<br/>true：子标题右侧按钮是默认焦点。<br/>false：子标题右侧按钮不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| id<sup>24+</sup> | string | 否 | 是 | 子标题右侧按钮id。需要为子标题右侧按钮设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置子标题右侧按钮id。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
 
 ### constructor
 
@@ -270,6 +302,10 @@ constructor(options: SubHeaderV2OperationItemOptions)
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -289,6 +325,9 @@ type SubHeaderV2OperationItemAction = () => void
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 ## SubHeaderV2OperationItemOptions
 
@@ -300,13 +339,13 @@ type SubHeaderV2OperationItemAction = () => void
 
 | 名称                     | 类型                     | 只读 | 可选 | 说明                        |
 |--------------------------|-------------------------|---|---|-----------------------------|
-| content                  | [SubHeaderV2OperationItemType](#subheaderv2operationitemtype) | 否 | 否 | 操作项显示的内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。       |
-| action                   | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)         | 否 | 是 | 选项操作事件。默认值：() => void。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。             |
-| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)      | 否 | 是 | 子标题右侧icon图标无障碍描述。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                |
-| accessibilityLevel       | string | 否 | 是 | 子标题右侧icon图标无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题右侧icon图标由无障碍分组服务和ArkUI进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题右侧icon图标可被无障碍辅助服务所识别。<br/>"no"：当前子标题右侧icon图标不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题右侧icon图标及其所有子组件不可被无障碍辅助服务所识别。<br>默认值: “yes”。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 | 
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)      | 否 | 是 | 子标题右侧icon图标无障碍说明，用于为用户进一步说明当前组件。<br>默认值：“单指双击即可执行”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。              |
-| defaultFocus | boolean | 否 | 是 | 子标题右侧按钮是否为默认焦点。<br/>true：子标题右侧按钮是默认焦点。<br/>false：子标题右侧按钮不是默认焦点。<br />默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。             |
-| id<sup>24+</sup> | string | 否 | 是 | 子标题右侧按钮id。需要为子标题右侧按钮设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置子标题右侧按钮id。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。     |
+| content                  | [SubHeaderV2OperationItemType](#subheaderv2operationitemtype) | 否 | 否 | 操作项显示的内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| action                   | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)         | 否 | 是 | 选项操作事件。默认值：() => void。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)      | 否 | 是 | 子标题右侧icon图标无障碍描述。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| accessibilityLevel       | string | 否 | 是 | 子标题右侧icon图标无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题右侧icon图标由无障碍分组服务和ArkUI进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题右侧icon图标可被无障碍辅助服务所识别。<br/>"no"：当前子标题右侧icon图标不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题右侧icon图标及其所有子组件不可被无障碍辅助服务所识别。<br>默认值: “yes”。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 | 
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)      | 否 | 是 | 子标题右侧icon图标无障碍说明，用于为用户进一步说明当前组件。<br>默认值：“单指双击即可执行”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| defaultFocus | boolean | 否 | 是 | 子标题右侧按钮是否为默认焦点。<br/>true：子标题右侧按钮是默认焦点。<br/>false：子标题右侧按钮不是默认焦点。<br />默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| id<sup>24+</sup> | string | 否 | 是 | 子标题右侧按钮id。需要为子标题右侧按钮设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置子标题右侧按钮id。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
 
 ## SubHeaderV2TitleBuilder
 
@@ -320,6 +359,9 @@ type SubHeaderV2TitleBuilder= () => void
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。
@@ -328,6 +370,7 @@ type SubHeaderV2TitleBuilder= () => void
 ### 示例1（效率型子标题）
 该示例主要演示子标题左侧为icon、secondaryTitle，右侧operationType为按钮类型。
 
+ArkTS-Dyn示例：
 ```ts
 import {
   SubHeaderV2OperationType,
@@ -341,7 +384,7 @@ import {
 @Entry
 @ComponentV2
 struct SubHeaderExample {
-  @Local selectText: string = "TTTTT"
+  @Local selectText: string = 'TTTTT'
   @Local selectIndex: number = 2
   @Local flag: boolean = true;
   @Local index: number = 1;
@@ -381,12 +424,62 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, ComponentV2, $r, Column, ResourceStr, Resource, TextModifier, Color, Local } from '@kit.ArkUI';
+import { 
+  SubHeaderV2OperationType, SubHeaderV2, SubHeaderV2Title, SubHeaderV2OperationItem
+} from '@ohos.arkui.advanced.SubHeaderV2';
 
-![子标题1](figures/zh-cn_image_subheader_example01.png)
+@Entry
+@ComponentV2
+struct SubHeaderExample {
+  @Local selectText: string = 'TTTTT'
+  @Local selectIndex: number = 2
+  @Local flag: boolean = true;
+  @Local index: number = 1;
+  @Local primaryTitle: ResourceStr = '一级标题';
+  @Local secondaryTitle: ResourceStr = '二级标题';
+  // 系统邮件图片资源
+  @Local subHeaderIcon: Resource = $r('sys.media.ohos_ic_public_email');
+  @Local title: SubHeaderV2Title = new SubHeaderV2Title({ primaryTitle: '一级标题' });
+  @Local primaryModifier: TextModifier = new TextModifier().fontColor(Color.Red);
+  @Local secondaryModifier: TextModifier = new TextModifier().fontColor(Color.Red);
+  @Local subHeaderOperationType: SubHeaderV2OperationType = SubHeaderV2OperationType.BUTTON;
+  @Local operationItems: SubHeaderV2OperationItem[] = [];
+
+  aboutToAppear(): void {
+    this.title = new SubHeaderV2Title({
+      primaryTitle: this.primaryTitle,
+      secondaryTitle: this.secondaryTitle,
+    });
+    this.operationItems = [new SubHeaderV2OperationItem({
+      content: '操作',
+      action: () => {
+        this.getUIContext().getPromptAction().showToast({ message: 'demo2' })
+      }
+    })]
+  }
+
+  build() {
+    Column() {
+      SubHeaderV2({
+        icon: this.subHeaderIcon,
+        title: this.title,
+        operationType: this.subHeaderOperationType,
+        operationItems: this.operationItems
+      });
+    }
+  }
+}
+```
+
+![子标题1](figures/image-subheader-example01.png)
 
 ### 示例2（双行文本内容型子标题）
 该示例主要演示子标题左侧为primaryTitle、secondaryTitle，右侧operationType类型为TEXT_ARROW。
 
+ArkTS-Dyn示例：
 ```ts
 import {
   SubHeaderV2OperationType,
@@ -432,12 +525,53 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, ComponentV2, $r, Column, TextModifier, Color, Local } from '@kit.ArkUI';
+import { 
+  SubHeaderV2OperationType, SubHeaderV2, SubHeaderV2Title, SubHeaderV2OperationItem
+} from '@ohos.arkui.advanced.SubHeaderV2';
 
-![子标题2](figures/zh-cn_image_subheader_example02.png)
+@Entry
+@ComponentV2
+struct SubHeaderExample {
+  @Local title: SubHeaderV2Title = new SubHeaderV2Title({ primaryTitle: '一级标题', secondaryTitle: '二级标题' });
+  @Local primaryModifier: TextModifier = new TextModifier().fontColor(Color.Red);
+  @Local secondaryModifier: TextModifier = new TextModifier().fontColor(Color.Red);
+  @Local subHeaderOperationType: SubHeaderV2OperationType = SubHeaderV2OperationType.TEXT_ARROW;
+  @Local operationItems: SubHeaderV2OperationItem[] = [];
+
+  aboutToAppear(): void {
+    this.title = new SubHeaderV2Title({
+      primaryTitle: '一级标题',
+      secondaryTitle: '二级标题'
+    });
+    this.operationItems = [new SubHeaderV2OperationItem({
+      content: '更多',
+      action: () => {
+        this.getUIContext().getPromptAction().showToast({ message: 'demo2' })
+      }
+    })]
+  }
+
+  build() {
+    Column() {
+      SubHeaderV2({
+        title: this.title,
+        operationType: this.subHeaderOperationType,
+        operationItems: this.operationItems
+      });
+    }
+  }
+}
+```
+
+![子标题2](figures/image-subheader-example02.png)
 
 ### 示例3（spinner型内容型子标题）
 该示例主要演示子标题左侧为select，右侧operationType类型为ICON_GROUP。
 
+ArkTS-Dyn示例：
 ```ts
 import {
   SubHeaderV2,
@@ -509,12 +643,82 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, ComponentV2, $r, Column, TextModifier, Local } from '@kit.ArkUI';
+import { 
+  SubHeaderV2OperationType, SubHeaderV2, SubHeaderV2Title, SubHeaderV2OperationItem, SubHeaderV2Select
+} from '@ohos.arkui.advanced.SubHeaderV2';
 
-![子标题3](figures/zh-cn_image_subheader_example03.png)
+@Entry
+@ComponentV2
+struct SubHeaderExample {
+  @Local selectedValue: string = 'aaa';
+  @Local selectedIndex: int = 0;
+  @Local title: SubHeaderV2Title = new SubHeaderV2Title({ primaryTitle: '一级标题', secondaryTitle: '二级标题' });
+  @Local operationItems: SubHeaderV2OperationItem[] = [];
+  @Local select: SubHeaderV2Select =
+    new SubHeaderV2Select({ options: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }] });
+
+  aboutToAppear(): void {
+
+    this.title = new SubHeaderV2Title({
+      primaryTitle: '一级标题',
+      secondaryTitle: '二级标题'
+    });
+
+    this.selectedValue = 'selectDemo';
+    this.select = new SubHeaderV2Select({
+      options: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }],
+      selectedContent: this.selectedValue,
+      selectedIndex: this.selectedIndex,
+      onSelect: (index: int, value?: string) => {
+        this.getUIContext().getPromptAction().showToast({ message: 'selectdemo' })
+      }
+    })
+
+    this.operationItems = [
+      new SubHeaderV2OperationItem({
+        // 系统邮件图片资源
+        content: $r('sys.media.ohos_ic_public_email'),
+        action: () => {
+          this.getUIContext().getPromptAction().showToast({ message: 'demo' })
+        }
+      }),
+      new SubHeaderV2OperationItem({
+        // 系统邮件图片资源
+        content: $r('sys.media.ohos_ic_public_email'),
+        action: () => {
+          this.getUIContext().getPromptAction().showToast({ message: 'demo' })
+        }
+      }),
+      new SubHeaderV2OperationItem({
+        // 系统邮件图片资源
+        content: $r('sys.media.ohos_ic_public_email'),
+        action: () => {
+          this.getUIContext().getPromptAction().showToast({ message: 'demo' })
+        }
+      })]
+  }
+
+  build() {
+    Column() {
+      SubHeaderV2({
+        select: this.select,
+        operationType: SubHeaderV2OperationType.ICON_GROUP,
+        operationItems: this.operationItems
+      })
+    }
+  }
+}
+```
+
+![子标题3](figures/image-subheader-example03.png)
 
 ### 示例4（设置左侧symbol图标）
 该示例主要演示子标题左侧icon设置symbol图标。
 
+ArkTS-Dyn示例：
 ```ts
 import {
   SubHeaderV2,
@@ -552,12 +756,49 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, ComponentV2, $r, Column, SymbolGlyphModifier, SymbolEffectStrategy, Local } from '@kit.ArkUI';
+import { 
+  SubHeaderV2OperationType, SubHeaderV2, SubHeaderV2Title, SubHeaderV2OperationItem
+} from '@ohos.arkui.advanced.SubHeaderV2';
 
-![子标题4](figures/zh-cn_image_subheader_example04.gif)
+@Entry
+@ComponentV2
+struct SubHeaderExample {
+  // 系统WiFi符号资源
+  @Local icon: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_wifi'));
+
+  aboutToAppear(): void {
+    // 系统WiFi符号资源
+    this.icon = new SymbolGlyphModifier($r('sys.symbol.ohos_wifi')).fontSize(24);
+    this.icon.effectStrategy(SymbolEffectStrategy.HIERARCHICAL)
+  }
+
+  build() {
+    Column() {
+      SubHeaderV2({
+        icon: this.icon,
+        title: new SubHeaderV2Title({ secondaryTitle: '标题' }),
+        operationType: SubHeaderV2OperationType.BUTTON,
+        operationItems: [new SubHeaderV2OperationItem({
+          content: '操作',
+          action: () => {
+            this.getUIContext().getPromptAction().showToast({ message: 'demo' })
+          }
+        })]
+      })
+    }
+  }
+}
+```
+
+![子标题4](figures/image-subheader-example04.gif)
 
 ### 示例5（设置右侧symbol图标）
 该示例主要演示子标题operationType设置为OperationType.ICON_GROUP，operationItem的value设置为symbol图标。
 
+ArkTS-Dyn示例：
 ```ts
 import {
   SubHeaderV2,
@@ -637,12 +878,96 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, ComponentV2, $r, Column, SymbolGlyphModifier, SymbolEffectStrategy, SymbolRenderingStrategy, FontWeight,
+  Color, Local
+} from '@kit.ArkUI';
+import { 
+  SubHeaderV2OperationType, SubHeaderV2, SubHeaderV2Title, SubHeaderV2OperationItem, SubHeaderV2Select
+} from '@ohos.arkui.advanced.SubHeaderV2';
 
-![子标题5](figures/zh-cn_image_subheader_example05.png)
+@Entry
+@ComponentV2
+struct SubHeaderExample {
+  // 系统WiFi符号资源
+  @Local icon: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_wifi'));
+  @Local selectedValue: string = 'aaa';
+  @Local selectedIndex: int = 2;
+  @Local title: SubHeaderV2Title = new SubHeaderV2Title({ primaryTitle: '一级标题', secondaryTitle: '二级标题' });
+  @Local operationItem: SubHeaderV2OperationItem[] = [];
+  @Local select: SubHeaderV2Select =
+    new SubHeaderV2Select({ options: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }] });
+
+  aboutToAppear(): void {
+    // 系统WiFi符号资源
+    this.icon = new SymbolGlyphModifier($r('sys.symbol.ohos_wifi'));
+    this.icon.effectStrategy(SymbolEffectStrategy.HIERARCHICAL);
+
+    this.selectedValue = 'selectDemo';
+    this.selectedIndex = 2;
+    this.title = new SubHeaderV2Title({
+      primaryTitle: '一级标题',
+      secondaryTitle: '二级标题'
+    });
+    this.select = new SubHeaderV2Select({
+      options: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }],
+      selectedContent: this.selectedValue,
+      selectedIndex: this.selectedIndex,
+      onSelect: (index: int, value?: string) => {
+        this.getUIContext().getPromptAction().showToast({ message: 'demo' })
+      }
+    })
+
+    this.operationItem = [
+      new SubHeaderV2OperationItem({
+        // 系统肺符号资源
+        content: new SymbolGlyphModifier($r('sys.symbol.ohos_lungs')).fontWeight(FontWeight.Lighter),
+        action: () => {
+          this.getUIContext().getPromptAction().showToast({ message: 'demo1' })
+        }
+      }),
+      new SubHeaderV2OperationItem({
+        // 系统肺符号资源
+        content: new SymbolGlyphModifier($r('sys.symbol.ohos_lungs'))
+          .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_COLOR)
+          .fontColor([Color.Blue, Color.Grey, Color.Green])
+      ,
+        action: () => {
+          this.getUIContext().getPromptAction().showToast({ message: 'demo2' })
+        }
+      }),
+      new SubHeaderV2OperationItem({
+        // 系统肺符号资源
+        content: new SymbolGlyphModifier($r('sys.symbol.ohos_lungs'))
+          .renderingStrategy(SymbolRenderingStrategy.MULTIPLE_OPACITY)
+          .fontColor([Color.Blue, Color.Grey, Color.Green])
+      ,
+        action: () => {
+          this.getUIContext().getPromptAction().showToast({ message: 'demo3' })
+        }
+      })]
+  }
+
+  build() {
+    Column() {
+      SubHeaderV2({
+        select: this.select,
+        operationType: SubHeaderV2OperationType.ICON_GROUP,
+        operationItems: this.operationItem
+      })
+    }
+  }
+}
+```
+
+![子标题5](figures/image-subheader-example05.png)
 
 ### 示例6（自定义标题内容）
  该示例主要演示SubHeaderV2设置titleBuilder自定义标题内容的效果。
 
+ArkTS-Dyn示例：
 ```ts
 import {
   SubHeaderV2,
@@ -694,12 +1019,62 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, ComponentV2, $r, Column, Builder, Text, FontWeight, Color, Local } from '@kit.ArkUI';
+import { 
+  SubHeaderV2OperationType, SubHeaderV2, SubHeaderV2Title, SubHeaderV2OperationItem
+} from '@ohos.arkui.advanced.SubHeaderV2';
 
-![子标题6](figures/zh-cn_image_subheader_example06.png)
+@Entry
+@ComponentV2
+struct SubHeaderExample {
+  @Local title: SubHeaderV2Title = new SubHeaderV2Title({ primaryTitle: '一级标题' });
+  @Local operationItem: SubHeaderV2OperationItem[] = [];
+
+  aboutToAppear(): void {
+    this.title = new SubHeaderV2Title({
+      primaryTitle: '一级标题',
+      secondaryTitle: '二级标题'
+    });
+    this.operationItem = [new SubHeaderV2OperationItem({
+      content: '更多信息',
+      action: () => {
+        this.getUIContext().getPromptAction().showToast({ message: 'demo' })
+      }
+    })]
+  }
+
+  @Builder
+  TitleBuilder(): void {
+    Text('自定义标题')
+      .fontSize(24)
+      .fontColor(Color.Blue)
+      .fontWeight(FontWeight.Bold)
+  }
+
+  build() {
+    Column() {
+      SubHeaderV2({
+        titleBuilder: () => {
+          this.TitleBuilder();
+        },
+        title: this.title,
+
+        operationType: SubHeaderV2OperationType.TEXT_ARROW,
+        operationItems: this.operationItem
+      })
+    }
+  }
+}
+```
+
+![子标题6](figures/image-subheader-example06.png)
 
 ### 示例7（自定义标题样式）
 该示例主要演示SubHeaderV2设置标题和副标题字体样式。
 
+ArkTS-Dyn示例：
 ```ts
 import {
   SubHeaderV2,
@@ -744,12 +1119,54 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, ComponentV2, $r, Column, TextModifier, Color, Local } from '@kit.ArkUI';
+import {
+  SubHeaderV2OperationType, SubHeaderV2, SubHeaderV2Title, SubHeaderV2OperationItem
+} from '@ohos.arkui.advanced.SubHeaderV2';
 
-![子标题7](figures/zh-cn_image_subheaderv2_example07.png)
+@Entry
+@ComponentV2
+struct SubHeaderExample {
+  @Local primaryModifier: TextModifier = new TextModifier().fontColor(Color.Blue);
+  @Local secondaryModifier: TextModifier = new TextModifier().fontColor(Color.Blue);
+  @Local title: SubHeaderV2Title = new SubHeaderV2Title({ primaryTitle: '一级标题' });
+  @Local operationItems4: SubHeaderV2OperationItem[] = [];
 
+  aboutToAppear(): void {
+    this.title = new SubHeaderV2Title({
+      primaryTitle: '一级标题',
+      primaryTitleModifier: this.primaryModifier,
+      secondaryTitle: '二级标题',
+      secondaryTitleModifier: this.secondaryModifier
+    });
+    this.operationItems4 = [new SubHeaderV2OperationItem({
+      content: '更多信息',
+      action: () => {
+        this.getUIContext().getPromptAction().showToast({ message: 'demo' })
+      }
+    })]
+  }
+
+  build() {
+    Column() {
+      SubHeaderV2({
+        title: this.title,
+        operationType: SubHeaderV2OperationType.TEXT_ARROW,
+        operationItems: this.operationItems4
+      })
+    }
+  }
+}
+```
+
+![子标题7](figures/image-subheaderv2-example07.png)
 
 ### 示例8（右侧按钮自定义播报）
 该示例通过设置SubHeaderV2的右侧按钮属性accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
+
+ArkTS-Dyn示例：
 ```ts
 import {
   SubHeaderV2OperationType,
@@ -843,12 +1260,108 @@ struct SubHeaderExample {
   }
 }
 ```
-![子标题8](figures/zh-cn_image_subheader_example08.png)
+ArkTS-Sta示例：
+```ts
+import { Entry, ComponentV2, $r, Column, Divider, Color, ResourceStr, Local } from '@kit.ArkUI';
+import {
+  SubHeaderV2OperationType, SubHeaderV2, SubHeaderV2Title, SubHeaderV2OperationItem, SubHeaderV2Select
+} from '@ohos.arkui.advanced.SubHeaderV2';
+
+@Entry
+@ComponentV2
+struct SubHeaderExample {
+  @Local index: number = 1;
+  @Local primaryTitle: ResourceStr = '一级标题';
+  @Local secondaryTitle: ResourceStr = '二级标题';
+  // 系统邮件图片资源
+  @Local subHeaderIcon: ResourceStr | undefined = $r('sys.media.ohos_ic_public_email');
+  @Local title: SubHeaderV2Title = new SubHeaderV2Title({ primaryTitle: '一级标题' });
+  @Local title2: SubHeaderV2Title = new SubHeaderV2Title({ primaryTitle: '一级标题', secondaryTitle: '二级标题' });
+  @Local subHeaderOperationType: SubHeaderV2OperationType = SubHeaderV2OperationType.BUTTON;
+  @Local subHeaderOperationType2: SubHeaderV2OperationType = SubHeaderV2OperationType.TEXT_ARROW;
+  @Local subHeaderOperationType3: SubHeaderV2OperationType = SubHeaderV2OperationType.ICON_GROUP;
+  @Local operationItems: SubHeaderV2OperationItem[] = [];
+  @Local selectedValue: string | undefined = 'selectDemo';
+  @Local selectedIndex: int = 0;
+  @Local select: SubHeaderV2Select =
+    new SubHeaderV2Select({ options: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }] });
+
+  aboutToAppear(): void {
+    this.select = new SubHeaderV2Select({ options: [] });
+    this.title = new SubHeaderV2Title({
+      primaryTitle: this.primaryTitle,
+      secondaryTitle: this.secondaryTitle,
+    });
+    this.operationItems = [new SubHeaderV2OperationItem({
+      content: '操作',
+      action: () => {
+        this.getUIContext().getPromptAction().showToast({ message: 'demo2' })
+      }
+    })]
+  }
+
+  build() {
+    Column() {
+      Column() {
+        SubHeaderV2({
+          icon: this.subHeaderIcon,
+          title: this.title,
+          select: this.select,
+          operationType: this.subHeaderOperationType,
+          operationItems: this.operationItems
+        });
+        Divider().color('grey').width('100%').height('2vp')
+        SubHeaderV2({
+          title: this.title2,
+          select: this.select,
+          operationType: this.subHeaderOperationType2,
+          operationItems: this.operationItems
+        });
+        Divider().color('grey').width('100%').height('2vp')
+        SubHeaderV2({
+          select: new SubHeaderV2Select({
+            options: [{ value: 'aaa' }, { value: 'bbb' }, { value: 'ccc' }],
+            selectedIndex: this.selectedIndex,
+            selectedContent: this.selectedValue,
+            onSelect: (index: int, value?: string) => {
+              this.selectedIndex = index;
+              this.selectedValue = value;
+              this.getUIContext().getPromptAction().showToast({ message: this.selectedValue as string })
+            }
+          }),
+          operationType: this.subHeaderOperationType3,
+          operationItems: [new SubHeaderV2OperationItem({
+            // 系统邮件图片资源
+            content: $r('sys.media.ohos_ic_public_email'),
+            accessibilityText: '图标1',
+            accessibilityLevel: 'yes',
+          }), new SubHeaderV2OperationItem({
+            // 系统邮件图片资源
+            content: $r('sys.media.ohos_ic_public_email'),
+            accessibilityText: '图标2',
+            accessibilityLevel: 'no',
+          }), new SubHeaderV2OperationItem({
+            // 系统邮件图片资源
+            content: $r('sys.media.ohos_ic_public_email'),
+            accessibilityText: '图标3',
+            accessibilityDescription: '点击操作图标3',
+          })]
+        });
+      }
+      Divider().color('grey').width('100%').height('2vp')
+    }
+  }
+}
+```
+
+![子标题8](figures/image-subheader-example08.png)
 
 ### 示例9（右侧按钮设置默认获焦）
-在获焦状态下，该示例通过设置SubHeaderV2的右侧按钮属性defaultFocus使其默认获焦。
 
-从API version 18开始，在[SubHeaderV2OperationItem](#subheaderv2operationitemoptions)中新增defaultFocus接口。
+从API version 18开始，在获焦状态下，在[SubHeaderV2OperationItem](#subheaderv2operationitemoptions)中新增defaultFocus接口使其默认获焦。
+
+ArkTS-Dyn示例：
+
 ```ts
 import {
   SubHeaderV2OperationType,
@@ -862,7 +1375,7 @@ import {
 @Entry
 @ComponentV2
 struct SubHeaderExample {
-  @Local selectText: string = "TTTTT"
+  @Local selectText: string = 'TTTTT'
   @Local selectIndex: number = 2
   @Local flag: boolean = true;
   @Local index: number = 1;
@@ -902,4 +1415,54 @@ struct SubHeaderExample {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, ComponentV2, $r, Column, Color, ResourceStr, Resource, TextModifier, Local } from '@kit.ArkUI';
+import {
+  SubHeaderV2OperationType, SubHeaderV2, SubHeaderV2Title, SubHeaderV2OperationItem, SubHeaderV2Select
+} from '@ohos.arkui.advanced.SubHeaderV2';
+
+@Entry
+@ComponentV2
+struct SubHeaderExample {
+  @Local selectText: string = 'TTTTT'
+  @Local selectIndex: int = 2
+  @Local flag: boolean = true;
+  @Local index: number = 1;
+  @Local primaryTitle: ResourceStr = '一级标题';
+  @Local secondaryTitle: ResourceStr = '二级标题';
+  // app启动图标资源
+  @Local subHeaderIcon: Resource = $r('app.media.startIcon');
+  @Local title: SubHeaderV2Title = new SubHeaderV2Title({ primaryTitle: '一级标题' });
+  @Local primaryModifier: TextModifier = new TextModifier().fontColor(Color.Red);
+  @Local secondaryModifier: TextModifier = new TextModifier().fontColor(Color.Red);
+  @Local subHeaderOperationType: SubHeaderV2OperationType = SubHeaderV2OperationType.BUTTON;
+  @Local operationItems: SubHeaderV2OperationItem[] = [];
+
+  aboutToAppear(): void {
+    this.title = new SubHeaderV2Title({
+      secondaryTitle: this.secondaryTitle,
+    });
+    this.operationItems = [new SubHeaderV2OperationItem({
+      content: '操作',
+      defaultFocus: true,
+      action: () => {
+        this.getUIContext().getPromptAction().showToast({ message: 'demo2' })
+      }
+    })]
+  }
+
+  build() {
+    Column() {
+      SubHeaderV2({
+        icon: this.subHeaderIcon,
+        title: this.title,
+        operationType: this.subHeaderOperationType,
+        operationItems: this.operationItems
+      });
+    }
+  }
+}
+```
+
 ![/SubHeaderDefaultFocus](figures/SubHeaderDefaultFocus.png)

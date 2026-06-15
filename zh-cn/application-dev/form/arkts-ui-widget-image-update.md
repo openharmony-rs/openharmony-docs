@@ -1,9 +1,9 @@
 # 刷新本地图片和网络图片
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 在卡片上需要展示本地图片或从网络上下载的图片，获取本地图片和网络图片需要通过FormExtensionAbility来实现，如下示例代码介绍了如何在卡片上显示本地图片和网络图片。
@@ -25,8 +25,9 @@
    import { http } from '@kit.NetworkKit';
    ```
 
-3. 在EntryFormAbility中的onAddForm生命周期回调中实现本地文件的刷新。
+3. 在WgtImgUpdateEntryFormAbility中的onAddForm生命周期回调中实现本地文件的刷新。
 
+   ArkTS-Dyn示例：
    <!-- @[local_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
    
    ``` TypeScript
@@ -68,8 +69,124 @@
    }
    ```
 
-4. 在EntryFormAbility中的onFormEvent生命周期回调中实现网络文件的刷新。
+   ArkTS-Sta示例：
+   <!-- @[local_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetImageUpdateStaDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/entryformability/EntryFormAbility.ets
+   import { Want } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo } from '@kit.CoreFileKit';
+   import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { http } from '@kit.NetworkKit';
+   import { Configuration } from '@ohos.app.ability.Configuration';
+   import common from '@ohos.app.ability.common';
+   import { AppStorage } from '@ohos.arkui.stateManagement';
+   
+   const TAG: string = 'EntryFormAbility';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   const TEXT1: string = '刷新中...'
+   const TEXT2: string = '刷新失败'
+   
+   function onAcquireFormStateCallback(want: Want): formInfo.FormState {
+     let context: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('abilityContext');
+     hilog.info(DOMAIN_NUMBER, TAG, 'OnAcquireFormState register success');
+     return formInfo.FormState.READY;
+   }
+   
+   function onAcquireFormDataCallback(formId: string): Record<string, Object> {
+     hilog.info(DOMAIN_NUMBER, TAG, 'onAcquireFormDataCallback success');
+     let param: Record<string, Object> = {};
+     param = {
+       'title': 'onAcquireFormData'
+     };
+     return param;
+   }
+   
+   function onShareFormCallback(formId: string): Record<string, Object> {
+     hilog.info(DOMAIN_NUMBER, TAG, 'onAcquireFormDataCallback success');
+     let param: Record<string, Object> = {};
+     param = {
+       'title': 'onShareForm'
+     };
+     return param;
+   }
+   
+   class FormDataClass {
+     public text: string = '';
+     public loaded: boolean = false;
+     // 卡片需要显示图片场景,必须和下列字段formImages中的key 'imgBear'相同。
+     public imgName: string = '';
+     // 卡片需要显示图片场景,必填字段(formImages不可缺省或改名), 'imgBear'对应fd
+     public formImages: Record<string, number> = {};
+   }
+   
+   export default class EntryFormAbility extends FormExtensionAbility {
+     constructor() {
+       hilog.info(DOMAIN_NUMBER, TAG, 'constructor register call');
+       try {
+         this.onStop = () => {
+           hilog.info(DOMAIN_NUMBER, TAG, 'OnStop callback success');
+         }
+         hilog.info(DOMAIN_NUMBER, TAG, 'OnStop register success');
+       } catch (err) {
+         hilog.error(DOMAIN_NUMBER, TAG, `OnStop catch error code: ${err?.code}, message: ${err?.message}`);
+       }
+   
+       this.onAcquireFormState = onAcquireFormStateCallback;
+     }
+   
+     onAddForm(want: Want): formBindingData.FormBindingData {
+       // 假设在当前卡片应用的tmp目录下有一个本地图片：head.PNG
+       let tempDir = this.context.getApplicationContext().tempDir;
+       hilog.info(DOMAIN_NUMBER, TAG, `tempDir: ${tempDir}`);
+       let imgMap: Record<string, number> = {};
+       try { // 打开本地图片并获取其打开后的fd, FormExtensionAbility进程销毁时释放
+         let file = fileIo.openSync(tempDir + '/' + 'head.PNG');
+         imgMap['imgBear'] = file.fd;
+       } catch (error) {
+         hilog.info(DOMAIN_NUMBER, TAG, `openSync failed: code ${error?.code}, message ${error?.message}`);
+       }
+   
+       let formData = new FormDataClass();
+       formData.text = 'Image: Bear';
+       formData.loaded = true;
+       formData.imgName = 'imgBear';
+       formData.formImages = imgMap; // 将fd封装在formData中并返回至卡片页面
+       return formBindingData.createFormBindingData(formData);
+     }
+   
+     // ...
+     onCastToNormalForm(formId: string): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'onCastToNormalForm testing');
+     }
+   
+     onUpdateForm(formId: string, wantParams?: Record<string, Object>): void {
+       hilog.info(DOMAIN_NUMBER, TAG, `onUpdateForm callback, formid:${formId}`);
+     }
+   
+     onChangeFormVisibility(newStatus: Record<string, int>): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'onChangeFormVisibility testing ' + JSON.stringify(newStatus));
+     }
+   
+     onRemoveForm(formId: string): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'onRemoveForm testing');
+     }
+   
+     onConfigurationUpdate(newConfig: Configuration): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'onConfigurationUpdate testing');
+     }
+   
+     onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'onFormLocationChanged testing');
+     }
+   }
+   ```
 
+4. 在WgtImgUpdateEntryFormAbility中的onFormEvent生命周期回调中实现网络文件的刷新。
+
+   ArkTS-Dyn示例：
    <!-- @[network_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
    
    ``` TypeScript
@@ -155,9 +272,159 @@
    }
    
    ```
+   ArkTS-Sta示例：
+   <!-- @[network_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetImageUpdateStaDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/entryformability/EntryFormAbility.ets
+   import { Want } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo } from '@kit.CoreFileKit';
+   import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { http } from '@kit.NetworkKit';
+   import { Configuration } from '@ohos.app.ability.Configuration';
+   import common from '@ohos.app.ability.common';
+   import { AppStorage } from '@ohos.arkui.stateManagement';
+   
+   const TAG: string = 'EntryFormAbility';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   const TEXT1: string = '刷新中...'
+   const TEXT2: string = '刷新失败'
+   
+   function onAcquireFormStateCallback(want: Want): formInfo.FormState {
+     let context: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('abilityContext');
+     hilog.info(DOMAIN_NUMBER, TAG, 'OnAcquireFormState register success');
+     return formInfo.FormState.READY;
+   }
+   
+   function onAcquireFormDataCallback(formId: string): Record<string, Object> {
+     hilog.info(DOMAIN_NUMBER, TAG, 'onAcquireFormDataCallback success');
+     let param: Record<string, Object> = {};
+     param = {
+       'title': 'onAcquireFormData'
+     };
+     return param;
+   }
+   
+   function onShareFormCallback(formId: string): Record<string, Object> {
+     hilog.info(DOMAIN_NUMBER, TAG, 'onAcquireFormDataCallback success');
+     let param: Record<string, Object> = {};
+     param = {
+       'title': 'onShareForm'
+     };
+     return param;
+   }
+   
+   class FormDataClass {
+     public text: string = '';
+     public loaded: boolean = false;
+     // 卡片需要显示图片场景,必须和下列字段formImages中的key 'imgBear'相同。
+     public imgName: string = '';
+     // 卡片需要显示图片场景,必填字段(formImages不可缺省或改名), 'imgBear'对应fd
+     public formImages: Record<string, number> = {};
+   }
+   
+   export default class EntryFormAbility extends FormExtensionAbility {
+     constructor() {
+       hilog.info(DOMAIN_NUMBER, TAG, 'constructor register call');
+       try {
+         this.onStop = () => {
+           hilog.info(DOMAIN_NUMBER, TAG, 'OnStop callback success');
+         }
+         hilog.info(DOMAIN_NUMBER, TAG, 'OnStop register success');
+       } catch (err) {
+         hilog.error(DOMAIN_NUMBER, TAG, `OnStop catch error code: ${err?.code}, message: ${err?.message}`);
+       }
+   
+       this.onAcquireFormState = onAcquireFormStateCallback;
+     }
+   
+     // ...
+     onFormEvent(formId: string, message: string): void {
+       let param: Record<string, string> = {
+         'text': TEXT1
+       };
+       let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+       formProvider.updateForm(formId, formInfo);
+   
+       // 注意：FormExtensionAbility在触发生命周期回调时被拉起，仅能在后台存在5秒
+       // 建议下载能快速下载完成的小文件，如在5秒内未下载完成，则此次网络图片无法刷新至卡片页面上
+       let netFile =
+         'https://cn-assets.gitee.com/assets/mini_app-e5eee5a21c552b69ae6bf2cf87406b59.jpg'; // 需要在此处使用真实的网络图片下载链接
+       let tempDir = this.context.getApplicationContext().tempDir;
+       let fileName = 'file' + Date.now();
+       let tmpFile = tempDir + '/' + fileName;
+       let imgMap: Record<string, number> = {};
+       let httpRequest = http.createHttp()
+       httpRequest.request(netFile).then((data) => {
+         if (data?.responseCode == http.ResponseCode.OK) {
+           try {
+             let imgFile = fileIo.openSync(tmpFile, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+             imgMap[fileName] = imgFile.fd;
+             let writeLen: long = fileIo.writeSync(imgFile.fd, data.result as ArrayBuffer);
+             hilog.info(DOMAIN_NUMBER, TAG, `write data to file succeed and size is: ${writeLen}`);
+             hilog.info(DOMAIN_NUMBER, TAG, `ArkTSCard download complete: ${tmpFile}`);
+             let formData = new FormDataClass();
+             formData.text = 'Image: Bear' + fileName;
+             formData.loaded = true;
+             formData.imgName = fileName;
+             formData.formImages = imgMap;
+             let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+             hilog.info(DOMAIN_NUMBER, TAG, `doy ${JSON.stringify(formInfo)}`);
+             formProvider.updateForm(formId, formInfo).then(() => {
+               hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+             }).catch((error) => {
+               hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
+             });
+           } catch (error) {
+             hilog.error(DOMAIN_NUMBER, TAG, `openSync failed: code ${error?.code}, message ${error?.message}`);
+           }
+   
+         } else {
+           hilog.error(DOMAIN_NUMBER, TAG, 'ArkTSCard download task failed');
+           let param: Record<string, string> = {
+             'text': TEXT2
+           };
+           let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+           formProvider.updateForm(formId, formInfo);
+         }
+         httpRequest.destroy();
+       }).catch((e) => {
+         hilog.error(DOMAIN_NUMBER, TAG, `request failed. code: ${e.code}, message: ${e.message}`);
+       })
+     }
+   
+     onCastToNormalForm(formId: string): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'onCastToNormalForm testing');
+     }
+   
+     onUpdateForm(formId: string, wantParams?: Record<string, Object>): void {
+       hilog.info(DOMAIN_NUMBER, TAG, `onUpdateForm callback, formid:${formId}`);
+     }
+   
+     onChangeFormVisibility(newStatus: Record<string, int>): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'onChangeFormVisibility testing ' + JSON.stringify(newStatus));
+     }
+   
+     onRemoveForm(formId: string): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'onRemoveForm testing');
+     }
+   
+     onConfigurationUpdate(newConfig: Configuration): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'onConfigurationUpdate testing');
+     }
+   
+     onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'onFormLocationChanged testing');
+     }
+   }
+   
+   ```
 
-5. 在卡片页面通过backgroundImage属性展示EntryFormAbility传递过来的卡片内容。
+5. 在卡片页面通过backgroundImage属性展示WgtImgUpdateEntryFormAbility传递过来的卡片内容。
 
+   ArkTS-Dyn示例：
    <!-- @[widget_image_update_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets) --> 
    
    ``` TypeScript
@@ -217,8 +484,63 @@
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[widget_image_update_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/WidgetImageUpdateStaDemo/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets
+   
+   let storageWidgetImageUpdate = new LocalStorage();
+   
+   @Entry(storageWidgetImageUpdate)
+   @Component
+   struct WidgetImageUpdateCard {
+     // $r('app.string.loading')需要替换为开发者所需的资源文件
+     @LocalStorageProp('text') text: ResourceStr = $r('app.string.loading');
+     @LocalStorageProp('loaded') loaded: boolean = false;
+     // $r('app.string.imgName')需要替换为开发者所需的资源文件
+     @LocalStorageProp('imgName') imgName: ResourceStr = $r('app.string.imgName');
+   
+     build() {
+       Column() {
+         Column() {
+           Text(this.text)
+             .fontColor('#FFFFFF')
+             .opacity(0.9)
+             .fontSize(12)
+             .textOverflow({ overflow: TextOverflow.Ellipsis })
+             .maxLines(1)
+             .margin({ top: '8%', left: '10%' })
+         }.width('100%').height('50%').alignItems(HorizontalAlign.Start)
+   
+         Row() {
+           Button() { // $r('app.string.update')需要替换为开发者所需的资源文件
+             Text($r('app.string.update')).fontColor('#45A6F4').fontSize(12)
+           }
+           .width(120)
+           .height(32)
+           .margin({ top: '30%', bottom: '10%' })
+           .backgroundColor('#FFFFFF')
+           .borderRadius(16)
+           .onClick(() => {
+             postCardAction(this, {
+               action: 'message', params: {
+                 info: 'refreshImage'
+               }
+             });
+           })
+         }.width('100%').height('40%').justifyContent(FlexAlign.Center)
+       }
+       .width('100%')
+       .height('100%') // $r('app.media.ImageDisp')需要替换为开发者所需的资源文件
+       .backgroundImage(this.loaded ? 'memory://' + this.imgName : $r('app.media.ImageDisp'))
+       .backgroundImageSize(ImageSize.Cover)
+     }
+   }
+   ```
+
 > **说明：**
 >
-> - Image组件入参格式为`memory://fileName`时表示进行远端内存图片显示，`fileName`来自EntryFormAbility传递对象('formImages': {key: fd})中的key。
+> - Image组件入参格式为`memory://fileName`时表示进行远端内存图片显示，`fileName`来自WgtImgUpdateEntryFormAbility传递对象('formImages': {key: fd})中的key。
 >
-> - Image组件通过传入的参数是否有变化来决定是否刷新图片，因此EntryFormAbility每次传递过来的imgName都需要不同，连续传递两个相同的imgName时，图片不会刷新。
+> - Image组件通过传入的参数是否有变化来决定是否刷新图片，因此WgtImgUpdateEntryFormAbility每次传递过来的imgName都需要不同，连续传递两个相同的imgName时，图片不会刷新。

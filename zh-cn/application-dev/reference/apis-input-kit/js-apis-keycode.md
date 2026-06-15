@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -25,6 +27,10 @@ import { KeyCode } from '@kit.InputKit';
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 | 名称                               | 值   |  说明        |
 | -------------------------------- | ------ | --------------------------- |
 | KEYCODE_FN                       |  0 | 功能（Fn）键。                     |
@@ -32,12 +38,12 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_HOME                     |  1 | 功能（Home）键。                  |
 | KEYCODE_BACK                     |  2 | 返回键。                         |
 | KEYCODE_SEARCH<sup>13+</sup> | 9 | 搜索键。 |
-| KEYCODE_MEDIA_PLAY_PAUSE        |  10 | 多媒体键：播放/暂停。<br/>与KEYCODE_PLAYPAUSE的区别为：<br/>KEYCODE_PLAYPAUSE是较早的定义，KEYCODE_MEDIA_PLAY_PAUSE为现代媒体键设备设计，常见于较新的媒体键设备。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
-| KEYCODE_MEDIA_STOP               |  11 | 光盘停止键。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
-| KEYCODE_MEDIA_NEXT               |  12 | 多媒体键：下一首。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                    |
-| KEYCODE_MEDIA_PREVIOUS           |  13 | 多媒体键：上一首。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                    |
-| KEYCODE_MEDIA_REWIND            |  14 | 多媒体键：快退。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
-| KEYCODE_MEDIA_FAST_FORWARD       |  15 | 多媒体键：快进。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
+| KEYCODE_MEDIA_PLAY_PAUSE        |  10 | 多媒体键：播放/暂停。<br/>与KEYCODE_PLAYPAUSE的区别为：<br/>KEYCODE_PLAYPAUSE是较早的定义，KEYCODE_MEDIA_PLAY_PAUSE为现代媒体键设备设计，常见于较新的媒体键设备。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
+| KEYCODE_MEDIA_STOP               |  11 | 光盘停止键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
+| KEYCODE_MEDIA_NEXT               |  12 | 多媒体键：下一首。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                    |
+| KEYCODE_MEDIA_PREVIOUS           |  13 | 多媒体键：上一首。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                    |
+| KEYCODE_MEDIA_REWIND            |  14 | 多媒体键：快退。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
+| KEYCODE_MEDIA_FAST_FORWARD       |  15 | 多媒体键：快进。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
 | KEYCODE_VOLUME_UP                |  16 | 音量增加键。                       |
 | KEYCODE_VOLUME_DOWN              |  17 | 音量减小键。                       |
 | KEYCODE_POWER                    |  18 | 电源键。                        |
@@ -131,8 +137,8 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_MOVE_END                 |  2082 | 光标移动到末尾键。                    |
 | KEYCODE_INSERT                   |  2083 | 插入键。                         |
 | KEYCODE_FORWARD                  |  2084 | 前进键。                         |
-| KEYCODE_MEDIA_PLAY               |  2085 | 多媒体键：播放。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
-| KEYCODE_MEDIA_PAUSE              |  2086 | 光盘暂停键。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
+| KEYCODE_MEDIA_PLAY               |  2085 | 多媒体键：播放。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
+| KEYCODE_MEDIA_PAUSE              |  2086 | 光盘暂停键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
 | KEYCODE_MEDIA_CLOSE              |  2087 | 光盘关闭键。                     |
 | KEYCODE_MEDIA_EJECT              |  2088 | 光盘弹出键。                     |
 | KEYCODE_MEDIA_RECORD             |  2089 | 多媒体键：录音。                     |
@@ -314,9 +320,9 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_KBDINPUTASSIST_NEXTGROUP |  2729 | 键盘输入Assist_Next，切换输入组中下一个输入法。               |
 | KEYCODE_KBDINPUTASSIST_ACCEPT    |  2730 | 键盘输入Assist_Accept。           |
 | KEYCODE_KBDINPUTASSIST_CANCEL    |  2731 | 键盘输入Assist_Cancel。          |
-| KEYCODE_MOUSE_ASSISTANT<sup>24+</sup>    |  2732 | 鼠标AI助手键。          |
-| KEYCODE_MOUSE_INTELLIGENCE_SELECTION<sup>24+</sup>    |  2733 | 鼠标智慧框选键。          |
-| KEYCODE_AOD_SINGLE_CLICK         |  2740 | 手机触摸屏单击事件，在熄屏显示状态下使用。<br/>**起始版本：** 26.0.0 |
+| KEYCODE_MOUSE_ASSISTANT    |  2732 | 鼠标AI助手键。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。          |
+| KEYCODE_MOUSE_INTELLIGENCE_SELECTION    |  2733 | 鼠标智慧框选键。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。          |
+| KEYCODE_AOD_SINGLE_CLICK         |  2740 | 手机触摸屏单击事件，在熄屏显示状态下使用。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 | KEYCODE_FRONT                    |  2800 | 挡风玻璃除雾器开关。                   |
 | KEYCODE_SETUP                    |  2801 | 设置键。                         |
 | KEYCODE_WAKEUP                   |  2802 | 唤醒键。                         |
@@ -378,4 +384,6 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_DAGGER_DOUBLE_CLICK<sup>18+</sup> | 3212 | 智能手表智感窗按键双击。 |
 | KEYCODE_DAGGER_LONG_PRESS<sup>18+</sup> | 3213 | 智能手表智感窗按键长按。 |
 | KEYCODE_DIV<sup>20+</sup> | 3220 | 智能手表左按键。 |
-| KEYCODE_XKEY | 3232 | 自定义快捷键。<br/>**起始版本：** 26.0.0 |
+| KEYCODE_XKEY | 3232 | 自定义快捷键。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| KEYCODE_FINGERPRINT_SLIDE_UP | 3233 | 智控键上滑。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| KEYCODE_FINGERPRINT_SLIDE_DOWN | 3234 | 智控键下滑。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |

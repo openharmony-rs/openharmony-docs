@@ -1,9 +1,9 @@
 # @ohos.app.form.formProvider (formProvider)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
@@ -11,6 +11,8 @@ formProvider模块提供了获取卡片信息、更新卡片、设置卡片更�
 > **说明：**
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
@@ -20,7 +22,9 @@ import { formProvider } from '@kit.FormKit';
 
 ## formProvider.setFormNextRefreshTime
 
-setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setFormNextRefreshTime(formId: string, minute: int, callback: AsyncCallback&lt;void&gt;): void
 
 设置指定卡片的下一次更新时间，使用callback异步回调。
 
@@ -28,12 +32,16 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | ------------------------------------- |
 | formId | string | 是   | 卡片标识。                               |
-| minute | number | 是   | 指定卡片多久之后更新，取值范围：大于等于5，单位：min。     |
+| minute | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 指定卡片多久之后更新，取值范围：大于等于5，单位：min。     |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。 |
 
 **错误码：**
@@ -53,6 +61,8 @@ setFormNextRefreshTime(formId: string, minute: number, callback: AsyncCallback&l
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -71,9 +81,34 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';  // 表示卡片formId，根据实际formId调整
+let minute: int = 5;
+try {
+  formProvider.setFormNextRefreshTime(formId, minute, (error,data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info('formProvider setFormNextRefreshTime success');
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## formProvider.setFormNextRefreshTime
 
-setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
+ArkTS-Dyn: setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setFormNextRefreshTime(formId: string, minute: int): Promise&lt;void&gt;
 
 设置指定卡片的下一次更新时间，使用Promise异步回调。
 
@@ -81,12 +116,16 @@ setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------ | ---- | ------------------------------------- |
 | formId | string | 是   | 卡片标识。                               |
-| minute | number | 是   | 指定卡片多久之后更新，取值范围：大于等于5，单位：min。     |
+| minute | ArkTS-Dyn: number <br>ArkTS-Sta: int| 是   | 指定卡片多久之后更新，取值范围：大于等于5，单位：min。     |
 
 **返回值：**
 
@@ -111,6 +150,8 @@ setFormNextRefreshTime(formId: string, minute: number): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -127,6 +168,28 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
+let minute: int = 3;
+try {
+  formProvider.setFormNextRefreshTime(formId, minute).then(() => {
+    console.info('testTag', `FormProvider setFormNextRefreshTime success`);
+  }).catch((error) => {
+    console.error('testTag', `FormProvider promise error, code: ${error.code}, message: ${error.message}`);
+  });
+  console.info('testTag', 'FormProvider setFormNextRefreshTime register success');
+} catch (error) {
+  console.error('testTag', `FormProvider catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## formProvider.updateForm
 
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
@@ -139,6 +202,10 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData, cal
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -164,6 +231,8 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData, cal
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -187,6 +256,32 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formBindingData, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
+try {
+  let param: Record<string, string> = {
+    'temperature': '22c',
+    'time': '22:00'
+  }
+  let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+  formProvider.updateForm(formId, obj, (error,data) => {
+    if (error) {
+      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+    }
+    console.info(`formProvider updateForm success`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+}
+```
+
 ## formProvider.updateForm
 
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
@@ -199,6 +294,10 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -229,6 +328,8 @@ updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Pr
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formBindingData, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -250,6 +351,31 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formBindingData, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
+let param: Record<string, string> = {
+  'temperature': '22c',
+  'time': '22:00'
+}
+let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+try {
+  formProvider.updateForm(formId, obj).then(() => {
+    console.info(`formProvider updateForm success`);
+  }).catch((error) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+}
+```
+
 ## formProvider.getFormsInfo
 
 getFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
@@ -259,6 +385,10 @@ getFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): voi
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -279,6 +409,8 @@ getFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): voi
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -295,6 +427,29 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { AsyncCallback } from '@ohos.base';
+import { formProvider, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let callback: AsyncCallback<Array<formInfo.FormInfo>> = (error: BusinessError | null, data: Array<formInfo.FormInfo> | undefined) => {
+    if (error?.code != 0) {
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
+      return;
+    }
+    console.info(`formProvider getFormsInfo, item count: ${data?.length}`);
+  }
+  formProvider.getFormsInfo(callback);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+}
+```
 ## formProvider.getFormsInfo
 
 getFormsInfo(filter: formInfo.FormInfoFilter, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
@@ -304,6 +459,10 @@ getFormsInfo(filter: formInfo.FormInfoFilter, callback: AsyncCallback&lt;Array&l
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -325,12 +484,14 @@ getFormsInfo(filter: formInfo.FormInfoFilter, callback: AsyncCallback&lt;Array&l
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
-  // get info of forms belong to module entry.
+  // 获取指定module的卡片信息
   moduleName: 'entry'
 };
 try {
@@ -346,6 +507,32 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { AsyncCallback } from '@ohos.base';
+import { formInfo, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const filter: formInfo.FormInfoFilter = {
+  moduleName: 'entry'
+};
+try {
+  let callback: AsyncCallback<Array<formInfo.FormInfo>> = (error: BusinessError | null, data: Array<formInfo.FormInfo> | undefined) => {
+    if (error?.code != 0) {
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
+      return;
+    }
+    console.info(`formProvider getFormsInfo, item count: ${data?.length}`);
+  };
+  formProvider.getFormsInfo(filter, callback);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+}
+```
+
 ## formProvider.getFormsInfo
 
 getFormsInfo(filter?: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
@@ -355,6 +542,10 @@ getFormsInfo(filter?: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.For
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -381,12 +572,14 @@ getFormsInfo(filter?: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.For
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
-  // get info of forms belong to module entry.
+  // 获取指定module的卡片信息
   moduleName: 'entry'
 };
 try {
@@ -400,6 +593,28 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formInfo, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const filter: formInfo.FormInfoFilter = {
+  moduleName: 'entry'
+};
+try {
+  formProvider.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
+    console.info(`formProvider getFormsInfo, item count: ${data?.length}`);
+  }).catch((error) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+}
+```
+
 ## formProvider.openFormEditAbility<sup>18+</sup>
 
 openFormEditAbility(abilityName: string, formId: string, isMainPage?: boolean): void
@@ -407,6 +622,10 @@ openFormEditAbility(abilityName: string, formId: string, isMainPage?: boolean): 
 打开卡片编辑页。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -430,6 +649,8 @@ openFormEditAbility(abilityName: string, formId: string, isMainPage?: boolean): 
 | 16501007 | Form is not trust. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formProvider } from '@kit.FormKit';
@@ -466,6 +687,40 @@ struct Page {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { State } from '@ohos.arkui.stateManagement'
+import { formProvider } from '@kit.FormKit';
+
+const TAG: string = 'FormEditDemo-Page] -->';
+
+@Component
+struct Page {
+  @State message: string = 'Hello World';
+
+  aboutToAppear(): void {
+    console.info(`${TAG} aboutToAppear.....`);
+  }
+
+  build() {
+    Column() {
+      Text(this.message)
+        .id('PageHelloWorld')
+        .fontSize(50)
+        .onClick(() => {
+          console.info(`${TAG} onClick.....`);
+          formProvider.openFormEditAbility('ability://EntryFormEditAbility', '1386529921');
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## formProvider.closeFormEditAbility<sup>23+</sup>
 
 closeFormEditAbility(isMainPage?: boolean): void
@@ -475,6 +730,10 @@ closeFormEditAbility(isMainPage?: boolean): void
 **系统能力：** SystemCapability.Ability.Form
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -493,6 +752,8 @@ closeFormEditAbility(isMainPage?: boolean): void
 | 16501015 | Cannot close the widget editing page opened by other apps. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formProvider } from '@kit.FormKit';
@@ -534,6 +795,49 @@ struct Page {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formProvider } from '@kit.FormKit';
+import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+
+@Entry
+@Component
+struct Index {
+  @State stateVar: string = 'state var';
+  message: string = 'var';
+
+  build() {
+    Column(undefined) {
+      Text('Hello World').fontSize(20)
+      Button(this.message).backgroundColor('#FFFF00FF')
+        .onClick((e: ClickEvent) => {
+          try {
+            formProvider.closeFormEditAbility();
+            console.info('close FormEditAbility success.');
+          } catch (error) {
+            console.error(`close FormEditAbility failed, code: ${error.code}, message: ${error.message}`);
+          }
+        })
+      Text(this.stateVar).fontSize(20)
+      Child({ stateVar: this.stateVar })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @State stateVar: string = 'Child';
+
+  build() {
+    Text(this.stateVar).fontSize(50)
+  }
+}
+```
+
 ## formProvider.openFormManager<sup>18+</sup>
 
 openFormManager(want: Want): void
@@ -543,6 +847,12 @@ openFormManager(want: Want): void
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**设备行为差异：** 该接口在Wearable中调用会返回[16501000](./errorcode-form.md#16501000-内部功能错误)错误码。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -565,6 +875,8 @@ openFormManager(want: Want): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -586,6 +898,31 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formProvider } from '@kit.FormKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+const want: Want = {
+  bundleName: 'com.example.formbutton',
+  abilityName: 'EntryFormAbility',
+  parameters: {
+    'ohos.extra.param.key.form_dimension': 2,
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.module_name': 'entry'
+  } as Record<string,RecordData>
+};
+try {
+  formProvider.openFormManager(want);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+}
+```
+
 ## formProvider.getPublishedFormInfoById<sup>(deprecated)</sup>
 
 getPublishedFormInfoById(formId: string): Promise&lt;formInfo.FormInfo&gt;
@@ -593,6 +930,10 @@ getPublishedFormInfoById(formId: string): Promise&lt;formInfo.FormInfo&gt;
 获取设备上当前应用程序已经加桌的指定卡片信息，使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
 
 > **说明：**
 >
@@ -648,6 +989,10 @@ getPublishedFormInfos(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
 > **说明：**
 >
 > 该字段从API version 18开始支持，从API version 20开始废弃，建议使用[getPublishedRunningFormInfos](#formprovidergetpublishedrunningforminfos20)替代。
@@ -702,6 +1047,10 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                                                 | 必填 | 说明        |
@@ -732,6 +1081,8 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -759,6 +1110,39 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formInfo, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
+
+try {
+  let rect: formInfo.Rect = {
+    left: -30,
+    top: -30,
+    width: 200,
+    height: 200
+  };
+  let overflowInfo: formInfo.OverflowInfo = {
+    area: rect,
+    duration: 3500,
+    useDefaultAnimation: false
+  };
+  formProvider.requestOverflow(formId, overflowInfo).then(() => {
+    console.info('testTag', 'requestOverflow succeed');
+  }).catch((error) => {
+    console.info('testTag', `requestOverflow err: code is ${error.code}, message ${error.message}`);
+  })
+} catch (error) {
+  console.info('testTag',
+    `requestOverflow err: code is ${error.code}, message ${error.message}`);
+}
+```
+
 ## formProvider.cancelOverflow<sup>20+</sup>
 
 cancelOverflow(formId: string): Promise&lt;void&gt;
@@ -768,6 +1152,10 @@ cancelOverflow(formId: string): Promise&lt;void&gt;
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -798,6 +1186,8 @@ cancelOverflow(formId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -815,6 +1205,29 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
+
+try {
+  formProvider.cancelOverflow(formId).then(() => {
+    console.info('testTag', 'cancelOverflow succeed');
+  }).catch((err: Error) => {
+    let error = err as BusinessError;
+    console.error('testTag', `cancelOverflow err: code is ${error.code}, message ${error.message}`);
+  })
+} catch (error) {
+  console.error('testTag',
+    `cancelOverflow err: code is ${error.code}, message ${error.message}`);
+}
+```
+
 ## formProvider.getFormRect<sup>20+</sup>
 
 getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
@@ -824,6 +1237,10 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -835,7 +1252,7 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息，单位vp。 |
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。 |
 
 **错误码：**
 
@@ -853,6 +1270,8 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -868,6 +1287,28 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formInfo, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288'; // 表示卡片formId，根据实际formId调整
+
+try {
+  formProvider.getFormRect(formId).then((data: formInfo.Rect) => {
+    console.info('testTag', `getFormRect succeed, width: ${data.width} height: ${data.height}`);
+  }).catch((error) => {
+    console.error('testTag', `getFormRect err: code is ${error.code}, message ${error.message}`);
+  })
+} catch (error) {
+  console.error('testTag',
+    `getFormRect err: code is ${error.code}, message ${error.message}`);
+}
+```
+
 ## formProvider.getPublishedRunningFormInfoById<sup>20+</sup>
 
 getPublishedRunningFormInfoById(formId: string): Promise&lt;formInfo.RunningFormInfo&gt;
@@ -877,6 +1318,10 @@ getPublishedRunningFormInfoById(formId: string): Promise&lt;formInfo.RunningForm
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -905,6 +1350,8 @@ getPublishedRunningFormInfoById(formId: string): Promise&lt;formInfo.RunningForm
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -922,6 +1369,27 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formInfo, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const formId: string = '388344236';
+
+try {
+  formProvider.getPublishedRunningFormInfoById(formId).then((data: formInfo.RunningFormInfo) => {
+    console.info(`formProvider getPublishedRunningFormInfoById, formId: ${data.formId}`);
+  }).catch((error) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## formProvider.getPublishedRunningFormInfos<sup>20+</sup>
 
 getPublishedRunningFormInfos(): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;
@@ -931,6 +1399,10 @@ getPublishedRunningFormInfos(): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -950,6 +1422,8 @@ getPublishedRunningFormInfos(): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -965,9 +1439,30 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formInfo, formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formProvider.getPublishedRunningFormInfos().then((data: Array<formInfo.RunningFormInfo>) => {
+    console.info(`formProvider getPublishedRunningFormInfos`);
+  }).catch((error) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+}
+```
+
 ## formProvider.reloadForms<sup>22+</sup>
 
-reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise&lt;number&gt;
+ArkTS-Dyn: reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise&lt;number&gt;
+
+ArkTS-Sta: reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, formName: string): Promise&lt;int&gt;
 
 对于当前应用程序相同moduleName、abilityName、formName的卡片，多次加桌后会每张卡片会有不同的卡片id。卡片提供方可以通过本接口批量更新不同的卡片id但moduleName、abilityName、formName相同的卡片。在应用主进程通过本接口通知FormExtension进程进行批量更新，仅支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)中调用，使用Promise异步回调。
 
@@ -976,6 +1471,10 @@ reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -990,7 +1489,7 @@ reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, 
 
 | 类型          | 说明                                |
 | ------------ | ---------------------------------- |
-| Promise&lt;number&gt; | Promise对象。返回请求更新卡片的数量。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象。返回请求更新卡片的数量。 |
 
 **错误码：**
 
@@ -1001,6 +1500,8 @@ reloadForms(context: UIAbilityContext, moduleName: string, abilityName: string, 
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1023,9 +1524,37 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { formProvider } from '@kit.FormKit';
+
+try {
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+  let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  // 请开发者替换为实际请求更新的卡片信息
+  let moduleName: string = 'entry';
+  let abilityName: string = 'EntryFormAbility';
+  let formName: string = 'formName';
+  formProvider.reloadForms(context, moduleName, abilityName, formName).then((reloadNum: int) => {
+    console.info(`reloadForms success, reload number: ${reloadNum}`);
+  }).catch((error) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+}
+```
 ## formProvider.reloadAllForms<sup>22+</sup>
 
-reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
+ArkTS-Dyn: reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
+
+ArkTS-Sta: reloadAllForms(context: UIAbilityContext): Promise&lt;int&gt;
 
 在应用主进程通过本接口可以通知FormExtension进程批量更新当前应用程序下已经加桌的所有卡片，仅支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)中调用，使用Promise异步回调。
 
@@ -1034,6 +1563,10 @@ reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1045,7 +1578,7 @@ reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
 
 | 类型          | 说明                                |
 | ------------ | ---------------------------------- |
-| Promise&lt;number&gt; | Promise对象。返回请求更新卡片的数量。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br>ArkTS-Sta: Promise&lt;int&gt;| Promise对象。返回请求更新卡片的数量。 |
 
 **错误码：**
 
@@ -1056,6 +1589,8 @@ reloadAllForms(context: UIAbilityContext): Promise&lt;number&gt;
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -1072,5 +1607,27 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { formProvider } from '@kit.FormKit';
+
+try {
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+  let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  formProvider.reloadAllForms(context).then((reloadNum: int) => {
+    console.info(`reloadAllForms success, reload number: ${reloadNum}`);
+  }).catch((error) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
 }
 ```

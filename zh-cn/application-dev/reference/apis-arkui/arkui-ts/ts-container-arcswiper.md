@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 弧形滑块视图容器，提供子组件滑动轮播显示的能力。 
@@ -60,7 +60,7 @@ ArcSwiper(controller?: ArcSwiperController)
 
 创建弧形滑块视图容器。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -77,7 +77,7 @@ ArcSwiper(controller?: ArcSwiperController)
 
 ## 属性
 
-除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性，不支持[Menu控制](ts-universal-attributes-menu.md)。 
+除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性，不支持[菜单控制](ts-universal-attributes-menu.md)。 
 
 ### index
 
@@ -87,7 +87,7 @@ ArkTS-Sta: index(index: int | undefined)
 
 设置当前在容器中显示的子组件的索引值。设置小于0或大于等于子组件数量时，按照默认值0处理。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -109,7 +109,7 @@ ArkTS-Sta: indicator(style: ArcDotIndicator | boolean | undefined)
 
 设置弧形圆点指示器样式。未通过该接口设置时，默认启用弧形圆点指示器样式。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -131,7 +131,7 @@ ArkTS-Sta: duration(duration: int | undefined)
 
 设置子组件切换的动画时长。未通过该接口设置时，默认子组件切换的动画时长为400ms。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -153,7 +153,7 @@ ArkTS-Sta: vertical(isVertical: boolean | undefined)
 
 设置是否为纵向滑动。未通过该接口设置时，默认为横向滑动。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -173,9 +173,9 @@ ArkTS-Dyn: disableSwipe(disabled: Optional\<boolean>)
 
 ArkTS-Sta: disableSwipe(disabled: boolean | undefined)
 
-禁用组件滑动切换功能。未通过该接口设置时，默认不禁用组件滑动切换功能。
+是否禁用组件滑动切换功能。未通过该接口设置时，默认不禁用组件滑动切换功能。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -187,7 +187,7 @@ ArkTS-Sta: disableSwipe(disabled: boolean | undefined)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                               |
 | ------- | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| disabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean></br>ArkTS-Sta: boolean \| undefined | 是   | 禁用组件滑动切换功能。设置为true禁用，false不禁用。<br/>取值为undefined时，不禁用组件滑动切换功能。 |
+| disabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean></br>ArkTS-Sta: boolean \| undefined | 是   | 是否禁用组件滑动切换功能。设置为true禁用，false不禁用。<br/>取值为undefined时，不禁用组件滑动切换功能。 |
 
 ### digitalCrownSensitivity
 
@@ -197,7 +197,7 @@ ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
 
 设置旋转表冠的灵敏度。未通过该接口设置时，旋转表冠的灵敏度默认为CrownSensitivity.MEDIUM。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -219,7 +219,7 @@ ArkTS-Sta: effectMode(edgeEffect: EdgeEffect | undefined)
 
 设置边缘滑动效果。未通过该接口设置时，边缘滑动效果默认为EdgeEffect.Spring。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -241,7 +241,7 @@ ArkTS-Sta: disableTransitionAnimation(disabled: boolean | undefined)
 
 是否关闭特殊动效效果。未通过该接口设置时，默认不关闭特殊动效效果。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -259,7 +259,7 @@ ArkTS-Sta: disableTransitionAnimation(disabled: boolean | undefined)
 
 ArcSwiper容器组件的控制器，可以将此对象绑定至ArcSwiper组件，实现控制ArcSwiper翻页等功能。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -273,7 +273,7 @@ constructor()
 
 ArcSwiperController的构造函数。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -283,11 +283,13 @@ ArcSwiperController的构造函数。
 
 ### showNext
 
-showNext()
+ArkTS-Dyn: showNext()
+
+ArkTS-Sta: showNext(): void
 
 翻至下一页。翻页带动效切换过程，时长通过[duration](#duration)指定。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -297,11 +299,13 @@ showNext()
 
 ### showPrevious
 
-showPrevious()
+ArkTS-Dyn: showPrevious()
+
+ArkTS-Sta: showPrevious(): void
 
 翻至上一页。翻页带动效切换过程，时长通过[duration](#duration)指定。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -311,11 +315,13 @@ showPrevious()
 
 ### finishAnimation
 
-finishAnimation(handler?: FinishAnimationHandler)
+ArkTS-Dyn: finishAnimation(handler?: FinishAnimationHandler)
+
+ArkTS-Sta: finishAnimation(handler?: FinishAnimationHandler): void
 
 停止播放动画。默认无回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -333,7 +339,7 @@ finishAnimation(handler?: FinishAnimationHandler)
 
 提供弧形圆点指示器属性及功能。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -347,7 +353,7 @@ constructor()
 
 ArcDotIndicator的构造函数。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -363,7 +369,7 @@ ArkTS-Sta: arcDirection(direction: ArcDirection | undefined): ArcDotIndicator
 
 设置弧形指示器的方向。未通过该接口设置时，形指示器的方向默认为6点钟方向。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -391,7 +397,7 @@ ArkTS-Sta: itemColor(color: ResourceColor | undefined): ArcDotIndicator
 
 设置弧形指示器中，未选中导航点的颜色。未通过该接口设置时，未选中导航点的颜色默认为'#A9FFFFFF'。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -419,7 +425,7 @@ ArkTS-Sta: selectedItemColor(color: ResourceColor | undefined): ArcDotIndicator
 
 设置弧形指示器中，选中导航点的颜色。未通过该接口设置时，选中导航点的颜色默认为'#FF5EA1FF'。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -447,7 +453,7 @@ ArkTS-Sta: backgroundColor(color: ResourceColor | undefined): ArcDotIndicator
 
 设置弧形指示器被长按时，弧形指示器的颜色。未通过该接口设置时，弧形指示器被长按时，弧形指示器的颜色默认为'#FF404040'。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -475,7 +481,7 @@ ArkTS-Sta: maskColor(color: LinearGradient | undefined): ArcDotIndicator
 
 设置弧形指示器的遮罩渐变色。未通过该接口设置时，弧形指示器的遮罩渐变色起始颜色默认为'#00000000'，结束颜色默认为'#FF000000'。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -499,7 +505,7 @@ ArkTS-Sta: maskColor(color: LinearGradient | undefined): ArcDotIndicator
 
 弧形方向。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -519,7 +525,7 @@ type FinishAnimationHandler = () => void
 
 停止播放动画时，告知应用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -535,7 +541,7 @@ ArkTS-Sta: type IndexChangedHandler = (index: int) => void
 
 当前显示元素的索引变化时，告知应用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -557,7 +563,7 @@ ArkTS-Sta: type AnimationStartHandler = (index: int, targetIndex: int, event: Sw
 
 切换动画开始时的回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -581,7 +587,7 @@ ArkTS-Sta: type AnimationEndHandler = (index: int, event: SwiperAnimationEvent) 
 
 切换动画结束时的回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -604,7 +610,7 @@ ArkTS-Sta: type GestureSwipeHandler = (index: int, event: SwiperAnimationEvent) 
 
 在页面跟手滑动过程中，逐帧触发的回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -633,7 +639,7 @@ ArkTS-Sta: onChange(handler: IndexChangedHandler | undefined)
 
 ArcSwiper组件结合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，不能在onChange事件里触发子页面UI的刷新。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -655,7 +661,7 @@ ArkTS-Sta: onAnimationStart(handler: AnimationStartHandler | undefined)
 
 切换动画开始时触发该回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -667,7 +673,7 @@ ArkTS-Sta: onAnimationStart(handler: AnimationStartHandler | undefined)
 
 | 参数名  | 类型                                                                 | 必填 | 说明                                                   |
 | ------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------ |
-| handler | ArkTS-Dyn: Optional\<[AnimationStartHandler](#animationstarthandler)></br>ArkTS-Sta: [AnimationStartHandler](#animationstarthandler) \| undefined | 是   | 切换动画开始时的回调。<br/>取值为undefined时，无回调。 |
+| handler | ArkTS-Dyn:[Optional](ts-universal-attributes-custom-property.md#optionalt)\<[AnimationStartHandler](#animationstarthandler)></br>ArkTS-Sta: [AnimationStartHandler](#animationstarthandler) \| undefined | 是   | 切换动画开始时的回调。<br/>取值为undefined时，无回调。 |
 
 ### onAnimationEnd
 
@@ -679,7 +685,7 @@ ArkTS-Sta: onAnimationEnd(handler: AnimationEndHandler | undefined)
 
 当ArcSwiper切换动效结束时触发，包括动画过程中手势中断，通过[SwiperController](ts-container-swiper.md#swipercontroller)调用finishAnimation。参数为动画结束后的index值，多列ArcSwiper时，index为最左侧组件的索引。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -691,7 +697,7 @@ ArkTS-Sta: onAnimationEnd(handler: AnimationEndHandler | undefined)
 
 | 参数名  | 类型                                                             | 必填 | 说明                                                         |
 | ------- | ---------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| handler | ArkTS-Dyn: Optional\<[AnimationEndHandler](#animationendhandler)></br>ArkTS-Sta: [AnimationEndHandler](#animationendhandler) \| undefined | 是   | 切换动画结束时触发该回调。<br/>取值为undefined时，无回调。 |
+| handler | ArkTS-Dyn:[Optional](ts-universal-attributes-custom-property.md#optionalt)\<[AnimationEndHandler](#animationendhandler)></br>ArkTS-Sta: [AnimationEndHandler](#animationendhandler) \| undefined | 是   | 切换动画结束时触发该回调。<br/>取值为undefined时，无回调。 |
 
 ### onGestureSwipe
 
@@ -701,7 +707,7 @@ ArkTS-Sta: onGestureSwipe(handler: GestureSwipeHandler | undefined)
 
 在页面跟手滑动过程中，逐帧触发该回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -713,19 +719,19 @@ ArkTS-Sta: onGestureSwipe(handler: GestureSwipeHandler | undefined)
 
 | 参数名  | 类型                                                             | 必填 | 说明                                                                 |
 | ------- | ---------------------------------------------------------------- | ---- | -------------------------------------------------------------------- |
-| handler | ArkTS-Dyn: Optional\<[GestureSwipeHandler](#gestureswipehandler)></br>ArkTS-Sta: [GestureSwipeHandler](#gestureswipehandler) \| undefined | 是   | 在页面跟手滑动过程中，逐帧触发该回调。<br/>取值为undefined时，无回调。 |
+| handler | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[GestureSwipeHandler](#gestureswipehandler)></br>ArkTS-Sta: [GestureSwipeHandler](#gestureswipehandler) \| undefined | 是   | 在页面跟手滑动过程中，逐帧触发该回调。<br/>取值为undefined时，无回调。 |
 
 ### customContentTransition
 
 ArkTS-Dyn: customContentTransition(transition: Optional\<SwiperContentAnimatedTransition>)
 
-ArkTS-Sta: customContentTransition(transition: SwiperContentAnimatedTransition | undefined)
+ArkTS-Sta: customContentTransition(transition: ArcSwiperContentAnimatedTransition | undefined)
 
 自定义ArcSwiper页面切换动画。在页面跟手滑动和离手后执行切换动画的过程中，会对视窗内所有页面逐帧触发回调。开发者可以在回调中设置透明度、缩放比例、位移等属性来自定义切换动画。
 
 在页面跟手滑动和离手后执行切换动画的过程中，会对视窗内所有页面逐帧触发[SwiperContentTransitionProxy](#swipercontenttransitionproxy)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -737,26 +743,41 @@ ArkTS-Sta: customContentTransition(transition: SwiperContentAnimatedTransition |
 
 | 参数名     | 类型                                                                                         | 必填 | 说明                                                                   |
 | ---------- | -------------------------------------------------------------------------------------------- | ---- | ---------------------------------------------------------------------- |
-| transition | ArkTS-Dyn: Optional\<[SwiperContentAnimatedTransition](#swipercontentanimatedtransition)></br>ArkTS-Sta: [SwiperContentAnimatedTransition](#swipercontentanimatedtransition) \| undefined | 是   | ArcSwiper自定义切换动画相关信息。<br/>取值为undefined时，无回调。 |
+| transition | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SwiperContentAnimatedTransition](#swipercontentanimatedtransition)></br>ArkTS-Sta: [ArcSwiperContentAnimatedTransition](#arcswipercontentanimatedtransition24) \| undefined | 是   | ArcSwiper自定义切换动画相关信息。<br/>取值为undefined时，无回调。 |
 
 ## SwiperContentAnimatedTransition
 
 ArcSwiper自定义切换动画相关信息。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **ArkTS-Dyn起始版本：** 18
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ---- | ---- | ---- | ---- |
+| timeout | number| 否 | 是 | ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy)的[finishTransition](#finishtransition)接口通知ArcSwiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即在该页面节点下渲染树。单位ms，默认值为0。 |
+| transition | Callback\<[SwiperContentTransitionProxy](#swipercontenttransitionproxy)> | 否 | 否 | 自定义切换动画具体内容。 |
+
+## ArcSwiperContentAnimatedTransition<sup>24+</sup>
+
+ArcSwiper自定义切换动画相关信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---- | ---- | ---- | ---- |
-| timeout | ArkTS-Dyn: number</br>ArkTS-Sta: int | 否 | 是 | ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy)的[finishTransition](#finishtransition)接口通知ArcSwiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即在该页面节点下渲染树。单位ms，默认值为0。 |
-| transition | Callback\<[SwiperContentTransitionProxy](#swipercontenttransitionproxy)> | 否 | 否 | 自定义切换动画具体内容。 |
+| timeout<sup>24+</sup> | int | 否 | 是 | ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy)的[finishTransition](#finishtransition)接口通知ArcSwiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即在该页面节点下渲染树。单位ms，默认值为0。 |
+| transition<sup>24+</sup> | Callback\<[ArcSwiperContentTransitionProxy](#arcswipercontenttransitionproxy24)> | 否 | 否 | 自定义切换动画具体内容。 |
 
-## SwiperContentTransitionProxy
+## ArcSwiperContentTransitionProxy<sup>24+</sup>
 
 ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象。开发者可通过该对象获取自定义动画视窗内的页面信息，同时，也可以通过调用该对象的finishTransition接口通知ArcSwiper组件页面自定义动画已结束。
 
@@ -768,20 +789,69 @@ ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象
 
 ### 属性
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-**ArkTS-Dyn起始版本：** 18
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---- | ---- | ---- | ---- |
-| selectedIndex | ArkTS-Dyn: number</br>ArkTS-Sta: int | 否 | 否 | 当前选中页面的索引。 |
-| index | ArkTS-Dyn: number</br>ArkTS-Sta: int | 否 | 否 | 视窗内页面的索引。 |
-| position | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | index页面相对于ArcSwiper主轴起始位置（selectedIndex对应页面的起始位置）的移动比例。 |
-| mainAxisLength | ArkTS-Dyn: number</br>ArkTS-Sta: double | 否 | 否 | index对应页面在主轴方向上的长度。 |
+| selectedIndex<sup>24+</sup> | int | 否 | 否 | 当前选中页面的索引。 |
+| index<sup>24+</sup> | int | 否 | 否 | 视窗内页面的索引。 |
+| position<sup>24+</sup> | double | 否 | 否 | index页面相对于ArcSwiper主轴起始位置（selectedIndex对应页面的起始位置）的移动比例。 |
+| mainAxisLength<sup>24+</sup> |  double | 否 | 否 | index对应页面在主轴方向上的长度。<br/>单位：vp |
+
+### finishTransition<sup>24+</sup>
+
+finishTransition(): void
+
+通知ArcSwiper组件，此页面的自定义动画已结束。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 24
+
+## SwiperContentTransitionProxy
+
+ArcSwiper自定义切换动画执行过程中，返回给开发者的proxy对象。开发者可通过该对象获取自定义动画视窗内的页面信息，同时，也可以通过调用该对象的finishTransition接口通知ArcSwiper组件页面自定义动画已结束。
+
+>**说明：** 
+>
+> - 假设当前选中的子组件的索引为0，从第0页切换到第1页的动画过程中，每帧都会对视窗内所有页面触发回调，当视窗内有第0页和第1页两页时，每帧会触发两次回调。其中第一次回调的selectedIndex为0，index为0，position为当前帧第0页相对于动画开始前第0页的移动比例，mainAxisLength为主轴方向上第0页的长度；第二次回调的selectedIndex仍为0，index为1，position为当前帧第1页相对于动画开始前第0页的移动比例，mainAxisLength为主轴方向上第1页的长度。
+>
+> - 若动画曲线为弹簧插值曲线，从第0页切换到第1页的动画过程中，可能会因为离手时的位置和速度，先过滑到第2页，再回弹到第1页，该过程中每帧会对视窗内第1页和第2页触发回调。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+### 属性
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ---- | ---- | ---- | ---- |
+| selectedIndex | number | 否 | 否 | 当前选中页面的索引。 |
+| index |  number| 否 | 否 | 视窗内页面的索引。 |
+| position |  number | 否 | 否 | index页面相对于ArcSwiper主轴起始位置（selectedIndex对应页面的起始位置）的移动比例。 |
+| mainAxisLength | number | 否 | 否 | index对应页面在主轴方向上的长度。<br/>单位：vp |
 
 ### finishTransition
 
@@ -789,13 +859,13 @@ finishTransition(): void
 
 通知ArcSwiper组件，此页面的自定义动画已结束。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Dyn起始版本：** 18
 
 ## 示例
 

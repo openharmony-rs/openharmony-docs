@@ -1,8 +1,8 @@
 # Rect
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,19 +10,42 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
+>  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  - 该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
 
 ## 子组件
 
 无
 
-
 ## 接口
 
+### Rect
+
+new Rect(options?: RectOptions | RoundedRectOptions)
+
+用于绘制矩形的构造函数。 
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| options | [RectOptions](ts-drawing-components-rect.md#rectoptions18对象说明) \| [RoundedRectOptions](ts-drawing-components-rect.md#roundedrectoptions18对象说明)  | 否 | Rect绘制属性。<br/>异常值undefined和null按照无效值处理，本次设置不生效。|
+
+### Rect
+
 Rect(options?: RectOptions | RoundedRectOptions)
+
+用于绘制矩形的构造函数。 
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -48,6 +71,8 @@ Rect(options?: RectOptions | RoundedRectOptions)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -57,6 +82,7 @@ Rect(options?: RectOptions | RoundedRectOptions)
 | radius<sup>7+</sup> | [Length](ts-types.md#length) \| Array&lt;any&gt; | 否 | 是 | 圆角半径，支持分别设置四个角的圆角度数，取值范围≥0。<br/>该属性和radiusWidth/radiusHeight属性效果类似，在组合使用时优先于radiusWidth/radiusHeight生效。<br/>默认值：0<br/>默认单位：vp<br/>异常值undefined、null、NaN和Infinity按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## RoundedRectOptions<sup>18+</sup>对象说明
+
 用于描述Rect绘制属性。
 
 > **说明：**
@@ -66,6 +92,8 @@ Rect(options?: RectOptions | RoundedRectOptions)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,7 +110,9 @@ Rect(options?: RectOptions | RoundedRectOptions)
 
 ### radiusWidth
 
-radiusWidth(value: Length)
+ArkTS-Dyn: radiusWidth(value: Length)
+
+ArkTS-Sta: radiusWidth(value: double | string | undefined)
 
 设置圆角的宽度，仅设置宽时宽高一致，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。 异常值按照默认值处理。
 
@@ -92,15 +122,21 @@ radiusWidth(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                       | 必填 | 说明                       |
 | ------ | -------------------------- | ---- | -------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 圆角的宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined按照默认值处理。|
+| value  | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: double \| string \| undefined | 是   | 圆角的宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined按照默认值处理。|
 
 ### radiusHeight
 
-radiusHeight(value: Length)
+ArkTS-Dyn: radiusHeight(value: Length)
+
+ArkTS-Sta: radiusHeight(value: double | string | undefined)
 
 设置圆角的高度，仅设置高时宽高一致，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。  异常值按照默认值处理。
 
@@ -110,15 +146,21 @@ radiusHeight(value: Length)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                       | 必填 | 说明                       |
 | ------ | -------------------------- | ---- | -------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 圆角的高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined按照默认值处理。|
+| value  | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: double \| string \| undefined | 是   | 圆角的高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined按照默认值处理。|
 
 ### radius
 
-radius(value: Length | Array&lt;any&gt;)
+ArkTS-Dyn: radius(value: Length | Array&lt;any&gt;)
+
+ArkTS-Sta: radius(value: Length | Array\<RadiusItem\> | undefined)
 
 设置圆角半径大小，取值范围≥0，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。异常值按照默认值处理。
 
@@ -128,11 +170,15 @@ radius(value: Length | Array&lt;any&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                         |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------- |
-| value  | [Length](ts-types.md#length) \|&nbsp;Array&lt;any&gt; | 是   | 圆角半径大小。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined和null按照[[0, 0], [0, 0], [0, 0], [0, 0]]处理。|
+| value  | ArkTS-Dyn: [Length](ts-types.md#length) \|&nbsp;Array&lt;any&gt; <br/>ArkTS-Sta: [Length](ts-types.md#length) \| Array\<[RadiusItem](#radiusitem22)> \| undefined | 是   | 圆角半径大小。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined和null按照[[0, 0], [0, 0], [0, 0], [0, 0]]处理。|
 
 ### fill
 
@@ -334,6 +380,22 @@ antiAlias(value: boolean)
 | ------ | ------- | ---- | ------------------------------------- |
 | value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true <br/>异常值undefined和null按照false处理。|
 
+## RadiusItem<sup>22+</sup>
+
+type RadiusItem = [Length, Length]
+
+设置圆角的宽度和高度。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+| [[Length](ts-types.md#length), [Length](ts-types.md#length)] | 第一个参数是圆角的宽度，第二个参数是圆角的高度。 |
+
 ## 示例
 
 ### 示例1（组件属性绘制）
@@ -384,7 +446,7 @@ struct RectExample {
 }
 ```
 
-![zh-cn_image_0000001174264386](figures/zh-cn_image_0000001174264386.png)
+![rect](figures/rect.png)
 
 ### 示例2（绘制渐变色矩形）
 
@@ -425,7 +487,7 @@ struct RectExample {
 }
 ```
 
-![zh-cn_image_0000001174264386](figures/zh-cn_image_0000001174264387.jpeg)
+![rect2](figures/rect2.jpeg)
 
 ### 示例3（使用不同参数类型绘制矩形）
 

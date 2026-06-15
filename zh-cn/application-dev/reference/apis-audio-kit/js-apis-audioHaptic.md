@@ -1,8 +1,8 @@
 # @ohos.multimedia.audioHaptic (音振协同)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -10,7 +10,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 **设备行为差异：** 若设备无振动器件，将不会产生振动效果。
 
@@ -27,6 +28,10 @@ getAudioHapticManager(): AudioHapticManager
 获取音振管理器。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -45,16 +50,24 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                            |  值     | 说明                                         |
 | ------------------------------- | ------ | -------------------------------------------- |
 | AUDIO_LATENCY_MODE_NORMAL       | 0      | 普通时延模式。                                |
-| AUDIO_LATENCY_MODE_FAST         | 1      | 低时延模式。该模式适用于比较短的音频文件，音频文件过长时可能被截断，该特性与[SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool)一致。 |
+| AUDIO_LATENCY_MODE_FAST         | 1      | 低时延模式。当音频文件过长时可能被截断，该特性与[SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool)一致。 |
 
 ## AudioHapticPlayerOptions
 
 音振播放器选项。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型            |只读  | 可选 | 说明                              |
 | --------- | -------------- | ---- |---| --------------------------------- |
@@ -71,11 +84,15 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型           |只读  | 可选  | 说明                             |
 | --------- | -------------- | ---- | ---- | --------------------------------- |
-| fd        | number         | 否   | 否   | 音振资源文件的文件描述符，通常大于等于0。|
-| offset    | number         | 否   | 是   | 文件中数据读取的偏移量，单位为字节。默认情况下，偏移量为0。|
-| length    | number         | 否   | 是   | 读取数据的字节长度。默认情况下，长度为文件中从偏移量位置开始的剩余字节数。|
+| fd        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 音振资源文件的文件描述符，通常大于等于0。|
+| offset    | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 是   | 文件中数据读取的偏移量，单位为字节。默认情况下，偏移量为0。|
+| length    | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 是   | 读取数据的字节长度。默认情况下，长度为文件中从偏移量位置开始的剩余字节数。|
 
 ## AudioHapticManager
 
@@ -83,7 +100,9 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 
 ### registerSource
 
-registerSource(audioUri: string, hapticUri: string): Promise&lt;number&gt;
+ArkTS-Dyn: registerSource(audioUri: string, hapticUri: string): Promise&lt;number&gt;
+
+ArkTS-Sta: registerSource(audioUri: string, hapticUri: string): Promise&lt;int&gt;
 
 通过Uri注册音频和振动资源。使用Promise异步回调。
 
@@ -93,6 +112,10 @@ registerSource(audioUri: string, hapticUri: string): Promise&lt;number&gt;
 
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -105,7 +128,7 @@ registerSource(audioUri: string, hapticUri: string): Promise&lt;number&gt;
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回注册的资源ID。<br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回注册的资源ID。<br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。 |
 
 **错误码：**
 
@@ -124,17 +147,19 @@ let audioUri = 'data/audioTest.wav'; // 需更改为目标音频资源的Uri。
 let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的Uri。
 let id = 0;
 // 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
-audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
-  console.info(`Promise returned to indicate that the source id of the registered source ${value}.`);
+audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value) => {
+  console.info(`Succeeded in registering source. ID: ${value}.`);
   id = value;
 }).catch((err: BusinessError) => {
-  console.error(`Failed to register source ${err}`);
+  console.error(`Failed to register source. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ### registerSourceFromFd<sup>20+</sup>
 
-registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFileDescriptor): Promise&lt;number&gt;
+ArkTS-Dyn: registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFileDescriptor): Promise&lt;number&gt;
+
+ArkTS-Sta: registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFileDescriptor): Promise&lt;int&gt;
 
 通过文件描述符注册音频和振动资源。使用Promise异步回调。
 
@@ -143,7 +168,11 @@ registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFi
 > 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 
 
-**系统能力：**: SystemCapability.Multimedia.AudioHaptic.Core
+**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -156,7 +185,7 @@ registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFi
 
 | 类型               | 说明                           |
 | ------------------- | ------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回注册的资源ID。<br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回注册的资源ID。<br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。|
 
 **示例：**
 
@@ -182,17 +211,19 @@ let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
 };
 let id = 0;
 // 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
-audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
-  console.info('Succeeded in doing registerSourceFromFd.');
+audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value) => {
+  console.info(`Succeeded in registering source from fd. ID: ${value}.`);
   id = value;
 }).catch((err: BusinessError) => {
-  console.error(`Failed to registerSourceFromFd. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to register source from fd. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ### unregisterSource
 
-unregisterSource(id: number): Promise&lt;void&gt;
+ArkTS-Dyn: unregisterSource(id: number): Promise&lt;void&gt;
+
+ArkTS-Sta: unregisterSource(id: int): Promise&lt;void&gt;
 
 取消注册音频和振动资源。使用Promise异步回调。
 
@@ -202,11 +233,15 @@ unregisterSource(id: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                      | 必填 | 说明                     |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| id       | number                                   | 是   | 已注册资源的source id。    |
+| id       | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 是   | 已注册资源的source id。    |
 
 **返回值：**
 
@@ -230,25 +265,31 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let id = 0; // 需要通过registerSource方法获取。
 
 audioHapticManagerInstance.unregisterSource(id).then(() => {
-  console.info('Succeeded in doing unregisterSource.');
+  console.info('Succeeded in unregistering source.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to unregisterSource. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to unregister source. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ### setAudioLatencyMode
 
-setAudioLatencyMode(id:number, latencyMode: AudioLatencyMode): void
+ArkTS-Dyn: setAudioLatencyMode(id:number, latencyMode: AudioLatencyMode): void
+
+ArkTS-Sta: setAudioLatencyMode(id:int, latencyMode: AudioLatencyMode): void
 
 设置音频时延模式。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                      | 必填 | 说明                     |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| id          | number                                | 是   | 已注册资源的source id。    |
+| id          | ArkTS-Dyn: number<br>ArkTS-Sta: int                                | 是   | 已注册资源的source id。    |
 | latencyMode | [AudioLatencyMode](#audiolatencymode) | 是   | 音频时延模式。             |
 
 **错误码：**
@@ -274,17 +315,23 @@ audioHapticManagerInstance.setAudioLatencyMode(id, latencyMode);
 
 ### setStreamUsage
 
-setStreamUsage(id: number, usage: audio.StreamUsage): void
+ArkTS-Dyn: setStreamUsage(id: number, usage: audio.StreamUsage): void
+
+ArkTS-Sta: setStreamUsage(id: int, usage: audio.StreamUsage): void
 
 设置音频流使用类型。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                      | 必填 | 说明                     |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| id       | number                                   | 是   | 已注册资源的source id。    |
+| id       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 已注册资源的source id。    |
 | usage    | [audio.StreamUsage](arkts-apis-audio-e.md#streamusage) | 是   | 音频流使用类型。    |
 
 **错误码：**
@@ -311,7 +358,9 @@ audioHapticManagerInstance.setStreamUsage(id, usage);
 
 ### createPlayer
 
-createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise&lt;AudioHapticPlayer&gt;
+ArkTS-Dyn: createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise&lt;AudioHapticPlayer&gt;
+
+ArkTS-Sta: createPlayer(id: int, options?: AudioHapticPlayerOptions): Promise&lt;AudioHapticPlayer&gt;
 
 创建音振播放器。使用Promise异步回调。
 
@@ -321,11 +370,15 @@ createPlayer(id: number, options?: AudioHapticPlayerOptions): Promise&lt;AudioHa
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                      | 必填 | 说明                     |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| id       | number                                   | 是   | 已注册资源的source id。    |
+| id       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 已注册资源的source id。    |
 | options  | [AudioHapticPlayerOptions](#audiohapticplayeroptions) | 否   | 音振播放器选项。 |
 
 **返回值：**
@@ -354,13 +407,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let id = 0; // 需要通过registerSource方法获取。
 
 let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
-let audioHapticPlayerInstance: audioHaptic.AudioHapticPlayer | undefined = undefined;
+let audioHapticPlayerInstance;
 
 audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.AudioHapticPlayer) => {
   audioHapticPlayerInstance = value;
-  console.info('Succeeded in doing createPlayer.');
+  console.info('Succeeded in creating player.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to createPlayer. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to create player. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -369,6 +422,10 @@ audioHapticManagerInstance.createPlayer(id, options).then((value: audioHaptic.Au
 枚举，音振类型。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                            |  值     | 说明                                         |
 | ------------------------------- | ------ | -------------------------------------------- |
@@ -386,6 +443,10 @@ isMuted(type: AudioHapticType): boolean
 查询该音振类型是否被静音。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -423,6 +484,10 @@ start(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                  | 说明                         |
@@ -445,9 +510,9 @@ start(): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.start().then(() => {
-  console.info(`Promise returned to indicate that start playing successfully.`);
+  console.info('Succeeded in starting.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to start playing. ${err}`);
+  console.error(`Failed to start. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -458,6 +523,10 @@ stop(): Promise&lt;void&gt;
 停止播放。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -480,9 +549,9 @@ stop(): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.stop().then(() => {
-  console.info(`Promise returned to indicate that stop playing successfully.`);
+  console.info('Succeeded in stopping.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to stop playing. ${err}`);
+  console.error(`Failed to stop Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -493,6 +562,10 @@ release(): Promise&lt;void&gt;
 释放音振播放器。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -514,15 +587,17 @@ release(): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.release().then(() => {
-  console.info(`Promise returned to indicate that release the audio haptic player successfully.`);
+  console.info('Succeeded in releasing.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to release the audio haptic player. ${err}`);
+  console.error(`Failed to release. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ### setVolume<sup>20+</sup>
 
-setVolume(volume: number): Promise&lt;void&gt;
+ArkTS-Dyn: setVolume(volume: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setVolume(volume: double): Promise&lt;void&gt;
 
 设置音振播放器的音量。使用Promise异步回调。
 
@@ -532,11 +607,15 @@ setVolume(volume: number): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**
 
 | 参数名  | 类型                                     | 必填| 说明                    |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| volume     | number                                | 是  | 取值范围为[0.00, 1.00]，其中1.00表示最大音量（100%）。|
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是  | 取值范围为[0.00, 1.00]，其中1.00表示最大音量（100%）。|
 
 **返回值：**
 
@@ -560,9 +639,9 @@ setVolume(volume: number): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.setVolume(0.5).then(() => {
-  console.info('Promise returned to indicate that set volume successfully.');
+  console.info('Succeeded in setting volume.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to set volume. ${err}`);
+  console.error(`Failed to set volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -577,6 +656,10 @@ setLoop(loop: boolean): Promise&lt;void&gt;
 > 该方法需在音振播放器销毁前调用。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -604,9 +687,9 @@ setLoop(loop: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioHapticPlayerInstance.setLoop(true).then(() => {
-  console.info('Promise returned to indicate that set player loop successfully.');
+  console.info('Succeeded in setting loop.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to set player loop. ${err}`);
+  console.error(`Failed to set loop. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -616,7 +699,13 @@ on(type: 'endOfStream', callback: Callback&lt;void&gt;): void
 
 监听流结束事件（音频流播放结束时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onEndOfStream](#onendofstream23)。
+
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -629,7 +718,35 @@ on(type: 'endOfStream', callback: Callback&lt;void&gt;): void
 
 ```ts
 audioHapticPlayerInstance.on('endOfStream', () => {
-  console.info(`Receive the callback of endOfStream.`);
+  console.info('Succeeded in using on function.');
+});
+```
+
+### onEndOfStream<sup>23+</sup>
+
+onEndOfStream(callback: Callback&lt;void&gt;): void
+
+监听流结束事件（音频流播放结束时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('endOfStream')](#onendofstream)。
+
+**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                                       |
+| -------- | ----------------------- | ---- | -------------------------------------------------------------------------- |
+| callback | Callback&lt;void&gt;    | 是   | 回调函数，无返回结果。 |
+
+**示例：**
+
+```ts
+audioHapticPlayerInstance.onEndOfStream(() => {
+  console.info('Succeeded in using on function.');
 });
 ```
 
@@ -639,7 +756,13 @@ off(type: 'endOfStream', callback?: Callback&lt;void&gt;): void
 
 取消监听流结束事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offEndOfStream](#offendofstream23)。
+
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -656,12 +779,48 @@ audioHapticPlayerInstance.off('endOfStream');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let endOfStreamCallback = () => {
-  console.info(`Receive the callback of endOfStream.`);
+  console.info('Succeeded in using on or off function.');
 };
 
 audioHapticPlayerInstance.on('endOfStream', endOfStreamCallback);
 
 audioHapticPlayerInstance.off('endOfStream', endOfStreamCallback);
+```
+
+### offEndOfStream<sup>23+</sup>
+
+offEndOfStream(callback?: Callback&lt;void&gt;): void
+
+取消监听流结束事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('endOfStream')](#offendofstream)。
+
+**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                              |
+| ----- | ----- | ---- | ------------------------------------------------ |
+| callback | Callback&lt;void&gt;    | 否   | 回调函数，无返回结果。 |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioHapticPlayerInstance.offEndOfStream();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let endOfStreamCallback = () => {
+  console.info('Succeeded in using on or off function.');
+};
+
+audioHapticPlayerInstance.onEndOfStream(endOfStreamCallback);
+
+audioHapticPlayerInstance.offEndOfStream(endOfStreamCallback);
 ```
 
 ### on('audioInterrupt')
@@ -670,7 +829,13 @@ on(type: 'audioInterrupt', callback: Callback&lt;audio.InterruptEvent&gt;): void
 
 监听音频中断事件（当音频焦点发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioInterrupt](#onaudiointerrupt23)。
+
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -734,13 +899,94 @@ audioHapticPlayerInstance.on('audioInterrupt', (interruptEvent: audio.InterruptE
 });
 ```
 
+### onAudioInterrupt<sup>23+</sup>
+
+onAudioInterrupt(callback: Callback&lt;audio.InterruptEvent&gt;): void
+
+监听音频中断事件（当音频焦点发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('audioInterrupt')](#onaudiointerrupt)。
+
+**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                                                       |
+| -------- | ----------------------- | ---- | -------------------------------------------------------------------------- |
+| callback | Callback&lt;[audio.InterruptEvent](arkts-apis-audio-i.md#interruptevent9)&gt; | 是   | 回调函数，返回中断事件信息。 |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let isPlaying: boolean; // 标识符，表示是否正在渲染。
+let isDucked: boolean; // 标识符，表示是否被降低音量。
+
+audioHapticPlayerInstance.onAudioInterrupt((interruptEvent: audio.InterruptEvent) => {
+  // 在发生音频打断事件时，audioHapticPlayerInstance收到interruptEvent回调，此处根据其内容做相应处理。
+  // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
+  // 注意：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
+  // 2. 必选：读取interruptEvent.hintType的类型，做出相应的处理。
+  if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
+    // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
+        // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
+        console.info('Force paused. Update playing status and stop writing');
+        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_STOP:
+        // 音频流已被停止，永久失去焦点，若想恢复渲染，需用户主动触发。
+        console.info('Force stopped. Update playing status and stop writing');
+        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_DUCK:
+        // 音频流已被降低音量渲染。
+        console.info('Force ducked. Update volume status');
+        isDucked = true; // 简化处理，代表应用更新音量状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
+        // 音频流已被恢复正常音量渲染。
+        console.info('Force unducked. Update volume status');
+        isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
+        break;
+      default:
+        break;
+    }
+  } else if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_SHARE) {
+    // 音频焦点事件需由应用进行操作，应用可以自主选择如何处理该事件，建议应用遵从InterruptHint提示处理。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_RESUME:
+        // 建议应用继续渲染（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复渲染）。
+        // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
+        console.info('Resume force paused renderer or ignore');
+        // 若选择继续渲染，需在此处主动执行开始渲染的若干操作。
+        break;
+      default:
+        break;
+    }
+  }
+});
+```
+
 ### off('audioInterrupt')
 
 off(type: 'audioInterrupt', callback?: Callback&lt;audio.InterruptEvent&gt;): void
 
 取消监听音频中断事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioInterrupt](#offaudiointerrupt23)。
+
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -809,4 +1055,86 @@ let audioInterruptCallback = (interruptEvent: audio.InterruptEvent) => {
 audioHapticPlayerInstance.on('audioInterrupt', audioInterruptCallback);
 
 audioHapticPlayerInstance.off('audioInterrupt', audioInterruptCallback);
+```
+
+### offAudioInterrupt<sup>23+</sup>
+
+offAudioInterrupt(callback?: Callback&lt;audio.InterruptEvent&gt;): void
+
+取消监听音频中断事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('audioInterrupt')](#offaudiointerrupt)。
+
+**系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                              |
+| ----- | ----- | ---- | ------------------------------------------------- |
+| callback | Callback&lt;[audio.InterruptEvent](arkts-apis-audio-i.md#interruptevent9)&gt; | 否   | 回调函数，返回中断事件信息。 |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+// 取消该事件的所有监听。
+audioHapticPlayerInstance.offAudioInterrupt();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let isPlaying: boolean; // 标识符，表示是否正在渲染。
+let isDucked: boolean; // 标识符，表示是否被降低音量。
+let audioInterruptCallback = (interruptEvent: audio.InterruptEvent) => {
+  // 在发生音频打断事件时，audioHapticPlayerInstance收到interruptEvent回调，此处根据其内容做相应处理。
+  // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
+  // 注意：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
+  // 2. 必选：读取interruptEvent.hintType的类型，做出相应的处理。
+  if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
+    // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
+        // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
+        console.info('Force paused. Update playing status and stop writing');
+        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_STOP:
+        // 音频流已被停止，永久失去焦点，若想恢复渲染，需用户主动触发。
+        console.info('Force stopped. Update playing status and stop writing');
+        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_DUCK:
+        // 音频流已被降低音量渲染。
+        console.info('Force ducked. Update volume status');
+        isDucked = true; // 简化处理，代表应用更新音量状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
+        // 音频流已被恢复正常音量渲染。
+        console.info('Force unducked. Update volume status');
+        isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
+        break;
+      default:
+        break;
+    }
+  } else if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_SHARE) {
+    // 音频焦点事件需由应用进行操作，应用可以自主选择如何处理该事件，建议应用遵从InterruptHint提示处理。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_RESUME:
+        // 建议应用继续渲染（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复渲染）。
+        // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
+        console.info('Resume force paused renderer or ignore');
+        // 若选择继续渲染，需在此处主动执行开始渲染的若干操作。
+        break;
+      default:
+        break;
+    }
+  }
+};
+
+audioHapticPlayerInstance.onAudioInterrupt(audioInterruptCallback);
+
+audioHapticPlayerInstance.offAudioInterrupt(audioInterruptCallback);
 ```

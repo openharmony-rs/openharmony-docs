@@ -1,4 +1,4 @@
-# 组合手势
+# GestureGroup
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
@@ -10,15 +10,21 @@
 
 >  **说明：**
 >
->  从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 接口
 
 GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -31,9 +37,13 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
 定义手势组的识别模式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值    | 说明                                       |
 | --------- | -------| ------------------------------------- |
@@ -46,19 +56,25 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
 ### onCancel
 
-onCancel(event: () => void)
+ArkTS-Dyn: onCancel(event: () => void)
+
+ArkTS-Sta: onCancel(event: VoidCallback)
 
 手势识别成功，接收到触摸取消事件，触发回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  () => void | 是   | 手势事件回调函数。|
+| event  |  ArkTS-Dyn: () => void<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) | 是   | 手势事件回调函数。|
 
 ## 示例
 
@@ -128,8 +144,8 @@ struct GestureGroupExample {
 
 按顺序首先触发长按事件：
 
-![zh-cn_image_0000001174104384](figures/zh-cn_image_0000001174104384.png)
+![GestureGroup](figures/GestureGroup.png)
 
 按顺序首先触发长按事件，长按事件识别结束之后，触发拖动事件，向右下方拖动：
 
- ![zh-cn_image1_0000001174104384](figures/zh-cn_image1_0000001174104384.png) 
+ ![triggeringEvent](figures/triggeringEvent.png) 

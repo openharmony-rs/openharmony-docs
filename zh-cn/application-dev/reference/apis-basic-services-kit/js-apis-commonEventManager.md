@@ -1,9 +1,8 @@
 # @ohos.commonEventManager (公共事件模块)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -11,7 +10,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -23,15 +23,25 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 系统公共事件是指由系统服务或系统应用发布的事件，订阅这些公共事件需要特定的权限、使用相应的值，详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。
 
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 ## commonEventManager.publish
 
 publish(event: string, callback: AsyncCallback\<void>): void
 
 发布公共事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -46,13 +56,14 @@ publish(event: string, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- | 
-| 1500003  | The common event sending frequency too high. |
+| 1500003  | The common event sending frequency too high.<br> 适用版本：20 |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500009  | Failed to obtain system parameters.  |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -71,15 +82,38 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 发布公共事件
+try {
+  commonEventManager.publish('event', (err: BusinessError | null) => {
+    if (err) {
+      console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`Succeeded in publishing common event.`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## commonEventManager.publish
 
 publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\<void>): void
 
 发布公共事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -95,13 +129,14 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 1500003  | The common event sending frequency too high. |
+| 1500003  | The common event sending frequency too high.<br> 适用版本：20 |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500009  | Failed to obtain system parameters.  |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -127,15 +162,45 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 公共事件相关信息，以发布有序公共事件为例
+let options: commonEventManager.CommonEventPublishData = {
+  code: 0,
+  data: 'initial data',
+  isOrdered: true // 有序公共事件
+}
+
+// 发布公共事件
+try {
+  commonEventManager.publish('event', options, (err: BusinessError | null) => {
+    if (err) {
+      console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
+      return;
+    }
+    console.info(`Succeeded in publishing common event.`);
+  });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to publish common event. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## commonEventManager.createSubscriber
 
 createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallback\<CommonEventSubscriber>): void
 
 创建订阅者。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -150,10 +215,11 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.    | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.    | 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -181,15 +247,56 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
+
+// 订阅者信息
+let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+  events: ['event']
+};
+
+// 创建订阅者
+try {
+  commonEventManager.createSubscriber(
+    subscribeInfo,
+    (err: BusinessError | null,
+      commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined | null) => {
+      if (!err && commonEventSubscriber) {
+        console.info(`Succeeded in creating subscriber.`);
+        subscriber = commonEventSubscriber; // 现在类型匹配
+        return;
+      }
+
+      if (err) {
+        console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.error(`Failed to create subscriber: commonEventSubscriber is null or undefined`);
+      }
+    }
+  );
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## commonEventManager.createSubscriber
 
 createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise\<CommonEventSubscriber>
 
 创建订阅者。使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -208,10 +315,11 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise\<CommonEventS
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -230,15 +338,40 @@ commonEventManager.createSubscriber(subscribeInfo).then((commonEventSubscriber: 
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+let subscriber: commonEventManager.CommonEventSubscriber;
+// 订阅者信息
+let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+  events: ['event']
+};
+// 创建订阅者
+commonEventManager.createSubscriber(subscribeInfo)
+  .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
+    console.info(`Succeeded in creating subscriber.`);
+    subscriber = commonEventSubscriber;
+  })
+  .catch((err: BusinessError): void => {
+    console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+  });
+```
+
 ## commonEventManager.createSubscriberSync<sup>10+</sup>
 
 createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber
 
 createSubscriber的同步接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -257,7 +390,7 @@ createSubscriber的同步接口。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 
 **示例：**
 
@@ -285,9 +418,13 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 
 订阅公共事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -305,10 +442,11 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 | 801  | capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
-| 1500010  | The count of subscriber exceed system specification. |
+| 1500010  | The count of subscriber exceed system specification. <br> 适用版本：20|
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -349,15 +487,62 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+let subscriber: commonEventManager.CommonEventSubscriber;
+// 订阅者信息
+let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+  events: ['event']
+};
+
+// 创建订阅者
+try {
+  commonEventManager.createSubscriber(subscribeInfo,
+    (err: BusinessError | null,
+      commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined | null) => {
+      if (!err) {
+        console.info(`Succeeded in creating subscriber.`);
+        subscriber = commonEventSubscriber as commonEventManager.CommonEventSubscriber;
+        // 订阅公共事件
+        try {
+          commonEventManager.subscribe(subscriber,
+            (err: BusinessError | null, data: commonEventManager.CommonEventData | undefined | null) => {
+              if (err) {
+                console.error(`Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
+                return;
+              }
+              console.info(`Succeeded in subscribing, data is ${JSON.stringify(data)}`);
+            });
+        } catch (error) {
+          let err: BusinessError = error as BusinessError;
+          console.error(`Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
+        }
+        return;
+      }
+      console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+    });
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## commonEventManager.unsubscribe
 
 unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>): void
 
 取消订阅公共事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -372,13 +557,14 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 | 801  | capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -438,15 +624,97 @@ setTimeout(() => {
 }, 500);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 定义订阅者，允许为 null 或 undefined
+let subscriber: commonEventManager.CommonEventSubscriber | null | undefined = null;
+
+// 订阅者信息
+let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+  events: ['event']
+};
+
+    // 创建订阅者
+try {
+  commonEventManager.createSubscriber(
+    subscribeInfo,
+    (err: BusinessError | null,
+      commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined | null) => {
+      if (!err && commonEventSubscriber) {
+        console.info(`Succeeded in creating subscriber.`);
+        subscriber = commonEventSubscriber as commonEventManager.CommonEventSubscriber;
+        // 订阅公共事件 - 使用确定的非空对象
+        try {
+          commonEventManager.subscribe(
+            commonEventSubscriber, // 直接使用回调参数，确保非空
+            (err: BusinessError | null, data: commonEventManager.CommonEventData | undefined | null) => {
+              if (err) {
+                console.error(`Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
+                return;
+              }
+              console.info(`Succeeded in subscribing, data is ${JSON.stringify(data)}`);
+            }
+          );
+        } catch (error) {
+          const err = error as BusinessError;
+          console.error(`Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
+        }
+        return;
+      }
+
+      if (err) {
+         console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.error(`Failed to create subscriber: commonEventSubscriber is null or undefined`);
+      }
+    }
+  );
+} catch (error) {
+  const err = error as BusinessError;
+  console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+}
+
+// 取消订阅公共事件
+setTimeout(() => {
+  if (subscriber) {
+    const currentSubscriber = subscriber as commonEventManager.CommonEventSubscriber;
+    try {
+      commonEventManager.unsubscribe(
+        currentSubscriber,
+        (err: BusinessError | null) => {
+          if (err) {
+            console.error(`Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+          subscriber = undefined;
+          console.info(`Succeeded in unsubscribing.`);
+        }
+      );
+    } catch (error) {
+      const err = error as BusinessError;
+      console.error(`Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
+    }
+  } else {
+    console.warn("Cannot unsubscribe: subscriber is null or undefined");
+  }
+}, 500);
+```
+
 ## commonEventManager.subscribeToEvent<sup>20+</sup>
 
 subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEventData>): Promise\<void>
 
 订阅公共事件，并返回订阅成功或失败信息。使用Promise异步回调。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -473,6 +741,7 @@ subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEv
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -513,15 +782,72 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 定义订阅者
+let subscriber: commonEventManager.CommonEventSubscriber | undefined | null = null;
+// 订阅者信息
+let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+  events: ["event"]
+};
+
+// 创建订阅者
+try {
+  commonEventManager.createSubscriber(
+    subscribeInfo,
+    (err: BusinessError | null, commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined) => {
+      if (err) {
+        console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+        return;
+      }
+
+      // 确保订阅者对象有效
+      if (!commonEventSubscriber) {
+        console.error(`Failed to create subscriber: subscriber is undefined`);
+        return;
+      }
+
+      console.info(`Succeeded in creating subscriber.`);
+      subscriber = commonEventSubscriber;
+
+      // 使用类型断言确保类型正确
+      const validSubscriber = commonEventSubscriber as commonEventManager.CommonEventSubscriber;
+
+      // 订阅公共事件
+      commonEventManager.subscribeToEvent(
+        validSubscriber,
+        (data: commonEventManager.CommonEventData) => {
+          console.info(`Succeeded to receive common event, data is ${JSON.stringify(data)}`);
+        }
+      ).then(() => {
+        console.info(`Succeeded to subscribe.`);
+      }).catch((err: Error) => {
+        const businessErr = err as BusinessError;
+        console.error(`Failed to subscribe. Code is ${businessErr.code}, message is ${businessErr.message}`);
+      });
+    }
+  );
+} catch (error) {
+  const err = error as BusinessError;
+  console.error(`Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## CommonEventData<sup>10+</sup>
 
 type CommonEventData = _CommonEventData
 
 表示公共事件的数据。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 | 类型 | 说明 |
 | --- | --- |
@@ -533,9 +859,13 @@ type CommonEventSubscriber = _CommonEventSubscriber
 
 描述公共事件的订阅者。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 | 类型 | 说明 |
 | --- | --- |
@@ -547,9 +877,13 @@ type CommonEventSubscribeInfo = _CommonEventSubscribeInfo
 
 用于表示订阅者的信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 | 类型 | 说明 |
 | --- | --- |
@@ -561,9 +895,13 @@ type CommonEventPublishData = _CommonEventPublishData
 
 描述公共事件内容和属性。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 | 类型 | 说明 |
 | --- | --- |

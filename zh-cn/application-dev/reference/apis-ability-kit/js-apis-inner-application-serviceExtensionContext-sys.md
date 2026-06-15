@@ -3,19 +3,24 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yewei0794-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ServiceExtensionContext模块是ServiceExtensionAbility的上下文环境，继承自ExtensionContext。
 
 ServiceExtensionContext模块提供ServiceExtensionAbility具有的能力，包括启动、停止、绑定、解绑Ability。
 
 > **说明：**
-> 
->  - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->  - 本模块接口仅可在Stage模型下使用。
->  - 本模块接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
->  - 本模块接口为系统接口。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块接口需要在主线程中使用，不要在Worker、TaskPool等子线程中使用。
+>
+> - 本模块接口为系统接口。
 
 ## 导入模块
 
@@ -29,9 +34,27 @@ import { common } from '@kit.AbilityKit';
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { ServiceExtensionAbility } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
+
+let commRemote: rpc.IRemoteObject | null; // 断开连接时需要释放
+
+class EntryAbility extends ServiceExtensionAbility {
+  onCreate() {
+    let context = this.context; // 获取ServiceExtensionContext
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { ServiceExtensionAbility } from '@kit.AbilityKit';
+import rpc from '@ohos.rpc';
 
 let commRemote: rpc.IRemoteObject | null; // 断开连接时需要释放
 
@@ -51,6 +74,10 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -106,17 +133,18 @@ class EntryAbility extends ServiceExtensionAbility {
     };
 
     try {
-      this.context.startAbility(want, (error: BusinessError) => {
-        if (error.code) {
+      this.context.startAbility(want, (error: BusinessError<void> | null) => {
+        if (error?.code) {
           // 处理业务逻辑错误
-          console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
+          console.error(`startAbility failed, error.code: ${error?.code}, error.message: ${error?.message}`);
           return;
         }
         // 执行正常业务
         console.info('startAbility succeed');
       });
-    } catch (paramError) {
+    } catch (error) {
       // 处理入参错误异常
+      let paramError = error as BusinessError;
       console.error(`error.code: ${paramError.code}, error.message: ${paramError.message}`);
     }
   }
@@ -132,6 +160,10 @@ startAbility(want: Want, options?: StartOptions): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -197,16 +229,17 @@ class EntryAbility extends ServiceExtensionAbility {
 
     try {
       this.context.startAbility(want, options)
-        .then((data: void) => {
+        .then(() => {
           // 执行正常业务
           console.info('startAbility succeed');
         })
-        .catch((error: BusinessError) => {
+        .catch((error: BusinessError<void>): void => {
           // 处理业务逻辑错误
           console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
         });
-    } catch (paramError) {
+    } catch (error) {
       // 处理入参错误异常
+      let paramError = error as BusinessError;
       console.error(`error.code: ${paramError.code}, error.message: ${paramError.message}`);
     }
   }
@@ -222,6 +255,10 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -282,17 +319,18 @@ class EntryAbility extends ServiceExtensionAbility {
     };
 
     try {
-      this.context.startAbility(want, options, (error: BusinessError) => {
-        if (error.code) {
+      this.context.startAbility(want, options, (error: BusinessError | null) => {
+        if (error?.code) {
           // 处理业务逻辑错误
-          console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
+          console.error(`startAbility failed, error.code: ${error?.code}, error.message: ${error?.message}`);
           return;
         }
         // 执行正常业务
         console.info('startAbility succeed');
       });
-    } catch (paramError) {
+    } catch (error) {
       // 处理入参错误异常
+      let paramError = error as BusinessError;
       console.error(`error.code: ${paramError.code}, error.message: ${paramError.message}`);
     }
   }
@@ -301,7 +339,9 @@ class EntryAbility extends ServiceExtensionAbility {
 
 ## ServiceExtensionContext.startAbilityWithAccount
 
-startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback\<void>): void
 
 根据accountId启动Ability。仅支持在主线程调用。使用callback异步回调。
 
@@ -315,12 +355,16 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | number | 是 | 系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当根据accountId启动Ability成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -392,7 +436,9 @@ class EntryAbility extends ServiceExtensionAbility {
 
 ## ServiceExtensionContext.startAbilityWithAccount
 
-startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, callback: AsyncCallback\<void\>): void
+ArkTS-Dyn:startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, callback: AsyncCallback\<void\>): void
+
+ArkTS-Sta:startAbilityWithAccount(want: Want, accountId: int, options: StartOptions, callback: AsyncCallback\<void\>): void
 
 根据accountId启动Ability。仅支持在主线程调用。使用callback异步回调。
 
@@ -406,12 +452,16 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | number | 是 | 系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动Ability所携带的参数。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当根据accountId启动Ability成功，err为undefined，否则为错误对象。 |
 
@@ -466,7 +516,7 @@ class EntryAbility extends ServiceExtensionAbility {
     };
 
     try {
-      this.context.startAbilityWithAccount(want, accountId, options, (error: BusinessError) => {
+      this.context.startAbilityWithAccount(want, accountId, options, (error: BusinessError): void => {
         if (error.code) {
           // 处理业务逻辑错误
           console.error(`startAbilityWithAccount failed, error.code: ${error.code}, error.message: ${error.message}`);
@@ -483,10 +533,11 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
-
 ## ServiceExtensionContext.startAbilityWithAccount
 
-startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): Promise\<void>
+ArkTS-Dyn: startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): Promise\<void>
+
+ArkTS-Sta: startAbilityWithAccount(want: Want, accountId: int, options?: StartOptions): Promise\<void>
 
 根据accountId启动Ability。仅支持在主线程调用。使用Promise异步回调。
 
@@ -500,12 +551,16 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | number | 是 | 系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
 
 **返回值：**
@@ -568,12 +623,13 @@ class EntryAbility extends ServiceExtensionAbility {
 
     try {
       this.context.startAbilityWithAccount(want, accountId, options)
-        .then((data: void) => {
+        .then((data) => {
           // 执行正常业务
           console.info('startAbilityWithAccount succeed');
         })
-        .catch((error: BusinessError) => {
+        .catch((err: Error) => {
           // 处理业务逻辑错误
+          let error = err as BusinessError;
           console.error(`startAbilityWithAccount failed, error.code: ${error.code}, error.message: ${error.message}`);
         });
     } catch (paramError) {
@@ -593,6 +649,10 @@ startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -638,10 +698,10 @@ class EntryAbility extends ServiceExtensionAbility {
     };
 
     try {
-      this.context.startServiceExtensionAbility(want, (error: BusinessError) => {
-        if (error.code) {
+      this.context.startServiceExtensionAbility(want, (error: BusinessError | null) => {
+        if (error?.code) {
           // 处理业务逻辑错误
-          console.error(`startServiceExtensionAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
+          console.error(`startServiceExtensionAbility failed, error.code: ${error?.code}, error.message: ${error?.message}`);
           return;
         }
         // 执行正常业务
@@ -664,6 +724,10 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -719,7 +783,7 @@ class EntryAbility extends ServiceExtensionAbility {
           // 执行正常业务
           console.info('startServiceExtensionAbility succeed');
         })
-        .catch((error: BusinessError) => {
+        .catch((error: BusinessError<void>): void => {
           // 处理业务逻辑错误
           console.error(`startServiceExtensionAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
         });
@@ -733,7 +797,9 @@ class EntryAbility extends ServiceExtensionAbility {
 
 ## ServiceExtensionContext.startServiceExtensionAbilityWithAccount
 
-startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback\<void>): void
 
 启动一个新的ServiceExtensionAbility。使用callback异步回调。
 
@@ -748,12 +814,16 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback:
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | number | 是 | 系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当启动一个新的ServiceExtensionAbility成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -794,7 +864,7 @@ class EntryAbility extends ServiceExtensionAbility {
     let accountId = 100;
 
     try {
-      this.context.startServiceExtensionAbilityWithAccount(want, accountId, (error: BusinessError) => {
+      this.context.startServiceExtensionAbilityWithAccount(want, accountId, (error: BusinessError): void => {
         if (error.code) {
           // 处理业务逻辑错误
           console.error(`startServiceExtensionAbilityWithAccount failed, error.code: ${error.code}, error.message: ${error.message}`);
@@ -813,7 +883,9 @@ class EntryAbility extends ServiceExtensionAbility {
 
 ## ServiceExtensionContext.startServiceExtensionAbilityWithAccount
 
-startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
+ArkTS-Dyn: startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
+
+ArkTS-Sta: startServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise\<void>
 
 启动一个新的ServiceExtensionAbility。使用Promise异步回调。
 
@@ -828,12 +900,16 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | number | 是 | 系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
 
 **返回值：**
 
@@ -880,12 +956,13 @@ class EntryAbility extends ServiceExtensionAbility {
 
     try {
       this.context.startServiceExtensionAbilityWithAccount(want, accountId)
-        .then((data: void) => {
+        .then((data) => {
           // 执行正常业务
           console.info('startServiceExtensionAbilityWithAccount succeed');
         })
-        .catch((error: BusinessError) => {
+        .catch((err: Error) => {
           // 处理业务逻辑错误
+          let error = err as BusinessError;
           console.error(`startServiceExtensionAbilityWithAccount failed, error.code: ${error.code}, error.message: ${error.message}`);
         });
     } catch (paramError) {
@@ -896,7 +973,7 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.startAbilityAsCaller<sup>10+<sup>
+## ServiceExtensionContext.startAbilityAsCaller<sup>10+</sup>
 
 startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
@@ -909,6 +986,10 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -975,7 +1056,7 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.startAbilityAsCaller<sup>10+<sup>
+## ServiceExtensionContext.startAbilityAsCaller<sup>10+</sup>
 
 startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\<void>): void
 
@@ -988,6 +1069,10 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1057,7 +1142,7 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.startAbilityAsCaller<sup>10+<sup>
+## ServiceExtensionContext.startAbilityAsCaller<sup>10+</sup>
 
 startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
@@ -1070,6 +1155,10 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1140,7 +1229,8 @@ class EntryAbility extends ServiceExtensionAbility {
       .then(() => {
         console.info('startAbilityAsCaller success.');
       })
-      .catch((err: BusinessError) => {
+      .catch((error: Error) => {
+        let err = error as BusinessError;
         console.error(`startAbilityAsCaller failed, err: ${JSON.stringify(err)}`);
       })
   }
@@ -1156,6 +1246,10 @@ stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1197,10 +1291,10 @@ class EntryAbility extends ServiceExtensionAbility {
     };
 
     try {
-      this.context.stopServiceExtensionAbility(want, (error: BusinessError) => {
-        if (error.code) {
+      this.context.stopServiceExtensionAbility(want, (error: BusinessError<void> | null) => {
+        if (error?.code) {
           // 处理业务逻辑错误
-          console.error(`stopServiceExtensionAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
+          console.error(`stopServiceExtensionAbility failed, error.code: ${error?.code}, error.message: ${error?.message}`);
           return;
         }
         // 执行正常业务
@@ -1223,6 +1317,10 @@ stopServiceExtensionAbility(want: Want): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1274,7 +1372,7 @@ class EntryAbility extends ServiceExtensionAbility {
           // 执行正常业务
           console.info('stopServiceExtensionAbility succeed');
         })
-        .catch((error: BusinessError) => {
+        .catch((error: BusinessError<void>): void => {
           // 处理业务逻辑错误
           console.error(`stopServiceExtensionAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
         });
@@ -1288,7 +1386,9 @@ class EntryAbility extends ServiceExtensionAbility {
 
 ## ServiceExtensionContext.stopServiceExtensionAbilityWithAccount
 
-stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int, callback: AsyncCallback\<void>): void
 
 停止指定账号下指定的ServiceExtensionAbility后台服务。使用callback异步回调。
 
@@ -1302,12 +1402,16 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: 
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 停止Ability的Want信息。 |
-| accountId | number | 是 | 需要停止的系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 需要停止的系统账号的账号ID。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数。当使用账户停止同一应用程序内的服务成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1344,7 +1448,7 @@ class EntryAbility extends ServiceExtensionAbility {
     let accountId = 100;
 
     try {
-      this.context.stopServiceExtensionAbilityWithAccount(want, accountId, (error: BusinessError) => {
+      this.context.stopServiceExtensionAbilityWithAccount(want, accountId, (error: BusinessError): void => {
         if (error.code) {
           // 处理业务逻辑错误
           console.error(`stopServiceExtensionAbilityWithAccount failed, error.code: ${error.code}, error.message: ${error.message}`);
@@ -1363,7 +1467,9 @@ class EntryAbility extends ServiceExtensionAbility {
 
 ## ServiceExtensionContext.stopServiceExtensionAbilityWithAccount
 
-stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
+ArkTS-Dyn: stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<void>
+
+ArkTS-Sta: stopServiceExtensionAbilityWithAccount(want: Want, accountId: int): Promise\<void>
 
 停止指定账号下指定的ServiceExtensionAbility后台服务。使用Promise异步回调。
 
@@ -1377,12 +1483,16 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 停止Ability的Want信息。 |
-| accountId | number | 是 | 需要停止的系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 需要停止的系统账号的账号ID。 |
 
 **返回值：**
 
@@ -1429,8 +1539,9 @@ class EntryAbility extends ServiceExtensionAbility {
           // 执行正常业务
           console.info('stopServiceExtensionAbilityWithAccount succeed');
         })
-        .catch((error: BusinessError) => {
+        .catch((err: Error) => {
           // 处理业务逻辑错误
+          let error = err as BusinessError;
           console.error(`stopServiceExtensionAbilityWithAccount failed, error.code: ${error.code}, error.message: ${error.message}`);
         });
     } catch (paramError) {
@@ -1450,6 +1561,10 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1476,10 +1591,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class EntryAbility extends ServiceExtensionAbility {
   onCreate() {
-    this.context.terminateSelf((error: BusinessError) => {
-      if (error.code) {
+    this.context.terminateSelf((error: BusinessError<void> | null) => {
+      if (error?.code) {
         // 处理业务逻辑错误
-        console.error(`terminateSelf failed, error.code: ${error.code}, error.message: ${error.message}`);
+        console.error(`terminateSelf failed, error.code: ${error?.code}, error.message: ${error?.message}`);
         return;
       }
       // 执行正常业务
@@ -1498,6 +1613,10 @@ terminateSelf(): Promise&lt;void&gt;
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1526,7 +1645,7 @@ class EntryAbility extends ServiceExtensionAbility {
     this.context.terminateSelf().then(() => {
       // 执行正常业务
       console.info('terminateSelf succeed');
-    }).catch((error: BusinessError) => {
+    }).catch((error: BusinessError<void>): void => {
       // 处理业务逻辑错误
       console.error(`terminateSelf failed, error.code: ${error.code}, error.message: ${error.message}`);
     });
@@ -1536,7 +1655,9 @@ class EntryAbility extends ServiceExtensionAbility {
 
 ## ServiceExtensionContext.connectServiceExtensionAbility
 
-connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
+ArkTS-Dyn: connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
+
+ArkTS-Sta: connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 将当前Ability连接到一个ServiceExtensionAbility。仅支持在主线程调用。
 
@@ -1547,6 +1668,10 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1559,7 +1684,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回一个number，后续根据这个number去断开连接。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 返回一个数值，后续根据这个数值去断开连接。 |
 
 **错误码：**
 
@@ -1583,6 +1708,8 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ServiceExtensionAbility, Want, common } from '@kit.AbilityKit';
@@ -1621,9 +1748,57 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { ServiceExtensionAbility, Want, common, bundleManager } from '@kit.AbilityKit';
+import rpc from '@ohos.rpc';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let commRemote: rpc.IRemoteObject; // 断开连接时需要释放
+
+type OnConnectFn = (elementName: bundleManager.ElementName, remote: rpc.IRemoteObject) => void
+type OnDisconnectFn = (elementName: bundleManager.ElementName) => void
+type OnFailedFn = (code: int) => void
+
+class ConnectOptions implements common.ConnectOptions {
+  onConnect: OnConnectFn = (elementName: bundleManager.ElementName, remote: rpc.IRemoteObject) => {
+    commRemote = remote;
+    console.info('----------- onConnect -----------');
+  };
+  onDisconnect: OnDisconnectFn = (elementName: bundleManager.ElementName) => {
+    console.info('----------- onDisconnect -----------');
+  };
+  onFailed: OnFailedFn = (code: int) => {
+    console.error('----------- onFailed -----------');
+  };
+}
+
+class EntryAbility extends ServiceExtensionAbility {
+  onCreate() {
+    let want: Want = {
+      bundleName: 'com.example.myapp',
+      abilityName: 'MyAbility'
+    };
+    let options = new ConnectOptions()
+    let connection: long;
+
+    try {
+      connection = this.context.connectServiceExtensionAbility(want, options);
+    } catch (paramError) {
+      // 处理入参错误异常
+      console.error(`error.code: ${(paramError as BusinessError).code}, error.message: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
+
 ## ServiceExtensionContext.connectServiceExtensionAbilityWithAccount
 
-connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options: ConnectOptions): number
+ArkTS-Dyn: connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options: ConnectOptions): number
+
+ArkTS-Sta: connectServiceExtensionAbilityWithAccount(want: Want, accountId: int, options: ConnectOptions): long
 
 将当前Ability连接到一个指定account的ServiceExtensionAbility。仅支持在主线程调用。
 
@@ -1640,19 +1815,23 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
-| accountId | number | 是 | 系统账号的账号ID。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID。 |
 | options | ConnectOptions | 是 | 远端对象实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回Ability连接的结果code。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 返回Ability连接的结果code。 |
 
 **错误码：**
 
@@ -1677,6 +1856,8 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ServiceExtensionAbility, Want, common } from '@kit.AbilityKit';
@@ -1717,9 +1898,59 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { ServiceExtensionAbility, Want, common, bundleManager } from '@kit.AbilityKit';
+import rpc from '@ohos.rpc';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let commRemote: rpc.IRemoteObject; // 断开连接时需要释放
+
+type OnConnectFn = (elementName: bundleManager.ElementName, remote: rpc.IRemoteObject) => void
+type OnDisconnectFn = (elementName: bundleManager.ElementName) => void
+type OnFailedFn = (code: int) => void
+
+class ConnectOptions implements common.ConnectOptions {
+  onConnect: OnConnectFn = (elementName: bundleManager.ElementName, remote: rpc.IRemoteObject) => {
+    commRemote = remote;
+    console.info('----------- onConnect -----------');
+  };
+  onDisconnect: OnDisconnectFn = (elementName: bundleManager.ElementName) => {
+    console.info('----------- onDisconnect -----------');
+  };
+  onFailed: OnFailedFn = (code: int) => {
+    console.error('----------- onFailed -----------');
+  };
+}
+
+class EntryAbility extends ServiceExtensionAbility {
+  onCreate() {
+    let want: Want = {
+      deviceId: '',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility'
+    };
+    let accountId: int = 100;
+    let options = new ConnectOptions()
+    let connection: long;
+
+    try {
+      connection = this.context.connectServiceExtensionAbilityWithAccount(want, accountId, options);
+    } catch (paramError) {
+      // 处理入参错误异常
+      console.error(`error.code: ${(paramError as BusinessError).code}, error.message: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
+
 ## ServiceExtensionContext.disconnectServiceExtensionAbility
 
-disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: disconnectServiceExtensionAbility(connection: long, callback: AsyncCallback&lt;void&gt;): void
 
 将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空。仅支持在主线程调用。使用callback异步回调。
 
@@ -1727,11 +1958,15 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| connection | number | 是 | 在connectServiceExtensionAbility中返回的number。 |
+| connection | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是 | connectServiceExtensionAbility中的返回值。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当Ability与绑定服务类型的Ability解绑成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1745,6 +1980,8 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ServiceExtensionAbility } from '@kit.AbilityKit';
@@ -1777,9 +2014,45 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { ServiceExtensionAbility } from '@kit.AbilityKit';
+import rpc from '@ohos.rpc';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let commRemote: rpc.IRemoteObject | null; // 断开连接时需要释放
+
+class EntryAbility extends ServiceExtensionAbility {
+  onCreate() {
+    // connection为connectServiceExtensionAbility中的返回值
+    let connection = 1;
+    try {
+      this.context.disconnectServiceExtensionAbility(connection, (error: BusinessError<void> | null) => {
+        commRemote = null;
+        if (error?.code) {
+          // 处理业务逻辑错误
+          console.error(`disconnectServiceExtensionAbility failed, error.code: ${error?.code}, error.message: ${error?.message}`);
+          return;
+        }
+        // 执行正常业务
+        console.info('disconnectServiceExtensionAbility succeed');
+      });
+    } catch (paramError) {
+      commRemote = null;
+      // 处理入参错误异常
+      console.error(`error.code: ${(paramError as BusinessError).code}, error.message: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
+
 ## ServiceExtensionContext.disconnectServiceExtensionAbility
 
-disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
+ArkTS-Dyn: disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
+
+ArkTS-Sta: disconnectServiceExtensionAbility(connection: long): Promise&lt;void&gt;
 
 将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空。仅支持在主线程调用。使用Promise异步回调。
 
@@ -1787,11 +2060,15 @@ disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| connection | number | 是 | 在connectServiceExtensionAbility中返回的number。 |
+| connection | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是 | connectServiceExtensionAbility中的返回值。 |
 
 **返回值：**
 
@@ -1810,6 +2087,8 @@ disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ServiceExtensionAbility } from '@kit.AbilityKit';
@@ -1843,6 +2122,41 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { ServiceExtensionAbility } from '@kit.AbilityKit';
+import rpc from '@ohos.rpc';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let commRemote: rpc.IRemoteObject | null; // 断开连接时需要释放
+
+class EntryAbility extends ServiceExtensionAbility {
+  onCreate() {
+    // connection为connectServiceExtensionAbility中的返回值
+    let connection = 1;
+    try {
+      this.context.disconnectServiceExtensionAbility(connection)
+        .then(() => {
+          commRemote = null;
+          // 执行正常业务
+          console.info('disconnectServiceExtensionAbility succeed');
+        })
+        .catch((error: BusinessError<void>): void => {
+          commRemote = null;
+          // 处理业务逻辑错误
+          console.error(`disconnectServiceExtensionAbility failed, error.code: ${error.code}, error.message: ${error.message}`);
+        });
+    } catch (paramError) {
+      commRemote = null;
+      // 处理入参错误异常
+      console.error(`error.code: ${(paramError as BusinessError).code}, error.message: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
+
 ## ServiceExtensionContext.startAbilityByCall
 
 startAbilityByCall(want: Want): Promise&lt;Caller&gt;
@@ -1861,6 +2175,10 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1891,6 +2209,8 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 后台启动：
 
@@ -1964,6 +2284,85 @@ class EntryAbility extends ServiceExtensionAbility {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+后台启动：
+
+```ts
+'use static'
+import { ServiceExtensionAbility, Caller, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class EntryAbility extends ServiceExtensionAbility {
+  onCreate() {
+    let caller: Caller;
+    // 后台启动Ability，不配置parameters
+    let wantBackground: Want = {
+      bundleName: 'com.example.myservice',
+      moduleName: 'entry',
+      abilityName: 'EntryAbility',
+      deviceId: ''
+    };
+
+    try {
+      this.context.startAbilityByCall(wantBackground)
+        .then((obj: Caller) => {
+          // 执行正常业务
+          caller = obj;
+          console.info('startAbilityByCall succeed');
+        }).catch((err: Error) => {
+        // 处理业务逻辑错误
+        let error = err as BusinessError;
+        console.error(`startAbilityByCall failed, error.code: ${error.code}, error.message: ${error.message}`);
+      });
+    } catch (paramError) {
+      // 处理入参错误异常
+      console.error(`error.code: ${(paramError as BusinessError).code}, error.message: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
+
+前台启动：
+
+```ts
+import { ServiceExtensionAbility, Caller, Want } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+class EntryAbility extends ServiceExtensionAbility {
+  onCreate() {
+    let caller: Caller;
+    // 前台启动Ability，将parameters中的'ohos.aafwk.param.callAbilityToForeground'配置为true
+    let wantForeground: Want = {
+      bundleName: 'com.example.myservice',
+      moduleName: 'entry',
+      abilityName: 'EntryAbility',
+      deviceId: '',
+      parameters: {
+        'ohos.aafwk.param.callAbilityToForeground': true
+      } as Record<string, RecordData>
+    };
+
+    try {
+      this.context.startAbilityByCall(wantForeground)
+        .then((obj: Caller) => {
+          // 执行正常业务
+          caller = obj;
+          console.info('startAbilityByCall succeed');
+        }).catch((err) => {
+        // 处理业务逻辑错误
+        let error = err as BusinessError;
+        console.error(`startAbilityByCall failed, error.code: ${error.code}, error.message: ${error.message}`);
+      });
+    } catch (paramError) {
+      // 处理入参错误异常
+      console.error(`error.code: ${(paramError as BusinessError).code}, error.message: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
+
 ## ServiceExtensionContext.startRecentAbility
 
 startRecentAbility(want: Want, callback: AsyncCallback\<void>): void
@@ -1977,6 +2376,10 @@ startRecentAbility(want: Want, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2030,7 +2433,7 @@ class EntryAbility extends ServiceExtensionAbility {
     };
 
     try {
-      this.context.startRecentAbility(want, (err: BusinessError) => {
+      this.context.startRecentAbility(want, (err: BusinessError): void => {
         if (err.code) {
           // 处理业务逻辑错误
           console.error(`startRecentAbility failed, code is ${err.code}, message is ${err.message}`);
@@ -2048,6 +2451,7 @@ class EntryAbility extends ServiceExtensionAbility {
   }
 }
 ```
+
 ## ServiceExtensionContext.startRecentAbility
 
 startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback\<void>): void
@@ -2063,6 +2467,10 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback\<v
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2119,7 +2527,7 @@ class EntryAbility extends ServiceExtensionAbility {
     };
 
     try {
-      this.context.startRecentAbility(want, options, (err: BusinessError) => {
+      this.context.startRecentAbility(want, options, (err: BusinessError): void => {
         if (err.code) {
           // 处理业务逻辑错误
           console.error(`startRecentAbility failed, code is ${err.code}, message is ${err.message}`);
@@ -2137,6 +2545,7 @@ class EntryAbility extends ServiceExtensionAbility {
   }
 }
 ```
+
 ## ServiceExtensionContext.startRecentAbility
 
 startRecentAbility(want: Want, options?: StartOptions): Promise\<void>
@@ -2150,6 +2559,10 @@ startRecentAbility(want: Want, options?: StartOptions): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2211,8 +2624,9 @@ class EntryAbility extends ServiceExtensionAbility {
           // 执行正常业务
           console.info('startRecentAbility succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((error: Error) => {
           // 处理业务逻辑错误
+          let err = error as BusinessError;
           console.error(`startRecentAbility failed, code is ${err.code}, message is ${err.message}`);
         });
     } catch (err) {
@@ -2227,7 +2641,9 @@ class EntryAbility extends ServiceExtensionAbility {
 
 ## ServiceExtensionContext.startAbilityByCallWithAccount<sup>10+</sup>
 
-startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&gt;
+ArkTS-Dyn: startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&gt;
+
+ArkTS-Sta: startAbilityByCallWithAccount(want: Want, accountId: int): Promise&lt;Caller&gt;
 
 根据accountId对指定的Ability进行call调用，并且可以使用返回的Caller通信接口与被调用方进行通信。仅支持在主线程调用。使用Promise异步回调。
 
@@ -2245,12 +2661,16 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 传入需要启动的Ability的信息，包含abilityName、moduleName、bundleName、deviceId(可选)、parameters(可选)，其中deviceId缺省或为空表示启动本地Ability，parameters缺省或为空表示后台启动Ability。 |
-| accountId | number | 是 | 系统账号的账号ID，-1表示当前活动用户。 |
+| accountId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 系统账号的账号ID，-1表示当前活动用户。 |
 
 **返回值：**
 
@@ -2280,6 +2700,8 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&
 | 16200001 | The caller has been released. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ServiceExtensionAbility, Want, Caller } from '@kit.AbilityKit';
@@ -2320,7 +2742,50 @@ class EntryAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.requestModalUIExtension<sup>11+<sup>
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { ServiceExtensionAbility, Want, Caller } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+class EntryAbility extends ServiceExtensionAbility {
+  onCreate() {
+    let caller: Caller;
+    // 系统账号的账号ID, -1表示当前激活用户
+    let accountId = -1;
+    // 指定启动的Ability
+    let want: Want = {
+      bundleName: 'com.acts.actscalleeabilityrely',
+      moduleName: 'entry',
+      abilityName: 'EntryAbility',
+      deviceId: '',
+      parameters: {
+        // 'ohos.aafwk.param.callAbilityToForeground' 值设置为true时为前台启动, 设置false或不设置为后台启动
+        'ohos.aafwk.param.callAbilityToForeground': true
+      } as Record<string, RecordData>
+    };
+
+    try {
+      this.context.startAbilityByCallWithAccount(want, accountId)
+        .then((obj: Caller) => {
+          // 执行正常业务
+          caller = obj;
+          console.info('startAbilityByCallWithAccount succeed');
+        }).catch((err) => {
+        // 处理业务逻辑错误
+        let error = err as BusinessError;
+        console.error(`startAbilityByCallWithAccount failed, error.code: ${error.code}, error.message: ${error.message}`);
+      });
+    } catch (paramError) {
+      // 处理入参错误异常
+      console.error(`error.code: ${(paramError as BusinessError).code}, error.message: ${(paramError as BusinessError).message}`);
+    }
+  }
+}
+```
+
+## ServiceExtensionContext.requestModalUIExtension<sup>11+</sup>
 
 requestModalUIExtension(pickerWant: Want): Promise\<void>
 
@@ -2335,6 +2800,10 @@ requestModalUIExtension(pickerWant: Want): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2359,6 +2828,8 @@ requestModalUIExtension(pickerWant: Want): Promise\<void>
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -2397,7 +2868,48 @@ class ServiceExtension extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.requestModalUIExtension<sup>11+<sup>
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+class ServiceExtension extends ServiceExtensionAbility {
+  onCreate() {
+    let pickerWant: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'UIExtAbility',
+      moduleName: 'entry_test',
+      parameters: {
+        'bundleName': 'com.example.myapplication',
+        // 与com.example.myapplication.UIExtAbility配置的type相同
+        'ability.want.params.uiExtensionType': 'sys/commonUI'
+      } as Record<string, RecordData>
+    };
+
+    try {
+      this.context.requestModalUIExtension(pickerWant)
+        .then(() => {
+          // 执行正常业务
+          console.info('requestModalUIExtension succeed');
+        })
+        .catch((error) => {
+          // 处理业务逻辑错误
+          let err = error as BusinessError;
+          console.error(`requestModalUIExtension failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`requestModalUIExtension failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+## ServiceExtensionContext.requestModalUIExtension<sup>11+</sup>
 
 requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 
@@ -2412,6 +2924,10 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2431,6 +2947,8 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -2469,7 +2987,47 @@ class ServiceExtension extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.openLink<sup>12+<sup>
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+class ServiceExtension extends ServiceExtensionAbility {
+  onCreate() {
+    let pickerWant: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'com.example.myapplication.UIExtAbility',
+      moduleName: 'entry_test',
+      parameters: {
+        'bundleName': 'com.example.myapplication',
+        // 与com.example.myapplication.UIExtAbility配置的type相同
+        'ability.want.params.uiExtensionType': 'sys/commonUI'
+      } as Record<string, RecordData>
+    };
+
+    try {
+      this.context.requestModalUIExtension(pickerWant, (err: BusinessError): void => {
+        if (err.code) {
+          // 处理业务逻辑错误
+          console.error(`requestModalUIExtension failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        // 执行正常业务
+        console.info('requestModalUIExtension succeed');
+      });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`requestModalUIExtension failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+## ServiceExtensionContext.openLink<sup>12+</sup>
 
 openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 
@@ -2489,6 +3047,10 @@ openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2554,12 +3116,12 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
         openLinkOptions
       ).then(() => {
         log(`open link success.`);
-      }).catch((err: BusinessError) => {
+      }).catch((error: Error) => {
+        let err = error as BusinessError;
         log(`open link failed, errCode ${JSON.stringify(err.code)}`);
       });
-    }
-    catch (e) {
-      log(`exception occurred, errCode ${JSON.stringify(e.code)}`);
+    } catch (e) {
+      log(`exception occurred, ${JSON.stringify(e)}`);
     }
   }
 
@@ -2569,7 +3131,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.preStartMission<sup>12+<sup>
+## ServiceExtensionContext.preStartMission<sup>12+</sup>
 
 preStartMission(bundleName: string, moduleName: string, abilityName: string, startTime: string): Promise&lt;void&gt;
 
@@ -2582,6 +3144,10 @@ preStartMission(bundleName: string, moduleName: string, abilityName: string, sta
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2630,21 +3196,30 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
     log(`ServiceExtAbility onRequest`);
     try {
       if (want.parameters && want.parameters["ohos.aafwk.param.startTime"]) {
+        const bundleName: string | undefined = want.bundleName || '';
+        const moduleName: string | undefined = want.moduleName || '';
+        const abilityName: string | undefined = want.abilityName || '';
+        const startTime: string = want.parameters?.['ohos.aafwk.param.startTime'] as string || '';
+
+        // 验证必要的参数
+        if (!bundleName || !abilityName || !moduleName) {
+          log(`Missing required parameters: bundleName=${bundleName}, abilityName=${abilityName}, moduleName=${moduleName}`);
+          return;
+        }
+
         this.context.preStartMission(
-          want.bundleName,
-          want.moduleName,
-          want.abilityName,
-          want.parameters["ohos.aafwk.param.startTime"] as string
+          bundleName,
+          moduleName,
+          abilityName,
+          startTime
         ).then(() => {
           log(`pre-start mission success.`);
-        }).catch((err: BusinessError) => {
-          log(`pre-start mission failed, errCode: ${err.code}, errMsg: ${err.message}.`);
+        }).catch((err: Error) => {
+          log(`pre-start mission failed, ${JSON.stringify(err)}`);
         });
       }
     } catch (e) {
-      let code = (e as BusinessError).code;
-      let msg = (e as BusinessError).message;
-      log(`exception occurred, errCode: ${code}, errMsg: ${msg}.`);
+      log(`exception occurred, ${JSON.stringify(e)}`);
     }
   }
 
@@ -2654,7 +3229,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 }
 ```
 
-## ServiceExtensionContext.startUIServiceExtensionAbility<sup>14+<sup>
+## ServiceExtensionContext.startUIServiceExtensionAbility<sup>14+</sup>
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
@@ -2668,7 +3243,12 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
+
 | 参数名 | 类型 | 必填 | 说明                 |
 | ------ | ---- | ---- | -------------------- |
 | want   | [Want](js-apis-app-ability-want.md) | 是 | Want类型参数，传入需要启动的Ability的信息，如Ability名称，Bundle名称等。 |
@@ -2716,14 +3296,15 @@ export default class MyServiceExtensionAbility extends ServiceExtensionAbility {
     // 启动一个UIServiceExtensionAbility
     this.context.startUIServiceExtensionAbility(startWant).then(() => {
       console.info('succeeded');
-    }).catch((error: BusinessError) => {
+    }).catch((err: Error) => {
+      let error = err as BusinessError;
       console.error(`error code: ${error.code}, error message : ${error.message}`);
     })
   }
 }
 ```
 
-## ServiceExtensionContext.openAtomicService<sup>18+<sup>
+## ServiceExtensionContext.openAtomicService<sup>18+</sup>
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;void&gt;
 
 通过应用ID，拉起原子化服务。使用Promise异步回调。
@@ -2735,6 +3316,10 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;voi
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2767,7 +3352,7 @@ openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;voi
 **示例：**
 
 ```ts
-import { ServiceExtensionAbility, AtomicServiceOptions } from '@kit.AbilityKit';
+import { ServiceExtensionAbility, AtomicServiceOptions, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class ServiceExtension extends ServiceExtensionAbility {
@@ -2781,7 +3366,7 @@ export default class ServiceExtension extends ServiceExtensionAbility {
         .then(() => {
           console.info('openAtomicService succeed');
         })
-        .catch((err: BusinessError) => {
+        .catch((err: BusinessError<void>): void => {
           console.error(`openAtomicService failed, code is ${err.code}, message is ${err.message}`);
         });
     } catch (err) {
@@ -2795,7 +3380,7 @@ export default class ServiceExtension extends ServiceExtensionAbility {
 
 ## ServiceExtensionContext.startUIAbilities<sup>20+</sup>
 
-startUIAbilities(wantList: Array\<Want>): Promise\<void>
+startUIAbilities(wantList: Array\<Want\>): Promise\<void\>
 
 同时启动多个UIAbility。使用Promise异步回调。
 
@@ -2812,46 +3397,50 @@ startUIAbilities(wantList: Array\<Want>): Promise\<void>
 
 **设备行为差异**：该接口在Phone、Tablet中可正常调用，在其他设备类型中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
-| 参数名 | 类型 | 必填 | 说明 |
-| ------ | ------ | ------ | ------ |
-| wantList | Array\<[Want](js-apis-app-ability-want.md)> | 是 | 需要被同时拉起的多个UIAbility的启动参数列表，最多支持传入4个Want。启动参数Want不支持隐式启动、跨用户启动、分布式、免安装和按需加载，不指明分身的情况下默认启动主应用。|
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| wantList | Array\<[Want](js-apis-app-ability-want.md)\> | 是   | 需要被同时拉起的多个UIAbility的启动参数列表，最多支持传入4个Want。启动参数Want不支持隐式启动、跨用户启动、分布式、免安装和按需加载，不指明分身的情况下默认启动主应用。 |
 
 **返回值：**
 
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。|
+| 类型            | 说明                      |
+| --------------- | ------------------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码**：
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
-| 错误码ID | 错误信息 |
-| ------ | ------ |
-| 201 | The application does not have permission to call the interface. |
-| 202 | Not system application. |
-| 801 | Capability not supported. |
-| 16000001 | The specified ability does not exist. |
-| 16000004 | Cannot start an invisible component. |
-| 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
-| 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000011 | The context does not exist. |
-| 16000050 | Internal error. |
-| 16200001 | The caller has been released. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000080 | Creating a new instance is not supported. |
-| 16000120 | A maximum of four UIAbility instances can be started simultaneously. The current parameter exceeds the maximum number or is less than 1.|
-| 16000121 | The target component type is not a UIAbility. |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | The application does not have permission to call the interface. |
+| 202      | Not system application.                                      |
+| 801      | Capability not supported.                                    |
+| 16000001 | The specified ability does not exist.                        |
+| 16000004 | Cannot start an invisible component.                         |
+| 16000005 | The specified process does not have the permission.          |
+| 16000006 | Cross-user operations are not allowed.                       |
+| 16000008 | The crowdtesting application expires.                        |
+| 16000009 | An ability cannot be started or stopped in Wukong mode.      |
+| 16000011 | The context does not exist.                                  |
+| 16000050 | Internal error.                                              |
+| 16200001 | The caller has been released.                                |
+| 16000073 | The app clone index is invalid.                              |
+| 16000076 | The app instance key is invalid.                             |
+| 16000080 | Creating a new instance is not supported.                    |
+| 16000120 | A maximum of four UIAbility instances can be started simultaneously. The current parameter exceeds the maximum number or is less than 1. |
+| 16000121 | The target component type is not a UIAbility.                |
 | 16000122 | The target component is blocked by the system module and does not support startup. |
-| 16000123 | Implicit startup is not supported. |
-| 16000124 | Starting a remote UIAbility is not supported. |
-| 16000125 | Starting a plugin UIAbility is not supported. |
-| 16000126 | Starting DLP files is not supported. |
+| 16000123 | Implicit startup is not supported.                           |
+| 16000124 | Starting a remote UIAbility is not supported.                |
+| 16000125 | Starting a plugin UIAbility is not supported.                |
+| 16000126 | Starting DLP files is not supported.                         |
 
 **示例**：
 
@@ -2873,12 +3462,147 @@ export default class EntryServiceExtAbility extends ServiceExtensionAbility {
     try {
       this.context.startUIAbilities(wantList).then(() => {
         console.info(`TestTag:: start succeeded.`);
-      }).catch((error: BusinessError) => {
+      }).catch((err: Error) => {
+        let error = err as BusinessError;
         console.info(`TestTag:: startUIAbilities failed: ${JSON.stringify(error)}`);
       });
-    } catch (paramError) {
+    } catch (err) {
       // 处理入参错误异常
+      let paramError = err as BusinessError;
       console.error(`error.code: ${paramError.code}, error.message: ${paramError.message}`);
+    }
+  }
+}
+```
+
+## ServiceExtensionContext.requestModalUIExtensionWithAccount
+
+ArkTS-Dyn: requestModalUIExtensionWithAccount(pickerWant: Want, accountId: number): Promise\<void>
+
+ArkTS-Sta: requestModalUIExtensionWithAccount(pickerWant: Want, accountId: int): Promise\<void>
+
+请求为指定用户在指定获焦应用上拉起对应类型的UIExtensionAbility。获焦应用通过want.parameters中的bundleName指定，若未指定获焦应用或指定的应用未获焦，则在系统界面上直接拉起UIExtensionAbility。拉起的UIExtensionAbility由Want中的bundleName、abilityName和moduleName字段共同确定，同时需通过want.parameters中的ability.want.params.uiExtensionType字段配置其类型。此操作仅支持在主线程调用，并以Promise形式提供异步回调。
+
+在获焦应用拉起UIExtensionAbility之前，必须确保该应用已完成页面初始化，否则将导致拉起失败。应用可通过监听页面加载状态判断拉起UIExtensionAbility的时机。
+
+**系统接口**：此接口为系统接口。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息。 |
+| accountId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 系统账号的账号ID，可以通过[getForegroundOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount-sys.md#getforegroundosaccountlocalid23)接口获取。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed;2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.4.The logical screen corresponding to the specified accountId is not in the foreground.|
+
+ArkTS-Dyn示例：
+
+```ts
+import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class ServiceExtension extends ServiceExtensionAbility {
+  onCreate(want: Want) {
+    let pullUIExtWant: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'UIExtAbility',
+      moduleName: 'entry_test',
+      parameters: {
+        'bundleName': 'com.example.myapplication',
+        // 与com.example.myapplication.UIExtAbility配置的type相同
+        'ability.want.params.uiExtensionType': 'sys/commonUI'
+      }
+    };
+    // 账号ID说明：
+    // 1. 示例固定值 100
+    // 2. 可通过系统账号管理接口getForegroundOsAccountLocalId(displayId: number) 获取指定逻辑屏上运行的前台系统账号ID
+    let accountId = 100;
+
+    try {
+      this.context.requestModalUIExtensionWithAccount(pullUIExtWant, accountId)
+        .then(() => {
+          // 执行正常业务
+          console.info('requestModalUIExtensionWithAccount succeed');
+        })
+        .catch((err: BusinessError) => {
+          // 处理业务逻辑错误
+          console.error(`requestModalUIExtensionWithAccount failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`requestModalUIExtensionWithAccount failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { common, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@ohos.base'
+
+export default class ServiceExtension extends ServiceExtensionAbility {
+  onCreate(want: Want) {
+    let pullUIExtWant: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'UIExtAbility',
+      moduleName: 'entry_test',
+      parameters: {
+        'bundleName': 'com.example.myapplication',
+        // 与com.example.myapplication.UIExtAbility配置的type相同
+        'ability.want.params.uiExtensionType': 'sys/commonUI'
+      }
+    };
+    // 账号ID说明：
+    // 1. 示例固定值 100
+    // 2. 可通过系统账号管理接口getForegroundOsAccountLocalId(displayId: number) 获取指定逻辑屏上运行的前台系统账号ID
+    let accountId = 100;
+
+    try {
+      this.context.requestModalUIExtensionWithAccount(pullUIExtWant, accountId)
+        .then(() => {
+          // 执行正常业务
+          console.info('requestModalUIExtensionWithAccount succeed');
+        })
+        .catch((err: BusinessError<void>): void => {
+          // 处理业务逻辑错误
+          console.error(`requestModalUIExtensionWithAccount failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`requestModalUIExtensionWithAccount failed, code is ${code}, message is ${message}`);
     }
   }
 }

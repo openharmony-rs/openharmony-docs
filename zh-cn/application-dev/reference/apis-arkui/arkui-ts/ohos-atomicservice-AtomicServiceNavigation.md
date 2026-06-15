@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @qq_36417014-->
-<!--Designer: @zhangbeilei-->
+<!--Designer: @autojuan-->
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
 
@@ -30,7 +30,7 @@ import { AtomicServiceNavigation } from '@kit.ArkUI';
 ``` ts
 AtomicServiceNavigation({
     navPathStack?: NavPathStack,
-    navigationContent: Callback<void>,
+    navigationContent?: Callback<void>,
     title?: ResourceStr,
     titleOptions?: TitleOptions,
     gradientBackground?: GradientBackground,
@@ -52,7 +52,7 @@ AtomicServiceNavigation({
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数**：
+**参数：**
 
 | 名称 | 类型 | 必填 | 装饰器类型| 说明 |
 | --------------- | ------ | ---- | ----|----|
@@ -145,7 +145,7 @@ NavDestination组件内容。
 | DRAWER | 3 | 抽屉样式。 |
 
 ## GradientAlpha<sup>18+</sup>
-导航栏背景底色的可选项。
+导航栏背景底色不透明度的可选项。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -236,7 +236,7 @@ struct Index {
       ],
       tabBarPosition: TabBarPosition.BOTTOM,
       barBackgroundColor: $r('sys.color.ohos_id_color_bottom_tab_bg'),
-      onTabBarClick: (index: Number) => {
+      onTabBarClick: (index: number) => {
         if (index == 0) {
           this.message = '功能1';
         } else if (index == 1) {
@@ -375,7 +375,7 @@ struct Index {
       ],
       tabBarPosition: TabBarPosition.BOTTOM,
       barBackgroundColor: $r('sys.color.ohos_id_color_bottom_tab_bg'),
-      onTabBarClick: (index: Number) => {
+      onTabBarClick: (index: number) => {
         if (index == 0) {
           this.message = '功能1';
         } else if (index == 1) {
@@ -517,7 +517,7 @@ struct Index {
       ],
       tabBarPosition: TabBarPosition.BOTTOM,
       barBackgroundColor: $r('sys.color.ohos_id_color_bottom_tab_bg'),
-      onTabBarClick: (index: Number) => {
+      onTabBarClick: (index: number) => {
         if (index == 0) {
           this.message = '功能1';
         } else if (index == 1) {

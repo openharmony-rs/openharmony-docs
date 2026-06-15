@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
-> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 子组件
 
@@ -19,15 +21,44 @@
 RowSplit通过分割线限制子组件的宽度。初始化时，分割线位置根据子组件的宽度来计算。初始化后，动态修改子组件的宽度不生效，分割线位置保持不变，可以通过拖动相邻分割线改变子组件宽度。
 
 初始化后，动态修改[margin](ts-universal-attributes-size.md#margin)、[border](ts-universal-attributes-border.md#border)、[padding](ts-universal-attributes-size.md#padding)通用属性导致子组件宽度大于相邻分割线间距的异常情况下，不支持拖动分割线改变子组件的宽度。
+
 ## 接口
+
+### RowSplit
 
 RowSplit()
 
 带分割线的子组件横向分隔布局。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[RowSplit](#rowsplit23)。
+
+**ArkTS-Dyn起始版本：** 7
+
+### RowSplit<sup>23+</sup>
+
+RowSplit(content_?: CustomBuilder)
+
+带分割线的子组件横向分隔布局。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[RowSplit](#rowsplit-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | --- | --- | --- |
+| content_  | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 定义子组件的Builder函数。 |
 
 ## 属性
 
@@ -39,23 +70,47 @@ RowSplit()
 
 ### resizeable
 
-resizeable(value: boolean)
+ArkTS-Dyn: resizeable(value: boolean)
+
+ArkTS-Sta: resizeable(value: boolean | undefined)
 
 设置分割线是否可拖拽。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | boolean | 是 | 分割线是否可拖拽。设置为true时表示分割线可拖拽，设置为false时表示分割线不可拖拽。<br/>默认值：false <br />非法值：按默认值处理。 |
+| value | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 分割线是否可拖拽。设置为true时表示分割线可拖拽，设置为false时表示分割线不可拖拽。<br/>默认值：false <br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 >  **说明：**
 >
 > RowSplit的分割线可以改变左右两边子组件的宽度，子组件可改变宽度的范围取决于子组件的最大最小宽度。
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<RowSplitAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<RowSplitAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置RowSplit组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ## 事件
 
@@ -64,6 +119,8 @@ resizeable(value: boolean)
 ## 示例
 
 RowSplit的基本用法。设置可拖动的、横向布局的子组件。
+
+**ArkTS-Dyn示例：**
 
 ```ts
 // xxx.ets
@@ -87,4 +144,54 @@ struct RowSplitExample {
 }
 ```
 
-![zh-cn_image_0000001219982729](figures/zh-cn_image_0000001219982729.gif)
+**ArkTS-Sta示例：**
+
+```ts
+import { Entry, Component, Text, Column, RowSplit, TextAlign } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct RowSplitExample {
+  build() {
+    Column() {
+      Text('The second line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      RowSplit() {
+        Text('1').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('2').width('10%').height(100).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('3').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('4').width('10%').height(100).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('5').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+      }
+      .resizeable(true) // 可拖动
+      .width('90%').height(100)
+    }.width('100%')
+  }
+}
+```
+
+**ArkTS-Sta示例：**
+
+```ts
+import { Entry, Component, Text, Column, RowSplit, TextAlign } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct RowSplitExample {
+  build() {
+    Column() {
+      Text('The second line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      RowSplit() {
+        Text('1').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('2').width('10%').height(100).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('3').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('4').width('10%').height(100).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('5').width('10%').height(100).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+      }
+      .resizeable(true) // 可拖动
+      .width('90%').height(100)
+    }.width('100%')
+  }
+}
+```
+
+![rowSplit](figures/rowSplit.gif)

@@ -1,8 +1,8 @@
-# 实现音频耳返
+# 实现自定义耳返
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @tom_guo-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -17,6 +17,10 @@
   实现参考[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)、[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)。
 
 - 当前仅支持通过有线耳机实现耳返功能。音频由有线耳机采集并播放。
+
+## 使用场景
+
+通过组合系统播放和录制的能力，在应用内实现耳返，适用于应用需要自己处理录制数据的场景。比如，应用可以对录制上来的数据使用自定义的音效算法进行处理，再进行播放，以实现特定的音效。由于数据需要经过应用处理，时延相对于系统耳返会更高。
 
 ## 开发指导
 

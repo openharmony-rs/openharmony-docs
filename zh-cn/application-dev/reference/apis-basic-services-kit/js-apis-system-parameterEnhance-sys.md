@@ -10,6 +10,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口为系统接口。
 > - 由于系统参数都是各个系统服务的内部信息和控制参数，每个系统参数都有各自不同的DAC和MAC访问控制权限，三方应用不能使用此类接口。
@@ -27,6 +28,10 @@ getSync(key: string, def?: string): string
 获取系统参数Key对应的值。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -71,6 +76,10 @@ get(key: string, callback: AsyncCallback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -113,6 +122,10 @@ get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 获取系统参数Key对应的值，使用callback异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -158,6 +171,10 @@ get(key: string, def?: string): Promise&lt;string&gt;
 获取系统参数Key对应的值，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -208,6 +225,10 @@ setSync(key: string, value: string): void
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -245,6 +266,10 @@ set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 设置系统参数Key对应的值，使用callback异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -289,6 +314,10 @@ set(key: string, value: string): Promise&lt;void&gt;
 设置系统参数Key对应的值，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

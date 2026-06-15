@@ -1,9 +1,9 @@
 # @ohos.file.picker (选择器)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 选择器(Picker)是一个封装DocumentViewPicker、AudioViewPicker、PhotoViewPicker的API模块，具有选择与保存的能力。应用可以选择使用以下API来实现文件的选择和保存的功能。该类接口，需要应用在界面UIAbility中调用，否则无法拉起FilePicker应用、AudioPicker应用或PhotoPicker应用。
@@ -12,12 +12,22 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 该模块接口从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 导入模块
 
+ArkTS-Dyn示例：
+
 ```ts
-import  { picker } from '@kit.CoreFileKit';
+import { picker } from '@kit.CoreFileKit';
+```
+
+ArkTS-Sta示例：
+
+```ts
+import picker from '@ohos.file.picker';
 ```
 
 ## DocumentViewPicker
@@ -25,6 +35,10 @@ import  { picker } from '@kit.CoreFileKit';
 文件选择器对象，用来支撑选择和保存各种格式文档。在使用前，需要先创建DocumentViewPicker实例。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 ### constructor<sup>12+</sup>
 
@@ -36,6 +50,10 @@ constructor(context: Context)
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                                                         |
@@ -46,7 +64,7 @@ constructor(context: Context)
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 @Entry
 @Component
 struct Index {
@@ -80,6 +98,10 @@ constructor()
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **示例：**
 
 ```ts
@@ -98,6 +120,10 @@ constructor(context: Context, window: window.Window)
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
+**ArkTS-Dyn起始版本**：13
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                                                         |
@@ -109,8 +135,8 @@ constructor(context: Context, window: window.Window)
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import { picker } from '@kit.CoreFileKit';
 import { window } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Index {
@@ -146,6 +172,10 @@ select(option?: DocumentSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
@@ -160,10 +190,12 @@ select(option?: DocumentSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example07(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSelectOptions = new picker.DocumentSelectOptions();
@@ -180,6 +212,29 @@ async function example07(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+async function example07(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
+  try {
+    let documentSelectOptions: picker.DocumentSelectOptions = {
+      selectMode: picker.DocumentSelectMode.MIXED
+    };
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.select(documentSelectOptions).then((documentSelectResult: Array<string>) => {
+      console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
+    }).catch((err: BusinessError): void => {
+      console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (err: BusinessError) {
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
+}
+```
+
 ### select
 
 select(option: DocumentSelectOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
@@ -190,6 +245,10 @@ select(option: DocumentSelectOptions, callback: AsyncCallback&lt;Array&lt;string
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
@@ -199,10 +258,12 @@ select(option: DocumentSelectOptions, callback: AsyncCallback&lt;Array&lt;string
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example08(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSelectOptions = new picker.DocumentSelectOptions();
@@ -221,6 +282,31 @@ async function example08(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+function example08(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
+  try {
+    let documentSelectOptions: picker.DocumentSelectOptions = {
+      selectMode: picker.DocumentSelectMode.MIXED
+    };
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.select(documentSelectOptions, (err: BusinessError|null, documentSelectResult: Array<string>|undefined) => {
+      if (err) {
+        console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
+    });
+  } catch (err: BusinessError) {
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
+}
+```
+
 ### select
 
 select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
@@ -231,6 +317,10 @@ select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
@@ -239,10 +329,12 @@ select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example09(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentPicker = new picker.DocumentViewPicker(context);
@@ -260,6 +352,28 @@ async function example09(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+function example09(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
+  try {
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.select((err: BusinessError | null, documentSelectResult: Array<string> | undefined) => {
+      if (err) {
+        console.error(`DocumentViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('DocumentViewPicker.select successfully, documentSelectResult uri: ' + JSON.stringify(documentSelectResult));
+    });
+  } catch (err: BusinessError) {
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
+}
+```
+
 ### save
 
 save(option?: DocumentSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
@@ -269,6 +383,10 @@ save(option?: DocumentSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -284,10 +402,12 @@ save(option?: DocumentSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example10(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSaveOptions = new picker.DocumentSaveOptions();
@@ -305,6 +425,29 @@ async function example10(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+async function example10(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
+  try {
+    let documentSaveOptions: picker.DocumentSaveOptions = {
+      newFileNames: ['DocumentViewPicker01.txt']
+    };
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
+      console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
+    }).catch((err: BusinessError): void => {
+      console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (err: BusinessError) {
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
+}
+```
+
 ### save
 
 save(option: DocumentSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
@@ -315,6 +458,10 @@ save(option: DocumentSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
@@ -324,16 +471,47 @@ save(option: DocumentSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example11(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSaveOptions = new picker.DocumentSaveOptions();
     documentSaveOptions.newFileNames = ['DocumentViewPicker02.txt'];
     let documentPicker = new picker.DocumentViewPicker(context);
     documentPicker.save(documentSaveOptions, (err: BusinessError, documentSaveResult: Array<string>) => {
+      if (err) {
+        console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+async function example11(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
+  try {
+    const documentSaveOptions: picker.DocumentSaveOptions = {
+      newFileNames: ['DocumentViewPicker02.txt'],
+      defaultFilePathUri: 'xxx',
+      fileSuffixChoices: ['txt|文本文件', 'doc|Word文档'],
+      pickerMode: picker.DocumentPickerMode.DEFAULT
+    };
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.save(documentSaveOptions, (err: BusinessError | null, documentSaveResult: Array<string> | undefined) => {
       if (err) {
         console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
         return;
@@ -357,6 +535,10 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
@@ -365,10 +547,12 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example12(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentPicker = new picker.DocumentViewPicker(context);
@@ -386,9 +570,33 @@ async function example12(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+function example12(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
+  try {
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.save((err: BusinessError | null, documentSaveResult: Array<string> | undefined) => {
+      if (err) {
+        console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
+    });
+  } catch (err: BusinessError) {
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
+}
+```
+
 ### getSelectedIndex<sup>14+</sup>
 
-getSelectedIndex(): number
+ArkTS-Dyn: getSelectedIndex(): number
+
+ArkTS-Sta: getSelectedIndex(): int
 
 获取保存成功后的文件后缀类型的下标。
 
@@ -402,16 +610,24 @@ getSelectedIndex(): number
 
 **系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection
 
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 
 | 类型                            | 说明    |
 | ----------------------------- | :---- |
-| number| 返回所选后缀类型在[DocumentSaveOptions.fileSuffixChoices](#documentsaveoptions)里的下标(number)。默认返回-1。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int| 返回所选后缀类型在[DocumentSaveOptions.fileSuffixChoices](#documentsaveoptions)里的下标(number)。默认返回-1。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function exampleIndex(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let documentSaveOptions = new picker.DocumentSaveOptions();
@@ -439,11 +655,48 @@ async function exampleIndex(context: common.UIAbilityContext) { // 需确保 con
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+async function exampleIndex(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
+  try {
+    let documentSaveOptions: picker.DocumentSaveOptions = {
+      // 保存文件的名字
+      newFileNames: ['DocumentViewPicker01.txt'],
+      // 保存文件的后缀类型
+      fileSuffixChoices: ['txt', 'mp4', 'pdf']
+    };
+    let documentPicker = new picker.DocumentViewPicker(context);
+    documentPicker.save(documentSaveOptions).then((documentSaveResult: Array<string>) => {
+      if (documentSaveOptions.fileSuffixChoices != undefined && documentSaveResult != undefined) {
+        // 获取保存文件的后缀类型的下标
+        let index = documentPicker.getSelectedIndex();
+        // 获取保存文件的后缀类型。
+        let selectedsuffix = documentSaveOptions.fileSuffixChoices![index];
+        console.info ('DocumentViewPicker.save selectedsuffix is ' + selectedsuffix);
+      }
+      console.info('DocumentViewPicker.save successfully, documentSaveResult uri: ' + JSON.stringify(documentSaveResult));
+    }).catch((err: BusinessError): void => {
+      console.error(`DocumentViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (err: BusinessError) {
+    console.error(`DocumentViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
+}
+```
+
 ## AudioViewPicker
 
 音频选择器对象，用来支撑选择和保存音频类文件等用户场景。在使用前，需要先创建AudioViewPicker实例。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 ### constructor<sup>12+</sup>
 
@@ -455,6 +708,10 @@ constructor(context: Context)
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                                                         |
@@ -465,7 +722,7 @@ constructor(context: Context)
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 @Entry
 @Component
 struct Index {
@@ -499,6 +756,10 @@ constructor()
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **示例：**
 
 ```ts
@@ -515,6 +776,10 @@ select(option?: AudioSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
@@ -529,10 +794,12 @@ select(option?: AudioSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example13(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioSelectOptions = new picker.AudioSelectOptions();
@@ -549,6 +816,29 @@ async function example13(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+async function example13(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
+  try {
+    let audioSelectOptions: picker.AudioSelectOptions = {
+      maxSelectNumber: 5
+    };
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.select(audioSelectOptions).then((audioSelectResult: Array<string>) => {
+      console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
+    }).catch((err: BusinessError): void => {
+      console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (err: BusinessError) {
+    console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
+}
+```
+
 ### select
 
 select(option: AudioSelectOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
@@ -556,6 +846,10 @@ select(option: AudioSelectOptions, callback: AsyncCallback&lt;Array&lt;string&gt
 通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -566,10 +860,12 @@ select(option: AudioSelectOptions, callback: AsyncCallback&lt;Array&lt;string&gt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example14(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioSelectOptions = new picker.AudioSelectOptions();
@@ -588,12 +884,42 @@ async function example14(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+function example14(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
+  try {
+    let audioSelectOptions: picker.AudioSelectOptions = {
+      maxSelectNumber: 5
+    };
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.select(audioSelectOptions, (err: BusinessError | null, audioSelectResult: Array<string> | undefined) => {
+      if (err) {
+        console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
+    });
+  } catch (err: BusinessError) {
+    console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
+}
+```
+
 ### select
 
 select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 通过选择模式拉起audioPicker界面，用户可以选择一个或多个音频文件。使用callback异步回调。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -603,14 +929,39 @@ select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example15(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioPicker = new picker.AudioViewPicker(context);
     audioPicker.select((err: BusinessError, audioSelectResult: Array<string>) => {
+      if (err) {
+        console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('AudioViewPicker.select successfully, audioSelectResult uri: ' + JSON.stringify(audioSelectResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+function example15(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
+  try {
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.select((err: BusinessError | null, audioSelectResult: Array<string> | undefined) => {
       if (err) {
         console.error(`AudioViewPicker.select failed with err, code is: ${err.code}, message is: ${err.message}`);
         return;
@@ -634,6 +985,10 @@ save(option?: AudioSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明                       |
@@ -648,10 +1003,12 @@ save(option?: AudioSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example16(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioSaveOptions = new picker.AudioSaveOptions();
@@ -669,6 +1026,29 @@ async function example16(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+async function example16(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
+  try {
+    let audioSaveOptions: picker.AudioSaveOptions = {
+      newFileNames: ['AudioViewPicker01.mp3']
+    };
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.save(audioSaveOptions).then((audioSaveResult: Array<string>) => {
+      console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult))
+    }).catch((err: BusinessError): void => {
+      console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+    });
+  } catch (err:BusinessError) {
+    console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
+}
+```
+
 ### save
 
 save(option: AudioSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
@@ -676,6 +1056,10 @@ save(option: AudioSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt
 通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -686,10 +1070,12 @@ save(option: AudioSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example17(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioSaveOptions = new picker.AudioSaveOptions();
@@ -709,6 +1095,31 @@ async function example17(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+function example17(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
+  try {
+    let audioSaveOptions: picker.AudioSaveOptions = {
+      newFileNames: ['AudioViewPicker01.mp3']
+    };
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.save(audioSaveOptions, (err: BusinessError | null, audioSaveResult: Array<string> | undefined) => {
+      if (err) {
+        console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult));
+    });
+  } catch (err: BusinessError) {
+    console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
+}
+```
+
 ### save
 
 save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
@@ -716,6 +1127,10 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 通过保存模式拉起audioPicker界面（目前拉起的是documentPicker，audioPicker在规划中），用户可以保存一个或多个音频文件。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -725,14 +1140,39 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example18(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let audioPicker = new picker.AudioViewPicker(context);
     audioPicker.save((err: BusinessError, audioSaveResult: Array<string>) => {
+      if (err) {
+        console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
+        return;
+      }
+      console.info('AudioViewPicker.save successfully, audioSaveResult uri: ' + JSON.stringify(audioSaveResult));
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+        console.error(`AudioViewPicker failed with err, code is: ${err.code}, message is: ${err.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+function example18(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
+  try {
+    let audioPicker = new picker.AudioViewPicker(context);
+    audioPicker.save((err: BusinessError | null, audioSaveResult: Array<string> | undefined) => {
       if (err) {
         console.error(`AudioViewPicker.save failed with err, code is: ${err.code}, message is: ${err.message}`);
         return;
@@ -752,30 +1192,63 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection
+**系统能力**：
+- API版本26.0.0+：SystemCapability.FileManagement.UserFileService
+- API版本11-24：SystemCapability.FileManagement.UserFileService.FolderSelection
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
 | FILE  | 0  | 文件类型（默认类型）。 |
 | FOLDER | 1  | 文件夹类型。  |
-| MIXED | 2  | 文件和文件夹混合类型。  |
+| MIXED | 2  | 文件和文件夹混合类型。<br>**设备行为差异**：该参数在2in1设备中可正常使用，在其他设备中无效果。|
 
 ## DocumentSelectOptions
 
 文档选择选项。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本**：9
+
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
-| maxSelectNumber<sup>10+</sup>       | number                                      | 否   | 是 | 选择文件最大个数。<br>API version 20及之前的版本，单次文件选择的最大数量上限为500个，默认值也为500。目录选择功能仅对具备该系统能力的设备开放，且单次最多可选择1个目录。<br>API version 21及之后的版本取消文件选择数量的限制。受系统能力限制，选择文件数量过大可能会出现功能异常或处理性能较差等情况，建议单次选择文件个数不超过1万个。<br>API version 23及之后的版本取消目录选择数量的限制。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService   |
-| defaultFilePathUri<sup>10+</sup>    | string                                      | 否   |  是 | 指定选择的文件或者目录的URI。默认为空（效果为拉起最近打开页）。 <br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService          |
-| fileSuffixFilters<sup>10+</sup>     | Array&lt;string&gt;                         | 否   |  是 | 选择文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为过滤后缀。没有"\|\"则没有描述，该项整体是一个过滤后缀。每项过滤后缀可以存在多个后缀名，则每一个后缀名之间用英文逗号进行分隔，传入数组长度不能超过100，例如：['图片(.png, .jpg)\|\.png,.jpg', '文档\|\.txt', '视频\|\.mp4', '.pdf']。<br>默认不过滤，即显示所有文件。此外2in1设备支持通配符方式['所有文件(\*.\*)\|\.*']（说明：从API version 17开始，手机支持该配置），表示为显示所有文件。<br>仅对具有该系统能力的设备开放。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService   |
-| selectMode<sup>11+</sup>         | [DocumentSelectMode](#documentselectmode11) | 否   |  是 | Picker选择的文档类型，默认值是FILE(文件类型)。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection  |
-| authMode<sup>12+</sup>    | boolean                              | 否   |  是 | 拉起授权Picker，默认为false（非授权模式）。当authMode为true时为授权模式，defaultFilePathUri必填，表明待授权URI。<br>**设备行为差异**：该参数在2in1设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection  |
-|multiAuthMode<sup>15+</sup>  | boolean                             |否    |  是 | 支持批量授权模式，默认为false（非批量授权模式）。当multiAuthMode为true时为批量授权模式。当multiAuthMode为true时，只有multiUriArray参数生效，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 15开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService |
-|multiUriArray<sup>15+</sup>  | Array&lt;string&gt;                             |否    |  是 | 传入需要批量授权的URI数组（仅支持文件，文件夹不生效）。配合multiAuthMode使用。当multiAuthMode为false时，配置该参数不生效。默认为空（效果为拉起批量授权页面后展示的文件为空）。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 15开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService|
-|mergeMode<sup>15+</sup>  | [MergeTypeMode](#mergetypemode15)                             |否    |  是 | 开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 15开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService|
-|isEncryptionSupported<sup>19+</sup>    | boolean |否    |  是 | 是否支持加密（仅支持文件，文件夹不生效），默认为false。该参数为true时，在Picker界面可以选择对文件进行加密。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 19开始，该接口支持在原子化服务中使用。<br> **系统能力**：SystemCapability.FileManagement.UserFileService |
-| allowsMulFolderSelection<sup>24+</sup>       | boolean                                      | 否   | 是 | 是否支持多选文件夹。true表示支持，false表示不支持，默认值为false。<br>该参数需要与selectMode配合使用，当selectMode为FOLDER或者MIXED，并且allowsMulFolderSelection为true，多选文件夹功能生效。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束**：此接口仅可在Stage模型下使用。<br> **系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection |
+| maxSelectNumber<sup>10+</sup>       | number                                      | 否   | 是 | 选择文件最大个数。<br>API version 20及之前的版本，单次文件选择的最大数量上限为500个，默认值也为500。目录选择功能仅对具备该系统能力的设备开放，且单次最多可选择1个目录。<br>API version 21及之后的版本取消文件选择数量的限制。受系统能力限制，选择文件数量过大可能会出现功能异常或处理性能较差等情况，建议单次选择文件个数不超过1万个。<br>API version 23及之后的版本取消目录选择数量的限制。<br>**设备行为差异**：该参数在Phone设备上不支持目录多选。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：10   |
+| defaultFilePathUri<sup>10+</sup>    | string                                      | 否   |  是 | 指定所选文件或目录的URI，默认值为空（此时打开最近访问的页面）。PC的文件选择器为提升用户体验，会记住用户上次导航到的位置并优先选择此路径作为起始路径，而不会始终使用defaultFilePathUri指定的路径。 <br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：10          |
+| fileSuffixFilters<sup>10+</sup>     | Array&lt;string&gt;                         | 否   |  是 | 选择文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为过滤后缀。没有"\|\"则没有描述，该项整体是一个过滤后缀。每项过滤后缀可以存在多个后缀名，则每一个后缀名之间用英文逗号进行分隔，传入数组长度不能超过100，例如：['图片(.png, .jpg)\|\.png,.jpg', '文档\|\.txt', '视频\|\.mp4', '.pdf']。<br>默认不过滤，即显示所有文件。此外2in1设备支持通配符方式['所有文件(\*.\*)\|\.*']（说明：从API version 17开始，手机支持该配置），表示为显示所有文件。<br>仅对具有该系统能力的设备开放。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：10   |
+| selectMode<sup>11+</sup>         | [DocumentSelectMode](#documentselectmode11) | 否   |  是 | Picker选择的文档类型，默认值是FILE(文件类型)。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：<br>API版本26.0.0+：SystemCapability.FileManagement.UserFileService<br> API版本11-24：SystemCapability.FileManagement.UserFileService.FolderSelection<br> **ArkTS-Dyn起始版本**：11  |
+| authMode<sup>12+</sup>    | boolean                              | 否   |  是 | 拉起授权Picker，默认为false（非授权模式）。当authMode为true时为授权模式，defaultFilePathUri必填，表明待授权URI。<br>**设备行为差异**：该参数在2in1设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection<br> **ArkTS-Dyn起始版本**：12  |
+|multiAuthMode<sup>15+</sup>  | boolean                             |否    |  是 | 支持批量授权模式，默认为false（非批量授权模式）。当multiAuthMode为true时为批量授权模式。当multiAuthMode为true时，只有multiUriArray参数生效，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 15开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：15 |
+|multiUriArray<sup>15+</sup>  | Array&lt;string&gt;                             |否    |  是 | 传入需要批量授权的URI数组（仅支持文件，文件夹不生效）。配合multiAuthMode使用。当multiAuthMode为false时，配置该参数不生效。默认为空（效果为拉起批量授权页面后展示的文件为空）。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 15开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：15|
+|mergeMode<sup>15+</sup>  | [MergeTypeMode](#mergetypemode15)                             |否    |  是 | 开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。<br>API版本26.0.0及之后的版本当该参数置为非DEFAULT时，仅fileSuffixFilters参数生效，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 15开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：15|
+|isEncryptionSupported<sup>19+</sup>    | boolean |否    |  是 | 是否支持加密（仅支持文件，文件夹不生效），默认为false。该参数为true时，在Picker界面可以选择对文件进行加密。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 19开始，该接口支持在原子化服务中使用。<br> **系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：19 |
+| allowsMulFolderSelection      | boolean                                      | 否   | 是 | 是否支持多选文件夹。true表示支持，false表示不支持，默认值为false。<br>该参数需要与selectMode配合使用，当selectMode为FOLDER或者MIXED，并且allowsMulFolderSelection为true，多选文件夹功能生效。<br>**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束**：此接口仅可在Stage模型下使用。<br> **系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection<br> **ArkTS-Dyn起始版本**：26.0.0 |
+
+## DocumentSelectOptions<sup>23+</sup>
+
+文档选择选项。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| maxSelectNumber       | int               | 否   | 是 | 选择文件最大个数。<br>API version 20及之前的版本，单次选择最大文件个数上限为500个，默认值是500。选择目录仅对具有该系统能力的设备开放，且目录选择的最大个数为1。<br>API version 21及之后的版本取消限制。受系统能力限制，选择文件数量过大可能会出现功能异常或处理性能较差等情况，建议单次选择文件个数不超过1万个。<br>**设备行为差异**：该参数在Phone设备上不支持目录多选。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Sta起始版本**：23  |
+| defaultFilePathUri    | string                                      | 否   |  是 | 指定选择的文件或者目录的URI。默认为空（效果为拉起最近打开页）。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Sta起始版本**：23 |
+| fileSuffixFilters     | Array&lt;string&gt;                         | 否   |  是 | 选择文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为过滤后缀。没有"\|\"则没有描述，该项整体是一个过滤后缀。每项过滤后缀可以存在多个后缀名，则每一个后缀名之间用英文逗号进行分隔，传入数组长度不能超过100，例如：['图片(.png, .jpg)\|\.png,.jpg', '文档\|\.txt', '视频\|\.mp4', '.pdf']。<br>默认不过滤，即显示所有文件。此外2in1设备支持通配符方式['所有文件(\*.\*)\|\.*']（说明：从API version 17开始，手机支持该配置），表示为显示所有文件。<br>仅对具有该系统能力的设备开放。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Sta起始版本**：23   |
+| selectMode       | [DocumentSelectMode](#documentselectmode11) | 否   |  是 | Picker选择的文档类型，默认值是FILE(文件类型)。<br>**系统能力**：<br>API版本26.0.0+：SystemCapability.FileManagement.UserFileService<br> API版本11-24：SystemCapability.FileManagement.UserFileService.FolderSelection<br> **ArkTS-Sta起始版本**：23   |
+| authMode   | boolean                              | 否   |  是 | 拉起授权Picker，默认为false（非授权模式）。当authMode为true时为授权模式，defaultFilePathUri必填，表明待授权URI。<br>**设备行为差异**：该参数在2in1设备中可正常使用，在其他设备中无效果。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection <br> **ArkTS-Sta起始版本**：23|
+|multiAuthMode   | boolean                             |否    |  是 | 支持批量授权模式，默认为false（非批量授权模式）。当multiAuthMode为true时为批量授权模式。当multiAuthMode为true时，只有multiUriArray参数生效，其他参数不生效。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br> **ArkTS-Sta起始版本**：23|
+|multiUriArray  | Array&lt;string&gt;                             |否    |  是 | 传入需要批量授权的URI数组（仅支持文件，文件夹不生效）。配合multiAuthMode使用。当multiAuthMode为false时，配置该参数不生效。默认为空（效果为拉起批量授权页面后展示的文件为空）。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br> **ArkTS-Sta起始版本**：23|
+|mergeMode   | [MergeTypeMode](#mergetypemode15)                             |否    |  是 | 开启聚合视图模式，支持拉起文件管理应用的聚合视图。默认为DEFAULT，表示该参数不生效，非聚合视图。当该参数置为非DEFAULT时，其他参数不生效。该参数不推荐与multiAuthMode一起使用。<br> **设备行为差异**：该参数在Phone设备中可正常使用，在其他设备中无效果。<br> **ArkTS-Sta起始版本**：23|
+|isEncryptionSupported     | boolean |否    |  是 | 是否支持加密（仅支持文件，文件夹不生效），默认为false。该参数为true时，在Picker界面可以选择对文件进行加密。<br> **系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Sta起始版本**：23 |
+| allowsMulFolderSelection      | boolean                                      | 否   | 是 | 是否支持多选文件夹。true表示支持，false表示不支持，默认值为false。<br>该参数需要与selectMode配合使用，当selectMode为FOLDER或者MIXED，并且allowsMulFolderSelection为true，多选文件夹功能生效。<br>**模型约束**：此接口仅可在Stage模型下使用。<br> **系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection<br> **ArkTS-Sta起始版本**：26.0.0 |
 
 ## DocumentPickerMode<sup>12+</sup>
 
@@ -784,6 +1257,10 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
@@ -800,6 +1277,10 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 **设备行为差异**：该接口在Phone设备中可正常调用，在其他设备中无效果。
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
+
 | 名称  |  值 |  说明 |
 | ----- | ---- | ---- |
 | DEFAULT  | 0  | 默认模式，表示该参数不生效。 |
@@ -814,31 +1295,93 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
-| newFileNames            | Array&lt;string&gt;   | 否 | 是   | 拉起documentPicker进行保存的文件名。若无此参数，则默认需要用户自行输入。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService  |
-| defaultFilePathUri<sup>10+</sup>    | string  | 否| 是    | 指定保存的文件或者目录的URI。默认为空。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService  |
-| fileSuffixChoices<sup>10+</sup>     | Array&lt;string&gt; | 否| 是    | 保存文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为要保存的后缀。没有"\|\"则没有描述，该项整体是一个保存的后缀。默认没有后缀类型。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService |
-| pickerMode<sup>12+</sup>     | [DocumentPickerMode](#documentpickermode12) | 否| 是    | 拉起picker的类型, 默认为DEFAULT。当pickerMode设置为DOWNLOAD时，用户配置的参数newFileNames、defaultFilePathUri和fileSuffixChoices将不会生效。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService |
-| autoCreateEmptyFile<sup>23+</sup> | boolean | 否 | 是 | 保存文件时，由应用决定是否预置空文件。默认为true，Picker会预置空文件并且返回文件的URI数组。false不预置空文件，只会返回文件的URI数组。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection |
+| newFileNames            | Array&lt;string&gt;   | 否 | 是   | 拉起documentPicker进行保存的文件名。若无此参数，则默认需要用户自行输入。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：9  |
+| defaultFilePathUri<sup>10+</sup>    | string  | 否| 是    | 指定保存的文件或者目录的URI。默认为空。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：10  |
+| fileSuffixChoices<sup>10+</sup>     | Array&lt;string&gt; | 否| 是    | 保存文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为要保存的后缀。没有"\|\"则没有描述，该项整体是一个保存的后缀。默认没有后缀类型。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：10 |
+| pickerMode<sup>12+</sup>     | [DocumentPickerMode](#documentpickermode12) | 否| 是    | 拉起picker的类型, 默认为DEFAULT。当pickerMode设置为DOWNLOAD时，用户配置的参数newFileNames、defaultFilePathUri和fileSuffixChoices将不会生效。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService<br> **ArkTS-Dyn起始版本**：12 |
+| autoCreateEmptyFile<sup>23+</sup> | boolean | 否 | 是 | 保存文件时，由应用决定是否预置空文件。默认为true，Picker会预置空文件并且返回文件的URI数组。false不预置空文件，只会返回文件的URI数组。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection<br> **ArkTS-Dyn起始版本**：23 |
+
+## DocumentSaveOptions<sup>23+</sup>
+
+文档保存选项。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Sta起始版本**：23
+
+| 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| newFileNames           | Array&lt;string&gt;   | 否 | 是   | 拉起documentPicker进行保存的文件名。若无此参数，则默认需要用户自行输入。   |
+| defaultFilePathUri    | string  | 否| 是    | 指定保存的文件或者目录的URI。默认为空。|
+| fileSuffixChoices   | Array&lt;string&gt; | 否| 是    | 保存文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为要保存的后缀。没有"\|\"则没有描述，该项整体是一个保存的后缀。默认没有后缀类型。 |
+| pickerMode    | [DocumentPickerMode](#documentpickermode12) | 否| 是    | 拉起picker的类型, 默认为DEFAULT。当pickerMode设置为DOWNLOAD时，用户配置的参数newFileNames、defaultFilePathUri和fileSuffixChoices将不会生效。|
+| autoCreateEmptyFile | boolean | 否 | 是 | 保存文件时，由应用决定是否预置空文件。默认为true，Picker会预置空文件并且返回文件的URI数组。false不预置空文件，只会返回文件的URI数组。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection |
 
 ## AudioSelectOptions
 
 音频选择选项。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
 
+**ArkTS-Dyn起始版本**：9
+
+
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
-| maxSelectNumber<sup>12+</sup>       | number                                   | 否     | 是   | 选择文件最大个数，默认值为1，上限为500个，有效值范围1-500。 |
+| maxSelectNumber<sup>12+</sup>       | number                                   | 否     | 是   | 选择文件最大个数，默认值为1，上限为500个，有效值范围1-500。<br> **ArkTS-Dyn起始版本**：12 |
+
+## AudioSelectOptions<sup>23+</sup>
+
+音频选择选项。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Sta起始版本**：23
+
+
+| 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
+| :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| maxSelectNumber     | int                                  | 否     | 是   | 选择文件最大个数，默认值为1，上限为500个，有效值范围1-500。  |
 
 ## AudioSaveOptions
 
 音频保存选项。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
+
+| 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
+| ---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
+| newFileNames              | Array&lt;string&gt;   | 否 | 是  | 拉起audioPicker进行保存音频资源的文件名。若无此参数，则默认需要用户自行输入。 |
+
+## AudioSaveOptions<sup>23+</sup>
+
+音频保存选项。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Sta起始版本**：23
 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | ---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
@@ -846,19 +1389,27 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 ## PhotoViewPicker<sup>(deprecated)</sup>
 
-图库选择器对象，用来支撑选择图片/视频和保存图片/视频等用户场景。选择文件推荐使用[PhotoAccessHelper的PhotoViewPicker](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)。在使用前，需要先创建PhotoViewPicker实例。
+图库选择器对象，用来支撑选择图片/视频和保存图片/视频等用户场景。选择文件推荐使用PhotoAccessHelper的[PhotoViewPicker](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)。在使用前，需要先创建PhotoViewPicker实例。
 
 > **说明：**
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoViewPicker](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
 
 ### constructor<sup>(deprecated)</sup>
 
 constructor(context: Context)
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -876,7 +1427,7 @@ constructor(context: Context)
 
 ```ts
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 @Entry
 @Component
 struct Index {
@@ -904,9 +1455,13 @@ struct Index {
 
 constructor()
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
 
 创建PhotoViewPicker对象，不推荐使用该构造函数，会出现概率性失败问题。
 
@@ -930,9 +1485,13 @@ select(option?: PhotoSelectOptions): Promise&lt;PhotoSelectResult&gt;
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoViewPicker#select](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -951,7 +1510,7 @@ select(option?: PhotoSelectOptions): Promise&lt;PhotoSelectResult&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example01(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let photoSelectOptions = new picker.PhotoSelectOptions();
@@ -980,9 +1539,13 @@ select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoViewPicker#select](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md#select-1)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -996,7 +1559,7 @@ select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example02(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let photoSelectOptions = new picker.PhotoSelectOptions();
@@ -1027,9 +1590,13 @@ select(callback: AsyncCallback&lt;PhotoSelectResult&gt;): void
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoViewPicker#select](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md#select-2)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -1042,7 +1609,7 @@ select(callback: AsyncCallback&lt;PhotoSelectResult&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example03(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let photoPicker = new picker.PhotoViewPicker(context);
@@ -1070,7 +1637,11 @@ save(option?: PhotoSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[SaveButton](../apis-arkui/arkui-ts/ts-security-components-savebutton.md)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -1089,7 +1660,7 @@ save(option?: PhotoSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example04(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let photoSaveOptions = new picker.PhotoSaveOptions();
@@ -1117,7 +1688,11 @@ save(option: PhotoSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[SaveButton](../apis-arkui/arkui-ts/ts-security-components-savebutton.md)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -1131,7 +1706,7 @@ save(option: PhotoSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example05(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let photoSaveOptions = new picker.PhotoSaveOptions();
@@ -1161,7 +1736,11 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[SaveButton](../apis-arkui/arkui-ts/ts-security-components-savebutton.md)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -1174,7 +1753,7 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import  { picker } from '@kit.CoreFileKit';
+
 async function example06(context: common.UIAbilityContext) { // 需确保 context 由 UIAbilityContext 转换而来
   try {
     let photoPicker = new picker.PhotoViewPicker(context);
@@ -1200,9 +1779,13 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoViewMIMETypes](../apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
@@ -1218,9 +1801,13 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoSelectOptions](../apis-media-library-kit/arkts-apis-photoAccessHelper-class.md#photoselectoptions)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
@@ -1235,9 +1822,13 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[photoAccessHelper.PhotoSelectResult](../apis-media-library-kit/arkts-apis-photoAccessHelper-class.md#photoselectresult)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
@@ -1252,7 +1843,11 @@ async function example06(context: common.UIAbilityContext) { // 需确保 contex
 >
 > 从API version 9开始支持，从API version 12开始废弃。建议使用[SaveButtonOptions](../apis-arkui/arkui-ts/ts-security-components-savebutton.md#savebuttonoptions)替代。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.FileManagement.UserFileService
+
+**ArkTS-Dyn起始版本**：9
 
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|

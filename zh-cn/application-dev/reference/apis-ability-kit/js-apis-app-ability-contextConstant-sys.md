@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy; @yangxuguang-huawei; @Luobniz21-->
 <!--Designer: @ccllee1; @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ContextConstant提供Context相关的枚举，包含文件加密分区等级、UIAbility启动后的进程模式等。
 
@@ -12,9 +12,11 @@ ContextConstant提供Context相关的枚举，包含文件加密分区等级、U
 
 > **说明：**
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.contextConstant (Context相关常量)](js-apis-app-ability-contextConstant.md)。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.contextConstant (Context相关常量)](js-apis-app-ability-contextConstant.md)。
 
 ## 导入模块
 
@@ -24,13 +26,17 @@ import { contextConstant } from '@kit.AbilityKit';
 
 ## ContextType
 
-表示常见Context类型的枚举，用于[contextType](./js-apis-inner-application-context.md#contexttype)接口。
+表示常见Context类型的枚举，用于[isContextOf](./js-apis-inner-application-context.md#iscontextof)接口。
 
-**起始版本**：26.0.0
-
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称  | 值 | 说明                                                                                                                   |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
@@ -47,7 +53,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class EntryServiceExtAbility extends ServiceExtensionAbility {
   onCreate() {
     hilog.info(0x0000, 'testTag', `%{public}s`, 'Ability onCreate');
-    let result = this.context.contextType(contextConstant.ContextType.SERVICE_EXTENSION_CONTEXT);
+    let result = this.context.isContextOf(contextConstant.ContextType.SERVICE_EXTENSION_CONTEXT);
     hilog.info(0x0000, 'testTag', `match contextType result is:%{public}s`, JSON.stringify(result));
   }
 }

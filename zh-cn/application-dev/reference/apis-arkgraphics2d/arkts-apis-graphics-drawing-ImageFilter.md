@@ -3,13 +3,15 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
 图像滤波器。
 
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -27,26 +29,32 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 ## createBlurImageFilter<sup>12+</sup>
 
-static createBlurImageFilter(sigmaX: number, sigmaY: number, tileMode: TileMode, imageFilter?: ImageFilter | null ): ImageFilter
+ArkTS-Dyn: static createBlurImageFilter(sigmaX: number, sigmaY: number, tileMode: TileMode, imageFilter?: ImageFilter | null ): ImageFilter
+
+ArkTS-Sta: static createBlurImageFilter(sigmaX: double, sigmaY: double, tileMode: TileMode, imageFilter?: ImageFilter | null): ImageFilter | undefined
 
 创建具有模糊效果的图像滤波器。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| sigmaX | number | 是   | 表示沿x轴方向上高斯模糊的标准差，必须大于0，该参数为浮点数。 |
-| sigmaY | number | 是   | 表示沿y轴方向上高斯模糊的标准差，必须大于0，该参数为浮点数。 |
+| sigmaX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示沿x轴方向上高斯模糊的标准差，必须大于0，该参数为浮点数。 |
+| sigmaY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 表示沿y轴方向上高斯模糊的标准差，必须大于0，该参数为浮点数。 |
 | tileMode | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12)| 是   | 表示在边缘处应用的平铺模式。 |
-| imageFilter | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | 否   | 要与当前图像滤波器叠加的输入滤波器，默认为null，表示直接将当前图像滤波器作用于原始图像。 |
+| imageFilter | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | 否   | ArkTS-Dyn: 要与当前图像滤波器叠加的输入滤波器。当imageFilter传入undefined时，该方法将抛错误码。不传该参数时，默认为null，表示直接将当前图像滤波器作用于原始图像。<br/>ArkTS-Sta: 要与当前图像滤波器叠加的输入滤波器。当不传该参数，或者imageFilter传入undefined时，默认为null，表示直接将当前图像滤波器作用于原始图像。 |
 
 **返回值：**
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回创建的图像滤波器。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -61,15 +69,22 @@ static createBlurImageFilter(sigmaX: number, sigmaY: number, tileMode: TileMode,
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
-let imgFilter = drawing.ImageFilter.createBlurImageFilter(5, 10, drawing.TileMode.CLAMP);
+let imgFilter = drawing.ImageFilter.createBlurImageFilter(5.0, 10.0, drawing.TileMode.CLAMP);
 ```
+
 ## createFromImage<sup>20+</sup>
 
-static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null, dstRect?: common2D.Rect | null): ImageFilter
+ArkTS-Dyn: static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null, dstRect?: common2D.Rect | null): ImageFilter
+
+ArkTS-Sta: static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null, dstRect?: common2D.Rect | null): ImageFilter | undefined
 
 基于给定的图像创建一个图像滤波器。此接口不建议用于录制类型的画布，会影响性能。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -83,17 +98,18 @@ static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null,
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回创建的图像滤波器。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
-
 class DrawingRenderNode extends RenderNode {
-  draw(context: DrawContext) {
+  draw(context : DrawContext) {
     const width = 1000;
     const height = 1000;
     const bufferSize = width * height * 4;
@@ -107,38 +123,74 @@ class DrawingRenderNode extends RenderNode {
       colorData[i+3] = 255;
     }
 
-    let opts: image.InitializationOptions = {
+    let opts : image.InitializationOptions = {
       editable: true,
       pixelFormat: 3,
       size: { height, width }
     }
 
     let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
-    let srcRect: common2D.Rect = {
-      left: 10,
-      top: 10,
-      right: 80,
-      bottom: 80
-    };
-    let dstRect: common2D.Rect = {
-      left: 200,
-      top: 200,
-      right: 400,
-      bottom: 400
-    };
+    let srcRect: common2D.Rect = { left: 10.0, top: 10.0, right: 80.0, bottom: 80.0 };
+    let dstRect: common2D.Rect = { left: 200.0, top: 200.0, right: 400.0, bottom: 400.0 };
     if (pixelMap != null) {
       let filter = drawing.ImageFilter.createFromImage(pixelMap, srcRect, dstRect);
     }
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode, DrawContext } from '@ohos.arkui.node';
+import drawing from "@ohos.graphics.drawing";
+import common2D from "@ohos.graphics.common2D";
+import image from "@ohos.multimedia.image";
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i+1] = 156;
+      colorData[i+2] = 0;
+      colorData[i+3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.ARGB_8888,
+      size: { height, width }
+    }
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    let srcRect: common2D.Rect = { left: 10.0, top: 10.0, right: 80.0, bottom: 80.0 };
+    let dstRect: common2D.Rect = { left: 200.0, top: 200.0, right: 400.0, bottom: 400.0 };
+    if (pixelMap != null) {
+      let filter = drawing.ImageFilter.createFromImage(pixelMap, srcRect, dstRect);
+    }
+  }
+}
+```
+
 ## createBlendImageFilter<sup>20+</sup>
 
-static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foreground: ImageFilter): ImageFilter
+ArkTS-Dyn: static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foreground: ImageFilter): ImageFilter
+
+ArkTS-Sta: static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foreground: ImageFilter): ImageFilter | undefined
 
 按照指定的混合模式对两个滤波器进行叠加，生成一个新的滤波器。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -152,7 +204,7 @@ static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foregrou
 
 | 类型                  | 说明            |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回创建的图像滤波器。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。 |
 
 **错误码：**
 
@@ -163,6 +215,8 @@ static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foregrou
 | 25900001 | Parameter error.Possible causes: Incorrect parameter range. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
@@ -175,13 +229,40 @@ let y = 30.0;
 let offsetFilter2 = drawing.ImageFilter.createOffsetImageFilter(x, y, null);
 let blendImageFilter = drawing.ImageFilter.createBlendImageFilter(drawing.BlendMode.SRC_IN, offsetFilter1, offsetFilter2);
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let dx = 15.0;
+let dy = 10.0;
+let offsetFilter1 = drawing.ImageFilter.createOffsetImageFilter(dx, dy, null);
+let x = 15.0;
+let y = 30.0;
+let offsetFilter2 = drawing.ImageFilter.createOffsetImageFilter(x, y, null);
+if (offsetFilter1 == undefined || offsetFilter2 == undefined) {
+  return;
+}
+let blendImageFilter = drawing.ImageFilter.createBlendImageFilter(drawing.BlendMode.SRC_IN, offsetFilter1, offsetFilter2);
+if (blendImageFilter == undefined) {
+  return;
+}
+```
+
 ## createComposeImageFilter<sup>20+</sup>
 
-static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): ImageFilter
+ArkTS-Dyn: static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): ImageFilter
+
+ArkTS-Sta: static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): ImageFilter | undefined
 
 将两个图像滤波器进行级联生成新的图像滤波器，级联时会将第一级滤波器的输出作为第二级滤波器的输入，经过第二级滤波器处理后，输出最终的滤波结果。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -194,9 +275,11 @@ static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): Image
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回创建的图像滤波器。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
@@ -214,26 +297,59 @@ let redRemovalFilter = drawing.ColorFilter.createMatrixColorFilter(colorMatrix);
 let colorFilter = drawing.ImageFilter.createFromColorFilter(redRemovalFilter, null);
 let composedImageFilter = drawing.ImageFilter.createComposeImageFilter(colorFilter, blurFilter);
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import drawing from "@ohos.graphics.drawing";
+import common2D from "@ohos.graphics.common2D";
+
+let blurSigmaX = 10.0;
+let blurSigmaY = 10.0;
+let blurFilter = drawing.ImageFilter.createBlurImageFilter(blurSigmaX, blurSigmaY, drawing.TileMode.CLAMP, null);
+let colorMatrix:Array<double> = [
+  0, 0, 0, 0, 0,
+  0, 1, 0, 0, 0,
+  0, 0, 1, 0, 0,
+  0, 0, 0, 1, 0
+];
+let redRemovalFilter = drawing.ColorFilter.createMatrixColorFilter(colorMatrix);
+if (redRemovalFilter == null) {
+  return;
+}
+let colorFilter = drawing.ImageFilter.createFromColorFilter(redRemovalFilter, null);
+if (blurFilter == undefined ||  colorFilter == undefined) {
+  return;
+}
+let composedImageFilter = drawing.ImageFilter.createComposeImageFilter(colorFilter, blurFilter);
+```
+
 ## createFromColorFilter<sup>12+</sup>
 
-static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter | null): ImageFilter
+ArkTS-Dyn: static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter | null): ImageFilter
+
+ArkTS-Sta: static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter | null): ImageFilter | undefined
 
 创建一个将颜色滤波器应用于传入的图像滤波器的图像滤波器。
 
-**系统能力：** SystemCapability.Graphics.Drawing
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | colorFilter | [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 是   | 表示颜色滤波器。 |
-| imageFilter | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | 否   | 要与当前图像滤波器叠加的输入滤波器，默认为null，表示直接将当前图像滤波器作用于原始图像。 |
+| imageFilter | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | 否   | ArkTS-Dyn: 要与当前图像滤波器叠加的输入滤波器。当imageFilter传入undefined时，该方法将抛错误码。不传该参数时，默认为null，表示直接将当前图像滤波器作用于原始图像。<br/>ArkTS-Sta: 要与当前图像滤波器叠加的输入滤波器。当不传该参数，或者imageFilter传入undefined时，默认为null，表示直接将当前图像滤波器作用于原始图像。 |
 
 **返回值：**
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回创建的图像滤波器。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -245,34 +361,51 @@ static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
-
 let imgFilter = drawing.ImageFilter.createBlurImageFilter(5, 10, drawing.TileMode.CLAMP);
 let colorFilter = drawing.ColorFilter.createSRGBGammaToLinear();
 let imgFilter1 = drawing.ImageFilter.createFromColorFilter(colorFilter, imgFilter);
 ```
+
+ArkTS-Sta示例：
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+let imgFilter = drawing.ImageFilter.createBlurImageFilter(5, 10, drawing.TileMode.CLAMP);
+let clolorfilter = drawing.ColorFilter.createSRGBGammaToLinear();
+if (imgFilter != undefined && clolorfilter != undefined) {
+  let imgFilter1 = drawing.ImageFilter.createFromColorFilter(clolorfilter!, imgFilter!);
+}
+```
+
 ## createOffsetImageFilter<sup>20+</sup>
 
-static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | null): ImageFilter
+ArkTS-Dyn: static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | null): ImageFilter
+
+ArkTS-Sta: static createOffsetImageFilter(dx: double, dy: double, input?: ImageFilter | null): ImageFilter | undefined
 
 创建一个偏移滤波器，将输入的滤波器按照指定向量进行平移。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| dx | number | 是   | 水平方向的平移距离， 该参数为浮点数。 |
-| dy | number | 是   | 竖直方向的平移距离， 该参数为浮点数。 |
+| dx | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 水平方向的平移距离， 该参数为浮点数。 |
+| dy | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 竖直方向的平移距离， 该参数为浮点数。 |
 | input | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | 否   | 需进行平移的滤波器。默认为空，如果为空，则将无滤波效果的绘制结果进行平移。 |
 
 **返回值：**
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回创建的图像滤波器。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。 |
 
 **示例：**
 
@@ -286,11 +419,17 @@ let offsetFilter = drawing.ImageFilter.createOffsetImageFilter(dx, dy, null);
 
 ## createFromShaderEffect<sup>20+</sup>
 
-static createFromShaderEffect(shader: ShaderEffect): ImageFilter
+ArkTS-Dyn: static createFromShaderEffect(shader: ShaderEffect): ImageFilter
+
+ArkTS-Sta: static createFromShaderEffect(shader: ShaderEffect): ImageFilter | undefined
 
 基于着色器创建一个图像滤波器。
 
 **系统能力**：SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -302,13 +441,31 @@ static createFromShaderEffect(shader: ShaderEffect): ImageFilter
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回创建的图像滤波器。 |
+| ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
 let shaderEffect = drawing.ShaderEffect.createColorShader(0xFF00FF00);
 let renderEffect = drawing.ImageFilter.createFromShaderEffect(shaderEffect);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import drawing from "@ohos.graphics.drawing";
+import common2D from "@ohos.graphics.common2D";
+
+let shaderEffect = drawing.ShaderEffect.createColorShader(0xFF00FF00.toInt());
+if (shaderEffect == undefined) {
+  return;
+}
+let renderEffect = drawing.ImageFilter.createFromShaderEffect(shaderEffect);
+if (renderEffect == undefined) {
+  return;
+}
 ```

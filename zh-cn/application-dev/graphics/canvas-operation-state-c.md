@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -102,7 +102,7 @@ OH_Drawing_BrushDestroy(brush);
 
 ### 接口说明
 
-矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见[drawing_matrix.h](../reference/apis-arkgraphics2d/capi-drawing-matrix-h.md)。
+矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -142,7 +142,7 @@ OH_Drawing_MatrixDestroy(matrix);
 
 | 原始图 | 平移后的效果图 |
 | -------- | -------- |
-| ![zh-cn_image_0000002194110929](figures/zh-cn_image_0000002194110929.png) | ![zh-cn_image_0000002194025285](figures/zh-cn_image_0000002194025285.png) |
+| ![Original-Image3](figures/Original-Image3.png) | ![Translated-Image](figures/Translated-Image.png) |
 
 
 ### 旋转
@@ -175,7 +175,7 @@ OH_Drawing_MatrixDestroy(matrix);
 
 | 原始图 | 旋转后的效果图 |
 | -------- | -------- |
-| ![zh-cn_image_0000002158584410](figures/zh-cn_image_0000002158584410.png) | ![zh-cn_image_0000002158584398](figures/zh-cn_image_0000002158584398.png) |
+| ![Original-Image1](figures/Original-Image1.png) | ![Rotated-Image](figures/Rotated-Image.png) |
 
 
 ### 缩放
@@ -207,7 +207,7 @@ OH_Drawing_RectDestroy(rect);
 
 | 原始图 | 放大后的效果图 |
 | -------- | -------- |
-| ![zh-cn_image_0000002194110925](figures/zh-cn_image_0000002194110925.png) | ![zh-cn_image_0000002158584402](figures/zh-cn_image_0000002158584402.png) |
+| ![Original-Image2](figures/Original-Image2.png) | ![Scaled-up-Image](figures/Scaled-up-Image.png) |
 
 
 ## 画布状态保存与恢复
@@ -259,7 +259,7 @@ OH_Drawing_PointDestroy(point);
 OH_Drawing_MatrixDestroy(matrix);
 ```
 
-![zh-cn_image_0000002158744186](figures/zh-cn_image_0000002158744186.png)
+![Development-example](figures/Development-example.png)
 
 <!--RP1-->
 ## 相关实例

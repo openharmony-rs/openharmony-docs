@@ -10,9 +10,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。
+> - 本模块首批接口从API version 11开始支持。
 >
-> 后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## wrapBuilder
 
@@ -20,7 +22,7 @@ wrapBuilder\<Args extends Object[]>(builder: (...args: Args) => void): WrappedBu
 
 wrapBuilder是一个模板函数，返回一个`WrappedBuilder`对象。模板参数`Args extends Object[]`是需要包装的builder函数的参数列表。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,6 +46,7 @@ function MyBuilder(value: string, size: number) {
   Text(value)
     .fontSize(size)
 }
+// 使用wrapBuilder封装MyBuilder
 let builderVar: WrappedBuilder<[string, number]> = wrapBuilder(MyBuilder);
 ```
 ## WrappedBuilder
@@ -52,7 +55,7 @@ let builderVar: WrappedBuilder<[string, number]> = wrapBuilder(MyBuilder);
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,7 +70,7 @@ constructor(builder: (...args: Args) => void)
 
 WrappedBuilder的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,5 +88,6 @@ function MyBuilder(value: string, size: number) {
   Text(value)
     .fontSize(size)
 }
+// 使用WrappedBuilder封装MyBuilder
 let builderVar: WrappedBuilder<[string, number]> = new WrappedBuilder<[string, number]>(MyBuilder);
 ```

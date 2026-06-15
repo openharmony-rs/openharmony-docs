@@ -10,13 +10,17 @@
 
 >  **说明：**
 >
->  从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> onAreaChange回调执行仅与本组件有关，对祖先或子孙组件上的onAreaChange的回调没有严格的执行顺序和限制保证。
+> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - onAreaChange回调执行仅与本组件有关，对祖先或子孙组件上的onAreaChange的回调没有严格的执行顺序和限制保证。
 
 ## onAreaChange
 
-onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
+ArkTS-Dyn: onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
+
+ArkTS-Sta: onAreaChange(event: ((oldValue: Area, newValue: Area) => void) | undefined): this
 
 组件区域变化时触发该回调。仅会响应由布局变化所导致的组件大小、位置发生变化时的回调。
 
@@ -26,21 +30,25 @@ onAreaChange(event: (oldValue: Area, newValue: Area) => void): T
 >
 > 当组件同时绑定onAreaChange事件和[position](ts-universal-attributes-location.md#position)属性时，onAreaChange事件响应设置[Position](ts-types.md#position)类型的position属性变化，不响应设置[Edges](ts-types.md#edges12)和[LocalizedEdges](ts-types.md#localizededges12)类型的position属性变化。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| event | (oldValue: [Area](ts-types.md#area8), newValue: [Area](ts-types.md#area8)) => void  | 是   | 返回目标元素位置信息变化情况，oldValue为目标元素变化之前的宽高以及目标元素相对父元素和页面左上角的坐标位置。newValue为目标元素变化之后的宽高以及目标元素相对父元素和页面左上角的坐标位置。 |
+| event | ArkTS-Dyn: (oldValue: [Area](ts-types.md#area8), newValue: [Area](ts-types.md#area8)) => void<br/>ArkTS-Sta: ((oldValue: [Area](ts-types.md#area8), newValue: [Area](ts-types.md#area8)) => void) \| undefined  | 是   | 返回目标元素位置信息变化情况，oldValue为目标元素变化之前的宽高以及目标元素相对父元素和页面左上角的坐标位置。newValue为目标元素变化之后的宽高以及目标元素相对父元素和页面左上角的坐标位置。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## onAreaChange
 
@@ -50,7 +58,7 @@ ArkTS-Sta: onAreaChange(event: AreaChangeCallback, options?: AreaChangeOptions):
 
 组件区域变化时触发该回调，可通过[AreaChangeOptions](#areachangeoptions)中的expectedUpdateInterval设置触发回调的间隔。仅会响应由布局变化所导致的组件大小、位置发生变化时的回调。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -79,7 +87,7 @@ type AreaChangeCallback = (oldValue: Area, newValue: Area) => void
 
 组件区域变化事件的回调类型。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,7 +108,7 @@ type AreaChangeCallback = (oldValue: Area, newValue: Area) => void
 
 区域变化相关的参数。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,7 +156,7 @@ struct AreaExample {
 }
 ```
 
-![zh-cn_image_0000001189634870](figures/zh-cn_image_0000001189634870.gif)
+![areaChangeOptions](figures/areaChangeOptions.gif)
 
 ### 示例2（使用onAreaChange自定义间隔监听区域变化）
 

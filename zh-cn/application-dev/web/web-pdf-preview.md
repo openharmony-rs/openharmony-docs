@@ -1,12 +1,12 @@
 # 使用Web组件的PDF文档预览能力
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @Yuan_ss-->
-<!--Designer: @qiu-gongkai-->
+<!--Owner: @shulssins-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-[Web组件](../reference/apis-arkweb/arkts-basic-components-web.md)支持在网页中预览PDF。应用通过[WebOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions)的src参数和[loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl)接口加载PDF文档。具体场景包括：网络PDF文档、应用沙箱内PDF文档和本地PDF文档。
+[Web](../reference/apis-arkweb/arkts-basic-components-web.md)组件支持在网页中预览PDF。受限于性能表现，部分场景存在掉帧现象。若对流畅度有要求，建议使用[PdfView](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/pdf-arkts-pdfview-component)，或第三方解析库[PDF.js](https://github.com/mozilla/pdf.js)。应用通过[WebOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions)的src参数和[loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl)接口加载PDF文档。具体场景包括：网络PDF文档、应用沙箱内PDF文档和本地PDF文档。
 
 若涉及网络文档获取，需在module.json5中配置网络访问权限。添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
@@ -24,6 +24,7 @@
 
 在下面的示例中，Web组件创建时指定默认加载的网络PDF文档`https://www.example.com/test.pdf`。使用时需替换为真实的可访问URL。
 
+ArkTS-Dyn示例：
 <!-- @[web_module_create_load_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/PreviewPDF.ets) -->
 
 ``` TypeScript
@@ -50,44 +51,195 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[web_module_create_load_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebPreviewPdf/entry/src/main/ets/pages/PreviewPDF.ets) -->
+
+``` TypeScript
+// xxx.ets
+'use static'
+import webview from '@ohos.web.webview';
+import { Entry, Column, Component, Web} from '@ohos.arkui.component'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({
+        src:
+        'https://www.example.com/test.pdf',    // 方式一 加载网络PDF文档
+        // this.getUIContext().getHostContext()!.filesDir + '/test.pdf',    // 方式二 加载本地应用沙箱内PDF文档
+        // 'resource://rawfile/test.pdf',    // 方式三 本地PDF文档 (格式一)
+        // $rawfile('test.pdf'),    // 方式三 本地PDF文档 (格式二)
+        controller: this.controller
+      })
+        .domStorageAccess(true)
+    }
+  }
+}
+```
+
 PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航栏的展开状态，因此需要开启文档对象模型存储[domStorageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess)权限:
 
   ```ts
   Web().domStorageAccess(true)
   ```
 
-在创建[Web组件](../reference/apis-arkweb/arkts-basic-components-web.md)时，指定默认加载的PDF文档。默认PDF文档加载完成后，若需变更Web组件显示的PDF文档，通过调用[loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl)接口加载指定的PDF文档。[WebOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions)的第一个参数变量src不能通过状态变量（例如：[@State](../ui/state-management/arkts-state.md)）动态更改地址，如需更改，请通过[loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl)重新加载。
+在创建[Web](../reference/apis-arkweb/arkts-basic-components-web.md)组件时，指定默认加载的PDF文档。默认PDF文档加载完成后，若需变更Web组件显示的PDF文档，通过调用[loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl)接口加载指定的PDF文档。[WebOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#weboptions)的第一个参数变量src不能通过状态变量（例如：[@State](../ui/state-management/arkts-state.md)）动态更改地址，如需更改，请通过[loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl)重新加载。
 
 包含三种PDF文档加载预览场景：
 - 预览加载网络PDF文档。
 
-  ```ts
-  Web({ 
-    src: "https://www.example.com/test.pdf",
-    controller: this.controller 
-  })
-    .domStorageAccess(true)
-  ```
+ArkTS-Dyn示例：
+<!-- @[web_module_load_network_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/LoadNetworkPdf.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct LoadNetworkPdf {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({
+        src: 'https://www.example.com/test.pdf',    // 方式一 加载网络PDF文档
+        controller: this.controller
+      }).domStorageAccess(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[web_module_load_network_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebPreviewPdf/entry/src/main/ets/pages/LoadNetworkPdf.ets) -->
+
+``` TypeScript
+// xxx.ets
+'use static'
+import webview from '@ohos.web.webview';
+import { Entry, Column, Component, Web} from '@ohos.arkui.component'
+
+@Entry
+@Component
+struct LoadNetworkPdf {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({
+        src: 'https://www.example.com/test.pdf',    // 加载网络PDF文档
+        controller: this.controller
+      }).domStorageAccess(true)
+    }
+  }
+}
+```
+
 - 预览加载应用沙箱内PDF文档需要开启文件系统的[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)权限。
 
-  ```ts
-  Web({ 
-    src: this.getUIContext().getHostContext()!.filesDir + "/test.pdf",
-    controller: this.controller 
-  })
-    .domStorageAccess(true)
-    .fileAccess(true)
-  ```
+ArkTS-Dyn示例：
+<!-- @[web_module_load_sandbox_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/LoadSandboxPdf.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct LoadSandboxPdf {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({
+        src: this.getUIContext().getHostContext()!.filesDir + '/test.pdf',    // 加载本地应用沙箱内PDF文档
+        controller: this.controller
+      }).domStorageAccess(true)
+        .fileAccess(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[web_module_load_sandbox_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebPreviewPdf/entry/src/main/ets/pages/LoadSandboxPdf.ets) -->
+
+``` TypeScript
+// xxx.ets
+'use static'
+import webview from '@ohos.web.webview';
+import { Entry, Column, Component, Web} from '@ohos.arkui.component'
+
+@Entry
+@Component
+struct LoadSandboxPdf {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({
+        src: this.getUIContext().getHostContext()!.filesDir + "/test.pdf",    // 加载本地应用沙箱内PDF文档
+        controller: this.controller
+      }).domStorageAccess(true)
+        .fileAccess(true)
+    }
+  }
+}
+```
+
 - 预览加载本地PDF文档。
 
-  ```ts
-  Web({ 
-    src: "resource://rawfile/test.pdf",            // 格式一 加载本地PDF文档
-    // src: $rawfile('test.pdf'),                  // 格式二 加载本地PDF文档
-    controller: this.controller 
-  })
-    .domStorageAccess(true)
-  ```
+ArkTS-Dyn示例：
+<!-- @[web_module_load_local_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/LoadRawfilePdf.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct LoadRawfilePdf {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({
+        src: 'resource://rawfile/test.pdf',            // 格式一 加载本地PDF文档
+        // src: $rawfile('test.pdf'),                  // 格式二 加载本地PDF文档
+        controller: this.controller
+      }).domStorageAccess(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[web_module_load_local_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebPreviewPdf/entry/src/main/ets/pages/LoadRawfilePdf.ets) -->
+
+``` TypeScript
+// xxx.ets
+'use static'
+import webview from '@ohos.web.webview';
+import { Entry, Column, Component, Web} from '@ohos.arkui.component'
+
+@Entry
+@Component
+struct LoadRawfilePdf {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({
+        src: "resource://rawfile/test.pdf",            // 格式一 加载本地PDF文档
+        // src: $rawfile('test.pdf'),                  // 格式二 加载本地PDF文档
+        controller: this.controller
+      }).domStorageAccess(true)
+    }
+  }
+}
+```
 
 ## 通过配置PDF文件预览参数，控制打开预览时页面状态
 
@@ -121,29 +273,128 @@ https://example.com/test.pdf#pdfbackgroundcolor=ffffff
 在下面的示例中，Web组件创建时指定默认加载的网络PDF文档`https://www.example.com/test.pdf`。使用时需替换为真实的可访问URL。
 
 - 加载成功/失败回调。
-  ```ts
-  Web({ 
-    src: 'https://www.example.com/test.pdf',
-    controller: this.controller 
-  })
-    .onPdfLoadEvent(
-      (eventInfo: OnPdfLoadEvent) => {
-        console.info(`Load event callback called. url: ${eventInfo.url}, result: ${eventInfo.result}.`)
-      }
-    )
-  ```
+
+ArkTS-Dyn示例：
+<!-- @[web_module_pdf_load_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/PdfEvent.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct PdfEvent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({
+        src: 'resource://rawfile/test.pdf',
+        controller: this.controller
+      })
+        .onPdfLoadEvent(eventInfo => {
+            console.info(`Load event callback called. url: ${eventInfo.url}, result: ${eventInfo.result}.`)
+          }
+        )   
+        .domStorageAccess(true)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[web_module_pdf_load_event](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebPreviewPdf/entry/src/main/ets/pages/PdfEvent.ets) -->
+
+``` TypeScript
+// xxx.ets
+'use static'
+import webview from '@ohos.web.webview';
+import { State } from '@ohos.arkui.stateManagement'
+import { Entry, Text, Column, Component, Web} from '@ohos.arkui.component'
+
+@Entry
+@Component
+struct PdfEvent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({
+        src: "resource://rawfile/test.pdf",
+        controller: this.controller
+      })
+        .onPdfLoadEvent(eventInfo => {
+          console.info(`Load event callback called. url: ${eventInfo.url}, result: ${eventInfo.result}.`)
+        })   
+        .domStorageAccess(true)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 - 滚动到底部事件回调。
-  ```ts
-  Web({ 
-    src: 'https://www.example.com/test.pdf',
-    controller: this.controller 
-  })
-    .onPdfScrollAtBottom(
-      (eventInfo: OnPdfScrollEvent) => {
-        console.info(`Scroll at bottom callback called. url: ${eventInfo.url}.`)
-      }
-    ) 
-  ```
 
+ArkTS-Dyn示例：
+<!-- @[web_module_pdf_scroll_at_bottom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/PdfEvent.ets) -->
+
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct PdfEvent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({
+        src: 'resource://rawfile/test.pdf',
+        controller: this.controller
+      })      
+        .onPdfScrollAtBottom(eventInfo => {
+            console.info(`Scroll at bottom callback called. url: ${eventInfo.url}.`)
+          }
+        )
+        .domStorageAccess(true)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[web_module_pdf_scroll_at_bottom](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebPreviewPdf/entry/src/main/ets/pages/PdfEvent.ets) -->
+
+``` TypeScript
+// xxx.ets
+'use static'
+import webview from '@ohos.web.webview';
+import { State } from '@ohos.arkui.stateManagement'
+import { Entry, Text, Column, Component, Web} from '@ohos.arkui.component'
+
+@Entry
+@Component
+struct PdfLoadEvent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({
+        src: "resource://rawfile/test.pdf",
+        controller: this.controller
+      })      
+        .onPdfScrollAtBottom(eventInfo => {
+            console.info(`Scroll at bottom callback called. url: ${eventInfo.url}.`)
+          })
+        .domStorageAccess(true)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 <!--RP1--><!--RP1End-->

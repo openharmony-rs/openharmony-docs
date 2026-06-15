@@ -382,7 +382,3 @@ Radio独有属性如下，具体说明请参考[ArkUI_NodeAttributeType](../refe
 | NODE_RADIO_STYLE | 设置单选框选中状态和非选中状态的样式（包括开启状态底板颜色、关闭状态描边颜色、开启状态内部圆饼颜色）。 |
 | NODE_RADIO_VALUE | 设置单选按钮值。 |
 | NODE_RADIO_GROUP | 设置所属组名，同一组内的Radio互斥。 |
-
-## 完整示例
-
-- [NativeFormExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeFormExample)：包含Button、Slider、Toggle、Checkbox、Radio组件的完整示例。

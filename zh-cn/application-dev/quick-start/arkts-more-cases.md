@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @anxuesm-->
-<!--Designer: @qyhuo32-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -592,8 +592,8 @@ class C {
   }
 }
 
-let s: C = new C(-2);   //抛出异常
-let t: C = { value: -2 }; //ArkTS不支持
+let s: C = new C(-2);   // 抛出异常
+let t: C = { value: -2 }; // ArkTS不支持
 ```
 
 如果允许使用`C`来标注object literal的类型，变量`t`会导致行为的二义性。ArkTS禁止通过object literal绕过这一行为。
@@ -849,19 +849,20 @@ declare namespace Test {
 export default Test;
 ```
 
-<!-- @[ts_namespace_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/app.ets) -->  
+<!-- @[obtaining_the_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->
 
 ``` TypeScript
 // app.ets
 import test from './test';
 
-let option = { id: '', type: 0 };
+let option: test.I = { id: '', type: 0 };
 test.foo('', option);
 ```
 
 **原因**
 
 对象字面量缺少类型，根据`test.foo`分析可以得知，`option`的类型来源于声明文件，那么只需要将类型导入即可。
+
 在`test.d.ets`中，`I`定义在namespace中。在ets文件中，先导入namespace，再通过名称获取相应的类型。
 
 ### object literal传参给Object类型
@@ -1865,19 +1866,19 @@ a?.bar();
 1.一般情况下，**建议按照业务逻辑**在声明时初始化属性，或者在构造函数中为属性赋值。如：
 
 ```typescript
-//code with error
+// code with error
 class Test {
   value: number
   flag: boolean
 }
 
-//方式一，在声明时初始化
+// 方式一，在声明时初始化
 class Test {
   value: number = 0
   flag: boolean = false
 }
 
-//方式二，在构造函数中赋值
+// 方式二，在构造函数中赋值
 class Test {
   value: number
   flag: boolean
@@ -1894,7 +1895,7 @@ class Test {
 
 ​ 方式(ii) `prop?: A`
 
-​ 方式三(iii) `prop： A | undefined = undefined`
+​ 方式(iii) `prop: A | undefined = undefined`
 
 - 从性能角度看，`null`类型仅用于编译期的类型检查，不会影响虚拟机性能。而`undefined | A`被视为联合类型，运行时可能产生额外开销。
 - 从代码可读性、简洁性的角度来说，`prop?:A`是`prop： A | undefined = undefined`的语法糖，**推荐使用可选属性的写法**。
@@ -1906,7 +1907,7 @@ class Test {
 ```typescript
 function foo(fn: (value?: string) => void, value: string): void {}
 
-foo((value: string) => {}, ''); //error
+foo((value: string) => {}, ''); // error
 ```
 
 **建议改法**

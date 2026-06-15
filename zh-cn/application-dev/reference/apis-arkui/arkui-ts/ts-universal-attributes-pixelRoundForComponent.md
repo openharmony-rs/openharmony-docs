@@ -10,11 +10,17 @@
 
 >  **说明：**
 >
->  本模块从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## pixelRound
 
-pixelRound(value: PixelRoundPolicy): T
+ArkTS-Dyn: pixelRound(value: PixelRoundPolicy): T
+
+ArkTS-Sta: pixelRound(value: PixelRoundPolicy | undefined): this
 
 指定当前组件在指定方向上的像素取整对齐方式，某方向不设置时默认在该方向进行四舍五入取整。
 
@@ -30,33 +36,41 @@ pixelRound(value: PixelRoundPolicy): T
 - 计算当前组件右下角坐标： 左上角相对于父容器偏移量 + 组件自身尺寸。
 - 重新计算当前组件尺寸： 右下角坐标四舍五入取整 - 左上角坐标四舍五入取整。
 
-**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value | [PixelRoundPolicy](#pixelroundpolicy) | 是 | 指定当前组件边界取整策略。<br/>**说明：**<br/>该属性用于因浮点数绘制产生视觉异常的场景。取整结果不仅和组件的宽高有关，也与组件的位置有关。即使设置组件的宽高相同，由于以浮点数描述的组件位置不同，舍入后组件的最终宽高也可能不同。|
+| value | ArkTS-Dyn: [PixelRoundPolicy](#pixelroundpolicy)<br/>ArkTS-Sta: [PixelRoundPolicy](#pixelroundpolicy) \| undefined | 是 | 指定当前组件边界取整策略。<br/>**说明：**<br/>该属性用于因浮点数绘制产生视觉异常的场景。取整结果不仅和组件的宽高有关，也与组件的位置有关。即使设置组件的宽高相同，由于以浮点数描述的组件位置不同，舍入后组件的最终宽高也可能不同。<br/>取值为undefined时，与不设置表现一致。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## PixelRoundPolicy
 
 指定组件级像素取整的方向。
 
-**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -78,6 +92,8 @@ pixelRound(value: PixelRoundPolicy): T
 ## 示例
 
 当父组件出现1px的缝隙时，应利用pixelRound来指导布局调整。
+
+**ArkTS-Dyn示例：**
 
 ```ts
 @Entry
@@ -125,12 +141,63 @@ struct PixelRoundExample {
 }
 ```
 
+**ArkTS-Sta示例：**
+
+```ts
+import { Entry, Component, Text, Blank, Column, Row, Button, Color, PixelRoundCalcPolicy  } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct PixelRoundExample {
+  @State curWidth : number = 300;
+
+  build() {
+    Column() {
+      Button(){
+        Text(this.curWidth.toString())
+      }
+      .onClick((): void => {
+        this.curWidth += 0.1;
+      })
+      .height(200)
+      .width(200)
+      .backgroundColor('rgb(213, 213, 213)')
+
+      Blank().height(20)
+
+      Row() {
+        Row() {
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor(Color.Yellow)
+        .pixelRound({
+          start : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+          end : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+        })
+      }
+      .width(this.curWidth.toString() + 'px')
+      .height('300.6px')
+      .backgroundColor(Color.Red)
+      .pixelRound({
+        start : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+        end : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+      })
+    }
+    .width("100%")
+    .height('100%')
+    .backgroundColor('#ffe5e5e5')
+  }
+}
+```
+
 在本示例中，当取消像素取整功能（即不设置父子组件上的pixelRound属性）后，初始状态表现为正常。用户可通过点击按钮来增加父组件的宽度，当前示例父组件宽度为301.2px，以此测试在不同宽度下的表现差异。测试中会发现，当父组件达到特定宽度时，右侧会出现1px的缝隙。同样地，适当调整示例代码后，也可进行上下方向的测试，以观察类似现象。
 
 **图1** 使用pixelRound指导布局效果图
 
-![zh-cn_image_pixel_round_enable.png](figures/zh-cn_image_pixel_round_enable.png)
+![image-pixel-round-enable.png](figures/image-pixel-round-enable.png)
 
 **图2** 不使用pixelRound指导布局效果图
 
-![zh-cn_image_pixel_round_disable.png](figures/zh-cn_image_pixel_round_disable.png)
+![image-pixel-round-disable.png](figures/image-pixel-round-disable.png)

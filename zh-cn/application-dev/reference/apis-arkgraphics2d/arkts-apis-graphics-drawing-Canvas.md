@@ -2,13 +2,15 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
 承载绘制内容与绘制状态的载体。
 
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -32,9 +34,13 @@ constructor(pixelmap: image.PixelMap)
 
 创建一个以PixelMap作为绘制目标的Canvas对象。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -59,7 +65,7 @@ import { image } from '@kit.ImageKit';
 const color = new ArrayBuffer(96);
 let opts : image.InitializationOptions = {
   editable: true,
-  pixelFormat: 3,
+  pixelFormat: image.PixelMapFormat.RGBA_8888,
   size: {
     height: 4,
     width: 6
@@ -78,6 +84,10 @@ drawRect(rect: common2D.Rect): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                               | 必填 | 说明           |
@@ -94,6 +104,7 @@ drawRect(rect: common2D.Rect): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -105,7 +116,25 @@ class DrawingRenderNode extends RenderNode {
     pen.setStrokeWidth(5);
     pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
     canvas.attachPen(pen);
-    canvas.drawRect({ left : 0, right : 10, top : 0, bottom : 10 });
+    canvas.drawRect({ left : 0.0, right : 10.0, top : 0.0, bottom : 10.0 });
+    canvas.detachPen();
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawRect({ left : 0.0, right : 10.0, top : 0.0, bottom : 10.0 });
     canvas.detachPen();
   }
 }
@@ -113,20 +142,26 @@ class DrawingRenderNode extends RenderNode {
 
 ## drawRect<sup>12+</sup>
 
-drawRect(left: number, top: number, right: number, bottom: number): void
+ArkTS-Dyn: drawRect(left: number, top: number, right: number, bottom: number): void
+
+ArkTS-Sta: drawRect(left: double, top: double, right: double, bottom: double): void
 
 绘制一个矩形，默认使用黑色填充。性能优于[drawRect](#drawrect)接口，推荐使用本接口。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| left   | number | 是   | 矩形的左上角x轴坐标，该参数为浮点数。 |
-| top    | number | 是   | 矩形的左上角y轴坐标，该参数为浮点数。 |
-| right  | number | 是   | 矩形的右下角x轴坐标，该参数为浮点数。 |
-| bottom | number | 是   | 矩形的右下角y轴坐标，该参数为浮点数。 |
+| left   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的左上角x轴坐标，该参数为浮点数。 |
+| top    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的左上角y轴坐标，该参数为浮点数。 |
+| right  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的右下角x轴坐标，该参数为浮点数。 |
+| bottom | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 矩形的右下角y轴坐标，该参数为浮点数。 |
 
 **错误码：**
 
@@ -138,6 +173,7 @@ drawRect(left: number, top: number, right: number, bottom: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -156,6 +192,25 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawRect(0.0, 0.0, 10.0, 10.0);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawRoundRect<sup>12+</sup>
 
 drawRoundRect(roundRect: RoundRect): void
@@ -163,6 +218,10 @@ drawRoundRect(roundRect: RoundRect): void
 画一个圆角矩形。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -180,6 +239,7 @@ drawRoundRect(roundRect: RoundRect): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -187,8 +247,23 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
-    let rect: common2D.Rect = { left : 100, top : 100, right : 400, bottom : 500 };
-    let roundRect = new drawing.RoundRect(rect, 10, 10);
+    let rect: common2D.Rect = { left : 100.0, top : 100.0, right : 400.0, bottom : 500.0 };
+    let roundRect = new drawing.RoundRect(rect, 10.0, 10.0);
+    canvas.drawRoundRect(roundRect);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let rect: common2D.Rect = { left : 100.0, top : 100.0, right : 400.0, bottom : 500.0 };
+    let roundRect = new drawing.RoundRect(rect, 10.0, 10.0);
     canvas.drawRoundRect(roundRect);
   }
 }
@@ -201,6 +276,10 @@ drawNestedRoundRect(outer: RoundRect, inner: RoundRect): void
 绘制两个嵌套的圆角矩形，外部矩形边界必须包含内部矩形边界，否则无绘制效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -219,6 +298,7 @@ drawNestedRoundRect(outer: RoundRect, inner: RoundRect): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -226,10 +306,28 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
-    let inRect: common2D.Rect = { left : 200, top : 200, right : 400, bottom : 500 };
-    let outRect: common2D.Rect = { left : 100, top : 100, right : 400, bottom : 500 };
-    let outRoundRect = new drawing.RoundRect(outRect, 10, 10);
-    let inRoundRect = new drawing.RoundRect(inRect, 10, 10);
+    let inRect: common2D.Rect = { left : 200.0, top : 200.0, right : 400.0, bottom : 500.0 };
+    let outRect: common2D.Rect = { left : 100.0, top : 100.0, right : 400.0, bottom : 500 };
+    let outRoundRect = new drawing.RoundRect(outRect, 10.0, 10.0);
+    let inRoundRect = new drawing.RoundRect(inRect, 10.0, 10.0);
+    canvas.drawNestedRoundRect(outRoundRect, inRoundRect);
+    canvas.drawRoundRect(outRoundRect);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let inRect: common2D.Rect = { left : 200.0, top : 200.0, right : 400.0, bottom : 500.0 };
+    let outRect: common2D.Rect = { left : 100.0, top : 100.0, right : 400.0, bottom : 500.0 };
+    let outRoundRect = new drawing.RoundRect(outRect, 10.0, 10.0);
+    let inRoundRect = new drawing.RoundRect(inRect, 10.0, 10.0);
     canvas.drawNestedRoundRect(outRoundRect, inRoundRect);
     canvas.drawRoundRect(outRoundRect);
   }
@@ -243,6 +341,10 @@ drawBackground(brush: Brush): void
 使用画刷填充画布的可绘制区域。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -260,6 +362,7 @@ drawBackground(brush: Brush): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -275,13 +378,35 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+    brush.setColor(color);
+    canvas.drawBackground(brush);
+  }
+}
+```
+
 ## drawShadow<sup>12+</sup>
 
-drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Point3d, lightRadius: number, ambientColor: common2D.Color, spotColor: common2D.Color, flag: ShadowFlag) : void
+ArkTS-Dyn: drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Point3d, lightRadius: number, ambientColor: common2D.Color, spotColor: common2D.Color, flag: ShadowFlag) : void
+
+ArkTS-Sta: drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Point3d, lightRadius: double, ambientColor: common2D.Color, spotColor: common2D.Color, flag: ShadowFlag) : void
 
 绘制射灯类型阴影，使用路径描述环境光阴影的轮廓。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -290,7 +415,7 @@ drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Poin
 | path | [Path](arkts-apis-graphics-drawing-Path.md)                | 是    | 路径对象，可生成阴影。 |
 | planeParams  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是    | 表示一个三维向量，用于计算遮挡物相对于画布在z轴上的偏移量，其值取决于x与y坐标。 |
 | devLightPos  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是    | 光线相对于画布的位置。 |
-| lightRadius   | number           | 是    | 圆形灯半径，该参数为浮点数。      |
+| lightRadius   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 圆形灯半径，该参数为浮点数。      |
 | ambientColor  | [common2D.Color](js-apis-graphics-common2D.md#color) | 是    | 环境阴影颜色。 |
 | spotColor  | [common2D.Color](js-apis-graphics-common2D.md#color) | 是    | 点阴影颜色。 |
 | flag         | [ShadowFlag](arkts-apis-graphics-drawing-e.md#shadowflag12)                  | 是    | 阴影标志枚举。    |
@@ -305,6 +430,7 @@ drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Poin
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -324,8 +450,8 @@ class DrawingRenderNode extends RenderNode {
     let brush_color : common2D.Color = { alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00 };
     brush.setColor(brush_color);
     canvas.attachBrush(brush);
-    let point1 : common2D.Point3d = {x: 100, y: 80, z:80};
-    let point2 : common2D.Point3d = {x: 200, y: 10, z:40};
+    let point1 : common2D.Point3d = {x: 100.0, y: 80.0, z:80.0};
+    let point2 : common2D.Point3d = {x: 200.0, y: 10.0, z:40.0};
     let color1 : common2D.Color = {alpha: 0xFF, red:0, green:0, blue:0xFF};
     let color2 : common2D.Color = {alpha: 0xFF, red:0xFF, green:0, blue:0};
     let shadowFlag : drawing.ShadowFlag = drawing.ShadowFlag.ALL;
@@ -334,13 +460,49 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const path = new drawing.Path();
+    path.addCircle(100, 200, 100, drawing.PathDirection.CLOCKWISE);
+    let pen = new drawing.Pen();
+    pen.setAntiAlias(true);
+    let pen_color : common2D.Color = { alpha: 0xFF, red: 0xFF, green: 0x00, blue: 0x00 };
+    pen.setColor(pen_color);
+    pen.setStrokeWidth(10.0);
+    canvas.attachPen(pen);
+    let brush = new drawing.Brush();
+    let brush_color : common2D.Color = { alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00 };
+    brush.setColor(brush_color);
+    canvas.attachBrush(brush);
+    let point1 : common2D.Point3d = {x: 100.0, y: 80.0, z:80.0};
+    let point2 : common2D.Point3d = {x: 200.0, y: 10.0, z:40.0};
+    let color1 : common2D.Color = {alpha: 0xFF, red:0, green:0, blue:0xFF};
+    let color2 : common2D.Color = {alpha: 0xFF, red:0xFF, green:0, blue:0};
+    let shadowFlag : drawing.ShadowFlag = drawing.ShadowFlag.ALL;
+    canvas.drawShadow(path, point1, point2, 30.0, color1, color2, shadowFlag);
+  }
+}
+```
+
 ## drawShadow<sup>18+</sup>
 
-drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Point3d, lightRadius: number, ambientColor: common2D.Color | number, spotColor: common2D.Color | number, flag: ShadowFlag) : void
+ArkTS-Dyn: drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Point3d, lightRadius: number, ambientColor: common2D.Color | number, spotColor: common2D.Color | number, flag: ShadowFlag): void
+
+ArkTS-Sta: drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Point3d, lightRadius: double, ambientColor: common2D.Color | int, spotColor: common2D.Color | int, flag: ShadowFlag): void
 
 绘制射灯类型阴影，使用路径描述环境光阴影的轮廓。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -349,9 +511,9 @@ drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Poin
 | path | [Path](arkts-apis-graphics-drawing-Path.md)                | 是    | 路径对象，可生成阴影。 |
 | planeParams  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是    | 表示一个三维向量，用于计算z轴方向的偏移量。 |
 | devLightPos  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是    | 光线相对于画布的位置。 |
-| lightRadius   | number           | 是    | 圆形灯半径，该参数为浮点数。      |
-| ambientColor  |[common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是    | 环境阴影颜色，可以用16进制ARGB格式的32位无符号整数表示。 |
-| spotColor  |[common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是    | 点阴影颜色，可以用16进制ARGB格式的32位无符号整数表示。 |
+| lightRadius   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 圆形灯半径，该参数为浮点数。      |
+| ambientColor  | ArkTS-Dyn: [common2D.Color](js-apis-graphics-common2D.md#color) \| number<br/>ArkTS-Sta: [common2D.Color](js-apis-graphics-common2D.md#color) \| int | 是    | 环境阴影颜色，可以用16进制ARGB格式的32位无符号整数表示。 |
+| spotColor  |ArkTS-Dyn: [common2D.Color](js-apis-graphics-common2D.md#color) \|number<br/>ArkTS-Sta: [common2D.Color](js-apis-graphics-common2D.md#color) \| int | 是    | 点阴影颜色，可以用16进制ARGB格式的32位无符号整数表示。 |
 | flag         | [ShadowFlag](arkts-apis-graphics-drawing-e.md#shadowflag12)                  | 是    | 阴影标志枚举。    |
 
 **错误码：**
@@ -364,6 +526,7 @@ drawShadow(path: Path, planeParams: common2D.Point3d, devLightPos: common2D.Poin
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -381,22 +544,47 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode，DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const path = new drawing.Path();
+    path.addCircle(300.0, 600.0, 100.0, drawing.PathDirection.CLOCKWISE);
+    let point1 : common2D.Point3d = {x: 100.0, y: 80.0, z:80.0};
+    let point2 : common2D.Point3d = {x: 200.0, y: 10.0, z:40.0};
+    let shadowFlag : drawing.ShadowFlag = drawing.ShadowFlag.ALL;
+    canvas.drawShadow(path, point1, point2, 30.0, (0xFF0000FF).toInt(), (0xFFFF0000).toInt(), shadowFlag);
+  }
+}
+```
+
 ## getLocalClipBounds<sup>12+</sup>
 
-getLocalClipBounds(): common2D.Rect
+ArkTS-Dyn: getLocalClipBounds(): common2D.Rect
+
+ArkTS-Sta: getLocalClipBounds(): common2D.Rect | undefined
 
 获取画布裁剪区域的边界。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                       | 说明       |
 | ---------------------------------------- | -------- |
-| [common2D.Rect](js-apis-graphics-common2D.md#rect) | 返回画布裁剪区域的矩形边界。 |
+| ArkTS-Dyn: [common2D.Rect](js-apis-graphics-common2D.md#rect)<br/>ArkTS-Sta: [common2D.Rect](js-apis-graphics-common2D.md#rect) \| undefined | 返回画布裁剪区域的矩形边界。获取失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -417,22 +605,50 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode，DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let clipRect: common2D.Rect = {
+      left : 150.0, top : 150.0, right : 300.0, bottom : 400.0
+    };
+    canvas.clipRect(clipRect,drawing.ClipOp.DIFFERENCE, true);
+    console.info("test rect.left: " + clipRect.left);
+    console.info("test rect.top: " + clipRect.top);
+    console.info("test rect.right: " + clipRect.right);
+    console.info("test rect.bottom: " + clipRect.bottom);
+    canvas.getLocalClipBounds();
+  }
+}
+```
+
 ## getTotalMatrix<sup>12+</sup>
 
-getTotalMatrix(): Matrix
+ArkTS-Dyn: getTotalMatrix(): Matrix
+
+ArkTS-Sta: getTotalMatrix(): Matrix | undefined
 
 获取画布矩阵。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明       |
 | ----------------- | -------- |
-| [Matrix](arkts-apis-graphics-drawing-Matrix.md) |返回画布矩阵。 |
+| ArkTS-Dyn: [Matrix](arkts-apis-graphics-drawing-Matrix.md)<br/>ArkTS-Sta: [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| undefined |返回画布矩阵。获取失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -448,21 +664,43 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode，DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let matrix = new drawing.Matrix();
+    matrix.setMatrix([5.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0]);
+    canvas.setMatrix(matrix);
+    let matrixResult = canvas.getTotalMatrix();
+  }
+}
+```
+
 ## drawCircle
 
-drawCircle(x: number, y: number, radius: number): void
+ArkTS-Dyn: drawCircle(x: number, y: number, radius: number): void
+
+ArkTS-Sta: drawCircle(x: double, y: double, radius: double): void
 
 绘制一个圆形。如果半径小于等于零，则不绘制。默认使用黑色填充。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                |
 | ------ | ------ | ---- | ------------------- |
-| x      | number | 是   | 圆心的x坐标，该参数为浮点数。 |
-| y      | number | 是   | 圆心的y坐标，该参数为浮点数。 |
-| radius | number | 是   | 圆的半径，大于0的浮点数。 |
+| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 圆心的x坐标，该参数为浮点数。 |
+| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 圆心的y坐标，该参数为浮点数。 |
+| radius | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 圆的半径，大于0的浮点数。 |
 
 **错误码：**
 
@@ -474,6 +712,7 @@ drawCircle(x: number, y: number, radius: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -491,22 +730,46 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode，DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawCircle(10.0, 10.0, 2.0);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawImage
 
-drawImage(pixelmap: image.PixelMap, left: number, top: number, samplingOptions?: SamplingOptions): void
+ArkTS-Dyn: drawImage(pixelmap: image.PixelMap, left: number, top: number, samplingOptions?: SamplingOptions): void
+
+ArkTS-Sta: drawImage(pixelmap: image.PixelMap, left: double, top: double, samplingOptions?: SamplingOptions): void
 
 画一张图片，图片的左上角坐标为(left, top)。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 图片的PixelMap。                  |
-| left     | number                                       | 是   | 图片位置的左上角x轴坐标，该参数为浮点数。 |
-| top      | number                                       | 是   | 图片位置的左上角y轴坐标，该参数为浮点数。 |
-| samplingOptions<sup>12+</sup>  | [SamplingOptions](arkts-apis-graphics-drawing-SamplingOptions.md)  | 否  | 采样选项对象，默认为不使用任何参数构造的原始采样选项对象。 |
+| left     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 图片位置的左上角x轴坐标，该参数为浮点数。 |
+| top      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 图片位置的左上角y轴坐标，该参数为浮点数。 |
+| samplingOptions<sup>12+</sup>  | [SamplingOptions](arkts-apis-graphics-drawing-SamplingOptions.md)  | 否  | ArkTS-Dyn: 采样选项对象。当samplingOptions传入undefined时，该方法将抛错误码。不传该参数时，默认为不使用任何参数构造的原始采样选项对象。<br/>ArkTS-Sta: 采样选项对象。当不传该参数，或者samplingOptions传入undefined时，默认为不使用任何参数构造的原始采样选项对象。 |
 
 **错误码：**
 
@@ -518,6 +781,7 @@ drawImage(pixelmap: image.PixelMap, left: number, top: number, samplingOptions?:
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
@@ -554,6 +818,44 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  pixelMap: image.PixelMap | null = null;
+
+  draw(context : DrawContext) {
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i+1] = 156;
+      colorData[i+2] = 0;
+      colorData[i+3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.BGRA_8888,
+      size: { height, width }
+    }
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
+    if (pixelMap != null) {
+      canvas.drawImage(pixelMap, 0.0, 0.0, options);
+    }
+  }
+}
+```
+
 ## drawImageRect<sup>12+</sup>
 
 drawImageRect(pixelmap: image.PixelMap, dstRect: common2D.Rect, samplingOptions?: SamplingOptions): void
@@ -562,13 +864,17 @@ drawImageRect(pixelmap: image.PixelMap, dstRect: common2D.Rect, samplingOptions?
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
 | pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 图片的PixelMap。                 |
 | dstRect     | [common2D.Rect](js-apis-graphics-common2D.md#rect)                               | 是   | 矩形对象，用于指定画布上图片的绘制区域。 |
-| samplingOptions     | [SamplingOptions](arkts-apis-graphics-drawing-SamplingOptions.md)                           | 否   | 采样选项对象，默认为不使用任何参数构造的原始采样选项对象。 |
+| samplingOptions     | [SamplingOptions](arkts-apis-graphics-drawing-SamplingOptions.md)                           | 否   | ArkTS-Dyn: 采样选项对象。当samplingOptions传入undefined时，该方法将抛错误码。不传该参数时，默认为不使用任何参数构造的原始采样选项对象。<br/>ArkTS-Sta: 采样选项对象。当不传该参数，或者samplingOptions传入undefined时，默认为不使用任何参数构造的原始采样选项对象。 |
 
 **错误码：**
 
@@ -580,6 +886,7 @@ drawImageRect(pixelmap: image.PixelMap, dstRect: common2D.Rect, samplingOptions?
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
@@ -617,6 +924,46 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  pixelMap: image.PixelMap | null = null;
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let pen = new drawing.Pen();
+    canvas.attachPen(pen);
+    let rect: common2D.Rect = { left: 0.0, top: 0.0, right: 200.0, bottom: 200.0 };
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i+1] = 156;
+      colorData[i+2] = 0;
+      colorData[i+3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.RGBA_8888,
+      size: { height, width }
+    }
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    if (pixelMap != null) {
+      canvas.drawImageRect(pixelMap, rect);
+    }
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawImageRectWithSrc<sup>12+</sup>
 
 drawImageRectWithSrc(pixelmap: image.PixelMap, srcRect: common2D.Rect, dstRect: common2D.Rect, samplingOptions?: SamplingOptions, constraint?: SrcRectConstraint): void
@@ -625,6 +972,10 @@ drawImageRectWithSrc(pixelmap: image.PixelMap, srcRect: common2D.Rect, dstRect: 
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
@@ -632,8 +983,8 @@ drawImageRectWithSrc(pixelmap: image.PixelMap, srcRect: common2D.Rect, dstRect: 
 | pixelmap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 图片的PixelMap。                 |
 | srcRect     | [common2D.Rect](js-apis-graphics-common2D.md#rect)                               | 是   | 矩形对象，用于指定图片的待绘制区域。 |
 | dstRect     | [common2D.Rect](js-apis-graphics-common2D.md#rect)                               | 是   | 矩形对象，用于指定画布上图片的绘制区域。 |
-| samplingOptions     | [SamplingOptions](arkts-apis-graphics-drawing-SamplingOptions.md)                           | 否   | 采样选项对象，默认为不使用任何参数构造的原始采样选项对象。 |
-| constraint     | [SrcRectConstraint](arkts-apis-graphics-drawing-e.md#srcrectconstraint12)                        | 否   | 源矩形区域约束类型，默认为STRICT。 |
+| samplingOptions     | [SamplingOptions](arkts-apis-graphics-drawing-SamplingOptions.md)                           | 否   | ArkTS-Dyn: 采样选项对象。当samplingOptions传入undefined时，该方法将抛错误码。不传该参数时，默认为不使用任何参数构造的原始采样选项对象。<br/>ArkTS-Sta: 采样选项对象。当不传该参数，或者samplingOptions传入undefined时，默认为不使用任何参数构造的原始采样选项对象。 |
+| constraint     | [SrcRectConstraint](arkts-apis-graphics-drawing-e.md#srcrectconstraint12)                        | 否   | ArkTS-Dyn: 源矩形区域约束类型。当constraint传入undefined时，该方法将抛错误码。不传该参数时，默认为STRICT。<br/> ArkTS-Sta: 源矩形区域约束类型。当不传该参数，或者constraint传入undefined时，默认为STRICT。 |
 
 **错误码：**
 
@@ -645,6 +996,7 @@ drawImageRectWithSrc(pixelmap: image.PixelMap, srcRect: common2D.Rect, dstRect: 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
@@ -683,6 +1035,48 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+pixelMap: image.PixelMap | null = null;
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let pen = new drawing.Pen();
+    canvas.attachPen(pen);
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i+1] = 156;
+      colorData[i+2] = 0;
+      colorData[i+3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.RGBA_8888,
+      size: { height, width }
+    }
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    let srcRect: common2D.Rect = { left: 0.0, top: 0.0, right: 100.0, bottom: 100.0 };
+    let dstRect: common2D.Rect = { left: 100.0, top: 100.0, right: 200.0, bottom: 200.0 };
+    if (pixelMap != null) {
+      canvas.drawImageRectWithSrc(pixelMap, srcRect, dstRect);
+    }
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawColor
 
 drawColor(color: common2D.Color, blendMode?: BlendMode): void
@@ -691,12 +1085,16 @@ drawColor(color: common2D.Color, blendMode?: BlendMode): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                                 | 必填 | 说明                             |
 | --------- | ---------------------------------------------------- | ---- | -------------------------------- |
 | color     | [common2D.Color](js-apis-graphics-common2D.md#color) | 是   | ARGB格式的颜色，每个颜色通道的值是0到255之间的整数。                   |
-| blendMode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | 否   | 颜色混合模式，默认模式为SRC_OVER。 |
+| blendMode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | 否   | ArkTS-Dyn: 颜色混合模式。当blendMode传入undefined时，该方法将抛错误码。不传该参数时，默认模式为SRC_OVER。<br/>ArkTS-Sta: 颜色混合模式。当不传该参数，或者blendMode传入undefined时，默认模式为SRC_OVER。 |
 
 **错误码：**
 
@@ -708,6 +1106,7 @@ drawColor(color: common2D.Color, blendMode?: BlendMode): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -726,23 +1125,48 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let color: common2D.Color = {
+      alpha : 255,
+      red: 0,
+      green: 10,
+      blue: 10
+    }
+    canvas.drawColor(color, drawing.BlendMode.CLEAR);
+  }
+}
+```
+
 ## drawColor<sup>12+</sup>
 
-drawColor(alpha: number, red: number, green: number, blue: number, blendMode?: BlendMode): void
+ArkTS-Dyn: drawColor(alpha: number, red: number, green: number, blue: number, blendMode?: BlendMode): void
+
+ArkTS-Sta: drawColor(alpha: int, red: int, green: int, blue: int, blendMode?: BlendMode): void
 
 使用指定颜色并按照指定的[BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)对画布当前可绘制区域进行填充。性能优于[drawColor](#drawcolor)接口，推荐使用本接口。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明                                               |
 | --------- | ----------------------- | ---- | ------------------------------------------------- |
-| alpha     | number                  | 是   | ARGB格式颜色的透明度通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。 |
-| red       | number                  | 是   | ARGB格式颜色的红色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。   |
-| green     | number                  | 是   | ARGB格式颜色的绿色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。   |
-| blue      | number                  | 是   | ARGB格式颜色的蓝色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。   |
-| blendMode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode) | 否   | 颜色混合模式，默认模式为SRC_OVER。                   |
+| alpha     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的透明度通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。 |
+| red       | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的红色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。   |
+| green     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的绿色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。   |
+| blue      | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | ARGB格式颜色的蓝色通道值，该参数是0到255之间的整数，传入范围内的浮点数会向下取整。   |
+| blendMode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode) | 否   | ArkTS-Dyn: 颜色混合模式。当blendMode传入undefined时，该方法将抛错误码。不传该参数时，默认模式为SRC_OVER。<br/>ArkTS-Sta: 颜色混合模式。当不传该参数，或者blendMode传入undefined时，默认模式为SRC_OVER。 |
 
 **错误码：**
 
@@ -754,6 +1178,7 @@ drawColor(alpha: number, red: number, green: number, blue: number, blendMode?: B
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -766,20 +1191,39 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    canvas.drawColor(255, 0, 10, 10, drawing.BlendMode.CLEAR);
+  }
+}
+```
+
 ## drawColor<sup>18+</sup>
 
-drawColor(color: number, blendMode?: BlendMode): void
+ArkTS-Dyn: drawColor(color: number, blendMode?: BlendMode): void
+
+ArkTS-Sta: drawColor(color: int, blendMode?: BlendMode): void
 
 使用指定颜色并按照指定的[BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)对画布当前可绘制区域进行填充。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                                 | 必填 | 说明                             |
 | --------- | ---------------------------------------------------- | ---- | -------------------------------- |
-| color     | number | 是   | 16进制ARGB格式的颜色。                   |
-| blendMode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | 否   | 颜色混合模式，默认模式为SRC_OVER。 |
+| color     | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 16进制ARGB格式的颜色。                   |
+| blendMode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | 否   | ArkTS-Dyn: 颜色混合模式。当blendMode传入undefined时，该方法将抛错误码。不传该参数时，默认模式为SRC_OVER。<br/>ArkTS-Sta: 颜色混合模式。当不传该参数，或者blendMode传入undefined时，默认模式为SRC_OVER。 |
 
 **错误码：**
 
@@ -791,6 +1235,7 @@ drawColor(color: number, blendMode?: BlendMode): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -803,25 +1248,44 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    canvas.drawColor((0xff000a0a).toInt(), drawing.BlendMode.CLEAR);
+  }
+}
+```
+
 ## drawVertices<sup>23+</sup>
 
-drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array\<common2D.Point\>, texs: Array\<common2D.Point\> \| null, colors: Array\<number\> \| null, indexCount: number, indices: Array\<number\> \| null, mode: BlendMode): void
+ArkTS-Dyn: drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array\<common2D.Point\>, texs: Array\<common2D.Point\> \| null, colors: Array\<number\> \| null, indexCount: number, indices: Array\<number\> \| null, mode: BlendMode): void
+
+ArkTS-Sta: drawVertices(vertexMode: VertexMode, vertexCount: int, positions: Array\<common2D.Point\>, texs: Array\<common2D.Point\> \| null, colors: Array\<int\> \| null, indexCount: int, indices: Array\<int\> \| null, mode: BlendMode): void
 
 绘制顶点数组描述的三角网格。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型            | 必填 | 说明                            |
 | ----------- | -------------  | ---- | ------------------------------- |
 | vertexMode   | [VertexMode](arkts-apis-graphics-drawing-e.md#vertexmode23) | 是   | 绘制顶点的连接方式。 |
-| vertexCount   | number         | 是   | 顶点数组元素的数量，值为大于等于3的整数。 |
-| positions  | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12)        | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
-| texs    | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12) \| null  | 是   | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
-| colors      | Array\<number> \| null | 是   | 描述顶点对应颜色的数组，用于在三角形中进行插值。其可以为空，表明颜色效果为用户所设置的默认色；若不为空其长度必须等于vertexCount。 |
-| indexCount  | number         | 是   | 索引的数量。其值可以为0，且indices数组长度为0时可以画图；若不为0，则值必须为大于等于3的整数。|
-| indices  | Array\<number> \| null         | 是   | 描述顶点对应索引的数组。其可以为空，此时将忽略indexCount的合理传值（大于等于3的整数或等于0）；若不为空其长度必须等于indexCount。 |
+| vertexCount   | ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 是   | 顶点数组元素的数量，值为大于等于3的整数。 |
+| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>     | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
+| texs    | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> \| null  | 是   | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
+| colors      | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<int> \| null | 是   | 描述顶点对应颜色的数组，用于在三角形中进行插值。其可以为空，表明颜色效果为用户所设置的默认色；若不为空其长度必须等于vertexCount。 |
+| indexCount  | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 索引的数量。其值可以为0，且indices数组长度为0时可以画图；若不为0，则值必须为大于等于3的整数。|
+| indices  | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<int> \| null         | 是   | 描述顶点对应索引的数组。其可以为空，此时将忽略indexCount的合理传值（大于等于3的整数或等于0）；若不为空其长度必须等于indexCount。 |
 | mode | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | 是   | 颜色混合模式。 |
 
 **错误码：**
@@ -834,6 +1298,7 @@ drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array\<comm
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -862,25 +1327,60 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext): void {
+    const canvas = context.canvas;
+    let pointsArray = new Array<common2D.Point>();
+    const point1: common2D.Point = { x: 100.0, y: 100.0 };
+    const point2: common2D.Point = { x: 200.0, y: 100.0 };
+    const point3: common2D.Point = { x: 150.0, y: 200.0 };
+    pointsArray.push(point1);
+    pointsArray.push(point2);
+    pointsArray.push(point3);
+    let texsArray = new Array<common2D.Point>();
+    const texs1: common2D.Point = { x: 0.0, y: 0.0 };
+    const texs2: common2D.Point = { x: 1.0, y: 0.0 };
+    const texs3: common2D.Point = { x: 0.5, y: 1.0 };
+    texsArray.push(texs1);
+    texsArray.push(texs2);
+    texsArray.push(texs3);
+    const colors = [(0xFFFF0000).toInt(), (0xFF00FF00).toInt(), (0xFF0000FF).toInt()];
+    const indices = [0, 1, 2];
+    canvas.drawVertices(drawing.VertexMode.TRIANGLESSTRIP_VERTEXMODE, 3, pointsArray, texsArray, colors, 3, indices,drawing.BlendMode.SRC);
+  }
+}
+```
+
 ## drawPixelMapMesh<sup>12+</sup>
 
-drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number, vertices: Array\<number>, vertOffset: number, colors: Array\<number> | null, colorOffset: number): void
+ArkTS-Dyn: drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number, vertices: Array\<number>, vertOffset: number, colors: Array\<number> | null, colorOffset: number): void
+
+ArkTS-Sta: drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: int, meshHeight: int, vertices: Array\<double>, vertOffset: int, colors: Array\<int> | null, colorOffset: int): void
 
 在网格上绘制像素图，网格均匀分布在像素图上。（只支持brush，使用pen没有绘制效果。）
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型            | 必填 | 说明                            |
 | ----------- | -------------  | ---- | ------------------------------- |
 | pixelmap    | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 用于绘制网格的像素图。 |
-| meshWidth   | number         | 是   | 网格中的列数，大于0的整数。 |
-| meshHeight  | number         | 是   | 网格中的行数，大于0的整数。 |
-| vertices    | Array\<number> | 是   | 顶点数组，指定网格的绘制位置，浮点数组，大小必须为((meshWidth+1) * (meshHeight+1) + vertOffset) * 2。 |
-| vertOffset  | number         | 是   | 绘图前要跳过的vert元素数，大于等于0的整数。 |
-| colors      | Array\<number> \| null | 是   | 颜色数组，在每个顶点指定一种颜色，整数数组，可为null，大小必须为(meshWidth+1) * (meshHeight+1) + colorOffset。 |
-| colorOffset | number         | 是   | 绘制前要跳过的颜色元素数，大于等于0的整数。 |
+| meshWidth   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 网格中的列数，大于0的整数。 |
+| meshHeight  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 网格中的行数，大于0的整数。 |
+| vertices    | ArkTS-Dyn: Array\<number><br/>ArkTS-Sta: Array\<double> | 是   | 顶点数组，指定网格的绘制位置，浮点数组，大小必须为((meshWidth+1) * (meshHeight+1) + vertOffset) * 2。 |
+| vertOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 绘图前要跳过的vert元素数，大于等于0的整数。 |
+| colors      | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<int>  \| null | 是   | 颜色数组，在每个顶点指定一种颜色，整数数组，可为null，大小必须为(meshWidth+1) * (meshHeight+1) + colorOffset。 |
+| colorOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 绘制前要跳过的颜色元素数，大于等于0的整数。 |
 
 **错误码：**
 
@@ -892,6 +1392,7 @@ drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
@@ -931,6 +1432,48 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  pixelMap: image.PixelMap | null = null;
+
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i+1] = 156;
+      colorData[i+2] = 0;
+      colorData[i+3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.RGBA_8888,
+      size: { height, width }
+    }
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    if (pixelMap != null) {
+      const brush = new drawing.Brush(); // 只支持brush，使用pen没有绘制效果。
+      canvas.attachBrush(brush);
+      let verts : Array<double> = [0.0, 0.0, 50.0, 0.0, 410.0, 0.0, 0.0, 180.0, 50.0, 180.0, 410.0, 180.0, 0.0, 360.0, 50.0, 360.0, 410.0, 360.0]; // 18
+      canvas.drawPixelMapMesh(pixelMap, 2, 2, verts, 0, [(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt()], 0);
+      canvas.detachBrush();
+    }
+  }
+}
+```
+
 ## clear<sup>12+</sup>
 
 clear(color: common2D.Color): void
@@ -938,6 +1481,10 @@ clear(color: common2D.Color): void
 使用指定颜色填充画布上的裁剪区域。效果等同于[drawColor](#drawcolor)。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -955,6 +1502,7 @@ clear(color: common2D.Color): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -968,22 +1516,43 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let color: common2D.Color = {alpha: 255, red: 255, green: 0, blue: 0};
+    canvas.clear(color);
+  }
+}
+```
+
 ## clear<sup>18+</sup>
 
-clear(color: common2D.Color | number): void
+ArkTS-Dyn: clear(color: common2D.Color | number): void
+
+ArkTS-Sta: clear(color: common2D.Color | int): void
 
 使用指定颜色填充画布上的裁剪区域。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                                 | 必填 | 说明                             |
 | --------- | ---------------------------------------------------- | ---- | -------------------------------- |
-| color     | [common2D.Color](js-apis-graphics-common2D.md#color) \| number| 是   | 颜色，可以用16进制ARGB格式的无符号整数表示。  |
+| color     | ArkTS-Dyn: [common2D.Color](js-apis-graphics-common2D.md#color) \| number<br/>ArkTS-Sta:  [common2D.Color](js-apis-graphics-common2D.md#color) \| int | 是   | 颜色，可以用16进制ARGB格式的无符号整数表示。  |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -997,22 +1566,43 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let color: int = (0xffff0000).toInt();
+    canvas.clear(color);
+  }
+}
+```
+
 ## getWidth<sup>12+</sup>
 
-getWidth(): number
+ArkTS-Dyn: getWidth(): number
+
+ArkTS-Sta: getWidth(): int
 
 获取画布的宽度。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 返回画布的宽度，该参数为浮点数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回画布的宽度。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -1026,24 +1616,59 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let width = canvas.getWidth();
+    console.info('get canvas width:' + width);
+  }
+}
+```
+
 ## getHeight<sup>12+</sup>
 
-getHeight(): number
+ArkTS-Dyn: getHeight(): number
+
+ArkTS-Sta: getHeight(): int
 
 获取画布的高度。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 返回画布的高度，该参数为浮点数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回画布的高度。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let height = canvas.getHeight();
+    console.info('get canvas height:' + height);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -1063,6 +1688,10 @@ drawOval(oval: common2D.Rect): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**
 
 | 参数名 | 类型                                               | 必填 | 说明           |
@@ -1079,6 +1708,7 @@ drawOval(oval: common2D.Rect): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1098,21 +1728,47 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5.0);
+    const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+    pen.setColor(color);
+    canvas.attachPen(pen);
+    const rect: common2D.Rect = {left:100.0, top:50.0, right:400.0, bottom:500.0};
+    canvas.drawOval(rect);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawArc<sup>12+</sup>
 
-drawArc(arc: common2D.Rect, startAngle: number, sweepAngle: number): void
+ArkTS-Dyn: drawArc(arc: common2D.Rect, startAngle: number, sweepAngle: number): void
+
+ArkTS-Sta: drawArc(arc: common2D.Rect, startAngle: double, sweepAngle: double): void
 
 在画布上绘制圆弧。该方法允许指定起始角度、扫描角度。当扫描角度的绝对值大于360度时，则绘制椭圆。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
 | 参数名 | 类型                                               | 必填 | 说明           |
 | ------ | -------------------------------------------------- | ---- | -------------- |
 | arc   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | 包含要绘制的圆弧的椭圆的矩形边界。 |
-| startAngle      | number | 是   | 弧的起始角度，单位为度，该参数为浮点数。0度时起始点位于椭圆的右端点，正数时以顺时针方向放置起始点，负数时以逆时针方向放置起始点。 |
-| sweepAngle      | number | 是   | 弧的扫描角度，单位为度，该参数为浮点数。为正数时顺时针扫描，为负数时逆时针扫描。它的有效范围在-360度到360度之间，当绝对值大于360度时，该方法绘制的是一个椭圆。 |
+| startAngle      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 弧的起始角度，单位为度，该参数为浮点数。0度时起始点位于椭圆的右端点，正数时以顺时针方向放置起始点，负数时以逆时针方向放置起始点。 |
+| sweepAngle      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 弧的扫描角度，单位为度，该参数为浮点数。为正数时顺时针扫描，为负数时逆时针扫描。它的有效范围在-360度到360度之间，当绝对值大于360度时，该方法绘制的是一个椭圆。 |
 
 **错误码：**
 
@@ -1124,6 +1780,7 @@ drawArc(arc: common2D.Rect, startAngle: number, sweepAngle: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1143,20 +1800,46 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+    pen.setColor(color);
+    canvas.attachPen(pen);
+    const rect: common2D.Rect = {left:100.0, top:50.0, right:400.0, bottom:200.0};
+    canvas.drawArc(rect, 90.0, 180.0);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawPoint
 
-drawPoint(x: number, y: number): void
+ArkTS-Dyn: drawPoint(x: number, y: number): void
+
+ArkTS-Sta: drawPoint(x: double, y: double): void
 
 绘制一个点。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                |
 | ------ | ------ | ---- | ------------------- |
-| x      | number | 是   | 点的x轴坐标，该参数为浮点数。 |
-| y      | number | 是   | 点的y轴坐标，该参数为浮点数。 |
+| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 点的x轴坐标，该参数为浮点数。 |
+| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 点的y轴坐标，该参数为浮点数。 |
 
 **错误码：**
 
@@ -1168,6 +1851,7 @@ drawPoint(x: number, y: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -1185,6 +1869,24 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5.0);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawPoint(10.0, 10.0);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawPoints<sup>12+</sup>
 
 drawPoints(points: Array\<common2D.Point>, mode?: PointMode): void
@@ -1193,12 +1895,16 @@ drawPoints(points: Array\<common2D.Point>, mode?: PointMode): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                       | 必填   | 说明        |
 | ---- | ---------------------------------------- | ---- | --------- |
 | points  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | 是    | 要绘制的点的数组。长度不能为0。   |
-| mode | [PointMode](arkts-apis-graphics-drawing-e.md#pointmode12)                  | 否    | 绘制数组中的点的方式，默认为drawing.PointMode.POINTS。 |
+| mode | [PointMode](arkts-apis-graphics-drawing-e.md#pointmode12)                  | 否    | ArkTS-Dyn: 绘制数组中的点的方式。当mode传入undefined时，该方法将抛错误码。不传该参数时，默认为drawing.PointMode.POINTS。<br/>ArkTS-Sta: 绘制数组中的点的方式。当不传该参数，或者mode传入undefined时，默认为drawing.PointMode.POINTS。 |
 
 **错误码：**
 
@@ -1210,6 +1916,7 @@ drawPoints(points: Array\<common2D.Point>, mode?: PointMode): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1228,6 +1935,25 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(30.0);
+    const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+    pen.setColor(color);
+    canvas.attachPen(pen);
+    canvas.drawPoints([{x: 100.0, y: 200.0}, {x: 150.0, y: 230.0}, {x: 200.0, y: 300.0}], drawing.PointMode.POINTS);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawPath
 
 drawPath(path: Path): void
@@ -1235,6 +1961,10 @@ drawPath(path: Path): void
 绘制一个自定义路径，该路径包含了一组路径轮廓，每个路径轮廓可以是开放的或封闭的。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1252,6 +1982,7 @@ drawPath(path: Path): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -1273,22 +2004,50 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    let path = new drawing.Path();
+    path.moveTo(10.0,10.0);
+    path.cubicTo(10.0, 10.0, 10.0, 10.0, 15.0, 15.0);
+    path.close();
+    canvas.attachPen(pen);
+    canvas.drawPath(path);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawLine
 
-drawLine(x0: number, y0: number, x1: number, y1: number): void
+ArkTS-Dyn: drawLine(x0: number, y0: number, x1: number, y1: number): void
+
+ArkTS-Sta: drawLine(x0: double, y0: double, x1: double, y1: double): void
 
 画一条直线段，从指定的起点到终点。如果直线段的起点和终点是同一个点，无法绘制。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ------ | ------ | ---- | ----------------------- |
-| x0     | number | 是   | 线段起点的X坐标，该参数为浮点数。 |
-| y0     | number | 是   | 线段起点的Y坐标，该参数为浮点数。 |
-| x1     | number | 是   | 线段终点的X坐标，该参数为浮点数。 |
-| y1     | number | 是   | 线段终点的Y坐标，该参数为浮点数。 |
+| x0     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 线段起点的X坐标，该参数为浮点数。 |
+| y0     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 线段起点的Y坐标，该参数为浮点数。 |
+| x1     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 线段终点的X坐标，该参数为浮点数。 |
+| y1     | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 线段终点的Y坐标，该参数为浮点数。 |
 
 **错误码：**
 
@@ -1300,6 +2059,7 @@ drawLine(x0: number, y0: number, x1: number, y1: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -1317,23 +2077,126 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5.0);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawLine(0.0, 0.0, 20.0, 20.0);
+    canvas.detachPen();
+  }
+}
+```
+
+## drawGlyphs
+
+ArkTS-Dyn: drawGlyphs(glyphIds: Array\<number\>, glyphIdOffset: number, positions: Array\<common2D.Point\>, positionOffset: number, glyphCount: number, font: Font): void
+
+ArkTS-Sta: drawGlyphs(glyphIds: Array\<int\>, glyphIdOffset: int, positions: Array\<common2D.Point\>, positionOffset: int, glyphCount: int, font: Font): void
+
+绘制具有指定字体的字形数组。如果字形计数小于或等于0，则不绘制任何内容。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数**
+
+| 参数名          | 类型                                     | 必填 | 说明                                              |
+| ------         | -------------------                      | ---- | -----------                                      |
+| glyphIds       | ArkTS-Dyn: Array\<number\><br/>ArkTS-Sta: Array\<int\>               | 是   | 字形ID的数组。数组成员取值限定为整数，输入浮点数则仅保留整数部分。|
+| glyphIdOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数，输入浮点数则仅保留整数部分。<br>如果glyphCount为n，跳过长度为m，则有效glyphIds数组范围为[glyphIds[m], glyphIds[m+n])的部分。<br>如果glyphIds数组长度小于“glyphIdOffset + glyphCount”则抛出错误码25900001。<br>如果glyphIdOffset小于0则抛出错误码25900001。|
+| positions      | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)\> | 是   | 位置数组。|
+| positionOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数，输入浮点数则仅保留整数部分。<br>如果glyphCount为n，跳过长度为m，则有效positions数组范围为[positions[m], positions[m+n])的部分。<br>如果positions数组长度小于“positionOffset + glyphCount”则抛出错误码25900001。<br>如果positionOffset小于0则抛出错误码25900001。|
+| glyphCount     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 要绘制的字形的数目。数目小于或等于0，则不绘制任何内容，并抛出错误码25900001。<br>如果glyphCount与glyphIdOffset的和，或者glyphCount与positionOffset的和大于0x7FFFFFFF，则该计算结果按0x7FFFFFFF处理。|
+| font           | [Font](arkts-apis-graphics-drawing-Font.md)                     | 是   | 用于绘图的字体。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](../apis-arkgraphics2d/errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    canvas.attachBrush(brush);
+    let glyphsArray : Array<number> = [100, 200, 300];
+    let positionArray : Array<common2D.Point> = [{ x: 100.0, y: 100.0 }, { x: 200.0, y: 100.0 }, { x: 150.0, y: 200.0 }];
+    canvas.drawGlyphs(glyphsArray, 0, positionArray, 0, 3, font);
+    canvas.detachBrush();
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    canvas.attachBrush(brush);
+    let glyphsArray : Array<int> = [100, 200, 300];
+    let positionArray : Array<common2D.Point> = [{ x: 100.0, y: 100.0 }, { x: 200.0, y: 100.0 }, { x: 150.0, y: 200.0 }];
+    canvas.drawGlyphs(glyphsArray, 0, positionArray, 0, 3, font);
+    canvas.detachBrush();
+  }
+}
+```
+
 ## drawTextBlob
 
-drawTextBlob(blob: TextBlob, x: number, y: number): void
+ArkTS-Dyn: drawTextBlob(blob: TextBlob, x: number, y: number): void
+
+ArkTS-Sta: drawTextBlob(blob: TextBlob, x: double, y: double): void
 
 绘制一段文字。若构造blob的字体不支持待绘制字符，则该部分字符无法绘制。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-| 参数名 | 类型                  | 必填 | 说明                                       |
-| ------ | --------------------- | ---- | ------------------------------------------ |
-| blob   | [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) | 是   | TextBlob对象。                             |
-| x      | number                | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。 |
-| y      | number                | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。 |
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| blob   | [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) | 是   | TextBlob对象。                                               |
+| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double             | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。 |
+| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double             | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。 |
 
-![zh-ch_image_Text_Blob.png](figures/zh-ch_image_Text_Blob.png)
+![Text-Blob.png](figures/Text-Blob.png)
 
 **错误码：**
 
@@ -1345,6 +2208,7 @@ drawTextBlob(blob: TextBlob, x: number, y: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -1364,13 +2228,42 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20.0);
+    const textBlob = drawing.TextBlob.makeFromString("Hello, drawing", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+    if (textBlob == undefined) {
+      return;
+    }
+    canvas.attachBrush(brush);
+    canvas.drawTextBlob(textBlob, 20.0, 20.0);
+    canvas.detachBrush();
+  }
+}
+```
+
 ## drawSingleCharacter<sup>12+</sup>
 
-drawSingleCharacter(text: string, font: Font, x: number, y: number): void
+ArkTS-Dyn: drawSingleCharacter(text: string, font: Font, x: number, y: number): void
+
+ArkTS-Sta: drawSingleCharacter(text: string, font: Font, x: double, y: double): void
 
 绘制单个字符。当前字型中的字体不支持待绘制字符时，退化到使用系统字体绘制字符。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -1378,10 +2271,10 @@ drawSingleCharacter(text: string, font: Font, x: number, y: number): void
 | ------ | ------------------- | ---- | ----------- |
 | text   | string | 是   | 待绘制的单个字符，字符串的长度必须为1。  |
 | font   | [Font](arkts-apis-graphics-drawing-Font.md) | 是   | 字型对象。  |
-| x      | number | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。 |
-| y      | number | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。 |
+| x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。 |
+| y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。 |
 
-![zh-ch_image_Text_Blob.png](figures/zh-ch_image_Text_Blob.png)
+![Text-Blob.png](figures/Text-Blob.png)
 
 **错误码：**
 
@@ -1393,6 +2286,7 @@ drawSingleCharacter(text: string, font: Font, x: number, y: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -1412,13 +2306,39 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    canvas.attachBrush(brush);
+    canvas.drawSingleCharacter("你", font, 100.0, 100.0);
+    canvas.drawSingleCharacter("好", font, 120.0, 100.0);
+    canvas.detachBrush();
+  }
+}
+```
+
 ## drawSingleCharacterWithFeatures<sup>20+</sup>
 
-drawSingleCharacterWithFeatures(text: string, font: Font, x: number, y: number, features: Array\<FontFeature\>): void
+ArkTS-Dyn: drawSingleCharacterWithFeatures(text: string, font: Font, x: number, y: number, features: Array\<FontFeature\>): void
+
+ArkTS-Sta: drawSingleCharacterWithFeatures(text: string, font: Font, x: double, y: double, features: Array\<FontFeature\>): void
 
 绘制单个字符，字符带有字体特征。当前字型中的字体不支持待绘制字符时，退化到使用系统字体绘制字符。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数**
 
@@ -1426,8 +2346,8 @@ drawSingleCharacterWithFeatures(text: string, font: Font, x: number, y: number, 
 | ------ | ------------------- | ---- | ----------- |
 | text | string | 是 | 待绘制的单个字符，字符串长度必须为1。 |
 | font   | [Font](arkts-apis-graphics-drawing-Font.md) | 是   | 字型对象。  |
-| x | number | 是 | 所绘制字符基线左端点的横坐标，该参数为浮点数。 |
-| y | number | 是 | 所绘制字符基线左端点的纵坐标，该参数为浮点数。 |
+| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 所绘制字符基线左端点的横坐标，该参数为浮点数。 |
+| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 所绘制字符基线左端点的纵坐标，该参数为浮点数。 |
 | features | Array\<[FontFeature](arkts-apis-graphics-drawing-i.md#fontfeature20)\> | 是 | 字体特征对象数组。参数为空数组时使用TTF(TrueType Font)文件中预设的字体特征。|
 
 **错误码：**
@@ -1440,6 +2360,7 @@ drawSingleCharacterWithFeatures(text: string, font: Font, x: number, y: number, 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -1454,8 +2375,30 @@ class DrawingRenderNode extends RenderNode {
     let fontFeatures : Array<drawing.FontFeature> = [];
     fontFeatures.push({name: 'calt', value: 0});
     canvas.attachBrush(brush);
-    canvas.drawSingleCharacterWithFeatures("你", font, 100, 100, fontFeatures);
-    canvas.drawSingleCharacterWithFeatures("好", font, 180, 100, fontFeatures);
+    canvas.drawSingleCharacterWithFeatures("你", font, 100.0, 100.0, fontFeatures);
+    canvas.drawSingleCharacterWithFeatures("好", font, 180.0, 100.0, fontFeatures);
+    canvas.detachBrush();
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    let fontFeatures : Array<drawing.FontFeature> = [];
+    fontFeatures.push({name: 'calt', value: 0});
+    canvas.attachBrush(brush);
+    canvas.drawSingleCharacterWithFeatures("你", font, 100.0, 100.0, fontFeatures);
+    canvas.drawSingleCharacterWithFeatures("好", font, 180.0, 100.0, fontFeatures);
     canvas.detachBrush();
   }
 }
@@ -1468,6 +2411,10 @@ drawRegion(region: Region): void
 绘制一个区域。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
@@ -1485,6 +2432,7 @@ drawRegion(region: Region): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -1495,6 +2443,26 @@ class DrawingRenderNode extends RenderNode {
     const pen = new drawing.Pen();
     let region = new drawing.Region();
     pen.setStrokeWidth(10);
+    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    canvas.attachPen(pen);
+    region.setRect(100, 100, 400, 400);
+    canvas.drawRegion(region);
+    canvas.detachPen();
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    let region = new drawing.Region();
+    pen.setStrokeWidth(10.0);
     pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
     canvas.attachPen(pen);
     region.setRect(100, 100, 400, 400);
@@ -1516,6 +2484,10 @@ attachPen(pen: Pen): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型        | 必填 | 说明       |
@@ -1532,6 +2504,7 @@ attachPen(pen: Pen): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -1544,6 +2517,24 @@ class DrawingRenderNode extends RenderNode {
     pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
     canvas.attachPen(pen);
     canvas.drawRect({ left : 0, right : 10, top : 0, bottom : 10 });
+    canvas.detachPen();
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawRect({ left : 0.0, right : 10.0, top : 0.0, bottom : 10.0 });
     canvas.detachPen();
   }
 }
@@ -1561,6 +2552,10 @@ attachBrush(brush: Brush): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型            | 必填 | 说明       |
@@ -1577,6 +2572,7 @@ attachBrush(brush: Brush): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -1593,6 +2589,23 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachBrush(brush);
+    canvas.drawRect({ left : 0.0, right : 10.0, top : 0.0, bottom : 10.0 });
+    canvas.detachBrush();
+  }
+}
+```
+
 ## detachPen
 
 detachPen(): void
@@ -1601,8 +2614,13 @@ detachPen(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -1620,6 +2638,24 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawRect({ left : 0.0, right : 10.0, top : 0.0, bottom : 10.0 });
+    canvas.detachPen();
+  }
+}
+```
+
 ## detachBrush
 
 detachBrush(): void
@@ -1628,8 +2664,13 @@ detachBrush(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -1646,6 +2687,23 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachBrush(brush);
+    canvas.drawRect({ left : 0.0, right : 10.0, top : 0.0, bottom : 10.0 });
+    canvas.detachBrush();
+  }
+}
+```
+
 ## clipPath<sup>12+</sup>
 
 clipPath(path: Path, clipOp?: ClipOp, doAntiAlias?: boolean): void
@@ -1654,13 +2712,17 @@ clipPath(path: Path, clipOp?: ClipOp, doAntiAlias?: boolean): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型               | 必填 | 说明                                |
 | ------------ | ----------------- | ---- | ------------------------------------|
 | path         | [Path](arkts-apis-graphics-drawing-Path.md)     | 是   | 路径对象。                                                 |
-| clipOp       | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12) | 否   | 裁剪方式。默认为INTERSECT。                                     |
-| doAntiAlias  | boolean           | 否   | 表示是否使能抗锯齿绘制。true表示使能，false表示不使能。默认为false。 |
+| clipOp       | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12) | 否   | ArkTS-Dyn: 裁剪方式。当clipOp传入undefined时，该方法将抛错误码。不传该参数时，默认为INTERSECT。<br/>ArkTS-Sta: 裁剪方式。当不传该参数，或者clipOp传入undefined时，默认为INTERSECT。 |
+| doAntiAlias  | boolean           | 否   | ArkTS-Dyn: 表示是否使能抗锯齿绘制。true表示使能，false表示不使能。当doAntiAlias传入undefined时，该方法将抛错误码。不传该参数时，默认为false。<br/>ArkTS-Sta: 表示是否使能抗锯齿绘制。true表示使能，false表示不使能。当不传该参数，或者doAntiAlias传入undefined时，默认为false。 |
 
 **错误码：**
 
@@ -1672,6 +2734,7 @@ clipPath(path: Path, clipOp?: ClipOp, doAntiAlias?: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1689,6 +2752,24 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let path = new drawing.Path();
+    path.moveTo(10.0, 10.0);
+    path.cubicTo(100.0, 100.0, 80.0, 150.0, 300.0, 150.0);
+    path.close();
+    canvas.clipPath(path, drawing.ClipOp.INTERSECT, true);
+    canvas.clear({alpha: 255, red: 255, green: 0, blue: 0});
+  }
+}
+```
+
 ## clipRect<sup>12+</sup>
 
 clipRect(rect: common2D.Rect, clipOp?: ClipOp, doAntiAlias?: boolean): void
@@ -1697,13 +2778,17 @@ clipRect(rect: common2D.Rect, clipOp?: ClipOp, doAntiAlias?: boolean): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型                                       | 必填   | 说明                  |
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | rect        | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是    | 需要裁剪的矩形区域。      |
-| clipOp      | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12)                  | 否    | 裁剪方式。默认为INTERSECT。     |
-| doAntiAlias | boolean           | 否   | 表示是否使能抗锯齿绘制。true表示使能，false表示不使能。默认为false。 |
+| clipOp      | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12)                  | 否    | ArkTS-Dyn: 裁剪方式。当clipOp传入undefined时，该方法将抛错误码。不传该参数时，默认为INTERSECT。<br/>ArkTS-Sta: 裁剪方式。当不传该参数，或者clipOp传入undefined时，默认为INTERSECT。     |
+| doAntiAlias | boolean           | 否   | ArkTS-Dyn: 表示是否使能抗锯齿绘制。true表示使能，false表示不使能。当doAntiAlias传入undefined时，该方法将抛错误码。不传该参数时，默认为false。<br/>ArkTS-Sta: 表示是否使能抗锯齿绘制。true表示使能，false表示不使能。当不传该参数，或者doAntiAlias传入undefined时，默认为false。 |
 
 **错误码：**
 
@@ -1715,6 +2800,7 @@ clipRect(rect: common2D.Rect, clipOp?: ClipOp, doAntiAlias?: boolean): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1728,22 +2814,43 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    canvas.clipRect({left : 10.0, right : 500.0, top : 300.0, bottom : 900.0}, drawing.ClipOp.DIFFERENCE, true);
+    canvas.clear({alpha: 255, red: 255, green: 0, blue: 0});
+  }
+}
+```
+
 ## save<sup>12+</sup>
 
-save(): number
+ArkTS-Dyn: save(): number
+
+ArkTS-Sta: save(): int
 
 保存当前画布状态（画布矩阵和可绘制区域）到栈顶。需要与恢复接口[restore](#restore12)配合使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                |
 | ------ | ------------------ |
-| number | 画布状态个数，该参数为正整数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 画布状态个数，该参数为正整数。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1758,26 +2865,47 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let rect: common2D.Rect = {left: 10.0, right: 200.0, top: 100.0, bottom: 300.0};
+    canvas.drawRect(rect);
+    let saveCount = canvas.save();
+  }
+}
+```
+
 ## saveLayer<sup>12+</sup>
 
-saveLayer(rect?: common2D.Rect | null, brush?: Brush | null): number
+ArkTS-Dyn: saveLayer(rect?: common2D.Rect | null, brush?: Brush | null): number
+
+ArkTS-Sta: saveLayer(rect?: common2D.Rect | null, brush?: Brush | null): long
 
 保存当前画布的矩阵和裁剪区域，并为后续绘制分配位图。调用恢复接口[restore](#restore12)将会舍弃对矩阵和裁剪区域做的更改，并绘制位图。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明         |
 | ---- | ------ | ---- | ----------------- |
-| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect) \| null | 否   | 矩形对象，用于限制图层大小，默认为当前画布大小。 |
-| brush  | [Brush](arkts-apis-graphics-drawing-Brush.md) \| null | 否   | 画刷对象，绘制位图时会应用画刷对象的透明度，颜色滤波器效果和混合模式，默认不设置额外效果。 |
+| rect   | [common2D.Rect](js-apis-graphics-common2D.md#rect)\|null | 否   | ArkTS-Dyn: 矩形对象，用于限制图层大小。当rect传入undefined时，该方法将抛错误码。不传该参数时，默认为当前画布大小。<br/>ArkTS-Sta: 矩形对象，用于限制图层大小。当不传该参数，或者rect传入undefined时，默认为当前画布大小。 |
+| brush  | [Brush](arkts-apis-graphics-drawing-Brush.md)\|null | 否   | ArkTS-Dyn: 画刷对象，绘制位图时会应用画刷对象的透明度，颜色滤波器效果和混合模式。当brush传入undefined时，该方法将抛错误码。不传该参数时，默认不设置额外效果。<br/>ArkTS-Sta: 画刷对象，绘制位图时会应用画刷对象的透明度，颜色滤波器效果和混合模式。当不传该参数，或者brush传入undefined时，默认不设置额外效果。 |
 
 **返回值：**
 
 | 类型   | 说明                |
 | ------ | ------------------ |
-| number | 返回调用前保存的画布状态数，该参数为正整数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 返回调用前保存的画布状态数，该参数为正整数。 |
 
 **错误码：**
 
@@ -1789,6 +2917,7 @@ saveLayer(rect?: common2D.Rect | null, brush?: Brush | null): number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1820,20 +2949,58 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    canvas.saveLayer(null, null);
+    const brushRect = new drawing.Brush();
+    const colorRect: common2D.Color = {alpha: 255, red: 255, green: 255, blue: 0};
+    brushRect.setColor(colorRect);
+    canvas.attachBrush(brushRect);
+    const rect: common2D.Rect = {left:100.0, top:100.0, right:500.0, bottom:500.0};
+    canvas.drawRect(rect);
+
+    const brush = new drawing.Brush();
+    brush.setBlendMode(drawing.BlendMode.DST_OUT);
+    canvas.saveLayer(rect, brush);
+
+    const brushCircle = new drawing.Brush();
+    const colorCircle: common2D.Color = {alpha: 255, red: 0, green: 0, blue: 255};
+    brushCircle.setColor(colorCircle);
+    canvas.attachBrush(brushCircle);
+    canvas.drawCircle(500.0, 500.0, 200.0);
+    canvas.restore();
+    canvas.restore();
+    canvas.detachBrush();
+  }
+}
+```
+
 ## scale<sup>12+</sup>
 
-scale(sx: number, sy: number): void
+ArkTS-Dyn: scale(sx: number, sy: number): void
+
+ArkTS-Sta: scale(sx: double, sy: double): void
 
 在当前画布矩阵（默认是单位矩阵）的基础上再叠加一个缩放矩阵，后续绘制操作和裁剪操作的形状和位置都会自动叠加一个缩放效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明         |
 | ---- | ------ | ---- | ----------------- |
-| sx   | number | 是   | x轴方向的缩放比例，该参数为浮点数。 |
-| sy   | number | 是   | y轴方向的缩放比例，该参数为浮点数。 |
+| sx   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴方向的缩放比例，该参数为浮点数。 |
+| sy   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴方向的缩放比例，该参数为浮点数。 |
 
 **错误码：**
 
@@ -1845,6 +3012,7 @@ scale(sx: number, sy: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1863,20 +3031,45 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5.0);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.scale(2.0, 0.5);
+    canvas.drawRect({left : 10.0, right : 500.0, top : 300.0, bottom : 900.0});
+    canvas.detachPen();
+  }
+}
+```
+
 ## skew<sup>12+</sup>
 
-skew(sx: number, sy: number) : void
+ArkTS-Dyn: skew(sx: number, sy: number) : void
+
+ArkTS-Sta: skew(sx: double, sy: double) : void
 
 在当前画布矩阵（默认是单位矩阵）的基础上再叠加一个倾斜矩阵，后续绘制操作和裁剪操作的形状和位置都会自动叠加一个倾斜效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明         |
 | ---- | ------ | ---- | ----------------- |
-| sx   | number | 是   | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。    |
-| sy   | number | 是   | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。    |
+| sx   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴上的倾斜量，该参数为浮点数。正值会使绘制沿y轴增量方向向右倾斜；负值会使绘制沿y轴增量方向向左倾斜。    |
+| sy   | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴上的倾斜量，该参数为浮点数。正值会使绘制沿x轴增量方向向下倾斜；负值会使绘制沿x轴增量方向向上倾斜。    |
 
 **错误码：**
 
@@ -1888,6 +3081,7 @@ skew(sx: number, sy: number) : void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1906,21 +3100,46 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.skew(0.1, 0.1);
+    canvas.drawRect({left : 10.0, right : 500.0, top : 300.0, bottom : 900.0});
+    canvas.detachPen();
+  }
+}
+```
+
 ## rotate<sup>12+</sup>
 
-rotate(degrees: number, sx: number, sy: number) : void
+ArkTS-Dyn: rotate(degrees: number, sx: number, sy: number) : void
+
+ArkTS-Sta: rotate(degrees: double, sx: double, sy: double) : void
 
 在当前画布矩阵（默认是单位矩阵）的基础上再叠加一个旋转矩阵，后续绘制操作和裁剪操作的形状和位置都会自动叠加一个旋转效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明         |
 | ---- | ------ | ------ | ------------------------ |
-| degrees       | number | 是    | 旋转角度，单位为度，该参数为浮点数，正数为顺时针旋转，负数为逆时针旋转。  |
-| sx            | number | 是    | 旋转中心的横坐标，该参数为浮点数。 |
-| sy            | number | 是    | 旋转中心的纵坐标，该参数为浮点数。 |
+| degrees       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 旋转角度，单位为度，该参数为浮点数，正数为顺时针旋转，负数为逆时针旋转。  |
+| sx            | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 旋转中心的横坐标，该参数为浮点数。 |
+| sy            | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 旋转中心的纵坐标，该参数为浮点数。 |
 
 **错误码：**
 
@@ -1932,6 +3151,7 @@ rotate(degrees: number, sx: number, sy: number) : void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1950,20 +3170,45 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5.0);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.rotate(30.0, 100.0, 100.0);
+    canvas.drawRect({left : 10.0, right : 500.0, top : 300.0, bottom : 900.0});
+    canvas.detachPen();
+  }
+}
+```
+
 ## translate<sup>12+</sup>
 
-translate(dx: number, dy: number): void
+ArkTS-Dyn: translate(dx: number, dy: number): void
+
+ArkTS-Sta: translate(dx: double, dy: double): void
 
 在当前画布矩阵（默认是单位矩阵）的基础上再叠加一个平移矩阵，后续绘制操作和裁剪操作的形状和位置都会自动叠加一个平移效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                |
 | ----- | ------ | ---- | ------------------- |
-| dx    | number | 是   | x轴方向的移动距离，该参数为浮点数。   |
-| dy    | number | 是   | y轴方向的移动距离，该参数为浮点数。   |
+| dx    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | x轴方向的移动距离，该参数为浮点数。   |
+| dy    | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | y轴方向的移动距离，该参数为浮点数。   |
 
 **错误码：**
 
@@ -1975,6 +3220,7 @@ translate(dx: number, dy: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1993,22 +3239,48 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.translate(10.0, 10.0);
+    canvas.drawRect({left : 10.0, right : 500.0, top : 300.0, bottom : 900.0});
+    canvas.detachPen();
+  }
+}
+```
+
 ## getSaveCount<sup>12+</sup>
 
-getSaveCount(): number
+ArkTS-Dyn: getSaveCount(): number
+
+ArkTS-Sta: getSaveCount(): int
 
 获取栈中保存的画布状态（画布矩阵和裁剪区域）的数量。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明                                 |
 | ------ | ------------------------------------ |
-| number | 已保存的画布状态的数量，该参数为正整数。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 已保存的画布状态的数量，该参数为正整数。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -2029,19 +3301,46 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawRect({left: 10.0, right: 200.0, top: 100.0, bottom: 300.0});
+    canvas.save();
+    canvas.drawRect({left : 10.0, right : 50.0, top : 300.0, bottom : 900.0});
+    canvas.getSaveCount();
+    canvas.detachPen();
+  }
+}
+```
+
 ## restoreToCount<sup>12+</sup>
 
-restoreToCount(count: number): void
+ArkTS-Dyn: restoreToCount(count: number): void
+
+ArkTS-Sta: restoreToCount(count: int): void
 
 恢复到指定数量的画布状态（画布矩阵和裁剪区域）。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明                    |
 | ----- | ------ | ---- | ----------------------------- |
-| count | number | 是   | 要恢复的画布状态深度，该参数为整数。小于等于1时，恢复为初始状态；大于已保存的画布状态数量时，不执行任何操作。 |
+| count | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 要恢复的画布状态深度，该参数为整数。小于等于1时，恢复为初始状态；大于已保存的画布状态数量时，不执行任何操作。 |
 
 **错误码：**
 
@@ -2053,6 +3352,7 @@ restoreToCount(count: number): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -2077,6 +3377,31 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.drawRect({left: 10.0, right: 200.0, top: 100.0, bottom: 300.0});
+    canvas.save();
+    canvas.drawRect({left: 10.0, right: 200.0, top: 100.0, bottom: 500.0});
+    canvas.save();
+    canvas.drawRect({left: 100.0, right: 300.0, top: 100.0, bottom: 500.0});
+    canvas.save();
+    canvas.restoreToCount(2);
+    canvas.drawRect({left : 10.0, right : 500.0, top : 300.0, bottom : 900.0});
+    canvas.detachPen();
+  }
+}
+```
+
 ## restore<sup>12+</sup>
 
 restore(): void
@@ -2085,8 +3410,13 @@ restore(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -2104,6 +3434,24 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5.0);
+    pen.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    canvas.attachPen(pen);
+    canvas.restore();
+    canvas.detachPen();
+  }
+}
+```
+
 ## concatMatrix<sup>12+</sup>
 
 concatMatrix(matrix: Matrix): void
@@ -2111,6 +3459,10 @@ concatMatrix(matrix: Matrix): void
 画布现有矩阵左乘传入矩阵，不影响之前的绘制操作，后续绘制操作和裁剪操作的形状和位置都会受到该矩阵的影响。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2128,6 +3480,7 @@ concatMatrix(matrix: Matrix): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -2143,6 +3496,22 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let matrix = new drawing.Matrix();
+    matrix.setMatrix([5.0, 0.0, 0.0, 0.0, 1.0, 2.0, 0.0, 0.0, 1.0]);
+    canvas.concatMatrix(matrix);
+    canvas.drawRect({left: 10.0, right: 200.0, top: 100.0, bottom: 500.0});
+  }
+}
+```
+
 ## setMatrix<sup>12+</sup>
 
 setMatrix(matrix: Matrix): void
@@ -2150,6 +3519,10 @@ setMatrix(matrix: Matrix): void
 设置画布的矩阵，后续绘制操作和裁剪操作的形状和位置都会受到该矩阵的影响。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2167,6 +3540,7 @@ setMatrix(matrix: Matrix): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -2182,6 +3556,22 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let matrix = new drawing.Matrix()
+    matrix.setMatrix([5.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0]);
+    canvas.setMatrix(matrix);
+    canvas.drawRect({left: 10.0, right: 200.0, top: 100.0, bottom: 500.0});
+  }
+}
+```
+
 ## isClipEmpty<sup>12+</sup>
 
 isClipEmpty(): boolean
@@ -2189,6 +3579,10 @@ isClipEmpty(): boolean
 判断裁剪后的可绘制区域是否为空。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2198,8 +3592,26 @@ isClipEmpty(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    if (canvas.isClipEmpty()) {
+      console.info("canvas.isClipEmpty() returned true");
+    } else {
+      console.info("canvas.isClipEmpty() returned false");
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -2222,12 +3634,16 @@ clipRegion(region: Region, clipOp?: ClipOp): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | region | [Region](arkts-apis-graphics-drawing-Region.md) | 是   | 区域对象，表示裁剪范围。 |
-| clipOp | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12)   | 否   | 裁剪方式，默认为INTERSECT。 |
+| clipOp | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12)   | 否   | ArkTS-Dyn: 裁剪方式。当clipOp传入undefined时，该方法将抛错误码。不传该参数时，默认为INTERSECT。<br/>ArkTS-Sta: 裁剪方式。当不传该参数，或者clipOp传入undefined时，默认为INTERSECT。 |
 
 **错误码：**
 
@@ -2239,8 +3655,26 @@ clipRegion(region: Region, clipOp?: ClipOp): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let region : drawing.Region = new drawing.Region();
+    region.setRect(0, 0, 500, 500);
+    canvas.clipRegion(region);
+    let color: common2D.Color = {alpha: 255, red: 255, green: 0, blue: 0};
+    canvas.clear(color);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -2263,13 +3697,17 @@ clipRoundRect(roundRect: RoundRect, clipOp?: ClipOp, doAntiAlias?: boolean): voi
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | roundRect | [RoundRect](arkts-apis-graphics-drawing-RoundRect.md) | 是   | 圆角矩形对象，表示裁剪范围。 |
-| clipOp | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12)   | 否   | 裁剪方式，默认为INTERSECT。 |
-| doAntiAlias | boolean | 否   | 表示是否使能抗锯齿。true表示使能，false表示不使能。默认为false。 |
+| clipOp | [ClipOp](arkts-apis-graphics-drawing-e.md#clipop12)   | 否   | ArkTS-Dyn: 裁剪方式。当clipOp传入undefined时，该方法将抛错误码。不传该参数时，默认为INTERSECT。<br/>ArkTS-Sta: 裁剪方式。当不传该参数，或者clipOp传入undefined时，默认为INTERSECT。 |
+| doAntiAlias | boolean | 否   | ArkTS-Dyn: 表示是否使能抗锯齿。true表示使能，false表示不使能。当doAntiAlias传入undefined时，该方法将抛错误码。不传该参数时，默认为false。<br/>ArkTS-Sta: 表示是否使能抗锯齿。true表示使能，false表示不使能。当不传该参数，或者doAntiAlias传入undefined时，默认为false。 |
 
 **错误码：**
 
@@ -2281,6 +3719,7 @@ clipRoundRect(roundRect: RoundRect, clipOp?: ClipOp, doAntiAlias?: boolean): voi
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -2290,6 +3729,23 @@ class DrawingRenderNode extends RenderNode {
     const canvas = context.canvas;
     let rect: common2D.Rect = { left: 10, top: 100, right: 200, bottom: 300 };
     let roundRect = new drawing.RoundRect(rect, 10, 10);
+    canvas.clipRoundRect(roundRect);
+    let color: common2D.Color = {alpha: 255, red: 255, green: 0, blue: 0};
+    canvas.clear(color);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let rect: common2D.Rect = { left: 10.0, top: 100.0, right: 200.0, bottom: 300.0 };
+    let roundRect = new drawing.RoundRect(rect, 10.0, 10.0);
     canvas.clipRoundRect(roundRect);
     let color: common2D.Color = {alpha: 255, red: 255, green: 0, blue: 0};
     canvas.clear(color);
@@ -2307,10 +3763,13 @@ resetClip(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -2325,6 +3784,77 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let rect: common2D.Rect = { left: 10, top: 100, right: 200, bottom: 300 };
+    canvas.clipRect(rect);
+    canvas.resetClip();
+  }
+}
+```
+
+## isOpaque
+
+isOpaque(): boolean
+
+检查当前绘制到设备的图层是否不透明。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型                  | 说明           |
+| --------------------- | -------------- |
+| boolean | 返回当前绘制到设备的图层是否不透明的结果，true表示不透明，false表示透明。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    if (canvas.isOpaque()) {
+      console.info("canvas.isOpaque() returned true");
+    } else {
+      console.info("canvas.isOpaque() returned false");
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    if (canvas.isOpaque()) {
+      console.info("canvas.isOpaque() returned true");
+    } else {
+      console.info("canvas.isOpaque() returned false");
+    }
+  }
+}
+```
+
 ## resetMatrix<sup>12+</sup>
 
 resetMatrix(): void
@@ -2333,8 +3863,13 @@ resetMatrix(): void
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -2348,6 +3883,20 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    canvas.scale(4.0, 6.0);
+    canvas.resetMatrix();
+  }
+}
+```
+
 ## quickRejectPath<sup>18+</sup>
 
 quickRejectPath(path: Path): boolean
@@ -2355,6 +3904,10 @@ quickRejectPath(path: Path): boolean
 判断路径与画布区域是否不相交。画布区域包含边界。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2370,6 +3923,7 @@ quickRejectPath(path: Path): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -2390,6 +3944,27 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let path = new drawing.Path();
+    path.moveTo(10.0, 10.0);
+    path.cubicTo(10.0, 10.0, 10.0, 10.0, 15.0, 15.0);
+    path.close();
+    if (canvas.quickRejectPath(path)) {
+      console.info("canvas and path do not intersect.");
+    } else {
+      console.info("canvas and path intersect.");
+    }
+  }
+}
+```
+
 ## quickRejectRect<sup>18+</sup>
 
 quickRejectRect(rect: common2D.Rect): boolean
@@ -2397,6 +3972,10 @@ quickRejectRect(rect: common2D.Rect): boolean
 判断矩形和画布区域是否不相交。画布区域包含边界。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2412,6 +3991,7 @@ quickRejectRect(rect: common2D.Rect): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -2429,25 +4009,50 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let rect: common2D.Rect = { left : 10.0, top : 20.0, right : 50.0, bottom : 30.0 };
+    if (canvas.quickRejectRect(rect)) {
+      console.info("canvas and rect do not intersect.");
+    } else {
+      console.info("canvas and rect intersect.");
+    }
+  }
+}
+```
+
 ## drawArcWithCenter<sup>18+</sup>
 
-drawArcWithCenter(arc: common2D.Rect, startAngle: number, sweepAngle: number, useCenter: boolean): void
+ArkTS-Dyn: drawArcWithCenter(arc: common2D.Rect, startAngle: number, sweepAngle: number, useCenter: boolean): void
+
+ArkTS-Sta: drawArcWithCenter(arc: common2D.Rect, startAngle: double, sweepAngle: double, useCenter: boolean): void
 
 在画布上绘制圆弧。该方法允许指定圆弧的起始角度、扫描角度以及圆弧的起点和终点是否连接圆弧的中心点。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**
 
 | 参数名 | 类型                                               | 必填 | 说明           |
 | ------ | -------------------------------------------------- | ---- | -------------- |
 | arc   | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 是   | 包含要绘制的圆弧的椭圆的矩形边界。 |
-| startAngle      | number | 是   | 弧的起始角度，单位为度，该参数为浮点数。0度时起始点位于椭圆的右端点，为正数时以顺时针方向放置起始点，为负数时以逆时针方向放置起始点。 |
-| sweepAngle      | number | 是   | 弧的扫描角度，单位为度，该参数为浮点数。为正数时顺时针扫描，为负数时逆时针扫描。扫描角度可以超过360度，将绘制一个完整的椭圆。 |
+| startAngle      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 弧的起始角度，单位为度，该参数为浮点数。0度时起始点位于椭圆的右端点，为正数时以顺时针方向放置起始点，为负数时以逆时针方向放置起始点。 |
+| sweepAngle      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 弧的扫描角度，单位为度，该参数为浮点数。为正数时顺时针扫描，为负数时逆时针扫描。扫描角度可以超过360度，将绘制一个完整的椭圆。 |
 | useCenter       | boolean | 是   | 绘制时弧形的起点和终点是否连接弧形的中心点。true表示连接，false表示不连接。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -2467,6 +4072,26 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(5);
+    const color : common2D.Color = { alpha: 255, red: 255, green: 0, blue: 0 };
+    pen.setColor(color);
+    canvas.attachPen(pen);
+    const rect: common2D.Rect = { left: 100.0, top: 50.0, right: 400.0, bottom: 200.0 };
+    canvas.drawArcWithCenter(rect, 90.0, 180.0, false);
+    canvas.detachPen();
+  }
+}
+```
+
 ## drawImageNine<sup>18+</sup>
 
 drawImageNine(pixelmap: image.PixelMap, center: common2D.Rect, dstRect: common2D.Rect, filterMode: FilterMode): void
@@ -2475,6 +4100,10 @@ drawImageNine(pixelmap: image.PixelMap, center: common2D.Rect, dstRect: common2D
 若角落的4个区域尺寸不超过目标矩形，则会在不缩放的情况下被绘制在目标矩形，反之则会按比例缩放绘制在目标矩形；如果还有剩余空间，剩下的5个区域会通过拉伸或压缩来绘制，以便能够完全覆盖目标矩形。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2495,6 +4124,7 @@ drawImageNine(pixelmap: image.PixelMap, center: common2D.Rect, dstRect: common2D
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -2548,6 +4178,60 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+import { image } from '@kit.ImageKit';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    const blockSize = 50;
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        const index = (y * width + x) * 4; // 计算当前像素的索引
+        const blockX = Math.floor(x / blockSize);
+        const blockY = Math.floor(y / blockSize);
+
+        // 通过方块坐标的奇偶性决定颜色
+        if ((blockX + blockY) % 2 === 0) {
+          // 红色方块 (R, G, B, A)
+          colorData[index] = 255;     // R
+          colorData[index + 1] = 0;   // G
+          colorData[index + 2] = 0;   // B
+        } else {
+          // 蓝色方块
+          colorData[index] = 0;       // R
+          colorData[index + 1] = 0;   // G
+          colorData[index + 2] = 255; // B
+        }
+        colorData[index + 3] = 255;   // Alpha 始终为 255（不透明）
+      }
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.RGBA_8888,
+      size: { height, width }
+    }
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    canvas.drawImage(pixelMap, 0, 0); // 原图
+    let center: common2D.Rect = { left: 20, top: 10, right: 50, bottom: 40 };
+    let dst: common2D.Rect = { left: 70, top: 0, right: 100, bottom: 30 };
+    let dst1: common2D.Rect = { left: 110, top: 0, right: 200, bottom: 90 };
+    canvas.drawImageNine(pixelMap, center, dst, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例1
+    canvas.drawImageNine(pixelMap, center, dst1, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例2
+  }
+}
+```
+
 ## drawImageLattice<sup>18+</sup>
 
 drawImageLattice(pixelmap: image.PixelMap, lattice: Lattice, dstRect: common2D.Rect, filterMode: FilterMode): void
@@ -2556,6 +4240,10 @@ drawImageLattice(pixelmap: image.PixelMap, lattice: Lattice, dstRect: common2D.R
 偶数行和列（起始计数为0）的每个交叉点都是固定的，若固定网格区域的尺寸不超过目标矩形，则会在不缩放的情况下被绘制在目标矩形，反之则会按比例缩放绘制在目标矩形；如果还有剩余空间，剩下的区域会通过拉伸或压缩来绘制，以便能够完全覆盖目标矩形。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2576,6 +4264,7 @@ drawImageLattice(pixelmap: image.PixelMap, lattice: Lattice, dstRect: common2D.R
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -2627,6 +4316,62 @@ class DrawingRenderNode extends RenderNode {
     let dst1: common2D.Rect = { left: 200, top: 0, right: 360, bottom: 160 };
     canvas.drawImageLattice(pixelMap, lattice, dst, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例1
     canvas.drawImageLattice(pixelMap, lattice, dst1, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例2
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+import { image } from '@kit.ImageKit';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    const blockSize = 50;
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        const index = (y * width + x) * 4; // 计算当前像素的索引
+        const blockX = Math.floor(x / blockSize);
+        const blockY = Math.floor(y / blockSize);
+
+        // 通过方块坐标的奇偶性决定颜色
+        if ((blockX + blockY) % 2 === 0) {
+          // 红色方块 (R, G, B, A)
+          colorData[index] = 255;     // R
+          colorData[index + 1] = 0;   // G
+          colorData[index + 2] = 0;   // B
+        } else {
+          // 蓝色方块
+          colorData[index] = 0;       // R
+          colorData[index + 1] = 0;   // G
+          colorData[index + 2] = 255; // B
+        }
+        colorData[index + 3] = 255;   // Alpha 始终为 255（不透明）
+      }
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.RGBA_8888,
+      size: { height, width }
+    }
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    canvas.drawImage(pixelMap, 0, 0); // 原图
+    let xDivs: Array<int> = [28, 36, 44, 52];
+    let yDivs: Array<int> = [28, 36, 44, 52];
+    let lattice = drawing.Lattice.createImageLattice(xDivs, yDivs, 4, 4);
+    let dst: common2D.Rect = { left: 100, top: 0, right: 164, bottom: 64 };
+    let dst1: common2D.Rect = { left: 200, top: 0, right: 360, bottom: 160 };
+    canvas.drawImageLattice(pixelMap, lattice!, dst, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例1
+    canvas.drawImageLattice(pixelMap, lattice!, dst1, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例2
   }
 }
 ```

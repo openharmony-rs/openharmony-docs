@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-本模块提供应用灰度故障维测能力，支持以下故障类型：RSS内存泄漏、ArkTS-OOM、FD内存泄漏、GPU内存泄漏。应用灰度特性是一种运维态功能，用于精准采集故障日志。开发者在端侧集成应用灰度功能后，可参与应用灰度活动。通过云端平台发布应用灰度任务，可圈选部分设备开启故障日志精准采集，帮助开发者快速定位故障。
+本模块提供应用灰度故障维测能力，支持以下故障类型：RSS内存泄漏、ArkTS-OOM、FD内存泄漏、GPU内存泄漏。应用灰度特性是一种运维态功能，用于精准采集故障日志。开发者在端侧集成应用灰度功能后，该应用可参与应用灰度活动。通过云端平台发布应用灰度任务，可圈选部分设备开启故障日志精准采集，帮助开发者快速定位故障。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -37,9 +37,9 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | ------ | -- | ---- | ------- |
-| userType | string | 否 | 是 | 用户类型参数值由开发者自定义，无格式和字符类型限制，最长支持128个字符。 |
-| deviceType | string | 否 | 是 | 设备类型参数值由开发者自定义，无格式和字符类型限制，最长支持128个字符。 |
-| deviceModel | string | 否 | 是 | 设备型号参数值由开发者自定义，无格式和字符类型限制，最长支持128个字符。 |
+| userType | string | 否 | 否 | 用户类型参数值由开发者自定义，无格式和字符类型限制，最长支持128个字符，超出部分将被截断。 |
+| deviceType | string | 否 | 否 | 设备类型参数值由开发者自定义，无格式和字符类型限制，最长支持128个字符，超出部分将被截断。 |
+| deviceModel | string | 否 | 否 | 设备型号参数值由开发者自定义，无格式和字符类型限制，最长支持128个字符，超出部分将被截断。 |
 
 ## hiRetrieval.init
 
@@ -55,13 +55,25 @@ init(): void
 
 **系统能力：** SystemCapability.HiviewDFX.HiRetrieval
 
+**错误码：**
+
+以下错误码的详细介绍请参见[应用灰度错误码](errorcode-hiviewdfx-hiretrieval.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| 36000002 | Multi-instance applications not supported error. Possibly caused by invoking this function in a multi-instance application.         |
+
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
+try {
+  hiRetrieval.init();
+} catch (err) {
+  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
+}
 // 后续可以完成其他的灰度接口调用
 ```
 
@@ -99,13 +111,13 @@ participate(config: HiRetrievalConfig): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
 let config: hiRetrieval.HiRetrievalConfig = {
   'userType': "testUserType",
   'deviceType': "deviceType",
   'deviceModel': "deviceModel"
 }
 try {
+  hiRetrieval.init();
   hiRetrieval.participate(config);
 } catch (err) {
   console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
@@ -116,7 +128,7 @@ try {
 
 quit(): void
 
-设置此设备退出应用灰度活动，退出后此设备将无法在云侧被圈选。
+设置此设备退出应用灰度活动，退出后此设备将无法在云端被圈选。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -140,8 +152,8 @@ quit(): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
 try {
+  hiRetrieval.init();
   hiRetrieval.quit();
 } catch (err) {
   console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
@@ -168,26 +180,13 @@ isParticipant(): boolean
 | ------------------- | ----------------------------------------------------------- |
 | boolean | 标识此设备现在是否正在参与灰度活动，true表示正在参与，false表示未参与。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[应用灰度错误码](errorcode-hiviewdfx-hiretrieval.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------------------------------------------------------------------------------------------------- |
-| 36000001 | Initialization error. Possibly caused by invoking this function before invoking init function      |
-
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
-try {
-  hiRetrieval.isParticipant();
-} catch (err) {
-  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
-}
+let isParticipant = hiRetrieval.isParticipant();
 ```
 
 ## hiRetrieval.getLastParticipationTimestamp
@@ -212,26 +211,13 @@ ArkTS-Sta: getLastParticipationTimestamp(): long
 | ------------------- | ----------------------------------------------------------------- |
 | ArkTS-Dyn: number<br>ArkTS-Sta: long | 上一次参与应用灰度活动的UNIX时间戳，单位为毫秒。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[应用灰度错误码](errorcode-hiviewdfx-hiretrieval.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------------------------------------------------------------------------------------------------- |
-| 36000001 | Initialization error. Possibly caused by invoking this function before invoking init function      |
-
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
-try {
-  let ts = hiRetrieval.getLastParticipationTimestamp();
-} catch (err) {
-  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
-}
+let ts = hiRetrieval.getLastParticipationTimestamp();
 ```
 
 ## hiRetrieval.run
@@ -262,8 +248,8 @@ run(): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
 try {
+  hiRetrieval.init();
   hiRetrieval.run();
 } catch (err) {
   console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
@@ -290,24 +276,11 @@ getCurrentConfig(): HiRetrievalConfig
 | ------------------- | ------------------------------------------------------------ |
 | [HiRetrievalConfig](#hiretrievalconfig) | 当前应用灰度活动配置。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[应用灰度错误码](errorcode-hiviewdfx-hiretrieval.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------------------------------------------------------------------------------------------------- |
-| 36000001 | Initialization error. Possibly caused by invoking this function before invoking init function      |
-
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
-hiRetrieval.init();
-try {
-  let cfg = hiRetrieval.getCurrentConfig();
-} catch (err) {
-  console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
-}
+let cfg = hiRetrieval.getCurrentConfig();
 ```

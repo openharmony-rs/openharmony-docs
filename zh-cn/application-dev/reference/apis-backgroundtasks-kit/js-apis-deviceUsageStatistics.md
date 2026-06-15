@@ -4,7 +4,7 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供设备使用信息统计能力。
 
@@ -40,7 +40,8 @@ isIdleState(bundleName: string, callback: AsyncCallback&lt;boolean&gt;): void
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 // 三方应用使用示例代码时，注意将bundleName更换为自己应用的bundleName
 bundleState.isIdleState("com.ohos.camera", (err: BusinessError, res: boolean) => {
   if (err) {
@@ -75,7 +76,8 @@ isIdleState(bundleName: string): Promise&lt;boolean&gt;
 **示例**：
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 // 三方应用使用示例代码时，注意将bundleName更换为自己应用的bundleName
 bundleState.isIdleState("com.ohos.camera").then((res: boolean) => {
   console.info('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));

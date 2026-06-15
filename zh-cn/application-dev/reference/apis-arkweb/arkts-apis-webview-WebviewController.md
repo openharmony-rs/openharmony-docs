@@ -405,7 +405,7 @@ loadUrl(url: string | Resource, headers?: Array\<WebHeader>): void
 
 | 参数名  | 类型             | 必填 | 说明                  |
 | ------- | ---------------- | ---- | :-------------------- |
-| url     | string \| Resource | 是   | 需要加载的 URL。      |
+| url     | string \| Resource | 是   | 需要加载的URL。      |
 | headers | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | URL的附加HTTP请求头。<br>默认值： []。 <br>传入undefined或null会抛出异常错误码401。|
 
 **错误码：**
@@ -604,7 +604,7 @@ struct WebComponent {
 
 2.resources协议。
 
-使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时的局限性。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
+使用 `resource://rawfile/` 协议前缀可以避免常规 `$rawfile` 方式在处理带有“#”路由链接时URL会被“#”截断的问题。当URL中包含“#”号时，“#”后面的内容会被视为锚点（fragment）。
 
 ArkTS-Dyn示例：
 ```ts
@@ -888,7 +888,7 @@ struct WebComponent {
 }
 ```
 
-指定baseURL。
+指定baseUrl。
 
 Ark-Dyn示例：
 ```ts
@@ -1147,7 +1147,7 @@ struct WebComponent {
 
 forward(): void
 
-按照历史栈，前进一个页面。一般结合accessForward一起使用。
+按照历史栈，前进一个页面。一般结合[accessForward](#accessforward)一起使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2216,7 +2216,7 @@ runJavaScript(script: string, callback : AsyncCallback\<string>): void
 > - 建议应用程序使用registerJavaScriptProxy来确保JavaScript状态能够在页面导航间保持。
 > - 目前不支持传递对象，支持传递结构体。
 > - 执行异步方法无法获取返回值，需要根据具体情境判断是否使用同步或异步方式。
-> - 前端页面传到Native的string数据类型会被视为json格式的数据，需要调用JSON.parse反序列化。
+> - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2362,7 +2362,7 @@ runJavaScript(script: string): Promise\<string>
 > - 建议应用程序使用registerJavaScriptProxy来确保JavaScript状态能够在页面导航间保持。
 > - 目前不支持传递对象，支持传递结构体。
 > - 执行异步方法无法获取返回值，需要根据具体情境判断是否使用同步或异步方式。
-> - 前端页面传到Native的string数据类型会被视为json格式的数据，需要调用JSON.parse反序列化。
+> - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2496,7 +2496,7 @@ runJavaScriptExt(script: string | ArrayBuffer, callback : AsyncCallback\<JsMessa
 
 > **说明：**
 >
-> - 前端页面传到Native的string数据类型会被视为json格式的数据，需要调用JSON.parse反序列化。
+> - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2907,11 +2907,11 @@ function test() {
 
 runJavaScriptExt(script: string | ArrayBuffer): Promise\<JsMessageExt>
 
-异步执行JavaScript脚本，并通过Promise方式返回脚本执行的结果。runJavaScriptExt需要在loadUrl完成后，比如onPageEnd中调用。
+异步执行JavaScript脚本，并通过Promise方式返回脚本执行的结果。runJavaScriptExt需要在loadUrl完成后，比如[onPageEnd](arkts-basic-components-web-events.md#onpageend)中调用。
 
 > **说明：**
 >
-> - 前端页面传到Native的string数据类型会被视为json格式的数据，需要调用JSON.parse反序列化。
+> - 前端页面传到应用侧的string数据类型会被视为JSON格式的数据，需要调用JSON.parse反序列化。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4280,7 +4280,7 @@ function PostMsgToEts(data) {
 
 requestFocus(): void
 
-使当前Web页面获取焦点。
+使指定组件获取焦点。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4523,7 +4523,7 @@ ArkTS-Dyn: getWebId(): number
 
 ArkTS-Sta: getWebId(): int
 
-获取当前Web组件的索引值，用于多个Web组件的管理。
+获取Web组件的索引值，用于多个Web组件的管理。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4535,7 +4535,7 @@ ArkTS-Sta: getWebId(): int
 
 | 类型   | 说明                  |
 | ------ | --------------------- |
-| ArkTS-Dyn: number <br> ArkTS-Sta: int | 当前Web组件的索引值。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | Web组件的索引值。 |
 
 **错误码：**
 
@@ -4952,7 +4952,7 @@ storeWebArchive(baseName: string, autoName: boolean, callback: AsyncCallback\<st
 | 参数名   | 类型              | 必填 | 说明                                                         |
 | -------- | --------------------- | ---- | ------------------------------------------------------------ |
 | baseName | string                | 是   | 生成的离线网页存储位置，该值不能为空。                                 |
-| autoName | boolean               | 是   | 决定是否自动生成文件名。<br>false表示按baseName的文件名存储，true表示根据当前Url自动生成文件名，并按baseName的文件目录存储。 |
+| autoName | boolean               | 是   | 决定是否自动生成文件名。<br>false表示按baseName的文件名存储，true表示根据当前URL自动生成文件名，并按baseName的文件目录存储。 |
 | callback | AsyncCallback\<string> | 是   | 返回文件存储路径，保存网页失败会返回null。                   |
 
 **错误码：**
@@ -5057,7 +5057,7 @@ storeWebArchive(baseName: string, autoName: boolean): Promise\<string>
 | 参数名   | 类型 | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | baseName | string   | 是   | 生成的离线网页存储位置，该值不能为空。                                 |
-| autoName | boolean  | 是   | 决定是否自动生成文件名。<br>false表示按baseName的文件名存储，true表示根据当前Url自动生成文件名，并按baseName的文件目录存储。 |
+| autoName | boolean  | 是   | 决定是否自动生成文件名。<br>false表示按baseName的文件名存储，true表示根据当前URL自动生成文件名，并按baseName的文件目录存储。 |
 
 **返回值：**
 
@@ -5153,7 +5153,7 @@ struct WebComponent {
 
 getUrl(): string
 
-获取当前页面的url地址。
+获取当前页面的URL地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5165,7 +5165,7 @@ getUrl(): string
 
 | 类型   | 说明                |
 | ------ | ------------------- |
-| string | 当前页面的url地址。 |
+| string | 当前页面的URL地址。 |
 
 **错误码：**
 
@@ -5897,9 +5897,9 @@ Scroll Test
 
 getOriginalUrl(): string
 
-获取当前页面的原始url地址。
+获取当前页面的原始URL地址。
 
-风险提示：如果想获取url来做JavascriptProxy通信接口认证，请使用[getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](#getlastjavascriptproxycallingframeurl12)
+风险提示：如果想获取URL来做JavascriptProxy通信接口认证，请使用[getLastJavascriptProxyCallingFrameUrl<sup>12+</sup>](#getlastjavascriptproxycallingframeurl12)
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5911,7 +5911,7 @@ getOriginalUrl(): string
 
 | 类型   | 说明                    |
 | ------ | ----------------------- |
-| string | 当前页面的原始url地址。 |
+| string | 当前页面的原始URL地址。 |
 
 **错误码：**
 
@@ -6375,7 +6375,7 @@ struct WebComponent {
 
 removeCache(clearRom: boolean): void
 
-清除应用中的资源缓存文件，此方法将会清除同一应用中所有Webview的缓存文件。
+清除与当前Webview上下文相关的资源缓存。
 
 > **说明：**
 >
@@ -6464,7 +6464,7 @@ struct WebComponent {
 
 static removeAllCache(clearRom: boolean): void
 
-清除应用中的资源缓存文件，此方法将会清除同一应用中所有Webview的缓存文件。
+清除应用内所有Webview(含隐私模式)产生的资源缓存。
 
 > **说明：**
 >
@@ -7173,7 +7173,7 @@ export default class EntryAbility extends UIAbility {
 
 static customizeSchemes(schemes: Array\<WebCustomScheme\>): void
 
-对Web内核赋予自定义协议url的跨域请求与fetch请求的权限。当Web在跨域fetch自定义协议url时，该fetch请求可被[onInterceptRequest](./arkts-basic-components-web-events.md#oninterceptrequest9)事件接口所拦截，从而开发者可以进一步处理该请求。建议在任何Web组件初始化之前调用该接口。
+对Web内核赋予自定义协议URL的跨域请求与fetch请求的权限。当Web在跨域fetch自定义协议URL时，该fetch请求可被[onInterceptRequest](./arkts-basic-components-web-events.md#oninterceptrequest9)事件接口所拦截，从而开发者可以进一步处理该请求。建议在任何Web组件初始化之前调用该接口。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -7282,7 +7282,7 @@ struct WebComponent {
 
 static customizeSchemes(schemes: Array\<WebCustomScheme\>, lazyInitWebEngine: boolean): void
 
-对Web内核赋予自定义协议url的跨域请求与fetch请求的权限。当Web在跨域fetch自定义协议url时，该fetch请求可被[onInterceptRequest](./arkts-basic-components-web-events.md#oninterceptrequest9)事件接口所拦截，从而开发者可以进一步处理该请求。建议在任何Web组件初始化之前调用该接口。
+对Web内核赋予自定义协议URL的跨域请求与fetch请求的权限。当Web在跨域fetch自定义协议URL时，该fetch请求可被[onInterceptRequest](./arkts-basic-components-web-events.md#oninterceptrequest9)事件接口所拦截，从而开发者可以进一步处理该请求。建议在任何Web组件初始化之前调用该接口。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -7690,7 +7690,7 @@ struct Index {
 
 getCertificate(callback: AsyncCallback<Array<cert.X509Cert>>): void
 
-获取当前网站的证书信息。使用Web组件加载https网站，会进行SSL证书校验，该接口会通过AsyncCallback异步返回当前网站的X509格式证书（X509Cert证书类型定义见[X509Cert定义](../apis-device-certificate-kit/js-apis-cert.md)），便于开发者展示网站证书信息。
+获取当前网站的证书信息。使用Web组件加载https网站，会进行SSL证书校验，该接口会通过AsyncCallback异步返回当前网站的X509格式证书（X509Cert证书类型定义见[X509Cert](../apis-device-certificate-kit/js-apis-cert.md#x509cert)），便于开发者展示网站证书信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -8108,8 +8108,8 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>, prefetchOptions
 
 | 参数名             | 类型                             | 必填  | 说明                      |
 | ------------------| --------------------------------| ---- | ------------- |
-| url               | string                          | 是    | 预加载的url。|
-| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否    | url的附加HTTP请求头。<br>默认值： [] |
+| url               | string                          | 是    | 预加载的URL。|
+| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否    | URL的附加HTTP请求头。<br>默认值： [] |
 | prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | 否    | 用来自定义预取行为的相关选项。 |
 
 **错误码：**
@@ -8201,7 +8201,7 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>): void
 >
 > - 先执行prefetchPage再加载页面时，已预取的资源将直接从缓存中加载。
 >
-> - 连续prefetchPage多个url只有第一个生效。
+> - 连续prefetchPage多个URL只有第一个生效。
 >
 > - prefetchPage有时间限制，500ms内不能多次预取。
 
@@ -8215,8 +8215,8 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>): void
 
 | 参数名             | 类型                             | 必填  | 说明                      |
 | ------------------| --------------------------------| ---- | ------------- |
-| url               | string                          | 是    | 预加载的url。|
-| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否    | url的附加HTTP请求头。<br>默认值： [] |
+| url               | string                          | 是    | 预加载的URL。|
+| additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否    | URL的附加HTTP请求头。<br>默认值： [] |
 
 **错误码：**
 
@@ -8297,6 +8297,8 @@ ArkTS-Sta: static prefetchResource(request: RequestInfo, additionalHeaders?: Arr
 
 根据指定的请求信息和附加的http请求头去预获取资源请求，存入内存缓存，并指定其缓存key和有效期，以加快加载速度。目前仅支持Content-Type为application/x-www-form-urlencoded的post请求。最多可以预获取6个post请求。如果要预获取第7个，请通过[clearPrefetchedResource](#clearprefetchedresource12)清除不需要的post请求缓存，否则会自动清除最早预获取的post缓存。如果要使用预获取的资源缓存，开发者需要在正式发起的post请求的请求头中增加键值“ArkWebPostCacheKey”，其内容为对应缓存的cacheKey。
 
+内存缓存中的资源由内核自动管理。当注入的资源过多，导致内存压力过大时，内核会自动释放未使用的资源，但仍应避免向内存缓存中注入大量资源。
+
 **系统能力：**  SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：**  12
@@ -8310,7 +8312,7 @@ ArkTS-Sta: static prefetchResource(request: RequestInfo, additionalHeaders?: Arr
 | request           | [RequestInfo](./arkts-apis-webview-i.md#requestinfo12)   | 是   | 预获取请求的信息。                                                      |
 | additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | 否   | 预获取请求的附加HTTP请求头。 <br>传入undefined或null会抛出异常错误码401。         |
 | cacheKey          | string                          | 否   | 用于后续查询预获取资源缓存的key。仅支持字母和数字，未传入或传入空则取默认值url作为key。<br>传入undefined或null会抛出异常错误码401。 |
-| cacheValidTime    | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 预获取资源缓存的有效期。<br>取值范围：(0, 2147483647]。<br>默认值：300秒。 <br>单位：秒。<br>传入undefined或null会抛出异常错误码401。     |
+| cacheValidTime    | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 否   | 预获取资源缓存的有效期。<br>取值范围：(0, 2147483647]。<br>默认值：300s。 <br>单位：s。<br>传入undefined或null会抛出异常错误码401。     |
 
 **错误码：**
 
@@ -8318,7 +8320,8 @@ ArkTS-Sta: static prefetchResource(request: RequestInfo, additionalHeaders?: Arr
 
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>适用版本：12-21 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.<br>适用版本：22+ |
 
 **示例：**
 
@@ -8478,7 +8481,7 @@ ArkTS-Dyn: static prepareForPageLoad(url: string, preconnectable: boolean, numSo
 
 ArkTS-Sta: static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: int): void
 
-预连接url，在加载url之前调用此API，对url只进行DNS解析，socket建链操作，并不获取主资源子资源。
+预连接URL，在加载URL之前调用此API，对URL只进行DNS解析，socket建链操作，并不获取主资源子资源。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -8490,8 +8493,8 @@ ArkTS-Sta: static prepareForPageLoad(url: string, preconnectable: boolean, numSo
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| url            | string  | 是   | 预连接的url。|
-| preconnectable | boolean | 是   | 是否进行预连接。如果preconnectable为true，则对url进行DNS解析，socket建链预连接；如果preconnectable为false，则不做任何预连接操作。|
+| url            | string  | 是   | 预连接的URL。|
+| preconnectable | boolean | 是   | 是否进行预连接。如果preconnectable为true，则对URL进行DNS解析，socket建链预连接；如果preconnectable为false，则不做任何预连接操作。|
 | numSockets     | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 要预连接的socket数。socket数目连接需要大于0，最多允许6个连接。|
 
 **错误码：**
@@ -8549,7 +8552,7 @@ setCustomUserAgent(userAgent: string): void
 
 设置自定义用户代理，会覆盖系统的用户代理。
 
-当Web组件src设置了url时，建议在onControllerAttached回调事件中设置User-Agent，设置方式请参考示例。不建议将User-Agent设置在onLoadIntercept回调事件中，会概率性出现设置失败。
+当Web组件src设置了URL时，建议在onControllerAttached回调事件中设置User-Agent，设置方式请参考示例。不建议将User-Agent设置在onLoadIntercept回调事件中，会概率性出现设置失败。
 
 当Web组件src设置为空字符串时，建议先调用setCustomUserAgent方法设置User-Agent，再通过loadUrl加载具体页面。
 
@@ -8557,7 +8560,7 @@ setCustomUserAgent(userAgent: string): void
 
 > **说明：**
 >
->当Web组件src设置了url，且未在onControllerAttached回调事件中设置User-Agent。再调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
+>当Web组件src设置了URL，且未在onControllerAttached回调事件中设置User-Agent。再调用setCustomUserAgent方法时，可能会出现加载的页面与实际设置User-Agent不符的异常现象。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -8732,7 +8735,7 @@ struct WebComponent {
 
 startDownload(url: string): void
 
-使用Web组件的下载能力来下载指定的url, 比如下载网页中指定的图片。
+使用Web组件的下载能力来下载指定的URL，比如下载网页中指定的图片。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -9209,7 +9212,7 @@ struct WebComponent {
 
 static warmupServiceWorker(url: string): void
 
-预热ServiceWorker，以提升首屏页面的加载速度（仅限于会使用ServiceWorker的页面）。在加载url之前调用此API。
+预热ServiceWorker，以提升首屏页面的加载速度（仅限于会使用ServiceWorker的页面）。在加载URL之前调用此API。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -9221,7 +9224,7 @@ static warmupServiceWorker(url: string): void
 
 | 参数名          | 类型    |  必填  | 说明                                            |
 | ---------------| ------- | ---- | ------------- |
-| url            | string  | 是   | 需要预热ServiceWorker的url。|
+| url            | string  | 是   | 需要预热ServiceWorker的URL。|
 
 **错误码：**
 
@@ -9524,7 +9527,7 @@ struct WebComponent {
 
 isIntelligentTrackingPreventionEnabled(): boolean
 
-获取当前Web是否启用了智能防跟踪功能。
+获取Web组件是否启用了智能防跟踪功能。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -9538,7 +9541,7 @@ isIntelligentTrackingPreventionEnabled(): boolean
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| boolean | 当前Web是否启用了智能防跟踪功能。<br>true表示启用了智能防跟踪功能，false表示未启用智能防跟踪功能。<br>默认值：false。 |
+| boolean | Web组件是否启用了智能防跟踪功能。<br>true表示启用了智能防跟踪功能，false表示未启用智能防跟踪功能。<br>默认值：false。 |
 
 **错误码：**
 
@@ -10433,7 +10436,7 @@ struct webViewController {
 
 postUrl(url: string, postData: ArrayBuffer): void
 
-使用"POST"方法加载带有postData的url。如果url不是网络url，则会使用[loadUrl](#loadurl)方法加载url，忽略postData参数。
+使用"POST"方法加载带有postData的URL。如果URL不是网络URL，则会使用[loadUrl](#loadurl)方法加载URL，忽略postData参数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -10445,7 +10448,7 @@ postUrl(url: string, postData: ArrayBuffer): void
 
 | 参数名  | 类型             | 必填 | 说明                  |
 | ------- | ---------------- | ---- | :-------------------- |
-| url     | string | 是   | 需要加载的 URL。      |
+| url     | string | 是   | 需要加载的URL。      |
 | postData | ArrayBuffer | 是   | 使用"POST"方法传递数据。 该请求必须采用"application/x-www-form-urlencoded"编码。|
 
 **错误码：**
@@ -11173,7 +11176,7 @@ struct WebComponent {
 
 getLastJavascriptProxyCallingFrameUrl(): string
 
-通过[registerJavaScriptProxy](#registerjavascriptproxy)或者[javaScriptProxy](./arkts-basic-components-web-attributes.md#javascriptproxy)注入JavaScript对象到window对象中。该接口可以获取最后一次调用注入的对象的frame的url。
+通过[registerJavaScriptProxy](#registerjavascriptproxy)或者[javaScriptProxy](./arkts-basic-components-web-attributes.md#javascriptproxy)注入JavaScript对象到window对象中。该接口可以获取最后一次调用注入的对象的frame的URL。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -11185,7 +11188,7 @@ getLastJavascriptProxyCallingFrameUrl(): string
 
 | 类型     | 说明           |
 | ------ | ------------ |
-| string | 最后一次调用注入的对象的frame的url。 |
+| string | 最后一次调用注入的对象的frame的URL。 |
 
 **错误码：**
 
@@ -12032,7 +12035,7 @@ struct WebComponent {
 
 setWebSchemeHandler(scheme: string, handler: WebSchemeHandler): void
 
-为当前Web组件设置[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md), [WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)类用于拦截指定scheme的请求。
+为Web组件设置[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md), [WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)类用于拦截指定scheme的请求。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -12120,7 +12123,7 @@ struct WebComponent {
 
 clearWebSchemeHandler(): void
 
-清除当前Web组件设置的所有WebSchemeHandler。
+清除Web组件设置的所有WebSchemeHandler。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -12908,7 +12911,7 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
    }
    ```
 
-   JavaScript资源的获取方式也可通过[网络请求](../apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的HTTP响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过网络请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
+   JavaScript资源的获取方式也可通过[数据请求](../apis-network-kit/js-apis-http.md)的方式获取，但此方法获取到的HTTP响应头非标准HTTP响应头格式，需额外将响应头转换成标准HTTP响应头格式后使用。如通过数据请求获取到的响应头是e-tag，则需要将其转换成E-Tag后使用。
 
 4. 编写业务用组件代码。
 
@@ -13128,7 +13131,7 @@ ArkTS-Sta: precompileJavaScript(url: string, script: string | Uint8Array, cacheO
 
 onCreateNativeMediaPlayer(callback: CreateNativeMediaPlayerCallback): void
 
-注册回调函数，开启[应用接管网页媒体播放功能](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)后，当网页中有播放媒体时，触发注册的回调函数。
+注册回调函数，使用[enableNativeMediaPlayer](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)开启应用接管网页媒体播放功能后，当网页中有播放媒体时，触发注册的回调函数。
 
 如果应用接管网页媒体播放功能未开启，则注册的回调函数不会被触发。
 
@@ -13769,8 +13772,10 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.  |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>适用版本：12-21  |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.<br>适用版本：22+  |
 
 **示例：**
 
@@ -13886,7 +13891,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    import { NodeController, BuilderNode, FrameNode } from '@ohos.arkui.node';
    import { webview } from '@kit.ArkWeb';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { WebBuilder } from "./InjectWebview";
+   import { injectWebview } from "./InjectWebview";
 
    export class BuilderData {
      url: string;
@@ -13931,7 +13936,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
          return;
        }
        this.rootNode = new BuilderNode<BuilderData>(uiContext);
-       this.rootNode!.build(wrapBuilder(WebBuilder), new BuilderData(url, controller, uiContext));
+       this.rootNode!.build(injectWebview, new BuilderData(url, controller, uiContext));
      }
    }
 
@@ -14005,7 +14010,6 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
    import { webview } from '@kit.ArkWeb';
    import { resourceConfigs } from "./Resource";
    import { BuilderData } from "./DynamicComponent";
-   import { BusinessError } from '@kit.BasicServicesKit';
 
    @Builder
    export function WebBuilder(data: BuilderData) {
@@ -14015,7 +14019,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
            try {
              const result = await getData(data.context);
              data.controller.injectOfflineResources(result);
-           } catch (err: BusinessError) {
+           } catch (err) {
              console.error("error: " + err.code + " " + err.message);
            }
          })();
@@ -14120,7 +14124,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
      },
      {
        localPath: "example.js",
-       urlList: [ // 仅提供一个url，这个url既作为资源的源，也作为资源的网络请求地址
+       urlList: [ // 仅提供一个URL，这个URL既作为资源的源，也作为资源的网络请求地址
          "https://www.example.com/example.js",
        ],
        type: webview.OfflineResourceType.CLASSIC_JS,
@@ -14161,7 +14165,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
      },
      {
        localPath: "example.js",
-       urlList: [ // 仅提供一个url，这个url既作为资源的源，也作为资源的网络请求地址。
+       urlList: [ // 仅提供一个URL，这个URL既作为资源的源，也作为资源的网络请求地址。
          "https://www.example.com/example.js",
        ],
        type: webview.OfflineResourceType.CLASSIC_JS,
@@ -14195,7 +14199,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
      businessController: webview.WebviewController = new webview.WebviewController();
 
      aboutToAppear(): void {
-       // 初始化用于注入本地资源的Web组件, 提供一个空的html页面作为url即可
+       // 初始化用于注入本地资源的Web组件, 提供一个空的html页面作为URL即可
        this.injectNode = createNode(injectWebview,
            { url: "https://www.example.com/empty.html", controller: this.injectController, context: this.getUIContext()});
      }
@@ -14239,7 +14243,7 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
      businessController: webview.WebviewController = new webview.WebviewController();
 
      aboutToAppear(): void {
-       // 初始化用于注入本地资源的Web组件, 提供一个空的html页面作为url即可。
+       // 初始化用于注入本地资源的Web组件, 提供一个空的html页面作为URL即可。
        this.injectNode = createNode(injectWebview,
          new BuilderData( "https://www.example.com/empty.html", this.injectController, this.getUIContext()));
      }
@@ -14351,7 +14355,7 @@ struct WebComponent {
 
   build() {
     Column() {
-      // url加载前设置生效.
+      // URL加载前设置生效.
       Button('setHostIP')
         .onClick(() => {
           try {
@@ -14389,7 +14393,7 @@ struct WebComponent {
 
   build() {
     Column() {
-      // url加载前设置生效。
+      // URL加载前设置生效。
       Button('setHostIP')
         .onClick(() => {
           try {
@@ -14516,7 +14520,7 @@ struct Example{
 
 setUrlTrustList(urlTrustList: string): void
 
-设置当前web的url白名单，只有白名单内的url才能允许加载/跳转，否则将拦截并弹出告警页。
+设置Web的URL白名单，只有白名单内的URL才能允许加载/跳转，否则将拦截并弹出告警页。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -14528,13 +14532,13 @@ setUrlTrustList(urlTrustList: string): void
 
 | 参数名  | 类型    | 必填 | 说明                  |
 | ------- | ------ | ---- | :-------------------- |
-| urlTrustList | string | 是   | url白名单列表，使用json格式配置，最大支持10MB。<br/>白名单设置接口为覆盖方式，多次调用接口时，以最后一次设置为准。<br/>当本参数为空字符串时，表示取消白名单，放行所有url的访问。<br/>json格式示例：<br/>{<br>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>} |
+| urlTrustList | string | 是   | URL白名单列表，使用json格式配置，最大支持10MB。<br/>白名单设置接口为覆盖方式，多次调用接口时，以最后一次设置为准。<br/>当本参数为空字符串时，表示取消白名单，放行所有URL的访问。<br/>json格式示例：<br/>{<br>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>} |
 
 **白名单json格式参数**
 | 字段   | 参数类型 | 必填 | 参数描述                  |
 | -------- | -------- | ---- | ------------------------- |
 | scheme | string   | 否 | 可选参数，不设置即不匹配该项，支持协议：http、https。 |
-| host | string | 是 | 必选参数，精准匹配，即url的host字段和规则字段完全一致才会放行，可允许同一host多条规则同时生效。 |
+| host | string | 是 | 必选参数，精准匹配，即URL的host字段和规则字段完全一致才会放行，可允许同一host多条规则同时生效。 |
 | port | number | 否 | 可选字段，不设置即不匹配该项。 |
 | path | string | 否 | 可选字段，不设置即不匹配该项，匹配方式为前缀匹配，以"pathA/pathB/pathC"为例：pathA/pathB/pathC三级目录下全部允许访问，其中pathC必须是完整的目录名或者文件名，不允许部分匹配。|
 
@@ -14575,7 +14579,7 @@ ArkTS-Dyn示例：
         Button('Cancel the trustlist.')
           .onClick(() => {
             try {
-              // 白名单传入空字符串表示关闭白名单机制，所有url都可以允许访问
+              // 白名单传入空字符串表示关闭白名单机制，所有URL都可以允许访问
               this.controller.setUrlTrustList("");
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -14601,7 +14605,7 @@ ArkTS-Dyn示例：
           })
         Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
           try {
-            // onControllerAttached回调中设置白名单，可以保证在加载url之前生效，此时不可以访问untrust网页，并弹出错误页
+            // onControllerAttached回调中设置白名单，可以保证在加载URL之前生效，此时不可以访问untrust网页，并弹出错误页
             this.controller.setUrlTrustList(this.urltrustList);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -14640,7 +14644,7 @@ ArkTS-Sta示例：
         Button('Cancel the trustlist.')
           .onClick(() => {
             try {
-              // 白名单传入空字符串表示关闭白名单机制，所有url都可以允许访问。
+              // 白名单传入空字符串表示关闭白名单机制，所有URL都可以允许访问。
               this.controller.setUrlTrustList("");
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -14666,7 +14670,7 @@ ArkTS-Sta示例：
           })
         Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
           try {
-            // onControllerAttached回调中设置白名单，可以保证在加载url之前生效，此时不可以访问untrust网页，并弹出错误页。
+            // onControllerAttached回调中设置白名单，可以保证在加载URL之前生效，此时不可以访问untrust网页，并弹出错误页。
             this.controller.setUrlTrustList(this.urltrustList);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -16853,7 +16857,7 @@ getBlanklessInfoWithKey(key: string): BlanklessInfo
 > - 持久缓存容量：默认大小为30MB（约30页），可以通过接口[setBlanklessLoadingCacheCapacity](#setblanklessloadingcachecapacity20)设置缓存容量，具体见该接口说明。超过容量时根据LRU（Least Recently Used，淘汰不常用缓存的策略）机制更新缓存。自动清理超过7天的持久缓存数据，缓存清除后第三次加载页面开始有优化效果。
 > - 如果发现快照相似度（即[BlanklessInfo](./arkts-apis-webview-i.md#blanklessinfo20)中的similarity）极低，请确认key值是否传递正确。
 > - 调用本接口后，将启用页面加载快照检测及生成过渡帧计算，会产生一定的资源开销。
-> - 启用无白屏加载的页面会带来一定的资源开销，开销的大小与Web组件的分辨率相关。假设分辨率的宽度和高度分别为：w, h。页面在打开阶段会增加峰值内存，增加约12*w*h B，页面打开后内存回收，不影响稳态内存。增加固态应用缓存的大小，每个页面增加的缓存约w*h/10 B，缓存位于应用缓存的位置。
+> - 启用无白屏加载的页面会带来一定的资源开销，开销的大小与Web组件的分辨率相关。假设分辨率的宽度和高度分别为：w, h。页面在打开阶段会增加峰值内存，增加约12 * w * h B，页面打开后内存回收，不影响稳态内存。增加固态应用缓存的大小，每个页面增加的缓存约w * h / 10 B，缓存位于应用缓存的位置。
 > - 请在module.json5中添加权限: ohos.permission.INTERNET和ohos.permission.GET_NETWORK_INFO，具体权限的添加方法请参考[在配置文件中声明权限](../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -17362,6 +17366,7 @@ import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import Want from '@ohos.app.ability.Want';
 import { webview } from '@kit.ArkWeb';
 import { AppStorage } from '@ohos.arkui.stateManagement';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -17545,11 +17550,13 @@ Scroll Test
 
 static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void
 
-设置ArkWeb内核版本。若系统不支持指定版本，则设置无效。该接口为全局静态API，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。
+设置ArkWeb内核版本。若系统不支持指定版本，则设置无效，使用系统默认内核（可参考[约束与限制](../../web/web-component-overview.md#约束与限制)）。该接口为全局静态API，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。
 
 **遗留内核适配：**
 
-在OpenHarmony 6.0及以后，使用遗留内核时，部分ArkWeb接口不会生效，参考[M114内核在OpenHarmony6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md)。
+在OpenHarmony 6.0及以后，使用遗留内核（M114）时，部分ArkWeb接口不会生效，参考[M114内核在OpenHarmony 6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_6.0.md)。
+
+在OpenHarmony 7.0及以后，使用遗留内核（M132）时，部分ArkWeb接口不会生效，参考[M132内核在OpenHarmony 7.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_7.0.md)。
 
 > **说明：**
 >
@@ -17582,9 +17589,9 @@ import { webview } from '@kit.ArkWeb';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info("EntryAbility onCreate")
-    webview.WebviewController.setActiveWebEngineVersion(webview.ArkWebEngineVersion.M114)
-    if (webview.WebviewController.getActiveWebEngineVersion() == webview.ArkWebEngineVersion.M114) {
-      console.info("Active Web Engine Version set to M114")
+    webview.WebviewController.setActiveWebEngineVersion(webview.ArkWebEngineVersion.M132)
+    if (webview.WebviewController.getActiveWebEngineVersion() == webview.ArkWebEngineVersion.M132) {
+      console.info("Active Web Engine Version set to M132")
     }
     console.info("EntryAbility onCreate done")
   }
@@ -17605,9 +17612,9 @@ import { webview } from '@kit.ArkWeb';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info("EntryAbility onCreate")
-    webview.WebviewController.setActiveWebEngineVersion(webview.ArkWebEngineVersion.M114)
-    if (webview.WebviewController.getActiveWebEngineVersion() == webview.ArkWebEngineVersion.M114) {
-      console.info("Active Web Engine Version set to M114")
+    webview.WebviewController.setActiveWebEngineVersion(webview.ArkWebEngineVersion.M132)
+    if (webview.WebviewController.getActiveWebEngineVersion() == webview.ArkWebEngineVersion.M132) {
+      console.info("Active Web Engine Version set to M132")
     }
     console.info("EntryAbility onCreate done")
   }
@@ -18524,13 +18531,13 @@ struct WebComponent {
 
 static setUserAgentClientHintsEnabled(enabled: boolean): void
 
-设置是否开启UserAgent Client Hints功能。
+设置是否开启User-Agent Client Hints功能。
 
 > **说明：**
 >
 > User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
 >
-> 不使用该方法时，默认不开启UserAgent Client Hints功能。
+> 不使用该方法时，默认不开启User-Agent Client Hints功能。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -18544,7 +18551,7 @@ static setUserAgentClientHintsEnabled(enabled: boolean): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| enabled | boolean | 是   | 是否开启UserAgent Client Hints功能。<br/>true表示开启，false表示不开启。 |
+| enabled | boolean | 是   | 是否开启User-Agent Client Hints功能。<br/>true表示开启，false表示不开启。 |
 
 **示例：**
 
@@ -18638,7 +18645,7 @@ struct WebComponent {
 
 static getUserAgentClientHintsEnabled(): boolean
 
-查询UserAgent Client Hints功能当前是否开启。
+查询User-Agent Client Hints功能当前是否开启。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -18674,7 +18681,7 @@ static getUserAgentClientHintsEnabled(): boolean
 
 | 类型    | 说明                                     |
 | ------- | --------------------------------------- |
-| boolean | 返回UserAgent Client Hints功能开启状态。true表示已开启；false表示已关闭。 |
+| boolean | 返回User-Agent Client Hints功能开启状态。true表示已开启；false表示已关闭。 |
 
 **示例：**
 
@@ -18810,7 +18817,7 @@ getUserAgentMetadata(userAgent: string): UserAgentMetadata
 
 setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcard: boolean): void
 
-设置当前web的url白名单，只有白名单内的url才能允许加载/跳转，否则将拦截并弹出告警页。
+设置Web的URL白名单，只有白名单内的URL才能允许加载/跳转，否则将拦截并弹出告警页。扩展了对Opaque Origin URL以及通配符规则的控制能力。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -18822,8 +18829,8 @@ setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcar
 
 | 参数名  | 类型    | 必填 | 说明                  |
 | ------- | ------ | ---- | :-------------------- |
-| urlTrustList | string | 是   | url白名单列表，使用json格式配置，最大支持10MB。<br/>白名单设置接口为覆盖方式，多次调用接口时，以最后一次设置为准。<br/>当本参数为空字符串时，表示取消白名单，放行所有url的访问。<br/>json格式示例：<br/>{<br>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>} |
-| allowOpaqueOrigin | boolean | 是 | true表示允许loadUrl直接加载javascript/data等[不透明源url](https://mdn.org.cn/en-US/docs/Web/URI/Reference/Schemes)，false表示不允许加载不透明源url。 |
+| urlTrustList | string | 是   | URL白名单列表，使用json格式配置，最大支持10MB。<br/>白名单设置接口为覆盖方式，多次调用接口时，以最后一次设置为准。<br/>当本参数为空字符串时，表示取消白名单，放行所有URL的访问。<br/>json格式示例：<br/>{<br>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>} |
+| allowOpaqueOrigin | boolean | 是 | true表示允许loadUrl直接加载javascript/data等[不透明源URL](https://mdn.org.cn/en-US/docs/Web/URI/Reference/Schemes)，false表示不允许加载不透明源URL。 |
 | supportWildcard | boolean | 是 | true表示支持对host、path的通配符匹配能力，例如白名单配置了`*.example.com`，则访问`a.example.com`和`b.example.com`都是允许的。false表示不支持。 |
 
 **白名单json格式参数**
@@ -18831,9 +18838,9 @@ setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcar
 | 字段   | 参数类型 | 必填 | 参数描述                  |
 | -------- | -------- | ---- | ------------------------- |
 | scheme | string | 否 | 可选参数，不设置即不匹配该项，支持协议：http、https。 |
-| host | string | 是 | 必选参数。<br/>当supportWildcard为false时，精准匹配，即url的host字段和规则字段完全一致才会放行，可允许同一host多条规则同时生效。<br/>当supportWildcard为true时，允许使用通配符\*进行任意字符串匹配，匹配规则如下：<br/>1. host以“.”进行分段。<br/>2. 一个通配符\*只能匹配一个段。例如`www.*.com`只能匹配`www.example.com`，不能匹配`www.example1.example2.com`。<br/>3. 可以使用多个通配符匹配多个段。例如`www.*.*`，可以匹配`www.example.com`，不能匹配`www.example1.example2.com`。<br/>4. 通配符只能单独使用，不支持连续多个\*或者与其他的字符串一起使用，例如`**.example.com`，或者`*ww.example.com`是不支持的。<br/>5. 通配符不能用在IP地址的匹配上。例如`127.0.0.*`无法匹配`127.0.0.1`。<br/>6. 如果是非ASCII的host（例如中文域名等），需要提前进行IDN转换。 |
+| host | string | 是 | 必选参数。<br/>当supportWildcard为false时，精准匹配，即URL的host字段和规则字段完全一致才会放行，可允许同一host多条规则同时生效。<br/>当supportWildcard为true时，允许使用通配符\*进行任意字符串匹配，匹配规则如下：<br/>1. host以“.”进行分段。<br/>2. 一个通配符\*只能匹配一个段。例如`www.*.com`只能匹配`www.example.com`，不能匹配`www.example1.example2.com`。<br/>3. 可以使用多个通配符匹配多个段。例如`www.*.*`，可以匹配`www.example.com`，不能匹配`www.example1.example2.com`。<br/>4. 通配符只能单独使用，不支持连续多个\*或者与其他的字符串一起使用，例如`**.example.com`，或者`*ww.example.com`是不支持的。<br/>5. 通配符不能用在IP地址的匹配上。例如`127.0.0.*`无法匹配`127.0.0.1`。<br/>6. 如果是非ASCII的host（例如中文域名等），需要提前进行IDN转换。 |
 | port | number | 否 | 可选字段，不设置即不匹配该项。 |
-| path | string | 否 | 可选字段，不设置即不匹配该项。<br/>当supportWildcard为false时，匹配方式为前缀匹配，以`pathA/pathB/pathC`为例：`pathA/pathB/pathC`三级目录下全部允许访问，其中pathC必须是完整的目录名或者文件名，不支持部分匹配。<br/>当supportWildcard为true时，允许使用通配符\*进行任意字符串匹配，匹配规则如下：<br/>1. path以“/”进行分段。<br/>2. 如果通配符\*不是最后一段，那只能匹配一个段。例如`pathA/*/pathD`，只能匹配`pathA/pathB/pathD`，不能匹配`pathA/pathB/pathC/pathD`。<br/>3. 如果通配符\*是最后一段，则可以匹配后续的多个段。例如`pathA/*`，可以匹配`pathA/pathB`，也可以匹配`pathA/pathB/pathC`；也可以匹配文件类例如`pathA/xxx.txt`。<br/>4. 通配符只能单独使用，不支持多个\*或者与其他的字符串一起使用，例如`**/pathA/pathB`，或者`path*/pathB/pathC`是不支持的。<br/>5. 规则中url部分需要做url encoded转换。 |
+| path | string | 否 | 可选字段，不设置即不匹配该项。<br/>当supportWildcard为false时，匹配方式为前缀匹配，以`pathA/pathB/pathC`为例：`pathA/pathB/pathC`三级目录下全部允许访问，其中pathC必须是完整的目录名或者文件名，不支持部分匹配。<br/>当supportWildcard为true时，允许使用通配符\*进行任意字符串匹配，匹配规则如下：<br/>1. path以“/”进行分段。<br/>2. 如果通配符\*不是最后一段，那只能匹配一个段。例如`pathA/*/pathD`，只能匹配`pathA/pathB/pathD`，不能匹配`pathA/pathB/pathC/pathD`。<br/>3. 如果通配符\*是最后一段，则可以匹配后续的多个段。例如`pathA/*`，可以匹配`pathA/pathB`，也可以匹配`pathA/pathB/pathC`；也可以匹配文件类例如`pathA/xxx.txt`。<br/>4. 通配符只能单独使用，不支持多个\*或者与其他的字符串一起使用，例如`**/pathA/pathB`，或者`path*/pathB/pathC`是不支持的。<br/>5. 规则中URL部分需要做URL-encoded转换。 |
 
 **错误码：**
 
@@ -18873,7 +18880,7 @@ struct WebComponent {
       Button('Setting the wildcardlist')
         .onClick(() => {
           try {
-            // 设置通配符白名单，所有url都可以允许访问
+            // 设置通配符白名单，所有URL都可以允许访问
             this.controller.setUrlTrustList(this.urlWildcardList, true, true);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -18882,7 +18889,7 @@ struct WebComponent {
       Button('Cancel the trustlist.')
         .onClick(() => {
           try {
-            // 白名单传入空字符串表示关闭白名单机制，所有url都可以允许访问
+            // 白名单传入空字符串表示关闭白名单机制，所有URL都可以允许访问
             this.controller.setUrlTrustList("");
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -18908,7 +18915,7 @@ struct WebComponent {
         })
       Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
         try {
-          // onControllerAttached回调中设置白名单，可以保证在加载url之前生效，此时不可以访问untrust网页，并弹出错误页
+          // onControllerAttached回调中设置白名单，可以保证在加载URL之前生效，此时不可以访问untrust网页，并弹出错误页
           this.controller.setUrlTrustList(this.urltrustList);
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -18947,7 +18954,7 @@ struct WebComponent {
       Button('Setting wildcardlist')
         .onClick(() => {
           try {
-            // 设置通配符白名单，所有url都可以允许访问
+            // 设置通配符白名单，所有URL都可以允许访问
             this.controller.setUrlTrustList(this.urlWildcardList, true, true);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -18956,7 +18963,7 @@ struct WebComponent {
       Button('Cancel trustlist.')
         .onClick(() => {
           try {
-            // 白名单传入空字符串表示关闭白名单机制，所有url都可以允许访问
+            // 白名单传入空字符串表示关闭白名单机制，所有URL都可以允许访问
             this.controller.setUrlTrustList("");
           } catcharing (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -18982,7 +18989,7 @@ struct WebComponent {
         })
       Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
         try {
-          // onControllerAttached回调中设置白名单，可以保证在加载url之前生效，此时不可以访问untrust网页，并弹出错误页
+          // onControllerAttached回调中设置白名单，可以保证在加载URL之前生效，此时不可以访问untrust网页，并弹出错误页
           this.controller.setUrlTrustList(this.urltrustList);
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -19016,7 +19023,7 @@ static enableAdvancedSecurityMode(securityParams: SecurityParams): void
 
 | 参数名   | 类型    | 必填 | 说明        |
 | -------- | ------- | ---- | -------- |
-| securityParams | [SecurityParams](./arkts-apis-webview-SecurityParams.md) | 否 | 安全特性选项配置。 |
+| securityParams | [SecurityParams](./arkts-apis-webview-SecurityParams.md) | 是 | 安全特性选项配置。 |
 
 **示例：**
 
@@ -19079,6 +19086,118 @@ struct WebComponent {
   build() {
     Column() {
       Web({ src: "https://www.example.com", controller: this.controller })
+    }
+  }
+}
+```
+
+## executeAIPageCommand
+
+executeAIPageCommand(command: string): Promise\<string\>
+
+异步执行`AIPageCommand`。该接口通过JSON字符串形式的`command`参数指定命令类型和命令参数，使用Promise异步回调。
+
+> **说明：**
+>
+> - 当网页不可用、命令无法执行或无结果返回时，Promise返回空字符串。
+> - 返回值非空时为JSON字符串，应用可通过`JSON.parse`解析后使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明 |
+| ------- | ------ | ---- | ---- |
+| command | string | 是   | JSON格式的命令参数。不同命令的参数格式不同，详细说明请参见[AIPageCommand](./arkts-apis-webview-AIPageCommand.md)。 |
+
+**返回值：**
+
+| 类型             | 说明 |
+| ---------------- | ---- |
+| Promise\<string\> | Promise对象，返回JSON格式的命令执行结果。不同命令的返回格式不同。执行失败或无返回值时，返回空字符串。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100024 | Command format error. The command parameter does not conform to the JSON format requirements. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+interface AIPageCommand {
+  method: string;
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('executeAIPageCommand')
+        .onClick(async () => {
+          try {
+            let commandObj: AIPageCommand = { method: 'getFullDom' };
+            let command: string = JSON.stringify(commandObj);
+            let result: string = await this.controller.executeAIPageCommand(command);
+            console.info(`executeAIPageCommand result: ${result}`);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+import { Button, Column, Component, Entry, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+interface AIPageCommand {
+  method: string;
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('executeAIPageCommand')
+        .onClick(async () => {
+          try {
+            let commandObj: AIPageCommand = { method: 'getFullDom' };
+            let command: string = JSON.stringify(commandObj);
+            let result: string = await this.controller.executeAIPageCommand(command);
+            console.info(`executeAIPageCommand result: ${result}`);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
     }
   }
 }

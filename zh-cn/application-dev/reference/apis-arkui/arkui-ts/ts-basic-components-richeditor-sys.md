@@ -10,15 +10,16 @@
 
 >  **说明：**
 >
->  该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  当前页面仅包含本模块的系统接口，其他公开接口参见[RichEditor](ts-basic-components-richeditor.md)。
-> 
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[RichEditor](ts-basic-components-richeditor.md)。
 ## RichEditorBuilderSpanOptions<sup>11+</sup>
 
 添加builder的偏移位置和builder样式信息。
 
-**系统能力：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,7 +32,7 @@
 
 用户行为回调。
 
-**系统能力：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,13 +42,19 @@
 
 ## RichEditorChangeValue<sup>12+</sup>
 
-**系统能力：** 此接口为系统接口。
+图文变化信息。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+   
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| changeReason<sup>20+</sup> | [TextChangeReason](ts-text-common-sys.md#textchangereason20) | 否 | 组件内容变化的原因。 |
+| changeReason<sup>20+</sup> |  [TextChangeReason](ts-text-common-sys.md#textchangereason20)  | 否 | 组件内容变化的原因。<br/>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 23  |
 
 ## 示例
 

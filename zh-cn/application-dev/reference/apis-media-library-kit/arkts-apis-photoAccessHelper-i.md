@@ -28,7 +28,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -49,8 +49,8 @@ title参数的规格如下：
 
 | 名称                   | 类型                        | 只读 | 可选 | 说明                                         |
 | ---------------------- |----------------------------| ---- | ---- | ------------------------------------------- |
-| title           | string | 否   | 是   | 图片或者视频的标题。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| subtype<sup>12+</sup>           | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12) | 否   | 是   | 图片或者视频的文件子类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| title           | string | 否   | 是   | 图片或者视频的标题。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| subtype<sup>12+</sup>           | [PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12) | 否   | 是   | 图片或者视频的文件子类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## FetchOptions
 
@@ -60,8 +60,8 @@ title参数的规格如下：
 
 | 名称                   | 类型                | 只读 | 可选 | 说明                                              |
 | ---------------------- | ------------------- | ---- |---- | ------------------------------------------------ |
-| fetchColumns           | Array&lt;string&gt; | 否   | 否   | 检索条件，指定列名查询。<br>对于照片，如果该参数为空，默认查询'uri'、'media_type'、'subtype'和'display_name'，使用[get](arkts-apis-photoAccessHelper-PhotoAsset.md#get)接口获取当前对象的其他属性时将会报错。示例：fetchColumns: ['uri', 'title']。<br>对于相册，如果该参数为空，默认查询'uri'和'album_name'。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| predicates           | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 否   | 否   | 谓词查询，显示过滤条件。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| fetchColumns           | Array&lt;string&gt; | 否   | 否   | 检索条件，指定列名查询。<br>对于照片，如果该参数为空，默认查询'uri'、'media_type'、'subtype'和'display_name'，使用[get](arkts-apis-photoAccessHelper-PhotoAsset.md#get)接口获取当前对象的其他属性时将会报错。示例：fetchColumns: ['uri', 'title']。<br>对于相册，如果该参数为空，默认查询'uri'和'album_name'。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| predicates           | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | 否   | 否   | 谓词查询，显示过滤条件。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## RequestOptions<sup>11+</sup>
 
@@ -91,7 +91,7 @@ title参数的规格如下：
 
 文本信息，用于推荐图片的文本信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -134,7 +134,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 保存图片/视频到媒体库的配置，包括保存的文件名等。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -151,7 +151,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -244,7 +244,7 @@ picker内宫格的捏合模式。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。 
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
     
@@ -259,13 +259,12 @@ picker内宫格的捏合模式。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 
-
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
     
 | 名称                   | 类型                | 只读 | 可选 | 说明           |
 | ---- | ---- | ---- | ---- | ---- |
-| supportedHighResolution       | boolean  | 否 | 否 | 是否支持启用高分辨率资产。true表示支持，false表示不支持。 |
+| supportedHighResolution | boolean  | 否 | 否 | 是否支持启用高分辨率资产。true表示支持，false表示不支持。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| supportedMimeType | Array&lt;string&gt;  | 否 | 是 | 支持MIME types的类型。<br>- 配置image/heic表示应用支持heif格式。<br>- 配置image/jpeg表示应用仅支持jpeg格式不支持heif格式。<br>**起始版本：** 26.0.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## MediaLibraryAvailability
 

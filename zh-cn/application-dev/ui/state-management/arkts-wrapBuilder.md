@@ -1,4 +1,4 @@
-# wrapBuilder：封装全局@Builder
+# wrapBuilder：封装全局@Builder（ArkTS-Dyn）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->
@@ -27,6 +27,7 @@ function builderElement() {}
 let builderArr: Function[] = [builderElement];
 @Builder
 function testBuilder() {
+  // builderElement赋值给变量或者数组后，在UI方法中无法使用
   ForEach(builderArr, (item: Function) => {
     item();
   })
@@ -78,7 +79,7 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
 
 使用\@Builder装饰器装饰的方法`myBuilder`作为wrapBuilder的参数，然后将wrapBuilder的返回值赋值给变量`globalBuilder`，以解决\@Builder方法赋值给变量后无法使用的问题。
 
- <!-- @[wrapbuilder_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageTwo.ets) -->
+ <!-- @[wrapbuilder_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageTwo.ets) --> 
  
  ``` TypeScript
  @Builder
@@ -87,6 +88,7 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
      .fontSize(size)
  }
  
+ // 使用wrapBuilder封装myBuilder，并赋值给globalBuilder变量
  let globalBuilder: WrappedBuilder<[string, number]> = wrapBuilder(myBuilder);
  
  @Entry
@@ -97,7 +99,7 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
    build() {
      Row() {
        Column() {
-         globalBuilder.builder(this.message, 50)
+         globalBuilder.builder(this.message, 50);
        }
        .width('100%')
      }
@@ -110,7 +112,7 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
 
 自定义组件`IndexItem`使用ForEach进行不同\@Builder函数的渲染，可以使用`builderArr`声明的wrapBuilder数组来实现不同的\@Builder函数的效果。整体代码会更加整洁。
 
-<!-- @[wrapbuilder_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets) --> 
+<!-- @[wrapbuilder_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets) -->  
 
 ``` TypeScript
 @Builder
@@ -134,6 +136,7 @@ const builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(myBuilder0),
 struct IndexItem {
   @Builder
   IndexItem() {
+    // IndexItem使用ForEach进行不同@Builder函数的渲染
     ForEach(builderArr, (item: WrappedBuilder<[string, number]>) => {
       item.builder('Hello World', 30);
     })
@@ -198,7 +201,7 @@ struct Child {
 
 按引用传递参数时，状态变量的改变会引起\@Builder方法内的UI刷新。
 
-<!-- @[wrapbuilder_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFour.ets) -->
+<!-- @[wrapbuilder_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFour.ets) --> 
 
 ``` TypeScript
 class Tmp {
@@ -221,7 +224,8 @@ struct Parent {
 
   build() {
     Column() {
-      wBuilder.builder({ paramA2: this.label.paramA2 })
+      // 引用传递参数，label.paramA2的改变会引起overBuilder内的UI刷新
+      wBuilder.builder({ paramA2: this.label.paramA2 });
       Button('Click me').onClick(() => {
         this.label.paramA2 = 'ArkUI';
       })

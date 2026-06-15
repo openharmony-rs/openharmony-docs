@@ -1,7 +1,7 @@
 # @ohos.enterprise.applicationManager（应用管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
@@ -14,7 +14,7 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[MDM应用](../../mdm/mdm-kit-term.md#mdm应用)开放，需通过[enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)接口将设备管理应用激活后调用。
 > 
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.applicationManager](js-apis-enterprise-applicationManager.md)。
 
@@ -146,7 +146,7 @@ applicationManager.addDisallowedRunningBundles(wantTemp, appIds, 100, (err) => {
 
 addDisallowedRunningBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
-添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前/指定用户下运行。使用promise异步回调。从API version 21开始，如果应用运行允许名单[addallowedRunningBundles](./js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。
+添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前/指定用户下运行。使用Promise异步回调。从API version 21开始，如果应用运行允许名单[addallowedRunningBundles](./js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
@@ -324,7 +324,7 @@ applicationManager.removeDisallowedRunningBundles(wantTemp, appIds, 100, (err) =
 
 removeDisallowedRunningBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
-移除当前/指定用户在应用运行禁止名单中的应用，使用promise异步回调。
+移除当前/指定用户在应用运行禁止名单中的应用，使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
@@ -493,7 +493,7 @@ applicationManager.getDisallowedRunningBundles(wantTemp, 100, (err, result) => {
 
 getDisallowedRunningBundles(admin: Want, userId?: number): Promise&lt;Array&lt;string&gt;&gt;
 
-获取当前/指定用户下的应用运行禁止名单，使用promise异步回调。
+获取当前/指定用户下的应用运行禁止名单，使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 

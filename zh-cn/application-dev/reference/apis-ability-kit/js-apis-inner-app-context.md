@@ -4,14 +4,16 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 <!--deprecated_code_no_check-->
 
 Context模块提供了Ability或Application的上下文的基础能力，包括允许访问特定于应用程序的资源、请求和验证权限等。
 
 > **说明：**
+>
+> 本模块仅支持ArkTS-Dyn。
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -47,6 +49,10 @@ getOrCreateLocalDir(callback: AsyncCallback\<string>): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名       | 类型                     | 必填   | 说明            |
@@ -69,8 +75,6 @@ context.getOrCreateLocalDir((error, data)=>{
 });
 ```
 
-
-
 ## Context.getOrCreateLocalDir<sup>7+</sup>
 
 getOrCreateLocalDir(): Promise\<string>
@@ -80,6 +84,10 @@ getOrCreateLocalDir(): Promise\<string>
 如果是第一次调用，将创建目录。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -106,6 +114,10 @@ verifyPermission(permission: string, options: PermissionOptions, callback: Async
 验证系统中运行的特定pid和uid是否允许指定的权限。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -134,9 +146,7 @@ bundle.getBundleInfo('com.context.test', 1, (err: BusinessError, datainfo: bundl
     });
 });
 ```
-示例代码中出现的getBundleInfo相关描述可参考对应[文档](js-apis-bundleManager.md)。
-
-
+示例代码中出现的getBundleInfo相关描述可参考对应文档[@ohos.bundle.bundleManager (应用程序包管理模块)](js-apis-bundleManager.md)。
 
 ## Context.verifyPermission<sup>7+</sup>
 
@@ -145,6 +155,10 @@ verifyPermission(permission: string, callback: AsyncCallback\<number>): void
 验证系统中运行的当前pid和uid是否具有指定的权限。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -202,8 +216,6 @@ context.verifyPermission('com.context.permission', {pid:1}).then((data) => {
 });
 ```
 
-
-
 ## Context.requestPermissionsFromUser<sup>7+</sup>
 
 requestPermissionsFromUser(permissions: Array\<string>, requestCode: number, resultCallback: AsyncCallback\<PermissionRequestResult>): void
@@ -211,6 +223,10 @@ requestPermissionsFromUser(permissions: Array\<string>, requestCode: number, res
 从系统请求某些权限。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -323,6 +339,10 @@ requestPermissionsFromUser(permissions: Array\<string>, requestCode: number): Pr
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名           | 类型                 | 必填  | 说明                                          |
@@ -421,8 +441,6 @@ export default {
 }
 ```
 
-
-
 ## Context.getApplicationInfo<sup>7+</sup>
 
 getApplicationInfo(callback: AsyncCallback\<ApplicationInfo>): void
@@ -430,6 +448,10 @@ getApplicationInfo(callback: AsyncCallback\<ApplicationInfo>): void
 获取有关当前应用程序的信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -453,8 +475,6 @@ context.getApplicationInfo((error, data) => {
 });
 ```
 
-
-
 ## Context.getApplicationInfo<sup>7+</sup>
 
 getApplicationInfo(): Promise\<ApplicationInfo>
@@ -462,6 +482,10 @@ getApplicationInfo(): Promise\<ApplicationInfo>
 获取有关当前应用程序的信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -481,8 +505,6 @@ context.getApplicationInfo().then((data) => {
 });
 ```
 
-
-
 ## Context.getBundleName<sup>7+</sup>
 
 getBundleName(callback: AsyncCallback\<string>): void
@@ -490,6 +512,10 @@ getBundleName(callback: AsyncCallback\<string>): void
 获取当前ability的Bundle名称。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -513,8 +539,6 @@ context.getBundleName((error, data) => {
 });
 ```
 
-
-
 ## Context.getBundleName<sup>7+</sup>
 
 getBundleName(): Promise\<string>
@@ -522,6 +546,10 @@ getBundleName(): Promise\<string>
 获取当前ability的Bundle名称。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -548,6 +576,10 @@ getDisplayOrientation(callback: AsyncCallback\<bundle.DisplayOrientation>): void
 获取当前ability的显示方向。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -579,6 +611,10 @@ getDisplayOrientation(): Promise\<bundle.DisplayOrientation>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **返回值：**
 
 | 类型                                       | 说明        |
@@ -608,6 +644,10 @@ getExternalCacheDir(callback: AsyncCallback\<string>): void
 > 从API version 7开始不再支持。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -643,6 +683,10 @@ getExternalCacheDir(): Promise\<string>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 6
+
 **返回值：**
 
 | 类型               | 说明               |
@@ -668,6 +712,10 @@ setDisplayOrientation(orientation: bundle.DisplayOrientation, callback: AsyncCal
 设置当前Ability的显示方向。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -697,6 +745,10 @@ setDisplayOrientation(orientation: bundle.DisplayOrientation): Promise\<void>
 设置当前Ability的显示方向。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -738,6 +790,10 @@ setShowOnLockScreen(show: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 6
+
 **参数：**
 
 | 参数名       | 类型                   | 必填   | 说明                                       |
@@ -771,6 +827,10 @@ setShowOnLockScreen(show: boolean): Promise\<void>
 > 从API version 7开始支持，从API version 9开始废弃。建议使用window.setShowOnLockScreen替代，新接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -811,6 +871,10 @@ setWakeUpScreen(wakeUp: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 6
+
 **参数：**
 
 | 参数名       | 类型                   | 必填   | 说明                                |
@@ -845,6 +909,10 @@ setWakeUpScreen(wakeUp: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 6
+
 **参数：**
 
 | 参数名     | 类型      | 必填   | 说明                                |
@@ -871,8 +939,6 @@ context.setWakeUpScreen(wakeUp).then((data) => {
 ```
 
 
-
-
 ## Context.getProcessInfo<sup>7+</sup>
 
 getProcessInfo(callback: AsyncCallback\<ProcessInfo>): void
@@ -880,6 +946,10 @@ getProcessInfo(callback: AsyncCallback\<ProcessInfo>): void
 获取有关当前进程的信息，包括进程ID和名称。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -903,8 +973,6 @@ context.getProcessInfo((error, data) => {
 });
 ```
 
-
-
 ## Context.getProcessInfo<sup>7+</sup>
 
 getProcessInfo(): Promise\<ProcessInfo>
@@ -912,6 +980,10 @@ getProcessInfo(): Promise\<ProcessInfo>
 获取有关当前进程的信息，包括进程id和名称。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -931,8 +1003,6 @@ context.getProcessInfo().then((data) => {
 });
 ```
 
-
-
 ## Context.getElementName<sup>7+</sup>
 
 getElementName(callback: AsyncCallback\<ElementName>): void
@@ -942,6 +1012,10 @@ getElementName(callback: AsyncCallback\<ElementName>): void
 此方法仅适用于页面功能。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -965,8 +1039,6 @@ context.getElementName((error, data) => {
 });
 ```
 
-
-
 ## Context.getElementName<sup>7+</sup>
 
 getElementName(): Promise\<ElementName>
@@ -976,6 +1048,10 @@ getElementName(): Promise\<ElementName>
 此方法仅适用于页面功能。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -1003,6 +1079,10 @@ getProcessName(callback: AsyncCallback\<string>): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名       | 类型                     | 必填   | 说明         |
@@ -1025,8 +1105,6 @@ context.getProcessName((error, data) => {
 });
 ```
 
-
-
 ## Context.getProcessName<sup>7+</sup>
 
 getProcessName(): Promise\<string>
@@ -1034,6 +1112,10 @@ getProcessName(): Promise\<string>
 获取当前进程的名称。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -1053,8 +1135,6 @@ context.getProcessName().then((data) => {
 });
 ```
 
-
-
 ## Context.getCallingBundle<sup>7+</sup>
 
 getCallingBundle(callback: AsyncCallback\<string>): void
@@ -1062,6 +1142,10 @@ getCallingBundle(callback: AsyncCallback\<string>): void
 获取ability调用方的Bundle名称。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1085,8 +1169,6 @@ context.getCallingBundle((error, data) => {
 });
 ```
 
-
-
 ## Context.getCallingBundle<sup>7+</sup>
 
 getCallingBundle(): Promise\<string>
@@ -1094,6 +1176,10 @@ getCallingBundle(): Promise\<string>
 获取ability调用方的Bundle名称。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -1120,6 +1206,10 @@ getCacheDir(callback: AsyncCallback\<string>): void
 获取该应用程序的内部存储目录。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -1151,6 +1241,10 @@ getCacheDir(): Promise\<string>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 6
+
 **返回值：**
 
 | 类型               | 说明              |
@@ -1176,6 +1270,10 @@ getFilesDir(callback: AsyncCallback\<string>): void
 获取内部存储器上此应用程序的文件目录。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -1207,6 +1305,10 @@ getFilesDir(): Promise\<string>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 6
+
 **返回值：**
 
 | 类型               | 说明                  |
@@ -1234,6 +1336,10 @@ getOrCreateDistributedDir(callback: AsyncCallback\<string>): void
 如果分布式文件路径不存在，系统将创建一个路径并返回创建的路径。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1267,6 +1373,10 @@ getOrCreateDistributedDir(): Promise\<string>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **返回值：**
 
 | 类型               | 说明                                  |
@@ -1292,6 +1402,10 @@ getAppType(callback: AsyncCallback\<string>): void
 获取此应用的类型。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1323,6 +1437,10 @@ getAppType(): Promise\<string>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **返回值：**
 
 | 类型               | 说明                 |
@@ -1348,6 +1466,10 @@ getHapModuleInfo(callback: AsyncCallback\<HapModuleInfo>): void
 获取应用的ModuleInfo对象。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1379,6 +1501,10 @@ getHapModuleInfo(): Promise\<HapModuleInfo>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **返回值：**
 
 | 类型                                       | 说明                 |
@@ -1404,6 +1530,10 @@ getAppVersionInfo(callback: AsyncCallback\<AppVersionInfo>): void
 获取应用的版本信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1435,6 +1565,10 @@ getAppVersionInfo(): Promise\<AppVersionInfo>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **返回值：**
 
 | 类型                                       | 说明        |
@@ -1460,6 +1594,10 @@ getAbilityInfo(callback: AsyncCallback\<AbilityInfo>): void
 查询当前归属Ability详细信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1491,6 +1629,10 @@ getAbilityInfo(): Promise\<AbilityInfo>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **返回值：**
 
 | 类型                                       | 说明                 |
@@ -1517,6 +1659,10 @@ getApplicationContext(): Context
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **返回值：**
 
 | 类型      | 说明         |
@@ -1539,6 +1685,10 @@ isUpdatingConfigurations(callback: AsyncCallback\<boolean>): void
 检查此能力的配置是否正在更改。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1570,6 +1720,10 @@ isUpdatingConfigurations(): Promise\<boolean>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **返回值：**
 
 | 类型                | 说明                            |
@@ -1595,6 +1749,10 @@ printDrawnCompleted(callback: AsyncCallback\<void>): void
 通知系统绘制此页面功能所需的时间。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1622,6 +1780,10 @@ printDrawnCompleted(): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **返回值：**
 
 | 类型             | 说明              |
@@ -1645,6 +1807,10 @@ context.printDrawnCompleted().then((data) => {
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 | 名称   | 类型     | 只读 | 可选 | 说明    |
 | ---- | ------ | ---- | ----- | ----- |
 | pid  |number | 否  | 是 | 进程id。 |
@@ -1653,6 +1819,10 @@ context.printDrawnCompleted().then((data) => {
 ## PermissionRequestResult<sup>7+</sup>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 | 名称         | 类型            | 只读 | 可选   | 说明         |
 | ----------- |-------------- | ---- | ------- |---------- |

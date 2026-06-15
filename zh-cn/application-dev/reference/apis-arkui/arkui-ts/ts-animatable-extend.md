@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-@AnimatableExtend装饰器用于自定义可动画的属性方法，该装饰器内定义的函数在动画过程中会被逐帧调用，直到动画结束。该装饰器的常见用途有：
+@AnimatableExtend装饰器用于自定义可动画的属性方法，在这个属性方法中修改组件不可动画的属性。该装饰器内定义的函数在动画过程中会被逐帧调用，直到动画结束，详细开发指导可参考[\@AnimatableExtend](../../../ui/state-management/arkts-animatable-extend.md)。该装饰器的常见用途有：
 
 1. 使不可动画属性变为可动画属性，自定义数据运算规则使得属性能进行插值运算得到中间结果，再由动画驱动属性从起点值逐渐过渡到终点值。
 
@@ -18,7 +18,9 @@
 
 >  **说明：**
 >
->  该装饰器从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该装饰器从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 语法
 
@@ -36,7 +38,7 @@
 
 该接口定义非number数据类型的动画运算规则。对非number类型的数据（如数组、结构体、颜色等）做动画，需要实现AnimatableArithmetic\<T\>接口中加法、减法、乘法和判断相等函数，使得该数据能参与动画的插值运算和识别该数据是否发生改变。即定义它们为实现了AnimatableArithmetic\<T\>接口的类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,9 +48,13 @@ plus(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
 定义数据类型的加法运算规则。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -68,9 +74,13 @@ subtract(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
 定义该数据类型的减法运算规则。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -86,19 +96,25 @@ subtract(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
 ### multiply
 
-multiply(scale: number): AnimatableArithmetic\<T\>
+ArkTS-Dyn: multiply(scale: number): AnimatableArithmetic\<T\>
+
+ArkTS-Sta: multiply(scale: double): AnimatableArithmetic\<T\>
 
 定义该数据类型的乘法运算规则。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| scale | number | 是    | 乘法运算的系数。                           |
+| scale |  ArkTS-Dyn: number <br> ArkTS-Sta: double | 是    | 乘法运算的系数。                           |
 
 **返回值：**
 
@@ -112,9 +128,13 @@ equals(rhs: AnimatableArithmetic\<T\>): boolean
 
 定义该数据类型的相等判断规则。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

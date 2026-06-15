@@ -1,7 +1,7 @@
 # Sendable对象简介
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -80,7 +80,7 @@ Sendable interface需同时满足以下两个规则：
 
 - ArkTS语言标准库中定义的[异步等待对象](arkts-condition-variable-introduction.md)（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
 
-- ArkTS语言标准库中定义的[SendableLruCache对象](../reference/apis-arkts/arkts-apis-arkts-utils-SendableLruCache.md)（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
+- ArkTS语言标准库中定义的[SendableLruCache](../reference/apis-arkts/arkts-apis-arkts-utils-SendableLruCache.md)对象（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
 
 - 继承了[ISendable](#isendable)的interface。
 
@@ -93,7 +93,7 @@ Sendable interface需同时满足以下两个规则：
   - [可共享的色彩管理](../reference/apis-arkgraphics2d/js-apis-sendableColorSpaceManager.md)
   - [基于Sendable对象的图片处理](../reference/apis-image-kit/js-apis-sendableImage.md)
   - [资源管理](../reference/apis-localization-kit/js-apis-sendable-resource-manager.md)
-  - [SendableContext对象管理](../reference/apis-ability-kit/js-apis-app-ability-sendableContextManager.md)
+  - [Sendable上下文管理](../reference/apis-ability-kit/js-apis-app-ability-sendableContextManager.md)
 
 - 元素均为Sendable类型的union type数据。
 
@@ -107,25 +107,26 @@ Sendable interface需同时满足以下两个规则：
 
 **Sendable支持const enum类型使用示例：**
 
-```ts
-// Test.ets
+<!-- @[example_sendable_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/Test.ets) --> 
+
+``` TypeScript
 export const enum ModelState {
   ACTIVE,
   INACTIVE
 }
 ```
+<!-- @[example_modify_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/entry/src/main/ets/managers/enumusage.ets) --> 
 
-```ts
-// Index.ets
-import { taskpool } from "@kit.ArkTS";
-import { ModelState } from "./Test";
+``` TypeScript
+import { taskpool } from '@kit.ArkTS';
+import { ModelState } from './Test';
 
 @Sendable
 class Model {
-  state: ModelState = ModelState.ACTIVE;
+  public state: ModelState = ModelState.ACTIVE;
 
   getState() {
-    console.info("model state is " + this.state);
+    console.info('model state is ' + this.state);
   }
 
   setState(state: ModelState) {
@@ -141,7 +142,7 @@ function setModelState(model: Model) {
 
 @Entry
 @Component
-struct Index {
+struct enumusage {
   @State message: string = 'Hello World';
   @State num: number = 0;
 
@@ -160,6 +161,7 @@ struct Index {
           model.getState();
           let task = new taskpool.Task(setModelState, model);
           await taskpool.execute(task);
+          this.message = 'success';
         })
     }
     .height('100%')
@@ -177,7 +179,7 @@ struct Index {
 
 **SharedHeap与LocalHeap关系图**
 
-![zh-cn_image_0000002001521153](figures/zh-cn_image_0000002001521153.png)
+![Sendable-communication-Process](figures/Sendable-communication-Process.png)
 
 各个并发实例的LocalHeap是隔离的。SharedHeap是进程级别的堆，可以被所有并发实例共享，但SharedHeap不能引用LocalHeap中的对象。
 

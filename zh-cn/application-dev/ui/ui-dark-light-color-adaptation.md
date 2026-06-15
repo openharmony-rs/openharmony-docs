@@ -1,9 +1,9 @@
 # 应用深浅色适配
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -65,7 +65,7 @@
 
 2. 图片资源适配
 
-    采用资源限定词目录的方式。参照颜色适配的方法，需要将深色模式下对应的同名图片放到 dark/media 目录下，再通过$r的方式加载图片资源的key值，系统做深浅色模式切换时，会自动加载对应资源文件中的value值。
+    采用资源限定词目录的方式。参照颜色适配的方法，需要将深色模式下对应的同名图片放到 dark/media 目录下，再通过[$r](../reference/apis-arkui/js-apis-arkui-resource.md#r)的方式加载图片资源的key值，系统做深浅色模式切换时，会自动加载对应资源文件中的value值。
 
     对于 SVG 格式的一些简单图标，可以使用[fillColor](arkts-graphics-display.md#显示矢量图)属性配合系统资源改变图片的绘制颜色。不通过两套图片资源的方式，也可以实现深浅色模式适配。
 
@@ -81,7 +81,9 @@
 
 4. "自定义节点"适配
 
-    自定义节点BuilderNode和ComponentContent需手动传递系统环境变化事件，触发节点的全量更新，详细请参考[BuilderNode系统环境变化更新](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)。
+    自定义节点BuilderNode和ComponentContent需手动传递系统环境变化事件，触发节点的全量更新，详细请参考BuilderNode系统环境变化更新[updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)。
+
+    ArkTS-Dyn示例：
 
     <!-- @[custom_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
     
@@ -109,11 +111,43 @@
       }
     ```
 
+    ArkTS-Sta示例：
+
+    <!-- @[custom_node](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ColorAdaptionSysStatic/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
+    
+    ``` TypeScript
+    // 记录创建的自定义节点对象
+    const builderNodeMap: Array<BuilderNode<Params>> = [];
+    
+    class MyFrameCallback extends FrameCallback {
+      onFrame() {
+        updateColorMode();
+      }
+    }
+    
+    function updateColorMode() {
+      builderNodeMap.forEach((value, index) => {
+        // 通知BuilderNode环境变量改变，触发深浅色切换
+        value.updateConfiguration();
+      })
+    }
+    
+    // ...
+      aboutToAppear(): void {
+        // ...
+            that.getUIContext()?.postFrameCallback(new MyFrameCallback());
+            // ...
+      }
+    
+    ```
+
 5. 应用监听深浅色模式切换事件
 
     应用可以主动监听系统深浅色模式变化，进行其他类型的资源初始化等自定义逻辑。应用使用[setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setcolormode18)手动设置深浅色的情况下，将不会收到onConfigurationUpdate回调。除此之外，无论应用是否跟随系统深浅色模式变化，该监听方式均可生效。
 
-    a. 在 AbilityStage 的 onCreate() 生命周期中获取APP当前的颜色模式并保存到 AppStorage。
+    a. 在 AbilityStage的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期中获取APP当前的颜色模式并保存到[AppStorage](../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage)。
+
+    ArkTS-Dyn示例：
 
     <!-- @[create_set_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
@@ -124,7 +158,20 @@
     }
     ```
 
-    b. 在AbilityStage的onConfigurationUpdate()生命周期中获取最新更新的颜色模式并刷新到AppStorage。
+    ArkTS-Sta示例：
+
+    <!-- @[create_set_sys](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ColorAdaptionSysStatic/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    onCreate(): void {
+      // ...
+      AppStorage.setOrCreate('currentColorMode', this.context.config.colorMode);
+    }
+    ```
+
+    b. 在AbilityStage的[onConfigurationUpdate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)生命周期中获取最新更新的颜色模式并刷新到AppStorage。
+
+    ArkTS-Dyn示例：
 
     <!-- @[update_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
@@ -135,7 +182,20 @@
     }
     ```
 
-    c. 在Page中通过 @StorageProp + @Watch 方式获取当前最新颜色并监听设备深色模式变化。
+    ArkTS-Sta示例：
+
+    <!-- @[update_sys](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    onConfigurationUpdate(newConfig: Configuration): void {
+      AppStorage.setOrCreate('currentColorMode', newConfig.colorMode);
+      hilog.info(0x0000, 'testTag', 'the newConfig.colorMode is %{public}s', JSON.stringify(AppStorage.get('currentColorMode')) ?? '');
+    }
+    ```
+
+    c. 在Page中通过[@StorageProp](state-management/arkts-appstorage.md#storageprop) + [@Watch](state-management/arkts-watch.md)方式获取当前最新颜色并监听设备深色模式变化。
+
+    ArkTS-Dyn示例：
 
     <!-- @[prop_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
     
@@ -144,7 +204,18 @@
       ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT;
     ```
 
-    d. 在 aboutToAppear 初始化函数中根据当前最新颜色模式刷新状态变量。
+    ArkTS-Sta示例：
+
+    <!-- @[prop_sys](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ColorAdaptionSysStatic/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
+    
+    ``` TypeScript
+    @StoragePropRef('currentColorMode') @Watch('onColorModeChange') currentMode: ConfigurationConstant.ColorMode =
+      ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT;
+    ```
+
+    d. 在[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)初始化函数中根据当前最新颜色模式刷新状态变量。
+
+    ArkTS-Dyn示例：
 
     <!-- @[color_mode_change_appear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
     
@@ -161,7 +232,26 @@
     }
     ```
 
+    ArkTS-Sta示例：
+
+    <!-- @[color_mode_change_appear](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ColorAdaptionSysStatic/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
+    
+    ``` TypeScript
+    aboutToAppear(): void {
+      // ...
+      if (this.currentMode == ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT) {
+        // 当前为浅色模式，资源初始化逻辑
+        // ...
+      } else {
+        // 当前为深色模式，资源初始化逻辑
+        // ...
+      }
+    }
+    ```
+
     e. 在 @Watch 回调函数中执行同样的适配逻辑。
+
+    ArkTS-Dyn示例：
 
     <!-- @[color_mode_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
     
@@ -173,6 +263,22 @@
       } else {
         // 当前为深色模式，资源初始化逻辑
       // ···
+      }
+    }
+    ```
+
+    ArkTS-Sta示例：
+
+    <!-- @[color_mode_change](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ColorAdaptionSysStatic/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
+    
+    ``` TypeScript
+    onColorModeChange(propertyName: string): void {
+      if (this.currentMode == ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT) {
+        // 当前为浅色模式，资源初始化逻辑
+        // ...
+      } else {
+        // 当前为深色模式，资源初始化逻辑
+        // ...
       }
     }
     ```
@@ -219,6 +325,8 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 
 如果应用全部都是由系统组件/系统颜色开发，且想要跟随系统切换深浅色模式时，请参考以下示例修改代码来保证应用体验。
 
+ArkTS-Dyn示例：
+
 <!-- @[create_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
@@ -228,11 +336,26 @@ onCreate(): void {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[create_sys](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ColorAdaptionSysStatic/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+onCreate(): void {
+  try {
+    this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+  } catch (e) {
+    hilog.error(DOMAIN, 'EntryAbility', `setColorMode failed, error: ${JSON.stringify(e)}`);
+  }
+  // ...
+}
+```
+
 ## 深浅色模式的使用建议与注意事项
 
 - 建议方法
 
-  当应用跟随系统深色或浅色模式时，建议采用[AbilityStage的监听回调](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)或[Ability的监听回调](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)方式，主动监听系统深浅色模式变化。一旦颜色模式发生变化，应通过绑定状态变量等方法，执行特定的业务逻辑。
+  当应用跟随系统深色或浅色模式时，建议采用AbilityStage的监听回调[onConfigurationUpdate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)或Ability的监听回调[Ability.onConfigurationUpdate](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)方式，主动监听系统深浅色模式变化。一旦颜色模式发生变化，应通过绑定状态变量等方法，执行特定的业务逻辑。
 
 - 不推荐方法
 
@@ -286,7 +409,7 @@ onCreate(): void {
 
   - 根据实时读取的深浅色模式返回不同资源值。
 
-    开启深浅色切换优化选项后，可以采用[AbilityStage的监听回调](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)或[Ability的监听回调](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)方式，主动监听系统深浅色模式变化，更新对应文本的文字颜色，示例代码如下：
+    开启深浅色切换优化选项后，可以采用AbilityStage的监听回调[onConfigurationUpdate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)或Ability的监听回调[Ability.onConfigurationUpdate](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)方式，主动监听系统深浅色模式变化，更新对应文本的文字颜色，示例代码如下：
 
       ```ts
       // EntryAbility.ets
@@ -426,7 +549,7 @@ onCreate(): void {
 
 ## 利用反色能力快速适配深色模式
 
-从API version 20开始，对于有大量存量代码，之前已经通过[资源配置](#应用跟随系统的深浅色模式)模式或[主题](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)方式，实现部分深色模式适配。可使用系统提供的反色能力，快速实现全量深色模式适配。
+从API version 20开始，对于有大量存量代码，之前已经通过[资源配置](#应用跟随系统的深浅色模式)模式或[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)方式，实现部分深色模式适配。可使用系统提供的反色能力，快速实现全量深色模式适配。
 
 这种方式虽然管理上不如资源配置和主题方式精细可控，但适配工作量更低，应用包也不会因为大量的资源配置而膨胀，同时也能够带来一定程度上可以接受的视觉效果。
 

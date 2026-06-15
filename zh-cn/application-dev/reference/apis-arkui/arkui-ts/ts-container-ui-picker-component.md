@@ -10,11 +10,15 @@ UIPickerComponent容器是用于实现用户选择操作的组件。它支持从
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件从API version 22开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - UIPickerComponent容器的选项行高固定为40vp，最多可显示7个选项。由于显示效果为立体滚轮样式，因此除选中项外的其他选项会进行不同角度的旋转，实际的可视高度会小于40vp。
+> - 该组件仅可在Stage模型下使用。
 >
-> - UIPickerComponent容器的[height](./ts-universal-attributes-size.md#height)建议设置为200vp。当设置的高度大于等于该建议值时，可完全显示7个选项；小于该建议值时，显示范围会从上下边缘向中间裁剪，可显示的选项数量也会相应减少，始终保持选中项垂直居中。
+> - UIPickerComponent容器默认选项行高为40vp，默认显示7个选项。可通过[itemHeight](#itemheight)和[displayedItemCount](#displayeditemcount)属性进行配置。由于显示效果为立体滚轮样式，因此除选中项外的其他选项会进行不同角度的旋转，实际的可视高度会小于选项行高。
+>
+> - UIPickerComponent容器的[height](./ts-universal-attributes-size.md#height)建议设置为200vp。当设置的高度大于等于该建议值时，可完整显示默认的7个选项；若通过[displayedItemCount](#displayeditemcount)或[itemHeight](#itemheight)配置了更多可见项或更大选项高度，建议相应增大组件高度。设置高度小于建议值时，显示范围会从上下边缘向中间裁剪，可显示的选项数量也会相应减少，始终保持选中项垂直居中。
 >
 > - 当UIPickerComponent容器未设置[width](./ts-universal-attributes-size.md#width)时，取当前视图中可见子组件的最大宽度作为容器宽度。建议为UIPickerComponent容器设置宽度，或为每个子组件设置相同宽度，以避免滑动过程中容器宽度动态发生变化，影响显示效果。
 >
@@ -49,21 +53,28 @@ UIPickerComponent容器是用于实现用户选择操作的组件。它支持从
 
 ## 接口
 
-UIPickerComponent(options?: UIPickerComponentOptions)
+ArkTS-Dyn: UIPickerComponent(options?: UIPickerComponentOptions)
+
+ArkTS-Sta: UIPickerComponent(options?: UIPickerComponentOptions, content_?: CustomBuilder)
 
 创建UIPickerComponent容器，其选中项由options参数中的selectedIndex属性值决定。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options |  [UIPickerComponentOptions](#uipickercomponentoptions对象说明)| 否 | 配置UIPickerComponent容器的参数。 |
+| options |  [UIPickerComponentOptions](#uipickercomponentoptions对象说明)| 否 | 配置UIPickerComponent容器的参数。参数缺省时组件占位，但内容显示为空。 |
+| content_<sup>23+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | 否  | 定义子组件的Builder函数。<br/>**ArkTS模式:** 该接口仅适用于ArkTS-Sta。|
 
 ## UIPickerComponentOptions对象说明
 
@@ -71,13 +82,17 @@ UIPickerComponent容器的参数说明。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| selectedIndex | number | 否 | 是 | 选中项的索引值。</br>取值范围：[0, 子组件的个数-1]内的整数。不在取值范围内时，使用默认值；设置小数时，使用向下取整后的整数。</br>默认值：0<br/>**说明：**<br/>统计子组件的个数时，不包含Row容器内的子组件，Row容器及其子组件共同视为1个子组件。 |
+| selectedIndex | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 选中项的索引值。</br>取值范围：[0, 子组件的个数-1]内的整数。不在取值范围内时，使用默认值；设置小数时，使用向下取整后的整数。</br>默认值：0<br/>**说明：**<br/>统计子组件的个数时，不包含Row容器内的子组件，Row容器及其子组件共同视为1个子组件。 |
 
 ## 属性
 
@@ -85,25 +100,33 @@ UIPickerComponent容器的参数说明。
 
 ### canLoop
 
-canLoop(isLoop: Optional\<boolean>)
+ArkTS-Dyn: canLoop(isLoop: Optional\<boolean>)
+
+ArkTS-Sta: canLoop(isLoop: boolean | undefined)
 
 设置选项列是否可循环滚动。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否可循环滚动。<br/>- true：可循环滚动。<br/>- false：不可循环滚动。<br/>默认值：true<br/>当isLoop的值为undefined时，使用默认值。<br/>如果子组件的个数小于8个，无论isLoop设置为true还是false，都不会循环滚动。 |
+| isLoop  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> <br> ArkTS-Sta: boolean \| undefined | 是   | 是否可循环滚动。<br/>- true：可循环滚动。<br/>- false：不可循环滚动。<br/>默认值：true<br/>当isLoop的值为undefined时，使用默认值。<br/>如果子组件的个数小于8个，无论isLoop设置为true还是false，都不会循环滚动。 |
 
 ### enableHapticFeedback
 
-enableHapticFeedback(enable: Optional\<boolean>)
+ArkTS-Dyn: enableHapticFeedback(enable: Optional\<boolean>)
+
+ArkTS-Sta: enableHapticFeedback(enable: boolean | undefined)
 
 设置是否开启触控反馈。
 
@@ -118,33 +141,109 @@ enableHapticFeedback(enable: Optional\<boolean>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>当enable的值为undefined时，使用默认值。<br/>开启后，是否存在触控反馈取决于系统硬件支持情况。|
+| enable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> <br> ArkTS-Sta: boolean \| undefined | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>当enable的值为undefined时，使用默认值。<br/>开启后，是否存在触控反馈取决于系统硬件支持情况。|
 
 ### selectionIndicator
 
-selectionIndicator(style: Optional\<PickerIndicatorStyle>)
+ArkTS-Dyn: selectionIndicator(style: Optional\<PickerIndicatorStyle>)
+
+ArkTS-Sta: selectionIndicator(style: PickerIndicatorStyle | undefined)
 
 设置选中项指示器的样式。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle对象说明)> | 是   | 选中项指示器的样式。<br/>默认值：<br/>{<br/>type: PickerIndicatorType.BACKGROUND,<br/>borderRadius: {<br/>value:12,<br/>unit:LengthUnit.vp<br/>},<br/>backgroundColor: 'sys.color.comp_background_tertiary'<br/>}<br/>当style的值为undefined时，使用默认值。|
+| style  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle对象说明)> <br> ArkTS-Sta: [PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle对象说明) \| undefined | 是   | 选中项指示器的样式。<br/>默认值：<br/>{<br/>type: PickerIndicatorType.BACKGROUND,<br/>borderRadius: {<br/>value:12,<br/>unit:LengthUnit.vp<br/>},<br/>backgroundColor: 'sys.color.comp_background_tertiary'<br/>}<br/>当style的值为undefined时，使用默认值。|
+
+### itemHeight
+
+ArkTS-Dyn: itemHeight(height: Optional\<LengthMetrics>)
+
+ArkTS-Sta: itemHeight(height: LengthMetrics | undefined)
+
+设置UIPickerComponent容器每个选项的高度。未通过该接口设置时，每个选项的高度为40vp。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| height | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> <br> ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是 | 选项高度。<br/>单位：与[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)一致。<br/>取值范围：[40vp, 64vp]<br/>设置小于40vp或大于64vp时，使用默认值40vp。<br/>当height的值为undefined时，使用默认值40vp。<br/>不支持"百分比"类型。 |
+
+### displayedItemCount
+
+ArkTS-Dyn: displayedItemCount(count: Optional\<number>)
+
+ArkTS-Sta: displayedItemCount(count: int | undefined)
+
+设置UIPickerComponent容器可见选项的数量。未通过该接口设置时，可见选项的数量为7行。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| count | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> <br> ArkTS-Sta: int \| undefined | 是 | 可见选项数量。<br/>取值范围：[2, 9]内的整数。<br/>设置小数时，使用向下取整后的整数。<br/>设置偶数时，自动转为不小于该值的奇数（例如2变为3、8变为9）。<br/>设置不在取值范围内时，使用默认值7行。<br/>当count的值为undefined时，使用默认值7行。 |
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<UIPickerComponentAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置属性修改器。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型               | 必填   | 说明      |
+| ----- | ---------- | ---- | ----------------------- |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<UIPickerComponentAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是    | 设置属性修改器。CommonMethod表示[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)。 <br/>UIPickerComponentAttribute表示当前组件的[属性](#属性)和[事件](#事件)。|
 
 ## 事件
 
@@ -152,7 +251,9 @@ selectionIndicator(style: Optional\<PickerIndicatorStyle>)
 
 ### onChange
 
-onChange(callback: Optional\<OnUIPickerComponentCallback>)
+ArkTS-Dyn: onChange(callback: Optional\<OnUIPickerComponentCallback>)
+
+ArkTS-Sta: onChange(callback: OnUIPickerComponentCallback | undefined)
 
 滑动选择器选项时，若选中项发生变化，触发该事件。
 
@@ -164,33 +265,43 @@ onChange(callback: Optional\<OnUIPickerComponentCallback>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                              |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | 是   | 当选中项发生变化时触发的回调函数。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> <br> ArkTS-Sta: [OnUIPickerComponentCallback](#onuipickercomponentcallback) \| undefined | 是   | 当选中项发生变化时触发的回调函数。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ### onScrollStop
 
-onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
+ArkTS-Dyn: onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
+
+ArkTS-Sta: onScrollStop(callback: OnUIPickerComponentCallback | undefined)
 
 选择器滑动停止时，触发该事件。选择器滑动停止指某次行为触发的滑动动画完全结束。如果某次滑动动画还未结束时又触发了新的滑动动画，则不属于滑动停止。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                       | 必填 | 说明                                              |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | 是   | 当选择器滑动停止时触发的回调函数。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> <br> ArkTS-Sta: [OnUIPickerComponentCallback](#onuipickercomponentcallback) \| undefined | 是   | 当选择器滑动停止时触发的回调函数。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ## PickerIndicatorStyle对象说明
 
@@ -198,9 +309,13 @@ onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                       |
 | ----- | ------ | ---- | ---- | ------------------------------------------ |
@@ -218,9 +333,13 @@ onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 22开始，该类型支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该类型支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | - |-------- |
@@ -229,21 +348,27 @@ onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 
 ## OnUIPickerComponentCallback
 
-type OnUIPickerComponentCallback = (selectedIndex: number) => void
+ArkTS-Dyn: type OnUIPickerComponentCallback = (selectedIndex: number) => void
+
+ArkTS-Sta: type OnUIPickerComponentCallback = (selectedIndex: int) => void
 
 定义[onChange](#onchange)和[onScrollStop](#onscrollstop)事件的回调类型。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名     | 类型                                       | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectedIndex | number | 是   | 当前选中项的索引值。</br>取值范围：[0, 子组件的个数-1]内的整数。 |
+| selectedIndex | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 当前选中项的索引值。</br>取值范围：[0, 子组件的个数-1]内的整数。 |
 
 ## 示例
 
@@ -323,6 +448,13 @@ struct UIPickerComponentEventsExample {
   private dataArray: string[] = ['待办', '进行中', '已完成'];
   @State onChangeDesc: string = '';
   @State onScrollStopDesc: string = '';
+
+  aboutToAppear(): void {
+    // 构造选项数据
+    for (let i = 1; i <= 10; i++) {
+      this.dataArray.push(i.toString())
+    }
+  }
 
   build() {
     Column() {
@@ -1107,7 +1239,7 @@ struct TimeUIPickerComponentExample {
     // 创建订阅者，监听系统语言变化
     commonEventManager.createSubscriber(subscribeInfo)
       .then((commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-        console.info("CreateSubscriber");
+        console.info('CreateSubscriber');
         subscriber = commonEventSubscriber;
         commonEventManager.subscribe(subscriber, (err, data) => {
           if (err) {
@@ -1364,7 +1496,7 @@ struct TimeUIPickerComponentExample {
       Row() {
         Text('selected time: ' + this.currentTime)
           .margin(5)
-          .width("80%")
+          .width('80%')
           .textAlign(TextAlign.Center)
       }
       .border({ width: 1 })
@@ -1427,3 +1559,127 @@ struct TimeUIPickerComponentExample {
 ```
 
 ![containerPicker](./figures/ContainerPickerDemo8.gif)
+
+### 示例9（设置选项高度）
+
+该示例通过[itemHeight](#itemheight)设置UIPickerComponent容器的选项高度。
+
+从API版本26.0.0开始，新增[itemHeight](#itemheight)属性。
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct UIPickerComponentItemHeightExample {
+  private dataArray: string[] = [];
+  @State pickerItemHeight: LengthMetrics | undefined = undefined;
+  @State selectedIndex: number = 0;
+
+  aboutToAppear(): void {
+    for (let i = 1; i <= 10; i++) {
+      this.dataArray.push('选项' + i)
+    }
+  }
+
+  build() {
+    Column({ space: 12 }) {
+      Text('当前itemHeight：' + (this.pickerItemHeight ? this.pickerItemHeight.value + 'vp' : '默认值(40vp)'))
+        .fontSize(16)
+
+      UIPickerComponent() {
+        ForEach(this.dataArray, (item: string) => {
+          Text(item)
+        })
+      }
+      .width('70%')
+      .itemHeight(this.pickerItemHeight)
+      .onChange((selectedIndex: number) => {
+        this.selectedIndex = selectedIndex
+      })
+
+      Row({ space: 12 }) {
+        Button('40vp')
+          .onClick(() => {
+            this.pickerItemHeight = LengthMetrics.vp(40)
+          })
+        Button('50vp')
+          .onClick(() => {
+            this.pickerItemHeight = LengthMetrics.vp(50)
+          })
+        Button('64vp')
+          .onClick(() => {
+            this.pickerItemHeight = LengthMetrics.vp(64)
+          })
+      }
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![containerPicker](./figures/ContainerPickerDemo9.jpg)
+
+### 示例10（设置可见选项数量）
+
+该示例通过[displayedItemCount](#displayeditemcount)设置UIPickerComponent容器的可见选项数量。
+
+从API版本26.0.0开始，新增[displayedItemCount](#displayeditemcount)属性。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct UIPickerComponentDisplayedCountExample {
+  private dataArray: string[] = [];
+  @State visibleCount: number = 7;
+
+  aboutToAppear(): void {
+    for (let i = 1; i <= 12; i++) {
+      this.dataArray.push('第' + i + '项')
+    }
+  }
+
+  build() {
+    Column({ space: 12 }) {
+      Text('displayedItemCount: ' + this.visibleCount)
+        .fontSize(16)
+
+      UIPickerComponent() {
+        ForEach(this.dataArray, (item: string) => {
+          Text(item)
+        })
+      }
+      .width('70%')
+      .displayedItemCount(this.visibleCount)
+
+      Row({ space: 12 }) {
+        Button('3项')
+          .width(120)
+          .height(40)
+          .onClick(() => {
+            this.visibleCount = 3
+          })
+        Button('5项')
+          .width(120)
+          .height(40)
+          .onClick(() => {
+            this.visibleCount = 5
+          })
+        Button('8项(自动变9)')
+          .width(120)
+          .height(40)
+          .onClick(() => {
+            this.visibleCount = 8
+          })
+      }
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![containerPicker](./figures/ContainerPickerDemo10.jpg)

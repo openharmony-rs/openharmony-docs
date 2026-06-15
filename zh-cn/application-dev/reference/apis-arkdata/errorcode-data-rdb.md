@@ -2,13 +2,15 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+>
+> 错误码排查请参考：[关系型数据库错误码常见场景及排查步骤](../../database/data-faq.md#关系型数据库错误码常见场景及排查步骤)。
 
 ##  14800000 内部错误
 
@@ -83,11 +85,17 @@ The current operation failed because the database is corrupted.
 
 **可能原因**
 
-数据库文件不完整、数据库fd被误操作、数据库内存被踩等。
+1. 文件接口冲突：在数据库使用过程中使用文件接口直接操作数据库。
+2. 文件描述符误用：数据库fd被误操作，存在fd的double close和关闭后使用（use-after-close）问题。
+3. 内存访问异常：内存越界误写入数据库内存，导致数据库异常。
+4. 数据库文件不完整：文件拷贝或下载过程中断，导致文件内容不完整。
+5. 数据库文件不匹配：如：db文件和wal文件不是同一个数据库，导致数据库异常。
 
 **处理步骤**
 
-如果可以接受数据库数据丢失，则可尝试删除数据库后重新创建。否则，需要备份数据库以便恢复。具体操作可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+1. **问题定位**：优先排查使用场景，再查看日志。可在日志中搜索"fdsan"进行排查，详见[fdsan使用指导](../../napi/fdsan.md)。
+
+2. **数据库恢复**：如果可以接受数据库数据丢失，则可尝试删除数据库后重新创建。否则，需要备份数据库以便恢复。具体操作可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
 ## 14800012 结果集为空或指定位置不合法
 

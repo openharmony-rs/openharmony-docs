@@ -8,6 +8,8 @@
 
 ArkTS提供了渲染控制能力。条件渲染可根据应用状态，使用if、else和else if渲染相应的UI内容。
 
+ArkTS-Sta提供了[If](../../reference/apis-arkui/arkui-ts/ts-rendering-control-ifelse-sta.md)组件用于条件渲染。If组件在分支切换时先移除旧分支的子组件，再构建新分支的子组件，且If组件支持作为自定义组件根节点使用，与ArkTS-Dyn中if/else语句功能一致，建议开发者优先使用If组件进行ArkTS-Sta应用的开发。If的具体用法以及和if/else的差异请参考指南[If：条件渲染（ArkTS-Sta）](./arkts-rendering-control-ifelse-sta.md)。
+
 > **说明：**
 >
 > 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -81,7 +83,7 @@ if语句的每个分支都包含一个构建函数。此类构建函数必须创
 
 2. 执行新分支的构造函数，将生成的子组件添加到其父组件中。
 
-在以上示例中，当count从0增至1时，if (this.count > 0)更新为true，执行该分支的构造函数，创建一个Text组件并添加到父组件Column中。如果后续count更改为0，则Text组件将从Column组件中删除。由于没有else分支，因此不会执行新的构造函数。
+在以上示例中，当count从0增至1时，if (this.count > 0)更新为true，执行该分支的构造函数，创建一个[Text](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件并添加到父组件Column中。如果后续count更改为0，则Text组件将从[Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md)组件中删除。由于没有else分支，因此不会执行新的构造函数。
 
 ### if ... else ...语句和子组件状态
 

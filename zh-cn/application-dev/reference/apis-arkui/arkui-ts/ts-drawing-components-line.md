@@ -1,8 +1,8 @@
 # Line
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,18 +10,41 @@
 
 >  **说明：**
 >
-> 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件从API version 20开始支持使用[AttributeUpdater](../js-apis-arkui-AttributeUpdater.md)类的[updateConstructorParams](../js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
 ## 子组件
 
 无
 
-
 ## 接口
 
+### Line
+
+new Line(options?: LineOptions)
+
+用于绘制直线的构造函数。 
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| options | [LineOptions](ts-drawing-components-line.md#lineoptions18对象说明) | 否 | Line绘制区域。<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+
+### Line
+
 Line(options?: LineOptions)
+
+用于绘制直线的构造函数。 
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -47,6 +70,8 @@ Line(options?: LineOptions)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -60,7 +85,9 @@ Line(options?: LineOptions)
 
 ### startPoint
 
-startPoint(value: Array&lt;any&gt;)
+ArkTS-Dyn: startPoint(value: Array&lt;any&gt;)
+
+ArkTS-Sta: startPoint(value: ShapePoint | undefined)
 
 设置直线起点坐标点（相对坐标），支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法，异常值按照默认值处理。
 
@@ -70,15 +97,21 @@ startPoint(value: Array&lt;any&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;any&gt; | 是   | 直线起点坐标点（相对坐标），单位vp。<br/>默认值：[0,&nbsp;0] <br/>异常值undefined和null按照默认值处理。|
+| value  | ArkTS-Dyn: Array&lt;any&gt;<br/>ArkTS-Sta: [ShapePoint](#shapepoint22) \| undefined | 是   | 直线起点坐标点（相对坐标），单位vp。<br/>默认值：[0,&nbsp;0] <br/>异常值undefined和null按照默认值处理。|
 
 ### endPoint
 
-endPoint(value: Array&lt;any&gt;)
+ArkTS-Dyn: endPoint(value: Array&lt;any&gt;)
+
+ArkTS-Sta: endPoint(value: ShapePoint | undefined)
 
 设置直线终点坐标点（相对坐标），支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法，异常值按照默认值处理。
 
@@ -88,11 +121,15 @@ endPoint(value: Array&lt;any&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;any&gt; | 是   | 直线终点坐标点（相对坐标），单位vp。<br/>默认值：[0,&nbsp;0] <br/>异常值undefined和null按照默认值处理。|
+| value  | ArkTS-Dyn: Array&lt;any&gt;<br/>ArkTS-Sta: [ShapePoint](#shapepoint22) \| undefined | 是   | 直线终点坐标点（相对坐标），单位vp。<br/>默认值：[0,&nbsp;0] <br/>异常值undefined和null按照默认值处理。|
 
 ### fill
 
@@ -292,6 +329,22 @@ antiAlias(value: boolean)
 | ------ | ------- | ---- | ------------------------------------- |
 | value  | boolean | 是   | 是否开启抗锯齿效果。<br/>true：开启抗锯齿；false：关闭抗锯齿。<br/>默认值：true<br/>异常值undefined和null按照false处理。 |
 
+## ShapePoint<sup>22+</sup>
+
+type ShapePoint = [Length, Length]
+
+坐标类型，设置直线终点坐标点（相对坐标）。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+| [[Length](ts-types.md#length), [Length](ts-types.md#length)] | 第一个元素为x轴偏移量，第二个元素为y轴偏移量。 |
+
 ## 示例
 
 ### 示例1（组件属性绘制）
@@ -348,7 +401,7 @@ struct LineExample {
 }
 ```
 
-![zh-cn_image_0000001219982725](figures/zh-cn_image_0000001219982725.png)
+![line1](figures/line1.png)
 
 ### 示例2（边框端点绘制）
 
@@ -397,7 +450,7 @@ struct LineExample1 {
 }
 ```
 
-![zh-cn_image1_0000001219982725](figures/zh-cn_image1_0000001219982725.png)
+![line](figures/line.png)
 
 ### 示例3（边框间隙绘制）
 
@@ -458,7 +511,7 @@ struct LineExample {
 }
 ```
 
-![zh-cn_image2_0000001219982725](figures/zh-cn_image2_0000001219982725.PNG)
+![line2](figures/line2.PNG)
 
 ### 示例4（宽和高使用不同参数类型绘制直线）
 

@@ -27,7 +27,7 @@ getExposureDuration(): number
 
 获取当前曝光时长值。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -70,7 +70,9 @@ setExposureDuration(exposureDuration: number): void
 
 设置曝光时长值。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+仅在[ExposureMode](arkts-apis-camera-e.md#exposuremode).EXPOSURE_MODE_MANUAL 手动曝光模式下设置生效。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -101,59 +103,5 @@ function setExposureDuration(photoSession: camera.PhotoSession, exposureDuration
     let err = error as BusinessError;
     console.error(`The setExposureDuration call failed. error code: ${err.code}`);
   }
-}
-```
-
-## onExposureInfoChange<sup>24+</sup>
-
-onExposureInfoChange(callback: Callback\<ExposureInfo\>): void
-
-订阅曝光信息变化事件回调。曝光参数更改后，系统将返回更新后的曝光信息。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名     | 类型            | 必填 | 说明       |
-| -------- | -----------------| ---- | --------- |
-| callback | Callback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\> | 是   | 回调函数，用于获取曝光值变化信息。 |
-
-**示例：**
-
-```ts
-function onExposureInfoChange(photoSession: camera.PhotoSession): void {
-  photoSession.onExposureInfoChange((exposureInfo: camera.ExposureInfo) => {
-    console.info(`Exposure info changed, exposureTime: ${exposureInfo.exposureTime}`);
-  });
-}
-```
-
-## offExposureInfoChange<sup>24+</sup>
-
-offExposureInfoChange(callback?: Callback\<ExposureInfo\>): void
-
-取消订阅曝光信息变化事件回调。如果订阅了曝光信息，请在释放相机前取消订阅。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名     | 类型            | 必填 | 说明       |
-| -------- | -----------------| ---- | --------- |
-| callback | Callback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
-
-**示例：**
-
-```ts
-function offExposureInfoChange(photoSession: camera.PhotoSession): void {
-  photoSession.offExposureInfoChange();
 }
 ```

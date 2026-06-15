@@ -5,13 +5,15 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 ## 简介
 
 USB串口通信服务主要提供USB Host设备转串口协议通信的功能，它提供获取遵循USB Host转串口标准协议的已连接的端口列表，同时提供打开端口、关闭端口、设置参数、获取参数、读取数据、写入数据和设备权限管理这些基本功能。
 
 USB串口通信服务，配置管理请参考[USB串口配置管理](usbSerial-configuration.md)，通信管理请参考[USB串口通信管理](usbSerial-communication.md)。
+
+如需使用RTS/CTS流控、监听数据接收事件、清空缓冲区等更多串口通信能力，请参考[串口通信开发指导](../../busmanager/serialManager/serial-guidelines.md)
 
 ### 基本概念
 
