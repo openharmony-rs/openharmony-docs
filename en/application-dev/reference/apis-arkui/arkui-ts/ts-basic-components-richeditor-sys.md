@@ -132,4 +132,4 @@ struct richEditorNew03 {
   }
 }
 ```
-![StyledString](figures/builderspan_drag_config.gif)
+

@@ -107,9 +107,9 @@ Enumerates the input source device types.
 
 | Name| Value| Description|
 | ---- | --- | -------- |
-| Unknown | - | Unknown input source.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Mouse | - | Mouse.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| TouchScreen | - | Touchscreen.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Unknown | 0 | Unknown input source.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Mouse | 1 | Mouse.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| TouchScreen | 2 | Touchscreen.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | KEY<sup>22+</sup> | 4 | Key.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 | JOYSTICK<sup>22+</sup> | 5 | Joystick.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
@@ -236,7 +236,7 @@ struct PanGestureWithFingerCount {
               console.info(`fingerInfos ${JSON.stringify(event.fingerInfos)}`)
               this.offsetX = this.positionX + event.offsetX
               this.offsetY = this.positionY + event.offsetY
-              this.fingerCount = event.fingerInfos?.length || 0 // Update the number of touch points, recording the effective touch points involved in the current gesture.
+              this.fingerCount = event.fingerInfos?.length || 0 // Update the number of effective touch points involved in the current gesture.
             }
           })
           .onActionEnd((event: GestureEvent) => {

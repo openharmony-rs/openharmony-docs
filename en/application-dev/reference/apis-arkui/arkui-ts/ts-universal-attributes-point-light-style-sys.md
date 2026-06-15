@@ -12,11 +12,11 @@ You can apply a point light style to components.
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The point light style is only available for the following components: **Image**, **Column**, **Flex**, **Row**, **Stack**
+> - Only the [Image](./ts-basic-components-image.md), [Column](./ts-container-column.md), [Flex](./ts-container-flex.md), [Row](./ts-container-row.md) and [Stack](./ts-container-stack.md) components support point light configuration.
 
 ## PointLightStyle
 
-You apply a point light style by setting the light source that emits illumination and the components to be illuminated.
+Implements a UI effect where a point light source illuminates surrounding components by setting the point light emission and illuminated type.
 
 **System API**: This is a system API.
 
@@ -26,7 +26,7 @@ You apply a point light style by setting the light source that emits illuminatio
 | ----------- | ----------------------------------------------------------- | ---- |  ---- | ------------------------------------------------------------ |
 | lightSource | [LightSource](#lightsource)                         | No  |  Yes  | Light source. The light source affects the surrounding components that are marked as illuminable and creates light effects on those components.<br>Default value: none|
 | illuminated | [IlluminatedType](ts-appendix-enums-sys.md#illuminatedtype) | No  |  Yes | Whether the current component can be illuminated by the light source and the illuminated type.<br>Default value: **IlluminatedType.NONE**|
-| bloom       | number                                                      | No  |  Yes  | Luminous intensity of the component. The recommended value range is 0-1.<br>Default value: **0**       |
+| bloom       | number                                                      | No  |  Yes  | Bloom intensity of the component. The value range is [0, 1]. Values out of range fall back to the default value.<br>Default value: **0**       |
 
 ## LightSource
 
@@ -98,3 +98,5 @@ struct Index {
   }
 }
 ```
+
+![point_light_style](./figures/point_light_style.PNG)
