@@ -1422,7 +1422,7 @@ Defines virtual screen parameters.
 | density   | number   | No  | No  | Density of the virtual screen. The value must be a floating point number.|
 | surfaceId | string   | No  | No  | Surface ID of the virtual screen.       |
 | supportsFocus<sup>22+</sup> | boolean | No| Yes | Whether the virtual screen is focusable. **true** if focusable; **false** otherwise. The default value is **true**.|
-| userId<sup>24+</sup> | number | No| Yes | User ID of the virtual screen, which is an integer. The default value is **-1**.|
+| userId<sup>24+</sup> | number | No| Yes | User ID of the virtual screen, which is an integer. The default value is **-1**.<br>**Device behavior differences**: This parameter takes effect only on car devices. If being used on other device types, it does not take effect and no error is reported.|
 
 ## Screen
 
