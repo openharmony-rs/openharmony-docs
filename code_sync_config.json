@@ -14226,6 +14226,46 @@
 						"start_line":18
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyLayoutGroup.ets",
+				"functions":[
+					{
+						"end_line":240,
+						"name":"lazy_layout_header",
+						"start_line":137
+					},
+					{
+						"end_line":241,
+						"name":"lazy_layout_footer",
+						"start_line":159
+					},
+					{
+						"end_line":243,
+						"name":"lazy_layout_group",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/lazyLayout/LazyLayoutGroup.ets",
+				"functions":[
+					{
+						"end_line":267,
+						"name":"lazy_layout_header",
+						"start_line":164
+					},
+					{
+						"end_line":268,
+						"name":"lazy_layout_footer",
+						"start_line":186
+					},
+					{
+						"end_line":270,
+						"name":"lazy_layout_group",
+						"start_line":18
+					}
+				]
 			}
 		]
 	},
