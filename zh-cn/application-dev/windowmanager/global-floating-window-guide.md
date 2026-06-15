@@ -111,6 +111,25 @@
 
    <!-- @[floating_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
 
+   ``` TypeScript
+   // 3.为全局悬浮窗加载对应的目标页面。
+   floatWindowClass.setUIContent('pages/FloatWindow', (err) => {
+     if (err?.code) {
+       console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+       return;
+     }
+     console.info('Succeeded in loading the content.');
+     // 显示全局悬浮窗。
+     (floatWindowClass as window.Window).showWindow((err) => {
+       if (err?.code) {
+         console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
+         return;
+       }
+       console.info('Succeeded in showing the window.');
+     });
+   });
+   ```
+
 4. 销毁全局悬浮窗。  
 
    当不再需要全局悬浮窗时，可根据具体实现逻辑，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9-1)接口销毁全局悬浮窗。
