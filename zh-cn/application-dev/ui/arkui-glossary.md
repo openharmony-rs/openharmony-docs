@@ -6,6 +6,12 @@
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @Brilliantry_Rui-->
 
+## A
+
+### Accessibility Virtual Node；无障碍虚拟子节点
+
+当开发者使用自绘制组件进行自定义绘制时，这些组件内部的内容（如绘制的图形、文字）通常无法被无障碍服务直接感知。无障碍虚拟子节点是为自绘制组件补充的不可见无障碍节点，用于让辅助应用识别自绘区域内的可感知内容。
+
 ## N
 
 ### Named Route；命名路由
