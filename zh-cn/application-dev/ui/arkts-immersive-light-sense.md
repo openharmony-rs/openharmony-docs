@@ -471,6 +471,39 @@ struct MaterialInfoPage {
    
    <!-- @[MenuMaterial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/MenuMaterial.ets) -->
    
+   ``` TypeScript
+   import { uiMaterial } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct MenuMaterialPage {
+     @Builder
+     MyMenu() {
+       Menu() {
+         MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' })
+         MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' })
+         MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' })
+       }
+     }
+   
+     build() {
+       Stack() {
+         Button('bindMenu with THICK material')
+           .bindMenu(this.MyMenu, {
+             systemMaterial: new uiMaterial.ImmersiveMaterial({
+               style: uiMaterial.ImmersiveStyle.THICK
+             })
+           })
+       }
+       .height('100%')
+       .width('100%')
+       // 请替换为实际资源文件
+       .backgroundImage($r('app.media.img'))
+       .backgroundImageSize(ImageSize.Cover)
+     }
+   }
+   ```
+   
    未设置系统材质时：
    
    ![menuWithoutNewMaterialGif](../reference/apis-arkui/arkui-ts/figures/menuWithoutNewMaterialAnimation.gif)
