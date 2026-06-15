@@ -53,6 +53,59 @@
 
 <!-- @[setWindowMaskSample](https://gitcode.com/nicholaszc/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  // ...
+  private windowMaskSub: window.Window | undefined = undefined;
+
+  // ...
+  setWindowMask(window: window.Window) {
+    let windowMask: Uint8Array = new Uint8Array(this.winWidth * this.winHeight);
+    for (let i = 0; i < this.winHeight; i++) {
+      for (let k = 0; k < this.winWidth; k++) {
+        if ((i + k) < (this.winHeight + this.winWidth) / 2) {
+          windowMask[i * this.winWidth + k] = 0;
+        } else {
+          windowMask[i * this.winWidth + k] = 255;
+        }
+      }
+    }
+    window.setWindowMaskWithAlpha(windowMask, this.winWidth, this.winHeight);
+  }
+
+  build() {
+    Row() {
+      Scroll(){
+        Column() {
+          // ...
+          Row() {
+            Button('setWindowMask for Sub Window')
+              .width('90%')
+              .type(ButtonType.Capsule)
+              .margin({
+                top: 10
+              }).fontSize(18)
+              .onClick(() => {
+                if(this.windowMaskSub) {
+                  this.setWindowMask(this.windowMaskSub);
+                }
+              })
+          }
+        }
+        .width('100%')
+      }
+    }
+    .height('100%')
+  }
+
+}
+```
+
 ![setWindowMaskWithAlphaDemo](figures/setWindowMaskWithAlphaDemo.gif)
 
 
