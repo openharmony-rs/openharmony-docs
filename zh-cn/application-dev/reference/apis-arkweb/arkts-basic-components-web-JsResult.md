@@ -52,4 +52,4 @@ handlePromptConfirm(result: string): void
 
 | 参数名    | 类型   | 必填   | 说明        |
 | ------ | ------ | ---- | ----------- |
- | result | string | 是    | 用户输入的对话框内容。 |
+| result | string | 是    | 用户输入的对话框内容。 |
