@@ -561,6 +561,21 @@ struct MaterialInfoPage {
    如果需要全局禁用所有组件的沉浸式系统材质，可在module.json5中将metadata的value设置为"disable"。
    
    <!-- @[MaterialStateConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/module.json5) -->
+   
+   ``` JSON5
+   {
+     "module": {
+       "name": "entry",
+       "type": "entry",
+       // ...
+       "metadata": [{
+         "name": "ohos.arkui.UIMaterial.state",
+         "value": "enable"
+       }],
+       // ...
+     }
+   }
+   ```
 
 ### 开启后的效果
 
