@@ -1,4 +1,4 @@
-# 输入事件注入错误码
+# Input Event Injection Error Codes
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -7,118 +7,118 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
 
-> **说明：**
+> **NOTE**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
+> This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 3800001 输入服务异常
+## 3800001 Input Service Error
 
-**错误信息**
+**Error Message**
 
 Input service exception.
 
-**错误描述**
+**Description**
 
-当调用输入事件注入相关接口时，如果输入服务内部发生异常，会产生此错误码。
+This error code is generated if an internal error occurs in the input service when an input event injection API is called.
 
-**可能原因**
+**Possible Causes**
 
-1. 内存分配失败。
-2. 线程繁忙。
-3. 服务运行异常。
-4. 其他非预期错误。
+1. Memory allocation failed.
+2. The thread is busy.
+3. The service runs abnormally.
+4. Other unexpected errors.
 
-**处理步骤**
+**Solution**
 
-建议稍后重试。如果问题持续存在，请检查系统资源使用情况。
+Try again later. If the fault persists, check the system resource usage.
 
-## 4300001 状态错误
+## 4300001 Status Error
 
-**错误信息**
+**Error Message**
 
-状态错误，根据具体接口和场景有以下不同情况。
+Status error, which indicates different situations in different APIs and scenarios.
 
-**错误描述**
+**Description**
 
-该错误码在不同接口中表示不同的状态错误：
+This error code indicates different status errors in different APIs:
 
-- **pressKey 接口**：The key is already pressed and is not the most recently pressed key, or the number of pressed keys exceeds 5.
+- **pressKey API**: The key is already pressed and is not the most recently pressed key, or the number of pressed keys exceeds 5.
 
-  当调用键盘控制器的pressKey接口时，如果按键已被按下且不是最近按下的按键，或已按下的按键数超过了5个，会产生此错误码。
+  This error code is generated when the **pressKey** API of the keyboard controller is called and the key has been pressed but is not the most recently pressed key, or more than five keys have been pressed.
 
-  **可能原因**：按键已经被按下且不是最近按下的按键，或已按下的按键数超过了5个。
+  **Possible Causes**: The key has been pressed but is not the most recently pressed key, or more than five keys have been pressed.
 
-  **处理步骤**：确保按键在抬起状态下才能被按下；如果按键已被按下，确保它是最近按下的按键；确保同时按下的按键数量不超过5个。
+  **Solution**: Ensure that a key can only be pressed when it is in the released state. If a key is already pressed, ensure that it is the most recently pressed key. Ensure that the number of keys pressed simultaneously does not exceed five.
 
-- **releaseKey 接口**：The key is not pressed.
+- **releaseKey API**: The key is not pressed.
 
-  当调用键盘控制器的releaseKey接口时，如果按键未被按下，会产生此错误码。
+  This error code is generated when the **releaseKey** API of the keyboard controller is called and the key is not pressed.
 
-  **可能原因**：尝试抬起一个未被按下的按键。
+  **Possible Causes**: An attempt is made to release a key that is not pressed.
 
-  **处理步骤**：确保只抬起已经被按下的按键。
+  **Solution**: Ensure that the key to be released is pressed.
 
-- **pressButton 接口**：The mouse button is already pressed.
+- **pressButton API**: The mouse button is already pressed.
 
-  当调用鼠标控制器的pressButton接口时，如果鼠标按键已被按下，会产生此错误码。
+  This error code is generated when the **pressButton** API of the mouse controller is called and the mouse button has been pressed.
 
-  **可能原因**：鼠标按键已经处于按下状态。
+  **Possible Causes**: The mouse button has been pressed.
 
-  **处理步骤**：确保鼠标按键在抬起状态下才能被按下。
+  **Solution**: Ensure that the mouse button is in the released state.
 
-- **releaseButton 接口**：The mouse button is not pressed.
+- **releaseButton API**: The mouse button is not pressed.
 
-  当调用鼠标控制器的releaseButton接口时，如果鼠标按键未被按下，会产生此错误码。
+  This error code is generated when the **releaseButton** API of the mouse controller is called and the mouse button is not pressed.
 
-  **可能原因**：尝试抬起一个未被按下的鼠标按键。
+  **Possible Causes**: An attempt is made to release a mouse button that is not pressed.
 
-  **处理步骤**：确保只抬起已经被按下的鼠标按键。
+  **Solution**: Ensure that the mouse button to be released is pressed.
 
-- **beginAxis 接口**：The axis event is in progress.
+- **beginAxis API**: The axis event is in progress.
 
-  当调用鼠标控制器的beginAxis接口时，如果已有轴事件正在进行中，会产生此错误码。
+  This error code is generated when the **beginAxis** API of the mouse controller is called and an axis event is in progress.
 
-  **可能原因**：已经有一个轴事件序列正在进行，尚未结束。
+  **Possible Causes**: An axis event sequence is in progress and has not ended.
 
-  **处理步骤**：确保在开始新的轴事件序列之前，先结束当前正在进行的轴事件序列。
+  **Solution**: Ensure that the ongoing axis event sequence is ended before a new one is started.
 
-- **updateAxis/endAxis 接口**：The axis event is not in progress.
+- **updateAxis/endAxis API**: The axis event is not in progress.
 
-  当调用鼠标控制器的updateAxis或endAxis接口时，如果没有轴事件正在进行中，会产生此错误码。
+  This error code is generated when the **updateAxis** or **endAxis API** of the mouse controller is called and no axis event is in progress.
 
-  **可能原因**：尝试更新或结束一个未开始的轴事件序列。
+  **Possible Causes**: An attempt is made to update or end an axis event sequence that has not started.
 
-  **处理步骤**：确保在调用updateAxis或endAxis之前，先调用beginAxis开始轴事件序列。
+  **Solution**: Ensure that **beginAxis** is called to start an axis event sequence before calling **updateAxis** or **endAxis**.
 
-- **touchDown 接口**：触点正在接触屏幕，或者触点ID不在有效范围[0, 9]内。
+- **touchDown API**: The touch point is contacting the screen, or the touch point ID is not within the valid range [0, 9].
 
-  当调用触控控制器的touchDown接口时，如果触点已接触屏幕或触点ID不在有效范围[0, 9]内，会产生此错误码。
+  This error code is generated when the **touchDown** API of the touch controller is called and the touch point is contacting the screen or the touch point ID is not within the valid range [0, 9].
 
-  **可能原因**：触点已经处于按下状态，或触点ID不在有效范围[0, 9]内。
+  **Possible Causes**: The touch point is already in the pressed state, or the touch point ID is not within the valid range [0, 9].
 
-  **处理步骤**：调用touchDown前，请确保对应触点尚未接触屏幕，且触点ID在有效范围[0, 9]内。
+  **Solution**: Before calling the **touchDown** API, ensure that the corresponding touch point is not yet touching the screen and that the touch point ID is within the valid range [0, 9].
 
-- **touchMove/touchUp 接口**：触点未接触屏幕，或者触点ID不在有效范围[0, 9]内。
+- **touchMove/touchUp API**: The touch point is not yet touching the screen, or the touch point ID is not within the valid range [0, 9].
 
-  当调用触控控制器的touchMove或touchUp接口时，如果触点尚未接触屏幕或触点ID不在有效范围[0, 9]内，会产生此错误码。
+  This error code is generated when the **touchMove** or **touchUp** API of the touch controller is called and the touch point is not yet touching the screen or the touch point ID is not within the valid range [0, 9].
 
-  **可能原因**：触点尚未处于按下状态，或触点ID不在有效范围[0, 9]内。
+  **Possible Causes**: The touch point is not in the pressed state, or the touch point ID is not within the valid range [0, 9].
 
-  **处理步骤**：调用touchMove或touchUp前，请先调用touchDown使对应触点接触屏幕，并确保触点ID在有效范围[0, 9]内。
-## 4300002 显示器不存在
+  **Solution**: Before calling the **touchMove** or **touchUp** API, call the **touchDown** API to make the touch point touch the screen and ensure that the touch point ID is within the valid range [0, 9].
+## 4300002 Display Does Not Exist
 
-**错误信息**
+**Error Message**
 
 The display does not exist.
 
-**错误描述**
+**Description**
 
-当调用鼠标控制器的moveTo接口或触控控制器的touchDown接口时，如果指定的显示器不存在，会产生此错误码。
+This error code is generated when the **moveTo** API of the mouse controller or the **touchDown** API of the touch controller is called and the specified display does not exist.
 
-**可能原因**
+**Possible Causes**
 
-指定的displayId对应的显示器不存在。
+The display corresponding to the specified display ID does not exist.
 
-**处理步骤**
+**Solution**
 
-使用有效的显示器ID，可以通过显示管理接口查询可用的显示器列表。
+Use a valid display ID. You can query the list of available displays through the display management API.

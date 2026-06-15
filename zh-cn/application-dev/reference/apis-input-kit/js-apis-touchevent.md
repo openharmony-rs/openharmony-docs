@@ -1,4 +1,4 @@
-# @ohos.multimodalInput.touchEvent (触屏输入事件)
+# @ohos.multimodalInput.touchEvent (Touch Event)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -7,13 +7,13 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
 
-设备上报的触屏输入事件，继承自[InputEvent](./js-apis-inputevent.md)。
+The **touchEvent** module provides touch events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
-> **说明：**
+> **NOTE**
 >
-> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-## 导入模块
+## Modules to Import
 
 ```js
 import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
@@ -21,87 +21,87 @@ import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 
 ## Action
 
-触屏输入事件类型。
+Enumerates the touch event types.
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
-| 名称     | 值   | 说明   |
+| Name    | Value  | Description  |
 | ------ | ------ | ---- |
-| CANCEL | 0 | 触屏取消。触屏down事件异常打断，未正常闭环，例如：手指按下后未抬起，屏幕发生旋转、折叠或有新hover等场景时触发cancel事件。 |
-| DOWN   | 1 | 触屏按下。 |
-| MOVE   | 2 | 触屏移动。 |
-| UP     | 3 | 触屏抬起。 |
-| PULL_DOWN  | 4 | 触屏开始拖拽。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
-| PULL_MOVE  | 5 | 触屏拖拽移动。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
-| PULL_UP    | 6 | 触屏结束拖拽。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| CANCEL | 0 | Touch canceled. The **DOWN** event of the touchscreen is interrupted unexpectedly and does not close normally. For example, the **CANCEL** event is triggered when the finger is pressed but not lifted, the screen is rotated or folded, or a new hover occurs.|
+| DOWN   | 1 | Touch down.|
+| MOVE   | 2 | Touch moved.|
+| UP     | 3 | Touch up.|
+| PULL_DOWN  | 4 | Drag started.<br>**Since**: 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+| PULL_MOVE  | 5 | Dragging.<br>**Since**: 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+| PULL_UP    | 6 | Drag ended.<br>**Since**: 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## ToolType
 
-操作触屏的工具类型。
+Enumerates touch tool types.
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
-| 名称       | 值   | 说明   |
+| Name      | Value  | Description  |
 | -------- | ------ | ---- |
-| FINGER   | 0 | 手指。  |
-| PEN      | 1 | 笔。    |
-| RUBBER   | 2 | 橡皮擦。  |
-| BRUSH    | 3 | 笔刷。   |
-| PENCIL   | 4 | 铅笔。   |
-| AIRBRUSH | 5 | 气笔。   |
-| MOUSE    | 6 | 鼠标。   |
-| LENS     | 7 | 透镜。   |
+| FINGER   | 0 | Finger. |
+| PEN      | 1 | Stylus.   |
+| RUBBER   | 2 | Eraser. |
+| BRUSH    | 3 | Brush.  |
+| PENCIL   | 4 | Pencil.  |
+| AIRBRUSH | 5 | Air brush.  |
+| MOUSE    | 6 | Mouse.  |
+| LENS     | 7 | Lens.  |
 
 ## SourceType 
 
-触屏来源的设备类型，当前仅支持触摸屏、触控板类型上报。
+Enumerates touch sources. Currently, only the touchscreen and touchpad are supported.
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
-| 名称           | 值  | 说明   |
+| Name          | Value | Description  |
 | ------------ | ------ | ---- |
-| TOUCH_SCREEN | 0 | 触摸屏。  |
-| PEN          | 1 | 手写笔。  |
-| TOUCH_PAD    | 2 | 触控板。  |
+| TOUCH_SCREEN | 0 | Touchscreen. |
+| PEN          | 1 | Stylus. |
+| TOUCH_PAD    | 2 | Touchpad. |
 
 ## Touch
 
-触屏点信息。
+Defines the touch point information.
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
-| 名称          | 类型   | 只读   | 可选   | 说明                                  |
+| Name         | Type  | Read-Only  | Optional  | Description                                 |
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
-| id          | number | 否    | 否    | 触屏输入事件ID。                                |
-| pressedTime | number | 否    | 否    | 按下时间戳，表示系统启动运行至今逝去的微秒数，单位为微秒（μs）。                           |
-| screenX     | number | 否    | 否    | 该触屏输入事件以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数，单位为像素（px）。    |
-| screenY     | number | 否    | 否    | 该触屏输入事件以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数，单位为像素（px）。    |
-| windowX     | number | 否    | 否    | 触屏所在窗口左上角为原点的相对坐标系的X坐标。当前仅支持整数，单位为像素（px）。 |
-| windowY     | number | 否    | 否    | 触屏所在窗口左上角为原点的相对坐标系的Y坐标。当前仅支持整数，单位为像素（px）。 |
-| pressure    | number | 否    | 否    | 压力值，取值范围是[0.0, 1.0]，0.0表示不支持。       |
-| width       | number | 否    | 否    | 触屏区域的宽度，单位为像素（px）。当前仅支持整数。         |
-| height      | number | 否    | 否    | 触屏区域的高度，单位为像素（px）。当前仅支持整数。         |
-| tiltX       | number | 否    | 否    | 相对YZ平面的角度，单位为度，取值的范围[-90, 90]，其中正值是向右倾斜。 |
-| tiltY       | number | 否    | 否    | 相对XZ平面的角度，单位为度，取值的范围[-90, 90]，其中正值是向下倾斜。 |
-| toolX       | number | 否    | 否    | 工具区域的中心点以指定屏幕左上角为原点的相对坐标系的X坐标。当前仅支持整数，单位为像素（px）。  |
-| toolY       | number | 否    | 否    | 工具区域的中心点以指定屏幕左上角为原点的相对坐标系的Y坐标。当前仅支持整数，单位为像素（px）。  |
-| toolWidth   | number | 否    | 否    | 工具区域宽度，单位为像素（px）。当前仅支持整数。  |
-| toolHeight  | number | 否    | 否    | 工具区域高度，单位为像素（px）。当前仅支持整数。  |
-| rawX        | number | 否    | 否    | 输入设备上的X坐标。当前仅支持整数，单位为像素（px）。 |
-| rawY        | number | 否    | 否    | 输入设备上的Y坐标。当前仅支持整数，单位为像素（px）。 |
-| toolType    | [ToolType](#tooltype) | 否    | 否    | 工具类型。                                |
-| globalX<sup>20+</sup> | number | 否    | 是    | 该触屏输入事件以主屏左上角为原点的全局坐标系的X坐标，单位为像素（px）。<!--Del-->作为入参时，若接口参数中的[TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的X坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。 |
-| globalY<sup>20+</sup> | number | 否    | 是    | 该触屏输入事件以主屏左上角为原点的全局坐标系的Y坐标，单位为像素（px）。<!--Del-->作为入参时，若接口参数中的[TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11)为true，该值必填，当前仅支持整数。若为false，该值无需填写，使用指定屏幕左上角为原点的相对坐标系的Y坐标计算注入事件。<!--DelEnd-->作为出参时，由系统上报。 |
+| id          | number | No   | No   | Touch event ID.                               |
+| pressedTime | number | No   | No   | Press timestamp, in microseconds (μs) since the system starts.                          |
+| screenX     | number | No   | No   | X coordinate of the touch event in the relative coordinate system with the upper-left corner of the specified screen as the origin. Currently, only integers are supported. The unit is pixels.   |
+| screenY     | number | No   | No   | Y coordinate of the touch event in the relative coordinate system with the upper-left corner of the specified screen as the origin. Currently, only integers are supported. The unit is pixels.   |
+| windowX     | number | No   | No   | X coordinate in the relative coordinate system with the upper-left corner of the window where the touch is located as the origin. Currently, only integers are supported. The unit is pixels.|
+| windowY     | number | No   | No   | Y coordinate in the relative coordinate system with the upper-left corner of the window where the touch is located as the origin. Currently, only integers are supported. The unit is pixels.|
+| pressure    | number | No   | No   | Pressure value. The value range is [0.0, 1.0]. The value **0.0** indicates that the pressure is not supported.      |
+| width       | number | No   | No   | Width of the touch area, in pixels. The value can only be an integer.        |
+| height      | number | No   | No   | Height of the touch area, in pixels. The value can only be an integer.        |
+| tiltX       | number | No   | No   | Angle relative to the YZ plane, in degrees. The value range is [-90, 90]. A positive value indicates a rightward tilt.|
+| tiltY       | number | No   | No   | Angle relative to the XZ plane, in degrees. The value range is [-90, 90]. A positive value indicates a downward tilt.|
+| toolX       | number | No   | No   | X coordinate of the tool area center in the relative coordinate system with the upper-left corner of the specified screen as the origin. Currently, only integers are supported. The unit is pixels. |
+| toolY       | number | No   | No   | Y coordinate of the tool area center in the relative coordinate system with the upper-left corner of the specified screen as the origin. Currently, only integers are supported. The unit is pixels. |
+| toolWidth   | number | No   | No   | Width of the tool area, in pixels. The value can only be an integer. |
+| toolHeight  | number | No   | No   | Height of the tool area, in pixels. The value can only be an integer. |
+| rawX        | number | No   | No   | X coordinate of the input device. Currently, only integers are supported. The unit is pixels.|
+| rawY        | number | No   | No   | Y coordinate of the input device. Currently, only integers are supported. The unit is pixels.|
+| toolType    | [ToolType](#tooltype) | No   | No   | Tool type.                               |
+| globalX<sup>20+</sup> | number | No   | Yes   | X coordinate of the touch event in the global coordinate system with the upper-left corner of the primary screen as the origin, in px. <!--Del--> When being used as an input parameter, this parameter is mandatory if the value of [TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11) is **true**, and its value can only be an integer. Otherwise, you do not need to set this parameter. In this case, the X coordinate of the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. <!--DelEnd-->When being used as an output parameter, its value is reported by the system.|
+| globalY<sup>20+</sup> | number | No   | Yes   | Y coordinate of the touch event in the global coordinate system with the upper-left corner of the primary screen as the origin, in px. <!--Del--> When being used as an input parameter, this parameter is mandatory if the value of [TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11) is **true**, and its value can only be an integer. Otherwise, you do not need to set this parameter. In this case, the Y coordinate of the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. <!--DelEnd-->When being used as an output parameter, its value is reported by the system.|
 
 ## TouchEvent
 
-触屏输入事件。
+Defines a touch event.
 
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
-| 名称         | 类型       | 只读   | 可选   | 说明        |
+| Name        | Type      | Read-Only  | Optional  | Description       |
 | ---------- | ---------- | ---- | ---- | --------- |
-| action     | [Action](#action)     | 否    | 否    | 触屏输入事件类型。     |
-| touch      | [Touch](#touch)      | 否    | 否    | 当前触屏点信息。   |
-| touches    | [Touch](#touch)[]    | 否    | 否    | 所有触屏点。     |
-| sourceType | [SourceType](#sourcetype) | 否    | 否    | 触屏来源的设备类型。 |
+| action     | [Action](#action)     | No   | No   | Event type.    |
+| touch      | [Touch](#touch)      | No   | No   | Current touch point.  |
+| touches    | [Touch](#touch)[]    | No   | No   | All touch points.    |
+| sourceType | [SourceType](#sourcetype) | No   | No   | Device type of the touch source.|
