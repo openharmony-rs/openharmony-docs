@@ -401,6 +401,7 @@ import { uiMaterial } from '@kit.ArkUI'
 struct Index {
   build() {
     Stack() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.startIcon'))
       Column() {
         Column() {
@@ -452,7 +453,7 @@ struct LightEffect {
           .flexGrow(2)
           .fontColor(Color.White)
         Row({ space: this.spaceValue }) {
-          ForEach(this.itemsKey, (item: number, index: number) => {
+          ForEach(this.itemsKey, (_: number, _: number) => {
             Row()
               .width(this.circleRadius * 2)
               .height(this.circleRadius * 2)
