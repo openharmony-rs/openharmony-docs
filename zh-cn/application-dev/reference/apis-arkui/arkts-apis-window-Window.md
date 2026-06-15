@@ -7347,7 +7347,7 @@ minimize(callback: AsyncCallback&lt;void&gt;): void
 
 此接口根据调用对象不同，实现不同的功能：
 
-- 当调用对象为主窗口时，实现最小化功能，可在多任务中还原，在2in1设备上可通过Dock栏或使用[restore()](#restore14)进行还原。
+- 当调用对象为主窗口时，实现最小化功能，可在多任务中还原，在PC/2in1设备上可通过Dock栏或使用[restore()](#restore14)进行还原。
 
 - 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，可以使用[showWindow()](#showwindow9)进行还原。
 
@@ -7394,7 +7394,7 @@ minimize(): Promise&lt;void&gt;
 
 此接口根据调用对象不同，实现不同的功能：
 
-- 当调用对象为主窗口时，实现最小化功能，可在多任务中还原，在2in1设备上可通过Dock栏或使用[restore()](#restore14)进行还原。
+- 当调用对象为主窗口时，实现最小化功能，可在多任务中还原，在PC/2in1设备上可通过Dock栏或使用[restore()](#restore14)进行还原。
 
 - 当调用对象为子窗口或全局悬浮窗时，实现隐藏功能，可以使用[showWindow()](#showwindow9)进行还原。
 
@@ -8895,7 +8895,7 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                       |
-| 1300003  | This window manager service works abnormally.                                                                |
+| 1300003  | This window manager service works abnormally. <br>适用版本：20+                                                               |
 | 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows are supported.                  |
 
 **示例：**
