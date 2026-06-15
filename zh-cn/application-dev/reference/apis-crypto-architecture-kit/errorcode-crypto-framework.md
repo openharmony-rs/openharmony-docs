@@ -70,7 +70,7 @@ Parameter check failed.
 
 **错误信息**
 
-invalid function call. 
+Invalid function call.
 
 **错误描述**
 

@@ -186,7 +186,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| nonce      | Uint8Array | 否   | 否   | 指明加解密参数nonce，对于AES-CCM长度为7-13字节。                              |
+| nonce      | Uint8Array | 否   | 否   | 指明加解密参数nonce。对于AES算法的CCM模式长度为7-13字节；对于AES算法的GCM模式、SM4算法的GCM模式长度为1-128字节；对于ChaCha20算法的Poly1305模式长度为12字节。       |
 | authenticatedData     | Uint8Array | 否   | 是   | 指明加解密参数aad，长度为任意字节。                             |
 | tagLen | number | 否   | 是   | 指定加解密参数authTag长度，对于AES-CCM若不填则长度默认为12字节。tagLen长度范围为4-16，并且为偶数。 |
 
@@ -265,7 +265,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | EC_PRIVATE_K | 6 | 表示椭圆曲线（EC）私钥的 K。 |
 | EC_PRIVATE_04_X_Y_K | 7 | 表示椭圆曲线（EC）私钥的 04\|\|X\|\|Y\|\|K。 |
 | EC_PUBLIC_X_Y | 8 | 表示椭圆曲线（EC）公钥的 X\|\|Y。 |
-| EC_PUBLIC_04_X_Y | 9 | 表示椭圆曲线（EC）公钥的 04\|\|X\|\|Y 。 |
+| EC_PUBLIC_04_X_Y | 9 | 表示椭圆曲线（EC）公钥的 04\|\|X\|\|Y。 |
 | EC_PUBLIC_COMPRESS_X | 10 | 表示椭圆曲线（EC）公钥的 02\|\|X 或 03\|\|X。 |
 
 ## AsyKeySpecType<sup>10+</sup>
@@ -295,7 +295,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
-API version 10-11 系统能力为 SystemCapability.Security.CryptoFramework；从 API version 12 开始为SystemCapability.Security.CryptoFramework.Cipher
+API version 10-11 系统能力为 SystemCapability.Security.CryptoFramework；从 API version 12 开始为SystemCapability.Security.CryptoFramework.Cipher。
 
 | 名称         | 值   | 说明             |
 | ------------ | ---- | ---------------- |
@@ -1602,7 +1602,7 @@ getEncodedPem(format: string, config: KeyEncodingConfig): string
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
 | format  | string | 是   | 指定的获取密钥字符串的编码格式。其中，私钥可为'PKCS1' 或'PKCS8'格式。|
-| config | [KeyEncodingConfig](#keyencodingconfig18) | 是 | 指定编码的算法跟口令，对私钥进行编码操作。 |
+| config | [KeyEncodingConfig](#keyencodingconfig18) | 是 | 指定编码的算法和口令，对私钥进行编码操作。 |
 
 **返回值：**
 
